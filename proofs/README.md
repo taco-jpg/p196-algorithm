@@ -6,6 +6,18 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The early audited renewal checkpoints supply a [checked two-step gate](research/main_existence_attempt/renewal_pass/lean/STATUS.md) and [exact later hits](research/main_existence_attempt/renewal_pass/tails/STATUS.md) for specified repair families; other renewal work remains in progress. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Checked collision follow-up — 14 October 2026
+
+The [new shared handoff](coordination/2026-10-14-collision-results.md)
+publishes 24 Lean carry-response/transfer declarations, exact zero-gap
+collision and closure theorems, a complete independently verified
+10,000-state driver, and an explicit infinite family of finite seeds safe
+through time 10000 for every r>=5078. The smallest certified member has
+10163 digits. We also independently rebuilt the concurrent 49-declaration
+gate. The full trace is retained losslessly in parts; follow the handoff's
+restore command before replay. No infinite-safe seed or proof for 196 is
+supplied.
+
 ## Reviewed concurrent contributions — 14 October 2026
 
 The [reviewed contribution index](contributions/README.md) adds a Lean-proved

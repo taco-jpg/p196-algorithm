@@ -70,3 +70,13 @@ No failed model in this matrix is promoted to a statement about every possible m
 The [root review](contributions/2026-10-14-root-review.json) and
 [handoff](coordination/2026-10-14-checked-contributions.md) record exact
 reproduction commands, source identities and retained limitations.
+
+## Checked collision follow-up
+
+| Finding | Exact scope | Evidence |
+|---|---|---|
+| Actual carry-response and transfer normal form | 24 Lean declarations: all-length incoming-carry response, actual interval semantics, and identity/constant transfer determined by the last non-nine coefficient. No collision invariant supplied. | [Formal scope and audit](contributions/2026-10-14-collision-formal/README.md) |
+| Exact zero-gap collision and independent closure | N(BHB)-P=(x-10)F with actual-width reflection; exact mass loss and closure iff both isolated carries are zero or both outside coefficients are at least 10. Written unrestricted proof, 45,849 controls. | [Proof and controls](contributions/2026-10-14-collision/COLLISION_RESPONSE.md) |
+| Zero-gap palindrome criterion and finite driver | Exact component criterion with 128,547 finite controls. All 10,000 driver states and 9,999 recorded transitions independently checked; no infinite-driver claim. | [Review](contributions/2026-10-14-collision-review/COLLISION_REVIEW.md), [complete trace recovery](contributions/2026-10-14-collision-review/ARCHIVE_README.md), [streaming audit](contributions/2026-10-14-collision-audit/README.md) |
+| Explicit fixed-horizon family | n_r=10^(2r+6)+10^(2r+5)+10^(r+5)+8*10^(r+4)+7*10^(r+3) avoids palindromes at times 0 through 10000 for every r>=5078. Finite certificate plus written reduction; no all-time result. | [Proof and exact checks](contributions/2026-10-14-driver-family/FINITE_FAMILY.md) |
+| Concurrent gate independent rebuild | Exact source-hash-checked fresh Lean rebuild and all 49 declaration audits pass; ordinary logical axioms only. | [Independent audit](contributions/2026-10-14-external-gate-audit/README.md) |

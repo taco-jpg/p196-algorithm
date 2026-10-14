@@ -129,3 +129,18 @@ The full checker builds the six original source modules and generated audit modu
 These commands regenerate `fresh_build/`, `root_build/`, audit sources and audit logs. Use a working copy if preserving the originally published log bytes during replay. The original `dev_check.py` retains its historical absolute compiler path and prior development-build reference; it is provenance, while the two commands above are the portable release checks. All five development attempt logs and the available final source snapshot are retained. Only duplicate source copies and compiled/transient build products are omitted, individually inventoried. The separate unfinished prefix branch is outside this gate checkpoint.
 
 The [formal handoff](coordination/2026-10-14-formal-gate.md) states the exact domain and arithmetic conclusions. `return_not_in_domain` excludes immediate reuse of this source's original six-core Domain, not every broader gate. No recurrence, p>=5 overflow formula, later-hit classification, decimal Lychrel existence or assertion for 196 is proved by this formal gate.
+
+## Checked collision follow-up and lossless trace archive
+
+Before any driver/family replay, run from repository root:
+
+```sh
+python3 proofs/contributions/2026-10-14-collision-review/restore_driver_trace.py
+python3 -B proofs/contributions/2026-10-14-collision-audit/verify_driver_trace.py
+python3 -B proofs/contributions/2026-10-14-driver-family/check_family.py
+```
+
+The restore command verifies five ordered parts, the exact original gzip,
+and its complete decoded stream. See [all commands and proof scopes](coordination/2026-10-14-collision-results.md). The independent external-gate
+rebuild uses the same Lean 4.19.0 pin. No partial trace is treated as a
+complete certificate, and no finite driver is treated as infinite safety.

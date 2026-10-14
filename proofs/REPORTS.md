@@ -155,3 +155,14 @@ Every original written research report, proof note and manuscript source retaine
 - [Checked handoff](coordination/2026-10-14-checked-contributions.md)
 
 - [Concurrent active zero-gap assignment checkpoint](coordination/2026-10-14-collision-active.md)
+
+## Checked collision follow-up reports
+
+- [Carry-response formal scope](contributions/2026-10-14-collision-formal/README.md)
+- [Collision formula and closure classification](contributions/2026-10-14-collision/COLLISION_RESPONSE.md)
+- [Independent structural review](contributions/2026-10-14-collision-review/COLLISION_REVIEW.md)
+- [Full trace recovery](contributions/2026-10-14-collision-review/ARCHIVE_README.md)
+- [Complete driver streaming audit](contributions/2026-10-14-collision-audit/README.md)
+- [Explicit finite-horizon family](contributions/2026-10-14-driver-family/FINITE_FAMILY.md)
+- [Concurrent gate independent audit](contributions/2026-10-14-external-gate-audit/README.md)
+- [Checked handoff](coordination/2026-10-14-collision-results.md)
