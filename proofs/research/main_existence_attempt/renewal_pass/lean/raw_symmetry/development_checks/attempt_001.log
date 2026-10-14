@@ -1,0 +1,69 @@
+{"source": "RawSymmetryObstruction.lean", "exit_code": 1, "seconds": 1.0940543449978577, "source_sha256": "ce081f8703543cb3a0592b5dcffad2beb28a5195dd7b09b0e1a5d94b41716a26"}
+/workspace/scratch/fe6abe1df721/return_resume/LychrelCreativeResearch/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean:20:2: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ b ≤ 1
+  0 ≤ a ≤ 1
+  a - c ≥ 1
+  0 ≤ 10*a + b - 9*c ≤ 9
+where
+ a := R
+ b := τ
+ c := C
+/workspace/scratch/fe6abe1df721/return_resume/LychrelCreativeResearch/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean:66:12: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  S L
+L : Nat
+S C R τ q : Nat → Int
+hend : S L = 0
+hR : ∀ (i : Nat), i < L → 0 ≤ R i ∧ R i ≤ 1
+hτ : ∀ (i : Nat), i < L → 0 ≤ τ i ∧ τ i ≤ 1
+hstep : ∀ (i : Nat), i < L → S (i + 1) = S i + C i - R i
+hq : ∀ (i : Nat), i < L → q i = 10 * C i + R i + 9 * S i
+hrem : ∀ (i : Nat), i < L → 0 ≤ q i + τ i - 10 * C i ∧ q i + τ i - 10 * C i ≤ 9
+⊢ (fun i => 9 * S i) L = 0
+/workspace/scratch/fe6abe1df721/return_resume/LychrelCreativeResearch/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean:67:43: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  9*c - 9*d + e - f ≥ 1
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 1
+where
+ a := ↑L
+ b := ↑i
+ c := C i
+ d := R i
+ e := (fun i => 9 * S i) i
+ f := (fun i => 9 * S i) (i + 1)
+/workspace/scratch/fe6abe1df721/return_resume/LychrelCreativeResearch/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean:68:63: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c + e + f ≤ -1
+  0 ≤ c + 9*d + e ≤ 9
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 1
+where
+ a := ↑L
+ b := ↑i
+ c := R i
+ d := S i
+ e := τ i
+ f := (fun i => 9 * S i) i
+/workspace/scratch/fe6abe1df721/return_resume/LychrelCreativeResearch/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean:72:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≤ -1
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 0
+where
+ a := ↑L
+ b := ↑i
+ c := S i
+/workspace/scratch/fe6abe1df721/return_resume/LychrelCreativeResearch/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean:77:20: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≤ -1
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 1
+where
+ a := ↑L
+ b := ↑i
+ c := S i

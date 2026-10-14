@@ -181,3 +181,31 @@ and fresh fifteen-theorem Lean build. Every complete gzip has compressed
 and decoded identities and a recovery command. Two forensic truncated
 streams are stored exactly as binary evidence and intentionally have no
 decompression command; canonical repaired graphs match original hashes.
+
+## Completed renewal pass
+
+From the repository root, the three additional formal modules can be rebuilt with Lean 4.19.0 (replace the executable path):
+
+```sh
+python3 proofs/research/main_existence_attempt/renewal_pass/lean/prefix/check.py /absolute/path/to/lean
+python3 proofs/research/main_existence_attempt/renewal_pass/lean/incoming_carry/check.py /absolute/path/to/lean
+python3 proofs/research/main_existence_attempt/renewal_pass/lean/raw_symmetry/check.py /absolute/path/to/lean
+```
+
+Each directory also retains a `root_recheck.py`, its complete independently run audit and exact source hashes. The early gate's commands above complete the four-module, 135-declaration audit. Run in a disposable checkout: build directories and logs are regenerated. Historical `dev_check.py` files and failed source snapshots preserve development provenance and may require their original development environment; the completed `check.py` commands are the portable checks. Failed snapshots are not certified final theorem sources.
+
+Standard-library arithmetic/certificate checks include:
+
+```sh
+python3 -B proofs/research/main_existence_attempt/renewal_pass/language/check_inverse_ladder.py
+python3 -B proofs/research/main_existence_attempt/renewal_pass/language/check_prefix_obstruction.py
+python3 -B proofs/research/main_existence_attempt/renewal_pass/language/check_exploration_archive.py
+python3 -B proofs/research/main_existence_attempt/renewal_pass/seam_audit/check_overflow_local.py
+python3 -B proofs/research/main_existence_attempt/renewal_pass/seam_audit/check_short_controls.py
+python3 -B proofs/research/main_existence_attempt/renewal_pass/seam_audit/check_positive_safety.py
+python3 -B proofs/research/main_existence_attempt/renewal_pass/external_review/check_collision_safety_examples.py
+```
+
+The language checkers use the retained cross-pass NFA, observer tables, collision helpers and original tail certificates at their original relative paths. The complete language exploration, all 5,204 affine comparisons, 2,737 seam controls, 58,221 partition controls and 2,495 active-safety controls are retained in lossless gzip archives. Their source generators, exact configurations, failed cases and independent audit records accompany them. Consult each branch's STATUS report before optional regeneration; no capped search must be rerun to read the established claim.
+
+The raw-symmetry and incoming-carry modules prove the specified actual decimal/local statements. The full concatenated polynomial identity, generalized twenty-core classification and combined independent-closure safety corollary remain written proofs. The 22-seed/196 join search remains a finite 1,500-addition experiment. The external 10,000-state trace remains preserved with its original full replay record; this publication checks unchanged Git-object identity for its five large parts rather than claiming a new local trace replay.

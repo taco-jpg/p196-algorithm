@@ -23,7 +23,10 @@ def main():
         path = ROOT/record['published_path']
         assert path.stat().st_size==record['bytes'], record['source_path']
         assert sha(path)==record['sha256'], record['source_path']
+    # Independent contributions and archived research can import one another.
+    # The presence check covers both published source locations.
     sources = list((ROOT/'research').rglob('*.lean'))
+    sources += list((ROOT/'contributions').rglob('*.lean'))
     names = {p.stem for p in sources}
     imports = 0
     for path in sources:

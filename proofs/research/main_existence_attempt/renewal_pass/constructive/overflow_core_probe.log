@@ -1,0 +1,27 @@
+{
+  "status": "complete bounded two-step overflow-core probe",
+  "configuration": {
+    "outer_p": [
+      5,
+      10
+    ],
+    "r": 8,
+    "initial_shift": 1,
+    "core_lengths": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "alphabet": "0..18",
+    "constraints": "symmetric; positive endpoint; all adjacent sums <=18"
+  },
+  "ordering": "p, half_width, lexicographic half over range(19), filtered by cores()",
+  "outcome_encoding": "one byte per accepted input: closed_1 + 2*closed_2",
+  "outcome_count": 43788,
+  "outcome_sha256": "2ae2b0098899816a076654494420123aaad92d9ffb6ef6282fa07774a4c45354",
+  "compressed_bytes": 889,
+  "unsearched": "longer cores, other initial shifts, and returns after more than two updates",
+  "finite_Lychrel_witness": false
+}
+genuine_delayed_return_count 0

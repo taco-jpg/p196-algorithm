@@ -1,6 +1,6 @@
 # Complete written-report index
 
-Every original written research report, proof note and manuscript source retained in the initial publication, correlation update and completed early renewal handoffs is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.
+Every original written research report, proof note and manuscript source retained in the initial publication, correlation update, completed renewal pass and concurrent contributions is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.
 
 - [AstraResearchUpdate.txt](research/AstraResearchUpdate.txt)
 - [CarryWordsResearch.tex](research/CarryWordsResearch.tex)
@@ -201,3 +201,26 @@ Every original written research report, proof note and manuscript source retaine
 - [README.md](contributions/2026-10-14-scc-bound-formal/README.md)
 - [SCALAR_CLOCK_INDEX.md](contributions/SCALAR_CLOCK_INDEX.md)
 - [2026-10-14-scalar-clock-results.md](coordination/2026-10-14-scalar-clock-results.md)
+
+## Completed renewal reports and audit history
+
+- [main_existence_attempt/renewal_pass/RENEWAL_STATUS.md](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md)
+- [main_existence_attempt/renewal_pass/ROOT_REVIEW.md](research/main_existence_attempt/renewal_pass/ROOT_REVIEW.md)
+- [main_existence_attempt/renewal_pass/constructive/STATUS.md](research/main_existence_attempt/renewal_pass/constructive/STATUS.md)
+- [main_existence_attempt/renewal_pass/constructive/collision_response/SEAM_RESPONSE.md](research/main_existence_attempt/renewal_pass/constructive/collision_response/SEAM_RESPONSE.md)
+- [main_existence_attempt/renewal_pass/constructive/superseded_pre_uniform/README.md](research/main_existence_attempt/renewal_pass/constructive/superseded_pre_uniform/README.md)
+- [main_existence_attempt/renewal_pass/external_review/COLLISION_SAFETY_COROLLARY.md](research/main_existence_attempt/renewal_pass/external_review/COLLISION_SAFETY_COROLLARY.md)
+- [main_existence_attempt/renewal_pass/external_review/README.md](research/main_existence_attempt/renewal_pass/external_review/README.md)
+- [main_existence_attempt/renewal_pass/external_review/seven_step_graph/ACTUAL_ORBIT_INCLUSION.md](research/main_existence_attempt/renewal_pass/external_review/seven_step_graph/ACTUAL_ORBIT_INCLUSION.md)
+- [main_existence_attempt/renewal_pass/language/METHOD_AND_PROOF.md](research/main_existence_attempt/renewal_pass/language/METHOD_AND_PROOF.md)
+- [main_existence_attempt/renewal_pass/language/STATUS.md](research/main_existence_attempt/renewal_pass/language/STATUS.md)
+- [main_existence_attempt/renewal_pass/lean/incoming_carry/STATUS.md](research/main_existence_attempt/renewal_pass/lean/incoming_carry/STATUS.md)
+- [main_existence_attempt/renewal_pass/lean/prefix/STATUS.md](research/main_existence_attempt/renewal_pass/lean/prefix/STATUS.md)
+- [main_existence_attempt/renewal_pass/lean/raw_symmetry/STATUS.md](research/main_existence_attempt/renewal_pass/lean/raw_symmetry/STATUS.md)
+- [main_existence_attempt/renewal_pass/seam_audit/METHOD_AND_PROOF.md](research/main_existence_attempt/renewal_pass/seam_audit/METHOD_AND_PROOF.md)
+- [main_existence_attempt/renewal_pass/seam_audit/STATUS.md](research/main_existence_attempt/renewal_pass/seam_audit/STATUS.md)
+- [main_existence_attempt/renewal_pass/seam_audit/source_SEAM_RESPONSE_snapshot.md](research/main_existence_attempt/renewal_pass/seam_audit/source_SEAM_RESPONSE_snapshot.md)
+- [main_existence_attempt/renewal_pass/tails/FINITE_JOIN_CHECK.md](research/main_existence_attempt/renewal_pass/tails/FINITE_JOIN_CHECK.md)
+- [2026-10-14-collision-progress.md](coordination/2026-10-14-collision-progress.md)
+- [2026-10-14-active-seam-safety.md](coordination/2026-10-14-active-seam-safety.md)
+- [2026-10-14-renewal-complete.md](coordination/2026-10-14-renewal-complete.md)
