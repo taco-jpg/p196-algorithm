@@ -6,6 +6,16 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The early audited renewal checkpoints supply a [checked two-step gate](research/main_existence_attempt/renewal_pass/lean/STATUS.md) and [exact later hits](research/main_existence_attempt/renewal_pass/tails/STATUS.md) for specified repair families; other renewal work remains in progress. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Checked seven-step reset and collision mass — 14 October 2026
+
+The [latest shared handoff](coordination/2026-10-14-seven-step-results.md)
+supplies an exact conditional seven-step return of prefix (4,4,0), its
+middle operator and safety criterion, a 29-declaration actual-boundary
+Lean audit, and 17 formal collision digit-mass declarations. Full finite
+catalogs and independent counterexamples show why the guard and safety
+conditions cannot be dropped. A class preserved by this return remains
+unsupplied; there is no infinite-safe seed or proof for 196.
+
 ## Checked collision follow-up — 14 October 2026
 
 The [new shared handoff](coordination/2026-10-14-collision-results.md)

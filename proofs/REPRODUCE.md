@@ -144,3 +144,12 @@ The restore command verifies five ordered parts, the exact original gzip,
 and its complete decoded stream. See [all commands and proof scopes](coordination/2026-10-14-collision-results.md). The independent external-gate
 rebuild uses the same Lean 4.19.0 pin. No partial trace is treated as a
 complete certificate, and no finite driver is treated as infinite safety.
+
+## Seven-step reset, carry clocks and collision mass
+
+The [checked handoff](coordination/2026-10-14-seven-step-results.md) lists
+commands for both fresh Lean builds, the complete retained reset catalog,
+independent middle/operator checks and fixed-clock audit. The two gzip
+catalogs are complete; inventory records include decoded hashes and exact
+recovery commands. No growing-middle condition is inferred from a finite
+initial-width census.

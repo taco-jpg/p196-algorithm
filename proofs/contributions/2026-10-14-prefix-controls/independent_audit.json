@@ -1,0 +1,379 @@
+{
+  "result": "PASS",
+  "reviewed_sources": {
+    "fixed_clock_controls.py": {
+      "sha256": "8ac42ad42a4a397933099a533ccacd4e385d8d2ba0999f446eade19234880907",
+      "git_blob_sha1": "13c6248a2a42b7cbf534ece2e40634b7e5365efd"
+    },
+    "fixed_zero_prefix.py": {
+      "sha256": "91bf387913abceb6f9f38c65d7bcdafe0637cbc5495309773c7f6f6e422a9fe5",
+      "git_blob_sha1": "5fe9d52f442b011498d7262163afb2d0361ddae9"
+    },
+    "fixed_clock_results.json": {
+      "sha256": "27442168bcc097cdb18391f0d11588bd41b08884b54919b1a2f63d1ed1d053a2",
+      "git_blob_sha1": "e27ef08456a6ae60a04e5d4331b214cd5771b1a8"
+    },
+    "fixed_zero_prefix.json": {
+      "sha256": "c0536ddf4cbac2b59d95874a5a8decacf23e3cd729e117dd8fb8c9d674c0c61b",
+      "git_blob_sha1": "46981541df2ba565aa50cb9a17dfe1b779ede520"
+    }
+  },
+  "independent_ordinary_integer_transition_checks": 13716,
+  "total_classified_phase_states": 27432,
+  "audit_method": "ordinary integer transition oracle; reverse BFS to unsafe states; indegree pruning for safe cycles",
+  "results": [
+    {
+      "width": 1,
+      "schedule": [
+        0
+      ],
+      "phase_augmented_states": 18,
+      "initially_unsafe_states": 10,
+      "states_eventually_unsafe": 18,
+      "states_in_safe_cycle_basins": 0,
+      "max_escape_steps_among_escaping_states": 1,
+      "safe_cycle_count": 0,
+      "safe_cycle_basin_states": [],
+      "cycle_edges_with_independent_integer_realizations": []
+    },
+    {
+      "width": 1,
+      "schedule": [
+        1
+      ],
+      "phase_augmented_states": 18,
+      "initially_unsafe_states": 10,
+      "states_eventually_unsafe": 18,
+      "states_in_safe_cycle_basins": 0,
+      "max_escape_steps_among_escaping_states": 1,
+      "safe_cycle_count": 0,
+      "safe_cycle_basin_states": [],
+      "cycle_edges_with_independent_integer_realizations": []
+    },
+    {
+      "width": 1,
+      "schedule": [
+        0,
+        1
+      ],
+      "phase_augmented_states": 36,
+      "initially_unsafe_states": 20,
+      "states_eventually_unsafe": 36,
+      "states_in_safe_cycle_basins": 0,
+      "max_escape_steps_among_escaping_states": 1,
+      "safe_cycle_count": 0,
+      "safe_cycle_basin_states": [],
+      "cycle_edges_with_independent_integer_realizations": []
+    },
+    {
+      "width": 2,
+      "schedule": [
+        0
+      ],
+      "phase_augmented_states": 342,
+      "initially_unsafe_states": 92,
+      "states_eventually_unsafe": 339,
+      "states_in_safe_cycle_basins": 3,
+      "max_escape_steps_among_escaping_states": 13,
+      "safe_cycle_count": 1,
+      "safe_cycle_basin_states": [
+        [
+          [
+            8,
+            12
+          ],
+          0
+        ],
+        [
+          [
+            17,
+            4
+          ],
+          0
+        ],
+        [
+          [
+            17,
+            13
+          ],
+          0
+        ]
+      ],
+      "cycle_edges_with_independent_integer_realizations": [
+        [
+          {
+            "prefix": [
+              8,
+              12
+            ],
+            "phase": 0,
+            "gamma": 0,
+            "ordinary_seed": 89030,
+            "ordinary_next": 92128,
+            "next_prefix": [
+              17,
+              4
+            ],
+            "next_phase": 0
+          },
+          {
+            "prefix": [
+              17,
+              4
+            ],
+            "phase": 0,
+            "gamma": 0,
+            "ordinary_seed": 94008,
+            "ordinary_next": 174057,
+            "next_prefix": [
+              8,
+              12
+            ],
+            "next_phase": 0
+          }
+        ]
+      ]
+    },
+    {
+      "width": 2,
+      "schedule": [
+        1
+      ],
+      "phase_augmented_states": 342,
+      "initially_unsafe_states": 92,
+      "states_eventually_unsafe": 339,
+      "states_in_safe_cycle_basins": 3,
+      "max_escape_steps_among_escaping_states": 12,
+      "safe_cycle_count": 1,
+      "safe_cycle_basin_states": [
+        [
+          [
+            8,
+            11
+          ],
+          0
+        ],
+        [
+          [
+            17,
+            3
+          ],
+          0
+        ],
+        [
+          [
+            17,
+            12
+          ],
+          0
+        ]
+      ],
+      "cycle_edges_with_independent_integer_realizations": [
+        [
+          {
+            "prefix": [
+              8,
+              11
+            ],
+            "phase": 0,
+            "gamma": 1,
+            "ordinary_seed": 89920,
+            "ordinary_next": 92918,
+            "next_prefix": [
+              17,
+              3
+            ],
+            "next_phase": 0
+          },
+          {
+            "prefix": [
+              17,
+              3
+            ],
+            "phase": 0,
+            "gamma": 1,
+            "ordinary_seed": 93908,
+            "ordinary_next": 174847,
+            "next_prefix": [
+              8,
+              11
+            ],
+            "next_phase": 0
+          }
+        ]
+      ]
+    },
+    {
+      "width": 2,
+      "schedule": [
+        0,
+        1
+      ],
+      "phase_augmented_states": 684,
+      "initially_unsafe_states": 184,
+      "states_eventually_unsafe": 678,
+      "states_in_safe_cycle_basins": 6,
+      "max_escape_steps_among_escaping_states": 13,
+      "safe_cycle_count": 2,
+      "safe_cycle_basin_states": [
+        [
+          [
+            8,
+            11
+          ],
+          1
+        ],
+        [
+          [
+            8,
+            12
+          ],
+          0
+        ],
+        [
+          [
+            17,
+            3
+          ],
+          0
+        ],
+        [
+          [
+            17,
+            4
+          ],
+          1
+        ],
+        [
+          [
+            17,
+            12
+          ],
+          0
+        ],
+        [
+          [
+            17,
+            13
+          ],
+          1
+        ]
+      ],
+      "cycle_edges_with_independent_integer_realizations": [
+        [
+          {
+            "prefix": [
+              8,
+              11
+            ],
+            "phase": 1,
+            "gamma": 1,
+            "ordinary_seed": 89920,
+            "ordinary_next": 92918,
+            "next_prefix": [
+              17,
+              3
+            ],
+            "next_phase": 0
+          },
+          {
+            "prefix": [
+              17,
+              3
+            ],
+            "phase": 0,
+            "gamma": 0,
+            "ordinary_seed": 93008,
+            "ordinary_next": 173047,
+            "next_prefix": [
+              8,
+              11
+            ],
+            "next_phase": 1
+          }
+        ],
+        [
+          {
+            "prefix": [
+              8,
+              12
+            ],
+            "phase": 0,
+            "gamma": 0,
+            "ordinary_seed": 89030,
+            "ordinary_next": 92128,
+            "next_prefix": [
+              17,
+              4
+            ],
+            "next_phase": 1
+          },
+          {
+            "prefix": [
+              17,
+              4
+            ],
+            "phase": 1,
+            "gamma": 1,
+            "ordinary_seed": 94908,
+            "ordinary_next": 175857,
+            "next_prefix": [
+              8,
+              12
+            ],
+            "next_phase": 0
+          }
+        ]
+      ]
+    },
+    {
+      "width": 3,
+      "schedule": [
+        0
+      ],
+      "phase_augmented_states": 6498,
+      "initially_unsafe_states": 904,
+      "states_eventually_unsafe": 6498,
+      "states_in_safe_cycle_basins": 0,
+      "max_escape_steps_among_escaping_states": 21,
+      "safe_cycle_count": 0,
+      "safe_cycle_basin_states": [],
+      "cycle_edges_with_independent_integer_realizations": []
+    },
+    {
+      "width": 3,
+      "schedule": [
+        1
+      ],
+      "phase_augmented_states": 6498,
+      "initially_unsafe_states": 904,
+      "states_eventually_unsafe": 6498,
+      "states_in_safe_cycle_basins": 0,
+      "max_escape_steps_among_escaping_states": 21,
+      "safe_cycle_count": 0,
+      "safe_cycle_basin_states": [],
+      "cycle_edges_with_independent_integer_realizations": []
+    },
+    {
+      "width": 3,
+      "schedule": [
+        0,
+        1
+      ],
+      "phase_augmented_states": 12996,
+      "initially_unsafe_states": 1808,
+      "states_eventually_unsafe": 12996,
+      "states_in_safe_cycle_basins": 0,
+      "max_escape_steps_among_escaping_states": 24,
+      "safe_cycle_count": 0,
+      "safe_cycle_basin_states": [],
+      "cycle_edges_with_independent_integer_realizations": []
+    }
+  ],
+  "limitations": [
+    "Only the already reported widths 1,2,3 and schedules 0,1,01 were audited.",
+    "Each cycle edge has its own independent finite integer realization.",
+    "The realizations need not concatenate into one integer orbit or realize the clock forever.",
+    "Unsafe prefix means absence of this prefix obstruction, not necessarily a palindromic next integer."
+  ]
+}
