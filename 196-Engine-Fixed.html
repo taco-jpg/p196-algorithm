@@ -131,7 +131,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var
 .tl .item{position:relative;margin:0 0 12px}
 .tl .dot{position:absolute;left:-22px;top:18px;width:16px;height:16px;border-radius:50%;border:3px solid var(--surface);background:var(--axis);box-shadow:0 0 0 1px var(--border)}
 .tl .item.adopted .dot,.tl .item.passed .dot{background:var(--blue)}
-.tl .item.kept .dot{background:var(--muted)}
+.tl .item.kept .dot,.tl .item.superseded .dot{background:var(--muted)}
 .tl .item.pending .dot{background:var(--surface);box-shadow:0 0 0 2px var(--blue)}
 .tl .item.event .dot{background:var(--orange)}
 .tl .card{margin:0}
@@ -215,7 +215,7 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <header class="top">
   <div class="wrap">
     <div class="kicker">Reverse-and-add · the 196 search · RTX 4050 Laptop, 35 W</div>
-    <h1>The 196 engine, from the first kernel to v8</h1>
+    <h1>The 196 engine, from the first kernel to v9</h1>
     <p class="lede">Start with normal addition, then follow the ideas that made your GPU engine faster: reuse matching digits, group bits, move data less, and synchronize less. Each section starts with a small, approachable example; expand the original technical diagrams when you want the full details.</p>
     <div class="band" aria-hidden="true"><svg id="band" viewBox="0 0 960 56" preserveAspectRatio="none"></svg></div>
     <div class="small muted">Above: the five bit-planes of 196 after 600 steps, one column per digit pair. Orange columns are pairs that sum to 9, the ones that make carries travel.</div>
@@ -232,10 +232,10 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <main class="wrap">
 
 <div class="grid4" style="margin-top:22px">
-  <div class="stat"><div class="v">≈23×</div><div class="l">faster than the original kernel</div><div class="n">chained from measured A/B ratios at different sizes</div></div>
-  <div class="stat"><div class="v">170.5 µs</div><div class="l">per step, v8 sustained test</div><div class="n">100,000 steps at iteration ~663M (v6r3: 210.6)</div></div>
+  <div class="stat"><div class="v">≈29×</div><div class="l">faster than the original kernel</div><div class="n">chained from measured A/B ratios at different sizes</div></div>
+  <div class="stat"><div class="v">198.8 µs</div><div class="l">per step, v9 sustained test</div><div class="n">100,000 steps at ~405M digits (v8 on the same checkpoint copy: 251.1)</div></div>
   <div class="stat"><div class="v">0</div><div class="l">replays in production and the deciding sustained tests</div><div class="n">uncertified work is always redone exactly</div></div>
-  <div class="stat"><div class="v">5 + 1</div><div class="l">upgrades in production, plus v8 passed</div><div class="n">4 attempts lost and were dropped; v8b waits for the GPU</div></div>
+  <div class="stat"><div class="v">7</div><div class="l">upgrades in production (v4, v5, v6r, v6r2, v6r3, v8, v9)</div><div class="n">4 engines lost; base-5, pipe balancing and 288 threads lost as options</div></div>
 </div>
 
 <!-- 1 -->
@@ -263,7 +263,7 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <div aria-live="polite" class="addition" id="t1add"></div>
 <div class="statusline" id="t1msg"></div>
 <div class="chart" id="t1chart"></div>
-<div class="small muted">Digits vs. step for the current run. 196 grows about 0.414 digits per step (Dolbeau's 1e9 steps gave 413,930,770 digits), so the work per step keeps growing. Past runs have passed 270 million digits.</div>
+<div class="small muted">Digits vs. step for the current run. 196 grows about 0.414 digits per step (Dolbeau's 1e9 steps gave 413,930,770 digits), so the work per step keeps growing. The production run passed 406 million digits on October 13, 2026.</div>
 </div>
 <div class="callout easy-takeaway"><b>Start here:</b> One <b>step</b> means one complete addition. A <b>digit</b> is one character in the answer. The number of digits grows slowly; it is not the number of steps completed.</div>
 <p class="small muted">Next: <a href="#s2">see why matching digits can share the same work →</a></p>
@@ -473,17 +473,17 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <tbody>
 <tr><td>4</td><td class="num">32</td><td class="num">≈ 28 pairs</td><td class="num">+7.30%</td><td class="num">0</td></tr>
 <tr><td><b>8 (default)</b></td><td class="num">16</td><td class="num">≈ 23 pairs</td><td class="num"><b>+13.69%</b></td><td class="num">0</td></tr>
-<tr><td>12 (v8b option)</td><td class="num">≈ 11</td><td class="num">≈ 19 pairs</td><td class="num">not measured yet</td><td class="num">—</td></tr>
+<tr><td>12 (v8b option)</td><td class="num">≈ 11</td><td class="num">≈ 19 pairs</td><td class="num">+1.7% sustained*</td><td class="num">0</td></tr>
 <tr><td>16</td><td class="num">8</td><td class="num">≈ 14 pairs</td><td class="num"><span class="bad-text">−84.55%</span></td><td class="num">3</td></tr>
 </tbody>
 </table></div>
-<p class="small muted">"Typical" is J pairs plus about 11% for runs of 9s, from the pair-sum distribution. Rare long runs at an edge are what fail, and with millions of windows per launch, rare happens: at J=16 only 3 failures were enough to make it 85% slower. v8 at tile 1000 (J=8) gained +25.60% in the A/B and <b>+23.49% sustained</b>.</p>
+<p class="small muted">"Typical" is J pairs plus about 11% for runs of 9s, from the pair-sum distribution. Rare long runs at an edge are what fail, and with millions of windows per launch, rare happens: at J=16 only 3 failures were enough to make it 85% slower. v8 at tile 1000 (J=8) gained +25.60% in the A/B and <b>+23.49% sustained</b>. *J=12 was measured in v8b against v8 at tile 1000 (251.6 → 247.3 µs/step sustained), not against v6r3. v9's 128-pair halo later made J=32 safe (section 9).</p>
 </div></div></details><p class="small muted">Next: <a href="#s7">see the optional base-5 encoding →</a></p>
 </section>
 
 <!-- 7 -->
 <section id="s7">
-<div class="secnum">07 · BASE-5 PAIR SUMS · V8B OPTION</div><h2>Could different labels make the math cheaper?</h2><p>Instead of storing 17 only as ordinary binary, split it into <b>10 + 5 + 2</b>. Now “is the sum at least 10?” has already been answered by one saved bit. The reverse-and-add problem itself still uses ordinary <b>decimal</b> numbers.</p>
+<div class="secnum">07 · BASE-5 PAIR SUMS · TESTED, SLOWER</div><h2>Could different labels make the math cheaper?</h2><p>Instead of storing 17 only as ordinary binary, split it into <b>10 + 5 + 2</b>. Now “is the sum at least 10?” has already been answered by one saved bit. The reverse-and-add problem itself still uses ordinary <b>decimal</b> numbers.</p>
 <div class="card">
  <div class="controls"><label class="rng">Pair sum <input id="easyEncValue" type="range" min="0" max="18" value="17"><b id="easyEncOut">17</b></label><button class="easyEncPreset" data-s="9">Try 9</button><button class="easyEncPreset" data-s="10">Try 10</button><button class="easyEncPreset" data-s="18">Try 18</button></div>
  <div class="grid3">
@@ -494,9 +494,9 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
  <div class="formula" id="easyEncEquation">17 = 10 + 5 + 2</div>
  <div class="controls"><span class="small">Incoming carry:</span><span class="seg" role="group" aria-label="Incoming carry"><button id="easyEnc0" aria-pressed="false">0</button><button id="easyEnc1" aria-pressed="true">1</button></span></div>
  <div class="formula" id="easyEncResults" aria-live="polite"></div>
- <p class="small muted">This option had formula checks, but no GPU speedup confirmed in the source snapshot. “Base-5” means an internal five-bit encoding, not changing the numeral base of the big integer.</p>
+ <p class="small muted"><b>Measured on the GPU: base-5 was 10.9% slower in v8b and 10.1% slower in v9</b> (A/B medians), so it was dropped. The formulas are exact; the compiled code is longer. “Base-5” means an internal five-bit encoding, not changing the numeral base of the big integer.</p>
 </div>
-<div class="callout easy-takeaway"><b>The idea to remember:</b> A representation can make the common questions simpler. <b>Fewer instructions are only a hypothesis</b> until an actual sustained GPU test wins.</div><details class="deep-original"><summary>Original five-bit comparison and complete base-5 formula</summary><div class="deep-original-inside"><p>Same 5 bits, different meaning: <span class="mono">M</span> = S mod 5 (3 bits, 0–4), <span class="mono">H</span> = whether the last digit is ≥ 5, <span class="mono">G</span> = S ≥ 10. Then "makes a carry" is just the stored bit <span class="mono">G</span>, "passes a carry" (S = 9) is <span class="mono">H &amp; M₂</span>, and the new digit is <span class="mono">M + 5H + c − 10·P·c</span>: G cancels out. Counted, that is about a quarter fewer logic operations in steps where the number doesn't grow, roughly even in growth steps. v8b converts at window load and store, so checkpoints stay binary.</p><div class="card">
+<div class="callout easy-takeaway"><b>The idea to remember:</b> A representation can make the common questions simpler. <b>Fewer instructions are only a hypothesis</b> until an actual sustained GPU test wins.</div><details class="deep-original"><summary>Original five-bit comparison and complete base-5 formula</summary><div class="deep-original-inside"><p>Same 5 bits, different meaning: <span class="mono">M</span> = S mod 5 (3 bits, 0–4), <span class="mono">H</span> = whether the last digit is ≥ 5, <span class="mono">G</span> = S ≥ 10. Then "makes a carry" is just the stored bit <span class="mono">G</span>, "passes a carry" (S = 9) is <span class="mono">H &amp; M₂</span>, and the new digit is <span class="mono">M + 5H + c − 10·P·c</span>: G cancels out. Counted by hand, that looked like about a quarter fewer logic operations in steps where the number doesn't grow, roughly even in growth steps. The compiler disagreed: in v9's compiled code a growth step came out 21% longer (420 vs 346 instructions per lane), and the GPU measured base-5 about 10% slower. v8b converts at window load and store, so checkpoints stay binary.</p><div class="card">
 <div class="controls">
 <label class="rng">Pair sum S <input aria-label="Pair sum" id="q7s" max="18" min="0" type="range" value="9"/><b id="q7sv">9</b></label>
 <span aria-label="Incoming carry" class="seg" role="group"><button aria-pressed="false" id="q7c0">carry in 0</button><button aria-pressed="true" id="q7c1">carry in 1</button></span>
@@ -506,7 +506,7 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <div><div class="small muted">Base-5 form (v8b, -DTB_QUINARY=1)</div><div id="q7quin"></div></div>
 </div>
 <div class="formula" id="q7form"></div>
-<div class="small muted">v8b checked every input of every formula: 1,539 cases, 0 mismatches. Expected gain: maybe +3–8%; the GPU A/B decides.</div>
+<div class="small muted">v8b checked every input of every formula: 1,539 cases, 0 mismatches. The predicted +3–8% did not happen: measured 10.9% slower (v8b) and 10.1% slower (v9).</div>
 </div></div></details><p class="small muted">Next: <a href="#s8">compare the measured speedups →</a></p>
 </section>
 
@@ -515,7 +515,7 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <div class="secnum">08 · SPEED · ACTUAL TESTS</div><h2>Did the same job finish sooner?</h2><p>A shorter instruction list is not necessarily a shorter running time. Select one measured test: <b>shorter bars mean less time</b>, and each test compares two versions on the same workload.</p>
 <div class="card">
  <div class="controls"><label class="small" for="easyBenchSelect">Choose a comparison</label><select id="easyBenchSelect">
-   <option value="v8">v8 · fewer meetings (sustained)</option><option value="v4">v4 · bit-planes</option><option value="v6r3">v6r3 · more useful workers</option><option value="v7r">v7r · fewer instructions, but slower</option><option value="j16">v8 J=16 · replay disaster</option>
+   <option value="v9">v9 · warp windows (sustained)</option><option value="v8">v8 · fewer meetings (sustained)</option><option value="v4">v4 · bit-planes</option><option value="v6r3">v6r3 · more useful workers</option><option value="v7r">v7r · fewer instructions, but slower</option><option value="j16">v8 J=16 · replay disaster</option>
   </select></div>
  <p class="small muted" id="easyBenchContext"></p>
  <div class="easy-bench-label"><span id="easyBenchOldName"></span><b class="mono" id="easyBenchOldTime"></b></div>
@@ -523,7 +523,7 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
  <div class="easy-bench-label" style="margin-top:12px"><span id="easyBenchNewName"></span><b class="mono" id="easyBenchNewTime"></b></div>
  <div class="easy-bench-track"><div class="easy-bench-fill new" id="easyBenchNewBar"></div></div>
  <div id="easyBenchResult" class="formula" style="margin-top:14px"></div>
- <p class="small muted">These numbers are from the original page, not new live benchmarks. The percentage is <b>throughput change</b>, not percentage of time saved.</p>
+ <p class="small muted">These are recorded GPU measurements from the RTX 4050, not live benchmarks. The percentage is <b>throughput change</b>, not percentage of time saved.</p>
 </div>
 <div class="callout easy-takeaway"><b>The idea to remember:</b> Only keep changes that win real, sustained tests while producing exactly the same answer. The chart below retains the full original A/B history.</div><div class="secnum">08 · SPEED</div>
 <div class="card">
@@ -535,7 +535,7 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <div class="card">
 <h3 style="margin-top:0">Adopted engines, chained</h3>
 <div class="chart" id="ch2"></div>
-<p class="small muted">Speed relative to the original kernel, multiplying each adopted engine's measured A/B ratio. The ratios were measured at different number sizes (2M to 275M digits), so the product is an estimate, not one measurement.</p>
+<p class="small muted">Speed relative to the original kernel, multiplying each adopted engine's measured A/B ratio. The ratios were measured at different number sizes (2M to ~405M digits), so the product is an estimate, not one measurement.</p>
 </div>
 <div class="card">
 <h3 style="margin-top:0">Same job, different methods (~260M digits)</h3>
@@ -547,14 +547,14 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <h3 style="margin-top:0">My predictions vs. what the GPU said</h3>
 <div class="legend"><span><i class="sw" style="background:var(--surface-3)"></i>my predicted range</span><span><i class="sw" style="background:var(--orange)"></i>Astra's prediction (v8)</span><span><i class="sw" style="background:var(--blue);border-radius:50%"></i>measured</span></div>
 <div class="chart" id="ch4"></div>
-<p class="small muted">Too high for v6, v6r2, v7 and v7r, optimistic for v6r ("up to 2×"), too low for v6r3. For v8 I gave a deliberately wide range; Astra's was well above the result. That is why every package says "the A/B decides" and production only switches on measured, sustained wins.</p>
-</div><p class="small muted">Next: <a href="#s9">see what v9 changes (built, not yet on the GPU) →</a></p>
+<p class="small muted">Too high for v6, v6r2, v7 and v7r, optimistic for v6r ("up to 2×"), too low for v6r3. For v8 I gave a deliberately wide range; Astra's was well above the result. v8b's options came in far below my estimate (best +1.7%); v9 landed inside its range (+26.3% against "+10–35%"). That is why every package says "the A/B decides" and production only switches on measured, sustained wins.</p>
+</div><p class="small muted">Next: <a href="#s9">see what v9 changes (in production since Oct 13) →</a></p>
 </section>
 
 <!-- 9 -->
 <!-- 09: v9 -->
 <section id="s9">
-<div class="secnum">09 · V9 · WARP WINDOWS · BUILT, NOT YET ON THE GPU</div>
+<div class="secnum">09 · V9 · WARP WINDOWS · IN PRODUCTION SINCE OCT 13</div>
 <h2>What v9 changes, one lane at a time</h2>
 <p>In v8, each thread loaded 6 words and kept 4, so a third of its arithmetic was border work. In v9 the 32 lanes of a warp share one window: lanes 1–30 keep their groups, and lanes 0 and 31 hold the neighbouring warps' edges. Only a few bits cross lanes each step, passed with warp shuffles, which run on a different unit from the integer math.</p>
 <div class="card">
@@ -564,6 +564,22 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
  <p class="small muted" style="margin:6px 0 2px">One warp, lane by lane. Lanes 1–30 are kept; the grey lanes are halo borrowed from the neighbouring warps.</p>
  <div class="v9lanes" id="v9lanes"></div>
  <p class="small" id="v9laneText" style="margin-top:10px"></p>
+</div>
+<div class="card">
+ <h3 style="margin-top:0">Measured on the RTX 4050: where the gain came from</h3>
+ <p class="small muted">A/B medians (5,000 steps × 3 interleaved rounds) on the same checkpoint copy; 0 replays in every row. Each row changes one thing against its closest neighbour.</p>
+ <div class="scroll-x"><table style="min-width:520px">
+  <thead><tr><th>Change</th><th>Compared</th><th class="num">µs/step</th><th class="num">effect</th></tr></thead>
+  <tbody>
+   <tr><td><b>Warp windows + one tracker per warp</b></td><td>v9 J=16, tile 940 vs v8, tile 1000</td><td class="num">247.98 → 204.78</td><td class="num"><b>+21.1%</b></td></tr>
+   <tr><td>32 steps per barrier instead of 16</td><td>v9, tile 940</td><td class="num">204.78 → 199.34</td><td class="num">+2.7%</td></tr>
+   <tr><td>Every warp full: tile 940 instead of 900</td><td>v9, 256 threads</td><td class="num">208.10 → 199.34</td><td class="num">+4.4%</td></tr>
+   <tr><td>512 threads, tile 1900</td><td>vs 256 threads, tile 940</td><td class="num">199.34 → 198.90</td><td class="num">+0.2% (noise)</td></tr>
+   <tr><td>Pipe balancing</td><td>v9, tile 940</td><td class="num">199.34 → 201.43</td><td class="num">−1.0%</td></tr>
+   <tr><td>Base-5</td><td>v9, tile 940</td><td class="num">199.34 → 221.66</td><td class="num">−10.1%</td></tr>
+   <tr><td>288 threads (96 registers)</td><td>tile 1060 vs 256 threads, tile 940</td><td class="num">199.34 → 217.81</td><td class="num">−8.5%</td></tr>
+  </tbody></table></div>
+ <p class="small">Sustained, 100,000 steps: <b>v8 251.1 → v9 198.8 µs/step, +26.3%</b>, identical output, 0 replays. First production chunk: iteration 981,226,464, 406,161,163 digits, 198.3 µs/step, 0 certification and 0 fingerprint replays. The gain came from removing duplicated work; the ideas that put more instructions on idle units lost under the 35 W cap.</p>
 </div>
 <div class="card">
  <h3 style="margin-top:0">Instructions per lane, not per word</h3>
@@ -596,24 +612,25 @@ select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);bord
 <div class="secnum">11 · WHAT'S NEXT</div>
 <h2>Milestones and the one hard deadline</h2>
 <p><b>One billion steps</b> means one billion additions. <b>One billion digits</b> means the result is a billion characters long. These milestones are not interchangeable.</p>
-<p class="small muted">The dates below are projections from the October 13, 2026 snapshot, not a live status report. Production is still v8.</p>
-<div class="card"><div class="chart" id="ch5"></div><div class="small muted" style="margin-top:6px">Projected at v8 speed with no downtime. The red date is the hard one: v8 refuses to go past 2.147 billion digits, so production must move to a 64-bit engine (v8b or v9) before then.</div></div>
+<p class="small muted">The dates below are projections from the October 13, 2026 snapshot, not a live status report. Production is v9 (512 threads, tile 1900) since that evening.</p>
+<div class="card"><div class="chart" id="ch5"></div><div class="small muted" style="margin-top:6px">Estimated at v9's production speed (198.3 µs/step at 406M digits, time per step growing with the digit count), no downtime. The red date is the hard one: v9's 32-bit pair indices stop at about 4.29 billion digits, so a successor engine is needed before then.</div></div>
 <div class="grid2">
 <div class="card">
 <h3 style="margin-top:0">Lessons that held up</h3>
 <ul class="small" style="padding-left:18px;margin:0">
-<li><b>The math gave the big wins.</b> Folding, bit-planes and time-blocking are why memory sits at 1.8% busy and why we're ~20× ahead of schoolbook on the same chip (estimate).</li>
+<li><b>The math gave the big wins.</b> Folding, bit-planes and time-blocking are why memory sits at 1.8% busy and why v6r3 was already ~20× ahead of schoolbook on the same chip (estimate).</li>
 <li><b>The 35 W cap prices everything in energy.</b> Filling idle cycles drops the clock. More blocks per SM lost 8.7%; v8's 1.5× extra arithmetic took most of the 1.5× it saved in waiting.</li>
 <li><b>Fewer instructions ≠ faster.</b> v7r cut instructions per word 1.9× and lost 4%.</li>
+<li><b>Remove duplicated work; don't just fill idle units.</b> v9's warp windows gave +21% on their own; pipe balancing (−1%), base-5 (−10%) and more threads (−8.5%) all lost under the 35 W cap.</li>
 <li><b>Exactness is non-negotiable.</b> Every step's palindrome status is checked, no carry cutoffs, uncertified work replays. A v7 bug that gave 12 wrong results out of 78 was caught by tests before it ever ran on your GPU.</li>
 </ul>
 </div>
 <div class="card">
 <h3 style="margin-top:0">Open items</h3>
 <ul class="small" style="padding-left:18px;margin:0">
-<li><b>v8 is still production:</b> it passed (+23.49% sustained, 0 replays); the switch is your call.</li>
-<li><b>v8b and v9 on the GPU:</b> not run yet. Gate, the 2.147e9-digit test, then the A/B (v9 at 256 threads, 288, 512, pipe balancing, base-5). A 64-bit engine must be in production before about Nov 15.</li>
-<li><b>Record checks:</b> ISF dumps at milestones, mod-9 check on every archive, weekly per-step cross-check (the laptop GPU has no ECC memory).</li>
+<li><b>v9 is production</b> since Oct 13 (512 threads, tile 1900): +26.3% over v8, 0 replays. v8 is kept for rollback.</li>
+<li><b>Watch fingerprint replays:</b> they should stay 0. A non-zero count means a state bit changed on its own; the window was redone, but report it.</li>
+<li><b>Record checks:</b> the 1-billion-step comparison with Dolbeau's 413,930,770 digits, ISF dumps at milestones, mod-9 check on every archive, weekly per-step cross-check on Sundays (the laptop GPU has no ECC memory).</li>
 <li><b>The biggest lever left is hardware:</b> no kernel change on this laptop is likely to match a desktop GPU without the 35 W cap.</li>
 </ul>
 </div>
@@ -997,6 +1014,14 @@ const AB=[
  {n:"v8, tile 1000",vs:"v6r3, tile 860",size:"100k steps sustained",old:210.567,nw:170.519,unit:"µs",r:210.567/170.519,ok:true,note:"A/B median: +25.60%, 0 replays"},
  {n:"v8, J=4",vs:"v6r3, tile 860",size:"A/B, tile 860",old:210.714,nw:196.382,unit:"µs",r:210.714/196.382,ok:false,variant:true,note:"safe but syncs twice as often as J=8"},
  {n:"v8, J=16",vs:"v6r3, tile 860",size:"A/B, tile 860",old:210.714,nw:1363.428,unit:"µs",r:210.714/1363.428,ok:false,note:"3 certification failures, each an 8,192-step redo"},
+ {n:"v8b, J=12",vs:"v8, tile 1000",size:"100k steps sustained",old:251.584,nw:247.312,unit:"µs",r:251.584/247.312,ok:true,variant:true,vtxt:"passed; v9 chosen instead",note:"best v8b option"},
+ {n:"v8b base-5",vs:"v8b, tile 1000",size:"A/B, tile 1000",old:247.229,nw:277.318,unit:"µs",r:247.229/277.318,ok:false,note:"dropped"},
+ {n:"v9, 512 thr, tile 1900",vs:"v8, tile 1000",size:"100k steps sustained",old:251.121,nw:198.839,unit:"µs",r:251.121/198.839,ok:true,note:"production since Oct 13; A/B median +24.68%, 0 replays"},
+ {n:"v9, 256 thr, tile 940",vs:"v8, tile 1000",size:"A/B, tile 940",old:247.981,nw:199.336,unit:"µs",r:247.981/199.336,ok:true,variant:true,vtxt:"same speed as 512 threads",note:"+24.40%"},
+ {n:"v9, J=16",vs:"v9 J=32, tile 940",size:"A/B, tile 940",old:199.336,nw:204.779,unit:"µs",r:199.336/204.779,ok:false,variant:true,vtxt:"variant (J=32 was chosen)",note:"32 steps per barrier is 2.7% faster"},
+ {n:"v9 pipe balancing",vs:"v9, tile 940",size:"A/B, tile 940",old:199.336,nw:201.433,unit:"µs",r:199.336/201.433,ok:false,note:"extra multiply-adds cost more than they freed"},
+ {n:"v9 base-5",vs:"v9, tile 940",size:"A/B, tile 940",old:199.336,nw:221.661,unit:"µs",r:199.336/221.661,ok:false,note:"longer compiled growth steps"},
+ {n:"v9, 288 threads",vs:"v9 256 thr, tile 940",size:"A/B, tile 1060",old:199.336,nw:217.809,unit:"µs",r:199.336/217.809,ok:false,note:"capped at 96 registers per thread"},
 ];
 function pct(r){const p=(r-1)*100;return (p>=0?"+":"")+p.toFixed(2)+"%";}
 (function(){
@@ -1017,18 +1042,18 @@ function pct(r){const p=(r-1)*100;return (p>=0?"+":"")+p.toFixed(2)+"%";}
       const vt=S("text",{x:W-4,y:yc+4,"text-anchor":"end",fill:"var(--ink)","font-size":12,class:"lbl","font-weight":600},svg);vt.textContent=d.r>=2?d.r.toFixed(2)+"×":pct(d.r);
       const hit=S("rect",{x:0,y,width:W,height:rowH,fill:"transparent"},svg);
       hit.addEventListener("pointerenter",()=>hit.setAttribute("fill","var(--hatch)"));hit.addEventListener("pointerleave",()=>hit.setAttribute("fill","transparent"));
-      bindTip(hit,()=>`<b>${d.n}</b> vs ${d.vs}<br><span class="t2">${d.size}</span><br>${d.old?`${d.old} → ${d.nw} µs/step<br>`:""}<b>${d.r.toFixed(3)}×</b> (${pct(d.r)}) · ${d.variant?"variant (J=8 was chosen)":d.ok?"adopted / passed":"kept the old engine"}<br><span class="t2">${d.note}</span>`);
+      bindTip(hit,()=>`<b>${d.n}</b> vs ${d.vs}<br><span class="t2">${d.size}</span><br>${d.old?`${d.old} → ${d.nw} µs/step<br>`:""}<b>${d.r.toFixed(3)}×</b> (${pct(d.r)}) · ${d.variant?(d.vtxt||"variant (J=8 was chosen)"):d.ok?"adopted / passed":"kept the old engine"}<br><span class="t2">${d.note}</span>`);
     });}
   draw();window.addEventListener("resize",draw);
   let t='<table><thead><tr><th>Engine</th><th>Compared with</th><th>Where measured</th><th class="num">old µs/step</th><th class="num">new µs/step</th><th class="num">speed ratio</th><th>Outcome</th></tr></thead><tbody>';
-  AB.forEach(d=>{t+=`<tr><td>${d.n}</td><td>${d.vs}</td><td>${d.size}</td><td class="num">${d.old??"—"}</td><td class="num">${d.nw??"—"}</td><td class="num">${d.r.toFixed(3)}×</td><td>${d.variant?"variant, J=8 chosen":d.ok?"adopted / passed":"kept old"}${d.note?` <span class="muted">· ${d.note}</span>`:""}</td></tr>`;});
-  t+='<tr><td>v8b (288 thr, J=12, base-5)</td><td>v8, tile 1000</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>built, GPU A/B pending</td></tr></tbody></table>';
+  AB.forEach(d=>{t+=`<tr><td>${d.n}</td><td>${d.vs}</td><td>${d.size}</td><td class="num">${d.old??"—"}</td><td class="num">${d.nw??"—"}</td><td class="num">${d.r.toFixed(3)}×</td><td>${d.variant?(d.vtxt||"variant, J=8 chosen"):d.ok?"adopted / passed":"kept old"}${d.note?` <span class="muted">· ${d.note}</span>`:""}</td></tr>`;});
+  t+='</tbody></table>';
   $("#ch1tab").innerHTML=t;
 })();
 (function(){
-  const chain=[["original",1]];let acc=1;[["v4",0],["v5",1],["v6r",3],["v6r2",4],["v6r3",8],["v8",9]].forEach(([n,i])=>{acc*=AB[i].r;chain.push([n,acc]);});
+  const chain=[["original",1]];let acc=1;[["v4",0],["v5",1],["v6r",3],["v6r2",4],["v6r3",8],["v8",9],["v9",14]].forEach(([n,i])=>{acc*=AB[i].r;chain.push([n,acc]);});
   const el=$("#ch2");function draw(){el.innerHTML="";const W=el.clientWidth||400,Ht=220,m={l:34,r:6,t:20,b:26};const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Chained speedup"},el);
-    const maxY=25;const ys=v=>Ht-m.b-(Ht-m.t-m.b)*v/maxY;[0,5,10,15,20,25].forEach(v=>{const y=ys(v);S("line",{x1:m.l,x2:W-m.r,y1:y,y2:y,class:v?"gl":"ax"},svg);const t=S("text",{x:m.l-5,y:y+4,"text-anchor":"end",class:"tick"},svg);t.textContent=v+"×";});
+    const maxY=30;const ys=v=>Ht-m.b-(Ht-m.t-m.b)*v/maxY;[0,5,10,15,20,25,30].forEach(v=>{const y=ys(v);S("line",{x1:m.l,x2:W-m.r,y1:y,y2:y,class:v?"gl":"ax"},svg);const t=S("text",{x:m.l-5,y:y+4,"text-anchor":"end",class:"tick"},svg);t.textContent=v+"×";});
     const bw=(W-m.l-m.r)/chain.length;chain.forEach(([n,v],i)=>{const x=m.l+i*bw+bw*0.18,w=bw*0.64,y=ys(v),h=ys(0)-y,rr=Math.min(4,w/2);
       S("path",{d:`M${x},${ys(0)}V${y+rr}Q${x},${y} ${x+rr},${y}H${x+w-rr}Q${x+w},${y} ${x+w},${y+rr}V${ys(0)}Z`,fill:"var(--blue)"},svg);
       const t=S("text",{x:x+w/2,y:Ht-8,"text-anchor":"middle",class:"tick"},svg);t.textContent=n;
@@ -1050,7 +1075,7 @@ function pct(r){const p=(r-1)*100;return (p>=0?"+":"")+p.toFixed(2)+"%";}
   draw();window.addEventListener("resize",draw);
 })();
 (function(){
-  const P=[{n:"v6",lo:1.3,hi:1.5,m:52.32/54.96},{n:"v6r",lo:1.0,hi:2.0,m:1.48,note:"predicted 'up to 2×'"},{n:"v6r2",lo:1.3,hi:1.5,m:68.3/61.9},{n:"v7",lo:1.2,hi:1.6,m:118.4/171.6},{n:"v7r",lo:1.2,hi:1.5,m:188.9/196.9},{n:"v6r3",lo:1.0,hi:1.15,m:232.352/193.839,note:"code 0–3%, tile 860 0–15%"},{n:"v8",lo:0.8,hi:1.3,m:210.567/170.519,a:[1.6,1.8],note:"'could be −20% or +30%'"}];
+  const P=[{n:"v6",lo:1.3,hi:1.5,m:52.32/54.96},{n:"v6r",lo:1.0,hi:2.0,m:1.48,note:"predicted 'up to 2×'"},{n:"v6r2",lo:1.3,hi:1.5,m:68.3/61.9},{n:"v7",lo:1.2,hi:1.6,m:118.4/171.6},{n:"v7r",lo:1.2,hi:1.5,m:188.9/196.9},{n:"v6r3",lo:1.0,hi:1.15,m:232.352/193.839,note:"code 0–3%, tile 860 0–15%"},{n:"v8",lo:0.8,hi:1.3,m:210.567/170.519,a:[1.6,1.8],note:"'could be −20% or +30%'"},{n:"v8b",lo:1.10,hi:1.15,m:251.584/247.312,note:"options combined '+10–15%'; best option measured"},{n:"v9",lo:1.10,hi:1.35,m:251.121/198.839,note:"'+10–35%, most likely ~20%'"}];
   const el=$("#ch4");function draw(){el.innerHTML="";const W=el.clientWidth||700,labW=50,rowH=30,m={t:8,b:26};const Ht=m.t+P.length*rowH+m.b;const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Predicted vs measured"},el);
     const lo=0.6,hi=2.1,x0=labW,x1=W-10;const sx=v=>x0+(x1-x0)*(v-lo)/(hi-lo);
     [0.6,0.8,1,1.2,1.4,1.6,1.8,2].forEach(v=>{const x=sx(v);S("line",{x1:x,x2:x,y1:m.t,y2:Ht-m.b,class:v===1?"ax":"gl"},svg);const t=S("text",{x,y:Ht-8,"text-anchor":"middle",class:"tick"},svg);t.textContent=v.toFixed(1)+"×";});
@@ -1117,15 +1142,15 @@ function pct(r){const p=(r-1)*100;return (p>=0?"+":"")+p.toFixed(2)+"%";}
    {k:"kept",n:"v7r",r:"0.96× sustained (196.9 vs 188.9 µs)",i:"v7's instruction savings with v6r2's warps per SM.",d:"Workers still took ~2,000 cycles per step whatever their instruction count: the limit wasn't instructions. We needed a real profiler."},
    {k:"event",n:"Nsight Compute",r:"barrier = #1 stall, DRAM 1.8%",i:"Warps issue once every ~8 cycles; 51% of cycles have no eligible warp; occupancy 33% (registers and shared memory both cap 2 blocks/SM). Profiled outputs matched byte for byte.",d:"I misread one cause (warp-0 divergence) and corrected it after reading the code: prefix and tile items run the identical fast path."},
    {k:"kept",n:"3 blocks per SM",r:"8.66% slower",i:"Fill the idle cycles with more warps.",d:"Register cap → 34 spill instructions; the clock dropped from ~1,750 to ~1,480 MHz under the power cap. Idle cycles weren't free."},
-   {k:"event",n:"Dolbeau's record code",r:"we're ~14× his README example",i:"Schoolbook addition with SIMD (+246 trick) over MPI. His MAX_SIZE_GLOBAL = 1e9 is why the record stops at exactly one billion digits; MPI counts break past 2³¹.",d:"Lessons taken: ISF output for comparable dumps, and our own 2.147e9-digit limit."},
+   {k:"event",n:"Dolbeau's record code",r:"his README example: 3.4 ms/step at 261.7M digits (v6r3: ~0.20 ms, ~17×)",i:"Schoolbook addition with SIMD (+246 trick) over MPI. His MAX_SIZE_GLOBAL = 1e9 is why the record stops at exactly one billion digits; MPI counts break past 2³¹.",d:"Lessons taken: ISF output for comparable dumps, and our own 2.147e9-digit limit."},
    {k:"adopted",n:"v6r3 · tile 860",r:"+19.87% sustained · production",i:"Work context in registers, growth bit delivered by the barrier itself (__syncthreads_count), palindrome votes by warp ballots, and tile 860 = 224 groups for 224 workers.",d:"A loop with a break pushed an array into local memory (49 st.local); caught in the compiled output, fixed with constant indices. I predicted 0–3% + 0–15%."},
-   {k:"passed",n:"v8 · control tape + register windows",r:"+23.49% sustained (210.6 → 170.5 µs)",i:"GPT-6 Astra's idea, rebuilt inside time-blocking: a 64-thread kernel precomputes each launch's growth bits; interior threads keep 6 words in registers and run J=8 steps per barrier, certifying their own window.",d:"Astra expected 60–80%; removing all waiting could give at most ~1.5×, and the 1.5× extra math costs energy under the cap. J=16 hit the stale-margin cliff: 3 replays, −84.55%."},
-   {k:"pending",n:"v8b · 64-bit + options",r:"built · GPU tests pending",i:"64-bit digit counts (limit 2.147e9 → ~4.29e9), slimmer block state, 288 threads (tiles to ~1,120), any J (J=12 option), base-5 window arithmetic, ISF writer, mod-9 identity, weekly per-step cross-check.",d:"288 threads force 96 registers per thread (160 bytes of spills, all in the rarely used v6r3 path). Old reference tool silently capped inputs at ~68M digits; replaced. Tested on a real 2,147,483,600-digit number across the 2³¹ line."},
-   {k:"pending",n:"v9 · warp windows + mod-9 check",r:"built · GPU tests pending · +10–35% is an estimate",i:"The 32 lanes of a warp share one window: lanes 1–30 keep their groups, lanes 0 and 31 hold 128-pair halos from the neighbouring warps. Only two carry bits and, in growth steps, four digit planes cross lanes each step, via warp shuffles. Every window is checked by a mod-9 fingerprint (default on). Includes v8b and its 64-bit counts.",d:"Static counts, not GPU timings: 287 vs 449 instructions per no-growth step per lane/thread, 346 vs 534 in growth steps. Shuffle latency and the 35 W cap may take part of the gain. Base-5 is expected to lose; the 512-thread build is unknown until measured. The CPU emulator runs the GPU's lane code, but nothing has run on a GPU yet."}
+   {k:"adopted",n:"v8 · control tape + register windows",r:"+23.49% sustained (210.6 → 170.5 µs) · production until Oct 13",i:"GPT-6 Astra's idea, rebuilt inside time-blocking: a 64-thread kernel precomputes each launch's growth bits; interior threads keep 6 words in registers and run J=8 steps per barrier, certifying their own window.",d:"Astra expected 60–80%; removing all waiting could give at most ~1.5×, and the 1.5× extra math costs energy under the cap. J=16 hit the stale-margin cliff: 3 replays, −84.55%."},
+   {k:"superseded",n:"v8b · 64-bit + options",r:"passed the GPU gate and the 2.147e9-digit test · best option J=12 +1.7% sustained · v9 chosen instead",i:"64-bit digit counts (limit 2.147e9 → ~4.29e9), slimmer block state, 288 threads (tiles to ~1,120), any J (J=12 option), base-5 window arithmetic, ISF writer, mod-9 identity, weekly per-step cross-check.",d:"288 threads force 96 registers per thread (160 bytes of spills, all in the rarely used v6r3 path). Old reference tool silently capped inputs at ~68M digits; replaced. Tested on a real 2,147,483,600-digit number across the 2³¹ line. On the GPU: base-5 −10.9%, 288 threads −0.7% at tile 1000 and −15% at tile 1100, J=12 +1.7% sustained."},
+   {k:"adopted",n:"v9 · warp windows + mod-9 check",r:"+26.3% sustained (251.1 → 198.8 µs) · production since Oct 13 (512 threads, tile 1900)",i:"The 32 lanes of a warp share one window: lanes 1–30 keep their groups, lanes 0 and 31 hold 128-pair halos from the neighbouring warps. Only two carry bits and, in growth steps, four digit planes cross lanes each step, via warp shuffles. Every window is checked by a mod-9 fingerprint (default on). Includes v8b and its 64-bit counts.",d:"Static counts, not GPU timings: 287 vs 449 instructions per no-growth step per lane/thread, 346 vs 534 in growth steps. Shuffle latency and the 35 W cap may take part of the gain. Measured: warp windows alone +21%, J=32 +2.7%, full warps (tile 940 vs 900) +4.4%; 512 threads equalled 256; pipe balancing −1%, base-5 −10%, 288 threads −8.5%. Every gate passed, including the 2.147e9-digit test and injected bit flips caught by the fingerprint on the GPU."}
   ];
   const tl=$("#tl");T.forEach((x,i)=>{const it=H("div",{class:"item "+x.k},tl);H("div",{class:"dot"},it);const c=H("div",{class:"card tight"},it);
     const b=H("button",{class:"toggle","aria-expanded":"false",type:"button"},c);
-    const chip=x.k==="adopted"?'<span class="chip ok">✓ adopted</span>':x.k==="passed"?'<span class="chip ok">✓ passed · switch is your call</span>':x.k==="kept"?'<span class="chip">kept old engine</span>':x.k==="pending"?'<span class="chip wait">◷ waiting for GPU tests</span>':'<span class="chip">finding</span>';
+    const chip=x.k==="adopted"?'<span class="chip ok">✓ adopted</span>':x.k==="passed"?'<span class="chip ok">✓ passed · switch is your call</span>':x.k==="kept"?'<span class="chip">kept old engine</span>':x.k==="pending"?'<span class="chip wait">◷ waiting for GPU tests</span>':x.k==="superseded"?'<span class="chip">passed · not adopted</span>':'<span class="chip">finding</span>';
     b.innerHTML=`<div class="head"><span class="name">${x.n}</span>${chip}</div><div class="res">${x.r}</div>`;
     const body=H("div",{class:"body"},c);body.innerHTML=`<p><b>Idea.</b> ${x.i}</p><p><b>Difficulty.</b> ${x.d}</p>`;
     b.onclick=()=>{it.classList.toggle("open");b.setAttribute("aria-expanded",it.classList.contains("open"));};
@@ -1138,10 +1163,10 @@ function pct(r){const p=(r-1)*100;return (p>=0?"+":"")+p.toFixed(2)+"%";}
 (function(){
   const today=new Date(2026,9,13);
   const M=[{d:new Date(2026,9,13),n:"1 billion steps",s:"Dolbeau 2011: 413,930,770 digits. Comparison check.",k:"orange"},
-           {d:new Date(2026,9,21),n:"1 billion digits",s:"Dolbeau 2015. Past here is new territory.",k:"orange"},
-           {d:new Date(2026,10,15),n:"switch to v8b or v9",s:"deadline, with margin",k:"blue"},
-           {d:new Date(2026,10,21),n:"v8 limit: 2.147e9 digits",s:"32-bit digit count",k:"crit"},
-           {d:new Date(2027,2,15),n:"v8b and v9 limit: ~4.29e9 digits",s:"32-bit pair index",k:"blue"}];
+           {d:new Date(2026,9,18),n:"first weekly cross-check",s:"Sundays 3 a.m. Pacific",k:"blue"},
+           {d:new Date(2026,9,19),n:"1 billion digits",s:"Dolbeau 2015. Past here is new territory.",k:"orange"},
+           {d:new Date(2026,10,8),n:"2 billion digits",s:"past v8's 2.147e9 limit; v9 counts in 64 bits",k:"blue"},
+           {d:new Date(2027,1,14),n:"v9 limit: ~4.29e9 digits",s:"32-bit pair index",k:"crit"}];
   const el=$("#ch5");function draw(){el.innerHTML="";const W=el.clientWidth||640;const narrow=W<560;const Ht=narrow?270:160;const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Milestone timeline"},el);
     const t0=new Date(2026,9,1).getTime(),t1=new Date(2027,3,1).getTime();
     if(!narrow){const sx=d=>16+(W-32)*(d.getTime()-t0)/(t1-t0);const y=118;S("line",{x1:16,x2:W-16,y1:y,y2:y,class:"ax"},svg);
@@ -1151,11 +1176,11 @@ function pct(r){const p=(r-1)*100;return (p>=0?"+":"")+p.toFixed(2)+"%";}
         S("line",{x1:x,x2:x,y1:ly+4,y2:y-7,stroke:"var(--axis)"},svg);
         S("circle",{cx:x,cy:y,r:6,fill,stroke:"var(--surface)","stroke-width":2},svg);
         const t=S("text",{x:end?x-6:x+6,y:ly+4,"text-anchor":end?"end":"start","font-size":12,fill:"var(--ink)"},svg);
-        const a=S("tspan",{"font-weight":600},t);a.textContent=(end?"~Mar 2027":m.d.toLocaleString("en-US",{month:"short",day:"numeric"}))+" · "+m.n;const b=S("tspan",{fill:"var(--muted)"},t);b.textContent="  "+m.s;
-        const hit=S("circle",{cx:x,cy:y,r:14,fill:"transparent"},svg);bindTip(hit,`<b>${m.n}</b><br>${end?"about March 2027":m.d.toDateString()}<br><span class="t2">${m.s}</span>`);});
+        const a=S("tspan",{"font-weight":600},t);a.textContent=(end?"~Feb 2027":m.d.toLocaleString("en-US",{month:"short",day:"numeric"}))+" · "+m.n;const b=S("tspan",{fill:"var(--muted)"},t);b.textContent="  "+m.s;
+        const hit=S("circle",{cx:x,cy:y,r:14,fill:"transparent"},svg);bindTip(hit,`<b>${m.n}</b><br>${end?"about mid-February 2027":m.d.toDateString()}<br><span class="t2">${m.s}</span>`);});
     } else {
       M.forEach((m,i)=>{const y=24+i*50;const fill=m.k==="orange"?"var(--orange)":m.k==="crit"?"var(--critical)":"var(--blue)";if(i<M.length-1)S("line",{x1:14,x2:14,y1:y,y2:y+50,class:"ax"},svg);S("circle",{cx:14,cy:y,r:6,fill,stroke:"var(--surface)","stroke-width":2},svg);
-        const t=S("text",{x:30,y:y+4,"font-size":13,fill:"var(--ink)","font-weight":600},svg);t.textContent=(i===4?"~Mar 2027":m.d.toLocaleString("en-US",{month:"short",day:"numeric"}))+" · "+m.n;
+        const t=S("text",{x:30,y:y+4,"font-size":13,fill:"var(--ink)","font-weight":600},svg);t.textContent=(i===4?"~Feb 2027":m.d.toLocaleString("en-US",{month:"short",day:"numeric"}))+" · "+m.n;
         const s=S("text",{x:30,y:y+21,"font-size":12,fill:"var(--ink-2)"},svg);s.textContent=m.s;});
     }}
   draw();window.addEventListener("resize",draw);
@@ -1291,6 +1316,7 @@ function drawEncoding(){const s=+E('easyEncValue').value;set('easyEncOut',s);con
 E('easyEncValue').oninput=drawEncoding;document.querySelectorAll('.easyEncPreset').forEach(x=>x.onclick=()=>{E('easyEncValue').value=x.dataset.s;drawEncoding();});E('easyEnc0').onclick=()=>{encCarry=0;drawEncoding();};E('easyEnc1').onclick=()=>{encCarry=1;drawEncoding();};drawEncoding();
 // 8. Source measurements, same-size before-and-after pairs.
 const bm={
+ v9:{name:'v9 · warp windows (100k-step sustained)',old:'v8, tile 1000',nw:'v9, 512 threads, tile 1900',a:251.121,b:198.839,info:'Measured 100,000-step sustained test on the same checkpoint copy at ~405M digits; 0 replays, identical output. In production since October 13, 2026. The A/B median was +24.68%.'},
  v8:{name:'v8 · register windows (100k-step sustained)',old:'v6r3, tile 860',nw:'v8, tile 1000',a:210.567,b:170.519,info:'Measured 100,000-step sustained test; 0 replays. The original separately calls out an A/B median, so do not interchange them.'},
  v4:{name:'v4 · bit-planes',old:'Original kernel',nw:'v4',a:38.5,b:4.1,info:'20,000 GPU steps at 2.05 million digits; this comparison excludes process startup.'},
  v6r3:{name:'v6r3 · combined tile and code changes',old:'v6r2, tile 736',nw:'v6r3, tile 860',a:232.352,b:193.839,info:'100,000-step sustained test. Tile change and code changes were combined.'},
