@@ -1,6 +1,6 @@
 # Complete written-report index
 
-Every original written research report, proof note and manuscript source is retained below. Historical status reports are chronological records; the latest consolidated status and the release claim matrix control interpretation. Audit transcripts are internal, not external peer review.
+Every original written research report, proof note and manuscript source retained in the initial publication and correlation update is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.
 
 - [AstraResearchUpdate.txt](research/AstraResearchUpdate.txt)
 - [CarryWordsResearch.tex](research/CarryWordsResearch.tex)
@@ -75,6 +75,13 @@ Every original written research report, proof note and manuscript source is reta
 - [main_existence_attempt/context2_cegis/README.txt](research/main_existence_attempt/context2_cegis/README.txt)
 - [main_existence_attempt/context2_flow/encoding_proof.txt](research/main_existence_attempt/context2_flow/encoding_proof.txt)
 - [main_existence_attempt/context2_flow/run_notes.txt](research/main_existence_attempt/context2_flow/run_notes.txt)
+- [main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md)
+- [main_existence_attempt/correlation_pass/constructive/STATUS.md](research/main_existence_attempt/correlation_pass/constructive/STATUS.md)
+- [main_existence_attempt/correlation_pass/constructive/VARIABLE_OVERLAP_AND_GATE.md](research/main_existence_attempt/correlation_pass/constructive/VARIABLE_OVERLAP_AND_GATE.md)
+- [main_existence_attempt/correlation_pass/free_clock/STATUS.md](research/main_existence_attempt/correlation_pass/free_clock/STATUS.md)
+- [main_existence_attempt/correlation_pass/language/METHOD_AND_PROOF.md](research/main_existence_attempt/correlation_pass/language/METHOD_AND_PROOF.md)
+- [main_existence_attempt/correlation_pass/language/STATUS.md](research/main_existence_attempt/correlation_pass/language/STATUS.md)
+- [main_existence_attempt/correlation_pass/lean/STATUS.md](research/main_existence_attempt/correlation_pass/lean/STATUS.md)
 - [main_existence_attempt/decimal_counting_return_notes.txt](research/main_existence_attempt/decimal_counting_return_notes.txt)
 - [main_existence_attempt/defect_family/defect_family_report.md](research/main_existence_attempt/defect_family/defect_family_report.md)
 - [main_existence_attempt/finite_field/scope.txt](research/main_existence_attempt/finite_field/scope.txt)

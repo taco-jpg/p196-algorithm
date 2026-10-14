@@ -70,7 +70,7 @@ The publication omits large generated tables rather than silently truncating the
 
 | Omitted data family | Regeneration and verification entry point |
 |---|---|
-| D3/D4 observation and elimination tables, image-refined large kernel | [Language STATUS.md](research/main_existence_attempt/return_pass/language/STATUS.md): run `residual_kernel.py`, the listed `compact_kernel.py` continuation, then `check_eliminations.py` with the documented flags. The original D4 cap result remains UNKNOWN; the separate extended run is the completed exclusion. |
+| Large D3/D4 elimination tables and image-refined large kernels | The depth-three and depth-four observation tables themselves are retained; `observation_depth4.json` was added for the correlation certificate replay. For omitted elimination/kernel data, [Language STATUS.md](research/main_existence_attempt/return_pass/language/STATUS.md) gives `residual_kernel.py`, the listed `compact_kernel.py` continuation, then `check_eliminations.py` with the documented flags. The original D4 cap result remains UNKNOWN; the separate extended run is the completed exclusion. |
 | Large reverse-525, all-bulk and forward-join graphs | [Reverse-525 status](research/main_existence_attempt/boundary_resume/reverse525/STATUS_AND_POWER_LIFT_PROOF.txt) and [forward-join proof](research/main_existence_attempt/boundary_resume/forward_join/STATUS_AND_PROOF.md): retained search programs regenerate the exact width-limited graphs before the audit programs read them. |
 | Incomplete one-tile, direct-flow, context and monoid states | [Resumed status](research/main_existence_attempt/RESUMED_STATUS.txt) and [conditional-score report](research/main_existence_attempt/conditional_score/README.md): rerun the specified bounded searches. Timeouts/caps are UNKNOWN and need not recur at the same wall-clock instant on different machines. |
 | Constructive bulk mixtures, front-language dumps and symbolic defect runs | [Constructive report](research/main_existence_attempt/constructive/constructive_report.md), [front status](research/main_existence_attempt/smart_pass/constructive/STATUS.md), [defect report](research/main_existence_attempt/defect_family/defect_family_report.md). Claims apply only to the reported templates/ranges. |
@@ -79,3 +79,26 @@ The publication omits large generated tables rather than silently truncating the
 | Driver and hybrid-writer structural probes | [CERTIFICATION_REVIEW.md](research/main_existence_attempt/ancestry_direct_pass/repository_review/certification/CERTIFICATION_REVIEW.md) gives standalone build/run commands against the pinned unmodified headers. These are CPU source/probe findings; no GPU execution is implied. |
 
 `OMITTED_OUTPUT_SUMMARIES.json` records only structural metadata extracted from omitted JSON outputs: scalar metadata and array/object sizes. It is not a substitute certificate and is not proof of any mathematical claim.
+
+## Correlation-pass source and certificate replays
+
+The [current aggregate](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [root review record](research/main_existence_attempt/correlation_pass/ROOT_REVIEW.json) connect the new reports with their audited evidence. From `proofs/research/`:
+
+```sh
+python3 -B main_existence_attempt/correlation_pass/language/check_correlated_collisions.py --certificate correlated_cegar_pairs5_result.json
+python3 -B main_existence_attempt/correlation_pass/language/check_correlated_collisions.py
+python3 -B main_existence_attempt/correlation_pass/language/focused_checks.py
+python3 -B main_existence_attempt/correlation_pass/language/check_antichain.py
+python3 -B main_existence_attempt/correlation_pass/constructive/seam_overlap.py
+python3 -B main_existence_attempt/correlation_pass/constructive/variable_overlap.py
+python3 -B main_existence_attempt/correlation_pass/constructive/delayed_overlap_gate.py
+python3 -B main_existence_attempt/correlation_pass/free_clock/check_prefix_extension.py
+python3 -B main_existence_attempt/correlation_pass/free_clock/check_arithmetic_controls.py
+python3 main_existence_attempt/correlation_pass/lean/check.py "$lean_executable"
+```
+
+The antichain checker reads the retained `antichain_depth0.json.gz` directly; the release manifest hashes its compressed bytes. The collision and focused checkers read the unchanged `return_pass/language/observation_depth4.json`, now retained because it is an explicit certificate dependency. The earlier safe-two NFA, terminal-witness corpus, observer-zero table and source modules remain at their original paths. No discovery run is needed to reconstruct these inputs before the listed checks.
+
+The Lean checker rebuilds the unchanged standalone dependency plus all four new mathematical modules and audits all 63 new theorem declarations. The exact source hashes and root's separate recompilation records are retained. This is a supporting-theorem audit, not a proof of the universal delay bound or of decimal Lychrel existence.
+
+The generated `free_clock/*_depth*.json` cyclic graphs are omitted. Their initial, forward-bisimulation and bidirectional runs are reproducible with the exact commands in [free_clock/STATUS.md](research/main_existence_attempt/correlation_pass/free_clock/STATUS.md); all small candidate, extension, arithmetic and cap summaries remain present. A completed depth is not an all-depth exclusion, and the final depth-16 graph cap remains UNKNOWN.
