@@ -1,6 +1,6 @@
 # Complete written-report index
 
-Every original written research report, proof note and manuscript source retained in the initial publication and correlation update is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.
+Every original written research report, proof note and manuscript source retained in the initial publication, correlation update and early renewal tail handoff is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.
 
 - [AstraResearchUpdate.txt](research/AstraResearchUpdate.txt)
 - [CarryWordsResearch.tex](research/CarryWordsResearch.tex)
@@ -138,3 +138,5 @@ Every original written research report, proof note and manuscript source retaine
 - [resume_phase24_notes.txt](research/resume_phase24_notes.txt)
 - [resume_renewal_carry_history.txt](research/resume_renewal_carry_history.txt)
 - [resume_renewal_normalization_notes.txt](research/resume_renewal_normalization_notes.txt)
+
+- [main_existence_attempt/renewal_pass/tails/STATUS.md](research/main_existence_attempt/renewal_pass/tails/STATUS.md)

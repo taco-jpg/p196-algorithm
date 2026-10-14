@@ -102,3 +102,15 @@ The antichain checker reads the retained `antichain_depth0.json.gz` directly; th
 The Lean checker rebuilds the unchanged standalone dependency plus all four new mathematical modules and audits all 63 new theorem declarations. The exact source hashes and root's separate recompilation records are retained. This is a supporting-theorem audit, not a proof of the universal delay bound or of decimal Lychrel existence.
 
 The generated `free_clock/*_depth*.json` cyclic graphs are omitted. Their initial, forward-bisimulation and bidirectional runs are reproducible with the exact commands in [free_clock/STATUS.md](research/main_existence_attempt/correlation_pass/free_clock/STATUS.md); all small candidate, extension, arithmetic and cap summaries remain present. A completed depth is not an all-depth exclusion, and the final depth-16 graph cap remains UNKNOWN.
+
+## Early renewal tail certificates
+
+The [tail report](research/main_existence_attempt/renewal_pass/tails/STATUS.md) supplies written exact first-hit proofs for five specified core branches. From `proofs/research/main_existence_attempt/renewal_pass/tails/`, run:
+
+```sh
+python3 -B check_symbolic_tails.py
+```
+
+This independent standard-library checker reads the complete retained symbolic certificate, verifies 26 all-parameter polynomial transitions, checks the explicit finite lower boundaries, and runs 208 ordinary-integer transition controls. The parameter conclusion comes from symbolic identities and run-length positivity, not from those sample controls. The staged publication replay reproduced `symbolic_tail_audit.json` byte for byte.
+
+All ten files in this early batch are retained, including raw census results, failed affine-domain certificate attempts, generator configurations and logs. Optional regeneration uses `finite_tail_census.py` and `symbolic_tail_certificates.py`; the latter imports the already retained `../../smart_pass/collision/orthant_runs.py`. The 216-case census horizon is 512, and unresolved outcomes remain UNKNOWN. No Lean installation is needed for this batch; it adds no Lean theorem.

@@ -2,6 +2,7 @@
 
 Every file in the research releases and coordination checkpoints is listed below, including the preserved concurrent contribution. The binary antichain certificate is included. Source-snapshot coverage and omitted artifacts are recorded separately in INVENTORY.tsv.
 
+
 - [FILES.md](FILES.md)
 - [FINDINGS.md](FINDINGS.md)
 - [INVENTORY.json](INVENTORY.json)
@@ -16,6 +17,7 @@ Every file in the research releases and coordination checkpoints is listed below
 - [VALIDATION.json](VALIDATION.json)
 - [contributions/COORDINATION.md](contributions/COORDINATION.md)
 - [coordination/2026-10-14-renewal-start.md](coordination/2026-10-14-renewal-start.md)
+- [coordination/2026-10-14-tail-termination.md](coordination/2026-10-14-tail-termination.md)
 - [release_stats.json](release_stats.json)
 - [research/AstraResearchUpdate.txt](research/AstraResearchUpdate.txt)
 - [research/CarryWordsResearch.tex](research/CarryWordsResearch.tex)
@@ -819,6 +821,16 @@ Every file in the research releases and coordination checkpoints is listed below
 - [research/main_existence_attempt/prefix_any_clock/results.jsonl](research/main_existence_attempt/prefix_any_clock/results.jsonl)
 - [research/main_existence_attempt/prefix_any_clock/search.cpp](research/main_existence_attempt/prefix_any_clock/search.cpp)
 - [research/main_existence_attempt/prefix_any_clock/validation.json](research/main_existence_attempt/prefix_any_clock/validation.json)
+- [research/main_existence_attempt/renewal_pass/tails/STATUS.md](research/main_existence_attempt/renewal_pass/tails/STATUS.md)
+- [research/main_existence_attempt/renewal_pass/tails/check_symbolic_tails.py](research/main_existence_attempt/renewal_pass/tails/check_symbolic_tails.py)
+- [research/main_existence_attempt/renewal_pass/tails/finite_tail_census.json](research/main_existence_attempt/renewal_pass/tails/finite_tail_census.json)
+- [research/main_existence_attempt/renewal_pass/tails/finite_tail_census.log](research/main_existence_attempt/renewal_pass/tails/finite_tail_census.log)
+- [research/main_existence_attempt/renewal_pass/tails/finite_tail_census.py](research/main_existence_attempt/renewal_pass/tails/finite_tail_census.py)
+- [research/main_existence_attempt/renewal_pass/tails/symbolic_tail_audit.json](research/main_existence_attempt/renewal_pass/tails/symbolic_tail_audit.json)
+- [research/main_existence_attempt/renewal_pass/tails/symbolic_tail_audit.log](research/main_existence_attempt/renewal_pass/tails/symbolic_tail_audit.log)
+- [research/main_existence_attempt/renewal_pass/tails/symbolic_tail_certificates.json](research/main_existence_attempt/renewal_pass/tails/symbolic_tail_certificates.json)
+- [research/main_existence_attempt/renewal_pass/tails/symbolic_tail_certificates.log](research/main_existence_attempt/renewal_pass/tails/symbolic_tail_certificates.log)
+- [research/main_existence_attempt/renewal_pass/tails/symbolic_tail_certificates.py](research/main_existence_attempt/renewal_pass/tails/symbolic_tail_certificates.py)
 - [research/main_existence_attempt/return_pass/RETURN_PASS_STATUS.txt](research/main_existence_attempt/return_pass/RETURN_PASS_STATUS.txt)
 - [research/main_existence_attempt/return_pass/checkpoint_summary.json](research/main_existence_attempt/return_pass/checkpoint_summary.json)
 - [research/main_existence_attempt/return_pass/collision/STATUS.md](research/main_existence_attempt/return_pass/collision/STATUS.md)
