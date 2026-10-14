@@ -105,3 +105,12 @@ reproduction commands, source identities and retained limitations.
 | Complete return branching | All 128 controls give exactly 16 returns and three traces; the graph permits arbitrary branch changes. | [Independent control classification](contributions/2026-10-14-broader-return/TWO_COLUMN_CONTROL_AUDIT.md) |
 | Uniform finite return bound | Every admissible width L >= 2 satisfies R <= 228 + max(0,ceil((14-L)/3)) <= 232. No safety assumption, conservative bound, no implication from exit to palindrome. | [All-width proof](contributions/2026-10-14-broader-return/BROADER_RETURN_BOUND.md) |
 | Complete hierarchy and transient audit | All 127,824 local controls, every raw/recurrent graph through width fourteen, and 60,563 weighted condensation components independently checked. Uses published formal local necessity; the complete hierarchy is not yet a Lean theorem. | [Root review and retained hashes](contributions/2026-10-14-broader-return-root-review.json), [result handoff](coordination/2026-10-14-broader-return-results.md) |
+
+## Complete scalar clock obstruction
+
+| Finding | Exact scope | Evidence |
+|---|---|---|
+| Scalar sequence (4,8,16,7,15,6,13) excluded forever | Every admissible width L >= 1, unrestricted inner histories: R <= min(236,232+max(0,ceil((14-L)/3))). Requires every phase, not merely outer-4 endpoints. | [Full theorem](contributions/2026-10-14-scalar-clock/SCALAR_CLOCK_BOUND.md) |
+| Independent complete hierarchy and ranks | All 128,644 local controls and 60,952 weighted components checked; entire raw/recurrent data retained. | [Independent scope](contributions/2026-10-14-scalar-clock/INDEPENDENT_SCALAR_AUDIT.md) |
+| Generic weighted path formalization | Fifteen Lean declarations, with ordinary logical axioms. Does not instantiate numerical scalar tables or the whole hierarchy. | [Formal proof](contributions/2026-10-14-scc-bound-formal/README.md) |
+| Other capped probes and exact recovery | primitive14 and seven_1 remain UNKNOWN. All completed graphs retained; two truncated records preserved and canonical replacements match original reported hashes. | [Root review](contributions/2026-10-14-scalar-clock-root-review.json), [handoff](coordination/2026-10-14-scalar-clock-results.md) |

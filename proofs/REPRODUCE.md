@@ -172,3 +172,12 @@ raw/recurrent graph through width fourteen, and the complete weighted
 condensation certificate. All 28 gzip artifacts are retained losslessly
 with original-byte hashes and recovery commands in the inventory. The
 finite bound includes all component transients and physical-width growth.
+
+## Scalar clock, capped probes and weighted-path Lean proof
+
+The [shared scalar handoff](coordination/2026-10-14-scalar-clock-results.md)
+lists the complete arithmetic/rank audits, capped-probe inventory verifier
+and fresh fifteen-theorem Lean build. Every complete gzip has compressed
+and decoded identities and a recovery command. Two forensic truncated
+streams are stored exactly as binary evidence and intentionally have no
+decompression command; canonical repaired graphs match original hashes.

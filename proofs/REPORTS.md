@@ -193,3 +193,11 @@ Every original written research report, proof note and manuscript source retaine
 - [TWO_COLUMN_CONTROL_AUDIT.md](contributions/2026-10-14-broader-return/TWO_COLUMN_CONTROL_AUDIT.md)
 - [BROADER_RETURN_INDEX.md](contributions/BROADER_RETURN_INDEX.md)
 - [2026-10-14-broader-return-results.md](coordination/2026-10-14-broader-return-results.md)
+
+## Scalar clock reports
+
+- [SCALAR_CLOCK_BOUND.md](contributions/2026-10-14-scalar-clock/SCALAR_CLOCK_BOUND.md)
+- [INDEPENDENT_SCALAR_AUDIT.md](contributions/2026-10-14-scalar-clock/INDEPENDENT_SCALAR_AUDIT.md)
+- [README.md](contributions/2026-10-14-scc-bound-formal/README.md)
+- [SCALAR_CLOCK_INDEX.md](contributions/SCALAR_CLOCK_INDEX.md)
+- [2026-10-14-scalar-clock-results.md](coordination/2026-10-14-scalar-clock-results.md)
