@@ -1,6 +1,6 @@
 # Complete written-report index
 
-Every original written research report, proof note and manuscript source retained in the initial publication, correlation update and early renewal tail handoff is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.
+Every original written research report, proof note and manuscript source retained in the initial publication, correlation update and completed early renewal handoffs is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.
 
 - [AstraResearchUpdate.txt](research/AstraResearchUpdate.txt)
 - [CarryWordsResearch.tex](research/CarryWordsResearch.tex)
@@ -141,6 +141,10 @@ Every original written research report, proof note and manuscript source retaine
 
 - [main_existence_attempt/renewal_pass/tails/STATUS.md](research/main_existence_attempt/renewal_pass/tails/STATUS.md)
 
+- [main_existence_attempt/renewal_pass/lean/DEVELOPMENT_NOTES.md](research/main_existence_attempt/renewal_pass/lean/DEVELOPMENT_NOTES.md)
+
+- [main_existence_attempt/renewal_pass/lean/STATUS.md](research/main_existence_attempt/renewal_pass/lean/STATUS.md)
+
 ## Reviewed concurrent contribution reports
 
 - [Contribution index](contributions/README.md)
@@ -149,3 +153,5 @@ Every original written research report, proof note and manuscript source retaine
 - [Finite-horizon density proof](contributions/2026-10-14-finite-horizon-density/README.md)
 - [Exact block dynamics and separation exhaustion](contributions/2026-10-14-overlap-gate/SEPARATION_EXHAUSTION.md)
 - [Checked handoff](coordination/2026-10-14-checked-contributions.md)
+
+- [Concurrent active zero-gap assignment checkpoint](coordination/2026-10-14-collision-active.md)

@@ -4,7 +4,7 @@ The objective is to publish **all research findings**, including failed construc
 
 The release preserves all original `.lean`, `.py`, `.cpp`, `.md`, `.tex`, and written report files outside disposable build/test scratch, without changing their contents. Every local Lean source dependency is present. All substantive compact result records are retained, including negative outcomes and UNKNOWN. Selected larger files are preserved when they enable important direct replays: the source safe-ancestry NFA and all terminal witnesses, boundary rank certificates and small graph chains, arbitrary-group certificates, exact rational/graph certificates, and the conditional-parity CNF/LRAT pair. The correlation update additionally retains the independently checked binary antichain snapshot and the exact depth-four observer table needed by its collision checkers.
 
-The following generated categories are omitted deliberately:
+The following categories describe the historical initial and correlation releases. The expanded [publication policy](PUBLICATION_POLICY.md) controls new renewal work: all substantive raw outputs, failures, UNKNOWN outcomes, logs and development attempts are retained, with lossless compression if needed. Only reproducible infrastructure, compiled products and copied dependency builds are excluded from those new snapshots.
 
 | Category | Reason and retained replacement |
 |---|---|
@@ -25,3 +25,5 @@ The source tree is historical research evidence. Earlier statements about public
 The repository review is pinned to upstream commit `8219522a02d46fbb72a6ee38819e5723b8c8fc9f`. Upstream source archives already present in that repository are referenced, not duplicated under `proofs/`. No production checkpoint or unrelated repository file is altered by this release.
 
 Exact counts and byte totals appear in [release_stats.json](release_stats.json); the final list of published paths is [FILES.md](FILES.md). The release does not claim a main existence proof, a verified decimal Lychrel witness, novelty, or external peer review.
+
+The early renewal tail snapshot retains all ten source, report, certificate, result and log files without omissions. The early formal gate snapshot retains all 19 substantive files, including both audits, all five development-attempt logs and the available final-attempt source snapshot. Its 19 omitted `fresh_build/` and `root_build/` files are copied source dependencies and compiled/transient build products; each has its own original size, hash and reason in the inventory. Original source dependencies remain present elsewhere in the research tree, and the portable full rebuild recreates those directories. Unfinished `lean/prefix`, language and constructive work, and the later finite-join follow-up are outside these early snapshots and await their own completed publication batch.

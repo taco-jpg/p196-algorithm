@@ -1,6 +1,10 @@
 # Complete published file list
 
-Every published file, including historical research, concurrent coordination and reviewed contributions, is listed below. Source-snapshot coverage remains in INVENTORY.tsv.
+Every file in the research releases and coordination checkpoints is listed below, including the preserved concurrent contribution. The binary antichain certificate is included. Source-snapshot coverage and omitted artifacts are recorded separately in INVENTORY.tsv.
+
+
+
+
 
 - [FILES.md](FILES.md)
 - [FINDINGS.md](FINDINGS.md)
@@ -42,6 +46,8 @@ Every published file, including historical research, concurrent coordination and
 - [contributions/COORDINATION.md](contributions/COORDINATION.md)
 - [contributions/README.md](contributions/README.md)
 - [coordination/2026-10-14-checked-contributions.md](coordination/2026-10-14-checked-contributions.md)
+- [coordination/2026-10-14-collision-active.md](coordination/2026-10-14-collision-active.md)
+- [coordination/2026-10-14-formal-gate.md](coordination/2026-10-14-formal-gate.md)
 - [coordination/2026-10-14-renewal-start.md](coordination/2026-10-14-renewal-start.md)
 - [coordination/2026-10-14-tail-termination.md](coordination/2026-10-14-tail-termination.md)
 - [release_stats.json](release_stats.json)
@@ -847,6 +853,25 @@ Every published file, including historical research, concurrent coordination and
 - [research/main_existence_attempt/prefix_any_clock/results.jsonl](research/main_existence_attempt/prefix_any_clock/results.jsonl)
 - [research/main_existence_attempt/prefix_any_clock/search.cpp](research/main_existence_attempt/prefix_any_clock/search.cpp)
 - [research/main_existence_attempt/prefix_any_clock/validation.json](research/main_existence_attempt/prefix_any_clock/validation.json)
+- [research/main_existence_attempt/renewal_pass/lean/AllAxioms.lean](research/main_existence_attempt/renewal_pass/lean/AllAxioms.lean)
+- [research/main_existence_attempt/renewal_pass/lean/DEVELOPMENT_NOTES.md](research/main_existence_attempt/renewal_pass/lean/DEVELOPMENT_NOTES.md)
+- [research/main_existence_attempt/renewal_pass/lean/DelayedOverlapGate.lean](research/main_existence_attempt/renewal_pass/lean/DelayedOverlapGate.lean)
+- [research/main_existence_attempt/renewal_pass/lean/RootAxioms.lean](research/main_existence_attempt/renewal_pass/lean/RootAxioms.lean)
+- [research/main_existence_attempt/renewal_pass/lean/STATUS.md](research/main_existence_attempt/renewal_pass/lean/STATUS.md)
+- [research/main_existence_attempt/renewal_pass/lean/check.py](research/main_existence_attempt/renewal_pass/lean/check.py)
+- [research/main_existence_attempt/renewal_pass/lean/compile.log](research/main_existence_attempt/renewal_pass/lean/compile.log)
+- [research/main_existence_attempt/renewal_pass/lean/dev_check.py](research/main_existence_attempt/renewal_pass/lean/dev_check.py)
+- [research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_001.log](research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_001.log)
+- [research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_002.log](research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_002.log)
+- [research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_003.log](research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_003.log)
+- [research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_004.log](research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_004.log)
+- [research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_005.lean](research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_005.lean)
+- [research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_005.log](research/main_existence_attempt/renewal_pass/lean/development_checks/attempt_005.log)
+- [research/main_existence_attempt/renewal_pass/lean/root_compile.log](research/main_existence_attempt/renewal_pass/lean/root_compile.log)
+- [research/main_existence_attempt/renewal_pass/lean/root_recheck.log](research/main_existence_attempt/renewal_pass/lean/root_recheck.log)
+- [research/main_existence_attempt/renewal_pass/lean/root_recheck.py](research/main_existence_attempt/renewal_pass/lean/root_recheck.py)
+- [research/main_existence_attempt/renewal_pass/lean/root_verification.json](research/main_existence_attempt/renewal_pass/lean/root_verification.json)
+- [research/main_existence_attempt/renewal_pass/lean/verification.json](research/main_existence_attempt/renewal_pass/lean/verification.json)
 - [research/main_existence_attempt/renewal_pass/tails/STATUS.md](research/main_existence_attempt/renewal_pass/tails/STATUS.md)
 - [research/main_existence_attempt/renewal_pass/tails/check_symbolic_tails.py](research/main_existence_attempt/renewal_pass/tails/check_symbolic_tails.py)
 - [research/main_existence_attempt/renewal_pass/tails/finite_tail_census.json](research/main_existence_attempt/renewal_pass/tails/finite_tail_census.json)

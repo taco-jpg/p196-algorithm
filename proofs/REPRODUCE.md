@@ -114,3 +114,18 @@ python3 -B check_symbolic_tails.py
 This independent standard-library checker reads the complete retained symbolic certificate, verifies 26 all-parameter polynomial transitions, checks the explicit finite lower boundaries, and runs 208 ordinary-integer transition controls. The parameter conclusion comes from symbolic identities and run-length positivity, not from those sample controls. The staged publication replay reproduced `symbolic_tail_audit.json` byte for byte.
 
 All ten files in this early batch are retained, including raw census results, failed affine-domain certificate attempts, generator configurations and logs. Optional regeneration uses `finite_tail_census.py` and `symbolic_tail_certificates.py`; the latter imports the already retained `../../smart_pass/collision/orthant_runs.py`. The 216-case census horizon is 512, and unresolved outcomes remain UNKNOWN. No Lean installation is needed for this batch; it adds no Lean theorem.
+
+## Early renewal formal gate checkpoint
+
+Use Lean 4.19.0. From the repository root, replace the executable path below:
+
+```sh
+python3 proofs/research/main_existence_attempt/renewal_pass/lean/check.py /absolute/path/to/lean
+python3 proofs/research/main_existence_attempt/renewal_pass/lean/root_recheck.py /absolute/path/to/lean
+```
+
+The full checker builds the six original source modules and generated audit module, then audits all 49 new gate theorem declarations transitively. It verifies hashes before and after compilation, excludes proof placeholders/custom axioms/native_decide in the new source, and permits only the recorded standard logical axioms. Its five unchanged dependency sources are already published under `continuation/` and `main_existence_attempt/correlation_pass/lean/`. The second command reuses the first command's source-hash-checked dependency build, independently recompiles the gate, and repeats the complete theorem audit. Both reviewed records report PASS; their exact trust boundaries are retained.
+
+These commands regenerate `fresh_build/`, `root_build/`, audit sources and audit logs. Use a working copy if preserving the originally published log bytes during replay. The original `dev_check.py` retains its historical absolute compiler path and prior development-build reference; it is provenance, while the two commands above are the portable release checks. All five development attempt logs and the available final source snapshot are retained. Only duplicate source copies and compiled/transient build products are omitted, individually inventoried. The separate unfinished prefix branch is outside this gate checkpoint.
+
+The [formal handoff](coordination/2026-10-14-formal-gate.md) states the exact domain and arithmetic conclusions. `return_not_in_domain` excludes immediate reuse of this source's original six-core Domain, not every broader gate. No recurrence, p>=5 overflow formula, later-hit classification, decimal Lychrel existence or assertion for 196 is proved by this formal gate.
