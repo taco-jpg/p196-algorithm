@@ -1,6 +1,6 @@
 # Complete published file list
 
-Every file in the initial release and correlation update is listed below. The binary antichain certificate is included. Source-snapshot coverage and omitted artifacts are recorded separately in INVENTORY.tsv.
+Every file in the research releases and coordination checkpoints is listed below, including the preserved concurrent contribution. The binary antichain certificate is included. Source-snapshot coverage and omitted artifacts are recorded separately in INVENTORY.tsv.
 
 - [FILES.md](FILES.md)
 - [FINDINGS.md](FINDINGS.md)
@@ -8,11 +8,14 @@ Every file in the initial release and correlation update is listed below. The bi
 - [INVENTORY.tsv](INVENTORY.tsv)
 - [MANIFEST.sha256](MANIFEST.sha256)
 - [OMITTED_OUTPUT_SUMMARIES.json](OMITTED_OUTPUT_SUMMARIES.json)
+- [PUBLICATION_POLICY.md](PUBLICATION_POLICY.md)
 - [PUBLICATION_SCOPE.md](PUBLICATION_SCOPE.md)
 - [README.md](README.md)
 - [REPORTS.md](REPORTS.md)
 - [REPRODUCE.md](REPRODUCE.md)
 - [VALIDATION.json](VALIDATION.json)
+- [contributions/COORDINATION.md](contributions/COORDINATION.md)
+- [coordination/2026-10-14-renewal-start.md](coordination/2026-10-14-renewal-start.md)
 - [release_stats.json](release_stats.json)
 - [research/AstraResearchUpdate.txt](research/AstraResearchUpdate.txt)
 - [research/CarryWordsResearch.tex](research/CarryWordsResearch.tex)
