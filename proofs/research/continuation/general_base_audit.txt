@@ -1,0 +1,207 @@
+Independent audit: the general-base zero-gap and running-mass claims
+==================================================================
+
+Verdict
+-------
+All proposed mathematical claims are valid for every integer base b >= 2,
+with the timing and conventions stated below. The decimal finite radical
+bound and liminf constant 3/4 are also correct. These are paper arguments;
+this audit does not assert a new general-base or sharp-constant Lean proof.
+The existing decimal zero-gap preservation theorem remains separately
+Lean checked.
+
+1. Set-up and canonical endpoints
+--------------------------------
+Let d_0,...,d_(L-1) be the canonical base-b digits of a positive integer,
+indexed from the units end. Thus L >= 1, 0 <= d_i <= b-1, and
+ d_(L-1) > 0. Define q_i = d_i + d_(L-1-i). Then q is symmetric,
+0 <= q_i <= 2b-2, q_0 = q_(L-1) > 0, and its mass is
+ M = sum_i q_i = 2 S_b(n).
+The ordinary carries a_i lie in {0,1}, since a_0=0 and
+ q_i + a_i <= 2b-1.
+Write
+ q_i + a_i = r_i + b a_(i+1),
+ beta_i = a_(L-i), and u_i = r_(L-1-i).
+Symmetry gives the exact reflected equation
+ q_i + beta_(i+1) = u_i + b beta_i.
+
+The next canonical width is L+h, where h=a_L is either zero or one.
+If h=0, the high output digit is q_0+a_(L-1)>0, so there is no width
+loss. If h=1, the added high digit is one. The exact next pair sums are
+ q'_i = r_i+u_i                             (h=0),
+ q'_0 = r_0+1,
+ q'_i = r_i+u_(i-1)  for 1 <= i < L,
+ q'_L = 1+r_0                              (h=1).
+The new pair-sum endpoints are positive in either case. A zero interval
+in the new finite word therefore cannot touch either endpoint.
+
+Trailing zero digits cause no exception: reversal evaluated at the
+original width gives the same integer, since any added leading zeros
+contribute zero. Positivity of q_0 comes from the original leading digit,
+not from its units digit.
+
+2. Simultaneous-zero interval lemma
+----------------------------------
+At a position with r_i=u_i=0, the carry equations imply
+ b(a_(i+1)-beta_i) = a_i-beta_(i+1).
+The right side is one of -1,0,1. Since b>=2, both sides must vanish:
+ a_(i+1)=beta_i and a_i=beta_(i+1).
+At two adjacent such positions this also gives a_(i+2)=a_i.
+The two expressions
+ q_i=b a_(i+1)-a_i,
+ q_(i+1)=b a_i-a_(i+1)
+are nonnegative. Unequal binary a_i,a_(i+1) would make one of them -1.
+Consequently the adjacent coefficients agree and are either 0 or b-1.
+Chaining adjacent pairs proves that any simultaneous-zero interval of
+length at least two is entirely zero or entirely b-1.
+
+This includes base two. The length-two threshold must be retained: an
+isolated simultaneous zero can instead have old coefficient b, which is
+within the allowed range even when b=2.
+
+3. Exact zero-gap propagation
+----------------------------
+Let Z be the largest zero-run length in q, with Z=0 if q has no zeros.
+All divisions in this section are ordinary real divisions followed by
+floor; the denominator b-1 is strictly positive.
+
+Without overflow, a new zero run of length k>=2 supplies simultaneous
+zeros on the same old interval. Either it is an old zero run, giving
+k<=Z, or all k old entries equal b-1, giving (b-1)k<=M. Runs of length
+one are covered separately. Therefore
+ Z' <= max(Z, 1, floor(M/(b-1))).
+
+With overflow, take a new zero interval [A,B] of length k>=3.
+Its endpoints satisfy 1<=A<=B<=L-1. The forward digits vanish on [A,B]
+and the reflected digits vanish on [A-1,B-1]. Their common core is
+[A,B-1], of length k-1>=2.
+If its coefficients are all b-1, then (b-1)(k-1)<=M.
+If its coefficients are all zero, its zero-output carry equations force
+all incident carries to vanish, including
+ a_A=a_B=beta_A=beta_B=0.
+At A-1, u_(A-1)=0 and beta_A=0 give q_(A-1)=b beta_(A-1), while
+outgoing forward carry a_A=0 gives q_(A-1)+a_(A-1)<b. Thus q_(A-1)=0.
+At B, r_B=0 and a_B=0 give q_B=b a_(B+1), while beta_B=0 gives
+q_B+beta_(B+1)<b. Thus q_B=0.
+The old interval [A-1,B] is one zero run of length k+1, so k<=Z-1.
+The exceptions k=1,2 are covered separately. Hence
+ Z' <= max(max(Z-1,0), 2, floor(M/(b-1))+1).
+Here max(Z-1,0) means truncated subtraction, not an assertion that an
+old zero run necessarily exists. No unrelated zero gaps are merged in
+the long all-zero case: the proof exhibits one containing old interval.
+
+For L=1 there is no internal new zero run, either before or after an
+overflow (the next width is at most two and both endpoints are positive).
+Thus the potentially empty interior and core ranges cause no exception.
+
+4. Width growth from the outer pair
+----------------------------------
+Let r be the least integer with b<=2^r, equivalently ceil(log_2 b), and
+put kappa=r+1. Since b>=2, r>=1 and kappa>=2.
+
+For any no-overflow step, the last column obeys
+ q_0+a_(L-1)<b,
+so q_0<=b-1. The first carry a_1=floor(q_0/b) is then zero, and
+ q'_0 = 2q_0+a_(L-1) >= 2q_0.
+This calculation remains valid at L=1: then a_(L-1)=a_0=0.
+
+Suppose there were kappa=r+1 consecutive no-overflow steps, starting
+at time s. After their first r steps,
+ q_0(s+r) >= 2^r q_0(s) >= 2^r >= b,
+because q_0(s)>=1. But the last no-overflow step would require
+q_0(s+r)<=b-1. This is a contradiction. Therefore every block of
+kappa consecutive steps contains an overflow. Canonical width increases
+by exactly one at each overflow and never otherwise, so grouping the
+first t steps into disjoint complete kappa-step blocks gives
+ L_t >= L_0 + floor(t/kappa).
+No mass bound is used in this width estimate.
+
+The extra one in kappa=r+1 is justified: r successive no-overflow steps
+only force the endpoint to reach at least b at their OUTPUT. It is the
+following step that must overflow. One should not silently replace
+kappa by r in this argument. For b=2, kappa=2 and the claim is that two
+successive no-overflow steps are impossible, which is correct.
+
+5. Prefix mass bound, width ceiling, and escape time
+---------------------------------------------------
+Take an integer B>=1 and assume S_b(n_0)<=B. Set
+ K = max(Z_0, 2, floor(2B/(b-1))+1),
+ H = 2B + (2B-1)K.
+Both propagation branches preserve the bound Z_t<=K whenever the input
+mass M_t=2S_b(n_t) is at most 2B. The overflow zero-inheritance term is
+at most K, the short-run term is at most K, and the b-1-block term is
+at most K by definition. The no-overflow floor term is also at most K.
+
+If a finite prefix has S_b(n_t)<=B for all 0<=t<=N, induction therefore
+gives Z_t<=K for every state in that inclusive prefix. If m_t is the
+number of nonzero pair-sum entries, then
+ 1<=m_t<=2S_b(n_t)<=2B.
+Both endpoints are nonzero, leaving at most m_t-1 intervening zero runs.
+Thus
+ L_t <= m_t+(m_t-1)K <= 2B+(2B-1)K = H.
+This also proves H>=L_0 from the stated initial assumption.
+Combining the two width bounds at N gives the exact finite-prefix test
+ L_0+floor(N/kappa) <= H,
+or equivalently
+ N < kappa(H-L_0+1).
+
+Consequently, with E=kappa(H-L_0+1), some state satisfies
+ 1 <= t <= E and S_b(n_t)>B.
+Proof by contradiction assumes the bound through time E INCLUSIVELY:
+then the upper estimate gives L_E<=H, whereas the width estimate gives
+L_E>=L_0+(H-L_0+1)=H+1. The mass assumption only through E-1 propagates
+the gap bound to E, but does not by itself supply the width upper bound
+at E; that bound also needs S_b(n_E)<=B. The inclusive-prefix
+contradiction handles this timing correctly.
+If S_b(n_0)>B, choose t=0 instead. Applying the result to any positive
+iterate establishes unbounded digit sums on every tail.
+
+6. General-base running maximum
+------------------------------
+Define D_N=max_{0<=t<=N} S_b(n_t), with BOTH endpoints included.
+For A=max(Z_0,2), C=A+1, and c=b-1, its associated gap bound satisfies
+ K(D_N)=max(A,floor(2D_N/c)+1)
+       <= A+floor(2D_N/c)
+       <= A+2D_N/c.
+The first inequality uses A>=1 (in fact A>=2). Therefore
+ H(D_N) <= (4/c)D_N^2+2C D_N.
+Writing J_N=L_0+floor(N/kappa), the preceding prefix argument gives
+ J_N <= (4/c)D_N^2+2C D_N.
+Completing the square yields the valid explicit real inequality
+ D_N >= [sqrt(c^2 C^2+4c J_N)-c C]/4.
+In particular, for each fixed positive starting number and fixed base,
+ liminf_{N->infinity} D_N/sqrt(N)
+   >= sqrt(b-1)/(2 sqrt(kappa)) > 0,
+which proves the claimed D_N=Omega(sqrt(N)). This concerns the running
+maximum. It neither bounds every individual later digit sum from below
+nor proves that the digit sums themselves tend to infinity.
+
+7. Additional decimal bound and the constant 3/4
+------------------------------------------------
+The stronger existing decimal width inequality is
+ N+4L_0 <= 4L_N+4.
+It is stronger asymptotically than the generic block argument at b=10,
+where ceil(log_2 10)+1=5. For the inclusive running maximum D=D_N, put
+ A=max(Z_0,2), C=A+1,
+ K=max(A,floor(2D/9)+1), H=2D+(2D-1)K.
+As above,
+ K<=A+floor(2D/9)<=A+2D/9,
+ H<=2D+2D K<=(4/9)D^2+2C D.
+All coefficients used when multiplying these inequalities are
+nonnegative: D>=1 because the orbit starts positive.
+
+Since L_N<=H, the existing decimal width theorem gives
+ N+4L_0-4 <= (16/9)D^2+8C D.
+Multiplication by 9/16 and completion of the square give
+ (D+9C/4)^2 >= (9/16)[N+4L_0-4+9C^2].
+Both D+9C/4 and the square root below are nonnegative, so
+ D_N >= (3/4)[sqrt(N+4L_0-4+9(A+1)^2)-3(A+1)].
+This is exactly the proposed finite radical bound. Its radicand is
+strictly positive even at N=0, because L_0>=1 and A+1>=3.
+Dividing by sqrt(N) for N>=1 and taking lower limits yields
+ liminf_{N->infinity} D_N/sqrt(N) >= 3/4.
+The additive terms depend only on the initial state, and disappear in
+this limiting quotient. This deduction is a paper consequence of the
+sharp gap/counting argument and the verified width estimate. It should
+not be described as already contained in the existing Lean quantitative
+file unless separately formalized there.

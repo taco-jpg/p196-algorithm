@@ -1,0 +1,44 @@
+Exact obstruction to scalar finite-field carry-history scores
+===========================================================
+
+No decimal Lychrel existence or nonexistence claim is made.
+
+Assume fixed weights on the1123 exact carry-history tiles. Their sum is
+F(q->Gq). Require F(Gq->G^2q)=cF(q->Gq) for EVERY valid two-step history,
+where c is a nonzero element of a field, and require F(q->Gq)=0 whenever
+Gq is a palindrome-predecessor word. These conditions cannot produce a
+nonzero score on ANY accepted history, for ANY field and ANY nonzero c.
+
+The archived safety and closure graphs are unchanged. Their path-equality
+potentials give28176 homogeneous equalities in2429 variables. Eliminating
+the1306 potentials along fixed paths gives equations on1123 tile weights.
+Over Z[t,t^-1], unit_pivot_certificate.json records1079 independent rows
+derived from these equations using only row subtraction and scaling by
+units +/-t^k. Every pivot becomes1. Specializing t to any nonzero field
+element preserves these1079 independent pivots, in every characteristic.
+
+There are44 independent solutions that score zero on every history:
+choose h on the46 transducer states, with h(0)=h(1)=0; assign
+  w(edge u->v)=h(v)-h(u),
+  w(terminal at u)=-h(u).
+Every accepted score telescopes to zero. All46 states are reachable from
+the two initial states, so the map from the44 free h-values is injective.
+The1079 independent equations leave at most1123-1079=44 dimensions;
+therefore these gauges exhaust the solution space over every field.
+
+check_unit_certificate.py independently rebuilds the certificate source
+rows by substitution in the original2429-variable equality matrix and
+replays every Laurent-polynomial operation. It checks every normalized
+pivot and the transducer reachability used for gauge independence.
+The successful exact report is unit_certificate_check.json.
+
+For comparison, all13 explicit cases over GF(2),GF(3),GF(5),GF(7), each
+nonzero scalar, were also solved directly. Every resulting44-vector
+kernel basis was independently rechecked against every original row,
+and its complete finite residue-product graph had no nonzero accepted
+path. These finite cases support, but are not the basis of, the uniform
+Laurent-unit certificate.
+
+This excludes only fixed additive tile scores with unconditional scalar
+eigenvalue closure. It does not exclude conditional languages, additional
+memory, nonlinear/group-valued invariants, or decimal Lychrel existence.

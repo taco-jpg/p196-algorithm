@@ -1,0 +1,138 @@
+A different constructive route: exact regular-language invariants
+===============================================================
+
+Status: exact transducer and universal finite-automaton checker implemented;
+no accepted invariant / Lychrel witness has yet been found.
+
+1. Representation
+-----------------
+For decimal n > 0, write its least-significant-first digits d_0,...,d_(L-1),
+and q_i = d_i + d_(L-1-i). Fold the symmetric q word from the ends inward.
+A folded word is (p,c), where p contains floor(L/2) entries in {0,...,18};
+c is absent for even length, or an even element of {0,2,...,18} for odd length.
+The first p entry is positive. If p is empty, c must be positive.
+Every such canonical folded word is realized by at least one positive integer.
+For each outer pair sum q>0 choose the most significant digit between 1 and 9
+and the least significant digit between 0 and 9 with that sum; interior pairs
+are unrestricted, and the central digit is c/2.
+
+The palindrome-predecessor language B is regular:
+  all unfolded q entries <= 9;
+  OR outer q = 11 and every unfolded q entry is 0 or 11.
+This criterion was already proved in the existing Lean development.
+
+2. Exact finite-state transducer
+-------------------------------
+Define C(q,a)=floor((q+a)/10), D(q,a)=(q+a) mod 10.
+For the unfolded word, decimal carries obey c_0=0,
+c_(i+1)=C(q_i,c_i). Let e=c_L in {0,1} denote overflow.
+The transducer guesses e initially and reads folded pairs q_i outermost first.
+At depth i its state stores a=c_i and b=c_(L-i).
+It guesses b_next in {0,1}, requires b=C(q_i,b_next), and updates
+  a_next=C(q_i,a), b_next.
+The low output digit is lo=D(q_i,a), and the mirrored high output digit is
+hi=D(q_i,b_next).
+
+If e=0, each transition emits the folded output symbol lo+hi.
+At an even input center accept exactly if a=b; emit the even terminator.
+At odd center c accept exactly if b=C(c,a); emit odd center 2*D(c,a).
+
+If e=1, also store one delayed high digit t, initially t=1 (the new leading
+carry digit). Each transition emits lo+t, then sets t=hi.
+At an even input center accept exactly if a=b; emit odd center 2*t.
+At odd center c accept exactly if b=C(c,a); emit the extra folded symbol
+D(c,a)+t and then the even terminator.
+
+Why this is exact: local equations reconstruct all ordinary decimal carries.
+The center condition identifies the two reconstructions, so accepted paths
+are in bijection with the unique ordinary carry sequence. The output formulas
+pair digits with their new mirrored partners; overflow shifts that pairing
+by one position, which is precisely the delayed high digit. Consequently the
+relation is functional on canonical folded words, and it is exactly the q
+representation of T(n)=n+reverse(n), for every length, not just tested lengths.
+
+Implementation validation additionally checked every n from 1 to 100,000
+against direct Python integer reversal and addition, and checked B against
+palindromicity of the actual sum. No discrepancy was found.
+
+3. A certificate would prove existence
+-------------------------------------
+Let A be a DFA over raw folded symbols, with separate acceptance flags for
+an even terminator and each possible even center. Suppose:
+  (i) A accepts at least one canonical folded word;
+ (ii) no canonical accepted word lies in B;
+(iii) whenever canonical w is accepted, its exact transducer output is accepted.
+Pick an integer n realizing an accepted word. By induction the q words of
+T^k(n) are accepted for all k. By (ii), T^(k+1)(n) is never palindromic.
+Therefore T(n) is a decimal Lychrel number. No assumption that n itself is
+nonpalindromic is needed.
+If A accepts the folded word ((7,),18) of 196, then 196 is nonpalindromic and
+the same induction proves the stronger 196 conjecture directly.
+
+4. Universal verification is finite graph reachability
+------------------------------------------------------
+Safety checks the product of A, the tiny automaton for B, and canonical-word
+validity. Closure checks a product of input-A state, output-A state, the
+finite transducer state, and the initial/noninitial flag. A violation exists
+iff some reachable terminal configuration accepts the input but rejects the
+output. Breadth-first search returns a shortest counterexample when one
+exists. A successful check covers all canonical finite word lengths.
+
+The implementation uses these exact checks within ICE/CEGIS synthesis.
+Each rejected candidate supplies a negative word or an implication
+A(w) => A(T(w)) to a finite SMT model of a candidate DFA. A discovered model
+is never treated as a proof before universal safety and closure both pass.
+SMT UNSAT only excludes the selected DFA size with these acceptance rules;
+timeout says nothing about existence of a DFA invariant.
+
+This route preserves arbitrary-length order/parity correlations and allows
+nonperiodic accepted words. It is not a bounded-prefix or fixed expanding-
+block family search. No claim is made that every Lychrel orbit admits such
+a regular invariant: failure to find one does not settle the conjecture.
+
+5. Reproducibility and model-size terminology
+-------------------------------------------
+Run `python creative_regular_invariant.py validate 100000` for numeric tests.
+Run `python creative_regular_boolean.py` for the 196-targeted synthesis.
+Run `python creative_regular_boolean.py any` for nonempty-language synthesis.
+The synthesis requires z3-solver; the checked runtime used version 5.1.0.
+All reported state counts mean pair-reading control states with eleven
+terminal acceptance flags per state (even termination and ten possible odd
+centers). A conventional DFA reading terminal symbols explicitly can use
+these states plus accepting and rejecting terminal sinks.
+
+The Boolean learner shares input prefixes in a trie, adds 50 concrete orbit
+labels when targeting 196, and adds 395 negative labels obtained by verified
+short terminating orbits. The safety property is encoded universally using
+symbolic reachability in a product with a four-state bad-language monitor.
+Closure still receives exact shortest counterexamples from the transducer
+product. There is no guessed inductive assumption in a successful check.
+
+Additional exhaustive transducer validation covers all 75,447 canonical
+folded q words whose unfolded length is at most seven, including every
+possible sum pattern, not merely some sampled actual integers.
+
+6. Final synthesis status for this pass
+--------------------------------------
+No positive certificate or decimal Lychrel witness was found.
+196-targeted models: pair-reading sizes 2 through 8 returned UNSAT; sizes 9
+through 13 reached time limits. (Size 1 was excluded by the earlier encoder.)
+Any-seed direct full-product encoding: sizes 2 and 3 returned UNSAT; size 4
+reached its 60-second solver time limit after constructing 223,232 closure
+clauses. The transducer graph has 46 states and 872 labeled transitions.
+Any-seed CEGIS models of sizes 3 through 8 reached time limits. These statements
+are reports from the encodings, not new kernel-checked Lean exclusions.
+
+Reproduce the final targeted batch with:
+  python creative_regular_boolean.py 196 --min-states 8 --max-states 13 --seconds 40
+Reproduce the direct full-product batch with:
+  python creative_regular_direct.py --min-states 2 --max-states 4 --seconds 60
+Run exhaustive validation with:
+  python creative_regular_validate.py
+
+creative_regular_status.json collects the exact result objects and limits.
+The independently produced CreativeFoldedBridge.lean proves the corresponding
+arithmetic transition formulas, guessed-carry soundness at the center, and
+realizability of valid symmetric q words. The Python automata engine itself
+has not been formalized in Lean; a future positive DFA certificate would
+still require checking that final finite automaton proof in Lean.

@@ -1,0 +1,138 @@
+{
+  "main_theorem_proved": false,
+  "finite_decimal_lychrel_witness": null,
+  "main_lean_theorem_added": false,
+  "searches_running": false,
+  "root_replayed": [
+    "all 70361 one-tile unsafe cores",
+    "all 1154 context2 numerical derivations",
+    "arbitrary-group conjugacy certificate",
+    "every-field unit-pivot certificate",
+    "128 symbolic transitions and 5046 budget families"
+  ],
+  "verification_records": {
+    "one_tile": {
+      "path": "main_existence_attempt/tile_flow/root_replay.json",
+      "sha256": "0f6bd01ae25d7b4bceb915ca6f451b8880512933729a603b410e0aa09079ffad",
+      "record": {
+        "status": "all_unsafe_cores_replayed",
+        "clauses": 70361,
+        "prior_prefix_preserved": true,
+        "all_cores_unique": true,
+        "seconds": 17.618358341002022,
+        "source_sha256": "e93aa3a05f31ca203184d707fd9e939b28a1c8b52ee2ee992b9828f8160fb299",
+        "decimal_lychrel_existence_proved": false
+      }
+    },
+    "context2": {
+      "path": "main_existence_attempt/context2_flow/validation_summary.json",
+      "sha256": "8030ad73508f18b77171209e61bcd7aefac7ead15dfb895c7b4cb945443b9efe",
+      "record": {
+        "status": "all saved concrete unsafe derivations replayed successfully",
+        "verified_records": 1154,
+        "new_verified_records": 1070,
+        "baseline_preserved_exactly": true,
+        "journal_equals_final_json": true,
+        "new_seed_pairs_min": 0,
+        "new_seed_pairs_median": 8.0,
+        "new_seed_pairs_max": 36,
+        "max_derivation_rounds": 17,
+        "max_retained_witness_words": 351,
+        "proof_bytes": 849722,
+        "proof_sha256": "381c9aa09ba00bee019405f7c6d6659f197be4268dc106587ac30151fcac0171",
+        "source_sha256": "9c1b61fe61ac285842c7e1336a8695e1c0a43f1f643d7aa70555f592d54967ad",
+        "replay_command": "python main_existence_attempt/context2_flow/search.py --verify main_existence_attempt/context2_flow/always_false400_unsafe_derivations.json",
+        "candidate_found": false,
+        "decimal_lychrel_existence_proved": false
+      }
+    },
+    "group": {
+      "path": "main_existence_attempt/group_invariant/conjugacy_check_result.json",
+      "sha256": "520aafff6ad22f0024869c971bfda5f7274c8d6264780a6bfa72eec023d09b3a",
+      "record": {
+        "verified": true,
+        "variables": 2430,
+        "original_relations": 28214,
+        "steps": 2429,
+        "relation_lengths": {
+          "1": 2429
+        },
+        "all_nonconjugating_generators_identity": true,
+        "all_tile_scores_identity": true,
+        "additive_cross_check": true,
+        "twisted_gauge_free_group_audit": true,
+        "certificate_sha256": "ab6a710e4e359177a823682bdd7c545bcbb577232f7671ea0a73aad86e874ca4",
+        "infinite_existence_proved": false
+      }
+    },
+    "field": {
+      "path": "main_existence_attempt/finite_field/unit_certificate_check.json",
+      "sha256": "feb7d0501b8a789fc840c4f7f6d826f45f1de47b106bb99cd0278750ac86eb15",
+      "record": {
+        "checked": true,
+        "ring": "Z[t,t^-1]",
+        "unit_pivots": 1079,
+        "weights": 1123,
+        "gauge_dimension": 44,
+        "conclusion": "For every field and every nonzero scalar, all solutions score zero on every accepted history.",
+        "certificate_sha256": "db4acc0355ecec65770312f031173427de2cd8b21d6bc3041c163638f6c0154c",
+        "seconds": 0.5546340660002897,
+        "existence_proved": false
+      }
+    },
+    "polynomial": {
+      "path": "main_existence_attempt/defect_family/independent_polynomial_check.json",
+      "sha256": "ba76b5c96f99901d030886ac6e49ff894e0eed667a7a0b5e1634ff9594c138f7",
+      "record": {
+        "all_parameter_domain": "every integer m>=256",
+        "exact_symbolic_steps_checked": 128,
+        "exact_budget_families_checked": 5046,
+        "finite_orbit_samples_used_for_proof": 0
+      }
+    },
+    "direct_solver": {
+      "path": "main_existence_attempt/direct_flow/direct_flow_result.json",
+      "sha256": "2995383454f7433b86b3e8a0dfd76078233f26320acfedca5ad389a1262afc54",
+      "record": {
+        "encoding": "direct_universal_horn_with_separate_seed_flow",
+        "solver": "Z3 QF_FD",
+        "phase": "always_false",
+        "z3_version": "5.1.0",
+        "fst_states": 46,
+        "tiles": 1123,
+        "safety_states": 48,
+        "safety_edges": 464,
+        "safety_terminals": 138,
+        "composition_states": 1280,
+        "composition_edges": 24316,
+        "composition_terminals": 3521,
+        "prior_audit": {
+          "path": "main_existence_attempt/invariant/grammar_cegis_result.json",
+          "sha256": "fce4d6b56551f96e63322649b223e624ba491d7e720452a499d869e3042d3000",
+          "clauses": 32064,
+          "all_replayed_unsafe": true,
+          "seconds": 8.035596040994278
+        },
+        "assertions": 113919,
+        "build_seconds": 13.481467121993774,
+        "scope_shortest_seed_max_edges": 44,
+        "scope_shortest_seed_max_digit_positions": 89,
+        "status": "unknown",
+        "requested_solver_seconds": 600.0,
+        "infinite_existence_proved": false,
+        "source_sha256": {
+          "main_existence_attempt/direct_flow/direct_flow.py": "282eb74f02e0f3f30c77cc503d3179e9d2998b541e297c290faf3d13f7b96c23",
+          "research/persist_spacetime_tile_grammar.py": "ea25e609c223a42ed5853fb10b14c8c19ecf94c3c1410ec84ba2195bec080336",
+          "research/persist_spacetime_weighted.py": "9b75a34916e85ea4dd0024a5ac5d10499287e8df3114da996f3a3d2b1de292f7",
+          "research/creative_regular_direct.py": "93514df6e6041ccf4c962008f1613bb468dd476f93e8388e6315e8e1d548d294",
+          "research/creative_regular_invariant.py": "c162a35227715b5c102fff8fa038603df0bb30d7f35f2a694eade81c7a83f312",
+          "main_existence_attempt/invariant/tile_closure.py": "ac2d631c71224d5c1defde9dd4f92bd1d6e9deb1971c23b0f8be743727dc25a9"
+        },
+        "solver_seconds": 600.0006207189945,
+        "total_seconds": 613.4918701809947,
+        "reason": "timeout",
+        "statistics": "(:max-memory              339.64\n :memory                  234.29\n :num-allocs              315672916827.00\n :pb-aux-clauses          4152\n :pb-aux-variables        90\n :pb-compile-card         90\n :rlimit-count            487375077\n :sat-ate                 1504\n :sat-backjumps           3867701\n :sat-backtracks          1703\n :sat-conflicts           3869404\n :sat-decisions           6716715\n :sat-del-clause          3803002\n :sat-elim-literals       361152\n :sat-gc-clause           3802978\n :sat-minimized-lits      65751731\n :sat-mk-clause-2ary      18656\n :sat-mk-clause-nary      3977466\n :sat-mk-var              6128\n :sat-propagations-2ary   267090143\n :sat-propagations-nary   257395000\n :sat-restarts            394042\n :sat-scc-elim-binary     94\n :sat-scc-elim-vars       44\n :sat-subs-resolution     3\n :sat-subs-resolution-dyn 26613960\n :sat-subsumed            60\n :sat-tr                  101\n :sat-units               114\n :time                    600.00)"
+      }
+    }
+  }
+}

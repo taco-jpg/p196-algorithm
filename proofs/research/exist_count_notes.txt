@@ -1,0 +1,156 @@
+ALL-TIME WIDTH GROWTH AND THE COUNTING GAP
+Status: rigorous partial results; no decimal Lychrel existence proof.
+
+1. An unconditional growth theorem
+----------------------------------
+Let n_t be the actual decimal reverse-and-add orbit of a positive integer,
+continued even if it encounters a palindrome. Let L_t be its decimal width.
+Then, for every t >= 0,
+
+    t + 4 L_0 <= 4 L_t + 4,
+    2 L_t <= 2 L_0 + t + 3.
+
+For the orbit starting at 196, the sharper bounds are
+
+    t + 11 <= 4 L_t,
+    2 L_t <= t + 7.
+
+Thus the decimal width grows at a rate bounded between 1/4 and 1/2 digits
+per addition, up to constant errors. This does not assert that a palindrome
+is avoided. The same bounds hold for the continued orbit of a palindrome.
+
+The namespace DecimalWidthGrowth in Lychrel196Research.lean proves the
+exact pair-sum dynamics statements and their bridge to the actual numeric
+orbit. The small exist_count_growth.lean file now imports the canonical
+source and prints the two principal axiom audits. The numeric theorem is stated with a
+canonical decimal digit representation of the numeric iterate, rather
+than an abstract graph width. All printed axiom audits contain only
+propext and Quot.sound.
+
+2. Proof of the new lower bound
+------------------------------
+Let a_t in {1,...,18} be the outer mirrored digit sum, b_t in {0,1}
+the incoming carry at the most significant column, and h_t the final
+overflow bit. Exact column addition gives
+
+    h_t = floor((a_t+b_t)/10),
+    a_(t+1) = 2 a_t+b_t                 if h_t=0,
+              a_t+1-10 floor(a_t/10)  if h_t=1.
+
+Define psi on a=1,...,18 by the following table:
+
+    a:    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+    psi:  4 3 2 2 2 1 1 1 1  1  0  0  0  0  0  0  0  0
+
+Every one of the 36 possible (a,b) pairs obeys
+
+    psi(a_(t+1)) + 1 <= psi(a_t) + 4 h_t.
+
+These are finite exact inequalities, checked by Lean's kernel via decide.
+Since L_(t+1)=L_t+h_t, summing yields
+
+    psi(a_t)+t+4 L_0 <= psi(a_0)+4 L_t.
+
+Now psi>=0 and psi<=4 prove the uniform lower bound. The sharper first
+bound for 196 uses a_0=1+6=7 and psi(7)=1.
+
+The existing upper-growth potential phi satisfies
+
+    phi(a_(t+1))+1 <= phi(a_t)+2(1-h_t),
+
+with 0<=phi<=3 and phi(7)=1. Its telescoping inequality gives
+
+    2 L_t+phi(a_t) <= 2 L_0+t+phi(a_0),
+
+and hence both displayed upper bounds.
+
+The abstract outer graph contains a cycle
+
+    1 --N--> 2 --N--> 5 --N--> 10 --O--> 1,
+
+with overflow frequency 1/4, and a cycle 9 --N--> 18 --O--> 9 with
+frequency 1/2. The constants 1/4 and 1/2 are therefore optimal for an
+argument using only this outer graph. This is not a claim that both
+cycles admit indefinitely realizable finite decimal centers.
+
+3. The proposed positive counting route
+---------------------------------------
+Choose a probability distribution on an explicitly specified finite set
+of genuine decimal seeds. Let H_t be the event that the first palindrome
+occurs at time t. The events H_t are disjoint. An existence proof would
+follow from a rigorous all-time estimate
+
+    sum_(t>=0) Pr(H_t) < 1.
+
+The conclusion would be particularly strong: a finite support with less
+than total terminating probability necessarily contains an actual finite
+Lychrel seed. No compactness passage would be needed.
+
+An alternative is a fixed seed width L and a uniform positive lower bound
+on the proportion avoiding all palindromes through time t, valid for
+every t. Finiteness of the seed set then gives a surviving seed. The key
+quantifiers are one fixed L followed by every t. They cannot be exchanged.
+
+The current exact inverse-fiber estimates do not yield either bound.
+They control one transition or any prescribed finite avoidance horizon;
+the missing ingredient is correlation across arbitrarily many successive
+inverse levels.
+
+4. Why uniform-in-time equidistribution cannot fill the gap
+----------------------------------------------------------
+A distribution initially supported on N finite seeds remains supported
+on at most N states under deterministic iteration. Thus at every time
+some state has probability at least 1/N. Its Shannon entropy is at most
+log N, regardless of its growing number of digits.
+
+The width theorem shows that every state in such a finite ensemble has
+width tending uniformly to infinity. Consequently there cannot be fixed
+C<infinity and r>1 such that every individual state x in the ensemble at
+every time t satisfies
+
+    Pr(n_t=x) <= C r^(-width(x)).
+
+Indeed, for large t the right side is smaller than 1/N for all states,
+contradicting the atom of mass at least 1/N. In particular, treating the
+growing digit strings as fresh uniformly random strings at every step
+cannot justify an all-time finite-seed counting proof. This objection
+does not rule out a bound specifically on the palindrome set; it says
+that such a bound must exploit the exact geometry of the image support.
+
+5. A countermodel to sparse-target and compactness shortcuts
+-----------------------------------------------------------
+Let A={0,...,18}. States are finite nonempty words w over A. Define
+
+    F(w) = drop_the_first_symbol(w), followed by two zero symbols.
+
+The terminal set consists of the all-zero words. This toy system has all
+of the following properties simultaneously:
+
+  * Width increases by one every step.
+  * There is exactly one terminal word among the 19^m words of width m.
+  * Each target has at most 19 immediate predecessors.
+  * For every finite horizon t, the proportion of width-m seeds surviving
+    through t tends to 1 as m tends to infinity.
+  * Every finite seed terminates, in at most its initial width m steps.
+
+To verify the last two assertions, for 0<=t<=m the iterate consists of
+the last m-t original symbols followed by 2t zeros. It is terminal iff
+those m-t original symbols are all zero. Under the uniform distribution
+on A^m this has probability 19^(-(m-t)). Therefore
+
+    lim_(m->infinity) Pr(survive through t) = 1  for every fixed t,
+
+while Pr(survive forever)=0 for every finite m. After t=m all original
+symbols have been deleted. The number of inverse choices is exactly
+19 whenever a target ends in two zeros and has the appropriate width.
+
+This is not a model of decimal reverse-and-add. It isolates the precise
+invalid implication: sparse terminal sets, bounded inverse multiplicity,
+growing width, and arbitrarily long finite avoiding orbits do not by
+themselves imply an infinite orbit from a finite seed.
+
+Conclusion
+----------
+The width theorem is a completed all-time structural result. The
+all-time first-hit estimate needed for a positive counting proof remains
+unproved. No Lychrel witness has been established by this branch.

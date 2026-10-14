@@ -1,0 +1,186 @@
+DECIMAL LYCHREL RESEARCH: TEN ASTRA MAX TASKS
+13 October 2026
+
+STATUS
+
+No finite decimal Lychrel number has been proved to exist in this work.
+There is no proof that 196 is Lychrel and no proof that every decimal orbit
+reaches a palindrome. The original existence statement remains unproved.
+
+Ten distinct research tasks used gpt-6-astra with maximum reasoning effort,
+with at most six agents active concurrently. The token count and duration
+requested in the conversation were not promised or certified. This record
+reports mathematical results and completed checks, not an effort metric.
+
+MAIN COMPLETED RESULT
+
+Write M = 2^alpha 5^beta q with gcd(q,10)=1. Put
+
+  k = max(1,alpha,beta), r = ord_q(10), B(M) = 2k+4qr,
+
+using r=1 if q=1. For EVERY L >= B(M), a residue a modulo M contains
+an ordinary positive L-digit palindrome exactly when
+
+  not(10 divides M and 10 divides a),
+  and, if L is even, gcd(M,11) divides a.
+
+A complete elementary construction and an independent adversarial proof
+audit establish the universal quantifiers. The proof is in
+ExactLengthPalindromes.pdf and astra_modular_fixed_modulus_theorem.md.
+
+Consequently, no nonempty forward-invariant palindrome-free set can have
+membership determined solely by exact decimal length and one fixed residue
+modulo M. Allowed residues may depend arbitrarily on length. This excludes
+a certificate class; it does not say that an orbit hits the palindrome
+constructed in its residue class.
+
+The note also proves that the reversal residue is determined by value
+residue and length exactly for M dividing 99, and that ordinary reverse-add
+has no continuous extension to the 10-adic integers. Residue determinacy
+does not determine the next digit length. Relevant earlier palindrome
+distribution theorems are cited; publication novelty has not been established.
+
+LEAN RESULTS AND PRECISE FORMALIZATION BOUNDARY
+
+Lychrel196Research.lean is a standalone Lean 4.19.0 file importing only Std.
+It contains 234 theorem declarations, including 33 added in this pass.
+The full integrated source compiled successfully. Every new declaration
+was axiom-audited; only propext, Classical.choice, and Quot.sound occur.
+There are no sorry/admit holes, custom axioms, or native_decide proofs.
+
+Twenty-five new modular/orbit theorems include:
+
+  AstraModular.orbit_mod11_eq_zero_of_six_le
+    For every n>0 and k>=6, 11 divides T^k(n).
+
+  AstraModular.six_step_bound_sharp
+    Seed 100 first becomes divisible by 11 at time six:
+    100,101,202,404,808,1616,7777.
+    This is a divisibility bound, not a palindrome hitting-time bound.
+
+  AstraModular.large_width_compatible_residue
+    For every M,B and n>0, an actual orbit state at some time
+    j in [6+4B,7+4B] has canonical width at least B and satisfies both
+    compatibility conditions of the exact-length palindrome theorem.
+
+  AstraModular.even_width_palindromic_overflow_dvd121
+    An even-width input overflowing to a palindrome requires 121|T(n).
+
+The remaining eight additions formalize complementary-column identities
+and exact failures of two proposed persistent-defect families.
+
+The arbitrary-modulus palindrome construction, its full invariant-set
+corollary, the necessity half of the modulo-99 classification, and the
+10-adic theorem are PAPER PROOFS, not fully formalized Lean theorems here.
+No unproved version of them is inserted as a Lean axiom. The numerical
+semantics of the 25 supporting modular/orbit lemmas are fully connected to
+the executable ordinary decimal reversal in the main file.
+
+Full source SHA256:
+f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c
+
+TEN TASKS AND WHAT EACH CONTRIBUTED
+
+1. Substitution and multiple periodic blocks
+   Proved that fixed-time, finite-alphabet, nonerasing morphic certificates
+   of linear width growth reduce, after phases and a transient, to finitely
+   many growing periodic-word blocks. Built an exact family checker with
+   binary positive controls. Found 28 exact 24-step center components;
+   a complete filtered enumeration of 5,706,688 width-six exterior states
+   found no compatible loop for the specified clock and bulk model.
+   Larger or different models remain open. Files: astra_substitution_*.
+
+2. Correlated digit languages
+   Derived all-length carry-complement identities and correlated-family
+   branches. Two explicit counterexamples show that marked non-neutral
+   defects can disappear. Eight Lean theorems and 35,818 literal-integer
+   family/transition checks preserve this result. No closed safe language
+   was found. Files: astra_languages_*.
+
+3. Counting and inverse image depth
+   For every m>=0,k>=1, constructed an overflow fiber of width
+   L=2(m+k+7) with at least 2^m preimages, each with two earlier safe
+   iterates and k later safe steps. A complete 16-state correction table
+   proves the arbitrary-length construction; 2,555 numeric seeds were
+   checked. Fixed incoming depth does not reduce the exponential fiber
+   rate below two per mirrored pair. Growing incoming depth is unresolved.
+   Files: astra_counting_*.
+
+4. Spectral and algebraic invariants
+   Proved that the ideal generated by all actual carry defects is
+   (x^2-20x+1,9(x+1)) in Z[x,x^-1]. Its quotient is
+   (Z/9)[epsilon]/(epsilon^2) times Z/22. Explicit palindrome-producing
+   words fill the retained physical classes. An independent proof audit
+   and 85,447 polynomial checks support this precisely scoped obstruction.
+   Carry-sensitive invariants are not excluded. Files: astra_spectral_*.
+
+5. Modular, valuation, and completion methods
+   Proved the main exact-length theorem, invariant-set obstruction,
+   reversal-residue classification, and 10-adic discontinuity. Constructed
+   2,512 finite palindromes in selected classes, including lengths up to
+   1,288,411 digits. The valuation/carry persistence needed for a positive
+   construction remains open. Files: astra_modular_*.
+
+6. Primary literature and transfer ideas
+   Audited purported decimal proofs and established the prior-art boundary
+   for exact-length residue saturation. Derived a finite piecewise-affine
+   transition theorem for multivariate run lengths and checked a two-
+   parameter decimal identity at 10,000 pairs. No closed Presburger domain
+   was found. Files: astra_literature_*.
+
+7. Independent proof audit
+   Audited the full exact-length theorem, no-invariant corollary, modulo-99
+   classification, spectral ideal/quotient, and sharp time-six theorem.
+   Found no substantive gap; tightened the finite-prime/cap qualification
+   and the distinction between residue and full state updates.
+   Files: astra_audit_*.
+
+8. Lean formalization
+   Added the 25 unconditional modular/orbit theorems described above,
+   compiled them, and audited all axiom dependencies. The root integrated
+   them and the eight language lemmas and compiled the complete file.
+   Files: astra_lean_* and astra_root_axiom_audit.*.
+
+9. Base transfer by literal blocks
+   Exhausted all 918,274 modular-eligible stationary binary-to-decimal
+   codes of block widths one through four. Exact periodic-word arithmetic
+   excludes every eventual tail of the specified binary family, even
+   with variable positive return times and intermediate palindromes.
+   Uniform parameter threshold 13 suffices. Literal decimal replays and
+   binary/quaternary positive controls agree. This computation is not
+   Lean-certified; other encoders are not excluded.
+   Files: astra_base_transfer_*.
+
+10. Moving boundaries and renewable defects
+    Derived an exact growing-wall transfer and a difference-wall model
+    that can continue through overlap. The positive closure obligation is
+    preservation of a specified carried-digit ordering. Its failure is
+    measured by missing carries and a digit-sum increase. A possible
+    growing-parameter renewal requires a separate rebalancing theorem;
+    no such all-time theorem or finite witness was obtained.
+    Files: astra_moving_boundary_*.
+
+ROOT VERIFICATION AND REPRODUCTION
+
+The root independently replayed the palindrome builder, counting
+certificate, spectral checks, correlated-family and moving-wall checks,
+and the 10,000-pair
+run identity. It separately computed exact palindrome residue supports
+for every M=1..300 and L=1..80. Those 24,000 finite supports are checks of
+the construction's behavior, not a replacement for the universal proof.
+It compiled the integrated Lean file and audited all 33 new declarations.
+The five-page PDF was rendered and visually inspected on every page.
+
+See README.md for commands. The archive preserves all previous source
+files and results, adds the current pass, and includes a SHA256 manifest.
+Compiled binaries, Lean runtime dependencies, and transient object files
+are not required parts of the archive.
+
+THE UNRESOLVED STEP
+
+The required object remains one positive FINITE decimal seed whose orbit
+avoids palindromes at EVERY time. A family of seeds surviving longer and
+longer finite intervals does not establish this. Neither a nonempty local
+component nor a solver timeout establishes global closure. The present
+results narrow specified approaches and provide checked tools; they do
+not constitute a proof or disproof of decimal Lychrel existence.

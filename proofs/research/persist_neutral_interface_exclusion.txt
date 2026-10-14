@@ -1,0 +1,308 @@
+A FINITE-CENTER OBSTRUCTION FOR THE PERIODIC ELEVEN-STEP NEUTRAL INTERFACE
+
+THEOREM AND SCOPE
+=================
+Consider decimal reverse-and-add column sums at a symmetric cut through a
+neutral q=9 band. Prescribe, repeatedly, the eleven-step overflow sequence
+
+  h = (1,1,0,0,0,1,0,0,0,0,1)
+
+and the low incoming carry sequence
+
+  a = (0,1,0,0,1,1,0,0,1,1,1),
+
+with high outgoing carry 1-a at every step. There is no finite symmetric
+initial center that satisfies this prescribed neutral boundary forever.
+
+This statement uses the finite-graph facts listed below, whose searches
+exhausted their complete reachable graphs and were independently replayed.
+The main proof is a strict descent of the nonnegative integer
+
+  V = canonical center width + (0 if its first q entry is14, otherwise3).
+
+It allows a growing and nonperiodic center a priori; it is stronger than
+excluding a fixed center or a fixed temporal period. It applies only
+to this specific neutral interface and clock. It does not establish or
+refute decimal Lychrel existence, and does not decide the orbit of 196.
+It also does not say that the previously found 29-pair exterior connector
+is invalid: that connector is a valid local exterior construction, but it
+cannot be completed by any finite center sustaining its prescribed neutral
+boundary indefinitely.
+
+MODEL AND EXACT NEUTRAL-PADDING IDENTITY
+=======================================
+All words in this proof are indexed from the low end to the high end.
+For a symmetric column-sum word Q, each entry lies in {0,...,18}; the middle
+entry, if present, is even. Given low incoming carry a in {0,1}, scan Q by
+ordinary addition:
+
+  c_0=a, d_i=(q_i+c_i) mod10, c_(i+1)=floor((q_i+c_i)/10).
+
+Write D(Q,a) for the resulting digit word. Admissibility at the cut requires
+its final carry to equal 1-a. Put x=9(1-a), y=9a, and let P(Q)=9::Q++[9].
+Because a q9 column transmits its incoming carry unchanged,
+
+  D(P(Q),a) = [x] ++ D(Q,a) ++ [y].                 (1)
+
+The final carry is unchanged as well, so insertion/deletion of a neutral
+outer pair preserves admissibility in both directions.
+
+The fixed-cut output digit word is E_0(Q,a)=D(Q,a) for a non-overflow step,
+and E_1(Q,a)=D(Q,a)++[y] for an overflow step. The latter appended digit is
+the newly admitted high boundary digit from the neutral reservoir. Formula
+(1) gives, for either h=0 or h=1,
+
+  E_h(P(Q),a) = [x] ++ E_h(Q,a) ++ [y].            (2)
+
+Let pairSums(W)=W+reverse(W), entrywise, and define the next column-sum word
+F_h(Q,a)=pairSums(E_h(Q,a)). Since x+y=9, (2) yields
+
+  F_h(P(Q),a) = P(F_h(Q,a)).                      (3)
+
+Induction extends (2)-(3) to any number of neutral pairs and any finite
+sequence of the prescribed phases. There is no one-cell boundary correction
+in this fixed-cut formulation. At the last phase of an eleven-step block,
+a=1, so the actual output-digit padding is low digit0 and high digit9.
+
+CANONICAL CENTERS AND THE FINITE-TIME GRAPH FACTS
+================================================
+At the start of each eleven-step block delete all possible outer q9 pairs.
+The remaining canonical center is finite and symmetric. It is nonempty:
+an empty or entirely q9 center transmits carry0 to carry0, whereas this
+phase requires low input0 and high output1. Its first non9 entry is in
+{10,...,18}; an entry at most8 cannot produce the required outward carry1,
+regardless of the deeper incoming carry. Neutral deletion preserves these
+boundary conditions by (3).
+
+For a canonical center admissible for the next22 steps, let j be the number
+of outer neutral pairs removed from its word after the first11 steps. The
+following exact finite-time statements hold:
+
+  F0. j is not0.
+  F2. j is not2.
+  F1. If j=1, the next canonical center starts with q=14.
+  F14. A canonical center starting with14 cannot have j=1 or j=3 while
+       surviving the next22 prescribed steps. Together with F0/F2 this
+       forces j>=4 whenever the current canonical center starts with14.
+
+These concern arbitrary finite center widths, not a bounded-width sample.
+They are obtained from finite spatial automata of the entire22-step strip,
+with exact even/odd center closure. The last temporal row is unrestricted;
+there is no imposed temporal return. Graph states contain both carry streams,
+the preceding outer-column high digits at overflow times, and a saturated
+prefix-filter stage. The head tests both an empty center gap and every valid
+even central q digit. Center heads are checked even before all prefix filters
+have been read; this can only enlarge the accepted language, so empty head
+sets remain sound negative certificates for short centers too.
+
+The exhausted graph counts are:
+
+  condition                               states    edges     heads
+  j=0                                      6,273     6,272        0
+  j=2                                    228,061   312,252        0
+  j=1, next first=10                           45        44        0
+  j=1, next first=11                           45        44        0
+  j=1, next first=12                           45        44        0
+  j=1, next first=13                           45        44        0
+  j=1, next first=15                      172,077   248,108        0
+  j=1, next first=16                          589       588        0
+  j=1, next first=17                          461       460        0
+  j=1, next first=18                           45        44        0
+  current first=14, j=1                         5         4        0
+  current first=14, j=3                     4,843     4,846        0
+
+F1 uses all eight non14 cases in the already proved range10..18. The first14
+branch without the extra starting-value condition is NOT claimed empty; it
+is precisely the allowed intermediate case handled by F14.
+
+Relevant independent replay records are persist_root_compensation_check.json,
+persist_wake_eroder_partial_certificate.json, and
+persist_wake_eroder_compensation_certificate.json, and
+persist_wake_eroder_strict_certificate.json. The independent Python
+replay is persist_wake_eroder_check.py. Its arithmetic recurrence and exact
+center-head semantics are in persist_wake_neutral_spacetime.py. The original
+compiled spatial-graph searches are separate implementations.
+
+DIRECT STRICT DESCENT: THE MAIN PROOF
+====================================
+Suppose a finite center satisfied the prescribed boundary forever. Its
+canonical center at every macro time survives the next22 steps, so all four
+finite-time facts apply. Write w_t for its width, j_t for the emitted neutral
+pairs, and b_t=true when its first entry is14. Four overflows per block give
+
+  w_(t+1) + 2j_t = w_t + 4.
+
+Put V_t=w_t+(0 if b_t, otherwise3). There are three exhaustive cases:
+
+  * If b_t is true, F14 gives j_t>=4. Width falls by at least4; the bonus
+    can rise from0 to at most3. Consequently V_(t+1)<=V_t-1.
+  * If b_t is false and j_t=1, F1 gives b_(t+1)=true. Width rises by2,
+    while the bonus falls from3 to0. Again V_(t+1)=V_t-1.
+  * If b_t is false and j_t!=1, F0/F2 give j_t>=3. Width falls by at least2,
+    and the bonus cannot exceed its previous value3. Thus V falls by at
+    least2.
+
+Therefore V_(t+1)+1<=V_t for every t. Induction yields V_t+t<=V_0, impossible
+at t=V_0+1 because V_t is a natural number. This proves the theorem directly.
+There is also an explicit finite horizon. If V_0 is the initial potential,
+a strip lasting11(V_0+2) steps would provide V_0+2 complete blocks. The22-step
+lookahead certificates then justify V_0+1 consecutive strict decreases,
+contradicting nonnegativity. Thus the prescribed boundary must fail before
+that many steps can be completed. Since V_0<=w_0+3, a uniform bound is11(w_0+5).
+This is a bound for this particular prescribed interface, not for the time
+needed to reach a palindrome.
+
+The proof does not use periodicity, the actual-digit lift, or the all-period
+center certificate. The latter supplies an independent earlier route below.
+
+INDEPENDENT EARLIER ROUTE: BOUNDED WIDTH AND PERIODICITY
+=====================================================
+Suppose an infinite admissible center existed. Normalize it after each block.
+Let w_t be its canonical width and j_t its emitted neutral-pair count.
+The four overflow steps per block give the exact balance
+
+  w_(t+1) + 2j_t = w_t + 4.                      (4)
+
+Every tail survives22 steps. F0 and F2 therefore imply j_t>=1 and j_t!=2.
+F1 followed by F14 implies that j_t=1 and j_(t+1)=1 cannot both occur.
+Define
+
+  V_t = w_t + (2 if j_t=1, otherwise0).
+
+If j_t=1, the width grows by2, but the next bonus is0; hence V_(t+1)=V_t.
+If j_t>=3, the width decreases by at least2, while the next bonus is at most2;
+again V_(t+1)<=V_t. Thus
+
+  w_t <= V_t <= V_0 <= w_0+2                    (5)
+
+for every t. This bounds all canonical centers, including a purported
+aperiodic one. It is not a strict one-block width-decrease argument.
+
+COMMON-WIDTH PADDING AND A TEMPORAL q-CYCLE
+===========================================
+Widths have constant parity by (4). Choose a common width K of that parity
+with K>=w_t for every t; K=w_0+2 works. Put p_t=(K-w_t)/2 and
+
+  Qbar_t=P^(p_t)(Q_t).
+
+From (4), p_t+j_t=p_(t+1)+2. If F is the eleven-step column-sum return,
+commutation (3) therefore gives
+
+  F(Qbar_t)=P^2(Qbar_(t+1)).                     (6)
+
+Equivalently, if a literal neutral annulus has length m_t, then the annulus
+outside the padded width-K center has length m'_t=m_t-p_t, and m'_(t+1)=m'_t+2.
+Because j_t>=1 and p_t is bounded, m'_t is eventually nonnegative. This is
+only bookkeeping; (6) itself does not require choosing literal annuli.
+
+There are finitely many width-K words over {0,...,18}. The prescribed carry
+scan is deterministic. Hence the normalized infinite sequence eventually
+repeats, giving some k>=1 and a width-K word Q with
+
+  F^k(Q)=P^(2k)(Q).                             (7)
+
+Here F^k uses p=11k actual steps and4k overflows. This conclusion did not
+assume a period in advance or place a bound on k.
+
+LIFTING THE q-CYCLE TO AN ACTUAL DIGIT-CENTER CYCLE
+=================================================
+Equation (7) is a q-word identity, so a separate digit-split argument is
+needed. Let G be the actual output-digit word of the last addition in those
+p=11k steps, starting from a column-sum word. For every input R,
+
+  pairSums(G(R))=F^k(R).
+
+The input digit split is irrelevant: one reverse-and-add already determines
+all output digits from the q word and carries. The last phase has a=1, so
+(2)-(3) also give, for every r,
+
+  G(P^r(R)) = [0]^r ++ G(R) ++ [9]^r.           (8)
+
+Set W=G(Q), a finite digit word of length K+4k. Its q word is P^(2k)(Q).
+Starting from W and running the same p steps produces the actual digit word
+
+  G(pairSums(W)) = G(P^(2k)(Q))
+                  = [0]^(2k) ++ W ++ [9]^(2k).  (9)
+
+Thus one whole q-cycle supplies the digit split for a genuine periodic
+finite digit center, with each neutral annulus enlarged by2k per cycle.
+This handles all intermediate variation of the canonical widths. The chosen
+finite digit center may contain neutral pairs; the center transducer does
+not require it to be canonical.
+
+If the width of W is even, use the original temporal origin. If it is odd,
+advance through the first overflow to get an even-center origin at the next
+growth segment. These are exactly the two origins certified below. Advancing
+one whole cycle first, as in (9), avoids conflating digit-split recovery with
+the parity change from a single overflow.
+
+ALL-PERIOD FINITE-DIGIT-CENTER OBSTRUCTION
+=========================================
+The interface with segment lengths(1,1,4,5), left digits(9,0,9,9), and carry
+masks left=(1,0,3,3), right=(0,1,12,28) has no periodic finite digit center,
+of any width or any period11k. Two finite labeled temporal graphs certify
+this, one for each center-parity origin:
+
+                         even origin       odd origin
+  invariant vertices          47                73
+  invariant edges            929              1290
+  inverse cyclic vertices     63                99
+  inverse cyclic edges      1231              1631
+  center-head vertices        55                33
+  center-head edges           40                24
+  maximum head-DAG rank        2                 1
+
+Explicit label-preserving graph homomorphisms embed the neutral clock cycle
+into each invariant and map the entire exact spatial inverse graph back into
+the invariant. Every possible inward temporal word therefore remains in it,
+by induction on arbitrary spatial depth. A finite center would produce a
+closed walk in the head graph, but its strict ranking forbids all cycles.
+The homomorphisms preserve actual closed walks and their lengths, so no
+assumption about periodic trace-language equality or word powers is needed.
+
+The independent checker persist_exterior_temporal_verify.py imports none of
+the search implementations. It recomputes decimal carry arithmetic, verifies
+every image edge of both homomorphisms, and checks the strict head rankings.
+Its inputs are persist_exterior_temporal_invariant_0.json and _1.json, plus
+persist_exterior_temporal_homomorphism_0.json and _1.json. The resulting record
+is persist_exterior_temporal_certificate.json. Full definitions and the
+separate all-period proof are in persist_exterior_temporal_notes.txt.
+
+The digit cycle (9) contradicts this obstruction. This supplies a second
+proof of the theorem from F0, F2, F1, and the j=1 part of F14, independent
+of the newly added j=3 certificate and the direct strict-descent proof.
+
+VERIFICATION STATUS AND LEAN BOUNDARY
+====================================
+The concrete finite-time and all-period graph certificates are computational
+results checked with explicit finite enumeration. The q9 padding identities
+and the application of the strict ranking to this specific interface remain
+mathematical arguments; the full concrete theorem has NOT yet been
+instantiated in Lean. The second proof additionally uses the stated finite-
+state repetition and digit-lift arguments, which are not needed by the main
+strict-descent proof.
+
+The following separate Lean4.19.0 modules compile with only Std:
+
+  persist_exterior_temporal.lean
+    map_cycle, ranking_excludes_cycle, no_finite_center: the general graph
+    homomorphism/ranking/inward-induction argument, with concrete arithmetic
+    and certificate links explicit hypotheses.
+
+  persist_exterior_width_bound.lean
+    strict_potential_step, no_infinite_compensated_return: the direct strict
+    ranking and infinite-sequence contradiction, with the finite-graph
+    consequences supplied as explicit hypotheses. finite_descent_bound
+    proves the generic finite-transition bound from a unit decrease.
+    potential_step, width_bounded, padded_annulus_increment: the earlier
+    width bound and common-width padding bookkeeping.
+
+These modules contain no sorry, native_decide, or unproved added axioms.
+Their audited dependencies are only propext and Quot.sound; map_cycle is
+axiom-free. They do not silently assert the computational graph facts as
+axioms and do not claim a Lean proof of the decimal Lychrel conjecture.
+
+The supplementary persist_exterior_bulk_collapse.lean proves local identities
+for the discarded alternating13/14 bulk idea. Its role is separate: that
+local collapse is NOT used as a substitute for the exact F1/F14 certificates
+in the theorem above.

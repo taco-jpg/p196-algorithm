@@ -1,0 +1,168 @@
+HISTORICAL CHECKPOINT. For the latest continued work, see CurrentResearchStatus.txt.
+
+DECIMAL LYCHREL RESEARCH: CONTINUED WORK, 13 OCTOBER 2026
+
+Status: no proof of decimal Lychrel existence, and no proof that 196 is
+Lychrel. No positive invariant or nonterminating decimal seed was found.
+This record separates proved auxiliary results from restricted searches.
+
+1. COMPLETE NUMERIC THEOREMS, CHECKED IN LEAN
+
+Every complete first decimal carry word has a same-width positive integer
+representative reaching a palindrome within four reverse-and-add operations.
+This includes both overflow and no-overflow carry words. Four is optimal
+over entire carry classes: the five-digit trace (0,0,0,1,1,1) permits only
+five first values, all of whose first three positive-time iterates are
+nonpalindromic; 99500 reaches 2102012 at time four.
+
+Eleven consecutive complete carry words determine the initial mirrored
+digit-sum word, at every finite length. Equal histories preserve the first
+differing coefficient under overflow and double it without overflow. Equal
+endpoint carries bound that coefficient difference by nine. A checked
+outer-digit potential forces at least four doublings in ten operations.
+This does not determine the initial digit split: 196 and 295 share q.
+
+The standalone source has 186 theorem declarations, uses only Std under
+Lean 4.19.0, and compiles with exit code zero. The checked numeric bridge
+includes canonical digits, leading zeros in reversed strings, changed width,
+both center parities, and all carries including overflow. The proof contains
+no sorry, custom axiom, or native_decide. Standard Lean logical axioms are
+reported individually in resume_integrated_build.log.
+
+Source SHA256:
+cc6c3309a9ce0bd037df45e1417026adb5097bf25dd0cadacbb441e102464276
+
+CarryWordsResearch.pdf gives the full mathematical arguments, sharpness,
+the eleven-word corollary, and reproducibility details. A direct protected-run
+proof replaces graph enumeration in its main text; Lean independently proves
+the normalization bound via closed 37-state and 159-state certificates.
+Neither theorem is presented as a solution to decimal Lychrel existence.
+Publication priority has not been established.
+
+The direct proof also extends to every even base at least 10 and every odd
+base at least 17, with the same sharp bound for strictly positive iteration
+times. Odd-base normalized representatives can already be palindromes at
+time zero; this does not contradict the positive-time sharpness statement.
+This general-base extension is proved mathematically in Appendix B, but is
+not formalized in Lean. See resume_general_base_normalization_proof.txt.
+
+2. EXACT BOUNDARY SEARCHES WITH SPECIFIED MODELS
+
+The previously unfinished period-18 uniform-core construction is now closed:
+both core phases generate exactly 185,531 states and edges, with no valid
+exterior. Independent C++ and Python implementations agree. This excludes
+that particular finite-interface construction at every interface width.
+
+A new exact four-phase bulk was found:
+  (3,10,15,8) --N--> (7,1,11,17)
+               --O--> (15,8,3,10)
+               --N--> (11,17,7,1) --O--> start.
+Here N means no overflow and O means overflow. Compatible actual digits
+and carry streams were constructed. A period-16 return grows by eight digits.
+
+For this bulk A, exact reverse interior closure has 12,544 states and no
+valid center head. This excludes every finite center returning after 16
+steps in the specified fixed-annulus model. Both parities and all bulk
+rotations are covered. It does not exclude all larger temporal periods or
+growing, nonperiodic center regions.
+
+A separate fixed-core return map enumerated 5,734,124 states with four
+mirrored core pairs, both center parities, and all bulk rotations. There
+are 144 internal return edges; every such edge exits the state space on its
+next return, so there is no cycle of any return period within that bounded
+core space. All 144 edges were independently checked in Python.
+
+Uniform digit-3/6 center interfaces were excluded in both stationary and
+four-column-moving period-16 models. The relevant closures each have 256
+states and edges. These are different geometries; a stationary calculation
+alone would not have excluded a moving interface.
+
+The exterior search for bulk A remains incomplete after multi-million-state
+caps in both directions. No intersection was found. Other two bulk classes
+have complete no-exterior closures with 16,384 and 3,744 states. The incomplete
+A search is not an impossibility proof; its fixed-period center obstruction
+already prevents that particular complete construction.
+
+See resume_boundary18_notes.txt, resume_boundary4_notes.txt, and their exact
+graph implementations/results for the equations and restrictions.
+
+3. BOUNDED SAT RESULTS
+
+The earlier period-24 model has 30 eligible phase classes. All report UNSAT
+at interface width 16 after a correct ten-representative time-orbit reduction.
+DIMACS headers were audited and repaired where a repeated Z3 export could
+understate maximum variable identifiers. No independently checked UNSAT
+proof certificate is supplied; these are solver reports for the bounded
+models. The unbounded Horn reachability query returned UNKNOWN, not UNSAT.
+See resume_phase24_notes.txt.
+
+4. CONDITIONAL WEIGHTED INVARIANTS
+
+Searched integer scores summed along the entire folded digit-sum word.
+The desired language is S>0, with safety against all palindrome predecessors
+and closure S(input)>0 implies S(next)>0. Conditional closure avoids requiring
+a globally increasing score. The exact all-length closure checker models a
+connected Euler trail through the transducer product with integer edge flows;
+no word-length cutoff is used for an UNSAT answer from that checker.
+
+No synthesized score passed even the finite candidate stage. A 120-weight
+three-category-memory template containing the sampled 196 orbit reported
+UNSAT after four CEGIS rounds, within that template. Arbitrary-seed and
+positive-periodic-bulk variants timed out. A 600-weight exact-previous-symbol
+template rejected nine candidates for the 196 seed and thirteen for a
+positive bulk cycle, then returned UNKNOWN at its per-query time limit.
+Finite closure checks used 75,447 words; none is an infinite-closure proof.
+The general checker was therefore never used to certify a candidate invariant.
+
+An earlier floating-point LP experiment reported infeasibility but no exact
+Farkas certificate was obtained; it is not a proved obstruction. Those
+scratch files are not needed for the formal results.
+
+5. CARRY RECONSTRUCTION AND MOVING DEFECTS
+
+The exact polynomial difference identity is
+  Delta_next = 2 Delta       without overflow,
+  Delta_next = (1+x) Delta   with overflow.
+Known carry forcing terms allow a current q word to be reconstructed modulo
+32 after five non-overflow steps. An independent implementation passed 7,862
+integer comparisons, including 989 twelve-step windows along the 196 orbit.
+This supplies an exact temporal coding, not a nontermination proof.
+
+Additional symbolic bulk and interface work is recorded in
+resume_defect_renewal.txt and resume_history_search*. The protected-run
+normalization proof and executable checks are in resume_normalization_algebra.*.
+Each local or infinite-bulk identity must still be connected to a valid finite
+decimal seed and an induction before it could establish Lychrel existence.
+
+A universal advancing front was found: terminal pair-sum 8 against a uniform
+6 tail, under alternating no-overflow/overflow operations, renews after six
+steps and advances four columns. Its explicit local update is checked in the
+separate resume_history_search_front.lean with no axioms. That module does
+not contain a complete bridge to finite numeric trajectories. An independent
+implementation checks the local semantics against actual integer steps.
+
+For two symmetric fronts separated by 6^m, a controlled six-step window
+becomes s,8,6^(m-5),8,s for m>=5. Thus a finite uniform gap is consumed.
+Gap4 and gap5 collision identities are also checked in the local Lean model.
+The initial front class alone does not force a regenerating collision:
+additional wake digits change the outcome, and actual numeric examples
+realize diverse centers. Moreover, a local front does not by itself prevent
+palindromes in all phases. These local renewal identities therefore do not
+provide a Lychrel witness. The search for a left-interface speed bound reached
+its state cap and remains unresolved.
+
+REPRODUCTION
+
+The main Lean file is the canonical compiled deliverable. Modular Lean files
+are retained as research history; once their declarations have been merged
+into the main file, they should not be imported alongside that merged file
+and recompiled as if their declarations were absent.
+
+  lean Lychrel196Research.lean
+  python3 resume_renewal_normalization.py
+  python3 resume_normalization_algebra.py
+  python3 resume_history_search_reconstruct.py
+
+The archive excludes huge scratch state dumps, generated SAT instances, and
+compiled binaries; code regenerates them when needed. Solver timeouts and
+resource caps are preserved as unresolved outcomes.

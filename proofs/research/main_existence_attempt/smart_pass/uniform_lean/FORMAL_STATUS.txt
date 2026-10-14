@@ -1,0 +1,98 @@
+COMPLETED UNIFORM DECIMAL DIGIT-SUM ESCAPE
+14 October 2026
+
+The actual theorem
+------------------
+Let T(n)=n+reverse10(n), and let S(n) be the ordinary decimal digit sum.
+Define
+
+  E(0)=0, E(1)=1,
+  E(M)=5*(2*(M-1)*E(M-1)+2*M-1) for M >= 2.
+
+For every positive integer n and every B,s in the natural numbers,
+
+  there exists t with s <= t <= s+E(2B) and S(T^t(n)) > B.
+
+The bound depends only on B. It does not depend on n, the initial width,
+or the chosen starting time s. No initial digit-sum bound is needed.
+Iteration is continued after a palindrome, exactly as defined in the
+existing reverse-and-add development. The special case n=196 is included.
+
+Principal declarations:
+  DecimalProfile.sharpEscapeBound_eq
+  DecimalProfile.sharp_uniform_escape
+  DecimalUniformEscape.digitSum_uniform_escape_sharp
+  DecimalUniformEscape.digitSum_uniform_window_sharp
+  DecimalUniformEscape.digitSum_uniform_window_196_sharp
+
+This is exactly the manuscript's E_10 recurrence. For example E(2)=25,
+E(3)=525, E(4)=15785. The earlier, coarser U recurrence and its proved
+declarations are retained unchanged as separate results.
+
+What was completed
+------------------
+The earlier manuscript had a written uniform theorem, but its checked
+quantitative deadline depended on the initial decimal width. The new
+modules close that particular formal gap. The proof is concrete throughout:
+
+1. SharedProfile defines finite, positive anchored coefficient profiles,
+   with ordinary two-direction decimal normalization. The terminal forward
+   carry is retained. No symmetry or dynamics axiom is imposed.
+2. ProfileDynamics proves preservation of the profile conditions, support
+   growth, and propagation of the zero-run bound without symmetry.
+3. ProfileIsolation proves exact carry splitting across a zero gap,
+   finite-time autonomy of the left component, and nonvanishing of the
+   right component. Hence the left mass is strictly smaller throughout
+   the isolated time interval.
+4. UniformEscape inducts on the mass ceiling. A long initial gap invokes
+   the smaller-mass induction hypothesis; otherwise controlled gaps and
+   bounded mass imply bounded width, contradicting the support clock.
+5. DecimalEmbedding proves that padding the actual symmetric pair-sum
+   word intertwines the old numeric representation with the new profile
+   map, at every iterate. Its mass is exactly twice the ordinary digit sum.
+6. UniformDecimal discharges all profile hypotheses and proves the numeric
+   theorem and its every-time-window form.
+7. SharpProfileBounds uses positive endpoints to prove the stronger width
+   bound L <= M+(M-1)*K and improves the zero-gap propagation hypotheses.
+8. SharpUniformEscape proves the mass-one base directly and the exact E
+   recurrence, with an unconditional concrete profile escape theorem.
+9. SharpUniformDecimal transports that result to ordinary decimal integers,
+   every starting time, and the special case 196.
+
+Verification
+------------
+The initial six new modules and their unchanged standalone dependency were
+rebuilt in a fresh directory with Lean 4.19.0. The three sharp refinements
+were then compiled against that same fresh build after all seven existing
+source hashes were checked unchanged. Every exit code was zero. Separate
+post-build axiom audits also passed. The final theorems depend only on
+
+  propext, Classical.choice, Quot.sound.
+
+There are no admitted proofs, custom axioms, or native computation oracle
+dependencies. In particular Lean.ofReduceBool is absent. The finite data
+checks used in the earlier boundary-obstruction project are not imported
+into this proof. This verification concerns the actual stated decimal
+theorem, not only a conditional abstract induction.
+
+The complete source hashes, compiler output, and exact audits are recorded
+in verification.json, root_clean_compile.log, sharp_verification.json,
+and sharp_root_compile.log. The first pair records the initial coarse
+result; the second records its completed sharp refinement. Reproduce all
+ten source modules from this directory using Lean 4.19.0:
+
+  python3 compile_all.py /absolute/path/to/lean
+
+The runtime, generated .olean files, and temporary build directory need
+not be distributed. All source dependencies are included in the archive.
+
+Limits
+------
+The manuscript's exact decimal recurrence is formalized. Its general-base
+extension and the sharper decimal asymptotic constant 3/4 are still written,
+separately audited results; they are not proved by these Lean declarations.
+
+The theorem does not prove decimal Lychrel existence, the 196 conjecture,
+or pointwise digit-sum divergence. It applies equally to orbits which hit
+palindromes. No new finite palindrome-free seed was supplied by this proof.
+No claim of publication priority or external peer review is made.

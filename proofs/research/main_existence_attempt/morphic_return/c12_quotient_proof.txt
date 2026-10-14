@@ -1,0 +1,35 @@
+C12 quotient of the exact 24-phase exterior-column graph
+
+The group action rotates all twelve N/O temporal slots together in each of
+aN, aO, cN and zO. It also rotates the twelve pairs in an edge's coefficient
+column. The column equations have no distinguished temporal slot and impose
+cyclic closure, so this action is a graph automorphism. Both exterior roots
+(8/17 and 9/18) are fixed. Exact enumeration in c12_invariance_checks.json
+checks that the complete 12,288-state direct/reverse-depth-one target union
+is invariant under the action.
+
+Store one actual reached state per orbit, using a lexicographically canonical
+rotated state only as its hash key. Expand all edges from this actual state.
+The automorphism carries the successors of any other representative onto
+the successors of the stored representative, preserving successor orbits.
+Consequently this BFS explores precisely the reachable quotient graph.
+Because the target union is invariant, a reachable target orbit is reached
+through an actual target state. Every stored parent edge is an actual edge
+between the actual states, with its actual coefficient column unchanged.
+The reconstructed path is therefore globally phase-consistent without
+storing or composing rotations.
+
+For a positive intersection, append the exact suffix column from the target
+metadata, replay all 24 exterior row transitions independently, and only
+then attempt the finite-center gluing and finite integer proof. A reached
+target is not itself declared a finite Lychrel certificate.
+
+A finite state, time, or memory cap gives UNKNOWN for arbitrary exterior
+width. Only exhaustive reachable quotient closure could exclude this exact
+24-step alternating-clock exterior template; it would not exclude other
+clocks or prove decimal Lychrel nonexistence.
+
+The second root 9/18 is included even though its exact successor set is
+empty. Root independently established a stronger all-period local acyclic
+second-column obstruction. That separate statement is not needed for the
+soundness or completeness of this two-root, 24-phase quotient search.

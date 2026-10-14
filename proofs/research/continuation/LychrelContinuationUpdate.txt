@@ -1,0 +1,247 @@
+UNIFORM DIGIT-SUM ESCAPE IN REVERSE-AND-ADD ORBITS
+14 October 2026
+
+NEW UNIFORM THEOREM
+
+Fix an integer base b >= 2 and a digit-sum threshold B >= 1. There is an
+explicit waiting-time bound that works for every positive starting integer,
+independently of its digit length and of the starting time.
+
+Write T_b(n) = n + reverse_b(n), S_b(n) for the base-b digit sum, and
+kappa_b = 1 + ceil(log_2 b). Define, for positive integers M,
+
+  E_b(1) = 1,
+  E_b(M) = kappa_b * [2*(M-1)*E_b(M-1) + 2*M - 1]  for M >= 2.
+
+For every n > 0 and s >= 0, some j satisfies
+
+  0 <= j <= E_b(2*B) and S_b(T_b^(s+j)(n)) > B.
+
+Iteration continues after palindromes. Thus every block of E_b(2*B)+1
+consecutive times contains a digit sum exceeding B. Those times have lower
+Banach density at least 1/(E_b(2*B)+1). A coarse closed upper bound is
+E_b(M) <= (4*kappa_b)^(M-1) * M!.
+
+In decimal kappa_10=5: E(1)=1, E(2)=25, E(3)=525, and E(4)=15785.
+These are upper bounds, not optimal escape times.
+
+The proof extends the carry dynamics to finite nonsymmetric profiles,
+retaining the forward terminal digit. A sufficiently long zero gap makes
+the left component autonomous for a prescribed time; the right component
+remains nonzero. Induction on the permitted total mass rules out long gaps
+in a bounded-mass prefix. If all gaps are short, the width is bounded,
+contradicting the outer-column growth clock. This gives the recurrence.
+
+The complete derivation is in the manuscript and strengthening_notes.txt.
+uniform_effective_audit.txt independently checks the explicit induction
+and exact coupling. uniform_escape_audit.txt gives a separate compactness
+proof of a uniform bound. The new uniform theorem is NOT yet formalized
+in Lean. These are AI-assisted internal audits, not human peer review.
+
+Independent integer controls passed 50,972 one-step coupling cases,
+31,076 multistep separation checks, and 5,118 support-law cases. Finite
+controls check implementations and do not replace the mathematical proof.
+
+RESULT AND LIMIT
+
+Every positive decimal reverse-and-add orbit has unbounded digit sum on
+every tail. This is proved for the ordinary integer operation, with iteration
+continuing after palindromes, and is fully formalized in Lean 4.19.0.
+
+Writing T(n) = n + reverse_10(n) and S(n) for the ordinary decimal digit sum:
+
+  For every n > 0, B >= 0, and start >= 0, there exists t >= start
+  such that S(T^t(n)) > B.
+
+This includes n = 196. It does not prove that 196 avoids palindromes, that
+any finite decimal Lychrel number exists, or that none exists. It also does
+not prove that the individual digit sums converge to infinity. The result
+is unboundedness on every tail, or equivalently infinite limsup.
+
+The requested decimal existence conclusion remains unproved. Publication
+novelty and priority for the partial results have not been established.
+
+WHY THE THEOREM HOLDS
+
+Let d_i be the digits of n, indexed from the units position, and let
+q_i = d_i + d_(L-1-i). This symmetric column word has positive endpoints
+and total mass 2*S(n). Ordinary addition gives forward and backward carry
+equations, with carries in {0,1}.
+
+If both corresponding output digits vanish on an interval of length at
+least two, the old column word is all zero or all nine on that interval.
+For an overflowing step, a long new zero run comes either from an old
+run of nines, or from an old zero run that is one position longer. The
+boundary extensions are proved explicitly; gaps cannot merge arbitrarily.
+
+Consequently, a uniform digit-sum bound controls both the number of
+nonzero columns and the maximum length of every zero gap. It would bound
+the digit length of the entire orbit. But every positive reverse-and-add
+step strictly increases the integer, so digit length cannot stay bounded.
+Applying this argument to each later starting state proves the tail claim.
+
+The eight-page UnboundedDigitSums.pdf contains the complete written proof,
+under the title "Uniform digit-sum escape in reverse-and-add orbits."
+Its LaTeX source is included. The paper also proves the general-base
+unboundedness theorem and a square-root running-maximum bound. In decimal,
+if D_N is the largest digit sum at times 0,...,N, it proves
+
+  liminf_(N -> infinity) D_N/sqrt(N) >= 3/4.
+
+The general-base and sharp-constant results have written proofs and a
+separate audit in general_base_audit.txt; they are not Lean theorems.
+Neither this bound nor uniform escape proves pointwise digit-sum divergence.
+
+LEAN VERIFICATION
+
+The standalone LychrelDigitSums.lean imports Std only. It includes the
+current checked base project and five continuation modules. The principal
+declaration is:
+
+  DecimalUnboundedMass.digitSum_unbounded_after
+    (n : Nat) (hn : 0 < n) (B start : Nat) :
+    exists t, start <= t and
+      B < DecimalMass.digitSum (Lychrel196.orbit n t)
+
+Related declarations include digitSum_unbounded,
+not_eventually_bounded_digitSum, not_constant_digitSum, and
+digitSum_196_unbounded_after, all in namespace DecimalUnboundedMass.
+
+Twelve quantitative declarations were added in this revision. Let L be the
+initial decimal length, Kbar=max(L,2*B+2), and Hbar=(2*B+1)*(Kbar+1).
+DecimalQuantitativeMass.digitSum_escape proves that some
+t <= 4*(Hbar-L)+5 has digit sum greater than B, without an initial
+digit-sum assumption. DecimalQuantitativeMass.runningMax_lower_bound proves
+
+  N+4*L <= 4*(2*D_N+1)*(max(L,2*D_N+2)+1)+4.
+
+These checked bounds still depend on the initial length. They must not
+be confused with the stronger uniform paper theorem.
+
+The final standalone file compiled successfully under Lean 4.19.0. All
+61 added public theorem declarations were separately axiom-audited.
+Only propext, Classical.choice, and Quot.sound occur. No proof holes,
+custom axioms, native_decide, or unsafe declarations occur in the source.
+The final theorem has no unproved carry-propagation hypothesis: it uses
+DecimalZeroGap.zeroBound_next, proved in the same file.
+
+Standalone source SHA256:
+ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57
+
+Verification records are LychrelDigitSums.build.log,
+ContinuationAxiomAudit.lean, ContinuationAxiomAudit.log,
+continuation_theorems.json, and verification.json.
+
+CONSEQUENCES FOR THE EXISTENCE SEARCH
+
+1. The fixed-distance moving-wall proposal is now ruled out for every
+   finite C. Its all-time embedding conditions would force constant digit
+   sum 9*C, contradicting the theorem. The earlier wall identities remain
+   valid; the missing all-time finite embedding cannot be supplied.
+
+2. A positive digit-sum-preserving step cannot end at a palindrome.
+   The scalar criterion is formalized: if T(n) is a palindrome, either
+   S(T(n)) = 2*S(n), or 11*S(T(n)) = 4*S(n). This useful one-step
+   condition cannot hold as constant-sum preservation forever.
+
+3. Exact safe renewal families can increase the wall parameter:
+   C = 4*m + 2 becomes 6*m + 3 for every m >= 1. This is an all-parameter
+   construction, not only a finite search. However, the renewed family
+   survives eight further ordered updates and then fails the required
+   balance on the ninth. A symbolic proof covers every parameter. These
+   renewal results are written and independently checked, not Lean proofs.
+
+4. Every positive decimal integer with digit sum nine reaches a palindrome
+   within three additions; 180 -> 261 -> 423 -> 747 attains the bound.
+   This has a written proof and finite implementation controls, not Lean.
+
+5. No nonempty universally forward-closed safe family described solely by
+   exact length and digit sum exists, including time-indexed families of
+   such classes. This concerns universal closure of those classes, not an
+   individual orbit or arbitrary digit-dependent invariants. The proof and
+   its independent audit are in digit_mass_audit_notes.md.
+
+Finite checks support the implementations but are not proofs of infinite
+behavior. The sparse-orbit controls covered 221,869 transitions; a separate
+zero-gap audit covered 199,210 cases. These suites overlap and should not
+be added as a count of distinct cases. Bounded solver records distinguish
+UNSAT from UNKNOWN. None is reported as an all-time exclusion unless an
+explicit mathematical argument supplies that conclusion.
+
+TEN RESEARCH TASKS
+
+The previous ten distinct tasks used gpt-6-astra with maximum reasoning effort, with at
+most six subagents concurrent. Their reports and source are included:
+
+  wall_closure          quotient identities and digit-sum-nine obstruction
+  wall_renewal          renewal obstructions and exact symbolic continuation
+  sparse_orbits         unbounded digit-sum theorem and quantitative bounds
+  mass_lean             ordinary digit sums and scalar safety in Lean
+  renewal_search        growing-parameter constructions and bounded searches
+  digit_mass_audit      audit of scalar criteria and coarse-invariant limits
+  zero_gap_audit        independent proof audit and zero-gap controls
+  zero_gap_lean         local carry and zero-gap propagation in Lean
+  unbounded_mass_lean   ordinary-orbit bridge and unboundedness in Lean
+  digit_sum_prior_art   targeted primary-literature comparison
+
+Four agents were reused for this publication follow-up:
+
+  digit_sum_prior_art   primary-source gaps and attribution
+  sparse_orbits        uniform theorem and independent integer controls
+  zero_gap_lean        general-base, sharp-bound, and compactness audits
+  unbounded_mass_lean  quantitative Lean and explicit uniform-proof audit
+
+The coordinating pass checked the proofs, assembled and recompiled the
+standalone source, audited all 61 added declarations, integrated the
+eight-page manuscript, and reviewed its rendered pages. The earlier
+renewal and zero-gap checker replays remain recorded.
+
+LITERATURE AND ATTRIBUTION
+
+digit_sum_prior_art_notes.txt records the inspected primary sources and
+coverage gaps. Styer's 1986 manuscript already uses symmetric carry
+encodings, zero separators, and a bound on residence at fixed width.
+Prosper and Veigneau use the equivalent pair-average representation. The
+exact digit-sum theorem and zero-gap inheritance bound were not located
+in the inspected sources; that limited search does not establish novelty.
+publication_prior_art_addendum.txt records the follow-up source work.
+Harborth's full 1973 paper was newly obtained and read. The final 2001
+Prosper--Veigneau article, Trigg's 1967 and 1972 Mathematics Magazine papers,
+and Yamashita's 1997 article remain full-text gaps. The inspected
+Prosper--Veigneau text is the 1997 preprint, not the final publication.
+The uniform recurrence was developed after the targeted literature pass;
+a comprehensive prior-art review specifically of that stronger theorem
+has not been completed. No submission or acceptance is claimed.
+OpenAI language models substantially assisted the arguments, code,
+manuscript, internal audits, and source searches.
+
+REPRODUCTION
+
+Install Lean 4.19.0 and its matching Std library. The standalone file
+requires no mathlib and no additional project dependencies. From the
+archive's continuation directory:
+
+  lean -o LychrelDigitSums.olean LychrelDigitSums.lean
+  LEAN_PATH=. lean ContinuationAxiomAudit.lean
+
+The source modules can be recombined with:
+
+  python3 build_standalone.py
+
+The script uses the preserved Lychrel196Research.lean in the parent
+directory. It also supports this task's working layout, where that
+authoritative base is under research/. Regenerating the standalone source
+produces the hash above.
+Representative independent checks, using Python's standard library:
+
+  python3 strength_uniform_check.py
+  python3 sparse_orbits_check.py
+  python3 zero_gap_audit_check.py
+  python3 renewal_search_family_check.py
+  python3 wall_renewal_check.py
+
+Some optional discovery scripts use z3. They are not needed for the Lean
+proof, the written proof, or the five checks above. The archive preserves
+the previous research files and adds this continuation under continuation/.
+Historical reports retain their original scope; the current status and
+README identify conclusions superseded by the new theorem.

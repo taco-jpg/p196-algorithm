@@ -1,0 +1,157 @@
+ALL-TEMPORAL-PERIOD REVERSE OBSTRUCTION FOR THE 936/12159 EXTERIOR
+14 October 2026
+
+Result and scope
+----------------
+An exact finite graph certificate excludes a fixed finite-width exterior
+in the prescribed 8/17 branch, with the indefinitely alternating N,O clock
+and any of the twelve phase/orientation/complement periodic tails obtained
+from (9,3,6) and (9,12,15). The exclusion holds for EVERY positive temporal
+period, not just period24, and for EVERY finite exterior width.
+
+This does not exclude another overflow clock, a changing/moving exterior,
+another bulk domain, or a nonperiodic finite construction. It does not prove
+decimal Lychrel existence or nonexistence, and supplies no seed. The checked
+finite certificate has now been formalized for the explicit arithmetic
+column relation in ../lean/. All seven modules compile in Lean 4.19.0.
+The finite checks use native_decide and Lean.ofReduceBool; the global
+correspondence to ordinary decimal orbits remains a written argument.
+See ../lean/FORMAL_STATUS.txt for the exact formal endpoint and trust scope.
+
+Why a temporal ring is the right object
+--------------------------------------
+Use an arbitrary positive number n of N/O pairs; the temporal period is
+2n. A cut state is now a cyclic word of length n over the 88-letter alphabet
+
+  (a,b,c,z) in {0,1}^3 times {-1,0,...,9}.
+
+No step of the following construction chooses or bounds n. The local exact
+inverse equations are those proved in REVERSE_CLOSURE_PROOF.txt, with indices
+in Z/nZ instead of Z/12Z. The exterior root is the constant cyclic word in
+the letter r=(0,1,1,7). Its code is41 under the encoding
+
+  code(a,b,c,z) = (((2a+b)*2+c)*11) + z+1.
+
+The periodic bulk cuts have minimal temporal period six N/O pairs. All
+twelve specified bulk phases belong to two temporal-rotation classes of
+these six-letter words. Graph G0 is the disjoint union of their two directed
+six-cycles, with each edge labeled by its corresponding cut letter. Thus
+G0 accepts every target cyclic word at every compatible temporal period.
+
+Cyclic languages and exact predecessor graphs
+--------------------------------------------
+An edge-labeled finite directed graph G accepts a cyclic word w of length
+n>=1 iff there is a closed walk of n edges whose ordered labels are w.
+
+For every letter s, let Options(s) be its exact local inverse fiber. These
+fibers have at most two members and are exhaustively checked by ordinary
+forward decimal arithmetic. Write Output(x,y) for the prior cut letter
+determined by adjacent options x and y; leave it undefined when their
+compatibility inequalities fail.
+
+Construct the raw predecessor graph H=PreRaw(G) as follows:
+
+  vertices: pairs (e,x), where e is a labeled edge of G and
+            x belongs to Options(label(e));
+
+  edges: (e,x) -> (f,y) whenever target(e)=source(f) and
+         Output(x,y) is defined;
+
+  edge label: Output(x,y).
+
+This is an exact predecessor-language construction. If a new cut word is
+accepted by G and a prior cut word maps to it by one spatial column, choose
+the accepting closed walk e_j and the inverse options x_j supplied by that
+column. The pairs (e_j,x_j) give a closed walk in H whose labels are the prior
+word. Conversely a closed walk in H gives a closed walk in G and a compatible
+cyclic sequence of inverse options, so the local inverse-completeness proof
+gives the corresponding spatial edge. The argument holds for all n>=1.
+
+Trimming and the finite closure cycle
+------------------------------------
+Delete every edge of H that belongs to no directed cycle. Equivalently,
+retain only edges inside a nontrivial strongly connected component or a
+self-loop. A finite closed walk lies wholly inside one strongly connected
+component, so this trimming preserves exactly the cyclic language.
+
+Starting from G0, exact predecessor construction followed by trimming gives:
+
+   graph      vertices    edges
+   G0             12        12
+   G1             22        40
+   G2             60       178
+   G3            136       484
+   G4            342      1322
+   G5            456      1802
+   G6            456      1802
+   G7            456      1802
+   G8            456      1802
+
+The saved G8 is EXACTLY equal to G5, including the numbered edge lists.
+This is not an inference from equal vertex or edge counts. Therefore the
+union of the cyclic languages accepted by G0,...,G7 is closed under spatial
+predecessors: the successor graph index is k+1 for k=0,...,6, and5 for k=7.
+
+Proof-carrying finite certificate independent of an SCC implementation
+--------------------------------------------------------------------
+sofic_rank_certificate.json stores the eight graphs, totaling1,940 vertices
+and7,442 edges. For each raw predecessor graph it supplies two arrays:
+
+  rank[u]     : a natural-number rank on raw vertices;
+  mapping[u]  : a retained vertex of the next graph, or -1 if removed.
+
+The checker exhaustively verifies for EVERY raw labeled edge u -(l)-> v:
+
+  rank[u] <= rank[v];
+  if rank[u]=rank[v], both mappings are defined and
+     mapping[u] -(l)-> mapping[v] is an edge of the destination graph.
+
+Around any finite closed walk, a nondecreasing sequence of natural ranks
+returns to its starting rank, so all ranks are equal. Hence all walk edges
+project to a labeled closed walk in the destination graph. These finite
+local checks alone prove the required predecessor-language inclusion.
+One does not have to trust the SCC procedure that originally found them.
+
+Root exclusion
+--------------
+The same certificate supplies a root-only rank for every graph. For EVERY
+edge labeled r=(0,1,1,7), its source rank is strictly less than its target
+rank. A positive-length closed walk all of whose labels are r would give
+a strict rank increase back to its starting vertex, a contradiction.
+Thus the constant root word r^n is rejected by every G0,...,G7 for every
+n>=1. A separate structural audit observes the stronger short-factor fact
+that no accepted word contains three consecutive r letters; the general
+rank exclusion already suffices here.
+
+All-width conclusion
+--------------------
+Suppose a finite exterior of width k exists at some temporal period2n.
+Its cut after the first mandatory8/17 column is r^n. Every subsequent
+column gives one exact spatial graph edge, and the final cut is one of
+the accepted periodic bulk target words. Starting at that target and
+following the finite sequence of spatial predecessors puts every earlier
+cut in the union of the eight accepted languages. In particular r^n must
+belong to that union, contrary to root exclusion. This contradiction is
+independent of k and n.
+
+Verification files and independence
+----------------------------------
+sofic_reverse.py constructs the graphs using an iterative Kosaraju SCC pass.
+check_sofic_certificate.py independently reconstructs every raw graph, uses
+a Tarjan SCC pass, checks exact equality G8=G5, verifies all target phases,
+and generates and rechecks the local rank/projection inequalities. Root-only
+acyclicity is checked by a separate Kahn topological pass. The local inverse
+table is regenerated by exhaustive forward decimal normalization.
+
+The rank certificate SHA256 is
+  22ed79d848ec883fdd0d39dedb73c0f4665637addc18b673975381d78f04d493.
+
+The independent Python replay completed successfully; see
+sofic_independent_check.json. A third audit by the coordinating researcher,
+../root_sofic_audit.py, imports no search/checker code: it independently
+regenerates the inverse fibers by forward divmod arithmetic, reconstructs
+all raw edges, verifies every rank/projection condition and root rank, and
+checks the twelve target periods against G0. It also passed; see
+../root_sofic_audit.json. This new all-period statement strengthens the
+older39,194-orbit period24 certificate; it does not turn the still-missing
+finite decimal Lychrel existence proof into a theorem.

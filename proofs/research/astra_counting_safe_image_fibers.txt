@@ -1,0 +1,167 @@
+TWO SAFE INCOMING ITERATES DO NOT REDUCE THE OVERFLOW FIBER RATE
+Status: exact arbitrary-length obstruction to a proposed counting bound.
+This is not a proof of a decimal Lychrel seed.
+
+Definitions
+-----------
+A canonical pair-sum word q is a nonempty symmetric word over 0,...,18,
+with q[0]>0 and an even center when its length is odd. It is realizable
+as the mirrored digit sums of a positive finite decimal integer.
+G(q) is the mirrored pair-sum word of sum_i q[i] 10^i.
+Call q safe if this numeric reverse-add output is not a palindrome.
+The exact unsafe patterns are (i) every coefficient <=9, or (ii) outer
+coefficient11 and all coefficients in{0,11}.
+
+THEOREM
+-------
+For all integers m>=0 and k>=1, set L=2(m+k+7). There is one canonical
+word r of width L+1 with at least 2^m different width-L words q2 such that:
+
+  * G(q2)=r, and this transition overflows;
+  * q2=G(q1), q1=G(q0), with both transitions non-overflowing;
+  * q0,q1,q2 are safe;
+  * r,G(r),...,G^(k-1)(r) are safe.
+
+The words q0 are distinct canonical pair-sum words of actual finite
+positive seeds. Choosing any decimal realization gives non-palindromic
+starting seeds, because q0 has odd outer coefficient3. Their numeric
+reverse-add orbits have no palindrome at indices0 through k+3, and all
+merge at numeric index4.
+
+Consequently the maximum overflow-fiber exponential rate stays2 per
+mirrored input pair even after imposing TWO incoming safe history steps
+and any fixed k-step future safety requirement. More quantitatively,
+the displayed restricted fiber has size at least
+
+    2^(L/2-k-7).
+
+The unrestricted sharp maximum is2^(L/2-1), so the loss is only the
+constant factor2^(k+6), independent of L. No uniform bound of the form
+C_k rho^(L/2), with rho<2, can hold for this restricted family.
+
+Construction
+------------
+Use alphabet A=5 and B=14. For every free word w in{A,B}^m, append a
+six-symbol correction v(w), defined by the 16-state table below. Form
+
+    half(q2) = (14), w, v(w), (18 repeated k times),
+    q2       = half(q2), reverse(half(q2)).
+
+All q2 have the same overflow image
+
+    r = (5, 10^(m+6), 14, 18^(2k-1), 14, 10^(m+6), 5),
+
+where powers denote repeated coefficients. Indeed, none of the input
+coefficients equals9. In an overflow update define
+rho(x)=x-9*[x>=10]. Here rho(5)=rho(14)=5 and rho(18)=9; every interior
+new coefficient is the sum of adjacent rho values, and the outer
+coefficient is14-9=5. This yields the displayed r exactly.
+
+Two-layer inverse automaton
+---------------------------
+For one non-overflow inverse layer, state(a,b) stores the low incoming
+carry and high outgoing carry. On target coefficient s, solve
+
+    floor((x+a)/10)=a', floor((x+b')/10)=b,
+    ((x+a) mod10)+((x+b') mod10)=s.
+
+The next state is(a',b') and the emitted predecessor coefficient is x.
+For target s other than0,9,18 the next state is deterministic:
+
+    E, for even s: 00->00, 01->10, 10->01, 11->11;
+    O, for odd  s: 00->01, 01->11, 10->00, 11->10.
+
+Compose two inverse layers. Let their states be(u,v). On a target5,
+the first predecessor coefficient is2 or12, so the joint transition is
+
+    T_A(u,v)=(O(u),E(v)).
+
+On a target14 the first predecessor coefficients for
+u=00,01,10,11 are respectively7,17,6,16. Therefore
+
+    T_B(u,v)=(E(u),O(v)) if the first bit of u is0;
+             (E(u),E(v)) if the first bit of u is1.
+
+Each is a permutation of the16 joint states. All intermediate target
+symbols used above lie in{2,6,7,12,16,17}, so no exceptional inverse
+transition is hidden in this description. Begin at(00,00). Reading
+the initial14 emits predecessor coefficients7 and3, and leaves state
+(00,01). Read the free word w and call the resulting joint state(u,v).
+
+Append the following six-symbol correction, with A=5 and B=14:
+
+    u    v      correction
+    00   00     BBAABB
+    00   01     BAABBB
+    00   10     ABBABB
+    00   11     AABBBB
+    01   00     BAABBA
+    01   01     BBABBB
+    01   10     AAABAA
+    01   11     ABBBBB
+    10   00     ABBAAB
+    10   01     AABBAB
+    10   10     ABAABB
+    10   11     BABBBB
+    11   00     AABBAA
+    11   01     AABAAB
+    11   10     AAABBA
+    11   11     BBBBBB
+
+Direct application of T_A and T_B verifies that every row ends at
+(11,11). At this state, target18 emits predecessor18 in each layer
+and leaves(11,11) unchanged. Thus appending k copies of18 ends with
+matching carries at the even center of both inverse words. The two
+non-overflow inverse layers are valid for the entire reflected words,
+not only for their prefixes. Their outer coefficients7 and3 are
+positive. They both contain the same central18 block of length2k.
+
+Safety and counting
+-------------------
+The central18 blocks make q0,q1,q2 safe by the exact unsafe-pattern
+criterion. The output r has a central18 block of length2k-1. Under G,
+a central constant18 block loses at most two positions per iteration:
+inside that block the carry is1, each output digit is9, and interior
+mirrored pairs remain18. Thus a nonempty18 block remains for every
+j=0,...,k-1 in G^j(r), proving the future safety claim.
+
+Different w give different q2, because w occupies the same initial
+positions of their half-words. Their q0 must also be different since
+G^2(q0)=q2. There are exactly2^m choices of w. For any realization n0
+of q0, the pair sums at numeric times0,1,2,3 are q0,q1,q2,r. Therefore
+the numeric values at time4 are all sum_i r[i]10^i, independent of w.
+
+Verification and example
+------------------------
+astra_counting_safe_fiber_certificate.py checks the16-state local table,
+all16 correction paths, both permutation claims, and the18 self-loop.
+These finite identities plus the construction prove all m and k.
+The saved JSON contains the complete finite certificate.
+
+As an independent control, the program constructs literal decimal
+integers for every m<=8 and k=1,...,5:2555 seeds in total. It checks
+each claimed transition, each finite avoidance interval, and the common
+fourth numeric iterate by ordinary integer addition and string reversal.
+
+For m=2,k=2 the four seeds are
+
+    3959099999999861407020
+    3981399999999861400020
+    3999999999999888886140
+    3990999999999886390440
+
+and their common fourth iterate is61111111159995111111105.
+
+What remains open
+-----------------
+The theorem disproves an exponential contraction obtained merely from
+two incoming image constraints, even with any fixed future safety
+horizon. It neither proves nor disproves contraction when the incoming
+depth grows with the current width. A finite-seed all-time proof needs
+that growing-depth regime, or a different structural mechanism.
+
+The construction varies its finite starting seeds with m and k. It
+does not exchange the quantifiers to claim one seed survives forever.
+No bound on total first-hit probability, no positive uniform survivor
+fraction for a fixed seed ensemble, and no decimal Lychrel witness
+has been established.

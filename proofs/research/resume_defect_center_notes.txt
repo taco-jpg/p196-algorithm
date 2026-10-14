@@ -1,0 +1,108 @@
+Finite centers and growing seams for the period-four A bulk
+
+This is a reproducible research continuation, not a Lychrel proof.
+No finite exterior/center certificate has been found.
+
+The bulk A=(3,10,15,8) has the exact four-step N,O,N,O cycle recorded in
+resume_defect_renewal.txt. A finite candidate must glue an A annulus to
+its reflected annulus at the center. Supplying the alternating overflow
+schedule is conditional: a finite exterior producing it remains required.
+
+1. Exact center evaluator
+
+Place a symmetric finite core C between A^m and reverse(A)^m. The input
+carry from the omitted outer periodic bulk is fixed by its preceding
+non-9 symbol. Carry arithmetic through this finite window is exact.
+At a no-overflow step, retain the entire resulting symmetric window.
+At an overflow, discard the outermost pair of the growing output window;
+this avoids assigning unknown exterior digits. Hence eight overflows in
+16 steps shorten the retained window by8 digits, although the complete
+integer would have grown by8 digits. A fixed center with one additional
+A repetition on each annulus would therefore satisfy
+
+    F16(A^m C reverse(A)^m)=A^(m-1) C reverse(A)^(m-1)
+
+in the retained-window convention.
+
+The implementation in resume_defect_center.py was checked against ordinary
+integer reverse-and-add on1000 generated canonical decimal integers,
+including both length parities and both overflow outcomes. This validates
+the local-window convention; the carry identities justify it exactly.
+
+2. Fixed and expanding cores
+
+No fixed16-step center was found among the16760 nonempty symmetric cores
+with at most2 pairs and an optional even-valued center, across all four
+rotations of A. This is a bounded statement only.
+
+For a more permissive construction, after each16-step return strip only
+complete A blocks from the two outer sides. Allow the remaining center
+to grow. The full numeral gains8 digits per return, so center growth8
+preserves the amount of A annulus, whereas growth16 consumes one A block
+from each side. Thus repeated growth8 could have supplied a different
+kind of certificate without a repeating center word.
+
+Including the empty center gives16764 initial cores. On the first return,
+every tested center grows by either8 or16. For rotations0 and2,945 of4191
+grow by8; for rotations1 and3,127 do. Keeping only trajectories whose
+every return grows by at most8 gives these survivor counts:
+
+rotations0/2:
+945,216,51,16,14,6,6,6,4,4,4,4,4,4,4,4,4,4,4,0.
+
+rotations1/3:
+127,22,4,2,2,0.
+
+The core(1,13,6,13,1), for example, sustains growth8 for19 returns before
+growth16 at the20th. These long finite transients do not establish any
+all-time statement. A closed growing-core language remains missing.
+
+3. A different three-domain construction
+
+The uniform q bulk6 alternates with12 under either overflow flag. Its
+actual digit bulk alternates3 and6, so it admits a simple symmetric
+center. This suggests gluing
+
+    A annulus -- finite travelling interface -- uniform6/12 central bulk
+
+and reflecting the entire construction on the other side.
+
+For16-step return families, let each A annulus grow by v symbols, where
+v is a multiple of4. Then the central6 bulk would grow by8-2v symbols.
+Both v=0 (growing center) and v=4 (fixed-width central bulk) are relevant.
+A stationary interface in absolute column coordinates realizes v=0;
+an interface shifting4 columns inward realizes v=4.
+
+The q-digit-sum congruence is
+
+    Delta S = 18v + 6(8-2v) = 48+6v,
+    Delta S = (2^16-1) S_0 = 6 S_0 (mod9),
+
+so v = S_0+1 (mod3). It is incorrect to impose Delta S=0 merely from a
+16-step return: 2^16=7, not1, modulo9. The initial boundary/core residue
+must be included. For a central12 phase, replace6 by12 in the same
+calculation.
+
+No stationary or speed4 interface was found with at most2 exceptional
+q symbols, across four A rotations and both6/12 core phases. This small
+interface enumeration is not an arbitrary-width exclusion. A separate
+exact spatial carry-graph search subsequently resolved both velocities
+at arbitrary finite interface width within this16-step model. The
+stationary-interface graph and the separately derived moving-interface
+graph each have256 raw states and256 edges for each uniform3/6 target,
+with no A bulk state. The moving graph was checked against the existing
+two-growth interior construction and the four A bulk-cycle edges.
+These graph results rule out this three-domain connector ansatz; they
+do not rule out other bulks, aperiodic interfaces, or decimal existence.
+
+Commands:
+
+    python3 resume_defect_renewal.py
+    python3 resume_defect_center.py --validate
+    python3 resume_defect_center.py --pairs 2
+    python3 resume_defect_center.py --renewals
+    python3 resume_defect_interface.py --width 2
+
+The last command currently enumerates speed4 only; stationary tests use
+travels(core,left,(6,),shift=0) or the corresponding12 phase. Neither
+finite testing nor an infinite periodic bulk settles decimal existence.

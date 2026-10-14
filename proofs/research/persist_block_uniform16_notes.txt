@@ -1,0 +1,72 @@
+The uniform16 candidate and its exact exterior target
+
+STATUS. No infinite decimal orbit is certified. The following reductions are
+exact; capped spatial reachability searches remain inconclusive.
+
+The family q=(8,16^k,8) is not among the thirty period24 bulk phases covered
+by the earlier width16 exclusions. Those phases were selected from period3
+words B satisfying sum(B)=0 modulo9. Uniform B=(16,16,16) has sum3 modulo9.
+
+However it is exactly the previously considered Brown72 uniform-core case,
+up to one time step. Starting with outer triple(8,16,16), one nonoverflow
+step produces(17,13,14) and changes the uniform16 bulk to14, the initial
+phase in continuation_brown_boolean.py. Thus rerunning that bounded search
+would duplicate earlier work.
+
+Why72, not24
+------------
+The uniform pair-sum phase cycle is
+  16 ->14 ->10 ->2 ->4 ->8 ->16.
+It follows under either overflow flag away from interfaces. The forced
+maximal-growth exterior has period8, so the first common return is24 steps
+with12 new digits. But a fixed-boundary, fixed-center family expanding only
+its uniform16 domain by12 positions gains16*12/2=96 in decimal digit sum.
+This is6 modulo9, whereas reverse-and-add repeated24 times preserves the
+number modulo9 because2^24=1 modulo9. Such a full period24 family cannot
+close. Since each half-bulk value8,7,5,1,2,4 is coprime to9, closure requires
+the digit gain to be a multiple of9. Combined with the period24 condition,
+the first compatible full return is72 steps and36 new digits.
+
+This argument concerns a fixed return family. A changing or growing center
+could absorb a digit-sum discrepancy and is not excluded by the argument.
+
+Exact spatial target
+--------------------
+Use the exterior E graph of continuation_theory_multigrowth.py with36
+segments of length2. Each segment starts before N and ends with O. The
+uniform actual digit phase at segment starts is8,5,2, repeated12 times.
+Both incoming/outgoing temporal carry masks are3,1,0, repeated12 times.
+Consequently the target state is
+  left digits = (8,5,2)^12,
+  left masks  = (3,1,0)^12,
+  right masks = (3,1,0)^12.
+It has an exact spatial self-loop with digit pair(8,8). The exterior head
+is left digits all1, left masks all2, right masks all0.
+
+persist_block_uniform16.py checks the self-loop directly using each local
+two-step addition relation; this avoids incomplete successor enumeration.
+It then attempts exact backwards reachability from the uniform target.
+
+Recorded scope
+--------------
+For3 segments (period6), the backward graph closes with207states and207edges,
+without an exterior head. This excludes only that primitive temporal period.
+For12 segments (period24), the graph exceeds20,000states and is incomplete.
+For36 segments (period72), a3second cap is reached before the first complete
+predecessor enumeration. Neither capped run proves exclusion or existence.
+
+The boundary agent also attempted all-period temporal-language invariants.
+Inward inverse languages have vertex counts3,6,9,16,42,91,197,472,1213,2992,
+7563 through depths0,...,10, with no exterior head. The next exact inverse
+hit a one-million-edge limit. The dual exterior-to-core direction has counts
+3,12,33,24,192,984,5451 through depths0,...,6, with no uniform target, before
+an exact transition cap. Finite-lookahead merging either grew too quickly
+or introduced a spurious accepting path. These are bounded-depth exclusions
+and incomplete abstractions, not an arbitrary-width obstruction. No complete
+inductive certificate for this uniform-core exterior has been obtained.
+
+Numerical realization does not add a hidden restriction: all positive canonical
+numbers realizing a given q word have the same first reverse-and-add result.
+For q=(8,16^k,8), that result is exactly
+  88*(10^(k+1)-1)/9.
+For k=3, the example18887 therefore gives97768 at its first step.

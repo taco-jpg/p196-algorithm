@@ -1,0 +1,119 @@
+EXACT PERIOD-THREE ACTUAL-DIGIT PUMP MODEL
+
+Status: no decimal Lychrel witness was found. The results below exclude only
+specified periods, growth totals and bounded exterior widths in this model.
+No all-width or all-period nonexistence statement is claimed. No concrete
+construction or new result in this note is formalized in Lean.
+
+1. Family and one-step identity
+
+Let k>=1, 10^(k-1)<=A<10^k, 0<=B<10^k, U=(u0,u1,u2) with digits 0..9,
+and r in {0,1,2}. Set M=3m+r for every m>=1. Digits of the core are listed
+least-significant first: u_j=U[j mod 3]. The complete integer has k low digits
+B, then the M core digits, then k high digits A. Leading zeros in B are retained
+when taking its fixed-width reverse. Denote this integer N(A,B,U,M,k).
+
+At a core position j, the mirrored digit comes from index M-1-j, hence its
+pair sum is q_j=U_j+U[(r-1-j) mod 3]. This is spatially periodic with period 3.
+Compute B+rev_k(A)=B'+10^k*c0. Require the three core carries c0,c1,c2,c3
+satisfy c3=c0, with
+  q_j+c_j = V_j+10*c_(j+1), 0<=V_j<=9, c_j in {0,1}.
+Then the low output cap is B', every core output digit is V[j mod 3], and the
+carry into the high cap is c_r, independently of m.
+
+Put H=A+rev_k(B)+c_r. There are exactly two cases:
+  H<10^k: A'=H, h=0, M'=M.
+  H>=10^k: require H mod10=V_r; set A'=floor(H/10), h=1, M'=M+1.
+In the second case the low digit of H becomes the new high digit of the core;
+it has the required phase r because the old core had length M congruent r.
+The high cap still has k digits, with leading digit1. In either case,
+  reverseAdd(N(A,B,U,M,k)) = N(A',B',V,M+h,k).
+The next residue is r'=(r+h) mod 3. This follows column by column for every
+m>=1; it is not an extrapolation from testing a few numerical instances.
+
+2. Conditional existence certificate
+
+Suppose p phases satisfying the one-step equations return to the same A,B,U,r,
+and the number G of overflow phases is positive and divisible by3. Then
+  reverseAdd^p(N_m)=N_(m+G/3)
+for every m>=1. If each phase has either a cap mismatch
+  A_i != B_(k-1-i)
+for some i, or a core mismatch U_j != U[(r-1-j) mod 3] for some j, its integer
+is nonpalindromic for every m>=1. Those mismatches are sufficient because
+every residue class mod 3 occurs in each core. Induction through the temporal
+cycle would then prove that every family member is a decimal Lychrel number.
+This is the sought positive certificate; none was obtained.
+
+3. Search restrictions and sound symmetry reductions
+
+The search restricts U to be nonconstant, because a different search branch
+handles constant cores. It is otherwise free in the overflow clock. All three
+initial residues are searched. A positive-growth temporal loop can be rotated
+to begin just after an overflow, so the optional H[p-1]=true condition is sound
+when the results for all three initial residues are combined.
+
+A second optional restriction exhaustively enumerates the finite local bulk
+graph (U,r), with both possible incoming carries and both overflow choices,
+and retains exactly start states with a length-p return and total growth G.
+There are 108,894,264 such nonconstant starts for (p,G)=(8,3),(12,3),(16,6),
+respectively. This graph only ignores cap feasibility and thus cannot remove
+an actual satisfying pump. Every transition in the SMT model still enforces
+the cap equations and bulk carry equation explicitly.
+
+Larger caps contain all smaller-cap pumps. Move one digit at either end of
+the core into the caps:
+  k_new=k+1,
+  A_new=10*A+U[(r-1) mod 3],
+  B_new=B+10^k*U[0],
+  U_new[j]=U[(j+1) mod 3],
+  M_new=M-2, r_new=(r-2) mod 3.
+After reindexing m, this gives the same integer family for every sufficiently
+large m, preserves the period and growth, and still has a period-three cyclic
+carry pattern. Restriction to a tail suffices because the resulting family
+identities hold for all m>=1 after reindexing. Consequently UNSAT at exterior
+width K for all three residues excludes every smaller exterior width as well.
+It says nothing about widths greater than K.
+
+4. Verification and bounded search outcomes
+
+The independently written literal-integer checker sampled 100,000 setups with
+fixed seed 196. It found 25,948 admissible one-step families (including 3,221
+overflow absorptions) and checked 103,792 full integer reverse-add identities
+at m=1,2,3,7. These tests audit the implementation; the column argument above
+establishes the all-m mathematical identity.
+
+QF_BV arithmetic uses five bits per digit/carry expression. Each true column
+sum is at most 19, so none of the arithmetic can wrap modulo 32. The overflow
+counter has enough bits to hold p. Bit-blasting and Tseitin conversion produce
+CNF; each generated DIMACS header is checked against every clause and literal
+before passing to CaDiCaL 2.1.3. These are solver-reported UNSAT results, not
+kernel-checked Lean or independently proof-checked DRAT/LRAT certificates.
+
+Strongest combined three-residue completed bounds:
+  period 8, total growth 3:  every exterior width k<=64 excluded.
+  period 12, total growth 3: every exterior width k<=16 excluded.
+  period 16, total growth 6: every exterior width k<=16 excluded.
+
+Additional incomplete larger queries:
+  (12,3), k=32: all three residues timed out after 10 seconds.
+  (16,6), k=32: residues 1,2 UNSAT; residue 0 timed out after 10 seconds.
+Neither row excludes the full larger-width class. No SAT candidate appeared.
+
+5. Reproduction files
+
+exist_periodic_bulk.py                    Exact SMT/CNF model and bulk graph
+exist_periodic_bulk_cadical.py            DIMACS audit and CaDiCaL runner
+exist_periodic_bulk_formula_check.py      Independent literal-integer checker
+exist_periodic_bulk_formula_checks.json   Arithmetic audit results
+exist_periodic_bulk_p8_g3_cadical.json     Largest completed period 8 sweep
+exist_periodic_bulk_p12_g3_cadical.json    Period12 sweep including unknowns
+exist_periodic_bulk_p16_g6_cadical.json    Period16 sweep including unknowns
+exist_periodic_bulk_cnf_*.log             Full CaDiCaL logs
+
+Run, for example:
+  python3 exist_periodic_bulk_formula_check.py
+  python3 exist_periodic_bulk_cadical.py --period 8 --growth 3 --widths 64
+
+The runner's CADICAL constant is the local solver path and may need adjustment
+on another machine. No claim about the unrestricted decimal existence problem
+follows from the negative bounded searches.

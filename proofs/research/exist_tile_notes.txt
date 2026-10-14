@@ -1,0 +1,116 @@
+FULL-CARRY-TILE INVARIANT SEARCH: EXACT OUTCOMES
+
+This branch did not prove decimal Lychrel existence. The any-seed grammar
+search remains UNKNOWN. The results below exclude explicitly defined proof
+abstractions for 196 and 18887, not the integers themselves.
+
+Representation and grammar class
+--------------------------------
+A folded word w=(p,c) represents the symmetric pair-sum word
+p ++ [c] ++ reverse(p), omitting c for even width. Every p entry lies in
+0..18, its outer entry is positive, and an odd center c is even in 0..18.
+G(w) is the pair-sum word after one ordinary decimal reverse-and-add step.
+The fixed 46-state transducer records overflow, the low incoming carry,
+the high outgoing carry, and the previous high output digit where needed.
+A full tile is a labeled edge with BOTH endpoint states, or a center tile.
+A tile language accepts every valid transducer path all of whose tiles lie
+in a specified allowed set. This permits spatial recombination; it is much
+coarser than an exact orbit or an arbitrary regular language.
+
+Positive synthesis attempt and Horn simplification
+--------------------------------------------------
+For the composed G/G transducer, forward reachability and backward
+co-reachability with allowed FIRST-row tiles determine exactly which
+SECOND-row tiles occur on a complete accepted path. All such output tiles
+must be allowed. Thus safety and closure admit a Horn implication encoding:
+83,363 clauses, 3,731 variables, including 1,123 tile variables.
+Only nonemptiness needs a non-Horn ranked accepting witness.
+
+A least-Horn-closure computation contradicts safety for seed 196 in about
+0.1s, and likewise for 18887. The any-seed full solver reached its45 s timeout.
+A lazy learner instead proposed accepting paths, extracted Horn-conflict
+cores, and checked 2,964 such candidates in 70 s. No positive invariant was
+found. Adding those learned clauses to the full solver still timed out.
+These outcomes are UNKNOWN for the unrestricted any-seed grammar class;
+no UNSAT statement is made for that class.
+
+Small fixed-grammar obstruction for 196
+--------------------------------------
+Four closure applications suffice, with spatial tile recombination between
+them. Write (p;c), and '-' for no center:
+ (7;18) -> (15;16) -> (6,13;-).
+The tiles now available also accept (6;18). Therefore closure forces
+ (6;18) -> (13;16) -> (4,11;-).
+The last word maps to (9,3;-), all of whose full pair sums are <=9, hence
+its following reverse-and-add output is a palindrome. A safe closed tile
+language containing196 cannot exist. This does NOT say that the actual
+196 orbit contains the recombined word (6;18).
+Certificates: exist_tile_derivation_196.json (four steps, 11 tiles),
+exist_tile_derivation_18887.json (27 steps, 49 tiles).
+
+Arbitrary time dependence
+-------------------------
+Allowed tiles may vary freely with time; no periodic clock is assumed.
+Projection of all accepted images forces a spurious two-step-palindrome
+word by stage 16 from196 and stage 7 from18887. A finite certificate lists,
+for every needed forced tile, an explicit accepted input word and its exact
+image containing that tile. Each input uses only previously forced tiles.
+The proof is induction over this finite dependency certificate.
+The independent checker recomputes complete carry-tile signatures directly
+from elementary decimal arithmetic; it imports no discovery or SAT code.
+
+Strengthening by actual arithmetic invariants
+--------------------------------------------
+The same construction was repeated with separate width-parity tile sets
+and exact digit-sum residue: half the full q sum is r_t mod 9, where
+r_(t+1)=2*r_t mod 9. The required seed 196 residue is r_0=7.
+Then alternating q value modulo 11 was imposed from time 6 onward. This is
+valid for 196 since its third iterate 7436=11*676, and reversing a multiple
+of11 remains divisible by 11. For an odd-width word the required residue is
+  2*sum_i((-1)^i*p_i) + (-1)^len(p)*c == 0 mod11.
+For even width the symmetric q word is automatically zero modulo 11.
+Finally, separate length classes modulo 4, 8, 16, 32 were tested together with
+both digit-sum and modulo 11 restrictions. Every tested abstraction still
+fails at stage 16 for 196. The recorded certificates are independent of
+any numeral-width cutoff. Individual certificates establish only the
+listed modulus; no assertion for every possible modulus is made.
+
+Examples of the forced spurious word at stage 16:
+* Residue mod 9 + parity: (16,0,15;0), full qsum 62 ==8 mod18.
+* Additionally mod11: (16,0,2,0,2,0,2;0), qsum 44 ==8 mod18 and
+  alternating qsum 44 ==0 mod11.
+* Additionally length mod 8: (16,0,0,16,1,2,2,2;2), length 17 ==1 mod 8,
+  correct residue mod 9 and mod11. Its image is (7,7,0,7,8,3,4,4,4;-),
+  a palindrome predecessor.
+
+Precise finite-certificate theorem
+---------------------------------
+For each listed filter configuration, there is no sequence of tile sets
+A_t (or A_(t,length class)), t>=0, such that:
+  (1) the seed's folded pair-sum word is accepted at time 0;
+  (2) every accepted word satisfies the configuration's filters;
+  (3) G takes every accepted word at time t to an accepted word at time t+1;
+  (4) no accepted word has a palindrome-predecessor image under G.
+The certificates force a word violating (4) after 16 or 7 time transitions.
+There is no Lean formalization of this concrete certificate theorem yet.
+
+Reproduction
+------------
+Stdlib-only, no solver needed:
+  python3 exist_tile_independent_check.py
+  python3 exist_tile_filtered_check.py
+The latter checks eight trimmed certificates, totaling 40..82 explicit rows
+each. The two-seed unfiltered checker uses 67 and 37 rows.
+Discovery scripts: exist_tile_horn.py, exist_tile_lazy.py,
+exist_tile_timevarying.py, exist_tile_residue.py,
+exist_tile_residue11.py, exist_tile_length_residue11.py.
+
+Positive direction left open
+----------------------------
+The obstruction identifies a lost dependency: allowed tiles can recombine
+in ways absent from an orbit even when digit-sum, divisibility by 11,
+length parity, and several length residues are preserved. A useful stronger
+positive invariant would retain spatial correlations between tiles, such
+as multi-tile blocks or a nontrivial stack/grammar. Merely adding a temporal
+phase or the tested global residues cannot repair this particular proof
+class for 196. Arbitrary regular languages and richer memory remain open.

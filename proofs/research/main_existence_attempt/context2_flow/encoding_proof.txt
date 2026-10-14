@@ -1,0 +1,85 @@
+RANK-FREE NONEMPTINESS: SOUNDNESS AND COMPLETENESS
+
+Graph and variables
+-------------------
+Use the exact context-two graph from context2_cegis/search.py. Its 874 nodes
+are two initial states and one node for each of 872 ordinary carry tiles.
+Each of 21,409 features occurs as exactly one ordinary edge or terminal
+choice; the implementation checks this uniqueness. Initial nodes have no
+incoming edges. A Boolean a_f selects the associated edge or terminal.
+
+Constraints
+-----------
+Across the two initial nodes select exactly one outgoing edge/terminal.
+Across the whole graph select exactly one terminal. At every other node:
+  - at most one ordinary incoming edge is selected;
+  - at most one outgoing edge or terminal is selected;
+  - existence of a selected incoming edge is equivalent to existence of
+    a selected outgoing edge or terminal.
+The implementation uses Boolean/PB cardinalities and no ranks.
+
+Soundness
+---------
+Follow the unique selected choice from the initial node whose choice was
+selected. Every reached noninitial node has an incoming edge and therefore
+exactly one outgoing choice. If this walk revisited a noninitial node, the
+first visit into the resulting cycle and the cyclic predecessor would be
+distinct selected incoming edges, violating indegree at most one. Initial
+nodes cannot be revisited because they have no incoming edges. Thus the
+walk has no repetition. In the finite graph it must end at a selected
+terminal. The resulting ordinary carry path is a genuine accepted finite
+canonical pair-sum word. The concrete extractor also reconstructs its
+carry-tile feature set numerically and checks equality.
+
+Disconnected selected cycles are permitted. They do not affect the initial
+walk. They are discarded when extracting the proposed seed feature set.
+The selected feature set itself is NOT claimed to be forward closed.
+
+Completeness for this invariant template
+---------------------------------------
+Let A be any nonempty safe forward-closed context-two feature language.
+Take an accepted path in A and remove repeated-node cycles until the path
+is simple. Removing a cycle creates no new feature: the context node
+already includes the previous tile, so returning to the same node also
+returns to precisely the same feature context. The shortened path is
+still accepted and its feature set P is contained in A.
+
+Selecting precisely P and no disconnected cycles satisfies all the flow
+constraints. The exact least forward feature closure of P is contained
+in A by monotonicity. Consequently it is safe. Therefore if a nonempty
+safe closed context-two language exists, some satisfying simple-path seed
+has a safe least closure. Restricting proposals to these path feature sets
+does not omit any existing invariant of this template.
+
+Every learned clause is also compatible with P: an unsafe-core clause
+excludes a set C only after a concrete derivation has proved that every
+closed language containing C admits a checked bad word. Since A is safe,
+C cannot be contained in A and hence cannot be contained in P.
+
+Why core deletion is redundant here
+-----------------------------------
+The extracted seed feature set describes exactly one simple path from an
+initial node to a terminal. Removing any of its features leaves no accepted
+word. Its image language is then empty, so its least feature closure is
+safe. Therefore a deletion-based unsafe-core minimizer cannot remove a
+feature from such a seed. The production search skips that redundant work.
+
+Limits of rejected seeds
+------------------------
+An unsafe least feature closure excludes a context-two invariant containing
+that seed word. It does NOT prove that the actual integer orbit of that
+seed reaches a palindrome. Feature closure can admit recombinations of
+features that never occur along the original orbit. Only a positive safe
+fixed point, followed by independent all-length verification, would supply
+an actual decimal Lychrel witness.
+
+Verification of learned clauses
+-------------------------------
+The reused checker reconstructs each finite carry history from the entire
+ordinary decimal carry vector. Every added feature is justified by a
+concrete accepted word and ordinary integer reverse-and-add. The final bad
+word is numerically checked to reach a palindrome within two additions.
+The new implementation removes irrelevant witnesses by a backwards
+feature-dependency slice, then replays the complete trimmed proof before
+adding its clause. Saved proofs can be replayed without an SMT search.
+A time interruption or graph cap never authorizes learning a clause.

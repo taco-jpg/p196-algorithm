@@ -1,0 +1,191 @@
+DECIMAL COUNTING RETURN: THREE IMAGE LAYERS AND THE ALL-TIME GAP
+Status: no decimal Lychrel existence proof, and no proof about 196.
+
+1. An actual contraction after three incoming image layers
+--------------------------------------------------------
+Let G be the canonical symmetric pair-sum map used in research/README.md.
+For y in {1,...,8} and m>=1 define Q_y(m) to consist of symmetric words
+of width 2m, with outer coefficient y+9 and every remaining mirrored
+pair independently chosen from {y,y+9}. Thus |Q_y(m)|=2^(m-1).
+Every such word has the SAME overflowing G-image
+
+  r_y(m)=(y, (2y) repeated (2m-1) times, y).
+
+This is a sharp maximal one-step overflow fiber. The identity follows
+from rho(x)=x-9*[x>=10], since rho(y)=rho(y+9)=y and no coefficient is 9.
+
+The new finite certificate gives, for every y=1,...,8 and every m>=3,
+
+ |Q_y(m) intersect Im(G^3)|
+ <= 8 * 2^(m-1) * (511/512)^floor((m-3)/9).                 (1)
+
+Here Im(G^3) means three actual prior canonical positive pair-sum words;
+no safety requirement is imposed. Therefore the exponential rate per
+mirrored pair of this restricted family is at most
+
+  rho_3 = 2*(511/512)^(1/9) < 2  (approximately 1.999565595).
+
+The numerical constant is deliberately coarse. The claim is UNIFORM IN
+m and all eight constant-rho families, but it is NOT a bound for arbitrary
+overflow targets or for arbitrary initial seeds.
+
+This answers a specific unresolved checkpoint from the earlier counting
+pass: two safe incoming layers preserve rate 2 in one such family;
+three unrestricted incoming layers do force a strict rate loss in every
+constant-rho maximal family, including arbitrary incoming overflow clocks.
+Neither statement estimates the whole terminating basin.
+
+2. Exact finite certificate and proof of (1)
+------------------------------------------
+In a single inverse layer, let h be its overflow bit, a the low incoming
+carry, b the high outgoing carry, and t the delayed high digit if h=1.
+For a candidate predecessor coefficient x and inward high carry b', put
+
+ a'=floor((x+a)/10), lo=(x+a) mod 10,
+ b =floor((x+b')/10), hi=(x+b') mod 10.
+
+The target pair coefficient is lo+hi when h=0, and lo+t when h=1.
+The next state is (a',b',-1) or (a',b',hi), respectively.
+The initial state is (0,h,-1) or (0,h,1). These equations are the ordinary
+column-addition equations; the delayed digit handles reflected alignment
+at an overflow exactly.
+
+Compose three such inverse layers, one for each backward clock
+h=(h_1,h_2,h_3) in {0,1}^3. Read the target outer coefficient y+9 first,
+and retain only paths whose three emitted outer coefficients are positive.
+For subsequent coefficients read either y or y+9. Powerset determinization
+counts accepted prefixes rather than counting different predecessor paths.
+The empty subset is an absorbing rejecting state. Center acceptance is
+intentionally omitted; the automata give necessary prefix conditions.
+
+The certificate records all reachable determinized states and both outgoing
+transitions for all 64 (clock,y) cases. There are 2,921 states in total.
+Every nonempty reachable state has a recorded path of length at most 9
+to the empty state. The largest shortest killing distances, by y, are
+
+ y:       1 2 3 4 5 6 7 8
+ K_y:     5 7 9 9 9 9 7 5.
+
+Thus from every nonempty state at least one of the 512 binary words of
+length 9 kills the path. Because the empty state stays empty, from any
+starting state the number of nonrejected binary words of length n is at most
+
+  2^n * (511/512)^floor(n/9).
+
+Actual ancestors may have widths 2m,2m-1,2m-2,2m-3. Even at the shortest
+width they have m-2 full mirrored pairs. Hence the first m-2 pairs of q,
+consisting of its outer pair and m-3 free pairs, necessarily traverse the
+prefix automaton. The final two free pairs contribute at most 4 choices.
+Union over at most 8 backward clocks yields (1).
+
+The argument never treats an odd center as an ordinary mirrored pair,
+and never assumes that a prefix path has a valid finite center. The latter
+omission only enlarges the count and is safe for this upper bound.
+
+Certificate:
+  decimal_counting_return_certificate.json
+Generator:
+  decimal_counting_return_certificate.py
+Local composed inverse machinery:
+  decimal_counting_return_mixed.py
+
+The generator uses exact integer arithmetic. The concrete certificate is
+not Lean-formalized. An independent checker/audit is still appropriate
+before relying on the computational finite lemma.
+
+3. Why even a universal local contraction would not prove existence
+------------------------------------------------------------------
+Suppose, hypothetically, every relevant inverse fiber of G at width ell
+had at most C*rho^(ell/2) elements, for a fixed 1<=rho<2. A seed set at
+width L contains order 19^(L/2) pair-sum states. The bad language at width
+M contains order 10^(M/2) states. At time t, the established width bounds
+allow M=L+t/2+O(1). Naively multiplying the inverse bounds through t levels
+therefore produces the following schematic exponent in its upper bound:
+
+  (L/2)*(log(10)-log(19)+t*log(rho))
+       + (t/4)*log(10) + (t^2/8)*log(rho) + O(t).
+
+This displays the direction of failure: for every rho>1 the quadratic
+term grows, and even rho=1 leaves the positive linear target-count term.
+More precisely this is the exponent produced by inserting the available
+upper width bounds into the elementary product bound; it is NOT a lower
+bound on the actual number of hits. Making rho slightly smaller than 2
+cannot turn this argument into a summable first-hit estimate.
+
+The needed estimate is about PALINDROMES INSIDE THE ACTUAL IMAGE SUPPORT,
+not all palindromes at the same output width. For a finite seed set E,
+write H_t={n in E: the first palindrome occurs at time t}. A sufficient
+condition is
+
+  sum_{t>=0} |H_t| < |E|.
+
+The H_t are disjoint, but knowing they are disjoint only proves <=|E|.
+Any explicit upper bound on |H_t| that tends to zero with t eventually
+forces |H_t|=0 by integrality. Thus a successful finite-ensemble hazard
+bound must also establish a finite horizon after which no first hit can
+occur for that ensemble. Numerical survival alone gives no such horizon.
+
+4. A stronger countermodel: injectivity does not rescue sparse targets
+---------------------------------------------------------------------
+Consider all nonempty finite decimal strings with nonzero leading digit,
+with palindromes as the terminal set. For a nonpalindrome w, write
+
+  w=u a v,
+
+where v is its longest palindromic suffix and a is the preceding digit.
+Define F(w)=u a v a: append that digit a. If w is already a palindrome,
+stop. (One may define F(w)=w0 on palindromes to make a total function.)
+
+Every step increases the width by one. Each target has at most ONE
+predecessor, since removing its final digit uniquely determines the only
+possible input. Consequently every iterate also has fibers of size at
+most one, much stronger than any proposed exponential contraction.
+
+Nevertheless EVERY finite input reaches a palindrome. If w has length L
+and longest palindromic suffix length s, its unpaired prefix has length
+D=L-s. The appended word has palindromic suffix a v a, so its new unpaired
+prefix length is at most (L+1)-(s+2)=D-1. Initially D<=L-1. Hence stopping
+occurs within L-1 steps and at width at most 2L-1.
+
+At width M, palindromes are still exponentially sparse: there are exactly
+9*10^(ceil(M/2)-1) among 9*10^(M-1) canonical strings. Width growth, sparse
+palindrome targets, and even globally injective iterates coexist with an
+empty nonterminating complement. This countermodel is not reverse-and-add;
+it isolates why a counting argument needs more than those properties.
+
+5. Quantifiers and remaining positive target
+--------------------------------------------
+A growing sequence of finite widths L(T), each with a seed surviving T
+steps, does not supply one finite seed surviving every T. Compactness can
+produce an infinite digit object, which is outside the finite-integer
+existence claim. Every fixed palindrome has a finite backward tree because
+reverse-and-add strictly increases positive integer values; the countable
+union of those finite trees can still cover all positive integers.
+
+A valid positive route would be one fixed finite-width seed ensemble with
+a uniform positive survivor count, or a finite/all-length structural
+certificate that directly excludes every first hit. The new three-layer
+contraction is a genuine correlation estimate, but it does not furnish
+either object. No decimal Lychrel witness or all-time avoidance theorem
+has been obtained here.
+
+6. Exploratory variable-rho search (not a completed theorem)
+-----------------------------------------------------------
+I also allowed the shared rho value to vary from pair to pair in {1,...,8}.
+The finite search tracks collections of determinized inverse states so
+that both bit choices must remain viable. Starting every such test only
+from the outer boundary would be insufficient for an exponential rate
+bound: a finite prefix can discard a few bit strings and still enter a
+full-rate recurrent component later. The corrected search starts from
+every reachable nonempty determinized inverse state.
+
+For incoming clocks 001 and 010 this corrected search completed, with
+441 and 2,303 collection states respectively and no recurrent surviving
+component. Other schedules reached explicit state caps. In particular
+clock 000 reached 250,002 collection states after processing 63,927 of
+them. Clocks 100 and 110 each reached a 30,001-state cap while constructing
+the first determinized inverse automaton. These are UNKNOWN, not exclusions.
+No claim about all variable-rho fibers follows.
+
+All exploration processes have finished. The certificate in sections 1-2
+is separate from these capped exploratory searches.

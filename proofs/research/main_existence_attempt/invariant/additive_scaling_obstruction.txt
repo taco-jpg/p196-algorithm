@@ -1,0 +1,39 @@
+Carry-tile additive score: the untested scaling interval cannot rescue 196.
+
+This is a method obstruction, not decimal Lychrel existence/nonexistence.
+Let F(q->Gq) be a fixed additive score on the 1123 archived tiles, with:
+  F <= 0 whenever Gq is a palindrome-predecessor word;
+  F(Gq->G^2q) >= lambda F(q->Gq) on EVERY valid two-step history.
+Suppose lambda>0. Positive score at q(196) is impossible.
+
+For 0<lambda<1, write w for the weight of tile55, the neutral-nine
+self-loop (h,a,b,delayed,started)=(0,0,1,-1,true), q=9, output=9.
+Use symmetric full words, low to high:
+  A_k=(2,9^k,18,9^k,2), k>=0;
+  G(A_k)=(5,9^k,16,9^k,5).
+Both displayed histories are nonoverflow. Their scores are alpha+k*w and
+beta+k*w, because tile55 repeats k times in both folded paths.
+Universal closure implies beta+k*w >= lambda*(alpha+k*w) for every k.
+Letting k grow gives (1-lambda)*w >= 0, hence w>=0.
+
+Now let B_k=(7,9^k,18,9^k,7). Its history score is s+k*w, where s is
+the actual q(196) history score (k=0). For k>=1:
+  G(B_k)=(15,9^k,16,9^k,15),
+  G^2(B_k)=(6,6,0^(k-1),7,7,0^(k-1),6,6).
+The last word has only coefficients <=9 and is a palindrome predecessor.
+Thus safety and closure give 0 >= F(G(B_k)->G^2(B_k)) >= lambda*(s+k*w).
+Since w>=0 and lambda>0, s<=0. These block identities follow by carrying:
+a 9-run before the central generator emits9, and after it emits0.
+
+For lambda>1, any positive seed score would grow exponentially along its
+actual orbit. A fixed finite tile weight vector gives |F|<=M*(L+1), while
+decimal width increases by at most one each step. This is a contradiction.
+
+The remaining lambda=1 is excluded by the existing archived exact rational
+dual certificate, checked by research/persist_spacetime_check_certificate.py.
+No new claim of formalization is made here.
+
+The 0<lambda<1 argument was discovered from an exact nine-row dual at
+lambda=1/8. It is a symbolic all-k proof; finite sampling is not its basis.
+Conditional scores, nonlinear scores, longer spatial/temporal memory, and
+nonempty invariant languages are not excluded by this argument.

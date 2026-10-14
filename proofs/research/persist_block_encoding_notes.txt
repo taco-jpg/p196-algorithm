@@ -1,0 +1,136 @@
+Binary block encodings, time changes, and a concrete neutral-band exterior
+
+STATUS. No complete decimal Lychrel family has been constructed. This note
+records a structural restriction on block encodings and a genuine finite
+exterior component. Subsequent certificates exclude all periodic finite
+centers at the displayed interface; see the later-status section below.
+No novelty claim.
+
+1. Why simply enlarging palindromic blocks adds no new bulk
+
+For a carry-preserving affine encoding of binary digits into k decimal
+digits, E(0)+E(1)=10^k-1. If both blocks are palindromic, the complementary
+annuli in the known binary family have decimal mirrored digit sums all9.
+Thus longer blocks still give the previously studied neutral9 annulus.
+This reduction does not cover noncomplementary, orientation-dependent,
+or length-varying encodings.
+
+2. A bound on a variable return time
+
+Let q be the outer mirrored digit sum of a positive decimal numeral.
+During a step without overflow, q<=9 and the next outer sum is2q or2q+1.
+Consequently five consecutive steps without overflow are impossible:
+starting from q>=1, four such updates already give q>=16, contradicting
+the necessary q<=9 for the fifth step. Every run without overflow has
+length at most4. An orbit segment adding Delta digits therefore takes
+at most5*Delta+4 steps (Delta overflows, separated and flanked by at
+most Delta+1 runs of length4).
+
+Hence a fixed k-digit block encoding of the binary parameter update
+m->m+1, which adds2k decimal digits, has return time at most10k+4.
+An unbounded time change requires unbounded length increments, for
+example growing block lengths or a nonlinear parameter update.
+
+3. Exhausting feasible four-growth schedules before searching width
+
+After an overflow the outer sum lies in1,...,10. Exact abstract edges are
+  nonoverflow: q1..8 ->2q or2q+1; q9 ->18;
+  overflow: q9 ->10; q10..18 ->q-9.
+For four overflows, each segment ending in an overflow has total length
+between1 and5. Filtering all625 segment-length tuples by the preceding
+outer graph and quotienting cyclic rotations leaves41 schedules.
+
+persist_block_neutral_timechange.py searches the existing exact neutral-band
+exterior graph for each schedule. Its per-schedule limits are1second and
+30,000 states; limits are always reported as incomplete. Forty graphs
+closed completely. The [2,2,2,2] graph was incomplete in this run; earlier
+research had independently studied that schedule at greater depth.
+
+Exactly one searched schedule produced an exterior connector:
+  segment lengths (1,1,4,5), total period11, four overflows;
+  growth schedule O,O,N,N,N,O,N,N,N,N,O;
+  complete exterior graph18,061states and18,077edges;
+  neutral connector state
+    phase-start left digits (9,0,9,9),
+    left carry masks (1,0,3,3),
+    right carry masks (0,1,12,28).
+
+Expanding the masks least-significant-bit first within each segment gives
+  left carries:  1,0,1,1,0,0,1,1,0,0,0;
+  right carries: 0,1,0,0,1,1,0,0,1,1,1.
+The neutral annulus digit pair is initially(9,0). Every neutral9 column
+transmits its incoming carry, and the two carry streams are complementary.
+
+4. Concrete candidate shape and independent numeric verification
+
+The exterior has29 matched pairs. Its leading and trailing strings are
+  A = 19403106079891596443113413999
+  B = 00004143112346952088707102158
+with B interpreted as a fixed-width29-digit string, not an unpadded integer.
+The proposed full family would be
+  n_m = A || 9^m || C || 0^m || B.
+A fixed center return would require T^11(n_m)=n_(m+2).
+
+persist_block_candidate.py tests ordinary integer arithmetic, independent
+of the exterior graph. For m=8 and every literal central digit string of
+length0 through4 (11,111 choices, including central leading zeros), all
+orbits have the exact11-step growth schedule. None satisfies the full
+family return or even preserves both enlarged neutral annuli and exterior.
+The clock is therefore genuine, but is not sufficient for closure.
+
+The exterior connector alone proves no infinite orbit. Subsequent work on
+periodic and changing centers is summarized in the later-status section.
+
+Files
+  persist_block_neutral_timechange.py and its results JSON:
+    exhaustive outer-clock filtering and capped exact exterior searches.
+  persist_block_candidate.py and its results JSON:
+    independent ordinary-integer candidate tests.
+  persist_block_neutral12_results.json:
+    complete34-state negative exterior result for (3,3,3,3).
+
+The Python graph checks are not yet formalized in Lean. Existing low-level
+digit/carry arithmetic is formalized separately. No finite experiment here
+is presented as an infinite nontermination proof.
+
+5. Subsequent clock diversity checks
+
+The same exact outer-clock filter yields306 six-growth schedules up to
+rotation. A first sweep closed298 exterior graphs; short targeted followup
+checks closed3 more. Five remain capped, and no accepting connector was
+found. The initial and refined results are stored separately, so unresolved
+cases remain explicit.
+
+The eight-growth search in persist_block_clock_variants.py varies one or two
+segment lengths of the twice-repeated concrete clock(1,1,4,5)^2. Of the
+21 resulting distinct outer-feasible schedules,15 exterior graphs closed;
+6 remain capped. None produced another connector. These are searches of
+different temporal ansatzes, not a theorem excluding other clocks.
+
+Thus the period11 connector remains the only positive exterior component
+found by these particular searches. It is not a complete construction.
+
+6. Later disposition of the center problem
+
+The independent checker persist_exterior_temporal_verify.py verifies finite
+temporal-language certificates excluding every periodic finite center behind
+this interface, at every width and every positive repetition of the clock.
+See persist_exterior_temporal_notes.txt for the precise theorem and the
+distinction between the Python-checked concrete data and the generic Lean
+graph argument. This improves on the initial bounded center experiments.
+
+For changing centers, a proposed stronger uniform eroder was disproved by
+an exact width32 example. Replacement emission certificates instead give
+bounded canonical core width for an infinite survivor: emissions are at
+least1, never2, and an emission1 cannot follow an emission1. Consequently
+each pair of consecutive emissions totals at least4, and stripping maximal
+q9 annuli leaves width at most the original canonical width plus2. The team
+is auditing the bridge from this bound to the all-period center obstruction.
+The exact padding identity needed by that bridge is recorded in
+persist_block_nested_bulk_notes.txt. No claim about all decimal clocks,
+all decimal starting values, or196 follows from this fixed-interface result.
+
+The same nested-bulk note shows that the apparent alternating13/14 output
+band collapses to uniform9 at its next overflow. Four alternative exact
+period3 bulk identities were found, but none has finite interface or center
+compatibility established. Nested compatibility searches are paused.

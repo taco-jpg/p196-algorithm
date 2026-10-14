@@ -1,0 +1,70 @@
+EXACT CLOSURE OF THE REMAINING PERIOD-18 UNIFORM-CORE CANDIDATE
+
+Result
+------
+The exact backward spatial carry graph for decimal base, six growth segments
+of lengths (5,2,2,3,2,4), and uniform bulk digit 3 or 6 closes completely.
+For each bulk phase:
+  reachable states: 185531
+  predecessor edges: 185531
+  maximum shortest-path distance from the bulk state: 11
+  exterior state reached: no
+  unfinished queue: none
+
+This is an arbitrary-interface-width exclusion inside the precisely specified
+fixed-interface / uniform 3-or-6-core family. It is not an exclusion of all
+period-18 growing families, all encodings, all regular languages, or all decimal
+Lychrel numbers. It makes no statement about 196's eventual behavior.
+
+Why the computation has no width cutoff
+--------------------------------------
+A spatial state records, for each of six growth segments, one decimal digit
+at the segment's initial time and two binary carry streams. There are 18 time
+steps altogether, so the state has six four-bit digits plus two 18-bit masks:
+60 bits in total. Packing is injective; there is no probabilistic hash equality.
+The hash table compares full packed state keys.
+
+The transition is exactly the original continuation_theory_multigrowth.py
+predecessors relation. At each time step, with current mirrored digits a,b,
+known left input carry l and right output carry r, enumerate u=0,1 with
+    floor((a+b+u)/10) = r.
+The next digits are (a+b+l) mod 10 and (a+b+u) mod 10. The unknown left output
+carry floor((a+b+l)/10) and right input carry u are recorded. The segment-end
+left digit must equal the next segment's required digit. The right digit after
+all six segments must equal its initial value. These are integer arithmetic
+identities for decimal addition, not a numerical approximation.
+
+All such segment paths are precomputed. Breadth-first search starts at the
+uniform bulk state and visits every predecessor until its finite queue is
+empty. The required exterior state has digit 1 in each segment, left carry
+mask 1<<(segment_length-1), and right carry mask zero. Since this exterior
+state never appears, no finite number of spatial transitions joins that
+exterior to this bulk. Repeating the bulk self-loop does not change the result.
+
+Cross-checks
+------------
+The independently implemented Python predecessor generator was run to complete
+closure for both bulk phases. It gives exactly the same 185531 states and
+185531 edges (about 23 seconds per phase). C++ takes about 0.1 seconds per phase.
+These matching cardinalities are implementation checks, not a Lean proof.
+The two previously completed clock patterns also reproduce exactly:
+  (4,1,4,1,4,4): 14464 states, 14464 edges, both phases
+  (4,1,4,4,1,4): 14400 states, 14400 edges, both phases
+Each has an empty final queue and no exterior connection.
+
+Consequently all three clock patterns retained by the earlier period-18,
+six-overflow, width-four outer-prefix filter are now excluded for this
+uniform-core digit-interface ansatz. This statement inherits the scope and
+correctness of that earlier enumeration; the new executable does not reprove
+its enumeration of 58 cyclic outer clocks.
+
+Reproduction
+------------
+g++ -O3 -std=c++17 resume_boundary18_exact.cpp -o resume_boundary18_exact
+./resume_boundary18_exact 3 10 1000000
+./resume_boundary18_exact 6 10 1000000
+
+The second argument is a ten-second search ceiling and the third a million-state
+ceiling. Neither was approached. A stopped search reports complete:false.
+Precomputation precedes the search timer. No formal Lean certificate is claimed.
+Full outputs and original-Python comparisons are in resume_boundary18_results.json.

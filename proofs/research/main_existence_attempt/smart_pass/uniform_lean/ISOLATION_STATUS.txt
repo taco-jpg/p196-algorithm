@@ -1,0 +1,69 @@
+LATER COMPLETION NOTE
+
+SharpUniformEscape.lean and SharpUniformDecimal.lean now prove the exact
+manuscript E_10 recurrence for actual decimal orbits. The isolation-specific
+report below is preserved; its final exact-bound caveat refers only to the
+earlier coarse files. See FORMAL_STATUS.txt for current complete scope.
+
+CONCRETE NONSYMMETRIC ISOLATION: COMPLETE
+
+Lean 4.19.0, Std only.  Existing continuation source files were not edited.
+
+Owned files:
+  SharedProfile.lean
+  ProfileIsolation.lean
+
+SharedProfile defines finite decimal profiles, the independently computed
+backward normalization, the exact half-line map phi, detached map bulk,
+the true support-width update, iteration, and finite coefficient mass.
+The definitions contain no assumed transition or splitting law.
+
+ProfileIsolation proves:
+  forward_separated
+  backward_separated
+  phi_separated
+  backward_padding
+  output_nonzero
+  isolated_decomposition
+  isolated_mass
+
+The final theorem has concrete initial-data hypotheses:
+  Valid L q; Valid A p; q = p + v pointwise;
+  v vanishes below D and is nonzero; A + 2*T + 2 <= D.
+It concludes, at every t <= T:
+  mass(iter (A,p) t) + 1 <= mass(iter (L,q) t).
+
+The proof computes both directional normalizations, retains every terminal
+forward carry, allocates the boundary digit only to the left component,
+proves backward padding independence, and proves that the detached right
+component remains nonzero.  No symmetry assumption is used.  The left
+component evolves by the same concrete phi as a standalone valid profile.
+
+Compilation (from this directory):
+  LEAN_PATH=. /workspace/scratch/fe6abe1df721/lean-runtime/lean \
+    -o SharedProfile.olean SharedProfile.lean
+  LEAN_PATH=. /workspace/scratch/fe6abe1df721/lean-runtime/lean \
+    -o ProfileIsolation.olean ProfileIsolation.lean
+
+ProfileIsolation imports the separately completed ProfileDynamics module.
+The original LychrelDigitSums.lean was compiled to LychrelDigitSums.olean
+in this directory and imported unchanged.
+
+Final axiom audit:
+  forward_separated:       propext, Quot.sound
+  backward_separated:      propext, Quot.sound
+  phi_separated:           propext, Quot.sound
+  backward_padding:       propext, Quot.sound
+  output_nonzero:          propext, Classical.choice, Quot.sound
+  isolated_decomposition:  propext, Classical.choice, Quot.sound
+  isolated_mass:           propext, Classical.choice, Quot.sound
+
+No sorry, admit, custom axiom, native_decide, or unproved dynamical premise
+is used.  The compiler emitted one harmless unused-hypothesis warning.
+
+The separate UniformEscape module has now compiled its unconditional
+uniform mass theorem against isolated_mass.  Its explicit recurrence is
+coarser than the manuscript's E_10 recurrence.  The exact manuscript
+recurrence and the general-base extension are not proved by these files.
+Neither uniform digit-sum escape nor unbounded digit sums establishes
+decimal Lychrel existence or palindrome avoidance by 196.

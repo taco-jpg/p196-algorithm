@@ -1,0 +1,120 @@
+Symmetric collisions of the renewing 8 front
+
+Status. Exact conditional local dynamics; no infinite decimal orbit or
+palindrome-avoiding finite seed is obtained. The prescribed schedule N,O
+must still be supplied by a finite exterior. No novelty claim is made.
+
+Coordinate convention
+---------------------
+For an L-digit integer with least-significant-first digits d_i, put
+q_i=d_i+d_(L-1-i). Thus q is a symmetric word over {0,...,18}.
+N denotes a reverse-and-add step with no additional leading digit;
+O denotes a step with an additional leading digit. A power such as
+6^m denotes a run of m symbols, not numerical exponentiation.
+
+A known symmetric q window is updated using an arbitrary incoming carry
+c in {0,1}. For N, retain the full output window. For O, discard its outer
+output pair, since the omitted exterior is required to know that pair.
+Thus three O steps shorten the controlled window by 3 symbols, although
+the entire integer would have grown by 3 digits. A distinct arbitrary
+boundary carry is allowed at each step. This overapproximates every
+possible exterior, so a universally valid local identity is sound.
+
+Exact six-step flight
+---------------------
+Starting immediately before N with 8,6^m,8 and m>=5, the controlled windows
+have the following forms under N,O,N,O,N,O:
+
+  0: 8,6^m,8
+  1: a,12^m,a                         a=16 or17
+  2: b,6^(m-1),b                     b=a-6=10 or11
+  3: p,13,12^(m-3),13,p               p in0,...,3
+  4: p+4,7,6^(m-4),7,p+4
+  5: r,14,12^(m-4),14,r               r in8,...,15
+  6: s,8,6^(m-5),8,s                 s in S
+
+where S={4,5,6,7,8,9,10,11,13}.
+
+Write a=16+alpha. Then p=2*alpha+gamma, r=2*p+8+epsilon,
+where gamma,epsilon are the relevant boundary-carry bits. At the last
+overflow, put k=floor((r+zeta)/10). Direct column addition gives
+
+    s=4+k+((r+1) mod10).
+
+For r=8 this is 13; for r=9 it is 4 or 5; for r=10,...,15 it is r-4.
+These formulas establish the phase table without inspecting arbitrary
+word lengths. They agree with the independently formalized one-sided
+front law: each front advances 4 columns in 6 steps, while the whole word
+grows by 3, so the central uniform gap loses 2*4-3=5 symbols.
+
+Discarding the newly known outer pair s,s leaves the original front
+class with gap m-5. Hence for m=5k+r the flight reaches a collision
+residue r in {0,1,2,3,4} after k macro-steps, provided the prescribed
+overflow clock continues. The flight itself does not create an infinite
+reservoir; the unresolved issue is the collision and its wake.
+
+Minimal collision table
+-----------------------
+For m=2,3,4,5 the exact controlled six-step outputs are:
+
+  m2: (x),         x in{2,4,6,8,10,12,14,16};
+  m3: (x,x),       x in{6,7,8,9,10,11,12,13,15};
+  m4: (s,10,s),    s in S;
+  m5: (s,8,8,s),   s in S.
+
+The m=4 formula follows from the flight table through phase 3, after which
+the states are (p+4,7,7,p+4), then (r,14,14,r), then (s,10,s).
+For m=3 the corresponding last states are (r,16,r), then (s+2,s+2).
+For m=2 they are (u,u) with u in {10,...,17}, then the center 2(u-9).
+
+For m=0 or 1 the minimal window disappears before or at the sixth step,
+meaning exterior wake digits are needed to determine the new center.
+Retaining one known wake symbol on each side, starting with
+s,8,6^m,8,s for s in S, gives broad possible outcomes. At m=0 every even
+central q value from 0 through 18 occurs in the local overapproximation.
+At m=1 every equal central pair (x,x), x in {0,...,18}, occurs.
+
+This variability is not solely an artifact of independent abstract
+carry choices. Genuine decimal seeds with q prefix
+(8,12,9,x,y,s,8), followed by its reflection, maintain the actual six-step
+N/O clock for every x,y in {0,...,18} and s in S. Their center after 6 steps
+attains every even q value from 0 through 18. Examples:
+
+  seed 13004008790997 -> central q0 after 6 steps;
+  seed 13000008500997 -> central q10 after 6 steps;
+  seed 13000008470997 -> central q18 after 6 steps.
+
+All ordinary integer orbits for these examples are recorded in the JSON
+results. Thus the renewing terminal-8 class plus its one-symbol wake does
+not prescribe a universal deterministic collision/restart outcome.
+An all-time construction would need a richer correlated wake invariant
+or another mechanism generating a new, unboundedly renewable reservoir.
+
+The m=4 collision guarantees a central q value 10 after six steps, but
+this is not an immediately regenerated terminal-8 packet. Under the
+next N step its central digit is (10+kappa) mod 10 = kappa, where kappa
+is the incoming carry, so its central q value becomes 2*kappa in {0,2}.
+Both possibilities occur in actual decimal orbits with the seven-step
+clock N,O,N,O,N,O,N:
+
+  seed 130000000668400997 -> central q10 at step 6, q0 at step 7;
+  seed 130000000668500997 -> central q10 at step 6, q2 at step 7.
+
+These examples are also checked by ordinary integer arithmetic and
+recorded in the JSON results. No eventual-regeneration impossibility
+follows: a later restart involving a richer wake remains unproved in
+either direction. In particular, the q10 collision packet alone does
+not yet supply an all-time palindrome-avoidance certificate.
+
+Palindrome avoidance is a separate requirement. The known core at
+phases 0 and 4 can consist entirely of symbols below 10, so the front law
+alone does not imply nonpalindromicity at every intermediate step.
+
+Reproduce:
+    python3 resume_front_collision.py
+
+The script checks all abstract boundary choices through state-set
+branching, validates the general formula for 196 distinct gap lengths,
+and verifies the collision examples by ordinary decimal arithmetic.
+The general phase formulas above, not the finite gap count, justify
+the arbitrary-gap identity.

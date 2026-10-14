@@ -1,0 +1,110 @@
+Exact signed-center reduction for complementary 0/9 annuli
+=========================================================
+Status: exact algebraic reduction plus checked finite experiments; no infinite
+orbit or obstruction has been established.
+
+Write rev_c(C) for reversal of exactly c digits, including leading zeroes.
+A core C, 0<=C<10^c, is surrounded by one of two complementary tail choices:
+  high9/low0: S=C-10^c < 0;
+  high0/low9: S=C+1 > 0.
+Define R_c on nonzero signed values of magnitude <=10^c by
+  R_c(S)=rev_c(S-1)-10^c                   (S>0),
+  R_c(S)=rev_c(S+10^c)+1                   (S<0).
+It swaps signs and is an involution. In either orientation
+  S+R_c(S)=C+rev_c(C)+1-10^c =: Z.
+
+Let a be the carry entering the low end of the core. The carry leaving its
+high end must be b=1-a to preserve complementary neutral annuli. The ordinary
+core addition produces C+rev_c(C)+a = U+10^c*b with 0<=U<10^c.
+If a=0,b=1, the output tails are high0/low9 and its signed value is U+1=Z>0.
+If a=1,b=0, the output tails are high9/low0 and its signed value is U-10^c=Z<0.
+Conversely either indicated sign of Z implies the corresponding carry b.
+Thus the exact interface survival test and update are
+  S' = S+R_c(S),  sign(S')=1-2a,  S'!=0.
+
+Keep the low center boundary at a fixed units position. When the full integer
+addition overflows (h=1), the center window gains its adjacent high-tail digit
+9a, so c'=c+h. This padding leaves the signed value S' unchanged. The reversal
+partner obeys R_(c+h)(S')=10^h*R_c(S'). There is no hidden rounding or omitted
+carry correction in this map.
+
+For the exterior schedule periods[1,1,4,5], the exact phases are
+  h=(1,1,0,0,0,1,0,0,0,0,1),
+  a=(0,1,0,0,1,1,0,0,1,1,1).
+All111111 centers of widths0..5 were checked against the actual full integer
+A 9^30 C 0^30 B, stopping at the first interface failure. Every signed update,
+width update, incoming carry, overflow, and survival equivalence agreed.
+The largest observed survival in this exhaustive range was16 interfaces.
+Root's BV center689689997999 (width12) survives26 interfaces and fails at26
+when indexed from0. It does not give an infinite orbit.
+
+A full11-step fixed-core pumping return, increasing each annulus by2, requires
+S_11=100*S_0 and c_11=c_0+4. More generally r such clocks require
+S_(11r)=10^(2r)*S_0. Merely surviving11r interfaces is much weaker and permits a
+changing, growing center.
+
+Canonicalization: when S and R_c(S) are both divisible10, delete matching high
+and low tail digits by (c,S)->(c-2,S/10). This is exact, and commutes with future
+updates including high padding. However q-based canonicalization is stronger:
+any mirrored pair with pair-sum9 can be removed, regardless of its actual digit
+split (e.g.4/5). The first addition only depends on q; a q9 pair transmits each
+boundary carry unchanged. On overflow its new outer output pair sums to
+9(1-a)+9a=9. Hence deleting q9 pairs commutes with every local q update while
+the complementary interfaces survive. Use q normalization in any width-rank
+argument, not only signed decimal divisibility.
+
+The uniform eroder conjecture is FALSE. It asserted that every normalized
+finite core surviving22 interfaces emits >=3 q9 pairs during the first11.
+Direct exact BV negation was UNSAT at widths12,16,24, but SAT at width32:
+  C=98909907999990740009382200480006.
+Independent ordinary-integer checking confirms22 surviving interfaces. The
+initial first non9 is15. At time11 only ONE q9 pair has been emitted, followed
+by14,13,14,13,... . At time22 THIRTEEN q9 pairs have been emitted in total; the
+first non9 is then18, and interface26 fails. The alternating local-countermodel
+domain therefore can close in a finite center. The full model and independent
+checks are in persist_arithmetic_eroder_targeted_results.json. Width48 was not
+run because the width32 witness settles the conjecture.
+
+A possible replacement, not established: among trajectories whose first non9
+remains in{14,15}, track potential width-3*[firstnon9=14]. If one-clock emission
+k satisfied k>=3 for same-type returns, k>=1 for15->14, and k>=4 for14->15,
+this integer potential would strictly decrease on every return. These separate
+transition bounds have not been checked and are NOT results.
+
+Counterexamples to naive size/independence arguments:
+* |S*R_c(S)| has no constant per-step expansion bound. At c=5,S=1,R=-100000,
+  the next pair is(-99999,10001), product expansion about10000.9.
+* max(|S|,|R|) can expand nearly10 in a no-width-change step, e.g.c=6,S=9999,
+  R=-100100 gives Z=-90101,R(Z)=998910.
+* At fixed c=1 the magnitude map has cycle1->9->7->3->5->1; its formula is
+  u -> |u+rev_c(u-1)-10^c|. Thus multiplicative independence2/10 is insufficient.
+* Primary literature already constructs neutral-tail pumping solutions in
+  bases11 and26, also multiplicatively independent of2.
+
+Later team certificate update
+-----------------------------
+The defect agent replaced the false uniform eroder by exact emission facts:
+0 and2 emissions are excluded for a two-clock survivor; an emission1 forces
+the next canonical firstnon9 to14; and a firstnon9=14 two-clock survivor cannot
+emit1. Thus along an infinite survivor all j>=1, j!=2, and no two consecutive
+j equal1. Pairing each1 with a succeeding j>=3 gives sum_(i<t)j_i>=2t-1, so
+c_t=c_0+4t-2*sum(j_i)<=c_0+2. This supplies bounded canonical width, not strict
+descent. The relevant finite certificates are owned by defect_renewal.
+
+A separate all-period temporal invariant is documented in
+persist_exterior_temporal_notes.txt. Its explicit47/73-vertex invariant graphs,
+closed under inverse spatial transduction and excluding all center heads,
+exclude every positive repetition of the clock at every finite center width.
+This subagent independently reran persist_exterior_temporal_verify.py with
+EXIT0. The graph data are checked by Python; only the generic abstract graph
+argument, not concrete arithmetic/table instantiation, has a Lean proof.
+
+Combining the two results requires the semantic bridge currently audited by
+boundary18_exact: bounded width makes the deterministic canonical q return map
+finite-state, hence an infinite survivor contains a q cycle. Width balance over
+k clock returns gives total neutral-pair emissions2k. Equal q determines the
+next actual digit core uniquely, given the fixed incoming carry and padding;
+a one-phase shift therefore yields the actual periodic digit-center word for
+the temporal certificate. This rules out the specified infinite neutral-clock
+construction once the stated certificate interfaces are connected. It still
+does not establish or refute decimal Lychrel existence, or the behavior of196.

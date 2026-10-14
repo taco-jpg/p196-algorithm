@@ -1,0 +1,149 @@
+EXACT INVERSE STRUCTURE OF REVERSE-AND-ADD
+Research note; decimal unless a base is explicitly specified.
+This note does not prove that a Lychrel number exists.
+
+Definitions
+-----------
+A canonical pair-sum word q has length L>0, q_i in {0,...,18},
+q_i=q_(L-1-i), q_0>0, and an even central coefficient when L is odd.
+Every such word is realized by a positive L-digit integer. Write
+
+  S(q)=sum_i q_i 10^i,
+  G(q)=the symmetric pair-sum word of the canonical digits of S(q).
+
+These are different maps. S(q) is the numerical reverse-and-add value;
+G(q) is the autonomous state transition on pair-sum words.
+
+1. Fixed-width injectivity of S (valid in every base b>=2)
+-------------------------------------------------------
+Suppose q,r are symmetric words of the same length, with coefficients
+between 0 and 2b-2, and S(q)=S(r). Their canonical output digits and final
+carries coincide. If e_i is the difference of their carries, then
+
+  e_0=e_L=0, e_i in {-1,0,1},
+  q_i-r_i = b e_(i+1)-e_i.
+
+By symmetry,
+
+  b(e_(i+1)-e_(L-i)) = e_i-e_(L-1-i).
+
+An outside-in induction proves every e_i zero: if e_i=e_(L-i)=0,
+then b e_(i+1)=-e_(L-1-i), and the right side has absolute value at most
+one. Since b>=2, both new terms vanish. Consequently q=r.
+
+For a positive target of width M, a canonical predecessor word can have
+only width M or M-1. Thus S has at most two canonical q preimages.
+
+2. Necessary conditions for ambiguity between the two widths
+------------------------------------------------------------
+In a decimal cross-width collision, the shorter word overflows and the
+longer does not. The common output has leading digit 1. For the longer
+word, its outer coefficient is positive, equals the units output digit,
+and is at most the leading output digit. Hence the output units digit
+and the longer outer coefficient are both 1. For the shorter word the
+outer coefficient is consequently 11. The common output is divisible
+by 11 because one of the two symmetric input lengths is even.
+
+The common output need not be palindromic. For example,
+
+  S(11,9,7,7,9,11) = S(1,0,18,16,18,0,1) = 1197801.
+
+So an argument that only palindromic output values have two q preimages
+would be false.
+
+3. Which decimal palindromes are numerical images?
+--------------------------------------------------
+A positive decimal palindrome P has a positive reverse-and-add
+predecessor if and only if P has even width or an even central digit.
+For width one, the possibilities are exactly 2,4,6,8.
+
+Proof: Without overflow, a palindromic output forces every carry to be
+zero, so q is the digit word of P. It is realizable exactly when its
+center is even (if present). With overflow, the exact palindrome
+criterion is q_0=11 and q_i in {0,11}; an odd center is necessarily 0.
+Write q=11c for a symmetric binary word c with outer coefficient 1.
+Then S(q)=11 C(10), whose decimal digits are c_i+c_(i-1), using zero
+outside the word. These digits are in {0,1,2}, and an odd central digit
+is twice a binary coefficient. Hence this output also has the
+same-width no-overflow q preimage just described.
+
+For target width M=2m there are 9*10^(m-1) admissible palindrome targets.
+For M=2m+1>=3 there are 45*10^(m-1). The extra, one-shorter overflow
+preimage occurs at exactly 2^(floor((M-1)/2)-1) targets for M>=3;
+there are no such extra targets at widths 1 or 2.
+
+4. Exponentially many preimages for G: overflow
+----------------------------------------------
+Choose x_1,...,x_m independently in {1,10}. The 2^m distinct words
+
+  q=(10,x_1,...,x_m,x_m,...,x_1,10)
+
+all have the same G-image: outer coefficients 1 and every interior
+coefficient 2. Indeed, there are no neutral coefficients 9, and in
+the overflow transition each interior coefficient is
+
+  rho(q_i)+rho(q_(i-1)),  rho(x)=x-9*[x>=10].
+
+Both rho(1) and rho(10) are 1. The outer coefficient becomes 10-9=1.
+
+5. Exponentially many preimages for G: no overflow
+-------------------------------------------------
+Set
+
+  A=(1,9,10,0,10,9,1),
+  B=(1,14,9,10,9,14,1),
+  D=(3,9,0,2,0,9,3).
+
+Both A and B are palindromic words whose carry starts and ends at zero.
+Their output digit blocks are respectively
+
+  (1,9,0,1,0,0,2),
+  (1,4,0,1,0,5,2).
+
+Each digit block plus its reversal equals D. Concatenate m independently
+chosen A/B blocks followed by the same block list in reverse order.
+The resulting 2^m distinct canonical symmetric words all have G-image
+D repeated 2m times, and none overflows. Carry resets at block boundaries
+justify applying the block calculation to the whole word.
+
+These collisions need not happen immediately before a palindrome:
+insert the central block C=(1,18,1). Its output digit block is (1,8,2),
+whose pair-sum block is E=(3,16,3). Then all 2^m images are
+
+  D repeated m times, E, D repeated m times.
+
+This has a coefficient 16 and is not one of the overflow palindrome
+patterns either. More generally a central block (1,18^k,1), k>=2,
+maps to (3,17,18^(k-2),17,3), retaining an arbitrarily long high core.
+
+6. Exact inverse transducer for a fixed-width numerical target
+-------------------------------------------------------------
+Scan a target digit word from both ends. At an input-pair location let
+a be the already known low-side incoming carry and b the known
+high-side outgoing carry. For output digits u,v, respectively, solve
+
+  q+a=u+10 a',
+  q+b'=v+10 b,
+
+with q in {0,...,18} and a',b' in {0,1}. Equivalently
+
+  u-v = a-b' + 10(b-a').
+
+There is at most one solution: subtracting two candidates gives
+10*Delta(a')=-Delta(b'), forcing both zero. The next state is (a',b').
+Start at (0,h), where h is the candidate overflow bit. With no overflow
+use all target digits; with overflow require leading digit 1 and remove
+it before the scan. At an even center require the two carries equal;
+at an odd center the sole q is output_center+10*b-a and must be even.
+
+This gives a four-state exact membership test for the fixed-width
+image, but composing predecessor steps involves digit-splitting choices
+and therefore does not retain the two-predecessor bound.
+
+Limitation relevant to the existence problem
+--------------------------------------------
+The at-most-two theorem concerns S, while iteration uses G. Sections 4
+and 5 disprove an attempted bound of 2^t on a depth-t inverse tree of
+pair-sum states. Counting a terminating basin still needs a uniform
+bound on all possible terminal times. No such bound or positive
+nonterminating invariant is supplied here.

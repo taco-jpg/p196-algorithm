@@ -1,0 +1,304 @@
+FORMALIZATION UPDATE, 14 October 2026
+
+The exact decimal uniform recurrence (1) below, including the concrete
+nonsymmetric isolation and ordinary-integer embedding, is now formalized.
+See main_existence_attempt/smart_pass/uniform_lean/FORMAL_STATUS.txt and
+SharpUniformDecimal.lean. The older opening status below records the stage
+before this formalization. General bases remain written only.
+
+UNIFORM ESCAPE FROM BOUNDED DIGIT SUM: A STRONGER THEOREM
+
+Status: complete mathematical proof below. The earlier zero-run lemmas
+and actual-orbit embedding are reused, not reproved in Lean here.
+Independent audits of the half-line mechanism, compactness argument, and
+explicit coupling/induction have passed; the new theorem is not yet claimed
+as part of the previously checked Lean development.
+No claim of pointwise digit-sum divergence, or of decimal Lychrel existence,
+is made. No novelty claim is made.
+
+1. Main new conclusion
+----------------------
+For each integer B>=1 there is a finite number F(B), independent of the
+starting positive decimal integer n and its width, such that
+
+    some 0<=j<=F(B) satisfies S(T^j(n))>B.
+
+In particular this applies starting at every iterate: a block of F(B)+1
+consecutive times can never have all its digit sums <=B. This strengthens
+unboundedness on every tail, which by itself gives no uniform waiting time.
+
+An explicit, intentionally very coarse bound is supplied below:
+
+    F(B) = E_10(2B),
+    E_10(1)=1,
+    E_10(M)=5[2(M-1)E_10(M-1)+2M-1]     (M>=2).       (1)
+
+For example E_10(2)=25, E_10(3)=525, E_10(4)=15785.
+These are upper bounds, not claimed optimal escape times.
+
+The proof works in every integer base b>=2. Put
+
+    kappa_b = 1 + ceil(log_2 b).
+
+Then the same statement holds with
+
+    E_b(1)=1,
+    E_b(M)=kappa_b[2(M-1)E_b(M-1)+2M-1].             (2)
+
+The argument is elementary and gives a finite recursion. A shorter
+compactness proof is described in Section 7, but is not needed for (1).
+
+2. Extend pair-sum dynamics to arbitrary finite half-line profiles
+----------------------------------------------------------------
+A profile is a sequence q_i, i>=0, with
+
+    0<=q_i<=2b-2,   q_0>0,   finite support.
+
+It need not be symmetric. Write M(q)=sum_i q_i and R(q)=max{i:q_i>0}.
+All tails below are exactly zero, not approximate limits.
+
+Define forward carries/digits by
+
+    a_0=0,
+    q_i+a_i = r_i + b a_(i+1),     0<=r_i<b.
+
+Define backward carries/digits by scanning from the zero tail:
+
+    q_i+c_(i+1) = u_i + b c_i,     0<=u_i<b,
+    c_i=0 sufficiently far to the right.
+
+All carries are 0 or 1. Put h=c_0. Define the new profile Phi(q) by
+
+    h=0:  Phi(q)_i = r_i+u_i                    (all i>=0);
+
+    h=1:  Phi(q)_0 = r_0+1,
+          Phi(q)_i = r_i+u_(i-1)                (i>=1).       (3)
+
+The forward digit r_(R+1), if nonzero, is included. Backward carry c_0=1
+is precisely the extra digit represented by the '+1' in the h=1 boundary.
+There is no deletion of either carry and no loss of mass at infinity.
+
+The output again has finite support and entries between 0 and 2b-2.
+For h=1 the exceptional outer entry is at most b, and b<=2b-2 for b>=2.
+The outer entry is positive: for h=1 it is r_0+1; for h=0 it is
+2q_0+c_1, since h=0 implies q_0<b and the first forward carry is zero.
+
+If q is the genuine finite symmetric pair-sum word of a positive integer,
+extended by zero outside its original width, (3) is EXACTLY its next
+pair-sum word, also extended by zero. Symmetry identifies backward carries
+with reflected forward carries, and h is the actual overflow. In that
+case M(q)=2S(n). Thus a theorem for Phi includes actual reverse-and-add.
+
+3. Two previously proved mechanisms survive without symmetry
+-----------------------------------------------------------
+First, the simultaneous-zero lemma uses only the two carry equations,
+not symmetry. An interval of >=2 positions with r_i=u_i=0 must have q
+identically 0 or identically b-1. Consequently, writing Z(q) for the
+largest INTERNAL zero run between its positive end entries, the exact
+old gap inequalities remain valid:
+
+    h=0: Z(Phi(q)) <= max(Z(q),1,floor(M(q)/(b-1))),
+
+    h=1: Z(Phi(q)) <=
+          max(max(Z(q)-1,0),2,floor(M(q)/(b-1))+1).             (4)
+
+Trailing infinite zeros are not included in Z. There is one boundary
+point to check beyond the original finite symmetric proof: if h=0 and
+the right support endpoint grows from R to R+1, any zero interval still
+lies within [0,R], and simultaneous-zero classification applies there.
+If h=1, the new endpoint is R+1, so a zero run [A,B] of length>=3 has
+1<=A<=B<=R and its old extended interval [A-1,B] is in range. Thus no
+artificial infinite tail is counted as an inherited internal gap.
+
+Second, support cannot retreat. If h=0, either a_(R+1)=1 and r_(R+1)=1,
+or a_(R+1)=0 and r_R=q_R+a_R>0. Hence R(Phi(q))>=R(q).
+If h=1,
+
+    Phi(q)_(R+1) = a_(R+1)+u_R > 0.
+
+Indeed, if a_(R+1)=0 then 1<=q_R<=b-1 and u_R=q_R>0. No position beyond
+R+1 can be nonzero. Therefore
+
+    R(Phi(q)) = R(q)+1                         when h=1.     (5)
+
+At a non-overflow step the outer coefficient at least doubles:
+
+    q'_0 = 2q_0+c_1 >= 2q_0.
+
+Since 1<=q_0<=2b-2, kappa_b consecutive non-overflow steps are impossible:
+they would give q_0>=2^kappa_b>=2b>2b-2. Every block of kappa_b steps
+therefore contains an overflow. If g_t counts overflows before time t,
+
+    g_t >= floor(t/kappa_b),
+    R(q_t) >= R(q_0)+g_t.                                  (6)
+
+In particular, if mass<=M and all internal zero gaps<=K, then
+
+    R(q_t)+1 <= H:=M+(M-1)K.                               (7)
+
+Equations (6)-(7) force an escape by time kappa_b H, because at that time
+g_t>=H, whereas R(q_0)>=0 and (7) requires R(q_t)<=H-1.
+
+4. Exact isolation across a long zero gap
+----------------------------------------
+Suppose a profile splits as q=p+v, where
+
+    p_0>0,    max supp(p)=A,
+    min supp(v)=D>A,    v is nonzero,
+    gap length g=D-A-1>=2.
+
+Both p and v have finite support. The zero gap resets both directional
+carries. Forward normalization and backward normalization therefore split
+as the sums of the separate normalizations of p and v. The global
+backward boundary carry h equals that of p.
+
+For the right component, with h fixed by p, define the bulk image
+
+    Psi_h(v)_i = r_i(v)+u_(i-h)(v),
+
+where u_j(v)=0 for j<0 (the support of v is away from the boundary).
+There is no extra boundary digit for this component. Then, exactly,
+
+    Phi(p+v) = Phi(p) + Psi_h(v).                          (8)
+
+Reason that the carries split: a forward carry from p can occupy only
+the first zero after A and is reset there; backward carry from v can
+occupy only the first zero before D and is reset there. Neither crosses
+the gap. The supports of the two same-direction digit normalizations
+are disjoint. Formula (8) follows by adding these exact digit identities.
+
+The right endpoint of the left component is at most A+1 after a step,
+and the left endpoint of the right component is at least D-1. These are
+the only support-motion bounds needed: r(p) is supported at indices <=A+1,
+u(p) at indices <=A, r(v) at indices >=D, and u(v) at indices >=D-1.
+In particular the remaining gap after s steps is at least g-2s while the
+components are separated. The right component stays
+nonzero: its forward normalized digit sequence represents the positive
+integer sum_i v_i b^i, and Psi_h(v) is coefficientwise at least this
+nonzero sequence. There is no cancellation.
+
+Consequently, if g>=2T+2, the two components remain separated by >=2 zero
+positions through time T. At every time 0<=s<=T:
+
+* the left component evolves autonomously by Phi;
+* the right component is nonzero and has mass at least one;
+* the total mass is exactly the sum of the component masses;
+* the h used in the full profile and in the left profile is identical.
+
+This remains true if v itself has several separated components. Only
+its nonzero mass and its distance from the left component are needed.
+
+5. Explicit uniform escape: induction on mass
+--------------------------------------------
+Claim: every profile with initial mass<=M has an iterate of mass>M by
+time E_b(M) from (2). Equivalently, no profile has all masses <=M at
+times 0,...,E_b(M).
+
+Base M=1. The only possible profile is q_0=1 and q_i=0 for i>0. Its next
+profile has mass two, so E_b(1)=1 works in every base.
+
+Inductive step M>=2. Set T=E_b(M-1), K=2T+1, and
+
+    H=M+(M-1)K = 2(M-1)T+2M-1.
+
+Suppose for contradiction that the whole prefix through E_b(M)=kappa_b H
+has mass<=M. This horizon is at least T.
+
+If the initial profile has a zero gap of length >=2T+2, split at that gap.
+By Section 4, the left component evolves independently through time T,
+and the other component has mass>=1 at all these times. Thus the left
+component has mass<=M-1 throughout 0,...,T, contrary to the induction
+hypothesis.
+
+Otherwise every initial zero gap has length <=K. Note that T>=M-1
+(immediate by induction from (2)), and hence
+
+    K=2T+1 >= 2M-1 >= M+1 >= floor(M/(b-1))+1,
+    K>=2.
+
+The gap inequalities (4) therefore keep every gap <=K throughout the
+assumed bounded-mass prefix. Its support width is at most H by (7).
+But at time kappa_b H, (6) puts its right endpoint at least H, contradicting
+that width bound. This completes the induction and proves (2).
+
+A simple closed upper bound, if desired, is
+
+    E_b(M) <= (4 kappa_b)^(M-1) M! .                       (9)
+
+This follows by induction: substituting the preceding bound into (2),
+the main term uses only 2 kappa_b (M-1) times that bound, while the target
+allows 4 kappa_b M times it; the remaining positive margin exceeds
+kappa_b(2M-1). The recursive bound is substantially better than (9).
+
+6. Consequences and limits
+--------------------------
+Embedding actual pair-sum profiles gives the uniform digit-sum theorem
+with F_b(B)=E_b(2B). The bound is independent of n, its initial width,
+and all initial zero-gap lengths. It is very coarse; no optimality claim
+is intended.
+
+Let A_B={t>=0:S(T^t(n))>B}. Every interval of F_b(B)+1 consecutive integer
+times meets A_B. In particular its lower asymptotic density is at least
+
+    1/(F_b(B)+1).
+
+The same bound holds for the lower density uniformly over translated
+long time intervals (lower Banach density), by partitioning into blocks
+of this fixed length.
+
+This does NOT show S(T^t(n))->infinity. It prevents arbitrarily long runs
+below any fixed threshold; it does not prevent infinitely many isolated
+returns below that threshold. Nor does the very small density bound prove
+that time-averaged digit sums diverge.
+
+7. Independent compactness formulation
+--------------------------------------
+For a fixed M, let X_M be the set of all profiles on N with alphabet
+{0,...,2b-2}, q_0>0, and sum_i q_i<=M. It is closed in a product of finite
+discrete spaces: the mass condition is the intersection of conditions on
+finite partial sums. Hence X_M is compact. Every member has finite
+support because every positive entry contributes at least one to mass.
+
+Phi is continuous on X_M. Forward carries at a fixed output coordinate
+depend on a finite prefix. Backward carry at a position depends only on
+the first subsequent coefficient different from b-1: coefficients <=b-2
+reset it to zero, and coefficients >=b reset it to one. A run of b-1
+has length at most floor(M/(b-1)), uniformly on X_M. Thus there is uniformly
+finite lookahead for every output coordinate, including the h branch.
+
+The closed subsets of X_M whose first k iterates all have mass<=M are
+nested. If they were nonempty for every k, compactness would give an
+infinite bounded-mass Phi orbit. But Section 3 and the old gap argument
+rule that out: fixed initial Z and bounded mass bound support width,
+while (6) forces its right endpoint to infinity. Thus one finite escape
+horizon exists uniformly on X_M. Section 5 gives an explicit one.
+
+8. What obstructs stronger conclusions from the old static bound alone
+---------------------------------------------------------------------
+The preceding running-maximum sqrt(t) estimate used only bounded support
+count and a largest-gap bound. Those two static conditions alone cannot
+give a linear mass-versus-width bound: a symmetric word with O(M) positive
+unit coefficients separated by O(M)-long zero runs has mass O(M) and
+width Theta(M^2). These states do not automatically have long bounded-
+mass histories. Section 5 is precisely a new historical restriction.
+
+Large one-step collapses also remain possible. For even k>=2, take the
+admissible symmetric word
+
+    q=(10, 9 repeated k times, 10).
+
+Its ordinary carried digits, from low to high, are k+1 zeros followed
+by 1,1. Thus the reverse-and-add output is
+
+    11 * 10^(k+1),
+
+of digit sum two, whereas the input digit sum is (9k+20)/2. Every such q
+has a canonical decimal realization. This rules out any general lower
+bound on the next digit sum proportional to the previous digit sum or
+current width. It is not a counterexample to divergence along one fixed
+orbit.
+
+No O(B)-duration bound, linear running-maximum growth theorem, or
+pointwise digit-sum divergence theorem is established here. The explicit
+uniform escape and positive lower-density conclusions are the new proved
+strengthenings.

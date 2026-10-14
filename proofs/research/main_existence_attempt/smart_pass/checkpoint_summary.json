@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-14",
+  "status": "EXACT_UNIFORM_DECIMAL_THEOREM_FORMALIZED_MAIN_EXISTENCE_UNPROVED",
+  "main_decimal_lychrel_existence_proved": false,
+  "196_palindrome_avoidance_proved": false,
+  "formal_theorem": "forall n>0, B,s in Nat, exists t with s<=t<=s+E(2B) and digitSum(orbit(n,t))>B",
+  "recurrence": "E(0)=0; E(1)=1; E(M)=5*(2*(M-1)*E(M-1)+2*M-1) for M>=2",
+  "formal_module": "uniform_lean/SharpUniformDecimal.lean",
+  "principal_declaration": "DecimalUniformEscape.digitSum_uniform_window_sharp",
+  "compiler": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "source_modules": 10,
+  "proof_source_sha256": {
+    "LychrelDigitSums.lean": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+    "SharedProfile.lean": "0dbd924109cc235a9db5db35c6bbf1326ebf1f69841b53d59439eec92874630f",
+    "ProfileDynamics.lean": "214d8b068c2b12d3df14654071342f371814e230da89fafd7c186ef76697bff5",
+    "ProfileIsolation.lean": "287071e80b2b4d83c1edea18bd9c6f720ecd0f86bede024d7251a46044224bc6",
+    "UniformEscape.lean": "ec159be964b7fa86a09a5ed8e78900b3b29674e96b915fbeae6188a3cc8c2f00",
+    "DecimalEmbedding.lean": "cc565a8124f5ec916e345c6daaeaaf8d45511b9751298600f83bd189292045ea",
+    "UniformDecimal.lean": "e2d6bb0a856406148a4c53a47b32a37eb9fd9414a3e689d7205cbd22dbf492f2",
+    "SharpProfileBounds.lean": "a8907c8ad4d48d3c78ac21a3a87c22858eed9127e9ccbe3a6ce38cfeaa50a09c",
+    "SharpUniformEscape.lean": "74def1ba139fef73734b52163f7690d8c6895299c05dc082c69d107617969348",
+    "SharpUniformDecimal.lean": "1d46f0bfcadc86ca41573b09f8b588af6a38a8b5798897625459e6f29b714b33"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "custom_axioms": false,
+  "admitted_proofs": false,
+  "native_computation_oracle": false,
+  "root_independent_replay": {
+    "lean": "Fresh source build of seven base units, then three refinements against hash-checked unchanged fresh dependencies; final axiom audits passed.",
+    "collision": {
+      "status": "PASS",
+      "all_parameter_symbolic_transitions": 37,
+      "ordinary_integer_controls": 3538,
+      "full_return_proved": false
+    },
+    "front_cycles": {
+      "status": "PASS",
+      "cycles": 561,
+      "cycle_edges": 17606,
+      "ordinary_integer_edge_checks": 16226,
+      "bulk_controls": 654
+    },
+    "counting": {
+      "status": "PASS",
+      "inverse_DFA_transitions": 3840,
+      "finite_words": 65536,
+      "width": 50,
+      "certificate_sha256": "b3cec6835e499a59d80698032a82834622d35666b3168eec2d4ccc2f7caec7c2"
+    }
+  },
+  "moving_front_criterion": "Structurally impossible for every finite suffix budget and spatial period under the specified information-discarding update and both-overflow closure; not a general Lychrel obstruction.",
+  "moving_front_audit_sha256": "f10a39b3a52451024dfa8d0f497c8cec048ddfce20c28fc821a78e215949e6fd",
+  "counting_scope": "No <=16 universal killing-block bound for the specified three no-overflow inverse layers. Length 17 UNKNOWN; no asymptotic contraction or existence result.",
+  "all_finite_searches_stopped": true,
+  "manuscript": {
+    "path": "continuation/UnboundedDigitSums.pdf",
+    "pages": 8,
+    "sha256": "e9ec2ecca3b20a59d6aa2a68e657f63ae6958db0f789d6172f69b400cb68bbe5",
+    "latex_compilation_passed": true,
+    "changed_pages_visually_inspected": [
+      1,
+      7,
+      8
+    ]
+  },
+  "unformalized_written_results": [
+    "General-base uniform escape",
+    "Decimal asymptotic running-maximum constant 3/4",
+    "Moving-front structural obstruction",
+    "Collision identities",
+    "Inverse counting finite theorem"
+  ],
+  "publication_novelty_established": false,
+  "external_human_peer_review": false,
+  "preserved_original_source_sha256": {
+    "Lychrel196Research.lean": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+    "continuation/LychrelDigitSums.lean": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+  }
+}

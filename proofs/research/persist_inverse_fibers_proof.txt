@@ -1,0 +1,208 @@
+SHARP ONE-STEP FIBER COUNTS FOR THE PAIR-SUM TRANSITION
+Decimal setting. Proof note, not a Lychrel-existence theorem.
+
+Let G(q) be the next symmetric pair-sum word, starting from a canonical
+pair-sum word q (positive outer coefficient, entries 0..18, even center).
+The two branches below are separated by their actual final carry.
+
+THEOREM A: NO OVERFLOW, EVEN INPUT WIDTH
+-------------------------------------
+For width L=2m, m>=1, the maximum size of a no-overflow fiber of G is
+
+  max(1,F_(m-1)),    F_0=0, F_1=1, F_(j+2)=F_(j+1)+F_j.
+
+For m>=2, the target (11,9,...,9,11) attains F_(m-1) and does not
+produce a palindrome at its next step. Thus the asymptotic maximum
+remains sharp under this palindrome-avoidance restriction.
+
+Exact folded inverse table
+-------------------------
+At a paired input position let a be the low incoming carry, b the high
+outgoing carry, x the shared q coefficient, a' the next low carry, and
+b' the next high carry. For target pair-sum coefficient s,
+
+  floor((x+a)/10)=a',   floor((x+b')/10)=b,
+  ((x+a) mod 10)+((x+b') mod 10)=s.
+
+The state is (a,b), the next state is (a',b'), and x is the edge label.
+State order is 00,01,10,11. The transition-count matrices are:
+
+  E = [1 0 0 0]       O = [0 1 0 0]       M = [0 1 0 0]
+      [0 0 1 0]           [0 0 0 1]           [0 1 0 1]
+      [0 1 0 0]           [1 0 0 0]           [1 0 1 0]
+      [0 0 0 1]           [0 0 1 0]           [0 0 1 0]
+
+Here E applies to even s=2,4,...,16; O to odd s other than 9; and M to
+s=9. For s=0 delete the 10->01 edge from E; for s=18 delete the
+01->10 edge from E. Every nonzero entry is 1. For example the sole
+branching symbol 9 has labeled edges
+
+  00->01: x=4,
+  01->01: x=9,    01->11: x=14,
+  10->00: x=4,    10->10: x=9,
+  11->10: x=14.
+
+One can derive the table without search. Adding the two digit equations
+gives 2x+a+b'=s+10(a'+b). Its parity fixes b'; the two candidate values
+of a' give x values separated by 5. Checking the two carry inequalities
+produces exactly the entries above. The accompanying program enumerates
+the 19*4*19*2 finite local cases as an independent check.
+
+Fibonacci proof
+---------------
+Let the current path-count row vector be (A,B,C,D). Define
+
+  U=A+D (equal-carry states), V=B+C (unequal-carry states).
+
+Then E keeps (U,V), O sends it to (V,U), and M sends it to (V,U+V).
+Symbols 0 and 18 only delete paths, so their new pair is componentwise
+at most (U,V). Start at (U,V)=(1,0). At an even center accept precisely
+the equal-carry states, so a whole fiber has size U after m symbols.
+
+After two symbols U<=1 and V<=1. Induction gives, for m>=2,
+
+  U<=F_(m-1),  V<=F_m.
+
+Indeed each update is bounded by (F_m,F_(m+1)), using monotonicity of
+Fibonacci numbers. The one-pair case has at most one preimage.
+
+All-9 targets achieve equality: M^m gives
+(U,V)=(F_(m-1),F_m) for m>=1. Replacing the first target symbol by 11
+does not change its transition from initial state 00, hence gives the
+stated non-palindrome-producing target. These paths correspond one-to-one
+to admissible symmetric q words, since each edge's x is unique and the
+even-center equality is exactly carry consistency. The outer label is
+5 for target 11, so positivity holds.
+
+THEOREM B: OVERFLOW, ANY INPUT WIDTH
+-----------------------------------
+For every L>=2, the maximum size of an overflow fiber of G is
+
+  2^(floor(L/2)-1).
+
+This maximum can also be attained at a target that does not produce a
+palindrome next.
+
+Proof of upper bound
+--------------------
+The target outer coefficient s_0 determines q_0 uniquely. Overflow
+forces q_0>=9. If q_0=9 then s_0=10; otherwise s_0=q_0-9 in {1,...,9}.
+
+Now scan inward. Suppose the previous q coefficient is p, the known
+low incoming carry is a, and the known high outgoing carry is b. For
+current q coefficient x and target coefficient s, write a' for the
+new low carry and b' for the new high carry. The overlapping pair in
+the overflow output gives
+
+  s=(x+a-10a')+(p+b'-10b).
+
+For each of the two choices b'=0,1 this fixes x modulo 10. Compatibility
+of b' with the reflected occurrence of x requires
+
+  b'=0 => 0<=x<=9,
+  b'=1 => 9<=x<=18.
+
+Each interval contains exactly ten integers and hence contains at most
+one candidate with the required residue. Thus there are at most two
+branches per free mirrored pair. Once q_0 is fixed, there are
+floor(L/2)-1 such pairs.
+
+If L is odd, the remaining central coefficient adds no factor of two.
+If both b' candidates exist, subtraction of their equations gives
+
+  x_1-x_0=10(a'_1-a'_0)-1.
+
+Since x_0<=9<=x_1, the difference must be 9. The candidates therefore
+have opposite parity and at most one is an admissible even center.
+The actual center carry matching can only delete candidates.
+
+Sharpness and palindrome avoidance
+----------------------------------
+Fix y in {1,...,8}. Set q_0=q_(L-1)=y+9. At each remaining mirrored
+pair choose q_i independently in {y,y+9}; at an odd center choose the
+even member of this pair. There are exactly 2^(floor(L/2)-1) words.
+
+No coefficient is the neutral value 9. With rho(x)=x-9*[x>=10], both
+choices have rho(x)=y. The exact overflow update has outer coefficient
+y and every interior coefficient rho(q_i)+rho(q_(i-1))=2y. Thus every
+word in this family has the same target
+
+  r=(y,2y,...,2y,y), of width L+1.
+
+For y=5,...,8, this target has a high coefficient but outer coefficient
+different from 11. The exact one-step palindrome criterion therefore
+fails. This establishes sharpness even after excluding targets that
+immediately produce a palindrome.
+
+VALIDATION
+----------
+persist_inverse_fibers.py checks the exact no-overflow table, then
+propagates all distinct count vectors for every word over E,O,M through
+half-width 12. It is exact enumeration of count vectors, not random
+sampling, and agrees with Theorem A. The exceptional symbols 0 and 18
+are dominated by E and cannot raise the maximum. Symbols 2,3,9 realize
+E,O,M with a valid positive leading input coefficient.
+
+The results file also checks the sharp target family through half-width
+30. The proof above, rather than this finite validation, establishes the
+unbounded statements.
+
+IMPLICATION AND LIMIT
+--------------------
+These are precise entropy bounds per mirrored column: asymptotically
+phi=(1+sqrt(5))/2 for even-width no-overflow fibers, and 2 for overflow
+fibers. They do not give a uniform bound on the entire terminating
+basin. Multiplying independent worst-case bounds through arbitrarily
+many steps rapidly exceeds the number of input states; it must exploit
+correlations between successive target words and their inverse branching.
+Both maxima still occur after imposing the immediate palindrome-avoidance
+condition, so that condition alone does not yield the needed contraction.
+No probabilistic independence assertion or Lychrel-existence conclusion
+is made here.
+
+STRONGER OBSTRUCTION: ANY FIXED FINITE AVOIDANCE HORIZON
+------------------------------------------------------
+Both exponential rates remain sharp even if the target is required to
+avoid palindromes for any fixed number k of subsequent numeric steps.
+
+First observe a finite-propagation fact. A central constant-18 block of
+length R transforms to a central constant-18 block of length at least
+R-2. In a no-overflow step each interior position of the block has two
+incoming carries equal to 1, so its pair sum stays 18; this discards at
+most the two endpoints. In an overflow step two adjacent 18 coefficients
+give the new coefficient 18, discarding at most one endpoint. Any
+remaining coefficient 18 excludes both exact palindrome-producing
+patterns. Therefore a central block of length at least 2k-1 prevents
+palindromes for the next k numeric steps.
+
+No-overflow family: for m,k>=1 take the symmetric target whose first
+half is
+
+  (11, 9 repeated m times, 18 repeated k times).
+
+Its central 18 block has length 2k. Its inverse path count in the
+equal-carry states is exactly F_m: the first symbol 11 acts like 9 on
+the initial state, the following m nines give U=F_m, and every symbol
+18 preserves U exactly. Consequently it has F_m distinct no-overflow
+preimages, while avoiding palindromes for at least k more steps.
+
+Overflow family: take input half-word
+
+  (14, x_1,...,x_m, 18 repeated k times),  x_i independently in {5,14},
+
+and reflect it to make an even-width word. All 2^m choices have the
+same overflow target
+
+  (5, 10^m, 14, 18^(2k-1), 14, 10^m, 5),
+
+where exponents denote repetitions of coefficients, not numerical
+powers. Its central 18 block prevents palindromes for at least k more
+steps. The equality of all target words follows from rho(5)=rho(14)=5
+and rho(18)=9 in the no-neutral-coefficient overflow formula.
+
+For each fixed k, letting m grow gives inverse fiber rates phi and 2
+per mirrored column. Thus no bound based only on imposing a fixed
+finite palindrome-avoidance horizon can lower these worst-case rates.
+The construction varies the finite seed with k. It gives no single
+finite seed with infinite avoidance, and compactness of infinite digit
+strings does not turn it into such a seed.

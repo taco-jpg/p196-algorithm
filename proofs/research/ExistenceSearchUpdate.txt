@@ -1,0 +1,141 @@
+PREVIOUS CHECKPOINT
+For the subsequent period-four refinement, see PeriodFourResearchUpdate.txt.
+
+DECIMAL LYCHREL EXISTENCE: CONSTRUCTIVE SEARCH UPDATE
+13 October 2026
+
+The requested existence proof has not been obtained. No finite decimal
+Lychrel witness, proof for 196, or disproof of decimal existence is supplied.
+No novelty or publication-readiness claim is made.
+
+1. A COMPLETED THEOREM, INCLUDING LEAN FORMALIZATION
+
+Continue the ordinary decimal iteration n_(t+1)=n_t+reverse(n_t) for all
+t>=0, even if it reaches a palindrome, and let L_t be its canonical width.
+For every positive seed,
+
+    t + 4 L_0 <= 4 L_t + 4,      2 L_t <= 2 L_0 + t + 3.
+
+For n_0=196,
+
+    t + 11 <= 4 L_t,            2 L_t <= t + 7.
+
+Proof of the lower bound. Let a_t be the sum of the first and last digits,
+b_t the incoming carry at the highest column, and h_t the final carry.
+Here 1<=a_t<=18, b_t is0 or1, and L_(t+1)=L_t+h_t. Ordinary addition gives
+  h_t=floor((a_t+b_t)/10),
+  a_(t+1)=2a_t+b_t                       when h_t=0,
+  a_(t+1)=a_t+1-10floor(a_t/10)           when h_t=1.
+For a=1,...,18 define
+  psi(a)=(4,3,2,2,2,1,1,1,1,1,0,0,0,0,0,0,0,0).
+Checking the36 pairs(a,b) proves
+  psi(a_(t+1))+1 <= psi(a_t)+4h_t.
+Telescoping yields
+  psi(a_t)+t+4L_0 <= psi(a_0)+4L_t.
+Use0<=psi<=4, or psi(7)=1 for196.
+
+The existing upper-growth potential is
+  phi(a)=(0,0,0,1,0,1,1,1,2,1,1,1,2,1,2,2,2,3).
+The same36 cases give phi(a_(t+1))+1<=phi(a_t)+2(1-h_t).
+Telescoping gives2L_t+phi(a_t)<=2L_0+t+phi(a_0).
+Use0<=phi<=3, or phi(7)=1 for196. This completes both inequalities.
+The finite cases and the numeric representation bridge are proved in Lean.
+These width bounds give no palindrome-avoidance conclusion.
+
+Canonical source: Lychrel196Research.lean, namespace DecimalWidthGrowth.
+Principal declarations:
+  numeric_width_bounds
+  numeric196_width_bounds
+The complete source has201 theorem declarations and4,004 lines. It compiles
+with Lean4.19.0 and import Std only. No sorry, custom axioms, native_decide,
+or untrusted external computation supplies a Lean proof. The new theorem
+axiom audits contain only propext and Quot.sound.
+SHA256:1c3f74dd692d4b7bc1b8e2b03dac871db7ce6258caf4b4c32ce9f4844396513c
+Build evidence: exist_build_verification.json, exist_integrated_build.log.
+The original Decimal196Conjecture and DecimalLychrelExistence are still
+unproved definitions. The PDF in this package predates this latest update.
+
+2. POSITIVE CONSTRUCTIONS AND WHAT THEIR CHECKS ESTABLISH
+
+Uniform core, free overflow schedule. A complete independent replay covers
+all1,077 scalar-outer-compatible period24/gain9 clocks. Their exact exterior
+graphs have987,037 states in total,985,960 edges, maximum spatial depth10,
+and no incomplete graph or directed cycle. Hence no uniform six-phase core
+can have a period24/gain9 growing return family at any finite exterior
+width. Together with the growth and congruence constraints, such uniform
+pumps need period at least30. This does not exclude larger periods.
+See exist_uniform_notes.txt and exist_uniform_period24_verify.py.
+
+Uniform core, all temporal periods. An exact functional graph exhausts
+constant-core phases16,14,10,2,4,8 at fixed exterior widths1..6. No safe
+cycle exists. Width6 has267,418,692 states and75,297,120 edges. Core length
+is arbitrary, by the exact carry-reset proof. An independent literal-
+integer checker reproduces all graph counts through width3. This excludes
+only the specified fixed-boundary model, not larger or growing boundaries.
+See exist_count_uniform_graph_notes.txt.
+
+Period-three pair-sum core, all temporal periods. Exact functional graphs
+at fixed exterior widths1..4 contain no safe cycle. Width4 has70,373,340
+states and18,860,060 edges. The all-core-length reduction uses a carry
+reset within each period and checks both center parities. Independent
+literal-integer counts agree through exterior width2. The exact family
+and its limits are specified in exist_affine_runs_notes.txt.
+
+Period-three actual-digit cores. Exact algebraic transitions were checked
+against103,792 literal integer additions, including3,221 overflows.
+CaDiCaL reports UNSAT for period8/growth3 at all exterior widths<=64,
+and for period12/growth3 and period16/growth6 at all widths<=16, using
+all residue classes and the cap-padding lemma. These are solver-reported
+UNSAT results, not Lean- or DRAT-verified graph theorems. Larger unfinished
+cases remain UNKNOWN. See exist_periodic_bulk_notes.txt.
+
+Period-four nonuniform cores. The complete center-compatible bulk graph
+has15,768 states. Crossing its1,168 recurrent states with342 possible
+outer-two-pair states gives399,456 product states and565,592 edges, with
+25 positive-growth strongly connected components. This is a genuine local
+construction, not a complete orbit. Selected cycles give four distinct
+candidate clocks; their complete exterior graphs have514,2369,577,262145
+states, one fewer edge each, maximum depth2, and no cycle. The first three
+counts agree with an independent Python checker; the largest completes
+in the standalone C++ checker. These four candidates cannot connect to an
+arbitrarily long periodic middle. Other cycles inside the25 components
+are not excluded. See exist_geom_notes.txt and
+exist_uniform_two_outer_screen_results.json.
+
+Several growing runs. The exact affine-run checker requires a symbolic
+identity F^p(Q_k)=Q_(k+1) and nonpalindromicity at every intermediate phase
+for all integers k>=0. It rediscovered a known binary expanding family,
+with first certified nonpalindromic output360. It does not transfer that
+binary result to decimal. In10,000 reproducible decimal multirun starts,
+6,169 hit a run cap,3,795 reached a palindrome, and36 hit a step cap.
+No decimal certificate was found. Caps are incomplete search outcomes.
+See exist_affine_runs.py and exist_affine_runs_notes.txt.
+
+Time-dependent tile languages. Preserving local tiles, digit-sum residue,
+modulo11, and length classes through modulo32 still admits spurious bad
+words at stage16 for196, or stage7 for18887 in the corresponding tests.
+Explicit word-derivation certificates pass standalone arithmetic checkers.
+These are limitations of the specified abstraction; they are not actual
+palindromes in196's orbit. Any-seed synthesis remains UNKNOWN.
+See exist_tile_notes.txt.
+
+3. VERIFICATION LEVELS AND THE OPEN OBLIGATION
+
+The numeric width theorem is checked by Lean's kernel. The complete graph
+results have explicit mathematical reductions and reproducible integer
+checkers, but the new concrete graph certificates are not instantiated
+in Lean. Solver UNSAT is reported separately from those graph checks;
+timeouts and state caps assert no impossibility theorem.
+
+The canonical Lean file already proves that a nonempty admissible safe
+language preserved by the exact transition implies decimal existence.
+No instance of those hypotheses has been supplied. Likewise, none of the
+new families satisfies a complete all-time preservation-and-safety proof.
+Counting arguments still lack a uniform-in-time first-palindrome bound
+for a fixed finite seed set. Increasing seed length with the horizon is
+not enough; exist_count_notes.txt explains the quantifier gap explicitly.
+
+This checkpoint therefore contains rigorous partial theorems, construction
+criteria, and reproducible failed attempts, not the requested existence
+proof. All completed work is preserved so subsequent research can start
+from the exact unresolved conditions rather than repeat these searches.

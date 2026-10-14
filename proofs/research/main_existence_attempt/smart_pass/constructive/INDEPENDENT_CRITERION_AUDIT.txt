@@ -1,0 +1,109 @@
+INDEPENDENT AUDIT: THE FINITE MOVING-FRONT CRITERION
+Date: 2026-10-14
+
+Reviewed: CONDITIONAL_FRONT_THEOREM.md, STATUS.md, and the suffix_step
+operation in front_language.py. This was a mathematical and source-reading
+audit. No search, experiment, or source modification was performed.
+
+VERDICT
+
+The stated hypotheses would justify the claimed actual finite-seed orbit
+induction, including the boundary, carry, center, and safety obligations.
+However, those hypotheses are inconsistent for the stated local operation:
+no nonempty finite certificate closed under both overflow values can satisfy
+the upper potential. This is an all-K structural obstruction, independent
+of the searched motifs, periods, safety conditions, or finite search limits.
+Thus the implication is sound but vacuous for this certificate format.
+
+1. THE EXACT PER-EDGE OBSTRUCTION
+
+Write s_v=|S_v|, b=j-s_v, j'=j+Delta, and b'=j'-s_u.
+The local operation starts its known output at b+h. After removing the
+matching periodic tail, it keeps a suffix of the remaining known prefix.
+Consequently it never retains a coefficient before b+h. More precisely,
+if D is the number of known prefix coefficients discarded by the K cutoff,
+then D>=0 and
+
+    b' = b+h+D,
+    Delta-s_u+s_v = h+D >= h.
+
+This identity also covers an empty retained suffix. It is directly visible
+in suffix_step: ns=start+h; newcut=ns+len(out); then out=out[-K:].
+
+For a directed cycle C, suffix lengths telescope. Therefore
+
+    sum_C Delta >= sum_C h,
+    sum_C (2*Delta-h) = sum_C h + 2*sum_C D >= sum_C h.
+
+The upper potential requires the same cycle sum to be <=0. Hence every
+cycle in any graph satisfying that potential must have h=0 and D=0 on
+every edge. In particular, no cycle may contain an overflow.
+
+But every vertex of the proposed finite nonempty graph has an outgoing
+h=1 edge (indeed one for each incoming carry). Fix either incoming carry
+and repeatedly follow such edges. Finiteness forces a directed cycle made
+entirely of h=1 edges. Its weight is at least its positive edge count,
+contradicting the upper potential. This proves nonexistence for every K
+and p. The lower potential, center constraints, and safety witnesses cannot
+repair this contradiction.
+
+The same argument applies to a complete finite graph with a prescribed
+alternating N,O clock: every clock-compatible cycle contains overflow edges.
+Thus the positive-cycle outcome is structurally unavoidable for that exact
+finite-window abstraction, not merely a feature of the sampled motifs.
+State-cap outcomes remain state-cap outcomes; this argument does not claim
+to reconstruct an unfinished reachable graph.
+
+Equivalently, along any path,
+
+    j_t-j_0 >= H_t+s_t-s_0,
+    2*j_t-H_t >= 2*j_0+H_t-2*K.
+
+A bounded upper potential would bound H_t. The retained window loses at
+least one column on every overflow, while the center moves only half a
+column. A bounded suffix cannot absorb that difference indefinitely.
+
+2. CHECK OF THE CONDITIONAL ORBIT INDUCTION
+
+Apart from the preceding inconsistency, no missing boundary hypothesis was
+found in the written implication.
+
+- Both actual branch variables are covered: h is the actual finite-word
+  overflow and a is the actual low carry at b. The arithmetic is not forced
+  to follow an independently prescribed clock or incoming-carry sequence.
+
+- The upper potential and initial R margin telescope with the stated signs
+  to L_t-2*j_t>=2p+4. The lower potential and initial U margin give b_t>=0.
+  In fact the local operation already gives the stronger b_t>=b_0+H_t,
+  so a constant lower potential would suffice for physical containment.
+
+- Nonneutrality supplies a reset in every p consecutive periodic positions.
+  For the entire left half of the finite word, the old central margin
+  2p+4 leaves at least p reset positions before the opposite finite wake
+  can influence the required high directional carry. The low scan is exact
+  from its actual entering carry. On overflow, retaining only i>=b+1
+  ensures the delayed high digit at i-1 lies in the known input window and
+  excludes the special physical endpoint. Reflection supplies the other
+  half. Computing the local edge using a longer artificial periodic window
+  does not require that artificial window itself fit within the left half.
+
+- The residues propagate the actual cut modulo p and actual length modulo
+  2p. The stated reflection condition on B and even odd-center coefficient
+  supply the finite symmetric center. The seed has a positive outer pair
+  sum and hence the stated positive canonical decimal realization.
+
+- A safety coefficient in S is physically retained, and a coefficient in B
+  occurs because the central band contains a full period. A coefficient
+  greater than 9 and unequal to 11 excludes both exact palindrome-predecessor
+  classes. This proves nonpalindromicity of every successor, so n_1 rather
+  than an unrestricted n_0 is the proposed Lychrel witness.
+
+3. LIMITS
+
+This is not a nonexistence proof for decimal Lychrel numbers, arbitrary
+moving-front constructions, correlated wake languages, or a redesigned
+local operation that can recover earlier known columns. It concerns the
+specified operation that starts known output at b+h and thereafter only
+discards information, together with a finite state set and the stated
+upper potential. Merely increasing K, changing motifs or spatial periods,
+or adding the lower potential cannot remove this obstruction.

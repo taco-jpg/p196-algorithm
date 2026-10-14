@@ -1,0 +1,140 @@
+Complementary carry domains and a period-four bulk
+
+Status: exact interior identities only. No finite decimal Lychrel seed or
+closed finite-word invariant has been obtained. No novelty claim is made.
+
+Let q be a bi-infinite periodic mirrored-column-sum word. An overflow flag
+h in {0,1} is supplied by a prospective finite exterior. Assume q is not
+identically9. Each carry is then uniquely determined by the nearest
+non-9 reset symbol: values0,...,8 reset to0 and10,...,18 reset to1.
+At position i, let a_i and b_i be incoming carries from the left and right.
+Put R_i=(q_i+a_i) mod10 and L_i=(q_i+b_i) mod10. The exact bulk map is
+
+    G_h(q)_i = R_i + L_(i-h).
+
+1. A complement invariant
+
+If q_(i+p)=18-q_i, then a_(i+p)=1-a_i and b_(i+p)=1-b_i.
+Indeed the shift interchanges every low reset and high reset, preserving
+the lengths of intervening neutral runs. Consequently R_(i+p)=9-R_i
+and L_(i+p)=9-L_i, because their pre-normalization sums add to19.
+Therefore
+
+    G_h(q)_(i+p)=18-G_h(q)_i
+
+for either overflow flag. This statement concerns an infinite periodic
+bulk, not a finite integer. If the output becomes identically9, the next
+carry is no longer uniquely determined by the bulk, so that degenerate
+state cannot be treated as a deterministic recurrent state.
+
+2. Exact sparse-defect evolution
+
+For even q in0,...,18 and g>=1, take the periodic block
+
+    P(q,g) = q, 9^g, 18-q, 9^g.
+
+The reset types of adjacent defects are opposite. Direct addition gives
+
+    G_0(P(q,g)) = P(f(q),g),
+    f(q)=2q+2 for q<9, and f(q)=2q-20 for q>9.
+
+Writing q=2a, the transformation of a+1 is multiplication by2 modulo11.
+Thus these ten even values follow the exact cycle
+
+    0,2,6,14,8,18,16,12,4,10,0.
+
+This supplies a nontrivial neutral-domain memory under arbitrarily many
+no-overflow steps. Such steps alone cannot describe an infinite positive
+integer orbit, since its magnitude is strictly increasing.
+
+Define
+
+    S(a,m)=a,a,9^m,18-a,18-a,9^m.
+
+An overflow has the exact interface rule
+
+    G_1(P(q,g))=S(A(q),g-1),
+    A(q)=q+10 for q<9, and A(q)=q-10 for q>9.
+
+The following no-overflow step gives
+
+    G_0(S(a,m))=S(2(a mod10)+1,m)
+
+for these even a and any m>=0. The two entries within each doubled defect
+receive one low and one high incoming carry. For q=4 or14 this becomes
+the all9 word; other choices produce genuine doubled defects. In
+particular, the odd doublet values3,7,15,11 have a four-step no-overflow
+cycle, with their complementary partners15,11,3,7.
+
+Thus a long neutral run is not automatically renewable: an overflow
+converts a single defect into a doublet and consumes one neutral symbol.
+A full construction would have to include doublet evolution and either
+regenerate the neutral gap or switch to a different bulk phase.
+
+3. A concrete neutral-free bulk avoids that immediate gap problem
+
+There is an exact four-step periodic bulk under the schedule N,O,N,O,
+where N denotes no overflow and O denotes overflow:
+
+    (3,10,15,8)
+      N -> (7,1,11,17)
+      O -> (15,8,3,10)
+      N -> (11,17,7,1)
+      O -> (3,10,15,8).
+
+Every phase contains high reset symbols and none contains9. Here are
+compatible actual decimal digit pairs, indexed inward with spatial
+period4; q=L+R at each phase:
+
+    phase    L          R
+      0    2,2,7,7    1,8,8,1
+      1    4,1,5,8    3,0,6,9
+      2    7,7,2,2    8,1,1,8
+      3    5,8,4,1    6,9,3,0.
+
+These are forced digit outputs of the preceding q phase; they are not
+arbitrary splittings. The companion script supplies every carry stream.
+
+This is a candidate bulk for a16-step finite return: eight overflows add
+eight full digits, corresponding to one four-symbol repetition on each
+folded annulus. The forced exterior8-step clock divides16. Therefore the
+old period8 neutral-bulk exclusion and the period12 clock exclusion do
+not themselves rule out this candidate. Exterior and center interfaces
+must still be constructed and verified. A periodic infinite bulk alone
+does not imply even one finite Lychrel number.
+
+Verification: python3 resume_defect_renewal.py checks3000 sparse-packet
+instances,14472 anti-complement instances, and the entire explicit bulk
+cycle by the exact cyclic carry evaluator in family_search_bulk_periods.py.
+The unbounded identities follow from the local carry arguments above.
+
+4. Exact two-step annihilating defect language
+
+There is a larger, arbitrary-width family of domains that convert exactly
+to the uniform6 bulk under N followed by O. Let (k_i) be any bi-infinite
+binary word satisfying k_(i-1)+k_(i+1)<=1. Put
+
+    s_i=k_(i-1)+k_(i+1),
+    q_i=6+10k_i-5s_i.
+
+Then q_i lies in{1,6,11,16}; its reset carry is exactly k_i. The
+no-overflow map is therefore
+
+    G_0(q)_i=2(q_i-10k_i)+k_(i-1)+k_(i+1)=12-9s_i.
+
+Each resulting symbol is either12 or3. Both have residual value3 under
+an overflow, since12-9=3. Thus
+
+    G_1(G_0(q))_i=3+3=6
+
+at every position. Complementation gives the corresponding uniform12
+family. An isolated carry1 produces the defect packet(1,16,1) in a6 sea;
+two adjacent carry1 values produce(1,11,11,1). Their translates can be
+combined whenever the stated distance-two exclusion holds.
+
+This is an exact annihilation grammar, not a self-reproducing grammar.
+It explains why central6 runs can sometimes expand by more than one
+symbol: a neighboring defect packet can disappear and merge two runs.
+A monotone erosion argument based only on the current run length would
+therefore be invalid. An existence construction would need a mechanism
+that keeps generating the requisite packets from a finite exterior.

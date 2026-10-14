@@ -1,0 +1,196 @@
+FREE-CLOCK UNIFORM AND PERIODIC-BULK CONSTRUCTIONS
+13 October 2026
+
+Status: no finite decimal Lychrel witness was found. These are exact
+construction models, positive LOCAL bulk components, and bounded solver
+searches. Neither a timeout nor a local bulk cycle is an existence proof.
+No claim of novelty or publication priority is made.
+
+1. Exact uniform-run construction criterion
+
+Let T(n)=n+rev(n). Fix exterior width k, M=10^k, and decimal digits d_t.
+Write a family as n_{t,m}=A_t || d_t^m || B_t, where A_t is a positive
+k-digit prefix and B_t is a zero-padded k-digit suffix. Put
+  epsilon_t=[d_t>=5], d_{t+1}=2*d_t-9*epsilon_t.
+For d_0=8 the bulk cycle is 8,7,5,1,2,4; for d_0=6 it is 6,3.
+
+The following are sufficient exact conditions for a one-step family map:
+  low=B_t+rev_k(A_t), floor(low/M)=epsilon_t,
+  B_{t+1}=low mod M,
+  high=A_t+rev_k(B_t)+epsilon_t, h_t=floor(high/M).
+If h_t=0, set A_{t+1}=high. If h_t=1, require high mod10=d_{t+1}
+and set A_{t+1}=floor(high/10). Then for every m>=1,
+  T(n_{t,m})=n_{t+1,m+h_t}.
+
+Proof: the low exterior addition supplies exactly the stable carry required
+by the constant digit block. Every middle digit therefore becomes d_{t+1}.
+The high exterior receives epsilon_t. Without overflow the stated prefix
+is direct; with overflow its low digit must match the middle digit, so that
+digit extends the middle run and the remaining k digits form the prefix.
+This is ordinary positional addition, with no approximation in m.
+
+If the exterior digits and bulk phase return after p steps, their total
+growth is g>0, and every phase has A_t!=rev_k(B_t), these identities prove
+that every member is a decimal Lychrel number. This final conjunction has
+NOT been found. The programs search it rather than assume it.
+
+The digit-sum congruence forces 9 | d_0*g when p returns the bulk phase.
+Thus d_0=8 requires g divisible by9; d_0=6 requires g divisible by3.
+A further necessary modulo11 constraint is used optionally in the q model.
+Every positive-growth closed family eventually has an even-length input,
+whose reverse-add output is divisible by11; this divisibility persists.
+After two full family returns the number has the same residue modulo11.
+Consequently every phase is already divisible by11. For a uniform-q family
+with folded exterior E and middle coefficient2*d, evaluating an odd-width
+q word at10=-1 gives
+  sum_i (-1)^i E_i + (-1)^k d = 0 (mod11).
+
+Files:
+  exist_geom_uniform_freeclock.py -- actual prefix/suffix digit SMT model.
+  exist_geom_uniform_qclock.py -- smaller exact pair-sum SMT model.
+Both use bounded unsigned 5-bit column sums; the largest sum is19, so there
+is no bit-vector wraparound in a decimal column. SAT output, if obtained,
+must pass literal integer checks at multiple middle lengths. UNSAT reports
+are solver results for the indicated widths/periods, not Lean proofs.
+
+Search outcomes:
+  d8, p24/g9: widths1..6 UNSAT; larger tested widths mostly UNKNOWN.
+  d8, p30/g9 and p36/g9: width6 UNSAT with optional mod11 pruning;
+    larger tested widths UNKNOWN under short time limits.
+  d6, p8/g3: tested widths through64 mostly UNSAT, width48 timed out.
+  d6, p10/g3: all tested widths2,4,6,8,12,16,24,32 UNSAT.
+The exact outcomes, including every timeout, are in the matching JSON files.
+Separate work by the uniform-clock agent subsequently excludes all p24/g9
+uniform pumps at arbitrary exterior width using complete spatial graphs;
+the present bounded SMT runs are not the basis for that stronger claim.
+
+2. Unknown periodic spatial bulk with a free growth clock
+
+The generalized family is a symmetric pair-sum word
+  C_{t,m}=E_t ++ take(2*r*m+G_t, cycle(Q_t)) ++ reverse(E_t),
+where Q_t has spatial period r, G_0=0 and G_{t+1}=G_t+h_t. A return
+requires E_p=E_0, Q_p=Q_0, and g=G_p a positive multiple of2*r.
+
+Two periodic carry streams A_j and B_j are retained:
+  A_{j+1}=floor((Q_j+A_j)/10),
+  B_j=floor((Q_j+B_{j+1})/10).
+Indices are modulo r. The low and high digits are respectively
+  l_j=Q_j+A_j-10*A_{j+1},
+  u_j=Q_j+B_{j+1}-10*B_j.
+Then the new periodic pair sums are
+  N: Q'_j=l_j+u_j;
+  O: Q'_j=l_j+u_{j-1}.
+
+Crucially, the periodic word is constrained at its actual finite center:
+  Q_j=Q_{G_t-1-j}.
+If G_t is even, at j=G_t/2 require A_j=B_j. If G_t is odd, at
+j=(G_t-1)/2 require Q_j even and A_j=B_{j+1}. These are the exact
+empty-gap or central-column carry matching conditions. They eliminate
+periodic patterns that cannot be the center of any finite numeral.
+
+The exterior is an ordinary finite column-addition chain, with low incoming
+carry0, low outgoing carry A_0, and high incoming carry B_0. Its high
+outgoing carry is h_t. At O, the last high exterior output must equal
+u_{r-1}; this lets one digit be absorbed into the periodic middle. The
+next exterior q coefficients are l_i+u_i at N, or l_i+u_{i-1} at O,
+with the new leading digit1 replacing u_{-1} at the very outside.
+
+The exact next-palindrome criterion is imposed at every phase: at N some
+q coefficient must be >=10; at O it is forbidden that the outer coefficient
+is11 and all coefficients belong to{0,11}.
+
+If all these finite constraints had a solution, positional addition would
+give the family recurrence for every m>=1. Every symmetric q word with
+coefficients0..18, even central coefficient if necessary, and positive
+outer coefficient has a canonical decimal realization. Starting with such
+a realization and applying T once would then supply a finite Lychrel
+witness, by induction on the family recurrence. No satisfying complete
+solution was found.
+
+Implementation: exist_geom_periodic_qpump.py. A direct test compares the
+derived local recurrence with ordinary integer reverse-and-add, not with
+another SMT encoding. It accepted and verified5,314 eligible periodic-bulk
+steps among20,000 random tests. Uniform digit equations were independently
+verified on25,303 eligible prefix/suffix choices among100,000 samples, each
+at middle lengths1,2,11. Reproduce with:
+  python3 exist_geom_model_controls.py
+These are implementation controls, not substitutes for an all-time proof.
+
+3. Concrete positive local components and the remaining exterior obligation
+
+The complete spatial-period4 central graph has15,768 nonuniform states,
+30,000 retained edges, and7 strongly connected components with growth.
+Intersecting these with the necessary scalar outer-pair graph still leaves
+center-compatible examples of temporal periods20,24,28 and total growth8.
+The data include the entire q-phase traces and exact growth clocks:
+  exist_geom_periodic_bulk_graph.py
+  exist_geom_periodic_bulk_graph_results.json
+
+One exact example starts with periodic q=(18,6,6,18), runs clock
+(O,N,O,N,N)^4, and returns after20 steps while adding8 positions. Its
+necessary scalar outer sums cycle15,6,12,3,7. This is a genuine finite-
+center-compatible bulk component, but it has no finite exterior connector:
+the independently computed exterior E graph for segments(2,3)^4 closes
+at257 states,256 edges, depth1, and has no directed cycle.
+
+The corresponding actual digit/carry lift is saved in
+exist_geom_period4_target.json. All four of its spatial edges were checked
+with the original continuation_theory_multigrowth.transitions relation.
+Other selected local cycles were tested with pinned-boundary SMT. All11
+tested cycles fail at exterior width4; at width8 ten fail and one times out;
+larger-width tests contain both failures and explicit UNKNOWN outcomes.
+Subsequent exact two-outer-pair/clock graphs independently exclude all eight
+distinct clocks underlying these11 extracted cycles at arbitrary width.
+These results do not exclude every possible local cycle.
+
+4. Final all-period two-outer-pair product and focused completion attempt
+
+To remove the scalar outer model's spurious clocks, the full period4 bulk
+graph was intersected with the exact two-outer-pair necessary dynamics.
+For q0 in1..18, q1 in0..18, the unknown inward high carry is either0 or1.
+Ordinary decimal addition determines the next two pairs and the overflow.
+All684 input/carry cases match a separately authored arithmetic routine.
+
+Only the1,168 recurrent bulk states can participate in a pump cycle.
+Their product with342 outer states contains399,456 states and565,592 edges.
+It was completely decomposed into268,057 strongly connected components;
+25 components retain an internal growth edge. A representative positive-
+growth cycle was extracted from each of those25 components.
+
+These representatives use four distinct return clocks:
+  period24, growth8:  (100)^8;
+  period24, growth8:  (100010001001)^2;
+  period24, growth8:  101000100010101000100100;
+  period35, growth16: 10110000101010100101010101010101010.
+Here1 means overflow and0 means no overflow.
+
+All four were given one focused exterior completion attempt. Their exact
+exterior E graphs closed completely with, respectively,
+  states: 514, 2369, 577, 262145;
+  edges:  513, 2368, 576, 262144;
+  maximum depth: 2 in every case;
+  directed cycles: 0 in every case.
+Thus none of these FOUR EXTRACTED CLOCKS can support an indefinitely
+repeated spatial bulk behind a finite exterior. The first three counts
+match independent Python and C++ implementations; the final262145-state
+case was checked by the C++ implementation. No state/time cap remains in
+these four recorded runs. See exist_uniform_two_outer_screen_results.json.
+
+This is NOT an exclusion of all cycles in the25 product components, all
+period4 constructions, all other carry clocks, or decimal Lychrel numbers.
+The product components generally contain other cycles. They were not
+exhausted by selecting one representative from each component.
+
+Reproducible checkpoint files:
+  exist_geom_bulk_two_outer.py / _results.json -- complete product graph;
+  exist_geom_target_lift.py -- independent digit/carry target construction;
+  exist_geom_two_outer_targets.json -- four exact target spatial cycles;
+  exist_geom_model_controls.py / _results.json -- literal integer controls;
+  exist_geom_periodic_qpump.py -- conditional all-length construction model.
+The target-lift checker validates428 local decimal arithmetic edges across
+the four targets, including every overflow displacement. These local
+cycles are valid components; their missing exterior prevents a full proof.
+
+The remaining task is unchanged: a complete finite exterior plus a safe
+closed family, or another all-time argument for one finite decimal seed.
+No finite-center-compatible local bulk alone proves decimal existence.

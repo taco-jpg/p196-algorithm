@@ -1,0 +1,78 @@
+A bounded temporal carry history determines the complete pair-sum word
+
+THEOREM (conditional only on the number of non-overflow steps).
+Let two finite decimal reverse-and-add trajectories start with the same
+number L of digits. Suppose their entire carry words agree at every time
+before a common horizon t. If at least five of these steps do not overflow,
+the trajectories have identical initial mirrored pair-sum words.
+
+This determines the next integer exactly, since n+reverse(n)=sum q_i*10^i.
+It need not determine the initial integer: different digit splittings can
+have the same pair sums, for example196 and295.
+
+PROOF.
+For each trajectory form the symmetric pair-sum polynomial Q_t(x). Equality
+of the complete carry words implies equal overflow bits, hence equal widths
+at every subsequent time. The exact polynomial identities give, after
+subtracting the two trajectories,
+  D_(t+1)(x)=2 D_t(x),                 if that step does not overflow;
+  D_(t+1)(x)=(1+x) D_t(x),             if that step overflows.
+All additive carry terms cancel. Therefore
+  D_t(x)=2^N (1+x)^H D_0(x),
+where N and H are the numbers of non-overflow and overflow steps.
+
+If D_0 is nonzero, let m be its least nonzero exponent and let a be its
+coefficient there. Since (1+x)^H has constant coefficient1, the coefficient
+at exponentm in D_t is2^N*a. It has absolute value at least2^N because a is
+a nonzero integer. But every pair-sum coefficient is between0 and18, so every
+coefficient of D_t lies between-18 and18. For N>=5 this is impossible since
+32>18. Hence D_0=0.
+
+COMBINING WITH THE OUTER-DIGIT GROWTH BOUND.
+The independently derived potential bound2H<=t+3 gives
+  N=t-H >= ceil((t-3)/2).
+At t=12, N>=5. Thus twelve complete carry words, together with initial width,
+already determine the initial q word. This twelve-step numerical bound relies
+on the earlier outer-potential theorem; the coefficient argument itself only
+needs the five-non-overflow hypothesis. Neither part proves a Lychrel witness.
+
+WHY THIS MATTERS.
+The one-step carry normalization theorem and this reconstruction theorem are
+compatible. One carry word omits significant information; a short consecutive
+time history can retain every pair sum. Therefore the normalization theorem
+cannot rule out invariant approaches using several adjacent carry time slices.
+
+SHARPENING TO ELEVEN CONSECUTIVE CARRY WORDS (FULLY FORMALIZED).
+At a time where the carry words agree, the ordinary column equations give
+  q_i+c_i=10c_(i+1)+d_i,  r_i+c_i=10c_(i+1)+e_i,
+where d_i,e_i are decimal output digits. Consequently q_i-r_i=d_i-e_i lies
+in[-9,9], a stronger bound than[-18,18]. Four earlier non-overflow steps
+would make a nonzero first discrepancy at least16, which is impossible.
+Apply the growth bound through ten steps:10<=2N+3 forcesN>=4. The eleven
+carry words at times0,...,10 therefore determine the initial pair sums.
+No optimality claim for eleven is made.
+
+Formal files and main declarations:
+  resume_carry_history.lean:
+    CarryHistory.five_nonoverflows_determine_pair_sums
+    CarryHistory.iterPairs_carry_history_injective
+  resume_growth_history.lean:
+    CarryHistory.outer_potential_step
+    CarryHistory.nonoverflow_growth_bound
+    CarryHistory.twelve_carry_words_determine_pair_sums
+  resume_growth_eleven.lean:
+    CarryHistory.four_nonoverflows_and_endpoint_determine_pair_sums
+    CarryHistory.eleven_carry_words_determine_pair_sums
+These compile in Lean4.19/Std with only propext and Quot.sound in their
+axiom audits; there is no sorry, custom axiom, native_decide, or unformalized
+growth assumption in the eleven-word theorem.
+
+CONSTRUCTIVE RECONSTRUCTION.
+The full polynomial recurrence isQ_t=M_tQ_0+R_t, withM_t=2^N(1+x)^H and
+R_t computable from the supplied carry history. Recover coefficients ofQ_0
+from lowest exponent upward. At positioni, subtract the already recovered
+lower-coefficient contributions. The remaining unknown appears multiplied
+by2^N. The allowed final coefficient interval has width18, or width9 when
+the endpoint carry word is also given. A multiplier larger than that width
+allows at most one integer coefficient. This is an exact sequential decoder,
+not a claim that the carry history itself is easy to predict.

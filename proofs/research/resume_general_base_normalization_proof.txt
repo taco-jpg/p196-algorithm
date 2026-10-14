@@ -1,0 +1,88 @@
+Independent audit of the repaired general-base extension
+
+STATUS. The proof below is mathematical, not base-parametric Lean. Decimal
+specializations are kernel-checked in the main artifact. Finite randomized
+and carry-bit checks validate the formulas but are not the universal proof.
+
+THEOREM. Let b be even with b>=10, or odd with b>=17. Every complete first
+carry word in base b has a positive same-width representative with a
+palindromic iterate at some strictly positive time1<=k<=4. Four is optimal
+among strictly positive times. For odd bases, this optimality statement does
+not exclude palindromic representatives at time0; such representatives exist.
+
+Set s=1 when b is even, s=2 when b is odd, and alpha=b+s-1. Then alpha is
+even andb-1>=8s. Normalize unequal mirrored outgoing carries to b-1;
+normalize equal outgoing carries1 to alpha, and equal outgoing carries0 to
+2 without overflow or0 with overflow. These choices preserve the complete
+carry word: low values reset0, high values reset1, and onlyb-1 transmits
+an unequal incoming pair. The normalized word has an even center, positive
+outer sum, and a positive same-width base-b integer realization.
+
+Without overflow, the next pair sums are at most6, at most2s, or exactly
+b-1. They are all at mostb-1, and one more addition gives a palindrome.
+
+For overflow, use the following CORRECTED protected class. Each maximal run
+of b-1 has an endpoint pair(a,b+s-1-a), in either order, for some0<=a<=s-1.
+Other symbols are ordinary lows or highs in[b,b+s-1]. Zero extension supplies
+exterior endpoints. Normalization starts with endpoint pair(0,alpha).
+
+The exact run rule is
+  a,(b-1)^r,b+s-1-a -> b+a,(b-1)^(r-1),s-1-a,
+with the reflected counterpart for the opposite orientation. The new endpoint
+sum is againb+s-1, so the larger protected class is preserved. In odd bases,
+(0,b+1) and(1,b) exchange. The earlier idea of keeping only endpoints0,alpha
+was incorrect and is not used in this proof.
+
+For adjacent nonneutral symbols the overflowing output is rho(x)+rho(y),
+where rho(x)=x for a low symbol andrho(x)=x-b+1 in[1,s] for a high symbol.
+Thus the first overflow image has ordinary lows at most2s; the second has
+ordinary lows at most4s. No new neutral symbol comes from an ordinary pair,
+since4s<b-1. Every output4s comes from two adjacent ordinary inputs2s,2s.
+Neither input can be adjacent to a neutral run, since permitted low endpoints
+are <=s-1. Consequently both neighbors of this output4s are low.
+
+The final non-overflow step sends a protected neutral run to b-1, a high
+symbol to at most2s, and an ordinary x to2x plus two incoming bits. For
+x<4s this is at most8s. At x=4s both neighbors are low, so the two incoming
+bits vanish and the output is exactly8s. Therefore every output is <=b-1.
+This also covers non-overflow immediately after the first overflow image,
+whose low symbols are at most2s<4s.
+
+The initial outeralpha becomes s, giving scheduleO,N. The initial outerb-1
+becomes b and then1, giving scheduleO,O,N. Both schedules reach an entirely
+low pair-sum word, followed by a palindrome, within four positive iterations.
+
+SHARPNESS, BOTH PARITIES.
+The complete width-five carry word000111 forces
+  q=(b-1,b-1,b+z,b-1,b-1),
+where0<=z<=b-2 andb+z is even. In least-significant-first digit order,
+  T1=[b-1,b-1,z,0,0,1],
+  T2=[0,0,z+1,z,b-1,0,1],
+  T3=[1,0,z,(2z+1) mod b,z+floor((2z+1)/b),1,1].
+The first two are nonpalindromic at their outer digits, and the third at
+its second outer pair. For the smallest permittedz=s-1, T4 is2102012_b
+in even bases and2126212_b in odd bases. This proves positive-time sharpness.
+For odd bases, normalized pair sums are all even; taking each digit to be
+half its pair sum yields an initially palindromic representative. That fact
+is consistent with failure of palindromicity at times1,2,3.
+
+VALIDATION.
+Even-base script/results:
+  resume_even_base_normalization_check.py
+  resume_even_base_normalization_results.json
+  30,000 random original inputs;5,568 normalized carry-word checks;
+  1,756 sharpness-parameter checks; all passed.
+Odd-base script/results:
+  resume_general_base_normalization_check.py
+  resume_general_base_normalization_results.json
+  27,500 random original inputs;5,104 normalized carry-word checks;
+  1,757 sharpness-parameter checks; all passed.
+The selected bases extend through1,000,001; random input lengths are1..100.
+The direct protected-run argument, not these finite checks, establishes the
+claim for all admissible bases and all finite input widths.
+
+APPENDIX AUDIT.
+The current AppendixB of output/pdf/CarryWordsResearch.tex agrees with this
+repaired proof. Its explicit generic-Lean limitation, strictly-positive-time
+statement, and odd time0 remark are accurate. No remaining mathematical gap
+was found in that appendix during this independent check.

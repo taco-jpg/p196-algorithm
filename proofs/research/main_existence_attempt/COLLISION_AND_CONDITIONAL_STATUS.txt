@@ -1,0 +1,148 @@
+CONSTRUCTION AND CONDITIONAL-INVARIANT PASS -- 14 October 2026
+
+MAIN STATUS
+
+No proof or disproof of decimal Lychrel existence, and no all-time proof
+for 196, has been obtained. No new Lean existence theorem is supplied.
+The new positive results below are finite local components or conditional
+families. Their missing finite exterior is an essential hypothesis.
+
+Use q_i=d_i+d_(L-1-i), with decimal digits ordered from low to high.
+G is the exact update of this symmetric pair-sum word under one ordinary
+reverse-and-add step. N and O denote no overflow and one-digit overflow.
+
+1. EXACT SAFE CENTERS AND A CONCRETE REMAINING BOUNDARY PROBLEM
+
+An independently checked five-coefficient center (8,10,4,10,8), with
+appropriately aligned periodic936 tails, returns after N,O,N,O translated
+one place. Its four finite patches contain respectively10,17,14,17.
+Each coefficient is greater than9 and unequal to11, excluding both exact
+palindrome-predecessor patterns. This is an identity of a finite defect
+inside infinite periodic tails, not a finite integer construction.
+
+For example set B=(9,3,6) and W=(9,3,8,10,4,10,8,3,9). A fixed-width
+finite exterior P satisfying the archived24-phase boundary checker would
+give the finite family
+
+  Q_m = P ++ B^m ++ W ++ reverse(B)^m ++ reverse(P),  m>=1,
+  G^24(Q_m) = Q_(m+2).
+
+The center shifts six columns after24 steps; finite width grows by12.
+One full periodic block separates the exterior and center carry resets.
+Every intermediate phase is safe. The conditional family is thus a
+specific sufficient route to existence, but no suitable P was found.
+
+All12 phase/orientation/complement variants have exact center certificates.
+The standard-library checker in front_center/compact_families.py checks
+their local identities, reflection, middle parity, safe patch coefficients,
+and the sufficient gluing distance. Root independently checked the six
+original center certificates using nearest-non-nine carry resets. Root
+also replayed the13 compact certificates (12 direct centers plus the
+earlier525 composite center). These are not Lean proofs.
+
+The exact finite exterior graph was searched with all12 targets and all
+their one-column predecessor states. The larger run retained20,000,000
+states, expanded18,919,358, and stopped at the state cap after55.22 seconds.
+A C12 temporal-rotation quotient then retained3,000,000 orbits, expanded
+2,909,682, and stopped at its cap after8.39 seconds. Both runs found no
+target. The quotient retains actual states and parent columns, so no
+temporal-phase correction is hidden in path reconstruction.
+
+A separate arithmetic audit derives the necessary exterior checksum
+P(-1)+6*(-1)^length(P)=0 modulo11 and an exact rational tail-sum identity.
+Both are compatible; neither constructs nor rules out the missing boundary.
+See collision_return/exterior936_audit.md for the derivations and the
+carefully limited scope of the associated modulo99 argument.
+
+The complete width71 quotient layer, combined with the exhaustive
+one-column predecessor targets, excludes these specified24-phase exterior
+templates through prefix width72. Arbitrary exterior width remains UNKNOWN.
+The peak resident memory was about1.80GiB for the larger raw-state run and
+279MiB for the quotient. No timeout or state cap is called an all-width
+impossibility proof. See morphic_return/checkpoint_summary.json and notes.txt.
+
+2. TWO EXACT BOUNDARY OBSTRUCTIONS
+
+An exact front joins525 and936 domains and returns after four steps
+translated one place. It also glues to a finite symmetric center. However,
+a fixed24-phase finite525 exterior would insert four525 blocks per return,
+adding48 to total q mass, or24 to the integer's digit sum. Decimal digit
+sum after24 steps is unchanged modulo9, since2^24=1 modulo9. This is a
+contradiction. Thus every finite exterior of that specific24-step family
+is excluded, irrespective of width. At period24k,3 must divide k;72 is
+the smallest multiple of24 not excluded by this argument.
+
+The alternative indefinitely alternating outer coefficients9,18 are also
+impossible, at any temporal period. At an N phase the second coefficient
+Q lies in0..9. Exact two-step carry enumeration gives only continuing
+edges0->9 and4->8 or9. Both destination vertices are sinks. The archived
+rank decreases on every continuing edge, so there is no infinite path.
+This is a local obstruction to that clock branch, not to decimal Lychrel
+numbers. It was independently checked by another agent.
+
+3. A SAFE PARAMETRIC MASS-INCREASING GATE, WITHOUT A RETURN
+
+For every M>=1, let P_M=(1,2,4,9^M,14,2,6) and
+A_M=P_M ++ reverse(P_M). Exact affine-run normalization gives
+
+  G(A_M)=(2,4,9^(M+1),8,5,12,12,5,8,9^(M+1),4,2),
+  G^2(A_M)=(4,8,18^(M+1),16,11,5,5,11,16,18^(M+1),8,4).
+
+Both transitions are N. The q masses are18M+58,18M+80,36M+124.
+All three states are nonpalindromic. The center6,6 corrects an earlier
+center1,1 variant that actually produced a palindrome at step2.
+
+The original collision construction has genuine neutral-band regeneration
+in finite examples, but its future depends on farther surrounding digits,
+not merely the nearest pair and current incoming carries. Exact examples
+and arbitrary-parameter local identities are preserved. No finite family
+returns to this safe gate with growing parameters. Root replayed the
+396 symbolic front cases, the parametric gate identities, and independent
+ordinary-integer controls in collision_return/collision_gate.py.
+
+4. GENUINELY CONDITIONAL INVARIANTS
+
+The new XOR carry-history invariant permits score0->1 and requires closure
+only from accepted score1. It is not the previously excluded unconditional
+group conservation law. Its exact finite encoding is UNSAT. An independent
+LRAT/RUP checker verified7,795 clause additions and18,119 positive hints
+through the empty clause; Root reran that checker. This excludes only the
+specified nonempty conditional XOR class.
+
+Allowing each tile any two-state transformation (including reset maps)
+strictly enlarges the class. Its exact encoding has13,365 variables and
+449,130 clauses. The original45-second run and one600-second run both
+returned UNKNOWN. No SAT candidate or checked UNSAT proof was obtained.
+
+Conditional integer thresholds now have an exact all-length violation
+checker using connected integer flows, strong score bisimulation, and
+explicit Euler-trail lifting. Finite necessary constraints for seeds196
+and18887 returned UNSAT even with unbounded rational coefficients, but
+those solver conclusions do not yet have independently replayed proof
+certificates. All finite arithmetic inputs were independently audited.
+The bounded any-seed threshold search ended UNKNOWN, not an exclusion.
+
+5. UNRESTRICTED-CLOCK OUTER-PREFIX CERTIFICATES
+
+Complete enumeration excludes universally closed safe languages determined
+by at most five outer q coefficients with arbitrary interiors. Both
+possible interior carries are realizable; all overflow clocks are allowed.
+The width5 graph has2,345,778 states. Explicit deletion ranks certify the
+empty greatest safe trap. Ordinary decimal arithmetic independently checks
+all13,716 transitions at widths1..3. These ranks are adversarial prefix
+escape bounds, not palindrome-hitting bounds for actual fixed integers.
+
+LEAN AND PUBLICATION SCOPE
+
+The existing authoritative Lean files are unchanged:
+  research/Lychrel196Research.lean
+    f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c
+  continuation/LychrelDigitSums.lean
+    ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57
+
+The archive places the authoritative base source at its root as before.
+Existing conditional soundness and digit-sum theorems do not prove decimal
+existence. New arithmetic identities, graph arguments and external proof
+checkers in this pass are not represented as Lean kernel results. No
+publication novelty or priority is claimed. All controlled searches in
+this pass have finished; the mathematical existence question is unresolved.

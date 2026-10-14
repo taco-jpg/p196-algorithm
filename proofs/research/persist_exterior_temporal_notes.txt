@@ -1,0 +1,127 @@
+ALL-PERIOD FINITE-CENTER OBSTRUCTION FOR ONE NEUTRAL DECIMAL CLOCK
+
+Status and exact scope
+----------------------
+This is a computational finite certificate with an independent Python checker.
+It is not yet a Lean theorem. It proves an obstruction inside the specified
+neutral-band, periodic finite-center construction. It does not prove that
+Lychrel numbers exist or fail to exist, and does not settle 196.
+
+Fix base 10 and the neutral interface with four successive growth-segment
+lengths (1,1,4,5), interface left digits (9,0,9,9), and carry masks
+left=(1,0,3,3), right=(0,1,12,28). Consider any positive repetition k of this
+11-step clock, and a finite center which returns after that repeated clock,
+while the complementary neutral annuli absorb the 4k new digits. There is no
+such center, of either parity or any width. This includes finite cycles of
+center words under the 11-step return, with their lengths fixed and each
+annulus growing by two digits per return. It does not exclude a growing or
+aperiodic central region.
+
+The result depends only on the specified interface, not on the particular
+29-pair exterior path which was found to reach that interface.
+
+Temporal words and the inverse spatial transducer
+------------------------------------------------
+A full repeated clock has 4k growth segments. Pair consecutive segments and
+write one symbol (x,y,l0,r0,l1,r1) for each pair. Here x is the even segment's
+right digit and y is the next (odd) segment's left digit in the standard
+interior frame. The four masks are the specified left-input/right-output
+carries. Symbols alternate phases 0 and 1, whose segment lengths are (1,1)
+and (4,5). A temporal state is a closed labeled walk of length 2k.
+
+The neutral interface is a two-edge cycle with symbols
+(0,0,1,0,0,1) and (0,9,3,12,3,28).
+For odd original center parity, start immediately after the first growth:
+rotate the four segments, interface digits, and masks by one position. The
+lengths become (1,4,5,1). Complement the interface left digit at even segment
+indices to obtain x. Thus both parity origins are explicitly certified.
+
+For a temporal graph G, form an inverse spatial graph P(G). A node is
+(u,x,a), where u is a G node, x is the current interface's right digit, and
+a is the previous inward column's even-segment left digit. For a G edge
+u --(x,y,l0,r0,l1,r1)--> v, choose b in {0,...,9}. Apply the exact paired-digit
+carry operation over the even segment to (a,b), fixing left-output carry
+l0 and right-input carry r0; write its result as (aa,bb,ll,rr). Apply the
+same operation over the odd segment to (y,bb), fixing l1,r1, obtaining
+(cc,dd,ss,tt). Add the edge
+
+ (u,x,a) --(b,aa,ll,rr,ss,tt)--> (v,dd,cc).
+
+A closed temporal walk enforces exactly the cross-segment digit identities.
+Delete edges outside directed cycles; every actual periodic temporal word
+survives this deletion. The checker enumerates unknown carries directly,
+using only integer addition, division, and remainder. It does not import
+any of the search routines or the earlier half() implementation.
+
+The center-head graph H(G) has nodes (u,x). Retain a G edge labeled
+(x,y,l0,r0,l1,r1) only when l0=r0 and central doubling, beginning at digit y
+for the odd segment with input carry r1, outputs carry l1. If its final
+digit is z, add (u,x)->(v,z). A compatible finite center must finish at a
+closed walk in H(G).
+
+Finite invariant certificates
+-----------------------------
+There are two explicit finite graphs G, one per center parity. Their data
+are in persist_exterior_temporal_invariant_0.json and _1.json. No search
+limit is involved in checking these graphs.
+
+                       even origin       odd origin
+G vertices                 47                73
+G labeled edges           929              1290
+P(G) cyclic vertices       63                99
+P(G) cyclic edges        1231              1631
+H(G) vertices              55                33
+H(G) edges                 40                24
+H(G) maximum DAG rank       2                 1
+
+For each graph, explicit phase- and label-preserving graph homomorphisms
+embed the initial neutral two-edge cycle into G and map all of P(G) back
+into G. The maps are stored in persist_exterior_temporal_homomorphism_0.json
+and _1.json. Each image edge is checked individually. This is stronger than
+mere trace-language inclusion: an actual closed walk maps to a closed walk
+of exactly the same length. Consequently there is no subtlety about taking
+powers of periodic words in this certificate.
+
+Finally H(G) has an explicit strictly increasing rank on every edge, so
+has no directed cycle. The independent checker computes and verifies the
+ranking; it also records it in persist_exterior_temporal_certificate.json.
+
+Proof from the certificate
+--------------------------
+Start with any positive number of repetitions of the interface clock. Its
+closed temporal word is accepted by the initial two-edge cycle and hence
+by G. Suppose the temporal word at some inward spatial depth is accepted
+by G. The next inward word, if it exists, is accepted by P(G) by the exact
+column arithmetic. The homomorphism P(G)->G makes it accepted by G too.
+Induction on arbitrary finite spatial depth keeps every possible inward
+word inside G. If a finite center were reached, its final word would give
+a closed walk in H(G). Strict rank increase forbids that. The two explicit
+parity origins complete the claim. No bound on k or center width is used.
+
+Reproduction and independent checking
+-------------------------------------
+  python persist_exterior_temporal_verify.py
+
+Runtime was below one second in this workspace. The checker reads only the
+four invariant/map JSON files and uses Python's standard library. It checks
+digit and carry ranges, phase alternation, both homomorphisms, and the head
+ranking. It additionally computes greatest forward simulation relations as
+a diagnostic, but those relations are not required for the proof: the
+explicit homomorphisms suffice.
+
+The graph discovery program persist_exterior_temporal_language.py started
+from the neutral cycle and applied inverse transduction, cyclic pruning,
+and strong-bisimulation quotienting. It stabilized after five inward
+columns in both origins. Discovery reductions are not trusted by the
+certificate checker. Only the resulting finite invariant is used.
+
+Lean proof skeleton
+-------------------
+persist_exterior_temporal.lean formalizes the general graph-homomorphism,
+strict-ranking, and arbitrary-depth induction argument using only Std.
+Checked with Lean 4.19.0 via lean-runtime/lean. The three named theorems are
+TemporalInvariant.map_cycle, TemporalInvariant.ranking_excludes_cycle, and
+TemporalInvariant.no_finite_center. The latter two use only propext and
+Quot.sound; the first is axiom-free. There is no sorry or native_decide.
+The concrete graph tables and arithmetic encoding are explicit hypotheses,
+not instantiated or claimed to be verified in Lean by this module.

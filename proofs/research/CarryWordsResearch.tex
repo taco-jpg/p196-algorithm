@@ -1,0 +1,583 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\pal}{\operatorname{Pal}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\title{Carry Words and Reconstruction in\ Decimal Reverse-and-Add}
+\author{Formal research note}
+\date{13 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove that every complete carry word produced by one decimal
+reverse-and-add operation has a same-width positive representative reaching
+a palindrome after at most four operations. The uniform bound four is
+optimal. We also prove that equal complete carry histories containing five
+non-overflow steps determine the initial mirrored digit sums, and hence the
+next integer. Using the endpoint carry word sharpens this to a uniform
+horizon of eleven consecutive carry words. We further prove that, at fixed
+width, the numerical reverse-and-add result determines the entire pair-sum
+word. The decimal results are formalized in Lean 4 using its
+standard library. These are auxiliary results: no decimal Lychrel number is
+constructed, and the status of 196 is not settled. Priority and publication
+novelty have not been established.
+\end{abstract}
+
+\section{Definitions and statements}
+Let $T(n)=n+\rev(n)$, where $\rev$ reverses the ordinary decimal digits,
+discarding leading zeros in the reversed string. Let $T^k$ denote iteration.
+A positive integer is palindromic when it equals its reversal.
+The decimal Lychrel existence question asks whether some positive integer
+has no palindromic iterate. This question, including the case of 196, remains
+unresolved in this work.
+
+Write an $L$-digit positive integer as
+\[
+ n=\sum_{i=0}^{L-1}d_i10^i,\qquad
+ 0\leq d_i\leq9,\quad d_{L-1}>0.
+\]
+Digits are indexed from the units position. Define the symmetric pair sums
+and complete carry word by
+\[
+ q_i=d_i+d_{L-1-i},\qquad
+ c_0=0,\qquad c_{i+1}=\left\lfloor\frac{q_i+c_i}{10}\right\rfloor.
+\]
+Thus $0\leq q_i\leq18$ and $c_i\in\{0,1\}$. The word
+$(c_0,\ldots,c_L)$ includes the leading overflow $c_L$. A \emph{carry class}
+consists of all positive integers of a fixed width having the same complete
+carry word in their first operation.
+
+\begin{theorem}[Sharp terminating representatives]\label{thm:four}
+For every positive integer $a$, there is a positive integer $n$ with the
+same decimal width and the same complete first carry word as $a$, and an
+integer $k$ with $1\leq k\leq4$, such that $T^k(n)$ is a palindrome.
+The uniform bound four cannot be replaced by three.
+\end{theorem}
+
+In contrast, consecutive carry words can recover information absent from
+one carry word.
+\begin{theorem}[Reconstruction from carry history]\label{thm:history}
+Suppose two trajectories start at the same decimal width, and their complete
+carry words agree at every step before a horizon $t$. If at least five of
+these steps have no overflow, their initial pair-sum words agree. Consequently
+their first reverse-and-add values agree.
+\end{theorem}
+The conclusion need not identify the initial integer: 196 and 295 both
+have pair sums $(7,18,7)$ and first value 887.
+
+\section{Carry-preserving normalization}
+For each position set $a_i=c_{i+1}$ and $b_i=c_{L-i}$. These are the outgoing
+carries at reflected columns. Define
+\begin{equation}\label{eq:norm}
+ \widehat q_i=\begin{cases}
+ \ell,&a_i=b_i=0,\\
+ 10,&a_i=b_i=1,\\
+ 9,&a_i\ne b_i,
+ \end{cases}
+ \qquad
+ \ell=\begin{cases}2,&c_L=0,\\0,&c_L=1.\end{cases}
+\end{equation}
+
+\begin{lemma}\label{lem:norm}
+The word $\widehat q$ has exactly the same complete carry word as $q$.
+It is the pair-sum word of a positive $L$-digit integer.
+\end{lemma}
+\begin{proof}
+For a fixed sum $q_i=q_{L-1-i}$, two different outgoing carries are possible
+only when the sum is nine: sums at most eight always produce zero and sums
+at least ten always produce one. In the unequal-carry case the original
+sum is therefore nine, and the replacement leaves it unchanged. In the
+equal-carry cases, either choice $\ell\in\{0,2\}$ forces carry zero, and ten
+forces carry one. Induction from $c_0=0$ proves equality at every position,
+including the final overflow.
+
+Reflection exchanges $a_i$ and $b_i$, so $\widehat q$ is symmetric. Its entries
+are between zero and eighteen. At an odd center, $a_i=b_i$, so the central
+sum is even. Its outer sum is positive: without overflow it is two or nine;
+with overflow it is nine or ten. Each mirrored pair can therefore be split
+into two decimal digits, with a positive leading digit, and an odd center
+can be divided by two. These choices realize $\widehat q$ canonically.
+\end{proof}
+
+\subsection{No overflow}
+When $c_L=0$, the next integer still has width $L$. If both reflected outgoing
+carries vanish, its reflected digits sum to at most $2+1+2+1=6$.
+If both are one, their sum is at most two. If they differ, the normalized
+sum is nine, the incoming carries differ, and the output digits are zero
+and nine. Every new pair sum is consequently at most nine. The following
+addition has no carries and produces a palindrome. For example,
+\[
+196\text{ and }250\text{ have carry word }(0,0,1,0),
+\qquad 250\longmapsto302\longmapsto505.
+\]
+
+\subsection{Overflow and protected runs}
+For $c_L=1$, use $\ell=0$. The normalized alphabet is $\{0,9,10\}$.
+Its outer symbol is either ten or nine. The exact pair-sum update, denoted
+$G$, has the following properties:
+\begin{align}
+ \widehat q_0=10&\quad\Longrightarrow\quad
+         \text{every entry of }G^2(\widehat q)\text{ is at most }9,
+         \label{eq:ten}\\
+ \widehat q_0=9&\quad\Longrightarrow\quad
+         \text{every entry of }G^3(\widehat q)\text{ is at most }9.
+         \label{eq:nine}
+\end{align}
+Here $G$ includes the changed reflection alignment when the width increases.
+The overflow schedules are forced: ten becomes outer sum one, whereas nine
+with overflow becomes ten and then one. Thus the schedules used in
+\eqref{eq:ten} and \eqref{eq:nine} are respectively $(1,0)$ and $(1,1,0)$.
+The one-digit case is $5\mapsto10\mapsto11$.
+
+Here is a direct proof using runs of nines. Extend every word by zeros
+outside its finite support. A symbol below nine resets the outgoing carry
+to zero; ten resets it to one; nine transmits it. Call a word \emph{protected}
+if every maximal nonempty run of nines has adjacent reset symbols zero and
+ten, in either order. Let $P_d$ be the protected words whose other symbols
+belong to $\{0,\ldots,d,10\}$, for $0\leq d\leq4$.
+
+The normalized word belongs to $P_0$. On a run of nines, its two directional
+carries differ by the normalization definition and are constant through the
+run. They equal the types of the nearest reset symbols at opposite ends.
+Those reset types must differ, so the two endpoints are zero and ten.
+Exterior zeros supply a reset at an original endpoint.
+
+Write $O$ and $N$ for the overflowing and non-overflowing pair-sum updates.
+Let $R_i$ and $S_i$ be the output digits from carrying through the zero-extended
+word from left and right, respectively. Symmetry gives the local formulas
+\[
+ N(q)_i=R_i+S_i,\qquad O(q)_i=R_i+S_{i-1}.
+\]
+Here zero extension is applied to $q$ before computing the streams:
+$R_L=S_{-1}=h$ and $R_{-1}=S_L=0$, where $h$ is the overflow.
+The shifted formula includes the additional leading digit automatically.
+For two consecutive non-nine symbols $x,y$, their combined output in $O$ is
+\[
+ \rho(x)+\rho(y),\qquad
+ \rho(x)=x\ (x<9),\quad \rho(10)=1.
+\]
+Indeed, each incoming carry is the reset type of the opposite symbol,
+so their summed output is $x+y-9([x=10]+[y=10])$.
+
+For a protected run, the output positions from the first old nine through
+the old right endpoint are exactly
+\begin{align*}
+ 0\,9^r\,10&\longmapsto10\,9^{r-1}\,0,\\
+ 10\,9^r\,0&\longmapsto0\,9^{r-1}\,10,\qquad r\geq1.
+\end{align*}
+Here $9^r$ denotes a run of $r$ symbols, not an integer power. The two streams
+through the run are zero and nine. At its ends the sums are $9+1=10$ and
+$0+0=0$, in the appropriate order. These identities imply
+\[
+ O(P_0)\subseteq P_2,\qquad O(P_2)\subseteq P_4.
+\]
+No new nine arises from ordinary pairs, and surviving runs retain opposite
+zero/ten endpoints. Moreover, every four in $O(P_2)$ comes from adjacent
+symbols $2,2$. Neither two can neighbor a nine in a protected word, so both
+neighbors of the resulting four are below nine.
+
+Under $N$, a protected run of nines stays nine: the opposing incoming carries
+are zero and one. A ten produces at most two. An ordinary symbol $x$ produces
+$2x$ plus its two incoming carries. Hence every symbol of $N(P_2)$ is at most
+nine. For $N(O(P_2))$, values at most three produce at most eight; each four
+has low neighbors, so both incoming carries vanish and its output is eight.
+Thus $N(O(P_2))$ is also entirely low.
+
+Starting in $P_0$, the forced schedules now give
+\[
+ P_0\xrightarrow{O}P_2\xrightarrow{N}\text{low},
+ \qquad
+ P_0\xrightarrow{O}P_2\xrightarrow{O}P_4
+       \xrightarrow{N}\text{low}.
+\]
+The second arrow chain uses the neighbor property just proved, rather than
+an assertion about every word in $P_4$. One further addition produces a
+palindrome. This proves \eqref{eq:ten}--\eqref{eq:nine} and the upper bound
+in Theorem~\ref{thm:four}. An independent finite-certificate proof underlies
+the Lean formalization; its exact transition rules appear in Appendix~\ref{app:certificate}.
+
+\section{Why four is optimal}
+Consider the carry word $(0,0,0,1,1,1)$ at width five. Symmetry and its carry
+equations force
+\[
+q=(9,9,e,9,9),\qquad e\in\{10,12,14,16,18\}.
+\]
+Indeed, $q_0<10$ and $q_0+1\geq10$ imply $q_0=9$; the reflected next pair
+gives $q_1=9$ in the same way. The middle sum is twice a digit and at least
+ten. Every representative therefore has one of only five possible first
+values. The first three positive-time iterates are:
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+$e$&$T(n)$&$T^2(n)$&$T^3(n)$\\
+\midrule
+10&100099&1090100&1101001\\
+12&100299&1092300&1125201\\
+14&100499&1094500&1149401\\
+16&100699&1096700&1173601\\
+18&100899&1098900&1197801\\
+\bottomrule
+\end{tabular}
+\end{center}
+None is a palindrome. On the other hand, the representative 99500 satisfies
+\[
+99500\longmapsto100099\longmapsto1090100\longmapsto1101001
+\longmapsto2102012,
+\]
+whose last value is a palindrome. This proves optimality over entire carry
+classes, rather than merely showing that one chosen normalization needs four
+steps. The five-case exhaustion and the displayed orbit are checked in Lean.
+
+\section{Reconstruction from several time steps}
+For a trajectory define the polynomial
+\[
+ Q_t(x)=\sum_{i=0}^{L_t-1}q_{t,i}x^i.
+\]
+Consider two trajectories with identical complete carry histories and the
+same initial width. Their overflow bits agree, so their widths agree at every
+subsequent time. Let $\Delta_t$ be the difference of their pair-sum
+polynomials. Subtracting the exact column equations cancels every carry term:
+\begin{equation}\label{eq:diff}
+ \Delta_{t+1}(x)=
+ \begin{cases}
+ 2\Delta_t(x),&\text{no overflow},\\
+ (1+x)\Delta_t(x),&\text{overflow}.
+ \end{cases}
+\end{equation}
+The second line includes both new outer positions and the shifted interior.
+Thus, after $N$ non-overflow and $H$ overflow steps,
+\[
+ \Delta_t(x)=2^N(1+x)^H\Delta_0(x).
+\]
+If $\Delta_0\ne0$, let $m$ be its least nonzero exponent and $a$ the
+corresponding integer coefficient. The coefficient at $x^m$ on the right
+is $2^Na$, since $(1+x)^H$ has constant coefficient one. Its absolute value
+is at least $2^N$. But every coefficient on the left lies between $-18$ and
+$18$. When $N\geq5$, this contradicts $32>18$. Hence $\Delta_0=0$, proving
+Theorem~\ref{thm:history}. The Lean proof follows the least differing
+coefficient directly, avoiding a polynomial-library dependency.
+
+\subsection{A uniform eleven-word horizon}
+The five-step condition can be guaranteed at a fixed temporal horizon.
+Let $a=q_0\in\{1,\ldots,18\}$ be the current outer pair sum, $a'$ the next,
+and $h$ the overflow. The possible outer transitions are contained in
+\[
+\begin{array}{c|c|c}
+a&h&a'\\\hline
+1\leq a\leq8&0&2a\text{ or }2a+1\\
+9&0&18\\
+9&1&10\\
+10\leq a\leq18&1&a-9.
+\end{array}
+\]
+Define a potential by listing its values at $a=1,\ldots,18$:
+\[
+(\psi(1),\ldots,\psi(18))=
+(0,0,0,1,0,1,1,1,2,1,1,1,2,1,2,2,2,3).
+\]
+Each listed transition satisfies $2h-1\leq\psi(a)-\psi(a')$.
+Summing through $t$ steps and using $0\leq\psi\leq3$ gives
+$2H-t\leq3$. At $t=12$, this already implies $H\leq7$ and $N\geq5$.
+An endpoint refinement gives the stronger bound below.
+
+\begin{corollary}[Eleven consecutive carry words]\label{cor:eleven}
+The initial decimal width and complete carry words at times
+$0,1,\ldots,10$ determine the initial pair-sum word.
+\end{corollary}
+\begin{proof}
+Equal incoming and outgoing carries at a column place both pair sums in
+the same interval
+\[
+10c_{i+1}-c_i\ \leq\ q_i\ \leq\ 10c_{i+1}+9-c_i.
+\]
+Their difference therefore has absolute value at most nine. After ten
+operations, the growth bound gives $H\leq6$, hence $N\geq4$. If an initial
+least differing coefficient existed, its difference at time ten would have
+absolute value at least $2^4=16$. The equal carry word at time ten bounds
+this same difference by nine, a contradiction.
+\end{proof}
+This corollary, including the outer potential and its telescoping argument,
+is also kernel-checked. No optimality is claimed for eleven.
+
+\section{Uniqueness of the numerical predecessor word}
+The numerical evaluation of a pair-sum word and the next pair-sum word must
+be distinguished. Write
+\[
+ S(q)=\sum_{i=0}^{L-1}q_i10^i,
+ \qquad G(q)=\text{pair-sum word of the canonical digits of }S(q).
+\]
+Thus $S(q)=T(n)$ when $q$ is the pair-sum word of $n$.
+
+\begin{theorem}[Fixed-width uniqueness]\label{thm:inverse}
+Let $q,r$ be symmetric words of the same length $L$, with entries between
+zero and eighteen. If $S(q)=S(r)$, then $q=r$.
+\end{theorem}
+\begin{proof}
+The two additions have identical output digits and identical final carries.
+Let $e_i$ be the first carry minus the second carry at position $i$.
+Then $e_0=e_L=0$, each $e_i\in\{-1,0,1\}$, and the column equations give
+\[
+ q_i-r_i=10e_{i+1}-e_i.
+\]
+Suppose inductively that $e_i=e_{L-i}=0$. Reflection symmetry of $q-r$
+then gives
+\[
+ 10e_{i+1}=-e_{L-1-i}.
+\]
+The right-hand side has absolute value at most one, so both sides vanish.
+Induction from the two ends makes every carry difference zero. The column
+equations now give $q_i=r_i$ at every position.
+\end{proof}
+
+In particular, two positive integers of the same width have the same first
+reverse-and-add value if and only if their pair-sum words agree. Positivity
+and the even-center condition are not needed in the algebraic theorem.
+The same argument works in every base $b\geq2$ with entries at most $2b-2$;
+the accompanying Lean theorem is decimal.
+
+\begin{corollary}
+A positive decimal target has at most two canonical pair-sum predecessor
+words, one at its own width and one at one less than its width.
+\end{corollary}
+\begin{proof}
+A reverse-and-add operation preserves width or increases it by one.
+Theorem~\ref{thm:inverse} gives at most one word for each possible width.
+\end{proof}
+
+This bound cannot be iterated to count predecessors under $G$. To see why,
+choose $x_1,\ldots,x_m$ independently from $\{1,10\}$. All $2^m$ words
+\[
+ (10,x_1,\ldots,x_m,x_m,\ldots,x_1,10)
+\]
+have the same $G$-image: outer entries one and every interior entry two.
+Indeed, no entry equals nine, and an overflow transition combines adjacent
+values of $\rho(x)=x-9\mathbf1_{x\geq10}$. Both $\rho(1)$ and $\rho(10)$
+equal one. The numerical outputs $S(q)$ are distinct, as the theorem
+requires; taking their pair sums loses information. An existence argument
+based on a uniform bound of two predecessors for $G$ would therefore be
+invalid.
+
+\section{Formalization, scope, and reproducibility}
+The self-contained source \texttt{Lychrel196Research.lean} uses
+\texttt{import Std} and Lean 4.19.0. Its arithmetic definitions use ordinary
+natural-number decimal reversal. Canonical digit representations include a
+nonzero leading digit; trailing zeros are permitted. The numeric statements
+therefore concern usual integers, not padded strings or an abstract dynamical
+system lacking an arithmetic interpretation.
+
+Principal declarations are:
+\begin{itemize}
+\item \texttt{CarryWordTermination.}\\
+\texttt{every\_positive\_integer\_has\_fast\_same\_carry\_representative};
+\item \texttt{CarryNormalizationSharpness.four\_is\_optimal};
+\item \texttt{CarryHistory.iterPairs\_carry\_history\_injective};
+\item \texttt{CarryHistory.eleven\_carry\_words\_determine\_pair\_sums};
+\item \texttt{ReverseAddInverse.symmetric\_value\_injective};
+\item \texttt{ReverseAddInverse.same\_width\_step\_eq\_iff\_pair\_sums}.
+\end{itemize}
+The first proves the unconditional numeric four-step theorem, the second its
+sharpness, the third the five-non-overflow reconstruction theorem for
+exact pair-sum orbits, and the fourth Corollary~\ref{cor:eleven}.
+The last two prove Theorem~\ref{thm:inverse} and its equivalence for actual
+positive decimal integers. The two-width corollary and exponential-fiber
+example are proved in prose above, not formalized in Lean.
+The accompanying build log records the complete
+source hash, compiler result, and axiom audit. There are no \texttt{sorry}
+proof holes, custom axioms, or \texttt{native\_decide} assertions. Standard
+Lean axioms such as propositional extensionality, choice, and quotient
+soundness may occur. Compile with
+\begin{verbatim}
+lean Lychrel196Research.lean
+\end{verbatim}
+The archive also contains the modular sources and a Python implementation
+that regenerates the finite normalization graphs. Python and SAT-solver
+results from unrelated construction searches are not premises of the
+formal theorems above.
+
+The normalization theorem rules out a universally sound Lychrel criterion
+depending only on one current complete carry word: every such word also
+occurs in a terminating trajectory. It does not rule out a criterion using
+digit values, several time layers, or additional restrictions proved for
+the particular orbit of 196. Reconstruction demonstrates precisely why
+multi-time information escapes this obstruction.
+
+None of these theorems constructs a nonterminating trajectory. The formal source
+retains two unproved definitions, named \texttt{Decimal196Conjecture}
+and \texttt{DecimalLychrelExistence}. The associated searches for
+closed, palindrome-avoiding families have so far produced no witness.
+
+\paragraph{Related work and priority.}
+Carry descriptions of one-step palindrome formation appear in the
+correspondence of Vaughn Suite hosted by p196.org~\cite{suite}. A recent
+manuscript by Ando discusses carry asymmetry and a general-base one-step
+characterization~\cite{ando}. Those subjects are distinct from the
+carry-class normalization and history-reconstruction statements proved
+here. The limited literature check does not establish that these statements
+are new. This document is a reviewable research note, not a claim of a solved
+decimal Lychrel conjecture or of established publication priority.
+
+\begin{thebibliography}{9}
+\bibitem{suite} Vaughn Suite, correspondence hosted by Wade Van Landingham,
+\emph{196 and Other Lychrel Numbers},
+\url{https://www.p196.org/html/papers5.html}.
+Accessed 13 October 2026. The displayed no-carry inequalities in the
+correspondence contain a strict-bound typo; the formal work here uses
+the exact condition $q_i\leq9$.
+\bibitem{ando} Ando, \emph{Carry Asymmetry, Palindrome Characterization,
+and Conditional Non-Convergence in the Reverse-and-Add Process},
+repository manuscript, February 2026,
+\url{https://github.com/nkc-daiki/196-carry-asymmetry}.
+Accessed 13 October 2026. Cited as related work, not as a premise of the proofs.
+\end{thebibliography}
+\appendix
+\section{Exact finite certificate}\label{app:certificate}
+For completeness, we specify the finite certificate proving these two
+arbitrary-width statements. Its entire transition definition, explicit state
+sets, closure checks, and arithmetic interpretation are in the accompanying
+Lean source. It is a finite-state proof, not a search through integers below
+a cutoff.
+
+\paragraph{Normalized input.}
+Read mirrored pairs from outside inward. State $(a,b)\in\{0,1\}^2$
+records the low entering carry and high outgoing carry. Start at $(0,1)$.
+The transitions are exactly
+\[
+\begin{array}{c|c|c}
+\text{condition}&\text{emitted pair sum}&\text{next state}\\\hline
+b=0&0&(0,b'),\quad b'\in\{0,1\}\\
+b=1&10&(1,b'),\quad b'\in\{0,1\}\\
+a\ne b&9&(a,b).
+\end{array}
+\]
+At an even center accept if $a=b$. At an odd center the central sum is $10b$.
+Restrict the first pair to ten or nine for the respective claim.
+
+\paragraph{One exact time layer.}
+Let
+\[
+ C(q,a)=\lfloor(q+a)/10\rfloor,\qquad D(q,a)=(q+a)\bmod10.
+\]
+For a prescribed overflow $h$, the state is $(a,b,u)$; $u$ is a delayed high
+output digit when $h=1$. Begin with $(0,h,1)$ when $h=1$, and $(0,0,0)$
+when $h=0$ (the last coordinate is then unused). On input $q$, choose
+$b'\in\{0,1\}$ satisfying $C(q,b')=b$. Put
+\[
+ a'=C(q,a),\quad v=D(q,a),\quad w=D(q,b').
+\]
+Emit $v+w$ and move to $(a',b',0)$ when $h=0$; emit $v+u$ and move to
+$(a',b',w)$ when $h=1$. The delayed digit accounts exactly for the shifted
+mirror caused by overflow.
+
+At an even input center require $a=b$; output no center when $h=0$, and
+center $2u$ when $h=1$. At an odd input center $z$, require $C(z,a)=b$.
+For $h=0$ output center $2D(z,a)$. For $h=1$ emit the final pair $D(z,a)+u$
+and no center. A final pair is passed through all remaining time layers
+before their center checks are performed.
+
+\paragraph{Closure certificate.}
+Compose the input automaton with the required time layers, retaining a
+Boolean flag that becomes true if any final-layer pair exceeds nine. A
+completion is unsafe if that flag is true or its final center exceeds nine.
+The explicit closed state sets have the following sizes:
+\begin{center}
+\begin{tabular}{ccrrr}
+\toprule
+First pair&Schedule&States&Edges&Center completions\\
+\midrule
+10&$(1,0)$&37&89&11\\
+9&$(1,1,0)$&159&391&25\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every possible initial state belongs to its respective set, and every
+successor of every state remains in that set. Every accepted
+completion is safe. These finite propositions are proved by kernel reduction
+in Lean; induction on the number of input pairs then covers every finite
+width. The semantic bridge identifies the accepted transitions and center
+conditions with the actual numeric operation. This proves
+\eqref{eq:ten}--\eqref{eq:nine}. One further carry-free operation yields a
+palindrome, proving the upper bound in Theorem~\ref{thm:four}.
+
+
+
+\clearpage
+\section{Extension to sufficiently large bases}
+\label{app:bases}
+This appendix is a mathematical extension of the direct proof. Its
+base-parametric statement is not formalized in the accompanying Lean file;
+the fully formalized specialization is decimal.
+
+\begin{theorem}\label{thm:bases}
+Let $b$ be even with $b\geq10$, or odd with $b\geq17$. Every complete
+first carry word in base $b$ has a positive same-width representative
+with a base-$b$ palindromic iterate at some strictly positive time
+$1\leq k\leq4$. The bound is sharp among such positive times.
+\end{theorem}
+\begin{proof}
+Put $s=1$ for even $b$ and $s=2$ for odd $b$, and set
+$\alpha=b+s-1$. Thus $\alpha$ is even and $b-1\geq8s$.
+Normalize equal outgoing carries to $2$ or $\alpha$ in the no-overflow
+case, and to $0$ or $\alpha$ in the overflow case; leave unequal carries
+at $b-1$. The same induction preserves all carries. The evenness of
+$\alpha$ ensures a valid central digit. Without overflow, the next pair
+sums are at most six, at most $2s$, or exactly $b-1$, so the following
+operation is palindromic.
+
+For overflow, enlarge the protected-run condition: each run of $b-1$ has
+endpoint pair
+\[
+ (a,b+s-1-a),\qquad 0\leq a\leq s-1,
+\]
+in either orientation. Normalization starts with $(a,b+s-1-a)=(0,\alpha)$.
+The overflow rule on such a run is
+\[
+ a\,(b-1)^r\,(b+s-1-a)
+ \longmapsto (b+a)\,(b-1)^{r-1}\,(s-1-a).
+\]
+This preserves the permitted endpoint class. For odd bases the types
+$(0,b+1)$ and $(1,b)$ exchange; retaining only the first type would be
+incorrect.
+
+For ordinary adjacent symbols use $\rho(x)=x$ below $b-1$, and
+$\rho(x)=x-b+1\in\{1,\ldots,s\}$ for high symbols. The first overflowing
+image has ordinary low symbols at most $2s$, and the second at most $4s$.
+A maximal low symbol $4s$ comes only from adjacent $2s,2s$. Neither can
+neighbor a neutral run, since allowed low endpoints are at most $s-1$.
+Its two new neighbors are low, so the subsequent no-overflow output is
+$8s$. Every smaller low symbol produces at most $8s$ as well; high symbols
+produce at most $2s$, and protected neutral runs remain $b-1$.
+All are below $b$.
+
+The outer value $\alpha$ becomes $s$, forcing schedule $O,N$; the outer
+value $b-1$ becomes $b$, then one, forcing $O,O,N$. The same argument
+therefore gives a palindrome after at most four operations.
+
+For sharpness, the five-digit carry word $(0,0,0,1,1,1)$ forces
+$q=(b-1,b-1,b+z,b-1,b-1)$, where $0\leq z\leq b-2$ and $b+z$ is even.
+Writing digit tuples least-significant first, its first three iterates are
+\[
+\begin{aligned}
+ &(b-1,b-1,z,0,0,1),\\
+ &(0,0,z+1,z,b-1,0,1),\\
+ &(1,0,z,2z+1-b\kappa,z+\kappa,1,1),
+ \quad \kappa=\lfloor(2z+1)/b\rfloor.
+\end{aligned}
+\]
+The first two fail at their outer digits, and the third at its second
+outer pair. At the least permitted $z=s-1$, the fourth iterate is
+$2102012_b$ for even $b$, or $2126212_b$ for odd $b$, both palindromes.
+\end{proof}
+For odd bases in this theorem, every normalized pair sum is even, so splitting
+each in half already gives a palindromic representative at time zero.
+The sharpness assertion concerns strictly positive iteration times; it does
+not assert that this representative is initially nonpalindromic.
+
+\end{document}
