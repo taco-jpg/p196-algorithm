@@ -1,7 +1,6 @@
 # Complete published file list
 
-Every file in the research releases and coordination checkpoints is listed below, including the preserved concurrent contribution. The binary antichain certificate is included. Source-snapshot coverage and omitted artifacts are recorded separately in INVENTORY.tsv.
-
+Every published file, including historical research, concurrent coordination and reviewed contributions, is listed below. Source-snapshot coverage remains in INVENTORY.tsv.
 
 - [FILES.md](FILES.md)
 - [FINDINGS.md](FINDINGS.md)
@@ -15,7 +14,34 @@ Every file in the research releases and coordination checkpoints is listed below
 - [REPORTS.md](REPORTS.md)
 - [REPRODUCE.md](REPRODUCE.md)
 - [VALIDATION.json](VALIDATION.json)
+- [contributions/2026-10-14-external-tail-audit.json](contributions/2026-10-14-external-tail-audit.json)
+- [contributions/2026-10-14-finite-horizon-density/FiniteHorizonBlocks.lean](contributions/2026-10-14-finite-horizon-density/FiniteHorizonBlocks.lean)
+- [contributions/2026-10-14-finite-horizon-density/README.md](contributions/2026-10-14-finite-horizon-density/README.md)
+- [contributions/2026-10-14-finite-horizon-density/audit.json](contributions/2026-10-14-finite-horizon-density/audit.json)
+- [contributions/2026-10-14-finite-horizon-density/check_lean.py](contributions/2026-10-14-finite-horizon-density/check_lean.py)
+- [contributions/2026-10-14-finite-horizon-density/compile.log](contributions/2026-10-14-finite-horizon-density/compile.log)
+- [contributions/2026-10-14-finite-horizon-density/independent_replay.py](contributions/2026-10-14-finite-horizon-density/independent_replay.py)
+- [contributions/2026-10-14-finite-horizon-density/verification.json](contributions/2026-10-14-finite-horizon-density/verification.json)
+- [contributions/2026-10-14-overlap-gate/EXACT_GATE_LIFETIMES.md](contributions/2026-10-14-overlap-gate/EXACT_GATE_LIFETIMES.md)
+- [contributions/2026-10-14-overlap-gate/EXPLORATION_RECORDS.json](contributions/2026-10-14-overlap-gate/EXPLORATION_RECORDS.json)
+- [contributions/2026-10-14-overlap-gate/SEPARATION_EXHAUSTION.md](contributions/2026-10-14-overlap-gate/SEPARATION_EXHAUSTION.md)
+- [contributions/2026-10-14-overlap-gate/exact_gate_lifetimes.py](contributions/2026-10-14-overlap-gate/exact_gate_lifetimes.py)
+- [contributions/2026-10-14-overlap-gate/root_separation_check.py](contributions/2026-10-14-overlap-gate/root_separation_check.py)
+- [contributions/2026-10-14-overlap-gate/root_separation_verification.json](contributions/2026-10-14-overlap-gate/root_separation_verification.json)
+- [contributions/2026-10-14-overlap-gate/separated_blocks.py](contributions/2026-10-14-overlap-gate/separated_blocks.py)
+- [contributions/2026-10-14-overlap-gate/separation_verification.json](contributions/2026-10-14-overlap-gate/separation_verification.json)
+- [contributions/2026-10-14-overlap-gate/verification.json](contributions/2026-10-14-overlap-gate/verification.json)
+- [contributions/2026-10-14-root-review.json](contributions/2026-10-14-root-review.json)
+- [contributions/2026-10-14-safe-prefix/OverflowSafeRuns.lean](contributions/2026-10-14-safe-prefix/OverflowSafeRuns.lean)
+- [contributions/2026-10-14-safe-prefix/README.md](contributions/2026-10-14-safe-prefix/README.md)
+- [contributions/2026-10-14-safe-prefix/arithmetic.json](contributions/2026-10-14-safe-prefix/arithmetic.json)
+- [contributions/2026-10-14-safe-prefix/check.py](contributions/2026-10-14-safe-prefix/check.py)
+- [contributions/2026-10-14-safe-prefix/check_arithmetic.py](contributions/2026-10-14-safe-prefix/check_arithmetic.py)
+- [contributions/2026-10-14-safe-prefix/compile.log](contributions/2026-10-14-safe-prefix/compile.log)
+- [contributions/2026-10-14-safe-prefix/verification.json](contributions/2026-10-14-safe-prefix/verification.json)
 - [contributions/COORDINATION.md](contributions/COORDINATION.md)
+- [contributions/README.md](contributions/README.md)
+- [coordination/2026-10-14-checked-contributions.md](coordination/2026-10-14-checked-contributions.md)
 - [coordination/2026-10-14-renewal-start.md](coordination/2026-10-14-renewal-start.md)
 - [coordination/2026-10-14-tail-termination.md](coordination/2026-10-14-tail-termination.md)
 - [release_stats.json](release_stats.json)

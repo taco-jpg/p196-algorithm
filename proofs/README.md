@@ -6,6 +6,18 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [early audited renewal result](research/main_existence_attempt/renewal_pass/tails/STATUS.md) records exact later hits for specified repair families; other renewal work remains in progress. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Reviewed concurrent contributions — 14 October 2026
+
+The [reviewed contribution index](contributions/README.md) adds a Lean-proved
+shorter safe seed `2*(10^(floor(7R/4)+1)-1)` through time R; universal finite
+first-hit classifications for four delayed-gate cores; and explicit
+finite-horizon density bounds plus exact finite separation exhaustion, with the deterministic marker implication
+checked in Lean. The growing-horizon density result permits
+`H(L)=max(1,floor(c*log10(L)))` for every `0<c<2/7`, as digit width L grows.
+These results do not supply an infinite safe seed or prove the claim for
+196. Full sources, compiler logs, exact certificates and independent
+replays accompany the [dated handoff](coordination/2026-10-14-checked-contributions.md).
+
 ## Latest checked renewal result
 
 For the original overlap family `A = 1 0^r (u,v,v,u) 0^r 1`, `Q = (1+x)A`, the first positive palindrome time is 3 for `(u,v)=(1,5)` at every `r>=1`; 4 for `(2,5)`, `(2,6)` and `(3,5)` at every `r>=1`; and 11 for `(1,6)` at every `r>=5`. These are written all-parameter proofs with an independent sparse-polynomial certificate replay, not Lean theorems. The exact finite boundary cases, all 216 census outcomes, failed certificate attempts and research logs are retained. The four smaller `(1,6)` spacers and the remaining `(1,7)` cases keep their stated finite-horizon UNKNOWN scope. See the [proof and limits](research/main_existence_attempt/renewal_pass/tails/STATUS.md) and [shared mathematical handoff](coordination/2026-10-14-tail-termination.md).

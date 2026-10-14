@@ -56,3 +56,16 @@ Here `T(n)=n+reverse(n)` in base ten, `S` is decimal digit sum, and all integers
 | Literature and novelty limitations | Primary-source provenance and prior-art limitations are recorded; no new priority or external peer-review claim is made. | [Literature findings](research/astra_literature_findings.md), [digit-sum prior art](research/continuation/digit_sum_prior_art_notes.txt), [publication addendum](research/continuation/publication_prior_art_addendum.txt) |
 
 No failed model in this matrix is promoted to a statement about every possible model. No finite verification is promoted to an infinite nontermination theorem.
+
+## Reviewed concurrent contribution pass
+
+| Finding | Exact scope | Evidence |
+|---|---|---|
+| Overflow-sensitive safe-prefix improvement | For all R, C=2*(10^(floor(7R/4)+1)-1) avoids palindromes at indices 0 through R. Its conditional infinite-witness implication retains the unsupplied universal finite-delay bound. | [Proof and Lean audit](contributions/2026-10-14-safe-prefix/README.md) |
+| Delayed-gate finite lifetimes | Cores (2,5),(2,6),(3,5) first hit at 4 for all r>=1; (1,6) first hits at 11 for all r>=5. The (1,7) family and short-spacer (1,6) cases remain outside this classification. | [Written proof and exact symbolic replay](contributions/2026-10-14-overlap-gate/EXACT_GATE_LIFETIMES.md) |
+| Exact separated-block dynamics and exhaustion | Gap g reaches zero by 4g+P(B_0)-3; for the remaining (1,7) gate by 4r-3. Exact block update and palindrome criterion hold through the first zero gap. No post-collision or all-time safety conclusion. | [Written proof and independent controls](contributions/2026-10-14-overlap-gate/SEPARATION_EXHAUSTION.md) |
+| Finite-horizon density-one avoidance | Exact block counting gives an upper bound on positive hits by H and density-one avoidance as width grows, including H(L)=max(1,floor(c log10 L)), 0<c<2/7. Deterministic implication checked in Lean; counting and limits are written proofs. No fixed infinite-safe seed follows. | [Bounds, quantifiers and evidence](contributions/2026-10-14-finite-horizon-density/README.md) |
+
+The [root review](contributions/2026-10-14-root-review.json) and
+[handoff](coordination/2026-10-14-checked-contributions.md) record exact
+reproduction commands, source identities and retained limitations.

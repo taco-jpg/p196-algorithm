@@ -140,3 +140,12 @@ Every original written research report, proof note and manuscript source retaine
 - [resume_renewal_normalization_notes.txt](research/resume_renewal_normalization_notes.txt)
 
 - [main_existence_attempt/renewal_pass/tails/STATUS.md](research/main_existence_attempt/renewal_pass/tails/STATUS.md)
+
+## Reviewed concurrent contribution reports
+
+- [Contribution index](contributions/README.md)
+- [Shorter explicit safe prefixes](contributions/2026-10-14-safe-prefix/README.md)
+- [Exact delayed-overlap gate lifetimes](contributions/2026-10-14-overlap-gate/EXACT_GATE_LIFETIMES.md)
+- [Finite-horizon density proof](contributions/2026-10-14-finite-horizon-density/README.md)
+- [Exact block dynamics and separation exhaustion](contributions/2026-10-14-overlap-gate/SEPARATION_EXHAUSTION.md)
+- [Checked handoff](coordination/2026-10-14-checked-contributions.md)
