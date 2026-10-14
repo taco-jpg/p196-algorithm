@@ -89,3 +89,11 @@ reproduction commands, source identities and retained limitations.
 | Actual seven-step boundary return | 29 Lean declarations connect actual/numeric orbits to return iff actual controls are 00*0*01, the overflow schedule 0010101 and width gain three. Full middle map and safety are separate written proofs. | [Formal scope](contributions/2026-10-14-seven-step-formal/README.md) |
 | Conditional reset and failed automatic recurrence | Exact padded-middle operator and safety iff both first middle states contain a coefficient at least 10. Complete 75,447-start catalog, 4,501 returns, counterexamples to automatic guard/safety preservation. No all-width exclusion. | [Proof and full evidence](contributions/2026-10-14-seven-step-reset/SEVEN_STEP_RESET.md), [independent 4,190-middle review](contributions/2026-10-14-seven-step-review/README.md) |
 | Fixed boundary-clock classifications | Complete widths-one-through-three classifications; each tested constant/alternating schedule has safe two-column cycles. These are freely imposed clocks, not actual orbit realizations. | [Results](contributions/2026-10-14-prefix-controls/FIXED_CLOCK_RESULTS.md), [independent audit](contributions/2026-10-14-prefix-controls/INDEPENDENT_AUDIT.md) |
+
+## Sharp seven-step clock obstruction
+
+| Finding | Exact scope | Evidence |
+|---|---|---|
+| At most three consecutive (4,4,0) returns | Every admissible finite width at least six; four returns at 7,14,21,28 impossible, with no safety assumption. Actual three-safe-return witness and sharp 26-transition bound. | [Complete proof and graph certificate](contributions/2026-10-14-seven-step-extension/SEVEN_STEP_BOUND.md) |
+| Full independent rank audit | All 96,026 controls, 61,731 edges and 48,013 ranks reconstructed. Macro and correlated-lift discovery records also retained. | [Independent audits](contributions/2026-10-14-seven-step-extension/INDEPENDENT_EXTENSION_AUDIT.md) |
+| Formal actual local relation | Eight Lean theorems for actual carry extension and numeric interpretation at 1 <= k < L, including overlap. Does not kernel-check the finite graph/rank enumeration. | [Formal scope](contributions/2026-10-14-prefix-extension-formal/README.md) |

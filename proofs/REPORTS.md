@@ -178,3 +178,11 @@ Every original written research report, proof note and manuscript source retaine
 - [PRIOR_ART_REVIEW.md](contributions/2026-10-14-prefix-controls/PRIOR_ART_REVIEW.md)
 - [SEVEN_STEP_INDEX.md](contributions/SEVEN_STEP_INDEX.md)
 - [2026-10-14-seven-step-results.md](coordination/2026-10-14-seven-step-results.md)
+
+## Sharp seven-step obstruction reports
+
+- [SEVEN_STEP_BOUND.md](contributions/2026-10-14-seven-step-extension/SEVEN_STEP_BOUND.md)
+- [INDEPENDENT_EXTENSION_AUDIT.md](contributions/2026-10-14-seven-step-extension/INDEPENDENT_EXTENSION_AUDIT.md)
+- [README.md](contributions/2026-10-14-prefix-extension-formal/README.md)
+- [SEVEN_STEP_OBSTRUCTION_INDEX.md](contributions/SEVEN_STEP_OBSTRUCTION_INDEX.md)
+- [2026-10-14-seven-step-obstruction-results.md](coordination/2026-10-14-seven-step-obstruction-results.md)

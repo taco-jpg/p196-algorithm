@@ -6,6 +6,17 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The early audited renewal checkpoints supply a [checked two-step gate](research/main_existence_attempt/renewal_pass/lean/STATUS.md) and [exact later hits](research/main_existence_attempt/renewal_pass/tails/STATUS.md) for specified repair families; other renewal work remains in progress. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Sharp all-width obstruction to the seven-step clock — 14 October 2026
+
+The [complete checked obstruction](coordination/2026-10-14-seven-step-obstruction-results.md)
+proves that an admissible word of any finite width at least six can have
+at most three consecutive seven-step returns to prefix (4,4,0). A complete
+six-column rank certificate and independent 96,026-control audit give
+the bound; an actual orbit attains three safe returns and 26 clock
+transitions. Eight Lean theorems supply the actual local projection.
+Full kernel integration of the rank certificate remains in progress.
+This closes this fixed-clock route; 196 and Lychrel existence remain open.
+
 ## Checked seven-step reset and collision mass — 14 October 2026
 
 The [latest shared handoff](coordination/2026-10-14-seven-step-results.md)

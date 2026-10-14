@@ -153,3 +153,13 @@ independent middle/operator checks and fixed-clock audit. The two gzip
 catalogs are complete; inventory records include decoded hashes and exact
 recovery commands. No growing-middle condition is inferred from a finite
 initial-width census.
+
+## Complete seven-step obstruction certificate
+
+The [result handoff](coordination/2026-10-14-seven-step-obstruction-results.md)
+lists all three independent graph audits and the fresh eight-theorem Lean
+bridge build. Five complete gzip artifacts retain the direct graph, all
+independent direct controls, and correlated-lift checkpoints. Their decoded
+identities and recovery commands are recorded in the inventory. The
+all-width theorem uses actual-orbit inclusion plus the complete finite
+rank certificate, not a finite-width middle census.
