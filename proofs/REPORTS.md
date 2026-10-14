@@ -186,3 +186,10 @@ Every original written research report, proof note and manuscript source retaine
 - [README.md](contributions/2026-10-14-prefix-extension-formal/README.md)
 - [SEVEN_STEP_OBSTRUCTION_INDEX.md](contributions/SEVEN_STEP_OBSTRUCTION_INDEX.md)
 - [2026-10-14-seven-step-obstruction-results.md](coordination/2026-10-14-seven-step-obstruction-results.md)
+
+## Broader return reports
+
+- [BROADER_RETURN_BOUND.md](contributions/2026-10-14-broader-return/BROADER_RETURN_BOUND.md)
+- [TWO_COLUMN_CONTROL_AUDIT.md](contributions/2026-10-14-broader-return/TWO_COLUMN_CONTROL_AUDIT.md)
+- [BROADER_RETURN_INDEX.md](contributions/BROADER_RETURN_INDEX.md)
+- [2026-10-14-broader-return-results.md](coordination/2026-10-14-broader-return-results.md)

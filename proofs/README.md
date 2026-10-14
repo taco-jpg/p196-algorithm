@@ -6,6 +6,17 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The early audited renewal checkpoints supply a [checked two-step gate](research/main_existence_attempt/renewal_pass/lean/STATUS.md) and [exact later hits](research/main_existence_attempt/renewal_pass/tails/STATUS.md) for specified repair families; other renewal work remains in progress. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## All-branch seven-step 44 return bound — 14 October 2026
+
+The [new complete obstruction](coordination/2026-10-14-broader-return-results.md)
+allows all three seven-step return branches to prefix (4,4), including
+arbitrary changes between branches. For any admissible initial width
+L >= 2, the number of consecutive returns is at most
+228 + max(0,ceil((14-L)/3)) <= 232. Complete independently checked graph
+and weighted-rank certificates include every finite transient. This
+conservative bound closes the broader seven-step return route; it does
+not settle 196 or decimal Lychrel existence.
+
 ## Sharp all-width obstruction to the seven-step clock — 14 October 2026
 
 The [complete checked obstruction](coordination/2026-10-14-seven-step-obstruction-results.md)

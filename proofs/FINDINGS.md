@@ -97,3 +97,11 @@ reproduction commands, source identities and retained limitations.
 | At most three consecutive (4,4,0) returns | Every admissible finite width at least six; four returns at 7,14,21,28 impossible, with no safety assumption. Actual three-safe-return witness and sharp 26-transition bound. | [Complete proof and graph certificate](contributions/2026-10-14-seven-step-extension/SEVEN_STEP_BOUND.md) |
 | Full independent rank audit | All 96,026 controls, 61,731 edges and 48,013 ranks reconstructed. Macro and correlated-lift discovery records also retained. | [Independent audits](contributions/2026-10-14-seven-step-extension/INDEPENDENT_EXTENSION_AUDIT.md) |
 | Formal actual local relation | Eight Lean theorems for actual carry extension and numeric interpretation at 1 <= k < L, including overlap. Does not kernel-check the finite graph/rank enumeration. | [Formal scope](contributions/2026-10-14-prefix-extension-formal/README.md) |
+
+## All-branch seven-step two-column return obstruction
+
+| Finding | Exact scope | Evidence |
+|---|---|---|
+| Complete return branching | All 128 controls give exactly 16 returns and three traces; the graph permits arbitrary branch changes. | [Independent control classification](contributions/2026-10-14-broader-return/TWO_COLUMN_CONTROL_AUDIT.md) |
+| Uniform finite return bound | Every admissible width L >= 2 satisfies R <= 228 + max(0,ceil((14-L)/3)) <= 232. No safety assumption, conservative bound, no implication from exit to palindrome. | [All-width proof](contributions/2026-10-14-broader-return/BROADER_RETURN_BOUND.md) |
+| Complete hierarchy and transient audit | All 127,824 local controls, every raw/recurrent graph through width fourteen, and 60,563 weighted condensation components independently checked. Uses published formal local necessity; the complete hierarchy is not yet a Lean theorem. | [Root review and retained hashes](contributions/2026-10-14-broader-return-root-review.json), [result handoff](coordination/2026-10-14-broader-return-results.md) |

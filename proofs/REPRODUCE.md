@@ -163,3 +163,12 @@ independent direct controls, and correlated-lift checkpoints. Their decoded
 identities and recovery commands are recorded in the inventory. The
 all-width theorem uses actual-orbit inclusion plus the complete finite
 rank certificate, not a finite-width middle census.
+
+## All-branch seven-step 44 hierarchy and finite bound
+
+The [shared result handoff](coordination/2026-10-14-broader-return-results.md)
+lists three independent audit commands for all control branches, every
+raw/recurrent graph through width fourteen, and the complete weighted
+condensation certificate. All 28 gzip artifacts are retained losslessly
+with original-byte hashes and recovery commands in the inventory. The
+finite bound includes all component transients and physical-width growth.
