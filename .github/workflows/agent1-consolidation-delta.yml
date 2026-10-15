@@ -1,0 +1,68 @@
+name: Agent1 consolidation delta export
+on:
+  push:
+    branches: [integrate/agent-1/20261015T1901Z]
+    paths: [.github/workflows/agent1-consolidation-delta.yml]
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Capture current heads and all issue comments as a separate delta
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agent1-delta
+          git fetch --no-recurse-submodules origin '+refs/heads/*:refs/remotes/origin/*' '+refs/pull/*/head:refs/remotes/pulls/*'
+          python3 - <<'PY'
+          import datetime, json, os, pathlib, subprocess, urllib.request
+          out = pathlib.Path('/tmp/agent1-delta')
+          base = 'https://api.github.com/repos/taco-jpg/p196-algorithm/'
+          def get(route):
+              req = urllib.request.Request((base + route).rstrip('/'), headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept':'application/vnd.github+json','User-Agent':'Agent1-consolidation'})
+              with urllib.request.urlopen(req, timeout=60) as r: return json.load(r)
+          def pages(route):
+              rows = []
+              for page in range(1,1001):
+                  data = get(route + ('&' if '?' in route else '?') + 'per_page=100&page=' + str(page))
+                  if not isinstance(data,list): raise RuntimeError('Collection expected')
+                  rows.extend(data)
+                  if len(data)<100: return rows
+              raise RuntimeError('Pagination cap')
+          def save(name,data): (out / name).write_text(json.dumps(data,indent=2)+'\n')
+          save('capture-start.json',{'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'initial_main':'b6f827418576027b1cff89746ee8077217963fce','scope':'Separate post-snapshot queue; no new mathematical acceptance'})
+          save('branches.json',pages('branches'))
+          save('pull_requests.json',pages('pulls?state=all'))
+          issues=pages('issues?state=all')
+          save('issues_and_prs.json',issues)
+          for item in issues:
+              n=item['number']
+              save('comments-'+str(n)+'.json',pages('issues/'+str(n)+'/comments'))
+          save('pr47-reviews.json',pages('pulls/47/reviews'))
+          save('repo.json',get(''))
+          save('main-rules.json',get('rules/branches/main'))
+          initial=json.loads(subprocess.check_output(['git','show','eef3ecc100ae1038f6556c1600b85bf0200914f6:SNAPSHOT.json'],text=True))
+          excluded=sorted(set(initial['branches'].values())|set(initial['pull_request_heads'].values()))
+          subprocess.run(['git','bundle','create',str(out/'delta.bundle'),'--all',*['^'+sha for sha in excluded]],check=True)
+          save('capture-end.json',{'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'branch_count':len(pages('branches'))})
+          PY
+          git bundle verify /tmp/agent1-delta/delta.bundle
+          cd /tmp/agent1-delta
+          sha256sum *.json delta.bundle > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: agent1-consolidation-delta
+          path: /tmp/agent1-delta/
+          retention-days: 7
+          if-no-files-found: error
