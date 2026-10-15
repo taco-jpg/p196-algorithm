@@ -42,19 +42,19 @@ def escapesWithin : Nat → Nat → OuterState → Bool
 def evenPhase (i : Fin 8) : Nat := 2 * (i.val + 1)
 
 theorem empty_escape_four : ∀ i : Fin 8,
-    escapesWithin 4 0 (evenPhase i, []) = true := by decide
+    escapesWithin 4 0 (evenPhase i, []) = true := by decide +kernel
 
 theorem singleton_escape_five : ∀ (i : Fin 8) (a : Fin 18),
-    escapesWithin 5 1 (evenPhase i, [a.val + 1]) = true := by decide
+    escapesWithin 5 1 (evenPhase i, [a.val + 1]) = true := by decide +kernel
 
 theorem empty_escape_seven : ∀ i : Fin 8,
-    escapesWithin 7 2 (evenPhase i, []) = true := by decide
+    escapesWithin 7 2 (evenPhase i, []) = true := by decide +kernel
 
 theorem singleton_escape_seven : ∀ (i : Fin 8) (a : Fin 18),
-    escapesWithin 7 2 (evenPhase i, [a.val + 1]) = true := by decide
+    escapesWithin 7 2 (evenPhase i, [a.val + 1]) = true := by decide +kernel
 
 theorem pair_escape_seven : ∀ (i : Fin 8) (a : Fin 18) (b : Fin 19),
-    escapesWithin 7 2 (evenPhase i, [a.val + 1, b.val]) = true := by decide
+    escapesWithin 7 2 (evenPhase i, [a.val + 1, b.val]) = true := by decide +kernel
 
 theorem escape_implies_exit (n L : Nat) (s : OuterState)
     (h : escapesWithin n L s = true) :
@@ -117,11 +117,11 @@ theorem short_outer_must_grow (c : Nat) (B : List Nat)
     (short_outer_escape c B hc0 hc1 heven hdigits hhead hsize)
 
 theorem sharp_empty_example :
-    escapesWithin 3 0 (2, []) = false ∧ escapesWithin 4 0 (2, []) = true := by decide
+    escapesWithin 3 0 (2, []) = false ∧ escapesWithin 4 0 (2, []) = true := by decide +kernel
 
 theorem sharp_pair_example :
     escapesWithin 6 2 (14, [2, 17]) = false ∧
-    escapesWithin 7 2 (14, [2, 17]) = true := by decide
+    escapesWithin 7 2 (14, [2, 17]) = true := by decide +kernel
 
 #print axioms empty_escape_four
 #print axioms singleton_escape_five
