@@ -182,6 +182,16 @@ theorem shortDescentK_of_all {k : Nat} {tree : RankTree}
     (h : (shortWordsK k).all (shortDescentOK tree) = true) : ShortDescentK k tree :=
   fun s hs => List.all_eq_true.mp h s hs
 
+/-- Assemble short descent from separate per-width Boolean checks. -/
+theorem shortDescentK_of_widths {k : Nat} {tree : RankTree}
+    (h : ∀ n, n < k → (symWords n).all (shortDescentOK tree) = true) :
+    ShortDescentK k tree := by
+  intro s hs
+  unfold shortWordsK at hs
+  rw [List.mem_flatMap] at hs
+  obtain ⟨n, hn, hs⟩ := hs
+  exact List.all_eq_true.mp (h n (List.mem_range.mp hn)) s hs
+
 /-- Exact semantic rank theorem for every certificate width `k > 0`.
 An actual short source (width below `k`) is handled by its exact complete
 word and short descent; an actual long source by the proved complete
