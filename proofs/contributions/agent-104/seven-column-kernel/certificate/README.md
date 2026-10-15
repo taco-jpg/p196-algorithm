@@ -45,7 +45,7 @@ kernel build of each assembly is required before claiming those finite results.
 
 Lean version: 4.19.0. `run_lean.py` records complete compiler output, command,
 timeout, address-space cap, elapsed time, and peak resident memory. It uses one
-Lean worker (`-j 1`); default per-module limits are 120 seconds and 6 GiB address
+Lean worker (`-j 1`); default per-module limits were initially 120 seconds and 6 GiB address
 space. Build outputs are reproducible infrastructure outside this source folder.
 
 The original monolithic data build failed under a 2 GiB address-space cap.
@@ -74,3 +74,15 @@ benefit, so the main assembly keeps the simpler direct checked-row statements.
 processes. `generate_short_checks.py` emits the separate exact short-input cases.
 These sources are WIP until their full assemblies compile and their axiom reports
 pass. See per-module logs; do not infer completion from generated file counts.
+
+## Memory refinement
+
+Dense unsplit row blocks 57, 58, 85 and 97 exhausted their process or host memory
+budget. Their sources and logs are retained. `split_row_batches.py` replaces only
+their proof decomposition: the original `checked_leaf` statements remain identical,
+but their components are established in modules of at most 14 concrete row checks.
+The wrapper assembles those checked lemmas against the same original tree.
+
+The runner now defaults to a 3.5 GiB address-space cap and shares two file-lock
+slots across row, short-boundary and initial-family workers. This avoids accidental
+extra concurrent compiler processes when multiple build queues are active.

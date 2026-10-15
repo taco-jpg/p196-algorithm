@@ -22,7 +22,7 @@ theorem shortChecked_of_cases (tree : RankTree)
     (rest : ∀ a, a < 18 → ShortAt tree a) :
     ∀ s ∈ shortWords, lookup tree (nextWord s) = none := by
   intro s hs
-  simp only [shortWords, List.mem_append] at hs
+  simp only [shortWords, List.mem_append, or_assoc] at hs
   rcases hs with hs | hs | hs | hs | hs | hs
   · simp only [rawWords, List.mem_map, List.mem_range] at hs
     rcases hs with ⟨a, ha, rfl⟩
