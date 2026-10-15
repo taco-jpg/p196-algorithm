@@ -8,13 +8,20 @@ Scope: the exact source statements in `ActualAncestry`, `ShortBoundary`,
 ordinary-integer definitions and representation theorems they use from the
 pinned `LychrelDigitSums` base.
 
-**Semantic verdict: no mathematical gap or counterexample found in this
-source chain. The advertised restricted endpoint is the actual statement of
-`ancestry_bound39` and `no_196_739_palindrome` exported by `Conclusion739`.
-Acceptance as a complete kernel-checked result is still pending the final
-fresh compilation and independent endpoint audit at the time of this report.**
-This status will be updated when those executions finish. The numerical
-diagnostic below has actually run and passed; it does not replace compilation.
+**Final verdict: accepted for the stated restricted 739 theorem. No
+mathematical gap or counterexample was found in the source chain. The exact
+endpoint types, complete independent fresh source build, exhaustive axiom
+inventory, and this reviewer's separately executed endpoint recompilation
+have all passed.** The two accepted endpoints are `ancestry_bound39` and
+`no_196_739_palindrome` exported by `Conclusion739`. This is not a proof of
+P196. The numerical diagnostic below also actually ran and passed; it is
+supporting evidence rather than a substitute for compilation.
+
+Accepted mathematical source snapshot: commit
+`957efa326b4b980391046598a0143cb7a7060242`, with the exact per-source hashes in
+`diagnostics.json` and the independently rebuilt source/object pins in
+`endpoint/verification.json`. The mathematical sources are unchanged from
+the earlier published source checkpoint `be1e4634bf5d8b297181eec4b7f99cfff3092a27`.
 
 ## Exact endpoint and limitations
 
@@ -41,6 +48,8 @@ and 9. `Canonical` explicitly requires positive width, digits at most 9,
 nonzero most significant digit, and exact numerical value. Thus the prefix
 predicate is about the ordinary numeral, not a pair-sum prefix or a padded
 representation. There is no upper bound on decimal width in either theorem.
+The ordinary orbit continues through earlier palindromes; no first-arrival
+or first-palindrome assumption occurs.
 
 The result does **not** prove `IsLychrel 196`, `Decimal196Conjecture`, or
 avoidance of palindromes with other leading digits. It does not claim that
@@ -229,27 +238,66 @@ These are finite independent consistency checks, not additional Lean
 theorems or a substitute for the kernel proof. The closure source pins were
 checked unchanged at process completion.
 
-## Kernel and excluded-axiom acceptance boundary
+## Completed kernel and excluded-axiom checks
 
-The previously supplied `review-clean/root03/verification.json` records a
-successful fresh structural build and transitive axiom audit of 1333 theorem
-constants, allowing only `propext`, `Classical.choice`, and `Quot.sound`.
-That is inherited evidence, not an execution by this reviewer, and does not
-alone establish the final numerical instance. The final clean specialist
-is separately rebuilding the full chain from source.
+The separate independent clean specialist completed **383 fresh local
+source builds** at source commit `957efa326b4b980391046598a0143cb7a7060242` and
+audited **7469 theorem constants**, including private/generated theorems.
+Those 383 modules are the 382-module conclusion closure plus the separately
+selected `TerminalObstruction`. The actual transitive axiom union is exactly
+`propext`, `Classical.choice`, and `Quot.sound`. Its second inventory matched
+the exhaustive audit counts for every module; all source, object, log, and
+compiler pins were rechecked. All 1303 imported official objects matched the
+pinned official archive. The 43 generated unsafe implementation axioms occur
+in no accepted theorem dependency.
 
-This reviewer will compile the final module and an explicit endpoint audit
-against pinned copies of that independently rebuilt dependency set. Such an
-execution reuses dependency objects and will be recorded as an independent
-**endpoint recompilation**, not as a second fresh build of all dependencies.
-The endpoint audit must print the exact unrestricted theorem types and
-transitive axioms of both endpoints and the concrete three premises. Any
-`sorryAx`, compiler-evaluation axiom such as `Lean.ofReduceBool`, custom
-logical axiom, or other axiom outside the three foundational ones is a
-rejection. Generated unsafe runtime implementation declarations are not
-proof oracles unless they occur in the theorem dependency chain.
+That execution is documented by
+[`review-final-clean/independent-verification.json`](../review-final-clean/independent-verification.json)
+and its [complete axiom log](../review-final-clean/logs/AllExportedAxioms.log).
+The byte-identical raw runner report is
+[`review-final-clean/verification.json`](../review-final-clean/verification.json),
+SHA-256 `76c0893073b55f700ec84a5e9f5466c276cef3c1301ee6155267a0b393fa35f0`.
+Its generic `numerical_739_instance_established_by_this_report=false` field
+is intentionally preserved: the generic runner checks builds and axioms,
+while the separate source/type interpretation establishes which numerical
+claim was proved. It is not a failed numerical obligation.
 
-No independent Lean compiler execution is claimed in this initial version
-of the report. Final execution records and the acceptance verdict remain
-pending. No Lean source, Git state, or author-owned file was modified by
-this reviewer; all reviewer-owned artifacts are under `review-final/`.
+After that stable PASS, **this reviewer actually executed**
+`recompile_endpoint.py` with the clean report and immutable snapshot. The
+script copied and hashed **381 reused local dependency objects**, compared
+all **382** conclusion-closure source hashes against the earlier independent
+diagnostic, and verified compiler plus official-import fingerprints. It
+compiled `Conclusion739` anew, then compiled `EndpointAudit`, with one
+compiler worker, synchronous elaboration, and only the isolated copied
+directory on `LEAN_PATH`:
+
+| Independently executed module | Exit | Elapsed seconds |
+|---|---:|---:|
+| `Conclusion739` | 0 | 1.211906 |
+| `EndpointAudit` | 0 | 2.499838 |
+
+`EndpointAudit` directly type-checks examples of both desired endpoint
+statements without any certificate or ancestry-bound premise, prints the
+actual types, and checks the transitive axiom sets of ten relevant theorems.
+Both endpoints, `allRows`, and `actual_iterPairs_rank` use exactly the three
+allowed foundational axioms. `initialCovered`, `initialLongChecked`,
+`shortChecked`, and `no_palindrome_through_100` use only `propext` and
+`Quot.sound`. `allRowsFast` and `initialShortChecked` use no axioms.
+
+The exact commands, source/object hashes, full reused-object inventory,
+official-object pins, and final unchanged checks are recorded in
+[`endpoint/verification.json`](endpoint/verification.json). The human-readable
+type and axiom output is [`endpoint/EndpointAudit.log`](endpoint/EndpointAudit.log).
+No `sorryAx`, `Lean.ofReduceBool`, custom logical axiom, or other forbidden
+axiom occurs in the audited dependency chains.
+
+This was an independent **endpoint recompilation using pinned dependency
+objects**. It was not a second fresh build of all dependencies by this
+reviewer. The complete fresh build was executed by the separate clean
+specialist. Combined with the semantic review above, these completed checks
+support acceptance of exactly the two restricted 739 endpoints.
+
+No accepted mathematical Lean source, Git state, or author-owned file was
+modified by this reviewer. Reviewer-owned source, diagnostics, reports, and
+execution evidence are under `review-final/`; reproducible compilation
+products remain outside the contribution tree.

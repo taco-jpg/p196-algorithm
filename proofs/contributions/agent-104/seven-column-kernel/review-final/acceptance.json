@@ -1,0 +1,63 @@
+{
+  "status": "ACCEPTED_FOR_STATED_739_SCOPE",
+  "source_commit": "957efa326b4b980391046598a0143cb7a7060242",
+  "semantic_reviewer": "agent104_final_review",
+  "semantic_gaps_found": [],
+  "accepted_theorems": {
+    "SevenColumnKernel.Finite739.ancestry_bound39": "forall A P t : Nat, 0 < A -> PalindromeStarts739 P -> Lychrel196.orbit A t = P -> t <= 39",
+    "SevenColumnKernel.Finite739.no_196_739_palindrome": "forall t : Nat, not PalindromeStarts739 (Lychrel196.orbit 196 t)"
+  },
+  "target_definition": "An ordinary decimal palindrome whose canonical numeral has at least three digits and begins 739.",
+  "unbounded_digit_width": true,
+  "prior_palindromes_do_not_stop_orbit": true,
+  "main_P196_proved": false,
+  "optimality_of_39_claimed": false,
+  "other_prefix_families_formalized_by_this_package": false,
+  "independent_numerical_diagnostic": "PASS; 58501 nodes, 68152 complete predecessor edges, 10000 long roots, sole short root, all 10467 short words and 3429 six-to-seven crossings",
+  "independent_full_build": {
+    "executor": "agent104_final_clean",
+    "fresh_local_sources": 383,
+    "audited_theorem_constants": 7469,
+    "report": "../review-final-clean/independent-verification.json",
+    "report_sha256": "5927e2e57ee7836be24514d404e075808e55050dbc355f8033fef623ff92cd10",
+    "raw_report_sha256": "76c0893073b55f700ec84a5e9f5466c276cef3c1301ee6155267a0b393fa35f0"
+  },
+  "independent_endpoint_recompilation": {
+    "executor": "agent104_final_review",
+    "fresh_full_dependency_rebuild_by_this_reviewer": false,
+    "dependency_objects_reused": 381,
+    "local_source_pins_checked": 382,
+    "official_import_objects_pinned": 1303,
+    "newly_compiled_modules": [
+      "Conclusion739",
+      "EndpointAudit"
+    ],
+    "exact_types_checked": true,
+    "status": "PASS",
+    "evidence": "endpoint/verification.json"
+  },
+  "endpoint_transitive_axioms": {
+    "SevenColumnKernel.Finite739.ancestry_bound39": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SevenColumnKernel.Finite739.no_196_739_palindrome": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "forbidden_transitive_axioms_found": [],
+  "review_artifact_sha256": {
+    "REVIEW.md": "c0253749ac5a403432df1fa441301b1c5267d4c8489658783c52ae7ce7d58689",
+    "check_independent.py": "81dad020ff50b02746cf7b2db06ab4ac3f754f16b5a58297f7a08dd37424b0a5",
+    "diagnostics.json": "89d89e46cbc0e4300fa428df0df25a9b68eb51f2579b5a9e5628c8e10f6cddfd",
+    "EndpointAudit.lean": "26e8b44f930c36579c7fc01b91428b28519ef5dad883f49d11b55c54877d2214",
+    "recompile_endpoint.py": "998b5ae8e9a661eb439813e0e397d70daaec453cac37da97a0b955a7c16dab5a",
+    "endpoint/Conclusion739.log": "e92fcecba7491bee089c4b6d11bedb540f007e64aea2f850a851edb26b473008",
+    "endpoint/EndpointAudit.log": "63a830d7fcf32aa7984a4912dce04ace310899795b94c49662cfcf4c97a90ca3",
+    "endpoint/executions.json": "cb74c5f102fe5f7e3bc9951f2eeb5b94fe814ff5eae29ac720afa931c48236fe",
+    "endpoint/verification.json": "f0330a1cbd6861afda8d980e094b9987da5eea60ac077e8aeda33519e521936b"
+  }
+}

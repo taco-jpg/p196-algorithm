@@ -5,13 +5,17 @@ proof that 196 never reaches any palindrome. The complete ordinary-number
 application additionally uses the separately proved projection, short boundary,
 and palindrome bridge.
 
-Current status: all four concrete assemblies (`AllRows739`, `Initial739`,
-`Short739`, `Conclusion739`) passed their first Lean compilation at source
+Current status: **INDEPENDENTLY-REVIEWED**. All four concrete assemblies
+(`AllRows739`, `Initial739`, `Short739`, `Conclusion739`) compiled from fresh
+source in the complete 383-module independent build at source
 `957efa326b4b980391046598a0143cb7a7060242`. The final ordinary-number ancestry
 and orbit-exclusion theorems have no remaining finite-certificate hypotheses.
 Their transitive axioms are exactly `propext`, `Classical.choice`, and
-`Quot.sound`. An independent fresh rebuild of the full dependency chain is
-running; the earlier WIP and resource-failure records below are historical.
+`Quot.sound`. The complete audit covered 7,469 compiled theorem constants, with no
+forbidden transitive axiom. Independent semantic review and exact-type
+endpoint recompilation also passed; see `../review-final-clean/` and
+`../review-final/acceptance.json`. Integration remains pending. The earlier
+WIP and resource-failure records below are historical.
 
 ## Trusted logical interface
 
@@ -84,8 +88,8 @@ processes. `generate_short_checks.py` emits the separate exact short-input cases
 At that earlier checkpoint the full assemblies were WIP. Their successful
 first assembly logs are now retained as `AllRows739-aggregate01.log`,
 `Initial739-kernel01.log`, `Short739-kernel01.log`, and
-`Conclusion739-aggregate01.log`. The independent fresh build remains a separate
-verification gate.
+`Conclusion739-aggregate01.log`. The later independent fresh build and exact endpoint review now pass;
+those final records are retained separately and do not rewrite these earlier logs.
 
 ## Memory refinement
 
