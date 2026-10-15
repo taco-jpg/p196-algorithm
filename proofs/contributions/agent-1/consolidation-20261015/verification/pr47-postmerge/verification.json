@@ -1,0 +1,350 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "source_commit": "6d56f543933dedb83eee8215f0e7295a5363c02c",
+  "fresh_project_objects": true,
+  "scope": "PR47 twenty-module thirteen-prefix closure only",
+  "global_repository_acceptance": false,
+  "commands": [
+    {
+      "label": "source-build",
+      "argv": [
+        "sh",
+        "/tmp/agent1-pr47-source/proofs/contributions/agent-113/two-digit-prefix/build.sh",
+        "/tmp/agent1-pr47-source",
+        "/tmp/agent1-pr47-postmerge/temporary-build"
+      ],
+      "exit_code": 0,
+      "log": "source-build.log",
+      "log_sha256": "f693f998a21168649dd2adf72adcc1d5a32e2222523064e38af36fc38fc17683"
+    },
+    {
+      "label": "full-module-audit",
+      "argv": [
+        "/tmp/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "Agent1FullAudit.lean"
+      ],
+      "exit_code": 0,
+      "log": "full-module-audit.log",
+      "log_sha256": "9a125acd487f2535142e3567f4725df4c3946b8fe6122ebdaaa281b4b97d8819"
+    }
+  ],
+  "sources": {
+    "LychrelDigitSums": {
+      "path": "proofs/research/continuation/LychrelDigitSums.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2"
+    },
+    "PalindromeBridge": {
+      "path": "proofs/contributions/agent-104/seven-column-kernel/PalindromeBridge.lean",
+      "sha256": "6c1de8cf02ec9381e80388e6b4915db6cfa4d1189d3e47c273400f0d37948093",
+      "git_blob": "a8066f82178786648c2c32b49a333e0c87e5810b"
+    },
+    "TwoDigitProjection": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitProjection.lean",
+      "sha256": "712e7df580b6cfc455aa159ba844487189984f54c738353984820f24bd8ed279",
+      "git_blob": "8a30b63dee88050a7b4f2718763a260d023fa03f"
+    },
+    "TwoDigitGrowth": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitGrowth.lean",
+      "sha256": "c9a987ab718d9f2b3941058a8c856f3480cf629200673aeabf011832012a5b13",
+      "git_blob": "c16e1c1463d0f402992261a1d66388e6b8a9ee03"
+    },
+    "TwoDigitNumeric": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitNumeric.lean",
+      "sha256": "a13d3d4000816e3ce80af4a4c811def55cec13058bef502a0bbf73e838b87c09",
+      "git_blob": "72bceb95d7f823a4ee68e5882da951039c7447d6"
+    },
+    "TwoDigitCertificate": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCertificate.lean",
+      "sha256": "15835d63f5e66f6f38ec0b276f98a3ae1611e01aaf198d6cf8b5d9bda32f078a",
+      "git_blob": "26a5c2cce25e90cf0806410e46a87fbc57e55966"
+    },
+    "TwoDigitCert10": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert10.lean",
+      "sha256": "1d108ee50b47302e927699370319becd2664817096b32d0665d87f85bde775b8",
+      "git_blob": "43374cb74c3331b0f04d9e7a098d762bd4aabb05"
+    },
+    "TwoDigitCert20": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert20.lean",
+      "sha256": "056378987e607e08bc703aa3ac45762e8f116e68448cd3d406ca7352c8df8912",
+      "git_blob": "3d7879d826e491f00656167c60431590ee6a9d95"
+    },
+    "TwoDigitCert32": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert32.lean",
+      "sha256": "4ba27ef1d9e034b4f49fbe46008265e6e074f4a688af83f7d9b7631a7fdaafc2",
+      "git_blob": "9ccf0010ff03438a66a0191f086980e1ee3a81b8"
+    },
+    "TwoDigitCert40": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert40.lean",
+      "sha256": "dc01707d4a87ab69bcf9b7a4fb9f61c93757e5e4cb0a8d22da2933ad702091b1",
+      "git_blob": "f4103a9415942c6817f7161d0a6dd9c1bac089be"
+    },
+    "TwoDigitCert41": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert41.lean",
+      "sha256": "f86e759405420e14abd77fde9b07c57975cd495616214a6e66d860f0e889151b",
+      "git_blob": "ba69034c2418a215cb6de45d1c02ec76d1691bc4"
+    },
+    "TwoDigitCert60": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert60.lean",
+      "sha256": "e0697e7cc2c2789ed1bcf5451de7f07391f0c39ec64267fd8b6aad05590a0661",
+      "git_blob": "27ca28e2eacddc4c780be3a5363731a0e8b82507"
+    },
+    "TwoDigitCert64": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert64.lean",
+      "sha256": "416049ba18c61f5f19c61b387952fbad375a01d32e65ca146331003be5880be3",
+      "git_blob": "a7b22c5453f97cf6f15cb4bf35a792d0d5a8712a"
+    },
+    "TwoDigitCert65": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert65.lean",
+      "sha256": "f87ef717daa13f576981d7ac8fc5da8da1154d7776028ab92956d16cb61f18ea",
+      "git_blob": "b4ff51d1f07c493a9e08d81b79a347b60b68a677"
+    },
+    "TwoDigitCert76": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert76.lean",
+      "sha256": "67c26fa10bdcf27ae63f3092f3f8f449bae3718f93395b3a7764c39b9a637cd0",
+      "git_blob": "d966401180a0a18416132bb68f41910b3885024b"
+    },
+    "TwoDigitCert80": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert80.lean",
+      "sha256": "f405785aae6ab4a6a7d90a48b643900f4b45c22a3b0284c50a9cd867901eec9a",
+      "git_blob": "48725c47bba961a5f6dcae837f3ae18fda00c9b8"
+    },
+    "TwoDigitCert81": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert81.lean",
+      "sha256": "38266c935971137961b5e3d42f9ae9cb782cb2f0717a8ea2a451dde8ae2f197f",
+      "git_blob": "6b1c46c48885f518961f5c2df08ef76eafd2177f"
+    },
+    "TwoDigitCert82": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert82.lean",
+      "sha256": "3be8153d67d2358f4ec126fa0cea972ab1921f8ba11d96e8d238803917dcb6a4",
+      "git_blob": "00151ca25a57938c80b231c7246dab01afb657ba"
+    },
+    "TwoDigitCert83": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert83.lean",
+      "sha256": "809992bef567e69180af535dc63d1fbc0de509d814c96395e9cf543b12d493a7",
+      "git_blob": "2483185c230c820efb7d2a0b0bfd5b88796122bb"
+    },
+    "TwoDigitMain": {
+      "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitMain.lean",
+      "sha256": "c2adf3a8a1d46b4b1ab3b792da77a820576abf762852a178011fda4bf0b45847",
+      "git_blob": "460096733d4ac9145371d63421b400f56e7090d5"
+    }
+  },
+  "started_at": "2026-10-15T19:55:53.748656+00:00",
+  "compiler_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "compiler_arguments": [
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "theorem_constants_audited": 2852,
+  "axiom_union_report": "[Classical.choice, Quot.sound, propext]",
+  "unsafe_implementation_axiom_count": 13,
+  "all_theorem_dependencies_checked_against": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "finite_controls": {
+    "seed_time_pairs": 899991,
+    "seeds": [
+      1,
+      99999
+    ],
+    "times": [
+      0,
+      8
+    ],
+    "continue_after_palindromes": true,
+    "observations": {
+      "10": 19,
+      "20": 31,
+      "40": 54,
+      "80": 99,
+      "60": 79,
+      "32": 85,
+      "64": 245,
+      "82": 201,
+      "76": 352,
+      "41": 67,
+      "65": 558,
+      "81": 122,
+      "83": 231
+    },
+    "sharpness": [
+      {
+        "prefix": 10,
+        "seed": 100,
+        "depth": 1,
+        "trajectory": [
+          100,
+          101
+        ]
+      },
+      {
+        "prefix": 20,
+        "seed": 1005000,
+        "depth": 2,
+        "trajectory": [
+          1005000,
+          1010001,
+          2010102
+        ]
+      },
+      {
+        "prefix": 32,
+        "seed": 12090,
+        "depth": 2,
+        "trajectory": [
+          12090,
+          21111,
+          32223
+        ]
+      },
+      {
+        "prefix": 40,
+        "seed": 1008000,
+        "depth": 3,
+        "trajectory": [
+          1008000,
+          1016001,
+          2022102,
+          4034304
+        ]
+      },
+      {
+        "prefix": 41,
+        "seed": 1008400,
+        "depth": 3,
+        "trajectory": [
+          1008400,
+          1056401,
+          2102902,
+          4194914
+        ]
+      },
+      {
+        "prefix": 60,
+        "seed": 1103090,
+        "depth": 3,
+        "trajectory": [
+          1103090,
+          2006101,
+          3022103,
+          6034306
+        ]
+      },
+      {
+        "prefix": 64,
+        "seed": 1203090,
+        "depth": 3,
+        "trajectory": [
+          1203090,
+          2106111,
+          3222123,
+          6434346
+        ]
+      },
+      {
+        "prefix": 65,
+        "seed": 1203290,
+        "depth": 6,
+        "trajectory": [
+          1203290,
+          2126311,
+          3262523,
+          6515146,
+          12930302,
+          33234223,
+          65477456
+        ]
+      },
+      {
+        "prefix": 76,
+        "seed": 17590,
+        "depth": 3,
+        "trajectory": [
+          17590,
+          27161,
+          43333,
+          76667
+        ]
+      },
+      {
+        "prefix": 80,
+        "seed": 1009000,
+        "depth": 4,
+        "trajectory": [
+          1009000,
+          1018001,
+          2026102,
+          4042304,
+          8074708
+        ]
+      },
+      {
+        "prefix": 81,
+        "seed": 1009200,
+        "depth": 4,
+        "trajectory": [
+          1009200,
+          1038201,
+          2066502,
+          4123104,
+          8136318
+        ]
+      },
+      {
+        "prefix": 82,
+        "seed": 1006500,
+        "depth": 4,
+        "trajectory": [
+          1006500,
+          1062501,
+          2115102,
+          4130214,
+          8250528
+        ]
+      },
+      {
+        "prefix": 83,
+        "seed": 1009400,
+        "depth": 4,
+        "trajectory": [
+          1009400,
+          1058401,
+          2106902,
+          4202914,
+          8394938
+        ]
+      }
+    ],
+    "not_a_substitute_for_unbounded_proof": true
+  },
+  "objects": {
+    "TwoDigitGrowth.olean": "eb861f9edb85a55ff73ff3df6b455306bdcbfea6832c84c3767f83c71a7b5c0c",
+    "TwoDigitCert10.olean": "aa10c498ae81b9527095d91ed5820c3308c62afef1a92b27e5bb148cf5cbf7f8",
+    "TwoDigitCert76.olean": "25d4604657de4f86401c27359c6b7e8c1b647315726a2deb2a3e44637c65a4be",
+    "TwoDigitMain.olean": "ef6cbec7eba283b7ce9425509d0cbd5ee6817157a9ce59a7e7d2bd7be9f59fa1",
+    "TwoDigitCert81.olean": "9f06ed4b00747523fddb61ca882efb20aa373642117db55ede271c57e69cb05f",
+    "TwoDigitCertificate.olean": "f27e6d02f4dc13e7beeae3d4144a8b733d1c27ad771e6deaf0f9391feec6dabe",
+    "PalindromeBridge.olean": "19c64eb9a55e3f8f57486236a8df93ea4e05a1941d183971ae246d31a101f299",
+    "TwoDigitCert40.olean": "c16a6c4eb39d660002ab6433c796f5ab530c8b0fcb479cc82ac972ed0d836c78",
+    "TwoDigitNumeric.olean": "9b4325a45fa7ad676fa8bed640053389a375a1344aead091381979ea11ce8d0b",
+    "LychrelDigitSums.olean": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978",
+    "TwoDigitCert82.olean": "810c34b8ceb3515500edcfa588284e2ec33d5197f22d8672abb118ed0ebfb315",
+    "TwoDigitCert60.olean": "932c0eae8c1fdabece677e0aa8eb6a1e492e23221e4abd7698723eeefcef856b",
+    "TwoDigitProjection.olean": "b642d7d672838fd8db5dbfd1c11e839ac4ee27e6281b2664689725a7939598b9",
+    "TwoDigitCert83.olean": "5bf2853424a3199b694121de3316ef9c8c88c99e53378f7ac28c1ff2360bd6af",
+    "TwoDigitCert65.olean": "920b8fceab95f4d150ca89aa74d24e10a6f5badd95af745af706bb1ae24a2860",
+    "TwoDigitCert80.olean": "72532e60f879d5326c5887d980faf0be9fa432adf3f8bb2f6510eb30393e8859",
+    "TwoDigitCert32.olean": "e4330ee5fd3fd5e9fa2321f2a3fa3002274f46a56b3f3b7d2652c2803089299a",
+    "TwoDigitCert20.olean": "0a90306e03063ee8bf998a1696b6947fd5d1a156315c785a75079a8079eaca5f",
+    "TwoDigitCert64.olean": "7976af9ef87b0c50dc130f3dababff9cd5fb1d4d86cfcf76e34d723f57ca893e",
+    "TwoDigitCert41.olean": "ad86c921650d84419abf234a6cba4697812ff86841fdd678a0d5e997e14b5c59"
+  },
+  "finished_at": "2026-10-15T20:02:22.908127+00:00"
+}
