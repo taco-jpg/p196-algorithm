@@ -6,6 +6,19 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Final session snapshot — 15 October 2026
+
+The [final checkpoint](coordination/2026-10-15-final-session-checkpoint.md)
+adds the independently reviewed ancestry bound `4*ell-3+psi(p_0)` and exact
+two-coordinate complementary-bulk formulas. The latter gives a conditional
+cycle criterion; no qualifying cycle or cycle search is supplied.
+The full scalar numerical Lean instance is retained as **IN PROGRESS**:
+15 production modules completed, Data6 interrupted, zero production row
+checks and no combined audit. Its unconditional 659/94/98 endpoints are
+unaccepted. All source drafts, partial logs, independent reviews and exact
+resume information are preserved. Eight separately audited conditional
+wrappers keep their root-certificate premise. No Lychrel or 196 proof is claimed.
+
 ## Sharp full high-region return bound — 15 October 2026
 
 The [new complete return checkpoint](coordination/2026-10-15-full-high-return-bound.md)

@@ -242,3 +242,12 @@ This is a one-step theorem, not a persistent invariant.
 | Sharp at most three two-step returns | Every canonical decimal width, full high region; exact carry/neighbor iff. Actual sharp seed 80999 is palindromic at time 2, so safe-three sharpness stays UNKNOWN. | [Written actual-orbit proof](contributions/2026-10-15-full-high-return/FULL_HIGH_RETURN.md) |
 | Kernel finite rank certificate | Five Std-only Lean theorems check the complete 900-state/1,800-control necessary relation, 258 edges, maximum rank 3. Actual-map bridge is not formalized in this package. | [Formal scope](contributions/2026-10-15-high-return-rank-formal/README.md) |
 | External band and exterior reviews | Exact 60d434 source/written reviews; no repeated graph replay or fresh exterior compile. Conditional cycles remain uninstantiated. | [Band review](contributions/2026-10-15-external-band-review/BAND_REVIEW.md), [exterior review](contributions/2026-10-15-external-zero-exterior-review/REVIEW.md) |
+
+## Final accepted results and incomplete scalar checkpoint
+
+| Item | Status and exact scope | Evidence |
+|---|---|---|
+| Single absorbing-run ancestry | Accepted written corollary: extinction by `4*ell-3+psi(p_0)<=4*ell+1`; no global extinction or optimality claim. | [Bound and attribution](contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md) |
+| Complementary nonneutral bulk | Accepted written all-gap two-coordinate formulas and conditional cycle criterion; 31,360 retained integer controls. No cycle search or qualifying cycle. | [Whole-word proof](contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md) |
+| Conditional scalar wrappers | Fresh 66-declaration report includes eight new wrappers, each numerical conclusion retaining the explicit root-certificate premise. | [Exact scope](contributions/2026-10-15-scalar-period-composition/README.md) |
+| Concrete scalar numerical Lean instance | IN PROGRESS: 15 fresh modules completed, Data6 interrupted with exit130, no production row checks, no final combined audit. Unconditional 659/94/98 Lean endpoints unaccepted. | [Partial checkpoint and continuation](contributions/2026-10-15-scalar-finite-certificate-formal/README.md) |

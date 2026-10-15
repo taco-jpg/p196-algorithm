@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""Encode exact frozen scalar jobs; this generates data, not accepted proof claims."""
+import argparse
+import gzip
+import hashlib
+import json
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+SOURCE = HERE.parent / '2026-10-14-component-specific-bound/component_certificates.json.gz'
+EXPECTED = 'ff7a70ee2a6ed677cb9176e212dc0a69acd14eed30425a42b543d7a50823b47e'
+
+
+def array(name, values):
+    return f'def {name} : Array Nat := #[' + ','.join(map(str, values)) + ']\n'
+
+
+def models():
+    raw = SOURCE.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == EXPECTED
+    jobs = [j for j in json.loads(gzip.decompress(raw))['jobs'] if j['hierarchy'] == 'scalar']
+    assert [j['id'] for j in jobs] == list(range(16))
+    result = []
+    for j in jobs:
+        rows = j['vertices']
+        local = {r[0]: i for i, r in enumerate(rows)}
+        component = [None] * len(rows)
+        for c, group in enumerate(j['components']):
+            for raw_id in group:
+                assert component[local[raw_id]] is None
+                component[local[raw_id]] = c
+        assert all(c is not None for c in component)
+        nxt = [0] * (2*len(rows))
+        for u, v, bit in j['edges']:
+            assert bit in (0, 1)
+            at = 2*local[u]+bit
+            assert nxt[at] == 0
+            nxt[at] = local[v]+1
+        meta = [phase+7*last+133*low for _, phase, last, low, _ in rows]
+        assert all(0 <= phase < 7 and 0 <= last < 19 and low in (0,1)
+                   for _, phase, last, low, _ in rows)
+        result.append(dict(job=j,local=local,component=component,next=nxt,meta=meta))
+    for p in result:
+        for link in p['job']['children']:
+            child = result[link['child_job']]
+            projection = dict(link['child_to_parent_raw'])
+            members = []
+            for at in range(0,len(child['job']['vertices']),19):
+                group = child['job']['vertices'][at:at+19]
+                parent = projection[group[0][0]]
+                assert [r[2] for r in group] == list(range(19))
+                assert all(projection[r[0]] == parent for r in group)
+                members.append(p['local'][parent])
+            assert set(members) == {p['local'][r] for r in p['job']['components'][link['component']]}
+            inverse = [0] * len(p['meta'])
+            for i,u in enumerate(members): inverse[u] = i
+            child['lift'] = dict(parent=p['job']['id'],selected=link['component'],
+                                 members=members,inverse=inverse)
+    return result
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--jobs', type=int, nargs='+', default=[0,1])
+    ap.add_argument('--output', type=Path, default=HERE/'generated')
+    args = ap.parse_args()
+    data = models()
+    assert all(0 <= j < 16 for j in args.jobs)
+    args.output.mkdir(parents=True,exist_ok=True)
+    catalog = 'import RankRows\nnamespace ScalarJobData\nopen ScalarFinite\n'
+    catalog += array('bounds',[d['job']['max_path_vertices_bound'] for d in data])
+    catalog += array('widths',[d['job']['width'] for d in data])
+    catalog += 'def jobBound (j : Nat) : Nat := bounds.getD j 0\n'
+    catalog += 'def jobWidth (j : Nat) : Nat := widths.getD j 0\nend ScalarJobData\n'
+    (args.output/'JobCatalog.lean').write_text(catalog)
+    inventory=[]
+    for identity in args.jobs:
+        d=data[identity];j=d['job']
+        s='import JobCatalog\nnamespace ScalarJobData\nopen ScalarFinite\n'
+        for name,values in [('meta',d['meta']),('components',d['component']),('nextCodes',d['next']),('ranks',j['weighted_sink_ranks'])]:
+            s+=array(f'{name}{identity}',values)
+        s+=f'def component{identity} (v : Nat) : Nat := components{identity}.getD v 0\n'
+        clauses=''.join(f'if c={link["component"]} then {link["child_job"]+1} else ' for link in j['children'])
+        s+=f'def childCode{identity} (c : Nat) : Nat := '+clauses+'0\n'
+        s+=f'''def data{identity} : Data where
+  size := {len(d['meta'])}
+  phase v := (meta{identity}.getD v 0)%7
+  last v := (meta{identity}.getD v 0)/7%19
+  low v := (meta{identity}.getD v 0)/133
+  next u bit := nextCodes{identity}.getD (2*u+bit) 0
+
+def ranking{identity} : Ranking where
+  component := component{identity}
+  cyclic c := decide (childCode{identity} c ≠ 0)
+  weight c := if childCode{identity} c=0 then 1 else jobBound (childCode{identity} c-1)
+  rank c := ranks{identity}.getD c 0
+  bound := jobBound {identity}
+'''
+        if 'lift' in d:
+            lift=d['lift']
+            s+=array(f'members{identity}',lift['members'])
+            s+=array(f'inverse{identity}',lift['inverse'])
+            s+=f'def member{identity} (i : Nat) : Nat := members{identity}.getD i 0\n'
+            s+=f'def memberIndex{identity} (u : Nat) : Nat := inverse{identity}.getD u 0\n'
+        s+='end ScalarJobData\n'
+        file=args.output/f'JobData{identity}.lean';file.write_text(s)
+        inventory.append(dict(job=identity,width=j['width'],vertices=len(d['meta']),edges=len(j['edges']),
+                              components=len(j['components']),source_sha256=hashlib.sha256(file.read_bytes()).hexdigest(),
+                              lift=d.get('lift') and {k:v for k,v in d['lift'].items() if k not in ('members','inverse')}))
+    (args.output/'generation.json').write_text(json.dumps(dict(source_sha256=EXPECTED,jobs=inventory,
+      scope='Exact finite data encoding; generated data alone is not a kernel proof.'),indent=2)+'\n')
+    print(json.dumps({'jobs':args.jobs,'vertices':sum(len(data[j]['meta']) for j in args.jobs),'output':str(args.output)}))
+
+
+if __name__=='__main__': main()

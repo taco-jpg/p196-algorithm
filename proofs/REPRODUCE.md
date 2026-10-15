@@ -331,3 +331,15 @@ witness replay and the small Std-only Lean certificate. All four gzip
 artifacts retain decoded hashes and recovery commands in INVENTORY.json.
 The actual-orbit reduction remains written; reciprocal external reviews
 are source-only. No safe-three sharpness or infinite-orbit claim is made.
+
+## Final scalar checkpoint and accepted corollaries
+
+The [final handoff](coordination/2026-10-15-final-session-checkpoint.md)
+distinguishes accepted written results, conditional Lean wrappers and unfinished
+generated endpoints. The scalar finite package documents a fresh empty-build
+run and fingerprint-checked resume. Archived text without matching compiled
+objects does not qualify for resume. The production checkpoint retains all
+source/log members and exact interruption status; it is not a successful full
+verification report. The complementary-bulk gzip retains all 31,360 controls.
+Both archives have compressed and recovered hashes and recovery commands in
+the inventory. No incomplete numerical Lean endpoint is promoted to a result.

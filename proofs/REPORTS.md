@@ -335,3 +335,17 @@ Every original written research report, proof note and manuscript source retaine
 - [contributions/2026-10-15-external-zero-exterior-review/REVIEW.md](contributions/2026-10-15-external-zero-exterior-review/REVIEW.md)
 - [contributions/FULL_HIGH_RETURN_INDEX.md](contributions/FULL_HIGH_RETURN_INDEX.md)
 - [coordination/2026-10-15-full-high-return-bound.md](coordination/2026-10-15-full-high-return-bound.md)
+
+## Final session and unfinished scalar reports
+
+- [contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md](contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md)
+- [contributions/2026-10-15-ancestry-potential-bound/INDEPENDENT_REVIEW.md](contributions/2026-10-15-ancestry-potential-bound/INDEPENDENT_REVIEW.md)
+- [contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md](contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md)
+- [contributions/2026-10-15-complementary-bulk-quotient/INDEPENDENT_REVIEW.md](contributions/2026-10-15-complementary-bulk-quotient/INDEPENDENT_REVIEW.md)
+- [contributions/2026-10-15-scalar-finite-certificate-formal/README.md](contributions/2026-10-15-scalar-finite-certificate-formal/README.md)
+- [contributions/2026-10-15-scalar-finite-certificate-formal/production-checkpoint/README.md](contributions/2026-10-15-scalar-finite-certificate-formal/production-checkpoint/README.md)
+- [contributions/2026-10-15-scalar-period-composition/README.md](contributions/2026-10-15-scalar-period-composition/README.md)
+- [contributions/2026-10-15-scalar-finite-review/README.md](contributions/2026-10-15-scalar-finite-review/README.md)
+- [contributions/2026-10-15-scalar-resume-review/RESUME_REVIEW.md](contributions/2026-10-15-scalar-resume-review/RESUME_REVIEW.md)
+- [contributions/FINAL_SESSION_INDEX.md](contributions/FINAL_SESSION_INDEX.md)
+- [coordination/2026-10-15-final-session-checkpoint.md](coordination/2026-10-15-final-session-checkpoint.md)
