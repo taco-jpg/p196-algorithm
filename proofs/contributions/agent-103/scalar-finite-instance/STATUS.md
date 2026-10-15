@@ -94,3 +94,9 @@ endpoints can be accepted; this is not an environment problem.
   hierarchy, bridge and endpoint sources are the original files.
 
 Current: fresh v2 production build (`--stage checks`) running.
+
+### v2 production progress (fresh build, `verify_v2.py --stage checks`)
+
+All 16 v2 `JobData` modules and the previously never-compiled
+`ScalarHierarchyData` PASS (seconds): JobData0 0.303; JobData1 1.787; JobData3 3.429; JobData2 6.55; JobData4 4.597; JobData5 11.908; JobData6 60.741; JobData7 105.682; JobData8 184.481; JobData10 21.814; JobData9 183.322; JobData11 75.744; JobData12 72.102; JobData14 9.611; JobData15 6.923; JobChecks0 0.458; JobChecks1 7.835; JobChecks2 34.949; JobChecks3 17.85; JobChecks4 29.741; JobData13 165.791; ScalarHierarchyData 2.564; JobChecks5 75.689.
+Row checks JobChecks6-15 running. No endpoint accepted yet.
