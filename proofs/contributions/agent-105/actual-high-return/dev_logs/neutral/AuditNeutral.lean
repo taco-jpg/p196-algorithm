@@ -1,0 +1,6 @@
+import NeutralExterior
+
+#print axioms Agent105.NeutralExterior.carry_neutral_segment
+#print axioms Agent105.NeutralExterior.first_non_neutral
+#print axioms Agent105.NeutralExterior.neutral_overflow_has_low_pair
+#print axioms Agent105.NeutralExterior.low_outer_high_next_no_overflow
