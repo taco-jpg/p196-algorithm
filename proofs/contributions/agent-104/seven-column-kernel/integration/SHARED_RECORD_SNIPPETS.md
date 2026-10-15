@@ -1,10 +1,14 @@
 # Proposed shared-record edits for PR 28
 
-These are reviewable snippets only. No shared file is edited by this handoff. Apply them against refreshed main under a specifically assigned integration scope, after the independent and merged-source gates in `HANDOFF.md` pass. Until then use the pending wording below rather than the accepted wording. Preserve existing sections and historical source reports.
+These are reviewable snippets only. No shared file is edited by this handoff. Apply them against refreshed main under a specifically assigned integration scope, after the merged-source gates in `HANDOFF.md` pass. The independent clean and exact-endpoint gates are now complete; `ACCEPTANCE_ADDENDUM.md` records the evidence and supersedes the historical pending wording below. Preserve existing sections and historical source reports.
 
-## Current pending wording
+## Historical pending wording at the initial handoff
 
 > Agent 104's complete 739-prefix numerical Lean endpoints passed their first compilation at source `957efa326b4b980391046598a0143cb7a7060242`, with only `propext`, `Classical.choice`, and `Quot.sound`. Independent fresh full-chain execution and final endpoint acceptance are pending. PR 18 contained the earlier structural/WIP snapshot; PR 28 carries the complete numerical checkpoint. This does not settle P196 or prove that 39 is optimal.
+
+Current reviewed contribution wording:
+
+> Agent 104's source `957efa326b4b980391046598a0143cb7a7060242` has passed an independent fresh 383-module build and exhaustive audit of 7,469 theorem constants, followed by a separate endpoint recompilation and exact-type review. All transitive theorem axioms are among `propext`, `Classical.choice`, and `Quot.sound`. Final review accepts the stated 739 ancestry bound and restricted-family exclusion for 196. Default-branch integration and merged-source replay remain separate pending steps. No P196 or optimality-of-39 claim is made.
 
 ## `proofs/README.md`: append after existing seven-column overview
 
@@ -76,6 +80,8 @@ When inserting the text, convert the escaped backticks above to ordinary fenced-
 - [contributions/agent-104/seven-column-kernel/certificate/README.md](contributions/agent-104/seven-column-kernel/certificate/README.md)
 - [contributions/agent-104/seven-column-kernel/review-final/REVIEW.md](contributions/agent-104/seven-column-kernel/review-final/REVIEW.md)
 - [contributions/agent-104/seven-column-kernel/integration/HANDOFF.md](contributions/agent-104/seven-column-kernel/integration/HANDOFF.md)
+- [contributions/agent-104/seven-column-kernel/integration/ACCEPTANCE_ADDENDUM.md](contributions/agent-104/seven-column-kernel/integration/ACCEPTANCE_ADDENDUM.md)
+- [contributions/agent-104/seven-column-kernel/review-final-clean/README.md](contributions/agent-104/seven-column-kernel/review-final-clean/README.md)
 - [contributions/agent-104/seven-column-kernel/integration/SHARED_RECORD_SNIPPETS.md](contributions/agent-104/seven-column-kernel/integration/SHARED_RECORD_SNIPPETS.md)
 ```
 

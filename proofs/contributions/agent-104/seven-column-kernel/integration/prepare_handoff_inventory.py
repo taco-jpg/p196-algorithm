@@ -23,6 +23,8 @@ SOURCE = "957efa326b4b980391046598a0143cb7a7060242"
 BASELINE = "95271b2bf55d18715f675d1e7f9d2a31ae1ec945"
 MAIN = "4ffba5a60b6089075f6e3e4ab5952eb6bc46a4d7"
 COORD = "7ed8bd96bbf711649a3e63d569a58c84ca23e5d2"
+ACCEPTANCE_MAIN = "5bd98567b259659fd3195f5aa61617422aa80914"
+ACCEPTANCE_COORD = "19d6c08b553ce2fe1b89138915a37aae598b9759"
 PREFIX = "proofs/contributions/agent-104/seven-column-kernel"
 CORE = "proofs/research/continuation/LychrelDigitSums.lean"
 ROOTS = ["Conclusion739", "TerminalObstruction"]
@@ -181,6 +183,70 @@ def main():
             "P196", "Decimal Lychrel existence", "Optimality or attainability of bound 39",
             "Lean formalization of bounds for 217, 218, 620, or 777"]
     })
+    # A later, explicitly retained acceptance update supplements the immutable
+    # source snapshot. It never changes that snapshot's 1,004-file inventory.
+    final_clean = REPO / PREFIX / "review-final-clean/independent-verification.json"
+    acceptance = REPO / PREFIX / "review-final/acceptance.json"
+    if final_clean.exists() and acceptance.exists():
+        clean = json.loads(final_clean.read_text())
+        accepted = json.loads(acceptance.read_text())
+        raw_report = REPO / PREFIX / "review-final-clean/verification.json"
+        clean_pins = json.loads((REPO / PREFIX / "review-final-clean/source-pins.json").read_text())
+        assert clean["status"] == "PASS" and clean["source_commit"] == SOURCE
+        assert accepted["status"] == "ACCEPTED_FOR_STATED_739_SCOPE" and accepted["source_commit"] == SOURCE
+        assert clean["fresh_source_module_count"] == 383 and clean["audited_theorem_count"] == 7469
+        assert clean["checker_exit_code"] == 0
+        assert sha(raw_report.read_bytes()) == clean["checker_report_sha256"]
+        assert clean_pins == {m: r["sha256"] for m, r in records.items()}
+        assert sha(final_clean.read_bytes()) == accepted["independent_full_build"]["report_sha256"]
+        for name, digest in accepted["review_artifact_sha256"].items():
+            assert sha((REPO / PREFIX / "review-final" / name).read_bytes()) == digest, name
+        supplement = []
+        for folder in ("review-final-clean", "review-final"):
+            for path in sorted((REPO / PREFIX / folder).rglob("*")):
+                if not path.is_file():
+                    continue
+                relative = str(path.relative_to(REPO))
+                data = path.read_bytes()
+                if sources.get(relative) == data:
+                    continue
+                assert "__pycache__" not in path.parts
+                assert not path.name.endswith((".olean", ".ilean", ".pyc", ".so", ".o"))
+                supplement.append([relative, len(data), sha(data),
+                    "modified" if relative in sources else "added",
+                    sha(sources[relative]) if relative in sources else ""])
+        write_tsv("final-review-evidence.tsv", ["path", "bytes", "sha256", "change_from_source_pin", "previous_sha256"], supplement)
+        config = json.loads((HERE / "handoff.json").read_text())
+        config["status"] = "INDEPENDENTLY_REVIEWED_PENDING_SCOPED_INTEGRATION"
+        config["completed_review"] = {
+            "source_commit": SOURCE, "status": accepted["status"],
+            "fresh_source_modules": 383, "audited_theorem_constants": 7469,
+            "private_name_theorems": clean["separate_inventory_private_name_count"],
+            "imported_official_objects": clean["imported_official_object_count"],
+            "unsafe_implementation_axioms_in_accepted_theorem_dependencies": [],
+            "raw_report_sha256": clean["checker_report_sha256"],
+            "independent_verification_sha256": sha(final_clean.read_bytes()),
+            "acceptance_sha256": sha(acceptance.read_bytes()),
+            "endpoint_recompilation": accepted["independent_endpoint_recompilation"],
+            "supplemental_inventory": "final-review-evidence.tsv",
+            "supplemental_files": len(supplement), "supplemental_bytes": sum(row[1] for row in supplement),
+            "scope_note": "Independent full build and endpoint acceptance completed; default-branch integration and merged-source replay remain pending."}
+        config["pending_gates"] = config["pending_gates"][2:]
+        later_main = snapshot(ACCEPTANCE_MAIN, PREFIX, CORE)
+        role_path = "proofs/coordination/roles/integration.json"
+        later_role_bytes = git("show", ACCEPTANCE_COORD + ":" + role_path)
+        later_role = json.loads(later_role_bytes)
+        assert later_role["status"] == "RELEASED" and later_role["owner"] is None
+        config["acceptance_addendum_observations"] = {
+            "main": ACCEPTANCE_MAIN, "coordination": ACCEPTANCE_COORD,
+            "integration_role": later_role, "integration_role_sha256": sha(later_role_bytes),
+            "main_matches_pr18_for_all_preexisting_scoped_paths": all(later_main.get(p) == b for p, b in previous.items()),
+            "incoming_scoped_content_conflicts": [p for p in set(previous) | set(sources) if
+                previous.get(p) != sources.get(p) and later_main.get(p) not in (previous.get(p), sources.get(p))],
+            "remaining_role_action": "A new explicit PR28 scoped integration claim is required; no ownership is acquired by this handoff."}
+        config["pending_gates"][0] = "New explicit scoped PR28 integration claim after observing the previous role's recorded release"
+        config["not_claimed"] = [item for item in config["not_claimed"] if item != "Independent full-chain acceptance before review evidence passes"]
+        write_json("handoff.json", config)
     print(json.dumps({"modules": len(records), "retained_files": len(retained),
                       "changes": len(delta), "content_conflicts": conflicts}))
 

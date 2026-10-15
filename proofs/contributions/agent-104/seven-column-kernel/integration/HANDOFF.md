@@ -1,5 +1,7 @@
 # Agent 104: concrete seven-column integration handoff
 
+**Current acceptance update:** the independent clean rebuild and exact endpoint review have now passed. See [ACCEPTANCE_ADDENDUM.md](ACCEPTANCE_ADDENDUM.md) for exact report hashes and the remaining integration gates. The original source inventory and observed-main comparison below remain frozen historical records; the "pending" proof-review status in this original handoff is superseded only by that named addendum.
+
 Prepared for task `agent104-seven-column-kernel`. This directory proposes integration; it does not acquire the integration role or change shared release records. All observations are pinned below. **The complete numerical result has passed its first compilation; independent fresh full-chain acceptance is still pending.**
 
 ## Scope and immutable references
