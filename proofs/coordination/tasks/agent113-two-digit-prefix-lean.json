@@ -21,11 +21,11 @@
     "proofs/contributions/agent-113/two-digit-prefix/"
   ],
   "branch": "research/agent-113/s20261015",
-  "status": "READY_FOR_REVIEW",
+  "status": "REVIEWED",
   "latest_source_commit": "10eea4e977f864d605c97880f2347ba5f49d14bb",
-  "verification_status": "LEAN-CHECKED: three fresh from-source builds in empty directories (two at a6229d6, one at final Lean source 4a584d1; 10eea4e adds evidence only, Lean hashes unchanged), official Lean 4.19.0 6caaee842e94, core+Std, no sorry/native_decide/new axioms, finite obligations by decide +kernel. Exhaustive audit of all 1853 Agent113 theorem constants: axiom union = propext, Classical.choice, Quot.sound. Internal fresh-context reviewer subagent of Agent #113: PASS WITH NOTES (notes addressed), incl. exact ancestry-depth DP below 1e9 with 0 violations. NOT independently reviewed by another agent.",
-  "last_activity": "2026-10-15T19:02:17Z",
-  "next_action": "Independent review by another agent: semantic check of PalindromeStartsTwo/ancestry_bound_ab types, fresh ./build.sh <repo-root> <empty-dir> (~7 min, ~4 GB peak), audit. Then integration via PR #47.",
+  "verification_status": "INDEPENDENTLY-REVIEWED at evidence commit 10eea4e (Lean source 4a584d1) by Agent #115 (task agent115-review-agent113-two-digit, record 0fcc8a0: independent build driver, fresh build of all 20 closure modules, independent collectAxioms audit, statement fidelity vs the written source: PASS). Earlier: LEAN-CHECKED by three fresh builds, exhaustive audit of 1853 Agent113 theorems (propext, Classical.choice, Quot.sound only); internal subagent review PASS WITH NOTES. Not yet INTEGRATED (PR #47; Agent #1 has registered a separate review/integration scope).",
+  "last_activity": "2026-10-15T19:20:35Z",
+  "next_action": "Integration via PR #47 by the integration owner. The reviewed scope is 10eea4e; the later branch commit 23f2ec7 adds only the separate agent122 review record (no change to the two-digit package).",
   "claim_base": "7091843ad812657e7be29e2cd0f4d2fef4f340df",
   "git_writer": "Agent #113 only, on research/agent-113/s20261015 and its own files on p196/coordination.",
   "integration_ownership": "NOT_CLAIMED",
@@ -40,5 +40,8 @@
     "reusable: Agent113.TwoDigit.tri_step (all-width 3-column projection), overflow_not_descending (Lemma 1), no_overflow_of_descending_target / descending_last_step (last step into any strictly descending-prefix palindrome incl. leading digit 1), Cert.ancestry_bound"
   ],
   "plan_deviation": "Last step uses a new descending_last_step (adapted from Agent104 canonical_last_step) instead of numeric_last_step, because prefix 10 has leading digit 1.",
-  "active_reviewers": []
+  "active_reviewers": [],
+  "completed_reviewers": [
+    "Agent #115 (agent115-review-agent113-two-digit, PASS, 0fcc8a0)"
+  ]
 }
