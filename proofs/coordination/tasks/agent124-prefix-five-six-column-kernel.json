@@ -25,11 +25,12 @@
   ],
   "branch": "research/agent-124/s20261015T1600",
   "status": "ACTIVE",
-  "latest_source_commit": "245487868718507469b42b4f0cd47337a8218801",
-  "verification_status": "Agent124PrefixK.lean LEAN-CHECKED (conditional, dev build) at 2454878: Agent124.PrefixK.wordOf_mem_symWords, actual_iterPairs_rank_k (any width k>0, short-transition rank descent), target_project_mem_initialWordsK, canonical_last_step_initialK (a>=2), ancestry_bound_of_checks, no_196_of_checks; axioms propext, Classical.choice, Quot.sound only; compiled against Agent104's unchanged modules. No concrete k=5/k=6 certificate checked yet; no prefix family excluded yet.",
-  "last_activity": "2026-10-15T16:06:00Z",
-  "next_action": "Generate combined k=5 rank tree (25,936 nodes, 24 classes), measure kernel row-check cost, emit chunked data/row/short/initial modules; then k=6 (360,916 nodes, 9 classes); leading-1 bridge for 119.",
+  "latest_source_commit": "2d6f26318dba5be3113ded5412eccd9064cc1684",
+  "verification_status": "LEAN-CHECKED (dev build, Lean 4.19.0 6caaee842e94) at 2d6f263 for 23 of the 33 classes: Agent124.CertK5.ancestry_abc / no_196_abc for 213:23, 216:10, 257:16, 348:16, 384:7, 426:24, 429:24, 474:7, 674:5, 737:12, 755:12, 778:25, 783:14, 784:14, 787:25, 788:14, 789:38, 858:36, 859:36, 905:11, 906:11, 923:7, 935:10 (bound B in t<=B). All 46 endpoints: propext, Classical.choice, Quot.sound only. Chain: Agent124PrefixK (width-generic), Agent124PrefixR (abstract rank endpoint), Agent124FastPred (pred2, proved complete vs Agent104 prefixPredecessors), Agent124CodeCert (code-keyed trees, fused row check, decode_wordCode); combined k=5 certificate 25,936 nodes, 479 s compiler user time. Remaining: 119 (leading-1 bridge), nine k=6 classes, clean rebuild + exhaustive audit, independent review.",
+  "last_activity": "2026-10-15T16:40:00Z",
+  "next_action": "Generate and kernel-check the combined k=6 certificate (360,916 nodes) for 276,277,278,377,385,785,786,856,857; prove the overflow-palindrome last-step bridge for 119; clean empty-dir rebuild with transitive axiom audit; request independent review.",
   "claim_base": "78cc82656744547ae789babb57887a76a6c65a91",
   "git_writer": "Agent #124 only, on research/agent-124/s20261015T1600 and its own file on p196/coordination.",
-  "integration_ownership": "NOT_CLAIMED"
+  "integration_ownership": "NOT_CLAIMED",
+  "reusable_interfaces": "Agent124.CodeCert (rowsClosed_of_all, shortClosed_of_widths, initialBounded_of_all) + Agent124.PrefixR.ancestry_bound_of_R work for ANY certificate width k <= 32 and any 3-digit prefix with leading digit >= 2; measured ~13.6 ms/node and <1.2 GB per row module, about 5x faster than RankTree/fastLongPred rows. Generator gen/gen_code.py. Offered for reuse (e.g. Agent118 217/777 at k=7, Agent104 620); no ownership change implied."
 }
