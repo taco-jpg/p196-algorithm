@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pin-aware, single-worker, fresh Lean build and exhaustive theorem axiom audit.
+"""Pin-aware, bounded-worker, fresh Lean build and exhaustive theorem axiom audit.
 
 Example:
   python3 check.py /absolute/path/to/lean --evidence /tmp/fresh-check \
@@ -17,6 +17,8 @@ entire selected local import closure exactly. No memory limit is imposed.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
+import threading
 import hashlib
 import json
 import os
@@ -111,6 +113,8 @@ def main() -> int:
     parser.add_argument("--evidence", required=True, type=Path)
     parser.add_argument("--module", action="append", default=[])
     parser.add_argument("--pins", type=Path)
+    parser.add_argument("--jobs", type=int, choices=[1, 2], default=1)
+    parser.add_argument("--require-committed", action="store_true")
     args = parser.parse_args()
     evidence = args.evidence.resolve()
     evidence.mkdir(parents=True, exist_ok=False)
@@ -121,18 +125,22 @@ def main() -> int:
     report_path = evidence / "verification.json"
     report = {
         "status": "IN_PROGRESS", "fresh_source_rebuild": True,
-        "one_build_worker": True, "async_elaboration": False,
+        "one_build_worker": args.jobs == 1, "parallel_build_workers": args.jobs, "async_elaboration": False,
         "memory_limit_imposed": False,
         "allowed_axioms": sorted(ALLOWED_AXIOMS),
         "sources": {}, "builds": [], "theorems": {},
         "numerical_739_instance_established_by_this_report": False,
         "scope": "Build and axiom validation only; mathematical interpretation requires theorem statements.",
     }
+    report["source_commit"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip()
+    report["require_committed_sources"] = args.require_committed
     write_json(report_path, report)
     env = dict(os.environ)
     for key in ("LEAN_PATH", "LEAN_SRC_PATH", "LEAN_SYSROOT"):
         env.pop(key, None)
     env["LEAN_PATH"] = str(snapshot)
+
+    report_lock = threading.Lock()
 
     def run(label: str, command: list[str]) -> str:
         log = logdir / f"{label}.log"
@@ -150,8 +158,9 @@ def main() -> int:
                "log": str(log.relative_to(evidence)), "log_sha256": sha(log),
                "resources": str(resources.relative_to(evidence))}
         rec["maximum_resident_set_kib"] = usage.ru_maxrss
-        report["builds"].append(rec)
-        write_json(report_path, report)
+        with report_lock:
+            report["builds"].append(rec)
+            write_json(report_path, report)
         print(json.dumps(rec), flush=True)
         if proc.returncode:
             raise RuntimeError(f"{label} failed with exit {proc.returncode}; see {log}")
@@ -201,6 +210,11 @@ def main() -> int:
             forbidden = FORBIDDEN.findall(code_only(text))
             if forbidden:
                 raise ValueError(f"Disallowed executable source tokens in {module}: {forbidden}")
+            committed = subprocess.run(["git", "show", report["source_commit"] + ":" + str(path.relative_to(REPO))],
+                                       cwd=REPO, capture_output=True)
+            matches_commit = committed.returncode == 0 and committed.stdout == blob
+            if args.require_committed and not matches_commit:
+                raise ValueError(f"Source does not match pinned Git commit: {module}")
             source_imports = imports(text)
             for imported in source_imports:
                 visit(imported)
@@ -214,7 +228,7 @@ def main() -> int:
             report["sources"][module] = {
                 "original_path": str(path.relative_to(REPO)), "sha256": digest,
                 "git_blob_sha1": hashlib.sha1(f"blob {len(blob)}\0".encode() + blob).hexdigest(),
-                "bytes": len(blob), "imports": source_imports,
+                "bytes": len(blob), "imports": source_imports, "matches_source_commit": matches_commit,
                 "snapshot": str(dest.relative_to(evidence)),
             }
             active.remove(module)
@@ -233,11 +247,28 @@ def main() -> int:
         report["build_order"] = order
         report["snapshot_complete_before_build"] = True
         write_json(report_path, report)
-        for module in order:
-            relative = module.replace(".", "/")
-            run(module, [lean, "-j1", "-DElab.async=false", "-o", relative + ".olean", relative + ".lean"])
-            report["sources"][module]["object_sha256"] = sha(snapshot / (relative + ".olean"))
-            write_json(report_path, report)
+        remaining, completed = set(order), set()
+        active_builds = {}
+        local_dependencies = {m: set(report["sources"][m]["imports"]) & set(order) for m in order}
+        with ThreadPoolExecutor(max_workers=args.jobs) as pool:
+            while remaining or active_builds:
+                ready = [m for m in order if m in remaining and local_dependencies[m] <= completed]
+                for module in ready[:args.jobs - len(active_builds)]:
+                    relative = module.replace(".", "/")
+                    future = pool.submit(run, module,
+                        [lean, "-j1", "-DElab.async=false", "-o", relative + ".olean", relative + ".lean"])
+                    active_builds[future] = module
+                    remaining.remove(module)
+                if not active_builds:
+                    raise RuntimeError("No buildable module in import graph")
+                finished, _ = wait(active_builds, return_when=FIRST_COMPLETED)
+                for future in finished:
+                    module = active_builds.pop(future)
+                    future.result()
+                    completed.add(module)
+                    with report_lock:
+                        report["sources"][module]["object_sha256"] = sha(snapshot / (module.replace(".", "/") + ".olean"))
+                        write_json(report_path, report)
 
         module_strings = ", ".join(json.dumps(m) for m in order)
         audit_text = "\n".join("import " + m for m in selected) + '''

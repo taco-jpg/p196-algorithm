@@ -41,3 +41,14 @@ Pinned toolchain: official Lean 4.19.0, release commit `6caaee842e94`. Base sour
 `certificate/` contains the generated 58,501-node rank tree, complete-row checking modules, initial-target checks, and short-boundary checks. Only successfully compiled exact source snapshots have LEAN-CHECKED status. The complete `AllRows739`, `Initial739`, `Short739` and final ordinary-number application must all pass before the numerical theorem can be accepted.
 
 The runtime comparisons with Python are diagnostics only. Source generations, failed drafts, timeouts, resource failures and audit failures are retained. Historical artifacts are outside the accepted import graph. Runtime installations and compiled objects are excluded from Git. This contribution is not integrated into the default branch.
+
+## Concrete initial and short-boundary checkpoint
+
+`Initial739.initialLongChecked`, `initialShortChecked` and
+`Short739.shortChecked` now compile under kernel reduction. The initial family
+contains all 10,000 seven-column targets and the sole six-column target;
+`shortChecked` discharges the exact `shortWords` exclusion used by ActualAncestry.
+Their printed transitive audits contain only `propext` and `Quot.sound`, or no
+axioms for direct finite instances. The full-row assembly is still in progress,
+so `Conclusion739` remains unaccepted. A final fresh whole-chain build and full
+export inventory are still required.
