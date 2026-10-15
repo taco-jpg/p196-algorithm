@@ -271,3 +271,16 @@ checks and independent audits. All new formal sources have fresh dependency
 build reports with standard-axiom checks. Historical failed drafts, earlier
 successful checkpoints and their logs remain available. Source-only external
 reviews are explicitly distinguished from independent fresh compilation.
+
+## Local-weight, mixed-band and zero-exterior follow-ups
+
+From `proofs/research/` in a disposable checkout:
+
+```sh
+python3 -B main_existence_attempt/continuation_pass/finite_seed/check_folded_weights.py
+python3 -B main_existence_attempt/continuation_pass/seam_persistence/verify_neutral_quotient.py
+python3 -B main_existence_attempt/continuation_pass/safe_language_followup/verify_four_band.py
+python3 -B main_existence_attempt/continuation_pass/lean/zero_exterior/check.py "$LEAN_BIN"
+```
+
+`LEAN_BIN` must be an absolute Lean 4.19.0 path. That command independently rebuilds the retained decimal dependency, the zero-exterior module and all 15 declaration audits. Root's historical `recheck_zero_exterior.py` additionally depends on its earlier `lean_build` output and preserves the original compiler path; its receipt explicitly records reuse of the exact root-rebuilt dependency. The graph checkers use full retained certificates and ordinary integer arithmetic; written all-gap identities provide the universal bridge. These replays do not search larger interfaces or assert a recurrent safe construction.

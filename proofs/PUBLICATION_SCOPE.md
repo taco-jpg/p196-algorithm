@@ -43,3 +43,7 @@ The separately active `lean/zero_exterior`, `safe_language`, `variable_return`, 
 ## Full bounded-state language evidence — 15 October 2026
 
 All 86 accepted research files are retained directly, including 41 archive parts totaling 223,756,940 bytes. Six original CNF/proof artifacts totaling 1,467,657,755 decoded bytes are preserved losslessly with exact recovery metadata. The complete five-state UNKNOWN trace is included. All logs, source configurations, complete negative-label and UNKNOWN trajectories, and both root review attempts are retained. 8 exact copied/partial-duplicate/cache files are individually inventoried; no genuine research output is omitted. Original-to-parts entries describe provenance and are not additional physical stored copies. Other accepted construction, weight and formal follow-ups will appear in separate incremental checkpoints.
+
+## Accepted weight, band and zero-exterior follow-ups
+
+This checkpoint retains every one of 56 accepted research files (405,007 bytes), including the complete two-band and four-band graphs and seed paths, historical gap probe, exact rational outcomes, root reviews and every available zero-exterior compiler attempt. 16 copied-build, compiled or cache files are excluded and individually inventoried. No accepted substantive result is omitted. The separately active absorbing-core, periodic, variable-return and additional formal-gate work is outside this snapshot.

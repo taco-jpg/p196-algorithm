@@ -6,6 +6,17 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Weights, variable-clock bands and exterior rigidity — 15 October 2026
+
+The [new follow-up handoff](coordination/2026-10-15-weights-and-variable-clock-bands.md)
+excludes uniform safe-incoming bounds for all strictly positive coefficient-product
+and fixed translation-invariant finite-window weights. Exact two-band and four-band
+updates give conditional construction methods; their stated small-interface initial
+families have fully checked acyclic reachable graphs. No qualifying recurrent cycle
+is supplied. A new Lean module proves that an actual positive decimal orbit can
+have pair prefix `(p,0,0,0)`, `p>0`, only at times at most four, with a sharp example.
+It adds 12 supporting theorem declarations and 3 definitions, independently audited.
+
 ## Shared seam obstructions and formal bridges — 15 October 2026
 
 The [new shared checkpoint](coordination/2026-10-15-seam-persistence-and-formal-bridges.md)

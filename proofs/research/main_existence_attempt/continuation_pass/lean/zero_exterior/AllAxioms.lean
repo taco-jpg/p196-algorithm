@@ -1,0 +1,17 @@
+import ZeroExterior
+
+#print axioms ZeroExterior.ThreeZero
+#print axioms ZeroExterior.threeZero_min_width
+#print axioms ZeroExterior.overflow_three_zeros_impossible
+#print axioms ZeroExterior.no_overflow_three_zeros_rigidity
+#print axioms ZeroExterior.next_threeZero_predecessor
+#print axioms ZeroExterior.iterPairs_threeZero_history
+#print axioms ZeroExterior.iterPairs_threeZero_time_bound
+#print axioms ZeroExterior.numeric_threeZero_time_bound
+#print axioms ZeroExterior.fixed_outer_return_time_zero
+#print axioms ZeroExterior.sharpDigits
+#print axioms ZeroExterior.sharp_fourth_canonical
+#print axioms ZeroExterior.sharp_fourth_zero_exterior
+#print axioms ZeroExterior.twoZeroExample
+#print axioms ZeroExterior.twoZeroExample_admissible
+#print axioms ZeroExterior.twoZeroExample_overflow

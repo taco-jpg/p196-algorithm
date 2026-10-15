@@ -281,3 +281,11 @@ Every original written research report, proof note and manuscript source retaine
 - [contributions/2026-10-15-external-finite-seed-review.md](contributions/2026-10-15-external-finite-seed-review.md)
 - [contributions/SEAM_PERSISTENCE_AND_FORMAL_INDEX.md](contributions/SEAM_PERSISTENCE_AND_FORMAL_INDEX.md)
 - [coordination/2026-10-15-seam-persistence-and-formal-bridges.md](coordination/2026-10-15-seam-persistence-and-formal-bridges.md)
+
+## Weight, band and zero-exterior follow-ups — 15 October 2026
+
+- [research/main_existence_attempt/continuation_pass/finite_seed/FOLDED_WEIGHT_OBSTRUCTION.md](research/main_existence_attempt/continuation_pass/finite_seed/FOLDED_WEIGHT_OBSTRUCTION.md)
+- [research/main_existence_attempt/continuation_pass/seam_persistence/METHOD_AND_PROOF.md](research/main_existence_attempt/continuation_pass/seam_persistence/METHOD_AND_PROOF.md)
+- [research/main_existence_attempt/continuation_pass/safe_language_followup/METHOD_AND_PROOF.md](research/main_existence_attempt/continuation_pass/safe_language_followup/METHOD_AND_PROOF.md)
+- [research/main_existence_attempt/continuation_pass/lean/zero_exterior/STATUS.md](research/main_existence_attempt/continuation_pass/lean/zero_exterior/STATUS.md)
+- [coordination/2026-10-15-weights-and-variable-clock-bands.md](coordination/2026-10-15-weights-and-variable-clock-bands.md)
