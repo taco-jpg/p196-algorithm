@@ -17,8 +17,9 @@ the four-column projection of the final predecessor belongs to an explicit
 finite root family `rootWords a b c`.
 
 `ancestry_bound_of_checks` is the conditional endpoint: complete row checks,
-the short-descent check and initial-rank checks of the roots imply the
-ordinary-integer ancestry bound.  It has no other premise.
+the short-descent check and initial-rank checks of the roots, together with
+the decidable premise that `a b c` is not one of the four growth prefixes,
+imply the ordinary-integer ancestry bound.  It has no other premise.
 -/
 
 namespace FourColumnKernel
@@ -241,8 +242,9 @@ theorem time_bound_of_root
   omega
 
 /-- Conditional ordinary-integer endpoint: three explicit finite checks
-(complete long rows, short descent, initial ranks of the root family) imply
-the ancestry bound `B + 1` for every palindrome beginning `a b c`. -/
+(complete long rows, short descent, initial ranks of the root family) and the
+non-growth premise `¬ GrowthPrefix a b c` imply the ancestry bound `B + 1`
+for every palindrome beginning `a b c`. -/
 theorem ancestry_bound_of_checks
     (tree : RankTree) (rows : CheckedRows tree (longPred 4))
     (short : ShortDescent tree) (a b c B : Nat) (hng : ¬ GrowthPrefix a b c)
