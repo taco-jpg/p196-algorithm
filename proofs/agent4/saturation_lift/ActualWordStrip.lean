@@ -82,7 +82,7 @@ theorem actual_column_at (q : Nat → Nat) (L i j : Nat)
   have io : i<widthAt q L (2*j+1) := by omega
   have re : widthAt q L (2*j)-(i+1)=widthAt q L (2*j)-1-i := by omega
   have ro : widthAt q L (2*j+1)-(i+1)=widthAt q L (2*j+1)-1-i := by omega
-  unfold ColumnAt actualCut evenCoefficient oddCoefficient oddCoefficient
+  unfold ColumnAt actualCut evenCoefficient oddCoefficient
   dsimp only
   refine ⟨he.2.2.1 i ie,ho.2.2.1 i io,rfl,rfl,?_,?_,?_,?_,?_⟩
   · rw [re]
