@@ -1,11 +1,51 @@
 # Agent #108 — exact modular autonomy
 
-Status: **WIP for the full classification**. The present checkpoint supplies compiled definitions and exact ordinary-decimal digit perturbation lemmas, plus the previously known sufficiency direction and equivalence of reversal/step determinism. Necessity is being assembled from independently owned witness modules.
+## Mathematical result
 
-Target: for each positive modulus M, reversal residues are determined by the input residue and exact width at all sufficiently large widths iff M divides 99. The width threshold is uniform over all positive integers of each width. This formalizes section 6 of `proofs/research/astra_modular_fixed_modulus_theorem.md`; it is not a new claim of mathematical discovery, a no-trap theorem for arbitrary moduli, or a P196 proof.
+For every positive modulus `M`, the following are equivalent:
 
-The accepted dependency is the exact repository `Lychrel196Research.lean`, Lean 4.19.0, Std only. Its integrated modular namespace is `AstraModular` (the sidecar uses `DecimalModular`). All new finite proofs use the kernel; no native_decide or new axioms.
+1. Beyond one finite width threshold, the residue of ordinary `reverse10 n` is determined by `n mod M` and the exact decimal width of positive `n`.
+2. The same eventual determinism holds for the actual reverse-and-add step `n + reverse10 n`.
+3. `M` divides `99`.
 
-Actual local execution uses the unchanged official Lean distribution plus the source-retained `runtime/proc_self_readlink.c` compatibility adapter. The container's PID namespace differs from its `/proc` view; only the current process's own numeric exe path is mapped to `/proc/self/exe`. See retained runtime evidence. This is explicitly an additional runtime component, not an unmodified-environment claim.
+The final equivalences are `ModularAutonomy.eventual_reverse_residue_determinism_iff` and `ModularAutonomy.eventual_step_residue_determinism_iff` in `ModularAutonomy.lean`. The previously written necessity from `proofs/research/astra_modular_fixed_modulus_theorem.md` section 6 is now formally proved. Sufficiency reuses `AstraModular.reverse10_mod_of_dvd99` from the integrated research source (the old sidecar calls its namespace `DecimalModular`). No mathematical discovery priority is claimed.
 
-A clean whole-package runner and independent rebuild will be published with the completed proof chain. Development failures are historical evidence, not accepted sources. No default-branch integration ownership is claimed.
+A stronger quantitative endpoint is proved in `CounterexampleBound.lean`: for any **single** width `L >= 3` satisfying `M + 10 < 10^(L-1)`, determinism on that exact width is equivalent to `M | 99`. Thus every excluded modulus has same-width, same-residue finite integer inputs with different next-step residues at **each** width satisfying this explicit bound. The bound is sufficient, not asserted optimal.
+
+The central statements are about all finite positive decimal inputs at a width. They do not assert a palindrome-free invariant, rule out every invariant using modular information, or settle the orbit of 196. Extra digit state or width-varying moduli are outside this classification.
+
+## Proof structure
+
+- `AutonomyDefs.lean`: exact predicates, with a uniform eventual threshold.
+- `AutonomyBasic.lean`: the existing sufficiency branch and equivalence of reversal/step determinism.
+- `DigitPerturbation.lean`: actual canonical digit increments, including the single-trailing-nine carry case.
+- `LeadingWitness.lean`: constructs equal-width multiples of M with leading digits one and two; rules out factors two and five.
+- `Necessity.lean`: compares two actual neighboring pairs, derives `M | 99 * 10^k`, then cancels the power using coprimality.
+- `ModularAutonomy.lean`: full classification and arbitrarily wide actual-step counterexamples.
+- `CounterexampleBound.lean`: the fixed-width quantitative strengthening and counterexamples at every admissible width.
+
+## Verification status at this incremental checkpoint
+
+All seven new modules compiled under Lean 4.19.0 and their source-declared theorem audits contain only `propext`, `Classical.choice`, and `Quot.sound`. No `sorry`, `admit`, new logical axiom, `native_decide`, or compiler-trusted reduction is used in the accepted chain. The complete independent audit report is being finalized; the quantitative extension is being independently rebuilt. No default-branch integration is claimed.
+
+`SOURCE_MANIFEST.json` pins all seven source hashes and the exact existing dependency. The complete accepted build entry point includes every module:
+
+```sh
+python3 proofs/contributions/agent-108/modular-autonomy/verify.py   /absolute/path/to/lean-4.19.0-linux/bin/lean   --build-root /absolute/path/to/disposable-build
+```
+
+This always uses a fresh build directory and recompiles the original research dependency. A nonzero exit is failure. `review/clean/` retains command vectors, exact exit codes, full logs, toolchain/source hashes, exported-theorem inventories and transitive axiom checks. `development/` retains failed attempts outside the accepted build. Compiler-generated unsafe specialization declarations are recorded separately from logical proof dependencies; every theorem's transitive axioms must still belong to the three-element allowlist.
+
+## Runtime and independent evidence
+
+The local container has a PID namespace inconsistent with its `/proc` mount. Local execution uses the unchanged official Lean distribution plus the retained `runtime/proc_self_readlink.c` adapter, which redirects only the current process's own numeric exe path to `/proc/self/exe`. No Lean kernel, library, source or olean bytes are patched. This is an additional runtime component, explicitly reported rather than called unadapted execution. Add `--preload /absolute/path/to/libproc_self_readlink.so` only in this environment. The source compiles with `gcc -shared -fPIC -o libproc_self_readlink.so proc_self_readlink.c -ldl`.
+
+The contribution-branch GitHub workflow repeats the complete build using the checksum-pinned official distribution without this adapter; its result must be read from the actual run. No remote CI success is inferred from this file.
+
+An independent semantic reviewer read and recompiled the six core modules (reusing a hash-matched base olean), recorded actual exits in `review/compile-check.json`, and checked the Canonical, width, carry, arithmetic and quantifier meanings. That reviewer reached an execution usage limit before producing a concluding prose report. The separately assigned clean reviewer performs a full source rebuild and is reviewing the quantitative extension. These scopes are distinct and neither is described as external human peer review.
+
+## Coordination and preservation
+
+Task: `agent108-modular-autonomy`, remotely claimed at `d16c60a52c516a531084881ee503c43633fbfc89`. Contribution branch: `research/agent-108/s20261015-0442`. Root Agent #108 is the only Git writer. The earlier local, unpublished normalization proposal reserved nothing and was abandoned when Agent #109 published ownership.
+
+All substantive new source, proof attempts, failure logs, runtime diagnostics and verification evidence are retained. Compiled objects, runtime binary copies, cache files and duplicate disposable build trees are reproducible infrastructure and are excluded. Shared default-branch indexes are reserved for the integration owner; this package does not silently promote older evidence labels.

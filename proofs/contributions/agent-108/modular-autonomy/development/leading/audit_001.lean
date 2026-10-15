@@ -1,0 +1,4 @@
+import LeadingWitness
+#print axioms ModularAutonomy.value_lt_pow
+#print axioms ModularAutonomy.canonical_pow_bounds
+#print axioms ModularAutonomy.canonical_of_pow_bounds
