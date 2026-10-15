@@ -56,6 +56,11 @@ of the word.
   (`q = columnSum d L`), bundled with the fact that the tracked words are the exact column-sum words
   of `orbit n t`.
 
+* `central_run_step` (ABSORBING_CORE.md sec. 3): for a maximal central run `[a, L-a)` of length
+  `g`, the next central run has length exactly `g`, `g-2` (no overflow, according to the boundary
+  carry) or `g-1` (overflow), and is again maximal; so no step lengthens a tracked central 0/18 band,
+  for every exterior and overflow schedule.
+
 This is the written corollary
 `proofs/contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md`, now kernel-checked
 together with its ancestry dependency. Optimality of `4·ell + 1` is not claimed.

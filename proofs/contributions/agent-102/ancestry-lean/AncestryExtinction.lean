@@ -179,3 +179,36 @@ end RunAncestry
 #print axioms RunAncestry.extinct_after
 #print axioms RunAncestry.extinct_uniform
 #print axioms RunAncestry.orbit_ancestry_extinct
+
+namespace RunAncestry
+open DecimalDigits FoldedDecimal
+
+/-- **Central run quotient (ABSORBING_CORE.md sec. 3).** For a maximal central run
+`[a, L-a)` of `0` or `18` (length `g = L - 2a`), one actual step leaves exactly the central
+interval of length `g` (no overflow, boundary carry `= reset c`), `g - 2` (no overflow, other
+boundary carry) or `g - 1` (overflow), truncated at zero; the descendant is again a maximal run
+whenever nonempty. In particular no step lengthens a tracked central 0/18 band. -/
+theorem central_run_step (q : Nat → Nat) (L c a : Nat) (ha : Admissible L q)
+    (hc : c = 0 ∨ c = 18) (hr : MaximalRun q L c a (L - a)) :
+    (descendant q L c a (L - a)).2 - (descendant q L c a (L - a)).1 =
+      (if carry q L = 0 then
+        (if carry q a = reset c then L - 2 * a else L - 2 * a - 2)
+      else L - 2 * a - 1) ∧
+    ((descendant q L c a (L - a)).1 < (descendant q L c a (L - a)).2 →
+      MaximalRun (nextColumns q L) (nextWidth q L) c
+        (descendant q L c a (L - a)).1 (descendant q L c a (L - a)).2) := by
+  refine ⟨?_, (descendant_step q L c a (L - a) ha hc hr).2.1⟩
+  have hab := hr.1
+  have hb : L - (L - a) = a := by omega
+  unfold descendant
+  rw [hb]
+  by_cases h0 : carry q L = 0
+  · simp only [h0, if_true]
+    by_cases hx : carry q a = reset c
+    · simp only [hx, if_true]; omega
+    · simp only [hx, if_false]; omega
+  · simp only [h0, if_false]; omega
+
+end RunAncestry
+
+#print axioms RunAncestry.central_run_step
