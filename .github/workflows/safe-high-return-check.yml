@@ -16,8 +16,15 @@ jobs:
         with:
           persist-credentials: false
           sparse-checkout: proofs/contributions/2026-10-15-safe-high-return
-      - name: Exact independent Python controls
-        run: python3 proofs/contributions/2026-10-15-safe-high-return/verify_witness.py
+      - name: Exact independent Python controls and exhaustive replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd proofs/contributions/2026-10-15-safe-high-return
+          python3 verify_witness.py
+          python3 verify_family.py
+          python3 enumerate_minimal.py
+          python3 independent_minimality.py
       - name: Install pinned official Lean release
         shell: bash
         run: |
