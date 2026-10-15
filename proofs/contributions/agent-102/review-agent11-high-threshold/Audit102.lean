@@ -1,0 +1,28 @@
+import HighBaseNumeric
+import HighBaseThreshold
+#print axioms Agent11HighBase.tags_bound
+#print axioms Agent11HighBase.high_divmod
+#print axioms Agent11HighBase.high_tail_terminal
+#print axioms Agent11HighBase.high_tail_body
+#print axioms Agent11HighBase.high_first_digits
+#print axioms Agent11HighBase.high_first_width
+#print axioms Agent11HighBase.shifted_symmetric
+#print axioms Agent11HighBase.symmetric_dropLast
+#print axioms Agent11HighBase.framed_pairs
+#print axioms Agent11HighBase.adjacent_shifted
+#print axioms Agent11HighBase.next_pairs_formula
+#print axioms Agent11HighBase.adjacent_cons_cons
+#print axioms Agent11HighBase.adjacent_bound_iff
+#print axioms Agent11HighBase.low_terminal
+#print axioms Agent11HighBase.low_body
+#print axioms Agent11HighBase.low_normalize
+#print axioms Agent11HighBase.low_outer_palindrome_iff
+#print axioms Agent11HighBase.high_first_digit_bounds
+#print axioms Agent11HighBase.second_palindrome_iff_adjacent
+#print axioms Agent11HighBase.ordinary_step_canonical
+#print axioms Agent11HighBase.canonical_pairs_nonempty
+#print axioms Agent11HighBase.numeric_two_step_threshold
+#print axioms Agent11HighBase.width_one_control
+#print axioms Agent11HighBase.base_three_threshold_control
+#print axioms Agent11HighBase.binary_threshold_counterexample
+#print axioms Agent11HighBase.continuing_after_palindrome_control
