@@ -50,7 +50,7 @@ theorem frontier_cut_mandatory (q : Nat → Nat) (L : Nat)
   rw [if_pos hn] at hs
   cases he : cut (i + 1) with
   | false =>
-      rw [he, if_false] at hs
+      simp only [he, Bool.false_eq_true, if_false] at hs
       rw [hr (i + 1) hi, hr i (by omega), h1, h0] at hs
       omega
   | true => rfl
