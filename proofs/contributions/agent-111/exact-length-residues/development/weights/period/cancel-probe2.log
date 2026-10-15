@@ -1,0 +1,17 @@
+Nat.mod_eq_iff {a b c : Nat} : a % b = c ↔ b = 0 ∧ a = c ∨ c < b ∧ ∃ k, a = b * k + c
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe2.lean:3:7: error: unknown constant 'Nat.sub_mod'
+Nat.mod_eq_sub_mod {a b : Nat} (h : a ≥ b) : a % b = (a - b) % b
+Nat.sub_mod_add_mod_cancel (a b : Nat) [NeZero a] : a - b % a + b % a = a
+Nat.mod_add_div (m k : Nat) : m % k + k * (m / k) = m
+Nat.mod_eq_sub_iff {a b c : Nat} (h₁ : 0 < c) (h : c ≤ b) : a % b = b - c ↔ b ∣ a + c
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe2.lean:8:7: error: unknown constant 'Nat.div_le_div_right'
+Nat.pow_le_pow_right {n : Nat} (hx : n > 0) {i j : Nat} : i ≤ j → n ^ i ≤ n ^ j
+Nat.pow_le_pow_left {n m : Nat} (h : n ≤ m) (i : Nat) : n ^ i ≤ m ^ i
+Nat.pow_pos {a n : Nat} (h : 0 < a) : 0 < a ^ n
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe2.lean:12:7: error: unknown constant 'Nat.pow_sub'
+Nat.add_sub_cancel (n m : Nat) : n + m - m = n
+Nat.mul_le_mul_left {n m : Nat} (k : Nat) (h : n ≤ m) : k * n ≤ k * m
+Nat.mod_add_div (m k : Nat) : m % k + k * (m / k) = m
+Nat.le_of_dvd {m n : Nat} (h : 0 < n) : m ∣ n → m ≤ n
+Nat.dvd_add_iff_left {k m n : Nat} (h : k ∣ n) : k ∣ m ↔ k ∣ m + n
+Nat.dvd_add_iff_right {k m n : Nat} (h : k ∣ m) : k ∣ n ↔ k ∣ m + n

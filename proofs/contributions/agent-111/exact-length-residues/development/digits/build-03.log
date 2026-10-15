@@ -1,0 +1,23 @@
+proofs/contributions/agent-111/exact-length-residues/PalindromeDigits.lean:197:4: error: unsolved goals
+case pos
+d e : Nat → Nat
+k u : Nat
+hu : u ∣ 10 ^ k
+he : ∀ (i : Nat), i < k → d i = e i
+L : Nat
+ih : value d L % u = value e L % u
+hL : L < k
+⊢ (value e L % u % u + e L * 10 ^ L % u % u) % u = (value e L + e L * 10 ^ L) % u
+proofs/contributions/agent-111/exact-length-residues/PalindromeDigits.lean:200:29: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  e L * ?b % ?n
+case neg
+d e : Nat → Nat
+k u : Nat
+hu : u ∣ 10 ^ k
+he : ∀ (i : Nat), i < k → d i = e i
+L : Nat
+ih : value d L % u = value e L % u
+hL : ¬L < k
+hdvd : u ∣ 10 ^ L
+hz : 10 ^ L % u = 0
+⊢ (value e L % u % u + d L % u * (10 ^ L % u) % u % u) % u = (value e L + e L * 10 ^ L) % u

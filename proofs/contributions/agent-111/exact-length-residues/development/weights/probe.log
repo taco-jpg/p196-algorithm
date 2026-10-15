@@ -1,0 +1,22 @@
+Nat.gcd_dvd_left (m n : Nat) : m.gcd n ∣ m
+Nat.gcd_dvd_right (m n : Nat) : m.gcd n ∣ n
+Nat.dvd_gcd {k m n : Nat} : k ∣ m → k ∣ n → k ∣ m.gcd n
+Nat.dvd_add {a b c : Nat} (h₁ : a ∣ b) (h₂ : a ∣ c) : a ∣ b + c
+proofs/contributions/agent-111/exact-length-residues/development/weights/Probe.lean:6:7: error: unknown constant 'Nat.dvd_sub''
+Nat.dvd_sub {k m n : Nat} (h₁ : k ∣ m) (h₂ : k ∣ n) : k ∣ m - n
+Nat.dvd_mul_left (a b : Nat) : a ∣ b * a
+Nat.dvd_mul_right (a b : Nat) : a ∣ a * b
+Nat.gcd_rec (m n : Nat) : m.gcd n = (n % m).gcd m
+Nat.gcd_comm (m n : Nat) : m.gcd n = n.gcd m
+Nat.gcd_eq_right {m n : Nat} (H : n ∣ m) : m.gcd n = n
+Nat.dvd_antisymm {m n : Nat} : m ∣ n → n ∣ m → m = n
+Nat.mod_mod_of_dvd {c b : Nat} (a : Nat) (h : c ∣ b) : a % b % c = a % c
+Nat.pow_add (a m n : Nat) : a ^ (m + n) = a ^ m * a ^ n
+Nat.pow_mul (a m n : Nat) : a ^ (m * n) = (a ^ m) ^ n
+proofs/contributions/agent-111/exact-length-residues/development/weights/Probe.lean:17:7: error: unknown constant 'Nat.pow_mod'
+Nat.mod_add_div (m k : Nat) : m % k + k * (m / k) = m
+proofs/contributions/agent-111/exact-length-residues/development/weights/Probe.lean:19:7: error: unknown constant 'Nat.mod_add_div''
+Nat.add_mul_mod_self_left (x y z : Nat) : (x + y * z) % y = x % y
+Nat.gcd_one_right (n : Nat) : n.gcd 1 = 1
+Nat.dvd_of_mod_eq_zero {m n : Nat} (H : n % m = 0) : m ∣ n
+Nat.mod_eq_zero_of_dvd {m n : Nat} (H : m ∣ n) : n % m = 0
