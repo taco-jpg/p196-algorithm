@@ -99,7 +99,7 @@ def main():
               REPO/'proofs/contributions/agent-109/template-return-certificate',
               REPO/'proofs/contributions/agent-109/outer-projection-bridge',
               REPO/'proofs/contributions/agent-109/outer-projection-bridge/agent7-deps',
-              HERE.parent/'certificate-exterior',HERE.parent/'cap3-kernel',HERE]
+              HERE.parent/'certificate-exterior',HERE.parent/'cap3-kernel',HERE.parent,HERE]
         sources={}
         for d in dirs:
             for p in d.glob('*.lean'):
