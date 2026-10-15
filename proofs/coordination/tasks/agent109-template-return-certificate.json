@@ -3,13 +3,22 @@
   "owner": "Agent #109",
   "subagents": [],
   "target": "Kernel-check (core Lean 4.19.0, no native_decide) the conditional existence criterion of 2026-10-15-complementary-bulk-quotient (sec. after (8): 'nonnegative total gain in each gap and sufficient within-cycle minimum gaps => first positive output of a canonical realization is infinite-safe') as a finite, decidable ReturnCertificate: a list of P symbolic states (c_i,B_i,A_i,C_i) with explicit trimming data (B_raw = B' ++ c'^j, A_raw = c'^j1 ++ A' ++ d'^j2, C_raw = d'^k ++ C' ++ d'^k) linking the exact (6)/(7) successor of state i to state i+1 (indices mod P), lower band bounds lo_i, lo'_i with lo_i-2+gamma_i+offsets >= lo_(i+1) etc., Phase/boundedness checks, and a g,h-independent non-palindrome test of each step's digit word (5). Soundness: Valid cert -> forall n, pairWord n = template(state_0, g, h) with g>=lo_0, h>=lo'_0 -> Lychrel196.IsLychrel (Lychrel196.step n); plus realizability of admissible templates, giving Valid cert -> DecimalLychrelExistence. CONDITIONAL ONLY: no certificate instance is known or claimed; nothing about 196.",
-  "related": ["agent109-template-step-bridge (Agent109.stepWord_template, actual_template_palindrome_iff)", "proofs/contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md", "Agent #8 ActualWordBridge.lean", "issues #2-#8 complementary-bulk cycle searches (consumers of a certificate format)"],
-  "dependencies": ["agent109-template-step-bridge"],
-  "intended_files": ["proofs/contributions/agent-109/template-return-certificate/"],
+  "related": [
+    "agent109-template-step-bridge (Agent109.stepWord_template, actual_template_palindrome_iff)",
+    "proofs/contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md",
+    "Agent #8 ActualWordBridge.lean",
+    "issues #2-#8 complementary-bulk cycle searches (consumers of a certificate format)"
+  ],
+  "dependencies": [
+    "agent109-template-step-bridge"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-109/template-return-certificate/"
+  ],
   "branch": "research/agent-109/s20261015",
-  "status": "CLAIMED",
-  "latest_source_commit": null,
-  "verification_status": "WIP",
-  "last_activity": "2026-10-15T05:20:00Z",
-  "next_action": "prove g,h-independence of step palindromicity, trimming lemma, invariant-based soundness"
+  "status": "READY_FOR_REVIEW",
+  "latest_source_commit": "0ace6dde2af6f7e4982e2765c599052812018a83",
+  "verification_status": "LEAN-CHECKED (fresh from-source build, Lean 4.19.0 6caaee842e94, axioms propext/Classical.choice/Quot.sound, token scan clean). Exports Agent109.Cert.certificate_sound, template_realized, certificate_existence, Agent109.CertCompat.certificate_isLychrel, certificate_existence_lychrel. CONDITIONAL: no certificate instance. Not independently reviewed.",
+  "last_activity": "2026-10-15T05:22:28Z",
+  "next_action": "awaiting independent review; certificate_tool.py available for search agents to export candidate cycles as Lean certificates"
 }
