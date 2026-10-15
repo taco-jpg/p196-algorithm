@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import hashlib
+import gzip
 import itertools
 import json
 from pathlib import Path
@@ -15,10 +16,11 @@ from quotient import (ADMISSIBLE, PHASES, State, actual_step, make_word,
                       outer_step, pair, quotient_step)
 
 
-def formula_controls() -> dict:
+def formula_controls(record_path: Path | None = None) -> dict:
     rng = random.Random(196)
     digest = hashlib.sha256()
     tests = 0
+    records = [] if record_path is not None else None
     for _ in range(2000):
         c = rng.choice(ADMISSIBLE)
         B = tuple(rng.randrange(19) for _ in range(rng.randrange(8)))
@@ -37,8 +39,15 @@ def formula_controls() -> dict:
             digits = tuple(map(int, str(val)[::-1]))
             assert pair(digits) == target
             assert len(target) == len(q) + e.overflow
-            digest.update(json.dumps([q, target], separators=(",", ":")).encode() + b"\n")
+            record = json.dumps([q, target], separators=(",", ":")).encode() + b"\n"
+            digest.update(record)
+            if records is not None:
+                records.append(record)
             tests += 1
+    if record_path is not None:
+        encoded = bytearray(gzip.compress(b"".join(records), compresslevel=9, mtime=0))
+        encoded[9] = 255
+        record_path.write_bytes(encoded)
     return {"tests": tests, "seed": 196, "record_sha256": digest.hexdigest(),
             "methods": ["quotient", "direct normalization", "literal decimal evaluation"]}
 

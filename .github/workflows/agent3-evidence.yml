@@ -1,0 +1,73 @@
+# One explicit branch-scoped research replay and evidence publication.
+# It runs only when this workflow itself is edited on Agent 3's branch.
+name: Agent 3 checked evidence publication
+on:
+  push:
+    branches: [research/agent3-complementary-bulk-20261015]
+    paths: ['.github/workflows/agent3-evidence.yml']
+permissions:
+  contents: write
+concurrency:
+  group: agent3-evidence-publication
+  cancel-in-progress: false
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Read the exact public source commit
+        run: |
+          git init .
+          git remote add origin https://github.com/taco-jpg/p196-algorithm.git
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Reproduce all finite evidence and verify literal-integer rank equations
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir=proofs/contributions/2026-10-15-agent3-complementary-bulk
+          python "$dir/produce_evidence.py" --output "$dir/evidence"
+      - name: Install the exact official Lean compiler
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Kernel-check the exact sources and retain complete axiom logs
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir=proofs/contributions/2026-10-15-agent3-complementary-bulk
+          mkdir -p "$dir/evidence/lean"
+          lean --version | tee "$dir/evidence/lean/version.txt"
+          sha256sum "$dir"/*.lean | tee "$dir/evidence/lean/source-sha256.txt"
+          for f in "$dir"/*.lean; do
+            lean "$f" 2>&1 | tee "$dir/evidence/lean/$(basename "$f").log"
+          done
+          if grep -E 'sorryAx|Lean\.ofReduceBool|declaration uses .sorry.' "$dir/evidence/lean/"*.log; then exit 1; fi
+          printf '%s\n' "$GITHUB_SHA" > "$dir/evidence/SOURCE_COMMIT.txt"
+      - name: Publish verified evidence without changing any other source
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch=research/agent3-complementary-bulk-20261015
+          dir=proofs/contributions/2026-10-15-agent3-complementary-bulk
+          git fetch --depth=1 origin "$branch"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          git config user.name 'Agent 3 evidence replay'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$dir/evidence"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'proofs: retain independently replayed Agent 3 rank certificates and Lean audits'
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.extraheader=AUTHORIZATION: basic $auth" push origin "HEAD:refs/heads/$branch"
+      - name: Retain evidence even when the branch advances concurrently
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent3-complete-evidence-${{ github.sha }}
+          path: proofs/contributions/2026-10-15-agent3-complementary-bulk/evidence/
+          if-no-files-found: ignore
+          retention-days: 7
