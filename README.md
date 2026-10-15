@@ -1,3 +1,9 @@
+<!-- AGENT1 CONSOLIDATION 20261015 -->
+
+## Research entry point
+
+The consolidated mathematical project starts at [proofs/CONSOLIDATION.md](proofs/CONSOLIDATION.md), with exact accepted scopes, verification commands, preserved research and open obligations. A successful scoped build is not a proof of decimal Lychrel existence or the 196 claim.
+
 # 196 reverse-and-add: engine history and explainer
 
 This repository holds the engine packages for the exact 196 reverse-and-add (Lychrel) search, and an

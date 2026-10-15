@@ -1,0 +1,62 @@
+{
+  "agent": "Agent #1",
+  "scope": "Byte coverage and identity; not mathematical proof",
+  "manifest_sha256": "652baab8742879fada7f6c7296cc515d4e755b120423029ea0dcd1eb859bdff3",
+  "results": [
+    {
+      "case": "complete-git-index",
+      "expected_success": true,
+      "exit_code": 0,
+      "log": "{\n  \"status\": \"PASS\",\n  \"manifest_files\": 9109,\n  \"unchanged_original_files\": 9101,\n  \"lean_source_files\": 1812,\n  \"lean_imports\": 4164,\n  \"mathematical_proof_check\": false,\n  \"complete_publication_coverage\": true,\n  \"coverage_source\": \"git-index\"\n}\n"
+    },
+    {
+      "case": "missing-manifest-row",
+      "expected_success": false,
+      "exit_code": 1,
+      "log": "Traceback (most recent call last):\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 78, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 29, in main\n    assert set(listed) == expected, {'unlisted': sorted(expected-set(listed)), 'unavailable': sorted(set(listed)-expected)}\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'unlisted': ['ACCEPTED_BUILD.json'], 'unavailable': []}\n"
+    },
+    {
+      "case": "duplicate-manifest-row",
+      "expected_success": false,
+      "exit_code": 1,
+      "log": "Traceback (most recent call last):\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 78, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 15, in main\n    assert len(listed) == len(set(listed)), 'Duplicate manifest path'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Duplicate manifest path\n"
+    },
+    {
+      "case": "unsafe-path",
+      "expected_success": false,
+      "exit_code": 1,
+      "log": "Traceback (most recent call last):\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 78, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 18, in main\n    assert not Path(name).is_absolute() and path.resolve().is_relative_to(ROOT.resolve()), 'Unsafe manifest path'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Unsafe manifest path\n"
+    },
+    {
+      "case": "altered-mathematical-source-bytes",
+      "expected_success": false,
+      "exit_code": 1,
+      "log": "Traceback (most recent call last):\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 78, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 36, in main\n    assert sha(path)==expected, 'Changed published file: '+name\n           ^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed published file: contributions/2026-10-15-agent3-complementary-bulk/OuterOrbit.lean\n"
+    },
+    {
+      "case": "missing-tracked-file",
+      "expected_success": false,
+      "exit_code": 1,
+      "log": "Traceback (most recent call last):\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 78, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 35, in main\n    assert path.is_file(), 'Missing published file: '+name\n           ^^^^^^^^^^^^^^\nAssertionError: Missing published file: CONSOLIDATION.md\n"
+    },
+    {
+      "case": "new-tracked-file-omitted-from-manifest",
+      "expected_success": false,
+      "exit_code": 1,
+      "log": "Traceback (most recent call last):\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 78, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"/home/runner/work/p196-algorithm/p196-algorithm/proofs/verify_release.py\", line 29, in main\n    assert set(listed) == expected, {'unlisted': sorted(expected-set(listed)), 'unavailable': sorted(set(listed)-expected)}\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'unlisted': ['agent1-unlisted-negative-control.txt'], 'unavailable': []}\n"
+    },
+    {
+      "case": "restored-index-after-negative-controls",
+      "expected_success": true,
+      "exit_code": 0,
+      "log": "{\n  \"status\": \"PASS\",\n  \"manifest_files\": 9109,\n  \"unchanged_original_files\": 9101,\n  \"lean_source_files\": 1812,\n  \"lean_imports\": 4164,\n  \"mathematical_proof_check\": false,\n  \"complete_publication_coverage\": true,\n  \"coverage_source\": \"git-index\"\n}\n"
+    },
+    {
+      "case": "complete-export-without-git",
+      "expected_success": true,
+      "exit_code": 0,
+      "log": "{\n  \"status\": \"PASS\",\n  \"manifest_files\": 9109,\n  \"unchanged_original_files\": 9101,\n  \"lean_source_files\": 1812,\n  \"lean_imports\": 4164,\n  \"mathematical_proof_check\": false,\n  \"complete_publication_coverage\": true,\n  \"coverage_source\": \"export-tree-excluding-reproducible-compiled-products\"\n}\n"
+    }
+  ],
+  "status": "PASS"
+}

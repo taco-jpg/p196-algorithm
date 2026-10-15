@@ -1,3 +1,9 @@
+<!-- AGENT1 CONSOLIDATION 20261015 -->
+
+## Agent #1: Contribution dispositions, retained history and delta queue
+
+Start with [CONSOLIDATION.md](CONSOLIDATION.md). The core build is scoped; the global accepted catalogue remains incomplete. Historical sections below retain their original evidence scope and date.
+
 # Complete written-report index
 
 Every original written research report, proof note and manuscript source retained in the initial publication, correlation update, completed renewal pass and concurrent contributions is indexed below. Historical reports describe their own checkpoint; the latest consolidated reports and release claim matrix control interpretation. Audits are internal, not external peer review.

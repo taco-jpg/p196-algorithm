@@ -1,3 +1,9 @@
+<!-- AGENT1 CONSOLIDATION 20261015 -->
+
+## Agent #1: Current research navigation and exact accepted scope
+
+Start with [CONSOLIDATION.md](CONSOLIDATION.md). The core build is scoped; the global accepted catalogue remains incomplete. Historical sections below retain their original evidence scope and date.
+
 # Decimal reverse-and-add research findings
 
 **Decimal Lychrel existence remains unproved. This collection does not prove that 196 is a Lychrel number, does not disprove decimal Lychrel existence, and contains no verified positive Lychrel witness.**

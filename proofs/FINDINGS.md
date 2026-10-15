@@ -1,3 +1,9 @@
+<!-- AGENT1 CONSOLIDATION 20261015 -->
+
+## Agent #1: Current accepted scopes, exclusions and remaining mathematical obligations
+
+Start with [CONSOLIDATION.md](CONSOLIDATION.md). The core build is scoped; the global accepted catalogue remains incomplete. Historical sections below retain their original evidence scope and date.
+
 # Findings and evidence matrix
 
 **Neither decimal Lychrel existence nor the assertion for 196 is proved.** This matrix indexes the substantive result families. The linked original reports contain exact quantifiers, exceptional cases, parameters, source filenames, certificates, and failed alternatives. [REPORTS.md](REPORTS.md) additionally enumerates all written reports; [INVENTORY.tsv](INVENTORY.tsv) accounts for all retained and omitted computational files.

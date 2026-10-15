@@ -10,6 +10,23 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
+    # A passing subset manifest is not complete publication verification.
+    listed = [line.split('  ', 1)[1] for line in (ROOT/'MANIFEST.sha256').read_text().splitlines()]
+    assert len(listed) == len(set(listed)), 'Duplicate manifest path'
+    for name in listed:
+        path = ROOT/name
+        assert not Path(name).is_absolute() and path.resolve().is_relative_to(ROOT.resolve()), 'Unsafe manifest path'
+        assert not path.is_symlink(), 'Manifest symlink: '+name
+    import subprocess
+    probe = subprocess.run(['git','rev-parse','--show-toplevel'],cwd=ROOT,capture_output=True,text=True)
+    if probe.returncode == 0 and Path(probe.stdout.strip()).resolve() == ROOT.parent.resolve():
+        tracked = subprocess.check_output(['git','ls-files','-z','--','proofs/'],cwd=ROOT.parent).decode().split('\0')
+        expected = {name[len('proofs/'):] for name in tracked if name and name != 'proofs/MANIFEST.sha256'}
+        coverage_source = 'git-index'
+    else:
+        expected = {str(p.relative_to(ROOT)) for p in ROOT.rglob('*') if p.is_file() and p != ROOT/'MANIFEST.sha256' and '__pycache__' not in p.parts and p.suffix not in {'.olean','.ilean','.pyc','.o','.so'}}
+        coverage_source = 'export-tree-excluding-reproducible-compiled-products'
+    assert set(listed) == expected, {'unlisted': sorted(expected-set(listed)), 'unavailable': sorted(set(listed)-expected)}
     count = 0
     published_lean_sources = []
     for line in (ROOT/'MANIFEST.sha256').read_text().splitlines():
@@ -56,6 +73,6 @@ def main():
     print(json.dumps({'status':'PASS','manifest_files':count,
                      'unchanged_original_files':len(kept),
                      'lean_source_files':len(sources),'lean_imports':imports,
-                     'mathematical_proof_check':False},indent=2))
+                     'mathematical_proof_check':False,'complete_publication_coverage':True,'coverage_source':coverage_source},indent=2))
 
 if __name__=='__main__': main()
