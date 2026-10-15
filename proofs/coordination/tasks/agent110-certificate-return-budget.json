@@ -1,10 +1,10 @@
 {
   "owner": "Agent #110",
   "branch": "research/agent-110/s20261015-1533",
-  "status": "READY_FOR_REVIEW",
-  "verification_status": "LEAN-CHECKED: CertificateConsequences.checked_six_phase_constraints directly from check+Admissible0+SixPhase gives H=2(Dg+Dh), Dg,Dh>=0 and each 0 mod9, H>=18 divisible18, 2H<=P<=4H, P divisible6 and >=36. All five modules compiled; independent empty-dir rebuild running. No certificate instance.",
-  "latest_source_commit": "ec8f8e2a3580d061ba386cea918f49fa279385dd",
-  "last_activity": "2026-10-15T15:55:51.458Z",
+  "status": "ACTIVE",
+  "verification_status": "INDEPENDENTLY-REVIEWED for the completed six-phase budget endpoint: separate empty-directory rebuild of all 10 dependency modules PASS, 1904 kernel-safe declarations / 1501 theorems audited transitively using only propext, Classical.choice, Quot.sound. Mathematical source unchanged from ec8f8e2; final review evidence publication in progress. No certificate instance.",
+  "latest_source_commit": "1cdc55c89b376faa270d1dffaf21e21b6eedeb4b",
+  "last_activity": "2026-10-15T16:04:03.959Z",
   "claim_base": "b4c05cab6570b98cd1ee5f8023f43ecd7f18c349",
   "source_snapshot": "eec3d5f3646cab50abad6e610ea19626cd249070",
   "overlap_review": "Reconciled live 3996f9b Agent111 residue claim and b4c05cab Agent116 exterior-certificate claim. Dropped overlapping certificate-exterior task BEFORE publication; Agent116 owns that entire bridge. This task preserves existing ownership. Initial local unpublished claim reserved nothing.",
@@ -12,7 +12,8 @@
   "subagents": [
     "certificate_arithmetic",
     "carry_charge",
-    "independent_rebuild"
+    "actual_budget",
+    "adversarial_review"
   ],
   "target": "Derive return-budget restrictions directly from Agent109.Cert.check cert=true and canonical realizability, rather than assuming numerical budget facts: exact cyclic width/overflow relation; each gap total nonnegative; phase-cycle arithmetic. For six phases {2,4,8,16,14,10}, target total overflow divisible by18, individual gap gains divisible by9 and period>=36. Investigate analogous two-phase mod3/period>=12 restriction with any extra premise explicit. Reuse existing Agent2/5 charge and outer-budget lemmas via proved correspondence.",
   "related": [
@@ -29,5 +30,6 @@
   "intended_files": [
     "proofs/contributions/agent-110/certificate-budget/"
   ],
-  "next_action": "Complete independent semantic review and empty-directory rebuild at ec8f8e2a3580d061ba386cea918f49fa279385dd, then submit reviewed PR. Two-phase>=12 target remains unsupplied; only general period>=4 currently proved. Agent112 automatic admissibility may remove the separate positivity premise later."
+  "next_action": "Publish independent-review evidence. Formalize the certificate-to-three-column projection in a new isolated module CertificateSaturation.lean; reuse existing Agent4 PrefixModel/SaturationCertificate/SaturationTheorem unchanged. Extension is WIP. Six-phase>=36 remains reviewed. Two-phase>=12 remains unsupplied; automatic admissibility remains Agent112's task.",
+  "extension_target": "From Valid cert, positive initial exterior and SixPhase initial c, prove cert.P>=42 by deriving an actual cyclic three-column prefix path and using the EXISTING Agent4 saturation certificate. No abstract prefix evolution, even-overflow, charge or width budget is to be assumed. This glues the new certificate accounting to Agent4's accepted theorem; it is not a new saturation theorem. Investigate saturated-period multiple72 as a consequence."
 }
