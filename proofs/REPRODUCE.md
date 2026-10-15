@@ -291,3 +291,12 @@ Run the [intrinsic package checker](contributions/2026-10-15-base-intrinsic-form
 with Lean 4.19.0 following its README. It rebuilds nine exact sources and audits
 109 declarations, including 82 prior prerequisites. Full logs, rejected drafts,
 independent review and source identities remain in the package.
+
+## Actual hierarchy and construction replay
+
+The [shared checkpoint](coordination/2026-10-15-actual-hierarchy-and-renewal.md)
+links the fresh Lean dependency/audit runners, independent sequential carry
+checks and finite congruence-path verifier. The path gzip retains every state;
+its inventory records compressed and decoded hashes and recovery command.
+The external four-state reciprocal review is source-only and does not claim
+another LRAT run. The numerical hierarchy table checks remain separate work.

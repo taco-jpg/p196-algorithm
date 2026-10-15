@@ -296,3 +296,16 @@ Every original written research report, proof note and manuscript source retaine
 - [contributions/2026-10-15-base-intrinsic-formal/INDEPENDENT_REVIEW.md](contributions/2026-10-15-base-intrinsic-formal/INDEPENDENT_REVIEW.md)
 - [contributions/ALL_BASE_INTRINSIC_INDEX.md](contributions/ALL_BASE_INTRINSIC_INDEX.md)
 - [coordination/2026-10-15-all-base-intrinsic-criterion.md](coordination/2026-10-15-all-base-intrinsic-criterion.md)
+
+## Actual hierarchy and construction reports
+
+- [contributions/2026-10-15-actual-prefix-lift-formal/README.md](contributions/2026-10-15-actual-prefix-lift-formal/README.md)
+- [contributions/2026-10-15-bounded-prefix-lift-formal/README.md](contributions/2026-10-15-bounded-prefix-lift-formal/README.md)
+- [contributions/2026-10-15-actual-prefix-lift-review/ACTUAL_PREFIX_REVIEW.md](contributions/2026-10-15-actual-prefix-lift-review/ACTUAL_PREFIX_REVIEW.md)
+- [contributions/2026-10-15-high-carry-renewal/HIGH_CARRY_RENEWAL.md](contributions/2026-10-15-high-carry-renewal/HIGH_CARRY_RENEWAL.md)
+- [contributions/2026-10-15-congruence-family-obstruction/CONGRUENCE_PATHS.md](contributions/2026-10-15-congruence-family-obstruction/CONGRUENCE_PATHS.md)
+- [contributions/2026-10-15-external-four-state-review/REVIEW.md](contributions/2026-10-15-external-four-state-review/REVIEW.md)
+- [contributions/2026-10-15-neutral-exterior-overflow/NEUTRAL_EXTERIOR.md](contributions/2026-10-15-neutral-exterior-overflow/NEUTRAL_EXTERIOR.md)
+- [contributions/2026-10-15-external-folded-weight-review/REVIEW.md](contributions/2026-10-15-external-folded-weight-review/REVIEW.md)
+- [contributions/ACTUAL_HIERARCHY_AND_RENEWAL_INDEX.md](contributions/ACTUAL_HIERARCHY_AND_RENEWAL_INDEX.md)
+- [coordination/2026-10-15-actual-hierarchy-and-renewal.md](coordination/2026-10-15-actual-hierarchy-and-renewal.md)

@@ -6,6 +6,18 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Actual hierarchy interfaces and shared construction obstructions — 15 October 2026
+
+The [new checkpoint](coordination/2026-10-15-actual-hierarchy-and-renewal.md)
+constructs actual child paths for the component hierarchy and repairs the
+unrestricted-label interface with a verified carry-bit adapter. The 26 new
+Lean theorems leave numerical 94/98 table instantiation explicit. New written
+results give local two-step safety regeneration, a sharp two-return bound for
+one restricted high-region mechanism, and congruence-preserving artificial
+paths whose sparse jump fails the true carry budget. An exact-source review
+of the external four-state language proof makes no third LRAT replay claim.
+All sources, failed attempts, full path archives and reviews are retained.
+
 ## All-base intrinsic carry-defect criterion — 15 October 2026
 
 The [new intrinsic checkpoint](coordination/2026-10-15-all-base-intrinsic-criterion.md)

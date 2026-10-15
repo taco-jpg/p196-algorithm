@@ -208,3 +208,13 @@ canonical numeric reverse-add bridge certifies a nonpalindromic output.
 Binary output safety fails; odd-base input nonpalindromicity is not asserted.
 The 27 new declarations and 82 prerequisites pass fresh standard-axiom audits.
 This is a one-step theorem, not a persistent invariant.
+
+## Actual hierarchy interfaces and construction obstructions
+
+| Result | Exact scope | Evidence |
+|---|---|---|
+| Actual hierarchy path construction | Actual whole-word child intervals and carry-bit finite encoding; 26 new Lean theorems, original label-nine interface obstruction retained. Numerical 94/98 tables remain uninstantiated. | [Adapter and hierarchy](contributions/2026-10-15-bounded-prefix-lift-formal/README.md) |
+| High-carry local regeneration | Exact mixed-certificate regeneration and sharp at-most-two bound for the stated restricted two-step return condition. Written all-parameter proof, independent controls. | [Renewal proof](contributions/2026-10-15-high-carry-renewal/HIGH_CARRY_RENEWAL.md) |
+| Neutral-exterior overflow obstruction | Every base at least two: a symmetric neutral exterior that overflows produces a pair coefficient below neutral. Any two-step high-region return therefore has a nonoverflowing second addition. Written proof and 22,773 independent controls. | [Neutral exterior](contributions/2026-10-15-neutral-exterior-overflow/NEUTRAL_EXTERIOR.md) |
+| Congruence-preserving delayed paths | Artificial finite paths preserve stated residues/growth/predicates; true first and last steps. The sparse jump violates genuine carry budget for every parameter at least three. | [Written proof and complete paths](contributions/2026-10-15-congruence-family-obstruction/CONGRUENCE_PATHS.md) |
+| External four-state source review | Exact all-width proof and generator/checker review at fbbef306. No third LRAT replay; five-state UNKNOWN unchanged. | [Reciprocal review](contributions/2026-10-15-external-four-state-review/REVIEW.md) |
