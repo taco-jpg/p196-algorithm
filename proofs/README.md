@@ -274,3 +274,7 @@ Every written research finding and original research source file is retained, to
 [INVENTORY.tsv](INVENTORY.tsv) and [INVENTORY.json](INVENTORY.json) account for every file in the initial, correlation-pass, completed renewal and accepted continuation source snapshots with its original SHA-256, size, publication decision, reason, and report mapping. The original early-checkpoint records remain historical provenance alongside the completed renewal snapshot. Historical snapshot entries remain provenance records. [FILES.md](FILES.md) lists every published file; [MANIFEST.sha256](MANIFEST.sha256) verifies release contents, including binary certificate bytes. These manifests are provenance aids, not mathematical certificates. Repository engines, production checkpoints, and files outside `proofs/` are unchanged by this publication.
 
 No third-party license is invented for the research or for cited sources. Existing repository licensing and any file-specific notices continue to apply.
+
+## 严格证明 P196 猜想：独立聊天归档
+
+[聊天 6acee928 的研究归档](chat-6acee928/README.md) 保留该聊天的 9 份完整 Markdown、1 份原始 Python、最初两轮正文独有论证，以及 8 份逐字提取的 Python 附录。本次 9 个核验程序全部运行通过；来源、章节索引、SHA-256 和运行日志一并保存。归档截至 `p196_six_column_and_mod99.md`，原会话未附加的临时脚本/日志和仍在生成的新回复不在已恢复范围内。完整 P196 猜想仍未证明。
