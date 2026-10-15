@@ -1,0 +1,195 @@
+name: Agent1 complete consolidation index
+on:
+  push:
+    branches: [integrate/agent-1/20261015T1901Z]
+    paths: [.github/workflows/agent1-consolidation-index.yml]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: agent1-consolidation-index
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent1-consolidation-snapshot
+          run-id: 38790811156
+          github-token: ${{ github.token }}
+          path: /tmp/agent1-input-initial
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent1-consolidation-resumption-20261015T2054Z
+          run-id: 38806420219
+          github-token: ${{ github.token }}
+          path: /tmp/agent1-input-resumption
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent1-post49-core-evidence
+          run-id: 38809268102
+          github-token: ${{ github.token }}
+          path: /tmp/agent1-input-post49
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent3-verification-b0a64569ce53b22fb93c8340dc2f3611583a93c9
+          run-id: 38807713962
+          github-token: ${{ github.token }}
+          path: /tmp/agent1-input-original-failure
+      - name: Verify immutable inputs and retain exact post-merge and failure evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object proofs/contributions/agent-1/consolidation-20261015/reconcile_consolidation.py)" = 2d2c126d84ec31e56a0c3b0a041a9d44553a2f44
+          for dir in /tmp/agent1-input-initial /tmp/agent1-input-resumption; do (cd "$dir" && sha256sum -c SHA256SUMS); done
+          python3 - <<'PY'
+          import hashlib,json,pathlib,shutil,subprocess
+          root=pathlib.Path.cwd(); own=root/'proofs/contributions/agent-1/consolidation-20261015/verification'
+          inp=pathlib.Path('/tmp/agent1-input-post49'); manifest=json.loads((inp/'PUBLISH_FILES.json').read_text())
+          actual={str(p.relative_to(inp)) for p in inp.rglob('*') if p.is_file() and p.name!='PUBLISH_FILES.json'}
+          if actual!=set(manifest) or any(p.is_symlink() for p in inp.rglob('*')):raise RuntimeError('Evidence file-set mismatch')
+          for name,r in manifest.items():
+              p=inp/name
+              if not p.resolve().is_relative_to(inp.resolve()):raise RuntimeError('Unsafe evidence path')
+              data=p.read_bytes()
+              if len(data)!=r['bytes'] or hashlib.sha256(data).hexdigest()!=r['sha256']:raise RuntimeError('Evidence hash mismatch: '+name)
+          report=json.loads((inp/'build/verification.json').read_text())
+          if report['status']!='PASS' or report['source_commit']!='a79036909714e34a2b8b7ccccd6d00caa6a04848' or not report['source_tree_clean'] or report['repository_wide_pass']:raise RuntimeError('Wrong post-merge proof evidence')
+          core=report['projects']['consolidation-core']
+          if len(core['sources'])!=38 or core['theorem_count']!=3491 or set(core['axiom_union'])!={'Classical.choice','Quot.sound','propext'}:raise RuntimeError('Proof scope mismatch')
+          dest=own/'post49-core'
+          if dest.exists():raise RuntimeError('Never overwrite a prior execution')
+          shutil.copytree(inp,dest)
+          failed=pathlib.Path('/tmp/agent1-input-original-failure')
+          expected={'BulkPhase.lean.log':'12c00ecffa359054822dbf2cc3fe92c17d2a25497e9eb8fe6abbd0624d91ef0f','OuterEscape.lean.log':'4c8fe3f6409706bbe2ac20d8b9b4e9ff11b3a70871548b5e4337abb336e8176a','OuterCharge.lean.log':'8c906194a4760c7ab4130d54fe306cb8d76ee57014e926241f7323b74d23cb93','OuterOrbit.lean.log':'e7ebf5c6c21c323384a9d5e5a9dc22eb44bc171617e77310fb35071a80df7d3d','version.txt':'5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b'}
+          if {p.name for p in failed.iterdir()}!=set(expected):raise RuntimeError('Failure evidence set changed')
+          for name,h in expected.items():
+              if hashlib.sha256((failed/name).read_bytes()).hexdigest()!=h:raise RuntimeError('Failure evidence hash mismatch')
+          shutil.copytree(failed,own/'pr49-original-ci-failure')
+          source='740c04532a1eee6fe65e5dd4a12524dbc73ec1c6';package='proofs/contributions/agent-115/exterior-factorization'; rows=[]
+          for path in subprocess.check_output(['git','ls-tree','-r','--name-only',source,package],text=True).splitlines():
+              data=subprocess.check_output(['git','show',source+':'+path])
+              if (root/path).read_bytes()!=data:raise RuntimeError('Restored source differs: '+path)
+              rows.append({'source_commit':source,'source_path':path,'destination':path,'sha256':hashlib.sha256(data).hexdigest(),'disposition':'INTEGRATED_EVIDENCE_ONLY','accepted_core_member':False})
+          (own/'restored-agent115-sources.json').write_text(json.dumps({'agent':'Agent #1','source_commit':source,'history_retaining_commit':'d32917de0ff844b6103c68580cae484ef5730672','records':rows},indent=2)+'\n')
+          PY
+      - name: Restore official Lean and replay the retained review dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/agent1-index-lean.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  /tmp/agent1-index-lean.tar.zst' | sha256sum -c -
+          tar --zstd -xf /tmp/agent1-index-lean.tar.zst -C /tmp
+          python3 -B proofs/contributions/agent-115/exterior-factorization/check.py /tmp/lean-4.19.0-linux/bin/lean /tmp/agent1-restored115
+          LEAN_PATH=/tmp/agent1-restored115/obj:/tmp/lean-4.19.0-linux/lib/lean /tmp/lean-4.19.0-linux/bin/lean -j1 -DElab.async=false proofs/contributions/agent-113/review-agent115-exterior/FullAudit115.lean > /tmp/agent1-restored115/FullAudit115.log
+          grep -F 'AUDIT-SUMMARY theorems=61 bad=0' /tmp/agent1-restored115/FullAudit115.log
+          mkdir -p proofs/contributions/agent-1/consolidation-20261015/verification/restored-agent115
+          cp /tmp/agent1-restored115/*.log /tmp/agent1-restored115/verification.json proofs/contributions/agent-1/consolidation-20261015/verification/restored-agent115/
+      - name: Generate complete metadata and exercise negative controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agent1-index-checks
+          git add -- proofs/contributions/agent-1/consolidation-20261015/verification
+          python3 -B proofs/contributions/agent-1/consolidation-20261015/reconcile_consolidation.py --initial-metadata /tmp/agent1-input-initial --resumption-metadata /tmp/agent1-input-resumption --integrated-main a79036909714e34a2b8b7ccccd6d00caa6a04848 > /tmp/agent1-index-checks/generation-1.log
+          git add -- README.md proofs
+          python3 -B proofs/contributions/agent-1/consolidation-20261015/check_publication_coverage.py --output /tmp/agent1-index-checks/negative-controls.json
+          mkdir -p proofs/contributions/agent-1/consolidation-20261015/verification/index-generation
+          cp /tmp/agent1-index-checks/negative-controls.json proofs/contributions/agent-1/consolidation-20261015/verification/index-generation/
+          git add -- proofs/contributions/agent-1/consolidation-20261015/verification/index-generation
+          python3 -B proofs/contributions/agent-1/consolidation-20261015/reconcile_consolidation.py --initial-metadata /tmp/agent1-input-initial --resumption-metadata /tmp/agent1-input-resumption --integrated-main a79036909714e34a2b8b7ccccd6d00caa6a04848 > /tmp/agent1-index-checks/generation-final.log
+          git add -- README.md proofs
+          python3 -B proofs/verify_release.py > /tmp/agent1-index-checks/final-byte-verification.json
+          git diff --cached --check
+          git config user.name 'Agent #1 consolidation publisher'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Agent #1: reconcile complete byte coverage,58-branch ledger and preserved review sources'
+          test -z "$(git status --porcelain --untracked-files=no)"
+          python3 -B proofs/verify_project.py --lean /tmp/lean-4.19.0-linux/bin/lean --project consolidation-core --check-only --output /tmp/agent1-index-checks/core-source-check
+          set +e
+          python3 -B proofs/verify_project.py --lean /tmp/lean-4.19.0-linux/bin/lean --check-only --output /tmp/agent1-index-checks/global-catalogue-check
+          result=$?
+          set -e
+          test "$result" -eq 2
+          git rev-parse HEAD > /tmp/agent1-index-checks/commit.txt
+          git rev-parse HEAD:proofs > /tmp/agent1-index-checks/proofs-tree.txt
+          sha256sum proofs/MANIFEST.sha256 > /tmp/agent1-index-checks/manifest-identity.txt
+          git bundle create /tmp/agent1-index-checks/index.bundle HEAD ^3b8d8e76560cb0b468d7eeed27efecc2a8e08530 ^740c04532a1eee6fe65e5dd4a12524dbc73ec1c6
+          git bundle verify /tmp/agent1-index-checks/index.bundle
+          cd /tmp/agent1-index-checks
+          find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: agent1-complete-index-checkpoint
+          path: /tmp/agent1-index-checks/
+          retention-days: 14
+          if-no-files-found: error
+  publish:
+    needs: reconcile
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent1-complete-index-checkpoint
+          path: /tmp/agent1-index-checks
+      - name: Validate exact generated scope and original ownership
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd /tmp/agent1-index-checks && sha256sum -c SHA256SUMS)
+          git bundle verify /tmp/agent1-index-checks/index.bundle
+          git fetch /tmp/agent1-index-checks/index.bundle HEAD
+          RESULT=$(cat /tmp/agent1-index-checks/commit.txt)
+          test "$(git rev-parse FETCH_HEAD)" = "$RESULT"
+          git merge-base --is-ancestor "$GITHUB_SHA" "$RESULT"
+          export RESULT
+          python3 - <<'PY'
+          import json,os,subprocess
+          result=os.environ['RESULT'];base=os.environ['GITHUB_SHA']
+          shared={'README.md','proofs/ACCEPTED_BUILD.json','proofs/CONSOLIDATION.md','proofs/FILES.md','proofs/FINDINGS.md','proofs/INVENTORY.json','proofs/INVENTORY.tsv','proofs/MANIFEST.sha256','proofs/README.md','proofs/REPORTS.md','proofs/REPRODUCE.md','proofs/VALIDATION.json','proofs/release_stats.json','proofs/verify_release.py','proofs/contributions/agent-1/consolidation-20261015/make_accepted_registry.py'}
+          prefixes=('proofs/contributions/agent-1/consolidation-20261015/index/','proofs/contributions/agent-1/consolidation-20261015/verification/')
+          for path in subprocess.check_output(['git','diff','--name-only',base,result],text=True).splitlines():
+              if path not in shared and not path.startswith(prefixes):raise RuntimeError('Out-of-scope generated change: '+path)
+          if subprocess.check_output(['git','diff','--name-only','--diff-filter=D',base,result]):raise RuntimeError('Deletion forbidden')
+          before=json.loads(subprocess.check_output(['git','show',base+':proofs/ACCEPTED_BUILD.json']))
+          after=json.loads(subprocess.check_output(['git','show',result+':proofs/ACCEPTED_BUILD.json']))
+          for key in ('reviewed_source_map_sha256','toolchain','projects','claims','retained_not_accepted'):
+              if before[key]!=after[key]:raise RuntimeError('Mathematical registry changed: '+key)
+          if after['catalogue_complete']:raise RuntimeError('Global completion not authorized')
+          PY
+          git fetch origin p196/coordination
+          git show FETCH_HEAD:proofs/coordination/roles/integration.json > /tmp/agent1-role.json
+          python3 - <<'PY'
+          import json
+          role=json.load(open('/tmp/agent1-role.json'))
+          if role['owner']!='Agent #1' or role['task_id']!='agent1-consolidation-20261015T1901Z' or role['status']!='CLAIMED':raise RuntimeError('Integration ownership changed')
+          PY
+      - name: Guarded non-force staging push only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET=integrate/agent-1/20261015T1901Z
+          test "$GITHUB_REF" = "refs/heads/$TARGET"
+          git fetch origin "$TARGET"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          RESULT=$(cat /tmp/agent1-index-checks/commit.txt)
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin "$RESULT:refs/heads/$TARGET"
