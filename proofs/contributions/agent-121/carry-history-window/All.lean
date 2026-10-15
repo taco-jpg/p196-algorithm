@@ -1,3 +1,4 @@
+import Witness
 import Actual
 
--- This scoped entry compiles the exact projection and reconstruction chain.
+-- Complete scoped entry: finite ambiguity, exact projection and reconstruction.

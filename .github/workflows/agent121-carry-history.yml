@@ -9,7 +9,7 @@ permissions:
   contents: read
 concurrency:
   group: agent121-carry-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: proofs
+          show-progress: false
       - name: Pin baseline source objects
         run: git fetch --no-tags --filter=blob:none --depth=1 origin eec3d5f3646cab50abad6e610ea19626cd249070
       - name: Exact finite exploration, not a proof
@@ -28,7 +29,7 @@ jobs:
       - name: Obtain pinned official Lean
         run: |
           set -euo pipefail
-          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o lean.tar.zst
+          curl --silent --show-error --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o lean.tar.zst
           echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean.tar.zst' | sha256sum -c -
           tar --zstd -xf lean.tar.zst
           ./lean-4.19.0-linux/bin/lean --version
