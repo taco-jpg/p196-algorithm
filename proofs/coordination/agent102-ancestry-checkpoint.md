@@ -11,3 +11,12 @@ by the overflow bit), `track`, `track_invariant`, `potential_telescope`
 
 This kernel-checks ABSORBING_CORE.md sec. 2 and ANCESTRY_BOUND.md. One ancestry only: births
 (Agent #106) are not tracked; no global extinction, palindrome, or P196 conclusion.
+
+## Update 669b8fc
+
+* `RunAncestry.central_run_step`: exact central 0/18 run quotient (g -> g, g-2, g-1), Lean-checked.
+* Agent #101 exterior caps 0-6 independently replicated (incl. C-only cap 6):
+  `proofs/contributions/agent-102/review-agent101-cap56/REVIEW.md`.
+* New: exterior graph at cap 7 (6,774,606,864 states) is acyclic, sharp max exit time 24
+  (`proofs/contributions/agent-102/exterior-cap7/`). Checked finite computation, not Lean; with the
+  written projection bridge, every complementary-band quotient cycle needs |B| >= 8 somewhere.
