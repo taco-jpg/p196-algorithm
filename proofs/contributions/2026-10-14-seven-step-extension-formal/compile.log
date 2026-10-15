@@ -1,0 +1,396 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+
+{"module": "LychrelDigitSums", "source": "proofs/research/continuation/LychrelDigitSums.lean", "source_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57", "seconds": 94.896, "exit_code": 0, "olean_sha256": "04f6415a1debf574cfe9f2414015773a193da28d4b53745626f54b9f10c8e48e", "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e", "dependency_fingerprints": {}, "dependencies_unchanged": true, "dependency_provenance": "one-time exact-source object-identical replay and frozen build lineage"}
+'Lychrel196.no_palindrome_through_100' depends on axioms: [propext, Quot.sound]
+'Lychrel196.lychrel_of_invariant' does not depend on any axioms
+'DecimalCarry.no_overflow_palindrome_has_no_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalCarry.overflow_palindrome_digit_sums' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalCarry.small_digit_sums_give_palindrome' depends on axioms: [propext, Quot.sound]
+'DecimalCarry.zero_or_eleven_digit_sums_give_palindrome' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalDigits.reverse_add_value' depends on axioms: [propext, Quot.sound]
+'DecimalDigits.no_overflow_palindrome_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalDigits.overflow_palindrome_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalDigits.reverse10_value' depends on axioms: [propext, Quot.sound]
+'DecimalDigits.step_value' depends on axioms: [propext, Quot.sound]
+'DecimalDigits.step_palindrome_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalDigits.canonical_exists' depends on axioms: [propext, Quot.sound]
+'DecimalDigits.conjecture196_iff_avoids_predecessors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LychrelCertificates.BlockCertificate.sound' depends on axioms: [propext, Quot.sound]
+'LychrelCertificates.expanding_family_certificate' depends on axioms: [propext, Quot.sound]
+'LychrelCertificates.conjecture196_of_entry' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.canonical_next_no_overflow' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.canonical_next_overflow' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.next_column_no_overflow' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.next_column_overflow_outer' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.next_column_overflow_interior' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.folded_carry_transition' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.folded_emission_no_overflow' depends on axioms: [propext]
+'FoldedDecimal.folded_emission_overflow' depends on axioms: [propext]
+'FoldedDecimal.folded_delay_update' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.odd_center_no_overflow' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.even_center_overflow' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.odd_center_overflow' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.even_folded_trace_sound' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.odd_folded_trace_sound' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.valid_word_realizable' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.representation_next' depends on axioms: [propext, Quot.sound]
+'FoldedDecimal.representedBy_step_lychrel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FoldedDecimal.symbolic_language_seed_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FoldedDecimal.symbolic_language_implies_decimal_existence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CarryNormalization.same_carries_two_step_palindrome' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CarryNormalization.normalized_next_low' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CarryNormalization.normalized_admissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AffineCarryEncoder.centered_binary_output' depends on axioms: [propext, Quot.sound]
+'AffineCarryEncoder.centered_quaternary_output' depends on axioms: [propext, Quot.sound]
+'AffineCarryEncoder.dilated_binary_output' depends on axioms: [propext, Quot.sound]
+'AffineCarryEncoder.dilated_quaternary_output' depends on axioms: [propext, Quot.sound]
+'AffineCarryEncoder.reversed_centered_quaternary_output' depends on axioms: [propext, Quot.sound]
+'OverflowNormalizationCertificate.normalized10_graph_safe' depends on axioms: [propext]
+'OverflowNormalizationCertificate.normalized9_graph_safe' depends on axioms: [propext]
+'OverflowCarryNormalization.normalizedZero_realizable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OverflowCarryNormalization.normZero_input_edge' depends on axioms: [propext, Quot.sound]
+'OverflowCarryNormalization.normalizedZero_low_extraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OverflowCarryNormalization.all_carry_words_terminate_by_four_of_low' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'NormalizationBridge.edge_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NormalizationBridge.admissible_next' depends on axioms: [propext, Quot.sound]
+'NormalizationReach.badPrefix_eq_false_iff' depends on axioms: [propext, Quot.sound]
+'NormalizationReach.reach_of_traces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NormalizationReach.finals_mem_none' depends on axioms: [propext, Quot.sound]
+'NormalizationReach.finals_mem_some' depends on axioms: [propext, Quot.sound]
+'NormalizationReach.finals_false_implies_bad_false' depends on axioms: [propext, Quot.sound]
+'NormalizationTen.normalized10_low_after_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OverflowNormalizationNine.normalized9_low_after_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OverflowNormalizationNine.normalized9_iterPairs_low_after_three' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CarryWordTermination.same_carry_word_palindrome_within_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CarryWordTermination.every_positive_integer_has_fast_same_carry_representative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CarryNormalizationSharpness.five_first_values' depends on axioms: [propext, Quot.sound]
+'CarryNormalizationSharpness.slow_carry_requires_at_least_four' depends on axioms: [propext, Quot.sound]
+'CarryNormalizationSharpness.four_is_optimal' depends on axioms: [propext, Quot.sound]
+'CarryHistory.next_first_difference' depends on axioms: [propext, Quot.sound]
+'CarryHistory.first_difference_over_time' depends on axioms: [propext, Quot.sound]
+'CarryHistory.five_nonoverflows_determine_pair_sums' depends on axioms: [propext, Quot.sound]
+'CarryHistory.iterPairs_carry_history_injective' depends on axioms: [propext, Quot.sound]
+'CarryHistory.outer_potential_step' depends on axioms: [propext, Quot.sound]
+'CarryHistory.nonoverflow_growth_bound' depends on axioms: [propext, Quot.sound]
+'CarryHistory.twelve_carry_words_determine_pair_sums' depends on axioms: [propext, Quot.sound]
+'CarryHistory.four_nonoverflows_and_endpoint_determine_pair_sums' depends on axioms: [propext, Quot.sound]
+'CarryHistory.eleven_carry_words_determine_pair_sums' depends on axioms: [propext, Quot.sound]
+'ReverseAddInverse.carries_equal_of_symmetric_output_equal' depends on axioms: [propext, Quot.sound]
+'ReverseAddInverse.symmetric_value_injective' depends on axioms: [propext, Quot.sound]
+'ReverseAddInverse.same_width_step_eq_iff_pair_sums' depends on axioms: [propext, Quot.sound]
+'DecimalWidthGrowth.lower_potential_step' depends on axioms: [propext, Quot.sound]
+'DecimalWidthGrowth.width_lower_bound' depends on axioms: [propext, Quot.sound]
+'DecimalWidthGrowth.width_upper_bound' depends on axioms: [propext, Quot.sound]
+'DecimalWidthGrowth.numeric_width_bounds' depends on axioms: [propext, Quot.sound]
+'DecimalWidthGrowth.numeric196_width_bounds' depends on axioms: [propext, Quot.sound]
+'AstraModular.reverse10_mod99' depends on axioms: [propext, Quot.sound]
+'AstraModular.step_mod99' depends on axioms: [propext, Quot.sound]
+'AstraModular.orbit_eventually_dvd11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraModular.orbit_mod11_eq_zero_of_six_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraModular.six_step_bound_sharp' depends on axioms: [propext]
+'AstraModular.no_consecutive_zero_units' depends on axioms: [propext, Quot.sound]
+'AstraModular.late_compatible_state' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraModular.large_width_compatible_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraModular.even_width_palindromic_overflow_dvd121' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraLanguages.complementary_column' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraLanguages.mismatched_column_repair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraLanguages.half_complement_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraLanguages.half_complement_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraLanguages.half_complement_no_overflow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AstraLanguages.correlated_seed_counterexample' depends on axioms: [propext, Quot.sound]
+'AstraLanguages.odd_marked_defect_counterexample' depends on axioms: [propext, Quot.sound]
+'DecimalMass.digitSum_value' depends on axioms: [propext, Quot.sound]
+'DecimalMass.digitSum_positive' depends on axioms: [propext, Quot.sound]
+'DecimalMass.digitSum_step_balance' depends on axioms: [propext, Quot.sound]
+'DecimalMass.palindrome_step_digitSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalMass.palindrome_step_digitSum_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalMass.nonpalindrome_of_digitSum_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalMass.step_isLychrel_of_constant_digitSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalMass.isLychrel_of_constant_digitSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalMass.existence_of_constant_digitSum_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalMass.doubling_ratio_attained' depends on axioms: [propext]
+'DecimalMass.exceptional_ratio_attained' depends on axioms: [propext]
+'DecimalMass.exceptional_ratio_not_sufficient' depends on axioms: [propext]
+'DecimalZeroGap.simultaneous_zero_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalZeroGap.zero_core_extends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalZeroGap.zeroBound_next' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalUnboundedMass.length_le_of_zero_runs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalUnboundedMass.iterPairs_wordSum' depends on axioms: [propext, Quot.sound]
+'DecimalUnboundedMass.digitSum_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalUnboundedMass.not_constant_digitSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalUnboundedMass.digitSum_unbounded_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalUnboundedMass.not_eventually_bounded_digitSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalUnboundedMass.digitSum_196_unbounded_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalQuantitativeMass.decimalLength_of_canonical' depends on axioms: [propext, Quot.sound]
+'DecimalQuantitativeMass.bounded_prefix_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalQuantitativeMass.digitSum_escape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalQuantitativeMass.digitSum_escape_coarse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecimalQuantitativeMass.runningMax_attained' depends on axioms: [propext, Quot.sound]
+'DecimalQuantitativeMass.runningMax_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+{"module": "BoundaryTransducer", "source": "proofs/contributions/2026-10-14-seven-step-formal/BoundaryTransducer.lean", "source_sha256": "e44fa1bc18ab23058a83ee2947a4bbe15eb9f69ea229a40638670b29779c9cb9", "seconds": 1.078, "exit_code": 0, "olean_sha256": "f04d1a0f85c67e9b97c4084f70d9347f0cf25087b490005bf6f870b1242d877b", "log_sha256": "1fdb8ebec8e202253a6f4edf2c4224e1be1196fb53bcd5f8006c972a070009a4", "dependency_fingerprints": {}, "dependencies_unchanged": true, "dependency_provenance": "one-time exact-source object-identical replay and frozen build lineage"}
+'BoundaryTransducer.seven_return_iff' does not depend on any axioms
+'BoundaryTransducer.seven_trace' does not depend on any axioms
+'BoundaryTransducer.seven_overflows' does not depend on any axioms
+'BoundaryTransducer.seven_trace_of_controls' does not depend on any axioms
+'BoundaryTransducer.seven_overflows_of_controls' does not depend on any axioms
+'BoundaryTransducer.seven_trace_of_return' does not depend on any axioms
+'BoundaryTransducer.seven_overflows_of_return' does not depend on any axioms
+
+{"module": "ActualBoundary", "source": "proofs/contributions/2026-10-14-seven-step-formal/ActualBoundary.lean", "source_sha256": "86bd77a460e312168430f2670bc56bbe612fbbff6d28e1d1b3811586cd56dd8c", "seconds": 0.745, "exit_code": 0, "olean_sha256": "a1ea2af200e898ad9d780899cec2bbecbc47be521ee818d8ae522e1047273772", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "dependency_fingerprints": {"LychrelDigitSums": {"source_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57", "olean_sha256": "04f6415a1debf574cfe9f2414015773a193da28d4b53745626f54b9f10c8e48e"}, "BoundaryTransducer": {"source_sha256": "e44fa1bc18ab23058a83ee2947a4bbe15eb9f69ea229a40638670b29779c9cb9", "olean_sha256": "f04d1a0f85c67e9b97c4084f70d9347f0cf25087b490005bf6f870b1242d877b"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time exact-source object-identical replay and frozen build lineage"}
+
+{"module": "SevenStepOrbit", "source": "proofs/contributions/2026-10-14-seven-step-formal/SevenStepOrbit.lean", "source_sha256": "ca80e9676de21aa78947739bc1778c67cd327d9639fc84e4ce0a1835e5132445", "seconds": 0.651, "exit_code": 0, "olean_sha256": "d78c1885b91f30e22beda01f9fa52fcbb197178b901a4138d631a5bd86c3e2a8", "log_sha256": "c2c5ec76399e7eb42dd7ac6c679b061e79533c258e02f536fcdc5ec88caa5c2a", "dependency_fingerprints": {"ActualBoundary": {"source_sha256": "86bd77a460e312168430f2670bc56bbe612fbbff6d28e1d1b3811586cd56dd8c", "olean_sha256": "a1ea2af200e898ad9d780899cec2bbecbc47be521ee818d8ae522e1047273772"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time exact-source object-identical replay and frozen build lineage"}
+'SevenStepOrbit.seven_return_iff_actual_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SevenStepOrbit.seven_overflows_of_guards' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_width_of_guards' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_numeric_representation' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_numeric_decimalLength' depends on axioms: [propext, Quot.sound]
+
+{"module": "SixPrefix", "source": "proofs/contributions/2026-10-14-seven-step-extension-formal/SixPrefix.lean", "source_sha256": "d7c3757320133066cde43157b302886bc48a07509dc8aa4f581b019a71bb5f2d", "seconds": 1.905, "exit_code": 0, "olean_sha256": "a7603a2e4534215a995ccc89aa1b1b12979fe708327ab5321cf3f4b221ef1731", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "dependency_fingerprints": {"LychrelDigitSums": {"source_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57", "olean_sha256": "04f6415a1debf574cfe9f2414015773a193da28d4b53745626f54b9f10c8e48e"}, "BoundaryTransducer": {"source_sha256": "e44fa1bc18ab23058a83ee2947a4bbe15eb9f69ea229a40638670b29779c9cb9", "olean_sha256": "f04d1a0f85c67e9b97c4084f70d9347f0cf25087b490005bf6f870b1242d877b"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time exact-source object-identical replay and frozen build lineage"}
+
+{"module": "ClockPaths", "source_sha256": "a04e381d3357bd12f98e696cb2e25048d9e1304307fdd33d08eb8135abc2e21b", "seconds": 0.451, "exit_code": 0, "olean_sha256": "e0aff6f6565f07d13266c8d21a457208465b3f58ce832360469600c7415cd1e4", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source": "proofs/contributions/2026-10-14-seven-step-extension-formal/ClockPaths.lean", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-o", "ClockPaths.olean", "ClockPaths.lean"], "dependency_fingerprints": {"SevenStepOrbit": {"source_sha256": "ca80e9676de21aa78947739bc1778c67cd327d9639fc84e4ce0a1835e5132445", "olean_sha256": "d78c1885b91f30e22beda01f9fa52fcbb197178b901a4138d631a5bd86c3e2a8"}}, "dependencies_unchanged": true, "dependency_provenance": "Fresh independent replay supplies missing ClockPaths journal entry; resulting source/object/log match original frozen build."}
+
+{"module": "RankData", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankData.olean", "RankData.lean"], "exit_code": 0, "seconds": 16.693, "source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d", "reused_from_verified_same_build": true, "dependency_fingerprints": {"SixPrefix": {"source_sha256": "d7c3757320133066cde43157b302886bc48a07509dc8aa4f581b019a71bb5f2d", "olean_sha256": "a7603a2e4534215a995ccc89aa1b1b12979fe708327ab5321cf3f4b221ef1731"}, "BoundaryTransducer": {"source_sha256": "e44fa1bc18ab23058a83ee2947a4bbe15eb9f69ea229a40638670b29779c9cb9", "olean_sha256": "f04d1a0f85c67e9b97c4084f70d9347f0cf25087b490005bf6f870b1242d877b"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks0", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks0.olean", "RankChecks0.lean"], "exit_code": 0, "seconds": 157.761, "source_sha256": "a34ebc0d590988285a28246d4e670c0a3312f304e20f8326ba2f0c6a1e92da5e", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "d866b1ecdb96ecd1a4b63d4885612b4468a8e6dee574590a1130b4f5478a7f77", "reused_from_verified_same_build": true, "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks1", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks1.olean", "RankChecks1.lean"], "exit_code": 0, "seconds": 120.546, "source_sha256": "761ded65d21f607cc497af2284eeac4f52914a0db1427b4e4690e39d6c294677", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "21f04b12ddd3d66d6899f2f5855991470406bcc27c60688d212fcc686e8cf0cb", "reused_from_verified_same_build": true, "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks2", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks2.olean", "RankChecks2.lean"], "exit_code": 0, "seconds": 208.057, "source_sha256": "04b5e79e2325a674213b1e558c0eaed83c1a10388700a5571bc2080d257d1d5f", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "a451ad0113edf2ba720b5ba7f5b67e6fdd9bcedc425984eb1e36c834ed437c62", "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks3", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks3.olean", "RankChecks3.lean"], "exit_code": 0, "seconds": 125.99, "source_sha256": "a63183f776f2a4ddb39fdd109263b2d7b8c6d8ba10c915f671b3686f731ee082", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "77c531c1703e17197bfc976157f7f90680281660892e338788657d8de837beb7", "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks4", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks4.olean", "RankChecks4.lean"], "exit_code": 0, "seconds": 215.934, "source_sha256": "a15f21122e6e5a49cd6128ad73f4244a424a4ccd114c7294b68dbf8a5b37c2f8", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "75dbe01b5354c4394b467e97ef95d647e2da61da16da195be6a52bd78600de97", "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks5", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks5.olean", "RankChecks5.lean"], "exit_code": 0, "seconds": 121.261, "source_sha256": "2a3cac6ed49817ef306797793922994aaa7d24b05a8dbb465a97a2268e75997f", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "41a8b2b143fad53f3e2e5455543022813f2031ef080d9cb95cb619618608dca7", "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks6", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks6.olean", "RankChecks6.lean"], "exit_code": 0, "seconds": 115.443, "source_sha256": "656f761b2169ccf315b7bcba7db4c39c7b46bb9820e7c9f0f7e720ee04e1043d", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "source_unchanged": true, "olean_sha256": "58b38111d1cb5b9297eac5bb307b20c68f896c603d583dadfb0db311c9080b4a", "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}}, "dependencies_unchanged": true, "dependency_provenance": "one-time frozen lineage reconciliation; RankData and all its project prerequisites independently replayed object-identically"}
+
+{"module": "RankChecks", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankChecks.olean", "RankChecks.lean"], "exit_code": 0, "seconds": 0.202, "source_sha256": "a7ad177bd415604ee20db31257302259df3c4c7d137f8ab0a62ce003b71ca6eb", "source_unchanged": true, "olean_sha256": "cda741722c10bde312924d696d3e1b8d18e5c038f3bbfa352c70f8e36b195e83", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "dependency_fingerprints": {"RankChecks0": {"source_sha256": "a34ebc0d590988285a28246d4e670c0a3312f304e20f8326ba2f0c6a1e92da5e", "olean_sha256": "d866b1ecdb96ecd1a4b63d4885612b4468a8e6dee574590a1130b4f5478a7f77"}, "RankChecks1": {"source_sha256": "761ded65d21f607cc497af2284eeac4f52914a0db1427b4e4690e39d6c294677", "olean_sha256": "21f04b12ddd3d66d6899f2f5855991470406bcc27c60688d212fcc686e8cf0cb"}, "RankChecks2": {"source_sha256": "04b5e79e2325a674213b1e558c0eaed83c1a10388700a5571bc2080d257d1d5f", "olean_sha256": "a451ad0113edf2ba720b5ba7f5b67e6fdd9bcedc425984eb1e36c834ed437c62"}, "RankChecks3": {"source_sha256": "a63183f776f2a4ddb39fdd109263b2d7b8c6d8ba10c915f671b3686f731ee082", "olean_sha256": "77c531c1703e17197bfc976157f7f90680281660892e338788657d8de837beb7"}, "RankChecks4": {"source_sha256": "a15f21122e6e5a49cd6128ad73f4244a424a4ccd114c7294b68dbf8a5b37c2f8", "olean_sha256": "75dbe01b5354c4394b467e97ef95d647e2da61da16da195be6a52bd78600de97"}, "RankChecks5": {"source_sha256": "2a3cac6ed49817ef306797793922994aaa7d24b05a8dbb465a97a2268e75997f", "olean_sha256": "41a8b2b143fad53f3e2e5455543022813f2031ef080d9cb95cb619618608dca7"}, "RankChecks6": {"source_sha256": "656f761b2169ccf315b7bcba7db4c39c7b46bb9820e7c9f0f7e720ee04e1043d", "olean_sha256": "58b38111d1cb5b9297eac5bb307b20c68f896c603d583dadfb0db311c9080b4a"}}, "dependencies_unchanged": true, "dependency_provenance": "fresh aggregator replay, byte-identical to original"}
+
+{"module": "RankCertificate", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "RankCertificate.olean", "RankCertificate.lean"], "exit_code": 0, "seconds": 18.824, "source_sha256": "18619ed330731b43a7812510f15f48cb2c5f2882c6512aab0669047bb14094d0", "log_sha256": "e395a01db5967fccec77f454340b476090865ee3c2de02c24f56d193855eae1f", "source_unchanged": true, "dependency_fingerprints": {"RankChecks": {"source_sha256": "a7ad177bd415604ee20db31257302259df3c4c7d137f8ab0a62ce003b71ca6eb", "olean_sha256": "cda741722c10bde312924d696d3e1b8d18e5c038f3bbfa352c70f8e36b195e83"}}, "dependencies_unchanged": true, "olean_sha256": "c1a0f1d28a3f565bd978a8f1e4eea74fa8ae9c94b857e495a48f3f8d60eef307"}
+'RankCertificate.rank_decreases' depends on axioms: [propext, Quot.sound]
+'RankCertificate.phase0_bound' depends on axioms: [propext, Quot.sound]
+
+{"module": "ActualRank", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "ActualRank.olean", "ActualRank.lean"], "seconds": 0.633, "exit_code": 0, "source_sha256": "b22ba53115de9050b510d2d17335a40ce9c9e203c96b6e6b27fbe7d76af0eafd", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "dependency_fingerprints": {"RankData": {"source_sha256": "573db07233e34cc5ca5a9229ba220a716c599ce78d0871f816b422d90cc0e14d", "olean_sha256": "09db4c8091661695a0b91330bcc55d431b4fbae6da76aa04c936cdba669e336d"}, "SevenStepOrbit": {"source_sha256": "ca80e9676de21aa78947739bc1778c67cd327d9639fc84e4ce0a1835e5132445", "olean_sha256": "d78c1885b91f30e22beda01f9fa52fcbb197178b901a4138d631a5bd86c3e2a8"}}, "dependencies_unchanged": true, "olean_sha256": "79f02d0dc544f6a11e35030a2f8e437e6871697af98385d08c2a3f3c87541348"}
+
+{"module": "NoFourReturns", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "NoFourReturns.olean", "NoFourReturns.lean"], "seconds": 0.96, "exit_code": 0, "source_sha256": "5192a109589763bdae6468c49457aa95763a0a99fd18be15895729dcdf5c765e", "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "dependency_fingerprints": {"ClockPaths": {"source_sha256": "a04e381d3357bd12f98e696cb2e25048d9e1304307fdd33d08eb8135abc2e21b", "olean_sha256": "e0aff6f6565f07d13266c8d21a457208465b3f58ce832360469600c7415cd1e4"}, "ActualRank": {"source_sha256": "b22ba53115de9050b510d2d17335a40ce9c9e203c96b6e6b27fbe7d76af0eafd", "olean_sha256": "79f02d0dc544f6a11e35030a2f8e437e6871697af98385d08c2a3f3c87541348"}, "RankCertificate": {"source_sha256": "18619ed330731b43a7812510f15f48cb2c5f2882c6512aab0669047bb14094d0", "olean_sha256": "c1a0f1d28a3f565bd978a8f1e4eea74fa8ae9c94b857e495a48f3f8d60eef307"}}, "dependencies_unchanged": true, "olean_sha256": "2fcb0dc7c93ab2fdc498f68e8962bc7dab3064994917b3bc93b658643a493079"}
+
+{"module": "AllAxioms", "command": ["/workspace/scratch/fe6abe1df721/lean-runtime/lean-4.19.0-linux/bin/lean", "-j1", "-DElab.async=false", "-o", "AllAxioms.olean", "AllAxioms.lean"], "seconds": 2.645, "exit_code": 0, "source_sha256": "f285d156ac4cd7337313649b7d40e6a3d1bcb89644e8234fc72f3c0c366586bb", "log_sha256": "fa66541004fae12cab041ad63cbff894fe36988a5d2575a24a52da729040c78c", "dependency_fingerprints": {"NoFourReturns": {"source_sha256": "5192a109589763bdae6468c49457aa95763a0a99fd18be15895729dcdf5c765e", "olean_sha256": "2fcb0dc7c93ab2fdc498f68e8962bc7dab3064994917b3bc93b658643a493079"}}, "dependencies_unchanged": true, "olean_sha256": "d5393ec3191d462d4047b9ee34be7af88b5a543f80622801405e31aa722e8e0a"}
+'BoundaryTransducer.seven_return_iff' does not depend on any axioms
+'BoundaryTransducer.seven_trace' does not depend on any axioms
+'BoundaryTransducer.seven_overflows' does not depend on any axioms
+'BoundaryTransducer.seven_trace_of_controls' does not depend on any axioms
+'BoundaryTransducer.seven_overflows_of_controls' does not depend on any axioms
+'BoundaryTransducer.seven_trace_of_return' does not depend on any axioms
+'BoundaryTransducer.seven_overflows_of_return' does not depend on any axioms
+'ActualBoundary.actualControl_exact' depends on axioms: [propext, Quot.sound]
+'ActualBoundary.actualControl_false_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActualBoundary.actualControl_true_iff' depends on axioms: [propext]
+'ActualBoundary.high_boundary_data' depends on axioms: [propext, Quot.sound]
+'ActualBoundary.low_boundary_data' depends on axioms: [propext]
+'ActualBoundary.boundary_step_exact' depends on axioms: [propext, Quot.sound]
+'ActualBoundary.actual_boundary_step' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.widthAt_lower' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.actual_step_at' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.run_actual' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.trace_actual' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.overflows_actual' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_return_iff' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_guards_iff_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SevenStepOrbit.seven_return_iff_actual_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SevenStepOrbit.seven_trace_of_guards' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_overflows_of_guards' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.widthAt_succ' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.widthAt_add_overflows' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_width_of_guards' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_numeric_representation' depends on axioms: [propext, Quot.sound]
+'SevenStepOrbit.seven_numeric_decimalLength' depends on axioms: [propext, Quot.sound]
+'SixPrefix.actualControl_exact' depends on axioms: [propext, Quot.sound]
+'SixPrefix.actualControl_false_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixPrefix.actualControl_true_iff' depends on axioms: [propext]
+'SixPrefix.high_boundary_data' depends on axioms: [propext, Quot.sound]
+'SixPrefix.low_boundary_data' depends on axioms: [propext]
+'SixPrefix.boundary6_step_exact' depends on axioms: [propext, Quot.sound]
+'SixPrefix.actual_boundary6_step' depends on axioms: [propext, Quot.sound]
+'ClockPaths.rank_path_bound' depends on axioms: [propext, Quot.sound]
+'ClockPaths.no_infinite_strict_rank' depends on axioms: [propext, Quot.sound]
+'ClockPaths.segment_trace_of_endpoints' depends on axioms: [propext, Quot.sound]
+'ClockPaths.segment_overflows_of_endpoints' depends on axioms: [propext, Quot.sound]
+'ClockPaths.actualTrace_get' depends on axioms: [propext, Quot.sound]
+'ClockPaths.actualOverflows_get' depends on axioms: [propext, Quot.sound]
+'RankCertificate.check_0_0' does not depend on any axioms
+'RankCertificate.bound_0_0' does not depend on any axioms
+'RankCertificate.check_0_1' does not depend on any axioms
+'RankCertificate.bound_0_1' does not depend on any axioms
+'RankCertificate.check_0_2' does not depend on any axioms
+'RankCertificate.bound_0_2' does not depend on any axioms
+'RankCertificate.check_0_3' does not depend on any axioms
+'RankCertificate.bound_0_3' does not depend on any axioms
+'RankCertificate.check_0_4' does not depend on any axioms
+'RankCertificate.bound_0_4' does not depend on any axioms
+'RankCertificate.check_0_5' does not depend on any axioms
+'RankCertificate.bound_0_5' does not depend on any axioms
+'RankCertificate.check_0_6' does not depend on any axioms
+'RankCertificate.bound_0_6' does not depend on any axioms
+'RankCertificate.check_0_7' does not depend on any axioms
+'RankCertificate.bound_0_7' does not depend on any axioms
+'RankCertificate.check_0_8' does not depend on any axioms
+'RankCertificate.bound_0_8' does not depend on any axioms
+'RankCertificate.check_0_9' does not depend on any axioms
+'RankCertificate.bound_0_9' does not depend on any axioms
+'RankCertificate.check_0_10' does not depend on any axioms
+'RankCertificate.bound_0_10' does not depend on any axioms
+'RankCertificate.check_0_11' does not depend on any axioms
+'RankCertificate.bound_0_11' does not depend on any axioms
+'RankCertificate.check_0_12' does not depend on any axioms
+'RankCertificate.bound_0_12' does not depend on any axioms
+'RankCertificate.check_0_13' does not depend on any axioms
+'RankCertificate.bound_0_13' does not depend on any axioms
+'RankCertificate.check_0_14' does not depend on any axioms
+'RankCertificate.bound_0_14' does not depend on any axioms
+'RankCertificate.check_0_15' does not depend on any axioms
+'RankCertificate.bound_0_15' does not depend on any axioms
+'RankCertificate.check_0_16' does not depend on any axioms
+'RankCertificate.bound_0_16' does not depend on any axioms
+'RankCertificate.check_0_17' does not depend on any axioms
+'RankCertificate.bound_0_17' does not depend on any axioms
+'RankCertificate.check_0_18' does not depend on any axioms
+'RankCertificate.bound_0_18' does not depend on any axioms
+'RankCertificate.check_1_0' does not depend on any axioms
+'RankCertificate.check_1_1' does not depend on any axioms
+'RankCertificate.check_1_2' does not depend on any axioms
+'RankCertificate.check_1_3' does not depend on any axioms
+'RankCertificate.check_1_4' does not depend on any axioms
+'RankCertificate.check_1_5' does not depend on any axioms
+'RankCertificate.check_1_6' does not depend on any axioms
+'RankCertificate.check_1_7' does not depend on any axioms
+'RankCertificate.check_1_8' does not depend on any axioms
+'RankCertificate.check_1_9' does not depend on any axioms
+'RankCertificate.check_1_10' does not depend on any axioms
+'RankCertificate.check_1_11' does not depend on any axioms
+'RankCertificate.check_1_12' does not depend on any axioms
+'RankCertificate.check_1_13' does not depend on any axioms
+'RankCertificate.check_1_14' does not depend on any axioms
+'RankCertificate.check_1_15' does not depend on any axioms
+'RankCertificate.check_1_16' does not depend on any axioms
+'RankCertificate.check_1_17' does not depend on any axioms
+'RankCertificate.check_1_18' does not depend on any axioms
+'RankCertificate.check_2_0' does not depend on any axioms
+'RankCertificate.check_2_1' does not depend on any axioms
+'RankCertificate.check_2_2' does not depend on any axioms
+'RankCertificate.check_2_3' does not depend on any axioms
+'RankCertificate.check_2_4' does not depend on any axioms
+'RankCertificate.check_2_5' does not depend on any axioms
+'RankCertificate.check_2_6' does not depend on any axioms
+'RankCertificate.check_2_7' does not depend on any axioms
+'RankCertificate.check_2_8' does not depend on any axioms
+'RankCertificate.check_2_9' does not depend on any axioms
+'RankCertificate.check_2_10' does not depend on any axioms
+'RankCertificate.check_2_11' does not depend on any axioms
+'RankCertificate.check_2_12' does not depend on any axioms
+'RankCertificate.check_2_13' does not depend on any axioms
+'RankCertificate.check_2_14' does not depend on any axioms
+'RankCertificate.check_2_15' does not depend on any axioms
+'RankCertificate.check_2_16' does not depend on any axioms
+'RankCertificate.check_2_17' does not depend on any axioms
+'RankCertificate.check_2_18' does not depend on any axioms
+'RankCertificate.check_3_0' does not depend on any axioms
+'RankCertificate.check_3_1' does not depend on any axioms
+'RankCertificate.check_3_2' does not depend on any axioms
+'RankCertificate.check_3_3' does not depend on any axioms
+'RankCertificate.check_3_4' does not depend on any axioms
+'RankCertificate.check_3_5' does not depend on any axioms
+'RankCertificate.check_3_6' does not depend on any axioms
+'RankCertificate.check_3_7' does not depend on any axioms
+'RankCertificate.check_3_8' does not depend on any axioms
+'RankCertificate.check_3_9' does not depend on any axioms
+'RankCertificate.check_3_10' does not depend on any axioms
+'RankCertificate.check_3_11' does not depend on any axioms
+'RankCertificate.check_3_12' does not depend on any axioms
+'RankCertificate.check_3_13' does not depend on any axioms
+'RankCertificate.check_3_14' does not depend on any axioms
+'RankCertificate.check_3_15' does not depend on any axioms
+'RankCertificate.check_3_16' does not depend on any axioms
+'RankCertificate.check_3_17' does not depend on any axioms
+'RankCertificate.check_3_18' does not depend on any axioms
+'RankCertificate.check_4_0' does not depend on any axioms
+'RankCertificate.check_4_1' does not depend on any axioms
+'RankCertificate.check_4_2' does not depend on any axioms
+'RankCertificate.check_4_3' does not depend on any axioms
+'RankCertificate.check_4_4' does not depend on any axioms
+'RankCertificate.check_4_5' does not depend on any axioms
+'RankCertificate.check_4_6' does not depend on any axioms
+'RankCertificate.check_4_7' does not depend on any axioms
+'RankCertificate.check_4_8' does not depend on any axioms
+'RankCertificate.check_4_9' does not depend on any axioms
+'RankCertificate.check_4_10' does not depend on any axioms
+'RankCertificate.check_4_11' does not depend on any axioms
+'RankCertificate.check_4_12' does not depend on any axioms
+'RankCertificate.check_4_13' does not depend on any axioms
+'RankCertificate.check_4_14' does not depend on any axioms
+'RankCertificate.check_4_15' does not depend on any axioms
+'RankCertificate.check_4_16' does not depend on any axioms
+'RankCertificate.check_4_17' does not depend on any axioms
+'RankCertificate.check_4_18' does not depend on any axioms
+'RankCertificate.check_5_0' does not depend on any axioms
+'RankCertificate.check_5_1' does not depend on any axioms
+'RankCertificate.check_5_2' does not depend on any axioms
+'RankCertificate.check_5_3' does not depend on any axioms
+'RankCertificate.check_5_4' does not depend on any axioms
+'RankCertificate.check_5_5' does not depend on any axioms
+'RankCertificate.check_5_6' does not depend on any axioms
+'RankCertificate.check_5_7' does not depend on any axioms
+'RankCertificate.check_5_8' does not depend on any axioms
+'RankCertificate.check_5_9' does not depend on any axioms
+'RankCertificate.check_5_10' does not depend on any axioms
+'RankCertificate.check_5_11' does not depend on any axioms
+'RankCertificate.check_5_12' does not depend on any axioms
+'RankCertificate.check_5_13' does not depend on any axioms
+'RankCertificate.check_5_14' does not depend on any axioms
+'RankCertificate.check_5_15' does not depend on any axioms
+'RankCertificate.check_5_16' does not depend on any axioms
+'RankCertificate.check_5_17' does not depend on any axioms
+'RankCertificate.check_5_18' does not depend on any axioms
+'RankCertificate.check_6_0' does not depend on any axioms
+'RankCertificate.check_6_1' does not depend on any axioms
+'RankCertificate.check_6_2' does not depend on any axioms
+'RankCertificate.check_6_3' does not depend on any axioms
+'RankCertificate.check_6_4' does not depend on any axioms
+'RankCertificate.check_6_5' does not depend on any axioms
+'RankCertificate.check_6_6' does not depend on any axioms
+'RankCertificate.check_6_7' does not depend on any axioms
+'RankCertificate.check_6_8' does not depend on any axioms
+'RankCertificate.check_6_9' does not depend on any axioms
+'RankCertificate.check_6_10' does not depend on any axioms
+'RankCertificate.check_6_11' does not depend on any axioms
+'RankCertificate.check_6_12' does not depend on any axioms
+'RankCertificate.check_6_13' does not depend on any axioms
+'RankCertificate.check_6_14' does not depend on any axioms
+'RankCertificate.check_6_15' does not depend on any axioms
+'RankCertificate.check_6_16' does not depend on any axioms
+'RankCertificate.check_6_17' does not depend on any axioms
+'RankCertificate.check_6_18' does not depend on any axioms
+'RankCertificate.rank_decreases' depends on axioms: [propext, Quot.sound]
+'RankCertificate.phase0_bound' depends on axioms: [propext, Quot.sound]
+'ActualRank.tail_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActualRank.assemble_eq_boundary6' depends on axioms: [propext]
+'ActualRank.actual_six_step_at' depends on axioms: [propext, Quot.sound]
+'ActualRank.actual_clock_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.phasePrefix_lookup' depends on axioms: [propext, Quot.sound]
+'NoFourReturns.phaseOverflow_lookup' depends on axioms: [propext, Quot.sound]
+'NoFourReturns.returns_force_clock' depends on axioms: [propext, Quot.sound]
+'NoFourReturns.actual_rank_decreases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.clock_length_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.no_twenty_seven_clock_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.at_most_three_returns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.no_four_returns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.one_of_four_returns_fails' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.no_perpetual_returns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'NoFourReturns.no_four_returns_of_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]

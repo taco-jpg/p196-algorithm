@@ -6,6 +6,17 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Complete sharp-clock kernel proof and reciprocal renewal audit — 15 October 2026
+
+The [new formal checkpoint](coordination/2026-10-15-sharp-kernel-and-renewal-audit.md)
+completes the actual-orbit Lean proof that the exact (4,4,0) clock lasts at
+most 26 transitions and makes at most three consecutive seven-step returns.
+All finite rank inputs and return-endpoint links are kernel checked, with
+211 transitive audits including 29 prerequisites. A separate fresh audit
+rebuilds the external renewal stream's exact 42 raw-symmetry declarations.
+Full build reconciliation, independent review and source snapshots are
+retained. Neither theorem resolves 196 or decimal Lychrel existence.
+
 ## Intrinsic seam and finite-seed continuation — 15 October 2026
 
 The [new checked handoff](coordination/2026-10-15-intrinsic-seam-and-quantifiers.md)

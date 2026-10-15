@@ -160,3 +160,11 @@ The completed renewal modules total 135 supporting theorem declarations (49+16+2
 | Fixed-target ancestry bound | Any t-step ancestor of p of width M satisfies t<=min(p-1,5M-1). This is a consequence of earlier growth results, not an existence theorem or exclusion of varying-target inverse constructions. | [Proof and scope](research/main_existence_attempt/continuation_pass/finite_seed/FINITE_SEED_OBSTRUCTIONS.md) |
 
 The two new formal modules contain 31 supporting theorem declarations and 5 definitions, all audited with the three standard logical axioms. The written finite-seed results are not Lean formalizations. Decimal Lychrel existence and the 196 claim remain unproved.
+
+## Sharp clock kernel proof and external symmetry replay
+
+| Result | Exact scope | Evidence |
+|---|---|---|
+| Complete actual-orbit no-four-return theorem | Every admissible width at least six; all 96,026 local inputs and 6,859 initial bounds kernel checked; full endpoint-to-clock and descent proof. At most 26 clock steps and three seven-step returns. | [Formal proof and provenance](contributions/2026-10-14-seven-step-extension-formal/README.md) |
+| Independent rank/source lineage review | Complete table/domain/edge coverage and repaired dependency-sensitive resume controls; final frozen-build reconciliation explicit. No claim of a second full finite kernel run. | [Rank review](contributions/2026-10-14-rank-review/RANK_REVIEW.md) |
+| Reciprocal external raw-symmetry audit | Fresh exact 4c3970c source and both dependencies; all 42 target declarations audited. Not all 135 renewal declarations, no infinite safety invariant. | [Independent audit](contributions/2026-10-14-external-renewal-audit/REVIEW.md) |

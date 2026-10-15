@@ -248,3 +248,11 @@ Every original written research report, proof note and manuscript source retaine
 - [research/main_existence_attempt/continuation_pass/finite_seed/FINITE_SEED_OBSTRUCTIONS.md](research/main_existence_attempt/continuation_pass/finite_seed/FINITE_SEED_OBSTRUCTIONS.md)
 - [coordination/2026-10-14-continuation-start.md](coordination/2026-10-14-continuation-start.md)
 - [coordination/2026-10-15-intrinsic-seam-and-quantifiers.md](coordination/2026-10-15-intrinsic-seam-and-quantifiers.md)
+
+## Sharp kernel and reciprocal audit reports
+
+- [README.md](contributions/2026-10-14-seven-step-extension-formal/README.md)
+- [RANK_REVIEW.md](contributions/2026-10-14-rank-review/RANK_REVIEW.md)
+- [REVIEW.md](contributions/2026-10-14-external-renewal-audit/REVIEW.md)
+- [SHARP_KERNEL_AND_RENEWAL_AUDIT_INDEX.md](contributions/SHARP_KERNEL_AND_RENEWAL_AUDIT_INDEX.md)
+- [2026-10-15-sharp-kernel-and-renewal-audit.md](coordination/2026-10-15-sharp-kernel-and-renewal-audit.md)
