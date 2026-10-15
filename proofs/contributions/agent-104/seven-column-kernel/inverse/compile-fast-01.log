@@ -1,0 +1,49 @@
+proofs/contributions/agent-104/seven-column-kernel/PrefixInverse.lean:319:35: error: unsolved goals
+p✝ s✝ : List Nat
+x✝ y✝ : Nat
+p s : List Nat
+v a x y z : Nat
+ha : a < 19
+hz : z < 2
+hy : carry a z = y
+hv : v = lowDigit a x + lowDigit a z
+tail : NoOverflow p s (carry a x) z
+ih : carry a x < 2 → s ∈ fastNoOverflowPred p (carry a x) z
+hx : x < 2
+hb : carry a x < 2
+he : noCandidate v x y (carry a x) z = a
+⊢ (noCandidate (lowDigit a x + lowDigit a z) x y (carry a x) z < 19 ∧
+      carry (noCandidate (lowDigit a x + lowDigit a z) x y (carry a x) z) x = carry a x ∧
+        carry (noCandidate (lowDigit a x + lowDigit a z) x y (carry a x) z) z = y ∧
+          lowDigit a x + lowDigit a z =
+            lowDigit (noCandidate (lowDigit a x + lowDigit a z) x y (carry a x) z) x +
+              lowDigit (noCandidate (lowDigit a x + lowDigit a z) x y (carry a x) z) z) ∧
+    noCandidate (lowDigit a x + lowDigit a z) x y (carry a x) z = a
+proofs/contributions/agent-104/seven-column-kernel/PrefixInverse.lean:335:35: error: unsolved goals
+p✝ s✝ : List Nat
+a✝ x✝ y✝ : Nat
+p s : List Nat
+v a prev x y z : Nat
+ha : a < 19
+hz : z < 2
+hy : carry prev z = y
+hv : v = lowDigit a x + lowDigit prev z
+tail : OverflowTail p s a (carry a x) z
+ih : carry a x < 2 → s ∈ fastOverflowTailPred p a (carry a x) z
+hx : x < 2
+hb : carry a x < 2
+he : overflowCandidate v prev x y (carry a x) z = a
+⊢ (overflowCandidate (lowDigit a x + lowDigit prev z) prev x y (carry a x) z < 19 ∧
+      carry (overflowCandidate (lowDigit a x + lowDigit prev z) prev x y (carry a x) z) x = carry a x ∧
+        lowDigit a x = lowDigit (overflowCandidate (lowDigit a x + lowDigit prev z) prev x y (carry a x) z) x) ∧
+    s ∈
+        fastOverflowTailPred p (overflowCandidate (lowDigit a x + lowDigit prev z) prev x y (carry a x) z) (carry a x)
+          z ∧
+      overflowCandidate (lowDigit a x + lowDigit prev z) prev x y (carry a x) z = a
+'SevenColumn.mem_fastPrefixPredecessors_iff' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'SevenColumn.fastPrefixPredecessors_mem_iff' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'SevenColumn.prefix_196_has_no_predecessors' does not depend on any axioms
+'SevenColumn.mem_prefixPredecessors_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SevenColumn.LongCompatible.source_lt19' depends on axioms: [propext, Quot.sound]
+'SevenColumn.longCompatible_mem_prefixPredecessors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SevenColumn.overflowFirst_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

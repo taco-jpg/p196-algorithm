@@ -1,0 +1,344 @@
+{
+  "status": "PASS_DIAGNOSTIC_ONLY",
+  "role": "independent adversarial reviewer",
+  "elapsed_seconds": 0.456,
+  "limits": {
+    "cpu_seconds_soft": 100,
+    "address_space_bytes": 734003200
+  },
+  "source_sha256": {
+    "proofs/contributions/2026-10-15-seven-column-prefix/P196_739_Proof.md": "601efb0ea8106e73127b4f7580ab1292e3aac7e9dacc68ff4e77e3a5ca3c0378",
+    "proofs/contributions/2026-10-15-seven-column-prefix/verify_certificates.py": "86dad604ef7823f09b55018068d41f57d66df1adb1902a19e37db56692ae793f",
+    "proofs/contributions/2026-10-15-seven-column-prefix/certificate_739.json": "8157118f606d092c208672f80a467a10d489d40f90ac7d604108dbfc857ad791",
+    "proofs/contributions/agent-104/seven-column-kernel/review-adversarial/probe_independent.py": "521a0125a3d484f0680859d7ab1ecde21256d2835b94cdb186f9f3db45bf7d8c"
+  },
+  "checks": {
+    "exhaustive_small_width_inverse_equivalence": [
+      {
+        "width": 1,
+        "sources": 18,
+        "legal_targets": 18,
+        "edges": 27
+      },
+      {
+        "width": 2,
+        "sources": 342,
+        "legal_targets": 342,
+        "edges": 513
+      },
+      {
+        "width": 3,
+        "sources": 6498,
+        "legal_targets": 6498,
+        "edges": 9747
+      }
+    ],
+    "excluded_domain_counterexample": {
+      "target": [
+        0
+      ],
+      "inverse_returns": [
+        [
+          9
+        ]
+      ],
+      "actual_outputs_of_source_9": [
+        [
+          10
+        ],
+        [
+          18
+        ]
+      ],
+      "meaning": "Equivalence requires target[0] > 0; all certificate nodes satisfy it."
+    },
+    "seven_threshold_sources": 2916,
+    "seven_threshold_edges": 4617,
+    "short_all_realizable_words": {
+      "1": {
+        "total": 9,
+        "grew_by_one": 5
+      },
+      "2": {
+        "total": 18,
+        "grew_by_one": 9
+      },
+      "3": {
+        "total": 180,
+        "grew_by_one": 95
+      },
+      "4": {
+        "total": 342,
+        "grew_by_one": 180
+      },
+      "5": {
+        "total": 3420,
+        "grew_by_one": 1805
+      },
+      "6": {
+        "total": 6498,
+        "grew_by_one": 3429
+      }
+    },
+    "six_to_seven_examples": [
+      {
+        "raw_source": [
+          9,
+          9,
+          10,
+          10,
+          9,
+          9
+        ],
+        "integer": 999100,
+        "next_integer": 1001099,
+        "raw_target": [
+          10,
+          9,
+          0,
+          2,
+          0,
+          9,
+          10
+        ]
+      },
+      {
+        "raw_source": [
+          9,
+          9,
+          11,
+          11,
+          9,
+          9
+        ],
+        "integer": 999200,
+        "next_integer": 1002199,
+        "raw_target": [
+          10,
+          9,
+          1,
+          4,
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "raw_source": [
+          9,
+          9,
+          12,
+          12,
+          9,
+          9
+        ],
+        "integer": 999300,
+        "next_integer": 1003299,
+        "raw_target": [
+          10,
+          9,
+          2,
+          6,
+          2,
+          9,
+          10
+        ]
+      },
+      {
+        "raw_source": [
+          9,
+          9,
+          13,
+          13,
+          9,
+          9
+        ],
+        "integer": 999400,
+        "next_integer": 1004399,
+        "raw_target": [
+          10,
+          9,
+          3,
+          8,
+          3,
+          9,
+          10
+        ]
+      },
+      {
+        "raw_source": [
+          9,
+          9,
+          14,
+          14,
+          9,
+          9
+        ],
+        "integer": 999500,
+        "next_integer": 1005499,
+        "raw_target": [
+          10,
+          9,
+          4,
+          10,
+          4,
+          9,
+          10
+        ]
+      },
+      {
+        "raw_source": [
+          9,
+          9,
+          15,
+          15,
+          9,
+          9
+        ],
+        "integer": 999600,
+        "next_integer": 1006599,
+        "raw_target": [
+          10,
+          9,
+          5,
+          12,
+          5,
+          9,
+          10
+        ]
+      },
+      {
+        "raw_source": [
+          9,
+          9,
+          16,
+          16,
+          9,
+          9
+        ],
+        "integer": 999700,
+        "next_integer": 1007699,
+        "raw_target": [
+          10,
+          9,
+          6,
+          14,
+          6,
+          9,
+          10
+        ]
+      },
+      {
+        "raw_source": [
+          9,
+          9,
+          17,
+          17,
+          9,
+          9
+        ],
+        "integer": 999800,
+        "next_integer": 1008799,
+        "raw_target": [
+          10,
+          9,
+          7,
+          16,
+          7,
+          9,
+          10
+        ]
+      }
+    ],
+    "last_step_integer_controls": {
+      "range": [
+        1,
+        50000
+      ],
+      "palindromic_outputs": 11115,
+      "no_growth_cases": 11000,
+      "leading_digit_over_1_cases": 10664
+    },
+    "missing_hypotheses_witnesses": {
+      "allow_zero_breaks_strict_growth": {
+        "n": 0,
+        "Tn": 0
+      },
+      "drop_no_growth_breaks_raw_equals_target": {
+        "n": 29,
+        "Tn": 121,
+        "raw_n": [
+          11,
+          11
+        ],
+        "target_digits": [
+          1,
+          2,
+          1
+        ]
+      },
+      "allow_noncanonical_zero_high_digit_breaks_quotient_semantics": {
+        "noncanonical_low_first_digits": [
+          1,
+          0
+        ],
+        "value": 1,
+        "padded_reverse_sum": 11,
+        "actual_integer_reverse_sum": 2
+      },
+      "odd_center_73937": {
+        "palindrome": 73937,
+        "center": 9,
+        "fails_realizable_raw_center_even_condition": true
+      }
+    },
+    "sampled_certificate": {
+      "targets_selected": 282,
+      "long_edges_checked": 389,
+      "complete_certificate_rechecked": false
+    },
+    "orbit_196_through_39": [
+      196,
+      887,
+      1675,
+      7436,
+      13783,
+      52514,
+      94039,
+      187088,
+      1067869,
+      10755470,
+      18211171,
+      35322452,
+      60744805,
+      111589511,
+      227574622,
+      454050344,
+      897100798,
+      1794102596,
+      8746117567,
+      16403234045,
+      70446464506,
+      130992928913,
+      450822227944,
+      900544455998,
+      1800098901007,
+      8801197801088,
+      17602285712176,
+      84724043932847,
+      159547977975595,
+      755127757721546,
+      1400255515443103,
+      4413700670963144,
+      8827391431036288,
+      17653692772973576,
+      85191620502609247,
+      159482241005228405,
+      664304741147513356,
+      1317620482294916822,
+      3603815405135183953,
+      7197630720180367016
+    ]
+  },
+  "acceptance": "No Lean claim: bounded Python probes do not establish unbounded projection or full certificate acceptance."
+}
