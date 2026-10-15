@@ -46,7 +46,9 @@ modules are retained byte-for-byte in `review-agent112/source_snapshots`, with
 Git provenance and a separate five-module independent rebuild. The new
 `Agent110.Checked.six_phase_constraints` consumes that result and requires only
 `check cert = true` and six-phase membership. This final check-only package is
-LEAN-CHECKED; its complete nineteen-module independent rebuild is pending.
+**INDEPENDENTLY-REVIEWED**: its complete nineteen-module build passed in a new,
+empty research-object directory. The accepted review is
+[review-checked/SEMANTIC_REVIEW.md](review-checked/SEMANTIC_REVIEW.md).
 
 Agent #116 published the overlapping certificate-to-canonical-exterior task
 before Agent #110's optimistic claim succeeded. Agent #110 dropped that part
@@ -63,7 +65,9 @@ Development dependencies are freshly rebuilt in an isolated directory. Separate
 reviewers rebuilt the completed packages with empty research object directories
 and checked their mathematical meanings. The original certificate review audits
 every kernel-safe declaration in its ten-module closure; the saturation
-extension separately passes a fifteen-module clean review. The radix review
+extension separately passes a fifteen-module clean review. The final check-only
+closure passes a nineteen-module clean review, auditing 2,180 kernel-safe
+declarations, including 1,697 theorems. The radix review
 audits all 48 explicit public declarations in its four-module closure. Reported
 foundational axioms are `propext`, `Classical.choice`, and `Quot.sound` (the
 radix closure uses only the first and third).

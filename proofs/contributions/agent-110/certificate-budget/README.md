@@ -1,8 +1,8 @@
 # Arithmetic constraints on actual return certificates
 
-Status: accounting and saturation endpoints **INDEPENDENTLY-REVIEWED**, not
-integrated into main. The final check-only consumers are LEAN-CHECKED, with a
-nineteen-module independent rebuild pending. This package proves necessary
+Status: all completed endpoints, including the final check-only consumers, are
+**INDEPENDENTLY-REVIEWED**, not yet integrated into main. The complete
+nineteen-module independent rebuild passed. This package proves necessary
 conditions on the existing `Agent109.Cert.Certificate` checker. It does not
 supply a certificate instance.
 
@@ -99,6 +99,13 @@ commit is `e7689d35f41ff325037a238cfc594d95e0da04e1`; `PROVENANCE.json` identifi
 the three exact original Git blobs and source paths. The final consumer
 mathematical source is `eb4817f0973cbbe2a059af33d5dc53877a5275b7`.
 
+The final accepted review is `../review-checked/REVIEW_RESULT.json`, with its
+nineteen-module clean build at `../review-checked/rebuild-d611d7f/manifest.json`
+(SHA-256 `1a03fa46d6ab20224be224ef50bd7664af87e616a2643c963f2078c1add98906`).
+It audits 2,180 kernel-safe declarations, including 1,697 theorems, and records
+1,189 unsafe compiler artifacts separately. All mathematical dependencies use
+only the three reported foundational axioms.
+
 Independent finite semantic controls tested 192,000 source states, 596,608
 legal trim triples and 182,400 literal reverse-and-add steps. They include
 nonmaximal trimming, empty target exteriors and negative local increments.
@@ -106,8 +113,7 @@ These are sanity controls; the all-width results are the Lean theorems.
 
 ## Remaining work
 
-Finish the final nineteen-module check-only independent rebuild and submit its
-complete evidence to the integration owner. The two-phase period-at-least-12
+Integrate the reviewed package and preserve its complete evidence. The two-phase period-at-least-12
 target was not proved; only the all-phase lower bound of four is exported.
 No valid certificate or repeatable safe integer orbit has been found here.
 
