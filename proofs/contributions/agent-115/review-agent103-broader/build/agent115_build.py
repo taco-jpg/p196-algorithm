@@ -5,7 +5,11 @@ Written independently of Agent #103's verify_*.py drivers. Only the
 module-name -> source-file mapping is taken from the package layout
 (it is data: where each imported module lives in the pinned tree).
 
-Usage: agent115_build.py <exported-tree-root> <empty-build-dir> <lean-binary> [workers]
+Usage: agent115_build.py <exported-tree-root> <empty-build-dir> <lean-binary> [workers] [targets] [--resume]
+
+--resume continues an interrupted run of THIS driver in the same build directory:
+a module counts as done only if its recorded exit was 0 and both its copied
+source and its object file still have the SHA-256 recorded by this build.
 
 * copies every source into <build>/src/<Module>.lean and records SHA-256
 * rejects sorry/admit/native_decide/axiom/sorryAx tokens outside comments
@@ -133,17 +137,27 @@ def compile_one(lean, build, name, env):
 def main():
     root, build, lean = Path(sys.argv[1]).resolve(), Path(sys.argv[2]).resolve(), Path(sys.argv[3]).resolve()
     workers = int(sys.argv[4]) if len(sys.argv) > 4 else 2
-    targets = sys.argv[5].split(",") if len(sys.argv) > 5 else ["BroaderBound", "BroaderScalarBound"]
-    if build.exists() and any(build.iterdir()):
-        raise SystemExit("build directory must be empty")
-    for sub in ("src", "obj", "logs"):
-        (build / sub).mkdir(parents=True)
+    resume = "--resume" in sys.argv
+    args = [a for a in sys.argv if a != "--resume"]
+    targets = args[5].split(",") if len(args) > 5 else ["BroaderBound", "BroaderScalarBound"]
+    previous = None
+    if resume:
+        previous = json.loads((build / "build_report.json").read_text())
+    else:
+        if build.exists() and any(build.iterdir()):
+            raise SystemExit("build directory must be empty")
+        for sub in ("src", "obj", "logs"):
+            (build / sub).mkdir(parents=True)
     m = mapping(root)
     order, imports = closure(m, targets)
     sources = {}
     for n in order:
         blob = m[n].read_bytes()
-        (build / "src" / (n + ".lean")).write_bytes(blob)
+        dst = build / "src" / (n + ".lean")
+        if resume:
+            assert dst.read_bytes() == blob, ("copied source changed", n)
+        else:
+            dst.write_bytes(blob)
         sources[n] = {"path": str(m[n].relative_to(root)), "sha256": sha(blob), "imports": imports[n]}
     libdir = subprocess.run([str(lean), "--print-libdir"], capture_output=True, text=True).stdout.strip()
     env = {"PATH": "/usr/bin:/bin", "LEAN_PATH": str(build / "obj") + ":" + libdir, "HOME": str(build)}
@@ -154,6 +168,17 @@ def main():
               "results": [], "started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     rpath = build / "build_report.json"
     done, failed, running = set(), set(), {}
+    if resume:
+        report["started"] = previous["started"]
+        report["resumes"] = previous.get("resumes", []) + [time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())]
+        reused = []
+        for r in previous["results"]:
+            o = build / "obj" / (r["module"] + ".olean")
+            if (r.get("exit") == 0 and o.exists() and r.get("olean_sha256") == sha(o.read_bytes())
+                    and previous["sources"][r["module"]]["sha256"] == sources[r["module"]]["sha256"]):
+                done.add(r["module"]); report["results"].append(r); reused.append(r["module"])
+        report["resume_reused_own_objects"] = reused
+        rpath.write_text(json.dumps(report, indent=1) + "\n")
     with ThreadPoolExecutor(workers) as pool:
         while len(done) + len(failed) < len(order):
             for n in order:

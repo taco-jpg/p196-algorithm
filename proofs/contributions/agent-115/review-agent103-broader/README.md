@@ -4,10 +4,13 @@ Task `agent115-review-agent103-broader`, claimed on `p196/coordination` at
 `3f870221e402ada2bf798730881d1ed1c8e76447`. This is a **review (replication)**:
 no new theorem is claimed. Owner of the reviewed package: Agent #103.
 
-**Status: WIP.** The provenance check below is complete. The fresh from-source
-Lean rebuild and the independent axiom audit are running; no build or audit
-verdict is recorded yet. `agent103-broader-return-formal` keeps its
-LEAN-CHECKED label until this review publishes a verdict.
+**Status: stage-2 verdict PASS; stage-1 corollaries pending.** The written
+bound (eq. (2) of `COMPONENT_SPECIFIC_BOUND.md`) is formalized by the stage-2
+endpoints in `BroaderBound`; their complete 50-module import closure has been
+rebuilt from source and audited, and the statements checked (below). The
+weaker stage-1 corollaries in `BroaderScalarBound` additionally import the full
+scalar certificate closure, which is still compiling; their verdict will be
+added when that finishes.
 
 ## Pins
 
@@ -60,8 +63,58 @@ Excluded from this directory: the subagent's temporary copies of the
 repository tree and the regenerated Lean files (they are byte-identical to the
 committed sources; their hashes are in `provenance/outputs/*.sha256`).
 
+## Stage-2 verdict: PASS
+
+**Fresh build.** All 50 modules of the `BroaderBound` import closure compiled
+from source with exit status 0 (`build/build_report_stage2_snapshot.json`,
+logs in `build/logs-stage2/`). The host container restarted once during the
+run (after 44 of the 90 modules of the full closure). The run was resumed in the
+same build directory with `--resume`, which reuses a module only if its recorded
+exit was 0 and both its copied source and its object still have the SHA-256
+recorded by this same build; all 44 passed that check and the remaining modules
+were compiled. No object from any other build was used. Driver hashes: run 1
+`26774c23…eb804` (committed at `6b5901d`), resumed run `6b448c86…c4de4c4`
+(identical except for the `--resume` option). The slowest modules were
+`BJobChecks8` (1,748 s), `BJobChecks7` (1,613 s) and `BJobChecks12` (1,324 s),
+peak memory under 1 GB each.
+
+**Axiom audit.** `audit/Agent115AuditStage2.lean` enumerates every theorem whose
+defining module is one of the 50 modules and runs `Lean.collectAxioms`:
+**4,243 theorems**, transitive union exactly `{propext, Classical.choice,
+Quot.sound}` (`audit/axiom_inventory_stage2.tsv`). The four endpoints and
+`BroaderHierarchy.finite_root_bound` use all three; `return_forces_clock`,
+`returns_clock_segment`, `root2_realization`, `returnIn_root` and
+`actual_broader_root_path` use `propext, Quot.sound`; `returnOK_root` uses none.
+The 138 axiom-kind constants defined in these modules are all compiler-generated
+specializations (names ending `_spec_N`, `_lambda_N`, `_elambda_N`); none occurs in
+any theorem's axioms.
+
+**Statement fidelity.** Exact types are in `audit/Agent115AuditStage2.log`.
+
+- `returns_le_90_plus_warmup : Admissible L q → 2 ≤ L →
+  (∀ k ≤ R, pairAt q L (7k) = (4,4)) → R ≤ 90 + warmup L`, with
+  `pairAt q L t = ((iterPairs q L t).2 0, (iterPairs q L t).2 1)` (first two
+  coefficients of the actual pair-word orbit) and `warmup L = (14 − L + 2)/3`.
+  For `L ≤ 14` this is `⌈(14−L)/3⌉`; for `L > 14` it is 0. This is eq. (2)
+  of `COMPONENT_SPECIFIC_BOUND.md` exactly, with its convention that `R` counts
+  returns after the time-0 occurrence.
+- `returns_le_94` (any start time `a`), `wide_returns_le_90` (width at least 14
+  at time `a`) and `no_95_returns` follow as stated in the README.
+- `FoldedDecimal.Admissible` is the exact realizable mirrored pair-word predicate
+  (positive outside coefficient, coefficients ≤ 18, symmetric, even centre), and
+  `iterPairs` is the actual pair-word update with overflow-dependent width; both
+  come from the unchanged pinned base. The hypotheses impose no safety, branch or
+  deeper-column period assumption, matching "all three return branches and
+  arbitrary switching".
+- `BroaderClock.two_column_step`, `returnOK_root` (kernel `decide`) and the root
+  bridge (`states`, `encodeB`, `root2_realization`, `returnIn_root`,
+  `actual_broader_root_path`) were read; the endpoints carry no remaining
+  certificate premise, so their meaning does not depend on the tables, and the
+  tables' provenance was checked separately (above).
+
 ## Pending
 
-1. Fresh rebuild verdict (`build/`).
-2. Axiom audit verdict (`audit/`).
-3. Statement-fidelity verdict against `COMPONENT_SPECIFIC_BOUND.md` eq. (2).
+- Stage-1 corollaries in `BroaderScalarBound` (`returns_le_94_plus_warmup`,
+  `returns_le_98`, `wide_returns_le_94`, `no_99_returns`): waiting for the scalar
+  closure (`JobData*`, `JobChecks*`, `ScalarHierarchy`, `ScalarPeriods`,
+  `RootBridge`, `ScalarBound`) to finish compiling, then the full 90-module audit.
