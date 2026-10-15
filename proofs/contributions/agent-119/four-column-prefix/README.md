@@ -4,8 +4,8 @@ Task `agent119-four-column-prefix-kernel` (claimed on `p196/coordination` at `b2
 Contribution branch `research/agent-119/s20261015T1555`, base `main` `eec3d5f`.
 
 **Evidence label: Formal theorem** (Lean 4.19.0 kernel; standard axioms only).
-**Status: LEAN-CHECKED, clean rebuild PASS, independently reviewed (PASS) at `3bb721d`**;
-the only later source change is a comment-only docstring correction (see *Verification*).
+**Status: LEAN-CHECKED (clean rebuilds PASS at `3bb721d` and `ca95951`), independently reviewed (PASS) at `3bb721d`**;
+the only later Lean source change is a comment-only docstring correction (see *Verification*).
 
 **Scope.** These are restricted palindrome-family exclusions. They do not prove that 196
 is a Lychrel number, do not settle decimal Lychrel existence, and claim no optimality of the
@@ -68,7 +68,7 @@ modules and `certificate/summary.json`.
 |---|---|---|
 | Author clean rebuild, `check.py` (`verification/clean01-3bb721d/`) | `3bb721d` | PASS: 33 modules compiled from an empty snapshot with official Lean 4.19.0 (`6caaee842e94`); all 1,127 Agent #119 theorem constants (including generated ones) audited with `#print axioms`; union `{propext, Classical.choice, Quot.sound}`; no forbidden token |
 | Independent review by a fresh-context reviewer subagent (`review/subagent-3bb721d/REVIEW.md`) | `3bb721d` | PASS: own toolchain download (archive SHA256 `6fe3ce97…13fe`), own build scheduler, 33 modules exit 0; all 2,541 closure theorems audited (1,124 in `FourColumnKernel`), union within the three standard axioms; semantic review of statements, table fidelity (229/229), growth-prefix exactness, short/long coverage, width-2 case of class 33; supplementary controls |
-| Author clean rebuild after the docstring patch (`verification/clean02-*/`) | see that record | see its `verification.json` |
+| Author clean rebuild after the docstring patch (`verification/clean02-ca95951/`) | `ca95951` | PASS: same 33 modules from an empty snapshot; all 1,127 Agent #119 theorem constants audited; union `{propext, Classical.choice, Quot.sound}`; package worktree clean at that commit |
 
 The reviewer reported four non-blocking documentation issues: a stale README (fixed here),
 two docstrings of `ThreeDigitBridge.lean` that omitted the `¬ GrowthPrefix` premise (fixed by a
