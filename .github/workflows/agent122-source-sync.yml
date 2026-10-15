@@ -1,0 +1,59 @@
+name: Agent 122 source synchronization
+on:
+  push:
+    branches: [research/agent-122/s20261015T154828Z]
+    paths: [.github/workflows/agent122-source-sync.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: eec3d5f3646cab50abad6e610ea19626cd249070
+          persist-credentials: false
+      - name: Export source bytes and coordination records
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin refs/heads/p196/coordination:refs/remotes/origin/p196/coordination
+          git ls-remote --heads origin > /tmp/agent122-remote-heads.txt
+          python3 - <<'PY'
+          import subprocess, pathlib, json, hashlib
+          root = pathlib.Path('/tmp/agent122-source-snapshot')
+          root.mkdir()
+          refs = {'source': 'eec3d5f3646cab50abad6e610ea19626cd249070', 'coordination': subprocess.check_output(['git','rev-parse','refs/remotes/origin/p196/coordination'], text=True).strip()}
+          manifest=[]
+          for label, ref in refs.items():
+              rows = subprocess.check_output(['git','ls-tree','-rlz',ref]).split(b'\0')
+              for row in rows:
+                  if not row: continue
+                  meta, pathb = row.split(b'\t',1)
+                  mode, kind, sha, size = meta.split()
+                  path = pathb.decode()
+                  if label == 'coordination' and not path.startswith('proofs/coordination/'): continue
+                  if label == 'source' and not (path.startswith(('proofs/','.github/')) or path in ('README.md','AGENTS.md')): continue
+                  entry={'snapshot':label,'path':path,'git_blob':sha.decode(),'bytes':int(size),'retained':int(size)<=8*1024*1024}
+                  if entry['retained']:
+                      content=subprocess.check_output(['git','cat-file','blob',sha.decode()])
+                      dest=root/label/path
+                      dest.parent.mkdir(parents=True,exist_ok=True)
+                      dest.write_bytes(content)
+                      entry['sha256']=hashlib.sha256(content).hexdigest()
+                  else: entry['reason']='Source-inspection snapshot size cap; original repository object remains unchanged and accessible.'
+                  manifest.append(entry)
+          (root/'snapshot-refs.json').write_text(json.dumps(refs,indent=2)+'\n')
+          (root/'source-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          (root/'remote-heads.txt').write_bytes(pathlib.Path('/tmp/agent122-remote-heads.txt').read_bytes())
+          print(json.dumps({'refs':refs,'files':len(manifest),'retained':sum(x['retained'] for x in manifest)},indent=2))
+          PY
+          tar --zstd -cf /tmp/agent122-source-snapshot.tar.zst -C /tmp agent122-source-snapshot
+          sha256sum /tmp/agent122-source-snapshot.tar.zst
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent122-source-snapshot
+          path: /tmp/agent122-source-snapshot.tar.zst
+          retention-days: 7
+          if-no-files-found: error
