@@ -1,0 +1,16 @@
+defchecks(mode,identity,count,predicate,unfold,chunk):
+pieces=[];proofs=[]
+forstartinrange(0,count,chunk):
+size=min(chunk,count-start)
+name=f'{mode}_{identity}_{start//chunk}'
+pieces.append(f'theorem{name}:∀i:Fin{size},{predicate.replace("$u",f"({start}+i.val)")}:=by\nunfold{unfold}\ndecide\n')
+proofs.append((start,start+size,f'(checked_range(funu=>{predicate.replace("$u","u")}){start}{size}{name})'))
+defjoin(items):
+iflen(items)==1:returnitems[0]
+cut=len(items)//2
+lo,mid,left=join(items[:cut]);mid2,hi,right=join(items[cut:])
+assertmid==mid2
+returnlo,hi,f'(join_ranges(funu=>{predicate.replace("$u","u")}){lo}{mid}{hi}{left}{right})'
+_,_,proof=join(proofs)
+pieces.append(f'theorem{mode}_{identity}_all:∀u,0≤u→u<{count}→{predicate.replace("$u","u")}:=\n{proof}\n')
+return'\n'.join(pieces)

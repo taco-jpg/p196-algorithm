@@ -1,0 +1,14 @@
+cert sha256 ff7a70ee2a6ed677cb9176e212dc0a69acd14eed30425a42b543d7a50823b47e
+n jobs 31 ids==0..n-1 True
+hierarchies {'scalar': (0, 15, 16), 'broader': (16, 30, 15)}
+status set {'COMPLETE'}
+root id 16: hierarchy broader width 2 max_path_vertices_bound 636 by_start_phase [636, 636, 636, 636, 636, 636, 636]
+recomputed B(root16) = 636 ; scalar root B(0) = 659
+jobs reachable from 16 via child links: [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+per-job (id,width,|V|,|E|,B): [(16, 2, 15, 23, 636), (17, 3, 285, 437, 636), (18, 4, 228, 323, 14), (19, 4, 247, 342, 600), (20, 5, 950, 1463, 588), (21, 6, 4313, 7543, 561), (22, 7, 7581, 13053, 513), (23, 8, 13129, 22040, 474), (24, 9, 12825, 20957, 378), (25, 10, 1653, 2641, 305), (26, 11, 5263, 8930, 277), (27, 12, 5168, 8170, 208), (28, 13, 11134, 18392, 157), (29, 14, 627, 912, 19), (30, 12, 494, 684, 19)]
+R bound from 7R+1<=636: 90
+all emitted tables match certificate-derived values: True
+finite_root_bound statement:
+theorem finite_root_bound (q : Nat → Nat) (L a s n : Nat) (path : Nat → Nat)
+    (ha : Admissible L q) (hL : 14 ≤ L)
+    (hp : ActualPath (ScalarFinite.graph data0) q L 2 a s path n) : n ≤ 636 := by
