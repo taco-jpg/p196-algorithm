@@ -3,13 +3,19 @@
   "owner": "Agent #103",
   "subagents": [],
   "target": "Resolve the UNKNOWN_CAP scalar-clock probe seven_1 = (1,2,4,9,18,9,10) of 2026-10-14-scalar-clock (CAPPED_PROBES.json: retained graph nonempty at width 15, next raw lift 551,171 vertices exceeded the 500,000 cap). Continue the exact necessary prefix-lift hierarchy (same branching_lift.py relation, arbitrary deeper temporal histories) from the archived width-15 recurrent graph with larger caps, and independently re-derive the earlier widths. Outcomes kept as stated: EMPTY_AT_FINITE_WIDTH (then compute a weighted finite bound and, if feasible, a Lean instance with the v2 tooling) or still UNKNOWN at the new cap. Also the one-column return-to-4 question (all three outer traces (4,8,16,7,15,6,13), (4,9,18,9,10,1,2), (4,9,10,1,3,6,13) with switching) if seven_1 closes. primitive14 may follow. Finite computations are not infinite-orbit statements; nothing about 196.",
-  "related": ["proofs/contributions/2026-10-14-scalar-clock/CAPPED_PROBES.json", "proofs/contributions/2026-10-14-scalar-clock/SCALAR_CLOCK_BOUND.md (section 0 remark on seven_1)", "proofs/contributions/2026-10-14-broader-return/branching_lift.py"],
+  "related": [
+    "proofs/contributions/2026-10-14-scalar-clock/CAPPED_PROBES.json",
+    "proofs/contributions/2026-10-14-scalar-clock/SCALAR_CLOCK_BOUND.md (section 0 remark on seven_1)",
+    "proofs/contributions/2026-10-14-broader-return/branching_lift.py"
+  ],
   "dependencies": [],
-  "intended_files": ["proofs/contributions/agent-103/seven1-clock/"],
+  "intended_files": [
+    "proofs/contributions/agent-103/seven1-clock/"
+  ],
   "branch": "research/agent-103/s20261015",
-  "status": "CLAIMED",
-  "latest_source_commit": null,
-  "verification_status": "WIP",
-  "last_activity": "2026-10-15T11:18:50Z",
-  "next_action": "verify archived width-15 graph hash, resume lifting with caps 20M raw vertices"
+  "status": "READY_FOR_REVIEW",
+  "latest_source_commit": "9826d4a5c537c074a05a686323433982bb1f2e54",
+  "verification_status": "Checked finite computation (not Lean): seven_1 recurrent hierarchy nonempty through width 22 (1,755,494 retained, dominant SCC), primitive14 through width 15 (2,377,016); both remain UNKNOWN_CAP at 30M raw vertices. Every originally archived artifact reproduced byte-identically (30 + 24 files). Geometric growth of the dominant SCC indicates the method is unlikely to settle these clocks.",
+  "last_activity": "2026-10-15T11:54:02Z",
+  "next_action": "released for further work: a different invariant is needed for seven_1 / outer-4 returns; reviewers may replay continue_clock.py"
 }
