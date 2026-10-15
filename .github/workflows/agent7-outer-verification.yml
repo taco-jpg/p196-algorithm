@@ -5,6 +5,9 @@ on:
     paths: ['proofs/agent7/**', '.github/workflows/agent7-outer-verification.yml']
 permissions:
   contents: read
+concurrency:
+  group: agent7-outer-verification
+  cancel-in-progress: true
 jobs:
   verify:
     runs-on: ubuntu-24.04
@@ -17,7 +20,11 @@ jobs:
           git init source
           cd source
           git remote add origin https://github.com/taco-jpg/p196-algorithm.git
-          git fetch --depth 1 origin "$GITHUB_SHA"
+          git config remote.origin.promisor true
+          git config remote.origin.partialclonefilter blob:none
+          git sparse-checkout init --cone
+          git sparse-checkout set proofs/agent7
+          git fetch --depth 1 --filter=blob:none origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Install Lean 4.19.0
@@ -47,3 +54,11 @@ jobs:
           if test -f test_bulk_quotient.py; then
             python3 -m unittest -v test_bulk_quotient.py
           fi
+      - name: Retain compiler once for local independent replay
+        if: ${{ always() && github.run_number == 2 }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent7-lean-4.19.0-runtime
+          path: lean.tar.zst
+          compression-level: 0
+          retention-days: 1
