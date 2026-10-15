@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "official_release": "https://github.com/leanprover/lean4/releases/tag/v4.19.0",
+  "asset_url": "https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst",
+  "asset_id": 250981932,
+  "asset_size": 343842845,
+  "upstream_digest": null,
+  "archive_sha256": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+  "compiler_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "compiler_wrapper": "/workspace/scratch/7649db1e242c/toolchain/lean",
+  "compiler_binary": "/workspace/scratch/7649db1e242c/toolchain/lean-4.19.0-linux/bin/lean",
+  "compiler_binary_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "compat_source_sha256": "819bd3cef14efd41ee588af1bc67f2852b9bf3965b34a32aa415b8dac42721d2",
+  "compat_binary_sha256": "afacbda986a4af25795f940d69ba07b201e5cd622c69ffde420fd8e86b577895",
+  "compatibility_note": "Only current-process /proc/<PID>/exe readlink translated to /proc/self/exe; official Lean binaries unmodified.",
+  "source_sha256": "8adc80b50acbdb3da419d24d5fb6d42db2b67234327e530e2003fb5a6184aba3",
+  "scope": "Toolchain smoke only; no repository theorem compilation.",
+  "commands": [
+    {
+      "args": [
+        "/workspace/scratch/7649db1e242c/toolchain/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/7649db1e242c/toolchain",
+      "returncode": 0,
+      "seconds": 0.03265990600630175,
+      "stdout": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/workspace/scratch/7649db1e242c/toolchain/lake",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/7649db1e242c/toolchain",
+      "returncode": 0,
+      "seconds": 0.03673141600302188,
+      "stdout": "Lake version 5.0.0-6caaee8 (Lean version 4.19.0)\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/workspace/scratch/7649db1e242c/toolchain/lean",
+        "-o",
+        "ToolchainSmoke.olean",
+        "ToolchainSmoke.lean"
+      ],
+      "cwd": "/workspace/scratch/7649db1e242c/toolchain/smoke",
+      "returncode": 0,
+      "seconds": 0.19977627100161044,
+      "stdout": "5\n",
+      "stderr": ""
+    }
+  ]
+}
