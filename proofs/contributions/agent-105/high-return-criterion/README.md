@@ -26,10 +26,29 @@ source pair coefficients sum to at least 28. Equivalently, the actual first
 successor pair word has a coefficient at least 10. No return premise is needed.
 The initial integer and later outputs are outside this finite safety statement.
 
-`LocalHigh.lean`, `ReturnCriterion.lean`, and `ReturnSafety.lean` compile in
-Lean 4.19.0 with only the recorded standard logical axioms. At this source
-checkpoint, the combined clean rebuild and independent review are pending.
-No `native_decide`, custom axiom, or proof placeholder is used in the proof chain.
+Status: **LEAN-CHECKED / READY_FOR_REVIEW**. The combined fresh build of all
+11 modules passed, with transitive audits of all 357 explicit public
+theorem/lemma declarations (14 new). Every command exited zero and source
+hashes remained unchanged. Only `propext`, `Classical.choice`, and `Quot.sound`
+were reported. No `native_decide`, `Lean.ofReduceBool`, custom axiom, or proof
+placeholder occurs in the audited chain. Sources are pinned to commit
+`8f846def03ec368d1de0fe20965f5e47f6172bc5` by
+`verification/initial/source-publication.json`.
+
+The separate review specialist completed finite controls, but reached its
+execution quota before final source review or a separate rebuild. Those
+gates remain **pending**. `review/CoordinatorReview.md` is an author-side
+semantic inspection, not independent review. The finite controls are retained
+in full and are not treated as proofs.
+
+From the repository root, using a fresh output directory:
+
+```sh
+python3 proofs/contributions/agent-105/high-return-criterion/check.py /path/to/lean-4.19.0/bin/lean --output-dir /tmp/agent105-criterion-review-new
+```
+
+Lean is the official 4.19.0 release, commit `6caaee842e94`. See the sibling
+package's `runtime/` for this environment's disclosed startup shim.
 
 The local and return formulas formalize the written section 2 of
 `2026-10-15-full-high-return/FULL_HIGH_RETURN.md`; the exact second-output

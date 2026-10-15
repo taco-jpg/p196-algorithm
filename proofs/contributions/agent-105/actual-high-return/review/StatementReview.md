@@ -1,6 +1,6 @@
 # Independent statement and semantics review — Agent 105 actual high returns
 
-**Verdict: PASS for the written argument and the four reviewed source
+**Verdict: PASS for the written argument and the five reviewed source
 modules, subject to the separately recorded successful build and complete
 transitive axiom audit.** This review found no missing width case, invalid
 carry independence assumption, or mathematical counterexample. It is a
@@ -9,11 +9,14 @@ the runtime rebuild. No theorem file was edited by this reviewer.
 
 The audited source identities are in `source_audit_manifest.json`. This
 report reviews `FULL_HIGH_RETURN.md` sections 1–5, the supporting
-`NEUTRAL_EXTERIOR.md`, and the initial Agent105 modules
-`NeutralExterior.lean`, `HighReturnPrefix.lean`, `SmallWidth.lean`, and
-`NumericHigh.lean` (the latter was added while this review was in progress).
-An ordinary-integer endpoint and its complete dependency closure must also
-be checked before claiming that the entire upper-bound bridge is formalized.
+`NEUTRAL_EXTERIOR.md`, and the Agent105 modules
+`NeutralExterior.lean`, `HighReturnPrefix.lean`, `SmallWidth.lean`,
+`NumericHigh.lean`, and the completed `ActualHighReturn.lean`. The final
+composition and ordinary-integer endpoints were independently source-reviewed
+in the follow-up recorded in section 9. The separate clean runtime checker
+owns successful compilation and the full eight-module dependency audit.
+The earlier review checkpoint is preserved as `StatementReview.initial.md`
+with `source_audit_manifest.initial.json`.
 
 ## 1. Exact meaning of the bound
 
@@ -135,12 +138,13 @@ membership and the no-overflow constraint establish an admitted edge;
 `edge_decreases` then establishes the strict rank decrease. No edge,
 rank decrease, or final bound is supplied as an extra hypothesis.
 
-**Integration order to preserve:** the final bridge must start with
+**Integration order checked in the final source:** the final bridge starts with
 highness at the actual second width
 `nextWidth (nextColumns q L) (L+1)`. Apply the neutral-exterior corollary
 first, derive second carry zero, then rewrite that width to L+1 and apply
-`actual_prefix_edge`. Assuming the fixed-width target highness before
-deriving no overflow would omit exactly the branch this work must exclude.
+`actual_prefix_edge`. `high_return_no_second_overflow` and
+`high_return_state` implement precisely this order. There is no assumption
+of fixed-width target highness before the second overflow is excluded.
 
 ## 5. Widths one and two
 
@@ -200,16 +204,17 @@ compressed size, source hash, scope, counts, and the recovery command are
 in `exact_controls_summary.json`. No bounded control result is used as the
 proof of an all-width claim. No existing exhaustive graph search was rerun.
 
-## 7. Trust boundary and remaining endpoint checks
+## 7. Trust boundary and endpoint obligations
 
-The reviewed four sources contain no proof placeholder, custom axiom,
+The reviewed five sources contain no proof placeholder, custom axiom,
 native computation tactic, external process assumption, or JSON-derived
 logical premise. Their imported existing rank theorem uses ordinary
 `decide`; the actual normalization module supplies the semantics. This does
 not replace a complete transitive axiom audit of the final dependency
 closure or a successful compiler exit status.
 
-For the final ordinary-integer endpoint, check all of the following:
+The final ordinary-integer endpoint must meet the following obligations;
+section 9 records that all four are discharged in the reviewed source:
 
 1. Actual `iterPairs` representations, or equivalent canonical numeric
    witnesses, provide H membership at times 0,2,...,2R.
@@ -244,4 +249,89 @@ The theorem does not postulate highness along an abstract graph path.
 The canonical-column specialization removes an arbitrary source q
 altogether. These definitions and transfer statements have the right
 semantics for the intended final endpoint. The final numerical upper bound
-itself was not yet present when this section was reviewed.
+is reviewed separately below.
+
+## 9. Final composition and ordinary-integer endpoints
+
+**Final source verdict: PASS.** `ActualHighReturn.lean` has no dynamical
+premise asserting no overflow, an abstract graph path, edge correctness,
+rank decrease, or the desired finite bound. The following checks are
+independent reading of the source and its imported definitions, not a new
+execution of the Lean compiler. The development compiler success reported
+by the author is separate evidence; this reviewer does not claim that run
+as their own fresh rebuild.
+
+### Discharging second overflow without circularity
+
+`high_return_no_second_overflow` takes only source admissibility, source
+highness, and highness of the actual `iterPairs q L 2` state. It uses the
+first-step high-carry theorem to replace only the **first** width by L+1.
+After expanding `iterPairs`, the return premise is still quantified over
+`nextWidth (nextColumns q L) (L+1)`, which could initially be L+1 or L+2.
+The intermediate word's admissibility and exterior at most nine are proved
+from the source. Its actual target lower bounds then feed
+`low_outer_high_next_no_overflow`, establishing second carry zero.
+
+Only afterwards does `high_return_state` identify the actual two-step state
+with `(L+1, successor q L)`. `actual_return_rank_decreases` uses these two
+derived results to discharge the prefix module's formerly explicit
+no-overflow premise and to transport the target high predicate. This is
+not a circular use of a target width that already assumes the conclusion.
+
+### Complete finite-word upper bound
+
+`actual_high_returns_le_three` has precisely these mathematical inputs:
+
+- A finite-word width L and coefficient function q satisfying `Admissible`:
+  positive width and exterior, bounded coefficients, symmetry, and even
+  center where required. The unused infinite function tail is unrestricted.
+- A natural R and high membership of the actual pair states at all even
+  times `2*j` with `j<=R`, including both endpoints.
+
+At initial L>=3, admissibility of each intermediate state comes from
+`iterPairs_admissible`. `iterPairs_width_ge` ensures every later observed
+width is still at least three; this is valid even outside the high region
+because `nextWidth` either retains width or adds one. `iterPairs_add` is
+proved by induction on the second time interval and correctly connects
+two more updates from time `2*j` to time `2*(j+1)`.
+
+The source therefore derives a strict descent for
+`r(j)=rank(code((iterPairs q L (2*j)).2))` for every `j<R`. The target
+highness at `j+1` is available since `j<R`. The induction proves
+`r(k)+k<=r(0)` for all `k<=R`; hence `R<=r(0)<=3` by the original finite
+rank certificate. The argument uses an arbitrary-length descent rather
+than literally spelling out four graph edges, and fully discharges the
+same rank obstruction.
+
+If L<3, admissibility forces L=1 or L=2. In the only branch needing a
+contradiction, `R>3`, membership at j=1 and j=2 supplies exactly the two
+returns forbidden by `SmallWidth.no_two_high_returns`. There is no missing
+L=0 case, and the width-one center parity requirement is already included
+in `Admissible`. R=0,1,2,3 are handled directly; the theorem's endpoint is
+the non-strict bound `R<=3`, without an off-by-one convention.
+
+### Ordinary numbers, arbitrary starting times, and infinite exclusion
+
+`numeric_high_returns_le_three` assumes only `n>0` and the ordinary-number
+predicate `NumericHigh (orbit n (2*j))` for every `j<=R`. It constructs a
+canonical representation using `canonical_exists`, obtains its
+admissibility, and transfers the membership premise by
+`numericHigh_orbit_iff_columns`. No digit representation, finite
+certificate, starting-width restriction, or carry choices remain for a
+caller to supply. The positive n may already be a palindrome; the theorem
+does not require palindrome avoidance.
+
+`numeric_high_returns_after_le_three` allows **every natural starting time**
+`start`, with memberships at `start+2*j` for `j<=R`. It applies the previous
+endpoint to `orbit n start`; positivity follows from `orbit_positive`.
+The existing identity
+`orbit n (start+t)=orbit (orbit n start) t` is exactly the orientation and
+time convention needed by the rewrite. No constraint on the parity of
+start or any earlier membership is introduced.
+
+Finally, `no_perpetual_high_returns` assumes all these memberships for all
+j, specializes the preceding theorem to R=4, and contradicts `4<=3`.
+It excludes permanent membership on that two-step sampling schedule from
+any finite starting time of a positive ordinary orbit. It does **not**
+exclude later visits after an exit, infinitely many separated visits,
+Lychrel numbers using other mechanisms, or the unresolved 196 conjecture.

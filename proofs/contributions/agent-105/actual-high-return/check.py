@@ -48,7 +48,9 @@ def sha256(data: bytes) -> str:
 
 
 def write_json(path: Path, value: object) -> None:
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    temporary.replace(path)
 
 
 def code_only(source: str) -> str:
@@ -109,6 +111,9 @@ def public_theorems(source: str) -> list[dict]:
     forbidden = re.findall(r"\b(?:sorry|admit|axiom|native_decide|sorryAx|ofReduceBool)\b", code)
     if forbidden:
         raise ValueError(f"Forbidden proof/axiom token(s): {sorted(set(forbidden))}")
+    generators = re.findall(r"\b(?:macro|macro_rules|elab|elab_rules|syntax|run_cmd|run_meta)\b", code)
+    if generators:
+        raise ValueError(f"Declaration-generating syntax requires separate enumeration: {sorted(set(generators))}")
     scopes, found, declaration_count = [], [], 0
     for line_number, line in enumerate(code.splitlines(), 1):
         begin = re.match(rf"^\s*(namespace|section)(?:\s+({IDENT}))?\s*$", line)
@@ -163,7 +168,7 @@ def source_record(path: Path, data: bytes) -> dict:
 
 def audit_output(output: str, expected: list[str]) -> dict[str, list[str]]:
     audited = {}
-    pattern = r"'([^']+)' (?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)"
+    pattern = r"'(.+?)' (?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)"
     for match in re.finditer(pattern, output, re.S):
         name = match[1]
         if name in audited:
@@ -202,6 +207,10 @@ def main() -> int:
         "git_head_at_start": git("rev-parse", "HEAD"),
         "compiler": {"path": lean, "sha256": sha256(Path(lean).read_bytes())},
         "allowed_axioms": sorted(ALLOWED_AXIOMS), "commands": [],
+        "theorem_enumeration": "All explicit public theorem/lemma declarations in the eight sources, "
+                               "with namespaces resolved and a theorem-token census to reject omissions. "
+                               "Declaration-generating macro/elaborator command tokens are rejected; "
+                               "private helper dependencies are audited transitively.",
         "fresh_dependency_rebuild": False,
         "scope": "Fresh compilation of eight sources and transitive axiom audits of every "
                  "public theorem in those sources. The final endpoints bound consecutive actual "
@@ -320,12 +329,18 @@ def main() -> int:
             report["source_change_error"] = "Source changed during verification"
         report["git_head_at_finish"] = git("rev-parse", "HEAD")
         report["finished_utc"] = datetime.now(timezone.utc).isoformat()
+        try:
+            combined = []
+            for command in report["commands"]:
+                combined.extend([json.dumps(command, sort_keys=True),
+                                 (out / command["log"]).read_text() if "log_sha256" in command else "No completed log."])
+            (out / "compile.log").write_text("\n\n".join(combined) + "\n")
+        except Exception as exc:
+            report["status"] = "FAIL"
+            report["evidence_write_error"] = f"{type(exc).__name__}: {exc}"
+        # Publish the final status only after all evidence writes succeed. Atomic
+        # replacement prevents a partial JSON file from being mistaken for PASS.
         save()
-        combined = []
-        for command in report["commands"]:
-            combined.extend([json.dumps(command, sort_keys=True),
-                             (out / command["log"]).read_text() if "log_sha256" in command else "No completed log."])
-        (out / "compile.log").write_text("\n\n".join(combined) + "\n")
     print(f"{report['status']}: {out / 'verification.json'}", flush=True)
     if report["status"] != "PASS":
         print(report.get("error", report.get("source_change_error", "Verification failed")), file=sys.stderr)
