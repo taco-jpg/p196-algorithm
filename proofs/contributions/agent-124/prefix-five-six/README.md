@@ -23,8 +23,8 @@ ordinary orbit of 196 never contains such a palindrome.
 | Component | Status |
 |---|---|
 | Width-generic endpoint and code-keyed certificate checker | **LEAN-CHECKED, dev build** |
-| k = 5 certificate: 23 prefixes (all five-column classes except 119) | **LEAN-CHECKED, dev build** |
-| 119 (leading digit 1) | WIP: needs the overflow-palindrome last-step bridge |
+| k = 5 certificate: all 24 five-column classes | **LEAN-CHECKED, dev build** |
+| `Agent124LeadOne.lean`: last-step bridge for leading digit 1 (used for 119) | **LEAN-CHECKED, dev build** |
 | k = 6 certificate: 9 prefixes | WIP |
 | Clean pinned rebuild and full theorem-constant axiom audit | pending |
 | Independent review | not requested yet |
@@ -49,10 +49,20 @@ For each prefix `abc` below there are two theorems:
 | 674 | 5 | 737 | 12 | 755 | 12 | 778 | 25 |
 | 783 | 14 | 784 | 14 | 787 | 25 | 788 | 14 |
 | 789 | 38 | 858 | 36 | 859 | 36 | 905 | 11 |
-| 906 | 11 | 923 | 7 | 935 | 10 | | |
+| 906 | 11 | 923 | 7 | 935 | 10 | 119 | 8 |
 
-All 46 endpoint theorems report exactly `propext`, `Classical.choice`,
-`Quot.sound` (`logs/k5/A124K5Final.log`). No optimality is claimed for any
+119 is in module `A124K5Final119` and uses `Agent124.LeadOne`: a palindromic
+overflow output has every digit at most two
+(`overflow_palindrome_digits_le_two`, from the existing
+`step_palindrome_iff_overflow`), so a target digit above two excludes a final
+overflow, and `canonical_last_step_of_no_overflow` repeats Agent #104's exact
+last-step bridge under that hypothesis. This covers every prefix `1bc` with
+`b ≥ 3` or `c ≥ 3`; Agent #119 independently plans the finer
+`{110,111,121,122}` exclusion for its four-column classes (overlap noted, both
+retained).
+
+All 48 endpoint theorems report exactly `propext`, `Classical.choice`,
+`Quot.sound` (`logs/k5/A124K5Final.log`, `logs/k5/A124K5Final119.log`). No optimality is claimed for any
 bound; 429's written baseline is 22 (this certificate gives 24), and 783, 784,
 787, 788, 789, 858, 859 improve on the written two-digit-class bounds 40 / 38.
 
