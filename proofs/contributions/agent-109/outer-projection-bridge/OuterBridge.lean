@@ -12,11 +12,13 @@ to the actual complementary template step (`Agent109.stepWord_template`,
   B-trimmed exterior of the actual successor.
 * `actual_step_outer`: one ordinary reverse-and-add step of an integer realizing
   a template realizes the template with exterior `outerNext (c,B)`.
-* `actual_outer_orbit`: along the ordinary orbit, the maximally trimmed exterior
-  follows Agent #7's `outerIterate` as long as both bands stay at least two.
+* `actual_outer_orbit`: along the ordinary orbit, the specified exterior
+  follows Agent #7's `outerIterate` as long as both bands stay at least two;
+  each transition maximally strips the new exterior. The initial exterior
+  is not required to be trimmed in this general theorem.
 * `actual_cap2_exit`: with Agent #7's kernel-checked `cap2_exits_by_seven`, an
   integer realizing a template with a valid exterior of length at most two and
-  bands at least 16 reaches, within 7 ordinary steps, a template representation
+  bands at least 14 reaches, within 7 ordinary steps, a template representation
   whose trimmed exterior has length greater than two.
 
 No cycle, safe orbit or statement about 196 is claimed.
@@ -196,8 +198,9 @@ theorem outerIterate_eq (i : Nat) (s : Outer) : outerIterate i s = outerIter i s
 
 /-- **Actual outer orbit.** While both bands have stayed at least two, the
 ordinary orbit of an integer realizing a template has, at time `i`, a template
-representation whose phase and maximally trimmed exterior are
-`outerIter i (c,B)`. -/
+representation whose phase and specified exterior are `outerIter i (c,B)`.
+The initial exterior need not be trimmed; every positive-time exterior is
+maximally suffix-trimmed by the preceding `outerNext` transition. -/
 theorem actual_outer_orbit (n c : Nat) (B A C : Word) (g h : Nat) (hc : Phase c)
     (hB : Bounded B) (hA : Bounded A) (hC : Bounded C)
     (hn : pairWord n = template c B A C g h) :
@@ -229,7 +232,7 @@ theorem actual_outer_orbit (n c : Nat) (B A C : Word) (g h : Nat) (hc : Phase c)
 
 /-- **Ordinary-integer cap-two exit.** If `n` realizes a template with an even
 phase `2(p+1)`, a valid (Agent #7 `validOuter`) exterior of length at most two
-and both bands at least 16, then within 7 ordinary reverse-and-add steps the
+and both bands at least 14, then within 7 ordinary reverse-and-add steps the
 orbit has a template representation with Agent #7's trimmed exterior of length
 greater than two. -/
 theorem actual_cap2_exit (n : Nat) (p : Fin 8) (B A C : Word) (g h : Nat)
