@@ -24,9 +24,11 @@ The central statements are about all finite positive decimal inputs at a width. 
 - `ModularAutonomy.lean`: full classification and arbitrarily wide actual-step counterexamples.
 - `CounterexampleBound.lean`: the fixed-width quantitative strengthening and counterexamples at every admissible width.
 
-## Verification status at this incremental checkpoint
+## Verification status
 
-All seven new modules compiled under Lean 4.19.0 and their source-declared theorem audits contain only `propext`, `Classical.choice`, and `Quot.sound`. No `sorry`, `admit`, new logical axiom, `native_decide`, or compiler-trusted reduction is used in the accepted chain. The complete independent audit report is being finalized; the quantitative extension is being independently rebuilt. No default-branch integration is claimed.
+**INDEPENDENTLY-REVIEWED.** All seven new modules compiled under Lean 4.19.0. A separate reviewer completed a source-clean rebuild, semantic review, and exhaustive theorem dependency audit; see `review/clean/REVIEW.md`. The 39 explicitly written theorems and all 146 exported contribution theorem constants (including generated auxiliaries), together with the complete local foundation, use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorry`, `admit`, new logical axiom, `native_decide`, or compiler-trusted reduction is used in the accepted chain. Counts are audit coverage, not independent major-result counts. No default-branch integration is claimed.
+
+The adapter-free official GitHub build also **PASSED** at source commit `671dfbdd436a17155bc56d428c6fe78a550fabe2`: [run 38684866203](https://github.com/taco-jpg/p196-algorithm/actions/runs/38684866203). It began with zero old oleans and rebuilt the foundation and all seven modules together. Every compilation, dynamic transitive audit, and actual `#print axioms` command exited 0. Downloaded full reports are retained under `review/clean/github-official-20261015T050512Z-0fbdb2fc/`; `review/HOSTED_VERIFICATION.json` pins the run, source commit and downloaded archive hash.
 
 `SOURCE_MANIFEST.json` pins all seven source hashes and the exact existing dependency. The complete accepted build entry point includes every module:
 
@@ -40,9 +42,9 @@ This always uses a fresh build directory and recompiles the original research de
 
 The local container has a PID namespace inconsistent with its `/proc` mount. Local execution uses the unchanged official Lean distribution plus the retained `runtime/proc_self_readlink.c` adapter, which redirects only the current process's own numeric exe path to `/proc/self/exe`. No Lean kernel, library, source or olean bytes are patched. This is an additional runtime component, explicitly reported rather than called unadapted execution. Add `--preload /absolute/path/to/libproc_self_readlink.so` only in this environment. The source compiles with `gcc -shared -fPIC -o libproc_self_readlink.so proc_self_readlink.c -ldl`.
 
-The contribution-branch GitHub workflow repeats the complete build using the checksum-pinned official distribution without this adapter; its result must be read from the actual run. No remote CI success is inferred from this file.
+The contribution-branch GitHub workflow repeats the complete build using the checksum-pinned official distribution without this adapter. Its successful run and downloaded audit evidence are recorded above; this is actual execution, not a proposed workflow or inferred result.
 
-An independent semantic reviewer read and recompiled the six core modules (reusing a hash-matched base olean), recorded actual exits in `review/compile-check.json`, and checked the Canonical, width, carry, arithmetic and quantifier meanings. That reviewer reached an execution usage limit before producing a concluding prose report. The separately assigned clean reviewer performs a full source rebuild and is reviewing the quantitative extension. These scopes are distinct and neither is described as external human peer review.
+An independent semantic reviewer read and recompiled the six core modules (reusing a hash-matched base olean), recorded actual exits in `review/compile-check.json`, and checked the Canonical, width, carry, arithmetic and quantifier meanings. That reviewer reached an execution usage limit before producing a concluding prose report. The separately assigned clean reviewer completed the full source rebuild, quantitative extension audit and mathematical review, and wrote `review/clean/REVIEW.md`. These scopes are distinct and neither is described as external human peer review. The reviewer's workflow-proposal file is historical; root separately installed and successfully ran the actual workflow.
 
 ## Coordination and preservation
 
