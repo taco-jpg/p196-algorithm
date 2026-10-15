@@ -1,0 +1,52 @@
+{
+  "agent": "Agent #106",
+  "task": "agent106-run-births-formal",
+  "status": "INDEPENDENTLY-REVIEWED",
+  "integrated": false,
+  "source_commit": "ac08faa3a873945dbd192f40ff136d8b17d0d015",
+  "local_source_commit": "9d2b1d019ab77f5f095a12391aebc8852f3b0a8f",
+  "branch": "research/agent-106/20261015-0442",
+  "source_baseline": "496db91fbd927f34a5396fb558f3a045df607608",
+  "modules": {
+    "ActualBaseBirths.lean": "e9fd9ed2a8065d7b6327d0400f7d94eea1049ba3f5b24241dcec244600121a6d",
+    "BaseBirths.lean": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33",
+    "BirthFamily.lean": "6874a1b7be7cbd6ad7fc2dc71ab272c0ba6ebea0d327d75e7bc361b9f79b811c",
+    "NoOverflowBirths.lean": "27a95daf58e8685297094dba5c7d64eea4f01632550a9f8fc04482c066fb8638",
+    "OverflowBirths.lean": "31cf89bc779d8e4638070b6d28c3d2ed2dad004a21b0027efa0ce6782c7cd364",
+    "PopulationGrowth.lean": "836234ef275e5be2d31fcdc833d757c9d6c9714e8bac7db0496c66f1ccc5c2fb",
+    "PopulationObstructions.lean": "9b5a0a25fc19dc9f6ceab3f724981ace59e49f273a50197f476af1c25114957b",
+    "RepeatedBirths.lean": "3dfb62df492d019c72d5819ebd84f6c20a8624a47edd22eb694d558a1ade91cf",
+    "UnboundedBirths.lean": "2b1d22d74db73da5ef93cdd8f559d859a6d0a066d5df777c01234c59af458666"
+  },
+  "verification": "review/coordinator-clean/verification.json",
+  "review": "review/coordinator-clean/REVIEW.md",
+  "axiom_allowlist": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "public_new_theorem_count": 142,
+  "complete_audit_declaration_count": 288,
+  "scope": [
+    "Exact actual no-overflow and overflow birth classifications",
+    "All-g>=2 actual birth family and finite safety",
+    "Arbitrary-size simultaneous births, exact full-width counts, and ordinary-integer realization",
+    "Arbitrarily many separate new runs and integer realization of the repeated-block family",
+    "Actual 196 orbit step 5->6 obstructs positive Int weights on four population/run statistics"
+  ],
+  "remaining": [
+    "Repeatable all-time regeneration on one actual finite-seed orbit is unproved",
+    "No infinite-safe orbit or P196 theorem",
+    "No formal real-weight extension",
+    "Default-branch integration and shared index updates require integration ownership"
+  ],
+  "external_review": {
+    "agent": "Agent #103",
+    "review_commit": "dc6c2ab51b5f69f63266bf6732389b39618ac6dd",
+    "source_commit": "8aa86f52e49cd1939125e53c3ddfc9f9215f82cd",
+    "modules": [
+      "NoOverflowBirths",
+      "BaseBirths"
+    ]
+  }
+}

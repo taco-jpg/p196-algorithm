@@ -1,0 +1,25 @@
+List.countP.{u} {α : Type u} (p : α → Bool) (l : List α) : Nat
+List.countP_append.{u_1} {α : Type u_1} {p : α → Bool} {l₁ l₂ : List α} :
+  List.countP p (l₁ ++ l₂) = List.countP p l₁ + List.countP p l₂
+List.countP_congr.{u_1} {α : Type u_1} {p q : α → Bool} {l : List α}
+  (h : ∀ (x : α), x ∈ l → (p x = true ↔ q x = true)) : List.countP p l = List.countP q l
+List.countP_eq_zero.{u_1} {α✝ : Type u_1} {l : List α✝} {p : α✝ → Bool} :
+  List.countP p l = 0 ↔ ∀ (a : α✝), a ∈ l → ¬p a = true
+List.countP_eq_length_filter.{u_1} {α : Type u_1} {p : α → Bool} {l : List α} :
+  List.countP p l = (List.filter p l).length
+proofs/contributions/agent-106/run-births/development/growth/ApiProbe.lean:7:7: error: unknown constant 'List.countP_eq_countP_filter'
+List.countP_map.{u_1, u_2} {α : Type u_2} {β : Type u_1} {p : β → Bool} {f : α → β} {l : List α} :
+  List.countP p (List.map f l) = List.countP (p ∘ f) l
+List.count_eq_countP.{u_1} {α : Type u_1} [BEq α] {a : α} {l : List α} :
+  List.count a l = List.countP (fun x => x == a) l
+proofs/contributions/agent-106/run-births/development/growth/ApiProbe.lean:10:7: error: unknown constant 'List.countP_or'
+List.range_succ {n : Nat} : List.range n.succ = List.range n ++ [n]
+List.range'_succ {s n step : Nat} : List.range' s (n + 1) step = s :: List.range' (s + step) n step
+List.filter_congr.{u_1} {α : Type u_1} {p q : α → Bool} {l : List α} :
+  (∀ (x : α), x ∈ l → p x = q x) → List.filter p l = List.filter q l
+List.mem_range {m n : Nat} : m ∈ List.range n ↔ m < n
+proofs/contributions/agent-106/run-births/development/growth/ApiProbe.lean:15:7: error: unknown constant 'List.countP_congr_left'
+proofs/contributions/agent-106/run-births/development/growth/ApiProbe.lean:16:7: error: unknown constant 'List.countP_eq_zero_iff'
+List.countP_eq_length.{u_1} {α✝ : Type u_1} {l : List α✝} {p : α✝ → Bool} :
+  List.countP p l = l.length ↔ ∀ (a : α✝), a ∈ l → p a = true
+proofs/contributions/agent-106/run-births/development/growth/ApiProbe.lean:18:7: error: unknown constant 'List.filter_or'

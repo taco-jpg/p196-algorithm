@@ -1,0 +1,42 @@
+import BaseBirths
+import PopulationObstructions
+
+#print axioms BaseBirths.localPair
+#print axioms BaseBirths.localPair_eq_zero_iff
+#print axioms BaseBirths.localPair_eq_max_iff
+#print axioms BaseBirths.new_zero_iff
+#print axioms BaseBirths.new_max_iff
+#print axioms BaseBirths.mixed_carries_not_extreme
+#print axioms BaseBirths.births_have_interior_sources
+#print axioms BaseBirths.binary_extremes_swap
+#print axioms RunBirths.PopulationObstructions.digitAt
+#print axioms RunBirths.PopulationObstructions.integerWord
+#print axioms RunBirths.PopulationObstructions.wordAt
+#print axioms RunBirths.PopulationObstructions.actualQStep
+#print axioms RunBirths.PopulationObstructions.coefficientCount
+#print axioms RunBirths.PopulationObstructions.runCount
+#print axioms RunBirths.PopulationObstructions.overflowSource
+#print axioms RunBirths.PopulationObstructions.overflowTarget
+#print axioms RunBirths.PopulationObstructions.noOverflowSource
+#print axioms RunBirths.PopulationObstructions.noOverflowTarget
+#print axioms RunBirths.PopulationObstructions.orbitSource
+#print axioms RunBirths.PopulationObstructions.orbitTarget
+#print axioms RunBirths.PopulationObstructions.canonical_of_value
+#print axioms RunBirths.PopulationObstructions.witness_inputs_canonical
+#print axioms RunBirths.PopulationObstructions.overflow_integer_certificate
+#print axioms RunBirths.PopulationObstructions.noOverflow_integer_certificate
+#print axioms RunBirths.PopulationObstructions.orbit196_integer_certificate
+#print axioms RunBirths.PopulationObstructions.overflow_population_certificate
+#print axioms RunBirths.PopulationObstructions.noOverflow_population_certificate
+#print axioms RunBirths.PopulationObstructions.orbit196_population_certificate
+#print axioms RunBirths.PopulationObstructions.populationPotential
+#print axioms RunBirths.PopulationObstructions.runPotential
+#print axioms RunBirths.PopulationObstructions.jointPotential
+#print axioms RunBirths.PopulationObstructions.every_positive_population_weight_increases
+#print axioms RunBirths.PopulationObstructions.every_positive_run_weight_increases
+#print axioms RunBirths.PopulationObstructions.every_positive_joint_weight_increases
+#print axioms RunBirths.PopulationObstructions.DecimalNonincreasing
+#print axioms RunBirths.PopulationObstructions.no_positive_population_potential
+#print axioms RunBirths.PopulationObstructions.no_positive_run_potential
+#print axioms RunBirths.PopulationObstructions.no_positive_joint_potential
+#print axioms RunBirths.PopulationObstructions.any_strict_score_obstruction

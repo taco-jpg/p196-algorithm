@@ -1,0 +1,15 @@
+import LychrelDigitSums
+#check Rat
+#check Rat.add_pos
+#check Rat.mul_pos
+#check Rat.zero_lt_one
+#check Int.mul_pos
+#check Int.add_pos
+#check Nat.mul_pos
+#check LT.lt.false
+#check Std.LawfulOrderLT
+#check Std.IsLinearOrder
+#check List.count
+#check List.ofFn
+#check Fin.forall_fin_succ
+#check List.ofFn_getElem
