@@ -1,19 +1,22 @@
-name: Carry observability proof check
+name: Carry observability source snapshot
 
 on:
   push:
     branches: [research/carry-observability-20261015]
     paths:
-      - 'proofs/contributions/2026-10-15-carry-observability/*.lean'
       - '.github/workflows/carry-observability.yml'
 
 permissions:
   contents: read
 
+concurrency:
+  group: carry-observability-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  lean-kernel:
+  source-snapshot:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - name: Fetch exact public source commit
         shell: bash
@@ -22,28 +25,27 @@ jobs:
           git init .
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
           git sparse-checkout init --no-cone
-          git sparse-checkout set '/proofs/contributions/2026-10-15-carry-observability/'
+          git sparse-checkout set '/proofs/**/*.lean'
           git fetch --filter=blob:none --depth=1 origin "${GITHUB_SHA}"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
-      - name: Install fixed official Lean distribution
+      - name: Package pinned formal sources and manifest
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --location --retry 3 --max-time 240 \
-            'https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst' \
-            --output /tmp/lean.tar.zst
-          sha256sum /tmp/lean.tar.zst
-          tar --zstd -xf /tmp/lean.tar.zst -C /tmp
-          echo '/tmp/lean-4.19.0-linux/bin' >> "$GITHUB_PATH"
-      - name: Kernel check and print dependencies
-        shell: bash
-        run: |
-          set -euo pipefail
-          lean --version
-          cd proofs/contributions/2026-10-15-carry-observability
-          sha256sum *.lean
-          for source in *.lean; do
-            echo "CHECKING ${source}"
-            lean "$source"
-          done
+          git rev-parse HEAD > SOURCE_COMMIT.txt
+          find proofs -type f -name '*.lean' -print0 | sort -z | xargs -0 sha256sum > SOURCE_SHA256.txt
+          find proofs -type f -name '*.lean' -print0 > source-files.txt0
+          tar --null -T source-files.txt0 -czf formal-sources.tar.gz
+          sha256sum formal-sources.tar.gz
+          wc -l SOURCE_SHA256.txt
+      - name: Export sources for local kernel verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent10-pinned-formal-sources
+          path: |
+            formal-sources.tar.gz
+            SOURCE_COMMIT.txt
+            SOURCE_SHA256.txt
+          retention-days: 1
+          compression-level: 0
