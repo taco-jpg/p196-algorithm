@@ -1,5 +1,6 @@
 import ExteriorFactorizationProof
 import ExteriorObservationInjective
+import ExteriorUpdateLaw
 #check @Agent115.ExteriorFactorization.target
 #print Agent115.ExteriorFactorization.Target
 #print axioms Agent115.ExteriorFactorization.target
@@ -10,3 +11,7 @@ import ExteriorObservationInjective
 #check @Agent115.ExteriorFactorization.observation_injective
 #print axioms Agent115.ExteriorFactorization.observation_injective
 #print axioms Agent115.ExteriorFactorization.eq_of_values
+#check @Agent115.ExteriorFactorization.rawSucc_values
+#check @Agent115.ExteriorFactorization.successor_observation
+#print axioms Agent115.ExteriorFactorization.rawSucc_values
+#print axioms Agent115.ExteriorFactorization.successor_observation

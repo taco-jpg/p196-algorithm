@@ -37,6 +37,20 @@ SHA-256 `3376873d…c5f3f6`):
   untrimmed words.) Elementary proof: equal little-endian values fix the outermost
   coefficient mod 10, equal big-endian values exclude a difference of 10 because a
   length-`m` tail has big-endian value below `2·10^m`; induct (`eq_of_values`).
+- `ExteriorUpdateLaw.lean` (task `agent115-exterior-update-law`, **LEAN-CHECKED,
+  not yet independently reviewed**): the explicit update law in value coordinates.
+  For any `c` and any word `B` of length `n`, with `V = lowValue B`,
+  `H = highValue B`, `k = [10 ≤ c]`, `t = c − 9k`, `X = H + k`,
+  `u = c + V/10^n − 10k` and `revN n y` the value of the reversed `n`-digit
+  representation of `y`, `rawSucc_values` gives
+  `lowValue(raw) = V % 10^n + u·10^n + (X < 10^n ? revN n X + t·10^n : 1 + 10·revN n X)` and
+  `highValue(raw) = 10·revN n V + u + (X < 10^n ? 10·(X % 10^n) + t : 10^n + X % 10^n)`
+  for the untrimmed successor `raw = rawSucc c B` (length `n+1`), and
+  `successor_observation` turns these into the successor's `zValue` and `ρ`.
+  Together with `observation_injective` this is an explicit, kernel-checked
+  dynamical system on `(c, Z, ρ)` conjugate to the exterior map; digit reversal
+  `revN` is its only nonlinear ingredient. No hypothesis on `c` or `B` is needed
+  for these identities.
 - Supporting: `normalize_eq` (a scan is determined by length and value),
   `outerNext_append_band` (appending one band coefficient does not change the
   successor), `outerNext_of_values`, padding invariance of `zValue` and `ρ`.
@@ -47,7 +61,10 @@ Axioms: `target`, `factorization_general`, `outerNext_append_band`,
 `normalize_eq` use `propext`, `Quot.sound`. No `sorry`, `native_decide` or new
 axiom. Clean from-source build of all four modules with official Lean 4.19.0
 (`6caaee842e94`, binary SHA-256 `92c3d35b…e023`): `evidence/clean-02/verification.json`
-(PASS, five modules, seven audited theorems; `clean-01` is the earlier four-module run). Reproduce from the repository root:
+(PASS, five modules, seven audited theorems; `clean-01` is the earlier four-module run).
+`evidence/clean-03/verification.json`: PASS with the update-law module (six modules,
+nine audited theorems; `rawSucc_values` uses `propext, Classical.choice, Quot.sound`,
+`successor_observation` uses `propext, Quot.sound`). Reproduce from the repository root:
 
 ```sh
 python3 proofs/contributions/agent-115/exterior-factorization/check.py /abs/path/to/lean /new/empty/dir
@@ -55,9 +72,10 @@ python3 proofs/contributions/agent-115/exterior-factorization/check.py /abs/path
 
 ## Written parts (not Lean)
 
-`NOTE.md` also gives the explicit successor formula (10-adic digits of
-`(Z−c)/9` plus decimal digits of `ρ`, or `ρ/10` on overflow), the rational
-system `β' = β + Φ(ρ̃)`, `ρ' = Ψ(β) + ρ̃`. These remain written proofs with exact controls
+`NOTE.md` also phrases the law as digit sequences (10-adic digits of `(Z−c)/9`
+plus decimal digits of `ρ`, or `ρ/10` on overflow) and as the rational system
+`β' = β + Φ(ρ̃)`, `ρ' = Ψ(β) + ρ̃`. Those 10-adic/real phrasings remain written;
+their integer content is the Lean law above. Exact controls 
 (`controls_ext.py`, `controls_result.json`: 73,513 states, 0 mismatches).
 
 ## Scope
