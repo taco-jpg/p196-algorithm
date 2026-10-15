@@ -18,10 +18,10 @@ closure at `k = 7` contains a directed cycle reachable from an initial state (ex
 witness recorded, re-verified by the forward column equations), so no rank certificate of
 that kind exists at seven columns for any resource cap; the single `ACYCLIC` record is the
 already accepted 739. Only three cycles occur (lengths 47, 171 and 1,841; identical state
-sets across classes). At `k = 8` every class tested so far is again `CYCLE`, except 275,
-which reached the 2.5M-state cap without a cycle and is being re-run with a larger cap. The
-impossibility interface and 13 witness instances are checked by the Lean kernel against
-Agent #104's accepted `prefixPredecessors` / `CheckedRows` definitions.
+sets across classes). At `k = 8` every class tested so far is again `CYCLE` (275 needed 4.1M
+explored states, beyond the batch cap). The impossibility interface, the projection lemma
+for long states and 14 witness instances are checked by the Lean kernel against Agent
+#104's accepted `prefixPredecessors` / `CheckedRows` definitions.
 
 ## Status
 
@@ -30,7 +30,8 @@ Agent #104's accepted `prefixPredecessors` / `CheckedRows` definitions.
 | `k = 7` diagnosis, 500 classes | **complete**, checked computation (not Lean): 499 CYCLE, 1 ACYCLIC (739) |
 | `k = 8` diagnosis | partial, each record final; see `results/k8.jsonl` (`CAP` = no verdict) |
 | `lean/PrefixCycle.lean` generic interface | LEAN-CHECKED (author build and fresh `lean/build.sh` build, logs under `build/`) |
-| `lean/witnesses/` instances | LEAN-CHECKED: 936, 164, 710 (47-cycle); 716, 398, 952 (171-cycle); 138, 790, 911, 626, 198, 248 (1,841-cycle) at `k = 7`; 112 at `k = 8` (8-cycle) |
+| `lean/Projection.lean` (Lemma 2, long states) | LEAN-CHECKED |
+| `lean/witnesses/` instances | LEAN-CHECKED: 936, 164, 710 (47-cycle); 716, 398, 952 (171-cycle); 138, 790, 911, 626, 198, 248 (1,841-cycle) at `k = 7`; 112 (8-cycle) and 275 (848-cycle) at `k = 8` |
 | independent review | not yet requested / none |
 
 Axioms of every exported theorem: `propext`, `Classical.choice`, `Quot.sound`. No `sorry`,
@@ -50,7 +51,8 @@ no `native_decide`, no `Lean.ofReduceBool`. Official Lean 4.19.0 (`6caaee842e94`
 | `gen_lean_witness.py` | emits `lean/witnesses/Cycle<abc>_k<k>.lean` from a results record (packed base-19 rows) |
 | `minimize_witness.py`, `short_witness.py` | attempts to shorten witnesses (BFS); retained, neither found shorter entries within their caps |
 | `results/k7.jsonl`, `results/k8.jsonl` | one record per class: status, explored states, entry path, cycle (or CAP) |
-| `lean/PrefixCycle.lean` | the Lean interface (see METHOD_LIMIT.md §4) |
+| `lean/PrefixCycle.lean`, `lean/Projection.lean` | the Lean interface and the projection lemma (see METHOD_LIMIT.md §4) |
+| `results/k8_275_cap12M.jsonl` | the 275 rerun (CYCLE after 4,135,546 states) |
 | `lean/witnesses/*.lean` | kernel-checked instances |
 | `lean/build.sh`, `build/` | fresh-build script and its retained logs, hashes and axiom reports |
 
