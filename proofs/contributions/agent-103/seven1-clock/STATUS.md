@@ -93,8 +93,8 @@ Status: **UNKNOWN_CAP**; next lift width 16: 45,163,304 raw vertices, 82,360,117
   and (4,9,10,1,3,6,13), checked by enumerating all 128 controls. The "outer
   coefficient 4 every seven steps" question therefore stays open through
   `seven_1`.
-- A quick direct experiment (not a proof; `../seven1-clock/` does not retain
-  it) found that random seeds of 6–30 digits follow either clock for at most
+- A quick direct experiment (`experiment/clockrun.py`, output
+  `experiment/clockrun_seed1.out`; exploratory, not a proof) found that random seeds of 6–30 digits follow either clock for at most
   about 7 periods (longest run of 53 steps for `seven_4` and 41 for `seven_1`
   among 3,000 seeds). The hierarchy growth therefore reflects slack in the
   necessary relation, not observed long runs.
