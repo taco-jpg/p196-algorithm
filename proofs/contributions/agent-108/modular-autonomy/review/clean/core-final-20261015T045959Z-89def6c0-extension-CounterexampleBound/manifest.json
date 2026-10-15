@@ -1,0 +1,294 @@
+{
+  "status": "passed",
+  "module": "CounterexampleBound",
+  "core_manifest": "/workspace/scratch/28992391bdc2/p196-agent108/proofs/contributions/agent-108/modular-autonomy/review/clean/core-final-20261015T045959Z-89def6c0/manifest.json",
+  "core_manifest_sha256": "9d3dbc684a895d6e1e2883128e777e010493c70606c23dc67c4adccce6ef8794",
+  "core_run_id": "core-final-20261015T045959Z-89def6c0",
+  "build_directory": "/workspace/scratch/28992391bdc2/independent-review-build/core-final-20261015T045959Z-89def6c0",
+  "core_olean_sha256_before": {
+    "AutonomyBasic.olean": "d1052edc0a772388737d816dc107b93a93f5ea2072e232d109628ecae8cfc747",
+    "AutonomyDefs.olean": "00f2b491b9f56c20240553de2eb6a89722351aae87c3e67afcfb92add131a688",
+    "DigitPerturbation.olean": "3b31a13293e7591136a736fd0dc42330764bafd3ad837ec87b61ba860c1abc77",
+    "LeadingWitness.olean": "bcd552b0a918d3c3008e12b0cf2d443f361318f0c82322c173f8cfc185975c2e",
+    "Lychrel196Research.olean": "88818b0e54e96d9724ffcf263c578a3547f069b35b302270521ee606759d564d",
+    "ModularAutonomy.olean": "43a79ff673f7f2a3c1da2ed9f38dd184f2a68848e7a8f539ec07880e35a2cb20",
+    "Necessity.olean": "930cd88577bc64ba7a74815cb27d2fb6ede78d16c81de275a802afa4413ebb66"
+  },
+  "source_sha256_before": "c217439c2312265f7ed9b07f851fa504bd3671922bd43fbba2e6c1c8032848da",
+  "commands": [
+    {
+      "label": "01-compile-CounterexampleBound",
+      "argv": [
+        "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean",
+        "-o",
+        "CounterexampleBound.olean",
+        "CounterexampleBound.lean"
+      ],
+      "command": "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean -o CounterexampleBound.olean CounterexampleBound.lean",
+      "cwd": "/workspace/scratch/28992391bdc2/independent-review-build/core-final-20261015T045959Z-89def6c0/src",
+      "exit_code": 0,
+      "elapsed_seconds": 1.184,
+      "full_log": "01-compile-CounterexampleBound.log",
+      "full_log_sha256": "84d58650867d0eadcf59b800196f2f8ed9afa4b71f296752a1fc8f2733d4cd47"
+    },
+    {
+      "label": "02-discover-and-validate-axioms",
+      "argv": [
+        "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean",
+        "DiscoverExtension.lean"
+      ],
+      "command": "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean DiscoverExtension.lean",
+      "cwd": "/workspace/scratch/28992391bdc2/independent-review-build/core-final-20261015T045959Z-89def6c0/src",
+      "exit_code": 0,
+      "elapsed_seconds": 2.472,
+      "full_log": "02-discover-and-validate-axioms.log",
+      "full_log_sha256": "3e589249ec6d1f7f9066b00724b3fdcde94f09c65bc16e247853374a28cf1384"
+    },
+    {
+      "label": "03-print-axioms-all-exports",
+      "argv": [
+        "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean",
+        "PrintExtensionAxioms.lean"
+      ],
+      "command": "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean PrintExtensionAxioms.lean",
+      "cwd": "/workspace/scratch/28992391bdc2/independent-review-build/core-final-20261015T045959Z-89def6c0/src",
+      "exit_code": 0,
+      "elapsed_seconds": 0.943,
+      "full_log": "03-print-axioms-all-exports.log",
+      "full_log_sha256": "63791f4b0bbc6252d57d794c169fc00412ebd2b86ca555112a39b751b6b88e07"
+    }
+  ],
+  "axiom_allowlist": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "toolchain_sha256_before": {
+    "bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+    "lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/Init.olean": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944",
+    "lib/lean/Std.olean": "7d3771da25b893da62564bf8198487ff28f01af5cbd410be88d493a4921b2bb1"
+  },
+  "trust_note": "Official Lean with explicit readlink self-path compatibility adapter.",
+  "script_sha256": "a8e81f09696c52970ecb736189215041fee58efff5f2173bfc108dd224f8f585",
+  "environment_overrides": {
+    "LEAN_PATH": "/workspace/scratch/28992391bdc2/independent-review-build/core-final-20261015T045959Z-89def6c0/src",
+    "LD_PRELOAD": "/workspace/scratch/28992391bdc2/runtime-diagnostics/libproc_self_readlink.so"
+  },
+  "all_local_theorems": [
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_1",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_2",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_3",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_4",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_5",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_6",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_7",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_8",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_forces_scaled_99._proof_9",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_not_dvd_five",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_not_dvd_five._proof_1",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_not_dvd_two",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.at_not_dvd_two._proof_1",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at._proof_1",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at._proof_2",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at._proof_3",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at._proof_4",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at._proof_5",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at._proof_6",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.leading_residue_witnesses_at._proof_7",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.reverse_residue_det_at_iff",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.reverse_residue_det_at_iff._proof_1",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.reverse_residue_det_at_iff._proof_2",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.reverse_residue_det_at_iff._proof_3",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.step_counterexamples_at_every_large_width",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.step_residue_det_at_iff",
+      "visibility": "exported"
+    },
+    {
+      "module": "CounterexampleBound",
+      "name": "ModularAutonomy.step_residue_det_at_iff_reverse",
+      "visibility": "exported"
+    }
+  ],
+  "exported_theorem_count": 29,
+  "source_declared_theorems": [
+    "ModularAutonomy.leading_residue_witnesses_at",
+    "ModularAutonomy.at_not_dvd_two",
+    "ModularAutonomy.at_not_dvd_five",
+    "ModularAutonomy.at_forces_scaled_99",
+    "ModularAutonomy.reverse_residue_det_at_iff",
+    "ModularAutonomy.step_residue_det_at_iff_reverse",
+    "ModularAutonomy.step_residue_det_at_iff",
+    "ModularAutonomy.step_counterexamples_at_every_large_width"
+  ],
+  "source_declared_theorem_count": 8,
+  "axiom_sets": {
+    "ModularAutonomy.leading_residue_witnesses_at._proof_4": "#[propext, Quot.sound]",
+    "ModularAutonomy.step_counterexamples_at_every_large_width": "#[Classical.choice, propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_8": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_not_dvd_two": "#[propext, Quot.sound, Classical.choice]",
+    "ModularAutonomy.reverse_residue_det_at_iff._proof_1": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_not_dvd_two._proof_1": "#[propext, Quot.sound]",
+    "ModularAutonomy.leading_residue_witnesses_at._proof_2": "#[Classical.choice, propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_1": "#[propext, Quot.sound]",
+    "ModularAutonomy.leading_residue_witnesses_at._proof_7": "#[propext, Quot.sound]",
+    "ModularAutonomy.leading_residue_witnesses_at._proof_6": "#[propext, Quot.sound]",
+    "ModularAutonomy.leading_residue_witnesses_at._proof_5": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_3": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_6": "#[propext, Quot.sound]",
+    "ModularAutonomy.reverse_residue_det_at_iff._proof_2": "#[propext, Quot.sound]",
+    "ModularAutonomy.reverse_residue_det_at_iff": "#[propext, Quot.sound, Classical.choice]",
+    "ModularAutonomy.at_not_dvd_five": "#[propext, Quot.sound, Classical.choice]",
+    "ModularAutonomy.leading_residue_witnesses_at": "#[propext, Quot.sound, Classical.choice]",
+    "ModularAutonomy.at_forces_scaled_99._proof_5": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_7": "#[propext, Quot.sound]",
+    "ModularAutonomy.reverse_residue_det_at_iff._proof_3": "#[propext, Quot.sound]",
+    "ModularAutonomy.step_residue_det_at_iff": "#[propext, Quot.sound, Classical.choice]",
+    "ModularAutonomy.leading_residue_witnesses_at._proof_3": "#[Classical.choice, propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_2": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99": "#[propext, Quot.sound, Classical.choice]",
+    "ModularAutonomy.at_not_dvd_five._proof_1": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_9": "#[propext, Quot.sound]",
+    "ModularAutonomy.leading_residue_witnesses_at._proof_1": "#[propext, Quot.sound]",
+    "ModularAutonomy.at_forces_scaled_99._proof_4": "#[propext, Quot.sound]",
+    "ModularAutonomy.step_residue_det_at_iff_reverse": "#[propext, Quot.sound]"
+  },
+  "unsafe_compiler_declarations": [],
+  "source_sha256_after": "c217439c2312265f7ed9b07f851fa504bd3671922bd43fbba2e6c1c8032848da",
+  "core_olean_sha256_after": {
+    "AutonomyBasic.olean": "d1052edc0a772388737d816dc107b93a93f5ea2072e232d109628ecae8cfc747",
+    "AutonomyDefs.olean": "00f2b491b9f56c20240553de2eb6a89722351aae87c3e67afcfb92add131a688",
+    "DigitPerturbation.olean": "3b31a13293e7591136a736fd0dc42330764bafd3ad837ec87b61ba860c1abc77",
+    "LeadingWitness.olean": "bcd552b0a918d3c3008e12b0cf2d443f361318f0c82322c173f8cfc185975c2e",
+    "Lychrel196Research.olean": "88818b0e54e96d9724ffcf263c578a3547f069b35b302270521ee606759d564d",
+    "ModularAutonomy.olean": "43a79ff673f7f2a3c1da2ed9f38dd184f2a68848e7a8f539ec07880e35a2cb20",
+    "Necessity.olean": "930cd88577bc64ba7a74815cb27d2fb6ede78d16c81de275a802afa4413ebb66"
+  },
+  "core_oleans_unchanged": true,
+  "toolchain_sha256_after": {
+    "bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+    "lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/Init.olean": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944",
+    "lib/lean/Std.olean": "7d3771da25b893da62564bf8198487ff28f01af5cbd410be88d493a4921b2bb1"
+  },
+  "toolchain_unchanged": true,
+  "source_unchanged": true,
+  "compiled_extension_olean_sha256": "8043861e22e49e40e78203aee03a829406df9c482728bf0da80225d0a1bfd00e",
+  "finished_utc": "2026-10-15T05:02:30.919615+00:00"
+}
