@@ -186,7 +186,7 @@ theorem orbitCount_congr (q r : Nat → Nat) (L t : Nat)
     intro k
     rcases iterPairs_congr_upto q r L k he with ⟨hw, hp⟩
     have h := carry_congr_upto (iterPairs q L k).2 (iterPairs r L k).2
-      (iterPairs q L k).1 hp (Nat.le_refl _)
+      (iterPairs q L k).1 hp (iterPairs q L k).1 (Nat.le_refl _)
     exact h.trans (congrArg (carry (iterPairs r L k).2) hw)
   induction t with
   | zero => rfl
