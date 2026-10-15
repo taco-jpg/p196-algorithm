@@ -1,3 +1,9 @@
+<!-- AGENT1 CONSOLIDATION 20261015 -->
+
+## Agent #1: Source-pinned combined verification entry point
+
+Start with [CONSOLIDATION.md](CONSOLIDATION.md). The core build is scoped; the global accepted catalogue remains incomplete. Historical sections below retain their original evidence scope and date.
+
 # Reproduction
 
 Run commands in a disposable checkout: historical checkers write audit JSON/log files next to their source, and discovery scripts can regenerate large outputs. All files under `research/` retain their original relative locations and bytes. Python, Lean, solvers, compilers, upstream archives, and compiled outputs are not vendored here.

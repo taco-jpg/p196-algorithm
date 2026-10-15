@@ -82,7 +82,8 @@ def main() -> None:
       'catalogue_complete':False,
       'catalogue_blockers':[
        {'id':'PREEXISTING_ACCEPTED_SCOPE_CENSUS','status':'OPEN','description':'Pre-existing accepted scopes advertised in REPRODUCE.md and coordination handoffs remain accepted under their original records, but are not all represented by this first combined registry. A scoped PASS is not repository-wide verification.'},
-       {'id':'BASELINE_BYTE_COVERAGE','status':'OPEN','description':'Initial main b6f8274 has 478 tracked proof files absent from its legacy manifest, including132 Lean files. Regeneration and complete tracked-file coverage verification remain required.'}],
+],
+      'publication_integrity':{'baseline':'b6f827418576027b1cff89746ee8077217963fce','historical_omissions':'contributions/agent-1/consolidation-20261015/index/baseline-coverage.json','verification_command':'python3 -B proofs/verify_release.py','scope':'Complete byte coverage is checked separately on each current snapshot; not mathematical acceptance.'},
       'projects':{'consolidation-core':{'modules':modules,
        'roots':['OuterOrbit','AlternatingScalarBoundary','HighBaseFirstHit','DifferenceObservability','TwoDigitMain'],
        'scope':'Previously accepted thirteen-prefix closure together with four independently reviewed branch-only packages; disjoint abstract-model and actual-arithmetic conclusions remain distinct.',

@@ -1,0 +1,1146 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "consolidation-core": {
+      "status": "PASS",
+      "scope": "Previously accepted thirteen-prefix closure together with four independently reviewed branch-only packages; disjoint abstract-model and actual-arithmetic conclusions remain distinct.",
+      "sources": {
+        "OuterCharge": {
+          "path": "proofs/contributions/2026-10-15-agent3-complementary-bulk/OuterCharge.lean",
+          "sha256": "5c907fdc44da905f690f3d70ed4762881f2bafa465025f2bed8ab022fb0b7ca3",
+          "build_sha256": "5c907fdc44da905f690f3d70ed4762881f2bafa465025f2bed8ab022fb0b7ca3",
+          "imports": [
+            "Lean"
+          ],
+          "adapter": null
+        },
+        "OuterOrbit": {
+          "path": "proofs/contributions/2026-10-15-agent3-complementary-bulk/OuterOrbit.lean",
+          "sha256": "667a296f739af623fcb725549dec6de0b19b298291e6f889c6eaf4b9e0edfdb4",
+          "build_sha256": "667a296f739af623fcb725549dec6de0b19b298291e6f889c6eaf4b9e0edfdb4",
+          "imports": [
+            "OuterCharge"
+          ],
+          "adapter": null
+        },
+        "AlternatingScalarBoundary": {
+          "path": "proofs/contributions/2026-10-15-agent9-alternating-scalar-boundary/AlternatingScalarBoundary.lean",
+          "sha256": "e94e12e50cd381a0f666f9d2fb5e733087881532f7ff21c92bfc46add9356e85",
+          "build_sha256": "e94e12e50cd381a0f666f9d2fb5e733087881532f7ff21c92bfc46add9356e85",
+          "imports": [
+            "Lean"
+          ],
+          "adapter": null
+        },
+        "SignedDigitUniqueness": {
+          "path": "proofs/contributions/2026-10-14-base-uniqueness-formal/SignedDigitUniqueness.lean",
+          "sha256": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+          "build_sha256": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "BaseReflection": {
+          "path": "proofs/contributions/2026-10-15-base-reflection-formal/BaseReflection.lean",
+          "sha256": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+          "build_sha256": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+          "imports": [
+            "SignedDigitUniqueness"
+          ],
+          "adapter": null
+        },
+        "ResetNormalization": {
+          "path": "proofs/contributions/2026-10-15-base-reflection-formal/ResetNormalization.lean",
+          "sha256": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+          "build_sha256": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+          "imports": [
+            "BaseReflection"
+          ],
+          "adapter": null
+        },
+        "PhysicalWidth": {
+          "path": "proofs/contributions/2026-10-15-base-reflection-formal/PhysicalWidth.lean",
+          "sha256": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+          "build_sha256": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+          "imports": [
+            "ResetNormalization"
+          ],
+          "adapter": null
+        },
+        "SeamSafety": {
+          "path": "proofs/contributions/2026-10-15-base-reflection-formal/SeamSafety.lean",
+          "sha256": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+          "build_sha256": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+          "imports": [
+            "PhysicalWidth"
+          ],
+          "adapter": null
+        },
+        "ReverseAdd": {
+          "path": "proofs/contributions/2026-10-15-base-reverse-add-formal/ReverseAdd.lean",
+          "sha256": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+          "build_sha256": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+          "imports": [
+            "SeamSafety"
+          ],
+          "adapter": null
+        },
+        "HighBaseNormalization": {
+          "path": "proofs/contributions/agent-11/base-high-threshold/HighBaseNormalization.lean",
+          "sha256": "8aef00ea45467515cab543fd900e5e1dc856cf2bef54de41e495b65bba21849c",
+          "build_sha256": "8aef00ea45467515cab543fd900e5e1dc856cf2bef54de41e495b65bba21849c",
+          "imports": [
+            "ReverseAdd"
+          ],
+          "adapter": null
+        },
+        "HighBasePairs": {
+          "path": "proofs/contributions/agent-11/base-high-threshold/HighBasePairs.lean",
+          "sha256": "1c0ba10296edff2b29e0779e462b1d57c7f5878be6dc19aeb7753763c5f1586f",
+          "build_sha256": "1c0ba10296edff2b29e0779e462b1d57c7f5878be6dc19aeb7753763c5f1586f",
+          "imports": [
+            "HighBaseNormalization"
+          ],
+          "adapter": null
+        },
+        "HighBaseThreshold": {
+          "path": "proofs/contributions/agent-11/base-high-threshold/HighBaseThreshold.lean",
+          "sha256": "576c82807b4b1b93a1cdfa5c47c67787325b365c6dde4e50054ac723c6c286b8",
+          "build_sha256": "576c82807b4b1b93a1cdfa5c47c67787325b365c6dde4e50054ac723c6c286b8",
+          "imports": [
+            "HighBasePairs"
+          ],
+          "adapter": null
+        },
+        "HighBaseNumeric": {
+          "path": "proofs/contributions/agent-11/base-high-threshold/HighBaseNumeric.lean",
+          "sha256": "b2061d2b86b17fe3cb0f01a04ecb2e29d38bee7c8e9b2240d132014e9cf5862c",
+          "build_sha256": "b2061d2b86b17fe3cb0f01a04ecb2e29d38bee7c8e9b2240d132014e9cf5862c",
+          "imports": [
+            "HighBaseThreshold"
+          ],
+          "adapter": null
+        },
+        "HighBaseFirstHit": {
+          "path": "proofs/contributions/agent-11/base-high-threshold/HighBaseFirstHit.lean",
+          "sha256": "5116f8b17c507134b3d9ac620bbb93f64921edf378b6e0ae99ae3243e6a8ca13",
+          "build_sha256": "5116f8b17c507134b3d9ac620bbb93f64921edf378b6e0ae99ae3243e6a8ca13",
+          "imports": [
+            "HighBaseNumeric"
+          ],
+          "adapter": null
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/research/continuation/LychrelDigitSums.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "build_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Lychrel196Research": {
+          "path": "proofs/research/Lychrel196Research.lean",
+          "sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+          "build_sha256": "5c8859684f186a7121d0d3cbf82f2ad5ac9398ccb73c4dd6a9d2256be128a11b",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": {
+            "kind": "verified_embedded_foundation",
+            "original_source_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+            "container_module": "LychrelDigitSums",
+            "container_source_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+            "original_excluded_line": "import Std",
+            "embedded_start_line_1_based": 11,
+            "embedded_line_count": 4444
+          }
+        },
+        "PrefixCarryBound": {
+          "path": "proofs/contributions/2026-10-15-carry-observability/PrefixCarryBound.lean",
+          "sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+          "build_sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ActualCarryObservability": {
+          "path": "proofs/contributions/2026-10-15-carry-observability/ActualCarryObservability.lean",
+          "sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+          "build_sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+          "imports": [
+            "Lychrel196Research",
+            "PrefixCarryBound"
+          ],
+          "adapter": null
+        },
+        "DifferenceObservability": {
+          "path": "proofs/contributions/2026-10-15-carry-observability/DifferenceObservability.lean",
+          "sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+          "build_sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+          "imports": [
+            "ActualCarryObservability"
+          ],
+          "adapter": null
+        },
+        "TwoDigitProjection": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitProjection.lean",
+          "sha256": "712e7df580b6cfc455aa159ba844487189984f54c738353984820f24bd8ed279",
+          "build_sha256": "712e7df580b6cfc455aa159ba844487189984f54c738353984820f24bd8ed279",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "TwoDigitGrowth": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitGrowth.lean",
+          "sha256": "c9a987ab718d9f2b3941058a8c856f3480cf629200673aeabf011832012a5b13",
+          "build_sha256": "c9a987ab718d9f2b3941058a8c856f3480cf629200673aeabf011832012a5b13",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "TwoDigitNumeric": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitNumeric.lean",
+          "sha256": "a13d3d4000816e3ce80af4a4c811def55cec13058bef502a0bbf73e838b87c09",
+          "build_sha256": "a13d3d4000816e3ce80af4a4c811def55cec13058bef502a0bbf73e838b87c09",
+          "imports": [
+            "TwoDigitProjection",
+            "TwoDigitGrowth",
+            "PalindromeBridge"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCertificate": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCertificate.lean",
+          "sha256": "15835d63f5e66f6f38ec0b276f98a3ae1611e01aaf198d6cf8b5d9bda32f078a",
+          "build_sha256": "15835d63f5e66f6f38ec0b276f98a3ae1611e01aaf198d6cf8b5d9bda32f078a",
+          "imports": [
+            "TwoDigitNumeric"
+          ],
+          "adapter": null
+        },
+        "TwoDigitMain": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitMain.lean",
+          "sha256": "c2adf3a8a1d46b4b1ab3b792da77a820576abf762852a178011fda4bf0b45847",
+          "build_sha256": "c2adf3a8a1d46b4b1ab3b792da77a820576abf762852a178011fda4bf0b45847",
+          "imports": [
+            "TwoDigitCert10",
+            "TwoDigitCert20",
+            "TwoDigitCert32",
+            "TwoDigitCert40",
+            "TwoDigitCert41",
+            "TwoDigitCert60",
+            "TwoDigitCert64",
+            "TwoDigitCert65",
+            "TwoDigitCert76",
+            "TwoDigitCert80",
+            "TwoDigitCert81",
+            "TwoDigitCert82",
+            "TwoDigitCert83"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert10": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert10.lean",
+          "sha256": "1d108ee50b47302e927699370319becd2664817096b32d0665d87f85bde775b8",
+          "build_sha256": "1d108ee50b47302e927699370319becd2664817096b32d0665d87f85bde775b8",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert20": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert20.lean",
+          "sha256": "056378987e607e08bc703aa3ac45762e8f116e68448cd3d406ca7352c8df8912",
+          "build_sha256": "056378987e607e08bc703aa3ac45762e8f116e68448cd3d406ca7352c8df8912",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert32": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert32.lean",
+          "sha256": "4ba27ef1d9e034b4f49fbe46008265e6e074f4a688af83f7d9b7631a7fdaafc2",
+          "build_sha256": "4ba27ef1d9e034b4f49fbe46008265e6e074f4a688af83f7d9b7631a7fdaafc2",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert40": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert40.lean",
+          "sha256": "dc01707d4a87ab69bcf9b7a4fb9f61c93757e5e4cb0a8d22da2933ad702091b1",
+          "build_sha256": "dc01707d4a87ab69bcf9b7a4fb9f61c93757e5e4cb0a8d22da2933ad702091b1",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert41": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert41.lean",
+          "sha256": "f86e759405420e14abd77fde9b07c57975cd495616214a6e66d860f0e889151b",
+          "build_sha256": "f86e759405420e14abd77fde9b07c57975cd495616214a6e66d860f0e889151b",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert60": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert60.lean",
+          "sha256": "e0697e7cc2c2789ed1bcf5451de7f07391f0c39ec64267fd8b6aad05590a0661",
+          "build_sha256": "e0697e7cc2c2789ed1bcf5451de7f07391f0c39ec64267fd8b6aad05590a0661",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert64": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert64.lean",
+          "sha256": "416049ba18c61f5f19c61b387952fbad375a01d32e65ca146331003be5880be3",
+          "build_sha256": "416049ba18c61f5f19c61b387952fbad375a01d32e65ca146331003be5880be3",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert65": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert65.lean",
+          "sha256": "f87ef717daa13f576981d7ac8fc5da8da1154d7776028ab92956d16cb61f18ea",
+          "build_sha256": "f87ef717daa13f576981d7ac8fc5da8da1154d7776028ab92956d16cb61f18ea",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert76": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert76.lean",
+          "sha256": "67c26fa10bdcf27ae63f3092f3f8f449bae3718f93395b3a7764c39b9a637cd0",
+          "build_sha256": "67c26fa10bdcf27ae63f3092f3f8f449bae3718f93395b3a7764c39b9a637cd0",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert80": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert80.lean",
+          "sha256": "f405785aae6ab4a6a7d90a48b643900f4b45c22a3b0284c50a9cd867901eec9a",
+          "build_sha256": "f405785aae6ab4a6a7d90a48b643900f4b45c22a3b0284c50a9cd867901eec9a",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert81": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert81.lean",
+          "sha256": "38266c935971137961b5e3d42f9ae9cb782cb2f0717a8ea2a451dde8ae2f197f",
+          "build_sha256": "38266c935971137961b5e3d42f9ae9cb782cb2f0717a8ea2a451dde8ae2f197f",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert82": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert82.lean",
+          "sha256": "3be8153d67d2358f4ec126fa0cea972ab1921f8ba11d96e8d238803917dcb6a4",
+          "build_sha256": "3be8153d67d2358f4ec126fa0cea972ab1921f8ba11d96e8d238803917dcb6a4",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "TwoDigitCert83": {
+          "path": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCert83.lean",
+          "sha256": "809992bef567e69180af535dc63d1fbc0de509d814c96395e9cf543b12d493a7",
+          "build_sha256": "809992bef567e69180af535dc63d1fbc0de509d814c96395e9cf543b12d493a7",
+          "imports": [
+            "TwoDigitCertificate"
+          ],
+          "adapter": null
+        },
+        "PalindromeBridge": {
+          "path": "proofs/contributions/agent-104/seven-column-kernel/PalindromeBridge.lean",
+          "sha256": "6c1de8cf02ec9381e80388e6b4915db6cfa4d1189d3e47c273400f0d37948093",
+          "build_sha256": "6c1de8cf02ec9381e80388e6b4915db6cfa4d1189d3e47c273400f0d37948093",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "OuterCharge",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OuterCharge.olean",
+            "OuterCharge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.218524,
+          "log": "consolidation-core/logs/OuterCharge.log",
+          "log_sha256": "8c906194a4760c7ab4130d54fe306cb8d76ee57014e926241f7323b74d23cb93"
+        },
+        {
+          "label": "OuterOrbit",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OuterOrbit.olean",
+            "OuterOrbit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.617427,
+          "log": "consolidation-core/logs/OuterOrbit.log",
+          "log_sha256": "01a789dbda6d18148bf8e5f39dc39e22f0143d17599c3363cecf68b487702897"
+        },
+        {
+          "label": "AlternatingScalarBoundary",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "AlternatingScalarBoundary.olean",
+            "AlternatingScalarBoundary.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.820199,
+          "log": "consolidation-core/logs/AlternatingScalarBoundary.log",
+          "log_sha256": "ed5939fed61a6e031dc35c757e2124ee96a037b201675ce4a01b70c672a1ba41"
+        },
+        {
+          "label": "SignedDigitUniqueness",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "SignedDigitUniqueness.olean",
+            "SignedDigitUniqueness.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.41488,
+          "log": "consolidation-core/logs/SignedDigitUniqueness.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "BaseReflection",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "BaseReflection.olean",
+            "BaseReflection.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.614974,
+          "log": "consolidation-core/logs/BaseReflection.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ResetNormalization",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ResetNormalization.olean",
+            "ResetNormalization.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.71515,
+          "log": "consolidation-core/logs/ResetNormalization.log",
+          "log_sha256": "c68e347e10575d426d47addc8032e2198b791dc4489ac2476d35dcaf199dd52a"
+        },
+        {
+          "label": "PhysicalWidth",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PhysicalWidth.olean",
+            "PhysicalWidth.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.715274,
+          "log": "consolidation-core/logs/PhysicalWidth.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "SeamSafety",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "SeamSafety.olean",
+            "SeamSafety.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.264362,
+          "log": "consolidation-core/logs/SeamSafety.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ReverseAdd",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ReverseAdd.olean",
+            "ReverseAdd.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.565831,
+          "log": "consolidation-core/logs/ReverseAdd.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "HighBaseNormalization",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "HighBaseNormalization.olean",
+            "HighBaseNormalization.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.36458,
+          "log": "consolidation-core/logs/HighBaseNormalization.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "HighBasePairs",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "HighBasePairs.olean",
+            "HighBasePairs.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.415687,
+          "log": "consolidation-core/logs/HighBasePairs.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "HighBaseThreshold",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "HighBaseThreshold.olean",
+            "HighBaseThreshold.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.416032,
+          "log": "consolidation-core/logs/HighBaseThreshold.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "HighBaseNumeric",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "HighBaseNumeric.olean",
+            "HighBaseNumeric.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.415123,
+          "log": "consolidation-core/logs/HighBaseNumeric.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "HighBaseFirstHit",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "HighBaseFirstHit.olean",
+            "HighBaseFirstHit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.665589,
+          "log": "consolidation-core/logs/HighBaseFirstHit.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "LychrelDigitSums",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "LychrelDigitSums.olean",
+            "LychrelDigitSums.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 44.57198,
+          "log": "consolidation-core/logs/LychrelDigitSums.log",
+          "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+        },
+        {
+          "label": "Lychrel196Research",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Lychrel196Research.olean",
+            "Lychrel196Research.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.164109,
+          "log": "consolidation-core/logs/Lychrel196Research.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "PrefixCarryBound",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PrefixCarryBound.olean",
+            "PrefixCarryBound.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.870349,
+          "log": "consolidation-core/logs/PrefixCarryBound.log",
+          "log_sha256": "ae9591b2b0c548deaca7d7d2975ffcb62ed4803f343ce5f908b06b8c5c66c7bd"
+        },
+        {
+          "label": "ActualCarryObservability",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualCarryObservability.olean",
+            "ActualCarryObservability.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 3.271332,
+          "log": "consolidation-core/logs/ActualCarryObservability.log",
+          "log_sha256": "5fa68bfc9db74f9d119b776315f09494b77c43acf0100b895eeefef7b0ff584e"
+        },
+        {
+          "label": "DifferenceObservability",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "DifferenceObservability.olean",
+            "DifferenceObservability.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.91849,
+          "log": "consolidation-core/logs/DifferenceObservability.log",
+          "log_sha256": "1cdbebd1d5f2f5e71e73ead1a5c0046ed08793489c544160747134a922266747"
+        },
+        {
+          "label": "TwoDigitProjection",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitProjection.olean",
+            "TwoDigitProjection.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.715505,
+          "log": "consolidation-core/logs/TwoDigitProjection.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "TwoDigitGrowth",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitGrowth.olean",
+            "TwoDigitGrowth.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.367214,
+          "log": "consolidation-core/logs/TwoDigitGrowth.log",
+          "log_sha256": "fcee81e78a2c997b14b25f57e8758d4d451dd3a1d7241c73601f55b3200c7f6a"
+        },
+        {
+          "label": "PalindromeBridge",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PalindromeBridge.olean",
+            "PalindromeBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.467743,
+          "log": "consolidation-core/logs/PalindromeBridge.log",
+          "log_sha256": "29d5330488c9bc15ea8148c682c499da9c56d752c8e76f7abf15da3c83c6ac00"
+        },
+        {
+          "label": "TwoDigitNumeric",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitNumeric.olean",
+            "TwoDigitNumeric.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.668415,
+          "log": "consolidation-core/logs/TwoDigitNumeric.log",
+          "log_sha256": "b648405420ef2c60ab0a6caa196c253e77f3ff502ab8248be606591ee1e1cc43"
+        },
+        {
+          "label": "TwoDigitCertificate",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCertificate.olean",
+            "TwoDigitCertificate.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.966246,
+          "log": "consolidation-core/logs/TwoDigitCertificate.log",
+          "log_sha256": "cf79875b92a242fe1d790605b387df1fd87394d97f9a945cde65e57c68f2625b"
+        },
+        {
+          "label": "TwoDigitCert10",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert10.olean",
+            "TwoDigitCert10.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 4.273741,
+          "log": "consolidation-core/logs/TwoDigitCert10.log",
+          "log_sha256": "fb0775615b47404af8ba64d96000ae459a59848dbcc77b62e3fa07a8e51f3a28"
+        },
+        {
+          "label": "TwoDigitCert20",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert20.olean",
+            "TwoDigitCert20.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 9.286732,
+          "log": "consolidation-core/logs/TwoDigitCert20.log",
+          "log_sha256": "2271f33e740aba7189e336d31b70ca6d76c904ff8313484484e2edf71603f49d"
+        },
+        {
+          "label": "TwoDigitCert32",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert32.olean",
+            "TwoDigitCert32.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 10.139321,
+          "log": "consolidation-core/logs/TwoDigitCert32.log",
+          "log_sha256": "9eafc18c673208a1df87459f1f8a8f4b0dc2ff089cbe6b238068c449777845be"
+        },
+        {
+          "label": "TwoDigitCert40",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert40.olean",
+            "TwoDigitCert40.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 15.152012,
+          "log": "consolidation-core/logs/TwoDigitCert40.log",
+          "log_sha256": "e50a6004dd8a3905d4f7ccfac50b64bc01aa6663e62b61b9f3b4c3a08594c9cb"
+        },
+        {
+          "label": "TwoDigitCert41",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert41.olean",
+            "TwoDigitCert41.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 13.494789,
+          "log": "consolidation-core/logs/TwoDigitCert41.log",
+          "log_sha256": "471c3449dcf4f5be1ffc64c032af1c1ab11686f4cf53210615b30804ab8bf207"
+        },
+        {
+          "label": "TwoDigitCert60",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert60.olean",
+            "TwoDigitCert60.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 11.588871,
+          "log": "consolidation-core/logs/TwoDigitCert60.log",
+          "log_sha256": "cad1d038e905163ba2ff0a4881cd8f308250ba8e612d40c35abadc6b530603ea"
+        },
+        {
+          "label": "TwoDigitCert64",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert64.olean",
+            "TwoDigitCert64.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 11.837388,
+          "log": "consolidation-core/logs/TwoDigitCert64.log",
+          "log_sha256": "bdd2399379398a80726402d5fe1fe26dce3cb0eeaaa514b2d3e22a28cb5293bc"
+        },
+        {
+          "label": "TwoDigitCert65",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert65.olean",
+            "TwoDigitCert65.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 24.363261,
+          "log": "consolidation-core/logs/TwoDigitCert65.log",
+          "log_sha256": "595230b77a25d1e557484a44f96316d033aef011083eff9fe8ef6fc8070612cd"
+        },
+        {
+          "label": "TwoDigitCert76",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert76.olean",
+            "TwoDigitCert76.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 15.053603,
+          "log": "consolidation-core/logs/TwoDigitCert76.log",
+          "log_sha256": "e7f568d65255450a47f21459ea962af3631883cbd876e602ff2919ab54833eaa"
+        },
+        {
+          "label": "TwoDigitCert80",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert80.olean",
+            "TwoDigitCert80.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 16.95097,
+          "log": "consolidation-core/logs/TwoDigitCert80.log",
+          "log_sha256": "6f82baf487ba263a26a07ab057d6fbb9c28cfd7da03ff898226bdffed2dda904"
+        },
+        {
+          "label": "TwoDigitCert81",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert81.olean",
+            "TwoDigitCert81.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 16.04636,
+          "log": "consolidation-core/logs/TwoDigitCert81.log",
+          "log_sha256": "b015ad00129c1f04c8e9983003b2b5d9c8b275a5ba041ff5bd5f106e439eca2b"
+        },
+        {
+          "label": "TwoDigitCert82",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert82.olean",
+            "TwoDigitCert82.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 15.594175,
+          "log": "consolidation-core/logs/TwoDigitCert82.log",
+          "log_sha256": "202690fd34ff4840b7ad77a826b47e81f59f771610760ae296c5d4a099ffb629"
+        },
+        {
+          "label": "TwoDigitCert83",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitCert83.olean",
+            "TwoDigitCert83.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 16.297406,
+          "log": "consolidation-core/logs/TwoDigitCert83.log",
+          "log_sha256": "3e16d52df686d8b86c0d3f2d78c03428481dfee2016a1a145db9abf30769d253"
+        },
+        {
+          "label": "TwoDigitMain",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TwoDigitMain.olean",
+            "TwoDigitMain.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.41611,
+          "log": "consolidation-core/logs/TwoDigitMain.log",
+          "log_sha256": "87adf2703338ab95a813b128304d445de7973a54b1ac551d8ee5d6d68349ff9e"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/tmp/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 22.800675,
+          "log": "consolidation-core/logs/ProjectAudit.log",
+          "log_sha256": "7ff276a1d8ca3fcd58af2e367f9397b88156648a77c8d7c87b77136596d838bf"
+        }
+      ],
+      "roots": [
+        "OuterOrbit",
+        "AlternatingScalarBoundary",
+        "HighBaseFirstHit",
+        "DifferenceObservability",
+        "TwoDigitMain"
+      ],
+      "build_order": [
+        "OuterCharge",
+        "OuterOrbit",
+        "AlternatingScalarBoundary",
+        "SignedDigitUniqueness",
+        "BaseReflection",
+        "ResetNormalization",
+        "PhysicalWidth",
+        "SeamSafety",
+        "ReverseAdd",
+        "HighBaseNormalization",
+        "HighBasePairs",
+        "HighBaseThreshold",
+        "HighBaseNumeric",
+        "HighBaseFirstHit",
+        "LychrelDigitSums",
+        "Lychrel196Research",
+        "PrefixCarryBound",
+        "ActualCarryObservability",
+        "DifferenceObservability",
+        "TwoDigitProjection",
+        "TwoDigitGrowth",
+        "PalindromeBridge",
+        "TwoDigitNumeric",
+        "TwoDigitCertificate",
+        "TwoDigitCert10",
+        "TwoDigitCert20",
+        "TwoDigitCert32",
+        "TwoDigitCert40",
+        "TwoDigitCert41",
+        "TwoDigitCert60",
+        "TwoDigitCert64",
+        "TwoDigitCert65",
+        "TwoDigitCert76",
+        "TwoDigitCert80",
+        "TwoDigitCert81",
+        "TwoDigitCert82",
+        "TwoDigitCert83",
+        "TwoDigitMain"
+      ],
+      "theorem_count": 3491,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent113.TwoDigit.no_196_thirteen_arith",
+        "Agent113.TwoDigit.startsTwo_iff",
+        "Agent113.TwoDigit.exact_depth_10",
+        "Agent113.TwoDigit.exact_depth_20",
+        "Agent113.TwoDigit.exact_depth_32",
+        "Agent113.TwoDigit.exact_depth_40",
+        "Agent113.TwoDigit.exact_depth_41",
+        "Agent113.TwoDigit.exact_depth_60",
+        "Agent113.TwoDigit.exact_depth_64",
+        "Agent113.TwoDigit.exact_depth_65",
+        "Agent113.TwoDigit.exact_depth_76",
+        "Agent113.TwoDigit.exact_depth_80",
+        "Agent113.TwoDigit.exact_depth_81",
+        "Agent113.TwoDigit.exact_depth_82",
+        "Agent113.TwoDigit.exact_depth_83",
+        "P196.Agent3.Charge.charge_zero_from_five",
+        "P196.Agent3.Charge.returned_outer_charge_zero",
+        "P196.Agent3.Charge.five_step_bound_sharp",
+        "Agent9.AlternatingScalarBoundary.no_six_boundary",
+        "Agent9.AlternatingScalarBoundary.no_twelve_boundary",
+        "Agent11HighBase.numeric_two_step_threshold",
+        "Agent11HighBase.numeric_interval_first_hit",
+        "Agent11HighBase.binary_threshold_counterexample",
+        "DifferenceObservability.nine_carry_words_determine_pair_sums",
+        "DifferenceObservability.nine_carry_words_determine_next_integer"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finishFuel._spec_1"
+        ],
+        [
+          "BaseReflection",
+          "List.mapTR.loop._at.BaseReflection.residual._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.feed._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.repr'._at._private.LychrelDigitSums.0.OverflowNormalizationCertificate.reprState.\u00ab_@\u00bb.LychrelDigitSums._hyg.20379._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_2"
+        ],
+        [
+          "HighBaseNormalization",
+          "List.mapTR.loop._at.Agent11HighBase.tags._spec_1"
+        ],
+        [
+          "HighBaseNormalization",
+          "List.mapTR.loop._at.Agent11HighBase.shifted._spec_1"
+        ],
+        [
+          "ResetNormalization",
+          "List.mapTR.loop._at.ResetNormalization.ordinaryTags._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.next._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_1"
+        ],
+        [
+          "BaseReflection",
+          "List.mapTR.loop._at.BaseReflection.cs._spec_1"
+        ],
+        [
+          "BaseReflection",
+          "List.mapTR.loop._at.BaseReflection.qs._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "OverflowCarryNormalization.iterPairs._elambda_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.initials._spec_3"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.next._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.feed._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.edge._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792099325.5036442,
+  "registry_sha256": "786f72194cefcae89db5c248a81d9ebb4c820e6e9568e0982c8c876d10c44663",
+  "source_commit": "a79036909714e34a2b8b7ccccd6d00caa6a04848",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    {
+      "id": "PREEXISTING_ACCEPTED_SCOPE_CENSUS",
+      "status": "OPEN",
+      "description": "Pre-existing accepted scopes advertised in REPRODUCE.md and coordination handoffs remain accepted under their original records, but are not all represented by this first combined registry. A scoped PASS is not repository-wide verification."
+    },
+    {
+      "id": "BASELINE_BYTE_COVERAGE",
+      "status": "OPEN",
+      "description": "Initial main b6f8274 has 478 tracked proof files absent from its legacy manifest, including132 Lean files. Regeneration and complete tracked-file coverage verification remain required."
+    }
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792099600.8680847
+}
