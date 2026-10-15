@@ -251,3 +251,10 @@ This is a one-step theorem, not a persistent invariant.
 | Complementary nonneutral bulk | Accepted written all-gap two-coordinate formulas and conditional cycle criterion; 31,360 retained integer controls. No cycle search or qualifying cycle. | [Whole-word proof](contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md) |
 | Conditional scalar wrappers | Fresh 66-declaration report includes eight new wrappers, each numerical conclusion retaining the explicit root-certificate premise. | [Exact scope](contributions/2026-10-15-scalar-period-composition/README.md) |
 | Concrete scalar numerical Lean instance | IN PROGRESS: 15 fresh modules completed, Data6 interrupted with exit130, no production row checks, no final combined audit. Unconditional 659/94/98 Lean endpoints unaccepted. | [Partial checkpoint and continuation](contributions/2026-10-15-scalar-finite-certificate-formal/README.md) |
+
+## Seven-column prefix extension — 15 October 2026
+
+| Result | Evidence and scope |
+|---|---|
+| [739 exclusion and four improved bounds](contributions/2026-10-15-seven-column-prefix/P196_739_Proof.md) | Written all-length carry coverage plus five checked finite rank certificates. Every palindrome beginning 739 has ancestry height at most 39; 196's first 39 steps then exclude this family at every time. Bounds for 217/218/620/777 improve to 23/34/12/25. The baseline prefix list grows from 396 to 397; no sharpness, Lean, novelty or main-conjecture claim. |
+| [Development and incomplete searches](contributions/2026-10-15-seven-column-prefix/development/README.md) | Original scripts, four-/five-column graphs, raw capped/interrupted searches and 33/77 rediscovery certificates retained. The 33/77 results were already in the baseline and are not new. CAP and interrupted branches remain incomplete. |

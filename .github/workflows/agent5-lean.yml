@@ -28,7 +28,7 @@ jobs:
           curl --fail --location --retry 3 \
             https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst \
             --output lean-4.19.0-linux.tar.zst
-          sha256sum lean-4.19.0-linux.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean-4.19.0-linux.tar.zst' | sha256sum -c -
           tar --zstd -xf lean-4.19.0-linux.tar.zst
           echo "$PWD/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
           ./lean-4.19.0-linux/bin/lean --version
@@ -40,6 +40,7 @@ jobs:
             echo 'BOOTSTRAP ONLY: no Agent5 Lean source exists in this commit.'
             exit 0
           fi
+          export LEAN_PATH="$PWD/proofs/agent5"
           count=0
           for file in proofs/agent5/*.lean; do
             [ -f "$file" ] || continue
