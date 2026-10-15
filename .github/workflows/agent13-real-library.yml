@@ -1,0 +1,68 @@
+name: Agent13 same-toolchain real library
+on:
+  push:
+    branches: ['formalize/agent-13/s20261015']
+    paths: ['.github/workflows/agent13-real-library.yml']
+permissions:
+  contents: read
+jobs:
+  pinned-real-library:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Install pinned Lean 4.19.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 -o lean.tar.zst https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean.tar.zst' | sha256sum -c -
+          tar --zstd -xf lean.tar.zst
+          echo "$PWD/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Pin Mathlib and retrieve only required dependency closures
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init mathlib
+          cd mathlib
+          git remote add origin https://github.com/leanprover-community/mathlib4.git
+          git fetch --filter=blob:none --depth=1 origin c44e0c8ee63ca166450922a373c7409c5d26b00b
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = c44e0c8ee63ca166450922a373c7409c5d26b00b
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.19.0
+          mkdir -p ../library-audit
+          cp lake-manifest.json ../library-audit/original-lake-manifest.json
+          lean --version | tee ../library-audit/lean-version.txt
+          lake exe cache get Mathlib/Data/Real/Sqrt.lean Mathlib/Algebra/Order/BigOperators/Group/Finset.lean Mathlib/Tactic/Linarith.lean Mathlib/Tactic/NormNum.lean 2>&1 | tee ../library-audit/cache-get.log
+          cmp lake-manifest.json ../library-audit/original-lake-manifest.json
+          git rev-parse HEAD > ../library-audit/MATHLIB_COMMIT.txt
+          lake env printenv LEAN_PATH > ../library-audit/LEAN_PATH.txt
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess
+          root=pathlib.Path('.')
+          rows=[]
+          for p in sorted(root.rglob('*.lean')):
+              if '.git' in p.parts: continue
+              b=p.read_bytes()
+              rows.append({'path':str(p),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          pathlib.Path('../library-audit/SOURCES.json').write_text(json.dumps(rows,indent=2)+'\n')
+          pins={}
+          for p in sorted(pathlib.Path('.lake/packages').iterdir()):
+              if p.is_dir() and (p/'.git').exists():
+                  pins[p.name]=subprocess.check_output(['git','-C',str(p),'rev-parse','HEAD'],text=True).strip()
+          pathlib.Path('../library-audit/DEPENDENCY_COMMITS.json').write_text(json.dumps(pins,indent=2)+'\n')
+          PY
+          cd ..
+          tar --exclude='.git' --exclude='*.c' --exclude='*.o' --exclude='*.a' --exclude='*.trace' -czf agent13-real-library.tar.gz mathlib library-audit
+          sha256sum agent13-real-library.tar.gz > agent13-real-library.sha256
+      - name: Export pinned development library and evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent13-real-library
+          path: |
+            agent13-real-library.tar.gz
+            agent13-real-library.sha256
+            library-audit
+          retention-days: 2
+          compression-level: 0
+          if-no-files-found: warn
