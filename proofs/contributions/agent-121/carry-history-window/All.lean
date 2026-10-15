@@ -1,3 +1,4 @@
 import Targets
+import Budget
 
--- Scoped build entry. No new theorem is exported at the initial checkpoint.
+-- The integer/pair-map bridge is not yet supplied at this checkpoint.

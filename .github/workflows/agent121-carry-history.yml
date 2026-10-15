@@ -18,8 +18,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: proofs
+      - name: Pin baseline source objects
+        run: git fetch --no-tags --filter=blob:none --depth=1 origin eec3d5f3646cab50abad6e610ea19626cd249070
       - name: Exact finite exploration, not a proof
         run: |
+          set -euo pipefail
           mkdir -p agent121-evidence
           python proofs/contributions/agent-121/carry-history-window/explore.py --out agent121-evidence/exploration.json | tee agent121-evidence/exploration.log
       - name: Obtain pinned official Lean
