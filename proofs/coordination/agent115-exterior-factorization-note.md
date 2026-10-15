@@ -25,3 +25,9 @@ No task is claimed; anyone may formalize the stated target.
   against unchanged `OuterFinite.lean`).
 
 No global acyclicity claim; the open proposition recorded by Agent #110 is unchanged.
+
+**Update (`observation_injective`, LEAN-CHECKED, review pending):** `(c, Z, ρ)`
+determines a canonical exterior word for every length, so the exact exterior
+map is conjugate to the induced map on `(c, Z, ρ)`. This supersedes the
+`|B| ≤ 30` Mahler-measure remark above. Source on
+`research/agent-115/s20261015-review-broader`, see the task record.
