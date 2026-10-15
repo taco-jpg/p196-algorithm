@@ -1,0 +1,55 @@
+name: Agent8 pinned source review
+
+on:
+  push:
+    paths:
+      - '.github/workflows/agent8-source-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-bundles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            proofs/contributions/2026-10-15-agent8-complementary-bulk
+      - name: Package exact peer commits without changing repository files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p review-bundles
+          git archive --format=tar.gz "$GITHUB_SHA" \
+            proofs/contributions/2026-10-15-agent8-complementary-bulk \
+            > review-bundles/agent8-main-source.tar.gz
+          for spec in \
+            'agent109:9a2f01e3831763fea87021aa6b9e8af0b94c8beb' \
+            'agent5:db65db3646694d95fe6a8e7a0f836d66d8e6a4c8'; do
+            label="${spec%%:*}"
+            pin="${spec#*:}"
+            git fetch --no-tags --depth=1 origin "$pin"
+            if [ "$label" = agent109 ]; then
+              git archive --format=tar.gz "$pin" \
+                proofs/contributions/agent-109/template-step-bridge \
+                proofs/research/continuation/LychrelDigitSums.lean \
+                proofs/contributions/2026-10-15-agent8-complementary-bulk/PeriodObstructions.lean \
+                > "review-bundles/$label-$pin.tar.gz"
+            else
+              git archive --format=tar.gz "$pin" proofs/agent5 \
+                > "review-bundles/$label-$pin.tar.gz"
+            fi
+            printf '%s %s\n' "$label" "$pin" >> review-bundles/PINS.txt
+          done
+          printf 'agent8-main %s\n' "$GITHUB_SHA" >> review-bundles/PINS.txt
+          (cd review-bundles && sha256sum *.tar.gz > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agent8-pinned-peer-sources
+          path: review-bundles/
+          retention-days: 2
+          compression-level: 0
