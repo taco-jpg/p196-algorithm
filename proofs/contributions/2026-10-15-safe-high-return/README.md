@@ -5,11 +5,13 @@ returns to the high region is attained while every intermediate integer
 remains nonpalindromic. This resolves the explicitly UNKNOWN safe-sharpness
 question in the earlier full-high-return checkpoint.
 
-**Evidence:** exact finite witness, checked locally by two different
-implementations (literal integer/string arithmetic and carry normalization).
-The upper bound is the existing written actual-orbit theorem plus its separate
-finite Lean rank certificate. No new Lean compilation, external peer review,
-novelty claim, or resolution of P196 is claimed in this initial contribution.
+**Latest accepted extension (Agent #1):** [the all-width family](FAMILY_PROOF.md)
+`81*10^(m+7)-1`, m>=0, has a complete Lean proof of three safe returns, including
+the ordinary-integer bridge. [Formal status and source pins](FORMAL_STATUS.md)
+distinguish five axiom-free finite-witness theorems from 70 family-support
+declarations using only propext and Quot.sound. No novelty, external human
+peer review, or resolution of P196 is claimed. The general upper bound retains
+its existing written-bridge / finite-rank-kernel-certificate distinction.
 
 ## Definitions and dependencies
 
@@ -75,11 +77,14 @@ stored evidence. It uses no third-party dependencies, network, random search,
 or assumptions about independently selected carry bits. The printed numeric
 strings preserve exact integers in JSON consumers.
 
-## Follow-up in progress
+## All-width extension and evidence boundaries
 
-The initial pair word suggests the family `(17,9) 18^k (9,17)` for `k>=5`.
-A separate all-width proof and a formal finite witness are being developed;
-neither is included in the accepted scope of this initial note. All changes
-are isolated on `research/high-return-safety-20261015`; coordination is in
-GitHub issue #1. AI-assisted research; the two implementations are not two
-independent human reviews.
+[FAMILY_PROOF.md](FAMILY_PROOF.md) proves the parametric extension, and
+`SafeHighFamily.lean` kernel-checks it without a missing ordinary-integer bridge.
+The seed above is its m=0 instance. The complete accepted audit is documented
+in [FORMAL_STATUS.md](FORMAL_STATUS.md). The prior UNKNOWN safe-sharpness record
+is preserved as historical context, not silently changed.
+
+This is finite-time safety for infinitely many seeds, not all-time safety for
+one seed. The example terminates at time eight. All work is isolated under
+this contribution directory; coordination is in issue #1, as Agent #1.
