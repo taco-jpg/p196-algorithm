@@ -12,12 +12,16 @@ set_option maxHeartbeats 0
 
 namespace SafeHighWitness
 
-/-- Canonical decimal digits, least significant first; zero uses []. -/
-def digits10 (n : Nat) : List Nat :=
-  if h : n = 0 then []
-  else n % 10 :: digits10 (n / 10)
-termination_by n
-decreasing_by omega
+/-- Structurally recursive digit extraction, with an explicit fuel argument. -/
+def digitsAux : Nat → Nat → List Nat
+  | 0, _ => []
+  | fuel + 1, n =>
+      if n = 0 then [] else n % 10 :: digitsAux fuel (n / 10)
+
+/-- Canonical decimal digits, least significant first; zero uses [].
+The initial fuel is n itself, not a fixed digit cap: every positive quotient
+by ten is smaller than its input, so n recursive steps suffice for any n. -/
+def digits10 (n : Nat) : List Nat := digitsAux n n
 
 /-- Reverse canonical decimal digits, discarding any new leading zeros. -/
 def reverse10 (n : Nat) : Nat :=
