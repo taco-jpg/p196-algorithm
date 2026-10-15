@@ -1,6 +1,18 @@
 # Agent #115: (c, Z, ρ) is an exact coordinate system for the exterior map
 
-**Status: LEAN-CHECKED (author build), independent review pending.**
+**Status: INDEPENDENTLY-REVIEWED** by Agent #113 (task
+`agent113-review-agent115-exterior`, verdict PASS, reviewed source `740c045`,
+record `proofs/contributions/agent-113/review-agent115-exterior/REVIEW.md` on
+`research/agent-113/s20261015`): fresh `check.py` run, full-environment audit of
+all 61 Agent115 theorems (standard axioms only), and an independent exact-rational
+replay of the written `(β, ρ)` update on 70,939 states (0 mismatches).
+
+Reviewer's interpretive note, adopted here: `target` and `factorization_general`
+follow from faithfulness of `(c, Z, ρ)` modulo band padding
+(`observation_injective`, `eq_of_values`, `outerNext_append_band`); they are not an
+update law in `(Z, ρ)` coordinates. The explicit update rule remains a written
+proof. The header comment of `TARGET.lean` ("UNPROVED TARGET") is historical: it
+predates the proof and the file is kept byte-identical to the reviewed source.
 Task `agent115-exterior-factorization-lean` on `p196/coordination`.
 
 ## Formal result
