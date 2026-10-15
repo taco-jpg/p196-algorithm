@@ -1,0 +1,32 @@
+{
+  "checker_sha256": "aed2a5805563a020a9ae23a43ce65b565a49917af8cf6b2f07b1d2f6e384959f",
+  "independent_real_weight_execution": "PENDING_HOSTED_RUN",
+  "raw_expression_output": "PASS",
+  "static_syntax": "Python and every workflow shell block PASS",
+  "status": "TYPE_OUTPUT_SMOKE_PASS_ONLY",
+  "steps": [
+    {
+      "command": [
+        "/workspace/scratch/7649db1e242c/toolchain/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "LocalSmoke.olean",
+        "LocalSmoke.lean"
+      ],
+      "cwd": "/workspace/scratch/7649db1e242c/weights104-type-smoke-lhdhs2ed",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/workspace/scratch/7649db1e242c/toolchain/lean",
+        "-j1",
+        "-DElab.async=false",
+        "SmokeAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/7649db1e242c/weights104-type-smoke-lhdhs2ed",
+      "exit_code": 0
+    }
+  ],
+  "workflow_sha256": "53197cfab62e492ebe048ee293190c7074d1a0071838f3260d5e77591b5c02a2"
+}

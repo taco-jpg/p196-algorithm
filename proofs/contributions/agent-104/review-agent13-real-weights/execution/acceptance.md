@@ -1,0 +1,28 @@
+# Actual independent hosted verification: PASS
+
+The independent review executed successfully in GitHub Actions run **38700059129**, attempt **1**, job **116305811381**, at review commit `39d9f3eb196aae5071b5c48e8a5166dad388ce9d`. This is a new independent hosted execution, distinct from author run `38688269514`; no local execution of the Mathlib-dependent contribution is claimed. The checker ran from `2026-10-15T07:38:49.289376+00:00` through `2026-10-15T07:40:47.267477+00:00`.
+
+All six original modules were copied from source commit `122367d4935f0b4cd9e0bee19e4121ec66b3164b` and rebuilt in an initially empty project. The independently published exact-type harness at `ab6768ef000358b5f81c6807db674dc7515819c9` was also freshly compiled. Every one of the 19 recorded commands exited zero. All seven new object hashes were checked again against the downloaded artifact. The original source bytes, source Git blobs, compiler/version pins, review controls, exact-type fixture, command logs, and both artifact inventories have been checked after download.
+
+The complete compiled theorem inventory contains **1,129 constants from the six original modules plus 15 exact-type witnesses**, for **1,144 audited constants**. This includes 66 private-name constants and other compiler-generated theorems. These are audit coverage counts, not counts of independent mathematical results. Each constant has exactly one matching transitive axiom report. The observed axiom sets are:
+
+| Axioms | Theorem constants |
+|---|---:|
+| None | 132 |
+| `propext` | 55 |
+| `propext`, `Quot.sound` | 808 |
+| `propext`, `Classical.choice`, `Quot.sound` | 149 |
+
+The audit listed 13 compiler-generated unsafe implementation axiom declarations. None occurs transitively in any accepted theorem. No `sorryAx`, custom logical axiom, or native-evaluation axiom occurs in the accepted dependencies. Source scanning rejected proof escapes before compilation. The official `Lean.Util.CollectAxioms` source was compared with the pinned archive and is retained alongside the exact audit program.
+
+All **15 original exports** and all **15 explicit exact-type applications** are present. Their elaborated types and raw Lean expression types are retained in the unmodified `AllCompiledAxioms.log`; `export-types.json` is a readable extraction. Inspection confirms ordinary decimal `Lychrel196.step`, the original `Safe` predicate, real-valued weights and multipliers, exact casts, real division, and real square roots. Positivity on safe seeds, antitonicity on safe seeds, and the width condition `m ≥ 2` remain explicit where required. The results establish the stated finite-fiber comparisons, growing incoming-weight amplification, and absence of a finite uniform real multiplier under those hypotheses. They do not establish P196 or decimal Lychrel existence.
+
+The hosted compiler was the direct official Lean **4.19.0**, release commit `6caaee842e94`, SHA256 `92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023`. Its downloaded archive had SHA256 `6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe`; 1,477 installed compiler, shared-library, standard-object, and collector-source members were compared with that archive during CI. Hosted execution used one compiler worker and no compatibility shim.
+
+Mathlib commit `c44e0c8ee63ca166450922a373c7409c5d26b00b`, its exact manifest, and all eight package commits were enforced. **The official compiled Mathlib dependency cache was reused; no Mathlib source rebuild is claimed.** Lean reported 2,642 actual imported object paths: seven fresh local objects, 1,303 official Lean objects, and 1,332 cached Mathlib/package objects. During CI, every imported external object was checked against its prebuild hash; every imported cached module also required matching committed source bytes and the expected package commit. The post-download review independently verifies those recorded hashes and provenance relationships. External dependency object bytes are not in this artifact, so this review does not claim a second local rehash or rebuild of them.
+
+The downloaded artifact is **11955822178**, ZIP size **5,786,209 bytes**, SHA256 `b7e69c40b55ac87bb7580b33df2524b1327995d8e1b9057ace339c3a80985556`. All 56 ZIP members equal the extracted files, and every size/hash in both manifests passed. The raw checker report SHA256 is `3e5c6d7032fac10636b7f243b3c4408faf56ced1f7bab479178e90f4c85a1e80`; the complete axiom/type log SHA256 is `5eab3f59feaea787aa7545d6e58677ed0253aec5058f425d73fc6935de088741`.
+
+`hosted-38700059129-1/` retains 42 original artifact files, **3,294,230 bytes**, unchanged, including every substantive compiler, dependency-setup, and axiom/type log. Seven duplicate source copies and seven reproducible compiled objects are excluded from repository publication. `artifact-selection.json` records every excluded original path, byte length, SHA256, reason, and exact recovery map. `recover_hosted.py` restores all source/evidence files from retained bytes; supplying the hash-verified original ZIP also restores the exact seven object files. The ZIP itself is excluded as a duplicate transport container. The original source snapshot is retained even though the original contribution's canonical files require separate integration through PR29.
+
+The original 16-file preflight remains byte-for-byte unchanged. Its README's pending status is historical and is superseded by this acceptance. No further Lean run was needed during artifact acceptance. `acceptance.json`, `publication-files.txt`, and `publication-manifest.json` provide the acceptance record and exact publication selection.

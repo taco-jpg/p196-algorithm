@@ -1,0 +1,106 @@
+name: Agent104 independent real-weight review
+on:
+  push:
+    branches: ['research/agent-104/20261015-real-weights-review']
+    paths:
+      - '.github/workflows/agent104-real-weights-review.yml'
+      - 'proofs/contributions/agent-104/review-agent13-real-weights/execution/check.py'
+      - 'proofs/contributions/agent-104/review-agent13-real-weights/execution/source-pins.json'
+      - 'proofs/contributions/agent-104/review-agent13-real-weights/semantic/ExactTypes.lean'
+permissions:
+  contents: read
+concurrency:
+  group: agent104-real-weights-review-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  independent-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Fetch exact review controls and original contribution commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-evidence/infrastructure
+          {
+            printf 'Review commit: %s\nRun: %s attempt %s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT"
+            git init source
+            cd source
+            git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+            git sparse-checkout init --no-cone
+            git sparse-checkout set '/proofs/contributions/agent-104/review-agent13-real-weights/' '/.github/workflows/agent104-real-weights-review.yml'
+            git fetch --filter=blob:none --no-tags --depth=1 origin 122367d4935f0b4cd9e0bee19e4121ec66b3164b
+            git fetch --filter=blob:none --no-tags --depth=1 origin ab6768ef000358b5f81c6807db674dc7515819c9
+            git fetch --filter=blob:none --no-tags --depth=1 origin "$GITHUB_SHA"
+            git checkout --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+            git cat-file -t 122367d4935f0b4cd9e0bee19e4121ec66b3164b
+            git rev-parse 122367d4935f0b4cd9e0bee19e4121ec66b3164b^{tree}
+          } 2>&1 | tee ci-evidence/infrastructure/source-fetch.log
+      - name: Install checksum-pinned official Lean 4.19.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            curl --fail --location --retry 3 -o lean.tar.zst https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+            echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean.tar.zst' | sha256sum -c -
+            tar --zstd -xf lean.tar.zst
+            "$PWD/lean-4.19.0-linux/bin/lean" --version
+            echo "$PWD/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+          } 2>&1 | tee ci-evidence/infrastructure/official-toolchain.log
+      - name: Restore explicit same-toolchain pinned Mathlib compiled dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            git init mathlib
+            cd mathlib
+            git remote add origin https://github.com/leanprover-community/mathlib4.git
+            git fetch --filter=blob:none --no-tags --depth=1 origin c44e0c8ee63ca166450922a373c7409c5d26b00b
+            git checkout --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = c44e0c8ee63ca166450922a373c7409c5d26b00b
+            echo '5c6421b650bc87a2427a892a39e5522dc44543ca4ac1bd6e9f08d536c044a752  lake-manifest.json' | sha256sum -c -
+            lake exe cache get Mathlib/Data/Real/Sqrt.lean Mathlib/Algebra/Order/BigOperators/Group/Finset.lean Mathlib/Tactic/Linarith.lean Mathlib/Tactic/NormNum.lean
+            echo '5c6421b650bc87a2427a892a39e5522dc44543ca4ac1bd6e9f08d536c044a752  lake-manifest.json' | sha256sum -c -
+          } 2>&1 | tee ci-evidence/infrastructure/mathlib-cache.log
+      - name: Independently rebuild six original modules and audit every local compiled theorem
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 source/proofs/contributions/agent-104/review-agent13-real-weights/execution/check.py \
+            --repo "$PWD/source" \
+            --lean "$PWD/lean-4.19.0-linux/bin/lean" \
+            --lean-archive "$PWD/lean.tar.zst" \
+            --mathlib "$PWD/mathlib" \
+            --out "$PWD/ci-evidence/independent-audit" \
+            2>&1 | tee ci-evidence/infrastructure/checker-invocation.log
+      - name: Inventory all retained success or failure evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-evidence
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          p = Path('ci-evidence')
+          files = {str(f.relative_to(p)): {'bytes': f.stat().st_size, 'sha256': hashlib.sha256(f.read_bytes()).hexdigest()}
+                   for f in sorted(p.rglob('*')) if f.is_file()}
+          audit = p / 'independent-audit/verification.json'
+          status = json.loads(audit.read_text())['status'] if audit.exists() else 'NO_CHECKER_RESULT_INFRASTRUCTURE_FAILED_OR_INTERRUPTED'
+          (p / 'hosted-artifact-inventory.json').write_text(json.dumps({
+              'review_commit': os.environ['GITHUB_SHA'], 'run_id': os.environ['GITHUB_RUN_ID'],
+              'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'checker_status': status,
+              'source_commit': '122367d4935f0b4cd9e0bee19e4121ec66b3164b', 'files': files,
+              'manifest_excludes_itself': True,
+              'exclusions': 'Only full external toolchain/archive/checkouts/caches and unrelated repository files are omitted as reproducible infrastructure. All produced local source/object snapshots, pins, controls, and substantive success/failure logs are selected. No credential or token is supplied or saved.'
+          }, indent=2, sort_keys=True) + '\n')
+          PY
+      - name: Upload independent exact-source objects and complete raw evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent104-independent-real-weights-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ci-evidence
+          retention-days: 14
+          if-no-files-found: error
