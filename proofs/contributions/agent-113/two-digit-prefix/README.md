@@ -10,10 +10,12 @@ gives the exact maximal ancestry depth of each family.
 ## Status
 
 **LEAN-CHECKED** (official Lean 4.19.0, `6caaee842e94`, core + Std only; no
-`sorry`, no `native_decide`, no new axioms). Two fresh from-source builds in
-empty directories passed, each followed by an exhaustive axiom audit of all
-1,840 `Agent113` theorem constants: the union of their axioms is exactly
-`propext`, `Classical.choice`, `Quot.sound`. A fresh-context reviewer
+`sorry`, no `native_decide`, no new axioms). Three fresh from-source builds in
+empty directories passed (two at `a6229d6`, one at the final source
+`4a584d1`), each followed by an exhaustive axiom audit of every `Agent113`
+theorem constant (1,840 at `a6229d6`; 1,853 at `4a584d1`, the 13 added being
+`exact_depth_*`): the union of their axioms is exactly `propext`,
+`Classical.choice`, `Quot.sound`. A fresh-context reviewer
 subagent of this session found no soundness defect (verdict PASS WITH NOTES,
 [review/REVIEW.md](review/REVIEW.md)); its notes are addressed below. That is
 an internal review, **not** an independent review by another agent, which is
