@@ -1,4 +1,64 @@
-# Agent #103 — scalar finite-certificate Lean instance (WIP)
+# Agent #103 — scalar finite-certificate Lean instance
+
+**Status: LEAN-CHECKED (fresh build, full transitive axiom audit PASS).
+Independent review pending (Agent #9 replay, issue #13). Not yet INTEGRATED.**
+
+## Result
+
+With the v2 table representation (same values as the original package's
+tables; see below), the complete scalar finite-certificate chain compiles from
+an empty build directory, and every one of the 2,813 theorems declared in the
+54 project modules has transitive axioms within `{propext, Quot.sound,
+Classical.choice}`. No `sorryAx`, `Lean.ofReduceBool`/`native_decide`, or
+custom axiom appears anywhere in the audit log, including transitively from
+the base file.
+
+Newly unconditional Lean theorems (all `[propext, Classical.choice, Quot.sound]`):
+
+| Declaration | Statement (informal; exact Lean in the cited files) |
+|---|---|
+| `ScalarHierarchy.finite_root_bound` | For `Admissible L q`, `14 <= L`: an `ActualPath` of the finite root graph `data0` at width 1 has `n <= 659` vertices. |
+| `ScalarBound.root_vertex_certificate` | Discharges `ScalarPeriods.RootVertexCertificate` (the explicit premise of the accepted conditional wrappers). |
+| `ScalarBound.wide_periods_le_94` | If the actual pair orbit has width `>= 14` at time `a` and its outermost coefficient follows the seven-phase scalar clock for `7R` steps from there, then `R <= 94`. |
+| `ScalarBound.initial_width_dependent_bound` | From time 0: `R <= 94 + warmup L`, `warmup L = (14-L+2)/3`. |
+| `ScalarBound.periods_le_98` | Any admissible word, any start time and phase: `R <= 98`. |
+| `ScalarBound.canonical_periods_le_98` | Same for the pair word of any canonical decimal integer. |
+| `ScalarBound.no_99_period_clock`, `wide_no_95_period_clock` | No `ClockSegment` of `7*99` steps (resp. `7*95` at width `>= 14`). |
+
+Meaning and scope: `ClockSegment q L a s n` says the outermost pair
+coefficient of the actual reverse-and-add pair-word orbit (`iterPairs`)
+equals `ScalarClock.phase (s+i)` for `i = 0..n`. These are finite-horizon
+obstructions to one specific recurrent mechanism. They do **not** prove that
+any orbit reaches a palindrome, that 196 is or is not Lychrel, or that a
+decimal Lychrel number exists.
+
+Build: `v2/verify_v2.py --stage checks` (fresh, empty directory, 47 modules,
+0 reused) then `--stage final --resume` in the same directory (7 new modules
++ `AllAxioms`; the 47 resumed objects are this build's own, admitted only
+after the unchanged source/object/log/dependency fingerprint check). Report:
+`v2/verification.json` (status PASS, checker SHA-256
+`3bac9996...09225`), full concatenated logs `v2/compile.log`, raw
+`v2/AllAxioms.log`, manifests, driver stdout, `v2/SHA256SUMS`. Compiler:
+official Lean 4.19.0 `6caaee842e94`, executable SHA-256 `92c3d35b...e023`,
+flags `-j1 -DElab.async=false`. Wall time: checks stage about 82 min on two
+workers, final stage about 4 min.
+
+Reproduce (from a checkout of this branch):
+
+```sh
+python3 proofs/contributions/agent-103/scalar-finite-instance/v2/check_v2_equivalence.py
+python3 proofs/contributions/agent-103/scalar-finite-instance/v2/verify_v2.py \
+  --lean /path/to/lean-4.19.0/bin/lean --build-dir /empty/dir --stage checks
+python3 proofs/contributions/agent-103/scalar-finite-instance/v2/verify_v2.py \
+  --lean /path/to/lean-4.19.0/bin/lean --build-dir /empty/dir --stage final --resume
+```
+
+(`check_v2_equivalence.py` needs `sys.setrecursionlimit` raised, e.g. run via
+`python3 -c "import sys,runpy;sys.setrecursionlimit(100000);runpy.run_path('...',run_name='__main__')"`.)
+
+---
+
+# History
 
 Task: `agent103-scalar-finite-instance` on `p196/coordination`.
 
@@ -100,3 +160,10 @@ Current: fresh v2 production build (`--stage checks`) running.
 All 16 v2 `JobData` modules and the previously never-compiled
 `ScalarHierarchyData` PASS (seconds): JobData0 0.303; JobData1 1.787; JobData3 3.429; JobData2 6.55; JobData4 4.597; JobData5 11.908; JobData6 60.741; JobData7 105.682; JobData8 184.481; JobData10 21.814; JobData9 183.322; JobData11 75.744; JobData12 72.102; JobData14 9.611; JobData15 6.923; JobChecks0 0.458; JobChecks1 7.835; JobChecks2 34.949; JobChecks3 17.85; JobChecks4 29.741; JobData13 165.791; ScalarHierarchyData 2.564; JobChecks5 75.689.
 Row checks JobChecks6-15 running. No endpoint accepted yet.
+
+### Final (00:51 UTC-7)
+
+Checks stage: CHECKS_PASS, 47/47 modules (JobChecks0-15 all PASS; largest
+JobChecks13 1301 s, JobChecks8 1583 s, JobChecks9 1579 s). Final stage:
+ScalarHierarchy, ScalarRoot, WidthOne, ScalarPeriods, RootBridge, ScalarBound
+PASS; AllAxioms PASS in 191 s; overall PASS, 2,813 theorems audited.
