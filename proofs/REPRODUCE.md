@@ -228,3 +228,14 @@ block-response audit and fresh nine-declaration Lean build. Both complete
 gzip artifacts and all six binary failures are retained. The interval
 review pins the final supplemented mathematical proof; the earlier
 arithmetic proof hash remains unchanged as development provenance.
+
+## Intrinsic seam and finite-seed continuation
+
+Use a disposable checkout because the checkers recreate audit outputs. From `proofs/research/`, with `LEAN_BIN` set to an absolute path to Lean **4.19.0**:
+
+```sh
+python3 -B main_existence_attempt/continuation_pass/lean/check.py "$LEAN_BIN"
+python3 -B main_existence_attempt/continuation_pass/finite_seed/check_finite_seed_obstructions.py
+```
+
+The first command rebuilds all five original dependency/new-module sources and its axiom audit, checking all 31 new theorem declarations and 5 definitions. All source dependencies are retained at their original relative paths. The second repeats the finite controls for the written all-parameter countermodel and safe-fiber proofs; enumeration alone is not their all-parameter proof. `root_review/lean_rebuild.json` and `finite_seed_review.json` record the separate root audit and exact accepted source hashes. The original `root_review/rebuild_lean.py` preserves the historical compiler path; the portable formal command above accepts your compiler path explicitly and covers the same sources and declarations. Original development failures are historical records, not expected successful build targets.

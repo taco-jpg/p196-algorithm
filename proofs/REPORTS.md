@@ -241,3 +241,10 @@ Every original written research report, proof note and manuscript source retaine
 - [README.md](contributions/2026-10-14-base-uniqueness-formal/README.md)
 - [GENERAL_BASE_SEAMS_INDEX.md](contributions/GENERAL_BASE_SEAMS_INDEX.md)
 - [2026-10-15-general-base-seam-results.md](coordination/2026-10-15-general-base-seam-results.md)
+
+## Accepted continuation checkpoint — 15 October 2026
+
+- [research/main_existence_attempt/continuation_pass/lean/STATUS.md](research/main_existence_attempt/continuation_pass/lean/STATUS.md)
+- [research/main_existence_attempt/continuation_pass/finite_seed/FINITE_SEED_OBSTRUCTIONS.md](research/main_existence_attempt/continuation_pass/finite_seed/FINITE_SEED_OBSTRUCTIONS.md)
+- [coordination/2026-10-14-continuation-start.md](coordination/2026-10-14-continuation-start.md)
+- [coordination/2026-10-15-intrinsic-seam-and-quantifiers.md](coordination/2026-10-15-intrinsic-seam-and-quantifiers.md)

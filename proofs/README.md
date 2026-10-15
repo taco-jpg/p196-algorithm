@@ -2,9 +2,28 @@
 
 **Decimal Lychrel existence remains unproved. This collection does not prove that 196 is a Lychrel number, does not disprove decimal Lychrel existence, and contains no verified positive Lychrel witness.**
 
-This directory publishes the research findings, written proofs, formal source, finite certificates, failed constructions, and reproducible searches accumulated through 14 October 2026. The existence goal is separate from the completed supporting theorems. No novelty, external peer review, or publication-priority claim is made. The audits described here are internal and AI-assisted.
+This directory publishes the research findings, written proofs, formal source, finite certificates, failed constructions, and reproducible searches accumulated through 15 October 2026. The existence goal is separate from the completed supporting theorems. No novelty, external peer review, or publication-priority claim is made. The audits described here are internal and AI-assisted.
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
+
+## Intrinsic seam and finite-seed continuation — 15 October 2026
+
+The [new checked handoff](coordination/2026-10-15-intrinsic-seam-and-quantifiers.md)
+replaces partition search with an exact adjacent high-coefficient/9 criterion
+and proves that singleton blocks maximize the carry defect. The canonical
+numeric bridge certifies one safe step. A separate all-width family has
+arbitrarily large initial defect mass, loses every defect immediately, and
+reaches a palindrome at time 2. Two new Lean modules have 31 supporting theorem
+declarations and 5 definitions, with matching branch and independent root audits.
+
+The [finite-seed report](research/main_existence_attempt/continuation_pass/finite_seed/FINITE_SEED_OBSTRUCTIONS.md)
+shows why specified growth, finite-delay density, exact predecessor-set and
+pair-word quotient properties alone cannot extract an infinite survivor: a
+fully terminating artificial map can share them. It also proves an unbounded
+safe-fiber obstruction to every positive weight nonincreasing with seed size
+for actual reverse-and-add. These are written all-parameter arguments with
+independently replayed finite controls. No persistent invariant or fixed finite
+Lychrel witness follows.
 
 ## Seam symmetry in every base at least three — 15 October 2026
 
@@ -143,6 +162,6 @@ Written proofs, independent arithmetic replays, solver-reported outcomes, bounde
 
 Every written research finding and original research source file is retained, together with outcome records and certificates needed for direct replays. The binary antichain snapshot and its exact depth-four observer dependency are retained in full. The initial and correlation releases omitted some large generated graphs, incomplete solver states, repeated raw logs and rendered duplicates while preserving their conclusions and reproduction sources. Under the expanded [publication policy](PUBLICATION_POLICY.md), new renewal checkpoints retain every substantive source, result, failure, UNKNOWN outcome, log and available development attempt. The complete renewal snapshot retains all its genuine research output; only copied build directories, compiled products and caches are omitted and individually inventoried. [PUBLICATION_SCOPE.md](PUBLICATION_SCOPE.md) distinguishes the historical selection from the current retention rule.
 
-[INVENTORY.tsv](INVENTORY.tsv) and [INVENTORY.json](INVENTORY.json) account for every file in the initial, correlation-pass and completed renewal source snapshots with its original SHA-256, size, publication decision, reason, and report mapping. The original early-checkpoint records remain historical provenance alongside the completed renewal snapshot. Historical snapshot entries remain provenance records. [FILES.md](FILES.md) lists every published file; [MANIFEST.sha256](MANIFEST.sha256) verifies release contents, including binary certificate bytes. These manifests are provenance aids, not mathematical certificates. Repository engines, production checkpoints, and files outside `proofs/` are unchanged by this publication.
+[INVENTORY.tsv](INVENTORY.tsv) and [INVENTORY.json](INVENTORY.json) account for every file in the initial, correlation-pass, completed renewal and accepted continuation source snapshots with its original SHA-256, size, publication decision, reason, and report mapping. The original early-checkpoint records remain historical provenance alongside the completed renewal snapshot. Historical snapshot entries remain provenance records. [FILES.md](FILES.md) lists every published file; [MANIFEST.sha256](MANIFEST.sha256) verifies release contents, including binary certificate bytes. These manifests are provenance aids, not mathematical certificates. Repository engines, production checkpoints, and files outside `proofs/` are unchanged by this publication.
 
 No third-party license is invented for the research or for cited sources. Existing repository licensing and any file-specific notices continue to apply.
