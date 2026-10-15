@@ -70,7 +70,7 @@ use only `propext` and `Quot.sound`. Evidence: `verification/`,
 
 ```sh
 cd proofs/contributions/agent-113/five-layer
-./build.sh <repo-root> <new-empty-dir> 2     # official lean 4.19.0 on PATH; ~20 min on 2 cores
+./build.sh <repo-root> <new-empty-dir> 2     # official lean 4.19.0 on PATH; ~45 min on 2 cores
 ```
 
 Numerical cross-check (not proof): for every `A < 3·10^7`, `T⁵(A)` never has
