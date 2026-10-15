@@ -2,6 +2,66 @@
 
 Task `agent103-broader-return-formal` (`p196/coordination`).
 
+## Result summary
+
+**Stage 2 (LEAN-CHECKED; independent review pending): the written bound is now
+an unconditional Lean theorem.**
+
+| Theorem (`stage2/BroaderBound.lean`) | Statement |
+|---|---|
+| `BroaderBound.returns_le_90_plus_warmup` | `Admissible L q`, `2 <= L`, `pairAt q L (7k) = (4,4)` for all `k <= R` ⟹ `R <= 90 + warmup L`, where `warmup L = (14-L+2)/3 = max(0, ceil((14-L)/3))`. This is eq. (2) of `COMPONENT_SPECIFIC_BOUND.md` exactly. |
+| `BroaderBound.returns_le_94` | From any start time `a`: `R <= 94`. |
+| `BroaderBound.wide_returns_le_90` | If the actual width at time `a` is at least 14: `R <= 90`. |
+| `BroaderBound.no_95_returns` | No 95 consecutive seven-step returns to (4,4). |
+
+`pairAt q L t` is the first two coefficients (least significant first) of the
+actual pair-word orbit `iterPairs`; `Admissible` is the repository's exact
+admissible mirrored-word predicate (every positive integer's pair word is one).
+All three return branches and arbitrary switching are covered. Scope:
+finite-horizon obstruction to this return mechanism only; leaving the pattern
+does not imply a palindrome; nothing about 196 or Lychrel existence.
+
+## Stage 2 construction
+
+* `stage2/gen_broader.py`: the 15 broader jobs (source ids 16-30) of the pinned
+  certificate `component_certificates.json.gz` (SHA-256 `ff7a70ee...b47e`),
+  renumbered 0-14, emitted with the v2 chunked table representation as
+  `BJobCatalog`, `BJobData0-14`, `BJobChecks0-14` (namespace `BroaderJobData`),
+  and `BroaderHierarchyData`/`BroaderHierarchy`. Data model, row-check and
+  hierarchy templates follow the original scalar generators verbatim except for
+  names, certificate-read job links and the width-2 root (bound 636).
+* `stage2/BroaderRoot.lean`: the root bridge. `root2` is the bit-bounded
+  restriction of `lift ScalarRoot.root` to the fifteen return states;
+  `root2_realization` (kernel `decide`) embeds it into `BroaderJobData.data0`
+  (same fields; the induced lift edges are exactly the 23 stored edges);
+  `returnIn_root` (kernel `decide`) shows every state on a return path is one of
+  the fifteen; `actual_broader_root_path` turns `R` returns into an actual path
+  of `7R+1` vertices in that graph at spatial width 2, via stage 1 and the
+  existing `ScalarRoot.actual_two_column_path`, `actual_path_select`,
+  `BoundedPrefixLift.actual_path_encode`.
+* `BroaderHierarchy.finite_root_bound` (row checks + `ActualJobFamily`) gives
+  `7R+1 <= 636` at width at least 14; `BroaderBound` adds the warm-up.
+
+Build (`stage2/verify_stage2.py` = stage-1 driver + these modules), in a copy of
+the verified stage-1 build directory:
+`--stage checks --resume` CHECKS_PASS (79 modules; all 32 broader data/check
+modules compiled fresh; BJobChecks7/8 about 1550 s each) and `--stage final
+--resume` PASS: **92 modules, 5,511 theorems**, axiom union
+`{propext, Quot.sound, Classical.choice}`; no `ofReduceBool`/`sorryAx` in either
+audit log. Report `stage2/verification.json`, logs `stage2/compile.log`,
+`stage2/evidence/`.
+
+Audit-file note (recorded failure, not a proof issue): the single combined
+5,511-statement `AllAxioms` file aborted with "Stack overflow detected" twice
+(also with `ulimit -s unlimited`; the frontend thread stack is separate).
+Each half passes alone (`evidence/diagnostic_split_*.log`). The driver therefore
+splits the identical audit by namespace into `AllAxiomsScalar` and
+`AllAxiomsBroader` (same imports and flags) and requires the union of parsed
+records to equal the expected theorem list. The failed attempt's file, log and
+driver output are retained in `stage2/evidence/`. A theorem named
+`fields_checked'` was renamed `fields_table_checked` (and likewise for edges)
+because the driver's audit-name regex does not accept primes.
+
 ## Stage 1 (LEAN-CHECKED; independent review pending)
 
 Written source: `2026-10-14-component-specific-bound/COMPONENT_SPECIFIC_BOUND.md`,
