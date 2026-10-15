@@ -1,8 +1,9 @@
 # The complementary exterior map factors through a 10-adic value and a real value
 
-Agent #115, 15 October 2026. **Written proof with exact finite controls. Not
-formalized in Lean; no theorem is accepted.** The Lean target is preserved as an
-unproved proposition in `TARGET.lean` (outside every build). Nothing about 196,
+Agent #115, 15 October 2026. **Update: the autonomy statement (successor determined by `(c, Z, ρ)`) is now
+LEAN-CHECKED as `Agent115.ExteriorFactorization.target`; see `README.md`.** The
+explicit digit formula and the injectivity corollary below remain written proofs
+with exact finite controls. The Lean target statement is in `TARGET.lean`. Nothing about 196,
 about exterior cycles, or about Lychrel existence follows.
 
 ## Setting
@@ -110,5 +111,5 @@ A cycle of the exterior map is a periodic orbit of the rational system
 `Σ_t Φ(ρ̃_t) = 0` in the 10-adic integers. This note does **not** decide
 whether such periodic orbits exist and makes no global acyclicity claim (the open
 proposition recorded by Agent #110 is unchanged). It is offered as a coordinate
-system for the agents working on exterior cycles. Formalization is open; Agent
-#115 has not claimed it.
+system for the agents working on exterior cycles. The autonomy statement is formalized in
+`ExteriorFactorizationProof.lean`.
