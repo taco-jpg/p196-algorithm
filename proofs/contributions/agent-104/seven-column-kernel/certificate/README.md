@@ -14,8 +14,13 @@ Their transitive axioms are exactly `propext`, `Classical.choice`, and
 `Quot.sound`. The complete audit covered 7,469 compiled theorem constants, with no
 forbidden transitive axiom. Independent semantic review and exact-type
 endpoint recompilation also passed; see `../review-final-clean/` and
-`../review-final/acceptance.json`. Integration remains pending. The earlier
-WIP and resource-failure records below are historical.
+`../review-final/acceptance.json`. The separate merged-candidate rebuild at
+`4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29` also passed all 383 modules,
+the full 7,469-theorem audit, and final hash checks without reusing local
+objects; see `../integration-verified/independent-verification.json`.
+The final main publication status is recorded by task `agent104-integrate-739`
+on `p196/coordination`. The earlier WIP and resource-failure records below
+are historical.
 
 ## Trusted logical interface
 

@@ -9,7 +9,7 @@ Task `agent104-seven-column-kernel`, remotely claimed at `fa6b15ea173fff7cc6f01f
 - `SevenColumnKernel.Finite739.ancestry_bound39`: for every positive ordinary decimal integer `A`, if `orbit A t = P` and `P` is a palindrome beginning with 739, then `t ≤ 39`. There is no digit-length bound.
 - `SevenColumnKernel.Finite739.no_196_739_palindrome`: for every time `t`, `orbit 196 t` is not a palindrome beginning with 739.
 
-This excludes a restricted palindrome family; it does not settle P196. Both independent verification gates are complete. Default-branch integration remains pending; no INTEGRATED status is claimed.
+This excludes a restricted palindrome family; it does not settle P196. Both independent contribution verification gates and the separate fresh merged-source verification are complete. The final main commit and integration ownership disposition are recorded on `p196/coordination` under task `agent104-integrate-739`; the local acceptance summary is `proofs/coordination/agent104-739-integrated.json`.
 
 The verified structural proof chain includes:
 
@@ -27,6 +27,8 @@ The verified structural proof chain includes:
 The final independent clean execution rebuilt all **383** modules from committed source `957efa326b4b980391046598a0143cb7a7060242` and audited **7,469** compiled theorem constants, including private/generated helpers. Every theorem has a transitive axiom report; the union is exactly `propext`, `Classical.choice`, and `Quot.sound`. The 43 unsafe implementation declarations occur in no accepted theorem dependency. All source, local-object, official-object, compiler, and log pins were independently rechecked. See `review-final-clean/independent-verification.json`, its unmodified runner report, and complete logs. The generic runner’s numerical-interpretation flag remains false by design; the separate semantic and exact-type review establishes which concrete result the successful build proves.
 
 The final endpoint reviewer separately compiled `Conclusion739` and exact examples of both theorem types, with no extra certificate hypotheses. Its verdict is `ACCEPTED_FOR_STATED_739_SCOPE`. These final records supersede the pending labels in earlier pinned checkpoints.
+
+The published merged candidate `4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29` passed a separate independent rebuild of all 383 source modules with no reused local objects, the complete 7,469-theorem axiom audit, and final source/object/compiler stability checks. The accepted source hashes are unchanged from the contribution proof pin above. See `integration-verified/independent-verification.json`, its unmodified runner report, and the frozen evidence manifest. This merged execution is distinct from the earlier contribution-only build and endpoint recompilation.
 
 The following paragraphs preserve the provenance of earlier checks.
 
