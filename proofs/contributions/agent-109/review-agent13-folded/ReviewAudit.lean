@@ -1,0 +1,47 @@
+import Indexing
+#print axioms Agent13FoldedFamily.block_start
+#print axioms Agent13FoldedFamily.block_finish
+#print axioms Agent13FoldedFamily.block_edges
+#print axioms Agent13FoldedFamily.block_join
+#print axioms Agent13FoldedFamily.outer_trace
+#print axioms Agent13FoldedFamily.terminal_boundary
+#print axioms Agent13FoldedFamily.trace_edges
+#print axioms Agent13FoldedFamily.reflect_low
+#print axioms Agent13FoldedFamily.reflect_symm
+#print axioms Agent13FoldedFamily.reflect_admissible
+#print axioms Agent13FoldedFamily.inputHalf_bounded
+#print axioms Agent13FoldedFamily.targetHalf_bounded
+#print axioms Agent13FoldedFamily.input_admissible
+#print axioms Agent13FoldedFamily.target_admissible
+#print axioms Agent13FoldedFamily.actual_trace
+#print axioms Agent13FoldedFamily.binary_family_no_overflow
+#print axioms Agent13FoldedFamily.nextColumns_symm_no_overflow
+#print axioms Agent13FoldedFamily.binary_family_half_transition
+#print axioms Agent13FoldedFamily.binary_family_transition
+#print axioms Agent13FoldedFamily.binary_family_actual_step
+#print axioms Agent13FoldedFamily.binary_family_realization
+#print axioms Agent13FoldedFamily.central_input
+#print axioms Agent13FoldedFamily.central_target
+#print axioms Agent13FoldedFamily.eighteen_not_bad
+#print axioms Agent13FoldedFamily.admissible_safe
+#print axioms Agent13FoldedFamily.binary_family_safe
+#print axioms Agent13FoldedFamily.realization_nonpalindrome
+#print axioms Agent13FoldedFamily.input_outer
+#print axioms Agent13FoldedFamily.target_outer
+#print axioms Agent13FoldedFamily.binary_family_initial_nonpalindrome
+#print axioms Agent13FoldedFamily.target_initial_nonpalindrome
+#print axioms Agent13FoldedFamily.binary_family_safe_realization
+#print axioms Agent13FoldedFamily.input_word_bits_injective
+#print axioms Agent13FoldedFamily.input_word_congr
+#print axioms Agent13FoldedFamily.encode_bound
+#print axioms Agent13FoldedFamily.encode_bit
+#print axioms Agent13FoldedFamily.bit_encode
+#print axioms Agent13FoldedFamily.encode_congr
+#print axioms Agent13FoldedFamily.indexed_word_injective
+#print axioms Agent13FoldedFamily.indexed_word_complete
+#print axioms Agent13FoldedFamily.exact_binary_family
+set_option pp.fullNames true in
+#check @Agent13FoldedFamily.exact_binary_family
+set_option pp.fullNames true in
+#check @Agent13FoldedFamily.binary_family_actual_step
+#print Agent13FoldedFamily.WordSafe
