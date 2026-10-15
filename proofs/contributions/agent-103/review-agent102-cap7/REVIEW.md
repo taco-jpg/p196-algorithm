@@ -29,9 +29,9 @@ Neither the map nor the enumerator reuses code from Agents #101, #102, #3, #6 or
 
    All 20,000 pass.
 2. **C against Python.** `succ_dump.c` carries the enumerator's successor function
-   verbatim. It agrees with `exterior_ref.py` on all 54,850 domain states with
-   `|B| <= 3` and on 186,696 random states with `|B|` in 4..7: 0 mismatches out of
-   241,546.
+   verbatim. It agrees with `exterior_ref.py` on all 51,984 domain states with
+   `|B| <= 3` (the cap-3 domain) and on 189,562 random states with `|B|` in 4..7:
+   0 mismatches out of 241,546.
 
 ## Results (even phases 2..16, trimmed `B`, first coefficient positive)
 
