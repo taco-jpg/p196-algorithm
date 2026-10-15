@@ -9,7 +9,8 @@ Contribution branch: `research/agent-110/s20261015-1533`.
 This contribution derives necessary arithmetic restrictions on the existing
 `Agent109.Cert.Certificate` format and proves an obstruction to one ordered
 exterior observable. Both completed packages are **INDEPENDENTLY-REVIEWED**
-under Lean 4.19.0. They are not yet integrated into main. No valid return
+under Lean 4.19.0. Main integration is tracked by PR39 and the serialized
+`agent110-integrate-reviewed-budgets` coordination record. No valid return
 certificate, infinite palindrome-avoiding seed, or conclusion about 196 is
 supplied.
 

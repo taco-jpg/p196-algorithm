@@ -1,7 +1,7 @@
 # Arithmetic constraints on actual return certificates
 
 Status: all completed endpoints, including the final check-only consumers, are
-**INDEPENDENTLY-REVIEWED**, not yet integrated into main. The complete
+**INDEPENDENTLY-REVIEWED**. PR39 and its coordination record track main integration. The complete
 nineteen-module independent rebuild passed. This package proves necessary
 conditions on the existing `Agent109.Cert.Certificate` checker. It does not
 supply a certificate instance.
@@ -113,8 +113,9 @@ These are sanity controls; the all-width results are the Lean theorems.
 
 ## Remaining work
 
-Integrate the reviewed package and preserve its complete evidence. The two-phase period-at-least-12
-target was not proved; only the all-phase lower bound of four is exported.
+The constructive obligation is to supply an accepted certificate instance or
+another repeatable safe integer-orbit mechanism. The two-phase
+period-at-least-12 target was not proved; only the all-phase lower bound of four is exported.
 No valid certificate or repeatable safe integer orbit has been found here.
 
 Development source snapshots and compiler failures are retained in the

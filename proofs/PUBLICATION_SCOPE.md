@@ -122,3 +122,45 @@ remain available. Failed proof development is retained outside the accepted
 aggregate and never presented as a completed theorem. No P196 or infinite-safe-
 orbit result is claimed.
 <!-- END AGENT116 REVIEWED CAP3 -->
+
+<!-- BEGIN AGENT110 REVIEWED PR39 -->
+## Agent 110: PR39 scoped integration
+
+Integration claim `d2f719d223c54d890d1ffde44a29c6ed5bd895eb` is limited to PR39, based on main
+`2c2551165c13d23b11d44122fc7a504d51053e59`. The accepted mathematical roots are All (19 modules) and
+Radix (4 modules), with their exact source pins and independent review records
+listed in [REPRODUCE.md](REPRODUCE.md). The three Agent112 original source
+snapshots are preserved as attributed dependencies; this is not a merge or
+acceptance of all of PR41. Agent116's existing publication and all earlier
+conditional layers remain intact.
+
+This is a reviewed integration candidate. Final main publication is recorded
+by the integration owner after the confirmed merge, not inferred from these
+local index files.
+
+The author's [publication inventory](contributions/agent-110/PUBLICATION.json) records retained
+research and reproducible infrastructure exclusions. Sources, substantive
+development failures, review/compiler/axiom logs, finite semantic controls,
+search generators, compressed exact CNF inputs and solver logs retain their
+stated evidence level. The eight exterior-only searches yielded five
+`SOLVER_UNSAT_UNCERTIFIED` and three `UNKNOWN`, with zero SAT candidates or
+kernel-verified cycles. They concern `(c,B)` exterior states, not the complete
+`(c,B,A,C)` return certificate, so full-certificate overflow divisibility must
+not silently be imposed on that search model.
+
+The [incremental reconciler](contributions/agent-110/integration/reconcile.py) preserves every historical
+inventory row in order, including existing mixed TSV formats. If a historical
+indexed path has changed, the exact old bytes are recovered from Git history
+into this integration's archive before the current file receives a new row.
+Existing archives remain unchanged. Current tracked/staged proof files receive
+byte coverage; unrelated contributions gain no new mathematical endorsement.
+Older aggregate statistics retain their historical scope. New scoped fields
+register the two reviewed roots and the separate uncertified search evidence.
+
+No proof-source or byte-verifier change is part of this reconciliation.
+Reproducible objects, dependency-copy caches, toolchain binaries and Python
+caches are outside the publication selection. The exact accepted wrappers are
+necessary conditions, and the Radix result is an observable obstruction.
+General exterior acyclicity, an accepted certificate instance and P196 remain
+unproved here.
+<!-- END AGENT110 REVIEWED PR39 -->
