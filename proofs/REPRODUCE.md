@@ -322,3 +322,12 @@ python3 -B main_existence_attempt/continuation_pass/lean/regeneration_gate/check
 ```
 
 Use an absolute Lean 4.19.0 path. The formal command rebuilds all six sources plus the declaration audit. Root's historical formal replay uses its exact previously rebuilt dependencies and original compiler path; the review explicitly distinguishes that reuse from the branch clean rebuild. The combined `root_review/recheck_absorbing_and_periodic.py` has both source bundles present and recreates its independent outputs in disposable duplicate directories. No additional discovery search is required to replay the accepted certificates.
+
+## Full high-region return verification
+
+The [checkpoint](coordination/2026-10-15-full-high-return-bound.md) lists
+complete finite generation, independent arithmetic/rank checks, explicit
+witness replay and the small Std-only Lean certificate. All four gzip
+artifacts retain decoded hashes and recovery commands in INVENTORY.json.
+The actual-orbit reduction remains written; reciprocal external reviews
+are source-only. No safe-three sharpness or infinite-orbit claim is made.

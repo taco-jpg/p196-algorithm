@@ -323,3 +323,15 @@ Every original written research report, proof note and manuscript source retaine
 - [research/main_existence_attempt/continuation_pass/periodic_bulk_followup/METHOD_AND_PROOF.md](research/main_existence_attempt/continuation_pass/periodic_bulk_followup/METHOD_AND_PROOF.md)
 - [research/main_existence_attempt/continuation_pass/periodic_bulk_followup/STATUS.md](research/main_existence_attempt/continuation_pass/periodic_bulk_followup/STATUS.md)
 - [research/main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/ABSORBING_CORE.md](research/main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/ABSORBING_CORE.md)
+
+## Full high-region return and reciprocal review reports
+
+- [contributions/2026-10-15-full-high-return/FULL_HIGH_RETURN.md](contributions/2026-10-15-full-high-return/FULL_HIGH_RETURN.md)
+- [contributions/2026-10-15-full-high-return/INDEPENDENT_REVIEW.md](contributions/2026-10-15-full-high-return/INDEPENDENT_REVIEW.md)
+- [contributions/2026-10-15-high-return-rank-formal/README.md](contributions/2026-10-15-high-return-rank-formal/README.md)
+- [contributions/2026-10-15-high-return-rank-formal/INDEPENDENT_REVIEW.md](contributions/2026-10-15-high-return-rank-formal/INDEPENDENT_REVIEW.md)
+- [contributions/2026-10-15-high-return-boundary-controls/README.md](contributions/2026-10-15-high-return-boundary-controls/README.md)
+- [contributions/2026-10-15-external-band-review/BAND_REVIEW.md](contributions/2026-10-15-external-band-review/BAND_REVIEW.md)
+- [contributions/2026-10-15-external-zero-exterior-review/REVIEW.md](contributions/2026-10-15-external-zero-exterior-review/REVIEW.md)
+- [contributions/FULL_HIGH_RETURN_INDEX.md](contributions/FULL_HIGH_RETURN_INDEX.md)
+- [coordination/2026-10-15-full-high-return-bound.md](coordination/2026-10-15-full-high-return-bound.md)

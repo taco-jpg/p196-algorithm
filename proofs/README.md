@@ -6,6 +6,18 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Sharp full high-region return bound — 15 October 2026
+
+The [new complete return checkpoint](coordination/2026-10-15-full-high-return-bound.md)
+proves at most three consecutive two-step returns to the high-coefficient
+region, with an exact all-width actual-map criterion. Five Lean theorems
+certify its complete 900-state necessary graph; the actual-orbit bridge is
+written and independently reviewed. The sharp witness has a palindrome at
+positive time two; three safe returns remain UNKNOWN. All rejected controls,
+failed completions and prior exploratory evidence are retained. Reciprocal
+source reviews cover the external band and three-zero exterior theorems.
+The newest external positive gate and periodic artifacts remain preserved.
+
 ## Positive regeneration and exact reset limits — 15 October 2026
 
 The [new variable-return handoff](coordination/2026-10-15-positive-gate-and-reset-limits.md)
