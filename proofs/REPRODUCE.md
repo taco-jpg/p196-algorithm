@@ -219,3 +219,12 @@ child restriction, induced edge, projection and weighted rank. Existing
 scalar/broader graph checkpoints are read unchanged. The 18- and
 19-declaration formal audit totals include the same fifteen published
 weighted-path prerequisites; this package adds seven declarations.
+
+## Arbitrary-block all-base seams and interval safety
+
+The [shared seam handoff](coordination/2026-10-15-general-base-seam-results.md)
+lists the decimal partition replay, complete all-base controls, independent
+block-response audit and fresh nine-declaration Lean build. Both complete
+gzip artifacts and all six binary failures are retained. The interval
+review pins the final supplemented mathematical proof; the earlier
+arithmetic proof hash remains unchanged as development provenance.

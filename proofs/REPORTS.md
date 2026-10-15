@@ -232,3 +232,12 @@ Every original written research report, proof note and manuscript source retaine
 - [README.md](contributions/2026-10-14-component-hierarchy-formal/README.md)
 - [COMPONENT_BOUNDS_INDEX.md](contributions/COMPONENT_BOUNDS_INDEX.md)
 - [2026-10-14-component-bounds-results.md](coordination/2026-10-14-component-bounds-results.md)
+
+## All-base seam reports
+
+- [RAW_SYMMETRY_REVIEW.md](contributions/2026-10-14-seam-review/RAW_SYMMETRY_REVIEW.md)
+- [GENERAL_BASE_SEAMS.md](contributions/2026-10-14-general-base-seams/GENERAL_BASE_SEAMS.md)
+- [INDEPENDENT_GENERAL_BASE_REVIEW.md](contributions/2026-10-14-general-base-seams/INDEPENDENT_GENERAL_BASE_REVIEW.md)
+- [README.md](contributions/2026-10-14-base-uniqueness-formal/README.md)
+- [GENERAL_BASE_SEAMS_INDEX.md](contributions/GENERAL_BASE_SEAMS_INDEX.md)
+- [2026-10-15-general-base-seam-results.md](coordination/2026-10-15-general-base-seam-results.md)

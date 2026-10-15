@@ -140,3 +140,11 @@ The completed renewal modules total 135 supporting theorem declarations (49+16+2
 | All three seven-step (4,4) return branches, arbitrary changes, initial L >= 2 | R <= 90 + max(0,ceil((14-L)/3)) <= 94 | [Complete proof](contributions/2026-10-14-component-specific-bound/COMPONENT_SPECIFIC_BOUND.md) |
 | Full outer sequence (4,8,16,7,15,6,13), initial L >= 1 | R <= min(98,94+max(0,ceil((14-L)/3))) | [Full scope and evidence](coordination/2026-10-14-component-bounds-results.md) |
 | Exact child-job recursion | 31 independently checked jobs, 128,234 vertex records and 212,453 edges; seven new generic formal declarations. Numerical application remains separately certified. | [Root review](contributions/2026-10-14-component-bound-root-review.json), [formal recursion](contributions/2026-10-14-component-hierarchy-formal/README.md) |
+
+## All-base seam symmetry and interval safety
+
+| Result | Exact scope | Evidence |
+|---|---|---|
+| Raw symmetry iff actual palindromicity | Every base b >= 3, arbitrary consecutive partition, actual final reflection width. Either symmetry forces E=D and no active seam. | [Complete written proof](contributions/2026-10-14-general-base-seams/GENERAL_BASE_SEAMS.md) |
+| Interval carry-mismatch safety | Any two nonempty intervals with positive terminal coefficients; no symmetry/disjointness requirement. Positive-terminal hypothesis essential. | [Final independent review](contributions/2026-10-14-general-base-seams/independent_interval_review.json) |
+| Full controls and supporting formal step | 58,221 decimal controls; 22,154 all-base controls and 52,734 independent block responses; nine Lean supporting declarations. Six binary failures retained. Full polynomial theorem remains written proof. | [Root review](contributions/2026-10-15-seam-base-root-review.json), [formal scope](contributions/2026-10-14-base-uniqueness-formal/README.md) |

@@ -6,6 +6,16 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Seam symmetry in every base at least three — 15 October 2026
+
+Building on the external renewal theorem, the [new all-base proof](coordination/2026-10-15-general-base-seam-results.md)
+establishes arbitrary-partition raw symmetry iff actual palindromicity,
+the exact active-seam/mass identities, and a safety criterion from two
+positive-terminal intervals with different isolated carries. Nine Lean
+supporting declarations and complete independent controls are retained,
+including six binary failures. This is one-step structure, not an
+all-time invariant or a proof for 196.
+
 ## Refined clock bounds: 94 returns and 98 periods — 14 October 2026
 
 The [new component-specific proof](coordination/2026-10-14-component-bounds-results.md)
