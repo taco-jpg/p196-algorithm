@@ -63,8 +63,9 @@ def forward_prefixes(s):
 
 class Pred:
     """Predecessor enumeration by direct inversion of forward_prefixes, column by column."""
-    def __init__(self, k):
+    def __init__(self, k, cache=True):
         self.k = k
+        self.use_cache = cache
         # no-growth local table: (p, x, y') -> list of (s, x', y)
         # x = carry into column i from below (low chain), x' = carry out
         # y' = carry into column i from above (high chain, running downward), y = carry out (downward)
@@ -143,7 +144,8 @@ class Pred:
                 for word, _, _ in states:
                     res.add(word)
         res = frozenset(res)
-        self.cache[p] = res
+        if self.use_cache:
+            self.cache[p] = res
         return res
 
 def initial_states(prefix, k):
@@ -163,9 +165,9 @@ def short_table(k):
             short[F(s)].add(s)
     return short
 
-def analyze(prefix, k, cap=2_000_000, want_cycle=True):
+def analyze(prefix, k, cap=2_000_000, want_cycle=True, cache=True):
     """Iterative DFS over predecessor edges.  Returns dict with status."""
-    P = Pred(k)
+    P = Pred(k, cache)
     short = short_table(k)
     init = initial_states(prefix, k)
     def preds(p):
