@@ -41,6 +41,18 @@ def totalG (cert : Certificate) : Int :=
 def totalH (cert : Certificate) : Int :=
   sumPrefix (fun i => dh (cert.st i) (cert.lk i)) cert.P
 
+def totalJ (cert : Certificate) : Int :=
+  sumPrefix (fun i => ((cert.lk i).j : Int)) cert.P
+
+def totalJ1 (cert : Certificate) : Int :=
+  sumPrefix (fun i => ((cert.lk i).j1 : Int)) cert.P
+
+def totalJ2 (cert : Certificate) : Int :=
+  sumPrefix (fun i => ((cert.lk i).j2 : Int)) cert.P
+
+def totalK (cert : Certificate) : Int :=
+  sumPrefix (fun i => ((cert.lk i).k : Int)) cert.P
+
 theorem sumPrefix_congr {f g : Nat → Int} (n : Nat)
     (h : ∀ i, i < n → f i = g i) : sumPrefix f n = sumPrefix g n := by
   induction n with
@@ -63,6 +75,16 @@ theorem sumPrefix_sub (f g : Nat → Int) (n : Nat) :
 
 theorem sumPrefix_two_mul (f : Nat → Int) (n : Nat) :
     sumPrefix (fun i => 2 * f i) n = 2 * sumPrefix f n := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [sumPrefix, ih]; omega
+
+theorem sumPrefix_one (n : Nat) : sumPrefix (fun _ => 1) n = (n : Int) := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [sumPrefix, ih]; omega
+
+theorem sumPrefix_two (n : Nat) : sumPrefix (fun _ => 2) n = 2 * (n : Int) := by
   induction n with
   | zero => rfl
   | succ n ih => simp only [sumPrefix, ih]; omega
@@ -139,6 +161,106 @@ theorem local_inner_lower (s s' : State) (L L' : Link)
     (h : LocalOK s s' L L') : (L'.lo' : Int) - (L.lo' : Int) ≤ dh s L := by
   obtain ⟨_, _, _, _, _, _, _, _, _, _, _, _, hlo⟩ := h
   unfold dh
+  omega
+
+/-- Exact signed exterior width change, before taking the cyclic sum. -/
+theorem local_B_length_difference (s s' : State) (L L' : Link)
+    (h : LocalOK s s' L L') :
+    (s'.B.length : Int) - (s.B.length : Int) = 1 - (L.j : Int) := by
+  obtain ⟨_, _, _, _, _, hb, _, _, _, _, _, _, _⟩ := h
+  have hl := Br_length s
+  rw [hb] at hl
+  simp only [List.length_append, List.length_replicate] at hl
+  omega
+
+/-- Exact signed interface width change, with the actual overflow carry. -/
+theorem local_A_length_difference (s s' : State) (L L' : Link)
+    (h : LocalOK s s' L L') :
+    (s'.A.length : Int) - (s.A.length : Int) =
+      2 - (gam s : Int) - ((L.j1 : Int) + (L.j2 : Int)) := by
+  obtain ⟨_, hB, _, _, _, _, ha, _, _, _, _, _, _⟩ := h
+  have hl := Ar_length s hB
+  rw [ha] at hl
+  simp only [List.length_append, List.length_replicate] at hl
+  omega
+
+/-- Exact signed central width change; its symmetric trim uses two copies of `k`. -/
+theorem local_C_length_difference (s s' : State) (L L' : Link)
+    (h : LocalOK s s' L L') :
+    (s'.C.length : Int) - (s.C.length : Int) =
+      2 - (gam s : Int) - 2 * (L.k : Int) := by
+  obtain ⟨_, hB, _, _, _, _, _, hc, _, _, _, _, _⟩ := h
+  have hl := Cr_length s hB
+  rw [hc] at hl
+  simp only [List.length_append, List.length_replicate] at hl
+  omega
+
+/-- A cycle returns exactly one exterior letter per step in total. -/
+theorem totalJ_eq_period (cert : Certificate) (hv : Valid cert) :
+    totalJ cert = (cert.P : Int) := by
+  have he := sumPrefix_congr cert.P
+    (f := fun i => ((cert.st ((i + 1) % cert.P)).B.length : Int) -
+      ((cert.st i).B.length : Int))
+    (g := fun i => 1 - ((cert.lk i).j : Int))
+    (fun i hi => local_B_length_difference _ _ _ _ (hv.2 i hi))
+  rw [sumPrefix_cyclic_difference (fun i => ((cert.st i).B.length : Int)) cert.P] at he
+  rw [sumPrefix_sub, sumPrefix_one] at he
+  change 0 = (cert.P : Int) - totalJ cert at he
+  omega
+
+/-- Interface trim counts are forced by cyclic interface width balance. -/
+theorem totalJ1_add_totalJ2 (cert : Certificate) (hv : Valid cert) :
+    totalJ1 cert + totalJ2 cert = 2 * (cert.P : Int) - totalGam cert := by
+  have he := sumPrefix_congr cert.P
+    (f := fun i => ((cert.st ((i + 1) % cert.P)).A.length : Int) -
+      ((cert.st i).A.length : Int))
+    (g := fun i => 2 - (gam (cert.st i) : Int) -
+      (((cert.lk i).j1 : Int) + ((cert.lk i).j2 : Int)))
+    (fun i hi => local_A_length_difference _ _ _ _ (hv.2 i hi))
+  rw [sumPrefix_cyclic_difference (fun i => ((cert.st i).A.length : Int)) cert.P] at he
+  rw [sumPrefix_sub, sumPrefix_sub, sumPrefix_two, sumPrefix_add] at he
+  change 0 = 2 * (cert.P : Int) - totalGam cert - (totalJ1 cert + totalJ2 cert) at he
+  omega
+
+/-- Central symmetric trim counts are forced by cyclic central width balance. -/
+theorem two_totalK (cert : Certificate) (hv : Valid cert) :
+    2 * totalK cert = 2 * (cert.P : Int) - totalGam cert := by
+  have he := sumPrefix_congr cert.P
+    (f := fun i => ((cert.st ((i + 1) % cert.P)).C.length : Int) -
+      ((cert.st i).C.length : Int))
+    (g := fun i => 2 - (gam (cert.st i) : Int) - 2 * ((cert.lk i).k : Int))
+    (fun i hi => local_C_length_difference _ _ _ _ (hv.2 i hi))
+  rw [sumPrefix_cyclic_difference (fun i => ((cert.st i).C.length : Int)) cert.P] at he
+  rw [sumPrefix_sub, sumPrefix_sub, sumPrefix_two, sumPrefix_two_mul] at he
+  change 0 = 2 * (cert.P : Int) - totalGam cert - 2 * totalK cert at he
+  omega
+
+/-- Expanding the definition relates the outer gain to the supplied trim totals. -/
+theorem totalG_eq_trim_counts (cert : Certificate) :
+    totalG cert = totalGam cert + totalJ cert + totalJ1 cert - 2 * (cert.P : Int) := by
+  unfold totalG dg
+  rw [sumPrefix_sub, sumPrefix_add, sumPrefix_add, sumPrefix_two]
+  rfl
+
+/-- Expanding the definition relates the inner gain to the supplied trim totals. -/
+theorem totalH_eq_trim_counts (cert : Certificate) :
+    totalH cert = totalGam cert + totalJ2 cert + totalK cert - 2 * (cert.P : Int) := by
+  unfold totalH dh
+  rw [sumPrefix_sub, sumPrefix_add, sumPrefix_add, sumPrefix_two]
+  rfl
+
+/-- With exact exterior accounting, the outer gain only needs the `j1` total. -/
+theorem totalG_eq_totalJ1 (cert : Certificate) (hv : Valid cert) :
+    totalG cert = totalGam cert + totalJ1 cert - (cert.P : Int) := by
+  have hg := totalG_eq_trim_counts cert
+  have hj := totalJ_eq_period cert hv
+  omega
+
+/-- Each inner gain can equivalently be read as central trim minus interface trim. -/
+theorem totalH_eq_totalK_sub_totalJ1 (cert : Certificate) (hv : Valid cert) :
+    totalH cert = totalK cert - totalJ1 cert := by
+  have hh := totalH_eq_trim_counts cert
+  have hj := totalJ1_add_totalJ2 cert hv
   omega
 
 /-- The exact width identity summed around a valid cyclic certificate. -/

@@ -72,7 +72,7 @@ def main():
     names = re.findall(r'^theorem\s+([A-Za-z_][A-Za-z_0-9]*)', source.read_text(), re.M)
     audit = 'import CertificateAccounting\n\n' + '\n'.join(
         '#print axioms Agent110.Accounting.' + name for name in names) + '\n'
-    audit_path = evidence / 'AccountingAxiomAudit.lean'
+    audit_path = evidence / f'{stem}-axioms.lean'
     audit_path.write_text(audit)
     output = execute('axioms', [str(audit_path)])
     found = re.findall(r"'([^']+)' depends on axioms:\s*\[([^\]]*)\]", output, re.S)
