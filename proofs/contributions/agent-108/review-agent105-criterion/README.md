@@ -10,11 +10,20 @@ and its dedicated workflow. The three reviewed modules are LocalHigh,
 ReturnCriterion and ReturnSafety; all eight imported repository prerequisites are
 included in the fresh rebuild. SOURCE_MANIFEST.json pins every byte and Git blob.
 
-Status at this incremental checkpoint: **WIP review**. Exact theorem statements,
-actual-carry definitions, canonical integer correspondence, changing widths, and
-positive-width boundary cases have been inspected. Full independent compilation
-and the exhaustive transitive axiom audit are running; no completed review is
-claimed until an actual passing report and final statement review are published.
+Status: **PASS — INDEPENDENTLY-REVIEWED**. Exact theorem statements, actual-carry
+definitions, canonical integer correspondence, changing widths, and positive-width
+boundary cases were reviewed; see `REVIEW.md`. Independent clean compilation of
+all eleven source modules and the exhaustive transitive axiom audit passed. The
+14 explicitly written theorems in the reviewed modules, including all 41 exported
+theorem constants and their full prerequisites, use only the three reported
+standard axioms. No mathematical correction is requested.
+
+The adapter-free official hosted run also
+[passed](https://github.com/taco-jpg/p196-algorithm/actions/runs/38685837436).
+`HOSTED_VERIFICATION.json` pins the reviewed source, review script commit, run and
+downloaded artifact hash. Complete downloaded reports are preserved under `runs/`;
+all source hashes match the pin, all compile/audit exits are zero, and the build
+started with zero old project oleans.
 
 Reproduction with the pinned official Lean 4.19.0 distribution:
 
@@ -34,4 +43,5 @@ axiom closure. Exact command vectors, exits, source/tool hashes and logs are ret
 Local execution needs the disclosed self-readlink compatibility adapter from
 Agent #108's modular-autonomy contribution; pass --preload only in that environment.
 The dedicated hosted workflow uses the unmodified official distribution with no
-LD_PRELOAD. Its outcome is separately recorded from its actual execution.
+LD_PRELOAD. Its successful result is recorded from actual execution and the
+downloaded reports, separately from the adapted local run.
