@@ -218,6 +218,28 @@ theorem last_step_root
     simp only [rootWords, List.mem_append, List.mem_map, List.mem_range]
     exact Or.inr ⟨columnSum d L 3, by omega, rfl⟩
 
+/-- Generic time bound: if the final predecessor of `orbit A (t + 1)`
+always projects into a root family whose members have checked rank at most
+`B`, then `t ≤ B`. -/
+theorem time_bound_of_root
+    {tree : RankTree} (rows : CheckedRows tree (longPred 4))
+    (short : ShortDescent tree) {A t B : Nat} {roots : List (List Nat)}
+    (hA : 0 < A)
+    (hroot : ∀ n d L, Canonical n d L → step n = orbit A (t + 1) →
+      project4 (columnSum d L) L ∈ roots)
+    (initial : ∀ p ∈ roots, checkInitial tree B p = true) : t ≤ B := by
+  obtain ⟨d, L, hcan⟩ := canonical_exists A hA
+  let q := columnSum d L
+  have ha : Admissible L q := canonical_admissible A d L hcan
+  obtain ⟨e, he, hrep⟩ := iterPairs_representation A d q L t hcan (fun _ _ => rfl)
+  have hm := hroot (orbit A t) e _ he rfl
+  have hproj := project4_congr (columnSum e (iterPairs q L t).1)
+    (iterPairs q L t).2 (iterPairs q L t).1 hrep
+  rw [hproj] at hm
+  obtain ⟨r, hr, hb⟩ := checkInitial_sound (initial _ hm)
+  have ht := actual_iterPairs_rank4 rows short q L ha t hr
+  omega
+
 /-- Conditional ordinary-integer endpoint: three explicit finite checks
 (complete long rows, short descent, initial ranks of the root family) imply
 the ancestry bound `B + 1` for every palindrome beginning `a b c`. -/
@@ -230,17 +252,8 @@ theorem ancestry_bound_of_checks
   cases t with
   | zero => omega
   | succ t =>
-      obtain ⟨d, L, hcan⟩ := canonical_exists A hA
-      let q := columnSum d L
-      have ha : Admissible L q := canonical_admissible A d L hcan
-      obtain ⟨e, he, hrep⟩ := iterPairs_representation A d q L t hcan (fun _ _ => rfl)
-      have hlast : step (orbit A t) = P := hreach
-      have hm := last_step_root he hlast hP hng
-      have hproj := project4_congr (columnSum e (iterPairs q L t).1)
-        (iterPairs q L t).2 (iterPairs q L t).1 hrep
-      rw [hproj] at hm
-      obtain ⟨r, hr, hb⟩ := checkInitial_sound (initial _ hm)
-      have ht := actual_iterPairs_rank4 rows short q L ha t hr
+      have ht : t ≤ B := time_bound_of_root rows short hA
+        (fun n d L hcan hstep => last_step_root hcan (hstep.trans hreach) hP hng) initial
       omega
 
 /-- Corollary for the ordinary orbit of 196, using the existing
@@ -258,6 +271,7 @@ theorem no_196_of_checks
 #print axioms no_overflow_of_prefix
 #print axioms canonical_last_step3
 #print axioms last_step_root
+#print axioms time_bound_of_root
 #print axioms ancestry_bound_of_checks
 #print axioms no_196_of_checks
 
