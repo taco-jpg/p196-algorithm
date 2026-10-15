@@ -1,0 +1,65 @@
+name: Agent4 Lean bootstrap and proof audit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/agent4-lean-bootstrap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bootstrap-and-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Check out only the Agent4 proof tree
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout: proofs/agent4
+          persist-credentials: false
+      - name: Obtain the official pinned compiler
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 --output lean-4.19.0-linux.tar.zst \
+            https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+          sha256sum lean-4.19.0-linux.tar.zst | tee lean-runtime-sha256.log
+          tar --zstd -xf lean-4.19.0-linux.tar.zst
+          "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" --version | tee lean-version.log
+          echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Retain the exact compiler for connector-based local verification
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent4-lean-4.19.0-linux
+          path: ${{ runner.temp }}/lean-4.19.0-linux.tar.zst
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+      - name: Compile arithmetic lemmas and inspect axiom output
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Source commit: $GITHUB_SHA" | tee "$RUNNER_TEMP/agent4-proof.log"
+          sha256sum proofs/agent4/complementary_bulk/CycleConstraints.lean | tee -a "$RUNNER_TEMP/agent4-proof.log"
+          lean proofs/agent4/complementary_bulk/CycleConstraints.lean 2>&1 | tee -a "$RUNNER_TEMP/agent4-proof.log"
+          if grep -E 'sorryAx|Lean.ofReduceBool|Lean.trustCompiler|error:|declaration uses.sorry' "$RUNNER_TEMP/agent4-proof.log"; then
+            exit 1
+          fi
+      - name: Run ordinary-integer controls
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd proofs/agent4/complementary_bulk
+          python -m unittest -v test_quotient 2>&1 | tee "$RUNNER_TEMP/agent4-python.log"
+      - name: Retain compiler and verification logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent4-lean-audit-logs
+          path: ${{ runner.temp }}/*.log
+          retention-days: 7
+          if-no-files-found: error
