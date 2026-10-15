@@ -1,0 +1,1466 @@
+{
+  "status": "PASS",
+  "evidence_kind": "actual independent clean execution",
+  "sources": {
+    "TemplateStep": {
+      "source": "proofs/contributions/agent-109/template-step-bridge/TemplateStep.lean",
+      "sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+      "imports": [
+        "Std"
+      ]
+    },
+    "ReturnCertificate": {
+      "source": "proofs/contributions/agent-109/template-return-certificate/ReturnCertificate.lean",
+      "sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+      "imports": [
+        "TemplateStep"
+      ]
+    },
+    "OuterFinite": {
+      "source": "proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterFinite.lean",
+      "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+      "imports": [
+        "Std"
+      ]
+    },
+    "OuterBounds": {
+      "source": "proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterBounds.lean",
+      "sha256": "75ed5831f0cc1e9c6016672ebef83cf0f46da279432b3694ba075627cb973a76",
+      "imports": [
+        "OuterFinite"
+      ]
+    },
+    "OuterBridge": {
+      "source": "proofs/contributions/agent-109/outer-projection-bridge/OuterBridge.lean",
+      "sha256": "849fa22a9d6aae37611e0eec424e4ec451c6bb4d71c75813f9a8906c669bd966",
+      "imports": [
+        "ReturnCertificate",
+        "OuterBounds"
+      ]
+    },
+    "CertificateRealization": {
+      "source": "proofs/contributions/agent-116/certificate-exterior/CertificateRealization.lean",
+      "sha256": "c06f8955dbdcf32d4b9f0ab05f149394d1177fc9951c015ab985da3833480391",
+      "imports": [
+        "OuterBridge"
+      ]
+    },
+    "ExteriorNormalization": {
+      "source": "proofs/contributions/agent-116/certificate-exterior/ExteriorNormalization.lean",
+      "sha256": "4da453cdfb754636085ebe865bb398a413808877d3991213db4e5265ffcdb3c2",
+      "imports": [
+        "OuterBridge"
+      ]
+    },
+    "CertificateExterior": {
+      "source": "proofs/contributions/agent-116/certificate-exterior/CertificateExterior.lean",
+      "sha256": "f0bd00fc497542a16df331542177fbfd0de55cd7b11454149942685d4eda6bce",
+      "imports": [
+        "CertificateRealization",
+        "ExteriorNormalization"
+      ]
+    },
+    "CanonicalityCounterexample": {
+      "source": "proofs/contributions/agent-116/review/CanonicalityCounterexample.lean",
+      "sha256": "2bda1efb53de687d2eadd519d428a380a88516f1c0a71462a13bee5b797cd829",
+      "imports": [
+        "OuterBounds"
+      ]
+    }
+  },
+  "commands": [
+    {
+      "label": "version",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 0.032,
+      "log": "logs/version.log",
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "prefix",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "--print-prefix"
+      ],
+      "exit": 0,
+      "seconds": 0.035,
+      "log": "logs/prefix.log",
+      "sha256": "cad3885e33239eb93b1bbd780aba027e796353fc2c56701074220108410b55cd"
+    },
+    {
+      "label": "TemplateStep",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "TemplateStep.olean",
+        "TemplateStep.lean"
+      ],
+      "exit": 0,
+      "seconds": 4.774,
+      "log": "logs/TemplateStep.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ReturnCertificate",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ReturnCertificate.olean",
+        "ReturnCertificate.lean"
+      ],
+      "exit": 0,
+      "seconds": 3.305,
+      "log": "logs/ReturnCertificate.log",
+      "sha256": "f2c6882924b64da43f79d98a9884c4196e8b90008eb9fa20a2a861818274e50a"
+    },
+    {
+      "label": "OuterFinite",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OuterFinite.olean",
+        "OuterFinite.lean"
+      ],
+      "exit": 0,
+      "seconds": 21.344,
+      "log": "logs/OuterFinite.log",
+      "sha256": "ac86a2e22b11447702615b58a5b0a93a65c92f14973bd9df0868fe52e5abf5f4"
+    },
+    {
+      "label": "OuterBounds",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OuterBounds.olean",
+        "OuterBounds.lean"
+      ],
+      "exit": 0,
+      "seconds": 0.763,
+      "log": "logs/OuterBounds.log",
+      "sha256": "d11c52a5374e73738ffd0765c9251a3fcdf2cea573806d9b5fa0b50e2ce67ee5"
+    },
+    {
+      "label": "OuterBridge",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OuterBridge.olean",
+        "OuterBridge.lean"
+      ],
+      "exit": 0,
+      "seconds": 1.774,
+      "log": "logs/OuterBridge.log",
+      "sha256": "92a6d890454c35bfcbf755c6ab3e92d7c7d13a27bfec5a7618bea352b266739c"
+    },
+    {
+      "label": "CertificateRealization",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "CertificateRealization.olean",
+        "CertificateRealization.lean"
+      ],
+      "exit": 0,
+      "seconds": 0.808,
+      "log": "logs/CertificateRealization.log",
+      "sha256": "3442e145723a4aea18f6b75f5ee0bb26cb62239f280be933ad8a771a6c0bcdc0"
+    },
+    {
+      "label": "ExteriorNormalization",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ExteriorNormalization.olean",
+        "ExteriorNormalization.lean"
+      ],
+      "exit": 0,
+      "seconds": 0.813,
+      "log": "logs/ExteriorNormalization.log",
+      "sha256": "c71e1b75da4df5a9eaa863a2768dfb02d9faf653b284a34334c9ea9d104b2ccc"
+    },
+    {
+      "label": "CertificateExterior",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "CertificateExterior.olean",
+        "CertificateExterior.lean"
+      ],
+      "exit": 0,
+      "seconds": 1.095,
+      "log": "logs/CertificateExterior.log",
+      "sha256": "e5efeb6210fa123fb0f5366eb665b8b50923605812bef7771c53569dfbea7b3f"
+    },
+    {
+      "label": "CanonicalityCounterexample",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "CanonicalityCounterexample.olean",
+        "CanonicalityCounterexample.lean"
+      ],
+      "exit": 0,
+      "seconds": 0.266,
+      "log": "logs/CanonicalityCounterexample.log",
+      "sha256": "b50d7b9529dea7b7ec368691f4faba9a47cb6ef86400ed661a85ce531e2e4a5c"
+    },
+    {
+      "label": "ReviewAudit",
+      "argv": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "ReviewAudit.lean"
+      ],
+      "exit": 0,
+      "seconds": 7.104,
+      "log": "logs/ReviewAudit.log",
+      "sha256": "bd97166bf07cbca4cbef4457d36553da19485fd61589e3ac8a5dc27215bfd7a8"
+    }
+  ],
+  "selected": [
+    "CertificateExterior",
+    "CanonicalityCounterexample"
+  ],
+  "source_git_head": "86076c31c6386e2520cdd67424f2ba6a01020844",
+  "runner_sha256": "4176ec49640358acb52c30bd8adfd623bcd8114b731c574e2317d192353594c8",
+  "fresh_local_objects": true,
+  "author_checker_invoked": false,
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "prefix": "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux",
+    "sha256": {
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean": "e7803b99a4bfd13bdccc2f98b01832a1416346263df735c49ae630dbe017e3d2",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/readlink_self.c": "8d1e9e7a886bb0be580c1cee84d6497c4ac3591ebe23389130a1282c0aaa8e89",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/readlink_self.so": "100718efe84a5c605d4752eadf9d9f6b14f38d5adbc82ce00407d378f4d9973d"
+    }
+  },
+  "order": [
+    "TemplateStep",
+    "ReturnCertificate",
+    "OuterFinite",
+    "OuterBounds",
+    "OuterBridge",
+    "CertificateRealization",
+    "ExteriorNormalization",
+    "CertificateExterior",
+    "CanonicalityCounterexample"
+  ],
+  "theorem_axioms": {
+    "_private.TemplateStep.0._proof_59": [
+      "propext"
+    ],
+    "P196.Agent7.Finite.outerNext.eq_1": [],
+    "Agent109.Cert.inv_step._proof_21": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digits_evalL._proof_45": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.template_lastPos": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0._proof_27": [
+      "propext"
+    ],
+    "Agent109.norm_template": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.norm_band_tail._proof_6": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete._proof_7": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.bounded_reverse": [
+      "propext"
+    ],
+    "Agent109.Outer.k_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.zipAdd_append": [
+      "propext"
+    ],
+    "P196.Agent7.Finite.Outer.mk.injEq": [
+      "propext"
+    ],
+    "_private.TemplateStep.0.Agent109.Canon.match_1.eq_3": [],
+    "Agent109.step_eq_evalL_pair": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.stripSuffix_spec": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Data.mk.injEq": [
+      "propext"
+    ],
+    "Agent116.CertificateExterior.realizes_next": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_4._@.ReturnCertificate._hyg.2395": [],
+    "_private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_2.eq_1": [],
+    "Agent109.Outer.t_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete._proof_1": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.Outer.mk.inj": [],
+    "Agent109.template.eq_1": [],
+    "Agent109.pair_last._proof_57": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.next_complement._proof_23": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_phase_index._proof_4": [
+      "propext"
+    ],
+    "Agent109.LastPos.eq_1": [],
+    "Agent109.next_phase._proof_22": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.inv_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "_private.OuterBounds.0.P196.Agent7.Finite.outerIterate.match_1.eq_1": [],
+    "P196.Agent7.Finite.staysSmall.eq_1": [],
+    "Agent109.Outer.normalize7_eq": [
+      "propext"
+    ],
+    "_private.OuterBounds.0.P196.Agent7.Finite.staysSmall.match_1.eq_2": [],
+    "Agent109.complement_k._proof_13": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.zipAdd_eq_zipWith": [
+      "propext"
+    ],
+    "Agent116.Exterior.stripSuffix_last": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.normalize.match_1.eq_2": [],
+    "Agent109.normalize_eq_norm": [
+      "propext"
+    ],
+    "Agent109.Data.mk.inj": [],
+    "Agent116.Exterior.Br_append_phase": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.digitsFuel.match_1.eq_1": [],
+    "Agent109.norm_template._proof_24": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.complement_k._proof_15": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.stripSuffix.eq_1": [],
+    "Agent109.zipAdd_length": [
+      "propext"
+    ],
+    "Agent109.Cert.step_palindrome_template": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.outerIterate_eq": [],
+    "P196.Agent7.Finite.Outer.mk.sizeOf_spec": [],
+    "Agent109.stepWord.eq_1": [],
+    "Agent109.pair_last._proof_56": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.t_le._proof_7": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.Br_append_phase._proof_3": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_digits._proof_37": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.evalL.eq_2": [],
+    "Agent109.norm_band_tail._proof_5": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digits.eq_1": [],
+    "Agent109.Cert.certificate_existence._proof_38": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_outer_orbit._proof_28": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.reverseFuel_digits": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.orbitWord.match_1.eq_2": [],
+    "Agent109.Outer.actual_step_outer._proof_23": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digits_pos._proof_34": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.realize._proof_30": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.pair_last": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.canon_normalize": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_phase_index._proof_1": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.succ_bounded._proof_11": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.exit_witness_of_false._proof_9": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_outer_orbit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0._proof_60": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Canon.eq_3": [],
+    "Agent109.Outer.actual_cap2_exit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_phase_index._proof_5": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.State.mk.sizeOf_spec": [],
+    "Agent109.u0.eq_1": [],
+    "Agent109.evalL_zipAdd": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.digits_evalL._proof_48": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.step_palindrome_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_pos_of_canon._proof_43": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_outer_orbit._proof_29": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.template_bounded._proof_36": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.Link.mk.injEq": [
+      "propext"
+    ],
+    "Agent109.reverseAux._unary._proof_30": [
+      "propext"
+    ],
+    "Agent116.CertificateExterior.realizes_all": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.kOf_eq": [],
+    "Agent109.complement_phase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.Certificate.mk.sizeOf_spec": [],
+    "Agent109.evalL_ge._proof_64": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.orbit_succ_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.stateOuter_valid": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.data.eq_1": [],
+    "Agent109.norm.eq_1": [],
+    "Agent116.Exterior.stripSuffix_append_replicate": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.complement_phase._proof_20": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.valid_exceeds_cap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.digitsFuel.eq_2": [],
+    "_private.ReturnCertificate.0._proof_28": [
+      "propext"
+    ],
+    "Agent109.evalL_norm._proof_49": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.Link.mk.sizeOf_spec": [],
+    "_private.ReturnCertificate.0._proof_35": [
+      "propext"
+    ],
+    "Agent109.step.eq_1": [],
+    "Agent109.Cert.check_sound": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.stripSuffix_length_le._proof_1": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.OuterBounds.0.P196.Agent7.Finite.staysSmall.match_1.eq_1": [],
+    "Agent109.Br.eq_1": [],
+    "Agent116.CertificateExterior.accepted_admissible_exceeds_two": [
+      "propext"
+    ],
+    "Agent109.Ar.eq_1": [],
+    "Agent109.Outer.outerIter.eq_1": [],
+    "Agent109.Cert.realize._proof_29": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0._proof_1": [
+      "propext"
+    ],
+    "Agent109.Cert.realize": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.Canon.match_1.eq_2": [],
+    "Agent109.canon_normalize._proof_51": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.Br_append_phase._proof_4": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.State.mk.injEq": [
+      "propext"
+    ],
+    "Agent116.CertificateExterior.realized_head_positive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_5._@.ReturnCertificate._hyg.2395": [],
+    "Agent109.next_phase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.norm_band_tail": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.template_trim": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_outer_orbit._proof_31": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Review.zeroHead_six_exit": [],
+    "Agent109.complement_k._proof_14": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.Br_append_phase._proof_2": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.k_le._proof_6": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.norm_carry_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.cap2_sharp_seven": [],
+    "Agent109.Cert.inv_step._proof_20": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.inv_not_palindrome": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_ge": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digits_pos._proof_35": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digitsFuel_stable": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_2.eq_2": [],
+    "Agent109.pairWord_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.Link.mk.inj": [],
+    "Agent109.Outer.succ_bounded._proof_21": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digitsFuel_stable._proof_33": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_phase_index._proof_6": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.template_lastPos._proof_33": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_outer_orbit._proof_30": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Phase.eq_1": [],
+    "Agent109.palindrome_iff._proof_67": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.canon_iff": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.local_outer_step": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0._proof_58": [
+      "propext"
+    ],
+    "Agent109.norm_template._proof_27": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.State.mk.inj": [],
+    "Agent109.Cert.Certificate.mk.inj": [],
+    "P196.Agent7.Finite.cap2_exit_witness": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_outer_orbit._proof_26": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.stepWord_template": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.canon_digits._proof_55": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete._proof_8": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.norm_carry_le._proof_2": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.stripSuffix_length_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.outerIter.eq_2": [],
+    "Agent109.Cert.template_trim._proof_3": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_lt._proof_62": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.succ_bounded._proof_15": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.orbitWord.eq_1": [],
+    "Agent116.CertificateExterior.admissible_realizes_zero._proof_6": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.outerIterate.eq_1": [],
+    "Agent109.evalL_norm": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.carryWord.eq_1": [],
+    "Agent116.CertificateExterior.realizes_next._proof_4": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.accepted_admissible_exceeds_cap": [
+      "propext"
+    ],
+    "Agent109.Outer.zipAdd_le._proof_4": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete._proof_2": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Canon.eq_2": [],
+    "Agent109.norm_band_tail._proof_7": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_cap2_exit._proof_33": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.outerNext_eq._proof_1": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_13._@.ReturnCertificate._hyg.2819": [],
+    "Agent109.reverseFuel.eq_2": [],
+    "Agent109.reverseAux.eq_def": [
+      "propext"
+    ],
+    "Agent109.norm_band._proof_11": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_append": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_phase_index": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.norm_band": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.canon_iff._proof_61": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_lt": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.OuterBridge.0._proof_14": [
+      "propext"
+    ],
+    "Agent116.Exterior.outerNext_append_replicate": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.succ_bounded": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.admissible_realizes_zero": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.template_trim._proof_2": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.inv_not_palindrome._proof_19": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0._proof_34": [
+      "propext"
+    ],
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_2._@.OuterFinite._hyg.85": [],
+    "Agent109.norm.eq_2": [],
+    "Agent109.norm_template._proof_25": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.lastPos_pairWord": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "_private.OuterBridge.0._proof_16": [
+      "propext"
+    ],
+    "_private.ReturnCertificate.0._proof_16": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.complement_t._proof_19": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.realize._proof_31": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_1._@.OuterFinite._hyg.85": [],
+    "Agent109.canon_normalize._proof_52": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_outer_orbit._proof_27": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_1.eq_1": [],
+    "Agent109.Outer.succ_bounded._proof_18": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cr.eq_1": [],
+    "P196.Agent7.Finite.decode_complete._proof_3": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.cap2_exits_by_seven": [],
+    "Agent109.reverse10_eq": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.orbitWord.match_1.eq_1": [],
+    "Agent109.zipAdd.eq_2": [],
+    "Agent109.digits_evalL": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_12._@.ReturnCertificate._hyg.2819": [],
+    "Agent109.Outer.actual_cap2_exit._proof_34": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digitsFuel_stable._proof_32": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digits_evalL._proof_46": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.palindrome_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.zipAdd_reverse": [
+      "propext"
+    ],
+    "P196.Agent7.Finite.encoded.eq_1": [],
+    "P196.Agent7.Finite.outerIterate.eq_2": [],
+    "Agent109.Outer.actual_outer_orbit._proof_25": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.u_le._proof_9": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete._proof_4": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.complement_t._proof_18": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.norm_band_tail._proof_4": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.exit_witness_of_false._proof_10": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.canon_last_pos": [],
+    "Agent109.Cert.step_palindrome_template._proof_1": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.template_bounded._proof_37": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.staysSmall.eq_2": [],
+    "Agent109.gamma_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.next_complement": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.norm_length": [
+      "propext"
+    ],
+    "Agent109.Cert.inv_not_palindrome._proof_18": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.outerNext_of_partial_trim": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decodeWord.eq_1": [],
+    "Agent109.reverseFuel_digits._proof_42": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.realize._proof_22": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_10._@.ReturnCertificate._hyg.2819": [],
+    "Agent109.Cert.template_realized": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_ge._proof_65": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.succ_bounded._proof_17": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.admissible_heads_positive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.append_inj_left'": [
+      "propext"
+    ],
+    "Agent109.evalL_lt._proof_63": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.realize._proof_26": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.outerNext_stripSuffix_eq": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.normalize.eq_2": [],
+    "Agent109.Cert.certificate_existence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.Review.zeroHead_five_confined": [],
+    "_private.CertificateExterior.0.Agent109.Outer.outerIter.match_1.eq_1": [],
+    "Agent109.Data.mk.sizeOf_spec": [],
+    "Agent116.Exterior.stripSuffix_idempotent": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.Canon.match_1.eq_1": [],
+    "P196.Agent7.Finite.cap2_sharp_six": [],
+    "Agent109.norm_band._proof_8": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.normalize.eq_1": [],
+    "Agent109.complement_t._proof_17": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_phase_index._proof_3": [
+      "propext"
+    ],
+    "Agent109.Cert.Mirr.brecOn": [],
+    "Agent109.Cert.Certificate.mk.injEq": [
+      "propext"
+    ],
+    "Agent109.digitsFuel.eq_1": [],
+    "_private.OuterBridge.0._proof_13": [
+      "propext"
+    ],
+    "Agent116.CertificateExterior.realizes_next._proof_2": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.reverseFuel.match_1.eq_1": [],
+    "Agent109.Outer.norm_digits_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.reverseFuel_digits._proof_40": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete._proof_5": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_14._@.ReturnCertificate._hyg.2819": [],
+    "Agent109.norm_band._proof_10": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.norm_digit_lt": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.canon_normalize._proof_53": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.u_le._proof_10": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.bounded_pair_digits": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.complement_k": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.realizes_next._proof_3": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.evalL_digits": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.complement_k._proof_12": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.exit_witness_of_false": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.zipAdd.match_1.eq_1": [],
+    "Agent109.u3.eq_1": [],
+    "Agent109.Outer.actual_outer_orbit._proof_24": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.stepWord_template._proof_28": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.Review.zeroHead_invalid": [],
+    "Agent109.evalL_append._proof_38": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.succ_bounded._proof_20": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.t_le._proof_8": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Canon.eq_1": [],
+    "Agent109.Outer.succ_bounded._proof_19": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.pairWord.eq_1": [],
+    "Agent116.Exterior.stripSuffix_bounded": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_6._@.ReturnCertificate._hyg.2395": [],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_9._@.ReturnCertificate._hyg.2819": [],
+    "Agent109.actual_template_palindrome_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "_private.ExteriorNormalization.0.Agent116.Exterior.dropWhile_eq_idempotent": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.u1.eq_1": [],
+    "Agent109.Cert.realize._proof_25": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.next_phase._proof_21": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "_private.OuterBridge.0.P196.Agent7.Finite.normalize.match_1.eq_2": [],
+    "P196.Agent7.Finite.normalize.eq_2": [],
+    "Agent109.normalize_template": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.digits_pos._proof_36": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.digitsFuel.match_1.eq_2": [],
+    "Agent109.evalL_zipAdd._proof_39": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digits_zero": [
+      "propext"
+    ],
+    "Agent109.actual_template_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.template_mirr": [
+      "propext"
+    ],
+    "Agent109.evalL_pos_of_canon": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_8._@.ReturnCertificate._hyg.2395": [],
+    "_private.TemplateStep.0.Agent109.evalL.match_1.eq_1": [],
+    "Agent109.Outer.bounded_strip": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_7._@.ReturnCertificate._hyg.2395": [],
+    "Agent109.reverse10.eq_1": [],
+    "P196.Agent7.Finite.exit_witness_of_false._proof_11": [
+      "propext",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.decode_complete._proof_6": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.shape_palindrome_iff": [
+      "propext"
+    ],
+    "Agent109.evalL_pos_of_canon._proof_44": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.actual_cap2_exit._proof_32": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.digitsFuel_stable._proof_31": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_1.eq_2": [],
+    "_private.CertificateExterior.0.Agent109.Outer.outerIter.match_1.eq_2": [],
+    "Agent109.Outer.outerNext_eq": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.reverseAux._unary._proof_29": [],
+    "Agent116.CertificateExterior.realizes_all._proof_5": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.zipAdd_comm": [
+      "propext"
+    ],
+    "Agent109.Cert.mirr_wrap": [
+      "propext"
+    ],
+    "_private.OuterFinite.0._proof_4": [],
+    "_private.ReturnCertificate.0._proof_17": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.zipAdd.match_1.eq_2": [],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_11._@.ReturnCertificate._hyg.2819": [],
+    "_private.TemplateStep.0.Agent109.evalL.match_1.eq_2": [],
+    "Agent109.Cert.realize._proof_23": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.u_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.succ_bounded._proof_22": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.zipAdd.eq_1": [],
+    "Agent116.Exterior.stripSuffix_head_pos": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.mirr_of_split": [
+      "propext"
+    ],
+    "Agent109.reverseFuel.eq_1": [],
+    "Agent109.Cert.template_lastPos._proof_32": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.certificate_sound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.tOf.eq_1": [],
+    "Agent109.evalL.eq_1": [],
+    "Agent109.pair_split": [
+      "propext"
+    ],
+    "Agent109.Outer.actual_step_outer": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_outer_orbit": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.canon_digits": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.certificate_phase_index._proof_2": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.succ_bounded._proof_12": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.OuterBridge.0.P196.Agent7.Finite.normalize.match_1.eq_1": [],
+    "Agent109.digits_pos": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.norm_append": [
+      "propext"
+    ],
+    "Agent109.zipAdd_replicate": [
+      "propext"
+    ],
+    "Agent109.norm_band._proof_9": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.pair.eq_1": [],
+    "Agent109.Outer.k_le._proof_5": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.palindrome_iff._proof_66": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.digitWord.eq_1": [],
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_3._@.OuterFinite._hyg.85": [],
+    "_private.TemplateStep.0.Agent109.normalize.match_1.eq_1": [],
+    "Agent116.CertificateExterior.realizes_next._proof_1": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.u2.eq_1": [],
+    "Agent109.Cert.shape_reverse": [
+      "propext"
+    ],
+    "Agent109.kOf.eq_1": [],
+    "_private.OuterBridge.0._proof_3": [
+      "propext"
+    ],
+    "Agent109.digits_evalL._proof_47": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.norm_template._proof_26": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Cert.realize._proof_24": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.orbitWord.eq_2": [],
+    "P196.Agent7.Finite.cap2_unencoded": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent116.CertificateExterior.escapeAt_two": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.pairWord_orbit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent109.complement_t": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.orbit.eq_2": [],
+    "Agent109.Cert.template_bounded": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.OuterBounds.0.P196.Agent7.Finite.outerIterate.match_1.eq_2": [],
+    "Agent109.orbit.eq_1": [],
+    "Agent109.reverseFuel_digits._proof_41": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.TemplateStep.0.Agent109.reverseFuel.match_1.eq_2": [],
+    "Agent109.complement_t._proof_16": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.Outer.norm_digits_le._proof_2": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.bounded_pair_digits._proof_54": [
+      "propext",
+      "Quot.sound"
+    ],
+    "_private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_15._@.ReturnCertificate._hyg.2819": [],
+    "Agent109.Outer.zipAdd_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.canon_normalize._proof_50": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent116.Exterior.Br_append_replicate": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent109.normalize.eq_1": [],
+    "_private.TemplateStep.0._proof_3": [
+      "propext"
+    ]
+  },
+  "theorem_count": 385,
+  "sources_unchanged_after_run": true
+}
