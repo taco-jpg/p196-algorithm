@@ -99,6 +99,39 @@ Status: **UNKNOWN_CAP**; next lift width 16: 45,163,304 raw vertices, 82,360,117
   among 3,000 seeds). The hierarchy growth therefore reflects slack in the
   necessary relation, not observed long runs.
 
+## Structural observation (computation only, not a theorem)
+
+`structure/` holds the scripts and outputs (`cycle_lengths.out`,
+`width17_14cycles.out`). They read the recurrent graphs and need the
+full-artifact regeneration below for widths whose files are not retained.
+
+- Shortest cycle in the recurrent `seven_1` graph:
+  - widths 6 and 8: 7 steps (one clock period);
+  - widths 10, 12 and 13: 14 steps.
+- Phase-0 vertices lying on 14-step cycles exist at every width checked:
+
+  | Width | Phase-0 vertices on 14-step cycles |
+  |---:|---:|
+  | 14 | 18 |
+  | 15 | 23 |
+  | 16 | 20 |
+  | 17 | 15 |
+
+  Their column prefixes stabilize: `1,3,5,5,9,12,6,3,6,6,8,10,12,12,...`.
+- In the width-17 14-cycles, the first five columns are exactly 7-periodic in
+  time:
+  - column 0 is the clock (1,2,4,9,18,9,10);
+  - column 1 is (3,6,13,6,12,12,2);
+  - column 2 is (5,10,1,3,6,9,3);
+  - column 3 is (5,11,3,7,14,11,2);
+  - column 4 is (9,9,9,9,18,14,7).
+
+  The deeper columns are 14-periodic and show no visible spatial periodicity.
+- This suggests an inverse-limit object, an infinite-width necessary solution,
+  that a finite prefix-lift certificate cannot exclude. No all-width proof is
+  claimed. Turning this into a theorem would need an explicit all-width
+  description, and none is apparent from these data.
+
 ## Retained files and reproduction
 
 Retained:
