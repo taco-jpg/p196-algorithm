@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: proofs/agent5
+          sparse-checkout: proofs
       - name: Obtain pinned official Lean distribution
         run: |
           set -euo pipefail
@@ -35,25 +35,32 @@ jobs:
       - name: Compile Agent5 source and print embedded axiom audits
         run: |
           set -euo pipefail
-          echo "Source commit: $GITHUB_SHA"
-          if [ ! -d proofs/agent5 ]; then
-            echo 'BOOTSTRAP ONLY: no Agent5 Lean source exists in this commit.'
-            exit 0
-          fi
+          echo "Source commit: $GITHUB_SHA" | tee proofs/agent5/ci-proof-audit.log
           export LEAN_PATH="$PWD/proofs/agent5"
           count=0
           for file in proofs/agent5/*.lean; do
             [ -f "$file" ] || continue
             count=$((count+1))
-            echo "VERIFYING $file"
-            sha256sum "$file"
+            echo "VERIFYING $file" | tee -a proofs/agent5/ci-proof-audit.log
+            sha256sum "$file" | tee -a proofs/agent5/ci-proof-audit.log
             if grep -nE '\b(sorry|admit|axiom|native_decide)\b' "$file"; then
               echo 'Rejected proof shortcut or custom axiom token.'
               exit 1
             fi
-            lean -o "${file%.lean}.olean" "$file"
+            lean -o "${file%.lean}.olean" "$file" 2>&1 | tee -a proofs/agent5/ci-proof-audit.log
           done
-          echo "Compiled source file count: $count"
+          echo "Compiled source file count: $count" | tee -a proofs/agent5/ci-proof-audit.log
+      - name: Retain sources for independent offline review
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-source-snapshot-${{ github.sha }}
+          path: |
+            proofs/**/*.lean
+            proofs/**/*.py
+            proofs/**/*.md
+            proofs/agent5/ci-proof-audit.log
+          retention-days: 2
+          compression-level: 6
       - name: Share pinned compiler for offline verification environments
         if: contains(github.event.head_commit.message, 'bootstrap')
         uses: actions/upload-artifact@v4
