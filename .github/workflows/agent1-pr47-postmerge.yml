@@ -1,0 +1,177 @@
+name: Agent1 PR47 post-merge verification
+on:
+  push:
+    branches: [integrate/agent-1/20261015T1901Z]
+    paths: [.github/workflows/agent1-pr47-postmerge.yml]
+permissions: {}
+concurrency:
+  group: agent1-pr47-postmerge
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+      discussions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Prepare exact integrated source snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse '6d56f543933dedb83eee8215f0e7295a5363c02c^{tree}')" = b5e2bb07b5c6925594e4ccdc42bbc7af132f61c7
+          git worktree add --detach /tmp/agent1-pr47-source 6d56f543933dedb83eee8215f0e7295a5363c02c
+      - name: Obtain the exact official Lean release
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/agent1-lean.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  /tmp/agent1-lean.tar.zst' | sha256sum -c -
+          tar --zstd -xf /tmp/agent1-lean.tar.zst -C /tmp
+          /tmp/lean-4.19.0-linux/bin/lean --version
+      - name: Fresh unchanged source build and independent complete module audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 proofs/contributions/agent-1/consolidation-20261015/verify_pr47.py --repo /tmp/agent1-pr47-source --lean /tmp/lean-4.19.0-linux/bin/lean --output /tmp/agent1-pr47-postmerge
+      - name: Capture a separately labeled public delta and discussion inventory
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agent1-postmerge-delta
+          git fetch --no-recurse-submodules origin '+refs/heads/*:refs/remotes/origin/*' '+refs/pull/*/head:refs/remotes/pulls/*'
+          python3 - <<'PY'
+          import datetime, json, os, pathlib, subprocess, urllib.request
+          out=pathlib.Path('/tmp/agent1-postmerge-delta')
+          base='https://api.github.com/repos/taco-jpg/p196-algorithm/'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'P196-Agent1'}
+          def save(name,data): (out/name).write_text(json.dumps(data,indent=2)+'\n')
+          def get(route):
+              with urllib.request.urlopen(urllib.request.Request((base+route).rstrip('/'),headers=headers),timeout=60) as response: return json.load(response)
+          def pages(route):
+              result=[]
+              for page in range(1,1001):
+                  data=get(route+('&' if '?' in route else '?')+'per_page=100&page='+str(page))
+                  if not isinstance(data,list): raise RuntimeError('Unexpected collection response')
+                  result.extend(data)
+                  if len(data)<100:return result
+              raise RuntimeError('Pagination cap reached')
+          capture={'agent':'Agent #1','started_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Post-merge delta, distinct from the initial19:04 contribution snapshot','workflow_source':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID']}
+          save('branches.json',pages('branches'))
+          save('pull_requests.json',pages('pulls?state=all'))
+          save('issues_and_prs.json',pages('issues?state=all'))
+          save('main-rules.json',get('rules/branches/main'))
+          for number in [1,2,3,4,5,6,7,8,9,13,47]:save('comments-'+str(number)+'.json',pages('issues/'+str(number)+'/comments'))
+          # Discussion bodies are inventoried separately. Nested comment/reply
+          # continuations are explicitly reported, never mistaken for completeness.
+          cursor=None;discussions=[];limitations=[]
+          query='query($cursor:String){repository(owner:"taco-jpg",name:"p196-algorithm"){discussions(first:100,after:$cursor){pageInfo{hasNextPage endCursor}nodes{id number title url body createdAt updatedAt isAnswered comments(first:100){pageInfo{hasNextPage endCursor}nodes{id body createdAt updatedAt replies(first:100){pageInfo{hasNextPage endCursor}nodes{id body createdAt updatedAt}}}}}}}}'
+          try:
+              for page in range(1000):
+                  payload=json.dumps({'query':query,'variables':{'cursor':cursor}}).encode()
+                  req=urllib.request.Request('https://api.github.com/graphql',data=payload,headers={**headers,'Content-Type':'application/json'})
+                  with urllib.request.urlopen(req,timeout=60) as response:data=json.load(response)
+                  if data.get('errors'):raise RuntimeError(str(data['errors']))
+                  found=data['data']['repository']['discussions'];discussions.extend(found['nodes'])
+                  if not found['pageInfo']['hasNextPage']:break
+                  cursor=found['pageInfo']['endCursor']
+              else:raise RuntimeError('Discussion pagination cap')
+              for item in discussions:
+                  if item['comments']['pageInfo']['hasNextPage']:limitations.append({'discussion':item['number'],'unread_comment_cursor':item['comments']['pageInfo']['endCursor']})
+                  for comment in item['comments']['nodes']:
+                      if comment['replies']['pageInfo']['hasNextPage']:limitations.append({'comment':comment['id'],'unread_reply_cursor':comment['replies']['pageInfo']['endCursor']})
+          except Exception as error:limitations.append({'discussion_read_unavailable':str(error)})
+          save('discussions.json',{'items':discussions,'limitations':limitations,'complete':not limitations})
+          initial=json.loads(subprocess.check_output(['git','show','eef3ecc100ae1038f6556c1600b85bf0200914f6:SNAPSHOT.json'],text=True))
+          excluded=sorted(set(initial['branches'].values())|set(initial['pull_request_heads'].values()))
+          subprocess.run(['git','bundle','create',str(out/'delta.bundle'),'--all',*['^'+sha for sha in excluded]],check=True)
+          capture['finished_at']=datetime.datetime.now(datetime.timezone.utc).isoformat();save('capture.json',capture)
+          PY
+          git bundle verify /tmp/agent1-postmerge-delta/delta.bundle
+          cd /tmp/agent1-postmerge-delta
+          sha256sum *.json delta.bundle > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: agent1-pr47-postmerge-evidence
+          path: /tmp/agent1-pr47-postmerge/
+          retention-days: 14
+          if-no-files-found: error
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: agent1-postmerge-delta
+          path: /tmp/agent1-postmerge-delta/
+          retention-days: 7
+          if-no-files-found: error
+  publish-evidence:
+    needs: verify
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent1-pr47-postmerge-evidence
+          path: /tmp/agent1-publish-evidence
+      - name: Validate evidence bytes and restrict the publication path
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,shutil
+          source=pathlib.Path('/tmp/agent1-publish-evidence')
+          records=json.loads((source/'FILES.json').read_text())
+          actual={str(p.relative_to(source)) for p in source.rglob('*') if p.is_file() and p.name!='FILES.json'}
+          assert actual==set(records),'Evidence manifest coverage mismatch'
+          assert not any(p.is_symlink() for p in source.rglob('*')),'Symlinks are forbidden'
+          assert sum(p.stat().st_size for p in source.rglob('*') if p.is_file())<10000000,'Unexpected evidence size'
+          for name,record in records.items():
+              path=source/name
+              assert path.resolve().is_relative_to(source.resolve()),'Unsafe artifact path'
+              data=path.read_bytes()
+              assert len(data)==record['bytes'] and hashlib.sha256(data).hexdigest()==record['sha256'],name
+          report=json.loads((source/'verification.json').read_text())
+          assert report['source_commit']=='6d56f543933dedb83eee8215f0e7295a5363c02c'
+          destination=pathlib.Path('proofs/contributions/agent-1/consolidation-20261015/verification/pr47-postmerge')
+          assert not destination.exists(),'Never overwrite a published execution'
+          shutil.copytree(source,destination)
+          (destination/'RUN.json').write_text(json.dumps({'agent':'Agent #1','run_id':os.environ['GITHUB_RUN_ID'],'workflow_source':os.environ['GITHUB_SHA'],'status':report['status'],'source_commit':report['source_commit'],'scope':'Independent post-merge PR47 replay only; no automatic main merge or global proof acceptance'},indent=2)+'\n')
+          print('Evidence retained:',report['status'])
+          PY
+      - name: Publish only to the owned staging branch with a head guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET='integrate/agent-1/20261015T1901Z'
+          test "$GITHUB_REF" = "refs/heads/$TARGET"
+          git fetch origin "$TARGET"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          git config user.name 'Agent #1 evidence publisher'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- proofs/contributions/agent-1/consolidation-20261015/verification/pr47-postmerge
+          git diff --cached --name-only | grep -v '^proofs/contributions/agent-1/consolidation-20261015/verification/pr47-postmerge/' && exit 1 || true
+          git commit -m 'Agent #1: preserve exact post-merge PR47 execution evidence'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin "HEAD:refs/heads/$TARGET"
+          # A normal non-force push also rejects any race after the explicit
+          # observed-head check. No main ref is written by this workflow.
