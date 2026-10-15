@@ -263,3 +263,21 @@ Every original written research report, proof note and manuscript source retaine
 - [research/main_existence_attempt/continuation_pass/safe_language/STATUS.md](research/main_existence_attempt/continuation_pass/safe_language/STATUS.md)
 - [research/main_existence_attempt/continuation_pass/root_review/PRIMARY_SAT_REVIEW_HISTORY.md](research/main_existence_attempt/continuation_pass/root_review/PRIMARY_SAT_REVIEW_HISTORY.md)
 - [coordination/2026-10-15-four-state-language-exclusion.md](coordination/2026-10-15-four-state-language-exclusion.md)
+
+## Shared seam and formal bridge reports
+
+- [contributions/2026-10-15-seam-persistence-obstruction/SEAM_PERSISTENCE_OBSTRUCTION.md](contributions/2026-10-15-seam-persistence-obstruction/SEAM_PERSISTENCE_OBSTRUCTION.md)
+- [contributions/2026-10-15-interval-certificate-reduction/INTERVAL_REDUCTION.md](contributions/2026-10-15-interval-certificate-reduction/INTERVAL_REDUCTION.md)
+- [contributions/2026-10-14-overflow-mismatch-formal/README.md](contributions/2026-10-14-overflow-mismatch-formal/README.md)
+- [contributions/2026-10-15-overflow-mismatch-reduction-formal/README.md](contributions/2026-10-15-overflow-mismatch-reduction-formal/README.md)
+- [contributions/2026-10-15-base-reflection-formal/README.md](contributions/2026-10-15-base-reflection-formal/README.md)
+- [contributions/2026-10-15-base-reverse-add-formal/README.md](contributions/2026-10-15-base-reverse-add-formal/README.md)
+- [contributions/2026-10-15-high-column-formal/README.md](contributions/2026-10-15-high-column-formal/README.md)
+- [contributions/2026-10-15-high-carry-reduction-formal/README.md](contributions/2026-10-15-high-carry-reduction-formal/README.md)
+- [contributions/2026-10-15-clock-rotations/CLOCK_ROTATIONS.md](contributions/2026-10-15-clock-rotations/CLOCK_ROTATIONS.md)
+- [contributions/2026-10-15-scalar-clock-formal/README.md](contributions/2026-10-15-scalar-clock-formal/README.md)
+- [contributions/2026-10-15-scalar-clock-review/SCALAR_REVIEW.md](contributions/2026-10-15-scalar-clock-review/SCALAR_REVIEW.md)
+- [contributions/2026-10-15-external-intrinsic-review/REVIEW.md](contributions/2026-10-15-external-intrinsic-review/REVIEW.md)
+- [contributions/2026-10-15-external-finite-seed-review.md](contributions/2026-10-15-external-finite-seed-review.md)
+- [contributions/SEAM_PERSISTENCE_AND_FORMAL_INDEX.md](contributions/SEAM_PERSISTENCE_AND_FORMAL_INDEX.md)
+- [coordination/2026-10-15-seam-persistence-and-formal-bridges.md](coordination/2026-10-15-seam-persistence-and-formal-bridges.md)

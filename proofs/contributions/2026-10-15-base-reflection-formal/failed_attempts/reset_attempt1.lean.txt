@@ -1,0 +1,117 @@
+import BaseReflection
+
+namespace ResetNormalization
+open BaseReflection SignedDigitUniqueness
+
+/-- True marks a block start, where the incoming carry resets to zero. -/
+def columns (b incoming : Int) : List (Int × Bool) → List (Int × Int)
+  | [] => []
+  | (q,reset) :: xs =>
+    let active := if reset then 0 else incoming
+    let outgoing := (q+active)/b
+    (q,outgoing) :: columns b outgoing xs
+
+/-- Raw placement of independent normalized blocks. At a reset, the
+previous block's terminal carry is placed on top of the new block's
+first digit. The final terminal carry is always included. -/
+def placed (b incoming : Int) : List (Int × Bool) → List Int
+  | [] => [incoming]
+  | (q,reset) :: xs =>
+    let active := if reset then 0 else incoming
+    let outgoing := (q+active)/b
+    ((q+active)%b + if reset then incoming else 0) :: placed b outgoing xs
+
+def Bounded (b : Int) (xs : List (Int × Bool)) : Prop :=
+  ∀ p ∈ xs, 0 ≤ p.1 ∧ p.1 ≤ 2*b-2
+
+theorem carry_bit (b q i : Int) (hb : 2 ≤ b)
+    (hq : 0 ≤ q ∧ q ≤ 2*b-2) (hi : 0 ≤ i ∧ i ≤ 1) :
+    (q+i)/b = 0 ∨ (q+i)/b = 1 := by
+  have hlo := Int.ediv_nonneg (show 0 ≤ q+i by omega) (show 0 ≤ b by omega)
+  have hhi : (q+i)/b < 2 := Int.ediv_lt_of_lt_mul (by omega) (by omega)
+  omega
+
+theorem columns_qs (b i : Int) (xs : List (Int × Bool)) :
+    qs (columns b i xs) = xs.map Prod.fst := by
+  induction xs generalizing i with
+  | nil => rfl
+  | cons p xs ih =>
+    rcases p with ⟨q,r⟩
+    simp [columns, qs, ih]
+
+theorem columns_conditions (b i : Int) (xs : List (Int × Bool))
+    (hb : 2 ≤ b) (hi : 0 ≤ i ∧ i ≤ 1) (hbound : Bounded b xs) :
+    ColumnConditions b (columns b i xs) := by
+  induction xs generalizing i with
+  | nil => simp [columns, ColumnConditions]
+  | cons p xs ih =>
+    rcases p with ⟨q,r⟩
+    have hq := hbound (q,r) (by simp)
+    have ht : Bounded b xs := by
+      intro p hp
+      exact hbound p (by simp [hp])
+    let active : Int := if r then 0 else i
+    have ha : 0 ≤ active ∧ active ≤ 1 := by
+      dsimp [active]
+      split <;> omega
+    have hc := carry_bit b q active hb hq ha
+    have hci : 0 ≤ (q+active)/b ∧ (q+active)/b ≤ 1 := by omega
+    have htail := ih ((q+active)/b) hci ht
+    intro p hp
+    simp only [columns, List.mem_cons] at hp
+    rcases hp with hp | hp
+    · subst p
+      refine ⟨hc, active, (q+active)%b, hq, ha, ?_, ?_⟩
+      · exact ⟨Int.emod_nonneg _ (by omega), by
+          have := Int.emod_lt_of_pos (q+active) (show 0 < b by omega)
+          omega⟩
+      · exact (Int.emod_add_ediv (q+active) b).symm
+    · exact htail p hp
+
+theorem placed_eq_raw (b i : Int) (xs : List (Int × Bool)) :
+    placed b i xs = raw b i (columns b i xs) := by
+  induction xs generalizing i with
+  | nil => rfl
+  | cons p xs ih =>
+    rcases p with ⟨q,r⟩
+    simp only [placed, columns, raw, List.cons.injEq]
+    constructor
+    · cases r <;> simp only [Bool.false_eq_true, ↓reduceIte, Int.add_zero]
+      · have := Int.emod_add_ediv (q+i) b
+        omega
+      · have := Int.emod_add_ediv q b
+        omega
+    · exact ih _
+
+/-- The raw sum of independently normalized blocks preserves the value
+of the original coefficient list (and the optional initial carry). -/
+theorem placed_eval (b i : Int) (xs : List (Int × Bool)) :
+    eval b (placed b i xs) = eval b (xs.map Prod.fst) + i := by
+  rw [placed_eq_raw, raw_eval, columns_qs]
+
+theorem placed_overflow_classification (b : Int) (xs : List (Int × Bool))
+    (hb : 3 ≤ b) (hbound : Bounded b xs)
+    (hq : (xs.map Prod.fst).reverse = xs.map Prod.fst)
+    (he : (placed b 0 xs).reverse = placed b 0 xs) :
+    ∀ p ∈ columns b 0 xs, p.1 = (b+1)*p.2 ∧ (p.1 = 0 ∨ p.1 = b+1) := by
+  apply overflow_classification b (columns b 0 xs) hb
+  · simpa only [columns_qs] using hq
+  · simpa only [placed_eq_raw] using he
+  · exact columns_conditions b 0 xs (by omega) (by omega) hbound
+
+theorem placed_nooverflow_classification (b : Int) (xs : List (Int × Bool))
+    (e : List Int) (hb : 3 ≤ b) (hbound : Bounded b xs)
+    (hq : (xs.map Prod.fst).reverse = xs.map Prod.fst)
+    (hraw : placed b 0 xs = e ++ [0]) (he : e.reverse = e) :
+    e = xs.map Prod.fst ∧
+      ∀ p ∈ columns b 0 xs, p.2 = 0 ∧ p.1 ≤ b-1 := by
+  have hc := columns_conditions b 0 xs (by omega) (by omega) hbound
+  have hqs : (qs (columns b 0 xs)).reverse = qs (columns b 0 xs) := by
+    simpa only [columns_qs] using hq
+  rw [placed_eq_raw] at hraw
+  constructor
+  · simpa only [columns_qs] using
+      nooverflow_raw_equals_input b (columns b 0 xs) e hb hqs hraw he hc
+  · exact nooverflow_classification b (columns b 0 xs) e hb hqs hraw he hc
+
+end ResetNormalization

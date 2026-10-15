@@ -262,3 +262,12 @@ python3 -B restore_artifacts.py /tmp/safe_language_integrity --all --verify-only
 ```
 
 The default restore creates the exact primary CNF and complete refutation. The first checker proves UNSAT of those bytes; the second independently audits their complete clause multiset and arithmetic semantics. The all-width argument is in `METHOD_AND_PROOF.md`. `--all --verify-only` streams and verifies all six original artifacts, including the incomplete five-state trace, without retaining expanded outputs. To repeat the root source-freeze check after restoring the primary artifacts, run `python3 -B ../root_review/check_primary_sat.py`. No solver is required for these replays. Discovery commands and the 180-second cap are preserved in the source and status. The five-state trace is not a refutation.
+
+## Shared seam and formal bridge replay
+
+The [checkpoint](coordination/2026-10-15-seam-persistence-and-formal-bridges.md)
+and individual README files specify exact Lean 4.19.0 runners, finite control
+checks and independent audits. All new formal sources have fresh dependency
+build reports with standard-axiom checks. Historical failed drafts, earlier
+successful checkpoints and their logs remain available. Source-only external
+reviews are explicitly distinguished from independent fresh compilation.

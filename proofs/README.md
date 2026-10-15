@@ -6,6 +6,20 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Shared seam obstructions and formal bridges — 15 October 2026
+
+The [new shared checkpoint](coordination/2026-10-15-seam-persistence-and-formal-bridges.md)
+extends the external intrinsic-seam result to independently canonical all-base
+collision families whose arbitrarily large seam activity disappears before
+a palindrome at time two. The exact decimal adjacent-sum threshold 27 is
+kernel checked. All-base raw reflection, reset normalization, actual width
+and a one-step ordinary-integer reverse-add bridge are now formalized.
+Exact interval-certificate reduction and actual scalar rotations add reusable
+formal interfaces; the numerical 94/98 hierarchy keeps its stated certificate
+scope. Full sources, failed drafts, reviews and compiler logs are retained.
+The external intrinsic and finite-seed results receive separate source/written
+reviews, with no new independent rebuild claimed for their 31 declarations.
+
 ## Checked four-state whole-word language exclusion — 15 October 2026
 
 The [new language handoff](coordination/2026-10-15-four-state-language-exclusion.md)
