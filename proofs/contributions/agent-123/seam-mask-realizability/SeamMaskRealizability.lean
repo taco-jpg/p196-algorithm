@@ -82,10 +82,11 @@ theorem cutsOf_realizes (q : Nat → Nat) (L : Nat)
   | zero =>
       intro hi
       have hz : k 0 = 0 := by
-        by_contra hn
-        have hc := (hk.2.1 0 hi hn).2
-        change 0 = 1 at hc
-        omega
+        by_cases hn : k 0 = 0
+        · exact hn
+        · have hc := (hk.2.1 0 hi hn).2
+          change 0 = 1 at hc
+          omega
       simp [defect_zero, hz]
   | succ i ih =>
       intro hi
@@ -115,12 +116,15 @@ theorem selected_suffix (q : Nat → Nat) (L : Nat) (k : Nat → Nat)
     (hk : MaskConstraints q L k) (a d : Nat)
     (hL : a + d < L) (hn : ∀ i, a < i → i ≤ a + d → q i = 9)
     (ha : k a = 1) : k (a + d) = 1 := by
+  revert hL hn
   induction d with
-  | zero => simpa using ha
+  | zero => intro _ _; simpa using ha
   | succ d ih =>
+      intro hL hn
       have hp := ih (by omega) (by intro i h1 h2; exact hn i h1 (by omega))
       have hs := hk.2.2 (a + d) (by omega) (hn (a + d + 1) (by omega) (by omega))
-      have hb := hk.1 (a + (d + 1)) hL
-      omega
+      rw [hp] at hs
+      have hb := hk.1 (a + d + 1) (by omega)
+      simpa only [Nat.add_assoc] using Nat.le_antisymm hb hs
 
 end Agent123.SeamMasks
