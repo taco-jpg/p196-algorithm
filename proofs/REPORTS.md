@@ -256,3 +256,10 @@ Every original written research report, proof note and manuscript source retaine
 - [REVIEW.md](contributions/2026-10-14-external-renewal-audit/REVIEW.md)
 - [SHARP_KERNEL_AND_RENEWAL_AUDIT_INDEX.md](contributions/SHARP_KERNEL_AND_RENEWAL_AUDIT_INDEX.md)
 - [2026-10-15-sharp-kernel-and-renewal-audit.md](coordination/2026-10-15-sharp-kernel-and-renewal-audit.md)
+
+## Whole-word language checkpoint — 15 October 2026
+
+- [research/main_existence_attempt/continuation_pass/safe_language/METHOD_AND_PROOF.md](research/main_existence_attempt/continuation_pass/safe_language/METHOD_AND_PROOF.md)
+- [research/main_existence_attempt/continuation_pass/safe_language/STATUS.md](research/main_existence_attempt/continuation_pass/safe_language/STATUS.md)
+- [research/main_existence_attempt/continuation_pass/root_review/PRIMARY_SAT_REVIEW_HISTORY.md](research/main_existence_attempt/continuation_pass/root_review/PRIMARY_SAT_REVIEW_HISTORY.md)
+- [coordination/2026-10-15-four-state-language-exclusion.md](coordination/2026-10-15-four-state-language-exclusion.md)
