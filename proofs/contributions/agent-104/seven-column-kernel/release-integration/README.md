@@ -8,12 +8,15 @@ on main `5bd98567b259659fd3195f5aa61617422aa80914`. Its mathematical sources are
 byte-identical to the accepted source pin `957efa326b4b980391046598a0143cb7a7060242`.
 
 The original contribution's independent 383-module build and exact endpoint
-review passed. Fresh merged-source verification remains PENDING until the
-assigned reviewer freezes its actual PASS evidence. The current state is in
+review passed. The assigned reviewer has now frozen the independent fresh
+merged-source PASS: 383 sources and all 7,469 theorem constants, with unchanged
+source pins. The current candidate state is in
 `proofs/coordination/agent104-739-integrated.json`; a byte-index PASS is never
 substituted for the mathematical execution gate.
 
-`reconcile_release.py` reads the exact candidate's original inventory and
+`reconcile_release.py` reads the published prepared inventory checkpoint
+`7216a20efaeb08daebbd3a8556ee609e042bf598`, separately from the mathematical
+build candidate. It
 preserves its mixed six-/seven-field TSV rows. It appends all unindexed tracked
 proof files with a source-specific evidence label. Agent 104's sources and all
 substantive histories, failures, reviews and logs are indexed. Other concurrent
@@ -29,13 +32,7 @@ retains that exact result, and reruns until the final metadata is byte-consisten
 The `release-integrity.log` PASS checks current published bytes and local source
 presence. It does not prove any theorem.
 
-From the repository root:
-
-```sh
-python3 -B proofs/contributions/agent-104/seven-column-kernel/release-integration/reconcile_release.py
-```
-
-After the merged reviewer explicitly freezes final PASS evidence, use:
+From the repository root, reproduce the final verified snapshot with:
 
 ```sh
 python3 -B proofs/contributions/agent-104/seven-column-kernel/release-integration/reconcile_release.py --merged-evidence-confirmed
@@ -43,6 +40,10 @@ python3 -B proofs/contributions/agent-104/seven-column-kernel/release-integratio
 
 The flag requires actual merged-candidate PASS reports, unchanged source pins,
 and complete final evidence hashes. It is not a way to bypass the execution gate.
+The unconfirmed invocation is reserved for preparation before any PASS record.
+Once the current snapshot records merged-source PASS, omitting the flag exits
+before any write and asks for the confirmed invocation; it cannot silently
+downgrade an accepted record to PENDING.
 The shared documentation remains additive. Earlier "not Lean-formalized" status
 and pending preflight reports remain historical and are superseded only for the
 named 739 result. No P196, optimality-of-39, or unrestricted all-time safety

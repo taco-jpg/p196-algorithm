@@ -400,7 +400,7 @@ ones. Allowed transitive theorem axioms are `propext`, `Classical.choice`, and
 `Quot.sound`. Each compiler uses one worker and synchronous elaboration;
 at most two modules compile concurrently. No memory cap is imposed.
 
-The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance. [Source/toolchain pins](contributions/agent-104/seven-column-kernel/integration/HANDOFF.md),
+The independent fresh merged-source verification is **PASS** for the published candidate `4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29`; the current 383 accepted source pins remain identical. [Source/toolchain pins](contributions/agent-104/seven-column-kernel/integration/HANDOFF.md),
 [independent clean execution](contributions/agent-104/seven-column-kernel/review-final-clean/README.md),
 [separate exact endpoint review](contributions/agent-104/seven-column-kernel/review-final/endpoint/verification.json),
 and [current integration state](coordination/agent104-739-integrated.json) distinguish those executions.
@@ -411,15 +411,16 @@ The [secondary bridge review](contributions/agent-104/review-agent4-whole-word/e
 reproduction runners, exact source pins and explicit dependency reuse for the
 scope illustrations. It is not part of the 383-module 739 build.
 
-Byte indexes can be recreated without a theorem build:
+Byte indexes for the verified final snapshot can be recreated without a theorem build:
 
 ```sh
-python3 -B proofs/contributions/agent-104/seven-column-kernel/release-integration/reconcile_release.py
+python3 -B proofs/contributions/agent-104/seven-column-kernel/release-integration/reconcile_release.py --merged-evidence-confirmed
 python3 -B proofs/verify_release.py
 ```
 
-Use `--merged-evidence-confirmed` on the first command only after the merged
-reviewer has frozen its actual PASS evidence. Without that explicit flag the
-current merged-run status remains PENDING. The release verifier checks bytes
+The confirmed flag verifies actual frozen PASS reports and their complete
+file set and hashes. Unconfirmed mode is only for pre-PASS preparation;
+after a snapshot records PASS, omitting the flag exits before writing and
+cannot downgrade its state. The release verifier checks bytes
 and local source presence; it does not establish mathematical truth.
 <!-- END AGENT104 REVIEWED INTEGRATION -->

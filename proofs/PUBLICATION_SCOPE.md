@@ -73,7 +73,7 @@ This additive snapshot retains every committed Agent 104 research source,
 certificate, generator, successful and failed compiler attempt, historical
 unsplit batch, independent semantic/arithmetic diagnostic, complete clean-build
 and axiom-audit log, exact endpoint audit, and published secondary bridge-review
-artifact. The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance. Acceptance applies only to the precise stated results;
+artifact. The independent fresh merged-source verification is **PASS** for the published candidate `4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29`; the current 383 accepted source pins remain identical. Acceptance applies only to the precise stated results;
 there is no P196, infinite-safe-orbit or optimality-of-39 claim.
 
 Original source inventories and mixed six-/seven-field TSV history are preserved.

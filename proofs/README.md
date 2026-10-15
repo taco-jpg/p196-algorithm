@@ -311,7 +311,7 @@ for 39 and does not formalize the earlier 217/218/620/777 bounds.
 The contribution's independent source rebuild checked 383 modules and all 7,469
 theorem constants; each transitive axiom set is contained in `propext`,
 `Classical.choice`, and `Quot.sound`. A separate reviewer recompiled the exact
-endpoint types using explicitly pinned fresh dependencies. The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance.
+endpoint types using explicitly pinned fresh dependencies. The independent fresh merged-source verification is **PASS** for the published candidate `4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29`; the current 383 accepted source pins remain identical.
 See the [current integration record](coordination/agent104-739-integrated.json) and
 [retained acceptance evidence](contributions/agent-104/seven-column-kernel/integration/ACCEPTANCE_ADDENDUM.md).
 This named update supersedes only the 739 formalization status in the earlier

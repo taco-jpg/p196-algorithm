@@ -25,6 +25,7 @@ REL = "contributions/agent-104/seven-column-kernel/release-integration"
 KERNEL = "contributions/agent-104/seven-column-kernel"
 SECONDARY = "contributions/agent-104/review-agent4-whole-word"
 BASE = "4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29"
+INDEX_BASE = "7216a20efaeb08daebbd3a8556ee609e042bf598"
 MAIN = "5bd98567b259659fd3195f5aa61617422aa80914"
 SOURCE = "957efa326b4b980391046598a0143cb7a7060242"
 CLAIM = "8bfcfe69fe240be33fb2ae0e08b289c9bfffb53b"
@@ -53,7 +54,7 @@ def put(name, obj):
 
 
 def source_bytes(path):
-    return git("show", BASE + ":proofs/" + path)
+    return git("show", INDEX_BASE + ":proofs/" + path)
 
 
 def scoped_block(path, text):
@@ -85,6 +86,9 @@ def report_state(confirmed):
         merged = json.loads((folder / "independent-verification.json").read_text())
         raw = json.loads((folder / "verification.json").read_text())
         assert merged["status"] == "PASS" and raw["status"] == "PASS"
+        assert merged["checker_exit_code"] == 0
+        assert merged["prior_contribution_objects_reused"] is False
+        assert merged["all_sources_objects_logs_and_compiler_pins_rechecked_after_completion"] is True
         assert merged["source_commit"] == raw["source_commit"] == BASE
         assert merged["fresh_source_module_count"] == 383 and merged["audited_theorem_count"] == 7469
         assert merged["checker_report_sha256"] == digest(folder / "verification.json")
@@ -93,6 +97,8 @@ def report_state(confirmed):
         for name, record in manifest["files"].items():
             b = (folder / name).read_bytes()
             assert len(b) == record["bytes"] and sha(b) == record["sha256"], name
+        actual_files = {str(path.relative_to(folder)) for path in folder.rglob("*") if path.is_file()}
+        assert actual_files == set(manifest["files"]) | {"final-evidence-manifest.json"}
         state = {"status": "PASS", "source_commit": BASE,
                  "fresh_source_modules": 383, "audited_theorem_constants": 7469,
                  "raw_report": KERNEL + "/integration-verified/verification.json",
@@ -183,16 +189,17 @@ The [secondary bridge review]({SECONDARY}/execution/README.md) has separate
 reproduction runners, exact source pins and explicit dependency reuse for the
 scope illustrations. It is not part of the 383-module 739 build.
 
-Byte indexes can be recreated without a theorem build:
+Byte indexes for the verified final snapshot can be recreated without a theorem build:
 
 ```sh
-python3 -B proofs/{REL}/reconcile_release.py
+python3 -B proofs/{REL}/reconcile_release.py --merged-evidence-confirmed
 python3 -B proofs/verify_release.py
 ```
 
-Use `--merged-evidence-confirmed` on the first command only after the merged
-reviewer has frozen its actual PASS evidence. Without that explicit flag the
-current merged-run status remains PENDING. The release verifier checks bytes
+The confirmed flag verifies actual frozen PASS reports and their complete
+file set and hashes. Unconfirmed mode is only for pre-PASS preparation;
+after a snapshot records PASS, omitting the flag exits before writing and
+cannot downgrade its state. The release verifier checks bytes
 and local source presence; it does not establish mathematical truth.
 """)
     reports = sorted(str(path.relative_to(ROOT)) for path in (ROOT / "contributions/agent-104").rglob("*.md")
@@ -282,6 +289,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--merged-evidence-confirmed", action="store_true")
     args = parser.parse_args()
+    existing_coord = ROOT / COORD_PATH
+    if existing_coord.exists() and not args.merged_evidence_confirmed:
+        existing_state = json.loads(existing_coord.read_text()).get("merged_source_verification", {})
+        if existing_state.get("status") == "PASS":
+            parser.error("This snapshot already records merged-source PASS. Reproduce it with --merged-evidence-confirmed; no files changed.")
     state, clean, accepted = report_state(args.merged_evidence_confirmed)
     contribution = git("rev-parse", "097e2bf").decode().strip()
     coord = {"agent": "Agent #104", "task": "agent104-seven-column-kernel",
@@ -296,7 +308,8 @@ def main():
         "secondary_review": {"task": "agent104-review-agent4-whole-word", "status": "INDEPENDENTLY-REVIEWED",
             "evidence": SECONDARY + "/execution/acceptance.json",
             "scope": "Actual return and saturated-width-growth hypotheses remain; no return or growth witness for196 supplied"},
-        "publication_status": "PREPARED; final main commit and role disposition are recorded on coordination after confirmed publication",
+        "publication_status": ("VERIFIED_CANDIDATE; final main commit and role disposition are recorded separately on coordination after actual main ref publication" if state["status"] == "PASS" else
+                               "PREPARED; final main commit and role disposition are recorded on coordination after confirmed publication"),
         "scope": "739-prefix restricted palindrome family only, plus the separately reviewed Agent4 bridge; no P196 or optimality39 claim",
         "concurrent_byte_index_scope": "Other tracked contributions retained without new mathematical acceptance"}
     put(COORD_PATH, coord)
@@ -305,12 +318,13 @@ def main():
     baseline = json.loads(source_bytes("INVENTORY.json"))
     old_tsv = source_bytes("INVENTORY.tsv").decode()
     reconciliation = []
+    rewritten_after_reconciliation = {REL + "/index-reconciliation.json", REL + "/release-integrity.log"}
     for record in baseline:
         if record["publication"] != "retained":
             continue
         path = record["published_path"]
         current = ROOT / path
-        if current.exists() and current.stat().st_size == record["bytes"] and digest(current) == record["sha256"]:
+        if path not in rewritten_after_reconciliation and current.exists() and current.stat().st_size == record["bytes"] and digest(current) == record["sha256"]:
             continue
         commit, data = historical_bytes(path, record["sha256"])
         archived = f"{REL}/historical-index/{record['sha256']}/{Path(path).name}"
@@ -329,12 +343,14 @@ def main():
                 fields[6] = archived
                 lines[i] = "\t".join(fields) + "\n"
         old_tsv = "".join(lines)
-    put(REL + "/index-reconciliation.json", {"baseline_commit": BASE,
+    put(REL + "/index-reconciliation.json", {"baseline_commit": INDEX_BASE, "mathematical_build_candidate": BASE,
         "scope": "Physical byte provenance only; concurrent mathematics not re-reviewed",
         "historical_inventory_records_preserved": len(baseline),
         "historical_tsv_field_counts": dict(collections.Counter(str(len(line.split('\t'))) for line in old_tsv.splitlines())),
         "relocated_historical_records": reconciliation,
         "mixed_tsv_note": "Existing six-/seven-field row formats retained; only physical archive paths changed if necessary"})
+    # History snapshots recovered above may themselves be written reports.
+    docs(state)
     # Create the retained check record before file enumeration; final exact
     # counts stabilize through two or more byte-verification iterations.
     log = ROOT / REL / "release-integrity.log"
@@ -378,6 +394,7 @@ def main():
         concurrent = [r for r in appended if r not in own]
         stats = dict(stats_base)
         stats["agent104_739_integration_update"] = {"published_merged_candidate": BASE, "source_commit": SOURCE,
+            "inventory_baseline": INDEX_BASE,
             "contribution_commit": contribution, "integration_parent": MAIN, "merged_source_verification_status": state["status"],
             "source_modules": 383, "audited_theorem_constants": 7469,
             "retained_agent104_files_added_to_inventory": len(own), "retained_agent104_bytes": sum(r["bytes"] for r in own),
@@ -386,10 +403,12 @@ def main():
             "historical_records_relocated_without_changing_bytes": len(reconciliation),
             "existing_aggregate_fields_are_historical": True, "substantive_agent104_research_omissions": 0,
             "infrastructure_exclusions": REL + "/infrastructure-exclusions.json",
+            "previous_prepared_checkpoint": stats_base.get("agent104_739_integration_update"),
             "counting_note": "New inventory records include previously unindexed existing tracked files; these are not all newly added Git files. Metadata and exact source copies in audit history are counted by physical path, without claiming independent results."}
         put("release_stats.json", stats)
         validation = dict(validation_base)
         validation["agent104_739_integration_update"] = {"source_commit": SOURCE, "published_merged_candidate": BASE,
+            "inventory_baseline": INDEX_BASE,
             "independent_source_clean_build": "PASS", "independent_exact_endpoint_review": "PASS",
             "merged_source_verification": state, "unchanged_accepted_source_pins": 383,
             "secondary_bridge_review": "Separate fresh five-module review and semantic acceptance retained; not part of the383-module run",
@@ -397,7 +416,8 @@ def main():
             "release_integrity": previous_report or {"status": "PENDING"},
             "release_integrity_record": REL + "/release-integrity.log", "mathematical_proof_check_by_release_verifier": False,
             "old_tsv_rows_preserved": len(old_tsv.splitlines()) - 1,
-            "history_reconciliation": REL + "/index-reconciliation.json", "unrelated_math_reaudited": False}
+            "history_reconciliation": REL + "/index-reconciliation.json", "unrelated_math_reaudited": False,
+            "previous_prepared_checkpoint": validation_base.get("agent104_739_integration_update")}
         put("VALIDATION.json", validation)
         (ROOT / "MANIFEST.sha256").write_text("".join(f"{digest(ROOT / name)}  {name}\n" for name in files if name != "MANIFEST.sha256"))
         proc = subprocess.run(["python3", "-B", str(ROOT / "verify_release.py")], cwd=REPO, capture_output=True, text=True)

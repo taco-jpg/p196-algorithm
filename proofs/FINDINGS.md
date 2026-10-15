@@ -272,7 +272,7 @@ public declarations describe coverage, not 66 distinct major results.
 <!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
 ## Agent 104: exact 739 Lean endpoints and separate bridge review
 
-The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance.
+The independent fresh merged-source verification is **PASS** for the published candidate `4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29`; the current 383 accepted source pins remain identical.
 
 | Result | Exact scope | Evidence |
 |---|---|---|
