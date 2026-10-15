@@ -309,3 +309,17 @@ Every original written research report, proof note and manuscript source retaine
 - [contributions/2026-10-15-external-folded-weight-review/REVIEW.md](contributions/2026-10-15-external-folded-weight-review/REVIEW.md)
 - [contributions/ACTUAL_HIERARCHY_AND_RENEWAL_INDEX.md](contributions/ACTUAL_HIERARCHY_AND_RENEWAL_INDEX.md)
 - [coordination/2026-10-15-actual-hierarchy-and-renewal.md](coordination/2026-10-15-actual-hierarchy-and-renewal.md)
+
+## Positive gate and variable returns — 15 October 2026
+
+- [research/main_existence_attempt/continuation_pass/variable_return/POSITIVE_REGENERATION_GATE.md](research/main_existence_attempt/continuation_pass/variable_return/POSITIVE_REGENERATION_GATE.md)
+- [research/main_existence_attempt/continuation_pass/variable_return/STATUS.md](research/main_existence_attempt/continuation_pass/variable_return/STATUS.md)
+- [research/main_existence_attempt/continuation_pass/variable_return/VARIABLE_RETURN_THEOREMS.md](research/main_existence_attempt/continuation_pass/variable_return/VARIABLE_RETURN_THEOREMS.md)
+- [coordination/2026-10-15-positive-gate-and-reset-limits.md](coordination/2026-10-15-positive-gate-and-reset-limits.md)
+
+## Formal regeneration, absorbing ancestry and periodic quotient
+
+- [research/main_existence_attempt/continuation_pass/lean/regeneration_gate/STATUS.md](research/main_existence_attempt/continuation_pass/lean/regeneration_gate/STATUS.md)
+- [research/main_existence_attempt/continuation_pass/periodic_bulk_followup/METHOD_AND_PROOF.md](research/main_existence_attempt/continuation_pass/periodic_bulk_followup/METHOD_AND_PROOF.md)
+- [research/main_existence_attempt/continuation_pass/periodic_bulk_followup/STATUS.md](research/main_existence_attempt/continuation_pass/periodic_bulk_followup/STATUS.md)
+- [research/main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/ABSORBING_CORE.md](research/main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/ABSORBING_CORE.md)

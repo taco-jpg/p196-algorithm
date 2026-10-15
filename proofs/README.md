@@ -6,6 +6,20 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Positive regeneration and exact reset limits — 15 October 2026
+
+The [new variable-return handoff](coordination/2026-10-15-positive-gate-and-reset-limits.md)
+gives an actual all-gap no-overflow gate that grows two neutral bands by four,
+with two safe positive outputs. Its originating family has nine uniformly safe
+steps but an exact failed return. The full 83,679-state mixed-band graph permits
+8,097 gap-increasing edges yet has no cycle from the stated initial family.
+Written all-time reductions exclude the specified 180-template additive reset;
+multiplicative and prefix probes retain their finite scope. No indefinitely
+repeatable safe return follows. All 39 frozen branch files and root replays are retained. The same checkpoint
+includes the separately audited formal gate (29 supporting theorems, 5 definitions),
+sharp ancestry laws for maximal 0/18 runs, and a periodic whole-word quotient whose
+eleven capped paths remain UNKNOWN.
+
 ## Actual hierarchy interfaces and shared construction obstructions — 15 October 2026
 
 The [new checkpoint](coordination/2026-10-15-actual-hierarchy-and-renewal.md)

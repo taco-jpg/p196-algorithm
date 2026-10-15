@@ -1,0 +1,97 @@
+{"script": "check_affine_catalogue.py", "exit_code": 0, "seconds": 1.7954213220000383}
+{
+  "status": "PASS",
+  "symbolic_transition_count": 2160,
+  "complete_target_comparisons": 388800,
+  "comparison_counts": {
+    "different_symbols": 388798,
+    "affine_length_mismatch": 2
+  },
+  "symbol_compatible_exclusions": [
+    {
+      "input": [
+        1,
+        1,
+        6
+      ],
+      "time": 2,
+      "target": [
+        4,
+        5,
+        5
+      ],
+      "witness": {
+        "constant_mismatch": -1
+      }
+    },
+    {
+      "input": [
+        2,
+        1,
+        6
+      ],
+      "time": 2,
+      "target": [
+        8,
+        5,
+        5
+      ],
+      "witness": {
+        "constant_mismatch": -1
+      }
+    }
+  ],
+  "imports_generator_or_run_normalizer": false,
+  "uses_parameter_samples_as_proof": false,
+  "formalized_in_Lean": false,
+  "archive_sha256": "0c0428420c4a16871fb3e8671f27a0a55b9c5d3e68e33cc0ad9156397973ad7e",
+  "integer_control_payload_sha256": "08a11004825c744346dffd9dfb306a2823da5da81df7605dd459fb1f2e25ab53",
+  "ordinary_integer_transitions_replayed": 92880,
+  "scope": "all r>=40 symbolic transitions/exclusions, all small r=1..39 integer transitions/exclusions, and exact all-time potential bound",
+  "decimal_lychrel_existence_proved": false
+}
+
+
+{"script": "check_regeneration_graph.py", "exit_code": 0, "seconds": 8.077747344003}
+{
+  "status": "PASS",
+  "block_transitions_checked": 83679,
+  "ordinary_integer_transitions_checked": 167358,
+  "rank_certificates": 83679,
+  "maximum_rank": 50,
+  "all_seed_paths_replayed": 22382,
+  "positive_gap_edges_retaining_mixed_carries": 8097,
+  "largest_retained_gap_gain": 4,
+  "gap_gain_distribution_all_transitions": {
+    "-1": 34386,
+    "0": 35357,
+    "1": 8881,
+    "2": 3944,
+    "None": 804,
+    "3": 262,
+    "4": 44,
+    "5": 1
+  },
+  "rank_payload_sha256": "fecdf3797d712e01e491d124cf9a611512098423048d9d0cd5c11b744f1f9841",
+  "graph_payload_sha256": "1b296e9a5a7027c8f61427f5ca580ddfd7da62a4ebc49ee475bf40b666fc1492",
+  "imports_quotient_or_generator": false,
+  "all_parameter_justification": "exact block algebra and 9 carry transmission",
+  "formalized_in_Lean": false,
+  "decimal_lychrel_existence_proved": false
+}
+
+
+{"script": "check_regeneration_gate.py", "exit_code": 0, "seconds": 0.038706600003934}
+{
+  "status": "PASS",
+  "symbolic_transitions": 9,
+  "ordinary_integer_transitions": 315,
+  "includes_R3_minimum_boundary": true,
+  "all_parameter_scope": "R>=4 by sparse polynomial identities; R=3 by exact integer boundary",
+  "gate_scope": "g>=0, including g=0 via R=3",
+  "imports_run_generator_or_normalizer": false,
+  "certificate_sha256": "85b9ca49077c09f064ca0a959bd14f32a2eedca9f75dcdbf38390804aa6cee6a",
+  "formalized_in_Lean": false,
+  "decimal_lychrel_existence_proved": false
+}
+

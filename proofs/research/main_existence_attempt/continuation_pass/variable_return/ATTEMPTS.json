@@ -1,0 +1,27 @@
+{
+  "decimal_lychrel_existence_proved": false,
+  "editorial_corrections": [
+    {
+      "issue": "The first written zero-exterior proof incorrectly stated that a canonical target starting (p,0,0,0) has minimum width seven.",
+      "counterexample": [2, 0, 0, 0, 2],
+      "correction": "Minimum width is five, so every predecessor has at least four columns. The column identities allow overlapping windows and the local proof remains valid.",
+      "reviewers": ["continuation_formal", "root"],
+      "verification_response": "Added exhaustive independent integer controls at every canonical input width one through eight, including predecessor width four and successor width five; changed the sharp example from 10^7 to the minimum-width 10^4."
+    }
+  ],
+  "exploratory_scc_observation": {
+    "scope": "Exact arbitrary-clock outer-prefix graph at widths 2,3,4, using both incoming carries. This guided the direct column proof and is not used as its certificate.",
+    "results": [
+      {"width":2,"vertices":342,"sccs":30,"largest_scc":311},
+      {"width":3,"vertices":6498,"sccs":2305,"largest_scc":4194},
+      {"width":4,"vertices":123462,"sccs":75483,"largest_scc":47980}
+    ],
+    "observation": "All prefixes (p,0,0,0), p=1..18, lie in singleton SCCs without self-loops at width four. The direct theorem now proves the stronger time-four bound without relying on SCC software."
+  },
+  "scope_changes": [
+    "The existing affine and fixed-period bulk searches were read first and not rerun.",
+    "The initial simple zero-exterior multiplicative/reset idea is excluded universally by the direct three-zero theorem.",
+    "The widened overlap catalogue was tested without fixing the overflow clock. Its all-r additive-reset result is separate from its finite multiplicative-target result.",
+    "Root requested the next constructive search at old 4/14 neutral-run creation boundaries, using the seam team's exact quotient."
+  ]
+}

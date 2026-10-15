@@ -300,3 +300,25 @@ checks and finite congruence-path verifier. The path gzip retains every state;
 its inventory records compressed and decoded hashes and recovery command.
 The external four-state reciprocal review is source-only and does not claim
 another LRAT run. The numerical hierarchy table checks remain separate work.
+
+## Positive gate and variable-return certificates
+
+From `proofs/research/` in a disposable checkout:
+
+```sh
+python3 -B main_existence_attempt/continuation_pass/variable_return/check_affine_catalogue.py
+python3 -B main_existence_attempt/continuation_pass/variable_return/check_regeneration_graph.py
+python3 -B main_existence_attempt/continuation_pass/variable_return/check_regeneration_gate.py
+```
+
+The exact frozen source and dependency hashes are in `variable_return/FROZEN_MANIFEST.json`. The three commands independently verify the affine all-time catalogue reduction, the complete 83,679-state graph, and the nine-step positive-gate trace. Root ran them in a duplicate copy and obtained byte-identical audit outputs. The generator and finite multiplicative/prefix probe configurations, full results, failure and editorial history remain available; these finite probes have their stated restricted domains.
+
+The accepted extensions can be checked from `proofs/research/`:
+
+```sh
+python3 -B main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/check_absorbing_core.py
+python3 -B main_existence_attempt/continuation_pass/periodic_bulk_followup/verify_periodic.py
+python3 -B main_existence_attempt/continuation_pass/lean/regeneration_gate/check.py "$LEAN_BIN"
+```
+
+Use an absolute Lean 4.19.0 path. The formal command rebuilds all six sources plus the declaration audit. Root's historical formal replay uses its exact previously rebuilt dependencies and original compiler path; the review explicitly distinguishes that reuse from the branch clean rebuild. The combined `root_review/recheck_absorbing_and_periodic.py` has both source bundles present and recreates its independent outputs in disposable duplicate directories. No additional discovery search is required to replay the accepted certificates.

@@ -47,3 +47,9 @@ All 86 accepted research files are retained directly, including 41 archive parts
 ## Accepted weight, band and zero-exterior follow-ups
 
 This checkpoint retains every one of 56 accepted research files (405,007 bytes), including the complete two-band and four-band graphs and seed paths, historical gap probe, exact rational outcomes, root reviews and every available zero-exterior compiler attempt. 16 copied-build, compiled or cache files are excluded and individually inventoried. No accepted substantive result is omitted. The separately active absorbing-core, periodic, variable-return and additional formal-gate work is outside this snapshot.
+
+## Frozen variable-return checkpoint
+
+All 39 branch files, their frozen manifest and three root replay artifacts are retained: 43 research files, 5,464,850 bytes. Full affine/literal, multiplicative, prefix, zero-exterior and broader mixed-band outcomes are included. 40 exact replay-copy/bytecode files are individually inventoried exclusions. No genuine accepted research output is omitted. The separate formal regeneration gate and cited absorbing-core continuation have their own acceptance/publication scope.
+
+The same publication adds 61 accepted extension files (846,962 bytes): the complete absorbing-core proof/control bundle, all 24 periodic files including its manifest, and the formal regeneration source/audit/development history with root review. All UNKNOWN paths and failed compiler attempts are retained. An additional 60 exact build/replay/cache files are individually inventoried. The cited absorbing-core dependency is now present; the later periodic-interface and quadratic investigations remain separate checkpoints.
