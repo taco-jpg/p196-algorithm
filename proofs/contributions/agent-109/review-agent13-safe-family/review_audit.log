@@ -1,0 +1,58 @@
+'Agent13SafeFamily.familyDigit_bounded' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.familyDigit_leading' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.family_canonical' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.family_columns' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.family_not_palindrome' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.value_nines' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.value_single' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.familyColumn_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.family_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.familyColumn_carry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.family_column_overflow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.family_injective' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.targetDigit_leading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.targetDigit_units' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.target_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.target_not_palindrome' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.target_outer_column' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.target_step_not_palindrome' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.target_gt_pow' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.target_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.value_lt_pow' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.family_bounds' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.family_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.family_safe_predecessor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.natDigit_bounded' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.natDigit_eq_div' depends on axioms: [propext]
+'Agent13SafeFamily.natDigit_value' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.indexed_high_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.indexed_high_leading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.predecessor_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.predecessor_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.family_congr' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.predecessor_complete' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.safe_predecessor_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent13SafeFamily.index_capacity' depends on axioms: [propext, Quot.sound]
+'Agent13SafeFamily.safe_fibers_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent13SafeFamily.safe_predecessor_family : ∀ (m : Nat),
+  2 ≤ m →
+    ∃ f,
+      (∀ (i j : Fin (9 * 10 ^ (m - 2))), f i = f j → i = j) ∧
+        Agent13SafeFamily.Safe (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) ∧
+          ∀ (i : Fin (9 * 10 ^ (m - 2))),
+            Agent13SafeFamily.Safe (f i) ∧
+              Lychrel196.step (f i) = 10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1 ∧
+                f i < 10 ^ (2 * m) ∧ 10 ^ (2 * m) < 10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1
+Agent13SafeFamily.safe_fibers_unbounded : ∀ (N : Nat),
+  ∃ y,
+    Agent13SafeFamily.Safe y ∧
+      ∃ f,
+        (∀ (i j : Fin N), f i = f j → i = j) ∧
+          ∀ (i : Fin N), Agent13SafeFamily.Safe (f i) ∧ Lychrel196.step (f i) = y ∧ f i < y
+Agent13SafeFamily.predecessor_complete : ∀ (r : Nat) (a : Nat → Nat),
+  (∀ (i : Nat), i < r + 1 → a i ≤ 9) →
+    0 < a r → ∃ j, Agent13SafeFamily.predecessor r j = Agent13SafeFamily.family a (r + 1)
+def Agent13SafeFamily.Safe : Nat → Prop :=
+fun n => 0 < n ∧ ¬Lychrel196.Palindrome n ∧ ¬Lychrel196.Palindrome (Lychrel196.step n)
+[1998, 2997, 3996, 4995, 5994, 6993, 7992, 8991, 9990]
+[10099998, 27799227, 45499545, 63199863, 80899191]
