@@ -1,0 +1,42 @@
+name: Agent 9 exterior erasure
+on:
+  push:
+    branches: [research/agent9-complementary-bulk-20261015]
+    paths:
+      - proofs/contributions/2026-10-15-agent9-complementary-bulk/**
+      - .github/workflows/agent9-exterior-erasure.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install pinned Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/lean.tar.zst
+          sha256sum /tmp/lean.tar.zst
+          tar --zstd -xf /tmp/lean.tar.zst -C /tmp
+          echo /tmp/lean-4.19.0-linux/bin >> "$GITHUB_PATH"
+      - name: Compile source and audit every theorem
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd proofs/contributions/2026-10-15-agent9-complementary-bulk
+          python3 verify.py
+          cat ExteriorErasure.compiler.log
+      - name: Preserve exact source and checking record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent9-exterior-erasure-${{ github.sha }}
+          path: |
+            proofs/contributions/2026-10-15-agent9-complementary-bulk/ExteriorErasure.lean
+            proofs/contributions/2026-10-15-agent9-complementary-bulk/ExteriorErasure.compiler.log
+            proofs/contributions/2026-10-15-agent9-complementary-bulk/verification.json
+            proofs/contributions/2026-10-15-agent9-complementary-bulk/verify.py
+          retention-days: 30
