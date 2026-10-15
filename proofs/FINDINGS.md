@@ -286,3 +286,20 @@ results. The earlier seven-column written/Python record remains historical;
 only its 739 formalization status is superseded. Concurrent files appear in
 the byte inventory without acquiring a new mathematical acceptance label.
 <!-- END AGENT104 REVIEWED INTEGRATION -->
+
+<!-- BEGIN AGENT116 REVIEWED CAP3 -->
+## Agent 116: certificate normalization and exact cap-three bounds
+
+| Lean result | Exact scope | Verification |
+|---|---|---|
+| `Agent116.CertificateExterior.accepted_exceeds_three` | Original checker acceptance alone implies some maximally trimmed exterior has length at least four; all periods and internal blocks are allowed. | [Source and full review](contributions/agent-116/review/REVIEW.md) |
+| `check_eq_false_of_normalized_cap_three`, `check_eq_false_of_raw_cap_three` | Every candidate satisfying the stated cap is rejected, including the empty candidate. | Same reviewed aggregate |
+| `P196.Agent116.Cap3.cap3_exit_witness` | Valid eight-phase bounded exterior of length at most three exits within nine updates; `(8,[11,9])` attains nine. | Concrete kernel-checked batches and completeness proof |
+| `P196.Agent116.Cap3.cap3_all_exit_witness` | Without positive-head or canonical-trim restrictions, the bound is ten; `(6,[0])` attains ten in this relaxed domain. | Separate complete kernel-checked batch assembly |
+| `Agent116.ActualCap3.lychrel_cap3_exit` | Bounded ordinary decimal template with valid exterior and both bands at least eighteen: its specified exterior grows beyond three by actual time nine. | Formal correspondence to `Lychrel196.orbit` |
+
+The 1,991 audited constants measure coverage, not independent discoveries.
+All finite certificate hypotheses used by these endpoints are discharged in
+Lean; the Python scan is only an independent diagnostic. None of these results
+constructs an accepted cyclic certificate or settles 196.
+<!-- END AGENT116 REVIEWED CAP3 -->

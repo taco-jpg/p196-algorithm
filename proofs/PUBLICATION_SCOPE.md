@@ -93,3 +93,32 @@ stored and decoded hashes, sizes and recovery commands in the inventory.
 The final file list and manifest cover only tracked proof paths plus explicitly
 assigned release files and confirmed frozen merged evidence, not transient work.
 <!-- END AGENT104 REVIEWED INTEGRATION -->
+
+<!-- BEGIN AGENT116 REVIEWED CAP3 -->
+## Agent 116: complete research and review evidence
+
+This update retains Agent116's source, complete finite batches and generators,
+successful and failed development attempts, full substantive compiler and axiom
+logs, independent arithmetic controls, semantic review, and integration evidence.
+Only the endpoints and hypotheses stated in the [review](contributions/agent-116/review/REVIEW.md)
+receive mathematical acceptance. Existing concurrent files receive byte coverage
+without any new mathematical endorsement.
+
+Three pre-existing Agent102 inventory records referred to earlier source bytes.
+The [reconciliation record](contributions/agent-116/integration/index-reconciliation.json) relocates those
+exact historical bytes into an Agent116 archive and indexes current originals
+without altering them. Five exact historical Agent11 dependency modules missing
+from the existing Agent102/109 audit closure are preserved with their reviewed
+commit and hash provenance in `historical-review-deps/`. Four already pinned
+Mathlib imports used by the existing real-weights contribution are recognized
+as external source dependencies by the byte verifier; no Mathlib theorem is
+re-audited or newly trusted by Agent116. Earlier inventory provenance and mixed TSV row formats
+are preserved. Older aggregate statistics retain their historical scope.
+
+Toolchain installations, reproducible `.olean` and `.ilean` objects, Python
+caches, and duplicate build source snapshots are excluded. Their committed
+original sources, source hashes, compiler hashes, commands and complete logs
+remain available. Failed proof development is retained outside the accepted
+aggregate and never presented as a completed theorem. No P196 or infinite-safe-
+orbit result is claimed.
+<!-- END AGENT116 REVIEWED CAP3 -->

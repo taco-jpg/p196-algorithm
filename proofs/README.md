@@ -324,3 +324,29 @@ actual three-column return and the explicit saturated-width-growth equation.
 It supplies no such return or growth condition for 196. That review is distinct
 from the new 739 merged-source run and does not upgrade other concurrent results.
 <!-- END AGENT104 REVIEWED INTEGRATION -->
+
+<!-- BEGIN AGENT116 REVIEWED CAP3 -->
+## Agent 116: reviewed cap-three certificate obstruction
+
+`Agent116.CertificateExterior.accepted_exceeds_three` proves that every
+certificate accepted by the original return checker has a state whose exterior,
+after maximal phase-suffix trimming, has length greater than three. The sole
+premise is `check cert = true`; no realizability, positive-head or period-bound
+premise is added. The [aggregate source](contributions/agent-116/certificate-exterior/Agent116All.lean)
+imports both complete finite certificate assemblies and the actual-orbit bridge.
+
+The unrestricted bounded exterior domain exits length at most three within ten
+updates; the valid domain within nine. For genuine decimal templates with both
+bands initially at least eighteen, the latter bound transfers to the specified
+exterior coordinate along `Lychrel196.orbit`. It is not a palindrome-hit claim,
+nor a claim about every possible representation of that integer.
+
+[Independent AI review](contributions/agent-116/review/REVIEW.md) rebuilt 137 modules from an empty
+object directory and audited 1,991 compiled theorem constants. Only `propext`,
+`Classical.choice`, and `Quot.sound` occur transitively. Source commit `c0bca37913df5b52963c484ef20cbeb5b3838a32`
+is frozen; [integration checks](contributions/agent-116/integration/endpoints/verification.json) recheck its
+source pins and explicitly reuse those fresh verified dependencies for endpoint
+recompilation. This excludes this bounded certificate class; no accepted return
+certificate, infinite safe integer orbit, or resolution of 196 is supplied.
+Final publication status is recorded on the coordination branch after main moves.
+<!-- END AGENT116 REVIEWED CAP3 -->
