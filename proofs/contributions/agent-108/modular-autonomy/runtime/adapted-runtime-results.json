@@ -1,0 +1,56 @@
+{
+  "results": [
+    {
+      "argv": [
+        "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "LD_PRELOAD": "/workspace/scratch/28992391bdc2/runtime-diagnostics/libproc_self_readlink.so",
+      "exit_code": 0,
+      "stdout": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean",
+        "/workspace/scratch/28992391bdc2/runtime-diagnostics/Smoke.lean"
+      ],
+      "LD_PRELOAD": "/workspace/scratch/28992391bdc2/runtime-diagnostics/libproc_self_readlink.so",
+      "exit_code": 0,
+      "stdout": "'runtimeSmoke' does not depend on any axioms\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/28992391bdc2/lean-runtime/lean-4.19.0-linux/bin/lean",
+        "/workspace/scratch/28992391bdc2/runtime-diagnostics/Rejected.lean"
+      ],
+      "LD_PRELOAD": "/workspace/scratch/28992391bdc2/runtime-diagnostics/libproc_self_readlink.so",
+      "exit_code": 1,
+      "stdout": "/workspace/scratch/28992391bdc2/runtime-diagnostics/Rejected.lean:2:2: error: tactic 'rfl' failed, the left-hand side\n  1\nis not definitionally equal to the right-hand side\n  2\n\u22a2 1 = 2\n",
+      "stderr": ""
+    }
+  ],
+  "official_sha256_before": {
+    "bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+    "lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/Init.olean": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944"
+  },
+  "official_sha256_after": {
+    "bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+    "lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lib/lean/Init.olean": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944"
+  },
+  "official_hashes_unchanged": true,
+  "adapter_sha256": {
+    "proc_self_readlink.c": "d199140b96a925f9082bf22b5397ed82b3bf04adfab3618ace5f17962a2331a6",
+    "libproc_self_readlink.so": "a38caeb6393490f0b17f13e1388e9e924a1d822c6c05e03715a5a3086e4cfb9e",
+    "Smoke.lean": "21d8124e1140587cb84c41daa6bb06b9bcea451b01457108dbd51032fe0a7815",
+    "Rejected.lean": "ff14f573fbd911ec8f2061bf246f124f569a987eb0275edb8462d93f2a3cb583"
+  },
+  "adaptation_used": true
+}

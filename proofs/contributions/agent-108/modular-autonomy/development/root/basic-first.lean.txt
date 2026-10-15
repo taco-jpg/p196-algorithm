@@ -1,0 +1,39 @@
+import AutonomyDefs
+
+namespace ModularAutonomy
+
+open Lychrel196 DecimalDigits
+
+/-- Previously proved modulo-99 arithmetic supplies the entire sufficiency
+branch, without any size threshold or new computational certificate. -/
+theorem eventual_reverse_residue_det_of_dvd99 (M : Nat) (hM : M ∣ 99) :
+    EventualReverseResidueDet M := by
+  refine ⟨0, ?_⟩
+  intro L _ n m d e hn hm heq
+  rw [DecimalModular.reverse10_mod_of_dvd99 M n d L hM hn,
+    DecimalModular.reverse10_mod_of_dvd99 M m e L hM hm,
+    Nat.mul_mod, Nat.mul_mod, heq]
+
+/-- Equal input residues allow cancellation of the input term in actual
+reverse-and-add; eventual determinism is exactly reversal determinism. -/
+theorem eventual_step_residue_det_iff_reverse (M : Nat) :
+    EventualStepResidueDet M ↔ EventualReverseResidueDet M := by
+  constructor
+  · rintro ⟨B, hB⟩
+    refine ⟨B, ?_⟩
+    intro L hL n m d e hn hm hnm
+    have hs := hB L hL n m d e hn hm hnm
+    simp only [step, Nat.add_mod] at hs
+    rw [hnm] at hs
+    have hcancel := Nat.ModEq.add_left_cancel' hs
+    exact hcancel
+  · rintro ⟨B, hB⟩
+    refine ⟨B, ?_⟩
+    intro L hL n m d e hn hm hnm
+    have hr := hB L hL n m d e hn hm hnm
+    simp only [step, Nat.add_mod, hnm, hr]
+
+#print axioms eventual_reverse_residue_det_of_dvd99
+#print axioms eventual_step_residue_det_iff_reverse
+
+end ModularAutonomy
