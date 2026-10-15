@@ -1,0 +1,70 @@
+name: Agent13 pinned source census
+on:
+  push:
+    branches: ['formalize/agent-13/s20261015']
+    paths: ['.github/workflows/agent13-source-census.yml']
+permissions:
+  contents: read
+jobs:
+  census:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Fetch pinned mathematical sources and current task records
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init source
+          cd source
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --filter=blob:none --depth=1 origin c2b6977e43a79caa5ff3bb88801f3ba896986f38
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = c2b6977e43a79caa5ff3bb88801f3ba896986f38
+          git ls-tree -r -l HEAD > ../PINNED_TREE.txt
+          git ls-remote --heads origin > ../BRANCHES.txt
+          mkdir ../snapshot
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess
+          out = pathlib.Path('../snapshot')
+          paths = subprocess.check_output(['git','ls-tree','-r','--name-only','HEAD'], text=True).splitlines()
+          selected = []
+          for p in paths:
+              q = pathlib.Path(p)
+              if q.suffix.lower() not in {'.md','.lean','.py','.sh','.toml','.yml','.yaml'} and q.name not in {'lean-toolchain','lake-manifest.json'}:
+                  continue
+              if not (p.startswith('proofs/') or p.startswith('.github/') or '/' not in p):
+                  continue
+              data = subprocess.check_output(['git','show','HEAD:'+p])
+              dest = out/'main'/p
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              dest.write_bytes(data)
+              selected.append({'path':p,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+          (out/'main-manifest.json').write_text(json.dumps(selected,indent=2)+'\n')
+          PY
+          git fetch --filter=blob:none --depth=1 origin refs/heads/p196/coordination
+          git rev-parse FETCH_HEAD > ../snapshot/COORDINATION_COMMIT.txt
+          python3 - <<'PY'
+          import pathlib, subprocess
+          out = pathlib.Path('../snapshot/coordination')
+          paths = subprocess.check_output(['git','ls-tree','-r','--name-only','FETCH_HEAD','proofs/coordination'],text=True).splitlines()
+          for p in paths:
+              if '/tasks/' not in p and pathlib.Path(p).name not in {'README.md','PROTOCOL.md','AGENTS.md'}:
+                  continue
+              data = subprocess.check_output(['git','show','FETCH_HEAD:'+p])
+              dest=out/p
+              dest.parent.mkdir(parents=True,exist_ok=True)
+              dest.write_bytes(data)
+          PY
+          cd ..
+          cp PINNED_TREE.txt BRANCHES.txt snapshot/
+          echo c2b6977e43a79caa5ff3bb88801f3ba896986f38 > snapshot/SOURCE_COMMIT.txt
+          tar -czf agent13-source-census.tar.gz -C snapshot .
+          sha256sum agent13-source-census.tar.gz
+      - name: Retain exact source census
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent13-source-census
+          path: agent13-source-census.tar.gz
+          retention-days: 2
+          compression-level: 0
+          if-no-files-found: error
