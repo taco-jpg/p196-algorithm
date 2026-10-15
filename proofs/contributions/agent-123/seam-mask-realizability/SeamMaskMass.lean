@@ -92,9 +92,11 @@ theorem every_mass_realized (q : Nat → Nat) (L : Nat)
 theorem mass_at_most_activeCount (q : Nat → Nat) (L : Nat) (cut : Nat → Bool)
     (hb : ∀ i, i < L → q i ≤ 18) :
     0 ≤ defectMass q cut L ∧ defectMass q cut L ≤ (activeCount q L : Int) := by
+  revert hb
   induction L with
-  | zero => simp [defectMass, activeCount]
+  | zero => intro _; simp [defectMass, activeCount]
   | succ L ih =>
+      intro hb
       have hp := ih (fun i hi => hb i (by omega))
       have hd := defect_bounds q (L + 1) cut hb L (by omega)
       by_cases ha : activeAt q L
@@ -104,8 +106,9 @@ theorem mass_at_most_activeCount (q : Nat → Nat) (L : Nat) (cut : Nat → Bool
           have hs := IntrinsicSeam.singleton_defect_maximal q cut L
           have hf := IntrinsicSeam.singleton_defect_iff q (L + 1) L hb (by omega)
           have hzero : seamDefect q (fun _ => true) L = 0 := by
-            by_contra hn
-            exact ha (hf.mp hn)
+            by_cases hn : seamDefect q (fun _ => true) L = 0
+            · exact hn
+            · exact False.elim (ha (hf.mp hn))
           omega
         simp only [defectMass, activeCount, if_neg ha, hz]
         constructor <;> omega
