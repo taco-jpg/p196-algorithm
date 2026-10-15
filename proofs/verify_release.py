@@ -42,8 +42,16 @@ def main():
             # hashes match the pinned release archive (Agent104's
             # release-integration/standard-library-imports.json). This is a
             # narrow source-presence exemption, not trust in new local theorems.
+            # Existing Agent13 real-weights sources use exactly these external
+            # Mathlib modules, pinned to c44e0c8ee63ca166450922a373c7409c5d26b00b
+            # in their README/check.py and independent Agent104 review. This is
+            # source-presence classification only, not a new proof acceptance.
+            external_mathlib = {
+                'Mathlib.Data.Real.Sqrt',
+                'Mathlib.Algebra.Order.BigOperators.Group.Finset',
+                'Mathlib.Tactic.Linarith', 'Mathlib.Tactic.NormNum'}
             assert module in {'Std', 'Init', 'Lean', 'Lean.Elab.Tactic.Omega',
-                              'Lean.MonadEnv', 'Lean.Util.FoldConsts'} or module in names, (str(path),module)
+                              'Lean.MonadEnv', 'Lean.Util.FoldConsts'} or module in external_mathlib or module in names, (str(path),module)
             imports += 1
     print(json.dumps({'status':'PASS','manifest_files':count,
                      'unchanged_original_files':len(kept),

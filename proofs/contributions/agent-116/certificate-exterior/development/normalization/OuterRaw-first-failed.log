@@ -1,0 +1,67 @@
+OuterRaw.lean:25:15: error: unknown constant 'List.reverse_singleton'
+OuterRaw.lean:25:4: error: simp made no progress
+OuterRaw.lean:30:55: error: unknown constant 'List.reverse_singleton'
+OuterRaw.lean:35:4: error: tactic 'rfl' failed, the left-hand side
+  zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+      (List.reverse (norm ([c].reverse ++ List.reverse B) (kOf c)).fst) ++
+    zipAdd [tOf c] [tOf c]
+is not definitionally equal to the right-hand side
+  (if (norm (List.reverse B) (kOf c)).snd = 0 then
+      zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+        (List.reverse (norm (List.reverse B) (kOf c)).fst ++ [tOf c])
+    else
+      zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+        ([1] ++ List.reverse (norm (List.reverse B) (kOf c)).fst)) ++
+    [tOf c + tOf c]
+case isTrue
+c : Nat
+B A C : Word
+hc : Phase c
+hB : Bounded B
+hc18 : c ≤ 18
+hcnine : c ≠ 9
+he : (norm B 0).snd ≤ 1
+hleft : norm (B ++ [c]) 0 = ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c], kOf c)
+hr0 : norm [c] (kOf c) = ([tOf c], kOf c)
+hright :
+  norm (List.reverse (B ++ [c])) (kOf c) =
+    ([tOf c] ++ (norm (List.reverse B) (kOf c)).fst, (norm (List.reverse B) (kOf c)).snd)
+hut : c + kOf c - 10 * kOf c = tOf c
+h✝ : (norm ([c].reverse ++ List.reverse B) (kOf c)).snd = 0
+⊢ zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+        (List.reverse (norm ([c].reverse ++ List.reverse B) (kOf c)).fst) ++
+      zipAdd [tOf c] [tOf c] =
+    (if (norm (List.reverse B) (kOf c)).snd = 0 then
+        zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+          (List.reverse (norm (List.reverse B) (kOf c)).fst ++ [tOf c])
+      else
+        zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+          ([1] ++ List.reverse (norm (List.reverse B) (kOf c)).fst)) ++
+      [tOf c + tOf c]
+OuterRaw.lean:36:8: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  [1] ++ (?m.5102 ++ [tOf c])
+case isFalse
+c : Nat
+B A C : Word
+hc : Phase c
+hB : Bounded B
+hc18 : c ≤ 18
+hcnine : c ≠ 9
+he : (norm B 0).snd ≤ 1
+hleft : norm (B ++ [c]) 0 = ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c], kOf c)
+hr0 : norm [c] (kOf c) = ([tOf c], kOf c)
+hright :
+  norm (List.reverse (B ++ [c])) (kOf c) =
+    ([tOf c] ++ (norm (List.reverse B) (kOf c)).fst, (norm (List.reverse B) (kOf c)).snd)
+hut : c + kOf c - 10 * kOf c = tOf c
+h✝ : ¬(norm ([c].reverse ++ List.reverse B) (kOf c)).snd = 0
+⊢ zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c] ++ [tOf c])
+      ([1] ++ List.reverse (norm ([c].reverse ++ List.reverse B) (kOf c)).fst) =
+    (if (norm (List.reverse B) (kOf c)).snd = 0 then
+        zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+          (List.reverse (norm (List.reverse B) (kOf c)).fst ++ [tOf c])
+      else
+        zipAdd ((norm B 0).fst ++ [c + (norm B 0).snd - 10 * kOf c])
+          ([1] ++ List.reverse (norm (List.reverse B) (kOf c)).fst)) ++
+      [tOf c + tOf c]
+'Agent116.Exterior.Br_append_phase' depends on axioms: [propext, sorryAx, Quot.sound]

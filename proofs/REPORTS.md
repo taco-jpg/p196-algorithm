@@ -410,3 +410,15 @@ Every original written research report, proof note and manuscript source retaine
 - [contributions/agent-104/seven-column-kernel/review-final-clean/preflight-01/README.md](contributions/agent-104/seven-column-kernel/review-final-clean/preflight-01/README.md)
 - [contributions/agent-104/seven-column-kernel/review-final/REVIEW.md](contributions/agent-104/seven-column-kernel/review-final/REVIEW.md)
 <!-- END AGENT104 REVIEWED INTEGRATION -->
+
+<!-- BEGIN AGENT116 REVIEWED CAP3 -->
+## Agent 116: cap-three source, review and integration
+
+- [contributions/agent-116/README.md](contributions/agent-116/README.md)
+- [contributions/agent-116/cap3-kernel/README.md](contributions/agent-116/cap3-kernel/README.md)
+- [contributions/agent-116/development/runner/baseline-01/README.md](contributions/agent-116/development/runner/baseline-01/README.md)
+- [contributions/agent-116/integration/endpoints/README.md](contributions/agent-116/integration/endpoints/README.md)
+- [contributions/agent-116/integration/historical-index/12ed0a9b68c44913abecc88899251dcffae81c1e615a7bc1266ac41a49cb38e0/README.md](contributions/agent-116/integration/historical-index/12ed0a9b68c44913abecc88899251dcffae81c1e615a7bc1266ac41a49cb38e0/README.md)
+- [contributions/agent-116/review/REVIEW.md](contributions/agent-116/review/REVIEW.md)
+- [contributions/agent-116/review/SEMANTIC_REVIEW.md](contributions/agent-116/review/SEMANTIC_REVIEW.md)
+<!-- END AGENT116 REVIEWED CAP3 -->

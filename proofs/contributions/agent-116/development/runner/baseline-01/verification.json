@@ -1,0 +1,247 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "async_elaboration": false,
+  "audit_source_sha256": "5f23aeb6e1912be7c623d0630de3d5c0d91df9ec55fbdf5cc8fd7b1a3fe0e740",
+  "build_order": [
+    "TemplateStep",
+    "ReturnCertificate",
+    "OuterFinite",
+    "OuterBounds",
+    "OuterBridge"
+  ],
+  "builds": [
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "version",
+      "log": "logs/version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "maximum_resident_set_kib": 59324,
+      "resources": "logs/version.resources.json",
+      "seconds": 0.031
+    },
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "--print-prefix"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "prefix",
+      "log": "logs/prefix.log",
+      "log_sha256": "cad3885e33239eb93b1bbd780aba027e796353fc2c56701074220108410b55cd",
+      "maximum_resident_set_kib": 60640,
+      "resources": "logs/prefix.resources.json",
+      "seconds": 0.029
+    },
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "TemplateStep.olean",
+        "TemplateStep.lean"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "TemplateStep",
+      "log": "logs/TemplateStep.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "maximum_resident_set_kib": 497608,
+      "resources": "logs/TemplateStep.resources.json",
+      "seconds": 5.1
+    },
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ReturnCertificate.olean",
+        "ReturnCertificate.lean"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "ReturnCertificate",
+      "log": "logs/ReturnCertificate.log",
+      "log_sha256": "f2c6882924b64da43f79d98a9884c4196e8b90008eb9fa20a2a861818274e50a",
+      "maximum_resident_set_kib": 467700,
+      "resources": "logs/ReturnCertificate.resources.json",
+      "seconds": 2.98
+    },
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OuterFinite.olean",
+        "OuterFinite.lean"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "OuterFinite",
+      "log": "logs/OuterFinite.log",
+      "log_sha256": "ac86a2e22b11447702615b58a5b0a93a65c92f14973bd9df0868fe52e5abf5f4",
+      "maximum_resident_set_kib": 2662368,
+      "resources": "logs/OuterFinite.resources.json",
+      "seconds": 20.135
+    },
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OuterBounds.olean",
+        "OuterBounds.lean"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "OuterBounds",
+      "log": "logs/OuterBounds.log",
+      "log_sha256": "d11c52a5374e73738ffd0765c9251a3fcdf2cea573806d9b5fa0b50e2ce67ee5",
+      "maximum_resident_set_kib": 428288,
+      "resources": "logs/OuterBounds.resources.json",
+      "seconds": 0.695
+    },
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OuterBridge.olean",
+        "OuterBridge.lean"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "OuterBridge",
+      "log": "logs/OuterBridge.log",
+      "log_sha256": "92a6d890454c35bfcbf755c6ab3e92d7c7d13a27bfec5a7618bea352b266739c",
+      "maximum_resident_set_kib": 445476,
+      "resources": "logs/OuterBridge.resources.json",
+      "seconds": 1.812
+    },
+    {
+      "command": [
+        "/workspace/scratch/b9ccc76d924e/toolchain-116/lean",
+        "-j1",
+        "-DElab.async=false",
+        "AllExportedAxioms.lean"
+      ],
+      "cwd": "/workspace/scratch/b9ccc76d924e/baseline-116/snapshot",
+      "exit_code": 0,
+      "label": "AllExportedAxioms",
+      "log": "logs/AllExportedAxioms.log",
+      "log_sha256": "bb9e940ff8353c2c3853485889321ce149ded3c8263b5ff26c9537dbadd00a7f",
+      "maximum_resident_set_kib": 940320,
+      "resources": "logs/AllExportedAxioms.resources.json",
+      "seconds": 6.98
+    }
+  ],
+  "certificate_existence_or_p196_established_by_this_report": false,
+  "compiler": {
+    "fingerprints": {
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean": "e7803b99a4bfd13bdccc2f98b01832a1416346263df735c49ae630dbe017e3d2",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/readlink_self.c": "8d1e9e7a886bb0be580c1cee84d6497c4ac3591ebe23389130a1282c0aaa8e89",
+      "/workspace/scratch/b9ccc76d924e/toolchain-116/readlink_self.so": "100718efe84a5c605d4752eadf9d9f6b14f38d5adbc82ce00407d378f4d9973d"
+    },
+    "inherited_LD_PRELOAD": "",
+    "prefix": "/workspace/scratch/b9ccc76d924e/toolchain-116/lean-4.19.0-linux",
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "wrapper": "/workspace/scratch/b9ccc76d924e/toolchain-116/lean"
+  },
+  "failure": "Incomplete axiom audit: missing {\"Agent109.Cert.append_inj_left'\"}; extra set()",
+  "fresh_source_rebuild": true,
+  "memory_limit_imposed": false,
+  "one_build_worker": true,
+  "parallel_build_workers": 1,
+  "require_committed_sources": false,
+  "scope": "Build and axiom validation only; mathematical interpretation requires theorem statements.",
+  "selected_top_level_modules": [
+    "OuterBridge",
+    "ReturnCertificate"
+  ],
+  "snapshot_complete_before_build": true,
+  "source_commit": "eec3d5f3646cab50abad6e610ea19626cd249070",
+  "sources": {
+    "OuterBounds": {
+      "bytes": 2989,
+      "git_blob_sha1": "e816032eb3997512dfdee7d10bdb914e959e74a8",
+      "imports": [
+        "OuterFinite"
+      ],
+      "matches_source_commit": true,
+      "object_sha256": "2fa2d0e0124721ca71b447fee68fb36a3aa5ca04b40512ea20ebe67317bfeb44",
+      "original_path": "proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterBounds.lean",
+      "sha256": "75ed5831f0cc1e9c6016672ebef83cf0f46da279432b3694ba075627cb973a76",
+      "snapshot": "snapshot/OuterBounds.lean"
+    },
+    "OuterBridge": {
+      "bytes": 12802,
+      "git_blob_sha1": "06ed5a8660e83b2dde192a10c822c9317a79483b",
+      "imports": [
+        "ReturnCertificate",
+        "OuterBounds"
+      ],
+      "matches_source_commit": true,
+      "object_sha256": "6f9f4f1e260948184f82400a62c87ac69ce23e79e187a37073e56f5e856e0e42",
+      "original_path": "proofs/contributions/agent-109/outer-projection-bridge/OuterBridge.lean",
+      "sha256": "849fa22a9d6aae37611e0eec424e4ec451c6bb4d71c75813f9a8906c669bd966",
+      "snapshot": "snapshot/OuterBridge.lean"
+    },
+    "OuterFinite": {
+      "bytes": 2573,
+      "git_blob_sha1": "bc22ad1b950251fd231cccd40393b5749b8ad887",
+      "imports": [
+        "Std"
+      ],
+      "matches_source_commit": true,
+      "object_sha256": "0f30b0c915b3f0a603aadde506ebf0f09d1fc1aa7566ca93490057cbaa1f8b2c",
+      "original_path": "proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterFinite.lean",
+      "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+      "snapshot": "snapshot/OuterFinite.lean"
+    },
+    "ReturnCertificate": {
+      "bytes": 19048,
+      "git_blob_sha1": "95196cfe2da9b224412a9c31910163cf5784f996",
+      "imports": [
+        "TemplateStep"
+      ],
+      "matches_source_commit": true,
+      "object_sha256": "06bdee0a5c0d2e158e8298d06c256b407c4197f1632e4b829ab3c32a52fcb1af",
+      "original_path": "proofs/contributions/agent-109/template-return-certificate/ReturnCertificate.lean",
+      "sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+      "snapshot": "snapshot/ReturnCertificate.lean"
+    },
+    "TemplateStep": {
+      "bytes": 31470,
+      "git_blob_sha1": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+      "imports": [
+        "Std"
+      ],
+      "matches_source_commit": true,
+      "object_sha256": "8f89f0db99451e24dee41c8ecafcbcc675daff968f0c043f2ce764cd458d95ca",
+      "original_path": "proofs/contributions/agent-109/template-step-bridge/TemplateStep.lean",
+      "sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+      "snapshot": "snapshot/TemplateStep.lean"
+    }
+  },
+  "status": "FAIL",
+  "theorems": {}
+}

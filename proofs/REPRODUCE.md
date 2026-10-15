@@ -424,3 +424,41 @@ after a snapshot records PASS, omitting the flag exits before writing and
 cannot downgrade its state. The release verifier checks bytes
 and local source presence; it does not establish mathematical truth.
 <!-- END AGENT104 REVIEWED INTEGRATION -->
+
+<!-- BEGIN AGENT116 REVIEWED CAP3 -->
+## Agent 116: reviewed complete cap-three aggregate
+
+Use official Lean 4.19.0, release commit `6caaee842e94`, with an absolute
+executable path and a nonexistent evidence directory, from the repository root:
+
+```sh
+python3 -B proofs/contributions/agent-116/check.py "$LEAN_BIN" \
+  --evidence "$AGENT116_EVIDENCE" --module Agent116All --jobs 2 --require-committed
+```
+
+The separate reviewer did not invoke that author runner. Its independently
+implemented complete build, including the additional semantic-scope fixture, is:
+
+```sh
+python3 -B proofs/contributions/agent-116/review/rebuild.py --lean "$LEAN_BIN" \
+  --build "$AGENT116_REVIEW_EVIDENCE" --jobs 2 Agent116All CanonicalityCounterexample
+```
+
+See [review evidence](contributions/agent-116/review/execution/final/manifest.json) for all 137
+source hashes, commands, exit statuses and 1,991 actual `#print axioms` results.
+The shared official toolchain plus documented host readlink shim was reused;
+the review does not claim an independent toolchain download. Local project
+objects were built fresh. Standard foundational axioms are reported, not hidden.
+
+The [integration endpoint check](contributions/agent-116/integration/endpoints/verification.json) deliberately
+reuses those independently rebuilt dependency objects after comparing every
+source pin. Byte indexes can be reproduced separately:
+
+```sh
+python3 -B proofs/contributions/agent-116/integration/reconcile_release.py
+python3 -B proofs/verify_release.py
+```
+
+The byte verifier does not prove mathematics. The reconciler requires the
+frozen independent PASS reports and integration evidence before changing files.
+<!-- END AGENT116 REVIEWED CAP3 -->
