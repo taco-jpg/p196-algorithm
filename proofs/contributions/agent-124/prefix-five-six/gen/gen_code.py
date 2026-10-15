@@ -83,6 +83,7 @@ class Builder:
         self.depth = depth
         self.leaves = []      # list of (name, lean_expr, count)
         self.internal = []    # list of (code, word, rank)
+        self.ranges = []      # item index range of each leaf
 
     def expr(self, lo, hi):
         if lo >= hi:
@@ -98,6 +99,7 @@ class Builder:
         if d == self.depth:
             name = f'leaf{len(self.leaves):04d}'
             self.leaves.append((name, self.expr(lo, hi), hi - lo))
+            self.ranges.append((lo, hi))
             return name, f'rows_{name}'
         mid = (lo + hi) // 2
         code, w, r = self.items[mid]
@@ -127,6 +129,7 @@ def main():
     ap.add_argument('--leaves-per-data', type=int, default=8)
     ap.add_argument('--leaves-per-rows', type=int, default=2)
     ap.add_argument('--tag', default=None)
+    ap.add_argument('--budget', type=float, default=1200.0)
     args = ap.parse_args()
     k = args.k
     tag = args.tag or f'K{k}'
@@ -136,6 +139,9 @@ def main():
     prefixes = [tuple(int(c) for c in p) for p in args.prefixes.split(',')]
     height, bounds = closure(prefixes, k)
     items = sorted((word_code(w), w, r) for w, r in height.items())
+    npred = {}
+    for code, w, r in items:
+        npred[code] = len(prefix_predecessors(w)) if len(w) == k else 0
     codes = [c for c, _, _ in items]
     assert len(set(codes)) == len(codes)
     b = Builder(items, args.leaf)
@@ -159,14 +165,47 @@ def main():
     body += f'\nend Agent124.{ns}\n'
     files[tree_mod] = body
 
-    # row chunk modules
+    # row chunk modules (heavy leaves split into key ranges)
+    BUDGET = args.budget
+    def cost(i0, i1):
+        return sum(npred[items[i][0]] for i in range(i0, i1)) + 0.2 * (i1 - i0)
     row_mods = []
+    split_report = []
     for i in range(0, len(b.leaves), args.leaves_per_rows):
         name = f'{mod}Rows{i // args.leaves_per_rows:03d}'
-        body = HEADER.format(imports=f'{tree_mod}', ns=ns)
-        for lname, _, cnt in b.leaves[i:i + args.leaves_per_rows]:
+        group = list(range(i, min(i + args.leaves_per_rows, len(b.leaves))))
+        heavy = [j for j in group if cost(*b.ranges[j]) > BUDGET]
+        imports = f'{tree_mod}' + ('\nimport Agent124CodeRange' if heavy else '')
+        body = HEADER.format(imports=imports, ns=ns)
+        if heavy:
+            body += 'open Agent124.CodeRange\n'
+        for j in group:
+            lname, _, cnt = b.leaves[j]
+            lo, hi = b.ranges[j]
+            if j not in heavy:
+                body += (f'\ntheorem rows_{lname} : {lname}.All (fun c r => rowOK ranks {k} c r = true) :=\n'
+                         f'  allRowsC_sound (by decide +kernel)\n')
+                continue
+            # split [lo,hi) into consecutive chunks with cost <= BUDGET
+            chunks, start, acc = [], lo, 0.0
+            for idx in range(lo, hi):
+                c_i = npred[items[idx][0]] + 0.2
+                if idx > start and acc + c_i > BUDGET:
+                    chunks.append((start, idx)); start, acc = idx, 0.0
+                acc += c_i
+            chunks.append((start, hi))
+            kb = [0] + [items[a][0] for a, _ in chunks[1:]] + [None]
+            split_report.append({'leaf': lname, 'cost': cost(lo, hi), 'chunks': len(chunks)})
+            for m in range(len(chunks)):
+                blo = kb[m]
+                bhi = 'none' if kb[m + 1] is None else f'(some {kb[m + 1]})'
+                body += (f'\ntheorem rows_{lname}_part{m} : {lname}.All (fun c r => InRange {blo} {bhi} c → rowOK ranks {k} c r = true) :=\n'
+                         f'  allRowsRange_sound (by decide +kernel)\n')
+            proof = f'rows_{lname}_part{len(chunks) - 1}'
+            for m in range(len(chunks) - 2, -1, -1):
+                proof = f'all_join rows_{lname}_part{m} ({proof})'
             body += (f'\ntheorem rows_{lname} : {lname}.All (fun c r => rowOK ranks {k} c r = true) :=\n'
-                     f'  allRowsC_sound (by decide +kernel)\n')
+                     f'  all_full ({proof})\n')
         body += f'\nend Agent124.{ns}\n'
         files[name] = body
         row_mods.append(name)
@@ -246,6 +285,8 @@ def main():
         'bounds_ancestry': {''.join(map(str, p)): bounds[p] + 1 for p in prefixes},
         'leaves': len(b.leaves), 'internal': len(b.internal), 'depth': b.depth,
         'leaf_sizes': [cnt for _, _, cnt in b.leaves],
+        'leaf_costs': [cost(*rg) for rg in b.ranges],
+        'split_leaves': split_report, 'budget': BUDGET,
         'build_order': order,
         'sha256': {n: hashlib.sha256(files[n].encode()).hexdigest() for n in order},
     }
