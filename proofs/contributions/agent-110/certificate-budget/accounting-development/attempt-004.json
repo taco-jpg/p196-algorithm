@@ -1,0 +1,188 @@
+{
+  "scope": "Development compile and axiom audit of structural certificate accounting only",
+  "source_sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+  "compiler": "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+  "compiler_launcher_sha256": "377c4c7e43684cdf26c553d16406131bc64e6f36be56f17b52a39614a9f28b2e",
+  "LEAN_PATH": "/workspace/scratch/63e10b24caf2/accounting-build:/workspace/scratch/63e10b24caf2/dev-deps",
+  "dependencies": {
+    "TemplateStep": {
+      "source_sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+      "olean_sha256": "8f89f0db99451e24dee41c8ecafcbcc675daff968f0c043f2ce764cd458d95ca"
+    },
+    "ReturnCertificate": {
+      "source_sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+      "olean_sha256": "06bdee0a5c0d2e158e8298d06c256b407c4197f1632e4b829ab3c32a52fcb1af"
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--version"
+      ],
+      "returncode": 0,
+      "log": "attempt-004-version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "command": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "/workspace/scratch/63e10b24caf2/accounting-build/CertificateAccounting.olean",
+        "/workspace/scratch/63e10b24caf2/accounting-build/CertificateAccounting.lean"
+      ],
+      "returncode": 0,
+      "log": "attempt-004-compile.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "/workspace/scratch/63e10b24caf2/p196-algorithm/proofs/contributions/agent-110/certificate-budget/accounting-development/AccountingAxiomAudit.lean"
+      ],
+      "returncode": 0,
+      "log": "attempt-004-axioms.log",
+      "log_sha256": "4b63483db189ad4708fe47ca1bace5fb347c15cdca908da060e5f6bf00417882"
+    }
+  ],
+  "status": "PASS",
+  "axiom_audit": {
+    "Agent110.Accounting.sumPrefix_congr": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_add": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_sub": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_two_mul": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_one": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_two": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_le": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_difference": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.sumPrefix_cyclic_difference": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.Br_length": [
+      "propext"
+    ],
+    "Agent110.Accounting.Ar_length": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.Cr_length": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.local_width_balance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.local_outer_lower": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.local_inner_lower": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.local_B_length_difference": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.local_A_length_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.local_C_length_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalJ_eq_period": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalJ1_add_totalJ2": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.two_totalK": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalG_eq_trim_counts": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalH_eq_trim_counts": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalG_eq_totalJ1": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalH_eq_totalK_sub_totalJ1": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalGam_eq_twice_gains": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalG_nonneg": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalH_nonneg": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.totalGam_even": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Accounting.checked_accounting": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "olean_sha256": "af1298cf2e11aa9c0ae76771e14b7f41bb0e69fcf195f9a7f61bd0bce937508c"
+}

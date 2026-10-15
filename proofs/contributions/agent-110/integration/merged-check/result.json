@@ -1,0 +1,738 @@
+{
+  "HEAD_policy": "Documentation/evidence commits may advance HEAD; all actual mathematical sources must equal the fixed merge and reviewed source pins.",
+  "LEAN_PATH": "/workspace/scratch/63e10b24caf2/integration-root-check:/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f:/workspace/scratch/63e10b24caf2/radix-review-build",
+  "adapter_sha256": "210f46db847d1b578b344a05a6039e36701fcb3f9014da182bb270a2139fadec",
+  "all_reviewed_source_pins_match_merge": true,
+  "build_dir_initially_absent": "/workspace/scratch/63e10b24caf2/integration-root-check",
+  "certificate_source_count": 19,
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "version",
+      "log": "logs/version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "seconds": 0.031
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "CertificateChecked.olean",
+        "CertificateChecked.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "CertificateChecked",
+      "log": "logs/CertificateChecked.log",
+      "log_sha256": "816776a074a03ad77f0ea3b7a6006e9406f6ded4d033f2cd81881744d04fa0ba",
+      "seconds": 0.609
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "All.olean",
+        "All.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "All",
+      "log": "logs/All.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.347
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "RadixExterior.olean",
+        "RadixExterior.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "RadixExterior",
+      "log": "logs/RadixExterior.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.919
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "--deps",
+        "CertificateChecked.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "CertificateChecked-deps",
+      "log": "logs/CertificateChecked-deps.log",
+      "log_sha256": "c6f644fb9c248358897eb7b286b5bd2182a63c5316aba1023695851640548193",
+      "seconds": 0.041
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "--deps",
+        "All.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "All-deps",
+      "log": "logs/All-deps.log",
+      "log_sha256": "f247ee61407229d2e5ae522bf815d05a4884381b18b1685e5a3ce2d5cc10a346",
+      "seconds": 0.032
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "--deps",
+        "RadixExterior.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "RadixExterior-deps",
+      "log": "logs/RadixExterior-deps.log",
+      "log_sha256": "c0415d97b42a5d732b6efed37146efcc8499239c705ce37c77ca1d9199bc479d",
+      "seconds": 0.039
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "EndpointAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "EndpointAudit",
+      "log": "logs/EndpointAudit.log",
+      "log_sha256": "472d7a316f4ca7906753f253186b644e2550900c66d612240a6a1b40c54079d0",
+      "seconds": 0.746
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "--deps",
+        "EndpointAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "EndpointAudit-deps",
+      "log": "logs/EndpointAudit-deps.log",
+      "log_sha256": "9fe02ba5041534db3d609a15db18a362b9e2f5a65871ff1123d0ed2075ba9c7f",
+      "seconds": 0.031
+    },
+    {
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "EndpointTypes.lean"
+      ],
+      "cwd": "/workspace/scratch/63e10b24caf2/integration-root-check",
+      "exit_code": 0,
+      "label": "EndpointTypes",
+      "log": "logs/EndpointTypes.log",
+      "log_sha256": "b140b52bc12fd1bf7b75239a9ff57df8fe12e51eb8739a3b2d7c184cead52f61",
+      "seconds": 0.431
+    }
+  ],
+  "compared_source_count": 23,
+  "completed_utc": "2026-10-15T16:40:19.465121+00:00",
+  "coordination_claim": "d2f719d223c54d890d1ffde44a29c6ed5bd895eb",
+  "dependency_directories_modified": false,
+  "dependency_objects_reused": {
+    "AdmissibleCenters": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/AdmissibleCenters.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "2da5e1e278ea764e0101a0032cf8856453bd7aae4df7359a3c0b7f02e5189976"
+    },
+    "AdmissibleHeads": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/AdmissibleHeads.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "997cb3281f75cac5a40bcd08220489b9b3c082652e7145b38efaf6590adc6ac1"
+    },
+    "CertificateAccounting": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateAccounting.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "af1298cf2e11aa9c0ae76771e14b7f41bb0e69fcf195f9a7f61bd0bce937508c"
+    },
+    "CertificateCarryBudget": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateCarryBudget.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "599c4d82bf7efa8cfd754f1907e8838273a6bb852c0687de74d09163f5ea9e83"
+    },
+    "CertificateCharge": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateCharge.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "d142ecebc2a50a2b06a4b3856a1d48b07e7d64a6a94549e039535e75d6d09507"
+    },
+    "CertificateConsequences": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateConsequences.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "1299a2f2e554df17ef026a9c1fa2ceb60a4ff7b7aff9c2093ab78235cfa497cd"
+    },
+    "CertificatePhases": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificatePhases.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "6255dfe75900a296cfe96362eb4aa11b429eae9e1f24c4fa8816d59ddc892ab9"
+    },
+    "CertificatePrefix": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificatePrefix.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "a453d960e9bcc3aeb37b5a9af875c7aebabfbb55780e88e9f88b70849301cd20"
+    },
+    "CertificateSaturation": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateSaturation.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "ca13b05fb4bf018590f23ad6d618cddea92c73befeca0b3b9a1904ddbcd78e7f"
+    },
+    "ExteriorCapTwo": {
+      "path": "/workspace/scratch/63e10b24caf2/radix-review-build/ExteriorCapTwo.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-radix/verification.json",
+      "sha256": "f1beee65d2029deb4e31ddd00ecdc22a26722bf6367a3d22f2d185d430516595"
+    },
+    "ExteriorCharge": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/ExteriorCharge.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "874b8c574086b979320712b3b1646c6037f4e8f2cff362442d33b47040bd889a"
+    },
+    "ExteriorCore": {
+      "path": "/workspace/scratch/63e10b24caf2/radix-review-build/ExteriorCore.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-radix/verification.json",
+      "sha256": "5a6a123ed08fb1856911f6050816cdd0e026f4a0408fe7c9e791e1fd537ba100"
+    },
+    "ExteriorCoverage": {
+      "path": "/workspace/scratch/63e10b24caf2/radix-review-build/ExteriorCoverage.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-radix/verification.json",
+      "sha256": "c7800b77d532ad826c7404c2cb44eebbba8c87c9dd14b91e828ec5d8698e6836"
+    },
+    "LychrelDigitSums": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/LychrelDigitSums.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978"
+    },
+    "PrefixModel": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/PrefixModel.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "c6c529f86c86045b84cb7d7b7519b57b9ae87dc7b29f2db7d15a9b5f65b15b13"
+    },
+    "ReturnCertificate": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/ReturnCertificate.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "06bdee0a5c0d2e158e8298d06c256b407c4197f1632e4b829ab3c32a52fcb1af"
+    },
+    "SaturationCertificate": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/SaturationCertificate.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "3e04127e99cf0423b3bd903e23cbbb7831d82bb6b0bd6afba0c4835e51db2260"
+    },
+    "SaturationTheorem": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/SaturationTheorem.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "0da7e1752b74813fe35dcd2b04aef54b1d3565ca7a5734717241e63d78d1e4b7"
+    },
+    "SymbolicGrowth": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/SymbolicGrowth.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "ba77ffc6e6686a11bb7ec547036242fb88e4be4a7973c3af6a8c615704e829f0"
+    },
+    "TemplateStep": {
+      "path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/TemplateStep.olean",
+      "review_receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "8f89f0db99451e24dee41c8ecafcbcc675daff968f0c043f2ce764cd458d95ca"
+    }
+  },
+  "driver_sha256": "09df562dd87eab4c8f4955640cab0a1b7851ebb9a67356b6d8538322b5c84977",
+  "endpoint_axiom_audit": {
+    "Agent110.Checked.period_at_least_four": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Checked.saturated_period_constraints": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.Checked.six_phase_constraints": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.RadixExterior.centeredValue_append_phase": [
+      "propext"
+    ],
+    "Agent110.RadixExterior.centeredValue_formula": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.RadixExterior.centeredValue_replicate": [
+      "propext"
+    ],
+    "Agent110.RadixExterior.no_autonomous_radix_factor": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.RadixExterior.no_overflow_strict_radix_observable": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.RadixExterior.no_overflow_strict_radix_potential": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.RadixExterior.observation_append_phase": [
+      "propext"
+    ],
+    "Agent110.RadixExterior.radix_observation_is_order_sensitive": [],
+    "Agent110.RadixExterior.witness_after_overflow": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.RadixExterior.witness_canonical": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.RadixExterior.witness_nonautonomy": [],
+    "Agent110.RadixExterior.witness_not_state_return": [],
+    "Agent110.RadixExterior.witness_observation_return": [],
+    "Agent110.RadixExterior.witness_overflows": [],
+    "Agent110.RadixExterior.witness_path": []
+  },
+  "endpoint_axiom_count": 18,
+  "independently_clean_closures": {
+    "certificate_19": {
+      "build_dir": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f",
+      "objects_reused_in_that_run": false,
+      "receipt": "proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json",
+      "sha256": "1a03fa46d6ab20224be224ef50bd7664af87e616a2643c963f2078c1add98906",
+      "status": "PASS"
+    },
+    "radix_4": {
+      "build_dir": "/workspace/scratch/63e10b24caf2/radix-review-build",
+      "objects_reused_in_that_run": false,
+      "receipt": "proofs/contributions/agent-110/review-radix/verification.json",
+      "sha256": "81851617ff0edcff9204df273cd97ca4714fc6c5ebe89382ae4a6c5927282b1f",
+      "status": "PASS"
+    }
+  },
+  "integrated_main_commit": "2c2551165c13d23b11d44122fc7a504d51053e59",
+  "merge_commit": "b337ce1e3c3058468bc1562bf30e536f685960dd",
+  "merge_parents": [
+    "354314f8d2ce025266d3427feb2a1339729d3e35",
+    "2c2551165c13d23b11d44122fc7a504d51053e59"
+  ],
+  "merge_tree": "89ad2eb97815cd721df7d82316e396c0931d6ca7",
+  "observed_HEAD_at_completion": "4ceb839b4bd24b1d6aeeef3cfa091bf6bf6034e2",
+  "observed_HEAD_at_start": "4ceb839b4bd24b1d6aeeef3cfa091bf6bf6034e2",
+  "official_compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "operator": "/root/runtime_audit",
+  "published_source_commits": {
+    "certificate_19": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+    "radix_4": "1cdc55c89b376faa270d1dffaf21e21b6eedeb4b"
+  },
+  "published_source_trees": {
+    "certificate_19": "3a64e949372b608e436b4db766e0e70957a91597",
+    "radix_4": "a01ca07a2ff49f3dae2aa8dd97483e8e624915b8"
+  },
+  "pull_request_scope": 39,
+  "radix_source_count": 4,
+  "recompiled_root_count": 3,
+  "reused_dependency_object_count": 20,
+  "reviewed_dependencies_unchanged_after_use": true,
+  "roots_recompiled": [
+    "CertificateChecked",
+    "All",
+    "RadixExterior"
+  ],
+  "runtime_launcher_sha256": "377c4c7e43684cdf26c553d16406131bc64e6f36be56f17b52a39614a9f28b2e",
+  "scope": "Merged-tree integration/root-recompilation check, explicitly reusing independently reviewed dependency objects. NOT a new clean closure rebuild.",
+  "signed_operator_identity": "/root/runtime_audit \u2014 merged-tree integration check",
+  "sources": {
+    "AdmissibleCenters": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "6366eaf4f5d16a8a1a999e7474c44239111e83e7",
+      "merged_sha256": "7a7b9791e04994c8050606f211cac34b938ce8b63fa723ff54374c25eea97210",
+      "path": "proofs/contributions/agent-110/review-agent112/source_snapshots/AdmissibleCenters.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "6366eaf4f5d16a8a1a999e7474c44239111e83e7",
+      "published_source_sha256": "7a7b9791e04994c8050606f211cac34b938ce8b63fa723ff54374c25eea97210",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/AdmissibleCenters.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "2da5e1e278ea764e0101a0032cf8856453bd7aae4df7359a3c0b7f02e5189976",
+      "reviewed_sha256": "7a7b9791e04994c8050606f211cac34b938ce8b63fa723ff54374c25eea97210",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "AdmissibleHeads": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "0754d027159fef059efc38a9692d4edf278c0039",
+      "merged_sha256": "696bb4cca62a931738ffd837c95a89daeaf74056d35f1e6c38755120ea56ef65",
+      "path": "proofs/contributions/agent-110/review-agent112/source_snapshots/AdmissibleHeads.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "0754d027159fef059efc38a9692d4edf278c0039",
+      "published_source_sha256": "696bb4cca62a931738ffd837c95a89daeaf74056d35f1e6c38755120ea56ef65",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/AdmissibleHeads.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "997cb3281f75cac5a40bcd08220489b9b3c082652e7145b38efaf6590adc6ac1",
+      "reviewed_sha256": "696bb4cca62a931738ffd837c95a89daeaf74056d35f1e6c38755120ea56ef65",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "All": {
+      "closure": "certificate_19",
+      "integration_olean_sha256": "07157e4ffe1e97287a85964d88b1cf7ceca7e05dafe023545ed79b0f1da168b4",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "ff590bcfc7cb4d642dbe928e9b199c30a1fa366f",
+      "merged_sha256": "cac9b1a941a28371b5f2f677efeed5b9162e304e73c0bac23495f511226fc161",
+      "path": "proofs/contributions/agent-110/certificate-budget/All.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "ff590bcfc7cb4d642dbe928e9b199c30a1fa366f",
+      "published_source_sha256": "cac9b1a941a28371b5f2f677efeed5b9162e304e73c0bac23495f511226fc161",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/All.olean",
+      "reviewed_object_reused": false,
+      "reviewed_object_sha256": "07157e4ffe1e97287a85964d88b1cf7ceca7e05dafe023545ed79b0f1da168b4",
+      "reviewed_sha256": "cac9b1a941a28371b5f2f677efeed5b9162e304e73c0bac23495f511226fc161",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificateAccounting": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "79bf1fdfebabcf95dee96698be9aab3747c2599a",
+      "merged_sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificateAccounting.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "79bf1fdfebabcf95dee96698be9aab3747c2599a",
+      "published_source_sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateAccounting.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "af1298cf2e11aa9c0ae76771e14b7f41bb0e69fcf195f9a7f61bd0bce937508c",
+      "reviewed_sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificateCarryBudget": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "08391617ca35f23ad89d9c6a4a98e7cb89a70741",
+      "merged_sha256": "b8d2e27f02c52f2014a84a2b57fb71bfaa17c67ca09db10a67597f85dca3d9b1",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificateCarryBudget.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "08391617ca35f23ad89d9c6a4a98e7cb89a70741",
+      "published_source_sha256": "b8d2e27f02c52f2014a84a2b57fb71bfaa17c67ca09db10a67597f85dca3d9b1",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateCarryBudget.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "599c4d82bf7efa8cfd754f1907e8838273a6bb852c0687de74d09163f5ea9e83",
+      "reviewed_sha256": "b8d2e27f02c52f2014a84a2b57fb71bfaa17c67ca09db10a67597f85dca3d9b1",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificateCharge": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "8af8e26c4112b5074b6b9e8e39c77cc416054c86",
+      "merged_sha256": "403d5a3d51d5a795cf59bca401cf4c1c0f3cfd00137081df22069e20916edf98",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificateCharge.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "8af8e26c4112b5074b6b9e8e39c77cc416054c86",
+      "published_source_sha256": "403d5a3d51d5a795cf59bca401cf4c1c0f3cfd00137081df22069e20916edf98",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateCharge.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "d142ecebc2a50a2b06a4b3856a1d48b07e7d64a6a94549e039535e75d6d09507",
+      "reviewed_sha256": "403d5a3d51d5a795cf59bca401cf4c1c0f3cfd00137081df22069e20916edf98",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificateChecked": {
+      "closure": "certificate_19",
+      "integration_olean_sha256": "ceaa6e94c72d63dac61e66503149d5dbb1d14878ec62dbc38b8bddf3f65714df",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "7b4dad86b0a17362ba8e4d4a99603e933ec314d1",
+      "merged_sha256": "508baf6e85f5699f0e19e9a75ce4d5f9b010586946c0f05fdb55f045f58cd208",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificateChecked.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "7b4dad86b0a17362ba8e4d4a99603e933ec314d1",
+      "published_source_sha256": "508baf6e85f5699f0e19e9a75ce4d5f9b010586946c0f05fdb55f045f58cd208",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateChecked.olean",
+      "reviewed_object_reused": false,
+      "reviewed_object_sha256": "ceaa6e94c72d63dac61e66503149d5dbb1d14878ec62dbc38b8bddf3f65714df",
+      "reviewed_sha256": "508baf6e85f5699f0e19e9a75ce4d5f9b010586946c0f05fdb55f045f58cd208",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificateConsequences": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "2df708284873ad036aeebfa14f602a8fc2452314",
+      "merged_sha256": "20f7e7b251284edf290be47bacc0cf197b7fcdec17b633a09af748a8d502a316",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificateConsequences.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "2df708284873ad036aeebfa14f602a8fc2452314",
+      "published_source_sha256": "20f7e7b251284edf290be47bacc0cf197b7fcdec17b633a09af748a8d502a316",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateConsequences.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "1299a2f2e554df17ef026a9c1fa2ceb60a4ff7b7aff9c2093ab78235cfa497cd",
+      "reviewed_sha256": "20f7e7b251284edf290be47bacc0cf197b7fcdec17b633a09af748a8d502a316",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificatePhases": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "6921374766aadbc38bca86fc79d3a47b7d737400",
+      "merged_sha256": "27c986089eb9034ccc663bbdedecfefaa0d952b3b719c61dc907129d0c65fdef",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificatePhases.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "6921374766aadbc38bca86fc79d3a47b7d737400",
+      "published_source_sha256": "27c986089eb9034ccc663bbdedecfefaa0d952b3b719c61dc907129d0c65fdef",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificatePhases.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "6255dfe75900a296cfe96362eb4aa11b429eae9e1f24c4fa8816d59ddc892ab9",
+      "reviewed_sha256": "27c986089eb9034ccc663bbdedecfefaa0d952b3b719c61dc907129d0c65fdef",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificatePrefix": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "dd3fed388235a52f48d7608ee83b7c4965404b91",
+      "merged_sha256": "3e518a354e10dba1609f26c7914047802075e4bdbc71e7205df954ec2328201c",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificatePrefix.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "dd3fed388235a52f48d7608ee83b7c4965404b91",
+      "published_source_sha256": "3e518a354e10dba1609f26c7914047802075e4bdbc71e7205df954ec2328201c",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificatePrefix.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "a453d960e9bcc3aeb37b5a9af875c7aebabfbb55780e88e9f88b70849301cd20",
+      "reviewed_sha256": "3e518a354e10dba1609f26c7914047802075e4bdbc71e7205df954ec2328201c",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "CertificateSaturation": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "e90960e42b165e7c328935406968ceaff0e409be",
+      "merged_sha256": "81530b812401b871c57c3c6fc8a95b33521e272a240ed303324fefc888287a75",
+      "path": "proofs/contributions/agent-110/certificate-budget/CertificateSaturation.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "e90960e42b165e7c328935406968ceaff0e409be",
+      "published_source_sha256": "81530b812401b871c57c3c6fc8a95b33521e272a240ed303324fefc888287a75",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/CertificateSaturation.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "ca13b05fb4bf018590f23ad6d618cddea92c73befeca0b3b9a1904ddbcd78e7f",
+      "reviewed_sha256": "81530b812401b871c57c3c6fc8a95b33521e272a240ed303324fefc888287a75",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "ExteriorCapTwo": {
+      "closure": "radix_4",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "feed03ae38829a27b1664fb42b3a466b84069be1",
+      "merged_sha256": "cbf5d410dd436f524c84856901116ba946e328ebb5796cd0b56135b684d286d3",
+      "path": "proofs/contributions/agent6-complementary-bulk/ExteriorCapTwo.lean",
+      "published_source_commit": "1cdc55c89b376faa270d1dffaf21e21b6eedeb4b",
+      "published_source_git_blob_sha1": "feed03ae38829a27b1664fb42b3a466b84069be1",
+      "published_source_sha256": "cbf5d410dd436f524c84856901116ba946e328ebb5796cd0b56135b684d286d3",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/radix-review-build/ExteriorCapTwo.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "f1beee65d2029deb4e31ddd00ecdc22a26722bf6367a3d22f2d185d430516595",
+      "reviewed_sha256": "cbf5d410dd436f524c84856901116ba946e328ebb5796cd0b56135b684d286d3",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "ExteriorCharge": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "3020c27a4f65aa5c59a76d2facecc6739fc25d00",
+      "merged_sha256": "32e9c2bdf3f632b42ebce9a4fcda09856e4d3389e352a54a2e00904895be93b2",
+      "path": "proofs/contributions/2026-10-15-agent2-complementary-search/ExteriorCharge.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "3020c27a4f65aa5c59a76d2facecc6739fc25d00",
+      "published_source_sha256": "32e9c2bdf3f632b42ebce9a4fcda09856e4d3389e352a54a2e00904895be93b2",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/ExteriorCharge.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "874b8c574086b979320712b3b1646c6037f4e8f2cff362442d33b47040bd889a",
+      "reviewed_sha256": "32e9c2bdf3f632b42ebce9a4fcda09856e4d3389e352a54a2e00904895be93b2",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "ExteriorCore": {
+      "closure": "radix_4",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "aab842a9da5e052115cac89b5229f2aa68f8e4e7",
+      "merged_sha256": "4f4f31795a5198bffccf86ba1b7beed33da43e93063dfd0253266e8d1626d8e2",
+      "path": "proofs/contributions/agent6-complementary-bulk/ExteriorCore.lean",
+      "published_source_commit": "1cdc55c89b376faa270d1dffaf21e21b6eedeb4b",
+      "published_source_git_blob_sha1": "aab842a9da5e052115cac89b5229f2aa68f8e4e7",
+      "published_source_sha256": "4f4f31795a5198bffccf86ba1b7beed33da43e93063dfd0253266e8d1626d8e2",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/radix-review-build/ExteriorCore.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "5a6a123ed08fb1856911f6050816cdd0e026f4a0408fe7c9e791e1fd537ba100",
+      "reviewed_sha256": "4f4f31795a5198bffccf86ba1b7beed33da43e93063dfd0253266e8d1626d8e2",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "ExteriorCoverage": {
+      "closure": "radix_4",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "fc61a9fc042aaf3462d5a9026ca26f26bb9a117b",
+      "merged_sha256": "459a9ee9aa87f28affbda6ce632df6ef87d63b19f2f853cdc1fecc88ec860e8c",
+      "path": "proofs/contributions/agent6-complementary-bulk/ExteriorCoverage.lean",
+      "published_source_commit": "1cdc55c89b376faa270d1dffaf21e21b6eedeb4b",
+      "published_source_git_blob_sha1": "fc61a9fc042aaf3462d5a9026ca26f26bb9a117b",
+      "published_source_sha256": "459a9ee9aa87f28affbda6ce632df6ef87d63b19f2f853cdc1fecc88ec860e8c",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/radix-review-build/ExteriorCoverage.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "c7800b77d532ad826c7404c2cb44eebbba8c87c9dd14b91e828ec5d8698e6836",
+      "reviewed_sha256": "459a9ee9aa87f28affbda6ce632df6ef87d63b19f2f853cdc1fecc88ec860e8c",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "LychrelDigitSums": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "merged_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "path": "proofs/research/continuation/LychrelDigitSums.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "published_source_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/LychrelDigitSums.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978",
+      "reviewed_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "PrefixModel": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "28eaab767b15fd81f73f2dcfc3dfff307eb02307",
+      "merged_sha256": "8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0",
+      "path": "proofs/agent4/prefix_growth/PrefixModel.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "28eaab767b15fd81f73f2dcfc3dfff307eb02307",
+      "published_source_sha256": "8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/PrefixModel.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "c6c529f86c86045b84cb7d7b7519b57b9ae87dc7b29f2db7d15a9b5f65b15b13",
+      "reviewed_sha256": "8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "RadixExterior": {
+      "closure": "radix_4",
+      "integration_olean_sha256": "01994c3c0e17d1e08ee02299f1d3dffae7ced95e3c2f2c76ec95b7418347c4fc",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "ce1942cadb6c3be3928ac847f16e1b9954482bce",
+      "merged_sha256": "3aa5f400f939b7888a8e503cc1489514222701078449492f375681129c8e5716",
+      "path": "proofs/contributions/agent-110/exterior-global/RadixExterior.lean",
+      "published_source_commit": "1cdc55c89b376faa270d1dffaf21e21b6eedeb4b",
+      "published_source_git_blob_sha1": "ce1942cadb6c3be3928ac847f16e1b9954482bce",
+      "published_source_sha256": "3aa5f400f939b7888a8e503cc1489514222701078449492f375681129c8e5716",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/radix-review-build/RadixExterior.olean",
+      "reviewed_object_reused": false,
+      "reviewed_object_sha256": "01994c3c0e17d1e08ee02299f1d3dffae7ced95e3c2f2c76ec95b7418347c4fc",
+      "reviewed_sha256": "3aa5f400f939b7888a8e503cc1489514222701078449492f375681129c8e5716",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "ReturnCertificate": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "95196cfe2da9b224412a9c31910163cf5784f996",
+      "merged_sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+      "path": "proofs/contributions/agent-109/template-return-certificate/ReturnCertificate.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "95196cfe2da9b224412a9c31910163cf5784f996",
+      "published_source_sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/ReturnCertificate.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "06bdee0a5c0d2e158e8298d06c256b407c4197f1632e4b829ab3c32a52fcb1af",
+      "reviewed_sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "SaturationCertificate": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "d820767beed3f4c520c5c811d933cfd5c84b79fa",
+      "merged_sha256": "7ce611b42425dcad50527788d95b9bfa648883ed11561df3ebbb6438a1728791",
+      "path": "proofs/agent4/prefix_growth/SaturationCertificate.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "d820767beed3f4c520c5c811d933cfd5c84b79fa",
+      "published_source_sha256": "7ce611b42425dcad50527788d95b9bfa648883ed11561df3ebbb6438a1728791",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/SaturationCertificate.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "3e04127e99cf0423b3bd903e23cbbb7831d82bb6b0bd6afba0c4835e51db2260",
+      "reviewed_sha256": "7ce611b42425dcad50527788d95b9bfa648883ed11561df3ebbb6438a1728791",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "SaturationTheorem": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "f4f8f7da5f2e87f3f0d99503e8f76e6aee4b5f6f",
+      "merged_sha256": "9a7f65a82d611bf24f2661de0715d0a70f69da0b5a51d3ad00725cde37f5b2eb",
+      "path": "proofs/agent4/prefix_growth/SaturationTheorem.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "f4f8f7da5f2e87f3f0d99503e8f76e6aee4b5f6f",
+      "published_source_sha256": "9a7f65a82d611bf24f2661de0715d0a70f69da0b5a51d3ad00725cde37f5b2eb",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/SaturationTheorem.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "0da7e1752b74813fe35dcd2b04aef54b1d3565ca7a5734717241e63d78d1e4b7",
+      "reviewed_sha256": "9a7f65a82d611bf24f2661de0715d0a70f69da0b5a51d3ad00725cde37f5b2eb",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "SymbolicGrowth": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "e6ea91c07f9600df656cd6d8193623ce34c659c1",
+      "merged_sha256": "e1d125447143027920fefc0ce2106b01052cc10ba9ff07e94c8f6a312622b4f8",
+      "path": "proofs/contributions/agent-110/review-agent112/source_snapshots/SymbolicGrowth.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "e6ea91c07f9600df656cd6d8193623ce34c659c1",
+      "published_source_sha256": "e1d125447143027920fefc0ce2106b01052cc10ba9ff07e94c8f6a312622b4f8",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/SymbolicGrowth.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "ba77ffc6e6686a11bb7ec547036242fb88e4be4a7973c3af6a8c615704e829f0",
+      "reviewed_sha256": "e1d125447143027920fefc0ce2106b01052cc10ba9ff07e94c8f6a312622b4f8",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    },
+    "TemplateStep": {
+      "closure": "certificate_19",
+      "matches_reviewed_source": true,
+      "merged_git_blob_sha1": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+      "merged_sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+      "path": "proofs/contributions/agent-109/template-step-bridge/TemplateStep.lean",
+      "published_source_commit": "eb4817f0973cbbe2a059af33d5dc53877a5275b7",
+      "published_source_git_blob_sha1": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+      "published_source_sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+      "reviewed_object_path": "/workspace/scratch/63e10b24caf2/reviewer-build/checked-d611d7f/TemplateStep.olean",
+      "reviewed_object_reused": true,
+      "reviewed_object_sha256": "8f89f0db99451e24dee41c8ecafcbcc675daff968f0c043f2ce764cd458d95ca",
+      "reviewed_sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+      "working_source_identical_to_merge": true,
+      "working_source_identical_to_published_commit": true
+    }
+  },
+  "started_utc": "2026-10-15T16:40:16.004255+00:00",
+  "status": "PASS",
+  "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
+}

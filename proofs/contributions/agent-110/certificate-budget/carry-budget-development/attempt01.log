@@ -1,0 +1,36 @@
+proofs/contributions/agent-110/certificate-budget/carry-budget-development/attempt01.lean:81:8: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 0
+  0 ≤ b ≤ 1
+  0 ≤ b + d ≤ 9
+where
+ b := ↑(norm as.reverse (kOf c)).snd
+ d := ↑a
+proofs/contributions/agent-110/certificate-budget/carry-budget-development/attempt01.lean:84:6: error: unsolved goals
+case neg.refine_1
+c : Nat
+A C : Word
+hc : Phase c
+a : Nat
+as : List Nat
+hB : Bounded (a :: as)
+e : Nat := (norm as.reverse (kOf c)).snd
+he : e ≤ 1
+hg : (data c (a :: as) A C).γ = (a + e) / 10
+hr : List.reverse (data c (a :: as) A C).DRB = (a + e) % 10 :: List.reverse (norm as.reverse (kOf c)).fst
+hγ : ¬(data c (a :: as) A C).γ = 0
+⊢ List.head?
+      (if (norm (as.reverse ++ [a]) (kOf c)).snd = 0 then
+        zipAdd (a % 10 :: ((norm as (a / 10)).fst ++ [u0 c (a :: as) A C]))
+          (List.reverse (norm (as.reverse ++ [a]) (kOf c)).fst ++ [tOf c])
+      else
+        (a % 10 + 1) ::
+          zipAdd ((norm as (a / 10)).fst ++ [u0 c (a :: as) A C])
+            (List.reverse (norm (as.reverse ++ [a]) (kOf c)).fst)) =
+    some (a % 10 + 1)
+'Agent110.CarryBudget.exterior_le' depends on axioms: [propext]
+'Agent110.CarryBudget.exterior_pos' depends on axioms: [propext]
+'Agent110.CarryBudget.trimmed_head' depends on axioms: [propext]
+'Agent110.CarryBudget.raw_exterior_step' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent110.CarryBudget.local_outer_step' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent110.CarryBudget.outer_step_positive' depends on axioms: [propext, Quot.sound]

@@ -303,3 +303,30 @@ All finite certificate hypotheses used by these endpoints are discharged in
 Lean; the Python scan is only an independent diagnostic. None of these results
 constructs an accepted cyclic certificate or settles 196.
 <!-- END AGENT116 REVIEWED CAP3 -->
+
+<!-- BEGIN AGENT110 REVIEWED PR39 -->
+## Agent 110: exact accepted endpoints and evidence levels
+
+Write `O = totalGam cert`, `Dg = totalG cert`, `Dh = totalH cert`, and `P = cert.P`.
+The totals use the original raw formulas and certified trim counts; a local
+signed gap increment may be negative. Six-phase membership is precisely
+`{2,4,8,16,14,10}`.
+
+| Endpoint or record | Hypotheses | Conclusion and scope |
+|---|---|---|
+| `Agent110.Checked.six_phase_constraints` | `check cert = true`; initial `SixPhase` | `O=2*(Dg+Dh)`; `Dg,Dh>=0`, each divisible by 9; `O>=18`, divisible by 18; `2*O<=P<=4*O`; `P%6=0`; `P>=42`. No separate admissibility, head positivity, arithmetic-budget, maximal-trim or width-cap premise. |
+| `Agent110.Checked.saturated_period_constraints` | The preceding checker and phase premises; additionally `2*O=P` | `P%72=0` and `P>=72`. |
+| `Agent110.Checked.period_at_least_four` | `check cert = true` only | `P>=4`, all phase classes. A two-phase lower bound of 12 is not established here. |
+| `Agent110.RadixExterior.no_autonomous_radix_factor` | A proposed update on `(c,Z)` representing every exact step on canonical states reached after overflow | Contradiction: equal observations have different next observations. |
+| `Agent110.RadixExterior.no_overflow_strict_radix_observable` and integer corollary | Potential depends only on `(c,Z)`; specified weak progress, strict progress at actual overflow and relation laws | Contradiction from a two-step observation return containing an overflow. The exterior states do not return. |
+| Eight bounded exterior SAT runs | Exact recorded width/phase/period/overflow settings and short solver caps | Five unverified solver UNSAT reports and three UNKNOWN; no formal exclusion or cycle. |
+
+[Checked semantic review](contributions/agent-110/review-checked/SEMANTIC_REVIEW.md) discharges
+the checker-to-arithmetic interface using Agent112's automatic-admissibility
+theorem from three byte-exact dependency snapshots. Its independently rebuilt
+19-module closure includes Agent4's existing saturation certificate; previous
+conditional work is reused with attribution. The phase-padded three-column
+prefix is an exact formal transition quantity, not an unconditional assertion
+about physical prefix columns at gap two. [Radix review](contributions/agent-110/review-radix/REVIEW.md)
+is confined to its specified observable. Full exterior no-return remains open.
+<!-- END AGENT110 REVIEWED PR39 -->

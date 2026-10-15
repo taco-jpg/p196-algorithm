@@ -1,0 +1,58 @@
+{
+  "scope": "Runtime infrastructure only; no P196 theorem claim",
+  "official_archive_sha256_matches": true,
+  "official_binary_sha256_matches": true,
+  "records": [
+    {
+      "name": "version",
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "--version"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)\n",
+      "stderr": ""
+    },
+    {
+      "name": "positive-smoke",
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "/workspace/scratch/63e10b24caf2/runtime-audit/Smoke.olean",
+        "/workspace/scratch/63e10b24caf2/runtime-audit/Smoke.lean"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "'runtimeSmoke' does not depend on any axioms\n'runtimeOmega' depends on axioms: [propext, Quot.sound]\n",
+      "stderr": ""
+    },
+    {
+      "name": "negative-smoke",
+      "argv": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "/workspace/scratch/63e10b24caf2/runtime-audit/Rejected.lean"
+      ],
+      "returncode": 1,
+      "expected_returncode": 1,
+      "stdout": "/workspace/scratch/63e10b24caf2/runtime-audit/Rejected.lean:2:30: error: tactic 'rfl' failed, the left-hand side\n  1\nis not definitionally equal to the right-hand side\n  2\n\u22a2 1 = 2\n",
+      "stderr": ""
+    }
+  ],
+  "sha256": {
+    "lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "app-path-compat.so": "210f46db847d1b578b344a05a6039e36701fcb3f9014da182bb270a2139fadec",
+    "app-path-compat.c": "016854bd6669414b6e2511269b8d6aeb7aed2b2ce4dc4b70801ae7aaef756f40",
+    "lean": "377c4c7e43684cdf26c553d16406131bc64e6f36be56f17b52a39614a9f28b2e",
+    "lean-4.19.0-linux.tar.zst": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+    "Smoke.lean": "e441a6250c0d55c2207d0f0ffe2cc98b46d20c19869c95fb74a5eb9e6e9bbce1",
+    "Smoke.olean": "0e970b678216deff35878ecab6356965a63a2539bfcee9896ed8d8708b2d7dc9",
+    "Rejected.lean": "c2feb400617ab975de0d9982b6b32dbc65b1e4a93089dfed27f68515039ed424",
+    "lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+    "lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "lean-4.19.0-linux/lib/lean/Init.olean": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944"
+  }
+}

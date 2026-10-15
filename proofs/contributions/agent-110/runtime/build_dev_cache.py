@@ -1,0 +1,189 @@
+#!/usr/bin/env python3
+"""Build a fresh, hash-recorded development cache; not independent proof review.
+
+The module inventory is the union of Agent109's three build.sh files plus
+Agent2 ExteriorCharge and Agent5 ExteriorClock. Existing source is never edited.
+The public-theorem scanner is reused explicitly from Agent105's checked driver.
+"""
+import argparse
+from collections import Counter
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import runpy
+import subprocess
+import time
+
+SOURCE_PATHS = [
+    'proofs/research/continuation/LychrelDigitSums.lean',
+    'proofs/contributions/agent-109/template-step-bridge/TemplateStep.lean',
+    'proofs/contributions/2026-10-15-agent8-complementary-bulk/PeriodObstructions.lean',
+    'proofs/contributions/2026-10-15-agent8-complementary-bulk/ActualWordBridge.lean',
+    'proofs/contributions/agent-109/template-step-bridge/Compat.lean',
+    'proofs/contributions/agent-109/template-step-bridge/Audit.lean',
+    'proofs/contributions/agent-109/template-step-bridge/IntegerEndpoints.lean',
+    'proofs/contributions/agent-109/template-return-certificate/ReturnCertificate.lean',
+    'proofs/contributions/agent-109/template-return-certificate/CertCompat.lean',
+    'proofs/contributions/agent-109/template-return-certificate/CertDemo.lean',
+    'proofs/contributions/agent-109/template-return-certificate/ExportDemo.lean',
+    'proofs/contributions/agent-109/template-return-certificate/CrossCheck.lean',
+    'proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterFinite.lean',
+    'proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterBounds.lean',
+    'proofs/contributions/agent-109/outer-projection-bridge/OuterBridge.lean',
+    'proofs/contributions/agent-109/outer-projection-bridge/OuterCompat.lean',
+    'proofs/contributions/2026-10-15-agent2-complementary-search/ExteriorCharge.lean',
+    'proofs/agent5/ExteriorClock.lean',
+]
+ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
+FLAGS = ['-j1', '-DElab.async=false']
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def now():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--repo', required=True, type=Path)
+    ap.add_argument('--lean', required=True, type=Path)
+    ap.add_argument('--build-dir', required=True, type=Path)
+    ap.add_argument('--evidence-dir', required=True, type=Path)
+    args = ap.parse_args()
+    repo, lean = args.repo.resolve(), args.lean.resolve()
+    build, evidence = args.build_dir.resolve(), args.evidence_dir.resolve()
+    build.mkdir(parents=True, exist_ok=False)
+    evidence.mkdir(parents=True, exist_ok=False)
+    scanner_path = repo / 'proofs/contributions/agent-105/actual-high-return/check.py'
+    scanner = runpy.run_path(str(scanner_path))
+    env = os.environ.copy()
+    for key in ['LEAN_PATH', 'LEAN_SRC_PATH', 'LEAN_SYSROOT', 'LD_PRELOAD', 'LD_LIBRARY_PATH']:
+        env.pop(key, None)
+    env['LEAN_PATH'] = str(build)
+    manifest = {
+        'status': 'RUNNING', 'started_utc': now(),
+        'scope': 'Shared read-only development dependencies; fresh compilation and axiom audit, not semantic independent review or any new P196 theorem.',
+        'repo_head': subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True).strip(),
+        'compiler': str(lean), 'compiler_launcher_sha256': sha(lean.read_bytes()),
+        'build_dir': str(build), 'flags': FLAGS,
+        'environment': {'LEAN_PATH': str(build), 'LEAN_SRC_PATH': None, 'LEAN_SYSROOT': None,
+                        'LD_PRELOAD': 'unset before launcher; launcher adds recorded runtime compatibility adapter', 'LD_LIBRARY_PATH': None},
+        'scanner': {'path': str(scanner_path.relative_to(repo)), 'sha256': sha(scanner_path.read_bytes()), 'method': 'Agent105 public_theorems/code_only; no independent scanner claimed'},
+        'sources': {}, 'commands': [],
+    }
+
+    def save():
+        (evidence / 'manifest.json').write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n')
+
+    def execute(name, argv):
+        start = time.monotonic()
+        print(f'START {name}', flush=True)
+        outpath = evidence / (name + '.log')
+        with outpath.open('w') as handle:
+            proc = subprocess.run(argv, cwd=build, env=env, stdout=handle, stderr=subprocess.STDOUT, text=True)
+        record = {'name': name, 'argv': argv, 'cwd': str(build), 'returncode': proc.returncode,
+                  'seconds': round(time.monotonic() - start, 3), 'log': outpath.name,
+                  'log_sha256': sha(outpath.read_bytes())}
+        manifest['commands'].append(record)
+        save()
+        print(f'END {name}: exit={proc.returncode}, seconds={record["seconds"]}', flush=True)
+        if proc.returncode:
+            raise RuntimeError(f'{name} failed; see {outpath}')
+        return outpath.read_text()
+
+    try:
+        version = execute('version', [str(lean), '--version']).strip()
+        assert 'version 4.19.0' in version and 'commit 6caaee842e94' in version, version
+        manifest['version'] = version
+        names, paths, imports = [], {}, {}
+        for relative in SOURCE_PATHS:
+            src = repo / relative
+            raw = src.read_bytes()
+            name = src.stem
+            assert name not in paths, name
+            paths[name] = src
+            code = scanner['code_only'](raw.decode())
+            forbidden = re.findall(r'\b(?:sorry|admit|axiom|native_decide|sorryAx|ofReduceBool)\b', code)
+            assert not forbidden, (relative, forbidden)
+            try:
+                theorems = scanner['public_theorems'](raw.decode())
+            except ValueError as exc:
+                if str(exc) != 'No public theorems found':
+                    raise
+                theorems = []
+            names.extend(item['name'] for item in theorems)
+            imports[name] = [word for line in re.findall(r'^import\s+([^\n]+)', code, re.M) for word in line.split()]
+            original_blob = hashlib.sha1(f'blob {len(raw)}\0'.encode() + raw).hexdigest()
+            head_blob = subprocess.check_output(['git', '-C', str(repo), 'rev-parse', f'HEAD:{relative}'], text=True).strip()
+            assert original_blob == head_blob, ('Source differs from snapshot HEAD', relative)
+            manifest['sources'][name] = {'path': relative, 'sha256': sha(raw), 'bytes': len(raw),
+                                         'git_blob_sha1': original_blob, 'matches_head': True,
+                                         'imports': imports[name], 'public_theorems': theorems, 'forbidden_tokens': []}
+            (build / src.name).write_bytes(raw)
+        assert len(names) == len(set(names)), 'Duplicate public theorem names'
+        order, visiting = [], set()
+
+        def visit(name):
+            if name in order:
+                return
+            assert name not in visiting, ('Import cycle', name)
+            visiting.add(name)
+            for dep in imports[name]:
+                if dep in {'Std', 'Init'}:
+                    continue
+                assert dep in paths, ('Missing source import', name, dep)
+                visit(dep)
+            visiting.remove(name)
+            order.append(name)
+
+        for name in paths:
+            visit(name)
+        manifest['build_order'] = order
+        manifest['public_theorem_count'] = len(names)
+        save()
+        for name in order:
+            execute(name, [str(lean), *FLAGS, '-o', str(build / (name + '.olean')), str(build / (name + '.lean'))])
+            assert sha(paths[name].read_bytes()) == manifest['sources'][name]['sha256']
+            assert sha((build / (name + '.lean')).read_bytes()) == manifest['sources'][name]['sha256']
+            manifest['sources'][name]['olean_sha256'] = sha((build / (name + '.olean')).read_bytes())
+            save()
+        audit = '\n'.join('import ' + name for name in order) + '\n' + '\n'.join('#print axioms ' + name for name in sorted(names)) + '\n'
+        (build / 'Agent110DevAudit.lean').write_text(audit)
+        (evidence / 'Agent110DevAudit.lean').write_text(audit)
+        stdout = execute('Agent110DevAudit', [str(lean), *FLAGS, str(build / 'Agent110DevAudit.lean')])
+        # Lean identifiers may themselves end in apostrophes. The closing quote
+        # is delimited by the following phrase, not by the first apostrophe.
+        parsed = re.findall(r"^'([^\n]+)' depends on axioms:\s*\[([^\]]*)\]", stdout, re.M)
+        empty = re.findall(r"^'([^\n]+)' does not depend on any axioms", stdout, re.M)
+        entries = [(name, sorted(x.strip() for x in value.split(',') if x.strip())) for name, value in parsed]
+        entries.extend((name, []) for name in empty)
+        counts = Counter(name for name, _ in entries)
+        assert set(counts) == set(names), ('Audit name mismatch', set(names) - set(counts), set(counts) - set(names))
+        assert set(counts.values()) == {1}, ('Duplicate axiom result', counts)
+        assert all(set(axioms) <= ALLOWED for _, axioms in entries), 'Unapproved axiom dependency'
+        manifest['axiom_audit'] = dict(sorted(entries))
+        manifest['all_source_hashes_unchanged'] = all(sha(paths[name].read_bytes()) == record['sha256'] for name, record in manifest['sources'].items())
+        assert manifest['all_source_hashes_unchanged']
+        manifest.update(status='PASS', completed_utc=now())
+        save()
+        (build / 'BUILD_MANIFEST.json').write_bytes((evidence / 'manifest.json').read_bytes())
+        # Consumers may read/import this completed cache. They must build new modules elsewhere.
+        for path in build.iterdir():
+            if path.is_file():
+                path.chmod(0o444)
+        build.chmod(0o555)
+        print(f'PASS: {len(order)} modules; {len(names)} public theorem axiom queries; read-only cache {build}', flush=True)
+    except Exception as exc:
+        manifest.update(status='FAILED', error=repr(exc), completed_utc=now())
+        save()
+        raise
+
+
+if __name__ == '__main__':
+    main()

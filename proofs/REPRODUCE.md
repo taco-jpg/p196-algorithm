@@ -462,3 +462,58 @@ python3 -B proofs/verify_release.py
 The byte verifier does not prove mathematics. The reconciler requires the
 frozen independent PASS reports and integration evidence before changing files.
 <!-- END AGENT116 REVIEWED CAP3 -->
+
+<!-- BEGIN AGENT110 REVIEWED PR39 -->
+## Agent 110: registered All and Radix scopes
+
+Use official Lean 4.19.0, release commit `6caaee842e94`, with an absolute
+`LEAN_BIN` path. Each output/build path below must be new and nonexistent.
+From the repository root:
+
+```sh
+python3 -B proofs/contributions/agent-110/certificate-budget/check.py \
+  --lean "$LEAN_BIN" --build "$AGENT110_ALL_BUILD" --evidence "$AGENT110_ALL_EVIDENCE"
+python3 -B proofs/contributions/agent-110/exterior-global/check.py "$LEAN_BIN" \
+  --evidence "$AGENT110_RADIX_EVIDENCE"
+```
+
+| Registered scope | Import root | Fresh source closure | Accepted independent evidence |
+|---|---|---:|---|
+| All | `All` including `CertificateChecked` | 19 modules | [Manifest](contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json), [exact signatures](contributions/agent-110/review-checked/Signatures.log) |
+| Radix | `RadixExterior` | 4 modules | [Verification](contributions/agent-110/review-radix/verification.json) and [review](contributions/agent-110/review-radix/REVIEW.md) |
+
+All is pinned to `eb4817f0973cbbe2a059af33d5dc53877a5275b7`. Radix is pinned to `1cdc55c89b376faa270d1dffaf21e21b6eedeb4b` and source
+SHA-256 `3aa5f400f939b7888a8e503cc1489514222701078449492f375681129c8e5716`.
+The All audit enumerates every compiled kernel-safe declaration, including
+private/generated theorems; compiler-only unsafe artifacts are inventoried
+separately and do not enlarge the mathematical axiom whitelist. The Radix
+review audits all 48 explicit public declarations across its four sources.
+Both reviews use fresh project objects and the documented official compiler
+with the recorded host readlink adapter; they do not claim separate toolchain
+downloads. Review protocols and audit counts have these distinct scopes.
+
+Agent112 dependency provenance is in
+[PROVENANCE_CHECK.json](contributions/agent-110/review-checked/PROVENANCE_CHECK.json): exactly
+`AdmissibleCenters`, `SymbolicGrowth`, and `AdmissibleHeads` from original commit
+`e7689d35f41ff325037a238cfc594d95e0da04e1`. No full-PR41 acceptance is inferred.
+The earlier ten- and fifteen-module receipts and failed diagnostic attempts
+remain historical evidence. The final nineteen-module receipt is accepted.
+
+The [SAT runner and saved inputs](contributions/agent-110/exterior-global/search/README.md) reproduce
+bounded experiments only; no SAT UNSAT certificate was kernel checked.
+Publication byte checks are separate from mathematics. After the integration
+owner has staged all intended review/publication files and confirmed readiness:
+
+```sh
+python3 -B proofs/contributions/agent-110/integration/reconcile.py --reconcile --stage-ready \
+  --baseline 2c2551165c13d23b11d44122fc7a504d51053e59 \
+  --source eb4817f0973cbbe2a059af33d5dc53877a5275b7 \
+  --claim d2f719d223c54d890d1ffde44a29c6ed5bd895eb
+python3 -B proofs/verify_release.py
+```
+
+`--prepare-only` writes these scoped prose blocks without rebuilding indexes.
+The reconciler performs read-only Git queries, rechecks source/log hashes and
+retains historical inventory order and exact old bytes; it never stages or
+commits files, runs Lean, or changes the existing byte verifier.
+<!-- END AGENT110 REVIEWED PR39 -->

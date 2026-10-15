@@ -1,0 +1,199 @@
+#!/usr/bin/env python3
+"""Merged-tree hash comparison plus root recompilation with recorded object reuse."""
+from collections import Counter
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import time
+
+WORK = Path('/workspace/scratch/63e10b24caf2')
+REPO = WORK / 'p196-algorithm'
+HERE = Path(__file__).resolve().parent
+BUILD = WORK / 'integration-root-check'
+LEAN = WORK / 'runtime-audit/lean'
+MERGE = 'b337ce1e3c3058468bc1562bf30e536f685960dd'
+MAIN = '2c2551165c13d23b11d44122fc7a504d51053e59'
+CERT_RECEIPT = REPO / 'proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json'
+RADIX_RECEIPT = REPO / 'proofs/contributions/agent-110/review-radix/verification.json'
+CERT_RECEIPT_SHA = '1a03fa46d6ab20224be224ef50bd7664af87e616a2643c963f2078c1add98906'
+RADIX_SOURCE_PINS = {
+    'ExteriorCore': '4f4f31795a5198bffccf86ba1b7beed33da43e93063dfd0253266e8d1626d8e2',
+    'ExteriorCapTwo': 'cbf5d410dd436f524c84856901116ba946e328ebb5796cd0b56135b684d286d3',
+    'ExteriorCoverage': '459a9ee9aa87f28affbda6ce632df6ef87d63b19f2f853cdc1fecc88ec860e8c',
+    'RadixExterior': '3aa5f400f939b7888a8e503cc1489514222701078449492f375681129c8e5716',
+}
+ROOTS = ['CertificateChecked', 'All', 'RadixExterior']
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def git(*args):
+    return subprocess.check_output(['git', '-C', str(REPO), *args])
+
+
+def main():
+    BUILD.mkdir(exist_ok=False)
+    logs = HERE / 'logs'
+    logs.mkdir(exist_ok=False)
+    assert sha(CERT_RECEIPT) == CERT_RECEIPT_SHA
+    cert = json.loads(CERT_RECEIPT.read_text())
+    radix = json.loads(RADIX_RECEIPT.read_text())
+    assert cert['status'] == radix['status'] == 'PASS'
+    assert cert['objects_reused'] is False
+    assert radix['project_object_reuse'] is False
+    assert len(cert['sources']) == 19 and len(radix['sources']) == 4
+    assert git('rev-parse', 'HEAD').decode().strip() == MERGE
+    parents = git('show', '-s', '--format=%P', MERGE).decode().split()
+    assert MAIN in parents
+    cert_build, radix_build = Path(cert['LEAN_PATH']), Path(radix['build_dir'])
+    report = {
+        'status': 'RUNNING', 'operator': '/root/runtime_audit',
+        'scope': 'Merged-tree integration/root-recompilation check, explicitly reusing independently reviewed dependency objects. NOT a new clean closure rebuild.',
+        'merge_commit': MERGE, 'merge_tree': git('rev-parse', MERGE + '^{tree}').decode().strip(),
+        'merge_parents': parents, 'integrated_main_commit': MAIN,
+        'coordination_claim': 'd2f719d223c54d890d1ffde44a29c6ed5bd895eb', 'pull_request_scope': 39,
+        'started_utc': datetime.now(timezone.utc).isoformat(),
+        'build_dir_initially_absent': str(BUILD), 'driver_sha256': sha(Path(__file__)),
+        'independently_clean_closures': {
+            'certificate_19': {'receipt': str(CERT_RECEIPT.relative_to(REPO)), 'sha256': sha(CERT_RECEIPT),
+                               'build_dir': str(cert_build), 'status': cert['status'], 'objects_reused_in_that_run': False},
+            'radix_4': {'receipt': str(RADIX_RECEIPT.relative_to(REPO)), 'sha256': sha(RADIX_RECEIPT),
+                        'build_dir': str(radix_build), 'status': radix['status'], 'objects_reused_in_that_run': False}},
+        'roots_recompiled': ROOTS, 'dependency_objects_reused': {}, 'sources': {}, 'commands': [],
+        'runtime_launcher_sha256': sha(LEAN),
+        'official_compiler_sha256': sha(WORK / 'runtime-audit/lean-4.19.0-linux/bin/lean'),
+        'adapter_sha256': sha(WORK / 'runtime-audit/app-path-compat.so'),
+    }
+
+    def save():
+        (HERE / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')
+
+    try:
+        for group, receipt, depdir in [('certificate_19', cert, cert_build), ('radix_4', radix, radix_build)]:
+            for name, item in receipt['sources'].items():
+                relative = item['path']
+                source = REPO / relative
+                data = source.read_bytes()
+                merged_data = git('show', MERGE + ':' + relative)
+                expected = item['sha256']
+                assert hashlib.sha256(data).hexdigest() == expected
+                assert data == merged_data
+                blob = hashlib.sha1(('blob ' + str(len(data)) + '\0').encode() + data).hexdigest()
+                assert blob == git('rev-parse', MERGE + ':' + relative).decode().strip()
+                if 'git_blob_sha1' in item:
+                    assert blob == item['git_blob_sha1']
+                if group == 'radix_4':
+                    assert expected == RADIX_SOURCE_PINS[name]
+                # These directories are read-only inputs to this operation.
+                assert sha(depdir / (name + '.lean')) == expected
+                assert sha(depdir / (name + '.olean')) == item['olean_sha256']
+                assert name not in report['sources']
+                report['sources'][name] = {'path': relative, 'closure': group,
+                                           'reviewed_sha256': expected, 'merged_sha256': expected,
+                                           'merged_git_blob_sha1': blob,
+                                           'working_source_identical_to_merge': True,
+                                           'matches_reviewed_source': True,
+                                           'reviewed_object_path': str(depdir / (name + '.olean')),
+                                           'reviewed_object_sha256': item['olean_sha256'],
+                                           'reviewed_object_reused': name not in ROOTS}
+                if name not in ROOTS:
+                    report['dependency_objects_reused'][name] = {
+                        'path': str(depdir / (name + '.olean')), 'sha256': item['olean_sha256'],
+                        'review_receipt': report['independently_clean_closures'][group]['receipt']}
+        assert len(report['sources']) == 23 and len(report['dependency_objects_reused']) == 20
+        env = os.environ.copy()
+        for key in ['LEAN_PATH', 'LEAN_SRC_PATH', 'LEAN_SYSROOT', 'LD_PRELOAD', 'LD_LIBRARY_PATH']:
+            env.pop(key, None)
+        env['LEAN_PATH'] = ':'.join(map(str, [BUILD, cert_build, radix_build]))
+        report['LEAN_PATH'] = env['LEAN_PATH']
+        report['dependency_directories_modified'] = False
+
+        def run(label, args):
+            log = logs / (label + '.log')
+            argv = [str(LEAN), *args]
+            started = time.monotonic()
+            with log.open('w') as handle:
+                p = subprocess.run(argv, cwd=BUILD, env=env, stdout=handle, stderr=subprocess.STDOUT, text=True)
+            report['commands'].append({'label': label, 'argv': argv, 'cwd': str(BUILD),
+                                       'exit_code': p.returncode, 'seconds': round(time.monotonic() - started, 3),
+                                       'log': str(log.relative_to(HERE)), 'log_sha256': sha(log)})
+            save()
+            print(label, 'exit', p.returncode, flush=True)
+            assert p.returncode == 0, label
+            return log.read_text()
+
+        version = run('version', ['--version']).strip()
+        assert version == cert['version'] == radix['version']
+        assert report['runtime_launcher_sha256'] == cert['compiler_launcher_sha256']
+        assert report['official_compiler_sha256'] == '92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023'
+        report['version'] = version
+        for name in ROOTS:
+            source = REPO / report['sources'][name]['path']
+            (BUILD / (name + '.lean')).write_bytes(source.read_bytes())
+            run(name, ['-j1', '-DElab.async=false', '-o', name + '.olean', name + '.lean'])
+            report['sources'][name]['integration_olean_sha256'] = sha(BUILD / (name + '.olean'))
+        resolution_expectations = {
+            'CertificateChecked': [cert_build / 'CertificateSaturation.olean', cert_build / 'AdmissibleHeads.olean'],
+            'All': [cert_build / 'CertificateConsequences.olean', cert_build / 'CertificateSaturation.olean', BUILD / 'CertificateChecked.olean'],
+            'RadixExterior': [radix_build / 'ExteriorCoverage.olean'],
+        }
+        for name, expected_paths in resolution_expectations.items():
+            deps = run(name + '-deps', ['--deps', name + '.lean'])
+            assert all(str(path) in deps for path in expected_paths), (name, deps)
+        checked_names = ['Agent110.Checked.period_at_least_four', 'Agent110.Checked.six_phase_constraints',
+                         'Agent110.Checked.saturated_period_constraints']
+        radix_names = [d['name'] for d in radix['sources']['RadixExterior']['declarations'] if d['kind'] == 'theorem']
+        names = checked_names + radix_names
+        assert len(names) == len(set(names)) == 18
+        audit = 'import All\nimport RadixExterior\n' + ''.join('#print axioms ' + name + '\n' for name in names)
+        (BUILD / 'EndpointAudit.lean').write_text(audit)
+        (HERE / 'EndpointAudit.lean').write_text(audit)
+        output = run('EndpointAudit', ['-j1', '-DElab.async=false', 'EndpointAudit.lean'])
+        deps = run('EndpointAudit-deps', ['--deps', 'EndpointAudit.lean'])
+        assert str(BUILD / 'All.olean') in deps and str(BUILD / 'RadixExterior.olean') in deps
+        rows = re.findall(r"^'([^\n]+)' depends on axioms:\s*\[([^\]]*)\]", output, re.M)
+        rows = [(name, sorted(a.strip() for a in values.split(',') if a.strip())) for name, values in rows]
+        rows += [(name, []) for name in re.findall(r"^'([^\n]+)' does not depend on any axioms", output, re.M)]
+        counts = Counter(name for name, _ in rows)
+        assert set(counts) == set(names) and set(counts.values()) == {1}
+        assert all(set(axioms) <= {'propext', 'Classical.choice', 'Quot.sound'} for _, axioms in rows)
+        for name, axioms in rows:
+            reviewed = cert['axiom_audit'][name]['axioms'] if name in checked_names else radix['axiom_audit'][name]
+            assert set(axioms) == set(reviewed)
+        report['endpoint_axiom_audit'] = dict(sorted(rows))
+        types = checked_names + ['Agent110.RadixExterior.no_autonomous_radix_factor',
+                                'Agent110.RadixExterior.no_overflow_strict_radix_observable',
+                                'Agent110.RadixExterior.no_overflow_strict_radix_potential',
+                                'Agent110.RadixExterior.witness_not_state_return']
+        type_source = 'import All\nimport RadixExterior\nset_option pp.width 120\n' + ''.join('#check ' + name + '\n' for name in types)
+        (BUILD / 'EndpointTypes.lean').write_text(type_source)
+        (HERE / 'EndpointTypes.lean').write_text(type_source)
+        run('EndpointTypes', ['-j1', '-DElab.async=false', 'EndpointTypes.lean'])
+        # Preserve the original clean closure pins and recheck all merged sources / inputs after use.
+        assert sha(CERT_RECEIPT) == CERT_RECEIPT_SHA
+        assert sha(RADIX_RECEIPT) == report['independently_clean_closures']['radix_4']['sha256']
+        for name, item in report['sources'].items():
+            assert sha(REPO / item['path']) == item['reviewed_sha256']
+            assert sha(Path(item['reviewed_object_path'])) == item['reviewed_object_sha256']
+        report.update(status='PASS', completed_utc=datetime.now(timezone.utc).isoformat(),
+                      compared_source_count=23, certificate_source_count=19, radix_source_count=4,
+                      recompiled_root_count=3, reused_dependency_object_count=20,
+                      endpoint_axiom_count=18, all_reviewed_source_pins_match_merge=True,
+                      reviewed_dependencies_unchanged_after_use=True,
+                      signed_operator_identity='/root/runtime_audit — merged-tree integration check')
+        save()
+        print('PASS: 19+4 source pins; 3 recompiled roots; 20 explicitly reused reviewed dependency objects; 18 endpoint axiom checks', flush=True)
+    except Exception as exc:
+        report.update(status='FAILED', error=repr(exc))
+        save()
+        raise
+
+
+if __name__ == '__main__':
+    main()
