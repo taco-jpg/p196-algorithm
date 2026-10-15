@@ -343,3 +343,15 @@ source/log members and exact interruption status; it is not a successful full
 verification report. The complementary-bulk gzip retains all 31,360 controls.
 Both archives have compressed and recovered hashes and recovery commands in
 the inventory. No incomplete numerical Lean endpoint is promoted to a result.
+
+## Seven-column prefix certificates
+
+From the repository root:
+
+```sh
+cd proofs/contributions/2026-10-15-seven-column-prefix
+sha256sum -c SHA256SUMS.txt
+python3 verify_certificates.py
+```
+
+The Python checker uses only the standard library and recomputes all predecessors, closure, ranks, short boundaries and the recorded cross-checks. The all-length interpretation also requires the written covering argument. To regenerate, run `python3 generate_certificates.py` and then the checker. The local README gives the separate C++ replay command. `development/` preserves historical scripts and original workspace assumptions; it is not the default replay entry point. No Lean formalization or full P196 proof is claimed.
