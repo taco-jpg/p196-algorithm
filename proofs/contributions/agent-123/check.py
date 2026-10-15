@@ -12,6 +12,7 @@ SOURCES=[
  'proofs/research/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean',
  'proofs/research/main_existence_attempt/continuation_pass/lean/IntrinsicSeam.lean',
  'proofs/contributions/agent-123/seam-mask-realizability/SeamMaskRealizability.lean',
+ 'proofs/contributions/agent-123/seam-mask-realizability/SeamMaskMass.lean',
 ]
 lean=str(Path(sys.argv[1]).resolve())
 version=subprocess.check_output([lean,'--version'],text=True).strip()
@@ -23,8 +24,10 @@ for rel in SOURCES:
  p=ROOT/rel
  records['sources'][rel]=hashlib.sha256(p.read_bytes()).hexdigest()
  print('SOURCE',rel,records['sources'][rel],flush=True)
-exports=re.findall(r'^theorem\s+([A-Za-z0-9_]+)',(ROOT/SOURCES[-1]).read_text(),re.M)
-audit='import SeamMaskRealizability\n'+''.join('#print axioms Agent123.SeamMasks.'+x+'\n' for x in exports)
+exports=[]
+for rel in SOURCES[4:]:
+ exports+=re.findall(r'^theorem\s+([A-Za-z0-9_]+)',(ROOT/rel).read_text(),re.M)
+audit='import SeamMaskMass\n'+''.join('#print axioms Agent123.SeamMasks.'+x+'\n' for x in exports)
 (EVIDENCE/'Audit.lean').write_text(audit)
 try:
  with tempfile.TemporaryDirectory(prefix='agent123-clean-') as tmp:
