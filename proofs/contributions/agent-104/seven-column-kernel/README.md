@@ -22,3 +22,9 @@ Connect actual arbitrary-width digit dynamics to the executable inverse relation
 The standalone base dependency is `proofs/research/continuation/LychrelDigitSums.lean`, SHA-256 `ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57`. Lean is official `leanprover/lean4:v4.19.0`; this host uses the retained executable-path compatibility shim, without changing Lean source, binary, elaborator, or kernel. Runtime installations and compiled objects are reproducible infrastructure and excluded from Git.
 
 No decimal Lychrel witness, proof for all palindromes, or complete P196 proof is claimed. Earlier written and computational repository results retain their previous evidence labels.
+
+## Second compiled checkpoint
+
+`PrefixInverse.lean` now proves full local relation/enumerator equivalence, including a positive target-exterior guard. `ActualPrefix.lean` proves actual finite-word projection with the actual inner carry, including overlapping prefixes, and connects it directly to that inverse enumeration. `PrefixCertificate.lean` proves sound rank/closure checking over complete executable predecessors, without trusting a generator, tree ordering, or an encoded key alone. Its concrete 739 table is still in progress.
+
+`TerminalObstruction.lean` combines the new actual projection and a zero-axiom kernel inverse check to prove that no positive-time actual pair word of width at least three starts with pair sums `[1,9,6]`. Short source widths are proved separately by symmetry. These pair sums are not the digits of the integer 196. This formalizes the final local obstruction used by the written739 argument, while the entire backward chain still needs its concrete certificate.

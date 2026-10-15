@@ -1,0 +1,11 @@
+proofs/contributions/agent-104/seven-column-kernel/ActualPrefix.lean:146:10: error: type mismatch, term
+  Eq.symm he
+after simplification has type
+  ((q (1 + i) + carry q (1 + i)) % 10 +
+      if L - 1 - i < L then (q (L - 1 - i) + carry q (L - 1 - i)) % 10 else carry q L) =
+    nextColumns q L (1 + i) : Prop
+but is expected to have type
+  (q (1 + i) + carry q (1 + i)) % 10 + (q (L - 1 - i) + carry q (L - 1 - i)) % 10 = nextColumns q L (1 + i) : Prop
+'SevenColumnProjection.highDigits_segment' depends on axioms: [propext, Quot.sound]
+'SevenColumnProjection.actual_forwardPrefix' depends on axioms: [propext, sorryAx, Quot.sound]
+'SevenColumnProjection.actual_forward_admitted' depends on axioms: [propext, sorryAx, Quot.sound]
