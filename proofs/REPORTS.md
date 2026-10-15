@@ -224,3 +224,11 @@ Every original written research report, proof note and manuscript source retaine
 - [2026-10-14-collision-progress.md](coordination/2026-10-14-collision-progress.md)
 - [2026-10-14-active-seam-safety.md](coordination/2026-10-14-active-seam-safety.md)
 - [2026-10-14-renewal-complete.md](coordination/2026-10-14-renewal-complete.md)
+
+## Refined component-bound reports
+
+- [COMPONENT_SPECIFIC_BOUND.md](contributions/2026-10-14-component-specific-bound/COMPONENT_SPECIFIC_BOUND.md)
+- [README.md](contributions/2026-10-14-lift-hierarchy-formal/README.md)
+- [README.md](contributions/2026-10-14-component-hierarchy-formal/README.md)
+- [COMPONENT_BOUNDS_INDEX.md](contributions/COMPONENT_BOUNDS_INDEX.md)
+- [2026-10-14-component-bounds-results.md](coordination/2026-10-14-component-bounds-results.md)

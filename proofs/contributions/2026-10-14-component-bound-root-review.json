@@ -1,0 +1,39 @@
+{
+  "status": "PASS_ROOT_SOURCE_AND_MATHEMATICAL_REVIEW",
+  "date": "2026-10-14",
+  "reviewer": "root",
+  "claims": {
+    "broader44": "R<=90+max(0,ceil((14-L)/3))<=94 for admissible L>=2; all three return branches may switch freely.",
+    "scalar7": "R<=min(98,94+max(0,ceil((14-L)/3))) for admissible L>=1, assuming every phase of outer sequence(4,8,16,7,15,6,13)."
+  },
+  "review_basis": [
+    "Read complete component_bound.py and theorem note; checked cyclic SCC of any induced job lies in global retained graph, so every actual constant-component interval lifts into exactly its saved child restriction.",
+    "Read complete LiftHierarchy.lean and ComponentHierarchy.lean. Restriction-closed actual-path families, preserved vertex counts and strict decreasing job height supply the necessary induction, without assuming all abstract paths lift.",
+    "Independent audit checks31jobs,128234vertex records,212453labelededges, all child sets/projections and SCC ranks.",
+    "Checked659vertices=>94scalar periods and636vertices=>90broader returns at width>=14; growth3 yields at most4 warm-up blocks at L>=2; unique width1 scalar word fails at time4.",
+    "Checked exact generic formal source hashes against fresh successful builds."
+  ],
+  "scope_limits": [
+    "Generic formal hierarchy theorems are checked; numerical job tables and actual projection premises are supplied by written proofs and finite certificates, not claimed as a full Lean instantiation.",
+    "Conservative bounds, not sharp. Leaving a clock does not imply palindrome occurrence.",
+    "No proof of196 or decimal Lychrel existence."
+  ],
+  "files": {
+    "proofs/contributions/2026-10-14-component-hierarchy-formal/ComponentHierarchy.lean": "2ed7b7ed8618a5b709e5aea8276141e2e88ef88855a6371adbffe0587243ee37",
+    "proofs/contributions/2026-10-14-component-hierarchy-formal/README.md": "e9f0698bac7c3d101b7903f3f90e6fbe2480a3062508f4eb07d57dc6ed8e313c",
+    "proofs/contributions/2026-10-14-component-hierarchy-formal/check.py": "8923d461cc5fc0630818f9d5f5ccb64bb8cf26e88e9dc2bacae65e07eb74adbf",
+    "proofs/contributions/2026-10-14-component-hierarchy-formal/compile.log": "afb130467f829843a3f543c7d4a8257fb450889a36f8c1633b4c9bee5631d48c",
+    "proofs/contributions/2026-10-14-component-hierarchy-formal/verification.json": "be530ba739de2a8820a83e79baf078bfe3e3f3c4c438c72ca45e2d9740af98fa",
+    "proofs/contributions/2026-10-14-component-specific-bound/COMPONENT_SPECIFIC_BOUND.md": "1771a606258ccc6983d42c754f966ed886f78cb85af2aba6f1faff9f971afc04",
+    "proofs/contributions/2026-10-14-component-specific-bound/component_bound.json": "59300b7f4c86dbf570119f14d2362501c9fb8b8b1d87627c4cd7a1339ba9b2b5",
+    "proofs/contributions/2026-10-14-component-specific-bound/component_bound.py": "a14d8b04fe5a9e85cd5914d73e70e44d29430cac935db88a25db3150881fab31",
+    "proofs/contributions/2026-10-14-component-specific-bound/component_certificates.json.gz": "ff7a70ee2a6ed677cb9176e212dc0a69acd14eed30425a42b543d7a50823b47e",
+    "proofs/contributions/2026-10-14-component-specific-bound/independent_component_audit.json": "87c1b09d75785bb7ac8d3da336618078d734d6d702eaa1ffd844300489ae089a",
+    "proofs/contributions/2026-10-14-component-specific-bound/independent_component_audit.py": "6742a8d9ec08165e1ccb624d77d4fc4ae1626495706dc70f429f3c5cb76b3c3e",
+    "proofs/contributions/2026-10-14-lift-hierarchy-formal/LiftHierarchy.lean": "3d209e62c358414cf6b0f7f02939a4a740a73b8a3491a2b35e01657ed234383a",
+    "proofs/contributions/2026-10-14-lift-hierarchy-formal/README.md": "fea271aa7ce8187afeacedf1ecde1ff0c1e8cdac0fb51303ae021c02a6954ec2",
+    "proofs/contributions/2026-10-14-lift-hierarchy-formal/check.py": "79f639f9b5d0a65c4ed3d97700170d8b071bf160a2149876bdef5582be1d1e91",
+    "proofs/contributions/2026-10-14-lift-hierarchy-formal/compile.log": "afdfe56b51f47f069a828e7823ec9987dd36761a8e925a4fd3a7151312ce4072",
+    "proofs/contributions/2026-10-14-lift-hierarchy-formal/verification.json": "9e1ae6d642c5456a584b3024a1f27fd8df8d7df9465e4e1b50e6a41934caf4ac"
+  }
+}

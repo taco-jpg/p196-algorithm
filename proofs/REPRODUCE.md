@@ -209,3 +209,13 @@ python3 -B proofs/research/main_existence_attempt/renewal_pass/external_review/c
 The language checkers use the retained cross-pass NFA, observer tables, collision helpers and original tail certificates at their original relative paths. The complete language exploration, all 5,204 affine comparisons, 2,737 seam controls, 58,221 partition controls and 2,495 active-safety controls are retained in lossless gzip archives. Their source generators, exact configurations, failed cases and independent audit records accompany them. Consult each branch's STATUS report before optional regeneration; no capped search must be rerun to read the established claim.
 
 The raw-symmetry and incoming-carry modules prove the specified actual decimal/local statements. The full concatenated polynomial identity, generalized twenty-core classification and combined independent-closure safety corollary remain written proofs. The 22-seed/196 join search remains a finite 1,500-addition experiment. The external 10,000-state trace remains preserved with its original full replay record; this publication checks unchanged Git-object identity for its five large parts rather than claiming a new local trace replay.
+
+## Refined component-specific bounds
+
+The [latest bound handoff](coordination/2026-10-14-component-bounds-results.md)
+lists independent replay of all 31 induced jobs and both fresh generic
+Lean hierarchy builds. The complete job certificate preserves every
+child restriction, induced edge, projection and weighted rank. Existing
+scalar/broader graph checkpoints are read unchanged. The 18- and
+19-declaration formal audit totals include the same fifteen published
+weighted-path prerequisites; this package adds seven declarations.

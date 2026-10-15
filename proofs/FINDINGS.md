@@ -132,3 +132,11 @@ reproduction commands, source identities and retained limitations.
 | Independent review of concurrent evidence | Root rebuilt and audited the earlier external 24 safe-prefix/density declarations and replayed the stated separation/density controls. The later collision and r>=5078 finite-family reports were read; the other stream's full 10,000-state audit is preserved without claiming a new local full-trace replay. | [Review scope](research/main_existence_attempt/renewal_pass/external_review/README.md), [root review](research/main_existence_attempt/renewal_pass/ROOT_REVIEW.md) |
 
 The completed renewal modules total 135 supporting theorem declarations (49+16+28+42), each with its exact source hash and audit. The count does not imply 135 independent major theorems. No indefinitely repeatable safe return, positive closed invariant or decimal Lychrel witness has been supplied.
+
+## Refined component-specific clock bounds
+
+| Hypothesis | New bound | Evidence |
+|---|---|---|
+| All three seven-step (4,4) return branches, arbitrary changes, initial L >= 2 | R <= 90 + max(0,ceil((14-L)/3)) <= 94 | [Complete proof](contributions/2026-10-14-component-specific-bound/COMPONENT_SPECIFIC_BOUND.md) |
+| Full outer sequence (4,8,16,7,15,6,13), initial L >= 1 | R <= min(98,94+max(0,ceil((14-L)/3))) | [Full scope and evidence](coordination/2026-10-14-component-bounds-results.md) |
+| Exact child-job recursion | 31 independently checked jobs, 128,234 vertex records and 212,453 edges; seven new generic formal declarations. Numerical application remains separately certified. | [Root review](contributions/2026-10-14-component-bound-root-review.json), [formal recursion](contributions/2026-10-14-component-hierarchy-formal/README.md) |

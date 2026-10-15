@@ -6,6 +6,16 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Refined clock bounds: 94 returns and 98 periods — 14 October 2026
+
+The [new component-specific proof](coordination/2026-10-14-component-bounds-results.md)
+improves the all-branch seven-step (4,4) return bound from 232 to 94 and
+the full scalar-clock period bound from 236 to 98. It uses exact child
+subgraphs and checks all finite transients. Complete independent job
+certificates and seven new generic Lean composition theorems are retained.
+These conservative exclusions retain their exact clock hypotheses and
+do not resolve 196 or decimal Lychrel existence.
+
 ## Full scalar clock obstruction — 14 October 2026
 
 The [new scalar theorem](coordination/2026-10-14-scalar-clock-results.md)
