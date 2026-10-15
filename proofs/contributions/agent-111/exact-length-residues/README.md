@@ -60,6 +60,11 @@ additional [endpoint review](review/digits-author-saturation.md).
 [ACCEPTANCE.json](review/ACCEPTANCE.json) records that coverage and the exact
 source pins. Main-branch integration is a separate coordination step.
 
+Both [official Linux CI runs](review/official-linux/CI.json) also passed the
+same 13-module, 1004-theorem audit with an empty `LD_PRELOAD` and identical
+mathematical source hashes. Their complete audit archives, decoded file
+inventories, checksums, and recovery commands are retained in that directory.
+
 From the repository root, use fresh, separate output directories:
 
 ```sh
