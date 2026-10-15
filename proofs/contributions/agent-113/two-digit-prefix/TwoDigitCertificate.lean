@@ -96,7 +96,8 @@ structure Cert where
   b : Nat
   layers : List Nat
 
-/-- The certified depth bound: the number of nonempty-by-construction layers. -/
+/-- The certified depth bound: the number of listed layers. Non-emptiness of
+the layers is not checked; exactness of a bound is a separate theorem. -/
 def Cert.h (C : Cert) : Nat := C.layers.length
 
 def Cert.inLayer (C : Cert) (r : Nat) (w : Triple) : Bool :=

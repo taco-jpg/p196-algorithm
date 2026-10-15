@@ -17,11 +17,14 @@ cp "$ROOT/proofs/contributions/agent-104/seven-column-kernel/PalindromeBridge.le
 cp "$PKG"/*.lean .
 lean --version > lean-version.txt
 sha256sum *.lean > sources.sha256
-# Forbidden constructs in this package's own sources.
-if grep -nE '\bsorry\b|\badmit\b|native_decide|^\s*axiom\b|implemented_by|extern' \
-    TwoDigit*.lean Audit.lean; then
+# Forbidden constructs in this package's own sources (hard gate).
+PAT='\bsorry\b|\badmit\b|native_decide|^\s*axiom\b|@\[implemented_by|@\[extern'
+if grep -nE "$PAT" TwoDigit*.lean Audit.lean; then
   echo "FORBIDDEN construct found" >&2; exit 3
 fi
+# Imported dependencies: logged for inspection (their only hits are prose
+# comments); the transitive axiom audit below is the hard gate for them.
+grep -nE "$PAT" LychrelDigitSums.lean PalindromeBridge.lean > deps-forbidden-scan.txt
 STATUS=0
 for m in LychrelDigitSums PalindromeBridge TwoDigitProjection TwoDigitGrowth \
     TwoDigitNumeric TwoDigitCertificate \

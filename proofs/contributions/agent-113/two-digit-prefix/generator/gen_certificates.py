@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the thirteen two-digit-prefix layer certificates (Agent #113).
 
-The layer semantics mirror Agent113.TwoDigit.Cert.check exactly:
+The layer semantics mirror Agent113.TwoDigit.Cert.Checked exactly:
   layer 0     = {(a, b, c) : 0 <= c <= 9}
   layer 1     = {w in box : exists e in {0,1}, topT w e = 0 and nextT w e in layer 0}
   layer r + 1 = {w in box : exists e in {0,1}, nextT w e in layer r}      (r >= 1)

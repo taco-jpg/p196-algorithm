@@ -35,7 +35,8 @@ This module adds
 * `no_196_thirteen`: no state `orbit 196 t`, at any time `t`, is a palindrome
   beginning with any of the thirteen prefixes;
 * `sharp_*`: each bound is attained at a first palindrome (the written
-  witnesses), so the thirteen bounds are exact.
+  witnesses); `exact_depth_*` combines bound and witness, so each of the
+  thirteen bounds is the exact maximal ancestry depth of its family.
 
 This is a restricted-family exclusion. It does not prove that 196 is a
 Lychrel number, and it says nothing about palindromes with other prefixes.
@@ -177,44 +178,65 @@ theorem no_196_thirteen_arith (t k : Nat) (hpal : Palindrome (orbit 196 t)) :
 
 /-! ## Sharpness: every bound is attained at a first palindrome -/
 
-/-- `orbit R h` is a palindrome beginning with `a, b`, and no earlier state
-is a palindrome. -/
+/-- From the positive start `R`, `orbit R h` is a palindrome beginning with
+`a, b`, and no earlier state is a palindrome. -/
 def SharpAt (a b R h k : Nat) : Prop :=
-  PalindromeStartsTwo a b (orbit R h) ∧ (∀ j, j < h → ¬ Palindrome (orbit R j)) ∧
-    orbit R h / 10 ^ k = 10 * a + b
+  0 < R ∧ PalindromeStartsTwo a b (orbit R h) ∧
+    (∀ j, j < h → ¬ Palindrome (orbit R j)) ∧ orbit R h / 10 ^ k = 10 * a + b
 
-theorem sharp_of_checks (a b R h k : Nat)
+theorem sharp_of_checks (a b R h k : Nat) (hR : 0 < R)
     (ha : 1 ≤ a ∧ a ≤ 9 ∧ b ≤ 9)
     (hk : orbit R h / 10 ^ k = 10 * a + b) (hpal : Palindrome (orbit R h))
     (hfirst : ∀ j, j < h → ¬ Palindrome (orbit R j)) : SharpAt a b R h k :=
-  ⟨⟨hpal, (startsTwo_iff a b _).mpr ⟨ha.1, ha.2.1, ha.2.2, k, hk⟩⟩, hfirst, hk⟩
+  ⟨hR, ⟨hpal, (startsTwo_iff a b _).mpr ⟨ha.1, ha.2.1, ha.2.2, k, hk⟩⟩, hfirst, hk⟩
+
+/-- Exact maximal ancestry depth `h` for the prefix `a, b`: the bound holds
+for every positive start, and some positive start attains it with a first
+palindrome. -/
+def ExactDepth (a b h : Nat) : Prop :=
+  (∀ A P t, 0 < A → PalindromeStartsTwo a b P → orbit A t = P → t ≤ h) ∧
+    ∃ R k, SharpAt a b R h k
 
 theorem sharp_10 : SharpAt 1 0 100 1 1 :=
-  sharp_of_checks 1 0 100 1 1 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 1 0 100 1 1 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_20 : SharpAt 2 0 1005000 2 5 :=
-  sharp_of_checks 2 0 1005000 2 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 2 0 1005000 2 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_32 : SharpAt 3 2 12090 2 3 :=
-  sharp_of_checks 3 2 12090 2 3 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 3 2 12090 2 3 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_40 : SharpAt 4 0 1008000 3 5 :=
-  sharp_of_checks 4 0 1008000 3 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 4 0 1008000 3 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_41 : SharpAt 4 1 1008400 3 5 :=
-  sharp_of_checks 4 1 1008400 3 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 4 1 1008400 3 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_60 : SharpAt 6 0 1103090 3 5 :=
-  sharp_of_checks 6 0 1103090 3 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 6 0 1103090 3 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_64 : SharpAt 6 4 1203090 3 5 :=
-  sharp_of_checks 6 4 1203090 3 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 6 4 1203090 3 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_65 : SharpAt 6 5 1203290 6 6 :=
-  sharp_of_checks 6 5 1203290 6 6 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 6 5 1203290 6 6 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_76 : SharpAt 7 6 17590 3 3 :=
-  sharp_of_checks 7 6 17590 3 3 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 7 6 17590 3 3 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_80 : SharpAt 8 0 1009000 4 5 :=
-  sharp_of_checks 8 0 1009000 4 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 8 0 1009000 4 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_81 : SharpAt 8 1 1009200 4 5 :=
-  sharp_of_checks 8 1 1009200 4 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 8 1 1009200 4 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_82 : SharpAt 8 2 1006500 4 5 :=
-  sharp_of_checks 8 2 1006500 4 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 8 2 1006500 4 5 (by decide) (by decide) (by decide) (by decide) (by decide)
 theorem sharp_83 : SharpAt 8 3 1009400 4 5 :=
-  sharp_of_checks 8 3 1009400 4 5 (by decide) (by decide) (by decide) (by decide)
+  sharp_of_checks 8 3 1009400 4 5 (by decide) (by decide) (by decide) (by decide) (by decide)
+
+theorem exact_depth_10 : ExactDepth 1 0 1 := ⟨ancestry_bound_10, _, _, sharp_10⟩
+theorem exact_depth_20 : ExactDepth 2 0 2 := ⟨ancestry_bound_20, _, _, sharp_20⟩
+theorem exact_depth_32 : ExactDepth 3 2 2 := ⟨ancestry_bound_32, _, _, sharp_32⟩
+theorem exact_depth_40 : ExactDepth 4 0 3 := ⟨ancestry_bound_40, _, _, sharp_40⟩
+theorem exact_depth_41 : ExactDepth 4 1 3 := ⟨ancestry_bound_41, _, _, sharp_41⟩
+theorem exact_depth_60 : ExactDepth 6 0 3 := ⟨ancestry_bound_60, _, _, sharp_60⟩
+theorem exact_depth_64 : ExactDepth 6 4 3 := ⟨ancestry_bound_64, _, _, sharp_64⟩
+theorem exact_depth_65 : ExactDepth 6 5 6 := ⟨ancestry_bound_65, _, _, sharp_65⟩
+theorem exact_depth_76 : ExactDepth 7 6 3 := ⟨ancestry_bound_76, _, _, sharp_76⟩
+theorem exact_depth_80 : ExactDepth 8 0 4 := ⟨ancestry_bound_80, _, _, sharp_80⟩
+theorem exact_depth_81 : ExactDepth 8 1 4 := ⟨ancestry_bound_81, _, _, sharp_81⟩
+theorem exact_depth_82 : ExactDepth 8 2 4 := ⟨ancestry_bound_82, _, _, sharp_82⟩
+theorem exact_depth_83 : ExactDepth 8 3 4 := ⟨ancestry_bound_83, _, _, sharp_83⟩
 
 #print axioms startsTwo_iff
 #print axioms no_196_thirteen
@@ -232,5 +254,6 @@ theorem sharp_83 : SharpAt 8 3 1009400 4 5 :=
 #print axioms sharp_81
 #print axioms sharp_82
 #print axioms sharp_83
+#print axioms exact_depth_65
 
 end Agent113.TwoDigit
