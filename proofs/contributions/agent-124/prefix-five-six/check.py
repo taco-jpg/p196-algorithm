@@ -44,9 +44,10 @@ BASE = [CORE,
         A104 / "ShortBoundary.lean",
         A104 / "certificate/LongRowsBase.lean", A104 / "certificate/FastRowsBase.lean"]
 MINE = ["Agent124PrefixK", "Agent124FastPred", "Agent124PrefixR", "Agent124CodeCert", "Agent124ShortSplit",
-        "Agent124CodeRange", "Agent124LeadOne", "Agent124PrefixL"]
+        "Agent124CodeRange", "Agent124LeadOne", "Agent124PrefixL", "Agent124Forward"]
 DEFAULT_CERTS = ("certificate/k5,certificate/k6,../four-digit-refinements/certificate/f4,"
-                 "../four-digit-refinements/certificate/f5,../four-digit-refinements/certificate/f6")
+                 "../four-digit-refinements/certificate/f5,../four-digit-refinements/certificate/f6,"
+                 "../forward-invariant-196/certificate/w3,../forward-invariant-196/certificate/w5")
 SUMMARIES = ["Agent124PrefixSummary.lean", "../four-digit-refinements/Agent124FourDigitSummary.lean"]
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = re.compile(r"(?<![\w.'])(sorry|admit|native_decide|sorryAx|implemented_by|extern|"
