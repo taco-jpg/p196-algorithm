@@ -37,6 +37,9 @@ BASE = [
     'proofs/agent4/prefix_growth/PrefixModel.lean',
     'proofs/agent4/prefix_growth/SaturationCertificate.lean',
     'proofs/agent4/prefix_growth/SaturationTheorem.lean',
+    'proofs/contributions/agent-110/review-agent112/source_snapshots/AdmissibleCenters.lean',
+    'proofs/contributions/agent-110/review-agent112/source_snapshots/SymbolicGrowth.lean',
+    'proofs/contributions/agent-110/review-agent112/source_snapshots/AdmissibleHeads.lean',
 ]
 
 

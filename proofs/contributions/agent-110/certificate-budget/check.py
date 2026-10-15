@@ -17,6 +17,6 @@ cmd = [sys.executable, str(checker), '--repo', str(repo), '--lean', a.lean,
        '--build', a.build, '--evidence', a.evidence]
 for name in ['CertificateAccounting', 'CertificateCharge', 'CertificateCarryBudget',
              'CertificatePhases', 'CertificateConsequences', 'CertificatePrefix',
-             'CertificateSaturation', 'All']:
+             'CertificateSaturation', 'CertificateChecked', 'All']:
     cmd.extend(['--source', str((here / (name + '.lean')).relative_to(repo))])
 subprocess.run(cmd, check=True)
