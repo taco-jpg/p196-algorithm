@@ -5,6 +5,18 @@ proof that 196 never reaches any palindrome. The complete ordinary-number
 application additionally uses the separately proved projection, short boundary,
 and palindrome bridge.
 
+Current status: **INDEPENDENTLY-REVIEWED**. All four concrete assemblies
+(`AllRows739`, `Initial739`, `Short739`, `Conclusion739`) compiled from fresh
+source in the complete 383-module independent build at source
+`957efa326b4b980391046598a0143cb7a7060242`. The final ordinary-number ancestry
+and orbit-exclusion theorems have no remaining finite-certificate hypotheses.
+Their transitive axioms are exactly `propext`, `Classical.choice`, and
+`Quot.sound`. The complete audit covered 7,469 compiled theorem constants, with no
+forbidden transitive axiom. Independent semantic review and exact-type
+endpoint recompilation also passed; see `../review-final-clean/` and
+`../review-final/acceptance.json`. Integration remains pending. The earlier
+WIP and resource-failure records below are historical.
+
 ## Trusted logical interface
 
 `../PrefixCertificate.lean` proves that complete predecessor enumeration plus
@@ -36,16 +48,17 @@ implement `SevenColumn.Certificate739.ranks` and `rank`.
 `generate_rank739.py` emits these modules, four exact pilot rows, and the layout
 record. `generate_checks739.py` emits 256 row modules, each checking at most four
 leaf blocks of at most 64 nodes plus four internal nodes. `AllRows739` assembles
-all 58,501 obligations. The initial set is checked in 100 blocks of 100 indices;
+all 58,501 obligations. The initial set is checked in 10 blocks of 1,000 indices;
 `Initial739` assembles the 10,000 long targets and the one short target with
-initial rank at most 38. Generation is not verification: a final successful
-kernel build of each assembly is required before claiming those finite results.
+initial rank at most 38. Generation is not verification: the successful kernel
+assembly logs, rather than generated source counts, establish completion of
+this first build.
 
 ## Resource controls and retained attempts
 
 Lean version: 4.19.0. `run_lean.py` records complete compiler output, command,
 timeout, address-space cap, elapsed time, and peak resident memory. It uses one
-Lean worker (`-j 1`); default per-module limits are 120 seconds and 6 GiB address
+Lean worker (`-j 1`); default per-module limits were initially 120 seconds and 6 GiB address
 space. Build outputs are reproducible infrastructure outside this source folder.
 
 The original monolithic data build failed under a 2 GiB address-space cap.
@@ -56,11 +69,11 @@ All failure logs are retained; they do not certify any finite row. Subsequent
 successful split-data logs record the revised settings.
 
 The finite proofs use kernel `decide` only. Neither `native_decide` nor
-`Lean.ofReduceBool` is allowed. Generic soundness axiom audits report only
-`propext` and `Quot.sound`; concrete finite proof audits are retained in the
+`Lean.ofReduceBool` is allowed. Generic soundness axiom audits are contained in
+`propext`, `Classical.choice`, and `Quot.sound`; concrete finite proof audits are retained in the
 corresponding successful build logs.
 
-## Active kernel-reduction checkpoint
+## Earlier kernel-reduction checkpoint
 
 The four representative pilot rows and initial row batches have compiled. The
 ordinary decide pilot took about 18.27 seconds; the same batch with `decide +kernel`
@@ -72,5 +85,20 @@ benefit, so the main assembly keeps the simpler direct checked-row statements.
 
 `build_rows.py` limits execution to at most two independent single-worker compiler
 processes. `generate_short_checks.py` emits the separate exact short-input cases.
-These sources are WIP until their full assemblies compile and their axiom reports
-pass. See per-module logs; do not infer completion from generated file counts.
+At that earlier checkpoint the full assemblies were WIP. Their successful
+first assembly logs are now retained as `AllRows739-aggregate01.log`,
+`Initial739-kernel01.log`, `Short739-kernel01.log`, and
+`Conclusion739-aggregate01.log`. The later independent fresh build and exact endpoint review now pass;
+those final records are retained separately and do not rewrite these earlier logs.
+
+## Memory refinement
+
+Dense unsplit row blocks 57, 58, 85 and 97 exhausted their process or host memory
+budget. Their sources and logs are retained. `split_row_batches.py` replaces only
+their proof decomposition: the original `checked_leaf` statements remain identical,
+but their components are established in modules of at most 14 concrete row checks.
+The wrapper assembles those checked lemmas against the same original tree.
+
+The runner now defaults to a 3.5 GiB address-space cap and shares two file-lock
+slots across row, short-boundary and initial-family workers. This avoids accidental
+extra concurrent compiler processes when multiple build queues are active.
