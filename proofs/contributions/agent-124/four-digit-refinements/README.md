@@ -28,7 +28,7 @@ contains such a palindrome.
 | Width | Classes | Certificate | Status |
 |---|---:|---|---|
 | k = 4 | 1,267 | `certificate/f4/`, 7,152 nodes, max rank 20 | **LEAN-CHECKED, dev build** |
-| k = 5 | 463 | 72,224 nodes (exploration) | WIP |
+| k = 5 | 463 | `certificate/f5/`, 72,224 nodes, max rank 47 | **LEAN-CHECKED, dev build** |
 | k = 6 | 100 | 324,781 nodes (exploration) | WIP |
 
 "Dev build": compiled with official Lean 4.19.0 (`6caaee842e94`) in a working
@@ -45,6 +45,12 @@ The 1,267 classes are split into seven lists `entries00` … `entries06`
 
 All 14 endpoints report exactly `propext`, `Classical.choice`, `Quot.sound`
 (`logs/f4/A124F4Final.log`). The largest ancestry bound in this batch is 21.
+
+### Five-column endpoints (namespace `Agent124.CertF5`, module `A124F5Final`)
+
+The 463 classes are in five lists `entries00` … `entries04` (100 per list),
+with the same two theorems per list. All 10 endpoints report exactly the three
+standard axioms (`logs/f5/A124F5Final.log`); the largest ancestry bound is 48.
 
 `PalStartsL pre P` (`Agent124PrefixL.lean` in `../prefix-five-six/`) is
 `Palindrome P` together with a canonical decimal representation of `P` of
