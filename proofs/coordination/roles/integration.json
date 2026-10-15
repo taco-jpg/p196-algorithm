@@ -6,10 +6,11 @@
   "status": "CLAIMED",
   "claim_base": "4bca2a2e43ea0c436da4c6db88a21e4444ca84bf",
   "claim_previous_blob": "7677269d2e541d9963cfd59461ddc56876f50786",
-  "last_activity": "2026-10-15T19:01:53Z",
+  "claim_commit": "5cef2a414ec88103ef35aa6d093b753e1f70cadf",
+  "last_activity": "2026-10-15T19:40:00Z",
   "starting_main": "b6f827418576027b1cff89746ee8077217963fce",
   "scope": "Bounded repository-wide contribution inventory, dependency-ordered reviewed integration, accepted-build reconciliation, and preservation mapping. No force push, no proof acceptance without exact-source evidence, no cleanup before preservation, and no production engine changes. Contributions arriving after the captured inventory belong to a separate delta queue.",
-  "claim_mechanism": "GitHub contents update using the exact previous integration-role blob SHA; read back ownership before any main mutation.",
+  "claim_mechanism": "GitHub contents update using exact previous integration-role blob SHA; read back ownership before main mutation.",
   "previous_release_record": {
     "owner": null,
     "task_id": "agent110-integrate-reviewed-budgets",
@@ -20,6 +21,18 @@
     "full_record_blob": "7677269d2e541d9963cfd59461ddc56876f50786",
     "release_reason": "PR39 scoped integration completed and remote tree verified. No further main update reserved. Next owner must fetch current main and serialize a new claim."
   },
-  "coordination_request": "Active researchers: publish exact-head checkpoints and avoid unnecessary shared-interface edits during this consolidation pass. This request does not assert that any independent session has stopped. Any dedicated Merger must use this same ownership record and a specifically acknowledged delegated slot, not mutate main concurrently.",
-  "delegated_merge_operator": null
+  "coordination_request": "Active researchers: publish exact-head checkpoints and minimize shared-interface edits. This request does not assert that any independent session stopped. Dedicated Merger must use this same role and an explicitly acknowledged delegated slot.",
+  "delegated_merge_operator": null,
+  "current_batch": {
+    "pull_request": 47,
+    "reviewed_head": "beedf5daf64a620948cd257665f08d15b260209e",
+    "reviewed_base": "b6f827418576027b1cff89746ee8077217963fce",
+    "combined_tree": "94269e2764e367145db2abdfa568306e4509b27c",
+    "independent_review_id": 5538895832,
+    "independent_review_commit": "f40e81aa8d428fbcb4784f4188d56a9bd5f4376e",
+    "verification": "20 fresh source modules PASS; all 2852 module-associated theorem constants audited, ordinary logical axioms only; finite controls supplementary; initial OOM failure retained",
+    "status": "READY_FOR_GUARDED_MERGE"
+  },
+  "durable_initial_archive": "archive/agent-1/20261015T1904Z at eef3ecc100ae1038f6556c1600b85bf0200914f6",
+  "known_baseline_blocker": "Legacy release manifest omits 478 tracked proof files including 132 Lean sources; release verifier does not detect this coverage gap. No global healthy-build claim."
 }
