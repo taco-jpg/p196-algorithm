@@ -1,5 +1,6 @@
-import sys, json
-sys.path.insert(0,'/home/claude/rev101')
+import sys, json, os
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'review-agent101-cap56'))
 from outer_ref import outer
 def path(c,B,cap):
     P=[(c,tuple(B))]
@@ -12,4 +13,4 @@ out={}
 for c,B in [(4,(3,16,8,15,0)),(4,(3,18,13,17,0)),(4,(3,18,13,14,15,1)),(8,(7,17,8,10,15,13,3))]:
     P=path(c,B,7); out[f"{c}:{B}"]=dict(steps=len(P)-1,path=[str(x) for x in P])
     print(c,B,"exit time",len(P)-1)
-json.dump(out,open('sharp_paths_cap7.json','w'),indent=1)
+json.dump(out,open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'sharp_paths_cap7.json'),'w'),indent=1)

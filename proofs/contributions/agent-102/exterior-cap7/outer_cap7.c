@@ -93,7 +93,9 @@ int main(void){
         uint64_t v=r; for(int i=0;i<CAP-1;i++){B[i]=v%19;v/=19;} B[CAP-1]=top;
         if(!valid(c,B,CAP))continue; ls++;
         if(step(c,B,CAP,&c2,Bp,&Lp))li++; else le++;
-        int t=follow_ro(c,B,CAP); lH[t]++;
+        int t=follow_ro(c,B,CAP);
+        if(t<0||t>255){fprintf(stderr,"exit time %d out of histogram range\n",t);exit(7);}
+        lH[t]++;
         if(t>lmax){lmax=t;lc=c;memcpy(lB,B,sizeof lB);}
       }
     }

@@ -1,5 +1,6 @@
 import sys, itertools, collections
-sys.path.insert(0,'/home/claude/rev101')
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'review-agent101-cap56'))
 from outer_ref import outer
 k=lambda x:1 if x>=10 else 0
 t=lambda x:x-9*k(x)
