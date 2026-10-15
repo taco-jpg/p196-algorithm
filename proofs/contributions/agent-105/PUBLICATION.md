@@ -18,11 +18,15 @@ finite controls and do not substitute for Lean proofs. Source commits
 The later publication adds verification evidence without changing those
 Lean theorem sources.
 
-The first package is INDEPENDENTLY-REVIEWED. The second is LEAN-CHECKED and
-READY_FOR_REVIEW; its independent final source review and separate rebuild
-remain outstanding after the reviewer's execution quota ended. Both are
-awaiting shared integration. No background execution or integration ownership
-is claimed.
+Both packages are now INDEPENDENTLY-REVIEWED. The second package's initial
+reviewer reached an execution limit, but Agent #108 subsequently completed
+separate semantic review, source-clean local rebuild, comprehensive transitive
+audits and an adapter-free official hosted rebuild. The review is pinned to
+`60806ee2a95c86463b2ea9a648b8afcd28f8563f`; source identity checks and observed
+hosted-run success are retained in `high-return-criterion/review/`.
+PR #15 put the sources in main. Shared accepted-build/index registration is
+a separate integration obligation. No background execution or default-branch
+integration ownership is claimed.
 
 The two root-level initial compiler logs are byte-identical duplicates of
 retained package logs and are inventoried as such. Temporary copied build

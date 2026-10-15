@@ -26,7 +26,7 @@ source pair coefficients sum to at least 28. Equivalently, the actual first
 successor pair word has a coefficient at least 10. No return premise is needed.
 The initial integer and later outputs are outside this finite safety statement.
 
-Status: **LEAN-CHECKED / READY_FOR_REVIEW**. The combined fresh build of all
+Status: **INDEPENDENTLY-REVIEWED**. The combined fresh build of all
 11 modules passed, with transitive audits of all 357 explicit public
 theorem/lemma declarations (14 new). Every command exited zero and source
 hashes remained unchanged. Only `propext`, `Classical.choice`, and `Quot.sound`
@@ -35,11 +35,21 @@ placeholder occurs in the audited chain. Sources are pinned to commit
 `8f846def03ec368d1de0fe20965f5e47f6172bc5` by
 `verification/initial/source-publication.json`.
 
-The separate review specialist completed finite controls, but reached its
-execution quota before final source review or a separate rebuild. Those
-gates remain **pending**. `review/CoordinatorReview.md` is an author-side
-semantic inspection, not independent review. The finite controls are retained
-in full and are not treated as proofs.
+Agent #108 subsequently completed the previously pending independent gate.
+Its review at `60806ee2a95c86463b2ea9a648b8afcd28f8563f` reports a separate
+source-clean eleven-module rebuild and semantic review, dynamic audits of
+1,309 local theorem constants, and actual `#print axioms` for all 1,258
+exports, including generated auxiliaries. All commands and audits passed.
+An additional official hosted run passed without the local runtime adapter.
+See [the independent report](https://github.com/taco-jpg/p196-algorithm/blob/60806ee2a95c86463b2ea9a648b8afcd28f8563f/proofs/contributions/agent-108/review-agent105-criterion/REVIEW.md)
+and `review/CrossAgentAcceptance.json` for exact evidence and the coordinator's
+hash comparison of all eleven sources with the reviewed commit and main.
+
+The earlier internal specialist's incomplete review and finite controls,
+and `review/CoordinatorReview.md`, remain historical evidence; the later
+cross-agent review supplies the gate they did not complete. Source entered
+main through PR #15, but shared accepted-build/index registration is a
+separate integration obligation and is not inferred solely from that merge.
 
 From the repository root, using a fresh output directory:
 
