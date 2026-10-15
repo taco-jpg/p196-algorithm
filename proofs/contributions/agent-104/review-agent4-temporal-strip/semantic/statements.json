@@ -1,0 +1,15 @@
+{
+  "source_commit": "5bd98567b259659fd3195f5aa61617422aa80914",
+  "source_path": "proofs/agent4/temporal_strip/NoAlternatingReturn.lean",
+  "source_sha256": "49b1065166c02c2efd1bf58c3391c5166b44106f12e82af371304e9fe3ae7ba0",
+  "evidence_kind": "Source headers, not elaborated compiler output",
+  "exported_theorem_headers": {
+    "P196.Agent4.TemporalStrip.left_scalar": "theorem left_scalar (x y a b r u v : Nat)\n    (_hx : x\u226418) (_hy : y\u226418) (ha : a\u22641) (hb : b\u22641) (hr : r\u22641)\n    (hu : u\u22641) (hv : v\u22641)\n    (lx : (x+a)/10=0) (ly : (y+b)/10=r)\n    (rx : x/10=u) (ry : (y+1)/10=v)\n    (hd : (y+1)%10+r=4)\n    (time : y=(x+a)%10+x%10) :\n    (r=0 \u2227 x=1 \u2227 y=3 \u2227 a=1 \u2227 u=0 \u2227 v=0) \u2228\n    (r=1 \u2227 x=6 \u2227 y=12 \u2227 a=0 \u2227 u=0 \u2227 v=1)",
+    "P196.Agent4.TemporalStrip.right_scalar": "theorem right_scalar (x y a b r u v : Nat)\n    (_hx : x\u226418) (_hy : y\u226418) (ha : a\u22641) (hb : b\u22641) (hr : r\u22641)\n    (hu : u\u22641) (hv : v\u22641)\n    (lx : (x+a)/10=1) (ly : (y+b)/10=r)\n    (rx : (x+1)/10=u) (ry : y/10=v)\n    (hd : y%10+r=6)\n    (time : y=(x+a)%10+(x+1)%10) :\n    (r=0 \u2227 x=12 \u2227 y=6 \u2227 a=1 \u2227 u=1 \u2227 v=0) \u2228\n    (r=1 \u2227 x=17 \u2227 y=15 \u2227 a=0 \u2227 u=1 \u2227 v=1)",
+    "P196.Agent4.TemporalStrip.left_backward": "theorem left_backward {J : Type} (next : J \u2192 J)\n    (onto : \u2200 j, \u2203 i, next i=j) (s t : Cut J) (x y : J \u2192 Nat)\n    (hs : Valid s) (ht : Valid t) (hc : Column next s t x y)\n    (hgood : LeftAligned t) : LeftAligned s",
+    "P196.Agent4.TemporalStrip.right_backward": "theorem right_backward {J : Type} (next : J \u2192 J)\n    (onto : \u2200 j, \u2203 i, next i=j) (s t : Cut J) (x y : J \u2192 Nat)\n    (hs : Valid s) (ht : Valid t) (hc : Column next s t x y)\n    (hgood : RightAligned t) : RightAligned s",
+    "P196.Agent4.TemporalStrip.no_alternating_six_twelve_strip": "theorem no_alternating_six_twelve_strip {J : Type} (j0 : J) (next : J \u2192 J)\n    (onto : \u2200 j, \u2203 i, next i=j) (cuts : Nat \u2192 Cut J)\n    (x y : Nat \u2192 J \u2192 Nat) (width : Nat)\n    (hv : \u2200 i, i\u2264width \u2192 Valid (cuts i))\n    (hc : \u2200 i, i<width \u2192 Column next (cuts i) (cuts (i+1)) (x i) (y i))\n    (outside : Outside (cuts 0))\n    (tail : LeftAligned (cuts width) \u2228 RightAligned (cuts width)) : False",
+    "P196.Agent4.TemporalStrip.cyclic_successor_onto": "theorem cyclic_successor_onto (N : Nat) (hN : 0<N) :\n    \u2200 j : Fin N, \u2203 i : Fin N,\n      (\u27e8(i.val+1)%N, Nat.mod_lt _ hN\u27e9 : Fin N)=j",
+    "P196.Agent4.TemporalStrip.no_finite_alternating_six_twelve_strip": "theorem no_finite_alternating_six_twelve_strip (N width : Nat) (hN : 0<N)\n    (cuts : Nat \u2192 Cut (Fin N)) (x y : Nat \u2192 Fin N \u2192 Nat)\n    (hv : \u2200 i, i\u2264width \u2192 Valid (cuts i))\n    (hc : \u2200 i, i<width \u2192 Column\n      (fun j => \u27e8(j.val+1)%N,Nat.mod_lt _ hN\u27e9)\n      (cuts i) (cuts (i+1)) (x i) (y i))\n    (outside : Outside (cuts 0))\n    (tail : LeftAligned (cuts width) \u2228 RightAligned (cuts width)) : False"
+  }
+}
