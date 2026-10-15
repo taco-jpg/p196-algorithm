@@ -1,0 +1,87 @@
+NeutralExterior.lean:40:9: error: unknown tactic
+NeutralExterior.lean:38:40: error: unsolved goals
+q : Nat → Nat
+L : Nat
+ih : (∃ i, i < L ∧ q i ≠ 9) → ∃ j, j < L ∧ q j ≠ 9 ∧ ∀ (i : Nat), i < j → q i = 9
+hex : ∃ i, i < L + 1 ∧ q i ≠ 9
+he : ¬∃ i, i < L ∧ q i ≠ 9
+i : Nat
+hi : i < L
+⊢ q i = 9
+NeutralExterior.lean:38:4: error: unsolved goals
+case neg
+q : Nat → Nat
+L : Nat
+ih : (∃ i, i < L ∧ q i ≠ 9) → ∃ j, j < L ∧ q j ≠ 9 ∧ ∀ (i : Nat), i < j → q i = 9
+hex : ∃ i, i < L + 1 ∧ q i ≠ 9
+he : ¬∃ i, i < L ∧ q i ≠ 9
+hp : ∀ (i : Nat), i < L → q i = 9
+⊢ ∃ j, j < L + 1 ∧ q j ≠ 9 ∧ ∀ (i : Nat), i < j → q i = 9
+NeutralExterior.lean:62:5: error: unknown tactic
+NeutralExterior.lean:61:37: error: unsolved goals
+q : Nat → Nat
+L : Nat
+hL : 0 < L
+hb : ∀ (i : Nat), i < L → q i ≤ 18
+hs : ∀ (i : Nat), i < L → q i = q (L - 1 - i)
+hout : q 0 = 9
+hover : carry q L = 1
+hbits : ∀ (i : Nat), i ≤ L → carry q i ≤ 1
+⊢ ∃ i, i < L ∧ q i ≠ 9
+NeutralExterior.lean:58:54: error: unsolved goals
+q : Nat → Nat
+L : Nat
+hL : 0 < L
+hb : ∀ (i : Nat), i < L → q i ≤ 18
+hs : ∀ (i : Nat), i < L → q i = q (L - 1 - i)
+hout : q 0 = 9
+hover : carry q L = 1
+hbits : ∀ (i : Nat), i ≤ L → carry q i ≤ 1
+hex : ∃ i, i < L ∧ q i ≠ 9
+⊢ ∃ i, i < nextWidth q L ∧ nextColumns q L i ≤ 8
+NeutralExterior.lean:143:7: error: unknown tactic
+NeutralExterior.lean:142:66: error: unsolved goals
+q : Nat → Nat
+L : Nat
+hL : 0 < L
+hb : ∀ (i : Nat), i < L → q i ≤ 18
+hs : ∀ (i : Nat), i < L → q i = q (L - 1 - i)
+hout : q 0 ≤ 9
+hhigh : ∀ (i : Nat), i < nextWidth q L → 9 ≤ nextColumns q L i
+hbits : ∀ (i : Nat), i ≤ L → carry q i ≤ 1
+hzero : ¬carry q L = 0
+hover : carry q L = 1
+hlast : q (L - 1) = q 0
+hcprev : carry q (L - 1) ≤ 1
+he : L = L - 1 + 1
+⊢ carry q L = (q (L - 1) + carry q (L - 1)) / 10
+NeutralExterior.lean:138:27: error: unsolved goals
+q : Nat → Nat
+L : Nat
+hL : 0 < L
+hb : ∀ (i : Nat), i < L → q i ≤ 18
+hs : ∀ (i : Nat), i < L → q i = q (L - 1 - i)
+hout : q 0 ≤ 9
+hhigh : ∀ (i : Nat), i < nextWidth q L → 9 ≤ nextColumns q L i
+hbits : ∀ (i : Nat), i ≤ L → carry q i ≤ 1
+hzero : ¬carry q L = 0
+hover : carry q L = 1
+hlast : q (L - 1) = q 0
+hcprev : carry q (L - 1) ≤ 1
+he : L = L - 1 + 1
+hrec : carry q L = (q (L - 1) + carry q (L - 1)) / 10
+⊢ q 0 = 9
+NeutralExterior.lean:133:21: error: unsolved goals
+case neg
+q : Nat → Nat
+L : Nat
+hL : 0 < L
+hb : ∀ (i : Nat), i < L → q i ≤ 18
+hs : ∀ (i : Nat), i < L → q i = q (L - 1 - i)
+hout : q 0 ≤ 9
+hhigh : ∀ (i : Nat), i < nextWidth q L → 9 ≤ nextColumns q L i
+hbits : ∀ (i : Nat), i ≤ L → carry q i ≤ 1
+hzero : ¬carry q L = 0
+hover : carry q L = 1
+houter : q 0 = 9
+⊢ carry q L = 0

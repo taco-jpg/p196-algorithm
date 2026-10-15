@@ -1,0 +1,199 @@
+{
+  "status": "FAIL",
+  "started_utc": "2026-10-15T04:54:35.558438+00:00",
+  "commands": [
+    {
+      "label": "00-version",
+      "argv": [
+        "/workspace/scratch/b14cfbb70606/agent105-runtime/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/b14cfbb70606/agent105-independent-build",
+      "environment": {
+        "LEAN_PATH": "/workspace/scratch/b14cfbb70606/agent105-independent-build",
+        "LD_PRELOAD": "/workspace/scratch/b14cfbb70606/agent105-runtime/app-path-compat.so",
+        "LEAN_SYSROOT": null
+      },
+      "started_utc": "2026-10-15T04:54:35.560571+00:00",
+      "log": "/workspace/scratch/b14cfbb70606/agent105/proofs/contributions/agent-105/actual-high-return/review/independent_build/00-version.log",
+      "exit_code": 0,
+      "elapsed_seconds": 0.064275,
+      "finished_utc": "2026-10-15T04:54:35.625376+00:00",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "01-LychrelDigitSums",
+      "argv": [
+        "/workspace/scratch/b14cfbb70606/agent105-runtime/lean-4.19.0-linux/bin/lean",
+        "-o",
+        "LychrelDigitSums.olean",
+        "LychrelDigitSums.lean"
+      ],
+      "cwd": "/workspace/scratch/b14cfbb70606/agent105-independent-build",
+      "environment": {
+        "LEAN_PATH": "/workspace/scratch/b14cfbb70606/agent105-independent-build",
+        "LD_PRELOAD": "/workspace/scratch/b14cfbb70606/agent105-runtime/app-path-compat.so",
+        "LEAN_SYSROOT": null
+      },
+      "started_utc": "2026-10-15T04:54:35.626126+00:00",
+      "log": "/workspace/scratch/b14cfbb70606/agent105/proofs/contributions/agent-105/actual-high-return/review/independent_build/01-LychrelDigitSums.log",
+      "exit_code": 0,
+      "elapsed_seconds": 52.399126,
+      "finished_utc": "2026-10-15T04:55:28.025568+00:00",
+      "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+    }
+  ],
+  "build_directory": "/workspace/scratch/b14cfbb70606/agent105-independent-build",
+  "audit_scope": {
+    "HighReturnRank": [
+      "finite_check",
+      "checked_vertex",
+      "rank_le_three",
+      "edge_decreases",
+      "no_four_edges"
+    ],
+    "Agent105.NeutralExterior": [
+      "carry_neutral_segment",
+      "first_non_neutral",
+      "neutral_overflow_has_low_pair",
+      "low_outer_high_next_no_overflow"
+    ],
+    "Agent105.HighReturnPrefix": [
+      "successor_actual",
+      "first_admissible",
+      "first_prefix",
+      "actual_control_lt_two",
+      "prefix_carries",
+      "actual_no_overflow_constraint",
+      "actual_prefix_formulas",
+      "code_properties",
+      "actual_prefix_edge",
+      "actual_prefix_rank_decreases"
+    ],
+    "Agent105.SmallWidth": [
+      "next_congr_upto",
+      "iterPairs_congr_upto",
+      "constant_no_two_returns",
+      "no_two_high_returns"
+    ],
+    "Agent105.NumericHigh": [
+      "canonical_width_eq",
+      "canonical_columns_eq",
+      "highCarryWord_iff_of_eq",
+      "numericHigh_iff",
+      "numericHigh_iff_represented",
+      "numericHigh_orbit_iff",
+      "numericHigh_orbit_iff_columns"
+    ],
+    "Agent105.ActualHighReturn": [
+      "iterPairs_add",
+      "iterPairs_width_ge",
+      "high_return_no_second_overflow",
+      "high_return_state",
+      "actual_return_rank_decreases",
+      "actual_high_returns_le_three",
+      "numeric_high_returns_le_three",
+      "numeric_high_returns_after_le_three",
+      "no_perpetual_high_returns"
+    ]
+  },
+  "allowlist": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "script_sha256": "ab7f67abdab2c932aaaf18a4fe20439e6d3fed14d909f3ce73cec7d33593b7c5",
+  "compiler": {
+    "path": "/workspace/scratch/b14cfbb70606/agent105-runtime/lean-4.19.0-linux/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
+  },
+  "startup_shim": {
+    "path": "/workspace/scratch/b14cfbb70606/agent105-runtime/app-path-compat.so",
+    "sha256": "210f46db847d1b578b344a05a6039e36701fcb3f9014da182bb270a2139fadec"
+  },
+  "initial_build_directory_entries": [],
+  "sources": [
+    {
+      "path": "proofs/research/continuation/LychrelDigitSums.lean",
+      "bytes": 218799,
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+    },
+    {
+      "path": "proofs/contributions/2026-10-15-high-carry-reduction-formal/HighCarryReduction.lean",
+      "bytes": 6969,
+      "sha256": "6a7bca1a9cc0b245e7cef118b447626ccdf91623062a10065abfffac7fb743f8"
+    },
+    {
+      "path": "proofs/contributions/2026-10-15-high-return-rank-formal/HighReturnRank.lean",
+      "bytes": 6015,
+      "sha256": "76ce0aefdcf8ed6bea047c5d8b718d23ab02bfaf18bfb96211f8fa13269218d8"
+    },
+    {
+      "path": "proofs/contributions/agent-105/actual-high-return/NeutralExterior.lean",
+      "bytes": 5384,
+      "sha256": "f4e541c8c101bbf073731114210070ecddd06db05784919cea32ab40603d3e7c"
+    },
+    {
+      "path": "proofs/contributions/agent-105/actual-high-return/HighReturnPrefix.lean",
+      "bytes": 8134,
+      "sha256": "021afffe41e62c393d31301dfc00f7c3adb728501a25b6242008a15782f898d7"
+    },
+    {
+      "path": "proofs/contributions/agent-105/actual-high-return/SmallWidth.lean",
+      "bytes": 4096,
+      "sha256": "089e7807bed63f53923e22da5d42a2104160aa89042ed3fbce1d9269fdfd118d"
+    },
+    {
+      "path": "proofs/contributions/agent-105/actual-high-return/NumericHigh.lean",
+      "bytes": 4145,
+      "sha256": "e46806c52643a930e2b2786416b77f170471bce19ab629aa1c1cbd148a3e6f30"
+    },
+    {
+      "path": "proofs/contributions/agent-105/actual-high-return/ActualHighReturn.lean",
+      "bytes": 6662,
+      "sha256": "a85b9751013e9c027e229952b8e33b1eb666d3cd8737f14c205bffb443ec82d4"
+    }
+  ],
+  "initial_copied_entries": [
+    "ActualHighReturn.lean",
+    "HighCarryReduction.lean",
+    "HighReturnPrefix.lean",
+    "HighReturnRank.lean",
+    "LychrelDigitSums.lean",
+    "NeutralExterior.lean",
+    "NumericHigh.lean",
+    "SmallWidth.lean"
+  ],
+  "compiled_objects": [
+    {
+      "name": "LychrelDigitSums.olean",
+      "bytes": 13919696,
+      "sha256": "04f6415a1debf574cfe9f2414015773a193da28d4b53745626f54b9f10c8e48e"
+    }
+  ],
+  "error": "AssertionError: ",
+  "source_sha256_after": {
+    "proofs/research/continuation/LychrelDigitSums.lean": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+    "proofs/contributions/2026-10-15-high-carry-reduction-formal/HighCarryReduction.lean": "6a7bca1a9cc0b245e7cef118b447626ccdf91623062a10065abfffac7fb743f8",
+    "proofs/contributions/2026-10-15-high-return-rank-formal/HighReturnRank.lean": "76ce0aefdcf8ed6bea047c5d8b718d23ab02bfaf18bfb96211f8fa13269218d8",
+    "proofs/contributions/agent-105/actual-high-return/NeutralExterior.lean": "f4e541c8c101bbf073731114210070ecddd06db05784919cea32ab40603d3e7c",
+    "proofs/contributions/agent-105/actual-high-return/HighReturnPrefix.lean": "021afffe41e62c393d31301dfc00f7c3adb728501a25b6242008a15782f898d7",
+    "proofs/contributions/agent-105/actual-high-return/SmallWidth.lean": "089e7807bed63f53923e22da5d42a2104160aa89042ed3fbce1d9269fdfd118d",
+    "proofs/contributions/agent-105/actual-high-return/NumericHigh.lean": "e46806c52643a930e2b2786416b77f170471bce19ab629aa1c1cbd148a3e6f30",
+    "proofs/contributions/agent-105/actual-high-return/ActualHighReturn.lean": "a85b9751013e9c027e229952b8e33b1eb666d3cd8737f14c205bffb443ec82d4"
+  },
+  "build_source_sha256_after": {
+    "LychrelDigitSums.lean": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+    "HighCarryReduction.lean": "6a7bca1a9cc0b245e7cef118b447626ccdf91623062a10065abfffac7fb743f8",
+    "HighReturnRank.lean": "76ce0aefdcf8ed6bea047c5d8b718d23ab02bfaf18bfb96211f8fa13269218d8",
+    "NeutralExterior.lean": "f4e541c8c101bbf073731114210070ecddd06db05784919cea32ab40603d3e7c",
+    "HighReturnPrefix.lean": "021afffe41e62c393d31301dfc00f7c3adb728501a25b6242008a15782f898d7",
+    "SmallWidth.lean": "089e7807bed63f53923e22da5d42a2104160aa89042ed3fbce1d9269fdfd118d",
+    "NumericHigh.lean": "e46806c52643a930e2b2786416b77f170471bce19ab629aa1c1cbd148a3e6f30",
+    "ActualHighReturn.lean": "a85b9751013e9c027e229952b8e33b1eb666d3cd8737f14c205bffb443ec82d4"
+  },
+  "sources_unchanged": true,
+  "finished_utc": "2026-10-15T04:55:28.046945+00:00",
+  "full_build_log_sha256": "427f3d034a6c91044e4faddb6e7e6dce15ff75d4ab923ed5897cf2d305908dfa"
+}

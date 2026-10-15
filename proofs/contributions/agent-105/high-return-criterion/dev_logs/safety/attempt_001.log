@@ -1,0 +1,44 @@
+proofs/contributions/agent-105/high-return-criterion/ReturnSafety.lean:61:5: error: unknown tactic
+proofs/contributions/agent-105/high-return-criterion/ReturnSafety.lean:60:2: error: unsolved goals
+case mp
+n : Nat
+d q : Nat → Nat
+L : Nat
+hc : Canonical n d L
+hrep : ∀ (i : Nat), i < L → columnSum d L i = q i
+hq : HighCarryWord q L
+hs : ¬Palindrome (orbit n 2)
+⊢ ∃ i, 0 < i ∧ i < L ∧ 28 ≤ q (i - 1) + q i
+proofs/contributions/agent-105/high-return-criterion/ReturnSafety.lean:57:51: error: unsolved goals
+case mpr
+n : Nat
+d q : Nat → Nat
+L : Nat
+hc : Canonical n d L
+hrep : ∀ (i : Nat), i < L → columnSum d L i = q i
+hq : HighCarryWord q L
+⊢ (∃ i, 0 < i ∧ i < L ∧ 28 ≤ q (i - 1) + q i) → ¬Palindrome (orbit n 2)
+proofs/contributions/agent-105/high-return-criterion/ReturnSafety.lean:121:5: error: unknown tactic
+proofs/contributions/agent-105/high-return-criterion/ReturnSafety.lean:120:2: error: unsolved goals
+case mpr
+q : Nat → Nat
+L : Nat
+hL : 0 < L
+hq : HighCarryWord q L
+hsym : ∀ (i : Nat), i < L → q i = q (L - 1 - i)
+hlarge : ∃ i, i < nextWidth q L ∧ 10 ≤ nextColumns q L i
+⊢ ∃ i, 0 < i ∧ i < L ∧ 28 ≤ q (i - 1) + q i
+'Agent105.ReturnSafety.numeric_first_palindrome_iff_all_eleven' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent105.ReturnSafety.numeric_second_safe_iff_large_adjacent' depends on axioms: [sorryAx]
+'Agent105.ReturnSafety.numeric_first_safe_of_large_adjacent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent105.ReturnSafety.numeric_two_outputs_safe_iff_large_adjacent' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Agent105.ReturnSafety.large_adjacent_iff_next_pair_large' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent105.ReturnSafety.numeric_two_outputs_safe_iff_next_pair_large' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
