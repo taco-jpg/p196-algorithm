@@ -16,10 +16,12 @@ Main results:
 * `tri_step`: for `width n ≥ 3`, `tri (step n) = nextT (tri n) e` for the
   actual carry `e ≤ 1`, and the width grows by exactly `topT (tri n) e`.
 * `width_step_eq_of_small_descending`: Lemma 1 at the number level.
-* `last_step_triple`: the immediate predecessor of a palindrome beginning
-  with digits `a > b`, `a > 1`, has width at least three, all pair sums at
-  most nine, and outer triple `(a, b, c)` with `c ≤ 9`. This reuses Agent
-  #104's reviewed `PalindromeBridge.numeric_last_step`.
+* `no_overflow_of_descending_target`, `descending_last_step`,
+  `last_step_triple`: the immediate predecessor of a palindrome beginning
+  with digits `a > b` has width at least three, all pair sums at most nine,
+  and outer triple `(a, b, c)` with `c ≤ 9`. This adapts Agent #104's
+  reviewed `PalindromeBridge.canonical_last_step` (leading digit above one)
+  to every strictly descending prefix, including `a = 1`.
 
 No claim about 196 or decimal Lychrel existence is made in this module.
 -/
@@ -204,15 +206,100 @@ def StartsTwo (a b P : Nat) : Prop :=
 def PalindromeStartsTwo (a b P : Nat) : Prop :=
   Palindrome P ∧ StartsTwo a b P
 
-theorem last_step_triple (a b : Nat) (hab : b < a) (ha : 1 < a)
+/-- A palindrome whose two leading digits strictly descend cannot be the
+overflowing image of reverse-and-add. (If it were, its leading digit would be
+the appended carry 1, its units digit would be 1, so the outer pair sum of
+the source is 11 and the second digit would be at least 1.) -/
+theorem no_overflow_of_descending_target
+    {n P L W : Nat} {d e : Nat → Nat}
+    (hsource : Canonical n d L) (htarget : Canonical P e W)
+    (hstep : step n = P) (hpal : Palindrome P) (hW : 2 ≤ W)
+    (hdesc : e (W - 2) < e (W - 1)) :
+    carry (columnSum d L) L = 0 := by
+  rcases actual_overflow_cases d L hsource.2.1 with hc | hc
+  · exact hc
+  · exfalso
+    have hnext : Canonical P (extended (columnSum d L) L) (L + 1) := by
+      rw [← hstep]; exact canonical_next_overflow n d L hsource hc
+    obtain ⟨hwidth, hdigit⟩ :=
+      SevenColumnKernel.PalindromeBridge.canonical_unique hnext htarget
+    have hp : Palindrome (value (extended (columnSum d L) L) (L + 1)) := by
+      rw [hnext.2.2.2]; exact hpal
+    have hsym := (palindrome_value_iff _ (L + 1) hnext.2.1
+      (Or.inr hnext.2.2.1)).mp hp
+    have h0 := hsym 0 (by omega)
+    rw [show L + 1 - 1 - 0 = L by omega] at h0
+    have hL := hsource.1
+    have hext0 : extended (columnSum d L) L 0 = output (columnSum d L) 0 := by
+      simp [extended, hL]
+    have hextL : extended (columnSum d L) L L = 1 := by simp [extended, hc]
+    have htop : e (W - 1) = 1 := by
+      rw [← hwidth, show L + 1 - 1 = L by omega, ← hdigit L (by omega), hextL]
+    have hout0 : output (columnSum d L) 0 = 1 := by rw [← hext0, h0, hextL]
+    have hsecond : e (W - 2) = extended (columnSum d L) L (L - 1) := by
+      rw [← hwidth, show L + 1 - 2 = L - 1 by omega, hdigit (L - 1) (by omega)]
+    by_cases hL1 : L = 1
+    · subst hL1
+      rw [hsecond, show 1 - 1 = 0 by rfl, hext0, hout0] at hdesc
+      omega
+    · have hextm : extended (columnSum d L) L (L - 1) = output (columnSum d L) (L - 1) := by
+        simp [extended, show L - 1 < L by omega]
+      have hcolTop := column_equation (columnSum d L) (L - 1)
+      rw [show L - 1 + 1 = L by omega, hc] at hcolTop
+      have hsymq := columnSum_symmetric d L 0 (by omega)
+      rw [Nat.sub_zero] at hsymq
+      have hcol0 : output (columnSum d L) 0 + 10 * carry (columnSum d L) 1 =
+          columnSum d L 0 + 0 := column_equation (columnSum d L) 0
+      have hq0 := columnSum_bounded d L hsource.2.1 0 (by omega)
+      have hcb := carry_bounded (columnSum d L) L (columnSum_bounded d L hsource.2.1)
+        (L - 1) (by omega)
+      rw [hsecond, hextm, htop] at hdesc
+      rw [← hsymq] at hcolTop
+      omega
+
+/-- The final step into a descending-prefix palindrome: the predecessor has
+the target width, and its pair-sum word equals the target's digit word.
+This adapts Agent #104's `PalindromeBridge.canonical_last_step` (which
+assumes a leading digit above one) to every strictly descending prefix,
+including leading digit one. -/
+theorem descending_last_step
+    {n P W : Nat} {e : Nat → Nat} (hn : 0 < n)
+    (htarget : Canonical P e W) (hstep : step n = P) (hpal : Palindrome P)
+    (hW : 2 ≤ W) (hdesc : e (W - 2) < e (W - 1)) :
+    ∃ d, Canonical n d W ∧ (∀ i, i < W → columnSum d W i = e i) ∧
+      (∀ i, i < W → columnSum d W i ≤ 9) := by
+  obtain ⟨d, L, hsource⟩ := canonical_exists n hn
+  have hc := no_overflow_of_descending_target hsource htarget hstep hpal hW hdesc
+  have hnext : Canonical P (output (columnSum d L)) L := by
+    rw [← hstep]
+    exact canonical_next_no_overflow n d L hsource hc
+  obtain ⟨hwidth, hdigit⟩ :=
+    SevenColumnKernel.PalindromeBridge.canonical_unique hnext htarget
+  have hp : Palindrome (value (output (columnSum d L)) L) := by
+    rw [hnext.2.2.2]
+    exact hpal
+  have hs := (palindrome_value_iff (output (columnSum d L)) L
+    hnext.2.1 (Or.inr hnext.2.2.1)).mp hp
+  obtain ⟨_, hpair⟩ := DecimalCarry.no_overflow_palindrome_has_no_carries
+    L (columnSum d L) (carry (columnSum d L)) (output (columnSum d L))
+    hsource.1 (columnSum_symmetric d L) hs
+    (fun i _ => column_equation (columnSum d L) i) rfl hc
+  subst hwidth
+  refine ⟨d, hsource, ?_, ?_⟩
+  · intro i hi
+    exact (hpair i hi).trans (hdigit i hi)
+  · intro i hi
+    rw [hpair i hi]
+    exact output_bounded _ i
+
+theorem last_step_triple (a b : Nat) (hab : b < a)
     {M P : Nat} (hM : 0 < M) (hstep : step M = P)
     (hP : PalindromeStartsTwo a b P) :
     3 ≤ width M ∧ (∀ i, i < width M → pairAt M i ≤ 9) ∧
       pairAt M 0 = a ∧ pairAt M 1 = b ∧ pairAt M 2 ≤ 9 := by
   obtain ⟨hpal, e, W, htarget, hW, hea, heb⟩ := hP
-  have hlead : 1 < e (W - 1) := by omega
-  obtain ⟨d, hsource, _, hpair, hsmall⟩ :=
-    SevenColumnKernel.PalindromeBridge.numeric_last_step hM htarget hstep hpal hlead
+  obtain ⟨d, hsource, hpair, hsmall⟩ :=
+    descending_last_step hM htarget hstep hpal hW (by omega)
   have hp : Palindrome (value e W) := by
     rw [htarget.2.2.2]
     exact hpal
@@ -241,6 +328,8 @@ theorem last_step_triple (a b : Nat) (hab : b < a) (ha : 1 < a)
 
 #print axioms tri_step
 #print axioms width_step_eq_of_small_descending
+#print axioms no_overflow_of_descending_target
+#print axioms descending_last_step
 #print axioms last_step_triple
 #print axioms tri_eq_tri3
 #print axioms tri_box
