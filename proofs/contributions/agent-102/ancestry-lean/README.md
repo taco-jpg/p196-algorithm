@@ -2,10 +2,11 @@
 
 Task: `agent102-ancestry-lean` (claim on branch `p196/coordination`, `proofs/coordination/tasks/agent102-ancestry-lean.json`).
 
-**Status: WIP checkpoint.** `RunAncestry.descendant_step` compiles under official Lean 4.19.0
-(commit 6caaee842e94, Std only) with axioms `[propext, Classical.choice, Quot.sound]`; no `sorry`,
-`native_decide` or custom axiom. Not yet independently reviewed. The extinction-time corollary is
-still in development.
+**Status: LEAN-CHECKED, awaiting independent review.** Both modules compile under official
+Lean 4.19.0 (commit 6caaee842e94, Std only) from an empty build directory (`clean_rebuild.log`).
+Every exported theorem's transitive axioms are within `[propext, Classical.choice, Quot.sound]`;
+no `sorry`, `admit`, `native_decide` or custom axiom. The only imported project source is the
+accepted `proofs/research/continuation/LychrelDigitSums.lean` (SHA-256 `ca5f4652…dc0b57`).
 
 Nothing here proves that a palindrome is reached, that 0/18 coefficients disappear from an orbit,
 or anything about 196. It follows **one** ancestry; new runs can be born elsewhere.
@@ -38,6 +39,33 @@ This is Section 2 of
 word ends, central/overlapping mirror runs) are covered by the hypotheses with no exclusions.
 Along the way the proof derives that without overflow a maximal 0/18 run never touches either end
 of the word.
+
+## Extinction time of one ancestry (`AncestryExtinction.lean`)
+
+`track q L c a b t` is the tracked descendant after `t` actual steps (state
+`OverflowCarryNormalization.iterPairs q L t`). With `ψ = DecimalWidthGrowth.lowerPotential`:
+
+* `track_invariant`: while nonempty, the tracked interval is a `MaximalRun` in the actual word at
+  time `t`, and `length_t + (width_t - L) ≤ b - a` (each overflow costs at least one unit).
+* `potential_telescope`: `t + ψ(p_t) + 4L ≤ ψ(p_0) + 4·width_t` (keeps the final potential term;
+  sharper than the existing `width_lower_potential`).
+* `survival_bound`: survival at `t` implies `t + ψ(p_t) ≤ 4(ell-1) + ψ(p_0)`, `ell = b - a`.
+* `extinct_after` / `extinct_uniform`: the ancestry is empty at every `t ≥ 4·ell - 3 + ψ(p_0)`,
+  in particular at every `t ≥ 4·ell + 1`; `track_empty_mono` shows emptiness persists.
+* `orbit_ancestry_extinct`: the same statement started from an actual canonical integer `n`
+  (`q = columnSum d L`), bundled with the fact that the tracked words are the exact column-sum words
+  of `orbit n t`.
+
+This is the written corollary
+`proofs/contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md`, now kernel-checked
+together with its ancestry dependency. Optimality of `4·ell + 1` is not claimed.
+
+## Semantic control (not proof evidence)
+
+`control.py` independently compares the descendant formula, exact survival set, maximality and
+length bound with literal integer reverse-and-add for every distinct column-sum word of widths 1–6
+(10,467 words, 4,484 maximal 0/18 runs): PASS (`control_result.json`). It checks that the formal
+statement means what is intended; the Lean proof is the evidence.
 
 Arithmetic kernels (`pair_eq_iff`, `neighbor_no_overflow`, `neighbor_overflow`) are checked by kernel
 `decide` over the bounded digit/carry ranges, not by `native_decide`.
