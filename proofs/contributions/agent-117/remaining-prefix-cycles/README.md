@@ -23,12 +23,24 @@ explored states, beyond the batch cap). The impossibility interface, the project
 for long states and 14 witness instances are checked by the Lean kernel against Agent
 #104's accepted `prefixPredecessors` / `CheckedRows` definitions.
 
+## Whole-space catalogue (added)
+
+[PURE_PREFIX_CATALOGUE.md](PURE_PREFIX_CATALOGUE.md): one Kahn computation per `k = 4..7`
+over all `18·19^(k-1)` long states gives the complete well-founded part of the pure
+k-column abstraction and every class bound at prefix lengths 3..k. It reproduces the
+baseline four-column graph statistics (75,482 ranked states, max rank 20), the five accepted
+seven-column bounds, and Agent #124's refinement counts exactly; it shows that 109, 659 and
+769 close in the baseline only through its descending-prefix lemma, and finds 31 four-digit
+refinements of the open classes that close purely at `k = 7` but not at `k ≤ 6` (checked
+computation; no Lean instance yet).
+
 ## Status
 
 | item | status |
 |---|---|
 | `k = 7` diagnosis, 500 classes | **complete**, checked computation (not Lean): 499 CYCLE, 1 ACYCLIC (739) |
-| `k = 8` diagnosis | partial, each record final; see `results/k8.jsonl` (`CAP` = no verdict) |
+| `k = 8` diagnosis | partial, each record final; see `results/k8.jsonl` (`CAP` = no verdict); 275 resolved CYCLE with a 12M cap |
+| whole-space catalogue `k = 4..7` | **complete**, checked computation (C++ `wellfounded7.cpp`, Python cross-checks `rank_certificate.py` on every closed three-digit class, 0 mismatches) |
 | `lean/PrefixCycle.lean` generic interface | LEAN-CHECKED (author build and fresh `lean/build.sh` build, logs under `build/`) |
 | `lean/Projection.lean` (Lemma 2, long states) | LEAN-CHECKED |
 | `lean/witnesses/` instances | LEAN-CHECKED: 936, 164, 710 (47-cycle); 716, 398, 952 (171-cycle); 138, 790, 911, 626, 198, 248 (1,841-cycle) at `k = 7`; 112 (8-cycle) and 275 (848-cycle) at `k = 8` |
@@ -53,6 +65,10 @@ no `native_decide`, no `Lean.ofReduceBool`. Official Lean 4.19.0 (`6caaee842e94`
 | `results/k7.jsonl`, `results/k8.jsonl` | one record per class: status, explored states, entry path, cycle (or CAP) |
 | `lean/PrefixCycle.lean`, `lean/Projection.lean` | the Lean interface and the projection lemma (see METHOD_LIMIT.md §4) |
 | `results/k8_275_cap12M.jsonl` | the 275 rerun (CYCLE after 4,135,546 states) |
+| `wellfounded7.cpp` | whole-space well-founded part and ranks for `k` columns (`-DK=4..7`); writes `rows_rank<k>.bin`, `short_rank<k>.tsv`, `classes<k>.tsv` |
+| `class_table.py`, `summarize_catalogue.py` | rebuild class tables from the compact outputs; catalogue summaries |
+| `rank_certificate.py` | independent per-class Python closure + ranks, compared with the C++ tables |
+| `results/catalogue/` | compact catalogue outputs for `k = 4..7`, C++ summaries, cross-check logs |
 | `lean/witnesses/*.lean` | kernel-checked instances |
 | `lean/build.sh`, `build/` | fresh-build script and its retained logs, hashes and axiom reports |
 

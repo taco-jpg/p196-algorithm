@@ -139,6 +139,26 @@ int main(int argc, char** argv) {
     std::string fn = std::string(outdir) + "/ranks" + std::to_string(K) + ".bin";
     FILE* f = fopen(fn.c_str(), "wb"); fwrite(rank.data(), 1, NLONG, f); fclose(f);
   }
+  // ---- compact outputs: rank of every long initial row (digits <= 9, s_0 >= 1), in
+  // lexicographic order of the K digits (9*10^(K-1) bytes, 255 = unbounded), and the rank of
+  // every complete short word (width < K).
+  {
+    std::string fn = std::string(outdir) + "/rows_rank" + std::to_string(K) + ".bin";
+    FILE* f = fopen(fn.c_str(), "wb");
+    uint64_t nrows = 9; for (int i = 1; i < K; ++i) nrows *= 10;
+    for (uint64_t c = 0; c < nrows; ++c) {
+      int s[K]; uint64_t t = c; for (int i = K - 1; i >= 1; --i) { s[i] = t % 10; t /= 10; } s[0] = (int)t + 1;
+      fputc(rank[enc(s)], f);
+    }
+    fclose(f);
+    fn = std::string(outdir) + "/short_rank" + std::to_string(K) + ".tsv";
+    f = fopen(fn.c_str(), "w");
+    for (uint64_t i = 0; i < NSHORT; ++i) {
+      for (size_t j = 0; j < shorts[i].size(); ++j) fprintf(f, "%s%d", j ? "," : "", shorts[i][j]);
+      fprintf(f, "\t%d\n", (int)rank[NLONG + i]);
+    }
+    fclose(f);
+  }
   // ---- class report: for 3..7 leading digits
   // rows: all long states with all entries <= 9 (s_0 >= 1): 9*10^6 rows.
   // short palindrome words of width 3..6 beginning with the class digits also count.
@@ -175,7 +195,7 @@ int main(int argc, char** argv) {
         }
       }
       if (closed) closedCount++;
-      if (D <= 4 || closed) {
+      if (D <= 5 || closed) {
         fprintf(rep, "%d\t", D); for (int i = 0; i < D; ++i) fprintf(rep, "%d", dg[i]);
         fprintf(rep, "\t%d\t%d\t%llu\t%llu\n", closed ? 1 : 0, closed ? maxr + 1 : -1,
                 (unsigned long long)rows, (unsigned long long)bounded);
