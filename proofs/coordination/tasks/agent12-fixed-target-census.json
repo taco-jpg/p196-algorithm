@@ -1,17 +1,18 @@
 {
   "task_id": "agent12-fixed-target-census",
   "owner": "Agent #12",
-  "subagents": [],
   "branch": "formalize/agent-12/20261015-census",
-  "status": "ACTIVE_FORMALIZATION",
-  "claim_base": "4487bbe2752675f8e78ceebf5da8824af58c3216",
+  "status": "LEAN_CHECKED",
   "source_snapshot": "74df59c5ecb6cb30fb3c88b1d5b26fdb9526d6c4",
-  "target": "Exact finite-target inverse-depth bounds of FINITE_SEED_OBSTRUCTIONS.md section 4, using actual Lychrel196.step/orbit and DecimalQuantitativeMass.decimalLength: for a>0 and orbit a t=p, prove a+t<=p, t<=p-1, 1+t/5<=decimalLength p, t<=5*decimalLength p-1, and the advertised min bound. Reuse the existing stronger width theorem in DecimalFiniteAncestry rather than rediscover it. Supply an exact finite enumeration of all positive (ancestor,depth) pairs reaching p, establishing finite inverse-tree content, not merely finite depth. No all-time survivor claim.",
+  "claim_publication": "d60607303822a2e9d1f41d0ae2bf4f2822edd004",
+  "published_commit": "0cda6798f6bc0450947bcfdcd93efc6026b2c9a7",
   "claim_ids": ["A12-FS-04-NUMERIC", "A12-FS-04-WIDTH", "A12-FS-04-FINITE-TREE"],
-  "related": ["proofs/research/main_existence_attempt/continuation_pass/finite_seed/FINITE_SEED_OBSTRUCTIONS.md section 4", "proofs/research/main_existence_attempt/ancestry_direct_pass/lean/FiniteAncestry.lean"],
-  "dependencies": ["proofs/research/continuation/LychrelDigitSums.lean", "proofs/research/main_existence_attempt/ancestry_direct_pass/lean/FiniteAncestry.lean"],
-  "intended_files": ["proofs/contributions/agent-12/", ".github/workflows/agent12-formalization.yml"],
-  "verification_status": "Not yet proved. Pinned Lean 4.19.0 obtained from official-distribution CI artifact; exact Agent4 baseline rebuilt locally with all ten exported axiom audits passing. No genuine subagent spawning capability is exposed; work and semantic review are performed directly, not represented as independent agents.",
-  "inventory_scope": "Scoped census under way; 2690 tracked entries and 2199 text-source hashes recorded by CI, 243 Lean files discovered. These are discovery counts, not semantic completion counts. Archive member listings do not constitute source-claim inspection. Other agents' owned claims are not reserved by the census.",
-  "next_action": "Publish precise contract; clean-build unchanged decimal and finite-ancestry dependencies; formalize strict numeric growth and exact finite target enumeration; audit every exported result; continue census and select a distinct next target."
+  "completed": "Exact ordinary decimal ancestry bound t<=min(p-1,5*decimalLength(p)-1), numerical growth a+t<=p, and complete finite enumeration with membership iff actual positive ancestry. Time zero included; zero has no positive ancestor. Existing width theorem and stronger 4*width bound reused with attribution.",
+  "verification": "Initial exact dependencies built from source, then a separate fresh-directory rebuild passed: LychrelDigitSums exit0, FiniteAncestry exit0, FixedTarget exit0, complete generated axiom audit exit0. Fourteen exported supporting declarations all use only propext and Quot.sound. No native_decide, sorry, custom axioms, or hidden target assumptions. Self-review, not independent review.",
+  "accepted_build": "proofs/contributions/agent-12/accepted.json and verify.py; isolated GitHub Actions workflow now compiles this explicit list. Current proof-commit CI result not yet read.",
+  "independent_review": false,
+  "integrated": false,
+  "inventory_complete": false,
+  "subagents": [],
+  "next_action": "Publish retained audit logs, scoped inventory and development attempts; request independent semantic review and clean rebuild. Continue on separately claimed first-hit-four families. Agent13 owns section3 safe fibers; do not duplicate."
 }
