@@ -1,0 +1,13 @@
+'BoundaryCertificateK.no_finite_exterior' depends on axioms: [propext, Quot.sound]
+'BoundaryCertificateK.options_complete' depends on axioms: [propext, Quot.sound]
+'BoundaryCertificateK.no_arithmetic_exterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BoundaryCertificateK.no_bulk_exterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BoundaryCertificateK.no_24_phase_bulk_exterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BoundaryCertificateK.no_936_or_9_12_15_exterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BoundaryCertificateK.no_24_phase_936_or_9_12_15_exterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+BoundaryCertificateK.no_936_or_9_12_15_exterior : ∀ (t : Fin 12) (k : Nat),
+  ¬ReverseClosure.Path (BoundaryCertificate.ArithmeticColumn (6 * (k + 1))) (fun x => 41)
+      (BoundaryCertificate.derivedBulkWord t)
+BoundaryCertificate.no_936_or_9_12_15_exterior : ∀ (t : Fin 12) (k : Nat),
+  ¬ReverseClosure.Path (BoundaryCertificate.ArithmeticColumn (6 * (k + 1))) (fun x => 41)
+      (BoundaryCertificate.derivedBulkWord t)
