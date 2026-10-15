@@ -1,5 +1,6 @@
-# One explicit branch-scoped research replay and evidence publication.
-# It runs only when this workflow itself is edited on Agent 3's branch.
+# Explicit branch-scoped research replay and evidence publication.
+# Revision 2 includes the all-width charge and sharp five-step orbit proofs.
+# Runs only when this workflow itself is edited on Agent 3's branch.
 name: Agent 3 checked evidence publication
 on:
   push:
@@ -33,18 +34,10 @@ jobs:
           echo "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
           tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
-      - name: Kernel-check the exact sources and retain complete axiom logs
-        shell: bash
+      - name: Kernel-check all modules from source and retain complete axiom logs
         run: |
-          set -euo pipefail
           dir=proofs/contributions/2026-10-15-agent3-complementary-bulk
-          mkdir -p "$dir/evidence/lean"
-          lean --version | tee "$dir/evidence/lean/version.txt"
-          sha256sum "$dir"/*.lean | tee "$dir/evidence/lean/source-sha256.txt"
-          for f in "$dir"/*.lean; do
-            lean "$f" 2>&1 | tee "$dir/evidence/lean/$(basename "$f").log"
-          done
-          if grep -E 'sorryAx|Lean\.ofReduceBool|declaration uses .sorry.' "$dir/evidence/lean/"*.log; then exit 1; fi
+          python "$dir/verify_lean.py" --output "$dir/evidence/lean"
           printf '%s\n' "$GITHUB_SHA" > "$dir/evidence/SOURCE_COMMIT.txt"
       - name: Publish verified evidence without changing any other source
         shell: bash
@@ -60,7 +53,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- "$dir/evidence"
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'proofs: retain independently replayed Agent 3 rank certificates and Lean audits'
+          git commit -m 'proofs: retain independently replayed Agent 3 certificates and complete kernel audits'
           auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
           git -c "http.extraheader=AUTHORIZATION: basic $auth" push origin "HEAD:refs/heads/$branch"
       - name: Retain evidence even when the branch advances concurrently
