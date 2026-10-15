@@ -349,3 +349,29 @@ Every original written research report, proof note and manuscript source retaine
 - [contributions/2026-10-15-scalar-resume-review/RESUME_REVIEW.md](contributions/2026-10-15-scalar-resume-review/RESUME_REVIEW.md)
 - [contributions/FINAL_SESSION_INDEX.md](contributions/FINAL_SESSION_INDEX.md)
 - [coordination/2026-10-15-final-session-checkpoint.md](coordination/2026-10-15-final-session-checkpoint.md)
+
+## Seven-column continuation and prior chat-index reconciliation
+
+- [chat-6acee928/CHAT_ONLY_RESULTS.md](chat-6acee928/CHAT_ONLY_RESULTS.md)
+- [chat-6acee928/CONTENTS.md](chat-6acee928/CONTENTS.md)
+- [chat-6acee928/README.md](chat-6acee928/README.md)
+- [chat-6acee928/originals/p196_all_palindromes_and_eight_families.md](chat-6acee928/originals/p196_all_palindromes_and_eight_families.md)
+- [chat-6acee928/originals/p196_double_image_theorem.md](chat-6acee928/originals/p196_double_image_theorem.md)
+- [chat-6acee928/originals/p196_exact_ancestor_depth.md](chat-6acee928/originals/p196_exact_ancestor_depth.md)
+- [chat-6acee928/originals/p196_four_column_obstruction.md](chat-6acee928/originals/p196_four_column_obstruction.md)
+- [chat-6acee928/originals/p196_odd_gap_certificate.md](chat-6acee928/originals/p196_odd_gap_certificate.md)
+- [chat-6acee928/originals/p196_seven_pairs_obstruction.md](chat-6acee928/originals/p196_seven_pairs_obstruction.md)
+- [chat-6acee928/originals/p196_six_column_and_mod99.md](chat-6acee928/originals/p196_six_column_and_mod99.md)
+- [chat-6acee928/originals/p196_thirteen_prefix_theorem.md](chat-6acee928/originals/p196_thirteen_prefix_theorem.md)
+- [chat-6acee928/originals/p196_uniform_five_layer_obstruction.md](chat-6acee928/originals/p196_uniform_five_layer_obstruction.md)
+- [contributions/2026-10-15-seven-column-prefix/P196_739_Proof.md](contributions/2026-10-15-seven-column-prefix/P196_739_Proof.md)
+- [contributions/2026-10-15-seven-column-prefix/README.md](contributions/2026-10-15-seven-column-prefix/README.md)
+- [contributions/2026-10-15-seven-column-prefix/development/README.md](contributions/2026-10-15-seven-column-prefix/development/README.md)
+- [contributions/2026-10-15-seven-column-prefix/exploration/README.md](contributions/2026-10-15-seven-column-prefix/exploration/README.md)
+- [coordination/2026-10-15-seven-column-prefix.md](coordination/2026-10-15-seven-column-prefix.md)
+
+## Concurrent coordination retained during publication
+
+- [coordination/2026-10-15-agent2-complementary-search-start.md](coordination/2026-10-15-agent2-complementary-search-start.md)
+- [contributions/2026-10-15-safe-high-return/README.md](contributions/2026-10-15-safe-high-return/README.md)
+- [contributions/2026-10-15-agent2-complementary-search/MODULAR_OBSTRUCTIONS.md](contributions/2026-10-15-agent2-complementary-search/MODULAR_OBSTRUCTIONS.md)
