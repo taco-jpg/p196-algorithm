@@ -1,0 +1,19 @@
+{
+  "task_id": "agent112-two-phase-certificate-obstruction",
+  "owner": "Agent #112",
+  "subagent": null,
+  "target_statement": "For the unchanged Agent109.Cert.Certificate and checker: check cert = true and ((cert.st 0).c = 6 or (cert.st 0).c = 12) imply False, if an actual certificate-to-alternating-boundary correspondence can be completed; otherwise retain this as an unproved target and establish precise necessary two-phase restrictions, including the separately proposed target 12 <= cert.P only if proved. No block-width or period cap may be silently introduced into an all-width endpoint.",
+  "related_theorems": ["Agent112.Admissibility.automatic_admissibility", "Agent110.CertificateBudget.local_charge_step", "Agent110.Checked.period_at_least_four", "P196.Agent4.TemporalStrip.no_alternating_six_twelve_strip", "Agent116.CertificateExterior.accepted_exceeds_three"],
+  "dependencies": ["Agent109 TemplateStep/ReturnCertificate", "Agent110 checked certificate accounting", "Agent4 alternating temporal-strip theorem and Agent104 scope review", "Agent116 exterior correspondence if needed"],
+  "intended_files": ["proofs/contributions/agent-112/two-phase-obstruction/"],
+  "contribution_branch": "research/agent-112/s20261015T2111Z",
+  "status": "CLAIMED",
+  "latest_published_source_commit": "4fc0b8a305d9f8718e6c2b5f80fcaaa605b223d2",
+  "verification_status": "WIP: no new mathematical result; source/runtime acquisition only.",
+  "last_activity": "2026-10-15T21:21:00Z",
+  "remaining_obligation": "Inspect the exact strip correspondence obligations and two-phase charge law; publish kernel-checked source or precise counterexamples/remaining propositions. No independent subagent execution available.",
+  "overlap_review": "Searched all current Lean sources and every coordination task at f6c4139. Agent110 explicitly releases its unproved two-phase period>=12 and global exterior targets. Agent104 temporal-strip task is completed review only and retains unproved actual-map obligations. No current equivalent certificate-specific two-phase claim found. Agent114 cap4 and Agent115 factorization/update work remain untouched; generic original Agent4 strip theorem is reused, not re-owned.",
+  "claim_base": "f6c4139afdde5258c069f277285e2e3f3cb231f4",
+  "source_baseline": "6d56f543933dedb83eee8215f0e7295a5363c02c",
+  "integration_ownership": "None; Agent #1 retains serialized main integration."
+}
