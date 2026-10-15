@@ -39,3 +39,16 @@ copied from the production build): `JobChecks0`–`JobChecks5` compile with
 exit 0 (0.3, 6.0, 34.1, 17.8, 28.9, 96.4 s), consistent with the original
 author's development checks. These do not count as production row checks;
 the driver recompiles every `JobChecks` module itself.
+
+### Development shadow with `decide +kernel` (NOT production evidence)
+
+To surface row-check failures early, a second core compiles copies of the
+generated `JobChecksN.lean` in which the final tactic `decide` is replaced by
+`decide +kernel` (kernel-only reduction; still no `native_decide`, no
+compiler-trusted evaluation). On JobChecks6 rows this is about 2x faster
+(edge chunk 11.4 s vs 21.2 s). Result so far: every row theorem of
+JobChecks0-6 is accepted (JobChecks6 in 722 s). The production acceptance
+remains the unmodified generated sources compiled by the unmodified
+`verify.py`; the shadow only gives early warning and would be used, after
+the shadow finishes, to dry-run the never-compiled final-stage drafts
+(`ScalarHierarchy`, `RootBridge`, `ScalarBound`).
