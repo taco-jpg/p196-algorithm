@@ -1,0 +1,53 @@
+name: Agent112 actual alternating-band proof check
+on:
+  pull_request:
+    paths:
+      - 'proofs/contributions/agent-112/two-phase-obstruction/**'
+      - 'proofs/research/continuation/LychrelDigitSums.lean'
+      - 'proofs/agent4/temporal_strip/NoAlternatingReturn.lean'
+      - 'proofs/contributions/agent-104/review-agent4-temporal-strip/semantic/ActualMapObligations.lean'
+      - 'proofs/contributions/2026-10-15-agent9-alternating-scalar-boundary/AlternatingScalarBoundary.lean'
+      - '.github/workflows/agent112-actual-strip.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-pinned-clean-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Obtain checksum-pinned official Lean4.19.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o lean-official.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean-official.tar.zst' | sha256sum --check
+          tar --zstd -xf lean-official.tar.zst
+      - name: Fresh exact-source build and transitive axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 proofs/contributions/agent-112/two-phase-obstruction/verify.py \
+            --repo "$GITHUB_WORKSPACE" \
+            --lean "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" \
+            --expected-commit "$(git rev-parse HEAD)" \
+            --output "$RUNNER_TEMP/agent112-verification"
+          python3 proofs/contributions/agent-112/two-phase-obstruction/controls.py \
+            --max-seed 5000 --pairs 8 \
+            --output "$RUNNER_TEMP/agent112-verification/controls.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent112-actual-strip-verification
+          path: |
+            ${{ runner.temp }}/agent112-verification/result.json
+            ${{ runner.temp }}/agent112-verification/controls.json
+            ${{ runner.temp }}/agent112-verification/AuthorEnvironmentAudit.lean
+            ${{ runner.temp }}/agent112-verification/logs
+          if-no-files-found: error
+          retention-days: 30
