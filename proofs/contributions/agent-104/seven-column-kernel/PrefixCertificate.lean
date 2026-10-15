@@ -68,6 +68,13 @@ theorem lookup_all {P : Word → Nat → Prop} {tree : RankTree}
     (hr : lookup tree w = some r) : P w r :=
   lookupKey_all h hr
 
+theorem RankTree.all_mono {P Q : Word → Nat → Prop} {tree : RankTree}
+    (h : tree.All P) (imp : ∀ p r, P p r → Q p r) : tree.All Q := by
+  induction tree with
+  | empty => trivial
+  | node k p r left right ihl ihr =>
+    exact ⟨ihl h.1, imp p r h.2.1, ihr h.2.2⟩
+
 def checkBelow (tree : RankTree) (r : Nat) (q : Word) : Bool :=
   match lookup tree q with
   | none => false
@@ -101,6 +108,17 @@ theorem checkedRows_closed {tree : RankTree} {pred : Word → List Word}
     (hp : lookup tree p = some r) (hq : q ∈ pred p) :
     ∃ s, lookup tree q = some s ∧ s < r :=
   checkRow_sound (lookup_all checked hp) hq
+
+/-- A faster complete enumeration may be used to certify the original inverse.
+Only inclusion of all original predecessors is required. -/
+theorem checkedRows_of_complete_enumeration {tree : RankTree}
+    {pred fast : Word → List Word} (checked : CheckedRows tree fast)
+    (complete : ∀ p q, q ∈ pred p → q ∈ fast p) : CheckedRows tree pred := by
+  apply RankTree.all_mono checked
+  intro p r h
+  apply List.all_eq_true.mpr
+  intro q hq
+  exact List.all_eq_true.mp h q (complete p q hq)
 
 /-- `R p q` means that q is a genuine predecessor of p. -/
 inductive BackPath (R : Word → Word → Prop) : Nat → Word → Word → Prop
