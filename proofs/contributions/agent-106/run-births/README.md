@@ -17,3 +17,7 @@ python3 proofs/contributions/agent-106/run-births/check.py \
 ```
 
 本环境通过 `runtime_readlink_self.c` 将当前进程的数字 PID 可执行文件路径查询改用 `/proc/self/exe`；仅修正运行时自身路径发现，不更改 Lean 源、内核或库。正常安装不需要它。编译产物、复制的依赖和编译器安装作为可重建基础设施不纳入版本控制。
+
+## 第二个编译检查点
+
+`OverflowBirths.lean` 证明真实溢出内部的精确0/18分类：新生极值必须接触旧9，两端不可能是0或18。`BirthFamily.lean` 证明所有g≥2的实际新生参数族、正整数实现及输入/前两步有限安全。`PopulationObstructions.lean` 以普通内核`decide`核验196第5→6步，并排除四项计数的所有正整数线性权重单调性。全部作者编译已完成；独立审查/空目录重建正在运行。有限搜索仅用于发现候选，不作为普遍数学结论。

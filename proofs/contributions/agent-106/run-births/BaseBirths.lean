@@ -12,7 +12,7 @@ same-width pair value.  An overflow changes mirror positions, so this is
 not by itself an overflow transition formula. -/
 def localPair (b x a c : Int) : Int := (x+a)%b + (x+c)%b
 
-private theorem mod_two_ranges (b z : Int) (hb : 0 < b)
+private theorem mod_two_ranges (b z : Int) (_hb : 0 < b)
     (hz : 0 ≤ z ∧ z < 2*b) : z%b = if z < b then z else z-b := by
   split
   · exact Int.emod_eq_of_lt hz.1 ‹z < b›
