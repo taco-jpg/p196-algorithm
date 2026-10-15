@@ -29,4 +29,13 @@ Progress log (fresh build, seconds):
 - LychrelDigitSums 83.6, ScalarClock, ActualScalar, ScalarOrbit,
   PrefixExtension, ActualPrefixLift, FiniteGraph, RankRows, JobCatalog: PASS
 - JobData0–JobData4: PASS (0.3, 1.7, 8.0, 3.2, 5.8)
-- JobData5 onward: running
+- JobData5 21.4, JobData6 333.2, JobData7 1033.3: PASS
+- JobData8 onward: running. Elaboration time is roughly quadratic in table
+  size (each table is one nested `if` term of up to ~190 KB per line); the
+  1.7 MB modules are expected to take about an hour each on one core.
+
+Development-only probe (separate directory, NOT production evidence, objects
+copied from the production build): `JobChecks0`–`JobChecks5` compile with
+exit 0 (0.3, 6.0, 34.1, 17.8, 28.9, 96.4 s), consistent with the original
+author's development checks. These do not count as production row checks;
+the driver recompiles every `JobChecks` module itself.
