@@ -28,11 +28,20 @@ The even-width and eventual eleven-divisibility facts reuse the existing
 `AstraModular` theorems. The digit-spike arithmetic and modular autonomy
 classification reuse Agent #108's actual-integer formalization.
 
-Status at this source checkpoint: both new modules compile in official
-Lean 4.19.0, commit `6caaee842e94`, with printed transitive axioms only
-`propext`, `Classical.choice`, and `Quot.sound`. Complete fresh nine-source
-rebuild and audit are pending; independent review and integration are
-separate gates. All initial failed source attempts and logs are retained.
+Status: **LEAN-CHECKED / READY_FOR_REVIEW**. All nine source modules rebuilt
+successfully from an empty directory in official Lean 4.19.0, commit
+`6caaee842e94`. All 269 explicit public theorem/lemma declarations (eight new)
+received transitive `#print axioms` audits. Every command exited zero, sources
+remained unchanged, and only `propext`, `Classical.choice`, and `Quot.sound`
+were reported. No compiler-trusted evaluation shortcut occurs in the audited
+chain. The full record is `verification/fresh_002/verification.json`.
+
+The mathematical sources are pinned to published commit
+`291cb2c4c04fc913e5653486ee08438bf606ce41`; compiled source and Git-blob matches
+are in `verification/fresh_002/source-publication.json`. Independent review
+and integration remain pending. All initial failed source attempts and the
+initial definitions-only-module checker rejection are retained, with clear
+failure labels. See `REVIEW_REQUEST.md` for the independent review scope.
 
 From the repository root, using a new evidence output directory:
 

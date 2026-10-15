@@ -143,8 +143,8 @@ def public_theorems(source: str) -> list[dict]:
     census = len(re.findall(rf"\b(?:theorem|lemma)\s+{IDENT}", code))
     if declaration_count != census:
         raise ValueError(f"Unsupported theorem syntax: recognized {declaration_count}, found {census}")
-    if not found:
-        raise ValueError("No public theorems found")
+    # A definitions-only module, such as the imported AutonomyDefs, has no
+    # theorem audit targets. The token census above still rejects omissions.
     return found
 
 
