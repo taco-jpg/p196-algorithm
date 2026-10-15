@@ -22,7 +22,7 @@ PREREQUISITES = [
       ("BaseReflection", "ResetNormalization", "PhysicalWidth", "SeamSafety")],
     CONTRIB / "2026-10-15-base-reverse-add-formal/ReverseAdd.lean",
 ]
-OWN_MODULES = ["HighBaseNormalization", "HighBasePairs", "HighBaseThreshold", "HighBaseNumeric"]
+OWN_MODULES = ["HighBaseNormalization", "HighBasePairs", "HighBaseThreshold", "HighBaseNumeric", "HighBaseFirstHit"]
 SOURCE_PATHS = PREREQUISITES + [HERE / f"{m}.lean" for m in OWN_MODULES]
 
 def sha(data: bytes) -> str:
@@ -41,6 +41,9 @@ def main() -> None:
     version = subprocess.check_output([lean, "--version"], text=True).strip()
     if "version 4.19.0," not in version:
         raise SystemExit(f"Expected Lean 4.19.0: {version}")
+    actual_modules = {p.stem for p in HERE.glob("*.lean")}
+    if actual_modules != set(OWN_MODULES):
+        raise SystemExit(f"Unreconciled proof build coverage: {actual_modules ^ set(OWN_MODULES)}")
     theorem_names, definition_names, source_hashes = [], [], {}
     for p in SOURCE_PATHS:
         text = p.read_text()
