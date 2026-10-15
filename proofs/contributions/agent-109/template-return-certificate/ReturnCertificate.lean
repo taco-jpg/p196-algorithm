@@ -268,6 +268,152 @@ theorem certificate_sound (cert : Certificate) (hc : check cert = true) (n G H :
     | succ k ih => exact inv_step cert hv _ ih
   exact fun k => inv_not_palindrome cert hv _ (hinv k)
 
+/-! ## Realizability of admissible templates by ordinary integers -/
+
+/-- Mirrored pair-word shape: symmetric, with an even middle coefficient. -/
+inductive Mirr : Word → Prop
+  | nil : Mirr []
+  | single (m : Nat) : m % 2 = 0 → Mirr [m]
+  | wrap (a : Nat) (q : Word) : Mirr q → Mirr ([a] ++ q ++ [a])
+
+theorem realize (q : Word) (hq : Mirr q) (hb : Bounded q) :
+    ∃ D : Word, pair D = q ∧ (∀ y ∈ D, y < 10) ∧ (LastPos q → LastPos D) := by
+  induction hq with
+  | nil => exact ⟨[], rfl, by simp, fun _ => fun x hx => by simp at hx⟩
+  | single m hm =>
+    have hm18 := hb m (by simp)
+    refine ⟨[m / 2], ?_, ?_, ?_⟩
+    · simp [pair, zipAdd]; omega
+    · simp; omega
+    · intro hl x hx
+      have := hl m (by simp)
+      simp at hx; omega
+  | wrap a q hq ih =>
+    have ha := hb a (by simp)
+    obtain ⟨D, hD, hd, -⟩ := ih (fun x hx => hb x (by simp [hx]))
+    refine ⟨[a - min 9 a] ++ D ++ [min 9 a], ?_, ?_, ?_⟩
+    · have hrev : ([a - min 9 a] ++ D ++ [min 9 a]).reverse =
+          [min 9 a] ++ D.reverse ++ [a - min 9 a] := by simp
+      rw [pair, hrev, List.append_assoc, List.append_assoc,
+        zipAdd_append _ _ _ _ (by simp),
+        zipAdd_append _ _ _ _ (by simp : D.length = D.reverse.length)]
+      have : pair D = zipAdd D D.reverse := rfl
+      rw [← this, hD]
+      simp [zipAdd]
+      constructor <;> omega
+    · intro y hy
+      simp only [List.mem_append, List.mem_singleton] at hy
+      rcases hy with (hy | hy) | hy
+      · omega
+      · exact hd y hy
+      · omega
+    · intro hl x hx
+      have h1 : ([a] ++ q ++ [a]).getLast? = some a := by
+        rw [List.getLast?_append]; simp
+      have hpos := hl a h1
+      have h2 : ([a - min 9 a] ++ D ++ [min 9 a]).getLast? = some (min 9 a) := by
+        rw [List.getLast?_append]; simp
+      rw [h2] at hx
+      have hx' : min 9 a = x := Option.some.inj hx
+      omega
+
+theorem mirr_wrap (X C : Word) (hC : Mirr C) : Mirr (X ++ C ++ X.reverse) := by
+  induction X with
+  | nil => simpa using hC
+  | cons x X ih =>
+    have : x :: X ++ C ++ (x :: X).reverse = [x] ++ (X ++ C ++ X.reverse) ++ [x] := by simp
+    rw [this]; exact Mirr.wrap x _ ih
+
+theorem template_mirr (c : Nat) (B A C : Word) (g h : Nat) (hC : Mirr C) :
+    Mirr (template c B A C g h) := by
+  have := mirr_wrap (B ++ List.replicate g c ++ A ++ List.replicate h (18 - c)) C hC
+  have e : template c B A C g h =
+      (B ++ List.replicate g c ++ A ++ List.replicate h (18 - c)) ++ C ++
+        (B ++ List.replicate g c ++ A ++ List.replicate h (18 - c)).reverse := by
+    simp [template, List.reverse_append, List.reverse_replicate]
+  rw [e]; exact this
+
+theorem template_lastPos (c : Nat) (B A C : Word) (g h : Nat) (hc : Phase c) (hg : 0 < g)
+    (hB : ∀ b, B.head? = some b → 0 < b) : LastPos (template c B A C g h) := by
+  intro x hx
+  unfold template at hx
+  rw [List.getLast?_append] at hx
+  cases hBe : B with
+  | nil =>
+    rw [hBe] at hx
+    simp at hx
+    obtain ⟨g', rfl⟩ : ∃ g', g = g' + 1 := ⟨g - 1, by omega⟩
+    rw [List.getLast?_replicate] at hx
+    simp at hx
+    unfold Phase at hc; omega
+  | cons b B' =>
+    rw [hBe] at hx
+    simp [List.getLast?_reverse] at hx
+    exact hx ▸ hB b (by simp [hBe])
+
+theorem template_bounded (c : Nat) (B A C : Word) (g h : Nat) (hc : Phase c)
+    (hB : Bounded B) (hA : Bounded A) (hC : Bounded C) :
+    Bounded (template c B A C g h) := by
+  unfold Phase at hc
+  intro x hx
+  simp only [template, List.mem_append, List.mem_reverse, List.mem_replicate] at hx
+  rcases hx with ((((((((h1 | h1) | h1) | h1) | h1) | h1) | h1) | h1) | h1)
+  · exact hB x h1
+  · omega
+  · exact hA x h1
+  · omega
+  · exact hC x h1
+  · omega
+  · exact hA x h1
+  · omega
+  · exact hB x h1
+
+/-- Every admissible template is the mirrored pair word of an ordinary integer. -/
+theorem template_realized (c : Nat) (B A C : Word) (g h : Nat) (hc : Phase c) (hg : 0 < g)
+    (hB : Bounded B) (hA : Bounded A) (hC : Bounded C) (hCm : Mirr C)
+    (hB0 : ∀ b, B.head? = some b → 0 < b) :
+    ∃ n, pairWord n = template c B A C g h := by
+  obtain ⟨D, hD, hd, hl⟩ := realize _ (template_mirr c B A C g h hCm)
+    (template_bounded c B A C g h hc hB hA hC)
+  have hcan : Canon D := (canon_iff D).mpr ⟨hd, hl (template_lastPos c B A C g h hc hg hB0)⟩
+  exact ⟨evalL D, by rw [pairWord, digits_evalL D hcan, hD]⟩
+
+/-! ## Existence from a certificate -/
+
+/-- Admissibility of the first state: `C₀ = H ++ M ++ rev H` with `M` empty or
+one even coefficient, and a positive exterior if `B₀` is nonempty. -/
+def Admissible0 (cert : Certificate) (H M : Word) : Prop :=
+  (cert.st 0).C = H ++ M ++ H.reverse ∧ M.length ≤ 1 ∧ (∀ m ∈ M, m % 2 = 0) ∧
+  (∀ b, (cert.st 0).B.head? = some b → 0 < b)
+
+instance (cert : Certificate) (H M : Word) : Decidable (Admissible0 cert H M) := by
+  unfold Admissible0; exact inferInstance
+
+theorem mirr_of_split (H M : Word) (hM : M.length ≤ 1) (he : ∀ m ∈ M, m % 2 = 0) :
+    Mirr (H ++ M ++ H.reverse) := by
+  apply mirr_wrap
+  cases M with
+  | nil => exact Mirr.nil
+  | cons m M' =>
+    cases M' with
+    | nil => exact Mirr.single m (he m (by simp))
+    | cons _ _ => simp at hM
+
+/-- **Conditional existence.** An accepted certificate with an admissible first
+state yields an ordinary integer none of whose iterates (including itself) is a
+palindrome. -/
+theorem certificate_existence (cert : Certificate) (hc : check cert = true)
+    (H M : Word) (hadm : decide (Admissible0 cert H M) = true) :
+    ∃ m, ∀ k, ¬ Palindrome (orbit m k) := by
+  have hv := check_sound cert hc
+  have ha : Admissible0 cert H M := of_decide_eq_true hadm
+  obtain ⟨hCe, hM, hev, hB0⟩ := ha
+  obtain ⟨hph, hB, hA, hC, -, -, -, -, -, h2, h2', -, -⟩ := hv.2 0 hv.1
+  have hCm : Mirr (cert.st 0).C := by rw [hCe]; exact mirr_of_split H M hM hev
+  obtain ⟨n, hn⟩ := template_realized _ _ _ _ (cert.lk 0).lo (cert.lk 0).lo' hph
+    (by omega) hB hA hC hCm hB0
+  exact ⟨step n, certificate_sound cert hc n _ _ hn (Nat.le_refl _) (Nat.le_refl _)⟩
+
 end Agent109.Cert
 
 #print axioms Agent109.Cert.shape_palindrome_iff
@@ -275,3 +421,5 @@ end Agent109.Cert
 #print axioms Agent109.Cert.template_trim
 #print axioms Agent109.Cert.check_sound
 #print axioms Agent109.Cert.certificate_sound
+#print axioms Agent109.Cert.template_realized
+#print axioms Agent109.Cert.certificate_existence
