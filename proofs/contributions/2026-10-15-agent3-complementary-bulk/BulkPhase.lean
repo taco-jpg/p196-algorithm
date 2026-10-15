@@ -11,7 +11,7 @@ classification is an additional finite arithmetic observation.
 
 namespace P196.Agent3
 
-def Admissible (x : Nat) : Prop := 1 <= x /\ x <= 17 /\ x != 9
+def Admissible (x : Nat) : Prop := 1 <= x /\ x <= 17 /\ x ≠ 9
 
 def carry (x : Nat) : Nat := if x < 9 then 0 else 1
 
@@ -89,7 +89,7 @@ theorem period_two_iff (x : Nat) (hx : Admissible x) (he : x % 2 = 0) :
   rcases even_phase_classification x hx he with h | h | h | h | h | h | h | h
   all_goals subst x; decide
 
-theorem no_fixed_phase (x : Nat) (hx : Admissible x) : phase x != x := by
+theorem no_fixed_phase (x : Nat) (hx : Admissible x) : phase x ≠ x := by
   unfold Admissible at hx
   unfold phase bulkDigit
   split <;> omega
