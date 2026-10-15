@@ -74,6 +74,12 @@ def main():
     assert 'version 4.19.0,' in version, version
     assert sha(BASE) == BASE_SHA, 'Baseline source changed'
     sources = {'LychrelDigitSums': BASE}
+    for folder, names in {
+        '2026-10-14-base-uniqueness-formal': ['SignedDigitUniqueness'],
+        '2026-10-15-base-reflection-formal': ['BaseReflection', 'ResetNormalization', 'PhysicalWidth', 'SeamSafety'],
+        '2026-10-15-base-reverse-add-formal': ['ReverseAdd'],
+    }.items():
+        sources.update({name: REPO / 'proofs/contributions' / folder / (name + '.lean') for name in names})
     sources.update({p.stem: p for p in HERE.glob('*.lean') if p.stem != 'AllAxioms'})
     order, active, audit_names = [], set(), []
     def visit(name):
