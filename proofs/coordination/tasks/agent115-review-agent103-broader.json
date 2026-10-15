@@ -1,18 +1,32 @@
 {
   "task_id": "agent115-review-agent103-broader",
   "owner": "Agent #115",
-  "subagents": ["agent115-statement-fidelity (Claude subagent: written eq.(2) vs Lean statements)", "agent115-generator-diff (Claude subagent: stage2 generator vs original templates)"],
+  "subagents": [
+    "agent115-statement-fidelity (Claude subagent: written eq.(2) vs Lean statements)",
+    "agent115-generator-diff (Claude subagent: stage2 generator vs original templates)"
+  ],
   "type": "INDEPENDENT_REVIEW",
   "target": "Independent review (replication, no new theorem) of agent103-broader-return-formal at source 04a36443d5bd0f3c15eeb3dc4ae03d4a45f7a5c2 (package proofs/contributions/agent-103/broader-return-formal/, merged to main by PR #35 at 99e8d43): (1) fresh from-source rebuild of the complete import closure in an empty directory with official Lean 4.19.0 6caaee842e94 (archive sha256 6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe), no reused objects; (2) independent transitive axiom audit of BroaderBound.returns_le_90_plus_warmup, returns_le_94, wide_returns_le_90, no_95_returns, BroaderClock.return_forces_clock and the BroaderScalarBound corollaries, plus the full theorem inventory; (3) statement fidelity of pairAt/Admissible/warmup and the return hypothesis against COMPONENT_SPECIFIC_BOUND.md eq. (2) and BROADER_RETURN_BOUND.md; (4) BroaderClock.two_column_step derivation and the root bridge (states list, encodeB, root2_realization, returnIn classification); (5) stage2/gen_broader.py versus the original scalar templates. The scalar package review stays routed to Agent #9 (agent15-scalar-review-routing); rebuilding its modules as part of the broader import closure is recorded as dependency replication only, not as the scalar review.",
-  "related": ["agent103-broader-return-formal", "agent103-scalar-finite-instance", "agent15-scalar-review-routing", "BroaderBound.returns_le_90_plus_warmup", "BroaderClock.return_forces_clock"],
-  "dependencies": ["agent103-broader-return-formal source 04a36443d5bd0f3c15eeb3dc4ae03d4a45f7a5c2", "agent103-review-request.json (broader reviewer null, unrouted)"],
-  "intended_files": ["proofs/contributions/agent-115/review-agent103-broader/"],
+  "related": [
+    "agent103-broader-return-formal",
+    "agent103-scalar-finite-instance",
+    "agent15-scalar-review-routing",
+    "BroaderBound.returns_le_90_plus_warmup",
+    "BroaderClock.return_forces_clock"
+  ],
+  "dependencies": [
+    "agent103-broader-return-formal source 04a36443d5bd0f3c15eeb3dc4ae03d4a45f7a5c2",
+    "agent103-review-request.json (broader reviewer null, unrouted)"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-115/review-agent103-broader/"
+  ],
   "branch": "research/agent-115/s20261015-review-broader",
-  "status": "CLAIMED",
-  "latest_source_commit": null,
-  "verification_status": "WIP: no review result yet. agent103-broader-return-formal keeps its LEAN-CHECKED label.",
+  "status": "ACTIVE",
+  "latest_source_commit": "6b5901d2433f8fa2725740c10403e1b78c6092bd",
+  "verification_status": "WIP: generator provenance PASS (34/34 generated files reproduced byte for byte from the pinned certificate; root bound 636 independently recomputed). Fresh 90-module from-source rebuild running (independent driver), axiom audit pending. agent103-broader-return-formal keeps LEAN-CHECKED.",
   "claim_base": "a057ef0475ed89c6987f37d65e2f4e4a258dd148",
-  "last_activity": "2026-10-15T16:05:17Z",
-  "next_action": "Pin source tree hashes at 04a3644, start fresh isolated rebuild (2 cores), run statement-fidelity review in parallel; publish evidence directory and verdict.",
+  "last_activity": "2026-10-15T16:29:31Z",
+  "next_action": "Finish fresh rebuild (BJobChecks6-14, then scalar JobChecks for BroaderScalarBound), run Agent115Audit.lean, publish verdict with statement-fidelity notes.",
   "overlap_review": "Read all task records at a057ef0475ed89c6987f37d65e2f4e4a258dd148. agent103-review-request.json lists reviewer null for the broader package; no task record reviews agent103-broader-return-formal. Agent #9 owns the scalar review; Agent #103 owns the package. No source edits to agent-103 files."
 }
