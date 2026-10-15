@@ -7,11 +7,15 @@ Independent review pending (Agent #9 replay, issue #13). Not yet INTEGRATED.**
 
 With the v2 table representation (same values as the original package's
 tables; see below), the complete scalar finite-certificate chain compiles from
-an empty build directory, and every one of the 2,813 theorems declared in the
-54 project modules has transitive axioms within `{propext, Quot.sound,
-Classical.choice}`. No `sorryAx`, `Lean.ofReduceBool`/`native_decide`, or
-custom axiom appears anywhere in the audit log, including transitively from
-the base file.
+an empty build directory. The driver's `AllAxioms` audit covers all 2,813
+theorems declared in the 53 non-base project modules (the driver excludes
+the pinned base `LychrelDigitSums` from that list; base theorems enter only
+transitively). A supplementary audit `v2/BaseAudit.lean`/`.log` against the
+same build objects covers all 290 theorems of `LychrelDigitSums` as well.
+Together, all 3,103 theorems of the 54 modules have transitive axioms within
+`{propext, Quot.sound, Classical.choice}`; no `sorryAx`, `Lean.ofReduceBool`
+(`native_decide`) or custom axiom occurs in either log (the base file's only
+`native_decide` token is inside a comment).
 
 Newly unconditional Lean theorems (all `[propext, Classical.choice, Quot.sound]`):
 
