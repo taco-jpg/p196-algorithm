@@ -124,3 +124,13 @@ pre-GPU estimate ("+10–35%"); the measured results are in this file and on the
   cutoff is used.
 - The production engine changes only after a sustained GPU test wins on the same workload, and only
   with the owner's go-ahead. Benchmarks run on a copy of a checkpoint, never the live file.
+
+# ⚠️ INTELLECTUAL PROPERTY & COPYRIGHT NOTICE
+
+**© 2026. All Rights Reserved.**
+
+This repository contains proprietary mathematical research, proof archives, and computer science verification code regarding reverse-and-add systems and the P196 problem. 
+
+* **Proof of Priority:** Full legal authorship and time-stamped proof of discovery are permanently established via the immutable cryptographic commit history of this repository, finalized on **October 14, 2026**.
+* **AI Training Restriction:** Clear and explicit notice is hereby given that no permission is granted for any entity, automated web-crawler, or corporation to copy, scrape, index, or utilize any code, formulas, text, or assets contained within this repository for the purpose of training machine learning models or Large Language Models (LLMs) without explicit, written, and signed consent from the authors.
+* **Usage Terms:** Public visibility of this repository is provided strictly for peer review and viewing purposes. Unauthorized distribution, modification, or commercial replication of this proprietary work is strictly prohibited under international copyright laws.
