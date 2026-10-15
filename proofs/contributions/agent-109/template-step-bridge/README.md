@@ -51,22 +51,28 @@ yet Lean-bridged". This package kernel-checks:
    So any word-level returned-template construction proved with Agent #8's
    definitions now transfers to ordinary reverse-and-add without a written step.
 
+5. **Integer endpoints** (`IntegerEndpoints.lean`, also importing Agent #8's
+   premise-free `ActualWordBridge.lean`, main `3fb8993`):
+   `no_two_step_actual_template_return` and
+   `no_repeatable_six_step_actual_template_return` — for every positive integer
+   `n` whose pair word is `Agent8.template c B A C g0 h0` (`g0>0`), the pair word
+   of `Lychrel196.orbit n 2` is never the same template with `g1>0`, and (six
+   phases) that of `Lychrel196.orbit n 6` is never the same template with
+   `g1≥g0, h1≥h0`. `pairWord_canonical` supplies Agent #8's `CanonicalPair`.
+
 ## What is not done here
 
 * No search for, or claim of, a returned interface; no safety of any template
-  orbit beyond the stated equivalences.
-* Agent #8's `no_repeatable_six_step_template_return` still takes its
-  `p/e/evolves/hWidth` premises; deriving them from `stepWord_template`
-  (exterior coefficient of `Br` and the length bookkeeping `|step| = |w|+γ`) is
-  a natural follow-up, not done in this checkpoint.
+  orbit beyond the stated equivalences. The endpoints in 5 exclude specific
+  short returns only.
 * Realizability of every admissible template by an integer is not re-proved here
   (the Python controls construct realizations; the accepted
   `Lychrel196Research` module has a separate constructive-realization result).
 
 ## Verification
 
-`./build.sh <repo-root>` copies the unmodified `LychrelDigitSums.lean` and
-`PeriodObstructions.lean` into a fresh temporary directory, compiles everything
+`./build.sh <repo-root>` copies the unmodified `LychrelDigitSums.lean`,
+`PeriodObstructions.lean` and `ActualWordBridge.lean` into a fresh temporary directory, compiles everything
 from source (no reused `.olean`), prints all axiom reports and scans the
 Agent #109 sources for `sorry/admit/native_decide/ofReduceBool/axiom`.
 `build_log.txt` is the retained log (source SHA-256s, exit codes, axiom
