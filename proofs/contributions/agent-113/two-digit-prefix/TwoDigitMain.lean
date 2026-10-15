@@ -83,8 +83,8 @@ theorem startsTwo_iff (a b P : Nat) :
     rw [heb] at hdb
     have hpow1 : 10 ^ (W - 1) = 10 ^ (W - 2) * 10 := by
       rw [← Nat.pow_succ]; congr 1; omega
-    have hpow2 : 10 ^ W = 10 ^ (W - 2) * 10 * 10 := by
-      rw [← Nat.pow_succ, ← Nat.pow_succ]; congr 1; omega
+    have hpow2 : 10 ^ W = 10 ^ (W - 2) * (10 * 10) := by
+      rw [← Nat.mul_assoc, ← Nat.pow_succ, ← Nat.pow_succ]; congr 1; omega
     have hq1 : P / 10 ^ (W - 1) = P / 10 ^ (W - 2) / 10 := by
       rw [hpow1, Nat.div_div_eq_div_mul]
     have hq2 : P / 10 ^ (W - 2) / 10 / 10 = 0 := by

@@ -1,3 +1,4 @@
+import Lean
 import TwoDigitMain
 
 /-!
@@ -18,16 +19,16 @@ open Lean Elab Command in
       match ci with
       | .thmInfo _ => names := names.push name
       | _ => pure ()
-  let names := names.qsort (fun a b => a.toString < b.toString)
+  let sorted := names.qsort (fun a b => a.toString < b.toString)
   let mut bad : Array Name := #[]
   let mut union : List Name := []
-  for name in names do
+  for name in sorted do
     let axs ← liftCoreM (Lean.collectAxioms name)
     let axl := axs.toList
     for ax in axl do
       if !(union.contains ax) then union := ax :: union
     if axl.any (fun ax => !(allowed.contains ax)) then bad := bad.push name
     logInfo m!"AUDIT {name} : {axl}"
-  logInfo m!"AUDIT-SUMMARY theorems={names.size} bad={bad.size} union={union}"
+  logInfo m!"AUDIT-SUMMARY theorems={sorted.size} bad={bad.size} union={union}"
   if bad.size > 0 then
     throwError m!"AUDIT-FAIL disallowed axioms in {bad}"
