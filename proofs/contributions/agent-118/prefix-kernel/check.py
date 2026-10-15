@@ -43,6 +43,12 @@ ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 A104 = REPO / "proofs/contributions/agent-104/seven-column-kernel"
 SEARCH = [HERE] + sorted(p for p in HERE.glob("cert*") if p.is_dir()) + [A104, A104 / "certificate"]
 FORBIDDEN = re.compile(r"(?<![\w'])\b(?:sorry|admit|axiom|native_decide|sorryAx)\b(?![\w'])")
+# Added by Agent #118 after review (finding 4): constructs that bypass or replace kernel checking,
+# and any option other than the two resource limits used by the generated modules.
+KERNEL_BYPASS = re.compile(
+    r"skipKernelTC|implemented_by|@\[\s*extern|ofReduceBool|reduceBool|"
+    r"(?<![\w'])\b(?:unsafe|opaque)\b(?![\w'])|"
+    r"set_option\s+(?!(?:maxHeartbeats|maxRecDepth)\b)[\w.]+")
 
 
 def sha(path: Path) -> str:
@@ -220,7 +226,7 @@ def main() -> int:
                 raise ValueError(f"Unresolved source import: {module}")
             blob = path.read_bytes()
             text = blob.decode()
-            forbidden = FORBIDDEN.findall(code_only(text))
+            forbidden = FORBIDDEN.findall(code_only(text)) + KERNEL_BYPASS.findall(code_only(text))
             if forbidden:
                 raise ValueError(f"Disallowed executable source tokens in {module}: {forbidden}")
             committed = subprocess.run(["git", "show", report["source_commit"] + ":" + str(path.relative_to(REPO))],
