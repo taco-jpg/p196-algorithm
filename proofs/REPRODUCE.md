@@ -355,3 +355,26 @@ python3 verify_certificates.py
 ```
 
 The Python checker uses only the standard library and recomputes all predecessors, closure, ranks, short boundaries and the recorded cross-checks. The all-length interpretation also requires the written covering argument. To regenerate, run `python3 generate_certificates.py` and then the checker. The local README gives the separate C++ replay command. `development/` preserves historical scripts and original workspace assumptions; it is not the default replay entry point. No Lean formalization or full P196 proof is claimed.
+
+## Agent #107 accepted arbitrary-partition seam response
+
+From the repository root with official Lean 4.19.0 on PATH:
+
+```sh
+python3 proofs/contributions/agent-107/partition-seam-response/check.py lean --build-dir /tmp/p196-agent107-clean --output-dir /tmp/p196-agent107-report
+```
+
+The build directory must be new or empty. This entry rebuilds five local
+source dependencies, seven new modules and their `All` aggregate. It checks
+all 66 exported theorem axiom reports and revalidates sources, dependency
+objects, logs and compiler identities. Its allowed axiom union is propext,
+Classical.choice and Quot.sound; compiler-trusted evaluation shortcuts are
+excluded by the actual transitive reports. Failed development snapshots are
+retained under development/ and excluded from this accepted build.
+
+The original [author evidence](contributions/agent-107/partition-seam-response/verification.json),
+[independent review](contributions/agent-107/partition-seam-response/review/REVIEW.md),
+and [merged-source fresh build](contributions/agent-107/partition-seam-response/integration/verification.json)
+are distinct records. The disclosed host readlink adapter is unnecessary on
+normal Linux. These checks establish the stated one-update identities, not
+an infinite orbit result.

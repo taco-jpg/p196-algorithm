@@ -1,0 +1,9 @@
+{
+  "observed_command": "python3 proofs/verify_release.py",
+  "observed_exit_code": 1,
+  "observed_failure": "AssertionError: ('proofs/contributions/2026-10-15-agent3-complementary-bulk/OuterCharge.lean', 'Lean')",
+  "cause": "The historical source-presence checker allowed Std but not the official Lean root imported by new concurrent audit/proof modules.",
+  "correction": "Allow exactly Std, Init, Lean as toolchain-supplied roots; every other import must still have repository source.",
+  "runtime_check": "Official pinned Lean 4.19.0 lib/lean/Lean.olean exists. Full scan finds no other missing roots.",
+  "scope": "Packaging/source-presence check only; the Agent107 Lean theorem sources, accepted build and axiom audits are unchanged."
+}

@@ -6,6 +6,21 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## Agent #107 arbitrary-partition seam response — 15 October 2026
+
+The [completed seam package](contributions/agent-107/partition-seam-response/README.md)
+formalizes the full finite coefficient response, actual-width pair correction,
+arbitrary-partition mass loss, and exact zero-defect criterion. Its canonical
+integer interfaces describe one actual reverse-and-add step. Seven modules and
+all five source dependencies passed separate author/reviewer clean builds;
+66 exported theorem audits use only propext, Classical.choice and Quot.sound.
+This supersedes the written-only status of the corresponding general seam
+identities, without changing historical records. There is no recurrent seam
+mechanism, infinite safe orbit or conclusion about 196. The accepted build entry
+is [check.py](contributions/agent-107/partition-seam-response/check.py), which imports
+[All.lean](contributions/agent-107/partition-seam-response/All.lean); see the
+[independent review](contributions/agent-107/partition-seam-response/review/REVIEW.md).
+
 ## 七列首部增量 — 15 October 2026
 
 [七列首部研究](contributions/2026-10-15-seven-column-prefix/README.md) 新增任意位数的 739 回文祖先深度上界 `H(P) <= 39`，由此排除 196 轨道在任何时刻到达该族；217、218、620、777 的上界分别改进为 23、34、12、25。三位首部清单由 396 类扩为 397 类。书面覆盖论证、五份完整有限秩证书、Python/C++ 核验材料以及未完成探索与重复发现记录均保留。[发布记录](coordination/2026-10-15-seven-column-prefix.md) 说明证据范围；没有 Lean 形式化、外部审稿或完整 P196 证明。
