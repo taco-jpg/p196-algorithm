@@ -2,8 +2,10 @@
 """Independent empty-object-directory Lean rebuild and environment axiom audit.
 
 This driver does not import the development-cache driver or its declaration
-scanner.  The audit enumerates ALL compiled constants by their owning module
-inside Lean's Environment, then applies Lean.collectAxioms transitively.
+scanner. The audit enumerates ALL compiled constants by their owning module
+inside Lean's Environment. Kernel-safe declarations (including every theorem)
+are transitively axiom-audited; compiler-generated unsafe artifacts are recorded
+separately, since Lean deliberately erases their proofs to lcProof.
 """
 from __future__ import annotations
 
@@ -78,20 +80,27 @@ def audit_source(order):
   let env ← getEnv
   let mut declarations : Array Name := #[]
   let mut theoremCount := 0
+  let mut safeCount := 0
+  let mut unsafeCount := 0
   for (n, _) in env.constants do
     if let some idx := env.getModuleIdxFor? n then
       if modules.contains env.header.moduleNames[idx]! then
         declarations := declarations.push n
   for n in declarations.qsort Name.lt do
-    let deps ← collectAxioms n
-    for ax in deps do
-      unless allowed.contains ax do
-        throwError m!"DISALLOWED_AXIOM|{n}|{ax}"
     let ci := (env.find? n).get!
-    let kind := if ci.isTheorem then "THEOREM" else "CONSTANT"
-    if ci.isTheorem then theoremCount := theoremCount + 1
-    logInfo m!"AUDIT|{kind}|{n}|{deps.qsort Name.lt |>.toList}"
-  logInfo m!"AUDIT_TOTAL|{declarations.size}|{theoremCount}"
+    let deps ← collectAxioms n
+    if ci.isUnsafe then
+      unsafeCount := unsafeCount + 1
+      logInfo m!"AUDIT_UNSAFE_COMPILER_ARTIFACT|{n}|{deps.qsort Name.lt |>.toList}"
+    else
+      for ax in deps do
+        unless allowed.contains ax do
+          throwError m!"DISALLOWED_AXIOM|{n}|{ax}"
+      let kind := if ci.isTheorem then "THEOREM" else "CONSTANT"
+      if ci.isTheorem then theoremCount := theoremCount + 1
+      safeCount := safeCount + 1
+      logInfo m!"AUDIT|{kind}|{n}|{deps.qsort Name.lt |>.toList}"
+  logInfo m!"AUDIT_TOTAL|{safeCount}|{theoremCount}|{unsafeCount}"
 '''
 
 
@@ -115,10 +124,12 @@ def main():
     env['LEAN_PATH'] = str(build)
     manifest = {'status': 'RUNNING', 'repo_head_at_snapshot': head, 'requested_pin': args.pin,
                 'started_utc': datetime.now(timezone.utc).isoformat(),
+                'driver_path': str(Path(__file__).resolve().relative_to(repo)),
+                'driver_sha256': sha(Path(__file__).read_bytes()),
                 'empty_build_directory_created': True, 'objects_reused': False,
                 'compiler_launcher': str(lean), 'compiler_launcher_sha256': sha(lean.read_bytes()),
                 'LEAN_PATH': str(build), 'sources': {}, 'commands': [],
-                'audit_method': 'Lean Environment owning-module enumeration of ALL constants; collectAxioms transitively; no source declaration parser'}
+                'audit_method': 'Lean Environment owning-module enumeration of ALL constants; collectAxioms transitively for every kernel-safe declaration including every theorem; generated unsafe compiler artifacts separately inventoried; no source declaration parser'}
 
     def save():
         (evidence / 'manifest.json').write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n')
@@ -154,7 +165,7 @@ def main():
             src = mapping[name]
             data = src.read_bytes()
             code = code_only(data.decode())
-            forbidden = re.findall(r'\b(?:sorry|admit|axiom|native_decide|ofReduceBool|sorryAx)\b|debug\.skipKernelTC', code)
+            forbidden = re.findall(r'\b(?:sorry|admit|axiom|native_decide|ofReduceBool|sorryAx|unsafe|partial)\b|debug\.skipKernelTC', code)
             assert not forbidden, (src, forbidden)
             dependencies = [x for row in re.findall(r'^import\s+([^\n]+)', code, re.M) for x in row.split()]
             for d in dependencies:
@@ -184,16 +195,23 @@ def main():
         (evidence / 'IndependentEnvironmentAudit.lean').write_text(audit)
         result = execute('IndependentEnvironmentAudit', [str(lean), '-j1', '-DElab.async=false', str(build / 'IndependentEnvironmentAudit.lean')])
         rows = re.findall(r'AUDIT\|(THEOREM|CONSTANT)\|([^|\n]+)\|\[([^\]]*)\]', result)
-        total = re.findall(r'AUDIT_TOTAL\|(\d+)\|(\d+)', result)
+        unsafe = re.findall(r'AUDIT_UNSAFE_COMPILER_ARTIFACT\|([^|\n]+)\|\[([^\]]*)\]', result)
+        total = re.findall(r'AUDIT_TOTAL\|(\d+)\|(\d+)\|(\d+)', result)
         assert len(total) == 1
         assert len(rows) == int(total[0][0])
         assert len({row[1] for row in rows}) == len(rows)
         assert sum(row[0] == 'THEOREM' for row in rows) == int(total[0][1])
+        assert len(unsafe) == int(total[0][2])
+        assert len({row[0] for row in unsafe}) == len(unsafe)
+        assert not ({row[0] for row in unsafe} & {row[1] for row in rows})
         allowed = {'propext', 'Classical.choice', 'Quot.sound'}
         assert all(set(x.strip() for x in row[2].split(',') if x.strip()) <= allowed for row in rows)
         manifest['axiom_audit'] = {name: {'kind': kind, 'axioms': [x.strip() for x in deps.split(',') if x.strip()]} for kind, name, deps in rows}
         manifest['compiled_constants_audited'] = len(rows)
         manifest['compiled_theorems_audited'] = int(total[0][1])
+        manifest['compiled_constants_enumerated'] = len(rows) + len(unsafe)
+        manifest['unsafe_compiler_artifacts'] = {name: [x.strip() for x in deps.split(',') if x.strip()] for name, deps in unsafe}
+        manifest['unsafe_compiler_artifact_scope'] = 'Every source is scanned to exclude unsafe/partial definitions. Compiler-generated unsafe constants cannot occur in kernel-safe proof terms; their erased lcProof dependencies are NOT added to the mathematical axiom whitelist.'
         manifest['all_source_hashes_unchanged'] = all(mapping[n].read_bytes() == snapshots[n] for n in order)
         assert manifest['all_source_hashes_unchanged'], 'Source changed during independent build'
         manifest.update(status='PASS', completed_utc=datetime.now(timezone.utc).isoformat())
