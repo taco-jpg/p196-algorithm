@@ -1,0 +1,465 @@
+{
+  "status": "ACCEPTED_EXACT_FIFTEEN_EXPORTS_AND_FIFTEEN_TYPE_APPLICATIONS",
+  "claim_commit": "ac825edf3e77ce40aa6cf9d4b45913feb66cff9d",
+  "source_commit": "122367d4935f0b4cd9e0bee19e4121ec66b3164b",
+  "review_execution_commit": "39d9f3eb196aae5071b5c48e8a5166dad388ce9d",
+  "fixture_commit": "ab6768ef000358b5f81c6807db674dc7515819c9",
+  "hosted_run": {
+    "id": "38700059129",
+    "attempt": 1,
+    "job_id": "116305811381",
+    "new_independent_executor_run": true,
+    "author_CI_relabelled": false
+  },
+  "semantic_reviewer": {
+    "role": "Independent semantic and post-execution evidence review",
+    "Lean_executed": false,
+    "new_compiler_run_during_acceptance": false,
+    "local_readonly_evidence_checks": true
+  },
+  "accepted_original_exports": [
+    "Agent13SafeWeights.predecessor_le",
+    "Agent13SafeWeights.mem_safeFiber_iff",
+    "Agent13SafeWeights.full_safe_fiber_finite",
+    "Agent13SafeWeights.incoming_nonneg",
+    "Agent13SafeWeights.family_sum_le_incoming",
+    "Agent13SafeWeights.finite_family_weight_lower",
+    "Agent13SafeWeights.incoming_weight_lower",
+    "Agent13SafeWeights.incoming_weight_ratio",
+    "Agent13SafeWeights.no_uniform_multiplier",
+    "Agent13SafeWeights.not_exists_uniform_bound",
+    "Agent13SafeWeights.target_size_bound_nat",
+    "Agent13SafeWeights.target_size_bound_real",
+    "Agent13SafeWeights.family_size_scaled_power",
+    "Agent13SafeWeights.sqrt_scale_lt_family_size",
+    "Agent13SafeWeights.incoming_weight_sqrt_lower"
+  ],
+  "accepted_exact_type_applications": [
+    "Agent104.RealWeightsExactTypes.predecessor_le_type",
+    "Agent104.RealWeightsExactTypes.mem_safeFiber_iff_type",
+    "Agent104.RealWeightsExactTypes.full_safe_fiber_finite_type",
+    "Agent104.RealWeightsExactTypes.incoming_nonneg_type",
+    "Agent104.RealWeightsExactTypes.family_sum_le_incoming_type",
+    "Agent104.RealWeightsExactTypes.finite_family_weight_lower_type",
+    "Agent104.RealWeightsExactTypes.incoming_weight_lower_type",
+    "Agent104.RealWeightsExactTypes.incoming_weight_ratio_type",
+    "Agent104.RealWeightsExactTypes.no_uniform_multiplier_type",
+    "Agent104.RealWeightsExactTypes.not_exists_uniform_bound_type",
+    "Agent104.RealWeightsExactTypes.target_size_bound_nat_type",
+    "Agent104.RealWeightsExactTypes.target_size_bound_real_type",
+    "Agent104.RealWeightsExactTypes.family_size_scaled_power_type",
+    "Agent104.RealWeightsExactTypes.sqrt_scale_lt_family_size_type",
+    "Agent104.RealWeightsExactTypes.incoming_weight_sqrt_lower_type"
+  ],
+  "accepted_elaborated_types": {
+    "Agent13SafeWeights.sqrt_scale_lt_family_size": "∀ (m : ℕ), 2 ≤ m → 9 / 100 * √(10 / 11) * √↑(10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) < ↑(9 * 10 ^ (m - 2))",
+    "Agent13SafeWeights.predecessor_le": "∀ (n y : ℕ), Lychrel196.step n = y → n ≤ y",
+    "Agent13SafeWeights.incoming_nonneg": "∀ (w : ℕ → ℝ), Agent13SafeWeights.PositiveOnSafe w → ∀ (y : ℕ), 0 ≤ Agent13SafeWeights.incoming w y",
+    "Agent13SafeWeights.incoming_weight_sqrt_lower": "∀ (w : ℕ → ℝ),\n  Agent13SafeWeights.PositiveOnSafe w →\n    Agent13SafeWeights.AntitoneOnSafe w →\n      ∀ (m : ℕ),\n        2 ≤ m →\n          9 / 100 * √(10 / 11) * √↑(10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) <\n            Agent13SafeWeights.incoming w (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) /\n              w (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1)",
+    "Agent13SafeWeights.target_size_bound_nat": "∀ (m : ℕ), 2 ≤ m → 10 * (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) < 11 * 10 ^ (2 * m)",
+    "Agent13SafeWeights.target_size_bound_real": "∀ (m : ℕ), 2 ≤ m → ↑(10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) < 11 / 10 * 10 ^ (2 * m)",
+    "Agent13SafeWeights.incoming_weight_ratio": "∀ (w : ℕ → ℝ),\n  Agent13SafeWeights.PositiveOnSafe w →\n    Agent13SafeWeights.AntitoneOnSafe w →\n      ∀ (m : ℕ),\n        2 ≤ m →\n          ↑(9 * 10 ^ (m - 2)) ≤\n            Agent13SafeWeights.incoming w (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) /\n              w (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1)",
+    "Agent13SafeWeights.no_uniform_multiplier": "∀ (w : ℕ → ℝ),\n  Agent13SafeWeights.PositiveOnSafe w →\n    Agent13SafeWeights.AntitoneOnSafe w →\n      ∀ (C : ℝ), ∃ y, Agent13SafeFamily.Safe y ∧ C * w y < Agent13SafeWeights.incoming w y",
+    "Agent13SafeWeights.full_safe_fiber_finite": "∀ (y : ℕ), {n | Agent13SafeFamily.Safe n ∧ Lychrel196.step n = y}.Finite",
+    "Agent13SafeWeights.finite_family_weight_lower": "∀ (w : ℕ → ℝ),\n  Agent13SafeWeights.PositiveOnSafe w →\n    Agent13SafeWeights.AntitoneOnSafe w →\n      ∀ (y N : ℕ),\n        Agent13SafeFamily.Safe y →\n          ∀ (f : Fin N → ℕ),\n            Function.Injective f →\n              (∀ (i : Fin N), Agent13SafeFamily.Safe (f i) ∧ Lychrel196.step (f i) = y) →\n                ↑N * w y ≤ Agent13SafeWeights.incoming w y",
+    "Agent13SafeWeights.incoming_weight_lower": "∀ (w : ℕ → ℝ),\n  Agent13SafeWeights.PositiveOnSafe w →\n    Agent13SafeWeights.AntitoneOnSafe w →\n      ∀ (m : ℕ),\n        2 ≤ m →\n          ↑(9 * 10 ^ (m - 2)) * w (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1) ≤\n            Agent13SafeWeights.incoming w (10 ^ (2 * m) + 99 * 10 ^ (m - 1) - 1)",
+    "Agent13SafeWeights.family_sum_le_incoming": "∀ (w : ℕ → ℝ),\n  Agent13SafeWeights.PositiveOnSafe w →\n    ∀ (y N : ℕ) (f : Fin N → ℕ),\n      Function.Injective f →\n        (∀ (i : Fin N), Agent13SafeFamily.Safe (f i) ∧ Lychrel196.step (f i) = y) →\n          ∑ i, w (f i) ≤ Agent13SafeWeights.incoming w y",
+    "Agent13SafeWeights.family_size_scaled_power": "∀ (m : ℕ), 2 ≤ m → ↑(9 * 10 ^ (m - 2)) = 9 / 100 * 10 ^ m",
+    "Agent13SafeWeights.mem_safeFiber_iff": "∀ (n y : ℕ), n ∈ Agent13SafeWeights.safeFiber y ↔ Agent13SafeFamily.Safe n ∧ Lychrel196.step n = y",
+    "Agent13SafeWeights.not_exists_uniform_bound": "∀ (w : ℕ → ℝ),\n  Agent13SafeWeights.PositiveOnSafe w →\n    Agent13SafeWeights.AntitoneOnSafe w →\n      ¬∃ C, ∀ (y : ℕ), Agent13SafeFamily.Safe y → Agent13SafeWeights.incoming w y ≤ C * w y"
+  },
+  "raw_type_checks": {
+    "Agent13SafeWeights.sqrt_scale_lt_family_size": {
+      "sha256": "c029baa49d766c4ed26771ad41a43f1778cffb66fb076687818c51e805aee5dc",
+      "named_forall_binders": [
+        "m",
+        "hm"
+      ],
+      "semantic_constants": [
+        "Nat.cast",
+        "Real",
+        "Real.instDivInvMonoid",
+        "Real.instLT",
+        "Real.instMul",
+        "Real.instNatCast",
+        "Real.sqrt"
+      ]
+    },
+    "Agent13SafeWeights.predecessor_le": {
+      "sha256": "6801d643af029293ff71be8343f0520dedd2e60fb30ab90f5fbb8a7176349e59",
+      "named_forall_binders": [
+        "n",
+        "y",
+        "h"
+      ],
+      "semantic_constants": [
+        "Lychrel196.step"
+      ]
+    },
+    "Agent13SafeWeights.incoming_nonneg": {
+      "sha256": "5b7b0c7c3a503a3c5ec574dd5610ff2f9cae196c199f6af9b058155e1560837e",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "y"
+      ],
+      "semantic_constants": [
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Real",
+        "Real.instLE",
+        "Real.instZero"
+      ]
+    },
+    "Agent13SafeWeights.incoming_weight_sqrt_lower": {
+      "sha256": "5e1c9394ed3affed367155688dbae5a09cfdb71624349990a28db25e10730f09",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "ha",
+        "m",
+        "hm"
+      ],
+      "semantic_constants": [
+        "Agent13SafeWeights.AntitoneOnSafe",
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Nat.cast",
+        "Real",
+        "Real.instDivInvMonoid",
+        "Real.instLT",
+        "Real.instMul",
+        "Real.instNatCast",
+        "Real.sqrt"
+      ]
+    },
+    "Agent13SafeWeights.target_size_bound_nat": {
+      "sha256": "389da88ffdac5dc2510813e2085ed2cd652a8933f8f494e7605181a86df03450",
+      "named_forall_binders": [
+        "m",
+        "hm"
+      ],
+      "semantic_constants": []
+    },
+    "Agent13SafeWeights.target_size_bound_real": {
+      "sha256": "ee60c5e99a80259d472889b5049e38640adda49e7ead431a8e7175b156f5a1f0",
+      "named_forall_binders": [
+        "m",
+        "hm"
+      ],
+      "semantic_constants": [
+        "Nat.cast",
+        "Real",
+        "Real.instDivInvMonoid",
+        "Real.instLT",
+        "Real.instMonoid",
+        "Real.instMul",
+        "Real.instNatCast"
+      ]
+    },
+    "Agent13SafeWeights.incoming_weight_ratio": {
+      "sha256": "67ac54aa242f2ac2c3204867d9d2da29db7af53fab583a819f15fb6f1f23ff9c",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "ha",
+        "m",
+        "hm"
+      ],
+      "semantic_constants": [
+        "Agent13SafeWeights.AntitoneOnSafe",
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Nat.cast",
+        "Real",
+        "Real.instDivInvMonoid",
+        "Real.instLE",
+        "Real.instNatCast"
+      ]
+    },
+    "Agent13SafeWeights.no_uniform_multiplier": {
+      "sha256": "0f19e6c97df9dffad9cbf1bbd0c53be99352e1452dc7823d267911e00c1ffd22",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "ha",
+        "C"
+      ],
+      "semantic_constants": [
+        "Agent13SafeFamily.Safe",
+        "Agent13SafeWeights.AntitoneOnSafe",
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Real",
+        "Real.instLT",
+        "Real.instMul"
+      ]
+    },
+    "Agent13SafeWeights.full_safe_fiber_finite": {
+      "sha256": "8b89ab365f01a871738b3cb049b4030567a60c5dc0cbe94bda658bfff92582fa",
+      "named_forall_binders": [
+        "y"
+      ],
+      "semantic_constants": [
+        "Agent13SafeFamily.Safe",
+        "Lychrel196.step"
+      ]
+    },
+    "Agent13SafeWeights.finite_family_weight_lower": {
+      "sha256": "f7ea53ac4348831afbe3965687b2cde80fcc33e3fa39ab263242a945065dda3e",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "hm",
+        "y",
+        "N",
+        "hy",
+        "f",
+        "hf",
+        "hpre",
+        "i"
+      ],
+      "semantic_constants": [
+        "Agent13SafeFamily.Safe",
+        "Agent13SafeWeights.AntitoneOnSafe",
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Lychrel196.step",
+        "Nat.cast",
+        "Real",
+        "Real.instLE",
+        "Real.instMul",
+        "Real.instNatCast"
+      ]
+    },
+    "Agent13SafeWeights.incoming_weight_lower": {
+      "sha256": "f3f02e429e5386d506121e6964647f7d192b8e1eb952afa5be65ee8e7835abf5",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "ha",
+        "m",
+        "hm"
+      ],
+      "semantic_constants": [
+        "Agent13SafeWeights.AntitoneOnSafe",
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Nat.cast",
+        "Real",
+        "Real.instLE",
+        "Real.instMul",
+        "Real.instNatCast"
+      ]
+    },
+    "Agent13SafeWeights.family_sum_le_incoming": {
+      "sha256": "81f1603b9f57b7c6b408e8841a87260ced041fa251bbb6675067f74d6d0e8c58",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "y",
+        "N",
+        "f",
+        "hf",
+        "hpre",
+        "i"
+      ],
+      "semantic_constants": [
+        "Agent13SafeFamily.Safe",
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Finset.sum",
+        "Lychrel196.step",
+        "Real",
+        "Real.instAddCommMonoid",
+        "Real.instLE"
+      ]
+    },
+    "Agent13SafeWeights.family_size_scaled_power": {
+      "sha256": "36e8683e7e516102e9d3f30729e675456630f9390251ce6f7ee80f7d183e0f04",
+      "named_forall_binders": [
+        "m",
+        "hm"
+      ],
+      "semantic_constants": [
+        "Nat.cast",
+        "Real",
+        "Real.instDivInvMonoid",
+        "Real.instMonoid",
+        "Real.instMul",
+        "Real.instNatCast"
+      ]
+    },
+    "Agent13SafeWeights.mem_safeFiber_iff": {
+      "sha256": "a6160c41be5d21fe5b468778c5ac82a1fe6c772b837a7fea853475e9c3aa4a5b",
+      "named_forall_binders": [
+        "n",
+        "y"
+      ],
+      "semantic_constants": [
+        "Agent13SafeFamily.Safe",
+        "Agent13SafeWeights.safeFiber",
+        "Lychrel196.step"
+      ]
+    },
+    "Agent13SafeWeights.not_exists_uniform_bound": {
+      "sha256": "672dcbf549fc4d5f2425759aacdde56e3b6285fef66e51fdf7f4fbdaa8f8f6f3",
+      "named_forall_binders": [
+        "w",
+        "hp",
+        "ha",
+        "y"
+      ],
+      "semantic_constants": [
+        "Agent13SafeFamily.Safe",
+        "Agent13SafeWeights.AntitoneOnSafe",
+        "Agent13SafeWeights.PositiveOnSafe",
+        "Agent13SafeWeights.incoming",
+        "Real",
+        "Real.instLE",
+        "Real.instMul"
+      ]
+    }
+  },
+  "semantic_scope": {
+    "map": "Lychrel196.step n = n + reverse10 n, ordinary decimal reversal",
+    "safe": "0 < n and not Palindrome n and not Palindrome (step n)",
+    "fiber": "Every and only safe actual predecessor; inclusive range bound derived from n <= step n",
+    "weight_type": "Nat -> Real",
+    "hypotheses": "PositiveOnSafe w and AntitoneOnSafe w; values outside Safe unrestricted",
+    "target": "y_m = 10^(2*m) + 99*10^(m-1) - 1, m : Nat with 2 <= m",
+    "target_safety_and_denominator": "Safe y_m proved by the actual family result; w y_m > 0 follows from PositiveOnSafe",
+    "ratio_bound": "(9*10^(m-2) : Nat) coerced to Real <= incoming w y_m / w y_m",
+    "uniform_multiplier": "For every C : Real, exists y, Safe y and C*w y < incoming w y; no nonnegative-C premise",
+    "sqrt_bound": "(9/100 : Real)*Real.sqrt(10/11)*Real.sqrt((y_m : Nat) coerced to Real) < incoming w y_m / w y_m",
+    "coercions": "Natural target and count computed in Nat then cast; coefficient divisions and square roots in Real",
+    "circular_or_unsupplied_bridge_obligations_found": [],
+    "finite_diagnostics_and_prose_are_additional_accepted_Lean_theorems": false,
+    "P196_established": false,
+    "decimal_Lychrel_existence_established": false,
+    "constructed_family_claimed_to_equal_all_fibers": false,
+    "all_weighting_methods_excluded": false
+  },
+  "compiled_audit": {
+    "commands_with_exit_zero": 19,
+    "fresh_original_modules": 6,
+    "fresh_type_application_modules": 1,
+    "prior_local_objects_reused": false,
+    "theorem_count": 1144,
+    "original_closure_count": 1129,
+    "type_application_count": 15,
+    "theorems_per_module": {
+      "Counting": 34,
+      "ExactTypes": 15,
+      "Family": 57,
+      "LychrelDigitSums": 986,
+      "SqrtBound": 10,
+      "TargetSafety": 27,
+      "Weights": 15
+    },
+    "raw_unique_theorem_inventory_equals_report": true,
+    "one_matching_transitive_axiom_record_per_theorem": true,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "all_transitive_axioms_allowed": true,
+    "unsafe_generated_implementation_axiom_declarations": 13,
+    "unsafe_implementation_axioms_in_theorem_dependencies": [],
+    "coverage_counts_are_mathematical_result_counts": false
+  },
+  "compiler": {
+    "archive_sha256": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+    "independently_compared_archive_members": 1477,
+    "path": "/home/runner/work/p196-algorithm/p196-algorithm/lean-4.19.0-linux/bin/lean",
+    "prefix": "/home/runner/work/p196-algorithm/p196-algorithm/lean-4.19.0-linux",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
+  },
+  "dependency_provenance": {
+    "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+    "manifest_sha256": "5c6421b650bc87a2427a892a39e5522dc44543ca4ac1bd6e9f08d536c044a752",
+    "dependency_commits": {
+      "Cli": "02dbd02bc00ec4916e99b04b2245b30200e200d0",
+      "LeanSearchClient": "25078369972d295301f5a1e53c3e5850cf6d9d4c",
+      "Qq": "fa4f7f15d97591a9cf3aa7724ba371c7fc6dda02",
+      "aesop": "5d50b08dedd7d69b3d9b3176e0d58a23af228884",
+      "batteries": "f5d04a9c4973d401c8c92500711518f7c656f034",
+      "importGraph": "e6a9f0f5ee3ccf7443a0070f92b62f8db12ae82b",
+      "plausible": "77e08eddc486491d7b9e470926b3dbe50319451a",
+      "proofwidgets": "c4919189477c3221e6a204008998b0d724f49904"
+    },
+    "import_origins": {
+      "explicit pinned Mathlib/dependency compiled cache": 1332,
+      "fresh local source build": 7,
+      "verified official Lean archive": 1303
+    },
+    "official_compiled_Mathlib_dependency_cache_reused": true,
+    "Mathlib_source_rebuild_claimed": false,
+    "checker_actual_import_path_pre_post_hash_official_archive_and_committed_source_enforcement_inspected": true,
+    "successful_raw_enforcement_records_consistent": true,
+    "external_dependency_object_bytes_in_artifact": false,
+    "external_dependency_object_bytes_locally_rehashed_after_download": false,
+    "boundary": "Locally verified artifact bytes and hosted pin relationships; external compiler/library object checks were performed by the pinned hosted checker, not repeated locally."
+  },
+  "artifact": {
+    "id": "11955822178",
+    "zip_bytes": 5786209,
+    "zip_sha256": "b7e69c40b55ac87bb7580b33df2524b1327995d8e1b9057ace339c3a80985556",
+    "zip_hash_size_and_all_56_member_bytes_independently_checked": true,
+    "manifests": {
+      "hosted-artifact-inventory.json": {
+        "sha256": "a8b03ab22f1c18ce43ff2a0fc11e33107571f5b8b104db011ec0358b725fb5c0",
+        "entries": 55,
+        "exact_file_set_and_hashes_match": true
+      },
+      "independent-audit/artifact-inventory.json": {
+        "sha256": "6312be81e4ee3502569e7833369ee9d9fb97cc466f51c691b7114d21633bb59b",
+        "entries": 50,
+        "exact_file_set_and_hashes_match": true
+      }
+    },
+    "original_sources_compared_with_Git_and_snapshots": true,
+    "all_seven_fresh_local_objects_rehashed": true,
+    "command_logs_rehashed": true,
+    "retained_publication_files": 42,
+    "retained_publication_bytes": 3294230,
+    "all_retained_files_equal_original_artifact": true,
+    "publication_exclusions": {
+      "duplicate_source_copies": 7,
+      "compiled_objects": 7,
+      "exact_recovery_map_and_hashes_checked": true
+    },
+    "execution_publication_file_count": 67,
+    "execution_publication_manifest_exact_file_set_and_all_hashes_checked": true,
+    "execution_publication_manifest_sha256": "abcf8a19b43748c4dd82c9f0d74ee13d60ccc07301383ebd8c336cdca7250521",
+    "execution_acceptance_json_sha256": "30fcc8844db703cbb20897a6daed1aba9007ebb3ab8fd7097444c17568222ef4",
+    "durable_raw_prefix": "../execution/hosted-38700059129-1/",
+    "evidence_sha256": {
+      "independent-audit/verification.json": "3e5c6d7032fac10636b7f243b3c4408faf56ced1f7bab479178e90f4c85a1e80",
+      "independent-audit/logs/AllCompiledAxioms.log": "5eab3f59feaea787aa7545d6e58677ed0253aec5058f425d73fc6935de088741",
+      "independent-audit/project/AllCompiledAxioms.lean": "0cd516dbbb776a0461b86bf35b8197cdbb55479cbca92aab8411d4d9bf262e41",
+      "independent-audit/controls/ExactTypes.lean": "79ff0637667b95ff4b411a6c9ce57880c325769b39fb44285de9fa4e2563200c",
+      "independent-audit/mathlib-lake-manifest.json": "5c6421b650bc87a2427a892a39e5522dc44543ca4ac1bd6e9f08d536c044a752",
+      "independent-audit/official-archive-members.json": "8ea58c7d1d6f6549a02e1e6d40349f827e1444e0c201fdf8bfb42dc2556a453e",
+      "independent-audit/dependency-object-pins-before.json": "d9ba19de43040acdfb0376e2deb7368bc27ad339670adcf09ef0ae6ddbf1fad8"
+    }
+  },
+  "initial_semantic_checkpoint": {
+    "all_eight_files_unchanged": true,
+    "sha256": {
+      "REVIEW.md": "7cf62c2e6a537799f5cdeaddde351b03d011841da7303af4ac97c75b65941941",
+      "ExactTypes.lean": "79ff0637667b95ff4b411a6c9ce57880c325769b39fb44285de9fa4e2563200c",
+      "statements.json": "13175831da8e85639ccc4c30f9abadfc3b23694376e7ca134f100079f7fd07f7",
+      "source-pins.json": "e01800ff81f5a1dae0daca5330a4459e213d31b8eb6e8a2b825a9d8f8a7657c1",
+      "provenance.json": "773f6b592fe330da7623a86939708f50259d8c3f3e2337361df55c6a08916116",
+      "check_semantics.py": "e88a752e3c443894fc7b04398bfa8491634ff1a06ec6e1d54630bc0d49d2bcae",
+      "diagnostics.json": "477b0807a0dd4580b1d8b71101b5e3731b21b6fcc902340d60b38249b2e1004b",
+      "checkpoint.json": "c897d4f44f6b32424df0d61659b1ef055efe2e373cf0c9a0a814a1d1ee4517e3"
+    },
+    "initial_pending_status_preserved": true
+  },
+  "addendum_sha256": "ec5e49e3c73202cb8e9c78514484bd597dcf8119b6565874c1ddc53c689a7b62",
+  "ownership": "Agent13 original mathematical ownership unchanged; Agent104 independent review only"
+}
