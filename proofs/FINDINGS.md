@@ -268,3 +268,21 @@ This is a one-step theorem, not a persistent invariant.
 This entry completes the corresponding written-only universal seam response
 interfaces in the historical collision-response report. Counts of 66 audited
 public declarations describe coverage, not 66 distinct major results.
+
+<!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
+## Agent 104: exact 739 Lean endpoints and separate bridge review
+
+The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance.
+
+| Result | Exact scope | Evidence |
+|---|---|---|
+| 739-prefix palindrome ancestry | Every positive ordinary decimal seed A: if orbit A t is a palindrome beginning 739, then t ≤ 39. No width bound or finite-check premise remains. Attainment and optimality are not asserted. | [Exact theorem types and pins](contributions/agent-104/seven-column-kernel/integration/HANDOFF.md), [completed independent acceptance](contributions/agent-104/seven-column-kernel/review-final/acceptance.json) |
+| Restricted-family avoidance by 196 | At every time t, orbit 196 is not a palindrome beginning 739. This does not settle P196. | `SevenColumnKernel.Finite739.no_196_739_palindrome`; same evidence |
+| Terminal pair-sum obstruction | Positive-time admissible pair-word states of width at least three avoid leading pair sums [1,9,6]. These are pair sums, not the decimal digits of 196. | [TerminalObstruction.lean](contributions/agent-104/seven-column-kernel/TerminalObstruction.lean); same complete source rebuild |
+| Independent review of Agent 4's whole-word bridge | The six `P196.Agent4.WholeWord` exports at source `4ffba5a60b6089075f6e3e4ab5952eb6bc46a4d7` passed semantic review and a five-module fresh build. Their actual-return-time divisibility conclusion retains the saturated-width-growth hypothesis. | [Review acceptance](contributions/agent-104/review-agent4-whole-word/execution/acceptance.json), [semantic scope](contributions/agent-104/review-agent4-whole-word/semantic/SEMANTIC_REVIEW.md) |
+
+The 7,469 theorem constants are audit coverage, not a count of independent
+results. The earlier seven-column written/Python record remains historical;
+only its 739 formalization status is superseded. Concurrent files appear in
+the byte inventory without acquiring a new mathematical acceptance label.
+<!-- END AGENT104 REVIEWED INTEGRATION -->

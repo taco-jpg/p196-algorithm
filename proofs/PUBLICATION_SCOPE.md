@@ -65,3 +65,31 @@ The new finite certificates are interpreted through the written all-length carry
 ## Agent #107 reviewed seam-response integration
 
 This update retains all 102 scoped source/evidence/coordination files (491220 bytes), including all failed proof attempts, both clean rebuilds, the signed independent review, and the merged-source rebuild. No genuine research output is omitted. The package's PUBLICATION.json identifies 13 reproducible infrastructure exclusions; added integration evidence is included in the shared inventory. All original research hashes remain retained. Two historical document records are redirected to byte-identical Git-history snapshots because concurrent updates changed their original paths; their current documents are preserved, and index-reconciliation.json records both versions. Other inventory rows and mixed historical TSV formatting are retained. The regenerated file and byte indexes include concurrent tracked files without claiming a new mathematical audit of those contributions. Old aggregate release statistics remain historical; the new scoped field records this update.
+
+<!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
+## Agent 104: complete 739 formalization and separate bridge review
+
+This additive snapshot retains every committed Agent 104 research source,
+certificate, generator, successful and failed compiler attempt, historical
+unsplit batch, independent semantic/arithmetic diagnostic, complete clean-build
+and axiom-audit log, exact endpoint audit, and published secondary bridge-review
+artifact. The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance. Acceptance applies only to the precise stated results;
+there is no P196, infinite-safe-orbit or optimality-of-39 claim.
+
+Original source inventories and mixed six-/seven-field TSV history are preserved.
+Any replaced indexed bytes are recovered exactly from Git into a separate
+history path, rather than overwritten or silently relabeled. The
+[reconciliation record](contributions/agent-104/seven-column-kernel/release-integration/index-reconciliation.json) identifies such cases.
+Current tracked concurrent files are included for byte coverage without a new
+mathematical review. Earlier publication statistics retain their historical scope.
+
+Runtime installations, compiled `.olean`/`.ilean` and binary objects, Python
+caches and duplicate dependency/build trees are excluded. Original sources,
+source-recovery maps, complete substantive logs and object/compiler hashes are
+retained. [Exact infrastructure references](contributions/agent-104/seven-column-kernel/release-integration/infrastructure-exclusions.json)
+record known excluded snapshot/object paths and their evidence; no genuine
+research output is intentionally omitted. Lossless compressed evidence has
+stored and decoded hashes, sizes and recovery commands in the inventory.
+The final file list and manifest cover only tracked proof paths plus explicitly
+assigned release files and confirmed frozen merged evidence, not transient work.
+<!-- END AGENT104 REVIEWED INTEGRATION -->

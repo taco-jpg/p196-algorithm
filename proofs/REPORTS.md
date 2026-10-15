@@ -382,3 +382,27 @@ Every original written research report, proof note and manuscript source retaine
 - [Independent mathematical boundaries](contributions/agent-107/partition-seam-response/review/MATHEMATICAL_BOUNDARIES.md)
 - [Independent signed review](contributions/agent-107/partition-seam-response/review/REVIEW.md)
 - [Runtime provenance](contributions/agent-107/partition-seam-response/environment/README.md)
+
+<!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
+## Agent 104: 739 formalization, integration and bridge review
+
+- [contributions/agent-104/review-agent4-whole-word/README.md](contributions/agent-104/review-agent4-whole-word/README.md)
+- [contributions/agent-104/review-agent4-whole-word/execution/README.md](contributions/agent-104/review-agent4-whole-word/execution/README.md)
+- [contributions/agent-104/review-agent4-whole-word/execution/acceptance.md](contributions/agent-104/review-agent4-whole-word/execution/acceptance.md)
+- [contributions/agent-104/review-agent4-whole-word/semantic/SEMANTIC_REVIEW.md](contributions/agent-104/review-agent4-whole-word/semantic/SEMANTIC_REVIEW.md)
+- [contributions/agent-104/seven-column-kernel/README.md](contributions/agent-104/seven-column-kernel/README.md)
+- [contributions/agent-104/seven-column-kernel/ancestry/STATUS.md](contributions/agent-104/seven-column-kernel/ancestry/STATUS.md)
+- [contributions/agent-104/seven-column-kernel/certificate/README.md](contributions/agent-104/seven-column-kernel/certificate/README.md)
+- [contributions/agent-104/seven-column-kernel/integration-verified/preflight-01/README.md](contributions/agent-104/seven-column-kernel/integration-verified/preflight-01/README.md)
+- [contributions/agent-104/seven-column-kernel/integration/ACCEPTANCE_ADDENDUM.md](contributions/agent-104/seven-column-kernel/integration/ACCEPTANCE_ADDENDUM.md)
+- [contributions/agent-104/seven-column-kernel/integration/HANDOFF.md](contributions/agent-104/seven-column-kernel/integration/HANDOFF.md)
+- [contributions/agent-104/seven-column-kernel/integration/SHARED_RECORD_SNIPPETS.md](contributions/agent-104/seven-column-kernel/integration/SHARED_RECORD_SNIPPETS.md)
+- [contributions/agent-104/seven-column-kernel/inverse/README.md](contributions/agent-104/seven-column-kernel/inverse/README.md)
+- [contributions/agent-104/seven-column-kernel/palindrome/STATUS.md](contributions/agent-104/seven-column-kernel/palindrome/STATUS.md)
+- [contributions/agent-104/seven-column-kernel/projection/README.md](contributions/agent-104/seven-column-kernel/projection/README.md)
+- [contributions/agent-104/seven-column-kernel/release-integration/README.md](contributions/agent-104/seven-column-kernel/release-integration/README.md)
+- [contributions/agent-104/seven-column-kernel/review-adversarial/REVIEW.md](contributions/agent-104/seven-column-kernel/review-adversarial/REVIEW.md)
+- [contributions/agent-104/seven-column-kernel/review-final-clean/README.md](contributions/agent-104/seven-column-kernel/review-final-clean/README.md)
+- [contributions/agent-104/seven-column-kernel/review-final-clean/preflight-01/README.md](contributions/agent-104/seven-column-kernel/review-final-clean/preflight-01/README.md)
+- [contributions/agent-104/seven-column-kernel/review-final/REVIEW.md](contributions/agent-104/seven-column-kernel/review-final/REVIEW.md)
+<!-- END AGENT104 REVIEWED INTEGRATION -->

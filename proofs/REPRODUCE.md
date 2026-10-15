@@ -378,3 +378,48 @@ and [merged-source fresh build](contributions/agent-107/partition-seam-response/
 are distinct records. The disclosed host readlink adapter is unnecessary on
 normal Linux. These checks establish the stated one-update identities, not
 an infinite orbit result.
+
+<!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
+## Agent 104: complete 739-prefix Lean theorem
+
+From the repository root, use an absolute official Lean 4.19.0 executable
+(release commit `6caaee842e94`) and a nonexistent evidence directory:
+
+```sh
+python3 -B proofs/contributions/agent-104/seven-column-kernel/check.py "$LEAN_BIN" \
+  --evidence "$AGENT104_EVIDENCE" \
+  --pins proofs/contributions/agent-104/seven-column-kernel/integration/module-pins.json \
+  --module Conclusion739 --module TerminalObstruction \
+  --jobs 2 --require-committed
+```
+
+Both roots are explicit: the runner's structural defaults do not select the
+nested concrete `Conclusion739` aggregate. This rebuilds 383 local source
+modules and audits all compiled theorem constants, including private/generated
+ones. Allowed transitive theorem axioms are `propext`, `Classical.choice`, and
+`Quot.sound`. Each compiler uses one worker and synchronous elaboration;
+at most two modules compile concurrently. No memory cap is imposed.
+
+The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance. [Source/toolchain pins](contributions/agent-104/seven-column-kernel/integration/HANDOFF.md),
+[independent clean execution](contributions/agent-104/seven-column-kernel/review-final-clean/README.md),
+[separate exact endpoint review](contributions/agent-104/seven-column-kernel/review-final/endpoint/verification.json),
+and [current integration state](coordination/agent104-739-integrated.json) distinguish those executions.
+The earlier Python certificate command remains independent finite diagnostics;
+its historical "not Lean-formalized" note is superseded only for the 739 family.
+
+The [secondary bridge review](contributions/agent-104/review-agent4-whole-word/execution/README.md) has separate
+reproduction runners, exact source pins and explicit dependency reuse for the
+scope illustrations. It is not part of the 383-module 739 build.
+
+Byte indexes can be recreated without a theorem build:
+
+```sh
+python3 -B proofs/contributions/agent-104/seven-column-kernel/release-integration/reconcile_release.py
+python3 -B proofs/verify_release.py
+```
+
+Use `--merged-evidence-confirmed` on the first command only after the merged
+reviewer has frozen its actual PASS evidence. Without that explicit flag the
+current merged-run status remains PENDING. The release verifier checks bytes
+and local source presence; it does not establish mathematical truth.
+<!-- END AGENT104 REVIEWED INTEGRATION -->

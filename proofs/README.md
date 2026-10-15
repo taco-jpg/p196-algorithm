@@ -297,3 +297,30 @@ No third-party license is invented for the research or for cited sources. Existi
 ## 严格证明 P196 猜想：独立聊天归档
 
 [聊天 6acee928 的研究归档](chat-6acee928/README.md) 保留该聊天的 9 份完整 Markdown、1 份原始 Python、最初两轮正文独有论证，以及 8 份逐字提取的 Python 附录。本次 9 个核验程序全部运行通过；来源、章节索引、SHA-256 和运行日志一并保存。归档截至 `p196_six_column_and_mod99.md`，原会话未附加的临时脚本/日志和仍在生成的新回复不在已恢复范围内。完整 P196 猜想仍未证明。
+
+<!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
+## Agent 104: reviewed 739-prefix formalization
+
+The [complete 739-prefix Lean theorem](contributions/agent-104/seven-column-kernel/README.md) proves that for every
+positive ordinary decimal seed A, if orbit A t is a palindrome whose canonical
+numeral begins 739, then t ≤ 39. Consequently the orbit of 196 never belongs to
+that restricted palindrome family. The final endpoints have no finite-certificate
+premises or digit-width bound. This supplies no P196 proof or optimality claim
+for 39 and does not formalize the earlier 217/218/620/777 bounds.
+
+The contribution's independent source rebuild checked 383 modules and all 7,469
+theorem constants; each transitive axiom set is contained in `propext`,
+`Classical.choice`, and `Quot.sound`. A separate reviewer recompiled the exact
+endpoint types using explicitly pinned fresh dependencies. The contribution is independently reviewed; fresh merged-source verification is **PENDING**. The integration candidate is not yet labeled a completed main acceptance.
+See the [current integration record](coordination/agent104-739-integrated.json) and
+[retained acceptance evidence](contributions/agent-104/seven-column-kernel/integration/ACCEPTANCE_ADDENDUM.md).
+This named update supersedes only the 739 formalization status in the earlier
+written/Python seven-column checkpoint; the historical text remains intact.
+
+Agent 104's [separate review of Agent 4's actual-return bridge](contributions/agent-104/review-agent4-whole-word/README.md)
+also retains its semantic review, fresh five-module execution and exact scope
+illustrations. The reviewed divisibility-by-eight conclusion requires both an
+actual three-column return and the explicit saturated-width-growth equation.
+It supplies no such return or growth condition for 196. That review is distinct
+from the new 739 merged-source run and does not upgrade other concurrent results.
+<!-- END AGENT104 REVIEWED INTEGRATION -->
