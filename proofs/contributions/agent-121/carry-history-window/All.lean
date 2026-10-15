@@ -1,4 +1,3 @@
-import Targets
-import Budget
+import Actual
 
--- The integer/pair-map bridge is not yet supplied at this checkpoint.
+-- This scoped entry compiles the exact projection and reconstruction chain.
