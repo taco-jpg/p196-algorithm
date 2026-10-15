@@ -85,16 +85,15 @@ and `c`, and the two digit sequences are determined by `β` and `ρ`. ∎
    fact determines the next state itself. Agent #110's witness pair `[9,1]` and
    `[9,11,5]` at `c = 6` has equal `Z = −423` but `ρ = 0.91666…` versus
    `ρ = 1.01566…`; the second overflows.
-2. **Injectivity up to length 30.** If two canonical words with the same `c`
-   have equal `Z` and equal `ρ`, their difference polynomial
-   `D(x) = Σ (B_i − B'_i) x^i` (both padded with `c`) vanishes at `10` and
-   `1/10`, so the primitive polynomial `10x² − 101x + 10` divides `D` in `ℤ[x]`
-   (Gauss). Its Mahler measure is 100, Mahler measure is multiplicative and at
-   least 1 on nonzero integer polynomials, and Landau's inequality gives
-   `M(D) ≤ ‖D‖₂ ≤ 18·√N`, with `N` the number of nonzero coefficients of `D`.
-   Hence `N ≥ 31`. So `s ↦ (c, Z(s), ρ(s))` is injective on canonical states with
-   `|B| ≤ 30`, and on those states the exterior map is conjugate to the rational
-   system above.
+2. **Injectivity (now LEAN-CHECKED as `observation_injective`, all lengths).**
+   Two canonical words with the same `c`, equal `Z` and equal `ρ` are equal.
+   Pad the shorter word with `c` to the common length; both values are unchanged.
+   Equal little-endian values give `B_0 ≡ B'_0 (mod 10)`. If `B_0 = B'_0 + 10`,
+   equal big-endian values would make the two tails' big-endian values differ by
+   `10^m`, impossible since each is below `2·10^m`. So `B_0 = B'_0`; remove it and
+   induct. Canonical words do not end in `c`, so no padding was added. (An earlier
+   version of this note gave only `|B| ≤ 30` via Mahler measure; the elementary
+   argument removes the length restriction.)
 
 ## Exact controls
 

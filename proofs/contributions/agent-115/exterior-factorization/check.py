@@ -4,7 +4,8 @@
 Usage: python3 check.py <absolute lean binary> <new empty evidence dir>
 Run from the repository root. Copies the unchanged dependency
 proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterFinite.lean
-and this directory's TARGET.lean, ExteriorFactorizationProof.lean, FactAudit.lean
+and this directory's TARGET.lean, ExteriorFactorizationProof.lean,
+ExteriorObservationInjective.lean, FactAudit.lean
 into the evidence directory, compiles them in order with no reused objects, and
 accepts only if every audited theorem's axioms are within
 {propext, Classical.choice, Quot.sound}.
@@ -18,6 +19,7 @@ DEP = REPO / "proofs/contributions/agent-109/outer-projection-bridge/agent7-deps
 DEP_SHA = "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6"
 ORDER = [("OuterFinite", DEP), ("TARGET", HERE / "TARGET.lean"),
          ("ExteriorFactorizationProof", HERE / "ExteriorFactorizationProof.lean"),
+         ("ExteriorObservationInjective", HERE / "ExteriorObservationInjective.lean"),
          ("FactAudit", HERE / "FactAudit.lean")]
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = re.compile(r"\b(sorry|admit|native_decide|sorryAx|ofReduceBool)\b")
@@ -63,7 +65,7 @@ def main():
     for m in re.finditer(r"'([^']+)' does not depend on any axioms", audit):
         axioms[m.group(1)] = []
     report["axioms"] = axioms
-    expected = 5
+    expected = 7
     ok = ok and len(axioms) == expected and all(set(v) <= ALLOWED for v in axioms.values())
     report["status"] = "PASS" if ok else "FAIL"
     report["finished"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
