@@ -1,0 +1,82 @@
+{
+  "scope": "Development composition verification; final direct endpoints require exact CertificatePrefix projection",
+  "source_sha256": "0fcbd4d209a063692a7d5466be036578db967ba17a78d2985d8763ab65dd0ad4",
+  "compiler": "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+  "compiler_launcher_sha256": "377c4c7e43684cdf26c553d16406131bc64e6f36be56f17b52a39614a9f28b2e",
+  "LEAN_PATH": "/workspace/scratch/63e10b24caf2/saturation-build:/workspace/scratch/63e10b24caf2/parent-build:/workspace/scratch/63e10b24caf2/saturation-deps:/workspace/scratch/63e10b24caf2/dev-deps",
+  "dependencies": {
+    "CertificateConsequences": {
+      "path": "/workspace/scratch/63e10b24caf2/parent-build/CertificateConsequences.lean",
+      "source_sha256": "20f7e7b251284edf290be47bacc0cf197b7fcdec17b633a09af748a8d502a316",
+      "olean_sha256": "0ac05c6e416f9ed956497698e428187fdcf5215a3f8853d481d83ca20cac836d"
+    },
+    "SaturationTheorem": {
+      "path": "/workspace/scratch/63e10b24caf2/saturation-deps/SaturationTheorem.lean",
+      "source_sha256": "9a7f65a82d611bf24f2661de0715d0a70f69da0b5a51d3ad00725cde37f5b2eb",
+      "olean_sha256": "0da7e1752b74813fe35dcd2b04aef54b1d3565ca7a5734717241e63d78d1e4b7"
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--version"
+      ],
+      "returncode": 0,
+      "log": "attempt-002-version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "command": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "/workspace/scratch/63e10b24caf2/saturation-build/CertificateSaturation.olean",
+        "/workspace/scratch/63e10b24caf2/saturation-build/CertificateSaturation.lean"
+      ],
+      "returncode": 0,
+      "log": "attempt-002-compile.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/workspace/scratch/63e10b24caf2/runtime-audit/lean",
+        "-j1",
+        "-DElab.async=false",
+        "/workspace/scratch/63e10b24caf2/p196-algorithm/proofs/contributions/agent-110/certificate-budget/saturation-development/attempt-002-axioms.lean"
+      ],
+      "returncode": 0,
+      "log": "attempt-002-axioms.log",
+      "log_sha256": "94a9cba6c7c0d1a61d50500db442620b8d4d40e8c4777c2002616b57bc51c11a"
+    }
+  ],
+  "status": "PASS",
+  "axiom_audit": {
+    "Agent110.CertificateSaturation.closed_prefix_path_of_projection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.CertificateSaturation.saturation_total_cast": [
+      "propext"
+    ],
+    "Agent110.CertificateSaturation.path_total_eq_totalGam": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.CertificateSaturation.period_at_least_forty_two_of_path": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent110.CertificateSaturation.saturated_period_constraints_of_path": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "olean_sha256": "de659ddc52575e572a0539216c478fe14cb8c939eaa207f410d51c72d949c6d6"
+}

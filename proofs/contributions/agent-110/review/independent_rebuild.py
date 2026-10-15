@@ -34,6 +34,9 @@ BASE = [
     'proofs/contributions/2026-10-15-agent8-complementary-bulk/ActualWordBridge.lean',
     'proofs/contributions/2026-10-15-agent2-complementary-search/ExteriorCharge.lean',
     'proofs/agent5/ExteriorClock.lean',
+    'proofs/agent4/prefix_growth/PrefixModel.lean',
+    'proofs/agent4/prefix_growth/SaturationCertificate.lean',
+    'proofs/agent4/prefix_growth/SaturationTheorem.lean',
 ]
 
 
@@ -169,7 +172,7 @@ def main():
             assert not forbidden, (src, forbidden)
             dependencies = [x for row in re.findall(r'^import\s+([^\n]+)', code, re.M) for x in row.split()]
             for d in dependencies:
-                if d not in {'Init', 'Std', 'Lean'}:
+                if d not in {'Init', 'Std', 'Lean', 'Lean.Elab.Tactic.Omega'}:
                     assert d in mapping, ('Unmapped dependency', name, d)
                     visit(d)
             snapshots[name] = data
