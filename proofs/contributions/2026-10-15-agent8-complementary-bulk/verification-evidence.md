@@ -32,7 +32,7 @@ upper [0, 0, 0, 0, 1, 0, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 2, 2, 3]
 lower [0, 4, 3, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
 1 []
 2 [1]
-3 [1, 2]
+3 [1]
 4 [1, 2]
 5 [2]
 6 [2, 3]
@@ -44,7 +44,7 @@ lower [0, 4, 3, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
 12 [3, 4, 5, 6]
 ```
 
-Correction to the immediately preceding block: the actual period-three console line is `3 [1]`, not `3 [1, 2]`. The other lines are unchanged. The source regenerates the actual line. This transcription correction is explicit; no period-three two-overflow claim is made.
+The period-three line is `3 [1]`. The first publication of this evidence page transcribed that one line incorrectly as `3 [1, 2]` and immediately flagged it; this revision restores the exact retained output. No period-three two-overflow claim is made, and no Lean source or theorem was affected.
 
 ## Rejected first PeriodObstructions development compile
 
