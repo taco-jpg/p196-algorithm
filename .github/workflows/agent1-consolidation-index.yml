@@ -18,6 +18,10 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Initialize execution evidence
+        run: |
+          mkdir -p /tmp/agent1-index-checks
+          printf 'Agent #1; workflow source %s\n' "$GITHUB_SHA" > /tmp/agent1-index-checks/workflow-source.txt
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: agent1-consolidation-snapshot
@@ -62,10 +66,14 @@ jobs:
           report=json.loads((inp/'build/verification.json').read_text())
           if report['status']!='PASS' or report['source_commit']!='a79036909714e34a2b8b7ccccd6d00caa6a04848' or not report['source_tree_clean'] or report['repository_wide_pass']:raise RuntimeError('Wrong post-merge proof evidence')
           core=report['projects']['consolidation-core']
-          if len(core['sources'])!=38 or core['theorem_count']!=3491 or set(core['axiom_union'])!={'Classical.choice','Quot.sound','propext'}:raise RuntimeError('Proof scope mismatch')
+          # The verifier stores the Lean-printed union as a string, not a JSON list.
+          # Exact comparison rejects extra axioms and preserves the existing policy.
+          if len(core['sources'])!=38 or core['theorem_count']!=3491 or core['axiom_union']!='[Classical.choice, Quot.sound, propext]':raise RuntimeError('Proof scope mismatch')
+          if len(core['commands'])!=39 or any(c['exit_code']!=0 for c in core['commands']):raise RuntimeError('Incomplete compiler/audit execution')
           dest=own/'post49-core'
           if dest.exists():raise RuntimeError('Never overwrite a prior execution')
           shutil.copytree(inp,dest)
+          (own/'index-harness-correction.json').write_text(json.dumps({'agent':'Agent #1','failed_run':38811201169,'failed_job':116684563208,'failure':'The metadata harness incorrectly applied set() to a Lean-printed axiom-union string. The resulting character set did not match the permitted axiom names.','correction':'Compare the exact printed union and check all39 command exit codes. No report bytes, mathematical source, axiom policy or theorem scope changed.','post49_mathematical_result':'PASS at a79036909714e34a2b8b7ccccd6d00caa6a04848','local_negative_controls':'Corrected guard accepted the authentic report and rejected four altered axiom-union values.'},indent=2)+'\n')
           failed=pathlib.Path('/tmp/agent1-input-original-failure')
           expected={'BulkPhase.lean.log':'12c00ecffa359054822dbf2cc3fe92c17d2a25497e9eb8fe6abbd0624d91ef0f','OuterEscape.lean.log':'4c8fe3f6409706bbe2ac20d8b9b4e9ff11b3a70871548b5e4337abb336e8176a','OuterCharge.lean.log':'8c906194a4760c7ab4130d54fe306cb8d76ee57014e926241f7323b74d23cb93','OuterOrbit.lean.log':'e7ebf5c6c21c323384a9d5e5a9dc22eb44bc171617e77310fb35071a80df7d3d','version.txt':'5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b'}
           if {p.name for p in failed.iterdir()}!=set(expected):raise RuntimeError('Failure evidence set changed')
@@ -95,7 +103,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/agent1-index-checks
           git add -- proofs/contributions/agent-1/consolidation-20261015/verification
           python3 -B proofs/contributions/agent-1/consolidation-20261015/reconcile_consolidation.py --initial-metadata /tmp/agent1-input-initial --resumption-metadata /tmp/agent1-input-resumption --integrated-main a79036909714e34a2b8b7ccccd6d00caa6a04848 > /tmp/agent1-index-checks/generation-1.log
           git add -- README.md proofs
