@@ -4,7 +4,12 @@ Task `agent104-seven-column-kernel`, remotely claimed at `fa6b15ea173fff7cc6f01f
 
 ## Status
 
-**The complete numerical 739 result remains WIP.** The intended result bounds the ancestry depth of every palindrome beginning 739 by 39, then excludes that palindrome family from the ordinary orbit of 196. It does not settle P196. The final concrete finite checks are being compiled; generated source or a partial successful batch does not establish their complete assembly.
+**The complete numerical 739 result has passed its first Lean compilation and endpoint axiom audit.** `Conclusion739` assembles all concrete finite checks with the actual-orbit correspondence. Its two final theorems have no remaining certificate hypotheses:
+
+- `SevenColumnKernel.Finite739.ancestry_bound39`: for every positive ordinary decimal integer `A`, if `orbit A t = P` and `P` is a palindrome beginning with 739, then `t ≤ 39`. There is no digit-length bound.
+- `SevenColumnKernel.Finite739.no_196_739_palindrome`: for every time `t`, `orbit 196 t` is not a palindrome beginning with 739.
+
+This excludes a restricted palindrome family; it does not settle P196. Independent full-chain clean rebuilding and final endpoint review are in progress. This contribution is not yet integrated into the default branch.
 
 The structural proof chain is LEAN-CHECKED and has a fresh-source rebuild:
 
@@ -21,34 +26,27 @@ The structural proof chain is LEAN-CHECKED and has a fresh-source rebuild:
 
 `review-clean/root03/verification.json` records a fresh source-only build of all 11 structural modules, including the pinned base, with **PASS**. All 1,333 theorem constants in that local import closure, including private/generated theorems, were inventoried from the compiled environment and audited with `#print axioms`. Their transitive axioms are contained in `propext`, `Classical.choice`, `Quot.sound`. The count describes audit coverage, not independent mathematical results. No forbidden axiom or compiler-trusted evaluation shortcut occurs in these theorem dependencies.
 
-The clean runner is `check.py`; it copies and hashes every source before starting, clears local import paths, uses one compiler worker and synchronous elaboration, and rejects changed source/compiler fingerprints. It distinguishes Lean's unsafe compiler-generated implementation constants from logical axioms, while still rejecting any non-foundational transitive theorem axiom. The earlier overbroad audit failure is retained under `review-clean/attempt02` together with its original runner.
+The clean runner is `check.py`; it copies and hashes every source before starting, clears local import paths, uses one worker per compiler with synchronous elaboration, and rejects changed snapshot/compiler fingerprints. At most two independent module compilations can run concurrently. It distinguishes Lean's unsafe compiler-generated implementation constants from logical axioms, while still rejecting any non-foundational transitive theorem axiom. The earlier overbroad audit failure is retained under `review-clean/attempt02` together with its original runner.
 
-The fresh root03 execution was performed by parent Agent104 after the independent clean reviewer exhausted its usage limit. It is **not** labeled an independent execution. Earlier independent adversarial source inspections and rebuilds are retained under `review-adversarial`; some used an explicitly recorded base object. Their reports identify incomplete or stale snapshots. ActualAncestry and the final numerical assembly still need independent review.
+The fresh root03 execution was performed by parent Agent104 after the independent clean reviewer exhausted its usage limit. It is **not** labeled an independent execution. Earlier independent adversarial source inspections and rebuilds are retained under `review-adversarial`; some used an explicitly recorded base object. Their reports identify incomplete or stale snapshots.
 
-## Reproduce the checked structural package
+`certificate/Conclusion739-aggregate01.log` records successful compilation of the final concrete application. Both main endpoint audits list exactly `propext`, `Classical.choice`, and `Quot.sound`. `AllRows739.allRowsFast` has no axioms. These first numerical executions reuse explicitly recorded dependency objects and are not the final clean rebuild. All accepted Lean sources for these endpoints were already published at `be1e4634bf5d8b297181eec4b7f99cfff3092a27`.
+
+The separate semantic reviewer found no gap in the exact inverse, short-width coverage, arbitrary-width projection, last-step bridge, or the 38+1 time correspondence. Its independent Python diagnostics are supplementary, not proofs. See `review-final/REVIEW.md`; full fresh execution remains a separate pending gate.
+
+## Reproduce the complete theorem chain
 
 ```bash
 python proofs/contributions/agent-104/seven-column-kernel/check.py /absolute/path/to/lean \
   --evidence /new/empty/path \
-  --module ActualAncestry --module TerminalObstruction \
-  --module FastInverse --module FastRowsBase
+  --module Conclusion739 --module TerminalObstruction \
+  --jobs 2 --require-committed
 ```
 
 Pinned toolchain: official Lean 4.19.0, release commit `6caaee842e94`. Base source `proofs/research/continuation/LychrelDigitSums.lean`, SHA256 `ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57`. This host uses the documented `/proc/self/exe` compatibility shim; Lean's binary and kernel are unmodified. See `environment/` for official archive hash and setup evidence.
 
-## Remaining finite obligations
+## Concrete certificate and retained research evidence
 
-`certificate/` contains the generated 58,501-node rank tree, complete-row checking modules, initial-target checks, and short-boundary checks. Only successfully compiled exact source snapshots have LEAN-CHECKED status. The complete `AllRows739`, `Initial739`, `Short739` and final ordinary-number application must all pass before the numerical theorem can be accepted.
+`certificate/` contains the generated 58,501-node rank tree, complete-row checking modules, initial-target checks, and short-boundary checks. The complete `AllRows739`, `Initial739`, `Short739`, and `Conclusion739` assemblies have now all compiled. Four dense row batches (57, 58, 85, 97) exceeded resource limits in their original form; their successful smaller partitions prove the same full-row statements. Original failed sources and logs remain under `unsplit-history/` and the per-attempt records.
 
-The runtime comparisons with Python are diagnostics only. Source generations, failed drafts, timeouts, resource failures and audit failures are retained. Historical artifacts are outside the accepted import graph. Runtime installations and compiled objects are excluded from Git. This contribution is not integrated into the default branch.
-
-## Concrete initial and short-boundary checkpoint
-
-`Initial739.initialLongChecked`, `initialShortChecked` and
-`Short739.shortChecked` now compile under kernel reduction. The initial family
-contains all 10,000 seven-column targets and the sole six-column target;
-`shortChecked` discharges the exact `shortWords` exclusion used by ActualAncestry.
-Their printed transitive audits contain only `propext` and `Quot.sound`, or no
-axioms for direct finite instances. The full-row assembly is still in progress,
-so `Conclusion739` remains unaccepted. A final fresh whole-chain build and full
-export inventory are still required.
+The runtime comparisons with Python are diagnostics only. Source generations, failed drafts, timeouts, resource failures and audit failures are retained. Historical artifacts are outside the accepted import graph. Runtime installations and compiled objects are excluded from Git. Earlier WIP status records describe their pinned historical snapshots, not this completed first compilation.
