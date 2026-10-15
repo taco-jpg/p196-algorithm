@@ -9,7 +9,7 @@ B=$(mktemp -d)
 cp "$ROOT/proofs/research/continuation/LychrelDigitSums.lean" "$B/"
 cp "$ROOT/proofs/contributions/2026-10-15-agent8-complementary-bulk/PeriodObstructions.lean" "$B/"
 cp "$BR/TemplateStep.lean" "$BR/Compat.lean" "$B/"
-cp "$HERE/ReturnCertificate.lean" "$HERE/CertCompat.lean" "$HERE/CertDemo.lean" "$HERE/CrossCheck.lean" "$B/"
+cp "$HERE/ReturnCertificate.lean" "$HERE/CertCompat.lean" "$HERE/CertDemo.lean" "$HERE/CrossCheck.lean" "$HERE/ExportDemo.lean" "$B/"
 cd "$B"
 lean --version
 sha256sum *.lean
@@ -20,6 +20,8 @@ done
 cat ReturnCertificate.log
 LEAN_PATH="$B" lean CertCompat.lean; echo "CertCompat exit=$?"
 LEAN_PATH="$B" lean CertDemo.lean; echo "CertDemo exit=$?"
+LEAN_PATH="$B" lean ExportDemo.lean; echo "ExportDemo (tool round trip; expected output false) exit=$?"
+python3 -I "$HERE/test_certificate_tool.py"; echo "tool regression exit=$?"
 LEAN_PATH="$B" lean CrossCheck.lean; echo "CrossCheck exit=$?"
 if grep -n -E '\bsorry\b|\badmit\b|native_decide|ofReduceBool|^axiom ' TemplateStep.lean Compat.lean ReturnCertificate.lean CertCompat.lean; then
   echo "FORBIDDEN TOKEN FOUND"; exit 1

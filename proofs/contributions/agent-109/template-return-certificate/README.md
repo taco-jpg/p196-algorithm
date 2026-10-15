@@ -58,12 +58,27 @@ theorem only.
 ## Tool and controls
 
 `certificate_tool.py` (independent Python): exact successor, maximal trimming,
-cycle detection, minimal feasible bounds, a mirror of `check`, and export of a
-cycle as Lean source. `CrossCheck.lean` evaluates Lean's `Br/Ar/Cr/γ/StepPal`
-on 1,000 random states and compares them with the Python tool's values:
-0 mismatches (compiled `#eval`, a consistency control, not a proof). The Python
-formulas were separately checked against literal integer reverse-and-add in
+cycle detection (`iterate`), minimal feasible band bounds, a mirror of `check`
+(`local_ok` per index), and `export`, which accepts either the `iterate` output
+(`{"cycle","info"}`, converted with computed bounds) or an explicit
+`{"states","links"}` certificate, re-checks it, and exits with status 2 and a
+reason when there is no cycle, a palindromic step, a negative gap gain or a failed
+check (`--unchecked` emits Lean that only evaluates `check`).
+`test_certificate_tool.py` is the regression suite with independently established
+expected outcomes (`tool_test_result.json`, also run by `certificate_tool.py
+selftest`): CertDemo rejected for the B link, step palindromicity compared with
+literal integer reverse-and-add at four band-length pairs, one-step links accepted,
+every single mutation rejected with the expected reason, bound feasibility, and a
+CLI round trip (`ExportDemo.lean`, which Lean evaluates to `false`). No valid
+certificate is known, so no accepting whole-certificate case exists.
+`CrossCheck.lean` evaluates Lean's `Br/Ar/Cr/γ/StepPal` on 1,000 random states
+and compares them with the Python tool's values: 0 mismatches (compiled `#eval`,
+a consistency control, not a proof). The Python formulas were separately checked
+against literal integer reverse-and-add in
 `../template-step-bridge/controls_result.json`.
+
+Later result: `../template-step-safety/` proves `StepPal` is never true, so the
+non-palindrome conjunct of `check` is automatic.
 
 ## Verification
 
