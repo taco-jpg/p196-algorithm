@@ -4,10 +4,13 @@ This contribution formalizes the existing written argument in
 `proofs/research/astra_modular_fixed_modulus_theorem.md`, sections 1–2.
 It is not a novelty claim, an actual palindrome hit, or a proof of P196.
 
-The full arbitrary-modulus saturation theorem is **WIP**. The first published
-increments are completed Lean lemmas for its nonzero outer decimal block,
-the decomposition of any positive modulus into a divisor of a power of ten
-and a factor coprime to ten, and two-generator modular spanning. Each source
+The full arbitrary-modulus saturation theorem and fixed-modulus invariant
+obstruction are **LEAN-CHECKED** in the incremental development build.
+`Saturation.exact_length_palindrome_residues` (namespace `ExactLengthResidues`)
+has no unproved saturation or certificate premise. A full clean rebuild and
+complete independent review are in progress. Supporting modules construct the
+nonzero outer block, split the modulus, span residues, and realize disjoint
+mirrored digit pools as genuine ordinary decimal palindromes. Each source
 has explicit transitive `#print axioms` commands; only `propext`,
 `Classical.choice`, and `Quot.sound` are allowed. No compiler-trusted evaluation
 shortcut is part of these proofs.
@@ -29,6 +32,7 @@ logs, and API probes. Such drafts are outside the accepted module list.
 dependency. A separate clean build and independent review of the completed
 contribution are pending.
 
-Remaining obligations: actual mirrored digit-pool construction, modular
-weight identities, existence of a positive power period, composition of the
-residue construction, and the unconditional all-moduli orbit obstruction.
+Remaining acceptance obligations: exact-source clean rebuild, complete
+independent semantic review, and reviewable publication. A separate corollary
+for the original factorization-based explicit bound is being assembled.
+The unrestricted 196 conjecture remains open.
