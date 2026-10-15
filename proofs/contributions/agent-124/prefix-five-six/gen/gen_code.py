@@ -227,13 +227,27 @@ def main():
              f'\ntheorem allRows : RowsClosed {k} (R ranks) := rowsClosed_of_all (by decide) allRowsAll\n'
              f'\n#print axioms allRows\nend Agent124.{ns}\n')
     files[all_mod] = body
-    # short descent
+    # short descent (widths >= 5 split into nineteen chunks by leading half entry)
     short_mod = f'{mod}Short'
-    body = HEADER.format(imports=f'{tree_mod}', ns=ns)
+    split_from = 5
+    body = HEADER.format(imports=f'{tree_mod}' + ('\nimport Agent124ShortSplit' if k > split_from else ''), ns=ns)
     body += 'open Agent124.PrefixK Agent124.PrefixR\n'
+    if k > split_from:
+        body += 'open Agent124.ShortSplit\n'
     for n in range(0, k):
-        body += (f'\ntheorem short_w{n} : (symWords {n}).all (shortOKC ranks) = true := by\n'
-                 f'  decide +kernel\n')
+        if n < split_from:
+            body += (f'\ntheorem short_w{n} : (symWords {n}).all (shortOKC ranks) = true := by\n'
+                     f'  decide +kernel\n')
+        else:
+            for a in range(19):
+                body += (f'\ntheorem short_w{n}_a{a:02d} : (symChunk {n} {a}).all (shortOKC ranks) = true := by\n'
+                         f'  decide +kernel\n')
+            body += (f'\ntheorem short_w{n} : (symWords {n}).all (shortOKC ranks) = true :=\n'
+                     f'  all_symWords_of_chunks (by decide) fun a ha => by\n'
+                     f'    have : ' + ' ∨ '.join(f'a = {a}' for a in range(19)) + ' := by omega\n'
+                     f'    rcases this with ' + ' | '.join(['rfl'] * 19) + '\n')
+            for a in range(19):
+                body += f'    · exact short_w{n}_a{a:02d}\n'
     body += f'\ntheorem short : ShortClosed {k} (R ranks) := shortClosed_of_widths fun n hn => by\n'
     body += '  have : ' + ' ∨ '.join(f'n = {n}' for n in range(k)) + ' := by omega\n'
     body += '  rcases this with ' + ' | '.join(['rfl'] * k) + '\n'
@@ -241,6 +255,7 @@ def main():
         body += f'  · exact short_w{n}\n'
     body += f'\n#print axioms short\nend Agent124.{ns}\n'
     files[short_mod] = body
+
     # initial checks
     init_mod = f'{mod}Initial'
     body = HEADER.format(imports=f'{tree_mod}', ns=ns)

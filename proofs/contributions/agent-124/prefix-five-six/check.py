@@ -3,7 +3,12 @@
 
 Usage (from anywhere):
   python3 check.py --lean /path/to/lean-4.19.0/bin/lean --evidence /new/empty/dir [--jobs 2]
-                   [--certs k5,k6]
+                   [--certs certificate/k5,certificate/k6,../four-digit-refinements/certificate/f4,...]
+                   [--heavy-cost 3000]
+
+Certificate directories are relative to this file's directory.  Row modules whose
+predicted cost (from the directory's *-meta.json) exceeds --heavy-cost are never
+compiled concurrently with another such module, to bound peak memory.
 
 The evidence directory must not exist.  Every source is copied from the
 repository checkout into EVIDENCE/src and hashed before compilation; objects
@@ -38,8 +43,11 @@ BASE = [CORE,
         A104 / "PrefixCertificate.lean", A104 / "PalindromeBridge.lean",
         A104 / "ShortBoundary.lean",
         A104 / "certificate/LongRowsBase.lean", A104 / "certificate/FastRowsBase.lean"]
-MINE = ["Agent124PrefixK", "Agent124FastPred", "Agent124PrefixR", "Agent124CodeCert",
-        "Agent124LeadOne"]
+MINE = ["Agent124PrefixK", "Agent124FastPred", "Agent124PrefixR", "Agent124CodeCert", "Agent124ShortSplit",
+        "Agent124CodeRange", "Agent124LeadOne", "Agent124PrefixL"]
+DEFAULT_CERTS = ("certificate/k5,certificate/k6,../four-digit-refinements/certificate/f4,"
+                 "../four-digit-refinements/certificate/f5,../four-digit-refinements/certificate/f6")
+SUMMARIES = ["Agent124PrefixSummary.lean", "../four-digit-refinements/Agent124FourDigitSummary.lean"]
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = re.compile(r"(?<![\w.'])(sorry|admit|native_decide|sorryAx|implemented_by|extern|"
                        r"decide\s*\+native|ofReduceBool)(?![\w'])")
@@ -103,7 +111,8 @@ def main() -> int:
     ap.add_argument("--lean", required=True)
     ap.add_argument("--evidence", required=True)
     ap.add_argument("--jobs", type=int, default=2)
-    ap.add_argument("--certs", default="k5,k6")
+    ap.add_argument("--certs", default=DEFAULT_CERTS)
+    ap.add_argument("--heavy-cost", type=float, default=3000.0)
     args = ap.parse_args()
     lean = Path(args.lean).resolve()
     ev = Path(args.evidence).resolve()
@@ -124,17 +133,26 @@ def main() -> int:
         sys.exit("base LychrelDigitSums.lean does not match its pin")
 
     files: list[Path] = list(BASE) + [HERE / f"{m}.lean" for m in MINE]
-    cert_mods: list[str] = []
+    heavy: set[str] = set()
     for c in [x for x in args.certs.split(",") if x]:
-        cdir = HERE / "certificate" / c
+        cdir = (HERE / c).resolve()
         order = (cdir / "order.txt").read_text().split()
         extra = sorted(p.stem for p in cdir.glob("*.lean") if p.stem not in order)
         for m in order + extra:
             files.append(cdir / f"{m}.lean")
-            cert_mods.append(m)
-    summary = HERE / "Agent124PrefixSummary.lean"
-    if summary.exists():
-        files.append(summary)
+        for meta_path in cdir.glob("*-meta.json"):
+            meta = json.loads(meta_path.read_text())
+            costs = meta.get("leaf_costs")
+            per = meta.get("leaves_per_rows", 4)
+            if costs:
+                prefix = meta_path.name[:-len("-meta.json")]
+                for i in range(0, len(costs), per):
+                    if sum(costs[i:i + per]) > args.heavy_cost:
+                        heavy.add(f"{prefix}Rows{i // per:03d}")
+    for sname in SUMMARIES:
+        summary = (HERE / sname).resolve()
+        if summary.exists():
+            files.append(summary)
     sources = {}
     for f in files:
         dest = src / f.name
@@ -183,9 +201,14 @@ def main() -> int:
     with ThreadPoolExecutor(args.jobs) as ex:
         while len(done) < len(mods) and failed is None:
             ready = [m for m in mods if m not in done and m not in running and deps[m] <= done]
-            while ready and len(running) < args.jobs:
-                m = ready.pop(0)
+            heavy_running = any(m in heavy for m in running)
+            for m in ready:
+                if len(running) >= args.jobs:
+                    break
+                if m in heavy and heavy_running:
+                    continue
                 running[m] = ex.submit(build, m)
+                heavy_running = heavy_running or m in heavy
             if not running:
                 failed = "dependency deadlock"
                 break
@@ -197,6 +220,7 @@ def main() -> int:
                         failed = m
                     done.add(m)
     report["builds"] = builds
+    report["heavy_modules"] = sorted(heavy)
     if failed is not None:
         report["status"] = f"FAIL_BUILD {failed}"
         (ev / "verification.json").write_text(json.dumps(report, indent=1))

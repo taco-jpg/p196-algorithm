@@ -25,7 +25,8 @@ ordinary orbit of 196 never contains such a palindrome.
 | Width-generic endpoint and code-keyed certificate checker | **LEAN-CHECKED, dev build** |
 | k = 5 certificate: all 24 five-column classes | **LEAN-CHECKED, dev build** |
 | `Agent124LeadOne.lean`: last-step bridge for leading digit 1 (used for 119) | **LEAN-CHECKED, dev build** |
-| k = 6 certificate: 9 prefixes | WIP |
+| k = 6 certificate: all 9 six-column classes | **LEAN-CHECKED, dev build** |
+| `Agent124PrefixSummary.lean`: one statement for all 33 classes | **LEAN-CHECKED, dev build** |
 | Clean pinned rebuild and full theorem-constant axiom audit | pending |
 | Independent review | not requested yet |
 
@@ -66,6 +67,28 @@ All 48 endpoint theorems report exactly `propext`, `Classical.choice`,
 bound; 429's written baseline is 22 (this certificate gives 24), and 783, 784,
 787, 788, 789, 858, 859 improve on the written two-digit-class bounds 40 / 38.
 
+### Six-column endpoints (namespace `Agent124.CertK6`, module `A124K6Final`)
+
+Same two theorems per prefix, from one combined six-column certificate
+(360,916 nodes, maximum rank 39):
+
+| prefix | B | prefix | B | prefix | B |
+|---|---:|---|---:|---|---:|
+| 276 | 31 | 277 | 31 | 278 | 31 |
+| 377 | 8 | 385 | 8 | 785 | 40 |
+| 786 | 27 | 856 | 38 | 857 | 25 |
+
+All 18 endpoints report exactly `propext`, `Classical.choice`, `Quot.sound`
+(`logs/k6/A124K6Final.log`). 786 and 857 improve on the written two-digit
+bounds 40 and 38; the others equal the written baseline.
+
+### All 33 classes in one statement (`Agent124PrefixSummary.lean`)
+
+`Agent124.PrefixSummary.classes` lists `(a, b, c, B)` for all 33 classes;
+`ancestry_all` gives every bound and `no_196_all : ∀ t, ∀ e ∈ classes,
+¬ PalStarts3 e.1 e.2.1 e.2.2.1 (orbit 196 t)`. Both use only the three
+standard axioms (`logs/Agent124PrefixSummary-dev01.log`).
+
 `PalStarts3 a b c P` (in `Agent124PrefixK.lean`) is `Palindrome P` together
 with a canonical decimal representation of `P` of width `W ≥ 3` whose three
 most significant digits are `a, b, c`; at `7,3,9` it is definitionally Agent
@@ -90,9 +113,14 @@ most significant digits are `a, b, c`; at `7,3,9` it is definitionally Agent
    completed predecessor's code. `rowsClosed_of_all`,
    `shortClosed_of_widths` and `initialBounded_of_all` discharge the three
    premises of step 2 from kernel-evaluated Boolean checks.
-5. `certificate/k5/` — generated data (25,936 nodes, maximum rank 37), 16 row
-   modules, short and initial checks, and the final endpoints. Every row is
-   checked against the complete inverse; nothing in the generator is trusted.
+5. `Agent124CodeRange.lean` and `Agent124ShortSplit.lean` — split a heavy
+   row check by key range, and a long short-width check by leading half
+   entry, into several kernel-reduced declarations (memory control only).
+6. `certificate/k5/`, `certificate/k6/` — generated data, row modules, short
+   and initial checks, and the final endpoints. Every row is checked against
+   the complete inverse; nothing in the generator is trusted.
+7. `Agent124PrefixL.lean` — the same endpoint for digit prefixes of any
+   length (used by `../four-digit-refinements/`).
 
 Agent #104's modules `LychrelDigitSums`, `PrefixInverse`, `FastInverse`,
 `ActualPrefix`, `PrefixCertificate`, `LongRowsBase`, `FastRowsBase`,
@@ -111,7 +139,17 @@ python3 tools/pbuild.py 2 Agent124PrefixK Agent124FastPred Agent124PrefixR Agent
 (`tools/run.py` hard-codes the toolchain path of this session; adjust
 `LEAN` before use.) The k = 5 batch took 479 s of compiler user time,
 about 4.5 minutes of wall time with two workers, with at most 2.6 GB
-resident per compiler (`logs/k5/timings.jsonl`).
+resident per compiler (`logs/k5/timings.jsonl`). `check.py` performs the
+whole build from an empty directory and the exhaustive axiom audit.
+
+The k = 6 build needed two memory fixes, both retained in `logs/k6/`: the
+first attempt was killed by the out-of-memory handler on row module 029
+(leaves with up to 35 predecessors per node; 4.2 GB for one leaf), which led
+to key-range splitting (`Agent124CodeRange`, generator `--budget 1200`) and a
+scheduler that never runs two heavy row modules together (`tools/pbuild2.py`);
+the short-descent module was then killed at 5.9 GB on width-5 short words,
+which led to `Agent124ShortSplit`. Only the affected modules changed; the
+data, tree and all other row modules are byte-identical across attempts.
 
 ## Development record
 
