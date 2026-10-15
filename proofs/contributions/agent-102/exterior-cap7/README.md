@@ -41,3 +41,21 @@ a memo state would be caught by the on-stack mark. The run exited 0.
 The same source compiled with `-DCAP=4,5,6` reproduces the fully memoized caps 4–6 exactly,
 including the complete exit-time histograms (`validate_cap4.out` … `validate_cap6.out`; compare
 `../review-agent101-cap56/cap5.out`, `cap6.out` and Agent #101's tables).
+
+## Supplementary heuristic exploration (UNKNOWN; not evidence of acyclicity)
+
+`cycle_hunt.c` iterates the same map from random trimmed states with Brent cycle detection:
+
+| starts | initial `|B|` | abort when `|B|` > | step cap | cycles found | all escaped | longest pre-escape run |
+|---:|---|---:|---:|---:|---|---:|
+| 40,000,000 | 8–16 | 22 | 5,000 | 0 | yes | 50 |
+| 20,000,000 | 17–30 | 36 | 5,000 | 0 | yes | 59 |
+
+(`./cycle_hunt N Lmin Lmax STEPS ESC SEED` with seeds 11 and 12; outputs `hunt_a.out`, `hunt_b.out`.)
+Random starts sample a negligible fraction of the state space, so this says nothing about cycles
+with small basins. Mean length growth on long random trajectories is about +0.54 per step.
+
+`potential_probe.py` shows that the natural candidate potential `|B| − (length of the
+{t,t+9}-suffix of B)` (motivated by Agent #9's exact erasure rule) is **not** monotone, over one or two
+steps, on all states with `|B| ≤ 4` (`potential_probe.out`); no all-length acyclicity argument is
+claimed or suggested by these runs.
