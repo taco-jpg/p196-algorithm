@@ -4,7 +4,7 @@ import Lean
 Exact overflow-tail erasure for the complementary-bulk exterior.
 Words `xs` below are INSIDE-OUT (the reverse of the quotient's exterior B).
 `rawRev` is the reversal of the raw overflow exterior in equation (7).
-STATUS: initial source awaiting an actual Lean compiler and axiom audit.
+Checked with Lean 4.19.0. See verify.py and the source-pinned build record.
 -/
 namespace Agent9.ExteriorErasure
 
@@ -29,6 +29,9 @@ theorem carry_reduced (t z e : Nat) (ht : 1 ≤ t) (ht' : t ≤ 8)
 theorem reduced_pair_sum (t k z : Nat) (ht : 1 ≤ t) (ht' : t ≤ 8)
     (hk : k ≤ 1) (hz : z ≤ 1) :
     digit (t+9*k) z + digit (t+9*z) k = 2*t := by
+  have h1 := carry_reduced t k z ht ht' hk hz
+  have h2 := carry_reduced t z k ht ht' hz hk
+  unfold carry at h1 h2
   unfold digit
   omega
 
@@ -37,14 +40,35 @@ theorem overflow_link_iff (t k x a : Nat) (ht : 1 ≤ t) (ht' : t ≤ 8)
     (hk : k ≤ 1) (hx : x ≤ 18) (ha : a ≤ 1) :
     (digit (t+9*k) (carry x a) + digit x k = 2*t) ↔
       (x = t ∨ x = t+9) := by
-  unfold carry digit
-  omega
+  have hca := carry_bit x a hx ha
+  have hfirst := carry_reduced t k (carry x a) ht ht' hk hca
+  by_cases hlo : x ≤ 8
+  · have h1 : carry x a = 0 := by unfold carry; omega
+    have h2 : carry x k = 0 := by unfold carry; omega
+    unfold carry digit at *
+    omega
+  · by_cases hn : x = 9
+    · subst x
+      have h1 : carry 9 a = a := by unfold carry; omega
+      have h2 : carry 9 k = k := by unfold carry; omega
+      unfold carry digit at *
+      omega
+    · have h1 : carry x a = 1 := by unfold carry; omega
+      have h2 : carry x k = 1 := by unfold carry; omega
+      unfold carry digit at *
+      omega
 
 /-- With the final forward carry fixed to k, a no-overflow paired column
 can match the bulk only when the source coefficient and incoming carry do. -/
-theorem no_overflow_column_iff (t k x a : Nat) (ht : 1 ≤ t) (ht' : t ≤ 8)
+theorem no_overflow_column_iff (t k x a : Nat) (_ht : 1 ≤ t) (_ht' : t ≤ 8)
     (hk : k ≤ 1) (hx : x ≤ 18) (ha : a ≤ 1) (hout : carry x a = k) :
     (digit x a + digit x k = 2*t) ↔ (x = t+9*k ∧ a = k) := by
+  have hsecond : carry x k = k := by
+    by_cases hlo : x ≤ 8
+    · unfold carry at *; omega
+    · by_cases hn : x = 9
+      · subst x; unfold carry at *; omega
+      · unfold carry at *; omega
   unfold carry digit at *
   omega
 
@@ -186,6 +210,170 @@ theorem overflow_never_erases_sentinel (t : Nat) (xs : List Nat)
   rw [overflow_erasure t xs ht ht' hxs k hk hover]
   exact runReduced_le_length t xs
 
+
+/-- Reversed raw exterior for equation (6), the no-overflow case. -/
+def rawNoRev (t k : Nat) (xs : List Nat) : List Nat :=
+  (digit (t+9*k) (inward xs 0) + t) ::
+    List.zipWith (· + ·) (lowDigits xs 0) (highDigits xs k)
+
+/-- The original exterior has no suffix equal to its current phase. -/
+def Trimmed (c : Nat) : List Nat → Prop
+  | [] => True
+  | x::_ => x ≠ c
+
+/-- Exact no-overflow rule on trimmed exteriors. The algebraic formula
+itself needs no final-overflow assumption; actual use selects equation (6). -/
+theorem no_overflow_erasure (t k : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hk : k ≤ 1)
+    (hxs : Bounded xs) (htrim : Trimmed (t+9*k) xs) :
+    runEq (2*t) (rawNoRev t k xs) = if inward xs 0 = k then 1 else 0 := by
+  have hi := inward_bit xs 0 hxs (by omega)
+  by_cases hm : inward xs 0 = k
+  · have hfirst : digit (t+9*k) (inward xs 0) + t = 2*t :=
+      (no_overflow_last_iff t k (inward xs 0) ht ht' hk hi).mpr hm
+    rw [if_pos hm]
+    cases xs with
+    | nil => simp [rawNoRev, lowDigits, highDigits, runEq, hfirst]
+    | cons x xs =>
+        have hx := bounded_head hxs
+        have htail := bounded_tail hxs
+        have ha := inward_bit xs 0 htail (by omega)
+        have hsecond : digit x (inward xs 0) + digit x k ≠ 2*t := by
+          intro heq
+          have h := (no_overflow_column_iff t k x (inward xs 0)
+            ht ht' hk hx ha hm).mp heq
+          exact htrim h.1
+        simp [rawNoRev, lowDigits, highDigits, runEq, hfirst, hsecond]
+  · have hfirst : digit (t+9*k) (inward xs 0) + t ≠ 2*t := by
+      intro h
+      exact hm ((no_overflow_last_iff t k (inward xs 0) ht ht' hk hi).mp h)
+    simp [rawNoRev, runEq, hfirst, hm]
+
+theorem no_overflow_erasure_le_one (t k : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hk : k ≤ 1)
+    (hxs : Bounded xs) (htrim : Trimmed (t+9*k) xs) :
+    runEq (2*t) (rawNoRev t k xs) ≤ 1 := by
+  rw [no_overflow_erasure t k xs ht ht' hk hxs htrim]
+  split <;> omega
+
+def AllReduced (t : Nat) (xs : List Nat) : Prop :=
+  ∀ x ∈ xs, x = t ∨ x = t+9
+
+theorem allReduced_tail (t x : Nat) (xs : List Nat)
+    (h : AllReduced t (x::xs)) : AllReduced t xs := by
+  intro y hy
+  exact h y (List.mem_cons_of_mem x hy)
+
+/-- An overflowing exterior consisting wholly of the erasure alphabet
+collapses to one coefficient t. This is an exact word identity. -/
+theorem full_binary_collapse (t : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hxs : Bounded xs)
+    (hred : AllReduced t xs) (k : Nat) (hk : k ≤ 1)
+    (hover : outward xs k = 1) :
+    rawRev t k xs = List.replicate xs.length (2*t) ++ [t] := by
+  induction xs generalizing k with
+  | nil =>
+      have hk1 : k = 1 := hover
+      subst k
+      have hlast : digit (t+9*1) 0 + 1 = t := by unfold digit; omega
+      simpa [rawRev, inward, lowDigits, highDigits] using hlast
+  | cons x xs ih =>
+      have htail := bounded_tail hxs
+      have hrt := allReduced_tail t x xs hred
+      have hr : x = t ∨ x = t+9 := hred x (by simp)
+      rcases hr with h | h
+      · subst x
+        have hc : carry t k = 0 := by
+          simpa using carry_reduced t 0 k ht ht' (by omega) hk
+        have ho : outward xs 0 = 1 := by simpa [outward, hc] using hover
+        have hraw : rawRev t k (t::xs) = 2*t :: rawRev t 0 xs := by
+          simpa using rawRev_cons_reduced t k 0 xs ht ht' hk (by omega) htail
+        rw [hraw, ih htail hrt 0 (by omega) ho]
+        simp [List.replicate_succ]
+      · subst x
+        have hc : carry (t+9) k = 1 := by
+          simpa using carry_reduced t 1 k ht ht' (by omega) hk
+        have ho : outward xs 1 = 1 := by simpa [outward, hc] using hover
+        have hraw : rawRev t k ((t+9)::xs) = 2*t :: rawRev t 1 xs := by
+          simpa using rawRev_cons_reduced t k 1 xs ht ht' hk (by omega) htail
+        rw [hraw, ih htail hrt 1 (by omega) ho]
+        simp [List.replicate_succ]
+
+theorem lowDigits_length (xs : List Nat) (e : Nat) :
+    (lowDigits xs e).length = xs.length := by
+  induction xs with
+  | nil => rfl
+  | cons x xs ih => simp [lowDigits, ih]
+
+theorem highDigits_length (xs : List Nat) (e : Nat) :
+    (highDigits xs e).length = xs.length := by
+  induction xs generalizing e with
+  | nil => rfl
+  | cons x xs ih => simp [highDigits, ih]
+
+theorem rawRev_length (t k : Nat) (xs : List Nat) :
+    (rawRev t k xs).length = xs.length + 1 := by
+  simp [rawRev, lowDigits_length, highDigits_length]
+
+theorem rawNoRev_length (t k : Nat) (xs : List Nat) :
+    (rawNoRev t k xs).length = xs.length + 1 := by
+  simp [rawNoRev, lowDigits_length, highDigits_length]
+
+/-- Drop exactly the initial equal run (reverse of exterior suffix trimming). -/
+def strip (v : Nat) (xs : List Nat) : List Nat := xs.drop (runEq v xs)
+
+theorem overflow_exterior_length (t : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hxs : Bounded xs)
+    (k : Nat) (hk : k ≤ 1) (hover : outward xs k = 1) :
+    (strip (2*t) (rawRev t k xs)).length = xs.length + 1 - runReduced t xs := by
+  simp [strip, rawRev_length, overflow_erasure t xs ht ht' hxs k hk hover]
+
+theorem overflow_exterior_nonempty (t : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hxs : Bounded xs)
+    (k : Nat) (hk : k ≤ 1) (hover : outward xs k = 1) :
+    1 ≤ (strip (2*t) (rawRev t k xs)).length := by
+  rw [overflow_exterior_length t xs ht ht' hxs k hk hover]
+  have := runReduced_le_length t xs
+  omega
+
+theorem no_overflow_exterior_length (t k : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hk : k ≤ 1)
+    (hxs : Bounded xs) (htrim : Trimmed (t+9*k) xs) :
+    (strip (2*t) (rawNoRev t k xs)).length =
+      xs.length + if inward xs 0 = k then 0 else 1 := by
+  simp only [strip, List.length_drop, rawNoRev_length,
+    no_overflow_erasure t k xs ht ht' hk hxs htrim]
+  split <;> omega
+
+theorem no_overflow_exterior_nondecreasing (t k : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hk : k ≤ 1)
+    (hxs : Bounded xs) (htrim : Trimmed (t+9*k) xs) :
+    xs.length ≤ (strip (2*t) (rawNoRev t k xs)).length := by
+  rw [no_overflow_exterior_length t k xs ht ht' hk hxs htrim]
+  omega
+
+
+
+theorem runReduced_eq_length (t : Nat) (xs : List Nat)
+    (hred : AllReduced t xs) : runReduced t xs = xs.length := by
+  induction xs with
+  | nil => rfl
+  | cons x xs ih =>
+      have hr : x = t ∨ x = t+9 := hred x (by simp)
+      have htail := allReduced_tail t x xs hred
+      simp [runReduced, hr, ih htail, Nat.add_comm]
+
+theorem strip_full_binary_collapse (t : Nat) (xs : List Nat)
+    (ht : 1 ≤ t) (ht' : t ≤ 8) (hxs : Bounded xs)
+    (hred : AllReduced t xs) (k : Nat) (hk : k ≤ 1)
+    (hover : outward xs k = 1) :
+    strip (2*t) (rawRev t k xs) = [t] := by
+  unfold strip
+  rw [overflow_erasure t xs ht ht' hxs k hk hover,
+    runReduced_eq_length t xs hred,
+    full_binary_collapse t xs ht ht' hxs hred k hk hover]
+  simp
+
 #print axioms carry_bit
 #print axioms carry_reduced
 #print axioms reduced_pair_sum
@@ -200,5 +388,20 @@ theorem overflow_never_erases_sentinel (t : Nat) (xs : List Nat)
 #print axioms overflow_erasure
 #print axioms runReduced_le_length
 #print axioms overflow_never_erases_sentinel
+
+#print axioms no_overflow_erasure
+#print axioms no_overflow_erasure_le_one
+#print axioms allReduced_tail
+#print axioms full_binary_collapse
+#print axioms lowDigits_length
+#print axioms highDigits_length
+#print axioms rawRev_length
+#print axioms rawNoRev_length
+#print axioms overflow_exterior_length
+#print axioms overflow_exterior_nonempty
+#print axioms no_overflow_exterior_length
+#print axioms no_overflow_exterior_nondecreasing
+#print axioms runReduced_eq_length
+#print axioms strip_full_binary_collapse
 
 end Agent9.ExteriorErasure
