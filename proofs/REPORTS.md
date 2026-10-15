@@ -435,6 +435,8 @@ Every original written research report, proof note and manuscript source retaine
 - [contributions/agent-110/exterior-global/README.md](contributions/agent-110/exterior-global/README.md)
 - [contributions/agent-110/exterior-global/RESEARCH.md](contributions/agent-110/exterior-global/RESEARCH.md)
 - [contributions/agent-110/exterior-global/search/README.md](contributions/agent-110/exterior-global/search/README.md)
+- [contributions/agent-110/integration/final-review/REVIEW.md](contributions/agent-110/integration/final-review/REVIEW.md)
+- [contributions/agent-110/integration/merged-check/REVIEW.md](contributions/agent-110/integration/merged-check/REVIEW.md)
 - [contributions/agent-110/integration/notes.md](contributions/agent-110/integration/notes.md)
 - [contributions/agent-110/review-agent112/REVIEW.md](contributions/agent-110/review-agent112/REVIEW.md)
 - [contributions/agent-110/review-checked/SEMANTIC_REVIEW.md](contributions/agent-110/review-checked/SEMANTIC_REVIEW.md)
