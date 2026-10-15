@@ -41,10 +41,14 @@ jobs:
           set -euo pipefail
           lean --version
           cd source/proofs/agent7
+          export LEAN_PATH=.
+          sha256sum OuterFinite.lean
+          lean -o OuterFinite.olean OuterFinite.lean
           for f in *.lean; do
+            test "$f" = OuterFinite.lean && continue
             echo "=== SOURCE $f ==="
             sha256sum "$f"
-            lean "$f"
+            lean -o "${f%.lean}.olean" "$f"
           done
       - name: Run independent Python audit when present
         shell: bash
