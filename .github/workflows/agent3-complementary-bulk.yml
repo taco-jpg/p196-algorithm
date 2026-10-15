@@ -1,0 +1,57 @@
+name: Agent 3 complementary bulk
+on:
+  push:
+    branches: [research/agent3-complementary-bulk-20261015]
+    paths:
+      - 'proofs/contributions/2026-10-15-agent3-complementary-bulk/**'
+      - '.github/workflows/agent3-complementary-bulk.yml'
+  pull_request:
+    paths:
+      - 'proofs/contributions/2026-10-15-agent3-complementary-bulk/**'
+      - '.github/workflows/agent3-complementary-bulk.yml'
+permissions:
+  contents: read
+jobs:
+  lean-core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Fetch exact public repository commit
+        run: |
+          git init .
+          git remote add origin https://github.com/taco-jpg/p196-algorithm.git
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Install pinned Lean release
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          sha256sum "$RUNNER_TEMP/lean.tar.zst"
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Compile all Agent 3 Lean files and print axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir=proofs/contributions/2026-10-15-agent3-complementary-bulk
+          mkdir -p "$RUNNER_TEMP/agent3-verification"
+          lean --version | tee "$RUNNER_TEMP/agent3-verification/version.txt"
+          for f in "$dir"/*.lean; do
+            sha256sum "$f"
+            lean "$f" 2>&1 | tee "$RUNNER_TEMP/agent3-verification/$(basename "$f").log"
+          done
+          if grep -E 'sorryAx|Lean\.ofReduceBool|declaration uses .sorry.' "$RUNNER_TEMP/agent3-verification/"*.log; then
+            echo 'Forbidden proof dependency or incomplete proof'; exit 1
+          fi
+      - name: Python checks when present
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir=proofs/contributions/2026-10-15-agent3-complementary-bulk
+          if [ -f "$dir/verify.py" ]; then python "$dir/verify.py"; fi
+      - name: Retain compiler and axiom logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent3-verification-${{ github.sha }}
+          path: ${{ runner.temp }}/agent3-verification/
+          if-no-files-found: ignore
