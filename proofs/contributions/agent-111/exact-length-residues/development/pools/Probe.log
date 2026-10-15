@@ -1,0 +1,25 @@
+proofs/contributions/agent-111/exact-length-residues/development/pools/Probe.lean:2:7: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  List.Nodup
+has type
+  List ?m.2 → Prop
+proofs/contributions/agent-111/exact-length-residues/development/pools/Probe.lean:3:7: error: unknown constant 'List.nodup_map_iff'
+List.nodup_range {n : Nat} : (List.range n).Nodup
+List.pairwise_append.{u_1} {α : Type u_1} {R : α → α → Prop} {l₁ l₂ : List α} :
+  List.Pairwise R (l₁ ++ l₂) ↔ List.Pairwise R l₁ ∧ List.Pairwise R l₂ ∧ ∀ (a : α), a ∈ l₁ → ∀ (b : α), b ∈ l₂ → R a b
+proofs/contributions/agent-111/exact-length-residues/development/pools/Probe.lean:6:7: error: unknown constant 'List.nodup_append'
+List.mem_map.{u_1, u_2} {α : Type u_1} {β : Type u_2} {b : β} {f : α → β} {l : List α} :
+  b ∈ List.map f l ↔ ∃ a, a ∈ l ∧ f a = b
+List.mem_range {m n : Nat} : m ∈ List.range n ↔ m < n
+Nat.eq_of_mul_eq_mul_left {m k n : Nat} (hn : 0 < n) (h : n * m = n * k) : m = k
+Nat.mod_add_mod (m n k : Nat) : (m % n + k) % n = (m + k) % n
+Nat.add_mod_mod (m n k : Nat) : (m + n % k) % k = (m + n) % k
+Nat.mul_mod_right (m n : Nat) : m * n % m = 0
+Nat.mod_eq_of_lt {a b : Nat} (h : a < b) : a % b = a
+proofs/contributions/agent-111/exact-length-residues/development/pools/Probe.lean:14:7: error: unknown constant 'Nat.mod_eq_mod_iff_mod_sub_eq_zero'
+Nat.dvd_mul {k m n : Nat} : k ∣ m * n ↔ ∃ k₁ k₂, k₁ ∣ m ∧ k₂ ∣ n ∧ k₁ * k₂ = k
+proofs/contributions/agent-111/exact-length-residues/development/pools/Probe.lean:16:7: error: unknown constant 'Nat.Coprime'
+proofs/contributions/agent-111/exact-length-residues/development/pools/Probe.lean:17:7: error: unknown constant 'Nat.coprime_mul_iff_left'
+Nat.gcd_mul_dvd_mul_gcd (k m n : Nat) : k.gcd (m * n) ∣ k.gcd m * k.gcd n
+Nat.dvd_mul_gcd_iff_dvd_mul {k n m : Nat} : k ∣ n * k.gcd m ↔ k ∣ n * m
+Nat.gcd_mul_right (m n k : Nat) : (m * n).gcd (k * n) = m.gcd k * n
+Nat.gcd_mul_left (m n k : Nat) : (m * n).gcd (m * k) = m * n.gcd k

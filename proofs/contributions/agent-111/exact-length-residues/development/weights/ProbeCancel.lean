@@ -1,0 +1,15 @@
+import Std
+#check Nat.ModEq
+#check Nat.ModEq.add_left_cancel
+#check Nat.add_mod_left
+#check Nat.add_mod_right
+#check Nat.add_mod_mod
+#check Nat.add_mod_eq_add_mod_right
+#check Nat.add_mod_eq_add_mod_left
+#check Nat.mod_eq_of_dvd
+#check Nat.mod_eq_sub_mod
+#check Nat.sub_mod
+#check Nat.add_mod_eq_add_mod_iff
+#check Nat.mod_eq_of_lt
+#check Nat.mod_eq_sub_mul_div
+#check Nat.mod_add_mod

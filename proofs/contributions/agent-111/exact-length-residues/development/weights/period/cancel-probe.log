@@ -1,0 +1,14 @@
+Nat.dvd_gcd_mul_iff_dvd_mul {k n m : Nat} : k ∣ k.gcd n * m ↔ k ∣ n * m
+Nat.dvd_mul_gcd_iff_dvd_mul {k n m : Nat} : k ∣ n * k.gcd m ↔ k ∣ n * m
+Nat.gcd_pow_left_of_gcd_eq_one {k n m : Nat} (h : n.gcd m = 1) : (n ^ k).gcd m = 1
+Nat.gcd_pow_right_of_gcd_eq_one {k n m : Nat} (h : n.gcd m = 1) : n.gcd (m ^ k) = 1
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe.lean:6:7: error: unknown constant 'Nat.mod_eq_mod_iff'
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe.lean:7:7: error: unknown constant 'Nat.mod_eq_mod_iff_dvd_sub'
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe.lean:8:7: error: unknown constant 'Nat.mod_eq_iff_lt'
+Nat.gcd_eq_one_iff {m n : Nat} : m.gcd n = 1 ↔ ∀ (c : Nat), c ∣ m → c ∣ n → c = 1
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe.lean:10:7: error: unknown constant 'Nat.dvd_of_dvd_mul_left_of_gcd_eq_one'
+p196/proofs/contributions/agent-111/exact-length-residues/development/weights/period/CancelProbe.lean:11:7: error: unknown constant 'Nat.dvd_of_dvd_mul_right_of_gcd_eq_one'
+Nat.dvd_sub {k m n : Nat} (h₁ : k ∣ m) (h₂ : k ∣ n) : k ∣ m - n
+Nat.sub_mul (n m k : Nat) : (n - m) * k = n * k - m * k
+Nat.mul_sub (n m k : Nat) : n * (m - k) = n * m - n * k
+Nat.mod_eq_of_lt {a b : Nat} (h : a < b) : a % b = a
