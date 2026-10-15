@@ -25,7 +25,7 @@ jobs:
       - name: Install pinned Lean release
         run: |
           curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
-          sha256sum "$RUNNER_TEMP/lean.tar.zst"
+          echo "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $RUNNER_TEMP/lean.tar.zst" | sha256sum -c -
           tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
       - name: Compile all Agent 3 Lean files and print axioms
@@ -35,10 +35,22 @@ jobs:
           dir=proofs/contributions/2026-10-15-agent3-complementary-bulk
           mkdir -p "$RUNNER_TEMP/agent3-verification"
           lean --version | tee "$RUNNER_TEMP/agent3-verification/version.txt"
-          for f in "$dir"/*.lean; do
-            sha256sum "$f"
-            lean "$f" 2>&1 | tee "$RUNNER_TEMP/agent3-verification/$(basename "$f").log"
+          # Agent #1: rebuild every source in an empty import root. The original
+          # loop checked files but emitted no objects, so OuterOrbit could not
+          # import the already checked OuterCharge. No module is excluded.
+          build=$(mktemp -d "$RUNNER_TEMP/agent3-source-build.XXXXXX")
+          cp "$dir"/*.lean "$build/"
+          sha256sum "$dir"/*.lean | tee "$RUNNER_TEMP/agent3-verification/source-sha256.txt"
+          pushd "$build"
+          for f in *.lean; do
+            set +e
+            LEAN_PATH="$build" lean -j1 -DElab.async=false -o "${f%.lean}.olean" "$f" 2>&1 | tee "$RUNNER_TEMP/agent3-verification/$f.log"
+            result=${PIPESTATUS[0]}
+            set -e
+            printf '%s\n' "$result" > "$RUNNER_TEMP/agent3-verification/$f.exit"
+            test "$result" -eq 0
           done
+          popd
           if grep -E 'sorryAx|Lean\.ofReduceBool|declaration uses .sorry.' "$RUNNER_TEMP/agent3-verification/"*.log; then
             echo 'Forbidden proof dependency or incomplete proof'; exit 1
           fi
