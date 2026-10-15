@@ -59,8 +59,14 @@ random inputs, 0 mismatches), and the kernel re-checks every row.
 
 ## Status and verification
 
-See `verification.json` once the fresh build completes (status recorded on the
-coordination branch). Reproduce:
+**LEAN-CHECKED** (official Lean 4.19.0, `6caaee842e94`, core + Std only; no
+`sorry`, no `native_decide`, no new axioms). Fresh from-source build of source
+`7f5736f` in an empty directory: all 104 modules exit 0 (14 structural, 90
+generated row modules). Exhaustive audit of every `Agent113` theorem constant in
+the final environment (3,806, including the imported two-digit modules): axiom
+union exactly `propext`, `Classical.choice`, `Quot.sound`. The five endpoints
+use only `propext` and `Quot.sound`. Evidence: `verification/`,
+`verification.json`. Not yet independently reviewed. Reproduce:
 
 ```sh
 cd proofs/contributions/agent-113/five-layer
