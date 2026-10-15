@@ -6,6 +6,16 @@ This directory publishes the research findings, written proofs, formal source, f
 
 Start with [the findings and evidence matrix](FINDINGS.md), [the complete written-report index](REPORTS.md), and [reproduction instructions](REPRODUCE.md). The [completed renewal pass](research/main_existence_attempt/renewal_pass/RENEWAL_STATUS.md) now combines the early checked gate and exact later hits with generalized gates, language obstructions, actual carry safety, full raw evidence and independent audits. The [correlation and finite-delay report](research/main_existence_attempt/correlation_pass/CORRELATION_PASS_STATUS.md) and [earlier ancestry and repository review](research/main_existence_attempt/ancestry_direct_pass/ANCESTRY_DIRECT_STATUS.md) remain preserved. The original research tree is preserved under [research/](research/), so relative imports and certificate paths remain meaningful. Its [historical overview](research/README.md) records successive passes; later reports supersede earlier open questions only where explicitly stated. Historical statements such as “not yet formalized” or “nothing published” describe that checkpoint, not the current release.
 
+## All-base intrinsic carry-defect criterion — 15 October 2026
+
+The [new intrinsic checkpoint](coordination/2026-10-15-all-base-intrinsic-criterion.md)
+extends the external decimal high/9 theorem to every base: some partition has
+a carry defect iff a high coefficient is immediately followed by the neutral
+coefficient b-1, and singletons maximize every defect. The ordinary-integer
+safety bridge requires base at least three. The 27 new Lean declarations and
+82 prerequisites have fresh standard-axiom audits; binary and odd-base limits,
+failed drafts, full logs and independent reviews are retained.
+
 ## Weights, variable-clock bands and exterior rigidity — 15 October 2026
 
 The [new follow-up handoff](coordination/2026-10-15-weights-and-variable-clock-bands.md)

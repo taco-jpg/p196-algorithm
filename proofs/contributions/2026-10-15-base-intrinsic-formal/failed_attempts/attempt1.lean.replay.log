@@ -1,0 +1,44 @@
+p196-algorithm/proofs/contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt:10:33: warning: unused variable `hb`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+p196-algorithm/proofs/contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt:70:11: warning: unused variable `xs`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+p196-algorithm/proofs/contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt:103:6: error: 'change' tactic failed, pattern
+  q / b ≤ (q + active) / b
+is not definitionally equal to target
+  out b i (singletonTags ((q, r) :: xs)) 0 ≤ out b j ((q, r) :: xs) 0
+p196-algorithm/proofs/contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt:106:6: error: 'change' tactic failed, pattern
+  out b (q / b) (singletonTags xs) k ≤ out b ((q + active) / b) xs k
+is not definitionally equal to target
+  out b i (singletonTags ((q, r) :: xs)) (k + 1) ≤ out b j ((q, r) :: xs) (k + 1)
+p196-algorithm/proofs/contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt:129:25: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≤ -1
+  e ≥ 0
+  0 ≤ d ≤ 1
+  d ≥ 0
+  0 ≤ c ≤ 1
+  c - d ≤ 0
+  a ≥ 2
+  2*a - e ≥ 2
+where
+ a := b
+ c := i
+ d := j
+ e := q
+ f := (q + if r = true then 0 else i) / b
+p196-algorithm/proofs/contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt:129:36: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≤ -1
+  e ≥ 0
+  0 ≤ d ≤ 1
+  d ≥ 0
+  0 ≤ c ≤ 1
+  c - d ≤ 0
+  a ≥ 2
+  2*a - e ≥ 2
+where
+ a := b
+ c := i
+ d := j
+ e := q
+ f := ((q, r).fst + if false = true then 0 else j) / b

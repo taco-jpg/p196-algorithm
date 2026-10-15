@@ -289,3 +289,10 @@ Every original written research report, proof note and manuscript source retaine
 - [research/main_existence_attempt/continuation_pass/safe_language_followup/METHOD_AND_PROOF.md](research/main_existence_attempt/continuation_pass/safe_language_followup/METHOD_AND_PROOF.md)
 - [research/main_existence_attempt/continuation_pass/lean/zero_exterior/STATUS.md](research/main_existence_attempt/continuation_pass/lean/zero_exterior/STATUS.md)
 - [coordination/2026-10-15-weights-and-variable-clock-bands.md](coordination/2026-10-15-weights-and-variable-clock-bands.md)
+
+## All-base intrinsic criterion reports
+
+- [contributions/2026-10-15-base-intrinsic-formal/README.md](contributions/2026-10-15-base-intrinsic-formal/README.md)
+- [contributions/2026-10-15-base-intrinsic-formal/INDEPENDENT_REVIEW.md](contributions/2026-10-15-base-intrinsic-formal/INDEPENDENT_REVIEW.md)
+- [contributions/ALL_BASE_INTRINSIC_INDEX.md](contributions/ALL_BASE_INTRINSIC_INDEX.md)
+- [coordination/2026-10-15-all-base-intrinsic-criterion.md](coordination/2026-10-15-all-base-intrinsic-criterion.md)

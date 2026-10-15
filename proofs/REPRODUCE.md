@@ -284,3 +284,10 @@ python3 -B main_existence_attempt/continuation_pass/lean/zero_exterior/check.py 
 ```
 
 `LEAN_BIN` must be an absolute Lean 4.19.0 path. That command independently rebuilds the retained decimal dependency, the zero-exterior module and all 15 declaration audits. Root's historical `recheck_zero_exterior.py` additionally depends on its earlier `lean_build` output and preserves the original compiler path; its receipt explicitly records reuse of the exact root-rebuilt dependency. The graph checkers use full retained certificates and ordinary integer arithmetic; written all-gap identities provide the universal bridge. These replays do not search larger interfaces or assert a recurrent safe construction.
+
+## All-base intrinsic criterion
+
+Run the [intrinsic package checker](contributions/2026-10-15-base-intrinsic-formal/check.py)
+with Lean 4.19.0 following its README. It rebuilds nine exact sources and audits
+109 declarations, including 82 prior prerequisites. Full logs, rejected drafts,
+independent review and source identities remain in the package.

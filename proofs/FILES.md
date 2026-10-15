@@ -1,6 +1,6 @@
 # Complete published file list
 
-Every physical file in the research releases and coordination checkpoints is listed below, including all preserved concurrent contributions and the five lossless binary trace parts. Source snapshots, original-to-parts provenance and exact infrastructure exclusions are recorded separately in INVENTORY.tsv. Generated recovery outputs are not duplicate stored files.
+Every source, historical checkpoint, bounded outcome, review and archive is listed below. Original-to-stored byte identities are in INVENTORY.json.
 
 - [FILES.md](FILES.md)
 - [FINDINGS.md](FINDINGS.md)
@@ -374,6 +374,24 @@ Every physical file in the research releases and coordination checkpoints is lis
 - [contributions/2026-10-14-seven-step-review/README.md](contributions/2026-10-14-seven-step-review/README.md)
 - [contributions/2026-10-14-seven-step-review/independent_reset.py](contributions/2026-10-14-seven-step-review/independent_reset.py)
 - [contributions/2026-10-14-seven-step-review/verification.json](contributions/2026-10-14-seven-step-review/verification.json)
+- [contributions/2026-10-15-base-intrinsic-formal/INDEPENDENT_REVIEW.md](contributions/2026-10-15-base-intrinsic-formal/INDEPENDENT_REVIEW.md)
+- [contributions/2026-10-15-base-intrinsic-formal/IntrinsicCarry.lean](contributions/2026-10-15-base-intrinsic-formal/IntrinsicCarry.lean)
+- [contributions/2026-10-15-base-intrinsic-formal/IntrinsicPattern.lean](contributions/2026-10-15-base-intrinsic-formal/IntrinsicPattern.lean)
+- [contributions/2026-10-15-base-intrinsic-formal/IntrinsicReverseAdd.lean](contributions/2026-10-15-base-intrinsic-formal/IntrinsicReverseAdd.lean)
+- [contributions/2026-10-15-base-intrinsic-formal/README.md](contributions/2026-10-15-base-intrinsic-formal/README.md)
+- [contributions/2026-10-15-base-intrinsic-formal/check.py](contributions/2026-10-15-base-intrinsic-formal/check.py)
+- [contributions/2026-10-15-base-intrinsic-formal/compile.log](contributions/2026-10-15-base-intrinsic-formal/compile.log)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/README.md](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/README.md)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.replay.log](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.replay.log)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/attempt1.lean.txt)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/pattern_attempt1.lean.replay.log](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/pattern_attempt1.lean.replay.log)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/pattern_attempt1.lean.txt](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/pattern_attempt1.lean.txt)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/replay.json](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/replay.json)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/reverse_attempt1.lean.replay.log](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/reverse_attempt1.lean.replay.log)
+- [contributions/2026-10-15-base-intrinsic-formal/failed_attempts/reverse_attempt1.lean.txt](contributions/2026-10-15-base-intrinsic-formal/failed_attempts/reverse_attempt1.lean.txt)
+- [contributions/2026-10-15-base-intrinsic-formal/independent_review.json](contributions/2026-10-15-base-intrinsic-formal/independent_review.json)
+- [contributions/2026-10-15-base-intrinsic-formal/verification.json](contributions/2026-10-15-base-intrinsic-formal/verification.json)
+- [contributions/2026-10-15-base-intrinsic-root-review.json](contributions/2026-10-15-base-intrinsic-root-review.json)
 - [contributions/2026-10-15-base-reflection-formal/BaseReflection.lean](contributions/2026-10-15-base-reflection-formal/BaseReflection.lean)
 - [contributions/2026-10-15-base-reflection-formal/INDEPENDENT_FINAL_REVIEW.md](contributions/2026-10-15-base-reflection-formal/INDEPENDENT_FINAL_REVIEW.md)
 - [contributions/2026-10-15-base-reflection-formal/INDEPENDENT_PHYSICAL_WIDTH_REVIEW.md](contributions/2026-10-15-base-reflection-formal/INDEPENDENT_PHYSICAL_WIDTH_REVIEW.md)
@@ -478,6 +496,7 @@ Every physical file in the research releases and coordination checkpoints is lis
 - [contributions/2026-10-15-seam-persistence-obstruction/review_snapshots/before_external_SEAM_PERSISTENCE_OBSTRUCTION.md](contributions/2026-10-15-seam-persistence-obstruction/review_snapshots/before_external_SEAM_PERSISTENCE_OBSTRUCTION.md)
 - [contributions/2026-10-15-seam-persistence-obstruction/verification.json](contributions/2026-10-15-seam-persistence-obstruction/verification.json)
 - [contributions/2026-10-15-sharp-clock-formal-root-review.json](contributions/2026-10-15-sharp-clock-formal-root-review.json)
+- [contributions/ALL_BASE_INTRINSIC_INDEX.md](contributions/ALL_BASE_INTRINSIC_INDEX.md)
 - [contributions/BROADER_RETURN_INDEX.md](contributions/BROADER_RETURN_INDEX.md)
 - [contributions/COLLISION_INDEX.md](contributions/COLLISION_INDEX.md)
 - [contributions/COMPONENT_BOUNDS_INDEX.md](contributions/COMPONENT_BOUNDS_INDEX.md)
@@ -505,6 +524,7 @@ Every physical file in the research releases and coordination checkpoints is lis
 - [coordination/2026-10-14-seven-step-obstruction.md](coordination/2026-10-14-seven-step-obstruction.md)
 - [coordination/2026-10-14-seven-step-results.md](coordination/2026-10-14-seven-step-results.md)
 - [coordination/2026-10-14-tail-termination.md](coordination/2026-10-14-tail-termination.md)
+- [coordination/2026-10-15-all-base-intrinsic-criterion.md](coordination/2026-10-15-all-base-intrinsic-criterion.md)
 - [coordination/2026-10-15-four-state-language-exclusion.md](coordination/2026-10-15-four-state-language-exclusion.md)
 - [coordination/2026-10-15-general-base-seam-results.md](coordination/2026-10-15-general-base-seam-results.md)
 - [coordination/2026-10-15-intrinsic-seam-and-quantifiers.md](coordination/2026-10-15-intrinsic-seam-and-quantifiers.md)

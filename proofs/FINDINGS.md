@@ -197,3 +197,14 @@ The two new formal modules contain 31 supporting theorem declarations and 5 defi
 | Two-band variable-clock quotient | Exact all-gap transition; a valid cycle would have positive gap gain and imply a concrete infinite safe family. No cycle found. Complete graph from 1,705 stated seeds has 4,083 states and rank at most 22; for gaps>=10 all leave this tracked mechanism. No exclusion of larger interfaces or later regeneration. | [Proof and full graph](research/main_existence_attempt/continuation_pass/seam_persistence/METHOD_AND_PROOF.md), [root replay](research/main_existence_attempt/continuation_pass/root_review/seam_persistence_review.json) |
 | Four-band two-parameter extension | Exact update; a successful cycle requires nonnegative gain in each gap. Complete graph from 765 singleton seeds has 1,389 states and rank at most 19, without reaching caps. For g,h>=10 all leave this mechanism. No general regular-language or decimal termination conclusion. | [Proof, certificate and witness](research/main_existence_attempt/continuation_pass/safe_language_followup/METHOD_AND_PROOF.md), [review](research/main_existence_attempt/continuation_pass/root_review/four_band_review.json) |
 | Sharp three-zero exterior time bound | For actual positive decimal orbits, pair prefix (p,0,0,0), p>0, forces time<=4; prior history is no-overflow and outside doubling. Same positive outside symbol cannot return later with that exterior. Two-zero overflow counterexample retained. | [Lean scope](research/main_existence_attempt/continuation_pass/lean/zero_exterior/STATUS.md), [independent audit](research/main_existence_attempt/continuation_pass/root_review/zero_exterior_review.json) |
+
+## All-base intrinsic carry-defect criterion
+
+The [new formal package](contributions/2026-10-15-base-intrinsic-formal/README.md)
+extends the external e521255 decimal theorem, with explicit attribution.
+For b>=2, partition-defect existence is exactly a high/neutral adjacent pair,
+and singleton partitions maximize all outgoing-carry defects. For b>=3, the
+canonical numeric reverse-add bridge certifies a nonpalindromic output.
+Binary output safety fails; odd-base input nonpalindromicity is not asserted.
+The 27 new declarations and 82 prerequisites pass fresh standard-axiom audits.
+This is a one-step theorem, not a persistent invariant.
