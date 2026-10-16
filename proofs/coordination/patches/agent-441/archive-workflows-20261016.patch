@@ -1,0 +1,188 @@
+diff --git a/.github/README.md b/.github/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..61d31b77dfbdd6ef442dd4583578c3f88e2d0932
+--- /dev/null
++++ b/.github/README.md
+@@ -0,0 +1,65 @@
++# Workflow navigation and evidence boundaries
++
++Source snapshot: `9de08d78db6526e2ce2dd66cedd5e63f600424bd`. This index describes **37 workflow configurations**, not 37 completed checks or accepted mathematical results. The exact triggers, filters, commands, permissions, and pinned inputs remain in each linked YAML file. No workflow was launched to prepare this guide.
++
++## Read a workflow before reading a status badge
++
++Every listed workflow has a path-filtered push trigger at this snapshot. Some additionally declare a pull-request trigger or manual dispatch. The table abbreviates push filters; inspect the YAML for every exact pattern and for any separate pull-request filters. A push trigger restricted to its own YAML is not a continuous check of every change to the associated mathematical source. A branch pattern in a retained workflow does not establish that the branch still exists.
++
++Job names such as `verify`, `kernel-check`, `snapshot`, `publish`, or `runtime` are configuration identifiers, not execution evidence. Distinguish a source export or toolchain bootstrap from a theorem build, a finite-certificate replay, an axiom audit, and independent semantic review. For a result, retain the actual run ID, head commit, attempt, job/step conclusion, complete relevant logs, and the checked source/dependency hashes. A successful unrelated job cannot supply missing verification for another contribution.
++
++## Configured workflow catalogue
++
++“Declared” in the final column means `contents: write` appears at workflow or job scope. It is a reason to inspect side effects, not a claim that a write ran or that all other workflows are harmless. Other permissions and shell commands still require inspection. “Manual” means the YAML contains `workflow_dispatch`, not that dispatch is currently available to every reader.
++
++| Workflow source | Configured jobs | Events and push branches | Push path scope | Contents write permission |
++|---|---|---|---|---|
++| [agent1-consolidation-core.yml](workflows/agent1-consolidation-core.yml) | `verify` | push; `integrate/agent-1/20261015T1901Z` | Own YAML only | Not declared in inspected scopes |
++| [agent1-consolidation-delta.yml](workflows/agent1-consolidation-delta.yml) | `export` | push; `integrate/agent-1/20261015T1901Z` | Own YAML only | Not declared in inspected scopes |
++| [agent1-consolidation-index.yml](workflows/agent1-consolidation-index.yml) | `reconcile`, `publish` | push; `integrate/agent-1/20261015T1901Z` | Own YAML only | Declared |
++| [agent1-consolidation-snapshot.yml](workflows/agent1-consolidation-snapshot.yml) | `snapshot` | push; `integrate/agent-1/20261015T1901Z` | Own YAML only | Not declared in inspected scopes |
++| [agent1-english-inventory.yml](workflows/agent1-english-inventory.yml) | `inventory` | push; `main` | Own YAML only | Not declared in inspected scopes |
++| [agent1-english-publish.yml](workflows/agent1-english-publish.yml) | `prepare`, `publish` | push; `main` | 3 push path patterns; see YAML | Declared |
++| [agent1-language-extras.yml](workflows/agent1-language-extras.yml) | `inspect` | push; `main` | Own YAML only | Not declared in inspected scopes |
++| [agent1-pr47-postmerge.yml](workflows/agent1-pr47-postmerge.yml) | `verify`, `publish-evidence` | push; `integrate/agent-1/20261015T1901Z` | Own YAML only | Declared |
++| [agent104-real-weights-review.yml](workflows/agent104-real-weights-review.yml) | `independent-review` | push; `research/agent-104/20261015-real-weights-review` | 4 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent108-modular-autonomy.yml](workflows/agent108-modular-autonomy.yml) | `kernel-check` | push, manual; `research/agent-108/**` | 2 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent108-review105-criterion.yml](workflows/agent108-review105-criterion.yml) | `kernel-check` | push, manual; `research/agent-108/**` | 2 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent111-exact-length-residues.yml](workflows/agent111-exact-length-residues.yml) | `kernel-check` | push, PR, manual; `research/agent-111/**` | 4 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent12-formalization.yml](workflows/agent12-formalization.yml) | `verify` | push, manual; `formalize/agent-12/**` | 2 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent122-countermodel-check.yml](workflows/agent122-countermodel-check.yml) | `check` | push; `research/agent-122/s20261015T154828Z` | 2 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent122-source-sync.yml](workflows/agent122-source-sync.yml) | `snapshot` | push; `research/agent-122/s20261015T154828Z` | Own YAML only | Not declared in inspected scopes |
++| [agent13-folded-family.yml](workflows/agent13-folded-family.yml) | `folded-kernel-audit` | push, PR; `formalize/agent-13/s20261015-folded` | 3 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent13-real-library.yml](workflows/agent13-real-library.yml) | `pinned-real-library` | push; `formalize/agent-13/s20261015` | Own YAML only | Not declared in inspected scopes |
++| [agent13-real-weights.yml](workflows/agent13-real-weights.yml) | `real-weight-audit` | push, PR; `formalize/agent-13/s20261015` | 4 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent13-safe-family.yml](workflows/agent13-safe-family.yml) | `kernel-audit` | push, PR; `formalize/agent-13/s20261015` | 3 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent13-source-census.yml](workflows/agent13-source-census.yml) | `census` | push; `formalize/agent-13/s20261015` | Own YAML only | Not declared in inspected scopes |
++| [agent14-audit-bundle-export.yml](workflows/agent14-audit-bundle-export.yml) | `export` | push; `audit/agent-14/20261015T050330-rebuild` | Own YAML only | Not declared in inspected scopes |
++| [agent14-audit-source-snapshot.yml](workflows/agent14-audit-source-snapshot.yml) | `snapshot` | push, manual; `audit/agent-14/20261015T050330-rebuild` | Own YAML only | Not declared in inspected scopes |
++| [agent14-selected-replay.yml](workflows/agent14-selected-replay.yml) | `replay` | push, manual; `audit/agent-14/20261015T050330-rebuild` | Own YAML only | Declared |
++| [agent3-complementary-bulk.yml](workflows/agent3-complementary-bulk.yml) | `lean-core` | push, PR; `research/agent3-complementary-bulk-20261015` | 2 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent3-evidence.yml](workflows/agent3-evidence.yml) | `reproduce` | push; `research/agent3-complementary-bulk-20261015` | Own YAML only | Declared |
++| [agent3-lean-bootstrap.yml](workflows/agent3-lean-bootstrap.yml) | `compiler` | push; `research/agent3-complementary-bulk-20261015` | Own YAML only | Not declared in inspected scopes |
++| [agent4-certificate-replay.yml](workflows/agent4-certificate-replay.yml) | `replay-and-publish` | push, manual; No branch filter | Own YAML only | Declared |
++| [agent4-lean-bootstrap.yml](workflows/agent4-lean-bootstrap.yml) | `bootstrap-and-audit` | push, manual; No branch filter | Own YAML only | Not declared in inspected scopes |
++| [agent4-saturation-audit.yml](workflows/agent4-saturation-audit.yml) | `verify-and-publish` | push, manual; No branch filter | Own YAML only | Declared |
++| [agent4-whole-word-bridge.yml](workflows/agent4-whole-word-bridge.yml) | `build-numeric-bridge` | push, manual; No branch filter | Own YAML only | Declared |
++| [agent5-lean.yml](workflows/agent5-lean.yml) | `verify` | push, manual; No branch filter | 2 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent6-exterior.yml](workflows/agent6-exterior.yml) | `verify` | push, manual; No branch filter | 3 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent8-source-review.yml](workflows/agent8-source-review.yml) | `source-bundles` | push, manual; No branch filter | Own YAML only | Not declared in inspected scopes |
++| [agent9-exterior-erasure.yml](workflows/agent9-exterior-erasure.yml) | `kernel-check` | push, manual; `research/agent9-complementary-bulk-20261015` | 2 push path patterns; see YAML | Not declared in inspected scopes |
++| [agent9-toolchain-artifact.yml](workflows/agent9-toolchain-artifact.yml) | `runtime` | push, manual; `research/agent9-complementary-bulk-20261015` | Own YAML only | Not declared in inspected scopes |
++| [p196-cleanup-retire.yml](workflows/p196-cleanup-retire.yml) | `retire-preserved-branches` | push; `main` | Own YAML only | Declared |
++| [safe-high-return-check.yml](workflows/safe-high-return-check.yml) | `verify` | push; `research/high-return-safety-20261015` | 2 push path patterns; see YAML | Not declared in inspected scopes |
++
++## Side effects and historical-layout assumptions
++
++The [English publication workflow](workflows/agent1-english-publish.yml) has separate candidate preparation and publication jobs. Its source checks a generated bundle and an exact parent before a non-force main update. The [cleanup retirement workflow](workflows/p196-cleanup-retire.yml) concerns branch retirement, not proof verification. Several other workflows declare publication steps or write permissions. Do not edit or dispatch these merely to test a documentation sentence; preserve the integration ownership rules in [AGENTS.md](../AGENTS.md).
++
++Some retained workflows name pre-reorganization contribution paths. Check the workflow's own source revision and setup steps before declaring such a path missing or substituting a flattened filename. The [research replay guide](../proofs/README.md#verification-using-the-original-layout) explains the separate original-layout wrappers; it does not automatically repair, rerun, or validate every workflow listed here.
++
++An artifact name is not sufficient provenance. Keep its workflow run and source revision with the retained payload and hashes. Temporary artifact transport is not a permanent replacement for the repository's publication records. The [English reading index](../proofs/english/README.md) distinguishes translation views from archived originals; the [research status](../proofs/STATUS.md) retains the mathematical scope boundary.
++
++## Catalogue maintenance
++
++This census used the hash-checked 35-workflow source set from the existing inventory artifact at `e5e381e2800a86bf948bc2ec93dd5e2ba064236e`, a complete commit comparison showing those files unchanged, and direct pinned reads of the two later English workflows. It did not inspect every historical workflow version or certify every shell command. Recount and recheck the YAML after source changes; do not hand-edit a historical build log to match this navigation index.
+diff --git a/calculation/history/README.md b/calculation/history/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..caaa8be5ff9bc05ff13885c231f68569a733b08f
+--- /dev/null
++++ b/calculation/history/README.md
+@@ -0,0 +1,43 @@
++# Historical computational versions
++
++Source snapshot: `9de08d78db6526e2ce2dd66cedd5e63f600424bd`. The five entries below are the retained files under this directory at that snapshot: three ZIP packages and two HTML versions. They are historical versions, not a ranking of recommended releases. Start at the [computational product guide](../README.md) for the current directory entry point.
++
++Each directory name is the migration **record ID**. It is distinct from the file's content SHA-256. Both HTML entries originally had the same filename but contain different recorded bytes; selecting by basename alone loses that distinction.
++
++## Exact retained identities
++
++### `4ea730781868` — `lychrel196_cuda_metal_codex_v3.zip`
++
++[Retained file](4ea7307818685355dd8387e17ced125cea358ea385e20d006fef8e6162e823d3/lychrel196_cuda_metal_codex_v3.zip) · 976,541 bytes · Git blob `28ff994d78efe6c5ca9a67f45cbc2696fa1f52ed`.
++
++SHA-256: `68e8a1c4dd235f66f5aba5724d82f10ce5f67125460397ed1243ea2b62e4bb8b`. Migration `first_commit`: `7c09a7e1842ce302942d0931e8e8f7f3d4082a50`.
++
++### `5824b2131948` — `lychrel196_bits_v4.zip`
++
++[Retained file](5824b21319481a7972900aabeab559d56f6d4b5ea73ce0f0d8d94f5cf786d2b8/lychrel196_bits_v4.zip) · 990,939 bytes · Git blob `2e0b1451b445888b3bf1b12fe57e0afea8c8d3ae`.
++
++SHA-256: `cdaccee5acc627ef33fa375d52857967484894ed92da99e6831b04ba617266dc`. Migration `first_commit`: `7c09a7e1842ce302942d0931e8e8f7f3d4082a50`.
++
++### `99b7871bd9e0` — `196-Engine-Fixed.html`
++
++[Retained file](99b7871bd9e0df51f1b8697e961c2ef14b7aa35c65b6bd017624ca42c5898992/196-Engine-Fixed.html) · 129,619 bytes · Git blob `e7585683e364e9859001c706424b2313e48712e5`.
++
++SHA-256: `ea0d8a4e9c6c159b7e03f130fb5cbfd5a1cd909b5f1ab6b14673fe2767c84783`. Migration `first_commit`: `0f5c369e7052c1d5f70dbfaf6518ec817854b32d`.
++
++### `d52b6ccfe8a8` — `196-Engine-Fixed.html`
++
++[Retained file](d52b6ccfe8a8a2f248c1a06dd59b0ae8ad4c4526641e263f9ed76c2e56225741/196-Engine-Fixed.html) · 122,623 bytes · Git blob `355593c164c25fad46b6949d53356a1af6722d29`.
++
++SHA-256: `b89e14b8b8770732fac9e85ce893a195428923285acbbc6cdab30d5424f6d86a`. Migration `first_commit`: `808c0281fab8b6227b1f26006943c2c4c1e1cb94`.
++
++### `e4aee7d8eb92` — `lychrel196_diag.zip`
++
++[Retained file](e4aee7d8eb92d8230bdb9b03633fe3333b6f88b1b289b6046feba4f5fe38f984/lychrel196_diag.zip) · 1,044,226 bytes · Git blob `c9856a8d966e5318d06dcb1a87ed91588cf090bc`.
++
++SHA-256: `cab1faa9101a00586770e7066bd4dec00e7f5ac706053da99f453e312f1873ee`. Migration `first_commit`: `7c09a7e1842ce302942d0931e8e8f7f3d4082a50`.
++
++## What this identity check establishes
++
++The entries were joined by exact destination path between the retained tracked-tree inventory and the [migration path map](../../proofs/archive/migration/668beb73f0a69c7ad8d8/path-map.json). All five recorded byte counts, Git blobs, and content hashes agree across those two metadata sources. The complete comparison from the inventory snapshot to the pinned source snapshot contains no changes to these files. This is a **metadata consistency check**; this pass did not independently rehash the five product payloads, launch either HTML application, extract and test the ZIP programs, or validate a production checkpoint.
++
++To select another version, use the [archive lookup guide](../../proofs/archive/README.md) with the exact original path and inspect every matching record. Preserve the original compressed bytes when examining a package. A source-provenance commit or directory modification date is not a measured benchmark date, a deployment instruction, or evidence of an infinite-time mathematical claim. Reproduction requires the instructions, inputs, hardware, and dependencies belonging to the selected product.
+diff --git a/proofs/archive/README.md b/proofs/archive/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..668519ddfd2e309345461b67734a3443bf42d186
+--- /dev/null
++++ b/proofs/archive/README.md
+@@ -0,0 +1,62 @@
++# Historical evidence and version recovery
++
++Source snapshot: `9de08d78db6526e2ce2dd66cedd5e63f600424bd`. This directory preserves historical source and migration records. Storage here does not mark an argument disproved, a theorem proved, a build reproduced, or a contribution integrated. Read the original evidence label and the exact source/review record together. Current research starts at [proofs/README.md](../README.md).
++
++## Choose the correct collection
++
++| Collection | What it retains | How to use it |
++|---|---|---|
++| [source-trees/](source-trees/) | Original-layout source trees, including the preserved mainline baseline | Start from the exact source-tree revision, not a flattened filename with a similar basename. |
++| [versions/](versions/) | Additional path/content/mode versions in separate record directories | Resolve a version through the migration path map; a directory identifier is not necessarily its content SHA-256. |
++| [migration/](migration/) | Snapshot, mapping, transport, preservation, and review/waiver records | Establish what was retained and what was not checked. These are not mathematical certificates. |
++| [english-translation-originals/](english-translation-originals/) | Exact pre-translation originals retained by the language-maintenance pass | Compare with the [English reading guide](../english/README.md); a reading view is not replacement audit evidence. |
++
++The original mainline tree is [source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/](source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/). Its [root README](source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/README.md) and [research README](source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/README.md) describe their own checkpoints. Later results must not be inserted into them as though they were known at those dates.
++
++## Two maps with different purposes
++
++[proofs/SOURCE_MAP.json](../SOURCE_MAP.json) is the original-mainline replay map consumed by [replay_original_layout.py](../replay_original_layout.py). It has a baseline `base` commit and `paths` entries specifying selected current or preserved sources and their hashes. It is not, by itself, the complete catalogue of every archived branch version.
++
++The retained [migration path map](migration/668beb73f0a69c7ad8d8/path-map.json) is a list of **10,964 migration records** at this snapshot. The count is a record count, not a count of theorems, independent results, or currently buildable modules. A known original path can have multiple records. Important fields are:
++
++| Field | Interpretation |
++|---|---|
++| `path`, `mode` | Original relative path and Git file mode recorded for that version. |
++| `id` | Migration record identifier used in version-directory names; do not substitute it for `sha256`. |
++| `oid`, `sha256`, `size` | Recorded Git object ID, content SHA-256, and byte count. These identify bytes; they do not validate mathematics. |
++| `destination` | Preserved repository-relative location for the record. |
++| `current_copies` | Recorded current-copy paths for that migration checkpoint; an empty array does not mean the preserved version is missing. |
++| `first_commit` | Source-provenance field from the migration record, not a theorem discovery, review, or integration date. |
++| `role`, `summary`, `evidence_label` | Original classification and evidence wording, which must not be silently upgraded. |
++
++The migration records remain historical even when current reading copies change later. In particular, use current source/translation records as well as the migration record when checking a current copy's identity. Do not overwrite a historical hash merely because a current file was edited.
++
++## Read-only lookup of an original path
++
++Run the following from the repository root, replacing `README.md` with an exact original path. It prints **every** matching record rather than choosing a supposedly newest or strongest version. It reads metadata only; it does not restore, execute, delete, or modify an artifact.
++
++```sh
++python3 - README.md <<'PY'
++import json
++import sys
++from pathlib import Path
++
++mapping = Path('proofs/archive/migration/668beb73f0a69c7ad8d8/path-map.json')
++records = json.loads(mapping.read_text(encoding='utf-8'))
++matches = [record for record in records if record['path'] == sys.argv[1]]
++if not matches:
++    raise SystemExit('No record for that exact original path in this migration map.')
++fields = ('id', 'path', 'mode', 'oid', 'sha256', 'size', 'destination',
++          'current_copies', 'first_commit', 'role', 'evidence_label')
++print(json.dumps([{key: record[key] for key in fields} for record in matches],
++                 indent=2, ensure_ascii=True))
++PY
++```
++
++The lookup was executed against the retained map for this documentation increment. That checks the example and metadata query, not the bytes of every mapped artifact. Before reproducing a result, verify the chosen preserved bytes and mode against its record, identify the complete dependency/layout requirements, and then use the result's scoped reproduction instructions. [The current replay entry point](../README.md#verification-using-the-original-layout) explains why a source ZIP alone cannot run the Git-backed original-layout wrapper.
++
++## Waivers, originals, and correction notes
++
++The [migration review gate](migration/668beb73f0a69c7ad8d8/review-gate.json) and [scope review](migration/668beb73f0a69c7ad8d8/scope-review.json) record an owner waiver. `WAIVED_BY_OWNER` is not `PASS`, independent review, or successful compilation. The [current status page](../STATUS.md) explicitly preserves that distinction.
++
++Keep original reports and failed attempts unchanged. Put later corrections in a clearly dated current note that names the affected source and claim. Relative links in preserved originals or English reading views can still reflect their historical directory layout; use the original source tree or the mapping rather than rewriting all old links in place. Do not execute migration retirement scripts simply to browse this archive. The [publication policy](../PUBLICATION_POLICY.md) and [repository write rules](../../AGENTS.md) govern preservation and integration.
