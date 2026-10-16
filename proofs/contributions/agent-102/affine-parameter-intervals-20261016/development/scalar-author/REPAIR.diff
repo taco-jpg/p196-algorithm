@@ -1,0 +1,13 @@
+--- attempt-001/Agent102AffineInequalityIntervals.lean
++++ attempt-002/Agent102AffineInequalityIntervals.lean
+@@ -40,8 +40,8 @@
+     · simp only [if_neg hp, if_pos hn, Interval.Contains]
+       have hm : 0 < -a := by omega
+       have hdiv := Int.ediv_lt_iff_lt_mul (a := -b) (b := (k : Int)) (c := -a) hm
+-      rw [Int.mul_comm, Int.neg_mul] at hdiv
+-      omega
++      rw [Int.mul_comm, Int.neg_mul, Int.neg_lt_neg_iff] at hdiv
++      simpa only [and_true, Int.toNat_le, Int.add_one_le_iff] using hdiv
+     · have ha : a = 0 := by omega
+       by_cases hb : 0 < b
+       · simp [hp, hn, hb, ha, Interval.univ, Interval.Contains]
