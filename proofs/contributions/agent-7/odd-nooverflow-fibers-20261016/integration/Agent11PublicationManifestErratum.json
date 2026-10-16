@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "kind": "Additive publication-manifest erratum",
+  "prepared_by": "Agent #11 / root / session046f9285a650",
+  "reviewed_source_head": "d24a13d87f6673dbd9b92f0086ef65ef8b733cfb",
+  "affected_manifest": {
+    "path": "verification/PUBLICATION.json",
+    "bytes": 28707,
+    "sha256": "44a241ac6ec0a59ba6568ddc11472a1f28e45d017e68970ff63a1e1e855a6ee6",
+    "git_blob": "ca33c7a20a46bb417bc76af40889da08168b1b43"
+  },
+  "problem": "The final publication manifest retains the earlier 129-entry combined-stage-list pin. The published head contains the later 130-entry list, which additionally includes SOURCE_EQUIVALENCE.json. All other manifest content and original evidence are retained unchanged.",
+  "historical_record": {
+    "combined_stage_list": {
+      "path": "FINAL_STAGE_FILES.json",
+      "bytes": 15165,
+      "sha256": "aee9237ca6b15ef6258344b811673db42fcb5f92b26e3663fec81f28e70c0496"
+    },
+    "combined_stage_count": 129
+  },
+  "corrected_record_for_reviewed_source_head": {
+    "combined_stage_list": {
+      "path": "FINAL_STAGE_FILES.json",
+      "bytes": 15254,
+      "sha256": "521ddd05ab786ac22c8c80cf2f4d3a942f57007285cda91461a1c982a38e9229",
+      "git_blob": "b4077f5fcd0781873151e9d683905711e2566331"
+    },
+    "combined_stage_count": 130,
+    "additional_entry": "proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/SOURCE_EQUIVALENCE.json",
+    "additional_file": {
+      "path": "SOURCE_EQUIVALENCE.json",
+      "bytes": 974,
+      "sha256": "b2021b21ddc7fbf8d5c00a785b58d9beb12a8f399e2f18d6f41cf01d58f74de2",
+      "git_blob": "9876eebc74f4e2352ebf9accd87f73e335b2e557"
+    }
+  },
+  "historical_reconstruction": {
+    "method": "Parse FINAL_STAGE_FILES.json at the reviewed source head, remove exactly the SOURCE_EQUIVALENCE.json entry, serialize with Python json.dumps(entries, indent=2) plus one trailing newline encoded as UTF-8.",
+    "reproduced_bytes": 15165,
+    "reproduced_sha256": "aee9237ca6b15ef6258344b811673db42fcb5f92b26e3663fec81f28e70c0496",
+    "reproduced_entry_count": 129,
+    "interpretation": "This is an exact hash-matched reconstruction of the earlier list; it does not claim that the reconstructed list was separately published as a Git object."
+  },
+  "scope": "Only the combined_stage_list and combined_stage_count metadata are corrected for the cited source head. This separate erratum is an additive integration record outside the frozen 130-entry list, not a rewrite of that list or an updated claim that the list includes this erratum.",
+  "mathematical_change": "None. Every original source, registry, verifier, manifest, report and log is preserved byte-for-byte by the additive one-file repair. No new Lean execution is asserted.",
+  "evidence_classification": "Documentation/provenance correction; not a new theorem or a new compiler verification.",
+  "published_metadata_supplements_outside_stage_list": [
+    {
+      "path": "SOURCE_LOCATOR_CORRECTION.json",
+      "bytes": 1065,
+      "sha256": "db1fd3430885c6b244767f437e6ede14b34c657268e4aea27b6a732905dc4292",
+      "git_blob": "9781da24f28202c4f99bd66cbf94affe9722cb9c"
+    },
+    {
+      "path": "dependencies/SOURCE_PINS.json",
+      "bytes": 2118,
+      "sha256": "cf57607b51d29f14454028c4cfa809052856f8771b736ffe8b77a7ecc3086d43",
+      "git_blob": "ac51fccc2c7482e5207fbe5fee7b6dce98d11cec"
+    }
+  ],
+  "staging_inventory_scope": "The 130-entry list is a preserved staging checkpoint, not an exhaustive list of all files at the reviewed head. The two identified source-locator metadata supplements are present at that head and separately pinned here; this erratum itself is also outside the frozen staging list."
+}
