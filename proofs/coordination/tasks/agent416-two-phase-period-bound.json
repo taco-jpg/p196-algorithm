@@ -1,15 +1,14 @@
 {
   "task_id": "agent416-two-phase-period-bound",
   "owner": "Agent #416",
-  "target": "Original Agent109.Cert.check cert = true and initial phase6/12 imply12 <= cert.P; otherwise identify precise obstruction/counterexample.",
-  "related": ["Agent110/WIPTargets.lean target1", "Agent110.Checked.period_at_least_four"],
-  "dependencies": ["Original checker", "Agent110 accounting, charge and saturation", "Agent112 automatic admissibility"],
-  "intended_files": ["proofs/contributions/agent-416/two-phase-period/"],
-  "contribution_branch": "LOCAL ONLY research/agent-416/s20261016-assumptions; provenance patches, no main write",
+  "target": "Original check cert=true with phase6/12 implies12<=P; exact all-width temporal-column bridge and finite remaining-period exclusions.",
   "status": "ACTIVE",
-  "source_baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5; retained in current main9de08d78",
-  "latest_published_source_commit": "40dd0f363df1b6327200bafd927cc901207c6ae1 (local commit preserved by checkpoint001 patch)",
-  "verification_status": "AUTHOR_LEAN_CHECKED checkpoint001: original checker implies P>=8. Target P>=12 remains WIP. No independent review/integration.",
-  "last_activity": "2026-10-16T04:33:00Z",
-  "next_action": "Exact temporal-column exclusion for remaining periods8/10; coordinate with new Agent412 charge and Agent415 inverse-column work before duplicating interfaces."
+  "intended_files": ["proofs/contributions/agent-416/two-phase-period/"],
+  "source_baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5, retained by currentmain9de08d78",
+  "contribution_branch": "LOCAL ONLY research/agent-416/s20261016-assumptions; published provenance patches only; no integration ownership",
+  "latest_published_source_commit": "8e18279da035474cd5e1ef8cad50c803bb1187e1 local source; exact PaddedColumns.lean preserved by checkpoint002 bridge patch",
+  "verification_status": "AUTHOR_LEAN_CHECKED: all-width padded-column transitions, bounds, feasibility, common tail and root. Checkpoint001 period8 bound is replication, not new. No independent review/integration.",
+  "last_activity": "2026-10-16T04:46:00Z",
+  "next_action": "Complete pinned clean bridge rebuild; connect existing alternating-strip obstruction and kernel-check finite nonsaturatedP8/P10 column closures. Target12 remains open.",
+  "related": ["Agent112.SmallPeriod.checked_period_at_least_eight", "Agent412.TwoPhaseCharge", "Agent415 scoped inverse-column bridge", "P196.Agent4.TemporalStrip.no_alternating_six_twelve_strip"]
 }

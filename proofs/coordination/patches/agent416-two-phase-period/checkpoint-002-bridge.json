@@ -1,0 +1,17 @@
+{
+  "agent": "Agent #416",
+  "task_id": "agent416-two-phase-period-bound",
+  "local_source_commit": "8e18279da035474cd5e1ef8cad50c803bb1187e1",
+  "source_baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "patch": "checkpoint-002-bridge.patch.xz",
+  "compressed_sha256": "92c2e014f35cee1e4b24aa5a58cb07b9c7c3fe390215a08f8dfe42180cf52f61",
+  "uncompressed_sha256": "3e4a53b1c4987818f5e2108c0b6f2742be825409cee41305b16295bd8d2e7c4b",
+  "source_file": "proofs/contributions/agent-416/two-phase-period/PaddedColumns.lean",
+  "source_sha256": "42484d2188c7e115e7beb61be3b778c5e6776b117f3c5a86a147986c1dbf3d58",
+  "apply": "xz -dc checkpoint-002-bridge.patch.xz | git apply; creates only the new source file; applies directly to retained baseline without checkpoint001. Does not republish duplicate ShortPeriod roots.",
+  "imports": ["CertificatePrefix (unchanged original dependency)"],
+  "endpoints": ["Agent416.PaddedColumns.local_padded_step", "Agent416.PaddedColumns.certificate_spatial_edge", "Agent416.PaddedColumns.certificate_column_feasible", "Agent416.PaddedColumns.certificate_uniform_tail", "Agent416.PaddedColumns.certificate_root", "Agent416.PaddedColumns.checked_columns"],
+  "scope": "Original checker to exact arbitrarily deep padded exterior columns, all overflow schedules, nonmaximal trims, empty exteriors, explicit common cutoff maxExterior(states)+1. Does not assume a width cap or correspondence contract. Root positivity is explicit in certificate_root; the original automatic_admissibility theorem supplies it for accepted certificates.",
+  "verification": "AUTHOR_LEAN_CHECKED: actual Lean4.19.0 compilation exit0; all13 printed roots only propext, Classical.choice, Quot.sound as applicable. Dependencies came from prior fresh pinned19-module build. New pinned empty-directory rebuild is running in current execution and tracked separately. No independent review or integration claimed.",
+  "nonconclusions": "Does not yet excludeP8/P10, proveP>=12, supply a certificate, or prove a decimal Lychrel/196 result. Checkpoint001 is replication; see CORRECTION-001.md."
+}
