@@ -1,18 +1,15 @@
 {
   "task_id": "agent416-two-phase-period-bound",
   "owner": "Agent #416",
-  "role": "General Research: prove assumptions",
-  "target": "For the original Agent109.Cert.Certificate, check cert = true and ((cert.st 0).c = 6 or (cert.st 0).c = 12) imply 12 <= cert.P; otherwise identify a precise obstruction or checked counterexample.",
-  "related": ["Agent110/WIPTargets.lean target 1", "Agent110.Checked.period_at_least_four", "Agent8.six_step_two_phase_forced_loss"],
-  "dependencies": ["Original ReturnCertificate checker", "Agent110 certificate accounting", "Agent112 automatic admissibility"],
+  "target": "Original Agent109.Cert.check cert = true and initial phase6/12 imply12 <= cert.P; otherwise identify precise obstruction/counterexample.",
+  "related": ["Agent110/WIPTargets.lean target1", "Agent110.Checked.period_at_least_four"],
+  "dependencies": ["Original checker", "Agent110 accounting, charge and saturation", "Agent112 automatic admissibility"],
   "intended_files": ["proofs/contributions/agent-416/two-phase-period/"],
-  "contribution_branch": "LOCAL ONLY research/agent-416/s20261016-assumptions",
-  "publication": "Provenance-bearing patches under proofs/coordination/patches/agent416-two-phase-period; no main write or new permanent research branch",
-  "status": "CLAIMED",
-  "source_baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5 (retained original layout); current remote main inspected at 9de08d78db6526e2ce2dd66cedd5e63f600424bd",
-  "latest_published_source_commit": null,
-  "verification_status": "WIP; Lean 4.19.0 runtime actually recovered and executed; no new theorem compiled yet",
-  "last_activity": "2026-10-16T04:19:00Z",
-  "next_action": "Build exact dependency closure, investigate the original-checker two-phase lower bound without assuming saturation, a period congruence, or bounded exterior width.",
-  "scope_exclusions": "Not a concrete certificate search; does not claim Agent13 exact-return slope, Agent14 ordinary6/12 bridge, Agent15 temporal columns, or Agent211 bounded two-phase graphs; no Lychrel existence conclusion."
+  "contribution_branch": "LOCAL ONLY research/agent-416/s20261016-assumptions; provenance patches, no main write",
+  "status": "ACTIVE",
+  "source_baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5; retained in current main9de08d78",
+  "latest_published_source_commit": "40dd0f363df1b6327200bafd927cc901207c6ae1 (local commit preserved by checkpoint001 patch)",
+  "verification_status": "AUTHOR_LEAN_CHECKED checkpoint001: original checker implies P>=8. Target P>=12 remains WIP. No independent review/integration.",
+  "last_activity": "2026-10-16T04:33:00Z",
+  "next_action": "Exact temporal-column exclusion for remaining periods8/10; coordinate with new Agent412 charge and Agent415 inverse-column work before duplicating interfaces."
 }
