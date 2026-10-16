@@ -104,4 +104,30 @@ def SaturatedBlockTarget : Prop :=
     (2 * total (skeletonOverflow e1 e3 e5 e7) 8 = 8 ↔
       OddInputBalance e1 e3 e5 e7)
 
+/-- Actual-dynamics specialization: the desired stronger theorem should apply
+directly to iterated whole-word states, not merely to an abstract Prefix path.
+This target uses the existing exact projection theorem
+Agent4.WholeWord.iterPairs_prefix_evolution. -/
+def ActualSaturatedEightCycleTarget : Prop :=
+  ∀ (q : Nat → Nat) (L n : Nat),
+    Admissible L q →
+    3 ≤ L →
+    prefix3 (iterPairs q L n).2 = prefix3 q →
+    2 * (iterPairs q L n).1 = 2 * L + n →
+    ∃ r : Fin 8,
+      (∀ i < n,
+        prefix3 (iterPairs q L i).2 = cycleState (r.val + i)) ∧
+      (∀ i < n,
+        (i + r.val) % 8 = 0 →
+          carry (iterPairs q L i).2 ((iterPairs q L i).1 - 3) = 1) ∧
+      (∀ i < n,
+        (i + r.val) % 8 = 2 →
+          carry (iterPairs q L i).2 ((iterPairs q L i).1 - 3) = 0) ∧
+      (∀ i < n,
+        (i + r.val) % 8 = 4 →
+          carry (iterPairs q L i).2 ((iterPairs q L i).1 - 3) = 0) ∧
+      (∀ i < n,
+        (i + r.val) % 8 = 6 →
+          carry (iterPairs q L i).2 ((iterPairs q L i).1 - 3) = 1)
+
 end Agent215.Saturated8
