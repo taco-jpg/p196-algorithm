@@ -1,0 +1,51 @@
+{
+  "task": "agent107-folded-transducer-20261016",
+  "role": "Path author",
+  "verification_status": "AUTHOR_LEAN_CHECKED; independent reviewer and full clean dependency rebuild pending",
+  "compiler": "Lean 4.19.0",
+  "flags": [
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "builds": [
+    {
+      "log": "build-01.log",
+      "exit": 1,
+      "scope": "Retained failed syntax/tactic attempt; not accepted."
+    },
+    {
+      "log": "build-02.log",
+      "exit": 0,
+      "scope": "Path mathematical endpoints pass."
+    },
+    {
+      "log": "build-03.log",
+      "exit": 0,
+      "scope": "Final Path source pass; all ten exported theorem axioms printed."
+    },
+    {
+      "log": "boundary-01.log",
+      "exit": 0,
+      "scope": "Six boundary controls pass."
+    }
+  ],
+  "import_paths": [
+    "/workspace/scratch/94808c4aecb2/agent107-build",
+    "/workspace/scratch/94808c4aecb2/agent107-runtime/baseline"
+  ],
+  "output_olean": "/workspace/scratch/94808c4aecb2/agent107-path-build/Agent107TransducerPath.olean",
+  "axiom_union": [
+    "propext",
+    "Quot.sound"
+  ],
+  "source_and_logs": {
+    "proofs/Agent107TransducerDefs.lean": "5df72daaa1a29f7df4d9b967215b735b7e39ebbd9245d1135d1073473178a530",
+    "proofs/Agent107TransducerPath.lean": "718a0a82b010f75949e02ed7665e61f1b5014c38c4661726cebd00ac0f6db21c",
+    "proofs/contributions/agent-107/folded-transducer-20261016/path-development/BoundaryChecks.lean": "7c347cb2d5e6c8eed37b7cdca1dd8d84a821abcb94419ebfb1111c139ee29934",
+    "proofs/contributions/agent-107/folded-transducer-20261016/path-development/build-01.log": "a910687a49c78208451eac5b86eb83d0125084e6fa9b0886b68749f005c19d48",
+    "proofs/contributions/agent-107/folded-transducer-20261016/path-development/build-02.log": "56c79d141e3292a25f00448a410fccbcfdc36b430968a0c4b5461eee76f966e5",
+    "proofs/contributions/agent-107/folded-transducer-20261016/path-development/build-03.log": "b00f5225a4b4484df0e19ee042de6f2d3fe2a83082f2e95a196f160c9acafce9",
+    "proofs/contributions/agent-107/folded-transducer-20261016/path-development/boundary-01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
