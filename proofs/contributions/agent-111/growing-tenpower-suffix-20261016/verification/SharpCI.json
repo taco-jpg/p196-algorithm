@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "task_id": "agent111-growing-tenpower-suffix-20261016",
+  "agent": "Agent #111",
+  "verification_level": "LEAN-CHECKED / AUTHOR BUILD; awaiting independent review",
+  "source_files": [
+    {
+      "path": "proofs/contributions/agent-111/growing-tenpower-suffix-20261016/GrowingSuffix.lean",
+      "sha256": "910ddd984a85d235fc2829b87904c4f9947a306c0f1a652bf252f5128a5a040a"
+    },
+    {
+      "path": "proofs/contributions/agent-111/growing-tenpower-suffix-20261016/SharpSuffix.lean",
+      "sha256": "8f26f160d90b363a4e89728bc2470bde12bac5e751c89e97dacbc9e59bfa1c1c"
+    }
+  ],
+  "last_source_commit": "6cf5f856c42f41a6f3dbd7665b0c3dce7991d48f",
+  "workflow_commit": "d9bb4793e2b7d170eda8c932e8cecb7ab7922cf8",
+  "original_accepted_source_commit": "c3192d5bf2962298bcb2bb209a0947f657e8a7e5",
+  "original_archive_tree": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "original_canonical_decimal_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+  "lean_compiler": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "release_tar_sha256": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+  "ci_run_id": 38972428087,
+  "ci_url": "https://github.com/taco-jpg/p196-algorithm/actions/runs/38972428087",
+  "ci_status": "PASS",
+  "artifact_id": 12077712695,
+  "artifact_url": "https://github.com/taco-jpg/p196-algorithm/actions/runs/38972428087/artifacts/12077712695",
+  "artifact_zip_sha256": "50bb5472ecb9124e36e8370c5643075130c05b520a30c75e18f13449b39a3966",
+  "artifact_zip_bytes": 99662,
+  "artifact_retention_days": 30,
+  "fresh_source_module_count": 13,
+  "theorem_constant_count": 1012,
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "generated_unsafe_implementation_count": 13,
+  "unsafe_implementation_note": "All in original unchanged canonical decimal module, with none appearing as transitive axioms of any theorem. No newly introduced unsafe implementation axioms.",
+  "new_explicit_exported_theorems": [
+    "Agent111.GrowingSuffix.palindrome_with_given_suffix",
+    "Agent111.GrowingSuffix.variable_half_suffix_closed_set_contains_palindrome",
+    "Agent111.GrowingSuffix.exact_half_suffix_closed_set_contains_palindrome"
+  ],
+  "new_export_axioms": {
+    "Agent111.GrowingSuffix.palindrome_with_given_suffix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent111.GrowingSuffix.variable_half_suffix_closed_set_contains_palindrome": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Agent111.GrowingSuffix.exact_half_suffix_closed_set_contains_palindrome": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "core_earlier_run_id": 38971847141,
+  "earlier_failed_build_id": 38971619820,
+  "initial_failed_build_proof_audit_contains_sorryAx": true,
+  "successful_build_proof_audit_contains_sorryAx": false,
+  "mathematical_interpretation": "An ordinary positive exact-L-digit palindrome always realizes any prescribed low k decimal digits with nonzero units digit if 0<k and 2*k<=L. Therefore any nonempty positive set closed under real reverse-add and eventually saturated by exact width and mod 10^k(L), 0<k(L), 2*k(L)<=L, contains some palindrome. Specialization k(L)=floor(L/2) is Lean proved. This DOES NOT claim an orbit hits a palindrome or settle 196.",
+  "independent_review": "PENDING",
+  "main_integration": "PENDING; source built against immutable archived original module layout",
+  "reproduction": [
+    "Create a fresh source tree with the original proof modules extracted unchanged from proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues and source proofs/research/Lychrel196Research.lean",
+    "Copy GrowingSuffix.lean and SharpSuffix.lean next to the original Saturation.lean; imported module headers must be preserved",
+    "Use the pinned official Lean 4.19.0 compiler release with indicated digest",
+    "unset LD_PRELOAD",
+    "python3 -B $ROOT/proofs/contributions/agent-111/exact-length-residues/check.py $LEAN --module SharpSuffix --build-dir $EMPTY_BUILD --output-dir $EMPTY_REPORT",
+    "Inspect $EMPTY_REPORT/verification.json and the audit of all 1012 theorem constants, log snapshots, source hashes and compiler fingerprints."
+  ]
+}
