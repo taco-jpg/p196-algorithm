@@ -1,0 +1,142 @@
+{
+  "author_role": "Agent #5 runtime/verification specialist; authored only FractionDigits.lean for the exact digit streams claim.",
+  "compiler": "Lean 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release",
+  "baseline": {
+    "receipt": "baseline/baseline.json",
+    "flags": "lean -o MODULE.olean MODULE.lean",
+    "strict_override_used": false,
+    "note": "All four baseline modules compiled successfully with normal flags. No --trust=0, -j1, or Elab.async override was supplied; no baseline rerun was performed while preparing this evidence."
+  },
+  "source_mapping": {
+    "OuterFinite": {
+      "path": "../../../../../OuterFinite__1c852c0ed5b8d706.lean",
+      "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6"
+    },
+    "TARGET": {
+      "path": "../../../../../TARGET__c7bc3cfee999c64e.lean",
+      "sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717"
+    },
+    "ExteriorFactorizationProof": {
+      "path": "../../../../../ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+      "sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301"
+    },
+    "DigitDefinitions": {
+      "path": "../../DigitDefinitions.lean",
+      "sha256": "4bdedd6d992a3207645d5dd21478a66c2e1c2465f75111b86b294caee903739a"
+    },
+    "FractionDigits": {
+      "path": "../../FractionDigits.lean",
+      "sha256": "d6232d1f20221b1a2f09f3670f6078d2fe0c6558a439c9c0ac25c4e04e119732"
+    }
+  },
+  "final_source": "final-source.json",
+  "attempts": [
+    {
+      "attempt": "01",
+      "exit_code": 1,
+      "receipt": "attempts/01/receipt.json",
+      "source_sha256": "b573307995850112e3184651954750afbfe02ce92376a3bc40b92367601d9d66"
+    },
+    {
+      "attempt": "02",
+      "exit_code": 0,
+      "receipt": "attempts/02/receipt.json",
+      "source_sha256": "9852d1dd43a7ac1b73850859bff61879e298c9487593a0bb45dbf1c00656ba8a"
+    },
+    {
+      "attempt": "03",
+      "exit_code": 0,
+      "receipt": "attempts/03/receipt.json",
+      "source_sha256": "85101a6ab923ecb7b939c6bb28ae4cfe6933e5cb669080263448fa27c791bf62"
+    },
+    {
+      "attempt": "04",
+      "exit_code": 0,
+      "receipt": "attempts/04/receipt.json",
+      "source_sha256": "d6232d1f20221b1a2f09f3670f6078d2fe0c6558a439c9c0ac25c4e04e119732"
+    }
+  ],
+  "axiom_audit": {
+    "source": "audit/FractionDigitsAxiomAudit.lean",
+    "log": "audit/FractionDigitsAxiomAudit.log",
+    "exit_code": 0,
+    "declarations": 13,
+    "allowed_actual_set": [
+      "propext",
+      "Quot.sound"
+    ],
+    "reports": {
+      "Agent5.ExactDigitStreams.fractionDigits_scale": [
+        "propext"
+      ],
+      "Agent5.ExactDigitStreams.fractionDigits_repeat": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.highValue_cons_digit": [
+        "propext"
+      ],
+      "Agent5.ExactDigitStreams.highValue_lt_pow": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.fractionDigits_of_highValue": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.normalize_value_conservation": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.normalize_digits_lt_ten": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.highValue_reverse_word": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.phase_tail_digit": [
+        "propext"
+      ],
+      "Agent5.ExactDigitStreams.fractionDigits_exterior": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.fractionDigits_prefix": [
+        "propext"
+      ],
+      "Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten": [
+        "propext",
+        "Quot.sound"
+      ],
+      "Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  },
+  "forbidden_source_gate": {
+    "modules": [
+      "OuterFinite",
+      "TARGET",
+      "ExteriorFactorizationProof",
+      "DigitDefinitions",
+      "FractionDigits"
+    ],
+    "tokens_found": [],
+    "method": "The preserved verifier tokenizer removed nested comments and string contents, then rejected sorry, admit, native_decide, sorryAx, or axiom in executable source."
+  },
+  "scope": "The exact high stream uses its actual outgoing normalization carry, supports the empty word, and includes every-prefix consistency and decimal digit bounds. No floor/threshold characterization of the carry is asserted.",
+  "final_strict_replay": "Parent owns the serialized clean strict closure replay and integration; this evidence describes normal author builds accurately.",
+  "runtime_binaries_or_oleans_included": false,
+  "git_or_remote_mutations": false,
+  "attribution": {
+    "existing_helper": "Agent115.ExteriorFactorization.highValue_cons",
+    "existing_module": "ExteriorObservationInjective__5a22875e320396f4.lean",
+    "existing_module_path": "../../../../../ExteriorObservationInjective__5a22875e320396f4.lean",
+    "comparison": "Its statement is identical to highValue_cons_digit. Both proofs are immediate consequences of the already imported Agent115.ExteriorFactorization.foldl_high. The current helper is a local convenience lemma, not a novel mathematical claim.",
+    "reuse_option": "A later refactor could add import ExteriorObservationInjective and replace uses of highValue_cons_digit with highValue_cons, removing the local helper. ExteriorObservationInjective imports only ExteriorFactorizationProof, so that option adds one small existing module and does not require the heavier update-law development.",
+    "current_choice": "The frozen source retains the three existing dependency modules and derives the helper directly from foldl_high. No proof edit was made during this attribution review."
+  }
+}

@@ -1,0 +1,267 @@
+Agent5.ExactDigitStreams.adicNumeratorDigits_length (n : Nat) (a : Int) :
+  (Agent5.ExactDigitStreams.adicNumeratorDigits n a).length = n
+Agent5.ExactDigitStreams.fractionDigits_length (n r D : Nat) :
+  (Agent5.ExactDigitStreams.fractionDigits n r D).length = n
+Agent5.ExactDigitStreams.adicNumeratorDigits_bounded (n : Nat) (a : Int) (d : Nat) :
+  d ∈ Agent5.ExactDigitStreams.adicNumeratorDigits n a → d ≤ 9
+Agent5.ExactDigitStreams.adicNumeratorDigits_prefix (n m : Nat) (a : Int) :
+  List.take n (Agent5.ExactDigitStreams.adicNumeratorDigits (n + m) a) =
+    Agent5.ExactDigitStreams.adicNumeratorDigits n a
+Agent5.ExactDigitStreams.adicNumeratorDigits_column (n x : Nat) (z : Int) :
+  Agent5.ExactDigitStreams.adicNumeratorDigits (n + 1) (9 * ↑x + 10 * z) =
+    x % 10 :: Agent5.ExactDigitStreams.adicNumeratorDigits n (9 * ↑(x / 10) + z)
+Agent5.ExactDigitStreams.adicNumeratorDigits_constant (n t : Nat) (ht : t < 10) :
+  Agent5.ExactDigitStreams.adicNumeratorDigits n (-↑t) = List.replicate n t
+Agent5.ExactDigitStreams.adicNumeratorDigits_normalize (B : List Nat) (e q : Nat) (c : Int) :
+  Agent5.ExactDigitStreams.adicNumeratorDigits (B.length + q)
+      (9 * ↑(Agent115.ExteriorFactorization.lowValue B + e) - c * 10 ^ B.length) =
+    (P196.Agent7.Finite.normalize B e).fst ++
+      Agent5.ExactDigitStreams.adicNumeratorDigits q (9 * ↑(P196.Agent7.Finite.normalize B e).snd - c)
+Agent5.ExactDigitStreams.adicNumeratorDigits_phase (c e q : Nat) (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (he : e ≤ 1) :
+  Agent5.ExactDigitStreams.adicNumeratorDigits (q + 1) (9 * ↑e - ↑c) =
+    (c + e - 10 * if 10 ≤ c then 1 else 0) :: List.replicate q (c - 9 * if 10 ≤ c then 1 else 0)
+Agent5.ExactDigitStreams.adicNumeratorDigits_exterior (c : Nat) (B : List Nat) (q : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) (hB : ∀ (x : Nat), x ∈ B → x ≤ 18) :
+  Agent5.ExactDigitStreams.adicNumeratorDigits (B.length + 1 + q) (Agent115.ExteriorFactorization.zValue c B - ↑c) =
+    (P196.Agent7.Finite.normalize B 0).fst ++
+        [c + (P196.Agent7.Finite.normalize B 0).snd - 10 * if 10 ≤ c then 1 else 0] ++
+      List.replicate q (c - 9 * if 10 ≤ c then 1 else 0)
+Agent5.ExactDigitStreams.fractionDigits_scale (n r D s : Nat) (hs : 0 < s) :
+  Agent5.ExactDigitStreams.fractionDigits n (s * r) (s * D) = Agent5.ExactDigitStreams.fractionDigits n r D
+Agent5.ExactDigitStreams.fractionDigits_repeat (q t : Nat) (ht : t < 9) :
+  Agent5.ExactDigitStreams.fractionDigits q t 9 = List.replicate q t
+Agent5.ExactDigitStreams.highValue_cons_digit (x : Nat) (xs : List Nat) :
+  Agent115.ExteriorFactorization.highValue (x :: xs) = x * 10 ^ xs.length + Agent115.ExteriorFactorization.highValue xs
+Agent5.ExactDigitStreams.highValue_lt_pow (W : List Nat) (hW : ∀ (x : Nat), x ∈ W → x < 10) :
+  Agent115.ExteriorFactorization.highValue W < 10 ^ W.length
+Agent5.ExactDigitStreams.fractionDigits_of_highValue (W : List Nat) (t q : Nat) (hW : ∀ (x : Nat), x ∈ W → x < 10)
+  (ht : t < 9) :
+  Agent5.ExactDigitStreams.fractionDigits (W.length + q) (9 * Agent115.ExteriorFactorization.highValue W + t)
+      (9 * 10 ^ W.length) =
+    W ++ List.replicate q t
+Agent5.ExactDigitStreams.normalize_value_conservation (B : List Nat) (carry : Nat) :
+  Agent115.ExteriorFactorization.lowValue (P196.Agent7.Finite.normalize B carry).fst +
+      10 ^ B.length * (P196.Agent7.Finite.normalize B carry).snd =
+    Agent115.ExteriorFactorization.lowValue B + carry
+Agent5.ExactDigitStreams.normalize_digits_lt_ten (B : List Nat) (carry x : Nat) :
+  x ∈ (P196.Agent7.Finite.normalize B carry).fst → x < 10
+Agent5.ExactDigitStreams.highValue_reverse_word (W : List Nat) :
+  Agent115.ExteriorFactorization.highValue W.reverse = Agent115.ExteriorFactorization.lowValue W
+Agent5.ExactDigitStreams.phase_tail_digit (c : Nat) (hc : Agent115.ExteriorFactorization.nonneutralPhase c) :
+  c = (9 * if 10 ≤ c then 1 else 0) + (c - 9 * if 10 ≤ c then 1 else 0) ∧ (c - 9 * if 10 ≤ c then 1 else 0) < 9
+Agent5.ExactDigitStreams.fractionDigits_exterior (c : Nat) (B : List Nat) (q : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) (hB : ∀ (x : Nat), x ∈ B → x ≤ 18) :
+  let k := if 10 ≤ c then 1 else 0;
+  let t := c - 9 * k;
+  let g := (P196.Agent7.Finite.normalize B.reverse k).snd;
+  Agent5.ExactDigitStreams.fractionDigits (B.length + 1 + q) (Agent115.ExteriorFactorization.rhoNum c B)
+      (9 * 10 ^ B.length * 10 ^ g) =
+    (if (g == 0) = true then (P196.Agent7.Finite.normalize B.reverse k).fst.reverse ++ [t]
+      else [1] ++ (P196.Agent7.Finite.normalize B.reverse k).fst.reverse) ++
+      List.replicate q t
+Agent5.ExactDigitStreams.fractionDigits_prefix (n q r D : Nat) :
+  List.take n (Agent5.ExactDigitStreams.fractionDigits (n + q) r D) = Agent5.ExactDigitStreams.fractionDigits n r D
+Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten (n r D : Nat) (hr : r < D) (d : Nat) :
+  d ∈ Agent5.ExactDigitStreams.fractionDigits n r D → d < 10
+Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten (c : Nat) (B : List Nat) (n : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) (hB : ∀ (x : Nat), x ∈ B → x ≤ 18) :
+  let k := if 10 ≤ c then 1 else 0;
+  let g := (P196.Agent7.Finite.normalize B.reverse k).snd;
+  ∀ (d : Nat),
+    d ∈
+        Agent5.ExactDigitStreams.fractionDigits n (Agent115.ExteriorFactorization.rhoNum c B)
+          (9 * 10 ^ B.length * 10 ^ g) →
+      d < 10
+Agent5.ExactDigitStreams.strip_zip_append_replicate (a b : List Nat) (t q : Nat) (hlen : a.length = b.length) :
+  P196.Agent7.Finite.stripSuffix (2 * t)
+      (List.zipWith (fun x y => x + y) (a ++ List.replicate q t) (b ++ List.replicate q t)) =
+    P196.Agent7.Finite.stripSuffix (2 * t) (List.zipWith (fun x y => x + y) a b)
+Agent5.ExactDigitStreams.outerNext_from_streams (c : Nat) (B : List Nat) (q : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) (hB : ∀ (x : Nat), x ∈ B → x ≤ 18) :
+  P196.Agent7.Finite.outerNext { c := c, B := B } =
+    { c := P196.Agent7.Finite.bulkPhase c,
+      B :=
+        P196.Agent7.Finite.stripSuffix (P196.Agent7.Finite.bulkPhase c)
+          (List.zipWith (fun x y => x + y)
+            (Agent5.ExactDigitStreams.adicNumeratorDigits (B.length + 1 + q)
+              (Agent115.ExteriorFactorization.zValue c B - ↑c))
+            (Agent5.ExactDigitStreams.fractionDigits (B.length + 1 + q) (Agent115.ExteriorFactorization.rhoNum c B)
+              (9 * 10 ^ B.length * 10 ^ (P196.Agent7.Finite.normalize B.reverse (if 10 ≤ c then 1 else 0)).snd))) }
+Agent5.ExactDigitStreams.outerNext_from_streams_of_cutoff (c : Nat) (B : List Nat) (cut : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) (hB : ∀ (x : Nat), x ∈ B → x ≤ 18)
+  (hcut : B.length + 1 ≤ cut) :
+  P196.Agent7.Finite.outerNext { c := c, B := B } =
+    { c := P196.Agent7.Finite.bulkPhase c,
+      B :=
+        P196.Agent7.Finite.stripSuffix (P196.Agent7.Finite.bulkPhase c)
+          (List.zipWith (fun x y => x + y)
+            (Agent5.ExactDigitStreams.adicNumeratorDigits cut (Agent115.ExteriorFactorization.zValue c B - ↑c))
+            (Agent5.ExactDigitStreams.fractionDigits cut (Agent115.ExteriorFactorization.rhoNum c B)
+              (9 * 10 ^ B.length * 10 ^ (P196.Agent7.Finite.normalize B.reverse (if 10 ≤ c then 1 else 0)).snd))) }
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_of_zValue._proof_11 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.stripSuffix_append_single : [propext,
+ Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.highValue_reverse_word : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.injEq : [propext]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_repeat : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_append_single : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_band : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_band._proof_9 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_2 : []
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.inj : []
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.phase_tail_digit : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_band : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof P196.Agent7.Finite.validOuter.eq_1 : []
+AUDIT_THEOREM DigitDefinitions Agent5.ExactDigitStreams.fractionDigits.eq_1 : []
+UNSAFE_IMPLEMENTATION_AXIOM TARGET List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_general : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_band._proof_10 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_2 : []
+AUDIT_THEOREM DigitDefinitions Agent5.ExactDigitStreams.adicNumeratorDigits.eq_2 : []
+AUDIT_THEOREM DigitDefinitions Agent5.ExactDigitStreams.fractionDigits.eq_2 : []
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.sizeOf_spec : []
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_append : [propext]
+AUDIT_THEOREM FractionDigits _private.FractionDigits.0._proof_6 : [propext]
+AUDIT_THEOREM FractionDigits _private.FractionDigits.0._proof_7 : [propext]
+AUDIT_THEOREM CoordinateStreams Agent5.ExactDigitStreams.strip_zip_append_replicate : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.entries_le_of_valid : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_eq_fromScans : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.phase_facts : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_exterior : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_carry_le._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_of_zValue : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_column : [propext, Quot.sound]
+AUDIT_THEOREM DigitDefinitions _private.DigitDefinitions.0.Agent5.ExactDigitStreams.fractionDigits.match_1.eq_1 : []
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_scale : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateStreams Agent5.ExactDigitStreams.outerNext_from_streams_of_cutoff._proof_2 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateStreams Agent5.ExactDigitStreams.outerNext_from_streams : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_column._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.phase_facts._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_sharp_seven : []
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten._proof_13 : [propext,
+ Quot.sound]
+AUDIT_THEOREM DigitDefinitions Agent5.ExactDigitStreams.adicNumeratorDigits_length : [propext]
+AUDIT_THEOREM CoordinateStreams Agent5.ExactDigitStreams.outerNext_from_streams_of_cutoff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_reverse._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf.eq_1 : []
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_prefix : [propext]
+AUDIT_THEOREM DigitDefinitions _private.DigitDefinitions.0.Agent5.ExactDigitStreams.adicNumeratorDigits.match_1.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_5 : [propext]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_column._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.normalize_digits_lt_ten : [Quot.sound, propext]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.highValue_lt_pow._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_of_highValue._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.fromScans.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le._proof_13 : [propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM OuterFinite List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.«_@».OuterFinite._hyg.27._spec_1
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_normalize._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_reverse : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_of_highValue : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_normalize._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.highValue_append_single : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_2._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_phase : [propext, Quot.sound]
+AUDIT_THEOREM DigitDefinitions Agent5.ExactDigitStreams.adicNumeratorDigits.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_1 : []
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits _private.AdicDigits.0._proof_1 : [propext]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_exterior._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_1._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_exterior._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM DigitDefinitions _private.DigitDefinitions.0.Agent5.ExactDigitStreams.adicNumeratorDigits.match_1.eq_2 : []
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_exits_by_seven : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_1 : []
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.highValue_lt_pow : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_normalize : [propext, Quot.sound]
+AUDIT_THEOREM DigitDefinitions _private.DigitDefinitions.0.Agent5.ExactDigitStreams.fractionDigits.match_1.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_2 : []
+AUDIT_THEOREM DigitDefinitions Agent5.ExactDigitStreams.fractionDigits_length : [propext]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.normalize_value_conservation : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_exterior._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.highValue.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_band._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le._proof_14 : [propext,
+ Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_exterior._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_1 : []
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.normalize_value_conservation._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_sharp_six : []
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_constant : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof P196.Agent7.Finite.normalize.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_band : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten._proof_12 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof P196.Agent7.Finite.normalize.eq_2 : []
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zipWith_append_single : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_prefix : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_replicate : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_carry_le : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_normalize._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_repeat._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_length : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0._proof_4 : []
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_constant._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_6 : [propext]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_exterior : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_of_values : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent115.ExteriorFactorization.zValue.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.strip_zip_append : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.target : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_bounded : [Quot.sound, propext]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_3._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf_length : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.foldl_high : [propext]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.fractionDigits_repeat._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateStreams Agent5.ExactDigitStreams.strip_zip_append_replicate._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_constant._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM AdicDigits Agent5.ExactDigitStreams.adicNumeratorDigits_bounded._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM FractionDigits Agent5.ExactDigitStreams.highValue_cons_digit : [propext]
+FULL_MODULE_AUDIT theorems=133 union=[Classical.choice, Quot.sound, propext]

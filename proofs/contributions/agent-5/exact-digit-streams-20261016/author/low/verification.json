@@ -1,0 +1,82 @@
+{
+  "status": "AUTHOR_BUILD_PASS",
+  "scope": "Low 10-adic numerator digit stream correspondence; no independent or strict complete-chain replay claimed.",
+  "timestamp_utc": "2026-10-16T21:21:56.048630+00:00",
+  "main_dependency_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "claim_commit": "f944d0af99dad4218ce322af9bae70c926ff5977",
+  "source_path": "/workspace/scratch/6f8166beec97/p196-digits/proofs/contributions/agent-5/exact-digit-streams-20261016/AdicDigits.lean",
+  "source_sha256": "f8b8b5ded9e85cf8840a329950fe95f1f6e2e3bb2ad8c8e3e1f1513080e09a6b",
+  "lean_executable": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+  "lean_version_log": "/tmp/p196-agent5-adic-build/lean-version.log",
+  "modules": [
+    {
+      "name": "OuterFinite",
+      "source_sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+      "olean_sha256": "4e85aaa35d2021f715d626c49a6a8f682ebd009988b00ae159d707faafe787d4"
+    },
+    {
+      "name": "TARGET",
+      "source_sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+      "olean_sha256": "31b0354ccd72b373983c045ac64853e2390da73bff319f5f62b54196dca099e6"
+    },
+    {
+      "name": "ExteriorFactorizationProof",
+      "source_sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+      "olean_sha256": "a5b714d0caf001d4c6db50c1c6df4a3068a9cb0a05e83daba4a5a12e04ea9b00"
+    },
+    {
+      "name": "DigitDefinitions",
+      "source_sha256": "4bdedd6d992a3207645d5dd21478a66c2e1c2465f75111b86b294caee903739a",
+      "olean_sha256": "7971f7954fbff0f2947059c4a93f0ee6089503f468bad2e153dc9e83413ec5cc"
+    },
+    {
+      "name": "AdicDigits",
+      "source_sha256": "f8b8b5ded9e85cf8840a329950fe95f1f6e2e3bb2ad8c8e3e1f1513080e09a6b",
+      "olean_sha256": "559c8f4eaf80e5841a5b95e385bcb413b16a3415f609b2d33e86ab54509d86c8"
+    }
+  ],
+  "commands": [
+    "LEAN_PATH=/tmp/p196-agent5-adic-build /tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean -o OuterFinite.olean OuterFinite.lean",
+    "LEAN_PATH=/tmp/p196-agent5-adic-build /tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean -o TARGET.olean TARGET.lean",
+    "LEAN_PATH=/tmp/p196-agent5-adic-build /tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean -o ExteriorFactorizationProof.olean ExteriorFactorizationProof.lean",
+    "LEAN_PATH=/tmp/p196-agent5-adic-build /tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean -o DigitDefinitions.olean DigitDefinitions.lean",
+    "LEAN_PATH=/tmp/p196-agent5-adic-build /tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean -o AdicDigits.olean AdicDigits.lean"
+  ],
+  "attempts": [
+    {
+      "id": "001",
+      "exit_code": 1,
+      "scope": "Invalid simp-lemma name Int.natCast_ofNat; unsuccessful source retained.",
+      "source_sha256": "2d7f74b3c80b1f22b1cfccf883ff438e654d7e4f9d72dcd7b13f9816df6a1b48",
+      "log_sha256": "c76f476cb6353965ba84f8a504f6f266c813fea0a8d572503bc55d741d7681ea"
+    },
+    {
+      "id": "002",
+      "exit_code": 0,
+      "scope": "All five exported theorems compiled.",
+      "source_sha256": "d9478a498bab2bfdc381728a7c2a8517c785c4efbc2bebbafc85509d76da13c2",
+      "log_sha256": "e902fa34de7dea089707ebecb85e3533390ebca86cf00bf5d36c5dd1c0d6cb3d"
+    },
+    {
+      "id": "003",
+      "exit_code": 0,
+      "scope": "Added unrestricted digit bounds and prefix consistency; all seven exported theorems compiled.",
+      "source_sha256": "f8b8b5ded9e85cf8840a329950fe95f1f6e2e3bb2ad8c8e3e1f1513080e09a6b",
+      "log_sha256": "a554fe46b84bdae4eb07392ab3692f814a8d1c3742c92823d7f9f9d70bed824d"
+    }
+  ],
+  "exports": [
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_bounded",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_prefix",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_column",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_constant",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_normalize",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_phase",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_exterior"
+  ],
+  "transitive_axiom_union": [
+    "propext",
+    "Quot.sound"
+  ],
+  "final_strict_replay": "Parent will serialize complete strict replay after high-stream and composition modules are ready."
+}

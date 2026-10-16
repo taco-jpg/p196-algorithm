@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped literal coordinate digit-stream reconstruction; no repository-wide completeness claim."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent5-exact-digit-streams": {
+      "scope": "Exact executable low10-adic and highfractional digit streams, bounds and prefix consistency, and reconstruction of unchanged outerNext for every cutoff at least B.length+1, all eight nonneutral phases and coefficients<=18 including empty/zerohead/untrimmed B. Uses actual outgoing carry; coordinate-only selector awaits attributed Agent6 threshold.",
+      "roots": [
+        "CoordinateStreams"
+      ],
+      "modules": {
+        "OuterFinite": {
+          "path": "proofs/OuterFinite__1c852c0ed5b8d706.lean",
+          "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+          "git_blob": "bc22ad1b950251fd231cccd40393b5749b8ad887",
+          "imports": [
+            "Std"
+          ]
+        },
+        "TARGET": {
+          "path": "proofs/TARGET__c7bc3cfee999c64e.lean",
+          "sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+          "git_blob": "76b2633882fe44d1aea1f2134be97b38617ab5cf",
+          "imports": [
+            "OuterFinite"
+          ]
+        },
+        "ExteriorFactorizationProof": {
+          "path": "proofs/ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+          "sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+          "git_blob": "9a9a0e3e8335b218d2863edaee58c2c26614c0ca",
+          "imports": [
+            "TARGET"
+          ]
+        },
+        "DigitDefinitions": {
+          "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/DigitDefinitions.lean",
+          "sha256": "4bdedd6d992a3207645d5dd21478a66c2e1c2465f75111b86b294caee903739a",
+          "git_blob": "2e785625f94d91b36191749b13a00077614ce276",
+          "imports": [
+            "ExteriorFactorizationProof"
+          ]
+        },
+        "AdicDigits": {
+          "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/AdicDigits.lean",
+          "sha256": "f8b8b5ded9e85cf8840a329950fe95f1f6e2e3bb2ad8c8e3e1f1513080e09a6b",
+          "git_blob": "f67d531bd0d77b863754f31f3b1e8dc0d0751478",
+          "imports": [
+            "DigitDefinitions"
+          ]
+        },
+        "FractionDigits": {
+          "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/FractionDigits.lean",
+          "sha256": "d6232d1f20221b1a2f09f3670f6078d2fe0c6558a439c9c0ac25c4e04e119732",
+          "git_blob": "49289be4a51b1e3024ced9bb75fa6b37dbfa710b",
+          "imports": [
+            "DigitDefinitions"
+          ]
+        },
+        "CoordinateStreams": {
+          "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/CoordinateStreams.lean",
+          "sha256": "c1409584ac12282f5b3097284a88194687b335f14d5864f258afa40f0d920a20",
+          "git_blob": "588a32c9fe791eaa01ee0ab852c0e52cd0222c7d",
+          "imports": [
+            "AdicDigits",
+            "FractionDigits"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A5-EXACT-DIGIT-STREAMS",
+      "project": "agent5-exact-digit-streams",
+      "endpoints": [
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_length",
+        "Agent5.ExactDigitStreams.fractionDigits_length",
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_bounded",
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_prefix",
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_column",
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_constant",
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_normalize",
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_phase",
+        "Agent5.ExactDigitStreams.adicNumeratorDigits_exterior",
+        "Agent5.ExactDigitStreams.fractionDigits_scale",
+        "Agent5.ExactDigitStreams.fractionDigits_repeat",
+        "Agent5.ExactDigitStreams.highValue_cons_digit",
+        "Agent5.ExactDigitStreams.highValue_lt_pow",
+        "Agent5.ExactDigitStreams.fractionDigits_of_highValue",
+        "Agent5.ExactDigitStreams.normalize_value_conservation",
+        "Agent5.ExactDigitStreams.normalize_digits_lt_ten",
+        "Agent5.ExactDigitStreams.highValue_reverse_word",
+        "Agent5.ExactDigitStreams.phase_tail_digit",
+        "Agent5.ExactDigitStreams.fractionDigits_exterior",
+        "Agent5.ExactDigitStreams.fractionDigits_prefix",
+        "Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten",
+        "Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten",
+        "Agent5.ExactDigitStreams.strip_zip_append_replicate",
+        "Agent5.ExactDigitStreams.outerNext_from_streams",
+        "Agent5.ExactDigitStreams.outerNext_from_streams_of_cutoff"
+      ]
+    }
+  ]
+}
