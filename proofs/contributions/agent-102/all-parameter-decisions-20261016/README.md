@@ -31,7 +31,7 @@ The theorem axiom union is only propext, Classical.choice, Quot.sound. Thirteen 
 
 runtime-independent/ contains the portable clean rebuild, exact source pins, complete logs, 48-endpoint and 297-origin audits, dependency audit, repairs, and independent review of the root-authored AllParameters. independent-semantic/ is a separate source-only semantic review of all three modules. word-independent-all-parameters/ is another named source-only review; word-author/ retains RunDecision author's first failed proof and successful repair. root-author/ retains both original full-prefix-proof attempts. Failed recovery sorryAx outputs are explicitly outside the accepted source closure.
 
-The exact-published-commit replay will be added in an evidence-only checkpoint. This checkpoint is already LEAN-CHECKED at exact source hashes and independently rebuilt; it does not claim a clean Git-commit replay that has not yet run.
+The subsequent exact-published-commit replay at 15d2e9cc9a6ed0ad68096b2c547c72f140087fb6 passed all ten source modules and the complete origin audit, with source_tree_clean=true. See exact-published-source/. The separate complete-literal/ incremental audit actually prints all 146 exports (144 accepted endpoint names plus two names containing ?), with 18 axiom-free declarations and only the three standard axioms for the rest. It reuses source-matched independently built objects and is not claimed as a second clean dependency rebuild.
 
 ## Scope and ownership
 

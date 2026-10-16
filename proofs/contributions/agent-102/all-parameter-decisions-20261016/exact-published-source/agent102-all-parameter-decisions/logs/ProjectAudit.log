@@ -1,0 +1,740 @@
+Agent102.Affine.eval_zero (k : Nat) : Agent102.Affine.zero.eval k = 0
+Agent102.Affine.eval_add (f g : Agent102.Affine) (k : Nat) : (f.add g).eval k = f.eval k + g.eval k
+Agent102.Affine.intercept_bounds_of_cutoff (f : Agent102.Affine) (k : Nat) (hk : f.cutoff ≤ k) :
+  -↑k < f.intercept ∧ f.intercept < ↑k
+Agent102.Affine.eval_pos_of_slope_pos (f : Agent102.Affine) (k : Nat) (hk : f.cutoff ≤ k) (hs : 0 < f.slope) :
+  0 < f.eval k
+Agent102.Affine.eval_neg_of_slope_neg (f : Agent102.Affine) (k : Nat) (hk : f.cutoff ≤ k) (hs : f.slope < 0) :
+  f.eval k < 0
+Agent102.Affine.eval_nonneg_iff (f : Agent102.Affine) (k : Nat) (hk : f.cutoff ≤ k) :
+  0 ≤ f.eval k ↔ 0 < f.slope ∨ f.slope = 0 ∧ 0 ≤ f.intercept
+Agent102.Affine.eval_neg_iff (f : Agent102.Affine) (k : Nat) (hk : f.cutoff ≤ k) :
+  f.eval k < 0 ↔ f.slope < 0 ∨ f.slope = 0 ∧ f.intercept < 0
+Agent102.Affine.eval_positivePart (f : Agent102.Affine) (k : Nat) (hk : f.cutoff ≤ k) :
+  f.positivePart.eval k = ↑(f.eval k).toNat
+Agent102.Affine.eval_positivePart_nonneg (f : Agent102.Affine) (k : Nat) (hk : f.cutoff ≤ k) : 0 ≤ f.positivePart.eval k
+Agent102.Affine.compareCutoff_comm (f g : Agent102.Affine) : f.compareCutoff g = g.compareCutoff f
+Agent102.Affine.eval_lt_of_slope_lt (f g : Agent102.Affine) (k : Nat) (hk : f.compareCutoff g ≤ k)
+  (hs : f.slope < g.slope) : f.eval k < g.eval k
+Agent102.Affine.eval_le_iff (f g : Agent102.Affine) (k : Nat) (hk : f.compareCutoff g ≤ k) :
+  f.eval k ≤ g.eval k ↔ f.slope < g.slope ∨ f.slope = g.slope ∧ f.intercept ≤ g.intercept
+Agent102.Affine.eval_lt_iff (f g : Agent102.Affine) (k : Nat) (hk : f.compareCutoff g ≤ k) :
+  f.eval k < g.eval k ↔ f.slope < g.slope ∨ f.slope = g.slope ∧ f.intercept < g.intercept
+Agent102.Affine.eval_eq_iff (f g : Agent102.Affine) (k : Nat) (hk : f.compareCutoff g ≤ k) :
+  f.eval k = g.eval k ↔ f.slope = g.slope ∧ f.intercept = g.intercept
+Agent102.Affine.eval_le_stable (f g : Agent102.Affine) (K k : Nat) (hK : f.compareCutoff g ≤ K) (hk : K ≤ k) :
+  f.eval k ≤ g.eval k ↔ f.eval K ≤ g.eval K
+Agent102.Affine.eval_lt_stable (f g : Agent102.Affine) (K k : Nat) (hK : f.compareCutoff g ≤ K) (hk : K ≤ k) :
+  f.eval k < g.eval k ↔ f.eval K < g.eval K
+Agent102.Affine.eval_eq_stable (f g : Agent102.Affine) (K k : Nat) (hK : f.compareCutoff g ≤ K) (hk : K ≤ k) :
+  f.eval k = g.eval k ↔ f.eval K = g.eval K
+Agent102.word_nil : Agent102.word [] = []
+Agent102.word_cons (r : Agent102.Run) (rs : List Agent102.Run) :
+  Agent102.word (r :: rs) = List.replicate r.count r.digit ++ Agent102.word rs
+Agent102.word_append (rs ts : List Agent102.Run) : Agent102.word (rs ++ ts) = Agent102.word rs ++ Agent102.word ts
+Agent102.word_length (rs : List Agent102.Run) : (Agent102.word rs).length = (List.map Agent102.Run.count rs).sum
+Agent102.word_reverse (rs : List Agent102.Run) : Agent102.word rs.reverse = (Agent102.word rs).reverse
+Agent102.Span.shift_covers (s : Agent102.Span) (offset i : Nat) : (s.shift offset).covers (i + offset) ↔ s.covers i
+Agent102.Span.shift_overlaps (s t : Agent102.Span) (offset : Nat) :
+  (s.shift offset).overlaps (t.shift offset) ↔ s.overlaps t
+Agent102.spansFrom_shift (rs : List Agent102.Run) (start offset : Nat) :
+  Agent102.spansFrom (start + offset) rs = List.map (fun s => s.shift offset) (Agent102.spansFrom start rs)
+Agent102.spansFrom_eq_map_spans (rs : List Agent102.Run) (start : Nat) :
+  Agent102.spansFrom start rs = List.map (fun s => s.shift start) (Agent102.spans rs)
+Agent102.spansFrom_append (rs ts : List Agent102.Run) (start : Nat) :
+  Agent102.spansFrom start (rs ++ ts) =
+    Agent102.spansFrom start rs ++ Agent102.spansFrom (start + (Agent102.word rs).length) ts
+Agent102.length_spansFrom (rs : List Agent102.Run) (start : Nat) : (Agent102.spansFrom start rs).length = rs.length
+Agent102.length_spans (rs : List Agent102.Run) : (Agent102.spans rs).length = rs.length
+Agent102.mem_spansFrom_bounds {rs : List Agent102.Run} {start : Nat} {s : Agent102.Span}
+  (hs : s ∈ Agent102.spansFrom start rs) : start ≤ s.lo ∧ s.lo ≤ s.hi ∧ s.hi ≤ start + (Agent102.word rs).length
+Agent102.exists_mem_spansFrom_covers {rs : List Agent102.Run} {start i : Nat} (hstart : start ≤ i)
+  (hi : i < start + (Agent102.word rs).length) : ∃ s, s ∈ Agent102.spansFrom start rs ∧ s.covers i
+Agent102.exists_mem_spansFrom_covers_iff (rs : List Agent102.Run) (start i : Nat) :
+  (∃ s, s ∈ Agent102.spansFrom start rs ∧ s.covers i) ↔ start ≤ i ∧ i < start + (Agent102.word rs).length
+Agent102.mem_spans_bounds {rs : List Agent102.Run} {s : Agent102.Span} (hs : s ∈ Agent102.spans rs) :
+  s.lo ≤ s.hi ∧ s.hi ≤ (Agent102.word rs).length
+Agent102.exists_mem_spans_covers {rs : List Agent102.Run} {i : Nat} (hi : i < (Agent102.word rs).length) :
+  ∃ s, s ∈ Agent102.spans rs ∧ s.covers i
+Agent102.exists_mem_spans_covers_iff (rs : List Agent102.Run) (i : Nat) :
+  (∃ s, s ∈ Agent102.spans rs ∧ s.covers i) ↔ i < (Agent102.word rs).length
+Agent102.eq_of_mem_spansFrom_covers {rs : List Agent102.Run} {start i : Nat} {s t : Agent102.Span}
+  (hs : s ∈ Agent102.spansFrom start rs) (ht : t ∈ Agent102.spansFrom start rs) (hsi : s.covers i) (hti : t.covers i) :
+  s = t
+Agent102.eq_of_mem_spans_covers {rs : List Agent102.Run} {i : Nat} {s t : Agent102.Span} (hs : s ∈ Agent102.spans rs)
+  (ht : t ∈ Agent102.spans rs) (hsi : s.covers i) (hti : t.covers i) : s = t
+Agent102.Span.overlaps_iff_exists_covers (s t : Agent102.Span) : s.overlaps t ↔ ∃ i, s.covers i ∧ t.covers i
+Agent102.Span.overlaps_of_covers {s t : Agent102.Span} {i : Nat} (hs : s.covers i) (ht : t.covers i) : s.overlaps t
+Agent102.word_eq_iff_length_and_overlap_digits (A B : List Agent102.Run) :
+  Agent102.word A = Agent102.word B ↔
+    (Agent102.word A).length = (Agent102.word B).length ∧
+      ∀ (s : Agent102.Span),
+        s ∈ Agent102.spans A → ∀ (t : Agent102.Span), t ∈ Agent102.spans B → s.overlaps t → s.digit = t.digit
+Agent102.word_eq_iff_count_sum_and_overlap_digits (A B : List Agent102.Run) :
+  Agent102.word A = Agent102.word B ↔
+    (List.map Agent102.Run.count A).sum = (List.map Agent102.Run.count B).sum ∧
+      ∀ (s : Agent102.Span),
+        s ∈ Agent102.spans A → ∀ (t : Agent102.Span), t ∈ Agent102.spans B → s.overlaps t → s.digit = t.digit
+Agent102.le_maxList_of_mem {n : Nat} {ns : List Nat} (h : n ∈ ns) : n ≤ Agent102.maxList ns
+Agent102.cutoff_le_lengthCutoff {r : Agent102.RunSpec} {rs : List Agent102.RunSpec} (h : r ∈ rs) :
+  r.length.cutoff ≤ Agent102.lengthCutoff rs
+Agent102.wordAt_nil (k : Nat) : Agent102.wordAt [] k = []
+Agent102.wordAt_cons (r : Agent102.RunSpec) (rs : List Agent102.RunSpec) (k : Nat) :
+  Agent102.wordAt (r :: rs) k = List.replicate (r.length.eval k).toNat r.digit ++ Agent102.wordAt rs k
+Agent102.widthAffine_eval (rs : List Agent102.RunSpec) (k : Nat) (hk : Agent102.lengthCutoff rs ≤ k) :
+  (Agent102.widthAffine rs).eval k = ↑(Agent102.wordAt rs k).length
+Agent102.widthAffine_nonneg (rs : List Agent102.RunSpec) (k : Nat) (hk : Agent102.lengthCutoff rs ≤ k) :
+  0 ≤ (Agent102.widthAffine rs).eval k
+Agent102.spanSpecsFrom_at (rs : List Agent102.RunSpec) (start : Agent102.Affine) (k : Nat)
+  (hk : Agent102.lengthCutoff rs ≤ k) (hs : 0 ≤ start.eval k) :
+  List.map (fun s => s.at k) (Agent102.spanSpecsFrom start rs) =
+    Agent102.spansFrom (start.eval k).toNat (Agent102.runsAt rs k)
+Agent102.spanSpecs_at (rs : List Agent102.RunSpec) (k : Nat) (hk : Agent102.lengthCutoff rs ≤ k) :
+  List.map (fun s => s.at k) (Agent102.spanSpecs rs) = Agent102.spans (Agent102.runsAt rs k)
+Agent102.spanSpecsFrom_nonneg (rs : List Agent102.RunSpec) (start : Agent102.Affine) (k : Nat)
+  (hk : Agent102.lengthCutoff rs ≤ k) (hs : 0 ≤ start.eval k) (s : Agent102.AffineSpan) :
+  s ∈ Agent102.spanSpecsFrom start rs → 0 ≤ s.lo.eval k ∧ 0 ≤ s.hi.eval k
+Agent102.spanSpecs_nonneg (rs : List Agent102.RunSpec) (k : Nat) (hk : Agent102.lengthCutoff rs ≤ k)
+  (s : Agent102.AffineSpan) : s ∈ Agent102.spanSpecs rs → 0 ≤ s.lo.eval k ∧ 0 ≤ s.hi.eval k
+Agent102.widthAffine_mem_endpoints (rs : List Agent102.RunSpec) : Agent102.widthAffine rs ∈ Agent102.endpoints rs
+Agent102.lo_mem_endpoints {rs : List Agent102.RunSpec} {s : Agent102.AffineSpan} (hs : s ∈ Agent102.spanSpecs rs) :
+  s.lo ∈ Agent102.endpoints rs
+Agent102.hi_mem_endpoints {rs : List Agent102.RunSpec} {s : Agent102.AffineSpan} (hs : s ∈ Agent102.spanSpecs rs) :
+  s.hi ∈ Agent102.endpoints rs
+Agent102.endpoints_nonneg (rs : List Agent102.RunSpec) (k : Nat) (hk : Agent102.lengthCutoff rs ≤ k)
+  (f : Agent102.Affine) : f ∈ Agent102.endpoints rs → 0 ≤ f.eval k
+Agent102.compareCutoff_le_pairCutoff {es : List Agent102.Affine} {f g : Agent102.Affine} (hf : f ∈ es) (hg : g ∈ es) :
+  f.compareCutoff g ≤ Agent102.pairCutoff es
+Agent102.left_lengthCutoff_le (A B : List Agent102.RunSpec) : Agent102.lengthCutoff A ≤ Agent102.equalityCutoff A B
+Agent102.right_lengthCutoff_le (A B : List Agent102.RunSpec) : Agent102.lengthCutoff B ≤ Agent102.equalityCutoff A B
+Agent102.pairCutoff_le_equalityCutoff (A B : List Agent102.RunSpec) :
+  Agent102.pairCutoff (Agent102.endpoints A ++ Agent102.endpoints B) ≤ Agent102.equalityCutoff A B
+Agent102.combined_endpoints_nonneg (A B : List Agent102.RunSpec) (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k)
+  (f : Agent102.Affine) (hf : f ∈ Agent102.endpoints A ++ Agent102.endpoints B) : 0 ≤ f.eval k
+Agent102.endpoint_nat_lt_stable (A B : List Agent102.RunSpec) (f g : Agent102.Affine)
+  (hf : f ∈ Agent102.endpoints A ++ Agent102.endpoints B) (hg : g ∈ Agent102.endpoints A ++ Agent102.endpoints B)
+  (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) :
+  (f.eval k).toNat < (g.eval k).toNat ↔
+    (f.eval (Agent102.equalityCutoff A B)).toNat < (g.eval (Agent102.equalityCutoff A B)).toNat
+Agent102.width_eq_stable (A B : List Agent102.RunSpec) (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) :
+  (Agent102.wordAt A k).length = (Agent102.wordAt B k).length ↔
+    (Agent102.wordAt A (Agent102.equalityCutoff A B)).length = (Agent102.wordAt B (Agent102.equalityCutoff A B)).length
+Agent102.Span.overlaps_iff_four (s t : Agent102.Span) :
+  s.overlaps t ↔ s.lo < s.hi ∧ s.lo < t.hi ∧ t.lo < s.hi ∧ t.lo < t.hi
+Agent102.span_overlap_stable (A B : List Agent102.RunSpec) (s t : Agent102.AffineSpan) (hs : s ∈ Agent102.spanSpecs A)
+  (ht : t ∈ Agent102.spanSpecs B) (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) :
+  (s.at k).overlaps (t.at k) ↔ (s.at (Agent102.equalityCutoff A B)).overlaps (t.at (Agent102.equalityCutoff A B))
+Agent102.wordAt_eq_iff_spans (A B : List Agent102.RunSpec) (k : Nat) (ha : Agent102.lengthCutoff A ≤ k)
+  (hb : Agent102.lengthCutoff B ≤ k) :
+  Agent102.wordAt A k = Agent102.wordAt B k ↔
+    (Agent102.wordAt A k).length = (Agent102.wordAt B k).length ∧
+      ∀ (s : Agent102.AffineSpan),
+        s ∈ Agent102.spanSpecs A →
+          ∀ (t : Agent102.AffineSpan), t ∈ Agent102.spanSpecs B → (s.at k).overlaps (t.at k) → s.digit = t.digit
+Agent102.wordAt_eq_stable (A B : List Agent102.RunSpec) (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) :
+  Agent102.wordAt A k = Agent102.wordAt B k ↔
+    Agent102.wordAt A (Agent102.equalityCutoff A B) = Agent102.wordAt B (Agent102.equalityCutoff A B)
+Agent102.wordAt_reverse (A : List Agent102.RunSpec) (k : Nat) :
+  Agent102.wordAt A.reverse k = (Agent102.wordAt A k).reverse
+Agent102.wordAt_palindrome_stable (A : List Agent102.RunSpec) (k : Nat) (hk : Agent102.palindromeCutoff A ≤ k) :
+  Agent102.wordAt A k = (Agent102.wordAt A k).reverse ↔
+    Agent102.wordAt A (Agent102.palindromeCutoff A) = (Agent102.wordAt A (Agent102.palindromeCutoff A)).reverse
+Agent102.equalOnTail_spec (A B : List Agent102.RunSpec) :
+  Agent102.equalOnTail A B = true ↔
+    ∀ (k : Nat), Agent102.equalityCutoff A B ≤ k → Agent102.wordAt A k = Agent102.wordAt B k
+Agent102.unequalOnTail_spec (A B : List Agent102.RunSpec) :
+  Agent102.equalOnTail A B = false ↔
+    ∀ (k : Nat), Agent102.equalityCutoff A B ≤ k → Agent102.wordAt A k ≠ Agent102.wordAt B k
+Agent102.equality_before_cutoff_of_tail_mismatch (A B : List Agent102.RunSpec) (h : Agent102.equalOnTail A B = false)
+  (k : Nat) (he : Agent102.wordAt A k = Agent102.wordAt B k) : k < Agent102.equalityCutoff A B
+Agent102.palindromicOnTail_spec (A : List Agent102.RunSpec) :
+  Agent102.palindromicOnTail A = true ↔
+    ∀ (k : Nat), Agent102.palindromeCutoff A ≤ k → Agent102.wordAt A k = (Agent102.wordAt A k).reverse
+Agent102.nonpalindromicOnTail_spec (A : List Agent102.RunSpec) :
+  Agent102.palindromicOnTail A = false ↔
+    ∀ (k : Nat), Agent102.palindromeCutoff A ≤ k → Agent102.wordAt A k ≠ (Agent102.wordAt A k).reverse
+Agent102.AffineBoundary.wordAt_moving (k : Nat) : Agent102.wordAt Agent102.AffineBoundary.moving k = List.replicate k 1
+Agent102.AffineBoundary.wordAt_fixed (N k : Nat) :
+  Agent102.wordAt (Agent102.AffineBoundary.fixed N) k = List.replicate N 1
+Agent102.AffineBoundary.moving_fixed_eq_iff (k N : Nat) :
+  Agent102.wordAt Agent102.AffineBoundary.moving k = Agent102.wordAt (Agent102.AffineBoundary.fixed N) k ↔ k = N
+Agent102.AffineBoundary.compareCutoff_moving_fixed (N : Nat) :
+  Agent102.AffineBoundary.movingLength.compareCutoff (Agent102.AffineBoundary.fixedLength N) = N + 1
+Agent102.AffineBoundary.moving_fixed_stable_iff (N K : Nat) :
+  (∀ (k : Nat),
+      K ≤ k →
+        (Agent102.wordAt Agent102.AffineBoundary.moving k = Agent102.wordAt (Agent102.AffineBoundary.fixed N) k ↔
+          Agent102.wordAt Agent102.AffineBoundary.moving K = Agent102.wordAt (Agent102.AffineBoundary.fixed N) K)) ↔
+    N < K
+Agent102.AffineBoundary.equality_changes_arbitrarily_late (K : Nat) :
+  ∃ A B k, K ≤ k ∧ Agent102.wordAt A k = Agent102.wordAt B k ∧ Agent102.wordAt A (k + 1) ≠ Agent102.wordAt B (k + 1)
+Agent102.AffineBoundary.no_uniform_wordAt_cutoff :
+  ¬∃ K,
+      ∀ (A B : List Agent102.RunSpec) (k : Nat),
+        K ≤ k → (Agent102.wordAt A k = Agent102.wordAt B k ↔ Agent102.wordAt A K = Agent102.wordAt B K)
+Agent102.AffineBoundary.run_structure_counterexample :
+  Agent102.AffineBoundary.splitRuns ≠ Agent102.AffineBoundary.longRuns ∧
+    Agent102.word Agent102.AffineBoundary.splitRuns = Agent102.word Agent102.AffineBoundary.longRuns
+Agent102.AffineBoundary.overlap_digits_without_width :
+  (∀ (s : Agent102.Span),
+      s ∈ Agent102.spans Agent102.AffineBoundary.shortRuns →
+        ∀ (t : Agent102.Span), t ∈ Agent102.spans Agent102.AffineBoundary.longRuns → s.overlaps t → s.digit = t.digit) ∧
+    (∃ s,
+        s ∈ Agent102.spans Agent102.AffineBoundary.shortRuns ∧
+          ∃ t, t ∈ Agent102.spans Agent102.AffineBoundary.longRuns ∧ s.overlaps t) ∧
+      (Agent102.word Agent102.AffineBoundary.shortRuns).length ≠
+          (Agent102.word Agent102.AffineBoundary.longRuns).length ∧
+        Agent102.word Agent102.AffineBoundary.shortRuns ≠ Agent102.word Agent102.AffineBoundary.longRuns
+Agent102.AffineBoundary.zero_span_cross_inequalities :
+  Agent102.AffineBoundary.emptySpan.lo = Agent102.AffineBoundary.emptySpan.hi ∧
+    Agent102.AffineBoundary.emptySpan.lo < Agent102.AffineBoundary.coveringSpan.hi ∧
+      Agent102.AffineBoundary.coveringSpan.lo < Agent102.AffineBoundary.emptySpan.hi ∧
+        ¬Agent102.AffineBoundary.emptySpan.overlaps Agent102.AffineBoundary.coveringSpan ∧
+          Agent102.AffineBoundary.emptySpan.digit ≠ Agent102.AffineBoundary.coveringSpan.digit
+Agent102.AffineBoundary.zero_span_realized :
+  Agent102.AffineBoundary.emptySpan ∈ Agent102.spans Agent102.AffineBoundary.withZeroRuns ∧
+    Agent102.AffineBoundary.coveringSpan ∈ Agent102.spans Agent102.AffineBoundary.withoutZeroRuns ∧
+      Agent102.word Agent102.AffineBoundary.withZeroRuns = Agent102.word Agent102.AffineBoundary.withoutZeroRuns
+Agent102.AffineBoundary.cross_inequalities_false_negative :
+  Agent102.word Agent102.AffineBoundary.withZeroRuns = Agent102.word Agent102.AffineBoundary.withoutZeroRuns ∧
+    ¬∀ (s : Agent102.Span),
+        s ∈ Agent102.spans Agent102.AffineBoundary.withZeroRuns →
+          ∀ (t : Agent102.Span),
+            t ∈ Agent102.spans Agent102.AffineBoundary.withoutZeroRuns → s.lo < t.hi → t.lo < s.hi → s.digit = t.digit
+Agent102.endpoint_ltOnTail_iff (A B : List Agent102.RunSpec) (f g : Agent102.Affine)
+  (hf : f ∈ Agent102.endpoints A ++ Agent102.endpoints B) (hg : g ∈ Agent102.endpoints A ++ Agent102.endpoints B)
+  (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) : f.ltOnTail g ↔ (f.eval k).toNat < (g.eval k).toNat
+Agent102.width_eq_iff_coefficients (A B : List Agent102.RunSpec) (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) :
+  (Agent102.wordAt A k).length = (Agent102.wordAt B k).length ↔
+    (Agent102.widthAffine A).slope = (Agent102.widthAffine B).slope ∧
+      (Agent102.widthAffine A).intercept = (Agent102.widthAffine B).intercept
+Agent102.span_overlapsOnTail_iff (A B : List Agent102.RunSpec) (s t : Agent102.AffineSpan)
+  (hs : s ∈ Agent102.spanSpecs A) (ht : t ∈ Agent102.spanSpecs B) (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) :
+  s.overlapsOnTail t ↔ (s.at k).overlaps (t.at k)
+Agent102.fastEqualOnTail_iff_coefficients (A B : List Agent102.RunSpec) :
+  Agent102.fastEqualOnTail A B = true ↔
+    ((Agent102.widthAffine A).slope = (Agent102.widthAffine B).slope ∧
+        (Agent102.widthAffine A).intercept = (Agent102.widthAffine B).intercept) ∧
+      ∀ (s : Agent102.AffineSpan),
+        s ∈ Agent102.spanSpecs A →
+          ∀ (t : Agent102.AffineSpan), t ∈ Agent102.spanSpecs B → s.overlapsOnTail t → s.digit = t.digit
+Agent102.fastEqualOnTail_iff_wordAt (A B : List Agent102.RunSpec) (k : Nat) (hk : Agent102.equalityCutoff A B ≤ k) :
+  Agent102.fastEqualOnTail A B = true ↔ Agent102.wordAt A k = Agent102.wordAt B k
+Agent102.fastEqualOnTail_eq_equalOnTail (A B : List Agent102.RunSpec) :
+  Agent102.fastEqualOnTail A B = Agent102.equalOnTail A B
+Agent102.fastEqualOnTail_spec (A B : List Agent102.RunSpec) :
+  Agent102.fastEqualOnTail A B = true ↔
+    ∀ (k : Nat), Agent102.equalityCutoff A B ≤ k → Agent102.wordAt A k = Agent102.wordAt B k
+Agent102.fastUnequalOnTail_spec (A B : List Agent102.RunSpec) :
+  Agent102.fastEqualOnTail A B = false ↔
+    ∀ (k : Nat), Agent102.equalityCutoff A B ≤ k → Agent102.wordAt A k ≠ Agent102.wordAt B k
+Agent102.fastPalindromicOnTail_eq (A : List Agent102.RunSpec) :
+  Agent102.fastPalindromicOnTail A = Agent102.palindromicOnTail A
+Agent102.fastPalindromicOnTail_spec (A : List Agent102.RunSpec) :
+  Agent102.fastPalindromicOnTail A = true ↔
+    ∀ (k : Nat), Agent102.palindromeCutoff A ≤ k → Agent102.wordAt A k = (Agent102.wordAt A k).reverse
+Agent102.fastNonpalindromicOnTail_spec (A : List Agent102.RunSpec) :
+  Agent102.fastPalindromicOnTail A = false ↔
+    ∀ (k : Nat), Agent102.palindromeCutoff A ≤ k → Agent102.wordAt A k ≠ (Agent102.wordAt A k).reverse
+Agent102.compressedEqual_eq_true_iff (A B : List Agent102.Run) :
+  Agent102.compressedEqual A B = true ↔ Agent102.word A = Agent102.word B
+Agent102.compressedEqual_eq_false_iff (A B : List Agent102.Run) :
+  Agent102.compressedEqual A B = false ↔ Agent102.word A ≠ Agent102.word B
+Agent102.equalAt_eq_true_iff (A B : List Agent102.RunSpec) (k : Nat) :
+  Agent102.equalAt A B k = true ↔ Agent102.wordAt A k = Agent102.wordAt B k
+Agent102.equalAt_eq_false_iff (A B : List Agent102.RunSpec) (k : Nat) :
+  Agent102.equalAt A B k = false ↔ Agent102.wordAt A k ≠ Agent102.wordAt B k
+Agent102.allEqual_spec (A B : List Agent102.RunSpec) :
+  Agent102.allEqual A B = true ↔ ∀ (k : Nat), Agent102.wordAt A k = Agent102.wordAt B k
+Agent102.someEqual_spec (A B : List Agent102.RunSpec) :
+  Agent102.someEqual A B = true ↔ ∃ k, Agent102.wordAt A k = Agent102.wordAt B k
+Agent102.allUnequal_spec (A B : List Agent102.RunSpec) :
+  Agent102.allUnequal A B = true ↔ ∀ (k : Nat), Agent102.wordAt A k ≠ Agent102.wordAt B k
+Agent102.someUnequal_spec (A B : List Agent102.RunSpec) :
+  Agent102.someUnequal A B = true ↔ ∃ k, Agent102.wordAt A k ≠ Agent102.wordAt B k
+Agent102.allEqual_false_iff (A B : List Agent102.RunSpec) :
+  Agent102.allEqual A B = false ↔ ∃ k, Agent102.wordAt A k ≠ Agent102.wordAt B k
+Agent102.someEqual_false_iff (A B : List Agent102.RunSpec) :
+  Agent102.someEqual A B = false ↔ ∀ (k : Nat), Agent102.wordAt A k ≠ Agent102.wordAt B k
+Agent102.allPalindromic_spec (A : List Agent102.RunSpec) :
+  Agent102.allPalindromic A = true ↔ ∀ (k : Nat), Agent102.wordAt A k = (Agent102.wordAt A k).reverse
+Agent102.somePalindromic_spec (A : List Agent102.RunSpec) :
+  Agent102.somePalindromic A = true ↔ ∃ k, Agent102.wordAt A k = (Agent102.wordAt A k).reverse
+Agent102.allNonpalindromic_spec (A : List Agent102.RunSpec) :
+  Agent102.allNonpalindromic A = true ↔ ∀ (k : Nat), Agent102.wordAt A k ≠ (Agent102.wordAt A k).reverse
+Agent102.someNonpalindromic_spec (A : List Agent102.RunSpec) :
+  Agent102.someNonpalindromic A = true ↔ ∃ k, Agent102.wordAt A k ≠ (Agent102.wordAt A k).reverse
+Agent102.allPalindromic_false_iff (A : List Agent102.RunSpec) :
+  Agent102.allPalindromic A = false ↔ ∃ k, Agent102.wordAt A k ≠ (Agent102.wordAt A k).reverse
+Agent102.somePalindromic_false_iff (A : List Agent102.RunSpec) :
+  Agent102.somePalindromic A = false ↔ ∀ (k : Nat), Agent102.wordAt A k ≠ (Agent102.wordAt A k).reverse
+Agent102.AllParameterControls.replicate_one_two_palindrome_iff (n : Nat) :
+  List.replicate n 1 ++ [2] = (List.replicate n 1 ++ [2]).reverse ↔ n = 0
+Agent102.AllParameterControls.moving_fixed3_only_eq (k : Nat) :
+  Agent102.wordAt Agent102.AffineBoundary.moving k = Agent102.wordAt (Agent102.AffineBoundary.fixed 3) k ↔ k = 3
+Agent102.AllParameterControls.moving_fixed3_controls :
+  Agent102.allEqual Agent102.AffineBoundary.moving (Agent102.AffineBoundary.fixed 3) = false ∧
+    Agent102.someEqual Agent102.AffineBoundary.moving (Agent102.AffineBoundary.fixed 3) = true ∧
+      Agent102.allUnequal Agent102.AffineBoundary.moving (Agent102.AffineBoundary.fixed 3) = false ∧
+        Agent102.someUnequal Agent102.AffineBoundary.moving (Agent102.AffineBoundary.fixed 3) = true
+Agent102.AllParameterControls.moving_fixed3_semantics :
+  (∃ k, Agent102.wordAt Agent102.AffineBoundary.moving k = Agent102.wordAt (Agent102.AffineBoundary.fixed 3) k) ∧
+    ∃ k, Agent102.wordAt Agent102.AffineBoundary.moving k ≠ Agent102.wordAt (Agent102.AffineBoundary.fixed 3) k
+Agent102.AllParameterControls.moving_fixed3_prefix_witness :
+  3 < Agent102.equalityCutoff Agent102.AffineBoundary.moving (Agent102.AffineBoundary.fixed 3) ∧
+    Agent102.equalAt Agent102.AffineBoundary.moving (Agent102.AffineBoundary.fixed 3) 3 = true ∧
+      Agent102.fastEqualOnTail Agent102.AffineBoundary.moving (Agent102.AffineBoundary.fixed 3) = false
+Agent102.AllParameterControls.growing_word (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.growing k = List.replicate k 1 ++ [2]
+Agent102.AllParameterControls.growing_palindrome_iff (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.growing k =
+      (Agent102.wordAt Agent102.AllParameterControls.growing k).reverse ↔
+    k = 0
+Agent102.AllParameterControls.growing_controls :
+  Agent102.allPalindromic Agent102.AllParameterControls.growing = false ∧
+    Agent102.somePalindromic Agent102.AllParameterControls.growing = true ∧
+      Agent102.allNonpalindromic Agent102.AllParameterControls.growing = false ∧
+        Agent102.someNonpalindromic Agent102.AllParameterControls.growing = true
+Agent102.AllParameterControls.growing_semantics :
+  (∃ k,
+      Agent102.wordAt Agent102.AllParameterControls.growing k =
+        (Agent102.wordAt Agent102.AllParameterControls.growing k).reverse) ∧
+    ∃ k,
+      Agent102.wordAt Agent102.AllParameterControls.growing k ≠
+        (Agent102.wordAt Agent102.AllParameterControls.growing k).reverse
+Agent102.AllParameterControls.growing_prefix_witness :
+  Agent102.fastPalindromicOnTail Agent102.AllParameterControls.growing = false ∧
+    Agent102.somePalindromic Agent102.AllParameterControls.growing = true ∧
+      Agent102.equalAt Agent102.AllParameterControls.growing Agent102.AllParameterControls.growing.reverse 0 = true
+Agent102.AllParameterControls.declining_word (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.declining k = List.replicate (-↑k + 3).toNat 1 ++ [2]
+Agent102.AllParameterControls.declining_palindrome_iff (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.declining k =
+      (Agent102.wordAt Agent102.AllParameterControls.declining k).reverse ↔
+    3 ≤ k
+Agent102.AllParameterControls.declining_controls :
+  Agent102.allPalindromic Agent102.AllParameterControls.declining = false ∧
+    Agent102.somePalindromic Agent102.AllParameterControls.declining = true ∧
+      Agent102.allNonpalindromic Agent102.AllParameterControls.declining = false ∧
+        Agent102.someNonpalindromic Agent102.AllParameterControls.declining = true
+Agent102.AllParameterControls.declining_semantics :
+  (∃ k,
+      Agent102.wordAt Agent102.AllParameterControls.declining k =
+        (Agent102.wordAt Agent102.AllParameterControls.declining k).reverse) ∧
+    ∃ k,
+      Agent102.wordAt Agent102.AllParameterControls.declining k ≠
+        (Agent102.wordAt Agent102.AllParameterControls.declining k).reverse
+Agent102.AllParameterControls.declining_prefix_obstruction :
+  Agent102.fastPalindromicOnTail Agent102.AllParameterControls.declining = true ∧
+    Agent102.allPalindromic Agent102.AllParameterControls.declining = false ∧
+      Agent102.equalAt Agent102.AllParameterControls.declining Agent102.AllParameterControls.declining.reverse 0 = false
+Agent102.AllParameterControls.alwaysDifferent_controls :
+  Agent102.allPalindromic Agent102.AllParameterControls.alwaysDifferent = false ∧
+    Agent102.somePalindromic Agent102.AllParameterControls.alwaysDifferent = false ∧
+      Agent102.allNonpalindromic Agent102.AllParameterControls.alwaysDifferent = true ∧
+        Agent102.someNonpalindromic Agent102.AllParameterControls.alwaysDifferent = true
+Agent102.AllParameterControls.alwaysDifferent_semantics (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.alwaysDifferent k ≠
+    (Agent102.wordAt Agent102.AllParameterControls.alwaysDifferent k).reverse
+Agent102.AllParameterControls.symmetric_controls :
+  Agent102.allPalindromic Agent102.AllParameterControls.symmetric = true ∧
+    Agent102.somePalindromic Agent102.AllParameterControls.symmetric = true ∧
+      Agent102.allNonpalindromic Agent102.AllParameterControls.symmetric = false ∧
+        Agent102.someNonpalindromic Agent102.AllParameterControls.symmetric = false
+Agent102.AllParameterControls.symmetric_semantics (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.symmetric k =
+    (Agent102.wordAt Agent102.AllParameterControls.symmetric k).reverse
+Agent102.AllParameterControls.empty_zero_controls :
+  Agent102.allEqual Agent102.AllParameterControls.erased [] = true ∧
+    Agent102.allPalindromic Agent102.AllParameterControls.erased = true ∧
+      Agent102.allPalindromic [] = true ∧ Agent102.someNonpalindromic [] = false
+Agent102.AllParameterControls.zero_runs_semantics (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.erased k = []
+Agent102.AllParameterControls.empty_palindrome (k : Nat) : Agent102.wordAt [] k = (Agent102.wordAt [] k).reverse
+Agent102.AllParameterControls.leading_zero_word (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.leadingZero k = [0, 1]
+Agent102.AllParameterControls.leading_zero_controls :
+  Agent102.allUnequal Agent102.AllParameterControls.leadingZero (Agent102.AffineBoundary.fixed 1) = true ∧
+    Agent102.allNonpalindromic Agent102.AllParameterControls.leadingZero = true
+Agent102.AllParameterControls.leading_zero_unequal (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.leadingZero k ≠ Agent102.wordAt (Agent102.AffineBoundary.fixed 1) k
+Agent102.AllParameterControls.leading_zero_nonpalindrome (k : Nat) :
+  Agent102.wordAt Agent102.AllParameterControls.leadingZero k ≠
+    (Agent102.wordAt Agent102.AllParameterControls.leadingZero k).reverse
+Agent102.AllParameterControls.huge_split_at :
+  Agent102.equalAt Agent102.AllParameterControls.hugeSplit Agent102.AllParameterControls.hugeMerged
+      Agent102.AllParameterControls.huge =
+    true
+Agent102.AllParameterControls.huge_split_semantics :
+  Agent102.wordAt Agent102.AllParameterControls.hugeSplit Agent102.AllParameterControls.huge =
+    Agent102.wordAt Agent102.AllParameterControls.hugeMerged Agent102.AllParameterControls.huge
+Agent102.AllParameterControls.huge_width_at :
+  Agent102.equalAt Agent102.AllParameterControls.hugeOne Agent102.AllParameterControls.hugeWidthChanged
+      Agent102.AllParameterControls.huge =
+    false
+Agent102.AllParameterControls.huge_width_semantics :
+  Agent102.wordAt Agent102.AllParameterControls.hugeOne Agent102.AllParameterControls.huge ≠
+    Agent102.wordAt Agent102.AllParameterControls.hugeWidthChanged Agent102.AllParameterControls.huge
+Agent102.AllParameterControls.huge_negative_at :
+  Agent102.equalAt Agent102.AllParameterControls.hugeNegative Agent102.AllParameterControls.hugeOne
+      Agent102.AllParameterControls.huge =
+    true
+Agent102.AllParameterControls.huge_negative_semantics :
+  Agent102.wordAt Agent102.AllParameterControls.hugeNegative Agent102.AllParameterControls.huge =
+    Agent102.wordAt Agent102.AllParameterControls.hugeOne Agent102.AllParameterControls.huge
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.wordAt_fixed : [propext]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.moving_fixed3_controls : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_lt_of_slope_lt._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_add : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.getElem?_word_of_mem_spansFrom : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastEqualOnTail_iff_wordAt : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.spansFrom_eq_map_spans : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_neg_of_slope_neg._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs Agent102.Span.mk.sizeOf_spec : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.cutoff_le_lengthCutoff : [propext]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqAffine._proof_3._@.Agent102RunDefs._hyg.24 : []
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.equality_changes_arbitrarily_late._proof_7 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.AffineSpan.mk.injEq : [propext]
+AUDIT_THEOREM Agent102RunWord Agent102.Span.overlaps.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.le_maxList_of_mem : [propext]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.AffineSpan.mk.inj : []
+AUDIT_THEOREM Agent102RunDecision Agent102.equalAt_eq_true_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_add._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineDecision Agent102.width_eq_iff_coefficients._proof_2 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.eq_of_mem_spans_covers : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineDecision Agent102.width_eq_iff_coefficients : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.alwaysDifferent_semantics : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.replicate_one_two_palindrome_iff : [propext]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecsFrom_nonneg : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.somePalindromic_spec : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.equality_changes_arbitrarily_late : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_eq_stable : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunDefs Agent102.RunSpec.mk.inj : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecsFrom.eq_2 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.wordAt.eq_1 : []
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving_fixed_eq_iff : [propext]
+AUDIT_THEOREM Agent102RunWord Agent102.Span.shift_overlaps : [propext]
+AUDIT_THEOREM Agent102RunDecision Agent102.equalAt.eq_1 : []
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.movingLength.eq_1 : []
+AUDIT_THEOREM Agent102RunWord Agent102.spansFrom_shift._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.exists_mem_spansFrom_covers._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqSpan._proof_7._@.Agent102RunDefs._hyg.581 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.declining_word : [propext]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spansFrom.eq_1 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.growing_word : [propext]
+UNSAFE_IMPLEMENTATION_AXIOM Agent102RunDecision List.mapTR.loop._at.Agent102.compressedEqual._spec_1
+AUDIT_THEOREM Agent102RunDefs Agent102.Span.mk.inj : []
+AUDIT_THEOREM Agent102AffineDecision Agent102.span_overlapsOnTail_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineRuns Agent102.equalOnTail_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.word_eq_iff_length_and_overlap_digits._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.alwaysDifferent_controls : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.wordAt_nil : []
+AUDIT_THEOREM Agent102RunWord _private.Agent102RunWord.0._proof_2 : [propext]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allPalindromic.eq_1 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.empty_palindrome : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.eq_of_mem_spansFrom_covers : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allEqual_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.mem_spansFrom_bounds._proof_5 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.growing_semantics : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_positivePart._proof_10 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving_fixed_stable_iff._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs Agent102.RunSpec.mk.sizeOf_spec : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.widthAffine.eq_2 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.growing_palindrome_iff : [propext]
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.decEqAffineSpan._proof_3._@.Agent102RunEndpoints._hyg.495 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.declining_palindrome_iff._proof_1 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.wordAt_palindrome_stable : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.widthAffine.eq_1 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.wordAt_eq_iff_spans : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving_fixed_stable_iff._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.wordAt_reverse : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.word_reverse : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.Span.overlaps_iff_four : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.equality_before_cutoff_of_tail_mismatch._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.word_append : [propext]
+AUDIT_THEOREM Agent102RunWord Agent102.Span.covers.eq_1 : []
+AUDIT_THEOREM Agent102RunDefs Agent102.Affine.mk.sizeOf_spec : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.symmetric_controls : []
+AUDIT_THEOREM Agent102RunWord Agent102.eq_of_mem_spansFrom_covers._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.exists_mem_spansFrom_covers_iff._proof_9 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.someNonpalindromic_spec : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.shortRuns.eq_1 : []
+AUDIT_THEOREM Agent102RunWord Agent102.exists_mem_spansFrom_covers : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecsFrom_at._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_neg_iff._proof_9 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.word_eq_iff_count_sum_and_overlap_digits : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102AffineAllParameters _private.Agent102AffineAllParameters.0._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.equalOnTail.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.hi_mem_endpoints : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.leading_zero_unequal : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.exists_mem_spans_covers : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecs_nonneg : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.leading_zero_controls : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.declining.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.spansFrom.match_1.eq_2 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.growing_controls : []
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allUnequal_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastPalindromicOnTail_eq : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord _private.Agent102RunWord.0._proof_1 : [propext]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.declining_semantics : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.getElem?_word_of_mem_spansFrom._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_eq_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.longRuns.eq_1 : []
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allEqual_spec._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.leading_zero_nonpalindrome : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqSpan._proof_9._@.Agent102RunDefs._hyg.581 : []
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving_fixed_stable_iff._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.Span.overlaps_iff_exists_covers : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_nonneg_iff._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.huge_split_at : []
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allPalindromic_false_iff : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.someUnequal_spec : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs Agent102.Span.mk.injEq : [propext]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.zero_span_cross_inequalities : []
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.somePalindromic_false_iff : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastNonpalindromicOnTail_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.mem_spansFrom_bounds._proof_6 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.Affine.compareCutoff.eq_1 : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_pos_of_slope_pos._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.runsAt.eq_1 : []
+AUDIT_THEOREM Agent102RunWord _private.Agent102RunWord.0._proof_10 : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_zero : [propext]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.compareCutoff_moving_fixed : [propext]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecsFrom.eq_1 : []
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqSpan._proof_8._@.Agent102RunDefs._hyg.581 : []
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.no_uniform_wordAt_cutoff._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spansFrom.eq_2 : []
+AUDIT_THEOREM Agent102AffineAllParameters _private.Agent102AffineAllParameters.0._proof_4 : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.Span.shift.eq_1 : []
+AUDIT_THEOREM Agent102RunWord Agent102.word_cons : [propext]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqRunSpec._proof_12._@.Agent102RunDefs._hyg.996 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.palindromicOnTail.eq_1 : []
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allEqual.eq_1 : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.zero.eq_1 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.width_eq_stable._proof_2 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineDecision _private.Agent102AffineDecision.0._proof_3 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.left_lengthCutoff_le : [propext]
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0._proof_10 : [propext]
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastUnequalOnTail_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.exists_mem_spansFrom_covers_iff : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters _private.Agent102AffineAllParameters.0._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_lt_iff._proof_18 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.zero_runs_semantics : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.wordAt_moving : [propext]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.run_structure_counterexample : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.palindromicOnTail_spec : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AffineRuns Agent102.palindromeCutoff.eq_1 : []
+AUDIT_THEOREM Agent102RunDecision Agent102.compressedEqual_eq_false_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.fixed.eq_1 : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_le_iff : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_lt_stable : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.someEqual.eq_1 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.moving_fixed3_only_eq : [propext]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.cross_inequalities_false_negative : [propext]
+AUDIT_THEOREM Agent102RunWord Agent102.word_eq_iff_length_and_overlap_digits._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_positivePart : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.exists_mem_spansFrom_covers._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.declining_prefix_obstruction : []
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastEqualOnTail_eq_equalOnTail : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.empty_zero_controls : []
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving.eq_1 : []
+AUDIT_THEOREM Agent102RunDefs Agent102.RunSpec.mk.injEq : [propext]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.widthAffine_eval : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.AffineSpan.at.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spans.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.lengthCutoff.match_1.eq_2 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecsFrom_nonneg._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.length_spans : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_positivePart_nonneg : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.word_nil : []
+AUDIT_THEOREM Agent102RunDefs Agent102.Run.mk.inj : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.growing.eq_1 : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_le_iff._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.word_eq_iff_length_and_overlap_digits : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.exists_mem_spans_covers_iff : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecsFrom_at._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.declining_controls : []
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.somePalindromic.eq_1 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.equality_before_cutoff_of_tail_mismatch : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102RunWord _private.Agent102RunWord.0.Agent102.spansFrom.match_1.eq_2 : []
+AUDIT_THEOREM Agent102RunWord Agent102.length_spansFrom : [propext]
+AUDIT_THEOREM Agent102AffineRuns Agent102.endpoint_nat_lt_stable : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunDecision Agent102.compressedEqual.eq_1 : []
+AUDIT_THEOREM Agent102RunWord Agent102.spansFrom_shift : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.getElem?_word_of_mem_spansFrom._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.someEqual_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqRun._proof_5._@.Agent102RunDefs._hyg.333 : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_lt_of_slope_lt._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqAffine._proof_2._@.Agent102RunDefs._hyg.24 : []
+UNSAFE_IMPLEMENTATION_AXIOM Agent102AffineRuns List.mapTR.loop._at.Agent102.pairCutoff._spec_1
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.someEqual_false_iff : [propext, Quot.sound, Classical.choice]
+UNSAFE_IMPLEMENTATION_AXIOM Agent102RunEndpoints List.flatMapTR.go._at.Agent102.endpoints._spec_1
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_eq_iff._proof_19 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.no_uniform_wordAt_cutoff : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_pos_of_slope_pos : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqRun._proof_4._@.Agent102RunDefs._hyg.333 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.moving_fixed3_prefix_witness : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.wordAt_cons : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.leadingZero.eq_1 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.huge_split_semantics : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.fixedLength.eq_1 : []
+AUDIT_THEOREM Agent102RunDefs Agent102.Affine.mk.injEq : [propext]
+AUDIT_THEOREM Agent102AffineRuns Agent102.right_lengthCutoff_le : [propext]
+AUDIT_THEOREM Agent102AffineRuns Agent102.pairCutoff_le_equalityCutoff : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_neg_of_slope_neg : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastEqualOnTail_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.declining_palindrome_iff : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqSpan._proof_10._@.Agent102RunDefs._hyg.581 : []
+AUDIT_THEOREM Agent102RunWord _private.Agent102RunWord.0._proof_4 : [propext]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecs_at : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_le_iff._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.someUnequal.eq_1 : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.intercept_bounds_of_cutoff : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving_fixed_stable_iff : [Quot.sound, propext]
+AUDIT_THEOREM Agent102RunWord _private.Agent102RunWord.0.Agent102.spansFrom.match_1.eq_1 : []
+UNSAFE_IMPLEMENTATION_AXIOM Agent102RunDefs List.flatMapTR.go._at.Agent102.word._spec_1
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_pos_of_slope_pos._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.combined_endpoints_nonneg : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqAffine._proof_1._@.Agent102RunDefs._hyg.24 : []
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.moving_fixed3_semantics : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_nonneg_iff._proof_7 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM Agent102AffineRuns List.flatMapTR.go._at.Agent102.pairCutoff._spec_2
+AUDIT_THEOREM Agent102AffineRuns _private.Agent102AffineRuns.0._proof_4 : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102RunDecision Agent102.equalAt_eq_false_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineAllParameters _private.Agent102AffineAllParameters.0._proof_1 : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.endpoints.eq_1 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.width_eq_stable : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.leading_zero_word : [propext]
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.lengthCutoff.match_1.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.decEqAffineSpan._proof_1._@.Agent102RunEndpoints._hyg.495 : []
+AUDIT_THEOREM Agent102RunDefs Agent102.Run.mk.sizeOf_spec : []
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastPalindromicOnTail_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.word_eq_iff_length_and_overlap_digits._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allUnequal.eq_1 : []
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.intercept_bounds_of_cutoff._proof_2 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allNonpalindromic_spec : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AffineDecision _private.Agent102AffineDecision.0._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.mem_spansFrom_bounds : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.compareCutoff_le_pairCutoff : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.compareCutoff_comm : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_lt_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunWord Agent102.getElem?_word_of_covers : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineRuns Agent102.endpoint_nat_lt_stable._proof_1 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastEqualOnTail.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.endpoints_nonneg : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.widthAffine_nonneg : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunDecision Agent102.compressedEqual_eq_true_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_le_stable : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.decEqAffineSpan._proof_4._@.Agent102RunEndpoints._hyg.495 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecsFrom_at : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.wordAt_eq_stable : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_lt_of_slope_lt : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.huge_negative_semantics : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.overlap_digits_without_width : [Quot.sound, propext]
+AUDIT_THEOREM Agent102RunWord Agent102.Span.shift_covers : [propext]
+AUDIT_THEOREM Agent102AffineRuns _private.Agent102AffineRuns.0._proof_6 : [propext]
+AUDIT_THEOREM Agent102RunWord Agent102.Span.overlaps_of_covers : [propext]
+AUDIT_THEOREM Agent102RunWord Agent102.spansFrom_append : [propext]
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.word.eq_1 : []
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.someNonpalindromic.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints Agent102.spanSpecs.eq_1 : []
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.decEqAffineSpan._proof_2._@.Agent102RunEndpoints._hyg.495 : []
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving_fixed_stable_iff._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.symmetric_semantics : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent102AffineDecision Agent102.AffineSpan.overlapsOnTail.eq_1 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.unequalOnTail_spec : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_le_iff._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_nonneg_iff : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.eq_of_mem_spansFrom_covers._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints Agent102.AffineSpan.mk.sizeOf_spec : []
+AUDIT_THEOREM Agent102AffineDecision Agent102.fastEqualOnTail_iff_coefficients : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allNonpalindromic.eq_1 : []
+AUDIT_THEOREM Agent102AffineRuns Agent102.Span.overlaps_iff_four._proof_3 : [Classical.choice, propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM Agent102RunDefs List.mapTR.loop._at.Agent102.runsAt._spec_1
+AUDIT_THEOREM Agent102RunEndpoints Agent102.widthAffine_mem_endpoints : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns _private.Agent102AffineRuns.0._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.moving_fixed_stable_iff._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.nonpalindromicOnTail_spec : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqRunSpec._proof_13._@.Agent102RunDefs._hyg.996 : []
+AUDIT_THEOREM Agent102RunWord Agent102.word_length : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs Agent102.Affine.mk.inj : []
+AUDIT_THEOREM Agent102RunDecision _private.Agent102RunDecision.0._proof_1 : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_le_iff._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineBoundary Agent102.AffineBoundary.zero_span_realized : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_neg_iff : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineDecision Agent102.endpoint_ltOnTail_iff._proof_1 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineRuns Agent102.span_overlap_stable : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102AffineBoundary _private.Agent102AffineBoundary.0._proof_1 : [propext]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.huge_width_at : []
+UNSAFE_IMPLEMENTATION_AXIOM Agent102RunDecision List.sum._at.Agent102.compressedEqual._spec_2
+AUDIT_THEOREM Agent102RunEndpoints Agent102.lo_mem_endpoints : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqRun._proof_6._@.Agent102RunDefs._hyg.333 : []
+AUDIT_THEOREM Agent102AffineDecision Agent102.endpoint_ltOnTail_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent102RunDecision _private.Agent102RunDecision.0._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunDefs Agent102.Run.mk.injEq : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.eval_neg_of_slope_neg._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunWord Agent102.mem_spans_bounds : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allPalindromic_spec : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.huge_width_semantics : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.growing_prefix_witness : []
+AUDIT_THEOREM Agent102RunDefs _private.Agent102RunDefs.0.Agent102.decEqRunSpec._proof_11._@.Agent102RunDefs._hyg.996 : []
+AUDIT_THEOREM Agent102AffineAllParameters _private.Agent102AffineAllParameters.0._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102AffineAllParameters Agent102.allEqual_false_iff : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent102AllParameterControls Agent102.AllParameterControls.huge_negative_at : []
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0._proof_8 : [propext]
+AUDIT_THEOREM Agent102AffineArithmetic Agent102.Affine.compareCutoff_comm._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM Agent102RunEndpoints _private.Agent102RunEndpoints.0.Agent102.spansFrom.match_1.eq_1 : []
+FULL_MODULE_AUDIT theorems=297 union=[Classical.choice, Quot.sound, propext]
