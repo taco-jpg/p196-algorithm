@@ -32,6 +32,7 @@ Thus no member of these 32 families has an **empty backward layer** under the un
 - `audit.json`: reproducible counts, four-cycle, status flags, and source witness SHA256.
 - `Agent113TripleCycles.lean`: **not-yet-compiled Lean candidate** importing the original `TwoDigitProjection`. It defines `ValidChain` and `ValidFirst`, proposes four finite cycle facts plus 32 direct proposition-level path certificates, and proposes a conjunction/exhaustion of the 32 remaining prefixes. Each proposed certificate uses `by decide +kernel`, not `native_decide`; **compilation/axiom audit are mandatory before any Lean-checked label**.
 - `generate_lean.py`: reproduces the Lean candidate byte-for-byte from the witness lines after rechecking each line.
+- `Agent113TripleRepeat.lean`: **new WIP in-progress addendum**. It attempts to prove in Lean that the valid four-cycle has abstract inverse extensions of *every* length, and hence that all 32 root prefixes have nonempty layers at every sufficiently large inverse depth. This is explicitly **NOT** actual integer-orbit infinite ancestry. Its Lean check status remains unverified until a new clean CI job passes. SHA256 initial candidate: `0888e4309d8059495d5cb31d2121a0d55ddacf56cc112842c71393de8d2502ac`.
 
 Actual local verified SHA256 values:
 

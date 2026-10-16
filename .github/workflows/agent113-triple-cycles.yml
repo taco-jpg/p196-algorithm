@@ -79,14 +79,16 @@ jobs:
           cp pinned-old/proofs/research/continuation/LychrelDigitSums.lean "$B/"
           cp pinned-old/proofs/contributions/agent-113/two-digit-prefix/TwoDigitProjection.lean "$B/"
           cp "$P/Agent113TripleCycles.lean" "$B/"
+          cp "$P/Agent113TripleRepeat.lean" "$B/"
           cd "$B"
           LEAN="$RUNNER_TEMP/lean-4.19.0-linux/bin/lean"
           sha256sum *.lean > "$O/pinned-build-inputs.sha256"
           "$LEAN" -o LychrelDigitSums.olean LychrelDigitSums.lean > "$O/LychrelDigitSums.log" 2>&1
           LEAN_PATH="$B" "$LEAN" -o TwoDigitProjection.olean TwoDigitProjection.lean > "$O/TwoDigitProjection.log" 2>&1
           LEAN_PATH="$B" "$LEAN" --trust=0 -o Agent113TripleCycles.olean Agent113TripleCycles.lean > "$O/Agent113TripleCycles.log" 2>&1
-          grep -E 'axioms|propext|Classical.choice|Quot.sound' "$O/Agent113TripleCycles.log" > "$O/axiom-excerpt.log" || true
-          if grep -Ein 'error:|sorryAx|Lean.ofReduceBool|Lean.trustCompiler' "$O/Agent113TripleCycles.log"; then
+          LEAN_PATH="$B" "$LEAN" --trust=0 -o Agent113TripleRepeat.olean Agent113TripleRepeat.lean > "$O/Agent113TripleRepeat.log" 2>&1
+          grep -Eh 'axioms|propext|Classical.choice|Quot.sound' "$O/Agent113TripleCycles.log" "$O/Agent113TripleRepeat.log" > "$O/axiom-excerpt.log" || true
+          if grep -Ein 'error:|sorryAx|Lean.ofReduceBool|Lean.trustCompiler' "$O/Agent113TripleCycles.log" "$O/Agent113TripleRepeat.log"; then
             echo 'unexpected Lean error / excluded dependency' >&2
             exit 1
           fi
