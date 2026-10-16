@@ -1,0 +1,91 @@
+{
+  "reviewer": "Agent105/scope105/9df76b",
+  "status": "PASS_CLOSED_NUMERICAL_CONTROLS",
+  "source_frozen": true,
+  "source_sha256": "3159c9ddfe55b141e56d5181240bd696b3677d3061a2f8aaf317b6bce5c8b7c5",
+  "completed_utc": "2026-10-16T21:56:12.823650+00:00",
+  "public_theorems": 6,
+  "freshly_compiled_modules": [
+    "Agent105DecoderLocal9df76b",
+    "Agent105DecoderScan9df76b",
+    "Agent105DecoderControls9df76b"
+  ],
+  "all_commands_explicit_trust_zero": true,
+  "all_exit_zero": true,
+  "cases": [
+    {
+      "input": [
+        5
+      ],
+      "target": 10,
+      "profiles": {
+        "width1carry1": [
+          10
+        ],
+        "width2carry0": null
+      }
+    },
+    {
+      "input": [
+        1
+      ],
+      "target": 2,
+      "profiles": {
+        "width1carry0": [
+          2
+        ],
+        "width0carry1": null
+      }
+    },
+    {
+      "input": [
+        29,
+        110
+      ],
+      "target": 121,
+      "profiles": {
+        "width2carry1": [
+          11,
+          11
+        ],
+        "width3carry0": [
+          1,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "input": [
+        200799,
+        1098900
+      ],
+      "target": 1197801,
+      "profiles": {
+        "width6carry1": [
+          11,
+          9,
+          7,
+          7,
+          9,
+          11
+        ],
+        "width7carry0": [
+          1,
+          0,
+          18,
+          16,
+          18,
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "extra_contract_controls": [
+    "Truncated subtraction cannot fake a negative coefficient.",
+    "Out-of-domain digit10 illustrates the necessary output-digit bound without changing the function."
+  ],
+  "new_whole_project_verification": "pending final registry; not asserted by this targeted run",
+  "large_reverseFuel_unfolded": false
+}

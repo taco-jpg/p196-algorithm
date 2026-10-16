@@ -11,14 +11,14 @@
   },
   "catalogue_complete": false,
   "catalogue_blockers": [
-    "Scoped incremental numerical-decoder dependency registry; complete scanner and final numeric executable wrapper remain WIP."
+    "This complete numerical-decoder project is explicitly scoped; repository-wide accepted-catalogue completeness is not asserted."
   ],
   "projects": {
-    "agent105-decoder-checkpoint-9df76b": {
-      "scope": "Checked local deterministic edge/center inverse solver and exact finite physical-payload equivalence with actual canonical numerical predecessors. Complete executable scan is not yet a proved endpoint of this checkpoint.",
+    "agent105-numeric-decoder-9df76b": {
+      "scope": "Complete executable two-ended numerical target decoder at every prescribed source width, with full local/scan soundness and completeness, exact positive canonical ordinary-predecessor iff, and kernel boundary controls. No infinite-time result.",
       "roots": [
-        "Agent105DecoderLocal9df76b",
-        "Agent105DecoderTarget9df76b"
+        "Agent105NumericDecoder9df76b",
+        "Agent105DecoderControls9df76b"
       ],
       "modules": {
         "Lychrel196Research": {
@@ -70,6 +70,14 @@
             "Agent101NumericFibers"
           ]
         },
+        "Agent105CrossWidthWitness9df76b": {
+          "path": "proofs/Agent105CrossWidthWitness9df76b.lean",
+          "sha256": "57d7fad87d320eddf13c32f35f2ab1cf11e2c318073c1cf2466e265baea73252",
+          "git_blob": "1fd6c07959594f0e7fb6e579f794a0ff2d457e09",
+          "imports": [
+            "Lychrel196Research"
+          ]
+        },
         "Agent105DecoderLocal9df76b": {
           "path": "proofs/Agent105DecoderLocal9df76b.lean",
           "sha256": "820d28d68005208ac21dd498dcd27660b58d2d147de265dbcd0cf0d7c250e872",
@@ -85,13 +93,41 @@
           "imports": [
             "Agent105WidthSupport9df76b"
           ]
+        },
+        "Agent105DecoderScan9df76b": {
+          "path": "proofs/Agent105DecoderScan9df76b.lean",
+          "sha256": "4e7f3a29e41c3e40adc08326947fe28b5505015f3c68cba67a1cb648318cad1d",
+          "git_blob": "a06bec9190d7a21971b6dafbfe47d30e4b3717d5",
+          "imports": [
+            "Lychrel196Research",
+            "Agent101NumericFibers",
+            "Agent105DecoderLocal9df76b"
+          ]
+        },
+        "Agent105NumericDecoder9df76b": {
+          "path": "proofs/Agent105NumericDecoder9df76b.lean",
+          "sha256": "9a63eb03cb04d9e7fb3294216ab770893ac227c089ddba6d864d73d949229db5",
+          "git_blob": "4d49482285253431cc33ac1ccdc1f97c8107df6e",
+          "imports": [
+            "Agent105DecoderTarget9df76b",
+            "Agent105DecoderScan9df76b"
+          ]
+        },
+        "Agent105DecoderControls9df76b": {
+          "path": "proofs/Agent105DecoderControls9df76b.lean",
+          "sha256": "3159c9ddfe55b141e56d5181240bd696b3677d3061a2f8aaf317b6bce5c8b7c5",
+          "git_blob": "6ac560a44bd82fa86fcbe392b7fdd4b36a0665f3",
+          "imports": [
+            "Agent105DecoderScan9df76b",
+            "Agent105CrossWidthWitness9df76b"
+          ]
         }
       }
     }
   },
   "claims": [
     {
-      "project": "agent105-decoder-checkpoint-9df76b",
+      "project": "agent105-numeric-decoder-9df76b",
       "task_id": "agent105-9df76b-numeric-decoder-20261016",
       "endpoints": [
         "Agent105DecoderLocal9df76b.validEdge_unique",
@@ -105,7 +141,24 @@
         "Agent105DecoderTarget9df76b.payload_congr",
         "Agent105DecoderTarget9df76b.realize_payload",
         "Agent105DecoderTarget9df76b.canonical_predecessor_payload",
-        "Agent105DecoderTarget9df76b.positive_predecessor_iff_finite_payload"
+        "Agent105DecoderTarget9df76b.positive_predecessor_iff_finite_payload",
+        "Agent105DecoderScan9df76b.digitFn_wrap_zero",
+        "Agent105DecoderScan9df76b.digitFn_wrap_last",
+        "Agent105DecoderScan9df76b.digitFn_wrap_inner",
+        "Agent105DecoderScan9df76b.wrap_word_conditions",
+        "Agent105DecoderScan9df76b.scan_sound",
+        "Agent105DecoderScan9df76b.scan_complete",
+        "Agent105DecoderScan9df76b.decodeAtWidth_eq_some_iff",
+        "Agent105DecoderScan9df76b.decodeAtWidth_isSome_iff",
+        "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff_payload",
+        "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff",
+        "Agent105NumericDecoder9df76b.decodeNumerical_isSome_iff",
+        "Agent105DecoderControls9df76b.five_to_ten",
+        "Agent105DecoderControls9df76b.one_to_two",
+        "Agent105DecoderControls9df76b.boundary_121",
+        "Agent105DecoderControls9df76b.retained_nonpalindromic_1197801",
+        "Agent105DecoderControls9df76b.truncated_subtraction_rejects",
+        "Agent105DecoderControls9df76b.output_digit_bound_contract"
       ]
     }
   ]

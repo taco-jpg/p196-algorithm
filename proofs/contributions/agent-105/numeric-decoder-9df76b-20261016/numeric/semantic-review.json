@@ -1,0 +1,87 @@
+{
+  "schema": "agent105-nonauthor-semantic-review-v1",
+  "reviewed_at_utc": "2026-10-16T21:59:41.170008+00:00",
+  "reviewer": "/root/structure105",
+  "author": "/root",
+  "session": "9df76b",
+  "module": "Agent105NumericDecoder9df76b",
+  "verdict": "PASS",
+  "modifications_requested": [],
+  "unresolved_findings": [],
+  "review_kind": "written_internal_semantic_audit",
+  "independence": {
+    "nonauthor_of_reviewed_module": true,
+    "authored_dependency": "Agent105DecoderScan9df76b",
+    "not_claimed": "Independent re-audit or fresh compilation of every dependency"
+  },
+  "source_sha256": "9a63eb03cb04d9e7fb3294216ab770893ac227c089ddba6d864d73d949229db5",
+  "source_hashes_checked": {
+    "Agent105NumericDecoder9df76b.lean": "9a63eb03cb04d9e7fb3294216ab770893ac227c089ddba6d864d73d949229db5",
+    "Agent105DecoderTarget9df76b.lean": "2c2cbf18088e0a281ff78547cc3b2aa465050504c9139fc2839fb70e86db7c9d",
+    "Agent105DecoderScan9df76b.lean": "4e7f3a29e41c3e40adc08326947fe28b5505015f3c68cba67a1cb648318cad1d",
+    "Agent105DecoderLocal9df76b.lean": "820d28d68005208ac21dd498dcd27660b58d2d147de265dbcd0cf0d7c250e872"
+  },
+  "exports": [
+    "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff_payload",
+    "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff",
+    "Agent105NumericDecoder9df76b.decodeNumerical_isSome_iff"
+  ],
+  "checks": [
+    {
+      "name": "three_exports",
+      "status": "PASS",
+      "description": "Exact finite profile and actual positive ordinary step semantics checked."
+    },
+    {
+      "name": "width_guards",
+      "status": "PASS",
+      "description": "Same-width carry 0; overflow carry 1 with leading digit 1; branches disjoint and exhaustive for physical predecessors."
+    },
+    {
+      "name": "decimal_domain",
+      "status": "PASS",
+      "description": "Both success branches derive the Scan digit bound from Canonical and the respective width equation."
+    },
+    {
+      "name": "zero_and_singleton",
+      "status": "PASS",
+      "description": "Zero source width rejected; canonical target excludes zero target/width; singleton source handled by existing Scan."
+    },
+    {
+      "name": "overflow_payload",
+      "status": "PASS",
+      "description": "Low payload is not required to be canonical, including the valid 5 -> 10 case."
+    },
+    {
+      "name": "finite_list",
+      "status": "PASS",
+      "description": "Exact length and within-width column coefficients retained; no irrelevant infinite-tail equality."
+    },
+    {
+      "name": "positive_realization",
+      "status": "PASS",
+      "description": "Original positive Canonical predecessor and step equality, without extra realizability hypotheses."
+    },
+    {
+      "name": "scope",
+      "status": "PASS",
+      "description": "Prescribed-width profile result; no uniqueness of ordinary n, fiber enumeration, or trajectory claim."
+    }
+  ],
+  "compilation_evidence": {
+    "kind": "author_development_compile_read_by_reviewer",
+    "result": "attempt001/result.json",
+    "log": "attempt001/compile.log",
+    "exit_code": 0,
+    "trust": 0,
+    "snapshot_byte_equal": true,
+    "axioms_each_export": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "independent_full_chain_build_assignee": "/root/scope105",
+  "new_mathematical_source_written": false,
+  "report": "semantic-review.md"
+}
