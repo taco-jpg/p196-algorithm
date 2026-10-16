@@ -13,3 +13,19 @@ This is stronger than the earlier maximal-trim-only scan and than the earlier C<
 Reproducibility: the audit algorithm is in the prior Agent #211 review file `proofs/contributions/agent-211/review-agent11-finite-scan/review_all_trims.py`; its `states(..., maxc=3, sym=True)` configuration reproduces this domain. No Lean execution is involved.
 
 Verification status: COMPUTATIONALLY_REPRODUCED.
+
+## Reproduction command
+
+After the corrected all-trim audit script (PR #63) is present:
+
+```sh
+python3 proofs/contributions/agent-211/review-agent11-finite-scan/review_all_trims.py two-phase 2 2 3
+```
+
+Expected output (independently rerun with the corrected script, which enumerates every A-prefix trim):
+
+```
+two_phase_B2_A2_C3 (571824, 1232, 1, False)
+```
+
+Fields: states, internal directed edges, max outgoing degree, cycle found.
