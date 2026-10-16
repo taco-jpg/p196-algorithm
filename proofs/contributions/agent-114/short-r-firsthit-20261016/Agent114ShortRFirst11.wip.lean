@@ -26,6 +26,31 @@ theorem common_first_step (r n : Nat) (d : Nat → Nat)
   FoldedDecimal.step_eq_word_value n d
     (DelayedOverlapGate.initial r 1 1 6) (2 * r + 7) hc hr
 
+/-- Proposed elementary time-zero obstruction for all four short spacer families.
+This is WIP source only: it has NOT been compiled or axiom-audited. The
+units and leading decimal digits of a palindrome agree, so their pair sum
+would be even; the initial Group-I word has outer pair sum one. -/
+theorem r1_to_r4_initial_not_palindrome (r n : Nat) (d : Nat → Nat)
+    (hshort : 1 ≤ r ∧ r ≤ 4)
+    (hc : Canonical n d (2 * r + 7))
+    (hr : ∀ i, i < 2 * r + 7 →
+      columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 1 6 i) :
+    ¬ Lychrel196.Palindrome n := by
+  intro hpal
+  have hpos : 0 < 2 * r + 7 := by omega
+  have hpval : Lychrel196.Palindrome
+      (DecimalDigits.value d (2 * r + 7)) := by
+    simpa only [hc.2.2.2] using hpal
+  have hsym := (DecimalDigits.palindrome_value_iff d (2 * r + 7)
+    hc.2.1 (Or.inr hc.2.2.1)).mp hpval
+  have hends := hsym 0 (by omega)
+  have hq := hr 0 (by omega)
+  have hq0 : DelayedOverlapGate.initial r 1 1 6 0 = 1 := by
+    simp [DelayedOverlapGate.initial, DelayedOverlapGate.fiveWord]
+  rw [hq0] at hq
+  dsimp [DecimalDigits.columnSum, DecimalDigits.reflected] at hq
+  omega
+
 /-- Proposed universal r=1 first-eleven nonpalindromicity, NOT YET COMPILED.
 Every input has the same positive tail after the common first reverse-add value. -/
 theorem r1_first_eleven (n : Nat) (d : Nat → Nat)
@@ -119,6 +144,7 @@ theorem r4_first_eleven (n : Nat) (d : Nat → Nat)
 -- No use of sorry, admit, native_decide, custom axioms, or external oracles.
 
 #print axioms Agent114.ShortR.common_first_step
+#print axioms Agent114.ShortR.r1_to_r4_initial_not_palindrome
 #print axioms Agent114.ShortR.r1_first_eleven
 #print axioms Agent114.ShortR.r2_first_eleven
 #print axioms Agent114.ShortR.r3_first_eleven
