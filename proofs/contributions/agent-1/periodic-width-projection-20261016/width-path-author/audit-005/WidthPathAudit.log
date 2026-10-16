@@ -1,0 +1,33 @@
+Agent1.Periodic.QuotientPath (B H w : Nat → Agent8.Word) (N : Nat) : Prop
+'Agent1.Periodic.QuotientPath' does not depend on any axioms
+Agent1.Periodic.quotientClockSum (B H w : Nat → Agent8.Word) : Nat → Nat
+'Agent1.Periodic.quotientClockSum' does not depend on any axioms
+Agent1.Periodic.quotientDeltaSum (B H w : Nat → Agent8.Word) : Nat → Int
+'Agent1.Periodic.quotientDeltaSum' does not depend on any axioms
+Agent1.Periodic.quotient_path_width_balance (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) :
+  ↑(2 * List.length (B N) + List.length (H N)) + 8 * Agent1.Periodic.quotientDeltaSum B H w N =
+    ↑(2 * List.length (B 0) + List.length (H 0)) + ↑(Agent1.Periodic.quotientClockSum B H w N)
+'Agent1.Periodic.quotient_path_width_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.quotient_path_equal_width_clock (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N)
+  (hwidth : 2 * List.length (B N) + List.length (H N) = 2 * List.length (B 0) + List.length (H 0)) :
+  8 * Agent1.Periodic.quotientDeltaSum B H w N = ↑(Agent1.Periodic.quotientClockSum B H w N) ∧
+    8 ∣ Agent1.Periodic.quotientClockSum B H w N ∧
+      Agent1.Periodic.quotientDeltaSum B H w N = ↑(Agent1.Periodic.quotientClockSum B H w N / 8)
+'Agent1.Periodic.quotient_path_equal_width_clock' depends on axioms: [propext, Classical.choice, Quot.sound]
+NONSAFE_INVENTORY _private.Agent1PeriodicWidthPath.0.Agent1.Periodic.quotientClockSum.match_1.splitter._cstage2
+NONSAFE_INVENTORY Agent1.Periodic.quotientClockSum._cstage2
+NONSAFE_INVENTORY Agent1.Periodic.quotientClockSum.match_1._cstage1
+NONSAFE_INVENTORY Agent1.Periodic.quotientDeltaSum._cstage1
+NONSAFE_INVENTORY Agent1.Periodic.quotientClockSum._unsafe_rec
+NONSAFE_INVENTORY Agent1.Periodic.quotientDeltaSum._cstage2
+NONSAFE_INVENTORY Agent1.Periodic.quotientDeltaSum._unsafe_rec
+NONSAFE_INVENTORY _private.Agent1PeriodicWidthPath.0.Agent1.Periodic.quotientClockSum.match_1.splitter._rarg._cstage2
+NONSAFE_INVENTORY Agent1.Periodic.quotientDeltaSum._closed_1._cstage2
+NONSAFE_INVENTORY _private.Agent1PeriodicWidthPath.0.Agent1.Periodic.quotientClockSum.match_1.splitter._cstage1
+NONSAFE_INVENTORY Agent1.Periodic.quotientClockSum._cstage1
+AUDIT_THEOREM Agent1PeriodicWidthPath Agent1.Periodic.quotient_path_equal_width_clock : [propext,
+ Quot.sound,
+ Classical.choice]
+WidthPathAudit.lean:15:0: error: NONCOMPILER_NONSAFE_DEFINITION Agent1PeriodicWidthPath _private.Agent1PeriodicWidthPath.0.Agent1.Periodic.quotientClockSum.match_1.splitter._cstage2
