@@ -1,0 +1,29 @@
+OddActual.lean:109:12: error: type mismatch, term
+  ht
+after simplification has type
+  some ((x + (scan (oddMirror xs z) ((x + low p) / 10)).snd) % 10) =
+    (↑v :: (es.reverse ++ [e])).getLast?.or ds.getLast? : Prop
+but is expected to have type
+  (x + (scan (oddMirror xs z) ((x + low p) / 10)).snd) % 10 = e : Prop
+OddActual.lean:136:26: error: unknown constant 'List.reverse_singleton'
+OddActual.lean:139:6: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  zipAdd es.reverse ds.reverse
+ds es : List Nat
+v : Nat
+h : ds.length = es.length
+⊢ zipAdd ds es ++ zipAdd (v :: es.reverse) ([v].reverse ++ ds.reverse) = oddMirror (zipAdd ds es) (2 * v)
+OddActual.lean:198:4: error: type mismatch, term
+  ht
+after simplification has type
+  Agent8.pair (first.fst ++ c :: second.fst) = oddMirror (List.map Fin.val ss) (2 * ↑v) : Prop
+but is expected to have type
+  oddMirror (zipAdd first.fst second.fst.reverse) (2 * c) = oddMirror (List.map Fin.val ss) (2 * ↑v) : Prop
+'P196.Agent7.OddFibers.oddPath_realizes' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.OddFibers.oddRealizes_path' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.oddPath_iff_realizes' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.pair_odd_halves' depends on axioms: [propext, sorryAx]
+'P196.Agent7.OddFibers.oddMirror_injective' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.OddFibers.oddRealizes_actual' depends on axioms: [propext, sorryAx]
+'P196.Agent7.OddFibers.oddActual_realizes' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent7.OddFibers.oddPath_iff_actual' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.oddPath_normalize' depends on axioms: [propext, Quot.sound]
