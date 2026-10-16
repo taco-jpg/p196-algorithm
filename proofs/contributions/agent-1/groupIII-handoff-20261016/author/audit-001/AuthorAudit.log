@@ -1,0 +1,835 @@
+P196.Agent1.GroupIIIHandoff.first_domain (r : Nat) (hr : 1 ≤ r) : P196.Agent1.GroupIII.Domain r 1 10 6
+'P196.Agent1.GroupIIIHandoff.first_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.first_return_component (r : Nat) :
+  P196.Agent1.GroupIII.returnedComponent r 1 10 6 = P196.Agent1.GroupIIIHandoff.afterTwo r
+'P196.Agent1.GroupIIIHandoff.first_return_component' does not depend on any axioms
+P196.Agent1.GroupIIIHandoff.afterTwo_carry (r : Nat) (hr : 1 ≤ r) (i : Nat) :
+  i ≤ 2 * r + 6 → DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.afterTwo r) i = 0
+'P196.Agent1.GroupIIIHandoff.afterTwo_carry' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeTwo_carry (r : Nat) (hr : 1 ≤ r) (i : Nat) :
+  i ≤ 2 * r + 7 → DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.wholeTwo r) i = DelayedOverlapGate.initialCarry r i
+'P196.Agent1.GroupIIIHandoff.wholeTwo_carry' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.componentThree_carry (r : Nat) (hr : 1 ≤ r) (i : Nat) :
+  i ≤ 2 * r + 6 →
+    DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.componentThree r) i = DelayedOverlapGate.componentDoubleCarry r i
+'P196.Agent1.GroupIIIHandoff.componentThree_carry' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeThree_carry (r : Nat) (hr : 2 ≤ r) (i : Nat) :
+  i ≤ 2 * r + 7 → DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.wholeThree r) i = DelayedOverlapGate.middleCarry r i
+'P196.Agent1.GroupIIIHandoff.wholeThree_carry' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.afterTwo_no_overflow (r : Nat) (hr : 1 ≤ r) :
+  DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.afterTwo r) (2 * r + 6) = 0
+'P196.Agent1.GroupIIIHandoff.afterTwo_no_overflow' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeTwo_no_overflow (r : Nat) (hr : 1 ≤ r) :
+  DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.wholeTwo r) (2 * r + 7) = 0
+'P196.Agent1.GroupIIIHandoff.wholeTwo_no_overflow' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.componentThree_no_overflow (r : Nat) (hr : 1 ≤ r) :
+  DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.componentThree r) (2 * r + 6) = 0
+'P196.Agent1.GroupIIIHandoff.componentThree_no_overflow' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeThree_no_overflow (r : Nat) (hr : 2 ≤ r) :
+  DecimalDigits.carry (P196.Agent1.GroupIIIHandoff.wholeThree r) (2 * r + 7) = 0
+'P196.Agent1.GroupIIIHandoff.wholeThree_no_overflow' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.afterTwo_next (r : Nat) (hr : 1 ≤ r) (i : Nat) :
+  i < 2 * r + 6 →
+    FoldedDecimal.nextColumns (P196.Agent1.GroupIIIHandoff.afterTwo r) (2 * r + 6) i =
+      P196.Agent1.GroupIIIHandoff.componentThree r i
+'P196.Agent1.GroupIIIHandoff.afterTwo_next' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeTwo_next (r : Nat) (hr : 1 ≤ r) (i : Nat) :
+  i < 2 * r + 7 →
+    FoldedDecimal.nextColumns (P196.Agent1.GroupIIIHandoff.wholeTwo r) (2 * r + 7) i =
+      P196.Agent1.GroupIIIHandoff.wholeThree r i
+'P196.Agent1.GroupIIIHandoff.wholeTwo_next' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.componentThree_next (r : Nat) (hr : 1 ≤ r) (i : Nat) :
+  i < 2 * r + 6 →
+    FoldedDecimal.nextColumns (P196.Agent1.GroupIIIHandoff.componentThree r) (2 * r + 6) i =
+      P196.Agent1.GroupIIIHandoff.componentFour r i
+'P196.Agent1.GroupIIIHandoff.componentThree_next' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeThree_next (r : Nat) (hr : 2 ≤ r) (i : Nat) :
+  i < 2 * r + 7 →
+    FoldedDecimal.nextColumns (P196.Agent1.GroupIIIHandoff.wholeThree r) (2 * r + 7) i =
+      DelayedOverlapGate.shiftOne (P196.Agent1.GroupIIIHandoff.componentFour r) i
+'P196.Agent1.GroupIIIHandoff.wholeThree_next' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.continue_no_overflow (q s t : Nat → Nat) (L k : Nat) (hL : 0 < L)
+  (hw : (OverflowCarryNormalization.iterPairs q L k).fst = L)
+  (he : ∀ (i : Nat), i < L → (OverflowCarryNormalization.iterPairs q L k).snd i = s i)
+  (hs : DecimalDigits.carry s L = 0) (hst : ∀ (i : Nat), i < L → FoldedDecimal.nextColumns s L i = t i) :
+  (OverflowCarryNormalization.iterPairs q L (k + 1)).fst = L ∧
+    ∀ (i : Nat), i < L → (OverflowCarryNormalization.iterPairs q L (k + 1)).snd i = t i
+'P196.Agent1.GroupIIIHandoff.continue_no_overflow' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.component_time_three (r : Nat) (hr : 1 ≤ r) :
+  (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component r 1 10 6) (2 * r + 6) 3).fst = 2 * r + 6 ∧
+    ∀ (i : Nat),
+      i < 2 * r + 6 →
+        (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component r 1 10 6) (2 * r + 6) 3).snd i =
+          P196.Agent1.GroupIIIHandoff.componentThree r i
+'P196.Agent1.GroupIIIHandoff.component_time_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.whole_time_three (r : Nat) (hr : 1 ≤ r) :
+  (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial r 1 10 6) (2 * r + 7) 3).fst = 2 * r + 7 ∧
+    ∀ (i : Nat),
+      i < 2 * r + 7 →
+        (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial r 1 10 6) (2 * r + 7) 3).snd i =
+          P196.Agent1.GroupIIIHandoff.wholeThree r i
+'P196.Agent1.GroupIIIHandoff.whole_time_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.component_time_four (r : Nat) (hr : 1 ≤ r) :
+  (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component r 1 10 6) (2 * r + 6) 4).fst = 2 * r + 6 ∧
+    ∀ (i : Nat),
+      i < 2 * r + 6 →
+        (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component r 1 10 6) (2 * r + 6) 4).snd i =
+          P196.Agent1.GroupIIIHandoff.componentFour r i
+'P196.Agent1.GroupIIIHandoff.component_time_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.whole_time_four (r : Nat) (hr : 2 ≤ r) :
+  (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial r 1 10 6) (2 * r + 7) 4).fst = 2 * r + 7 ∧
+    ∀ (i : Nat),
+      i < 2 * r + 7 →
+        (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial r 1 10 6) (2 * r + 7) 4).snd i =
+          DelayedOverlapGate.shiftOne (P196.Agent1.GroupIIIHandoff.componentFour r) i
+'P196.Agent1.GroupIIIHandoff.whole_time_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.component_width_through_four (r : Nat) (hr : 1 ≤ r) (t : Nat) :
+  t ≤ 4 → (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component r 1 10 6) (2 * r + 6) t).fst = 2 * r + 6
+'P196.Agent1.GroupIIIHandoff.component_width_through_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.whole_width_through_four (r : Nat) (hr : 2 ≤ r) (t : Nat) :
+  t ≤ 4 → (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial r 1 10 6) (2 * r + 7) t).fst = 2 * r + 7
+'P196.Agent1.GroupIIIHandoff.whole_width_through_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.finiteComponent_three (r : Nat) (hr : 1 ≤ r) :
+  P196.Agent1.GroupIIIHandoff.finiteComponent r 3 = P196.Agent1.GroupIIIHandoff.componentThree r
+'P196.Agent1.GroupIIIHandoff.finiteComponent_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.finiteComponent_four (r : Nat) (hr : 1 ≤ r) :
+  P196.Agent1.GroupIIIHandoff.finiteComponent r 4 = P196.Agent1.GroupIIIHandoff.componentFour r
+'P196.Agent1.GroupIIIHandoff.finiteComponent_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.time_three_departure (r : Nat) (hr : 1 ≤ r) : ¬P196.Agent1.GroupIIIHandoff.OverlapAt r 3
+'P196.Agent1.GroupIIIHandoff.time_three_departure' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.time_four_overlap (r : Nat) (hr : 2 ≤ r) : P196.Agent1.GroupIIIHandoff.OverlapAt r 4
+'P196.Agent1.GroupIIIHandoff.time_four_overlap' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad (r : Nat) (hr : 1 ≤ r) :
+  ¬FoldedDecimal.BadWord (2 * r + 7) (P196.Agent1.GroupIIIHandoff.wholeTwo r)
+'P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.wholeThree_not_bad (r : Nat) (hr : 1 ≤ r) :
+  ¬FoldedDecimal.BadWord (2 * r + 7) (P196.Agent1.GroupIIIHandoff.wholeThree r)
+'P196.Agent1.GroupIIIHandoff.wholeThree_not_bad' depends on axioms: [propext, Quot.sound]
+P196.Agent1.GroupIIIHandoff.r1_component_time4_width :
+  (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component 1 1 10 6) 8 4).fst = 8
+'P196.Agent1.GroupIIIHandoff.r1_component_time4_width' does not depend on any axioms
+P196.Agent1.GroupIIIHandoff.r1_component_time4_columns (i : Nat) :
+  i < 8 →
+    (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component 1 1 10 6) 8 4).snd i =
+      P196.Agent1.GroupIII.sixWord 1 16 8 5 9 i
+'P196.Agent1.GroupIIIHandoff.r1_component_time4_columns' does not depend on any axioms
+P196.Agent1.GroupIIIHandoff.r1_whole_time4_width :
+  (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial 1 1 10 6) 9 4).fst = 9
+'P196.Agent1.GroupIIIHandoff.r1_whole_time4_width' does not depend on any axioms
+P196.Agent1.GroupIIIHandoff.r1_time4_signed_defect (i : Nat) :
+  i < 9 →
+    ↑((OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial 1 1 10 6) 9 4).snd i) -
+        ↑(DelayedOverlapGate.shiftOne
+            (fun j =>
+              if j < 8 then (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component 1 1 10 6) 8 4).snd j
+              else 0)
+            i) =
+      [1, -20, 1, 0, 0, 0, 1, -20, 1][i]!
+'P196.Agent1.GroupIIIHandoff.r1_time4_signed_defect' does not depend on any axioms
+P196.Agent1.GroupIIIHandoff.r1_actual_time4_overlap_fails :
+  ¬∀ (i : Nat),
+      i < 9 →
+        (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.initial 1 1 10 6) 9 4).snd i =
+          DelayedOverlapGate.shiftOne
+            (fun j =>
+              if j < 8 then (OverflowCarryNormalization.iterPairs (DelayedOverlapGate.component 1 1 10 6) 8 4).snd j
+              else 0)
+            i
+'P196.Agent1.GroupIIIHandoff.r1_actual_time4_overlap_fails' does not depend on any axioms
+P196.Agent1.GroupIIIHandoff.time_four_overlap_iff (r : Nat) (hr : 1 ≤ r) :
+  P196.Agent1.GroupIIIHandoff.OverlapAt r 4 ↔ 2 ≤ r
+'P196.Agent1.GroupIIIHandoff.time_four_overlap_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.time_one_departure (r : Nat) (hr : 1 ≤ r) : ¬P196.Agent1.GroupIIIHandoff.OverlapAt r 1
+'P196.Agent1.GroupIIIHandoff.time_one_departure' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.time_two_overlap (r : Nat) (hr : 1 ≤ r) : P196.Agent1.GroupIIIHandoff.OverlapAt r 2
+'P196.Agent1.GroupIIIHandoff.time_two_overlap' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.two_genuine_repairs (r : Nat) (hr : 2 ≤ r) :
+  ¬P196.Agent1.GroupIIIHandoff.OverlapAt r 1 ∧
+    P196.Agent1.GroupIIIHandoff.OverlapAt r 2 ∧
+      ¬P196.Agent1.GroupIIIHandoff.OverlapAt r 3 ∧ P196.Agent1.GroupIIIHandoff.OverlapAt r 4
+'P196.Agent1.GroupIIIHandoff.two_genuine_repairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.numeric_time_two (n : Nat) (d : Nat → Nat) (r : Nat) (hr : 1 ≤ r)
+  (hc : DecimalDigits.Canonical n d (2 * r + 7))
+  (hrep :
+    ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 10 6 i) :
+  ∃ e,
+    DecimalDigits.Canonical (Lychrel196.orbit n 2) e (2 * r + 7) ∧
+      ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum e (2 * r + 7) i = P196.Agent1.GroupIIIHandoff.wholeTwo r i
+'P196.Agent1.GroupIIIHandoff.numeric_time_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.numeric_time_three (n : Nat) (d : Nat → Nat) (r : Nat) (hr : 1 ≤ r)
+  (hc : DecimalDigits.Canonical n d (2 * r + 7))
+  (hrep :
+    ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 10 6 i) :
+  ∃ e,
+    DecimalDigits.Canonical (Lychrel196.orbit n 3) e (2 * r + 7) ∧
+      ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum e (2 * r + 7) i = P196.Agent1.GroupIIIHandoff.wholeThree r i
+'P196.Agent1.GroupIIIHandoff.numeric_time_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.numeric_time_four (n : Nat) (d : Nat → Nat) (r : Nat) (hr : 2 ≤ r)
+  (hc : DecimalDigits.Canonical n d (2 * r + 7))
+  (hrep :
+    ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 10 6 i) :
+  ∃ e,
+    DecimalDigits.Canonical (Lychrel196.orbit n 4) e (2 * r + 7) ∧
+      ∀ (i : Nat),
+        i < 2 * r + 7 →
+          DecimalDigits.columnSum e (2 * r + 7) i =
+            DelayedOverlapGate.shiftOne (P196.Agent1.GroupIIIHandoff.componentFour r) i
+'P196.Agent1.GroupIIIHandoff.numeric_time_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.numeric_time_four_iff (n : Nat) (d : Nat → Nat) (r : Nat) (hr : 1 ≤ r)
+  (hc : DecimalDigits.Canonical n d (2 * r + 7))
+  (hrep :
+    ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 10 6 i) :
+  (∃ e,
+      DecimalDigits.Canonical (Lychrel196.orbit n 4) e (2 * r + 7) ∧
+        ∀ (i : Nat),
+          i < 2 * r + 7 →
+            DecimalDigits.columnSum e (2 * r + 7) i =
+              DelayedOverlapGate.shiftOne (P196.Agent1.GroupIIIHandoff.componentFour r) i) ↔
+    2 ≤ r
+'P196.Agent1.GroupIIIHandoff.numeric_time_four_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.numeric_four_step_safety (n : Nat) (d : Nat → Nat) (r : Nat) (hr : 2 ≤ r)
+  (hc : DecimalDigits.Canonical n d (2 * r + 7))
+  (hrep : ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 10 6 i)
+  (t : Nat) : 1 ≤ t → t ≤ 4 → ¬Lychrel196.Palindrome (Lychrel196.orbit n t)
+'P196.Agent1.GroupIIIHandoff.numeric_four_step_safety' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.numeric_safe_handoff (n : Nat) (d : Nat → Nat) (r : Nat) (hr : 2 ≤ r)
+  (hc : DecimalDigits.Canonical n d (2 * r + 7))
+  (hrep :
+    ∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 10 6 i) :
+  (∀ (t : Nat), 1 ≤ t → t ≤ 4 → ¬Lychrel196.Palindrome (Lychrel196.orbit n t)) ∧
+    ∃ e,
+      DecimalDigits.Canonical (Lychrel196.orbit n 4) e (2 * r + 7) ∧
+        ∀ (i : Nat),
+          i < 2 * r + 7 →
+            DecimalDigits.columnSum e (2 * r + 7) i =
+              DelayedOverlapGate.shiftOne (P196.Agent1.GroupIIIHandoff.componentFour r) i
+'P196.Agent1.GroupIIIHandoff.numeric_safe_handoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+P196.Agent1.GroupIIIHandoff.realized_safe_handoff (r : Nat) (hr : 2 ≤ r) :
+  ∃ n d,
+    0 < n ∧
+      DecimalDigits.Canonical n d (2 * r + 7) ∧
+        (∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 10 6 i) ∧
+          (∀ (t : Nat), 1 ≤ t → t ≤ 4 → ¬Lychrel196.Palindrome (Lychrel196.orbit n t)) ∧
+            ∃ e,
+              DecimalDigits.Canonical (Lychrel196.orbit n 4) e (2 * r + 7) ∧
+                ∀ (i : Nat),
+                  i < 2 * r + 7 →
+                    DecimalDigits.columnSum e (2 * r + 7) i =
+                      DelayedOverlapGate.shiftOne (P196.Agent1.GroupIIIHandoff.componentFour r) i
+'P196.Agent1.GroupIIIHandoff.realized_safe_handoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_358 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_504 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_306 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_one_departure : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_267 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_228 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_405 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_328 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_three._proof_460 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_128 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_155 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree.eq_1 : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_83 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_307 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_290 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_447 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_224 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_216 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_141 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_298 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_no_overflow : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_160 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.whole_width_through_four : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.whole_time_three._proof_455 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_276 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_283 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_235 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_108 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_96 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_two_overlap._proof_511 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_162 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_169 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_four_step_safety._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_474 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_107 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_390 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.r1_actual_time4_overlap_fails : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_163 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_164 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_156 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_400 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_213 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_398 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_496 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_386 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_371 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_470 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_363 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_three._proof_463 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_210 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_335 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_134 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_431 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_396 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_192 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_218 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_402 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_61 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_34 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_346 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_203 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_209 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_302 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_401 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_506 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.first_domain._proof_1 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_166 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_75 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_350 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_268 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_429 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_312 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_409 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_446 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_55 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_422 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_63 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_178 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_236 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_311 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_482 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_time_four : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_357 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_86 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_three._proof_461 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_45 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_261 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_76 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_120 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_116 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_364 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_256 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_87 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_220 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_394 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_122 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_250 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_255 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_309 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_275 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_100 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_324 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_35 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_two_overlap._proof_512 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_47 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_232 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_367 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_194 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_227 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_355 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_440 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_64 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_151 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_185 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_234 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_332 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_289 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_140 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_433 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_135 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo.eq_1 : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_98 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_300 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_313 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_112 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_carry._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.first_return_component : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_104 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_242 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_138 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_287 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_384 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_110 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_time_four_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_22 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_502 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_345 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_211 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_265 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_191 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_395 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_28 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_251 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_159 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_182 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_500 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_293 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_353 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_carry._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_427 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_378 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_157 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_175 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_78 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_no_overflow : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_130 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.r1_whole_time4_width : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_65 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_487 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_368 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_477 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_four._proof_465 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.component_width_through_four._proof_458 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_321 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_271 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_four._proof_464 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_442 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_85 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_225 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_time_three : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_444 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_146 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_four : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_42 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_449 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_399 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_39 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_317 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_142 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_252 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_369 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_498 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_206 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_325 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_273 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_32 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_21 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_59 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_49 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_89 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_439 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_53 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_152 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_469 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_338 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_347 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_471 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_253 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_51 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_88 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_372 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_125 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_113 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_499 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_four_overlap_iff._proof_507 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_385 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.realized_safe_handoff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_254 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_262 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_285 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_445 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_four_overlap : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_207 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_105 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_82 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_237 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_two_overlap._proof_508 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_505 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_248 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.component_width_through_four : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_no_overflow._proof_91 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_158 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_132 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_249 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_424 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_time_four_iff._proof_1 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_284 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_193 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_297 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_377 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_27 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_30 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_356 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_426 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_362 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_74 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_187 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_327 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_66 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_143 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_270 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_238 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_208 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_280 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_282 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_52 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.r1_component_time4_columns : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_434 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.component_time_three : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_56 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_168 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_380 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_167 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_174 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_147 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_336 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_217 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_149 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_29 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_430 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_381 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_171 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_carry : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_301 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_421 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_259 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_365 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_420 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_383 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_331 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_99 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_118 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_354 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_101 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_90 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_two_overlap._proof_509 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_374 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_148 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo.eq_1 : []
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_safe_handoff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_176 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_37 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_416 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_247 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.first_domain : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree.eq_1 : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_205 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_274 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_81 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_time_four_iff._proof_2 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_263 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_60 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_two_overlap._proof_510 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_329 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.component_time_four : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_281 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_161 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_198 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_316 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_189 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_407 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_391 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_366 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_352 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_428 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_342 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_four_overlap_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentFour.eq_1 : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_73 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_233 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_172 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_180 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_320 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_493 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_four._proof_467 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_272 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_478 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_79 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_197 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_382 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.two_genuine_repairs : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_310 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_492 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_438 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_315 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_219 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_150 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_201 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_145 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_230 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.continue_no_overflow : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_carry._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_269 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_412 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_485 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_503 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_359 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_136 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_three._proof_459 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_46 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_carry._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_277 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.r1_component_time4_width : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_71 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_258 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_437 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_436 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_257 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_452 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_80 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_43 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_491 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_322 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_490 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_418 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent.eq_1 : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_278 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_361 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_106 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_48 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_124 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_186 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_435 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_341 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_196 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_195 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_296 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_243 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_497 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_441 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_480 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_58 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_119 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_153 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_476 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_291 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_no_overflow._proof_92 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_184 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_417 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_288 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_432 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_483 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_419 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_214 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_three : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_403 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_314 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_two_overlap : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_239 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_415 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_54 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_four_step_safety : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_38 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_137 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_397 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_319 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_221 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_204 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_375 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_348 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_188 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_326 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_69 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_488 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_240 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_286 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_408 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_212 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_339 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_202 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_181 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_494 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_109 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_340 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_226 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_77 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry._proof_84 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_229 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_292 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_370 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_four_step_safety._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_393 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_no_overflow : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_264 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_177 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_451 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.whole_time_four._proof_456 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_222 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_carry : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_295 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_330 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_165 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_344 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_453 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_72 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_94 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_406 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_44 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_231 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_304 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_62 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_127 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.r1_time4_signed_defect : []
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_41 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_475 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_139 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_200 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_183 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_36 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_343 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_481 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_170 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_279 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_337 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_473 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_no_overflow : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.whole_time_four : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_308 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_four._proof_466 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_349 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_479 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_144 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_323 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_103 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_129 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_102 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_67 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_four_overlap._proof_484 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_486 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_448 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_472 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_40 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_126 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_351 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_114 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.finiteComponent_three._proof_462 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_299 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_392 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_373 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_26 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_not_bad._proof_489 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_154 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_410 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.time_three_departure._proof_468 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_70 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_121 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_443 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_115 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_333 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.whole_time_four._proof_457 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_376 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_223 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_501 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_179 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_423 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_95 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_31 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_404 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_24 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_190 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_305 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_131 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_199 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_50 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_425 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_414 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_450 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_379 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_215 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_133 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_57 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoffNumeric P196.Agent1.GroupIIIHandoff.numeric_time_two : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.whole_time_three : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_97 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_173 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_411 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry._proof_68 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_360 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_260 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_not_bad._proof_495 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_303 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_241 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_266 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_318 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_388 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_no_overflow._proof_93 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_413 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_next._proof_111 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_carry._proof_33 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_117 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_389 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_carry : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_246 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_123 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeThree_next._proof_387 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_245 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_294 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.componentThree_next._proof_334 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.wholeTwo_next._proof_244 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.afterTwo_carry._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1GroupIIIHandoff P196.Agent1.GroupIIIHandoff.component_time_three._proof_454 : [propext, Quot.sound]
+MODULE_AUDIT theorems=565 union=[Classical.choice, Quot.sound, propext]
