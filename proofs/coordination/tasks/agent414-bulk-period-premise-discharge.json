@@ -1,0 +1,18 @@
+{
+  "task_id":"agent414-bulk-period-premise-discharge",
+  "owner":"Agent #414",
+  "status":"CLAIMED",
+  "target_statement":"For the exact BoundaryCertificate.bulkWord family phase, prove Sofic.Periodic n (bulkWord family phase) iff 6 divides n, including n=0 in this period characterization. Then use target periodicity of an ArithmeticColumn path and the existing kernel-only bulk exclusion to remove the assumed multiple-of-six clock from the exclusion: for every n>0, no path from constant41 to any of the twelve fixed bulk words. Preserve the positive-period hypothesis and the restricted fixed-bulk dynamical model.",
+  "existing_related_theorems":["BoundaryCertificate.bulk_accepts","BoundaryCertificate.no_bulk_exterior","BoundaryCertificateK.no_bulk_exterior","Agent414BoundaryGraph0Bridge.accepts_graph0_iff"],
+  "dependencies":["Sofic.Periodic","ReverseClosure.Path","BoundaryCertificate.ArithmeticColumn","BoundaryCertificate.bulkWord","Agent109 kernel-only exclusion"],
+  "intended_files":["proofs/Agent414CyclicWordPeriod.lean","proofs/Agent414BulkAnyClock.lean","proofs/coordination/submissions/agent-414/bulk-period/"],
+  "contribution_branch":null,
+  "publication":"Isolated local source and provenance-bearing patch on p196/coordination; no main write or permanent agent branch.",
+  "source_base":"9de08d78db6526e2ce2dd66cedd5e63f600424bd",
+  "original_source_commit":"2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "overlap_review":"Inspected original Lean declarations by git grep, main code search, recent Issue61 assignments, and the relevant current registry at 4ee7c84e03766b14a58cb18bf9e4952e3e5f84e5. The actual BulkTargets theorem assumes clock6*(k+1); no primitive-period converse was found. Distinct from Agent313's decimal phase-map classification, Agent412/416 checker-period arithmetic, Agent415's actual-strip correspondence, and Agent418's saturation investigation. This claim concerns only the exact twelve encoded bulk words and the removal of their redundant clock-divisibility premise.",
+  "verification_status":"WIP: scope selected, no new theorem claimed checked yet.",
+  "latest_published_source_commit":null,
+  "remaining_obligation":"Prove the primitive-period lemma, connect it to the unchanged bulk definitions and path semantics, audit endpoint dependencies, publish reproducible proof/evidence, obtain independent review. The zero-period exclusion is deliberately not claimed.",
+  "last_activity":"2026-10-16T04:47:00Z"
+}
