@@ -1,0 +1,113 @@
+{
+  "agent": "Agent #421",
+  "task_id": "agent421-general-base-nooverflow-normalization",
+  "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "inspected_main": "9de08d78db6526e2ce2dd66cedd5e63f600424bd",
+  "lean_version": "4.19.0",
+  "lean_commit": "6caaee842e94",
+  "dependencies": [
+    {
+      "module": "SignedDigitUniqueness",
+      "source_path": "proofs/contributions/2026-10-14-base-uniqueness-formal/SignedDigitUniqueness.lean",
+      "git_blob": "e394ec7eaec3fd2ed4eba58b8b8fb44f9f186804",
+      "sha256": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64"
+    },
+    {
+      "module": "BaseReflection",
+      "source_path": "proofs/contributions/2026-10-15-base-reflection-formal/BaseReflection.lean",
+      "git_blob": "d9ee9e168466e475dadbae9f8b61f7856d80a58f",
+      "sha256": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c"
+    },
+    {
+      "module": "ResetNormalization",
+      "source_path": "proofs/contributions/2026-10-15-base-reflection-formal/ResetNormalization.lean",
+      "git_blob": "21d8881eab93acb9163b46c89d89d56bf947e026",
+      "sha256": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf"
+    },
+    {
+      "module": "PhysicalWidth",
+      "source_path": "proofs/contributions/2026-10-15-base-reflection-formal/PhysicalWidth.lean",
+      "git_blob": "98592d3fc09caebab56bd999f53a9737327a02f7",
+      "sha256": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de"
+    },
+    {
+      "module": "SeamSafety",
+      "source_path": "proofs/contributions/2026-10-15-base-reflection-formal/SeamSafety.lean",
+      "git_blob": "52b9b545c840d9042ddff0ca8cddcc2838a9426e",
+      "sha256": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91"
+    },
+    {
+      "module": "ReverseAdd",
+      "source_path": "proofs/contributions/2026-10-15-base-reverse-add-formal/ReverseAdd.lean",
+      "git_blob": "f536493264821dd9e69c65939b6b73c0f3b5e2ca",
+      "sha256": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d"
+    },
+    {
+      "module": "HighBaseNormalization",
+      "source_path": "proofs/contributions/agent-11/base-high-threshold/HighBaseNormalization.lean",
+      "git_blob": "8703f69c60fcab47788558816848b605c71cdf2b",
+      "sha256": "8aef00ea45467515cab543fd900e5e1dc856cf2bef54de41e495b65bba21849c"
+    }
+  ],
+  "sources": [
+    {
+      "module": "Agent421NoOverflow",
+      "file": "Agent421NoOverflow.lean",
+      "sha256": "ca8435d2cb54f39ffe293ac52511952d7135479963ea14dcd6f8911f4bae3efc",
+      "git_blob": "ea8879256bb3a77f30fbee0c3a0f63c554a51aa3"
+    },
+    {
+      "module": "Agent421NoOverflowConsequences",
+      "file": "Agent421NoOverflowConsequences.lean",
+      "sha256": "a859e90849fe9f426baba609dfc69a0d35bba6127c7601287ff943c279af8433",
+      "git_blob": "79be99ac0e870738824360f6a76470ea8c23d4d7"
+    },
+    {
+      "module": "Agent421NoOverflowLocal",
+      "file": "Agent421NoOverflowLocal.lean",
+      "sha256": "111a130831aa7636b89671c0154fa3787e8fe0e4e1bec8438bf9b101fea3eb23",
+      "git_blob": "55e731f112e1fa16ac49d7a5dc9e9648896e7de5"
+    },
+    {
+      "module": "Agent421NoOverflowNormalization",
+      "file": "Agent421NoOverflowNormalization.lean",
+      "sha256": "92e0579dea62e62347d7c778457007f190ed30224918eb58d87f4b7bcea3ccd2",
+      "git_blob": "a293c0e4accbfeb08335a3c3b0194c6c0b0ebb58"
+    },
+    {
+      "module": "Agent421NoOverflowRealization",
+      "file": "Agent421NoOverflowRealization.lean",
+      "sha256": "e600751c5e0223673f124a3c1b1a64a6a5c2b2fdb07486d5706d5b242b3d78cb",
+      "git_blob": "317d7d29ad77999b6ce0c5381ab9e911b4264d1f"
+    },
+    {
+      "module": "Agent421NoOverflowWords",
+      "file": "Agent421NoOverflowWords.lean",
+      "sha256": "3cb55922babab70d9d49b6bfee3c1362cdec0d60cad1b4d6c5a230ed584a81ac",
+      "git_blob": "56598ca1a1e33ad48ff883e676c0f466fef3c592"
+    }
+  ],
+  "build_order": [
+    "SignedDigitUniqueness",
+    "BaseReflection",
+    "ResetNormalization",
+    "PhysicalWidth",
+    "SeamSafety",
+    "ReverseAdd",
+    "HighBaseNormalization",
+    "Agent421NoOverflowLocal",
+    "Agent421NoOverflowWords",
+    "Agent421NoOverflowNormalization",
+    "Agent421NoOverflowRealization",
+    "Agent421NoOverflowConsequences",
+    "Agent421NoOverflow"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "All-width no-overflow general-base carry normalization; not the full overflow normalization theorem.",
+  "published_source_commit": "5bf4830d6d822eab08380937985e16f214ed2678",
+  "remote_source_dir": "proofs/coordination/submissions/agent-421/general-base-nooverflow"
+}
