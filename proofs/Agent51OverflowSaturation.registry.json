@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "This Agent51 registry covers one selected spectral claim and its five-module import closure; the repository-wide claim census remains incomplete."
+  ],
+  "projects": {
+    "agent51-overflow-saturation": {
+      "scope": "Exact source Theorem 3 overflow saturation, all L>=18 and all s<9, with actual positive canonical nonpalindromic integer input, carry=1, palindrome next step, exact widths, and literal Q(1)/2 mod9 and Q(-1)/2 mod11 coordinates.",
+      "modules": {
+        "Saturation": {
+          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/Saturation.lean",
+          "sha256": "e2379506a0b70c1502fea88e8daff4241282be73f6f11672effff182a10bc722",
+          "git_blob": "e426170f6eecdb35ee366b0262e551a7c6e099b2",
+          "imports": [
+            "OverflowWitness",
+            "ResidueSums"
+          ]
+        },
+        "ResidueSums": {
+          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/ResidueSums.lean",
+          "sha256": "1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4",
+          "git_blob": "f1e3c1c5e7cd780b28f6752d980158bd9b9c98b6",
+          "imports": [
+            "OverflowDigits"
+          ]
+        },
+        "OverflowWitness": {
+          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/OverflowWitness.lean",
+          "sha256": "fbf7568256e31948a20563e5d9e1335ce45b6859d2343917395180970114c901",
+          "git_blob": "b471a4805403a81180a4aef6d7bc1f78e565be17",
+          "imports": [
+            "LychrelDigitSums",
+            "OverflowDigits"
+          ]
+        },
+        "OverflowDigits": {
+          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/OverflowDigits.lean",
+          "sha256": "65adeb3ae7bea93e390a95fc5f8b58ec43f0f64f01ed9db3f51392657ba89a41",
+          "git_blob": "6ad7ea581c1ed9e6f8c4907dcb5ad73558423b97",
+          "imports": [
+            "Std"
+          ]
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ]
+        }
+      },
+      "roots": [
+        "Saturation"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "id": "A51-SPEC-OVERFLOW-SATURATION",
+      "project": "agent51-overflow-saturation",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/astra_spectral_carry_quotient.md",
+      "source_blob": "eac5b8f61385a615d9cc3e7796a4d698c66b716b",
+      "source_location": "Theorem 3, lines177–193",
+      "endpoints": [
+        "P196.Agent51.witness_polynomialValue",
+        "P196.Agent51.witness_value_one",
+        "P196.Agent51.witness_value_neg_one",
+        "P196.Agent51.witness_sourceS",
+        "P196.Agent51.witness_sourceR",
+        "P196.Agent51.overflow_saturation",
+        "P196.Agent51.even_overflow_saturation",
+        "P196.Agent51.odd_overflow_saturation",
+        "P196.Agent51.finiteSum",
+        "P196.Agent51.finiteSum_eq_range",
+        "P196.Agent51.polynomialValue",
+        "P196.Agent51.polynomialValue_eq_finiteSum",
+        "P196.Agent51.finiteSum_congr",
+        "P196.Agent51.finiteSum_add_length",
+        "P196.Agent51.finiteSum_const",
+        "P196.Agent51.finiteSum_mul_left",
+        "P196.Agent51.pairWord_polynomial_blocks",
+        "P196.Agent51.int_one_pow",
+        "P196.Agent51.pairWord_value_one",
+        "P196.Agent51.int_pow_add",
+        "P196.Agent51.neg_one_pow",
+        "P196.Agent51.alternating_prefix",
+        "P196.Agent51.power_prefix_shift",
+        "P196.Agent51.pairWord_value_neg_one",
+        "P196.Agent51.pairWord_neg_one_dvd",
+        "P196.Agent51.pairWord_neg_one_even",
+        "P196.Agent51.sourceS",
+        "P196.Agent51.sourceR",
+        "P196.Agent51.pairWord_half_value_one",
+        "P196.Agent51.pairWord_sourceS",
+        "P196.Agent51.pairWord_sourceS_nat",
+        "P196.Agent51.pairWord_sourceR",
+        "P196.Agent51.residue_parameter",
+        "P196.Agent51.polynomialValue_congr",
+        "P196.Agent51.sourceS_congr",
+        "P196.Agent51.sourceR_congr",
+        "P196.Agent51.witnessNumber",
+        "P196.Agent51.witness_canonical",
+        "P196.Agent51.witness_positive",
+        "P196.Agent51.witness_columnSum",
+        "P196.Agent51.witness_not_palindrome",
+        "P196.Agent51.witness_overflow",
+        "P196.Agent51.witness_step_palindrome",
+        "P196.Agent51.witness_step_canonical",
+        "P196.Agent51.inputDigit",
+        "P196.Agent51.pairWord",
+        "P196.Agent51.inputDigit_bounded",
+        "P196.Agent51.inputDigit_zero",
+        "P196.Agent51.inputDigit_last",
+        "P196.Agent51.inputDigit_pair",
+        "P196.Agent51.pairWord_values",
+        "P196.Agent51.pairWord_zero"
+      ],
+      "final_endpoints": [
+        "P196.Agent51.overflow_saturation",
+        "P196.Agent51.even_overflow_saturation",
+        "P196.Agent51.odd_overflow_saturation"
+      ]
+    }
+  ]
+}
