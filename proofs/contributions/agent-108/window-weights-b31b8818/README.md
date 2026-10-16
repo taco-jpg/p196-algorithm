@@ -11,12 +11,17 @@ on legal coefficient windows, every positive even-width normalization,
 and every positive odd-width extension, there is **no finite real uniform
 multiplier** for the original full safe incoming operator.
 
-The final Incoming source has passed author compilation and a distinct
+The final Incoming source passed author compilation and a distinct
 agent's fresh ten-module rebuild and transitive axiom audit. The complete
-portable repository build, including rebuilding the seven original
-dependencies, is the final packaging gate; its command and actual outcome
-are recorded separately in `REPRODUCE.md` and the final build evidence.
-Main integration is a separate serialized action.
+source-pinned repository reproduction has also passed: all seven original
+dependencies and ten new modules were rebuilt from an empty project build
+directory with explicit `--trust=0 -j1 -DElab.async=false`. Its complete
+module-origin audit checked 1,583 safe, nonpartial declarations, including
+1,367 theorem constants, and matched all 578 explicit source declarations.
+No logical axiom outside the standard three was found. The exact command
+is in `REPRODUCE.md`; original output is in
+`review/final-package-fresh17-001/`. Main integration remains a separate
+serialized action.
 
 ## Exact model and conclusion
 
@@ -158,9 +163,40 @@ unsafe/partial declarations are separately inventoried, never promoted
 to logical axioms. Failed source attempts and actual logs remain in
 their development directories and outside the accepted build roots.
 
+## Final scoped reproduction and audit coverage
+
+The final package uses `check.py` and `source-pins.json`, independently
+reviewed under `review/package-inspection/`. It restores the original
+seven bare module names from their exact retained repository paths and
+checks every source's length, SHA256, Git blob, imports and declaration
+inventory. The 38 recorded commands all exited zero: toolchain and
+dependency-source checks, all 17 project compilations, and the generated
+module-origin audit. The source and package files remained unchanged.
+
+The actual audit enumerated 2,536 originating constants. Of these, 1,583
+are safe and nonpartial and all received individual transitive axiom
+reports; 930 unsafe and 23 partial implementation constants are recorded
+separately. All 448 explicit declarations of the original seven modules
+and all 130 explicit new declarations match unique safe origins, including
+private declarations. The verification receipt SHA256 is
+`0ebb8d421e13c88365a6fdae255d56f41191d7ee9a72901b6d63b73fa284ea74`.
+
+The official Lean 4.19.0 distribution and pinned Mathlib/dependency caches
+are external prerequisites. This run rebuilt every project source in
+the selected 17-module closure; it did not rebuild Mathlib or Lean.
+Existing consolidation-core and default replay entrypoints do not register
+this package, and their acceptance is not inferred from this scoped run.
+
+Earlier historical wording about a 112-name dependency audit is corrected
+in `review/independent-dependencies/CORRECTION.md`. That old driver compiled
+ten modules but skipped `LychrelDigitSums` in its generated name list and
+did not explicitly request trust zero. Its complete original evidence is
+preserved. The new 17-module environment-origin audit supplies the full
+coverage recorded above without relabeling the old run.
+
 This extends section 3 of the original `FOLDED_WEIGHT_OBSTRUCTION.md`
 (Git blob `6979703055d0f61b7997355b5e00a92a66ed3ce7`). The original
 family, arithmetic, scalar-product result and their authorship remain
 attributed to Agent13. The historical checkpoints and their narrower
 verification statuses are retained in `CHECKPOINT_02.md`,
-`CHECKPOINT_03.md`, and the prior Git commits.
+`CHECKPOINT_03.md`, `CHECKPOINT_04.md`, and the prior Git commits.
