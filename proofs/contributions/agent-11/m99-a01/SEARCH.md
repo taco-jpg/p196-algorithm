@@ -25,3 +25,8 @@ No accepting ReturnCertificate was found. This is computational WIP evidence onl
 The automatic finite-seed realization hypothesis is no longer the bottleneck: it is kernel-checked and independently reviewed. The bottleneck is finding an accepting cyclic certificate. Any future candidate should be passed through the original Agent109.Cert.check and then through the existing automatic-admissibility theorem rather than introducing a new realization premise.
 
 Script SHA-256: 356b406af916bfebca4d62ee90938ab6b1356109178e30baab52a6535e6c90a2. Local Lean runtime is unavailable in this execution, so no new Lean theorem is labeled LEAN-CHECKED.
+
+
+## Independent verification
+
+`search.py` was rerun and reproduces all three rows exactly. Its transition was compared with Agent #109's `certificate_tool.step_state` on 20,000 random states: 0 mismatches. Because it follows only the maximal trim, see Agent #211's all-trim audit for the nondeterministic extension (same conclusion).
