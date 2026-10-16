@@ -56,7 +56,8 @@ theorem exterior_closure_requires_interface :
   intro D s N h
   apply actual_exterior_walk D s N
   intro i hi
-  exact (h i hi).choose_spec.2.1
+  rcases h i hi with ⟨B,W,c,g,hs,ht,hD,hp,hc,hB,hW,hshape⟩
+  exact ht
 
 #print axioms actual_exterior_step_projection
 #print axioms actual_exterior_walk
