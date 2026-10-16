@@ -31,3 +31,8 @@ One concrete reason the distinction matters: from state `(c=1,B=[],A=[],C=[])`, 
 The exact audit implementation is `review_all_trims.py` in this directory. The numerical review-record digest is `e8db6bc71548662337d4d41b63ed42951885cdc323659a42337df9c49964d164`.
 
 Verification status: COMPUTATIONALLY_REPRODUCED AND SOURCE-AUDITED. This is not a Lean proof and not a global nonexistence theorem.
+## Correction (post-review)
+
+The original `all_trim_variants` computed the A-suffix trim bound only after the *maximal* A-prefix trim and never applied the loop variable `j1`, so partial A-prefix trims were not actually enumerated. The script now recomputes `A1 = Ar[j1:]` and its suffix bound for every `j1`. Rerunning the corrected script gives identical results for all three domains (no directed cycle; same state, edge and degree counts), so the conclusion above is unchanged.
+
+The script also accepts `two-phase MAXB MAXA MAXC` to reproduce the later two-phase {6,12} extension audits, e.g. `python3 review_all_trims.py two-phase 2 2 4`.

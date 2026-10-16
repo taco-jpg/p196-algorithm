@@ -28,13 +28,12 @@ def all_trim_variants(s):
     c,Br,Ar,Cr=raw_parts(s); d=18-c
     maxj=lead(Br[::-1],c)
     maxj1=lead(Ar,c)
-    A1=Ar[maxj1:]
-    maxj2=lead(A1[::-1],d)
     maxk=min(lead(Cr,d),lead(Cr[::-1],d),len(Cr)//2)
     for j in range(maxj+1):
         B=Br[:len(Br)-j]
         for j1 in range(maxj1+1):
-            for j2 in range(maxj2+1):
+            A1=Ar[j1:]
+            for j2 in range(lead(A1[::-1],d)+1):
                 A=A1[:len(A1)-j2]
                 for k in range(maxk+1):
                     C=Cr[k:len(Cr)-k]
@@ -73,8 +72,27 @@ def audit(S):
         return False
     cyc=any(color.get(u,0)==0 and dfs(u) for u in U)
     return len(U),sum(map(len,edges.values())),max(map(len,edges.values()),default=0),cyc
+def states_ba(phases,vals,maxb,maxa,maxc):
+    """Symmetric-C state domain with independent B and A length bounds."""
+    for c in phases:
+        for lb in range(maxb+1):
+            for la in range(maxa+1):
+                for B in product(vals,repeat=lb):
+                    for A in product(vals,repeat=la):
+                        for lc in range(maxc+1):
+                            for h in product(vals,repeat=lc//2):
+                                if lc%2==0: yield(c,list(B),list(A),list(h+h[::-1]))
+                                else:
+                                    for m in range(0,19,2): yield(c,list(B),list(A),list(h+(m,)+h[::-1]))
 if __name__=='__main__':
+    import sys
+    sys.setrecursionlimit(1000000)
     v1=range(19); v2=(0,1,8,9,10,17,18)
+    if len(sys.argv)==5 and sys.argv[1]=='two-phase':
+        # two-phase {6,12} extension: two-phase MAXB MAXA MAXC
+        mb,ma,mc=map(int,sys.argv[2:])
+        print('two_phase_B%d_A%d_C%d'%(mb,ma,mc),audit(list(states_ba([6,12],v2,mb,ma,mc))))
+        raise SystemExit
     D=[('all16_len1',[1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17],v1,1,1,False),
        ('six_len2',[2,4,8,16,14,10],v2,2,2,True),
        ('two_len2',[6,12],v2,2,2,True)]
