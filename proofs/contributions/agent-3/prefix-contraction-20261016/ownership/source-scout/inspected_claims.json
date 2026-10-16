@@ -1,0 +1,855 @@
+[
+  {
+    "name": "agent107-dfa-horn-closure-20261016.json",
+    "blob": "107c7d58e9a2fa515ede1bd7bd68b4e25128b421",
+    "record": {
+      "task_id": "agent107-dfa-horn-closure-20261016",
+      "owner": "Agent #107",
+      "status": "CLAIMED",
+      "role": "FORMALIZER",
+      "target_statement": "For every positive finite DFA state count, faithfully encode the original creative_regular_direct.solve closure premises: exactly-one Boolean transition rows (or their equivalent total deterministic function), both initial product states, all872 literal transition Horn templates, and all251 literal terminal clauses including the odd-overflow extra symbol. Prove a finite Boolean checker sound for these premises. Derive for every original finite Accepts L q p that DFA acceptance of foldPrefix L q implies acceptance of pathOutput L q p; then derive actual nextWidth/nextColumns closure on Admissible inputs and the same genuine Lychrel196.step conclusion for every given Canonical ordinary-integer realization. No word sampling premise.",
+      "larger_obligation": "Supply the missing finite-Horn-to-all-length forward-language closure bridge for the original universal DFA encoding, reusing the completed exact folded transducer instead of assuming global hclosed.",
+      "related_theorems": [
+        "Agent107.FoldedTransducer.graphAccepts_iff_accepts",
+        "Agent107.FoldedTransducer.actual_accepts",
+        "Agent107.FoldedTransducer.accepting_output",
+        "Agent107.FoldedTransducer.canonical_accepting_step",
+        "FoldedDecimal.representedBy_closed (existing consumer of global closure, not reproved)"
+      ],
+      "dependencies": [
+        {
+          "source_commit": "be8e612ca0694d5d9d8473c784ab1956f93405b6",
+          "mathematical_source_commit": "f0fddaf7baf6131a6d92210ce00189c5532c7825",
+          "registry": "proofs/Agent107Transducer.registry.json",
+          "status": "independently checked full transducer; PR118 canonical packaging gate running"
+        },
+        {
+          "path": "proofs/creative_regular_direct__8988fd8c6a0aad92.py",
+          "git_blob": "5658e577de22431ee029cf49c2ff640321dc0d8a"
+        },
+        {
+          "path": "proofs/creative_regular_boolean__20252ce462a75640.py",
+          "git_blob": "e2a43e55da0c512dbbf3c1ed03666afebc82b1c3"
+        },
+        {
+          "path": "proofs/creative_regular_invariant__ea923cdb26a39825.py",
+          "git_blob": "fa334ba0f094998c206f1eccc529b375c1c5351b"
+        }
+      ],
+      "contribution_branch": "research/agent-107/dfa-horn-closure-20261016T2203Z",
+      "source_baseline": "be8e612ca0694d5d9d8473c784ab1956f93405b6",
+      "intended_source_files": [
+        "proofs/Agent107DFA.lean",
+        "proofs/Agent107DFAHorn.lean",
+        "proofs/Agent107DFAChecker.lean",
+        "proofs/Agent107DFABoolean.lean",
+        "proofs/Agent107DFAHorn.registry.json",
+        "proofs/contributions/agent-107/dfa-horn-closure-20261016/"
+      ],
+      "assigned_subagents": [
+        "root: finite DFA/encoding/checker interfaces and ordinary numeric composition; only source Git writer",
+        "scope_scout: all-length synchronized DFA path induction and terminal closure",
+        "lean_runtime: baseline final canonical gate then disjoint finite Boolean reflection work or independent execution",
+        "semantic_review: independent semantics and fresh closure/axiom review"
+      ],
+      "latest_published_source_commit": null,
+      "verification_status": "WIP scoped target; no new proof development before successful guarded claim",
+      "last_activity_utc": "2026-10-16T22:04:55.287Z",
+      "remaining_obligation": "Implement the exact finite interfaces and reflection theorem; prove all-length path and genuine arithmetic closure; preserve every actual attempt; publish isolated source and obtain independent semantic/kernel review.",
+      "ownership_check": {
+        "scope_proposal_comment": 6225511390,
+        "scout_coordination": "cec3ea54a6f646209d0d1059968c53370f99855f",
+        "scout_task_count": 129,
+        "scout_comment_watermark": 6225470776,
+        "scout_branch_count": 102,
+        "root_checked_coordination": "cdb9ddb75a711f721d6c5d75a13e534a89067053",
+        "root_issue_comment_watermark": 6225520488,
+        "root_delta_review": "Read full seven-commit cec3->4f5f task patches and subsequent4f5f->cdb9 updates. New Agent4 zero-gap auxiliary departure, Agent104620 depth12 witness, Agent3 three-layer dead-prefix are distinct; other changes are source/status updates or Agent10 carry observability publication. Existing representedBy_closed assumes hclosed; periodic Sofic.projection_sound and reverse exclusion are different. No equivalent finite forward Horn bridge or active owner found in checked scope.",
+        "retry": {
+          "unpublished_commit": "3e53b9da3c5f5fa96c2b7b8e8320442139fe625b",
+          "readback": "Task path absent after unknown ref-update error; coordination had advanced",
+          "checked_parent": "53448de233d15fdddcc992e4440961f4e3a80f55",
+          "delta_review": "All6 changed task records read at53448de2: Agent1 GroupIII, periodic stripping/validity/safety, independent PR104 review; Agent11 PR88 ledger correction. All distinct. Contents API creates only the absent unique task path, preserving unrelated concurrent records.",
+          "method": "GitHub contents create_file, path must not already exist; no force update"
+        }
+      },
+      "scope_exclusions": [
+        "No DFA/monoid/model search or concrete safe invariant instance",
+        "No safety-monitor, seed-label or finite negative-sample certification",
+        "No completeness converse for every forward-closed DFA language",
+        "No rewriting existing scalar, graph, output, numeric realization or ReturnCertificate end theorems",
+        "No predecessor decoder or inverse-fiber task",
+        "No all-time196 or infinite-existence claim",
+        "No main integration slot"
+      ],
+      "main_write_slot": false,
+      "publication_authority": "Current user assignment requires isolated contribution branches and incremental publication; only issue61 for daily coordination."
+    }
+  },
+  {
+    "name": "agent107-folded-transducer-20261016.json",
+    "blob": "23adf98fe10371b0e3c9f5f133a996c9cad7ddd8",
+    "record": {
+      "task_id": "agent107-folded-transducer-20261016",
+      "owner": "Agent #107",
+      "status": "ACTIVE",
+      "assigned_subagents": [
+        "root: definitions, exact output, graph and indexed histories; publication",
+        "scope_scout: finite paths, symmetric reconstruction, canonical numeric bridge and registry",
+        "lean_runtime: graph tables, reachability, official baseline and independent Boundary cross-review",
+        "semantic_review: independent original-table comparison, semantic review, fresh full closure and module-origin axiom audit"
+      ],
+      "target_statement": "For every finite FoldedDecimal.Admissible L q, the original folded carry transducer of creative_regular_direct.fst_graph has a unique complete accepting path (finite path equality, no irrelevant tail equality); its pair/center output equals FoldedDecimal.nextColumns at actual nextWidth. Prove soundness and completeness for the exact finite transition and terminal tables, including both overflow branches, odd/even input, single-digit/empty-pair boundaries, started positivity, and odd-overflow extra emission. Lift the emitted finite column word to every canonical ordinary-decimal realization using existing representation_next. No invariant-language instance or existence claim.",
+      "related_theorems": [
+        "FoldedDecimal.forward_trace_unique",
+        "FoldedDecimal.even_folded_trace_sound",
+        "FoldedDecimal.odd_folded_trace_sound",
+        "FoldedDecimal.folded_emission_no_overflow",
+        "FoldedDecimal.folded_emission_overflow",
+        "FoldedDecimal.folded_delay_update",
+        "FoldedDecimal.representation_next",
+        "FoldedDecimal.valid_word_realizable"
+      ],
+      "dependencies": [
+        {
+          "path": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+          "git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506"
+        },
+        {
+          "path": "proofs/creative_regular_direct__8988fd8c6a0aad92.py",
+          "git_blob": "5658e577de22431ee029cf49c2ff640321dc0d8a"
+        },
+        {
+          "path": "proofs/persist_spacetime_weighted__d53dd1c09dcfc34a.py",
+          "git_blob": "8274715ce60ab084b602a08184ed909ee41a1f28"
+        }
+      ],
+      "intended_source_files": [
+        "proofs/Agent107TransducerBoundary.lean",
+        "proofs/Agent107TransducerDefs.lean",
+        "proofs/Agent107TransducerGraph.lean",
+        "proofs/Agent107TransducerInput.lean",
+        "proofs/Agent107TransducerNumeric.lean",
+        "proofs/Agent107TransducerOutput.lean",
+        "proofs/Agent107TransducerPath.lean",
+        "proofs/Agent107TransducerReachable.lean",
+        "proofs/Agent107TransducerTables.lean",
+        "proofs/Agent107TransducerTablesChecks.lean",
+        "proofs/Agent107TransducerTablesData.lean",
+        "proofs/Agent107Transducer.registry.json",
+        "proofs/contributions/agent-107/folded-transducer-20261016/"
+      ],
+      "contribution_branch": "research/agent-107/folded-transducer-20261016T2130Z",
+      "source_baseline": "98d59927ad89c42f438ea857ec5750a0df3b91db",
+      "latest_published_source_commit": "f0fddaf7baf6131a6d92210ce00189c5532c7825",
+      "verification_status": "INDEPENDENTLY-REVIEWED mathematical source: official Lean4.19.0 --trust=0 fresh full baseline+11-module rebuild PASS;551 theorem constants by source module, only standard propext/Classical.choice/Quot.sound. Independent Boundary cross-review also PASS. Full evidence/registry publication and original canonical verifier run in progress.",
+      "last_activity_timestamp": "2026-10-16T21:55:11.538Z",
+      "remaining_obligation": "Publish complete execution/provenance/failed-attempt evidence and final registry; run the unchanged canonical verifier on the complete scoped closure; open reviewed PR for the assigned main integrator. No mathematical WIP remains in the11 frozen modules.",
+      "ownership_check": {
+        "coordination_parent": "4bb755a9c990dc6706addeabc80eab2cb6565ca1",
+        "scope_proposal_comment": 6225039850,
+        "reviewed_current_task_count": 98,
+        "reviewed_historical_task_versions": 289,
+        "latest_delta": "Agent104 exact zero-gap/mass and Agent6 exterior coordinate progress read; distinct from complete transducer path certification. Agent311 targets ReturnCertificate realizability/periods, not this FST.",
+        "coord_retry": {
+          "unpublished_commit": "86ff1adbfe7eb3a44209fdcdea97af5c5c355d5c",
+          "readback": "Task absent after unknown update error",
+          "new_parent": "2a72cbc0b37fc353e01a9bbd8fcab4f9d0435443",
+          "delta_review": "Agent101 status only; Agent110 exterior-only two-step return/loop obstruction targets different dynamics."
+        },
+        "coord_retry2": {
+          "unpublished_commit": "206cfa79c14597925bceffece48aa107a8c931ee",
+          "new_parent": "8ed738eaf6512f0f34eed67bd398406023e0b948",
+          "delta_review": "Agent100 session212248Z after-third-gate exterior descent only; not folded transducer completeness."
+        },
+        "final_review": {
+          "parent": "0931ed200796f8b5d94d9805ee40aacebed102e4",
+          "delta": "Read all seven-commit changes since8ed738ea: Agent1GroupIII handoff/periodic status, Agent111 bounded modulus, Agent112 cylinder, Agent114 short-r firsthit, Agent1172641 and Agent9 factorial. All exact targets are distinct."
+        }
+      },
+      "scope_exclusions": [
+        "No re-ownership of existing scalar trace/emission proofs",
+        "No Agent2/3/7/9 inverse-fiber results",
+        "No monoid/DFA/configuration-language discovery task",
+        "No full ReturnCertificate or finite-seed-cycle realizability target",
+        "No main integration slot",
+        "No all-time196 conclusion"
+      ],
+      "publication_authority": "Current direct user assignment explicitly requires isolated contribution branches and incremental publication; supersedes older repository preference against automatically creating agent branches.",
+      "completed_endpoints": [
+        "Agent107.FoldedTransducer.admissible_unique_history",
+        "Agent107.FoldedTransducer.indexed_history_unique",
+        "Agent107.FoldedTransducer.indexed_numeric_realizable",
+        "Agent107.FoldedTransducer.canonical_accepting_step",
+        "Agent107.FoldedTransducer.reachable_iff_mem_states",
+        "Agent107.FoldedTransducer.Table.edge_mem_iff",
+        "Agent107.FoldedTransducer.Table.terminal_mem_iff"
+      ]
+    }
+  },
+  {
+    "name": "agent113-descending-prefix-triple-completeness-20261016.json",
+    "blob": "acdafa56a975aea3eac495032d32f3ddb505dffd",
+    "record": {
+      "task_id": "agent113-descending-prefix-triple-completeness-20261016",
+      "owner": "Agent #113 (current 2026-10-16 session; GitHub authenticated user taco-jpg)",
+      "assigned_subagents": [],
+      "role": "GENERAL RESEARCH / three-column abstraction completeness",
+      "target_statement": "For each (a,b) with 1<=a<=9 and 0<=b<a, define layer0={(a,b,c):0<=c<=9}, first inverse restricted to topT(w,e)=0, later inverse edges for e<=1 using original Agent113.TwoDigit.nextT. Show the existing 13 exactly are the prefixes whose inverse layers terminate; for each other 32 supply a finite backwards path from first layer to a valid 4-cycle (1,5,10)->(10,4,6)->(5,2,3)->(2,11,1)->(1,5,10), where arrows are inverse triple transitions. This is a completeness/limitation of the triple overapproximation, NOT ordinary integer orbit realizability.",
+      "related_theorems": [
+        "Agent113.TwoDigit.nextTriple",
+        "Agent113.TwoDigit.Cert.Checked",
+        "Agent113.TwoDigit.ancestry_bound_10 / ... / _83",
+        "Agent113.TwoDigit.no_196_thirteen_arith"
+      ],
+      "dependencies": [
+        {
+          "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+          "file": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCertificate.lean",
+          "blob": "26a5c2cce25e90cf0806410e46a87fbc57e55966"
+        },
+        {
+          "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+          "file": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitProjection.lean",
+          "blob": "8a30b63dee88050a7b4f2718763a260d023fa03"
+        },
+        {
+          "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+          "file": "proofs/contributions/agent-113/two-digit-prefix/generator/gen_certificates.py",
+          "blob": "749457063529274bbd8012628a9f385ee873a157"
+        }
+      ],
+      "intended_source_files": [
+        "proofs/contributions/agent-113/descending-prefix-maximality-20261016/",
+        "proofs/contributions/agent-113/descending-prefix-maximality-20261016/Agent113TripleCycles.lean"
+      ],
+      "contribution_branch": "research/agent-113/descending-prefix-maximality-20261016T212415Z",
+      "status": "ACTIVE",
+      "latest_published_source_commit": "0f4813c05018da961587ec5f42eee87c8dbfd35f",
+      "verification_status": "PYTHON-FINITE-CHECKED (2 implementations; 6498 target triples; complete 45-prefix enumeration); LEAN-WIP_UNCOMPILED (no Lean executable in this session). No real integer orbit or 196 conclusion.",
+      "last_activity_timestamp": "2026-10-16T21:48:00Z",
+      "remaining_obligation": "Independent Lean 4.19.0 --trust=0 from-source compile of proofs/contributions/agent-113/descending-prefix-maximality-20261016/Agent113TripleCycles.lean, #print axioms transitive audit and full semantic review; original 13 source unchanged; coordinate with reviewer on Draft PR #108. Formalize arbitrary-depth repeat cycle if kernel passes, and investigate refinement with width/center information separately.",
+      "scope_exclusions": [
+        "No reproof/overwriting of original 13 Lean certificate families",
+        "No Agent215 saturated 8-step prefix dynamics",
+        "No Agent103/118 218 ancestry classification",
+        "No Agent105 palindrome-image classification",
+        "No ordinary integer realizability, safe infinite seed, or P196 resolution",
+        "No main-write slot"
+      ],
+      "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+      "proposal_comment": 6225096726,
+      "ownership_check": {
+        "coordination_parent": "b03be234f86aa540a1b055fd1cacc8d9f5801259",
+        "old_agent113_branch_preserved": "research/agent-113/s20261015",
+        "task_record_not_found_at_parent": true,
+        "source_overlap_audit": "Read 98 active task file names and issue #61 relevant terms; none owns exact descending two-digit three-column inverse completeness."
+      },
+      "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/108",
+      "issue_result_comment": 6225323183,
+      "remote_blob_readback": {
+        "check_py": "acc8bea993109c9dfa24f0a88e162fb16600c6c6",
+        "witnesses_txt": "0f917f376452581ab1c114d8fc03142d03bf1510",
+        "audit_json": "9fed3d81140b3ae08e977e182454e30a4c1ce879",
+        "lean_candidate": "0c2f4061f0a653dcf6747089654a3c61b4316a6e",
+        "generator_py": "06a222fc98e8c60e9597b9bd2b49952c92f9f125"
+      }
+    }
+  },
+  {
+    "name": "agent9-finite-ensemble-marker-count-20261016.json",
+    "blob": "f2dbf7aa9ca2409989de24b3857e3163b8fb8c1a",
+    "record": {
+      "task_id": "agent9-finite-ensemble-marker-count-20261016",
+      "owner": "Agent #9",
+      "role": "LEAN_FORMALIZATION",
+      "status": "ACTIVE_FORMALIZATION",
+      "source_main": "f44c06c4851b26523bcec920d93a52b93fd2a0a6",
+      "claim_base": "00ecf1ac242b13e884f2ab2ffa539f59a64d95bb",
+      "source": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/contributions/2026-10-14-finite-horizon-density/README.md",
+        "git_blob": "6d6d188df78e26eb6ffdde6ebc3bdb6fc749eb9c",
+        "section": "Exact finite counting bound equation(3), and counting proof"
+      },
+      "target_statement": "For all natural L>=1 and r>=1, set J=(L/2-1)/r. The exact number of ALL positive ordinary canonical width-L integers with none of the J selected mirrored all-nine blocks is 9*10^(L-1-2*r*J)*(10^(2*r)-1)^J. Block j selects positions 1+j*r+i for i<r and their mirrors L-1-(1+j*r+i). Prove a complete duplicate-free numeric enumeration or equivalent filtered canonical interval count; a constructed subfamily count is insufficient. Specialize r=FiniteHorizonBlocks.blockLength R to obtain the direct finite early-hit count upper bound at positive times1..R+1 using existing mirroredNines_safe_prefix.",
+      "boundaries": [
+        "L>=1,r>=1,J may be zero",
+        "Natural L/2-1 agrees with max(floor(L/2)-1,0)",
+        "Prove 2*r*J<=L-1 to justify the free-digit exponent",
+        "Odd/even widths; markers avoid both ends and the odd center",
+        "Leading digit1..9, all other digits0..9, trailing zero allowed",
+        "All canonical integers in [10^(L-1),10^L), complete and without duplicates",
+        "Early-hit implication uses positive times; no initial nonpalindrome restriction"
+      ],
+      "existing_results_reused": {
+        "deterministic_source": "proofs/contributions/2026-10-14-finite-horizon-density/FiniteHorizonBlocks.lean",
+        "deterministic_blob": "6e715fe012e239d3e69ad2bba50461031f8dd634",
+        "deterministic_theorem": "mirroredNines_safe_prefix",
+        "Std_only_product_sources": {
+          "proofs/Agent101DigitPairs.lean": "e6dfe3f19b39bcf16ee82c182c06b46d678b332f",
+          "proofs/Agent101MultiplicityBounds.lean": "1e44939fe3cd938fe926f5fc80137b176a1a7baf",
+          "proofs/Agent101SplitEnumeration.lean": "8d34b3a35dab5502507ed7ea3accccf7d971cafa"
+        },
+        "helpers": [
+          "Agent101.wrapDigits_injective",
+          "Agent101.nodup_wrappedProduct",
+          "Agent101.length_wrappedProduct",
+          "Agent101.exists_wrapDigits",
+          "Agent101.canonicalDigits_wrapDigits"
+        ],
+        "import_boundary": "Do not blindly combine Agent101NumericFibers/Lychrel196Research with FiniteHorizonBlocks/LychrelDigitSums duplicate foundations. Reuse Std-only product helpers with compatible original numeral interfaces, or establish an explicit compatibility route."
+      },
+      "interpretation": "Formalization of an existing written finite counting proof; no new discovery or exact early-hit probability claim.",
+      "owned_paths": [
+        "proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/"
+      ],
+      "branch": "formalize/agent-9/finite-ensemble-marker-count-20261016",
+      "ownership_check": {
+        "current_task_records": 128,
+        "exact_matching_records": 0,
+        "screened_broad_matches": [
+          "proofs/coordination/tasks/M99-C317-B.json",
+          "proofs/coordination/tasks/M99-C317-C.json",
+          "proofs/coordination/tasks/M99-C317.json",
+          "proofs/coordination/tasks/agent217-fixed-seed-uniformity.json",
+          "proofs/coordination/tasks/agent423-uniformity-kernel-repair.json"
+        ],
+        "screened_reason": "These five records concern horizon-independent fixed finite candidate extraction/quantifier uniformity; none claims selected all-nine marker complement counting over all width-L integers. Those extraction scopes remain reserved.",
+        "census": "Original README and current/retained Lean plus current task records and issue61 inspected; existing Agent101 profile/protected-family counts and marker safety are distinct."
+      },
+      "verification": "Before implementation. Official Lean4.19.0 --trust=0 fresh complete source closure; all named export reports and exhaustive theorem/safe-definition origin audit; independent semantic review and fresh rebuild. Only propext/Classical.choice/Quot.sound.",
+      "exclusions": [
+        "No reproof of existing mirrored marker safety",
+        "No real probability/analytic limits or growing logarithmic horizon theorem",
+        "No time-zero/intersection refinements from equations4/5",
+        "No horizon-independent candidate-set extraction or quantifier swap",
+        "No fixed infinite survivor, Lychrel existence, or196 claim",
+        "No main integration slot"
+      ],
+      "latest_published_source_commit": "cf7935d24ce8180d6181de01d1050fc02b66802c",
+      "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/123",
+      "partial_checkpoint": {
+        "status": "AUTHOR_CHECKED_GENERIC_FOUNDATION_ONLY",
+        "source": "cf7935d24ce8180d6181de01d1050fc02b66802c",
+        "module_sha256": "b4d3b1f4b910438533186b60c0a88e946887aaa47978d730b7eedc5352a10ccf",
+        "literal_exports": 15,
+        "explicit_theorems": 12,
+        "explicit_definitions": 3,
+        "trust": 0,
+        "permitted_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "published_files": 24,
+        "remote_readback": "PASS source/audit/manifest/manuscript",
+        "retention": "Both failed attempts, successful third attempt, successful literal audit, all raw sources/statuses/stdout/stderr, driver, manuscript, and current runtime identity published.",
+        "remaining": "Complete decimal marker layer, all-canonical numeric enumeration/equation3, direct natural early-hit bound, full module-origin audit, independent complete source-closure gate.",
+        "independent_reviewer_assigned": "Agent #9/horizon-safety; preparation only, no independent ensemble gate claimed yet"
+      }
+    }
+  },
+  {
+    "name": "agent9-escape-factorial-bound-20261016.json",
+    "blob": "b83f318520b93d4cf0ede63662b8c722e0e5f0c4",
+    "record": {
+      "task_id": "agent9-escape-factorial-bound-20261016",
+      "owner": "Agent #9",
+      "role": "LEAN_FORMALIZATION",
+      "status": "INDEPENDENTLY_REVIEWED",
+      "source_main": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+      "claim_base": "51d31fc5fa7a620e5ef42bca8c58125cc5f7d091",
+      "source": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/continuation/strengthening_notes.txt",
+        "git_blob": "7103ee939d82740b970dd23fb91e9db50db4ea54",
+        "section": "5. Explicit uniform escape, equation (9)"
+      },
+      "target_statement": "Prove the exact algebraic estimate E(M) <= (4*kappa)^(M-1)*M! for M>=1, kappa>=1, E(1)=1 and E(M+2)=kappa*((M+2)+(M+1)*(2*E(M+1)+1)). Instantiate the unchanged DecimalProfile.sharpEscapeBound with kappa=5 to obtain E_10(M)<=20^(M-1)*M!, then transport the bound to an explicit ordinary-decimal digit-sum window theorem using unchanged existing uniform escape.",
+      "interpretation": "The generic recurrence theorem is conditional on exactly the source recurrence, with its concrete decimal instance proved unconditionally. It does not introduce or claim a new general-base arithmetic escape construction.",
+      "hypotheses": [
+        "kappa:Nat with 0<kappa in the generic algebraic theorem",
+        "E:Nat->Nat with E1=1 and the exact recurrence for every natural index",
+        "M>=1 for source factorial estimate; document any proven M0 extension",
+        "n>0 for ordinary numeric orbit window, B,s:Nat including zero"
+      ],
+      "expected_endpoints": [
+        "recurrence_factorial_bound",
+        "sharpEscapeBound_factorial",
+        "digitSum_uniform_window_factorial"
+      ],
+      "dependencies": [
+        "Std Nat powers, products and elementary inequalities; reuse factorial if available",
+        "Unchanged SharpUniformEscape and SharpUniformDecimal import closure at pinned main"
+      ],
+      "owned_paths": [
+        "proofs/contributions/agent-9/escape-factorial-bound-20261016/"
+      ],
+      "branch": "formalize/agent-9/escape-factorial-bound-20261016",
+      "ownership_check": {
+        "current_task_records": 102,
+        "matching_records": 0,
+        "source_search": "No factorial or20-power occurrences in inspected current and retained Lean corpus; scoped census candidate4. Current issue through6224980048 excludes other scopes.",
+        "retry": "Inspected newer task scopes after rejected expected-head update; no equivalent task. Absent task confirmed by supported fetch_file404."
+      },
+      "verification": {
+        "status": "PASS_SELECTED_SOURCE_CLOSURE",
+        "compiler": "Official Lean 4.19.0, commit 6caaee842e94",
+        "trust_level": 0,
+        "math_modules": 11,
+        "audited_theorems": 1456,
+        "audited_safe_definitions": 182,
+        "new_module_theorems": 19,
+        "new_module_safe_definitions": 5,
+        "literal_authored_exports": 11,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "independent_reviewer": "Agent #9/runtime-audit",
+        "additional_algebra_review": "Agent #9/horizon-safety; read-only, not an additional compiler replay",
+        "review_url": "https://github.com/taco-jpg/p196-algorithm/pull/109#pullrequestreview-5554092099",
+        "semantic_review_sha256": "1738d5e31c49c53011094bb13f7a94fc268d1631a4397803819dff9eb8d4f20c",
+        "raw_report_sha256": "cf8f2216ec521039dcffdf0cb760effb395e868be1b785d22c74166864f1f9f0",
+        "review_manifest_sha256": "575ded4526f8403a88008b119b5b9fe60b239ffddcb8b3b612d0b03422187b63",
+        "evidence_archive": "proofs/contributions/agent-9/escape-factorial-bound-20261016/evidence/complete-source-and-verification.tar.xz",
+        "evidence_archive_sha256": "b2f05e0e8c027a25e5336fc617c7853e837300bd8b3e2627d53351baf903fc09",
+        "preserved_files": 146,
+        "roundtrip_hash_check": "PASS",
+        "remote_source_readback": "PASS",
+        "retained_failures": "Initial rejected distributivity proof attempt retained. Reporting-only author origin-list parser correction documented separately, retaining original report and verifier; underlying Lean gate already checked every expected origin."
+      },
+      "exclusions": [
+        "No new discovery claim",
+        "No optimal escape time claim",
+        "No reproof of existing uniform escape theorem",
+        "No general-base normalization ownership",
+        "No real density or pointwise divergence conclusion",
+        "No infinite palindrome avoidance or196 conclusion",
+        "No main integration slot"
+      ],
+      "source_commit_published": "18a82d9b5a2bd326751621e3e7a5458117561da7",
+      "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/109",
+      "ready_for_designated_integration": true,
+      "integration_slot_claimed": false
+    }
+  },
+  {
+    "name": "agent3-three-layer-dead-prefix-20261016.json",
+    "blob": "cb2d6a978b4b1d369b8aac9d61918e320ff3a3bf",
+    "record": {
+      "task_id": "agent3-three-layer-dead-prefix-20261016",
+      "owner": "Agent #3",
+      "role": "GENERAL_RESEARCH",
+      "assigned_specialists": [
+        "/root/family_cardinality: finite Local arithmetic and dead-prefix three-Path contradiction",
+        "/root/research_triage: original ActualFiber-to-Path transport and constructed-family obstruction",
+        "/root: exact prefix subfamily enumeration, finite safety aggregate, provenance, all Git writes",
+        "/root/lean_runtime: independent statement/dependency review and fresh rebuild"
+      ],
+      "target_statement": "For every tail:List Agent9.Symbol, a,b:List Agent9.Symbol and c:List Nat, prove not(Path([14,14,14,5]++tail)0(a.map Fin.val) and Path a 0(b.map Fin.val) and Path b 0 c), with the original complete Agent9 Path predicate. Transport the exclusion through original actual_realizes and realizes_path to three original ActualFiber witnesses, retaining their equal half widths, coefficient bounds, and actual zero final carries. Apply to xs=[true,true,false]++free in the already checked Agent3 two-history construction: for each m>=0,k>=1, enumerate exactly2^m distinct protected coefficient words and initial predecessors of width2*(m+k+10), with two canonical zero-carry incoming layers, no third all-zero-carry layer in that exact ActualFiber domain, positive ordinary initial realizations, inherited safety at times0..k+3 and common numeric time4 value digitValue(target(m+9)k).",
+      "larger_obligation": "Locate a rigorous obstruction to extending the arbitrary finite-horizon, two-incoming-history construction to a third no-overflow inverse layer; distinguish finite ancestry depth from an infinite ordinary orbit.",
+      "related_theorems": [
+        "P196.Agent9.InverseFibers.actual_realizes",
+        "P196.Agent9.InverseFibers.realizes_path",
+        "P196.Agent3.TwoHistory.history_path1",
+        "P196.Agent3.TwoHistory.history_path0",
+        "P196.Agent3.TwoHistory.historyWord0_injective",
+        "P196.Agent3.TwoHistory.historyWord2_injective",
+        "P196.Agent3.TwoHistory.finite_horizon_two_history_family"
+      ],
+      "dependencies": [
+        {
+          "source_commit": "89287c9d3eb7dd801c2b1a59eff03140d47d24ec",
+          "mathematical_source_commit": "a5d84665cfe4897387d80178fbcce79cd128c23e",
+          "directory": "proofs/contributions/agent-3/two-history-20261016/",
+          "status": "INDEPENDENTLY-REVIEWED, PR91 ready"
+        },
+        {
+          "source_commit": "7be455c03d777e5e0ca1d44bea4d1330e3f764c7",
+          "directory": "proofs/coordination/patches/agent9-nooverflow-fibonacci-20261016/",
+          "usage": "Original Local, accepting Path, ActualFiber and both soundness/completeness bridges, unchanged via pinned prior dependency copies."
+        },
+        "Lean4.19.0 commit6caaee842e94"
+      ],
+      "source_argument": {
+        "snapshot": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "files": [
+          {
+            "path": "proofs/research/astra_counting_checkpoint.txt",
+            "git_blob": "6d585173ed8037a88d3d492de14fd03a98da8b5e",
+            "sha256": "e9950729ec8ba8b0e8fb1a03010880a9b8cf71ef4315cb89bae57dd2a296c151"
+          },
+          {
+            "path": "proofs/research/astra_counting_nooverflow_depth.py",
+            "git_blob": "c41f16d9853adf8320db54564385d1b3fe8fde99",
+            "sha256": "ce50b73a2499bc28b4df0e00a0488392eb4f661599ccf0ead496e754c3de0db7"
+          },
+          {
+            "path": "proofs/research/astra_counting_nooverflow_depth_results.json",
+            "git_blob": "a69e9817dbc065b74cb94d9c62af90eb0f1bd0cb",
+            "sha256": "a259bc00111a2f8ffd1fa9a601595d2c272802f4533715041dbeaff493b008f6"
+          }
+        ],
+        "status": "Preserved written/table observation only. No new generator, graph computation or Lean proof performed before this claim; concrete prefix theorem and its exact family consequence are formalization targets."
+      },
+      "intended_source_files": [
+        "proofs/contributions/agent-3/three-layer-prefix-20261016/DeadPrefix.lean",
+        "proofs/contributions/agent-3/three-layer-prefix-20261016/ActualDepth.lean",
+        "proofs/contributions/agent-3/three-layer-prefix-20261016/SharpHistoryFamily.lean",
+        "proofs/contributions/agent-3/three-layer-prefix-20261016/verification/",
+        "proofs/contributions/agent-3/three-layer-prefix-20261016/review/"
+      ],
+      "contribution_branch": "research/agent-3/three-layer-prefix-20261016-2200",
+      "status": "ACTIVE",
+      "latest_published_source_commit": "e8e82898481385c81ee566959b799a47ae81b809",
+      "verification_status": "LEAN-CHECKED checkpoint: DeadPrefix15explicit declarations and SharpHistoryFamily16explicit declarations compiled with Lean4.19.0 --trust=0; all31 literal axiom reports inspected. Dead-prefix endpoint depends only onpropext; inherited family axiom unionstandard3. Actual arithmetic transport and aggregate/fullindependentclosure are pending.",
+      "last_activity_utc": "2026-10-16T22:11:21.572Z",
+      "remaining_obligation": "Finish original ActualFiber transport and exact-depth aggregate, publish full source, run fresh pinned27module verification and independent semantic/axiom review.",
+      "scope_exclusions": [
+        "No full65state language completeness or general quantitative contraction claim.",
+        "No exclusion of mixed-overflow histories, other widths, or all unrestricted incoming trajectories.",
+        "No novel attribution for preserved computational observations.",
+        "No fixed all-time seed or196 conclusion."
+      ],
+      "ownership_check": {
+        "scope_discussion": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225498922",
+        "prior_scout_head": "d45d9eadfe63635e48f268415dff137ed5f138cc",
+        "latest_refresh": {
+          "specialist_head": "cec3ea54a6f646209d0d1059968c53370f99855f",
+          "specialist_coverage": "129-task inventory; all28 changed/new task JSONs (115376 bytes) across31commit delta fromd45d9ead read in full; no equivalent owner.",
+          "root_final_head": "b02a458471626627d5e13541acc855f9f4e2edd1",
+          "root_final_delta": "All eight commit messages and all11 changed task patches sincecec3ea54 inspected. Two newly added claims are Agent4 zero-gap auxiliary departure and Agent104620depth12 witness, both distinct. Other changes retain earlier scopes or update status. No dead-prefix/three-original-Path overlap.",
+          "preserved_owners": "Agent9 original one-layer fibers; Agent107 forward transducer; Agent113 three-column nextT abstraction; Agent100 forward overlap third gate; Agent101 weighted integer multiplicity; Agent105 numerical-target decoder."
+        }
+      },
+      "main_write_slot": false
+    }
+  },
+  {
+    "name": "agent101-all-width-inverse-maximum-20261016.json",
+    "blob": "a56d25aa1ccd03a9269c5b215da5788f48b679ec",
+    "record": {
+      "task_id": "agent101-all-width-inverse-maximum-20261016",
+      "owner": "Agent #101",
+      "assigned_subagents": {
+        "/root/numeric_bridge": "Agent101ProfileExtraction.lean and Agent101WidthFiberBounds.lean: finite actual digit-pair half/center decomposition and exact-width finite-list counting bounds",
+        "/root/runtime": "Agent101MaximumWitnesses.lean: explicit complete all-width maximizing target fibers and one-digit witness",
+        "/root": "Agent101AllWidthMaximum.lean: two-width partition and global bound; sole Git writer",
+        "/root/research_inventory": "Independent semantic review and fresh complete rebuild after PR114 evidence is finished; no source authorship in this scope"
+      },
+      "target_statement": [
+        "For every natural target Y, target width D and finite list ns of natural numbers: decimalWidth Y D -> 2<=D -> ns.Nodup -> (forall n in ns, 0<n and Lychrel196.step n=Y) -> ns.length<=9*10^(D/2-1), with Nat division/subtraction.",
+        "For each D>=2 construct Y and ns with decimalWidth Y D, ns.Nodup, (forall n, n in ns iff 0<n and Lychrel196.step n=Y), and ns.length=9*10^(D/2-1). For D=1 prove the separate universal bound1 and a complete maximizing fiber at Y=2.",
+        "Necessary reusable bridge: decompose actual finite digitPairSums into coefficientWord half/optional-center, and cover an arbitrary nonempty exact-width predecessor sublist by its original numericFiber; retain refined outer pair factors8/1 in the two-width collision case."
+      ],
+      "larger_obligation": "Quantify the full ordinary-integer branching capacity of one reverse-add inverse level, including simultaneous input widths. This extends prior fixed-profile multiplicity without changing reverse-add semantics.",
+      "related_theorems": [
+        "Agent101.profileCount_cons_le",
+        "Agent101.profileCount_nines",
+        "Agent101.mem_numericFiber",
+        "Agent101.length_numericFiber",
+        "Agent101.same_width_step_eq_iff_digitPairSums",
+        "Agent105WidthSupport9df76b.step_width_cases",
+        "Agent105WidthSupport9df76b.cross_width_carries",
+        "Agent105CrossWidth9df76b.cross_width_outer",
+        "Agent105CrossWidth9df76b.cross_width_short_length",
+        "Agent105CrossWidth9df76b.cross_width_target_digits"
+      ],
+      "dependencies": [
+        {
+          "source_commit": "a5ebd78fdc6713d19c4ce09762862f5c6293e8f7",
+          "status": "PR85 integrated at1559b845c69663eda40cdbf63718ab29c570131d",
+          "modules": [
+            "Agent101DigitPairs",
+            "Agent101MultiplicityBounds",
+            "Agent101SplitEnumeration",
+            "Agent101NumericFibers"
+          ]
+        },
+        {
+          "source_commit": "5923015f86eb1ef898becd77ce2ee328ff338b69",
+          "status": "Agent105 reviewed PR113 source unchanged",
+          "modules": [
+            "Agent105WidthSupport9df76b",
+            "Agent105CrossWidth9df76b"
+          ]
+        },
+        {
+          "module": "Lychrel196Research",
+          "source_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c"
+        }
+      ],
+      "intended_source_files": [
+        "proofs/Agent101ProfileExtraction.lean",
+        "proofs/Agent101WidthFiberBounds.lean",
+        "proofs/Agent101MaximumWitnesses.lean",
+        "proofs/Agent101AllWidthMaximum.lean",
+        "proofs/contributions/agent-101/all-width-inverse-maximum-20261016/"
+      ],
+      "contribution_branch": "research/agent-101/all-width-inverse-maximum-20261016T2204Z",
+      "source_baseline": "71691d50497edc83247b3571af276bb0ee438491",
+      "status": "ACTIVE",
+      "latest_published_source_commit": "9bf1b2c35129500da39388727e17523f55fae80e",
+      "verification_status": "First finite profile reconstruction module author LEAN-CHECKED:7 public theorems, explicit trust0 and standard3 axioms, exact published readback. Two original Agent105 dependencies compiled unchanged. Full maximum/attainment and independent closure audit remain WIP.",
+      "last_activity_timestamp": "2026-10-16 22:09:51 UTC",
+      "remaining_obligation": "Complete fixed-width refined bounds, two-width aggregate, full maximizing witness fibers; publish incremental checked sources, then full fresh audit and independent semantic review.",
+      "ownership_check": {
+        "full_census_commit": "e685d582b0bd1035733a1f86751af54b07e78792",
+        "full_census_tasks": 124,
+        "inspected_deltas": [
+          "e685d582..004d3e42",
+          "004d3e42..cec3ea54",
+          "cec3ea54..3fbf6160"
+        ],
+        "final_checked_head": "53448de233d15fdddcc992e4440961f4e3a80f55",
+        "source_scout": "proofs/contributions/agent-101/all-width-max-scout-20261016/QUEUE-SCOUT.md",
+        "source_scout_sha256": "cd506d67e9d0e0fbf3ce618a49404adb10ca7c8f1c5e45315fe7037909aa7c95",
+        "scope_proposal_comment": 6225400478,
+        "explicit_complementary_acknowledgment": 6225465811,
+        "latest_issue_seen": 6225545606,
+        "comparison": "All124 prior records and all intervening changed/new task patches read. No equivalent all-target ordinary-integer maximum. Agent1059df76b explicitly says maximum is not his claim; his subsequent arbitrary-target full enumeration remains distinct. New Agent3 dead-prefix, Agent4 zero-gap departure and Agent104620 witness do not overlap.",
+        "retry_inspection": "First guarded candidate838922c8 was not applied: remote task404, head advanced3fbf6160->32b2f562 through four commits. Full task/role patches and other path inventory reviewed: Agent11PR88 integration and Agent10carry-observability archived submissions only; no all-target inverse maximum scope. Second unpublished bd90f387 raced with Agent1 status+periodic-safety+PR104-review claim53448de2; all five patches read, exact scopes disjoint."
+      },
+      "exclusions": [
+        "No implementation or takeover of Agent105 numerical decoder, local solver/scanner, or its soundness/completeness",
+        "No general decoder-profile union enumeration; Agent105 proposed arbitrary-target executable list remains separate and may consume the shared finite profile lemma",
+        "No classification of all maximizing targets or sharp maximum restricted to double-width targets",
+        "No redo of Agent103 specific d5 fibers, Agent9 full canonical marker ensemble, or coefficient-word stepWord fiber maxima",
+        "No infinite orbit or P196 conclusion; no main integration slot"
+      ],
+      "main_write_slot": false
+    }
+  },
+  {
+    "name": "agent105-9df76b-all-predecessors-20261016.json",
+    "blob": "199f879357afa807064083982b863155870d51b0",
+    "record": {
+      "task_id": "agent105-9df76b-all-predecessors-20261016",
+      "owner": "Agent #105",
+      "session": "9df76b",
+      "role": "GENERAL_RESEARCH",
+      "status": "CLAIMED",
+      "assigned_subagents": {
+        "runtime105": "Computable projections of the existing coefficientWord, roundtrip using Agent101's existing symmetric-list existence theorem, and wordFiber membership/Nodup; no new existence decomposition.",
+        "structure105": "Connect the decoded finite q-list to wordFiber and prove exact fixed-source-width positive ordinary predecessor membership.",
+        "root": "Combine the two only possible input widths into a complete duplicate-free predecessor list; sole Git writer.",
+        "scope105": "Independent statement/interpretation review and source-pinned complete fresh Lean rebuild after frozen decoder acceptance."
+      },
+      "target_statement": "For every Canonical Y e W, construct an executable finite list predecessors e W such that for every natural n, n is a member iff 0<n and Lychrel196.step n=Y, and prove the list Nodup. Compute it by flattening Agent101 numericFiber over each of the two possible decoded widths W and W-1; zero-width and leading-one overflow guards remain those of the verified numerical decoder. For a successful exact finite decoded q list, reuse Agent101.exists_coefficientWord_of_reverse, prove only computational half/center projection identities on coefficientWord, and connect the resulting wordFiber to existing actual numericFiber membership. Preserve one-digit targets, trailing-zero predecessors, arbitrary target nonpalindromicity, empty fibers and simultaneous widths.",
+      "larger_obligation": "Provide an exact executable ordinary-integer inverse layer suitable for complete finite backward reachability, reusing the proved scalar decoder and digit splitting instead of enumerating all numbers below a magnitude bound.",
+      "related_theorems": [
+        "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff",
+        "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff_payload",
+        "Agent105NumericDecoder9df76b.decodeNumerical_isSome_iff",
+        "Agent105WidthSupport9df76b.step_width_cases",
+        "Agent101.exists_coefficientWord_of_reverse",
+        "Agent101.coefficientWord_half_length",
+        "Agent101.mem_numericFiber",
+        "Agent101.numericFiber_nodup",
+        "Agent101.decimalWidth_unique"
+      ],
+      "dependencies": [
+        {
+          "source_commit": "64bb07e9f8d3ffcfd141d58e01ec7e27964c5e5d",
+          "registry": "proofs/Agent105NumericDecoder9df76b.registry.json",
+          "status": "All29 exports author checked; separate12-module canonical and full trust0 replays PASS1096 theorem constants, final review evidence being sealed."
+        },
+        {
+          "source_commit": "9bf1b2c35129500da39388727e17523f55fae80e",
+          "path": "proofs/Agent101ProfileExtraction.lean",
+          "git_blob": "5a5ef0e2d0355362abb84ef48b82ca8d39cd156f",
+          "sha256": "fff6917b100aeec40e353abe4a3f8d27f6561d6859a1feeac9135c22cd8c836b",
+          "status": "Published actual seven-theorem author trust0 PASS; existing original NumericFibers only import."
+        }
+      ],
+      "intended_source_files": [
+        "proofs/Agent105WordFiber9df76b.lean",
+        "proofs/Agent105DecodedFiber9df76b.lean",
+        "proofs/Agent105Predecessors9df76b.lean",
+        "proofs/Agent105PredecessorControls9df76b.lean",
+        "proofs/Agent105AllPredecessors9df76b.registry.json",
+        "proofs/contributions/agent-105/all-predecessors-9df76b-20261016/"
+      ],
+      "contribution_branch": "research/agent-105/all-predecessors-9df76b-20261016",
+      "base_source_commit": "64bb07e9f8d3ffcfd141d58e01ec7e27964c5e5d",
+      "latest_published_source_commit": null,
+      "verification_status": "WIP: source and ownership scout complete; no new mathematical implementation before this guarded claim succeeds.",
+      "last_activity_timestamp": "2026-10-16T22:11:30Z",
+      "remaining_obligation": "After successful expected-head claim/readback, implement the small executable adapter and fixed-width fiber bridge, then full all-width membership and Nodup; preserve failed attempts, publish useful checked checkpoints, audit and independently rebuild.",
+      "ownership_check": {
+        "coordination_parent": "348dd97d72946950e49f3ff020a4aeb1046b10d8",
+        "full_task_census_head": "3fbf616030a09c373b62b285827ff4851ada2052",
+        "full_task_count": 132,
+        "scout_delta_read_through": "0ab66c9a470ae5391b4ee4f8fc31e9b2569e8aca",
+        "updated_task_count": 139,
+        "root_delta_read_through": "70bf629be655f3bdfa6afc559a1ef764c25a0937",
+        "scope_proposals": [
+          6225465811,
+          6225616331
+        ],
+        "complementary_acknowledgments": [
+          6225596467,
+          6225648325,
+          6225657754
+        ],
+        "source_meaning_check": "Actual101 protected/nonpal source covers fixed profiles or a specified family;103 complete predecessor fiber only targets33*10^(2*r+2)+22.101 new maximum claim explicitly excludes generic decoded-profile union; reuse its newly published symmetric-list existence decomposition, adding only executable projection adapter needed by decoder. Root inspected all later task patches through70bf: safety/review/status updates only, no equivalent generic list target.",
+        "retry": {
+          "unpublished_commit": "21ee7e6202ead136c57e65319be1a1699b898c18",
+          "review": "Read the sole intervening Agent3 dead-prefix task update in full: source/status changed, exact restricted three-layer target unchanged and distinct."
+        }
+      },
+      "scope_exclusions": [
+        "No reproof or ownership of Agent101 symmetric-list/actual digitPairSums existence decomposition.",
+        "No Agent101 sharp all-width maximum, attainment, fixed-profile splitting/counting or initial-palindrome filter.",
+        "No Agent103 residual-five specialization or first-hit2 family.",
+        "No new numerical decoder/scanner or G/nextColumns inverse relation.",
+        "No finite backward search instance or claimed horizon result in this task.",
+        "No infinite-safe orbit,196 conclusion, main-write slot or other Agent105 session ownership."
+      ],
+      "main_write_slot": false
+    }
+  },
+  {
+    "name": "agent100-groupII-rebased-overlap-20261016.json",
+    "blob": "a277d7843d3509cf60a581ce06fb8d451975bea3",
+    "record": {
+      "task_id": "agent100-groupII-rebased-overlap-20261016",
+      "owner": "Agent #100",
+      "session": "session20261016T2052Z",
+      "assigned_subagents": [
+        "groupii_dynamics: bounded concrete diagnostics, corrected-component profiles and admissibility",
+        "runtime_setup: signed correction algebra and exact finite overlap equation",
+        "scope_audit: independent interpretation, controls and fresh source rebuild after current evidence handoff",
+        "root: ordinary-integer consequences, dependency assembly, sole Git writer"
+      ],
+      "target_statement": [
+        "For every UpperDomain r p u v (r>=1,5<=p<=9,5<=u<=8,5<=v<=6,u+v<=13), let A2 be the finite zero extension of the actual componentOrbit at time2 and length2*r+7. Define signed Delta(i)=1 at r+1,r+5, -1 at r+2,r+4 and0 elsewhere. Investigate and prove the candidate that CInt(i)=(A2(i):Int)+Delta(i) is everywhere nonnegative, at most18 on the represented prefix, and its exact Nat realization C is Admissible at width2*r+7. Include symmetry, center parity, positive exterior and zero tail; conversion Int.toNat must be proved exact, not conceal negative coefficients.",
+        "Prove the actual time2 whole word of width2*r+8 equals shiftOne(C) at every valid index. Reuse the already checked exact six-position defect; do not replace actual dynamics or silently omit r=1. If the full-domain candidate fails, preserve a precise formal counterexample and update the target/status before any narrowed replacement claim.",
+        "Lift the resulting full-prefix rebased equality to every canonical ordinary initial realization and establish a positive ordinary realization of C through the unchanged realization theorem. Compare only pair columns; no equality or eleven-fold relation between arbitrary integer representatives is assumed."
+      ],
+      "related_theorems": [
+        "Agent100.GroupIIOverflow.actual_two_step_defect",
+        "Agent100.GroupIIOverflow.component_two_step_upper",
+        "Agent100.GroupIIOverflow.whole_two_step_upper",
+        "Agent100.GroupIIOverflow.finite_next_component_columns",
+        "Agent100.GroupIIOverflow.numeric_two_step_representation",
+        "FoldedDecimal.valid_word_realizable"
+      ],
+      "dependencies": [
+        {
+          "source_commit": "686cac2696e4e4e059c1b9d6a313f5519f6f4176",
+          "pull_request": 125,
+          "scope": "Frozen complete five-module GroupII upper-overflow proof and exact18-module closure; independent fresh build and all52 semantic/axiom checks passed, final evidence publication in progress."
+        },
+        {
+          "source_commit": "8874b2ee291dc7a253b3b89fbbf0efd86812ae4d",
+          "scope": "Agent8 general common-overflow transport reused transitively without changes."
+        }
+      ],
+      "intended_source_files": [
+        "proofs/Agent100GroupIIRebaseAlgebra.lean",
+        "proofs/Agent100GroupIIRebaseProfiles.lean",
+        "proofs/Agent100GroupIIRebaseNumeric.lean",
+        "proofs/contributions/agent-100/groupII-rebase-20261016/"
+      ],
+      "contribution_branch": "research/agent-100/groupII-rebase-20261016T2212Z",
+      "status": "CLAIMED",
+      "latest_published_source_commit": null,
+      "verification_status": "WIP candidate only. No substantive new mathematical search or Lean proof begun before guarded claim; source/ownership reconnaissance completed.",
+      "last_activity_timestamp": "2026-10-16 22:13:53 UTC",
+      "remaining_obligation": "After successful claim, test the explicit full-domain corrected component with retained exact finite controls, prove or refute its admissibility and exact finite overlap, lift to ordinary realizations, then independently rebuild/audit and publish.",
+      "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+      "scope_proposal_comment": 6225608334,
+      "ownership_check": {
+        "independent_snapshot": "0ab66c9a470ae5391b4ee4f8fc31e9b2569e8aca",
+        "task_count": 139,
+        "related_task_records_read": 17,
+        "parent_read_through": "0b7efb7be78473bd34df5e6b95c06e23efa50b9e",
+        "comparison": "Separate runtime_setup read latest task directory,17 related task bodies and exact source declarations. No equivalent UpperDomain actual-time2 modified-component theorem found. Parent inspected all delta from0ab66c9 through348dd97: Agent1 periodic safety and PR104 statement-preserving review repair, Agent3 dead-prefix checkpoint, Agent6 integration, and our three status updates are distinct. Issue61 refreshed through6225680857. Other Agent100/session212248Z WIP shiftOne_first_le_second/no_third_overlap at source586bf0b is solely original(1,1,6) time6; not imported or reclaimed.",
+        "retry_inspection": "The sole new Agent105/session9df76b all-predecessors claim was read in full: executable complete ordinary preimage lists via numerical decoder and digit fibers; explicitly excludes new G/nextColumns inverse relation. It does not claim this specialized actual-time2 finite component correction. Next delta0b7efb7 is solely Agent102 all-parameter static-run decision status/evidence, with unchanged target, also distinct.",
+        "coordination_parent": "0b7efb7be78473bd34df5e6b95c06e23efa50b9e"
+      },
+      "scope_exclusions": [
+        "No replacement or authorship claim for Agent8 generic defect transport",
+        "No generic shiftOne inverse theorem or other Agent100/session212248Z time6 nonnegative inverse obstruction",
+        "No GroupIII, original first-hit scopes, other shifts or p>=10",
+        "No claim C is the actual orbit of the original component",
+        "No recurrence closure, future repair, output safety, infinite-safe orbit or196 conclusion",
+        "No main integration slot"
+      ],
+      "publication_authority": "The user's persistent research assignment authorizes isolated branches, guarded ownership claims, incremental source publication and formal review."
+    }
+  },
+  {
+    "name": "agent101-protected-family-numeric-multiplicity-20261016.json",
+    "blob": "1f5e9118ef67c72c9602e0d0cf7841e1d41fdde0",
+    "record": {
+      "owner": "Agent #101",
+      "status": "ACTIVE",
+      "latest_published_source_commit": "bbbcc8572f9c9f9c2e17b39d0358c8eda34d8386",
+      "verification_status": "LEAN-CHECKED: complete integer family size5*11^m, unique palindrome, complete initially nonpalindromic family size5*11^m-1 with Nodup/positive/common width/nonempty. Separate fresh source count and palindrome reviews published; filtered review PASS being packaged. New Agent3-based full safety chain compiling.",
+      "last_activity_utc": "2026-10-16 21:45:59 UTC",
+      "contribution_branch": "research/agent-101/nonpalindromic-protected-fibers-20261016T2123Z",
+      "ownership_check": {
+        "coordination_parent": "95a4a90e4c31d1a23edef07898dfc9bcb496941e",
+        "scope_proposal_comment": 6224940248,
+        "main": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+        "basis": "All 86 current task records at5603baced and subsequent delta through9f7ff8f inspected. Current source declarations and relevant historical/remote fiber sources checked; no equivalent profile-level exact initial-palindrome removal or specified-family ordinary-integer weighting found.",
+        "retry_inspection": "First unpublished candidate db0154cc lost an expected-head race. Inspected Agent102 affine-run claim, Agent104 prefix620 claim, Agent3/7 status updates, and Agent11 PR80 integration role; none overlaps these exact targets. Second unpublished candidate3d30d506 rejected after advancement. New Agent4 Int/legacy normalization and zero-spacer exhaustion targets plus Agent11 PR80 integration updates were read; neither concerns initial palindrome fiber subtraction or this exact integer-family weighting."
+      },
+      "main_write_slot": false,
+      "publication_authority": "Current direct user assignment authorizes isolated contribution branches, remote guarded claims and frequent publication.",
+      "task_id": "agent101-protected-family-numeric-multiplicity-20261016",
+      "assigned_subagents": [
+        "/root/numeric_bridge: exact weighted finite union and disjointness",
+        "/root/runtime: existing normalization value interface reuse and arithmetic safety bridge",
+        "/root: aggregate and independent review coordination"
+      ],
+      "target_statement": "For m>=0 and k>=1, take Agent3's already defined inputWord xs k with xs ranging over all Boolean lists of length m, inputHalf=[14]++map choice xs++replicate k18, and choice false=5/true=14. Enumerate every ordinary positive integer digit realization of these specified profiles, prove the union duplicate-free with exact size5*11^m, and prove a common second ordinary numerical iterate by consuming Agent3's existing inputWord_step/common_next_value. Prove exactly one initial palindrome in that union and hence5*11^m-1 seeds nonpalindromic at every time0..k+1 using Agent3's normalized finite-horizon theorem. Supply or reuse the exact value-preserving list-normalization compatibility needed for the original integer bridge, preserving mathematical definitions and attribution.",
+      "related_theorems": [
+        "P196.Agent3.OverflowHorizon.familyWords_exact",
+        "P196.Agent3.OverflowHorizon.inputWord_injective",
+        "P196.Agent3.OverflowHorizon.inputWord_normalized_safe",
+        "P196.Agent3.OverflowHorizon.inputWord_common_next_value",
+        "Agent101.length_numericFiber_cons",
+        "Lychrel196.orbit_from_step"
+      ],
+      "dependencies": [
+        {
+          "commit": "6576cee93d18145c638f298b0abcb1cd0a0f451e",
+          "path": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/"
+        },
+        {
+          "commit": "326645944168ad2b035a1e653b61527d79684156",
+          "module": "Agent101NumericFibers"
+        },
+        "agent101-nonpalindromic-fiber-count-20261016",
+        {
+          "commit": "0be2a5aad6060d052141246d09bf05a8068f7c3e",
+          "path": "proofs/contributions/agent-3/two-history-20261016/IntegerInterfaces.lean",
+          "status": "published exact bridge; integrating current dependency closure"
+        }
+      ],
+      "intended_source_files": [
+        "proofs/Agent101ProtectedMultiplicity.lean",
+        "proofs/Agent101ProtectedPalindrome.lean",
+        "proofs/Agent101ProtectedNonpalindromic.lean",
+        "proofs/Agent101ProtectedFamily.lean",
+        "proofs/Agent101ProtectedSafety.lean",
+        "proofs/Agent101NormalizationValue.lean",
+        "proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/"
+      ],
+      "remaining_obligation": "Complete 5*11^m-1 filtered family and combine time0..k+1 safety/common second iterate. Consume Agent3 IntegerInterfaces at0be2a5aa; preserve checked SafeHigh alternative. Complete combined audit and independent reviews.",
+      "scope_exclusions": [
+        "Counts exactly the integer realizations of the specified Agent3 profile family, not every second preimage of its common target",
+        "No ownership of Agent3 stepWord formulas or two-incoming-history construction",
+        "No claim excluding family-external or different-width predecessors",
+        "No fixed finite seed safe for all times",
+        "Existing general normalization theorems must be reused where available"
+      ]
+    }
+  }
+]

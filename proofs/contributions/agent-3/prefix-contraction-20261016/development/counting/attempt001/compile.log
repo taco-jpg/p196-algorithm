@@ -1,0 +1,68 @@
+BinaryBlockCounts.lean:25:0: warning: automatically included section variable(s) unused in theorem 'P196.Agent3.PrefixContraction.BinaryCount.runBits_nil':
+  [DecidableEq Q]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq Q] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+BinaryBlockCounts.lean:28:0: warning: automatically included section variable(s) unused in theorem 'P196.Agent3.PrefixContraction.BinaryCount.runBits_cons':
+  [DecidableEq Q]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq Q] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+BinaryBlockCounts.lean:32:0: warning: automatically included section variable(s) unused in theorem 'P196.Agent3.PrefixContraction.BinaryCount.runBits_append':
+  [DecidableEq Q]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq Q] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+BinaryBlockCounts.lean:122:55: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  j ≥ 0
+  i ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f + i - j ≥ 1
+  e ≥ 0
+  d ≥ 0
+  d - e ≥ 0
+  c ≥ 0
+  a ≥ 0
+  a - c ≥ 0
+where
+ a := ↑((2 ^ k - 1) ^ b) * ↑(2 ^ r)
+ c := ↑(survivorCount delta dead q (k * b + r))
+ d := ↑(2 ^ k - 1) * ↑(survivorCount delta dead q (k * b + r))
+ e := ↑(survivorCount delta dead q (k * b + r + k))
+ f := ↑k * ↑b
+ g := ↑r
+ i := ↑k
+ j := ↑k * ↑(b + 1)
+'P196.Agent3.PrefixContraction.BinaryCount.runBits' does not depend on any axioms
+'P196.Agent3.PrefixContraction.BinaryCount.survivingWords' does not depend on any axioms
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount' does not depend on any axioms
+'P196.Agent3.PrefixContraction.BinaryCount.runBits_nil' does not depend on any axioms
+'P196.Agent3.PrefixContraction.BinaryCount.runBits_cons' does not depend on any axioms
+'P196.Agent3.PrefixContraction.BinaryCount.runBits_append' depends on axioms: [propext, Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.runBits_dead' does not depend on any axioms
+'P196.Agent3.PrefixContraction.BinaryCount.mem_survivingWords' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivingWords_nodup' depends on axioms: [propext, Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_zero' depends on axioms: [propext, Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_succ' depends on axioms: [propext, Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_dead' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_le_power' depends on axioms: [propext, Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_block_loss' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_add_block' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_blocks' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'P196.Agent3.PrefixContraction.BinaryCount.survivorCount_div_mod' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

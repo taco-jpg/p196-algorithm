@@ -1,0 +1,68 @@
+/workspace/scratch/4ce7c54d31f6/p196-prefix/proofs/contributions/agent-3/prefix-contraction-20261016/PrefixMachine.lean:90:2: error: failed to synthesize
+  Decidable
+    (∀ (s : Symbol) (p : State),
+      match oneStep s p with
+      | none => True
+      | some (q, x) => Local s p q ↑x)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/scratch/4ce7c54d31f6/p196-prefix/proofs/contributions/agent-3/prefix-contraction-20261016/PrefixMachine.lean:113:2: error: failed to synthesize
+  Decidable
+    (∀ (bit : Bool) (p : State),
+      match oneStep (coefficient bit) p with
+      | none => True
+      | some (fst, x) => x ≠ 9)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/scratch/4ce7c54d31f6/p196-prefix/proofs/contributions/agent-3/prefix-contraction-20261016/PrefixMachine.lean:122:2: error: failed to synthesize
+  Decidable
+    (∀ (bit : Bool) (p₁ p₂ : State),
+      match oneStep (coefficient bit) p₁ with
+      | none => True
+      | some (fst, x) =>
+        match oneStep x p₂ with
+        | none => True
+        | some (fst, y) => y ≠ 9)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/scratch/4ce7c54d31f6/p196-prefix/proofs/contributions/agent-3/prefix-contraction-20261016/PrefixMachine.lean:137:13: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  oneStep x p.snd.fst
+bit : Bool
+p q : Triple
+x y z : Symbol
+hx : Local (coefficient bit) p.fst q.fst ↑x
+hy : Local x p.snd.fst q.snd.fst ↑y
+hz : Local y p.snd.snd q.snd.snd ↑z
+hs₁ : oneStep (coefficient bit) p.fst = some (q.fst, x)
+hx9 : x ≠ 9
+hs₂ : oneStep x p.snd.fst = some (q.snd.fst, y)
+hh :
+  match some (q.fst, x) with
+  | none => True
+  | some (fst, x) =>
+    match oneStep x p.snd.fst with
+    | none => True
+    | some (fst, y) => y ≠ 9
+⊢ y ≠ 9
+'P196.Agent3.PrefixContraction.Triple' does not depend on any axioms
+'P196.Agent3.PrefixContraction.coefficient' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.nextCarry' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.emitted' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.oneStep' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.machineStep' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.advance' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.prefixRun' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.coefficient_false' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.coefficient_true' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.machineStep_initial' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.table_nonzero_of_local' depends on axioms: [propext, Quot.sound]
+'P196.Agent3.PrefixContraction.nextCarry_complete' depends on axioms: [propext, Quot.sound]
+'P196.Agent3.PrefixContraction.oneStep_valid' depends on axioms: [propext, sorryAx]
+'P196.Agent3.PrefixContraction.oneStep_sound' depends on axioms: [propext, sorryAx]
+'P196.Agent3.PrefixContraction.oneStep_coverage' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent3.PrefixContraction.coefficient_ne_nine' depends on axioms: [propext]
+'P196.Agent3.PrefixContraction.first_label_ne_nine' depends on axioms: [propext, sorryAx]
+'P196.Agent3.PrefixContraction.second_label_ne_nine' depends on axioms: [propext, sorryAx]
+'P196.Agent3.PrefixContraction.machineStep_coverage' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent3.PrefixContraction.machineStep_sound' depends on axioms: [propext, sorryAx]
+'P196.Agent3.PrefixContraction.machineStep_eq_some_iff' depends on axioms: [propext, sorryAx, Quot.sound]
