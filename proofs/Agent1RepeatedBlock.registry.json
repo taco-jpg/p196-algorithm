@@ -17,7 +17,7 @@
     "agent1-repeated-block": {
       "scope": "Exact repeated-block normalization, fixed contexts, independent two-band carry invariance and symmetric normalized-list length. No canonical integer-width, quotient-cycle or all-time orbit claim.",
       "roots": [
-        "Agent1RepeatedBlockContext"
+        "Agent1RepeatedBlockBoundary"
       ],
       "modules": {
         "PeriodObstructions": {
@@ -76,6 +76,14 @@
           "imports": [
             "Agent1RepeatedBlock"
           ]
+        },
+        "Agent1RepeatedBlockBoundary": {
+          "path": "proofs/Agent1RepeatedBlockBoundary.lean",
+          "sha256": "fd1dd6626cc6acba656d8d34fddc327bf7cfa6d8b5dd826b262117e1562628d5",
+          "git_blob": "45899535582ccb72487c8f489b2d35268eb2b098",
+          "imports": [
+            "Agent1RepeatedBlockContext"
+          ]
         }
       }
     }
@@ -89,6 +97,22 @@
         "Agent1.RepeatedBlock.normalize_context",
         "Agent1.RepeatedBlock.terminalCarry_symmetric_bands",
         "Agent1.RepeatedBlock.normalize_symmetric_bands_length"
+      ]
+    },
+    {
+      "id": "A1-BOUNDARY-WITNESSES",
+      "project": "agent1-repeated-block",
+      "endpoints": [
+        "Agent1.RepeatedBlock.Boundary.empty_block_retains_carry",
+        "Agent1.RepeatedBlock.Boundary.all_nines_retain_incoming_bit",
+        "Agent1.RepeatedBlock.Boundary.first_copy_can_be_transient",
+        "Agent1.RepeatedBlock.Boundary.zero_copies_can_have_different_carry",
+        "Agent1.RepeatedBlock.Boundary.coefficient_nineteen_breaks_idempotence",
+        "Agent1.RepeatedBlock.Boundary.incoming_two_breaks_idempotence",
+        "Agent1.RepeatedBlock.Boundary.unbounded_prefix_breaks_context",
+        "Agent1.RepeatedBlock.Boundary.unbounded_middle_breaks_two_bands",
+        "Agent1.RepeatedBlock.Boundary.unbounded_suffix_is_not_bit_overflow",
+        "Agent1.RepeatedBlock.Boundary.normalization_preserves_zero_columns"
       ]
     }
   ],
