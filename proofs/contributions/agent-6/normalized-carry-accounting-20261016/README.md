@@ -16,13 +16,25 @@ The source baseline is the reviewed PR115 head
 `6642f91e3a0a9898a150240b919d2b110d07a1b6`. Four earlier stale-head attempts are
 retained in the scope receipt; none reserved ownership or started proof work.
 
-**Author-checked source checkpoint.** All three mathematical sources are frozen.
-Their sixteen public theorems have passed Lean 4.19.0 kernel compilation and
-literal axiom audits, with only the standard three permitted axioms in their
-combined dependencies. The structural module passed its first attempt; the
-accounting module passed its third after two retained rewrite failures; the
-controls passed both their initial and final-import builds. Full independent
-execution and exact published-source review have not yet completed.
+**Independently rebuilt source.** All three mathematical sources and the registry
+are frozen at published commit `affa037ad537f3ae66a97008991850ce397f613a`.
+All sixteen public theorem declarations passed author kernel checks. The genuine
+nonauthor fresh twenty-one-module trust-zero rebuild and complete audit also
+passed: 712 theorem constants, 261 safe definitions, and 274 public theorem
+exports across the closure. The accepted dependency union is exactly the three
+permitted foundational axioms. New-module theorem-constant counts are 3, 9, and
+18; these include generated constants and are distinct from the 3, 6, and 7
+public source theorem declarations.
+
+The published portable replay separately passed on that exact remote source,
+with a clean tracked tree, twenty-one module commands plus `ProjectAudit`, then
+all sixteen literal export audits at trust zero. This is a scoped pass, not a
+repository-wide result. The structural module passed its first author attempt;
+the accounting module passed its third after two retained rewrite failures;
+the controls passed both their initial and final-import builds. Failed sources
+and their error-recovery axiom messages remain excluded from accepted roots.
+Final publication binding and the exact-head formal PR review are tracked in
+the independent evidence and publication records.
 
 ## Exact interfaces
 
@@ -112,10 +124,35 @@ consumer and is the sole Git writer. The runtime specialist authors none of
 these modules and reviews them independently within the same session. Shared
 authentication does not imply an external reviewer or separate account.
 
-The upcoming evidence checkpoint retains the complete scope archives, source
-and ownership census, independent review planning, and fresh execution results.
-Author attempts already appear under `verification/author/`; every failed
-attempt is separate from the accepted source and is excluded from the registry.
+`scope/ARCHIVES.json` accounts for the complete lossless source and ownership
+census and independent planning archives, with original paths, member hashes,
+stored hashes, and exact recovery commands. Author attempts are under
+`verification/author/`; published-source portable execution is under
+`verification/canonical-published-affa037/`. The independent package retains its
+complete fresh sources, commands, raw logs, source/object/compiler hashes,
+semantic review, full axiom records, and remote publication binding. Compiled
+objects and duplicate runtime infrastructure are separately inventoried.
+
+## Published evidence inventory
+
+`verification/independent/PORTABLE_MANIFEST.json` accounts for all 153 archived
+files (3,625,507 original bytes) and 39 excluded compiled objects with their
+original hashes. The 559,374-byte archive has SHA256
+`0d932dd94d2b1d0dbac7d032dcc24179fdafb8a154a3f045d28e41593478f00b`.
+Run `python3 verification/independent/verify_package.py` from this contribution
+folder to verify every stored member; `RECOVER.md` gives the extraction command.
+The readable semantic report, formal review text, full verification result and
+remote binding are exact copies of their archived originals.
+
+The accepted semantic text removes an extra unexecuted numerical illustration
+from a draft. Both drafts, both binding receipts, and the documentation-only
+correction remain preserved; no theorem or execution result changed.
+`EVIDENCE_SEAL.json` checks the frozen 21-source closure and the unchanged
+registry, dependencies, and replay script against the published source.
+The final formal GitHub COMMENT and evidence-only remote commit are recorded on
+PR137 and in the task record, avoiding a recursive self-commit identifier here.
+The separately archived PR107 follow-up is a read-only scope report and records
+no changed owner checkpoint or new execution-review opportunity.
 
 ## Mathematical limits
 

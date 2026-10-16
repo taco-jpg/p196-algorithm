@@ -1,0 +1,21 @@
+import CarryControls
+import Lean
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+
+#print axioms Agent6.NormalizedCarry.gam_eq_overflow
+#print axioms Agent6.NormalizedCarry.overflow_stripSuffix_of_le18
+#print axioms Agent6.NormalizedCarry.overflow_stripSuffix_of_bounded
+#print axioms Agent6.CertificateCarryAccounting.overflowBit_stateOuter
+#print axioms Agent6.CertificateCarryAccounting.rowOverflowSum_eq_totalGam_of_bounded
+#print axioms Agent6.CertificateCarryAccounting.valid_rowOverflowSum_eq_totalGam
+#print axioms Agent6.CertificateCarryAccounting.checked_rowOverflowSum_eq_totalGam
+#print axioms Agent6.CertificateCarryAccounting.checked_weighted_balance_totalGam
+#print axioms Agent6.CertificateCarryAccounting.checked_weighted_balance_gains
+#print axioms Agent6.CarryControls.phase19_carry_drift
+#print axioms Agent6.CarryControls.phase2_unbounded_indicator
+#print axioms Agent6.CarryControls.phase18_empty_boundary
+#print axioms Agent6.CarryControls.neutral_and_zero_boundaries
+#print axioms Agent6.CarryControls.bounded_phase19_boundary
+#print axioms Agent6.CarryControls.unrestricted_strip_carry_invariance_false
+#print axioms Agent6.CarryControls.indicator_eq_gam_without_bounded_false

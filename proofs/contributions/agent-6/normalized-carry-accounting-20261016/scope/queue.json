@@ -1,0 +1,98 @@
+{
+  "updated_at": "2026-10-16 22:23 UTC",
+  "completed_previous_tasks": [
+    "PR90 exterior coordinates INTEGRATED at3a405f49",
+    "PR115 certificate filter REVIEWED/Ready head dca30e7, base main"
+  ],
+  "queue": [
+    {
+      "rank": 1,
+      "id": "normalized_carry_accounting",
+      "status": "ACTIVE_CLAIMED",
+      "target": "Bounded raw B implies overflowBit(stateOuter s)=gam s, enabling the normalized coordinate balance to consume original totalGam and band gains.",
+      "dependencies": [
+        "Agent109.norm_band_tail",
+        "Agent109.norm_append",
+        "Agent109.Outer.stripSuffix_spec",
+        "Agent6.CertificateCoordinates.checked_row_weighted_balance",
+        "Agent110.Accounting.totalGam_eq_twice_gains"
+      ],
+      "first_action": "Finish current author checks, publish exact source, then nonauthor fresh21-module audit.",
+      "ownership": "Agent6 task agent6-normalized-carry-accounting-20261016, claim1bd2354c."
+    },
+    {
+      "rank": 2,
+      "id": "actual_decimal_one_step_rho_gap",
+      "status": "QUEUED_REQUIRES_FRESH_DECLARATION_AND_OWNERSHIP_CHECK",
+      "target": "Refine Agent109.Outer.actual_step_outer to its exact rho-selected carry branch and retain the suffix-trim witness j: G = g + gamma + j and |B'| + j = |B| + 1; output complementary band is h + gamma.",
+      "dependencies": [
+        "OuterBridge.actual_step_outer",
+        "TemplateStep.actual_template_step",
+        "OuterBridge.stripSuffix_spec",
+        "CoordinateThreshold.overflow_eq_one_iff"
+      ],
+      "source_blobs": [
+        "06ed5a8660e83b2dde192a10c822c9317a79483b",
+        "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+        "34ddc74962d8bbef954f1626a80593de60906215"
+      ],
+      "hypotheses": "Exactly Phase c, Bounded B/A/C and pairWord n = template c B A C (g+2) (h+2). No new positivity/canonicality/even-phase assumption.",
+      "first_action": "Reuse the original actual-step proof's explicit constructed G and trim witness; expose the lost equality and replace gamma by the proved rho selector.",
+      "exclusions": "No Agent216 Int/Nat nextExterior agreement, Agent14 finite cut-window actual_tile theorem, Agent1 repeated blocks, or new ordinary all-time realization claim.",
+      "ownership": "Candidate only; no reservation. Existing arithmetic/periodic/charge owners remain excluded."
+    },
+    {
+      "rank": 3,
+      "id": "finite_actual_gap_cocycle",
+      "status": "QUEUED_REQUIRES_FRESH_DECLARATION_AND_OWNERSHIP_CHECK",
+      "target": "For a genuinely supplied finite ordinary-template trajectory with both bands at least two before every step, prove H_n = H_0 + O_n - 2n and G_n + |B_n| = G_0 + |B_0| + O_n - n in Int, with O_n the actual rho-selected carry sum.",
+      "dependencies": [
+        "OuterBridge.actual_outer_orbit",
+        "rank_3_exact_actual_step",
+        "CertificateAccounting.sumPrefix"
+      ],
+      "source_blobs": [
+        "06ed5a8660e83b2dde192a10c822c9317a79483b",
+        "79bf1fdfebabcf95dee96698be9aab3747c2599a"
+      ],
+      "hypotheses": "Finite horizon and actual matched template transitions, with the explicit two-band validity guard at every used step. No invented infinite carry schedule.",
+      "first_action": "State the one-step integer gap identities using the original band lengths G = g+2 and H = h+2, then sum them over a finite path.",
+      "exclusions": "Do not duplicate the existing coarse g <= G+2i/h <= H+2i bound or Agent14's physical-boundary cut-window transport; no infinite-orbit inference.",
+      "ownership": "Candidate only; no reservation. Existing arithmetic/periodic/charge owners remain excluded."
+    },
+    {
+      "rank": 4,
+      "id": "joint_coordinate_return_criterion",
+      "status": "QUEUED_REQUIRES_FRESH_DECLARATION_AND_OWNERSHIP_CHECK",
+      "target": "For canonical valid endpoints on a nonneutral literal exterior orbit, characterize exact return by phase return, zero signed-beta contribution sum, and equality of normalized rho (cross-multiplied Nat numerators).",
+      "dependencies": [
+        "ExteriorObservationInjective.observation_injective",
+        "CoordinateCycle.contributionSum_eq_betaNum_sub",
+        "CoordinateDynamics.betaNum"
+      ],
+      "source_blobs": [
+        "80d175e4c28ba171e67eaf7e0f9961235e0ec7e7",
+        "6b7ab7b9801109f3a5af7e8237f59db84601686a",
+        "98a8db2457ebd14a90470798d3d03267e87928a2"
+      ],
+      "hypotheses": "nonneutralPhase initial c; validOuter true for initial and terminal states; exact literal outerIter. State both canonical endpoint hypotheses openly.",
+      "first_action": "Use existing observation_injective after rewriting beta equality and phase equality to zValue equality; package a return criterion, without proving a new recurrence.",
+      "exclusions": "Not a new injectivity theorem, two-step nonreturn theorem, phase-period result, or rho-cycle telescope. Agent110 two-step and Agent115 rho recurrence claims must remain untouched.",
+      "ownership": "Candidate only; no reservation. Existing arithmetic/periodic/charge owners remain excluded."
+    },
+    {
+      "rank": 5,
+      "id": "rho_cycle_independent_review",
+      "status": "WAITING_ON_OWNER_SOURCE",
+      "target": "Independently rebuild and semantically audit a completed Agent115 rho-cycle recurrence/overflow-necessity candidate, if its owner requests or publishes it for review.",
+      "dependencies": [
+        "Agent115 PR107 exact future frozen source",
+        "Existing ExteriorFactorization/UpdateLaw",
+        "Agent6 coordinate carry semantics"
+      ],
+      "first_action": "Read the next substantive owner checkpoint and actual CI diagnostics before selecting a review scope; do not duplicate the active proof.",
+      "ownership": "Agent115 owns mathematics. Root relayed source-level README and unterminated-comment diagnostics at issue6225520488; no proof takeover."
+    }
+  ],
+  "note": "Only rank1 is claimed. Candidates are not established theorems, executable promises, or background work."
+}

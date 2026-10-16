@@ -1,0 +1,651 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent6-normalized-carry-accounting": {
+      "status": "PASS",
+      "scope": "Numeric carry survives suffix stripping under c<=18 or bounded raw B. Under bounded raw B only, the original normalized stateOuter overflowBit equals gam. Listed-row indicator sums equal original totalGam. Original check=true supplies the weighted balance with 9*totalGam or18*(totalG+totalH), consuming existing coordinate and gain identities. Exact kernel controls delimit missing hypotheses. No accepted certificate, new recurrence, overflow necessity, ordinary realizability or196 conclusion.",
+      "sources": {
+        "TemplateStep": {
+          "path": "proofs/TemplateStep__8873883b39064515.lean",
+          "sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+          "build_sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ReturnCertificate": {
+          "path": "proofs/ReturnCertificate__b037c18e81a43bb5.lean",
+          "sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+          "build_sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+          "imports": [
+            "TemplateStep"
+          ],
+          "adapter": null
+        },
+        "OuterFinite": {
+          "path": "proofs/OuterFinite__1c852c0ed5b8d706.lean",
+          "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+          "build_sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "OuterBounds": {
+          "path": "proofs/OuterBounds__4503f58658495015.lean",
+          "sha256": "75ed5831f0cc1e9c6016672ebef83cf0f46da279432b3694ba075627cb973a76",
+          "build_sha256": "75ed5831f0cc1e9c6016672ebef83cf0f46da279432b3694ba075627cb973a76",
+          "imports": [
+            "OuterFinite"
+          ],
+          "adapter": null
+        },
+        "OuterBridge": {
+          "path": "proofs/OuterBridge__04b27506596f5de1.lean",
+          "sha256": "849fa22a9d6aae37611e0eec424e4ec451c6bb4d71c75813f9a8906c669bd966",
+          "build_sha256": "849fa22a9d6aae37611e0eec424e4ec451c6bb4d71c75813f9a8906c669bd966",
+          "imports": [
+            "ReturnCertificate",
+            "OuterBounds"
+          ],
+          "adapter": null
+        },
+        "CertificateRealization": {
+          "path": "proofs/CertificateRealization__8e601d213f5aef4c.lean",
+          "sha256": "c06f8955dbdcf32d4b9f0ab05f149394d1177fc9951c015ab985da3833480391",
+          "build_sha256": "c06f8955dbdcf32d4b9f0ab05f149394d1177fc9951c015ab985da3833480391",
+          "imports": [
+            "OuterBridge"
+          ],
+          "adapter": null
+        },
+        "ExteriorNormalization": {
+          "path": "proofs/ExteriorNormalization__e03ef2b2c3a7fcaa.lean",
+          "sha256": "4da453cdfb754636085ebe865bb398a413808877d3991213db4e5265ffcdb3c2",
+          "build_sha256": "4da453cdfb754636085ebe865bb398a413808877d3991213db4e5265ffcdb3c2",
+          "imports": [
+            "OuterBridge"
+          ],
+          "adapter": null
+        },
+        "CertificateExterior": {
+          "path": "proofs/CertificateExterior__94efd9fc73b36162.lean",
+          "sha256": "f0bd00fc497542a16df331542177fbfd0de55cd7b11454149942685d4eda6bce",
+          "build_sha256": "f0bd00fc497542a16df331542177fbfd0de55cd7b11454149942685d4eda6bce",
+          "imports": [
+            "CertificateRealization",
+            "ExteriorNormalization"
+          ],
+          "adapter": null
+        },
+        "CertificateAccounting": {
+          "path": "proofs/CertificateAccounting__ad0d1bd9b0242036.lean",
+          "sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+          "build_sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+          "imports": [
+            "ReturnCertificate"
+          ],
+          "adapter": null
+        },
+        "TARGET": {
+          "path": "proofs/TARGET__c7bc3cfee999c64e.lean",
+          "sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+          "build_sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+          "imports": [
+            "OuterFinite"
+          ],
+          "adapter": null
+        },
+        "ExteriorFactorizationProof": {
+          "path": "proofs/ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+          "sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+          "build_sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+          "imports": [
+            "TARGET"
+          ],
+          "adapter": null
+        },
+        "ExteriorObservationInjective": {
+          "path": "proofs/ExteriorObservationInjective__5a22875e320396f4.lean",
+          "sha256": "891207ca4daadfc65c435b5dd5477478cfe59347afb9404660ce458ed7103cbf",
+          "build_sha256": "891207ca4daadfc65c435b5dd5477478cfe59347afb9404660ce458ed7103cbf",
+          "imports": [
+            "ExteriorFactorizationProof"
+          ],
+          "adapter": null
+        },
+        "ExteriorUpdateLaw": {
+          "path": "proofs/ExteriorUpdateLaw.lean",
+          "sha256": "d384cb9a3598b210ec1a0c7cc310297ca2b34cf1e6b0588e03516f0da75331b9",
+          "build_sha256": "d384cb9a3598b210ec1a0c7cc310297ca2b34cf1e6b0588e03516f0da75331b9",
+          "imports": [
+            "ExteriorObservationInjective"
+          ],
+          "adapter": null
+        },
+        "CoordinateDynamics": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateDynamics.lean",
+          "sha256": "8f37d2991087c3c232e9e5a09c440e266672403fe895af59d770e2f90a72a05b",
+          "build_sha256": "8f37d2991087c3c232e9e5a09c440e266672403fe895af59d770e2f90a72a05b",
+          "imports": [
+            "ExteriorUpdateLaw"
+          ],
+          "adapter": null
+        },
+        "CoordinateThreshold": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateThreshold.lean",
+          "sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+          "build_sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+          "imports": [
+            "ExteriorFactorizationProof"
+          ],
+          "adapter": null
+        },
+        "CoordinateSign": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateSign.lean",
+          "sha256": "9142e73dff4b25fd43dee0f708e5681a47f42b0630329512934916f370f0da21",
+          "build_sha256": "9142e73dff4b25fd43dee0f708e5681a47f42b0630329512934916f370f0da21",
+          "imports": [
+            "CoordinateDynamics",
+            "CoordinateThreshold"
+          ],
+          "adapter": null
+        },
+        "CoordinateCycle": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateCycle.lean",
+          "sha256": "0b135c2b14c04cf3d980fc7cc2bd6852e65406edb0a6cdaa377a0fa427163f21",
+          "build_sha256": "0b135c2b14c04cf3d980fc7cc2bd6852e65406edb0a6cdaa377a0fa427163f21",
+          "imports": [
+            "CoordinateSign"
+          ],
+          "adapter": null
+        },
+        "CertificateCoordinates": {
+          "path": "proofs/contributions/agent-6/certificate-coordinate-audit-20261016/CertificateCoordinates.lean",
+          "sha256": "8ed2868cd53b9de494d5568a901f7280ad57746bfcefcede6ccfa02855c4a47e",
+          "build_sha256": "8ed2868cd53b9de494d5568a901f7280ad57746bfcefcede6ccfa02855c4a47e",
+          "imports": [
+            "CertificateExterior",
+            "CertificateAccounting",
+            "CoordinateCycle"
+          ],
+          "adapter": null
+        },
+        "NormalizedCarry": {
+          "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/NormalizedCarry.lean",
+          "sha256": "9bfef7cc4d805ac06631c730173da7e2def6611d7f9e0773f1b5ac8cb2891459",
+          "build_sha256": "9bfef7cc4d805ac06631c730173da7e2def6611d7f9e0773f1b5ac8cb2891459",
+          "imports": [
+            "OuterBridge",
+            "CoordinateThreshold"
+          ],
+          "adapter": null
+        },
+        "CertificateCarryAccounting": {
+          "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/CertificateCarryAccounting.lean",
+          "sha256": "32404f75b0b740472825d3510dc52f5294a42ea89b75ddfe4a4b9629c932ec71",
+          "build_sha256": "32404f75b0b740472825d3510dc52f5294a42ea89b75ddfe4a4b9629c932ec71",
+          "imports": [
+            "NormalizedCarry",
+            "CertificateCoordinates"
+          ],
+          "adapter": null
+        },
+        "CarryControls": {
+          "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/CarryControls.lean",
+          "sha256": "abac509aeef647003b9cc5d78ceecd5a9536b907285449d6dea9aa408ed333fb",
+          "build_sha256": "abac509aeef647003b9cc5d78ceecd5a9536b907285449d6dea9aa408ed333fb",
+          "imports": [
+            "CertificateCarryAccounting"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "TemplateStep",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TemplateStep.olean",
+            "TemplateStep.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 5.034524,
+          "log": "agent6-normalized-carry-accounting/logs/TemplateStep.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ReturnCertificate",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ReturnCertificate.olean",
+            "ReturnCertificate.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.975313,
+          "log": "agent6-normalized-carry-accounting/logs/ReturnCertificate.log",
+          "log_sha256": "f2c6882924b64da43f79d98a9884c4196e8b90008eb9fa20a2a861818274e50a"
+        },
+        {
+          "label": "OuterFinite",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OuterFinite.olean",
+            "OuterFinite.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 19.526479,
+          "log": "agent6-normalized-carry-accounting/logs/OuterFinite.log",
+          "log_sha256": "ac86a2e22b11447702615b58a5b0a93a65c92f14973bd9df0868fe52e5abf5f4"
+        },
+        {
+          "label": "OuterBounds",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OuterBounds.olean",
+            "OuterBounds.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.665836,
+          "log": "agent6-normalized-carry-accounting/logs/OuterBounds.log",
+          "log_sha256": "d11c52a5374e73738ffd0765c9251a3fcdf2cea573806d9b5fa0b50e2ce67ee5"
+        },
+        {
+          "label": "OuterBridge",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OuterBridge.olean",
+            "OuterBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.518513,
+          "log": "agent6-normalized-carry-accounting/logs/OuterBridge.log",
+          "log_sha256": "92a6d890454c35bfcbf755c6ab3e92d7c7d13a27bfec5a7618bea352b266739c"
+        },
+        {
+          "label": "TARGET",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TARGET.olean",
+            "TARGET.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.214687,
+          "log": "agent6-normalized-carry-accounting/logs/TARGET.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ExteriorFactorizationProof",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorFactorizationProof.olean",
+            "ExteriorFactorizationProof.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.317949,
+          "log": "agent6-normalized-carry-accounting/logs/ExteriorFactorizationProof.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateThreshold",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateThreshold.olean",
+            "CoordinateThreshold.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.816177,
+          "log": "agent6-normalized-carry-accounting/logs/CoordinateThreshold.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "NormalizedCarry",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "NormalizedCarry.olean",
+            "NormalizedCarry.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.264658,
+          "log": "agent6-normalized-carry-accounting/logs/NormalizedCarry.log",
+          "log_sha256": "c41ea02b0151e572d4db20e2011fae0f07c4c0b4e1001a2163e908526dc2e94e"
+        },
+        {
+          "label": "CertificateRealization",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateRealization.olean",
+            "CertificateRealization.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.715819,
+          "log": "agent6-normalized-carry-accounting/logs/CertificateRealization.log",
+          "log_sha256": "3442e145723a4aea18f6b75f5ee0bb26cb62239f280be933ad8a771a6c0bcdc0"
+        },
+        {
+          "label": "ExteriorNormalization",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorNormalization.olean",
+            "ExteriorNormalization.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.766103,
+          "log": "agent6-normalized-carry-accounting/logs/ExteriorNormalization.log",
+          "log_sha256": "c71e1b75da4df5a9eaa863a2768dfb02d9faf653b284a34334c9ea9d104b2ccc"
+        },
+        {
+          "label": "CertificateExterior",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateExterior.olean",
+            "CertificateExterior.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.966554,
+          "log": "agent6-normalized-carry-accounting/logs/CertificateExterior.log",
+          "log_sha256": "e5efeb6210fa123fb0f5366eb665b8b50923605812bef7771c53569dfbea7b3f"
+        },
+        {
+          "label": "CertificateAccounting",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateAccounting.olean",
+            "CertificateAccounting.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.568466,
+          "log": "agent6-normalized-carry-accounting/logs/CertificateAccounting.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ExteriorObservationInjective",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorObservationInjective.olean",
+            "ExteriorObservationInjective.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.816338,
+          "log": "agent6-normalized-carry-accounting/logs/ExteriorObservationInjective.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ExteriorUpdateLaw",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorUpdateLaw.olean",
+            "ExteriorUpdateLaw.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.917097,
+          "log": "agent6-normalized-carry-accounting/logs/ExteriorUpdateLaw.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateDynamics",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateDynamics.olean",
+            "CoordinateDynamics.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.816292,
+          "log": "agent6-normalized-carry-accounting/logs/CoordinateDynamics.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateSign",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateSign.olean",
+            "CoordinateSign.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.716098,
+          "log": "agent6-normalized-carry-accounting/logs/CoordinateSign.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateCycle",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateCycle.olean",
+            "CoordinateCycle.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.968735,
+          "log": "agent6-normalized-carry-accounting/logs/CoordinateCycle.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CertificateCoordinates",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateCoordinates.olean",
+            "CertificateCoordinates.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.667361,
+          "log": "agent6-normalized-carry-accounting/logs/CertificateCoordinates.log",
+          "log_sha256": "eafa472b7b99b03df539ee3e5bf60cf97c6bc52392c73e392d3f8708d6722506"
+        },
+        {
+          "label": "CertificateCarryAccounting",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateCarryAccounting.olean",
+            "CertificateCarryAccounting.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.569434,
+          "log": "agent6-normalized-carry-accounting/logs/CertificateCarryAccounting.log",
+          "log_sha256": "b980eb88013f98894353a86a14af491acf4cd2c68e0e1686d5df8658212ad167"
+        },
+        {
+          "label": "CarryControls",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CarryControls.olean",
+            "CarryControls.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.364812,
+          "log": "agent6-normalized-carry-accounting/logs/CarryControls.log",
+          "log_sha256": "f6dd3f5273d60b992b382be5082277acd3cd3dbcb974c8fdb1b6e97656f79ccf"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 12.056077,
+          "log": "agent6-normalized-carry-accounting/logs/ProjectAudit.log",
+          "log_sha256": "40675e863a2e0a79f5a34f32acd983b4135696f9d9253ad55407b8917780d95b"
+        }
+      ],
+      "roots": [
+        "CarryControls"
+      ],
+      "build_order": [
+        "TemplateStep",
+        "ReturnCertificate",
+        "OuterFinite",
+        "OuterBounds",
+        "OuterBridge",
+        "TARGET",
+        "ExteriorFactorizationProof",
+        "CoordinateThreshold",
+        "NormalizedCarry",
+        "CertificateRealization",
+        "ExteriorNormalization",
+        "CertificateExterior",
+        "CertificateAccounting",
+        "ExteriorObservationInjective",
+        "ExteriorUpdateLaw",
+        "CoordinateDynamics",
+        "CoordinateSign",
+        "CoordinateCycle",
+        "CertificateCoordinates",
+        "CertificateCarryAccounting",
+        "CarryControls"
+      ],
+      "theorem_count": 712,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent6.NormalizedCarry.gam_eq_overflow",
+        "Agent6.NormalizedCarry.overflow_stripSuffix_of_le18",
+        "Agent6.NormalizedCarry.overflow_stripSuffix_of_bounded",
+        "Agent6.CertificateCarryAccounting.overflowBit_stateOuter",
+        "Agent6.CertificateCarryAccounting.rowOverflowSum_eq_totalGam_of_bounded",
+        "Agent6.CertificateCarryAccounting.valid_rowOverflowSum_eq_totalGam",
+        "Agent6.CertificateCarryAccounting.checked_rowOverflowSum_eq_totalGam",
+        "Agent6.CertificateCarryAccounting.checked_weighted_balance_totalGam",
+        "Agent6.CertificateCarryAccounting.checked_weighted_balance_gains",
+        "Agent6.CarryControls.phase19_carry_drift",
+        "Agent6.CarryControls.phase2_unbounded_indicator",
+        "Agent6.CarryControls.phase18_empty_boundary",
+        "Agent6.CarryControls.neutral_and_zero_boundaries",
+        "Agent6.CarryControls.bounded_phase19_boundary",
+        "Agent6.CarryControls.unrestricted_strip_carry_invariance_false",
+        "Agent6.CarryControls.indicator_eq_gam_without_bounded_false"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "ReturnCertificate",
+          "List.foldl._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_4"
+        ],
+        [
+          "TARGET",
+          "List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1"
+        ],
+        [
+          "ReturnCertificate",
+          "Std.Format.joinSep._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_7"
+        ],
+        [
+          "ReturnCertificate",
+          "List.repr'._at._private.ReturnCertificate.0.Agent109.Cert.reprState.\u00ab_@\u00bb.ReturnCertificate._hyg.2656._spec_1"
+        ],
+        [
+          "ReturnCertificate",
+          "List.repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_5"
+        ],
+        [
+          "OuterFinite",
+          "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1"
+        ],
+        [
+          "ReturnCertificate",
+          "Std.Format.joinSep._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_3"
+        ],
+        [
+          "ReturnCertificate",
+          "List.foldl._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_8"
+        ],
+        [
+          "ReturnCertificate",
+          "List.repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_1"
+        ],
+        [
+          "ReturnCertificate",
+          "repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_6"
+        ],
+        [
+          "ReturnCertificate",
+          "repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_2"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792189761.5814617,
+  "registry_sha256": "e437e378bca3d93e6f3d03f66c0608fcc6af703e7e6b8c68957904889bc08a5a",
+  "source_commit": "affa037ad537f3ae66a97008991850ce397f613a",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Only the exact twenty-one-module normalized carry/accounting closure is covered. No repository-wide completeness or accepting certificate instance is claimed."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792189816.323839
+}
