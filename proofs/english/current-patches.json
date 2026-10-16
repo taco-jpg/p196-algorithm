@@ -1,0 +1,59 @@
+{
+  "f70a3c0b13": {
+    "30": "## Seven-column prefix increment — 15 October 2026",
+    "32": "[Seven-column prefix research](contributions/2026-10-15-seven-column-prefix/README.md) adds the all-width ancestry-depth bound `H(P) <= 39` for palindromes beginning with 739, thereby excluding this family from the 196 orbit at every time. The bounds for 217, 218, 620, and 777 improve to 23, 34, 12, and 25 respectively. The three-digit prefix catalogue expands from 396 classes to 397. The written coverage argument, five complete finite rank certificates, Python/C++ verification materials, unfinished explorations, and records of rediscoveries are all retained. The [publication record](coordination/2026-10-15-seven-column-prefix.md) states the evidence scope; there is no Lean formalization, external review, or complete P196 proof.",
+    "303": "## Proving the P196 conjecture rigorously: independent chat archive",
+    "305": "The [research archive from chat 6acee928](chat-6acee928/README.md) preserves all 9 complete Markdown files, 1 original Python file, arguments found only in the body of the first two rounds, and 8 verbatim-extracted Python appendices. All 9 verification programs passed in the archived run; provenance, the section index, SHA-256 hashes, and execution logs are retained together. The archive ends at `p196_six_column_and_mod99.md`; temporary scripts/logs not attached in the original conversation and new responses still being generated were not recovered. The full P196 conjecture remains unproved."
+  },
+  "17b39173e8": {
+    "36": "run(4,{(3,3,c,d) for c,d in product(range(10),repeat=2)}|{(3,3)},'All palindromes beginning with 33')",
+    "37": "run(5,{(7,7,c,d,e) for c in range(1,10) for d,e in product(range(10),repeat=2)}|{(7,7,7,7)},'Palindromes beginning with 77 whose third digit is nonzero')"
+  },
+  "8640a0a670": {
+    "2": "\"\"\"Reconstruct five finite rank certificates from column equations; write beside this script.\"\"\"",
+    "39": "            raise RuntimeError('Resource limit: no certificate was generated; this is not an exclusion result')",
+    "51": "        raise RuntimeError('Uneliminated states remain: this does not establish a finite-depth theorem')",
+    "69": "    print(prefix, 'states', len(seen), 'upper bound', cert['palindrome_height_bound'])"
+  },
+  "aac37f687b": {
+    "2": "\"\"\"Verify seven-column prefix certificates using only the Python standard library, without the original repository.",
+    "4": "By default, recompute all inverse edges, ranks, and short-number boundaries, and check each edge with forward equations.",
+    "5": "The inverse formulas recompute every allowed predecessor of each state; forward formulas independently cross-check every edge.",
+    "6": "Unbounded-length coverage relies on the accompanying proof; this program is not a formal proof of the full P196 conjecture.",
+    "41": "    \"\"\"All realizable symmetric sum words of length n, including even central entries at odd lengths.\"\"\"",
+    "55": "# (output sum, incoming left carry, outgoing right carry) -> (source sum, outgoing left carry, incoming right carry)",
+    "67": "    \"\"\"Include every actual predecessor prefix; ignored inner digits need not be simultaneously realizable.\"\"\"",
+    "104": "    \"\"\"Independent forward algorithm: enumerate the sole unobserved high-end inner carry and add columns directly.\"\"\"",
+    "160": "        assert ps <= rank.keys(), ('Certificate omits predecessors', p, ps - rank.keys())",
+    "255": "              'scope': 'Supports the listed all-length prefix theorems; neither a complete P196 proof nor a Lean formalization.'}"
+  },
+  "e3971bdf01": {
+    "2": "\"\"\"Verify the 33 and 77 prefix certificates using only the Python standard library, without the original repository.",
+    "4": "By default, independently recompute every inverse edge, rank, short-number boundary, and example.",
+    "5": "With --independent-forward, also exhaust every four-column/five-column input and inner carry;",
+    "6": "use independent forward equations to check that the certificate is closed under every possible predecessor.",
+    "41": "    \"\"\"All realizable symmetric sum words of length n, including even central entries at odd lengths.\"\"\"",
+    "55": "# (output sum, incoming left carry, outgoing right carry) -> (source sum, outgoing left carry, incoming right carry)",
+    "67": "    \"\"\"Include every actual predecessor prefix; ignored inner digits need not be simultaneously realizable.\"\"\"",
+    "104": "    \"\"\"Independent forward algorithm: enumerate the sole unobserved high-end inner carry and add columns directly.\"\"\"",
+    "139": "        raise AssertionError('Undeclared certificate width')",
+    "160": "        assert ps <= rank.keys(), ('Certificate omits predecessors', p, ps - rank.keys())",
+    "182": "        # Check every possible long source prefix, independently detecting any omitted inverse branch.",
+    "190": "        # Also check every edge involving short numbers using actual complete addition.",
+    "218": "    # For every realizable source with <= 7 digits, compare column formulas with actual complete normalization.",
+    "229": "    # Cross-check against independent integer dynamic programming; this finite scan is not an unbounded proof.",
+    "260": "              'scope': 'Supports the listed all-length prefix theorems; neither a complete P196 proof nor a Lean formalization.'}"
+  },
+  "f931d2fc07": {
+    "2": "\"\"\"Reconstruct original paths from the preserved mapping, verifying and using matching flattened current source.",
+    "4": "Create only an external temporary directory; never overwrite the working tree. Retain the check workspace for failure investigation.",
+    "18": "    if not argv:raise RuntimeError('Provide an explicit check command after --.')",
+    "24": "    if p.returncode:raise RuntimeError('Cannot create the isolated check repository.')",
+    "31": "            raise RuntimeError('Unsafe mapped path: '+old)",
+    "37": "            if source.is_symlink():raise RuntimeError('A regular file was replaced by a symbolic link: '+selected)",
+    "40": "            raise RuntimeError('Source changed; results for an old hash cannot be applied to new content: '+selected)",
+    "43": "        if any(p.is_symlink() for p in target.parents if p!=work.parent):raise RuntimeError('A target ancestor is a symlink.')",
+    "47": "    print('Original-layout check workspace (retained): '+str(work),flush=True)",
+    "52": "    except (RuntimeError,OSError,ValueError,KeyError) as e:print('Original-layout replay failed: '+str(e),file=sys.stderr);sys.exit(2)"
+  }
+}
