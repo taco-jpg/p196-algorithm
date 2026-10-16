@@ -28,14 +28,20 @@ Neither package settles whether the orbit of 196 ever reaches any palindrome.
 
 ## Verification status at this checkpoint
 
-**Author LEAN-CHECKED:** all 510 concrete modules and 13 generic dependencies
-have actually compiled using official Lean 4.19.0, explicit `--trust=0`, one
-worker and disabled asynchronous elaboration. The final stage compiled 431 new
-modules and reused 79 previously checked, byte-matched author objects. It took
-1077.408 seconds, with maximum recorded process RSS 3,335,928 KiB. This author
-stage is incremental. Full commands, source/object/import hashes, logs and the
-completion receipt are in `generator/evidence/` and
-`generator/AUTHOR_BUILD_COMPLETE.json`.
+**Author LEAN-CHECKED:** all 510 concrete modules actually compiled using
+official Lean 4.19.0 with explicit `--trust=0`. The 13 generic dependencies were
+separately rebuilt by `runtime_scout` with the compiler's default trust=max,
+as recorded in `verification/author-base/build.json` and `build_base.py`.
+Module build commands used `-j1 -DElab.async=false`; early author stages ran
+up to two concurrent processes, while the final stage ran one. The final stage
+compiled 431 new modules and reused 79 previously checked, byte-matched author
+objects. It took 1077.408 seconds, with maximum recorded process RSS
+3,335,928 KiB. This author stage is incremental. Full commands,
+source/object/import hashes, logs and the completion receipt are in
+`generator/evidence/` and `generator/AUTHOR_BUILD_COMPLETE.json`.
+
+The exact previous README and the command-level basis for this wording
+correction are retained in `corrections/agent22-verification-wording/`.
 
 The root predicate-fidelity theorem has no axioms; the upper-bound and
 196-family-exclusion theorems use only `propext`, `Classical.choice` and
