@@ -1,0 +1,86 @@
+diff --git a/proofs/contributions/agent-5/even-base-absorption-20261016/FiniteOverflow.lean b/proofs/contributions/agent-5/even-base-absorption-20261016/FiniteOverflow.lean
+index 2d764f8471ab740cd92ea44d31f0b51d5579540d..308e479acdce02c5c15117f88395bba1f8f392ef 100644
+--- a/proofs/contributions/agent-5/even-base-absorption-20261016/FiniteOverflow.lean
++++ b/proofs/contributions/agent-5/even-base-absorption-20261016/FiniteOverflow.lean
+@@ -55,14 +55,19 @@ theorem raw_head_cons_no_overflow (m c x : Int) (xs : Word)
+       x % (m + 1) +
+         (x + (normalize m xs.reverse (bulkCarry m c)).2) % (m + 1) := by
+   have hg' : (normalize m (x :: xs).reverse (bulkCarry m c)).2 = 0 := hg
+-  simp only [normalize_reverse_cons] at hg'
+-  simp [rawExterior, normalize_reverse_cons, normalize, hg', List.reverse_append]
++  unfold rawExterior
++  dsimp only
++  rw [if_pos hg', normalize_reverse_cons]
++  simp [normalize, List.reverse_append]
+ 
+ theorem raw_head_cons_overflow (m c x : Int) (xs : Word)
+     (hg : exteriorOverflow m c (x :: xs) ≠ 0) :
+     (rawExterior m c (x :: xs)).headD (nextPhase m c) = x % (m + 1) + 1 := by
+   have hg' : (normalize m (x :: xs).reverse (bulkCarry m c)).2 ≠ 0 := hg
+-  simp [rawExterior, hg', normalize]
++  unfold rawExterior
++  dsimp only
++  rw [if_neg hg']
++  simp [normalize]
+ 
+ /-- A non-overflow doubles the true exterior head, up to a nonnegative carry. -/
+ theorem head_no_overflow (m : Int) (s : State) (hm : 1 ≤ m)
+@@ -123,6 +128,7 @@ theorem head_positive_step (m : Int) (s : State) (hm : 1 ≤ m)
+         split at hk <;> simp_all
+       rw [head_step_raw, raw_head_nil, if_neg hk]
+       simp only [hk1, Int.mul_one] at ht
++      change 0 < c - m
+       omega
+     | cons x xs =>
+       rw [head_step_raw, raw_head_cons_overflow m c x xs hg]
+@@ -243,7 +249,8 @@ theorem decimal_residue_zero_from_five (s : State) (hs : Valid 9 s)
+ /-- A canonical even-phase witness: no overflow at 0,1,2,3; overflow at 4. -/
+ def sharpStart : State := ⟨2, [1]⟩
+ 
+-theorem sharpStart_valid : Valid 9 sharpStart ∧ 0 < head sharpStart := by decide
++theorem sharpStart_valid : Valid 9 sharpStart ∧ 0 < head sharpStart := by
++  simp [Valid, Phase, Bounded, sharpStart, head]
+ 
+ theorem sharp_no_earlier_overflow :
+     ∀ j : Fin 4, exteriorOverflow 9 (orbit 9 sharpStart j.val).c
+@@ -256,7 +263,8 @@ theorem sharp_fifth_transition :
+ def sharpAbsorptionStart : State := ⟨2, [1, 0]⟩
+ 
+ theorem sharpAbsorptionStart_valid :
+-    Valid 9 sharpAbsorptionStart ∧ 0 < head sharpAbsorptionStart := by decide
++    Valid 9 sharpAbsorptionStart ∧ 0 < head sharpAbsorptionStart := by
++  simp [Valid, Phase, Bounded, sharpAbsorptionStart, head]
+ 
+ theorem sharpAbsorption_not_at_four :
+     residue 9 (orbit 9 sharpAbsorptionStart 4) = 20 := by decide
+@@ -267,7 +275,8 @@ theorem sharpAbsorption_at_five :
+ /-- Dropping positive head invalidates the claimed uniform reset time. -/
+ def zeroHeadStart : State := ⟨2, [0]⟩
+ 
+-theorem zeroHeadStart_valid : Valid 9 zeroHeadStart := by decide
++theorem zeroHeadStart_valid : Valid 9 zeroHeadStart := by
++  simp [Valid, Phase, Bounded, zeroHeadStart, head]
+ 
+ theorem zeroHead_not_absorbed_at_five :
+     residue 9 (orbit 9 zeroHeadStart 5) = 2 := by decide
+diff --git a/proofs/contributions/agent-5/even-base-absorption-20261016/InitialValidity.lean b/proofs/contributions/agent-5/even-base-absorption-20261016/InitialValidity.lean
+index 6698db25e5f26b7b5b879307b6febfe6de3186df..adfcc154d43683fa8c07a6a9306f1aa734649f3b 100644
+--- a/proofs/contributions/agent-5/even-base-absorption-20261016/InitialValidity.lean
++++ b/proofs/contributions/agent-5/even-base-absorption-20261016/InitialValidity.lean
+@@ -123,6 +123,7 @@ theorem rawExterior_bounded (m c : Int) (B : Word) (hm : 1 ≤ m)
+       omega
+     · exact hrev x hx
+   unfold rawExterior
++  dsimp only
+   split
+   · exact zip_add_bounded m _ _ hlo hno
+   · exact zip_add_bounded m _ _ hlo hyes
+@@ -212,6 +213,7 @@ theorem neutral_not_bounded : ¬ Bounded 9 (nextExterior 9 9 [1, 18]) := by
+   omega
+ 
+ /-- In an odd base the phase can land exactly on the excluded neutral value. -/
+-theorem odd_base_phase_counterexample : Phase 2 1 ∧ ¬ Phase 2 (nextPhase 2 1) := by decide
++theorem odd_base_phase_counterexample : Phase 2 1 ∧ ¬ Phase 2 (nextPhase 2 1) := by
++  simp [Phase, nextPhase, bulkCarry]
+ 
+ end P196.Agent5.General.InitialValidity

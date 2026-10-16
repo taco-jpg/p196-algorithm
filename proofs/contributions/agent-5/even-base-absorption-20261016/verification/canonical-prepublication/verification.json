@@ -1,0 +1,235 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent5-even-base-absorption": {
+      "status": "PASS",
+      "scope": "Initial-validity propagation for odd m>=1, positive-head overflow within a power bound and every such window, eventual moment absorption modulo 2*(m+2), decimal sharpness and essential-assumption counterexamples; no ordinary-integer orbit bridge or all-time palindrome claim.",
+      "sources": {
+        "ExteriorClock": {
+          "path": "proofs/ExteriorClock__b2b9d37012d53747.lean",
+          "sha256": "7158c8c7d07fab80c4212ba4c6c4b0a318ca22faee988c8d22eca45edfd439c5",
+          "build_sha256": "7158c8c7d07fab80c4212ba4c6c4b0a318ca22faee988c8d22eca45edfd439c5",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "GeneralCarryMass": {
+          "path": "proofs/GeneralCarryMass__ad1a2561147adc83.lean",
+          "sha256": "688355dd1209dff4230d5fc7d9c3ce63efb3e2d3ec0037d53c8ec26a662f2138",
+          "build_sha256": "688355dd1209dff4230d5fc7d9c3ce63efb3e2d3ec0037d53c8ec26a662f2138",
+          "imports": [
+            "ExteriorClock"
+          ],
+          "adapter": null
+        },
+        "GeneralMomentAbsorption": {
+          "path": "proofs/GeneralMomentAbsorption__d6c541c17a8aa76f.lean",
+          "sha256": "b62006f6ce106ac973865f24185a8391278286c1ddf23fdd5827acda0d3205ca",
+          "build_sha256": "b62006f6ce106ac973865f24185a8391278286c1ddf23fdd5827acda0d3205ca",
+          "imports": [
+            "GeneralCarryMass"
+          ],
+          "adapter": null
+        },
+        "InitialValidity": {
+          "path": "proofs/contributions/agent-5/even-base-absorption-20261016/InitialValidity.lean",
+          "sha256": "7b398ebb1f48bf42f754979ab02093b0c6a16323aff5e90d772c8fb061b5f986",
+          "build_sha256": "7b398ebb1f48bf42f754979ab02093b0c6a16323aff5e90d772c8fb061b5f986",
+          "imports": [
+            "GeneralMomentAbsorption"
+          ],
+          "adapter": null
+        },
+        "FiniteOverflow": {
+          "path": "proofs/contributions/agent-5/even-base-absorption-20261016/FiniteOverflow.lean",
+          "sha256": "4384f88ac757a22324eb53cba106b952930b61f32f04772c446705150fae130e",
+          "build_sha256": "4384f88ac757a22324eb53cba106b952930b61f32f04772c446705150fae130e",
+          "imports": [
+            "InitialValidity"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "ExteriorClock",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorClock.olean",
+            "ExteriorClock.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 4.692434,
+          "log": "agent5-even-base-absorption/logs/ExteriorClock.log",
+          "log_sha256": "410924824702cc61eafaf0a037091056c213b067556dc79636dfef0a6b2bdde1"
+        },
+        {
+          "label": "GeneralCarryMass",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "GeneralCarryMass.olean",
+            "GeneralCarryMass.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.926152,
+          "log": "agent5-even-base-absorption/logs/GeneralCarryMass.log",
+          "log_sha256": "1c60bd0ba103904c152a0c8469a00c5ad42842dae917c162caa1d222820f4418"
+        },
+        {
+          "label": "GeneralMomentAbsorption",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "GeneralMomentAbsorption.olean",
+            "GeneralMomentAbsorption.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.777491,
+          "log": "agent5-even-base-absorption/logs/GeneralMomentAbsorption.log",
+          "log_sha256": "9e78ed4d763b3afba9687918a97d9a27932dbc7293586c5f89af1bbbac1b77bf"
+        },
+        {
+          "label": "InitialValidity",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "InitialValidity.olean",
+            "InitialValidity.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.070146,
+          "log": "agent5-even-base-absorption/logs/InitialValidity.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "FiniteOverflow",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "FiniteOverflow.olean",
+            "FiniteOverflow.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.731256,
+          "log": "agent5-even-base-absorption/logs/FiniteOverflow.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 8.148413,
+          "log": "agent5-even-base-absorption/logs/ProjectAudit.log",
+          "log_sha256": "ee1574cbab832ac057a7a9d15156129aa63a12f68f6654676afb3494f61ad99c"
+        }
+      ],
+      "roots": [
+        "FiniteOverflow"
+      ],
+      "build_order": [
+        "ExteriorClock",
+        "GeneralCarryMass",
+        "GeneralMomentAbsorption",
+        "InitialValidity",
+        "FiniteOverflow"
+      ],
+      "theorem_count": 318,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "P196.Agent5.General.InitialValidity.band_digit_bounds",
+        "P196.Agent5.General.InitialValidity.phase_step",
+        "P196.Agent5.General.InitialValidity.boundary_digit_bounds",
+        "P196.Agent5.General.InitialValidity.normalize_digits_bounded",
+        "P196.Agent5.General.InitialValidity.zip_add_bounded",
+        "P196.Agent5.General.InitialValidity.append_digit_bounded",
+        "P196.Agent5.General.InitialValidity.rawExterior_bounded",
+        "P196.Agent5.General.InitialValidity.stripSuffix_bounded",
+        "P196.Agent5.General.InitialValidity.nextExterior_bounded",
+        "P196.Agent5.General.InitialValidity.valid_step",
+        "P196.Agent5.General.InitialValidity.valid_orbit",
+        "P196.Agent5.General.InitialValidity.overflow_bit_orbit",
+        "P196.Agent5.General.InitialValidity.orbit_add",
+        "P196.Agent5.General.InitialValidity.residue_zero_orbit",
+        "P196.Agent5.General.InitialValidity.residue_zero_after_overflow",
+        "P196.Agent5.General.InitialValidity.decimal_valid_orbit",
+        "P196.Agent5.General.InitialValidity.decimal_residue_after_overflow",
+        "P196.Agent5.General.InitialValidity.neutral_counterexample",
+        "P196.Agent5.General.InitialValidity.neutral_not_bounded",
+        "P196.Agent5.General.InitialValidity.odd_base_phase_counterexample",
+        "P196.Agent5.General.InitialValidity.normalize_append",
+        "P196.Agent5.General.InitialValidity.normalize_reverse_cons",
+        "P196.Agent5.General.InitialValidity.headD_append_replicate",
+        "P196.Agent5.General.InitialValidity.headD_stripSuffix",
+        "P196.Agent5.General.InitialValidity.head_step_raw",
+        "P196.Agent5.General.InitialValidity.raw_head_nil",
+        "P196.Agent5.General.InitialValidity.raw_head_cons_no_overflow",
+        "P196.Agent5.General.InitialValidity.raw_head_cons_overflow",
+        "P196.Agent5.General.InitialValidity.head_no_overflow",
+        "P196.Agent5.General.InitialValidity.head_positive_step",
+        "P196.Agent5.General.InitialValidity.head_positive_orbit",
+        "P196.Agent5.General.InitialValidity.head_powTwo_lower_bound",
+        "P196.Agent5.General.InitialValidity.overflow_by_power_bound",
+        "P196.Agent5.General.InitialValidity.decimal_overflow_before_five",
+        "P196.Agent5.General.InitialValidity.overflow_in_every_window",
+        "P196.Agent5.General.InitialValidity.decimal_overflow_every_five",
+        "P196.Agent5.General.InitialValidity.decimal_overflows_arbitrarily_late",
+        "P196.Agent5.General.InitialValidity.residue_zero_from_power_bound",
+        "P196.Agent5.General.InitialValidity.decimal_residue_zero_from_five",
+        "P196.Agent5.General.InitialValidity.sharpStart_valid",
+        "P196.Agent5.General.InitialValidity.sharp_no_earlier_overflow",
+        "P196.Agent5.General.InitialValidity.sharp_fifth_transition",
+        "P196.Agent5.General.InitialValidity.sharpAbsorptionStart_valid",
+        "P196.Agent5.General.InitialValidity.sharpAbsorption_not_at_four",
+        "P196.Agent5.General.InitialValidity.sharpAbsorption_at_five",
+        "P196.Agent5.General.InitialValidity.zeroHeadStart_valid",
+        "P196.Agent5.General.InitialValidity.zeroHead_not_absorbed_at_five"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "ExteriorClock",
+          "List.sum._at.P196.Agent5.mass._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792184463.0217342,
+  "registry_sha256": "4685eea8d2489fc574578358ffebb41c703fae961e8ff3afdabfc2c66032dcc5",
+  "source_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped Agent5 exterior-map proof package; this does not complete the repository-wide accepted catalogue."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792184483.8270042
+}

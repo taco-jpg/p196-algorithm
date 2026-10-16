@@ -1,0 +1,157 @@
+{
+  "role": "Agent #5 runtime/verification specialist; independent verification of the recovered prior Agent #5 package and attributed Agent #11 repair",
+  "recovered_artifacts": [
+    {
+      "path": "/workspace/scratch/6f8166beec97/agent5-recovery/Agent_5_Assumption_Discharge.patch",
+      "bytes": 102152,
+      "sha256": "a71a6c474bfaf364c3557357a434beda6575f500b2d66fa6e86eb23be4223c45"
+    },
+    {
+      "path": "/workspace/scratch/6f8166beec97/agent5-recovery/Agent_5_Assumption_Discharge.zip",
+      "bytes": 37026,
+      "sha256": "39376747cdab8b6742786df3b1a8f0c13d14bfff4db8b2e814363b21df32cc74"
+    },
+    {
+      "path": "/workspace/scratch/6f8166beec97/agent5-recovery/agent11-agent5-repair.patch",
+      "bytes": 4388,
+      "sha256": "646b2efd1126d9c88b08b5624e31dc80031760d814bc0570aa0a463b9a7a85f9"
+    }
+  ],
+  "original_source_directory": "/workspace/scratch/6f8166beec97/agent5-recovery/original/agent5_assumption_discharge",
+  "repaired_source_directory": "/workspace/scratch/6f8166beec97/agent5-recovery/repair-tree-01/proofs/contributions/agent-5/even-base-absorption-20261016",
+  "original_verifier": "/workspace/scratch/6f8166beec97/agent5-recovery/original/agent5_assumption_discharge/verify_lean.py",
+  "original_verifier_sha256": "15a3b16ade425d27f2ce1a19a389cf5c0fcee8f655b1001fd7edf377b256b917",
+  "repaired_verifier_unchanged": true,
+  "patch_zip_comparison": {
+    "files": 23,
+    "all_byte_equal": true,
+    "record": "/workspace/scratch/6f8166beec97/agent5-recovery/patch-zip-equivalence.json"
+  },
+  "original_manifest": {
+    "verified_entries": 22,
+    "all_match": true,
+    "record": "/workspace/scratch/6f8166beec97/agent5-recovery/original-manifest-check.json"
+  },
+  "runtime": {
+    "purpose": "P196 Agent #5 pinned Lean runtime verification",
+    "source": "https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst",
+    "source_pin_file": "/workspace/scratch/6f8166beec97/p196/proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/lean-toolchain",
+    "source_pin": "leanprover/lean4:v4.19.0",
+    "archive": "/tmp/p196-agent5-lean/lean-4.19.0-linux.tar.zst",
+    "archive_bytes": 343842845,
+    "archive_sha256": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+    "archive_sha256_note": "Local archive hash; not an independently published upstream checksum.",
+    "extract_command": "tar --zstd --no-same-owner -xf /tmp/p196-agent5-lean/lean-4.19.0-linux.tar.zst -C /tmp/p196-agent5-lean",
+    "extract_note": "Initial extraction attempted archive ownership and failed chown in the restricted environment. Re-extraction with --no-same-owner completed successfully; extract.log is empty.",
+    "lean": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+    "lake": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lake",
+    "version_log": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)\nLake version 5.0.0-6caaee8 (Lean version 4.19.0)\n",
+    "smoke_log": "'runtime_smoke' does not depend on any axioms\n",
+    "smoke_compile_exit": 0,
+    "execution_requirement": "Use exec_command sandbox_permissions=require_escalated. Normal sandbox execution, including with LEAN_SYSROOT set, reports error: failed to locate application. Approved elevated execution succeeds.",
+    "repo_mutations": false,
+    "optional_env": {
+      "LEAN_SYSROOT": "/tmp/p196-agent5-lean/lean-4.19.0-linux",
+      "LEAN": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+      "PATH_prepend": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin"
+    }
+  },
+  "dependency_provenance": {
+    "claimed_pin": "1c6c56b25de0c7348d82cb304e761f227326b6c9",
+    "materialized_from": "Current parent checkout, with exact expected Git blob checks enforced by the original verifier; no historical commit fetch or parent Git edits performed.",
+    "sources": {
+      "ExteriorClock": {
+        "path": "proofs/ExteriorClock__b2b9d37012d53747.lean",
+        "git_blob_sha1": "fc873f14a30ab4ef01c9a78a25a64dfddac1d560",
+        "sha256": "7158c8c7d07fab80c4212ba4c6c4b0a318ca22faee988c8d22eca45edfd439c5"
+      },
+      "GeneralCarryMass": {
+        "path": "proofs/GeneralCarryMass__ad1a2561147adc83.lean",
+        "git_blob_sha1": "c39b06abecab551006fad351b941dbbf1ccb56ea",
+        "sha256": "688355dd1209dff4230d5fc7d9c3ce63efb3e2d3ec0037d53c8ec26a662f2138"
+      },
+      "GeneralMomentAbsorption": {
+        "path": "proofs/GeneralMomentAbsorption__d6c541c17a8aa76f.lean",
+        "git_blob_sha1": "8e6aac5d5450b68b98535fa90d5b828019068b69",
+        "sha256": "b62006f6ce106ac973865f24185a8391278286c1ddf23fdd5827acda0d3205ca"
+      }
+    }
+  },
+  "original_build": {
+    "status": "LEAN_BUILD_FAILED",
+    "exit_code": 1,
+    "record": "/workspace/scratch/6f8166beec97/agent5-recovery/build-original-core-01/verification.json",
+    "errors": [
+      "InitialValidity.lean:126:2 split tactic failure",
+      "InitialValidity.lean:215:84 missing Decidable instance"
+    ],
+    "scope": "Three dependency modules compiled. Verifier stopped at InitialValidity; original FiniteOverflow was not compiled in this original-chain run."
+  },
+  "repair": {
+    "patch_sha256": "646b2efd1126d9c88b08b5624e31dc80031760d814bc0570aa0a463b9a7a85f9",
+    "changed_files": [
+      "FiniteOverflow.lean",
+      "InitialValidity.lean"
+    ],
+    "unchanged_files": 21,
+    "theorem_statements_compared": 47,
+    "all_theorem_statements_byte_equal": true,
+    "record": "/workspace/scratch/6f8166beec97/agent5-recovery/repair-and-statement-equivalence.json"
+  },
+  "repaired_build": {
+    "status": "LEAN_CHECKED_SELF_REBUILD",
+    "exit_code": 0,
+    "record": "/workspace/scratch/6f8166beec97/agent5-recovery/build-repaired-core-01/verification.json",
+    "modules": [
+      {
+        "module": "ExteriorClock",
+        "exit_code": 0,
+        "log_sha256": "410924824702cc61eafaf0a037091056c213b067556dc79636dfef0a6b2bdde1"
+      },
+      {
+        "module": "GeneralCarryMass",
+        "exit_code": 0,
+        "log_sha256": "1c60bd0ba103904c152a0c8469a00c5ad42842dae917c162caa1d222820f4418"
+      },
+      {
+        "module": "GeneralMomentAbsorption",
+        "exit_code": 0,
+        "log_sha256": "9e78ed4d763b3afba9687918a97d9a27932dbc7293586c5f89af1bbbac1b77bf"
+      },
+      {
+        "module": "InitialValidity",
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "module": "FiniteOverflow",
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "module": "Agent5AxiomAudit",
+        "exit_code": 0,
+        "log_sha256": "c26c45b65c240bbe2454a03aa44b4962633568214801eed8315ac7caefae0482"
+      }
+    ],
+    "all_47_axiom_reports_complete": true,
+    "axiom_sets": {
+      "propext, Classical.choice, Quot.sound": 25,
+      "propext": 11,
+      "(none)": 6,
+      "propext, Quot.sound": 5
+    },
+    "both_new_module_logs_empty": true
+  },
+  "proof_source_gate": "The unchanged verifier scans all five proof sources with nested comments and strings excluded, rejecting sorry, admit, native_decide, sorryAx, and axiom tokens; all repaired sources passed.",
+  "historical_metadata_note": "The original package reports, HANDOFF, and MANIFEST remain unchanged historical evidence. The repaired copy retains that original MANIFEST and its original uncompiled-status metadata; current verification is recorded separately here rather than rewriting history.",
+  "parent_checkout_source_or_git_changes": false,
+  "library_original_changes": false,
+  "integration_status": "Verification complete. Parent controls semantic review, acceptance, provenance-preserving integration, task publication, and issue #61 communication.",
+  "recovery_summary": "Recovered original patch and ZIP through the authorized file service; original bytes are preserved unchanged. Internal retrieval metadata is excluded from this source-facing report.",
+  "independent_execution": {
+    "performed": true,
+    "relationship": "This runtime specialist independently recovered the original Agent #5 package, applied the exact Agent #11 repair, and executed its unchanged verifier. The specialist did not author the repair.",
+    "receipt_status_note": "LEAN_CHECKED_SELF_REBUILD and independent_review=false are fixed outputs of the unchanged original verifier. They are preserved verbatim; independent execution occurred in this recovery session, while semantic review and integration remain separate."
+  }
+}
