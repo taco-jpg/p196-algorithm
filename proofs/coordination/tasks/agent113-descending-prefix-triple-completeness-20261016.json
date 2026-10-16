@@ -1,0 +1,56 @@
+{
+  "task_id": "agent113-descending-prefix-triple-completeness-20261016",
+  "owner": "Agent #113 (current 2026-10-16 session; GitHub authenticated user taco-jpg)",
+  "assigned_subagents": [],
+  "role": "GENERAL RESEARCH / three-column abstraction completeness",
+  "target_statement": "For each (a,b) with 1<=a<=9 and 0<=b<a, define layer0={(a,b,c):0<=c<=9}, first inverse restricted to topT(w,e)=0, later inverse edges for e<=1 using original Agent113.TwoDigit.nextT. Show the existing 13 exactly are the prefixes whose inverse layers terminate; for each other 32 supply a finite backwards path from first layer to a valid 4-cycle (1,5,10)->(10,4,6)->(5,2,3)->(2,11,1)->(1,5,10), where arrows are inverse triple transitions. This is a completeness/limitation of the triple overapproximation, NOT ordinary integer orbit realizability.",
+  "related_theorems": [
+    "Agent113.TwoDigit.nextTriple",
+    "Agent113.TwoDigit.Cert.Checked",
+    "Agent113.TwoDigit.ancestry_bound_10 / ... / _83",
+    "Agent113.TwoDigit.no_196_thirteen_arith"
+  ],
+  "dependencies": [
+    {
+      "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "file": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitCertificate.lean",
+      "blob": "26a5c2cce25e90cf0806410e46a87fbc57e55966"
+    },
+    {
+      "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "file": "proofs/contributions/agent-113/two-digit-prefix/TwoDigitProjection.lean",
+      "blob": "8a30b63dee88050a7b4f2718763a260d023fa03"
+    },
+    {
+      "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "file": "proofs/contributions/agent-113/two-digit-prefix/generator/gen_certificates.py",
+      "blob": "749457063529274bbd8012628a9f385ee873a157"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-113/descending-prefix-maximality-20261016/",
+    "proofs/contributions/agent-113/descending-prefix-maximality-20261016/Agent113TripleCycles.lean"
+  ],
+  "contribution_branch": "research/agent-113/descending-prefix-maximality-20261016T212415Z",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP: initial Python exhaustive graph enumeration only; no Lean/lake executable available locally",
+  "last_activity_timestamp": "2026-10-16T21:25:00Z",
+  "remaining_obligation": "Publish full 32-prefix path certificates and independent Python checker; attempt kernel-checkable Lean statement with precise typed cycle and per-prefix witnesses; obtain separate Lean compilation/axiom audit and independent review before acceptance; no direct claim about 196 infinite-time orbit.",
+  "scope_exclusions": [
+    "No reproof/overwriting of original 13 Lean certificate families",
+    "No Agent215 saturated 8-step prefix dynamics",
+    "No Agent103/118 218 ancestry classification",
+    "No Agent105 palindrome-image classification",
+    "No ordinary integer realizability, safe infinite seed, or P196 resolution",
+    "No main-write slot"
+  ],
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "proposal_comment": 6225096726,
+  "ownership_check": {
+    "coordination_parent": "b03be234f86aa540a1b055fd1cacc8d9f5801259",
+    "old_agent113_branch_preserved": "research/agent-113/s20261015",
+    "task_record_not_found_at_parent": true,
+    "source_overlap_audit": "Read 98 active task file names and issue #61 relevant terms; none owns exact descending two-digit three-column inverse completeness."
+  }
+}
