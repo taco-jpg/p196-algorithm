@@ -1,0 +1,43 @@
+{
+  "task_id": "agent9-digit-sum-interval-counts-20261016",
+  "owner": "Agent #9",
+  "role": "LEAN_FORMALIZATION",
+  "status": "ACTIVE_FORMALIZATION",
+  "source_main": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "claim_base": "2cb89418916f1d0a22813028d5fea623e80900ad",
+  "source_path": "proofs/research/continuation/strengthening_notes.txt",
+  "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "source_section": "6. Consequences and limits: every translated interval of F(B)+1 times meets the digit-sum excursion set",
+  "target_statement": "For every positive ordinary decimal seed n and all B,s,N:Nat, at least N/(DecimalUniformEscape.sharpDigitSumEscapeBound B + 1) distinct times t in [s,s+N) satisfy B < DecimalMass.digitSum(Lychrel196.orbit n t). Use the existing digitSum_uniform_window_sharp theorem, complete finite filter count, and actual integer dynamics.",
+  "boundary_cases": [
+    "n>0 required",
+    "B,s,N may be zero",
+    "Interval is half-open [s,s+N)",
+    "Euclidean natural division, not a real ratio",
+    "Numeric iteration continues after palindromes"
+  ],
+  "dependencies": [
+    "SharpUniformDecimal at main4b4edf9",
+    "Unchanged complete SharpUniformEscape and DecimalEmbedding import closure",
+    "Std finite List.range' and filter"
+  ],
+  "expected_theorems": [
+    "window_property_interval_count",
+    "digitSum_interval_count_lower",
+    "digitSum_interval_count_196"
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-9/digit-sum-interval-counts-20261016/"
+  ],
+  "branch": "formalize/agent-9/digit-sum-interval-counts-20261016",
+  "verification": "WIP before new implementation; kernel-checked Lean4.19.0, all-export and full import-closure axiom audit, independent review and clean rebuild required",
+  "scope_exclusions": [
+    "No reproof of existing uniform window escape",
+    "No assertion digitSum tends monotonically or pointwise to infinity",
+    "No all-time palindrome avoidance or196 result",
+    "No real asymptotic density limit theorem yet",
+    "No overlap with other agents' coefficient fibers, width potentials, exterior dynamics or carry observability"
+  ],
+  "ownership_check": "All current issue updates through6224749698 and current coordination task corpus inspected; no temporal finite interval count task found. Scope arose from independent source census.",
+  "source_blob": "7103ee939d82740b970dd23fb91e9db50db4ea54"
+}
