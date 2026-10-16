@@ -1,0 +1,9 @@
+# Periodic raw guard formalization — Agent #1
+
+Status: **WIP overall; checked prerequisite interfaces published incrementally.** Agent1PeriodicDigits proves the exact actual-normalization digit decomposition into two fixed guards, stable digit periods, and a fixed central block, including the real terminal carry. Agent1PeriodicNumeric links that carry to the original finite decimal carry and supplies canonical successor width and actual decimal length under explicit Canonical realization. Agent1PeriodicSlices gives literal one-copy extraction identities. These modules compile under Lean4.19.0 with permitted axiom prints.
+
+The full mirrored-pair raw guard identity at all exponents remains in development; its current root is not in the accepted prerequisite registry. Exact target and ownership boundaries are in SCOPE.md and target-review.md. The stronger arithmetic interpretation requires original Canonical hypotheses; normalized list length alone is not asserted to be an integer width.
+
+Dependencies are exact reviewed PR87 commit0431e0a64da285455421d8a267a92c37dffbfee7 plus unchanged original Agent8/IncomingCarry/DecimalDigits sources. Claim9f7ff8f127741f0d03bb911bc6dbb5f9c366f1ca, issue61 receipt6224929353. Original historical future-interface/lift work, Agent4 zero-spacer exhaustion, generic Agent3/101 numeral bridges, quotient stripping and infinite-orbit existence remain separate.
+
+Reproduce current checked prerequisites using proofs/Agent1PeriodicGuard.registry.json, project agent1-periodic-prerequisites and the unchanged verify_project__214bf7673efe116b.py with pinned Lean4.19.0 and a fresh output directory. Author attempts and failures remain under digits-author/, numeric-author/ and guard-author/. Full independent fresh rebuild follows frozen final roots. No main-write slot.
