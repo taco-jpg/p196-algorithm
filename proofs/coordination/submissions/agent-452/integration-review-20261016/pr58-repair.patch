@@ -1,0 +1,119 @@
+--- a/proofs/contributions/agent-17/m99-a07-uniform-finite-seed/UniformFiniteSeed.lean
++++ b/proofs/contributions/agent-17/m99-a07-uniform-finite-seed/UniformFiniteSeed.lean
+@@ -8,34 +8,73 @@
+ def ForeverSafe (Safe : α → Nat → Prop) (x : α) : Prop :=
+   ∀ t, Safe x t
+ 
+-/-- A finite, horizon-independent candidate set upgrades arbitrarily long
+-safe prefixes to one fixed all-time-safe candidate. -/
++/-- Finitely many failing candidates have a common finite failure bound. -/
++private theorem finite_failure_bound
++    {α : Type} (Safe : α → Nat → Prop) (K : List α) :
++    (∀ x, x ∈ K → ∃ t, ¬ Safe x t) →
++    ∃ M, ∀ x, x ∈ K → ∃ t, t ≤ M ∧ ¬ Safe x t := by
++  induction K with
++  | nil =>
++      intro _
++      refine ⟨0, ?_⟩
++      intro x hx
++      cases hx
++  | cons a K ih =>
++      intro hbad
++      obtain ⟨ta, ha⟩ := hbad a (List.mem_cons_self)
++      have htail : ∀ x, x ∈ K → ∃ t, ¬ Safe x t := by
++        intro x hx
++        exact hbad x (List.mem_cons_of_mem a hx)
++      obtain ⟨M, hM⟩ := ih htail
++      refine ⟨max ta M, ?_⟩
++      intro x hx
++      cases List.mem_cons.mp hx with
++      | inl h =>
++          subst x
++          exact ⟨ta, Nat.le_max_left ta M, ha⟩
++      | inr h =>
++          obtain ⟨t, ht, hfail⟩ := hM x h
++          exact ⟨t, Nat.le_trans ht (Nat.le_max_right ta M), hfail⟩
++
++/-- A fixed finite candidate list upgrades arbitrarily long safe prefixes
++    to one candidate in the same list that is safe at every time.
++    The explicit enumeration uses only the pinned Lean standard library. -/
+ theorem finite_uniform_extraction
+-    {α : Type} [Fintype α] [Nonempty α]
++    {α : Type} (K : List α) (Safe : α → Nat → Prop)
++    (hprefix : ∀ N, ∃ x, x ∈ K ∧ PrefixSafe Safe x N) :
++    ∃ x, x ∈ K ∧ ForeverSafe Safe x := by
++  apply Classical.byContradiction
++  intro hnone
++  have hbad : ∀ x, x ∈ K → ∃ t, ¬ Safe x t := by
++    intro x hx
++    apply Classical.byContradiction
++    intro hno_bad
++    apply hnone
++    refine ⟨x, hx, ?_⟩
++    intro t
++    apply Classical.byContradiction
++    intro hnot
++    exact hno_bad ⟨t, hnot⟩
++  obtain ⟨M, hM⟩ := finite_failure_bound Safe K hbad
++  obtain ⟨x, hxK, hx⟩ := hprefix M
++  obtain ⟨t, htM, ht⟩ := hM x hxK
++  exact ht (hx t htM)
++
++/-- A finite enumeration of the entire candidate type gives the original
++    candidate-type form without an unavailable Fintype dependency. -/
++theorem finite_type_uniform_extraction
++    {α : Type} (K : List α) (hK : ∀ x, x ∈ K)
+     (Safe : α → Nat → Prop)
+     (hprefix : ∀ N, ∃ x : α, PrefixSafe Safe x N) :
+     ∃ x : α, ForeverSafe Safe x := by
+-  classical
+-  by_contra hnone
+-  have hbad : ∀ x : α, ∃ t : Nat, ¬ Safe x t := by
+-    intro x
+-    by_contra hno_bad
+-    apply hnone
+-    exact fun t => by
+-      by_contra hnot
+-      exact hno_bad ⟨t, hnot⟩
+-  let bad : α → Nat := fun x => Classical.choose (hbad x)
+-  let M : Nat := Finset.univ.sup bad
+-  have hM : ∀ x : α, bad x ≤ M := by
+-    intro x
+-    exact Finset.le_sup (Finset.mem_univ x)
+-  obtain ⟨x, hx⟩ := hprefix M
+-  obtain ⟨t, ht⟩ := hbad x
+-  have htM : t ≤ M := le_trans ht (hM x)
+-  exact ht (hx t htM)
++  have h : ∀ N, ∃ x, x ∈ K ∧ PrefixSafe Safe x N := by
++    intro N
++    obtain ⟨x, hx⟩ := hprefix N
++    exact ⟨x, hK x, hx⟩
++  obtain ⟨x, _, hx⟩ := finite_uniform_extraction K Safe h
++  exact ⟨x, hx⟩
+ 
+-/-- The unrestricted quantifier swap fails. For each horizon N one may choose
+-x=N+1, while no fixed natural x can dominate every t. -/
++/-- The unrestricted quantifier swap fails, with unchanged statement. -/
+ theorem unrestricted_quantifier_swap_counterexample :
+     ¬ ((∀ N : Nat, ∃ x : Nat, ∀ t, t ≤ N → t < x) →
+        ∃ x : Nat, ∀ t, t < x) := by
+@@ -46,9 +85,10 @@
+     intro t ht
+     exact Nat.lt_succ_of_le ht
+   obtain ⟨x, hx⟩ := h hprefix
+-  exact Nat.lt_irrefl x (hx x le_rfl)
++  exact Nat.lt_irrefl x (hx x)
+ 
+ #print axioms finite_uniform_extraction
++#print axioms finite_type_uniform_extraction
+ #print axioms unrestricted_quantifier_swap_counterexample
+ 
+ end Agent17
+--- a/.github/workflows/agent17-m99-a07-check.yml
++++ b/.github/workflows/agent17-m99-a07-check.yml
+@@ -28,4 +28,4 @@
+         run: |
+           set -euo pipefail
+           cd proofs
+-          /tmp/lean-4.19.0-linux/bin/lean -i . -o /tmp/UniformFiniteSeed.olean contributions/agent-17/m99-a07-uniform-finite-seed/UniformFiniteSeed.lean
++          /tmp/lean-4.19.0-linux/bin/lean -o /tmp/UniformFiniteSeed.olean contributions/agent-17/m99-a07-uniform-finite-seed/UniformFiniteSeed.lean
