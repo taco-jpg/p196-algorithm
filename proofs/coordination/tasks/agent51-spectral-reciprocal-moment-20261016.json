@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "task_id": "agent51-spectral-reciprocal-moment-20261016",
+  "owner": "Agent #51",
+  "session": "3551b32d054b",
+  "role": "LEAN_FORMALIZATION",
+  "status": "CLAIMED",
+  "chat_language": "German",
+  "deliverable_language": "English",
+  "coordination_issue": 61,
+  "main_write_slot": false,
+  "source_snapshot": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+  "inventory_claims": [
+    "A51-SPEC-RECIPROCAL-MOMENT"
+  ],
+  "source_claim": {
+    "path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/astra_spectral_carry_quotient.md",
+    "blob": "eac5b8f61385a615d9cc3e7796a4d698c66b716b",
+    "section": "Lines103–118, reciprocal polynomial identity and derivative-coordinate redundancy",
+    "statement": "For the fixed-width reciprocal coefficient word q of Q, 2 Q'(1)=(L-1)Q(1). Because2 is invertible modulo9, the derivative coordinate is determined by width L and Q(1) modulo9."
+  },
+  "target_statement": [
+    "For every q:Nat→Int and L:Nat, assuming only ∀i<L,q i=q(L-1-i), prove 2*finiteSum(fun i=>(i:Int)*q i)L=((L:Int)-1)*finiteSum q L.",
+    "Export the same identity using literal List.range sums. Define the finite formal coefficient derivative evaluation and connect its value at1 with the weighted sum, including the vanishing index0 term.",
+    "Prove derivativeAtOne q L %9=(5*(((L:Int)-1)*coefficientMass q L))%9. For two symmetric words of the same width, equality of coefficient masses mod9 implies equality of derivatives at1 mod9.",
+    "For natural coefficients, connect coefficientMass (fun i=>(q i:Int)) L with existing literal polynomialValue q L 1 and export the exact reciprocal identity."
+  ],
+  "hypotheses": [
+    "Only finite reflection symmetry; no coefficient sign, digit bound, actual polynomial degree, canonical-number or carry assumption."
+  ],
+  "quantifier_order": "For every fixed width L and every integer coefficient function q, under symmetry on i<L. For determination: one common L, two separately symmetric coefficient functions, then their equal mass residue.",
+  "boundary_cases": [
+    "L=0 has empty sums and integer factor-1; exact algebraic extension of the source.",
+    "L=1 has zero derivative and right-hand factor0.",
+    "Signed coefficients and zero boundary coefficients allowed; L is reflection width rather than necessarily actual polynomial degree.",
+    "No condition outside i<L."
+  ],
+  "relationship_to_source": "Exact original identity plus a signed-coefficient generalization. The natural-coefficient wrapper preserves the original Q(1). Full Laurent quotient classification is outside scope.",
+  "expected_final_theorems": [
+    "P196.Agent51.reciprocal_first_moment",
+    "P196.Agent51.reciprocal_first_moment_literal",
+    "P196.Agent51.reciprocal_derivative_at_one",
+    "P196.Agent51.reciprocal_derivative_mod_nine",
+    "P196.Agent51.reciprocal_derivative_mod_nine_determined",
+    "P196.Agent51.natural_reciprocal_derivative"
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/",
+    "proofs/Agent51ReciprocalMoment.registry.json"
+  ],
+  "contribution_branch": "formalize/agent-51/spectral-reciprocal-moment-20261016",
+  "branch_base_dependency": "7360b12a0a5889761c845a56a4b8d8a1df5f39b5",
+  "dependencies": [
+    {
+      "module": "ResidueSums",
+      "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/ResidueSums.lean",
+      "sha256": "1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4",
+      "git_blob": "f1e3c1c5e7cd780b28f6752d980158bd9b9c98b6"
+    },
+    {
+      "module": "OverflowDigits",
+      "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/OverflowDigits.lean",
+      "sha256": "65adeb3ae7bea93e390a95fc5f8b58ec43f0f64f01ed9db3f51392657ba89a41",
+      "git_blob": "6ad7ea581c1ed9e6f8c4907dcb5ad73558423b97"
+    }
+  ],
+  "missing_helpers": [
+    "Finite integer sum invariance under index reflection.",
+    "Finite integer sum additivity; existing Nat-valued wordSum_reflected is a related foundation helper, not this weighted theorem."
+  ],
+  "ownership_check": {
+    "coordination_parent": "86541584a15b9070d21ebe7da7fe2aa9cc938416",
+    "baseline": "38f79914241eb6a379b29ca13a19b95393fdc1c5",
+    "tasks_in_baseline": 201,
+    "issue_last_seen": 6226832339,
+    "result": "Read-only specialist checked current task names/hashes and relevant mathematical scopes, Agent14 actual coordinate source at a883847381cd800b13e511d8ccc8909ba998866c (blob e06631541818a8ee8bf266193f35637a5a07bd21), targeted existing theorem searches, and recent issue61. Root inspected subsequent changed task scopes: distinct Agent1 quotient return-clock and integration/delivery records. No equivalent first-moment reservation found. Bounded evidence; not a globally exhaustive absence claim.",
+    "retry": {
+      "unpublished_commit": "3d3643b1386c52ee40f92eb62a2fac675d9e8353",
+      "task_readback": 404,
+      "intervening_scope": "Inspected Agent17 PR147 delivery, Agent18 PR134 delivery update and Agent32 PR117 exact certificate repair. All are distinct from reciprocal moments. No equivalent new ownership."
+    }
+  },
+  "contract_review": {
+    "reviewer": "Genuine nonauthor /root/semantic_review",
+    "status": "PASS",
+    "sha256": "4a6004fcd0690fbc43f73500e1bc3b4265248e0efbfa80cb8c27fb531ac87165"
+  },
+  "acceptance": {
+    "lean": "4.19.0",
+    "commit_prefix": "6caaee842e94",
+    "compiler_args": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "Lean.ofReduceBool",
+      "new mathematical axioms"
+    ],
+    "required": [
+      "Exact source-semantic contract review",
+      "Fresh source compilation of entire local import closure",
+      "Actual public and transitive axiom audit",
+      "Genuine nonauthor semantic review and clean rebuild",
+      "Source hashes and all substantive attempts/logs retained"
+    ]
+  },
+  "subagents": {
+    "author": "/root/claim_census, reassigned after protected claim acceptance",
+    "semantic_review": "/root/semantic_review, genuine nonauthor",
+    "execution_review": "/root/environment_audit, genuine nonauthor",
+    "initial_model": "gpt-6-astra",
+    "initial_reasoning_effort": "ultra",
+    "followup_control": "Tool exposes no reasoning-effort parameter; initial ultra setting remains inherited. No invented reassignment setting."
+  },
+  "scope_exclusions": [
+    "No carryfree or overflow saturation reproof",
+    "No T/R or U/S or carry-support takeover",
+    "No four A/H/J evolution laws",
+    "No full quotient-ring classification",
+    "No threshold-optimality claim",
+    "No main write slot"
+  ],
+  "verification_status": "Contract independently reviewed; no new mathematical source or Lean build yet.",
+  "next_action": "After successful guarded claim and exact readback, author the integer finite-sum reflection argument and derivative/mod9 bridges; preserve all attempts, independently review and rebuild."
+}
