@@ -1,0 +1,133 @@
+{
+  "task": "agent7-odd-nooverflow-fibers-20261016",
+  "component": "OddCenter",
+  "status": "LEAN-CHECKED",
+  "independent_review": false,
+  "accepted_attempt": "attempt-002",
+  "failed_attempts": [
+    {
+      "path": "attempt-001",
+      "status": "FAILED; not accepted",
+      "reason": "Two projection/elimination proof errors; compiler-inserted sorryAx in failed endpoint reports is retained as failure evidence only."
+    }
+  ],
+  "source": {
+    "path": "../OddCenter.lean",
+    "sha256": "72f1c2e64a587e25f85482b6f61ceea0763218d60c7c7cc5eaa7d1d31ca65728"
+  },
+  "runtime": {
+    "version": "Lean 4.19.0",
+    "executable": "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+    "version_source": "Parent-provided pinned runtime; exact compiler command is retained per module in results.json.",
+    "confirmed_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
+  },
+  "build_commands": [
+    "python3 proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/center-dev/check.py attempt-001",
+    "python3 proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/center-dev/check.py attempt-002"
+  ],
+  "axiom_union": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "exported_theorem_roots_audited": 15,
+  "retained_files": [
+    {
+      "path": "check.py",
+      "sha256": "9af2bfe15aa8bb66d16cd87a71546d78bae00d3a02d15022fcb29ab7b5048490"
+    },
+    {
+      "path": "attempt-001/OddCenter.lean",
+      "sha256": "f72505596953c3301408eed0f823ed64e5b0ca514a392764dd0e836b2605c3ec"
+    },
+    {
+      "path": "attempt-001/OddCenter.log",
+      "sha256": "b449c0ccdef1bb9fe13b37a301b07a150ebb18f0d28d621171c451d206ddef0f"
+    },
+    {
+      "path": "attempt-001/InverseFibers.log",
+      "sha256": "4c56ed962d3d1495c6eba3fdba338b59a53dba773323044f10eb1a1d9509c732"
+    },
+    {
+      "path": "attempt-001/PathCounts.log",
+      "sha256": "5a16247b729f2e0ca41ffb0238fefd6d716de13c95884df488fae927a5694752"
+    },
+    {
+      "path": "attempt-001/WordBridge.log",
+      "sha256": "ac2d16ee8dc4bd7b955cb2f048f09247f7bae052d70534bde87441859cd25445"
+    },
+    {
+      "path": "attempt-001/results.json",
+      "sha256": "00a179dfb818d1b699b3f61e567aa438b7b3f8010022635755ad68d67aff8e8c"
+    },
+    {
+      "path": "attempt-001/source-sha256.json",
+      "sha256": "cd625eea1216056e34f8ccbc50dbfc7d18c603f198d996a6d07ef98f7a483124"
+    },
+    {
+      "path": "attempt-002/OddCenter.lean",
+      "sha256": "72f1c2e64a587e25f85482b6f61ceea0763218d60c7c7cc5eaa7d1d31ca65728"
+    },
+    {
+      "path": "attempt-002/OddCenter.log",
+      "sha256": "d7aedab54556121098cdc7772b04754042370e1ac73b22fd44c8966e6b8056d3"
+    },
+    {
+      "path": "attempt-002/InverseFibers.log",
+      "sha256": "4c56ed962d3d1495c6eba3fdba338b59a53dba773323044f10eb1a1d9509c732"
+    },
+    {
+      "path": "attempt-002/PathCounts.log",
+      "sha256": "5a16247b729f2e0ca41ffb0238fefd6d716de13c95884df488fae927a5694752"
+    },
+    {
+      "path": "attempt-002/WordBridge.log",
+      "sha256": "ac2d16ee8dc4bd7b955cb2f048f09247f7bae052d70534bde87441859cd25445"
+    },
+    {
+      "path": "attempt-002/results.json",
+      "sha256": "906f68c47edb4ce30bd50410fbde88841e4ee3903094f3f5ae56207b61e96c50"
+    },
+    {
+      "path": "attempt-002/source-sha256.json",
+      "sha256": "2696bb4c00a899e5b678b70ba576fb3295cde1b6a15ff78e72782adc9f09b426"
+    }
+  ],
+  "excluded_reproducible_infrastructure": {
+    "dependency_source_copies": [
+      "attempt-*/InverseFibers.lean",
+      "attempt-*/PathCounts.lean",
+      "attempt-*/WordBridge.lean"
+    ],
+    "reason": "Byte-identical copies of sibling pinned dependencies; hashes retained per attempt. Do not add build directories wholesale.",
+    "compiled_objects": [
+      "attempt-*/*.olean"
+    ],
+    "dependency_pins": {
+      "InverseFibers": "64f4fa5df54d9365b1b3706eceeab3d3f358eb1040a95e3057ac4d9f82806b70",
+      "PathCounts": "588890faa1a29739b00dbe660a5f39971ac5087d997550cb9a740194eb592a33",
+      "WordBridge": "83594b2cc412382fa2fc6c38979d7ae4a08e4ee49b0e3b46a7453b010c75a611",
+      "OddCenter": "72f1c2e64a587e25f85482b6f61ceea0763218d60c7c7cc5eaa7d1d31ca65728"
+    }
+  },
+  "independent_other_component_review": {
+    "path": "review-oddwords/REVIEW.json",
+    "source": "../OddWords.lean",
+    "source_sha256": "f0827099cffeeab2997c0a572906d8bd370e048aa859beb3bb8189ad5bc217a3",
+    "status": "INDEPENDENTLY-REVIEWED with separate fresh execution",
+    "retained_files": [
+      "review-oddwords/BoundaryControls.log",
+      "review-oddwords/OddWords.log",
+      "review-oddwords/BoundaryControls.lean",
+      "review-oddwords/check.py",
+      "review-oddwords/source-pin.json",
+      "review-oddwords/OddWords.lean",
+      "review-oddwords/results.json",
+      "review-oddwords/REVIEW.json",
+      "review-oddwords/compiler-version.log"
+    ],
+    "excluded": [
+      "review-oddwords/*.olean"
+    ]
+  }
+}

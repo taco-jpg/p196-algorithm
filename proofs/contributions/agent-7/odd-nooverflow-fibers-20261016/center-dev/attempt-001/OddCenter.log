@@ -1,0 +1,41 @@
+/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/center-dev/attempt-001/OddCenter.lean:159:8: error: tactic 'subst' failed, did not find equation for eliminating 'w'
+case cons.cons.mp.intro.intro.intro.intro.intro.mk.intro.intro.intro
+v : Fin 10
+z : Nat
+s : Symbol
+ss : List Symbol
+ih : ∀ (p : State) (xs : List Nat), (xs, z) ∈ oddPreimages ss v p ↔ OddPath ss v p xs z
+p q : State
+left✝ : q ∈ states
+y : Nat
+hy : Local s p q y
+ys : List Nat
+w : Nat
+hys : (ys, w) ∈ oddPreimages ss v q
+he2 : (ys, w).snd = z
+he : (y :: (ys, w).fst, (ys, w).snd) = (y :: (ys, w).fst, z)
+he1 : y :: (ys, w).fst = y :: (ys, w).fst
+⊢ ∃ q, Local s p q y ∧ OddPath ss v q (ys, w).fst z
+/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/center-dev/attempt-001/OddCenter.lean:172:79: error: application type mismatch
+  congrArg Prod.snd he
+argument
+  he
+has type
+  (fun w => (x :: w.fst, w.snd)) a = (fun w => (x :: w.fst, w.snd)) b : Prop
+but is expected to have type
+  a = b : Prop
+'P196.Agent7.OddFibers.oddMirror_nil' does not depend on any axioms
+'P196.Agent7.OddFibers.oddMirror_cons' depends on axioms: [propext]
+'P196.Agent7.OddFibers.oddMirror_length' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.OddFibers.oddMirror_reverse' depends on axioms: [propext]
+'P196.Agent7.OddFibers.center_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.center_exists_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.center_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.centerValue_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.oddPath_length' depends on axioms: [propext]
+'P196.Agent7.OddFibers.oddPath_bounds' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.OddFibers.mem_oddExtend' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.OddFibers.length_oddExtend' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.OddFibers.mem_oddPreimages' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'P196.Agent7.OddFibers.oddExtend_nodup' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent7.OddFibers.oddPreimages_nodup' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

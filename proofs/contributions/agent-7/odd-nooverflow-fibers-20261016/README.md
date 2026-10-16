@@ -23,10 +23,29 @@ sets are subsets of `propext` and `Quot.sound`. The complete source, failed
 first attempt, successful second attempt, compiler logs, and execution receipt
 are retained under `words-dev`.
 
-The odd-center arithmetic, exact inverse enumerator, original-normalizer
-bridge, and all-width sharp cardinality theorem are being developed separately.
-They are not established by this checkpoint. A bounded exploratory formula
-is not promoted to a theorem until the complete source and axiom audit pass.
+`OddCenter.lean` now proves exact parity-sensitive center acceptance and a complete,
+duplicate-free path enumerator. `OddActual.lean` proves equivalence to the unchanged
+`Agent8.stepWord` with actual normalization and actual final carry zero.
+`OddCounts.lean` proves the all-width sharp path count
+`oddMax m = (fib (m+1)+1)/2`, an attaining all-nine family, a positive-leading
+11/9 family, and equality between path counts and enumerator lengths.
+Each specialist preserved a fresh build, exported-theorem axiom output,
+failed draft evidence, and publication manifest in its respective development
+folder. The reported axiom union is exactly the permitted foundational set
+`propext`, `Classical.choice`, `Quot.sound`.
+
+`OddCanonical.lean` now checks the exact literal complete-word domain:
+`fullOddPreimages_membership` is an if-and-only-if with `CanonicalOddFiber`,
+without assuming a half-word encoding. The list is duplicate-free. Its
+incremental build passed using pinned dependency objects from the separately
+recorded clean bridge build. The width-one positive witness is `[[2]]` for
+empty target half and target center digit 2. The first failed simplification
+attempt is preserved. Complete canonical sharpness packaging and a final
+combined fresh import-closure audit remain the next checkpoint.
+
+Independent specialists have separately reviewed and rebuilt several
+components; their exact source pins and semantic scope are retained in the
+review records. This checkpoint is not integrated into the accepted build.
 
 ## Imported source identity
 

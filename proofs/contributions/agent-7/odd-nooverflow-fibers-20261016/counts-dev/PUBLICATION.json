@@ -1,0 +1,137 @@
+{
+  "task": "agent7-odd-nooverflow-fibers-20261016",
+  "component": "OddCounts",
+  "status": "LEAN-CHECKED",
+  "independent_review": "Source interpretation review completed by sibling gap_inventory; separate fresh execution in progress.",
+  "accepted_attempt": "attempt-002",
+  "failed_attempts": [
+    {
+      "path": "attempt-001",
+      "status": "FAILED; not accepted",
+      "reason": "Projection/if simplification, missing local Decidable instances, associativity normalization and max simplification. The failed source contains no explicit sorry; compiler-inserted sorryAx in failed audit outputs is retained as failure evidence only."
+    }
+  ],
+  "source": {
+    "path": "../OddCounts.lean",
+    "sha256": "7e7a97c04a065e4060d11c652807ba6e8f3531da505e4336070caf97beabe939",
+    "immutable_checkpoint": "attempt-002/source/OddCounts.lean"
+  },
+  "mathematical_scope": {
+    "bound": "For each list ss of exterior output pair coefficients and each center digit v, oddPreimages ss v 0 has length at most (fib(ss.length+1)+1)/2, with Nat division.",
+    "sharpness": "For each n there exists v with equality for 11 :: replicate n 9; every member has positive outer coefficient. Width-one canonical positivity is supplied separately by parent.",
+    "separation": "No claim about the orbit of 196 or infinite palindrome avoidance."
+  },
+  "runtime": {
+    "version": "Lean 4.19.0",
+    "executable": "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+    "executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "compiler_arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "build_command": "python3 proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/counts-dev/verify_counts.py",
+  "axiom_union": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "exported_theorem_roots_audited": 13,
+  "finite_certificate": "four_class_bound has 5^4 cases, checked by kernel decide and no axioms.",
+  "discovery": {
+    "status": "EXPERIMENTAL_ONLY",
+    "scope": "Exact reachable-vector deduplication for all five transition classes through exterior-pair count 16. Raw recorded observations include vector counts, maxima, witness vectors and witness class words.",
+    "retained_script": "discover_counts.py",
+    "raw_recorded_observations": "bounded-discovery.json",
+    "used_as_proof": false
+  },
+  "retained_files": [
+    {
+      "path": "verify_counts.py",
+      "sha256": "795286f42d772356db145569b2ba24389e09229f7607cfe4232756b3ce9292ae"
+    },
+    {
+      "path": "discover_counts.py",
+      "sha256": "709f00c3f4b8d870d27599f42ae63c1c94089a7131894e80e0dfd6239b1c30c1"
+    },
+    {
+      "path": "bounded-discovery.json",
+      "sha256": "adb2b4cb0bcb5b4ba6bfdcc45937d5d15875f4f29df9ace64205d32da5bc722d"
+    },
+    {
+      "path": "attempt-001/source/OddCounts.lean",
+      "sha256": "0227c89475b99328c77e088f1672cf53d627508a22174a71d5f8e8038d1ab6e1"
+    },
+    {
+      "path": "attempt-001/verification.json",
+      "sha256": "902177cadd69dcd4bb7e1001096b89b7c2943152ef4884696b0945e0dd75c26d"
+    },
+    {
+      "path": "attempt-001/InverseFibers.log",
+      "sha256": "4c56ed962d3d1495c6eba3fdba338b59a53dba773323044f10eb1a1d9509c732"
+    },
+    {
+      "path": "attempt-001/PathCounts.log",
+      "sha256": "5a16247b729f2e0ca41ffb0238fefd6d716de13c95884df488fae927a5694752"
+    },
+    {
+      "path": "attempt-001/WordBridge.log",
+      "sha256": "ac2d16ee8dc4bd7b955cb2f048f09247f7bae052d70534bde87441859cd25445"
+    },
+    {
+      "path": "attempt-001/OddCenter.log",
+      "sha256": "d7aedab54556121098cdc7772b04754042370e1ac73b22fd44c8966e6b8056d3"
+    },
+    {
+      "path": "attempt-001/OddCounts.log",
+      "sha256": "270422a7386dde8f34bfb147fe3cee777b076a6ecfba3506b3a3aae0584c9628"
+    },
+    {
+      "path": "attempt-002/source/OddCounts.lean",
+      "sha256": "7e7a97c04a065e4060d11c652807ba6e8f3531da505e4336070caf97beabe939"
+    },
+    {
+      "path": "attempt-002/verification.json",
+      "sha256": "6215f7e6474e6c2674f12d0493d2a88d4c40132aa5be5490d75cc39fa59aac73"
+    },
+    {
+      "path": "attempt-002/InverseFibers.log",
+      "sha256": "4c56ed962d3d1495c6eba3fdba338b59a53dba773323044f10eb1a1d9509c732"
+    },
+    {
+      "path": "attempt-002/PathCounts.log",
+      "sha256": "5a16247b729f2e0ca41ffb0238fefd6d716de13c95884df488fae927a5694752"
+    },
+    {
+      "path": "attempt-002/WordBridge.log",
+      "sha256": "ac2d16ee8dc4bd7b955cb2f048f09247f7bae052d70534bde87441859cd25445"
+    },
+    {
+      "path": "attempt-002/OddCenter.log",
+      "sha256": "d7aedab54556121098cdc7772b04754042370e1ac73b22fd44c8966e6b8056d3"
+    },
+    {
+      "path": "attempt-002/OddCounts.log",
+      "sha256": "748743cdeb46ddda8c288b992aa0f69d65c167da189fd0ecced2f75a4689ab2a"
+    }
+  ],
+  "excluded_reproducible_infrastructure": {
+    "dependency_source_copies": [
+      "attempt-*/source/InverseFibers.lean",
+      "attempt-*/source/PathCounts.lean",
+      "attempt-*/source/WordBridge.lean",
+      "attempt-*/source/OddCenter.lean"
+    ],
+    "compiled_objects": [
+      "attempt-*/source/*.olean"
+    ],
+    "reason": "Byte-identical immutable dependency copies are identified by hashes. Do not add build directories wholesale.",
+    "dependency_pins": {
+      "InverseFibers": "64f4fa5df54d9365b1b3706eceeab3d3f358eb1040a95e3057ac4d9f82806b70",
+      "PathCounts": "588890faa1a29739b00dbe660a5f39971ac5087d997550cb9a740194eb592a33",
+      "WordBridge": "83594b2cc412382fa2fc6c38979d7ae4a08e4ee49b0e3b46a7453b010c75a611",
+      "OddCenter": "72f1c2e64a587e25f85482b6f61ceea0763218d60c7c7cc5eaa7d1d31ca65728"
+    }
+  }
+}
