@@ -1,0 +1,11 @@
+import CoordinateOnlyStreams
+
+#print axioms Agent6.ExteriorCoordinates.overflow_eq_one_iff
+#print axioms Agent6.ExteriorCoordinates.overflow_eq_zero_iff
+#print axioms Agent6.ExteriorCoordinates.overflow_eq_rho_quotient
+#print axioms Agent6.ExteriorCoordinates.overflow_le_one
+#print axioms Agent5.ExactDigitStreams.nonneutralPhase_coordinate_bounds
+#print axioms Agent5.ExactDigitStreams.overflow_eq_coordinate_selector
+#print axioms Agent5.ExactDigitStreams.outerNext_from_coordinates
+#print axioms Agent5.ExactDigitStreams.outerNext_from_coordinates_quotient
+#print axioms Agent5.ExactDigitStreams.fractionDigits_coordinates_digits_lt_ten

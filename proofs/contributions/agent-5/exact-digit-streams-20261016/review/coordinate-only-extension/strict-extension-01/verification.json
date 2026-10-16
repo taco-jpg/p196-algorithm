@@ -1,0 +1,1846 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STRICT_EXTENSION_WITH_ATTRIBUTED_CORE",
+  "actual_executor": "Agent #5 /root/semantic_review",
+  "independent_of_theorem_authorship": true,
+  "authored_any_reviewed_theorem": false,
+  "execution_mode": "Supported require_escalated tool execution after ordinary sandbox application-location preflight failure",
+  "toolchain": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "runtime_prefix": "/tmp/p196-agent5-lean/lean-4.19.0-linux",
+    "files": {
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "trust_level": 0,
+  "serialized": true,
+  "canonical_verifier_modified": false,
+  "audit_source_copied_unchanged": true,
+  "audit_source_derivation": "Exact canonical audit body, registry-selected nine module origins and thirty checks; root import CoordinateOnlyStreams",
+  "is_fresh_nine_module_build": false,
+  "freshly_compiled_modules": [
+    "CoordinateThreshold",
+    "CoordinateOnlyStreams"
+  ],
+  "cached_core_attribution": "Parent Agent #5 canonical seven-module build; inherited agent=Agent #1 is verifier metadata",
+  "separate_independent_fresh_core_replay": {
+    "input_path": "/workspace/scratch/6f8166beec97/p196-digits/proofs/contributions/agent-5/exact-digit-streams-20261016/review/strict-replay-01/verification.json",
+    "sha256": "b5c97cde66635b2901809b05846390283511925900e2d297557dbeb7a5d7cd9c",
+    "snapshot_path": "provenance/independent-core-verification.json",
+    "actual_executor": "Agent #5 /root/semantic_review",
+    "source_modules": [
+      "OuterFinite",
+      "TARGET",
+      "ExteriorFactorizationProof",
+      "DigitDefinitions",
+      "AdicDigits",
+      "FractionDigits",
+      "CoordinateStreams"
+    ],
+    "full_module_origin_theorems": 133,
+    "trust_level": 0
+  },
+  "sources": {
+    "OuterFinite": {
+      "path": "proofs/OuterFinite__1c852c0ed5b8d706.lean",
+      "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+      "git_blob": "bc22ad1b950251fd231cccd40393b5749b8ad887",
+      "imports": [
+        "Std"
+      ],
+      "snapshot_path": "source/OuterFinite.lean",
+      "snapshot_sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6"
+    },
+    "TARGET": {
+      "path": "proofs/TARGET__c7bc3cfee999c64e.lean",
+      "sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+      "git_blob": "76b2633882fe44d1aea1f2134be97b38617ab5cf",
+      "imports": [
+        "OuterFinite"
+      ],
+      "snapshot_path": "source/TARGET.lean",
+      "snapshot_sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717"
+    },
+    "ExteriorFactorizationProof": {
+      "path": "proofs/ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+      "sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+      "git_blob": "9a9a0e3e8335b218d2863edaee58c2c26614c0ca",
+      "imports": [
+        "TARGET"
+      ],
+      "snapshot_path": "source/ExteriorFactorizationProof.lean",
+      "snapshot_sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301"
+    },
+    "DigitDefinitions": {
+      "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/DigitDefinitions.lean",
+      "sha256": "4bdedd6d992a3207645d5dd21478a66c2e1c2465f75111b86b294caee903739a",
+      "git_blob": "2e785625f94d91b36191749b13a00077614ce276",
+      "imports": [
+        "ExteriorFactorizationProof"
+      ],
+      "snapshot_path": "source/DigitDefinitions.lean",
+      "snapshot_sha256": "4bdedd6d992a3207645d5dd21478a66c2e1c2465f75111b86b294caee903739a"
+    },
+    "AdicDigits": {
+      "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/AdicDigits.lean",
+      "sha256": "f8b8b5ded9e85cf8840a329950fe95f1f6e2e3bb2ad8c8e3e1f1513080e09a6b",
+      "git_blob": "f67d531bd0d77b863754f31f3b1e8dc0d0751478",
+      "imports": [
+        "DigitDefinitions"
+      ],
+      "snapshot_path": "source/AdicDigits.lean",
+      "snapshot_sha256": "f8b8b5ded9e85cf8840a329950fe95f1f6e2e3bb2ad8c8e3e1f1513080e09a6b"
+    },
+    "FractionDigits": {
+      "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/FractionDigits.lean",
+      "sha256": "d6232d1f20221b1a2f09f3670f6078d2fe0c6558a439c9c0ac25c4e04e119732",
+      "git_blob": "49289be4a51b1e3024ced9bb75fa6b37dbfa710b",
+      "imports": [
+        "DigitDefinitions"
+      ],
+      "snapshot_path": "source/FractionDigits.lean",
+      "snapshot_sha256": "d6232d1f20221b1a2f09f3670f6078d2fe0c6558a439c9c0ac25c4e04e119732"
+    },
+    "CoordinateStreams": {
+      "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/CoordinateStreams.lean",
+      "sha256": "c1409584ac12282f5b3097284a88194687b335f14d5864f258afa40f0d920a20",
+      "git_blob": "588a32c9fe791eaa01ee0ab852c0e52cd0222c7d",
+      "imports": [
+        "AdicDigits",
+        "FractionDigits"
+      ],
+      "snapshot_path": "source/CoordinateStreams.lean",
+      "snapshot_sha256": "c1409584ac12282f5b3097284a88194687b335f14d5864f258afa40f0d920a20"
+    },
+    "CoordinateThreshold": {
+      "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateThreshold.lean",
+      "sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+      "git_blob": "34ddc74962d8bbef954f1626a80593de60906215",
+      "imports": [
+        "ExteriorFactorizationProof"
+      ],
+      "snapshot_path": "source/CoordinateThreshold.lean",
+      "snapshot_sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8"
+    },
+    "CoordinateOnlyStreams": {
+      "path": "proofs/contributions/agent-5/exact-digit-streams-20261016/CoordinateOnlyStreams.lean",
+      "sha256": "e35e191a0aa7a848bcc7ec752f09db6081c9065c33a20c035a3d764622f09540",
+      "git_blob": "ededd5c92fe852d19bfe61bac7a6acd803e65240",
+      "imports": [
+        "CoordinateStreams",
+        "CoordinateThreshold"
+      ],
+      "snapshot_path": "source/CoordinateOnlyStreams.lean",
+      "snapshot_sha256": "e35e191a0aa7a848bcc7ec752f09db6081c9065c33a20c035a3d764622f09540"
+    }
+  },
+  "preflight_commands": [
+    {
+      "label": "CompilerVersion",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.031849,
+      "log": "logs/CompilerVersion.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "CompilerPrefix",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--print-prefix"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.032057,
+      "log": "logs/CompilerPrefix.log",
+      "log_sha256": "abcef5baa4d798f26d4217102091c996045d67ab7168c6c4c40a94132aa33fa4"
+    }
+  ],
+  "commands": [
+    {
+      "label": "CoordinateThreshold",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "/tmp/agent5-digit-extension-review-eyn3phul/CoordinateThreshold.olean",
+        "CoordinateThreshold.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.019137,
+      "log": "logs/CoordinateThreshold.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "CoordinateOnlyStreams",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "/tmp/agent5-digit-extension-review-eyn3phul/CoordinateOnlyStreams.olean",
+        "CoordinateOnlyStreams.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.465146,
+      "log": "logs/CoordinateOnlyStreams.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ProjectAudit",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "ProjectAudit.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.028516,
+      "log": "logs/ProjectAudit.log",
+      "log_sha256": "08f81614fcf50cde115a0232683024d1300e97fc7bafc12889cee7dd8848d5f9"
+    }
+  ],
+  "audit": {
+    "full_module_origin_theorems": 179,
+    "fixed_exports_checked": 30,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "all_axioms_permitted": true,
+    "unsafe_implementation_axioms": [
+      [
+        "TARGET",
+        "List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1"
+      ],
+      [
+        "OuterFinite",
+        "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1"
+      ]
+    ],
+    "declarations": [
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_zero_iff",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.lowValue_of_zValue._proof_11",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.stripSuffix_append_single",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten._proof_11",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.highValue_reverse_word",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "_private.CoordinateOnlyStreams.0._proof_2",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_2",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "P196.Agent7.Finite.Outer.mk.injEq",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_repeat",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.normalize_append_single",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.outerNext_append_band",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_16",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_pos._proof_9",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent115.ExteriorFactorization.rhoNum.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_15",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_18",
+        "axioms": [
+          "Classical.choice",
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.lowValue.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.zValue_append_band._proof_9",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "P196.Agent7.Finite.Outer.mk.inj",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.phase_tail_digit",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.zValue_append_band",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "P196.Agent7.Finite.validOuter.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "Agent5.ExactDigitStreams.fractionDigits.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_one_iff",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.factorization_general",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.rhoNum_append_band._proof_10",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_7",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "Agent5.ExactDigitStreams.fractionDigits.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_3",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "P196.Agent7.Finite.Outer.mk.sizeOf_spec",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_12",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.zValue_append_replicate",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.lowValue_append",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "_private.FractionDigits.0._proof_6",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "_private.FractionDigits.0._proof_7",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateStreams",
+        "name": "Agent5.ExactDigitStreams.strip_zip_append_replicate",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.entries_le_of_valid",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_identity._proof_6",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.outerNext_eq_fromScans",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.empty_word_quotient_iff",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.phase_facts",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent5.ExactDigitStreams.nonneutralPhase_coordinate_bounds",
+        "axioms": [
+          "Classical.choice",
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_exterior",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.normalize_carry_le._proof_4",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.lowValue_of_zValue",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_le_one",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_column",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "_private.DigitDefinitions.0.Agent5.ExactDigitStreams.fractionDigits.match_1.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_scale",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.normalize_eq._proof_1",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateStreams",
+        "name": "Agent5.ExactDigitStreams.outerNext_from_streams_of_cutoff._proof_2",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.empty_word_coordinates",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_le_one",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateStreams",
+        "name": "Agent5.ExactDigitStreams.outerNext_from_streams",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_14",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_column._proof_3",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.phase_facts._proof_7",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "P196.Agent7.Finite.cap2_sharp_seven",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_pos._proof_10",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten._proof_13",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_length",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateStreams",
+        "name": "Agent5.ExactDigitStreams.outerNext_from_streams_of_cutoff",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_17",
+        "axioms": [
+          "Classical.choice",
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.lowValue_reverse._proof_3",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.digitsOf.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_prefix",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "_private.DigitDefinitions.0.Agent5.ExactDigitStreams.adicNumeratorDigits.match_1.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0._proof_5",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_column._proof_4",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.normalize_digits_lt_ten",
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.highValue_lt_pow._proof_3",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_of_highValue._proof_4",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.fromScans.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.unbounded_coefficient_control",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.factorization_le._proof_13",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_le_eight",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_normalize._proof_8",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_highValue",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.lowValue_reverse",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_of_highValue",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_normalize._proof_9",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0._proof_12",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.highValue_append_single",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_2._@.OuterFinite._hyg.85",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_phase",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.digitsOf.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_10",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "_private.AdicDigits.0._proof_1",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent5.ExactDigitStreams.overflow_eq_coordinate_selector._proof_4",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_exterior._proof_9",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_1._@.OuterFinite._hyg.85",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_rho_quotient",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_exterior._proof_15",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "_private.DigitDefinitions.0.Agent5.ExactDigitStreams.adicNumeratorDigits.match_1.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "P196.Agent7.Finite.cap2_exits_by_seven",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_12",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.highValue_lt_pow",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_coordinates_digits_lt_ten",
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_identity._proof_5",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_normalize",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "_private.DigitDefinitions.0.Agent5.ExactDigitStreams.fractionDigits.match_1.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "DigitDefinitions",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_length",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent115.ExteriorFactorization.nonneutralPhase.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_8",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.normalize_value_conservation",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_exterior._proof_10",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.rhoNum_append_replicate",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent5.ExactDigitStreams.nonneutralPhase_coordinate_bounds._proof_3",
+        "axioms": [
+          "Classical.choice",
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_11",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.highValue.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_identity",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.outerNext_append_band._proof_8",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.factorization_le._proof_14",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_exterior._proof_8",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.lowValue.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_1",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.normalize_value_conservation._proof_5",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.quotient_identity_forall_iff",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "P196.Agent7.Finite.cap2_sharp_six",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_constant",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "P196.Agent7.Finite.normalize.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "_private.CoordinateOnlyStreams.0._proof_1",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.rhoNum_append_band",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent5.ExactDigitStreams.overflow_eq_coordinate_selector",
+        "axioms": [
+          "Classical.choice",
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.factorization_le",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_pos",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten._proof_12",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "P196.Agent7.Finite.normalize.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.zipWith_append_single",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_11",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.excluded_phase_controls",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_prefix",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.outerNext_append_replicate",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.normalize_carry_le",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_normalize._proof_7",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_repeat._proof_2",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.normalize_eq",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_14",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.normalize_length",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "_private.OuterFinite.0._proof_4",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_constant._proof_5",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0._proof_6",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_exterior",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.outerNext_of_values",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent115.ExteriorFactorization.zValue.eq_1",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.strip_zip_append",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.target",
+        "axioms": [
+          "propext",
+          "Quot.sound",
+          "Classical.choice"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent5.ExactDigitStreams.outerNext_from_coordinates",
+        "axioms": [
+          "Classical.choice",
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_4",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_bounded",
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "CoordinateThreshold",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_13",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_phase._proof_13",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "OuterFinite",
+        "name": "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_3._@.OuterFinite._hyg.85",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.digitsOf_length",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.foldl_high",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.fractionDigits_repeat._proof_1",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_2",
+        "axioms": [],
+        "fixed_export": false
+      },
+      {
+        "module": "ExteriorFactorizationProof",
+        "name": "Agent115.ExteriorFactorization.normalize_eq._proof_2",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateStreams",
+        "name": "Agent5.ExactDigitStreams.strip_zip_append_replicate._proof_1",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_constant._proof_6",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "CoordinateOnlyStreams",
+        "name": "Agent5.ExactDigitStreams.outerNext_from_coordinates_quotient",
+        "axioms": [
+          "Classical.choice",
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": true
+      },
+      {
+        "module": "AdicDigits",
+        "name": "Agent5.ExactDigitStreams.adicNumeratorDigits_bounded._proof_2",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "fixed_export": false
+      },
+      {
+        "module": "FractionDigits",
+        "name": "Agent5.ExactDigitStreams.highValue_cons_digit",
+        "axioms": [
+          "propext"
+        ],
+        "fixed_export": true
+      }
+    ]
+  },
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792186663.1960118,
+  "registry": {
+    "input_path": "/workspace/scratch/6f8166beec97/p196-digits/proofs/contributions/agent-5/exact-digit-streams-20261016/review/coordinate-only-extension/registry.json",
+    "sha256": "eda9491e6b1fc3ededc1df8a44629d6da8b82f418fc1e619443b89ef8c4213c8",
+    "snapshot_path": "registry.json"
+  },
+  "scope": "Exact executable low10-adic and high fractional decimal streams, coherent digit prefixes and bounds, and unchanged outerNext reconstructed at every cutoff>=B.length+1 using only phase/length/zValue/rhoNum. Includes empty, zerohead and untrimmed bounded words. Reuses Agent6 published exact overflow thresholds.",
+  "repository_head_at_snapshot": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "source_identity_note": "Registry hashes and the copied source bytes identify this review. Repository HEAD metadata alone does not assert that all reviewed files were tracked in that commit.",
+  "expected_exports": [
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_length",
+    "Agent5.ExactDigitStreams.fractionDigits_length",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_bounded",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_prefix",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_column",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_constant",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_normalize",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_phase",
+    "Agent5.ExactDigitStreams.adicNumeratorDigits_exterior",
+    "Agent5.ExactDigitStreams.fractionDigits_scale",
+    "Agent5.ExactDigitStreams.fractionDigits_repeat",
+    "Agent5.ExactDigitStreams.highValue_cons_digit",
+    "Agent5.ExactDigitStreams.highValue_lt_pow",
+    "Agent5.ExactDigitStreams.fractionDigits_of_highValue",
+    "Agent5.ExactDigitStreams.normalize_value_conservation",
+    "Agent5.ExactDigitStreams.normalize_digits_lt_ten",
+    "Agent5.ExactDigitStreams.highValue_reverse_word",
+    "Agent5.ExactDigitStreams.phase_tail_digit",
+    "Agent5.ExactDigitStreams.fractionDigits_exterior",
+    "Agent5.ExactDigitStreams.fractionDigits_prefix",
+    "Agent5.ExactDigitStreams.fractionDigits_digits_lt_ten",
+    "Agent5.ExactDigitStreams.fractionDigits_exterior_digits_lt_ten",
+    "Agent5.ExactDigitStreams.strip_zip_append_replicate",
+    "Agent5.ExactDigitStreams.outerNext_from_streams",
+    "Agent5.ExactDigitStreams.outerNext_from_streams_of_cutoff",
+    "Agent5.ExactDigitStreams.nonneutralPhase_coordinate_bounds",
+    "Agent5.ExactDigitStreams.overflow_eq_coordinate_selector",
+    "Agent5.ExactDigitStreams.outerNext_from_coordinates",
+    "Agent5.ExactDigitStreams.outerNext_from_coordinates_quotient",
+    "Agent5.ExactDigitStreams.fractionDigits_coordinates_digits_lt_ten"
+  ],
+  "build_order": [
+    "OuterFinite",
+    "TARGET",
+    "ExteriorFactorizationProof",
+    "DigitDefinitions",
+    "AdicDigits",
+    "FractionDigits",
+    "CoordinateStreams",
+    "CoordinateThreshold",
+    "CoordinateOnlyStreams"
+  ],
+  "audit_source": {
+    "input_path": "/workspace/scratch/6f8166beec97/p196-digits/proofs/contributions/agent-5/exact-digit-streams-20261016/review/coordinate-only-extension/ProjectAudit.lean",
+    "snapshot_path": "source/ProjectAudit.lean",
+    "sha256": "9908933ff291f7a83729ff38ba71fa8420d51cb12ff7ed2b9dafc731a84c6be2",
+    "unchanged": true
+  },
+  "parent_core_receipt": {
+    "input_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/verification.json",
+    "sha256": "f94217d39a0f126c552e4553e5dcfeb2a761c4968577a88e9d51eb1365c9a80a",
+    "snapshot_path": "provenance/parent-core-verification.json",
+    "actual_executor": "Parent Agent #5",
+    "inherited_agent_metadata": "Agent #1"
+  },
+  "cached_core_objects": {
+    "OuterFinite": {
+      "parent_source_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/OuterFinite.lean",
+      "source_sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+      "parent_olean_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/OuterFinite.olean",
+      "olean_sha256_at_import": "0f30b0c915b3f0a603aadde506ebf0f09d1fc1aa7566ca93490057cbaa1f8b2c",
+      "parent_source_matches_separate_independent_fresh_replay": true
+    },
+    "TARGET": {
+      "parent_source_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/TARGET.lean",
+      "source_sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+      "parent_olean_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/TARGET.olean",
+      "olean_sha256_at_import": "31b0354ccd72b373983c045ac64853e2390da73bff319f5f62b54196dca099e6",
+      "parent_source_matches_separate_independent_fresh_replay": true
+    },
+    "ExteriorFactorizationProof": {
+      "parent_source_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/ExteriorFactorizationProof.lean",
+      "source_sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+      "parent_olean_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/ExteriorFactorizationProof.olean",
+      "olean_sha256_at_import": "42069f7ed10fc92718109122824fa112b195971be0477b96c9a837227d753180",
+      "parent_source_matches_separate_independent_fresh_replay": true
+    },
+    "DigitDefinitions": {
+      "parent_source_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/DigitDefinitions.lean",
+      "source_sha256": "4bdedd6d992a3207645d5dd21478a66c2e1c2465f75111b86b294caee903739a",
+      "parent_olean_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/DigitDefinitions.olean",
+      "olean_sha256_at_import": "7971f7954fbff0f2947059c4a93f0ee6089503f468bad2e153dc9e83413ec5cc",
+      "parent_source_matches_separate_independent_fresh_replay": true
+    },
+    "AdicDigits": {
+      "parent_source_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/AdicDigits.lean",
+      "source_sha256": "f8b8b5ded9e85cf8840a329950fe95f1f6e2e3bb2ad8c8e3e1f1513080e09a6b",
+      "parent_olean_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/AdicDigits.olean",
+      "olean_sha256_at_import": "21e0b7bfb4aa54bbf74bf164d0a8740945906e99dccef58e7421a6607759741d",
+      "parent_source_matches_separate_independent_fresh_replay": true
+    },
+    "FractionDigits": {
+      "parent_source_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/FractionDigits.lean",
+      "source_sha256": "d6232d1f20221b1a2f09f3670f6078d2fe0c6558a439c9c0ac25c4e04e119732",
+      "parent_olean_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/FractionDigits.olean",
+      "olean_sha256_at_import": "86c0e2f50bed93c0ca960d432f6648b1ae6e475339d7e6d3960eb42a813c6c17",
+      "parent_source_matches_separate_independent_fresh_replay": true
+    },
+    "CoordinateStreams": {
+      "parent_source_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/CoordinateStreams.lean",
+      "source_sha256": "c1409584ac12282f5b3097284a88194687b335f14d5864f258afa40f0d920a20",
+      "parent_olean_path": "/workspace/scratch/6f8166beec97/agent5-digits-canonical-01/agent5-exact-digit-streams/source/CoordinateStreams.olean",
+      "olean_sha256_at_import": "a8f25cf6d12941353acc385faefca5ba9b1a9b5cb2c5aa22057d2e2be803a111",
+      "parent_source_matches_separate_independent_fresh_replay": true
+    }
+  },
+  "import_search_path": "/tmp/agent5-digit-extension-review-eyn3phul",
+  "compiled_objects": "Temporary import directory containing seven explicitly attributed parent core oleans and two freshly compiled extension oleans; directory removed after replay.",
+  "compiler_flags": [
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "live_source_hashes_unchanged_at_completion": true,
+  "exit_code": 0,
+  "finished_at_epoch": 1792186670.0056312
+}

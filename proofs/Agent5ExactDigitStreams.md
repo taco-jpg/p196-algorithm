@@ -101,6 +101,23 @@ This package concerns one step of the deterministic abstract exterior map.
 An ordinary-integer realization over all future times and exclusion of
 palindrome-avoiding exterior cycles are separate obligations.
 
+## Exact published-source verification
+
+The complete nine-module closure passed the unchanged canonical verifier from
+clean published source `fff2ca0a7ecbb2ee50eccf4cdc80f07b274e50e2`: all ten
+commands exited zero, all 30 Agent #5 exports were present, and the exhaustive
+module-origin audit checked 179 theorem declarations with only the three
+permitted logical axioms. The unmodified receipt and all logs are retained in
+`verification/canonical-published-source/`.
+
+Independent review consists of the separate fresh strict seven-module core
+replay plus a strict two-module extension compile and nine-origin audit. The
+extension explicitly records its use of source-matched parent core objects;
+it is not labeled a fresh nine-module independent build. The original 25-export
+core review is preserved unchanged alongside the five-export extension review.
+Two compiler-generated unsafe implementation declarations are separately
+inventoried and occur in no mathematical theorem's transitive axiom set.
+
 ## Source and verification
 
 The core's existing proof dependencies are the unchanged `OuterFinite`,
