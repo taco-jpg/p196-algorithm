@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped GroupII rebase independent review only; no global catalogue/integration claim."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "groupii-rebase": {
+      "scope": "UpperDomain r>=1,p5..9,seven GroupII cores: actual time2 component plus signed correction(1,-1,0,-1,1), all-index nonnegativity before toNat, original Admissible at width2r+7, full actual whole-time2 overlap, all original canonical whole realizations and positive corrected-component existence. New component differs from actual old component at valid flank; no later/infinite return claim.",
+      "roots": [
+        "Agent100GroupIIRebaseNumeric"
+      ],
+      "modules": {
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__cee9857896191714.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ],
+          "original_path": "proofs/contributions/2026-10-14-external-renewal-audit/sources/LychrelDigitSums.lean"
+        },
+        "SafeDelay": {
+          "path": "proofs/SafeDelay__bc8a973241f692fd.lean",
+          "sha256": "57d8d3fb7e3c2f747b276c3d03c7e81cda8714842c1b4794d3e682aff8e179d6",
+          "git_blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/SafeDelay.lean"
+        },
+        "DecimalSafeRuns": {
+          "path": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+          "sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+          "git_blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/DecimalSafeRuns.lean"
+        },
+        "DecimalDelayBridge": {
+          "path": "proofs/DecimalDelayBridge__83037365a26a750b.lean",
+          "sha256": "8e800eab397f44ac1b0ff47ac02cc7576cddeb7d45015375640213857e56e800",
+          "git_blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df",
+          "imports": [
+            "SafeDelay",
+            "DecimalSafeRuns"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/DecimalDelayBridge.lean"
+        },
+        "PairDelayBridge": {
+          "path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+          "sha256": "4faa6a3f05477bfabd8f504217119e0bb4db56987e3717c822f914f4cc7e70a5",
+          "git_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6",
+          "imports": [
+            "DecimalDelayBridge"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/PairDelayBridge.lean"
+        },
+        "DelayedOverlapGate": {
+          "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+          "sha256": "c24d7774af6487fcab63a4d60cd10aaabb1b270b3dc0f4ac42dd3655b416b112",
+          "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+          "imports": [
+            "PairDelayBridge"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/renewal_pass/lean/DelayedOverlapGate.lean"
+        },
+        "Agent100GroupIIDynamics": {
+          "path": "proofs/Agent100GroupIIDynamics.lean",
+          "sha256": "07b8c8d8c0c6fa4aefa1034272464531e27353586066651fd5dda55408d3091c",
+          "git_blob": "d6fe51dd088f8a53937bb4ca66b1e3614528e098",
+          "imports": [
+            "DelayedOverlapGate"
+          ]
+        },
+        "Agent100GroupIIDefect": {
+          "path": "proofs/Agent100GroupIIDefect.lean",
+          "sha256": "7dce1b0a08a5c0d86cfaf4cbb3584a9a3c7a0f294602170e7b44c11111eadb0f",
+          "git_blob": "600b532639d96c29c688dfe9c858c3975e686967",
+          "imports": [
+            "Agent100GroupIIDynamics"
+          ]
+        },
+        "Agent100GroupIIOverflowProfiles": {
+          "path": "proofs/Agent100GroupIIOverflowProfiles.lean",
+          "sha256": "1f2879f381efdc7d7d01217650949758394878f229b11de2f1664c04c50ad391",
+          "git_blob": "fc901380fa8a7d5e559e34fc11b5f08862b55331",
+          "imports": [
+            "Agent100GroupIIDefect"
+          ]
+        },
+        "Agent100GroupIIOverflowBridge": {
+          "path": "proofs/Agent100GroupIIOverflowBridge.lean",
+          "sha256": "83e99438bbec009800bfb4cd206729352d77a456eba8bf875fe906c5c8d404fa",
+          "git_blob": "cf776d1eca09dfba9a9f27ec2399d978eee692c5",
+          "imports": [
+            "Agent100GroupIIOverflowProfiles"
+          ]
+        },
+        "IncomingCarrySensitivity": {
+          "path": "proofs/IncomingCarrySensitivity__b726575f0a1b096c.lean",
+          "sha256": "52850d75999a8fdad298e2e9da638965472ab6507f88630bf428698576ac631f",
+          "git_blob": "9ccc745471fd509fb68652fef40454478087e92e",
+          "imports": [
+            "LychrelDigitSums"
+          ]
+        },
+        "RawSymmetryObstruction": {
+          "path": "proofs/RawSymmetryObstruction__5c1be305a04af2b7.lean",
+          "sha256": "922b660e5b3ac42389cd6ea00885075327d4b44fb315b9cc496e1323890e9c87",
+          "git_blob": "9d4250f3e5daa5ff26f097a7e12ce98830dd9e89",
+          "imports": [
+            "IncomingCarrySensitivity"
+          ]
+        },
+        "SeamCoefficients": {
+          "path": "proofs/SeamCoefficients__e73d67d37698e702.lean",
+          "sha256": "a32ac5a1844f8f6eb8009aacc64b07d8e9d7a1df3798bb488b0dfc3b5d131b86",
+          "git_blob": "b4200954f47c13d30890673ecab7092578537fe5",
+          "imports": [
+            "RawSymmetryObstruction"
+          ]
+        },
+        "PairResponse": {
+          "path": "proofs/PairResponse__18d2d58355ed97f4.lean",
+          "sha256": "0c078526eca7a09b2480601c2c83dfa2946ab8da10d82112da5026d70d9054ab",
+          "git_blob": "b7e822e798d873e9b51f7e97eb9c4c78821bd1c2",
+          "imports": [
+            "SeamCoefficients"
+          ]
+        },
+        "Agent8DefectTransport": {
+          "path": "proofs/contributions/agent-8/common-overflow-defect-20261016/Agent8DefectTransport.lean",
+          "sha256": "55bad56650b7e43f8d9c9f64dfa71b369475360758baf5197f644392f79ba29d",
+          "git_blob": "91dd78320ea287b43d3fb9cf452b8c5fd684ea4e",
+          "imports": [
+            "PairResponse"
+          ]
+        },
+        "Agent100GroupIIOverflowDefect": {
+          "path": "proofs/Agent100GroupIIOverflowDefect.lean",
+          "sha256": "d2240f0a3bb69f33524a43eee43600742c60b4fd1a715af63bc3f0a097bf1fcd",
+          "git_blob": "1c815fd2c2b58af56741f63df217728dee761763",
+          "imports": [
+            "Agent100GroupIIOverflowBridge",
+            "Agent8DefectTransport"
+          ]
+        },
+        "Agent100GroupIIOverflowSharpness": {
+          "path": "proofs/Agent100GroupIIOverflowSharpness.lean",
+          "sha256": "f5372a43505665f5bf13c83a8900340091e247043a760c65defb76a4264bca4f",
+          "git_blob": "6f8a5125b0855b2d70858b18da45ccb9ab0c312b",
+          "imports": [
+            "Agent100GroupIIOverflowDefect"
+          ]
+        },
+        "Agent100GroupIIRebaseAlgebra": {
+          "path": "proofs/Agent100GroupIIRebaseAlgebra.lean",
+          "sha256": "d62f8769d9d2ee0ecf2ec3f0b0dffcd6c19cd5383692207e0e044b7649df02ff",
+          "git_blob": "d5185542692625baa8fc0dc171b58e86b53f6260",
+          "imports": [
+            "Agent100GroupIIOverflowSharpness"
+          ]
+        },
+        "Agent100GroupIIRebaseProfiles": {
+          "path": "proofs/Agent100GroupIIRebaseProfiles.lean",
+          "sha256": "2a95c9e88f315f3e317532e92a66afcc6dd09e1a97c2b5260fe97fae1c4b6771",
+          "git_blob": "68d13841fb475382422fe5b428306d60b9e2d874",
+          "imports": [
+            "Agent100GroupIIRebaseAlgebra"
+          ]
+        },
+        "Agent100GroupIIOverflowNumeric": {
+          "path": "proofs/Agent100GroupIIOverflowNumeric.lean",
+          "sha256": "220815c06fb95f0834c747c208edab3381f11494fa13ef8a12e507e0ef9b9d55",
+          "git_blob": "f116cf5bfa2c148a5c879ad398dca6730c14f5ff",
+          "imports": [
+            "Agent100GroupIIOverflowSharpness"
+          ]
+        },
+        "Agent100GroupIIRebaseNumeric": {
+          "path": "proofs/Agent100GroupIIRebaseNumeric.lean",
+          "sha256": "cecda22da5480e5b5fa5743f193a5aa68965cef707652e999d8da8087a0e0d41",
+          "git_blob": "2da082c6ebe444d3e8f2ed793428ff259e04abc4",
+          "imports": [
+            "Agent100GroupIIRebaseProfiles",
+            "Agent100GroupIIOverflowNumeric"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "Agent100GroupIIRebaseAlgebra-rebase_delta_overlap",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebase_delta_overlap"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseAlgebra-rebasedInt_actual_component",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebasedInt_actual_component"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseAlgebra-rebasedInt_overlap",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebasedInt_overlap"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseAlgebra-finite_whole_rebasedInt",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.finite_whole_rebasedInt"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseAlgebra-actual_whole_rebasedInt",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.actual_whole_rebasedInt"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-finite_component_flank",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.finite_component_flank"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-finite_component_inner",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.finite_component_inner"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-finite_component_admissible",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.finite_component_admissible"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_nonnegative",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_nonnegative"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_bounded",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_bounded"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_toNat_exact",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_toNat_exact"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_zero_after_width",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_zero_after_width"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_symmetric",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_symmetric"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_center_eq",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_center_eq"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_outer_eq",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_outer_eq"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseProfiles-rebased_admissible",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_admissible"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseNumeric-actual_whole_rebased",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.actual_whole_rebased"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseNumeric-rebased_component_realizable",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_component_realizable"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseNumeric-numeric_rebased_overlap",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.numeric_rebased_overlap"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseNumeric-numeric_rebased_realization",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.numeric_rebased_realization"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseNumeric-realized_rebased_overlap",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.realized_rebased_overlap"
+      ]
+    },
+    {
+      "id": "Agent100GroupIIRebaseNumeric-rebased_differs_at_flank",
+      "project": "groupii-rebase",
+      "endpoints": [
+        "Agent100.GroupIIRebase.rebased_differs_at_flank"
+      ]
+    }
+  ],
+  "claim_commit": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+  "claim_blob": "a277d7843d3509cf60a581ce06fb8d451975bea3",
+  "original_branch_base": "686cac2696e4e4e059c1b9d6a313f5519f6f4176",
+  "old18_math_source_commit": "686cac2696e4e4e059c1b9d6a313f5519f6f4176",
+  "accepted_global_registry_modified": false,
+  "historical_review_owner": "Agent #100 scope_audit; actual execution identity supplied separately by --executor"
+}

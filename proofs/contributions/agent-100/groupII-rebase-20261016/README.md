@@ -1,6 +1,6 @@
-# Group II 上域 time2 重定基：完整 22 出口作者检查点
+# Group II 上域 time2 重定基：完整 22 出口与独立验证
 
-任务 `agent100-groupII-rebased-overlap-20261016`，作者为 Agent #100 / session20261016T2052Z。此检查点包含 `Agent100GroupIIRebaseAlgebra` 的 5 个定理、`Agent100GroupIIRebaseProfiles` 的 11 个定理，以及 `Agent100GroupIIRebaseNumeric` 的 6 个定理，共 **22 个出口**。三个模块均已实际通过 Lean 4.19.0 **`--trust=0` 作者增量检查**。新任务 21 模块独立 fresh 构建与审查正在运行，尚未宣称完成。
+任务 `agent100-groupII-rebased-overlap-20261016`，作者为 Agent #100 / session20261016T2052Z。此检查点包含 `Agent100GroupIIRebaseAlgebra` 的 5 个定理、`Agent100GroupIIRebaseProfiles` 的 11 个定理，以及 `Agent100GroupIIRebaseNumeric` 的 6 个定理，共 **22 个出口**。三个模块均已实际通过 Lean 4.19.0 **`--trust=0` 作者增量检查**。三个模块的独立语义审查已通过；完整21模块的唯一 fresh canonical 构建（22条命令全部退出0）及随后显式 `--trust=0` 的完整导入检查也均已实际通过。
 
 ## 认领与源基线
 
@@ -8,7 +8,7 @@
 - task blob：`a277d7843d3509cf60a581ce06fb8d451975bea3`。
 - issue #61 收据：[6225719769](https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225719769)。
 - 分支：`research/agent-100/groupII-rebase-20261016T2212Z`。
-- 完整前置 overflow 源基线：`686cac2696e4e4e059c1b9d6a313f5519f6f4176`，即本会话的 [PR #125](https://github.com/taco-jpg/p196-algorithm/pull/125)。父代理已实际创建并回读该 PR。当前新 rebase 任务在本检查点尚无 PR。
+- 完整前置 overflow 源基线：`686cac2696e4e4e059c1b9d6a313f5519f6f4176`，即本会话的 [PR #125](https://github.com/taco-jpg/p196-algorithm/pull/125)。父代理已实际创建并回读该 PR。当前 rebase 的完整数学源码为 `bc178ab8735e9503ab25b325e5a8dc82bf1f1e37`，对应 [PR #138](https://github.com/taco-jpg/p196-algorithm/pull/138)，依赖 PR125。
 
 ## 数学范围与已检查结论
 
@@ -32,7 +32,7 @@ Numeric6 已完成自然数与普通整数提升：
 - `realized_rebased_overlap` 进一步给每个参数组同时存在的正原始输入及正修正组件实现，解除初始实现存在性前提。
 - `rebased_differs_at_flank` 证明在 `i=r+1`，`C` 与真实 `componentOrbit … 2` 的整数列差为 **1**。此正组件实现不被等同于原组件整数的真实第二步输出。
 
-新任务 21 模块独立 fresh 构建与审查正在运行，尚无完成结论。这里不声明一般 `(1+x)` 逆像分类、唯一性、后续安全性或 196 结论。
+独立执行与完整源身份核对已完成；本检查点发布最终证据，随后在实际发布的精确head上提交正式审查。这里不声明一般 `(1+x)` 逆像分类、唯一性、后续安全性或 196 结论。
 
 ## 验证状态的准确区分
 
@@ -40,7 +40,21 @@ Numeric6 已完成自然数与普通整数提升：
 
 Numeric `attempt01` 实际退出 0，参数为 `--trust=0 -j1 -DElab.async=false`。其 Git blob 为 `2da082c6ebe444d3e8f2ed793428ff259e04abc4`；[成功日志](development/numeric/attempt01/compile.log) SHA256 为 `cb70df8f10bb992994dd76ab5e9b46a4fd77d3cae6dd411a9b10a7c1e05d24ac`。成功源码快照与正式 Numeric 源逐字节一致。
 
-本轮作者增量检查导入前置 18 模块的已有 olean，没有重编旧闭包。前置 overflow 已达到 **canonical18 构建及显式 `--trust=0` full-import audit 均 PASS**，最终证据待发布。canonical 构建本身采用默认 trust（max），与随后明确 `--trust=0` 的 full-import audit 分别记录；不把两者混称为同一显式 trust0 源码重建。该前置验证也不是本次新 rebase 的独立 fresh21 审查；后者目前仍在运行。
+本轮作者增量检查导入前置 18 模块的已有 olean，没有重编旧闭包。前置 overflow 的 **canonical18 构建及显式 `--trust=0` full-import audit 均 PASS**，最终证据已发布在 `71fa669acdff9ee203ef28d7db7e31e2f9b5b4af`，PR125实际Ready。canonical 构建本身采用默认 trust（max），与随后明确 `--trust=0` 的 full-import audit 分别记录；不把两者混称为同一显式 trust0 源码重建。本次新 rebase 则另外完成独立 fresh21 构建及其显式 trust0 导入审计，并有独立命令和日志。
+
+## 已完成的独立复核
+
+真实非作者审查员为本会话的 `scope_audit`，未撰写这三个数学源。其一次全新21模块 canonical 构建实际完成22条命令，均退出0，未复用作者 olean。该 canonical 构建的原命令采用默认信任级别；随后另一次明确 `--trust=0 -j1 -DElab.async=false ProjectAudit.lean` 的完整导入检查也实际退出0，耗时55.835秒。两次完整审计的2,661个模块来源定理名称、公理集合完全一致，21个源和新编译 olean 的前后散列不变。
+
+22个显式新出口均逐一比较完整跨行 `#print axioms` 与全模块审计：14项仅依赖 `propext, Quot.sound`，8项另依赖 `Classical.choice`。新三模块包含85个定理常量（含自动生成项）。全闭包公理并集恰为这三个基础公理；14个原有 unsafe 实现符号另行列出，没有任何审计定理依赖它们。
+
+运行开始时的HEAD为旧数学源 `686cac2696e4e4e059c1b9d6a313f5519f6f4176`；不把当时未跟踪的新源误称为该commit内容。审查员已对完整数学commit `bc178ab8735e9503ab25b325e5a8dc82bf1f1e37` 的全部21个源逐一执行不可变 `git show`，与实际fresh快照和运行后本地文件核对一致，见 [源身份记录](verification/reviewer-post-build-source-identity.json)。
+
+[独立验证说明及三阶段复现命令](verification/reviewer-README.md) 分开保留canonical构建、完整公理清单提取和strict导入检查；每个入口均要求实际 `--executor`，不把原verifier内置Agent1标签当成调用者身份。[完整语义审查](controls/reviewer-semantic-review.md) 与 [完整公理清单](verification/reviewer-complete-axiom-ledger.json) 均可直接核对。
+
+完整独立证据归档 [reviewer-complete-evidence.tar.xz](verification/reviewer-complete-evidence.tar.xz) 为155,348字节，SHA256 `3c858e22b045a338b041b06114050cdbf6e60421da9b0e073433ed49ab86c821`。实际解压后全部66个成员均与原件逐字节相同，[manifest](verification/reviewer-evidence-archive-manifest.json) 保留各成员及存储/解码散列。归档包括完整源快照、原始日志、生成的审计、命令收据、脚本、完整清单和独立105组普通整数控制的全部数据；排除可再生的olean，不删数学或失败日志。105组控制使用r=1,2,7、全p与全七核，每个component/whole两种canonical拆分，共840次普通加法，仍仅作有限诊断。
+
+这是本会话内真实非作者审查，非外部同行评审或另账户approval。最终精确head上的正式PR审查、Ready动作和主分支目标验证依次另行记录，当前不宣称已集成。
 
 ## 490 行有限控制与无损归档
 
@@ -67,4 +81,4 @@ Agent8 的共同溢出一般传输、有限差分与相关定义继续完整归�
 
 归属报告已从 scratch **逐字复制并核对**：[Markdown](ownership/next-rebase-ownership-report.md)、[JSON](ownership/next-rebase-ownership-report.json)。报告是所列快照内的有界审查，不是全仓库不存在性证明；正文里的历史待认领结尾予以原样保留，本任务后续成功 claim 由上方新收据记录。
 
-机器可读的出口清单、源 pins、状态边界、归属与压缩核验见 [PUBLICATION.json](PUBLICATION.json)。本次材料更新只修改这份 README 与 PUBLICATION.json；未修改 Lean 源或独立审查目录，也未进行 Git 写入。
+机器可读的出口清单、源 pins、状态边界、归属与压缩核验见 [PUBLICATION.json](PUBLICATION.json)。此最终证据检查点保持全部三个已冻结数学源不变。
