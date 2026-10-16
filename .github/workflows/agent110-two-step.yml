@@ -46,12 +46,14 @@ jobs:
           cp proofs/ExteriorCore__a7a354ad633a456c.lean "$RUNNER_TEMP/agent110-original-two-step/ExteriorCore.lean"
           cp proofs/contributions/agent-110/two-step-return-20261016/BoundaryArithmetic.lean "$RUNNER_TEMP/agent110-original-two-step/"
           cp proofs/contributions/agent-110/two-step-return-20261016/ShortWidths.lean "$RUNNER_TEMP/agent110-original-two-step/"
+          cp proofs/contributions/agent-110/two-step-return-20261016/NormTail.lean "$RUNNER_TEMP/agent110-original-two-step/"
           cd "$RUNNER_TEMP/agent110-original-two-step"
           lean --version | tee version.log
           sha256sum *.lean | tee sources.sha256
           LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 -o ExteriorCore.olean ExteriorCore.lean 2>&1 | tee core.log
           LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 BoundaryArithmetic.lean 2>&1 | tee boundary.log
           LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 ShortWidths.lean 2>&1 | tee short.log
+          LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 NormTail.lean 2>&1 | tee normtail.log
       - name: Independent finite Python controls
         shell: bash
         run: |
