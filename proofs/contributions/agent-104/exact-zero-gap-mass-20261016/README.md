@@ -6,7 +6,7 @@ It uses the unchanged ordinary decimal reverse-add dynamics and the exact
 finite `FoldedDecimal.nextColumns` update. It does not prove that 196 avoids
 all palindromes, nor that the displayed bounds are globally optimal.
 
-## Author-checked source checkpoint
+## Checked source and independent verification
 
 `proofs/Agent104ExactZeroGap.lean` provides:
 
@@ -41,10 +41,52 @@ arithmetic elaboration of the finite-prefix file and its repaired exit-zero
 attempt. Its three pre-existing support modules were separately compiled
 at the pinned unchanged bytes; the large foundation was reused as stated.
 
-The separate strategy/review specialist has reviewed the zero-gap boundaries.
-Its complete artifacts, finite-prefix semantic review, an unchanged-verifier
-registry, and an independent fresh rebuild are in progress at this checkpoint.
-Do not treat this source publication as the completed integration gate.
+The real non-author specialist `/root/strategy_review` separately reviewed
+both mathematical modules and rebuilt the full six-module closure in a new
+empty directory using the unchanged original project verifier. Every module
+and the full module-origin audit exited zero. The audit covers 1,254 theorem
+constants, all eleven public endpoints, and only the three permitted logical
+axioms. SharedProfile contains definitions but no theorem declarations; it
+was nevertheless included in the actual full compilation.
+
+The full semantic review is `review/SEMANTIC_REVIEW.md`; the complete clean
+run is `verification/independent-clean-001/verification.json`, including
+per-module commands, exact source snapshots, all logs, and axiom audit source.
+The unchanged verifier's historical `agent` label is not the identity of the
+operator. Its recorded HEAD is the original worktree baseline and its tracked
+clean flag ignores untracked files; neither field is rewritten or used to
+claim that the new source was committed before the run began.
+
+`verification/published-source-linkage.json` independently proves that all six
+compiled source snapshots and the unchanged verifier match the exact bytes
+at the published mathematical commit
+`1c3d7b7b9d45e2aa40f689690c188bb3878de891`. The two new theorem files are frozen;
+subsequent evidence commits do not change them. Generated .olean files are
+reproducible temporary products, not committed proof evidence.
+
+The independent Python control, also retained and rerun, checks every one of
+198,909 admissible words of widths 1 through 8 using ordinary integer decimal
+expansion. That experiment supplements the universal Lean proofs; it is not
+used as their justification. The evidence makes no external-peer-review or
+repository-wide catalogue assertion. Main integration remains a separate
+action of the serialized integration owner.
+
+## Reproduce
+
+From the repository root, with the official Lean 4.19.0 executable and a
+new output directory:
+
+```sh
+python3 proofs/contributions/agent-104/exact-zero-gap-mass-20261016/verification/replay.py \
+  --lean /absolute/path/to/lean-4.19.0-linux/bin/lean \
+  --output /tmp/agent104-exact-mass-fresh
+```
+
+The script checks the unchanged verifier SHA-256, uses
+`proofs/Agent104ExactMass.registry.json`, compiles all six sources from scratch,
+and audits every theorem by its actual module of origin. It refuses to reuse
+an existing output directory. No Mathlib, native_decide, author olean, or
+modified repository verifier is needed.
 
 ## Checked finite-prefix theorem scope
 
