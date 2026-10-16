@@ -1,0 +1,35 @@
+{
+  "agent":414,
+  "task_id":"agent414-bulk-period-premise-discharge",
+  "verification_level":"LEAN-CHECKED, author fresh-source replay; independent review and integration pending",
+  "sources":[
+    {"file":"Agent414CyclicWordPeriod.lean","commit":"105f825b5ab7005f142ee16c521159718ae1675c","sha256":"13ff56d8fc9e49bcb5b539b68d698c58a5b9f8b9a221edc30158b4fcb23b65b6","git_blob":"81a4635ef8a2c381fe8b9fe7157d6e174ff0dd70"},
+    {"file":"Agent414BulkPeriod.lean","commit":"2a3ce996cc7e100f13c90e41cb8b4599360b7adc","sha256":"311b9c30b8991ff777d97232c1714222418c4c9af1662de86dc2fae93b6663bb","git_blob":"381948f4e85dbdd60f30f02c07658103ffcff8d2"}
+  ],
+  "original_source_commit":"2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "inspected_main":"9de08d78db6526e2ce2dd66cedd5e63f600424bd",
+  "original_bulk_targets_blob":"068afc2810fd1d421a5b23f844f70b677e641b52",
+  "toolchain":"Lean 4.19.0, x86_64-unknown-linux-gnu, release commit 6caaee842e94",
+  "compiler_sha256":"92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "fresh_build":"New empty period-clean-build directory; exact original source bytes staged from the verified repository bundle, no project oleans reused. Stage1 compiled ReverseClosure, SoficProof, Agent414CyclicWordPeriod; stage2 compiled BoundaryData, BoundaryCertificate, ArithmeticBridge, BulkTargets, Agent414BulkPeriod. Every recorded exit status is zero. Command for every module: LEAN_PATH=<build-directory> lean -j1 -o <module>.olean <module>.lean.",
+  "stage1_started_utc":"2026-10-16T04:49:14.366907+00:00",
+  "stage1_finished_utc":"2026-10-16T04:49:15.837378+00:00",
+  "stage2_started_utc":"2026-10-16T04:51:11.867644+00:00",
+  "stage2_finished_utc":"2026-10-16T04:52:26.600407+00:00",
+  "exported_axioms":{
+    "Agent414CyclicWordPeriod.periodic_iff_dvd":["propext","Quot.sound"],
+    "Agent414CyclicWordPeriod.bulk_letter_injective_checked":[],
+    "Agent414CyclicWordPeriod.periodic_of_path":[],
+    "Agent414BulkPeriod.bulk_periodic_iff_dvd":["propext","Quot.sound"],
+    "Agent414BulkPeriod.six_dvd_of_bulk_path":["propext","Quot.sound"],
+    "Agent414BulkPeriod.no_bulk_exterior_of_not_dvd":["propext","Quot.sound"],
+    "Agent414BulkPeriod.zero_clock_column":["propext","Quot.sound"],
+    "Agent414BulkPeriod.zero_clock_path":["propext","Quot.sound"]
+  },
+  "generic_log_sha256":"477537d82ef3b8557cebac150824b2d4e9ea0aa0b25cf2e766650ceb00dcad2e",
+  "specialization_log_sha256":"c634a450b846a5b2ea27eb88d5a1fd5124d4876e8046e92bfac7ffa9c09bbc10",
+  "complete_specialization_log":"'Agent414BulkPeriod.bulk_periodic_iff_dvd' depends on axioms: [propext, Quot.sound]\n'Agent414BulkPeriod.six_dvd_of_bulk_path' depends on axioms: [propext, Quot.sound]\n'Agent414BulkPeriod.no_bulk_exterior_of_not_dvd' depends on axioms: [propext, Quot.sound]\n'Agent414BulkPeriod.zero_clock_column' depends on axioms: [propext, Quot.sound]\n'Agent414BulkPeriod.zero_clock_path' depends on axioms: [propext, Quot.sound]\n",
+  "legacy_import_note":"Original imported modules contain older compiler-evaluated theorems. They are retained unchanged and compiled to make the actual original definitions available. None of the eight new exported theorem dependency audits contains Lean.ofReduceBool, sorryAx, or any axiom beyond the listed standard foundational axioms. Do not describe all imported legacy theorems as kernel-only.",
+  "established_scope":"Exact original bulk-word period iff6-divisibility; every root-to-bulk ArithmeticColumn path forces that divisibility; clocks not divisible by6 are therefore excluded without the large certificate. Zero-clock paths between every pair of words formally show that positivity cannot be dropped.",
+  "not_yet_claimed":"No all-positive-clock exclusion is declared checked at this checkpoint: connecting the divisible-clock case to Agent109's kernel exclusion awaits its bounded-memory replay. No arbitrary integer-orbit or 196 result."
+}
