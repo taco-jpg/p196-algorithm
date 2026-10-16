@@ -1,0 +1,17 @@
+List.getElem?_append.{u_1} {α : Type u_1} {l₁ l₂ : List α} {i : Nat} :
+  (l₁ ++ l₂)[i]? = if i < l₁.length then l₁[i]? else l₂[i - l₁.length]?
+List.getElem?_replicate.{u_1} {n : Nat} {α✝ : Type u_1} {a : α✝} {i : Nat} :
+  (List.replicate n a)[i]? = if i < n then some a else none
+List.getElem?_reverse.{u_1} {α : Type u_1} {l : List α} {i : Nat} (h : i < l.length) :
+  l.reverse[i]? = l[l.length - 1 - i]?
+List.getElem?_eq_getElem.{u_1} {α : Type u_1} {l : List α} {i : Nat} (h : i < l.length) : l[i]? = some l[i]
+List.getElem?_eq_some_iff.{u_1} {α : Type u_1} {i : Nat} {a : α} {l : List α} : l[i]? = some a ↔ ∃ h, l[i] = a
+List.getElem?_mem.{u_1} {α : Type u_1} {l : List α} {i : Nat} {a : α} (e : l[i]? = some a) : a ∈ l
+List.getElem?_eq_some_iff.{u_1} {α : Type u_1} {i : Nat} {a : α} {l : List α} : l[i]? = some a ↔ ∃ h, l[i] = a
+List.getElem_mem.{u_1} {α : Type u_1} {l : List α} {n : Nat} (h : n < l.length) : l[n] ∈ l
+List.mem_of_getElem?.{u_1} {α : Type u_1} {l : List α} {i : Nat} {a : α} (e : l[i]? = some a) : a ∈ l
+List.getElem?_eq_none.{u_1} {α✝ : Type u_1} {l : List α✝} {i : Nat} (h : l.length ≤ i) : l[i]? = none
+List.reverse_replicate.{u_1} {α : Type u_1} {n : Nat} {a : α} : (List.replicate n a).reverse = List.replicate n a
+Option.getD_some.{u_1} {α✝ : Type u_1} {a b : α✝} : (some a).getD b = a
+List.getD_eq_getElem?_getD.{u_1} {α : Type u_1} {l : List α} {i : Nat} {a : α} : l.getD i a = l[i]?.getD a
+List.getElem?_eq_getElem.{u_1} {α : Type u_1} {l : List α} {i : Nat} (h : i < l.length) : l[i]? = some l[i]

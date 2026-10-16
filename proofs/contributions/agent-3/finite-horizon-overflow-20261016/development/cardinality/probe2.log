@@ -1,0 +1,19 @@
+List.pairwise_append.{u_1} {α : Type u_1} {R : α → α → Prop} {l₁ l₂ : List α} :
+  List.Pairwise R (l₁ ++ l₂) ↔ List.Pairwise R l₁ ∧ List.Pairwise R l₂ ∧ ∀ (a : α), a ∈ l₁ → ∀ (b : α), b ∈ l₂ → R a b
+List.Pairwise.{u} {α : Type u} (R : α → α → Prop) : List α → Prop
+List.Nodup.{u} {α : Type u} : List α → Prop
+List.Pairwise.map.{u_1, u_2} {β : Type u_1} {α : Type u_2} {R : α → α → Prop} {l : List α} {S : β → β → Prop}
+  (f : α → β) (H : ∀ (a b : α), R a b → S (f a) (f b)) (p : List.Pairwise R l) : List.Pairwise S (List.map f l)
+List.map_inj.{u_1, u_2} {α✝ : Type u_1} {α✝¹ : Type u_2} {f g : α✝ → α✝¹} : List.map f = List.map g ↔ f = g
+List.append_cancel_left.{u_1} {α : Type u_1} {as bs cs : List α} (h : as ++ bs = as ++ cs) : bs = cs
+List.append_cancel_right.{u_1} {α : Type u_1} {as bs cs : List α} (h : as ++ bs = cs ++ bs) : as = cs
+List.take_append_of_le_length.{u_1} {α : Type u_1} {l₁ l₂ : List α} {i : Nat} (h : i ≤ l₁.length) :
+  List.take i (l₁ ++ l₂) = List.take i l₁
+List.headD_cons.{u} {α : Type u} {a : α} {l : List α} {d : α} : (a :: l).headD d = a
+List.reverse_append.{u_1} {α : Type u_1} {as bs : List α} : (as ++ bs).reverse = bs.reverse ++ as.reverse
+List.mem_reverse.{u_1} {α : Type u_1} {x : α} {as : List α} : x ∈ as.reverse ↔ x ∈ as
+List.length_pos_iff.{u_1} {α : Type u_1} {l : List α} : 0 < l.length ↔ l ≠ []
+proofs/contributions/agent-3/finite-horizon-overflow-20261016/development/cardinality/Probe2.lean:14:7: error: unknown identifier 'Function.Injective'
+List.cons.inj.{u} {α : Type u} {head : α} {tail : List α} {head✝ : α} {tail✝ : List α} :
+  head :: tail = head✝ :: tail✝ → head = head✝ ∧ tail = tail✝
+Nat.mod_eq_of_lt {a b : Nat} (h : a < b) : a % b = a
