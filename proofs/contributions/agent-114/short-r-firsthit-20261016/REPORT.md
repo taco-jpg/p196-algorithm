@@ -65,3 +65,20 @@ summands are divisible by 121. This is a **written algebraic derivation**,
 not a verified new Lean declaration; it does not exclude a palindrome
 (for example, 121 itself is a palindrome). The arithmetic checker separately
 evaluates and confirms the closed first-step value for the finite controls.
+
+
+## Starting-time palindrome obstruction (written proof; Lean source WIP)
+
+The experiment tests positive times 1..3000. For the same four initial
+canonical families, **time zero is also nonpalindromic** by a separate
+one-column argument. The unchanged initial pair-sum word has
+`q(0)=1` for p=1, while a canonical palindrome would have matching
+unit/leading digits `d(0)=d(L-1)`, forcing their sum
+`q(0)=d(0)+d(L-1)=2*d(0)` even. Contradiction.
+
+The proposed general `r1_to_r4_initial_not_palindrome` Lean declaration has
+been added to the uncompiled WIP module and attempts to derive this using
+`DecimalDigits.palindrome_value_iff`. The written proof is independent
+of the numerical trajectory check. Neither this argument nor the
+first-eleven Lean candidates have undergone the required actual Lean
+4.19.0 compilation or transitive axiom audit in this session.
