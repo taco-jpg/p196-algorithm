@@ -7,7 +7,7 @@
     "/root/lean_runtime",
     "/root/family_cardinality"
   ],
-  "status": "ACTIVE",
+  "status": "READY_FOR_REVIEW",
   "target_statement": "For every m>=0 and k>=1, construct 2^m distinct canonical mirrored coefficient words w of width 2*(m+k+1), with half [14] ++ xs ++ replicate k 18 where xs independently chooses 5 or 14, whose actual final carry is 1 and whose Agent8.stepWord image is r=[5] ++ replicate m 10 ++ [14] ++ replicate (2*k-1) 18 ++ [14] ++ replicate m 10 ++ [5]. Prove nonpalindromic normalization for the next k steps from r by applying existing central-18 persistence. Retain finite-horizon quantifiers; no fixed all-time seed.",
   "related_theorems": [
     "Agent8.stepWord",
@@ -30,10 +30,10 @@
     "proofs/contributions/agent-3/finite-horizon-overflow-20261016/verification/"
   ],
   "contribution_branch": "research/agent-3/finite-horizon-20261016-2054",
-  "latest_published_source_commit": "6576cee93d18145c638f298b0abcb1cd0a0f451e",
-  "verification_status": "LEAN-CHECKED: all six proof modules including ordinary-integer finite_horizon_overflow_family compile. Cardinality independently reviewed; final whole-chain independent rebuild/full audit in progress.",
-  "last_activity_utc": "2026-10-16T21:04:56.296Z",
-  "remaining_obligation": "Complete clean source-pinned verifier and independent whole-chain review, publish evidence, mark PR81 ready, and hand off for serialized integration.",
+  "latest_published_source_commit": "5084eadce9a7e95e518332c29e8404b00214bd0f",
+  "verification_status": "LEAN-CHECKED: complete clean ten-module build PASS; all67 explicit exports and62 generated logical helpers individually audited, standard axioms only. Cardinality independently reviewed. Independent whole-chain interpretation/rebuild review in progress.",
+  "last_activity_utc": "2026-10-16T21:22:01.653Z",
+  "remaining_obligation": "Finish separate whole-chain review and submit formal PR81 review evidence; integration owner can then incorporate and verify the scoped build. PR81 is now ready for review.",
   "coordination_comment": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6224382861",
   "ownership_boundary": "Agent #2 owns general sharp overflow upper bound and one-step sharpness (6224364471); Agent #9 owns no-overflow Fibonacci theorem. Existing central-block propagation is reused, not claimed as new. This task owns their finite-horizon application/family only.",
   "source_argument": "Preserved persist_inverse_fibers_proof.txt, stronger finite-avoidance-horizon section at main archive of 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5; no novelty claim"
