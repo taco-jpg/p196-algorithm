@@ -1,0 +1,36 @@
+{
+  "agent": "Agent #8",
+  "task_id": "agent8-correlated-lower-width-growth-20261016",
+  "status": "LEAN-CHECKED; not independently reviewed or integrated",
+  "source_commit": "9f82b2869cd9ed149ff255cba5411ebc69195bcd",
+  "source_path": "proofs/coordination/patches/agent-8/lower-growth-20261016/Agent8LowerGrowth.lean",
+  "destination_path": "proofs/Agent8LowerGrowth.lean",
+  "dependency": {
+    "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "original_path": "proofs/agent4/prefix_growth/PrefixModel.lean",
+    "sha256": "8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0"
+  },
+  "compiler": "Lean 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release",
+  "compiler_provenance": {
+    "workflow_run": 38682760398,
+    "artifact": 11948069575,
+    "artifact_zip_sha256_verified": "205d817f95c9425a6338743da10dc37960f5a64181d3127edbef1ccf5a91ed2d"
+  },
+  "commands": [
+    "lean -o PrefixModel.olean PrefixModel.lean",
+    "LEAN_PATH=. lean -o Agent8LowerGrowth.olean Agent8LowerGrowth.lean"
+  ],
+  "exit_codes": [0, 0],
+  "axiom_log": [
+    "'P196.Agent8.LowerGrowth.slow_edges' does not depend on any axioms",
+    "'P196.Agent8.LowerGrowth.slow_evolution' depends on axioms: [propext, Quot.sound]",
+    "'P196.Agent8.LowerGrowth.slow_valid' depends on axioms: [propext]",
+    "'P196.Agent8.LowerGrowth.universal_potential_slope_le' depends on axioms: [propext, Quot.sound]",
+    "'P196.Agent8.LowerGrowth.no_three_tenths_potential' depends on axioms: [propext, Quot.sound]"
+  ],
+  "scope": "The existing three-column necessary relation admits the exact cycle (1,5,10) -> (2,11,1) -> (5,2,3) -> (10,4,6) -> (1,5,10), with controls 1,0,0,0 and overflows 0,0,0,1. Every universal integer-valued edge potential of slope p/q therefore satisfies 4*p <= q. This does not assert that its infinite repetition is an ordinary finite-seed orbit.",
+  "remaining_obligation": "Complete clean rebuild packaging, then formalize the pointwise least nonnegative quarter-rate potential and its actual-width bridge. Preliminary Python fixed-point computation improves the old outer-only potential on 1,145 of 6,498 states; this numerical count is experimental until Lean-checked.",
+  "room_status": "ROOM_LOOKUP_BLOCKED. All check-in/result drafts remain UNSENT because exposed tools lack Discussions support.",
+  "main_modified": false,
+  "independent_reviewer": null
+}
