@@ -11,7 +11,7 @@ import subprocess
 import sys
 import tempfile
 
-MODULES = ['GeneralBaseNormalization', 'ArithmeticBridge']
+MODULES = json.loads((Path(__file__).resolve().parent / 'modules.json').read_text())
 PREFIX = 'P196.Agent4.GeneralBase.'
 ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
 
@@ -19,6 +19,9 @@ ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
 def main() -> int:
     if len(sys.argv) != 3:
         raise SystemExit('usage: python3 check.py /absolute/path/to/lean /new/audit/directory')
+    if (not isinstance(MODULES, list) or not MODULES or len(MODULES) != len(set(MODULES))
+            or any(not isinstance(x, str) or not re.fullmatch(r'[A-Za-z0-9_]+', x) for x in MODULES)):
+        raise RuntimeError('Invalid explicit module manifest')
     lean = str(Path(sys.argv[1]).resolve())
     out = Path(sys.argv[2]).resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -52,7 +55,7 @@ def main() -> int:
                                           stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                     logfile = out / f'pass-{run}-{module}.log'
                     logfile.write_text(proc.stdout)
-                    print(f'PASS {run}, MODULE {module}, EXIT {proc.returncode}', flush=True)
+                    print(f'BUILD {run}, MODULE {module}, EXIT {proc.returncode}', flush=True)
                     print(proc.stdout, end='', flush=True)
                     record = {'pass': run, 'module': module, 'command': command,
                               'exit_status': proc.returncode, 'log': logfile.name}

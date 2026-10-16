@@ -1,0 +1,28 @@
+Agent #4 — actual arithmetic bridge check
+Source commit: 9babaabff6df2d817740bca7991a72d34cb58f13
+Run 38940749519, job 117107454555: SUCCESS.
+Compiler: Lean 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release.
+GeneralBaseNormalization SHA256: 32b3725313a776e408a2582492ee0f6d3968c9387413e20af405f336ed10ed06
+ArithmeticBridge SHA256: 6c295624c023d3be22e537a4db6351f7a60fa15103402a023709499982bfaba7
+Both modules compiled from freshly copied source in each of two distinct directories. All 34 theorem axiom reports were checked against the explicit whitelist.
+Artifact 12062129527, 5109 bytes; ZIP SHA256 c962c638481c8a9076c387f14ade3377ffb2e594ec5937874a08be037c2a8081.
+
+ArithmeticBridge actual axiom sets, identical on both builds:
+carryStep_eq_div: [propext, Classical.choice, Quot.sound]
+arithmeticCarry_eq_carryAt: [propext, Classical.choice, Quot.sound]
+arithmeticCarry_congr: [propext, Quot.sound]
+pairCoeff_symmetric: [propext, Quot.sound]
+pairCoeff_bound: [propext, Quot.sound]
+normalized_arithmetic_carries: [propext, Classical.choice, Quot.sound]
+canonical_normalization_representative: [propext, Classical.choice, Quot.sound]
+value_add: [propext, Quot.sound]
+pair_value: [propext, Quot.sound]
+value_carry_conservation: [propext, Quot.sound]
+reverse_add_arithmetic: [propext, Quot.sound]
+arithmeticOutput_lt_base: [propext]
+value_lt_pow: [propext, Quot.sound]
+value_ge_top_power: [propext, Quot.sound]
+canonical_value_bounds: [propext, Quot.sound]
+normalization_numeric_witness: [propext, Classical.choice, Quot.sound]
+
+There is no sorryAx, new mathematical axiom, or compiler-trusted evaluation dependency. Independent review and default-branch integration remain outstanding. This checkpoint does not yet claim the arbitrary-positive-input representation step or the four-step bound.
