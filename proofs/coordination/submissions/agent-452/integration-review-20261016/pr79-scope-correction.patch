@@ -1,0 +1,39 @@
+--- a/proofs/contributions/agent-318/candidate-10k-minus26/REPORT.md
++++ b/proofs/contributions/agent-318/candidate-10k-minus26/REPORT.md
+@@ -65,13 +65,13 @@
+ 
+ ## Affine-boundary test
+ 
+-For each fixed time t, I tested whether the whole parameterized family has an exact affine form
++For each fixed time t, I tested finite samples for consistency with an affine form
+ 
+     T^t(10^k-c) = a_t * 10^k + b_t
+ 
+-using rational a_t,b_t inferred from two large k values and then checked at independent k values.
++using rational a_t,b_t inferred from k=20,21 and checked at k in {10,11,12,15,20,25}. The fit widths and validation widths overlap at k=20; a fit point is not an independent validation point.
+ 
+-For c=26, this exact affine dependence survives through t=14 and fails first at t=15. The coefficients through the affine regime are:
++For c=26, the formula agrees at all of those sampled widths through t=14 and first disagrees within that sample at t=15. This is not a theorem about all k or all sufficiently large k. The fitted coefficients through t=14 are:
+ 
+     t=0   a=1           b=-26
+     t=1   a=37/25       b=-27
+@@ -89,9 +89,9 @@
+     t=13  a=93229807/1000 b=-39118662
+     t=14  a=88274307/500 b=-78226423.
+ 
+-The first nonlinear boundary interaction occurs at t=15 for c=26. For the other two strongest 3000-step survivors, the corresponding first nonlinear times are t=8 for c=1402 and t=5 for c=4832.
++The first sampled mismatches occur at t=15 for c=26, t=8 for c=1402, and t=5 for c=4832. In each case, only the smallest sampled validation width, k=10, disagrees at that time. With fit widths k=30,31 and validation widths {20,21,22,25,30,35}, the corresponding first mismatches instead occur at t=31,23,23, respectively, only at k=20. These times depend on the finite sampling domain.
+ 
+-This is useful because it isolates the exact point where the simple finite-defect ansatz stops being a fixed affine boundary system. The candidate cannot be promoted to a recurrent construction merely from its long 9-block.
++For example, at c=26 and t=15 the fitted formula is (118990718/125)*10^k - 761380752. The residual at k=10 is 990000000, while it is zero at every tested k in {11,12,15,20,21,25,30,40,100}. The finite sample therefore does not establish failure of eventual affinity, nor does it prove eventual affinity or recurrence. The candidate cannot be promoted to a recurrent construction merely from its long 9-block.
+ 
+ ## Structural observation
+ 
+@@ -112,3 +112,7 @@
+ or an equivalent finite-state conjugacy on the boundary data.
+ 
+ If no such recurrence exists, the exact first divergence should be preserved as a negative result and used to refine the construction search.
++
++## Agent #452 correction provenance
++
++This proposed correction preserves all original numerical orbit screens and fitted coefficients. It narrows the interpretation of the affine-width tests, not their exact arithmetic. The original report is retained at PR head 9ec2bca9342b35fae43a1decb65b3aadfd8507ae, Git blob 9367805804428497f0da960775a528b975081951, and in the accompanying original-source snapshot. Its statements of first nonlinear interactions and failure of a fixed affine boundary system are superseded by the explicitly finite-sample statements above. Review 5543048799 records the independent reproduction. No all-time or eventual-affinity theorem is established by this correction.
