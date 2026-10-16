@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #8",
+  "title": "Common-overflow defect transport scoped source registry",
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    {
+      "id": "SCOPE_NOT_REPOSITORY_WIDE",
+      "status": "OPEN",
+      "description": "Only the eight-module common-overflow transport import closure is registered."
+    }
+  ],
+  "source_snapshot": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "projects": {
+    "agent8-common-overflow-defect": {
+      "scope": "Exact common-carry antisymmetric normalized-digit transport, ordinary-decimal two-step consequences, and finite actual witness.",
+      "roots": [
+        "Agent8DefectWitness"
+      ],
+      "modules": {
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ]
+        },
+        "IncomingCarrySensitivity": {
+          "path": "proofs/IncomingCarrySensitivity__b726575f0a1b096c.lean",
+          "sha256": "52850d75999a8fdad298e2e9da638965472ab6507f88630bf428698576ac631f",
+          "git_blob": "9ccc745471fd509fb68652fef40454478087e92e",
+          "imports": [
+            "LychrelDigitSums"
+          ]
+        },
+        "RawSymmetryObstruction": {
+          "path": "proofs/RawSymmetryObstruction__5c1be305a04af2b7.lean",
+          "sha256": "922b660e5b3ac42389cd6ea00885075327d4b44fb315b9cc496e1323890e9c87",
+          "git_blob": "9d4250f3e5daa5ff26f097a7e12ce98830dd9e89",
+          "imports": [
+            "IncomingCarrySensitivity"
+          ]
+        },
+        "SeamCoefficients": {
+          "path": "proofs/SeamCoefficients__e73d67d37698e702.lean",
+          "sha256": "a32ac5a1844f8f6eb8009aacc64b07d8e9d7a1df3798bb488b0dfc3b5d131b86",
+          "git_blob": "b4200954f47c13d30890673ecab7092578537fe5",
+          "imports": [
+            "RawSymmetryObstruction"
+          ]
+        },
+        "PairResponse": {
+          "path": "proofs/PairResponse__18d2d58355ed97f4.lean",
+          "sha256": "0c078526eca7a09b2480601c2c83dfa2946ab8da10d82112da5026d70d9054ab",
+          "git_blob": "b7e822e798d873e9b51f7e97eb9c4c78821bd1c2",
+          "imports": [
+            "SeamCoefficients"
+          ]
+        },
+        "Agent8DefectTransport": {
+          "path": "proofs/contributions/agent-8/common-overflow-defect-20261016/Agent8DefectTransport.lean",
+          "sha256": "55bad56650b7e43f8d9c9f64dfa71b369475360758baf5197f644392f79ba29d",
+          "git_blob": "91dd78320ea287b43d3fb9cf452b8c5fd684ea4e",
+          "imports": [
+            "PairResponse"
+          ]
+        },
+        "Agent8DefectNumeric": {
+          "path": "proofs/contributions/agent-8/common-overflow-defect-20261016/Agent8DefectNumeric.lean",
+          "sha256": "86687c705b5ac24d1d5cbc2430f07343d13c40490a1c6837216b66b7f74000aa",
+          "git_blob": "b3965c369f52961782289de1073da597594c1e84",
+          "imports": [
+            "Agent8DefectTransport"
+          ]
+        },
+        "Agent8DefectWitness": {
+          "path": "proofs/contributions/agent-8/common-overflow-defect-20261016/Agent8DefectWitness.lean",
+          "sha256": "073307965b56676b5af48f94a4e4afede9ff0c6eda790b9c1317739be62d7bb7",
+          "git_blob": "41785eb69300e08529c688dab1317ad9810e5af7",
+          "imports": [
+            "Agent8DefectNumeric"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A8-C01",
+      "project": "agent8-common-overflow-defect",
+      "endpoints": [
+        "P196.Agent8.CommonOverflowDefect.common_carry_transport",
+        "P196.Agent8.CommonOverflowDefect.overflow_noncancellation",
+        "P196.Agent8.CommonOverflowDefect.numeric_common_carry_transport",
+        "P196.Agent8.CommonOverflowDefect.numeric_no_overflow_cancellation",
+        "P196.Agent8.CommonOverflowDefect.numeric_overflow_second_values_eq_iff_first_values_eq",
+        "P196.Agent8.CommonOverflowDefect.numeric_overflow_noncancellation",
+        "P196.Agent8.CommonOverflowDefect.Witness.actual_second_values_differ"
+      ]
+    }
+  ]
+}
