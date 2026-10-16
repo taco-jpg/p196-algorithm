@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "task_id": "agent15-spectral-carry-support-43cf6e114472",
+  "owner": "Agent #15",
+  "session": "43cf6e114472",
+  "status": "CLAIMED",
+  "chat_language": "Spanish",
+  "deliverable_language": "English",
+  "coordination_issue": 61,
+  "main_write_slot": false,
+  "source_snapshot": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+  "inventory_claim": "A15-SPEC-010",
+  "source_claim": {
+    "note_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/creative_global_spectral_notes.md",
+    "note_blob": "cb1c355fa05916a770816a4d5ef680e54079cccb",
+    "note_lines": "58-66",
+    "script_path": "proofs/creative_global_spectral__8de5a77a944d0d04.py",
+    "script_blob": "730acd722bf017b6bf1e51e5a0411169a7804da4",
+    "script_locations": "8-13, 28-38, 51-53",
+    "statement": "For symmetric bounded paired coefficients, carry asymmetry can occur only at coefficient 9; in particular, absence of 9 implies the exact integer J is zero. The converse need not hold."
+  },
+  "target_statement": [
+    "For q : Nat -> Nat and L : Nat define outgoing q L = (List.range L).map (fun i => DecimalDigits.carry q (i+1)); actualCharge q L is the existing exact parity-selected U/S carryCharge of that list.",
+    "Under hb : forall i < L, q i <= 18, prove outgoing has exactly L entries, gives the existing computed outgoing carries, is binary, and actualCharge=0 iff forall i<L, carry q (i+1)=carry q (L-i).",
+    "Under hb and hs : forall i<L, q i = q (L-1-i), reuse RawSymmetryObstruction.nonnine_binary_div to prove q i != 9 implies equality of those reflected outgoing carries.",
+    "Under hb and hs, derive actualCharge != 0 iff exists i<L, q i=9 and carry q(i+1) != carry q(L-i); consequently no coefficient 9 implies actualCharge=0.",
+    "Specialize to existing DecimalDigits.Canonical n d L and q=columnSum d L using existing columnSum_bounded and columnSum_symmetric. Preserve both parities, final overflow and actual carry recurrence; handle L=0/1 algebraic extensions in the general theorem."
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/"
+  ],
+  "contribution_branch": "formalize/agent-15/spectral-carry-support-43cf6e114472",
+  "dependency_pins": {
+    "spectral_source_commit": "e8d706dc8a67248e1531b0b828fbe05ff50052ed",
+    "spectral_modules": [
+      "SpectralWeights",
+      "BinaryCode",
+      "ChargeSymmetry",
+      "SourceFormula"
+    ],
+    "legacy_modules": [
+      {
+        "module": "LychrelDigitSums",
+        "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+        "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2"
+      },
+      {
+        "module": "IncomingCarrySensitivity",
+        "path": "proofs/IncomingCarrySensitivity__5d4952e23e746f6d.lean",
+        "git_blob": "9ccc745471fd509fb68652fef40454478087e92e"
+      },
+      {
+        "module": "RawSymmetryObstruction",
+        "path": "proofs/RawSymmetryObstruction__5c1be305a04af2b7.lean",
+        "git_blob": "9d4250f3e5daa5ff26f097a7e12ce98830dd9e89"
+      }
+    ]
+  },
+  "intended_source": "ActualCarrySupport.lean",
+  "expected_namespace": "P196.Agent15.SpectralSupport",
+  "verification_standard": {
+    "lean": "4.19.0",
+    "compiler_arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "Lean.ofReduceBool",
+      "new mathematical axioms"
+    ],
+    "required": [
+      "Exact source-semantic contract review",
+      "Fresh complete eight-module source closure",
+      "All public declarations and all module-origin mathematical declarations audited",
+      "Genuine nonauthor execution and semantic review",
+      "All sources, failures, commands and logs preserved"
+    ]
+  },
+  "ownership_check": {
+    "scout_snapshot": "68affcc3dd7972d02f036aac5d9eb4f5ba163c14",
+    "scout_task_count": 174,
+    "parent_refreshed_head": "9196acaa2a725117434909e5ab291041eceeb891",
+    "parent_changed_paths": 25,
+    "parent_inspected_task_changes": 8,
+    "new_task_changes": "One nonexclusive Agent11 review claim for PR103/125/138; no equivalent carry-charge support source claim.",
+    "proposal_comment": 6226548547,
+    "retry_parent": "55eefe62b17d6ee28f6dd190886f9e85dd512f57"
+  },
+  "scope_exclusions": [
+    "No reproof or source changes to existing decimal foundations, local nonnine binary-division lemma or resetOut arithmetic.",
+    "No T/R fixed-width injection, Agent14 carryfree residue saturation, H, four-case spectral evolution, real beta embedding or quotient classification.",
+    "No converse J=0 iff absence of9, all-time charge persistence, trajectory safety or196 resolution.",
+    "No changes to the frozen PR145 mathematical sources or shared main/build indexes."
+  ],
+  "work_plan": {
+    "root": "Own coordination, precise contract, dependency pins, publication, build driver and integration handoff.",
+    "author_specialist": "A genuine ultra-configured author will be assigned only the new support module after successful claim.",
+    "nonauthor_review": "Separate genuine semantic and execution reviewers will not edit the authored Lean sources."
+  },
+  "verification_status": "SOURCE_CONTRACT_ONLY; new theorem implementation will start only after protected claim publication and readback.",
+  "publication_attempts": [
+    {
+      "commit": "dc8ffad1c294d9eb197a83910b8a7a1d946e9871",
+      "parent": "9196acaa2a725117434909e5ab291041eceeb891",
+      "result": "Guarded publication lost a real coordination-head race. Own task404 at new exact head; only the integration-role record changed."
+    }
+  ]
+}
