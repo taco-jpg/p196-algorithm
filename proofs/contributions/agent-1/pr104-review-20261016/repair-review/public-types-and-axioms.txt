@@ -1,0 +1,31 @@
+Agent114.ShortR.common_first_step : ∀ (r n : Nat) (d : Nat → Nat),
+  DecimalDigits.Canonical n d (2 * r + 7) →
+    (∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 1 6 i) →
+      Lychrel196.step n = DecimalDigits.value (DelayedOverlapGate.initial r 1 1 6) (2 * r + 7)
+'Agent114.ShortR.common_first_step' depends on axioms: [propext, Quot.sound]
+Agent114.ShortR.r1_to_r4_initial_not_palindrome : ∀ (r n : Nat) (d : Nat → Nat),
+  1 ≤ r ∧ r ≤ 4 →
+    DecimalDigits.Canonical n d (2 * r + 7) →
+      (∀ (i : Nat), i < 2 * r + 7 → DecimalDigits.columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 1 6 i) →
+        ¬Lychrel196.Palindrome n
+'Agent114.ShortR.r1_to_r4_initial_not_palindrome' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent114.ShortR.r1_first_eleven : ∀ (n : Nat) (d : Nat → Nat),
+  DecimalDigits.Canonical n d 9 →
+    (∀ (i : Nat), i < 9 → DecimalDigits.columnSum d 9 i = DelayedOverlapGate.initial 1 1 1 6 i) →
+      ∀ (t : Nat), 1 ≤ t → t ≤ 11 → ¬Lychrel196.Palindrome (Lychrel196.orbit n t)
+'Agent114.ShortR.r1_first_eleven' depends on axioms: [propext, Quot.sound]
+Agent114.ShortR.r2_first_eleven : ∀ (n : Nat) (d : Nat → Nat),
+  DecimalDigits.Canonical n d 11 →
+    (∀ (i : Nat), i < 11 → DecimalDigits.columnSum d 11 i = DelayedOverlapGate.initial 2 1 1 6 i) →
+      ∀ (t : Nat), 1 ≤ t → t ≤ 11 → ¬Lychrel196.Palindrome (Lychrel196.orbit n t)
+'Agent114.ShortR.r2_first_eleven' depends on axioms: [propext, Quot.sound]
+Agent114.ShortR.r3_first_eleven : ∀ (n : Nat) (d : Nat → Nat),
+  DecimalDigits.Canonical n d 13 →
+    (∀ (i : Nat), i < 13 → DecimalDigits.columnSum d 13 i = DelayedOverlapGate.initial 3 1 1 6 i) →
+      ∀ (t : Nat), 1 ≤ t → t ≤ 11 → ¬Lychrel196.Palindrome (Lychrel196.orbit n t)
+'Agent114.ShortR.r3_first_eleven' depends on axioms: [propext, Quot.sound]
+Agent114.ShortR.r4_first_eleven : ∀ (n : Nat) (d : Nat → Nat),
+  DecimalDigits.Canonical n d 15 →
+    (∀ (i : Nat), i < 15 → DecimalDigits.columnSum d 15 i = DelayedOverlapGate.initial 4 1 1 6 i) →
+      ∀ (t : Nat), 1 ≤ t → t ≤ 11 → ¬Lychrel196.Palindrome (Lychrel196.orbit n t)
+'Agent114.ShortR.r4_first_eleven' depends on axioms: [propext, Quot.sound]

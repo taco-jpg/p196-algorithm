@@ -1,0 +1,23 @@
+{
+  "original_sha256": "b5712b2051605a0ff95a1f6d8e18927d2aea4c91fbf2e8d38b688205033874cd",
+  "repaired_sha256": "e2557923cdbe694ab4a21463ab765bd0d609623f98e77e5c3aac593ed101bd81",
+  "all_six_names_and_statement_texts_identical": true,
+  "imports_identical": true,
+  "only_change": "Replace time-zero endpoint dsimp line by explicit htwice proof using existing hends; all remaining bytes identical.",
+  "declarations": [
+    "Agent114.ShortR.common_first_step",
+    "Agent114.ShortR.r1_to_r4_initial_not_palindrome",
+    "Agent114.ShortR.r1_first_eleven",
+    "Agent114.ShortR.r2_first_eleven",
+    "Agent114.ShortR.r3_first_eleven",
+    "Agent114.ShortR.r4_first_eleven"
+  ],
+  "statement_texts": {
+    "common_first_step": "theorem common_first_step (r n : Nat) (d : Nat → Nat)\n    (hc : Canonical n d (2 * r + 7))\n    (hr : ∀ i, i < 2 * r + 7 →\n      columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 1 6 i) :\n    Lychrel196.step n =\n      DecimalDigits.value (DelayedOverlapGate.initial r 1 1 6) (2 * r + 7) :=",
+    "r1_to_r4_initial_not_palindrome": "theorem r1_to_r4_initial_not_palindrome (r n : Nat) (d : Nat → Nat)\n    (hshort : 1 ≤ r ∧ r ≤ 4)\n    (hc : Canonical n d (2 * r + 7))\n    (hr : ∀ i, i < 2 * r + 7 →\n      columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 1 6 i) :\n    ¬ Lychrel196.Palindrome n :=",
+    "r1_first_eleven": "theorem r1_first_eleven (n : Nat) (d : Nat → Nat)\n    (hc : Canonical n d 9)\n    (hr : ∀ i, i < 9 →\n      columnSum d 9 i = DelayedOverlapGate.initial 1 1 1 6 i) :\n    ∀ t : Nat, 1 ≤ t → t ≤ 11 →\n      ¬ Lychrel196.Palindrome (Lychrel196.orbit n t) :=",
+    "r2_first_eleven": "theorem r2_first_eleven (n : Nat) (d : Nat → Nat)\n    (hc : Canonical n d 11)\n    (hr : ∀ i, i < 11 →\n      columnSum d 11 i = DelayedOverlapGate.initial 2 1 1 6 i) :\n    ∀ t : Nat, 1 ≤ t → t ≤ 11 →\n      ¬ Lychrel196.Palindrome (Lychrel196.orbit n t) :=",
+    "r3_first_eleven": "theorem r3_first_eleven (n : Nat) (d : Nat → Nat)\n    (hc : Canonical n d 13)\n    (hr : ∀ i, i < 13 →\n      columnSum d 13 i = DelayedOverlapGate.initial 3 1 1 6 i) :\n    ∀ t : Nat, 1 ≤ t → t ≤ 11 →\n      ¬ Lychrel196.Palindrome (Lychrel196.orbit n t) :=",
+    "r4_first_eleven": "theorem r4_first_eleven (n : Nat) (d : Nat → Nat)\n    (hc : Canonical n d 15)\n    (hr : ∀ i, i < 15 →\n      columnSum d 15 i = DelayedOverlapGate.initial 4 1 1 6 i) :\n    ∀ t : Nat, 1 ≤ t → t ≤ 11 →\n      ¬ Lychrel196.Palindrome (Lychrel196.orbit n t) :="
+  }
+}
