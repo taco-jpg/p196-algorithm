@@ -2,11 +2,15 @@
 
 This contribution formalizes the ordinary decimal reverse-add statements in `persist_inverse_notes.txt`, sections 1–3, retained at Git blob `ecd101823b261fdac15d185fea963d9c9f16c601`. Those written results predate this formalization. The two concrete integers below are this session's canonical realizations of the profiles in the old note.
 
-## Checked source checkpoint
+## Independently reviewed source and full replay
 
 The four flat Lean modules and the 9-module registry `proofs/Agent105InverseBoundaries9df76b.registry.json` are frozen. Each new module has compiled with the official Lean 4.19.0, release commit `6caaee842e94`, at trust level 0. All 38 public theorem endpoints have literal `#print axioms` reports. Reported theorem dependencies are subsets of `propext`, `Classical.choice`, and `Quot.sound`.
 
-This source checkpoint is LEAN-CHECKED. Separate semantic reviews of every new module are retained: runtime105 reviewed the three modules it did not author, and scope105 reviewed runtime105's WidthSupport. The full clean, exact-source registry replay and complete module-origin audit are the next evidence checkpoint; this document does not claim that pending execution has already happened. Nothing here has been integrated into the shared accepted catalogue.
+The exact published source checkpoint `5923015f86eb1ef898becd77ce2ee328ff338b69` is INDEPENDENTLY-REVIEWED. Separate semantic reviews cover every new module: runtime105 reviewed the three modules it did not author, and scope105 reviewed runtime105's WidthSupport. Scope105 then independently rebuilt the complete nine-module closure in two empty directories. The unchanged canonical verifier passed all ten commands and audited all 1,042 module-origin theorem constants. Because official Lean's help reports a default trust level of `max`, a separate complete replay explicitly used `--trust=0` for every module and the unchanged generated audit. It also passed all ten proof/audit commands; the extra help command passed as well.
+
+Both exhaustive theorem audits report only `propext`, `Classical.choice`, and `Quot.sound`. The canonical audit separately records 22 pre-existing unsafe implementation axioms in imported infrastructure; none is a theorem dependency and none originates in these four new modules. These are reported transparently, not silently removed. No proof, registry, verifier, or audit source was changed between the two successful replays. This is same-session independent specialist review, not external peer review or a separate GitHub account. Integration into the shared accepted catalogue remains the integration owner's task.
+
+The unmodified canonical receipt SHA-256 is `a309168ed0cb803c2c9b20156faab1c9bf4c564da62559d969e39127a9dbdddd`; the explicit trust-zero receipt SHA-256 is `f5c279db93de777711d6c3ae15756e70633015551e9f9754f7f5e647ff6f7320`. Readable copies are `canonical-verification.json` and `strict-verification.json`. The complete semantic and execution assessment is `controls/scope105-final-review.md`.
 
 ## Mathematical interfaces
 
@@ -43,6 +47,6 @@ The unchanged verifier SHA-256 is `c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db59
 
 All substantive new source snapshots, failed and successful compiler logs, commands, receipts, scope scouting, and semantic reviews are retained under this directory. Failed attempts are historical WIP and are outside the registry; any failure-time `sorryAx` report is not an accepted result. The two failed proof attempts were repaired in later snapshots without changing the intended statements.
 
-Compiled `.olean` files, duplicate runtime/build caches, the installed toolchain, and operational publication helpers are reproducible infrastructure and are excluded from publication under `PUBLICATION_POLICY.md`. The `FILES.json` inventory records every published file in this contribution except itself. Source identities for all nine actual build modules are recorded in the registry.
+Compiled `.olean` files, duplicate runtime/build caches, the installed toolchain, and operational publication helpers are reproducible infrastructure and are excluded from publication under `PUBLICATION_POLICY.md`. The 46 full verification sources, logs, receipts and file inventories are retained losslessly in `verification-evidence.tar.gz`: 819,489 original bytes, with each member checked again after compression. `VERIFICATION_ARCHIVE.json` gives the exact original path, byte count and hash, archive member, compressed hash, and recovery command. The `FILES.json` inventory records every directly published file in this contribution except itself; archived originals have the separate member inventory. Source identities for all nine actual build modules are recorded in the registry.
 
 The status of 196 and decimal Lychrel existence remains unresolved. These are finite one-step structural results, without an infinite-time claim.
