@@ -1,5 +1,6 @@
 import CertificateSaturation
 import SaturationTheorem
+import WholeWordBridge
 
 /-!
 Agent #215 — saturated temporal/column profile.
@@ -70,16 +71,20 @@ def SaturatedEightCycleTarget : Prop :=
 /-- The odd-position inputs are observationally irrelevant to the skeleton. -/
 theorem edge1_any (e : Nat) (he : e ≤ 1) :
     advance ⟨17,5,0⟩ e = (⟨8,13,5⟩, 1) := by
-  omega
+  have h01 : e = 0 ∨ e = 1 := by omega
+  rcases h01 with rfl | rfl <;> decide
 theorem edge3_any (e : Nat) (he : e ≤ 1) :
     advance ⟨17,6,11⟩ e = (⟨8,14,8⟩, 1) := by
-  omega
+  have h01 : e = 0 ∨ e = 1 := by omega
+  rcases h01 with rfl | rfl <;> decide
 theorem edge5_any (e : Nat) (he : e ≤ 1) :
     advance ⟨17,8,17⟩ e = (⟨8,16,16⟩, 1) := by
-  omega
+  have h01 : e = 0 ∨ e = 1 := by omega
+  rcases h01 with rfl | rfl <;> decide
 theorem edge7_any (e : Nat) (he : e ≤ 1) :
     advance ⟨17,13,14⟩ e = (⟨8,12,9⟩, 1) := by
-  omega
+  have h01 : e = 0 ∨ e = 1 := by omega
+  rcases h01 with rfl | rfl <;> decide
 
 /-- Exact eight-edge overflow total once the skeleton is followed. -/
 def skeletonInput (e1 e3 e5 e7 : Nat) : Nat → Nat
@@ -103,6 +108,33 @@ def SaturatedBlockTarget : Prop :=
     e1 ≤ 1 → e3 ≤ 1 → e5 ≤ 1 → e7 ≤ 1 →
     (2 * total (skeletonOverflow e1 e3 e5 e7) 8 = 8 ↔
       OddInputBalance e1 e3 e5 e7)
+
+/-- Kernel-checked correction: on the eight-state skeleton every 8-step block
+is saturated (exactly four overflows) for *every* choice of the four odd
+inputs in {0,1}. The odd inputs are unconstrained by saturation. -/
+theorem skeleton_block_always_saturated (e1 e3 e5 e7 : Nat)
+    (h1 : e1 ≤ 1) (h3 : e3 ≤ 1) (h5 : e5 ≤ 1) (h7 : e7 ≤ 1) :
+    2 * total (skeletonOverflow e1 e3 e5 e7) 8 = 8 := by
+  have c1 : e1 = 0 ∨ e1 = 1 := by omega
+  have c3 : e3 = 0 ∨ e3 = 1 := by omega
+  have c5 : e5 = 0 ∨ e5 = 1 := by omega
+  have c7 : e7 = 0 ∨ e7 = 1 := by omega
+  rcases c1 with rfl | rfl <;> rcases c3 with rfl | rfl <;>
+    rcases c5 with rfl | rfl <;> rcases c7 with rfl | rfl <;> decide
+
+/-- Kernel-checked refutation of the conjectured odd-input balance law:
+all-zero odd inputs give a saturated block with odd-input sum 0. -/
+theorem saturated_block_target_false : ¬ SaturatedBlockTarget := by
+  intro h
+  have hs := skeleton_block_always_saturated 0 0 0 0 (by omega) (by omega) (by omega) (by omega)
+  have hb := (h 0 0 0 0 (by omega) (by omega) (by omega) (by omega)).mp hs
+  unfold OddInputBalance at hb
+  omega
+
+#print axioms skeleton_block_always_saturated
+#print axioms saturated_block_target_false
+
+open DecimalDigits FoldedDecimal OverflowCarryNormalization P196.Agent4.WholeWord
 
 /-- Actual-dynamics specialization: the desired stronger theorem should apply
 directly to iterated whole-word states, not merely to an abstract Prefix path.

@@ -20,11 +20,15 @@ Established from the current main source by exact inspection:
   e = 1,0,0,1 at clock classes 0,2,4,6.
 - At the four odd positions, both e=0 and e=1 produce the same next
   skeleton state and the same overflow gamma=1.
-- Consequently, once the global temporal skeleton is kernel-proved, the
-  saturation equation forces exactly two of the four odd-position inputs to
-  be 1 in each 8-step block (because the four even positions contribute
-  exactly two overflow-1 edges and saturation requires four overflow-1 edges
-  per 8 steps).
+- ~~Consequently the saturation equation forces exactly two of the four
+  odd-position inputs to be 1 in each 8-step block.~~ **Retracted (false).**
+  The edge lemmas themselves show the four even-position edges have overflow
+  0 and the four odd-position edges have overflow 1 for either input, so every
+  8-step block on the skeleton has exactly four overflows and is saturated
+  for all 16 odd-input patterns. Kernel-checked:
+  `skeleton_block_always_saturated` and `saturated_block_target_false`
+  (axioms: propext, Quot.sound). Saturation places no constraint on the odd
+  inputs.
 
 The generic extraction theorem remains WIP. No claim about 196 is proved by
 this contribution.
@@ -35,3 +39,11 @@ that theorem.
 
 Continuation checkpoint (Agent #215): added generic odd-position transition lemmas as WIP and an explicit `SaturatedBlockTarget` proposition. The target states exactly that, once the eight-state skeleton is followed and each odd input is in {0,1}, saturation over one 8-step block is equivalent to odd-input sum 2. Lean execution remains unavailable, so these declarations are not promoted beyond WIP.
 Latest source commit: ea21aa5ca26e5ba4e76860859d81b0dbc3589f81.
+
+
+Review correction (Lean 4.19.0 build): the file previously failed to compile
+(`omega` cannot case-split the odd inputs; `Admissible`, `iterPairs`,
+`carry`, `prefix3` were not imported). It now imports `WholeWordBridge`,
+proves the odd-edge lemmas by explicit case split, and compiles with exit 0.
+`SaturatedEightCycleTarget` and `ActualSaturatedEightCycleTarget` remain
+unproved target propositions (WIP); `SaturatedBlockTarget` is now proved false.
