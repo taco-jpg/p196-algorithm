@@ -1,0 +1,395 @@
+{
+  "status": "READ-ONLY INDEPENDENT SCOUT; no new claim, theorem source, or proof implementation",
+  "reviewer": "/root/gap_inventory",
+  "report_path": "/workspace/scratch/aaafdd394dd6/agent7-analysis/run-population-next-gap.json",
+  "repository": "taco-jpg/p196-algorithm",
+  "source_workspace": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo",
+  "source_baselines": {
+    "local_origin_main": "3176da906d0849c815c6d1462d03d57aa7eff63b",
+    "local_origin_coordination": "f3d4e354696d749a8c73e7e144638310cebde355",
+    "top_level_lean_files": 1814
+  },
+  "fresh_coordination": {
+    "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+    "method": "Independent GitHub GET of current ref, pinned task directory, and eleven relevant full task records; no ref writes or issue messages.",
+    "task_count": 141,
+    "listing_url": "https://api.github.com/repos/taco-jpg/p196-algorithm/contents/proofs/coordination/tasks?ref=e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+    "earlier_independent_listing": "7d9a4884b514d8fae1e8aa13d05cb43c57471f70",
+    "new_tasks_since_earlier_listing": [
+      "agent100-groupII-rebased-overlap-20261016.json",
+      "agent105-9df76b-all-predecessors-20261016.json"
+    ],
+    "limit": "All task filenames and the eleven selected complete records were inspected; this is not a complete read of all141 task bodies. Root must reconcile subsequent coordination/issue changes before a guarded claim."
+  },
+  "conclusion": "A substantive missing formal bridge is full-population coverage of actual decimal maximal constant 0/18 runs by their initial or born founder runs, followed by birth-free extinction and eventual-absence equivalence. Existing code proves one-run extinction and whole-next-word no-merging, but no source endpoint for the proposed population/time quantifiers was found. Unique founder RUN/time is mathematically supported; unique birth SITE is not.",
+  "recommended_scope": "Keep original Nat-valued DecimalDigits/FoldedDecimal/OverflowCarryNormalization and RunAncestry definitions unchanged. Prove one-step unique predecessor-or-birth partition, unique founder run/time, no-birth finite-window extinction, eventual birth-free iff eventual extreme-free, with exact canonical integer representation. No all-base recast or improved width potential.",
+  "core_original_closure": [
+    {
+      "module": "LychrelDigitSums",
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "RunAncestry",
+      "path": "proofs/RunAncestry__5f2702512ad8719e.lean",
+      "sha256": "6c8041050576a142949376818a2e37997031ce40b99a7908a763396ee702a9eb",
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    {
+      "module": "AncestryExtinction",
+      "path": "proofs/AncestryExtinction__567be2f804ec7f4c.lean",
+      "sha256": "4563ec3dffa0a69d3df3b3312eb783f835f76cacdd2261f9c88ed0b9f06d3c7e",
+      "imports": [
+        "RunAncestry"
+      ]
+    },
+    {
+      "module": "NoOverflowBirths",
+      "path": "proofs/NoOverflowBirths__5efd592199681cb6.lean",
+      "sha256": "27a95daf58e8685297094dba5c7d64eea4f01632550a9f8fc04482c066fb8638",
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    {
+      "module": "OverflowBirths",
+      "path": "proofs/OverflowBirths__49006695505666f1.lean",
+      "sha256": "31cf89bc779d8e4638070b6d28c3d2ed2dad004a21b0027efa0ce6782c7cd364",
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    }
+  ],
+  "closure_note": "The five modules form a complete literal Std-only source import closure for genealogy plus identification with both existing local birth classifications. The three-module LychrelDigitSums/RunAncestry/AncestryExtinction prefix suffices for abstract physical BornRun coverage. No fresh Lean build was run during this scout.",
+  "existing_api": [
+    {
+      "declaration": "FoldedDecimal.Admissible",
+      "module": "LychrelDigitSums",
+      "statement": "0<L ∧0<q0 ∧(∀i<L,q i≤18) ∧ physical reflection symmetry ∧ even self-reflected center coefficient",
+      "importance": "Values of q outside first L positions are explicitly irrelevant/unconstrained. Guard every old-word lookup in the birth definition."
+    },
+    {
+      "declaration": "OverflowCarryNormalization.iterPairs",
+      "module": "LychrelDigitSums",
+      "statement": "iterPairs q L 0=(L,q); state at t+1 is (nextWidth state_t.2 state_t.1,nextColumns state_t.2 state_t.1)",
+      "importance": "Use the exact original changing-width update; do not introduce a new ordinary orbit."
+    },
+    {
+      "declaration": "CarryHistory.iterPairs_admissible",
+      "module": "LychrelDigitSums",
+      "statement": "Admissible L q → Admissible (iterPairs q L t).1 (iterPairs q L t).2",
+      "importance": "All time-shifted one-step ancestry hypotheses follow."
+    },
+    {
+      "declaration": "OverflowCarryNormalization.iterPairs_representation",
+      "module": "LychrelDigitSums",
+      "statement": "Canonical n d L → (∀i<L,columnSum d L i=q i) → ∃e, Canonical (orbit n t) e (iterPairs q L t).1 ∧ ∀i<width_t,columnSum e width_t i=(iterPairs q L t).2 i",
+      "importance": "Already gives the complete canonical ordinary-integer bridge at every time."
+    },
+    {
+      "declaration": "RunAncestry.MaximalRun",
+      "module": "RunAncestry",
+      "statement": "a<b ∧b≤L ∧(∀i,a≤i→i<b→q i=c) ∧(a=0∨q(a-1)≠c) ∧(b=L∨q b≠c)",
+      "importance": "Runs are maximal intervals of one fixed symbol c, not mixed blocks whose symbols merely belong to{0,18}."
+    },
+    {
+      "declaration": "RunAncestry.descendant",
+      "module": "RunAncestry",
+      "statement": "No overflow: (a+[carry q a≠reset c],b-[carry q(L-b)≠reset c]); overflow:(a+1,b)",
+      "importance": "Intervals with first≥second are empty; singletons may die and cannot be counted as two separate columns."
+    },
+    {
+      "declaration": "RunAncestry.descendant_step",
+      "module": "RunAncestry",
+      "statement": "Under Admissible, c=0∨c=18, and old MaximalRun: on the old interval new c iff membership in descendant; every nonempty descendant is MaximalRun in the WHOLE new word; descendant is contained in old interval and loses at least the overflow bit in length.",
+      "importance": "This already proves no expansion/no merging and rules out splitting. Those facts must be reused, not reclaimed."
+    },
+    {
+      "declaration": "RunAncestry.track_invariant",
+      "module": "AncestryExtinction",
+      "statement": "Any surviving track from one old maximal run remains maximal and its length plus width gain is at most the old run length.",
+      "importance": "Only follows an already selected initial ancestry; does not cover every new run."
+    },
+    {
+      "declaration": "RunAncestry.track_empty_mono",
+      "module": "AncestryExtinction",
+      "statement": "Once a track is empty it is empty at all later times.",
+      "importance": "A disappeared founder cannot return and be counted as the same lineage."
+    },
+    {
+      "declaration": "RunAncestry.extinct_after",
+      "module": "AncestryExtinction",
+      "statement": "t≥4*(b-a)-3+lowerPotential(q0) implies track q L c a b t is empty.",
+      "importance": "Can support an optional phase-sensitive population deadline; R=0 needs separate handling if translating the Nat-subtraction form."
+    },
+    {
+      "declaration": "RunAncestry.extinct_uniform",
+      "module": "AncestryExtinction",
+      "statement": "t≥4*(b-a)+1 implies track q L c a b t is empty.",
+      "importance": "Directly yields the safe uniform4R+1 population deadline once complete ancestry coverage is established."
+    },
+    {
+      "declaration": "RunAncestry.orbit_ancestry_extinct",
+      "module": "AncestryExtinction",
+      "statement": "Canonical integer representation plus survival and extinction for one selected maximal run.",
+      "importance": "Existing scope is explicitly one ancestry; source header expressly excludes whole-orbit disappearance."
+    },
+    {
+      "declaration": "Agent106.NoOverflowBirths.fresh_zero_iff / fresh_eighteen_iff",
+      "module": "NoOverflowBirths",
+      "statement": "At i<L and carry q L=0, new c with q i≠c has the exact old9/10 or8/9 alternatives.",
+      "importance": "Identifies physical births in the no-overflow branch."
+    },
+    {
+      "declaration": "RunBirths.Overflow.new_zero_iff / new_eighteen_iff",
+      "module": "OverflowBirths",
+      "statement": "At0<i<L and carry q L=1, new c without an old adjacent(c,c) pair has the exact three noninherited cases.",
+      "importance": "Under an actual extreme output, these alternatives imply both adjacent old coefficients differ from c."
+    },
+    {
+      "declaration": "RunBirths.Overflow.next_endpoints_not_extreme",
+      "module": "OverflowBirths",
+      "statement": "Under actual overflow, positions0 andL in the new word are neither0 nor18.",
+      "importance": "Excludes the newly appended position from extreme births and connects physical BornRun to interior local birth formulas."
+    }
+  ],
+  "corrected_targets": {
+    "notation": "Let state_j=OverflowCarryNormalization.iterPairs q L j, L_j=state_j.1 and q_j=state_j.2; fix c:Nat with c=0∨c=18.",
+    "born_run": "BornRun q L c a b := RunAncestry.MaximalRun (FoldedDecimal.nextColumns q L) (FoldedDecimal.nextWidth q L) c a b ∧ ∀i, a≤i → i<b → L≤i ∨ q i≠c.",
+    "one_step_partition": "Under Admissible L q and c=0∨c=18, every next-word MaximalRun[a,b) is either BornRun q L c a b, OR has a unique old interval(u,v) with MaximalRun q L c u v and descendant q L c u v=(a,b). The alternatives are exclusive.",
+    "founder": "Every maximal c-run[a,b) at time t has a unique triple(r,u,v),0≤r≤t: [u,v) is a maximal run at time r, either r=0 or(r>0 and BornRun q_(r-1) L_(r-1) c u v), and track q_r L_r c u v (t-r)=(a,b). Uniqueness is for the founder time and maximal interval, never for one position in it.",
+    "bounded_birth_free_window": "For Admissible L q, R,t:Nat, (∀a b,MaximalRun q L c a b→b-a≤R), no BornRun at any transition j<t, and4*R+1≤t: ∀i<L_t,q_t i≠c. Apply the same statement to state_s to obtain a window[s,s+t).",
+    "tail_equivalence": "(∃S,∀s≥S,∀a b,¬BornRun q_s L_s c a b) ↔ (∃T,∀t≥T,∀i<L_t,q_t i≠c). Equivalently, c occurs arbitrarily late iff c-birth transitions occur arbitrarily late.",
+    "both_extremes": "Apply the fixed-c statements separately to c=0 and c=18; a common finite start/deadline follows by max. Do not reinterpret MaximalRun as an alternating0/18 block.",
+    "numeric_corollary": "Retain Canonical n d L and q=columnSum d L on the physical prefix, then use iterPairs_representation for the unchanged ordinary Lychrel196.orbit. The map continues after palindromes; no conclusion that any particular orbit satisfies eventual birth-freedom is asserted."
+  },
+  "mathematical_checks": [
+    "Two maximal constant runs of the same word and same symbol that overlap must have identical endpoints: otherwise one run's maximal boundary lies inside the other. This is a generic finite-word fact requiring no admissibility.",
+    "If a new maximal run contains an old physical c-position i, choose the old maximal run through i. descendant_step places i in its nonempty descendant, which is itself maximal in the whole new word; overlap uniqueness identifies it with the complete new run.",
+    "Two distinct old maximal runs cannot share that descendant: its nonempty interval lies inside both old intervals, forcing those old runs to overlap and coincide. Thus no merge/split counterexample is compatible with the existing theorem.",
+    "If no old physical c-position lies in the new run, every position satisfies L≤i or q i≠c, exactly the guarded BornRun predicate. Newly born bands may contain many sites, so uniqueness of a birth site is false.",
+    "Finite no-birth coverage needs existence of predecessors only; unique founder is a useful stronger interface but not necessary for4R+1 extinction.",
+    "For eventual absence, restart at the eventual no-birth time and use R=L_start, which bounds all its maximal runs. This avoids any uniform bound on run lengths over the entire orbit.",
+    "Birth timestamps index source transitions. A birth at transition s appears in state s+1; founder state time r equals s+1. Keep this offset explicit.",
+    "R=0 means no initial positive-length c-run and is permitted by the uniform4R+1 statement. No run or birth is assumed to exist by the hypotheses."
+  ],
+  "existing_shift_and_missing_helpers": {
+    "existing_restart": [
+      {
+        "declaration": "ScalarPeriods.iterPairs_restart",
+        "path": "proofs/ScalarPeriods__ec51072006a52135.lean",
+        "sha256": "bfb9a2c19428e89473682257006c148c4a6a2242717e8678c4992b19eaf8d7df",
+        "statement": "iterPairs (iterPairs q L a).2 (iterPairs q L a).1 t = iterPairs q L (a+t)",
+        "hypotheses": "None",
+        "imports": [
+          "ScalarRoot",
+          "WidthOne"
+        ],
+        "note": "Also byte-identical at ScalarPeriods__8fcfa69d1a836a5b.lean; importing it brings unrelated root/width graph closure."
+      },
+      {
+        "declaration": "Agent105.ActualHighReturn.iterPairs_add",
+        "path": "proofs/ActualHighReturn__05f989c630a9557e.lean",
+        "sha256": "a85b9751013e9c027e229952b8e33b1eb666d3cd8737f14c205bffb443ec82d4",
+        "statement": "iterPairs q L (a+b) = iterPairs (iterPairs q L a).2 (iterPairs q L a).1 b",
+        "hypotheses": "None",
+        "imports": [
+          "NeutralExterior",
+          "HighReturnPrefix",
+          "SmallWidth",
+          "NumericHigh"
+        ]
+      },
+      {
+        "declaration": "BroaderRoot.iterPairs_restart",
+        "path": "proofs/BroaderRoot__5445351adf40ff9f.lean",
+        "sha256": "77c60beb86ba71191c2bf1aa8d160e80e8d84127316d242c4b12652f25e2b81f",
+        "statement": "Same orientation as ScalarPeriods.iterPairs_restart; no hypotheses",
+        "imports": [
+          "BroaderClock",
+          "ScalarRoot",
+          "BoundedPrefixLift",
+          "BJobData0"
+        ]
+      }
+    ],
+    "not_found": "No exported MaximalRun containing-position existence or overlap-uniqueness lemma, no general track add/restart law, and no whole-population genealogy or birth-free extinction endpoint were found in the inspected flattened source census.",
+    "reuse_advice": "Restart identity is already established and must not be claimed as novel. For a minimal five-module package, an explicitly attributed private recursive specialization can avoid importing unrelated graph/high-return hierarchies; root decides after claiming. A track restart/composition helper remains a genuine packaging obligation."
+  },
+  "ownership": {
+    "historical_ancestry": {
+      "path": "proofs/archive/versions/b824fdc4e29a3ab58a00fe8c24b5457527060a15f38189e9985ea6e59ccb7ea0/proofs/coordination/tasks/agent102-ancestry-lean.json",
+      "status": "REVIEWED",
+      "owner": "Agent #102",
+      "latest_source_commit": "669b8fc83b3679995bb2bb97f1cb03d8f854500a",
+      "merged": "PR20 and PR27",
+      "scope": "Exact one-step maximal-run ancestry/no-merging and extinction of ONE tracked run; no whole-population coverage target."
+    },
+    "related_current_claims": [
+      {
+        "path": "proofs/coordination/tasks/agent102-affine-runs-tail-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "0551d37002e502bd85046822a76857d52cfc93c7",
+        "status": "READY_FOR_REVIEW",
+        "owner": "Agent #102",
+        "target_statement": "For every pair of finite Nat-valued digit-run templates A,B with lengths max(0,a*k+b), a,b:Int, compute K such that actual List.replicate/concatenation equality and palindrome status are constant for all k>=K. Provide exact affine endpoints, total width, and four-inequality overlap semantics with empty/zero/adjacent-equal runs. The proven theorem strictly generalizes the claimed a:Nat case to a:Int.",
+        "latest_source_commit": "69392ee406cd346f5a377056f18d7f1be74e760a",
+        "assessment": "Static affine-template equality/palindrome stabilization; parameter is not actual orbit time."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent102-all-parameter-run-decisions-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "eb695fc0bb187eaf1598cd4576f5a774dd2c2d08",
+        "status": "READY_FOR_REVIEW",
+        "owner": "Agent #102",
+        "target_statement": "For arbitrary finite List Agent102.Run, define a finite Boolean using count sums and exact spans (without expanded words) and prove it is true iff actual Agent102.word equality. Apply this to runsAt A k for every k:Nat without a tail hypothesis. Combine the range k<equalityCutoff A B with the existing exact tail Boolean to give computable sound-and-complete forall-k and exists-k word equality/inequality decisions and palindrome/nonpalindrome specializations. All k are static template parameters starting at 0, not reverse-add orbit time.",
+        "latest_source_commit": "9361e8a8d13c731a4004b08957f4cd543b3ae38f",
+        "assessment": "Computable equality of finite literal Run templates for all static parameters; explicitly excludes reverse-add time."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent104-exact-zero-gap-mass-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "d45cc41a76616e235e1897436b2644ef78dcbc8f",
+        "status": "REVIEWED",
+        "owner": "Agent #104",
+        "target_statement": [
+          "For Admissible L q, wordSum q L<=M and ZeroBound q L K: actual nextColumns has ZeroBound max K (max 1 (M/9)) if terminal carry=0; ZeroBound max(K-1)(max 2 (M/9+1)) if terminal carry=1. Preserve the mass9 of every all-nine interval and all short-run exceptions.",
+          "For canonical positive ordinary integer n of width L and initial ZeroBound K0, if digitSum(orbit n t)<=B for all0<=t<=N, use K=max K0 (max2((2*B)/9+1)), H=2*B+(2*B-1)*K to prove actual widths<=H and N+4*L<=4*H+4, plus explicit bounded-time escape.",
+          "Derive pure-Nat running-maximum consequence9*(N+4*L)<=16*D*D+72*C*D+36, D=runningMax n N,C=max K0 2+1. No Real limit/sqrt claim."
+        ],
+        "latest_source_commit": "5bc57fec696b8cbb9d833a6719249d09ea7434f8",
+        "assessment": "Mass-dependent maximum zero-gap transition and digit-sum escape. Related zero runs, but no whole-population ancestry/birth-free bridge."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent4-zero-gap-auxiliary-departure-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "6070945f7cb2f8019f40c14369c0757302325a1f",
+        "status": "CLAIMED",
+        "owner": "Agent #4",
+        "target_statement": [
+          "Keep the existing Agent4 separated-block definitions unchanged. For s=(B,H,0), original Agent8.CanonicalPair B,H and e=terminalCarry B0,h=terminalCarry H0, prove stepWord(blockWord s)=blockWord(blockStep s) iff e=0 and h=0. Preserve exact concatenation and enlarged block lengths; do not replace the target by common-clock or overlapping coefficients.",
+          "For initially canonical B,H and any first zero-gap time tau with gap_tau=0 and all prior gaps positive, prove existence of T with tau<T<=tau+5, exact actual-word/auxiliary equality at every n<T, and inequality at T. Identify T-1 with the first positive max of the two isolated terminal carries at or after tau. Reuse existing original potential/path bounds, without a new width-potential claim.",
+          "Retain initial-zero-gap cases; check the explicit B=H=[1,1], gap=0 candidate for first departure at time5 to establish attainment if it is kernel-verified. Ordinary-integer corollaries must retain exact pairWord realization or reuse an existing genuine-realization theorem."
+        ],
+        "latest_source_commit": null,
+        "assessment": "First disagreement of a specific separated-block auxiliary recursion after its gap reaches zero; not actual maximal-run genealogy."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent106-congruence-finite-path-20261016T2149Z.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "908db83d0be1749de67275b6181bb65ce96e5887",
+        "status": "CLAIMED",
+        "owner": "Agent #106",
+        "target_statement": "For every R>=2 and ell:Nat, k=7*R/4+1, a=k+2, C=2*(10^k-1), y=11*(10^k-1), c(a,j)=10^(a+j)+990*a+rho(a+j), E=a+ell+1 and b=10^E+(if E%2=1 then782 else692), certify the explicit finite path C,y,c(a,0),...,c(a,ell),b,Lychrel196.step(b). Prove length ell+5; exactly first palindrome at index ell+4 with every earlier vertex nonpalindromic; true first and last edges; exact immediate-palindrome-predecessor predicate on every edge; actual modulo9 and width-parity modulo11 laws; strict numeric growth below11 times the source; width increment zero or one and original starting-width+floor(t/5) lower bound. Derive arbitrary prescribed finite delays for the same C_R as finite-path quantifiers, without identifying the artificial list with a Lychrel196.orbit.",
+        "latest_source_commit": null,
+        "assessment": "Artificial congruence-compatible finite paths and true first/last edges; no actual iterPairs population genealogy."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent8-correlated-lower-width-growth-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "c8e850bd4d99f6b09dd853eb3b6d5f20de06cd02",
+        "status": "ACTIVE",
+        "owner": "Agent #8",
+        "target_statement": "Determine optimal universal lower-width edge potentials on the existing three-column relation, supply a kernel-checked certificate, and bridge the bound and its exact limitations to actual ordinary decimal reverse-add.",
+        "latest_source_commit": "79ad9926307694fbebedffbb147f823225d3fc00",
+        "assessment": "Universal lower-width edge potentials and optimality. The proposed target reuses the old 4ell+1 bound and claims no improved potential."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent15-fourth-column-temporal-obstruction.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "6bcdacad85312621819d7c755b9b941b51337bc1",
+        "status": "ACTIVE",
+        "owner": "Agent #15",
+        "target_statement": "The fourth-column recurrence, two specific forbidden three-step profiles, and canonical-integer correspondence are now proved. Continue by proving a reusable bounded three-step lift checker: false implies no ordinary integer orbit window, with initial width/overlap conditions explicit. Apply to a complete bounded catalog of three-column model traces, not to arbitrary widths or periods by extrapolation.",
+        "latest_source_commit": null,
+        "assessment": "A bounded three-step fourth-column lift checker; not every maximal extreme run at arbitrary time."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent107-dfa-horn-closure-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "107c7d58e9a2fa515ede1bd7bd68b4e25128b421",
+        "status": "CLAIMED",
+        "owner": "Agent #107",
+        "target_statement": "For every positive finite DFA state count, faithfully encode the original creative_regular_direct.solve closure premises: exactly-one Boolean transition rows (or their equivalent total deterministic function), both initial product states, all872 literal transition Horn templates, and all251 literal terminal clauses including the odd-overflow extra symbol. Prove a finite Boolean checker sound for these premises. Derive for every original finite Accepts L q p that DFA acceptance of foldPrefix L q implies acceptance of pathOutput L q p; then derive actual nextWidth/nextColumns closure on Admissible inputs and the same genuine Lychrel196.step conclusion for every given Canonical ordinary-integer realization. No word sampling premise.",
+        "latest_source_commit": null,
+        "assessment": "Generic finite-DFA forward-closure checker; no search or instance and no maximal-run ancestry/population theorem."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent105-9df76b-all-predecessors-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "199f879357afa807064083982b863155870d51b0",
+        "status": "CLAIMED",
+        "owner": "Agent #105",
+        "target_statement": "For every Canonical Y e W, construct an executable finite list predecessors e W such that for every natural n, n is a member iff 0<n and Lychrel196.step n=Y, and prove the list Nodup. Compute it by flattening Agent101 numericFiber over each of the two possible decoded widths W and W-1; zero-width and leading-one overflow guards remain those of the verified numerical decoder. For a successful exact finite decoded q list, reuse Agent101.exists_coefficientWord_of_reverse, prove only computational half/center projection identities on coefficientWord, and connect the resulting wordFiber to existing actual numericFiber membership. Preserve one-digit targets, trailing-zero predecessors, arbitrary target nonpalindromicity, empty fibers and simultaneous widths.",
+        "latest_source_commit": null,
+        "assessment": "Enumeration of all positive numerical reverse-add predecessors of a canonical target; unrelated to same-orbit run predecessors."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent100-groupII-rebased-overlap-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "a277d7843d3509cf60a581ce06fb8d451975bea3",
+        "status": "CLAIMED",
+        "owner": "Agent #100",
+        "target_statement": [
+          "For every UpperDomain r p u v (r>=1,5<=p<=9,5<=u<=8,5<=v<=6,u+v<=13), let A2 be the finite zero extension of the actual componentOrbit at time2 and length2*r+7. Define signed Delta(i)=1 at r+1,r+5, -1 at r+2,r+4 and0 elsewhere. Investigate and prove the candidate that CInt(i)=(A2(i):Int)+Delta(i) is everywhere nonnegative, at most18 on the represented prefix, and its exact Nat realization C is Admissible at width2*r+7. Include symmetry, center parity, positive exterior and zero tail; conversion Int.toNat must be proved exact, not conceal negative coefficients.",
+          "Prove the actual time2 whole word of width2*r+8 equals shiftOne(C) at every valid index. Reuse the already checked exact six-position defect; do not replace actual dynamics or silently omit r=1. If the full-domain candidate fails, preserve a precise formal counterexample and update the target/status before any narrowed replacement claim.",
+          "Lift the resulting full-prefix rebased equality to every canonical ordinary initial realization and establish a positive ordinary realization of C through the unchanged realization theorem. Compare only pair columns; no equality or eleven-fold relation between arbitrary integer representatives is assumed."
+        ],
+        "latest_source_commit": null,
+        "assessment": "A fixed-time GroupII rebasing and realization identity; expressly no recurrence closure or future-repair claim."
+      },
+      {
+        "path": "proofs/coordination/tasks/agent9-finite-ensemble-marker-count-20261016.json",
+        "ref": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+        "blob": "f2dbf7aa9ca2409989de24b3857e3163b8fb8c1a",
+        "status": "ACTIVE_FORMALIZATION",
+        "owner": "Agent #9",
+        "target_statement": "For all natural L>=1 and r>=1, set J=(L/2-1)/r. The exact number of ALL positive ordinary canonical width-L integers with none of the J selected mirrored all-nine blocks is 9*10^(L-1-2*r*J)*(10^(2*r)-1)^J. Block j selects positions 1+j*r+i for i<r and their mirrors L-1-(1+j*r+i). Prove a complete duplicate-free numeric enumeration or equivalent filtered canonical interval count; a constructed subfamily count is insufficient. Specialize r=FiniteHorizonBlocks.blockLength R to obtain the direct finite early-hit count upper bound at positive times1..R+1 using existing mirroredNines_safe_prefix.",
+        "latest_source_commit": "cf7935d24ce8180d6181de01d1050fc02b66802c",
+        "assessment": "Finite counting of all canonical inputs avoiding selected mirrored markers and early-hit bounds; not temporal population coverage."
+      }
+    ],
+    "assessment": "No equivalent active task found in this checked scope. The old no-merging/individual lifetime results are completed prior work. Preserve Agent8 potential optimality, Agent104 mass/gap bounds, Agent4 auxiliary spacer departure, Agent102 static run decisions, Agent105 numerical inverse enumeration and Agent9 marker counts.",
+    "parent_reported_scope_proposal": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225764887",
+    "next_action": "Root reads these exact pinned records and reconciles later task/issue deltas, then publishes a guarded narrow claim before any proof implementation."
+  },
+  "source_search": {
+    "top_level_lean_files": 1814,
+    "maximal_run_consumers": [
+      "RunAncestry__5f2702512ad8719e.lean",
+      "AncestryExtinction__567be2f804ec7f4c.lean",
+      "AncestryExtinction__91bf7e70e989cdfe.lean",
+      "ReviewAudit__6229768d55c6afc3.lean"
+    ],
+    "keywords": [
+      "MaximalRun",
+      "import RunAncestry",
+      "import AncestryExtinction",
+      "extinct_uniform",
+      "genealog",
+      "birth.free",
+      "birthfree",
+      "population.*extinct",
+      "descendant.*unique",
+      "iterPairs.*restart",
+      "iterPairs.*add",
+      "track.*restart"
+    ],
+    "written_sources": [
+      "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/ABSORBING_CORE.md",
+      "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md"
+    ],
+    "written_scope": "Both original notes explicitly distinguish the lifetime of one ancestry from whole-population absence. No formalization of the proposed temporal coverage/equivalence was found."
+  },
+  "exclusions": [
+    "No claim to prior no-merging, no splitting,4ell+1 lifetime, or restart arithmetic.",
+    "No assertion that births eventually stop or that0/18 actually disappear in every orbit.",
+    "No palindrome-attainment,196, infinite-safe orbit, improved potential, population-mass bound, all-base transport, or protected-run claim.",
+    "No theorem source created, no Lean execution, no Git/ref writes, no issue or other external messages."
+  ]
+}
