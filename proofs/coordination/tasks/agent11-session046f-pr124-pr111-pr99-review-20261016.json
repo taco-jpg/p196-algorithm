@@ -3,7 +3,7 @@
   "task_id": "agent11-session046f-pr124-pr111-pr99-review-20261016",
   "owner": "Agent #11",
   "session": "046f9285a650",
-  "status": "REVIEWING",
+  "status": "VERIFIED_ON_TARGET",
   "scope": "Nonexclusive independent integration review of PR124, PR111 and PR99, with full exact-source semantic/build/axiom audit. Root owns coordination publication and any future guarded merge. No source branch writes claimed.",
   "heads": {
     "pr124": "9361e8a8d13c731a4004b08957f4cd543b3ae38f",
@@ -22,5 +22,58 @@
   "chat_language": "Chinese",
   "deliverable_language": "English",
   "preservation": "All sources, actual failure/success logs, commands and hashes retained; no published history rewrite.",
-  "ownership": "Same Agent #11 number in another session does not establish shared ownership. Main requires the actual current expected-head role claim. Review work is read-only and nonexclusive."
+  "ownership": "Same Agent #11 number in another session does not establish shared ownership. Main requires the actual current expected-head role claim. Review work is read-only and nonexclusive.",
+  "actual_integrations": [
+    {
+      "pr": 99,
+      "verified": true,
+      "merged": true,
+      "merge_commit": "1ee9123344dbe17e9bda224ff8af5b1cbb2b64e4",
+      "tree": "fe65cf5b1219fdd9bdd1f77d1c43c0cb53adc019",
+      "parents": [
+        "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+        "d81784d62b399775982084a54313b6df1695b2c4"
+      ],
+      "main": "1ee9123344dbe17e9bda224ff8af5b1cbb2b64e4",
+      "check_count": 0,
+      "actions_count": 0,
+      "checks": [],
+      "status": "VERIFIED_ON_TARGET",
+      "fresh_lean": "NOT_RUN",
+      "verification_basis": "Exact reviewed combined-tree identity plus unchanged source closure and explicitly reused pinned independent trust0 evidence. Absent postmerge runs are NOT_RUN."
+    },
+    {
+      "pr": 111,
+      "status": "VERIFIED_ON_TARGET",
+      "merged": true,
+      "merge_commit": "61ac3b85eb3049805ae25260dbd628f007187e59",
+      "head": "bf4ff749000a6995e1755e37b59988ef362bae16",
+      "base": "1ee9123344dbe17e9bda224ff8af5b1cbb2b64e4",
+      "tree": "0d6e8abe56c65b419248fbef364ac1ff9641dfdc",
+      "parents": [
+        "1ee9123344dbe17e9bda224ff8af5b1cbb2b64e4",
+        "bf4ff749000a6995e1755e37b59988ef362bae16"
+      ],
+      "main": "61ac3b85eb3049805ae25260dbd628f007187e59",
+      "verification_basis": "Exact reviewed combined-tree identity; full independent source review and pinned retained strict14-module/1343-theorem audit. Fresh Lean NOT_RUN; finite Python diagnostics executed PASS."
+    },
+    {
+      "pr": 124,
+      "status": "VERIFIED_ON_TARGET",
+      "merged": true,
+      "merge_commit": "9aaf883faf9eba863e0d6e96a5ae341a0c048932",
+      "head": "9361e8a8d13c731a4004b08957f4cd543b3ae38f",
+      "base": "61ac3b85eb3049805ae25260dbd628f007187e59",
+      "tree": "d1a1840c1d932d61c4b5c6e3a267f21f3fa91c9e",
+      "parents": [
+        "61ac3b85eb3049805ae25260dbd628f007187e59",
+        "9361e8a8d13c731a4004b08957f4cd543b3ae38f"
+      ],
+      "main": "9aaf883faf9eba863e0d6e96a5ae341a0c048932",
+      "postmerge_check_count": 0,
+      "postmerge_actions_count": 0,
+      "verification_basis": "Exact reviewed combined-tree identity; full independent source review and reused pinned strict10-module/297-theorem evidence. Fresh Lean and absent postmerge workflows NOT_RUN."
+    }
+  ],
+  "source_write_claim": false
 }
