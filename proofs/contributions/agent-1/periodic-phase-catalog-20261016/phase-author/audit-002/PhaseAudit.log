@@ -1,0 +1,25 @@
+Agent1.Periodic.phaseImage (w : Agent8.Word) (g : Nat) : Agent8.Word
+'Agent1.Periodic.phaseImage' does not depend on any axioms
+Agent1.Periodic.mem_nonNine_of_length_four (w : Agent8.Word) (hlen : List.length w = 4) (hne : w ≠ [9, 9, 9, 9]) :
+  ∃ x, x ∈ w ∧ x ≠ 9
+'Agent1.Periodic.mem_nonNine_of_length_four' does not depend on any axioms
+Agent1.Periodic.reverse_ne_nines (w : Agent8.Word) (hne : w ≠ [9, 9, 9, 9]) : List.reverse w ≠ [9, 9, 9, 9]
+'Agent1.Periodic.reverse_ne_nines' depends on axioms: [propext]
+Agent1.Periodic.terminalCarry_eq_of_nonNine (w : Agent8.Word) (a b : Nat) (hw : Agent8.Bounded w 18) (ha : a ≤ 1)
+  (hb : b ≤ 1) (hne : ∃ x, x ∈ w ∧ x ≠ 9) : Agent8.terminalCarry w a = Agent8.terminalCarry w b
+'Agent1.Periodic.terminalCarry_eq_of_nonNine' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.rawPeriod_eq_phaseImage (B H w : Agent8.Word) (hB : Agent8.Bounded B 18) (hH : Agent8.Bounded H 18)
+  (hw : Agent8.Bounded w 18) (hlen : List.length w = 4) (hne : w ≠ [9, 9, 9, 9]) :
+  Agent1.Periodic.rawPeriod B H w = Agent1.Periodic.phaseImage w (Agent1.Periodic.rawGamma B H w)
+'Agent1.Periodic.rawPeriod_eq_phaseImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_DEFINITION Agent1PeriodicPhase Agent1.Periodic.phaseImage : []
+AUDIT_THEOREM Agent1PeriodicPhase Agent1.Periodic.reverse_ne_nines : [propext]
+AUDIT_THEOREM Agent1PeriodicPhase Agent1.Periodic.rawPeriod_eq_phaseImage._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicPhase Agent1.Periodic.terminalCarry_eq_of_nonNine : [propext, Quot.sound, Classical.choice]
+COMPILER_IMPLEMENTATION_DEFINITION Agent1PeriodicPhase Agent1.Periodic.phaseImage._cstage2
+AUDIT_THEOREM Agent1PeriodicPhase Agent1.Periodic.phaseImage.eq_1 : []
+AUDIT_THEOREM Agent1PeriodicPhase Agent1.Periodic.mem_nonNine_of_length_four : []
+AUDIT_THEOREM Agent1PeriodicPhase Agent1.Periodic.rawPeriod_eq_phaseImage : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1PeriodicPhase Agent1.Periodic.rawPeriod_eq_phaseImage._proof_2 : [propext, Quot.sound]
+COMPILER_IMPLEMENTATION_DEFINITION Agent1PeriodicPhase Agent1.Periodic.phaseImage._cstage1
+MODULE_AUDIT theorems=7 definitions=1 union=[Classical.choice, Quot.sound, propext]
