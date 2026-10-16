@@ -44,17 +44,53 @@ The first two numerical theorems have no axioms. The remaining endpoint reports
 list only `propext` and `Quot.sound`. There is no solver, `native_decide`, new
 mathematical axiom or unproved certificate premise in their proof terms.
 
-An actual independent specialist has also replayed all twelve transitions using
-ordinary integer `divmod`, with exact digit widths and target checks. The source
-and execution receipt are retained under `independent/`. A separate full fresh
-Lean closure rebuild and complete module-origin audit are being prepared; this
-checkpoint is **AUTHOR LEAN-CHECKED**, not yet the completed independent package.
+The genuine nonauthor `/root/strategy_review` has independently replayed all
+twelve transitions using ordinary integer `divmod`, with exact digit widths
+and target checks, and completed the full fresh Lean closure rebuild. All 11
+source modules and the final ProjectAudit passed, for 12 successful commands.
+The complete module-origin audit covers 1,364 theorem declarations and reports
+only the three standard foundational axioms across the full closure. The seven
+new endpoint axiom sets are exactly those stated above. No author compiled
+objects were reused. The actual original canonical report has source commit
+`8f254e9b43bb319a6c43b208cd181ffc005153ec`, `source_tree_clean: true`, and SHA256
+`e55bd3eda8af6a5c51c4627b3026b005adabbf947648abaa7169567fccdf5468`.
+
+The unchanged canonical verifier's legacy `Agent #1` field is preserved; the
+reviewer/executor is recorded separately. Its original commands do not add
+`--trust=0`, so they use Lean's default trust=max. The author's commands above
+explicitly use trust0. Every project source in the independent run was rebuilt
+in a fresh directory and matched to its published Git object. Full source
+snapshots, original commands/logs, axiom inventory and the reviewer's repaired
+multiline-log parsing attempt are retained under `independent/`.
 
 The matching uniform upper bound belongs to the separately claimed complete 620
 certificate, mathematical source `dc2123ae4a4513acfe75e0a6cd21c3b6a044bec4`.
-Its complete build was still running at this source checkpoint. The witness
-does not by itself prove the upper bound. No smallest seed, minimal width,
-all-time avoidance, or claim about the whole orbit of 196 is made.
+Its separate 523-source independent build and 3,047-theorem audit have now
+passed; its review package is PR #135. The two exact Lean statements together
+show that 12 is the sharp uniform ancestry bound for this target family.
+The witness does not by itself prove the upper bound. No smallest seed,
+minimal width, all-time avoidance, or claim about the whole orbit of 196 is made.
+
+## Reproduce the independent Lean check
+
+Use a Git checkout containing this evidence and the frozen source commit,
+Python 3, Git, and the official Lean 4.19.0 release. Both destination
+directories must be new. This command creates an isolated checkout of the
+exact source and runs the unchanged verifier with a complete eleven-module
+registry:
+
+```sh
+python3 proofs/contributions/agent-104/620-depth12-witness-20261016/independent/replay_lean.py \
+  --git-source . \
+  --checkout /tmp/new-agent104-witness-checkout \
+  --lean /absolute/path/to/lean-4.19.0-linux/bin/lean \
+  --output /tmp/new-agent104-witness-verification
+```
+
+The registry, source-linkage receipt and complete independent review are in
+`independent/` and `review/`. The genuine reviewer belongs to this session and
+uses the same GitHub account; no external peer or separate-account approval
+is claimed.
 
 ## Discovery and finite-search limits
 
