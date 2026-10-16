@@ -1,0 +1,210 @@
+{
+  "status": "FAIL",
+  "started_epoch": 1792188314.9941797,
+  "source_snapshot": {
+    "LychrelDigitSums": {
+      "source": "/workspace/p196-agent1-pr104-review-20261016/proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports": [
+        "Std"
+      ]
+    },
+    "SafeDelay": {
+      "source": "/workspace/p196-agent1-pr104-review-20261016/proofs/SafeDelay__bc8a973241f692fd.lean",
+      "sha256": "57d8d3fb7e3c2f747b276c3d03c7e81cda8714842c1b4794d3e682aff8e179d6",
+      "git_blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60",
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    "DecimalSafeRuns": {
+      "source": "/workspace/p196-agent1-pr104-review-20261016/proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+      "sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+      "git_blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78",
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    "DecimalDelayBridge": {
+      "source": "/workspace/p196-agent1-pr104-review-20261016/proofs/DecimalDelayBridge__83037365a26a750b.lean",
+      "sha256": "8e800eab397f44ac1b0ff47ac02cc7576cddeb7d45015375640213857e56e800",
+      "git_blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df",
+      "imports": [
+        "SafeDelay",
+        "DecimalSafeRuns"
+      ]
+    },
+    "PairDelayBridge": {
+      "source": "/workspace/p196-agent1-pr104-review-20261016/proofs/PairDelayBridge__c453a1542e8182cd.lean",
+      "sha256": "4faa6a3f05477bfabd8f504217119e0bb4db56987e3717c822f914f4cc7e70a5",
+      "git_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6",
+      "imports": [
+        "DecimalDelayBridge"
+      ]
+    },
+    "DelayedOverlapGate": {
+      "source": "/workspace/p196-agent1-pr104-review-20261016/proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "sha256": "c24d7774af6487fcab63a4d60cd10aaabb1b270b3dc0f4ac42dd3655b416b112",
+      "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+      "imports": [
+        "PairDelayBridge"
+      ]
+    },
+    "Agent114ShortRFirst11": {
+      "source": "/workspace/p196-agent1-pr104-review-20261016/proofs/contributions/agent-114/short-r-firsthit-20261016/Agent114ShortRFirst11.wip.lean",
+      "sha256": "b5712b2051605a0ff95a1f6d8e18927d2aea4c91fbf2e8d38b688205033874cd",
+      "git_blob": "be3d2eb5858401cd6314b19a2d907fbbce5d80af",
+      "imports": [
+        "DelayedOverlapGate"
+      ]
+    }
+  },
+  "commands": [
+    {
+      "label": "LychrelDigitSums",
+      "argv": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "LychrelDigitSums.olean",
+        "LychrelDigitSums.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 41.429246,
+      "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+    },
+    {
+      "label": "SafeDelay",
+      "argv": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "SafeDelay.olean",
+        "SafeDelay.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 0.365205,
+      "log_sha256": "3d55cafd6e47d04c275999d3c088697a063d8d4bcbf197ca37c5fbe0edeccaea"
+    },
+    {
+      "label": "DecimalSafeRuns",
+      "argv": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "DecimalSafeRuns.olean",
+        "DecimalSafeRuns.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 0.866266,
+      "log_sha256": "338230b676ae47db19ccbb7a3e41847c8666d4a098ecb042fa7260bfb93f149b"
+    },
+    {
+      "label": "DecimalDelayBridge",
+      "argv": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "DecimalDelayBridge.olean",
+        "DecimalDelayBridge.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 0.765735,
+      "log_sha256": "2dd77e0f4682e65c47381652c5038dee579dcaef3015c43b39b82d07e76edf97"
+    },
+    {
+      "label": "PairDelayBridge",
+      "argv": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "PairDelayBridge.olean",
+        "PairDelayBridge.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 0.665585,
+      "log_sha256": "ea1d23ed2746ead80b65c80afbc90b6de31b0d8eac12c50c2755154826bd7224"
+    },
+    {
+      "label": "DelayedOverlapGate",
+      "argv": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "DelayedOverlapGate.olean",
+        "DelayedOverlapGate.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 31.204873,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "Agent114ShortRFirst11",
+      "argv": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent114ShortRFirst11.olean",
+        "Agent114ShortRFirst11.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 0.766044,
+      "log_sha256": "a7b3bf9f0fff26420e119f225a3b6da31830440d14e14dc147adca91a7b83848"
+    }
+  ],
+  "module_order": [
+    "LychrelDigitSums",
+    "SafeDelay",
+    "DecimalSafeRuns",
+    "DecimalDelayBridge",
+    "PairDelayBridge",
+    "DelayedOverlapGate",
+    "Agent114ShortRFirst11"
+  ],
+  "environment": {
+    "PATH": "/workspace/p196-tools/lean-4.19.0-linux/bin:/usr/bin:/bin",
+    "LANG": "C.UTF-8",
+    "LEAN_PATH": "/workspace/p196-agent1-pr104-review-20261016/proofs/contributions/agent-1/pr104-review-20261016/clean-001/source"
+  },
+  "scanner_source": "/workspace/p196-agent1-pr104-review-20261016/proofs/verify_project__214bf7673efe116b.py",
+  "scanner_sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a",
+  "runner_sha256": "452925ee41e0b45f4b11ef17f51f2a954e09acd3a3b54080fb8fa7ed04efa97a",
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/p196-tools/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "pins_sha256": "bdf5cd359a9b46f1d3f0c7aff500b408edbcbe974336c132c81125652282887e",
+  "source_commit": "687e6c79ed86377cf2f8d6d49bf6860b064dd1fa",
+  "review_claim_commit": "53448de233d15fdddcc992e4440961f4e3a80f55",
+  "public_new_endpoints": [
+    "Agent114.ShortR.common_first_step",
+    "Agent114.ShortR.r1_to_r4_initial_not_palindrome",
+    "Agent114.ShortR.r1_first_eleven",
+    "Agent114.ShortR.r2_first_eleven",
+    "Agent114.ShortR.r3_first_eleven",
+    "Agent114.ShortR.r4_first_eleven"
+  ],
+  "error": "Failed Agent114ShortRFirst11; see retained log",
+  "finished_epoch": 1792188391.2748823
+}
