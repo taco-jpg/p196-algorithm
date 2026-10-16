@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #23",
+  "session": "b4f154f6e821",
+  "repository": "taco-jpg/p196-algorithm",
+  "pr": 144,
+  "source_head": "719987c7e739c55796c2cb527aaac37391bf6511",
+  "original_source_head": "1418f5c176582435d6aa824da72513117da2832b",
+  "status": "PASS_REUSE",
+  "new_compiler_execution": "NOT_RUN",
+  "review_reference": "https://github.com/taco-jpg/p196-algorithm/pull/144#pullrequestreview-5554721038",
+  "independent_agents": [
+    {
+      "name": "/root/policy_slot_audit",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "ultra",
+      "scope": "Policy and ownership audit; no authorship or mutation"
+    },
+    {
+      "name": "/root/pr144_evidence_audit",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "ultra",
+      "scope": "Complete source/evidence and lossless archive audit; no authorship, mutation or compiler execution"
+    },
+    {
+      "name": "/root/pr144_combination_audit",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "ultra",
+      "scope": "Source closure, import/hash and full Merkle preservation on prior base; current base refreshed by Agent23 parent"
+    }
+  ],
+  "source_closure": [
+    {
+      "module": "Agent14SpectralWeights",
+      "path": "proofs/Agent14SpectralWeights.lean",
+      "imports": [
+        "Std"
+      ],
+      "git_blob": "929d6edd72185f4f5ed9c84e7540fe89c8372cbd",
+      "sha256": "d691d02f3170db988ac9c5529402f5c09cf83425c7188d78cd0f2a6a8f4568c8"
+    },
+    {
+      "module": "Agent14SpectralInjectivity",
+      "path": "proofs/Agent14SpectralInjectivity.lean",
+      "imports": [
+        "Agent14SpectralWeights"
+      ],
+      "git_blob": "6e37b9eb5d532c7c32559223a8672ba589488f7b",
+      "sha256": "082347eccad303f235a835c65be2dc20062d4457646082575cd192d06601d0c9"
+    },
+    {
+      "module": "LychrelDigitSums",
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "imports": [
+        "Std"
+      ],
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+    },
+    {
+      "module": "Agent14SpectralDecimal",
+      "path": "proofs/Agent14SpectralDecimal.lean",
+      "imports": [
+        "Agent14SpectralInjectivity",
+        "LychrelDigitSums"
+      ],
+      "git_blob": "31a545c742628990a5f5f7f08bd74933f13c3d10",
+      "sha256": "c3bc01e978d9bd3e90fc8c6b7a185432f02db94184eaec324bbb3f762fb978a2"
+    }
+  ],
+  "registry": {
+    "path": "proofs/Agent14Spectral.registry.json",
+    "git_blob": "a7a36a192c5f54185af349d02301d6300a646cf2",
+    "sha256": "e20ae868441cf27fec279a0659d443e4cefeffbb3d23e6bb79cbfe9d90ea0073",
+    "root": "Agent14SpectralDecimal",
+    "catalogue_complete": false,
+    "endpoint_count": 15
+  },
+  "verifier": {
+    "path": "proofs/verify_project__214bf7673efe116b.py",
+    "git_blob": "21131b03dfa516eb19a0a7a4df4f2a41020d4db1",
+    "sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a"
+  },
+  "review_files": {
+    "semantic": {
+      "path": "review/source-semantic-review.md",
+      "sha256": "b52523a4867be8683f75d3cc7aa7c8d914a8e2b70b1557f79a3d698c2aa7f54d"
+    },
+    "runtime": {
+      "path": "verification/independent/REVIEW.md",
+      "sha256": "1c9b987d49f970ebdca8ea1187dfa2ad3b11b533008b5dab1810ed6ddab1be53"
+    }
+  },
+  "contribution_prefix": "proofs/contributions/agent-14/spectral-injectivity-20261016/",
+  "archives": [
+    {
+      "name": "p196-agent14-runtime-spectral-evidence-20261016.tar.xz",
+      "bytes": 343400,
+      "sha256": "62075e97ae5c8ca9084d5561d07a09b29573639c1c42233e6eb750ac655cc3e0",
+      "git_blob": "13532768424132ddc1a56b54a11a7a2434d9b6a3",
+      "evidence_files": 81,
+      "evidence_bytes": 3356788,
+      "total_members_including_manifest": 82,
+      "all_member_hashes_verified": true
+    },
+    {
+      "name": "p196-agent14-decimal-author-attempt-001.tar.xz",
+      "bytes": 45996,
+      "sha256": "91a9931830e041440c3d80eabe94485b6e07b1eada8f3da4d3f08deebebbabd6",
+      "git_blob": "ea66c33cc9a04c21d5828d981a11333db59f287c",
+      "evidence_files": 7,
+      "evidence_bytes": 240653,
+      "total_members_including_manifest": 8,
+      "all_member_hashes_verified": true
+    }
+  ],
+  "archive_anomalies": [],
+  "runtime": {
+    "version": "Lean 4.19.0",
+    "commit": "6caaee842e94",
+    "executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "release_archive_sha256": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+    "release_members_compared": 4617,
+    "runtime_patched": false
+  },
+  "reused_fresh_build": {
+    "initial_project_objects": 0,
+    "flags": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "runs": [
+      {
+        "module": "Agent14SpectralWeights",
+        "seconds": 0.923578,
+        "exit_code": 0
+      },
+      {
+        "module": "Agent14SpectralInjectivity",
+        "seconds": 1.117004,
+        "exit_code": 0
+      },
+      {
+        "module": "LychrelDigitSums",
+        "seconds": 66.246179,
+        "exit_code": 0
+      },
+      {
+        "module": "Agent14SpectralDecimal",
+        "seconds": 0.467366,
+        "exit_code": 0
+      }
+    ],
+    "source_binding": "Exact hashes and retained source snapshots; local checkout HEAD5ff4f607535587d572fbc9e95ba9501d1fbe5fc5 is accurately recorded rather than falsely labelled published H."
+  },
+  "axiom_audit": {
+    "unique_safe_constants": 1237,
+    "theorems": 1077,
+    "safe_definitions": 146,
+    "other_safe": 14,
+    "safe_opaque": 0,
+    "permitted_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "public_declarations": 50,
+    "public_theorems": 42,
+    "public_definitions": 8,
+    "registry_endpoints": 15,
+    "unsafe_implementation_constants_separately_inventoried": 794,
+    "partial_implementation_constants_separately_inventoried": 20,
+    "raw_safe_log_sha256": "3486e6fa50edf8f95170168581479bea97bf561fd300db43da599adf588d531c",
+    "public_log_sha256": "29aafc915982be163c57b56b532c15f8b70f48f6af9ccfcc76b00149324084a4",
+    "forbidden_new_accepted_axioms": [],
+    "literal_raw_output_independently_reparsed": true
+  },
+  "canonical_verifier": {
+    "fresh_modules": 4,
+    "flags": [
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "trust_zero_flag_used": false,
+    "report_sha256": "299955c97769ab958d329c086f924e82293c86838e6f0ac9e09fa3e9de23d77f",
+    "scope": "Supplementary scoped canonical verification, not a substitute for fresh strict per-module evidence or complete safe-constant audit.",
+    "repository_wide_pass": false
+  },
+  "preserved_failures": [
+    "Weights attempt001: index-normalization elaboration failure; failing source and logs retained.",
+    "Injectivity attempt001: unknown tactic/identifier/recursion-depth errors; attempt002 source equals accepted source.",
+    "Author Decimal attempt001: 300s timeout while building unchanged foundation; original RUNNING record preserved with additive TERMINATION, actual Python exit1 and Lean exitUNKNOWN.",
+    "Independent run001: all four Lean builds/audit exit0, Python multiline axiom parser FAILED. Original runner, failing JSON and logs retained.",
+    "Continuation repairs parser only; exact source and object identities checked; compilation_repeated:false; remaining public audit executed and all output checked."
+  ],
+  "platform": {
+    "head": "719987c7e739c55796c2cb527aaac37391bf6511",
+    "check_runs": [
+      {
+        "id": 117244734430,
+        "name": "GitGuardian Security Checks",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "legacy_status_count": 0,
+    "legacy_combined_state": "pending",
+    "actions_run_count_all_events": 0,
+    "lean_ci": "NOT_RUN",
+    "unresolved_review_threads": 0,
+    "branch_protected_observed": false,
+    "required_contexts_observed": [],
+    "admin_protection_endpoint": "403 limited integration visibility; ordinary non-bypass endpoint enforces remaining restrictions"
+  },
+  "ready": {
+    "observed_draft": false,
+    "performed_by": "Agent14 before Agent23 ready action",
+    "agent23_ready_actions": 0
+  },
+  "source_repairs_by_agent23": [],
+  "execution_limitations": [
+    "Default overlay reported32GiB full; no files of another owner deleted.",
+    "Default git clone failed to reach browser-proxy:8889. Public content fetched through authorized GitHub connector.",
+    "Approved own temporary tmpfs copies:40 files379931 bytes; all Git blob checks PASS. First oversized shell argv failed;13 bounded batches succeeded. Escalated tmpfs view differs from default shell view.",
+    "Recursive full repository tree retrieval returned Transport closed; bounded nonrecursive Merkle reads and exact incoming subtree inventory completed the same preservation obligation."
+  ],
+  "observed_at": "2026-10-16 23:43:44 UTC"
+}
