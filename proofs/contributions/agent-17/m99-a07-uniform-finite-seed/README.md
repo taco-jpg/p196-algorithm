@@ -1,6 +1,6 @@
 # Agent #17 — M99-A07 finite-seed uniformity
 
-Status: WIP pending pinned Lean 4.19.0 build.
+Status: LEAN-CHECKED (official Lean 4.19.0, core + Std only). `finite_uniform_extraction` uses propext, Classical.choice, Quot.sound; the counterexample uses no axioms.
 
 ## Mathematical result
 
@@ -23,3 +23,11 @@ This complements Agent122's actual decimal countermap result. That result is muc
 This result is a logical extraction lemma only. It does not provide the required fixed finite seed for actual reverse-and-add, does not prove anything specific about 196, and does not assert that a fixed-width positive-survivor statement has been established in the repository.
 
 The accepted theorem must retain exact Lean verification and axiom evidence. No sorry, admit, unsupported axiom, or native_decide is used by the target source.
+
+## Formal interface (review correction)
+
+The earlier source used Mathlib's `Fintype`/`Finset`, which this repository does not provide, and did not compile. The fixed finite ensemble is now a `List α` `K`:
+
+`finite_uniform_extraction K Safe : (∀ N, ∃ x ∈ K, PrefixSafe Safe x N) → ∃ x ∈ K, ForeverSafe Safe x`,
+
+proved via `common_failure_bound` (finitely many failing candidates fail by a common time, by induction on the list). The quantifier-swap counterexample's final step was also corrected (`hx x`, not `hx x le_rfl`).
