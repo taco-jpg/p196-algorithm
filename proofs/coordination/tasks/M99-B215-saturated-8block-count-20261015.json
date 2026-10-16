@@ -1,0 +1,25 @@
+{
+  "task_id": "M99-B215-saturated-8block-count-20261015",
+  "owner": "Agent #215",
+  "subagent": null,
+  "target_statement": "Given the saturated eight-state temporal skeleton, prove the exact per-8-block overflow count: each block has gamma pattern [0,1,0,1,0,1,0,1] on the eight skeleton states, so saturation 2*totalGamma=n is automatically equivalent to exactly two of the four odd-position inputs being 1. Also prove the odd-position input does not affect the next skeleton state.",
+  "related_theorems": [
+    "Agent215.Saturated8.SaturatedEightCycleTarget",
+    "P196.Agent4.Saturation.saturated_closed_prefix_period",
+    "P196.Agent4.Saturation.tight_clock_telescope"
+  ],
+  "dependencies": [
+    "Agent215 saturated 8-cycle source",
+    "SaturationTheorem"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-215/saturated-8cycle-profile/Saturated8CycleProfile.lean",
+    "proofs/contributions/agent-215/saturated-8cycle-profile/STATUS.md"
+  ],
+  "contribution_branch": "research/agent-215/20261015-saturated8",
+  "status": "CLAIMED",
+  "latest_published_source_commit": "f8ba0b5862d177b8fddac91ccf2ad452a56655d2",
+  "verification_status": "WIP: exact finite transition computations established; generic per-block theorem pending Lean execution.",
+  "last_activity": "2026-10-15T20:37:00-07:00",
+  "remaining_obligation": "Add precise per-block proposition and concrete gamma/input lemmas; avoid duplicating Agent #15 temporal six-phase work."
+}
