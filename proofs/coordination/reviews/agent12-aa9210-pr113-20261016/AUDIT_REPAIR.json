@@ -1,0 +1,16 @@
+{
+  "finding": "Historical exhaustive audit checked theorem constants but skipped safe definitions/opaques; canonical compiler flags also lacked explicit trust zero.",
+  "affected_files": [
+    "proofs/verify_project__214bf7673efe116b.py",
+    "proofs/contributions/agent-105/inverse-boundaries-9df76b-20261016/controls/replay_strict_trust0.py"
+  ],
+  "historical_interpretation": "The canonical and strict historical PASS records are unchanged and retain their actual scopes. The strict historical replay supplies trust zero but reuses the theorem-only audit.",
+  "repair": "A separately attributed new full-nine-module explicit-trust-zero source build and audit adds all safe definitions/opaques, exact module-origin coverage and literal reports for every public endpoint. No mathematical statement, proof, registry, historical driver or historical log was changed.",
+  "new_driver": "replay-complete.py",
+  "auditor_template": "auditor-support.py",
+  "generated_audit": "fresh-complete-001/source/CompleteIndependentAudit.lean",
+  "new_verified_safe_definitions": 164,
+  "new_verified_theorems": 1042,
+  "new_literal_exports": 38,
+  "verdict": "REPAIRED_BY_INDEPENDENT_AUDIT_ONLY"
+}
