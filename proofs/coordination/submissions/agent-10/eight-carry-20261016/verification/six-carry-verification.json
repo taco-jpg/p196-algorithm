@@ -1,0 +1,250 @@
+{
+  "status": "PASS",
+  "executor": "Agent #10 specialist /root/formalization_scout",
+  "independent_external_acceptance": false,
+  "module": "Agent10SixCarryCounterexample",
+  "source_path": "/workspace/scratch/4b20b8469eb3/agent10-count/Agent10SixCarryCounterexample.lean",
+  "source_sha256": "b4277ca76c6ad874db41933735ae7b677990e120e0bc5be01f9c0579c882f869",
+  "source_git_blob": "00ecf69821a60f6679f2d8e75a31a220c2e9afe7",
+  "source_bytes": 9427,
+  "imports": [
+    "ActualCarryObservability"
+  ],
+  "proof_compile": {
+    "executor": "Agent #10 specialist /root/formalization_scout",
+    "status": "PASS",
+    "source_sha256": "b4277ca76c6ad874db41933735ae7b677990e120e0bc5be01f9c0579c882f869",
+    "dependency_source_and_olean_origin": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-001/agent10-eight-carry/source",
+    "dependency_pins": {
+      "Lychrel196Research.lean": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+      "Lychrel196Research.olean": "9b0cc1f8650e0d57c1f64e5d353fb5ada6f69b0fe1082a3ee0196a3ebeb54b8a",
+      "PrefixCarryBound.lean": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+      "PrefixCarryBound.olean": "17eaf7230f3d15c69376376276824d318cce10ec483734ce9fedcf9f4d2fd902",
+      "ActualCarryObservability.lean": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+      "ActualCarryObservability.olean": "ebc16f7956393dc64b0ffe2d5ff50260d91fb42515b46d886f1ff81d126bd250"
+    },
+    "command": [
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false",
+      "-o",
+      "Agent10SixCarryCounterexample.olean",
+      "Agent10SixCarryCounterexample.lean"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.3804334910000762,
+    "log_sha256": "61171cbe52c04bd28d6dee0a5a70756428d26fb05cc682ae5fad7016c47cc495"
+  },
+  "new_module_audit": {
+    "status": "PASS",
+    "command": [
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false",
+      "SixCarryAudit.lean"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 2.6463102419993447,
+    "audit_source_sha256": "2862e0128594a9fe6dd3116ffb75072bcba7082789c5e4769977251dd8f4bef5",
+    "audit_log_sha256": "60a29bb5aced231f1257c4dd1737f57b7225757d03ee46fff2a03124083231f0"
+  },
+  "new_module_theorem_count": 38,
+  "new_module_theorem_axiom_union": [
+    "Quot.sound",
+    "propext"
+  ],
+  "new_module_unsafe_implementation_axiom_count": 0,
+  "public_endpoint_count": 12,
+  "public_endpoints": [
+    {
+      "name": "Agent10SixCarryCounterexample.left_canonical",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [],
+      "type_output": "Agent10SixCarryCounterexample.left_canonical :\n  DecimalDigits.Canonical 80000571539 Agent10SixCarryCounterexample.leftDigits 11",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.right_canonical",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [],
+      "type_output": "Agent10SixCarryCounterexample.right_canonical :\n  DecimalDigits.Canonical 70000817069 Agent10SixCarryCounterexample.rightDigits 11",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.left_widths",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10SixCarryCounterexample.left_widths (t : Nat) (ht : t ≤ 6) :\n  (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst =\n    Agent10SixCarryCounterexample.traceWidth t",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.right_widths",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10SixCarryCounterexample.right_widths (t : Nat) (ht : t ≤ 6) :\n  (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst =\n    Agent10SixCarryCounterexample.traceWidth t",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.widths_agree",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10SixCarryCounterexample.widths_agree (t : Nat) (ht : t ≤ 6) :\n  (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst =\n    (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.six_complete_carries",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10SixCarryCounterexample.six_complete_carries (t : Nat) :\n  t < 6 →\n    ∀ (i : Nat),\n      i ≤ (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst →\n        DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).snd\n            i =\n          DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).snd\n            i",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.initial_pair_sums_differ",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [],
+      "type_output": "Agent10SixCarryCounterexample.initial_pair_sums_differ :\n  Agent10SixCarryCounterexample.leftColumns 0 = 17 ∧ Agent10SixCarryCounterexample.rightColumns 0 = 16",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.next_integer_values",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [],
+      "type_output": "Agent10SixCarryCounterexample.next_integer_values :\n  Lychrel196.step 80000571539 = 173518071547 ∧ Lychrel196.step 70000817069 = 166072617076",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.next_integers_differ",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [],
+      "type_output": "Agent10SixCarryCounterexample.next_integers_differ : Lychrel196.step 80000571539 ≠ Lychrel196.step 70000817069",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.numeric_orbit_representations",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10SixCarryCounterexample.numeric_orbit_representations (t : Nat) (_ht : t ≤ 6) :\n  (∃ d,\n      DecimalDigits.Canonical (Lychrel196.orbit 80000571539 t) d\n          (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst ∧\n        ∀ (i : Nat),\n          i < (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst →\n            DecimalDigits.columnSum d\n                (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst i =\n              (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).snd i) ∧\n    ∃ e,\n      DecimalDigits.Canonical (Lychrel196.orbit 70000817069 t) e\n          (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst ∧\n        ∀ (i : Nat),\n          i < (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst →\n            DecimalDigits.columnSum e\n                (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst i =\n              (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).snd i",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.seventh_carry_differs",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10SixCarryCounterexample.seventh_carry_differs :\n  DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 6).snd 1 = 1 ∧\n    DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 6).snd 1 = 0",
+      "print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10SixCarryCounterexample.six_carry_counterexample",
+      "origin_module": "Agent10SixCarryCounterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10SixCarryCounterexample.six_carry_counterexample :\n  DecimalDigits.Canonical 80000571539 Agent10SixCarryCounterexample.leftDigits 11 ∧\n    DecimalDigits.Canonical 70000817069 Agent10SixCarryCounterexample.rightDigits 11 ∧\n      (∀ (t : Nat),\n          t < 6 →\n            ∀ (i : Nat),\n              i ≤ (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst →\n                DecimalDigits.carry\n                    (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).snd i =\n                  DecimalDigits.carry\n                    (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).snd i) ∧\n        Agent10SixCarryCounterexample.leftColumns 0 ≠ Agent10SixCarryCounterexample.rightColumns 0 ∧\n          Lychrel196.step 80000571539 ≠ Lychrel196.step 70000817069",
+      "print_axioms_matches_exhaustive_audit": true
+    }
+  ],
+  "private_kernel_certificates": [
+    "digit_bounds_fin",
+    "initial_trace_fin",
+    "trace_width_bound_fin",
+    "trace_steps_fin",
+    "trace_carries_fin"
+  ],
+  "private_kernel_certificates_axioms": [],
+  "all_public_endpoint_types_and_print_axioms_present": true,
+  "source_forbidden_token_scan_passed": true,
+  "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "compiler_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "dependency_clean_canonical_report": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-001/verification.json",
+  "dependency_clean_canonical_report_sha256": "0ba1c2178ebd73dda057c6b3f34889bbdf9f0047df0925428712cdff0d641d39",
+  "dependency_note": "This check recompiles the new module with --trust=0 against exact source/olean bytes from the prior full clean canonical build; it does not claim a new fresh rebuild of those dependencies.",
+  "finite_scope": {
+    "initial_integers": [
+      80000571539,
+      70000817069
+    ],
+    "initial_canonical_width": 11,
+    "matched_complete_observation_times": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "widths_at_times_0_through_6": [
+      11,
+      12,
+      12,
+      13,
+      13,
+      14,
+      14
+    ],
+    "first_pair_sums": [
+      17,
+      16
+    ],
+    "next_integers": [
+      173518071547,
+      166072617076
+    ],
+    "mismatch": {
+      "time": 6,
+      "incoming_carry_index": 1,
+      "left": 1,
+      "right": 0
+    }
+  },
+  "limitations": [
+    "This establishes six-observation insufficiency; the same pair separates at the seventh observation.",
+    "No assertion of seven- or eight-observation insufficiency or infinite palindrome avoidance."
+  ],
+  "retained_attempts": [
+    {
+      "directory": "/workspace/scratch/4b20b8469eb3/agent10-count/six-check-001",
+      "status": "FAIL",
+      "source_sha256": "c8ddd622d760c557593df7fe583dec5c91ab722b283aaff685eb948e85ca4e52",
+      "log_sha256": "3e4165f80c27a3962aa3508f4a7853441a070d842b7ad1b886b0c0e261a28373",
+      "error_count": 5
+    },
+    {
+      "directory": "/workspace/scratch/4b20b8469eb3/agent10-count/six-check-002",
+      "status": "FAIL",
+      "source_sha256": "522217351d00e5c04e6b3417c77a5fa37216bf669b2aca5e607ed0a180050166",
+      "log_sha256": "f1299a84c66ccdf9b96c07d96031415ed65ac6708eed67814baede69a3040460",
+      "error_count": 3
+    },
+    {
+      "directory": "/workspace/scratch/4b20b8469eb3/agent10-count/six-check-003",
+      "status": "PASS",
+      "source_sha256": "b4277ca76c6ad874db41933735ae7b677990e120e0bc5be01f9c0579c882f869",
+      "log_sha256": "61171cbe52c04bd28d6dee0a5a70756428d26fb05cc682ae5fad7016c47cc495",
+      "error_count": 0
+    }
+  ],
+  "source_edits_in_repository": false,
+  "remote_writes": false,
+  "git_commits": false
+}

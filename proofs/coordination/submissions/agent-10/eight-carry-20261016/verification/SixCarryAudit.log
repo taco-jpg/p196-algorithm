@@ -1,0 +1,108 @@
+Agent10SixCarryCounterexample.left_canonical :
+  DecimalDigits.Canonical 80000571539 Agent10SixCarryCounterexample.leftDigits 11
+Agent10SixCarryCounterexample.right_canonical :
+  DecimalDigits.Canonical 70000817069 Agent10SixCarryCounterexample.rightDigits 11
+Agent10SixCarryCounterexample.left_widths (t : Nat) (ht : t ≤ 6) :
+  (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst =
+    Agent10SixCarryCounterexample.traceWidth t
+Agent10SixCarryCounterexample.right_widths (t : Nat) (ht : t ≤ 6) :
+  (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst =
+    Agent10SixCarryCounterexample.traceWidth t
+Agent10SixCarryCounterexample.widths_agree (t : Nat) (ht : t ≤ 6) :
+  (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst =
+    (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst
+Agent10SixCarryCounterexample.six_complete_carries (t : Nat) :
+  t < 6 →
+    ∀ (i : Nat),
+      i ≤ (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst →
+        DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).snd
+            i =
+          DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).snd
+            i
+Agent10SixCarryCounterexample.initial_pair_sums_differ :
+  Agent10SixCarryCounterexample.leftColumns 0 = 17 ∧ Agent10SixCarryCounterexample.rightColumns 0 = 16
+Agent10SixCarryCounterexample.next_integer_values :
+  Lychrel196.step 80000571539 = 173518071547 ∧ Lychrel196.step 70000817069 = 166072617076
+Agent10SixCarryCounterexample.next_integers_differ : Lychrel196.step 80000571539 ≠ Lychrel196.step 70000817069
+Agent10SixCarryCounterexample.numeric_orbit_representations (t : Nat) (_ht : t ≤ 6) :
+  (∃ d,
+      DecimalDigits.Canonical (Lychrel196.orbit 80000571539 t) d
+          (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst ∧
+        ∀ (i : Nat),
+          i < (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst →
+            DecimalDigits.columnSum d
+                (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst i =
+              (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).snd i) ∧
+    ∃ e,
+      DecimalDigits.Canonical (Lychrel196.orbit 70000817069 t) e
+          (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst ∧
+        ∀ (i : Nat),
+          i < (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst →
+            DecimalDigits.columnSum e
+                (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).fst i =
+              (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).snd i
+Agent10SixCarryCounterexample.seventh_carry_differs :
+  DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 6).snd 1 = 1 ∧
+    DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 6).snd 1 = 0
+Agent10SixCarryCounterexample.six_carry_counterexample :
+  DecimalDigits.Canonical 80000571539 Agent10SixCarryCounterexample.leftDigits 11 ∧
+    DecimalDigits.Canonical 70000817069 Agent10SixCarryCounterexample.rightDigits 11 ∧
+      (∀ (t : Nat),
+          t < 6 →
+            ∀ (i : Nat),
+              i ≤ (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).fst →
+                DecimalDigits.carry
+                    (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.leftColumns 11 t).snd i =
+                  DecimalDigits.carry
+                    (OverflowCarryNormalization.iterPairs Agent10SixCarryCounterexample.rightColumns 11 t).snd i) ∧
+        Agent10SixCarryCounterexample.leftColumns 0 ≠ Agent10SixCarryCounterexample.rightColumns 0 ∧
+          Lychrel196.step 80000571539 ≠ Lychrel196.step 70000817069
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_18 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.next_integers_differ : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.six_complete_carries._proof_16 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.six_carry_counterexample : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_1 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.seventh_carry_differs : [propext, Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_7 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.six_complete_carries._proof_14 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.actual_trace._proof_11 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_6 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.next_integer_values : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_3 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.actual_trace._proof_12 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_19 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_9 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.numeric_orbit_representations : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.actual_trace._proof_13 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.trace_carries_fin : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_5 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.trace_steps_fin : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.actual_trace : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_17 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.right_widths : [propext, Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.six_complete_carries._proof_15 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.initial_trace_fin : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.actual_trace._proof_10 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.left_widths : [propext, Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_2 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.inputColumns.eq_1 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_8 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.digit_bounds_fin : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0.Agent10SixCarryCounterexample.trace_width_bound_fin : []
+AUDIT_THEOREM Agent10SixCarryCounterexample _private.Agent10SixCarryCounterexample.0._proof_4 : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.left_canonical : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.right_canonical : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.initial_pair_sums_differ : []
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.six_complete_carries : [propext, Quot.sound]
+AUDIT_THEOREM Agent10SixCarryCounterexample Agent10SixCarryCounterexample.widths_agree : [propext, Quot.sound]
+FULL_MODULE_AUDIT theorems=38 union=[Quot.sound, propext]
