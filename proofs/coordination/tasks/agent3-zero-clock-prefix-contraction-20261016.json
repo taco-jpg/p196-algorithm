@@ -1,0 +1,134 @@
+{
+  "task_id": "agent3-zero-clock-prefix-contraction-20261016",
+  "owner": "Agent #3",
+  "role": "GENERAL_RESEARCH",
+  "status": "CLAIMED",
+  "target_statement": [
+    "Using the unchanged original P196.Agent9.InverseFibers.Local, define a finite machine for three composed zero-overflow inverse layers reading Boolean symbols false->5, true->14. Its represented live states are original carry triples (Fin4)^3; the empty state is absorbing. Prove complete coverage of every composed original Local successor, including the rejecting rows, and the initial 14 transition from (0,0,0) to (0,1,1).",
+    "Recover or explicitly regenerate the missing one-case clock000,y5 finite witness. Prove a concrete rejecting continuation of length at most nine for every state of the checked finite closed universe containing (0,1,1), and pad to length nine using absorption. The original source reports all 64 live triples; checking the full triple universe is permitted and avoids relying on an unproved reachability enumeration.",
+    "Define S(n) as the number of distinct length-n Boolean continuations after the fixed initial 14 for which this machine remains nonempty. Prove S(n+9)<=511*S(n), and S(9*b+r)<=511^b*2^r for b,r:Nat with r<9, or the equivalent quotient/remainder bound.",
+    "For any Nodup list of length-n Boolean prefixes, if each prefix has some arbitrary remaining List Symbol suffix and some three complete original Path witnesses from all-zero boundary states, bound the list length by S(n). Transport the result through original actual_realizes and realizes_path to three original ActualFiber witnesses. Count distinct target prefixes, not predecessor paths or all possible suffixes."
+  ],
+  "larger_obligation": "Strengthen the fixed dead-prefix obstruction to a uniform finite block loss in the original constant-rho5 three-zero-carry inverse language, clarifying why the arbitrary-choice two-history construction cannot be extended with full binary rate to a third such layer.",
+  "related_theorems": [
+    "P196.Agent9.InverseFibers.Local",
+    "P196.Agent9.InverseFibers.Path",
+    "P196.Agent9.InverseFibers.actual_realizes",
+    "P196.Agent9.InverseFibers.realizes_path",
+    "P196.Agent3.OverflowHorizon.allBits_length",
+    "P196.Agent3.OverflowHorizon.allBits_nodup",
+    "P196.Agent3.OverflowHorizon.mem_allBits_iff",
+    "P196.Agent3.ThreeLayer.no_three_paths_dead_prefix"
+  ],
+  "dependencies": [
+    {
+      "source_commit": "8a67ea8204757cc4f80bf5f576e2cc8024bea97b",
+      "status": "PR130 independently reviewed and Ready, stacked on Ready PR91; no integration presumed",
+      "usage": "Original pinned core, Agent9 inverse relation and Agent3 Boolean enumeration; existing accepted theorem sources remain unchanged."
+    },
+    {
+      "source_commit": "7be455c03d777e5e0ca1d44bea4d1330e3f764c7",
+      "modules": [
+        "InverseFibers",
+        "PathCounts",
+        "WordBridge",
+        "ActualWords"
+      ],
+      "usage": "Original Local/Path/ActualFiber semantics and converses, via unchanged exact copies."
+    },
+    {
+      "source_commit": "cf7935d24ce8180d6181de01d1050fc02b66802c",
+      "module": "Agent9FiniteProducts",
+      "git_blob": "8b3f21db4c6d46e6ebc7c0e88e28f8054b698ccc",
+      "usage": "Optional reuse after exact-source/dependency audit; fixed-block counting does not itself prove the new state-dependent continuation bound."
+    },
+    "Lean 4.19.0 release commit6caaee842e94, explicit trust0 and complete logical-dependency audit"
+  ],
+  "source_argument": {
+    "snapshot": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "note": {
+      "path": "proofs/research/main_existence_attempt/decimal_counting_return_notes.txt",
+      "git_blob": "7f786de64953af35945df4e4a3bce063e788ab92",
+      "sha256": "c30605969b2bf4852e9f2cccc64c3c9042f8d066dbf4b118e6db87105dc16727"
+    },
+    "generator": {
+      "git_blob": "d845edd9a114bd61ff379d0184cae36ce6f3d379",
+      "sha256": "031b43867e2cb546f4d6459ac590be6c0f0a01fcb08466a480fadb54b5764566"
+    },
+    "local_generator": {
+      "git_blob": "96fe6bc002cb58509b07943f8f5f41ed86bb1d3d",
+      "sha256": "a5686d5ff75bd152d0d83d9b40a32b96a766ec92cf3da321f5288984518d24f6"
+    },
+    "missing_certificate": {
+      "original_sha256": "42e026c8749910b3a780c2b4a503802f617851742cca4955b7bc53223c38f241",
+      "omission_manifest_blob": "ae3ab0c2734351aabcc832edf5e3bf9b5a776d34",
+      "status": "Metadata only; full original distance/kill_bit arrays were not retrieved, read, or checked. Any new one-case witness is explicitly regenerated after this claim and will retain independent provenance."
+    },
+    "status": "Written/computational historical evidence only, not an accepted Lean result. No generator, graph search or proof execution preceded this protected claim."
+  },
+  "assigned_specialists": {
+    "/root/family_cardinality": "Finite original-Local transition coverage, one-case certificate regeneration and kernel checking; owned PrefixMachine.lean/NineColumnCertificate.lean and certificate development.",
+    "/root/research_triage": "Original three-Path prefix induction and ActualFiber necessary-prefix/count transport; owned PrefixPaths.lean/ActualPrefixBound.lean.",
+    "/root": "State-dependent finite binary continuation count and aggregate bounds; source/ownership preservation, unique Git writer.",
+    "/root/lean_runtime": "Read-only reuse scout, then nonauthor source/dependency review and one fresh complete build/audit; no mathematical authorship."
+  },
+  "intended_source_files": [
+    "proofs/contributions/agent-3/prefix-contraction-20261016/PrefixMachine.lean",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/NineColumnCertificate.lean",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/PrefixPaths.lean",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/PrefixCounting.lean",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/ActualPrefixBound.lean",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/source-preservation/",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/development/",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/verification/",
+    "proofs/contributions/agent-3/prefix-contraction-20261016/review/"
+  ],
+  "contribution_branch": "research/agent-3/prefix-contraction-20261016-2232",
+  "source_baseline": "8a67ea8204757cc4f80bf5f576e2cc8024bea97b",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP target only. Read-only source and ownership comparison complete; no new mathematical computation or proof before successful guarded claim/readback.",
+  "last_activity_utc": "2026-10-16T22:34:34.343Z",
+  "remaining_obligation": "After successful claim readback, materialize isolated worktree, pin exact interfaces, regenerate this one finite witness, develop and incrementally publish kernel-checked proofs, obtain independent fresh closure/axiom and semantic review, prepare integration.",
+  "ownership_check": {
+    "proposal_comment": 6225907260,
+    "proposal_url": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225907260",
+    "specialist_head": "d5786f691f77c606f7343b1182cc67643f058a8f",
+    "specialist_coverage": "141-task inventory; ten adjacent full records; 32-commit/32-task earlier delta and 15-commit/23-task refresh, all five new scopes. 113 branch inventory and direct existing theorem/source comparison; documented coverage limits.",
+    "root_head": "c570a9c9cb73e07a095b54a3595527ea5dab9b63",
+    "root_refresh": "All 12 commit messages and 11 changed/new task patches from d5786f69 through6d8d6d32 inspected, including full four new scopes (PR100 review, PR112 review, positive-matrix weights, run renewal). All 150 task names/blobs captured at6d8d6d32; new path absent. One subsequent Agent102 interval-status patch to6b404026 read in full, target unchanged. No equivalent restricted three-zero-carry prefix certificate/counting claim.",
+    "preserved_owners": "Agent9 original inverse fibers and marker finite-product ensembles; Agent107 forward DFA/Horn closure; Agent103 d5 ordinary center scan; Agent101 one-step numeric maxima; Agent105 executable numerical predecessor enumeration.",
+    "issue_read_through": 6225889101,
+    "retry": {
+      "unpublished_candidate": "1de1d8c8497cba2f4d868388541ba167eadb9946",
+      "previous_parent": "6b404026d8278003f6d2d5c2812c005a9d914651",
+      "reason": "Guarded update returned GraphQL UNKNOWN; actual ref had advanced and complete current task listing confirmed new path absent.",
+      "reconsidered_head": "fa649a1c1456bc1c5e3981c2d2e368ba8ee7f5c7",
+      "delta_read": "All three new commit messages and both Agent105 task patches inspected. Agent11 PR96 integration and Agent105 decoder/enumeration statuses preserve distinct scopes. No equivalent prefix-certificate task."
+    },
+    "retry2": {
+      "unpublished_candidate": "b0266e0da7f68be980f709a9da7499474cd30a05",
+      "previous_parent": "fa649a1c1456bc1c5e3981c2d2e368ba8ee7f5c7",
+      "reconsidered_head": "601381ad691af1ab83a8e2815550fa3b4994d995",
+      "delta_read": "Two new commits inspected; complete new Agent11 PR97 archival source restoration record and Agent6 verification-status patch read. They do not overlap the three-zero-carry prefix certificate/counting target; new task path absent from all delta changes."
+    },
+    "retry3": {
+      "unpublished_candidate": "69a6e64c17cdbfe897c3dfa8e1242a714c4777ad",
+      "previous_parent": "601381ad691af1ab83a8e2815550fa3b4994d995",
+      "reconsidered_head": "8623fdc03bebcbf3983b0d4b619ee0ba3397fbbf",
+      "delta_read": "One Agent108 fixed-window obstruction status/evidence patch inspected in full; mathematical scope unchanged and distinct. New claim absent from the complete delta."
+    },
+    "retry4": {
+      "reconsidered_head": "c570a9c9cb73e07a095b54a3595527ea5dab9b63",
+      "read": "Complete Agent103 third-gate claim inspected: specific ordinary d5 exterior/center criterion; distinct from constant-rho binary prefix language. Four Agent1/101 status patches retain existing targets. No overlap."
+    }
+  },
+  "scope_exclusions": [
+    "No claim that a nonempty prefix satisfies final center acceptance; only the original complete Path implies prefix survival direction is required.",
+    "No other constant-rho alphabets, varying-rho inputs, or mixed-overflow clocks.",
+    "No unrestricted incoming integer width or integer realization multiplicity bound.",
+    "No reachability count or optimality of nine unless separately kernel proved within this finite certificate scope.",
+    "No real asymptotic limit, whole terminating-basin estimate, fixed all-time seed or196 conclusion.",
+    "No main integration slot."
+  ],
+  "main_write_slot": false
+}
