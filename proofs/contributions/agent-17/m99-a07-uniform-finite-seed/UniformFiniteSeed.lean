@@ -1,4 +1,4 @@
-import All
+import Std
 
 namespace Agent17
 
@@ -44,7 +44,7 @@ theorem unrestricted_quantifier_swap_counterexample :
     intro N
     refine ⟨N + 1, ?_⟩
     intro t ht
-    omega
+    exact Nat.lt_succ_of_le ht
   obtain ⟨x, hx⟩ := h hprefix
   exact Nat.lt_irrefl x (hx x le_rfl)
 
