@@ -47,14 +47,20 @@ times and uses the target's odd outer coefficient `5` for time zero.
 operation with the original decimal column sums. It does not change the
 decimal reverse-add definitions.
 
-The current checkpoint is `LEAN-CHECKED`; a separate reviewer has completed
-the fresh cardinality rebuild and interpretation review, and the whole-chain
-review is in progress. No shared accepted registry has been modified. All
-completed axiom audits are confined to `propext`, `Classical.choice`, and
-`Quot.sound`; the successful logs record their exact declaration-level sets.
-The final clean verifier will audit every exported new declaration, including
-the aggregate. Failed development source and logs remain in `development/`,
-outside the completed module set.
+The current checkpoint is `LEAN-CHECKED`. The portable verifier completed a
+fresh ten-module build and audited all 67 explicit public source declarations
+plus 62 generated logical helpers. Every audited proof dependency is confined
+to `propext`, `Classical.choice`, and `Quot.sound`. All source exports are safe
+and nonpartial. The 33 compiler implementation symbols are recorded separately
+using Lean's own safety flags; they are not accepted logical proof declarations.
+A separate reviewer completed the fresh cardinality rebuild and interpretation
+review, and the independent whole-chain review is in progress.
+
+No shared accepted registry has been modified. Failed development source and
+logs remain in `development/`, outside the completed module set. The original
+written source and finite diagnostic specification checks are retained with
+their provenance under `development/specification/`; those diagnostics do
+not replace the all-parameter Lean proofs.
 
 ## Dependencies and reproduction
 
@@ -72,8 +78,20 @@ Compile in the order `PeriodObstructions`, `ActualWordBridge`,
 `FiniteHorizonOverflow`, `SafetyBridge`, `NormalizedSafety`,
 `FiniteHorizonTheorem`, with `LEAN_PATH` set to a fresh build directory.
 Independent evidence is retained under `review/`. The source-pinned verifier
-and manifest under `verification/` will reproduce the complete accepted
-contribution module set and its axiom audit.
+and manifest under `verification/` reproduce the complete accepted
+contribution module set and its axiom audit:
+
+```bash
+python3 proofs/contributions/agent-3/finite-horizon-overflow-20261016/verification/verify.py \
+  --lean /absolute/path/to/lean-4.19.0/bin/lean \
+  --repo /absolute/path/to/p196-algorithm \
+  --build-dir /absolute/path/to/a-new-clean-build
+```
+
+`verification/evidence/verification.json` records the successful commands,
+source identities, compiler environment, exit statuses, and full logical
+axiom inventory. `verification/evidence/artifact-index.json` authenticates the
+retained logs and generated audit source.
 
 The generic central-run propagation theorem already exists in
 `DecimalSafeRuns`; it is an attributed dependency, not a new theorem here.

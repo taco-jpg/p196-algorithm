@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "contribution": "Agent #3 finite-horizon overflow family, 2026-10-16",
+  "source_base_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "claim_commit": "55c0133a597cd3577fbbb864414fe4527729e554",
+  "required_lean_version": "4.19.0",
+  "recorded_linux_x86_64_lean_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "audit_namespace": "P196.Agent3.OverflowHorizon",
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "module_order": "Listed in topological build order; dependency bytes are copied unchanged.",
+  "modules": [
+    {
+      "module": "PeriodObstructions",
+      "source": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+      "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+      "role": "dependency",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "ActualWordBridge",
+      "source": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+      "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+      "role": "dependency",
+      "imports": [
+        "PeriodObstructions"
+      ]
+    },
+    {
+      "module": "LychrelDigitSums",
+      "source": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "role": "dependency",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "DecimalSafeRuns",
+      "source": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+      "sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+      "role": "dependency",
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    {
+      "module": "FamilyDefinitions",
+      "source": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/FamilyDefinitions.lean",
+      "sha256": "497ffe833495c50e7df5714fd50c0a4835aaf96f71ec8d21fc43102b1468a1d4",
+      "role": "contribution",
+      "imports": [
+        "ActualWordBridge"
+      ],
+      "exports": [
+        "P196.Agent3.OverflowHorizon.choice",
+        "P196.Agent3.OverflowHorizon.inputHalf",
+        "P196.Agent3.OverflowHorizon.inputWord",
+        "P196.Agent3.OverflowHorizon.target"
+      ]
+    },
+    {
+      "module": "FamilyCardinality",
+      "source": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/FamilyCardinality.lean",
+      "sha256": "dfded4df411694fcbe50487e7a963f45c7e0abe34e46ed828926aee9f329248d",
+      "role": "contribution",
+      "imports": [
+        "FamilyDefinitions"
+      ],
+      "exports": [
+        "P196.Agent3.OverflowHorizon.allBits",
+        "P196.Agent3.OverflowHorizon.allBits_length",
+        "P196.Agent3.OverflowHorizon.mem_allBits_iff",
+        "P196.Agent3.OverflowHorizon.allBits_nodup",
+        "P196.Agent3.OverflowHorizon.choice_injective",
+        "P196.Agent3.OverflowHorizon.choice_le_eighteen",
+        "P196.Agent3.OverflowHorizon.choice_map_injective",
+        "P196.Agent3.OverflowHorizon.inputHalf_length",
+        "P196.Agent3.OverflowHorizon.inputWord_length",
+        "P196.Agent3.OverflowHorizon.inputWord_injective",
+        "P196.Agent3.OverflowHorizon.inputHalf_bounded",
+        "P196.Agent3.OverflowHorizon.inputWord_bounded",
+        "P196.Agent3.OverflowHorizon.inputWord_symmetric",
+        "P196.Agent3.OverflowHorizon.inputWord_head",
+        "P196.Agent3.OverflowHorizon.inputWord_canonical",
+        "P196.Agent3.OverflowHorizon.inputWord_even_width",
+        "P196.Agent3.OverflowHorizon.inputWord_canonical_even",
+        "P196.Agent3.OverflowHorizon.familyWords",
+        "P196.Agent3.OverflowHorizon.familyWords_length",
+        "P196.Agent3.OverflowHorizon.familyWords_nodup",
+        "P196.Agent3.OverflowHorizon.mem_familyWords_iff",
+        "P196.Agent3.OverflowHorizon.familyWords_member_properties",
+        "P196.Agent3.OverflowHorizon.familyWords_exact"
+      ]
+    },
+    {
+      "module": "FiniteHorizonOverflow",
+      "source": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/FiniteHorizonOverflow.lean",
+      "sha256": "2499f62660a598e0b48c024e7fbbabca5b079da6178a1c0ea2ea8f110b38ab3d",
+      "role": "contribution",
+      "imports": [
+        "FamilyCardinality"
+      ],
+      "exports": [
+        "P196.Agent3.OverflowHorizon.NoNeutral",
+        "P196.Agent3.OverflowHorizon.lowWord",
+        "P196.Agent3.OverflowHorizon.highWord",
+        "P196.Agent3.OverflowHorizon.rhoWord",
+        "P196.Agent3.OverflowHorizon.stable_digit_carry",
+        "P196.Agent3.OverflowHorizon.padded_normalization",
+        "P196.Agent3.OverflowHorizon.zipAdd_interchange",
+        "P196.Agent3.OverflowHorizon.zipAdd_low_high",
+        "P196.Agent3.OverflowHorizon.zipAdd_high_low",
+        "P196.Agent3.OverflowHorizon.stepWord_noNeutral_overflow",
+        "P196.Agent3.OverflowHorizon.inputWord_noNeutral",
+        "P196.Agent3.OverflowHorizon.inputWord_final_carry",
+        "P196.Agent3.OverflowHorizon.rho_inputWord",
+        "P196.Agent3.OverflowHorizon.overlap",
+        "P196.Agent3.OverflowHorizon.zipAdd_padded_overlap",
+        "P196.Agent3.OverflowHorizon.overlap_replicate",
+        "P196.Agent3.OverflowHorizon.inputWord_step"
+      ]
+    },
+    {
+      "module": "SafetyBridge",
+      "source": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/SafetyBridge.lean",
+      "sha256": "18079ba07cccf1bcc9098320ae62f887ba080896be11bead43de6e7f26573e5e",
+      "role": "contribution",
+      "imports": [
+        "FamilyDefinitions",
+        "DecimalSafeRuns"
+      ],
+      "exports": [
+        "P196.Agent3.OverflowHorizon.targetColumn",
+        "P196.Agent3.OverflowHorizon.target_length_for_safety",
+        "P196.Agent3.OverflowHorizon.target_reverse_for_safety",
+        "P196.Agent3.OverflowHorizon.targetColumn_zero",
+        "P196.Agent3.OverflowHorizon.targetColumn_bound",
+        "P196.Agent3.OverflowHorizon.targetColumn_reflection",
+        "P196.Agent3.OverflowHorizon.targetColumn_central",
+        "P196.Agent3.OverflowHorizon.target_admissible",
+        "P196.Agent3.OverflowHorizon.target_hasRun18",
+        "P196.Agent3.OverflowHorizon.target_numeric_safe_prefix",
+        "P196.Agent3.OverflowHorizon.target_realization_nonpalindrome",
+        "P196.Agent3.OverflowHorizon.target_positive_realization_safe_prefix"
+      ]
+    },
+    {
+      "module": "NormalizedSafety",
+      "source": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/NormalizedSafety.lean",
+      "sha256": "6c344b93df1f8574dcf8ecf60c9db09d3f798c3df1b13831713af010c71652c1",
+      "role": "contribution",
+      "imports": [
+        "SafetyBridge"
+      ],
+      "exports": [
+        "P196.Agent3.OverflowHorizon.digitColumn",
+        "P196.Agent3.OverflowHorizon.digitValue",
+        "P196.Agent3.OverflowHorizon.digitList_canonical",
+        "P196.Agent3.OverflowHorizon.digitColumn_pair",
+        "P196.Agent3.OverflowHorizon.digitList_target_realization",
+        "P196.Agent3.OverflowHorizon.normalized_target_safe_prefix",
+        "P196.Agent3.OverflowHorizon.normalized_target_step_value"
+      ]
+    },
+    {
+      "module": "FiniteHorizonTheorem",
+      "source": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/FiniteHorizonTheorem.lean",
+      "sha256": "3316df9f3ce5baeac971faff53cfe5d6616beebf50c116c5662476c261f0d697",
+      "role": "contribution",
+      "imports": [
+        "FiniteHorizonOverflow",
+        "NormalizedSafety"
+      ],
+      "exports": [
+        "P196.Agent3.OverflowHorizon.inputWord_normalized_digits",
+        "P196.Agent3.OverflowHorizon.inputWord_normalized_safe",
+        "P196.Agent3.OverflowHorizon.inputWord_common_next_value",
+        "P196.Agent3.OverflowHorizon.finite_horizon_overflow_family"
+      ]
+    }
+  ]
+}

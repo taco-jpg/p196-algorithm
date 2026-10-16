@@ -1,0 +1,74 @@
+{
+  "result": "PASS",
+  "verifier_sha256": "487df0d0903465550a95862b25f352fb41fccaf95c7645a26eed54a0546c41cd",
+  "checks": [
+    {
+      "check": "comments do not trigger false rejection",
+      "result": "PASS"
+    },
+    {
+      "check": "sorry",
+      "result": "PASS",
+      "rejection": "Forbidden proof-source shortcut(s): [{\"token\": \"sorry\", \"line\": 1}]"
+    },
+    {
+      "check": "native_decide",
+      "result": "PASS",
+      "rejection": "Forbidden proof-source shortcut(s): [{\"token\": \"native_decide\", \"line\": 1}]"
+    },
+    {
+      "check": "custom axiom",
+      "result": "PASS",
+      "rejection": "Forbidden proof-source shortcut(s): [{\"token\": \"axiom\", \"line\": 1}]"
+    },
+    {
+      "check": "unsafe",
+      "result": "PASS",
+      "rejection": "Forbidden proof-source shortcut(s): [{\"token\": \"unsafe\", \"line\": 1}]"
+    },
+    {
+      "check": "kernel bypass",
+      "result": "PASS",
+      "rejection": "Forbidden proof-source shortcut(s): [{\"token\": \"debug.skipKernelTC\", \"line\": 1}]"
+    },
+    {
+      "check": "implementation replacement",
+      "result": "PASS",
+      "rejection": "Forbidden proof-source shortcut(s): [{\"token\": \"implemented_by\", \"line\": 1}]"
+    },
+    {
+      "check": "qualified compiler axiom",
+      "result": "PASS",
+      "rejection": "Forbidden proof-source shortcut(s): [{\"token\": \"_root_.Lean.ofReduceBool\", \"line\": 1}]"
+    },
+    {
+      "check": "standard axiom set",
+      "result": "PASS"
+    },
+    {
+      "check": "reject axiom sorryAx",
+      "result": "PASS",
+      "rejection": "Unexpected axioms for example: ['sorryAx']"
+    },
+    {
+      "check": "reject axiom Lean.ofReduceBool",
+      "result": "PASS",
+      "rejection": "Unexpected axioms for example: ['Lean.ofReduceBool']"
+    },
+    {
+      "check": "reject axiom Invented.axiom",
+      "result": "PASS",
+      "rejection": "Unexpected axioms for example: ['Invented.axiom']"
+    },
+    {
+      "check": "altered pinned source rejected by CLI",
+      "result": "PASS",
+      "exit_code": 1
+    },
+    {
+      "check": "nonempty evidence directory preserved",
+      "result": "PASS",
+      "exit_code": 2
+    }
+  ]
+}
