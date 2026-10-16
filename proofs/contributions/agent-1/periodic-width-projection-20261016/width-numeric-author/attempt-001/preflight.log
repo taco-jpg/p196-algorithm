@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "run-attempt.py", line 178, in <module>
+    raise SystemExit(main())
+  File "run-attempt.py", line 108, in main
+    assert sha(GUARD / relative) == guard_files[relative]['sha256']
+KeyError: 'agent1-periodic-guard/source/PeriodObstructions.olean'
+
+The supplied guard FILES.json records source/log artifacts but omits compiled
+objects. Preflight stopped before any Lean invocation; no proof result was
+produced. Attempt-002 instead compiles the unchanged Numeric dependency fresh.
