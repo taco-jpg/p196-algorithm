@@ -1,0 +1,922 @@
+{
+  "schema_version": 1,
+  "verdict": "PASS_EXACT_HEAD_SEMANTIC_SOURCE_EVIDENCE_AND_FRESH_STRICT_KERNEL_REVIEW",
+  "reviewer": "Agent #12 independent nonauthor reviewer /root/review123",
+  "pull_request": 115,
+  "repository": "https://github.com/taco-jpg/p196-algorithm",
+  "exact_head": "dca30e76474569a276c2e58bbd6ee0b96c554ecc",
+  "source_freeze": "937c33ba3a98b9778bfee45a0bf2f0c0b3765055",
+  "inherited_main_comparison": "fa3921e58556250b1a6efd30af603fb65a9d9fbc",
+  "contribution_path": "proofs/contributions/agent-6/certificate-coordinate-audit-20261016",
+  "coordination_claim": "f58bff2d45aad7783086afd64eef79cdd14bccfe",
+  "task": "agent12-sessionaa9210-pr113-pr115-review-20261016",
+  "completed_utc": "2026-10-16T23:18:29.675222+00:00",
+  "source_repairs": [],
+  "remote_mutations": 0,
+  "new_full_module_builds": 1,
+  "new_full_kernel_build_exit_code": 0,
+  "new_exhaustive_audit_exit_code": 0,
+  "reused_project_objects": false,
+  "compiler_flags": [
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "source_closure": {
+    "TemplateStep": {
+      "path": "proofs/TemplateStep__8873883b39064515.lean",
+      "sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+      "git_blob": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+      "imports": [
+        "Std"
+      ],
+      "bytes": 31470,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d"
+      }
+    },
+    "ReturnCertificate": {
+      "path": "proofs/ReturnCertificate__b037c18e81a43bb5.lean",
+      "sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+      "git_blob": "95196cfe2da9b224412a9c31910163cf5784f996",
+      "imports": [
+        "TemplateStep"
+      ],
+      "bytes": 19048,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "95196cfe2da9b224412a9c31910163cf5784f996",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "95196cfe2da9b224412a9c31910163cf5784f996",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "95196cfe2da9b224412a9c31910163cf5784f996"
+      }
+    },
+    "OuterFinite": {
+      "path": "proofs/OuterFinite__1c852c0ed5b8d706.lean",
+      "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+      "git_blob": "bc22ad1b950251fd231cccd40393b5749b8ad887",
+      "imports": [
+        "Std"
+      ],
+      "bytes": 2573,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "bc22ad1b950251fd231cccd40393b5749b8ad887",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "bc22ad1b950251fd231cccd40393b5749b8ad887",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "bc22ad1b950251fd231cccd40393b5749b8ad887"
+      }
+    },
+    "OuterBounds": {
+      "path": "proofs/OuterBounds__4503f58658495015.lean",
+      "sha256": "75ed5831f0cc1e9c6016672ebef83cf0f46da279432b3694ba075627cb973a76",
+      "git_blob": "e816032eb3997512dfdee7d10bdb914e959e74a8",
+      "imports": [
+        "OuterFinite"
+      ],
+      "bytes": 2989,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "e816032eb3997512dfdee7d10bdb914e959e74a8",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "e816032eb3997512dfdee7d10bdb914e959e74a8",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "e816032eb3997512dfdee7d10bdb914e959e74a8"
+      }
+    },
+    "OuterBridge": {
+      "path": "proofs/OuterBridge__04b27506596f5de1.lean",
+      "sha256": "849fa22a9d6aae37611e0eec424e4ec451c6bb4d71c75813f9a8906c669bd966",
+      "git_blob": "06ed5a8660e83b2dde192a10c822c9317a79483b",
+      "imports": [
+        "ReturnCertificate",
+        "OuterBounds"
+      ],
+      "bytes": 12802,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "06ed5a8660e83b2dde192a10c822c9317a79483b",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "06ed5a8660e83b2dde192a10c822c9317a79483b",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "06ed5a8660e83b2dde192a10c822c9317a79483b"
+      }
+    },
+    "CertificateRealization": {
+      "path": "proofs/CertificateRealization__8e601d213f5aef4c.lean",
+      "sha256": "c06f8955dbdcf32d4b9f0ab05f149394d1177fc9951c015ab985da3833480391",
+      "git_blob": "cb43dfcd002112096f31441aa19426cd4c6c83ac",
+      "imports": [
+        "OuterBridge"
+      ],
+      "bytes": 3740,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "cb43dfcd002112096f31441aa19426cd4c6c83ac",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "cb43dfcd002112096f31441aa19426cd4c6c83ac",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "cb43dfcd002112096f31441aa19426cd4c6c83ac"
+      }
+    },
+    "ExteriorNormalization": {
+      "path": "proofs/ExteriorNormalization__e03ef2b2c3a7fcaa.lean",
+      "sha256": "4da453cdfb754636085ebe865bb398a413808877d3991213db4e5265ffcdb3c2",
+      "git_blob": "899eeebdf7c771921303ebaa720fd8ed5454fd36",
+      "imports": [
+        "OuterBridge"
+      ],
+      "bytes": 7134,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "899eeebdf7c771921303ebaa720fd8ed5454fd36",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "899eeebdf7c771921303ebaa720fd8ed5454fd36",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "899eeebdf7c771921303ebaa720fd8ed5454fd36"
+      }
+    },
+    "CertificateExterior": {
+      "path": "proofs/CertificateExterior__94efd9fc73b36162.lean",
+      "sha256": "f0bd00fc497542a16df331542177fbfd0de55cd7b11454149942685d4eda6bce",
+      "git_blob": "76e86aea561288b8a47f1b5999c2578e50d597c4",
+      "imports": [
+        "CertificateRealization",
+        "ExteriorNormalization"
+      ],
+      "bytes": 6494,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "76e86aea561288b8a47f1b5999c2578e50d597c4",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "76e86aea561288b8a47f1b5999c2578e50d597c4",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "76e86aea561288b8a47f1b5999c2578e50d597c4"
+      }
+    },
+    "CertificateAccounting": {
+      "path": "proofs/CertificateAccounting__ad0d1bd9b0242036.lean",
+      "sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+      "git_blob": "79bf1fdfebabcf95dee96698be9aab3747c2599a",
+      "imports": [
+        "ReturnCertificate"
+      ],
+      "bytes": 13165,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "79bf1fdfebabcf95dee96698be9aab3747c2599a",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "79bf1fdfebabcf95dee96698be9aab3747c2599a",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "79bf1fdfebabcf95dee96698be9aab3747c2599a"
+      }
+    },
+    "TARGET": {
+      "path": "proofs/TARGET__c7bc3cfee999c64e.lean",
+      "sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+      "git_blob": "76b2633882fe44d1aea1f2134be97b38617ab5cf",
+      "imports": [
+        "OuterFinite"
+      ],
+      "bytes": 1795,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "76b2633882fe44d1aea1f2134be97b38617ab5cf",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "76b2633882fe44d1aea1f2134be97b38617ab5cf",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "76b2633882fe44d1aea1f2134be97b38617ab5cf"
+      }
+    },
+    "ExteriorFactorizationProof": {
+      "path": "proofs/ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+      "sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+      "git_blob": "9a9a0e3e8335b218d2863edaee58c2c26614c0ca",
+      "imports": [
+        "TARGET"
+      ],
+      "bytes": 13575,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "9a9a0e3e8335b218d2863edaee58c2c26614c0ca",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "9a9a0e3e8335b218d2863edaee58c2c26614c0ca",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "9a9a0e3e8335b218d2863edaee58c2c26614c0ca"
+      }
+    },
+    "ExteriorObservationInjective": {
+      "path": "proofs/ExteriorObservationInjective__5a22875e320396f4.lean",
+      "sha256": "891207ca4daadfc65c435b5dd5477478cfe59347afb9404660ce458ed7103cbf",
+      "git_blob": "80d175e4c28ba171e67eaf7e0f9961235e0ec7e7",
+      "imports": [
+        "ExteriorFactorizationProof"
+      ],
+      "bytes": 5452,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "80d175e4c28ba171e67eaf7e0f9961235e0ec7e7",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "80d175e4c28ba171e67eaf7e0f9961235e0ec7e7",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "80d175e4c28ba171e67eaf7e0f9961235e0ec7e7"
+      }
+    },
+    "ExteriorUpdateLaw": {
+      "path": "proofs/ExteriorUpdateLaw.lean",
+      "sha256": "d384cb9a3598b210ec1a0c7cc310297ca2b34cf1e6b0588e03516f0da75331b9",
+      "git_blob": "db2f3c5ea38b8d49ef7da82631b2ed7a95a29bea",
+      "imports": [
+        "ExteriorObservationInjective"
+      ],
+      "bytes": 9687,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "db2f3c5ea38b8d49ef7da82631b2ed7a95a29bea",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "db2f3c5ea38b8d49ef7da82631b2ed7a95a29bea",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "db2f3c5ea38b8d49ef7da82631b2ed7a95a29bea"
+      }
+    },
+    "CoordinateDynamics": {
+      "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateDynamics.lean",
+      "sha256": "8f37d2991087c3c232e9e5a09c440e266672403fe895af59d770e2f90a72a05b",
+      "git_blob": "98a8db2457ebd14a90470798d3d03267e87928a2",
+      "imports": [
+        "ExteriorUpdateLaw"
+      ],
+      "bytes": 3923,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "98a8db2457ebd14a90470798d3d03267e87928a2",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "98a8db2457ebd14a90470798d3d03267e87928a2",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "98a8db2457ebd14a90470798d3d03267e87928a2"
+      }
+    },
+    "CoordinateThreshold": {
+      "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateThreshold.lean",
+      "sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+      "git_blob": "34ddc74962d8bbef954f1626a80593de60906215",
+      "imports": [
+        "ExteriorFactorizationProof"
+      ],
+      "bytes": 5989,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "34ddc74962d8bbef954f1626a80593de60906215",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "34ddc74962d8bbef954f1626a80593de60906215",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "34ddc74962d8bbef954f1626a80593de60906215"
+      }
+    },
+    "CoordinateSign": {
+      "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateSign.lean",
+      "sha256": "9142e73dff4b25fd43dee0f708e5681a47f42b0630329512934916f370f0da21",
+      "git_blob": "4a075b8159ef5da81c9975662d2ecae2e9f630a0",
+      "imports": [
+        "CoordinateDynamics",
+        "CoordinateThreshold"
+      ],
+      "bytes": 5407,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "4a075b8159ef5da81c9975662d2ecae2e9f630a0",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "4a075b8159ef5da81c9975662d2ecae2e9f630a0",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "4a075b8159ef5da81c9975662d2ecae2e9f630a0"
+      }
+    },
+    "CoordinateCycle": {
+      "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateCycle.lean",
+      "sha256": "0b135c2b14c04cf3d980fc7cc2bd6852e65406edb0a6cdaa377a0fa427163f21",
+      "git_blob": "6b7ab7b9801109f3a5af7e8237f59db84601686a",
+      "imports": [
+        "CoordinateSign"
+      ],
+      "bytes": 12759,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "6b7ab7b9801109f3a5af7e8237f59db84601686a",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "6b7ab7b9801109f3a5af7e8237f59db84601686a",
+        "fa3921e58556250b1a6efd30af603fb65a9d9fbc": "6b7ab7b9801109f3a5af7e8237f59db84601686a"
+      }
+    },
+    "CertificateCoordinates": {
+      "path": "proofs/contributions/agent-6/certificate-coordinate-audit-20261016/CertificateCoordinates.lean",
+      "sha256": "8ed2868cd53b9de494d5568a901f7280ad57746bfcefcede6ccfa02855c4a47e",
+      "git_blob": "958b7b77401171f3c05258c4d93fa8d5e21562f4",
+      "imports": [
+        "CertificateExterior",
+        "CertificateAccounting",
+        "CoordinateCycle"
+      ],
+      "bytes": 7355,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "958b7b77401171f3c05258c4d93fa8d5e21562f4",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "958b7b77401171f3c05258c4d93fa8d5e21562f4"
+      }
+    },
+    "CertificateFilter": {
+      "path": "proofs/contributions/agent-6/certificate-coordinate-audit-20261016/CertificateFilter.lean",
+      "sha256": "29c684a2f83335bd9fa69a4881f415990d9eb33cb1e52206131a4cc1b172e8ff",
+      "git_blob": "ce05b39833163ed841b639d8245285ea2c078cff",
+      "imports": [
+        "CertificateCoordinates"
+      ],
+      "bytes": 3653,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "ce05b39833163ed841b639d8245285ea2c078cff",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "ce05b39833163ed841b639d8245285ea2c078cff"
+      }
+    },
+    "CertificateControls": {
+      "path": "proofs/contributions/agent-6/certificate-coordinate-audit-20261016/CertificateControls.lean",
+      "sha256": "578424a22b753be50fb7a3a5ba93d9acd9f8740d4c29c3a446dbf6f17b26845f",
+      "git_blob": "8a6526981c07d9e667a997605a30f3fb8f1d6aa6",
+      "imports": [
+        "CertificateFilter"
+      ],
+      "bytes": 5043,
+      "commit_blob_matches": {
+        "dca30e76474569a276c2e58bbd6ee0b96c554ecc": "8a6526981c07d9e667a997605a30f3fb8f1d6aa6",
+        "937c33ba3a98b9778bfee45a0bf2f0c0b3765055": "8a6526981c07d9e667a997605a30f3fb8f1d6aa6"
+      }
+    }
+  },
+  "module_count": 20,
+  "source_snapshot": "fresh-full-001/source",
+  "source_manifest": "fresh-full-001/source-manifest.json",
+  "source_manifest_sha256": "e8e395b9f2c4853aacccfc8b1b293c9bc737900da94af51d2826f2eac4d01e72",
+  "source_registry": "exact-head-package/certificate.registry.json",
+  "source_registry_sha256": "e625cca5fdf42d950e58a9172515c33b3f6fb3645879f919107e5899f531becb",
+  "dependencies_document": "exact-head-package/DEPENDENCIES.json",
+  "dependencies_sha256": "55a55bd6118d39ceb1f7fe98479af8f17a7881291363d600a02cf10e885727b0",
+  "original_portable_replay": "exact-head-package/replay.py",
+  "original_portable_replay_sha256": "a2310d872f9ea60082866feaf8f06009f4c7e48385827785db3e67122e65ab8a",
+  "original_portable_replay_preserved_unchanged": true,
+  "original_replay_trust_distinction": "Canonical module compilation commands omit explicit --trust=0; its separate new-export audit uses trust zero. Not substituted for the present full strict gate.",
+  "strict_compile_driver": "compile_strict.py",
+  "strict_compile_driver_sha256": "6ab834bb416f32f727f8815e035e898ac2af18e4236e47eab6a84be618e3b96f",
+  "strict_audit_driver": "audit_strict.py",
+  "strict_audit_driver_sha256": "f49cd9c816c818a0a619d78e19290a77aa19e718bbfac7346ae82c6e7b6831ab",
+  "driver_adaptations": "DRIVER_ADAPTATIONS.json",
+  "compilation_report": "fresh-full-001/build/compilation.json",
+  "compilation_report_sha256": "661c4455fe45eef89b70f2916a547c29af3661de825aebff99307f9136b55db1",
+  "full_audit_report": "fresh-full-001/audit/verification.json",
+  "full_audit_report_sha256": "da6d2d895dedbca97f45f7f7672eb44d29be228dd08152c3d38c474614bda7c9",
+  "commands": [
+    {
+      "label": "lean-version",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.064153,
+      "log": "build/logs/lean-version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "lean-prefix",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--print-prefix"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.032046,
+      "log": "build/logs/lean-prefix.log",
+      "log_sha256": "abcef5baa4d798f26d4217102091c996045d67ab7168c6c4c40a94132aa33fa4"
+    },
+    {
+      "label": "TemplateStep",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/TemplateStep.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/TemplateStep.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 4.777012,
+      "log": "build/logs/TemplateStep.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ReturnCertificate",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/ReturnCertificate.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/ReturnCertificate.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 2.82245,
+      "log": "build/logs/ReturnCertificate.log",
+      "log_sha256": "f2c6882924b64da43f79d98a9884c4196e8b90008eb9fa20a2a861818274e50a"
+    },
+    {
+      "label": "OuterFinite",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/OuterFinite.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/OuterFinite.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 20.360795,
+      "log": "build/logs/OuterFinite.log",
+      "log_sha256": "ac86a2e22b11447702615b58a5b0a93a65c92f14973bd9df0868fe52e5abf5f4"
+    },
+    {
+      "label": "OuterBounds",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/OuterBounds.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/OuterBounds.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.067394,
+      "log": "build/logs/OuterBounds.log",
+      "log_sha256": "d11c52a5374e73738ffd0765c9251a3fcdf2cea573806d9b5fa0b50e2ce67ee5"
+    },
+    {
+      "label": "OuterBridge",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/OuterBridge.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/OuterBridge.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.736452,
+      "log": "build/logs/OuterBridge.log",
+      "log_sha256": "92a6d890454c35bfcbf755c6ab3e92d7c7d13a27bfec5a7618bea352b266739c"
+    },
+    {
+      "label": "CertificateRealization",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CertificateRealization.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CertificateRealization.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.819594,
+      "log": "build/logs/CertificateRealization.log",
+      "log_sha256": "3442e145723a4aea18f6b75f5ee0bb26cb62239f280be933ad8a771a6c0bcdc0"
+    },
+    {
+      "label": "ExteriorNormalization",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/ExteriorNormalization.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/ExteriorNormalization.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.868664,
+      "log": "build/logs/ExteriorNormalization.log",
+      "log_sha256": "c71e1b75da4df5a9eaa863a2768dfb02d9faf653b284a34334c9ea9d104b2ccc"
+    },
+    {
+      "label": "CertificateExterior",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CertificateExterior.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CertificateExterior.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.07192,
+      "log": "build/logs/CertificateExterior.log",
+      "log_sha256": "e5efeb6210fa123fb0f5366eb665b8b50923605812bef7771c53569dfbea7b3f"
+    },
+    {
+      "label": "CertificateAccounting",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CertificateAccounting.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CertificateAccounting.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.716025,
+      "log": "build/logs/CertificateAccounting.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "TARGET",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/TARGET.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/TARGET.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.265317,
+      "log": "build/logs/TARGET.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ExteriorFactorizationProof",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/ExteriorFactorizationProof.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/ExteriorFactorizationProof.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.570855,
+      "log": "build/logs/ExteriorFactorizationProof.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ExteriorObservationInjective",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/ExteriorObservationInjective.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/ExteriorObservationInjective.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.817177,
+      "log": "build/logs/ExteriorObservationInjective.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ExteriorUpdateLaw",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/ExteriorUpdateLaw.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/ExteriorUpdateLaw.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.968449,
+      "log": "build/logs/ExteriorUpdateLaw.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "CoordinateDynamics",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CoordinateDynamics.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CoordinateDynamics.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.815849,
+      "log": "build/logs/CoordinateDynamics.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "CoordinateThreshold",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CoordinateThreshold.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CoordinateThreshold.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.868979,
+      "log": "build/logs/CoordinateThreshold.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "CoordinateSign",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CoordinateSign.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CoordinateSign.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.665725,
+      "log": "build/logs/CoordinateSign.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "CoordinateCycle",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CoordinateCycle.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CoordinateCycle.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.068188,
+      "log": "build/logs/CoordinateCycle.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "CertificateCoordinates",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CertificateCoordinates.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CertificateCoordinates.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.665474,
+      "log": "build/logs/CertificateCoordinates.log",
+      "log_sha256": "eafa472b7b99b03df539ee3e5bf60cf97c6bc52392c73e392d3f8708d6722506"
+    },
+    {
+      "label": "CertificateFilter",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CertificateFilter.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CertificateFilter.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.414786,
+      "log": "build/logs/CertificateFilter.log",
+      "log_sha256": "6f496c6ef5fda1b3a08cd85825492ecad0c4d2ce709ff0e8400b6ee35837b98b"
+    },
+    {
+      "label": "CertificateControls",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+        "-o",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects/CertificateControls.olean",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source/CertificateControls.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.415113,
+      "log": "build/logs/CertificateControls.log",
+      "log_sha256": "a3d4c5f12dbfd6a5f07092f6b8a0beffce28a81f63678e0ac0f140d6329e6269"
+    },
+    {
+      "label": "ExplicitExports",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/audit",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/audit/ExplicitExports.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/audit",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 6.134828,
+      "log": "audit/logs/ExplicitExports.log",
+      "log_sha256": "a3edb944d86db15d2b5aa4777b2e2ed5786096d59712ee83d84a76011c1aeff5"
+    },
+    {
+      "label": "ModuleAudit",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/audit",
+        "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/audit/ModuleAudit.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/audit",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent12-aa9210d02a75/review115/fresh-full-001/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 22.637909,
+      "log": "audit/logs/ModuleAudit.log",
+      "log_sha256": "b77ec34ed996992d3278b03da338244613d409425388bdb1ba53d93e697c4e07"
+    }
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "prefix": "/tmp/p196-agent5-lean/lean-4.19.0-linux",
+    "files": {
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Init.olean": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Std.olean": "7d3771da25b893da62564bf8198487ff28f01af5cbd410be88d493a4921b2bb1",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Lean.olean": "7b09317fc9d21262dbfbb6f014dc40c2809b55e6cbb4f7587211a57ec91f7221",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    },
+    "official_runtime_receipt": "/tmp/p196-agent5-lean/install-record.json",
+    "shim_used": false
+  },
+  "literal_new_public_theorem_exports": 29,
+  "closure_public_theorem_exports": 276,
+  "explicit_named_declarations": 383,
+  "theorem_constants": 713,
+  "safe_definitions": 266,
+  "safe_opaque": 0,
+  "all_origin_constants": 1470,
+  "unsafe_implementation_definitions_separately_inventoried": 455,
+  "inherited_unsafe_implementation_axioms_separately_inventoried": 11,
+  "allowed_transitive_math_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "literal_and_structured_axioms_agree": true,
+  "all_sources_objects_runtime_unchanged": true,
+  "new_module_theorem_constants": 46,
+  "new_module_safe_definitions": 9,
+  "source_evidence_package_files": 234,
+  "source_evidence_payload_bytes": 4026150,
+  "subordinate_manifest_entry_checks": 245,
+  "mathematical_source_snapshots_verified": 83,
+  "historical_omitted_compiled_objects": 37,
+  "semantic_review": "SEMANTIC_REVIEW.md",
+  "semantic_review_sha256": "64e85658e0e4beae978eb13f8d40504d74a3ff649052910c5dff502b5bda1f42",
+  "postcheck": "POSTCHECK.json",
+  "postcheck_sha256": "5813c4e451cc46bb921747a95c03178a8f202430ea5e8ad993292ede511b45bb",
+  "retained_current_incidents": [
+    "package-retrieval-attempt-001.json: three HTTP502 public read failures, resolved by exact-blob retry",
+    "review-development/postcheck-attempt-001/: reporting assertion incorrectly required a theorem in definition-only TARGET; corrected constant-kind check passed, mathematical source and compiler gates unaffected"
+  ],
+  "limitations": [
+    "Selected twenty-module source closure, not repository-wide compilation.",
+    "Supplied official standard runtime objects reused; historical download archive absent, no fresh download/rehash claim.",
+    "No current-main merge or combination claim by this reviewer.",
+    "No accepted certificate, numerical realization, global cycle exclusion, infinite survivor, or 196 claim.",
+    "Weighted normalized-row overflow indicator sum is not identified with legacy totalGam; PR137 owns that bridge."
+  ]
+}

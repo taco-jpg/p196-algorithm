@@ -1,0 +1,11 @@
+{
+  "status": "CORRECTED_BEFORE_PUBLICATION",
+  "description": "The first assembly excluded every basename MANIFEST.json rather than only the top-level generated manifest. One nested expanded manifest was absent from the outer manifest/member list, but their exact bytes remained in the unchanged sealed original archive retained inside it. This affected expanded-member mappings, not mathematical/kernel results or substantive loss. The first archive, helper, manifest and delivery/log remain preserved. The corrected seal includes every nested manifest and additionally checks every SOURCE_ARCHIVES expanded mapping.",
+  "initial_command_exit_code": 0,
+  "initial_archive_roundtrip_against_its_manifest": "PASS, insufficient to establish expanded-member coverage",
+  "missing_expanded_paths": [
+    "fresh-review/exact-head-package/development/controls/MANIFEST.json"
+  ],
+  "mathematical_source_changed": false,
+  "lean_rerun": false
+}
