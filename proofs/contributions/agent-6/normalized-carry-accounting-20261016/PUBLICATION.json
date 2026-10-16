@@ -1,0 +1,422 @@
+{
+  "task": "agent6-normalized-carry-accounting-20261016",
+  "source_commit": "affa037ad537f3ae66a97008991850ce397f613a",
+  "local_source_commit": "0ae6f56a5c8640e539fc425be7476c6dc41a4a83",
+  "source_tree": "b611683b35881202c24f61b7e3b37636a3b0f1a1",
+  "parent": "dca30e76474569a276c2e58bbd6ee0b96c554ecc",
+  "pr": 137,
+  "initial_source_files": [
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/CarryControls.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "9a7e155e0a53494067b15da77ff0d1da47c5eec0",
+      "bytes": 4446,
+      "sha256": "abac509aeef647003b9cc5d78ceecd5a9536b907285449d6dea9aa408ed333fb"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/CertificateCarryAccounting.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "c936414929bc44c775feb49bb05e1e6560903be0",
+      "bytes": 4211,
+      "sha256": "32404f75b0b740472825d3510dc52f5294a42ea89b75ddfe4a4b9629c932ec71"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/DEPENDENCIES.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "594ac805c3fffa3e8b777460cbb316728d69719a",
+      "bytes": 12108,
+      "sha256": "7833de74a8ef182270cbbeb12d9e052d5a2c99d34f2e14941a83aa25162b61d4"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/NormalizedCarry.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "338432fa1a0ffaee74f30f67d055840c9f4e940d",
+      "bytes": 2612,
+      "sha256": "9bfef7cc4d805ac06631c730173da7e2def6611d7f9e0773f1b5ac8cb2891459"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "ae95d05ac89a62108d16c441b236b57fb2c72c65",
+      "bytes": 6136,
+      "sha256": "f562977907d8877584035977442a82f5a88f073dda3315de6c5ab1e3605f5284"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/carry.registry.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "116da553c829e3e6893157316fbb07210a7e85d6",
+      "bytes": 10259,
+      "sha256": "e437e378bca3d93e6f3d03f66c0608fcc6af703e7e6b8c68957904889bc08a5a"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/replay.py",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "efa0fbc82cfbd8c7e1243398171576539cbf2a16",
+      "bytes": 10029,
+      "sha256": "cbab6a2b410e5f66fb528b145edae1f449fbaa24624b873de2625d4797f373df"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-001/CertificateCarryAccounting.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "6a09cf49d2bda399eb664677f8755b1df34a9640",
+      "bytes": 4126,
+      "sha256": "9822d89ea3d65e7f28450e12e5bdfb039580cdf6e29f664b960a95cccf450825"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-001/compile.log",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "95c4862f3f196e2149f39e8bb10f7d97b60a2f02",
+      "bytes": 1380,
+      "sha256": "fba43b902132fd525d4111f1cc40478325c2ffbd0e79b7ec73f5fc5c621485e1"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-001/verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "4352c50ca63d338963b171f1f8406fb877d7a32e",
+      "bytes": 1259,
+      "sha256": "c21ad1073a8241b51c2f1976f8470fb11b47cb7565d3621dc92d7a2906910c6c"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-002/CertificateCarryAccounting.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "8e0cfcf11b21b0a625fb51597d38e665f6886543",
+      "bytes": 4160,
+      "sha256": "1b14a0135da4d74cd8b472100e2e2bf4acb66fba1418e5e255c193f416bf8233"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-002/compile.log",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "b6924e562864ad6770ec649c21df189637c51096",
+      "bytes": 1421,
+      "sha256": "4d3602851d8cd50a03e8f9460e9bd71b646cca13aaee6442447ca232c04bf797"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-002/verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "2deb6b4f88d6b4dcf465561039c9e809a8ef5706",
+      "bytes": 1258,
+      "sha256": "841165cd64cb899f50463559199cf9159ce2e31dac90a127b961944c6ecd5893"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-003/CertificateCarryAccounting.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "c936414929bc44c775feb49bb05e1e6560903be0",
+      "bytes": 4211,
+      "sha256": "32404f75b0b740472825d3510dc52f5294a42ea89b75ddfe4a4b9629c932ec71"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-003/compile.log",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "1bb4ca46a69bffcf562e1fae33899ac9fdfef43e",
+      "bytes": 696,
+      "sha256": "b980eb88013f98894353a86a14af491acf4cd2c68e0e1686d5df8658212ad167"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/accounting/CertificateCarryAccounting-003/verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "37ccfe0e52b9a4e68430b7f34c378314e23c29ed",
+      "bytes": 1259,
+      "sha256": "f76e7e8db0f4ca70d9151714c221f0df9bd0740ba81b420e3928c43ae1fc7dc1"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls-initial-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "546f7e22fd1780cfbdf7d315a51b629a22e55306",
+      "bytes": 2867,
+      "sha256": "3ee56d4ebb0462d4c3d87b9a6e1463c02283884261801d6b952f8dd161899649"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/CarryControlsAudit.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "1bc70e98be33d2c61e4e4cc3e3005622aa795c2f",
+      "bytes": 1765,
+      "sha256": "f0174d1595610505eef5a86323239e9effb831bb6b7007ad79ade2c5d2537966"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "67ba48e9a8f9379157d5de4306fd7c1464a6f5ad",
+      "bytes": 2522,
+      "sha256": "852214db74379b94a323bba37f478b37985c26742c2837223ae641ae8b98d745"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/RESULT.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "5765a45358349242a107d6dd2c23674a3158ce38",
+      "bytes": 2168,
+      "sha256": "6dd09d1edba6a4d3a2ae73ea7e9fe9a02b7796667b1933bd3a0a661fdc07a79d"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "63743c04b00d31da0231dcf4041cca9baf818b6d",
+      "bytes": 4109,
+      "sha256": "e2ed219380ca450e077a7a987ff98b33210d5a50316f547d2b2ab2365f6ffb67"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControls-001/CarryControls.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "7adb42438b7d3e81223e5a234d2dc55121829bfb",
+      "bytes": 4442,
+      "sha256": "1a44c2d3ff060b43cdedf03290a50a86ea8ab296ffa440b6f8992612ffcc8a7e"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControls-001/compile.log",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "586671121c654ec3026bcccd27744f748c626d73",
+      "bytes": 630,
+      "sha256": "f6dd3f5273d60b992b382be5082277acd3cd3dbcb974c8fdb1b6e97656f79ccf"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControls-001/verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "6fd7baff5bc343db9ef278440e2035975737a464",
+      "bytes": 6552,
+      "sha256": "662db7b501c17cf84f6f6d1b36b7380b8a4387d6c8eceb36aee1bbdabb8ab181"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControls-002/CarryControls.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "9a7e155e0a53494067b15da77ff0d1da47c5eec0",
+      "bytes": 4446,
+      "sha256": "abac509aeef647003b9cc5d78ceecd5a9536b907285449d6dea9aa408ed333fb"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControls-002/compile.log",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "586671121c654ec3026bcccd27744f748c626d73",
+      "bytes": 630,
+      "sha256": "f6dd3f5273d60b992b382be5082277acd3cd3dbcb974c8fdb1b6e97656f79ccf"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControls-002/verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "67845c13ac62e5ec55c864748e3445824ea5eca7",
+      "bytes": 7230,
+      "sha256": "4dd24f6077611ea945c6d2af2dbb063d67ef9bd7d5d1611d027423cac16dccd9"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControlsAudit-001/CarryControlsAudit.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "1bc70e98be33d2c61e4e4cc3e3005622aa795c2f",
+      "bytes": 1765,
+      "sha256": "f0174d1595610505eef5a86323239e9effb831bb6b7007ad79ade2c5d2537966"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControlsAudit-001/compile.log",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "314c0b6a4ad500d1955f8731c0e78af32896e733",
+      "bytes": 2013,
+      "sha256": "90c4c91cc838e7b910922048f9fc5a3efa3a6cc2a2a3f4d1fabcd0271494eb4b"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/attempts/CarryControlsAudit-001/verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "5345698bccad8ffb762b614d26fbb8d97d074027",
+      "bytes": 7595,
+      "sha256": "e2a6b0795ebb8a8a704dd577638f906cc8d7b2102587dde9b8a55b82b2b36c1b"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/check_controls.py",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "93e33e658cbd6cc7f4f4f4912108dd130bfff28b",
+      "bytes": 3735,
+      "sha256": "908c524e271fc3c290cb1603acc0c8f892cec4fe7fc6232400cda5b6004d8a8d"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/exported-axioms.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "6c081beb729588e9ef117ee9a20f63341ea71102",
+      "bytes": 592,
+      "sha256": "ce31a075ad80d660f3fe58f43e62de7dafe0bb8f8e3da6d3d6d555776c76d14a"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/finalize_review.py",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "8b513cbbe6425d0b5fa133b439360eb85d5597b6",
+      "bytes": 9638,
+      "sha256": "cf5bfc3b22d14a5b040de4cea1baa4adf84545f43e2e67ab466f6c39e71b0cbc"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/controls/full-module-axioms.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "460f2c91c54b1a65158f949c6ec18db374e8ba12",
+      "bytes": 1347,
+      "sha256": "0e9e5735c12e159f0ab08ae25d4a75ab1cfe58df0d85d01b6e39fa195b2c7c55"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/copy-manifest-initial.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "ec9a418dae47ea335b1d0920ac2caad33a59e085",
+      "bytes": 5811,
+      "sha256": "2e28c4cecb0a182e57b089121189d78ba9ffa3b6541797a1e347c6e38e6f4311"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/AUTHOR_NOTES.md",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "d4bc3e75b24ef45c145f82016385461d1e587778",
+      "bytes": 4170,
+      "sha256": "db53d2563c1d9c6beceb7e2e5328dfd77d77bea8f1095fe4b65df5e7a46855e1"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/NormalizedCarry.lean",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "338432fa1a0ffaee74f30f67d055840c9f4e940d",
+      "bytes": 2612,
+      "sha256": "9bfef7cc4d805ac06631c730173da7e2def6611d7f9e0773f1b5ac8cb2891459"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/compile-result.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "d8b5d1398640a6ae89dd3724932f738b547349d9",
+      "bytes": 1801,
+      "sha256": "510ad6fdc21e07a9e42b6bd41b56e135b712ede699b2a08b3d62d455cc68d6e5"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/compile-start.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "27f6cd64347ac0abe0698972ec45b71c09bd2fac",
+      "bytes": 1368,
+      "sha256": "c33a71e2da5036a613a6a7419d1bd5e93e993ca163ec95d430ed4fa380d90f4b"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/compile.log",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "8a29adba92b406355b3811997bfdb85732ffa9ff",
+      "bytes": 263,
+      "sha256": "c41ea02b0151e572d4db20e2011fae0f07c4c0b4e1001a2163e908526dc2e94e"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/dependency-OBJECTS_READY.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "e6c854c183e90f2a9dd728702769a5fc72219e2a",
+      "bytes": 10447,
+      "sha256": "3f1142af6dd44266b72a89f42899a8d4b7d53af965713eb2dbd9e9f9ebf8176f"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/dependency-pins.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "cf33aab736665678e5991be7a23ac3b269c39f2c",
+      "bytes": 15983,
+      "sha256": "9a1c366fb3f9aae8584740186c4aabb558d8602d4c24bdc1c592ba5d3347a444"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/dependency-source-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "a8acf21518ea423198bddd9ef97e22f08842e19b",
+      "bytes": 29381,
+      "sha256": "7b1322904536c16547435e8cd51adaf6478b9747636007e9d7514bc4bd420d97"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/attempt-001/source-pin.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "15512d19f563b78bb217f6502a20f02e589ba3c3",
+      "bytes": 414,
+      "sha256": "cd2e4f5d896e86b6ca89080b0b3d1f3a68c0c1784bde71b99bb678bf6302b09d"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/audit_receipts.py",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "0d59e21083c65097212eb61f7adae06e8e3fba23",
+      "bytes": 2916,
+      "sha256": "13da4e1b8da8000db9a0f452ff77b7b9d44370ab303b6b5f66fa718188da5f53"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/axiom-audit.json",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "ac26d874f92360f3cbf76e880a3120e6d6c96e85",
+      "bytes": 1613,
+      "sha256": "70d2377c000cbc74c6757d8ebbdf0382a36529fb7e732e436579158c8e11cd57"
+    },
+    {
+      "path": "proofs/contributions/agent-6/normalized-carry-accounting-20261016/verification/author/structural/run_attempt.py",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "68ce48d66a66cc8f38d4976b4dac054a000c4def",
+      "bytes": 4443,
+      "sha256": "50395a81eecaaf8d89e2a75bb78337698c8b7f32b3fd152d0575d61892b60a54"
+    }
+  ],
+  "remote_write": {
+    "expected_parent": "dca30e76474569a276c2e58bbd6ee0b96c554ecc",
+    "force": false,
+    "confirmed": true
+  },
+  "remote_readbacks": {
+    "ref": {
+      "content": "{\"ref\":\"refs/heads/research/agent-6/normalized-carry-accounting-20261016\",\"node_id\":\"REF_kwDOVHvrqNoAQHJlZnMvaGVhZHMvcmVzZWFyY2gvYWdlbnQtNi9ub3JtYWxpemVkLWNhcnJ5LWFjY291bnRpbmctMjAyNjEwMTY\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/refs/heads/research/agent-6/normalized-carry-accounting-20261016\",\"object\":{\"sha\":\"affa037ad537f3ae66a97008991850ce397f613a\",\"type\":\"commit\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/affa037ad537f3ae66a97008991850ce397f613a\"}}",
+      "title": "normalized-carry-accounting-20261016",
+      "modified_date": null,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/ref/heads/research/agent-6/normalized-carry-accounting-20261016",
+      "display_url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/ref/heads/research/agent-6/normalized-carry-accounting-20261016",
+      "display_title": "normalized-carry-accounting-20261016",
+      "structuredContent": {
+        "title": "normalized-carry-accounting-20261016",
+        "content": "{\"ref\":\"refs/heads/research/agent-6/normalized-carry-accounting-20261016\",\"node_id\":\"REF_kwDOVHvrqNoAQHJlZnMvaGVhZHMvcmVzZWFyY2gvYWdlbnQtNi9ub3JtYWxpemVkLWNhcnJ5LWFjY291bnRpbmctMjAyNjEwMTY\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/refs/heads/research/agent-6/normalized-carry-accounting-20261016\",\"object\":{\"sha\":\"affa037ad537f3ae66a97008991850ce397f613a\",\"type\":\"commit\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/affa037ad537f3ae66a97008991850ce397f613a\"}}",
+        "display_url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/ref/heads/research/agent-6/normalized-carry-accounting-20261016"
+      }
+    },
+    "commit": {
+      "content": "{\"sha\":\"affa037ad537f3ae66a97008991850ce397f613a\",\"node_id\":\"C_kwDOVHvrqNoAKGFmZmEwMzdhZDUzN2YzYWU2NmE5NzAwODk5MTg1MGNlMzk3ZjYxM2E\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/affa037ad537f3ae66a97008991850ce397f613a\",\"html_url\":\"https://github.com/taco-jpg/p196-algorithm/commit/affa037ad537f3ae66a97008991850ce397f613a\",\"author\":{\"name\":\"sodium-qed\",\"email\":\"128518157+sodium-qed@users.noreply.github.com\",\"date\":\"2026-10-16T22:26:59Z\"},\"committer\":{\"name\":\"sodium-qed\",\"email\":\"128518157+sodium-qed@users.noreply.github.com\",\"date\":\"2026-10-16T22:26:59Z\"},\"tree\":{\"sha\":\"b611683b35881202c24f61b7e3b37636a3b0f1a1\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/trees/b611683b35881202c24f61b7e3b37636a3b0f1a1\"},\"message\":\"lean(agent-6): connect normalized carry to original certificate accounting\",\"parents\":[{\"sha\":\"dca30e76474569a276c2e58bbd6ee0b96c554ecc\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/dca30e76474569a276c2e58bbd6ee0b96c554ecc\",\"html_url\":\"https://github.com/taco-jpg/p196-algorithm/commit/dca30e76474569a276c2e58bbd6ee0b96c554ecc\"}],\"verification\":{\"verified\":false,\"reason\":\"unsigned\",\"signature\":null,\"payload\":null,\"verified_at\":null}}",
+      "title": "affa037ad537f3ae66a97008991850ce397f613a",
+      "modified_date": null,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/affa037ad537f3ae66a97008991850ce397f613a",
+      "display_url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/affa037ad537f3ae66a97008991850ce397f613a",
+      "display_title": "affa037ad537f3ae66a97008991850ce397f613a",
+      "structuredContent": {
+        "title": "affa037ad537f3ae66a97008991850ce397f613a",
+        "content": "{\"sha\":\"affa037ad537f3ae66a97008991850ce397f613a\",\"node_id\":\"C_kwDOVHvrqNoAKGFmZmEwMzdhZDUzN2YzYWU2NmE5NzAwODk5MTg1MGNlMzk3ZjYxM2E\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/affa037ad537f3ae66a97008991850ce397f613a\",\"html_url\":\"https://github.com/taco-jpg/p196-algorithm/commit/affa037ad537f3ae66a97008991850ce397f613a\",\"author\":{\"name\":\"sodium-qed\",\"email\":\"128518157+sodium-qed@users.noreply.github.com\",\"date\":\"2026-10-16T22:26:59Z\"},\"committer\":{\"name\":\"sodium-qed\",\"email\":\"128518157+sodium-qed@users.noreply.github.com\",\"date\":\"2026-10-16T22:26:59Z\"},\"tree\":{\"sha\":\"b611683b35881202c24f61b7e3b37636a3b0f1a1\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/trees/b611683b35881202c24f61b7e3b37636a3b0f1a1\"},\"message\":\"lean(agent-6): connect normalized carry to original certificate accounting\",\"parents\":[{\"sha\":\"dca30e76474569a276c2e58bbd6ee0b96c554ecc\",\"url\":\"https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/dca30e76474569a276c2e58bbd6ee0b96c554ecc\",\"html_url\":\"https://github.com/taco-jpg/p196-algorithm/commit/dca30e76474569a276c2e58bbd6ee0b96c554ecc\"}],\"verification\":{\"verified\":false,\"reason\":\"unsigned\",\"signature\":null,\"payload\":null,\"verified_at\":null}}",
+        "display_url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/commits/affa037ad537f3ae66a97008991850ce397f613a"
+      }
+    },
+    "mathematical_sources_and_registry": "All3Lean+registry+DEPENDENCIES read back exact contents and Git blobs; independent reviewer additionally fetched all21registered sources."
+  },
+  "actual_statement_count": 16,
+  "source_freeze_status": "All3mathematical modules and registry frozen at sourcecommit; later evidence must not alter their bytes."
+}

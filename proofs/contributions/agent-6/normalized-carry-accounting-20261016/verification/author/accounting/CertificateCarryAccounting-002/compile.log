@@ -1,0 +1,28 @@
+/workspace/scratch/f8aedc6d7adf/agent6-carry-dev/attempts/CertificateCarryAccounting-002/CertificateCarryAccounting.lean:28:6: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  (Agent115.ExteriorFactorization.highValue (stateOuter s).B + phaseCarry (stateOuter s).c) /
+    10 ^ (stateOuter s).B.length
+s : State
+hB : Bounded s.B
+hcarry : overflow (stateOuter s).c (stateOuter s).B = gam s
+hgam : gam s ≤ 1
+⊢ (if
+        (Agent115.ExteriorFactorization.highValue (stateOuter s).B + if 10 ≤ (stateOuter s).c then 1 else 0) /
+            10 ^ (stateOuter s).B.length =
+          0 then
+      0
+    else 1) =
+    gam s
+'Agent6.CertificateCarryAccounting.overflowBit_stateOuter' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent6.CertificateCarryAccounting.rowOverflowSum_eq_totalGam_of_bounded' depends on axioms: [propext,
+ sorryAx,
+ Quot.sound]
+'Agent6.CertificateCarryAccounting.valid_rowOverflowSum_eq_totalGam' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent6.CertificateCarryAccounting.checked_rowOverflowSum_eq_totalGam' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent6.CertificateCarryAccounting.checked_weighted_balance_totalGam' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Agent6.CertificateCarryAccounting.checked_weighted_balance_gains' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
