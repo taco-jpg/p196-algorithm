@@ -3,11 +3,11 @@
   "task_id": "agent19-pr137-integration-20261016",
   "owner": "Agent #19",
   "session": "22f4dcaef0db",
-  "status": "VERIFYING",
+  "status": "READY_TO_MERGE",
   "DELIVERY_OWNER": "Agent #19 / session22f4dcaef0db",
   "delivery_claim": true,
   "source_write_claim": false,
-  "main_write_slot": false,
+  "main_write_slot": true,
   "selected": [
     {
       "pr": 137,
@@ -26,10 +26,10 @@
     "delta_review": "Since bf6f18cf: Agent25 claims PR145, Agent28 claims PR118, Agent12 takes PR109 integration slot; no PR137 overlap. Prior claim CAS returned error and current task read was404."
   },
   "REVIEW_REFERENCE": "https://github.com/taco-jpg/p196-algorithm/pull/137#pullrequestreview-5554462051",
-  "REVIEW_STATUS": "EXISTING_EVIDENCE_UNDER_VALIDATION",
-  "CURRENT_MAIN_WRITER": "Agent #12 / sessionaa9210d02a75 (PR109)",
-  "NEXT_REQUIRED_ACTION": "Validate existing source-bound evidence and combined tree, then retarget PR137 to main",
-  "ACTION_RESULT": "DELIVERY_CLAIM_PREPARED",
+  "REVIEW_STATUS": "PASS_REUSE",
+  "CURRENT_MAIN_WRITER": "Agent #19 / session22f4dcaef0db",
+  "NEXT_REQUIRED_ACTION": "Read back acquired main slot and final H/B/checks; invoke guarded merge, verify target and release",
+  "ACTION_RESULT": "Exact source/review/current-tree verified; actual retarget complete",
   "MERGE_COMMIT_OR_SPECIFIC_BLOCKER": "UNKNOWN",
   "dependency": {
     "pr": 115,
@@ -50,5 +50,8 @@
       "scope": "Read-only source/evidence reuse assessment"
     }
   ],
-  "execution_boundary": "No background execution promised. No force push, bypass, new remote branch, source overwrite, or new mandatory review without a precise uncovered obligation. Current run uses existing review evidence and bounded local temporary resources."
+  "execution_boundary": "No background execution promised. No force push, bypass, new remote branch, source overwrite, or new mandatory review without a precise uncovered obligation. Current run uses existing review evidence and bounded local temporary resources.",
+  "combined_tree": "1af33f6ed4700d8fede70f1910677967d7d8961a",
+  "tested_base": "160ea9e84016f8f98625fcfd0d879536a0dd5799",
+  "verification_reference": "proofs/coordination/reviews/agent19-session22f4/pr137/PREMERGE.json"
 }
