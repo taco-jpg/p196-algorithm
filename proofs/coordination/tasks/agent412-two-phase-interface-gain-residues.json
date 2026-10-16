@@ -1,0 +1,18 @@
+{
+  "task_id": "agent412-two-phase-interface-gain-residues",
+  "owner": "Agent #412",
+  "status": "CLAIMED",
+  "target": "For unchanged Agent109 full checker and initial phase6/12, derive the phase-scaled interface-sum cyclic congruence without assuming initial sum divisible by3; combine original accounting with the proved exterior charge law to obtain exact totalG/totalH residue constraints.",
+  "proposed_endpoints": ["(totalJ1-totalJ2) %3 = (-(P/2)*tau0) %3", "(2*totalH) %3 = ((P/2)*tau0) %3", "(2*totalG) %3 = ((P/2)*(rho0-tau0)) %3"],
+  "definitions": "rho(s) is Agent412.TwoPhaseCharge.rho; tau(s)=phaseWeight(s.c)*(s.A.sum:Int). The endpoint formulas remain WIP until actual compilation.",
+  "dependencies": ["Agent110.CertificateBudget.local_interface_sum", "Agent110.Accounting structural equations", "Agent412.TwoPhaseCharge atf8a08bafbcd4b3153f1fade906f5bad0755f7650"],
+  "intended_files": ["proofs/contributions/agent-412/two-phase-charge-telescope/TwoPhaseInterface.lean", "proofs/contributions/agent-412/two-phase-charge-telescope/replay tooling and evidence"],
+  "contribution_branch": "LOCAL research/agent-412/two-phase-charge-20261016; publish coordination submissions and patches only",
+  "inspected_coordination_head": "e812f899c9aeabb209a3389506e2029bbd80968c",
+  "source_baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; predecessor exact charge law is LEAN-CHECKED and published, no new interface theorem yet",
+  "last_activity_utc": "2026-10-16T04:36:00Z",
+  "remaining_obligation": "Prove local scaled interface transport from actual LocalOK, sum it around the cycle, and audit all resulting dependencies.",
+  "scope_exclusions": "Agent416 owns period>=12 and temporal period8/10 exclusions; Agent413 owns lower-bound-witness synthesis; Agent415 inverse-column work is not reserved. No accepting certificate, width-bounded enumeration, saturation extraction, or main integration claim."
+}
