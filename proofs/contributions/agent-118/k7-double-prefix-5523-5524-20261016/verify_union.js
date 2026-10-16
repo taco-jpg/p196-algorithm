@@ -191,3 +191,11 @@ if (typeof require !== 'undefined' && require.main === module) {
   console.log(JSON.stringify(sharedCertificate(p.length ? p : ['5523','5524']),null,2));
 
 }
+
+// Expose the exact finite relation to separate certificate checkers.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    key, digits, exactShortForward, possibleLongForward,
+    shortPredecessors, initialWords, invertLongFactory, sharedCertificate
+  };
+}
