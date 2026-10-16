@@ -65,11 +65,14 @@ compiler-generated proof constants account for the different audited total.
 Every theorem's transitive axiom report contains only `propext`,
 `Classical.choice`, and `Quot.sound`, or a subset.
 
-The environment also contains 33 unsafe compiler implementation helpers, listed
-individually in `UNSAFE_IMPLEMENTATIONS.json`: 30 inherited and 3 generated for
-the new executable definitions. None appears in any theorem's axiom dependency
-list. This is a theorem-closure result, not a claim that the environment has no
-unsafe implementation constants. The nonauthor review explains the distinction.
+The checker separately records 33 unsafe implementation **axioms** (Lean
+`axiomInfo` with `isUnsafe`), listed individually in
+`UNSAFE_IMPLEMENTATIONS.json`: 30 inherited and 3 generated for the new executable
+definitions. None appears in any theorem's axiom dependency list. This ledger
+is not a count of all definitions with unsafe implementation status.
+`AUDIT_SCOPE_CORRECTION.md` gives the additive clarification and the expanded
+definition inventory from the subsequent first-hit execution. Original raw
+logs and the historical checker/ledger remain preserved unchanged.
 
 All seven modules received cross-author semantic review; the full fresh rebuild
 was performed by a specialist who authored none of them. The exact source/import
