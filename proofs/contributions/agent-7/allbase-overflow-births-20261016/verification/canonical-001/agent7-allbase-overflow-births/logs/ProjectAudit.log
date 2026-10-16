@@ -1,0 +1,622 @@
+P196.Agent7.AllBaseOverflow.residue_zero_iff (b x c : Int) (hb : 2 ≤ b) (hx : 0 ≤ x ∧ x ≤ 2 * b - 2)
+  (hc : 0 ≤ c ∧ c ≤ 1) : (x + c) % b = 0 ↔ x = 0 ∧ c = 0 ∨ x = b ∧ c = 0 ∨ x = b - 1 ∧ c = 1
+P196.Agent7.AllBaseOverflow.residue_max_iff (b x c : Int) (hb : 2 ≤ b) (hx : 0 ≤ x ∧ x ≤ 2 * b - 2)
+  (hc : 0 ≤ c ∧ c ≤ 1) : (x + c) % b = b - 1 ↔ x = b - 1 ∧ c = 0 ∨ x = b - 2 ∧ c = 1 ∨ x = 2 * b - 2 ∧ c = 1
+P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff (b a z l u v h : Int) (hb : 2 ≤ b) (ha : 0 ≤ a ∧ a ≤ 2 * b - 2)
+  (hz : 0 ≤ z ∧ z ≤ 2 * b - 2) (hl : 0 ≤ l ∧ l ≤ 1) (hh : 0 ≤ h ∧ h ≤ 1) (hu : u = (a + l) / b) (hv : v = (z + h) / b) :
+  (z + u) % b + (a + v) % b = 0 ↔
+    a = 0 ∧ z = 0 ∨ a = b - 1 ∧ z = b - 1 ∧ u = 1 ∧ v = 1 ∨ a = b - 1 ∧ z = b ∧ u = 0 ∨ a = b ∧ z = b - 1 ∧ v = 0
+P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff (b a z l u v h : Int) (hb : 2 ≤ b) (ha : 0 ≤ a ∧ a ≤ 2 * b - 2)
+  (hz : 0 ≤ z ∧ z ≤ 2 * b - 2) (hl : 0 ≤ l ∧ l ≤ 1) (hh : 0 ≤ h ∧ h ≤ 1) (hu : u = (a + l) / b) (hv : v = (z + h) / b) :
+  (z + u) % b + (a + v) % b = 2 * b - 2 ↔
+    a = 2 * b - 2 ∧ z = 2 * b - 2 ∨
+      a = b - 1 ∧ z = b - 1 ∧ u = 0 ∧ v = 0 ∨ a = b - 1 ∧ z = b - 2 ∧ u = 1 ∨ a = b - 2 ∧ z = b - 1 ∧ v = 1
+P196.Agent7.AllBaseOverflow.adjacentPair_zero_iff (b a z l h : Int) (hb : 2 ≤ b) (ha : 0 ≤ a ∧ a ≤ 2 * b - 2)
+  (hz : 0 ≤ z ∧ z ≤ 2 * b - 2) (hl : 0 ≤ l ∧ l ≤ 1) (hh : 0 ≤ h ∧ h ≤ 1) :
+  P196.Agent7.AllBaseOverflow.adjacentPair b a z l h = 0 ↔
+    a = 0 ∧ z = 0 ∨
+      a = b - 1 ∧ z = b - 1 ∧ (a + l) / b = 1 ∧ (z + h) / b = 1 ∨
+        a = b - 1 ∧ z = b ∧ (a + l) / b = 0 ∨ a = b ∧ z = b - 1 ∧ (z + h) / b = 0
+P196.Agent7.AllBaseOverflow.adjacentPair_max_iff (b a z l h : Int) (hb : 2 ≤ b) (ha : 0 ≤ a ∧ a ≤ 2 * b - 2)
+  (hz : 0 ≤ z ∧ z ≤ 2 * b - 2) (hl : 0 ≤ l ∧ l ≤ 1) (hh : 0 ≤ h ∧ h ≤ 1) :
+  P196.Agent7.AllBaseOverflow.adjacentPair b a z l h = 2 * b - 2 ↔
+    a = 2 * b - 2 ∧ z = 2 * b - 2 ∨
+      a = b - 1 ∧ z = b - 1 ∧ (a + l) / b = 0 ∧ (z + h) / b = 0 ∨
+        a = b - 1 ∧ z = b - 2 ∧ (a + l) / b = 1 ∨ a = b - 2 ∧ z = b - 1 ∧ (z + h) / b = 1
+P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral (b a z l u v h : Int) (hb : 2 ≤ b) (ha : 0 ≤ a ∧ a ≤ 2 * b - 2)
+  (hz : 0 ≤ z ∧ z ≤ 2 * b - 2) (hl : 0 ≤ l ∧ l ≤ 1) (hh : 0 ≤ h ∧ h ≤ 1) (hu : u = (a + l) / b) (hv : v = (z + h) / b)
+  (hnew :
+    (z + u) % b + (a + v) % b = 0 ∧ ¬(a = 0 ∧ z = 0) ∨
+      (z + u) % b + (a + v) % b = 2 * b - 2 ∧ ¬(a = 2 * b - 2 ∧ z = 2 * b - 2)) :
+  a = b - 1 ∨ z = b - 1
+P196.Agent7.AllBaseOverflow.adjacent_without_neutral (b a z l u v h : Int) (hb : 2 ≤ b) (ha : 0 ≤ a ∧ a ≤ 2 * b - 2)
+  (hz : 0 ≤ z ∧ z ≤ 2 * b - 2) (hl : 0 ≤ l ∧ l ≤ 1) (hh : 0 ≤ h ∧ h ≤ 1) (hu : u = (a + l) / b) (hv : v = (z + h) / b)
+  (han : a ≠ b - 1) (hzn : z ≠ b - 1) :
+  ((z + u) % b + (a + v) % b = 0 ↔ a = 0 ∧ z = 0) ∧
+    ((z + u) % b + (a + v) % b = 2 * b - 2 ↔ a = 2 * b - 2 ∧ z = 2 * b - 2)
+P196.Agent7.AllBaseOverflow.ordinary_terminal_take_succ (b e : Int) (xs : List (Int × Bool)) (k : Nat)
+  (hk : k < xs.length) :
+  PhysicalWidth.terminal b e (ResetNormalization.ordinaryTags (List.take (k + 1) xs)) =
+    (xs[k].fst + PhysicalWidth.terminal b e (ResetNormalization.ordinaryTags (List.take k xs))) / b
+P196.Agent7.AllBaseOverflow.incoming_succ (b : Int) (xs : List (Int × Bool)) (k : Nat) (hk : k < xs.length) :
+  ActualBaseBirths.incoming b xs (k + 1) = (xs[k].fst + ActualBaseBirths.incoming b xs k) / b
+P196.Agent7.AllBaseOverflow.incoming_predecessor (b : Int) (xs : List (Int × Bool)) (i : Nat) (hi0 : 0 < i)
+  (hi : i ≤ xs.length) : ActualBaseBirths.incoming b xs i = (xs[i - 1].fst + ActualBaseBirths.incoming b xs (i - 1)) / b
+P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor (b : Int) (xs : List (Int × Bool)) (i : Nat) (hi0 : 0 < i)
+  (hi : i < xs.length) (hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs) :
+  ActualBaseBirths.incoming b xs (xs.length - i) = (xs[i].fst + ActualBaseBirths.incoming b xs (xs.length - i - 1)) / b
+P196.Agent7.AllBaseOverflow.actual_overflow_body (b : Int) (xs : List (Int × Bool))
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  PhysicalWidth.actualDigits b xs = PhysicalWidth.body b 0 (ResetNormalization.ordinaryTags xs) ++ [1]
+P196.Agent7.AllBaseOverflow.actual_overflow_length (b : Int) (xs : List (Int × Bool))
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  (PhysicalWidth.actualDigits b xs).length = xs.length + 1
+P196.Agent7.AllBaseOverflow.overflow_length_pos (b : Int) (xs : List (Int × Bool))
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) : 0 < xs.length
+P196.Agent7.AllBaseOverflow.actual_overflow_at (b : Int) (xs : List (Int × Bool)) (k : Nat)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) (hk : k < xs.length) :
+  (PhysicalWidth.actualDigits b xs)[k] = (xs[k].fst + ActualBaseBirths.incoming b xs k) % b
+P196.Agent7.AllBaseOverflow.actual_overflow_last (b : Int) (xs : List (Int × Bool))
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  (PhysicalWidth.actualDigits b xs)[xs.length] = 1
+P196.Agent7.AllBaseOverflow.actual_overflow_pair_at (b : Int) (xs : List (Int × Bool)) (i : Nat)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) (hi0 : 0 < i) (hi : i < xs.length)
+  (hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs) :
+  (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs))[i] =
+    (xs[i].fst + ActualBaseBirths.incoming b xs i) % b +
+      (xs[i - 1].fst + ActualBaseBirths.incoming b xs (xs.length - i)) % b
+P196.Agent7.AllBaseOverflow.actual_overflow_pair_getD (b : Int) (xs : List (Int × Bool)) (i : Nat)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) (hi0 : 0 < i) (hi : i < xs.length)
+  (hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs) :
+  (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD i 0 =
+    ((xs.getD i (0, false)).fst + ActualBaseBirths.incoming b xs i) % b +
+      ((xs.getD (i - 1) (0, false)).fst + ActualBaseBirths.incoming b xs (xs.length - i)) % b
+P196.Agent7.AllBaseOverflow.actual_overflow_endpoints (b : Int) (xs : List (Int × Bool))
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD 0 0 = 1 + (xs.getD 0 (0, false)).fst % b ∧
+    (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD xs.length 0 = 1 + (xs.getD 0 (0, false)).fst % b
+P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff (b : Int) (xs : List (Int × Bool)) (i : Nat) (hb : 2 ≤ b)
+  (hbound : ResetNormalization.Bounded b xs) (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1)
+  (hi0 : 0 < i) (hi : i < xs.length) (hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs) :
+  (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD i 0 = 0 ↔
+    xs[i - 1].fst = 0 ∧ xs[i].fst = 0 ∨
+      xs[i - 1].fst = b - 1 ∧
+          xs[i].fst = b - 1 ∧
+            ActualBaseBirths.incoming b xs i = 1 ∧ ActualBaseBirths.incoming b xs (xs.length - i) = 1 ∨
+        xs[i - 1].fst = b - 1 ∧ xs[i].fst = b ∧ ActualBaseBirths.incoming b xs i = 0 ∨
+          xs[i - 1].fst = b ∧ xs[i].fst = b - 1 ∧ ActualBaseBirths.incoming b xs (xs.length - i) = 0
+P196.Agent7.AllBaseOverflow.actual_overflow_max_iff (b : Int) (xs : List (Int × Bool)) (i : Nat) (hb : 2 ≤ b)
+  (hbound : ResetNormalization.Bounded b xs) (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1)
+  (hi0 : 0 < i) (hi : i < xs.length) (hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs) :
+  (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD i 0 = 2 * b - 2 ↔
+    xs[i - 1].fst = 2 * b - 2 ∧ xs[i].fst = 2 * b - 2 ∨
+      xs[i - 1].fst = b - 1 ∧
+          xs[i].fst = b - 1 ∧
+            ActualBaseBirths.incoming b xs i = 0 ∧ ActualBaseBirths.incoming b xs (xs.length - i) = 0 ∨
+        xs[i - 1].fst = b - 1 ∧ xs[i].fst = b - 2 ∧ ActualBaseBirths.incoming b xs i = 1 ∨
+          xs[i - 1].fst = b - 2 ∧ xs[i].fst = b - 1 ∧ ActualBaseBirths.incoming b xs (xs.length - i) = 1
+P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral (b : Int) (xs : List (Int × Bool)) (i : Nat)
+  (hb : 2 ≤ b) (hbound : ResetNormalization.Bounded b xs)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) (hi0 : 0 < i) (hi : i < xs.length)
+  (hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs)
+  (hnew :
+    (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD i 0 = 0 ∧ ¬(xs[i - 1].fst = 0 ∧ xs[i].fst = 0) ∨
+      (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD i 0 = 2 * b - 2 ∧
+        ¬(xs[i - 1].fst = 2 * b - 2 ∧ xs[i].fst = 2 * b - 2)) :
+  xs[i - 1].fst = b - 1 ∨ xs[i].fst = b - 1
+P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral (b : Int) (xs : List (Int × Bool)) (i : Nat) (hb : 2 ≤ b)
+  (hbound : ResetNormalization.Bounded b xs) (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1)
+  (hi0 : 0 < i) (hi : i < xs.length) (hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs)
+  (hprev : xs[i - 1].fst ≠ b - 1) (hcur : xs[i].fst ≠ b - 1) :
+  ((ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD i 0 = 0 ↔ xs[i - 1].fst = 0 ∧ xs[i].fst = 0) ∧
+    ((ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD i 0 = 2 * b - 2 ↔
+      xs[i - 1].fst = 2 * b - 2 ∧ xs[i].fst = 2 * b - 2)
+P196.Agent7.AllBaseOverflow.endpoint_residue_positive (b q : Int) (hb : 2 ≤ b) : 0 < 1 + q % b
+P196.Agent7.AllBaseOverflow.endpoint_residue_below_max (b q : Int) (hb : 3 ≤ b) : 1 + q % b < 2 * b - 2
+P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff (b q : Int) (hb : 2 ≤ b) (hq : 0 ≤ q ∧ q ≤ 2 * b - 2) :
+  1 + q % b = 2 * b - 2 ↔ b = 2 ∧ q = 1
+P196.Agent7.AllBaseOverflow.overflow_head_coefficient_bound (b : Int) (xs : List (Int × Bool))
+  (hbound : ResetNormalization.Bounded b xs)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  0 ≤ (xs.getD 0 (0, false)).fst ∧ (xs.getD 0 (0, false)).fst ≤ 2 * b - 2
+P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_pos (b : Int) (xs : List (Int × Bool)) (hb : 2 ≤ b)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  0 < (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD 0 0 ∧
+    0 < (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD xs.length 0
+P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero (b : Int) (xs : List (Int × Bool)) (hb : 2 ≤ b)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD 0 0 ≠ 0 ∧
+    (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD xs.length 0 ≠ 0
+P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_max_iff (b : Int) (xs : List (Int × Bool)) (hb : 2 ≤ b)
+  (hbound : ResetNormalization.Bounded b xs)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  ((ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD 0 0 = 2 * b - 2 ↔ b = 2 ∧ (xs.getD 0 (0, false)).fst = 1) ∧
+    ((ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD xs.length 0 = 2 * b - 2 ↔
+      b = 2 ∧ (xs.getD 0 (0, false)).fst = 1)
+P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme (b : Int) (xs : List (Int × Bool)) (hb : 3 ≤ b)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  ((ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD 0 0 ≠ 0 ∧
+      (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD 0 0 ≠ 2 * b - 2) ∧
+    (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD xs.length 0 ≠ 0 ∧
+      (ReverseAdd.pairs (PhysicalWidth.actualDigits b xs)).getD xs.length 0 ≠ 2 * b - 2
+P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem (b : Int) (digits : List Int)
+  (xs : List (Int × Bool)) (hb : 2 ≤ b) (hd : ReverseAdd.DigitBounds b digits) (hp : PhysicalWidth.PositiveLast digits)
+  (hqs : List.map Prod.fst xs = ReverseAdd.pairs digits)
+  (ho : PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs) = 1) :
+  let output := PhysicalWidth.actualDigits b xs;
+  let Q := ReverseAdd.pairs output;
+  let q0 := (xs.getD 0 (0, false)).fst;
+  (∀ (d : Int), d ∈ output → 0 ≤ d ∧ d < b) ∧
+    PhysicalWidth.PositiveLast output ∧
+      output.length = digits.length + 1 ∧
+        SignedDigitUniqueness.eval b output = SignedDigitUniqueness.eval b digits + ReverseAdd.reversedValue b digits ∧
+          (Q.getD 0 0 = 1 + q0 % b ∧ Q.getD xs.length 0 = 1 + q0 % b) ∧
+            (0 < Q.getD 0 0 ∧ 0 < Q.getD xs.length 0) ∧
+              ((Q.getD 0 0 = 2 * b - 2 ↔ b = 2 ∧ q0 = 1) ∧ (Q.getD xs.length 0 = 2 * b - 2 ↔ b = 2 ∧ q0 = 1)) ∧
+                ∀ (i : Nat) (hi0 : 0 < i) (hi : i < xs.length),
+                  let a := xs[i - 1].fst;
+                  let z := xs[i].fst;
+                  let u := ActualBaseBirths.incoming b xs i;
+                  let v := ActualBaseBirths.incoming b xs (xs.length - i);
+                  (Q.getD i 0 = 0 ↔
+                      a = 0 ∧ z = 0 ∨
+                        a = b - 1 ∧ z = b - 1 ∧ u = 1 ∧ v = 1 ∨ a = b - 1 ∧ z = b ∧ u = 0 ∨ a = b ∧ z = b - 1 ∧ v = 0) ∧
+                    (Q.getD i 0 = 2 * b - 2 ↔
+                        a = 2 * b - 2 ∧ z = 2 * b - 2 ∨
+                          a = b - 1 ∧ z = b - 1 ∧ u = 0 ∧ v = 0 ∨
+                            a = b - 1 ∧ z = b - 2 ∧ u = 1 ∨ a = b - 2 ∧ z = b - 1 ∧ v = 1) ∧
+                      (Q.getD i 0 = 0 ∧ ¬(a = 0 ∧ z = 0) ∨ Q.getD i 0 = 2 * b - 2 ∧ ¬(a = 2 * b - 2 ∧ z = 2 * b - 2) →
+                        a = b - 1 ∨ z = b - 1)
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_6 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.qs.eq_1 : []
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval.eq_2 : []
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_classification._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.carry_residual_bounds : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits._proof_19 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.ordinary_terminal_take_succ : [propext]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.overflow_head_coefficient_bound : [propext]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_27 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral._proof_17 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0._proof_7 : [propext]
+AUDIT_THEOREM SeamSafety SeamSafety.palindrome_forces_carry_agreement._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.raw_eval._proof_1 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM BaseReflection List.mapTR.loop._at.BaseReflection.residual._spec_1
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM SeamSafety SeamSafety.canonical_outgoing_defect_safety : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_width_symmetry_forces_equality : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.mixed_carries_not_extreme : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.high.match_1.eq_1 : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.nooverflow_symmetry_forces_ordinary : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_positive_last : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_eq_raw._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.low_placed_equals_ordinary : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.pairs_bounds : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_22 : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.carry_residual_bounds._proof_12 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_max_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_at : [propext]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_6 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.mixed_carries_not_extreme._proof_17 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM CanonicalOverflowBirths P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ReverseAdd ReverseAdd.tagged_pairs_bound : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_positive_last._proof_22 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.raw_high._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_eq_raw : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.eval_nonnegative : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_last._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_eval : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths PhysicalWidth.atActualWidth.eq_1 : []
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero._proof_9 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.raw_high : [propext, Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_zero_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.pairs_at._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_bounded : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM ReverseAdd ReverseAdd.positive_terminal_of_projection : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_max_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ReverseAdd ReverseAdd.zip_add_bounds : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM BaseBirths BaseBirths.new_zero_iff._proof_15 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_length._proof_24 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_24 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ResetNormalization _private.ResetNormalization.0._proof_9 : [propext]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming_bit._proof_1 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_positive._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_at._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_coefficient_rigidity._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_7 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.canonical_normalization : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming.eq_1 : []
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.new_max_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.overflow_symmetry_forces_ordinary : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_length : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming_bit : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_28 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal.eq_1 : []
+AUDIT_THEOREM BaseBirths BaseBirths.new_zero_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.low_placed : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming_bit._proof_2 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0._proof_13 : [propext]
+AUDIT_THEOREM ResetNormalization ResetNormalization.nooverflow_symmetry_forces_ordinary._proof_29 : [propext,
+ Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacentPair_zero_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_at : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_endpoints._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_succ : [propext]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.overflow_length_pos : [propext]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacentPair_max_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_getD : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0._proof_10 : [propext]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval_zero_of_all_zero : [propext]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_classification : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.new_max_iff._proof_16 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_body : [propext]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_classification : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_positive_last._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.base_three_palindromic_input_control : []
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_pos : [propext, Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_3 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ResetNormalization BaseReflection.ColumnConditions.eq_1 : []
+AUDIT_THEOREM BaseBirths BaseBirths.binary_extremes_swap : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_9 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_6 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.ordinaryTags.eq_1 : []
+UNSAFE_IMPLEMENTATION_AXIOM ResetNormalization List.mapTR.loop._at.ResetNormalization.ordinaryTags._spec_1
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.symmetric_coefficient_at._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.residual.eq_1 : []
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_raw_equals_input : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_overflow_classification : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_11 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_below_max : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.eval_nonnegative._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_positive : [propext, Quot.sound]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_coefficient_rigidity : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_19 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_placed_equals_ordinary : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_2 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth _private.PhysicalWidth.0._proof_26 : [propext]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_length : [propext]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.ordinary_body_at : [propext]
+AUDIT_THEOREM PhysicalWidth _private.PhysicalWidth.0.PhysicalWidth.terminal.match_1.eq_2 : []
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_13 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.cs.eq_1 : []
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_positive._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.AllZero.eq_1 : []
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_bound : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.high.eq_1 : []
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_length : [propext]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_8 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_predecessor : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.pairs_positive_last._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_21 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_6 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_4 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM SeamSafety SeamSafety.palindrome_forces_placed : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval.eq_1 : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_nooverflow_classification : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_overflow_classification._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_eq_raw._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.eval_append._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.high.eq_2 : []
+AUDIT_THEOREM BaseBirths BaseBirths.births_have_interior_sources._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.body.eq_1 : []
+AUDIT_THEOREM SeamSafety SeamSafety.raw_carry_injective : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM BaseReflection List.mapTR.loop._at.BaseReflection.cs._spec_1
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_4 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_10 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinaryTags_idempotent : [propext]
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_7 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval_zero_iff_all_zero : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.low_columns_zero : [Quot.sound, propext]
+AUDIT_THEOREM BaseReflection BaseReflection.high_append_zero : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_8 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization _private.ResetNormalization.0.ResetNormalization.columns.match_1.eq_2 : []
+AUDIT_THEOREM BaseReflection BaseReflection.raw.eq_2 : []
+AUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.raw.match_1.eq_2 : []
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_14 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits._proof_21 : [propext, Quot.sound]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_symmetry_iff._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero._proof_9 : [propext,
+ Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_without_neutral : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.canonical_raw_symmetry : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.pairs_length : [propext]
+AUDIT_THEOREM SeamSafety SeamSafety.raw_carry_injective._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_pair_at._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_15 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.carry_residual_bounds._proof_11 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM BaseReflection List.mapTR.loop._at.BaseReflection.qs._spec_1
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_max_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal.eq_2 : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_5 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_zero_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_12 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.high.match_1.eq_2 : []
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_endpoints._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM SeamSafety SeamSafety.palindrome_forces_carry_agreement : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.symmetric_coefficient_at : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed_overflow_classification._proof_16 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_length._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.pairs_symmetric : [propext, Quot.sound]
+AUDIT_THEOREM SeamSafety SeamSafety.canonical_outgoing_defect_safety._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM SeamSafety SeamSafety.outgoing_defect_nonpalindromic : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_endpoints : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.high_eq_reverse_eval : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.residual_high : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.eval_zip_add : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM ResetNormalization _private.ResetNormalization.0.ResetNormalization.columns.match_1.eq_1 : []
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_below_max._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.raw_length : [propext]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.base_two_failure : [propext]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_overflow_symmetry_forces_placed : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM SeamSafety SeamSafety.carry_list_defect_nonpalindromic : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.overflow_symmetry_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ReverseAdd ReverseAdd.positive_terminal_append : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth _private.PhysicalWidth.0.PhysicalWidth.terminal.match_1.eq_1 : []
+AUDIT_THEOREM BaseReflection BaseReflection.raw_eval : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_5 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed.eq_1 : []
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_zero_iff._proof_1 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.positive_terminal_of_projection._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns.eq_1 : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.overflow_coefficient_rigidity._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.pairs_value : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns.eq_2 : []
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.placed_body_terminal : [propext]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_qs : [propext]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme._proof_11 : [propext,
+ Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.raw.eq_1 : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_max_iff._proof_2 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_reverse_eval_zero : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral._proof_4 : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_max_iff : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_bounded._proof_27 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_13 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_qs : []
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.pairs.eq_1 : []
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths PhysicalWidth.actualDigits.eq_1 : []
+AUDIT_THEOREM ReverseAdd ReverseAdd.reverse_add_defect_safety : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_12 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_3 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.pairs_at : [propext, Quot.sound]
+AUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.raw.match_1.eq_1 : []
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_8 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_last : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_width_symmetry_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.placed.eq_2 : []
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_11 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.residual_high._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_predecessor._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_14 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_symmetry_iff : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.body.eq_2 : []
+AUDIT_THEOREM BaseBirths BaseBirths.births_have_interior_sources : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0.SignedDigitUniqueness.eval.match_1.eq_1 : []
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval_ne_zero_of_nonzero_member : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_9 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero_open : [Quot.sound, propext]
+AUDIT_THEOREM ReverseAdd ReverseAdd.eval_zip_add._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM BaseBirths BaseBirths.births_have_interior_sources._proof_19 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.raw_of_zero_carries : [propext]
+AUDIT_THEOREM ReverseAdd _private.ReverseAdd.0._proof_3 : [propext]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_without_neutral._proof_18 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero._proof_15 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_16 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_pair_at : [propext, Quot.sound]
+AUDIT_THEOREM CanonicalOverflowBirths P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem._proof_1 : [propext,
+ Quot.sound]
+AUDIT_THEOREM BaseReflection BaseReflection.residual_bounds_of_columns : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.reverse_add_normalization : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_below_max._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.ordinary.eq_1 : []
+AUDIT_THEOREM BaseReflection BaseReflection.eval_append : [propext, Quot.sound]
+AUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme._proof_10 : [propext,
+ Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_10 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.pairs_positive_last : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_body : [propext]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.reverse_add_defect_safety._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM ActualBaseBirths ActualBaseBirths.canonical_reverse_add_extremes : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_26 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_11 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_positive_last : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_12 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ResetNormalization ResetNormalization.coefficient_mem_columns : [propext, Quot.sound]
+AUDIT_THEOREM PhysicalWidth PhysicalWidth.body_length : [propext]
+AUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0.SignedDigitUniqueness.eval.match_1.eq_2 : []
+AUDIT_THEOREM ReverseAdd ReverseAdd.zip_add_bounds._proof_2 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral._proof_5 : [propext,
+ Quot.sound,
+ Classical.choice]
+FULL_MODULE_AUDIT theorems=338 union=[Quot.sound, propext, Classical.choice]

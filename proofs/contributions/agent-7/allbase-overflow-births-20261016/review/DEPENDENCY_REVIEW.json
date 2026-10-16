@@ -1,0 +1,106 @@
+{
+  "reviewer": "Agent #7 /root/runtime",
+  "affiliation": "Same Agent 7 collaboration as the contribution authors; independently executed and source-reviewed within that team, not an external unaffiliated review.",
+  "timestamp": "2026-10-16T22:01:00.753854+00:00",
+  "status": "PASS for the eight unchanged original dependency modules",
+  "source_pin_manifest": {
+    "path": "dependencies/SOURCE_PINS.json",
+    "sha256": "622f800279123b95c201068640216dfb36f49629c0778af406243ca9082cf083"
+  },
+  "source_sha256": {
+    "BaseBirths": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33",
+    "SignedDigitUniqueness": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+    "BaseReflection": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+    "ResetNormalization": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+    "PhysicalWidth": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+    "SeamSafety": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+    "ReverseAdd": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+    "ActualBaseBirths": "e9fd9ed2a8065d7b6327d0400f7d94eea1049ba3f5b24241dcec244600121a6d"
+  },
+  "execution": {
+    "path": "review/dependencies-001/verification.json",
+    "sha256": "3c2f5dd24d3320ccc043b830527189c9ce3392eef69a87a1edde6b51305879da",
+    "fresh_modules": 8,
+    "public_theorems": 100,
+    "module_origin_theorems": 257,
+    "module_origin_counts": {
+      "BaseBirths": 27,
+      "SignedDigitUniqueness": 21,
+      "BaseReflection": 41,
+      "ResetNormalization": 45,
+      "PhysicalWidth": 52,
+      "SeamSafety": 9,
+      "ReverseAdd": 26,
+      "ActualBaseBirths": 19
+    },
+    "observed_theorem_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unsafe_implementation_constants": [
+      [
+        "BaseReflection",
+        "List.mapTR.loop._at.BaseReflection.residual._spec_1"
+      ],
+      [
+        "ResetNormalization",
+        "List.mapTR.loop._at.ResetNormalization.ordinaryTags._spec_1"
+      ],
+      [
+        "BaseReflection",
+        "List.mapTR.loop._at.BaseReflection.cs._spec_1"
+      ],
+      [
+        "BaseReflection",
+        "List.mapTR.loop._at.BaseReflection.qs._spec_1"
+      ]
+    ],
+    "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "compiler_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "trust_flag": "--trust=0"
+  },
+  "findings": [
+    {
+      "topic": "Original numeric representation",
+      "finding": "SignedDigitUniqueness.eval reads least-significant-first Int coefficients. ReverseAdd.pairs is the literal zipWith addition of a digit list and its reverse. Canonical normalization preserves eval b digits + reversedValue b digits."
+    },
+    {
+      "topic": "Actual normalization and reset flags",
+      "finding": "ResetNormalization.ordinaryTags replaces all Bool reset flags with false. PhysicalWidth.actualDigits applies ordinaryTags before atActualWidth; its final carry and every emitted digit use the original continuous carry recurrence, independently of stored flags. A reset-placed list is not the actual digit list."
+    },
+    {
+      "topic": "Physical width",
+      "finding": "PhysicalWidth.placed retains a terminal slot. actualDigits omits that slot exactly when its computed terminal carry is zero. Bounded nonnegative coefficients with b>=2 force carry bits and hence width L or L+1. When terminal=1 the actual output is body ++ [1], so its reflection is L-i, not L-1-i."
+    },
+    {
+      "topic": "Computed carries",
+      "finding": "ActualBaseBirths.incoming b xs k is terminal b 0 of the ordinary-tagged prefix xs.take k. The quotient carry_bit theorem uses b>=2, coefficient bounds 0..2*b-2, and an incoming bit. No arbitrary guessed carry is substituted for this prefix recursion."
+    },
+    {
+      "topic": "Canonical nonvacuity and leading digit",
+      "finding": "PhysicalWidth.PositiveLast requires an actual last digit greater than zero and excludes the empty list. ReverseAdd.reverse_add_normalization derives bounded actual digits, positive last digit, exact width and numeric reverse-add value from b>=2, bounded input digits, PositiveLast input and literal coefficient projection xs.map fst = pairs digits. It derives the required bounded coefficients from the same projection."
+    },
+    {
+      "topic": "Base two versus inherited rigidity claims",
+      "finding": "SignedDigitUniqueness and BaseReflection rigidity and SeamSafety defect/palindrome statements retain explicit b>=3 hypotheses. Binary counterexamples are present in the original sources. The b>=2 carry, residue, actual digit length/bounds and reverse-add normalization lemmas used by the new birth theorem do not depend on these b>=3 conclusions."
+    },
+    {
+      "topic": "Existing no-overflow classifier",
+      "finding": "BaseBirths.localPair uses one shared source coefficient and two carry bits. ActualBaseBirths identifies this pair with actual output only under terminal=0. These definitions do not by themselves justify overflowing output; the new adjacent classifier and shifted-index bridge are a required distinct composition."
+    },
+    {
+      "topic": "Foundational audit",
+      "finding": "Every original module was copied by exact pinned bytes into a new compact source directory and rebuilt with the official 4.19.0 compiler and --trust=0. Both public-root print-axiom checks and exhaustive module-origin theorem dependency checks passed. Four compiler-produced unsafe List.mapTR implementation constants were recorded separately; no project theorem depends on them, and no safe custom axiom was admitted."
+    },
+    {
+      "topic": "Interpretive scope",
+      "finding": "The original APIs concern finite coefficient/digit words. They supply no run-population, ancestry, lifetime, infinite-avoidance or 196 conclusion. The new interior birth theorem must retain its index bounds, coefficient symmetry and terminal-one hypothesis; endpoint identities and canonical specialization have separately stated domains."
+    }
+  ],
+  "issues": [],
+  "limits": [
+    "This receipt is the inherited dependency review; acceptance of the four new modules is recorded separately after their frozen final closure.",
+    "Finite controls diagnose specific claims and errors but do not replace the Lean proofs."
+  ]
+}

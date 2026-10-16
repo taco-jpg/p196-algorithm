@@ -1,0 +1,41 @@
+{
+  "status": "LEAN-CHECKED; independent review requested from /root/odd_counts",
+  "source": "../OverflowDigits.lean",
+  "source_sha256": "37926723ba9d0d95b567f27607a810ea40d4fc622d60571d79228a5d33f33f8f",
+  "author": "/root/gap_inventory",
+  "claim_commit": "cc9c01d128808d9c0b2b1cf3921a76f7c00e9cf1",
+  "accepted_attempt": "attempt-002",
+  "failed_attempts": [
+    {
+      "path": "attempt-001",
+      "status": "FAILED; not accepted",
+      "reason": "Four direct rewrite steps produced ill-typed dependent motives for list index bounds. No mathematical premise was changed; simp now transports the associated proof arguments. Compiler-inserted sorryAx reports in that failed attempt are retained solely as failure evidence."
+    }
+  ],
+  "hypotheses_review": "All width/body/index and endpoint identities require only computed terminal carry one. Actual paired interior reflection and the reflected carry recurrence additionally require old coefficient symmetry and the stated interior index bounds. Base>=2 and coefficient bounds are required only when downstream classifiers apply existing incoming_bit.",
+  "default_conventions": "The getElem statements follow ActualBaseBirths. The getD interior and endpoint interfaces use output default 0 and tagged coefficient default (0,false), with explicit in-range facts or terminal-one-derived nonemptiness.",
+  "meaning": "The same actualDigits, body, terminal, ordinaryTags, incoming and pairs constants are imported unchanged. No replacement carry or normalization semantics is defined.",
+  "exports": [
+    "ordinary_terminal_take_succ",
+    "incoming_succ",
+    "incoming_predecessor",
+    "incoming_mirror_predecessor",
+    "actual_overflow_body",
+    "actual_overflow_length",
+    "overflow_length_pos",
+    "actual_overflow_at",
+    "actual_overflow_last",
+    "actual_overflow_pair_at",
+    "actual_overflow_pair_getD",
+    "actual_overflow_endpoints"
+  ],
+  "axiom_union": [
+    "Quot.sound",
+    "propext"
+  ],
+  "not_claimed": [
+    "Independent review by the source author",
+    "Integration into main",
+    "A new ordinary-integer, ancestry, population-growth or infinite-orbit theorem"
+  ]
+}

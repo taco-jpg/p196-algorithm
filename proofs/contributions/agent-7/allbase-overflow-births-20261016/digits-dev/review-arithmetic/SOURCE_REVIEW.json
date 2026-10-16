@@ -1,0 +1,61 @@
+{
+  "task": "agent7-allbase-overflow-births-20261016",
+  "reviewer": "/root/gap_inventory",
+  "author": "/root/odd_counts",
+  "timestamp": "2026-10-16T21:57:29.086275+00:00",
+  "status": "INDEPENDENT SOURCE/INTERPRETATION REVIEW PASS; no independent compiler execution performed for this receipt",
+  "source_sha256": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59",
+  "source_snapshot": "AdjacentBirths-reviewed.lean",
+  "public_exports_reviewed": [
+    "residue_zero_iff",
+    "residue_max_iff",
+    "adjacent_residues_zero_iff",
+    "adjacent_residues_max_iff",
+    "adjacentPair_zero_iff",
+    "adjacentPair_max_iff",
+    "adjacent_new_extreme_neutral",
+    "adjacent_without_neutral"
+  ],
+  "independent_execution": "/root/runtime separately owns the original-dependency/final-composed fresh execution. This source receipt does not claim or substitute for that execution.",
+  "source_changes": false,
+  "findings": [
+    {
+      "topic": "Coupled carry convention",
+      "finding": "The names a,z denote adjacent old coefficients. Exterior bits l,h determine u=(a+l)/b and v=(z+h)/b. The emitted pair is (z+u)%b+(a+v)%b, exactly the orientation required by the overflowing index bridge. The theorem hypotheses retain both quotient equations; u and v are not free carry bits."
+    },
+    {
+      "topic": "Base and coefficient domain",
+      "finding": "All classifiers require integer base b>=2, 0<=a,z<=2*b-2, and exterior carries between zero and one. Intermediate bit bounds are derived through the unchanged ResetNormalization.carry_bit. Negative coefficients or unsupported bases are not silently admitted."
+    },
+    {
+      "topic": "Zero rows",
+      "finding": "The first row is the inherited adjacent zero pair. Neutral-neutral with both outgoing carries one and the two oriented neutral/base pairs are exactly the remaining three rows. Carry conditions select the correct orientation and are not discarded in either direction."
+    },
+    {
+      "topic": "Maximum rows",
+      "finding": "The first row is the inherited adjacent maximum pair. The other rows are neutral-neutral with outgoing carries zero and the two oriented neutral/(b-2) pairs with their required outgoing carry one."
+    },
+    {
+      "topic": "Binary boundary",
+      "finding": "No step strengthens b>=2 to b>=3. At b=2, b-2=0 and 2*b-2=2, so the same four source patterns continue to be represented. The imported free-carry same-coefficient classifier and the coupled adjacent classifier are kept distinct; the latter does not assume independent interior carries."
+    },
+    {
+      "topic": "New extremes and neutrality",
+      "finding": "adjacent_new_extreme_neutral excludes the corresponding old homogeneous extreme pair and concludes only that an old adjacent coefficient equals b-1. It does not assert that every neutral neighbor creates an extreme. adjacent_without_neutral then gives the two exact inheritance iff statements."
+    },
+    {
+      "topic": "Proof reuse and foundational trust",
+      "finding": "The single-residue lemmas are direct specializations of the existing BaseBirths localPair classifiers. The coupled proofs split actual quotient bits and use Euclidean remainder identities and kernel-checked omega; source introduces no axioms, sorry, admit, native_decide or alternative arithmetic semantics."
+    },
+    {
+      "topic": "Scope",
+      "finding": "adjacentPair is explicitly the local coupled arithmetic expression. The source does not claim the word-index correspondence itself; OverflowDigits and the root composition provide it. No population, run ancestry, temporal persistence, or 196 claim is implied."
+    }
+  ],
+  "review_issues": [],
+  "limitations": [
+    "This receipt is source-level review, not a standalone independently executed build.",
+    "No interpretation of local conditions as globally independently selectable carry bits is justified.",
+    "Exact actual-word and canonical-integer conclusions require the separate bridge/composition modules."
+  ]
+}

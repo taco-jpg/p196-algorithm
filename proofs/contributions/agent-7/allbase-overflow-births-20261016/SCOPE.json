@@ -1,0 +1,81 @@
+{
+  "task_id": "agent7-allbase-overflow-births-20261016",
+  "owner": "Agent #7",
+  "role": "GENERAL_RESEARCH",
+  "status": "CLAIMED",
+  "target_statement": "For every integer base b>=2 and finite bounded symmetric tagged coefficient word xs of length L whose existing PhysicalWidth terminal carry from zero after ordinaryTags is exactly1, prove actual output width L+1 and the exact interior paired coefficient formula Q[i]=(q_i+c_i)%b+(q_(i-1)+c_(L-i))%b for0<i<L, using the existing recursively computed incoming carries. Prove the complete four-row zero/max classifications stated below, the neutral-neighbor necessary condition for new interior extremes, exact endpoint1+q0%b, endpoint nonzero and maximum iff b=2 and q0=1, and canonical ordinary reverse-add specialization through the unchanged ReverseAdd.reverse_add_normalization.",
+  "notation": {
+    "q": "q_j=xs[j].1 for j<L",
+    "c": "c_j=ActualBaseBirths.incoming b xs j",
+    "Q": "Q=ReverseAdd.pairs(PhysicalWidth.actualDigits b xs)"
+  },
+  "hypotheses": [
+    "2<=b",
+    "ResetNormalization.Bounded b xs",
+    "(xs.map Prod.fst).reverse=xs.map Prod.fst",
+    "PhysicalWidth.terminal b 0 (ResetNormalization.ordinaryTags xs)=1"
+  ],
+  "zero_cases": [
+    "q_(i-1)=0 and q_i=0",
+    "q_(i-1)=b-1 and q_i=b-1 and c_i=1 and c_(L-i)=1",
+    "q_(i-1)=b-1 and q_i=b and c_i=0",
+    "q_(i-1)=b and q_i=b-1 and c_(L-i)=0"
+  ],
+  "maximum_cases": [
+    "q_(i-1)=2*b-2 and q_i=2*b-2",
+    "q_(i-1)=b-1 and q_i=b-1 and c_i=0 and c_(L-i)=0",
+    "q_(i-1)=b-1 and q_i=b-2 and c_i=1",
+    "q_(i-1)=b-2 and q_i=b-1 and c_(L-i)=1"
+  ],
+  "related_theorems": [
+    "ActualBaseBirths.actual_nooverflow_pair_at",
+    "ActualBaseBirths.actual_zero_iff",
+    "ActualBaseBirths.actual_max_iff",
+    "ActualBaseBirths.canonical_reverse_add_extremes",
+    "RunBirths.Overflow.next_column_adjacent_residues",
+    "RunBirths.Overflow.next_column_zero_iff",
+    "RunBirths.Overflow.next_column_eighteen_iff",
+    "ReverseAdd.reverse_add_normalization",
+    "IntrinsicReverseAdd.binary_safety_boundary"
+  ],
+  "dependencies": {
+    "source_baseline": "98d59927ad89c42f438ea857ec5750a0df3b91db",
+    "ActualBaseBirths_blob": "068599ccf6efc7a2a78386214a8515f0f58ad35e",
+    "closure": [
+      "ActualBaseBirths",
+      "BaseBirths",
+      "ReverseAdd",
+      "SeamSafety",
+      "PhysicalWidth",
+      "ResetNormalization",
+      "BaseReflection",
+      "SignedDigitUniqueness"
+    ],
+    "toolchain": "Official Lean4.19.0 commit6caaee842e94; Std"
+  },
+  "intended_source_files": [
+    "proofs/contributions/agent-7/allbase-overflow-births-20261016/AdjacentBirths.lean",
+    "proofs/contributions/agent-7/allbase-overflow-births-20261016/OverflowDigits.lean",
+    "proofs/contributions/agent-7/allbase-overflow-births-20261016/ActualOverflowBirths.lean",
+    "proofs/contributions/agent-7/allbase-overflow-births-20261016/CanonicalOverflowBirths.lean"
+  ],
+  "contribution_branch": "research/agent-7/base-overflow-20261016T2137Z",
+  "base_main": "3176da906d0849c815c6d1462d03d57aa7eff63b",
+  "scope_discussion": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225127019",
+  "overlap_check": "Read-only source/meaning scan at4bb755a9/main98d59927; inspected fresh task deltas throughf3d4e354 and213814ce including Agent106 congruence budget, Agent107 folded decimal FST, Agent103 residual decimal fibers. None matches all-base actual overflow births. Historical Agent106 reviewed one-step package remains preserved; its all-base theorem is explicitly no-overflow. Reconciled all changed records through b07643f41e6f320202e0971efd975759316e2331, including Agent118 5523/5524 finite certificates, Agent102/105 affine dynamics, Agent104 decimal gap mass, Agent6 signed-coordinate audit, Agent5 raw-prefix streams, Agent101 filtered fibers and Agent105 deterministic numerical decoder. None overlaps one-step all-base overflow births. All mathematical changes through a125e5667c69ca05e6e8f93a131baccdb996299d inspected, including Agent1 literal periodic block stripping; no all-base overflow-birth overlap.",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; proposed statements only, no implementation before this guarded claim succeeds",
+  "last_activity": "2026-10-16 21:43:38 UTC",
+  "remaining_obligation": "After successful claim/readback, split coupled local arithmetic, actual computed-carry/index bridge, canonical specialization, and independent review; publish checked source checkpoints and complete clean axiom audit.",
+  "scope_exclusions": [
+    "No new digit or orbit semantics",
+    "No run population/growth/ancestry/lifetime result",
+    "No takeover of normalized-class, protected-run or decimal spacer scopes",
+    "No new claim for existing binary110 example",
+    "No main-write slot",
+    "No infinite avoidance or196 conclusion"
+  ],
+  "publication_authority": "Current direct assignment authorizes isolated research contribution branches, GitHub issue61 coordination and incremental source publication. Parent is sole Git writer.",
+  "ownership_parent": "a125e5667c69ca05e6e8f93a131baccdb996299d",
+  "claim_commit": "cc9c01d128808d9c0b2b1cf3921a76f7c00e9cf1"
+}

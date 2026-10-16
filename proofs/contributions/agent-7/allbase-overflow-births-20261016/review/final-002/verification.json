@@ -1,0 +1,614 @@
+{
+  "reviewer": "Agent #7 /root/runtime",
+  "status": "FAIL",
+  "started_at": "2026-10-16T22:12:45.363912+00:00",
+  "kind": "Continuation of a fixture-only failure after a complete fresh successful frozen-project compilation",
+  "registry_sha256": "138fc4ac68beb8188812db092aae722476475dbb9644eb2e03d586fa5d6e733e",
+  "project_roots": [
+    "CanonicalOverflowBirths"
+  ],
+  "roots": [
+    "CanonicalOverflowBirths",
+    "BoundaryContracts"
+  ],
+  "source_records": {
+    "BaseBirths": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/BaseBirths.lean",
+      "sha256": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33",
+      "git_blob": "b4ebdb89c08b7409a790e23972967861966d98e8",
+      "imports": [
+        "Std"
+      ],
+      "public_theorems": [
+        "BaseBirths.localPair_eq_zero_iff",
+        "BaseBirths.localPair_eq_max_iff",
+        "BaseBirths.new_zero_iff",
+        "BaseBirths.new_max_iff",
+        "BaseBirths.mixed_carries_not_extreme",
+        "BaseBirths.births_have_interior_sources",
+        "BaseBirths.binary_extremes_swap"
+      ],
+      "object_sha256": "1f08fe3f8f98d69271dbaf37f455dc1a48ca343931d6caa6faa64ef2d39cf9da",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "SignedDigitUniqueness": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/SignedDigitUniqueness.lean",
+      "sha256": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+      "git_blob": "e394ec7eaec3fd2ed4eba58b8b8fb44f9f186804",
+      "imports": [
+        "Std"
+      ],
+      "public_theorems": [
+        "SignedDigitUniqueness.head_tail_zero",
+        "SignedDigitUniqueness.all_zero_of_eval_zero_open",
+        "SignedDigitUniqueness.all_zero_of_eval_zero",
+        "SignedDigitUniqueness.eval_zero_of_all_zero",
+        "SignedDigitUniqueness.eval_zero_iff_all_zero",
+        "SignedDigitUniqueness.all_zero_of_reverse_eval_zero",
+        "SignedDigitUniqueness.eval_ne_zero_of_nonzero_member",
+        "SignedDigitUniqueness.carry_residual_bounds",
+        "SignedDigitUniqueness.base_two_failure"
+      ],
+      "object_sha256": "ce27ec70aef53d2a91f1b139ec9d7dba56450e8d6b382462e6900bd285e19425",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "BaseReflection": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/BaseReflection.lean",
+      "sha256": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+      "git_blob": "d9ee9e168466e475dadbae9f8b61f7856d80a58f",
+      "imports": [
+        "SignedDigitUniqueness"
+      ],
+      "public_theorems": [
+        "BaseReflection.raw_length",
+        "BaseReflection.raw_eval",
+        "BaseReflection.raw_high",
+        "BaseReflection.eval_append",
+        "BaseReflection.high_eq_reverse_eval",
+        "BaseReflection.residual_high",
+        "BaseReflection.overflow_residual_eval_zero",
+        "BaseReflection.overflow_coefficient_rigidity",
+        "BaseReflection.residual_bounds_of_columns",
+        "BaseReflection.overflow_classification",
+        "BaseReflection.high_append_zero",
+        "BaseReflection.nooverflow_carries_zero",
+        "BaseReflection.nooverflow_classification",
+        "BaseReflection.raw_of_zero_carries",
+        "BaseReflection.nooverflow_raw_equals_input"
+      ],
+      "object_sha256": "e6149d4d77eedff5ef2ae4829df0714dc071953fa6d2865cca7b5921eb50a442",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "ResetNormalization": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/ResetNormalization.lean",
+      "sha256": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+      "git_blob": "21d8881eab93acb9163b46c89d89d56bf947e026",
+      "imports": [
+        "BaseReflection"
+      ],
+      "public_theorems": [
+        "ResetNormalization.carry_bit",
+        "ResetNormalization.columns_qs",
+        "ResetNormalization.columns_conditions",
+        "ResetNormalization.placed_eq_raw",
+        "ResetNormalization.placed_eval",
+        "ResetNormalization.placed_overflow_classification",
+        "ResetNormalization.placed_nooverflow_classification",
+        "ResetNormalization.low_columns_zero",
+        "ResetNormalization.low_placed",
+        "ResetNormalization.high_carry",
+        "ResetNormalization.high_columns_ignore_resets",
+        "ResetNormalization.high_placed_equals_ordinary",
+        "ResetNormalization.low_placed_equals_ordinary",
+        "ResetNormalization.coefficient_mem_columns",
+        "ResetNormalization.overflow_symmetry_forces_ordinary",
+        "ResetNormalization.nooverflow_symmetry_forces_ordinary"
+      ],
+      "object_sha256": "b7d9a4fee21593b069197214a10c4281ea5200b63d5d2cd42dffb550422aa090",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "AdjacentBirths": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/AdjacentBirths.lean",
+      "sha256": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59",
+      "git_blob": "48476cb44ce1f7fd0228ec306b2790616cd8035d",
+      "imports": [
+        "BaseBirths",
+        "ResetNormalization"
+      ],
+      "public_theorems": [
+        "P196.Agent7.AllBaseOverflow.residue_zero_iff",
+        "P196.Agent7.AllBaseOverflow.residue_max_iff",
+        "P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff",
+        "P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff",
+        "P196.Agent7.AllBaseOverflow.adjacentPair_zero_iff",
+        "P196.Agent7.AllBaseOverflow.adjacentPair_max_iff",
+        "P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral",
+        "P196.Agent7.AllBaseOverflow.adjacent_without_neutral"
+      ],
+      "object_sha256": "1cfdd3f5847dca62320ff2c6ec7ef764f2abb12c3203431472e7694df44d715d",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "PhysicalWidth": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/PhysicalWidth.lean",
+      "sha256": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+      "git_blob": "98592d3fc09caebab56bd999f53a9737327a02f7",
+      "imports": [
+        "ResetNormalization"
+      ],
+      "public_theorems": [
+        "PhysicalWidth.placed_body_terminal",
+        "PhysicalWidth.body_length",
+        "PhysicalWidth.terminal_bit",
+        "PhysicalWidth.terminal_le_ordinary",
+        "PhysicalWidth.ordinary_bound",
+        "PhysicalWidth.ordinary_qs",
+        "PhysicalWidth.ordinary_overflow_symmetry_forces_placed",
+        "PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed",
+        "PhysicalWidth.overflow_symmetry_iff",
+        "PhysicalWidth.nooverflow_terminal_zero",
+        "PhysicalWidth.nooverflow_symmetry_iff",
+        "PhysicalWidth.ordinaryTags_idempotent",
+        "PhysicalWidth.actual_width_symmetry_iff",
+        "PhysicalWidth.ordinary_body_digits",
+        "PhysicalWidth.ordinary_body_positive_last",
+        "PhysicalWidth.actual_digits_length",
+        "PhysicalWidth.actual_digits_bounded",
+        "PhysicalWidth.actual_digits_positive_last",
+        "PhysicalWidth.canonical_normalization",
+        "PhysicalWidth.actual_width_symmetry_forces_equality",
+        "PhysicalWidth.canonical_raw_symmetry"
+      ],
+      "object_sha256": "9589c43e91fcb6413bd5b7f3a8e372f6f915291ccda9ee2444dc27e7bbe16ab5",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "SeamSafety": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/SeamSafety.lean",
+      "sha256": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+      "git_blob": "52b9b545c840d9042ddff0ca8cddcc2838a9426e",
+      "imports": [
+        "PhysicalWidth"
+      ],
+      "public_theorems": [
+        "SeamSafety.raw_carry_injective",
+        "SeamSafety.palindrome_forces_placed",
+        "SeamSafety.palindrome_forces_carry_agreement",
+        "SeamSafety.carry_list_defect_nonpalindromic",
+        "SeamSafety.outgoing_defect_nonpalindromic",
+        "SeamSafety.canonical_outgoing_defect_safety"
+      ],
+      "object_sha256": "bfca4c8c1f66be803dd61619c562cfe2e342eb7ea296a500c26e328416f0ddfa",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "ReverseAdd": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/ReverseAdd.lean",
+      "sha256": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+      "git_blob": "f536493264821dd9e69c65939b6b73c0f3b5e2ca",
+      "imports": [
+        "SeamSafety"
+      ],
+      "public_theorems": [
+        "ReverseAdd.pairs_length",
+        "ReverseAdd.pairs_symmetric",
+        "ReverseAdd.eval_zip_add",
+        "ReverseAdd.pairs_value",
+        "ReverseAdd.zip_add_bounds",
+        "ReverseAdd.pairs_bounds",
+        "ReverseAdd.pairs_positive_last",
+        "ReverseAdd.positive_terminal_append",
+        "ReverseAdd.positive_terminal_of_projection",
+        "ReverseAdd.tagged_pairs_bound",
+        "ReverseAdd.reverse_add_normalization",
+        "ReverseAdd.reverse_add_defect_safety",
+        "ReverseAdd.eval_nonnegative",
+        "ReverseAdd.canonical_input_positive",
+        "ReverseAdd.base_three_palindromic_input_control"
+      ],
+      "object_sha256": "f74a4493cb0cc4199dac67f4c97c813aa08a88c4ad2776ea2b4c0840096eb948",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "ActualBaseBirths": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/ActualBaseBirths.lean",
+      "sha256": "e9fd9ed2a8065d7b6327d0400f7d94eea1049ba3f5b24241dcec244600121a6d",
+      "git_blob": "068599ccf6efc7a2a78386214a8515f0f58ad35e",
+      "imports": [
+        "BaseBirths",
+        "ReverseAdd"
+      ],
+      "public_theorems": [
+        "ActualBaseBirths.ordinary_body_at",
+        "ActualBaseBirths.actual_nooverflow_body",
+        "ActualBaseBirths.actual_nooverflow_length",
+        "ActualBaseBirths.actual_nooverflow_at",
+        "ActualBaseBirths.incoming_bit",
+        "ActualBaseBirths.pairs_at",
+        "ActualBaseBirths.symmetric_coefficient_at",
+        "ActualBaseBirths.actual_nooverflow_pair_at",
+        "ActualBaseBirths.actual_zero_iff",
+        "ActualBaseBirths.actual_max_iff",
+        "ActualBaseBirths.canonical_reverse_add_extremes"
+      ],
+      "object_sha256": "55f91e0fd8bb517f1999bb4b6109800ad2b2f5d04b7db1a7a8fc1658faf99731",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "OverflowDigits": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/OverflowDigits.lean",
+      "sha256": "37926723ba9d0d95b567f27607a810ea40d4fc622d60571d79228a5d33f33f8f",
+      "git_blob": "05f962d49e57af34c57ed5d5425fe114c937257c",
+      "imports": [
+        "ActualBaseBirths"
+      ],
+      "public_theorems": [
+        "P196.Agent7.AllBaseOverflow.ordinary_terminal_take_succ",
+        "P196.Agent7.AllBaseOverflow.incoming_succ",
+        "P196.Agent7.AllBaseOverflow.incoming_predecessor",
+        "P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_body",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_length",
+        "P196.Agent7.AllBaseOverflow.overflow_length_pos",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_at",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_last",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_pair_at",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_pair_getD",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints"
+      ],
+      "object_sha256": "3bdc1cba0ba21ff0f14fc0e8b519d926ee996a86373f3316f0b661d25922c864",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "ActualOverflowBirths": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/ActualOverflowBirths.lean",
+      "sha256": "4c43069bfad9c9dc2f4af1a61c9e9438d26648a5cfe3e6958e001058e0d19b8d",
+      "git_blob": "1556b86d68d792154c81d0b7c95d90b914ba23a1",
+      "imports": [
+        "AdjacentBirths",
+        "OverflowDigits"
+      ],
+      "public_theorems": [
+        "P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_max_iff",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral"
+      ],
+      "object_sha256": "7c7420e2e7f7ea6a8ba4c47d6f43c0eeee189dcb0f517e67bf3a1ae76b9d12eb",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "OverflowEndpoints": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/OverflowEndpoints.lean",
+      "sha256": "58a2656f3f38a891635f694b822a8fd41bdbea1d4f411a4ae3fa34a92dfdbe58",
+      "git_blob": "4ecda018a38786a43a9f84e405e313768eddc517",
+      "imports": [
+        "OverflowDigits"
+      ],
+      "public_theorems": [
+        "P196.Agent7.AllBaseOverflow.endpoint_residue_positive",
+        "P196.Agent7.AllBaseOverflow.endpoint_residue_below_max",
+        "P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff",
+        "P196.Agent7.AllBaseOverflow.overflow_head_coefficient_bound",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_pos",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_max_iff",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme"
+      ],
+      "object_sha256": "8bd7d8b7b1d1051b2c3f854deb383f8e6b347dc7537120a69003645372d5613b",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "CanonicalOverflowBirths": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/CanonicalOverflowBirths.lean",
+      "sha256": "813b347aa3dac13033bd11f9281be7ad97fa6524346f91702397492185ff0f84",
+      "git_blob": "49ecd77aa57ddfad144583fbc7c2fd7df49d7e64",
+      "imports": [
+        "ActualOverflowBirths",
+        "OverflowEndpoints"
+      ],
+      "public_theorems": [
+        "P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem"
+      ],
+      "object_sha256": "b5271d975fed6de9cf35effe2490ed194b503557bf600444c1fd1b630f00c2d2",
+      "object_compiled_in": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001"
+    },
+    "BoundaryContracts": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/BoundaryContracts.lean",
+      "sha256": "ca0880bdd2321d797778efacef75052bbf4c2afedd43cce7fe8785d6ce4f5396",
+      "git_blob": "3b2d89650b382b0e5e746ae7036714c6fc177a98",
+      "imports": [
+        "CanonicalOverflowBirths"
+      ],
+      "public_theorems": [
+        "P196.Agent7.AllBaseOverflow.Review.canonical_binary_contract",
+        "P196.Agent7.AllBaseOverflow.Review.canonical_binary_width_one_contract",
+        "P196.Agent7.AllBaseOverflow.Review.actual_binary_maximum_contract",
+        "P196.Agent7.AllBaseOverflow.Review.old_width_mirror_negative_control",
+        "P196.Agent7.AllBaseOverflow.Review.reset_tag_erasure_control",
+        "P196.Agent7.AllBaseOverflow.Review.endpoint_bound_is_needed_control",
+        "P196.Agent7.AllBaseOverflow.Review.signed_unbounded_endpoint_contract",
+        "P196.Agent7.AllBaseOverflow.Review.neutrality_is_not_sufficient_control",
+        "P196.Agent7.AllBaseOverflow.Review.out_of_range_default_control"
+      ]
+    }
+  },
+  "build_order": [
+    "BaseBirths",
+    "SignedDigitUniqueness",
+    "BaseReflection",
+    "ResetNormalization",
+    "AdjacentBirths",
+    "PhysicalWidth",
+    "SeamSafety",
+    "ReverseAdd",
+    "ActualBaseBirths",
+    "OverflowDigits",
+    "ActualOverflowBirths",
+    "OverflowEndpoints",
+    "CanonicalOverflowBirths",
+    "BoundaryContracts"
+  ],
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "lean_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "inherited_project_compilation": {
+    "attempt": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001",
+    "report_sha256": "ecea7acdcf004d05b63d4ec40fc4e62e07e52bde628f908b6936948fd9edad70",
+    "original_overall_status": "FAIL",
+    "reason_for_original_failure": "Reviewer BoundaryContracts finite membership elimination; all 13 frozen project source modules exited zero.",
+    "fresh_project_objects_in_prior_attempt": true,
+    "source_changes": false,
+    "modules": [
+      "BaseBirths",
+      "SignedDigitUniqueness",
+      "BaseReflection",
+      "ResetNormalization",
+      "AdjacentBirths",
+      "PhysicalWidth",
+      "SeamSafety",
+      "ReverseAdd",
+      "ActualBaseBirths",
+      "OverflowDigits",
+      "ActualOverflowBirths",
+      "OverflowEndpoints",
+      "CanonicalOverflowBirths"
+    ],
+    "commands": [
+      {
+        "module": "BaseBirths",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "BaseBirths.olean",
+          "BaseBirths.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 9.191851698000391,
+        "log_sha256": "2e8b81f2f0fde040767ca8191c13e33d0d32480670ae9ab9705d8fa3b55eb2e6"
+      },
+      {
+        "module": "SignedDigitUniqueness",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "SignedDigitUniqueness.olean",
+          "SignedDigitUniqueness.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.5142984400008572,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "module": "BaseReflection",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "BaseReflection.olean",
+          "BaseReflection.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.9777067430004536,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "module": "ResetNormalization",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "ResetNormalization.olean",
+          "ResetNormalization.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 1.1017128259991296,
+        "log_sha256": "c68e347e10575d426d47addc8032e2198b791dc4489ac2476d35dcaf199dd52a"
+      },
+      {
+        "module": "AdjacentBirths",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "AdjacentBirths.olean",
+          "AdjacentBirths.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 12.36646653400021,
+        "log_sha256": "84ba9d432c9f797dfe96c828ec03ef5d9a51a9c2493b7d7787506935f3fa02e7"
+      },
+      {
+        "module": "PhysicalWidth",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "PhysicalWidth.olean",
+          "PhysicalWidth.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 1.1210030269994604,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "module": "SeamSafety",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "SeamSafety.olean",
+          "SeamSafety.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.34027345100003004,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "module": "ReverseAdd",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "ReverseAdd.olean",
+          "ReverseAdd.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.8059944240012555,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "module": "ActualBaseBirths",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "ActualBaseBirths.olean",
+          "ActualBaseBirths.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.9371485150004446,
+        "log_sha256": "fb60c617f1a3ce9b208189fdc04bde32688d6259e98c7fd27e9cd9a43115bcc1"
+      },
+      {
+        "module": "OverflowDigits",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "OverflowDigits.olean",
+          "OverflowDigits.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 1.2518115080001735,
+        "log_sha256": "9868f16565dc186fe03303206dedbcad537da54bf86066f9c4e5e6c89a098f1f"
+      },
+      {
+        "module": "ActualOverflowBirths",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "ActualOverflowBirths.olean",
+          "ActualOverflowBirths.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 2.713759455999025,
+        "log_sha256": "6a3e825d87d2b613a08f1fdcbd7ebf3087b571eff726975f1134640a61d6c0c5"
+      },
+      {
+        "module": "OverflowEndpoints",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "OverflowEndpoints.olean",
+          "OverflowEndpoints.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.6151328150008339,
+        "log_sha256": "aa72c326cc3933decfb946ef897c338fc038af19e1691072dbf92faf8868eaf1"
+      },
+      {
+        "module": "CanonicalOverflowBirths",
+        "command": [
+          "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "CanonicalOverflowBirths.olean",
+          "CanonicalOverflowBirths.lean"
+        ],
+        "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.3565091159998701,
+        "log_sha256": "92e61684d6674473b3a49b4a52e0d7332868d702f23365fb710d86c5a21d5cfe"
+      }
+    ],
+    "object_policy": "Only the 13 successfully compiled project objects are copied; the failed reviewer fixture object is never copied or imported."
+  },
+  "commands": [
+    {
+      "module": "BoundaryContracts",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "BoundaryContracts.olean",
+        "BoundaryContracts.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-002/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7852429570011736,
+      "log_sha256": "d378273da151e48f027e523d78195cefd95545fd77bcd0b1f726a9686c2c90cb"
+    },
+    {
+      "module": "PublicAudit",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "PublicAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-002/source",
+      "exit_code": 1,
+      "elapsed_seconds": 11.814062662999277,
+      "log_sha256": "89861125c83bd3ff446dd7570e4d6203196aebf3a4a08d2becc4344573db51d5"
+    }
+  ],
+  "error": "PublicAudit.lean:7:0: error: unknown option 'pp.width'\n'BaseBirths.localPair_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseBirths.localPair_eq_max_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseBirths.new_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseBirths.new_max_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseBirths.mixed_carries_not_extreme' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseBirths.births_have_interior_sources' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseBirths.binary_extremes_swap' does not depend on any axioms\n'SignedDigitUniqueness.head_tail_zero' depends on axioms: [propext, Quot.sound]\n'SignedDigitUniqueness.all_zero_of_eval_zero_open' depends on axioms: [propext, Quot.sound]\n'SignedDigitUniqueness.all_zero_of_eval_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SignedDigitUniqueness.eval_zero_of_all_zero' depends on axioms: [propext]\n'SignedDigitUniqueness.eval_zero_iff_all_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SignedDigitUniqueness.all_zero_of_reverse_eval_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SignedDigitUniqueness.eval_ne_zero_of_nonzero_member' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SignedDigitUniqueness.carry_residual_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SignedDigitUniqueness.base_two_failure' depends on axioms: [propext]\n'BaseReflection.raw_length' depends on axioms: [propext]\n'BaseReflection.raw_eval' depends on axioms: [propext, Quot.sound]\n'BaseReflection.raw_high' depends on axioms: [propext, Quot.sound]\n'BaseReflection.eval_append' depends on axioms: [propext, Quot.sound]\n'BaseReflection.high_eq_reverse_eval' depends on axioms: [propext, Quot.sound]\n'BaseReflection.residual_high' depends on axioms: [propext, Quot.sound]\n'BaseReflection.overflow_residual_eval_zero' depends on axioms: [propext, Quot.sound]\n'BaseReflection.overflow_coefficient_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseReflection.residual_bounds_of_columns' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseReflection.overflow_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseReflection.high_append_zero' depends on axioms: [propext, Quot.sound]\n'BaseReflection.nooverflow_carries_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseReflection.nooverflow_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BaseReflection.raw_of_zero_carries' depends on axioms: [propext]\n'BaseReflection.nooverflow_raw_equals_input' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.carry_bit' depends on axioms: [propext, Quot.sound]\n'ResetNormalization.columns_qs' does not depend on any axioms\n'ResetNormalization.columns_conditions' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.placed_eq_raw' depends on axioms: [propext, Quot.sound]\n'ResetNormalization.placed_eval' depends on axioms: [propext, Quot.sound]\n'ResetNormalization.placed_overflow_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.placed_nooverflow_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.low_columns_zero' depends on axioms: [propext, Quot.sound]\n'ResetNormalization.low_placed' depends on axioms: [propext, Quot.sound]\n'ResetNormalization.high_carry' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.high_columns_ignore_resets' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.high_placed_equals_ordinary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.low_placed_equals_ordinary' depends on axioms: [propext, Quot.sound]\n'ResetNormalization.coefficient_mem_columns' depends on axioms: [propext, Quot.sound]\n'ResetNormalization.overflow_symmetry_forces_ordinary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ResetNormalization.nooverflow_symmetry_forces_ordinary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.residue_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.residue_max_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.adjacentPair_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.adjacentPair_max_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.adjacent_without_neutral' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.placed_body_terminal' depends on axioms: [propext]\n'PhysicalWidth.body_length' depends on axioms: [propext]\n'PhysicalWidth.terminal_bit' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.terminal_le_ordinary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.ordinary_bound' depends on axioms: [propext, Quot.sound]\n'PhysicalWidth.ordinary_qs' depends on axioms: [propext]\n'PhysicalWidth.ordinary_overflow_symmetry_forces_placed' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.overflow_symmetry_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.nooverflow_terminal_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.nooverflow_symmetry_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.ordinaryTags_idempotent' depends on axioms: [propext]\n'PhysicalWidth.actual_width_symmetry_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.ordinary_body_digits' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.ordinary_body_positive_last' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.actual_digits_length' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.actual_digits_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.actual_digits_positive_last' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.canonical_normalization' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.actual_width_symmetry_forces_equality' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PhysicalWidth.canonical_raw_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SeamSafety.raw_carry_injective' depends on axioms: [propext, Quot.sound]\n'SeamSafety.palindrome_forces_placed' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SeamSafety.palindrome_forces_carry_agreement' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SeamSafety.carry_list_defect_nonpalindromic' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SeamSafety.outgoing_defect_nonpalindromic' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SeamSafety.canonical_outgoing_defect_safety' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ReverseAdd.pairs_length' depends on axioms: [propext]\n'ReverseAdd.pairs_symmetric' depends on axioms: [propext, Quot.sound]\n'ReverseAdd.eval_zip_add' depends on axioms: [propext, Quot.sound]\n'ReverseAdd.pairs_value' depends on axioms: [propext, Quot.sound]\n'ReverseAdd.zip_add_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ReverseAdd.pairs_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ReverseAdd.pairs_positive_last' depends on axioms: [propext, Quot.sound]\n'ReverseAdd.positive_terminal_append' does not depend on any axioms\n'ReverseAdd.positive_terminal_of_projection' depends on axioms: [propext, Quot.sound]\n'ReverseAdd.tagged_pairs_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ReverseAdd.reverse_add_normalization' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ReverseAdd.reverse_add_defect_safety' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ReverseAdd.eval_nonnegative' depends on axioms: [propext, Quot.sound]\n'ReverseAdd.canonical_input_positive' depends on axioms: [propext, Quot.sound]\n'ReverseAdd.base_three_palindromic_input_control' does not depend on any axioms\n'ActualBaseBirths.ordinary_body_at' depends on axioms: [propext]\n'ActualBaseBirths.actual_nooverflow_body' depends on axioms: [propext]\n'ActualBaseBirths.actual_nooverflow_length' depends on axioms: [propext]\n'ActualBaseBirths.actual_nooverflow_at' depends on axioms: [propext]\n'ActualBaseBirths.incoming_bit' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ActualBaseBirths.pairs_at' depends on axioms: [propext, Quot.sound]\n'ActualBaseBirths.symmetric_coefficient_at' depends on axioms: [propext, Quot.sound]\n'ActualBaseBirths.actual_nooverflow_pair_at' depends on axioms: [propext, Quot.sound]\n'ActualBaseBirths.actual_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ActualBaseBirths.actual_max_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ActualBaseBirths.canonical_reverse_add_extremes' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.ordinary_terminal_take_succ' depends on axioms: [propext]\n'P196.Agent7.AllBaseOverflow.incoming_succ' depends on axioms: [propext]\n'P196.Agent7.AllBaseOverflow.incoming_predecessor' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_body' depends on axioms: [propext]\n'P196.Agent7.AllBaseOverflow.actual_overflow_length' depends on axioms: [propext]\n'P196.Agent7.AllBaseOverflow.overflow_length_pos' depends on axioms: [propext]\n'P196.Agent7.AllBaseOverflow.actual_overflow_at' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_last' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_pair_at' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_pair_getD' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_endpoints' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_max_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P196.Agent7.AllBaseOverflow.endpoint_residue_positive' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.endpoint_residue_below_max' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.overflow_head_coefficient_bound' depends on axioms: [propext]\n'P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_pos' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_max_iff' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'P196.Agent7.AllBaseOverflow.Review.canonical_binary_contract' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'P196.Agent7.AllBaseOverflow.Review.canonical_binary_width_one_contract' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'P196.Agent7.AllBaseOverflow.Review.actual_binary_maximum_contract' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'P196.Agent7.AllBaseOverflow.Review.old_width_mirror_negative_control' does not depend on any axioms\n'P196.Agent7.AllBaseOverflow.Review.reset_tag_erasure_control' does not depend on any axioms\n'P196.Agent7.AllBaseOverflow.Review.endpoint_bound_is_needed_control' does not depend on any axioms\n'P196.Agent7.AllBaseOverflow.Review.signed_unbounded_endpoint_contract' depends on axioms: [propext, Quot.sound]\n'P196.Agent7.AllBaseOverflow.Review.neutrality_is_not_sufficient_control' does not depend on any axioms\n'P196.Agent7.AllBaseOverflow.Review.out_of_range_default_control' does not depend on any axioms\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_6: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.canonical_binary_contract: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM BaseReflection BaseReflection.qs.eq_1: []\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval.eq_2: []\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_classification._proof_15: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.carry_residual_bounds: [propext, Classical.choice, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits._proof_19: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.ordinary_terminal_take_succ: [propext]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.overflow_head_coefficient_bound: [propext]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_27: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral._proof_17: [propext,\n Classical.choice,\n Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0._proof_7: [propext]\nAUDIT_THEOREM SeamSafety SeamSafety.palindrome_forces_carry_agreement._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.raw_eval._proof_1: [propext, Quot.sound]\nUNSAFE_IMPLEMENTATION_AXIOM BaseReflection List.mapTR.loop._at.BaseReflection.residual._spec_1\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_13: [propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.reset_tag_erasure_control: []\nAUDIT_THEOREM SeamSafety SeamSafety.canonical_outgoing_defect_safety: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_width_symmetry_forces_equality: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_14: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_7: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.mixed_carries_not_extreme: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.high.match_1.eq_1: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.nooverflow_symmetry_forces_ordinary: [Quot.sound,\n propext,\n Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_positive_last: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_eq_raw._proof_13: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_11: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.low_placed_equals_ordinary: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.pairs_bounds: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_22: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.carry_residual_bounds._proof_12: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_max_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_at: [propext]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_6: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff._proof_7: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.mixed_carries_not_extreme._proof_17: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM CanonicalOverflowBirths P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM ReverseAdd ReverseAdd.tagged_pairs_bound: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_positive_last._proof_22: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.raw_high._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_eq_raw: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.eval_nonnegative: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_7: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_last._proof_6: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_eval: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths PhysicalWidth.atActualWidth.eq_1: []\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero._proof_9: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.raw_high: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_zero_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero._proof_6: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.pairs_at._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_bounded: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM ReverseAdd ReverseAdd.positive_terminal_of_projection: [propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts _private.BoundaryContracts.0._proof_1: [propext]\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_11: [propext, Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme: [propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.old_width_mirror_negative_control: []\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_max_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ReverseAdd ReverseAdd.zip_add_bounds: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM BaseBirths BaseBirths.new_zero_iff._proof_15: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_length._proof_24: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_24: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM ResetNormalization _private.ResetNormalization.0._proof_9: [propext]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff._proof_6: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming_bit._proof_1: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_positive._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_at._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_coefficient_rigidity._proof_9: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_7: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.canonical_normalization: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming.eq_1: []\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.new_max_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.overflow_symmetry_forces_ordinary: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary: [propext, Classical.choice, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_length: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming_bit: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_28: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed: [Quot.sound,\n propext,\n Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal.eq_1: []\nAUDIT_THEOREM BaseBirths BaseBirths.new_zero_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.low_placed: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.incoming_bit._proof_2: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0._proof_13: [propext]\nAUDIT_THEOREM ResetNormalization ResetNormalization.nooverflow_symmetry_forces_ordinary._proof_29: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacentPair_zero_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_at: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_endpoints._proof_13: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_succ: [propext]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.overflow_length_pos: [propext]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacentPair_max_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_getD: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0._proof_10: [propext]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval_zero_of_all_zero: [propext]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_classification: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.new_max_iff._proof_16: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_body: [propext]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_classification: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_positive_last._proof_23: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.base_three_palindromic_input_control: []\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_pos: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_3: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM ResetNormalization BaseReflection.ColumnConditions.eq_1: []\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.canonical_binary_width_one_contract: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM BaseBirths BaseBirths.binary_extremes_swap: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed._proof_14: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_9: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive._proof_9: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero._proof_7: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_6: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.ordinaryTags.eq_1: []\nUNSAFE_IMPLEMENTATION_AXIOM ResetNormalization List.mapTR.loop._at.ResetNormalization.ordinaryTags._spec_1\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.symmetric_coefficient_at._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.residual.eq_1: []\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_raw_equals_input: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_overflow_classification: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_11: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_below_max: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.eval_nonnegative._proof_7: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_residual_eval_zero._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_positive: [propext, Quot.sound]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_coefficient_rigidity: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_19: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero._proof_16: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_placed_equals_ordinary: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_2: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_7: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth _private.PhysicalWidth.0._proof_26: [propext]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_length: [propext]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_9: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.ordinary_body_at: [propext]\nAUDIT_THEOREM PhysicalWidth _private.PhysicalWidth.0.PhysicalWidth.terminal.match_1.eq_2: []\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_13: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_12: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.cs.eq_1: []\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_positive._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero._proof_17: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.AllZero.eq_1: []\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_bound: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.high.eq_1: []\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_length: [propext]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_8: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM BaseBirths _private.BaseBirths.0.BaseBirths.mod_two_ranges: [propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.canonical_binary_width_one_contract._proof_2: [propext,\n Classical.choice,\n Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_predecessor: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.pairs_positive_last._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_21: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_6: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_4: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.out_of_range_default_control: []\nAUDIT_THEOREM SeamSafety SeamSafety.palindrome_forces_placed: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval.eq_1: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_nooverflow_classification: [Quot.sound,\n propext,\n Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_overflow_classification._proof_15: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_eq_raw._proof_14: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.eval_append._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.high.eq_2: []\nAUDIT_THEOREM BaseBirths BaseBirths.births_have_interior_sources._proof_18: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.body.eq_1: []\nAUDIT_THEOREM SeamSafety SeamSafety.raw_carry_injective: [propext, Quot.sound]\nUNSAFE_IMPLEMENTATION_AXIOM BaseReflection List.mapTR.loop._at.BaseReflection.cs._spec_1\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_4: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_10: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.endpoint_bound_is_needed_control: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinaryTags_idempotent: [propext]\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_7: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval_zero_iff_all_zero: [Quot.sound,\n propext,\n Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.low_columns_zero: [Quot.sound, propext]\nAUDIT_THEOREM BaseReflection BaseReflection.high_append_zero: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_8: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization _private.ResetNormalization.0.ResetNormalization.columns.match_1.eq_2: []\nAUDIT_THEOREM BaseReflection BaseReflection.raw.eq_2: []\nAUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.raw.match_1.eq_2: []\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_14: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits._proof_21: [propext, Quot.sound]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_symmetry_iff._proof_18: [propext, Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero._proof_9: [propext,\n Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_without_neutral: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.canonical_raw_symmetry: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_8: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.pairs_length: [propext]\nAUDIT_THEOREM SeamSafety SeamSafety.raw_carry_injective._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero: [propext, Classical.choice, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_pair_at._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_15: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.carry_residual_bounds._proof_11: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor: [propext, Quot.sound]\nUNSAFE_IMPLEMENTATION_AXIOM BaseReflection List.mapTR.loop._at.BaseReflection.qs._spec_1\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_max_iff: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_12: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal.eq_2: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_20: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_5: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_zero_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_12: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero._proof_8: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_digits._proof_20: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.high.match_1.eq_2: []\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_endpoints._proof_12: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM SeamSafety SeamSafety.palindrome_forces_carry_agreement: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.symmetric_coefficient_at: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_17: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed_overflow_classification._proof_16: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_length._proof_25: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.pairs_symmetric: [propext, Quot.sound]\nAUDIT_THEOREM SeamSafety SeamSafety.canonical_outgoing_defect_safety._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM SeamSafety SeamSafety.outgoing_defect_nonpalindromic: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_endpoints: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_10: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.high_eq_reverse_eval: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.residual_high: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.eval_zip_add: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.nooverflow_carries_zero._proof_10: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets: [propext, Classical.choice, Quot.sound]\nAUDIT_THEOREM ResetNormalization _private.ResetNormalization.0.ResetNormalization.columns.match_1.eq_1: []\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_below_max._proof_3: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.raw_length: [propext]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.base_two_failure: [propext]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_overflow_symmetry_forces_placed: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM SeamSafety SeamSafety.carry_list_defect_nonpalindromic: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.overflow_symmetry_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ReverseAdd ReverseAdd.positive_terminal_append: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth _private.PhysicalWidth.0.PhysicalWidth.terminal.match_1.eq_1: []\nAUDIT_THEOREM BaseReflection BaseReflection.raw_eval: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_5: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed.eq_1: []\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_zero_iff._proof_1: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_zero_iff._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.positive_terminal_of_projection._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns.eq_1: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.carry_bit._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.overflow_coefficient_rigidity._proof_8: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.pairs_value: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns.eq_2: []\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.placed_body_terminal: [propext]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_qs: [propext]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme._proof_11: [propext,\n Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.raw.eq_1: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions: [Quot.sound, propext, Classical.choice]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.residue_max_iff._proof_2: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_reverse_eval_zero: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral._proof_4: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_max_iff: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_digits_bounded._proof_27: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_8: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_13: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_qs: []\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero._proof_8: [propext,\n Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.pairs.eq_1: []\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_6: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_11: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths PhysicalWidth.actualDigits.eq_1: []\nAUDIT_THEOREM ReverseAdd ReverseAdd.reverse_add_defect_safety: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_12: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_bit._proof_3: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.pairs_at: [propext, Quot.sound]\nAUDIT_THEOREM BaseReflection _private.BaseReflection.0.BaseReflection.raw.match_1.eq_1: []\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_8: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_last: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.actual_width_symmetry_iff: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.placed.eq_2: []\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_11: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.residual_high._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.head_tail_zero._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive._proof_8: [propext, Quot.sound]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.incoming_predecessor._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.columns_conditions._proof_10: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.localPair_eq_max_iff._proof_14: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_nooverflow_symmetry_forces_placed._proof_13: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_symmetry_iff: [propext, Classical.choice, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.body.eq_2: []\nAUDIT_THEOREM BaseBirths BaseBirths.births_have_interior_sources: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_18: [propext, Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0.SignedDigitUniqueness.eval.match_1.eq_1: []\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.eval_ne_zero_of_nonzero_member: [Quot.sound,\n propext,\n Classical.choice]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_9: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM SignedDigitUniqueness SignedDigitUniqueness.all_zero_of_eval_zero_open: [Quot.sound, propext]\nAUDIT_THEOREM ReverseAdd ReverseAdd.eval_zip_add._proof_1: [propext, Quot.sound]\nAUDIT_THEOREM BaseBirths BaseBirths.births_have_interior_sources._proof_19: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.raw_of_zero_carries: [propext]\nAUDIT_THEOREM ReverseAdd _private.ReverseAdd.0._proof_3: [propext]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_without_neutral._proof_18: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM OverflowDigits P196.Agent7.AllBaseOverflow.actual_overflow_pair_at._proof_9: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.nooverflow_terminal_zero._proof_15: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_10: [propext, Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff._proof_16: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_pair_at: [propext, Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.signed_unbounded_endpoint_contract: [propext,\n Quot.sound]\nAUDIT_THEOREM CanonicalOverflowBirths P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem._proof_1: [propext,\n Quot.sound]\nAUDIT_THEOREM BaseReflection BaseReflection.residual_bounds_of_columns: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff._proof_2: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_carry._proof_23: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.reverse_add_normalization: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.endpoint_residue_below_max._proof_4: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.ordinary.eq_1: []\nAUDIT_THEOREM BaseReflection BaseReflection.eval_append: [propext, Quot.sound]\nAUDIT_THEOREM OverflowEndpoints P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme._proof_10: [propext,\n Quot.sound]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.neutrality_is_not_sufficient_control: []\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_10: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.pairs_positive_last: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.actual_nooverflow_body: [propext]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral: [propext,\n Classical.choice,\n Quot.sound]\nAUDIT_THEOREM AdjacentBirths P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff._proof_5: [propext, Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.reverse_add_defect_safety._proof_6: [propext, Quot.sound]\nAUDIT_THEOREM ActualBaseBirths ActualBaseBirths.canonical_reverse_add_extremes: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_25: [propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.high_columns_ignore_resets._proof_26: [Classical.choice,\n propext,\n Quot.sound]\nAUDIT_THEOREM ReverseAdd ReverseAdd.canonical_input_positive._proof_10: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_11: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.ordinary_body_positive_last: [propext, Quot.sound, Classical.choice]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.terminal_le_ordinary._proof_12: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ResetNormalization ResetNormalization.coefficient_mem_columns: [propext, Quot.sound]\nAUDIT_THEOREM PhysicalWidth PhysicalWidth.body_length: [propext]\nAUDIT_THEOREM SignedDigitUniqueness _private.SignedDigitUniqueness.0.SignedDigitUniqueness.eval.match_1.eq_2: []\nAUDIT_THEOREM ReverseAdd ReverseAdd.zip_add_bounds._proof_2: [Classical.choice, propext, Quot.sound]\nAUDIT_THEOREM ActualOverflowBirths P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral._proof_5: [propext,\n Quot.sound,\n Classical.choice]\nAUDIT_THEOREM BoundaryContracts P196.Agent7.AllBaseOverflow.Review.actual_binary_maximum_contract: [propext,\n Quot.sound,\n Classical.choice]\nFULL_MODULE_AUDIT theorems=349\n",
+  "finished_at": "2026-10-16T22:12:57.970613+00:00"
+}

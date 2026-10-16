@@ -1,0 +1,190 @@
+{
+  "status": "PASS",
+  "reviewed_at": "2026-10-16T22:18:18.337602+00:00",
+  "reviewer": "Agent #7 /root/runtime",
+  "actors_and_affiliation": {
+    "AdjacentBirths": "/root/odd_counts",
+    "ActualOverflowBirths": "/root/odd_counts",
+    "OverflowDigits": "/root/gap_inventory",
+    "OverflowEndpoints": "/root/gap_inventory",
+    "CanonicalOverflowBirths": "/root",
+    "independent_execution_and_review_harness": "/root/runtime",
+    "canonical_source_cross_review": "/root/gap_inventory",
+    "affiliation": "All are participants in the same Agent 7 collaboration. Cross-author review/execution is independent within that team; no external unaffiliated review is claimed."
+  },
+  "registry": {
+    "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/PROJECT_REGISTRY.json",
+    "sha256": "138fc4ac68beb8188812db092aae722476475dbb9644eb2e03d586fa5d6e733e",
+    "bytes": 9523
+  },
+  "frozen_source_sha256": {
+    "BaseBirths": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33",
+    "SignedDigitUniqueness": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+    "BaseReflection": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+    "ResetNormalization": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+    "AdjacentBirths": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59",
+    "PhysicalWidth": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+    "SeamSafety": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+    "ReverseAdd": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+    "ActualBaseBirths": "e9fd9ed2a8065d7b6327d0400f7d94eea1049ba3f5b24241dcec244600121a6d",
+    "OverflowDigits": "37926723ba9d0d95b567f27607a810ea40d4fc622d60571d79228a5d33f33f8f",
+    "ActualOverflowBirths": "4c43069bfad9c9dc2f4af1a61c9e9438d26648a5cfe3e6958e001058e0d19b8d",
+    "OverflowEndpoints": "58a2656f3f38a891635f694b822a8fd41bdbea1d4f411a4ae3fa34a92dfdbe58",
+    "CanonicalOverflowBirths": "813b347aa3dac13033bd11f9281be7ad97fa6524346f91702397492185ff0f84"
+  },
+  "source_equivalence": {
+    "local_verified_commit": "96c618e812f3675c460d259ca76d3ce1b7073bd3",
+    "published_source_commit": "4512ecb58abd9ff464d8d3b1c70b6abeb85472d0",
+    "identical_full_tree": "3d952a0a1deef7aec912a93d8654b33734e4b847",
+    "published_source_url": "https://github.com/taco-jpg/p196-algorithm/commit/4512ecb58abd9ff464d8d3b1c70b6abeb85472d0",
+    "draft_pr": "https://github.com/taco-jpg/p196-algorithm/pull/127",
+    "remote_evidence_attribution": "Parent /root reported successful publication and independent readback of the identical full tree in its direct task message. This packet preparer did not perform another remote lookup or any Git mutation.",
+    "locally_rechecked_evidence": "The preserved canonical report records the local commit and source_tree_clean=true; all 13 current sources match both canonical and independent-review source SHA256 records and the frozen registry."
+  },
+  "findings": [
+    {
+      "area": "Original semantics",
+      "result": "PASS",
+      "detail": "actualDigits, incoming, terminal, ordinaryTags, pairs and eval are the unchanged original APIs. Arbitrary Bool tags are erased by actual ordinary carrying. The new arithmetic expression is proved equal to these actual digits before it is used."
+    },
+    {
+      "area": "All bases and coefficient bounds",
+      "result": "PASS",
+      "detail": "The local and actual birth classification uses every integer base b>=2 and old coefficients in [0,2*b-2]. Inherited b>=3 rigidity/safety statements remain restricted and are not used to extend the new result to base two."
+    },
+    {
+      "area": "Actual carry coupling",
+      "result": "PASS",
+      "detail": "The two exterior prefix carries determine u=(a+l)/b and v=(z+h)/b. These are the genuine c_i and c_(L-i), not guessed independently. Both equations and the original incoming_bit bounds are supplied in the actual iff proofs."
+    },
+    {
+      "area": "Shift and valid indices",
+      "result": "PASS",
+      "detail": "Computed terminal one gives output length L+1. Reflection is L-i, whose old symmetric coefficient is q_(i-1). The strict interior inequalities prove all getElem/getD accesses valid; outside-list default zeros cannot become births."
+    },
+    {
+      "area": "Complete zero/max rows",
+      "result": "PASS",
+      "detail": "Each literal actual zero/max statement is an iff with the complete four oriented rows and the required carry conditions. The inherited row is the corresponding old homogeneous adjacent extreme pair. The neutral-neighbor result is necessary; neutrality alone does not suffice."
+    },
+    {
+      "area": "Endpoint domains",
+      "result": "PASS",
+      "detail": "Both actual endpoints equal 1+q0%b and are positive for b>=2 without source bounds or symmetry. Bounded coefficients make each endpoint maximal iff b=2 and q0=1. For b>=3 the remainder upper bound rules out the maximum without coefficient bounds."
+    },
+    {
+      "area": "Canonical quantifier coverage",
+      "result": "PASS",
+      "detail": "The wrapper quantifies over all finite DigitBounds/PositiveLast input words and tagged xs with literal xs.map fst=pairs digits and original terminal one. Bounds and symmetry are derived. hqs implies xs.length=digits.length; therefore indices 0, 0<i<L and L cover the entire actual output. Width one retains both output endpoints."
+    },
+    {
+      "area": "Numerical reverse-add transport",
+      "result": "PASS",
+      "detail": "The wrapper directly applies unchanged ReverseAdd.reverse_add_normalization to obtain valid output digits, PositiveLast, exact width and eval b output=eval b digits+reversedValue b digits. It introduces no alternate integer representation or orbit map."
+    },
+    {
+      "area": "Proof audit",
+      "result": "PASS",
+      "detail": "All 13 frozen project modules independently compiled from exact source with --trust=0 in final-001. After reviewer-only corrections, final-003 audits all 142 public roots and 349 module-origin theorem constants, including 338 project and 11 review constants. Only the three permitted foundational axioms occur in theorem dependencies."
+    },
+    {
+      "area": "Scope limits",
+      "result": "PASS",
+      "detail": "The result is one finite reverse-add step. No run population, ancestry, lifetime, infinite avoidance or 196 conclusion follows. The existing binary 110 example is retained solely as a control."
+    }
+  ],
+  "issues": [],
+  "independent_execution": {
+    "fresh_project_compilation": {
+      "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-001/verification.json",
+      "sha256": "ecea7acdcf004d05b63d4ec40fc4e62e07e52bde628f908b6936948fd9edad70",
+      "bytes": 24854
+    },
+    "final_report": {
+      "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/review/final-003/verification.json",
+      "sha256": "eb4f8873b5001970d7a8140cb4a9b7c57661143e435010e9401ad49de8537101",
+      "bytes": 30053
+    },
+    "project_modules": 13,
+    "project_public_roots": 133,
+    "review_public_roots": 9,
+    "combined_public_roots": 142,
+    "project_module_origin_constants": 338,
+    "review_module_origin_constants": 11,
+    "combined_module_origin_constants": 349,
+    "observed_theorem_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "explicit_trust_flag": "--trust=0",
+    "reuse_description": "final-003 validates and copies the exact 13 objects freshly compiled with exit zero in final-001. It compiles only the corrected review fixture and then executes the complete audit; no failed fixture object is imported.",
+    "unsafe_implementation_constants": [
+      [
+        "BaseReflection",
+        "List.mapTR.loop._at.BaseReflection.residual._spec_1"
+      ],
+      [
+        "ResetNormalization",
+        "List.mapTR.loop._at.ResetNormalization.ordinaryTags._spec_1"
+      ],
+      [
+        "BaseReflection",
+        "List.mapTR.loop._at.BaseReflection.cs._spec_1"
+      ],
+      [
+        "BaseReflection",
+        "List.mapTR.loop._at.BaseReflection.qs._spec_1"
+      ]
+    ]
+  },
+  "retained_review_attempts": [
+    {
+      "attempt": "review/final-001",
+      "status": "FAIL in reviewer fixture only",
+      "detail": "All 13 project modules exited zero. Two fixture membership eliminations failed because an empty-list branch remained; snapshot and log are retained."
+    },
+    {
+      "attempt": "review/final-002",
+      "status": "FAIL in reviewer audit command only",
+      "detail": "All nine corrected fixture roots compiled. The audit command used unsupported display-only pp.width; its error, full axiom output and source are retained."
+    },
+    {
+      "attempt": "review/final-003",
+      "status": "PASS",
+      "detail": "The unsupported display option was removed; corrected fixture and complete audit exited zero. No research source or registry changed."
+    }
+  ],
+  "uncompiled_initial_fixture_draft": {
+    "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/review/drafts/BoundaryContracts-001.lean",
+    "interpretation": "Preserved pre-execution draft with redundant dsimp calls, not a checked result."
+  },
+  "canonical_execution": {
+    "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/verification/canonical-001/verification.json",
+    "sha256": "0d892b22478ed833adc75ee3da1e46b9a8420b7ba5fe0a12c9792e220a3db664",
+    "bytes": 18883
+  },
+  "canonical_executor_receipt": {
+    "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/verification/AGENT7_EXECUTION_RECEIPT.json",
+    "sha256": "53a1b5c13a38fea78897eae793d31e7441cffc056c6f72fd5b970f9ccc4be261",
+    "bytes": 12127
+  },
+  "canonical_source_cross_review": {
+    "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/review/canonical-gap-source.json",
+    "sha256": "004b0483eedae90777247fe10479794d26cd9b3f84f718524bf8d9559fb7914e",
+    "bytes": 12847
+  },
+  "inherited_dependency_review": {
+    "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/review/DEPENDENCY_REVIEW.json",
+    "sha256": "32cf02bca16b6756f96acf26b11cabed2d3881192ab9dde5b9966748825bb1e8",
+    "bytes": 6472
+  },
+  "finite_discovery": {
+    "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/review/finite-001/verification.json",
+    "sha256": "72f7c6b14bdc6819ba92b4bb834abe374f23ba1cae85f2565b9b5d2e20c0814f",
+    "bytes": 20031,
+    "scope": "554788 coupled tuples in 41 bases; 10508 symmetric coefficient words in bases 2..7 and widths 1..6; 5236 overflow words and 22498 interior positions.",
+    "interpretation": "Finite discovery/control evidence, not a universal proof."
+  },
+  "publication": "Selective manifests retain every substantive review source, draft, failure, audit source, log and report. Byte-identical copied project sources and compiler objects are omitted with exact hashes and reproduction reasons."
+}

@@ -1,0 +1,133 @@
+{
+  "status": "INDEPENDENTLY-REVIEWED; PASS",
+  "reviewed_at": "2026-10-16T21:57:45.441901+00:00",
+  "task": "agent7-allbase-overflow-births-20261016",
+  "claim_commit": "cc9c01d128808d9c0b2b1cf3921a76f7c00e9cf1",
+  "reviewer": "/root/odd_counts; distinct from OverflowDigits author /root/gap_inventory",
+  "reviewed_source": {
+    "path": "../../OverflowDigits.lean",
+    "sha256": "37926723ba9d0d95b567f27607a810ea40d4fc622d60571d79228a5d33f33f8f",
+    "author_frozen_snapshot": "../../digits-dev/attempt-002/source/OverflowDigits.lean"
+  },
+  "independent_execution": {
+    "attempt": "attempt-001",
+    "verification": "attempt-001/verification.json",
+    "full_closure_rebuilt": true,
+    "reused_author_compiled_objects": false,
+    "module_count": 11,
+    "all_exit_zero": true,
+    "failed_attempts": []
+  },
+  "runtime": {
+    "executable": "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "version": "Lean4.19.0",
+    "arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "public_theorems_audited": [
+    "ordinary_terminal_take_succ",
+    "incoming_succ",
+    "incoming_predecessor",
+    "incoming_mirror_predecessor",
+    "actual_overflow_body",
+    "actual_overflow_length",
+    "overflow_length_pos",
+    "actual_overflow_at",
+    "actual_overflow_last",
+    "actual_overflow_pair_at",
+    "actual_overflow_pair_getD",
+    "actual_overflow_endpoints"
+  ],
+  "public_theorem_count": 12,
+  "public_axiom_union": [
+    "Quot.sound",
+    "propext"
+  ],
+  "semantic_findings": [
+    {
+      "area": "Computed carry prefixes",
+      "result": "PASS",
+      "reason": "incoming is the unchanged terminal of ordinaryTags(xs.take k). ordinary_terminal_take_succ generalizes the initial carry, and incoming_succ/predecessor derive exact division equations. Predecessor permits i=L and excludes i=0, matching the final old carry boundary."
+    },
+    {
+      "area": "Reflected carry equation",
+      "result": "PASS",
+      "reason": "For0<i<L, predecessor L-i reads old coefficient L-i-1, and old source symmetry identifies that coefficient with q_i. No outgoing carry variable is freely chosen."
+    },
+    {
+      "area": "Actual width",
+      "result": "PASS",
+      "reason": "actual_overflow_body unfolds unchanged actualDigits/atActualWidth, erases reset flags through ordinaryTags_idempotent, and uses computed terminal1 to obtain exactly body++[1]. The output length is L+1."
+    },
+    {
+      "area": "Shifted reflection",
+      "result": "PASS",
+      "reason": "pairs_at uses output length L+1 and therefore mirror L-i. Source symmetry then identifies q_(L-i) with q_(i-1). Both the output mirror and its coefficient transport are explicit; the nooverflow reflection L-1-i is not used."
+    },
+    {
+      "area": "getElem versus getD",
+      "result": "PASS",
+      "reason": "The interior wrapper proves i and i-1 are valid old indices, and i is a valid output index. It then reduces getD via getElem? and Option.getD_some, so default0/default(0,false) cannot contribute to an interior formula."
+    },
+    {
+      "area": "Nonempty and endpoints",
+      "result": "PASS",
+      "reason": "terminal1 excludes xs=[] because terminal b0[]=0. Endpoint indices0 andL lie within the actual L+1 output. actual_overflow_endpoints pairs the ordinary first remainder with appended1 at both ends, without requiring source symmetry."
+    },
+    {
+      "area": "Scope of omitted bounds",
+      "result": "PASS",
+      "reason": "The bridge intentionally needs no b>=2/coefficient/carry-bit premise for its operational identities. Downstream arithmetic must supply those premises. A checked example with intermediate carry3 confirms that no carry-bit restriction is silently baked into the shape bridge."
+    }
+  ],
+  "boundary_controls": {
+    "source": "BoundaryControls.lean",
+    "source_sha256": "eb923a2dc50cf43c81589e45c49f4ee8fd84e21ba54400e781c0c575489a42d6",
+    "control_count": 8,
+    "names": [
+      "empty_boundary",
+      "width_one_endpoints_and_defaults",
+      "even_width_shift",
+      "odd_width_shift_and_actual_carries",
+      "asymmetric_endpoints",
+      "unbounded_shape_control",
+      "reviewed_interior_api_instances",
+      "reviewed_carry_api_instances"
+    ],
+    "axiom_audit": {
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.reviewed_interior_api_instances": [
+        "propext",
+        "Quot.sound"
+      ],
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.reviewed_carry_api_instances": [
+        "propext",
+        "Quot.sound"
+      ],
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.empty_boundary": [],
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.width_one_endpoints_and_defaults": [],
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.even_width_shift": [],
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.odd_width_shift_and_actual_carries": [],
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.asymmetric_endpoints": [],
+      "P196.Agent7.AllBaseOverflow.ReviewDigits.unbounded_shape_control": []
+    },
+    "interpretation": [
+      "Empty source has terminal0 and cannot meet terminal1.",
+      "Binary old width1 gives digits[0,1], pair endpoints[1,1], and a genuinely absent next index distinguishes default0 from default37.",
+      "Decimal old width2 coefficients[10,10] give output pairs[1,2,1]; replacing the new reflected carry index1 by old index0 gives1 instead of2.",
+      "Binary old width3 coefficients[1,2,1] with reset flags give raw terminal0 but actual ordinary terminal1, incoming carries[0,0,1,1], and pairs[2,0,0,2]; the old reflected carry index gives1 instead of0.",
+      "Nonsymmetric coefficients[12,9,10] still satisfy the ho-only endpoint formula, yielding endpoint3.",
+      "Base3 coefficients[10,1] have intermediate carry3, terminal1, and output[1,1,1], supporting the unbounded operational shape scope.",
+      "Separate instances consume both reviewed interior APIs and final/reflected predecessor carry APIs."
+    ]
+  },
+  "limitations": [
+    "This review covers only frozen OverflowDigits37926723, not subsequent source revisions.",
+    "The paired extreme arithmetic and canonical integer specialization receive separate reviews.",
+    "No infinite-orbit or growth claim is made."
+  ],
+  "source_changes": "No author source or dependency was edited. Reviewer wrote only arithmetic-dev/review-digits."
+}

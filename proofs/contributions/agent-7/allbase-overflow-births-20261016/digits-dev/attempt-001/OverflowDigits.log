@@ -1,0 +1,103 @@
+/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/digits-dev/attempt-001/source/OverflowDigits.lean:53:6: error: tactic 'rewrite' failed, motive is not type correct:
+  fun _a => incoming b xs (xs.length - i) = (xs[_a].fst + incoming b xs _a) / b
+Error: application type mismatch
+  incoming_predecessor._proof_1 xs (xs.length - i)
+    (Decidable.byContradiction fun a => incoming_mirror_predecessor._proof_2 xs i hi a)
+    (Decidable.byContradiction fun a => incoming_mirror_predecessor._proof_3 xs i hi0 hi a) a✝
+argument
+  a✝
+has type
+  ¬_a < xs.length : Prop
+but is expected to have type
+  ¬xs.length - i - 1 < xs.length : Prop
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+b : Int
+xs : List (Int × Bool)
+i : Nat
+hi0 : 0 < i
+hi : i < xs.length
+hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs
+h : incoming b xs (xs.length - i) = (xs[xs.length - i - 1].fst + incoming b xs (xs.length - i - 1)) / b
+he : xs.length - i - 1 = xs.length - 1 - i
+⊢ incoming b xs (xs.length - i) = (xs[i].fst + incoming b xs (xs.length - i - 1)) / b
+/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/digits-dev/attempt-001/source/OverflowDigits.lean:83:6: error: tactic 'rewrite' failed, motive is not type correct:
+  fun _a => _a[k] = (xs[k].fst + incoming b xs k) % b
+Error: application type mismatch
+  congrArg (fun _a => k < _a) (actual_overflow_length b xs ho)
+argument
+  actual_overflow_length b xs ho
+has type
+  (actualDigits b xs).length = xs.length + 1 : Prop
+but is expected to have type
+  _a.length = xs.length + 1 : Prop
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+b : Int
+xs : List (Int × Bool)
+k : Nat
+ho : terminal b 0 (ordinaryTags xs) = 1
+hk : k < xs.length
+hbody : k < (body b 0 (ordinaryTags xs)).length
+⊢ (actualDigits b xs)[k] = (xs[k].fst + incoming b xs k) % b
+/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/digits-dev/attempt-001/source/OverflowDigits.lean:90:6: error: tactic 'rewrite' failed, motive is not type correct:
+  fun _a => _a[xs.length] = 1
+Error: application type mismatch
+  congrArg (fun _a => xs.length < _a) (actual_overflow_length b xs ho)
+argument
+  actual_overflow_length b xs ho
+has type
+  (actualDigits b xs).length = xs.length + 1 : Prop
+but is expected to have type
+  _a.length = xs.length + 1 : Prop
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+b : Int
+xs : List (Int × Bool)
+ho : terminal b 0 (ordinaryTags xs) = 1
+⊢ (actualDigits b xs)[xs.length] = 1
+/workspace/scratch/aaafdd394dd6/agent7-base-overflow/proofs/contributions/agent-7/allbase-overflow-births-20261016/digits-dev/attempt-001/source/OverflowDigits.lean:107:6: error: tactic 'rewrite' failed, motive is not type correct:
+  fun _a => xs[_a].fst = xs[xs.length - i].fst
+Error: application type mismatch
+  symmetric_coefficient_at._proof_4 xs (xs.length - i) him a✝
+argument
+  a✝
+has type
+  ¬_a < xs.length : Prop
+but is expected to have type
+  ¬xs.length - 1 - (xs.length - i) < xs.length : Prop
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+b : Int
+xs : List (Int × Bool)
+i : Nat
+ho : terminal b 0 (ordinaryTags xs) = 1
+hi0 : 0 < i
+hi : i < xs.length
+hs : (List.map Prod.fst xs).reverse = List.map Prod.fst xs
+hlen : (actualDigits b xs).length = xs.length + 1
+him : xs.length - i < xs.length
+hrefl : xs.length - 1 - (xs.length - i) = i - 1
+hsym : xs[xs.length - 1 - (xs.length - i)].fst = xs[xs.length - i].fst
+⊢ (pairs (actualDigits b xs))[i] =
+    (xs[i].fst + incoming b xs i) % b + (xs[i - 1].fst + incoming b xs (xs.length - i)) % b
+'P196.Agent7.AllBaseOverflow.ordinary_terminal_take_succ' depends on axioms: [propext]
+'P196.Agent7.AllBaseOverflow.incoming_succ' depends on axioms: [propext]
+'P196.Agent7.AllBaseOverflow.incoming_predecessor' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent7.AllBaseOverflow.actual_overflow_body' depends on axioms: [propext]
+'P196.Agent7.AllBaseOverflow.actual_overflow_length' depends on axioms: [propext]
+'P196.Agent7.AllBaseOverflow.overflow_length_pos' depends on axioms: [propext]
+'P196.Agent7.AllBaseOverflow.actual_overflow_at' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent7.AllBaseOverflow.actual_overflow_last' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent7.AllBaseOverflow.actual_overflow_pair_at' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent7.AllBaseOverflow.actual_overflow_pair_getD' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent7.AllBaseOverflow.actual_overflow_endpoints' depends on axioms: [propext, sorryAx, Quot.sound]
