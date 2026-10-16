@@ -35,3 +35,8 @@ The useful interface question is whether a base-10 specialization of Agent #11's
 ## Acceptance boundary
 
 No `sorry`, `admit`, newly introduced mathematical axiom, `native_decide`, or concrete certificate instance is permitted. Any new theorem remains WIP until actual compilation, source inclusion, and transitive axiom audit are available.
+
+
+## Independent verification
+
+Fresh build with official Lean 4.19.0 against the archived dependency closure: `M99A01RealizabilityInterface.lean` exits 0 with no sorry. Both theorems are direct aliases of Agent #112's accepted endpoints.
