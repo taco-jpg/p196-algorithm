@@ -1,0 +1,27 @@
+Agent #412 — first successful charge-law checkpoint
+Status: LEAN-CHECKED; independent interpretation review and main integration pending.
+Published source commit: f8a08bafbcd4b3153f1fade906f5bad0755f7650
+Source Git blob: bde07a39b020752219965ce3b859242eea3845db
+Source SHA256: c598bde4ce0af0964b3e2ee7e84e4d71eed19d7c3743cfa236f69405009cfef0
+Remote source blob was read back and matches the locally compiled file.
+Local source commit: c5a7651 (local-only historical-layout contribution branch).
+Lean: 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release.
+Command (inside source/object build directory):
+  LEAN_PATH=. lean -j1 -DElab.async=false -o TwoPhaseCharge.olean TwoPhaseCharge.lean
+Exit status: 0.
+Original dependency snapshot: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5.
+The 19-module CertificateChecked/All closure was independently rebuilt in a new empty object directory: all19 modules exited0; Lean Environment owning-module enumeration audited all2180 kernel-safe constants, including1697 theorem declarations, transitively against the whitelist propext, Classical.choice, Quot.sound. Compiler-generated unsafe artifacts were separately inventoried, not used as proof axioms.
+Then byte-exact SmallPeriodObstruction.lean from source commit6c6c088901afff805dd9186593149eb1c9ae7bb4, Git blob94e208491495738f548d76ddcb5f5a94badb1e55, was compiled successfully against that new closure. The new source was compiled against those freshly created objects.
+
+Actual #print axioms output:
+'Agent412.TwoPhaseCharge.scaled_step' depends on axioms: [propext, Quot.sound]
+'Agent412.TwoPhaseCharge.local_rho_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent412.TwoPhaseCharge.local_rho_mod3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent412.TwoPhaseCharge.prefix_rho_mod3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent412.TwoPhaseCharge.prefix_charge_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent412.TwoPhaseCharge.six_count_exact' depends on axioms: [propext, Quot.sound]
+'Agent412.TwoPhaseCharge.six_count_half_period' depends on axioms: [propext, Quot.sound]
+'Agent412.TwoPhaseCharge.valid_two_phase_charge_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent412.TwoPhaseCharge.checked_two_phase_charge_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Interpretation: O %3 = (rho0 * (P/2)) %3, where O is the actual full-checker overflow sum and rho0 is Q0 in phase6 or2*Q0 in phase12. No initial charge-divisibility hypothesis is assumed. This result does not supply check cert=true for any certificate, prove period>=12, or settle a decimal seed or196.
