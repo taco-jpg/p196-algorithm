@@ -1,0 +1,55 @@
+[
+  {
+    "argv": [
+      "git",
+      "-c",
+      "gc.auto=0",
+      "fetch",
+      "--no-write-fetch-head",
+      "--no-tags",
+      "origin",
+      "a38b83ec83b74ad046207c5848ec05d39a878cfb"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "python3",
+      "/workspace/scratch/aa9210d02a75/agent12-integration/verify_combination.py",
+      "--repo",
+      "/workspace/scratch/aa9210d02a75/p196-agent12",
+      "--base",
+      "a38b83ec83b74ad046207c5848ec05d39a878cfb",
+      "--head",
+      "0d1eea6c69078111366d9d7235bd47c3e16aadf8",
+      "--prefix",
+      "proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/",
+      "--output",
+      "/dev/shm/p196-agent12-aa9210d02a75/integration-staging/pr123-combination-005"
+    ],
+    "returncode": 0,
+    "stdout": "{\n  \"schema_version\": 1,\n  \"auditor\": \"Agent #12 / root\",\n  \"checked_at\": \"2026-10-16T23:39:23.144460+00:00\",\n  \"base\": \"a38b83ec83b74ad046207c5848ec05d39a878cfb\",\n  \"head\": \"0d1eea6c69078111366d9d7235bd47c3e16aadf8\",\n  \"merge_base\": \"f44c06c4851b26523bcec920d93a52b93fd2a0a6\",\n  \"combined_tree\": \"2d681007df7138fd4365aa323ab30771eeb5660e\",\n  \"base_tracked_entries\": 18364,\n  \"combined_tracked_entries\": 18422,\n  \"outside_owned_prefix\": [],\n  \"deleted_base_paths\": [],\n  \"changed_existing_base_paths\": [],\n  \"unexpected_effective_paths\": [],\n  \"submitted_paths_not_identical_to_head\": [],\n  \"all_existing_base_entries_preserved\": true,\n  \"accepted_scope\": \"proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/\",\n  \"fresh_lean_execution\": false,\n  \"interpretation\": \"This is a complete Git tree/content preservation check. A separate exact-source Lean and semantic review is required. Evidence can be reused for the combination only where source and verifier closure bytes match.\",\n  \"status\": \"PASS_ADDITIVE_COMBINATION\",\n  \"inventory_sha256\": \"daa8c3a794bfb56ddea5e8c318ba42dc8a53be3f8fd0ef46df48e3eb56195281\"\n}\nsubmitted_count 58 effective_count 58\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "python3",
+      "/dev/shm/p196-agent12-aa9210d02a75/integration-staging/pr123-combination-002/verify_pr123_source_binding.py",
+      "--repo",
+      "/workspace/scratch/aa9210d02a75/p196-agent12",
+      "--head",
+      "0d1eea6c69078111366d9d7235bd47c3e16aadf8",
+      "--tree",
+      "2d681007df7138fd4365aa323ab30771eeb5660e",
+      "--review",
+      "/workspace/scratch/aa9210d02a75/agent12-review123",
+      "--output",
+      "/dev/shm/p196-agent12-aa9210d02a75/integration-staging/pr123-combination-005/source-closure.json"
+    ],
+    "returncode": 0,
+    "stdout": "{\n  \"schema_version\": 1,\n  \"auditor\": \"Agent #12 / root\",\n  \"head\": \"0d1eea6c69078111366d9d7235bd47c3e16aadf8\",\n  \"combined_tree\": \"2d681007df7138fd4365aa323ab30771eeb5660e\",\n  \"registry_path\": \"proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/review/horizon-safety/verification/source-registry.json\",\n  \"registry_sha256\": \"aa9e35fdc2836f6c7de34f835ecfd14b934f58d19030ade5ab107202491af457\",\n  \"driver_path\": \"proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/review/horizon-safety/verify.py\",\n  \"driver_sha256\": \"c066b91ecf42ccdba0daea5090708bddf3f779f099ee712581317a8986e01cc5\",\n  \"registry_identical_in_combination\": true,\n  \"driver_identical_in_combination\": true,\n  \"review_source_map_sha256\": \"d449ffcfde5e95cb8cb88bef68be43b1cf710c321f6f058de65fa743c102c421\",\n  \"source_module_count\": 16,\n  \"resolution\": \"The preserved runtime registry names five author-frozen snapshots under frozen-source/. These aliases are resolved through the independent POSTCHECK source map and verified against every exact head, combined-tree, fresh-compiled snapshot, registry SHA256 and recorded Git blob. Neither registry nor mathematical source is edited.\",\n  \"fresh_lean_execution\": false,\n  \"interpretation\": \"Exact source binding of the earlier fresh passing16-module audit to the current combination; this check is not a new Lean execution.\",\n  \"status\": \"PASS\"\n}\n",
+    "stderr": ""
+  }
+]
