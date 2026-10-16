@@ -1,6 +1,6 @@
 # Actual period-four phase catalog — Agent #1
 
-Status: **LEAN-CHECKED author source; complete independent fresh review pending.**
+Status: **INDEPENDENTLY-REVIEWED; integration pending.**
 
 The actual raw period is now connected to the retained finite phase catalog. Outside the all-nine exception, `rawPeriod_eq_phaseImage` proves boundary-independent stabilized digit bands while retaining the original whole word's actual overflow clock. At all-nine, `rawPeriod_nines` retains the two actual boundary carry bits and yields four copies of18-9*(a+b).
 
@@ -11,3 +11,9 @@ This proves one-way coverage and closure for actual transitions from the listed 
 Protected claim6db01dafab1ec876d24c9964bc6086440ed21266 followed issue61 proposal6226044951. The source registry is `proofs/Agent1PeriodicPhaseCatalog.registry.json`, a complete minimal20-module closure. All three author modules compiled with explicit trust0; original dependency objects are pinned and reuse labelled authorincrement. The root's first catalog proof passed, then attempt002 strengthened the conclusion to explicitly retain its actual exceptional carry label; both source snapshots/logs remain. The Phase author audit initially rejected two generated executable helpers, then classified them separately while retaining all logical-dependency checks; the failure and correction are preserved.
 
 Separate artifact diagnostics replay all124 saved edges and compare exact Lean data, with source hashes and full records in `catalog-review/`. They are not Lean proof or a new graph search. Root authored Catalog and is the sole Git writer; separate genuine specialists authored Phase and Nines. The final combined independent reviewer authored none of those files. No main slot.
+
+Both complete fresh20-module gates passed at mathematicalsourcee2ce8e1cd121b78ce839c120d0d475990f561b8f. The nonauthor explicit-trust0 review audited1407 module-origin theorem constants,247 safe definitions and95 named theorem types (17new); all21 commands passed. The theorem axiom union is only propext/Classical.choice/Quot.sound. The compiler inventory separately contains1515 nonsafe generated definitions and20 unsafe implementation axioms; none enters any checked logical dependency. See `review/semantic-review.md` and the portable replay in `review/README.md`.
+
+The separate unchanged parent canonical verifier passed all20 modules and audit. Its original `source_tree_clean=false` metadata is preserved; concurrent evidence changes do not certify a clean checkout. `verification/parent-clean-001/source-identity-receipt.json` independently proves every20 registered mathematical inputs byte-equal to the published source and actual compiled snapshots. The parent command does not explicitly set trust0; independent and author commands do. Original canonical FILES.json is unchanged, with separate PACKAGE-FILES.json for the copied evidence.
+
+The next actual exterior/phase product task is separately claimeddb88a5c78fd5f67ac134031d8486c26df9201799. It reuses this phase projection and the original outer arithmetic, preserving the historical finite-interface lift boundary.

@@ -99,10 +99,17 @@ in full, including order and every optional carry label. The inspected
 - Phase snapshot SHA256:
   `705c139614ffd4f9f20a305f7c4bff20059da0c7fa127ca180ff8a88397a51ce`.
 
-These snapshots may precede the authors' final proof freeze. This comparison
-accepts literal data only; final Lean compilation, theorem statements, and axiom
-review belong to the separate independent reviewer. The comparison can be rerun
-against a later frozen source without changing the original archive replay.
+The final data-only rebind is retained separately in `lean-data-002/`. It again
+matches all59 phases and124 complete labelled edges, in exact original order,
+and the same `phaseImage` definition. Final Catalog source SHA256:
+`44445a343635503c940ea125727d0bbb75bbf7dce24be62c28a660241363f9f9`.
+The Phase source remains `705c139614ffd4f9f20a305f7c4bff20059da0c7fa127ca180ff8a88397a51ce`.
+Both source snapshots and both hash receipts are preserved. This rebind checks
+the final literal data after the parent strengthened its actual-carry endpoint;
+it does not repeat or alter the successful124-edge diagnostic.
+
+These comparisons accept literal data only; final Lean compilation, theorem
+statements, and axiom review belong to the separate independent reviewer.
 
 ## Reproduction and scope
 
