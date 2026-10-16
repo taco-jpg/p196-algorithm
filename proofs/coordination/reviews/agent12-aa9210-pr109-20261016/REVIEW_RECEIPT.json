@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "reviewer": "Agent #12 /root/review109",
+  "independence": "Genuine separate reviewing agent from original author and parent integrator; no separate-account or external-human-peer-review claim.",
+  "review_date_utc": "2026-10-16T22:56:31.642140+00:00",
+  "repository": "https://github.com/taco-jpg/p196-algorithm",
+  "pr": 109,
+  "exact_head": "18a82d9b5a2bd326751621e3e7a5458117561da7",
+  "pr_base": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+  "verdict": "ACCEPT_EXACT_SOURCE_CLOSURE",
+  "semantic_review": "PASS",
+  "evidence_review": "PASS",
+  "fresh_lean_replay": "PASS",
+  "blocking_findings": [],
+  "required_mathematical_repairs": [],
+  "changed_files": 20,
+  "changed_scope": "proofs/contributions/agent-9/escape-factorial-bound-20261016/",
+  "mathematical_source_edits_by_reviewer": false,
+  "remote_writes_by_reviewer": false,
+  "current_main_combination_checked": false,
+  "integration_responsibility": "Parent Agent #12 performs current-main exact-byte combination validation and all publication operations.",
+  "checks": {
+    "fresh_modules": 11,
+    "project_objects_initially_present": 0,
+    "trust_level": 0,
+    "flags": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "theorem_constants": 1456,
+    "safe_definition_constants": 182,
+    "new_module_theorem_constants": 19,
+    "new_module_safe_definition_constants": 5,
+    "named_exports": 11,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unsafe_implementation_axioms_reported": 15,
+    "unsafe_implementation_definitions_reported": 807,
+    "sources_and_compiler_unchanged": true,
+    "authored_audit_support_compile": "PASS",
+    "original_archive_files_verified": 146,
+    "author_manifest_entries_verified": 65,
+    "tracked_archive_duplicates_verified": 17,
+    "historical_failures_preserved": true
+  },
+  "runtime_limitation": "Existing official-release runtime provenance, executable hash/version, root runtime objects and shared libraries checked. Historical release tar.zst is absent and could not be freshly hashed. Standard library was not rebuilt; no upstream independent checksum is claimed.",
+  "scope": "Conditional generic recurrence inequality for natural kappa>0, E1=1 and exact recurrence, M>=1; concrete decimal kappa=5 instantiation with a separate M=0 proof; inclusive finite digit-sum windows for each positive ordinary-decimal seed, B,s:Nat including zero. No optimality, pointwise divergence, palindrome avoidance, infinite safe-orbit, decimal Lychrel-existence or 196-conjecture claim.",
+  "selected_driver": "inputs/package/review/runtime-audit/verify.py",
+  "selected_registry": "inputs/package/review/runtime-audit/source-registry.json",
+  "source_records": {
+    "LychrelDigitSums": {
+      "base": "repository",
+      "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports": [
+        "Std"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/continuation/LychrelDigitSums.lean"
+      }
+    },
+    "SharedProfile": {
+      "base": "repository",
+      "path": "proofs/SharedProfile__33eab3252cc4e8a9.lean",
+      "sha256": "0dbd924109cc235a9db5db35c6bbf1326ebf1f69841b53d59439eec92874630f",
+      "git_blob": "522f234c3cbaf3751812d6069204a66013c8d537",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/SharedProfile.lean"
+      }
+    },
+    "ProfileDynamics": {
+      "base": "repository",
+      "path": "proofs/ProfileDynamics__fff6b619f7fbefc7.lean",
+      "sha256": "214d8b068c2b12d3df14654071342f371814e230da89fafd7c186ef76697bff5",
+      "git_blob": "9609854eae0920786d6bccdb2a9c344267367af5",
+      "imports": [
+        "SharedProfile"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/ProfileDynamics.lean"
+      }
+    },
+    "ProfileIsolation": {
+      "base": "repository",
+      "path": "proofs/ProfileIsolation__e94bb8b9e28e543d.lean",
+      "sha256": "287071e80b2b4d83c1edea18bd9c6f720ecd0f86bede024d7251a46044224bc6",
+      "git_blob": "e25a74b7c2e3243831668215fb11f9995c644972",
+      "imports": [
+        "ProfileDynamics"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/ProfileIsolation.lean"
+      }
+    },
+    "UniformEscape": {
+      "base": "repository",
+      "path": "proofs/UniformEscape__47551ecd28235ffc.lean",
+      "sha256": "ec159be964b7fa86a09a5ed8e78900b3b29674e96b915fbeae6188a3cc8c2f00",
+      "git_blob": "5e14ad4d9696d1ab0f42286b2ca36e6492d252b9",
+      "imports": [
+        "ProfileIsolation"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/UniformEscape.lean"
+      }
+    },
+    "SharpProfileBounds": {
+      "base": "repository",
+      "path": "proofs/SharpProfileBounds__760c18f8b4002529.lean",
+      "sha256": "a8907c8ad4d48d3c78ac21a3a87c22858eed9127e9ccbe3a6ce38cfeaa50a09c",
+      "git_blob": "f093a9bac7d1381b1bb0fa4ba0da2ff48e83ba18",
+      "imports": [
+        "ProfileDynamics"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/SharpProfileBounds.lean"
+      }
+    },
+    "SharpUniformEscape": {
+      "base": "repository",
+      "path": "proofs/SharpUniformEscape__a2423abeea30044f.lean",
+      "sha256": "74def1ba139fef73734b52163f7690d8c6895299c05dc082c69d107617969348",
+      "git_blob": "d011a7d1a24004c20cef80394e670f36fb4aaf17",
+      "imports": [
+        "UniformEscape",
+        "SharpProfileBounds"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/SharpUniformEscape.lean"
+      }
+    },
+    "DecimalEmbedding": {
+      "base": "repository",
+      "path": "proofs/DecimalEmbedding__5768662439c406b9.lean",
+      "sha256": "cc565a8124f5ec916e345c6daaeaaf8d45511b9751298600f83bd189292045ea",
+      "git_blob": "af92fbce730cec0300ccce5ad7754f8d5aef060f",
+      "imports": [
+        "SharedProfile"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/DecimalEmbedding.lean"
+      }
+    },
+    "SharpUniformDecimal": {
+      "base": "repository",
+      "path": "proofs/SharpUniformDecimal__c7370132a3682d7b.lean",
+      "sha256": "1d46f0bfcadc86ca41573b09f8b588af6a38a8b5798897625459e6f29b714b33",
+      "git_blob": "7492314811162dfcba6d9016a9f98f8a971aea46",
+      "imports": [
+        "SharpUniformEscape",
+        "DecimalEmbedding"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/smart_pass/uniform_lean/SharpUniformDecimal.lean"
+      }
+    },
+    "Agent9FactorialRecurrence": {
+      "base": "package",
+      "path": "Agent9FactorialRecurrence.lean",
+      "sha256": "62ac425c0522fed1ea4cef602779018a7833ad8a12e65b34fe11c13503e471ef",
+      "git_blob": "6c8224920c8f4307edd758f73940e5698256a1ec",
+      "imports": [
+        "Std"
+      ]
+    },
+    "Agent9DecimalFactorialEscape": {
+      "base": "package",
+      "path": "Agent9DecimalFactorialEscape.lean",
+      "sha256": "e8bfbb937aab16552e253b6c8db3581b6408de4d6a70ef64f6b046b0d1a77d28",
+      "git_blob": "be222895a9b42e83179fdf8d811770dafbc8d817",
+      "imports": [
+        "Agent9FactorialRecurrence",
+        "SharpUniformDecimal"
+      ]
+    }
+  },
+  "evidence_paths": {
+    "SEMANTIC_REVIEW.md": "b42ac42c9ce12a9b1eb6ff2ea73135e25ca27485277353fb96d655ada4bd538f",
+    "fresh-replay/verification.json": "0569612b2f95a02bdda067ebbb31b3255e28a47d812851d7079f259f3fd22d97",
+    "fresh-replay/logs/FactorialIndependentAudit.log": "54fb78d30c611ad4b522fdd4aa9189d80e698167b31111007c0576a08533b027",
+    "fresh-replay/source/FactorialIndependentAudit.lean": "57f6af2929ae82bd54d34e4b35eb51f121aead3c3b697397936798bff2fec932",
+    "EXPORTS_AND_ORIGINS.json": "3cb42cfb396037cff505797b69c53b654531ec656f84be525553826d4a8951e8",
+    "evidence-validation.json": "bc2ca6e1e6d1f02235e849a86bec13cda564ce5f7bab0e93662de49400cc3e32",
+    "source-provenance-checks.json": "e284043122ad2f867ab72adce092cb4cfb51db82ae2a9223b18c8ed1c2c2d2f1",
+    "authored-audit-replay/verification.json": "ceca5abdfcad62f76c23ea6d8b6babe029b59af6e63ed0a1eff470996b6872a2",
+    "setup/runtime-verification.json": "591102ecb26c0d01ec4cc360c40c29a948d4d4016f0a166400c042887bfd8fd0"
+  }
+}
