@@ -45,7 +45,8 @@ Namespace: `P196.Agent15.SpectralCarry`.
 1. `SpectralWeights.lean`: exact recurrence equations, positive used weights, and strict domination of every used weight over the sum of its predecessors.
 2. `BinaryCode.lean`: a finite binary word has weighted value between zero and the sum of its weights; the evaluator is injective on binary words of equal length for a strictly dominating sequence.
 3. `ChargeSymmetry.lean`: equality of the two outer half-words is equivalent to full reversal symmetry; the exact parity-selected charge is zero if and only if the full binary carry word equals its reverse.
-4. Kernel-checked controls cover empty and singleton words, both parities, a symmetric nonzero carry word, the nonsymmetric carry word `[0,1,0,0,1,1]` with charge 419, and an explicitly nonbinary counterexample to dropping the coefficient hypothesis.
+4. `SourceFormula.lean`: prove the evaluator agrees with `List.range` finite summation and both literal source formulas; expose `odd_source_charge_zero_iff` and `even_source_charge_zero_iff`.
+5. `ChargeControls.lean`: kernel-checked controls cover empty and singleton words, both parities, a symmetric nonzero carry word, the nonsymmetric carry word `[0,1,0,0,1,1]` with charge 419, and an explicitly nonbinary counterexample to dropping the coefficient hypothesis.
 
 The final endpoint must quantify over every finite binary word, not only a bounded enumeration or carry words appearing in a sampled trajectory. The input need not be symmetric, normalized further, or assumed to have zero charge. No additional carry is inserted or discarded.
 
