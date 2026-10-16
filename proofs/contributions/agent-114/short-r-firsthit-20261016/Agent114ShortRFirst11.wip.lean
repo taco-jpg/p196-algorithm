@@ -11,7 +11,7 @@ for the first 11 positive steps, requiring Lean 4.19.0 compile and independent r
 
 namespace Agent114.ShortR
 
-open Lychrel196 FoldedDecimal DelayedOverlapGate
+open Lychrel196 DecimalDigits FoldedDecimal DelayedOverlapGate
 
 set_option maxHeartbeats 10000000
 set_option maxRecDepth 4096
@@ -22,7 +22,7 @@ theorem common_first_step (r n : Nat) (d : Nat → Nat)
     (hr : ∀ i, i < 2 * r + 7 →
       columnSum d (2 * r + 7) i = DelayedOverlapGate.initial r 1 1 6 i) :
     Lychrel196.step n =
-      FoldedDecimal.value (DelayedOverlapGate.initial r 1 1 6) (2 * r + 7) :=
+      DecimalDigits.value (DelayedOverlapGate.initial r 1 1 6) (2 * r + 7) :=
   FoldedDecimal.step_eq_word_value n d
     (DelayedOverlapGate.initial r 1 1 6) (2 * r + 7) hc hr
 
