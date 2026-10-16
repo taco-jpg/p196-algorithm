@@ -1,0 +1,374 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent1-groupIII-handoff": {
+      "status": "PASS",
+      "scope": "Fixed original GroupIII(1,10,6): sharp second repair iff r>=2, genuine first/third departures, ordinary outputs1..4 safe for every canonical realization and nonvacuous positive witness. No time6/recurrence claim.",
+      "sources": {
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "build_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "SafeDelay": {
+          "path": "proofs/SafeDelay__bc8a973241f692fd.lean",
+          "sha256": "57d8d3fb7e3c2f747b276c3d03c7e81cda8714842c1b4794d3e682aff8e179d6",
+          "build_sha256": "57d8d3fb7e3c2f747b276c3d03c7e81cda8714842c1b4794d3e682aff8e179d6",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "DecimalSafeRuns": {
+          "path": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+          "sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+          "build_sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "DecimalDelayBridge": {
+          "path": "proofs/DecimalDelayBridge__83037365a26a750b.lean",
+          "sha256": "8e800eab397f44ac1b0ff47ac02cc7576cddeb7d45015375640213857e56e800",
+          "build_sha256": "8e800eab397f44ac1b0ff47ac02cc7576cddeb7d45015375640213857e56e800",
+          "imports": [
+            "SafeDelay",
+            "DecimalSafeRuns"
+          ],
+          "adapter": null
+        },
+        "PairDelayBridge": {
+          "path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+          "sha256": "4faa6a3f05477bfabd8f504217119e0bb4db56987e3717c822f914f4cc7e70a5",
+          "build_sha256": "4faa6a3f05477bfabd8f504217119e0bb4db56987e3717c822f914f4cc7e70a5",
+          "imports": [
+            "DecimalDelayBridge"
+          ],
+          "adapter": null
+        },
+        "DelayedOverlapGate": {
+          "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+          "sha256": "c24d7774af6487fcab63a4d60cd10aaabb1b270b3dc0f4ac42dd3655b416b112",
+          "build_sha256": "c24d7774af6487fcab63a4d60cd10aaabb1b270b3dc0f4ac42dd3655b416b112",
+          "imports": [
+            "PairDelayBridge"
+          ],
+          "adapter": null
+        },
+        "Agent1GroupIII": {
+          "path": "proofs/Agent1GroupIII.lean",
+          "sha256": "2adaef1e36b3a56022ac893251436f29c83e1d83d5e52b98a99a6cf7de7f0577",
+          "build_sha256": "2adaef1e36b3a56022ac893251436f29c83e1d83d5e52b98a99a6cf7de7f0577",
+          "imports": [
+            "DelayedOverlapGate"
+          ],
+          "adapter": null
+        },
+        "Agent1GroupIIINumeric": {
+          "path": "proofs/Agent1GroupIIINumeric.lean",
+          "sha256": "d9633f976619f74d569117d9fbb6ddd2907bca4dbf0dd570c802be12aedb023c",
+          "build_sha256": "d9633f976619f74d569117d9fbb6ddd2907bca4dbf0dd570c802be12aedb023c",
+          "imports": [
+            "Agent1GroupIII"
+          ],
+          "adapter": null
+        },
+        "Agent1GroupIIIHandoff": {
+          "path": "proofs/Agent1GroupIIIHandoff.lean",
+          "sha256": "190778311fe86b4c48ae617b2946d78876b13772c6dfeee8cba4f2a7cc0ba1a4",
+          "build_sha256": "190778311fe86b4c48ae617b2946d78876b13772c6dfeee8cba4f2a7cc0ba1a4",
+          "imports": [
+            "Agent1GroupIII"
+          ],
+          "adapter": null
+        },
+        "Agent1GroupIIIHandoffNumeric": {
+          "path": "proofs/Agent1GroupIIIHandoffNumeric.lean",
+          "sha256": "14abe8bbdc4320c3ec72d97eacb403c481b154d8baf8f1dac041d3af79cc13c4",
+          "build_sha256": "14abe8bbdc4320c3ec72d97eacb403c481b154d8baf8f1dac041d3af79cc13c4",
+          "imports": [
+            "Agent1GroupIIIHandoff",
+            "Agent1GroupIIINumeric"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "LychrelDigitSums",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "LychrelDigitSums.olean",
+            "LychrelDigitSums.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 41.957084,
+          "log": "agent1-groupIII-handoff/logs/LychrelDigitSums.log",
+          "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+        },
+        {
+          "label": "SafeDelay",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "SafeDelay.olean",
+            "SafeDelay.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.41475,
+          "log": "agent1-groupIII-handoff/logs/SafeDelay.log",
+          "log_sha256": "3d55cafd6e47d04c275999d3c088697a063d8d4bcbf197ca37c5fbe0edeccaea"
+        },
+        {
+          "label": "DecimalSafeRuns",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "DecimalSafeRuns.olean",
+            "DecimalSafeRuns.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.966215,
+          "log": "agent1-groupIII-handoff/logs/DecimalSafeRuns.log",
+          "log_sha256": "338230b676ae47db19ccbb7a3e41847c8666d4a098ecb042fa7260bfb93f149b"
+        },
+        {
+          "label": "DecimalDelayBridge",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "DecimalDelayBridge.olean",
+            "DecimalDelayBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.865909,
+          "log": "agent1-groupIII-handoff/logs/DecimalDelayBridge.log",
+          "log_sha256": "2dd77e0f4682e65c47381652c5038dee579dcaef3015c43b39b82d07e76edf97"
+        },
+        {
+          "label": "PairDelayBridge",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PairDelayBridge.olean",
+            "PairDelayBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.665943,
+          "log": "agent1-groupIII-handoff/logs/PairDelayBridge.log",
+          "log_sha256": "ea1d23ed2746ead80b65c80afbc90b6de31b0d8eac12c50c2755154826bd7224"
+        },
+        {
+          "label": "DelayedOverlapGate",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "DelayedOverlapGate.olean",
+            "DelayedOverlapGate.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 31.597866,
+          "log": "agent1-groupIII-handoff/logs/DelayedOverlapGate.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent1GroupIII",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1GroupIII.olean",
+            "Agent1GroupIII.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 92.074543,
+          "log": "agent1-groupIII-handoff/logs/Agent1GroupIII.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent1GroupIIIHandoff",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1GroupIIIHandoff.olean",
+            "Agent1GroupIIIHandoff.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 117.300764,
+          "log": "agent1-groupIII-handoff/logs/Agent1GroupIIIHandoff.log",
+          "log_sha256": "97420b4dcd2b28e50c2680d28b00b1afe92a6ea0c676b60976c0bdacbbe020d7"
+        },
+        {
+          "label": "Agent1GroupIIINumeric",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1GroupIIINumeric.olean",
+            "Agent1GroupIIINumeric.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.214219,
+          "log": "agent1-groupIII-handoff/logs/Agent1GroupIIINumeric.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent1GroupIIIHandoffNumeric",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1GroupIIIHandoffNumeric.olean",
+            "Agent1GroupIIIHandoffNumeric.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.316844,
+          "log": "agent1-groupIII-handoff/logs/Agent1GroupIIIHandoffNumeric.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 40.455871,
+          "log": "agent1-groupIII-handoff/logs/ProjectAudit.log",
+          "log_sha256": "fbda70011a93f5ddf89ea2bc55e4a443bf82b5d6782a95d32a592ed24258016b"
+        }
+      ],
+      "roots": [
+        "Agent1GroupIIIHandoffNumeric"
+      ],
+      "build_order": [
+        "LychrelDigitSums",
+        "SafeDelay",
+        "DecimalSafeRuns",
+        "DecimalDelayBridge",
+        "PairDelayBridge",
+        "DelayedOverlapGate",
+        "Agent1GroupIII",
+        "Agent1GroupIIIHandoff",
+        "Agent1GroupIIINumeric",
+        "Agent1GroupIIIHandoffNumeric"
+      ],
+      "theorem_count": 2547,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "P196.Agent1.GroupIIIHandoff.time_four_overlap_iff",
+        "P196.Agent1.GroupIIIHandoff.two_genuine_repairs",
+        "P196.Agent1.GroupIIIHandoff.r1_time4_signed_defect",
+        "P196.Agent1.GroupIIIHandoff.numeric_time_four_iff",
+        "P196.Agent1.GroupIIIHandoff.numeric_four_step_safety",
+        "P196.Agent1.GroupIIIHandoff.numeric_safe_handoff",
+        "P196.Agent1.GroupIIIHandoff.realized_safe_handoff"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finishFuel._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.feed._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.repr'._at._private.LychrelDigitSums.0.OverflowNormalizationCertificate.reprState.\u00ab_@\u00bb.LychrelDigitSums._hyg.20379._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.next._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_1"
+        ],
+        [
+          "PairDelayBridge",
+          "PairDelayBridge.next._elambda_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "OverflowCarryNormalization.iterPairs._elambda_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.initials._spec_3"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.next._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.feed._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.edge._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792186914.7970996,
+  "registry_sha256": "81e497031cb2771e7ac5519bbf2bbf08dcddc1295cbbb1d6fbb618d229db741a",
+  "source_commit": "8e48b62728506ad15bf9086fecadb78a905f4e2b",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped finite GroupIII second-handoff contribution; no global acceptance or infinite-orbit claim."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/p196-tools/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792187242.024616
+}
