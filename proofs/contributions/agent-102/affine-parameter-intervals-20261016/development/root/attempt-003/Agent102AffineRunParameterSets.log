@@ -1,0 +1,19 @@
+Agent102AffineRunParameterSets.lean:47:16: error: unsolved goals
+case cons
+k : Nat
+r : RunSpec
+A : List RunSpec
+ih : ∀ (start : CountExpr), List.map (fun s => s.at k) (spanExprsFrom start A) = spansFrom (start.value k) (runsAt A k)
+start : CountExpr
+⊢ List.map (fun s => { digit := s.digit, lo := s.lo.value k, hi := s.hi.value k })
+      (spanExprsFrom (start.add (CountExpr.atom r.length)) A) =
+    spansFrom (start.value k + (r.length.eval k).toNat)
+      (List.map (fun r => { digit := r.digit, count := (r.length.eval k).toNat }) A)
+'Agent102.ParameterSets.widthExpr_value' depends on axioms: [propext, Quot.sound]
+'Agent102.ParameterSets.spanExprsFrom_at' depends on axioms: [sorryAx]
+'Agent102.ParameterSets.spanExprs_at' depends on axioms: [sorryAx]
+'Agent102.ParameterSets.wordAt_eq_iff_countSpans' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.holds_overlapRegion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.holds_agreementRegion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.holds_equalityRegions' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.holds_palindromeRegions' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

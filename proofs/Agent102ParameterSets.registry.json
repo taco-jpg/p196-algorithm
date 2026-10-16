@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped static literal affine-run parameter sets; actual decimal iteration closure, a realizable infinite safe family, and P196 are not supplied."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent102-affine-parameter-intervals": {
+      "scope": "Exact finite interval unions for equality and palindrome parameters of actual Int.toNat-clipped affine run words; no cutoff prefix enumeration; complete quantified decisions and extensional interval certificates.",
+      "roots": [
+        "Agent102ParameterSetDecisions"
+      ],
+      "modules": {
+        "Agent102RunDefs": {
+          "path": "proofs/Agent102RunDefs.lean",
+          "sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "git_blob": "0c2b723a8c21c953f8a51761e752a827ff72a5cc",
+          "imports": [
+            "Std"
+          ]
+        },
+        "Agent102AffineArithmetic": {
+          "path": "proofs/Agent102AffineArithmetic.lean",
+          "sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+          "git_blob": "448f7193c49ec4a4faa11467bb6a189d9d412750",
+          "imports": [
+            "Agent102RunDefs"
+          ]
+        },
+        "Agent102RunWord": {
+          "path": "proofs/Agent102RunWord.lean",
+          "sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+          "git_blob": "0609366f1e7fb908234667704b67132af23b28f4",
+          "imports": [
+            "Agent102RunDefs"
+          ]
+        },
+        "Agent102RunEndpoints": {
+          "path": "proofs/Agent102RunEndpoints.lean",
+          "sha256": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+          "git_blob": "10a8597d282533efe97c02c9208ad90e93dc4dab",
+          "imports": [
+            "Agent102AffineArithmetic"
+          ]
+        },
+        "Agent102AffineRuns": {
+          "path": "proofs/Agent102AffineRuns.lean",
+          "sha256": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4",
+          "git_blob": "ded9c35e2a194403121ec192312a2c94fbabd686",
+          "imports": [
+            "Agent102RunEndpoints",
+            "Agent102RunWord"
+          ]
+        },
+        "Agent102ParameterIntervalDefs": {
+          "path": "proofs/Agent102ParameterIntervalDefs.lean",
+          "sha256": "c06e197c31e902f19345d3e6b390621021f1326d56e7af532302cfae3491949d",
+          "git_blob": "9d888bc25d6e15f75d064b28eb55d4b95110564d",
+          "imports": [
+            "Agent102RunDefs"
+          ]
+        },
+        "Agent102ParameterIntervalAlgebra": {
+          "path": "proofs/Agent102ParameterIntervalAlgebra.lean",
+          "sha256": "d10cb78bc87e8aff81f24358e0d52fd9592c1dce55d9dc507417835cd7e9a65a",
+          "git_blob": "2a49a71be643d0a00d7507d6ce31dfd6f83c6c73",
+          "imports": [
+            "Agent102ParameterIntervalDefs"
+          ]
+        },
+        "Agent102ParameterIntervalCompact": {
+          "path": "proofs/Agent102ParameterIntervalCompact.lean",
+          "sha256": "39f1b6bf2639a18e443c2dc09487d0b6a169cc15a579ebbe491b38a886be36e9",
+          "git_blob": "489c732753684728c68b7317585c3bcb575e1e95",
+          "imports": [
+            "Agent102ParameterIntervalAlgebra"
+          ]
+        },
+        "Agent102AffineInequalityIntervals": {
+          "path": "proofs/Agent102AffineInequalityIntervals.lean",
+          "sha256": "21def6712029812bc607e5c3c64550ad111ec146da499405b652e26206e86d04",
+          "git_blob": "4454ea361ab628cdf26c98c941f3beed9047987a",
+          "imports": [
+            "Agent102ParameterIntervalDefs"
+          ]
+        },
+        "Agent102PiecewiseCounts": {
+          "path": "proofs/Agent102PiecewiseCounts.lean",
+          "sha256": "3236a731b8bb923a3d64896ea281671a634c394a9a267a22fe34a3bba78880eb",
+          "git_blob": "da6c893fcd372cb7f0806b88f3ad6320408d1ea3",
+          "imports": [
+            "Agent102AffineInequalityIntervals",
+            "Agent102ParameterIntervalCompact",
+            "Agent102AffineArithmetic"
+          ]
+        },
+        "Agent102AffineRunParameterSets": {
+          "path": "proofs/Agent102AffineRunParameterSets.lean",
+          "sha256": "9b0860cfec3ecfd3059f029a658ed15b63ad2369dea3d6f760c24b207bb53897",
+          "git_blob": "392868ec97f22afcf792cb4339ffa5866b1e47ec",
+          "imports": [
+            "Agent102PiecewiseCounts",
+            "Agent102AffineRuns"
+          ]
+        },
+        "Agent102ParameterSetDecisions": {
+          "path": "proofs/Agent102ParameterSetDecisions.lean",
+          "sha256": "bc919ecc2700c9cac5c36285ddeda42b3e2d1e02ed086532ace33f78d5fb8f5c",
+          "git_blob": "466af5ff2bfd40d8ae5fbc4fcfbcf0608a411eb3",
+          "imports": [
+            "Agent102AffineRunParameterSets"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A102-EXACT-PARAMETER-INTERVALS",
+      "project": "agent102-affine-parameter-intervals",
+      "endpoints": [
+        "Agent102.Affine.eval_zero",
+        "Agent102.Affine.eval_add",
+        "Agent102.Affine.intercept_bounds_of_cutoff",
+        "Agent102.Affine.eval_pos_of_slope_pos",
+        "Agent102.Affine.eval_neg_of_slope_neg",
+        "Agent102.Affine.eval_nonneg_iff",
+        "Agent102.Affine.eval_neg_iff",
+        "Agent102.Affine.eval_positivePart",
+        "Agent102.Affine.eval_positivePart_nonneg",
+        "Agent102.Affine.compareCutoff_comm",
+        "Agent102.Affine.eval_lt_of_slope_lt",
+        "Agent102.Affine.eval_le_iff",
+        "Agent102.Affine.eval_lt_iff",
+        "Agent102.Affine.eval_eq_iff",
+        "Agent102.Affine.eval_le_stable",
+        "Agent102.Affine.eval_lt_stable",
+        "Agent102.Affine.eval_eq_stable",
+        "Agent102.word_nil",
+        "Agent102.word_cons",
+        "Agent102.word_append",
+        "Agent102.word_length",
+        "Agent102.word_reverse",
+        "Agent102.Span.shift_covers",
+        "Agent102.Span.shift_overlaps",
+        "Agent102.spansFrom_shift",
+        "Agent102.spansFrom_eq_map_spans",
+        "Agent102.spansFrom_append",
+        "Agent102.length_spansFrom",
+        "Agent102.length_spans",
+        "Agent102.mem_spansFrom_bounds",
+        "Agent102.exists_mem_spansFrom_covers",
+        "Agent102.exists_mem_spansFrom_covers_iff",
+        "Agent102.mem_spans_bounds",
+        "Agent102.exists_mem_spans_covers",
+        "Agent102.exists_mem_spans_covers_iff",
+        "Agent102.eq_of_mem_spansFrom_covers",
+        "Agent102.eq_of_mem_spans_covers",
+        "Agent102.Span.overlaps_iff_exists_covers",
+        "Agent102.Span.overlaps_of_covers",
+        "Agent102.word_eq_iff_length_and_overlap_digits",
+        "Agent102.word_eq_iff_count_sum_and_overlap_digits",
+        "Agent102.le_maxList_of_mem",
+        "Agent102.cutoff_le_lengthCutoff",
+        "Agent102.wordAt_nil",
+        "Agent102.wordAt_cons",
+        "Agent102.widthAffine_eval",
+        "Agent102.widthAffine_nonneg",
+        "Agent102.spanSpecsFrom_at",
+        "Agent102.spanSpecs_at",
+        "Agent102.spanSpecsFrom_nonneg",
+        "Agent102.spanSpecs_nonneg",
+        "Agent102.widthAffine_mem_endpoints",
+        "Agent102.lo_mem_endpoints",
+        "Agent102.hi_mem_endpoints",
+        "Agent102.endpoints_nonneg",
+        "Agent102.compareCutoff_le_pairCutoff",
+        "Agent102.left_lengthCutoff_le",
+        "Agent102.right_lengthCutoff_le",
+        "Agent102.pairCutoff_le_equalityCutoff",
+        "Agent102.combined_endpoints_nonneg",
+        "Agent102.endpoint_nat_lt_stable",
+        "Agent102.width_eq_stable",
+        "Agent102.Span.overlaps_iff_four",
+        "Agent102.span_overlap_stable",
+        "Agent102.wordAt_eq_iff_spans",
+        "Agent102.wordAt_eq_stable",
+        "Agent102.wordAt_reverse",
+        "Agent102.wordAt_palindrome_stable",
+        "Agent102.equalOnTail_spec",
+        "Agent102.unequalOnTail_spec",
+        "Agent102.equality_before_cutoff_of_tail_mismatch",
+        "Agent102.palindromicOnTail_spec",
+        "Agent102.nonpalindromicOnTail_spec",
+        "Agent102.ParameterSets.Interval.contains_empty",
+        "Agent102.ParameterSets.Interval.contains_univ",
+        "Agent102.ParameterSets.Interval.contains_inter",
+        "Agent102.ParameterSets.holds_empty",
+        "Agent102.ParameterSets.holds_univ",
+        "Agent102.ParameterSets.holds_cons",
+        "Agent102.ParameterSets.holds_union",
+        "Agent102.ParameterSets.holds_inter",
+        "Agent102.ParameterSets.holds_interval_complement",
+        "Agent102.ParameterSets.holds_complement",
+        "Agent102.ParameterSets.holds_unionAll",
+        "Agent102.ParameterSets.holds_interAll",
+        "Agent102.ParameterSets.test_eq_true_iff",
+        "Agent102.ParameterSets.inhabited_eq_true_iff",
+        "Agent102.ParameterSets.Interval.inhabited_singleton_of_contains",
+        "Agent102.ParameterSets.holds_prune",
+        "Agent102.ParameterSets.holds_fastInter",
+        "Agent102.ParameterSets.holds_fastComplement",
+        "Agent102.ParameterSets.holds_fastInterAll",
+        "Agent102.ParameterSets.contains_ltInterval",
+        "Agent102.ParameterSets.contains_leInterval",
+        "Agent102.ParameterSets.CountExpr.pieces_sound",
+        "Agent102.ParameterSets.CountExpr.pieces_cover",
+        "Agent102.ParameterSets.comparisonRegion_spec",
+        "Agent102.ParameterSets.holds_ltRegion",
+        "Agent102.ParameterSets.holds_leRegion",
+        "Agent102.ParameterSets.holds_eqRegion",
+        "Agent102.ParameterSets.widthExpr_value",
+        "Agent102.ParameterSets.spanExprsFrom_at",
+        "Agent102.ParameterSets.spanExprs_at",
+        "Agent102.ParameterSets.wordAt_eq_iff_countSpans",
+        "Agent102.ParameterSets.holds_overlapRegion",
+        "Agent102.ParameterSets.holds_agreementRegion",
+        "Agent102.ParameterSets.holds_equalityRegions",
+        "Agent102.ParameterSets.holds_palindromeRegions",
+        "Agent102.ParameterSets.inhabited_false_iff",
+        "Agent102.ParameterSets.equivalentRegions_spec",
+        "Agent102.ParameterSets.hasEqualParameter_spec",
+        "Agent102.ParameterSets.hasUnequalParameter_spec",
+        "Agent102.ParameterSets.everyParameterEqual_spec",
+        "Agent102.ParameterSets.everyParameterUnequal_spec",
+        "Agent102.ParameterSets.hasPalindromicParameter_spec",
+        "Agent102.ParameterSets.hasNonpalindromicParameter_spec",
+        "Agent102.ParameterSets.everyParameterPalindromic_spec",
+        "Agent102.ParameterSets.everyParameterNonpalindromic_spec"
+      ]
+    }
+  ],
+  "literal_audit_extra_endpoints": [
+    "Agent102.getElem?_word_of_mem_spansFrom",
+    "Agent102.getElem?_word_of_covers"
+  ],
+  "registry_name_note": "The unchanged verifier endpoint parser excludes ?. All explicit exports are retained in LiteralAudit, and all module-origin theorems are audited independently of spelling.",
+  "source_baseline": "9361e8a8d13c731a4004b08957f4cd543b3ae38f"
+}

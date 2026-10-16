@@ -1,0 +1,38 @@
+Agent102ParameterSetDecisions.lean:38:7: error: unknown tactic
+Agent102ParameterSetDecisions.lean:37:4: error: unsolved goals
+case mp.intro.mp
+R S : Region
+hrs : ∀ (k : Nat), ¬(holds R k ∧ ¬holds S k)
+hsr : ∀ (k : Nat), ¬(holds S k ∧ ¬holds R k)
+k : Nat
+hr : holds R k
+⊢ holds S k
+Agent102ParameterSetDecisions.lean:35:2: error: unsolved goals
+case mp.intro.mpr
+R S : Region
+hrs : ∀ (k : Nat), ¬(holds R k ∧ ¬holds S k)
+hsr : ∀ (k : Nat), ¬(holds S k ∧ ¬holds R k)
+k : Nat
+⊢ holds S k → holds R k
+Agent102ParameterSetDecisions.lean:30:67: error: unsolved goals
+case mpr
+R S : Region
+⊢ (∀ (k : Nat), holds R k ↔ holds S k) →
+    (∀ (k : Nat), ¬(holds R k ∧ ¬holds S k)) ∧ ∀ (k : Nat), ¬(holds S k ∧ ¬holds R k)
+Agent102ParameterSetDecisions.lean:73:70: error: unknown identifier 'not_not'
+Agent102ParameterSetDecisions.lean:70:69: error: unsolved goals
+A B : List RunSpec
+⊢ (∀ (k : Nat), ¬¬wordAt A k = wordAt B k) ↔ ∀ (k : Nat), wordAt A k = wordAt B k
+'Agent102.ParameterSets.inhabited_false_iff' depends on axioms: [propext, Quot.sound]
+'Agent102.ParameterSets.equivalentRegions_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.hasEqualParameter_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.hasUnequalParameter_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.everyParameterEqual_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.everyParameterUnequal_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.hasPalindromicParameter_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.hasNonpalindromicParameter_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent102.ParameterSets.everyParameterPalindromic_spec' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Agent102.ParameterSets.everyParameterNonpalindromic_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
