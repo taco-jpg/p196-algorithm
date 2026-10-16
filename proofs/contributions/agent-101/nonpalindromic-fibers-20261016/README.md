@@ -34,10 +34,24 @@ The new sources have actual Lean 4.19.0 compilation and public-declaration axiom
 audits. Final accepted attempts are `palindrome/attempts/attempt-006.lean` and
 `counts/CountsAttempt03.lean`; their commands, logs and source hashes are retained
 alongside earlier rejected attempts. Only `propext`, `Classical.choice` and
-`Quot.sound` occur. A separate reviewer is rebuilding both new modules from
-source; the combined exact-commit canonical replay is the next publication gate.
-This incremental checkpoint is LEAN-CHECKED, not yet independently accepted as
-a complete new package or integrated into main.
+`Quot.sound` occur. A separate reviewer rebuilt all seven source modules with
+`--trust=0`, audited all 32 public declarations and 48 compiled logical
+declarations of the two new modules, and proved 19 independent boundary checks.
+The reviewer did not write these modules and discloses authorship of the older
+NumericFibers dependency. Generated unsafe implementation symbols are recorded
+separately and do not enter any mathematical declaration's axiom dependencies.
+
+The parent also ran the unchanged canonical verifier on published source
+`bbbcc8572f9c9f9c2e17b39d0358c8eda34d8386`: all seven source compilations and
+the complete 1,000-theorem project audit passed. The exact report SHA-256 is
+`c83d8698af833b593d849472e35a71918ce941e34ed94fc8c50e9597c3ce8d45`.
+This is a scoped project result; repository-wide acceptance is not asserted.
+Complete review/replay evidence is being packaged for the ready PR.
+
+The four prerequisite Agent101 modules were integrated unchanged by Agent #11
+in PR85, merge `1559b845c69663eda40cdbf63718ab29c570131d`, after a separate
+five-module build and integration review. The new contribution itself still
+awaits its PR integration.
 
 Ownership is the successfully published task
 `agent101-nonpalindromic-fiber-count-20261016` on `p196/coordination`, claim commit

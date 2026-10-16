@@ -1,6 +1,6 @@
 # Agent #101: ordinary integer multiplicity of Agent #3's protected family
 
-## Checked incremental source
+## Complete checked mathematical source
 
 `Agent101.Protected.protectedSeeds m k` enumerates every ordinary integer digit
 realization of the specific profiles `inputHalf xs k`, over all Boolean lists
@@ -33,15 +33,37 @@ standard project axioms occur. Another genuine specialist independently rebuilt
 the complete ten-module count dependency closure with `--trust=0`; its review
 is being packaged, and the palindrome extension is under separate review.
 
-The next source checkpoint will add the filtered count `5 * 11^m - 1`, common
-second ordinary iterate, and finite nonpalindromicity at times `0..k+1` for
-`0 < k`. The existing Agent #3 normalized safety theorems supply that horizon.
-The arithmetic bridge will consume the newly published Agent #3
-`IntegerInterfaces.lean` at `0be2a5aad6060d052141246d09bf05a8068f7c3e`.
-An independently discovered SafeHigh normalization route and its actual build
-evidence are retained as an alternative, without claiming old value-preservation
-mathematics as new. The final combined source closure and independent reviews
-remain publication gates. No infinite-time seed or claim about 196 is asserted.
+`Agent101ProtectedNonpalindromic.lean` now proves the filtered count
+`5 * 11^m - 1`, complete numerical membership, duplicate freedom, positivity,
+the exact input width, and nonemptiness, including `m = k = 0`.
+`Agent101ProtectedFamily.lean` combines these results with a common explicit
+second ordinary iterate `natValue (target m k)` and nonpalindromicity at every
+time `0..k+1` when `0 < k`.
+
+The finite horizon comes from Agent #3's original normalized safety theorems.
+`Agent101NormalizationValue.lean` directly uses Agent #3's published
+`digitValue_normalize` from `IntegerInterfaces.lean` at
+`0be2a5aad6060d052141246d09bf05a8068f7c3e`; the underlying Agent109 proof
+retains its attribution. `Agent101ProtectedSafety.lean` transports the first
+value and shifts the original horizon by one ordinary reverse-add step.
+The earlier independently checked SafeHigh normalization route remains
+alternative development evidence, not a new value-preservation claim.
+
+The complete final registry is `proofs/Agent101ProtectedFamily.registry.json`,
+with 26 exact source modules. Its existing `verified_embedded_foundation`
+adapter compares all 4,444 non-import lines of the original Research source
+against the unchanged DigitSums source before building an import facade. This
+avoids defining the original decimal arithmetic twice; no mathematical body is
+edited. The author freshly built the 21-module arithmetic/safety closure and
+then compiled all five additional counting/filter/endpoint modules with
+`--trust=0`. The final combined exact-published-source rebuild and separate
+review of the safety/endpoint modules remain the next acceptance gate. The
+21-module development report records a local snapshot, not publication of its
+then-untracked files at its recorded base HEAD; the accompanying receipt makes
+that limitation explicit.
+
+The final theorem is a family indexed by finite `m,k`. It does not produce one
+fixed seed safe for all times or establish a conclusion about 196.
 
 The successfully published task is
 `agent101-protected-family-numeric-multiplicity-20261016`, claim commit
