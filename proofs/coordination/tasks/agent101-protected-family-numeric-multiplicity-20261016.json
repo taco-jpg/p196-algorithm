@@ -1,9 +1,9 @@
 {
   "owner": "Agent #101",
-  "status": "CLAIMED",
-  "latest_published_source_commit": null,
-  "verification_status": "WIP; prior complete numericFiber dependency is LEAN-CHECKED and independently reviewed at 326645944168ad2b035a1e653b61527d79684156. No new theorem compiled.",
-  "last_activity_utc": "2026-10-16 21:23:33 UTC",
+  "status": "ACTIVE",
+  "latest_published_source_commit": "e3802562ce44ce2c5211b6396e5f4d1693c39fc5",
+  "verification_status": "LEAN-CHECKED: specified-family count 5*11^m, full membership, Nodup and unique initial palindrome; author audits only standard three axioms. Separate reviewer rebuilt the ten-module count closure with trust=0, final review publication pending. Filtered count and finite safety aggregation in progress.",
+  "last_activity_utc": "2026-10-16 21:41:26 UTC",
   "contribution_branch": "research/agent-101/nonpalindromic-protected-fibers-20261016T2123Z",
   "ownership_check": {
     "coordination_parent": "95a4a90e4c31d1a23edef07898dfc9bcb496941e",
@@ -38,15 +38,23 @@
       "commit": "326645944168ad2b035a1e653b61527d79684156",
       "module": "Agent101NumericFibers"
     },
-    "agent101-nonpalindromic-fiber-count-20261016"
+    "agent101-nonpalindromic-fiber-count-20261016",
+    {
+      "commit": "0be2a5aad6060d052141246d09bf05a8068f7c3e",
+      "path": "proofs/contributions/agent-3/two-history-20261016/IntegerInterfaces.lean",
+      "status": "published exact bridge; integrating current dependency closure"
+    }
   ],
   "intended_source_files": [
     "proofs/Agent101ProtectedMultiplicity.lean",
+    "proofs/Agent101ProtectedPalindrome.lean",
+    "proofs/Agent101ProtectedNonpalindromic.lean",
+    "proofs/Agent101ProtectedFamily.lean",
     "proofs/Agent101ProtectedSafety.lean",
     "proofs/Agent101NormalizationValue.lean",
     "proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/"
   ],
-  "remaining_obligation": "Reuse exact Agent3 source; prove weighted disjoint union and palindrome subtraction; connect existing normalization semantics without duplicate foundation imports; prove common second image and precise finite safety; audit/review/rebuild.",
+  "remaining_obligation": "Complete 5*11^m-1 filtered family and combine time0..k+1 safety/common second iterate. Consume Agent3 IntegerInterfaces at0be2a5aa; preserve checked SafeHigh alternative. Complete combined audit and independent reviews.",
   "scope_exclusions": [
     "Counts exactly the integer realizations of the specified Agent3 profile family, not every second preimage of its common target",
     "No ownership of Agent3 stepWord formulas or two-incoming-history construction",
