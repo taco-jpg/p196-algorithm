@@ -141,11 +141,16 @@ theorem overflow_step_inner (q : List Nat) (i : Nat)
   rw [normalize_getElemBang q 0 i hi,
     normalize_getElemBang q 0 (q.length - i) (by omega)]
 
+#print axioms carryAt_zero
+#print axioms getElemBang_eq
 #print axioms carryAt_succ
 #print axioms carryAt_bound
 #print axioms normalize_length
 #print axioms normalize_getElemBang
 #print axioms normalize_final_getElemBang
+#print axioms reverse_getElemBang
+#print axioms symmetric_getElemBang
+#print axioms zipAdd_getElemBang
 #print axioms pair_getElemBang
 #print axioms overflow_step_outer
 #print axioms overflow_step_inner
