@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "task_id": "agent51-spectral-overflow-saturation-20261016",
+  "owner": "Agent #51",
+  "session": "3551b32d054b",
+  "role": "LEAN_FORMALIZATION",
+  "status": "CLAIMED",
+  "chat_language": "German",
+  "deliverable_language": "English",
+  "coordination_issue": 61,
+  "main_write_slot": false,
+  "source_snapshot": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+  "inventory_claims": [
+    "A51-SPEC-OVERFLOW-SATURATION",
+    "A51-SPEC-OVERFLOW-WITNESS",
+    "A51-SPEC-OVERFLOW-LITERAL-RESIDUES"
+  ],
+  "source_claim": {
+    "path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/astra_spectral_carry_quotient.md",
+    "blob": "eac5b8f61385a615d9cc3e7796a4d698c66b716b",
+    "section": "Theorem 3, overflow saturation paragraphs",
+    "statement": "At every even length L>=18 and odd length L>=19, each of the nine classes s is realized by a canonical nonpalindromic integer input with actual final overflow h=1, palindrome next output, s=Q(1)/2 mod9, and Q(-1)/2 mod11=0. The source construction uses k in1..9 symmetric pairs with coefficient11, including the outer pair, and coefficient0 elsewhere."
+  },
+  "target_statement": [
+    "For all k>=1 and L>=2*k, define least-significant-first input digits d(i)=2 for i<k, d(i)=9 for L-k<=i<L, and0 otherwise. Prove positive actual n=DecimalDigits.value d L, DecimalDigits.Canonical n d L, n nonpalindromic, actual final carry(columnSum d L)L=1, and Palindrome(Lychrel196.step n), with canonical output width L+1.",
+    "For q=DecimalDigits.columnSum d L, prove literal finite coefficient sums Q(1)=22*k and Q(-1) divisible by22, with Q(-1)=0 at even L. Define and connect any recursive helper explicitly to sum_{i<L}q(i)*x^i; no abstract substitute for actual coefficients.",
+    "For every s<9 choose1<=k<=9 with11*k mod9=s; for every L>=18 obtain an ordinary positive canonical nonpalindromic input of exact width L satisfying h=1, palindrome next output, (Q(1)/2)mod9=s and (Q(-1)/2)mod11=0. State the source parity thresholds explicitly as corollaries."
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/",
+    "proofs/Agent51OverflowSaturation.registry.json"
+  ],
+  "contribution_branch": "formalize/agent-51/spectral-overflow-saturation-20261016",
+  "dependency_pins": [
+    {
+      "module": "LychrelDigitSums",
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+    }
+  ],
+  "ownership_check": {
+    "scout_commit": "73e1fab97540d763fe1c83b6d40c70ea78d7f991",
+    "parent": "efe6d4b95f53ad8fbcebf113f8da0616dfa67b22",
+    "result": "Read current Agent14 carryfree scope (explicitly excludes overflow saturation), Agent15 charge/support scopes, all five Agent101 task scopes and exact all-width maximum witness module. No equivalent saturation endpoint found in the inspected current source corpus. Read all task changes from scout commit to parent: distinct periodic-path tasks and integration delivery/status records. Bounded census; no global-exhaustiveness assertion.",
+    "issue_last_seen": 6226649100,
+    "retry": {
+      "unpublished_commit": "f347638d61b91b2382d5e391695cf3c2595103d1",
+      "result": "Guarded update returned UNKNOWN; task readback404. Ref advanced six commits; read every changed task: delivery/review records for PR112/134/102, no overflow saturation overlap.",
+      "parent": "fa14a86e963209aed639ad4134d732e32d4fd5c5"
+    }
+  },
+  "acceptance": {
+    "lean": "4.19.0",
+    "commit_prefix": "6caaee842e94",
+    "compiler_args": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "Lean.ofReduceBool",
+      "new mathematical axioms"
+    ],
+    "required": [
+      "Exact source-semantic contract review",
+      "Fresh source compilation of entire local import closure",
+      "Actual public and transitive axiom audit",
+      "Genuine nonauthor semantic review and clean rebuild",
+      "Source hashes and all substantive attempts/logs retained"
+    ]
+  },
+  "subagents": {
+    "reasoning_effort": "ultra",
+    "actual_limit": "Three specialist slots plus parent; no claim of12-16 concurrent agents",
+    "assignments": [
+      "claim_census: read-only source/ownership census, possible disjoint source module only after explicit assignment",
+      "environment_audit: genuine nonauthor environment smoke and later isolated fresh verification",
+      "separate semantic reviewer: exact contract and frozen source review"
+    ]
+  },
+  "scope_exclusions": [
+    "No carryfree saturation takeover",
+    "No T/R or U/S or carry-nine-support reproof",
+    "No full ideal or quotient-ring classification",
+    "No claim n mod11=0 at even length",
+    "No all-time safety or196 conclusion",
+    "No main write slot or other agents' source mutations"
+  ],
+  "verification_status": "SOURCE_CONTRACT_ONLY; Lean4.19.0 minimal independent environment smoke passed; repository baseline and new proof pending.",
+  "next_action": "Run pinned original arithmetic baseline, review the contract, implement the explicit overflow witness and exact residue sums."
+}
