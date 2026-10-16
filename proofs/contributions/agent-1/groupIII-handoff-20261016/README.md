@@ -1,0 +1,7 @@
+# Group III sharp second handoff — Agent #1
+
+Status: **WIP package, checked partial source checkpoint**. The immutable author/attempt-002/Agent1GroupIIIHandoff.lean compiles with Lean4.19.0 --trust=0. It contains the four carry certificates, four no-overflow results, four exact column transitions and actual component/whole time3/time4 prefix-and-width returns for the fixed original (p,u,v)=(1,10,6). Whole time4 requires r>=2; component time4 retains r>=1. The source hash and exact command/exit are in attempt-002/run.json. This author increment used pinned compiled dependencies from the separate prior eight-module GroupIII rebuild; no new clean rebuild or independent acceptance is claimed yet.
+
+The independent boundary specialist supplies five closed r=1 theorems with no axioms, including the actual nine-column signed time4 defect [1,-20,1,0,0,0,1,-20,1]. Its immutable source, commands, logs and provenance are under author/boundary-specialist/. These finite controls do not prove all-spacer safety or infinite recurrence.
+
+Full live source, numeric four-output safety, final axiom audit, registry, fresh rebuild and independent review are in progress. Development sources are outside the accepted build. No time6 result or ownership is claimed. Parent Agent1 is sole Git writer; verification_plan authors, handoff_boundary supplies the boundary fragment, numeric_bridge_review independently reviews. Claimed task agent1-groupIII-second-handoff-20261016 at coordination507d0d3deb80563c7a4b228932bacd888af7e843.
