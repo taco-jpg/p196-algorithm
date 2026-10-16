@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #111",
+  "task_id": "agent111-growing-tenpower-suffix-20261016",
+  "validation_level": "LEAN-CHECKED, author-run CI; independent mathematical review pending",
+  "source_commit": "2dd0d9ee9515e46d726ad62268da67f289c5afa9",
+  "source_file": "proofs/contributions/agent-111/growing-tenpower-suffix-20261016/GrowingSuffix.lean",
+  "source_sha256": "910ddd984a85d235fc2829b87904c4f9947a306c0f1a652bf252f5128a5a040a",
+  "original_source_commit": "c3192d5bf2962298bcb2bb209a0947f657e8a7e5",
+  "archive_tree": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "decimal_semantics_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+  "saturation_source_sha256": "a638ff9844afa378dfe168feeaa8be372d2f2b5f6f3c1ff62ca5c2fe9f0685e0",
+  "compiler": "Lean 4.19.0, commit 6caaee842e94, official Linux x86_64 release",
+  "compiler_release_tar_sha256": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+  "ci": {
+    "successful_run_id": 38971847141,
+    "successful_url": "https://github.com/taco-jpg/p196-algorithm/actions/runs/38971847141",
+    "artifact_id": 12076648408,
+    "artifact_url": "https://github.com/taco-jpg/p196-algorithm/actions/runs/38971847141/artifacts/12076648408",
+    "artifact_sha256": "957e7d0598fe3a5b766619f67398e5ac708b2918b57c6624d1b0b81e3143caab",
+    "artifact_bytes": 98948,
+    "artifact_retention_days": 30,
+    "initial_failed_run_id": 38971619820,
+    "initial_failure_log": "verification/attempt-001.log",
+    "initial_failure": "unknown identifier dvd_refl; no accepted theorem, sorryAx in failed provisional audit",
+    "fix_commit": "2dd0d9ee9515e46d726ad62268da67f289c5afa9"
+  },
+  "full_rebuild_module_count": 12,
+  "compiled_theorem_count": 1006,
+  "status": "PASS",
+  "transitive_axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "new_exported_theorems": [
+    "Agent111.GrowingSuffix.powerTen_saturation",
+    "Agent111.GrowingSuffix.variable_powerTen_closed_set_contains_palindrome",
+    "Agent111.GrowingSuffix.half_width_suffix_closed_set_contains_palindrome"
+  ],
+  "compiler_generated_unsafe_implementation_count": 13,
+  "unsafe_implementation_scope": "unchanged original Lychrel196Research; recorded separately; not in mathematical theorem dependencies",
+  "proof_scope": "At eventual ordinary decimal widths L, if 1<=k(L) and 2*k(L)+4<=L, membership saturated modulo 10^k(L), positive S nonempty, and S forward-closed under ordinary reverse-add, then S contains a positive palindrome; concrete k(L)=floor((L-4)/2). Neither actual orbit hits nor the 196 conjecture is established.",
+  "independent_review_status": "PENDING",
+  "integrated_status": "NOT_INTEGRATED",
+  "reproduce": [
+    "Check out exact current contribution source and archived original PR40 sources",
+    "Restore archived original proofs/contributions/agent-111/exact-length-residues alongside proofs/research/Lychrel196Research.lean in a clean workspace",
+    "Copy GrowingSuffix.lean into the original source module directory next to Saturation.lean",
+    "Download the SHA-pinned official Lean 4.19.0 release, unset LD_PRELOAD",
+    "Run python3 -B $ROOT/proofs/contributions/agent-111/exact-length-residues/check.py $LEAN --module GrowingSuffix --build-dir $EMPTY_BUILD --output-dir $EMPTY_REPORT",
+    "Inspect the resulting verification.json, theorem inventory and all axiom logs; the CI workflow is .github/workflows/agent111-growing-tenpower-suffix.yml."
+  ]
+}
