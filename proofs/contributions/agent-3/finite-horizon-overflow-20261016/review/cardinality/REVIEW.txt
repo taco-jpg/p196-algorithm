@@ -1,0 +1,72 @@
+INDEPENDENT CARDINALITY REVIEW
+
+Result: PASS for the exact definitions and cardinality module reviewed below.
+Reviewer: Agent #3 runtime/dependency specialist, independent of the
+FamilyCardinality author. No original source file was edited in this review.
+
+Exact source versions
+---------------------
+FamilyDefinitions.lean:
+  497ffe833495c50e7df5714fd50c0a4835aaf96f71ec8d21fc43102b1468a1d4
+FamilyCardinality.lean:
+  dfded4df411694fcbe50487e7a963f45c7e0abe34e46ed828926aee9f329248d
+The independent verifier checks these hashes before copying and again after
+the build. Full dependency hashes, commands, exit codes, elapsed times and
+output hashes are retained in verification.json.
+
+Semantic findings
+-----------------
+1. Exact enumeration: allBits starts with exactly the empty Boolean list at
+   m = 0. The successor case prepends false and true to the smaller complete
+   enumeration. mem_allBits_iff proves that its members are exactly the lists
+   of length m. The two branches have different heads, and allBits_nodup
+   proves that no list occurs twice. allBits_length proves length 2^m.
+
+2. Injectivity: choice maps the two Boolean constructors to different
+   coefficients 5 and 14. inputWord_injective first recovers equal input-half
+   lengths from equal doubled word lengths, then takes the equal left halves,
+   removes their common first coefficient and fixed trailing 18 reservoir,
+   and applies injectivity of the mapped Boolean choices. Its premise fixes
+   k, but it does not assume equal Boolean-list lengths or the desired result.
+
+3. Actual cardinality: familyWords is the image of the complete enumeration.
+   familyWords_length and familyWords_nodup jointly establish exactly 2^m
+   distinct coefficient words. This is stronger than counting entries in a
+   possibly duplicated list. mem_familyWords_iff also specifies the family
+   extensionally, so the count is attached to the advertised construction.
+
+4. Canonicality: every word is nonempty, symmetric, bounded by 18, and has
+   first coefficient 14. Nat coefficients provide the lower bound zero.
+   These are exactly the fields of Agent8.CanonicalPair. Width is explicitly
+   2*(m+k+1), so every input has even width. The independently compiled theorem
+   no_unpaired_center proves that no index i can satisfy 2*i+1 = input width;
+   any even-center condition for an unpaired middle coefficient is therefore
+   vacuous on this input family.
+
+5. Parameter scope: these enumeration and canonicality claims correctly
+   include m = 0 and k = 0. The common-image target formula is a separate
+   theorem requiring k > 0; no transition claim is assumed or proved here.
+
+Fresh verification
+------------------
+A new directory was created for this review. Only exact .lean source copies
+were placed there. PeriodObstructions, ActualWordBridge, FamilyDefinitions,
+FamilyCardinality and CardinalityIndependentReview were compiled in order
+with the verified Lean 4.19.0 executable. LEAN_PATH named only that fresh
+directory in addition to the compiler's standard library. No author-produced
+or previously built project .olean was reused.
+
+All five compilations exited zero. The source's 24 declaration axiom audits
+were rerun during the independent compilation. The review wrapper also
+checked the exact enumeration statement, exact distinct-family statement,
+four shared definitions, and the absence of an unpaired center. Observed
+transitive axiom dependencies are a subset of propext, Quot.sound and
+Classical.choice. No sorryAx, Lean.ofReduceBool, or sorry warning appeared.
+
+Integration boundary
+--------------------
+This review establishes the enumerated input-family result. A final overflow
+or numeric-avoidance theorem must separately connect these exact words to
+the shared target under the unchanged transition, and align any numeric
+realization with the safety module's column-sum semantics. This cardinality
+module makes no claim of infinite avoidance or of any property of seed 196.

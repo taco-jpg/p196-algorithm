@@ -10,8 +10,9 @@ Pinned base: `4b4edf976b2c7a9ba1dad80636c0e21c66350325`.
 Claim: `55c0133a597cd3577fbbb864414fe4527729e554` on `p196/coordination`.
 Toolchain: Lean 4.19.0, release commit `6caaee842e94`.
 
-`FamilyDefinitions.lean`, `FamilyCardinality.lean`, and
-`FiniteHorizonOverflow.lean` compile. The last module proves the exact formula
+`FamilyDefinitions.lean`, `FamilyCardinality.lean`,
+`FiniteHorizonOverflow.lean`, `SafetyBridge.lean`, `NormalizedSafety.lean`, and
+`FiniteHorizonTheorem.lean` compile. The transition module proves the exact formula
 for every Boolean list `xs` and every positive `k`:
 
 ```lean
@@ -29,12 +30,31 @@ formula under full-word symmetry, coefficients at most 18 with remainder at
 most 8 modulo 10, and actual terminal carry one. These hypotheses are supplied
 by `inputWord_noNeutral`, `inputWord_final_carry`, and the canonicality theorem.
 
-The current checkpoint is `LEAN-CHECKED`; independent review and the complete
-numeric safety aggregate remain in progress. No shared accepted registry has
-been modified. All audited dependencies are confined to `propext`,
-`Classical.choice`, and `Quot.sound`; the successful logs record the precise
-sets for each endpoint. Failed development source and logs remain in
-`development/root/`, outside the completed module set.
+`finite_horizon_overflow_family` joins this exact enumeration and transition
+to ordinary decimal arithmetic. For every counted input `w`, the unchanged
+normalization `Agent8.normalize w 0` represents a positive integer. Its
+ordinary `Lychrel196.orbit` contains no palindrome at any time `t <= k`,
+including time zero. All these normalized integers have the same next
+ordinary reverse-add value, namely the decimal coefficient value of the
+common target. The counted objects remain coefficient words; this does not
+assert that there are exactly `2 ^ m` distinct normalized integers or count
+all decimal digit splits of each word.
+
+The target's central run contains `2 * k - 1` eighteens. The safety proof
+applies the existing `DecimalSafeRuns.iter_not_palindrome_of_run` for positive
+times and uses the target's odd outer coefficient `5` for time zero.
+`NormalizedSafety` proves canonicality and identifies the existing list-pair
+operation with the original decimal column sums. It does not change the
+decimal reverse-add definitions.
+
+The current checkpoint is `LEAN-CHECKED`; a separate reviewer has completed
+the fresh cardinality rebuild and interpretation review, and the whole-chain
+review is in progress. No shared accepted registry has been modified. All
+completed axiom audits are confined to `propext`, `Classical.choice`, and
+`Quot.sound`; the successful logs record their exact declaration-level sets.
+The final clean verifier will audit every exported new declaration, including
+the aggregate. Failed development source and logs remain in `development/`,
+outside the completed module set.
 
 ## Dependencies and reproduction
 
@@ -44,12 +64,16 @@ Use unchanged current-main sources, renamed only in a fresh build directory:
 |---|---|---|
 | PeriodObstructions | `proofs/PeriodObstructions__70ce034b31b5b218.lean` | `a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119` |
 | ActualWordBridge | `proofs/ActualWordBridge__7f032d27940694a8.lean` | `d3f49353f9970c610d818d8f5da78ad5c739e7df` |
+| LychrelDigitSums | `proofs/LychrelDigitSums__0810ace083af80c5.lean` | pinned in the verification manifest |
+| DecimalSafeRuns | `proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean` | pinned in the verification manifest |
 
 Compile in the order `PeriodObstructions`, `ActualWordBridge`,
-`FamilyDefinitions`, `FamilyCardinality`, `FiniteHorizonOverflow`, with
-`LEAN_PATH` set to the new build directory. Each source includes endpoint
-axiom requests. The final contribution verifier will additionally rebuild the
-safety dependencies and audit every new theorem.
+`LychrelDigitSums`, `DecimalSafeRuns`, `FamilyDefinitions`, `FamilyCardinality`,
+`FiniteHorizonOverflow`, `SafetyBridge`, `NormalizedSafety`,
+`FiniteHorizonTheorem`, with `LEAN_PATH` set to a fresh build directory.
+Independent evidence is retained under `review/`. The source-pinned verifier
+and manifest under `verification/` will reproduce the complete accepted
+contribution module set and its axiom audit.
 
 The generic central-run propagation theorem already exists in
 `DecimalSafeRuns`; it is an attributed dependency, not a new theorem here.

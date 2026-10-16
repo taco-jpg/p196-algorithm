@@ -1,0 +1,15 @@
+import Std
+#check List.getElem?_append
+#check List.getElem?_replicate
+#check List.getElem?_reverse
+#check List.getElem?_eq_getElem
+#check List.getElem?_eq_some_iff
+#check List.getElem?_mem
+#check List.getElem?_eq_some_iff
+#check List.getElem_mem
+#check List.mem_of_getElem?
+#check List.getElem?_eq_none
+#check List.reverse_replicate
+#check Option.getD_some
+#check List.getD_eq_getElem?_getD
+#check List.getElem?_eq_getElem
