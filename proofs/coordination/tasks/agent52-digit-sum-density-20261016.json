@@ -1,0 +1,86 @@
+{
+  "task_id": "agent52-digit-sum-density-20261016",
+  "owner": "Agent #52",
+  "session": "04d7e624b3b0",
+  "role": "LEAN_FORMALIZATION",
+  "status": "ACTIVE_FORMALIZATION",
+  "source_main": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+  "source": {
+    "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "path": "proofs/research/continuation/strengthening_notes.txt",
+    "git_blob": "7103ee939d82740b970dd23fb91e9db50db4ea54",
+    "sha256": "15e07772d87cc4ee469541f4fb39ce1d0dce28ac5f630b16980c8abb02db258f",
+    "section": "6. Consequences and limits"
+  },
+  "claim_ids": [
+    "A52-C01-lower-banach-density",
+    "A52-C01-lower-asymptotic-density"
+  ],
+  "target_statement": "For every positive ordinary decimal seed n and every natural threshold B, the lower asymptotic density and lower Banach density of {t : Nat | B < DecimalMass.digitSum (Lychrel196.orbit n t)} are at least 1/(DecimalUniformEscape.sharpDigitSumEscapeBound B + 1), as inequalities of real numbers. Also prove the generic analytic consequence of the existing translated interval-count bound.",
+  "density_contract": {
+    "interval": "[s,s+N), counted by the unchanged Agent9 intervalCount; N=0 has ratio 0",
+    "asymptotic": "Filter.liminf of count(0,N)/N atTop, valued in Real",
+    "banach": "Filter.liminf atTop of the infimum over all natural translates s of count(s,N)/N; prove uniform real epsilon bound as well",
+    "quantifiers": "All positive n, all natural B including 0; all translates s; orbit continues after palindromes."
+  },
+  "source_relationship": "Exact decimal analytic consequence from section 6. The source also states general-base results; the new numeric endpoint does not claim a general-base uniform-escape proof.",
+  "existing_results": [
+    "P196.Agent9.IntervalCounts.digitSum_interval_count",
+    "P196.Agent9.IntervalCounts.window_property_interval_count",
+    "DecimalUniformEscape.digitSum_uniform_window_sharp"
+  ],
+  "dependencies": {
+    "lean": "leanprover/lean4:v4.19.0",
+    "lean_commit": "6caaee842e94",
+    "mathlib": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+    "mathlib_lake_manifest_sha256": "5c6421b650bc87a2427a892a39e5522dc44543ca4ac1bd6e9f08d536c044a752",
+    "local_sources": "Unchanged Agent9 interval-count closure at source_main; no alternate decimal dynamics."
+  },
+  "owned_paths": [
+    "proofs/contributions/agent-52/digit-sum-density-20261016/"
+  ],
+  "branch": "formalize/agent-52/digit-sum-density-20261016",
+  "expected_endpoints": [
+    "P196.Agent52.Density.window_lowerBanachDensity",
+    "P196.Agent52.Density.window_lowerAsymptoticDensity",
+    "P196.Agent52.Density.digitSum_lowerBanachDensity",
+    "P196.Agent52.Density.digitSum_lowerAsymptoticDensity"
+  ],
+  "ownership_check": {
+    "related_entry": "A9-C03-density is PARTIALLY_FORMALIZED, owner null in Agent9 COVERAGE.json; Agent9 task explicitly excludes real density limits. Agent51 spectral overflow saturation is disjoint.",
+    "issue_scope_proposal": 6226684993,
+    "census": "Scoped independent census screened 186 task names and 37 open PRs, read relevant task scopes and source theorem statements. Not a complete repository census.",
+    "task_names_screened_at_claim": 199
+  },
+  "verification": {
+    "status": "NOT_YET_BUILT",
+    "required": [
+      "Exact source-statement semantic review",
+      "Pinned Mathlib and unchanged dependency source hashes",
+      "Fresh compilation of local source closure",
+      "Transitive #print axioms for each exported result",
+      "Independent semantic review and fresh build"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "new mathematical axioms",
+      "unverified external oracle conclusions"
+    ]
+  },
+  "exclusions": [
+    "No replacement of existing finite counting, no marker/factorial scope ownership",
+    "No pointwise digit-sum divergence or average digit-sum divergence claim",
+    "No palindrome avoidance or proof of 196",
+    "No actual ordinary-density limit existence claim",
+    "No main write slot or shared generated-index ownership"
+  ],
+  "claim_base": "d8c245458f34fb827830d4de55655e32c7fa3ab6"
+}
