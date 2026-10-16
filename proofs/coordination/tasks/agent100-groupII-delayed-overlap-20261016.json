@@ -1,0 +1,64 @@
+{
+  "task_id": "agent100-groupII-delayed-overlap-20261016",
+  "owner": "Agent #100",
+  "assigned_subagents": [
+    "groupII_dynamics: explicit carry and pair-word return",
+    "scope_audit: independent mathematical controls and semantic review",
+    "runtime_setup: exact dependency build and independent rebuild"
+  ],
+  "target_statement": [
+    "For all r>=1, 1<=p<=4, 5<=u<=8, v in {5,6}, u+v<=13, A=DelayedOverlapGate.component r p u v and Q=DelayedOverlapGate.initial r p u v (Phi_1 A), prove unchanged widths through two actual pair-word updates, failure of overlap at time 1, and iterPairs Q (2*r+7) 2 = Phi_1 of the exact two-step component return.",
+    "The exact component return is (4*p) :: replicate (r-1) 0 ++ [1,4*u-19,4*v-18,4*v-18,4*u-19,1] ++ replicate (r-1) 0 ++ [4*p]. Preserve r=1 boundary collisions.",
+    "Every canonical finite ordinary decimal realization of Q has nonpalindromic positive iterates 1 and 2; prove existence of such realizations.",
+    "Apply the existing Group I (p,u,v)=(1,1,6) two-step return and the new Group II (4,5,5) result to obtain the exact two-repair/four-safe-output family for every r>=1. This is a finite consequence, not a recurrent construction."
+  ],
+  "related_theorems": [
+    "DelayedOverlapGate.initial_is_overlap",
+    "DelayedOverlapGate.carry_certificate",
+    "DelayedOverlapGate.two_steps_of_explicit_columns",
+    "DelayedOverlapGate.whole_two_step_return",
+    "DelayedOverlapGate.numeric_return",
+    "PairDelayBridge.palindrome_iff_bad",
+    "FoldedDecimal.valid_word_realizable"
+  ],
+  "dependencies": [
+    {
+      "commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+      "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff"
+    },
+    {
+      "path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+      "git_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6"
+    },
+    {
+      "source_argument": "proofs/research/main_existence_attempt/renewal_pass/constructive/STATUS.md",
+      "git_blob": "d684dc1865a3e59e1c699ad1ec28a4dbec0a74e2"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/Agent100GroupIIDynamics.lean",
+    "proofs/Agent100GroupIISafety.lean",
+    "proofs/Agent100DoubleGate.lean",
+    "proofs/contributions/agent-100/groupII-overlap-20261016/"
+  ],
+  "contribution_branch": "research/agent-100/groupII-overlap-20261016T2052Z",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; written source argument only until actual Lean compilation and axiom audit",
+  "last_activity_timestamp": "2026-10-16T21:01:47.186Z",
+  "remaining_obligation": "Derive and kernel-check the Group II carry patterns and exact finite-width identities, including shortest spacer; independently review semantics, then prove the ordinary-integer safety and four-step composition.",
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "scope_proposal_comment": 6224608847,
+  "ownership_check": {
+    "coordination_parent": "0be52bafd3478077b96ec1f8e702b2cf58dec8ba",
+    "description": "All task records examined by scope specialist; refreshed task changes inspected by parent. No equivalent Group II task found. Existing branch/source history contains Group I and written general classification."
+  },
+  "scope_exclusions": [
+    "No new Group I theorem authorship",
+    "No Group III or exhaustive 2430-case classification ownership",
+    "No all-time safe seed or 196 claim",
+    "No main integration slot"
+  ],
+  "publication_authority": "The current attached user assignment explicitly requests an isolated contribution branch and frequent incremental publication."
+}
