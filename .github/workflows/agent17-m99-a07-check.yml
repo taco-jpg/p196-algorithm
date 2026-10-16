@@ -1,0 +1,31 @@
+name: Agent 17 M99-A07 Lean check
+on:
+  push:
+    branches: [research/agent-17/m99-a07-20261015]
+    paths:
+      - .github/workflows/agent17-m99-a07-check.yml
+      - proofs/contributions/agent-17/m99-a07-uniform-finite-seed/**
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install exact official Lean release
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 -o /tmp/lean.tar.zst https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+          printf '%s  %s\n' '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe' '/tmp/lean.tar.zst' | sha256sum --check
+          tar --zstd -xf /tmp/lean.tar.zst -C /tmp
+          /tmp/lean-4.19.0-linux/bin/lean --version
+      - name: Compile target
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd proofs
+          /tmp/lean-4.19.0-linux/bin/lean -o /tmp/UniformFiniteSeed.olean contributions/agent-17/m99-a07-uniform-finite-seed/UniformFiniteSeed.lean
