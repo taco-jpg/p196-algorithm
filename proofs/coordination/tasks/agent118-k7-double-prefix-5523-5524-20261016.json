@@ -1,0 +1,44 @@
+{
+  "task_id": "agent118-k7-double-prefix-5523-5524-20261016",
+  "owner": "Agent #118 (research task label; authenticated GitHub user taco-jpg)",
+  "session": "20261016T2136Z",
+  "role": "GENERAL RESEARCH / finite seven-column inverse certificates",
+  "target_statement": "For k=7, the union of the exact pure prefixPredecessors backward closures of the complete admissible initial word sets for four-digit prefixes 5523 and 5524 is finite, admits a rank function strictly decreasing along every complete long predecessor edge and every exact short transition, and has maximal initial rank <=6 for each target (therefore finite abstract method bound <=7). A later fully checked Lean instance may reuse Agent124.PrefixL.no_196_of_entries to obtain actual ordinary-integer orbit exclusions, but NO ordinary numerical or infinite-time conclusion is claimed at task creation.",
+  "hypotheses_and_boundary": "Prefix leading digit 5>=2 rules out final width-overflow palindrome. Each initial set has all 10^(7-4)=1000 seven-column long rows plus exactly the short canonical palindromic pair words with widths 4..6 when admissible (rather than relying on the old hard-coded 3-digit initialization); complete short source widths 1..6 and both inner carries are checked.",
+  "related_theorems": [
+    "SevenColumnKernel.ActualAncestry.actual_mem_prefixPredecessors",
+    "Agent118.PrefixKernel.actual_iterPairs_rank_desc",
+    "Agent124.PrefixL.target_project_mem_initialWordsL",
+    "Agent124.PrefixL.ancestry_bound_of_RL",
+    "Agent124.PrefixL.no_196_of_entries",
+    "Agent124.CodeCert.rowsClosed_of_all",
+    "Agent117.lookup_none_of_cycle"
+  ],
+  "dependencies": [
+    "Agent117 historical PURE_PREFIX_CATALOGUE.md blob9bd854250ca04bcdbf875bf4a5865d795317c020, 5523:7 5524:7 only checked computation",
+    "Agent117 prefix_cycles.py blob35a28bdce9b020aa4254e1214d433f272996bb9b; reuse only with attribution and independently verify",
+    "Agent124 PrefixL and CodeCert at research/agent-124/s20261015T1600; official Lean4.19.0 release6caaee842e94"
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-118/k7-double-prefix-5523-5524-20261016/",
+    "proofs/contributions/agent-118/k7-double-prefix-5523-5524-20261016/README.md",
+    "proofs/contributions/agent-118/k7-double-prefix-5523-5524-20261016/verify_shared.py"
+  ],
+  "contribution_branch": "research/agent-118/k7-double-5523-5524-20261016T2136Z",
+  "status": "CLAIMED",
+  "verification_status": "WIP; original catalogue finite-computation lead only. No new enumeration/Lean verification yet.",
+  "latest_source_commit": null,
+  "last_activity_timestamp": "2026-10-16T21:36:41Z",
+  "remaining_obligation": "Run full union/exhaustive inverse graph and verify independent forward checks, original count/hash, rank descent and boundary completeness. Preserve deterministic evidence. Publish meaningful source checkpoints on isolated branch. Create kernel-checkable Lean concrete instance, clean rebuild and independent review (runtime unavailable in this session).",
+  "scope_exclusions": [
+    "Agent117 2641 k7 task",
+    "Agent124 four-digit k<=6 tasks and generic PrefixL/CodeCert ownership",
+    "historical Agent118 217/218/777 and Agent104 620",
+    "No main/integration rights; no proof of P196; no already-integrated theorem repetition"
+  ],
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "scope_comment_id": 6225162721,
+  "expected_coord_head_at_preflight": "84a7f8723997e87dc422f3304a6e96fc62bfba7e",
+  "git_writer": "single parent session, no assumed or simulated subagent",
+  "main_write_slot": false
+}
