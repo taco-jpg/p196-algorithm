@@ -2,7 +2,7 @@ import Lychrel196Research
 
 namespace Agent315.TemporalColumn99
 
-open Lychrel196 DecimalDigits DecimalModular
+open Lychrel196 DecimalDigits AstraModular
 
 /-- Any divisor of 99 is temporally absorbing under reverse-and-add:
 if M | n, then M | T(n). -/
@@ -13,10 +13,10 @@ theorem step_preserves_dvd_of_dvd99
   · subst n
     exact Nat.dvd_zero M
   · obtain ⟨d, L, hc⟩ := canonical_exists n (by omega)
-    have hr := DecimalModular.step_mod_of_dvd99 M n d L hM hc
+    have hr := AstraModular.step_mod_of_dvd99 M n d L hM hc
     have hz := Nat.mod_eq_zero_of_dvd h
     apply Nat.dvd_of_mod_eq_zero
-    omega
+    rw [hr, Nat.mul_mod, hz, Nat.mul_zero, Nat.zero_mod]
 
 /-- Every divisor of 99 remains an invariant divisibility class along the
 entire future orbit once entered. -/

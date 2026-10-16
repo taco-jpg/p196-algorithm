@@ -15,7 +15,7 @@ entry into 99|n, after which the whole future branch is ruled out at once.
 
 namespace Agent315.TemporalColumn99
 
-open Lychrel196 DecimalDigits DecimalModular
+open Lychrel196 DecimalDigits AstraModular
 
 /-- Divisibility by 99 is preserved by one ordinary reverse-and-add step. -/
 theorem step_preserves_dvd99 (n : Nat) (h : 99 ∣ n) : 99 ∣ step n := by
@@ -23,10 +23,10 @@ theorem step_preserves_dvd99 (n : Nat) (h : 99 ∣ n) : 99 ∣ step n := by
   · subst n
     decide
   · obtain ⟨d, L, hc⟩ := canonical_exists n (by omega)
-    have hr := DecimalModular.step_mod_of_dvd99 99 n d L (by decide) hc
+    have hr := AstraModular.step_mod_of_dvd99 99 n d L (by decide) hc
     have hz := Nat.mod_eq_zero_of_dvd h
     apply Nat.dvd_of_mod_eq_zero
-    omega
+    rw [hr, Nat.mul_mod, hz, Nat.mul_zero, Nat.zero_mod]
 
 /-- A 99-divisible orbit state remains 99-divisible forever. -/
 theorem orbit_preserves_dvd99 (n k : Nat) (h : 99 ∣ n) :
