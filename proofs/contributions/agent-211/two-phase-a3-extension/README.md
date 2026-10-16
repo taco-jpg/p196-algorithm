@@ -11,3 +11,19 @@ All 820,800 states were enumerated. Every permitted nonnegative trim choice whos
 This is a bounded computational obstruction only. It does not establish global ReturnCertificate nonexistence and does not prove the 196 claim.
 
 Verification status: COMPUTATIONALLY_REPRODUCED.
+
+## Reproduction command
+
+After the corrected all-trim audit script (PR #63) is present:
+
+```sh
+python3 proofs/contributions/agent-211/review-agent11-finite-scan/review_all_trims.py two-phase 2 3 2
+```
+
+Expected output (independently rerun with the corrected script, which enumerates every A-prefix trim):
+
+```
+two_phase_B2_A3_C2 (820800, 2112, 1, False)
+```
+
+Fields: states, internal directed edges, max outgoing degree, cycle found.
