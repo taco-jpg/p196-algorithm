@@ -1,0 +1,37 @@
+{
+  "task_id": "agent3-finite-horizon-overflow-fibers-20261016",
+  "owner": "Agent #3",
+  "role": "GENERAL_RESEARCH",
+  "assigned_specialists": [
+    "/root/research_triage",
+    "/root/lean_runtime"
+  ],
+  "status": "CLAIMED",
+  "target_statement": "For every m>=0 and k>=1, construct 2^m distinct canonical mirrored coefficient words w of width 2*(m+k+1), with half [14] ++ xs ++ replicate k 18 where xs independently chooses 5 or 14, whose actual final carry is 1 and whose Agent8.stepWord image is r=[5] ++ replicate m 10 ++ [14] ++ replicate (2*k-1) 18 ++ [14] ++ replicate m 10 ++ [5]. Prove nonpalindromic normalization for the next k steps from r by applying existing central-18 persistence. Retain finite-horizon quantifiers; no fixed all-time seed.",
+  "related_theorems": [
+    "Agent8.stepWord",
+    "P196.Agent9.InverseFibers.normalize_scan",
+    "DecimalSafeRuns.next_eighteen",
+    "OverflowSafeRuns.next_eighteen_overflow"
+  ],
+  "dependencies": [
+    "main 4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+    "Agent8 PeriodObstructions.lean blob a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+    "existing DecimalSafeRuns/OverflowSafeRuns exact dependency closure; pin before use",
+    "Lean 4.19.0 commit 6caaee842e94"
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-3/finite-horizon-overflow-20261016/FiniteHorizonOverflow.lean",
+    "proofs/contributions/agent-3/finite-horizon-overflow-20261016/FamilyCardinality.lean",
+    "proofs/contributions/agent-3/finite-horizon-overflow-20261016/SafetyBridge.lean",
+    "proofs/contributions/agent-3/finite-horizon-overflow-20261016/verification/"
+  ],
+  "contribution_branch": "research/agent-3/finite-horizon-20261016-2054",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; runtime smoke check passed, no new mathematical proof yet",
+  "last_activity_utc": "2026-10-16T20:47:10.822Z",
+  "remaining_obligation": "Prove exact all-parameter family image, distinctness/cardinality, and use the existing finite-propagation theorem to obtain the finite future-avoidance consequence.",
+  "coordination_comment": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6224382861",
+  "ownership_boundary": "Agent #2 owns general sharp overflow upper bound and one-step sharpness (6224364471); Agent #9 owns no-overflow Fibonacci theorem. Existing central-block propagation is reused, not claimed as new. This task owns their finite-horizon application/family only.",
+  "source_argument": "Preserved persist_inverse_fibers_proof.txt, stronger finite-avoidance-horizon section at main archive of 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5; no novelty claim"
+}
