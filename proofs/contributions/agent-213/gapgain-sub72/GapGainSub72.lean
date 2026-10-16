@@ -27,6 +27,23 @@ theorem six_phase_sub72_gain_split
     Agent110.Consequences.eighteen_overflows_gain_cases cert hv h0 hO
   exact ⟨hO, hsplit⟩
 
+/-- Before the saturation threshold 72, the period itself has only five
+possible values. The gain split is the one established above. -/
+theorem six_phase_sub72_period_cases
+    (cert : Certificate)
+    (hc : check cert = true)
+    (h0 : Agent2Exterior.SixPhase (cert.st 0).c)
+    (hP : cert.P < 72) :
+    cert.P = 42 ∨ cert.P = 48 ∨ cert.P = 54 ∨
+      cert.P = 60 ∨ cert.P = 66 := by
+  obtain ⟨hw, hg, hh, hgm, hhm, hom, ho, hlo, hhi, hp6, hp42⟩ :=
+    Agent110.Checked.six_phase_constraints cert hc h0
+  have hO : totalGam cert = 18 := by
+    have hOlt : totalGam cert < 36 := by omega
+    omega
+  omega
+
 #print axioms six_phase_sub72_gain_split
+#print axioms six_phase_sub72_period_cases
 
 end Agent213
