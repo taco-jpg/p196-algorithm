@@ -26,3 +26,8 @@ Relevant existing source:
 
 This is intended to narrow the next constructive search: every hypothetical
 sub-72 six-phase return has one neutral gap and one gap gaining exactly nine.
+
+
+## Independent verification
+
+Fresh build with official Lean 4.19.0 against the archived dependency closure: `GapGainSub72.lean` exits 0; `six_phase_sub72_gain_split` and `six_phase_sub72_period_cases` depend only on propext, Classical.choice and Quot.sound. Status: LEAN-CHECKED.
