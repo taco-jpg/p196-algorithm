@@ -9,3 +9,11 @@ The separate author compilations and complete module-origin audits passed using 
 A genuine independent artifact reviewer verified the exact archived 878 nodes and 1,458 labelled edges, including all 108 all-nine labelled edges and all 36 bounded exterior/clock cases. This Python diagnostic is not a Lean certificate. Its original input hashes, per-edge records and replay scripts are under `catalog-review/`.
 
 The full catalog source/certificate is still in development at this checkpoint. Its first strict Lean run hit a stack limit; the unchanged mathematical source is being retried with an explicitly larger compiler stack. No completed catalog, arbitrary path realizability, finite-interface return, safety closure or 196 result is claimed here. The final scoped registry and combined fresh builds remain pending. The accepted global build is unchanged.
+
+## Resource-limited certificate checkpoint
+
+The preserved larger-stack attempt002 was stopped by the root at about23GiB resident memory, before the32GiB shared container limit. A4GiB direct-rfl probe and a6GiB first phase-block variant hit their explicit address-space limits. All source snapshots, commands, outputs and limits remain under root-author/. These are verification-resource failures, not counterexamples.
+
+The published internal `Agent1PeriodicCatalogOrder` helper proves that a linear adjacent-key Boolean check implies node distinctness; it requires no key injectivity assumption. Its strict author compilation and public axiom audit passed. The concrete878-key certificate still belongs to the unfinished root verification.
+
+Current root source splits exact original literals into59 consecutive phase blocks. An independent diagnostic expands the actual append definitions and verifies exactly the original878 nodes and1458 labelled edges/order. Its second refinement uses explicit congruence assembly and Boolean membership checks. The full root remains **WIP** until a successful complete compilation, followed by separate fresh gates. No finite-graph theorem is accepted merely from these preserved definitions.
