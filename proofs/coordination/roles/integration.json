@@ -5,13 +5,13 @@
   "owner": "Agent #13",
   "session": "6124a6476634",
   "task_id": "agent13-session6124-pr110-pr127-pr128-integration-20261016",
-  "status": "ACTIVE",
-  "active_editing": true,
+  "status": "RELEASED",
+  "active_editing": false,
   "selected_pr": 110,
   "reviewed_head": "624cc122e39e4d1f30b5c17890e7aac17c40a1e9",
   "observed_main_head": "dcde48c2d17729a73ecec64d7df1e2a99e86bdc6",
-  "verified_main_head": "160ea9e84016f8f98625fcfd0d879536a0dd5799",
-  "verified_combined_tree": "8458b8b66e28aec5c38c9d3e80a2bc81e91fc27c",
+  "verified_main_head": "dcde48c2d17729a73ecec64d7df1e2a99e86bdc6",
+  "verified_combined_tree": "e20241daf680ee1bd07221c19a7a4a5a4067c946",
   "review_id": 5554727856,
   "evidence_commit": "b80ac1a5add3384cc743002b3636cd0aa87f4dcd",
   "verification": "PASS independent fresh ten-module source closure with recorded resource recovery, all2746 logical types/axioms and50 new public roots. Complete102-path preservation and registry-source identities passed on the recorded verified base. Rebind the observed newer main immediately before merge.",
@@ -23,5 +23,50 @@
     "integrated_commit": "dcde48c2d17729a73ecec64d7df1e2a99e86bdc6"
   },
   "release_rule": "Release immediately after exact actual target readback.",
-  "integration_state": "FINAL_BASE_RECHECK"
+  "integration_state": "VERIFIED_ON_TARGET",
+  "integrated_commit": "3bf8b8fe83244c8e60f67e7c46a8455998f3114e",
+  "postmerge_status": "VERIFIED_ON_TARGET",
+  "postmerge": {
+    "schema_version": 1,
+    "pr": 110,
+    "reviewer": "Agent #13 / session6124",
+    "status": "VERIFIED_ON_TARGET",
+    "reviewed_head": "624cc122e39e4d1f30b5c17890e7aac17c40a1e9",
+    "base": "dcde48c2d17729a73ecec64d7df1e2a99e86bdc6",
+    "merge_commit": "3bf8b8fe83244c8e60f67e7c46a8455998f3114e",
+    "tree": "e20241daf680ee1bd07221c19a7a4a5a4067c946",
+    "ordered_parents": [
+      "dcde48c2d17729a73ecec64d7df1e2a99e86bdc6",
+      "624cc122e39e4d1f30b5c17890e7aac17c40a1e9"
+    ],
+    "main_readback": "3bf8b8fe83244c8e60f67e7c46a8455998f3114e",
+    "merged": true,
+    "pr_state": "closed",
+    "base_entries_preserved": 18422,
+    "added_paths": 102,
+    "independent_review_id": 5554727856,
+    "evidence_commit": "b80ac1a5add3384cc743002b3636cd0aa87f4dcd",
+    "parent_evidence_commit": "d8c245458f34fb827830d4de55655e32c7fa3ab6",
+    "fresh_Lean": "PASS ten-module fresh source closure with fully preserved ENOSPC recovery; six valid objects from this reviewer's new run reused, four modules recompiled, complete final audit passed. No author objects reused.",
+    "logical_constants_audited": 2746,
+    "theorem_constants": 2547,
+    "safe_definitions": 185,
+    "new_public_theorems": 43,
+    "new_public_definitions": 7,
+    "postmerge_Lean": "NOT_RUN: actual complete merge tree and all ten selected source identities equal the premerge checked combination.",
+    "postmerge_check_runs": {
+      "count": 0,
+      "runs": []
+    },
+    "postmerge_workflow_runs": {
+      "count": 0,
+      "runs": []
+    },
+    "ready_transition": "Already non-draft; no mutation needed",
+    "source_repairs": [],
+    "whole_repository_build_claim": false,
+    "completed_at": "2026-10-16T23:43:08Z",
+    "verification_basis": "Actual expected-head guarded ordinary merge; independent PR/main/tree/ordered-parent readback; complete preservation and exact selected-source binding."
+  },
+  "release_reason": "Actual guarded merge, exact complete tree, main and ordered parents verified. No matching postmerge workflow exposed; selected fresh build bound by exact target identity."
 }
