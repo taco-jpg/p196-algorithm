@@ -1,0 +1,32 @@
+Agent1.Periodic.outside (B w : Agent8.Word) : Nat
+'Agent1.Periodic.outside' does not depend on any axioms
+Agent1.Periodic.outside_bounds (B H w : Agent8.Word) (hv : Agent1.Periodic.ValidPeriodic B H w) :
+  0 < Agent1.Periodic.outside B w ∧ Agent1.Periodic.outside B w ≤ 18
+'Agent1.Periodic.outside_bounds' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.quotient_outside_step (B H w : Agent8.Word) (hv : Agent1.Periodic.ValidPeriodic B H w) :
+  let e := Agent8.lastInput (Agent1.Periodic.periodicWord B H w 3);
+  e ≤ 1 ∧
+    Agent1.Periodic.rawGamma B H w = Agent8.overflow (Agent1.Periodic.outside B w) e ∧
+      Agent1.Periodic.outside (Agent1.Periodic.quotientOuter B H w) (Agent1.Periodic.rawPeriod B H w) =
+        Agent8.nextExterior (Agent1.Periodic.outside B w) e
+'Agent1.Periodic.quotient_outside_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicOuter _private.Agent1PeriodicOuter.0.Agent1.Periodic.valid_period_nonempty._proof_1 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1PeriodicOuter _private.Agent1PeriodicOuter.0.Agent1.Periodic.quotient_outside_eq_rawHead : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1PeriodicOuter _private.Agent1PeriodicOuter.0.Agent1.Periodic.valid_period_nonempty : [propext,
+ Quot.sound]
+AUDIT_DEFINITION Agent1PeriodicOuter Agent1.Periodic.outside : []
+AUDIT_THEOREM Agent1PeriodicOuter Agent1.Periodic.quotient_outside_step : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1PeriodicOuter Agent1.Periodic.outside_bounds._proof_3 : [propext, Quot.sound]
+COMPILER_IMPLEMENTATION_DEFINITION Agent1PeriodicOuter Agent1.Periodic.outside._cstage1
+AUDIT_THEOREM Agent1PeriodicOuter _private.Agent1PeriodicOuter.0.Agent1.Periodic.rawOuter_head : []
+COMPILER_IMPLEMENTATION_DEFINITION Agent1PeriodicOuter Agent1.Periodic.outside._cstage2
+AUDIT_THEOREM Agent1PeriodicOuter Agent1.Periodic.outside_bounds : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicOuter _private.Agent1PeriodicOuter.0.Agent1.Periodic.quotient_outside_eq_rawHead._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1PeriodicOuter _private.Agent1PeriodicOuter.0.Agent1.Periodic.quotient_outside_eq_rawHead._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1PeriodicOuter Agent1.Periodic.outside_bounds._proof_2 : [propext, Quot.sound]
+MODULE_AUDIT theorems=10 definitions=1 union=[Classical.choice, Quot.sound, propext]

@@ -1,0 +1,123 @@
+Agent1.Periodic.OuterNode : Type
+'Agent1.Periodic.OuterNode' does not depend on any axioms
+Agent1.Periodic.OuterEdge : Type
+'Agent1.Periodic.OuterEdge' does not depend on any axioms
+Agent1.Periodic.outerImages : Nat → Nat → List Nat
+'Agent1.Periodic.outerImages' does not depend on any axioms
+Agent1.Periodic.outerOutputs : Agent1.Periodic.OuterNode → List Agent1.Periodic.OuterEdge
+'Agent1.Periodic.outerOutputs' does not depend on any axioms
+Agent1.Periodic.mem_outerImages_of_actual : ∀ (q e : Nat),
+  e ≤ 1 → Agent8.nextExterior q e ∈ Agent1.Periodic.outerImages q (Agent8.overflow q e)
+'Agent1.Periodic.mem_outerImages_of_actual' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.outerOutputs_mem_of_phaseEdge : ∀ (s : Agent1.Periodic.OuterNode) (e : Agent1.Periodic.PhaseEdge),
+  e ∈ Agent1.Periodic.phaseEdges →
+    e.source = s.fst →
+      ∀ (q' : Nat),
+        q' ∈ Agent1.Periodic.outerImages s.snd e.clock →
+          { source := s, clock := e.clock, carries := e.carries, target := (e.target, q') } ∈
+            Agent1.Periodic.outerOutputs s
+'Agent1.Periodic.outerOutputs_mem_of_phaseEdge' depends on axioms: [propext, Quot.sound]
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_3._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge._sizeOf_1 : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_1._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_13._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.outerImages._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM List.eraseDups.loop.eq_2 : []
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_2._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.carries : []
+UNSAFE_IMPLEMENTATION_AXIOM List.eraseDups._at.Agent1.Periodic.outerImages._spec_2
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_1._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_8._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_7._cstage2 Lean.DefinitionSafety.unsafe
+UNSAFE_IMPLEMENTATION_AXIOM List.mapTR.loop._at.Agent1.Periodic.outerOutputs._spec_1
+NON_SAFE_DEFINITION Agent1.Periodic.instDecidableEqOuterEdge._cstage1 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION List.flatMapTR.go._at.Agent1.Periodic.outerOutputs._spec_3._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.outerImages : []
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge._proof_1._@.Agent1PeriodicOuterChoices._hyg.56 : []
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge.match_1._@.Agent1PeriodicOuterChoices._hyg.56 : []
+NON_SAFE_DEFINITION List.mapTR.loop._at.Agent1.Periodic.outerOutputs._spec_1._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_6._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge._@.Agent1PeriodicOuterChoices._hyg.56 : []
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_3._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.noConfusionType : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_19._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.source : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_12._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge._@.Agent1PeriodicOuterChoices._hyg.317 : []
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge._proof_5._@.Agent1PeriodicOuterChoices._hyg.56 : []
+AUDIT_THEOREM Agent1.Periodic.mem_outerImages_of_actual._proof_6 : [propext, Quot.sound]
+NON_SAFE_DEFINITION List.eraseDups.loop._at.Agent1.Periodic.outerImages._spec_3._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.instReprOuterEdge._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_5._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.List.reverseAux.match_1.splitter._cstage1 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION List.eraseDups._at.Agent1.Periodic.outerImages._spec_2._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_17._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_7._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_9._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_20._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.instReprOuterEdge._cstage1 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.outerImages._closed_1._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_18._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.List.reverseAux.match_1.splitter._rarg._cstage2 Lean.DefinitionSafety.unsafe
+UNSAFE_IMPLEMENTATION_AXIOM List.filterMapTR.go._at.Agent1.Periodic.outerImages._spec_1
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_15._cstage2 Lean.DefinitionSafety.unsafe
+UNSAFE_IMPLEMENTATION_AXIOM List.eraseDups.loop._at.Agent1.Periodic.outerImages._spec_3
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge._proof_3._@.Agent1PeriodicOuterChoices._hyg.56 : []
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge._proof_4._@.Agent1PeriodicOuterChoices._hyg.56 : []
+NON_SAFE_DEFINITION Agent1.Periodic.instReprOuterEdge._closed_1._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.List.reverseAux.match_1.splitter._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.noConfusion : []
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_6._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0.List.reverseAux.match_1.eq_2 : []
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.recOn : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_4._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge._sizeOf_inst : []
+NON_SAFE_DEFINITION Agent1.Periodic.outerImages._closed_2._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.outerOutputs_mem_of_phaseEdge : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.outerImages.eq_1 : []
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._closed_4._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.outerOutputs : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_16._cstage2 Lean.DefinitionSafety.unsafe
+UNSAFE_IMPLEMENTATION_AXIOM Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.56._closed_1._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.instReprOuterEdge : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_9._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.instDecidableEqOuterEdge._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.56._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_11._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.casesOn : []
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.List.reverseAux.match_1.splitter : []
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0._proof_7 : [propext]
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge._proof_2._@.Agent1PeriodicOuterChoices._hyg.56 : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_2._cstage2 Lean.DefinitionSafety.unsafe
+UNSAFE_IMPLEMENTATION_AXIOM List.filterTR.loop._at.Agent1.Periodic.outerOutputs._spec_2
+NON_SAFE_DEFINITION Agent1.Periodic.outerOutputs._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.target : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_8._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_14._cstage2 Lean.DefinitionSafety.unsafe
+UNSAFE_IMPLEMENTATION_AXIOM List.flatMapTR.go._at.Agent1.Periodic.outerOutputs._spec_3
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_5._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM List.eraseDups.eq_1 : []
+AUDIT_THEOREM Agent1.Periodic.mem_outerImages_of_actual : [propext, Quot.sound]
+NON_SAFE_DEFINITION Agent1.Periodic.outerOutputs._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.OuterEdge.mk.inj : []
+AUDIT_THEOREM Agent1.Periodic.OuterEdge.mk.sizeOf_spec : []
+AUDIT_THEOREM Agent1.Periodic.OuterEdge.mk.injEq : [propext]
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_10._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM List.eraseDups.loop.eq_1 : []
+NON_SAFE_DEFINITION List.filterMapTR.go._at.Agent1.Periodic.outerImages._spec_1._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._closed_21._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION List.filterTR.loop._at.Agent1.Periodic.outerOutputs._spec_2._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM _private.Agent1PeriodicOuterChoices.0.List.reverseAux.match_1.eq_1 : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.56._closed_2._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.outerImages._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.instDecidableEqOuterEdge : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._cstage1 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.56._cstage1 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.«_@».Agent1PeriodicOuterChoices._hyg.317._spec_1._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterNode : []
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.clock : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.decEqOuterEdge.match_1.«_@».Agent1PeriodicOuterChoices._hyg.56._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.OuterEdge.mk._flat_ctor : []
+MODULE_AUDIT theorems=18 definitions=20 opaque=0 union=[Quot.sound, propext]

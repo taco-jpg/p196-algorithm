@@ -1,0 +1,23 @@
+def outer(q,h):
+    result=set()
+    for inner in (0,1):
+        if (q+inner)//10!=h:continue
+        low=q%10;high=(q+inner)%10
+        result.add(low+(1 if h else high))
+    return sorted(result)
+
+def outputs(p):
+    size=len(p)
+    if all(q==9 for q in p):
+        return [dict(clock=h,left_carry=a,right_carry=b,target=(18-9*(a+b),)*size)
+                for h,a,b in itertools.product((0,1),repeat=3)]
+    low=[];high=[];carry_records=[]
+    for i,q in enumerate(p):
+        j=(i-1)%size
+        while p[j]==9:j=(j-1)%size
+        a=int(p[j]>=10)
+        j=(i+1)%size
+        while p[j]==9:j=(j+1)%size
+        b=int(p[j]>=10)
+        low.append((q+a)%10);high.append((q+b)%10);carry_records.append((a,b))
+    return [dict(clock=h,target=tuple(low[i]+high[(i-h)%size] for i in range(size))) for h in (0,1)]
