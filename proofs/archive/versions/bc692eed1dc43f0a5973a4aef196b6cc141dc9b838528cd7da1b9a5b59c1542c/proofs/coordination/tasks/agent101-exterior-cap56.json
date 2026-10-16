@@ -1,0 +1,24 @@
+{
+  "task_id": "agent101-exterior-cap56",
+  "owner": "Agent #101",
+  "subagents": [],
+  "target": "Complete normalized exterior graph (c,B) -> (c',B',gamma) of proofs/contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md (sec. 6 outer projection, as written in proofs/coordination/2026-10-15-agent7-outer-projection-and-lean-runtime.md), over c in {2,4,6,8,10,12,14,16}, B canonical trimmed, |B| <= 5 and |B| <= 6: decide acyclicity, sharp maximum first-exit time, and exact counts. Extends the |B|<=4 results of Agents #3/#6/#7 (issues #3,#6,#8). Consequence if acyclic: every whole complementary-band quotient cycle uses |B| >= cap+1 somewhere.",
+  "related": [
+    "issue #3 (Agent #7 cap<=4)",
+    "issue #8 (Agent #6 cap<=4)",
+    "issue #6 (Agent #3 cap<=3)",
+    "proofs/agent7/OuterRank.lean on agent7/outer-boundary-audit"
+  ],
+  "dependencies": [
+    "exterior projection formulas (written proof, not yet Lean-bridged)"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-101/exterior-cap56/"
+  ],
+  "branch": "research/agent-101/s20261015",
+  "status": "READY_FOR_REVIEW",
+  "latest_source_commit": "50ce5e3d43533463990bc73a604f1383a3f657dc",
+  "verification_status": "Checked finite computation: caps 5,6 acyclic (sharp exit 20,21). C + independent Python replay agree through cap 5; cap 6 C only. Not Lean.",
+  "last_activity": "2026-10-15T04:46:35Z",
+  "next_action": "Open for independent review / cap-7 extension (\u22486.8e9 states; needs a different representation). Lean bridge for the projection remains with Agent #7."
+}

@@ -1,0 +1,15 @@
+{
+  "task_id": "agent102-ancestry-lean",
+  "owner": "Agent #102",
+  "subagents": [],
+  "target": "Kernel-formalize, on actual full symmetric column-sum words (DecimalDigits/FoldedDecimal semantics of LychrelDigitSums.lean, q symmetric of width L, entries <= 18, nextColumns), the maximal 0/18-run ancestry law of ABSORBING_CORE.md sec. 2: for c in {0,18}, h=[c=18], a maximal run [a,b) of c (b<=L): (i) no overflow, b-a>=2: for i in [a,b), nextColumns q L i = c iff (i=a -> carry q a = h) and (i=b-1 -> carry q (L-b) = h); (ii) no overflow, singleton: survives iff both carries = h; (iii) overflow: nextColumns = c exactly on [a+1,b) within [a,b]; (iv) no-merging: the output neighbours of the surviving descendant are not c; hence descendant length <= ell - overflowBit. Then the actual-orbit corollary of 2026-10-15-ancestry-potential-bound: if the tracked descendant of a maximal run of initial length ell>0 survives to time t, then t + lowerPotential(p_t) <= 4(ell-1) + lowerPotential(p_0), so extinction by 4 ell - 3 + psi(p_0) <= 4 ell + 1.",
+  "related": ["proofs/research/main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/ABSORBING_CORE.md (written proof only)", "proofs/contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md (written corollary, no Lean)", "DecimalWidthGrowth.lower_potential_step", "FoldedDecimal.next_column_no_overflow / next_column_overflow_interior"],
+  "dependencies": ["proofs/research/continuation/LychrelDigitSums.lean (accepted, Lean 4.19.0, Std only)"],
+  "intended_files": ["proofs/contributions/agent-102/ancestry-lean/"],
+  "branch": "research/agent-102/s20261015a",
+  "status": "CLAIMED",
+  "latest_source_commit": null,
+  "verification_status": "WIP",
+  "last_activity": "2026-10-15T04:58:00Z",
+  "next_action": "compile LychrelDigitSums.lean locally (official Lean 4.19.0 downloaded from GitHub releases, sha256 6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe), then prove the one-step run lemmas"
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": "agent124-four-digit-refinements",
+  "owner": "Agent #124",
+  "assigned_subagents": {},
+  "target_statement": "For each four-digit prefix abcd in proofs/contributions/agent-124/four-digit-refinements/exploration/four_digit_targets.json (1,830 classes: four-digit refinements of the 500 unresolved three-digit classes of proofs/contributions/2026-10-15-seven-column-prefix/development/remaining_prefixes.txt, excluding the ten refinements of 739 and the overflow-compatible 1120, 1121; 1,267 close at width 4, 463 at width 5, 100 at width 6) with listed bound B (max 48): for every positive ordinary decimal integer A, every t and every palindrome P whose canonical decimal numeral has width >= 4 and begins with the digits a,b,c,d (any width, any interior digits, intermediate palindromes allowed), Lychrel196.orbit A t = P implies t <= B; consequently for every t, Lychrel196.orbit 196 t is not a palindrome beginning with any listed four-digit prefix. No optimality claim.",
+  "route": "Generalize Agent124.PrefixK/PrefixR/LeadOne from three-digit prefixes to prefix lists of any length m <= k (target family, initial-family coverage, last-step bridge excluding final overflow when the leading digit is >= 2 or some prefix digit is >= 3), reuse Agent124.CodeCert fused checks and Agent #104's unchanged inverse/projection modules; one combined code-keyed certificate per width (7,156 / 72,224 / 324,781 nodes), all checks by kernel reduction. No native_decide, no new axioms, no sorry.",
+  "related": [
+    "agent124-prefix-five-six-column-kernel (same infrastructure)",
+    "agent117-remaining-prefix-cycle-diagnosis (three-digit classes of the same 500 at k=7..9; different, coarser families)",
+    "SevenColumnKernel.Finite739.ancestry_bound39 (Agent #104; implies the excluded 739x refinements)"
+  ],
+  "overlap_review": "Read all task records at 37e382b139d713c4a016e26d8a914262d333ac76. Agent #117 owns exact cycle diagnosis and any new certificate of the 500 THREE-digit classes at k=7..9; this task proves statements about strictly finer FOUR-digit families at k<=6 and does not decide or claim any three-digit class. If Agent #117 closes a three-digit class abc, its theorem implies the refinements abcd here; both are retained and the overlap will be recorded. Baseline three-digit classes (Agents #113, #119, #118, #104, #124) are disjoint from the 500; 739 refinements are excluded. Untrusted scoping data published at 00e1cc6 before this claim. No other agent's files are edited.",
+  "dependencies": [
+    "Agent124 infrastructure at research/agent-124/s20261015T1600 (Agent124PrefixK, Agent124PrefixR, Agent124FastPred, Agent124CodeCert, Agent124CodeRange, Agent124LeadOne)",
+    "Agent #104 accepted modules unchanged; Official Lean 4.19.0 (6caaee842e94)"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-124/four-digit-refinements/"
+  ],
+  "branch": "research/agent-124/s20261015T1600",
+  "status": "ACTIVE",
+  "latest_source_commit": "43e904209b0fc0fbb19cb6df71fa8354dcbef756",
+  "verification_status": "LEAN-CHECKED (dev build, Lean 4.19.0) at 43e9042 for the 1,267 width-4 classes: Agent124.CertF4.ancestry_00..06 and no_196_00..06 (list-valued: forall e in entries0i, ancestry <= e.2+1 / no 196 palindrome beginning e.1); only propext, Classical.choice, Quot.sound. New infrastructure Agent124PrefixL (PalStartsL for digit prefixes of any length; palStartsL_three_iff; noOverflowPre; ancestry_of_entries) and Agent124CodeRange. Width-5 (463) and width-6 (100) classes WIP.",
+  "last_activity": "2026-10-15T19:20:00Z",
+  "next_action": "Generate and kernel-check the k=5 (72,224 nodes) and k=6 (324,781 nodes) four-digit certificates after the three-digit k=6 batch finishes; clean rebuild + exhaustive audit; review request.",
+  "claim_base": "37e382b139d713c4a016e26d8a914262d333ac76",
+  "git_writer": "Agent #124 only",
+  "integration_ownership": "NOT_CLAIMED"
+}

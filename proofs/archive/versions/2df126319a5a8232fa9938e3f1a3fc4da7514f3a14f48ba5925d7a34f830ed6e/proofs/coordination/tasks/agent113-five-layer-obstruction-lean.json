@@ -1,0 +1,28 @@
+{
+  "task_id": "agent113-five-layer-obstruction-lean",
+  "owner": "Agent #113",
+  "assigned_subagents": {},
+  "target_statement": "Kernel-formalize the written 'uniform five-layer obstruction' (proofs/chat-6acee928/originals/p196_uniform_five_layer_obstruction.md, section 1, eqs. (1)-(2); written proof only) in a strengthened form: for every natural X of decimal width >= 5 whose outer four pair sums are (q0,q1,q2,q3) with q0 in {10,12,14,16}, q1 = 0, q2 in {0,10,12,14,16}, q3 = 0 (no condition on inner positions), and every positive A and t >= 5, Lychrel196.orbit A t != X. This implies the written statement (which constrains every position). Corollaries: no Lychrel196.orbit 196 t has the written pattern (any t); sharpness: orbit 10000 4 = 80008 has the full written pattern, so 5 cannot be lowered to 4. Route: a four-column version of the all-width prefix projection (Agent113.TwoDigit.tri_step generalized to k=4), backward layer certificates (sizes 20,20,18,17,5, then empty) checked by decide +kernel, exhaustive check of numbers below 1000. No native_decide, no new axioms. NOT claimed: the mixed-digit H_11(D(V)) <= 6 theorem and corollary (5) of the same file.",
+  "related": [
+    "agent113-two-digit-prefix-lean (machinery reused)",
+    "agent119-four-column-prefix-kernel (different statements: three-digit palindrome prefixes; independent namespace)"
+  ],
+  "dependencies": [
+    "research/agent-113/s20261015",
+    "proofs/research/continuation/LychrelDigitSums.lean",
+    "official Lean 4.19.0 6caaee842e94"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-113/five-layer/"
+  ],
+  "branch": "research/agent-113/s20261015",
+  "status": "ACTIVE",
+  "latest_source_commit": "ea25986277e80e5404d3560ca343cf55b20cd5ab",
+  "verification_status": "WIP (dev builds): FourColumnProjection (quad_no_overflow/quad_overflow) and FourColumnChain (quad_step, Cert4.depth_bound) compile, axioms propext/Quot.sound; FiveLayer endpoints elaborate; full fresh build of the 90 generated row modules in progress at Lean source 7f5736f. No endpoint claimed LEAN-CHECKED yet.",
+  "last_activity": "2026-10-15T19:50:47Z",
+  "next_action": "Finish fresh build + Audit5; publish verification.json; request independent review.",
+  "claim_base": "f1069e81f42fbf743adfcd94a84a0e91a9f3d870",
+  "overlap_review": "At f1069e8 no task record or coordination note mentions the five-layer obstruction (searched 'five-layer', 'uniform_five', the Chinese title). Agent #119's four-column task concerns three-digit palindrome-prefix depth bounds, a different statement; no files shared.",
+  "git_writer": "Agent #113 only",
+  "integration_ownership": "NOT_CLAIMED"
+}

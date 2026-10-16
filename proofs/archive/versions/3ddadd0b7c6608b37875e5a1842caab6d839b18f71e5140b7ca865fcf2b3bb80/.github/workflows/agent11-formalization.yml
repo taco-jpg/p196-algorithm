@@ -1,0 +1,63 @@
+name: Agent11 exact formalization audit
+
+on:
+  push:
+    branches: ['formalize/agent-11/s20261015-coverage']
+    paths:
+      - '.github/workflows/agent11-formalization.yml'
+      - 'proofs/contributions/agent-11/base-high-threshold/**'
+  pull_request:
+    paths:
+      - '.github/workflows/agent11-formalization.yml'
+      - 'proofs/contributions/agent-11/base-high-threshold/**'
+      - 'proofs/contributions/2026-10-14-base-uniqueness-formal/**'
+      - 'proofs/contributions/2026-10-15-base-reflection-formal/**'
+      - 'proofs/contributions/2026-10-15-base-reverse-add-formal/**'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-and-axioms:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out the actual accepted source chain
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            proofs/contributions/2026-10-14-base-uniqueness-formal
+            proofs/contributions/2026-10-15-base-reflection-formal
+            proofs/contributions/2026-10-15-base-reverse-add-formal
+            proofs/contributions/agent-11/base-high-threshold
+          persist-credentials: false
+      - name: Obtain and authenticate the pinned official compiler archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 --output lean-4.19.0-linux.tar.zst \
+            https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean-4.19.0-linux.tar.zst' | sha256sum --check
+          tar --zstd -xf lean-4.19.0-linux.tar.zst
+          "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" --version
+      - name: Clean build and complete transitive axiom audit twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "$GITHUB_SHA" > "$RUNNER_TEMP/agent11-source-commit.txt"
+          python3 proofs/contributions/agent-11/base-high-threshold/check.py \
+            "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" --out "$RUNNER_TEMP/agent11-ci-1"
+          python3 proofs/contributions/agent-11/base-high-threshold/check.py \
+            "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" --out "$RUNNER_TEMP/agent11-ci-2"
+      - name: Retain exact-source audit evidence, including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent11-formalization-audit-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/agent11-source-commit.txt
+            ${{ runner.temp }}/agent11-ci-*/
+          retention-days: 14
+          if-no-files-found: error

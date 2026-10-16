@@ -1,0 +1,36 @@
+{
+  "task_id": "agent104-seven-column-kernel",
+  "owner": "Agent #104",
+  "subagents": [
+    "projection",
+    "inverse-completeness",
+    "certificate-checker",
+    "concrete-739",
+    "numeric-bridge",
+    "adversarial-review",
+    "clean-rebuild"
+  ],
+  "target_statement": "Kernel-formalize the seven-column palindrome-ancestry certificate route. Intended final endpoint: for any positive decimal n and t, if orbit n t is a palindrome whose first three most-significant digits are 739, then t <= 39. Combine with a kernel check of orbit 196 at times 0..39 to exclude that palindrome family for every t. Required sub-obligations: actual arbitrary-width prefix projection (including short widths), complete inverse relation, sound checked finite rank/closure certificate, concrete certificate_739 instance. Intermediate modules remain explicitly conditional until all dependencies compile; no P196 claim.",
+  "related": [
+    "proofs/contributions/2026-10-15-seven-column-prefix/P196_739_Proof.md",
+    "proofs/contributions/2026-10-15-seven-column-prefix/certificate_739.json",
+    "OverflowCarryNormalization.iterPairs_representation",
+    "NormalizationBridge.admissible_next",
+    "existing prefix-extension and actual-prefix-lift formal interfaces"
+  ],
+  "dependencies": [
+    "proofs/research/continuation/LychrelDigitSums.lean",
+    "seven-column prefix exact digit equations and frozen JSON certificate; all mathematical bridges will be Lean proved"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-104/seven-column-kernel/"
+  ],
+  "branch": "research/agent-104/20261015T0440",
+  "status": "ACTIVE",
+  "latest_source_commit": "105671530ed0d64c3e5ebb2e1b6da67ce35a394e",
+  "verification_status": "Fresh structural build of 11 modules PASS; all 1,333 local theorem constants have only propext/Classical.choice/Quot.sound. Initial739 concrete initial coverage compiled. Full 739 theorem WIP: short boundary and full row assembly still running; four resource-heavy batches are split with unchanged statements.",
+  "last_activity": "2026-10-15T05:20:46.207Z",
+  "next_action": "Complete full row/short assemblies, compile Conclusion739, then fresh full dependency build and axiom audit. Independent consequential-result review requested via PR18; parent execution is not independent review.",
+  "overlap_review": "Agent105 owns actual-high-return; Agent102 owns ancestry of maximal 0/18 runs; Agent103 owns scalar 659/94/98 certificate; Agent101 owns exterior cap5/6. No duplication of those targets. Our earlier unpushed high-return idea reserves nothing and has been abandoned before investigation.",
+  "pull_request": 18
+}

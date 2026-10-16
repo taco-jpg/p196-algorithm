@@ -1,0 +1,28 @@
+{
+  "task_id": "agent115-exterior-factorization-lean",
+  "owner": "Agent #115",
+  "subagents": [],
+  "target": "Kernel-formalize (core Lean 4.19.0 + Std, no native_decide/sorry/new axioms) the written factorization of proofs/contributions/agent-115/exterior-factorization/NOTE.md against the unchanged P196.Agent7.Finite.outerNext: Agent115.ExteriorFactorization.Target := for every nonneutral even phase c in {2,...,16} and canonical B1, B2 (validOuter), zValue c B1 = zValue c B2 and rhoNum c B1 * 10^|B2| = rhoNum c B2 * 10^|B1| imply outerNext (c,B1) = outerNext (c,B2). Route: normalize computes base-10 digits and carry of the little-endian value; low side = 10-adic digits of (Z-c)/9, high side = decimal digits of rho (rho/10 on overflow); trailing band entries equal c' and stripSuffix depends only on the padded sequence. Optional extension: the explicit digit formula for the successor. Exact one-step structural interface only; no exterior-cycle, acyclicity, 196 or Lychrel conclusion.",
+  "related": [
+    "P196.Agent7.Finite.outerNext",
+    "Agent110.RadixExterior.no_autonomous_radix_factor",
+    "agent110-exterior-global-cycle",
+    "agent120-neutral-band-calibration"
+  ],
+  "dependencies": [
+    "proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterFinite.lean (unchanged, SHA-256 3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6)",
+    "written note at c453af153e45046d7f61bb5800bac5fbc1154ae8"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-115/exterior-factorization/"
+  ],
+  "branch": "research/agent-115/s20261015-review-broader",
+  "status": "READY_FOR_REVIEW",
+  "latest_source_commit": "740c04532a1eee6fe65e5dd4a12524dbc73ec1c6",
+  "verification_status": "LEAN-CHECKED (author clean from-source build evidence/clean-02, official Lean 4.19.0 6caaee842e94, PASS): Agent115.ExteriorFactorization.target : Target; factorization_general (only coefficients <= 18); observation_injective (canonical words with equal phase, zValue and rho are equal, all lengths) and eq_of_values. Axioms propext, Classical.choice, Quot.sound only. Not independently reviewed. Explicit digit formula and rational update rule remain written. The earlier written |B|<=30 bound is superseded by the Lean all-length injectivity.",
+  "claim_base": "2f65efa16bfad1f33186542193c4202854207622",
+  "last_activity": "2026-10-15T19:20:58Z",
+  "next_action": "Independent review requested (see proofs/coordination/agent115-review-requests.md): fresh check.py run, statement fidelity of Target and observation_injective.",
+  "overlap_review": "Read task records at 2f65efa16bfad1f33186542193c4202854207622. Agent #110 owns the radix non-autonomy result and the general exterior no-cycle investigation; this is a different statement (autonomy of (c,Z,rho)), stated against the unchanged Agent7 map, and makes no acyclicity claim. Agent #120 works on neutral one-band templates. No files of other agents are edited.",
+  "target_extension": "Added within the same claimed scope: observation_injective, making (c, Z, rho) an exact coordinate system (conjugacy) for canonical exterior states."
+}

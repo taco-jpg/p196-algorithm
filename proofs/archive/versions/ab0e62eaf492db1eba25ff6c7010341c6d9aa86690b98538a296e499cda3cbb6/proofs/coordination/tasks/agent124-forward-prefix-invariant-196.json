@@ -1,0 +1,31 @@
+{
+  "task_id": "agent124-forward-prefix-invariant-196",
+  "owner": "Agent #124",
+  "assigned_subagents": {},
+  "target_statement": "Kernel-formalize a forward invariant of the actual 196 orbit in the exact k-column prefix abstraction and its palindrome-prefix consequence. For k = 5 (k = 6 if resources allow): an explicit finite set F_k of k-column pair words (code-keyed), containing the k-projection of the canonical pair word of Lychrel196.orbit 196 t0 (t0 = 100) and closed under both inner-carry choices of Agent #104's exact forward prefix map SevenColumnProjection.forwardPrefix (actual_forwardPrefix). Consequences: (i) for every t >= t0 the k-projection of the actual pair word of orbit 196 t lies in F_k; (ii) for every t and every digit list pre with pre.length = k, noOverflowPre pre and pre not in F_k, Lychrel196.orbit 196 t is not a palindrome whose canonical numeral begins with pre (Agent124.PrefixL.PalStartsL). Untrusted exploration: F_5 has 497,471 words of which 23,360 are all-digit, so 66,640 of the 90,000 five-digit leading words (74%) are excluded at every time; F_6 has 4,985,132 words and 137,214 digit words (85% of six-digit leading words excluded). This is a statement about restricted palindrome families in the 196 orbit; it is not a Lychrel proof (F_k always contains digit words and some overflow-target words).",
+  "route": "Reuse Agent124 infrastructure (CodeTree, decode_wordCode, PrefixL last-step bridge, projectK) and Agent #104's actual_forwardPrefix; new module proving the forward-invariant induction from a kernel-checked canonical representation of orbit 196 100; certificate = one code tree with a Boolean forward-closure check split into chunks; no native_decide, no new axioms, no sorry.",
+  "related": [
+    "SevenColumnProjection.actual_forwardPrefix (Agent #104, INTEGRATED)",
+    "Agent124.PrefixL.canonical_last_step_initialL, Agent124.CodeCert (Agent #124, dev build)",
+    "agent105-autonomous-residue-trap (residue-determined forward-closed sets; different object)",
+    "agent124-four-digit-refinements / agent124-prefix-five-six-column-kernel (backward ancestry certificates; complementary)"
+  ],
+  "overlap_review": "Read all task records at 1e681c4121e486d5af75bca37b2d2d302b7fcc3f. Existing forward-closed-set work (Agent #105 residue trap; earlier language passes) concerns palindrome-free invariants or residue classes, not a forward attractor of the prefix abstraction restricting palindrome prefixes of the 196 orbit. Ancestry-based prefix tasks (Agents #104, #113, #117, #118, #119, #124) prove universal bounds for specific classes; this task proves a 196-specific exclusion for all classes outside F_k at once and will document overlaps with those classes. No other agent's files are edited.",
+  "dependencies": [
+    "Agent124 infrastructure at research/agent-124/s20261015T1600",
+    "Agent #104 accepted modules unchanged",
+    "Official Lean 4.19.0 (6caaee842e94)"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-124/forward-invariant-196/"
+  ],
+  "branch": "research/agent-124/s20261015T1600",
+  "status": "ACTIVE",
+  "latest_source_commit": "a4d803f489c3104455555ec6e5d9156d61c3aa05",
+  "verification_status": "LEAN-CHECKED (conditional, dev build) at a4d803f: Agent124.Forward.invariant and no_196_outside (code-keyed forward-closed set containing the k-projection of orbit 196 100 => no palindrome in the 196 orbit begins with a missing k-digit word, given noOverflowPre); orbit196_100 kernel-computed; standard axioms only. End-to-end k=3 instance Agent124.FwdW3.no_196_excluded (277 words, all already in the baseline; test only). k=5 set (497,471 words, 66,585 excluded five-digit words, 9,113 not covered by existing ancestry classes) generated; build queued.",
+  "last_activity": "2026-10-15T20:55:00Z",
+  "next_action": "Kernel-check the k=5 set after the four-digit width-6 batch; publish; clean rebuild with the other Agent124 packages.",
+  "claim_base": "1e681c4121e486d5af75bca37b2d2d302b7fcc3f",
+  "git_writer": "Agent #124 only",
+  "integration_ownership": "NOT_CLAIMED"
+}

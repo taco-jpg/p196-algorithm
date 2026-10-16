@@ -1,0 +1,53 @@
+name: Agent112 split continuation acquisition
+on:
+  push:
+    branches: ['research/agent-112/s20261015T2111Z']
+    paths: ['.github/workflows/agent112-split-acquire.yml']
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Pin current sources and coordination
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/source /tmp/runtime
+          git fetch --depth=1 origin main p196/coordination
+          git rev-parse origin/main > /tmp/source/MAIN_COMMIT
+          git rev-parse origin/p196/coordination > /tmp/source/COORDINATION_COMMIT
+          git ls-remote --heads origin > /tmp/source/REMOTE_HEADS
+          git archive origin/p196/coordination proofs/coordination | gzip -1 > /tmp/source/coordination.tar.gz
+          git checkout --detach origin/main
+          python3 - <<'PY'
+          import subprocess,tarfile,pathlib,json
+          paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          selected=[]
+          with tarfile.open('/tmp/source/source.tar.gz','w:gz',compresslevel=1) as t:
+              for p in paths:
+                  if p and (p.startswith('proofs/') or p.endswith('AGENTS.md') or p=='README.md') and pathlib.Path(p).suffix in {'.lean','.py','.md','.sh','.json','.toml','.txt','.tsv','.csv'}:
+                      t.add(p,arcname=p,recursive=False);selected.append(p)
+          pathlib.Path('/tmp/source/selected.json').write_text(json.dumps(selected))
+          PY
+          cd /tmp/source && sha256sum *.gz > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agent112-current-text-sources
+          path: /tmp/source
+          compression-level: 0
+          retention-days: 2
+      - name: Download unmodified official runtime archive
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/runtime/lean-4.19.0-linux.tar.zst
+          cd /tmp/runtime && sha256sum *.zst > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agent112-official-lean419
+          path: /tmp/runtime
+          compression-level: 0
+          retention-days: 2

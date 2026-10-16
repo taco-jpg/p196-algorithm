@@ -1,0 +1,68 @@
+name: Agent7 outer-boundary verification
+on:
+  push:
+    branches: ['agent7/outer-boundary-audit']
+    paths: ['proofs/agent7/**', '.github/workflows/agent7-outer-verification.yml']
+permissions:
+  contents: read
+concurrency:
+  group: agent7-outer-verification
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init source
+          cd source
+          git remote add origin https://github.com/taco-jpg/p196-algorithm.git
+          git config remote.origin.promisor true
+          git config remote.origin.partialclonefilter blob:none
+          git sparse-checkout init --cone
+          git sparse-checkout set proofs/agent7
+          git fetch --depth 1 --filter=blob:none origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Install Lean 4.19.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o lean.tar.zst
+          sha256sum lean.tar.zst
+          tar --zstd -xf lean.tar.zst
+          echo "$PWD/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Compile exact Lean sources and show transitive axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean --version
+          cd source/proofs/agent7
+          export LEAN_PATH=.
+          sha256sum OuterFinite.lean
+          lean -o OuterFinite.olean OuterFinite.lean
+          for f in *.lean; do
+            test "$f" = OuterFinite.lean && continue
+            echo "=== SOURCE $f ==="
+            sha256sum "$f"
+            lean -o "${f%.lean}.olean" "$f"
+          done
+      - name: Run independent Python audit when present
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd source/proofs/agent7
+          if test -f test_bulk_quotient.py; then
+            python3 -m unittest -v test_bulk_quotient.py
+          fi
+      - name: Retain compiler once for local independent replay
+        if: ${{ always() && github.run_number == 2 }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent7-lean-4.19.0-runtime
+          path: lean.tar.zst
+          compression-level: 0
+          retention-days: 1

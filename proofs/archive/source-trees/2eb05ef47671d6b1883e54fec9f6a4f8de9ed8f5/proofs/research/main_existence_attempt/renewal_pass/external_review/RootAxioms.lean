@@ -1,0 +1,25 @@
+import FiniteHorizonBlocks
+#print axioms FiniteHorizonBlocks.blockLength_positive
+#print axioms FiniteHorizonBlocks.mirroredNines_hasRun18
+#print axioms FiniteHorizonBlocks.mirroredNines_safe_prefix
+#print axioms FiniteHorizonBlocks.safe_prefix_of_run
+#print axioms OverflowSafeRuns.erosionCost_bound
+#print axioms OverflowSafeRuns.erosionCost_succ
+#print axioms OverflowSafeRuns.erosionCost_width_identity
+#print axioms OverflowSafeRuns.erosionCost_zero
+#print axioms OverflowSafeRuns.hasRun18_iter_cost
+#print axioms OverflowSafeRuns.hasRun18_mono
+#print axioms OverflowSafeRuns.hasRun18_next_overflow
+#print axioms OverflowSafeRuns.iter_not_palindrome_of_run_bound
+#print axioms OverflowSafeRuns.iter_not_palindrome_of_run_cost
+#print axioms OverflowSafeRuns.next_eighteen_overflow
+#print axioms OverflowSafeRuns.nines_safe_prefix_sharper
+#print axioms OverflowSafeRuns.run18_next_overflow
+#print axioms OverflowSafeRuns.safeLength_le_previous
+#print axioms OverflowSafeRuns.safeLength_lt_previous
+#print axioms OverflowSafeRuns.safe_prefix_of_uniform_run
+#print axioms OverflowSafeRuns.shorterCandidate_eq_step_nines
+#print axioms OverflowSafeRuns.shorterCandidate_first_hit_gt
+#print axioms OverflowSafeRuns.shorterCandidate_lychrel_of_finiteDelayBound
+#print axioms OverflowSafeRuns.shorterCandidate_positive
+#print axioms OverflowSafeRuns.shorterCandidate_safe_prefix

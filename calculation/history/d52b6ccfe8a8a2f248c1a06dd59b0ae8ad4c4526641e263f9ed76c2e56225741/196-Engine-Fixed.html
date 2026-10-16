@@ -1,0 +1,1257 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>The 196 Engine · Original Style, Clearer Explanations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --page:#f3f4f6; --surface:#fcfcfd; --surface-2:#eceef2; --surface-3:#e2e5ea;
+  --ink:#111318; --ink-2:#4a4f5a; --muted:#737884; --grid:#e1e3e8; --axis:#c4c8d0;
+  --border:rgba(17,19,24,.11); --shadow:0 1px 2px rgba(17,19,24,.05);
+  --blue:#2a78d6; --blue-soft:#d6e6fa; --blue-ink:#1c5cab;
+  --orange:#eb6834; --orange-soft:#fbe0d3;
+  --aqua:#1baf7a; --kill:#e3e6eb; --on-blue:#ffffff; --on-orange:#111318;
+  --good:#0ca30c; --good-text:#006300; --critical:#d03b3b; --critical-soft:#f8dddd;
+  --hatch:rgba(17,19,24,.16);
+  --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --page:#0e1014; --surface:#171a20; --surface-2:#20242c; --surface-3:#2a2f38;
+    --ink:#eef0f3; --ink-2:#c0c4cc; --muted:#8d929c; --grid:#2a2e36; --axis:#3d424c;
+    --border:rgba(255,255,255,.10); --shadow:none;
+    --blue:#3987e5; --blue-soft:#1b3352; --blue-ink:#86b6ef;
+    --orange:#d95926; --orange-soft:#45261a;
+    --aqua:#199e70; --kill:#2b3038; --on-blue:#ffffff; --on-orange:#ffffff;
+    --good:#0ca30c; --good-text:#0ca30c; --critical:#e05555; --critical-soft:#3d1f22;
+    --hatch:rgba(255,255,255,.16);
+  }
+}
+:root[data-theme="dark"]{
+    color-scheme: dark;
+    --page:#0e1014; --surface:#171a20; --surface-2:#20242c; --surface-3:#2a2f38;
+    --ink:#eef0f3; --ink-2:#c0c4cc; --muted:#8d929c; --grid:#2a2e36; --axis:#3d424c;
+    --border:rgba(255,255,255,.10); --shadow:none;
+    --blue:#3987e5; --blue-soft:#1b3352; --blue-ink:#86b6ef;
+    --orange:#d95926; --orange-soft:#45261a;
+    --aqua:#199e70; --kill:#2b3038; --on-blue:#ffffff; --on-orange:#ffffff;
+    --good:#0ca30c; --good-text:#0ca30c; --critical:#e05555; --critical-soft:#3d1f22;
+    --hatch:rgba(255,255,255,.16);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page);color:var(--ink)}
+body{font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-ink)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header.top{padding:28px 0 8px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(30px,5.4vw,48px);line-height:1.08;letter-spacing:-.02em;margin:8px 0 12px;font-weight:700}
+h2{font-size:clamp(22px,3.4vw,28px);letter-spacing:-.01em;line-height:1.2;margin:0 0 6px;font-weight:650}
+h3{font-size:17px;margin:18px 0 6px;font-weight:600}
+p{margin:8px 0 12px;max-width:68ch}
+.lede{font-size:18px;color:var(--ink-2);max-width:62ch}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+.band{margin:18px 0 6px;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+.band svg{display:block;width:100%;height:56px}
+nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--page) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+nav.toc .wrap{display:flex;gap:8px;align-items:center;padding-top:8px;padding-bottom:8px}
+nav.toc .tocs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+nav.toc .tocs::-webkit-scrollbar{display:none}
+nav.toc a{flex:0 0 auto;font-size:13px;text-decoration:none;color:var(--ink-2);padding:5px 10px;border-radius:999px;border:1px solid var(--border);background:var(--surface);white-space:nowrap}
+nav.toc a:hover{color:var(--ink);border-color:var(--axis)}
+nav.toc button{flex:0 0 auto;min-height:30px;padding:4px 10px;font-size:13px}
+section{padding:34px 0 10px}
+.secnum{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow);margin:14px 0}
+.card.tight{padding:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:720px){.grid2,.grid3{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+.stat .v{font-size:28px;font-weight:650;letter-spacing:-.01em;line-height:1.1}
+.stat .l{font-size:13px;color:var(--ink-2);margin-top:4px}
+.stat .n{font-size:12px;color:var(--muted);margin-top:4px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+button,.btn{font:500 14px var(--sans);color:var(--ink);background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:7px 12px;cursor:pointer;min-height:36px}
+button:hover{background:var(--surface-3)}
+button.primary{background:var(--blue);color:var(--on-blue);border-color:transparent}
+button.primary:hover{filter:brightness(1.06)}
+button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:transparent}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+input[type=text]{font:500 15px var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--axis);border-radius:8px;padding:7px 10px;min-height:36px;width:min(320px,100%)}
+input[type=range]{accent-color:var(--blue);width:160px}
+label.rng{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2)}
+label.rng b{font-family:var(--mono);color:var(--ink);font-weight:600;min-width:2.5ch;display:inline-block}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:9px;overflow:hidden;background:var(--surface-2)}
+.seg button{border:0;border-radius:0;background:transparent;min-height:34px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.chip.ok{color:var(--good-text);border-color:color-mix(in srgb,var(--good) 45%,transparent)}
+.chip.bad{color:var(--critical);border-color:color-mix(in srgb,var(--critical) 45%,transparent)}
+.chip.wait{color:var(--blue-ink);border-color:color-mix(in srgb,var(--blue) 40%,transparent)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink-2);margin:6px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block;border:1px solid var(--border)}
+.addition{font-family:var(--mono);font-size:15px;line-height:1.5;white-space:pre;overflow-x:auto;background:var(--surface-2);border-radius:8px;padding:10px 12px;margin:8px 0}
+.addition .pal{color:var(--good-text);font-weight:600}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.formula{font-family:var(--mono);font-size:14px;background:var(--surface-2);border-radius:8px;padding:10px 12px;margin:8px 0;line-height:1.7;overflow-x:auto}
+.formula .k{color:var(--muted)}
+.callout{border-left:3px solid var(--blue);padding:6px 0 6px 12px;margin:12px 0;color:var(--ink-2)}
+.callout.warn{border-color:var(--orange)}
+.cellrow{display:grid;gap:2px}
+.cell{font-family:var(--mono);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:4px;height:30px;min-width:0;user-select:none}
+.cell.K{background:var(--kill);color:var(--ink)}
+.cell.P{background:var(--orange);color:var(--on-orange)}
+.cell.G{background:var(--blue);color:var(--on-blue)}
+.cell.bit0{background:var(--surface-2);color:var(--muted);font-weight:400}
+.cell.bit1{background:var(--ink);color:var(--surface)}
+.cell.sel{outline:2px solid var(--ink);outline-offset:1px}
+.cell.click{cursor:pointer}
+.rowlab{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;white-space:nowrap}
+.lab-grid{display:grid;grid-template-columns:86px 1fr;gap:3px 0;align-items:center}
+@media (max-width:560px){.lab-grid{grid-template-columns:72px 1fr}.rowlab{font-size:10.5px}}
+.ok-text{color:var(--good-text);font-weight:600}
+.bad-text{color:var(--critical);font-weight:600}
+details{margin:10px 0}
+details summary{cursor:pointer;color:var(--ink-2);font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:600;color:var(--ink-2);font-size:12.5px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);white-space:nowrap}
+.tl{position:relative;margin:10px 0 0;padding-left:22px}
+.tl:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--grid)}
+.tl .item{position:relative;margin:0 0 12px}
+.tl .dot{position:absolute;left:-22px;top:18px;width:16px;height:16px;border-radius:50%;border:3px solid var(--surface);background:var(--axis);box-shadow:0 0 0 1px var(--border)}
+.tl .item.adopted .dot,.tl .item.passed .dot{background:var(--blue)}
+.tl .item.kept .dot{background:var(--muted)}
+.tl .item.pending .dot{background:var(--surface);box-shadow:0 0 0 2px var(--blue)}
+.tl .item.event .dot{background:var(--orange)}
+.tl .card{margin:0}
+.tl .head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between}
+.tl .name{font-weight:650;font-size:16px}
+.tl .res{font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.tl .body{display:none;margin-top:8px;font-size:14.5px;color:var(--ink-2)}
+.tl .body p{margin:4px 0 8px}
+.tl .item.open .body{display:block}
+.tl .toggle{background:none;border:0;padding:0;min-height:0;font:inherit;color:inherit;text-align:left;width:100%;cursor:pointer}
+.tl .toggle:hover{background:none}
+.diff{font-size:13px;color:var(--ink-2);margin-top:6px}
+.diff b{color:var(--ink)}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.chart .tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.chart .gl{stroke:var(--grid);stroke-width:1}
+.chart .ax{stroke:var(--axis);stroke-width:1}
+#tip{position:fixed;z-index:50;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:13px;line-height:1.4;box-shadow:0 4px 18px rgba(0,0,0,.18);max-width:280px;opacity:0;visibility:hidden;transition:opacity .08s}
+#tip b{font-weight:600}
+#tip .t2{color:var(--ink-2)}
+.statusline{font-size:14px;margin:6px 0;min-height:1.4em}
+.kbd{font-family:var(--mono);font-size:12px;background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:0 5px}
+footer{padding:30px 0 50px;color:var(--muted);font-size:13px}
+svg .lbl{font-family:var(--mono)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+/* Guided examples deliberately use the original Engine design system. */
+.deep-original{margin:14px 0}
+.deep-original>summary{padding:9px 2px;font-size:14px;font-weight:600;color:var(--blue-ink)}
+.deep-original-inside{padding-top:5px}
+.easy-takeaway{margin-top:12px;margin-bottom:16px}
+.easy-number-board,.easy-five-board,.easy-bit-board{display:grid;gap:4px;min-width:345px;max-width:580px;padding:9px 0}
+.easy-number-board{grid-template-columns:116px repeat(3,minmax(42px,1fr))}
+.easy-five-board{grid-template-columns:108px repeat(5,minmax(38px,1fr));max-width:675px}
+.easy-bit-board{grid-template-columns:92px repeat(8,minmax(34px,1fr));max-width:700px}
+.easy-row-label{font:500 12px var(--mono);color:var(--muted);display:flex;align-items:center;padding-left:2px}
+.easy-number-board .cell,.easy-five-board .cell,.easy-bit-board .cell{height:36px;font-size:14px;min-width:0}
+.easy-number-board .cell.easy-dim,.easy-bit-board .cell.easy-dim{opacity:.25}
+.easy-number-board .cell.easy-highlight,.easy-five-board .cell.easy-highlight,.easy-bit-board .cell.easy-highlight{outline:2px solid var(--ink);outline-offset:1px}
+.easy-number-board .cell.easy-final{background:var(--blue-soft);color:var(--ink)}
+.easy-bit-board .cell.click:hover{outline:2px solid var(--blue);outline-offset:1px}
+.easy-inline-values{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:14px 0}
+.easy-inline-values .cell{width:44px;height:40px}
+.easy-trip{display:flex;gap:3px;align-items:center;flex-wrap:wrap;min-height:24px;margin-top:12px}
+.easy-trip i{height:10px;width:12px;background:var(--orange);border-radius:2px;display:inline-block}
+.easy-trip.new i{background:var(--blue)}
+.easy-halo{display:flex;gap:2px;min-width:340px;max-width:670px;margin:8px 0}
+.easy-halo span{flex:1;height:33px;border-radius:3px;background:var(--blue-soft);min-width:5px}
+.easy-halo span.own{background:var(--blue)}
+.easy-halo span.stale{background:repeating-linear-gradient(45deg,var(--hatch) 0 3px,var(--surface-2) 3px 6px)}
+.easy-meetings{display:flex;gap:3px;flex-wrap:wrap;margin:6px 0 10px;min-height:18px;align-content:flex-start}
+.easy-meetings i{width:6px;height:14px;display:block;border-radius:2px;background:var(--orange)}
+.easy-meetings.new i{background:var(--blue)}
+.easy-six{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px;margin:9px 0}
+.easy-six .cell{font-size:11px;font-weight:500;text-align:center;line-height:1.2;height:56px;padding:5px}
+.easy-bench-label{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--ink-2);margin-bottom:5px}
+.easy-bench-label b{white-space:nowrap;color:var(--ink)}
+.easy-bench-track{width:100%;height:24px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.easy-bench-fill{height:100%;transition:width .18s ease;background:var(--ink-2)}
+.easy-bench-fill.new{background:var(--blue)}
+select{font:500 14px var(--sans);color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:8px;min-height:36px;padding:6px 8px;max-width:100%}
+.deep-original[open]>summary{color:var(--ink)}
+@media (max-width:560px){.easy-number-board{min-width:0;width:100%;grid-template-columns:84px repeat(3,minmax(0,1fr))}.easy-five-board{min-width:0;width:100%;grid-template-columns:78px repeat(5,minmax(0,1fr))}.easy-bit-board{min-width:0;width:100%;grid-template-columns:76px repeat(8,minmax(0,1fr))}.easy-bit-board .cell{font-size:11px}.easy-bit-board .easy-row-label{font-size:10px}.easy-six .cell{font-size:9px}.easy-meetings i{height:12px;width:5px}.easy-trip i{width:8px}}
+@media (prefers-reduced-motion:reduce){.easy-bench-fill{transition:none}}
+</style>
+
+<div id="tip" role="tooltip"></div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="kicker">Reverse-and-add · the 196 search · RTX 4050 Laptop, 35 W</div>
+    <h1>The 196 engine, from the first kernel to v8</h1>
+    <p class="lede">Start with normal addition, then follow the ideas that made your GPU engine faster: reuse matching digits, group bits, move data less, and synchronize less. Each section starts with a small, approachable example; expand the original technical diagrams when you want the full details.</p>
+    <div class="band" aria-hidden="true"><svg id="band" viewBox="0 0 960 56" preserveAspectRatio="none"></svg></div>
+    <div class="small muted">Above: the five bit-planes of 196 after 600 steps, one column per digit pair. Orange columns are pairs that sum to 9, the ones that make carries travel.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <div class="tocs"><a href="#s1">1 · Problem</a><a href="#s2">2 · Fold</a><a href="#s3">3 · Carries</a><a href="#s4">4 · Bit-planes</a><a href="#s5">5 · 128 steps</a><a href="#s6">6 · v6r3 → v8</a><a href="#s7">7 · Base-5</a><a href="#s8">8 · Speed</a><a href="#s9">9 · Roadmap</a><a href="#s10">10 · Next</a></div>
+    <button id="themeBtn" type="button" aria-label="Toggle light or dark theme">◐ Theme</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<div class="grid4" style="margin-top:22px">
+  <div class="stat"><div class="v">≈23×</div><div class="l">faster than the original kernel</div><div class="n">chained from measured A/B ratios at different sizes</div></div>
+  <div class="stat"><div class="v">170.5 µs</div><div class="l">per step, v8 sustained test</div><div class="n">100,000 steps at iteration ~663M (v6r3: 210.6)</div></div>
+  <div class="stat"><div class="v">0</div><div class="l">replays in production and the deciding sustained tests</div><div class="n">uncertified work is always redone exactly</div></div>
+  <div class="stat"><div class="v">5 + 1</div><div class="l">upgrades in production, plus v8 passed</div><div class="n">4 attempts lost and were dropped; v8b waits for the GPU</div></div>
+</div>
+
+<!-- 1 -->
+<section id="s1">
+<div class="secnum">01 · THE PROBLEM</div>
+<h2>Add a number to its reverse. Repeat until it reads the same both ways.</h2>
+<p>Most numbers become palindromes fast: 89 takes 24 steps. 196 has never been seen to reach one. The record runs (Romain Dolbeau: 1 billion steps in 2011, a 1-billion-digit number in 2015) found nothing, and nobody has a proof either way. So the only way forward is to compute, exactly, one step at a time.</p>
+<div class="card">
+<div class="controls">
+<input aria-label="Starting number" id="t1in" inputmode="numeric" type="text" value="196"/>
+<button id="t1set">Start</button>
+<span class="small muted">Try:</span>
+<button class="t1pre" data-v="196">196</button>
+<button class="t1pre" data-v="89">89</button>
+<button class="t1pre" data-v="10911">10911</button>
+<button class="t1pre" data-v="1186060307891929990" title="Record: 261 steps">1186060307891929990</button>
+</div>
+<div class="controls">
+<button class="primary" id="t1step">Step</button>
+<button id="t1x10">+10</button>
+<button id="t1x100">+100</button>
+<button aria-pressed="false" id="t1play">Play</button>
+<span class="mono small" id="t1stat"></span>
+</div>
+<div aria-live="polite" class="addition" id="t1add"></div>
+<div class="statusline" id="t1msg"></div>
+<div class="chart" id="t1chart"></div>
+<div class="small muted">Digits vs. step for the current run. 196 grows about 0.414 digits per step (Dolbeau's 1e9 steps gave 413,930,770 digits), so the work per step keeps growing. Your run is past 270 million digits.</div>
+</div>
+<div class="callout easy-takeaway"><b>Start here:</b> One <b>step</b> means one complete addition. A <b>digit</b> is one character in the answer. The number of digits grows slowly; it is not the number of steps completed.</div>
+<p class="small muted">Next: <a href="#s2">see why matching digits can share the same work →</a></p>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+<div class="secnum">02 · FOLDING · ALREADY IN THE FIRST KERNEL</div><h2>Why do the same small sum twice?</h2><p>Look at <span class="mono">196 + 691</span>. The left column adds <b>1 + 6</b>, while the right column adds <b>6 + 1</b>. Both begin with <b>7</b>. The engine can reuse that matching sum.</p>
+<div class="card">
+ <h3 style="margin-top:0">Follow 196 + 691, one idea at a time</h3>
+ <div class="small muted mono" id="easyFoldProgress">01 / 04 · MATCH THE ENDS</div>
+ <div class="scroll-x"><div class="easy-number-board" id="easyFoldBoard" role="group" aria-label="Matching digit pairs"></div></div>
+ <div class="controls">
+  <button id="easyFoldOuter" aria-pressed="true">Outside pair · 1 + 6</button>
+  <button id="easyFoldMiddle" aria-pressed="false">Middle · 9 + 9</button>
+ </div>
+ <div class="callout" id="easyFoldNarration" aria-live="polite"></div>
+ <div class="controls"><button class="primary" id="easyFoldNext">Show the middle →</button><button id="easyFoldReset">Start over</button></div>
+</div>
+<div class="callout easy-takeaway"><b>The idea to remember:</b> Store each matching pair sum once, not twice. Incoming <b>carries</b> can still make the two final digits different.</div><details class="deep-original"><summary>Original interactive folding diagram + the full equations</summary><div class="deep-original-inside"><p>Position <span class="mono">j</span> of x + reverse(x) adds <span class="mono">d<sub>j</sub></span> and <span class="mono">d<sub>n−1−j</sub></span>. Position <span class="mono">n−1−j</span> adds the same two digits. So both positions start from the same pair sum <span class="mono">S<sub>j</sub> = d<sub>j</sub> + d<sub>n−1−j</sub></span> (0 to 18) and differ only in the carry that arrives: <span class="mono">a<sub>j</sub></span> from below, <span class="mono">b<sub>j</sub></span> on the mirrored side. Half the values, and a free palindrome test: the next number is a palindrome exactly when <span class="mono">a<sub>j</sub> = b<sub>j</sub></span> for every pair.</p><div class="card">
+<div class="controls">
+<button id="f2prev">◀ Step back</button>
+<button class="primary" id="f2next">Next step ▶</button>
+<span class="mono small" id="f2stat"></span>
+</div>
+<div class="legend">
+<span><i class="sw" style="background:var(--blue)"></i>S ≥ 10: makes a carry</span>
+<span><i class="sw" style="background:var(--orange)"></i>S = 9: passes a carry on</span>
+<span><i class="sw" style="background:var(--kill)"></i>S ≤ 8: stops a carry</span>
+<span>● carry = 1</span>
+</div>
+<div class="scroll-x"><svg aria-label="Fold diagram" id="f2svg" role="img"></svg></div>
+<div aria-live="polite" class="formula" id="f2explain"></div>
+<div class="small muted">Tap or hover a column on the right half to follow one pair. The page checks the folded result against plain BigInt addition on every step.</div>
+</div></div></details><p class="small muted">Next: <a href="#s3">see how a carry passes through 9s →</a></p>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+<div class="secnum">03 · CARRIES AND NINES</div><h2>Why does one extra 1 travel so far?</h2><p>A <b>carry</b> is the extra 1 passed to the next column when a sum reaches 10. A sum of <b>9</b> is special: if a 1 arrives, <span class="mono">9 + 1 = 10</span>, so that carry keeps traveling.</p>
+<div class="grid3">
+ <div class="stat"><div class="v mono">0–8</div><div class="l">Stops an incoming carry</div></div>
+ <div class="stat"><div class="v mono" style="color:var(--orange)">9</div><div class="l">Passes an incoming carry</div></div>
+ <div class="stat"><div class="v mono" style="color:var(--blue)">10–18</div><div class="l">Makes a carry even without one</div></div>
+</div>
+<div class="card">
+ <h3 style="margin-top:0">Work from right to left, like regular addition</h3>
+ <p class="small muted">These five starting column sums are an example. Click Next to follow one carry, or change a 9 to 8 to see it stop.</p>
+ <div class="scroll-x"><div class="easy-five-board" id="easyCarryBoard" role="group" aria-label="Carry-through-nines demonstration"></div></div>
+ <p class="small muted" style="margin-top:6px">← Carry travels left</p>
+ <div class="formula" id="easyCarryNarration" aria-live="polite"></div>
+ <div class="controls"><button class="primary" id="easyCarryNext">Work out right column →</button><button id="easyCarryPlay">Animate</button><button id="easyCarryBreak" aria-pressed="false">Replace a 9 with 8</button><button id="easyCarryReset">Reset</button></div>
+</div>
+<div class="callout easy-takeaway"><b>The idea to remember:</b> A string of 9s acts like a <b>bridge</b> for a carry. The GPU finds the same carries with a machine-level addition instead of walking through every digit in a slow loop.</div><details class="deep-original"><summary>Original carry lab: edit all the sums and inspect the binary masks</summary><div class="deep-original-inside"><p>The carry into pair <span class="mono">j+1</span> is <span class="mono">a<sub>j+1</sub> = G<sub>j</sub> | (P<sub>j</sub> &amp; a<sub>j</sub>)</span>: generate if <span class="mono">S ≥ 10</span>, propagate if <span class="mono">S = 9</span>. That chain is the only long-distance effect in a step, and it is exactly the chain a binary adder already computes. So the engine resolves a whole word of carries with <b>one integer addition</b> instead of a loop. Tap a pair to select it, then set its value.</p><div class="card">
+<div class="controls">
+<button id="c3rand">Random pairs</button>
+<button id="c3run">Plant a run of 9s</button>
+<button class="primary" id="c3ripple">Animate the carry</button>
+<label class="rng">Selected pair <b id="c3selj">0</b> value <input aria-label="Pair sum value" id="c3val" max="18" min="0" type="range" value="9"/><b id="c3valv">9</b></label>
+</div>
+<div class="scroll-x"><div class="lab-grid" id="c3grid" style="min-width:420px"></div></div>
+<div class="statusline" id="c3check"></div>
+<div class="callout">Bit 0 is on the left here, so carries move to the right. On the GPU a word is 32 pairs wide. If the carry coming into a word is unknown, the engine scans to the nearest word that is not entirely 9s (chance about 10<sup>−32</sup> per word). No cutoff: a run of a million 9s would still come out right.</div>
+</div></div></details><p class="small muted">Next: <a href="#s4">see how one operation handles many pairs →</a></p>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+<div class="secnum">04 · BIT-PLANES · V4</div><h2>How can one operation handle 32 pairs?</h2><p>A <b>bit</b> is just an on/off switch. Five switches worth <span class="mono">16, 8, 4, 2, 1</span> can represent any pair sum between 0 and 18. Rearrange those switches into rows, and the GPU can test many sums together.</p>
+<div class="card">
+ <h3 style="margin-top:0">From one number to a row of switches</h3>
+ <div class="small mono muted" id="easyBitProgress">01 / 03 · ONE NUMBER</div>
+ <div class="controls" id="easyBitSelectControl"><label class="rng">Pair sum <input type="range" id="easyBitValue" min="0" max="18" value="9"><b id="easyBitOut">9</b></label></div>
+ <div id="easyBitSingle"></div>
+ <div class="scroll-x" id="easyBitMulti" hidden><div class="easy-bit-board" id="easyBitBoard" role="group" aria-label="Five bit planes"></div></div>
+ <div id="easyBitChecks" class="controls" hidden>
+  <span class="small muted">Ask every pair:</span>
+  <button id="easyBit9" aria-pressed="true">Sum = 9?</button>
+  <button id="easyBit10" aria-pressed="false">Sum ≥ 10?</button>
+ </div>
+ <div class="callout" id="easyBitNarration" aria-live="polite"></div>
+ <div class="controls"><button class="primary" id="easyBitNext">Show several pairs →</button><button id="easyBitReset">Start over</button></div>
+</div>
+<div class="grid3">
+ <div class="stat"><div class="v">5 bits</div><div class="l">per pair sum</div></div>
+ <div class="stat"><div class="v">32</div><div class="l">pairs in each GPU word</div></div>
+ <div class="stat"><div class="v">9.4×</div><div class="l">v4's measured GPU test over original</div></div>
+</div>
+<div class="callout easy-takeaway"><b>The idea to remember:</b> <b>Read down</b> to see the bits of one number. <b>Read across</b> to see the same bit of many numbers, all processed together. That is a bit-plane.</div><details class="deep-original"><summary>Original complete bit-plane grid, boolean equations, and masks</summary><div class="deep-original-inside"><p>A pair sum needs 5 bits. Instead of one byte per pair, v4 keeps five <i>bit-planes</i>: plane <span class="mono">k</span> holds bit <span class="mono">k</span> of 32 neighbouring pairs. One logic instruction then works on 32 pairs at once, and "is it 9?" or "is it ≥ 10?" become a handful of AND/OR operations. This is the column-by-column view of the same pairs as section 3.</p><div class="card">
+<div class="scroll-x"><div class="lab-grid" id="b4grid" style="min-width:420px"></div></div>
+<div class="formula" id="b4form"></div>
+<div class="grid3" style="margin-top:10px">
+<div class="stat"><div class="v">2.5 bits</div><div class="l">per digit (5 bits per pair)</div><div class="n">schoolbook code uses 8 bits per digit</div></div>
+<div class="stat"><div class="v">32 pairs</div><div class="l">per instruction</div><div class="n">one LOP3 on a 32-bit register</div></div>
+<div class="stat"><div class="v">9.4×</div><div class="l">v4 vs. the original kernel</div><div class="n">0.770 s → 0.082 s GPU time, 20,000 steps at 2.05M digits</div></div>
+</div>
+</div></div></details><p class="small muted">Next: <a href="#s5">learn why fewer memory trips matter →</a></p>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+<div class="secnum">05 · 128 STEPS PER MEMORY TRIP · V5</div><h2>Why keep fetching the same data?</h2><p>Think of GPU main memory as a storage room and faster <b>shared memory</b> as a worktable. Instead of making a round trip after every addition, load a piece, do several steps nearby, and write it back once.</p>
+<div class="card">
+ <div class="controls"><span class="seg" role="group" aria-label="Memory lesson pages"><button id="easyMemoryTab0" aria-pressed="true">1 · Fewer trips</button><button id="easyMemoryTab1" aria-pressed="false">2 · Protect the edges</button></span></div>
+ <div id="easyMemoryMoves">
+  <h3>Same arithmetic. Fewer trips to main memory.</h3>
+  <div class="controls"><label class="rng">Steps in one batch <input id="easyBatchSteps" type="range" min="1" max="128" value="8"><b id="easyBatchOut">8</b></label><button id="easyBatch128">Set to production: 128</button></div>
+  <div class="grid2">
+   <div class="stat"><div class="small mono muted">BEFORE · ONE STEP PER TRIP</div><div class="v mono" id="easyOldTrips">8 reads + 8 writes</div><div class="l">Read → calculate → write, then repeat</div><div class="easy-trip" id="easyTripOld"></div></div>
+   <div class="stat"><div class="small mono muted">AFTER · TIME-BLOCKED</div><div class="v mono">1 read + 1 write</div><div class="l">Read → calculate many steps → write</div><div class="easy-trip" id="easyTripNew"></div></div>
+  </div>
+  <div class="callout" id="easyMemoryMessage">Every addition still happens. Only the expensive trips are grouped together.</div>
+  <div class="controls"><button class="primary" id="easyShowEdges">But what about the neighbors? →</button></div>
+ </div>
+ <div id="easyMemoryEdges" hidden>
+  <h3>The edges need a safety margin</h3>
+  <p class="small">The middle is the part this team owns. The blue-gray cells on either end are <b>halo</b> pairs borrowed from neighbors. They become less certain with every local step.</p>
+  <div class="controls"><label class="rng">Extra pairs on each side <input id="easyHaloSize" type="range" min="2" max="12" value="6"><b id="easyHaloOut">6</b></label></div>
+  <div class="small muted mono">Just copied</div><div class="scroll-x"><div class="easy-halo" id="easyHaloInitial"></div></div>
+  <div class="small muted mono" id="easyHaloStepLabel" style="margin-top:10px">After 0 local steps</div><div class="scroll-x"><div class="easy-halo" id="easyHaloAfter"></div></div>
+  <div class="formula" id="easyHaloStatus" aria-live="polite"></div>
+  <div class="controls"><button id="easyHaloStep" class="primary">Do one more step →</button><button id="easyHaloReset">Copy fresh neighbors</button><label class="small"><input id="easyHaloNines" type="checkbox"> Example chain of 9s</label></div>
+  <p class="small muted">This is a teaching diagram, not a simulated GPU tile. Real certification follows the complete carry rule; it never assumes a maximum chain length.</p>
+ </div>
+</div>
+<div class="callout easy-takeaway"><b>The idea to remember:</b> <b>Time-blocking does not skip additions.</b> It reduces data movement, while <b>certification</b> ensures the central results remain exact. If not, the engine redoes the uncertain work.</div><details class="deep-original"><summary>Original 128-step certification visualization and profiler note</summary><div class="deep-original-inside"><p>Pair <span class="mono">j</span> of the next number depends only on its neighbours plus carries through runs of 9s. So a block can load a tile of pairs into fast shared memory and run K steps (production: 128) before writing back. The catch: the tile's edges don't know what their outside neighbours are doing. Wrongness creeps in from each edge, one pair per step, and faster across a run of 9s. Each block tracks the interval it can <b>prove</b> exact. If that interval no longer covers the pairs the block owns, the block reports failure and the host redoes that stretch with the slow per-step kernel. The result is exact either way.</p><div class="card">
+<div class="controls">
+<label class="rng">Halo per side <input aria-label="Halo" id="t5halo" max="20" min="2" type="range" value="12"/><b id="t5halov">12</b></label>
+<label class="rng">Steps K <input aria-label="Steps per launch" id="t5k" max="24" min="2" type="range" value="10"/><b id="t5kv">10</b></label>
+<span aria-label="Share of nines" class="seg" role="group"><button aria-pressed="true" id="t5p10">9s: real (10%)</button><button aria-pressed="false" id="t5p40">9s: stress (40%)</button></span>
+<button class="primary" id="t5roll">Re-roll</button>
+</div>
+<div class="legend">
+<span><i class="sw" style="background:var(--blue)"></i>owned pairs, still certified</span>
+<span><i class="sw" style="background:var(--blue-soft)"></i>halo, still certified</span>
+<span><i class="sw" style="background:repeating-linear-gradient(45deg,var(--hatch) 0 3px,transparent 3px 6px)"></i>no longer certain</span>
+<span><i class="sw" style="background:var(--orange)"></i>extra loss from a run of 9s</span>
+</div>
+<div class="scroll-x"><svg aria-label="Certified interval shrinking over steps" id="t5svg" role="img"></svg></div>
+<div class="statusline" id="t5msg"></div>
+<div class="grid2">
+<div class="small"><b>Per-step kernel (v4):</b> every step streams every pair through GPU memory: <span class="mono" id="t5trips1"></span> trips for K steps.</div>
+<div class="small"><b>Time-blocked (v5 on):</b> one load and one store per K steps. In production the GPU's main memory sits about <b>1.8% busy</b> (Nsight Compute).</div>
+</div>
+<p class="small muted">Schematic of the certification rule: shrink one pair per side per step, plus any run of 9s at the edge. Production halos are wide enough that this check essentially never fails, but correctness never depends on that. Growth bits come from a small certified "prefix" tile, and every step's palindrome status is counted per block.</p>
+</div></div></details><p class="small muted">Next: <a href="#s6">see why workers still spend time waiting →</a></p>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+<div class="secnum">06 · INSIDE ONE BLOCK · V6R3 → V8</div><h2>Why have a team meeting after every step?</h2><p>A GPU <b>thread</b> is a worker. In v6r3, the workers exchange data and wait for the team after every step. That stop is called a <b>barrier</b>. In v8, a worker keeps a private copy in <b>registers</b> and can do several steps before the next meeting.</p>
+<div class="card">
+ <h3 style="margin-top:0">Choose the number of private steps (J)</h3>
+ <div class="controls"><span class="seg" role="group" aria-label="Steps per synchronization window">
+  <button class="easySyncJ" data-j="4" aria-pressed="false">J = 4</button><button class="easySyncJ" data-j="8" aria-pressed="true">J = 8</button><button class="easySyncJ" data-j="12" aria-pressed="false">J = 12</button><button class="easySyncJ" data-j="16" aria-pressed="false">J = 16</button>
+ </span></div>
+ <div class="grid2">
+  <div class="stat"><div class="v mono">128</div><div class="l">v6r3 barriers across 128 steps</div></div>
+  <div class="stat"><div class="v mono" id="easySyncCount">16</div><div class="l" id="easySyncCaption">v8 barriers across 128 steps</div></div>
+ </div>
+ <div class="small muted" style="margin-top:12px">BEFORE: a meeting after every step</div><div class="easy-meetings" id="easySyncOld"></div>
+ <div class="small muted" style="margin-top:12px" id="easySyncNewTitle">AFTER: a meeting every 8 steps</div><div class="easy-meetings" id="easySyncNew"></div>
+ <div class="formula" id="easySyncMessage" aria-live="polite"></div>
+ <p class="small muted">Dots count barriers, not actual execution time. Fewer barriers can mean more duplicated math, edge uncertainty, and replay.</p>
+ <h3>A thread does work on 6 words but keeps only the middle 4</h3>
+ <div class="easy-six">
+  <div class="cell K">borrowed<br>32 pairs</div><div class="cell G">owned<br>32 pairs</div><div class="cell G">owned<br>32 pairs</div><div class="cell G">owned<br>32 pairs</div><div class="cell G">owned<br>32 pairs</div><div class="cell K">borrowed<br>32 pairs</div>
+ </div>
+</div>
+<div class="callout easy-takeaway"><b>The idea to remember:</b> Meeting less often helps, but independence costs extra work and a shrinking safety margin. The winner must be <b>measured</b>, not just imagined.</div><details class="deep-original"><summary>Original v6r3 worker map, register timelines, and J=16 failure tests</summary><div class="deep-original-inside"><p>Nsight Compute showed v6r2 was not short of arithmetic. It was waiting: the per-step barrier was the #1 stall, and on 51% of cycles no warp was ready to issue. v6r3 removed waiting in small ways and filled idle threads. v8 (the GPT-6 Astra idea, rebuilt inside our design) changed the shape of the work: each thread copies its 4 words plus 1 halo word per side into registers and runs <b>J steps</b> with no barrier and no shared memory, then syncs once.</p><div class="card">
+<h3 style="margin-top:0">Tile size: who has work each step (v6r3)</h3>
+<div class="controls">
+<span aria-label="Tile size" class="seg" role="group"><button aria-pressed="true" class="t6tile" data-t="736">tile 736</button><button aria-pressed="false" class="t6tile" data-t="860">tile 860</button></span>
+<span class="small" id="t6tilemsg"></span>
+</div>
+<svg aria-label="Threads busy and idle" id="t6dots" role="img" viewbox="0 0 640 140"></svg>
+<div class="legend">
+<span><i class="sw" style="background:var(--blue)"></i>worker with a 4-word group</span>
+<span><i class="sw" style="background:var(--surface-3)"></i>idle worker</span>
+<span><i class="sw" style="background:var(--orange)"></i>warp 1: certification tracking</span>
+</div>
+<p class="small muted">256 threads per block, 224 of them workers. At tile 736 a block has 193 groups, so 31 workers sit idle every step. Tile 860 gives exactly 224 groups at about the same step time: +23.09% in the A/B (with v6r3's code changes), +19.87% sustained.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Where the time goes (cartoon, not to scale)</h3>
+<div class="controls">
+<span class="small">v8 steps between syncs, J:</span>
+<span aria-label="J" class="seg" role="group"><button aria-pressed="false" class="t6j" data-j="4">4</button><button aria-pressed="true" class="t6j" data-j="8">8</button><button aria-pressed="false" class="t6j" data-j="12">12</button><button aria-pressed="false" class="t6j" data-j="16">16</button></span>
+</div>
+<div class="legend">
+<span><i class="sw" style="background:var(--blue)"></i>digit math</span>
+<span><i class="sw" style="background:var(--orange)"></i>shared-memory load/store</span>
+<span><i class="sw" style="background:repeating-linear-gradient(45deg,var(--hatch) 0 3px,transparent 3px 6px)"></i>waiting for the slowest thread</span>
+<span><i class="sw" style="background:var(--ink)"></i>barrier</span>
+</div>
+<div class="scroll-x"><svg aria-label="Thread timelines" id="t6lanes" role="img"></svg></div>
+<div class="small" id="t6lanemsg"></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Why J = 16 failed: the margin goes stale</h3>
+<p class="small">A thread's window is 6 words = 192 pairs: 32 borrowed pairs on each side, 128 owned. Each step without a sync, the borrowed edge becomes less trustworthy by about one pair, and faster across a run of 9s. At the end of the window, the uncertainty must not have reached the owned words. If it did, the block fails and an 8,192-step stretch is redone with the slow kernel.</p>
+<div class="controls"><button class="primary" id="t6roll">Run one window</button><span class="small mono" id="t6rollmsg"></span></div>
+<div class="scroll-x"><svg aria-label="Window margin erosion" id="t6win" role="img"></svg></div>
+<div class="scroll-x">
+<table style="margin-top:8px;min-width:460px">
+<thead><tr><th>J (steps per sync)</th><th class="num">syncs per 128 steps</th><th class="num">margin left (typical)</th><th class="num">measured vs v6r3 at tile 860</th><th class="num">replays</th></tr></thead>
+<tbody>
+<tr><td>4</td><td class="num">32</td><td class="num">≈ 28 pairs</td><td class="num">+7.30%</td><td class="num">0</td></tr>
+<tr><td><b>8 (default)</b></td><td class="num">16</td><td class="num">≈ 23 pairs</td><td class="num"><b>+13.69%</b></td><td class="num">0</td></tr>
+<tr><td>12 (v8b option)</td><td class="num">≈ 11</td><td class="num">≈ 19 pairs</td><td class="num">not measured yet</td><td class="num">—</td></tr>
+<tr><td>16</td><td class="num">8</td><td class="num">≈ 14 pairs</td><td class="num"><span class="bad-text">−84.55%</span></td><td class="num">3</td></tr>
+</tbody>
+</table></div>
+<p class="small muted">"Typical" is J pairs plus about 11% for runs of 9s, from the pair-sum distribution. Rare long runs at an edge are what fail, and with millions of windows per launch, rare happens: at J=16 only 3 failures were enough to make it 85% slower. v8 at tile 1000 (J=8) gained +25.60% in the A/B and <b>+23.49% sustained</b>.</p>
+</div></div></details><p class="small muted">Next: <a href="#s7">see the optional base-5 encoding →</a></p>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+<div class="secnum">07 · BASE-5 PAIR SUMS · V8B OPTION</div><h2>Could different labels make the math cheaper?</h2><p>Instead of storing 17 only as ordinary binary, split it into <b>10 + 5 + 2</b>. Now “is the sum at least 10?” has already been answered by one saved bit. The reverse-and-add problem itself still uses ordinary <b>decimal</b> numbers.</p>
+<div class="card">
+ <div class="controls"><label class="rng">Pair sum <input id="easyEncValue" type="range" min="0" max="18" value="17"><b id="easyEncOut">17</b></label><button class="easyEncPreset" data-s="9">Try 9</button><button class="easyEncPreset" data-s="10">Try 10</button><button class="easyEncPreset" data-s="18">Try 18</button></div>
+ <div class="grid3">
+  <div class="stat"><div class="v mono" id="easyEncTen">10</div><div class="l">10 if the sum includes a ten (G)</div></div>
+  <div class="stat"><div class="v mono" id="easyEncFive">5</div><div class="l">5 if the leftover is at least five (H)</div></div>
+  <div class="stat"><div class="v mono" id="easyEncRest">2</div><div class="l">Remainder, from 0 to 4 (M)</div></div>
+ </div>
+ <div class="formula" id="easyEncEquation">17 = 10 + 5 + 2</div>
+ <div class="controls"><span class="small">Incoming carry:</span><span class="seg" role="group" aria-label="Incoming carry"><button id="easyEnc0" aria-pressed="false">0</button><button id="easyEnc1" aria-pressed="true">1</button></span></div>
+ <div class="formula" id="easyEncResults" aria-live="polite"></div>
+ <p class="small muted">This option had formula checks, but no GPU speedup confirmed in the source snapshot. “Base-5” means an internal five-bit encoding, not changing the numeral base of the big integer.</p>
+</div>
+<div class="callout easy-takeaway"><b>The idea to remember:</b> A representation can make the common questions simpler. <b>Fewer instructions are only a hypothesis</b> until an actual sustained GPU test wins.</div><details class="deep-original"><summary>Original five-bit comparison and complete base-5 formula</summary><div class="deep-original-inside"><p>Same 5 bits, different meaning: <span class="mono">M</span> = S mod 5 (3 bits, 0–4), <span class="mono">H</span> = whether the last digit is ≥ 5, <span class="mono">G</span> = S ≥ 10. Then "makes a carry" is just the stored bit <span class="mono">G</span>, "passes a carry" (S = 9) is <span class="mono">H &amp; M₂</span>, and the new digit is <span class="mono">M + 5H + c − 10·P·c</span>: G cancels out. Counted, that is about a quarter fewer logic operations in steps where the number doesn't grow, roughly even in growth steps. v8b converts at window load and store, so checkpoints stay binary.</p><div class="card">
+<div class="controls">
+<label class="rng">Pair sum S <input aria-label="Pair sum" id="q7s" max="18" min="0" type="range" value="9"/><b id="q7sv">9</b></label>
+<span aria-label="Incoming carry" class="seg" role="group"><button aria-pressed="false" id="q7c0">carry in 0</button><button aria-pressed="true" id="q7c1">carry in 1</button></span>
+</div>
+<div class="grid2">
+<div><div class="small muted">Binary (v4–v8)</div><div id="q7bin"></div></div>
+<div><div class="small muted">Base-5 form (v8b, -DTB_QUINARY=1)</div><div id="q7quin"></div></div>
+</div>
+<div class="formula" id="q7form"></div>
+<div class="small muted">v8b checked every input of every formula: 1,539 cases, 0 mismatches. Expected gain: maybe +3–8%; the GPU A/B decides.</div>
+</div></div></details><p class="small muted">Next: <a href="#s8">compare the measured speedups →</a></p>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+<div class="secnum">08 · SPEED · ACTUAL TESTS</div><h2>Did the same job finish sooner?</h2><p>A shorter instruction list is not necessarily a shorter running time. Select one measured test: <b>shorter bars mean less time</b>, and each test compares two versions on the same workload.</p>
+<div class="card">
+ <div class="controls"><label class="small" for="easyBenchSelect">Choose a comparison</label><select id="easyBenchSelect">
+   <option value="v8">v8 · fewer meetings (sustained)</option><option value="v4">v4 · bit-planes</option><option value="v6r3">v6r3 · more useful workers</option><option value="v7r">v7r · fewer instructions, but slower</option><option value="j16">v8 J=16 · replay disaster</option>
+  </select></div>
+ <p class="small muted" id="easyBenchContext"></p>
+ <div class="easy-bench-label"><span id="easyBenchOldName"></span><b class="mono" id="easyBenchOldTime"></b></div>
+ <div class="easy-bench-track"><div class="easy-bench-fill old" id="easyBenchOldBar"></div></div>
+ <div class="easy-bench-label" style="margin-top:12px"><span id="easyBenchNewName"></span><b class="mono" id="easyBenchNewTime"></b></div>
+ <div class="easy-bench-track"><div class="easy-bench-fill new" id="easyBenchNewBar"></div></div>
+ <div id="easyBenchResult" class="formula" style="margin-top:14px"></div>
+ <p class="small muted">These numbers are from the original page, not new live benchmarks. The percentage is <b>throughput change</b>, not percentage of time saved.</p>
+</div>
+<div class="callout easy-takeaway"><b>The idea to remember:</b> Only keep changes that win real, sustained tests while producing exactly the same answer. The chart below retains the full original A/B history.</div><div class="secnum">08 · SPEED</div>
+<div class="card">
+<div class="legend"><span><i class="sw" style="background:var(--blue)"></i>adopted / passed</span><span><i class="sw" style="background:var(--muted)"></i>lost: kept the old engine</span></div>
+<div class="chart" id="ch1"></div>
+<details><summary>Show as a table</summary><div class="scroll-x" id="ch1tab"></div></details>
+</div>
+<div class="grid2">
+<div class="card">
+<h3 style="margin-top:0">Adopted engines, chained</h3>
+<div class="chart" id="ch2"></div>
+<p class="small muted">Speed relative to the original kernel, multiplying each adopted engine's measured A/B ratio. The ratios were measured at different number sizes (2M to 275M digits), so the product is an estimate, not one measurement.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Same job, different methods (~260M digits)</h3>
+<div class="chart" id="ch3"></div>
+<p class="small muted">Schoolbook on your GPU is an estimate from memory bandwidth (~770 MB of traffic per step at 256M digits, ~192 GB/s). Dolbeau's is one status line in his README (296 steps/s at 261.7M digits), machine not stated. v6r3 is the measured production speed at 256.3M digits.</p>
+</div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">My predictions vs. what the GPU said</h3>
+<div class="legend"><span><i class="sw" style="background:var(--surface-3)"></i>my predicted range</span><span><i class="sw" style="background:var(--orange)"></i>Astra's prediction (v8)</span><span><i class="sw" style="background:var(--blue);border-radius:50%"></i>measured</span></div>
+<div class="chart" id="ch4"></div>
+<p class="small muted">Too high for v6, v6r2, v7 and v7r, optimistic for v6r ("up to 2×"), too low for v6r3. For v8 I gave a deliberately wide range; Astra's was well above the result. That is why every package says "the A/B decides" and production only switches on measured, sustained wins.</p>
+</div><p class="small muted">Next: <a href="#s9">review the entire original version roadmap →</a></p>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+<div class="secnum">09 · ROADMAP</div>
+<h2>Every version, what it tried, and what got in the way</h2>
+<p>Each entry now starts with a plain-English explanation. Open it for the original engineering details and the real test result.</p>
+<div class="controls"><button id="tlall">Open all</button><button id="tlnone">Close all</button></div>
+<div class="tl" id="tl"></div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+<div class="secnum">10 · WHAT'S NEXT</div>
+<h2>Milestones and the one hard deadline</h2>
+<p><b>One billion steps</b> means one billion additions. <b>One billion digits</b> means the result is a billion characters long. These milestones are not interchangeable.</p>
+<p class="small muted">The dates below are projections recorded in the original October 13, 2026 snapshot, not a live status report.</p>
+<div class="card"><div class="chart" id="ch5"></div><div class="small muted" style="margin-top:6px">Projected at v8 speed with no downtime; 1 billion steps is expected around this evening (Pacific). The red date is the hard one: v8 refuses to go past 2.147 billion digits, so production must be on v8b first.</div></div>
+<div class="grid2">
+<div class="card">
+<h3 style="margin-top:0">Lessons that held up</h3>
+<ul class="small" style="padding-left:18px;margin:0">
+<li><b>The math gave the big wins.</b> Folding, bit-planes and time-blocking are why memory sits at 1.8% busy and why we're ~20× ahead of schoolbook on the same chip (estimate).</li>
+<li><b>The 35 W cap prices everything in energy.</b> Filling idle cycles drops the clock. More blocks per SM lost 8.7%; v8's 1.5× extra arithmetic took most of the 1.5× it saved in waiting.</li>
+<li><b>Fewer instructions ≠ faster.</b> v7r cut instructions per word 1.9× and lost 4%.</li>
+<li><b>Exactness is non-negotiable.</b> Every step's palindrome status is checked, no carry cutoffs, uncertified work replays. A v7 bug that gave 12 wrong results out of 78 was caught by tests before it ever ran on your GPU.</li>
+</ul>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Open items</h3>
+<ul class="small" style="padding-left:18px;margin:0">
+<li><b>v8 in production:</b> passed (+23.49% sustained, 0 replays); the switch is your call.</li>
+<li><b>v8b on the GPU:</b> gate, the 2.147e9-digit test, then the A/B of 288 threads, J=12 and base-5. Must be in production before about Nov 15.</li>
+<li><b>Record checks:</b> ISF dumps at milestones, mod-9 check on every archive, weekly per-step cross-check (the laptop GPU has no ECC memory).</li>
+<li><b>The biggest lever left is hardware:</b> no kernel change on this laptop is likely to match a desktop GPU without the 35 W cap.</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap">All speeds are your agent's measurements on the RTX 4050 Laptop GPU (K=128 unless noted), except where marked as estimates. Dates are projections at today's speed, assuming the run continues uninterrupted. Page computed in your browser; nothing is sent anywhere.</div></footer>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const NS="http://www.w3.org/2000/svg";
+function S(tag,attrs,parent){const e=document.createElementNS(NS,tag);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function H(tag,attrs,parent){const e=document.createElement(tag);if(attrs)for(const k in attrs){if(k==="text")e.textContent=attrs[k];else if(k==="html")e.innerHTML=attrs[k];else e.setAttribute(k,attrs[k]);}if(parent)parent.appendChild(e);return e;}
+const reduced=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fmt=n=>n.toLocaleString("en-US");
+function rng(seed){let s=seed>>>0||1;return()=>{s^=s<<13;s>>>=0;s^=s>>>17;s^=s<<5;s>>>=0;return s/4294967296;};}
+// distribution of a pair sum of two random digits: P(S=s)=(10-|s-9|)/100
+function sampleS(r){const a=Math.floor(r()*10),b=Math.floor(r()*10);return a+b;}
+const cls=s=>s>=10?"G":(s===9?"P":"K");
+
+// Tooltip: disappear when the user scrolls, clicks, touches, leaves the tab,
+// or closes/hides the section. Pointerleave alone is not fired on page scroll.
+const tip=$("#tip");
+function showTip(html,ev){tip.innerHTML=html;tip.style.visibility="visible";tip.style.opacity=1;moveTip(ev);}
+function moveTip(ev){const pad=14;let x=ev.clientX+pad,y=ev.clientY+pad;const r=tip.getBoundingClientRect();if(x+r.width>innerWidth-8)x=ev.clientX-r.width-pad;if(y+r.height>innerHeight-8)y=ev.clientY-r.height-pad;tip.style.left=Math.max(8,x)+"px";tip.style.top=Math.max(8,y)+"px";}
+function hideTip(){tip.style.opacity=0;tip.style.visibility="hidden";}
+function bindTip(node,html){const getText=()=>typeof html==="function"?html():html;node.addEventListener("pointerenter",e=>showTip(getText(),e));node.addEventListener("pointermove",e=>{if(tip.style.visibility!=="visible")showTip(getText(),e);else moveTip(e);});node.addEventListener("pointerleave",hideTip);node.addEventListener("pointercancel",hideTip);}
+window.addEventListener("scroll",hideTip,{capture:true,passive:true});
+window.addEventListener("wheel",hideTip,{passive:true});
+window.addEventListener("touchstart",hideTip,{passive:true});
+window.addEventListener("pointerdown",hideTip,{capture:true});
+window.addEventListener("resize",hideTip);
+window.addEventListener("blur",hideTip);
+window.addEventListener("keydown",e=>{if(e.key==="Escape")hideTip();});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)hideTip();});
+
+// theme
+(function(){const b=$("#themeBtn");let t=null;try{t=localStorage.getItem("t196");}catch(e){}if(t)document.documentElement.setAttribute("data-theme",t);
+b.addEventListener("click",()=>{const cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");const nx=cur==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",nx);try{localStorage.setItem("t196",nx);}catch(e){}});})();
+
+// big-int helpers
+const revStr=s=>s.split("").reverse().join("");
+const isPal=s=>s===revStr(s);
+function stepStr(s){return (BigInt(s)+BigInt(revStr(s))).toString();}
+
+// folded step with explicit carries (digits d[0] = least significant)
+function fold(s){
+  const n=s.length,d=new Array(n);for(let p=0;p<n;p++)d[p]=s.charCodeAt(n-1-p)-48;
+  const h=Math.ceil(n/2),c=new Array(n+1).fill(0),out=new Array(n);
+  for(let p=0;p<n;p++){const v=d[p]+d[n-1-p]+c[p];out[p]=v%10;c[p+1]=v>=10?1:0;}
+  const Sj=[],a=[],b=[];for(let j=0;j<h;j++){Sj.push(d[j]+d[n-1-j]);a.push(c[j]);b.push(c[n-1-j]);}
+  const g=c[n];let next="";if(g)next="1";for(let p=n-1;p>=0;p--)next+=out[p];
+  return {n,d,h,S:Sj,a,b,g,out,next};
+}
+
+// ---------- header band ----------
+(function(){const svg=$("#band");let s="196";for(let i=0;i<600;i++)s=stepStr(s);const f=fold(s);const cols=f.h;const w=960/cols,hh=56/5;
+  const st=getComputedStyle(document.documentElement);
+  for(let j=0;j<cols;j++){const v=f.S[j];const isP=v===9;
+    for(let k=0;k<5;k++){const bit=(v>>k)&1;if(!bit&&!isP)continue;
+      S("rect",{x:(j*w+0.6).toFixed(2),y:((4-k)*hh+1.5).toFixed(2),width:Math.max(0.5,w-1.2).toFixed(2),height:(hh-3).toFixed(2),rx:1,fill:isP?(bit?"var(--orange)":"var(--orange-soft)"):"var(--ink)","fill-opacity":isP?1:0.55},svg);}
+  }})();
+
+// ---------- 1: trajectory ----------
+(function(){
+  let start="196",x="196",it=0,hist=[3],playing=false,raf=0,found=-1;const CAP=4000;
+  const add=$("#t1add"),msg=$("#t1msg"),stat=$("#t1stat"),chartEl=$("#t1chart");
+  function short(s,k){return s.length<=2*k+6?s:s.slice(0,k)+"…"+s.slice(-k)+"  ("+fmt(s.length)+" digits)";}
+  function render(){
+    const r=revStr(x);const sum=(BigInt(x)+BigInt(r)).toString();
+    const W=Math.max(x.length,sum.length);
+    if(sum.length<=44){
+      const pad=t=>" ".repeat(W-t.length)+t;
+      add.textContent="  "+pad(x)+"\n+ "+pad(r)+"\n= "+pad(sum);
+    } else {
+      add.textContent="  "+short(x,18)+"\n+ "+short(r,18)+"\n= "+short(sum,18);
+    }
+    stat.textContent="step "+fmt(it)+" · "+fmt(x.length)+" digits";
+    if(found>=0){msg.innerHTML='<span class="chip ok">✓ palindrome</span> reached after <b>'+fmt(found)+'</b> steps: '+(x.length<=60?'<span class="mono">'+x+'</span>':fmt(x.length)+" digits");}
+    else if(it>=CAP){msg.innerHTML='<span class="chip">limit</span> stopped at '+fmt(CAP)+' steps in the browser. Your GPU run is doing the same thing at ~1 billion steps.';}
+    else msg.innerHTML=isPal(start)&&it===0?'<span class="muted">The start is already a palindrome; the search counts the steps after it.</span>':'<span class="muted">No palindrome yet.</span>';
+    drawChart();
+  }
+  function step(k){for(let i=0;i<k&&found<0&&it<CAP;i++){x=stepStr(x);it++;hist.push(x.length);if(isPal(x))found=it;}render();}
+  function reset(v){v=(v||"").replace(/\D/g,"").replace(/^0+/,"");if(!v||v.length>60){msg.innerHTML='<span class="bad-text">Enter a positive whole number (up to 60 digits).</span>';return;}
+    stop();start=v;x=v;it=0;hist=[v.length];found=-1;$("#t1in").value=v;render();}
+  function stop(){playing=false;cancelAnimationFrame(raf);$("#t1play").setAttribute("aria-pressed","false");$("#t1play").textContent="Play";}
+  function loop(){if(!playing)return;step(x.length>800?2:4);if(found>=0||it>=CAP){stop();return;}raf=requestAnimationFrame(loop);}
+  $("#t1step").onclick=()=>step(1);$("#t1x10").onclick=()=>step(10);$("#t1x100").onclick=()=>step(100);
+  $("#t1play").onclick=()=>{if(playing){stop();return;}playing=true;$("#t1play").setAttribute("aria-pressed","true");$("#t1play").textContent="Pause";loop();};
+  $("#t1set").onclick=()=>reset($("#t1in").value);
+  $("#t1in").addEventListener("keydown",e=>{if(e.key==="Enter")reset(e.target.value);});
+  $$(".t1pre").forEach(b=>b.onclick=()=>reset(b.dataset.v));
+  function drawChart(){
+    chartEl.innerHTML="";const W=chartEl.clientWidth||600,Hh=170,m={l:44,r:12,t:10,b:28};
+    const svg=S("svg",{viewBox:`0 0 ${W} ${Hh}`,role:"img","aria-label":"Digits per step"},chartEl);
+    const N=Math.max(10,hist.length-1),maxY=Math.max(10,...hist);
+    const xs=i=>m.l+(W-m.l-m.r)*i/N, ys=v=>Hh-m.b-(Hh-m.t-m.b)*v/maxY;
+    const ny=4;for(let k=0;k<=ny;k++){const v=Math.round(maxY*k/ny);const y=ys(v);S("line",{x1:m.l,x2:W-m.r,y1:y,y2:y,class:k?"gl":"ax"},svg);const t=S("text",{x:m.l-6,y:y+4,"text-anchor":"end",class:"tick"},svg);t.textContent=fmt(v);}
+    const nx=5;for(let k=0;k<=nx;k++){const v=Math.round(N*k/nx);const t=S("text",{x:xs(v),y:Hh-8,"text-anchor":"middle",class:"tick"},svg);t.textContent=fmt(v);}
+    const tl=S("text",{x:W-m.r,y:Hh-8,"text-anchor":"end",class:"tick"},svg);tl.textContent="";
+    let dpath="";const stepPx=Math.max(1,Math.floor(hist.length/600));for(let i=0;i<hist.length;i+=stepPx)dpath+=(i?"L":"M")+xs(i).toFixed(1)+","+ys(hist[i]).toFixed(1);
+    if(hist.length>1){const i=hist.length-1;dpath+="L"+xs(i).toFixed(1)+","+ys(hist[i]).toFixed(1);}
+    S("path",{d:dpath,fill:"none",stroke:"var(--blue)","stroke-width":2,"stroke-linejoin":"round"},svg);
+    const lastI=hist.length-1;S("circle",{cx:xs(lastI),cy:ys(hist[lastI]),r:4,fill:"var(--blue)",stroke:"var(--surface)","stroke-width":2},svg);
+    const cross=S("line",{y1:m.t,y2:Hh-m.b,stroke:"var(--axis)","stroke-width":1,opacity:0},svg);
+    const dot=S("circle",{r:4,fill:"var(--blue)",stroke:"var(--surface)","stroke-width":2,opacity:0},svg);
+    const hit=S("rect",{x:m.l,y:m.t,width:W-m.l-m.r,height:Hh-m.t-m.b,fill:"transparent"},svg);
+    hit.addEventListener("pointermove",e=>{const r=svg.getBoundingClientRect();const px=(e.clientX-r.left)*W/r.width;let i=Math.round((px-m.l)/(W-m.l-m.r)*N);i=Math.max(0,Math.min(hist.length-1,i));
+      cross.setAttribute("x1",xs(i));cross.setAttribute("x2",xs(i));cross.setAttribute("opacity",1);dot.setAttribute("cx",xs(i));dot.setAttribute("cy",ys(hist[i]));dot.setAttribute("opacity",1);
+      showTip("<b>step "+fmt(i)+"</b><br><span class='t2'>"+fmt(hist[i])+" digits</span>",e);});
+    hit.addEventListener("pointerleave",()=>{cross.setAttribute("opacity",0);dot.setAttribute("opacity",0);hideTip();});
+  }
+  window.addEventListener("resize",()=>drawChart());
+  render();
+})();
+
+// ---------- 2: fold diagram ----------
+(function(){
+  const traj=["196"];while(traj.length<200){const nx=stepStr(traj[traj.length-1]);if(nx.length>22)break;traj.push(nx);}
+  let t=Math.min(17,traj.length-1),sel=-1;
+  const svg=$("#f2svg"),ex=$("#f2explain"),stat=$("#f2stat");
+  function draw(){
+    const s=traj[t],f=fold(s);const n=f.n;const cont=svg.parentElement.clientWidth||600;
+    const labW=34,cols=n+1;let cw=Math.floor((cont-labW-4)/cols);cw=Math.max(16,Math.min(34,cw));
+    const W=labW+cols*cw+4;const arcH=Math.min(70,cw*n*0.18+12);
+    const rowY={x:arcH+8,S:0,a:0,b:0,m:0,nx:0};const rh=cw+6;rowY.S=rowY.x+rh+10;rowY.a=rowY.S+rh;rowY.b=rowY.a+rh*0.8;rowY.m=rowY.b+rh*0.8;rowY.nx=rowY.m+rh*0.8+18;
+    const Ht=rowY.nx+cw+10;
+    svg.setAttribute("viewBox",`0 0 ${W} ${Ht}`);svg.setAttribute("width",W);svg.setAttribute("height",Ht);svg.innerHTML="";
+    const colX=p=>labW+(1+(n-1-p))*cw; // column x for digit position p (p=0 least significant), col 0 = growth digit
+    const fs=Math.max(10,Math.min(15,cw*0.5));
+    const lab=(txt,y)=>{const e=S("text",{x:labW-6,y:y+cw/2+4,"text-anchor":"end",class:"lbl","font-size":11,fill:"var(--muted)"},svg);e.textContent=txt;};
+    lab("x",rowY.x);lab("S",rowY.S);lab("a",rowY.a-cw*0.1);lab("b",rowY.b-cw*0.1);lab("a=b",rowY.m-cw*0.1);lab("next",rowY.nx);
+    // half divider
+    const midX=colX(f.h-1)-(n%2?0:0);
+    S("line",{x1:colX(f.h-1)-1,x2:colX(f.h-1)-1,y1:rowY.S-4,y2:rowY.m+cw*0.7,stroke:"var(--grid)","stroke-dasharray":"3 3"},svg);
+    // arcs
+    const arcs=[];
+    for(let j=0;j<f.h;j++){const p1=j,p2=n-1-j;if(p1===p2)continue;const x1=colX(p1)+cw/2,x2=colX(p2)+cw/2;const hgt=arcH*Math.abs(x1-x2)/(n*cw)+4;
+      const pth=S("path",{d:`M${x1},${rowY.x-2} C${x1},${rowY.x-2-hgt*1.3} ${x2},${rowY.x-2-hgt*1.3} ${x2},${rowY.x-2}`,fill:"none",stroke:"var(--axis)","stroke-width":1.2},svg);arcs[j]=pth;}
+    // digits row
+    const dRects={},nRects={};
+    for(let p=0;p<n;p++){const X=colX(p);const r=S("rect",{x:X+1,y:rowY.x,width:cw-2,height:cw,rx:4,fill:"var(--surface-2)"},svg);dRects[p]=r;
+      const tx=S("text",{x:X+cw/2,y:rowY.x+cw/2+fs*0.36,"text-anchor":"middle",class:"lbl","font-size":fs,fill:"var(--ink)","font-weight":600},svg);tx.textContent=f.d[p];}
+    // S row under positions j (low half)
+    const sCells=[];
+    for(let j=0;j<f.h;j++){const X=colX(j);const c=cls(f.S[j]);const fill=c==="G"?"var(--blue)":c==="P"?"var(--orange)":"var(--kill)";const tf=c==="G"?"var(--on-blue)":c==="P"?"var(--on-orange)":"var(--ink)";
+      const r=S("rect",{x:X+1,y:rowY.S,width:cw-2,height:cw,rx:4,fill},svg);sCells[j]=r;
+      const tx=S("text",{x:X+cw/2,y:rowY.S+cw/2+fs*0.33,"text-anchor":"middle",class:"lbl","font-size":fs*0.86,fill:tf,"font-weight":600},svg);tx.textContent=f.S[j];
+      const dotA=S("circle",{cx:X+cw/2,cy:rowY.a+cw*0.3,r:Math.max(3,cw*0.17),fill:f.a[j]?"var(--ink)":"none",stroke:"var(--axis)","stroke-width":1.2},svg);
+      const dotB=S("circle",{cx:X+cw/2,cy:rowY.b+cw*0.3,r:Math.max(3,cw*0.17),fill:f.b[j]?"var(--ink)":"none",stroke:"var(--axis)","stroke-width":1.2},svg);
+      const ok=f.a[j]===f.b[j];const mt=S("text",{x:X+cw/2,y:rowY.m+cw*0.42,"text-anchor":"middle","font-size":fs*0.85,fill:ok?"var(--good-text)":"var(--critical)","font-weight":700},svg);mt.textContent=ok?"✓":"✗";
+    }
+    // next row
+    const nn=f.next.length;
+    for(let k=0;k<nn;k++){const p=nn-1-k;const X=p===n?labW:colX(p);const r=S("rect",{x:X+1,y:rowY.nx,width:cw-2,height:cw,rx:4,fill:p===n?"var(--blue-soft)":"var(--surface-2)"},svg);nRects[p]=r;
+      const tx=S("text",{x:X+cw/2,y:rowY.nx+cw/2+fs*0.36,"text-anchor":"middle",class:"lbl","font-size":fs,fill:"var(--ink)","font-weight":600},svg);tx.textContent=f.next[k];}
+    const conn=S("g",{},svg);
+    // hit targets: whole columns of the low half
+    for(let j=0;j<f.h;j++){const X=colX(j);const hitR=S("rect",{x:X,y:rowY.S-4,width:cw,height:rowY.m+cw-rowY.S+4,fill:"transparent",style:"cursor:pointer"},svg);
+      hitR.addEventListener("pointerenter",()=>{sel=j;highlight();});hitR.addEventListener("click",()=>{sel=j;highlight();});}
+    function highlight(){
+      for(const k in dRects)dRects[k].setAttribute("fill","var(--surface-2)");for(const k in nRects)nRects[k].setAttribute("fill",+k===n?"var(--blue-soft)":"var(--surface-2)");
+      arcs.forEach(a=>a&&(a.setAttribute("stroke","var(--axis)"),a.setAttribute("stroke-width",1.2)));sCells.forEach(r=>r.removeAttribute("stroke"));conn.innerHTML="";
+      if(sel<0||sel>=f.h){explain(f,-1);return;}
+      const j=sel,p2=n-1-j;[j,p2].forEach(p=>{dRects[p].setAttribute("fill","var(--blue-soft)");nRects[p].setAttribute("fill","var(--blue-soft)");});
+      if(arcs[j]){arcs[j].setAttribute("stroke","var(--blue)");arcs[j].setAttribute("stroke-width",2.4);}
+      sCells[j].setAttribute("stroke","var(--ink)");sCells[j].setAttribute("stroke-width",2);
+      const sx=colX(j)+cw/2,sy=rowY.m+cw*0.75;
+      [j,p2].forEach(p=>{const tx=colX(p)+cw/2;S("path",{d:`M${sx},${sy} C${sx},${sy+12} ${tx},${rowY.nx-14} ${tx},${rowY.nx-1}`,fill:"none",stroke:"var(--blue)","stroke-width":1.6,"stroke-dasharray":p===j?"":"4 3"},conn);});
+      explain(f,j);
+    }
+    highlight();
+  }
+  function explain(f,j){
+    const ok=f.next===stepStr(traj[t]);const pal=isPal(f.next);
+    let h="";
+    if(j>=0){const n=f.n,p2=n-1-j,c=cls(f.S[j]);const nm=c==="G"?"makes a carry":c==="P"?"passes a carry on":"stops a carry";
+      h+=`<span class="k">pair ${j}:</span> S = d<sub>${j}</sub> + d<sub>${p2}</sub> = ${f.d[j]} + ${f.d[p2]} = <b>${f.S[j]}</b> (${nm})<br>`;
+      h+=`<span class="k">low digit:</span> (S + a) mod 10 = (${f.S[j]} + ${f.a[j]}) mod 10 = <b>${(f.S[j]+f.a[j])%10}</b> at position ${j}<br>`;
+      if(p2!==j)h+=`<span class="k">high digit:</span> (S + b) mod 10 = (${f.S[j]} + ${f.b[j]}) mod 10 = <b>${(f.S[j]+f.b[j])%10}</b> at position ${p2}<br>`;
+      else h+=`<span class="k">middle digit:</span> it is its own mirror, so a = b automatically<br>`;
+    } else h+=`<span class="k">tap a column on the right half</span><br>`;
+    const mism=f.a.reduce((s,v,i)=>s+(v!==f.b[i]?1:0),0);
+    h+=`<span class="k">growth:</span> ${f.g?'yes, the carry out of the top makes a new leading 1':'no'} · <span class="k">a≠b pairs:</span> ${mism}${f.g?' (growth step: the test shifts by one pair)':''} → ${pal?'<span class="ok-text">palindrome</span>':'not a palindrome'}<br>`;
+    h+=`<span class="k">check:</span> folded result ${ok?'<span class="ok-text">= BigInt result ✓</span>':'<span class="bad-text">≠ BigInt ✗</span>'}`;
+    ex.innerHTML=h;
+    stat.textContent=`step ${t} → ${t+1} · ${f.n} digits · ${f.h} pairs`;
+    $("#f2prev").disabled=t===0;$("#f2next").disabled=t>=traj.length-1;
+  }
+  $("#f2prev").onclick=()=>{if(t>0){t--;sel=-1;draw();}};
+  $("#f2next").onclick=()=>{if(t<traj.length-1){t++;sel=-1;draw();}};
+  window.addEventListener("resize",draw);
+  sel=2;draw();
+})();
+
+// ---------- 3 + 4: carry lab and bit-planes (shared 16 pairs) ----------
+const LAB=(function(){
+  const N=16;let v=[3,12,9,9,9,4,15,9,7,10,9,9,2,9,18,6],sel=2,anim=-1,timer=0;
+  const grid=$("#c3grid"),bgrid=$("#b4grid");
+  function masks(){let G=0,P=0;for(let j=0;j<N;j++){if(v[j]>=10)G|=1<<j;if(v[j]===9)P|=1<<j;}const X=G|P;const sum=(X+G)>>>0;const car=(sum^X^G)>>>0;return {G,P,X,sum,car};}
+  function seqCarry(){const a=[0];for(let j=0;j<N;j++)a.push((v[j]>=10||(v[j]===9&&a[j]))?1:0);return a;} // a[j]=carry into j, a[N]=carry out
+  function row(label,cells,parent,cl){H("div",{class:"rowlab",text:label},parent);const r=H("div",{class:"cellrow",style:`grid-template-columns:repeat(${cells.length},minmax(0,1fr))`},parent);cells.forEach(c=>{const e=H("div",{class:"cell "+(c.cls||""),text:c.t},r);if(c.title)e.title=c.title;if(c.on)e.addEventListener("click",c.on);});return r;}
+  function bitsRow(m,len){const out=[];for(let j=0;j<len;j++){const b=(m>>>j)&1;out.push({t:b,cls:b?"bit1":"bit0"});}return out;}
+  function render(){
+    const M=masks(),a=seqCarry();
+    grid.innerHTML="";
+    row("j",Array.from({length:N+1},(_,j)=>({t:j<N?j:"out",cls:"bit0"})),grid);
+    row("S",v.map((s,j)=>({t:s,cls:cls(s)+" click"+(j===sel?" sel":""),on:()=>{sel=j;$("#c3val").value=v[j];syncSel();render();},title:"pair "+j})).concat([{t:"",cls:""}]),grid);
+    row("a (loop)",a.map((c,j)=>({t:anim>=0&&j>anim?"·":c,cls:(anim>=0&&j>anim)?"bit0":(c?"bit1":"bit0")})),grid);
+    H("div",{class:"rowlab",text:""},grid);H("div",{class:"small muted",style:"padding:6px 0 2px",text:"The same carries from one 32-bit addition:"},grid);
+    row("G",bitsRow(M.G,N+1),grid);
+    row("X=G|P",bitsRow(M.X,N+1),grid);
+    row("X+G",bitsRow(M.sum,N+1),grid);
+    row("(X+G)^X^G",bitsRow(M.car,N+1),grid);
+    let same=true;for(let j=0;j<=N;j++)if(((M.car>>>j)&1)!==a[j])same=false;
+    const run=longestRun();
+    $("#c3check").innerHTML=(same?'<span class="chip ok">✓ match</span> the loop and the single addition give identical carries':'<span class="chip bad">✗ mismatch</span>')+` · longest run of 9s: <b>${run}</b> · carry out of the word: <b>${a[N]}</b>`;
+    // bit planes
+    bgrid.innerHTML="";
+    row("pair",v.map((_,j)=>({t:j,cls:"bit0"})),bgrid);
+    row("S",v.map((s,j)=>({t:s,cls:cls(s)+(j===sel?" sel":"")})),bgrid);
+    for(let k=4;k>=0;k--){row("plane "+k,v.map(s=>{const b=(s>>k)&1;return {t:b,cls:b?"bit1":"bit0"};}),bgrid);}
+    let P4=0,P3=0,P2=0,P1=0,P0=0;v.forEach((s,j)=>{if(s&16)P4|=1<<j;if(s&8)P3|=1<<j;if(s&4)P2|=1<<j;if(s&2)P1|=1<<j;if(s&1)P0|=1<<j;});
+    const Gc=(P4|(P3&(P2|P1)))&0xffff,Pc=(~P4&P3&~P2&~P1&P0)&0xffff;
+    row("G = S≥10",bitsRow(Gc,N),bgrid);row("P = S=9",bitsRow(Pc,N),bgrid);
+    const okG=Gc===M.G,okP=Pc===M.P;
+    $("#b4form").innerHTML=`<span class="k">G</span> = p4 | (p3 &amp; (p2 | p1)) &nbsp; <span class="k">// S ≥ 10: 16–18, or 8 + (2 or 4)</span><br><span class="k">P</span> = ~p4 &amp; p3 &amp; ~p2 &amp; ~p1 &amp; p0 &nbsp; <span class="k">// S = 9 = 01001₂</span><br><span class="k">check:</span> ${okG&&okP?'<span class="ok-text">both rows equal the per-pair test ✓</span>':'<span class="bad-text">mismatch</span>'} · on the GPU each line is 3–5 instructions for 32 pairs`;
+  }
+  function longestRun(){let best=0,cur=0;for(const s of v){cur=s===9?cur+1:0;best=Math.max(best,cur);}return best;}
+  function syncSel(){$("#c3selj").textContent=sel;$("#c3valv").textContent=v[sel];}
+  $("#c3val").addEventListener("input",e=>{v[sel]=+e.target.value;syncSel();render();});
+  $("#c3rand").onclick=()=>{const r=rng(Date.now());v=v.map(()=>sampleS(r));syncSel();$("#c3val").value=v[sel];render();};
+  $("#c3run").onclick=()=>{v=[2,5,13,9,9,9,9,9,9,9,9,4,7,11,9,3];sel=2;$("#c3val").value=v[sel];syncSel();render();};
+  $("#c3ripple").onclick=()=>{clearInterval(timer);if(reduced){anim=-1;render();return;}anim=0;render();timer=setInterval(()=>{anim++;if(anim>N){clearInterval(timer);anim=-1;}render();},170);};
+  syncSel();render();
+  return {};
+})();
+
+// ---------- 5: time-blocking cone ----------
+(function(){
+  let seed=7,p9=0.1;const svg=$("#t5svg");
+  function draw(){
+    const halo=+$("#t5halo").value,K=+$("#t5k").value;$("#t5halov").textContent=halo;$("#t5kv").textContent=K;
+    const own=24,Wp=own+2*halo;const cont=svg.parentElement.clientWidth||600;const labW=44;
+    let cw=Math.max(5,Math.min(14,Math.floor((cont-labW-6)/Wp)));const ch=Math.max(9,Math.min(14,cw+2));
+    const W=labW+Wp*cw+6,Ht=26+K*ch+10;svg.setAttribute("viewBox",`0 0 ${W} ${Ht}`);svg.setAttribute("width",W);svg.setAttribute("height",Ht);svg.innerHTML="";
+    const r=rng(seed*7919+halo*31+K);
+    let L=0,R=Wp;let fail=-1;const tt=S("text",{x:labW,y:14,class:"lbl","font-size":11,fill:"var(--muted)"},svg);tt.textContent="pairs of one tile →";
+    // owned bracket
+    S("rect",{x:labW+halo*cw,y:18,width:own*cw,height:3,fill:"var(--blue)"},svg);
+    for(let t=0;t<K;t++){
+      const runL=geo(r),runR=geo(r);const L0=L+1,R0=R-1;L=L0+runL;R=R0-runR;
+      const y=24+t*ch;const lt=S("text",{x:labW-6,y:y+ch-2,"text-anchor":"end",class:"lbl","font-size":10,fill:"var(--muted)"},svg);lt.textContent=t===0?"step 1":(t+1);
+      for(let x=0;x<Wp;x++){
+        let fill;const cert=x>=L&&x<R;const owned=x>=halo&&x<halo+own;
+        if(cert)fill=owned?"var(--blue)":"var(--blue-soft)";
+        else if((x>=L0&&x<L)||(x>=R&&x<R0))fill="var(--orange)";
+        else fill="url(#hatch)";
+        S("rect",{x:labW+x*cw+0.5,y:y+0.5,width:cw-1,height:ch-1,rx:1.5,fill},svg);
+      }
+      if(fail<0&&(L>halo||R<halo+own))fail=t+1;
+    }
+    const defs=S("defs",{},svg);const pat=S("pattern",{id:"hatch",width:5,height:5,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"},defs);S("rect",{width:5,height:5,fill:"var(--surface-2)"},pat);S("line",{x1:0,y1:0,x2:0,y2:5,stroke:"var(--hatch)","stroke-width":2.4},pat);
+    svg.insertBefore(defs,svg.firstChild);
+    const m=$("#t5msg");
+    if(fail>0)m.innerHTML=`<span class="chip bad">✗ certification failed at step ${fail}</span> the uncertainty reached the owned pairs, so this block's ${K} steps are <b>replayed</b> with the exact per-step kernel.`;
+    else m.innerHTML=`<span class="chip ok">✓ certified</span> after ${K} steps the owned pairs are still provably exact (${L>halo?0:halo-L} + ${R<halo+own?0:R-halo-own} pairs of margin left).`;
+    $("#t5trips1").textContent=K+" loads + "+K+" stores";
+  }
+  function geo(r){let k=0;while(r()<p9&&k<40)k++;return k;}
+  ["#t5halo","#t5k"].forEach(s=>$(s).addEventListener("input",draw));
+  $("#t5roll").onclick=()=>{seed++;draw();};
+  $("#t5p10").onclick=()=>{p9=0.1;$("#t5p10").setAttribute("aria-pressed","true");$("#t5p40").setAttribute("aria-pressed","false");draw();};
+  $("#t5p40").onclick=()=>{p9=0.4;$("#t5p40").setAttribute("aria-pressed","true");$("#t5p10").setAttribute("aria-pressed","false");draw();};
+  window.addEventListener("resize",draw);draw();
+})();
+
+// ---------- 6: tiles, lanes, window ----------
+(function(){
+  const dots=$("#t6dots");
+  function drawDots(tile){
+    dots.innerHTML="";const items=tile===860?224:193;let wi=0;
+    for(let w=0;w<8;w++){for(let l=0;l<32;l++){const x=8+l*19.6,y=8+w*16.4;let fill;
+      if(w===1)fill="var(--orange)";else{fill=wi<items?"var(--blue)":"var(--surface-3)";wi++;}
+      S("rect",{x,y,width:15,height:12,rx:3,fill},dots);}}
+    $("#t6tilemsg").innerHTML=tile===860?'<b>224 groups → 224 workers busy, 0 idle</b>':'<b>193 groups → 31 workers idle</b> every step';
+  }
+  $$(".t6tile").forEach(b=>b.onclick=()=>{$$(".t6tile").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));drawDots(+b.dataset.t);});
+  drawDots(736);
+
+  let J=8;const lanes=$("#t6lanes");
+  function drawLanes(){
+    const cont=lanes.parentElement.clientWidth||600;const STEPS=16,NL=5;const r=rng(42);
+    // cartoon costs (arbitrary units)
+    const ld=0.42,st=0.16,bar=0.22,mathBase=0.62;
+    const work=[];for(let i=0;i<NL;i++){work.push([]);for(let s=0;s<STEPS;s++)work[i].push(mathBase*(0.75+0.5*r()));}
+    // v6r3 timeline
+    const segA=[];let tA=0;
+    for(let s=0;s<STEPS;s++){let mx=0;const per=[];for(let i=0;i<NL;i++){const d=ld+work[i][s]+st;per.push(d);mx=Math.max(mx,d);}
+      for(let i=0;i<NL;i++){segA.push({i,t:tA,d:ld,k:"mem"});segA.push({i,t:tA+ld,d:work[i][s],k:"math"});segA.push({i,t:tA+ld+work[i][s],d:st,k:"mem"});if(per[i]<mx)segA.push({i,t:tA+per[i],d:mx-per[i],k:"wait"});}
+      segA.push({i:-1,t:tA+mx,d:bar,k:"bar"});tA+=mx+bar;}
+    // v8 timeline
+    const segB=[];let tB=0;const nwin=Math.ceil(STEPS/J);
+    for(let w=0;w<nwin;w++){const s0=w*J,s1=Math.min(STEPS,s0+J);let mx=0;const per=[];
+      for(let i=0;i<NL;i++){let d=ld;for(let s=s0;s<s1;s++)d+=1.5*work[i][s];d+=st;per.push(d);mx=Math.max(mx,d);}
+      for(let i=0;i<NL;i++){segB.push({i,t:tB,d:ld,k:"mem"});let x=tB+ld;for(let s=s0;s<s1;s++){segB.push({i,t:x,d:1.5*work[i][s],k:"math",sep:s>s0});x+=1.5*work[i][s];}segB.push({i,t:x,d:st,k:"mem"});if(per[i]<mx)segB.push({i,t:tB+per[i],d:mx-per[i],k:"wait"});}
+      segB.push({i:-1,t:tB+mx,d:bar,k:"bar"});tB+=mx+bar;}
+    const T=Math.max(tA,tB);const labW=56,W=Math.max(cont,420),lh=11,gap=3;const blockH=NL*(lh+gap);
+    const Ht=22+blockH+30+blockH+28;lanes.setAttribute("viewBox",`0 0 ${W} ${Ht}`);lanes.setAttribute("width",W);lanes.setAttribute("height",Ht);lanes.innerHTML="";
+    const defs=S("defs",{},lanes);const pat=S("pattern",{id:"hatch6",width:5,height:5,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"},defs);S("rect",{width:5,height:5,fill:"var(--surface-2)"},pat);S("line",{x1:0,y1:0,x2:0,y2:5,stroke:"var(--hatch)","stroke-width":2.4},pat);
+    const sx=t=>labW+(W-labW-8)*t/T;
+    function block(segs,y0,title,tot){const tl=S("text",{x:0,y:y0-6,"font-size":12,fill:"var(--ink)","font-weight":600},lanes);tl.textContent=title;
+      for(let i=0;i<NL;i++){const t=S("text",{x:labW-6,y:y0+i*(lh+gap)+lh-1,"text-anchor":"end","font-size":10,fill:"var(--muted)",class:"lbl"},lanes);t.textContent="thr "+i;}
+      segs.forEach(g=>{if(g.k==="bar"){S("rect",{x:sx(g.t),y:y0-2,width:Math.max(1.5,sx(g.t+g.d)-sx(g.t)),height:blockH+1,fill:"var(--ink)",rx:1},lanes);return;}
+        const y=y0+g.i*(lh+gap);const fill=g.k==="math"?"var(--blue)":g.k==="mem"?"var(--orange)":"url(#hatch6)";
+        S("rect",{x:sx(g.t)+(g.sep?0.6:0),y,width:Math.max(0.5,sx(g.t+g.d)-sx(g.t)-(g.sep?0.6:0)),height:lh,fill},lanes);});
+      const e=S("line",{x1:sx(tot),x2:sx(tot),y1:y0-4,y2:y0+blockH+2,stroke:"var(--ink-2)","stroke-dasharray":"2 2"},lanes);
+    }
+    block(segA,22,"v6r3: every step = load, math, store, wait, barrier",tA);
+    block(segB,22+blockH+30,`v8: one load, ${J} steps in registers at 1.5× math, one store, one barrier`,tB);
+    const ratio=tA/tB;
+    $("#t6lanemsg").innerHTML=`16 steps shown. Barriers per 128 steps: <b>128</b> (v6r3) vs <b>${Math.ceil(128/J)}</b> (v8, J=${J}). Shared-memory round trips: 1 per step vs 1 per ${J} steps. Math per kept word: 1× vs <b>1.5×</b> (6 words computed to keep 4). In this cartoon v8 finishes ${ratio.toFixed(2)}× sooner, roughly the ceiling for removing waits. <b>Measured: 1.23×.</b> The cartoon has no power cap; on your 35 W GPU the extra 1.5× math lowers the clock and takes back much of the gain.${J===16?' <span class="bad-text">And at J=16 the margin fails sometimes: see below.</span>':''}`;
+  }
+  $$(".t6j").forEach(b=>b.onclick=()=>{J=+b.dataset.j;$$(".t6j").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));drawLanes();drawWin(false);});
+
+  const win=$("#t6win");let wseed=3;
+  function drawWin(roll){
+    if(roll)wseed++;const r=rng(wseed*104729+J);const cont=win.parentElement.clientWidth||600;const W=Math.max(cont,380);const Wp=192,margin=32;
+    let L=0,R=Wp,steps=[];for(let s=0;s<J;s++){let k=0;while(r()<0.1&&k<40)k++;let k2=0;while(r()<0.1&&k2<40)k2++;L+=1+k;R-=1+k2;steps.push([L,R]);}
+    const Ht=56;win.setAttribute("viewBox",`0 0 ${W} ${Ht}`);win.setAttribute("width",W);win.setAttribute("height",Ht);win.innerHTML="";
+    const sx=p=>8+(W-16)*p/Wp;const defs=S("defs",{},win);const pat=S("pattern",{id:"hatch7",width:5,height:5,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"},defs);S("rect",{width:5,height:5,fill:"var(--surface-2)"},pat);S("line",{x1:0,y1:0,x2:0,y2:5,stroke:"var(--hatch)","stroke-width":2.4},pat);
+    for(let w=0;w<6;w++){const own=w>=1&&w<=4;S("rect",{x:sx(w*32)+1,y:22,width:sx(32)-sx(0)-2,height:24,rx:3,fill:own?"var(--blue)":"var(--blue-soft)"},win);
+      const t=S("text",{x:sx(w*32+16),y:16,"text-anchor":"middle","font-size":10.5,fill:"var(--muted)",class:"lbl"},win);t.textContent=W<560?(own?"own "+w:"halo"):(own?"owned word "+w:"halo word");}
+    S("rect",{x:sx(0)+1,y:22,width:Math.max(0,sx(Math.min(L,Wp/2))-sx(0)-1),height:24,fill:"url(#hatch7)"},win);
+    S("rect",{x:sx(Math.max(R,Wp/2)),y:22,width:Math.max(0,sx(Wp)-sx(Math.max(R,Wp/2))-1),height:24,fill:"url(#hatch7)"},win);
+    [margin,Wp-margin].forEach(p=>S("line",{x1:sx(p),x2:sx(p),y1:18,y2:50,stroke:"var(--ink)","stroke-width":1.5},win));
+    const failed=L>margin||R<Wp-margin;
+    $("#t6rollmsg").innerHTML=(failed?'<span class="bad-text">✗ reached the owned words → replay</span>':'<span class="ok-text">✓ owned words still certified</span>')+`<br><span class="muted">J=${J}: ${L} pairs stale on the left, ${Wp-R} on the right (limit ${margin} each)</span>`;
+  }
+  $("#t6roll").onclick=()=>drawWin(true);
+  window.addEventListener("resize",()=>{drawLanes();drawWin(false);});
+  drawLanes();drawWin(false);
+})();
+
+// ---------- 7: base-5 ----------
+(function(){
+  let c=1;
+  function bitBox(label,val,bits,note){let h=`<div class="lab-grid" style="grid-template-columns:72px 1fr;margin:4px 0"><div class="rowlab">${label}</div><div class="cellrow" style="grid-template-columns:repeat(${bits},30px)">`;for(let k=bits-1;k>=0;k--){const b=(val>>k)&1;h+=`<div class="cell ${b?"bit1":"bit0"}">${b}</div>`;}h+=`</div></div>`;if(note)h+=`<div class="small muted" style="margin-left:72px">${note}</div>`;return h;}
+  function draw(){
+    const s=+$("#q7s").value;$("#q7sv").textContent=s;
+    const G=s>=10?1:0,r=s-10*G,H5=r>=5?1:0,M=r-5*H5;const M2=(M>>2)&1;const P=H5&M2;
+    $("#q7bin").innerHTML=bitBox("S (5 bits)",s,5,`G = S≥10 needs p4 | (p3 &amp; (p2|p1)); P = S=9 needs a 5-input AND`);
+    $("#q7quin").innerHTML=bitBox("M (3 bits)",M,3,`M = S mod 5 = ${M}`)+bitBox("H",H5,1,`H = ${H5}: last digit ${r} ${H5?"≥":"<"} 5`)+bitBox("G",G,1,`G = ${G}: stored directly`);
+    const d1=M+5*H5+c-10*P*c,d2=(s+c)%10;
+    $("#q7form").innerHTML=`<span class="k">S</span> = M + 5H + 10G = ${M} + 5·${H5} + 10·${G} = <b>${s}</b><br>`+
+      `<span class="k">makes a carry</span> = G = <b>${G}</b> · <span class="k">passes a carry (S=9)</span> = H &amp; M₂ = ${H5} &amp; ${M2} = <b>${P}</b><br>`+
+      `<span class="k">new digit</span> = M + 5H + c − 10·P·c = ${M} + ${5*H5} + ${c} − ${10*P*c} = <b>${d1}</b> · <span class="k">check</span> (S + c) mod 10 = ${d2} ${d1===d2?'<span class="ok-text">✓</span>':'<span class="bad-text">✗</span>'}<br>`+
+      `<span class="k">carry out</span> = G | (P &amp; c) = <b>${G|(P&c)}</b>`;
+  }
+  $("#q7s").addEventListener("input",draw);
+  $("#q7c0").onclick=()=>{c=0;$("#q7c0").setAttribute("aria-pressed","true");$("#q7c1").setAttribute("aria-pressed","false");draw();};
+  $("#q7c1").onclick=()=>{c=1;$("#q7c1").setAttribute("aria-pressed","true");$("#q7c0").setAttribute("aria-pressed","false");draw();};
+  draw();
+})();
+
+// ---------- 8: speed charts ----------
+const AB=[
+ {n:"v4 bit-planes",vs:"original kernel",size:"2.05M digits",old:38.5,nw:4.1,unit:"µs",r:38.5/4.1,ok:true,note:"GPU time, 20,000 steps (0.770 s → 0.082 s)"},
+ {n:"v5 time-blocked",vs:"v4",size:"2.05M digits",old:4.1,nw:4.04,unit:"µs",r:4.1/4.04,ok:true,note:"about even per step; the win was run mode (one process, background checkpoints)"},
+ {n:"v6 lean kernel",vs:"v5",size:"28M digits",old:52.32,nw:54.96,unit:"µs",r:52.32/54.96,ok:false,note:"168-byte stack frame put local memory in the hot loop"},
+ {n:"v6r",vs:"v5",size:"28M digits",old:null,nw:null,unit:"µs",r:1.48,ok:true,note:"tracking moved off the busiest warp"},
+ {n:"v6r2",vs:"v6r",size:"55M digits",old:68.3,nw:61.9,unit:"µs",r:68.3/61.9,ok:true,note:"one fast-path call site, unified work list"},
+ {n:"v7 transposed",vs:"v6r2",size:"111M digits",old:118.4,nw:171.6,unit:"µs",r:118.4/171.6,ok:false,note:"half the warps per SM, bank conflicts"},
+ {n:"v7r",vs:"v6r2",size:"100k steps sustained",old:188.9,nw:196.9,unit:"µs",r:188.9/196.9,ok:false,note:"1.9× fewer instructions per word, still slower"},
+ {n:"3 blocks per SM",vs:"v6r2",size:"production copy",old:null,nw:null,unit:"µs",r:1-0.0866,ok:false,note:"8.66% slower: more warps lowered the clock under the 35 W cap"},
+ {n:"v6r3, tile 860",vs:"v6r2, tile 736",size:"100k steps sustained",old:232.352,nw:193.839,unit:"µs",r:232.352/193.839,ok:true,note:"A/B median: +23.09%"},
+ {n:"v8, tile 1000",vs:"v6r3, tile 860",size:"100k steps sustained",old:210.567,nw:170.519,unit:"µs",r:210.567/170.519,ok:true,note:"A/B median: +25.60%, 0 replays"},
+ {n:"v8, J=4",vs:"v6r3, tile 860",size:"A/B, tile 860",old:210.714,nw:196.382,unit:"µs",r:210.714/196.382,ok:false,variant:true,note:"safe but syncs twice as often as J=8"},
+ {n:"v8, J=16",vs:"v6r3, tile 860",size:"A/B, tile 860",old:210.714,nw:1363.428,unit:"µs",r:210.714/1363.428,ok:false,note:"3 certification failures, each an 8,192-step redo"},
+];
+function pct(r){const p=(r-1)*100;return (p>=0?"+":"")+p.toFixed(2)+"%";}
+(function(){
+  const el=$("#ch1");function draw(){el.innerHTML="";const W=el.clientWidth||700;const narrow=W<560;const labW=narrow?118:170,valW=narrow?62:74,rowH=narrow?30:28,m={t:22,b:26};
+    const Ht=m.t+AB.length*rowH+m.b;const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Speed ratio of each attempt vs the engine it challenged"},el);
+    const lo=Math.log(0.125),hi=Math.log(16);const x0=labW,x1=W-valW;const sx=r=>x0+(x1-x0)*(Math.log(r)-lo)/(hi-lo);
+    [0.125,0.25,0.5,1,2,4,8,16].forEach(v=>{const x=sx(v);S("line",{x1:x,x2:x,y1:m.t-4,y2:Ht-m.b,class:v===1?"ax":"gl"},svg);const t=S("text",{x,y:Ht-8,"text-anchor":"middle",class:"tick"},svg);t.textContent=(v<1?v:v)+"×";});
+    const ta=S("text",{x:sx(1)-6,y:12,"text-anchor":"end",class:"tick"},svg);ta.textContent="← slower";const tb=S("text",{x:sx(1)+6,y:12,class:"tick"},svg);tb.textContent="faster →";
+    AB.forEach((d,i)=>{const y=m.t+i*rowH;const yc=y+rowH/2;
+      const lt=S("text",{x:labW-8,y:yc+4,"text-anchor":"end",fill:"var(--ink)","font-size":narrow?11.5:12.5},svg);lt.textContent=d.n;
+      const xa=sx(1),xb=sx(d.r);const bx=Math.min(xa,xb),bw=Math.max(2,Math.abs(xb-xa));
+      const fill=d.ok?"var(--blue)":"var(--muted)";
+      // rounded data end only
+      const h=Math.min(16,rowH-10),yb=yc-h/2,rr=4;
+      let p;if(xb>=xa)p=`M${bx},${yb}H${bx+bw-rr}Q${bx+bw},${yb} ${bx+bw},${yb+rr}V${yb+h-rr}Q${bx+bw},${yb+h} ${bx+bw-rr},${yb+h}H${bx}Z`;
+      else p=`M${bx+bw},${yb}H${bx+rr}Q${bx},${yb} ${bx},${yb+rr}V${yb+h-rr}Q${bx},${yb+h} ${bx+rr},${yb+h}H${bx+bw}Z`;
+      S("path",{d:p,fill,opacity:d.variant?0.65:1},svg);
+      const vt=S("text",{x:W-4,y:yc+4,"text-anchor":"end",fill:"var(--ink)","font-size":12,class:"lbl","font-weight":600},svg);vt.textContent=d.r>=2?d.r.toFixed(2)+"×":pct(d.r);
+      const hit=S("rect",{x:0,y,width:W,height:rowH,fill:"transparent"},svg);
+      hit.addEventListener("pointerenter",()=>hit.setAttribute("fill","var(--hatch)"));hit.addEventListener("pointerleave",()=>hit.setAttribute("fill","transparent"));
+      bindTip(hit,()=>`<b>${d.n}</b> vs ${d.vs}<br><span class="t2">${d.size}</span><br>${d.old?`${d.old} → ${d.nw} µs/step<br>`:""}<b>${d.r.toFixed(3)}×</b> (${pct(d.r)}) · ${d.variant?"variant (J=8 was chosen)":d.ok?"adopted / passed":"kept the old engine"}<br><span class="t2">${d.note}</span>`);
+    });}
+  draw();window.addEventListener("resize",draw);
+  let t='<table><thead><tr><th>Engine</th><th>Compared with</th><th>Where measured</th><th class="num">old µs/step</th><th class="num">new µs/step</th><th class="num">speed ratio</th><th>Outcome</th></tr></thead><tbody>';
+  AB.forEach(d=>{t+=`<tr><td>${d.n}</td><td>${d.vs}</td><td>${d.size}</td><td class="num">${d.old??"—"}</td><td class="num">${d.nw??"—"}</td><td class="num">${d.r.toFixed(3)}×</td><td>${d.variant?"variant, J=8 chosen":d.ok?"adopted / passed":"kept old"}${d.note?` <span class="muted">· ${d.note}</span>`:""}</td></tr>`;});
+  t+='<tr><td>v8b (288 thr, J=12, base-5)</td><td>v8, tile 1000</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>built, GPU A/B pending</td></tr></tbody></table>';
+  $("#ch1tab").innerHTML=t;
+})();
+(function(){
+  const chain=[["original",1]];let acc=1;[["v4",0],["v5",1],["v6r",3],["v6r2",4],["v6r3",8],["v8",9]].forEach(([n,i])=>{acc*=AB[i].r;chain.push([n,acc]);});
+  const el=$("#ch2");function draw(){el.innerHTML="";const W=el.clientWidth||400,Ht=220,m={l:34,r:6,t:20,b:26};const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Chained speedup"},el);
+    const maxY=25;const ys=v=>Ht-m.b-(Ht-m.t-m.b)*v/maxY;[0,5,10,15,20,25].forEach(v=>{const y=ys(v);S("line",{x1:m.l,x2:W-m.r,y1:y,y2:y,class:v?"gl":"ax"},svg);const t=S("text",{x:m.l-5,y:y+4,"text-anchor":"end",class:"tick"},svg);t.textContent=v+"×";});
+    const bw=(W-m.l-m.r)/chain.length;chain.forEach(([n,v],i)=>{const x=m.l+i*bw+bw*0.18,w=bw*0.64,y=ys(v),h=ys(0)-y,rr=Math.min(4,w/2);
+      S("path",{d:`M${x},${ys(0)}V${y+rr}Q${x},${y} ${x+rr},${y}H${x+w-rr}Q${x+w},${y} ${x+w},${y+rr}V${ys(0)}Z`,fill:"var(--blue)"},svg);
+      const t=S("text",{x:x+w/2,y:Ht-8,"text-anchor":"middle",class:"tick"},svg);t.textContent=n;
+      if(i===1||i===chain.length-1){const vt=S("text",{x:x+w/2,y:y-5,"text-anchor":"middle",fill:"var(--ink)","font-size":12,"font-weight":600},svg);vt.textContent=v.toFixed(1)+"×";}
+      const hit=S("rect",{x:m.l+i*bw,y:m.t,width:bw,height:Ht-m.t-m.b,fill:"transparent"},svg);bindTip(hit,`<b>${n}</b><br>${v.toFixed(2)}× the original kernel<br><span class="t2">chained estimate</span>`);});}
+  draw();window.addEventListener("resize",draw);
+})();
+(function(){
+  const rows=[{n:"Schoolbook (est.)",lo:4,hi:5,est:true,t:"estimate from memory bandwidth: 4–5 ms/step"},{n:"Dolbeau example",lo:3.38,hi:3.38,t:"296 steps/s at 261.7M digits ≈ 3.4 ms/step; machine not stated"},{n:"Yours (v6r3)",lo:0.196,hi:0.196,ours:true,t:"196.365 µs/step at 256.3M digits, measured in production"}];
+  const el=$("#ch3");function draw(){el.innerHTML="";const W=el.clientWidth||400,labW=Math.min(150,W*0.38),rowH=44,m={t:6,b:26};const Ht=m.t+rows.length*rowH+m.b;
+    const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Milliseconds per step"},el);const defs=S("defs",{},svg);const pat=S("pattern",{id:"hatch8",width:6,height:6,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"},defs);S("rect",{width:6,height:6,fill:"var(--surface-3)"},pat);S("line",{x1:0,y1:0,x2:0,y2:6,stroke:"var(--muted)","stroke-width":2},pat);
+    const x0=labW,x1=W-46;const sx=v=>x0+(x1-x0)*v/5.2;[0,1,2,3,4,5].forEach(v=>{const x=sx(v);S("line",{x1:x,x2:x,y1:m.t,y2:Ht-m.b,class:v?"gl":"ax"},svg);const t=S("text",{x,y:Ht-8,"text-anchor":"middle",class:"tick"},svg);t.textContent=v+(v===5?" ms":"");});
+    rows.forEach((d,i)=>{const yc=m.t+i*rowH+rowH/2;const lt=S("text",{x:labW-8,y:yc+4,"text-anchor":"end",fill:"var(--ink)","font-size":12},svg);lt.textContent=d.n;const h=16,yb=yc-h/2,xe=sx(d.hi),rr=4;
+      const fill=d.est?"url(#hatch8)":d.ours?"var(--blue)":"var(--muted)";const w=Math.max(3,xe-x0);
+      S("path",{d:`M${x0},${yb}H${x0+w-rr}Q${x0+w},${yb} ${x0+w},${yb+rr}V${yb+h-rr}Q${x0+w},${yb+h} ${x0+w-rr},${yb+h}H${x0}Z`,fill},svg);
+      if(d.est)S("line",{x1:sx(d.lo),x2:sx(d.lo),y1:yb-3,y2:yb+h+3,stroke:"var(--ink-2)","stroke-width":1.5},svg);
+      const vt=S("text",{x:x0+w+5,y:yc+4,fill:"var(--ink)","font-size":12,"font-weight":600,class:"lbl"},svg);vt.textContent=d.est?"4–5":d.hi<1?d.hi.toFixed(3):d.hi.toFixed(1);
+      const hit=S("rect",{x:0,y:yc-rowH/2,width:W,height:rowH,fill:"transparent"},svg);bindTip(hit,`<b>${d.n}</b><br><span class="t2">${d.t}</span>`);});}
+  draw();window.addEventListener("resize",draw);
+})();
+(function(){
+  const P=[{n:"v6",lo:1.3,hi:1.5,m:52.32/54.96},{n:"v6r",lo:1.0,hi:2.0,m:1.48,note:"predicted 'up to 2×'"},{n:"v6r2",lo:1.3,hi:1.5,m:68.3/61.9},{n:"v7",lo:1.2,hi:1.6,m:118.4/171.6},{n:"v7r",lo:1.2,hi:1.5,m:188.9/196.9},{n:"v6r3",lo:1.0,hi:1.15,m:232.352/193.839,note:"code 0–3%, tile 860 0–15%"},{n:"v8",lo:0.8,hi:1.3,m:210.567/170.519,a:[1.6,1.8],note:"'could be −20% or +30%'"}];
+  const el=$("#ch4");function draw(){el.innerHTML="";const W=el.clientWidth||700,labW=50,rowH=30,m={t:8,b:26};const Ht=m.t+P.length*rowH+m.b;const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Predicted vs measured"},el);
+    const lo=0.6,hi=2.1,x0=labW,x1=W-10;const sx=v=>x0+(x1-x0)*(v-lo)/(hi-lo);
+    [0.6,0.8,1,1.2,1.4,1.6,1.8,2].forEach(v=>{const x=sx(v);S("line",{x1:x,x2:x,y1:m.t,y2:Ht-m.b,class:v===1?"ax":"gl"},svg);const t=S("text",{x,y:Ht-8,"text-anchor":"middle",class:"tick"},svg);t.textContent=v.toFixed(1)+"×";});
+    P.forEach((d,i)=>{const yc=m.t+i*rowH+rowH/2;const lt=S("text",{x:labW-8,y:yc+4,"text-anchor":"end",fill:"var(--ink)","font-size":12.5},svg);lt.textContent=d.n;
+      const two=!!d.a;const yA=two?yc-4:yc;
+      S("rect",{x:sx(d.lo),y:yA-4,width:sx(d.hi)-sx(d.lo),height:8,rx:4,fill:"var(--surface-3)",stroke:"var(--axis)"},svg);
+      if(d.a)S("rect",{x:sx(d.a[0]),y:yc+2,width:sx(d.a[1])-sx(d.a[0]),height:8,rx:4,fill:"var(--orange)"},svg);
+      S("circle",{cx:sx(d.m),cy:yc,r:6,fill:"var(--blue)",stroke:"var(--surface)","stroke-width":2},svg);
+      const hit=S("rect",{x:0,y:yc-rowH/2,width:W,height:rowH,fill:"transparent"},svg);
+      bindTip(hit,`<b>${d.n}</b><br>predicted ${d.lo.toFixed(2)}–${d.hi.toFixed(2)}×${d.note?` <span class="t2">(${d.note})</span>`:""}${d.a?`<br>Astra: ${d.a[0]}–${d.a[1]}×`:""}<br>measured <b>${d.m.toFixed(3)}×</b>`);});}
+  draw();window.addEventListener("resize",draw);
+})();
+
+// ---------- 9: roadmap ----------
+(function(){
+  const T=[
+   {k:"adopted",n:"Your original kernel",r:"38.5 µs/step @ 2.05M digits",i:"Already folded: one byte per pair sum, one GPU thread per pair, each thread scans backwards for the first pair that isn't 9 to find its carry.",d:"One launch per step, so the whole number crosses GPU memory every step. Carry scans are short on average but unbounded."},
+   {k:"adopted",n:"v4 · bit-planes",r:"4.1 µs/step · 9.4×",i:"Five bit-planes, 32 pairs per word; carries by word-level addition; the step proved to be two big binary additions plus a fixed 7-input boolean function per pair. CPU test: 14.5× less work than the old algorithm.",d:"No GPU in my workspace: every package is built blind, checked with a CPU emulator that runs the same kernel code, then gated by your agent. On the GPU, process start-up dominated the wall time (0.745 s wall for 0.082 s of GPU work)."},
+   {k:"adopted",n:"v5 · time-blocked + run mode",r:"≈1.0× per step · became production",i:"Tiles in shared memory, K steps per launch, certified intervals, exact replay on failure. Growth bits from a certified prefix tile so blocks never sync with each other. One persistent process with background checkpoints, latest.json and hashes.",d:"Making early-exit palindrome detection exact across blocks and windows; soundness tests (EMU_CERTCHECK) recompute every certified block."},
+   {k:"kept",n:"v6 · lean inner loop",r:"0.95× (54.96 vs 52.32 µs @ 28M)",i:"Guard-padded tiles, fast and general paths.",d:"Slower. Rare-path functions took arrays by reference, which created a 168-byte stack frame in local memory inside the hot loop. ptxas reported it; I had only read the spill line."},
+   {k:"adopted",n:"Diagnostics → v6r",r:"1.48× over v5 @ 28M",i:"A phase profiler (clock64 per warp) showed warp 0 carried prefix, growth, tracking and divergence. v6r moved tracking off it.",d:"A separator bug in the build script mangled -D flags; the agent caught a wrong regex in the resource count."},
+   {k:"adopted",n:"v6r2",r:"1.10× (61.9 vs 68.3 µs @ 55M)",i:"Fast path inlined at a single call site, one unified work list, growth packed into the return value.",d:"Two call sites of the same inlined function had made warps diverge. I predicted 1.3–1.5×."},
+   {k:"kept",n:"v7 · transposed layout",r:"0.69× (171.6 vs 118.4 µs @ 111M)",i:"Carry chains along words, 32×32 bit transposes, warp shuffles, ~1.9× fewer instructions per word.",d:"A soundness bug: one build read another thread's growth bit; the C=4 test gave 12 wrong results out of 78 with 0 replays. Caught before any GPU run and fixed. Then 8-way bank conflicts, and only half the warps fit per SM."},
+   {k:"event",n:"The 35 W wall",r:"power cap 99.8% of the time",i:"NVML and nvidia-smi: the firmware holds the GPU at 35 W. `nvidia-smi -pl 45` is refused, Dynamic Boost is disabled by the BIOS. Platform profile quiet → performance: +1.3%, 73 → 66 °C.",d:"Every speedup now has to be paid in energy per step, not just cycles."},
+   {k:"kept",n:"v7r",r:"0.96× sustained (196.9 vs 188.9 µs)",i:"v7's instruction savings with v6r2's warps per SM.",d:"Workers still took ~2,000 cycles per step whatever their instruction count: the limit wasn't instructions. We needed a real profiler."},
+   {k:"event",n:"Nsight Compute",r:"barrier = #1 stall, DRAM 1.8%",i:"Warps issue once every ~8 cycles; 51% of cycles have no eligible warp; occupancy 33% (registers and shared memory both cap 2 blocks/SM). Profiled outputs matched byte for byte.",d:"I misread one cause (warp-0 divergence) and corrected it after reading the code: prefix and tile items run the identical fast path."},
+   {k:"kept",n:"3 blocks per SM",r:"8.66% slower",i:"Fill the idle cycles with more warps.",d:"Register cap → 34 spill instructions; the clock dropped from ~1,750 to ~1,480 MHz under the power cap. Idle cycles weren't free."},
+   {k:"event",n:"Dolbeau's record code",r:"we're ~14× his README example",i:"Schoolbook addition with SIMD (+246 trick) over MPI. His MAX_SIZE_GLOBAL = 1e9 is why the record stops at exactly one billion digits; MPI counts break past 2³¹.",d:"Lessons taken: ISF output for comparable dumps, and our own 2.147e9-digit limit."},
+   {k:"adopted",n:"v6r3 · tile 860",r:"+19.87% sustained · production",i:"Work context in registers, growth bit delivered by the barrier itself (__syncthreads_count), palindrome votes by warp ballots, and tile 860 = 224 groups for 224 workers.",d:"A loop with a break pushed an array into local memory (49 st.local); caught in the compiled output, fixed with constant indices. I predicted 0–3% + 0–15%."},
+   {k:"passed",n:"v8 · control tape + register windows",r:"+23.49% sustained (210.6 → 170.5 µs)",i:"GPT-6 Astra's idea, rebuilt inside time-blocking: a 64-thread kernel precomputes each launch's growth bits; interior threads keep 6 words in registers and run J=8 steps per barrier, certifying their own window.",d:"Astra expected 60–80%; removing all waiting could give at most ~1.5×, and the 1.5× extra math costs energy under the cap. J=16 hit the stale-margin cliff: 3 replays, −84.55%."},
+   {k:"pending",n:"v8b · 64-bit + options",r:"built · GPU tests pending",i:"64-bit digit counts (limit 2.147e9 → ~4.29e9), slimmer block state, 288 threads (tiles to ~1,120), any J (J=12 option), base-5 window arithmetic, ISF writer, mod-9 identity, weekly per-step cross-check.",d:"288 threads force 96 registers per thread (160 bytes of spills, all in the rarely used v6r3 path). Old reference tool silently capped inputs at ~68M digits; replaced. Tested on a real 2,147,483,600-digit number across the 2³¹ line."}
+  ];
+  const tl=$("#tl");T.forEach((x,i)=>{const it=H("div",{class:"item "+x.k},tl);H("div",{class:"dot"},it);const c=H("div",{class:"card tight"},it);
+    const b=H("button",{class:"toggle","aria-expanded":"false",type:"button"},c);
+    const chip=x.k==="adopted"?'<span class="chip ok">✓ adopted</span>':x.k==="passed"?'<span class="chip ok">✓ passed · switch is your call</span>':x.k==="kept"?'<span class="chip">kept old engine</span>':x.k==="pending"?'<span class="chip wait">◷ waiting for GPU tests</span>':'<span class="chip">finding</span>';
+    b.innerHTML=`<div class="head"><span class="name">${x.n}</span>${chip}</div><div class="res">${x.r}</div>`;
+    const body=H("div",{class:"body"},c);body.innerHTML=`<p><b>Idea.</b> ${x.i}</p><p><b>Difficulty.</b> ${x.d}</p>`;
+    b.onclick=()=>{it.classList.toggle("open");b.setAttribute("aria-expanded",it.classList.contains("open"));};
+    if(i>=T.length-2)it.classList.add("open");});
+  $("#tlall").onclick=()=>$$(".tl .item").forEach(i=>{i.classList.add("open");i.querySelector(".toggle").setAttribute("aria-expanded","true");});
+  $("#tlnone").onclick=()=>$$(".tl .item").forEach(i=>{i.classList.remove("open");i.querySelector(".toggle").setAttribute("aria-expanded","false");});
+})();
+
+// ---------- 10: milestones timeline ----------
+(function(){
+  const today=new Date(2026,9,13);
+  const M=[{d:new Date(2026,9,13),n:"1 billion steps",s:"Dolbeau 2011: 413,930,770 digits. Comparison check.",k:"orange"},
+           {d:new Date(2026,9,21),n:"1 billion digits",s:"Dolbeau 2015. Past here is new territory.",k:"orange"},
+           {d:new Date(2026,10,15),n:"switch to v8b",s:"deadline, with margin",k:"blue"},
+           {d:new Date(2026,10,21),n:"v8 limit: 2.147e9 digits",s:"32-bit digit count",k:"crit"},
+           {d:new Date(2027,2,15),n:"v8b limit: ~4.29e9 digits",s:"32-bit pair index",k:"blue"}];
+  const el=$("#ch5");function draw(){el.innerHTML="";const W=el.clientWidth||640;const narrow=W<560;const Ht=narrow?270:160;const svg=S("svg",{viewBox:`0 0 ${W} ${Ht}`,role:"img","aria-label":"Milestone timeline"},el);
+    const t0=new Date(2026,9,1).getTime(),t1=new Date(2027,3,1).getTime();
+    if(!narrow){const sx=d=>16+(W-32)*(d.getTime()-t0)/(t1-t0);const y=118;S("line",{x1:16,x2:W-16,y1:y,y2:y,class:"ax"},svg);
+      for(let mo=0;mo<=6;mo++){const d=new Date(2026,9+mo,1);const x=sx(d);S("line",{x1:x,x2:x,y1:y-4,y2:y+4,class:"ax"},svg);const t=S("text",{x,y:y+18,"text-anchor":"middle",class:"tick"},svg);t.textContent=d.toLocaleString("en-US",{month:"short"})+(mo===3?" 2027":"");}
+      const tx=sx(today);S("line",{x1:tx,x2:tx,y1:y,y2:y+30,stroke:"var(--ink)","stroke-dasharray":"2 2"},svg);const tt=S("text",{x:tx+4,y:y+34,"font-size":11,fill:"var(--ink)"},svg);tt.textContent="today";
+      M.forEach((m,i)=>{const x=sx(m.d);const fill=m.k==="orange"?"var(--orange)":m.k==="crit"?"var(--critical)":"var(--blue)";const ly=14+i*20;const end=i===4;
+        S("line",{x1:x,x2:x,y1:ly+4,y2:y-7,stroke:"var(--axis)"},svg);
+        S("circle",{cx:x,cy:y,r:6,fill,stroke:"var(--surface)","stroke-width":2},svg);
+        const t=S("text",{x:end?x-6:x+6,y:ly+4,"text-anchor":end?"end":"start","font-size":12,fill:"var(--ink)"},svg);
+        const a=S("tspan",{"font-weight":600},t);a.textContent=(end?"~Mar 2027":m.d.toLocaleString("en-US",{month:"short",day:"numeric"}))+" · "+m.n;const b=S("tspan",{fill:"var(--muted)"},t);b.textContent="  "+m.s;
+        const hit=S("circle",{cx:x,cy:y,r:14,fill:"transparent"},svg);bindTip(hit,`<b>${m.n}</b><br>${end?"about March 2027":m.d.toDateString()}<br><span class="t2">${m.s}</span>`);});
+    } else {
+      M.forEach((m,i)=>{const y=24+i*50;const fill=m.k==="orange"?"var(--orange)":m.k==="crit"?"var(--critical)":"var(--blue)";if(i<M.length-1)S("line",{x1:14,x2:14,y1:y,y2:y+50,class:"ax"},svg);S("circle",{cx:14,cy:y,r:6,fill,stroke:"var(--surface)","stroke-width":2},svg);
+        const t=S("text",{x:30,y:y+4,"font-size":13,fill:"var(--ink)","font-weight":600},svg);t.textContent=(i===4?"~Mar 2027":m.d.toLocaleString("en-US",{month:"short",day:"numeric"}))+" · "+m.n;
+        const s=S("text",{x:30,y:y+21,"font-size":12,fill:"var(--ink-2)"},svg);s.textContent=m.s;});
+    }}
+  draw();window.addEventListener("resize",draw);
+})();
+})();
+</script>
+
+<script>
+
+(function(){
+'use strict';
+const E=id=>document.getElementById(id);
+const set=(id,text)=>{const e=E(id);if(e)e.textContent=String(text);};
+const press=(items,active)=>items.forEach(e=>e.setAttribute('aria-pressed',String(e===active)));
+const cell=(v,kind,extra='')=>'<div class="cell '+kind+(extra?' '+extra:'')+'">'+v+'</div>';
+const label=t=>'<div class="easy-row-label">'+t+'</div>';
+const row=(name,arr,kinds=[],extra=[])=>label(name)+arr.map((v,i)=>cell(v,kinds[i]||'K',extra[i]||'')).join('');
+const nums=(n)=>n.toLocaleString('en-US');
+// 2. The one working addition: mirrored sums, then carries.
+let foldStage=0,foldFocus='outer';
+function drawFold(){
+ const states=['MATCH THE ENDS','CHECK THE MIDDLE','STORE THE SUMS ONCE','CARRIES MAKE THE FINAL DIGITS'];
+ set('easyFoldProgress',`0${foldStage+1} / 04 · ${states[foldStage]}`);
+ const attrs=(r,i)=>i===1?'P':(foldFocus==='outer'?'G':'K');
+ let html=row('x',[1,9,6],['K','K','K'],[foldFocus==='outer'?'easy-highlight':'','',foldFocus==='outer'?'easy-highlight':'']);
+ html+=row('reverse(x)',[6,9,1],['K','K','K'],[foldFocus==='outer'?'easy-highlight':'','',foldFocus==='outer'?'easy-highlight':'']);
+ html+=row('column sums',[7,foldStage?18:'?',7],['G','P','G'],[foldFocus==='outer'?'easy-highlight':'',foldFocus==='middle'?'easy-highlight':'',foldFocus==='outer'?'easy-highlight':'']);
+ if(foldStage>=2)html+=row('store once',[7,18,'—'],['G','P','K'],['','','easy-dim']);
+ if(foldStage>=3)html+=row('after carries',[8,8,7],['K','K','K'],['easy-final','easy-final','easy-final']);
+ E('easyFoldBoard').innerHTML=html;
+ const ds=[
+  '1 + 6 = 7, and 6 + 1 = 7. The left and right columns start from the <b>same sum</b>.',
+  'The middle column adds 9 + 9 = 18. It meets itself, so we now know the three starting column sums: <b>7, 18, 7</b>.',
+  'Store just <b>7 and 18</b>. The matching 7 on the other end can be reconstructed, so long numbers avoid storing redundant pair sums.',
+  'Now add from right to left. The middle 18 writes 8 and sends a carry of 1 left. The left 7 becomes 8. The answer is <b>887</b>, not 787.'
+ ];E('easyFoldNarration').innerHTML=ds[foldStage];
+ press([E('easyFoldOuter'),E('easyFoldMiddle')],foldFocus==='outer'?E('easyFoldOuter'):E('easyFoldMiddle'));
+ set('easyFoldNext',['Show the middle →','Show what gets stored →','Add the carries →','Go to carries →'][foldStage]);
+}
+E('easyFoldNext').onclick=()=>{if(foldStage===3){location.hash='s3';return;}foldStage++;foldFocus=foldStage===1?'middle':'outer';drawFold();};
+E('easyFoldReset').onclick=()=>{foldStage=0;foldFocus='outer';drawFold();};
+E('easyFoldOuter').onclick=()=>{foldFocus='outer';drawFold();};
+E('easyFoldMiddle').onclick=()=>{foldFocus='middle';if(foldStage===0)foldStage=1;drawFold();};drawFold();
+// 3. This is true decimal carry propagation through illustrative column sums.
+let carryDone=0,carryBreak=false,carryTimer=null;
+function carryVals(){return carryBreak?[4,9,8,9,12]:[4,9,9,9,12];}
+function carryCompute(){let a=carryVals(),incoming=[],out=[],c=0;for(let i=4;i>=0;i--){incoming[i]=c;const z=a[i]+c;out[i]=z%10;c=z>=10?1:0;}return{a,incoming,out,final:c};}
+function stopCarry(){if(carryTimer!==null){clearInterval(carryTimer);carryTimer=null;}set('easyCarryPlay','Animate');}
+function drawCarry(){const {a,incoming,out,final:f}=carryCompute();const focus=carryDone?5-carryDone:4;
+ const kind=s=>s>=10?'G':s===9?'P':'K';
+ let html=row('sum before carry',a,a.map(kind),a.map((v,i)=>i===focus?'easy-highlight':''));
+ html+=row('carry coming in',a.map((_,i)=>i>=5-carryDone?'+ '+incoming[i]:'·'),a.map((_,i)=>i>=5-carryDone&&incoming[i]?'P':'K'));
+ html+=row('written digit',a.map((_,i)=>i>=5-carryDone?out[i]:'·'),a.map((_,i)=>i>=5-carryDone?'G':'K'));
+ E('easyCarryBoard').innerHTML=html;
+ if(!carryDone){E('easyCarryNarration').innerHTML='<b>Start at the 12 on the right.</b> It already exceeds 9, so it creates a carry.';}
+ else{const i=5-carryDone,z=a[i]+incoming[i],c=z>=10?1:0;
+ E('easyCarryNarration').innerHTML=`${a[i]} + ${incoming[i]} = <b>${z}</b>. Write <b>${z%10}</b> and ${c?'pass <b>1</b> left':'pass <b>nothing</b> left'}. ${a[i]===9&&incoming[i]?'A 9 passes the carry onward.':a[i]<=8&&incoming[i]?'This column absorbs the carry.':a[i]>=10?'This sum creates a carry on its own.':''}${carryDone===5?'<br>Final written digits: <b>'+out.join('')+'</b>.':''}`;}
+ set('easyCarryNext',carryDone===0?'Work out right column →':carryDone===5?'All columns complete':'Next column ←');E('easyCarryNext').disabled=carryDone===5;
+ E('easyCarryPlay').disabled=carryDone===5;set('easyCarryBreak',carryBreak?'Restore the 9':'Replace a 9 with 8');E('easyCarryBreak').setAttribute('aria-pressed',String(carryBreak));
+}
+function advanceCarry(){if(carryDone<5)carryDone++;if(carryDone>=5)stopCarry();drawCarry();}
+E('easyCarryNext').onclick=()=>{stopCarry();advanceCarry();};
+E('easyCarryPlay').onclick=()=>{if(carryTimer){stopCarry();return;}advanceCarry();if(carryDone<5){E('easyCarryPlay').textContent='Pause';carryTimer=setInterval(advanceCarry,760);}};
+E('easyCarryReset').onclick=()=>{stopCarry();carryDone=0;drawCarry();};
+E('easyCarryBreak').onclick=()=>{stopCarry();carryBreak=!carryBreak;carryDone=0;drawCarry();};drawCarry();
+// 4. Binary bits and five bit-planes for 8 example sums.
+let bitStage=0,bitQuestion=9,bitFocus=4;
+const pairValues=[7,18,7,4,9,12,3,16];
+function drawBits(){const v=bitStage===0?+E('easyBitValue').value:pairValues[bitFocus];set('easyBitOut',v);E('easyBitValue').value=v;
+ set('easyBitProgress',`0${bitStage+1} / 03 · ${['FIVE SWITCHES FOR ONE NUMBER','MATCH THE SWITCHES ACROSS MANY PAIRS','TEST MANY PAIRS IN ONE OPERATION'][bitStage]}`);
+ E('easyBitSelectControl').hidden=bitStage>0;
+ let a='<div class="easy-inline-values">';[16,8,4,2,1].forEach((w)=>{const b=(v&w)?1:0;a+='<div style="text-align:center"><div class="small mono muted">'+w+'</div>'+cell(b,b?'bit1':'bit0')+'</div>';});
+ a+='</div><p class="small muted mono">'+v+' = '+[16,8,4,2,1].filter(x=>v&x).join(' + ')+(v?'':'0')+'</p>';
+ E('easyBitSingle').innerHTML=a;E('easyBitMulti').hidden=bitStage===0;E('easyBitChecks').hidden=bitStage!==2;
+ if(bitStage){const match=s=>bitQuestion===9?s===9:s>=10;const k=i=>i===bitFocus?'easy-highlight':'';
+ let h=row('pair index',pairValues.map((_,i)=>i),pairValues.map(()=> 'bit0'));
+ h+=label('sum S')+pairValues.map((s,i)=>'<button type="button" class="cell '+(s>=10?'G':s===9?'P':'K')+' click '+k(i)+'" data-pair="'+i+'">'+s+'</button>').join('');
+ for(const weight of [16,8,4,2,1])h+=row('bit '+weight,pairValues.map(s=>(s&weight)?1:0),pairValues.map(s=>(s&weight)?'bit1':'bit0'));
+ if(bitStage===2)h+=row(bitQuestion===9?'S = 9?':'S ≥ 10?',pairValues.map(s=>match(s)?'yes':'no'),pairValues.map(s=>match(s)?'G':'K'));
+ E('easyBitBoard').innerHTML=h;E('easyBitBoard').querySelectorAll('[data-pair]').forEach(b=>b.onclick=()=>{bitFocus=+b.dataset.pair;drawBits();});
+ }
+ press([E('easyBit9'),E('easyBit10')],bitQuestion===9?E('easyBit9'):E('easyBit10'));
+ const desc=[
+  '<b>Start with one pair sum.</b> Each switch has a weight. A 9 turns on the 8 and 1 switches, giving 01001 in binary.',
+  '<b>Turn the layout sideways.</b> Each row holds the same switch from many sums. The full GPU uses 32 sums per row, instead of the eight shown here.',
+  '<b>Try the two questions.</b> A row of results appears for all eight sums at once. GPU bitwise math asks these questions using a few instructions over entire words.'
+ ];E('easyBitNarration').innerHTML=desc[bitStage];set('easyBitNext',['Show several pairs →','Ask the GPU a question →','Go to memory lesson →'][bitStage]);}
+E('easyBitValue').oninput=e=>{const v=+e.target.value;bitFocus=Math.max(0,pairValues.indexOf(v));if(bitStage>0){const j=pairValues.indexOf(v);if(j>=0)bitFocus=j;}drawBits();};
+E('easyBitNext').onclick=()=>{if(bitStage===2){location.hash='s5';return;}bitStage++;drawBits();};
+E('easyBitReset').onclick=()=>{bitStage=0;bitFocus=4;E('easyBitValue').value=9;drawBits();};
+E('easyBit9').onclick=()=>{bitQuestion=9;drawBits();};E('easyBit10').onclick=()=>{bitQuestion=10;drawBits();};drawBits();
+// 5. Memory trip illustration and a conservative halo schematic.
+let haloSteps=0,haloExtra=false;
+function setMemTab(i){E('easyMemoryMoves').hidden=!!i;E('easyMemoryEdges').hidden=!i;E('easyMemoryTab0').setAttribute('aria-pressed',String(!i));E('easyMemoryTab1').setAttribute('aria-pressed',String(!!i));}
+function drawTrips(){const n=+E('easyBatchSteps').value;set('easyBatchOut',n);set('easyOldTrips',`${n} reads + ${n} writes`);
+ E('easyTripOld').innerHTML=Array.from({length:Math.min(n,64)},()=>'<i></i>').join('')+(n>64?'<span class="small muted">… +64</span>':'');
+ E('easyTripNew').classList.add('new');E('easyTripNew').innerHTML='<i></i>';
+ E('easyMemoryMessage').innerHTML=`For <b>${n}</b> additions, the old organization makes <b>${n}</b> read/write rounds. The time-blocked version makes <b>one</b> outer read/write round for a tile, but still performs all <b>${n}</b> additions. This does <em>not</em> count every on-chip memory operation.`;
+}
+function drawHalo(){const halo=+E('easyHaloSize').value;set('easyHaloOut',halo);const own=12,len=own+2*halo;
+ const html=(after)=>Array.from({length:len},(_,i)=>{
+   const isOwn=i>=halo&&i<halo+own;
+   const erode=after?(haloSteps+(haloExtra?Math.min(haloSteps,3):0)):0;
+   const stale=after&&(i<erode||i>=len-erode);
+   return '<span class="'+(stale?'stale':isOwn?'own':'')+'" title="'+(stale?'uncertain':isOwn?'owned':'borrowed')+' pair"></span>';
+ }).join('');E('easyHaloInitial').innerHTML=html(false);E('easyHaloAfter').innerHTML=html(true);
+ const e=haloSteps+(haloExtra?Math.min(haloSteps,3):0),ok=e<=halo;
+ set('easyHaloStepLabel',`After ${haloSteps} local step${haloSteps===1?'':'s'}`);
+ E('easyHaloStatus').innerHTML=haloSteps===0?'<b>Certified:</b> the copied tile starts with a full safety margin.':ok?`<b>Still certified</b> in this schematic. ${Math.max(0,halo-e)} pair${halo-e===1?'':'s'} of margin remain on each side.`:`<span class="bad-text"><b>Certification failed.</b></span> Uncertainty has reached an owned pair. The real engine would redo this window with the exact per-step method.`;
+}
+E('easyMemoryTab0').onclick=()=>setMemTab(0);E('easyMemoryTab1').onclick=()=>setMemTab(1);E('easyShowEdges').onclick=()=>setMemTab(1);
+E('easyBatchSteps').oninput=drawTrips;E('easyBatch128').onclick=()=>{E('easyBatchSteps').value=128;drawTrips();};
+E('easyHaloSize').oninput=()=>{haloSteps=0;drawHalo();};E('easyHaloStep').onclick=()=>{haloSteps++;drawHalo();};E('easyHaloReset').onclick=()=>{haloSteps=0;drawHalo();};E('easyHaloNines').onchange=e=>{haloExtra=e.target.checked;haloSteps=0;drawHalo();};drawTrips();drawHalo();
+// 6. Syncs per 128 steps, not extrapolated running time.
+let J=8;
+function drawSync(){const n=Math.ceil(128/J);set('easySyncCount',n);set('easySyncCaption',`v8 barriers across 128 steps, J = ${J}`);
+ set('easySyncNewTitle',`AFTER: a meeting every ${J} steps`);
+ E('easySyncOld').innerHTML='<i></i>'.repeat(128);E('easySyncNew').innerHTML='<i></i>'.repeat(n);E('easySyncNew').classList.add('new');
+ press(Array.from(document.querySelectorAll('.easySyncJ')),Array.from(document.querySelectorAll('.easySyncJ')).find(x=>+x.dataset.j===J));
+ const note=J===16?'The source measured <b>three certification failures</b>, triggering expensive replays and making J=16 about <b>84.55% slower in throughput</b>. Fewer meetings were not worth it.':J===12?'This is an unmeasured option in the original snapshot. It would need a GPU A/B and certification check.':J===8?'Chosen v8 setting: 16 meetings rather than 128. The selected tile-1000 build improved <b>sustained throughput 23.49%</b> vs v6r3.':'J=4 worked safely in the source test, but means twice as many meetings as J=8.';
+ E('easySyncMessage').innerHTML=`Across 128 additions: <b>128 barriers → ${n} barriers</b>. ${note}`;
+}
+document.querySelectorAll('.easySyncJ').forEach(x=>x.onclick=()=>{J=+x.dataset.j;drawSync();});drawSync();
+// 7. Verified representation identities for s=0..18 and carry=0,1.
+let encCarry=1;
+function drawEncoding(){const s=+E('easyEncValue').value;set('easyEncOut',s);const G=s>=10?1:0,r=s%10,H=r>=5?1:0,M=s%5;
+ set('easyEncTen',G?10:0);set('easyEncFive',H?5:0);set('easyEncRest',M);
+ E('easyEncEquation').innerHTML=`<b>${s}</b> = ${G?10:0} + ${H?5:0} + ${M}<br><span class="small">S = 10G + 5H + M · same five stored bits</span>`;
+ const pass=s===9,create=s>=10,digit=(s+encCarry)%10,next=s+encCarry>=10?1:0;
+ E('easyEncResults').innerHTML=`Already creates a carry (S ≥ 10)? <b>${create?'Yes':'No'}</b><br>Passes an incoming carry (S = 9)? <b>${pass?'Yes':'No'}</b><br>With incoming carry ${encCarry}: <b>${s} + ${encCarry} = ${s+encCarry}</b> → write digit <b>${digit}</b>, carry out <b>${next}</b>.`;
+ press([E('easyEnc0'),E('easyEnc1')],encCarry?E('easyEnc1'):E('easyEnc0'));
+}
+E('easyEncValue').oninput=drawEncoding;document.querySelectorAll('.easyEncPreset').forEach(x=>x.onclick=()=>{E('easyEncValue').value=x.dataset.s;drawEncoding();});E('easyEnc0').onclick=()=>{encCarry=0;drawEncoding();};E('easyEnc1').onclick=()=>{encCarry=1;drawEncoding();};drawEncoding();
+// 8. Source measurements, same-size before-and-after pairs.
+const bm={
+ v8:{name:'v8 · register windows (100k-step sustained)',old:'v6r3, tile 860',nw:'v8, tile 1000',a:210.567,b:170.519,info:'Measured 100,000-step sustained test; 0 replays. The original separately calls out an A/B median, so do not interchange them.'},
+ v4:{name:'v4 · bit-planes',old:'Original kernel',nw:'v4',a:38.5,b:4.1,info:'20,000 GPU steps at 2.05 million digits; this comparison excludes process startup.'},
+ v6r3:{name:'v6r3 · combined tile and code changes',old:'v6r2, tile 736',nw:'v6r3, tile 860',a:232.352,b:193.839,info:'100,000-step sustained test. Tile change and code changes were combined.'},
+ v7r:{name:'v7r · fewer instructions, but slower',old:'v6r2',nw:'v7r',a:188.9,b:196.9,info:'Sustained test. It cut instruction count but did not win on wall-clock time.'},
+ j16:{name:'v8 · J=16 with three exact replays',old:'v6r3 (same test)',nw:'v8, J=16',a:210.714,b:1363.428,info:'Same tile-860 test. Three certification failures each forced an 8,192-step redo.'}
+};
+function drawBenchmark(){const d=bm[E('easyBenchSelect').value];set('easyBenchContext',d.name+'. '+d.info);
+ set('easyBenchOldName',d.old);set('easyBenchNewName',d.nw);set('easyBenchOldTime',d.a.toFixed(d.a>=100?3:1)+' µs/step');set('easyBenchNewTime',d.b.toFixed(d.b>=100?3:1)+' µs/step');
+ const max=Math.max(d.a,d.b);E('easyBenchOldBar').style.width=(100*d.a/max)+'%';E('easyBenchNewBar').style.width=(100*d.b/max)+'%';
+ const r=d.a/d.b,thr=(r-1)*100,tim=(1-d.b/d.a)*100;
+ E('easyBenchResult').innerHTML=`<b>${r>=1?'Faster':'Slower'}</b> · ${r.toFixed(2)}× relative throughput · <b>${thr>=0?'+':''}${thr.toFixed(2)}%</b> throughput change · ${tim>=0?tim.toFixed(1)+'% less time per step':(-tim).toFixed(1)+'% more time per step'}.`;
+}
+E('easyBenchSelect').onchange=drawBenchmark;drawBenchmark();
+// 9. Friendly explanation is inside the original expandable roadmap entries.
+const summaries=[
+ 'Store each matching pair sum once, but still move the whole number after every step.',
+ 'Group each bit across 32 pair sums. One word-level operation now helps with many pairs; v4 won by about 9.4×.',
+ 'Keep one piece of the number on the GPU worktable for many steps. Only keep results that pass exact certification.',
+ 'A simpler loop accidentally sent data through slow local memory. The measured candidate lost, so it was not adopted.',
+ 'Move bookkeeping away from the busiest group of threads. This fixed a real bottleneck.',
+ 'Help workers follow one consistent execution path. A measured 10% gain, below the prediction.',
+ 'Fewer instructions came at the cost of bad memory conflicts and fewer workers. The fixed candidate was slower.',
+ 'The GPU runs against a 35 W power limit. Extra activity can reduce clock speed, so wasted work matters.',
+ 'Cutting instructions did not help when waiting was still the main problem.',
+ 'A profiler found barriers, not main-memory traffic, as the largest stall.',
+ 'Adding more blocks lowered the clock and introduced spills. This configuration lost.',
+ 'Studied an older record-holder to compare output format and program-size limits; not a same-GPU speed test.',
+ 'Give the idle workers real jobs. Together with code changes, the new tile improved sustained throughput.',
+ 'Let each worker do eight private steps before synchronizing. It won the sustained test; 16 private steps caused costly replays.',
+ 'Widen the supported digit count and prepare optional changes, with real GPU performance tests still pending in the original snapshot.'
+];
+document.querySelectorAll('.tl .item').forEach((item,i)=>{if(!summaries[i])return;const body=item.querySelector('.tl .body');if(body){const p=document.createElement('p');p.innerHTML='<b>In plain English.</b> '+summaries[i];body.prepend(p);}});
+// The original diagrams are initialized inside closed details. Recompute widths on open.
+document.querySelectorAll('.deep-original').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));}));
+// Checks run locally and make no claims about CUDA verification.
+function selfTest(){let tested=0;function ok(x,msg){tested++;if(!x)throw Error('Teaching check failed: '+msg);}
+ ok((196n+691n)===887n,'addition');
+ for(let s=0;s<=18;s++)for(let c=0;c<=1;c++){const G=s>=10?1:0,r=s%10,H=r>=5?1:0,M=s%5,P=H&((M>>2)&1);ok((M+5*H+10*G)===s,'encoding');ok((M+5*H+c-10*P*c)===(s+c)%10,'digit');ok((G|(P&c))===(s+c>=10?1:0),'carry');}
+ for(const d of Object.values(bm))ok(d.a>0&&d.b>0,'bench');
+ return tested;}
+document.documentElement.dataset.guideChecks=selfTest();
+window.engineEasyGuide={selfTest,getState:()=>({foldStage,carryDone,carryBreak,bitStage,haloSteps,J,encCarry})};
+})();
+
+</script>
+</body></html>

@@ -1,0 +1,102 @@
+name: Agent1 bounded consolidation snapshot
+on:
+  push:
+    branches: [integrate/agent-1/20261015T1901Z]
+    paths: [.github/workflows/agent1-consolidation-snapshot.yml]
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+  actions: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Pin paginated public repository metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agent1-snapshot
+          python3 - <<'PY'
+          import datetime, json, os, pathlib, urllib.request, urllib.parse
+          out = pathlib.Path('/tmp/agent1-snapshot')
+          base = 'https://api.github.com/repos/taco-jpg/p196-algorithm/'
+          captured = {'agent': 'Agent #1', 'task_id': 'agent1-consolidation-20261015T1901Z', 'starting_main': 'b6f827418576027b1cff89746ee8077217963fce', 'started_at': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'collections': {}, 'limitations': ['Paginated read interval, not an atomic repository-wide snapshot.', 'Temporary artifact is transport, not durable preservation authorizing branch deletion.']}
+          def read(route):
+              url = base + route
+              req = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'User-Agent': 'P196-Agent1-consolidation'})
+              with urllib.request.urlopen(req, timeout=60) as response:
+                  return json.load(response)
+          for name, route in [('branches', 'branches'), ('pull_requests', 'pulls?state=all'), ('issues_and_prs', 'issues?state=all')]:
+              pages, rows = [], []
+              for page in range(1, 1001):
+                  sep = '&' if '?' in route else '?'
+                  data = read(route + sep + 'per_page=100&page=' + str(page))
+                  if not isinstance(data, list):
+                      raise RuntimeError('Unexpected collection response: ' + name)
+                  pages.append({'page': page, 'count': len(data), 'captured_at': datetime.datetime.now(datetime.timezone.utc).isoformat()})
+                  rows.extend(data)
+                  if len(data) < 100:
+                      break
+              else:
+                  raise RuntimeError('Pagination cap reached: ' + name)
+              (out / (name + '.json')).write_text(json.dumps(rows, indent=2) + '\n')
+              captured['collections'][name] = {'count': len(rows), 'pages': pages, 'complete': True}
+          try:
+              rules = read('rules/branches/main')
+              (out / 'main-rules.json').write_text(json.dumps(rules, indent=2) + '\n')
+          except Exception as e:
+              captured['limitations'].append('Main rule read unavailable: ' + str(e))
+          captured['finished_at'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          (out / 'capture.json').write_text(json.dumps(captured, indent=2) + '\n')
+          print(json.dumps(captured, indent=2))
+          PY
+      - name: Retain exact public Git objects without credential configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-recurse-submodules origin '+refs/heads/*:refs/remotes/origin/*' '+refs/pull/*/head:refs/remotes/pulls/*' '+refs/tags/*:refs/tags/*'
+          python3 - <<'PY'
+          import json, pathlib, subprocess
+          out = pathlib.Path('/tmp/agent1-snapshot')
+          def git(*args):
+              return subprocess.run(['git', *args], check=True, capture_output=True, text=True).stdout.strip()
+          pins = [('starting-main', 'b6f827418576027b1cff89746ee8077217963fce')]
+          for item in json.loads((out / 'branches.json').read_text()):
+              pins.append(('branches/' + item['name'], item['commit']['sha']))
+          for item in json.loads((out / 'pull_requests.json').read_text()):
+              pins.append(('pulls/' + str(item['number']), item['head']['sha']))
+          unavailable = []
+          for ref, sha in pins:
+              try:
+                  git('cat-file', '-e', sha + '^{commit}')
+              except subprocess.CalledProcessError:
+                  try:
+                      git('fetch', '--no-tags', 'origin', sha)
+                  except subprocess.CalledProcessError:
+                      unavailable.append({'ref': ref, 'sha': sha, 'disposition': 'SOURCE_UNAVAILABLE'})
+                      continue
+              git('update-ref', 'refs/agent1/snapshot/' + ref, sha)
+          (out / 'unavailable-pins.json').write_text(json.dumps(unavailable, indent=2) + '\n')
+          (out / 'all-retained-refs.txt').write_text(git('show-ref') + '\n')
+          (out / 'starting-main-tree.txt').write_text(git('ls-tree', '-r', 'b6f827418576027b1cff89746ee8077217963fce') + '\n')
+          git('bundle', 'create', str(out / 'public-repository.bundle'), '--all')
+          print('Snapshot pins:', len(pins), 'unavailable:', len(unavailable))
+          PY
+          git bundle verify /tmp/agent1-snapshot/public-repository.bundle
+          cd /tmp/agent1-snapshot
+          sha256sum *.json *.txt public-repository.bundle > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent1-consolidation-snapshot
+          path: /tmp/agent1-snapshot/
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: error

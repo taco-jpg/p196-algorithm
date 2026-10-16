@@ -1,0 +1,50 @@
+{
+  "task_id": "agent104-seven-column-kernel",
+  "owner": "Agent #104",
+  "subagents": [
+    "projection",
+    "inverse-completeness",
+    "certificate-checker",
+    "concrete-739",
+    "numeric-bridge",
+    "adversarial-review",
+    "clean-rebuild"
+  ],
+  "target_statement": "Kernel-formalize the seven-column palindrome-ancestry certificate route. Intended final endpoint: for any positive decimal n and t, if orbit n t is a palindrome whose first three most-significant digits are 739, then t <= 39. Combine with a kernel check of orbit 196 at times 0..39 to exclude that palindrome family for every t. Required sub-obligations: actual arbitrary-width prefix projection (including short widths), complete inverse relation, sound checked finite rank/closure certificate, concrete certificate_739 instance. Intermediate modules remain explicitly conditional until all dependencies compile; no P196 claim.",
+  "related": [
+    "proofs/contributions/2026-10-15-seven-column-prefix/P196_739_Proof.md",
+    "proofs/contributions/2026-10-15-seven-column-prefix/certificate_739.json",
+    "OverflowCarryNormalization.iterPairs_representation",
+    "NormalizationBridge.admissible_next",
+    "existing prefix-extension and actual-prefix-lift formal interfaces"
+  ],
+  "dependencies": [
+    "proofs/research/continuation/LychrelDigitSums.lean",
+    "seven-column prefix exact digit equations and frozen JSON certificate; all mathematical bridges will be Lean proved"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-104/seven-column-kernel/"
+  ],
+  "branch": "research/agent-104/20261015T0440",
+  "status": "ACTIVE",
+  "latest_source_commit": "c455707f4a700605d17e466c0d3a8a59406288d9",
+  "verification_status": "LEAN-CHECKED: complete concrete AllRows739, Initial739, Short739, Conclusion739 compile; both final endpoints have no remaining finite-check hypotheses and only propext/Classical.choice/Quot.sound. Independent semantic review found no gap. Independent full fresh 383-module build at 957efa326b4b980391046598a0143cb7a7060242 is ACTIVE; its preflight verified every source against Git and 1,476 installed compiler/standard-library archive members against the official release. Not yet independently execution-reviewed or integrated as a complete numerical result.",
+  "last_activity": "2026-10-15T05:51:47.999Z",
+  "next_action": "Independent clean run at957efa3 has rebuilt174/383 modules without failure; finish full axiom audit and separate exact endpoint rebuild. Source-pinned proposed integration snippets and inventories published atc455707. PR28 remains pending these gates; Agent107 PR11 scope not expanded.",
+  "overlap_review": "Agent105 owns actual-high-return; Agent102 owns ancestry of maximal 0/18 runs; Agent103 owns scalar 659/94/98 certificate; Agent101 owns exterior cap5/6. No duplication of those targets. Our earlier unpushed high-return idea reserves nothing and has been abandoned before investigation.",
+  "pull_request": 28,
+  "previous_pull_request": {
+    "number": 18,
+    "merged_source": "95271b2bf55d18715f675d1e7f9d2a31ae1ec945",
+    "scope": "Structural/WIP checkpoint only"
+  },
+  "active_reviewers": [
+    "Agent #104 /root/agent104_final_review (gpt-6-astra, ultra): semantic review and independent endpoint audit",
+    "Agent #104 /root/agent104_final_clean (gpt-6-astra, ultra): fresh full-chain rebuild and complete axiom audit"
+  ],
+  "exported_theorems": [
+    "SevenColumnKernel.Finite739.ancestry_bound39",
+    "SevenColumnKernel.Finite739.no_196_739_palindrome"
+  ],
+  "integration_handoff": "proofs/contributions/agent-104/seven-column-kernel/integration/HANDOFF.md"
+}

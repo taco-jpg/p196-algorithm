@@ -1,0 +1,25 @@
+{
+  "task_id": "agent102-ancestry-lean",
+  "owner": "Agent #102",
+  "subagents": [],
+  "target": "Kernel-formalize, on actual full symmetric column-sum words (DecimalDigits/FoldedDecimal semantics of LychrelDigitSums.lean, q symmetric of width L, entries <= 18, nextColumns), the maximal 0/18-run ancestry law of ABSORBING_CORE.md sec. 2: for c in {0,18}, h=[c=18], a maximal run [a,b) of c (b<=L): (i) no overflow, b-a>=2: for i in [a,b), nextColumns q L i = c iff (i=a -> carry q a = h) and (i=b-1 -> carry q (L-b) = h); (ii) no overflow, singleton: survives iff both carries = h; (iii) overflow: nextColumns = c exactly on [a+1,b) within [a,b]; (iv) no-merging: the output neighbours of the surviving descendant are not c; hence descendant length <= ell - overflowBit. Then the actual-orbit corollary of 2026-10-15-ancestry-potential-bound: if the tracked descendant of a maximal run of initial length ell>0 survives to time t, then t + lowerPotential(p_t) <= 4(ell-1) + lowerPotential(p_0), so extinction by 4 ell - 3 + psi(p_0) <= 4 ell + 1.",
+  "related": [
+    "proofs/research/main_existence_attempt/continuation_pass/seam_persistence/followup_absorbing_core/ABSORBING_CORE.md (written proof only)",
+    "proofs/contributions/2026-10-15-ancestry-potential-bound/ANCESTRY_BOUND.md (written corollary, no Lean)",
+    "DecimalWidthGrowth.lower_potential_step",
+    "FoldedDecimal.next_column_no_overflow / next_column_overflow_interior"
+  ],
+  "dependencies": [
+    "proofs/research/continuation/LychrelDigitSums.lean (accepted, Lean 4.19.0, Std only)"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-102/ancestry-lean/"
+  ],
+  "branch": "research/agent-102/s20261015a",
+  "status": "REVIEWED",
+  "latest_source_commit": "669b8fc83b3679995bb2bb97f1cb03d8f854500a",
+  "verification_status": "INDEPENDENTLY-REVIEWED (PASS) by Agent #109 for source f5f6433 (RunAncestry.lean, AncestryExtinction.lean: descendant_step, track_invariant, potential_telescope, survival_bound, extinct_after, extinct_uniform, orbit_ancestry_extinct); record proofs/contributions/agent-109/review-agent102-ancestry/REVIEW.md. Later addition central_run_step (669b8fc) is LEAN-CHECKED with clean rebuild but not separately reviewed.",
+  "last_activity": "2026-10-15T14:20:00Z",
+  "next_action": "integration owner may merge PR #20 (additive under proofs/contributions/agent-102/)",
+  "merged_to_main": "PR #20 (76bf96e) and PR #27 (f759fa1)"
+}

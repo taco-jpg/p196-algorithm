@@ -1,0 +1,30 @@
+import IncomingCarrySensitivity
+
+#print axioms IncomingCarrySensitivity.carryWith_zero
+#print axioms IncomingCarrySensitivity.outputWith_zero
+#print axioms IncomingCarrySensitivity.carryWith_bounded
+#print axioms IncomingCarrySensitivity.outputWith_bounded
+#print axioms IncomingCarrySensitivity.column_equation
+#print axioms IncomingCarrySensitivity.ninePrefix_zero
+#print axioms IncomingCarrySensitivity.ninePrefix_succ
+#print axioms IncomingCarrySensitivity.carries_on_nine_prefix
+#print axioms IncomingCarrySensitivity.nonnine_carry_coalesces
+#print axioms IncomingCarrySensitivity.carries_after_nine_prefix
+#print axioms IncomingCarrySensitivity.carry_difference
+#print axioms IncomingCarrySensitivity.output_difference
+#print axioms IncomingCarrySensitivity.carry_difference_bit
+#print axioms IncomingCarrySensitivity.output_difference_bit
+#print axioms IncomingCarrySensitivity.value_outputWith
+#print axioms IncomingCarrySensitivity.initialNineRun_exists
+#print axioms IncomingCarrySensitivity.nineIndicator_of_run
+#print axioms IncomingCarrySensitivity.carry_difference_run
+#print axioms IncomingCarrySensitivity.output_difference_run
+#print axioms IncomingCarrySensitivity.terminal_difference_run
+#print axioms IncomingCarrySensitivity.all_nine_normalization
+#print axioms IncomingCarrySensitivity.carryWith_shift
+#print axioms IncomingCarrySensitivity.outputWith_shift
+#print axioms IncomingCarrySensitivity.actual_carry_shift
+#print axioms IncomingCarrySensitivity.actual_output_shift
+#print axioms IncomingCarrySensitivity.actual_block_carry_defect
+#print axioms IncomingCarrySensitivity.actual_block_output_defect
+#print axioms IncomingCarrySensitivity.actual_block_outgoing_run

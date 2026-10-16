@@ -1,0 +1,41 @@
+import AdmissibleCompat
+import Targets
+
+#print axioms Agent112.Admissibility.CyclicCenters
+#print axioms Agent112.Admissibility.CyclicPositiveHeads
+#print axioms Agent112.Admissibility.AutomaticAdmissibility
+#print axioms Agent112.Admissibility.pair_wrap
+#print axioms Agent112.Admissibility.pair_mirr
+#print axioms Agent112.Admissibility.mirr_unwrap
+#print axioms Agent112.Admissibility.mirr_trim
+#print axioms Agent112.Admissibility.raw_center_mirr
+#print axioms Agent112.Admissibility.valid_center_mirr
+#print axioms Agent112.Admissibility.mirr_split
+#print axioms Agent112.Admissibility.valid_center_split
+#print axioms Agent112.Admissibility.admissible_of_valid_head
+#print axioms Agent112.Admissibility.certificate_existence_of_head
+#print axioms Agent112.Admissibility.evalL_pos_iff
+#print axioms Agent112.Admissibility.evalL_reverse_pos
+#print axioms Agent112.Admissibility.stepWord_value
+#print axioms Agent112.Admissibility.stepWord_strict
+#print axioms Agent112.Admissibility.bounded_evalL
+#print axioms Agent112.Admissibility.no_bounded_width_orbit
+#print axioms Agent112.Admissibility.HeadPos
+#print axioms Agent112.Admissibility.pair_preserves_lastPos
+#print axioms Agent112.Admissibility.stepWord_preserves_lastPos
+#print axioms Agent112.Admissibility.template_head_of_last
+#print axioms Agent112.Admissibility.local_symbolic_step
+#print axioms Agent112.Admissibility.local_headPos
+#print axioms Agent112.Admissibility.cyclic_headPos
+#print axioms Agent112.Admissibility.gamma_zero_of_not_head
+#print axioms Agent112.Admissibility.WordInv
+#print axioms Agent112.Admissibility.wordInv_step
+#print axioms Agent112.Admissibility.wordInv_bounded
+#print axioms Agent112.Admissibility.wordInv_pos
+#print axioms Agent112.Admissibility.wordInv_same_length
+#print axioms Agent112.Admissibility.valid_headPos
+#print axioms Agent112.Admissibility.automatic_admissibility
+#print axioms Agent112.Admissibility.certificate_existence_of_check
+#print axioms Agent112.Admissibility.valid_state_realized
+#print axioms Agent112.Admissibility.checked_certificate_decimal_existence
+#print axioms Agent112.Admissibility.checked_positive_decimal_seed

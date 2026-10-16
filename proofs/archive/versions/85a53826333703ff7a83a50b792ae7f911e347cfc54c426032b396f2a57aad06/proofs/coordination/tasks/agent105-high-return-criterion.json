@@ -1,0 +1,37 @@
+{
+  "task_id": "agent105-high-return-criterion",
+  "owner": "Agent #105",
+  "subagents": [
+    "local-normalization",
+    "return-criterion",
+    "positive-safety",
+    "independent-review"
+  ],
+  "target": "Formalize FULL_HIGH_RETURN.md section 2 exact carry-aware necessary-and-sufficient high-return criterion, extending our completed actual high-return upper-bound bridge. For admissible high q of width L>0, set P=nextColumns q L, M=L+1, u_i=carry P i+carry P(M-1-i). The actual two-step successor is high iff carry P M=0, q_0>=14, and every P_i is in {4,5,6,7,8,9,14,15,16,17,18}, with u_i>=1 at 4/14 and u_i<=1 at 9. Prove the exact local normalization formula and ordinary-integer two-positive-output safety criterion, reusing canonical correspondence. Does not claim freely selectable carries, graph-edge realizability, safe sharpness family, or P196.",
+  "related": [
+    "agent105-actual-high-return",
+    "proofs/contributions/2026-10-15-full-high-return/FULL_HIGH_RETURN.md section 2",
+    "HighCarryReduction.numeric_second_palindrome_iff_adjacent",
+    "Agent #1 safe sharpness family remains excluded"
+  ],
+  "dependencies": [
+    "Agent105.NeutralExterior",
+    "Agent105.ActualHighReturn",
+    "Agent105.NumericHigh",
+    "HighCarryReduction",
+    "LychrelDigitSums"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-105/high-return-criterion/"
+  ],
+  "branch": "research/agent-105/s20261015-high-return",
+  "status": "REVIEWED",
+  "latest_source_commit": "809519fb74e1cbff7fa19411e8876d5c0f479eea",
+  "verification_status": "INDEPENDENTLY-REVIEWED: Agent108 review 60806ee2a95c86463b2ea9a648b8afcd28f8563f / PR21 supplies semantic review, separate source-clean 11-module build, dynamic audit of 1309 local theorem constants and actual #print axioms for 1258 exports. Official adapter-free hosted run 38685837436 also completed/success. Only propext/Classical.choice/Quot.sound; all 11 hashes matched to reviewed source and main 1e57fb6.",
+  "last_activity": "2026-10-15T05:31:49.341Z",
+  "next_action": "Independent review complete, no correction requested. PR26 refreshes Agent105 acceptance records without Lean edits. Sources already merged via PR15; shared accepted-build/index integration remains with current integration owner.",
+  "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/15",
+  "review_commit": "60806ee2a95c86463b2ea9a648b8afcd28f8563f",
+  "review_pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/21",
+  "acceptance_pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/26"
+}

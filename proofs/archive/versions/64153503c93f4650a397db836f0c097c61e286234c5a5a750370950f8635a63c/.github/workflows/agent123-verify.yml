@@ -1,0 +1,59 @@
+name: Agent123 isolated Lean verification
+on:
+  push:
+    branches: ['research/agent-123/s20261015-1544']
+    paths:
+      - '.github/workflows/agent123-verify.yml'
+      - 'proofs/contributions/agent-123/**'
+permissions:
+  contents: read
+concurrency:
+  group: agent123-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            proofs
+            .github
+      - name: Read pinned coordination and repository instructions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin p196/coordination
+          echo "COORDINATION_HEAD=$(git rev-parse FETCH_HEAD)"
+          python3 - <<'PY'
+          import subprocess,json
+          run=lambda *a:subprocess.check_output(a,text=True)
+          paths=run('git','ls-tree','-r','--name-only','HEAD').splitlines()
+          for p in paths:
+              if p.split('/')[-1]=='AGENTS.md':
+                  print('INSTRUCTIONS',p,run('git','show','HEAD:'+p))
+          paths=run('git','ls-tree','-r','--name-only','FETCH_HEAD','proofs/coordination/tasks').splitlines()
+          for p in paths:
+              d=json.loads(run('git','show','FETCH_HEAD:'+p))
+              print('TASK',p,d.get('status'),d.get('target',d.get('target_statement',d.get('exact_target_statement',''))))
+          PY
+      - name: Compile and audit contribution when present
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=proofs/contributions/agent-123
+          if [ ! -f "$p/check.py" ]; then echo 'BOOTSTRAP ONLY: NO THEOREM CHECKED'; exit 0; fi
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/lean.tar.zst
+          sha256sum /tmp/lean.tar.zst
+          tar --zstd -xf /tmp/lean.tar.zst -C /tmp
+          /tmp/lean-4.19.0-linux/bin/lean --version
+          python3 "$p/check.py" /tmp/lean-4.19.0-linux/bin/lean
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent123-verification-${{ github.sha }}
+          path: proofs/contributions/agent-123/evidence/
+          if-no-files-found: ignore
+          retention-days: 14

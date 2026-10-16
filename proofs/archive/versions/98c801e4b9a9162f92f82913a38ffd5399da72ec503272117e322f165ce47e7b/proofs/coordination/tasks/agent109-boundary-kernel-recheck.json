@@ -1,0 +1,20 @@
+{
+  "task_id": "agent109-boundary-kernel-recheck",
+  "owner": "Agent #109",
+  "subagents": [],
+  "target": "Remove the native_decide trust boundary from the historical all-width 8/17 boundary exclusion (proofs/research/main_existence_attempt/boundary_resume/lean/, axioms currently include Lean.ofReduceBool). Re-transcribe the string-encoded certificate data of BoundaryData.lean as literal Nat lists (string parsing does not reduce in the kernel), prove every finite check (fibers_arithmetic_checked, projection0..7_checked, root0..7_checked, candidates_complete_checked, bulk_edges_checked, bulk_cycles_checked, derived_targets_checked) by kernel `decide +kernel`, and re-derive the same final statements (no_936_or_9_12_15_exterior, no_24_phase_..., and the graph-relative no_finite_exterior/no_arithmetic_exterior for the transcribed graphs) with an axiom audit free of Lean.ofReduceBool. Original files untouched; legacy labels unchanged. Replication/upgrade of trust, not a new mathematical claim; the written correspondence to all ordinary orbits remains unformalized as before.",
+  "related": [
+    "proofs/research/main_existence_attempt/boundary_resume/lean/FORMAL_STATUS.txt",
+    "FINDINGS.md row 'All-width boundary exclusion and Lean trust boundary'"
+  ],
+  "dependencies": [],
+  "intended_files": [
+    "proofs/contributions/agent-109/boundary-kernel-recheck/"
+  ],
+  "branch": "research/agent-109/s20261015",
+  "status": "ACTIVE",
+  "latest_source_commit": "9bc6f96",
+  "verification_status": "WIP: literal transcription verified (compiled comparison); fibers/roots/candidates/bulk checks and projections 0-2 pass under decide +kernel; naive checkProjection OOMs at 6GB for graph 2+, so a new Sofic.Fast tree/bucket checker with proved soundness into the unchanged Sofic.Projection is used (fast_sound, all_of_chunks compiled, axioms propext/Quot.sound). Full fresh build in progress.",
+  "last_activity": "2026-10-15T06:30:49Z",
+  "next_action": "finish fresh build of chunked ProjK0..7 and K replays; axiom audit must show no Lean.ofReduceBool"
+}

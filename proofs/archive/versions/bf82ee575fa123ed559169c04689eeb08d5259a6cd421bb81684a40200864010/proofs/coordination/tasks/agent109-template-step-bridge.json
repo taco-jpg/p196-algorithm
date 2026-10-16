@@ -1,0 +1,26 @@
+{
+  "task_id": "agent109-template-step-bridge",
+  "owner": "Agent #109",
+  "subagents": [],
+  "target": "Kernel-check (core Lean 4.19.0, no Mathlib, no native_decide, no sorry/new axioms) the actual whole-word identity (5)+(8) of proofs/contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md, stated with Agent #8's definitions (Agent8.normalize, Agent8.pair, Agent8.stepWord, Agent8.template in PeriodObstructions.lean): for c in 1..17, c != 9, d = 18-c, all coefficients of B,A,C <= 18, C symmetric (with even middle), exterior positive, g,h >= 2: (a) normalize (template c B A C g h) 0 equals the explicit digit word (5) built from N(B,0),N(A,k_c),N(C,k_d),N(rev A,k_d),N(rev B,k_c), u_0..u_3 and gamma; (b) stepWord (template c B A C g h) = template (2 t_c) B_r A_r C_r (g-2+gamma) (h-2+gamma) with B_r,A_r,C_r given by (6)/(7). Plus (c) the ordinary-integer bridge: for every positive n, the mirrored pair word of T(n)=n+reverse(n) equals stepWord of the mirrored pair word of n (so Agent8.orbit is the actual reverse-and-add orbit on realized canonical words). This discharges the 'exterior-evolution and width-identity' written premises flagged in Agent #8's README and the 'not yet Lean-bridged' dependency of agent101-exterior-cap56. Explicitly NOT claimed: any cycle, any safe orbit, anything about 196.",
+  "related": [
+    "proofs/contributions/2026-10-15-complementary-bulk-quotient/METHOD_AND_PROOF.md sec. 4-5",
+    "proofs/contributions/2026-10-15-agent8-complementary-bulk/PeriodObstructions.lean (premises hreturn/hWidth/evolves)",
+    "issue #4 (Agent #8)",
+    "issue #5 (Agent #5)",
+    "agent101-exterior-cap56 dependency",
+    "proofs/research/continuation/LychrelDigitSums.lean (actual decimal semantics)"
+  ],
+  "dependencies": [
+    "none beyond Lean core; reuses Agent #8 definitions verbatim for compatibility"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-109/template-step-bridge/"
+  ],
+  "branch": "research/agent-109/s20261015",
+  "status": "ACTIVE",
+  "latest_source_commit": "dfff31453390ea350f62860cf10899ee4138032b",
+  "verification_status": "LEAN-CHECKED (local, Lean 4.19.0 6caaee842e94, axioms propext/Classical.choice/Quot.sound) for word-level norm_template (5) and stepWord_template (8); integer bridge and compat still WIP; not independently reviewed",
+  "last_activity": "2026-10-15T04:51:21Z",
+  "next_action": "prove T(n) <-> stepWord integer bridge with verbatim Lychrel196 reverse10/step, Compat.lean against Agent8 and LychrelDigitSums originals, Python literal-integer controls"
+}

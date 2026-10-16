@@ -1,0 +1,8 @@
+import ExteriorFactorizationProof
+#check @Agent115.ExteriorFactorization.target
+#print Agent115.ExteriorFactorization.Target
+#print axioms Agent115.ExteriorFactorization.target
+#print axioms Agent115.ExteriorFactorization.factorization_general
+#print axioms Agent115.ExteriorFactorization.outerNext_append_band
+#print axioms Agent115.ExteriorFactorization.outerNext_of_values
+#print axioms Agent115.ExteriorFactorization.normalize_eq

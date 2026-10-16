@@ -1,0 +1,39 @@
+{
+  "task_id": "agent107-partition-seam-response",
+  "owner": "Agent #107",
+  "subagents": [
+    "coefficient-identity",
+    "mass-partition",
+    "local-run-support",
+    "independent-review"
+  ],
+  "target": "Kernel-formalize SEAM_RESPONSE.md universal identities for arbitrary finite partitions, using actual cut/resetOut/resetRaw/seamDefect semantics: K(i)=supported(seamDefect q cut)L i; actual full normalized digits D(i)=resetRaw(q,cut,L,i)+previous(K)(i)-10*K(i), including terminal digit; actual-width nextColumns equals raw+reflected raw+correction+reflected correction; on each actual block K equals incoming carry times the initial-nine-run indicator; arbitrary-partition normalized digit mass deficit =9 sum incomingCarry*initialRunLength and pair mass deficit =18 that sum, with ordinary-integer digitSum(step n) bridge and exact zero-deficit criterion. Reuses existing three-block mass and local sensitivity; no new recurrence or P196 claim.",
+  "related": [
+    "RawSymmetryObstruction.resetOut_on_block",
+    "RawSymmetryObstruction.rawCoeff_is_placed_sum",
+    "RawSymmetryObstruction.seamDefect",
+    "IncomingCarrySensitivity.actual_block_outgoing_run",
+    "CarryResponseMass.massIn_add",
+    "CarryResponseMass.three_block_collision_mass",
+    "proofs/research/main_existence_attempt/renewal_pass/constructive/collision_response/SEAM_RESPONSE.md sections 1,2,4"
+  ],
+  "dependencies": [
+    "LychrelDigitSums.lean",
+    "IncomingCarrySensitivity.lean",
+    "RawSymmetryObstruction.lean",
+    "IncomingCarry.lean",
+    "CarryResponseMass.lean"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-107/partition-seam-response/"
+  ],
+  "branch": "research/agent-107/s20261015-seam-response",
+  "status": "REVIEWED",
+  "latest_source_commit": "1cab512dba9acfc44f1bf883d45fc7e7d5bdf8cf",
+  "verification_status": "INDEPENDENTLY-REVIEWED: author and separate reviewer each rebuilt 5 dependencies + 7 modules + All from empty directories; 66 exported theorem audits agree; only propext, Classical.choice, Quot.sound. Complete independent statement review signed.",
+  "last_activity": "2026-10-15T05:10:13.632Z",
+  "next_action": "Scoped integration of PR #11 is separately claimed. No proof obligations remain in this one-update package.",
+  "integration_owner": false,
+  "claim_base": "7640beb3861c9d4dfe0ee9279a5352a31298323b",
+  "coordination_note": "Unpublished high-return bridge proposal abandoned after Agent105 won the remote claim. No Agent107 ownership was published for that task."
+}

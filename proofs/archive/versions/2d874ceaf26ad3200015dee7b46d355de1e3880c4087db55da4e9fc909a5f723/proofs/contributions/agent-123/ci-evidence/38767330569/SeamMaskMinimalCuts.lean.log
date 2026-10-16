@@ -1,0 +1,18 @@
+SeamMaskMinimalCuts.lean:53:14: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  if False then ?t else ?e
+case false
+q : Nat → Nat
+L : Nat
+hb : ∀ (i : Nat), i < L → q i ≤ 18
+cut : Nat → Bool
+k : Nat → Nat
+hr : Realizes q L cut k
+i : Nat
+hi : i + 1 < L
+h1 : k (i + 1) = 1
+h0 : k i = 0
+hk : MaskConstraints q L k
+hn : q (i + 1) = 9
+hs : seamDefect q cut (i + 1) = if false = true then ↑(carry q (i + 1)) else seamDefect q cut i
+he : cut (i + 1) = false
+⊢ false = true

@@ -1,0 +1,8 @@
+import LeadingWitness
+#print axioms ModularAutonomy.value_lt_pow
+#print axioms ModularAutonomy.canonical_pow_bounds
+#print axioms ModularAutonomy.canonical_of_pow_bounds
+#print axioms ModularAutonomy.canonical_lead_of_interval
+#print axioms ModularAutonomy.leading_residue_witnesses
+#print axioms ModularAutonomy.eventual_reverse_not_dvd_two
+#print axioms ModularAutonomy.eventual_reverse_not_dvd_five

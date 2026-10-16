@@ -1,0 +1,50 @@
+name: Agent 1 pinned source audit snapshot
+on:
+  push:
+    branches: [agent1/source-audit-20261015]
+    paths: [.github/workflows/agent1-source-audit.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /proofs/**/*.lean
+            /proofs/**/*.py
+            /proofs/**/*.md
+            /proofs/**/*.sh
+            /proofs/**/*.txt
+      - name: Preserve exact research text with a per-file manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, subprocess, tarfile
+          head = subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip()
+          names = subprocess.check_output(['git','ls-files','proofs'], text=True).splitlines()
+          paths = [pathlib.Path(n) for n in names if pathlib.Path(n).is_file() and pathlib.Path(n).suffix in {'.lean','.py','.md','.sh','.txt'}]
+          manifest = {'source_commit': head, 'research_parent': '89b3c43fd1a6d681a4f0bbd2ad17009c3d8ac6f2', 'files': []}
+          archive = pathlib.Path(os.environ['RUNNER_TEMP']) / 'agent1-research-sources.tar.gz'
+          with tarfile.open(archive, 'w:gz') as out:
+              for p in paths:
+                  data = p.read_bytes()
+                  manifest['files'].append({'path': str(p), 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+                  out.add(p, arcname=str(p), recursive=False)
+              m = pathlib.Path(os.environ['RUNNER_TEMP']) / 'SOURCE_MANIFEST.json'
+              m.write_text(json.dumps(manifest, indent=2)+'\n')
+              out.add(m, arcname='SOURCE_MANIFEST.json', recursive=False)
+          print(json.dumps({'commit': head, 'files': len(paths), 'source_bytes': sum(p.stat().st_size for p in paths), 'archive_bytes': archive.stat().st_size, 'archive_sha256': hashlib.sha256(archive.read_bytes()).hexdigest()}, indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent1-research-source-snapshot
+          path: ${{ runner.temp }}/agent1-research-sources.tar.gz
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error

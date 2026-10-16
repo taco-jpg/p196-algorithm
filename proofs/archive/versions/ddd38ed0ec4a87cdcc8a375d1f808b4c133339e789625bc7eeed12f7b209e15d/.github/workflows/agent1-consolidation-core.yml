@@ -1,0 +1,204 @@
+name: Agent1 reviewed consolidation core
+on:
+  push:
+    branches: [integrate/agent-1/20261015T1901Z]
+    paths: [.github/workflows/agent1-consolidation-core.yml]
+permissions: {}
+concurrency:
+  group: agent1-consolidation-core
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      discussions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Official pinned Lean runtime and exact reviewed registry
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agent1-core-publish
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/agent1-core-lean.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  /tmp/agent1-core-lean.tar.zst' | sha256sum -c -
+          tar --zstd -xf /tmp/agent1-core-lean.tar.zst -C /tmp
+          python3 proofs/contributions/agent-1/consolidation-20261015/make_accepted_registry.py
+          cp proofs/ACCEPTED_BUILD.json /tmp/agent1-core-publish/ACCEPTED_BUILD.json
+      - name: Fresh combined source compilation and exhaustive dependency audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 proofs/verify_project.py --lean /tmp/lean-4.19.0-linux/bin/lean --project consolidation-core --output /tmp/agent1-core-publish/build
+      - name: Independent finite arithmetic controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 proofs/contributions/agent-1/consolidation-20261015/finite_controls.py --output /tmp/agent1-core-publish/finite-controls.json > /tmp/agent1-core-publish/finite-controls.log
+      - name: Negative controls for source coverage and incomplete-catalogue reporting
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import copy,json,pathlib,subprocess
+          root=pathlib.Path.cwd(); dest=pathlib.Path('/tmp/agent1-core-publish/negative-controls'); dest.mkdir()
+          registry=json.loads((root/'proofs/ACCEPTED_BUILD.json').read_text())
+          cases=[('explicit-source-check',registry,['--project','consolidation-core'],0),('global-incomplete',registry,[],2)]
+          changed=copy.deepcopy(registry);changed['projects']['consolidation-core']['modules']['OuterOrbit']['sha256']='0'*64
+          cases.append(('wrong-source-hash',changed,['--project','consolidation-core'],1))
+          changed=copy.deepcopy(registry);changed['projects']['consolidation-core']['roots']=['TwoDigitMain']
+          cases.append(('uncovered-module',changed,['--project','consolidation-core'],1))
+          changed=copy.deepcopy(registry);changed['toolchain']['allowed_axioms'].append('sorryAx')
+          cases.append(('weakened-axiom-policy',changed,['--project','consolidation-core'],1))
+          changed=copy.deepcopy(registry);changed['projects']['consolidation-core']['modules']['OuterOrbit']['imports']=[]
+          cases.append(('hidden-import',changed,['--project','consolidation-core'],1))
+          summary=[]
+          for label,data,selection,expected in cases:
+              config=dest/(label+'-registry.json');config.write_text(json.dumps(data,indent=2)+'\n')
+              out=dest/label
+              command=['python3',str(root/'proofs/verify_project.py'),'--lean','/tmp/lean-4.19.0-linux/bin/lean','--registry',str(config),'--output',str(out),'--check-only',*selection]
+              result=subprocess.run(command,capture_output=True,text=True,timeout=120)
+              (dest/(label+'.log')).write_text(result.stdout+result.stderr)
+              observed=json.loads((out/'verification.json').read_text())
+              summary.append({'label':label,'expected_exit':expected,'actual_exit':result.returncode,'status':observed['status'],'mathematical_proof_check':observed['mathematical_proof_check'],'repository_wide_pass':observed['repository_wide_pass']})
+              if result.returncode!=expected or observed['mathematical_proof_check'] or observed['repository_wide_pass']:raise RuntimeError('Negative control failed: '+label)
+          (dest/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+          PY
+      - name: Complete separately paginated public discussion inventory
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import datetime,json,os,pathlib,urllib.request
+          out=pathlib.Path('/tmp/agent1-core-publish');out.mkdir(exist_ok=True)
+          result={'agent':'Agent #1','captured_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'items':[],'complete':False,'limitations':[]}
+          def gql(query,variables):
+              request=urllib.request.Request('https://api.github.com/graphql',data=json.dumps({'query':query,'variables':variables}).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Content-Type':'application/json','User-Agent':'P196-Agent1'})
+              with urllib.request.urlopen(request,timeout=60) as response:data=json.load(response)
+              if data.get('errors'):raise RuntimeError(str(data['errors']))
+              return data['data']
+          try:
+              cursor=None
+              for _ in range(1000):
+                  page=gql('query($cursor:String){repository(owner:"taco-jpg",name:"p196-algorithm"){discussions(first:100,after:$cursor){pageInfo{hasNextPage endCursor}nodes{id number title url body createdAt updatedAt isAnswered}}}}',{'cursor':cursor})['repository']['discussions']
+                  result['items'].extend(page['nodes'])
+                  if not page['pageInfo']['hasNextPage']:break
+                  cursor=page['pageInfo']['endCursor']
+              else:raise RuntimeError('Discussion pagination cap')
+              for discussion in result['items']:
+                  discussion['comments']=[];cursor=None
+                  for _ in range(1000):
+                      page=gql('query($id:ID!,$cursor:String){node(id:$id){...on Discussion{comments(first:100,after:$cursor){pageInfo{hasNextPage endCursor}nodes{id body createdAt updatedAt}}}}}',{'id':discussion['id'],'cursor':cursor})['node']['comments']
+                      discussion['comments'].extend(page['nodes'])
+                      if not page['pageInfo']['hasNextPage']:break
+                      cursor=page['pageInfo']['endCursor']
+                  else:raise RuntimeError('Comment pagination cap')
+                  for comment in discussion['comments']:
+                      comment['replies']=[];cursor=None
+                      for _ in range(1000):
+                          page=gql('query($id:ID!,$cursor:String){node(id:$id){...on DiscussionComment{replies(first:100,after:$cursor){pageInfo{hasNextPage endCursor}nodes{id body createdAt updatedAt}}}}}',{'id':comment['id'],'cursor':cursor})['node']['replies']
+                          comment['replies'].extend(page['nodes'])
+                          if not page['pageInfo']['hasNextPage']:break
+                          cursor=page['pageInfo']['endCursor']
+                      else:raise RuntimeError('Reply pagination cap')
+              result['complete']=True
+          except Exception as error:result['limitations'].append(str(error))
+          (out/'discussions.json').write_text(json.dumps(result,indent=2)+'\n')
+          print('Discussions:',len(result['items']),'complete:',result['complete'])
+          PY
+      - name: Preserve execution records, excluding only compiled products
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          root=pathlib.Path('/tmp/agent1-core-publish');root.mkdir(exist_ok=True)
+          for path in root.rglob('*.olean'):path.unlink()
+          report=root/'build/verification.json'
+          status=json.loads(report.read_text())['status'] if report.exists() else 'NO_BUILD_RESULT'
+          (root/'RUN.json').write_text(json.dumps({'agent':'Agent #1','workflow_source':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'scoped_build_status':status,'scope':'Reviewed38-module consolidation core only; global accepted catalogue remains incomplete'},indent=2)+'\n')
+          files={str(p.relative_to(root)):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(root.rglob('*')) if p.is_file() and p!=root/'PUBLISH_FILES.json'}
+          (root/'PUBLISH_FILES.json').write_text(json.dumps(files,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: agent1-consolidation-core-evidence
+          path: /tmp/agent1-core-publish/
+          retention-days: 14
+          if-no-files-found: error
+  publish:
+    needs: verify
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent1-consolidation-core-evidence
+          path: /tmp/agent1-core-artifact
+      - name: Validate and retain execution records, never infer mathematical acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib,shutil
+          source=pathlib.Path('/tmp/agent1-core-artifact');manifest=json.loads((source/'PUBLISH_FILES.json').read_text())
+          actual={str(p.relative_to(source)) for p in source.rglob('*') if p.is_file() and p!=source/'PUBLISH_FILES.json'}
+          if actual!=set(manifest):raise RuntimeError('Evidence coverage mismatch')
+          if any(p.is_symlink() for p in source.rglob('*')):raise RuntimeError('Symlinks forbidden')
+          if sum(p.stat().st_size for p in source.rglob('*') if p.is_file())>20000000:raise RuntimeError('Unexpected artifact size')
+          for name,record in manifest.items():
+              path=source/name
+              if not path.resolve().is_relative_to(source.resolve()):raise RuntimeError('Unsafe path')
+              data=path.read_bytes()
+              if len(data)!=record['bytes'] or hashlib.sha256(data).hexdigest()!=record['sha256']:raise RuntimeError('Hash mismatch: '+name)
+          target=pathlib.Path('proofs/contributions/agent-1/consolidation-20261015/verification/core-entrypoint')
+          if target.exists():raise RuntimeError('Never overwrite a prior execution')
+          shutil.copytree(source,target)
+          registry=source/'ACCEPTED_BUILD.json'
+          if registry.exists():
+              data=json.loads(registry.read_text())
+              if data['reviewed_source_map_sha256']!='59f7f540d107a7d35b27c4a00cc0e5075ec6fc8a5bf6a8114eeb34855e75e931' or data['catalogue_complete']:raise RuntimeError('Registry scope changed')
+              destination=pathlib.Path('proofs/ACCEPTED_BUILD.json')
+              if destination.exists():raise RuntimeError('Never overwrite an existing accepted catalogue')
+              shutil.copyfile(registry,destination)
+          PY
+      - name: Normal guarded push to the owned staging branch only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET='integrate/agent-1/20261015T1901Z'
+          test "$GITHUB_REF" = "refs/heads/$TARGET"
+          git fetch origin "$TARGET"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          git config user.name 'Agent #1 evidence publisher'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- proofs/contributions/agent-1/consolidation-20261015/verification/core-entrypoint
+          if test -f proofs/ACCEPTED_BUILD.json; then git add -- proofs/ACCEPTED_BUILD.json; fi
+          python3 - <<'PY'
+          import subprocess
+          paths=subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')
+          if any(p and p!='proofs/ACCEPTED_BUILD.json' and not p.startswith('proofs/contributions/agent-1/consolidation-20261015/verification/core-entrypoint/') for p in paths):raise RuntimeError('Out-of-scope publication')
+          PY
+          git commit -m 'Agent #1: publish exact reviewed core registry and independent replay evidence'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin "HEAD:refs/heads/$TARGET"

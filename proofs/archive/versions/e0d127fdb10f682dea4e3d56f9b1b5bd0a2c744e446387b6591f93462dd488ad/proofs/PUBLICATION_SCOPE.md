@@ -1,0 +1,124 @@
+# Publication scope and omissions
+
+The objective is to publish **all research findings**, including failed constructions and unresolved attempts, in a reviewable source release. It is not to copy every temporary byte produced while searching. [FINDINGS.md](FINDINGS.md) covers each substantive result family; [REPORTS.md](REPORTS.md) lists every written research report and manuscript source; [INVENTORY.tsv](INVENTORY.tsv) accounts for every source-snapshot file individually.
+
+The release preserves all original `.lean`, `.py`, `.cpp`, `.md`, `.tex`, and written report files outside disposable build/test scratch, without changing their contents. Every local Lean source dependency is present. All substantive compact result records are retained, including negative outcomes and UNKNOWN. Selected larger files are preserved when they enable important direct replays: the source safe-ancestry NFA and all terminal witnesses, boundary rank certificates and small graph chains, arbitrary-group certificates, exact rational/graph certificates, and the conditional-parity CNF/LRAT pair. The correlation update additionally retains the independently checked binary antichain snapshot and the exact depth-four observer table needed by its collision checkers.
+
+The following categories describe the historical initial and correlation releases. The expanded [publication policy](PUBLICATION_POLICY.md) controls new renewal work: all substantive raw outputs, failures, UNKNOWN outcomes, logs and development attempts are retained, with lossless compression if needed. Only reproducible infrastructure, compiled products and copied dependency builds are excluded from those new snapshots.
+
+| Category | Reason and retained replacement |
+|---|---|
+| Compiled binaries, `.olean`, Python caches, copied build directories | Rebuildable products, not proof source; original sources, dependencies, version pins, build records and commands are retained. |
+| CPU integration scratch directories | Generated per-case input/output/log trees; deterministic harnesses, exact compact result matrix, provenance, findings, and minimal structural counterexamples are retained. |
+| Large raw graph, kernel, bulk-mixture and search-state outputs | The original proof/status report, generator, parameters, compact final/independent-audit record, and source-file hash are retained. Regenerate the full table before replaying a checker that reads it. |
+| Raw solver/progress logs and incomplete serialized states | Their scoped result, timeout/cap status, discovery source and any substantive proof note are retained. Incomplete runs remain UNKNOWN. |
+| Generated solver inputs | Generators and outcome records are retained. The completed conditional-parity CNF and LRAT trace are retained in full for direct proof replay. |
+| Rendered manuscript PDFs | Complete LaTeX manuscript sources are retained; the rendered PDFs repeat that material. |
+| Earlier whole-workspace hash lists | The release inventory records every source-snapshot file's original hash, while MANIFEST.sha256 verifies the exact published files. |
+
+Each `INVENTORY.json` record gives the original relative path, original byte count and SHA-256, retention decision, reason and primary report mapping. Retained records also identify their published path. The inventory combines the initial publication snapshot and the later correlation-pass snapshot; old entries remain historical provenance. The previously omitted depth-four observer entry is now marked retained, with its original hash unchanged. `OMITTED_OUTPUT_SUMMARIES.json` is explicitly metadata-only: it reports top-level scalars and collection sizes for omitted JSON, not mathematical certificates.
+
+The correlation pass excludes duplicate `build/`, `fresh_build/`, and `root_build/` products, caches, all generated free-clock depth-graph dumps, and one byte-identical duplicate transcript. It preserves every branch report, original source, compact result, independent replay record and substantive audit transcript. The compressed antichain is an intentional exception to omission of incomplete serialized search state: its contents are independently replayable evidence of the specified finite snapshot, while search completion remains UNKNOWN.
+
+The source tree is historical research evidence. Earlier statements about publication or formalization status may have been superseded by a later named pass. This release's README and findings matrix state the current interpretation and trust boundaries. No earlier UNKNOWN is relabeled as an exclusion merely because a different later ansatz was excluded.
+
+The repository review is pinned to upstream commit `8219522a02d46fbb72a6ee38819e5723b8c8fc9f`. Upstream source archives already present in that repository are referenced, not duplicated under `proofs/`. No production checkpoint or unrelated repository file is altered by this release.
+
+Exact counts and byte totals appear in [release_stats.json](release_stats.json); the final list of published paths is [FILES.md](FILES.md). The release does not claim a main existence proof, a verified decimal Lychrel witness, novelty, or external peer review.
+
+The early renewal tail snapshot retains all ten source, report, certificate, result and log files without omissions. The early formal gate snapshot retains all 19 substantive files, including both audits, all five development-attempt logs and the available final-attempt source snapshot. Its 19 omitted `fresh_build/` and `root_build/` files are copied source dependencies and compiled/transient build products; each has its own original size, hash and reason in the inventory. Original source dependencies remain present elsewhere in the research tree, and the portable full rebuild recreates those directories. Those early snapshots did not yet contain `lean/prefix`, language, constructive or finite-join follow-ups; all are now included in the separately inventoried completed renewal batch.
+
+The completed renewal snapshot adds every file outside reproducible build/cache infrastructure, including all raw comparison archives, finite exploratory outcomes, rejected noncanonical inputs, serialization errors, superseded proof/report/source versions, compiler failures and their available source snapshots. No substantive output from this snapshot is omitted. The new raw-symmetry module, independent-collision corollary and completed root review are included. Existing external trace parts are retained by their exact Git blob identities and original manifest hashes; this preservation check is distinct from downloading or replaying their mathematical contents. The external original-to-parts inventory entry is provenance, not an additional physical copy of the compressed trace.
+
+The completed renewal snapshot adds every file outside reproducible build/cache infrastructure, including all raw comparison archives, finite exploratory outcomes, rejected noncanonical inputs, serialization errors, superseded proof/report/source versions, compiler failures and their available source snapshots. No substantive output from this snapshot is omitted. The new raw-symmetry module, independent-collision corollary and completed root review are included. Existing external trace parts are retained by their exact Git blob identities and original manifest hashes; this preservation check is distinct from downloading or replaying their mathematical contents. The external original-to-parts inventory entry is provenance, not an additional physical copy of the compressed trace.
+
+The completed renewal snapshot adds every file outside reproducible build/cache infrastructure, including all raw comparison archives, finite exploratory outcomes, rejected noncanonical inputs, serialization errors, superseded proof/report/source versions, compiler failures and their available source snapshots. No substantive output from this snapshot is omitted. The new raw-symmetry module, independent-collision corollary and completed root review are included. Existing external trace parts are retained by their exact Git blob identities and original manifest hashes; this preservation check is distinct from downloading or replaying their mathematical contents. The external original-to-parts inventory entry is provenance, not an additional physical copy of the compressed trace.
+
+## Accepted continuation checkpoint — 15 October 2026
+
+This incremental snapshot retains all 33 accepted research files (171,973 bytes): the top-level two-module formal bundle, every available development attempt and log, the three finite-seed proof/check/result files, and six independent root-review files. No substantive output within that accepted scope is omitted. 27 exact compiled or copied clean-build files are inventoried as infrastructure exclusions. The previously published continuation-start note and the new handoff are indexed too.
+
+The separately active `lean/zero_exterior`, `safe_language`, `variable_return`, folded-weight follow-up and language-specific root-review files are outside this frozen accepted checkpoint; this is not a claim that those branches have no results. They are reserved for separately reviewed incremental publication. Original research bytes and all concurrent contributions remain unchanged. Preservation of the 94 pre-existing remote-only objects uses exact Git blob identity and the earlier content hashes; it does not assert an additional mathematical replay.
+
+## Full bounded-state language evidence — 15 October 2026
+
+All 86 accepted research files are retained directly, including 41 archive parts totaling 223,756,940 bytes. Six original CNF/proof artifacts totaling 1,467,657,755 decoded bytes are preserved losslessly with exact recovery metadata. The complete five-state UNKNOWN trace is included. All logs, source configurations, complete negative-label and UNKNOWN trajectories, and both root review attempts are retained. 8 exact copied/partial-duplicate/cache files are individually inventoried; no genuine research output is omitted. Original-to-parts entries describe provenance and are not additional physical stored copies. Other accepted construction, weight and formal follow-ups will appear in separate incremental checkpoints.
+
+## Accepted weight, band and zero-exterior follow-ups
+
+This checkpoint retains every one of 56 accepted research files (405,007 bytes), including the complete two-band and four-band graphs and seed paths, historical gap probe, exact rational outcomes, root reviews and every available zero-exterior compiler attempt. 16 copied-build, compiled or cache files are excluded and individually inventoried. No accepted substantive result is omitted. The separately active absorbing-core, periodic, variable-return and additional formal-gate work is outside this snapshot.
+
+## Frozen variable-return checkpoint
+
+All 39 branch files, their frozen manifest and three root replay artifacts are retained: 43 research files, 5,464,850 bytes. Full affine/literal, multiplicative, prefix, zero-exterior and broader mixed-band outcomes are included. 40 exact replay-copy/bytecode files are individually inventoried exclusions. No genuine accepted research output is omitted. The separate formal regeneration gate and cited absorbing-core continuation have their own acceptance/publication scope.
+
+The same publication adds 61 accepted extension files (846,962 bytes): the complete absorbing-core proof/control bundle, all 24 periodic files including its manifest, and the formal regeneration source/audit/development history with root review. All UNKNOWN paths and failed compiler attempts are retained. An additional 60 exact build/replay/cache files are individually inventoried. The cited absorbing-core dependency is now present; the later periodic-interface and quadratic investigations remain separate checkpoints.
+
+## Seven-column prefix continuation — 15 October 2026
+
+This checkpoint retains all 53 original research files from the delivered certificate bundle and available development workspace, plus three new navigation/handoff documents (56 new files total). Original sources, all five final certificates, exploratory raw logs, parameter lists, four-/five-column graph ranks and earlier 33/77 rediscovery certificates retain their bytes. Duplicate raw logs in the historical and delivered layouts are intentional snapshots, not independent experiments. Only compiled executables, Python bytecode, a duplicate distribution ZIP, downloaded dependency copies and operational transfer/publishing helpers are excluded; exact available output exclusions are inventoried. No substantive saved research output is omitted.
+
+The pre-existing 45 files under `chat-6acee928/` are also reconciled into the cumulative inventory, file list and byte manifest without changing their contents. The previous cumulative manifest still contained the README digest from before that archive was linked; this release updates it. Aggregate counts are recomputed from the inventory and current physical path set; the preceding reported aggregates are retained in `release_stats.json` as historical metadata. This reconciliation adds no mathematical claim and does not rerun the archive's mathematical checkers.
+
+The new finite certificates are interpreted through the written all-length carry coverage. Full P196 remains unproved. See [the handoff](coordination/2026-10-15-seven-column-prefix.md) for claim boundaries.
+
+## Agent #107 reviewed seam-response integration
+
+This update retains all 102 scoped source/evidence/coordination files (491220 bytes), including all failed proof attempts, both clean rebuilds, the signed independent review, and the merged-source rebuild. No genuine research output is omitted. The package's PUBLICATION.json identifies 13 reproducible infrastructure exclusions; added integration evidence is included in the shared inventory. All original research hashes remain retained. Two historical document records are redirected to byte-identical Git-history snapshots because concurrent updates changed their original paths; their current documents are preserved, and index-reconciliation.json records both versions. Other inventory rows and mixed historical TSV formatting are retained. The regenerated file and byte indexes include concurrent tracked files without claiming a new mathematical audit of those contributions. Old aggregate release statistics remain historical; the new scoped field records this update.
+
+<!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
+## Agent 104: complete 739 formalization and separate bridge review
+
+This additive snapshot retains every committed Agent 104 research source,
+certificate, generator, successful and failed compiler attempt, historical
+unsplit batch, independent semantic/arithmetic diagnostic, complete clean-build
+and axiom-audit log, exact endpoint audit, and published secondary bridge-review
+artifact. The independent fresh merged-source verification is **PASS** for the published candidate `4bdd59bdc8f3e8f0556c3decb0898e6c6f271b29`; the current 383 accepted source pins remain identical. Acceptance applies only to the precise stated results;
+there is no P196, infinite-safe-orbit or optimality-of-39 claim.
+
+Original source inventories and mixed six-/seven-field TSV history are preserved.
+Any replaced indexed bytes are recovered exactly from Git into a separate
+history path, rather than overwritten or silently relabeled. The
+[reconciliation record](contributions/agent-104/seven-column-kernel/release-integration/index-reconciliation.json) identifies such cases.
+Current tracked concurrent files are included for byte coverage without a new
+mathematical review. Earlier publication statistics retain their historical scope.
+
+Runtime installations, compiled `.olean`/`.ilean` and binary objects, Python
+caches and duplicate dependency/build trees are excluded. Original sources,
+source-recovery maps, complete substantive logs and object/compiler hashes are
+retained. [Exact infrastructure references](contributions/agent-104/seven-column-kernel/release-integration/infrastructure-exclusions.json)
+record known excluded snapshot/object paths and their evidence; no genuine
+research output is intentionally omitted. Lossless compressed evidence has
+stored and decoded hashes, sizes and recovery commands in the inventory.
+The final file list and manifest cover only tracked proof paths plus explicitly
+assigned release files and confirmed frozen merged evidence, not transient work.
+<!-- END AGENT104 REVIEWED INTEGRATION -->
+
+<!-- BEGIN AGENT116 REVIEWED CAP3 -->
+## Agent 116: complete research and review evidence
+
+This update retains Agent116's source, complete finite batches and generators,
+successful and failed development attempts, full substantive compiler and axiom
+logs, independent arithmetic controls, semantic review, and integration evidence.
+Only the endpoints and hypotheses stated in the [review](contributions/agent-116/review/REVIEW.md)
+receive mathematical acceptance. Existing concurrent files receive byte coverage
+without any new mathematical endorsement.
+
+Three pre-existing Agent102 inventory records referred to earlier source bytes.
+The [reconciliation record](contributions/agent-116/integration/index-reconciliation.json) relocates those
+exact historical bytes into an Agent116 archive and indexes current originals
+without altering them. Five exact historical Agent11 dependency modules missing
+from the existing Agent102/109 audit closure are preserved with their reviewed
+commit and hash provenance in `historical-review-deps/`. Four already pinned
+Mathlib imports used by the existing real-weights contribution are recognized
+as external source dependencies by the byte verifier; no Mathlib theorem is
+re-audited or newly trusted by Agent116. Earlier inventory provenance and mixed TSV row formats
+are preserved. Older aggregate statistics retain their historical scope.
+
+Toolchain installations, reproducible `.olean` and `.ilean` objects, Python
+caches, and duplicate build source snapshots are excluded. Their committed
+original sources, source hashes, compiler hashes, commands and complete logs
+remain available. Failed proof development is retained outside the accepted
+aggregate and never presented as a completed theorem. No P196 or infinite-safe-
+orbit result is claimed.
+<!-- END AGENT116 REVIEWED CAP3 -->

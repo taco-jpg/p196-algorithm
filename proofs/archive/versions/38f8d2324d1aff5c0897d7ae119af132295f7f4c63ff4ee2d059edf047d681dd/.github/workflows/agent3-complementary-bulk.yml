@@ -1,0 +1,43 @@
+name: Agent 3 complementary bulk
+on:
+  push:
+    branches: [research/agent3-complementary-bulk-20261015]
+    paths:
+      - 'proofs/contributions/2026-10-15-agent3-complementary-bulk/**'
+      - '.github/workflows/agent3-complementary-bulk.yml'
+  pull_request:
+    paths:
+      - 'proofs/contributions/2026-10-15-agent3-complementary-bulk/**'
+      - '.github/workflows/agent3-complementary-bulk.yml'
+permissions:
+  contents: read
+jobs:
+  lean-core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Fetch exact public repository commit
+        run: |
+          git init .
+          git remote add origin https://github.com/taco-jpg/p196-algorithm.git
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Install checksum-pinned Lean release
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Compile every Agent 3 module from source and audit axioms
+        run: |
+          python proofs/contributions/2026-10-15-agent3-complementary-bulk/verify_lean.py --output "$RUNNER_TEMP/agent3-verification"
+      - name: Independent Python quotient controls
+        run: |
+          python proofs/contributions/2026-10-15-agent3-complementary-bulk/verify.py
+      - name: Retain compiler and axiom logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent3-verification-${{ github.sha }}
+          path: ${{ runner.temp }}/agent3-verification/
+          if-no-files-found: ignore

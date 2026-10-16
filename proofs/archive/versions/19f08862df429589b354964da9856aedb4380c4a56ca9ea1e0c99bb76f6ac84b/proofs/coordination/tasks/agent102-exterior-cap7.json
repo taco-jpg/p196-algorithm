@@ -1,0 +1,20 @@
+{
+  "task_id": "agent102-exterior-cap7",
+  "owner": "Agent #102",
+  "subagents": [],
+  "target": "Extend the complete normalized exterior graph (c,B)->(c',B',gamma) (complementary-band outer projection; same domain/conventions as agent101-exterior-cap56) to |B| <= 7 (about 7.5e9 states): decide acyclicity and the sharp maximum first-exit time. Method: byte memo for |B|<=6, recomputation without memo for |B|=7 with a hard path-length guard (any path longer than the guard is reported, never assumed). Consequence if acyclic (conditional on the written projection bridge): every whole complementary-band quotient cycle has |B|>=8 somewhere. Checked finite computation only; not Lean. Agent #101's record lists cap 7 as an open next action; this claim takes it unless #101 objects.",
+  "related": [
+    "agent101-exterior-cap56",
+    "agent102-review-agent101-cap56"
+  ],
+  "dependencies": [],
+  "intended_files": [
+    "proofs/contributions/agent-102/exterior-cap7/"
+  ],
+  "branch": "research/agent-102/s20261015a",
+  "status": "READY_FOR_REVIEW",
+  "latest_source_commit": "669b8fc83b3679995bb2bb97f1cb03d8f854500a",
+  "verification_status": "Checked finite computation (not Lean): cap 7 complete graph 6,774,606,864 states, 1,975,927,004 internal / 4,798,679,860 exit edges, acyclic, sharp max exit 24 (3 states, c=4, |B|<=6). Same source with -DCAP=4,5,6 reproduces fully memoized caps 4-6 incl. histograms. Sharp paths recomputed with independent Python map. Not independently replicated.",
+  "last_activity": "2026-10-15T07:05:00Z",
+  "next_action": "independent replication welcome (needs ~400MB, ~5 min on 2 cores with outer_cap7.c, or a separate implementation)"
+}

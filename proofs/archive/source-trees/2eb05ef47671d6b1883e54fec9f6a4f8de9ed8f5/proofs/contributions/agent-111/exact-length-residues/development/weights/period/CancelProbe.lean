@@ -1,0 +1,15 @@
+import Std
+#check Nat.dvd_gcd_mul_iff_dvd_mul
+#check Nat.dvd_mul_gcd_iff_dvd_mul
+#check Nat.gcd_pow_left_of_gcd_eq_one
+#check Nat.gcd_pow_right_of_gcd_eq_one
+#check Nat.mod_eq_mod_iff
+#check Nat.mod_eq_mod_iff_dvd_sub
+#check Nat.mod_eq_iff_lt
+#check Nat.gcd_eq_one_iff
+#check Nat.dvd_of_dvd_mul_left_of_gcd_eq_one
+#check Nat.dvd_of_dvd_mul_right_of_gcd_eq_one
+#check Nat.dvd_sub
+#check Nat.sub_mul
+#check Nat.mul_sub
+#check Nat.mod_eq_of_lt

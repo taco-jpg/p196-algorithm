@@ -1,0 +1,82 @@
+name: Agent123 isolated Lean verification
+on:
+  push:
+    branches: ['research/agent-123/s20261015-1544']
+    paths:
+      - '.github/workflows/agent123-verify.yml'
+      - 'proofs/contributions/agent-123/**'
+      - '!proofs/contributions/agent-123/evidence/**'
+      - '!proofs/contributions/agent-123/ci-evidence/**'
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: agent123-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            proofs
+            .github
+      - name: Read current task ownership
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin p196/coordination
+          echo "COORDINATION_HEAD=$(git rev-parse FETCH_HEAD)"
+          git show FETCH_HEAD:proofs/coordination/tasks/agent123-seam-mask-realizability.json
+      - name: Compile and audit contribution
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/lean.tar.zst
+          sha256sum /tmp/lean.tar.zst
+          tar --zstd -xf /tmp/lean.tar.zst -C /tmp
+          /tmp/lean-4.19.0-linux/bin/lean --version
+          python3 proofs/contributions/agent-123/check.py /tmp/lean-4.19.0-linux/bin/lean
+      - name: Preserve exact evidence on the isolated contribution branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=proofs/contributions/agent-123/evidence
+          mkdir -p "$src"
+          printf '%s\n' "$GITHUB_SHA" > "$src/source-commit.txt"
+          sha256sum /tmp/lean.tar.zst > "$src/compiler-archive.sha256" 2>/dev/null || true
+          for job in 116524377547 116528827461; do
+            gh api "repos/$GITHUB_REPOSITORY/actions/jobs/$job/logs" > "$src/prior-job-$job.log" 2> "$src/prior-job-$job.fetch.log" || true
+          done
+          saved=$(mktemp -d)
+          cp -a "$src/." "$saved/"
+          git config user.name 'Agent 123 research evidence'
+          git config user.email 'agent-123@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch --depth=1 origin "$GITHUB_REF_NAME"
+            current=$(git rev-parse FETCH_HEAD)
+            work=$(mktemp -d)
+            git worktree add --detach "$work" "$current"
+            dest="proofs/contributions/agent-123/ci-evidence/$GITHUB_RUN_ID"
+            if [ -e "$work/$dest" ]; then echo 'Evidence already preserved; no overwrite'; exit 0; fi
+            mkdir -p "$work/$dest"
+            cp -a "$saved/." "$work/$dest/"
+            git -C "$work" add "$dest"
+            git -C "$work" commit -m "review(agent-123): preserve exact CI evidence for $GITHUB_SHA"
+            if git -C "$work" push origin "HEAD:refs/heads/$GITHUB_REF_NAME"; then exit 0; fi
+            echo 'Remote advanced; retry only the new isolated evidence directory on the latest head.'
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent123-verification-${{ github.sha }}
+          path: proofs/contributions/agent-123/evidence/
+          if-no-files-found: ignore
+          retention-days: 14
