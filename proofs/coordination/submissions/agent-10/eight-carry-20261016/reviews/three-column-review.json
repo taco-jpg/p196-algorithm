@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/lean_runtime",
+  "review_kind": "ADDITIVE_INTERNAL_INDEPENDENT_SPECIALIST_SOURCE_AND_SEMANTIC_REVIEW",
+  "review_subject_commit": "b170358092047167fef8a5cee165366dbc1e8fd7",
+  "decision": "PASS_NO_BLOCKING_SOURCE_OR_SEMANTIC_ISSUES",
+  "external_github_approval": false,
+  "authored_reviewed_modules": false,
+  "source_mutations_performed": false,
+  "prior_five_module_review": {
+    "path": "/workspace/scratch/4b20b8469eb3/agent10-bridge/review-combined/review.json",
+    "sha256": "73de724598437a48c539d19408d9f23b73c5d88ab7bf9bedd35edae1d4308d68",
+    "unchanged": true,
+    "retained_copy": "evidence/prior-five-module-review.json"
+  },
+  "reviewed_sources": {
+    "Agent10ThreeColumnExclusion": {
+      "path": "proofs/Agent10ThreeColumnExclusion.lean",
+      "sha256": "965c4cb1dd1e32f6778fe144eb775814167d4379a9179e402f711cbc9bafce18",
+      "git_blob": "90d3881785bc6b079993e4f0e35bf28bbf66eb17",
+      "bytes": 11558,
+      "source_commit": "b170358092047167fef8a5cee165366dbc1e8fd7",
+      "snapshot": "sources/Agent10ThreeColumnExclusion.lean",
+      "imports": [
+        "Agent10PrefixExclusion"
+      ],
+      "compiled_source_matches_snapshot": true,
+      "forbidden_proof_shortcut_scan": [],
+      "named_theorem_count": 26
+    },
+    "Agent10ThreeColumnCarry": {
+      "path": "proofs/Agent10ThreeColumnCarry.lean",
+      "sha256": "e884ec38e1561a27aa862ef857e7c65db99c0ed3c73fccefc2bec803cc51701d",
+      "git_blob": "3553839904d4fe647b0e917b07695195008b25a2",
+      "bytes": 10649,
+      "source_commit": "b170358092047167fef8a5cee165366dbc1e8fd7",
+      "snapshot": "sources/Agent10ThreeColumnCarry.lean",
+      "imports": [
+        "Agent10ThreeColumnExclusion"
+      ],
+      "compiled_source_matches_snapshot": true,
+      "forbidden_proof_shortcut_scan": [],
+      "named_theorem_count": 8
+    }
+  },
+  "preserved_prior_carry_success": {
+    "source": "prior-success/three_column_carry_prior_success_d515d9a.lean",
+    "source_sha256": "d515d9a27d8b84e1a5397c30512f69a52155200c2353529362dced614dae13d3",
+    "log": "prior-success/three_column_carry_prior_success_d515d9a.log",
+    "log_sha256": "cd821e3df9854a024ed27ef8d765d0eade42a434be99162e53d9b43c9ee157f1",
+    "exact_final_delta": "prior-success/final-carry-addition.patch",
+    "only_added_corollary_and_axiom_print": true
+  },
+  "checks": [
+    {
+      "id": "source_pins_and_additive_revision",
+      "decision": "PASS",
+      "finding": "Both source snapshots match the final requested SHA-256 pins, the exact sources compiled by canonical build003, and commit b170358092047167fef8a5cee165366dbc1e8fd7. Comparing the final Carry source with its preserved d515d9a successful revision shows only the active-coordinate corollary and its axiom-print command were added. The prior five-module review remains byte-for-byte unchanged.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion",
+        "Agent10ThreeColumnCarry"
+      ],
+      "evidence": "prior-success/final-carry-addition.patch"
+    },
+    {
+      "id": "original_arithmetic_and_namespace_identity",
+      "decision": "PASS",
+      "finding": "The modules import the accepted standalone closure unchanged and place their graph definitions and theorems in Agent10 namespaces. They do not redefine the accepted carry, nextWidth, nextColumns, iterPairs, orbitCount, cappedDiff, smoothPow, or ordinary integer orbit. All thirteen canonical sources use exact source bytes without compatibility adapters. The code-only scan of both new sources found no forbidden proof shortcut or custom axiom.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.next3",
+        "Agent10ThreeColumnExclusion.survives3",
+        "OverflowCarryNormalization.iterPairs",
+        "DifferenceObservability.cappedDiff"
+      ]
+    },
+    {
+      "id": "exact_bounded_state_encoding",
+      "decision": "PASS",
+      "finding": "The encoding is 361*p+19*q+r and decoding is (n/361,n/19%19,n%19). Valid3 supplies 1<=p<=18, q<=18, and r<=18, so the base-19 coefficient bounds make decode_encode3 exact. The source proves this arithmetic interface with ordinary kernel-checked reasoning. It does not assert a decoding identity for arbitrary unbounded second or third coordinates.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.Valid3",
+        "Agent10ThreeColumnExclusion.encode3",
+        "Agent10ThreeColumnExclusion.decode3",
+        "Agent10ThreeColumnExclusion.decode_encode3"
+      ]
+    },
+    {
+      "id": "encoded_recurrence_transport_domain",
+      "decision": "PASS",
+      "finding": "survives3 is defined through survivesCode on encoded states. In survives3_step_of the two current Valid3 hypotheses rewrite decode(encode(s)) and decode(encode(r)) before the selected compatibility test and nextCode transitions. The child survival statement is exactly the encoded next3 state. The trajectory induction supplies validity at every actual state. Thus the actual-history implication does not depend on an unproved unrestricted equivalence between a raw-tuple graph and the encoded graph.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.nextCode",
+        "Agent10ThreeColumnExclusion.compatibleCode",
+        "Agent10ThreeColumnExclusion.survivesCode",
+        "Agent10ThreeColumnCarry.survives3_step_of",
+        "Agent10ThreeColumnCarry.survives3_of_trajectory"
+      ]
+    },
+    {
+      "id": "observation_horizon_and_unconstrained_endpoint",
+      "decision": "PASS",
+      "finding": "survivesCode zero is true. Its successor branch checks compatibility at the current observation, chooses the same bit for both trajectories, and then updates. Therefore survives3 K checks observations at times zero through K-1, with no compatibility requirement at the state after update K. The eight-observation graph exclusion uses times zero through seven; validity at time eight is available from admissibility and is not a ninth carry observation.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.survivesCode",
+        "Agent10ThreeColumnCarry.survives3_of_trajectory",
+        "Agent10ThreeColumnCarry.actual_history_survives3"
+      ]
+    },
+    {
+      "id": "literal_5184_start_coverage",
+      "decision": "PASS",
+      "finding": "The eighteen exclusion_p0 through exclusion_p17 theorems cover outer coefficients one through eighteen. Each checks q in Fin18 and r in Fin16, giving starts (p,q+1,r) and (p,q,r+3), with exactly 18*18*16=5184 possibilities and difference (0,1,-3). The aggregate theorem exhausts every Fin18 outer index by a complete eighteen-way natural-number case split. All eighteen finite family proofs have empty transitive axiom lists.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.EightExcludedAt",
+        "Agent10ThreeColumnExclusion.exclusion_p0",
+        "Agent10ThreeColumnExclusion.exclusion_p17",
+        "Agent10ThreeColumnExclusion.eight_three_prefix_exclusion_fin"
+      ]
+    },
+    {
+      "id": "generic_finite_wrapper_ranges",
+      "decision": "PASS",
+      "finding": "The generic exclusion retains Valid3 on both triples and the three literal offset equations. It chooses outer index p-1, right second coefficient qprime, and left third coefficient z. Positivity and the outer upper bound give p-1<18; the left second bound plus q=qprime+1 gives qprime<18; the right third bound plus zprime=z+3 gives z<16. Both orientations of actual differences are handled later by exchanging the inputs. No admissible boundary value is omitted.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.eight_three_prefix_exclusion"
+      ]
+    },
+    {
+      "id": "low_and_high_carry_coordinates",
+      "decision": "PASS",
+      "finding": "prefix_carries3_exact identifies low1, low2, and low3 with carries at indices one, two, and three. With observedBit3 equal to the actual carry at width-3, the high chain identifies highMiddle, highFirst, and overflow3 with carries at width-2, width-1, and width. The proof uses exact coefficient symmetry through folded_carry_transition for indices zero, one, and two. It includes overlapping reflected coordinates instead of assuming disjoint prefixes.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.observedBit3_value",
+        "Agent10ThreeColumnExclusion.prefix_carries3_exact"
+      ]
+    },
+    {
+      "id": "overlapping_widths_three_and_four",
+      "decision": "PASS",
+      "finding": "At width three the shared input bit is carry0=0, and the high coordinates repeat low coordinates one, two, and three. At width four the input bit is carry1, the high-middle coordinate is carry2, and the high-first coordinate is carry3. The arithmetic proof requires only width>=3 and symmetry; the overlaps cause no additional premise. Independent decimal-normalization controls cover all 180 admissible width-three words and all 342 admissible width-four words.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.prefix_carries3_exact",
+        "Agent10ThreeColumnExclusion.prefix_step3_exact"
+      ],
+      "evidence": "finite-controls.json"
+    },
+    {
+      "id": "exact_next_triple_and_natural_subtraction",
+      "decision": "PASS",
+      "finding": "prefix_step3_exact derives all three output coefficients from the accepted nooverflow and overflow column identities. In the overflow branch carry_bounded and nonzero final carry imply final carry exactly one. The proof explicitly supplies 10*carry1<=q0 where natural subtraction needs it, and normalizes the index-one/two identities before omega. The resulting formulas agree with sums of actual decimal output digits; no integer-subtraction interpretation is substituted for Lean natural subtraction.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.next3",
+        "Agent10ThreeColumnExclusion.prefix_step3_exact",
+        "next_column_no_overflow",
+        "next_column_overflow_outer",
+        "next_column_overflow_interior"
+      ],
+      "evidence": "finite-controls.json"
+    },
+    {
+      "id": "actual_validity_and_width_domain",
+      "decision": "PASS",
+      "finding": "actual_history_survives3 retains Admissible for both initial words and the explicit initial width>=3 premise. Width monotonicity preserves that lower bound for both trajectories. iterPairs_admissible and state3_valid supply Valid3 at every state through the terminal update. Function values beyond the active width are not assumed bounded or equal.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.state3_valid",
+        "Agent10ThreeColumnCarry.actual_history_survives3",
+        "CarryObservabilityActual.iterPairs_width_ge_initial"
+      ]
+    },
+    {
+      "id": "matched_widths_and_shared_bits",
+      "decision": "PASS",
+      "finding": "The full carry hypothesis uses the first trajectory width. matched_widths synchronizes both widths at every needed time using preceding terminal carry equalities. The proof rewrites widths before applying the current carry equality at width-3, which proves equality of observedBit3. Both next3 updates therefore use the same actual control bit. No equality of inner bits is inferred from only the low carry prefix.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.actual_history_survives3",
+        "DifferenceObservability.matched_widths",
+        "Agent10ThreeColumnExclusion.observedBit3"
+      ]
+    },
+    {
+      "id": "selected_compatibility_is_a_necessary_observation",
+      "decision": "PASS",
+      "finding": "compatible3 requires the three low carry equalities, highFirst at width-1, and terminal overflow, under one shared inner bit. The actual transport supplies each equality from the complete carry word after width alignment. highMiddle equality is not required by this graph, so the graph is a necessary relaxation of the full observation. Omitting only the width-1 comparison leaves thirteen abstract eight-observation starts in the independent control; none survive under the selected relation.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.compatible3",
+        "Agent10ThreeColumnCarry.actual_history_survives3"
+      ],
+      "evidence": "finite-controls.json"
+    },
+    {
+      "id": "positive_and_negative_orientation",
+      "decision": "PASS",
+      "finding": "The positive shifted-prefix theorem combines actual eight-observation survival with the finite false result for difference (0,1,-3). The negative theorem exchanges q and r. Before reversing carry equality it transports the index bound through matched_widths, so the asymmetrically bounded full-history hypothesis is used correctly. Its three natural offset equations then match the positive theorem exactly.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.eight_carries_exclude_positive_shifted_prefix",
+        "Agent10ThreeColumnCarry.eight_carries_exclude_negative_shifted_prefix"
+      ]
+    },
+    {
+      "id": "seven_observation_graph_witness_scope",
+      "decision": "PASS",
+      "finding": "seven_three_prefix_survival is an axiom-free Boolean graph result for (16,6,0) and (16,5,3). Independent exploration finds a seven-observation path and no eighth extension for this start. Neither this theorem nor the finite graph calculation claims a realizable decimal collision with seven equal complete carry words, and no optimality conclusion for eight observations follows.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.seven_three_prefix_survival"
+      ],
+      "evidence": "finite-controls.json"
+    },
+    {
+      "id": "q1_count_branches_and_eight_full_words",
+      "decision": "PASS",
+      "finding": "The q1 endpoint assumes width>=2, making index one active, and takes all eight full carry words at times zero through seven. If orbitCount(...,7)>=4, the accepted endpoint-injectivity theorem applies with K=7. Otherwise the all-width seven-transition count lower bound gives count=3. The matched difference formula is then D7=8*smoothPow4(D0), and the final observed carry word bounds D7 in [-9,9], forcing the smoothing to lie in [-1,1]. The count still concerns only transitions zero through six.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.eight_carries_determine_second_pair",
+        "Agent10SevenStepCount.actual_seven_step_count_all_widths",
+        "DifferenceObservability.matched_difference_formula"
+      ]
+    },
+    {
+      "id": "tail_shift_requires_proved_zero_exterior",
+      "decision": "PASS",
+      "finding": "The proof first invokes the earlier universal exterior-pair theorem, so cappedDiff(...,0)=0. It applies smoothPow_tail with shift one and proves every index below one is zero. For g(i)=cappedDiff(...,1+i), this transports the fourth-smoothing unit bound to g while cappedDiff_bounds supplies |g|<=9 at every natural index, including the zero tail. It does not shift past an unproved initial coefficient.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.eight_carries_determine_second_pair",
+        "Agent10PrefixExclusion.eight_carries_determine_exterior_pair",
+        "DifferenceObservability.smoothPow_tail"
+      ]
+    },
+    {
+      "id": "nonzero_second_coefficient_forces_excluded_pattern",
+      "decision": "PASS",
+      "finding": "Assuming q1 differs from r1 makes g0 nonzero because index one is active. The already reviewed smooth_four_nonzero_first_prefix then gives (D1,D2)=(1,-3) or (-1,3). At width>=3 both indices are active, so natural/integer coercion arithmetic converts these to exactly one of the two excluded literal three-column orientations, with D0=0 supplied by exterior equality.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.eight_carries_determine_second_pair",
+        "Agent10PrefixExclusion.smooth_four_nonzero_first_prefix"
+      ]
+    },
+    {
+      "id": "width_two_and_inactive_tail",
+      "decision": "PASS",
+      "finding": "When the q1 theorem has width>=2 but not width>=3, index two is outside the active word. The source uses cappedDiff(...,2)=0, which contradicts the forced value +/-3. It does not assume raw q2=r2 outside the active range. The separate q1 theorem retains width>=2 throughout, so it never constrains the arbitrary q1 tail of a singleton word.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.eight_carries_determine_second_pair",
+        "DifferenceObservability.cappedDiff"
+      ]
+    },
+    {
+      "id": "final_first_two_active_corollary",
+      "decision": "PASS",
+      "finding": "The final corollary quantifies i<2 and i<L. For i=0 it invokes exterior equality; for i=1, the active-index premise yields width>=2 before invoking second-pair equality. Its statement covers every positive admissible width while leaving inactive coordinates unrestricted. The earlier conjunction theorem continues to state its explicit width>=2 premise.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.eight_carries_determine_first_two_pairs",
+        "Agent10ThreeColumnCarry.eight_carries_determine_first_two_active_pairs"
+      ]
+    },
+    {
+      "id": "baseline_scope_and_remaining_interior",
+      "decision": "PASS",
+      "finding": "This extends the previous universal exterior result to the first two active pair-sum coefficients under eight complete observations, without an initial-nonoverflow or small-difference premise. It does not prove equality of arbitrary interior coefficients, all initial digit choices, the initial integers, or the next integers at unrestricted widths. The earlier conditional full-reconstruction theorem and concrete six-observation counterexample retain their original scope. Further shifts would require additional justified observation constraints.",
+      "source_symbols": [
+        "Agent10ThreeColumnCarry.eight_carries_determine_first_two_active_pairs",
+        "Agent10EightCarry",
+        "Agent10SixCarryCounterexample"
+      ]
+    },
+    {
+      "id": "complete_canonical_kernel_evidence",
+      "decision": "PASS",
+      "finding": "The separate fresh thirteen-module canonical build at the reviewed commit passed. This reviewer verified all twenty-nine manifest entries, all thirteen source hashes against the commit, all fourteen successful commands and log hashes, and every one of the 1244 unique theorem-origin axiom records. The two new modules contribute 77 and 45 declarations, including generated declarations. All thirty-four new public theorem types are retained, and the thirty-two source axiom prints agree with the exhaustive records. The two helpers without source prints are covered by the exhaustive audit. No new-module axiom declarations or disallowed theorem dependencies occur.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion",
+        "Agent10ThreeColumnCarry"
+      ],
+      "evidence": "canonical-build-evidence.json"
+    },
+    {
+      "id": "independent_finite_arithmetic_and_graph_controls",
+      "decision": "PASS",
+      "finding": "A separately implemented decimal-output-digit transition agrees with the source subtraction formula for all 6498 valid triples and both bits, totaling 12996 transitions. Every checked successor remains valid, with no validity-based pruning of graph paths. Independent breadth-first exploration excludes all 5184 starts after eight observations, with surviving-start counts [3870,2355,1345,774,413,160,42,0]. These finite controls corroborate the reviewed kernel proofs and do not replace them.",
+      "source_symbols": [
+        "Agent10ThreeColumnExclusion.next3",
+        "Agent10ThreeColumnExclusion.encode3",
+        "Agent10ThreeColumnExclusion.decode3",
+        "Agent10ThreeColumnExclusion.eight_three_prefix_exclusion_fin"
+      ],
+      "evidence": "finite-controls.json"
+    }
+  ],
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    {
+      "id": "INTERNAL_REVIEW_ATTRIBUTION",
+      "severity": "PROVENANCE_NOTE",
+      "description": "The source author, canonical-build executor, evidence validator, and nonauthor semantic reviewer are internal collaborators. This receipt is not external GitHub approval or maintainer acceptance."
+    },
+    {
+      "id": "HISTORICAL_VERIFIER_AGENT_FIELD",
+      "severity": "PROVENANCE_NOTE",
+      "description": "The immutable inherited verifier field remains Agent #1. Build003 was launched by Agent #10 parent /root; the separate validation attribution is recorded explicitly."
+    },
+    {
+      "id": "INHERITED_UNSAFE_IMPLEMENTATION_DECLARATIONS",
+      "severity": "TRUST_SCOPE_NOTE",
+      "count": 13,
+      "module": "Lychrel196Research",
+      "in_any_theorem_axiom_list": false,
+      "new_module_occurrences": 0
+    }
+  ],
+  "canonical_kernel_evidence": {
+    "record": "canonical-build-evidence.json",
+    "record_sha256": "5e89f3940a19cf17278c875aa9d0db07a5118bbb1c0752d36c3bbb9da82051cc",
+    "status": "PASS",
+    "source_commit": "b170358092047167fef8a5cee165366dbc1e8fd7",
+    "report": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-003/verification.json",
+    "report_sha256": "1697fa98fa01bd33ec990ca70858ad39182ff98c62dc82c3e811a0fb5d89e4cb",
+    "fresh_module_builds": 13,
+    "successful_lean_commands": 14,
+    "theorem_declarations": 1244,
+    "new_module_theorem_counts": {
+      "Agent10ThreeColumnExclusion": 77,
+      "Agent10ThreeColumnCarry": 45
+    },
+    "public_endpoints_checked": 83,
+    "new_public_endpoints_checked": 34,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "reviewer_reran_full_build": false,
+    "separate_specialist_validation": {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-003-specialist-validation.json",
+      "sha256": "97de69b3f66f86c6e04cf46ed56ff587cd31e6980c02b5c7f7390cd4c6d4b741",
+      "validator": "/root/formalization_scout",
+      "status": "PASS"
+    }
+  },
+  "finite_controls": {
+    "record": "finite-controls.json",
+    "record_sha256": "396eefba7d2d238b7c7a79a3962b3443fc20ad85c1243b44c5c231b922933012",
+    "script": "finite_controls.py",
+    "script_sha256": "d6cb7771c2a323627d9f80d5bd47de93c01079b94dadc358ed4d99c95c1f44e1",
+    "status": "PASS",
+    "valid_states": 6498,
+    "state_bit_transitions": 12996,
+    "literal_initial_pairs": 5184,
+    "width_three_words": 180,
+    "width_four_words": 342
+  },
+  "endpoint_types": {
+    "record": "reviewed-endpoint-types.json",
+    "sha256": "8e9988bba150f5b548c55cb1e6ebbc3c8dba887a54f49608272de124db5ea114",
+    "count": 34
+  },
+  "new_module_axiom_records": {
+    "record": "reviewed-new-module-axioms.json",
+    "sha256": "fc66245f9c9bb60a66b4db466896982bce59723156ba6074ea3053c6b0cf1e2d",
+    "count": 122
+  },
+  "runtime_investigation": {
+    "path": "/workspace/scratch/4b20b8469eb3/agent10-bridge/runtime-threecolumn/runtime-review.json",
+    "sha256": "080cad8875bf72a7cd06015f0e702ce477ff3e853a9594110f40e217a5f9abba",
+    "representative_encoded_family_starts": 288,
+    "representative_wall_seconds": 2.81420194599923,
+    "representative_peak_rss_kib": 700504,
+    "classification": "Runtime measurement and representation guidance; not an additional mathematical hypothesis."
+  },
+  "limitations": [
+    "Internal independent specialist review by a non-author of the two reviewed modules, not external GitHub approval or independent maintainer acceptance.",
+    "The result concerns admissible coefficient words at a shared initial width and eight complete carry observations, including the final carry of each word. It does not apply to only overflow bits or a partial low-carry prefix.",
+    "The universal conclusion is equality at active indices below two. The separate q1 theorem requires width at least two; the active-coordinate corollary does not constrain inactive singleton tails.",
+    "No unrestricted full pair-sum, initial-digit, initial-integer, or next-integer reconstruction follows from these endpoint statements, and no Lychrel existence or palindrome-avoidance theorem is claimed.",
+    "Seven-observation graph survival is not an actual seven-observation decimal collision, so this extension does not establish an optimal observation count.",
+    "The fresh canonical gate covers the selected thirteen-module closure, not every file in the repository. The reviewer inspected that separate execution rather than rerunning the full closure.",
+    "Python finite controls and measured compiler resources corroborate specific risks; they are not substitutes for Lean kernel checking or measured worst-case resource bounds."
+  ]
+}

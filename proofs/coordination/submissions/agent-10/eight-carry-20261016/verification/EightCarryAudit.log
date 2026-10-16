@@ -1,0 +1,151 @@
+Agent10EightCarryCounterexample.left_canonical :
+  DecimalDigits.Canonical 90000000560706169 Agent10EightCarryCounterexample.leftDigits 17
+Agent10EightCarryCounterexample.right_canonical :
+  DecimalDigits.Canonical 90000000806235169 Agent10EightCarryCounterexample.rightDigits 17
+Agent10EightCarryCounterexample.left_widths (t : Nat) (ht : t ≤ 8) :
+  (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst =
+    Agent10EightCarryCounterexample.traceWidth t
+Agent10EightCarryCounterexample.right_widths (t : Nat) (ht : t ≤ 8) :
+  (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst =
+    Agent10EightCarryCounterexample.traceWidth t
+Agent10EightCarryCounterexample.widths_agree (t : Nat) (ht : t ≤ 8) :
+  (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst =
+    (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst
+Agent10EightCarryCounterexample.eight_complete_carries (t : Nat) :
+  t < 8 →
+    ∀ (i : Nat),
+      i ≤ (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst →
+        DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd
+            i =
+          DecimalDigits.carry
+            (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i
+Agent10EightCarryCounterexample.initial_pair_sums_differ :
+  Agent10EightCarryCounterexample.leftColumns 3 = 6 ∧ Agent10EightCarryCounterexample.rightColumns 3 = 5
+Agent10EightCarryCounterexample.next_integer_values :
+  Lychrel196.step 90000000560706169 = 186160707060706178 ∧ Lychrel196.step 90000000806235169 = 186153261606235178
+Agent10EightCarryCounterexample.next_integers_differ :
+  Lychrel196.step 90000000560706169 ≠ Lychrel196.step 90000000806235169
+Agent10EightCarryCounterexample.numeric_orbit_representations (t : Nat) (_ht : t ≤ 8) :
+  (∃ d,
+      DecimalDigits.Canonical (Lychrel196.orbit 90000000560706169 t) d
+          (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst ∧
+        ∀ (i : Nat),
+          i < (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst →
+            DecimalDigits.columnSum d
+                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst i =
+              (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd i) ∧
+    ∃ e,
+      DecimalDigits.Canonical (Lychrel196.orbit 90000000806235169 t) e
+          (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst ∧
+        ∀ (i : Nat),
+          i < (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst →
+            DecimalDigits.columnSum e
+                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst i =
+              (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i
+Agent10EightCarryCounterexample.ninth_carry_differs :
+  DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 8).snd 4 =
+      1 ∧
+    DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 8).snd 4 =
+      0
+Agent10EightCarryCounterexample.initial_pair_difference_active :
+  3 < 17 ∧ Agent10EightCarryCounterexample.leftColumns 3 ≠ Agent10EightCarryCounterexample.rightColumns 3
+Agent10EightCarryCounterexample.first_separation_at_eight :
+  (∀ (t : Nat),
+      t < 8 →
+        ∀ (i : Nat),
+          i ≤ (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst →
+            DecimalDigits.carry
+                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd i =
+              DecimalDigits.carry
+                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i) ∧
+    ∃ i,
+      i ≤ (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 8).fst ∧
+        DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 8).snd
+            i ≠
+          DecimalDigits.carry
+            (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 8).snd i
+Agent10EightCarryCounterexample.eight_carry_counterexample :
+  DecimalDigits.Canonical 90000000560706169 Agent10EightCarryCounterexample.leftDigits 17 ∧
+    DecimalDigits.Canonical 90000000806235169 Agent10EightCarryCounterexample.rightDigits 17 ∧
+      (∀ (t : Nat),
+          t < 8 →
+            ∀ (i : Nat),
+              i ≤ (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst →
+                DecimalDigits.carry
+                    (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd i =
+                  DecimalDigits.carry
+                    (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i) ∧
+        Agent10EightCarryCounterexample.leftColumns 3 ≠ Agent10EightCarryCounterexample.rightColumns 3 ∧
+          Lychrel196.step 90000000560706169 ≠ Lychrel196.step 90000000806235169
+Agent10EightCarryCounterexample.palindrome_values_at_four :
+  Lychrel196.orbit 90000000560706169 4 = 16999899899899899961 ∧
+    Lychrel196.orbit 90000000806235169 4 = 16989989999998998961
+Agent10EightCarryCounterexample.first_palindromes_at_four :
+  (∀ (t : Nat),
+      t < 4 →
+        ¬Lychrel196.Palindrome (Lychrel196.orbit 90000000560706169 t) ∧
+          ¬Lychrel196.Palindrome (Lychrel196.orbit 90000000806235169 t)) ∧
+    Lychrel196.Palindrome (Lychrel196.orbit 90000000560706169 4) ∧
+      Lychrel196.Palindrome (Lychrel196.orbit 90000000806235169 4)
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_1 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_9 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.inputColumns.eq_1 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.numeric_orbit_representations : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.eight_carry_counterexample : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_23 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.palindrome_prefix_fin : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_19 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.eight_complete_carries : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.widths_agree : [propext, Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.right_canonical : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_18 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_6 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.right_widths : [propext, Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_21 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.first_palindromes_at_four : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.actual_trace._proof_10 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.digit_bounds_fin : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.initial_pair_difference_active : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.trace_steps_fin : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.left_widths : [propext, Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.actual_trace : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.eight_complete_carries._proof_14 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_22 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_4 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.eight_complete_carries._proof_16 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.eight_complete_carries._proof_15 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_5 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.left_canonical : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_20 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.actual_trace._proof_13 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_8 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.actual_trace._proof_11 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.trace_width_bound_fin : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.next_integer_values : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_7 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.initial_trace_fin : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.next_integers_differ : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_3 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_17 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.ninth_carry_differs : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.palindrome_values_at_four : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_2 : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.trace_carries_fin : []
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.actual_trace._proof_12 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.initial_pair_sums_differ : []
+AUDIT_THEOREM Agent10EightCarryCounterexample Agent10EightCarryCounterexample.first_separation_at_eight : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent10EightCarryCounterexample _private.Agent10EightCarryCounterexample.0._proof_24 : []
+FULL_MODULE_AUDIT theorems=48 union=[Quot.sound, propext]

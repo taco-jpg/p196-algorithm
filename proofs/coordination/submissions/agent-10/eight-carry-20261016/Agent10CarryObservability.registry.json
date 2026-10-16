@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped Agent #10 candidate registry; repository-wide completeness and external independent acceptance are not asserted."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent10-carry-observability": {
+      "scope": "Scoped carry-observability results for unchanged ordinary decimal dynamics: at least three nonoverflows among seven actual transitions at every admissible width; eight complete carry words reconstruct all pair sums under a difference bound of five or initial nonoverflow and hence determine the next integer at shared canonical width; eight words always reconstruct the exterior pair sum; explicit canonical integers show that six words do not determine pair sums or the next integer. No arbitrary-width full eight-word reconstruction or P196 conclusion.",
+      "roots": [
+        "Agent10PrefixExclusion",
+        "Agent10SixCarryCounterexample"
+      ],
+      "modules": {
+        "Lychrel196Research": {
+          "path": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+          "sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+          "git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506",
+          "imports": [
+            "Std"
+          ]
+        },
+        "PrefixCarryBound": {
+          "path": "proofs/PrefixCarryBound__455b2da92054832d.lean",
+          "sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+          "git_blob": "925f1954f5ab5857f602f679764d149eb67416b7",
+          "imports": [
+            "Std"
+          ]
+        },
+        "ActualCarryObservability": {
+          "path": "proofs/ActualCarryObservability__03355aec74748bfc.lean",
+          "sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+          "git_blob": "8bfe81cb2e9e928609df8265d5d9a3605eaeed1e",
+          "imports": [
+            "Lychrel196Research",
+            "PrefixCarryBound"
+          ]
+        },
+        "DifferenceObservability": {
+          "path": "proofs/DifferenceObservability__302efefb5b9eab49.lean",
+          "sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+          "git_blob": "d0727d391ee901ddaa782c218f493a23b8aadff3",
+          "imports": [
+            "ActualCarryObservability"
+          ]
+        },
+        "Agent10SmoothingBoundary": {
+          "path": "proofs/Agent10SmoothingBoundary.lean",
+          "sha256": "1bc8dcb2f189cc2c08490df5fd499a92b0a0c3d9ed911cb945fd38d73067fa28",
+          "git_blob": "3b45e67c0e36775b3ee073e85d6444e63b9ed277",
+          "imports": [
+            "Std"
+          ]
+        },
+        "Agent10SmoothingBridge": {
+          "path": "proofs/Agent10SmoothingBridge.lean",
+          "sha256": "65f03279fce8dc05e621b293427def6c13a8f851f59091a4837dbf5f5b42defb",
+          "git_blob": "ac0bbc986468aa7c3435ff242a43d8f400b356e5",
+          "imports": [
+            "DifferenceObservability",
+            "Agent10SmoothingBoundary"
+          ]
+        },
+        "Agent10SevenStepCount": {
+          "path": "proofs/Agent10SevenStepCount.lean",
+          "sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+          "git_blob": "29f192e8a2f5e9451c6cd83dcb3d36dddc38b03c",
+          "imports": [
+            "DifferenceObservability"
+          ]
+        },
+        "Agent10EightCarry": {
+          "path": "proofs/Agent10EightCarry.lean",
+          "sha256": "ba15b5bcd651301e0356c420fc41881909c7a5ae87c4d1b859668a0b4fb05e3b",
+          "git_blob": "54ece8d9b8e94bbac99942d4f9c25e3baa4934ee",
+          "imports": [
+            "Agent10SevenStepCount",
+            "Agent10SmoothingBridge"
+          ]
+        },
+        "Agent10PrefixWitness": {
+          "path": "proofs/Agent10PrefixWitness.lean",
+          "sha256": "905da6327bcbd3c643a92f97657fe64145bd2d73e1f342c649fd929ad6a30f95",
+          "git_blob": "165119ce4e5db2b77eb8b7d1201dab8565037d25",
+          "imports": [
+            "PrefixCarryBound"
+          ]
+        },
+        "Agent10PrefixExclusion": {
+          "path": "proofs/Agent10PrefixExclusion.lean",
+          "sha256": "99225f5b59438920644489f169da4b2cbfbd5893771ef46f24703a1a04e47929",
+          "git_blob": "e39ec37e56533e89b80afdd3e0898e4536208976",
+          "imports": [
+            "Agent10EightCarry",
+            "Agent10PrefixWitness"
+          ]
+        },
+        "Agent10SixCarryCounterexample": {
+          "path": "proofs/Agent10SixCarryCounterexample.lean",
+          "sha256": "b4277ca76c6ad874db41933735ae7b677990e120e0bc5be01f9c0579c882f869",
+          "git_blob": "00ecf69821a60f6679f2d8e75a31a220c2e9afe7",
+          "imports": [
+            "ActualCarryObservability"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A10-EIGHT-CARRY",
+      "project": "agent10-carry-observability",
+      "endpoints": [
+        "Agent10SmoothingBoundary.prefix_rigidity",
+        "Agent10SmoothingBoundary.four_rigidity_at_five",
+        "Agent10SmoothingBoundary.witness_zero_after",
+        "Agent10SmoothingBoundary.witness_symmetric",
+        "Agent10SmoothingBoundary.witness_bounds",
+        "Agent10SmoothingBoundary.four_witness_zero_after",
+        "Agent10SmoothingBoundary.four_witness_bounds",
+        "Agent10SmoothingBoundary.six_is_not_rigid",
+        "Agent10SmoothingBoundary.sharp_threshold",
+        "Agent10SmoothingBridge.four_eq_smoothPow",
+        "Agent10SmoothingBridge.smooth_four_rigidity_at_five",
+        "Agent10SmoothingBridge.smooth_four_symmetric_counterexample",
+        "Agent10SmoothingBridge.eight_carries_small_difference",
+        "Agent10SmoothingBridge.initial_nonoverflow_difference_bound",
+        "Agent10SmoothingBridge.eight_carries_initial_nonoverflow",
+        "Agent10SevenStepCount.rank_seven_minimum_fin",
+        "Agent10SevenStepCount.rank_seven_minimum",
+        "Agent10SevenStepCount.seven_step_minimum",
+        "Agent10SevenStepCount.seven_step_path_bound",
+        "Agent10SevenStepCount.seven_step_trajectory_bound",
+        "Agent10SevenStepCount.actual_seven_step_count",
+        "Agent10SevenStepCount.singleton_seven_count",
+        "Agent10SevenStepCount.actual_seven_step_count_all_widths",
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_small_difference",
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_initial_nonoverflow",
+        "Agent10EightCarry.eight_carry_words_determine_next_integer_of_initial_nonoverflow"
+      ]
+    },
+    {
+      "id": "A10-PREFIXWITNESS",
+      "project": "agent10-carry-observability",
+      "endpoints": [
+        "Agent10PrefixWitness.seven_prefix_exclusion_fin",
+        "Agent10PrefixWitness.six_prefix_survival",
+        "Agent10PrefixWitness.seven_prefix_exclusion"
+      ]
+    },
+    {
+      "id": "A10-PREFIXEXCLUSION",
+      "project": "agent10-carry-observability",
+      "endpoints": [
+        "Agent10PrefixExclusion.survives_step_of",
+        "Agent10PrefixExclusion.survives_of_trajectory",
+        "Agent10PrefixExclusion.actual_history_survives",
+        "Agent10PrefixExclusion.seven_carries_exclude_positive_witness_prefix",
+        "Agent10PrefixExclusion.seven_carries_exclude_negative_witness_prefix",
+        "Agent10PrefixExclusion.smooth_four_first_coefficients",
+        "Agent10PrefixExclusion.smooth_four_nonzero_first_prefix",
+        "Agent10PrefixExclusion.eight_carries_determine_exterior_pair"
+      ]
+    },
+    {
+      "id": "A10-SIXCARRYCOUNTEREXAMPLE",
+      "project": "agent10-carry-observability",
+      "endpoints": [
+        "Agent10SixCarryCounterexample.left_canonical",
+        "Agent10SixCarryCounterexample.right_canonical",
+        "Agent10SixCarryCounterexample.left_widths",
+        "Agent10SixCarryCounterexample.right_widths",
+        "Agent10SixCarryCounterexample.widths_agree",
+        "Agent10SixCarryCounterexample.six_complete_carries",
+        "Agent10SixCarryCounterexample.initial_pair_sums_differ",
+        "Agent10SixCarryCounterexample.next_integer_values",
+        "Agent10SixCarryCounterexample.next_integers_differ",
+        "Agent10SixCarryCounterexample.numeric_orbit_representations",
+        "Agent10SixCarryCounterexample.seventh_carry_differs",
+        "Agent10SixCarryCounterexample.six_carry_counterexample"
+      ]
+    }
+  ],
+  "source_baseline": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "inherited_checkpoint_tree": "0be52bafd3478077b96ec1f8e702b2cf58dec8ba",
+  "global_accepted_registry_modified": false,
+  "proof_source_attribution": "Agent #10 parent and genuine specialists: formalization_scout authored SevenStepCount and SixCarryCounterexample; eight_carry_semantics authored PrefixWitness and PrefixExclusion; parent authored EightCarry. SmoothingBoundary/Bridge are retained byte-identical from the previous Agent #10 checkpoint. lean_runtime independently reviewed the five new modules without authoring them. No external acceptance is asserted.",
+  "prior_scoped_registry_preserved": "proofs/Agent10EightCarry.registry.json"
+}

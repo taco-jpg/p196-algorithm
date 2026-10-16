@@ -1,0 +1,664 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/lean_runtime",
+  "review_kind": "INTERNAL_INDEPENDENT_SPECIALIST_SOURCE_AND_SEMANTIC_REVIEW",
+  "review_subject_commit": "519b385072822035720fc9f9ae65eeaa185bc291",
+  "decision": "PASS_NO_BLOCKING_SOURCE_OR_SEMANTIC_ISSUES",
+  "external_github_approval": false,
+  "authored_reviewed_modules": false,
+  "source_mutations_performed": false,
+  "reviewed_sources": {
+    "Agent10SevenStepCount": {
+      "path": "proofs/Agent10SevenStepCount.lean",
+      "sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+      "git_blob": "29f192e8a2f5e9451c6cd83dcb3d36dddc38b03c",
+      "bytes": 5497,
+      "working_tree_matches_commit": true,
+      "preserved_review_copy": "sources/Agent10SevenStepCount.lean",
+      "forbidden_proof_shortcut_scan": [],
+      "imports": [
+        "DifferenceObservability"
+      ]
+    },
+    "Agent10EightCarry": {
+      "path": "proofs/Agent10EightCarry.lean",
+      "sha256": "ba15b5bcd651301e0356c420fc41881909c7a5ae87c4d1b859668a0b4fb05e3b",
+      "git_blob": "54ece8d9b8e94bbac99942d4f9c25e3baa4934ee",
+      "bytes": 3824,
+      "working_tree_matches_commit": true,
+      "preserved_review_copy": "sources/Agent10EightCarry.lean",
+      "forbidden_proof_shortcut_scan": [],
+      "imports": [
+        "Agent10SevenStepCount",
+        "Agent10SmoothingBridge"
+      ]
+    },
+    "Agent10PrefixWitness": {
+      "path": "proofs/Agent10PrefixWitness.lean",
+      "sha256": "905da6327bcbd3c643a92f97657fe64145bd2d73e1f342c649fd929ad6a30f95",
+      "git_blob": "165119ce4e5db2b77eb8b7d1201dab8565037d25",
+      "bytes": 2047,
+      "working_tree_matches_commit": true,
+      "preserved_review_copy": "sources/Agent10PrefixWitness.lean",
+      "forbidden_proof_shortcut_scan": [],
+      "imports": [
+        "PrefixCarryBound"
+      ]
+    },
+    "Agent10PrefixExclusion": {
+      "path": "proofs/Agent10PrefixExclusion.lean",
+      "sha256": "99225f5b59438920644489f169da4b2cbfbd5893771ef46f24703a1a04e47929",
+      "git_blob": "e39ec37e56533e89b80afdd3e0898e4536208976",
+      "bytes": 9468,
+      "working_tree_matches_commit": true,
+      "preserved_review_copy": "sources/Agent10PrefixExclusion.lean",
+      "forbidden_proof_shortcut_scan": [],
+      "imports": [
+        "Agent10EightCarry",
+        "Agent10PrefixWitness"
+      ]
+    },
+    "Agent10SixCarryCounterexample": {
+      "path": "proofs/Agent10SixCarryCounterexample.lean",
+      "original_review_input": "/workspace/scratch/4b20b8469eb3/agent10-count/Agent10SixCarryCounterexample.lean",
+      "sha256": "b4277ca76c6ad874db41933735ae7b677990e120e0bc5be01f9c0579c882f869",
+      "git_blob": "00ecf69821a60f6679f2d8e75a31a220c2e9afe7",
+      "bytes": 9427,
+      "source_commit": "519b385072822035720fc9f9ae65eeaa185bc291",
+      "working_tree_matches_commit": true,
+      "preserved_review_copy": "sources/Agent10SixCarryCounterexample.lean",
+      "forbidden_proof_shortcut_scan": [],
+      "imports": [
+        "ActualCarryObservability"
+      ]
+    }
+  },
+  "reviewed_dependency_sources": {
+    "Lychrel196Research": {
+      "path": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+      "sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+      "build_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+      "imports": [
+        "Std"
+      ],
+      "adapter": null
+    },
+    "PrefixCarryBound": {
+      "path": "proofs/PrefixCarryBound__455b2da92054832d.lean",
+      "sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+      "build_sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+      "imports": [
+        "Std"
+      ],
+      "adapter": null
+    },
+    "ActualCarryObservability": {
+      "path": "proofs/ActualCarryObservability__03355aec74748bfc.lean",
+      "sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+      "build_sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+      "imports": [
+        "Lychrel196Research",
+        "PrefixCarryBound"
+      ],
+      "adapter": null
+    },
+    "DifferenceObservability": {
+      "path": "proofs/DifferenceObservability__302efefb5b9eab49.lean",
+      "sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+      "build_sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+      "imports": [
+        "ActualCarryObservability"
+      ],
+      "adapter": null
+    },
+    "Agent10SmoothingBoundary": {
+      "path": "proofs/Agent10SmoothingBoundary.lean",
+      "sha256": "1bc8dcb2f189cc2c08490df5fd499a92b0a0c3d9ed911cb945fd38d73067fa28",
+      "build_sha256": "1bc8dcb2f189cc2c08490df5fd499a92b0a0c3d9ed911cb945fd38d73067fa28",
+      "imports": [
+        "Std"
+      ],
+      "adapter": null
+    },
+    "Agent10SmoothingBridge": {
+      "path": "proofs/Agent10SmoothingBridge.lean",
+      "sha256": "65f03279fce8dc05e621b293427def6c13a8f851f59091a4837dbf5f5b42defb",
+      "build_sha256": "65f03279fce8dc05e621b293427def6c13a8f851f59091a4837dbf5f5b42defb",
+      "imports": [
+        "DifferenceObservability",
+        "Agent10SmoothingBoundary"
+      ],
+      "adapter": null
+    },
+    "Agent10SevenStepCount": {
+      "path": "proofs/Agent10SevenStepCount.lean",
+      "sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+      "build_sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+      "imports": [
+        "DifferenceObservability"
+      ],
+      "adapter": null
+    },
+    "Agent10EightCarry": {
+      "path": "proofs/Agent10EightCarry.lean",
+      "sha256": "ba15b5bcd651301e0356c420fc41881909c7a5ae87c4d1b859668a0b4fb05e3b",
+      "build_sha256": "ba15b5bcd651301e0356c420fc41881909c7a5ae87c4d1b859668a0b4fb05e3b",
+      "imports": [
+        "Agent10SevenStepCount",
+        "Agent10SmoothingBridge"
+      ],
+      "adapter": null
+    }
+  },
+  "checks": [
+    {
+      "id": "definitions_and_namespaces",
+      "decision": "PASS",
+      "finding": "The new modules add theorems in Agent10 namespaces and import the accepted operators unchanged. They do not redefine carry, nextColumns, nextWidth, iterPairs, orbitCount, cappedDiff, or the ordinary step map. The code-only source scan found no proof shortcut or custom axiom.",
+      "source_symbols": [
+        "Agent10SevenStepCount",
+        "Agent10EightCarry",
+        "CarryObservabilityActual.orbitCount",
+        "OverflowCarryNormalization.iterPairs"
+      ]
+    },
+    {
+      "id": "count_horizon_quantifiers",
+      "decision": "PASS",
+      "finding": "orbitCount q L 7 sums the nooverflow indicators at t=0,...,6. seven_step_trajectory_bound assumes transitions and count increments exactly for t<7, uses valid states through t=7, starts count 0=0, and concludes 3<=count 7. The final rank term is rank 0=0. There is no count premise in actual_seven_step_count_all_widths.",
+      "source_symbols": [
+        "CarryHistory.noOverflowCount",
+        "Agent10SevenStepCount.seven_step_trajectory_bound",
+        "Agent10SevenStepCount.actual_seven_step_count_all_widths"
+      ]
+    },
+    {
+      "id": "rank_data_trust",
+      "decision": "PASS",
+      "finding": "rank_seven_minimum_fin covers Fin18 x Fin19, exactly p=1,...,18 and q=0,...,18, the 342 Valid states. Its proof uses decide +kernel. The imported rank_step_fin checks all 9 horizons x342 states x2 bits; rank_le_minCost applies at horizon7 because 7<=9. Generated rankBlob data gain force only through these kernel-checked local inequalities. Both new finite decisions have empty transitive axiom lists in the canonical audit. The independent Python control also verified all 6156 inequalities and the graph minimum at horizon7.",
+      "source_symbols": [
+        "CarryObservability.rankBlob",
+        "CarryObservability.rank",
+        "CarryObservability.rank_step_fin",
+        "CarryObservability.rank_le_minCost",
+        "Agent10SevenStepCount.rank_seven_minimum_fin"
+      ]
+    },
+    {
+      "id": "actual_word_transport",
+      "decision": "PASS",
+      "finding": "For initial L>=2, iterPairs_width_ge_initial preserves the two-column domain. prefix_valid, prefix_step_exact, and cost_eq_nooverflow identify the actual first two pair-sum coefficients, actual observed inner carry, exact graph update, and true nooverflow cost. Their hypotheses include the overlapping width-two and width-three cases. The source does not assume an arbitrary necessary-graph path is numerically realizable. It maps every admissible trajectory into that graph.",
+      "source_symbols": [
+        "CarryObservabilityActual.prefix_valid",
+        "CarryObservabilityActual.prefix_step_exact",
+        "CarryObservabilityActual.cost_eq_nooverflow",
+        "Agent10SevenStepCount.actual_seven_step_count"
+      ]
+    },
+    {
+      "id": "singleton_exhaustion",
+      "decision": "PASS",
+      "finding": "When L<2, Admissible gives 0<L, hence L=1. It also gives 1<=q0<=18. The Fin18 enumeration of a.val+1 therefore includes every possible singleton coefficient. Admissible singleton coefficients satisfy additional evenness; checking odd values as well only strengthens the finite statement. orbitCount_congr transports the result from the constant representative to q using equality solely on i<1, so no equality of irrelevant function tails is assumed.",
+      "source_symbols": [
+        "FoldedDecimal.Admissible",
+        "Agent10SevenStepCount.singleton_seven_count",
+        "CarryObservabilityActual.orbitCount_congr",
+        "Agent10SevenStepCount.actual_seven_step_count_all_widths"
+      ]
+    },
+    {
+      "id": "eight_full_observations",
+      "decision": "PASS",
+      "finding": "hc quantifies t<8, meaning t=0,...,7, and every carry index i<=the current width, including the final overflow carry. The first seven transition updates are followed by the endpoint observation at t=7. That endpoint word supplies the terminal difference bound and is not included in orbitCount(...,7). Equal initial widths plus matched final carry values inductively synchronize both width trajectories; no hidden equal-width hypothesis was dropped. The result does not cover partial carry prefixes or overflow bits alone.",
+      "source_symbols": [
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_small_difference",
+        "DifferenceObservability.matched_widths",
+        "CarryHistory.iterPairs_endpoint_carry_history_injective"
+      ]
+    },
+    {
+      "id": "high_count_branch",
+      "decision": "PASS",
+      "finding": "When orbitCount q L 7>=4, the accepted iterPairs_endpoint_carry_history_injective theorem is applied with K=7. Its carry hypothesis uses t<=7, exactly supplied by hc t<8, and its four-nooverflow hypothesis is hN. Both original Admissible hypotheses are retained.",
+      "source_symbols": [
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_small_difference",
+        "CarryHistory.iterPairs_endpoint_carry_history_injective"
+      ]
+    },
+    {
+      "id": "exactly_three_branch",
+      "decision": "PASS",
+      "finding": "If the high-count branch fails, the new all-width lower bound gives count>=3, so natural-number arithmetic forces count=3. The inherited matched difference formula gives D7=8*smoothPow4(D0). The t=7 full carry word bounds D7 in [-9,9], forcing the integer smoothing into [-1,1]. The explicit input bound |D0|<=5 then invokes the proved fourth-smoothing rigidity. The source retains this bound and preserves the zero-extension convention through cappedDiff.",
+      "source_symbols": [
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_small_difference",
+        "Agent10SmoothingBridge.eight_carries_small_difference",
+        "DifferenceObservability.matched_difference_formula",
+        "DifferenceObservability.cappedDiff_bounds",
+        "Agent10SmoothingBridge.smooth_four_rigidity_at_five"
+      ]
+    },
+    {
+      "id": "initial_nonoverflow_bound",
+      "decision": "PASS",
+      "finding": "The initial-nonoverflow wrapper supplies only the first two full observations to the inherited bound. carry q L=0 gives orbitCount q L1=1, hence D1=2*D0. Matching carries at t=1 gives |D1|<=9, so integral D0 lies in [-4,4], which implies the required [-5,5] bound. Matching the initial final carry also transfers nonoverflow to r; no separate unproved nonoverflow assumption for r is needed. The new theorem no longer assumes any seven-step count equation.",
+      "source_symbols": [
+        "Agent10SmoothingBridge.initial_nonoverflow_difference_bound",
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_initial_nonoverflow"
+      ]
+    },
+    {
+      "id": "ordinary_integer_conclusion",
+      "decision": "PASS",
+      "finding": "The numeric theorem retains Canonical n d L and Canonical m e L at the same positive initial width. canonical_admissible turns the actual columnSum words into admissible inputs. Pair-sum equality on i<L implies equality of their unnormalized finite values by value_congr. step_eq_word_value equates each such value with the corresponding ordinary Lychrel196.step. Thus the conclusion is exactly step n=step m. It does not assert n=m or recovery of the initial digit splitting.",
+      "source_symbols": [
+        "Agent10EightCarry.eight_carry_words_determine_next_integer_of_initial_nonoverflow",
+        "NormalizationBridge.canonical_admissible",
+        "FoldedDecimal.step_eq_word_value",
+        "DecimalDigits.value_congr"
+      ]
+    },
+    {
+      "id": "baseline_scope_comparison",
+      "decision": "PASS",
+      "finding": "The new seven-step bound strengthens the baseline actual_eight_step_count (at least three in eight transitions). The combined theorem removes the inherited bridge assumption orbitCount q L7=3 by combining the >=4 branch with the new >=3 bound. In contrast, the accepted nine-word reconstruction had no small-difference or initial-nonoverflow assumption. The new eight-word result remains conditional on |cappedDiff|<=5 or initial nonoverflow. The existing symmetric coefficient-bound-six witness concerns smoothing sequences and is not an actual eight-carry collision. Source comments preserve these scope limits.",
+      "source_symbols": [
+        "DifferenceObservability.actual_eight_step_count",
+        "DifferenceObservability.nine_carry_words_determine_pair_sums",
+        "DifferenceObservability.nine_carry_words_determine_next_integer",
+        "Agent10SmoothingBridge.eight_carries_small_difference",
+        "Agent10EightCarry"
+      ]
+    },
+    {
+      "id": "canonical_build_evidence",
+      "decision": "PASS",
+      "finding": "A separate specialist executed the exact eight-module canonical closure at the reviewed commit. This reviewer inspected the PASS report, checked every source SHA against that commit and the build SHA, verified every retained command-log hash, and reparsed all 1041 theorem audit entries through closing brackets. There are 25 declarations from Agent10SevenStepCount and 7 from Agent10EightCarry. Every theorem depends only on the allowed logical axioms. No compatibility adapter occurs in the executed closure.",
+      "source_symbols": [
+        "Agent10SevenStepCount",
+        "Agent10EightCarry"
+      ],
+      "evidence": "canonical-build-evidence.json"
+    },
+    {
+      "id": "prefix_compatibility_observations",
+      "decision": "PASS",
+      "finding": "compatible compares p/10 (carry1), (q+p/10)/10 (carry2), and the accepted terminal overflow function. It receives one control bit used for both states. Equality of observedBit is represented by that shared argument, and is explicitly derived for actual trajectories from the full carry word at width-2 after matched-width synchronization. No assumption that low carries alone determine the inner bit is made.",
+      "source_symbols": [
+        "Agent10PrefixWitness.compatible",
+        "CarryObservabilityActual.observedBit",
+        "Agent10PrefixExclusion.actual_history_survives"
+      ]
+    },
+    {
+      "id": "prefix_survival_horizon",
+      "decision": "PASS",
+      "finding": "survives n checks compatibility before each of n transitions, at observation times0,...,n-1. The n=0 branch is true, so the state after the final update has no observation constraint. survives_of_trajectory matches precisely these quantifiers. Therefore seven_prefix_exclusion_fin excludes seven observations without accidentally requiring an eighth endpoint observation.",
+      "source_symbols": [
+        "Agent10PrefixWitness.survives",
+        "Agent10PrefixExclusion.survives_step_of",
+        "Agent10PrefixExclusion.survives_of_trajectory"
+      ]
+    },
+    {
+      "id": "prefix_literal_272_domain",
+      "decision": "PASS",
+      "finding": "Fin17 x Fin16 enumerates exactly s=(p+2,q), r=(p+1,q+3), p=0,...,16, q=0,...,15: 272 ordered starts with s-r=(1,-3). The generic wrapper derives pprime in1,...,17 and q in0,...,15 from Valid s, Valid r, and the two literal offset equalities. All admissible starts with that orientation are included. The kernel finite decision contains no substituted table or oracle.",
+      "source_symbols": [
+        "Agent10PrefixWitness.seven_prefix_exclusion_fin",
+        "Agent10PrefixWitness.seven_prefix_exclusion"
+      ]
+    },
+    {
+      "id": "prefix_actual_projection",
+      "decision": "PASS",
+      "finding": "actual_history_survives has explicit initial L>=2. Width monotonicity preserves this for both trajectories; matched_widths aligns them, hbits aligns the observed inner carry, and prefix_step_exact supplies both exact transitions under the same bit. The proof uses full carry agreement at indices1,2,width-2,and width, including overlapping width-two/three cases already covered by the accepted prefix lemmas. It maps actual trajectories into the necessary graph without requiring arbitrary graph trajectories to be realizable.",
+      "source_symbols": [
+        "Agent10PrefixExclusion.actual_history_survives",
+        "CarryObservabilityActual.prefix_step_exact",
+        "DifferenceObservability.matched_widths"
+      ]
+    },
+    {
+      "id": "prefix_orientation_swap",
+      "decision": "PASS",
+      "finding": "The negative-orientation theorem applies the positive theorem with q and r exchanged. Because the carry hypothesis is bounded using the first trajectory width, it first transports the index bound through matched_widths, then reverses the carry equality. The proof does not silently treat an asymmetrically indexed hypothesis as symmetric.",
+      "source_symbols": [
+        "Agent10PrefixExclusion.seven_carries_exclude_positive_witness_prefix",
+        "Agent10PrefixExclusion.seven_carries_exclude_negative_witness_prefix"
+      ]
+    },
+    {
+      "id": "prefix_six_observation_scope",
+      "decision": "PASS",
+      "finding": "six_prefix_survival states a Boolean necessary-graph survival for (17,3),(16,6), with no actual-decimal existence claim in that theorem. Independent BFS finds a six-observation shared-bit path [0,0,0,0,0,0], ending at ((16,16),(8,16)), with no seventh compatible extension. The separately reviewed Agent10SixCarryCounterexample now supplies a concrete actual six-word collision from the same initial outer states, along the different shared-bit path [0,0,1,1,0,0].",
+      "source_symbols": [
+        "Agent10PrefixWitness.six_prefix_survival"
+      ],
+      "evidence": "prefix-finite-controls.json"
+    },
+    {
+      "id": "prefix_leading_coefficients",
+      "decision": "PASS",
+      "finding": "Expanding smoothPow4 gives g0=f0, g1=4f0+f1, g2=6f0+4f1+f2, g3=4f0+6f1+4f2+f3. Unit bounds and nonzero f0 force f0=+/-1. For f0=1, the candidate f1=-5 contradicts |f2|<=9; f1=-4 forces f2=9 and contradicts |f3|<=9; hence f1=-3. The opposite sign is symmetric. The Lean omega proof implements this bounded integer argument. Independent enumeration of all19^4 first-four tuples leaves exactly the two claimed leading pairs. The root duplicate lemma corroborates the same statement and is not a production dependency.",
+      "source_symbols": [
+        "Agent10PrefixExclusion.smooth_four_first_coefficients",
+        "Agent10PrefixExclusion.smooth_four_nonzero_first_prefix"
+      ],
+      "evidence": "prefix-finite-controls.json"
+    },
+    {
+      "id": "prefix_exterior_high_and_three_branches",
+      "decision": "PASS",
+      "finding": "The universal exterior theorem retains the established count split at seven transitions. Count>=4 uses endpoint injectivity for all coefficients and specializes at index0. Count=3 gives D7=8*smoothPow4(D0); the eighth carry word bounds the smoothing in the unit box, and the first carry word bounds D0 by9. If q0 differs, the leading-coefficient lemma gives one of the two excluded literal prefixes, contradicted by the first seven carry observations. Neither a small-difference bound5 nor initial nonoverflow is assumed.",
+      "source_symbols": [
+        "Agent10PrefixExclusion.eight_carries_determine_exterior_pair",
+        "Agent10SevenStepCount.actual_seven_step_count_all_widths",
+        "DifferenceObservability.matched_difference_formula",
+        "DifferenceObservability.cappedDiff_bounds"
+      ]
+    },
+    {
+      "id": "prefix_singleton_and_positive_widths",
+      "decision": "PASS",
+      "finding": "The graph projection itself is correctly restricted to L>=2. In the universal exterior endpoint, the remaining positive-width case has L=1, so cappedDiff at index1 is zero. This contradicts the forced nonzero second coefficient +/-3, closing the singleton case without applying a two-column graph lemma outside its domain. Admissible excludes L=0.",
+      "source_symbols": [
+        "Agent10PrefixExclusion.eight_carries_determine_exterior_pair",
+        "DifferenceObservability.cappedDiff",
+        "FoldedDecimal.Admissible"
+      ]
+    },
+    {
+      "id": "prefix_exterior_only_scope",
+      "decision": "PASS",
+      "finding": "The universal conclusion is exactly q0=r0, the exterior pair-sum coefficient. The argument does not reconstruct arbitrary interior coefficients, recover either exterior digit separately, identify the initial integer, or upgrade the conditional next-integer theorem. In particular, shifting a later nonzero difference to the origin would require a fresh exact projection theorem; the current outer-prefix graph does not supply that transport. Source comments preserve this restriction.",
+      "source_symbols": [
+        "Agent10PrefixExclusion.eight_carries_determine_exterior_pair"
+      ]
+    },
+    {
+      "id": "counterexample_original_operator_identity",
+      "decision": "PASS",
+      "finding": "The module imports the unchanged ActualCarryObservability closure and uses the accepted Canonical, columnSum, carry, nextWidth, nextColumns, iterPairs, and ordinary Lychrel196 step/orbit. It defines only explicit digits, row certificates, trace selectors, and theorems in its own namespace. The nested-comment-aware code scan found no proof shortcut or custom axiom token.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample",
+        "DecimalDigits.columnSum",
+        "OverflowCarryNormalization.iterPairs"
+      ]
+    },
+    {
+      "id": "counterexample_canonical_integer_inputs",
+      "decision": "PASS",
+      "finding": "The two little-endian digit lists have exactly eleven digits, leading digits eight and seven, every digit at most nine, and values 80000571539 and 70000817069. Both exact Canonical propositions are kernel-decided from these facts. leftColumns and rightColumns are the actual reflected digit sums, not arbitrary admissible vectors.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample.left_canonical",
+        "Agent10SixCarryCounterexample.right_canonical",
+        "Agent10SixCarryCounterexample.leftColumns",
+        "Agent10SixCarryCounterexample.rightColumns"
+      ]
+    },
+    {
+      "id": "counterexample_certificate_domain_coverage",
+      "decision": "PASS",
+      "finding": "The seven recorded states cover times zero through six. trace_steps_fin checks both Boolean sides and every t in Fin6, with exact nextWidth and every output index in Fin14 below the new width. trace_width_bound_fin covers Fin7 and proves widths at most fourteen. trace_carries_fin checks t in Fin6 and i in Fin15 subject to i<=width, including zero and terminal overflow. Thus the finite domains cover every quantified index, without dropping index fourteen when the width is fourteen.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample.trace_steps_fin",
+        "Agent10SixCarryCounterexample.trace_width_bound_fin",
+        "Agent10SixCarryCounterexample.trace_carries_fin"
+      ]
+    },
+    {
+      "id": "counterexample_exact_recursion_transport",
+      "decision": "PASS",
+      "finding": "actual_trace uses induction through t<=6. Equality of coefficients only below the current width is enough for next_state_congr_upto, which transports both width and the full relevant next coefficient prefix. carry_congr_upto then transports incoming carries through and including the terminal index. No equality of irrelevant total-function tails is assumed; list defaults cannot change any observed carry or next-state coefficient.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample.actual_trace",
+        "CarryObservabilityActual.next_state_congr_upto",
+        "FoldedDecimal.carry_congr_upto"
+      ]
+    },
+    {
+      "id": "counterexample_complete_six_observations",
+      "decision": "PASS",
+      "finding": "six_complete_carries quantifies every t<6, exactly observation times zero through five, and every i<=the actual left width. right_widths and the common trace widths align the other trajectory, so all incoming carries of both actual words are compared. Independent ordinary-integer replay checks all eighty-one carry positions over these six words. Observation time six is not silently included.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample.six_complete_carries",
+        "Agent10SixCarryCounterexample.left_widths",
+        "Agent10SixCarryCounterexample.right_widths",
+        "Agent10SixCarryCounterexample.widths_agree"
+      ],
+      "evidence": "counterexample-finite-controls.json"
+    },
+    {
+      "id": "counterexample_numeric_semantics_and_separation",
+      "decision": "PASS",
+      "finding": "numeric_orbit_representations applies the accepted iterPairs_representation to both canonical initial numerals, connecting the carried recursion to ordinary reverse-and-add at every requested time. Its unused t<=6 premise is harmless because the imported representation theorem works for all natural t. The next-step values are exactly 173518071547 and 166072617076, which are unequal. Initial exterior pair sums are seventeen and sixteen. seventh_carry_differs transports the checked time-six row and gives carry index one values one and zero.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample.numeric_orbit_representations",
+        "Agent10SixCarryCounterexample.next_integer_values",
+        "Agent10SixCarryCounterexample.next_integers_differ",
+        "Agent10SixCarryCounterexample.initial_pair_sums_differ",
+        "Agent10SixCarryCounterexample.seventh_carry_differs"
+      ]
+    },
+    {
+      "id": "counterexample_relation_to_prefix_and_smoothing_witnesses",
+      "decision": "PASS",
+      "finding": "The concrete initial difference is [1,-3,5,-6,6,-6,6,-6,5,-3,1], the coefficient-bound-six smoothing witness. Both initial final carries are one. The actual shared inner-bit sequence for its first six observations is [0,0,1,1,0,0]; the earlier prefix BFS chose a different valid all-zero graph path from the same initial outer states. The Boolean survival proposition does not prescribe a unique bit path, so these certificates are consistent. This concrete source now supplies an actual six-word collision separately from the graph-only survival result.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample.six_carry_counterexample",
+        "Agent10PrefixWitness.six_prefix_survival"
+      ],
+      "evidence": "counterexample-finite-controls.json"
+    },
+    {
+      "id": "counterexample_bound_scope",
+      "decision": "PASS",
+      "finding": "The final conjunction is a concrete counterexample to determining either the exterior pair-sum coefficient or the next integer from six full carry words. It proves no insufficiency of seven or eight observations: this same pair separates at the seventh. It does not contradict the conditional eight-word reconstruction, because it has neither initial nonoverflow nor difference bound five and does not supply eight equal words. It makes no palindrome-avoidance or Lychrel-existence claim.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample.six_carry_counterexample",
+        "Agent10SixCarryCounterexample.seventh_carry_differs"
+      ]
+    },
+    {
+      "id": "counterexample_retained_kernel_and_axiom_evidence",
+      "decision": "PASS",
+      "finding": "A separate internal specialist compiled the exact source with Lean 4.19.0, --trust=0, and the unchanged dependencies from the accepted canonical build. This reviewer verified all dependency source and olean pins, source and log hashes, twelve printed public endpoint types, and all thirty-eight theorem-origin audit records including wrapped axiom lists. All finite source certificates are axiom-free; generic transport uses only propext and Quot.sound. No new axiom declaration was logged. The later expanded full-closure build remains a separate gate.",
+      "source_symbols": [
+        "Agent10SixCarryCounterexample"
+      ],
+      "evidence": "counterexample-build-evidence.json"
+    }
+  ],
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    {
+      "id": "LEGACY_VERIFIER_AUTHOR_FIELD",
+      "severity": "PROVENANCE_NOTE",
+      "description": "The inherited verifier report agent field remains Agent #1; actual specialist attribution is stated separately and no external approval is inferred."
+    },
+    {
+      "id": "INHERITED_UNSAFE_IMPLEMENTATION_DECLARATIONS",
+      "severity": "TRUST_SCOPE_NOTE",
+      "count": 13,
+      "module": "Lychrel196Research",
+      "new_module_occurrences": 0,
+      "present_in_any_audited_theorem_axioms": false
+    }
+  ],
+  "canonical_kernel_evidence": {
+    "report": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-001/verification.json",
+    "report_sha256": "0ba1c2178ebd73dda057c6b3f34889bbdf9f0047df0925428712cdff0d641d39",
+    "status": "PASS",
+    "source_commit": "2083e6f1556fb8ce955abe247eac784750d9f2b8",
+    "full_closure_modules": 8,
+    "theorem_declarations": 1041,
+    "new_module_theorem_counts": {
+      "Agent10SevenStepCount": 25,
+      "Agent10EightCarry": 7
+    },
+    "public_endpoints_checked": 26,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "all_source_and_build_hashes_verified": true,
+    "all_command_log_hashes_verified": true,
+    "full_log_reparsed_without_wrapped_list_truncation": true,
+    "reviewer_reran_full_build": false,
+    "scope": "Previously reviewed eight-module closure; all eight source hashes remain identical at the extended review commit.",
+    "specialist_attribution_receipt": {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-001-specialist-validation.json",
+      "sha256": "da1e806264b2f613a2ca87f45763c0ec3c264a5469f322ea8b9843cc75c0af55",
+      "executor_attribution": "Agent #10 specialist /root/formalization_scout",
+      "historical_checker_agent_field_preserved": true,
+      "external_independent_acceptance": false
+    }
+  },
+  "finite_controls": {
+    "record": "finite-controls.json",
+    "record_sha256": "c929c7abf25a59f1baa43bbba172e08888075f9fe1e8c824aff83da09b2f8b8b",
+    "script": "finite_controls.py",
+    "script_sha256": "1124de35e7f356e59cba3ac51ee3c1d75b81ebe102b08170c5018a72349dcbf8",
+    "status": "PASS",
+    "valid_states": 342,
+    "bit_labelled_edges": 684,
+    "rank_step_inequalities_checked": 6156,
+    "singleton_inputs_checked": 18,
+    "minimum_graph_cost_at_horizon7": 3,
+    "minimum_singleton_count7": 3
+  },
+  "limitations": [
+    "This is an internal specialist review by /root/lean_runtime, which did not author any of the five reviewed modules. It is not an external GitHub review, approval, or maintainer acceptance.",
+    "The clean canonical build was executed by a separate internal specialist. This reviewer verified its retained source identities, report, command-log hashes, printed endpoint types, and exhaustive audit; it did not perform a redundant second full build.",
+    "The actual count theorem assumes Admissible, which entails positive width, positive outer coefficient, decimal coefficient bounds, symmetry, and central parity. Width zero and arbitrary non-admissible words are outside its universal statement.",
+    "Full pair-sum reconstruction requires eight complete carry words at a shared initial width and either a capped initial difference bounded by five or an initial nonoverflow addition. These modules do not prove universal eight-word full reconstruction or an optimal observation bound.",
+    "The ordinary-integer theorem determines the next reverse-and-add integer. It does not identify the initial integers or their digit splitting, establish palindrome avoidance, or resolve Lychrel existence.",
+    "The imported closure retains 13 unsafe implementation-specialization declarations logged in Lychrel196Research. None originate in the new modules and none occur in the audited theorem axiom dependencies; the report does not misclassify them as custom logical axioms.",
+    "The canonical verifier preserves its historical agent field Agent #1. The actual build attribution is the internal Agent #10 count specialist; this historical script metadata does not constitute another independent reviewer.",
+    "The Python graph, singleton, coefficient, and ordinary-integer checks are independent finite controls, not substitutes for the kernel proofs.",
+    "The prefix graph survival result alone does not establish an actual decimal collision. The separately reviewed concrete counterexample certifies one six-observation collision and its separation at observation seven.",
+    "The new universal eight-observation endpoint determines only the exterior pair-sum coefficient. No unrestricted interior reconstruction follows from this prefix projection.",
+    "At this receipt revision, the separate eight-module canonical build covers the unchanged count and conditional reconstruction modules. The concrete counterexample has a separate exact module build against those canonical dependencies. The expanded canonical build covering the prefix and counterexample modules is being handled separately; this reviewer has completed source/semantic review and finite controls without duplicating the base build.",
+    "The concrete witness rules out universal determination from six complete observations only. It does not settle seven-observation determination or universal eight-observation full pair-sum reconstruction."
+  ],
+  "reviewed_base_commit": "2083e6f1556fb8ce955abe247eac784750d9f2b8",
+  "preserved_base_review": "review-eight-carry-2083e6f1.json",
+  "base_closure_source_identity_preserved_at_extended_commit": true,
+  "prefix_extension": {
+    "source_commit": "7442f0489e0e0ae9a23fb4461d1da55fd4ba033f",
+    "source_review_status": "PASS_NO_BLOCKING_SOURCE_OR_SEMANTIC_ISSUES",
+    "expanded_clean_kernel_build_status": "PENDING_SEPARATE_EXPANDED_CANONICAL_RECEIPT",
+    "reviewer_recompiled_base_closure": false,
+    "finite_controls": {
+      "record": "prefix-finite-controls.json",
+      "record_sha256": "bb77c13a586d5cbed27d1a2dbac6070f6ce82d546136273671ee6a8ffc866a47",
+      "script": "prefix_finite_controls.py",
+      "script_sha256": "9ba061bee0314fe2927d2f3b65aeeab86f8de9da2aacdeb2bdda0ada482513de",
+      "status": "PASS",
+      "literal_start_count": 272,
+      "excluded_after_seven_observations": 272,
+      "first_four_coefficient_tuples_checked": 130321,
+      "nonzero_leading_pairs": [
+        [
+          -1,
+          3
+        ],
+        [
+          1,
+          -3
+        ]
+      ]
+    },
+    "independent_duplicate_lemma_source": {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-eight/Agent10CarryPrefixCoefficients.lean",
+      "sha256": "c5513437eee401baa4f6f972c0a10eb8d01a3db86f7f8394b52221e6e1ba71b1",
+      "reviewer_read_source": true,
+      "production_dependency": false,
+      "reviewer_recompiled": false
+    }
+  },
+  "preserved_four_module_review": {
+    "path": "review-four-modules-7442f048.json",
+    "sha256": "82e1851294e0a73e798d96008263279b184a1576ee890272e0448a7b855c42f9",
+    "source_commit": "7442f0489e0e0ae9a23fb4461d1da55fd4ba033f"
+  },
+  "all_previously_reviewed_source_bytes_preserved_at_counterexample_commit": true,
+  "counterexample_extension": {
+    "source_commit": "519b385072822035720fc9f9ae65eeaa185bc291",
+    "source_review_status": "PASS_NO_BLOCKING_SOURCE_OR_SEMANTIC_ISSUES",
+    "expanded_clean_kernel_build_status": "PENDING_SEPARATE_EXPANDED_CANONICAL_RECEIPT",
+    "single_module_kernel_evidence": {
+      "status": "PASS",
+      "classification": "SEPARATE_SPECIALIST_SINGLE_MODULE_BUILD_USING_PREVIOUSLY_CANONICAL_DEPENDENCIES",
+      "executor": "Agent #10 specialist /root/formalization_scout",
+      "source_sha256": "b4277ca76c6ad874db41933735ae7b677990e120e0bc5be01f9c0579c882f869",
+      "source_commit": "519b385072822035720fc9f9ae65eeaa185bc291",
+      "build_record": "/workspace/scratch/4b20b8469eb3/agent10-count/six-check-003/build.json",
+      "build_record_sha256": "80245177fd428542a3d53836ec5962a4f386ec549c4e541cd01b71fa4dd14ba1",
+      "audit_record": "/workspace/scratch/4b20b8469eb3/agent10-count/six-check-003/audit.json",
+      "audit_record_sha256": "1e9e78f948d39a5ee25abccc7494d54fdad6fc22de1c1141a2d19a31e2319aff",
+      "build_log_sha256": "61171cbe52c04bd28d6dee0a5a70756428d26fb05cc682ae5fad7016c47cc495",
+      "audit_log_sha256": "60a29bb5aced231f1257c4dd1737f57b7225757d03ee46fff2a03124083231f0",
+      "command": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent10SixCarryCounterexample.olean",
+        "Agent10SixCarryCounterexample.lean"
+      ],
+      "exit_code": 0,
+      "all_dependency_source_and_olean_pins_verified_against_canonical_origin": true,
+      "dependency_pins": {
+        "Lychrel196Research.lean": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+        "Lychrel196Research.olean": "9b0cc1f8650e0d57c1f64e5d353fb5ada6f69b0fe1082a3ee0196a3ebeb54b8a",
+        "PrefixCarryBound.lean": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+        "PrefixCarryBound.olean": "17eaf7230f3d15c69376376276824d318cce10ec483734ce9fedcf9f4d2fd902",
+        "ActualCarryObservability.lean": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+        "ActualCarryObservability.olean": "ebc16f7956393dc64b0ffe2d5ff50260d91fb42515b46d886f1ff81d126bd250"
+      },
+      "canonical_dependency_origin": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-001/agent10-eight-carry/source",
+      "theorem_declarations": 38,
+      "public_endpoints_checked": 12,
+      "axiom_union": [
+        "Quot.sound",
+        "propext"
+      ],
+      "new_axiom_declarations_logged": 0,
+      "full_log_reparsed_without_wrapped_list_truncation": true,
+      "reviewer_reran_full_build": false,
+      "retained_evidence_copy": "counterexample-build-evidence",
+      "expanded_full_closure_status": "PENDING_SEPARATE_EXPANDED_CANONICAL_RECEIPT"
+    },
+    "finite_controls": {
+      "record": "counterexample-finite-controls.json",
+      "record_sha256": "56ddbae1bbe6a922090e8d6c8a03bec1ad1cb24008187843937fa3f5e5710884",
+      "script": "counterexample_finite_controls.py",
+      "script_sha256": "0e8dab31d97a858e71bb9a3c8460ba0ea997a5910bb6941334d74d53375caef4",
+      "status": "PASS",
+      "actual_trajectories": 2,
+      "states_per_trajectory": 7,
+      "matching_carry_positions": 81,
+      "widths": [
+        11,
+        12,
+        12,
+        13,
+        13,
+        14,
+        14
+      ],
+      "seventh_separating_carry_index": 1,
+      "initial_integers": [
+        80000571539,
+        70000817069
+      ],
+      "next_integers": [
+        173518071547,
+        166072617076
+      ]
+    }
+  }
+}

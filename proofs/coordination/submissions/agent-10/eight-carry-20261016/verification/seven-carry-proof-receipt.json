@@ -1,0 +1,231 @@
+{
+  "recorded_at_utc": "2026-10-16T21:50:52.456650+00:00",
+  "classification": "LOCAL_KERNEL_CHECK_PASS; canonical closure replay and independent review recorded separately",
+  "source_frozen": true,
+  "source_sha256": "7cdc32bd5d0eff4174d1d35314ef544a7cf80532868ba38fe664cd063edb67f9",
+  "compiler": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+  "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "command": [
+    "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false",
+    "-o",
+    "Agent10SevenCarryCounterexample.olean",
+    "Agent10SevenCarryCounterexample.lean"
+  ],
+  "cwd": "/workspace/scratch/4b20b8469eb3/agent10-semantic",
+  "LEAN_PATH": [
+    "/workspace/scratch/4b20b8469eb3/agent10-semantic",
+    "/workspace/scratch/4b20b8469eb3/agent10-eight/development"
+  ],
+  "exit_code": 0,
+  "exec_session_id": 78639,
+  "attempt_count": 1,
+  "failed_compilation_attempts": [],
+  "final_log_sha256": "e2497ea6b4f9539e885c04815c2efef8707153ee5a395a7a11fe2b3105f66739",
+  "transitive_axiom_union": [
+    "propext",
+    "Quot.sound"
+  ],
+  "finite_certificate_axioms": [],
+  "canonical_and_direct_number_claim_axioms": [],
+  "theorem_count": 20,
+  "public_endpoint_count": 14,
+  "public_endpoints": [
+    {
+      "name": "Agent10SevenCarryCounterexample.left_canonical",
+      "declaration": "theorem left_canonical : Canonical 900000058163209 leftDigits 15"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.right_canonical",
+      "declaration": "theorem right_canonical : Canonical 900000082716109 rightDigits 15"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.left_widths",
+      "declaration": "theorem left_widths (t : Nat) (ht : t \u2264 7) :\n    (iterPairs leftColumns 15 t).1 = traceWidth t"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.right_widths",
+      "declaration": "theorem right_widths (t : Nat) (ht : t \u2264 7) :\n    (iterPairs rightColumns 15 t).1 = traceWidth t"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.widths_agree",
+      "declaration": "theorem widths_agree (t : Nat) (ht : t \u2264 7) :\n    (iterPairs leftColumns 15 t).1 = (iterPairs rightColumns 15 t).1"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.seven_complete_carries",
+      "declaration": "theorem seven_complete_carries :\n    \u2200 t, t < 7 \u2192 \u2200 i, i \u2264 (iterPairs leftColumns 15 t).1 \u2192\n      carry (iterPairs leftColumns 15 t).2 i =\n        carry (iterPairs rightColumns 15 t).2 i"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.initial_pair_sums_differ",
+      "declaration": "theorem initial_pair_sums_differ : leftColumns 2 = 2 \u2227 rightColumns 2 = 1"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.next_integer_values",
+      "declaration": "theorem next_integer_values :\n    Lychrel196.step 900000058163209 = 1802361908163218 \u2227\n    Lychrel196.step 900000082716109 = 1801617362716118"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.next_integers_differ",
+      "declaration": "theorem next_integers_differ :\n    Lychrel196.step 900000058163209 \u2260 Lychrel196.step 900000082716109"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.numeric_orbit_representations",
+      "declaration": "theorem numeric_orbit_representations (t : Nat) (_ht : t \u2264 7) :\n    (\u2203 d, Canonical (Lychrel196.orbit 900000058163209 t) d\n        (iterPairs leftColumns 15 t).1 \u2227\n      \u2200 i, i < (iterPairs leftColumns 15 t).1 \u2192\n        columnSum d (iterPairs leftColumns 15 t).1 i =\n          (iterPairs leftColumns 15 t).2 i) \u2227\n    (\u2203 e, Canonical (Lychrel196.orbit 900000082716109 t) e\n        (iterPairs rightColumns 15 t).1 \u2227\n      \u2200 i, i < (iterPairs rightColumns 15 t).1 \u2192\n        columnSum e (iterPairs rightColumns 15 t).1 i =\n          (iterPairs rightColumns 15 t).2 i)"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.eighth_carry_differs",
+      "declaration": "theorem eighth_carry_differs :\n    carry (iterPairs leftColumns 15 7).2 4 = 1 \u2227\n    carry (iterPairs rightColumns 15 7).2 4 = 0"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.initial_pair_difference_active",
+      "declaration": "theorem initial_pair_difference_active :\n    2 < 15 \u2227 leftColumns 2 \u2260 rightColumns 2"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.first_separation_at_seven",
+      "declaration": "theorem first_separation_at_seven :\n    (\u2200 t, t < 7 \u2192 \u2200 i, i \u2264 (iterPairs leftColumns 15 t).1 \u2192\n      carry (iterPairs leftColumns 15 t).2 i =\n        carry (iterPairs rightColumns 15 t).2 i) \u2227\n    (\u2203 i, i \u2264 (iterPairs leftColumns 15 7).1 \u2227\n      carry (iterPairs leftColumns 15 7).2 i \u2260\n        carry (iterPairs rightColumns 15 7).2 i)"
+    },
+    {
+      "name": "Agent10SevenCarryCounterexample.seven_carry_counterexample",
+      "declaration": "theorem seven_carry_counterexample :\n    Canonical 900000058163209 leftDigits 15 \u2227\n    Canonical 900000082716109 rightDigits 15 \u2227\n    (\u2200 t, t < 7 \u2192 \u2200 i, i \u2264 (iterPairs leftColumns 15 t).1 \u2192\n      carry (iterPairs leftColumns 15 t).2 i =\n        carry (iterPairs rightColumns 15 t).2 i) \u2227\n    leftColumns 2 \u2260 rightColumns 2 \u2227\n    Lychrel196.step 900000058163209 \u2260 Lychrel196.step 900000082716109"
+    }
+  ],
+  "scope": {
+    "width": 15,
+    "initial_integers": [
+      "900000058163209",
+      "900000082716109"
+    ],
+    "matching_observation_times": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "complete_carry_indices": "0 through current width inclusive",
+    "different_initial_pair_index": 2,
+    "initial_pair_values": [
+      2,
+      1
+    ],
+    "next_integers": [
+      "1802361908163218",
+      "1801617362716118"
+    ],
+    "first_separation_time": 7,
+    "separating_carry_index": 4,
+    "separating_carries": [
+      1,
+      0
+    ],
+    "eight_word_failure_claimed": false,
+    "global_optimal_memory_bound_claimed": false,
+    "depends_on_computational_filter": false
+  },
+  "bounded_row_pattern_source": "/workspace/scratch/4b20b8469eb3/agent10-count/Agent10SixCarryCounterexample.lean",
+  "bounded_row_pattern_source_sha256": "b4277ca76c6ad874db41933735ae7b677990e120e0bc5be01f9c0579c882f869",
+  "imported_local_closure": {
+    "ActualCarryObservability": {
+      "source": "/workspace/scratch/4b20b8469eb3/agent10-eight/development/ActualCarryObservability.lean",
+      "source_sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+      "olean_sha256": "ebc16f7956393dc64b0ffe2d5ff50260d91fb42515b46d886f1ff81d126bd250",
+      "imports": [
+        "Lychrel196Research",
+        "PrefixCarryBound"
+      ]
+    },
+    "PrefixCarryBound": {
+      "source": "/workspace/scratch/4b20b8469eb3/agent10-eight/development/PrefixCarryBound.lean",
+      "source_sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+      "olean_sha256": "17eaf7230f3d15c69376376276824d318cce10ec483734ce9fedcf9f4d2fd902",
+      "imports": [
+        "Std"
+      ]
+    },
+    "Lychrel196Research": {
+      "source": "/workspace/scratch/4b20b8469eb3/agent10-eight/development/Lychrel196Research.lean",
+      "source_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+      "olean_sha256": "9b0cc1f8650e0d57c1f64e5d353fb5ada6f69b0fe1082a3ee0196a3ebeb54b8a",
+      "imports": [
+        "Std"
+      ]
+    }
+  },
+  "artifacts": {
+    "Agent10SevenCarryCounterexample.lean": {
+      "sha256": "7cdc32bd5d0eff4174d1d35314ef544a7cf80532868ba38fe664cd063edb67f9",
+      "bytes": 10991
+    },
+    "Agent10SevenCarryCounterexample.build.log": {
+      "sha256": "e2497ea6b4f9539e885c04815c2efef8707153ee5a395a7a11fe2b3105f66739",
+      "bytes": 2035
+    },
+    "Agent10SevenCarryCounterexample.olean": {
+      "sha256": "41f672e1ec5cef469e7b5766d2b381afefd74e2227c31179fdae4a9fd71fd714",
+      "bytes": 487592
+    },
+    "SEVEN_CARRY_CERTIFICATE.md": {
+      "sha256": "8453eb15f1f577ee9fd34b0b21673e0bf35189cd916fb5a8f5865cdc732ba76a",
+      "bytes": 5593
+    },
+    "twice-padded-width15-001/RESULT.md": {
+      "sha256": "9c8169d51b003ae67bbee1f44f7cde3a62d754ae63cd53fa41d17fe148efac98",
+      "bytes": 5318
+    },
+    "twice-padded-width15-001/actual_simulator.inc": {
+      "sha256": "e2bd06376e0f2309ec80e0a5ad3b1e5468e9f612fa72f3b79a4448205ac5f349",
+      "bytes": 684
+    },
+    "twice-padded-width15-001/four_prefix_scan.cpp": {
+      "sha256": "e40ca15a6b24360ad78cd3b238aa0c63346fd4330ed271f38e735481839acc6e",
+      "bytes": 10455
+    },
+    "twice-padded-width15-001/lift_verification.json": {
+      "sha256": "3f7d201a3afb24db231b435575128996d91764f0a4e2551705e0ece3fd3b1ad2",
+      "bytes": 3105
+    },
+    "twice-padded-width15-001/replay_seven_word.py": {
+      "sha256": "dc6d519bc1b330205c417694157cc7f316d56c88fae220aa4a1743f7367b6e24",
+      "bytes": 2817
+    },
+    "twice-padded-width15-001/result-4.json": {
+      "sha256": "fca3dade6aa159ff214edfd01e3339b915e26a3f6f77a646fa031fc294efa4d5",
+      "bytes": 12454
+    },
+    "twice-padded-width15-001/result.json": {
+      "sha256": "8e4f4c7337d2f42c6e9e2055a9d9d0fdb3dc5080751c691560aa3c9def47c578",
+      "bytes": 2831
+    },
+    "twice-padded-width15-001/scan.command.json": {
+      "sha256": "5aa4a1fc801bfd64a5dbf5b964b8663c4adba948ab1ca4a720ff16c419c53efb",
+      "bytes": 560
+    },
+    "twice-padded-width15-001/scan.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "twice-padded-width15-001/seven_word_integer_replay.json": {
+      "sha256": "66a13d1fc48a5eba76a1c45000a36f6fa6a5b624a83505249fac2ef5ff98deb6",
+      "bytes": 15801
+    },
+    "twice-padded-width15-001/survivors-4.csv": {
+      "sha256": "4a2cf86b60799f25a45d0101c9db9dce39cae68c4467b3fdd9d6cf3da376f4a1",
+      "bytes": 4043
+    },
+    "twice-padded-width15-001/twice_padded_witness_scan": {
+      "sha256": "c2e1d35ff8c973cce2c872d622cdf64d70d102d2fbe3c5a07c91f5819ecac42e",
+      "bytes": 61896
+    },
+    "twice-padded-width15-001/twice_padded_witness_scan.cpp": {
+      "sha256": "c8ec32ad062e8a9c04b5e6e798049ffe7dbaa160e516f3c93712ebc816253a21",
+      "bytes": 6839
+    },
+    "twice-padded-width15-001/verification.json": {
+      "sha256": "b53297cb1bbb8fbec5a4fa53a4a16190a8c914bea34fcb0b39d896f9bd199a8d",
+      "bytes": 6132
+    }
+  }
+}

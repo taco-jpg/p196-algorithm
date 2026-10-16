@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-16T21:56:12.240262+00:00",
+  "reviewer": "/root/lean_runtime",
+  "source_author": "/root/eight_carry_semantics",
+  "review_kind": "ADDITIVE_INTERNAL_NONAUTHOR_SOURCE_SEMANTIC_AND_ARITHMETIC_REVIEW",
+  "decision": "PASS_NO_BLOCKING_SOURCE_OR_SEMANTIC_ISSUES",
+  "blocking_findings": [],
+  "external_github_approval": false,
+  "authored_reviewed_modules": false,
+  "source_mutations_performed": false,
+  "reviewer_executed_lean": false,
+  "review_subject_commit": null,
+  "source_identity_note": "Receipt is pinned to the frozen source bytes, independent of subsequent repository integration.",
+  "reviewed_source": {
+    "module": "Agent10SevenCarryCounterexample",
+    "author_path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/Agent10SevenCarryCounterexample.lean",
+    "path": "sources/Agent10SevenCarryCounterexample.lean",
+    "sha256": "7cdc32bd5d0eff4174d1d35314ef544a7cf80532868ba38fe664cd063edb67f9",
+    "bytes": 10991,
+    "imports": [
+      "ActualCarryObservability"
+    ],
+    "explicit_theorem_count": 20,
+    "public_endpoint_count": 14
+  },
+  "prior_reviews": [
+    {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-bridge/review-combined/review.json",
+      "sha256": "73de724598437a48c539d19408d9f23b73c5d88ab7bf9bedd35edae1d4308d68",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-bridge/review-threecolumn/review.json",
+      "sha256": "446936bbd13ab3be512a3bd7f77ec19b205ec83908a985180ceb86d8d56246f9",
+      "unchanged": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "FROZEN_SOURCE_IDENTITY",
+      "decision": "PASS",
+      "finding": "Reviewed the exact frozen 10,991-byte source; the source snapshot and current author source agree. No reviewed-source modifications were made.",
+      "evidence": {
+        "path": "sources/Agent10SevenCarryCounterexample.lean",
+        "sha256": "7cdc32bd5d0eff4174d1d35314ef544a7cf80532868ba38fe664cd063edb67f9",
+        "bytes": 10991
+      }
+    },
+    {
+      "id": "BASELINE_IMPORT_IDENTITY",
+      "decision": "PASS",
+      "finding": "The only import is ActualCarryObservability. All three transitive local source and olean pins match the author receipt and the previously reviewed canonical baseline. No earlier LEAN_PATH shadow exists for these modules.",
+      "evidence": "evidence-validation.json: local_imports"
+    },
+    {
+      "id": "CANONICAL_INPUTS",
+      "decision": "PASS",
+      "finding": "The two explicit little-endian lists contain fifteen bounded decimal digits with nonzero leading digit and exactly represent 900000058163209 and 900000082716109. Both source canonical-input proofs are axiom-free.",
+      "evidence": "left_canonical, right_canonical; independent-arithmetic.json"
+    },
+    {
+      "id": "INITIAL_COEFFICIENT_ROWS",
+      "decision": "PASS",
+      "finding": "The two row-zero lists are the full active columnSum vectors of the initial canonical digits. The source proves all fifteen positions for both Boolean branches by kernel decision.",
+      "evidence": "initial_trace_fin; source_pair_rows_matched = 16, source_initial_digit_values_matched = 30"
+    },
+    {
+      "id": "FINITE_TRANSITION_COVERAGE",
+      "decision": "PASS",
+      "finding": "The finite certificate checks both branches for all seven adjacent transitions against the unchanged nextWidth and nextColumns functions. Its Fin 19 domain covers all 248 active successor coefficients; this is not an assumed transition table.",
+      "evidence": "trace_steps_fin; independent-arithmetic.json: source_adjacent_transitions_matched = 14"
+    },
+    {
+      "id": "EXACT_PREFIX_TRANSPORT",
+      "decision": "PASS",
+      "finding": "actual_trace proves exact iterPairs widths and coefficient agreement on all active indices through time seven by induction using next_state_congr_upto. No equality of irrelevant function tails is required or silently assumed.",
+      "evidence": "actual_trace; accepted ActualCarryObservability.next_state_congr_upto"
+    },
+    {
+      "id": "WIDTHS_AND_COMPLETE_CARRY_RANGE",
+      "decision": "PASS",
+      "finding": "The proved widths are [15,16,16,17,18,19,19,19]. The Fin 20 carry certificate includes every index i at most the current width, including the terminal overflow carry at width nineteen.",
+      "evidence": "trace_width_bound_fin, trace_carries_fin, left_widths, right_widths, widths_agree"
+    },
+    {
+      "id": "SEVEN_OBSERVATION_QUANTIFIERS",
+      "decision": "PASS",
+      "finding": "seven_complete_carries quantifies over all natural t < 7 and all i <= the current left width. Both actual widths agree, so the statement compares complete equal-length carry words at times zero through six. No overflow-only or truncated-prefix condition is substituted.",
+      "evidence": "seven_complete_carries; 127 complete carry positions independently matched"
+    },
+    {
+      "id": "ORDINARY_ORBIT_SEMANTICS",
+      "decision": "PASS",
+      "finding": "numeric_orbit_representations instantiates the unchanged iterPairs_representation theorem with the proved canonical inputs and initial columnSum identity. Thus both carried recursions are realized by canonical digit representations of the ordinary integer orbits. Its unused t <= 7 premise is harmless because the inherited representation theorem is valid for every natural t.",
+      "evidence": "numeric_orbit_representations; accepted OverflowCarryNormalization.iterPairs_representation"
+    },
+    {
+      "id": "ACTIVE_INITIAL_DIFFERENCE",
+      "decision": "PASS",
+      "finding": "The initial coefficient at index two is 2 on the left and 1 on the right. The source separately proves 2 < 15, eliminating an inactive-tail interpretation of the inequality.",
+      "evidence": "initial_pair_sums_differ, initial_pair_difference_active"
+    },
+    {
+      "id": "EXACT_NEXT_INTEGER_INEQUALITY",
+      "decision": "PASS",
+      "finding": "The direct kernel proofs give next integers 1802361908163218 and 1801617362716118 and their inequality under the unchanged Lychrel196.step definition. The independent integer replay agrees.",
+      "evidence": "next_integer_values, next_integers_differ; independent-arithmetic.json"
+    },
+    {
+      "id": "FIRST_SEPARATING_OBSERVATION",
+      "decision": "PASS",
+      "finding": "At time seven, both widths are nineteen and carry index four has values 1 and 0. first_separation_at_seven conjoins every preceding complete agreement with an in-range mismatch at that time. The source does not assert index-four minimality; the independent arithmetic control additionally verifies it is the first mismatching index.",
+      "evidence": "eighth_carry_differs, first_separation_at_seven; independent-arithmetic.json"
+    },
+    {
+      "id": "COUNTEREXAMPLE_ENDPOINT",
+      "decision": "PASS",
+      "finding": "The final conjunction supplies canonical width-fifteen inputs, seven complete carry agreements, unequal active initial coefficients and unequal next ordinary integers. These concrete witnesses refute universal reconstruction of the full active vector or next integer from seven observations.",
+      "evidence": "seven_carry_counterexample"
+    },
+    {
+      "id": "INDEPENDENT_DECIMAL_REPLAY",
+      "decision": "PASS",
+      "finding": "Starting only from the two literal ordinary integers, independently computed reversal, addition, decimal digits, reflected column sums and carries. All nine retained trajectory rows and all 126 row fields match; all sixteen literal source rows and fourteen source transitions match. The extra state-eight arithmetic check is separate from the Lean bounded-row theorem.",
+      "evidence": "independent_controls.py; independent-arithmetic.json"
+    },
+    {
+      "id": "PALINDROME_SCOPE",
+      "decision": "PASS",
+      "finding": "Both trajectories first reach palindromes at time two: 9925979999795299 and 9917789999877199. The inherited orbit operator continues applying step without a stopping predicate, exactly as required by this theorem. The counterexample does not establish a lower bound for palindrome-free histories or IsLychrel inputs.",
+      "evidence": "independent-arithmetic.json: palindromic_times_among_checked_states; Lychrel196.orbit definition"
+    },
+    {
+      "id": "DISCOVERY_FILTER_INDEPENDENCE",
+      "decision": "PASS",
+      "finding": "The source directly certifies the displayed witness and contains no dependence on the computational four-prefix filter. The discovery report records 126 seven-word matches and zero eight-word matches inside its filter only; no full-domain eight-word exclusion is inferred.",
+      "evidence": "source import and declaration inspection; evidence/discovery-scan-result.json"
+    },
+    {
+      "id": "EXPLICIT_THEOREM_AXIOM_AUDIT",
+      "decision": "PASS",
+      "finding": "Parsed all twenty explicit theorem #print axioms outputs through closing brackets, including the wrapped actual_trace list. Eleven named theorems are axiom-free; the other nine use only propext and Quot.sound. Every explicit source theorem is printed once, and all fourteen public declarations match the author receipt.",
+      "evidence": "source-log-audit.json"
+    },
+    {
+      "id": "NO_NEW_PROOF_SHORTCUTS",
+      "decision": "PASS",
+      "finding": "Comment- and string-aware source scan found no sorry, admit, axiom, sorryAx, native_decide, ofReduceBool, skipKernelTC or unsafe token. Manual review found only the original import, ordinary definitions, kernel decisions and proof tactics.",
+      "evidence": "source-log-audit.json: forbidden_shortcut_tokens = []"
+    },
+    {
+      "id": "LOCAL_KERNEL_RECEIPT_PINS",
+      "decision": "PASS",
+      "finding": "Independently validated all eighteen author artifact hashes, all three local import source/olean hashes and the compiler executable hash. The author reports one successful --trust=0 -j1 -DElab.async=false compilation. The reviewer inspected the retained log and did not claim a separate Lean run.",
+      "evidence": "evidence-validation.json"
+    },
+    {
+      "id": "ADDITIVE_NONAUTHOR_REVIEW",
+      "decision": "PASS",
+      "finding": "This review was performed by /root/lean_runtime, who did not author this source. Both prior frozen review receipts retain their exact hashes. The work is internal specialist review, not external GitHub approval or maintainer acceptance.",
+      "evidence": "evidence-validation.json: prior_reviews"
+    }
+  ],
+  "passed_check_count": 20,
+  "independent_arithmetic": {
+    "path": "independent-arithmetic.json",
+    "sha256": "a9a3e07f42bc4be07a1307b4cc2732beffffe430dbe90c512ccf15f1776bd384",
+    "bytes": 3373,
+    "script": {
+      "path": "independent_controls.py",
+      "sha256": "3fa8f31093a801ebf5d32f5c861bbda9e6bd672b79a6903f08dd363bc03ae7c4",
+      "bytes": 11274
+    },
+    "status": "PASS",
+    "trace_rows": 9,
+    "trace_fields": 126,
+    "source_pair_rows": 16,
+    "source_transitions": 14,
+    "complete_carry_positions": 127,
+    "first_mismatch_time": 7,
+    "first_mismatch_index": 4
+  },
+  "source_log_audit": {
+    "path": "source-log-audit.json",
+    "sha256": "e455b52d971e99c0c855c5d4ea968256c7f75832836b4ab306b3bf5a6a310282",
+    "bytes": 9978,
+    "status": "PASS",
+    "explicit_theorems": 20,
+    "public_endpoints": 14,
+    "axiom_free_named_theorems": 11,
+    "named_theorem_transitive_axiom_union": [
+      "Quot.sound",
+      "propext"
+    ],
+    "all_explicit_theorems_covered": true,
+    "environment_origin_exhaustive": false
+  },
+  "local_kernel_evidence": {
+    "author_receipt": {
+      "path": "evidence/author-local-proof-receipt.json",
+      "sha256": "84b897e2ebd41cae7d2ebb5a9d8e52192cce1f01d3a42a7565a2dac3e2bb1bfc",
+      "bytes": 10549
+    },
+    "successful_log": {
+      "path": "evidence/Agent10SevenCarryCounterexample.build.log",
+      "sha256": "e2497ea6b4f9539e885c04815c2efef8707153ee5a395a7a11fe2b3105f66739",
+      "bytes": 2035
+    },
+    "validation": {
+      "path": "evidence-validation.json",
+      "sha256": "dc07b5d44913937fcc37b6c198aa9e3b03f10cda52065db414f76f8cd89f60bd",
+      "bytes": 8574
+    },
+    "reported_exit_code": 0,
+    "author_executed_build": true,
+    "reviewer_executed_build": false,
+    "fresh_expanded_canonical_gate": "Separate root-owned integration step; not asserted by this review."
+  },
+  "limitations": [
+    "This is internal non-author specialist review, not external GitHub approval or independent maintainer acceptance.",
+    "The witness concerns ordinary reverse-and-add iteration continued after palindromes. Both orbits reach palindromes at time two; no palindrome-avoidance or IsLychrel claim follows.",
+    "The result disproves seven-observation full active pair-vector and next-integer reconstruction. These particular inputs separate at observation eight, so this source does not prove eight-observation insufficiency or an optimal universal observation bound.",
+    "The Lean source certifies rows zero through seven and all complete carry words at t < 7. The independent Python replay through state eight is corroborating arithmetic, not an additional kernel-certified finite trajectory theorem.",
+    "The retained local log covers all twenty explicit source theorems. Generated auxiliary theorem origins and the expanded integrated source closure await the separate root-owned exhaustive canonical gate; no redundant full rebuild was performed.",
+    "The discovery scan filter has no Lean inclusion theorem. Its filtered no-eight-match count does not imply a universal exclusion, and its correctness is not an assumption of the direct counterexample proof."
+  ]
+}

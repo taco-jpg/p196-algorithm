@@ -1,0 +1,163 @@
+{
+  "agent": "Agent #10",
+  "recorded_at_utc": "2026-10-16T22:01:54.920843+00:00",
+  "source_baseline": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "local_sharp_source_commit": "f156ea95f4f64609da218632820f71378c815411",
+  "proof_status": "The exact nine-observation threshold source and eight-observation counterexample passed direct trust-zero Lean checking; the combined sixteen-module canonical gate is separately running.",
+  "sharp_theorems": [
+    "Agent10NineCarrySharp.uniform_pair_reconstruction_iff",
+    "Agent10NineCarrySharp.uniform_next_integer_reconstruction_iff",
+    "Agent10NineCarrySharp.nine_is_exact_uniform_threshold"
+  ],
+  "exact_scope": "For all natural K, uniform reconstruction of every active initial pair coefficient, or of the next ordinary integer, from K complete carry words at a common initial width holds iff9<=K. All terminal carries are included. Ordinary iteration continues after a palindrome.",
+  "counterexample": {
+    "initial_integers": [
+      "90000000560706169",
+      "90000000806235169"
+    ],
+    "initial_width": 17,
+    "equal_observation_times": "0 through7 inclusive",
+    "different_next_integers": [
+      "186160707060706178",
+      "186153261606235178"
+    ],
+    "first_carry_separation_time": 8,
+    "separation_index": 4,
+    "first_palindrome_time_both_inputs": 4,
+    "first_palindrome_facts_kernel_checked": true
+  },
+  "completed_prior_canonical_gate": {
+    "source_commit": "b170358092047167fef8a5cee165366dbc1e8fd7",
+    "modules": 13,
+    "successful_lean_commands": 14,
+    "audited_theorems": 1244,
+    "registered_endpoints": 83,
+    "status": "PASS"
+  },
+  "current_canonical_gate": {
+    "source_commit": "f156ea95f4f64609da218632820f71378c815411",
+    "modules": 16,
+    "registered_endpoints": 122,
+    "status_at_this_checkpoint": "RUNNING",
+    "executor": "Agent #10 parent /root"
+  },
+  "complete_prior_evidence_archive": {
+    "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/evidence/agent10-carry-source-evidence-13.tar.gz",
+    "sha256": "62707211104ecca8935afc26b815a773a71f18ea957906def79a59f9cdb4232a",
+    "bytes": 1051410,
+    "files": 355,
+    "scope": "Frozen thirteen-module checkpoint and explicitly separated completed exploratory computations. New Seven/Eight/Sharp modules and width17 are excluded; their evidence is published separately."
+  },
+  "preserved_prior_patches": [
+    "source.patch",
+    "source-expanded.patch"
+  ],
+  "patch_scope": "source-expanded.patch covers the completed thirteen-module checkpoint. The three new theorem modules and new16-module registry are published as exact sources here; a combined delivery patch and final gate receipt follow additively.",
+  "reviews": {
+    "five_modules": "31 non-author internal checks, PASS",
+    "three_column_extension": "23 non-author internal checks, PASS",
+    "seven_counterexample": "20 non-author internal checks, PASS",
+    "eight_counterexample_and_sharp_composition": "Internal non-author reviews in progress at this checkpoint"
+  },
+  "external_github_approval": false,
+  "main_integration_claimed": false,
+  "main_writer_claimed": false,
+  "new_remote_agent_branch_created": false,
+  "limits": [
+    "No initial-integer injectivity conclusion.",
+    "No threshold claim for trajectories required to avoid palindromes throughout the observation window.",
+    "No P196 or infinite-palindrome-avoidance theorem."
+  ],
+  "source_files": [
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/sources/Agent10SevenCarryCounterexample.lean",
+      "sha256": "7cdc32bd5d0eff4174d1d35314ef544a7cf80532868ba38fe664cd063edb67f9",
+      "bytes": 10991
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/sources/Agent10EightCarryCounterexample.lean",
+      "sha256": "5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739",
+      "bytes": 12598
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/sources/Agent10NineCarrySharp.lean",
+      "sha256": "98e587d22229bdead323dc922b80760cdf79f3b27c14f3a1addaa4df2fb78266",
+      "bytes": 5361
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/Agent10NineCarrySharp.registry.json",
+      "sha256": "01cac4b7bf8094d50a368e3798fefa548b85b911c3bab58a788e8d3f9ee5ab72",
+      "bytes": 16838
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/seven-carry-proof-receipt.json",
+      "sha256": "84b897e2ebd41cae7d2ebb5a9d8e52192cce1f01d3a42a7565a2dac3e2bb1bfc",
+      "bytes": 10549
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/seven-carry-build.log",
+      "sha256": "e2497ea6b4f9539e885c04815c2efef8707153ee5a395a7a11fe2b3105f66739",
+      "bytes": 2035
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/eight-carry-build.json",
+      "sha256": "a8d15217f76a963a09a6f5913f57959796181447895a17048fac0be765a62471",
+      "bytes": 18528
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/eight-carry-build.log",
+      "sha256": "c63ccbb205dd0694df6cc6d71d154b94b476b155cadf4aa9cd58d033ce3a1c0f",
+      "bytes": 2343
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/eight-carry-discovery-proof.json",
+      "sha256": "4a9a44a9bce67c8802d50431c5fc60fb7ef864877dd588ee9c8cec9fe3c522b0",
+      "bytes": 2959
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/EightCarryAudit.lean",
+      "sha256": "9b277a07245ad117a77537ba5b592535b887c6a74510c2688c173dc64925ca46",
+      "bytes": 2180
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/EightCarryAudit.log",
+      "sha256": "874992d4d85a5998bfecd6a6c941e08b47da64de8fda044185da733f2dd1956d",
+      "bytes": 11997
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/sharp-threshold-build.json",
+      "sha256": "254efae625aa0a885d4b3f6a22f250ed6b4cce66afdf0465d2d3cbef4d6c72e8",
+      "bytes": 2030
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/sharp-threshold-build.log",
+      "sha256": "9838435d63d76221838893e8e7781f692f361a844f9b9b2602f2c899dd7af06f",
+      "bytes": 984
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/reviews/seven-counter-review.json",
+      "sha256": "e8b9d6e0ed0541cc1c8d435a9e62f5ea3cfba7b1f9590071ff924f6991e8bfba",
+      "bytes": 13629
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/reports/SEVEN_CARRY_CERTIFICATE.md",
+      "sha256": "8453eb15f1f577ee9fd34b0b21673e0bf35189cd916fb5a8f5865cdc732ba76a",
+      "bytes": 5593
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/reports/eight-carry-counterexample-result.md",
+      "sha256": "a8d0894026537e2ef33a388d434a13777e199171b5b8bb482456a95e9b14adc0",
+      "bytes": 7717
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/package13-archive-verification.json",
+      "sha256": "107d4caad1d39302b35220eaeb1e5119c931027f88ca769cbafb85c29c76e96e",
+      "bytes": 1522
+    },
+    {
+      "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/evidence/agent10-carry-source-evidence-13.tar.gz.sha256",
+      "sha256": "5347f980c4b4b4dd45a6d765e57d28a9ec4e819932bef54ed6fa378e2dbb7131",
+      "bytes": 106
+    }
+  ]
+}

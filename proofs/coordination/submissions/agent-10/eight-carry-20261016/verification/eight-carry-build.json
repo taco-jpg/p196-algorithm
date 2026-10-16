@@ -1,0 +1,301 @@
+{
+  "executor": "Agent #10 specialist /root/formalization_scout",
+  "source_path": "/workspace/scratch/4b20b8469eb3/agent10-count/Agent10EightCarryCounterexample.lean",
+  "source_sha256": "5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739",
+  "dependency_source_and_olean_origin": "/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-003/agent10-two-pair-reconstruction/source",
+  "dependency_pins": {
+    "Lychrel196Research.lean": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+    "Lychrel196Research.olean": "9b0cc1f8650e0d57c1f64e5d353fb5ada6f69b0fe1082a3ee0196a3ebeb54b8a",
+    "PrefixCarryBound.lean": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+    "PrefixCarryBound.olean": "17eaf7230f3d15c69376376276824d318cce10ec483734ce9fedcf9f4d2fd902",
+    "ActualCarryObservability.lean": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+    "ActualCarryObservability.olean": "ebc16f7956393dc64b0ffe2d5ff50260d91fb42515b46d886f1ff81d126bd250"
+  },
+  "commands": [
+    {
+      "label": "Agent10EightCarryCounterexample",
+      "command": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent10EightCarryCounterexample.olean",
+        "Agent10EightCarryCounterexample.lean"
+      ],
+      "cwd": "/workspace/scratch/4b20b8469eb3/agent10-count/eight-check-001/source",
+      "LEAN_PATH": "/workspace/scratch/4b20b8469eb3/agent10-count/eight-check-001/source:/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-003/agent10-two-pair-reconstruction/source",
+      "exit_code": 0,
+      "elapsed_seconds": 2.315252125999905,
+      "user_cpu_seconds": 2.245199,
+      "system_cpu_seconds": 0.06554,
+      "peak_child_rss_kib": 532028,
+      "source_sha256": "5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739",
+      "log_sha256": "c63ccbb205dd0694df6cc6d71d154b94b476b155cadf4aa9cd58d033ce3a1c0f"
+    },
+    {
+      "label": "EightCarryAudit",
+      "command": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "EightCarryAudit.olean",
+        "EightCarryAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/4b20b8469eb3/agent10-count/eight-check-001/source",
+      "LEAN_PATH": "/workspace/scratch/4b20b8469eb3/agent10-count/eight-check-001/source:/workspace/scratch/4b20b8469eb3/agent10-eight/canonical-build-003/agent10-two-pair-reconstruction/source",
+      "exit_code": 0,
+      "elapsed_seconds": 2.9118435609998414,
+      "user_cpu_seconds": 2.760927,
+      "system_cpu_seconds": 0.147385,
+      "peak_child_rss_kib": 961444,
+      "source_sha256": "9b277a07245ad117a77537ba5b592535b887c6a74510c2688c173dc64925ca46",
+      "log_sha256": "874992d4d85a5998bfecd6a6c941e08b47da64de8fda044185da733f2dd1956d"
+    }
+  ],
+  "integer_replay_sha256": "b53c756862d5ad9d64fff1111ce2a29ef8265e8267c1111e5e9594a98aea73f6",
+  "status": "PASS",
+  "recorded_at_utc": "2026-10-16T21:57:35.670525+00:00",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "module_theorem_count": 48,
+  "theorem_count_includes_generated_theorems": true,
+  "module_axiom_union": [
+    "Quot.sound",
+    "propext"
+  ],
+  "unsafe_generated_implementation_declarations": [],
+  "public_endpoint_count": 16,
+  "endpoint_records": [
+    {
+      "name": "Agent10EightCarryCounterexample.left_canonical",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.left_canonical :\n  DecimalDigits.Canonical 90000000560706169 Agent10EightCarryCounterexample.leftDigits 17",
+      "type_output_sha256": "3ab0d3c9bdca510235da314ead292d3c3efebad79e463b5eebeed5564accee98",
+      "type_log_line_1_based": 1,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.right_canonical",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.right_canonical :\n  DecimalDigits.Canonical 90000000806235169 Agent10EightCarryCounterexample.rightDigits 17",
+      "type_output_sha256": "a6244f2575c6740d2f2fba3c59be24119f93fa2839f14b01cbe78b0e56f7d56a",
+      "type_log_line_1_based": 3,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.left_widths",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.left_widths (t : Nat) (ht : t \u2264 8) :\n  (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst =\n    Agent10EightCarryCounterexample.traceWidth t",
+      "type_output_sha256": "c7a5625e9964b9eb1deab5eaced0e234e812148a6f2f2500d3684c365a0ee8d2",
+      "type_log_line_1_based": 5,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.right_widths",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.right_widths (t : Nat) (ht : t \u2264 8) :\n  (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst =\n    Agent10EightCarryCounterexample.traceWidth t",
+      "type_output_sha256": "a4dda3fa5540f22b744f84fca4bb294022b2cc9434eae4e75b36a3434e19ca66",
+      "type_log_line_1_based": 8,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.widths_agree",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.widths_agree (t : Nat) (ht : t \u2264 8) :\n  (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst =\n    (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst",
+      "type_output_sha256": "272ccb3162e00426cef46f0415a44970a83bbea1ce69d3b91d0edee34b49e85d",
+      "type_log_line_1_based": 11,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.eight_complete_carries",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.eight_complete_carries (t : Nat) :\n  t < 8 \u2192\n    \u2200 (i : Nat),\n      i \u2264 (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst \u2192\n        DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd\n            i =\n          DecimalDigits.carry\n            (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i",
+      "type_output_sha256": "909c3fc561a95d1124d77139dd5d14f3221360c9ef5b2d96779ea721af1bfffb",
+      "type_log_line_1_based": 14,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.initial_pair_sums_differ",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.initial_pair_sums_differ :\n  Agent10EightCarryCounterexample.leftColumns 3 = 6 \u2227 Agent10EightCarryCounterexample.rightColumns 3 = 5",
+      "type_output_sha256": "2da3207935f0bcafef41ce4e2abd052df83f07a8fcae8008fceca1411f91adc9",
+      "type_log_line_1_based": 22,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.next_integer_values",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.next_integer_values :\n  Lychrel196.step 90000000560706169 = 186160707060706178 \u2227 Lychrel196.step 90000000806235169 = 186153261606235178",
+      "type_output_sha256": "53438991c9e21220706eaaeaf2658b4caa9d69a1f809a486a453122c6863dda8",
+      "type_log_line_1_based": 24,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.next_integers_differ",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.next_integers_differ :\n  Lychrel196.step 90000000560706169 \u2260 Lychrel196.step 90000000806235169",
+      "type_output_sha256": "3cbe6a258409e97cb02a11075f885a1621f73043386e153e6dd23cee30853c3e",
+      "type_log_line_1_based": 26,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.numeric_orbit_representations",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.numeric_orbit_representations (t : Nat) (_ht : t \u2264 8) :\n  (\u2203 d,\n      DecimalDigits.Canonical (Lychrel196.orbit 90000000560706169 t) d\n          (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst \u2227\n        \u2200 (i : Nat),\n          i < (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst \u2192\n            DecimalDigits.columnSum d\n                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst i =\n              (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd i) \u2227\n    \u2203 e,\n      DecimalDigits.Canonical (Lychrel196.orbit 90000000806235169 t) e\n          (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst \u2227\n        \u2200 (i : Nat),\n          i < (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst \u2192\n            DecimalDigits.columnSum e\n                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).fst i =\n              (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i",
+      "type_output_sha256": "1f10c97f3bb42071f745bdd0feab97c7903d1786c9ff3f249f76ac36131e23e6",
+      "type_log_line_1_based": 28,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.ninth_carry_differs",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.ninth_carry_differs :\n  DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 8).snd 4 =\n      1 \u2227\n    DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 8).snd 4 =\n      0",
+      "type_output_sha256": "72ccd9d018c03759c13b2d17873a0c69fe638534795fa3206d343071883b010d",
+      "type_log_line_1_based": 45,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.initial_pair_difference_active",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.initial_pair_difference_active :\n  3 < 17 \u2227 Agent10EightCarryCounterexample.leftColumns 3 \u2260 Agent10EightCarryCounterexample.rightColumns 3",
+      "type_output_sha256": "e04843cdcd81ab0da1397b934be698c8c5a5363236ecf3385422621a46dcdb60",
+      "type_log_line_1_based": 50,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.first_separation_at_eight",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.first_separation_at_eight :\n  (\u2200 (t : Nat),\n      t < 8 \u2192\n        \u2200 (i : Nat),\n          i \u2264 (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst \u2192\n            DecimalDigits.carry\n                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd i =\n              DecimalDigits.carry\n                (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i) \u2227\n    \u2203 i,\n      i \u2264 (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 8).fst \u2227\n        DecimalDigits.carry (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 8).snd\n            i \u2260\n          DecimalDigits.carry\n            (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 8).snd i",
+      "type_output_sha256": "ba15ab210f2df7e67dab63345580d481b3f28e1e5a2b6d30447e4a239f642346",
+      "type_log_line_1_based": 52,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.eight_carry_counterexample",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "type_output": "Agent10EightCarryCounterexample.eight_carry_counterexample :\n  DecimalDigits.Canonical 90000000560706169 Agent10EightCarryCounterexample.leftDigits 17 \u2227\n    DecimalDigits.Canonical 90000000806235169 Agent10EightCarryCounterexample.rightDigits 17 \u2227\n      (\u2200 (t : Nat),\n          t < 8 \u2192\n            \u2200 (i : Nat),\n              i \u2264 (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).fst \u2192\n                DecimalDigits.carry\n                    (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.leftColumns 17 t).snd i =\n                  DecimalDigits.carry\n                    (OverflowCarryNormalization.iterPairs Agent10EightCarryCounterexample.rightColumns 17 t).snd i) \u2227\n        Agent10EightCarryCounterexample.leftColumns 3 \u2260 Agent10EightCarryCounterexample.rightColumns 3 \u2227\n          Lychrel196.step 90000000560706169 \u2260 Lychrel196.step 90000000806235169",
+      "type_output_sha256": "ccf8b1754464547e30a913154d24f056a6749184238e14ad53e56ef53348df07",
+      "type_log_line_1_based": 67,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.palindrome_values_at_four",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.palindrome_values_at_four :\n  Lychrel196.orbit 90000000560706169 4 = 16999899899899899961 \u2227\n    Lychrel196.orbit 90000000806235169 4 = 16989989999998998961",
+      "type_output_sha256": "cbed72c716a1aa7cb0faa2a83c418ecc5c5f8bc60047a9b9a0fe799591c1e18c",
+      "type_log_line_1_based": 80,
+      "source_print_axioms_matches_exhaustive_audit": true
+    },
+    {
+      "name": "Agent10EightCarryCounterexample.first_palindromes_at_four",
+      "axioms": [],
+      "type_output": "Agent10EightCarryCounterexample.first_palindromes_at_four :\n  (\u2200 (t : Nat),\n      t < 4 \u2192\n        \u00acLychrel196.Palindrome (Lychrel196.orbit 90000000560706169 t) \u2227\n          \u00acLychrel196.Palindrome (Lychrel196.orbit 90000000806235169 t)) \u2227\n    Lychrel196.Palindrome (Lychrel196.orbit 90000000560706169 4) \u2227\n      Lychrel196.Palindrome (Lychrel196.orbit 90000000806235169 4)",
+      "type_output_sha256": "c886676f56f2cbd25993a64b8242b73a7a5d2a63aa033946ecc911da18a02b6d",
+      "type_log_line_1_based": 83,
+      "source_print_axioms_matches_exhaustive_audit": true
+    }
+  ],
+  "all_public_endpoint_types_and_print_axioms_checked": true,
+  "finite_kernel_certificates": {
+    "digit_bounds_fin": {
+      "internal_name": "_private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.digit_bounds_fin",
+      "axioms": []
+    },
+    "initial_trace_fin": {
+      "internal_name": "_private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.initial_trace_fin",
+      "axioms": []
+    },
+    "trace_width_bound_fin": {
+      "internal_name": "_private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.trace_width_bound_fin",
+      "axioms": []
+    },
+    "trace_steps_fin": {
+      "internal_name": "_private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.trace_steps_fin",
+      "axioms": []
+    },
+    "trace_carries_fin": {
+      "internal_name": "_private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.trace_carries_fin",
+      "axioms": []
+    },
+    "palindrome_prefix_fin": {
+      "internal_name": "_private.Agent10EightCarryCounterexample.0.Agent10EightCarryCounterexample.palindrome_prefix_fin",
+      "axioms": []
+    }
+  },
+  "scope": "Concrete failure of eight-word reconstruction for unrestricted continued reverse-and-add iteration; both inputs first reach palindromes at time four; no palindrome-avoidance or 196 claim.",
+  "palindrome_first_time": 4,
+  "source_pattern_origin": "/workspace/scratch/4b20b8469eb3/agent10-semantic/Agent10SevenCarryCounterexample.lean",
+  "source_pattern_sha256": "7cdc32bd5d0eff4174d1d35314ef544a7cf80532868ba38fe664cd063edb67f9",
+  "artifacts": {
+    "Agent10EightCarryCounterexample.command.json": {
+      "sha256": "487329e55be1b2f60f8bd8e6f2f161384dce917f8364c74a1ffbdd5fa27741ff",
+      "bytes": 876
+    },
+    "EightCarryAudit.command.json": {
+      "sha256": "7a9885bc93cb5d5f181cd43c8d981854d6f23193af92983a1dac8bac625d53e9",
+      "bytes": 830
+    },
+    "build_eight_counterexample.py": {
+      "sha256": "977645dd71c7235bee4fa85c59280188973d7c0328d848aaf5cb53c34c509983",
+      "bytes": 9266
+    },
+    "integer-replay-input.json": {
+      "sha256": "b53c756862d5ad9d64fff1111ce2a29ef8265e8267c1111e5e9594a98aea73f6",
+      "bytes": 17828
+    },
+    "lean-version.txt": {
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "bytes": 78
+    },
+    "logs/Agent10EightCarryCounterexample.log": {
+      "sha256": "c63ccbb205dd0694df6cc6d71d154b94b476b155cadf4aa9cd58d033ce3a1c0f",
+      "bytes": 2343
+    },
+    "logs/EightCarryAudit.log": {
+      "sha256": "874992d4d85a5998bfecd6a6c941e08b47da64de8fda044185da733f2dd1956d",
+      "bytes": 11997
+    },
+    "source/Agent10EightCarryCounterexample.lean": {
+      "sha256": "5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739",
+      "bytes": 12598
+    },
+    "source/Agent10EightCarryCounterexample.olean": {
+      "sha256": "ba65126ed97dedb302608d7e2e4b6ed10f8e1abb4784969d00a6affcc369a65e",
+      "bytes": 552600
+    },
+    "source/EightCarryAudit.lean": {
+      "sha256": "9b277a07245ad117a77537ba5b592535b887c6a74510c2688c173dc64925ca46",
+      "bytes": 2180
+    },
+    "source/EightCarryAudit.olean": {
+      "sha256": "a1eb8ab3ece2fdbe3efe6eb9f6dd8e16458c38d82ea43bf4e151e381c808a052",
+      "bytes": 17296
+    }
+  }
+}
