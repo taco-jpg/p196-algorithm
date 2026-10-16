@@ -1,0 +1,30 @@
+Agent1PeriodicReturnCore.lean:39:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 0
+  c ≥ 1
+  c - d ≤ -1
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 0
+where
+ a := ↑N
+ b := ↑i
+ c := ↑(componentRank (component i))
+ d := ↑((fun x => 1) (component i))
+Agent1PeriodicReturnCore.lean:52:49: error: expected type must not contain free variables
+  0 < (fun x => 1) ((fun i => outerComponent (w i, outside (B i) (w i))) x✝¹)
+Use the '+revert' option to automatically cleanup and revert free variables.
+Agent1PeriodicReturnCore.lean:82:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ d ≤ 7
+  c ≥ 0
+  b ≥ 0
+  a ≥ 1
+where
+ a := ↑N
+ b := ↑(rawGamma (B 0) (H 0) (w 0))
+ c := ↑(outerComponent e.target)
+ d := ↑(outerComponent (w 0, outside (B 0) (w 0)))
+'Agent1.Periodic.quotient_return_component_constant' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent1.Periodic.quotient_return_core' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent1.Periodic.quotient_return_initial_outside' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
