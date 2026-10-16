@@ -1,0 +1,18 @@
+Agent1.Periodic.periodicWord_canonical (B H w : Agent8.Word) (k : Nat) (hv : Agent1.Periodic.ValidPeriodic B H w)
+  (hk : 0 < k) : Agent8.CanonicalPair (Agent1.Periodic.periodicWord B H w k)
+'Agent1.Periodic.periodicWord_canonical' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.raw_outer_positive (B H w : Agent8.Word) (hv : Agent1.Periodic.ValidPeriodic B H w) :
+  0 < List.headD (Agent1.Periodic.rawOuter B H w) 0
+'Agent1.Periodic.raw_outer_positive' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.stripPeriodSuffix_outside (w B : Agent8.Word) (hw : w ≠ []) :
+  List.headD ((Agent1.Periodic.stripPeriodSuffix w B).fst ++ w) 0 = List.headD (B ++ w) 0
+'Agent1.Periodic.stripPeriodSuffix_outside' depends on axioms: [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicPositivity Agent1.Periodic.raw_outer_positive._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicPositivity Agent1.Periodic.periodicWord_canonical : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicPositivity _private.Agent1PeriodicPositivity.0.Agent1.Periodic.outside_append_periods : []
+AUDIT_THEOREM Agent1PeriodicPositivity Agent1.Periodic.rawOuter.eq_1 : []
+AUDIT_THEOREM Agent1PeriodicPositivity Agent1.Periodic.stripPeriodSuffix_outside : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicPositivity Agent1.Periodic.raw_outer_positive : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicPositivity _private.Agent1PeriodicPositivity.0._proof_2 : [propext]
+AUDIT_THEOREM Agent1PeriodicPositivity Agent1.Periodic.periodicWord_canonical._proof_1 : [propext, Quot.sound]
+MODULE_AUDIT theorems=8 union=[Quot.sound, propext]
