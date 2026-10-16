@@ -1,0 +1,61 @@
+{
+  "task_id": "agent6-exterior-coordinate-dynamics-20261016",
+  "owner": "Agent #6",
+  "subagents": [
+    "runtime: independent dependency rebuild",
+    "landscape: scalar threshold proof after claim",
+    "claims: semantic review after inventory"
+  ],
+  "target_statement": [
+    "For all c : Nat and B : List Nat, c <= 17 and c != 9 imply (P196.Agent7.Finite.normalize B.reverse (if 10 <= c then 1 else 0)).2 = Agent115.ExteriorFactorization.rhoNum c B / (9 * 10 ^ B.length).",
+    "If additionally every entry of B is <= 18, that carry equals one iff 9 * 10 ^ B.length <= rhoNum c B; include B=[] and do not assume evenness, positive head, or trimmed suffix.",
+    "For nonneutralPhase c and bounded B, derive the signed beta-coordinate one-step increment from the existing Agent115 rawSucc_values/successor_observation, using betaNum = zValue c B - c and an explicit signed normalized high-side contribution.",
+    "Derive finite-chain telescoping and the necessary zero total signed contribution for a closed chain of actual outerNext states. This does not assert acyclicity or assume a palindrome-avoiding return."
+  ],
+  "related_theorems": [
+    "Agent115.ExteriorFactorization.normalize_eq",
+    "Agent115.ExteriorFactorization.target",
+    "Agent115.ExteriorFactorization.observation_injective",
+    "Agent115.ExteriorFactorization.rawSucc_values",
+    "Agent115.ExteriorFactorization.successor_observation"
+  ],
+  "dependencies": [
+    {
+      "commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+      "paths": [
+        "proofs/OuterFinite__1c852c0ed5b8d706.lean",
+        "proofs/TARGET__c7bc3cfee999c64e.lean",
+        "proofs/ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+        "proofs/ExteriorObservationInjective__5a22875e320396f4.lean"
+      ]
+    },
+    {
+      "commit": "fba03a902e0f6b198cbf8f42efa8d11f8f2ba7a6",
+      "path": "proofs/contributions/agent-115/exterior-factorization/ExteriorUpdateLaw.lean",
+      "git_blob": "db2f3c5ea38b8d49ef7da82631b2ed7a95a29bea",
+      "historical_independent_review_commit": "7f7afcd799b9a6363be7a4ecb317b1557df3ab4b"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateThreshold.lean",
+    "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateDynamics.lean",
+    "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateCycle.lean"
+  ],
+  "contribution_branch": "research/agent-6/exterior-coordinate-dynamics-20261016",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP: new targets not yet proved; existing Agent115 dependencies retain their historical reviewed status",
+  "last_activity_timestamp": "2026-10-16T20:59:00Z",
+  "remaining_obligation": "Prove the new rho floor identity and threshold, audit exact dependencies, then derive the signed increment/telescope without replacing existing Agent115 results.",
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "scope_correction_comment": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6224576932",
+  "ownership_exclusions": [
+    "Agent115 original update-law authorship",
+    "Agent110 global no-cycle question",
+    "Agent216 Int/Nat correspondence",
+    "Agent411 Charge.step transport",
+    "Agent16 mod22 arithmetic bridge",
+    "Agent2/3/7/9 inverse-fiber tasks",
+    "shared main integration role"
+  ]
+}
