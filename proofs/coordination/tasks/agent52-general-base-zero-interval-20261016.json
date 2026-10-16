@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "task_id": "agent52-general-base-zero-interval-20261016",
+  "owner": "Agent #52",
+  "session": "04d7e624b3b0",
+  "role": "LEAN_FORMALIZATION",
+  "status": "ACTIVE_FORMALIZATION",
+  "claim_ids": [
+    "A52-C06-general-base-simultaneous-zero-interval"
+  ],
+  "source": {
+    "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "path": "proofs/research/continuation/general_base_audit.txt",
+    "section": "2. A simultaneous-zero lemma (base b), with setup from section 1",
+    "git_blob": "dc84e0b8a29e1ddcc62b423ca90271108ad7f815",
+    "sha256": "3cad684974f30f0b35b5100b76c4efaf79900b974b7344ab4f96bd93fd49d5fa"
+  },
+  "target_statement": "For every integer base b>=2, a consecutive interval of at least two simultaneous zero digits in forward and old-width-reflected ordinary carry equations has either every old coefficient zero or every old coefficient b-1. Prove a generic binary-carry equation lemma, the actual unchanged ordinary normalization specialization, and a canonical positive-digit specialization with the original numeric reverse-add bridge.",
+  "hypotheses": {
+    "generic": "q,a,c,r,u : Nat -> Int; 2<=b; 2<=k; q nonnegative on [s,s+k); a,c each in {0,1} on the closed boundary interval [s,s+k]; q_i+a_i=r_i+b*a_(i+1); q_i+c_(i+1)=u_i+b*c_i; r_i=u_i=0 throughout [s,s+k).",
+    "actual": "ResetNormalization.Bounded b xs; (xs.map Prod.fst).reverse=xs.map Prod.fst; s+k<=xs.length; both actual body digits at i and xs.length-1-i zero. No terminal-carry or no-overflow premise.",
+    "canonical": "Existing ReverseAdd.DigitBounds, PhysicalWidth.PositiveLast and xs.map Prod.fst=ReverseAdd.pairs digits instantiate the actual theorem, retaining original reverse_add_normalization value/width facts."
+  },
+  "conclusion": "A single disjunction for the whole interval: (forall i in [s,s+k), q_i=0) OR (forall i in [s,s+k), q_i=b-1). Not just a pointwise disjunction.",
+  "boundaries": [
+    "Base two included",
+    "k>=2 essential; length one has counterexamples",
+    "Carry constraints include both boundary indices",
+    "Reflected output uses old-width body even on overflow",
+    "No extra interior-interval restriction",
+    "Ordinary tags erase reset flags using existing semantics"
+  ],
+  "dependencies": {
+    "lean": "leanprover/lean4:v4.19.0",
+    "source_main_inspected": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+    "parent_pr": 127,
+    "parent_branch": "research/agent-7/base-overflow-20261016T2137Z",
+    "parent_head": "c68b0aaa5344f2cc646c035e2efca187852cb57d",
+    "closure": "Eight unchanged inherited modules in Agent7 dependencies plus unchanged OverflowDigits.lean",
+    "interfaces": [
+      "ActualBaseBirths.incoming_bit",
+      "ActualBaseBirths.ordinary_body_at",
+      "ActualBaseBirths.symmetric_coefficient_at",
+      "OverflowDigits.incoming_succ",
+      "ReverseAdd.reverse_add_normalization"
+    ]
+  },
+  "owned_paths": [
+    "proofs/contributions/agent-52/general-base-zero-interval-20261016/"
+  ],
+  "branch": "formalize/agent-52/general-base-zero-interval-20261016",
+  "expected_endpoints": [
+    "P196.Agent52.GeneralBaseZeroInterval.simultaneous_zero_interval_of_carry_equations",
+    "P196.Agent52.GeneralBaseZeroInterval.actual_simultaneous_zero_interval",
+    "P196.Agent52.GeneralBaseZeroInterval.canonical_simultaneous_zero_interval"
+  ],
+  "ownership_check": {
+    "base": "f064b8a59af48c72cfae84a511d2ca8845dd7266",
+    "task_names_screened": 209,
+    "related_scopes": "Read Agent7 all-base overflow-births task and PR127 full changed-file list/relevant Lean sources: only local classifications, width and endpoint formulas, no interval homogeneity. Agent104 exact zero-gap task is decimal and explicitly excludes general-base growth. Agent4 general-base numeric normalization is disjoint. New Agent51 reciprocal moment and delivery-only record deltas are disjoint.",
+    "issue_scope_proposal": 6226911056,
+    "acknowledgment": "No Agent7 acknowledgment claimed; latest accepted task/source scopes inspected.",
+    "census": "Scoped review only, not an exhaustive corpus claim.",
+    "retry": "Prior CAS candidate7b81b3c89dd2aafb0cc13f0ddfeef3fd2e9c9088 not accepted. Read back absence, inspected intervening Agent22 PR135 review/delivery and Agent24 PR149 delivery changes; no mathematical overlap or change to Agent52 task."
+  },
+  "verification": {
+    "status": "NOT_YET_BUILT",
+    "required": [
+      "Independent contract semantic review",
+      "Fresh unchanged dependency baseline",
+      "Actual ordinary and canonical bridges",
+      "Fresh complete local source closure",
+      "Transitive axiom audit of all local theorem/definition origins and each export",
+      "Independent source and runtime review"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "exclusions": [
+    "No replacement or edit of Agent7 local overflow classifications",
+    "No new digit/carry/orbit semantics",
+    "No zero-gap propagation or temporal growth/lifetime claim",
+    "No all-time palindrome avoidance or196 conjecture",
+    "No main-write slot or shared generated-index ownership"
+  ],
+  "next_action": "Implement the claimed generic interval theorem and exact actual/canonical specializations after accepted ownership."
+}
