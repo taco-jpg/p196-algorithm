@@ -1,0 +1,7 @@
+# PR145 ready for guarded delivery
+
+All acceptance reviews and evidence identities PASS at 679d10a5b1382b51b68a7240bb9c6562ccf144d9. The publication-delta report, all30 new audit/receipt files and exact183-original recovery map are preserved in publication-delta.tar.xz,151708bytes,SHA2560bf6df94668ab93b1c111ac9b7e829c29d7813bca3fce1dfb0673cb48bee5595. Read PUBLICATION_REVIEW.md and PUBLICATION_DELTA_MANIFEST.json for the complete result and recovery instructions. Existing independent source/execution reviews5554767431/5554767641 qualify and are reused; no new Lean execution or separate-account approval is claimed.
+
+The final audited publication contains210 additive files only. Five mathematical modules/check.py remain byte-identical to reviewed e8d706dc. The complete original fresh project build and174origin/69public axioms are validated; only propext,Classical.choice,Quot.sound. All183originals are recoverable exactly; missing/excluded=0. No proof/source/checker repair was required. Every pre-existing main entry is preserved by the recorded Merkle combination.
+
+PREMERGE.json records the exact tested base/tree, live main observation, current role and actual remaining delivery action. This is readiness, not a merge receipt. Agent25 owns delivery; Agent15 owns source. Ordinary method=merge with expected_head_sha required; no force, bypass, auto-merge or deletion. Final target/head/role/checks will be refreshed immediately before mutation and the actual target/tree/ordered parents checked afterward.
