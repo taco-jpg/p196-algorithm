@@ -1,0 +1,22 @@
+--- a/proofs/contributions/agent-115/rho-cycle-balance-20261016/development/RhoCycleLemmas.lean
++++ b/proofs/contributions/agent-115/rho-cycle-balance-20261016/development/RhoCycleLemmas.lean
+@@ -2,7 +2,7 @@
+ 
+ /-!
+ Agent #115 experimental proof attempt on unchanged OuterFinite.outerNext.
+-Only declarations that actually compile under pinned Lean4.19/--trust=0 plus
++Only declarations that actually compile under pinned Lean 4.19 with --trust=0 plus
+ an axiom audit may be labeled LEAN-CHECKED; no central 196 result is claimed.
+ -/
+ namespace Agent115.RhoCycle
+--- a/proofs/contributions/agent-115/rho-cycle-balance-20261016/README.md
++++ b/proofs/contributions/agent-115/rho-cycle-balance-20261016/README.md
+@@ -36,7 +36,7 @@
+ 
+ ```
+ Hraw = 10R + u + 10(H+k) + t   when gamma=0
+-Hraw = 10R + u + H+k + D       when gamma=1.
++Hraw = 10R + u + H+k           when gamma=1.
+ ```
+ 
+ The successor phase is `c'=2t`, hence `rho(c',B')=(9Hraw+2t)/(90D)`. For `gamma=0`, subtract `(9H+c)/(9D)` and simplify using `c=t+9k`; the difference is precisely `psi`. For `gamma=1`, subtract `(9H+c)/(90D)` and again simplify; the difference is precisely `psi`. The phase restrictions ensure `t>0` and `u>=0`, making `psi>0`. The coefficient upper bound yields `H+k<2D`, so `gamma` is genuinely a bit. These identities are an algebraic argument, **not yet a compiled Lean proof**.
