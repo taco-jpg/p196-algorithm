@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "task_id": "agent101-all-width-inverse-maximum-20261016",
+  "project": "agent101-all-width-maximum",
+  "root_module": "Agent101AllWidthMaximum",
+  "scope": "All public theorem and def declarations in the four new claimed modules, excluding generated auxiliary declarations and declarations inherited from dependencies.",
+  "registry": {
+    "path": "proofs/Agent101AllWidthMaximum.registry.json",
+    "bytes": 15852,
+    "sha256": "496908a7d53c6a09b7a82dfae3c5e10339ef699072e5c97c0e591dc4e2c2cfcc",
+    "git_blob": "7956ca2899aabfc583ea42375f59fc83887deaf8"
+  },
+  "generator": {
+    "path": "proofs/contributions/agent-101/all-width-inverse-maximum-20261016/make_registry.py",
+    "bytes": 28495,
+    "sha256": "c13fa6c0a3bd6225354d643a1bdadfe282c9e07f2de129300ec0e41fbc22f4a8",
+    "git_blob": "98ddb7afed4578beb436d0335830375e7151af5a"
+  },
+  "original_verifier": {
+    "path": "proofs/verify_project__214bf7673efe116b.py",
+    "bytes": 14531,
+    "sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a",
+    "git_blob": "21131b03dfa516eb19a0a7a4df4f2a41020d4db1"
+  },
+  "axiom_policy": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "audit_status": "This is a source inventory. Actual axiom results must be read from the retained Lean compiler and full module-audit logs."
+  },
+  "source_module_count": 17,
+  "new_module_count": 4,
+  "public_declaration_count": 41,
+  "theorem_count": 36,
+  "definition_count": 5,
+  "canonical_verification_performed_by_metadata_generator": false,
+  "modules": {
+    "Agent101ProfileExtraction": {
+      "path": "proofs/Agent101ProfileExtraction.lean",
+      "sha256": "fff6917b100aeec40e353abe4a3f8d27f6561d6859a1feeac9135c22cd8c836b",
+      "git_blob": "5a5ef0e2d0355362abb84ef48b82ca8d39cd156f",
+      "imports": [
+        "Agent101NumericFibers"
+      ],
+      "namespace": "Agent101",
+      "public_declaration_count": 7,
+      "theorem_count": 7,
+      "definition_count": 0,
+      "public_declarations": [
+        {
+          "kind": "theorem",
+          "name": "Agent101.reverse_wrapDigits",
+          "source_line_1_based": 11,
+          "print_axioms_line_1_based": 93,
+          "declaration_head": "theorem reverse_wrapDigits (a b : Nat) (xs : List Nat) :\n    (wrapDigits a b xs).reverse = wrapDigits b a xs.reverse"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.exists_coefficientWord_of_reverse",
+          "source_line_1_based": 16,
+          "print_axioms_line_1_based": 94,
+          "declaration_head": "theorem exists_coefficientWord_of_reverse (q : List Nat)\n    (hq : q.reverse = q) : ∃ h c, q = coefficientWord h c"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.coefficientWord_half_length",
+          "source_line_1_based": 46,
+          "print_axioms_line_1_based": 95,
+          "declaration_head": "theorem coefficientWord_half_length (h : List Nat) (c : Option Nat) :\n    h.length = (coefficientWord h c).length / 2"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.digitFn_coefficientWord_cons_zero",
+          "source_line_1_based": 52,
+          "print_axioms_line_1_based": 96,
+          "declaration_head": "theorem digitFn_coefficientWord_cons_zero (s : Nat) (h : List Nat)\n    (c : Option Nat) : digitFn (coefficientWord (s :: h) c) 0 = s"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.digitPairSums_reverse",
+          "source_line_1_based": 56,
+          "print_axioms_line_1_based": 97,
+          "declaration_head": "theorem digitPairSums_reverse (ds : List Nat) :\n    (digitPairSums ds).reverse = digitPairSums ds"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.digitPairSums_profile",
+          "source_line_1_based": 67,
+          "print_axioms_line_1_based": 98,
+          "declaration_head": "theorem digitPairSums_profile (ds : List Nat) :\n    ∃ h c, digitPairSums ds = coefficientWord h c ∧\n      h.length = ds.length / 2 ∧\n      (coefficientWord h c).length = ds.length"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.digitPairSums_profile_cons",
+          "source_line_1_based": 78,
+          "print_axioms_line_1_based": 99,
+          "declaration_head": "theorem digitPairSums_profile_cons (ds : List Nat) (hL : 2 ≤ ds.length) :\n    ∃ s h c, digitPairSums ds = coefficientWord (s :: h) c ∧\n      h.length = ds.length / 2 - 1 ∧\n      (coefficientWord (s :: h) c).length = ds.length ∧\n      s = DecimalDigits.columnSum (digitFn ds) ds.length 0"
+        }
+      ]
+    },
+    "Agent101WidthFiberBounds": {
+      "path": "proofs/Agent101WidthFiberBounds.lean",
+      "sha256": "bebc285185d2f15138980dc2720b31fb0cbf476d9a30b1155545aca0c96a1bb2",
+      "git_blob": "71c71a474c27ee23bb4b375875499afe9cb13e3b",
+      "imports": [
+        "Agent101ProfileExtraction",
+        "Agent2OverflowBound"
+      ],
+      "namespace": "Agent101",
+      "public_declaration_count": 6,
+      "theorem_count": 6,
+      "definition_count": 0,
+      "public_declarations": [
+        {
+          "kind": "theorem",
+          "name": "Agent101.mem_numericFiber_of_same_width_step",
+          "source_line_1_based": 16,
+          "print_axioms_line_1_based": 110,
+          "declaration_head": "theorem mem_numericFiber_of_same_width_step (ds h : List Nat) (c : Option Nat)\n    (hd : canonicalDigits ds) (hp : digitPairSums ds = coefficientWord h c)\n    (n : Nat) (hw : decimalWidth n ds.length)\n    (hs : step n = step (natValue ds)) : n ∈ numericFiber h c"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.fixed_width_profile_length_le",
+          "source_line_1_based": 29,
+          "print_axioms_line_1_based": 111,
+          "declaration_head": "theorem fixed_width_profile_length_le (ds h : List Nat) (c : Option Nat)\n    (hd : canonicalDigits ds) (hp : digitPairSums ds = coefficientWord h c)\n    (ns : List Nat) (hns : ns.Nodup)\n    (hm : ∀ n ∈ ns, decimalWidth n ds.length ∧ step n = step (natValue ds)) :\n    ns.length ≤ profileCount h c"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.profileCount_cons_outer_le",
+          "source_line_1_based": 42,
+          "print_axioms_line_1_based": 112,
+          "declaration_head": "theorem profileCount_cons_outer_le (s : Nat) (h : List Nat) (c : Option Nat) :\n    profileCount (s :: h) c ≤ pairCount true s * 10 ^ h.length"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.fixed_width_preimages_outer_bound",
+          "source_line_1_based": 50,
+          "print_axioms_line_1_based": 113,
+          "declaration_head": "theorem fixed_width_preimages_outer_bound (Y L n s : Nat) (d : Nat → Nat)\n    (hc : Canonical n d L) (hL : 2 ≤ L) (hs : step n = Y)\n    (ho : columnSum d L 0 = s) (ns : List Nat) (hns : ns.Nodup)\n    (hm : ∀ x ∈ ns, decimalWidth x L ∧ step x = Y) :\n    ns.length ≤ pairCount true s * 10 ^ (L / 2 - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.fixed_width_preimages_bound",
+          "source_line_1_based": 73,
+          "print_axioms_line_1_based": 114,
+          "declaration_head": "theorem fixed_width_preimages_bound (Y L : Nat) (ns : List Nat)\n    (hL : 2 ≤ L) (hns : ns.Nodup)\n    (hm : ∀ n ∈ ns, decimalWidth n L ∧ step n = Y) :\n    ns.length ≤ 9 * 10 ^ (L / 2 - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.one_digit_preimages_bound",
+          "source_line_1_based": 88,
+          "print_axioms_line_1_based": 115,
+          "declaration_head": "theorem one_digit_preimages_bound (Y : Nat) (ns : List Nat) (hns : ns.Nodup)\n    (hm : ∀ n ∈ ns, decimalWidth n 1 ∧ step n = Y) : ns.length ≤ 1"
+        }
+      ]
+    },
+    "Agent101MaximumWitnesses": {
+      "path": "proofs/Agent101MaximumWitnesses.lean",
+      "sha256": "d915b9df4e9ef3ab92ae9a33c3edd655b8567c40af7b88026e067408303182b7",
+      "git_blob": "8b91d3aeada19137043af16d60692d983e42e6b9",
+      "imports": [
+        "Agent105CrossWidth9df76b"
+      ],
+      "namespace": "Agent101.MaximumWitnesses",
+      "public_declaration_count": 20,
+      "theorem_count": 15,
+      "definition_count": 5,
+      "public_declarations": [
+        {
+          "kind": "def",
+          "name": "Agent101.MaximumWitnesses.maximumHalf",
+          "source_line_1_based": 15,
+          "print_axioms_line_1_based": 176,
+          "declaration_head": "def maximumHalf (D : Nat) : List Nat"
+        },
+        {
+          "kind": "def",
+          "name": "Agent101.MaximumWitnesses.maximumCenter",
+          "source_line_1_based": 17,
+          "print_axioms_line_1_based": 177,
+          "declaration_head": "def maximumCenter (D : Nat) : Option Nat"
+        },
+        {
+          "kind": "def",
+          "name": "Agent101.MaximumWitnesses.maximumWord",
+          "source_line_1_based": 19,
+          "print_axioms_line_1_based": 178,
+          "declaration_head": "def maximumWord (D : Nat) : List Nat"
+        },
+        {
+          "kind": "def",
+          "name": "Agent101.MaximumWitnesses.maximumTarget",
+          "source_line_1_based": 22,
+          "print_axioms_line_1_based": 179,
+          "declaration_head": "def maximumTarget (D : Nat) : Nat"
+        },
+        {
+          "kind": "def",
+          "name": "Agent101.MaximumWitnesses.maximumPreimages",
+          "source_line_1_based": 24,
+          "print_axioms_line_1_based": 180,
+          "declaration_head": "def maximumPreimages (D : Nat) : List Nat"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumHalf_cons",
+          "source_line_1_based": 27,
+          "print_axioms_line_1_based": 181,
+          "declaration_head": "theorem maximumHalf_cons (D : Nat) (hD : 2 ≤ D) :\n    maximumHalf D = 9 :: List.replicate (D / 2 - 1) 9"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.length_maximumWord",
+          "source_line_1_based": 33,
+          "print_axioms_line_1_based": 182,
+          "declaration_head": "theorem length_maximumWord (D : Nat) : (maximumWord D).length = D"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumWord_bounded",
+          "source_line_1_based": 38,
+          "print_axioms_line_1_based": 183,
+          "declaration_head": "theorem maximumWord_bounded (D : Nat) : digitsBounded (maximumWord D)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumWord_canonical",
+          "source_line_1_based": 51,
+          "print_axioms_line_1_based": 184,
+          "declaration_head": "theorem maximumWord_canonical (D : Nat) (hD : 2 ≤ D) :\n    canonicalDigits (maximumWord D)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumWord_units",
+          "source_line_1_based": 61,
+          "print_axioms_line_1_based": 185,
+          "declaration_head": "theorem maximumWord_units (D : Nat) (hD : 2 ≤ D) :\n    digitFn (maximumWord D) 0 = 9"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumTarget_width",
+          "source_line_1_based": 66,
+          "print_axioms_line_1_based": 186,
+          "declaration_head": "theorem maximumTarget_width (D : Nat) (hD : 2 ≤ D) :\n    decimalWidth (maximumTarget D) D"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumCenter_count",
+          "source_line_1_based": 72,
+          "print_axioms_line_1_based": 187,
+          "declaration_head": "theorem maximumCenter_count (D : Nat) : centerCount (maximumCenter D) = 1"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumPreimages_nodup",
+          "source_line_1_based": 76,
+          "print_axioms_line_1_based": 188,
+          "declaration_head": "theorem maximumPreimages_nodup (D : Nat) : (maximumPreimages D).Nodup"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.length_maximumPreimages",
+          "source_line_1_based": 79,
+          "print_axioms_line_1_based": 189,
+          "declaration_head": "theorem length_maximumPreimages (D : Nat) (hD : 2 ≤ D) :\n    (maximumPreimages D).length = 9 * 10 ^ (D / 2 - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.mem_maximumPreimages_fixed",
+          "source_line_1_based": 85,
+          "print_axioms_line_1_based": 190,
+          "declaration_head": "theorem mem_maximumPreimages_fixed (D n : Nat) :\n    n ∈ maximumPreimages D ↔ decimalWidth n D ∧ step n = maximumTarget D"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.maximumPreimages_nonempty",
+          "source_line_1_based": 96,
+          "print_axioms_line_1_based": 191,
+          "declaration_head": "theorem maximumPreimages_nonempty (D : Nat) (hD : 2 ≤ D) :\n    ∃ n, n ∈ maximumPreimages D"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.mem_maximumPreimages",
+          "source_line_1_based": 107,
+          "print_axioms_line_1_based": 192,
+          "declaration_head": "theorem mem_maximumPreimages (D : Nat) (hD : 2 ≤ D) (n : Nat) :\n    n ∈ maximumPreimages D ↔ 0 < n ∧ step n = maximumTarget D"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.all_width_maximum_witness",
+          "source_line_1_based": 143,
+          "print_axioms_line_1_based": 193,
+          "declaration_head": "theorem all_width_maximum_witness (D : Nat) (hD : 2 ≤ D) :\n    ∃ Y : Nat, ∃ ns : List Nat,\n      decimalWidth Y D ∧ ns.Nodup ∧\n      (∀ n, n ∈ ns ↔ 0 < n ∧ step n = Y) ∧\n      ns.length = 9 * 10 ^ (D / 2 - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.one_digit_preimages",
+          "source_line_1_based": 152,
+          "print_axioms_line_1_based": 194,
+          "declaration_head": "theorem one_digit_preimages (n : Nat) :\n    n ∈ ([1] : List Nat) ↔ 0 < n ∧ step n = 2"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.MaximumWitnesses.one_digit_maximum_witness",
+          "source_line_1_based": 170,
+          "print_axioms_line_1_based": 195,
+          "declaration_head": "theorem one_digit_maximum_witness :\n    ∃ Y : Nat, ∃ ns : List Nat,\n      decimalWidth Y 1 ∧ ns.Nodup ∧\n      (∀ n, n ∈ ns ↔ 0 < n ∧ step n = Y) ∧ ns.length = 1"
+        }
+      ]
+    },
+    "Agent101AllWidthMaximum": {
+      "path": "proofs/Agent101AllWidthMaximum.lean",
+      "sha256": "9bbdc9351ccb72d2502ca303a7963c1b2aa1e50afd0e9f5d3d095305b34983d9",
+      "git_blob": "efce998a1da6dee19a4b8c87accb3138d82cf63e",
+      "imports": [
+        "Agent105CrossWidth9df76b",
+        "Agent101NonpalindromicFibers",
+        "Agent101WidthFiberBounds",
+        "Agent101MaximumWitnesses"
+      ],
+      "namespace": "Agent101.Maximum",
+      "public_declaration_count": 8,
+      "theorem_count": 8,
+      "definition_count": 0,
+      "public_declarations": [
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.predecessor_width_cases",
+          "source_line_1_based": 17,
+          "print_axioms_line_1_based": 149,
+          "declaration_head": "theorem predecessor_width_cases (Y D n : Nat) (hY : decimalWidth Y D)\n    (hn : 0 < n) (hs : step n = Y) :\n    decimalWidth n D ∨ decimalWidth n (D - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.predecessor_one_digit_width",
+          "source_line_1_based": 28,
+          "print_axioms_line_1_based": 150,
+          "declaration_head": "theorem predecessor_one_digit_width (Y n : Nat) (hY : decimalWidth Y 1)\n    (hn : 0 < n) (hs : step n = Y) : decimalWidth n 1"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.width_bound_mono",
+          "source_line_1_based": 35,
+          "print_axioms_line_1_based": 151,
+          "declaration_head": "theorem width_bound_mono (L K : Nat) (hLK : L ≤ K) :\n    9 * 10 ^ (L / 2 - 1) ≤ 9 * 10 ^ (K / 2 - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.two_width_bound_arithmetic",
+          "source_line_1_based": 41,
+          "print_axioms_line_1_based": 152,
+          "declaration_head": "theorem two_width_bound_arithmetic (D a b : Nat)\n    (ha : a ≤ 8 * 10 ^ ((D - 1) / 2 - 1))\n    (hb : b ≤ 10 ^ (D / 2 - 1)) :\n    a + b ≤ 9 * 10 ^ (D / 2 - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.all_width_preimages_bound",
+          "source_line_1_based": 52,
+          "print_axioms_line_1_based": 153,
+          "declaration_head": "theorem all_width_preimages_bound (Y D : Nat) (ns : List Nat)\n    (hY : decimalWidth Y D) (hD : 2 ≤ D) (hns : ns.Nodup)\n    (hm : ∀ n ∈ ns, 0 < n ∧ step n = Y) :\n    ns.length ≤ 9 * 10 ^ (D / 2 - 1)"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.one_digit_target_preimages_bound",
+          "source_line_1_based": 121,
+          "print_axioms_line_1_based": 154,
+          "declaration_head": "theorem one_digit_target_preimages_bound (Y : Nat) (ns : List Nat)\n    (hY : decimalWidth Y 1) (hns : ns.Nodup)\n    (hm : ∀ n ∈ ns, 0 < n ∧ step n = Y) : ns.length ≤ 1"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.all_width_inverse_maximum",
+          "source_line_1_based": 131,
+          "print_axioms_line_1_based": 155,
+          "declaration_head": "theorem all_width_inverse_maximum (D : Nat) (hD : 2 ≤ D) :\n    (∀ (Y : Nat) (ns : List Nat), decimalWidth Y D → ns.Nodup →\n      (∀ n ∈ ns, 0 < n ∧ step n = Y) →\n      ns.length ≤ 9 * 10 ^ (D / 2 - 1)) ∧\n    (∃ (Y : Nat) (ns : List Nat), decimalWidth Y D ∧ ns.Nodup ∧\n      (∀ n, n ∈ ns ↔ 0 < n ∧ step n = Y) ∧\n      ns.length = 9 * 10 ^ (D / 2 - 1))"
+        },
+        {
+          "kind": "theorem",
+          "name": "Agent101.Maximum.one_digit_inverse_maximum",
+          "source_line_1_based": 141,
+          "print_axioms_line_1_based": 156,
+          "declaration_head": "theorem one_digit_inverse_maximum :\n    (∀ (Y : Nat) (ns : List Nat), decimalWidth Y 1 → ns.Nodup →\n      (∀ n ∈ ns, 0 < n ∧ step n = Y) → ns.length ≤ 1) ∧\n    (∃ (Y : Nat) (ns : List Nat), decimalWidth Y 1 ∧ ns.Nodup ∧\n      (∀ n, n ∈ ns ↔ 0 < n ∧ step n = Y) ∧ ns.length = 1)"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+import Lean
+import Agent101NumericFibers
+open Lean Elab Command
+run_cmd do
+  let env ← getEnv
+  let names := [`List.Nodup.subperm, `List.subperm_of_subset,
+    `List.Subperm.length_le, `List.Nodup.length_le, `List.length_le_of_subset,
+    `List.Subset.length_le, `List.length_le_of_injective,
+    `List.Pairwise.sublist, `List.Nodup.sublist]
+  for n in names do
+    match env.find? n with
+    | none => logInfo m!"ABSENT {n}"
+    | some ci => logInfo m!"PRESENT {n} : {ci.type}"
+  for (n, ci) in env.constants.toList do
+    let s := n.toString
+    if s.startsWith "List." && ((s.splitOn "length_le").length > 1 ||
+        (s.splitOn "subperm").length > 1 || (s.splitOn "Subperm").length > 1 ||
+        ((s.splitOn "subset").length > 1 && (s.splitOn "Nodup").length > 1)) then
+      logInfo m!"SEARCH {n} : {ci.type}"

@@ -1,0 +1,53 @@
+List.drop_of_length_le : ∀ {α : Type u_1} {i : Nat} {l : List α}, l.length ≤ i → List.drop i l = []
+List.IsInfix.eq_of_length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁ <:+: l₂ → l₂.length ≤ l₁.length → l₁ = l₂
+List.length_le_length_insertIdx : ∀ {α : Type u} {l : List α} {x : α} {i : Nat}, l.length ≤ (l.insertIdx i x).length
+List.lt_length_left_of_zip : ∀ {α : Type u_1} {β : Type u_2} {i : Nat} {l : List α} {l' : List β},
+  i < (l.zip l').length → i < l.length
+List.take_of_length_le : ∀ {α : Type u_1} {i : Nat} {l : List α}, l.length ≤ i → List.take i l = l
+List.eraseIdx_of_length_le : ∀ {α : Type u_1} {l : List α} {k : Nat}, l.length ≤ k → l.eraseIdx k = l
+List.Sublist.length_le.match_1._@.Init.Data.List.Sublist._hyg.1706 : ∀ {α : Type u_1},
+  let funType := fun {l₁ l₂} x => l₁.length ≤ l₂.length;
+  ∀ (motive : (l₂ l₁ : List α) → (x : l₁.Sublist l₂) → x.below → Prop) (l₂ l₁ : List α) (x : l₁.Sublist l₂)
+    (h_below : x.below),
+    (Unit → motive [] [] ⋯ ⋯) →
+      (∀ (l₁ l₂ : List α) (_l : α) (s : l₁.Sublist l₂) (h : s.below) (a : funType s), motive (_l :: l₂) l₁ ⋯ ⋯) →
+        (∀ (l₁ l₂ : List α) (a : α) (s : l₁.Sublist l₂) (h : s.below) (a_1 : funType s),
+            motive (a :: l₂) (a :: l₁) ⋯ ⋯) →
+          motive l₂ l₁ x h_below
+List.Sublist.length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁.Sublist l₂ → l₁.length ≤ l₂.length
+List.prefix_of_prefix_length_le : ∀ {α : Type u_1} {l₁ l₂ l₃ : List α},
+  l₁ <+: l₃ → l₂ <+: l₃ → l₁.length ≤ l₂.length → l₁ <+: l₂
+List.length_leftpad : ∀ {α : Type u_1} {n : Nat} {a : α} {l : List α}, (List.leftpad n a l).length = max n l.length
+List.suffix_of_suffix_length_le : ∀ {α : Type u_1} {l₁ l₃ l₂ : List α},
+  l₁ <:+ l₃ → l₂ <:+ l₃ → l₁.length ≤ l₂.length → l₁ <:+ l₂
+List.IsSuffix.length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁ <:+ l₂ → l₁.length ≤ l₂.length
+List.IsInfix.length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁ <:+: l₂ → l₁.length ≤ l₂.length
+List.length_le_length_insert : ∀ {α : Type u_1} [inst : BEq α] [inst_1 : LawfulBEq α] {l : List α} {a : α},
+  l.length ≤ (List.insert a l).length
+List.eraseIdx_append_of_length_le : ∀ {α : Type u_1} {l : List α} {k : Nat},
+  l.length ≤ k → ∀ (l' : List α), (l ++ l').eraseIdx k = l ++ l'.eraseIdx (k - l.length)
+List.lt_length_left_of_zipWith.omega_1 : ∀ {α : Type u_1} {β : Type u_2} {i : Nat} {l : List α} {l' : List β},
+  i < min l.length l'.length → ¬i < l.length → False
+List.reverse_zipWith : ∀ {α : Type u_1} {α_1 : Type u_2} {α_2 : Type u_3} {f : α → α_1 → α_2} {l : List α}
+  {l' : List α_1}, l.length = l'.length → (List.zipWith f l l').reverse = List.zipWith f l.reverse l'.reverse
+List.prefix_of_prefix_length_le.match_1 : ∀ {α : Type u_1}
+  (motive : (x x_1 x_2 : List α) → x <+: x_2 → x_1 <+: x_2 → x.length ≤ x_1.length → Prop) (x x_1 x_2 : List α)
+  (x_3 : x <+: x_2) (x_4 : x_1 <+: x_2) (x_5 : x.length ≤ x_1.length),
+  (∀ (x x_6 : List α) (x_7 : [] <+: x_6) (x_8 : x <+: x_6) (x_9 : [].length ≤ x.length), motive [] x x_6 x_7 x_8 x_9) →
+    (∀ (head : α) (tail : List α) (b : α) (tail_1 w w_1 : List α) (e : b :: tail_1 ++ w_1 = head :: tail ++ w)
+        (ll : (head :: tail).length ≤ (b :: tail_1).length),
+        motive (head :: tail) (b :: tail_1) (head :: tail ++ w) ⋯ ⋯ ll) →
+      motive x x_1 x_2 x_3 x_4 x_5
+List.lt_length_left_of_zipWith : ∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {f : α → β → γ} {i : Nat} {l : List α}
+  {l' : List β}, i < (List.zipWith f l l').length → i < l.length
+List.IsPrefix.eq_of_length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁ <+: l₂ → l₂.length ≤ l₁.length → l₁ = l₂
+List.reverse_zipWith._auxLemma.2 : ∀ {m k n : Nat}, (m + n = k + n) = (m = k)
+List.IsPrefix.length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁ <+: l₂ → l₁.length ≤ l₂.length
+List.IsSuffix.eq_of_length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁ <:+ l₂ → l₂.length ≤ l₁.length → l₁ = l₂
+List.Sublist.length_le.match_1 : ∀ {α : Type u_1} (motive : (l₂ l₁ : List α) → l₁.Sublist l₂ → Prop) (l₂ l₁ : List α)
+  (x : l₁.Sublist l₂),
+  (Unit → motive [] [] ⋯) →
+    (∀ (l₁ l₂ : List α) (_l : α) (s : l₁.Sublist l₂), motive (_l :: l₂) l₁ ⋯) →
+      (∀ (l₁ l₂ : List α) (a : α) (s : l₁.Sublist l₂), motive (a :: l₂) (a :: l₁) ⋯) → motive l₂ l₁ x
+List.Sublist.eq_of_length_le : ∀ {α : Type u_1} {l₁ l₂ : List α}, l₁.Sublist l₂ → l₂.length ≤ l₁.length → l₁ = l₂
+List.set_eq_of_length_le : ∀ {α : Type u_1} {l : List α} {i : Nat}, l.length ≤ i → ∀ {a : α}, l.set i a = l

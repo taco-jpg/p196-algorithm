@@ -1,0 +1,143 @@
+import Agent101ProfileExtraction
+
+/-!
+Agent #101: cardinality bounds for arbitrary finite lists of positive
+ordinary-integer predecessors at one actual decimal width. The full
+digit-splitting enumeration and its exact count are reused unchanged.
+-/
+
+namespace Agent101
+
+open DecimalDigits Lychrel196
+
+/-- Std compatibility helper: the erase proof is the same finite-list
+argument published as P196.Agent2.OverflowFibers.nodup_subset_length_le,
+Agent2OverflowBound.lean blob 7a8ec5eb70cf418ef23f0a55654b88031797bfb4.
+Kept private to avoid importing its unrelated stepWord dependency chain. -/
+private theorem nodup_length_le_of_mem (xs ys : List Nat) (hx : xs.Nodup)
+    (hs : ∀ x ∈ xs, x ∈ ys) : xs.length ≤ ys.length := by
+  induction xs generalizing ys with
+  | nil => simp
+  | cons x xs ih =>
+    obtain ⟨hxnot, hxs⟩ := List.nodup_cons.mp hx
+    have hxy : x ∈ ys := hs x (by simp)
+    have hr : xs.length ≤ (ys.erase x).length := by
+      apply ih (ys.erase x) hxs
+      intro z hz
+      apply (List.mem_erase_of_ne (show z ≠ x from by
+        intro heq
+        subst z
+        exact hxnot hz)).2
+      exact hs z (by simp [hz])
+    have hpositive : 0 < ys.length := by
+      cases ys with
+      | nil => simp at hxy
+      | cons => simp
+    rw [List.length_erase_of_mem hxy] at hr
+    simp only [List.length_cons]
+    omega
+
+/-- A canonical representative supplies the complete fixed-width profile
+fiber; no inverse numerical decoder is assumed. -/
+theorem mem_numericFiber_of_same_width_step (ds h : List Nat) (c : Option Nat)
+    (hd : canonicalDigits ds) (hp : digitPairSums ds = coefficientWord h c)
+    (n : Nat) (hw : decimalWidth n ds.length)
+    (hs : step n = step (natValue ds)) : n ∈ numericFiber h c := by
+  obtain ⟨d, hc⟩ := (decimalWidth_iff_canonical n ds.length).mp hw
+  obtain ⟨xs, hxlen, hxs, hxval, _⟩ := canonical_to_list n d ds.length hc
+  apply (mem_numericFiber_digits h c n).mpr
+  refine ⟨xs, hxs, ?_, hxval⟩
+  have heq : digitPairSums xs = digitPairSums ds :=
+    (same_width_step_eq_iff_digitPairSums xs ds hxs hd hxlen).mp
+      (by simpa only [hxval] using hs)
+  exact heq.trans hp
+
+theorem fixed_width_profile_length_le (ds h : List Nat) (c : Option Nat)
+    (hd : canonicalDigits ds) (hp : digitPairSums ds = coefficientWord h c)
+    (ns : List Nat) (hns : ns.Nodup)
+    (hm : ∀ n ∈ ns, decimalWidth n ds.length ∧ step n = step (natValue ds)) :
+    ns.length ≤ profileCount h c := by
+  rw [← length_numericFiber]
+  apply nodup_length_le_of_mem ns (numericFiber h c) hns
+  intro n hn
+  exact mem_numericFiber_of_same_width_step ds h c hd hp n
+    (hm n hn).1 (hm n hn).2
+
+/-- Keep the prescribed outer coefficient factor instead of replacing it
+by its uniform bound nine. -/
+theorem profileCount_cons_outer_le (s : Nat) (h : List Nat) (c : Option Nat) :
+    profileCount (s :: h) c ≤ pairCount true s * 10 ^ h.length := by
+  have hc : pairCount true s * centerCount c ≤ pairCount true s := by
+    have hb := Nat.mul_le_mul_left (pairCount true s) (centerCount_le c)
+    simpa using hb
+  exact Nat.mul_le_mul hc (pairProduct_le h)
+
+/-- Refined bound supplied by any one actual canonical representative. -/
+theorem fixed_width_preimages_outer_bound (Y L n s : Nat) (d : Nat → Nat)
+    (hc : Canonical n d L) (hL : 2 ≤ L) (hs : step n = Y)
+    (ho : columnSum d L 0 = s) (ns : List Nat) (hns : ns.Nodup)
+    (hm : ∀ x ∈ ns, decimalWidth x L ∧ step x = Y) :
+    ns.length ≤ pairCount true s * 10 ^ (L / 2 - 1) := by
+  obtain ⟨ds, hlen, hd, hv, he⟩ := canonical_to_list n d L hc
+  obtain ⟨outer, h, c, hp, hh, _, hout⟩ :=
+    digitPairSums_profile_cons ds (by omega)
+  have hout' : outer = s := by
+    rw [hlen] at hout
+    rw [hout, columnSum, reflected, Nat.sub_zero,
+      he 0 (by omega), he (L - 1) (by omega)]
+    exact ho
+  subst outer
+  have hcover : ns.length ≤ profileCount (s :: h) c := by
+    apply fixed_width_profile_length_le ds (s :: h) c hd hp ns hns
+    intro x hx
+    obtain ⟨hw, hxstep⟩ := hm x hx
+    exact ⟨by simpa only [hlen] using hw, by simpa only [hv, hs] using hxstep⟩
+  have hb := Nat.le_trans hcover (profileCount_cons_outer_le s h c)
+  simpa only [hh, hlen] using hb
+
+/-- Arbitrary positive ordinary-integer predecessors at fixed width L≥2. -/
+theorem fixed_width_preimages_bound (Y L : Nat) (ns : List Nat)
+    (hL : 2 ≤ L) (hns : ns.Nodup)
+    (hm : ∀ n ∈ ns, decimalWidth n L ∧ step n = Y) :
+    ns.length ≤ 9 * 10 ^ (L / 2 - 1) := by
+  cases ns with
+  | nil => simp
+  | cons n ns =>
+    have hn := hm n (by simp)
+    obtain ⟨d, hc⟩ := (decimalWidth_iff_canonical n L).mp hn.1
+    have hb := fixed_width_preimages_outer_bound Y L n (columnSum d L 0)
+      d hc hL hn.2 rfl (n :: ns) hns hm
+    exact Nat.le_trans hb
+      (Nat.mul_le_mul_right (10 ^ (L / 2 - 1)) (pairCount_outer_le _))
+
+/-- One-digit inputs have one doubled center and no mirrored outer pair. -/
+theorem one_digit_preimages_bound (Y : Nat) (ns : List Nat) (hns : ns.Nodup)
+    (hm : ∀ n ∈ ns, decimalWidth n 1 ∧ step n = Y) : ns.length ≤ 1 := by
+  cases ns with
+  | nil => simp
+  | cons n ns =>
+    have hn := hm n (by simp)
+    obtain ⟨d, hc⟩ := (decimalWidth_iff_canonical n 1).mp hn.1
+    obtain ⟨ds, hlen, hd, hv, _⟩ := canonical_to_list n d 1 hc
+    obtain ⟨h, c, hp, hh, _⟩ := digitPairSums_profile ds
+    have hz : h = [] := by
+      apply List.length_eq_zero_iff.mp
+      simp only [hlen] at hh
+      omega
+    subst h
+    have hcover : (n :: ns).length ≤ profileCount [] c := by
+      apply fixed_width_profile_length_le ds [] c hd hp (n :: ns) hns
+      intro x hx
+      obtain ⟨hw, hxstep⟩ := hm x hx
+      refine ⟨by simpa only [hlen] using hw, ?_⟩
+      simpa only [hv, hn.2] using hxstep
+    exact Nat.le_trans hcover (profileCount_single_le c)
+
+#print axioms mem_numericFiber_of_same_width_step
+#print axioms fixed_width_profile_length_le
+#print axioms profileCount_cons_outer_le
+#print axioms fixed_width_preimages_outer_bound
+#print axioms fixed_width_preimages_bound
+#print axioms one_digit_preimages_bound
+
+end Agent101
