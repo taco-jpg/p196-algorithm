@@ -1,0 +1,51 @@
+Agent107TransducerOutput.lean:104:4: error: tactic 'apply' failed, failed to unify
+  ?f = ?g
+with
+  (List.ofFn fun i =>
+        emit
+          { overflow := 1, low := carry q ↑i, high := carry q (2 * k - ↑i),
+            delay := Int.ofNat (extended q (2 * k) (2 * k - ↑i)), started := decide (0 < ↑i) }
+          (q ↑i) (carry q (2 * k - (↑i + 1)))) ++
+      (Option.map (fun v => (v + carry q k) % 10 + (Int.ofNat (extended q (2 * k) k)).toNat) none).toList =
+    List.ofFn fun i => nextColumns q (2 * k) ↑i
+case e_pairs
+k : Nat
+q : Nat → Nat
+hc : carry q (2 * k) = 1
+hd : 2 * k / 2 = k
+hd' : (2 * k + 1) / 2 = k
+hm : 2 * k % 2 = 0
+hm' : (2 * k + 1) % 2 = 1
+hk : 2 * k - k = k
+hcenter : nextColumns q (2 * k) k = 2 * extended q (2 * k) k
+⊢ (List.ofFn fun i =>
+        emit
+          { overflow := 1, low := carry q ↑i, high := carry q (2 * k - ↑i),
+            delay := Int.ofNat (extended q (2 * k) (2 * k - ↑i)), started := decide (0 < ↑i) }
+          (q ↑i) (carry q (2 * k - (↑i + 1)))) ++
+      (Option.map (fun v => (v + carry q k) % 10 + (Int.ofNat (extended q (2 * k) k)).toNat) none).toList =
+    List.ofFn fun i => nextColumns q (2 * k) ↑i
+Agent107TransducerOutput.lean:142:6: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  List.ofFn fun i => nextColumns q (2 * k + 1) ↑i
+case e_pairs
+k : Nat
+q : Nat → Nat
+hc : carry q (2 * k + 1) = 1
+hd : (2 * k + 1) / 2 = k
+hd' : (2 * k + 2) / 2 = k + 1
+hm : (2 * k + 1) % 2 = 1
+hm' : (2 * k + 2) % 2 = 0
+hk : 2 * k + 1 - k = k + 1
+hcenter : nextColumns q (2 * k + 1) k = (q k + carry q k) % 10 + extended q (2 * k + 1) (k + 1)
+⊢ (List.ofFn fun i =>
+        emit
+          { overflow := 1, low := carry q ↑i, high := carry q (2 * k + 1 - ↑i),
+            delay := Int.ofNat (extended q (2 * k + 1) (2 * k + 1 - ↑i)), started := decide (0 < ↑i) }
+          (q ↑i) (carry q (2 * k + 1 - (↑i + 1)))) ++
+      (Option.map (fun v => (v + carry q k) % 10 + (Int.ofNat (extended q (2 * k + 1) (k + 1))).toNat)
+          (some (q k))).toList =
+    List.ofFn fun i => nextColumns q (2 * k + 1) ↑i
+'Agent107.FoldedTransducer.actual_emit' depends on axioms: [propext, Quot.sound]
+'Agent107.FoldedTransducer.foldPrefix_congr' depends on axioms: [propext, Quot.sound]
+'Agent107.FoldedTransducer.actual_output' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent107.FoldedTransducer.accepting_output' depends on axioms: [propext, sorryAx, Quot.sound]

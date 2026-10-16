@@ -1,0 +1,19 @@
+{
+  "provenance": "Post hoc exact-source reconstruction and unchanged copy of original failure/success evidence; not a contemporaneous failure source snapshot.",
+  "source_reconstruction": "Inverse the documented local variable rename in retained DependencyAudit.lean, replacing fun pfx => pfx.isPrefixOf with fun prefix => prefix.isPrefixOf.",
+  "baseline_manifest_preserved_sha256": "19b04bb6c1abb2f118688bbdbfeec3eebfdc8df42e1f8b0ce6b9aee123e897b9",
+  "original_failure_source_sha256": "ea06f27608a402d7b0bb9cb9a0333f720754e80d9a7ff53b7525ee31d0ae0f4b",
+  "reproduce_command_template": "LEAN_PATH=<rebuilt-baseline-directory> <official-Lean-4.19.0> --trust=0 -j1 -DElab.async=false <this-directory>/failed-initial-DependencyAudit.lean",
+  "expected_result": "Exit 1: Lean rejects reserved word prefix as the local variable name. The original logs record this execution; this addendum does not claim a new execution of the intentionally failing input.",
+  "files": {
+    "failed-initial-DependencyAudit.lean": "ea06f27608a402d7b0bb9cb9a0333f720754e80d9a7ff53b7525ee31d0ae0f4b",
+    "failed-initial-dependency-audit.json": "7aac683c774f72c75d6fb5e380f2ab5a78c0f38ffd377491f1df44afe59f2459",
+    "failed-initial-dependency-audit.stdout.log": "1c0a5672b1ede6646af561fd852af94488c1f49afb2a75430b779fd929031329",
+    "failed-initial-dependency-audit.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "failed-initial-source-reconstruction.json": "ba0b8c8f06a70e7901325d158dc8a0b500919310c2eed7e653cb146efa57ecbe",
+    "DependencyAudit.lean": "8921622f16c5326f6c4360a04be7e9722344dabcc731fd93bf5ba23a4f11f49d",
+    "dependency-audit.json": "42374c0e8d474704634a683174e092afc8cc7053f0dad89709dde1eed4f76bd5",
+    "dependency-audit.stdout.log": "549c3156a417455583bab372872358eb61ce6f6b0951cf605ee0560b9e6b1e5a",
+    "dependency-audit.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
