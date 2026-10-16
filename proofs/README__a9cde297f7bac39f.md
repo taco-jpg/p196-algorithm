@@ -27,9 +27,9 @@ is [check.py](contributions/agent-107/partition-seam-response/check.py), which i
 [All.lean](contributions/agent-107/partition-seam-response/All.lean); see the
 [independent review](contributions/agent-107/partition-seam-response/review/REVIEW.md).
 
-## 七列首部增量 — 15 October 2026
+## Seven-column prefix increment — 15 October 2026
 
-[七列首部研究](contributions/2026-10-15-seven-column-prefix/README.md) 新增任意位数的 739 回文祖先深度上界 `H(P) <= 39`，由此排除 196 轨道在任何时刻到达该族；217、218、620、777 的上界分别改进为 23、34、12、25。三位首部清单由 396 类扩为 397 类。书面覆盖论证、五份完整有限秩证书、Python/C++ 核验材料以及未完成探索与重复发现记录均保留。[发布记录](coordination/2026-10-15-seven-column-prefix.md) 说明证据范围；没有 Lean 形式化、外部审稿或完整 P196 证明。
+[Seven-column prefix research](contributions/2026-10-15-seven-column-prefix/README.md) adds the all-width ancestry-depth bound `H(P) <= 39` for palindromes beginning with 739, thereby excluding this family from the 196 orbit at every time. The bounds for 217, 218, 620, and 777 improve to 23, 34, 12, and 25 respectively. The three-digit prefix catalogue expands from 396 classes to 397. The written coverage argument, five complete finite rank certificates, Python/C++ verification materials, unfinished explorations, and records of rediscoveries are all retained. The [publication record](coordination/2026-10-15-seven-column-prefix.md) states the evidence scope; there is no Lean formalization, external review, or complete P196 proof.
 
 ## Final session snapshot — 15 October 2026
 
@@ -300,9 +300,9 @@ Every written research finding and original research source file is retained, to
 
 No third-party license is invented for the research or for cited sources. Existing repository licensing and any file-specific notices continue to apply.
 
-## 严格证明 P196 猜想：独立聊天归档
+## Proving the P196 conjecture rigorously: independent chat archive
 
-[聊天 6acee928 的研究归档](chat-6acee928/README.md) 保留该聊天的 9 份完整 Markdown、1 份原始 Python、最初两轮正文独有论证，以及 8 份逐字提取的 Python 附录。本次 9 个核验程序全部运行通过；来源、章节索引、SHA-256 和运行日志一并保存。归档截至 `p196_six_column_and_mod99.md`，原会话未附加的临时脚本/日志和仍在生成的新回复不在已恢复范围内。完整 P196 猜想仍未证明。
+The [research archive from chat 6acee928](chat-6acee928/README.md) preserves all 9 complete Markdown files, 1 original Python file, arguments found only in the body of the first two rounds, and 8 verbatim-extracted Python appendices. All 9 verification programs passed in the archived run; provenance, the section index, SHA-256 hashes, and execution logs are retained together. The archive ends at `p196_six_column_and_mod99.md`; temporary scripts/logs not attached in the original conversation and new responses still being generated were not recovered. The full P196 conjecture remains unproved.
 
 <!-- BEGIN AGENT104 REVIEWED INTEGRATION -->
 ## Agent 104: reviewed 739-prefix formalization

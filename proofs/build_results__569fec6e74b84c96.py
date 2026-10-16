@@ -33,5 +33,5 @@ def run(k,starts,title):
  path=out/('certificate_33.json' if k==4 else 'certificate_77.json');path.write_text(json.dumps(cert,separators=(',',':'))+'\n')
  print(path,'nodes',len(seen),'edges',sum(map(len,back.values())),'counts',layers,'bound',cert['palindrome_height_bound'],'details',cert.get('third_digit_bounds'))
  return cert
-run(4,{(3,3,c,d) for c,d in product(range(10),repeat=2)}|{(3,3)},'所有以 33 开头的回文')
-run(5,{(7,7,c,d,e) for c in range(1,10) for d,e in product(range(10),repeat=2)}|{(7,7,7,7)},'以 77 开头且第三位非零的回文')
+run(4,{(3,3,c,d) for c,d in product(range(10),repeat=2)}|{(3,3)},'All palindromes beginning with 33')
+run(5,{(7,7,c,d,e) for c in range(1,10) for d,e in product(range(10),repeat=2)}|{(7,7,7,7)},'Palindromes beginning with 77 whose third digit is nonzero')

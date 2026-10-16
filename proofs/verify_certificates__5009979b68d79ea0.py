@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""核验七列首部证书。仅用 Python 标准库，不需要原仓库。
+"""Verify seven-column prefix certificates using only the Python standard library, without the original repository.
 
-默认：重算全部逆向边、秩和短数边界，并用正向方程逐边核对。
-逆向公式逐状态重算全部允许前驱，正向公式逐边交叉检查。
-无限长度覆盖依据配套证明；本程序不是完整 P196 猜想的形式化证明。
+By default, recompute all inverse edges, ranks, and short-number boundaries, and check each edge with forward equations.
+The inverse formulas recompute every allowed predecessor of each state; forward formulas independently cross-check every edge.
+Unbounded-length coverage relies on the accompanying proof; this program is not a formal proof of the full P196 conjecture.
 """
 from collections import defaultdict, Counter
 from itertools import product
@@ -38,7 +38,7 @@ def F(s):
 
 
 def raw_words(n):
-    """长度 n 的全部可实现对称和字，含奇数长度的中心偶数条件。"""
+    """All realizable symmetric sum words of length n, including even central entries at odd lengths."""
     if n == 1:
         yield from ((v,) for v in range(2, 19, 2))
         return
@@ -52,7 +52,7 @@ def raw_words(n):
                 yield left + left[::-1]
 
 
-# (输出和, 左入进位, 右出进位) -> (来源和, 左出进位, 右入进位)
+# (output sum, incoming left carry, outgoing right carry) -> (source sum, outgoing left carry, incoming right carry)
 LOCAL = {}
 for p, x, y in product(range(19), range(2), range(2)):
     LOCAL[p, x, y] = [
@@ -64,7 +64,7 @@ for p, x, y in product(range(19), range(2), range(2)):
 
 
 def prefix_predecessors(p):
-    """包含所有真实前驱前缀；不要求被忽略的内侧数位能同时实现。"""
+    """Include every actual predecessor prefix; ignored inner digits need not be simultaneously realizable."""
     states = {((), 0, 0)}
     for v in p:
         states = {
@@ -101,7 +101,7 @@ def prefix_predecessors(p):
 
 
 def forward_prefixes(s):
-    """独立正向算法：枚举唯一未观测的高端内侧进位，直接做列加法。"""
+    """Independent forward algorithm: enumerate the sole unobserved high-end inner carry and add columns directly."""
     k = len(s)
     low, carry = [], 0
     for v in s:
@@ -157,7 +157,7 @@ def verify_one(path):
             assert p == p[::-1]
             assert len(p) % 2 == 0 or p[len(p) // 2] % 2 == 0
         parents[p] = ps
-        assert ps <= rank.keys(), ('证书缺失前驱', p, ps - rank.keys())
+        assert ps <= rank.keys(), ('Certificate omits predecessors', p, ps - rank.keys())
         assert h == (0 if not ps else 1 + max(rank[q] for q in ps)), p
         assert all(rank[q] < h for q in ps)
 
@@ -252,5 +252,5 @@ if __name__ == '__main__':
     results = [verify_one(directory / name)
                for name in ('certificate_217.json', 'certificate_218.json', 'certificate_620.json', 'certificate_739.json', 'certificate_777.json')]
     result = {'status': 'PASS', 'certificates': results, 'controls': other_checks(),
-              'scope': '支持所列全长度前缀定理；不是完整 P196 证明，也未作 Lean 形式化。'}
+              'scope': 'Supports the listed all-length prefix theorems; neither a complete P196 proof nor a Lean formalization.'}
     print(json.dumps(result, ensure_ascii=False, indent=2))

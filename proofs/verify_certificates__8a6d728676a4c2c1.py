@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""核验 33 与 77 首部证书。仅用 Python 标准库，不需要原仓库。
+"""Verify the 33 and 77 prefix certificates using only the Python standard library, without the original repository.
 
-默认：独立重算全部逆向边、秩、短数边界和实例。
---independent-forward：再穷尽全部四列/五列输入及内侧进位，
-用独立正向方程检查证书对所有可能前驱闭合。
+By default, independently recompute every inverse edge, rank, short-number boundary, and example.
+With --independent-forward, also exhaust every four-column/five-column input and inner carry;
+use independent forward equations to check that the certificate is closed under every possible predecessor.
 """
 from collections import defaultdict, Counter
 from itertools import product
@@ -38,7 +38,7 @@ def F(s):
 
 
 def raw_words(n):
-    """长度 n 的全部可实现对称和字，含奇数长度的中心偶数条件。"""
+    """All realizable symmetric sum words of length n, including even central entries at odd lengths."""
     if n == 1:
         yield from ((v,) for v in range(2, 19, 2))
         return
@@ -52,7 +52,7 @@ def raw_words(n):
                 yield left + left[::-1]
 
 
-# (输出和, 左入进位, 右出进位) -> (来源和, 左出进位, 右入进位)
+# (output sum, incoming left carry, outgoing right carry) -> (source sum, outgoing left carry, incoming right carry)
 LOCAL = {}
 for p, x, y in product(range(19), range(2), range(2)):
     LOCAL[p, x, y] = [
@@ -64,7 +64,7 @@ for p, x, y in product(range(19), range(2), range(2)):
 
 
 def prefix_predecessors(p):
-    """包含所有真实前驱前缀；不要求被忽略的内侧数位能同时实现。"""
+    """Include every actual predecessor prefix; ignored inner digits need not be simultaneously realizable."""
     states = {((), 0, 0)}
     for v in p:
         states = {
@@ -101,7 +101,7 @@ def prefix_predecessors(p):
 
 
 def forward_prefixes(s):
-    """独立正向算法：枚举唯一未观测的高端内侧进位，直接做列加法。"""
+    """Independent forward algorithm: enumerate the sole unobserved high-end inner carry and add columns directly."""
     k = len(s)
     low, carry = [], 0
     for v in s:
@@ -136,7 +136,7 @@ def verify_one(path, independent=False):
                     for d, e in product(range(10), repeat=2)}
         expected.add((7, 7, 7, 7))
     else:
-        raise AssertionError('未声明的证书宽度')
+        raise AssertionError('Undeclared certificate width')
     assert initial == expected
 
     short_back = defaultdict(set)
@@ -157,7 +157,7 @@ def verify_one(path, independent=False):
             assert p == p[::-1]
             assert len(p) % 2 == 0 or p[len(p) // 2] % 2 == 0
         parents[p] = ps
-        assert ps <= rank.keys(), ('证书缺失前驱', p, ps - rank.keys())
+        assert ps <= rank.keys(), ('Certificate omits predecessors', p, ps - rank.keys())
         assert h == (0 if not ps else 1 + max(rank[q] for q in ps)), p
         assert all(rank[q] < h for q in ps)
 
@@ -179,7 +179,7 @@ def verify_one(path, independent=False):
 
     tested_forward = 0
     if independent:
-        # 每个可能的长来源前缀均被检查，故可独立发现任何漏掉的逆向分支。
+        # Check every possible long source prefix, independently detecting any omitted inverse branch.
         for first in range(1, 19):
             for tail in product(range(19), repeat=k - 1):
                 s = (first,) + tail
@@ -187,7 +187,7 @@ def verify_one(path, independent=False):
                     if p in rank:
                         assert s in rank and rank[s] < rank[p], (s, p)
                 tested_forward += 1
-        # 与短数相交的所有边同样按真实完整加法检查。
+        # Also check every edge involving short numbers using actual complete addition.
         for n in range(1, k):
             for s in raw_words(n):
                 p = F(s)
@@ -215,7 +215,7 @@ def other_checks():
         orbit.append(T(orbit[-1]))
     assert not any(palindrome(n) for n in orbit)
 
-    # 所有 <= 7 位的可实现来源，比较列公式与真实完整规范化。
+    # For every realizable source with <= 7 digits, compare column formulas with actual complete normalization.
     coverage = 0
     for n in range(1, 8):
         for s in raw_words(n):
@@ -226,7 +226,7 @@ def other_checks():
             coverage += 1
     assert coverage == 75447
 
-    # 与独立整数动态规划交叉检查，不把此有限扫描当成无界证明。
+    # Cross-check against independent integer dynamic programming; this finite scan is not an unbounded proof.
     limit = 1_000_000
     heights = bytearray(limit)
     checked_33 = checked_77 = 0
@@ -257,5 +257,5 @@ if __name__ == '__main__':
     results = [verify_one(directory / name, args.independent_forward)
                for name in ('certificate_33.json', 'certificate_77.json')]
     result = {'status': 'PASS', 'certificates': results, 'controls': other_checks(),
-              'scope': '支持所列全长度前缀定理；不是完整 P196 证明，也未作 Lean 形式化。'}
+              'scope': 'Supports the listed all-length prefix theorems; neither a complete P196 proof nor a Lean formalization.'}
     print(json.dumps(result, ensure_ascii=False, indent=2))

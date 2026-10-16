@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""从逐列方程重建五份有限秩证书；输出到本脚本所在目录。"""
+"""Reconstruct five finite rank certificates from column equations; write beside this script."""
 from collections import defaultdict, deque
 from itertools import product
 from pathlib import Path
@@ -36,7 +36,7 @@ def generate(prefix):
                 seen.add(s)
                 todo.append(s)
         if len(seen) > 2_000_000:
-            raise RuntimeError('资源上限：未生成证书，不能视为排除结果')
+            raise RuntimeError('Resource limit: no certificate was generated; this is not an exclusion result')
     rank = {p: 0 for p in seen if not parents[p]}
     degree = {p: len(parents[p]) for p in seen}
     queue = deque(rank)
@@ -48,7 +48,7 @@ def generate(prefix):
                 rank[p] = 1 + max(rank[q] for q in parents[p])
                 queue.append(p)
     if len(rank) != len(seen):
-        raise RuntimeError('存在未消去的状态：不能视为有限深度定理')
+        raise RuntimeError('Uneliminated states remain: this does not establish a finite-depth theorem')
 
     def counts(long_only=False):
         layer = {p for p in initial if not long_only or len(p) == WIDTH}
@@ -66,7 +66,7 @@ def generate(prefix):
             'palindrome_height_bound': 1 + max(rank[p] for p in initial)}
     path = DIRECTORY / ('certificate_' + prefix + '.json')
     path.write_text(json.dumps(cert, separators=(',', ':')) + '\n')
-    print(prefix, '状态数', len(seen), '上界', cert['palindrome_height_bound'])
+    print(prefix, 'states', len(seen), 'upper bound', cert['palindrome_height_bound'])
 
 
 if __name__ == '__main__':
