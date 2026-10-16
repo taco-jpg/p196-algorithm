@@ -1,5 +1,5 @@
-# 仓库写入规则
+# Repository write rules
 
-仅保留一个 canonical 工作分支 main，排除代理分支另行原样保留。一次只允许一个集成写入者。其他研究使用本地工作区和带来源、实际文件、验证记录的补丁；不得按代理自动创建永久远程分支。
+Keep only one canonical working branch, `main`; excluded agent branches are retained separately without modification. Only one integration writer is allowed at a time. Other research must use local workspaces and patches containing provenance, actual files, and verification records; do not automatically create permanent remote branches for individual agents.
 
-当前源码直接位于 proofs；历史研究位于 proofs/archive；计算产品位于 calculation。不得删除原始研究、覆盖冲突版本、篡改历史证据等级或重写已发布 Git 历史。更新当前文件前保存原始版本。新分支退役必须先核验精确 tip、完整内容和历史、保存标签、可恢复备份以及远程状态。
+Current source lives directly in `proofs`; historical research lives in `proofs/archive`; computational products live in `calculation`. Do not delete original research, overwrite conflicting versions, alter historical evidence classifications, or rewrite published Git history. Preserve the original version before updating a current file. Before retiring another branch, verify its exact tip, complete contents and history, preservation tags, recoverable backups, and remote state.

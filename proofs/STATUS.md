@@ -1,7 +1,7 @@
-# 状态
+# Status
 
-迁移输入基点：`2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`。本次共映射 10964 个原始路径/内容/模式版本，选择 2570 个当前版本。
+Migration input baseline: `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`. The reorganization mapped 10,964 original path/content/mode versions and selected 2,570 current versions.
 
-文件归档、源码复制和祖先关系保存本身不验证任何定理。所有者明确取消本次内容审核和构建检查；本次整理不声称源码可编译或工作流可复现。
+Archiving files, copying source, and preserving ancestry do not by themselves verify any theorem. The owner explicitly waived content review and build checks for that reorganization; it does not claim that the source compiles or that the workflows are reproducible.
 
-当前研究入口和声明需要读者结合 RESULTS.md 的各项证据标签。不得从有限计算、有条件引理或某个范围内 Lean 通过推导 196 全时结论。
+Read the current research entry points and claims together with the individual evidence labels in `RESULTS.md`. Finite computations, conditional lemmas, or a Lean pass within a particular scope must not be used to infer an all-time conclusion about 196.

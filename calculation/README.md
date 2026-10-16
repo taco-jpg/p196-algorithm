@@ -1,5 +1,5 @@
-# 计算产品
+# Computational products
 
-这里保留经过内容分类的全部计算版本，而非仅保留最新 ZIP。相同路径的不同字节版本位于 history，并通过迁移清单记录原分支、提交和路径。
+This directory retains all computational versions classified by content, not just the latest ZIP. Byte-distinct versions of the same path are stored in `history`; the migration manifests record their original branches, commits, and paths.
 
-旧生产版本及性能记录以归档的原始 README 和每份发布包内的说明为准；本次目录迁移不启动、升级或改写生产计算、checkpoint 或 GPU 进程。所有 ZIP 保持原始压缩字节，不重新打包。
+The archived original README and the documentation inside each release package remain authoritative for older production versions and performance records. The directory migration does not start, upgrade, or modify production computations, checkpoints, or GPU processes. All ZIP files retain their original compressed bytes and are not repackaged.
