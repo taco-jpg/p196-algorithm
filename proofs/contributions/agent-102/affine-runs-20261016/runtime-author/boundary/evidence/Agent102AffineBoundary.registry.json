@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped boundary example package; no repository-wide verification or 196 orbit result is claimed."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent102-affine-boundary": {
+      "scope": "Explicit affine run-word boundary examples, including failure of a template-independent uniform cutoff.",
+      "roots": [
+        "Agent102AffineBoundary"
+      ],
+      "modules": {
+        "Agent102RunDefs": {
+          "path": "proofs/Agent102RunDefs.lean",
+          "sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "git_blob": "0c2b723a8c21c953f8a51761e752a827ff72a5cc",
+          "imports": [
+            "Std"
+          ]
+        },
+        "Agent102RunWord": {
+          "path": "proofs/Agent102RunWord.lean",
+          "sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+          "git_blob": "0609366f1e7fb908234667704b67132af23b28f4",
+          "imports": [
+            "Agent102RunDefs"
+          ]
+        },
+        "Agent102AffineArithmetic": {
+          "path": "proofs/Agent102AffineArithmetic.lean",
+          "sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+          "git_blob": "448f7193c49ec4a4faa11467bb6a189d9d412750",
+          "imports": [
+            "Agent102RunDefs"
+          ]
+        },
+        "Agent102AffineBoundary": {
+          "path": "proofs/Agent102AffineBoundary.lean",
+          "sha256": "7dda5da29f8086b7a35b30f041e6092da2b8ea97bd315b5a1b75c6934d01c35a",
+          "git_blob": "abda251432ec4fffdff064c0eb796141c7ff2dc4",
+          "imports": [
+            "Agent102RunWord",
+            "Agent102AffineArithmetic"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A102-AFFINE-BOUNDARY",
+      "project": "agent102-affine-boundary",
+      "endpoints": [
+        "Agent102.AffineBoundary.wordAt_moving",
+        "Agent102.AffineBoundary.wordAt_fixed",
+        "Agent102.AffineBoundary.moving_fixed_eq_iff",
+        "Agent102.AffineBoundary.compareCutoff_moving_fixed",
+        "Agent102.AffineBoundary.moving_fixed_stable_iff",
+        "Agent102.AffineBoundary.equality_changes_arbitrarily_late",
+        "Agent102.AffineBoundary.no_uniform_wordAt_cutoff",
+        "Agent102.AffineBoundary.run_structure_counterexample",
+        "Agent102.AffineBoundary.overlap_digits_without_width",
+        "Agent102.AffineBoundary.zero_span_cross_inequalities",
+        "Agent102.AffineBoundary.zero_span_realized",
+        "Agent102.AffineBoundary.cross_inequalities_false_negative"
+      ]
+    }
+  ],
+  "accepted_global_registry_modified": false
+}

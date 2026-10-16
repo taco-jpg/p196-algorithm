@@ -1,0 +1,20 @@
+--- boundary/attempt01/Agent102AffineBoundary.lean
++++ boundary/attempt02/Agent102AffineBoundary.lean
+@@ -100,7 +100,8 @@
+   constructor
+   · simp [spans, spansFrom, shortRuns, longRuns]
+   · refine ⟨?_, ?_⟩
+-    · exact ⟨⟨1, 0, 1⟩, by decide, ⟨1, 0, 2⟩, by decide, by decide⟩
++    · exact ⟨⟨1, 0, 1⟩, by decide, ⟨1, 0, 2⟩, by decide,
++        by unfold Span.overlaps; decide⟩
+     · decide
+ 
+ def emptySpan : Span := ⟨7, 1, 1⟩
+@@ -116,6 +117,7 @@
+     emptySpan.lo = emptySpan.hi ∧
+     emptySpan.lo < coveringSpan.hi ∧ coveringSpan.lo < emptySpan.hi ∧
+     ¬ emptySpan.overlaps coveringSpan ∧ emptySpan.digit ≠ coveringSpan.digit := by
++  unfold emptySpan coveringSpan Span.overlaps
+   decide
+ 
+ /-- 上述零段确实出现在真实段表中，插入它不改变字面展开词。 -/

@@ -1,0 +1,683 @@
+{
+  "reviewer": "/root/word_intervals, Agent #102 的真实子代理",
+  "role_boundaries": {
+    "Agent102RunWord": "本子代理是作者，此模块重建为作者验证，不冒称独立来源。",
+    "Agent102RunDefs": "母代理定义，复核者未修改。",
+    "Agent102AffineArithmetic": "其他子代理编写，复核者未修改。",
+    "Agent102RunEndpoints": "母代理编写，本子代理独立复核且未修改。",
+    "Agent102AffineRuns": "母代理编写，本子代理独立复核且未修改。"
+  },
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "trust": 0,
+  "build_directory": "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001-empty-build",
+  "build_directory_initially_empty": true,
+  "all_project_imports_rebuilt": true,
+  "source_imports": {
+    "Agent102RunDefs": [
+      "Std"
+    ],
+    "Agent102AffineArithmetic": [
+      "Agent102RunDefs"
+    ],
+    "Agent102RunWord": [
+      "Agent102RunDefs"
+    ],
+    "Agent102RunEndpoints": [
+      "Agent102AffineArithmetic"
+    ],
+    "Agent102AffineRuns": [
+      "Agent102RunEndpoints",
+      "Agent102RunWord"
+    ]
+  },
+  "source_sha256": {
+    "Agent102RunDefs": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+    "Agent102AffineArithmetic": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+    "Agent102RunWord": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+    "Agent102RunEndpoints": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+    "Agent102AffineRuns": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4"
+  },
+  "source_unchanged_after_build": {
+    "Agent102RunDefs": true,
+    "Agent102AffineArithmetic": true,
+    "Agent102RunWord": true,
+    "Agent102RunEndpoints": true,
+    "Agent102AffineRuns": true
+  },
+  "literal_declarations": [
+    {
+      "name": "Agent102.Affine",
+      "kind": "structure",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Affine.eval",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Affine.zero",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Affine.add",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Affine.cutoff",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Affine.positivePart",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Run",
+      "kind": "structure",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.word",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Span",
+      "kind": "structure",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.spansFrom",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.spans",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Span.covers",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Span.overlaps",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.RunSpec",
+      "kind": "structure",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.runsAt",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.wordAt",
+      "kind": "def",
+      "module": "Agent102RunDefs"
+    },
+    {
+      "name": "Agent102.Affine.eval_zero",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_add",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.intercept_bounds_of_cutoff",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_pos_of_slope_pos",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_neg_of_slope_neg",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_nonneg_iff",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_neg_iff",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_positivePart",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_positivePart_nonneg",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.compareCutoff",
+      "kind": "def",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.compareCutoff_comm",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_lt_of_slope_lt",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_le_iff",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_lt_iff",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_eq_iff",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_le_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_lt_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.Affine.eval_eq_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineArithmetic"
+    },
+    {
+      "name": "Agent102.word_nil",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.word_cons",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.word_append",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.word_length",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.word_reverse",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.Span.shift",
+      "kind": "def",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.Span.shift_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.Span.shift_overlaps",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.spansFrom_shift",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.spansFrom_eq_map_spans",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.spansFrom_append",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.length_spansFrom",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.length_spans",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.mem_spansFrom_bounds",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.exists_mem_spansFrom_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.exists_mem_spansFrom_covers_iff",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.mem_spans_bounds",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.exists_mem_spans_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.exists_mem_spans_covers_iff",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.eq_of_mem_spansFrom_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.eq_of_mem_spans_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.getElem?_word_of_mem_spansFrom",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.getElem?_word_of_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.Span.overlaps_iff_exists_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.Span.overlaps_of_covers",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.word_eq_iff_length_and_overlap_digits",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.word_eq_iff_count_sum_and_overlap_digits",
+      "kind": "theorem",
+      "module": "Agent102RunWord"
+    },
+    {
+      "name": "Agent102.maxList",
+      "kind": "def",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.le_maxList_of_mem",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.lengthCutoff",
+      "kind": "def",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.cutoff_le_lengthCutoff",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.wordAt_nil",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.wordAt_cons",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.widthAffine",
+      "kind": "def",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.widthAffine_eval",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.widthAffine_nonneg",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.AffineSpan",
+      "kind": "structure",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.AffineSpan.at",
+      "kind": "def",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.spanSpecsFrom",
+      "kind": "def",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.spanSpecs",
+      "kind": "def",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.spanSpecsFrom_at",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.spanSpecs_at",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.spanSpecsFrom_nonneg",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.spanSpecs_nonneg",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.endpoints",
+      "kind": "def",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.widthAffine_mem_endpoints",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.lo_mem_endpoints",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.hi_mem_endpoints",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.endpoints_nonneg",
+      "kind": "theorem",
+      "module": "Agent102RunEndpoints"
+    },
+    {
+      "name": "Agent102.pairCutoff",
+      "kind": "def",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.compareCutoff_le_pairCutoff",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.equalityCutoff",
+      "kind": "def",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.left_lengthCutoff_le",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.right_lengthCutoff_le",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.pairCutoff_le_equalityCutoff",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.combined_endpoints_nonneg",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.endpoint_nat_lt_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.width_eq_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.Span.overlaps_iff_four",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.span_overlap_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.wordAt_eq_iff_spans",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.wordAt_eq_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.wordAt_reverse",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.palindromeCutoff",
+      "kind": "def",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.wordAt_palindrome_stable",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.equalOnTail",
+      "kind": "def",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.equalOnTail_spec",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.unequalOnTail_spec",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.equality_before_cutoff_of_tail_mismatch",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.palindromicOnTail",
+      "kind": "def",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.palindromicOnTail_spec",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    },
+    {
+      "name": "Agent102.nonpalindromicOnTail_spec",
+      "kind": "theorem",
+      "module": "Agent102AffineRuns"
+    }
+  ],
+  "theorem_count": 75,
+  "registry_named_endpoint_count": 73,
+  "source_theorems_omitted_from_registry_but_audited": [
+    "Agent102.getElem?_word_of_covers",
+    "Agent102.getElem?_word_of_mem_spansFrom"
+  ],
+  "all_literal_declarations_audited": true,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "results": [
+    {
+      "name": "Agent102RunDefs",
+      "command": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001-empty-build/Agent102RunDefs.olean",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102RunDefs.lean"
+      ],
+      "returncode": 0,
+      "log": "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102RunDefs.log"
+    },
+    {
+      "name": "Agent102AffineArithmetic",
+      "command": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001-empty-build/Agent102AffineArithmetic.olean",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102AffineArithmetic.lean"
+      ],
+      "returncode": 0,
+      "log": "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102AffineArithmetic.log"
+    },
+    {
+      "name": "Agent102RunWord",
+      "command": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001-empty-build/Agent102RunWord.olean",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102RunWord.lean"
+      ],
+      "returncode": 0,
+      "log": "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102RunWord.log"
+    },
+    {
+      "name": "Agent102RunEndpoints",
+      "command": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001-empty-build/Agent102RunEndpoints.olean",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102RunEndpoints.lean"
+      ],
+      "returncode": 0,
+      "log": "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102RunEndpoints.log"
+    },
+    {
+      "name": "Agent102AffineRuns",
+      "command": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001-empty-build/Agent102AffineRuns.olean",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102AffineRuns.lean"
+      ],
+      "returncode": 0,
+      "log": "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/Agent102AffineRuns.log"
+    },
+    {
+      "name": "FullLiteralAudit",
+      "command": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001-empty-build/FullLiteralAudit.olean",
+        "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/FullLiteralAudit.lean"
+      ],
+      "returncode": 0,
+      "log": "/workspace/scratch/fb513c1676b0/agent102-word-intervals/full-review-001/FullLiteralAudit.log"
+    }
+  ],
+  "files_sha256": {
+    "Agent102AffineArithmetic.lean": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+    "Agent102AffineArithmetic.log": "e2447af942b7970c10d091d54f40bfaf50d7c4b7892a2ee74bdbc9551d66c9fd",
+    "Agent102AffineRuns.lean": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4",
+    "Agent102AffineRuns.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Agent102RunDefs.lean": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+    "Agent102RunDefs.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Agent102RunEndpoints.lean": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+    "Agent102RunEndpoints.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Agent102RunWord.lean": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+    "Agent102RunWord.log": "1157e212ffff300d3775fb0cd087ea0d0d0b81e318d5697b6316a542a02132b1",
+    "FullLiteralAudit.lean": "0cd8f28101712437f38e067122df912bbf91045a2fe50c1e7723b976b9d2800a",
+    "FullLiteralAudit.log": "580204c49300e392cfe4b4f6f7084032c532b507c3d1922cd49a1e249bda5e32",
+    "audit-results.json": "da718225c7bcceaa0ba3c21e25fa2869ab95be606c7309fe4f2716d45d04d3fb",
+    "compile_full_review.py": "a287fc542b5092b7d3be9adb0dbbef67a3274f119aa387c4ab1aca2dd83a3e84",
+    "registry-input.json": "762dd3fafda6aab95d72973e737dbcdc98ff4d0ffe368d96e37c71c339712aa7"
+  }
+}

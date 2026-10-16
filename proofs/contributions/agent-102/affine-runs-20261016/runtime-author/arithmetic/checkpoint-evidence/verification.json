@@ -1,0 +1,215 @@
+{
+  "status": "PASS",
+  "scope": "Agent102.Affine scalar checkpoint only",
+  "producer": "Agent #102 child lean_runtime",
+  "source_commit_observed": "90b3d63e9d4a560c0a22406215497f583cc1ea5a",
+  "compiler_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "kernel_trust_level": 0,
+  "module_sources": {
+    "Agent102RunDefs": {
+      "path": "proofs/Agent102RunDefs.lean",
+      "sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+      "git_blob": "0c2b723a8c21c953f8a51761e752a827ff72a5cc",
+      "imports": [
+        "Std"
+      ]
+    },
+    "Agent102AffineArithmetic": {
+      "path": "proofs/Agent102AffineArithmetic.lean",
+      "sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+      "git_blob": "448f7193c49ec4a4faa11467bb6a189d9d412750",
+      "imports": [
+        "Agent102RunDefs"
+      ]
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Agent102RunDefs.olean",
+        "Agent102RunDefs.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "."
+      },
+      "exit_code": 0,
+      "log": "defs.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Agent102AffineArithmetic.olean",
+        "Agent102AffineArithmetic.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "."
+      },
+      "exit_code": 0,
+      "log": "arithmetic.log",
+      "log_sha256": "e2447af942b7970c10d091d54f40bfaf50d7c4b7892a2ee74bdbc9551d66c9fd"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Audit.olean",
+        "Audit.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "."
+      },
+      "exit_code": 0,
+      "log": "audit.log",
+      "log_sha256": "b77454b3470dcb360d724fc5975746855118fd50d1ea597f1d9bd1f3246eb20e"
+    }
+  ],
+  "literal_audited_theorem_count": 17,
+  "literal_audited_theorems": [
+    {
+      "name": "Agent102.Affine.eval_zero",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_add",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.intercept_bounds_of_cutoff",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_pos_of_slope_pos",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_neg_of_slope_neg",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_nonneg_iff",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_neg_iff",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_positivePart",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_positivePart_nonneg",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.compareCutoff_comm",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_lt_of_slope_lt",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_le_iff",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_lt_iff",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_eq_iff",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_le_stable",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_lt_stable",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.Affine.eval_eq_stable",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "axiom_union": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "repository_wide_pass": false,
+  "mathematical_source_frozen": true,
+  "olean_files_in_publication_evidence": false,
+  "failed_attempts": [],
+  "note": "This arithmetic source compiled on its first attempt; attempt01 and a separate checkpoint-build are both retained."
+}

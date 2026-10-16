@@ -1,0 +1,42 @@
+Agent102RunEndpoints.lean:94:58: error: unsolved goals
+k : Nat
+r : RunSpec
+rs : List RunSpec
+ih :
+  ∀ (start : Affine),
+    lengthCutoff rs ≤ k →
+      0 ≤ start.eval k →
+        List.map (fun s => s.at k) (spanSpecsFrom start rs) = spansFrom (start.eval k).toNat (runsAt rs k)
+start : Affine
+hk : lengthCutoff (r :: rs) ≤ k
+hs : 0 ≤ start.eval k
+hr : r.length.cutoff ≤ k
+ht : lengthCutoff rs ≤ k
+hp : r.length.positivePart.eval k = ↑(r.length.eval k).toNat
+hp0 : 0 ≤ r.length.positivePart.eval k
+ha : 0 ≤ (start.add r.length.positivePart).eval k
+⊢ (max (r.length.eval k) 0).toNat = (r.length.eval k).toNat
+Agent102RunEndpoints.lean:85:17: error: unsolved goals
+case cons
+k : Nat
+r : RunSpec
+rs : List RunSpec
+ih :
+  ∀ (start : Affine),
+    lengthCutoff rs ≤ k →
+      0 ≤ start.eval k →
+        List.map (fun s => s.at k) (spanSpecsFrom start rs) = spansFrom (start.eval k).toNat (runsAt rs k)
+start : Affine
+hk : lengthCutoff (r :: rs) ≤ k
+hs : 0 ≤ start.eval k
+hr : r.length.cutoff ≤ k
+ht : lengthCutoff rs ≤ k
+hp : r.length.positivePart.eval k = ↑(r.length.eval k).toNat
+hp0 : 0 ≤ r.length.positivePart.eval k
+ha : 0 ≤ (start.add r.length.positivePart).eval k
+he : ((start.add r.length.positivePart).eval k).toNat = (start.eval k).toNat + (r.length.eval k).toNat
+⊢ { digit := r.digit, lo := (start.eval k).toNat, hi := (start.eval k).toNat + (r.length.eval k).toNat } ::
+      spansFrom ((start.eval k).toNat + (r.length.eval k).toNat) (runsAt rs k) =
+    { digit := r.digit, lo := (start.eval k).toNat, hi := (start.eval k).toNat + (r.length.eval k).toNat } ::
+      spansFrom ((start.eval k).toNat + (r.length.eval k).toNat)
+        (List.map (fun r => { digit := r.digit, count := (r.length.eval k).toNat }) rs)

@@ -1,0 +1,198 @@
+{
+  "status": "PASS",
+  "verification_role": "author_check",
+  "author": "Agent #102 child lean_runtime",
+  "scope": "Explicit affine run-word boundary examples, including failure of a template-independent uniform cutoff.",
+  "compiler_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "kernel_trust_level": 0,
+  "module_sources": {
+    "Agent102RunDefs": {
+      "path": "proofs/Agent102RunDefs.lean",
+      "sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+      "git_blob": "0c2b723a8c21c953f8a51761e752a827ff72a5cc",
+      "imports": [
+        "Std"
+      ]
+    },
+    "Agent102RunWord": {
+      "path": "proofs/Agent102RunWord.lean",
+      "sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+      "git_blob": "0609366f1e7fb908234667704b67132af23b28f4",
+      "imports": [
+        "Agent102RunDefs"
+      ]
+    },
+    "Agent102AffineArithmetic": {
+      "path": "proofs/Agent102AffineArithmetic.lean",
+      "sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+      "git_blob": "448f7193c49ec4a4faa11467bb6a189d9d412750",
+      "imports": [
+        "Agent102RunDefs"
+      ]
+    },
+    "Agent102AffineBoundary": {
+      "path": "proofs/Agent102AffineBoundary.lean",
+      "sha256": "7dda5da29f8086b7a35b30f041e6092da2b8ea97bd315b5a1b75c6934d01c35a",
+      "git_blob": "abda251432ec4fffdff064c0eb796141c7ff2dc4",
+      "imports": [
+        "Agent102RunWord",
+        "Agent102AffineArithmetic"
+      ]
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Agent102RunDefs.olean",
+        "Agent102RunDefs.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "."
+      },
+      "exit_code": 0,
+      "log": "Agent102RunDefs.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Agent102RunWord.olean",
+        "Agent102RunWord.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "."
+      },
+      "exit_code": 0,
+      "log": "Agent102RunWord.log",
+      "log_sha256": "1157e212ffff300d3775fb0cd087ea0d0d0b81e318d5697b6316a542a02132b1"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Agent102AffineArithmetic.olean",
+        "Agent102AffineArithmetic.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "."
+      },
+      "exit_code": 0,
+      "log": "Agent102AffineArithmetic.log",
+      "log_sha256": "e2447af942b7970c10d091d54f40bfaf50d7c4b7892a2ee74bdbc9551d66c9fd"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Agent102AffineBoundary.olean",
+        "Agent102AffineBoundary.lean"
+      ],
+      "environment": {
+        "LEAN_PATH": "."
+      },
+      "exit_code": 0,
+      "log": "Agent102AffineBoundary.log",
+      "log_sha256": "bf379ef1bece7eda61d40737766eb3ba9d7433a4bc451cbad364bb52eac99862"
+    }
+  ],
+  "literal_audited_theorem_count": 12,
+  "literal_audited_theorems": [
+    {
+      "name": "Agent102.AffineBoundary.wordAt_moving",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.wordAt_fixed",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.moving_fixed_eq_iff",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.compareCutoff_moving_fixed",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.moving_fixed_stable_iff",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.equality_changes_arbitrarily_late",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.no_uniform_wordAt_cutoff",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.run_structure_counterexample",
+      "axioms": []
+    },
+    {
+      "name": "Agent102.AffineBoundary.overlap_digits_without_width",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.zero_span_cross_inequalities",
+      "axioms": []
+    },
+    {
+      "name": "Agent102.AffineBoundary.zero_span_realized",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "Agent102.AffineBoundary.cross_inequalities_false_negative",
+      "axioms": [
+        "propext"
+      ]
+    }
+  ],
+  "axiom_union": [
+    "propext",
+    "Quot.sound"
+  ],
+  "repository_wide_pass": false,
+  "depends_on_unfinished_Agent102AffineRuns": false,
+  "failed_attempts": [
+    {
+      "directory": "failed-attempt01",
+      "status": "FAIL",
+      "exit_code": 1,
+      "source_sha256": "aa5d97b2e7baa2156f67aa45a2d5db76d7f081a25fff29621eadcc609b48889d",
+      "log_sha256": "adff5da8738ea62e2abd2a09987b2863889df486d358ba1be25f725bec75930f",
+      "reason": "Two closed overlap examples lacked synthesized Decidable instances until Span.overlaps was explicitly unfolded. Failed elaboration emitted sorryAx in its diagnostic axiom output; that failed output is not verification evidence for the final module.",
+      "repair": "Explicitly unfold Span.overlaps in the closed overlap witness, and emptySpan/coveringSpan/Span.overlaps in the zero-span example. No theorem statement or dependency was changed."
+    }
+  ],
+  "olean_files_in_publication_evidence": false
+}
