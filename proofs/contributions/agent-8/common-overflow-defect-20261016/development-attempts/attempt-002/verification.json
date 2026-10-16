@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "source_sha256": "55bad56650b7e43f8d9c9f64dfa71b369475360758baf5197f644392f79ba29d",
+  "source_bytes": 10688,
+  "exports": [
+    "oldDigitDefect",
+    "AntisymmetricDefect",
+    "shift",
+    "oldDigitDefect_lt",
+    "oldDigitDefect_zero_of_ge",
+    "oldDigitDefect_zero_width",
+    "antisymmetricDefect_iff",
+    "shift_zero",
+    "shift_one",
+    "actualCoeff_difference",
+    "nextWidth_eq_of_carry_eq",
+    "common_carry_width",
+    "nextColumns_difference",
+    "no_overflow_transport",
+    "no_overflow_cancellation",
+    "overflow_reflected_defect",
+    "overflow_transport",
+    "common_carry_transport",
+    "finite_difference_injective",
+    "finite_difference_zero_iff",
+    "overflow_agreement_iff_digits_agree",
+    "overflow_noncancellation"
+  ],
+  "records": [
+    {
+      "label": "compile",
+      "status": "PASS",
+      "command": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent8DefectTransport.olean",
+        "Agent8DefectTransport.lean"
+      ],
+      "cwd": "/workspace/scratch/328dd131044e/p196/proofs/contributions/agent-8/common-overflow-defect-20261016/development-attempts/attempt-002",
+      "LEAN_PATH": "/workspace/scratch/328dd131044e/p196/proofs/contributions/agent-8/common-overflow-defect-20261016/development-attempts/attempt-002:/workspace/scratch/328dd131044e/baseline-v2/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.9322855150003306,
+      "timestamp_utc": "2026-10-16T21:10:43.038751+00:00",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "axioms",
+      "status": "PASS",
+      "command": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "Agent8DefectTransportAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/328dd131044e/p196/proofs/contributions/agent-8/common-overflow-defect-20261016/development-attempts/attempt-002",
+      "LEAN_PATH": "/workspace/scratch/328dd131044e/p196/proofs/contributions/agent-8/common-overflow-defect-20261016/development-attempts/attempt-002:/workspace/scratch/328dd131044e/baseline-v2/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.5137079339992852,
+      "timestamp_utc": "2026-10-16T21:10:43.552956+00:00",
+      "log_sha256": "bfc147aa7dcd6fc2c5ee43e97813a500386ccb27a2a0eb922f7df9ecd97d9557"
+    }
+  ]
+}
