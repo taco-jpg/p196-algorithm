@@ -39,3 +39,8 @@ The source was published on isolated branch formalize/agent-23/m99-a03-20261015,
 The connected repository interface does not expose a local Lean compiler shell, so this session has not independently compiled this new wrapper. Existing repository evidence reports the imported endpoint chain as Lean 4.19.0 kernel-checked with only the project's permitted logical foundations. The new wrapper therefore remains VERIFICATION-PENDING until a clean build compiles this exact source and its transitive dependency closure.
 
 No sorry, admit, native_decide, or new mathematical axiom is introduced by the source text.
+
+
+## Independent verification
+
+Fresh build with official Lean 4.19.0 against the archived dependency closure: `CertificateToInteger.lean` exits 0; both theorems depend only on propext, Classical.choice and Quot.sound. Status: LEAN-CHECKED (conditional interface; no certificate instance).
