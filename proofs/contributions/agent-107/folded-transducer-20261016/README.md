@@ -27,8 +27,22 @@ theorem，计入 private 与自动生成证明。它们不是 551 个手写数�
 `accepting_indexed_exists`、`admissible_unique_history`，用于从有限表成员见证选取
 索引。完整清单见 `semantic-review/independent-audit-summary.json`。
 
-注册表保持 `catalogue_complete: false`，仅覆盖本任务。生成注册表不是执行原
-canonical verifier；其正式运行和发布结果须另按实际执行记录说明。
+注册表保持 `catalogue_complete: false`，仅覆盖本任务。原未改 canonical verifier
+已在精确发布提交 `be8e612ca0694d5d9d8473c784ab1956f93405b6` 的干净隔离检出中
+实际执行并通过：2026-10-16 UTC 22:02:47 至 22:05:39，进程退出 0，12 个模块
+源码重编和一次完整来源公理审计合计 13 个 Lean 命令全部退出 0。
+完整闭包审计 1,338 条定理（基础 787，本任务 551），公理并集仅为上述三项。
+原脚本另报告 18 个 `unsafe implementation` 占位；精确名称与来源在
+`canonical-verification-be8e612c/invocation/summary.json`，它们没有在审计定理中
+产生额外公理。原报告 `repository_wide_pass: false`，这是本项目的 scoped PASS。
+
+本次原脚本的 Lean 命令没有显式传入 `--trust=0`；上文另一次独立空目录重建才是
+显式 trust-zero 运行，两份证据不可混写。原报告的 `agent: Agent #1` 是原验证器
+保留的作者元数据，外层 `invocation/` 收据记录实际调用者 Agent #107。
+原 `FILES.json` 的 27 项逐文件字节数和哈希全部复核匹配；补充后独立清单
+`INVOCATION_FILES.json` 覆盖 41 个非 `.olean` 文件，原报告和清单保持原字节。
+详见 `canonical-verification-be8e612c/invocation/SUMMARY.zh-CN.md`。
+
 全部 11 份冻结数学源现已发布到精确源码 checkpoint
 [`f0fddaf7baf6131a6d92210ce00189c5532c7825`](https://github.com/taco-jpg/p196-algorithm/commit/f0fddaf7baf6131a6d92210ce00189c5532c7825)，
 root 已逐个 Git blob 远端回读且全部匹配。这个 checkpoint 是数学源码阶段；完整证据、
