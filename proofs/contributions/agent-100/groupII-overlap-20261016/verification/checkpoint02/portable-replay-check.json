@@ -1,0 +1,72 @@
+{
+  "classification": "PORTABLE_PATH_LOGIC_REVIEW_ONLY",
+  "mathematical_rebuild_performed": false,
+  "actual_relocated_clone_build_performed": false,
+  "source_head_at_review": "87ffd966a70f8271a0d22b395dd59824dfabd41f",
+  "result": "Path logic is independent of the original clone prefix. Unrelated-CWD preflight succeeded with downstream execution deliberately intercepted.",
+  "static_findings": [
+    "Checkpoint HERE is derived from resolved __file__; registry/shared helper are located relative to it.",
+    "Shared helper discovers repository root with git -C HERE rev-parse --show-toplevel; source and original verifier paths are repository-relative.",
+    "Original verifier ROOT follows its own relocated file path.",
+    "Lean and fresh output paths are explicit caller arguments; subprocess argv lists preserve internal spaces.",
+    "No /workspace/scratch prefix is hardcoded in any executable replay/verifier script. Absolute workspace paths in README and historical receipts are examples or evidence, not replay inputs.",
+    "Requires a complete Git checkout with the exact retained source paths, pinned harness bytes, Git, suitable Python and official Lean4.19.0; this is path relocation on the existing POSIX workflow, not a cross-platform claim."
+  ],
+  "dynamic_preflight_checks": [
+    {
+      "kind": "checkpoint_launcher",
+      "source_sha256": "44db3d7f12dc68aa452e40f84dc3bc37c0147de595ae0204c01b71db4eb7417c",
+      "mode": "PATH_PREFLIGHT_ONLY_COMPILER_INVOCATION_INTERCEPTED",
+      "intercept_exit_code": 77,
+      "actual_cwd": "/tmp",
+      "actual_git_reads": false,
+      "source_and_harness_hash_checks_executed": true,
+      "next_process_not_executed": "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/contributions/agent-100/groupII-overlap-20261016/verification/dependencies/replay.py",
+      "captured_invocation": {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/contributions/agent-100/groupII-overlap-20261016/verification/dependencies/replay.py",
+          "--registry",
+          "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/contributions/agent-100/groupII-overlap-20261016/verification/checkpoint02/registry.json",
+          "--project",
+          "groupii-full",
+          "--lean",
+          "/workspace/scratch/dbb4434dcb2f/runtime100/lean-4.19.0-linux/bin/lean",
+          "--output",
+          "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/contributions/agent-100/groupII-overlap-20261016/verification/checkpoint02/portable-probe-output-not-created"
+        ],
+        "cwd": "None"
+      },
+      "output_directory_created": false,
+      "compiler_executed": false
+    },
+    {
+      "kind": "shared_dependency_wrapper",
+      "source_sha256": "575b013fd96475cc869f082af94dbde91493da90e5e447a4da1f23c8884d9bd3",
+      "mode": "PATH_PREFLIGHT_ONLY_COMPILER_INVOCATION_INTERCEPTED",
+      "intercept_exit_code": 77,
+      "actual_cwd": "/tmp",
+      "actual_git_reads": true,
+      "source_and_harness_hash_checks_executed": true,
+      "next_process_not_executed": "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/verify_project__214bf7673efe116b.py",
+      "captured_invocation": {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/verify_project__214bf7673efe116b.py",
+          "--registry",
+          "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/contributions/agent-100/groupII-overlap-20261016/verification/checkpoint02/registry.json",
+          "--project",
+          "groupii-full",
+          "--lean",
+          "/workspace/scratch/dbb4434dcb2f/runtime100/lean-4.19.0-linux/bin/lean",
+          "--output",
+          "/workspace/scratch/dbb4434dcb2f/agent100-work/proofs/contributions/agent-100/groupII-overlap-20261016/verification/checkpoint02/portable-probe-output-not-created"
+        ],
+        "cwd": "/workspace/scratch/dbb4434dcb2f/agent100-work"
+      },
+      "output_directory_created": false,
+      "compiler_executed": false
+    }
+  ],
+  "nonblocking_attribution_note": "The archived shared helper writes a fixed executor label Agent #100 runtime_setup independent child. That label is accurate for the recorded original runs; a later third-party replay must retain its own actual-executor attribution rather than treat the fixed label as proof of who reran it. No immutable pinned script was altered in this review."
+}

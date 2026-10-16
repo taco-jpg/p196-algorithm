@@ -1,0 +1,97 @@
+{
+  "agent": "Agent #100",
+  "task_id": "agent100-groupII-delayed-overlap-20261016",
+  "checkpoint": 2,
+  "status": "INDEPENDENTLY-REVIEWED",
+  "base_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "branch": "research/agent-100/groupII-overlap-20261016T2052Z",
+  "claim_commit": "11dcdec8a54b9afd2dd0824507045e21c8e2dd4d",
+  "toolchain": {
+    "version": "Lean4.19.0",
+    "lean_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "execution": {
+    "independent_result": "verification/checkpoint02/result.json",
+    "fresh_modules": 10,
+    "commands": 11,
+    "all_exit_zero": true,
+    "complete_theorem_constants_audited": 1932,
+    "named_export_counts": {
+      "Agent100GroupIIDynamics": 22,
+      "Agent100GroupIISafety": 8,
+      "Agent100DoubleGate": 15,
+      "Agent100GroupIIDefect": 8
+    },
+    "unsafe_implementation_symbols_separately_recorded": 14,
+    "verifier_report_sha256": "fcda588a9a442dd02bd0a2a1f81a3ab067c5f4ee04d194afaa7adbb25ce44c4c",
+    "archive_sha256": "1bd193f8ae54b627f253fb882cfc565983ffbb7f2780fa61ea90c49f7b3e5fb2"
+  },
+  "independent_rebuild": "PASS: separate runtime_setup child, fresh10-module output, exact frozen source bytes",
+  "independent_semantics": {
+    "status": "PASS",
+    "reviewers": [
+      "Agent100/scope_audit independent source review",
+      "Agent100/runtime_setup independent source and execution review"
+    ],
+    "reports": [
+      "controls/semantic-review.md",
+      "verification/checkpoint02/statement-review.md"
+    ],
+    "affiliation": "Separate reasoning agents in the same Agent100 session, not external GitHub-account reviewers"
+  },
+  "accepted_build_scope": "Contribution-scoped DoubleGate and Defect roots with exact ten-module import closure; all53 new exports registered. Main accepted catalogue unchanged.",
+  "pending": [],
+  "finite_diagnostics": {
+    "path": "controls/groupII_controls.json.gz",
+    "gzip_sha256": "4cc42b595a29b15dbb8de1e9df72382112dd0091ff2b05d54bd3b3523447d99e",
+    "decoded_sha256": "bfffaab5af4b75fb622ca5458040df2fad367a5e83c088545cf470f3fe03045b",
+    "status": "FINITE_DIAGNOSTICS; not theorem evidence"
+  },
+  "failed_attempts": [
+    {
+      "source": "development/dynamics/attempt01.lean",
+      "log": "development/dynamics/attempt01.log",
+      "status": "FAILED; excluded from accepted build; sorryAx in failed elaboration is not an accepted dependency"
+    }
+  ],
+  "integration_status": "NOT_INTEGRATED; PR88",
+  "limitations": [
+    "All identities are on their represented finite prefixes",
+    "Domain requires r>=1 and p<=4",
+    "No infinite orbit or196 conclusion"
+  ],
+  "source_checkpoint_parent": "87ffd966a70f8271a0d22b395dd59824dfabd41f",
+  "source_pins": {
+    "Agent100GroupIIDynamics": {
+      "path": "proofs/Agent100GroupIIDynamics.lean",
+      "sha256": "07b8c8d8c0c6fa4aefa1034272464531e27353586066651fd5dda55408d3091c",
+      "git_blob": "d6fe51dd088f8a53937bb4ca66b1e3614528e098"
+    },
+    "Agent100GroupIISafety": {
+      "path": "proofs/Agent100GroupIISafety.lean",
+      "sha256": "c41ca271d9749e90c4490e676cecfb9e1de5d52164ecd9ec2d3e136e0925ec9f",
+      "git_blob": "415c9b551bb0a234ab468b6bf1ddcaf4fd69bfcb"
+    },
+    "Agent100DoubleGate": {
+      "path": "proofs/Agent100DoubleGate.lean",
+      "sha256": "192b21fc4335c69850c4609084ca8c8c2482241204e9c71f4006c1bf87ab8ebb",
+      "git_blob": "f87b9dd00367b111878a154f5f1f57cd76eba29e"
+    },
+    "Agent100GroupIIDefect": {
+      "path": "proofs/Agent100GroupIIDefect.lean",
+      "sha256": "7dce1b0a08a5c0d86cfaf4cbb3584a9a3c7a0f294602170e7b44c11111eadb0f",
+      "git_blob": "600b532639d96c29c688dfe9c858c3975e686967"
+    }
+  },
+  "exported_theorems": 53,
+  "source_commit_identity": "All four source Git blobs were confirmed at81c5b67da4f7371f5a70891431f249882f9d4b20. Subsequent review-only commits retain those exact bytes.",
+  "continuation": "Third-gate boundary separately claimed at2a0d376388cacc83ceab1caf1f2152c195329964; work continues on its separate source branch.",
+  "history_preservation": "All22 development attempts and logs also included under history-excluded/ in checkpoint02 evidence archive. Failed attempts are not accepted source.",
+  "first_complete_source_commit": "81c5b67da4f7371f5a70891431f249882f9d4b20",
+  "publication_readback": "publication-readback.json"
+}
