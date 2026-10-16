@@ -44,9 +44,9 @@
 
 所有115条公开定理的作者编译及逐项公理检查已经完成，只有项目允许的 `propext`、`Classical.choice`、`Quot.sound`。两项无安全版本补齐了独立审查发现的原文§1覆盖缺口，发现、修复及非作者复核均保留。
 
-原未修改验证器已从空目录完成20模块实际安全返回闭包：21条命令全部退出0，1551个完整模块来源theorem及106个该闭包内的公开定理通过；旧大依赖也在本次重新编译。26模块完整普通整数包的六模块增量及最终全来源审计正在单路执行，结果将以独立收据继续发布。本状态不把旧缓存作者编译或被系统终止的尝试称为完整fresh PASS。
+原未修改验证器已从空目录完成20模块实际安全返回闭包：21条命令全部退出0，1551个完整模块来源theorem及106个该闭包内的公开定理通过；旧大依赖也在本次重新编译。在逐项核对这次成功运行的精确源码、编译产物及工具链后，独立执行者又编译新增6个模块，并重新审计全部26个模块：六次编译及最终审计均退出0，1763个完整模块来源theorem及115个公开新定理端点全部通过。公理并集严格为上述标准三项；21个旧编译器unsafe实现条目另列，均未进入任何定理的公理依赖。精确执行是fresh20加新增6及全26审计，不是第二遍从空目录重编全部26模块。完整收据、输入与产物哈希、原始日志和语义审查见 `verification/uniform-return/` 和 `verification/uniform-integer-return/`。
 
-首检查点 `33474b2b08e445509475aa6cf341a1a8e12977db` 已提供6模块/214 theorem的支撑包。完整源输入与公开Git提交的对应关系在 `publication/` 中记录。原验证器的HEAD、未跟踪源及source_tree_clean字段保留实际值，另给逐文件哈希，不改写历史执行输出。
+首检查点 `33474b2b08e445509475aa6cf341a1a8e12977db` 已提供6模块/214 theorem的支撑包；完整数学源固定于 `87130870e6d17de1d9d2cd709395fbe664645c9b`，该提交也已包含20模块完整验证证据。最终26模块证据随后作为独立检查点发布。完整源输入与公开Git提交的对应关系在 `publication/` 中记录。原验证器的HEAD、未跟踪源及source_tree_clean字段保留实际值，另给逐文件哈希，不改写历史执行输出。
 
 Agent #102原五模块来自 `a3329eda74fc419d76c185fa843d9e6e1602a09b`，按原路径、原字节使用。Agent #1 repeated-block原件来自 `0431e0a64da285455421d8a267a92c37dffbfee7`，canonical resolver映射到 `author/normalize/refs/Agent1RepeatedBlock.lean`；未改其数学正文。原Agent8及Agent109/Lychrel196依赖来自固定主干 `ae8bbdfd2a18e8910eebc25fd2a81661c01abc16`，精确Git blob和SHA-256见各registry。开发早期额外末尾换行的恢复问题已修正，旧实际输入记录仍保留。
 
@@ -63,6 +63,8 @@ python3 proofs/verify_project__214bf7673efe116b.py \
   --project agent105-uniform-safe-return \
   --output /absolute/path/to/new-agent105-verification
 ```
+
+最终26模块可用相同原验证器、`proofs/Agent105UniformIntegerReturn.registry.json` 和project `agent105-uniform-integer-return` 在新目录中重放。已实际执行的两阶段重放入口和精确参数见 `verification/uniform-integer-return/README.md`；单阶段fresh26命令是供复现者选择的入口，不是本回执声称已执行的第二次运行。
 
 `author/`保留完整真实成功与失败尝试；`review/`保存非作者语义审查与独立目标重建；`verification/`保存规范审计与源指纹。此前两次大依赖构建因系统SIGKILL/137中断的日志也保留，没有改标为通过。可再生成的工具链和编译缓存不提交。
 
