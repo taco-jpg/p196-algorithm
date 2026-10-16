@@ -34,16 +34,19 @@ theorem finite_uniform_extraction
   have htM : t ≤ M := le_trans ht (hM x)
   exact ht (hx t htM)
 
-/-- A seed-dependent choice at each horizon is insufficient: the seed may
-change with the horizon, so no fixed seed follows without a finite candidate
-set or another uniformity condition. -/
+/-- The unrestricted quantifier swap fails. For each horizon N one may choose
+x=N+1, while no fixed natural x can dominate every t. -/
 theorem unrestricted_quantifier_swap_counterexample :
     ¬ ((∀ N : Nat, ∃ x : Nat, ∀ t, t ≤ N → t < x) →
        ∃ x : Nat, ∀ t, t < x) := by
   intro h
-  obtain ⟨x, hx⟩ := h x
-  have : x < x := hx x (le_rfl)
-  exact Nat.lt_irrefl x this
+  have hprefix : ∀ N : Nat, ∃ x : Nat, ∀ t, t ≤ N → t < x := by
+    intro N
+    refine ⟨N + 1, ?_⟩
+    intro t ht
+    omega
+  obtain ⟨x, hx⟩ := h hprefix
+  exact Nat.lt_irrefl x (hx x le_rfl)
 
 #print axioms finite_uniform_extraction
 #print axioms unrestricted_quantifier_swap_counterexample
