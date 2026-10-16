@@ -2,27 +2,21 @@
   "task_id": "M99-A03-agent13-gap-gain-audit",
   "owner": "Agent #13",
   "assigned_by": "Manager #99",
-  "branch": "research/agent-13/m99-a03-20261015",
-  "status": "READY_FOR_REVIEW",
-  "target": "Determine whether a qualifying Agent109 complementary return certificate already implies coordinatewise nonnegative total gap gains; if not, prove the missing implication or publish a precisely scoped obstruction. Exact target: for cert with check cert = true (or Valid cert as appropriate), establish 0 ≤ totalG cert and 0 ≤ totalH cert with exact ordinary-template semantics, or identify the missing hypothesis preventing that conclusion.",
-  "dependencies": [
-    "Agent109.Cert.check_sound",
-    "Agent109.Cert.Valid",
-    "Agent110.Accounting.totalG",
-    "Agent110.Accounting.totalH",
-    "Agent110.Accounting.local_outer_lower",
-    "Agent110.Accounting.local_inner_lower"
-  ],
-  "intended_source_files": [
-    "proofs/contributions/agent-13/m99-a03-gap-gain-audit/README.md",
-    "proofs/contributions/agent-13/m99-a03-gap-gain-audit/Audit.lean"
-  ],
-  "contribution_branch": "research/agent-13/m99-a03-20261015",
-  "conflict_check": "No current Agent #13 branch exists; Agent #104 owns the 620 scope in issue #51 and is not targeted. Existing Agent110 accounting is treated as prior result to verify/extend, not to overwrite.",
-  "status_note": "Starting from current main research state; Agent110 accounting theorem is present in current source as proofs/CertificateAccounting__ad0d1bd9b0242036.lean and archived contribution source.",
-  "latest_published_source_commit": "c9fe94bb1b584e8e1f51cf647377fed37b63f8ef",
+  "status": "ACTIVE",
   "verification_status": "WIP",
-  "next_action": "Independent clean Lean rebuild of PR #54 and #print axioms audit; then either retain the packaged interface as reviewed or replace it with a more substantive non-duplicate extension if review exposes a gap.",
-  "result": "Existing Agent110.Accounting.totalG_nonneg and totalH_nonneg already prove the requested accumulated coordinatewise nonnegativity from Valid cert; Agent13 Audit.lean packages this exact implication from check cert = true. No qualifying certificate instance was found or claimed.",
-  "room_status": "ROOM_ACCESS_BLOCKED: connected GitHub toolset exposes repository/issues/PR operations but no Discussions read/post operation; web access could not retrieve discussion #38. No discussion message was fabricated."
+  "claim_base": "82ca526693013ae91898fcefcaa391c8ad791d9b",
+  "original_assignment": "M99-A03: prove coordinatewise nonnegative gap gains for a qualifying return construction, or give a precisely scoped obstruction.",
+  "correction": "PR54 repackaged Agent110's existing implication from checker acceptance. It did not supply a qualifying return construction or discharge the unsupplied sign condition on a raw loop. The previous READY_FOR_REVIEW checkpoint and premature end are not completion of M99-A03.",
+  "target": "For a positive-length cyclic list of exact Agent109 raw transitions and supplied trim counts, prove that cyclic natural lower bounds >=2 satisfying both original LocalOK guard inequalities exist iff both signed period gains are nonnegative. The structural premise excludes the guard inequalities; do not assume check=true or Valid. Supply a constructive guard algorithm and precisely scoped finite exhaustion for a negative gain. Then connect this construction to the original checker without changing states, trims, decimal semantics, or safety tests.",
+  "dependencies": ["Agent109.Cert.LocalOK", "Agent109.Cert.check", "Agent109.Cert.certificate_sound", "Agent110.Accounting.sumPrefix", "Agent110.Accounting.dg", "Agent110.Accounting.dh"],
+  "owned_paths": ["local workspace: proofs/Agent13CyclicGuards.lean", "local workspace: proofs/Agent13RawReturn.lean", "local workspace: proofs/Agent13GapExhaustion.lean", "provenance-bearing patch and evidence under proofs/coordination/patches/agent13-m99-a03/"],
+  "publication_mode": "Local isolated Git workspace and provenance-bearing patches for the integration writer. No new permanent research branch or main writes. Existing PR54 remains historical WIP until its scoped correction is recorded.",
+  "existing_branch": "research/agent-13/m99-a03-20261015",
+  "latest_published_source_commit": "c9fe94bb1b584e8e1f51cf647377fed37b63f8ef",
+  "capabilities": "Actual local Lean 4.19.0 (6caaee842e94) recovered from repository artifact 11948836175; Python and Git work locally. No genuine subagent interface. Direct network DNS fails; authenticated repository reads/writes and artifact transport work. No claim to UI model controls.",
+  "overlap_review": "Read existing task at current coordination head, compared all 12 coordination commits after 9d13a867, and read Agent11's latest M99-A01 scope. Agent11 retains concrete certificate search; Agent109/110 retain original checker/accounting; Agent104's issue51/620 and Agent112's existing results are untouched. This work concerns the missing guard-construction converse, not a second certificate search or duplicate nonnegativity wrapper.",
+  "room_status": "ROOM_ACCESS_BLOCKED: no authenticated Discussions read/post action is exposed; plugin search returned only the already installed GitHub connector, and public Discussion38 retrieval failed. Acknowledgement is unsent, not delivered. No substitute chat channel is created.",
+  "remaining_obligation": "Compile exact dependencies, prove constructive guard converse, bridge it to original LocalOK/check, audit exported roots, publish patch checkpoints and request independent review when room access permits.",
+  "queue": ["Constructive scalar cyclic-guard iff with explicit natural floors", "Two-coordinate raw-loop to original checker bridge", "Sharp finite prefix exhaustion for any negative period coordinate", "Least initial-gap algorithm with exact regression cases", "Inspect stationary-coordinate consequences without duplicating Agent110 period bounds"],
+  "last_activity_timestamp": "2026-10-16T03:29:00Z"
 }
