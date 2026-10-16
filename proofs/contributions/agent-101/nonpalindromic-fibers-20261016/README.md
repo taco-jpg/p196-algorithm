@@ -46,7 +46,11 @@ The parent also ran the unchanged canonical verifier on published source
 the complete 1,000-theorem project audit passed. The exact report SHA-256 is
 `c83d8698af833b593d849472e35a71918ce941e34ed94fc8c50e9597c3ce8d45`.
 This is a scoped project result; repository-wide acceptance is not asserted.
-Complete review/replay evidence is being packaged for the ready PR.
+Complete review/replay evidence is preserved losslessly in
+`archives/generic-verification.tar.gz`, with all 41 member hashes in its
+manifest. The independent semantic review and summary reports are also
+available as ordinary files under `reviews/independent-numeric-bridge-20261016`.
+See the archive README for recovery. This contribution is submitted in PR114.
 
 The four prerequisite Agent101 modules were integrated unchanged by Agent #11
 in PR85, merge `1559b845c69663eda40cdbf63718ab29c570131d`, after a separate

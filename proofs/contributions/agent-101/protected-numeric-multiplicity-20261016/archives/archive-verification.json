@@ -1,0 +1,150 @@
+{
+  "status": "PASS",
+  "verification_scope": "Archive integrity and safe restoration only; no Lean execution",
+  "archive": {
+    "filename": "runtime-development.tar.gz",
+    "bytes": 140683,
+    "sha256": "6c1ec4e2aa0084369ad16f8133a24d8148b006dfbdaabab48ce0eb3a8e45a130",
+    "format": "gzip-compressed PAX tar",
+    "member_count": 102,
+    "uncompressed_file_bytes": 1040000
+  },
+  "manifest_sha256": "fc082c2b127fdd9c49f59e6172a23149a830a6ec34fe6562ab641d93c5232d81",
+  "verifier_sha256": "685156a3d48ba59d01153d3a5a145ac018048c8fe1e1d356fb072d7e6353e1e6",
+  "test_directory": "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l",
+  "all_original_members_unchanged": true,
+  "accepted_sources_unchanged": true,
+  "case_count": 9,
+  "cases": [
+    {
+      "case": "verify-only",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py"
+      ],
+      "expected_success": true,
+      "exit_code": 0,
+      "seconds": 0.04349416500008374,
+      "stdout": "{\"status\": \"PASS\", \"members_verified\": 102, \"archive_sha256\": \"6c1ec4e2aa0084369ad16f8133a24d8148b006dfbdaabab48ce0eb3a8e45a130\", \"files_written\": 0, \"identical_files_skipped\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "case": "extract-empty-directory",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--extract-to",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/fresh"
+      ],
+      "expected_success": true,
+      "exit_code": 0,
+      "seconds": 0.07372058700002526,
+      "stdout": "{\"status\": \"PASS\", \"members_verified\": 102, \"archive_sha256\": \"6c1ec4e2aa0084369ad16f8133a24d8148b006dfbdaabab48ce0eb3a8e45a130\", \"files_written\": 102, \"identical_files_skipped\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "case": "extract-identical-files-idempotent",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--extract-to",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/fresh"
+      ],
+      "expected_success": true,
+      "exit_code": 0,
+      "seconds": 0.07735435099948518,
+      "stdout": "{\"status\": \"PASS\", \"members_verified\": 102, \"archive_sha256\": \"6c1ec4e2aa0084369ad16f8133a24d8148b006dfbdaabab48ce0eb3a8e45a130\", \"files_written\": 0, \"identical_files_skipped\": 102}\n",
+      "stderr": ""
+    },
+    {
+      "case": "refuse-different-existing-file",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--extract-to",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/conflict"
+      ],
+      "expected_success": false,
+      "exit_code": 1,
+      "seconds": 0.04630455799997435,
+      "stdout": "",
+      "stderr": "FAIL: refusing to overwrite existing different file: /workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/conflict/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/dependencies/safe-high/SafeHighFamily.lean\n"
+    },
+    {
+      "case": "reject-whole-archive-hash-mismatch",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--archive",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/tampered.tar.gz"
+      ],
+      "expected_success": false,
+      "exit_code": 1,
+      "seconds": 0.04161290399952122,
+      "stdout": "",
+      "stderr": "FAIL: archive size or SHA256 mismatch\n"
+    },
+    {
+      "case": "reject-per-member-hash-mismatch",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--manifest",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/wrong-member-manifest.json"
+      ],
+      "expected_success": false,
+      "exit_code": 1,
+      "seconds": 0.044103899000219826,
+      "stdout": "",
+      "stderr": "FAIL: member SHA256 mismatch: proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/dependencies/safe-high/SafeHighFamily.lean\n"
+    },
+    {
+      "case": "reject-path-traversal",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--archive",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/traversal.tar.gz",
+        "--manifest",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/traversal-manifest.json",
+        "--extract-to",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/traversal-output"
+      ],
+      "expected_success": false,
+      "exit_code": 1,
+      "seconds": 0.03836936399966362,
+      "stdout": "",
+      "stderr": "FAIL: non-relative or non-normalized archive path: ../outside-proof.lean\n"
+    },
+    {
+      "case": "reject-existing-symlink-ancestor",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--extract-to",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/symlink-root"
+      ],
+      "expected_success": false,
+      "exit_code": 1,
+      "seconds": 0.054080729999441246,
+      "stdout": "",
+      "stderr": "FAIL: symlink or non-directory ancestor: /workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/symlink-root/proofs\n"
+    },
+    {
+      "case": "reject-archive-symlink-member",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py",
+        "--archive",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/link.tar.gz",
+        "--manifest",
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/link-manifest.json"
+      ],
+      "expected_success": false,
+      "exit_code": 1,
+      "seconds": 0.03190498799995112,
+      "stdout": "",
+      "stderr": "FAIL: unexpected, duplicate, or non-regular member: proofs/not-a-regular-file\n"
+    }
+  ]
+}

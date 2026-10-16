@@ -31,7 +31,8 @@ zero-exit compilation and public-export axiom audits are under `counts/` and
 `palindrome/`. Rejected author attempts remain clearly marked. Only the three
 standard project axioms occur. Another genuine specialist independently rebuilt
 the complete ten-module count dependency closure with `--trust=0`; its review
-is being packaged, and the palindrome extension is under separate review.
+and the subsequent palindrome and filtered-count reviews all passed and are
+retained under `reviews/`.
 
 `Agent101ProtectedNonpalindromic.lean` now proves the filtered count
 `5 * 11^m - 1`, complete numerical membership, duplicate freedom, positivity,
@@ -57,10 +58,60 @@ avoids defining the original decimal arithmetic twice; no mathematical body is
 edited. The author freshly built the 21-module arithmetic/safety closure and
 then compiled all five additional counting/filter/endpoint modules with
 `--trust=0`. The final combined exact-published-source rebuild and separate
-review of the safety/endpoint modules remain the next acceptance gate. The
+review of the safety/endpoint modules have now both passed at the frozen
+mathematical source `71691d50497edc83247b3571af276bb0ee438491`. The
 21-module development report records a local snapshot, not publication of its
 then-untracked files at its recorded base HEAD; the accompanying receipt makes
 that limitation explicit.
+
+## Final independent verification
+
+The genuine nonauthor reviewer `/root/research_inventory` independently read
+all 26 exact source files from the published commit, verified their registry
+hashes and Git blobs, and ran the unchanged canonical verifier once from an
+empty output directory. All 26 modules and the generated complete project
+audit passed. The exact report and semantic review are retained in
+`reviews/final-canonical-verification.json` and
+`reviews/final-semantic-review.md`.
+
+The original verifier did not explicitly request trust zero during its module
+builds. The reviewer separately reran the unchanged ProjectAudit with explicit
+`--trust=0`, covering all **1,783 module-origin theorems**, and performed a
+separate explicit-trust-zero audit of **all 94 new public declarations: 85
+theorems and 9 definitions**. Every public declaration is safe. The complete
+axiom union is `propext`, `Classical.choice`, and `Quot.sound`. Compiler-generated
+unsafe implementation axioms are reported separately and occur in none of
+these mathematical dependencies. Source, registry, verifier and compiler
+hashes were rechecked after the audits and remained unchanged.
+
+The reviewer did not author the normalization, safety, final aggregate, or
+three protected-counting modules. Authorship of the older SplitEnumeration
+and generic PalindromeFibers dependencies is disclosed; their independent
+reviews were supplied by different workers. This is a genuine within-session
+review, not external-account approval or repository-wide certification.
+
+Full retained evidence is recoverable from the archives: the runtime author
+history in `archives/runtime-development.tar.gz`, the generic seven-module
+reviews in the companion contribution archive, and the final canonical and
+independent review corpus in `archives/final-independent.tar.gz`.
+Manifests retain exact member hashes, failed attempts, and the historical
+21-module snapshot limitation. The raw original reports are not rewritten.
+
+Reproduce the final scoped closure from a checkout with Lean 4.19.0:
+
+```sh
+python3 proofs/verify_project__214bf7673efe116b.py \
+  --registry proofs/Agent101ProtectedFamily.registry.json \
+  --project agent101-protected-family \
+  --lean /absolute/path/to/lean-4.19.0-linux/bin/lean \
+  --output /absolute/path/to/a-new-output-directory
+```
+
+Then run the generated `ProjectAudit.lean` using that generated source
+directory as `LEAN_PATH` with `lean --trust=0 -j1 -DElab.async=false`.
+The public audit source and exact original commands are included in the
+independent archive. PR114 awaits the designated integration owner's review;
+Agent #101 has not written main.
 
 The final theorem is a family indexed by finite `m,k`. It does not produce one
 fixed seed safe for all times or establish a conclusion about 196.
