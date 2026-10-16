@@ -1,0 +1,126 @@
+{
+  "repository": "taco-jpg/p196-algorithm",
+  "pr": 112,
+  "head": "01ecb6aa6bc555335ff6cb628d08e84133888307",
+  "modules": [
+    {
+      "module": "OuterBlock",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/OuterBlock.lean",
+      "git_blob": "57b7dfa5a6e24f3d5097cd0031dd7c986b9f2ff4",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "ModulusSplit",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/ModulusSplit.lean",
+      "git_blob": "88b6f05e3346650dec35017f31b3a2721e8ddb15",
+      "imports": [
+        "OuterBlock"
+      ]
+    },
+    {
+      "module": "PeriodExistence",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/PeriodExistence.lean",
+      "git_blob": "15a20afe499c1a54583a6c384c967049b523fcab",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "ModularSpan",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/ModularSpan.lean",
+      "git_blob": "13c65527cb65dd199325a4c3b11c35e1474dcc58",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "ArithmeticCRT",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/ArithmeticCRT.lean",
+      "git_blob": "2722c6cf788605260eace42a86b3c0069ba0dce6",
+      "imports": [
+        "ModularSpan"
+      ]
+    },
+    {
+      "module": "Lychrel196Research",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/Lychrel196Research.lean",
+      "git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "PalindromeDigits",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/PalindromeDigits.lean",
+      "git_blob": "d60da8781a92943d9c4281002aaca13b403c4f67",
+      "imports": [
+        "Lychrel196Research"
+      ]
+    },
+    {
+      "module": "PairWeights",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/PairWeights.lean",
+      "git_blob": "345cb5dce73ee99bbbb2a65ae6840370de18cf21",
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "DigitPools",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/DigitPools.lean",
+      "git_blob": "c8e8f00d28c9e0630488e2e17218f909f5bc4534",
+      "imports": [
+        "PalindromeDigits",
+        "PairWeights"
+      ]
+    },
+    {
+      "module": "ResidueOrbit",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/ResidueOrbit.lean",
+      "git_blob": "98de673674512414f38182eded9b2a01c47ce4b6",
+      "imports": [
+        "Lychrel196Research"
+      ]
+    },
+    {
+      "module": "Saturation",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/Saturation.lean",
+      "git_blob": "d09021588e3fc9c3c456d4276762613c30a68be1",
+      "imports": [
+        "ModulusSplit",
+        "PeriodExistence",
+        "ArithmeticCRT",
+        "DigitPools",
+        "ResidueOrbit"
+      ]
+    },
+    {
+      "module": "GrowingSuffix",
+      "source_path": "proofs/contributions/agent-111/growing-tenpower-suffix-20261016/GrowingSuffix.lean",
+      "git_blob": "aa7ed6bf0675d2fdd6bbcd7f689f64039ff7b8cc",
+      "imports": [
+        "Saturation"
+      ]
+    },
+    {
+      "module": "SharpSuffix",
+      "source_path": "proofs/contributions/agent-111/growing-tenpower-suffix-20261016/SharpSuffix.lean",
+      "git_blob": "cd2bf60a3b3e0c5718574aa5a5bdaff9d04d46ec",
+      "imports": [
+        "GrowingSuffix"
+      ]
+    }
+  ],
+  "auxiliary": [
+    {
+      "path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues/check.py",
+      "git_blob": "4759deab8d954c5d347fa761aeb073f01e209e35"
+    },
+    {
+      "path": ".github/workflows/agent111-growing-tenpower-suffix.yml",
+      "git_blob": "d5f460522fcca090158246da9674a9f133b18c79"
+    }
+  ]
+}
