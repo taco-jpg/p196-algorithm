@@ -65,13 +65,13 @@ This sweep is finite discovery evidence. It does not show that c=26, 1402, or 48
 
 ## Affine-boundary test
 
-For each fixed time t, I tested whether the whole parameterized family has an exact affine form
+For each fixed time t, I tested finite samples for consistency with an affine form
 
     T^t(10^k-c) = a_t * 10^k + b_t
 
-using rational a_t,b_t inferred from two large k values and then checked at independent k values.
+using rational a_t,b_t inferred from k=20,21 and checked at k in {10,11,12,15,20,25}. The fit widths and validation widths overlap at k=20; a fit point is not an independent validation point.
 
-For c=26, this exact affine dependence survives through t=14 and fails first at t=15. The coefficients through the affine regime are:
+For c=26, the formula agrees at all of those sampled widths through t=14 and first disagrees within that sample at t=15. This is not a theorem about all k or all sufficiently large k. The fitted coefficients through t=14 are:
 
     t=0   a=1           b=-26
     t=1   a=37/25       b=-27
@@ -89,9 +89,9 @@ For c=26, this exact affine dependence survives through t=14 and fails first at 
     t=13  a=93229807/1000 b=-39118662
     t=14  a=88274307/500 b=-78226423.
 
-The first nonlinear boundary interaction occurs at t=15 for c=26. For the other two strongest 3000-step survivors, the corresponding first nonlinear times are t=8 for c=1402 and t=5 for c=4832.
+The first sampled mismatches occur at t=15 for c=26, t=8 for c=1402, and t=5 for c=4832. In each case, only the smallest sampled validation width, k=10, disagrees at that time. With fit widths k=30,31 and validation widths {20,21,22,25,30,35}, the corresponding first mismatches instead occur at t=31,23,23, respectively, only at k=20. These times depend on the finite sampling domain.
 
-This is useful because it isolates the exact point where the simple finite-defect ansatz stops being a fixed affine boundary system. The candidate cannot be promoted to a recurrent construction merely from its long 9-block.
+For example, at c=26 and t=15 the fitted formula is (118990718/125)*10^k - 761380752. The residual at k=10 is 990000000, while it is zero at every tested k in {11,12,15,20,21,25,30,40,100}. The finite sample therefore does not establish failure of eventual affinity, nor does it prove eventual affinity or recurrence. The candidate cannot be promoted to a recurrent construction merely from its long 9-block.
 
 ## Structural observation
 
@@ -115,7 +115,7 @@ If no such recurrence exists, the exact first divergence should be preserved as 
 
 ## Review note: overlap with the 196 orbit (independent check)
 
-All numbers above were reproduced exactly (closed forms through k=200, the 5000-step screens for k=4..12, the four surviving defects, and the first nonlinear times 15/8/5).
+All numbers above were reproduced exactly (closed forms through k=200, the 5000-step screens for k=4..12, the four surviving defects, and the first sampled affine-fit mismatches at times 15/8/5).
 
 However, the smallest members are not independent of the 196 problem. Comparing against the first 6000 iterates of 196:
 
@@ -124,3 +124,17 @@ However, the smallest members are not independent of the 196 problem. Comparing 
 - c=4112, k=4: 5888 → 14773 → **52514**, again the 196 orbit.
 
 So for k=4 these "survivals" are just the 196 orbit itself. For k=5..12 no member joined the 196 orbit within 3000 steps. Surviving a few thousand additions is also common for seeds of five or more digits, so this screen is weak evidence; only an exact boundary recurrence would make the family significant.
+
+## Agent #452 correction provenance
+
+This proposed correction preserves all original numerical orbit screens and fitted coefficients. It narrows the interpretation of the affine-width tests, not their exact arithmetic. The original report is retained at PR head 9ec2bca9342b35fae43a1decb65b3aadfd8507ae, Git blob 9367805804428497f0da960775a528b975081951, and in the accompanying original-source snapshot. Its statements of first nonlinear interactions and failure of a fixed affine boundary system are superseded by the explicitly finite-sample statements above. Review 5543048799 records the independent reproduction. No all-time or eventual-affinity theorem is established by this correction.
+
+## Agent #7 rebase verification
+
+The Agent #452 correction was rebased against integrated main 09271f10881699435067ac0502c1f1957c1cbcc0, report blob 0370c44913a8864e0f6b2dcfeb60b40d4f59b9b2. The original final patch hunk no longer applied after addition of the 196-overlap review note. All original numerical sections and fitted coefficients are retained; the later review note now uses the same finite-sample terminology. This is a proposed documentation correction only. Local patch validation does not establish remote integration or a new mathematical result.
+
+## User-authorized integration — 16 October 2026
+
+The correction above is included in this revision following the user’s direct integration request. The preceding proposal/rebase notes describe the preparation checkpoint, not the current publication state. The complete pre-correction report remains byte-identical at `proofs/archive/integration-repairs/agent-7/pr79-09271f108816-REPORT.md`. Audit source, prior logs, the exact proposed patch, fresh numerical replay logs, 和 recovery instructions are retained under `proofs/coordination/audits/agent-7/A7-20261016/`.
+
+This documentation-only integration preserves Agent #452’s correction provenance 和 the independent corroboration by Agents #431 和 #11. Executable research sources, coefficients, search bounds, 和 historical proof classifications remain unchanged. No new Lean build or all-time mathematical conclusion is claimed.

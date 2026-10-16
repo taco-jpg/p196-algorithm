@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #7",
+  "task_id": "A7-PR79-20261016",
+  "prepared_parent": "28358aef8fdfa145c5da3232cee891d08dbe51a6",
+  "parent_tree": "d5355d1163b122a1a98e48098a1604e6a632164b",
+  "scope": "Documentation correction and lossless evidence retention; no mathematical acceptance upgrade.",
+  "role_claim_commit": "2b373c92b584cc6144fd420dab911d7817f5068f",
+  "role_claim_blob": "870d577eecbd82716a0d97f3de0b66da0396b79c",
+  "serialization": "Initial claim rejected with 409 while Agent #6 integrated. Slot acquired only after its explicit RELEASED record. Agent #6 commit retained as parent.",
+  "report": {
+    "path": "proofs/contributions/agent-318/candidate-10k-minus26/REPORT.md",
+    "preimage_git_blob": "0370c44913a8864e0f6b2dcfeb60b40d4f59b9b2",
+    "patch_sha256": "e2dbfe48037bbbedbc0f5d8cb212ac7e6fba4ed45729375f7c83a8a7fd83931a",
+    "patch_only_postimage_git_blob": "b36848f8d4cb35ff19b8cd5d179175cbdfd8ee8a",
+    "integrated_postimage_git_blob": "1bbcf4e408f6a380ce1d935f7dd3b9ea26291795",
+    "additional_edit": "Appended current integration/provenance note; preceding proposal text preserved as historical preparation."
+  },
+  "preserved_original": "proofs/archive/integration-repairs/agent-7/pr79-09271f108816-REPORT.md",
+  "independent_review_ids": [
+    "5543048799",
+    "5543062008",
+    "6220937696"
+  ],
+  "agent7_review_ids": [
+    "5551207497",
+    "5551320218",
+    "5551266359"
+  ],
+  "local_checks": {
+    "exact_patch_apply_check": 0,
+    "exact_patch_apply": 0,
+    "exact_patch_reverse_check": 0,
+    "exact_patch_reverse_apply": 0,
+    "exact_original_restored": true,
+    "final_report_diff_check": 0,
+    "numerical_sections_and_coefficients_unchanged": true,
+    "original_audit_manifest_entries_verified": 30,
+    "archive_members_verified": 38,
+    "archive_manifest_additional_member": true
+  },
+  "fresh_numerical_replay": {
+    "time_utc": "2026-10-16T17:53:58.815988+00:00",
+    "commands": [
+      {
+        "name": "independent_probe",
+        "command": [
+          "/opt/pyvenv/bin/python",
+          "independent_probe.py"
+        ],
+        "exit_code": 0,
+        "log": "independent_probe.log",
+        "log_sha256": "9269b06d330cc0b9dde97dcab036a5d17a6b2e61eec979e3dd7d0b51e2439559"
+      },
+      {
+        "name": "guard_replay",
+        "command": [
+          "/opt/pyvenv/bin/python",
+          "guard_and_finite_replay.py",
+          "guard"
+        ],
+        "exit_code": 0,
+        "log": "guard_replay.log",
+        "log_sha256": "3acbc2a1920d93393c81f218e581c459724afdd714116994cd196b381e987eb4"
+      },
+      {
+        "name": "screen_replay",
+        "command": [
+          "/opt/pyvenv/bin/python",
+          "guard_and_finite_replay.py",
+          "screen"
+        ],
+        "exit_code": 0,
+        "log": "screen_replay.log",
+        "log_sha256": "c396f53473baac381cd2fb97b32c7f7b550128ba3800ef0e86b3d8d1b533c397"
+      }
+    ],
+    "patch_checks": "SKIPPED: pinned cache inputs absent; see REPRODUCE.md",
+    "fresh_lean_execution": false,
+    "remote_mutation": false,
+    "all_executed_check_programs_passed": true,
+    "completed_utc": "2026-10-16T17:54:10.065437+00:00"
+  },
+  "evidence_archive": {
+    "format": "concatenate four binary parts to an xz-compressed tar",
+    "bytes": 32648,
+    "sha256": "7c6a34db5050400f93e9dc1cbef794cd2a5894b9fccaa70c10c14a13bd6d6df1",
+    "tar_member_count": 39,
+    "original_audit_member_count": 31,
+    "fresh_replay_member_count": 7,
+    "member_manifest": "EVIDENCE_CONTENTS.json",
+    "original_zip_sha256": "e670d6da32547565f9baccde8f9fd38d0fd77dd30dc23aabca85b15a36b3e3de",
+    "original_member_bytes_preserved": true,
+    "parts": [
+      {
+        "file": "evidence.tar.xz.001",
+        "bytes": 8250,
+        "sha256": "ec2f8e0f47c9ce0b2c1587ebc99f5d2ca0ba8afad75f5a2743abe161d2897cb1",
+        "git_blob": "802a3f0e17a62ba70543782fb144838ab3d2a7d4"
+      },
+      {
+        "file": "evidence.tar.xz.002",
+        "bytes": 8250,
+        "sha256": "de9a83e5b5dabb0e85ec6ac2d8ee92c05166e9e74d0a82c3321349626fb4d1e6",
+        "git_blob": "175953cbc039c9ed1d369e95200623069dc517a6"
+      },
+      {
+        "file": "evidence.tar.xz.003",
+        "bytes": 8250,
+        "sha256": "f7c916c873ccdeeb27766b74904409454d51c034141c6c51e8ff977f1e2fa1dc",
+        "git_blob": "ab8dc3a40bc2334cbe1f8f05efe7b9da2055e67e"
+      },
+      {
+        "file": "evidence.tar.xz.004",
+        "bytes": 7898,
+        "sha256": "2c60a9b841f0b3004c9f11b134894f379f31c3862a33ce7c26abf7f29c132b7b",
+        "git_blob": "05c7111d83ce4efa1e4597ec0355a633da6e18d4"
+      }
+    ]
+  },
+  "limits": [
+    "No fresh Lean compilation.",
+    "Historical audit and CI receipts retain their original evidence classifications.",
+    "The numerical harness skipped its optional cache-dependent patch tests; exact patch application/reversal was separately executed as recorded above.",
+    "Affected-path local fixture is not a complete repository checkout.",
+    "This file records pre-publication validation; main-ref success is separately established by Git commit ancestry, remote readback, and the issue-61 completion notice."
+  ]
+}
