@@ -1,0 +1,47 @@
+name: Agent10 pinned local replay resources
+on:
+  push:
+    branches: ['p196/coordination']
+    paths: ['.github/workflows/agent10-local-replay-toolchain.yml']
+permissions:
+  contents: read
+jobs:
+  replay-resources:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Read the pinned source map
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout: proofs/coordination/patches/agent10-four-smoothing-boundary-20261016
+      - name: Verify official toolchain and unchanged dependency sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/agent10-offline"
+          mkdir -p "$out/sources"
+          curl --fail --location --retry 2 --max-time 180 --output "$out/lean.tar.zst" https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+          echo "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $out/lean.tar.zst" | sha256sum -c -
+          python3 - "$out" <<'PY'
+          import hashlib, importlib.util, json, pathlib, subprocess, sys
+          out=pathlib.Path(sys.argv[1])
+          path=pathlib.Path('proofs/coordination/patches/agent10-four-smoothing-boundary-20261016/check_bridge.py')
+          spec=importlib.util.spec_from_file_location('source_pins',path)
+          module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+          records={}
+          for name,(blob,digest) in module.PINS.items():
+              data=subprocess.run(['git','cat-file','blob',blob],capture_output=True,check=True).stdout
+              assert hashlib.sha256(data).hexdigest()==digest, name
+              (out/'sources'/(name+'.lean')).write_bytes(data)
+              records[name]={'git_blob':blob,'sha256':digest}
+          (out/'SOURCE_PINS.json').write_text(json.dumps(records,indent=2)+'\n')
+          PY
+      - name: Transfer reproducible infrastructure, not an accepted proof result
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent10-offline-lean419-${{ github.sha }}
+          path: ${{ runner.temp }}/agent10-offline/
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
