@@ -1,0 +1,778 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent1-periodic-zero-escape": {
+      "status": "PASS",
+      "scope": "For every original valid zero-period exact quotient state and every natural cap M, some interface width exceeds M by the original explicit escapeBound(initial width at exponent M+3,9*M). No safety, initial-cap, or positive-cap hypothesis. No palindrome or 196 conclusion.",
+      "sources": {
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "build_sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ActualWordBridge": {
+          "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+          "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "build_sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "imports": [
+            "PeriodObstructions"
+          ],
+          "adapter": null
+        },
+        "PrefixSemantics": {
+          "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+          "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "build_sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "imports": [
+            "ActualWordBridge"
+          ],
+          "adapter": null
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "build_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "IncomingCarry": {
+          "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+          "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "build_sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "Agent1RepeatedBlock": {
+          "path": "proofs/Agent1RepeatedBlock.lean",
+          "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "build_sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "imports": [
+            "PrefixSemantics",
+            "IncomingCarry"
+          ],
+          "adapter": null
+        },
+        "Agent1RepeatedBlockContext": {
+          "path": "proofs/Agent1RepeatedBlockContext.lean",
+          "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+          "build_sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+          "imports": [
+            "Agent1RepeatedBlock"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicDigits": {
+          "path": "proofs/Agent1PeriodicDigits.lean",
+          "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+          "build_sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+          "imports": [
+            "Agent1RepeatedBlockContext"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicSlices": {
+          "path": "proofs/Agent1PeriodicSlices.lean",
+          "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+          "build_sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+          "imports": [
+            "Agent1PeriodicDigits"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicGuard": {
+          "path": "proofs/Agent1PeriodicGuard.lean",
+          "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "build_sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "imports": [
+            "Agent1PeriodicSlices"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicGuardFacts": {
+          "path": "proofs/Agent1PeriodicGuardFacts.lean",
+          "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "build_sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicOuterStrip": {
+          "path": "proofs/Agent1PeriodicOuterStrip.lean",
+          "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+          "build_sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+          "imports": [
+            "Agent1PeriodicGuardFacts"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicCenterStrip": {
+          "path": "proofs/Agent1PeriodicCenterStrip.lean",
+          "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+          "build_sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicQuotient": {
+          "path": "proofs/Agent1PeriodicQuotient.lean",
+          "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+          "build_sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+          "imports": [
+            "Agent1PeriodicGuardFacts",
+            "Agent1PeriodicOuterStrip",
+            "Agent1PeriodicCenterStrip"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicParity": {
+          "path": "proofs/Agent1PeriodicParity.lean",
+          "sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+          "build_sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+          "imports": [
+            "Agent1PeriodicQuotient"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicPositivity": {
+          "path": "proofs/Agent1PeriodicPositivity.lean",
+          "sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+          "build_sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+          "imports": [
+            "Agent1PeriodicOuterStrip"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicValidity": {
+          "path": "proofs/Agent1PeriodicValidity.lean",
+          "sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+          "build_sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+          "imports": [
+            "Agent1PeriodicParity",
+            "Agent1PeriodicPositivity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicRealizability": {
+          "path": "proofs/Agent1PeriodicRealizability.lean",
+          "sha256": "cfa1fb0e7562976600e8f56e15d5ee9970979757eacb77c00c80df3de3625953",
+          "build_sha256": "cfa1fb0e7562976600e8f56e15d5ee9970979757eacb77c00c80df3de3625953",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroPeriod": {
+          "path": "proofs/Agent1PeriodicZeroPeriod.lean",
+          "sha256": "3761744f62cabdf25cf69f8e2990ce81eec9ac75cfb2273a5e80974304795a8a",
+          "build_sha256": "3761744f62cabdf25cf69f8e2990ce81eec9ac75cfb2273a5e80974304795a8a",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroNumeric": {
+          "path": "proofs/Agent1PeriodicZeroNumeric.lean",
+          "sha256": "8e561a621f18d783aa52ef0f2d6985b0a6cd0293b80fe4b174250665cee07b89",
+          "build_sha256": "8e561a621f18d783aa52ef0f2d6985b0a6cd0293b80fe4b174250665cee07b89",
+          "imports": [
+            "Agent1PeriodicZeroPeriod"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroMass": {
+          "path": "proofs/Agent1PeriodicZeroMass.lean",
+          "sha256": "1889a8d60b97de528550cd9944396cda15776049f080f402a50e6d9d36ce6e36",
+          "build_sha256": "1889a8d60b97de528550cd9944396cda15776049f080f402a50e6d9d36ce6e36",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroState": {
+          "path": "proofs/Agent1PeriodicZeroState.lean",
+          "sha256": "9e80cfe62a227bc6f7f5468549d2e5f6e9cbf22a3e927ee769c13eb573550aa1",
+          "build_sha256": "9e80cfe62a227bc6f7f5468549d2e5f6e9cbf22a3e927ee769c13eb573550aa1",
+          "imports": [
+            "Agent1PeriodicZeroPeriod"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroExponent": {
+          "path": "proofs/Agent1PeriodicZeroExponent.lean",
+          "sha256": "5b9156d0f31a5def3de5e559014cecba35bd80756d5ec45b1cf7a21f5a688adf",
+          "build_sha256": "5b9156d0f31a5def3de5e559014cecba35bd80756d5ec45b1cf7a21f5a688adf",
+          "imports": [
+            "Agent1PeriodicZeroState"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroPrefix": {
+          "path": "proofs/Agent1PeriodicZeroPrefix.lean",
+          "sha256": "c922e0268511b93865a2a047d8c59599ebaf3463d713f6ff90351230f4eda5cb",
+          "build_sha256": "c922e0268511b93865a2a047d8c59599ebaf3463d713f6ff90351230f4eda5cb",
+          "imports": [
+            "Agent1PeriodicZeroExponent"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroInterfaceMass": {
+          "path": "proofs/Agent1PeriodicZeroInterfaceMass.lean",
+          "sha256": "a8da314abda733d33e3b29e3f205e6db5d3e88fc635f78a6f9740997b30aa529",
+          "build_sha256": "a8da314abda733d33e3b29e3f205e6db5d3e88fc635f78a6f9740997b30aa529",
+          "imports": [
+            "Agent1PeriodicZeroMass"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroEscape": {
+          "path": "proofs/Agent1PeriodicZeroEscape.lean",
+          "sha256": "e1c9b9f90b5b2fddf3a4642b29030b1db7ab507d155a092facc713de5aaf0969",
+          "build_sha256": "e1c9b9f90b5b2fddf3a4642b29030b1db7ab507d155a092facc713de5aaf0969",
+          "imports": [
+            "Agent1PeriodicZeroPrefix",
+            "Agent1PeriodicZeroInterfaceMass",
+            "Agent1PeriodicZeroNumeric",
+            "Agent1PeriodicRealizability"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "PeriodObstructions",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PeriodObstructions.olean",
+            "PeriodObstructions.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.820904,
+          "log": "agent1-periodic-zero-escape/logs/PeriodObstructions.log",
+          "log_sha256": "d56d019704635693d25ddc1a86a6211515d44c28bb790edb543c46f49e0d74c4"
+        },
+        {
+          "label": "ActualWordBridge",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualWordBridge.olean",
+            "ActualWordBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.367077,
+          "log": "agent1-periodic-zero-escape/logs/ActualWordBridge.log",
+          "log_sha256": "dbc11776204bf37aa9f026b2fe50c5b0e08f9cd89939b0e21a03a95cb02850e8"
+        },
+        {
+          "label": "PrefixSemantics",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PrefixSemantics.olean",
+            "PrefixSemantics.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.915866,
+          "log": "agent1-periodic-zero-escape/logs/PrefixSemantics.log",
+          "log_sha256": "9815bf999eb3ce9e00a7ee038958b3bb5057951e9ebfb15310a37fc938ad25a6"
+        },
+        {
+          "label": "LychrelDigitSums",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "LychrelDigitSums.olean",
+            "LychrelDigitSums.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 42.239962,
+          "log": "agent1-periodic-zero-escape/logs/LychrelDigitSums.log",
+          "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+        },
+        {
+          "label": "IncomingCarry",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "IncomingCarry.olean",
+            "IncomingCarry.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.018709,
+          "log": "agent1-periodic-zero-escape/logs/IncomingCarry.log",
+          "log_sha256": "0c4c316858c7512fbea04178eeef8970b0ed2603d08fae346095b625ae41b88c"
+        },
+        {
+          "label": "Agent1RepeatedBlock",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1RepeatedBlock.olean",
+            "Agent1RepeatedBlock.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.314655,
+          "log": "agent1-periodic-zero-escape/logs/Agent1RepeatedBlock.log",
+          "log_sha256": "0958b628aa9dbcf920c45f114cd0eafe3f0ed2bcd5e1e8d8bfc2bb629a42b59c"
+        },
+        {
+          "label": "Agent1RepeatedBlockContext",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1RepeatedBlockContext.olean",
+            "Agent1RepeatedBlockContext.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.418436,
+          "log": "agent1-periodic-zero-escape/logs/Agent1RepeatedBlockContext.log",
+          "log_sha256": "2541037e758242dc7e7edbfce32ddfffe91089f84c5d6b8191b2dd077cbff090"
+        },
+        {
+          "label": "Agent1PeriodicDigits",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicDigits.olean",
+            "Agent1PeriodicDigits.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.414841,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicDigits.log",
+          "log_sha256": "8050bff82141fee354aeb2699dbb8c32877c42c7258ca32e6e05e2d1ea16753c"
+        },
+        {
+          "label": "Agent1PeriodicSlices",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicSlices.olean",
+            "Agent1PeriodicSlices.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.164312,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicSlices.log",
+          "log_sha256": "7f5d906cf00719694eca18f0802676ea49d66c69983809d1190ca379cd3ca284"
+        },
+        {
+          "label": "Agent1PeriodicGuard",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicGuard.olean",
+            "Agent1PeriodicGuard.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.866122,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicGuard.log",
+          "log_sha256": "843b5aa20530c06837b08ecbe3ccf12f82a970b3c7702cbda1577e6a7ab06cc5"
+        },
+        {
+          "label": "Agent1PeriodicGuardFacts",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicGuardFacts.olean",
+            "Agent1PeriodicGuardFacts.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.264333,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicGuardFacts.log",
+          "log_sha256": "eafc95ef99c5c4df42fdef784083b5a747937bc1a1790dc757c2ad5f02014509"
+        },
+        {
+          "label": "Agent1PeriodicOuterStrip",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicOuterStrip.olean",
+            "Agent1PeriodicOuterStrip.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.364513,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicOuterStrip.log",
+          "log_sha256": "565d6545bbeec40e2b47585cae3539daed028a41f7a5e0db1c71b79da53fb0d4"
+        },
+        {
+          "label": "Agent1PeriodicCenterStrip",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicCenterStrip.olean",
+            "Agent1PeriodicCenterStrip.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.615532,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicCenterStrip.log",
+          "log_sha256": "769e4bb3807f6a573ced1cffc06fe3714825f2dc54bdd1c5ce38dcc51fc3a132"
+        },
+        {
+          "label": "Agent1PeriodicQuotient",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicQuotient.olean",
+            "Agent1PeriodicQuotient.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.514943,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicQuotient.log",
+          "log_sha256": "8162634ab3deab19b5c651aa5cef54ee43b5780322301c3ab4bf2953baba582b"
+        },
+        {
+          "label": "Agent1PeriodicParity",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicParity.olean",
+            "Agent1PeriodicParity.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.414787,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicParity.log",
+          "log_sha256": "f1b8509ee15a950f45497452600b6f8bc7a4df209a774730a42e3a0762a38d71"
+        },
+        {
+          "label": "Agent1PeriodicPositivity",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicPositivity.olean",
+            "Agent1PeriodicPositivity.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.264223,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicPositivity.log",
+          "log_sha256": "b15541413ff9fd717ac540d0193b07f0f477aaad019bfcb1d46e7cd202aa5bfc"
+        },
+        {
+          "label": "Agent1PeriodicValidity",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicValidity.olean",
+            "Agent1PeriodicValidity.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.314556,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicValidity.log",
+          "log_sha256": "8403ca20661d55d2f08a738e3b17096aa8bce6da6f9fbb834a7551aeef5d3352"
+        },
+        {
+          "label": "Agent1PeriodicZeroPeriod",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroPeriod.olean",
+            "Agent1PeriodicZeroPeriod.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.314885,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroPeriod.log",
+          "log_sha256": "4292544eb311b62ae9a4be7c8194a4ef3a053ad5eb84952813c4c6872de3031f"
+        },
+        {
+          "label": "Agent1PeriodicZeroState",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroState.olean",
+            "Agent1PeriodicZeroState.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.415091,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroState.log",
+          "log_sha256": "9620de669c0e37feeaca888d247441a669c2bae52f361352a50f849806e4bd4b"
+        },
+        {
+          "label": "Agent1PeriodicZeroExponent",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroExponent.olean",
+            "Agent1PeriodicZeroExponent.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.465191,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroExponent.log",
+          "log_sha256": "7c22f0c44fe8762aeb64a05b431cd219fa79c4fabe90c8025fbb6d5e17ca3ade"
+        },
+        {
+          "label": "Agent1PeriodicZeroPrefix",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroPrefix.olean",
+            "Agent1PeriodicZeroPrefix.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.414938,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroPrefix.log",
+          "log_sha256": "01bb3486071b7efc25bc142fbe0fd09c4202956083e18a09a69e7506f39e390d"
+        },
+        {
+          "label": "Agent1PeriodicZeroMass",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroMass.olean",
+            "Agent1PeriodicZeroMass.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.364733,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroMass.log",
+          "log_sha256": "08becc456729e4bcbd8dea3063828e42465a77b1e4e80dec88d3760fb25c686e"
+        },
+        {
+          "label": "Agent1PeriodicZeroInterfaceMass",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroInterfaceMass.olean",
+            "Agent1PeriodicZeroInterfaceMass.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.264364,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroInterfaceMass.log",
+          "log_sha256": "a18bd51d7cb08aa69e0059a1c9a709d68da2ecf590d9e881ffe71f6171e92f3b"
+        },
+        {
+          "label": "Agent1PeriodicZeroNumeric",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroNumeric.olean",
+            "Agent1PeriodicZeroNumeric.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.568561,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroNumeric.log",
+          "log_sha256": "baed2194df7b8beb15c7dc9701148818ee419e0dd22901aa03056d274bed0cd8"
+        },
+        {
+          "label": "Agent1PeriodicRealizability",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicRealizability.olean",
+            "Agent1PeriodicRealizability.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.364697,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicRealizability.log",
+          "log_sha256": "a617cf8da193c2c41f4abcb3c57638310dfb910c96c8512cb43972318203e10f"
+        },
+        {
+          "label": "Agent1PeriodicZeroEscape",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroEscape.olean",
+            "Agent1PeriodicZeroEscape.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.364691,
+          "log": "agent1-periodic-zero-escape/logs/Agent1PeriodicZeroEscape.log",
+          "log_sha256": "e4b0ccc5a715a7d6fc66379e147d5371d3f0470eecb9d78741b91fbfe7da296a"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 18.013766,
+          "log": "agent1-periodic-zero-escape/logs/ProjectAudit.log",
+          "log_sha256": "97df9b77c35ba461e15e3cedfcf9875f0fbc1912764da95564c3df86694f2de5"
+        }
+      ],
+      "roots": [
+        "Agent1PeriodicZeroEscape"
+      ],
+      "build_order": [
+        "PeriodObstructions",
+        "ActualWordBridge",
+        "PrefixSemantics",
+        "LychrelDigitSums",
+        "IncomingCarry",
+        "Agent1RepeatedBlock",
+        "Agent1RepeatedBlockContext",
+        "Agent1PeriodicDigits",
+        "Agent1PeriodicSlices",
+        "Agent1PeriodicGuard",
+        "Agent1PeriodicGuardFacts",
+        "Agent1PeriodicOuterStrip",
+        "Agent1PeriodicCenterStrip",
+        "Agent1PeriodicQuotient",
+        "Agent1PeriodicParity",
+        "Agent1PeriodicPositivity",
+        "Agent1PeriodicValidity",
+        "Agent1PeriodicZeroPeriod",
+        "Agent1PeriodicZeroState",
+        "Agent1PeriodicZeroExponent",
+        "Agent1PeriodicZeroPrefix",
+        "Agent1PeriodicZeroMass",
+        "Agent1PeriodicZeroInterfaceMass",
+        "Agent1PeriodicZeroNumeric",
+        "Agent1PeriodicRealizability",
+        "Agent1PeriodicZeroEscape"
+      ],
+      "theorem_count": 1462,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent1.Periodic.zeroExponent_guarded_prefix",
+        "Agent1.Periodic.zeroLiftWord_step_prefix",
+        "Agent1.Periodic.zero_interface_mass_le",
+        "Agent1.Periodic.zero_period_digitSum_le_width",
+        "Agent1.Periodic.zeroLiftWord_actual_prefix",
+        "Agent1.Periodic.zeroStateOrbit_escape"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finishFuel._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.feed._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.repr'._at._private.LychrelDigitSums.0.OverflowNormalizationCertificate.reprState.\u00ab_@\u00bb.LychrelDigitSums._hyg.20379._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.next._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_1"
+        ],
+        [
+          "Agent1PeriodicZeroState",
+          "List.sum._at.Agent1.Periodic.zeroStateMeasure._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "OverflowCarryNormalization.iterPairs._elambda_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.initials._spec_3"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.next._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.feed._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.edge._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792190353.0066414,
+  "registry_sha256": "54cc0e278ae40252b15523e397f3446bfa2a9c1b37a16c053d9e4ff81473e728",
+  "source_commit": "6145e2aa53861bdf6c7a820dd8ee78da9abc014f",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped26-module contribution registry; repository-wide accepted catalogue is incomplete."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/p196-tools/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792190428.246017
+}
