@@ -1,0 +1,13 @@
+/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowProducts.lean:49:6: error: unsolved goals
+case neg
+α : Type
+b : Nat
+x : α
+xs : List α
+ih : windows (b + 1) xs = List.map (fun i => List.take (b + 1) (List.drop i xs)) (List.range (xs.length - b))
+h : ¬b ≤ xs.length
+hl : (x :: xs).length < b + 1
+hn : (x :: xs).length - b = 0
+⊢ xs.length + 1 - b = 0
+'Agent108.WindowWeights.windows_append_overlap' depends on axioms: [propext, Quot.sound]
+'Agent108.WindowWeights.windows_eq_range_map' depends on axioms: [propext, sorryAx, Quot.sound]
