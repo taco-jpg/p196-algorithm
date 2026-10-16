@@ -1,0 +1,135 @@
+{
+  "status": "COMPILE_AND_NEW_EXPORT_AXIOM_AUDIT_PASS",
+  "completed_at_utc": "2026-10-16T21:06:17.760994+00:00",
+  "executor": "Agent #10 formalization_scout specialist",
+  "scope": "Additive seven-transition nonoverflow count for every positive admissible width; no carry-history matching premise, no Lychrel claim.",
+  "source": "/workspace/scratch/4b20b8469eb3/agent10-count/Agent10SevenStepCount.lean",
+  "source_sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+  "source_git_blob": "29f192e8a2f5e9451c6cd83dcb3d36dddc38b03c",
+  "final_endpoint": "Agent10SevenStepCount.actual_seven_step_count_all_widths",
+  "final_statement": "(q : Nat -> Nat) (L : Nat) (ha : Admissible L q) : 3 <= CarryObservabilityActual.orbitCount q L 7",
+  "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "standalone_check": {
+    "exit_code": 0,
+    "argv": [
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false",
+      "-o",
+      "Agent10SevenStepCount.olean",
+      "Agent10SevenStepCount.lean"
+    ],
+    "cwd": "/workspace/scratch/4b20b8469eb3/agent10-count/standalone-check-001",
+    "LEAN_PATH": "/workspace/scratch/4b20b8469eb3/agent10-count/standalone-check-001",
+    "inputs_file": "/workspace/scratch/4b20b8469eb3/agent10-count/standalone-check-001/inputs.json",
+    "inputs_sha256": "d217718c5835fb5b74a7eabc5189513055ff6f6b2ee3fbe259a6348d962910c0",
+    "dependency_basis": "Exact source and olean copies from completed clean bridge initial-build; dependencies were reused for this new-module compatibility check.",
+    "upstream_build": "/workspace/scratch/4b20b8469eb3/agent10-bridge/initial-build/build.json",
+    "upstream_build_sha256": "571ab2cdf048c7afe9c52eda35ab6904454df9286c74e679dbdcd62299307c2d",
+    "log": "/workspace/scratch/4b20b8469eb3/agent10-count/standalone-check-001/Agent10SevenStepCount.log",
+    "log_sha256": "79a7dcff86f596f567199be155dd91b1d456f2771f3429b9a3ed45e64a3f7180",
+    "olean_sha256": "917de208d0bf38a2d72a30f4885eab9939c27607fb38a2bcf28376ec40ad36d4"
+  },
+  "development_adapter_build": {
+    "status": "COMPILE_PASS",
+    "record": "/workspace/scratch/4b20b8469eb3/agent10-count/build-001/build.json",
+    "record_sha256": "550f46a8c41e0ee764a43e2c8e3e5338423394b4fd5d555f5af264149191988f",
+    "modules": [
+      "LychrelDigitSums",
+      "Lychrel196Research",
+      "PrefixCarryBound",
+      "ActualCarryObservability",
+      "DifferenceObservability",
+      "Agent10SevenStepCount"
+    ],
+    "limitation": "Six-module clean development build uses retained LychrelDigitSums compatibility adapter; final standalone compatibility evidence is recorded separately."
+  },
+  "module_mapping": {
+    "Lychrel196Research": {
+      "requested": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+      "source": "/workspace/scratch/4b20b8469eb3/p196-algorithm/proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+      "sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+      "imports": [
+        "Std"
+      ]
+    },
+    "PrefixCarryBound": {
+      "requested": "proofs/PrefixCarryBound__487522879609bf3a.lean",
+      "source": "/workspace/scratch/4b20b8469eb3/p196-algorithm/proofs/PrefixCarryBound__487522879609bf3a.lean",
+      "sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+      "imports": [
+        "Std"
+      ]
+    },
+    "ActualCarryObservability": {
+      "requested": "proofs/ActualCarryObservability__bf560909b6b7d6c5.lean",
+      "source": "/workspace/scratch/4b20b8469eb3/p196-algorithm/proofs/ActualCarryObservability__bf560909b6b7d6c5.lean",
+      "sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+      "imports": [
+        "Lychrel196Research",
+        "PrefixCarryBound"
+      ]
+    },
+    "DifferenceObservability": {
+      "requested": "proofs/DifferenceObservability__dc8ff21a6bd34973.lean",
+      "source": "/workspace/scratch/4b20b8469eb3/p196-algorithm/proofs/DifferenceObservability__dc8ff21a6bd34973.lean",
+      "sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+      "imports": [
+        "ActualCarryObservability"
+      ]
+    },
+    "Agent10SevenStepCount": {
+      "source": "/workspace/scratch/4b20b8469eb3/agent10-count/Agent10SevenStepCount.lean",
+      "sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+      "imports": [
+        "DifferenceObservability"
+      ]
+    }
+  },
+  "new_export_count": 8,
+  "new_export_axioms": {
+    "Agent10SevenStepCount.rank_seven_minimum_fin": [],
+    "Agent10SevenStepCount.rank_seven_minimum": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent10SevenStepCount.seven_step_minimum": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent10SevenStepCount.seven_step_path_bound": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent10SevenStepCount.seven_step_trajectory_bound": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent10SevenStepCount.actual_seven_step_count": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent10SevenStepCount.singleton_seven_count": [],
+    "Agent10SevenStepCount.actual_seven_step_count_all_widths": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  "axiom_union": [
+    "Quot.sound",
+    "propext"
+  ],
+  "finite_kernel_certificates": [
+    "rank_seven_minimum_fin",
+    "singleton_seven_count"
+  ],
+  "failures": [],
+  "remote_mutations": false,
+  "git_commits": false,
+  "independent_semantic_review": false,
+  "limitations": [
+    "No source publication or main integration performed by this specialist.",
+    "The parent combined clean replay is a separate gate."
+  ]
+}

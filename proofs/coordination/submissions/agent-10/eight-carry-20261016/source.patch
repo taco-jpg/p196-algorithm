@@ -1,0 +1,680 @@
+diff --git a/proofs/Agent10EightCarry.lean b/proofs/Agent10EightCarry.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..54ece8d9b8e94bbac99942d4f9c25e3baa4934ee
+--- /dev/null
++++ b/proofs/Agent10EightCarry.lean
+@@ -0,0 +1,81 @@
++import Agent10SevenStepCount
++import Agent10SmoothingBridge
++
++/-!
++Agent #10: discharge the nonoverflow-count premise in eight-word reconstruction.
++
++The seven-step count is proved for all admissible widths in Agent10SevenStepCount.
++The imported smoothing bridge retains the original integer-sequence definitions.
++Eight full carry words suffice when the initial pair difference is bounded by five;
++in particular this bound follows from an initial nonoverflow addition.
++
++The numeric conclusion identifies the next ordinary reverse-and-add integer, not
++the original digit splitting. No universal eight-word bound or avoidance theorem
++is asserted here.
++-/
++
++set_option maxHeartbeats 10000000
++
++namespace Agent10EightCarry
++open DifferenceObservability CarryObservabilityActual
++open DecimalDigits FoldedDecimal OverflowCarryNormalization CarryHistory
++
++/-- The count hypothesis in the inherited small-difference theorem is discharged
++for every admissible positive width, including the singleton case. -/
++theorem eight_carry_words_determine_pair_sums_of_small_difference
++    (q r : Nat → Nat) (L : Nat)
++    (hq : Admissible L q) (hr : Admissible L r)
++    (hc : ∀ t, t < 8 → ∀ i, i ≤ (iterPairs q L t).1 →
++      carry (iterPairs q L t).2 i = carry (iterPairs r L t).2 i)
++    (hd : ∀ i, -5 ≤ cappedDiff q r L i ∧ cappedDiff q r L i ≤ 5) :
++    ∀ i, i < L → q i = r i := by
++  by_cases hN : 4 ≤ orbitCount q L 7
++  · apply iterPairs_endpoint_carry_history_injective q r L 7 hq hr
++    · intro t ht i hi
++      exact hc t (by omega) i hi
++    · exact hN
++  · have hlo := Agent10SevenStepCount.actual_seven_step_count_all_widths q L hq
++    have hn : orbitCount q L 7 = 3 := by omega
++    exact Agent10SmoothingBridge.eight_carries_small_difference q r L hq hr hc hn hd
++
++/-- Eight complete observations recover the initial pair sums whenever the first
++actual addition does not overflow. The nonoverflow count is not a premise. -/
++theorem eight_carry_words_determine_pair_sums_of_initial_nonoverflow
++    (q r : Nat → Nat) (L : Nat)
++    (hq : Admissible L q) (hr : Admissible L r)
++    (hc : ∀ t, t < 8 → ∀ i, i ≤ (iterPairs q L t).1 →
++      carry (iterPairs q L t).2 i = carry (iterPairs r L t).2 i)
++    (ho : carry q L = 0) :
++    ∀ i, i < L → q i = r i := by
++  apply eight_carry_words_determine_pair_sums_of_small_difference q r L hq hr hc
++  have hd := Agent10SmoothingBridge.initial_nonoverflow_difference_bound q r L hq hr
++    (fun t ht => hc t (by omega)) ho
++  intro i
++  have hdi := hd i
++  omega
++
++/-- Exact ordinary-decimal consequence at a shared canonical initial width. -/
++theorem eight_carry_words_determine_next_integer_of_initial_nonoverflow
++    (n m : Nat) (d e : Nat → Nat) (L : Nat)
++    (hn : Canonical n d L) (hm : Canonical m e L)
++    (hc : ∀ t, t < 8 → ∀ i, i ≤ (iterPairs (columnSum d L) L t).1 →
++      carry (iterPairs (columnSum d L) L t).2 i =
++        carry (iterPairs (columnSum e L) L t).2 i)
++    (ho : carry (columnSum d L) L = 0) :
++    Lychrel196.step n = Lychrel196.step m := by
++  have hq := NormalizationBridge.canonical_admissible n d L hn
++  have hr := NormalizationBridge.canonical_admissible m e L hm
++  have he := eight_carry_words_determine_pair_sums_of_initial_nonoverflow
++    (columnSum d L) (columnSum e L) L hq hr hc ho
++  calc
++    Lychrel196.step n = value (columnSum d L) L :=
++      step_eq_word_value n d (columnSum d L) L hn (by intro i hi; rfl)
++    _ = value (columnSum e L) L := value_congr _ _ L he
++    _ = Lychrel196.step m :=
++      (step_eq_word_value m e (columnSum e L) L hm (by intro i hi; rfl)).symm
++
++#print axioms eight_carry_words_determine_pair_sums_of_small_difference
++#print axioms eight_carry_words_determine_pair_sums_of_initial_nonoverflow
++#print axioms eight_carry_words_determine_next_integer_of_initial_nonoverflow
++
++end Agent10EightCarry
+diff --git a/proofs/Agent10EightCarry.registry.json b/proofs/Agent10EightCarry.registry.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..53a955374548d598fe169fe012806f1437619ecf
+--- /dev/null
++++ b/proofs/Agent10EightCarry.registry.json
+@@ -0,0 +1,131 @@
++{
++  "schema_version": 1,
++  "catalogue_complete": false,
++  "catalogue_blockers": [
++    "Scoped Agent #10 candidate registry; repository-wide completeness and external independent acceptance are not asserted."
++  ],
++  "toolchain": {
++    "version": "4.19.0",
++    "commit": "6caaee842e94",
++    "allowed_axioms": [
++      "propext",
++      "Classical.choice",
++      "Quot.sound"
++    ]
++  },
++  "projects": {
++    "agent10-eight-carry": {
++      "scope": "Every admissible width has at least three nonoverflows in seven actual transitions. Eight complete carry observations determine pair sums when the initial difference is bounded by five; initial nonoverflow implies this bound. Numeric consequence: equality of the next ordinary reverse-and-add integer at shared canonical initial width. Inherited sharp four-smoothing boundary is retained. No universal eight-word reconstruction, initial-integer injectivity, or palindrome-avoidance conclusion.",
++      "roots": [
++        "Agent10EightCarry"
++      ],
++      "modules": {
++        "Lychrel196Research": {
++          "path": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
++          "sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
++          "git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506",
++          "imports": [
++            "Std"
++          ]
++        },
++        "PrefixCarryBound": {
++          "path": "proofs/PrefixCarryBound__455b2da92054832d.lean",
++          "sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
++          "git_blob": "925f1954f5ab5857f602f679764d149eb67416b7",
++          "imports": [
++            "Std"
++          ]
++        },
++        "ActualCarryObservability": {
++          "path": "proofs/ActualCarryObservability__03355aec74748bfc.lean",
++          "sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
++          "git_blob": "8bfe81cb2e9e928609df8265d5d9a3605eaeed1e",
++          "imports": [
++            "Lychrel196Research",
++            "PrefixCarryBound"
++          ]
++        },
++        "DifferenceObservability": {
++          "path": "proofs/DifferenceObservability__302efefb5b9eab49.lean",
++          "sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
++          "git_blob": "d0727d391ee901ddaa782c218f493a23b8aadff3",
++          "imports": [
++            "ActualCarryObservability"
++          ]
++        },
++        "Agent10SmoothingBoundary": {
++          "path": "proofs/Agent10SmoothingBoundary.lean",
++          "sha256": "1bc8dcb2f189cc2c08490df5fd499a92b0a0c3d9ed911cb945fd38d73067fa28",
++          "git_blob": "3b45e67c0e36775b3ee073e85d6444e63b9ed277",
++          "imports": [
++            "Std"
++          ]
++        },
++        "Agent10SmoothingBridge": {
++          "path": "proofs/Agent10SmoothingBridge.lean",
++          "sha256": "65f03279fce8dc05e621b293427def6c13a8f851f59091a4837dbf5f5b42defb",
++          "git_blob": "ac0bbc986468aa7c3435ff242a43d8f400b356e5",
++          "imports": [
++            "DifferenceObservability",
++            "Agent10SmoothingBoundary"
++          ]
++        },
++        "Agent10SevenStepCount": {
++          "path": "proofs/Agent10SevenStepCount.lean",
++          "sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
++          "git_blob": "29f192e8a2f5e9451c6cd83dcb3d36dddc38b03c",
++          "imports": [
++            "DifferenceObservability"
++          ]
++        },
++        "Agent10EightCarry": {
++          "path": "proofs/Agent10EightCarry.lean",
++          "sha256": "ba15b5bcd651301e0356c420fc41881909c7a5ae87c4d1b859668a0b4fb05e3b",
++          "git_blob": "54ece8d9b8e94bbac99942d4f9c25e3baa4934ee",
++          "imports": [
++            "Agent10SevenStepCount",
++            "Agent10SmoothingBridge"
++          ]
++        }
++      }
++    }
++  },
++  "claims": [
++    {
++      "id": "A10-EIGHT-CARRY",
++      "project": "agent10-eight-carry",
++      "endpoints": [
++        "Agent10SmoothingBoundary.prefix_rigidity",
++        "Agent10SmoothingBoundary.four_rigidity_at_five",
++        "Agent10SmoothingBoundary.witness_zero_after",
++        "Agent10SmoothingBoundary.witness_symmetric",
++        "Agent10SmoothingBoundary.witness_bounds",
++        "Agent10SmoothingBoundary.four_witness_zero_after",
++        "Agent10SmoothingBoundary.four_witness_bounds",
++        "Agent10SmoothingBoundary.six_is_not_rigid",
++        "Agent10SmoothingBoundary.sharp_threshold",
++        "Agent10SmoothingBridge.four_eq_smoothPow",
++        "Agent10SmoothingBridge.smooth_four_rigidity_at_five",
++        "Agent10SmoothingBridge.smooth_four_symmetric_counterexample",
++        "Agent10SmoothingBridge.eight_carries_small_difference",
++        "Agent10SmoothingBridge.initial_nonoverflow_difference_bound",
++        "Agent10SmoothingBridge.eight_carries_initial_nonoverflow",
++        "Agent10SevenStepCount.rank_seven_minimum_fin",
++        "Agent10SevenStepCount.rank_seven_minimum",
++        "Agent10SevenStepCount.seven_step_minimum",
++        "Agent10SevenStepCount.seven_step_path_bound",
++        "Agent10SevenStepCount.seven_step_trajectory_bound",
++        "Agent10SevenStepCount.actual_seven_step_count",
++        "Agent10SevenStepCount.singleton_seven_count",
++        "Agent10SevenStepCount.actual_seven_step_count_all_widths",
++        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_small_difference",
++        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_initial_nonoverflow",
++        "Agent10EightCarry.eight_carry_words_determine_next_integer_of_initial_nonoverflow"
++      ]
++    }
++  ],
++  "source_baseline": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
++  "inherited_checkpoint_tree": "0be52bafd3478077b96ec1f8e702b2cf58dec8ba",
++  "global_accepted_registry_modified": false,
++  "proof_source_attribution": "Agent #10; new count proof developed by formalization_scout specialist, combined endpoints by parent, inherited bridge independently rebuilt by lean_runtime specialist; semantic scope reviewed by eight_carry_semantics specialist."
++}
+diff --git a/proofs/Agent10SevenStepCount.lean b/proofs/Agent10SevenStepCount.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..29f192e8a2f5e9451c6cd83dcb3d36dddc38b03c
+--- /dev/null
++++ b/proofs/Agent10SevenStepCount.lean
+@@ -0,0 +1,143 @@
++import DifferenceObservability
++
++/-!
++Agent #10: every seven actual decimal reverse-and-add transitions contain at
++least three nonoverflow transitions.  The two-column graph, its rank data,
++and its actual-word inclusion are imported unchanged from the accepted source.
++The finite checks below are kernel proofs; no new transition rule or oracle is
++introduced.  The final endpoint includes every positive admissible width.
++-/
++set_option maxRecDepth 100000
++set_option maxHeartbeats 0
++
++namespace Agent10SevenStepCount
++
++open DecimalDigits FoldedDecimal OverflowCarryNormalization CarryHistory
++open CarryObservabilityActual
++
++/-- The retained rank table already certifies three at horizon seven. -/
++theorem rank_seven_minimum_fin :
++    ∀ p : Fin 18, ∀ q : Fin 19,
++      3 ≤ CarryObservability.rank 7 (p.val + 1, q.val) := by
++  decide +kernel
++
++theorem rank_seven_minimum (s : CarryObservability.State)
++    (hs : CarryObservability.Valid s) :
++    3 ≤ CarryObservability.rank 7 s := by
++  rcases s with ⟨p, q⟩
++  rcases hs with ⟨hp, hp', hq⟩
++  have h := rank_seven_minimum_fin ⟨p - 1, by omega⟩ ⟨q, by omega⟩
++  have he : p - 1 + 1 = p := by omega
++  simpa only [he] using h
++
++/-- The minimum ranges over both choices of the inner carry at every step. -/
++theorem seven_step_minimum (s : CarryObservability.State)
++    (hs : CarryObservability.Valid s) :
++    3 ≤ CarryObservability.minCost 7 s := by
++  exact Nat.le_trans (rank_seven_minimum s hs)
++    (CarryObservability.rank_le_minCost 7 s (by decide) hs)
++
++theorem seven_step_path_bound (s : CarryObservability.State)
++    (hs : CarryObservability.Valid s) (vs : List Bool)
++    (hlen : vs.length = 7) :
++    3 ≤ CarryObservability.pathCost s vs := by
++  have h := CarryObservability.minCost_le_pathCost s vs
++  rw [hlen] at h
++  exact Nat.le_trans (seven_step_minimum s hs) h
++
++/-- Rank telescoping for any trajectory of the unchanged necessary graph. -/
++theorem seven_step_trajectory_bound
++    (states : Nat → CarryObservability.State) (bits : Nat → Bool)
++    (count : Nat → Nat)
++    (hstart : count 0 = 0)
++    (hvalid : ∀ t, t ≤ 7 → CarryObservability.Valid (states t))
++    (hnext : ∀ t, t < 7 →
++      states (t + 1) = CarryObservability.next (states t) (bits t))
++    (hcount : ∀ t, t < 7 →
++      count (t + 1) = count t + CarryObservability.cost (states t) (bits t)) :
++    3 ≤ count 7 := by
++  have hpot : ∀ t, t ≤ 7 →
++      3 ≤ count t + CarryObservability.rank (7 - t) (states t) := by
++    intro t
++    induction t with
++    | zero =>
++      intro _
++      simpa only [Nat.sub_zero, hstart, Nat.zero_add] using
++        rank_seven_minimum (states 0) (hvalid 0 (by decide))
++    | succ t ih =>
++      intro ht
++      have hh := ih (by omega)
++      have hs := CarryObservability.rank_step (6 - t) (states t)
++        (by omega) (hvalid t (by omega)) (bits t)
++      have ha : 6 - t + 1 = 7 - t := by omega
++      rw [ha, ←hnext t (by omega)] at hs
++      have hc := hcount t (by omega)
++      have hb : 7 - (t + 1) = 6 - t := by omega
++      rw [hb]
++      omega
++  have h := hpot 7 (by decide)
++  simpa [CarryObservability.rank] using h
++
++/-- Exact actual-word transport, including overlapping width-two/three cases. -/
++theorem actual_seven_step_count (q : Nat → Nat) (L : Nat)
++    (ha : Admissible L q) (hL : 2 ≤ L) :
++    3 ≤ orbitCount q L 7 := by
++  let states : Nat → CarryObservability.State := fun t =>
++    ((iterPairs q L t).2 0, (iterPairs q L t).2 1)
++  let bits : Nat → Bool := fun t =>
++    observedBit (iterPairs q L t).2 (iterPairs q L t).1
++  have hw : ∀ t, 2 ≤ (iterPairs q L t).1 := by
++    intro t
++    have h := iterPairs_width_ge_initial q L t
++    omega
++  apply seven_step_trajectory_bound states bits (orbitCount q L)
++  · rfl
++  · intro t _
++    exact prefix_valid _ _ (iterPairs_admissible q L t ha) (hw t)
++  · intro t _
++    exact prefix_step_exact _ _ (iterPairs_admissible q L t ha) (hw t)
++  · intro t _
++    change orbitCount q L t +
++        (if carry (iterPairs q L t).2 (iterPairs q L t).1 = 0 then 1 else 0) =
++      orbitCount q L t + CarryObservability.cost _ _
++    rw [cost_eq_nooverflow _ _ (iterPairs_admissible q L t ha) (hw t)]
++
++/-- The width-one case exhausts the 18 possible positive input coefficients. -/
++theorem singleton_seven_count :
++    ∀ a : Fin 18, 3 ≤ orbitCount (fun _ => a.val + 1) 1 7 := by
++  decide +kernel
++
++/-- All-width endpoint: no extra prefix, carry-pattern, or count premise. -/
++theorem actual_seven_step_count_all_widths (q : Nat → Nat) (L : Nat)
++    (ha : Admissible L q) :
++    3 ≤ orbitCount q L 7 := by
++  by_cases hL : 2 ≤ L
++  · exact actual_seven_step_count q L ha hL
++  · have hp := ha.1
++    have heL : L = 1 := by omega
++    subst L
++    have hq0 := ha.2.1
++    have hq0' := ha.2.2.1 0 (by decide)
++    have hidx : q 0 - 1 < 18 := by omega
++    have h := singleton_seven_count ⟨q 0 - 1, hidx⟩
++    change 3 ≤ orbitCount (fun _ => q 0 - 1 + 1) 1 7 at h
++    have heq : q 0 - 1 + 1 = q 0 := by omega
++    rw [heq] at h
++    have he : ∀ i, i < 1 → q i = (fun _ => q 0) i := by
++      intro i hi
++      have hz : i = 0 := by omega
++      subst i
++      rfl
++    rw [orbitCount_congr q (fun _ => q 0) 1 7 he]
++    exact h
++
++#print axioms rank_seven_minimum_fin
++#print axioms rank_seven_minimum
++#print axioms seven_step_minimum
++#print axioms seven_step_path_bound
++#print axioms seven_step_trajectory_bound
++#print axioms actual_seven_step_count
++#print axioms singleton_seven_count
++#print axioms actual_seven_step_count_all_widths
++
++end Agent10SevenStepCount
+diff --git a/proofs/Agent10SmoothingBoundary.lean b/proofs/Agent10SmoothingBoundary.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..3b45e67c0e36775b3ee073e85d6444e63b9ed277
+--- /dev/null
++++ b/proofs/Agent10SmoothingBoundary.lean
+@@ -0,0 +1,166 @@
++import Std
++
++/-!
++Agent #10, 2026-10-16. Sharp coefficient threshold for fourfold binomial
++smoothing of zero-extended integer sequences. This is a supporting algebraic
++result, not an assertion of actual eight-carry ambiguity or Lychrel existence.
++
++The intended connection is to DifferenceObservability.smoothPow 4. This module
++is self-contained: `four` spells out the coefficients of (1 + X)^4. The separate
++bridge file identifies it with the repository operator without changing either
++operator's boundary convention.
++-/
++set_option maxHeartbeats 10000000
++namespace Agent10SmoothingBoundary
++
++abbrev Series := Nat → Int
++
++def lag (f : Series) (k i : Nat) : Int :=
++  if k ≤ i then f (i - k) else 0
++
++def four (f : Series) (i : Nat) : Int :=
++  f i + 4 * lag f 1 i + 6 * lag f 2 i + 4 * lag f 3 i + lag f 4 i
++
++/-- Seven leading coefficient inequalities force the leading input to vanish.
++All arithmetic is linear over integers. No solver certificate is assumed. -/
++theorem prefix_rigidity
++    (a0 a1 a2 a3 a4 a5 a6 : Int)
++    (b1 : -5 ≤ a1 ∧ a1 ≤ 5)
++    (b2 : -5 ≤ a2 ∧ a2 ≤ 5)
++    (b3 : -5 ≤ a3 ∧ a3 ≤ 5)
++    (b4 : -5 ≤ a4 ∧ a4 ≤ 5)
++    (b5 : -5 ≤ a5 ∧ a5 ≤ 5)
++    (b6 : -5 ≤ a6 ∧ a6 ≤ 5)
++    (h0 : -1 ≤ a0 ∧ a0 ≤ 1)
++    (h1 : -1 ≤ a1 + 4*a0 ∧ a1 + 4*a0 ≤ 1)
++    (h2 : -1 ≤ a2 + 4*a1 + 6*a0 ∧ a2 + 4*a1 + 6*a0 ≤ 1)
++    (h3 : -1 ≤ a3 + 4*a2 + 6*a1 + 4*a0 ∧
++                a3 + 4*a2 + 6*a1 + 4*a0 ≤ 1)
++    (h4 : -1 ≤ a4 + 4*a3 + 6*a2 + 4*a1 + a0 ∧
++                a4 + 4*a3 + 6*a2 + 4*a1 + a0 ≤ 1)
++    (h5 : -1 ≤ a5 + 4*a4 + 6*a3 + 4*a2 + a1 ∧
++                a5 + 4*a4 + 6*a3 + 4*a2 + a1 ≤ 1)
++    (h6 : -1 ≤ a6 + 4*a5 + 6*a4 + 4*a3 + a2 ∧
++                a6 + 4*a5 + 6*a4 + 4*a3 + a2 ≤ 1) : a0 = 0 := by
++  omega
++
++private theorem lag_shift (f : Series) (m j k : Nat)
++    (hz : ∀ i, i < m → f i = 0) :
++    lag (fun i => f (m+i)) k j = lag f k (m+j) := by
++  unfold lag
++  by_cases h : k ≤ j
++  · have hh : k ≤ m+j := by omega
++    have he : m+j-k = m+(j-k) := by omega
++    simp [h, hh, he]
++  · by_cases hh : k ≤ m+j
++    · have he : m+j-k < m := by omega
++      simp [h, hh, hz _ he]
++    · simp [h, hh]
++
++private theorem four_shift (f : Series) (m j : Nat)
++    (hz : ∀ i, i < m → f i = 0) :
++    four (fun i => f (m+i)) j = four f (m+j) := by
++  simp only [four, lag_shift f m j 1 hz, lag_shift f m j 2 hz,
++    lag_shift f m j 3 hz, lag_shift f m j 4 hz]
++
++/-- Width-free and support-free rigidity, at the sharp integer coefficient
++bound five. The corresponding statement at bound six is false below. -/
++theorem four_rigidity_at_five (f : Series)
++    (hf : ∀ i, -5 ≤ f i ∧ f i ≤ 5)
++    (hg : ∀ i, -1 ≤ four f i ∧ four f i ≤ 1) :
++    ∀ i, f i = 0 := by
++  intro m
++  induction m using Nat.strongRecOn with
++  | ind m ih =>
++    have hs (j : Nat) : -1 ≤ four (fun i => f (m+i)) j ∧
++        four (fun i => f (m+i)) j ≤ 1 := by
++      rw [four_shift f m j ih]
++      exact hg (m+j)
++    have h0 := hs 0
++    have h1 := hs 1
++    have h2 := hs 2
++    have h3 := hs 3
++    have h4 := hs 4
++    have h5 := hs 5
++    have h6 := hs 6
++    simp [four, lag] at h0 h1 h2 h3 h4 h5 h6
++    exact prefix_rigidity (f m) (f (m+1)) (f (m+2)) (f (m+3))
++      (f (m+4)) (f (m+5)) (f (m+6))
++      (hf (m+1)) (hf (m+2)) (hf (m+3)) (hf (m+4))
++      (hf (m+5)) (hf (m+6)) h0 h1 h2 h3 h4 h5 h6
++
++/-- A palindromic, finitely supported witness. -/
++def witness : Series
++  | 0 => 1
++  | 1 => -3
++  | 2 => 5
++  | 3 => -6
++  | 4 => 6
++  | 5 => -6
++  | 6 => 6
++  | 7 => -6
++  | 8 => 5
++  | 9 => -3
++  | 10 => 1
++  | _ => 0
++
++theorem witness_zero_after (i : Nat) (hi : 11 ≤ i) : witness i = 0 := by
++  have he : i = (i-11)+11 := by omega
++  rw [he]
++  simp [witness]
++
++theorem witness_symmetric : ∀ i : Fin 11,
++    witness i.val = witness (10-i.val) := by decide
++
++theorem witness_bounds (i : Nat) : -6 ≤ witness i ∧ witness i ≤ 6 := by
++  have small : ∀ j : Fin 11, -6 ≤ witness j.val ∧ witness j.val ≤ 6 := by decide
++  by_cases h : i < 11
++  · exact small ⟨i,h⟩
++  · rw [witness_zero_after i (by omega)]
++    omega
++
++theorem four_witness_zero_after (i : Nat) (hi : 15 ≤ i) :
++    four witness i = 0 := by
++  have h1 : 1 ≤ i := by omega
++  have h2 : 2 ≤ i := by omega
++  have h3 : 3 ≤ i := by omega
++  have h4 : 4 ≤ i := by omega
++  simp only [four, lag, if_pos h1, if_pos h2, if_pos h3, if_pos h4]
++  rw [witness_zero_after i (by omega),
++    witness_zero_after (i-1) (by omega), witness_zero_after (i-2) (by omega),
++    witness_zero_after (i-3) (by omega), witness_zero_after (i-4) (by omega)]
++  decide
++
++theorem four_witness_bounds (i : Nat) :
++    -1 ≤ four witness i ∧ four witness i ≤ 1 := by
++  have small : ∀ j : Fin 15,
++      -1 ≤ four witness j.val ∧ four witness j.val ≤ 1 := by decide
++  by_cases h : i < 15
++  · exact small ⟨i,h⟩
++  · rw [four_witness_zero_after i (by omega)]
++    omega
++
++theorem six_is_not_rigid :
++    ∃ f : Series, (∀ i, -6 ≤ f i ∧ f i ≤ 6) ∧
++      (∀ i, -1 ≤ four f i ∧ four f i ≤ 1) ∧ f 0 ≠ 0 := by
++  exact ⟨witness, witness_bounds, four_witness_bounds, by decide⟩
++
++theorem sharp_threshold :
++    (∀ f : Series, (∀ i, -5 ≤ f i ∧ f i ≤ 5) →
++      (∀ i, -1 ≤ four f i ∧ four f i ≤ 1) → ∀ i, f i = 0) ∧
++    (∃ f : Series, (∀ i, -6 ≤ f i ∧ f i ≤ 6) ∧
++      (∀ i, -1 ≤ four f i ∧ four f i ≤ 1) ∧ f 0 ≠ 0) := by
++  exact ⟨four_rigidity_at_five, six_is_not_rigid⟩
++
++#print axioms lag_shift
++#print axioms four_shift
++#print axioms witness_zero_after
++#print axioms four_witness_zero_after
++#print axioms prefix_rigidity
++#print axioms four_rigidity_at_five
++#print axioms witness_symmetric
++#print axioms witness_bounds
++#print axioms four_witness_bounds
++#print axioms six_is_not_rigid
++#print axioms sharp_threshold
++end Agent10SmoothingBoundary
+diff --git a/proofs/Agent10SmoothingBridge.lean b/proofs/Agent10SmoothingBridge.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..ac0bbc986468aa7c3435ff242a43d8f400b356e5
+--- /dev/null
++++ b/proofs/Agent10SmoothingBridge.lean
+@@ -0,0 +1,129 @@
++import DifferenceObservability
++import Agent10SmoothingBoundary
++
++/-!
++Exact connection to the accepted repository operator. Original definitions and
++proofs are imported unchanged. The eight-word result below has explicit extra
++hypotheses; it is not a universal improvement of nine-word reconstruction.
++-/
++set_option maxHeartbeats 10000000
++namespace Agent10SmoothingBridge
++open DifferenceObservability CarryObservabilityActual
++open DecimalDigits FoldedDecimal OverflowCarryNormalization CarryHistory
++
++/-- No zero-extension convention is changed by the explicit binomial formula. -/
++theorem four_eq_smoothPow (f : Series) (i : Nat) :
++    Agent10SmoothingBoundary.four f i = smoothPow 4 f i := by
++  by_cases h0 : i = 0
++  · subst i; simp [Agent10SmoothingBoundary.four, Agent10SmoothingBoundary.lag,
++      smoothPow, smooth]
++  by_cases h1 : i = 1
++  · subst i; simp [Agent10SmoothingBoundary.four, Agent10SmoothingBoundary.lag,
++      smoothPow, smooth]; omega
++  by_cases h2 : i = 2
++  · subst i; simp [Agent10SmoothingBoundary.four, Agent10SmoothingBoundary.lag,
++      smoothPow, smooth]; omega
++  by_cases h3 : i = 3
++  · subst i; simp [Agent10SmoothingBoundary.four, Agent10SmoothingBoundary.lag,
++      smoothPow, smooth]; omega
++  have hi : 4 ≤ i := by omega
++  have hi1 : i - 1 ≠ 0 := by omega
++  have hi2 : i - 2 ≠ 0 := by omega
++  have hi3 : i - 3 ≠ 0 := by omega
++  have le1 : 1 ≤ i := by omega
++  have le2 : 2 ≤ i := by omega
++  have le3 : 3 ≤ i := by omega
++  simp [Agent10SmoothingBoundary.four, Agent10SmoothingBoundary.lag,
++    smoothPow, smooth, h0, hi1, hi2, hi3, le1, le2, le3, hi, Nat.sub_sub]
++  omega
++
++theorem smooth_four_rigidity_at_five (f : Series)
++    (hf : ∀ i, -5 ≤ f i ∧ f i ≤ 5)
++    (hg : ∀ i, -1 ≤ smoothPow 4 f i ∧ smoothPow 4 f i ≤ 1) :
++    ∀ i, f i = 0 := by
++  apply Agent10SmoothingBoundary.four_rigidity_at_five f hf
++  intro i
++  rw [four_eq_smoothPow]
++  exact hg i
++
++theorem smooth_four_symmetric_counterexample :
++    ∃ f : Series, (∀ i, -6 ≤ f i ∧ f i ≤ 6) ∧
++      (∀ i, -1 ≤ smoothPow 4 f i ∧ smoothPow 4 f i ≤ 1) ∧
++      (∀ i, 11 ≤ i → f i = 0) ∧
++      (∀ i : Fin 11, f i.val = f (10-i.val)) ∧ f 0 ≠ 0 := by
++  refine ⟨Agent10SmoothingBoundary.witness,
++    Agent10SmoothingBoundary.witness_bounds, ?_,
++    Agent10SmoothingBoundary.witness_zero_after,
++    Agent10SmoothingBoundary.witness_symmetric, by decide⟩
++  intro i
++  rw [←four_eq_smoothPow]
++  exact Agent10SmoothingBoundary.four_witness_bounds i
++
++/-- A concrete conditional improvement: the three-nonoverflow case closes
++when the initial capped pair difference lies in [-5,5]. -/
++theorem eight_carries_small_difference (q r : Nat → Nat) (L : Nat)
++    (hq : Admissible L q) (hr : Admissible L r)
++    (hc : ∀ t, t < 8 → ∀ i, i ≤ (iterPairs q L t).1 →
++      carry (iterPairs q L t).2 i = carry (iterPairs r L t).2 i)
++    (hn : orbitCount q L 7 = 3)
++    (hd : ∀ i, -5 ≤ cappedDiff q r L i ∧ cappedDiff q r L i ≤ 5) :
++    ∀ i, i < L → q i = r i := by
++  have hf := matched_difference_formula q r L 7 hq hr
++    (fun t ht => hc t (by omega))
++  have hb := cappedDiff_bounds (iterPairs q L 7).2 (iterPairs r L 7).2
++    (iterPairs q L 7).1 (hc 7 (by decide))
++  have hg : ∀ i, -1 ≤ smoothPow 4 (cappedDiff q r L) i ∧
++      smoothPow 4 (cappedDiff q r L) i ≤ 1 := by
++    intro i
++    have hfi := hf i
++    simp only [hn] at hfi
++    change _ = 8 * smoothPow 4 (cappedDiff q r L) i at hfi
++    have hbi := hb i
++    omega
++  have hz := smooth_four_rigidity_at_five (cappedDiff q r L) hd hg
++  intro i hi
++  have h := hz i
++  simp only [cappedDiff, if_pos hi] at h
++  omega
++
++/-- The small-difference premise can itself be proved from an initial
++nonoverflow transition and two matching full carry words. -/
++theorem initial_nonoverflow_difference_bound (q r : Nat → Nat) (L : Nat)
++    (hq : Admissible L q) (hr : Admissible L r)
++    (hc : ∀ t, t < 2 → ∀ i, i ≤ (iterPairs q L t).1 →
++      carry (iterPairs q L t).2 i = carry (iterPairs r L t).2 i)
++    (ho : carry q L = 0) :
++    ∀ i, -4 ≤ cappedDiff q r L i ∧ cappedDiff q r L i ≤ 4 := by
++  have hf := matched_difference_formula q r L 1 hq hr
++    (fun t ht => hc t (by omega))
++  have hb := cappedDiff_bounds (iterPairs q L 1).2 (iterPairs r L 1).2
++    (iterPairs q L 1).1 (hc 1 (by decide))
++  have hn : orbitCount q L 1 = 1 := by
++    simp [orbitCount, noOverflowCount, iterPairs, ho]
++  intro i
++  have hfi := hf i
++  simp [hn, smoothPow] at hfi
++  have hbi := hb i
++  omega
++
++theorem eight_carries_initial_nonoverflow (q r : Nat → Nat) (L : Nat)
++    (hq : Admissible L q) (hr : Admissible L r)
++    (hc : ∀ t, t < 8 → ∀ i, i ≤ (iterPairs q L t).1 →
++      carry (iterPairs q L t).2 i = carry (iterPairs r L t).2 i)
++    (hn : orbitCount q L 7 = 3)
++    (ho : carry q L = 0) :
++    ∀ i, i < L → q i = r i := by
++  apply eight_carries_small_difference q r L hq hr hc hn
++  have h := initial_nonoverflow_difference_bound q r L hq hr
++    (fun t ht => hc t (by omega)) ho
++  intro i
++  have hi := h i
++  omega
++
++#print axioms four_eq_smoothPow
++#print axioms smooth_four_rigidity_at_five
++#print axioms smooth_four_symmetric_counterexample
++#print axioms eight_carries_small_difference
++#print axioms initial_nonoverflow_difference_bound
++#print axioms eight_carries_initial_nonoverflow
++end Agent10SmoothingBridge
