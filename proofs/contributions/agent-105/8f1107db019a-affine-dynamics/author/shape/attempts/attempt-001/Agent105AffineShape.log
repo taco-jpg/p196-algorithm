@@ -1,0 +1,24 @@
+Agent105AffineShape.lean:30:4: error: dsimp made no progress
+Agent105AffineShape.lean:52:17: error: unsolved goals
+case cons
+r : RunSpec
+rs : List RunSpec
+ih : widthIntercept rs = (List.map (fun r => r.length.positivePart.intercept) rs).sum
+⊢ r.length.positivePart.intercept + (List.map (fun r => r.length.positivePart.intercept) rs).sum =
+    r.length.positivePart.intercept +
+      List.foldr (fun x1 x2 => x1 + x2) 0 (List.map (fun r => r.length.positivePart.intercept) rs)
+'Agent105.AffineShape.positivePart_slope_nonneg' depends on axioms: [propext, sorryAx]
+'Agent105.AffineShape.widthAffine_slope' depends on axioms: [propext, sorryAx]
+'Agent105.AffineShape.widthAffine_slope_nonneg' depends on axioms: [propext, sorryAx]
+'Agent105.AffineShape.widthIntercept_eq_sum' depends on axioms: [sorryAx]
+'Agent105.AffineShape.wordAt_length_affine' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent105.AffineShape.wordAt_length_eventually' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent105.AffineShape.wordAt_length_shift' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent105.AffineShape.wordAt_length_shift_eventually' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Agent105.AffineShape.wordAt_headOption_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent105.AffineShape.wordAt_headD_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent105.AffineShape.wordAt_head_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent105.AffineShape.wordAt_head_width_eventually' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

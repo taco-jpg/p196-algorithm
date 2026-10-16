@@ -1,0 +1,38 @@
+ReviewScope.lean:20:27: warning: `List.length_eq_zero` has been deprecated: use `List.length_eq_zero_iff` instead
+Agent105.ReturnTimeBound.orbit_width_potential_bound (w : Agent8.Word) (t : Nat) (hw : Agent8.CanonicalPair w) :
+  ↑t + Agent8.lowerPotential (List.headD (Agent8.orbit w t) 0) + 4 * ↑(List.length w) ≤
+    Agent8.lowerPotential (List.headD w 0) + 4 * ↑(List.length (Agent8.orbit w t))
+Agent105.ReturnTimeBound.return_width_potential_bound (w v : Agent8.Word) (t : Nat) (hw : Agent8.CanonicalPair w)
+  (hreturn : Agent8.orbit w t = v) :
+  ↑t + Agent8.lowerPotential (List.headD v 0) + 4 * ↑(List.length w) ≤
+    Agent8.lowerPotential (List.headD w 0) + 4 * ↑(List.length v)
+Agent105.ReturnTimeBound.return_time_bounds_of_width_gain (w v : Agent8.Word) (t gain : Nat)
+  (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v) (hhead : List.headD v 0 = List.headD w 0)
+  (hwidth : List.length v = List.length w + gain) : 2 * gain ≤ t ∧ t ≤ 4 * gain
+Agent105.ReturnTimeBound.positive_return_time_bound_of_width_gain (w v : Agent8.Word) (t gain : Nat)
+  (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v) (hhead : List.headD v 0 = List.headD w 0)
+  (hwidth : List.length v = List.length w + gain) (ht : 0 < t) : 1 ≤ t ∧ t ≤ 4 * gain
+Agent105.ReturnTimeBound.return_time_bound_with_offset (w v : Agent8.Word) (t gain sourceOffset targetOffset : Nat)
+  (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v)
+  (hwidth : List.length v + sourceOffset ≤ List.length w + gain + targetOffset) :
+  ↑t + 4 * ↑sourceOffset + Agent8.lowerPotential (List.headD v 0) ≤
+    4 * ↑gain + 4 * ↑targetOffset + Agent8.lowerPotential (List.headD w 0)
+Agent105.ReturnTimeBound.same_head_return_time_bound_with_offset (w v : Agent8.Word)
+  (t gain sourceOffset targetOffset : Nat) (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v)
+  (hhead : List.headD v 0 = List.headD w 0)
+  (hwidth : List.length v + sourceOffset ≤ List.length w + gain + targetOffset) :
+  t + 4 * sourceOffset ≤ 4 * gain + 4 * targetOffset
+Agent105.ReturnTimeBound.word_family_return_time_bound (Q : Nat → Agent8.Word) (k s A t : Nat) (hA : 0 < A) (hs : 0 < s)
+  (ht : 0 < t) (hcanonical : Agent8.CanonicalPair (Q k)) (hreturn : Agent8.orbit (Q k) t = Q (k + s))
+  (hhead : List.headD (Q (k + s)) 0 = List.headD (Q k) 0)
+  (hwidth : List.length (Q (k + s)) = List.length (Q k) + A * s) : 0 < 4 * A * s ∧ 1 ≤ t ∧ t ≤ 4 * A * s
+Agent105.ReturnTimeBound.affine_endpoint_return_time_bound (Q : Nat → Agent8.Word) (k s A B t : Nat) (hA : 0 < A)
+  (hs : 0 < s) (ht : 0 < t) (hcanonical : Agent8.CanonicalPair (Q k)) (hreturn : Agent8.orbit (Q k) t = Q (k + s))
+  (hhead : List.headD (Q (k + s)) 0 = List.headD (Q k) 0) (hsource : List.length (Q k) = A * k + B)
+  (htarget : List.length (Q (k + s)) = A * (k + s) + B) : 0 < 4 * A * s ∧ 1 ≤ t ∧ t ≤ 4 * A * s
+Agent105.ReturnTimeBound.affine_endpoint_return_time_bound_with_offset (Q : Nat → Agent8.Word)
+  (k s A sourceOffset targetOffset t : Nat) (hA : 0 < A) (hs : 0 < s) (ht : 0 < t)
+  (hcanonical : Agent8.CanonicalPair (Q k)) (hreturn : Agent8.orbit (Q k) t = Q (k + s))
+  (hhead : List.headD (Q (k + s)) 0 = List.headD (Q k) 0) (hsource : List.length (Q k) = A * k + sourceOffset)
+  (htarget : List.length (Q (k + s)) = A * (k + s) + targetOffset) :
+  0 < 4 * A * s ∧ 1 ≤ t ∧ t + 4 * sourceOffset ≤ 4 * A * s + 4 * targetOffset

@@ -1,0 +1,773 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent105-uniform-safe-return": {
+      "status": "PASS",
+      "scope": "Actual Agent8 list dynamics: eventual positive safe-return existence on a fixed finite signed-affine run family of symbols at most 18, with positive width slope and positive parameter shift and eventual original CanonicalPair, implies one common positive safe-return time at most 4*widthSlope*s on an entire parameter tail. Actual affine closure, equality/safety stability, eventual head/width and the finite time bound are proved. The registry does not assert return existence for a particular integer or ordinary-integer realization of every CanonicalPair.",
+      "sources": {
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "build_sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ActualWordBridge": {
+          "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+          "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "build_sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "imports": [
+            "PeriodObstructions"
+          ],
+          "adapter": null
+        },
+        "PrefixSemantics": {
+          "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+          "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "build_sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "imports": [
+            "ActualWordBridge"
+          ],
+          "adapter": null
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "build_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "IncomingCarry": {
+          "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+          "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "build_sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "Agent1RepeatedBlock": {
+          "path": "proofs/contributions/agent-105/8f1107db019a-affine-dynamics/author/normalize/refs/Agent1RepeatedBlock.lean",
+          "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "build_sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "imports": [
+            "PrefixSemantics",
+            "IncomingCarry"
+          ],
+          "adapter": null
+        },
+        "Agent102RunDefs": {
+          "path": "proofs/Agent102RunDefs.lean",
+          "sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "build_sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Agent105AffineBasics": {
+          "path": "proofs/Agent105AffineBasics.lean",
+          "sha256": "cc4e630313694e8b75b2a37f695b09f428e2f911ed49dd99df8fc22c9af15cc5",
+          "build_sha256": "cc4e630313694e8b75b2a37f695b09f428e2f911ed49dd99df8fc22c9af15cc5",
+          "imports": [
+            "Agent102RunDefs",
+            "ActualWordBridge"
+          ],
+          "adapter": null
+        },
+        "Agent102AffineArithmetic": {
+          "path": "proofs/Agent102AffineArithmetic.lean",
+          "sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+          "build_sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+          "imports": [
+            "Agent102RunDefs"
+          ],
+          "adapter": null
+        },
+        "Agent105AffineNormalize": {
+          "path": "proofs/Agent105AffineNormalize.lean",
+          "sha256": "c2605568740b442bbe2494181a8a44f963d177ef1465d75a7b056badf9c1e33c",
+          "build_sha256": "c2605568740b442bbe2494181a8a44f963d177ef1465d75a7b056badf9c1e33c",
+          "imports": [
+            "Agent1RepeatedBlock",
+            "Agent102RunDefs",
+            "Agent102AffineArithmetic",
+            "Agent105AffineBasics"
+          ],
+          "adapter": null
+        },
+        "Agent102RunEndpoints": {
+          "path": "proofs/Agent102RunEndpoints.lean",
+          "sha256": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+          "build_sha256": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+          "imports": [
+            "Agent102AffineArithmetic"
+          ],
+          "adapter": null
+        },
+        "Agent105TailSelection": {
+          "path": "proofs/Agent105TailSelection.lean",
+          "sha256": "6357e5bc0cb38368949f376a7e6b907dfac87ec3c93ab7b8d2114e3f75e007a6",
+          "build_sha256": "6357e5bc0cb38368949f376a7e6b907dfac87ec3c93ab7b8d2114e3f75e007a6",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Agent105ReturnTimeBound": {
+          "path": "proofs/Agent105ReturnTimeBound.lean",
+          "sha256": "93384ce0e3a2443ca37fbb2c510ce927f0f2334509b6430d7b91ff252d0d57f7",
+          "build_sha256": "93384ce0e3a2443ca37fbb2c510ce927f0f2334509b6430d7b91ff252d0d57f7",
+          "imports": [
+            "ActualWordBridge"
+          ],
+          "adapter": null
+        },
+        "Agent102RunWord": {
+          "path": "proofs/Agent102RunWord.lean",
+          "sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+          "build_sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+          "imports": [
+            "Agent102RunDefs"
+          ],
+          "adapter": null
+        },
+        "Agent102AffineRuns": {
+          "path": "proofs/Agent102AffineRuns.lean",
+          "sha256": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4",
+          "build_sha256": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4",
+          "imports": [
+            "Agent102RunEndpoints",
+            "Agent102RunWord"
+          ],
+          "adapter": null
+        },
+        "Agent105AffineZip": {
+          "path": "proofs/Agent105AffineZip.lean",
+          "sha256": "a84de11022956ed05f7937a8e5858925c30d5f60459dc1a98b7b18df0ab12b20",
+          "build_sha256": "a84de11022956ed05f7937a8e5858925c30d5f60459dc1a98b7b18df0ab12b20",
+          "imports": [
+            "Agent105AffineBasics",
+            "Agent102AffineArithmetic"
+          ],
+          "adapter": null
+        },
+        "Agent105AffineOrbit": {
+          "path": "proofs/Agent105AffineOrbit.lean",
+          "sha256": "9a868ac42de6a6b63659d50b170299a775b68f71b39ed5a75717984035255960",
+          "build_sha256": "9a868ac42de6a6b63659d50b170299a775b68f71b39ed5a75717984035255960",
+          "imports": [
+            "Agent105AffineBasics",
+            "Agent105AffineNormalize",
+            "Agent105AffineZip"
+          ],
+          "adapter": null
+        },
+        "Agent105AffineShape": {
+          "path": "proofs/Agent105AffineShape.lean",
+          "sha256": "979c493bdb2ff26d8f88e50a440c906948a5dbf66f7ae53c800793447cd13a16",
+          "build_sha256": "979c493bdb2ff26d8f88e50a440c906948a5dbf66f7ae53c800793447cd13a16",
+          "imports": [
+            "Agent105AffineNormalize",
+            "Agent102RunEndpoints"
+          ],
+          "adapter": null
+        },
+        "Agent105AffineStability": {
+          "path": "proofs/Agent105AffineStability.lean",
+          "sha256": "e332ae2c6b281cab3cc03b0376eccfb68a665d6ff6a72e3a08ecd5eb5eba012e",
+          "build_sha256": "e332ae2c6b281cab3cc03b0376eccfb68a665d6ff6a72e3a08ecd5eb5eba012e",
+          "imports": [
+            "Agent102AffineRuns",
+            "Agent105AffineBasics",
+            "Agent105TailSelection"
+          ],
+          "adapter": null
+        },
+        "Agent105UniformReturn": {
+          "path": "proofs/Agent105UniformReturn.lean",
+          "sha256": "fba98eb095ca439835e82a90315254090ed03935c3d17d9e6ae8ebe5bb7b7fa7",
+          "build_sha256": "fba98eb095ca439835e82a90315254090ed03935c3d17d9e6ae8ebe5bb7b7fa7",
+          "imports": [
+            "Agent105AffineOrbit",
+            "Agent105AffineShape",
+            "Agent105AffineStability",
+            "Agent105ReturnTimeBound"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "Agent102RunDefs",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102RunDefs.olean",
+            "Agent102RunDefs.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.465279,
+          "log": "agent105-uniform-safe-return/logs/Agent102RunDefs.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "PeriodObstructions",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PeriodObstructions.olean",
+            "PeriodObstructions.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 4.777549,
+          "log": "agent105-uniform-safe-return/logs/PeriodObstructions.log",
+          "log_sha256": "d56d019704635693d25ddc1a86a6211515d44c28bb790edb543c46f49e0d74c4"
+        },
+        {
+          "label": "ActualWordBridge",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualWordBridge.olean",
+            "ActualWordBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.470456,
+          "log": "agent105-uniform-safe-return/logs/ActualWordBridge.log",
+          "log_sha256": "dbc11776204bf37aa9f026b2fe50c5b0e08f9cd89939b0e21a03a95cb02850e8"
+        },
+        {
+          "label": "Agent105AffineBasics",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105AffineBasics.olean",
+            "Agent105AffineBasics.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.315098,
+          "log": "agent105-uniform-safe-return/logs/Agent105AffineBasics.log",
+          "log_sha256": "9bea7a64efe8151b2c60bcbdbd3bfb94bcdce215305f275e0dbf48bd62a07510"
+        },
+        {
+          "label": "PrefixSemantics",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PrefixSemantics.olean",
+            "PrefixSemantics.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.875582,
+          "log": "agent105-uniform-safe-return/logs/PrefixSemantics.log",
+          "log_sha256": "9815bf999eb3ce9e00a7ee038958b3bb5057951e9ebfb15310a37fc938ad25a6"
+        },
+        {
+          "label": "LychrelDigitSums",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "LychrelDigitSums.olean",
+            "LychrelDigitSums.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 77.196923,
+          "log": "agent105-uniform-safe-return/logs/LychrelDigitSums.log",
+          "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+        },
+        {
+          "label": "IncomingCarry",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "IncomingCarry.olean",
+            "IncomingCarry.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.722527,
+          "log": "agent105-uniform-safe-return/logs/IncomingCarry.log",
+          "log_sha256": "0c4c316858c7512fbea04178eeef8970b0ed2603d08fae346095b625ae41b88c"
+        },
+        {
+          "label": "Agent1RepeatedBlock",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1RepeatedBlock.olean",
+            "Agent1RepeatedBlock.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.518397,
+          "log": "agent105-uniform-safe-return/logs/Agent1RepeatedBlock.log",
+          "log_sha256": "0958b628aa9dbcf920c45f114cd0eafe3f0ed2bcd5e1e8d8bfc2bb629a42b59c"
+        },
+        {
+          "label": "Agent102AffineArithmetic",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102AffineArithmetic.olean",
+            "Agent102AffineArithmetic.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.967627,
+          "log": "agent105-uniform-safe-return/logs/Agent102AffineArithmetic.log",
+          "log_sha256": "e2447af942b7970c10d091d54f40bfaf50d7c4b7892a2ee74bdbc9551d66c9fd"
+        },
+        {
+          "label": "Agent105AffineNormalize",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105AffineNormalize.olean",
+            "Agent105AffineNormalize.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.167401,
+          "log": "agent105-uniform-safe-return/logs/Agent105AffineNormalize.log",
+          "log_sha256": "03e1e0c2cc5a9ea0d3cd105141afcbf3ac9d57f47d21d575bc15af06bb4b7e02"
+        },
+        {
+          "label": "Agent105AffineZip",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105AffineZip.olean",
+            "Agent105AffineZip.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.418713,
+          "log": "agent105-uniform-safe-return/logs/Agent105AffineZip.log",
+          "log_sha256": "206a5cdc1a036ec0ad4ff1f229b391a1a974af1af8126505d4a6ce340b1c2bc1"
+        },
+        {
+          "label": "Agent105AffineOrbit",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105AffineOrbit.olean",
+            "Agent105AffineOrbit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.919725,
+          "log": "agent105-uniform-safe-return/logs/Agent105AffineOrbit.log",
+          "log_sha256": "f3ac075aa6f175e8c7cf22b8a6ebcf8a52fd7b14b89f350f302b89d780fc5879"
+        },
+        {
+          "label": "Agent102RunEndpoints",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102RunEndpoints.olean",
+            "Agent102RunEndpoints.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.716712,
+          "log": "agent105-uniform-safe-return/logs/Agent102RunEndpoints.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent105AffineShape",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105AffineShape.olean",
+            "Agent105AffineShape.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.868358,
+          "log": "agent105-uniform-safe-return/logs/Agent105AffineShape.log",
+          "log_sha256": "ee9758ae50f4782322bdd2fb7f054807b4bb74163da0ad4f3402df38114c8d86"
+        },
+        {
+          "label": "Agent102RunWord",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102RunWord.olean",
+            "Agent102RunWord.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.220335,
+          "log": "agent105-uniform-safe-return/logs/Agent102RunWord.log",
+          "log_sha256": "1157e212ffff300d3775fb0cd087ea0d0d0b81e318d5697b6316a542a02132b1"
+        },
+        {
+          "label": "Agent102AffineRuns",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102AffineRuns.olean",
+            "Agent102AffineRuns.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.767808,
+          "log": "agent105-uniform-safe-return/logs/Agent102AffineRuns.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent105TailSelection",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105TailSelection.olean",
+            "Agent105TailSelection.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.516289,
+          "log": "agent105-uniform-safe-return/logs/Agent105TailSelection.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent105AffineStability",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105AffineStability.olean",
+            "Agent105AffineStability.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.415023,
+          "log": "agent105-uniform-safe-return/logs/Agent105AffineStability.log",
+          "log_sha256": "2f09acfe624e12798ab6079a5036f7b2123f707f6338eb9bd405b04f5432e516"
+        },
+        {
+          "label": "Agent105ReturnTimeBound",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105ReturnTimeBound.olean",
+            "Agent105ReturnTimeBound.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.019237,
+          "log": "agent105-uniform-safe-return/logs/Agent105ReturnTimeBound.log",
+          "log_sha256": "c5c23921b5f4d4fc715c22ce64e8eb26de9f2b1b81a1febff5891cf5713c6d10"
+        },
+        {
+          "label": "Agent105UniformReturn",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105UniformReturn.olean",
+            "Agent105UniformReturn.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.515639,
+          "log": "agent105-uniform-safe-return/logs/Agent105UniformReturn.log",
+          "log_sha256": "3a4444435ef8e131ae474d32efbd75c3523780fe9e8ed1703aa1967d3cd87753"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 28.420987,
+          "log": "agent105-uniform-safe-return/logs/ProjectAudit.log",
+          "log_sha256": "521565b5939e2733f1309fbf146729b4f08209724e034ee1b217c916e9fc4edc"
+        }
+      ],
+      "roots": [
+        "Agent105UniformReturn"
+      ],
+      "build_order": [
+        "Agent102RunDefs",
+        "PeriodObstructions",
+        "ActualWordBridge",
+        "Agent105AffineBasics",
+        "PrefixSemantics",
+        "LychrelDigitSums",
+        "IncomingCarry",
+        "Agent1RepeatedBlock",
+        "Agent102AffineArithmetic",
+        "Agent105AffineNormalize",
+        "Agent105AffineZip",
+        "Agent105AffineOrbit",
+        "Agent102RunEndpoints",
+        "Agent105AffineShape",
+        "Agent102RunWord",
+        "Agent102AffineRuns",
+        "Agent105TailSelection",
+        "Agent105AffineStability",
+        "Agent105ReturnTimeBound",
+        "Agent105UniformReturn"
+      ],
+      "theorem_count": 1551,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent105.AffineDynamics.wordAt_nil",
+        "Agent105.AffineDynamics.wordAt_cons",
+        "Agent105.AffineDynamics.wordAt_append",
+        "Agent105.AffineDynamics.wordAt_singleton",
+        "Agent105.AffineDynamics.wordAt_constRun",
+        "Agent105.AffineDynamics.wordAt_reverse",
+        "Agent105.AffineDynamics.minusOne_eval",
+        "Agent105.AffineDynamics.minusOne_toNat",
+        "Agent105.AffineDynamics.specBound_nil",
+        "Agent105.AffineDynamics.specBound_cons",
+        "Agent105.AffineDynamics.specBound_reverse",
+        "Agent105.AffineDynamics.wordAt_bounded",
+        "Agent105.AffineDynamics.hasAffineRuns_wordAt",
+        "Agent105.AffineNormalize.singleton_pow",
+        "Agent105.AffineNormalize.terminalCarry_replicate_succ",
+        "Agent105.AffineNormalize.fixedDigits_replicate_succ",
+        "Agent105.AffineNormalize.normalize_replicate_succ",
+        "Agent105.AffineNormalize.terminalCarry_replicate_nine",
+        "Agent105.AffineNormalize.fixedDigits_replicate_nine",
+        "Agent105.AffineNormalize.normalize_replicate_nine",
+        "Agent105.AffineNormalize.fixedRunSpec_bound",
+        "Agent105.AffineNormalize.fixedDigits_carry_positive_run",
+        "Agent105.AffineNormalize.lengthDichotomy",
+        "Agent105.AffineNormalize.fixedDigits_carry_of_length_dichotomy",
+        "Agent105.AffineNormalize.normalize_of_length_dichotomy",
+        "Agent105.AffineNormalize.hasAffineRuns_normalize_of_length_dichotomy",
+        "Agent105.AffineNormalize.fixedDigits_wordAt_eventually",
+        "Agent105.AffineNormalize.normalize_wordAt_eventually",
+        "Agent105.AffineNormalize.hasAffineRuns_normalize",
+        "Agent105.TailSelection.eventually_of_forall",
+        "Agent105.TailSelection.eventually_mono",
+        "Agent105.TailSelection.eventually_and",
+        "Agent105.TailSelection.eventually_not_contradiction",
+        "Agent105.TailSelection.tailStable_const",
+        "Agent105.TailSelection.tailStable_congr",
+        "Agent105.TailSelection.tailStable_of_eventually",
+        "Agent105.TailSelection.tailStable_of_eventually_not",
+        "Agent105.TailSelection.tailStable_not",
+        "Agent105.TailSelection.tailStable_and",
+        "Agent105.TailSelection.tailStable_iff_eventually_or_not",
+        "Agent105.TailSelection.eventually_forall_list",
+        "Agent105.TailSelection.tailStable_forall_list",
+        "Agent105.TailSelection.tailStable_forall_pos_le",
+        "Agent105.TailSelection.uniform_tail_of_finite_cover",
+        "Agent105.TailSelection.uniform_bounded_tail_selection",
+        "Agent105.TailSelection.return_and_safety_tailStable",
+        "Agent105.TailSelection.uniform_safe_return_time",
+        "Agent105.ReturnTimeBound.orbit_width_potential_bound",
+        "Agent105.ReturnTimeBound.return_width_potential_bound",
+        "Agent105.ReturnTimeBound.return_time_bounds_of_width_gain",
+        "Agent105.ReturnTimeBound.positive_return_time_bound_of_width_gain",
+        "Agent105.ReturnTimeBound.return_time_bound_with_offset",
+        "Agent105.ReturnTimeBound.same_head_return_time_bound_with_offset",
+        "Agent105.ReturnTimeBound.word_family_return_time_bound",
+        "Agent105.ReturnTimeBound.affine_endpoint_return_time_bound",
+        "Agent105.ReturnTimeBound.affine_endpoint_return_time_bound_with_offset",
+        "Agent105.AffineDynamics.zipAdd_replicate_prefix_le",
+        "Agent105.AffineDynamics.zipAdd_replicate_prefix_ge",
+        "Agent105.AffineDynamics.zipAdd_of_length_arithmetic",
+        "Agent105.AffineDynamics.affineDifference_eval",
+        "Agent105.AffineDynamics.affineDifferenceClosure",
+        "Agent105.AffineDynamics.affineComparisonStable",
+        "Agent105.AffineDynamics.zipAdd_wordAt_eventually",
+        "Agent105.AffineDynamics.shiftAffine_eval",
+        "Agent105.AffineDynamics.shiftRun_digit",
+        "Agent105.AffineDynamics.runsAt_shift",
+        "Agent105.AffineDynamics.wordAt_shift",
+        "Agent105.AffineDynamics.specBound_shift",
+        "Agent105.AffineDynamics.shiftSpecs_append",
+        "Agent105.AffineDynamics.shiftSpecs_reverse",
+        "Agent105.AffineDynamics.hasAffineRuns_reverse",
+        "Agent105.AffineDynamics.hasAffineRuns_shift",
+        "Agent105.AffineDynamics.hasAffineRuns_shift_reverse",
+        "Agent105.AffineDynamics.hasAffineRuns_zipAdd",
+        "Agent105.AffineDynamics.hasAffineRuns_pair",
+        "Agent105.AffineDynamics.hasAffineRuns_stepWord",
+        "Agent105.AffineDynamics.hasAffineRuns_orbit",
+        "Agent105.AffineDynamics.hasAffineRuns_normalized_orbit",
+        "Agent105.AffineDynamics.stepWord_wordAt_eventually",
+        "Agent105.AffineDynamics.orbit_wordAt_eventually",
+        "Agent105.AffineDynamics.normalized_orbit_wordAt_eventually",
+        "Agent105.AffineShape.positivePart_slope_nonneg",
+        "Agent105.AffineShape.positivePart_slope_toNat",
+        "Agent105.AffineShape.widthSlope_eq_slope_toNat_sum",
+        "Agent105.AffineShape.widthSlope_int_eq_slope_sum",
+        "Agent105.AffineShape.widthAffine_slope",
+        "Agent105.AffineShape.widthAffine_slope_nonneg",
+        "Agent105.AffineShape.widthIntercept_eq_sum",
+        "Agent105.AffineShape.wordAt_length_affine",
+        "Agent105.AffineShape.wordAt_length_eventually",
+        "Agent105.AffineShape.wordAt_length_shift",
+        "Agent105.AffineShape.wordAt_length_shift_eventually",
+        "Agent105.AffineShape.wordAt_headOption_eventually",
+        "Agent105.AffineShape.wordAt_headD_eventually",
+        "Agent105.AffineShape.wordAt_head_eventually",
+        "Agent105.AffineShape.wordAt_head_width_eventually",
+        "Agent105.AffineStability.tailStable_of_eventual_iff",
+        "Agent105.AffineStability.wordAt_equality_tailStable",
+        "Agent105.AffineStability.wordAt_palindrome_tailStable",
+        "Agent105.AffineStability.hasAffineRuns_equality_tailStable",
+        "Agent105.AffineStability.hasAffineRuns_palindrome_tailStable",
+        "Agent105.AffineStability.hasAffineRuns_nonpalindrome_tailStable",
+        "Agent105.UniformReturn.actual_return_tailStable",
+        "Agent105.UniformReturn.actual_output_safety_tailStable",
+        "Agent105.UniformReturn.uniform_bounded_safe_return",
+        "Agent105.UniformReturn.uniform_safe_return_wordAt"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finishFuel._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.feed._spec_1"
+        ],
+        [
+          "Agent105AffineOrbit",
+          "List.mapTR.loop._at.Agent105.AffineDynamics.shiftSpecs._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.repr'._at._private.LychrelDigitSums.0.OverflowNormalizationCertificate.reprState.\u00ab_@\u00bb.LychrelDigitSums._hyg.20379._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.next._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_1"
+        ],
+        [
+          "Agent105AffineShape",
+          "List.sum._at.Agent105.AffineShape.widthSlope._spec_2"
+        ],
+        [
+          "Agent102AffineRuns",
+          "List.mapTR.loop._at.Agent102.pairCutoff._spec_1"
+        ],
+        [
+          "Agent102RunEndpoints",
+          "List.flatMapTR.go._at.Agent102.endpoints._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "OverflowCarryNormalization.iterPairs._elambda_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.initials._spec_3"
+        ],
+        [
+          "Agent102RunDefs",
+          "List.flatMapTR.go._at.Agent102.word._spec_1"
+        ],
+        [
+          "Agent105AffineShape",
+          "List.mapTR.loop._at.Agent105.AffineShape.widthSlope._spec_1"
+        ],
+        [
+          "Agent102AffineRuns",
+          "List.flatMapTR.go._at.Agent102.pairCutoff._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.next._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.feed._spec_2"
+        ],
+        [
+          "Agent102RunDefs",
+          "List.mapTR.loop._at.Agent102.runsAt._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.edge._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792187420.9769506,
+  "registry_sha256": "6bee312ba098872841df7416f6b2c77dc39a83325145556e761401a87d9c562c",
+  "source_commit": "33474b2b08e445509475aa6cf341a1a8e12977db",
+  "source_tree_clean": false,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    {
+      "id": "REPOSITORY_ACCEPTED_SCOPE_CENSUS",
+      "status": "OPEN",
+      "description": "This registry covers the exact twenty-module list-dynamics closure selected below. It is not a repository-wide accepted-scope catalogue."
+    },
+    {
+      "id": "ADDITIONAL_PLAIN_AND_INTEGER_WRAPPERS",
+      "status": "OPEN",
+      "description": "This snapshot registers the actual-list safe-return theorem. The separate plain-return and ordinary-integer safety wrappers are not included in this first full fresh build registry."
+    }
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792187549.8336582
+}

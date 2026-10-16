@@ -1,0 +1,269 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent105-affine-components": {
+      "status": "PASS",
+      "scope": "Supporting interfaces only: actual expanded affine-run word operations, finite-tail predicate selection, and explicit-hypothesis return-time/width bounds for the original Agent8 list orbit. This scoped build does not assert the complete actual uniform-return theorem or ordinary-integer realization.",
+      "sources": {
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "build_sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ActualWordBridge": {
+          "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+          "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "build_sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "imports": [
+            "PeriodObstructions"
+          ],
+          "adapter": null
+        },
+        "Agent102RunDefs": {
+          "path": "proofs/Agent102RunDefs.lean",
+          "sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "build_sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Agent105AffineBasics": {
+          "path": "proofs/Agent105AffineBasics.lean",
+          "sha256": "cc4e630313694e8b75b2a37f695b09f428e2f911ed49dd99df8fc22c9af15cc5",
+          "build_sha256": "cc4e630313694e8b75b2a37f695b09f428e2f911ed49dd99df8fc22c9af15cc5",
+          "imports": [
+            "Agent102RunDefs",
+            "ActualWordBridge"
+          ],
+          "adapter": null
+        },
+        "Agent105TailSelection": {
+          "path": "proofs/Agent105TailSelection.lean",
+          "sha256": "6357e5bc0cb38368949f376a7e6b907dfac87ec3c93ab7b8d2114e3f75e007a6",
+          "build_sha256": "6357e5bc0cb38368949f376a7e6b907dfac87ec3c93ab7b8d2114e3f75e007a6",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Agent105ReturnTimeBound": {
+          "path": "proofs/Agent105ReturnTimeBound.lean",
+          "sha256": "93384ce0e3a2443ca37fbb2c510ce927f0f2334509b6430d7b91ff252d0d57f7",
+          "build_sha256": "93384ce0e3a2443ca37fbb2c510ce927f0f2334509b6430d7b91ff252d0d57f7",
+          "imports": [
+            "ActualWordBridge"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "Agent102RunDefs",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102RunDefs.olean",
+            "Agent102RunDefs.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.465386,
+          "log": "agent105-affine-components/logs/Agent102RunDefs.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "PeriodObstructions",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PeriodObstructions.olean",
+            "PeriodObstructions.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 5.288083,
+          "log": "agent105-affine-components/logs/PeriodObstructions.log",
+          "log_sha256": "d56d019704635693d25ddc1a86a6211515d44c28bb790edb543c46f49e0d74c4"
+        },
+        {
+          "label": "ActualWordBridge",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualWordBridge.olean",
+            "ActualWordBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.776395,
+          "log": "agent105-affine-components/logs/ActualWordBridge.log",
+          "log_sha256": "dbc11776204bf37aa9f026b2fe50c5b0e08f9cd89939b0e21a03a95cb02850e8"
+        },
+        {
+          "label": "Agent105AffineBasics",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105AffineBasics.olean",
+            "Agent105AffineBasics.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.415289,
+          "log": "agent105-affine-components/logs/Agent105AffineBasics.log",
+          "log_sha256": "9bea7a64efe8151b2c60bcbdbd3bfb94bcdce215305f275e0dbf48bd62a07510"
+        },
+        {
+          "label": "Agent105TailSelection",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105TailSelection.olean",
+            "Agent105TailSelection.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.61567,
+          "log": "agent105-affine-components/logs/Agent105TailSelection.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent105ReturnTimeBound",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent105ReturnTimeBound.olean",
+            "Agent105ReturnTimeBound.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.085911,
+          "log": "agent105-affine-components/logs/Agent105ReturnTimeBound.log",
+          "log_sha256": "c5c23921b5f4d4fc715c22ce64e8eb26de9f2b1b81a1febff5891cf5713c6d10"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 5.038985,
+          "log": "agent105-affine-components/logs/ProjectAudit.log",
+          "log_sha256": "300f91227b6cb84051452f68a17d3d894380d35c9247080ec0c333e82ecd910a"
+        }
+      ],
+      "roots": [
+        "Agent105AffineBasics",
+        "Agent105TailSelection",
+        "Agent105ReturnTimeBound"
+      ],
+      "build_order": [
+        "Agent102RunDefs",
+        "PeriodObstructions",
+        "ActualWordBridge",
+        "Agent105AffineBasics",
+        "Agent105TailSelection",
+        "Agent105ReturnTimeBound"
+      ],
+      "theorem_count": 214,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent105.AffineDynamics.wordAt_nil",
+        "Agent105.AffineDynamics.wordAt_cons",
+        "Agent105.AffineDynamics.wordAt_append",
+        "Agent105.AffineDynamics.wordAt_singleton",
+        "Agent105.AffineDynamics.wordAt_constRun",
+        "Agent105.AffineDynamics.wordAt_reverse",
+        "Agent105.AffineDynamics.minusOne_eval",
+        "Agent105.AffineDynamics.minusOne_toNat",
+        "Agent105.AffineDynamics.specBound_nil",
+        "Agent105.AffineDynamics.specBound_cons",
+        "Agent105.AffineDynamics.specBound_reverse",
+        "Agent105.AffineDynamics.wordAt_bounded",
+        "Agent105.AffineDynamics.hasAffineRuns_wordAt",
+        "Agent105.TailSelection.eventually_of_forall",
+        "Agent105.TailSelection.eventually_mono",
+        "Agent105.TailSelection.eventually_and",
+        "Agent105.TailSelection.eventually_not_contradiction",
+        "Agent105.TailSelection.tailStable_const",
+        "Agent105.TailSelection.tailStable_congr",
+        "Agent105.TailSelection.tailStable_of_eventually",
+        "Agent105.TailSelection.tailStable_of_eventually_not",
+        "Agent105.TailSelection.tailStable_not",
+        "Agent105.TailSelection.tailStable_and",
+        "Agent105.TailSelection.tailStable_iff_eventually_or_not",
+        "Agent105.TailSelection.eventually_forall_list",
+        "Agent105.TailSelection.tailStable_forall_list",
+        "Agent105.TailSelection.tailStable_forall_pos_le",
+        "Agent105.TailSelection.uniform_tail_of_finite_cover",
+        "Agent105.TailSelection.uniform_bounded_tail_selection",
+        "Agent105.TailSelection.return_and_safety_tailStable",
+        "Agent105.TailSelection.uniform_safe_return_time",
+        "Agent105.ReturnTimeBound.orbit_width_potential_bound",
+        "Agent105.ReturnTimeBound.return_width_potential_bound",
+        "Agent105.ReturnTimeBound.return_time_bounds_of_width_gain",
+        "Agent105.ReturnTimeBound.positive_return_time_bound_of_width_gain",
+        "Agent105.ReturnTimeBound.return_time_bound_with_offset",
+        "Agent105.ReturnTimeBound.same_head_return_time_bound_with_offset",
+        "Agent105.ReturnTimeBound.word_family_return_time_bound",
+        "Agent105.ReturnTimeBound.affine_endpoint_return_time_bound",
+        "Agent105.ReturnTimeBound.affine_endpoint_return_time_bound_with_offset"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "Agent102RunDefs",
+          "List.flatMapTR.go._at.Agent102.word._spec_1"
+        ],
+        [
+          "Agent102RunDefs",
+          "List.mapTR.loop._at.Agent102.runsAt._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792186561.4025013,
+  "registry_sha256": "103878c558e5d91c8985249e14050025b6d7d707f12eab614636f7791468cabd",
+  "source_commit": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    {
+      "id": "REPOSITORY_ACCEPTED_SCOPE_CENSUS",
+      "status": "OPEN",
+      "description": "This registry covers only the six-module supporting closure selected below. Repository-wide acceptance and verification remain outside its scope."
+    },
+    {
+      "id": "FULL_AFFINE_UNIFORM_RETURN_THEOREM",
+      "status": "OPEN",
+      "description": "Actual fixed-time affine closure and the eventual equality/palindrome results needed to discharge the tail-selection hypotheses are not registered here. The full actual affine-family uniform-safe-return theorem is not claimed."
+    }
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792186577.5689492
+}

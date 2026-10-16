@@ -1,0 +1,42 @@
+import Agent105TailSelection
+
+#check Agent105.TailSelection.Eventually
+#print axioms Agent105.TailSelection.Eventually
+#check Agent105.TailSelection.TailStable
+#print axioms Agent105.TailSelection.TailStable
+#check Agent105.TailSelection.eventually_of_forall
+#print axioms Agent105.TailSelection.eventually_of_forall
+#check Agent105.TailSelection.eventually_mono
+#print axioms Agent105.TailSelection.eventually_mono
+#check Agent105.TailSelection.eventually_and
+#print axioms Agent105.TailSelection.eventually_and
+#check Agent105.TailSelection.eventually_not_contradiction
+#print axioms Agent105.TailSelection.eventually_not_contradiction
+#check Agent105.TailSelection.tailStable_const
+#print axioms Agent105.TailSelection.tailStable_const
+#check Agent105.TailSelection.tailStable_congr
+#print axioms Agent105.TailSelection.tailStable_congr
+#check Agent105.TailSelection.tailStable_of_eventually
+#print axioms Agent105.TailSelection.tailStable_of_eventually
+#check Agent105.TailSelection.tailStable_of_eventually_not
+#print axioms Agent105.TailSelection.tailStable_of_eventually_not
+#check Agent105.TailSelection.tailStable_not
+#print axioms Agent105.TailSelection.tailStable_not
+#check Agent105.TailSelection.tailStable_and
+#print axioms Agent105.TailSelection.tailStable_and
+#check Agent105.TailSelection.tailStable_iff_eventually_or_not
+#print axioms Agent105.TailSelection.tailStable_iff_eventually_or_not
+#check Agent105.TailSelection.eventually_forall_list
+#print axioms Agent105.TailSelection.eventually_forall_list
+#check Agent105.TailSelection.tailStable_forall_list
+#print axioms Agent105.TailSelection.tailStable_forall_list
+#check Agent105.TailSelection.tailStable_forall_pos_le
+#print axioms Agent105.TailSelection.tailStable_forall_pos_le
+#check Agent105.TailSelection.uniform_tail_of_finite_cover
+#print axioms Agent105.TailSelection.uniform_tail_of_finite_cover
+#check Agent105.TailSelection.uniform_bounded_tail_selection
+#print axioms Agent105.TailSelection.uniform_bounded_tail_selection
+#check Agent105.TailSelection.return_and_safety_tailStable
+#print axioms Agent105.TailSelection.return_and_safety_tailStable
+#check Agent105.TailSelection.uniform_safe_return_time
+#print axioms Agent105.TailSelection.uniform_safe_return_time

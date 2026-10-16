@@ -1,0 +1,72 @@
+Agent105.TailSelection.Eventually (P : Nat → Prop) : Prop
+'Agent105.TailSelection.Eventually' does not depend on any axioms
+Agent105.TailSelection.TailStable (P : Nat → Prop) : Prop
+'Agent105.TailSelection.TailStable' does not depend on any axioms
+Agent105.TailSelection.eventually_of_forall {P : Nat → Prop} (h : ∀ (k : Nat), P k) :
+  Agent105.TailSelection.Eventually P
+'Agent105.TailSelection.eventually_of_forall' does not depend on any axioms
+Agent105.TailSelection.eventually_mono {P Q : Nat → Prop} (hP : Agent105.TailSelection.Eventually P)
+  (hPQ : ∀ (k : Nat), P k → Q k) : Agent105.TailSelection.Eventually Q
+'Agent105.TailSelection.eventually_mono' does not depend on any axioms
+Agent105.TailSelection.eventually_and {P Q : Nat → Prop} (hP : Agent105.TailSelection.Eventually P)
+  (hQ : Agent105.TailSelection.Eventually Q) : Agent105.TailSelection.Eventually fun k => P k ∧ Q k
+'Agent105.TailSelection.eventually_and' depends on axioms: [propext]
+Agent105.TailSelection.eventually_not_contradiction {P : Nat → Prop} (hP : Agent105.TailSelection.Eventually P)
+  (hN : Agent105.TailSelection.Eventually fun k => ¬P k) : False
+'Agent105.TailSelection.eventually_not_contradiction' depends on axioms: [propext]
+Agent105.TailSelection.tailStable_const (p : Prop) : Agent105.TailSelection.TailStable fun x => p
+'Agent105.TailSelection.tailStable_const' does not depend on any axioms
+Agent105.TailSelection.tailStable_congr {P Q : Nat → Prop} (hPQ : ∀ (k : Nat), P k ↔ Q k)
+  (hP : Agent105.TailSelection.TailStable P) : Agent105.TailSelection.TailStable Q
+'Agent105.TailSelection.tailStable_congr' does not depend on any axioms
+Agent105.TailSelection.tailStable_of_eventually {P : Nat → Prop} (hP : Agent105.TailSelection.Eventually P) :
+  Agent105.TailSelection.TailStable P
+'Agent105.TailSelection.tailStable_of_eventually' does not depend on any axioms
+Agent105.TailSelection.tailStable_of_eventually_not {P : Nat → Prop}
+  (hP : Agent105.TailSelection.Eventually fun k => ¬P k) : Agent105.TailSelection.TailStable P
+'Agent105.TailSelection.tailStable_of_eventually_not' does not depend on any axioms
+Agent105.TailSelection.tailStable_not {P : Nat → Prop} (hP : Agent105.TailSelection.TailStable P) :
+  Agent105.TailSelection.TailStable fun k => ¬P k
+'Agent105.TailSelection.tailStable_not' does not depend on any axioms
+Agent105.TailSelection.tailStable_and {P Q : Nat → Prop} (hP : Agent105.TailSelection.TailStable P)
+  (hQ : Agent105.TailSelection.TailStable Q) : Agent105.TailSelection.TailStable fun k => P k ∧ Q k
+'Agent105.TailSelection.tailStable_and' depends on axioms: [propext]
+Agent105.TailSelection.tailStable_iff_eventually_or_not {P : Nat → Prop} :
+  Agent105.TailSelection.TailStable P ↔
+    Agent105.TailSelection.Eventually P ∨ Agent105.TailSelection.Eventually fun k => ¬P k
+'Agent105.TailSelection.tailStable_iff_eventually_or_not' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.TailSelection.eventually_forall_list.{u} {α : Type u} (xs : List α) {P : α → Nat → Prop}
+  (hP : ∀ (a : α), a ∈ xs → Agent105.TailSelection.Eventually (P a)) :
+  Agent105.TailSelection.Eventually fun k => ∀ (a : α), a ∈ xs → P a k
+'Agent105.TailSelection.eventually_forall_list' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.tailStable_forall_list.{u} {α : Type u} (xs : List α) {P : α → Nat → Prop}
+  (hP : ∀ (a : α), a ∈ xs → Agent105.TailSelection.TailStable (P a)) :
+  Agent105.TailSelection.TailStable fun k => ∀ (a : α), a ∈ xs → P a k
+'Agent105.TailSelection.tailStable_forall_list' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.tailStable_forall_pos_le (B : Nat) {R : Nat → Nat → Prop}
+  (hR : ∀ (t : Nat), 1 ≤ t → t ≤ B → Agent105.TailSelection.TailStable (R t)) :
+  Agent105.TailSelection.TailStable fun k => ∀ (t : Nat), 1 ≤ t → t ≤ B → R t k
+'Agent105.TailSelection.tailStable_forall_pos_le' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.uniform_tail_of_finite_cover.{u} {α : Type u} (xs : List α) {R : α → Nat → Prop}
+  (hStable : ∀ (t : α), t ∈ xs → Agent105.TailSelection.TailStable (R t))
+  (hCover : Agent105.TailSelection.Eventually fun k => ∃ t, t ∈ xs ∧ R t k) :
+  ∃ t, t ∈ xs ∧ Agent105.TailSelection.Eventually (R t)
+'Agent105.TailSelection.uniform_tail_of_finite_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.TailSelection.uniform_bounded_tail_selection (B : Nat) {R : Nat → Nat → Prop}
+  (hStable : ∀ (t : Nat), 1 ≤ t → t ≤ B → Agent105.TailSelection.TailStable (R t))
+  (hCover : Agent105.TailSelection.Eventually fun k => ∃ t, 1 ≤ t ∧ t ≤ B ∧ R t k) :
+  ∃ t, 1 ≤ t ∧ t ≤ B ∧ Agent105.TailSelection.Eventually (R t)
+'Agent105.TailSelection.uniform_bounded_tail_selection' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.TailSelection.return_and_safety_tailStable (t : Nat) {Return Safe : Nat → Nat → Prop}
+  (hReturn : Agent105.TailSelection.TailStable (Return t))
+  (hSafe : ∀ (i : Nat), 1 ≤ i → i ≤ t → Agent105.TailSelection.TailStable (Safe i)) :
+  Agent105.TailSelection.TailStable fun k => Return t k ∧ ∀ (i : Nat), 1 ≤ i → i ≤ t → Safe i k
+'Agent105.TailSelection.return_and_safety_tailStable' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.uniform_safe_return_time (B : Nat) {Return Safe : Nat → Nat → Prop}
+  (hReturn : ∀ (t : Nat), 1 ≤ t → t ≤ B → Agent105.TailSelection.TailStable (Return t))
+  (hSafe : ∀ (i : Nat), 1 ≤ i → i ≤ B → Agent105.TailSelection.TailStable (Safe i))
+  (hCover :
+    Agent105.TailSelection.Eventually fun k =>
+      ∃ t, 1 ≤ t ∧ t ≤ B ∧ Return t k ∧ ∀ (i : Nat), 1 ≤ i → i ≤ t → Safe i k) :
+  ∃ t, 1 ≤ t ∧ t ≤ B ∧ ∃ K, ∀ (k : Nat), K ≤ k → Return t k ∧ ∀ (i : Nat), 1 ≤ i → i ≤ t → Safe i k
+'Agent105.TailSelection.uniform_safe_return_time' depends on axioms: [propext, Classical.choice, Quot.sound]

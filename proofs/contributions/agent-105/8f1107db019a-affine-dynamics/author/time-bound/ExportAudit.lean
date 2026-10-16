@@ -1,0 +1,20 @@
+import Agent105ReturnTimeBound
+
+#check Agent105.ReturnTimeBound.orbit_width_potential_bound
+#print axioms Agent105.ReturnTimeBound.orbit_width_potential_bound
+#check Agent105.ReturnTimeBound.return_width_potential_bound
+#print axioms Agent105.ReturnTimeBound.return_width_potential_bound
+#check Agent105.ReturnTimeBound.return_time_bounds_of_width_gain
+#print axioms Agent105.ReturnTimeBound.return_time_bounds_of_width_gain
+#check Agent105.ReturnTimeBound.positive_return_time_bound_of_width_gain
+#print axioms Agent105.ReturnTimeBound.positive_return_time_bound_of_width_gain
+#check Agent105.ReturnTimeBound.return_time_bound_with_offset
+#print axioms Agent105.ReturnTimeBound.return_time_bound_with_offset
+#check Agent105.ReturnTimeBound.same_head_return_time_bound_with_offset
+#print axioms Agent105.ReturnTimeBound.same_head_return_time_bound_with_offset
+#check Agent105.ReturnTimeBound.word_family_return_time_bound
+#print axioms Agent105.ReturnTimeBound.word_family_return_time_bound
+#check Agent105.ReturnTimeBound.affine_endpoint_return_time_bound
+#print axioms Agent105.ReturnTimeBound.affine_endpoint_return_time_bound
+#check Agent105.ReturnTimeBound.affine_endpoint_return_time_bound_with_offset
+#print axioms Agent105.ReturnTimeBound.affine_endpoint_return_time_bound_with_offset
