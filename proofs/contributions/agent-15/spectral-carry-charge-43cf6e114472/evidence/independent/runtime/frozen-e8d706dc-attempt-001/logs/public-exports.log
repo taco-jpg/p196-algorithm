@@ -1,0 +1,1340 @@
+def P196.Agent15.SpectralCarry.recurrence : Int → Int → Nat → Int :=
+fun a b x =>
+  Nat.brecOn.{1} x fun x f =>
+    (match (motive := (x : Nat) → Nat.below.{1} x → Int) x with
+      | 0 => fun x => a
+      | 1 => fun x => b
+      | Nat.succ (Nat.succ n) => fun x => HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 20 x.1) x.2.1)
+      f
+'P196.Agent15.SpectralCarry.recurrence' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.recurrence_zero : ∀ (a b : Int),
+  Eq.{1} (P196.Agent15.SpectralCarry.recurrence a b 0) a :=
+fun a b => rfl.{1}
+'P196.Agent15.SpectralCarry.recurrence_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.recurrence_one : ∀ (a b : Int),
+  Eq.{1} (P196.Agent15.SpectralCarry.recurrence a b 1) b :=
+fun a b => rfl.{1}
+'P196.Agent15.SpectralCarry.recurrence_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.recurrence_step : ∀ (a b : Int) (n : Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.recurrence a b (HAdd.hAdd.{0, 0, 0} n 2))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 20 (P196.Agent15.SpectralCarry.recurrence a b (HAdd.hAdd.{0, 0, 0} n 1)))
+      (P196.Agent15.SpectralCarry.recurrence a b n)) :=
+fun a b n => rfl.{1}
+'P196.Agent15.SpectralCarry.recurrence_step' does not depend on any axioms
+def P196.Agent15.SpectralCarry.U : Nat → Int :=
+P196.Agent15.SpectralCarry.recurrence 0 1
+'P196.Agent15.SpectralCarry.U' does not depend on any axioms
+def P196.Agent15.SpectralCarry.S : Nat → Int :=
+P196.Agent15.SpectralCarry.recurrence 1 21
+'P196.Agent15.SpectralCarry.S' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.U_zero : Eq.{1} (P196.Agent15.SpectralCarry.U 0) 0 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.U_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.U_one : Eq.{1} (P196.Agent15.SpectralCarry.U 1) 1 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.U_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.U_step : ∀ (n : Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.U (HAdd.hAdd.{0, 0, 0} n 2))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 20 (P196.Agent15.SpectralCarry.U (HAdd.hAdd.{0, 0, 0} n 1)))
+      (P196.Agent15.SpectralCarry.U n)) :=
+fun n => rfl.{1}
+'P196.Agent15.SpectralCarry.U_step' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.S_zero : Eq.{1} (P196.Agent15.SpectralCarry.S 0) 1 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.S_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.S_one : Eq.{1} (P196.Agent15.SpectralCarry.S 1) 21 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.S_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.S_step : ∀ (n : Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.S (HAdd.hAdd.{0, 0, 0} n 2))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 20 (P196.Agent15.SpectralCarry.S (HAdd.hAdd.{0, 0, 0} n 1)))
+      (P196.Agent15.SpectralCarry.S n)) :=
+fun n => rfl.{1}
+'P196.Agent15.SpectralCarry.S_step' does not depend on any axioms
+def P196.Agent15.SpectralCarry.oddWeight : Nat → Int :=
+fun n => P196.Agent15.SpectralCarry.U (HAdd.hAdd.{0, 0, 0} n 1)
+'P196.Agent15.SpectralCarry.oddWeight' does not depend on any axioms
+def P196.Agent15.SpectralCarry.evenWeight : Nat → Int :=
+fun n => P196.Agent15.SpectralCarry.S n
+'P196.Agent15.SpectralCarry.evenWeight' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_zero : Eq.{1} (P196.Agent15.SpectralCarry.oddWeight 0) 1 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.oddWeight_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_one : Eq.{1} (P196.Agent15.SpectralCarry.oddWeight 1) 20 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.oddWeight_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_step : ∀ (n : Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.oddWeight (HAdd.hAdd.{0, 0, 0} n 2))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 20 (P196.Agent15.SpectralCarry.oddWeight (HAdd.hAdd.{0, 0, 0} n 1)))
+      (P196.Agent15.SpectralCarry.oddWeight n)) :=
+fun n => rfl.{1}
+'P196.Agent15.SpectralCarry.oddWeight_step' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.evenWeight_zero : Eq.{1} (P196.Agent15.SpectralCarry.evenWeight 0) 1 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.evenWeight_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.evenWeight_one : Eq.{1} (P196.Agent15.SpectralCarry.evenWeight 1) 21 :=
+rfl.{1}
+'P196.Agent15.SpectralCarry.evenWeight_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.evenWeight_step : ∀ (n : Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.evenWeight (HAdd.hAdd.{0, 0, 0} n 2))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 20 (P196.Agent15.SpectralCarry.evenWeight (HAdd.hAdd.{0, 0, 0} n 1)))
+      (P196.Agent15.SpectralCarry.evenWeight n)) :=
+fun n => rfl.{1}
+'P196.Agent15.SpectralCarry.evenWeight_step' does not depend on any axioms
+def P196.Agent15.SpectralCarry.weightSum : (Nat → Int) → Nat → Int :=
+fun w x =>
+  Nat.brecOn.{1} x fun x f =>
+    (match (motive := (x : Nat) → Nat.below.{1} x → Int) x with
+      | 0 => fun x => 0
+      | Nat.succ n => fun x => HAdd.hAdd.{0, 0, 0} x.1 (w n))
+      f
+'P196.Agent15.SpectralCarry.weightSum' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.weightSum_zero : ∀ (w : Nat → Int),
+  Eq.{1} (P196.Agent15.SpectralCarry.weightSum w 0) 0 :=
+fun w => rfl.{1}
+'P196.Agent15.SpectralCarry.weightSum_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.weightSum_succ : ∀ (w : Nat → Int) (n : Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.weightSum w (HAdd.hAdd.{0, 0, 0} n 1))
+    (HAdd.hAdd.{0, 0, 0} (P196.Agent15.SpectralCarry.weightSum w n) (w n)) :=
+fun w n => rfl.{1}
+'P196.Agent15.SpectralCarry.weightSum_succ' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_pos : ∀ (n : Nat), LT.lt.{0} 0 (P196.Agent15.SpectralCarry.oddWeight n) :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.oddWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl.{1} Bool.true)))
+      (of_eq_true
+        (Eq.trans.{1} (congrArg.{1, 1} (fun x => LE.le.{0} x 20) (Int.mul_one 19))
+          (eq_true_of_decide (Eq.refl.{1} Bool.true))))
+      P196.Agent15.SpectralCarry.oddWeight_step n;
+  And.left h
+'P196.Agent15.SpectralCarry.oddWeight_pos' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenWeight_pos : ∀ (n : Nat),
+  LT.lt.{0} 0 (P196.Agent15.SpectralCarry.evenWeight n) :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.evenWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl.{1} Bool.true)))
+      (of_eq_true
+        (Eq.trans.{1} (congrArg.{1, 1} (fun x => LE.le.{0} x 21) (Int.mul_one 19))
+          (eq_true_of_decide (Eq.refl.{1} Bool.true))))
+      P196.Agent15.SpectralCarry.evenWeight_step n;
+  And.left h
+'P196.Agent15.SpectralCarry.evenWeight_pos' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.oddWeight_growth : ∀ (n : Nat),
+  LE.le.{0} (HMul.hMul.{0, 0, 0} 19 (P196.Agent15.SpectralCarry.oddWeight n))
+    (P196.Agent15.SpectralCarry.oddWeight (HAdd.hAdd.{0, 0, 0} n 1)) :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.oddWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl.{1} Bool.true)))
+      (of_eq_true
+        (Eq.trans.{1} (congrArg.{1, 1} (fun x => LE.le.{0} x 20) (Int.mul_one 19))
+          (eq_true_of_decide (Eq.refl.{1} Bool.true))))
+      P196.Agent15.SpectralCarry.oddWeight_step n;
+  And.right h
+'P196.Agent15.SpectralCarry.oddWeight_growth' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenWeight_growth : ∀ (n : Nat),
+  LE.le.{0} (HMul.hMul.{0, 0, 0} 19 (P196.Agent15.SpectralCarry.evenWeight n))
+    (P196.Agent15.SpectralCarry.evenWeight (HAdd.hAdd.{0, 0, 0} n 1)) :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.evenWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl.{1} Bool.true)))
+      (of_eq_true
+        (Eq.trans.{1} (congrArg.{1, 1} (fun x => LE.le.{0} x 21) (Int.mul_one 19))
+          (eq_true_of_decide (Eq.refl.{1} Bool.true))))
+      P196.Agent15.SpectralCarry.evenWeight_step n;
+  And.right h
+'P196.Agent15.SpectralCarry.evenWeight_growth' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.oddWeight_superincreasing : ∀ (n : Nat),
+  LT.lt.{0} (P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.oddWeight n)
+    (P196.Agent15.SpectralCarry.oddWeight n) :=
+fun n =>
+  P196.Agent15.SpectralCarry.sum_lt_of_growth✝ P196.Agent15.SpectralCarry.oddWeight
+    P196.Agent15.SpectralCarry.oddWeight_pos P196.Agent15.SpectralCarry.oddWeight_growth n
+'P196.Agent15.SpectralCarry.oddWeight_superincreasing' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenWeight_superincreasing : ∀ (n : Nat),
+  LT.lt.{0} (P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.evenWeight n)
+    (P196.Agent15.SpectralCarry.evenWeight n) :=
+fun n =>
+  P196.Agent15.SpectralCarry.sum_lt_of_growth✝ P196.Agent15.SpectralCarry.evenWeight
+    P196.Agent15.SpectralCarry.evenWeight_pos P196.Agent15.SpectralCarry.evenWeight_growth n
+'P196.Agent15.SpectralCarry.evenWeight_superincreasing' depends on axioms: [propext, Quot.sound]
+def P196.Agent15.SpectralCarry.Binary : List.{0} Nat → Prop :=
+fun cs => ∀ (a : Nat), Membership.mem.{0, 0} cs a → Or (Eq.{1} a 0) (Eq.{1} a 1)
+'P196.Agent15.SpectralCarry.Binary' does not depend on any axioms
+def P196.Agent15.SpectralCarry.weighted : (Nat → Int) → List.{0} Nat → Int :=
+fun w x =>
+  List.brecOn.{1, 0} x fun x f =>
+    (match (motive := (x : List.{0} Nat) → List.below.{1, 0} x → Int) x with
+      | List.nil.{0} => fun x => 0
+      | List.cons.{0} a xs => fun x => HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} (↑a) (w (List.length.{0} xs))) x.1)
+      f
+'P196.Agent15.SpectralCarry.weighted' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.binary_nil : P196.Agent15.SpectralCarry.Binary List.nil.{0} :=
+of_eq_true
+  (Eq.trans.{1}
+    (forall_congr.{1} fun a =>
+      Eq.trans.{1}
+        (implies_congr.{0, 0} Init.Data.List.Lemmas._auxLemma.8.{0} (Eq.refl.{1} (Or (Eq.{1} a 0) (Eq.{1} a 1))))
+        (false_implies (Or (Eq.{1} a 0) (Eq.{1} a 1))))
+    (implies_true.{1} Nat))
+'P196.Agent15.SpectralCarry.binary_nil' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.binary_tail : ∀ {a : Nat} {xs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary (List.cons.{0} a xs) → P196.Agent15.SpectralCarry.Binary xs :=
+fun {a} {xs} h b hb => h b (List.mem_cons_of_mem.{0} a hb)
+'P196.Agent15.SpectralCarry.binary_tail' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.weighted_bounds : ∀ (w : Nat → Int),
+  (∀ (n : Nat), LE.le.{0} 0 (w n)) →
+    ∀ {xs : List.{0} Nat},
+      P196.Agent15.SpectralCarry.Binary xs →
+        And (LE.le.{0} 0 (P196.Agent15.SpectralCarry.weighted w xs))
+          (LE.le.{0} (P196.Agent15.SpectralCarry.weighted w xs)
+            (P196.Agent15.SpectralCarry.weightSum w (List.length.{0} xs))) :=
+fun w hpos {xs} hxs =>
+  List.rec.{0, 0} (motive := fun {xs} =>
+    P196.Agent15.SpectralCarry.Binary xs →
+      And (LE.le.{0} 0 (P196.Agent15.SpectralCarry.weighted w xs))
+        (LE.le.{0} (P196.Agent15.SpectralCarry.weighted w xs)
+          (P196.Agent15.SpectralCarry.weightSum w (List.length.{0} xs))))
+    (fun hxs =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congr.{1, 1} (congrArg.{1, 1} And (Init.Data.Int.Order._auxLemma.5 0)) (Init.Data.Int.Order._auxLemma.5 0))
+          (and_self True)))
+    (fun a xs ih hxs =>
+      let_fun ht := ih (P196.Agent15.SpectralCarry.binary_tail hxs);
+      let_fun hw := hpos (List.length.{0} xs);
+      let_fun ha :=
+        hxs a
+          (of_eq_true
+            (Eq.trans.{1} Init.Data.List.Lemmas._auxLemma.9.{0}
+              (Eq.trans.{1} (congrArg.{1, 1} (fun x => Or x (Membership.mem.{0, 0} xs a)) (eq_self.{1} a))
+                (true_or (Membership.mem.{0, 0} xs a)))));
+      Or.casesOn ha
+        (fun h =>
+          Eq.ndrec.{0, 1} (motive := fun a =>
+            P196.Agent15.SpectralCarry.Binary (List.cons.{0} a xs) →
+              And (LE.le.{0} 0 (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs)))
+                (LE.le.{0} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs))
+                  (P196.Agent15.SpectralCarry.weightSum w (List.length.{0} (List.cons.{0} a xs)))))
+            (fun hxs =>
+              Eq.mpr.{0}
+                (id.{0}
+                  (congr.{1, 1}
+                    (congrArg.{1, 1} (fun x => And (LE.le.{0} 0 x))
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1} (fun x => HAdd.hAdd.{0, 0, 0} x (P196.Agent15.SpectralCarry.weighted w xs))
+                          (Int.zero_mul (w (List.length.{0} xs))))
+                        (Int.zero_add (P196.Agent15.SpectralCarry.weighted w xs))))
+                    (congrArg.{1, 1}
+                      (fun x =>
+                        LE.le.{0} x
+                          (HAdd.hAdd.{0, 0, 0} (P196.Agent15.SpectralCarry.weightSum w (List.length.{0} xs))
+                            (w (List.length.{0} xs))))
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1} (fun x => HAdd.hAdd.{0, 0, 0} x (P196.Agent15.SpectralCarry.weighted w xs))
+                          (Int.zero_mul (w (List.length.{0} xs))))
+                        (Int.zero_add (P196.Agent15.SpectralCarry.weighted w xs))))))
+                (Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.weighted_bounds._proof_1 w xs ht hw a))
+            (Eq.symm.{1} h) hxs)
+        fun h =>
+        Eq.ndrec.{0, 1} (motive := fun a =>
+          P196.Agent15.SpectralCarry.Binary (List.cons.{0} a xs) →
+            And (LE.le.{0} 0 (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs)))
+              (LE.le.{0} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs))
+                (P196.Agent15.SpectralCarry.weightSum w (List.length.{0} (List.cons.{0} a xs)))))
+          (fun hxs =>
+            Eq.mpr.{0}
+              (id.{0}
+                (congr.{1, 1}
+                  (congrArg.{1, 1}
+                    (fun x => And (LE.le.{0} 0 (HAdd.hAdd.{0, 0, 0} x (P196.Agent15.SpectralCarry.weighted w xs))))
+                    (Int.one_mul (w (List.length.{0} xs))))
+                  (congrArg.{1, 1}
+                    (fun x =>
+                      LE.le.{0} (HAdd.hAdd.{0, 0, 0} x (P196.Agent15.SpectralCarry.weighted w xs))
+                        (HAdd.hAdd.{0, 0, 0} (P196.Agent15.SpectralCarry.weightSum w (List.length.{0} xs))
+                          (w (List.length.{0} xs))))
+                    (Int.one_mul (w (List.length.{0} xs))))))
+              (Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.weighted_bounds._proof_2 w xs ht hw a))
+          (Eq.symm.{1} h) hxs)
+    xs hxs
+'P196.Agent15.SpectralCarry.weighted_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.weighted_lt_next : ∀ (w : Nat → Int),
+  (∀ (n : Nat), LE.le.{0} 0 (w n)) →
+    (∀ (n : Nat), LT.lt.{0} (P196.Agent15.SpectralCarry.weightSum w n) (w n)) →
+      ∀ {xs : List.{0} Nat},
+        P196.Agent15.SpectralCarry.Binary xs →
+          LT.lt.{0} (P196.Agent15.SpectralCarry.weighted w xs) (w (List.length.{0} xs)) :=
+fun w hpos hdom {xs} hxs =>
+  let_fun hb := P196.Agent15.SpectralCarry.weighted_bounds w hpos hxs;
+  Int.lt_of_le_of_lt (And.right hb) (hdom (List.length.{0} xs))
+'P196.Agent15.SpectralCarry.weighted_lt_next' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.weighted_injective_binary : ∀ (w : Nat → Int),
+  (∀ (n : Nat), LE.le.{0} 0 (w n)) →
+    (∀ (n : Nat), LT.lt.{0} (P196.Agent15.SpectralCarry.weightSum w n) (w n)) →
+      ∀ {xs ys : List.{0} Nat},
+        P196.Agent15.SpectralCarry.Binary xs →
+          P196.Agent15.SpectralCarry.Binary ys →
+            Eq.{1} (List.length.{0} xs) (List.length.{0} ys) →
+              Eq.{1} (P196.Agent15.SpectralCarry.weighted w xs) (P196.Agent15.SpectralCarry.weighted w ys) →
+                Eq.{1} xs ys :=
+fun w hpos hdom {xs ys} hx hy hlen hvalue =>
+  List.rec.{0, 0} (motive := fun {xs} =>
+    ∀ {ys : List.{0} Nat},
+      P196.Agent15.SpectralCarry.Binary xs →
+        P196.Agent15.SpectralCarry.Binary ys →
+          Eq.{1} (List.length.{0} xs) (List.length.{0} ys) →
+            Eq.{1} (P196.Agent15.SpectralCarry.weighted w xs) (P196.Agent15.SpectralCarry.weighted w ys) → Eq.{1} xs ys)
+    (fun {ys} hx hy hlen hvalue =>
+      List.casesOn.{0, 0} (motive := fun t => Eq.{1} ys t → Eq.{1} List.nil.{0} ys) ys
+        (fun h =>
+          Eq.ndrec.{0, 1} (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              Eq.{1} (List.length.{0} List.nil.{0}) (List.length.{0} ys) →
+                Eq.{1} (P196.Agent15.SpectralCarry.weighted w List.nil.{0}) (P196.Agent15.SpectralCarry.weighted w ys) →
+                  Eq.{1} List.nil.{0} ys)
+            (fun hy hlen hvalue => Eq.refl.{1} List.nil.{0}) (Eq.symm.{1} h) hy hlen hvalue)
+        (fun b ys_1 h =>
+          Eq.ndrec.{0, 1} (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              Eq.{1} (List.length.{0} List.nil.{0}) (List.length.{0} ys) →
+                Eq.{1} (P196.Agent15.SpectralCarry.weighted w List.nil.{0}) (P196.Agent15.SpectralCarry.weighted w ys) →
+                  Eq.{1} List.nil.{0} ys)
+            (fun hy hlen hvalue =>
+              False.elim.{0}
+                (Eq.mp.{0}
+                  (Eq.trans.{1} Init.Data.Nat.Lemmas._auxLemma.10
+                    (Init.Data.Nat.Basic._auxLemma.3 (List.length.{0} ys_1)))
+                  hlen))
+            (Eq.symm.{1} h) hy hlen hvalue)
+        (Eq.refl.{1} ys))
+    (fun a xs ih {ys} hx hy hlen hvalue =>
+      List.casesOn.{0, 0} (motive := fun t => Eq.{1} ys t → Eq.{1} (List.cons.{0} a xs) ys) ys
+        (fun h =>
+          Eq.ndrec.{0, 1} (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              Eq.{1} (List.length.{0} (List.cons.{0} a xs)) (List.length.{0} ys) →
+                Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs))
+                    (P196.Agent15.SpectralCarry.weighted w ys) →
+                  Eq.{1} (List.cons.{0} a xs) ys)
+            (fun hy hlen hvalue =>
+              False.elim.{0} (Eq.mp.{0} (Init.Data.Nat.Basic._auxLemma.3 (List.length.{0} xs)) hlen))
+            (Eq.symm.{1} h) hy hlen hvalue)
+        (fun b ys_1 h =>
+          Eq.ndrec.{0, 1} (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              Eq.{1} (List.length.{0} (List.cons.{0} a xs)) (List.length.{0} ys) →
+                Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs))
+                    (P196.Agent15.SpectralCarry.weighted w ys) →
+                  Eq.{1} (List.cons.{0} a xs) ys)
+            (fun hy hlen hvalue =>
+              let_fun hx' := P196.Agent15.SpectralCarry.binary_tail hx;
+              let_fun hy' := P196.Agent15.SpectralCarry.binary_tail hy;
+              let_fun hlen' := Eq.mp.{0} Init.Data.Nat.Lemmas._auxLemma.6 hlen;
+              let_fun bx := P196.Agent15.SpectralCarry.weighted_bounds w hpos hx';
+              let_fun by' := P196.Agent15.SpectralCarry.weighted_bounds w hpos hy';
+              let_fun dx := hdom (List.length.{0} xs);
+              let_fun dy := hdom (List.length.{0} ys_1);
+              let_fun ha :=
+                hx a
+                  (of_eq_true
+                    (Eq.trans.{1} Init.Data.List.Lemmas._auxLemma.9.{0}
+                      (Eq.trans.{1} (congrArg.{1, 1} (fun x => Or x (Membership.mem.{0, 0} xs a)) (eq_self.{1} a))
+                        (true_or (Membership.mem.{0, 0} xs a)))));
+              let_fun hb :=
+                hy b
+                  (of_eq_true
+                    (Eq.trans.{1} Init.Data.List.Lemmas._auxLemma.9.{0}
+                      (Eq.trans.{1} (congrArg.{1, 1} (fun x => Or x (Membership.mem.{0, 0} ys_1 b)) (eq_self.{1} b))
+                        (true_or (Membership.mem.{0, 0} ys_1 b)))));
+              let_fun hab :=
+                Or.casesOn ha
+                  (fun h =>
+                    Eq.ndrec.{0, 1} (motive := fun a =>
+                      P196.Agent15.SpectralCarry.Binary (List.cons.{0} a xs) →
+                        Eq.{1} (List.length.{0} (List.cons.{0} a xs)) (List.length.{0} (List.cons.{0} b ys_1)) →
+                          Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs))
+                              (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} b ys_1)) →
+                            Eq.{1} a b)
+                      (fun hx hlen hvalue =>
+                        Or.casesOn hb
+                          (fun h =>
+                            Eq.ndrec.{0, 1} (motive := fun b =>
+                              P196.Agent15.SpectralCarry.Binary (List.cons.{0} b ys_1) →
+                                Eq.{1} (List.length.{0} (List.cons.{0} 0 xs)) (List.length.{0} (List.cons.{0} b ys_1)) →
+                                  Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} 0 xs))
+                                      (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} b ys_1)) →
+                                    Eq.{1} 0 b)
+                              (fun hy hlen hvalue => Eq.refl.{1} 0) (Eq.symm.{1} h) hy hlen hvalue)
+                          fun h =>
+                          Eq.ndrec.{0, 1} (motive := fun b =>
+                            P196.Agent15.SpectralCarry.Binary (List.cons.{0} b ys_1) →
+                              Eq.{1} (List.length.{0} (List.cons.{0} 0 xs)) (List.length.{0} (List.cons.{0} b ys_1)) →
+                                Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} 0 xs))
+                                    (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} b ys_1)) →
+                                  Eq.{1} 0 b)
+                            (fun hy hlen hvalue =>
+                              Decidable.byContradiction fun a =>
+                                P196.Agent15.SpectralCarry.weighted_injective_binary._proof_3 w xs ys_1 bx
+                                  (Eq.mp.{0}
+                                    (congrArg.{1, 1}
+                                      (fun _a =>
+                                        And (LE.le.{0} 0 (P196.Agent15.SpectralCarry.weighted w ys_1))
+                                          (LE.le.{0} (P196.Agent15.SpectralCarry.weighted w ys_1)
+                                            (P196.Agent15.SpectralCarry.weightSum w _a)))
+                                      (Eq.symm.{1} hlen'))
+                                    by')
+                                  dx (Eq.mp.{0} ⋯ hvalue))
+                            (Eq.symm.{1} h) hy hlen hvalue)
+                      (Eq.symm.{1} h) hx hlen hvalue)
+                  fun h =>
+                  Eq.ndrec.{0, 1} (motive := fun a =>
+                    P196.Agent15.SpectralCarry.Binary (List.cons.{0} a xs) →
+                      Eq.{1} (List.length.{0} (List.cons.{0} a xs)) (List.length.{0} (List.cons.{0} b ys_1)) →
+                        Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs))
+                            (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} b ys_1)) →
+                          Eq.{1} a b)
+                    (fun hx hlen hvalue =>
+                      Or.casesOn hb
+                        (fun h =>
+                          Eq.ndrec.{0, 1} (motive := fun b =>
+                            P196.Agent15.SpectralCarry.Binary (List.cons.{0} b ys_1) →
+                              Eq.{1} (List.length.{0} (List.cons.{0} 1 xs)) (List.length.{0} (List.cons.{0} b ys_1)) →
+                                Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} 1 xs))
+                                    (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} b ys_1)) →
+                                  Eq.{1} 1 b)
+                            (fun hy hlen hvalue =>
+                              Decidable.byContradiction fun a =>
+                                P196.Agent15.SpectralCarry.weighted_injective_binary._proof_4 w xs ys_1 bx
+                                  (Eq.mp.{0}
+                                    (congrArg.{1, 1}
+                                      (fun _a =>
+                                        And (LE.le.{0} 0 (P196.Agent15.SpectralCarry.weighted w ys_1))
+                                          (LE.le.{0} (P196.Agent15.SpectralCarry.weighted w ys_1)
+                                            (P196.Agent15.SpectralCarry.weightSum w _a)))
+                                      (Eq.symm.{1} hlen'))
+                                    by')
+                                  dx (Eq.mp.{0} ⋯ hvalue))
+                            (Eq.symm.{1} h) hy hlen hvalue)
+                        fun h =>
+                        Eq.ndrec.{0, 1} (motive := fun b =>
+                          P196.Agent15.SpectralCarry.Binary (List.cons.{0} b ys_1) →
+                            Eq.{1} (List.length.{0} (List.cons.{0} 1 xs)) (List.length.{0} (List.cons.{0} b ys_1)) →
+                              Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} 1 xs))
+                                  (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} b ys_1)) →
+                                Eq.{1} 1 b)
+                          (fun hy hlen hvalue => Eq.refl.{1} 1) (Eq.symm.{1} h) hy hlen hvalue)
+                    (Eq.symm.{1} h) hx hlen hvalue;
+              Eq.ndrec.{0, 1} (motive := fun b =>
+                P196.Agent15.SpectralCarry.Binary (List.cons.{0} b ys_1) →
+                  Eq.{1} (List.length.{0} (List.cons.{0} a xs)) (List.length.{0} (List.cons.{0} b ys_1)) →
+                    Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} a xs))
+                        (P196.Agent15.SpectralCarry.weighted w (List.cons.{0} b ys_1)) →
+                      Or (Eq.{1} b 0) (Eq.{1} b 1) → Eq.{1} (List.cons.{0} a xs) (List.cons.{0} b ys_1))
+                (fun hy hlen hvalue hb =>
+                  let_fun htail :=
+                    Decidable.byContradiction fun a_1 =>
+                      P196.Agent15.SpectralCarry.weighted_injective_binary._proof_5 w a xs ys_1
+                        (Eq.mp.{0}
+                          (congrArg.{1, 1}
+                            (fun _a =>
+                              Eq.{1}
+                                (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} (↑a) (w (List.length.{0} xs)))
+                                  (P196.Agent15.SpectralCarry.weighted w xs))
+                                (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} (↑a) (w _a))
+                                  (P196.Agent15.SpectralCarry.weighted w ys_1)))
+                            (Eq.symm.{1} hlen'))
+                          hvalue)
+                        a_1;
+                  congrArg.{1, 1} (List.cons.{0} a) (ih hx' hy' hlen' htail))
+                hab hy hlen hvalue hb)
+            (Eq.symm.{1} h) hy hlen hvalue)
+        (Eq.refl.{1} ys))
+    xs hx hy hlen hvalue
+'P196.Agent15.SpectralCarry.weighted_injective_binary' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.reverse_take_half_iff : ∀ {α : Type} (cs : List.{0} α),
+  Iff
+    (Eq.{1} (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) (List.reverse.{0} cs))
+      (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) cs))
+    (Eq.{1} (List.reverse.{0} cs) cs) :=
+fun {α} cs =>
+  {
+    mp := fun h =>
+      let_fun half := fun j hj =>
+        let_fun he := congrArg.{1, 1} (fun xs => GetElem?.getElem?.{0, 0, 0} xs j) h;
+        Eq.mp.{0}
+          (congr.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              ((fun x_0 x_1 => (fun x_0 x_1 => List.getElem?_take_of_lt.{0} hj) x_0 x_1) α (List.reverse.{0} cs)))
+            ((fun x_0 x_1 => (fun x_0 x_1 => List.getElem?_take_of_lt.{0} hj) x_0 x_1) α cs))
+          he;
+      List.ext_getElem?.{0} fun i =>
+        if hi : LT.lt.{0} i (List.length.{0} cs) then
+          if hf : LT.lt.{0} i (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) then half i hf
+          else
+            if hj :
+                LT.lt.{0} (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i)
+                  (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) then
+              let_fun he := half (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i) hj;
+              let_fun hjlen :=
+                Decidable.byContradiction fun a =>
+                  P196.Agent15.SpectralCarry.reverse_take_half_iff._proof_1 cs i hi hj a;
+              let_fun back :=
+                Decidable.byContradiction fun a =>
+                  P196.Agent15.SpectralCarry.reverse_take_half_iff._proof_2 cs i hi hjlen a;
+              Eq.mpr.{0}
+                (id.{0}
+                  (congrArg.{1, 1} (fun _a => Eq.{1} _a (GetElem?.getElem?.{0, 0, 0} cs i))
+                    (List.getElem?_reverse.{0} hi)))
+                (Eq.symm.{1}
+                  (Eq.mp.{0}
+                    (congrArg.{1, 1}
+                      (fun _a =>
+                        Eq.{1} (GetElem?.getElem?.{0, 0, 0} cs _a)
+                          (GetElem?.getElem?.{0, 0, 0} cs
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i)))
+                      back)
+                    (Eq.mp.{0}
+                      (congrArg.{1, 1}
+                        (fun _a =>
+                          Eq.{1} _a
+                            (GetElem?.getElem?.{0, 0, 0} cs
+                              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i)))
+                        (List.getElem?_reverse.{0} hjlen))
+                      he)))
+            else
+              let_fun center :=
+                Decidable.byContradiction fun a =>
+                  P196.Agent15.SpectralCarry.reverse_take_half_iff._proof_3 cs i hi hf hj a;
+              Eq.mpr.{0}
+                (id.{0}
+                  (congrArg.{1, 1} (fun _a => Eq.{1} _a (GetElem?.getElem?.{0, 0, 0} cs i))
+                    (List.getElem?_reverse.{0} hi)))
+                (Eq.mpr.{0}
+                  (id.{0}
+                    (congrArg.{1, 1}
+                      (fun _a => Eq.{1} (GetElem?.getElem?.{0, 0, 0} cs _a) (GetElem?.getElem?.{0, 0, 0} cs i)) center))
+                  (Eq.refl.{1} (GetElem?.getElem?.{0, 0, 0} cs i)))
+        else
+          let_fun hn :=
+            Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.reverse_take_half_iff._proof_4 cs i hi a;
+          let_fun hr := Eq.mpr.{0} (id.{0} (congrArg.{1, 1} (fun x => LE.le.{0} x i) List.length_reverse.{0})) hn;
+          Eq.trans.{1} (List.getElem?_eq_none.{0} hr) (Eq.symm.{1} (List.getElem?_eq_none.{0} hn)),
+    mpr := fun h =>
+      Eq.mpr.{0}
+        (id.{0}
+          (congrArg.{1, 1}
+            (fun _a =>
+              Eq.{1} (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) _a)
+                (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) cs))
+            h))
+        (Eq.refl.{1} (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) cs)) }
+'P196.Agent15.SpectralCarry.reverse_take_half_iff' depends on axioms: [propext, Quot.sound]
+def P196.Agent15.SpectralCarry.halfCharge : (Nat → Int) → List.{0} Nat → Int :=
+fun w cs =>
+  HSub.hSub.{0, 0, 0}
+    (P196.Agent15.SpectralCarry.weighted w
+      (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) (List.reverse.{0} cs)))
+    (P196.Agent15.SpectralCarry.weighted w (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) cs))
+'P196.Agent15.SpectralCarry.halfCharge' does not depend on any axioms
+def P196.Agent15.SpectralCarry.oddCharge : List.{0} Nat → Int :=
+fun cs => P196.Agent15.SpectralCarry.halfCharge P196.Agent15.SpectralCarry.oddWeight cs
+'P196.Agent15.SpectralCarry.oddCharge' does not depend on any axioms
+def P196.Agent15.SpectralCarry.evenCharge : List.{0} Nat → Int :=
+fun cs => P196.Agent15.SpectralCarry.halfCharge P196.Agent15.SpectralCarry.evenWeight cs
+'P196.Agent15.SpectralCarry.evenCharge' does not depend on any axioms
+def P196.Agent15.SpectralCarry.carryCharge : List.{0} Nat → Int :=
+fun cs =>
+  ite.{1} (Eq.{1} (HMod.hMod.{0, 0, 0} (List.length.{0} cs) 2) 1) (P196.Agent15.SpectralCarry.oddCharge cs)
+    (P196.Agent15.SpectralCarry.evenCharge cs)
+'P196.Agent15.SpectralCarry.carryCharge' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.binary_reverse : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs → P196.Agent15.SpectralCarry.Binary (List.reverse.{0} cs) :=
+fun {cs} h a ha => h a (Iff.mp List.mem_reverse.{0} ha)
+'P196.Agent15.SpectralCarry.binary_reverse' depends on axioms: [propext]
+theorem P196.Agent15.SpectralCarry.binary_take : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs → ∀ (n : Nat), P196.Agent15.SpectralCarry.Binary (List.take.{0} n cs) :=
+fun {cs} h n a ha => h a (List.mem_of_mem_take.{0} ha)
+'P196.Agent15.SpectralCarry.binary_take' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.halfCharge_zero_iff : ∀ (w : Nat → Int),
+  (∀ (n : Nat), LE.le.{0} 0 (w n)) →
+    (∀ (n : Nat), LT.lt.{0} (P196.Agent15.SpectralCarry.weightSum w n) (w n)) →
+      ∀ {cs : List.{0} Nat},
+        P196.Agent15.SpectralCarry.Binary cs →
+          Iff (Eq.{1} (P196.Agent15.SpectralCarry.halfCharge w cs) 0) (Eq.{1} (List.reverse.{0} cs) cs) :=
+fun w hpos hdom {cs} hc =>
+  {
+    mp := fun hz =>
+      Iff.mp (P196.Agent15.SpectralCarry.reverse_take_half_iff cs)
+        (P196.Agent15.SpectralCarry.weighted_injective_binary w hpos hdom
+          (P196.Agent15.SpectralCarry.binary_take (P196.Agent15.SpectralCarry.binary_reverse hc)
+            (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2))
+          (P196.Agent15.SpectralCarry.binary_take hc (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2))
+          (of_eq_true
+            (Eq.trans.{1}
+              (congr.{1, 1}
+                (congrArg.{1, 1} Eq.{1}
+                  (Eq.trans.{1} List.length_take.{0}
+                    (congrArg.{1, 1} (Min.min.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2))
+                      List.length_reverse.{0})))
+                List.length_take.{0})
+              (eq_self.{1} (Min.min.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) (List.length.{0} cs)))))
+          (Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.halfCharge_zero_iff._proof_5 w hz a)),
+    mpr := fun h =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrArg.{1, 1} (fun x => Eq.{1} x 0)
+            (Eq.trans.{1}
+              (congrArg.{1, 1}
+                (fun x =>
+                  HSub.hSub.{0, 0, 0}
+                    (P196.Agent15.SpectralCarry.weighted w
+                      (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) x))
+                    (P196.Agent15.SpectralCarry.weighted w
+                      (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) cs)))
+                h)
+              (Int.sub_self
+                (P196.Agent15.SpectralCarry.weighted w
+                  (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) cs)))))
+          (eq_self.{1} 0)) }
+'P196.Agent15.SpectralCarry.halfCharge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.oddCharge_zero_iff : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs →
+    Iff (Eq.{1} (P196.Agent15.SpectralCarry.oddCharge cs) 0) (Eq.{1} (List.reverse.{0} cs) cs) :=
+fun {cs} hc =>
+  P196.Agent15.SpectralCarry.halfCharge_zero_iff P196.Agent15.SpectralCarry.oddWeight
+    (fun n => Int.le_of_lt (P196.Agent15.SpectralCarry.oddWeight_pos n))
+    P196.Agent15.SpectralCarry.oddWeight_superincreasing hc
+'P196.Agent15.SpectralCarry.oddCharge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenCharge_zero_iff : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs →
+    Iff (Eq.{1} (P196.Agent15.SpectralCarry.evenCharge cs) 0) (Eq.{1} (List.reverse.{0} cs) cs) :=
+fun {cs} hc =>
+  P196.Agent15.SpectralCarry.halfCharge_zero_iff P196.Agent15.SpectralCarry.evenWeight
+    (fun n => Int.le_of_lt (P196.Agent15.SpectralCarry.evenWeight_pos n))
+    P196.Agent15.SpectralCarry.evenWeight_superincreasing hc
+'P196.Agent15.SpectralCarry.evenCharge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.carryCharge_zero_iff : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs →
+    Iff (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge cs) 0) (Eq.{1} (List.reverse.{0} cs) cs) :=
+fun {cs} hc =>
+  id.{0}
+    (Decidable.casesOn.{0} (instDecidableEqNat (HMod.hMod.{0, 0, 0} (List.length.{0} cs) 2) 1)
+      (fun h =>
+        Eq.mpr.{0}
+          (id.{0} (congrArg.{1, 1} (fun x => Iff (Eq.{1} x 0) (Eq.{1} (List.reverse.{0} cs) cs)) (if_neg.{1} h)))
+          (P196.Agent15.SpectralCarry.evenCharge_zero_iff hc))
+      fun h =>
+      Eq.mpr.{0} (id.{0} (congrArg.{1, 1} (fun x => Iff (Eq.{1} x 0) (Eq.{1} (List.reverse.{0} cs) cs)) (if_pos.{1} h)))
+        (P196.Agent15.SpectralCarry.oddCharge_zero_iff hc))
+'P196.Agent15.SpectralCarry.carryCharge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+def P196.Agent15.SpectralCarry.sumFirst : (Nat → Int) → Nat → Int :=
+fun x x_1 =>
+  Nat.brecOn.{1} (motive := fun x => (Nat → Int) → Int) x_1
+    (fun x f x_2 =>
+      (match (motive := (Nat → Int) → (x : Nat) → Nat.below.{1} (motive := fun x => (Nat → Int) → Int) x → Int) x_2,
+          x with
+        | x, 0 => fun x => 0
+        | f, Nat.succ n => fun x => HAdd.hAdd.{0, 0, 0} (f 0) (x.1 fun i => f (HAdd.hAdd.{0, 0, 0} i 1)))
+        f)
+    x
+'P196.Agent15.SpectralCarry.sumFirst' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.sumFirst_eq_range_sum : ∀ (f : Nat → Int) (n : Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.sumFirst f n) (List.sum.{0} (List.map.{0, 0} f (List.range n))) :=
+fun f n =>
+  Nat.recAux.{0} (motive := fun n =>
+    ∀ (f : Nat → Int),
+      Eq.{1} (P196.Agent15.SpectralCarry.sumFirst f n) (List.sum.{0} (List.map.{0, 0} f (List.range n))))
+    (fun f => Eq.refl.{1} (P196.Agent15.SpectralCarry.sumFirst f 0))
+    (fun n ih f =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congr.{1, 1}
+            (congrArg.{1, 1} (fun x => Eq.{1} (HAdd.hAdd.{0, 0, 0} (f 0) x))
+              ((fun f => ih f) fun i => f (HAdd.hAdd.{0, 0, 0} i 1)))
+            (congrArg.{1, 1} List.sum.{0}
+              (Eq.trans.{1} (congrArg.{1, 1} (List.map.{0, 0} f) List.range_succ_eq_map)
+                (congrArg.{1, 1} (List.cons.{0} (f 0)) List.map_map.{0, 0, 0}))))
+          (eq_self.{1}
+            (HAdd.hAdd.{0, 0, 0} (f 0)
+              (List.sum.{0} (List.map.{0, 0} (fun i => f (HAdd.hAdd.{0, 0, 0} i 1)) (List.range n)))))))
+    n f
+'P196.Agent15.SpectralCarry.sumFirst_eq_range_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.sumFirst_congr : ∀ {f g : Nat → Int} (n : Nat),
+  (∀ (i : Nat), LT.lt.{0} i n → Eq.{1} (f i) (g i)) →
+    Eq.{1} (P196.Agent15.SpectralCarry.sumFirst f n) (P196.Agent15.SpectralCarry.sumFirst g n) :=
+fun {f g} n h =>
+  Nat.recAux.{0} (motive := fun n =>
+    ∀ {f g : Nat → Int},
+      (∀ (i : Nat), LT.lt.{0} i n → Eq.{1} (f i) (g i)) →
+        Eq.{1} (P196.Agent15.SpectralCarry.sumFirst f n) (P196.Agent15.SpectralCarry.sumFirst g n))
+    (fun {f g} h => Eq.refl.{1} (P196.Agent15.SpectralCarry.sumFirst f 0))
+    (fun n ih {f g} h =>
+      id.{0}
+        (Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun _a =>
+                Eq.{1}
+                  (HAdd.hAdd.{0, 0, 0} _a
+                    (P196.Agent15.SpectralCarry.sumFirst (fun i => f (HAdd.hAdd.{0, 0, 0} i 1)) n))
+                  (HAdd.hAdd.{0, 0, 0} (g 0)
+                    (P196.Agent15.SpectralCarry.sumFirst (fun i => g (HAdd.hAdd.{0, 0, 0} i 1)) n)))
+              (h 0 (Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.sumFirst_congr._proof_1 n a))))
+          (congrArg.{1, 1} (fun z => HAdd.hAdd.{0, 0, 0} (g 0) z)
+            (ih fun i hi =>
+              h (HAdd.hAdd.{0, 0, 0} i 1)
+                (Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.sumFirst_congr._proof_2 n i hi a)))))
+    n h
+'P196.Agent15.SpectralCarry.sumFirst_congr' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.sumFirst_sub : ∀ (f g : Nat → Int) (n : Nat),
+  Eq.{1} (HSub.hSub.{0, 0, 0} (P196.Agent15.SpectralCarry.sumFirst f n) (P196.Agent15.SpectralCarry.sumFirst g n))
+    (P196.Agent15.SpectralCarry.sumFirst (fun i => HSub.hSub.{0, 0, 0} (f i) (g i)) n) :=
+fun f g n =>
+  Nat.recAux.{0} (motive := fun n =>
+    ∀ (f g : Nat → Int),
+      Eq.{1} (HSub.hSub.{0, 0, 0} (P196.Agent15.SpectralCarry.sumFirst f n) (P196.Agent15.SpectralCarry.sumFirst g n))
+        (P196.Agent15.SpectralCarry.sumFirst (fun i => HSub.hSub.{0, 0, 0} (f i) (g i)) n))
+    (fun f g => of_eq_true (Eq.trans.{1} (congrArg.{1, 1} (fun x => Eq.{1} x 0) (Int.sub_self 0)) (eq_self.{1} 0)))
+    (fun n ih f g =>
+      id.{0}
+        (let_fun h := ih (fun i => f (HAdd.hAdd.{0, 0, 0} i 1)) fun i => g (HAdd.hAdd.{0, 0, 0} i 1);
+        Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.sumFirst_sub._proof_3 n f g h a))
+    n f g
+'P196.Agent15.SpectralCarry.sumFirst_sub' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.weighted_eq_sumFirst : ∀ (w : Nat → Int) (cs : List.{0} Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.weighted w cs)
+    (P196.Agent15.SpectralCarry.sumFirst
+      (fun i =>
+        HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+          (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i)))
+      (List.length.{0} cs)) :=
+fun w cs =>
+  List.rec.{0, 0} (Eq.refl.{1} (P196.Agent15.SpectralCarry.weighted w List.nil.{0}))
+    (fun a cs ih =>
+      id.{0}
+        (Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun _a =>
+                Eq.{1} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} (↑a) (w (List.length.{0} cs))) _a)
+                  (HAdd.hAdd.{0, 0, 0}
+                    (HMul.hMul.{0, 0, 0} (↑a)
+                      (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} cs) 1) 1) 0)))
+                    (P196.Agent15.SpectralCarry.sumFirst
+                      (fun i =>
+                        HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                          (w
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} cs) 1) 1)
+                              (HAdd.hAdd.{0, 0, 0} i 1))))
+                      (List.length.{0} cs))))
+              ih))
+          ((fun {α β γ} [HAdd.{0, 0, 0} α β γ] a a_1 e_a =>
+              Eq.rec.{0, 1} (motive := fun a_2 e_a =>
+                ∀ (a_3 a_4 : β), Eq.{1} a_3 a_4 → Eq.{1} (HAdd.hAdd.{0, 0, 0} a a_3) (HAdd.hAdd.{0, 0, 0} a_2 a_4))
+                (fun a_2 a_3 e_a => Eq.rec.{0, 1} (Eq.refl.{1} (HAdd.hAdd.{0, 0, 0} a a_2)) e_a) e_a)
+            (HMul.hMul.{0, 0, 0} (↑a) (w (List.length.{0} cs)))
+            (HMul.hMul.{0, 0, 0} (↑a)
+              (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} cs) 1) 1) 0)))
+            (Eq.refl.{1} (HMul.hMul.{0, 0, 0} (↑a) (w (List.length.{0} cs))))
+            (P196.Agent15.SpectralCarry.sumFirst
+              (fun i =>
+                HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                  (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i)))
+              (List.length.{0} cs))
+            (P196.Agent15.SpectralCarry.sumFirst
+              (fun i =>
+                HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                  (w
+                    (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} cs) 1) 1)
+                      (HAdd.hAdd.{0, 0, 0} i 1))))
+              (List.length.{0} cs))
+            (P196.Agent15.SpectralCarry.sumFirst_congr (List.length.{0} cs) fun i hi =>
+              (fun {α β γ} [HMul.{0, 0, 0} α β γ] a a_1 e_a =>
+                  Eq.rec.{0, 1} (motive := fun a_2 e_a =>
+                    ∀ (a_3 a_4 : β), Eq.{1} a_3 a_4 → Eq.{1} (HMul.hMul.{0, 0, 0} a a_3) (HMul.hMul.{0, 0, 0} a_2 a_4))
+                    (fun a_2 a_3 e_a => Eq.rec.{0, 1} (Eq.refl.{1} (HMul.hMul.{0, 0, 0} a a_2)) e_a) e_a)
+                (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                (Eq.refl.{1} ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                (w
+                  (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} cs) 1) 1)
+                    (HAdd.hAdd.{0, 0, 0} i 1)))
+                ((fun a a_1 e_a => Eq.rec.{0, 1} (Eq.refl.{1} (w a)) e_a)
+                  (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i)
+                  (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} cs) 1) 1)
+                    (HAdd.hAdd.{0, 0, 0} i 1))
+                  (Decidable.byContradiction fun a =>
+                    P196.Agent15.SpectralCarry.weighted_eq_sumFirst._proof_4 w cs i hi a))))))
+    cs
+'P196.Agent15.SpectralCarry.weighted_eq_sumFirst' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.weighted_take_eq_sumFirst : ∀ (w : Nat → Int) (cs : List.{0} Nat) (n : Nat),
+  LE.le.{0} n (List.length.{0} cs) →
+    Eq.{1} (P196.Agent15.SpectralCarry.weighted w (List.take.{0} n cs))
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+            (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} n 1) i)))
+        n) :=
+fun w cs n hn =>
+  Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1}
+        (fun _a =>
+          Eq.{1} _a
+            (P196.Agent15.SpectralCarry.sumFirst
+              (fun i =>
+                HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                  (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} n 1) i)))
+              n))
+        (P196.Agent15.SpectralCarry.weighted_eq_sumFirst w (List.take.{0} n cs))))
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1}
+          (fun _a =>
+            Eq.{1}
+              (P196.Agent15.SpectralCarry.sumFirst
+                (fun i =>
+                  HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} (List.take.{0} n cs) i) 0))
+                    (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} _a 1) i)))
+                _a)
+              (P196.Agent15.SpectralCarry.sumFirst
+                (fun i =>
+                  HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                    (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} n 1) i)))
+                n))
+          (List.length_take_of_le.{0} hn)))
+      (P196.Agent15.SpectralCarry.sumFirst_congr n fun i hi =>
+        Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun _a =>
+                Eq.{1}
+                  (HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} _a 0)) (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} n 1) i)))
+                  (HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                    (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} n 1) i))))
+              (List.getElem?_take_of_lt.{0} hi)))
+          (Eq.refl.{1}
+            (HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+              (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} n 1) i))))))
+'P196.Agent15.SpectralCarry.weighted_take_eq_sumFirst' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.halfCharge_eq_source_sum : ∀ (w : Nat → Int) (cs : List.{0} Nat),
+  Eq.{1} (P196.Agent15.SpectralCarry.halfCharge w cs)
+    (P196.Agent15.SpectralCarry.sumFirst
+      (fun i =>
+        HMul.hMul.{0, 0, 0}
+          (HSub.hSub.{0, 0, 0}
+            ↑(Option.getD.{0}
+                (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i)) 0)
+            ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+          (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+      (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2)) :=
+fun w cs =>
+  let_fun hn := Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.halfCharge_eq_source_sum._proof_5 cs a;
+  let_fun hr :=
+    Eq.mpr.{0}
+      (id.{0} (congrArg.{1, 1} (LE.le.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2)) List.length_reverse.{0})) hn;
+  id.{0}
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1}
+          (fun _a =>
+            Eq.{1}
+              (HSub.hSub.{0, 0, 0} _a
+                (P196.Agent15.SpectralCarry.weighted w (List.take.{0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) cs)))
+              (P196.Agent15.SpectralCarry.sumFirst
+                (fun i =>
+                  HMul.hMul.{0, 0, 0}
+                    (HSub.hSub.{0, 0, 0}
+                      ↑(Option.getD.{0}
+                          (GetElem?.getElem?.{0, 0, 0} cs
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                          0)
+                      ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                    (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+                (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2)))
+          (P196.Agent15.SpectralCarry.weighted_take_eq_sumFirst w (List.reverse.{0} cs)
+            (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) hr)))
+      (Eq.mpr.{0}
+        (id.{0}
+          (congrArg.{1, 1}
+            (fun _a =>
+              Eq.{1}
+                (HSub.hSub.{0, 0, 0}
+                  (P196.Agent15.SpectralCarry.sumFirst
+                    (fun i =>
+                      HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} (List.reverse.{0} cs) i) 0))
+                        (w
+                          (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+                    (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2))
+                  _a)
+                (P196.Agent15.SpectralCarry.sumFirst
+                  (fun i =>
+                    HMul.hMul.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        ↑(Option.getD.{0}
+                            (GetElem?.getElem?.{0, 0, 0} cs
+                              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                            0)
+                        ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+                  (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2)))
+            (P196.Agent15.SpectralCarry.weighted_take_eq_sumFirst w cs (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2)
+              hn)))
+        (Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun _a =>
+                Eq.{1} _a
+                  (P196.Agent15.SpectralCarry.sumFirst
+                    (fun i =>
+                      HMul.hMul.{0, 0, 0}
+                        (HSub.hSub.{0, 0, 0}
+                          ↑(Option.getD.{0}
+                              (GetElem?.getElem?.{0, 0, 0} cs
+                                (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                              0)
+                          ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                        (w
+                          (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+                    (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2)))
+              (P196.Agent15.SpectralCarry.sumFirst_sub
+                (fun i =>
+                  HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} (List.reverse.{0} cs) i) 0))
+                    (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+                (fun i =>
+                  HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                    (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+                (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2))))
+          (P196.Agent15.SpectralCarry.sumFirst_congr (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) fun i hi =>
+            let_fun hil :=
+              Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.halfCharge_eq_source_sum._proof_6 cs i hi a;
+            Eq.mpr.{0}
+              (id.{0}
+                (congrArg.{1, 1}
+                  (fun _a =>
+                    Eq.{1}
+                      (HSub.hSub.{0, 0, 0}
+                        (HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} _a 0))
+                          (w
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1)
+                              i)))
+                        (HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                          (w
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1)
+                              i))))
+                      (HMul.hMul.{0, 0, 0}
+                        (HSub.hSub.{0, 0, 0}
+                          ↑(Option.getD.{0}
+                              (GetElem?.getElem?.{0, 0, 0} cs
+                                (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                              0)
+                          ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                        (w
+                          (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1)
+                            i))))
+                  (List.getElem?_reverse.{0} hil)))
+              (Eq.mpr.{0}
+                (id.{0}
+                  (congrArg.{1, 1}
+                    (fun _a =>
+                      Eq.{1}
+                        (HSub.hSub.{0, 0, 0}
+                          (HMul.hMul.{0, 0, 0}
+                            (↑(Option.getD.{0}
+                                (GetElem?.getElem?.{0, 0, 0} cs
+                                  (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                                0))
+                            (w
+                              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1)
+                                i)))
+                          (HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                            (w
+                              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1)
+                                i))))
+                        _a)
+                    (Int.sub_mul
+                      (↑(Option.getD.{0}
+                          (GetElem?.getElem?.{0, 0, 0} cs
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                          0))
+                      (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (w
+                        (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))))
+                (Eq.refl.{1}
+                  (HSub.hSub.{0, 0, 0}
+                    (HMul.hMul.{0, 0, 0}
+                      (↑(Option.getD.{0}
+                          (GetElem?.getElem?.{0, 0, 0} cs
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                          0))
+                      (w (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1) i)))
+                    (HMul.hMul.{0, 0, 0} (↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (w
+                        (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (List.length.{0} cs) 2) 1)
+                          i))))))))))
+'P196.Agent15.SpectralCarry.halfCharge_eq_source_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.oddCharge_eq_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  Eq.{1} (List.length.{0} cs) (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) →
+    Eq.{1} (P196.Agent15.SpectralCarry.oddCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          HMul.hMul.{0, 0, 0}
+            (HSub.hSub.{0, 0, 0}
+              ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i)) 0)
+              ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+            (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i)))
+        m) :=
+fun cs m hlen =>
+  id.{0}
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1}
+          (fun _a =>
+            Eq.{1} _a
+              (P196.Agent15.SpectralCarry.sumFirst
+                (fun i =>
+                  HMul.hMul.{0, 0, 0}
+                    (HSub.hSub.{0, 0, 0}
+                      ↑(Option.getD.{0}
+                          (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i)) 0)
+                      ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                    (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i)))
+                m))
+          (P196.Agent15.SpectralCarry.halfCharge_eq_source_sum P196.Agent15.SpectralCarry.oddWeight cs)))
+      (let_fun hm :=
+        Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.oddCharge_eq_source_sum._proof_7 cs m hlen a;
+      Eq.mpr.{0}
+        (id.{0}
+          (congrArg.{1, 1}
+            (fun _a =>
+              Eq.{1}
+                (P196.Agent15.SpectralCarry.sumFirst
+                  (fun i =>
+                    HMul.hMul.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        ↑(Option.getD.{0}
+                            (GetElem?.getElem?.{0, 0, 0} cs
+                              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                            0)
+                        ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (P196.Agent15.SpectralCarry.oddWeight (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} _a 1) i)))
+                  _a)
+                (P196.Agent15.SpectralCarry.sumFirst
+                  (fun i =>
+                    HMul.hMul.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        ↑(Option.getD.{0}
+                            (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i)) 0)
+                        ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i)))
+                  m))
+            hm))
+        (P196.Agent15.SpectralCarry.sumFirst_congr m fun i hi =>
+          let_fun hind :=
+            Decidable.byContradiction fun a =>
+              P196.Agent15.SpectralCarry.oddCharge_eq_source_sum._proof_8 cs m hlen hm i hi a;
+          let_fun hw :=
+            Decidable.byContradiction fun a =>
+              P196.Agent15.SpectralCarry.oddCharge_eq_source_sum._proof_9 cs m hm i hi a;
+          of_eq_true
+            (Eq.trans.{1}
+              (congrArg.{1, 1}
+                (fun x =>
+                  Eq.{1} x
+                    (HMul.hMul.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        ↑(Option.getD.{0}
+                            (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i)) 0)
+                        ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i))))
+                (congr.{1, 1}
+                  (congrArg.{1, 1}
+                    (fun x =>
+                      HMul.hMul.{0, 0, 0}
+                        (HSub.hSub.{0, 0, 0} ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs x) 0)
+                          ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0)))
+                    hind)
+                  (congrArg.{1, 1} P196.Agent15.SpectralCarry.U hw)))
+              (eq_self.{1}
+                (HMul.hMul.{0, 0, 0}
+                  (HSub.hSub.{0, 0, 0}
+                    ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i))
+                        0)
+                    ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                  (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i))))))))
+'P196.Agent15.SpectralCarry.oddCharge_eq_source_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenCharge_eq_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  Eq.{1} (List.length.{0} cs) (HMul.hMul.{0, 0, 0} 2 m) →
+    Eq.{1} (P196.Agent15.SpectralCarry.evenCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          HMul.hMul.{0, 0, 0}
+            (HSub.hSub.{0, 0, 0}
+              ↑(Option.getD.{0}
+                  (GetElem?.getElem?.{0, 0, 0} cs
+                    (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                  0)
+              ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+            (P196.Agent15.SpectralCarry.S (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+        m) :=
+fun cs m hlen =>
+  id.{0}
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1}
+          (fun _a =>
+            Eq.{1} _a
+              (P196.Agent15.SpectralCarry.sumFirst
+                (fun i =>
+                  HMul.hMul.{0, 0, 0}
+                    (HSub.hSub.{0, 0, 0}
+                      ↑(Option.getD.{0}
+                          (GetElem?.getElem?.{0, 0, 0} cs
+                            (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                          0)
+                      ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                    (P196.Agent15.SpectralCarry.S (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+                m))
+          (P196.Agent15.SpectralCarry.halfCharge_eq_source_sum P196.Agent15.SpectralCarry.evenWeight cs)))
+      (let_fun hm :=
+        Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.evenCharge_eq_source_sum._proof_10 cs m hlen a;
+      Eq.mpr.{0}
+        (id.{0}
+          (congrArg.{1, 1}
+            (fun _a =>
+              Eq.{1}
+                (P196.Agent15.SpectralCarry.sumFirst
+                  (fun i =>
+                    HMul.hMul.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        ↑(Option.getD.{0}
+                            (GetElem?.getElem?.{0, 0, 0} cs
+                              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (List.length.{0} cs) 1) i))
+                            0)
+                        ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (P196.Agent15.SpectralCarry.evenWeight (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} _a 1) i)))
+                  _a)
+                (P196.Agent15.SpectralCarry.sumFirst
+                  (fun i =>
+                    HMul.hMul.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        ↑(Option.getD.{0}
+                            (GetElem?.getElem?.{0, 0, 0} cs
+                              (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                            0)
+                        ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                      (P196.Agent15.SpectralCarry.S (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+                  m))
+            hm))
+        (Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun _a =>
+                Eq.{1}
+                  (P196.Agent15.SpectralCarry.sumFirst
+                    (fun i =>
+                      HMul.hMul.{0, 0, 0}
+                        (HSub.hSub.{0, 0, 0}
+                          ↑(Option.getD.{0}
+                              (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} _a 1) i)) 0)
+                          ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                        (P196.Agent15.SpectralCarry.evenWeight (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+                    m)
+                  (P196.Agent15.SpectralCarry.sumFirst
+                    (fun i =>
+                      HMul.hMul.{0, 0, 0}
+                        (HSub.hSub.{0, 0, 0}
+                          ↑(Option.getD.{0}
+                              (GetElem?.getElem?.{0, 0, 0} cs
+                                (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                              0)
+                          ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                        (P196.Agent15.SpectralCarry.S (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+                    m))
+              hlen))
+          (Eq.refl.{1}
+            (P196.Agent15.SpectralCarry.sumFirst
+              (fun i =>
+                HMul.hMul.{0, 0, 0}
+                  (HSub.hSub.{0, 0, 0}
+                    ↑(Option.getD.{0}
+                        (GetElem?.getElem?.{0, 0, 0} cs
+                          (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                        0)
+                    ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                  (P196.Agent15.SpectralCarry.evenWeight (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+              m)))))
+'P196.Agent15.SpectralCarry.evenCharge_eq_source_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  Eq.{1} (List.length.{0} cs) (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) →
+    Eq.{1} (P196.Agent15.SpectralCarry.carryCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          HMul.hMul.{0, 0, 0}
+            (HSub.hSub.{0, 0, 0}
+              ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i)) 0)
+              ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+            (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i)))
+        m) :=
+fun cs m hlen =>
+  let_fun hp :=
+    Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum._proof_11 cs m hlen a;
+  Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1}
+        (fun x =>
+          Eq.{1} x
+            (P196.Agent15.SpectralCarry.sumFirst
+              (fun i =>
+                HMul.hMul.{0, 0, 0}
+                  (HSub.hSub.{0, 0, 0}
+                    ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i))
+                        0)
+                    ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                  (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i)))
+              m))
+        (ite_cond_eq_true.{1} (P196.Agent15.SpectralCarry.oddCharge cs) (P196.Agent15.SpectralCarry.evenCharge cs)
+          (Eq.trans.{1} (congrArg.{1, 1} (fun x => Eq.{1} x 1) hp) (eq_self.{1} 1)))))
+    (P196.Agent15.SpectralCarry.oddCharge_eq_source_sum cs m hlen)
+'P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  Eq.{1} (List.length.{0} cs) (HMul.hMul.{0, 0, 0} 2 m) →
+    Eq.{1} (P196.Agent15.SpectralCarry.carryCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          HMul.hMul.{0, 0, 0}
+            (HSub.hSub.{0, 0, 0}
+              ↑(Option.getD.{0}
+                  (GetElem?.getElem?.{0, 0, 0} cs
+                    (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                  0)
+              ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+            (P196.Agent15.SpectralCarry.S (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+        m) :=
+fun cs m hlen =>
+  let_fun hp := fun a => P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum._proof_12 cs m hlen a;
+  Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1}
+        (fun x =>
+          Eq.{1} x
+            (P196.Agent15.SpectralCarry.sumFirst
+              (fun i =>
+                HMul.hMul.{0, 0, 0}
+                  (HSub.hSub.{0, 0, 0}
+                    ↑(Option.getD.{0}
+                        (GetElem?.getElem?.{0, 0, 0} cs
+                          (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                        0)
+                    ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                  (P196.Agent15.SpectralCarry.S (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+              m))
+        (ite_cond_eq_false.{1} (P196.Agent15.SpectralCarry.oddCharge cs) (P196.Agent15.SpectralCarry.evenCharge cs)
+          (eq_false hp))))
+    (P196.Agent15.SpectralCarry.evenCharge_eq_source_sum cs m hlen)
+'P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.odd_source_charge_zero_iff : ∀ (cs : List.{0} Nat) (m : Nat),
+  Eq.{1} (List.length.{0} cs) (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) →
+    P196.Agent15.SpectralCarry.Binary cs →
+      Iff
+        (Eq.{1}
+          (P196.Agent15.SpectralCarry.sumFirst
+            (fun i =>
+              HMul.hMul.{0, 0, 0}
+                (HSub.hSub.{0, 0, 0}
+                  ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) i))
+                      0)
+                  ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                (P196.Agent15.SpectralCarry.U (HSub.hSub.{0, 0, 0} m i)))
+            m)
+          0)
+        (Eq.{1} (List.reverse.{0} cs) cs) :=
+fun cs m hlen hc =>
+  Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1} (fun _a => Iff (Eq.{1} _a 0) (Eq.{1} (List.reverse.{0} cs) cs))
+        (Eq.symm.{1} (P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum cs m hlen))))
+    (P196.Agent15.SpectralCarry.carryCharge_zero_iff hc)
+'P196.Agent15.SpectralCarry.odd_source_charge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.even_source_charge_zero_iff : ∀ (cs : List.{0} Nat) (m : Nat),
+  Eq.{1} (List.length.{0} cs) (HMul.hMul.{0, 0, 0} 2 m) →
+    P196.Agent15.SpectralCarry.Binary cs →
+      Iff
+        (Eq.{1}
+          (P196.Agent15.SpectralCarry.sumFirst
+            (fun i =>
+              HMul.hMul.{0, 0, 0}
+                (HSub.hSub.{0, 0, 0}
+                  ↑(Option.getD.{0}
+                      (GetElem?.getElem?.{0, 0, 0} cs
+                        (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 m) 1) i))
+                      0)
+                  ↑(Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} cs i) 0))
+                (P196.Agent15.SpectralCarry.S (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} m 1) i)))
+            m)
+          0)
+        (Eq.{1} (List.reverse.{0} cs) cs) :=
+fun cs m hlen hc =>
+  Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1} (fun _a => Iff (Eq.{1} _a 0) (Eq.{1} (List.reverse.{0} cs) cs))
+        (Eq.symm.{1} (P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum cs m hlen))))
+    (P196.Agent15.SpectralCarry.carryCharge_zero_iff hc)
+'P196.Agent15.SpectralCarry.even_source_charge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.control_empty : Eq.{1} (P196.Agent15.SpectralCarry.carryCharge List.nil.{0}) 0 :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_empty' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_singletons : And
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 0 List.nil.{0})) 0)
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 1 List.nil.{0})) 0) :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_singletons' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_length_two : And
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 0 (List.cons.{0} 1 List.nil.{0}))) 1)
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 1 (List.cons.{0} 0 List.nil.{0}))) (-1)) :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_length_two' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_free_odd_center : And
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 0 (List.cons.{0} 0 (List.cons.{0} 0 List.nil.{0})))) 0)
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 0 (List.cons.{0} 1 (List.cons.{0} 0 List.nil.{0}))))
+    0) :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_free_odd_center' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_symmetric_even : Eq.{1}
+  (P196.Agent15.SpectralCarry.carryCharge
+    (List.cons.{0} 1 (List.cons.{0} 0 (List.cons.{0} 0 (List.cons.{0} 1 List.nil.{0})))))
+  0 :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_symmetric_even' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_original_419 : Eq.{1}
+  (P196.Agent15.SpectralCarry.carryCharge
+    (List.cons.{0} 0
+      (List.cons.{0} 1 (List.cons.{0} 0 (List.cons.{0} 0 (List.cons.{0} 1 (List.cons.{0} 1 List.nil.{0})))))))
+  419 :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_original_419' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_nonbinary_counterexample : And
+  (Eq.{1}
+    (P196.Agent15.SpectralCarry.carryCharge
+      (List.cons.{0} 1 (List.cons.{0} 0 (List.cons.{0} 21 (List.cons.{0} 0 List.nil.{0})))))
+    0)
+  (Ne.{1} (List.reverse.{0} (List.cons.{0} 1 (List.cons.{0} 0 (List.cons.{0} 21 (List.cons.{0} 0 List.nil.{0})))))
+    (List.cons.{0} 1 (List.cons.{0} 0 (List.cons.{0} 21 (List.cons.{0} 0 List.nil.{0}))))) :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_nonbinary_counterexample' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_incoming_zero_convention : And
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 1 (List.cons.{0} 1 List.nil.{0}))) 0)
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 0 (List.cons.{0} 1 (List.cons.{0} 1 List.nil.{0}))))
+    1) :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_incoming_zero_convention' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.control_zero_overflow_convention : And
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 0 (List.cons.{0} 1 (List.cons.{0} 0 List.nil.{0})))) 0)
+  (Eq.{1} (P196.Agent15.SpectralCarry.carryCharge (List.cons.{0} 0 (List.cons.{0} 1 List.nil.{0}))) 1) :=
+of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true))
+'P196.Agent15.SpectralCarry.control_zero_overflow_convention' does not depend on any axioms

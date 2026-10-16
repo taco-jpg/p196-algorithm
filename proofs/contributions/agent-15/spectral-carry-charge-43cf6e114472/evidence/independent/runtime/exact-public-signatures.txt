@@ -1,0 +1,606 @@
+P196.Agent15.SpectralCarry.recurrence : Int → Int → Nat → Int
+
+P196.Agent15.SpectralCarry.recurrence_zero : ∀ (a b : Int),
+  @Eq.{1} Int (P196.Agent15.SpectralCarry.recurrence a b (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))) a
+
+P196.Agent15.SpectralCarry.recurrence_one : ∀ (a b : Int),
+  @Eq.{1} Int (P196.Agent15.SpectralCarry.recurrence a b (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) b
+
+P196.Agent15.SpectralCarry.recurrence_step : ∀ (a b : Int) (n : Nat),
+  @Eq.{1} Int
+    (P196.Agent15.SpectralCarry.recurrence a b
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@OfNat.ofNat.{0} Int 20 (@instOfNat 20))
+        (P196.Agent15.SpectralCarry.recurrence a b
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))))
+      (P196.Agent15.SpectralCarry.recurrence a b n))
+
+P196.Agent15.SpectralCarry.U : Nat → Int
+
+P196.Agent15.SpectralCarry.S : Nat → Int
+
+P196.Agent15.SpectralCarry.U_zero : @Eq.{1} Int (P196.Agent15.SpectralCarry.U (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))
+  (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))
+
+P196.Agent15.SpectralCarry.U_one : @Eq.{1} Int (P196.Agent15.SpectralCarry.U (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  (@OfNat.ofNat.{0} Int 1 (@instOfNat 1))
+
+P196.Agent15.SpectralCarry.U_step : ∀ (n : Nat),
+  @Eq.{1} Int
+    (P196.Agent15.SpectralCarry.U
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@OfNat.ofNat.{0} Int 20 (@instOfNat 20))
+        (P196.Agent15.SpectralCarry.U
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))))
+      (P196.Agent15.SpectralCarry.U n))
+
+P196.Agent15.SpectralCarry.S_zero : @Eq.{1} Int (P196.Agent15.SpectralCarry.S (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))
+  (@OfNat.ofNat.{0} Int 1 (@instOfNat 1))
+
+P196.Agent15.SpectralCarry.S_one : @Eq.{1} Int (P196.Agent15.SpectralCarry.S (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  (@OfNat.ofNat.{0} Int 21 (@instOfNat 21))
+
+P196.Agent15.SpectralCarry.S_step : ∀ (n : Nat),
+  @Eq.{1} Int
+    (P196.Agent15.SpectralCarry.S
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@OfNat.ofNat.{0} Int 20 (@instOfNat 20))
+        (P196.Agent15.SpectralCarry.S
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))))
+      (P196.Agent15.SpectralCarry.S n))
+
+P196.Agent15.SpectralCarry.oddWeight : Nat → Int
+
+P196.Agent15.SpectralCarry.evenWeight : Nat → Int
+
+P196.Agent15.SpectralCarry.oddWeight_zero : @Eq.{1} Int
+  (P196.Agent15.SpectralCarry.oddWeight (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))
+  (@OfNat.ofNat.{0} Int 1 (@instOfNat 1))
+
+P196.Agent15.SpectralCarry.oddWeight_one : @Eq.{1} Int
+  (P196.Agent15.SpectralCarry.oddWeight (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  (@OfNat.ofNat.{0} Int 20 (@instOfNat 20))
+
+P196.Agent15.SpectralCarry.oddWeight_step : ∀ (n : Nat),
+  @Eq.{1} Int
+    (P196.Agent15.SpectralCarry.oddWeight
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@OfNat.ofNat.{0} Int 20 (@instOfNat 20))
+        (P196.Agent15.SpectralCarry.oddWeight
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))))
+      (P196.Agent15.SpectralCarry.oddWeight n))
+
+P196.Agent15.SpectralCarry.evenWeight_zero : @Eq.{1} Int
+  (P196.Agent15.SpectralCarry.evenWeight (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))
+  (@OfNat.ofNat.{0} Int 1 (@instOfNat 1))
+
+P196.Agent15.SpectralCarry.evenWeight_one : @Eq.{1} Int
+  (P196.Agent15.SpectralCarry.evenWeight (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  (@OfNat.ofNat.{0} Int 21 (@instOfNat 21))
+
+P196.Agent15.SpectralCarry.evenWeight_step : ∀ (n : Nat),
+  @Eq.{1} Int
+    (P196.Agent15.SpectralCarry.evenWeight
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@OfNat.ofNat.{0} Int 20 (@instOfNat 20))
+        (P196.Agent15.SpectralCarry.evenWeight
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n
+            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))))
+      (P196.Agent15.SpectralCarry.evenWeight n))
+
+P196.Agent15.SpectralCarry.weightSum : (Nat → Int) → Nat → Int
+
+P196.Agent15.SpectralCarry.weightSum_zero : ∀ (w : Nat → Int),
+  @Eq.{1} Int (P196.Agent15.SpectralCarry.weightSum w (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))
+
+P196.Agent15.SpectralCarry.weightSum_succ : ∀ (w : Nat → Int) (n : Nat),
+  @Eq.{1} Int
+    (P196.Agent15.SpectralCarry.weightSum w
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (P196.Agent15.SpectralCarry.weightSum w n) (w n))
+
+P196.Agent15.SpectralCarry.oddWeight_pos : ∀ (n : Nat),
+  @LT.lt.{0} Int Int.instLTInt (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)) (P196.Agent15.SpectralCarry.oddWeight n)
+
+P196.Agent15.SpectralCarry.evenWeight_pos : ∀ (n : Nat),
+  @LT.lt.{0} Int Int.instLTInt (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)) (P196.Agent15.SpectralCarry.evenWeight n)
+
+P196.Agent15.SpectralCarry.oddWeight_growth : ∀ (n : Nat),
+  @LE.le.{0} Int Int.instLEInt
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@OfNat.ofNat.{0} Int 19 (@instOfNat 19))
+      (P196.Agent15.SpectralCarry.oddWeight n))
+    (P196.Agent15.SpectralCarry.oddWeight
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))
+
+P196.Agent15.SpectralCarry.evenWeight_growth : ∀ (n : Nat),
+  @LE.le.{0} Int Int.instLEInt
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@OfNat.ofNat.{0} Int 19 (@instOfNat 19))
+      (P196.Agent15.SpectralCarry.evenWeight n))
+    (P196.Agent15.SpectralCarry.evenWeight
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))
+
+P196.Agent15.SpectralCarry.oddWeight_superincreasing : ∀ (n : Nat),
+  @LT.lt.{0} Int Int.instLTInt (P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.oddWeight n)
+    (P196.Agent15.SpectralCarry.oddWeight n)
+
+P196.Agent15.SpectralCarry.evenWeight_superincreasing : ∀ (n : Nat),
+  @LT.lt.{0} Int Int.instLTInt (P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.evenWeight n)
+    (P196.Agent15.SpectralCarry.evenWeight n)
+
+P196.Agent15.SpectralCarry.Binary : List.{0} Nat → Prop
+
+P196.Agent15.SpectralCarry.weighted : (Nat → Int) → List.{0} Nat → Int
+
+P196.Agent15.SpectralCarry.binary_nil : P196.Agent15.SpectralCarry.Binary (@List.nil.{0} Nat)
+
+P196.Agent15.SpectralCarry.binary_tail : ∀ {a : Nat} {xs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary (@List.cons.{0} Nat a xs) → P196.Agent15.SpectralCarry.Binary xs
+
+P196.Agent15.SpectralCarry.weighted_bounds : ∀ (w : Nat → Int),
+  (∀ (n : Nat), @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)) (w n)) →
+    ∀ {xs : List.{0} Nat},
+      P196.Agent15.SpectralCarry.Binary xs →
+        And
+          (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))
+            (P196.Agent15.SpectralCarry.weighted w xs))
+          (@LE.le.{0} Int Int.instLEInt (P196.Agent15.SpectralCarry.weighted w xs)
+            (P196.Agent15.SpectralCarry.weightSum w (@List.length.{0} Nat xs)))
+
+P196.Agent15.SpectralCarry.weighted_lt_next : ∀ (w : Nat → Int),
+  (∀ (n : Nat), @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)) (w n)) →
+    (∀ (n : Nat), @LT.lt.{0} Int Int.instLTInt (P196.Agent15.SpectralCarry.weightSum w n) (w n)) →
+      ∀ {xs : List.{0} Nat},
+        P196.Agent15.SpectralCarry.Binary xs →
+          @LT.lt.{0} Int Int.instLTInt (P196.Agent15.SpectralCarry.weighted w xs) (w (@List.length.{0} Nat xs))
+
+P196.Agent15.SpectralCarry.weighted_injective_binary : ∀ (w : Nat → Int),
+  (∀ (n : Nat), @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)) (w n)) →
+    (∀ (n : Nat), @LT.lt.{0} Int Int.instLTInt (P196.Agent15.SpectralCarry.weightSum w n) (w n)) →
+      ∀ {xs ys : List.{0} Nat},
+        P196.Agent15.SpectralCarry.Binary xs →
+          P196.Agent15.SpectralCarry.Binary ys →
+            @Eq.{1} Nat (@List.length.{0} Nat xs) (@List.length.{0} Nat ys) →
+              @Eq.{1} Int (P196.Agent15.SpectralCarry.weighted w xs) (P196.Agent15.SpectralCarry.weighted w ys) →
+                @Eq.{1} (List.{0} Nat) xs ys
+
+P196.Agent15.SpectralCarry.reverse_take_half_iff : ∀ {α : Type} (cs : List.{0} α),
+  Iff
+    (@Eq.{1} (List.{0} α)
+      (@List.take.{0} α
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) (@List.length.{0} α cs)
+          (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))
+        (@List.reverse.{0} α cs))
+      (@List.take.{0} α
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) (@List.length.{0} α cs)
+          (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))
+        cs))
+    (@Eq.{1} (List.{0} α) (@List.reverse.{0} α cs) cs)
+
+P196.Agent15.SpectralCarry.halfCharge : (Nat → Int) → List.{0} Nat → Int
+
+P196.Agent15.SpectralCarry.oddCharge : List.{0} Nat → Int
+
+P196.Agent15.SpectralCarry.evenCharge : List.{0} Nat → Int
+
+P196.Agent15.SpectralCarry.carryCharge : List.{0} Nat → Int
+
+P196.Agent15.SpectralCarry.binary_reverse : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs → P196.Agent15.SpectralCarry.Binary (@List.reverse.{0} Nat cs)
+
+P196.Agent15.SpectralCarry.binary_take : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs → ∀ (n : Nat), P196.Agent15.SpectralCarry.Binary (@List.take.{0} Nat n cs)
+
+P196.Agent15.SpectralCarry.halfCharge_zero_iff : ∀ (w : Nat → Int),
+  (∀ (n : Nat), @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)) (w n)) →
+    (∀ (n : Nat), @LT.lt.{0} Int Int.instLTInt (P196.Agent15.SpectralCarry.weightSum w n) (w n)) →
+      ∀ {cs : List.{0} Nat},
+        P196.Agent15.SpectralCarry.Binary cs →
+          Iff (@Eq.{1} Int (P196.Agent15.SpectralCarry.halfCharge w cs) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+            (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)
+
+P196.Agent15.SpectralCarry.oddCharge_zero_iff : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs →
+    Iff (@Eq.{1} Int (P196.Agent15.SpectralCarry.oddCharge cs) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+      (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)
+
+P196.Agent15.SpectralCarry.evenCharge_zero_iff : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs →
+    Iff (@Eq.{1} Int (P196.Agent15.SpectralCarry.evenCharge cs) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+      (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)
+
+P196.Agent15.SpectralCarry.carryCharge_zero_iff : ∀ {cs : List.{0} Nat},
+  P196.Agent15.SpectralCarry.Binary cs →
+    Iff (@Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge cs) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+      (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)
+
+P196.Agent15.SpectralCarry.sumFirst : (Nat → Int) → Nat → Int
+
+P196.Agent15.SpectralCarry.sumFirst_eq_range_sum : ∀ (f : Nat → Int) (n : Nat),
+  @Eq.{1} Int (P196.Agent15.SpectralCarry.sumFirst f n)
+    (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat 0)) (@List.map.{0, 0} Nat Int f (List.range n)))
+
+P196.Agent15.SpectralCarry.sumFirst_congr : ∀ {f g : Nat → Int} (n : Nat),
+  (∀ (i : Nat), @LT.lt.{0} Nat instLTNat i n → @Eq.{1} Int (f i) (g i)) →
+    @Eq.{1} Int (P196.Agent15.SpectralCarry.sumFirst f n) (P196.Agent15.SpectralCarry.sumFirst g n)
+
+P196.Agent15.SpectralCarry.sumFirst_sub : ∀ (f g : Nat → Int) (n : Nat),
+  @Eq.{1} Int
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (P196.Agent15.SpectralCarry.sumFirst f n)
+      (P196.Agent15.SpectralCarry.sumFirst g n))
+    (P196.Agent15.SpectralCarry.sumFirst
+      (fun i => @HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (f i) (g i)) n)
+
+P196.Agent15.SpectralCarry.weighted_eq_sumFirst : ∀ (w : Nat → Int) (cs : List.{0} Nat),
+  @Eq.{1} Int (P196.Agent15.SpectralCarry.weighted w cs)
+    (P196.Agent15.SpectralCarry.sumFirst
+      (fun i =>
+        @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@Nat.cast.{0} Int instNatCastInt
+            (@Option.getD.{0} Nat
+              (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+              (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+          (w
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (@List.length.{0} Nat cs)
+                (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+              i)))
+      (@List.length.{0} Nat cs))
+
+P196.Agent15.SpectralCarry.weighted_take_eq_sumFirst : ∀ (w : Nat → Int) (cs : List.{0} Nat) (n : Nat),
+  @LE.le.{0} Nat instLENat n (@List.length.{0} Nat cs) →
+    @Eq.{1} Int (P196.Agent15.SpectralCarry.weighted w (@List.take.{0} Nat n cs))
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@Nat.cast.{0} Int instNatCastInt
+              (@Option.getD.{0} Nat
+                (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                  (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                  (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+            (w
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n
+                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                i)))
+        n)
+
+P196.Agent15.SpectralCarry.halfCharge_eq_source_sum : ∀ (w : Nat → Int) (cs : List.{0} Nat),
+  @Eq.{1} Int (P196.Agent15.SpectralCarry.halfCharge w cs)
+    (P196.Agent15.SpectralCarry.sumFirst
+      (fun i =>
+        @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+            (@Nat.cast.{0} Int instNatCastInt
+              (@Option.getD.{0} Nat
+                (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                  (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                  (@List.instGetElem?NatLtLength.{0} Nat) cs
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) (@List.length.{0} Nat cs)
+                      (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                    i))
+                (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+            (@Nat.cast.{0} Int instNatCastInt
+              (@Option.getD.{0} Nat
+                (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                  (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                  (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))
+          (w
+            (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) (@List.length.{0} Nat cs)
+                  (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))
+                (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+              i)))
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv) (@List.length.{0} Nat cs)
+        (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))
+
+P196.Agent15.SpectralCarry.oddCharge_eq_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat cs)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) →
+    @Eq.{1} Int (P196.Agent15.SpectralCarry.oddCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                        (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+                      i))
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))
+            (P196.Agent15.SpectralCarry.U (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m i)))
+        m)
+
+P196.Agent15.SpectralCarry.evenCharge_eq_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat cs)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m) →
+    @Eq.{1} Int (P196.Agent15.SpectralCarry.evenCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                          (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+                        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                      i))
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))
+            (P196.Agent15.SpectralCarry.S
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m
+                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                i)))
+        m)
+
+P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat cs)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) →
+    @Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                        (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+                      i))
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))
+            (P196.Agent15.SpectralCarry.U (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m i)))
+        m)
+
+P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum : ∀ (cs : List.{0} Nat) (m : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat cs)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m) →
+    @Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge cs)
+      (P196.Agent15.SpectralCarry.sumFirst
+        (fun i =>
+          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                          (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+                        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                      i))
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+              (@Nat.cast.{0} Int instNatCastInt
+                (@Option.getD.{0} Nat
+                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                    (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))
+            (P196.Agent15.SpectralCarry.S
+              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m
+                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                i)))
+        m)
+
+P196.Agent15.SpectralCarry.odd_source_charge_zero_iff : ∀ (cs : List.{0} Nat) (m : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat cs)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) →
+    P196.Agent15.SpectralCarry.Binary cs →
+      Iff
+        (@Eq.{1} Int
+          (P196.Agent15.SpectralCarry.sumFirst
+            (fun i =>
+              @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+                (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+                  (@Nat.cast.{0} Int instNatCastInt
+                    (@Option.getD.{0} Nat
+                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                        (@List.instGetElem?NatLtLength.{0} Nat) cs
+                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                            (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+                          i))
+                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+                  (@Nat.cast.{0} Int instNatCastInt
+                    (@Option.getD.{0} Nat
+                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                        (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))
+                (P196.Agent15.SpectralCarry.U (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m i)))
+            m)
+          (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+        (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)
+
+P196.Agent15.SpectralCarry.even_source_charge_zero_iff : ∀ (cs : List.{0} Nat) (m : Nat),
+  @Eq.{1} Nat (@List.length.{0} Nat cs)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m) →
+    P196.Agent15.SpectralCarry.Binary cs →
+      Iff
+        (@Eq.{1} Int
+          (P196.Agent15.SpectralCarry.sumFirst
+            (fun i =>
+              @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+                (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+                  (@Nat.cast.{0} Int instNatCastInt
+                    (@Option.getD.{0} Nat
+                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                        (@List.instGetElem?NatLtLength.{0} Nat) cs
+                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                              (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)
+                            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                          i))
+                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))
+                  (@Nat.cast.{0} Int instNatCastInt
+                    (@Option.getD.{0} Nat
+                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat
+                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))
+                        (@List.instGetElem?NatLtLength.{0} Nat) cs i)
+                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))
+                (P196.Agent15.SpectralCarry.S
+                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m
+                      (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+                    i)))
+            m)
+          (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+        (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)
+
+P196.Agent15.SpectralCarry.control_empty : @Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge (@List.nil.{0} Nat))
+  (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))
+
+P196.Agent15.SpectralCarry.control_singletons : And
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat)))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat)))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+
+P196.Agent15.SpectralCarry.control_length_two : And
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat))))
+    (@OfNat.ofNat.{0} Int 1 (@instOfNat 1)))
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat))))
+    (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int 1 (@instOfNat 1))))
+
+P196.Agent15.SpectralCarry.control_free_odd_center : And
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat)))))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat)))))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+
+P196.Agent15.SpectralCarry.control_symmetric_even : @Eq.{1} Int
+  (P196.Agent15.SpectralCarry.carryCharge
+    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat))))))
+  (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))
+
+P196.Agent15.SpectralCarry.control_original_419 : @Eq.{1} Int
+  (P196.Agent15.SpectralCarry.carryCharge
+    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+            (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+              (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat))))))))
+  (@OfNat.ofNat.{0} Int 419 (@instOfNat 419))
+
+P196.Agent15.SpectralCarry.control_nonbinary_counterexample : And
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 21 (instOfNatNat 21))
+            (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat))))))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+  (@Ne.{1} (List.{0} Nat)
+    (@List.reverse.{0} Nat
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 21 (instOfNatNat 21))
+            (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat))))))
+    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 21 (instOfNatNat 21))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat))))))
+
+P196.Agent15.SpectralCarry.control_incoming_zero_convention : And
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat))))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat)))))
+    (@OfNat.ofNat.{0} Int 1 (@instOfNat 1)))
+
+P196.Agent15.SpectralCarry.control_zero_overflow_convention : And
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+          (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat)))))
+    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))
+  (@Eq.{1} Int
+    (P196.Agent15.SpectralCarry.carryCharge
+      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))
+        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat))))
+    (@OfNat.ofNat.{0} Int 1 (@instOfNat 1)))

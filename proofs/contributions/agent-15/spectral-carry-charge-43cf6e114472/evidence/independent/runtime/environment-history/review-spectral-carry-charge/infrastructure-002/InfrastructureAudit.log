@@ -1,0 +1,19 @@
+AUDIT_DECL_JSON {"private":false,"name":"ReviewFixture.Sample.casesOn","module":"ReviewFixture","kind":"definition","axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.casesOn
+ReviewFixture.Sample.casesOn : {motive : ReviewFixture.Sample → Sort u} →
+  (t : ReviewFixture.Sample) → ((val : Nat) → motive { val := val }) → motive t
+SIGNATURE_END ReviewFixture.Sample.casesOn
+'ReviewFixture.Sample.casesOn' does not depend on any axioms
+AUDIT_DECL_JSON {"private":false,"name":"ReviewFixture.Sample.rec","module":"ReviewFixture","kind":"recursor","axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.rec
+ReviewFixture.Sample.rec : {motive : ReviewFixture.Sample → Sort u} →
+  ((val : Nat) → motive { val := val }) → (t : ReviewFixture.Sample) → motive t
+SIGNATURE_END ReviewFixture.Sample.rec
+'ReviewFixture.Sample.rec' does not depend on any axioms
+AUDIT_DECL_JSON {"private":false,"name":"ReviewFixture.Sample.noConfusion","module":"ReviewFixture","kind":"definition","axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.noConfusion
+ReviewFixture.Sample.noConfusion : {P : Sort u} →
+  {v1 v2 : ReviewFixture.Sample} → @Eq.{1} ReviewFixture.Sample v1 v2 → ReviewFixture.Sample.noConfusionType.{u} P v1 v2
+SIGNATURE_END ReviewFixture.Sample.noConfusion
+'ReviewFixture.Sample.noConfusion' does not depend on any axioms
+InfrastructureAudit.lean:12:0: error: UNSAFE_OR_PARTIAL_DECLARATION ReviewFixture ReviewFixture.visible._cstage1

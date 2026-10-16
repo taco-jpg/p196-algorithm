@@ -1,0 +1,6 @@
+import LychrelDigitSums
+
+#check FoldedDecimal.canonical_next_no_overflow
+#print axioms FoldedDecimal.canonical_next_no_overflow
+#check DecimalWidthGrowth.numeric_width_bounds
+#print axioms DecimalWidthGrowth.numeric_width_bounds

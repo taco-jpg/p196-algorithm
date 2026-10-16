@@ -1,0 +1,96 @@
+{
+  "purpose": "Environment baseline only; not an accepted dependency or proof of the pending T/R target.",
+  "status": "PASS_ENVIRONMENT_BASELINE",
+  "source_commit": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+  "source_git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+  "source_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+  "source_path": "/workspace/scratch/43cf6e114472/runtime/source_snapshots/original/proofs/research/continuation/LychrelDigitSums.lean",
+  "source_imports": [
+    "Std"
+  ],
+  "build_directory": "/workspace/scratch/43cf6e114472/runtime/baseline-001",
+  "clean_project_objects": true,
+  "official_toolchain_objects_reused": true,
+  "sandbox_permissions": "require_escalated",
+  "compiler_files": {
+    "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+    "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+    "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+    "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+  },
+  "endpoints": [
+    "FoldedDecimal.canonical_next_no_overflow",
+    "DecimalWidthGrowth.numeric_width_bounds"
+  ],
+  "axiom_audit_scope": "Two explicitly selected existing endpoints; source also contains retained print-axioms commands.",
+  "commands": [
+    {
+      "label": "version",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/43cf6e114472/runtime/baseline-001/source",
+      "environment_overrides": {
+        "LEAN_PATH": "/workspace/scratch/43cf6e114472/runtime/baseline-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.06463279899980989,
+      "log": "/workspace/scratch/43cf6e114472/runtime/baseline-001/logs/version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "LychrelDigitSums",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "LychrelDigitSums.olean",
+        "LychrelDigitSums.lean"
+      ],
+      "cwd": "/workspace/scratch/43cf6e114472/runtime/baseline-001/source",
+      "environment_overrides": {
+        "LEAN_PATH": "/workspace/scratch/43cf6e114472/runtime/baseline-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 68.77961867799968,
+      "log": "/workspace/scratch/43cf6e114472/runtime/baseline-001/logs/LychrelDigitSums.log",
+      "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+    },
+    {
+      "label": "BaselineAudit",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "BaselineAudit.olean",
+        "BaselineAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/43cf6e114472/runtime/baseline-001/source",
+      "environment_overrides": {
+        "LEAN_PATH": "/workspace/scratch/43cf6e114472/runtime/baseline-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.26477430700106197,
+      "log": "/workspace/scratch/43cf6e114472/runtime/baseline-001/logs/BaselineAudit.log",
+      "log_sha256": "9690476dbb98abee4d1a792b58ed20c5d38030a2c724db809255b0b7e2672df9"
+    }
+  ],
+  "started_at_epoch": 1792191093.917627,
+  "audit_output": "FoldedDecimal.canonical_next_no_overflow (n : Nat) (d : Nat \u2192 Nat) (L : Nat) (h : DecimalDigits.Canonical n d L)\n  (hc : DecimalDigits.carry (DecimalDigits.columnSum d L) L = 0) :\n  DecimalDigits.Canonical (Lychrel196.step n) (DecimalDigits.output (DecimalDigits.columnSum d L)) L\n'FoldedDecimal.canonical_next_no_overflow' depends on axioms: [propext, Quot.sound]\nDecimalWidthGrowth.numeric_width_bounds (n : Nat) (d : Nat \u2192 Nat) (L K : Nat) (hc : DecimalDigits.Canonical n d L) :\n  \u2203 e W, DecimalDigits.Canonical (Lychrel196.orbit n K) e W \u2227 K + 4 * L \u2264 4 * W + 4 \u2227 2 * W \u2264 2 * L + K + 3\n'DecimalWidthGrowth.numeric_width_bounds' depends on axioms: [propext, Quot.sound]\n",
+  "finished_at_epoch": 1792191163.1657465,
+  "output_hashes": {
+    "logs/BaselineAudit.log": "9690476dbb98abee4d1a792b58ed20c5d38030a2c724db809255b0b7e2672df9",
+    "logs/LychrelDigitSums.log": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e",
+    "logs/version.log": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "source/BaselineAudit.lean": "2f8dd3cf2ed35c6a6523ae7a58011364de26c5026833a282d4166000391bcbc9",
+    "source/BaselineAudit.olean": "f5cd872ab4c461e4adad28c680aefc7f58389b764b4eca7ae7da640a1e755e3d",
+    "source/LychrelDigitSums.lean": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+    "source/LychrelDigitSums.olean": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978"
+  }
+}

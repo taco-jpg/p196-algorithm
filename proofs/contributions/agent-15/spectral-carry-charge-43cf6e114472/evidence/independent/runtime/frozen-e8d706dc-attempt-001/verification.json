@@ -1,0 +1,1048 @@
+{
+  "schema_version": 1,
+  "status": "PASS_CLEAN_BUILD_AND_ALL_DECLARATIONS",
+  "review_role": "Independent nonauthor build and declaration audit",
+  "semantic_acceptance": "SEPARATE_REVIEW_REQUIRED",
+  "source_commit": "e8d706dc8a67248e1531b0b828fbe05ff50052ed",
+  "roots": [
+    "ChargeControls"
+  ],
+  "required_declarations": [
+    "P196.Agent15.SpectralCarry.carryCharge_zero_iff",
+    "P196.Agent15.SpectralCarry.odd_source_charge_zero_iff",
+    "P196.Agent15.SpectralCarry.even_source_charge_zero_iff"
+  ],
+  "project_objects_reused": false,
+  "standard_toolchain_objects_reused": true,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "source_records": {
+    "SpectralWeights": {
+      "repository_path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SpectralWeights.lean",
+      "git_blob": "40afa93196976972e5c0f6772a18e50c1e635a3f",
+      "sha256": "07b3831f17a0d2e43a7e27cfd8a63d364a98ccbbcef87362a20cfbf24fb49db1",
+      "imports": [
+        "Std"
+      ],
+      "bytes": 4445,
+      "build_path": "source/SpectralWeights.lean"
+    },
+    "BinaryCode": {
+      "repository_path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/BinaryCode.lean",
+      "git_blob": "35ba9bee5afb9bb47f39738e44860a02ea9b2469",
+      "sha256": "8db88d52e00dddbd32610dc09b7f8833f1ec1dc623b82236060b67bd2c9171f9",
+      "imports": [
+        "SpectralWeights"
+      ],
+      "bytes": 2655,
+      "build_path": "source/BinaryCode.lean"
+    },
+    "ChargeSymmetry": {
+      "repository_path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/ChargeSymmetry.lean",
+      "git_blob": "f69efd4bc0642759dddf99834d5d093c929761a5",
+      "sha256": "28d11217cf147750ec2d07e64dbc6dabeee7deec7e543987817da611201b60a3",
+      "imports": [
+        "BinaryCode"
+      ],
+      "bytes": 3240,
+      "build_path": "source/ChargeSymmetry.lean"
+    },
+    "SourceFormula": {
+      "repository_path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SourceFormula.lean",
+      "git_blob": "1db4a109629abddf355d12e8a14f2cfb0e26a39b",
+      "sha256": "be165a538963922f6096e63934e5f3c1010d760cabc9e08baa96a0bb43c105d8",
+      "imports": [
+        "ChargeSymmetry"
+      ],
+      "bytes": 5059,
+      "build_path": "source/SourceFormula.lean"
+    },
+    "ChargeControls": {
+      "repository_path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/ChargeControls.lean",
+      "git_blob": "b7a1c9f7d0d175fb3f2abea93fcd23bd5eb082f8",
+      "sha256": "bb23522ad6792dcf6b30ef010837eb1703f7eba59f4448e355282f8eb27f668c",
+      "imports": [
+        "SourceFormula"
+      ],
+      "bytes": 1104,
+      "build_path": "source/ChargeControls.lean"
+    }
+  },
+  "commands": [
+    {
+      "label": "version",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.06410068900004262,
+      "log": "logs/version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "compiler-prefix",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--print-prefix"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.03191172100014228,
+      "log": "logs/compiler-prefix.log",
+      "log_sha256": "abcef5baa4d798f26d4217102091c996045d67ab7168c6c4c40a94132aa33fa4"
+    },
+    {
+      "label": "source-commit",
+      "argv": [
+        "git",
+        "-C",
+        "/dev/shm/p196-agent15-43cf6e114472/repo",
+        "rev-parse",
+        "--verify",
+        "e8d706dc8a67248e1531b0b828fbe05ff50052ed^{commit}"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "GIT_TERMINAL_PROMPT": "0",
+        "GIT_NO_LAZY_FETCH": "1"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.007776193000609055,
+      "log": "logs/source-commit.log",
+      "log_sha256": "3de5b1dbc417e1f424cc0afe1188c84bbf1fa56fd3aaeb2daf7785dfb10fa533"
+    },
+    {
+      "label": "source-tree",
+      "argv": [
+        "git",
+        "-C",
+        "/dev/shm/p196-agent15-43cf6e114472/repo",
+        "ls-tree",
+        "-r",
+        "--full-tree",
+        "e8d706dc8a67248e1531b0b828fbe05ff50052ed",
+        "--",
+        "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SpectralWeights.lean",
+        "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/BinaryCode.lean",
+        "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/ChargeSymmetry.lean",
+        "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SourceFormula.lean",
+        "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/ChargeControls.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "GIT_TERMINAL_PROMPT": "0",
+        "GIT_NO_LAZY_FETCH": "1"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.003754995999770472,
+      "log": "logs/source-tree.log",
+      "log_sha256": "9b35969ec5ce9cb0740ea45c127f5dc39746abca7cc53152a5f2c84c5022e00f"
+    },
+    {
+      "label": "build-SpectralWeights",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "SpectralWeights.olean",
+        "SpectralWeights.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.5171431090002443,
+      "log": "logs/build-SpectralWeights.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "build-BinaryCode",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "BinaryCode.olean",
+        "BinaryCode.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.4651213999986794,
+      "log": "logs/build-BinaryCode.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "build-ChargeSymmetry",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "ChargeSymmetry.olean",
+        "ChargeSymmetry.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.46501277100105654,
+      "log": "logs/build-ChargeSymmetry.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "build-SourceFormula",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "SourceFormula.olean",
+        "SourceFormula.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.9164881619999505,
+      "log": "logs/build-SourceFormula.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "build-ChargeControls",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "ChargeControls.olean",
+        "ChargeControls.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.31459584099866333,
+      "log": "logs/build-ChargeControls.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "all-declarations",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "IndependentDeclarationAudit.olean",
+        "IndependentDeclarationAudit.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 5.031834035000429,
+      "log": "logs/all-declarations.log",
+      "log_sha256": "09c90d47a9b2252af4e017d337992dc820dab6e2de025c4eba3a82961e18c0c7"
+    },
+    {
+      "label": "public-exports",
+      "argv": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "-j1",
+        "-DElab.async=false",
+        "--trust=0",
+        "-o",
+        "IndependentPublicExports.olean",
+        "IndependentPublicExports.lean"
+      ],
+      "cwd": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source",
+      "environment": {
+        "PATH": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/frozen-e8d706dc-attempt-001/source"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.0168587640000624,
+      "log": "logs/public-exports.log",
+      "log_sha256": "9d2d1525a3ee62263d757565762ac3ef028b98cd01baef788c7c493f37461a43"
+    }
+  ],
+  "runner_sha256": "3c5beaea129575dd335bebf6f31994613c3f706cee13711a3aaf60bacaa768ef",
+  "started_at_epoch": 1792192659.2984776,
+  "public_exports_file": "/dev/shm/p196-agent15-43cf6e114472/runtime-review/expected-public-exports.txt",
+  "public_exports_source_sha256": "7166e814c98cb5dcf68ef7fe4058403d222fc13c78d6ca673ad80032d8ddbb85",
+  "expected_public_exports": [
+    "P196.Agent15.SpectralCarry.recurrence",
+    "P196.Agent15.SpectralCarry.recurrence_zero",
+    "P196.Agent15.SpectralCarry.recurrence_one",
+    "P196.Agent15.SpectralCarry.recurrence_step",
+    "P196.Agent15.SpectralCarry.U",
+    "P196.Agent15.SpectralCarry.S",
+    "P196.Agent15.SpectralCarry.U_zero",
+    "P196.Agent15.SpectralCarry.U_one",
+    "P196.Agent15.SpectralCarry.U_step",
+    "P196.Agent15.SpectralCarry.S_zero",
+    "P196.Agent15.SpectralCarry.S_one",
+    "P196.Agent15.SpectralCarry.S_step",
+    "P196.Agent15.SpectralCarry.oddWeight",
+    "P196.Agent15.SpectralCarry.evenWeight",
+    "P196.Agent15.SpectralCarry.oddWeight_zero",
+    "P196.Agent15.SpectralCarry.oddWeight_one",
+    "P196.Agent15.SpectralCarry.oddWeight_step",
+    "P196.Agent15.SpectralCarry.evenWeight_zero",
+    "P196.Agent15.SpectralCarry.evenWeight_one",
+    "P196.Agent15.SpectralCarry.evenWeight_step",
+    "P196.Agent15.SpectralCarry.weightSum",
+    "P196.Agent15.SpectralCarry.weightSum_zero",
+    "P196.Agent15.SpectralCarry.weightSum_succ",
+    "P196.Agent15.SpectralCarry.oddWeight_pos",
+    "P196.Agent15.SpectralCarry.evenWeight_pos",
+    "P196.Agent15.SpectralCarry.oddWeight_growth",
+    "P196.Agent15.SpectralCarry.evenWeight_growth",
+    "P196.Agent15.SpectralCarry.oddWeight_superincreasing",
+    "P196.Agent15.SpectralCarry.evenWeight_superincreasing",
+    "P196.Agent15.SpectralCarry.Binary",
+    "P196.Agent15.SpectralCarry.weighted",
+    "P196.Agent15.SpectralCarry.binary_nil",
+    "P196.Agent15.SpectralCarry.binary_tail",
+    "P196.Agent15.SpectralCarry.weighted_bounds",
+    "P196.Agent15.SpectralCarry.weighted_lt_next",
+    "P196.Agent15.SpectralCarry.weighted_injective_binary",
+    "P196.Agent15.SpectralCarry.reverse_take_half_iff",
+    "P196.Agent15.SpectralCarry.halfCharge",
+    "P196.Agent15.SpectralCarry.oddCharge",
+    "P196.Agent15.SpectralCarry.evenCharge",
+    "P196.Agent15.SpectralCarry.carryCharge",
+    "P196.Agent15.SpectralCarry.binary_reverse",
+    "P196.Agent15.SpectralCarry.binary_take",
+    "P196.Agent15.SpectralCarry.halfCharge_zero_iff",
+    "P196.Agent15.SpectralCarry.oddCharge_zero_iff",
+    "P196.Agent15.SpectralCarry.evenCharge_zero_iff",
+    "P196.Agent15.SpectralCarry.carryCharge_zero_iff",
+    "P196.Agent15.SpectralCarry.sumFirst",
+    "P196.Agent15.SpectralCarry.sumFirst_eq_range_sum",
+    "P196.Agent15.SpectralCarry.sumFirst_congr",
+    "P196.Agent15.SpectralCarry.sumFirst_sub",
+    "P196.Agent15.SpectralCarry.weighted_eq_sumFirst",
+    "P196.Agent15.SpectralCarry.weighted_take_eq_sumFirst",
+    "P196.Agent15.SpectralCarry.halfCharge_eq_source_sum",
+    "P196.Agent15.SpectralCarry.oddCharge_eq_source_sum",
+    "P196.Agent15.SpectralCarry.evenCharge_eq_source_sum",
+    "P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum",
+    "P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum",
+    "P196.Agent15.SpectralCarry.odd_source_charge_zero_iff",
+    "P196.Agent15.SpectralCarry.even_source_charge_zero_iff",
+    "P196.Agent15.SpectralCarry.control_empty",
+    "P196.Agent15.SpectralCarry.control_singletons",
+    "P196.Agent15.SpectralCarry.control_length_two",
+    "P196.Agent15.SpectralCarry.control_free_odd_center",
+    "P196.Agent15.SpectralCarry.control_symmetric_even",
+    "P196.Agent15.SpectralCarry.control_original_419",
+    "P196.Agent15.SpectralCarry.control_nonbinary_counterexample",
+    "P196.Agent15.SpectralCarry.control_incoming_zero_convention",
+    "P196.Agent15.SpectralCarry.control_zero_overflow_convention"
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "build_order": [
+    "SpectralWeights",
+    "BinaryCode",
+    "ChargeSymmetry",
+    "SourceFormula",
+    "ChargeControls"
+  ],
+  "standard_direct_imports": {
+    "Std": {
+      "path": "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Std.olean",
+      "sha256": "7d3771da25b893da62564bf8198487ff28f01af5cbd410be88d493a4921b2bb1"
+    }
+  },
+  "explicit_public_exports_printed": 69,
+  "declaration_count": 174,
+  "safe_declaration_count": 123,
+  "implementation_declaration_count": 51,
+  "public_mathematical_declaration_count": 109,
+  "implementation_artifacts": [
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.halfCharge._closed_1._cstage2",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.carryCharge._cstage1",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": false,
+      "private": false,
+      "partial": true,
+      "name": "P196.Agent15.SpectralCarry.weightSum._unsafe_rec",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": false,
+      "private": false,
+      "partial": true,
+      "name": "P196.Agent15.SpectralCarry.weighted._unsafe_rec",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.BinaryCode.0.P196.Agent15.SpectralCarry.weighted.match_1.splitter._cstage1",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.carryCharge._cstage2",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": false,
+      "private": false,
+      "partial": true,
+      "name": "P196.Agent15.SpectralCarry.recurrence._unsafe_rec",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.sumFirst._lambda_1._cstage2",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.BinaryCode.0.P196.Agent15.SpectralCarry.weightSum.match_1.splitter._cstage1",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.sumFirst.match_1._cstage1",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.U._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.oddCharge._closed_1._cstage2",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.weighted._closed_1._cstage2",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": false,
+      "private": false,
+      "partial": true,
+      "name": "P196.Agent15.SpectralCarry.sumFirst._unsafe_rec",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.weighted.match_1._cstage1",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.weighted._cstage1",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.recurrence._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.evenCharge._cstage1",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.BinaryCode.0.P196.Agent15.SpectralCarry.weightSum.match_1.splitter._cstage2",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.oddCharge._cstage2",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.sumFirst._cstage1",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.U._closed_1._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.recurrence._closed_1._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.BinaryCode.0.P196.Agent15.SpectralCarry.weightSum.match_1.splitter._rarg._cstage2",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.weightSum._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.sumFirst._cstage2",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.S._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.U._closed_2._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.weightSum._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.oddCharge._cstage1",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.halfCharge._cstage2",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.halfCharge._cstage1",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.SourceFormula.0.P196.Agent15.SpectralCarry.sumFirst.match_1.splitter._cstage1",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.S._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.BinaryCode.0.P196.Agent15.SpectralCarry.weighted.match_1.splitter._cstage2",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.recurrence.match_1._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.evenCharge._closed_1._cstage2",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.evenCharge._cstage2",
+      "module": "ChargeSymmetry",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.sumFirst._closed_1._cstage2",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.SourceFormula.0.P196.Agent15.SpectralCarry.sumFirst.match_1.splitter._cstage2",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.SourceFormula.0.P196.Agent15.SpectralCarry.sumFirst.match_1.splitter._rarg._cstage2",
+      "module": "SourceFormula",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.oddWeight._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.weighted._cstage2",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": true,
+      "partial": false,
+      "name": "_private.BinaryCode.0.P196.Agent15.SpectralCarry.weighted.match_1.splitter._rarg._cstage2",
+      "module": "BinaryCode",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.U._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.recurrence._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.evenWeight._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.weightSum.match_1._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.S._closed_1._cstage2",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.evenWeight._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    },
+    {
+      "unsafe": true,
+      "private": false,
+      "partial": false,
+      "name": "P196.Agent15.SpectralCarry.oddWeight._cstage1",
+      "module": "SpectralWeights",
+      "kind": "definition",
+      "implementation_only": true,
+      "axioms": []
+    }
+  ],
+  "axiom_union": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "finished_at_epoch": 1792192668.406914,
+  "artifacts": {
+    "declarations.json": {
+      "bytes": 45374,
+      "sha256": "e3113dab31ee5512bfe4727295225e4a4f42999e3a35a02b1d27740301399ea2"
+    },
+    "expected-public-exports.json": {
+      "bytes": 3368,
+      "sha256": "538f9bd43278c958346b1c8f6b8cdbd4e8ffaf79fe3ffded37c1a47036f414bc"
+    },
+    "logs/all-declarations.log": {
+      "bytes": 149529,
+      "sha256": "09c90d47a9b2252af4e017d337992dc820dab6e2de025c4eba3a82961e18c0c7"
+    },
+    "logs/build-BinaryCode.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/build-ChargeControls.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/build-ChargeSymmetry.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/build-SourceFormula.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/build-SpectralWeights.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/compiler-prefix.log": {
+      "bytes": 40,
+      "sha256": "abcef5baa4d798f26d4217102091c996045d67ab7168c6c4c40a94132aa33fa4"
+    },
+    "logs/public-exports.log": {
+      "bytes": 76599,
+      "sha256": "9d2d1525a3ee62263d757565762ac3ef028b98cd01baef788c7c493f37461a43"
+    },
+    "logs/source-commit.log": {
+      "bytes": 41,
+      "sha256": "3de5b1dbc417e1f424cc0afe1188c84bbf1fa56fd3aaeb2daf7785dfb10fa533"
+    },
+    "logs/source-tree.log": {
+      "bytes": 686,
+      "sha256": "9b35969ec5ce9cb0740ea45c127f5dc39746abca7cc53152a5f2c84c5022e00f"
+    },
+    "logs/version.log": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    "source/BinaryCode.lean": {
+      "bytes": 2655,
+      "sha256": "8db88d52e00dddbd32610dc09b7f8833f1ec1dc623b82236060b67bd2c9171f9"
+    },
+    "source/BinaryCode.olean": {
+      "bytes": 188704,
+      "sha256": "9f901cf8dcc14dfcba1af9373403b6d4aa5f8cb43ef14385751644fb73c3f27e"
+    },
+    "source/ChargeControls.lean": {
+      "bytes": 1104,
+      "sha256": "bb23522ad6792dcf6b30ef010837eb1703f7eba59f4448e355282f8eb27f668c"
+    },
+    "source/ChargeControls.olean": {
+      "bytes": 32856,
+      "sha256": "0726efc0dea85f7820312e46900e27f1f2f43a895ef22433e81a5483d327720b"
+    },
+    "source/ChargeSymmetry.lean": {
+      "bytes": 3240,
+      "sha256": "28d11217cf147750ec2d07e64dbc6dabeee7deec7e543987817da611201b60a3"
+    },
+    "source/ChargeSymmetry.olean": {
+      "bytes": 189008,
+      "sha256": "b6530162d1d8993921e152ec05f11db505926798f4962f8a79ff997704d27af9"
+    },
+    "source/IndependentDeclarationAudit.lean": {
+      "bytes": 6511,
+      "sha256": "323520736af4a69fd608391c6900157edf45a6e8c580d2f91e880f2aaa48afe6"
+    },
+    "source/IndependentDeclarationAudit.olean": {
+      "bytes": 17280,
+      "sha256": "3cf1804fa3cc5f34d1cb6016796c5c4ea497413496fea2a917898e47e0304605"
+    },
+    "source/IndependentPublicExports.lean": {
+      "bytes": 7571,
+      "sha256": "32a0fe66da8c693a08d63fea735655c969ca2a4ed617577d6db0a30d0a2603d6"
+    },
+    "source/IndependentPublicExports.olean": {
+      "bytes": 17248,
+      "sha256": "b06f3e8eaf014fc629413f1ae4f6d558b6516173be7c0e5948e54a269f2ba78e"
+    },
+    "source/SourceFormula.lean": {
+      "bytes": 5059,
+      "sha256": "be165a538963922f6096e63934e5f3c1010d760cabc9e08baa96a0bb43c105d8"
+    },
+    "source/SourceFormula.olean": {
+      "bytes": 394792,
+      "sha256": "e75711cfa9fa16cf2f7ffb693adf7e3035e353e1edaaa8babefef3a9840e79da"
+    },
+    "source/SpectralWeights.lean": {
+      "bytes": 4445,
+      "sha256": "07b3831f17a0d2e43a7e27cfd8a63d364a98ccbbcef87362a20cfbf24fb49db1"
+    },
+    "source/SpectralWeights.olean": {
+      "bytes": 138312,
+      "sha256": "31c1fa2114ecb7a01bd3d6014e7419109e37327ce8e8b549662d9d71960d543d"
+    }
+  }
+}

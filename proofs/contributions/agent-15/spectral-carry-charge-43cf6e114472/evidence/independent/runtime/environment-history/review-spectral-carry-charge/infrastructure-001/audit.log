@@ -1,0 +1,30 @@
+InfrastructureAudit.lean:9:0: error: unknown option 'pp.width'
+InfrastructureAudit.lean:62:30: error: type mismatch
+  ReviewFixture.visible_eq
+has type
+  @Eq.{1} Nat ReviewFixture.visible (@OfNat.ofNat.{0} Nat 7 (instOfNatNat 7)) : Prop
+but is expected to have type
+  Lean.Elab.Command.CommandElabM PUnit.{1} : Type
+InfrastructureAudit.lean:62:54: error: type mismatch
+  ", "
+has type
+  String : Type
+but is expected to have type
+  Lean.Elab.Command.CommandElabM PUnit.{1} : Type
+InfrastructureAudit.lean:62:58: error: type mismatch
+  ReviewFixture.sample_refl
+has type
+  ∀ (x : ReviewFixture.Sample), @Eq.{1} Nat x.val x.val : Prop
+but is expected to have type
+  Lean.Elab.Command.CommandElabM PUnit.{1} : Type
+InfrastructureAudit.lean:62:83: error: application type mismatch
+  @Bind.bind.{0, 0}
+    (ReaderT.{0, 0} Lean.Elab.Command.Context (StateRefT' IO.RealWorld Lean.Elab.Command.State (EIO Lean.Exception)))
+    ?m.5706 ?m.5707 (ForInStep.{0} PUnit.{1}) "]_DECLARATION {name}"
+argument
+  "]_DECLARATION {name}"
+has type
+  String : Type
+but is expected to have type
+  ReaderT.{0, 0} Lean.Elab.Command.Context (StateRefT' IO.RealWorld Lean.Elab.Command.State (EIO Lean.Exception))
+    ?m.5707 : Type

@@ -1,5 +1,5 @@
 {
-  "status": "LEAN_CHECKED",
+  "status": "INDEPENDENTLY_REVIEWED",
   "source_snapshot": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
   "toolchain": "leanprover/lean4:v4.19.0",
   "compiler_commit": "6caaee842e94",
@@ -47,6 +47,25 @@
     "Quot.sound"
   ],
   "canonical_check": "python3 check.py --lean /absolute/path/to/lean-4.19.0/bin/lean --output /absolute/new/directory",
-  "independent_review": "PENDING frozen-source review and independent fresh build",
-  "repository_integration": "NOT_YET_INTEGRATED"
+  "independent_review": {
+    "semantic": {
+      "status": "PASS",
+      "reviewer": "/root/ownership_scout",
+      "report": "evidence/independent/semantic/FINAL_SEMANTIC_REVIEW.md"
+    },
+    "execution": {
+      "status": "ACCEPT_EXACT_US_CHARGE_TARGET",
+      "reviewer": "/root/runtime_scout",
+      "report": "evidence/independent/runtime/FROZEN_REVIEW.md",
+      "project_modules_rebuilt": 5,
+      "explicit_public_exports": 69,
+      "origin_declarations": 174,
+      "safe_declarations": 123,
+      "safe_private_declarations": 14,
+      "compiler_implementation_declarations": 51,
+      "official_standard_runtime_rebuilt": false
+    }
+  },
+  "repository_integration": "NOT_YET_INTEGRATED",
+  "frozen_source_commit": "e8d706dc8a67248e1531b0b828fbe05ff50052ed"
 }

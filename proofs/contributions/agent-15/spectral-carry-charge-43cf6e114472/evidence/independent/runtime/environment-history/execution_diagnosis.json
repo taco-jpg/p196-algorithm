@@ -1,0 +1,132 @@
+{
+  "purpose": "P196 Agent #5 pinned Lean runtime verification",
+  "archive": "/tmp/p196-agent5-lean/lean-4.19.0-linux.tar.zst",
+  "archive_bytes": 343842845,
+  "extract_command": "tar --zstd --no-same-owner -xf /tmp/p196-agent5-lean/lean-4.19.0-linux.tar.zst -C /tmp/p196-agent5-lean",
+  "extract_note": "Initial extraction attempted archive ownership and failed chown in the restricted environment. Re-extraction with --no-same-owner completed successfully; extract.log is empty.",
+  "lean": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+  "lake": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lake",
+  "smoke_compile_exit": 0,
+  "execution_requirement": "Use exec_command sandbox_permissions=require_escalated. Normal sandbox execution, including with LEAN_SYSROOT set, reports error: failed to locate application. Approved elevated execution succeeds.",
+  "repo_mutations": false,
+  "optional_env": {
+    "LEAN_SYSROOT": "/tmp/p196-agent5-lean/lean-4.19.0-linux",
+    "LEAN": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+    "PATH_prepend": "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin"
+  },
+  "/tmp/agent2-toolchain": [
+    {
+      "name": "independent_review",
+      "type": "dir",
+      "link": null
+    },
+    {
+      "name": "Agent2Smoke.olean",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "rebuild_package_v2.py",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "bundle_objects.git",
+      "type": "dir",
+      "link": null
+    },
+    {
+      "name": "review_package_v3",
+      "type": "dir",
+      "link": null
+    },
+    {
+      "name": "rebuild_package_v3.py",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "runtime_evidence.json",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "review_local_actual_v1",
+      "type": "dir",
+      "link": null
+    },
+    {
+      "name": "rebuild_local_actual_v1.py",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "review_package_v2",
+      "type": "dir",
+      "link": null
+    },
+    {
+      "name": "Agent2Smoke.lean",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "transfer-helper-20261016T2043",
+      "type": "dir",
+      "link": null
+    }
+  ],
+  "/tmp/agent4-runtime": [
+    {
+      "name": "lean-toolchain",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "lakefile.lean",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "Smoke.lean",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": ".lake",
+      "type": "dir",
+      "link": null
+    },
+    {
+      "name": "lake-manifest.json",
+      "type": "file",
+      "link": null
+    }
+  ],
+  "/tmp/p196-agent8-runtime-audit": [
+    {
+      "name": "RuntimeSmoke.lean",
+      "type": "file",
+      "link": null
+    },
+    {
+      "name": "RuntimeSmoke.olean",
+      "type": "file",
+      "link": null
+    }
+  ],
+  "strace": {
+    "command": [
+      "strace",
+      "-e",
+      "trace=readlink,readlinkat,openat,access",
+      "-o",
+      "/workspace/scratch/43cf6e114472/runtime/lean_version_strace.log",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+      "--version"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "strace: test_ptrace_get_syscall_info: PTRACE_TRACEME: Operation not permitted\nstrace: ptrace(PTRACE_TRACEME, ...): Operation not permitted\nstrace: PTRACE_SETOPTIONS: Operation not permitted\nstrace: cleanup: waitpid(-1, __WALL): No child processes\n"
+  }
+}
