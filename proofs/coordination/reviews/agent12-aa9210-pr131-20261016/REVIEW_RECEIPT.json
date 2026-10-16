@@ -1,0 +1,564 @@
+{
+  "schema_version": 1,
+  "reviewer": "Agent #12/review131",
+  "source_author": "Agent #9/horizon-safety",
+  "reviewer_is_source_author": false,
+  "decision": "ACCEPT_EXACT_PR_HEAD_SEMANTICS_AND_FRESH_SELECTED_CLOSURE",
+  "timestamp_utc": "2026-10-16T22:55:47.126191+00:00",
+  "repository": "https://github.com/taco-jpg/p196-algorithm",
+  "pr": 131,
+  "head": "0bfe5347de0e5085307a3432975a18b83a3a2bba",
+  "head_tree": "a3a124b68b2e0e7bf14a7edfc0ed41a961b79a54",
+  "diff_merge_base": "58afcada8047e015b8f4233b96c44c7c5b9c4162",
+  "root_initial_base": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+  "package": "proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016",
+  "selected_diff": {
+    "added_paths": 22,
+    "modified_or_deleted_paths": 0,
+    "all_paths_in_package": true,
+    "full_diff_sha256": "4e12a107b884b780abf141fa881c22c4876a262c6c101f2947e7a85ab3dce418"
+  },
+  "source": {
+    "git_blob": "a36a7c75aaf87d0ac72571286cbbdb8ba9a70134",
+    "sha256": "d9cb44e04c4f4bdbda42d7f877afeabd6e0c59cb085dfc023598707c7d0177db"
+  },
+  "driver_sha256": "3c5777aaf4494e8a8bdd4db65bb188b123a0604f41bcbf6a79fa97fc4b22e768",
+  "registry_sha256": "6458f453cf9502a96e0f9e52d4333feb9ae9c036164bb3c9a31b40c962f4c68c",
+  "fresh_replay": {
+    "run_count": 1,
+    "top_level_exit_code": 0,
+    "invocation": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/scratch/aa9210d02a75/agent12-pr131/proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016/review/runtime-audit/verify.py",
+      "--repo",
+      "/workspace/scratch/aa9210d02a75/agent12-pr131",
+      "--package-root",
+      "/workspace/scratch/aa9210d02a75/agent12-pr131/proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016",
+      "--manifest",
+      "/workspace/scratch/aa9210d02a75/agent12-pr131/proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016/review/runtime-audit/source-registry.json",
+      "--lean",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+      "--output",
+      "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay",
+      "--auditor",
+      "Agent #12/review131 independent reviewer; source non-author"
+    ],
+    "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+    "execution_permissions": "require_escalated for the known official runtime launch and public Git provenance reads",
+    "report": "fresh-replay/verification.json",
+    "report_sha256": "dabae277977e107ac1b2b3b07317964a5d24b6363de4db6afe17512931a0fa29",
+    "audit_log": "fresh-replay/logs/CollapseIndependentAudit.log",
+    "audit_log_sha256": "0df88f1154598514a67fba9cce24f914a4e0e04359aaeb7e7bef423d34988a78",
+    "commands": [
+      {
+        "label": "repository-head-before",
+        "argv": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.00393,
+        "log": "logs/repository-head-before.log",
+        "log_sha256": "1fa63c5f7f4404a79f791c0ed22afe50efbeb08573a2bc6b966a3c1f8de96273"
+      },
+      {
+        "label": "repository-status-before",
+        "argv": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.015842,
+        "log": "logs/repository-status-before.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "lean-version",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--version"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.06415,
+        "log": "logs/lean-version.log",
+        "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+      },
+      {
+        "label": "lean-prefix",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--print-prefix"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.032077,
+        "log": "logs/lean-prefix.log",
+        "log_sha256": "abcef5baa4d798f26d4217102091c996045d67ab7168c6c4c40a94132aa33fa4"
+      },
+      {
+        "label": "LychrelDigitSums-original-blob",
+        "argv": [
+          "git",
+          "rev-parse",
+          "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5:proofs/research/continuation/LychrelDigitSums.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003909,
+        "log": "logs/LychrelDigitSums-original-blob.log",
+        "log_sha256": "8ba7f20912392495502cd9fba395ba63267bc9eab6ded0b7d4e333efdc3f7ec0"
+      },
+      {
+        "label": "LychrelDigitSums-original-source",
+        "argv": [
+          "git",
+          "cat-file",
+          "blob",
+          "8a865176625283648a8a20dd2411ed77670eb0a2"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003688,
+        "log": "logs/LychrelDigitSums-original-source.log",
+        "log_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+      },
+      {
+        "label": "IncomingCarrySensitivity-original-blob",
+        "argv": [
+          "git",
+          "rev-parse",
+          "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5:proofs/research/main_existence_attempt/renewal_pass/lean/incoming_carry/IncomingCarrySensitivity.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003863,
+        "log": "logs/IncomingCarrySensitivity-original-blob.log",
+        "log_sha256": "113ebabc1447f1699ff7f342f08702495bfa093585ed13fe17d69a4a74a8ffe8"
+      },
+      {
+        "label": "IncomingCarrySensitivity-original-source",
+        "argv": [
+          "git",
+          "cat-file",
+          "blob",
+          "9ccc745471fd509fb68652fef40454478087e92e"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003665,
+        "log": "logs/IncomingCarrySensitivity-original-source.log",
+        "log_sha256": "52850d75999a8fdad298e2e9da638965472ab6507f88630bf428698576ac631f"
+      },
+      {
+        "label": "RawSymmetryObstruction-original-blob",
+        "argv": [
+          "git",
+          "rev-parse",
+          "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5:proofs/research/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003622,
+        "log": "logs/RawSymmetryObstruction-original-blob.log",
+        "log_sha256": "cfa36f3efe8067948bee6b9383e2a3c0d6deca07200de7f214c5778cf8130aa7"
+      },
+      {
+        "label": "RawSymmetryObstruction-original-source",
+        "argv": [
+          "git",
+          "cat-file",
+          "blob",
+          "9d4250f3e5daa5ff26f097a7e12ce98830dd9e89"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003657,
+        "log": "logs/RawSymmetryObstruction-original-source.log",
+        "log_sha256": "922b660e5b3ac42389cd6ea00885075327d4b44fb315b9cc496e1323890e9c87"
+      },
+      {
+        "label": "IntrinsicSeam-original-blob",
+        "argv": [
+          "git",
+          "rev-parse",
+          "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5:proofs/research/main_existence_attempt/continuation_pass/lean/IntrinsicSeam.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003676,
+        "log": "logs/IntrinsicSeam-original-blob.log",
+        "log_sha256": "674863d2f6ba5c8c6421aeb2e223d506bf6dbe4578c7d7a8f6d5e0b80e4df455"
+      },
+      {
+        "label": "IntrinsicSeam-original-source",
+        "argv": [
+          "git",
+          "cat-file",
+          "blob",
+          "b72b5862529a698bccd9f43edc4c60e2123e381f"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003627,
+        "log": "logs/IntrinsicSeam-original-source.log",
+        "log_sha256": "de764dffc4d72b3060c3648339116adc4cfeb3d425a2edd5ef4e42056ec36b20"
+      },
+      {
+        "label": "SeamAnnihilation-original-blob",
+        "argv": [
+          "git",
+          "rev-parse",
+          "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5:proofs/research/main_existence_attempt/continuation_pass/lean/SeamAnnihilation.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003703,
+        "log": "logs/SeamAnnihilation-original-blob.log",
+        "log_sha256": "98619672ea468178735bbdf07201d54ab7a77b3a43acb237442ff4cc3f54b281"
+      },
+      {
+        "label": "SeamAnnihilation-original-source",
+        "argv": [
+          "git",
+          "cat-file",
+          "blob",
+          "e4ac85235d683c7877cb9adaf6e038816cf32038"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.003671,
+        "log": "logs/SeamAnnihilation-original-source.log",
+        "log_sha256": "2cab9cc7cf887bbeddcdca2be2fc8d3816ce10e3f71b9028ba492b4985d94cb1"
+      },
+      {
+        "label": "LychrelDigitSums",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/build/LychrelDigitSums.olean",
+          "LychrelDigitSums.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 70.895216,
+        "log": "logs/LychrelDigitSums.log",
+        "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+      },
+      {
+        "label": "IncomingCarrySensitivity",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/build/IncomingCarrySensitivity.olean",
+          "IncomingCarrySensitivity.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 1.568319,
+        "log": "logs/IncomingCarrySensitivity.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "RawSymmetryObstruction",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/build/RawSymmetryObstruction.olean",
+          "RawSymmetryObstruction.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 3.329118,
+        "log": "logs/RawSymmetryObstruction.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "IntrinsicSeam",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/build/IntrinsicSeam.olean",
+          "IntrinsicSeam.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.868779,
+        "log": "logs/IntrinsicSeam.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "SeamAnnihilation",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/build/SeamAnnihilation.olean",
+          "SeamAnnihilation.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 1.72765,
+        "log": "logs/SeamAnnihilation.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "Agent9OneStepDigitSumCollapse",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/build/Agent9OneStepDigitSumCollapse.olean",
+          "Agent9OneStepDigitSumCollapse.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.618046,
+        "log": "logs/Agent9OneStepDigitSumCollapse.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "CollapseIndependentAudit",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "CollapseIndependentAudit.lean"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-review131/fresh-replay/source",
+        "exit_code": 0,
+        "elapsed_seconds": 27.533841,
+        "log": "logs/CollapseIndependentAudit.log",
+        "log_sha256": "0df88f1154598514a67fba9cce24f914a4e0e04359aaeb7e7bef423d34988a78"
+      },
+      {
+        "label": "repository-head-after",
+        "argv": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.007552,
+        "log": "logs/repository-head-after.log",
+        "log_sha256": "1fa63c5f7f4404a79f791c0ed22afe50efbeb08573a2bc6b966a3c1f8de96273"
+      },
+      {
+        "label": "repository-status-after",
+        "argv": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "/workspace/scratch/aa9210d02a75/agent12-pr131",
+        "exit_code": 0,
+        "elapsed_seconds": 0.064423,
+        "log": "logs/repository-status-after.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "compiler": {
+      "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+      "runtime_root": "/tmp/p196-agent5-lean/lean-4.19.0-linux",
+      "files": {
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Init.olean": "f14f6c9ea0d9eb2a6fe7bdad84a6610657db3d006805708c1a62ac72b676e944",
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Lean.olean": "7b09317fc9d21262dbfbb6f014dc40c2809b55e6cbb4f7587211a57ec91f7221",
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Std.olean": "7d3771da25b893da62564bf8198487ff28f01af5cbd410be88d493a4921b2bb1",
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+      }
+    },
+    "initial_project_object_count": 0,
+    "trust_level": 0,
+    "module_count": 6,
+    "theorem_constant_count": 1320,
+    "safe_definition_count": 183,
+    "new_public_theorems": 10,
+    "new_generated_theorems": 11,
+    "new_safe_definitions": 0,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "all_public_literal_types_and_axioms_verified": true,
+    "module_origin_counts": {
+      "Agent9OneStepDigitSumCollapse": 21,
+      "IncomingCarrySensitivity": 84,
+      "IntrinsicSeam": 29,
+      "LychrelDigitSums": 986,
+      "RawSymmetryObstruction": 136,
+      "SeamAnnihilation": 64
+    },
+    "safe_definition_origin_counts": {
+      "IncomingCarrySensitivity": 9,
+      "IntrinsicSeam": 2,
+      "LychrelDigitSums": 148,
+      "RawSymmetryObstruction": 17,
+      "SeamAnnihilation": 7
+    },
+    "unsafe_implementation_axiom_count": 13,
+    "unsafe_implementation_definition_count": 807,
+    "selected_sources_and_registry_unchanged": true,
+    "compiler_snapshot_unchanged": true,
+    "head_before_after_equal_pinned_H": true,
+    "git_status_before_after_clean": true
+  },
+  "independent_validation_commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "/workspace/scratch/aa9210d02a75/agent12-review131/validate_archive.py"
+      ],
+      "exit_code": 0,
+      "log": "archive-validation.stdout.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "/workspace/scratch/aa9210d02a75/agent12-review131/validate_retained_records.py"
+      ],
+      "exit_code": 0,
+      "log": "retained-record-validation.stdout.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "/workspace/scratch/aa9210d02a75/agent12-review131/validate_fresh_audit.py"
+      ],
+      "exit_code": 0,
+      "log": "fresh-audit-validation.stdout.log"
+    }
+  ],
+  "checks": {
+    "full_pr_diff_and_new_source_review": "PASS",
+    "both_verifiers_and_registries_review": "PASS",
+    "canonical_actual_width": "PASS",
+    "ordinary_digit_sum_and_actual_step": "PASS",
+    "universal_r_zero": "PASS",
+    "existential_positive_parameter_and_integer": "PASS",
+    "same_witness_exceeds_both_strict_thresholds": "PASS",
+    "threshold_zero": "PASS",
+    "varying_finite_seed_not_fixed_orbit_or_196": "PASS",
+    "all_five_historical_dependencies_byte_identical": "PASS",
+    "complete_fresh_affected_closure": "PASS",
+    "all_ten_literal_public_exports": "PASS",
+    "complete_multiline_origin_axiom_audit": "PASS",
+    "all_fresh_log_and_inventory_hashes": "PASS",
+    "safe_lossless_archive": "PASS",
+    "all_retained_nested_manifests": "PASS",
+    "full_failed_first_attempt_preserved": "PASS",
+    "original_manuscript_and_attribution": "PASS",
+    "source_or_driver_repair_needed": false
+  },
+  "archive": {
+    "status": "PASS",
+    "archive_sha256": "3a366a7fbc870a0997a83ba5417f577a6dd5e6da9e985a31cb54e583dd2f6d13",
+    "archive_bytes": 119492,
+    "tar_sha256": "2f8a2de93e90652ff3155e19a7de2c6a74774abbbd21018177e6c82c6be2f8d3",
+    "tar_bytes": 2048000,
+    "regular_files": 146,
+    "payload_bytes": 1926244,
+    "no_absolute_paths": true,
+    "no_parent_traversal": true,
+    "no_links_or_devices": true,
+    "no_duplicate_members": true,
+    "exact_manifest_membership": true,
+    "all_file_hashes_and_sizes_match": true
+  },
+  "archive_tracked_overlap_count": 19,
+  "retained_nested_manifests": [
+    {
+      "manifest": "AUTHOR_FILES.json",
+      "verified_entries": 69
+    },
+    {
+      "manifest": "review/runtime-audit/EVIDENCE_FILES.json",
+      "verified_entries": 71
+    },
+    {
+      "manifest": "development/attempt-001/FILES.json",
+      "verified_entries": 27
+    },
+    {
+      "manifest": "development/attempt-002/FILES.json",
+      "verified_entries": 30
+    },
+    {
+      "manifest": "SHA256SUMS",
+      "verified_entries": 68
+    },
+    {
+      "manifest": "review/runtime-audit/MANIFEST.sha256",
+      "verified_entries": 72
+    }
+  ],
+  "historical_run_statuses": {
+    "development/attempt-001": "FAIL",
+    "development/attempt-002": "PASS_SELECTED_SOURCE_CLOSURE",
+    "review/runtime-audit/runs/full-001": "PASS_SELECTED_SOURCE_CLOSURE"
+  },
+  "review_failures": [],
+  "blocking_findings": [],
+  "required_mathematical_repairs": [],
+  "operational_notes": [
+    {
+      "kind": "environment",
+      "status": "resolved",
+      "detail": "A default-sandbox public Git object read initially failed through the unavailable browser proxy; the authorized public read succeeded with require_escalated. No compiler result was inferred from that failure."
+    },
+    {
+      "kind": "runtime_archive_availability",
+      "status": "limitation",
+      "detail": "The installed-runtime provenance was read and executable/runtime hashes freshly verified. The original release tarball is absent from its recorded installation path; its archived download hash was not independently rechecked in this review."
+    }
+  ],
+  "limits": [
+    "Selected six-module project closure only; no repository-wide theorem pass.",
+    "Official Lean/Init/Std/Lean runtime used as installed, not rebuilt from source.",
+    "No fixed-orbit divergence, infinite palindrome avoidance, decimal Lychrel existence, or 196 theorem.",
+    "Root must refresh current main and validate actual combined tree before integration.",
+    "No postmerge Lean run is claimed."
+  ],
+  "source_changes_by_reviewer": false,
+  "remote_writes_by_reviewer": false,
+  "original_logs_deleted_or_truncated": false,
+  "evidence_files": {
+    "semantic_review": "SEMANTIC_REVIEW.md",
+    "semantic_review_sha256": "5347c443a579c530b79e07348a7c7ccb1533ac0664155c45eb1a5a0210f01366",
+    "archive_validation": "archive-validation.json",
+    "retained_record_validation": "retained-record-validation.json",
+    "independent_fresh_audit_validation": "fresh-audit-validation.json",
+    "full_output_inventory": "OUTPUT_FILES.json"
+  },
+  "output_inventory_exclusion": "OUTPUT_FILES.json excludes itself to avoid a self-referential digest; all other retained files including fresh project objects are inventoried."
+}
