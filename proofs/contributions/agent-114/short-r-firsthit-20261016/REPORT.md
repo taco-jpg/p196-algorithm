@@ -1,12 +1,24 @@
-# Agent #31 integration update — exact reviewed repair
+# Agent #114 short-spacer results — verified repair and retained finite controls
 
-The proof source now adopts Agent #1's published endpoint-normalization repair, byte-for-byte at SHA-256 `e2557923cdbe694ab4a21463ab765bd0d609623f98e77e5c3aac593ed101bd81`. The change makes the palindrome endpoint equality explicit before `omega`; all six theorem statements and the other five proofs are preserved.
+**Current mathematical status:** six finite-horizon endpoints are covered by the retained independent Lean 4.19.0 verification of the exact repaired source. The seven-module closure is registered in [integration/BUILD_REGISTRY.json](integration/BUILD_REGISTRY.json), with supported commands and their precise scope in [integration/REPRODUCE.md](integration/REPRODUCE.md).
 
-The repaired copy has existing independent source and seven-module execution evidence in [review 5554297272](https://github.com/taco-jpg/p196-algorithm/pull/104#pullrequestreview-5554297272). Agent #31 is validating that retained evidence and the current target combination before promotion or integration. This checkpoint does not claim a new Lean run or a completed merge.
+Agent #31 adopted Agent #1's published endpoint-normalization repair at source commit `945fb3337513d52c52df09cc6b11bde62841a7eb`. The root has SHA-256 `e2557923cdbe694ab4a21463ab765bd0d609623f98e77e5c3aac593ed101bd81` and Git blob `b7ee9c4d16e8477439d343ac18483462599ebf6c`. Only one proof-body step changes. All six theorem statements, imports, options, historical source comments and the other five proof bodies remain unchanged.
 
-`integration/REPAIR_PROVENANCE.json` records exact original and repaired identities. `integration/original/` retains the original failing proof and original report without changes. The finite verifier, data, and original finite replay receipt are unchanged. Historical WIP comments in the repaired source and the original report below describe the original author session; the exact tested proof bytes are retained deliberately.
+The existing independent review at [review 5554297272](https://github.com/taco-jpg/p196-algorithm/pull/104#pullrequestreview-5554297272) contains a fresh seven-source build and an audit of 1,523 theorem constants and 171 safe definitions with explicit `--trust=0 -j1 -DElab.async=false`. All eight commands passed. The complete transitive axiom union is `propext`, `Classical.choice`, and `Quot.sound`. Agent #31 checked the original reports, actual runner, raw logs, exact source closure, runtime identity and original failure, then reused that qualifying evidence. **No new Lean source compilation or theorem audit is claimed for Agent #31's delivery work.** The complete [evidence-reuse review](integration/reviews/RETAINED_EVIDENCE_REVIEW.md) records the checks and their limits.
 
-The formal scope remains canonical realizations for `r=1,2,3,4`, at time zero and positive times 1 through 11. The 3000-step evidence remains an independently replayable finite computation. No later first palindrome or result for seed 196 is asserted.
+The new registry and reproduction instructions received a [separate independent wiring review](integration/reviews/WIRING_REVIEW.md). Their actual canonical verifier run passed `SOURCE_AND_IMPORT_CHECK_ONLY`, with `mathematical_proof_check=false` and no Lean module commands. [STRUCTURAL_CHECK.json](integration/STRUCTURAL_CHECK.json) and [LOCAL_FIXTURE_PROVENANCE.json](integration/LOCAL_FIXTURE_PROVENANCE.json) identify the honest local synthetic fixture separately from the real source/base commits. The unmodified canonical verifier's optional full mode does not add explicit `--trust=0` or reproduce the independent safe-definition audit; reproduction instructions preserve this distinction.
+
+Agent #31 also reran the original finite generator and independent divmod auditor. Both exited zero; the generator reproduced `finite_evidence.json` byte-for-byte and the auditor confirmed all four 3,000-step traces plus the r=5 time-eleven positive control. [FINITE_REPLAY.json](integration/FINITE_REPLAY.json) records actual commands, timings and output hashes. These computations remain finite evidence, separate from the six Lean endpoints.
+
+## Scope and preservation
+
+The endpoints establish the original common-first-step equality under the original canonical and pair-word hypotheses, time-zero nonpalindromicity for `r=1,2,3,4`, and nonpalindromicity at each positive time 1 through 11 for those four parameters. They do not establish a later first palindrome time, a 3,000-step Lean certificate, infinite avoidance, or the 196 conjecture.
+
+The original failed source, original author report and original PR description are retained under `integration/original/`. Original failure remains **FAIL**; historical WIP comments describe the author session and are retained to preserve exact independently tested bytes. The original finite scripts, data and receipt are unchanged. [REPAIR_PROVENANCE.json](integration/REPAIR_PROVENANCE.json) records attribution and exact original/repaired identities.
+
+The [lossless evidence package](integration/evidence/pr104-package.json) indexes all 133 substantive source, report, raw-log and receipt files, including original failures, new structural evidence and source/base bindings. Its archive `pr104-evidence.tar.xz` has SHA-256 `96a4454d2776b04e5ba9d4dc9e86e29435b7a7d5b7300a2e45a0c250b864d033`; every member was recovered and verified byte-for-byte. Only individually indexed regenerable local Git metadata and Python bytecode are excluded, with no original file deleted.
+
+Current target combination, platform checks, actual Ready/merge operations and post-merge results are recorded by Agent #31 in coordination task `agent31-session02893e4f368d-pr104-delivery-20261016`. This source report does not assert that a future merge or full repository build has occurred.
 
 ---
 
