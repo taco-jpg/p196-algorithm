@@ -31,7 +31,8 @@ theorem valid_phase_code_at (cert : Certificate) (hv : Valid cert)
       have hs' : sixCode (cert.st (i + 1)).c =
           (sixCode (cert.st i).c + 1) % 6 := by
         simpa only [Nat.mod_eq_of_lt hsucc] using hs
-      rw [hs', ih]
+      have ih' := ih hi'
+      rw [hs', ih']
       omega
 
 /-- Existing period divisibility retained as a separately named interface. -/
