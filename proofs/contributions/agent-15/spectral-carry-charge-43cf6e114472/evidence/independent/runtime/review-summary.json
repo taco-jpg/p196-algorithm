@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "verdict": "ACCEPT_EXACT_US_CHARGE_TARGET",
+  "reviewer": "runtime_scout",
+  "role": "Independent nonauthor semantic reviewer and clean-build/declaration auditor; did not author or modify any target Lean source.",
+  "source_commit": "e8d706dc8a67248e1531b0b828fbe05ff50052ed",
+  "source_tree": "2d447634e0ff42b4275d34bfb169101bba0ed130",
+  "target": "SPECTRAL-CARRY-CHARGE-ZERO",
+  "source_modules": {
+    "SpectralWeights": {
+      "bytes": 4445,
+      "sha256": "07b3831f17a0d2e43a7e27cfd8a63d364a98ccbbcef87362a20cfbf24fb49db1",
+      "git_blob": "40afa93196976972e5c0f6772a18e50c1e635a3f",
+      "preliminary_semantic_copy_identical": true
+    },
+    "BinaryCode": {
+      "bytes": 2655,
+      "sha256": "8db88d52e00dddbd32610dc09b7f8833f1ec1dc623b82236060b67bd2c9171f9",
+      "git_blob": "35ba9bee5afb9bb47f39738e44860a02ea9b2469",
+      "preliminary_semantic_copy_identical": true
+    },
+    "ChargeSymmetry": {
+      "bytes": 3240,
+      "sha256": "28d11217cf147750ec2d07e64dbc6dabeee7deec7e543987817da611201b60a3",
+      "git_blob": "f69efd4bc0642759dddf99834d5d093c929761a5",
+      "preliminary_semantic_copy_identical": true
+    },
+    "SourceFormula": {
+      "bytes": 5059,
+      "sha256": "be165a538963922f6096e63934e5f3c1010d760cabc9e08baa96a0bb43c105d8",
+      "git_blob": "1db4a109629abddf355d12e8a14f2cfb0e26a39b",
+      "preliminary_semantic_copy_identical": true
+    },
+    "ChargeControls": {
+      "bytes": 1104,
+      "sha256": "bb23522ad6792dcf6b30ef010837eb1703f7eba59f4448e355282f8eb27f668c",
+      "git_blob": "b7a1c9f7d0d175fb3f2abea93fcd23bd5eb082f8",
+      "preliminary_semantic_copy_identical": true
+    }
+  },
+  "original_sources": {
+    "original-note.md": {
+      "git_blob": "cb1c355fa05916a770816a4d5ef680e54079cccb",
+      "sha256": "e4a1e6b61848f473693c36d91d2a453b1dc82b26a347fa76b2a0b9a7e1228e27",
+      "bytes": 4459
+    },
+    "original-script.py": {
+      "git_blob": "730acd722bf017b6bf1e51e5a0411169a7804da4",
+      "sha256": "393545516c13d41c0416e560ec37bab6b1c1655357ae351b0f960dea76ff7448",
+      "bytes": 2633
+    }
+  },
+  "source_identity": "All five committed blobs equal current source, frozen review copies, and previously inspected semantic copies.",
+  "semantic_result": "PASS: exact original U/S recurrences, integer parity sums, complete outgoing binary carry word, fixed-length reversal, no inserted incoming zero, and the universal zero-charge equivalence.",
+  "execution_result": "PASS_CLEAN_BUILD_AND_ALL_DECLARATIONS",
+  "closure": [
+    "SpectralWeights",
+    "BinaryCode",
+    "ChargeSymmetry",
+    "SourceFormula",
+    "ChargeControls"
+  ],
+  "external_dependency_scope": "The complete five-module project closure was built fresh from committed source. Official prebuilt Lean 4.19.0 Init/Std runtime objects were reused; Std is the sole direct external project import. Lean itself is imported only by the independent introspection harness.",
+  "coverage": {
+    "explicit_public_exports": 69,
+    "explicit_public_definitions": 13,
+    "explicit_public_theorems": 56,
+    "origin_declarations": 174,
+    "safe_declarations": 123,
+    "safe_public_declarations_including_generated": 109,
+    "safe_private_declarations": 14,
+    "compiler_implementation_declarations": 51,
+    "origin_print_axioms_commands": 174,
+    "public_print_commands": 69,
+    "public_print_axioms_commands": 69,
+    "module_breakdown": [
+      {
+        "module": "SpectralWeights",
+        "explicit_exports": 29,
+        "all_origin_declarations": 58,
+        "safe_declarations": 38,
+        "safe_private_declarations": 5,
+        "implementation_declarations": 20
+      },
+      {
+        "module": "BinaryCode",
+        "explicit_exports": 7,
+        "all_origin_declarations": 36,
+        "safe_declarations": 25,
+        "safe_private_declarations": 6,
+        "implementation_declarations": 11
+      },
+      {
+        "module": "ChargeSymmetry",
+        "explicit_exports": 11,
+        "all_origin_declarations": 28,
+        "safe_declarations": 17,
+        "safe_private_declarations": 0,
+        "implementation_declarations": 11
+      },
+      {
+        "module": "SourceFormula",
+        "explicit_exports": 13,
+        "all_origin_declarations": 43,
+        "safe_declarations": 34,
+        "safe_private_declarations": 3,
+        "implementation_declarations": 9
+      },
+      {
+        "module": "ChargeControls",
+        "explicit_exports": 9,
+        "all_origin_declarations": 9,
+        "safe_declarations": 9,
+        "safe_private_declarations": 0,
+        "implementation_declarations": 0
+      }
+    ]
+  },
+  "safe_axiom_union": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "safe_axiom_distribution": [
+    {
+      "axioms": [],
+      "count": 68
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "count": 43
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "count": 11
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "count": 1
+    }
+  ],
+  "implementation_axioms_empty_for_all": true,
+  "required_endpoints": {
+    "P196.Agent15.SpectralCarry.carryCharge_zero_iff": {
+      "signature": "P196.Agent15.SpectralCarry.carryCharge_zero_iff : \u2200 {cs : List.{0} Nat},\n  P196.Agent15.SpectralCarry.Binary cs \u2192\n    Iff (@Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge cs) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n      (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "P196.Agent15.SpectralCarry.odd_source_charge_zero_iff": {
+      "signature": "P196.Agent15.SpectralCarry.odd_source_charge_zero_iff : \u2200 (cs : List.{0} Nat) (m : Nat),\n  @Eq.{1} Nat (@List.length.{0} Nat cs)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)\n        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) \u2192\n    P196.Agent15.SpectralCarry.Binary cs \u2192\n      Iff\n        (@Eq.{1} Int\n          (P196.Agent15.SpectralCarry.sumFirst\n            (fun i =>\n              @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)\n                (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)\n                  (@Nat.cast.{0} Int instNatCastInt\n                    (@Option.getD.{0} Nat\n                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                        (@List.instGetElem?NatLtLength.{0} Nat) cs\n                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                            (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)\n                          i))\n                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))\n                  (@Nat.cast.{0} Int instNatCastInt\n                    (@Option.getD.{0} Nat\n                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                        (@List.instGetElem?NatLtLength.{0} Nat) cs i)\n                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))\n                (P196.Agent15.SpectralCarry.U (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m i)))\n            m)\n          (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n        (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "P196.Agent15.SpectralCarry.even_source_charge_zero_iff": {
+      "signature": "P196.Agent15.SpectralCarry.even_source_charge_zero_iff : \u2200 (cs : List.{0} Nat) (m : Nat),\n  @Eq.{1} Nat (@List.length.{0} Nat cs)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m) \u2192\n    P196.Agent15.SpectralCarry.Binary cs \u2192\n      Iff\n        (@Eq.{1} Int\n          (P196.Agent15.SpectralCarry.sumFirst\n            (fun i =>\n              @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)\n                (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)\n                  (@Nat.cast.{0} Int instNatCastInt\n                    (@Option.getD.{0} Nat\n                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                        (@List.instGetElem?NatLtLength.{0} Nat) cs\n                        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                              (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)\n                            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n                          i))\n                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))\n                  (@Nat.cast.{0} Int instNatCastInt\n                    (@Option.getD.{0} Nat\n                      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                        (@List.instGetElem?NatLtLength.{0} Nat) cs i)\n                      (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))\n                (P196.Agent15.SpectralCarry.S\n                  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m\n                      (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n                    i)))\n            m)\n          (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n        (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "direct_standard_imports": {
+    "Std": {
+      "path": "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/Std.olean",
+      "sha256": "7d3771da25b893da62564bf8198487ff28f01af5cbd410be88d493a4921b2bb1"
+    }
+  },
+  "gate_report": "frozen-e8d706dc-attempt-001/verification.json",
+  "gate_invocation": "gate-invocation-001.json",
+  "public_signatures": "exact-public-signatures.txt",
+  "all_declaration_inventory": "declaration-coverage.tsv",
+  "original_environment_evidence": "environment-history/copy-manifest.json",
+  "historical_cleanup_correction": "cleanup-observation-correction.json",
+  "published_review_action": "None by this reviewer; parent may relay an attributed COMMENT. This is a genuine independent agent review, not a separate human/account APPROVE.",
+  "created_at_utc": "2026-10-16T23:21:49.534773+00:00"
+}

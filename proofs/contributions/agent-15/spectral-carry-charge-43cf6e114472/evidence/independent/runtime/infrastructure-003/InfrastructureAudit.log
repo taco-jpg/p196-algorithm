@@ -1,0 +1,120 @@
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.casesOn","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.casesOn
+ReviewFixture.Sample.casesOn : {motive : ReviewFixture.Sample → Sort u} →
+  (t : ReviewFixture.Sample) → ((val : Nat) → motive { val := val }) → motive t
+SIGNATURE_END ReviewFixture.Sample.casesOn
+'ReviewFixture.Sample.casesOn' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.rec","module":"ReviewFixture","kind":"recursor","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.rec
+ReviewFixture.Sample.rec : {motive : ReviewFixture.Sample → Sort u} →
+  ((val : Nat) → motive { val := val }) → (t : ReviewFixture.Sample) → motive t
+SIGNATURE_END ReviewFixture.Sample.rec
+'ReviewFixture.Sample.rec' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.noConfusion","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.noConfusion
+ReviewFixture.Sample.noConfusion : {P : Sort u} →
+  {v1 v2 : ReviewFixture.Sample} → @Eq.{1} ReviewFixture.Sample v1 v2 → ReviewFixture.Sample.noConfusionType.{u} P v1 v2
+SIGNATURE_END ReviewFixture.Sample.noConfusion
+'ReviewFixture.Sample.noConfusion' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":true,"private":false,"partial":false,"name":"ReviewFixture.visible._cstage1","module":"ReviewFixture","kind":"definition","implementation_only":true,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.visible._cstage1
+ReviewFixture.visible._cstage1 : Nat
+SIGNATURE_END ReviewFixture.visible._cstage1
+'ReviewFixture.visible._cstage1' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.mk._flat_ctor","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.mk._flat_ctor
+ReviewFixture.Sample.mk._flat_ctor : Nat → ReviewFixture.Sample
+SIGNATURE_END ReviewFixture.Sample.mk._flat_ctor
+'ReviewFixture.Sample.mk._flat_ctor' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.mk.injEq","module":"ReviewFixture","kind":"theorem","implementation_only":false,"axioms":["propext"]}
+SIGNATURE_BEGIN ReviewFixture.Sample.mk.injEq
+ReviewFixture.Sample.mk.injEq : ∀ (val val_1 : Nat),
+  @Eq.{1} Prop (@Eq.{1} ReviewFixture.Sample { val := val } { val := val_1 }) (@Eq.{1} Nat val val_1)
+SIGNATURE_END ReviewFixture.Sample.mk.injEq
+'ReviewFixture.Sample.mk.injEq' depends on axioms: [propext]
+AUDIT_DECL_JSON {"unsafe":true,"private":true,"partial":false,"name":"_private.ReviewFixture.0.ReviewFixture.hidden._cstage1","module":"ReviewFixture","kind":"definition","implementation_only":true,"axioms":[]}
+SIGNATURE_BEGIN _private.ReviewFixture.0.ReviewFixture.hidden._cstage1
+_private.ReviewFixture.0.ReviewFixture.hidden._cstage1 : Nat
+SIGNATURE_END _private.ReviewFixture.0.ReviewFixture.hidden._cstage1
+'_private.ReviewFixture.0.ReviewFixture.hidden._cstage1' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.noConfusionType","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.noConfusionType
+ReviewFixture.Sample.noConfusionType : Sort u → ReviewFixture.Sample → ReviewFixture.Sample → Sort u
+SIGNATURE_END ReviewFixture.Sample.noConfusionType
+'ReviewFixture.Sample.noConfusionType' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.mk.inj","module":"ReviewFixture","kind":"theorem","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.mk.inj
+ReviewFixture.Sample.mk.inj : ∀ {val val_1 : Nat},
+  @Eq.{1} ReviewFixture.Sample { val := val } { val := val_1 } → @Eq.{1} Nat val val_1
+SIGNATURE_END ReviewFixture.Sample.mk.inj
+'ReviewFixture.Sample.mk.inj' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.visible","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.visible
+ReviewFixture.visible : Nat
+SIGNATURE_END ReviewFixture.visible
+'ReviewFixture.visible' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample","module":"ReviewFixture","kind":"inductive","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample
+ReviewFixture.Sample : Type
+SIGNATURE_END ReviewFixture.Sample
+'ReviewFixture.Sample' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.mk","module":"ReviewFixture","kind":"constructor","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.mk
+ReviewFixture.Sample.mk : Nat → ReviewFixture.Sample
+SIGNATURE_END ReviewFixture.Sample.mk
+'ReviewFixture.Sample.mk' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.visible_eq","module":"ReviewFixture","kind":"theorem","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.visible_eq
+ReviewFixture.visible_eq : @Eq.{1} Nat ReviewFixture.visible (@OfNat.ofNat.{0} Nat 7 (instOfNatNat 7))
+SIGNATURE_END ReviewFixture.visible_eq
+'ReviewFixture.visible_eq' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.val","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.val
+ReviewFixture.Sample.val : ReviewFixture.Sample → Nat
+SIGNATURE_END ReviewFixture.Sample.val
+'ReviewFixture.Sample.val' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.sample_refl","module":"ReviewFixture","kind":"theorem","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.sample_refl
+ReviewFixture.sample_refl : ∀ (x : ReviewFixture.Sample), @Eq.{1} Nat x.val x.val
+SIGNATURE_END ReviewFixture.sample_refl
+'ReviewFixture.sample_refl' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample._sizeOf_1","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample._sizeOf_1
+ReviewFixture.Sample._sizeOf_1 : ReviewFixture.Sample → Nat
+SIGNATURE_END ReviewFixture.Sample._sizeOf_1
+'ReviewFixture.Sample._sizeOf_1' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample._sizeOf_inst","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample._sizeOf_inst
+ReviewFixture.Sample._sizeOf_inst : SizeOf.{1} ReviewFixture.Sample
+SIGNATURE_END ReviewFixture.Sample._sizeOf_inst
+'ReviewFixture.Sample._sizeOf_inst' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":true,"private":false,"partial":false,"name":"ReviewFixture.visible._cstage2","module":"ReviewFixture","kind":"definition","implementation_only":true,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.visible._cstage2
+ReviewFixture.visible._cstage2 : _obj
+SIGNATURE_END ReviewFixture.visible._cstage2
+'ReviewFixture.visible._cstage2' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":true,"partial":false,"name":"_private.ReviewFixture.0.ReviewFixture.hidden","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN _private.ReviewFixture.0.ReviewFixture.hidden
+_private.ReviewFixture.0.ReviewFixture.hidden : Nat
+SIGNATURE_END _private.ReviewFixture.0.ReviewFixture.hidden
+'_private.ReviewFixture.0.ReviewFixture.hidden' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.recOn","module":"ReviewFixture","kind":"definition","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.recOn
+ReviewFixture.Sample.recOn : {motive : ReviewFixture.Sample → Sort u} →
+  (t : ReviewFixture.Sample) → ((val : Nat) → motive { val := val }) → motive t
+SIGNATURE_END ReviewFixture.Sample.recOn
+'ReviewFixture.Sample.recOn' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":false,"private":false,"partial":false,"name":"ReviewFixture.Sample.mk.sizeOf_spec","module":"ReviewFixture","kind":"theorem","implementation_only":false,"axioms":[]}
+SIGNATURE_BEGIN ReviewFixture.Sample.mk.sizeOf_spec
+ReviewFixture.Sample.mk.sizeOf_spec : ∀ (val : Nat),
+  @Eq.{1} Nat (@SizeOf.sizeOf.{1} ReviewFixture.Sample ReviewFixture.Sample._sizeOf_inst { val := val })
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))
+      (@SizeOf.sizeOf.{1} Nat instSizeOfNat val))
+SIGNATURE_END ReviewFixture.Sample.mk.sizeOf_spec
+'ReviewFixture.Sample.mk.sizeOf_spec' does not depend on any axioms
+AUDIT_DECL_JSON {"unsafe":true,"private":true,"partial":false,"name":"_private.ReviewFixture.0.ReviewFixture.hidden._cstage2","module":"ReviewFixture","kind":"definition","implementation_only":true,"axioms":[]}
+SIGNATURE_BEGIN _private.ReviewFixture.0.ReviewFixture.hidden._cstage2
+_private.ReviewFixture.0.ReviewFixture.hidden._cstage2 : _obj
+SIGNATURE_END _private.ReviewFixture.0.ReviewFixture.hidden._cstage2
+'_private.ReviewFixture.0.ReviewFixture.hidden._cstage2' does not depend on any axioms
+AUDIT_SUMMARY_JSON {"safe_count":18,"implementation_count":4,"count":22,"axiom_union":["propext"]}

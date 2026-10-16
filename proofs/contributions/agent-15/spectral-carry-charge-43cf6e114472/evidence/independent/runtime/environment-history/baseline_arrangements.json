@@ -1,0 +1,49 @@
+{
+  "head": {
+    "command": [
+      "git",
+      "-C",
+      "/workspace/scratch/43cf6e114472/repo",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5\n",
+    "stderr": ""
+  },
+  "instructions": {
+    "command": [
+      "rg",
+      "--files",
+      "--hidden",
+      "-g",
+      "AGENTS.md",
+      "/workspace/scratch/43cf6e114472/repo"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "build_paths": {
+    "command": [
+      "rg",
+      "--files",
+      "proofs",
+      "-g",
+      "!proofs/archive/**",
+      "-g",
+      "*LychrelDigitSums*",
+      "-g",
+      "*lean-toolchain*",
+      "-g",
+      "lakefile*",
+      "-g",
+      "lake-manifest.json",
+      "-g",
+      "ACCEPTED_BUILD.json"
+    ],
+    "exit_code": 2,
+    "stdout": "",
+    "stderr": "rg: proofs: IO error for operation on proofs: No such file or directory (os error 2)\n"
+  }
+}

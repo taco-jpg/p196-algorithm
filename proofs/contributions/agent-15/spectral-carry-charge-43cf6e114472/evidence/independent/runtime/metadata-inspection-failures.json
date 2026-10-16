@@ -1,0 +1,19 @@
+[
+  {
+    "stage": "Read-only comparison of author and independent export lists",
+    "error": "TypeError: unhashable type: dict",
+    "cause": "The author JSON array contains objects with kind and name, not raw name strings.",
+    "resolution": "Inspected the schema, extracted each name, verified 69 unique entries and exact equality including order.",
+    "full_record": "freeze-inputs-001/manifest.json:prior_read_only_inspection_failure",
+    "mathematical_sources_changed": false,
+    "build_performed": false
+  },
+  {
+    "stage": "Read-only presentation of audit statistics after successful gate",
+    "error": "TypeError: keys must be str, int, float, bool or None, not tuple",
+    "cause": "A Python Counter keyed by tuples of axiom names was passed directly to JSON encoding.",
+    "resolution": "Represented the distribution as an array of objects with axioms/count. The successful gate evidence remained unchanged.",
+    "mathematical_sources_changed": false,
+    "build_performed": false
+  }
+]

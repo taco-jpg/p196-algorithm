@@ -1,0 +1,7 @@
+FoldedDecimal.canonical_next_no_overflow (n : Nat) (d : Nat → Nat) (L : Nat) (h : DecimalDigits.Canonical n d L)
+  (hc : DecimalDigits.carry (DecimalDigits.columnSum d L) L = 0) :
+  DecimalDigits.Canonical (Lychrel196.step n) (DecimalDigits.output (DecimalDigits.columnSum d L)) L
+'FoldedDecimal.canonical_next_no_overflow' depends on axioms: [propext, Quot.sound]
+DecimalWidthGrowth.numeric_width_bounds (n : Nat) (d : Nat → Nat) (L K : Nat) (hc : DecimalDigits.Canonical n d L) :
+  ∃ e W, DecimalDigits.Canonical (Lychrel196.orbit n K) e W ∧ K + 4 * L ≤ 4 * W + 4 ∧ 2 * W ≤ 2 * L + K + 3
+'DecimalWidthGrowth.numeric_width_bounds' depends on axioms: [propext, Quot.sound]

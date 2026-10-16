@@ -1,0 +1,51 @@
+[
+  {
+    "name": "SpectralWeights.lean",
+    "bytes": 4445,
+    "sha256": "07b3831f17a0d2e43a7e27cfd8a63d364a98ccbbcef87362a20cfbf24fb49db1",
+    "git_blob": "40afa93196976972e5c0f6772a18e50c1e635a3f",
+    "diff_from_snapshot002": "--- snapshot002/SpectralWeights.lean\n+++ current/SpectralWeights.lean\n@@ -86,6 +86,7 @@\n   | zero => exact \u27e8hzero, hone\u27e9\n   | succ n ih =>\n       have hs := hstep n\n+      change 0 < w (n + 1) \u2227 19 * w (n + 1) \u2264 w (n + 2)\n       constructor <;> omega\n \n theorem oddWeight_pos (n : Nat) : 0 < oddWeight n := by\n"
+  },
+  {
+    "name": "BinaryCode.lean",
+    "bytes": 2655,
+    "sha256": "8db88d52e00dddbd32610dc09b7f8833f1ec1dc623b82236060b67bd2c9171f9",
+    "git_blob": "35ba9bee5afb9bb47f39738e44860a02ea9b2469",
+    "diff_from_snapshot002": "--- snapshot002/BinaryCode.lean\n+++ current/BinaryCode.lean\n@@ -60,6 +60,7 @@\n       have by' := weighted_bounds w hpos hy'\n       have dx := hdom xs.length\n       have dy := hdom ys.length\n+      rw [\u2190 hlen'] at by' dy\n       have ha := hx a (by simp)\n       have hb := hy b (by simp)\n       have hab : a = b := by\n"
+  },
+  {
+    "name": "ChargeSymmetry.lean",
+    "bytes": 3240,
+    "sha256": "28d11217cf147750ec2d07e64dbc6dabeee7deec7e543987817da611201b60a3",
+    "git_blob": "f69efd4bc0642759dddf99834d5d093c929761a5",
+    "diff_from_snapshot002": ""
+  },
+  {
+    "name": "SourceFormula.lean",
+    "bytes": 4348,
+    "sha256": "355fe970a97bcbc6038730efc89355d2fcd8383cdc24a332c21265e39af61efb",
+    "git_blob": "cc58b7da5951ef304f9a92cbe08e4717a920b5a0",
+    "diff_from_snapshot002": null
+  },
+  {
+    "name": "check.py",
+    "bytes": 5210,
+    "sha256": "eec984af53abbc6ae66ade29bf62a591a29cd61b3473ec67e380891127c3f561",
+    "git_blob": "fc5ad97c434edfdbfe47a19c04ffceccdedfe47c",
+    "diff_from_snapshot002": null
+  },
+  {
+    "name": "README.md",
+    "bytes": 859,
+    "sha256": "c6116f96b14e4a4170148ca474887909d3ec6fe1c746882f7d98b7987f70e0d2",
+    "git_blob": "1e120a4c2e0907decadab9fa7a1a0f82abba2956",
+    "diff_from_snapshot002": ""
+  },
+  {
+    "name": "CONTRACT.md",
+    "bytes": 5883,
+    "sha256": "56f7b80c8028ba15b07b5b514e9f071dd2b9281bc727b12a39792f084b252030",
+    "git_blob": "d98cdadc4164c2f3ae74b99b7cf37e6d1e8ebfa1",
+    "diff_from_snapshot002": ""
+  }
+]

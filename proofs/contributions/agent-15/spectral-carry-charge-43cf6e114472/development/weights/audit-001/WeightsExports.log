@@ -1,0 +1,141 @@
+def P196.Agent15.SpectralCarry.recurrence : Int → Int → Nat → Int :=
+fun a b x =>
+  Nat.brecOn x fun x f =>
+    (match (motive := (x : Nat) → Nat.below x → Int) x with
+      | 0 => fun x => a
+      | 1 => fun x => b
+      | n.succ.succ => fun x => 20 * x.1 - x.2.1)
+      f
+'P196.Agent15.SpectralCarry.recurrence' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.recurrence_zero : ∀ (a b : Int), P196.Agent15.SpectralCarry.recurrence a b 0 = a :=
+fun a b => rfl
+'P196.Agent15.SpectralCarry.recurrence_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.recurrence_one : ∀ (a b : Int), P196.Agent15.SpectralCarry.recurrence a b 1 = b :=
+fun a b => rfl
+'P196.Agent15.SpectralCarry.recurrence_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.recurrence_step : ∀ (a b : Int) (n : Nat),
+  P196.Agent15.SpectralCarry.recurrence a b (n + 2) =
+    20 * P196.Agent15.SpectralCarry.recurrence a b (n + 1) - P196.Agent15.SpectralCarry.recurrence a b n :=
+fun a b n => rfl
+'P196.Agent15.SpectralCarry.recurrence_step' does not depend on any axioms
+def P196.Agent15.SpectralCarry.U : Nat → Int :=
+P196.Agent15.SpectralCarry.recurrence 0 1
+'P196.Agent15.SpectralCarry.U' does not depend on any axioms
+def P196.Agent15.SpectralCarry.S : Nat → Int :=
+P196.Agent15.SpectralCarry.recurrence 1 21
+'P196.Agent15.SpectralCarry.S' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.U_zero : P196.Agent15.SpectralCarry.U 0 = 0 :=
+rfl
+'P196.Agent15.SpectralCarry.U_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.U_one : P196.Agent15.SpectralCarry.U 1 = 1 :=
+rfl
+'P196.Agent15.SpectralCarry.U_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.U_step : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.U (n + 2) = 20 * P196.Agent15.SpectralCarry.U (n + 1) - P196.Agent15.SpectralCarry.U n :=
+fun n => rfl
+'P196.Agent15.SpectralCarry.U_step' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.S_zero : P196.Agent15.SpectralCarry.S 0 = 1 :=
+rfl
+'P196.Agent15.SpectralCarry.S_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.S_one : P196.Agent15.SpectralCarry.S 1 = 21 :=
+rfl
+'P196.Agent15.SpectralCarry.S_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.S_step : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.S (n + 2) = 20 * P196.Agent15.SpectralCarry.S (n + 1) - P196.Agent15.SpectralCarry.S n :=
+fun n => rfl
+'P196.Agent15.SpectralCarry.S_step' does not depend on any axioms
+def P196.Agent15.SpectralCarry.oddWeight : Nat → Int :=
+fun n => P196.Agent15.SpectralCarry.U (n + 1)
+'P196.Agent15.SpectralCarry.oddWeight' does not depend on any axioms
+def P196.Agent15.SpectralCarry.evenWeight : Nat → Int :=
+fun n => P196.Agent15.SpectralCarry.S n
+'P196.Agent15.SpectralCarry.evenWeight' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_zero : P196.Agent15.SpectralCarry.oddWeight 0 = 1 :=
+rfl
+'P196.Agent15.SpectralCarry.oddWeight_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_one : P196.Agent15.SpectralCarry.oddWeight 1 = 20 :=
+rfl
+'P196.Agent15.SpectralCarry.oddWeight_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_step : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.oddWeight (n + 2) =
+    20 * P196.Agent15.SpectralCarry.oddWeight (n + 1) - P196.Agent15.SpectralCarry.oddWeight n :=
+fun n => rfl
+'P196.Agent15.SpectralCarry.oddWeight_step' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.evenWeight_zero : P196.Agent15.SpectralCarry.evenWeight 0 = 1 :=
+rfl
+'P196.Agent15.SpectralCarry.evenWeight_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.evenWeight_one : P196.Agent15.SpectralCarry.evenWeight 1 = 21 :=
+rfl
+'P196.Agent15.SpectralCarry.evenWeight_one' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.evenWeight_step : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.evenWeight (n + 2) =
+    20 * P196.Agent15.SpectralCarry.evenWeight (n + 1) - P196.Agent15.SpectralCarry.evenWeight n :=
+fun n => rfl
+'P196.Agent15.SpectralCarry.evenWeight_step' does not depend on any axioms
+def P196.Agent15.SpectralCarry.weightSum : (Nat → Int) → Nat → Int :=
+fun w x =>
+  Nat.brecOn x fun x f =>
+    (match (motive := (x : Nat) → Nat.below x → Int) x with
+      | 0 => fun x => 0
+      | n.succ => fun x => x.1 + w n)
+      f
+'P196.Agent15.SpectralCarry.weightSum' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.weightSum_zero : ∀ (w : Nat → Int), P196.Agent15.SpectralCarry.weightSum w 0 = 0 :=
+fun w => rfl
+'P196.Agent15.SpectralCarry.weightSum_zero' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.weightSum_succ : ∀ (w : Nat → Int) (n : Nat),
+  P196.Agent15.SpectralCarry.weightSum w (n + 1) = P196.Agent15.SpectralCarry.weightSum w n + w n :=
+fun w n => rfl
+'P196.Agent15.SpectralCarry.weightSum_succ' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.oddWeight_pos : ∀ (n : Nat), 0 < P196.Agent15.SpectralCarry.oddWeight n :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.oddWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl true)))
+      (of_eq_true (Eq.trans (congrArg (fun x => x ≤ 20) (Int.mul_one 19)) (eq_true_of_decide (Eq.refl true))))
+      P196.Agent15.SpectralCarry.oddWeight_step n;
+  h.left
+'P196.Agent15.SpectralCarry.oddWeight_pos' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenWeight_pos : ∀ (n : Nat), 0 < P196.Agent15.SpectralCarry.evenWeight n :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.evenWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl true)))
+      (of_eq_true (Eq.trans (congrArg (fun x => x ≤ 21) (Int.mul_one 19)) (eq_true_of_decide (Eq.refl true))))
+      P196.Agent15.SpectralCarry.evenWeight_step n;
+  h.left
+'P196.Agent15.SpectralCarry.evenWeight_pos' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.oddWeight_growth : ∀ (n : Nat),
+  19 * P196.Agent15.SpectralCarry.oddWeight n ≤ P196.Agent15.SpectralCarry.oddWeight (n + 1) :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.oddWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl true)))
+      (of_eq_true (Eq.trans (congrArg (fun x => x ≤ 20) (Int.mul_one 19)) (eq_true_of_decide (Eq.refl true))))
+      P196.Agent15.SpectralCarry.oddWeight_step n;
+  h.right
+'P196.Agent15.SpectralCarry.oddWeight_growth' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenWeight_growth : ∀ (n : Nat),
+  19 * P196.Agent15.SpectralCarry.evenWeight n ≤ P196.Agent15.SpectralCarry.evenWeight (n + 1) :=
+fun n =>
+  let_fun h :=
+    P196.Agent15.SpectralCarry.positive_and_growth✝ P196.Agent15.SpectralCarry.evenWeight
+      (of_eq_true (eq_true_of_decide (Eq.refl true)))
+      (of_eq_true (Eq.trans (congrArg (fun x => x ≤ 21) (Int.mul_one 19)) (eq_true_of_decide (Eq.refl true))))
+      P196.Agent15.SpectralCarry.evenWeight_step n;
+  h.right
+'P196.Agent15.SpectralCarry.evenWeight_growth' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.oddWeight_superincreasing : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.oddWeight n <
+    P196.Agent15.SpectralCarry.oddWeight n :=
+fun n =>
+  P196.Agent15.SpectralCarry.sum_lt_of_growth✝ P196.Agent15.SpectralCarry.oddWeight
+    P196.Agent15.SpectralCarry.oddWeight_pos P196.Agent15.SpectralCarry.oddWeight_growth n
+'P196.Agent15.SpectralCarry.oddWeight_superincreasing' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenWeight_superincreasing : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.evenWeight n <
+    P196.Agent15.SpectralCarry.evenWeight n :=
+fun n =>
+  P196.Agent15.SpectralCarry.sum_lt_of_growth✝ P196.Agent15.SpectralCarry.evenWeight
+    P196.Agent15.SpectralCarry.evenWeight_pos P196.Agent15.SpectralCarry.evenWeight_growth n
+'P196.Agent15.SpectralCarry.evenWeight_superincreasing' depends on axioms: [propext, Quot.sound]

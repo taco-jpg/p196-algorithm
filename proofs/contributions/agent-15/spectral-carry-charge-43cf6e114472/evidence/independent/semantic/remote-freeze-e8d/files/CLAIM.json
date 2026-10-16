@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "task_id": "agent15-spectral-carry-charge-43cf6e114472",
+  "owner": "Agent #15",
+  "session": "43cf6e114472",
+  "status": "CLAIMED",
+  "chat_language": "Spanish",
+  "deliverable_language": "English",
+  "source_snapshot": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+  "source_claims": [
+    {
+      "id": "SPECTRAL-CARRY-CHARGE-ZERO",
+      "path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/creative_global_spectral_notes.md",
+      "git_blob": "cb1c355fa05916a770816a4d5ef680e54079cccb",
+      "statement": "The integer weights defining J dominate the sum of smaller weights, so J=0 exactly when C=C*."
+    },
+    {
+      "path": "proofs/creative_global_spectral__8de5a77a944d0d04.py",
+      "git_blob": "730acd722bf017b6bf1e51e5a0411169a7804da4",
+      "location": "carry_coordinates"
+    }
+  ],
+  "target_statement": [
+    "Define exact integer recurrences U0=0,U1=1 and S0=1,S1=21 with u(k+2)=20*u(k+1)-u(k). Prove positivity and dominance over the sum of preceding weights for oddWeight(k)=U(k+1) and evenWeight(k)=S(k).",
+    "For every finite binary carry word c (entries 0 or 1), define the original integer J by mirror differences: odd length 2m+1 uses sum i<m (c[2m-i]-c[i])*U(m-i); even length 2m uses sum i<m (c[2m-1-i]-c[i])*S(m-1-i). Prove J(c)=0 iff reverse(c)=c, including the central odd carry, length1,2 and empty algebraic extension.",
+    "Provide the exact highest-weight recursive evaluation correspondence and binary half-word uniqueness sufficient for this zero-charge theorem. Preserve full length and both parity formulas, without a new spectral T/R injection result."
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/"
+  ],
+  "contribution_branch": "formalize/agent-15/spectral-carry-charge-43cf6e114472",
+  "assigned_subagents": {
+    "/root/coverage_scout": "Source census, then U/S recurrence weights only after accepted claim; initially ultra.",
+    "/root/ownership_scout": "Read-only full task census and nonauthor semantic review; initially ultra.",
+    "/root/runtime_scout": "Environment baseline and independent clean final builds/axiom audits; no source authorship; initially ultra.",
+    "/root": "Binary signed-code and full-word symmetry proof, sole Git writer."
+  },
+  "verification_standard": {
+    "lean": "4.19.0",
+    "compiler_arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "Lean.ofReduceBool",
+      "new mathematical axioms"
+    ],
+    "required": [
+      "Exact source statement comparison",
+      "Fresh complete module closure",
+      "All public declarations printed and axioms audited",
+      "Genuine nonauthor semantic and execution review",
+      "Source hashes and complete failed attempts preserved"
+    ]
+  },
+  "ownership_check": {
+    "base_census": "b0ee3d25fb1ddea0f741326b6401d81ae3d27626",
+    "base_task_count": 162,
+    "inspected_deltas": [
+      "d8aab676e88fa0a42a3a660687e4a7a4d26e64c4",
+      "16642c928430f3531d401584b0ab28b3e241a5b9",
+      "68fa6ca2860d476999fc2f18a8d1d04c64961982",
+      "28a0817f3423c205565b4da00b26bad3594dbdb3"
+    ],
+    "current_task_count": 168,
+    "scope_coordination_comment": 6226185223,
+    "complementary_owner": "Agent14 owns T/R and 0..18 full coefficient injectivity; its task is present in the exact inspected head."
+  },
+  "scope_exclusions": [
+    "No T/R spectral A injectivity: reserved by Agent14.",
+    "No beta/square-root interpretation, H coordinate, four-case evolution, carry quotient ideal or quotient classification.",
+    "No nonnine support reproof, arbitrary digit claims, equality of seeds, orbit persistence, palindrome avoidance or196 resolution.",
+    "No main integration or shared generated index mutation."
+  ],
+  "coordination_issue": 61,
+  "main_write_slot": false,
+  "publication_authorization": "User role explicitly authorizes isolated contribution branches, reviewed pull requests, issue61 chat and guarded coordination claims.",
+  "publication_attempts": [
+    {
+      "commit": "d33800bd163cc2664f210f07ac5f712f596b1d54",
+      "parent": "16642c928430f3531d401584b0ab28b3e241a5b9",
+      "result": "UNKNOWN GraphQL error; current-ref and missing own-file readback prove no reservation; only integration-slot delta inspected before retry."
+    },
+    {
+      "commit": "78eec7638e5fe3f3c27a45bbb868f5ad2a976470",
+      "parent": "68fa6ca2860d476999fc2f18a8d1d04c64961982",
+      "result": "Guarded update lost actual head race; own-file404 and both remote-ref reads confirmed absence. Integration release and PR111 postmerge receipt inspected; no task scope change."
+    }
+  ]
+}

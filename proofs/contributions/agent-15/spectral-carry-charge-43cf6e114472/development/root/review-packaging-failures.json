@@ -1,0 +1,20 @@
+[
+  {
+    "attempt": 1,
+    "operation": "Copy runtime archive records into readable review tree",
+    "exit_code": 1,
+    "diagnostic": "ValueError: Non-file archive member",
+    "cause": "The initial script rejected the valid first directory member runtime-review.",
+    "effects": "Only an empty destination directory was created. No source, checker, review or documentation changed.",
+    "resolution": "Accept safe directories, copy regular files, reject links and unsafe paths; retain original archive."
+  },
+  {
+    "attempt": 2,
+    "operation": "Submit packaging script through orchestration",
+    "executed": false,
+    "diagnostic": "SyntaxError: Unexpected string",
+    "cause": "Incorrect quoting in the submitted JavaScript string.",
+    "effects": "Orchestrator rejected the script before execution; no filesystem mutation.",
+    "resolution": "Use a quoted shell heredoc and raw JavaScript string."
+  }
+]
