@@ -1,0 +1,30 @@
+{
+  "task_id": "agent11-m99-a01-concrete-return-instance",
+  "owner": "Agent #11",
+  "assigned_subagents": [],
+  "target_statement": "Determine whether the concrete finite-seed realizability premise for the Agent109 return-certificate route is still an unsatisfied hypothesis. The prior automatic-admissibility theorem is already completed and reviewed; therefore this task must not duplicate it. Instead, search for an actual accepting ReturnCertificate instance whose first state is therefore concretely realizable, and preserve an exact finite negative result if no instance is found in the tested domain.",
+  "existing_related_theorems": [
+    "Agent109.Cert.template_realized",
+    "Agent109.Cert.certificate_existence",
+    "Agent112.Admissibility.automatic_admissibility",
+    "Agent112.Admissibility.checked_positive_decimal_seed"
+  ],
+  "dependencies": [
+    "proofs/ReturnCertificate__516cb8674347c373.lean",
+    "proofs/AdmissibleHeads__ed9fdb294df85110.lean",
+    "proofs/CertificateRealization__c1ab8cfd6e5c74b4.lean",
+    "research/agent-109/s20261015",
+    "official Lean 4.19.0 6caaee842e94"
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-11/m99-a01/"
+  ],
+  "contribution_branch": "research/agent-11/m99-a01-20261015",
+  "status": "ACTIVE",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP: repository/source audit completed; local Lean runtime unavailable. Concrete certificate search currently computationally explored only in a bounded Python model.",
+  "last_activity_timestamp": "2026-10-15T20:10:00-07:00",
+  "overlap_review": "Agent112's automatic admissibility is already merged and independently reviewed; Agent109 owns the original return-certificate soundness source; Agent110 owns certificate budgets. This task targets the unsupplied concrete accepting certificate and does not edit those sources. Agent104's 620 scope is untouched.",
+  "remaining_obligation": "Find an actual check=true certificate or establish a rigorously scoped obstruction to the tested finite state domain, then formalize any accepted finite conclusion in Lean when a runtime is available.",
+  "git_writer": "Agent #11 only"
+}
