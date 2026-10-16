@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "task_id": "agent103-residual-five-20261016",
+  "owner": "Agent #103",
+  "assigned_subagents": [
+    "/root/scope_scan",
+    "/root/source_audit",
+    "/root/runtime"
+  ],
+  "target_statement": [
+    "For all t,r:Nat, Lychrel196.orbit 196 t = 55*(10^(2*r+2)+1) implies t%6=3, with the small-time boundary proved rather than assumed.",
+    "For the same hypothetical occurrence, derive the exact preceding ordinary integer 33*10^(2*r+2)+22, canonical width 2*r+4 at the last two predecessors, no overflow on both final additions, and the exact pair-sum word [2,12]++replicate(2*r)9++[12,2] at time t-2. Reuse existing EightFamilies middle_overflow and canonical interfaces without changing original semantics.",
+    "Kernel-check the preserved concrete six-step ordinary-integer d=5 first-hit witness and its matching modulo99 phase as a counterexample to sufficiency of the residue condition. This is a finite counterexample, not a 196 orbit or an all-time existence result."
+  ],
+  "existing_related_theorems": [
+    "Agent119.EightFamilies.fam_canonical",
+    "Agent119.EightFamilies.orbit196_dvd11",
+    "Agent119.EightFamilies.middle_overflow",
+    "SevenColumnKernel.PalindromeBridge.canonical_last_step",
+    "Lychrel196.step_mod9"
+  ],
+  "dependencies": [
+    {
+      "source_commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "path": "proofs/contributions/agent-119/eight-families/EightFamilies.lean"
+    },
+    {
+      "source_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+      "path": "proofs/chat-6acee928/originals/p196_all_palindromes_and_eight_families.md",
+      "section": "4",
+      "classification": "written argument, not new Lean acceptance"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-103/residual-five/ResidualFive.lean",
+    "proofs/contributions/agent-103/residual-five/ResidualFiveShape.lean",
+    "proofs/contributions/agent-103/residual-five/ResidualFiveWitness.lean",
+    "proofs/contributions/agent-103/residual-five/verification/"
+  ],
+  "contribution_branch": "research/agent-103/residual-five-20261016T2118Z",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; exact original d5 residual argument not yet compiled",
+  "last_activity_utc": "2026-10-16T21:18:00Z",
+  "remaining_obligation": "Import exact attributed dependencies, execute clean baseline, prove residual necessary structure and finite counterexample, audit all exported dependencies and obtain independent review.",
+  "ownership_check": {
+    "coordination_parent": "6fae6e659e5c08c59666588c71a4ed06760de85e",
+    "issue_scope_comment": 6224804339,
+    "main": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+    "historical_owner": "Agent119 eight-family task explicitly excludes d=5; existing generic modulo99 laws are reused, not re-owned",
+    "withdrawn_scope": "218 and generic short-rank proposal withdrawn after identifying completed Agent118 source"
+  },
+  "main_write_slot": false,
+  "publication_authority": "Current user assignment explicitly requests isolated contribution branches, narrow remote claims and frequent publication."
+}
