@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "decision": "PASS_SCOPED_INDEPENDENT_SEMANTIC_AND_RECOVERED_FRESH_KERNEL_REVIEW",
+  "reviewer": "Agent #13 genuine nonauthor subagent review110",
+  "session": "6124a6476634",
+  "affiliation": "separate reasoning subagent in the same assistant session; not external peer review or separate GitHub identity",
+  "head": "624cc122e39e4d1f30b5c17890e7aac17c40a1e9",
+  "base": "1ee9123344dbe17e9bda224ff8af5b1cbb2b64e4",
+  "combined_tree": "23ef1e89374822bf559a1cf0760878f941a9dc56",
+  "coordination_claim": "2d189730e7c2ac8e0e2fcbd38e54ce684bc7bca8",
+  "coordination_task": "proofs/coordination/tasks/agent13-session6124-pr110-pr127-pr128-integration-20261016.json",
+  "source_module_count": 10,
+  "all_head_combined_registry_source_identities_verified": true,
+  "unchanged_base_modules": 8,
+  "source_closure": [
+    {
+      "module": "LychrelDigitSums",
+      "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+      "bytes": 218799,
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports_declared": [
+        "Std"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "SafeDelay",
+      "path": "proofs/SafeDelay__bc8a973241f692fd.lean",
+      "bytes": 6449,
+      "sha256": "57d8d3fb7e3c2f747b276c3d03c7e81cda8714842c1b4794d3e682aff8e179d6",
+      "git_blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60",
+      "imports_declared": [
+        "LychrelDigitSums"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "DecimalSafeRuns",
+      "path": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+      "bytes": 6766,
+      "sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+      "git_blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78",
+      "imports_declared": [
+        "LychrelDigitSums"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "DecimalDelayBridge",
+      "path": "proofs/DecimalDelayBridge__83037365a26a750b.lean",
+      "bytes": 9014,
+      "sha256": "8e800eab397f44ac1b0ff47ac02cc7576cddeb7d45015375640213857e56e800",
+      "git_blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df",
+      "imports_declared": [
+        "SafeDelay",
+        "DecimalSafeRuns"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "PairDelayBridge",
+      "path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+      "bytes": 8358,
+      "sha256": "4faa6a3f05477bfabd8f504217119e0bb4db56987e3717c822f914f4cc7e70a5",
+      "git_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6",
+      "imports_declared": [
+        "DecimalDelayBridge"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "DelayedOverlapGate",
+      "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "bytes": 22758,
+      "sha256": "c24d7774af6487fcab63a4d60cd10aaabb1b270b3dc0f4ac42dd3655b416b112",
+      "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+      "imports_declared": [
+        "PairDelayBridge"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "Agent1GroupIII",
+      "path": "proofs/Agent1GroupIII.lean",
+      "bytes": 10503,
+      "sha256": "2adaef1e36b3a56022ac893251436f29c83e1d83d5e52b98a99a6cf7de7f0577",
+      "git_blob": "6760c7d95b30f0df46c4f9f22c01ca8c2a1e436b",
+      "imports_declared": [
+        "DelayedOverlapGate"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "Agent1GroupIIINumeric",
+      "path": "proofs/Agent1GroupIIINumeric.lean",
+      "bytes": 4221,
+      "sha256": "d9633f976619f74d569117d9fbb6ddd2907bca4dbf0dd570c802be12aedb023c",
+      "git_blob": "6b3a0fb58f989256b2db539e437d5c1e94efa7ad",
+      "imports_declared": [
+        "Agent1GroupIII"
+      ],
+      "head_equals_combined": true,
+      "base_present": true,
+      "base_equals_combined": true
+    },
+    {
+      "module": "Agent1GroupIIIHandoff",
+      "path": "proofs/Agent1GroupIIIHandoff.lean",
+      "bytes": 16449,
+      "sha256": "190778311fe86b4c48ae617b2946d78876b13772c6dfeee8cba4f2a7cc0ba1a4",
+      "git_blob": "7d997797e5d680f931f3f19e26113edfcb05b4f2",
+      "imports_declared": [
+        "Agent1GroupIII"
+      ],
+      "head_equals_combined": true,
+      "base_present": false,
+      "base_equals_combined": null
+    },
+    {
+      "module": "Agent1GroupIIIHandoffNumeric",
+      "path": "proofs/Agent1GroupIIIHandoffNumeric.lean",
+      "bytes": 5219,
+      "sha256": "14abe8bbdc4320c3ec72d97eacb403c481b154d8baf8f1dac041d3af79cc13c4",
+      "git_blob": "ae8dea5ca30698560987a56d3ca88961311b666b",
+      "imports_declared": [
+        "Agent1GroupIIIHandoff",
+        "Agent1GroupIIINumeric"
+      ],
+      "head_equals_combined": true,
+      "base_present": false,
+      "base_equals_combined": null
+    }
+  ],
+  "source_edits": [],
+  "remote_actions_performed": [],
+  "complete_source_build": true,
+  "one_uninterrupted_successful_run_claimed": false,
+  "fresh_closure_completed_with_recorded_resource_recovery": true,
+  "author_or_prior_reviewer_project_object_reuse": false,
+  "successful_module_executions": [
+    {
+      "module": "LychrelDigitSums",
+      "successful_origin": "clean-001",
+      "execution": {
+        "label": "LychrelDigitSums",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "LychrelDigitSums.olean",
+          "LychrelDigitSums.lean"
+        ],
+        "cwd": "/workspace/scratch/6124a6476634/review110/evidence/clean-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 68.777124,
+        "log": "logs/LychrelDigitSums.log",
+        "log_bytes": 11659,
+        "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+      }
+    },
+    {
+      "module": "SafeDelay",
+      "successful_origin": "clean-001",
+      "execution": {
+        "label": "SafeDelay",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "SafeDelay.olean",
+          "SafeDelay.lean"
+        ],
+        "cwd": "/workspace/scratch/6124a6476634/review110/evidence/clean-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.617267,
+        "log": "logs/SafeDelay.log",
+        "log_bytes": 633,
+        "log_sha256": "3d55cafd6e47d04c275999d3c088697a063d8d4bcbf197ca37c5fbe0edeccaea"
+      }
+    },
+    {
+      "module": "DecimalSafeRuns",
+      "successful_origin": "clean-001",
+      "execution": {
+        "label": "DecimalSafeRuns",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "DecimalSafeRuns.olean",
+          "DecimalSafeRuns.lean"
+        ],
+        "cwd": "/workspace/scratch/6124a6476634/review110/evidence/clean-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 1.371097,
+        "log": "logs/DecimalSafeRuns.log",
+        "log_bytes": 419,
+        "log_sha256": "338230b676ae47db19ccbb7a3e41847c8666d4a098ecb042fa7260bfb93f149b"
+      }
+    },
+    {
+      "module": "DecimalDelayBridge",
+      "successful_origin": "clean-001",
+      "execution": {
+        "label": "DecimalDelayBridge",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "DecimalDelayBridge.olean",
+          "DecimalDelayBridge.lean"
+        ],
+        "cwd": "/workspace/scratch/6124a6476634/review110/evidence/clean-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 1.117741,
+        "log": "logs/DecimalDelayBridge.log",
+        "log_bytes": 1356,
+        "log_sha256": "2dd77e0f4682e65c47381652c5038dee579dcaef3015c43b39b82d07e76edf97"
+      }
+    },
+    {
+      "module": "PairDelayBridge",
+      "successful_origin": "clean-001",
+      "execution": {
+        "label": "PairDelayBridge",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "PairDelayBridge.olean",
+          "PairDelayBridge.lean"
+        ],
+        "cwd": "/workspace/scratch/6124a6476634/review110/evidence/clean-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.966785,
+        "log": "logs/PairDelayBridge.log",
+        "log_bytes": 1009,
+        "log_sha256": "ea1d23ed2746ead80b65c80afbc90b6de31b0d8eac12c50c2755154826bd7224"
+      }
+    },
+    {
+      "module": "DelayedOverlapGate",
+      "successful_origin": "clean-001",
+      "execution": {
+        "label": "DelayedOverlapGate",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "DelayedOverlapGate.olean",
+          "DelayedOverlapGate.lean"
+        ],
+        "cwd": "/workspace/scratch/6124a6476634/review110/evidence/clean-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 53.122276,
+        "log": "logs/DelayedOverlapGate.log",
+        "log_bytes": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "module": "Agent1GroupIII",
+      "successful_origin": "recovery-001",
+      "execution": {
+        "label": "Agent1GroupIII",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "Agent1GroupIII.olean",
+          "Agent1GroupIII.lean"
+        ],
+        "cwd": "/dev/shm/p196-agent13-session6124-20261016/review110/evidence/recovery-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 154.387649,
+        "log": "logs/Agent1GroupIII.log",
+        "log_bytes": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "free_bytes_after_command": 5081014272
+      }
+    },
+    {
+      "module": "Agent1GroupIIIHandoff",
+      "successful_origin": "recovery-001",
+      "execution": {
+        "label": "Agent1GroupIIIHandoff",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "Agent1GroupIIIHandoff.olean",
+          "Agent1GroupIIIHandoff.lean"
+        ],
+        "cwd": "/dev/shm/p196-agent13-session6124-20261016/review110/evidence/recovery-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 200.094389,
+        "log": "logs/Agent1GroupIIIHandoff.log",
+        "log_bytes": 145,
+        "log_sha256": "97420b4dcd2b28e50c2680d28b00b1afe92a6ea0c676b60976c0bdacbbe020d7",
+        "free_bytes_after_command": 5007179776
+      }
+    },
+    {
+      "module": "Agent1GroupIIINumeric",
+      "successful_origin": "recovery-001",
+      "execution": {
+        "label": "Agent1GroupIIINumeric",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "Agent1GroupIIINumeric.olean",
+          "Agent1GroupIIINumeric.lean"
+        ],
+        "cwd": "/dev/shm/p196-agent13-session6124-20261016/review110/evidence/recovery-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.415273,
+        "log": "logs/Agent1GroupIIINumeric.log",
+        "log_bytes": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "free_bytes_after_command": 5007085568
+      }
+    },
+    {
+      "module": "Agent1GroupIIIHandoffNumeric",
+      "successful_origin": "recovery-001",
+      "execution": {
+        "label": "Agent1GroupIIIHandoffNumeric",
+        "argv": [
+          "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+          "--trust=0",
+          "-j1",
+          "-DElab.async=false",
+          "-o",
+          "Agent1GroupIIIHandoffNumeric.olean",
+          "Agent1GroupIIIHandoffNumeric.lean"
+        ],
+        "cwd": "/dev/shm/p196-agent13-session6124-20261016/review110/evidence/recovery-001/source",
+        "exit_code": 0,
+        "elapsed_seconds": 0.565926,
+        "log": "logs/Agent1GroupIIIHandoffNumeric.log",
+        "log_bytes": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "free_bytes_after_command": 5006901248
+      }
+    }
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "compile_flags": [
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "logical_constant_count": 2746,
+  "type_count": 2746,
+  "count_by_kind": {
+    "theorem": 2547,
+    "inductive": 4,
+    "safe_definition": 185,
+    "constructor": 6,
+    "recursor": 4
+  },
+  "public_new_theorems": 43,
+  "public_new_definitions": 7,
+  "count_by_module_and_kind": {
+    "LychrelDigitSums": {
+      "theorem": 986,
+      "inductive": 4,
+      "safe_definition": 131,
+      "constructor": 6,
+      "recursor": 4
+    },
+    "SafeDelay": {
+      "theorem": 24,
+      "safe_definition": 10
+    },
+    "DecimalSafeRuns": {
+      "theorem": 42,
+      "safe_definition": 3
+    },
+    "DecimalDelayBridge": {
+      "theorem": 41,
+      "safe_definition": 7
+    },
+    "PairDelayBridge": {
+      "theorem": 26,
+      "safe_definition": 6
+    },
+    "DelayedOverlapGate": {
+      "theorem": 392,
+      "safe_definition": 14
+    },
+    "Agent1GroupIII": {
+      "theorem": 466,
+      "safe_definition": 7
+    },
+    "Agent1GroupIIIHandoff": {
+      "theorem": 554,
+      "safe_definition": 7
+    },
+    "Agent1GroupIIINumeric": {
+      "theorem": 5
+    },
+    "Agent1GroupIIIHandoffNumeric": {
+      "theorem": 11
+    }
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "actual_axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "r1_boundary_axioms": {
+    "P196.Agent1.GroupIIIHandoff.r1_component_time4_width": [],
+    "P196.Agent1.GroupIIIHandoff.r1_component_time4_columns": [],
+    "P196.Agent1.GroupIIIHandoff.r1_whole_time4_width": [],
+    "P196.Agent1.GroupIIIHandoff.r1_time4_signed_defect": [],
+    "P196.Agent1.GroupIIIHandoff.r1_actual_time4_overlap_fails": []
+  },
+  "unsafe_implementation_axiom_count": 14,
+  "nonsafe_implementation_definition_count": 846,
+  "unsupported_logical_axioms": [],
+  "forbidden_source_tokens": [],
+  "unresolved_mathematical_findings": [],
+  "nonblocking_evidence_notes": [
+    "Initial ENOSPC failure and truncated zero-exit object preserved; recovery completed all obligations.",
+    "Original line-oriented JSON has 837 wrapped axiom summaries incomplete; unchanged raw audit passed and a full parse is retained.",
+    "Upstream boundary README object-retention wording differs from final inventory's permitted compiled-object exclusions."
+  ],
+  "scope": "original GroupIII(1,10,6); sharp time4 repair; departures1/3; universal canonical ordinary safety1..4; positive realization for each r>=2; exact r1 signed defect",
+  "not_claimed": [
+    "time6",
+    "later recurrence",
+    "infinite safety",
+    "decimal Lychrel existence",
+    "196",
+    "repository-wide build",
+    "platform acceptance",
+    "remote merge"
+  ],
+  "core_evidence": {
+    "semantic_review": {
+      "path": "SEMANTIC_REVIEW.md",
+      "sha256": "51d2a509e9e6f527da23f4e1942ee609f9b9716a307b33926cf0e002a62ed603"
+    },
+    "failed_receipt": {
+      "path": "clean-001/receipt.json",
+      "sha256": "d74da1dcd4eb62c020a8cbbf3f3c80f35efcff10555f4dd8a88b61d095315a36"
+    },
+    "failed_terminal_output": {
+      "path": "disk-incident-build-terminal-output.log",
+      "sha256": "149a6f3c46a5fc4baeb3b027bba0a530c852770a6effa5ba614ff35b250f2777"
+    },
+    "recovery_receipt": {
+      "path": "recovery-001/receipt.json",
+      "sha256": "69d5b1d28ab746c6780c51b64b8c88fc70a09b30b6cef3aab4a00431ceb02ba9"
+    },
+    "raw_audit": {
+      "path": "recovery-001/logs/Review110Audit.log",
+      "bytes": 3589174,
+      "sha256": "65dcb4b65113c0b52b10de622fc7308b900aac55cc45098b60df51f4c5f4994f"
+    },
+    "complete_constant_audit": {
+      "path": "recovery-001/constant-audit-complete.json",
+      "sha256": "65cfb9d073aa62a3f1a9ed78f35b1bc3162e9113085a9d474a1bc639f1870ad2"
+    },
+    "postprocess_receipt": {
+      "path": "recovery-001/postprocess-receipt.json",
+      "sha256": "f2ab67ad7c61b5fa634549969f9c25c734b40ab40d07cced9ad4080e6bf6b6ce"
+    }
+  },
+  "finalized_epoch": 1792193008.8450499
+}

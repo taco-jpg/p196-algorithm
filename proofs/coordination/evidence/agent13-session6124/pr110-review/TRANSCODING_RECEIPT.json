@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "PASS_LOSSLESS_GZIP_TO_XZ_TRANSCODING",
+  "head": "624cc122e39e4d1f30b5c17890e7aac17c40a1e9",
+  "base": "1ee9123344dbe17e9bda224ff8af5b1cbb2b64e4",
+  "combined_tree": "23ef1e89374822bf559a1cf0760878f941a9dc56",
+  "gzip": {
+    "path": "/dev/shm/p196-agent13-session6124-20261016/review110/review110-evidence.tar.gz",
+    "bytes": 1132666,
+    "sha256": "bc00e583c1b3291f96932409efdd0198510b9bbf0ba4d4c269ae9c80bd005539",
+    "retained_unchanged": true
+  },
+  "xz": {
+    "path": "/dev/shm/p196-agent13-session6124-20261016/review110/review110-evidence.tar.xz",
+    "bytes": 393984,
+    "sha256": "fdf6131b3fb85d898eaa71ea5091ba179c16ca4326dd31b04ab8a98b8d4ed757",
+    "format": "XZ",
+    "check": "CRC64",
+    "preset": 6
+  },
+  "identical_uncompressed_tar": {
+    "bytes": 11038720,
+    "sha256": "3a43c0cb368448db033a5de8d2511466a81b9b9be41b93dac61c43c6ef96229e",
+    "direct_byte_equality_verified": true
+  },
+  "verified_original_members": 191,
+  "all_original_member_sizes_and_sha256_verified": true,
+  "manifest_sha256": "91fc84d9b78a4c3825f13cf2a2873efcc11f74057739cb0b82552e372738d2f1",
+  "bytes_saved_relative_to_gzip": 738682,
+  "compression_only_no_proof_or_claim_changes": true,
+  "lean_executions": 0,
+  "remote_actions": [],
+  "recovery": [
+    "mkdir -p pr110-review && tar -xJf review110-evidence.tar.xz -C pr110-review",
+    "The retained gzip can alternatively be recovered with tar -xzf.",
+    "Both decompress to exactly the same tar bytes, including all 191 original members.",
+    "The original failed build and resource recovery remain fully preserved inside both archives."
+  ],
+  "executed_command": "python3 -B /dev/shm/p196-agent13-session6124-20261016/review110/transcode_review.py",
+  "transcoder_sha256": "e250c47e20b1f1eac56bf21d823e80740c89b26e53e10b4b074ad8c0d93c01cf"
+}

@@ -1,0 +1,11 @@
+# Agent #13 independent PR #110 review
+
+Scoped PASS at exact head `624cc122e39e4d1f30b5c17890e7aac17c40a1e9`. The genuine nonauthor `/root/review110` reviewed both new modules and the ten-module source closure, then completed a fresh trust-zero build with recorded ENOSPC recovery and a full type/axiom audit of 2,746 logical declarations. No proof source was changed. Original failed receipts remain failed, and the complete audit parser correction is separately retained.
+
+The full publication archive is `review110-evidence.tar.xz` (393,984 bytes; SHA-256 `fdf6131b3fb85d898eaa71ea5091ba179c16ca4326dd31b04ab8a98b8d4ed757`). It contains all 191 original members, including the 99-file original contribution package, every fresh-build source, all failed/successful logs, programs, full types and axiom sets. Extract into a new directory with `mkdir pr110-review && tar -xJf review110-evidence.tar.xz -C pr110-review`.
+
+`PACKET_RECEIPT.json` records the original gzip transport. `TRANSCODING_RECEIPT.json` verifies that the published xz archive decompresses to exactly the same 11,038,720 tar bytes (SHA-256 `3a43c0cb368448db033a5de8d2511466a81b9b9be41b93dac61c43c6ef96229e`). Only compression changed; the gzip remains in the private review workspace. All substantive original bytes are published in the xz. Reproducible compiled objects are individually identified with hashes and exclusion reasons in `EVIDENCE_MANIFEST.json`.
+
+The integration parent's complete three-PR source/publication report is already preserved at https://github.com/taco-jpg/p196-algorithm/blob/bf3b2f71d48501793e01edc7d68cb62e301210a2/proofs/coordination/evidence/agent13-session6124/pr128-review/SOURCE_AND_PUBLICATION_REVIEW.md . PR110's three historical manifest checkpoints were recovered at their original Git commits and matched exactly; no original evidence gap remained.
+
+This is an exact-head review checkpoint. The archived older combination is explicitly identified in the report. The parent will refresh complete current-main preservation and every registered source identity before acquiring and exercising the short guarded main slot. No unrelated repository-wide build or main merge is claimed by this premerge packet.
