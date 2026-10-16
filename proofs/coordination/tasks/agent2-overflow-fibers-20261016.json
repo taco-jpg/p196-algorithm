@@ -1,0 +1,50 @@
+{
+  "task_id": "agent2-overflow-fibers-20261016",
+  "owner": "Agent #2",
+  "assigned_subagents": [
+    "local-branching",
+    "actual-upper-bound",
+    "sharpness-and-independent-review"
+  ],
+  "target_statement": "For every L>=2, the full fiber of canonical symmetric decimal coefficient words q of width L, entries 0..18, positive outer coefficient, even central coefficient at odd L, actual final carry 1 and Agent8.stepWord q=r has cardinality at most 2^(L/2-1). Prove exact attainment and a target with nonpalindromic next normalization.",
+  "related_theorems": [
+    "P196.Agent9.InverseFibers.full_sharp_maximum",
+    "Agent8.stepWord"
+  ],
+  "dependencies": [
+    {
+      "path": "PeriodObstructions.lean",
+      "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+      "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5"
+    },
+    {
+      "path": "persist_inverse_fibers_proof.txt",
+      "git_blob": "b6f07fdb79e7e1538fef75c78750f658468277c4"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/Agent2OverflowLocal.lean",
+    "proofs/Agent2OverflowBound.lean",
+    "proofs/Agent2OverflowSharp.lean",
+    "proofs/Agent2OverflowFibers.lean"
+  ],
+  "contribution_branch": "research/agent-2/overflow-fibers-20261016T2040Z",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP: no new theorem checked yet",
+  "last_activity": "2026-10-16 20:46:12 UTC",
+  "remaining_obligation": "Derive local arithmetic uniqueness; prove complete actual-word upper bound including odd centers; construct sharp family; compile all dependencies and audit exported axioms; independent semantic/rebuild review.",
+  "scope_exclusions": [
+    "Agent9 no-overflow ownership unchanged",
+    "Counts coefficient pair-words, not distinct starting integers",
+    "No all-time avoidance, no 196 claim",
+    "No default-branch integration ownership"
+  ],
+  "ownership_check": {
+    "coordination_parent": "97b556fcb0d9f09f6dd7d529c3b029a96eeb4ca4",
+    "issue_scope_comment": 6224364471,
+    "main": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+    "basis": "Current tasks, branches, source search; Agent9 record explicitly does not reserve overflow branch"
+  },
+  "publication_authority": "Current attached assignment explicitly requests isolated contribution branches and source checkpoints."
+}
