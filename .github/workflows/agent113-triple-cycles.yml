@@ -1,0 +1,104 @@
+name: Agent113 descending-prefix triple-cycle Lean verification
+
+on:
+  push:
+    branches: ['research/agent-113/descending-prefix-maximality-20261016T212415Z']
+    paths:
+      - '.github/workflows/agent113-triple-cycles.yml'
+      - 'proofs/contributions/agent-113/descending-prefix-maximality-20261016/**'
+  pull_request:
+    paths:
+      - '.github/workflows/agent113-triple-cycles.yml'
+      - 'proofs/contributions/agent-113/descending-prefix-maximality-20261016/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent113-triple-cycles-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check-lean-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - name: Check out exact contribution
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            proofs/contributions/agent-113/descending-prefix-maximality-20261016
+          sparse-checkout-cone-mode: false
+      - name: Check out pinned original formal dependencies
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5
+          path: pinned-old
+          persist-credentials: false
+          sparse-checkout: |
+            proofs/research/continuation/LychrelDigitSums.lean
+            proofs/contributions/agent-113/two-digit-prefix/TwoDigitProjection.lean
+          sparse-checkout-cone-mode: false
+      - name: Install official Lean 4.19.0 and authenticate distribution
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/agent113-audit"
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 --output lean-4.19.0-linux.tar.zst \
+            https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean-4.19.0-linux.tar.zst' | sha256sum -c -
+          tar --zstd -xf lean-4.19.0-linux.tar.zst
+          "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" --version | tee "$RUNNER_TEMP/agent113-audit/lean-version.log"
+      - name: Check original source and direct finite evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          unset LD_PRELOAD
+          P=proofs/contributions/agent-113/descending-prefix-maximality-20261016
+          echo 'ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57  pinned-old/proofs/research/continuation/LychrelDigitSums.lean' | sha256sum -c -
+          echo '9edf6d08e30fd996c7243b59c1b0b80082f46d1d56622ce81fee7419faf5d3f7  '"$P"'/Agent113TripleCycles.lean' | sha256sum -c -
+          echo '106dcb7119f5ba631cda6fc5262611bb2344d287e95178ca6fb338e3e55b0e0d  '"$P"'/witnesses.txt' | sha256sum -c -
+          echo '942054efb7b6d45180049649480fcda3e98971292badbbdb199f4a69bb8fbcc6  '"$P"'/Agent113TripleRepeat.lean' | sha256sum -c -
+          python3 "$P/check.py" --verify "$P/witnesses.txt" > "$RUNNER_TEMP/agent113-audit/audit-regenerated.json"
+          cmp "$P/audit.json" "$RUNNER_TEMP/agent113-audit/audit-regenerated.json"
+          python3 "$P/check.py" --generate > "$RUNNER_TEMP/agent113-audit/witnesses-regenerated.txt"
+          cmp "$P/witnesses.txt" "$RUNNER_TEMP/agent113-audit/witnesses-regenerated.txt"
+          (cd "$P" && python3 generate_lean.py) | tee "$RUNNER_TEMP/agent113-audit/generate.log"
+          sha256sum "$P"/*.lean "$P"/*.py "$P"/*.txt "$P"/*.json | tee "$RUNNER_TEMP/agent113-audit/sources.sha256"
+      - name: Clean build of original projection and new Lean candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          unset LD_PRELOAD
+          P=proofs/contributions/agent-113/descending-prefix-maximality-20261016
+          B="$RUNNER_TEMP/agent113-clean-build"
+          O="$RUNNER_TEMP/agent113-audit"
+          mkdir -p "$B"
+          cp pinned-old/proofs/research/continuation/LychrelDigitSums.lean "$B/"
+          cp pinned-old/proofs/contributions/agent-113/two-digit-prefix/TwoDigitProjection.lean "$B/"
+          cp "$P/Agent113TripleCycles.lean" "$B/"
+          cp "$P/Agent113TripleRepeat.lean" "$B/"
+          cd "$B"
+          LEAN="$RUNNER_TEMP/lean-4.19.0-linux/bin/lean"
+          sha256sum *.lean > "$O/pinned-build-inputs.sha256"
+          "$LEAN" -o LychrelDigitSums.olean LychrelDigitSums.lean > "$O/LychrelDigitSums.log" 2>&1
+          LEAN_PATH="$B" "$LEAN" -o TwoDigitProjection.olean TwoDigitProjection.lean > "$O/TwoDigitProjection.log" 2>&1
+          LEAN_PATH="$B" "$LEAN" --trust=0 -o Agent113TripleCycles.olean Agent113TripleCycles.lean > "$O/Agent113TripleCycles.log" 2>&1
+          LEAN_PATH="$B" "$LEAN" --trust=0 -o Agent113TripleRepeat.olean Agent113TripleRepeat.lean > "$O/Agent113TripleRepeat.log" 2>&1
+          grep -Eh 'axioms|propext|Classical.choice|Quot.sound' "$O/Agent113TripleCycles.log" "$O/Agent113TripleRepeat.log" > "$O/axiom-excerpt.log" || true
+          if grep -Ein 'error:|sorryAx|Lean.ofReduceBool|Lean.trustCompiler' "$O/Agent113TripleCycles.log" "$O/Agent113TripleRepeat.log"; then
+            echo 'unexpected Lean error / excluded dependency' >&2
+            exit 1
+          fi
+          echo "PASS: source-verified official Lean --trust=0" | tee "$O/result.log"
+      - name: Preserve all compiler logs, source hashes and certificate replay
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent113-triple-cycle-lean-audit
+          path: ${{ runner.temp }}/agent113-audit/
+          retention-days: 14
+          if-no-files-found: warn
