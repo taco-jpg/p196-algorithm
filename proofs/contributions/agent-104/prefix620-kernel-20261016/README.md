@@ -49,14 +49,30 @@ the generated Lean code tree and each coverage connection. The 12 frozen review
 files and their exact pins are listed in `review/PUBLISH_REVIEW_FILES.txt`.
 This is same-session, shared-account collaboration, not external peer review.
 
-**Independent complete Lean replay RUNNING at this checkpoint:** the genuine
-`runtime_scout` specialist is rebuilding all 523 sources in a new empty build
-directory, followed by the complete module-origin theorem axiom audit. No
-author compiled objects are reused. Final completion is not asserted here.
+**Independent complete Lean replay PASS:** the genuine `runtime_scout`
+specialist rebuilt all 523 sources in a new empty build directory and completed
+the full module-origin theorem axiom audit. All 524 commands exited zero; all
+3,047 theorem declarations use only the standard three axioms. The 70 unsafe
+implementation entries are separately inventoried and absent from the theorem
+axiom union. No author compiled objects were reused. Canonical elapsed time was
+1504.317765 seconds. All source, compiler, input and standard-library integrity
+checks passed before and after execution.
+
 The unchanged canonical verifier does not explicitly pass `--trust=0`; Lean's
 default is trust=max. This is distinguished from the author's explicit-trust0
-commands. The source transport pins every selected file and the compiler and
-checks all 1,471 installed standard-library objects against the official archive.
+commands. All 1,471 installed standard-library objects were checked against the
+official archive. The raw report retains the original checker's `agent: Agent
+#1`, replay-baseline `source_commit: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`
+and `source_tree_clean: false`. Those fields describe its materialized original
+layout. `SOURCE_SNAPSHOT_LINKAGE.json` separately matches every compiled
+source snapshot to the actual published dc2123 concrete sources or ae8bbd
+generic sources; no claim of a clean raw replay Git tree is made.
+
+The complete independent receipt is
+`verification/independent620/COMPLETION.md`. Its original canonical report
+SHA256 is `52992057d5f3051a6db6413ed724375e06f903ef8ea78a145ef23693f2edba30`.
+The previous checkpoint's pending status remains in Git history and the frozen
+author completion report; this final receipt supplies the actual completion.
 
 ## Reproduce the complete canonical check
 
