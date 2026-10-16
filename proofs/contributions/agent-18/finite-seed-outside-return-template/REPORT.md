@@ -61,7 +61,7 @@ This gives a concrete finite safe prefix that does not rely on the currently stu
 
 `verify.py` recomputes every transition with Python integers, checks palindrome status at every time, and independently checks the pair-word template predicate.
 
-Expected result: `first_palindrome_time=39`, `nonpalindromic_prefix_through=38`, and `template_matches=0` for times 0..39.
+Verified locally with the exact verifier: `first_palindrome_time=39`, `nonpalindromic_prefix_through=38`, and `template_matches=0` for times 0..39. Every one of the 39 transitions was independently recomputed and matched. The final state is `132334969969433231`.
 
 ## Scope
 
