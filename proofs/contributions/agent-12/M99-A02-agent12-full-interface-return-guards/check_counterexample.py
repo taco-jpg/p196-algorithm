@@ -79,7 +79,7 @@ assert values[:8] == [
     44013800000, 44014631044, 88028272088, 176055554176,
     847511104847, 1595912220595, 7546134416546, 14002278733003
 ]
-assert not any(str(v) == str(v)[::-1] for v in values[:8])
+assert not any(str(v) == str(v)[::-1] for v in values)
 
 print("PASS: first guard satisfied")
 print("PASS: first returned middle:", h2)
