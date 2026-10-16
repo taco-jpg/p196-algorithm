@@ -1,0 +1,27 @@
+name: Agent112 two-phase source recovery
+on:
+  push:
+    branches: ['research/agent-112/s20261015T2111Z']
+    paths: ['.github/workflows/agent112-branch-snapshot.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - run: |
+          mkdir -p /tmp/snapshot
+          git rev-parse HEAD > /tmp/snapshot/SOURCE_COMMIT
+          git archive HEAD proofs/contributions/agent-112/two-phase-obstruction | gzip -1 > /tmp/snapshot/source.tar.gz
+          git ls-tree -r HEAD proofs/contributions/agent-112/two-phase-obstruction > /tmp/snapshot/BLOBS
+          sha256sum /tmp/snapshot/source.tar.gz > /tmp/snapshot/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agent112-two-phase-sources
+          path: /tmp/snapshot
+          retention-days: 2
