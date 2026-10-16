@@ -53,16 +53,32 @@ candidate occurs in the trajectory of196. The diagnostic Python enumeration is
 labeled finite-only and was used to discover/check the proposed formula; the
 all-r conclusion comes from the Lean proof above.
 
-## Verification status at this source checkpoint
+## Completed verification gates
 
-All seven mathematical modules are frozen and individually compiled with pinned
-Lean4.19.0, `--trust=0 -j1 -DElab.async=false`. All explicit axiom reports use only
-`propext`, `Classical.choice`, and `Quot.sound` or a subset. Genuine nonauthor
-specialists have independently reviewed/rebuilt the main fiber conclusion,
-raw residue module, actual Count module, and final aggregate. The single
-complete22-module fresh build/full theorem audit is running.
-The final portable registry and full fresh evidence follow; no integrated or
-repository-wide acceptance status is asserted at this incremental checkpoint.
+All seven mathematical modules are frozen and compiled with pinned Lean 4.19.0,
+`--trust=0 -j1 -DElab.async=false`. A genuine nonauthor specialist completed the
+single fresh build from an empty object directory: 22 modules, including all
+15 dependencies and 7 new modules, with every build command exiting zero.
+The exhaustive module-origin audit covers 1,812 theorem constants: 1,701 inherited
+and 111 new. The new source contains 63 theorem declarations and 8 definitions;
+compiler-generated proof constants account for the different audited total.
+Every theorem's transitive axiom report contains only `propext`,
+`Classical.choice`, and `Quot.sound`, or a subset.
+
+The environment also contains 33 unsafe compiler implementation helpers, listed
+individually in `UNSAFE_IMPLEMENTATIONS.json`: 30 inherited and 3 generated for
+the new executable definitions. None appears in any theorem's axiom dependency
+list. This is a theorem-closure result, not a claim that the environment has no
+unsafe implementation constants. The nonauthor review explains the distinction.
+
+All seven modules received cross-author semantic review; the full fresh rebuild
+was performed by a specialist who authored none of them. The exact source/import
+registry also passed the project's original verifier in `--check-only` mode;
+that structural check is separate from the actual 22-module Lean build above.
+`check.py`, `SOURCES.json`, `BUILD_REGISTRY.json`, `REPRODUCE.md`, the complete
+review, per-file manifest, and full replay archive make the gate reproducible.
+These are scoped checked and independently reviewed results. Integration into
+the shared accepted build remains the designated integration owner's task.
 
 The seven source SHA256s are in `SOURCE_PINS.json`. Real failed development
 attempts and their compiler error/axiom logs are retained in the evidence archive;
@@ -90,3 +106,11 @@ existing theorem constants of the15 imported modules, with only standard axioms.
 All Git writes are performed by the root Agent103 coordinator, with actual
 specialist authorship and review attribution retained. Main and shared indexes
 remain under the designated integration owner's separate authority.
+
+`evidence/complete-replay-evidence.tar.xz` retains every file indexed by the
+final `FILES.json`, together with that index. `evidence/ARCHIVE.json` records
+its exact content hash and safe regular-file member count. The archive contains
+full source snapshots, command records, stdout/stderr, individual theorem axiom
+reports, frozen-source checks, nonauthor reviews, and the structural registry
+check. Reproducible compiled objects and the toolchain are omitted; their
+identities remain in the recorded build evidence.
