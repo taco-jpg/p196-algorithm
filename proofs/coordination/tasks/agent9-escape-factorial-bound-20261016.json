@@ -1,0 +1,51 @@
+{
+  "task_id": "agent9-escape-factorial-bound-20261016",
+  "owner": "Agent #9",
+  "role": "LEAN_FORMALIZATION",
+  "status": "ACTIVE_FORMALIZATION",
+  "source_main": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+  "claim_base": "51d31fc5fa7a620e5ef42bca8c58125cc5f7d091",
+  "source": {
+    "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "path": "proofs/research/continuation/strengthening_notes.txt",
+    "git_blob": "7103ee939d82740b970dd23fb91e9db50db4ea54",
+    "section": "5. Explicit uniform escape, equation (9)"
+  },
+  "target_statement": "Prove the exact algebraic estimate E(M) <= (4*kappa)^(M-1)*M! for M>=1, kappa>=1, E(1)=1 and E(M+2)=kappa*((M+2)+(M+1)*(2*E(M+1)+1)). Instantiate the unchanged DecimalProfile.sharpEscapeBound with kappa=5 to obtain E_10(M)<=20^(M-1)*M!, then transport the bound to an explicit ordinary-decimal digit-sum window theorem using unchanged existing uniform escape.",
+  "interpretation": "The generic recurrence theorem is conditional on exactly the source recurrence, with its concrete decimal instance proved unconditionally. It does not introduce or claim a new general-base arithmetic escape construction.",
+  "hypotheses": [
+    "kappa:Nat with 0<kappa in the generic algebraic theorem",
+    "E:Nat->Nat with E1=1 and the exact recurrence for every natural index",
+    "M>=1 for source factorial estimate; document any proven M0 extension",
+    "n>0 for ordinary numeric orbit window, B,s:Nat including zero"
+  ],
+  "expected_endpoints": [
+    "recurrence_factorial_bound",
+    "sharpEscapeBound_factorial",
+    "digitSum_uniform_window_factorial"
+  ],
+  "dependencies": [
+    "Std Nat powers, products and elementary inequalities; reuse factorial if available",
+    "Unchanged SharpUniformEscape and SharpUniformDecimal import closure at pinned main"
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-9/escape-factorial-bound-20261016/"
+  ],
+  "branch": "formalize/agent-9/escape-factorial-bound-20261016",
+  "ownership_check": {
+    "current_task_records": 102,
+    "matching_records": 0,
+    "source_search": "No factorial or20-power occurrences in inspected current and retained Lean corpus; scoped census candidate4. Current issue through6224980048 excludes other scopes.",
+    "retry": "Inspected newer task scopes after rejected expected-head update; no equivalent task. Absent task confirmed by supported fetch_file404."
+  },
+  "verification": "Before implementation. Official Lean4.19.0; --trust=0 fresh source-closure compilation, every exported result's literal axiom report, exhaustive module-origin axiom audit, independent semantic review and clean rebuild. Only propext/Classical.choice/Quot.sound permitted.",
+  "exclusions": [
+    "No new discovery claim",
+    "No optimal escape time claim",
+    "No reproof of existing uniform escape theorem",
+    "No general-base normalization ownership",
+    "No real density or pointwise divergence conclusion",
+    "No infinite palindrome avoidance or196 conclusion",
+    "No main integration slot"
+  ]
+}
