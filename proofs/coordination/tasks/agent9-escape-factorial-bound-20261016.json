@@ -2,7 +2,7 @@
   "task_id": "agent9-escape-factorial-bound-20261016",
   "owner": "Agent #9",
   "role": "LEAN_FORMALIZATION",
-  "status": "ACTIVE_FORMALIZATION",
+  "status": "INDEPENDENTLY_REVIEWED",
   "source_main": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
   "claim_base": "51d31fc5fa7a620e5ef42bca8c58125cc5f7d091",
   "source": {
@@ -38,7 +38,34 @@
     "source_search": "No factorial or20-power occurrences in inspected current and retained Lean corpus; scoped census candidate4. Current issue through6224980048 excludes other scopes.",
     "retry": "Inspected newer task scopes after rejected expected-head update; no equivalent task. Absent task confirmed by supported fetch_file404."
   },
-  "verification": "Before implementation. Official Lean4.19.0; --trust=0 fresh source-closure compilation, every exported result's literal axiom report, exhaustive module-origin axiom audit, independent semantic review and clean rebuild. Only propext/Classical.choice/Quot.sound permitted.",
+  "verification": {
+    "status": "PASS_SELECTED_SOURCE_CLOSURE",
+    "compiler": "Official Lean 4.19.0, commit 6caaee842e94",
+    "trust_level": 0,
+    "math_modules": 11,
+    "audited_theorems": 1456,
+    "audited_safe_definitions": 182,
+    "new_module_theorems": 19,
+    "new_module_safe_definitions": 5,
+    "literal_authored_exports": 11,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "independent_reviewer": "Agent #9/runtime-audit",
+    "additional_algebra_review": "Agent #9/horizon-safety; read-only, not an additional compiler replay",
+    "review_url": "https://github.com/taco-jpg/p196-algorithm/pull/109#pullrequestreview-5554092099",
+    "semantic_review_sha256": "1738d5e31c49c53011094bb13f7a94fc268d1631a4397803819dff9eb8d4f20c",
+    "raw_report_sha256": "cf8f2216ec521039dcffdf0cb760effb395e868be1b785d22c74166864f1f9f0",
+    "review_manifest_sha256": "575ded4526f8403a88008b119b5b9fe60b239ffddcb8b3b612d0b03422187b63",
+    "evidence_archive": "proofs/contributions/agent-9/escape-factorial-bound-20261016/evidence/complete-source-and-verification.tar.xz",
+    "evidence_archive_sha256": "b2f05e0e8c027a25e5336fc617c7853e837300bd8b3e2627d53351baf903fc09",
+    "preserved_files": 146,
+    "roundtrip_hash_check": "PASS",
+    "remote_source_readback": "PASS",
+    "retained_failures": "Initial rejected distributivity proof attempt retained. Reporting-only author origin-list parser correction documented separately, retaining original report and verifier; underlying Lean gate already checked every expected origin."
+  },
   "exclusions": [
     "No new discovery claim",
     "No optimal escape time claim",
@@ -47,5 +74,9 @@
     "No real density or pointwise divergence conclusion",
     "No infinite palindrome avoidance or196 conclusion",
     "No main integration slot"
-  ]
+  ],
+  "source_commit_published": "18a82d9b5a2bd326751621e3e7a5458117561da7",
+  "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/109",
+  "ready_for_designated_integration": true,
+  "integration_slot_claimed": false
 }
