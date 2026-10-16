@@ -1,0 +1,189 @@
+{
+  "task_id": "agent100-groupII-rebased-overlap-20261016",
+  "session": "session20261016T2052Z",
+  "checkpoint": "complete22-algebra-profiles-numeric",
+  "claim_commit": "e1bc61f552413f4a1ed6cef86c88265d39fd896d",
+  "claim_task_blob": "a277d7843d3509cf60a581ce06fb8d451975bea3",
+  "claim_issue_comment": 6225719769,
+  "branch": "research/agent-100/groupII-rebase-20261016T2212Z",
+  "source_base_commit": "686cac2696e4e4e059c1b9d6a313f5519f6f4176",
+  "source_commit": null,
+  "pull_request": null,
+  "status": "AUTHOR_CHECKED_COMPLETE22; independent fresh21 review running, not completed",
+  "namespace": "Agent100.GroupIIRebase",
+  "new_theorem_exports": 22,
+  "modules": [
+    {
+      "module": "Agent100GroupIIRebaseAlgebra",
+      "path": "proofs/Agent100GroupIIRebaseAlgebra.lean",
+      "sha256": "d62f8769d9d2ee0ecf2ec3f0b0dffcd6c19cd5383692207e0e044b7649df02ff",
+      "git_blob": "d5185542692625baa8fc0dc171b58e86b53f6260",
+      "new_theorem_exports": 5,
+      "author": "Agent100/session20261016T2052Z/runtime_setup",
+      "exports": [
+        "Agent100.GroupIIRebase.rebase_delta_overlap",
+        "Agent100.GroupIIRebase.rebasedInt_actual_component",
+        "Agent100.GroupIIRebase.rebasedInt_overlap",
+        "Agent100.GroupIIRebase.finite_whole_rebasedInt",
+        "Agent100.GroupIIRebase.actual_whole_rebasedInt"
+      ],
+      "author_status": "PASS --trust=0; exit 0"
+    },
+    {
+      "module": "Agent100GroupIIRebaseProfiles",
+      "path": "proofs/Agent100GroupIIRebaseProfiles.lean",
+      "sha256": "2a95c9e88f315f3e317532e92a66afcc6dd09e1a97c2b5260fe97fae1c4b6771",
+      "git_blob": "68d13841fb475382422fe5b428306d60b9e2d874",
+      "new_theorem_exports": 11,
+      "author": "Agent100/session20261016T2052Z/groupii_dynamics",
+      "exports": [
+        "Agent100.GroupIIRebase.finite_component_flank",
+        "Agent100.GroupIIRebase.finite_component_inner",
+        "Agent100.GroupIIRebase.finite_component_admissible",
+        "Agent100.GroupIIRebase.rebased_nonnegative",
+        "Agent100.GroupIIRebase.rebased_bounded",
+        "Agent100.GroupIIRebase.rebased_toNat_exact",
+        "Agent100.GroupIIRebase.rebased_zero_after_width",
+        "Agent100.GroupIIRebase.rebased_symmetric",
+        "Agent100.GroupIIRebase.rebased_center_eq",
+        "Agent100.GroupIIRebase.rebased_outer_eq",
+        "Agent100.GroupIIRebase.rebased_admissible"
+      ],
+      "author_status": "PASS --trust=0; exit 0"
+    },
+    {
+      "module": "Agent100GroupIIRebaseNumeric",
+      "path": "proofs/Agent100GroupIIRebaseNumeric.lean",
+      "sha256": "cecda22da5480e5b5fa5743f193a5aa68965cef707652e999d8da8087a0e0d41",
+      "git_blob": "2da082c6ebe444d3e8f2ed793428ff259e04abc4",
+      "new_theorem_exports": 6,
+      "author": "Agent100/session20261016T2052Z/root",
+      "exports": [
+        "Agent100.GroupIIRebase.actual_whole_rebased",
+        "Agent100.GroupIIRebase.rebased_component_realizable",
+        "Agent100.GroupIIRebase.numeric_rebased_overlap",
+        "Agent100.GroupIIRebase.numeric_rebased_realization",
+        "Agent100.GroupIIRebase.realized_rebased_overlap",
+        "Agent100.GroupIIRebase.rebased_differs_at_flank"
+      ],
+      "author_status": "PASS --trust=0; exit 0",
+      "source_snapshot": "development/numeric/attempt01/Agent100GroupIIRebaseNumeric.lean",
+      "log": {
+        "path": "development/numeric/attempt01/compile.log",
+        "sha256": "cb70df8f10bb992994dd76ab5e9b46a4fd77d3cae6dd411a9b10a7c1e05d24ac"
+      },
+      "receipt": {
+        "path": "development/numeric/attempt01/receipt.json",
+        "sha256": "be0d6874dc28265183a20570425a2e5b57b7daca35bfb441cab833b8f3e6d051"
+      }
+    }
+  ],
+  "parameter_domain": "UpperDomain: r>=1, 5<=p<=9, 5<=u<=8, 5<=v<=6, u+v<=13; all seven cores and r=1 included.",
+  "proved_at_this_checkpoint": [
+    "Five signed algebra identities, including actual wholeOrbit time2 signed overlap throughout width 2*r+8.",
+    "Four-site component column formulas, global signed nonnegativity and upper bound, exact Int.toNat preservation.",
+    "Original Admissible predicate at component width 2*r+7, symmetry, center parity, positive exterior, finite zero tail.",
+    "Nat actual wholeOrbit time2 equals shiftOne(rebasedComponent) on every index i<2*r+8, including the highest column i=2*r+7.",
+    "For every original Canonical n d (2*r+7) realizing the initial pair columns, orbit n 2 has Canonical width 2*r+8 and every valid pair column equals the rebased overlap.",
+    "Every tuple has a positive ordinary realization a,da of rebasedComponent; for every original canonical input, the actual output is shiftOne of the finiteWord-truncated canonical pair columns of that positive a.",
+    "Every tuple has a positive original input and positive corrected component realizing the complete two-step relation.",
+    "At i=r+1, rebasedComponent minus the actual componentOrbit time2 column is exactly 1; the new component is not identified with actual A2."
+  ],
+  "excluded_pending": [
+    "Independent fresh21 build and audit of this rebase task are running; no completed new-task independent verdict is claimed.",
+    "Final publication of the prior overflow execution evidence remains pending."
+  ],
+  "verification": {
+    "author_new_modules": "Lean 4.19.0, explicit --trust=0, three modules, all 22 printed axioms; allowed propext/Classical.choice/Quot.sound only. Profiles11 only propext/Quot.sound; Algebra4 and Numeric4 also Classical.choice.",
+    "inherited_18_module_build": "Prior overflow canonical18 build plus explicit --trust=0 full-import audit PASS; final evidence publication pending. The canonical build used default trust (max); the separate strict full-import audit is distinguished from that build.",
+    "new_task_independent_fresh_build": "RUNNING_FRESH21_NOT_COMPLETED",
+    "recompiled_old_dependencies": false,
+    "evidence": [
+      "development/algebra/attempt02.json",
+      "development/algebra/attempt02.log",
+      "development/algebra/evidence-manifest.json",
+      "development/profiles/author-execution.json",
+      "development/profiles/full-attempt01/compile.log",
+      "development/numeric/attempt01/receipt.json",
+      "development/numeric/attempt01/compile.log"
+    ]
+  },
+  "attribution": [
+    {
+      "owner": "Agent8",
+      "pr": 84,
+      "source": "8874b2ee291dc7a253b3b89fbbf0efd86812ae4d",
+      "contribution": "Unchanged general common-overflow transport and finite-difference theory; reused via the prior overflow package, not claimed as new rebase results."
+    },
+    {
+      "owner": "Agent100/session20261016T2052Z",
+      "pr": 125,
+      "source": "686cac2696e4e4e059c1b9d6a313f5519f6f4176",
+      "contribution": "Prior GroupII upper-overflow sharpness, actual-component defect and numeric lift; parent reports PR creation and readback. The current rebase task has no PR at this checkpoint."
+    },
+    {
+      "owner": "Agent100/session20261016T2052Z",
+      "pr": 88,
+      "contribution": "Original GroupII delayed repair; merged prior work."
+    },
+    {
+      "owner": "Agent100/session20261016T2052Z",
+      "pr": 103,
+      "contribution": "Prior third-gate boundary work; separate from the present time2 rebase scope."
+    },
+    {
+      "owner": "Agent100/session212248Z",
+      "source": "586bf0b67efd520363fb68455dd3c683945ccdaa",
+      "pr": null,
+      "contribution": "Separate original (1,1,6) time6 arbitrary-nonnegative-preimage obstruction and first-two-column helper; ownership retained, no PR number asserted. Status at copied ownership review was WIP / NOT LEAN-CHECKED, not a current-status claim."
+    }
+  ],
+  "ownership_copies": [
+    {
+      "original": "/workspace/scratch/dbb4434dcb2f/audit100/next-rebase-ownership-report.md",
+      "copy": {
+        "path": "ownership/next-rebase-ownership-report.md",
+        "bytes": 9487,
+        "sha256": "918aea8ffba19ef30951b87c59a85c2b9a62360c7ddf57c16bfd12125484b9bf"
+      },
+      "byte_for_byte_comparison": true
+    },
+    {
+      "original": "/workspace/scratch/dbb4434dcb2f/audit100/next-rebase-ownership-report.json",
+      "copy": {
+        "path": "ownership/next-rebase-ownership-report.json",
+        "bytes": 6667,
+        "sha256": "9631f82ac08f20e11ceee5cdcea673bc60f40e7212b6edb4c87ae915943a979a"
+      },
+      "byte_for_byte_comparison": true
+    }
+  ],
+  "controls": {
+    "codec": "xz/LZMA2",
+    "checksum": "CRC64",
+    "preset": 9,
+    "original": {
+      "path": "development/controls/author-scout.jsonl",
+      "bytes": 446170,
+      "sha256": "a1aa0dbf22c68afc238378f24d7ccfce59aaee4ee104256416e1b6a684ffae3c"
+    },
+    "archive": {
+      "path": "controls/author-scout.jsonl.xz",
+      "bytes": 8684,
+      "sha256": "b85392c45a754ae877588508d3eb6ef466ac744cc144428da86a352d9c6b9c77"
+    },
+    "decoded_sha256": "a1aa0dbf22c68afc238378f24d7ccfce59aaee4ee104256416e1b6a684ffae3c",
+    "byte_for_byte_comparison": true,
+    "rows": 490,
+    "all_rows_passed": true,
+    "original_retained": true,
+    "decoder": "Python standard-library lzma.decompress(format=lzma.FORMAT_XZ)",
+    "note": "Finite controls only; compression verification is not Lean verification."
+  },
+  "scope_limits": [
+    "No general (1+x) inverse classification, uniqueness, future return/safety, or 196 conclusion.",
+    "Ownership report is a bounded historical review, not exhaustive global novelty evidence.",
+    "This checkpoint accepts exactly Algebra5+Profiles11+Numeric6, totaling 22 theorem exports."
+  ],
+  "main_write_slot": false
+}
