@@ -21,22 +21,19 @@ def iterate(k: int, t: int) -> int:
     return n
 
 def expected(k: int, t: int) -> int | None:
-    m = k - 4
-    # The first five closed forms have small-width boundary exceptions.
     if t == 0:
         return 10**k - 26
     if t == 1:
-        return int("147" + "9"*m + "73")
+        return int("147" + "9"*(k-4) + "73")
     if t == 2 and k >= 5:
-        return int("527" + "9"*m + "714")
+        return int("527" + "9"*(k-5) + "714")
     if t == 3 and k >= 5:
-        return int("945" + "9"*m + "439")
+        return int("945" + "9"*(k-5) + "439")
     if t == 4 and k >= 6:
-        return int("1880" + "9"*m + "8988")
+        return int("1880" + "9"*(k-6) + "8988")
     return None
 
 def check_parametric_formulas(k_max: int = 200) -> None:
-    # Exact identities in their valid parameter ranges.
     for k in range(4, k_max + 1):
         assert iterate(k, 0) == expected(k, 0)
         assert iterate(k, 1) == expected(k, 1)
