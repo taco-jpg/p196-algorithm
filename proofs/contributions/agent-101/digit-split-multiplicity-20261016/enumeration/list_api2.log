@@ -1,0 +1,43 @@
+List.nodup_cons.{u_1} {α : Type u_1} {a : α} {l : List α} : (a :: l).Nodup ↔ ¬a ∈ l ∧ l.Nodup
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi2.lean:3:7: error: unknown constant 'List.nodup_append'
+List.Nodup.{u} {α : Type u} : List α → Prop
+List.Pairwise.map.{u_1, u_2} {β : Type u_1} {α : Type u_2} {R : α → α → Prop} {l : List α} {S : β → β → Prop}
+  (f : α → β) (H : ∀ (a b : α), R a b → S (f a) (f b)) (p : List.Pairwise R l) : List.Pairwise S (List.map f l)
+List.Pairwise.imp.{u_1} {α : Type u_1} {R S : α → α → Prop} (H : ∀ {a b : α}, R a b → S a b) {l : List α} :
+  List.Pairwise R l → List.Pairwise S l
+List.Pairwise.imp_of_mem.{u_1} {α : Type u_1} {l : List α} {R S : α → α → Prop}
+  (H : ∀ {a b : α}, a ∈ l → b ∈ l → R a b → S a b) (p : List.Pairwise R l) : List.Pairwise S l
+List.pairwise_map.{u_1, u_2} {α : Type u_1} {α✝ : Type u_2} {f : α → α✝} {R : α✝ → α✝ → Prop} {l : List α} :
+  List.Pairwise R (List.map f l) ↔ List.Pairwise (fun a b => R (f a) (f b)) l
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi2.lean:9:7: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  List.Nodup
+has type
+  List ?m.8 → Prop
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi2.lean:10:7: error: invalid field notation, type is not of the form (C ...) where C is a constant
+  List.Nodup
+has type
+  List ?m.15 → Prop
+List.Nodup.sublist.{u_1} {α✝ : Type u_1} {l₁ l₂ : List α✝} : l₁.Sublist l₂ → l₂.Nodup → l₁.Nodup
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi2.lean:12:7: error: unknown constant 'List.disjoint_iff_ne'
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi2.lean:13:7: error: unknown constant 'List.Disjoint'
+List.pairwise_append.{u_1} {α : Type u_1} {R : α → α → Prop} {l₁ l₂ : List α} :
+  List.Pairwise R (l₁ ++ l₂) ↔ List.Pairwise R l₁ ∧ List.Pairwise R l₂ ∧ ∀ (a : α), a ∈ l₁ → ∀ (b : α), b ∈ l₂ → R a b
+List.pairwise_cons.{u} {α : Type u} {R : α → α → Prop} {a : α} {l : List α} :
+  List.Pairwise R (a :: l) ↔ (∀ (a' : α), a' ∈ l → R a a') ∧ List.Pairwise R l
+List.flatMap_cons.{u, v} {α : Type u} {β : Type v} {x : α} {xs : List α} {f : α → List β} :
+  List.flatMap f (x :: xs) = f x ++ List.flatMap f xs
+List.mem_flatMap.{u_1, u_2} {α : Type u_1} {β : Type u_2} {f : α → List β} {b : β} {l : List α} :
+  b ∈ List.flatMap f l ↔ ∃ a, a ∈ l ∧ b ∈ f a
+List.mem_map.{u_1, u_2} {α : Type u_1} {β : Type u_2} {b : β} {f : α → β} {l : List α} :
+  b ∈ List.map f l ↔ ∃ a, a ∈ l ∧ f a = b
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi2.lean:19:7: error: unknown constant 'List.prod_cons'
+List.cons.inj.{u} {α : Type u} {head : α} {tail : List α} {head✝ : α} {tail✝ : List α} :
+  head :: tail = head✝ :: tail✝ → head = head✝ ∧ tail = tail✝
+List.getLastD_nil.{u} {α : Type u} {a : α} : [].getLastD a = a
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi2.lean:22:7: error: unknown constant 'List.getLastD_singleton'
+def List.Nodup.{u} : {α : Type u} → List α → Prop :=
+fun {α} => List.Pairwise fun x1 x2 => x1 ≠ x2
+theorem List.Pairwise.map.{u_1, u_2} : ∀ {β : Type u_1} {α : Type u_2} {R : α → α → Prop} {l : List α}
+  {S : β → β → Prop} (f : α → β),
+  (∀ (a b : α), R a b → S (f a) (f b)) → List.Pairwise R l → List.Pairwise S (List.map f l) :=
+fun {β} {α} {R} {l} {S} f H p => List.pairwise_map.mpr (List.Pairwise.imp (fun {a b} => H a b) p)
