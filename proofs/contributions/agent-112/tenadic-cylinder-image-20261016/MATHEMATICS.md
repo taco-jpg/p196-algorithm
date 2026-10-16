@@ -1,6 +1,6 @@
 # Agent #112: Exact unit-digit image of a decimal-adic cylinder
 
-**Status: WIP for Lean acceptance.** The elementary argument below is a written proof; the proposed `CylinderImage.lean` is **not compiled** in this execution environment. The finite Python controls are not a proof of a universal theorem. No statement here resolves P196 or produces a positive Lychrel seed.
+**Status: LEAN-CHECKED for the original four named unit-digit endpoints.** Official Lean 4.19.0, `--trust=0`, compiled the original pinned proof sources and `CylinderImage.lean` at source commit `5ae76379f06ea958e209856c26722468068502d2`; see [Actions run 38972297131](https://github.com/taco-jpg/p196-algorithm/actions/runs/38972297131). All four audited endpoints use only `propext`, `Classical.choice`, `Quot.sound`. The initial WIP revision was uncompiled; its actual three failing CI revisions and corrections are preserved in branch history. Independent semantic review and shared accepted-build integration are still pending. Python finite controls alone do not prove a universal theorem. No statement here resolves P196 or produces a positive Lychrel seed.
 
 ## Exact target and interpretation
 
@@ -8,13 +8,13 @@ Let `R(m)` reverse the ordinary base-ten digits of a **positive finite integer**
 
 `C(k,a) = {m in positive integers : m mod 10^k = a}`.
 
-The proposed complete Nat theorem is
+The established, kernel-checked Nat theorem is
 
 `{T(m) mod 10 : m in C(k,a)} = {(a+c) mod 10 : 1<=c<=9}`.
 
 There are exactly nine residues in this image, namely all of `0,1,...,9` **except** `a mod 10`.
 
-## Elementary proof for a future kernel formalization
+## Elementary proof and correspondence with the kernel formalization
 
 **Necessity:** If `m>0`, let `c` be the first (most significant) digit of its ordinary decimal representation. Then `1<=c<=9`, and the last digit of `R(m)` is `c`. Since `k>=1`, the congruence `m mod 10^k=a` forces `m mod 10=a mod 10`. Thus `T(m) mod10=(a+c) mod10`.
 
@@ -22,7 +22,7 @@ There are exactly nine residues in this image, namely all of `0,1,...,9` **excep
 
 **Topological implication (written, not a Lean topology theorem):** Every basic cylinder in the 10-adic completion contains positive finite integers with nine distinct `T`-outputs modulo 10. Consequently there is no point of that completion at which a function agreeing with `T` on all positive natural integers can be continuous. At any proposed continuity point, continuity to a fixed output residue modulo 10 would require a sufficiently small input cylinder to have constant output residue, contradicting the nine-way image.
 
-This strengthens the earlier preserved written observation of discontinuity *at each finite positive integer* to a uniform statement applying to **every** decimal-adic point. The mathematical mechanism and predecessor paper are not new; the exact nine-residue classification and its proposed Lean endpoint are this task's separate scope, subject to formal checking.
+This strengthens the earlier preserved written observation of discontinuity *at each finite positive integer* to a uniform statement applying to **every** decimal-adic point. The mathematical mechanism and predecessor paper are not new; the exact nine-residue classification and its Lean-checked endpoint are this task's separate scope, subject to formal checking.
 
 ## Boundary conditions and caveats
 
@@ -41,4 +41,4 @@ This strengthens the earlier preserved written observation of discontinuity *at 
 
 Run `python3 verify_cylinder.py` from this directory and compare exact JSON with `verification/finite-controls.json`. It verifies 800,000 forward modular instances, independently compares decimal arithmetic with string reversal for 200,000 inputs, and tests 14,202 constructed canonical witnesses. It cannot validate quantifiers over all naturals.
 
-To upgrade `CylinderImage.lean`, first restore the pinned original-layout module imports as required by the project's migration/replay policy, compile with official Lean 4.19.0 and `--trust=0`, inspect each `#print axioms` output, and obtain independent semantic plus clean-build review. Until that succeeds, **all Lean endpoints are proposals**, not checked results.
+The official CI verifier in `.github/workflows/agent112-cylinder-image.yml` restores archived original module imports, checks source blob identities, builds using the authenticated Lean 4.19.0 official release with `--trust=0`, and records all exported endpoint axiom dependencies. The first successful run for the four original endpoints is [38972297131](https://github.com/taco-jpg/p196-algorithm/actions/runs/38972297131); the corresponding original Lean source blob was `e87e83d024d6a408cde25a2532cb214edeee4a7a`. Subsequent editorial changes must be rechecked at their own source hashes. The four original endpoints are **LEAN-CHECKED**, not independently reviewed or integrated; the separate `CylinderNoContinuity.lean` consequence is WIP until its own run passes.

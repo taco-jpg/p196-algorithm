@@ -4,9 +4,10 @@ import LeadingWitness
 Agent #112 / 2026-10-16: precise unit-digit image of an ordinary
 reverse-and-add map on an arbitrarily narrow decimal-adic cylinder.
 
-STATUS: UNCOMPILED WIP. This exact source has NOT been checked with Lean.
-Do not import it into an accepted build or describe it as LEAN-CHECKED
-without a clean Lean 4.19.0 build and #print axioms audit.
+STATUS: LEAN-CHECKED (original four endpoints), official pinned Lean 4.19.0
+and --trust=0, Actions run 38972297131 on source 5ae76379f06ea958e209856c26722468068502d2.
+The only printed transitive axioms are propext, Classical.choice, and Quot.sound.
+Independent semantic review and integration into the accepted build remain OPEN.
 
 Intended original-layout dependencies:
   Lychrel196Research, astra_lean_modular, AutonomyDefs, LeadingWitness.

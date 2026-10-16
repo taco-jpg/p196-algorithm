@@ -52,32 +52,46 @@ jobs:
           cp "$BASE/contributions/agent-108/modular-autonomy/AutonomyDefs.lean" "$SOURCE/AutonomyDefs.lean"
           cp "$BASE/contributions/agent-108/modular-autonomy/LeadingWitness.lean" "$SOURCE/LeadingWitness.lean"
           cp "proofs/contributions/agent-112/tenadic-cylinder-image-20261016/CylinderImage.lean" "$SOURCE/CylinderImage.lean"
+          cp "proofs/contributions/agent-112/tenadic-cylinder-image-20261016/CylinderNoContinuity.lean" "$SOURCE/CylinderNoContinuity.lean"
           (
             cd "$SOURCE"
             echo 'c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506  Lychrel196Research.lean'
             echo '612b161844a0effa5730d17b7d048315619578e8  AutonomyDefs.lean'
             echo 'ea7d29fb554197848986ac50ce6f85e4a3200bed  LeadingWitness.lean'
-            echo 'a00e895c14c0585e1c96182d52f831b4f76d3f95  CylinderImage.lean'
+            echo 'd8e75a2193d7d64bfa5a1ea4f67f040c0c060606  CylinderImage.lean'
+            echo 'e54f8c7915b3c33d59011cc532d56295f8a63aff  CylinderNoContinuity.lean'
           ) > "$OUTPUT/expected-git-blobs.txt"
           (
             cd "$SOURCE"
-            git hash-object Lychrel196Research.lean AutonomyDefs.lean LeadingWitness.lean CylinderImage.lean
-            sha256sum Lychrel196Research.lean AutonomyDefs.lean LeadingWitness.lean CylinderImage.lean
+            git hash-object Lychrel196Research.lean AutonomyDefs.lean LeadingWitness.lean CylinderImage.lean CylinderNoContinuity.lean
+            sha256sum Lychrel196Research.lean AutonomyDefs.lean LeadingWitness.lean CylinderImage.lean CylinderNoContinuity.lean
           ) > "$OUTPUT/source-hashes.txt"
+          (
+            cd "$SOURCE"
+            while read -r expected file; do
+              actual="$(git hash-object "$file")"
+              if [ "$expected" != "$actual" ]; then
+                echo "Source blob mismatch: $file expected $expected actual $actual" >&2
+                exit 1
+              fi
+            done < "$OUTPUT/expected-git-blobs.txt"
+          )
           LEAN="$RUNNER_TEMP/lean-4.19.0-linux/bin/lean"
           export LEAN_PATH="$SOURCE"
           (
             cd "$SOURCE"
-            for M in Lychrel196Research AutonomyDefs LeadingWitness CylinderImage; do
+            for M in Lychrel196Research AutonomyDefs LeadingWitness CylinderImage CylinderNoContinuity; do
               echo "COMPILING $M"
               "$LEAN" --trust=0 -j1 -DElab.async=false -o "$M.olean" "$M.lean" 2>&1 | tee "$OUTPUT/$M.log"
             done
             {
-              echo 'import CylinderImage'
+              echo 'import CylinderNoContinuity'
               echo '#print axioms Agent112.CylinderImage.occurs_for_leading_digit'
               echo '#print axioms Agent112.CylinderImage.any_occurrence_has_leading_digit'
               echo '#print axioms Agent112.CylinderImage.occurs_iff_nine_residues'
               echo '#print axioms Agent112.CylinderImage.source_units_excluded'
+              echo '#print axioms Agent112.CylinderImage.two_distinct_cylinder_outputs'
+              echo '#print axioms Agent112.CylinderImage.no_local_mod10_constancy'
             } > PrintAxioms.lean
             "$LEAN" --trust=0 -j1 -DElab.async=false PrintAxioms.lean 2>&1 | tee "$OUTPUT/PrintAxioms.log"
           )
