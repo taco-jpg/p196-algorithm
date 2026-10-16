@@ -33,19 +33,19 @@ theorem psi_pos_of_phase_pos (s : Outer) (hc : 0 < s.c) : 0 < psi s := by
   have hd : 0 < 90 * 10 ^ s.B.length :=
     Nat.mul_pos (by decide) (Nat.pow_pos (by decide))
   have hn' : (0 : Rat) <
-      (((90 * revN s.B.length (lowValue s.B) +
+      (↑(90 * revN s.B.length (lowValue s.B) +
         9 * (s.c + lowValue s.B / 10 ^ s.B.length -
           10 * (if 10 ≤ s.c then 1 else 0)) +
-        (s.c - 9 * (if 10 ≤ s.c then 1 else 0)) : Nat) : Rat)) := by
+        (s.c - 9 * (if 10 ≤ s.c then 1 else 0))) : Rat) := by
     exact_mod_cast hn
-  have hd' : (0 : Rat) < (((90 * 10 ^ s.B.length : Nat) : Rat)) := by
+  have hd' : (0 : Rat) < (↑(90 * 10 ^ s.B.length) : Rat) := by
     exact_mod_cast hd
   change (0 : Rat) <
-    (((90 * revN s.B.length (lowValue s.B) +
+    (↑(90 * revN s.B.length (lowValue s.B) +
         9 * (s.c + lowValue s.B / 10 ^ s.B.length -
           10 * (if 10 ≤ s.c then 1 else 0)) +
-        (s.c - 9 * (if 10 ≤ s.c then 1 else 0)) : Nat) : Rat)) /
-      (((90 * 10 ^ s.B.length : Nat) : Rat))
+        (s.c - 9 * (if 10 ≤ s.c then 1 else 0))) : Rat) /
+      (↑(90 * 10 ^ s.B.length) : Rat)
   exact div_pos hn' hd'
 
 #print axioms gamma_eq_overflow

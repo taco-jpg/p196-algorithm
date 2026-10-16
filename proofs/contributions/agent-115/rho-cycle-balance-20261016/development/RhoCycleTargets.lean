@@ -16,8 +16,8 @@ def gamma (s : Outer) : Nat :=
 
 /-- The high rational observation, including its constant phase tail. -/
 def rho (s : Outer) : Rat :=
-  ((9 * highValue s.B + s.c : Nat) : Rat) /
-    ((9 * 10 ^ s.B.length : Nat) : Rat)
+  (↑(9 * highValue s.B + s.c) : Rat) /
+    (↑(9 * 10 ^ s.B.length) : Rat)
 
 /-- Strictly positive on the permitted positive even phases. -/
 def psi (s : Outer) : Rat :=
@@ -25,8 +25,8 @@ def psi (s : Outer) : Rat :=
   let t := s.c - 9 * k
   let u := s.c + lowValue s.B / 10 ^ s.B.length - 10 * k
   let r := revN s.B.length (lowValue s.B)
-  ((90 * r + 9 * u + t : Nat) : Rat) /
-    ((90 * 10 ^ s.B.length : Nat) : Rat)
+  (↑(90 * r + 9 * u + t) : Rat) /
+    (↑(90 * 10 ^ s.B.length) : Rat)
 
 def stepLawTarget : Prop :=
   ∀ s : Outer, permitted s.c →
