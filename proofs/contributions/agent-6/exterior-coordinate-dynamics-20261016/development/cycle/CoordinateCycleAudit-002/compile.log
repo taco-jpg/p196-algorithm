@@ -1,0 +1,196 @@
+Agent6.ExteriorCoordinates.betaNum_outerIter (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.betaNum (Agent6.ExteriorCoordinates.outerIter n s).c
+      (Agent6.ExteriorCoordinates.outerIter n s).B =
+    Agent6.ExteriorCoordinates.betaNum s.c s.B + Agent6.ExteriorCoordinates.contributionSum s n
+Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.contributionSum s n =
+    Agent6.ExteriorCoordinates.betaNum (Agent6.ExteriorCoordinates.outerIter n s).c
+        (Agent6.ExteriorCoordinates.outerIter n s).B -
+      Agent6.ExteriorCoordinates.betaNum s.c s.B
+Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) : Agent6.ExteriorCoordinates.contributionSum s n = 0
+Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub (q : Nat → P196.Agent7.Finite.Outer) (n : Nat)
+  (hstep : ∀ (i : Nat), i < n → q (i + 1) = P196.Agent7.Finite.outerNext (q i)) :
+  Agent6.ExteriorCoordinates.contributionSum (q 0) n =
+    Agent6.ExteriorCoordinates.betaNum (q n).c (q n).B - Agent6.ExteriorCoordinates.betaNum (q 0).c (q 0).B
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hn : 0 < n) (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s)
+  (hne : Agent6.ExteriorCoordinates.highContribution s.c s.B ≠ 0) :
+  (∃ i,
+      i < n ∧
+        0 <
+          Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter i s).c
+            (Agent6.ExteriorCoordinates.outerIter i s).B) ∧
+    ∃ j,
+      j < n ∧
+        Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter j s).c
+            (Agent6.ExteriorCoordinates.outerIter j s).B <
+          0
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos (s : P196.Agent7.Finite.Outer) (n : Nat) (hc : 0 < s.c)
+  (hn : 0 < n) (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) :
+  (∃ i,
+      i < n ∧
+        0 <
+          Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter i s).c
+            (Agent6.ExteriorCoordinates.outerIter i s).B) ∧
+    ∃ j,
+      j < n ∧
+        Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter j s).c
+            (Agent6.ExteriorCoordinates.outerIter j s).B <
+          0
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase s.c) (hn : 0 < n)
+  (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) :
+  (∃ i,
+      i < n ∧
+        0 <
+          Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter i s).c
+            (Agent6.ExteriorCoordinates.outerIter i s).B) ∧
+    ∃ j,
+      j < n ∧
+        Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter j s).c
+            (Agent6.ExteriorCoordinates.outerIter j s).B <
+          0
+Agent6.ExteriorCoordinates.closed_orbit_weighted_balance (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) :
+  Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedPhase s n =
+    9 * Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedReverse s n +
+      9 * ↑(Agent6.ExteriorCoordinates.overflowCount s n)
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_weighted._proof_29 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.carryScale_eq : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum._lambda_1._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return._proof_3 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain._proof_4 : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs : [Classical.choice,
+ propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.outerIter._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowBit_le_one : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount._unsafe_rec : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.carryScale._closed_1._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_padding_return : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_10 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_weighted_balance : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs._proof_22 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.outerIter.match_1._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_16 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_zero : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_12 : [propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum._closed_1._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter._sunfold : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_13 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle _private.CoordinateCycle.0._proof_24 : [propext]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.carryScale._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_11 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_le._proof_26 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.weightedPhase._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum._sunfold : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.carryScale._closed_2._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_15 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_20 : [propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.overflowBit._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.highContribution_eq_weighted : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.overflowBit._cstage2 : [List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_zero : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain._proof_5 : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowBit : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_18 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs._proof_21 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.carryScale : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.highContribution_eq_weighted._proof_28 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_weighted_balance._proof_30 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle _private.CoordinateCycle.0._proof_27 : [propext]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum.match_1._cstage1 : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_17 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub._proof_2 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.carryScale._cstage2 : [List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount._sunfold : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.weightedReverse : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_weighted : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum._cstage2 : []
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_7 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.weightedPhase : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter_succ : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter_zero : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_succ : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.betaNum_outerIter : [propext, Quot.sound, Classical.choice]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub : [propext,
+ Quot.sound,
+ Classical.choice]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.outerIter._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum.match_1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_succ : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero : [propext,
+ Quot.sound,
+ Classical.choice]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.weightedPhase._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_14 : [propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_le : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_9 : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_telescope : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum._unsafe_rec : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_telescope._proof_1 : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_19 : [propext,
+ Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter.match_1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_8 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum._closed_1._cstage2 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.overflowBit_le_one._proof_23 : [propext, Quot.sound]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.carryScale_eq._proof_25 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.weightedReverse._cstage2 : [List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1]
+AUDIT_DECLARATION CoordinateCycle _private.CoordinateCycle.0._proof_6 : [propext]
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero : [Classical.choice,
+ propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_DEFINITION CoordinateCycle Agent6.ExteriorCoordinates.weightedReverse._cstage1 : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.outerIter._unsafe_rec : []
+AUDIT_DECLARATION CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_succ : []
+FULL_MODULE_AUDIT theorems=58 safeDefinitions=16 unsafeImplementations=23 union=[Classical.choice, Quot.sound, propext]

@@ -1,0 +1,89 @@
+Agent115.ExteriorFactorization.rawSucc_values (c : Nat) (B : List Nat) :
+  (Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B) =
+      Agent115.ExteriorFactorization.lowValue B % 10 ^ B.length +
+          (c + Agent115.ExteriorFactorization.lowValue B / 10 ^ B.length - 10 * if 10 ≤ c then 1 else 0) *
+            10 ^ B.length +
+        if (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) / 10 ^ B.length = 0 then
+          Agent115.ExteriorFactorization.revN B.length
+              (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) +
+            (c - 9 * if 10 ≤ c then 1 else 0) * 10 ^ B.length
+        else
+          1 +
+            10 *
+              Agent115.ExteriorFactorization.revN B.length
+                (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0)) ∧
+    Agent115.ExteriorFactorization.highValue (Agent115.ExteriorFactorization.rawSucc c B) =
+      10 * Agent115.ExteriorFactorization.revN B.length (Agent115.ExteriorFactorization.lowValue B) +
+          (c + Agent115.ExteriorFactorization.lowValue B / 10 ^ B.length - 10 * if 10 ≤ c then 1 else 0) +
+        if (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) / 10 ^ B.length = 0 then
+          10 * ((Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) % 10 ^ B.length) +
+            (c - 9 * if 10 ≤ c then 1 else 0)
+        else 10 ^ B.length + (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) % 10 ^ B.length
+Agent115.ExteriorFactorization.successor_observation (c : Nat) (B : List Nat) :
+  Agent115.ExteriorFactorization.zValue (2 * (c - 9 * if 10 ≤ c then 1 else 0))
+        (P196.Agent7.Finite.outerNext { c := c, B := B }).B =
+      9 * ↑(Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B)) -
+        ↑(2 * (c - 9 * if 10 ≤ c then 1 else 0)) * (10 ^ (B.length + 1) - 1) ∧
+    Agent115.ExteriorFactorization.rhoNum (2 * (c - 9 * if 10 ≤ c then 1 else 0))
+          (P196.Agent7.Finite.outerNext { c := c, B := B }).B *
+        10 ^ (B.length + 1) =
+      (9 * Agent115.ExteriorFactorization.highValue (Agent115.ExteriorFactorization.rawSucc c B) +
+          2 * (c - 9 * if 10 ≤ c then 1 else 0)) *
+        10 ^ (P196.Agent7.Finite.outerNext { c := c, B := B }).B.length
+Agent115.ExteriorFactorization.observation_injective (c : Nat) (B₁ B₂ : List Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (hv₁ : P196.Agent7.Finite.validOuter { c := c, B := B₁ } = true)
+  (hv₂ : P196.Agent7.Finite.validOuter { c := c, B := B₂ } = true)
+  (hz : Agent115.ExteriorFactorization.zValue c B₁ = Agent115.ExteriorFactorization.zValue c B₂)
+  (hr :
+    Agent115.ExteriorFactorization.rhoNum c B₁ * 10 ^ B₂.length =
+      Agent115.ExteriorFactorization.rhoNum c B₂ * 10 ^ B₁.length) :
+  B₁ = B₂
+Agent115.ExteriorFactorization.target : Agent115.ExteriorFactorization.Target
+'P196.Agent7.Finite.cap2_exits_by_seven' does not depend on any axioms
+'P196.Agent7.Finite.cap2_sharp_six' does not depend on any axioms
+'P196.Agent7.Finite.cap2_sharp_seven' does not depend on any axioms
+'Agent115.ExteriorFactorization.digitsOf_length' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.normalize_eq' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.normalize_length' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_append' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_append_single' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.foldl_high' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.lowValue_reverse' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.normalize_carry_le' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.normalize_append_single' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.outerNext_eq_fromScans' does not depend on any axioms
+'Agent115.ExteriorFactorization.stripSuffix_append_single' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.zipWith_append_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.strip_zip_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.phase_facts' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_append_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_append_replicate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_of_values' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.zValue_append_band' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.zValue_append_replicate' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rhoNum_append_band' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rhoNum_append_replicate' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_of_zValue' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.entries_le_of_valid' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.factorization_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.target' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.factorization_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.highValue_cons' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_lt' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.eq_of_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.canonical_eq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.last_ne_of_valid' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.observation_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_eq_strip' does not depend on any axioms
+'Agent115.ExteriorFactorization.lowValue_digitsOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_zipWith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.length_zipWith_eq' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_zipWith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_append_single' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_reverse' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rawSucc_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.takeWhile_eq_mem' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.stripSuffix_spec' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rawSucc_length' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.successor_observation' depends on axioms: [propext, Quot.sound]

@@ -10,7 +10,12 @@ for returns of the unchanged `P196.Agent7.Finite.outerNext`. All four new
 modules compile with pinned Lean 4.19.0 and `--trust=0`; every authored theorem
 has an axiom report. The threshold and the completed Dynamics/Sign closure have
 also passed separate clean builds and semantic review by `/root/runtime`.
-The full nine-module Cycle review is in progress at this checkpoint.
+The final nine-module independent Cycle review passed as well. The unchanged
+repository verifier also passed on published source commit
+`a075b2719c4ff1cb972b68b1d9240d8eaa8d463f` with a clean tracked source tree:
+nine modules, ten commands, all 58 authored root theorem endpoints, and all
+235 theorem constants found by module origin. Its receipt is retained in
+`verification/canonical-source-a075b27/`; it remains a scoped result.
 
 The new statements provide neither a closed exterior orbit nor global
 acyclicity. They do not supply an infinite ordinary integer orbit or resolve
@@ -147,7 +152,7 @@ These scoped registries do not modify the global accepted catalogue.
 The unchanged verifier retains its original Agent1 field; the actual actor
 and precise command belong in the accompanying run receipt.
 
-Draft PR: https://github.com/taco-jpg/p196-algorithm/pull/90 .
-Further source, independent-review evidence, and publication bindings are
-appended as separate checkpoints. Only the serialized integration owner
-can place this contribution into the shared accepted build.
+PR: https://github.com/taco-jpg/p196-algorithm/pull/90 .
+Independent-review evidence and publication bindings are appended separately
+from the frozen theorem source. Only the serialized integration owner can
+place this contribution into the shared accepted build.

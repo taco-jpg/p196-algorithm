@@ -1,0 +1,351 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent6-coordinate-dynamics": {
+      "status": "PASS",
+      "scope": "Exact finite exterior overflow/rho quotient; signed beta update; nonzero and sign controls; finite telescoping, closed-orbit zero sum, both-sign witnesses and weighted balance. No ordinary integer-orbit correspondence, cycle existence, or global acyclicity claim.",
+      "sources": {
+        "OuterFinite": {
+          "path": "proofs/OuterFinite__1c852c0ed5b8d706.lean",
+          "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+          "build_sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "TARGET": {
+          "path": "proofs/TARGET__c7bc3cfee999c64e.lean",
+          "sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+          "build_sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+          "imports": [
+            "OuterFinite"
+          ],
+          "adapter": null
+        },
+        "ExteriorFactorizationProof": {
+          "path": "proofs/ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+          "sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+          "build_sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+          "imports": [
+            "TARGET"
+          ],
+          "adapter": null
+        },
+        "ExteriorObservationInjective": {
+          "path": "proofs/ExteriorObservationInjective__5a22875e320396f4.lean",
+          "sha256": "891207ca4daadfc65c435b5dd5477478cfe59347afb9404660ce458ed7103cbf",
+          "build_sha256": "891207ca4daadfc65c435b5dd5477478cfe59347afb9404660ce458ed7103cbf",
+          "imports": [
+            "ExteriorFactorizationProof"
+          ],
+          "adapter": null
+        },
+        "ExteriorUpdateLaw": {
+          "path": "proofs/ExteriorUpdateLaw.lean",
+          "sha256": "d384cb9a3598b210ec1a0c7cc310297ca2b34cf1e6b0588e03516f0da75331b9",
+          "build_sha256": "d384cb9a3598b210ec1a0c7cc310297ca2b34cf1e6b0588e03516f0da75331b9",
+          "imports": [
+            "ExteriorObservationInjective"
+          ],
+          "adapter": null
+        },
+        "CoordinateThreshold": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateThreshold.lean",
+          "sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+          "build_sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+          "imports": [
+            "ExteriorFactorizationProof"
+          ],
+          "adapter": null
+        },
+        "CoordinateDynamics": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateDynamics.lean",
+          "sha256": "8f37d2991087c3c232e9e5a09c440e266672403fe895af59d770e2f90a72a05b",
+          "build_sha256": "8f37d2991087c3c232e9e5a09c440e266672403fe895af59d770e2f90a72a05b",
+          "imports": [
+            "ExteriorUpdateLaw"
+          ],
+          "adapter": null
+        },
+        "CoordinateSign": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateSign.lean",
+          "sha256": "9142e73dff4b25fd43dee0f708e5681a47f42b0630329512934916f370f0da21",
+          "build_sha256": "9142e73dff4b25fd43dee0f708e5681a47f42b0630329512934916f370f0da21",
+          "imports": [
+            "CoordinateDynamics",
+            "CoordinateThreshold"
+          ],
+          "adapter": null
+        },
+        "CoordinateCycle": {
+          "path": "proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateCycle.lean",
+          "sha256": "0b135c2b14c04cf3d980fc7cc2bd6852e65406edb0a6cdaa377a0fa427163f21",
+          "build_sha256": "0b135c2b14c04cf3d980fc7cc2bd6852e65406edb0a6cdaa377a0fa427163f21",
+          "imports": [
+            "CoordinateSign"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "OuterFinite",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OuterFinite.olean",
+            "OuterFinite.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 18.844727,
+          "log": "agent6-coordinate-dynamics/logs/OuterFinite.log",
+          "log_sha256": "ac86a2e22b11447702615b58a5b0a93a65c92f14973bd9df0868fe52e5abf5f4"
+        },
+        {
+          "label": "TARGET",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TARGET.olean",
+            "TARGET.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.264999,
+          "log": "agent6-coordinate-dynamics/logs/TARGET.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ExteriorFactorizationProof",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorFactorizationProof.olean",
+            "ExteriorFactorizationProof.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.368846,
+          "log": "agent6-coordinate-dynamics/logs/ExteriorFactorizationProof.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ExteriorObservationInjective",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorObservationInjective.olean",
+            "ExteriorObservationInjective.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.665794,
+          "log": "agent6-coordinate-dynamics/logs/ExteriorObservationInjective.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ExteriorUpdateLaw",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorUpdateLaw.olean",
+            "ExteriorUpdateLaw.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.86572,
+          "log": "agent6-coordinate-dynamics/logs/ExteriorUpdateLaw.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateDynamics",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateDynamics.olean",
+            "CoordinateDynamics.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.766756,
+          "log": "agent6-coordinate-dynamics/logs/CoordinateDynamics.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateThreshold",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateThreshold.olean",
+            "CoordinateThreshold.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.916459,
+          "log": "agent6-coordinate-dynamics/logs/CoordinateThreshold.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateSign",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateSign.olean",
+            "CoordinateSign.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.615441,
+          "log": "agent6-coordinate-dynamics/logs/CoordinateSign.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "CoordinateCycle",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CoordinateCycle.olean",
+            "CoordinateCycle.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.966262,
+          "log": "agent6-coordinate-dynamics/logs/CoordinateCycle.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 5.900002,
+          "log": "agent6-coordinate-dynamics/logs/ProjectAudit.log",
+          "log_sha256": "14a85c085b07418c6155903add0562ace7f65ecdea2c1aeddd02d606db5593c7"
+        }
+      ],
+      "roots": [
+        "CoordinateCycle"
+      ],
+      "build_order": [
+        "OuterFinite",
+        "TARGET",
+        "ExteriorFactorizationProof",
+        "ExteriorObservationInjective",
+        "ExteriorUpdateLaw",
+        "CoordinateDynamics",
+        "CoordinateThreshold",
+        "CoordinateSign",
+        "CoordinateCycle"
+      ],
+      "theorem_count": 235,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent6.ExteriorCoordinates.phaseCarry_le_one",
+        "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine",
+        "Agent6.ExteriorCoordinates.phaseDigit_identity",
+        "Agent6.ExteriorCoordinates.phaseDigit_le_eight",
+        "Agent6.ExteriorCoordinates.phaseDigit_pos",
+        "Agent6.ExteriorCoordinates.overflow_eq_highValue",
+        "Agent6.ExteriorCoordinates.overflow_eq_rho_quotient",
+        "Agent6.ExteriorCoordinates.overflow_le_one",
+        "Agent6.ExteriorCoordinates.overflow_eq_zero_iff",
+        "Agent6.ExteriorCoordinates.overflow_eq_one_iff",
+        "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator",
+        "Agent6.ExteriorCoordinates.empty_word_coordinates",
+        "Agent6.ExteriorCoordinates.empty_word_quotient_iff",
+        "Agent6.ExteriorCoordinates.quotient_identity_forall_iff",
+        "Agent6.ExteriorCoordinates.excluded_phase_controls",
+        "Agent6.ExteriorCoordinates.unbounded_coefficient_control",
+        "Agent6.ExteriorCoordinates.betaNum_eq",
+        "Agent6.ExteriorCoordinates.betaNum_outerNext_raw",
+        "Agent6.ExteriorCoordinates.betaNum_outerNext",
+        "Agent6.ExteriorCoordinates.revN_lt_power",
+        "Agent6.ExteriorCoordinates.highContribution_emod_ten_of_overflow_ne_zero",
+        "Agent6.ExteriorCoordinates.highContribution_ne_zero_of_pos",
+        "Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral",
+        "Agent6.ExteriorCoordinates.zero_phase_empty_control",
+        "Agent6.ExteriorCoordinates.zero_overflow_negative_control",
+        "Agent6.ExteriorCoordinates.zero_overflow_positive_control",
+        "Agent6.ExteriorCoordinates.one_overflow_negative_control",
+        "Agent6.ExteriorCoordinates.one_overflow_positive_control",
+        "Agent6.ExteriorCoordinates.both_signs_at_zero_overflow",
+        "Agent6.ExteriorCoordinates.both_signs_at_one_overflow",
+        "Agent6.ExteriorCoordinates.outerIter_zero",
+        "Agent6.ExteriorCoordinates.outerIter_succ",
+        "Agent6.ExteriorCoordinates.orbitSum_zero",
+        "Agent6.ExteriorCoordinates.orbitSum_succ",
+        "Agent6.ExteriorCoordinates.contributionSum_zero",
+        "Agent6.ExteriorCoordinates.contributionSum_succ",
+        "Agent6.ExteriorCoordinates.orbitSum_telescope",
+        "Agent6.ExteriorCoordinates.betaNum_outerIter",
+        "Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub",
+        "Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return",
+        "Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero",
+        "Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_padding_return",
+        "Agent6.ExteriorCoordinates.outerIter_eq_chain",
+        "Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub",
+        "Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg",
+        "Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos",
+        "Agent6.ExteriorCoordinates.orbitSum_zero_both_signs",
+        "Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero",
+        "Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos",
+        "Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral",
+        "Agent6.ExteriorCoordinates.overflowBit_le_one",
+        "Agent6.ExteriorCoordinates.carryScale_eq",
+        "Agent6.ExteriorCoordinates.overflowCount_zero",
+        "Agent6.ExteriorCoordinates.overflowCount_succ",
+        "Agent6.ExteriorCoordinates.overflowCount_le",
+        "Agent6.ExteriorCoordinates.highContribution_eq_weighted",
+        "Agent6.ExteriorCoordinates.contributionSum_eq_weighted",
+        "Agent6.ExteriorCoordinates.closed_orbit_weighted_balance"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "TARGET",
+          "List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1"
+        ],
+        [
+          "OuterFinite",
+          "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792186080.721942,
+  "registry_sha256": "03e12f4363f91c1dde992afce815e518596b74d25cf610b384048e62c9910add",
+  "source_commit": "a075b2719c4ff1cb972b68b1d9240d8eaa8d463f",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "This registry covers the nine-module Agent6 exterior-coordinate contribution only; the repository-wide accepted catalogue remains incomplete."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792186112.445406
+}

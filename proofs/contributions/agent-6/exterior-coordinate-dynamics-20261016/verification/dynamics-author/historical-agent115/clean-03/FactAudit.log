@@ -1,0 +1,59 @@
+Agent115.ExteriorFactorization.target : Agent115.ExteriorFactorization.Target
+def Agent115.ExteriorFactorization.Target : Prop :=
+∀ (c : Nat) (B₁ B₂ : List Nat),
+  Agent115.ExteriorFactorization.nonneutralPhase c →
+    P196.Agent7.Finite.validOuter { c := c, B := B₁ } = true →
+      P196.Agent7.Finite.validOuter { c := c, B := B₂ } = true →
+        Agent115.ExteriorFactorization.zValue c B₁ = Agent115.ExteriorFactorization.zValue c B₂ →
+          Agent115.ExteriorFactorization.rhoNum c B₁ * 10 ^ B₂.length =
+              Agent115.ExteriorFactorization.rhoNum c B₂ * 10 ^ B₁.length →
+            P196.Agent7.Finite.outerNext { c := c, B := B₁ } = P196.Agent7.Finite.outerNext { c := c, B := B₂ }
+'Agent115.ExteriorFactorization.target' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.factorization_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_append_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_of_values' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.normalize_eq' depends on axioms: [propext, Quot.sound]
+Agent115.ExteriorFactorization.observation_injective : ∀ (c : Nat) (B₁ B₂ : List Nat),
+  Agent115.ExteriorFactorization.nonneutralPhase c →
+    P196.Agent7.Finite.validOuter { c := c, B := B₁ } = true →
+      P196.Agent7.Finite.validOuter { c := c, B := B₂ } = true →
+        Agent115.ExteriorFactorization.zValue c B₁ = Agent115.ExteriorFactorization.zValue c B₂ →
+          Agent115.ExteriorFactorization.rhoNum c B₁ * 10 ^ B₂.length =
+              Agent115.ExteriorFactorization.rhoNum c B₂ * 10 ^ B₁.length →
+            B₁ = B₂
+'Agent115.ExteriorFactorization.observation_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.eq_of_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent115.ExteriorFactorization.rawSucc_values : ∀ (c : Nat) (B : List Nat),
+  (Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B) =
+      Agent115.ExteriorFactorization.lowValue B % 10 ^ B.length +
+          (c + Agent115.ExteriorFactorization.lowValue B / 10 ^ B.length - 10 * if 10 ≤ c then 1 else 0) *
+            10 ^ B.length +
+        if (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) / 10 ^ B.length = 0 then
+          Agent115.ExteriorFactorization.revN B.length
+              (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) +
+            (c - 9 * if 10 ≤ c then 1 else 0) * 10 ^ B.length
+        else
+          1 +
+            10 *
+              Agent115.ExteriorFactorization.revN B.length
+                (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0)) ∧
+    Agent115.ExteriorFactorization.highValue (Agent115.ExteriorFactorization.rawSucc c B) =
+      10 * Agent115.ExteriorFactorization.revN B.length (Agent115.ExteriorFactorization.lowValue B) +
+          (c + Agent115.ExteriorFactorization.lowValue B / 10 ^ B.length - 10 * if 10 ≤ c then 1 else 0) +
+        if (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) / 10 ^ B.length = 0 then
+          10 * ((Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) % 10 ^ B.length) +
+            (c - 9 * if 10 ≤ c then 1 else 0)
+        else 10 ^ B.length + (Agent115.ExteriorFactorization.highValue B + if 10 ≤ c then 1 else 0) % 10 ^ B.length
+Agent115.ExteriorFactorization.successor_observation : ∀ (c : Nat) (B : List Nat),
+  Agent115.ExteriorFactorization.zValue (2 * (c - 9 * if 10 ≤ c then 1 else 0))
+        (P196.Agent7.Finite.outerNext { c := c, B := B }).B =
+      9 * ↑(Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B)) -
+        ↑(2 * (c - 9 * if 10 ≤ c then 1 else 0)) * (10 ^ (B.length + 1) - 1) ∧
+    Agent115.ExteriorFactorization.rhoNum (2 * (c - 9 * if 10 ≤ c then 1 else 0))
+          (P196.Agent7.Finite.outerNext { c := c, B := B }).B *
+        10 ^ (B.length + 1) =
+      (9 * Agent115.ExteriorFactorization.highValue (Agent115.ExteriorFactorization.rawSucc c B) +
+          2 * (c - 9 * if 10 ≤ c then 1 else 0)) *
+        10 ^ (P196.Agent7.Finite.outerNext { c := c, B := B }).B.length
+'Agent115.ExteriorFactorization.rawSucc_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.successor_observation' depends on axioms: [propext, Quot.sound]
