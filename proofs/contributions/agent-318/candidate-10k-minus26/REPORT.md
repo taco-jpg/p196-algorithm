@@ -46,6 +46,23 @@ Exact integer iteration was run for 5,000 additions for each k=4,...,12. No pali
 
 The test is exact integer arithmetic. It is nevertheless only a finite-horizon computation.
 
+## Fixed-defect sweep
+
+A second exact screen considered every fixed defect c with 1 <= c < 5000 and required n_k=10^k-c to avoid palindromes through 1,000 additions simultaneously for k=4,...,8.
+
+Exactly four defects survived that filter:
+
+    c = 26, 1402, 4112, 4832.
+
+Extending those four candidates to k=4,...,12 with a 3,000-step cap gave:
+
+    c=26:   no palindrome for every k=4,...,12 through t=3000
+    c=1402: no palindrome for every k=4,...,12 through t=3000
+    c=4112: palindrome at t=73 for k=9; no hit in the other tested k values through t=3000
+    c=4832: no palindrome for every k=4,...,12 through t=3000.
+
+This sweep is finite discovery evidence. It does not show that c=26, 1402, or 4832 defines an infinite-safe family.
+
 ## Structural observation
 
 For fixed t and sufficiently large k, the first several iterates retain a long central 9-block while their boundary words change. This is materially different from asserting that one carry word is invariant: the boundary/carry state evolves.
@@ -58,9 +75,9 @@ A direct attempt to infer recurrence from the first states is not yet justified.
 
 This family should remain classified as checked finite evidence / WIP. It does not establish decimal Lychrel existence and does not settle the orbit of 196.
 
-The next substantive task is an exact boundary-state recurrence search for n_k=10^k-26, looking for a relation of the form
+The next substantive task is an exact boundary-state recurrence search for the strongest surviving fixed-defect candidates, beginning with c=26 and c=1402. The target is a relation of the form
 
-    T^p(n_k) = F(n_{k+r})
+    T^p(n_k) = F(n_(k+r))
 
 or an equivalent finite-state conjugacy on the boundary data.
 
