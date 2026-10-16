@@ -63,6 +63,36 @@ Extending those four candidates to k=4,...,12 with a 3,000-step cap gave:
 
 This sweep is finite discovery evidence. It does not show that c=26, 1402, or 4832 defines an infinite-safe family.
 
+## Affine-boundary test
+
+For each fixed time t, I tested whether the whole parameterized family has an exact affine form
+
+    T^t(10^k-c) = a_t * 10^k + b_t
+
+using rational a_t,b_t inferred from two large k values and then checked at independent k values.
+
+For c=26, this exact affine dependence survives through t=14 and fails first at t=15. The coefficients through the affine regime are:
+
+    t=0   a=1           b=-26
+    t=1   a=37/25       b=-27
+    t=2   a=132/25      b=-286
+    t=3   a=473/50      b=-561
+    t=4   a=1881/100    b=-1012
+    t=5   a=539/5       b=-10131
+    t=6   a=107679/100  b=-12430
+    t=7   a=183469/100  b=-135729
+    t=8   a=177969/50   b=-271348
+    t=9   a=306383/50   b=-531795
+    t=10  a=1115631/100 b=-964579
+    t=11  a=2360941/100 b=-10599468
+    t=12  a=47109909/1000 b=-20108836
+    t=13  a=93229807/1000 b=-39118662
+    t=14  a=88274307/500 b=-78226423.
+
+The first nonlinear boundary interaction occurs at t=15 for c=26. For the other two strongest 3000-step survivors, the corresponding first nonlinear times are t=8 for c=1402 and t=5 for c=4832.
+
+This is useful because it isolates the exact point where the simple finite-defect ansatz stops being a fixed affine boundary system. The candidate cannot be promoted to a recurrent construction merely from its long 9-block.
+
 ## Structural observation
 
 For fixed t and sufficiently large k, the first several iterates retain a long central 9-block while their boundary words change. This is materially different from asserting that one carry word is invariant: the boundary/carry state evolves.
