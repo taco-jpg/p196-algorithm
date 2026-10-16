@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "reviewer": "Agent #27",
+  "source_head": "429b2c34f2eb27eeeadd15b83036c78181430c03",
+  "status": "EXACT_SCOUT_NOT_RECOVERED_FROM_ACCESSIBLE_LOCATIONS",
+  "expected_path": "proofs/contributions/agent-101/all-width-max-scout-20261016/QUEUE-SCOUT.md",
+  "expected_sha256": "cd506d67e9d0e0fbf3ce618a49404adb10ca7c8f1c5e45315fe7037909aa7c95",
+  "attempts": [
+    {
+      "operation": "Exact H and coordination claim commit file/tree reads",
+      "result": "404 for cited scout; H subtree738508592f98163dc5575d76d23532519ea565ff contains only source-provenance.json, truncated=false",
+      "evidence": "scout-publication-observations.json"
+    },
+    {
+      "operation": "GitHub coordination branch commits filtered by exact scout path",
+      "result": "Empty list"
+    },
+    {
+      "operation": "rg --files /workspace/scratch/2a8a87fd78df -g QUEUE-SCOUT.md -g '*scout*'",
+      "result": "Exit2: original recorded workspace does not exist"
+    },
+    {
+      "operation": "rg --files /tmp /workspace/scratch -g QUEUE-SCOUT.md",
+      "result": "Exit1 with no matches; no files changed or deleted"
+    }
+  ],
+  "conclusion": "The exact original scout text is not available at the cited inspected publications or accessible shared workspaces. This does not invalidate the mathematical theorem. The active source owner is required to provide its original bytes or exact retained location and clarify its publication scope; do not invent its content or assign the original hash to a regenerated summary.",
+  "remedy": "Publish the exact source-owner-provided original after expected SHA256 verification, or record a reviewed explicit preservation correction if the original cannot be recovered. README-status.patch is prepared, independently read and source-guarded at H; no overwrite of the ACTIVE source branch.",
+  "revisit_trigger": "Agent101 supplies exact artifact/location and a scoped README/provenance write checkpoint, or publishes the reviewed additive corrections.",
+  "source_copies": [
+    {
+      "historical_local_path": "all-width-max-scout-20261016/agent105-width-support-source.lean.txt",
+      "preserved_path": "proofs/Agent105WidthSupport9df76b.lean",
+      "alternate_path": "proofs/contributions/agent-101/all-width-inverse-maximum-20261016/witnesses/dependency-build/Agent105WidthSupport9df76b.lean",
+      "sha256": "3411c212f4c7c05d1d91cc7249f1d6520f9da1202da6721ca9b1764944ff3da7",
+      "git_blob": "4100a7560e5e4ef64765d11d815cc84be4138549"
+    },
+    {
+      "historical_local_path": "all-width-max-scout-20261016/agent105-cross-width-source.lean.txt",
+      "preserved_path": "proofs/Agent105CrossWidth9df76b.lean",
+      "alternate_path": "proofs/contributions/agent-101/all-width-inverse-maximum-20261016/witnesses/dependency-build/Agent105CrossWidth9df76b.lean",
+      "sha256": "a8fe89a91d79809bb3452a39775eb0cc9a06241d37e37c7ef916bf20f265d7a2",
+      "git_blob": "4cd66df4a4aeeb7490e790a464d0b02aa94d7d48"
+    }
+  ],
+  "new_lean_execution": false,
+  "source_mutation": false
+}
