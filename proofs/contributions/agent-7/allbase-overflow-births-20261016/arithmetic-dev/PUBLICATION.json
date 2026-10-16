@@ -1,0 +1,101 @@
+{
+  "task": "agent7-allbase-overflow-births-20261016",
+  "claim_commit": "cc9c01d128808d9c0b2b1cf3921a76f7c00e9cf1",
+  "component": "AdjacentBirths",
+  "status": "LEAN-CHECKED",
+  "accepted_attempt": "attempt-001",
+  "failed_attempts": [],
+  "source": {
+    "path": "../AdjacentBirths.lean",
+    "sha256": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59",
+    "immutable_checkpoint": "attempt-001/source/AdjacentBirths.lean"
+  },
+  "scope": "Exact coupled adjacent zero/max classifiers for every integer base at least2, with bounded coefficients and exterior carry bits. Named intermediate carries satisfy the actual quotient equations; computed-only wrappers, neutral-neighbor birth necessity, and inheritance without a neutral neighbor are included. Actual word indexing and endpoints belong to separate modules.",
+  "runtime": {
+    "version": "Lean4.19.0",
+    "executable": "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "public_theorem_exports": [
+    "residue_zero_iff",
+    "residue_max_iff",
+    "adjacent_residues_zero_iff",
+    "adjacent_residues_max_iff",
+    "adjacentPair_zero_iff",
+    "adjacentPair_max_iff",
+    "adjacent_new_extreme_neutral",
+    "adjacent_without_neutral"
+  ],
+  "public_theorem_count": 8,
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "retained_files": [
+    {
+      "path": "verify_arithmetic.py",
+      "sha256": "dfde9ca6ea94852082811212ba8c58199295c48bfee9c331d3a44b8ae12d8db0"
+    },
+    {
+      "path": "attempt-001/source/AdjacentBirths.lean",
+      "sha256": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59"
+    },
+    {
+      "path": "attempt-001/source/AllExportsAudit.lean",
+      "sha256": "f81da222a41a5026a3ce9b13e45247dda4317e8ba3f17972530ce2bca209e812"
+    },
+    {
+      "path": "attempt-001/verification.json",
+      "sha256": "4341ae26fd24c319cacbbea0e2b33ecade341a9fbe293820c2d7d7dcf83c56c1"
+    },
+    {
+      "path": "attempt-001/AdjacentBirths.log",
+      "sha256": "84ba9d432c9f797dfe96c828ec03ef5d9a51a9c2493b7d7787506935f3fa02e7"
+    },
+    {
+      "path": "attempt-001/AllExportsAudit.log",
+      "sha256": "84ba9d432c9f797dfe96c828ec03ef5d9a51a9c2493b7d7787506935f3fa02e7"
+    },
+    {
+      "path": "attempt-001/BaseBirths.log",
+      "sha256": "2e8b81f2f0fde040767ca8191c13e33d0d32480670ae9ab9705d8fa3b55eb2e6"
+    },
+    {
+      "path": "attempt-001/BaseReflection.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "attempt-001/ResetNormalization.log",
+      "sha256": "c68e347e10575d426d47addc8032e2198b791dc4489ac2476d35dcaf199dd52a"
+    },
+    {
+      "path": "attempt-001/SignedDigitUniqueness.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "excluded_reproducible_infrastructure": {
+    "compiled_objects": [
+      "attempt-*/source/*.olean"
+    ],
+    "dependency_source_copies": [
+      "attempt-*/source/SignedDigitUniqueness.lean",
+      "attempt-*/source/BaseReflection.lean",
+      "attempt-*/source/ResetNormalization.lean",
+      "attempt-*/source/BaseBirths.lean"
+    ],
+    "dependency_pins": {
+      "SignedDigitUniqueness": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+      "BaseReflection": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+      "ResetNormalization": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+      "BaseBirths": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33"
+    }
+  },
+  "source_pin_registry": "../dependencies/SOURCE_PINS.json",
+  "source_pin_registry_sha256": "622f800279123b95c201068640216dfb36f49629c0778af406243ca9082cf083"
+}

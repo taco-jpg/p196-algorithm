@@ -1,0 +1,68 @@
+{
+  "status": "AUTHOR LEAN-CHECKED; independent full-package review assigned separately",
+  "claim_commit": "cc9c01d128808d9c0b2b1cf3921a76f7c00e9cf1",
+  "author": "/root/gap_inventory",
+  "scope": "Exact actual-overflow endpoint classification, a source split within the already claimed all-base endpoint scope.",
+  "mathematical_reasoning": [
+    "The frozen OverflowDigits theorem identifies both actual endpoints with 1+q0%b using terminal one alone. terminal one also proves the source is nonempty.",
+    "For b>=2, the integer Euclidean remainder is nonnegative. Hence each actual endpoint is positive even for unbounded or signed old coefficients.",
+    "For b>=3, q0%b<b implies 1+q0%b<=b<2*b-2. Thus both actual endpoints avoid zero and the maximum without coefficient bounds.",
+    "If 1+q0%b=2*b-2 with b>=2, the strict remainder bound forces b=2. The old bound 0<=q0<=2 then makes q0%2=1 equivalent to q0=1.",
+    "The head bound uses List.getElem_mem at the genuine index zero, whose validity follows from terminal one. A getD fallback does not supply this bound.",
+    "Neither symmetry nor positive-leading-digit hypotheses occur in this endpoint module. Canonical integer semantics are composed in the separately owned parent module."
+  ],
+  "public_export_count": 8,
+  "boundary_controls": [
+    {
+      "name": "binary_max_without_symmetry",
+      "meaning": "Nonsymmetric bounded coefficients[1,2] in base two give actual paired word[2,0,2], witnessing that no symmetry premise is needed."
+    },
+    {
+      "name": "binary_nonmaximum_heads",
+      "meaning": "The other bounded binary heads zero and two give endpoint one; the width-one coefficient[2] has two actual endpoints[1,1]."
+    },
+    {
+      "name": "binary_bound_is_needed",
+      "meaning": "Unbounded coefficient[3] in base two has terminal one and actual paired word[2,2] despite q0!=1. The Bounded premise in the coefficient identification is essential."
+    },
+    {
+      "name": "ternary_boundary",
+      "meaning": "Bounded base-three coefficients[2,3] attain endpoint three, still strictly below maximum four."
+    },
+    {
+      "name": "signed_unbounded_nonextreme",
+      "meaning": "The main nonextremity API applies directly to signed, unbounded base-three coefficients[-1,4]."
+    }
+  ],
+  "provenance": "IntrinsicReverseAdd.binary_safety_boundary already formalized binary110->1001. This module and its fixtures do not claim that example as new.",
+  "attempts": [
+    {
+      "attempt": "attempt-001",
+      "proof_core": "PASS; source frozen at its final SHA",
+      "whole_attempt": "FAILED",
+      "failure": "Three fixture goals used decide over the unrestricted outer quantifier in Bounded, so Decidable synthesis failed. This is retained failure evidence."
+    },
+    {
+      "attempt": "attempt-002",
+      "proof_core": "PASS; identical source",
+      "whole_attempt": "FAILED",
+      "failure": "Explicit finite membership elimination omitted simplification of the trailing membership-in-empty disjunct. This is retained failure evidence."
+    },
+    {
+      "attempt": "attempt-003",
+      "proof_core": "PASS; identical source",
+      "whole_attempt": "PASS",
+      "correction": "Fixtures simplify their finite membership hypotheses before elimination. No theorem statement, operational definition or mathematical hypothesis was changed."
+    }
+  ],
+  "audit": {
+    "core_theorems": 8,
+    "boundary_theorems": 5,
+    "allowed_axiom_union": [
+      "Quot.sound",
+      "propext"
+    ],
+    "source_contains_sorry_admit_native_decide_or_new_axiom": false
+  },
+  "source_changes": "Only OverflowEndpoints.lean and endpoint-dev were authored for this lane. Frozen OverflowDigits and all eight original dependencies were unchanged."
+}

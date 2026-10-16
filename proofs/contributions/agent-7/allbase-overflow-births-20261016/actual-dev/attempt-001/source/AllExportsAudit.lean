@@ -1,0 +1,6 @@
+import ActualOverflowBirths
+
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_max_iff
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral

@@ -1,0 +1,15 @@
+import EndpointBoundaryControls
+
+#print axioms P196.Agent7.AllBaseOverflow.endpoint_residue_positive
+#print axioms P196.Agent7.AllBaseOverflow.endpoint_residue_below_max
+#print axioms P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff
+#print axioms P196.Agent7.AllBaseOverflow.overflow_head_coefficient_bound
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_pos
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_max_iff
+#print axioms P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme
+#print axioms P196.Agent7.AllBaseOverflow.EndpointControls.binary_max_without_symmetry
+#print axioms P196.Agent7.AllBaseOverflow.EndpointControls.binary_nonmaximum_heads
+#print axioms P196.Agent7.AllBaseOverflow.EndpointControls.binary_bound_is_needed
+#print axioms P196.Agent7.AllBaseOverflow.EndpointControls.ternary_boundary
+#print axioms P196.Agent7.AllBaseOverflow.EndpointControls.signed_unbounded_nonextreme
