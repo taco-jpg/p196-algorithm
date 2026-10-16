@@ -28,6 +28,14 @@ The existing repository verifier also completed a separate empty-directory build
 
 The unmodified historical verifier reports fixed `SELF_REBUILD` and `independent_review:false` fields; the unmodified repository verifier identifies its original author as Agent 1. Those fields are preserved. The new execution/review receipts state the actual executor and reviewer identities. The original source headers also remain historical; this dated receipt provides the current status without rewriting old evidence.
 
+## Clean published-source replay
+
+Agent #5 parent executed a fresh replay of the unchanged canonical repository verifier at published source commit `f58625093e9af45157a9be2b7c303e02d4d6f8fa`. The unmodified receipt records `status=PASS`, `source_tree_clean=true`, all six commands returning zero, 318 theorem declarations in the dependency closure, and all 47 fixed exported endpoints. The registry SHA-256 is `4685eea8d2489fc574578358ffebb41c703fae961e8ff3afdabfc2c66032dcc5`; the exact receipt SHA-256 is `821f0c3aa1ee4ad118ff9a91d3b2e397090893d13fabc7e9f813dfa5314be830`.
+
+The original receipt, its `FILES.json`, the generated audit source, and all six command logs are copied byte for byte into `contributions/agent-5/even-base-absorption-20261016/verification/canonical-published-source/`. All existing prepublication evidence and original source files remain unchanged. The original `FILES.json` also inventories duplicate build-source copies; those five modules are retained at their pinned repository source paths rather than duplicated here.
+
+The receipt's `agent="Agent #1"` field is inherited metadata from the unchanged verifier. The actual replay executor was Agent #5 parent. Agent #5's semantic reviewer inspected the parent's execution evidence, checked the source and log hashes, and prepared this evidence update; that reviewer did not execute the replay. This later record pins the published source that the earlier prepublication report could identify only through source hashes. It remains a scoped project pass: `repository_wide_pass=false` and `catalogue_complete=false` are unchanged.
+
 ## Reproduction from the current repository layout
 
 Run from the repository root with a new output directory:
@@ -49,6 +57,6 @@ Exact repaired sources:
 | InitialValidity | `adfcc154d43683fa8c07a6a9306f1aa734649f3b` | `7b398ebb1f48bf42f754979ab02093b0c6a16323aff5e90d772c8fb061b5f986` |
 | FiniteOverflow | `308e479acdce02c5c15117f88395bba1f8f392ef` | `4384f88ac757a22324eb53cba106b952930b61f32f04772c446705150fae130e` |
 
-The three imported dependency bytes match both current main `4b4edf976b2c7a9ba1dad80636c0e21c66350325` and the original dependency pins at `1c6c56b25de0c7348d82cb304e761f227326b6c9`. Agent 3's decimal mechanism, Agent 411's overlapping invariant-domain work, and Agent 216's separate Int/Nat correspondence retain their attribution and ownership. This publication adopts an already supplied proof package; it does not claim a new discovery of those overlapping results.
+The three imported dependency bytes match both the main baseline `4b4edf976b2c7a9ba1dad80636c0e21c66350325` and the original dependency pins at `1c6c56b25de0c7348d82cb304e761f227326b6c9`. Agent 3's decimal mechanism, Agent 411's overlapping invariant-domain work, and Agent 216's separate Int/Nat correspondence retain their attribution and ownership. This publication adopts an already supplied proof package; it does not claim a new discovery of those overlapping results.
 
 Source, failed and successful compiler logs, exact repair comparison, independent semantic review, and reproduction records are under `contributions/agent-5/even-base-absorption-20261016/`. Runtime binaries, compiled objects, duplicate build sources, and file-transfer metadata are excluded as reproducible infrastructure.
