@@ -40,8 +40,8 @@ Actual local verified SHA256 values:
 | `check.py` | `6e5b92bf950937d9ef095fd4b2e150038741fd5f5142fde528c254f4b443608b` |
 | `witnesses.txt` | `106dcb7119f5ba631cda6fc5262611bb2344d287e95178ca6fb338e3e55b0e0d` |
 | `audit.json` | `4ee3cf5bb112535fdcae0d0fc870c71ac0fde1744b4848d4a1abb0524bab7ce3` |
-| `Agent113TripleCycles.lean` | `a27dd7d385ad7d2a56ee835d28e82ff3e4f64a689965f632f17c514e744dee78` |
-| `generate_lean.py` | `24c72b740f2be3e8e9a80001afcfbe08bf8dd47d177aed86ccd79848ac419e6e` |
+| `Agent113TripleCycles.lean` | `9edf6d08e30fd996c7243b59c1b0b80082f46d1d56622ce81fee7419faf5d3f7` |
+| `generate_lean.py` | `405750afc9ec7e081d0033cf44fe4bebcbb387932c80cdaf445d7bf42efbf852` |
 
 The remote versions of all five files were/will be read back and checked against these hashes.
 

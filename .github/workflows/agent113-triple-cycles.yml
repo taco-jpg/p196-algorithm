@@ -59,7 +59,7 @@ jobs:
           unset LD_PRELOAD
           P=proofs/contributions/agent-113/descending-prefix-maximality-20261016
           echo 'ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57  pinned-old/proofs/research/continuation/LychrelDigitSums.lean' | sha256sum -c -
-          echo 'a27dd7d385ad7d2a56ee835d28e82ff3e4f64a689965f632f17c514e744dee78  '"$P"'/Agent113TripleCycles.lean' | sha256sum -c -
+          echo '9edf6d08e30fd996c7243b59c1b0b80082f46d1d56622ce81fee7419faf5d3f7  '"$P"'/Agent113TripleCycles.lean' | sha256sum -c -
           echo '106dcb7119f5ba631cda6fc5262611bb2344d287e95178ca6fb338e3e55b0e0d  '"$P"'/witnesses.txt' | sha256sum -c -
           python3 "$P/check.py" --verify "$P/witnesses.txt" > "$RUNNER_TEMP/agent113-audit/audit-regenerated.json"
           cmp "$P/audit.json" "$RUNNER_TEMP/agent113-audit/audit-regenerated.json"
