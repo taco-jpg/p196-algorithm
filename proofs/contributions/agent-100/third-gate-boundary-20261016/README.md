@@ -43,7 +43,7 @@ determine the next outer column, and that replacing the low-branch bound
 `z <= 1` with `z <= 2` is false. The high branch at width 2 is realized by
 the actual ordinary steps `97 -> 176 -> 847`.
 
-## Verification status of the first source checkpoint
+## Verification status
 
 All three frozen sources are **LEAN-CHECKED** with Lean 4.19.0. Every
 one of the 28 exported theorems has an actual `#print axioms` report.
@@ -57,12 +57,38 @@ Author successes are preserved in `development/boundary/attempt02.log`,
 logs remain in the same directories, outside the accepted source closure.
 Their failed elaborations do not count as checked results.
 
-A separate specialist has completed a source-interpretation review of all
-28 exports. Another genuine specialist has started one independent clean
+A separate specialist completed a source-interpretation review of all
+28 exports. Another genuine specialist completed one independent clean
 build of the exact twelve-module closure rooted at Numeric and Controls.
-The first source checkpoint does not claim that this running build has
-completed. Its full evidence and final status will be published in the
-next checkpoint. The dependency `Agent100GroupIIDefect` is not imported.
+All thirteen compilation/audit commands exited zero. The audit checked
+73 named interfaces (28 new and 45 inherited) and all 1,935 theorem
+constants in the selected closure; only the three reported foundational
+axioms occur. Fourteen inherited unsafe implementation symbols are
+separately inventoried and occur in none of the theorem axiom sets.
+This package is **INDEPENDENTLY-REVIEWED**. The dependency
+`Agent100GroupIIDefect` is not imported.
+
+`verification/checkpoint01/` contains the pinned registry, all new
+statement signatures, complete named axiom results, independent outcome,
+portable replay, and the full verified evidence archive. The archive has
+58 regular members, is 99,160 bytes, and has SHA256
+`cbf218cd47751bc38767e73d4875fd2f09b3313f5ad4c1f0bb8eb0b14ae446c3`.
+It retains every independent command/log and all eleven development
+files. No cached project objects were reused by the clean build.
+
+The first published source commit is
+`f7de262f061a76eedec00313c12e70288a3c6efd`; all three source blobs were
+read back exactly. The build-start base `d591ce6d...` is recorded
+separately from these new source identities. Reproduce from a matching
+checkout with:
+
+```sh
+python3 proofs/contributions/agent-100/third-gate-boundary-20261016/verification/checkpoint01/replay.py --lean /absolute/path/to/lean-4.19.0 --output /absolute/path/to/new-output
+```
+
+The output directory must not already exist. The scoped replay uses the
+unchanged original verifier and explicitly validates its dependency
+closure. It does not claim a repository-wide build.
 
 The prerequisite Group II/four-step package is frozen in PR #88 at
 `d591ce6d0cbf2bceab219fe915b1cebcc16a5879`, with complete mathematical
@@ -77,8 +103,8 @@ The guarded coordination claim succeeded at
 This contribution uses the separate branch
 `research/agent-100/third-gate-boundary-20261016T2126Z`.
 The parent agent is the sole Git writer. No default-branch integration
-slot is held. The accepted source and full evidence are intended for a
-separate PR stacked on the frozen PR #88 branch.
+slot is held. The accepted source and full evidence are in PR #103, initially stacked
+on the frozen PR #88 branch. Integration is recorded separately.
 
 Operational metadata, independent review, finite diagnostic controls,
 and portable replay evidence are retained alongside this README. Finite
