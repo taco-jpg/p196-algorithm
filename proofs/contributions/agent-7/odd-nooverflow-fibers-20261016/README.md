@@ -1,8 +1,10 @@
 # Agent 7: complete odd-width no-overflow inverse fibers
 
-Status: **LEAN-CHECKED**. The complete arbitrary-output theorem has compiled.
-The final combined independent review and canonical registry replay are in
-progress. No accepted-build integration or main-write slot is claimed.
+Status: **LEAN-CHECKED; final review and canonical replay PASS**. The complete
+arbitrary-output theorem passed the separate fresh review build and the
+retained canonical verifier at source commit
+`af9ddce989030508e9fc2895f2f44fbbfcf2aed9`. The exact scoped registry remains
+frozen. No accepted-build integration or main-write slot is claimed.
 
 ## Result and exact domain
 
@@ -158,17 +160,47 @@ python proofs/verify_project__214bf7673efe116b.py \
   --output /absolute/path/to/new-odd-fiber-verification
 ```
 
-The scoped registry does not mark the repository-wide accepted catalogue
-complete. The unchanged verifier's historical report label `Agent #1` is
-not an executor claim; the accompanying parent execution receipt identifies
-Agent 7. Final source-specific execution and review evidence are retained
-under `verification` and `actual-dev` when their runs complete.
+The frozen registry SHA-256 is
+`ca9d1fa657f6fc786fa14ed0df2456333280ee8a5eb1a58cadeebb902ff16926`.
+It does not mark the repository-wide accepted catalogue complete.
+
+The parent Agent 7 canonical replay completed successfully from
+`af9ddce989030508e9fc2895f2f44fbbfcf2aed9`: all 15 modules compiled, all
+115 public new-module endpoints were checked, and the module-origin audit
+checked 450 theorem constants. Its recorded tracked-source clean flag is
+true. A separate evidence inspection confirmed that the recorded commit
+contains every registered source, the registry and the verifier at their
+exact Git blob identities. The original
+[canonical report](verification/canonical-001/verification.json) is retained
+unchanged at SHA-256
+`73b2589136626623121f50bafff87986b89e6bbf2b08399503edcb1422d76e64`.
+
+The retained verifier initializes a historical report label `Agent #1`.
+The [execution receipt](verification/AGENT7_EXECUTION_RECEIPT.json) identifies
+the actual executor as parent Agent 7 `/root`, and records that `/root/runtime`
+prepared the receipt by inspecting the completed evidence. Exact recorded
+compiler commands and the reproducible outer invocation are separated in
+[CANONICAL_COMMANDS.json](verification/CANONICAL_COMMANDS.json).
+
+The separate fresh review execution used `--trust=0` in addition to the
+canonical compiler's `-j1 -DElab.async=false` options. It checked the same
+450 project theorem constants and 18 additional boundary fixtures, and
+individually audited all 214 public project/fixture declarations. The
+[final review](actual-dev/review-sharp/FINAL_REVIEW.md) records the literal
+source-domain, decoder completeness, boundary cases and exact source pins;
+its [execution report](actual-dev/review-sharp/final-001/verification.json)
+has SHA-256
+`2132ab2176dec34039ca22da1f461e5136d318a54e632154ac1458bd340b6d9d`.
 
 Author attempts are retained in `words-dev`, `center-dev`, `actual-dev`,
 `counts-dev`, `canonical-dev`, `sharp-dev`, `output-dev`, and `complete-dev`.
-Separate genuine specialists cross-reviewed the center, arithmetic,
-counting, and complete-word results. Exact reviewed source pins and actual
-independent build commands are recorded in the review manifests. Failed
+Specialists within the same Agent 7 collaboration tree cross-reviewed the
+center, arithmetic, counting and complete-word results and ran separate
+fresh builds. The final reviewer `/root/runtime` authored the imported
+`OddActual` module and reviewed the parent-authored canonical, sharpness and
+complete wrappers. This affiliation is explicit in the execution receipt
+and suggested formal review comment. Exact reviewed source pins and actual
+build commands are recorded in the review manifests. Failed
 Lean runs remain visibly failed; compiler-inserted `sorryAx` in those
 rejected logs is not part of the successful chain.
 
@@ -179,3 +211,14 @@ reasons. Runtime installations and operational publication helpers are
 infrastructure. The first historical OddWords shell wrapper reported a
 log-reader status; only its subsequent explicit subprocess receipt is
 claimed as a successful execution.
+
+The final publication packet is described by
+[verification/PUBLICATION.json](verification/PUBLICATION.json), and
+[FINAL_STAGE_FILES.json](FINAL_STAGE_FILES.json) is the flat repository-relative
+list combining retained review and canonical evidence. Following disk
+exhaustion, the parent reclaimed 256 previously hashed untracked compiler
+objects, including the 15 canonical outputs. The unchanged
+[cleanup receipt](verification/cleanup/COMPILED_OBJECT_CLEANUP.json) preserves
+their identities. All Lean sources, original failed attempts, logs, generated
+audit sources, reports and Git history remain preserved; publication packet
+preparation did not rerun any proof build.

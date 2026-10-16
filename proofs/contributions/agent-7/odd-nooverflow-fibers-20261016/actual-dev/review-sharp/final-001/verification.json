@@ -1,0 +1,765 @@
+{
+  "reviewer": "Agent #7 /root/runtime",
+  "started_at": "2026-10-16T21:30:15.381498+00:00",
+  "status": "PASS",
+  "roots": [
+    "OddComplete",
+    "ReviewCanonical",
+    "ReviewSharp",
+    "ReviewComplete"
+  ],
+  "source_records": {
+    "InverseFibers": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/dependencies/InverseFibers.lean",
+      "sha256": "64f4fa5df54d9365b1b3706eceeab3d3f358eb1040a95e3057ac4d9f82806b70",
+      "git_blob": "cade8ace6359fe8246a29ec781859e3a39b00e11",
+      "imports": [
+        "Std"
+      ],
+      "public_theorems": [
+        "P196.Agent9.InverseFibers.weight_eq_table",
+        "P196.Agent9.InverseFibers.local_unique",
+        "P196.Agent9.InverseFibers.advance_formula",
+        "P196.Agent9.InverseFibers.advance_bounds",
+        "P196.Agent9.InverseFibers.fib_zero",
+        "P196.Agent9.InverseFibers.fib_one",
+        "P196.Agent9.InverseFibers.fib_succ_succ",
+        "P196.Agent9.InverseFibers.fib_le_succ",
+        "P196.Agent9.InverseFibers.run_bound",
+        "P196.Agent9.InverseFibers.two_symbol_bound",
+        "P196.Agent9.InverseFibers.one_symbol_bound",
+        "P196.Agent9.InverseFibers.inverseCount_bound",
+        "P196.Agent9.InverseFibers.run_append",
+        "P196.Agent9.InverseFibers.advance_nine",
+        "P196.Agent9.InverseFibers.replicate_snoc",
+        "P196.Agent9.InverseFibers.nines_exact",
+        "P196.Agent9.InverseFibers.first_eleven_eq_nine",
+        "P196.Agent9.InverseFibers.leading_eleven_exact",
+        "P196.Agent9.InverseFibers.leading_eleven_labels"
+      ],
+      "object_sha256": "4575cc1b628c185c6e971feac6d7b78d06424d08f79ff654977c74bebded372d"
+    },
+    "PathCounts": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/dependencies/PathCounts.lean",
+      "sha256": "588890faa1a29739b00dbe660a5f39971ac5087d997550cb9a740194eb592a33",
+      "git_blob": "fac4c4090cf63c2ecdeb5791e6af8758a0821616",
+      "imports": [
+        "InverseFibers"
+      ],
+      "public_theorems": [
+        "P196.Agent9.InverseFibers.mem_states",
+        "P196.Agent9.InverseFibers.mem_labels",
+        "P196.Agent9.InverseFibers.mem_extend",
+        "P196.Agent9.InverseFibers.length_extend",
+        "P196.Agent9.InverseFibers.mem_preimages",
+        "P196.Agent9.InverseFibers.dot_suffix",
+        "P196.Agent9.InverseFibers.dot_run",
+        "P196.Agent9.InverseFibers.preimages_length",
+        "P196.Agent9.InverseFibers.local_next_unique",
+        "P196.Agent9.InverseFibers.extend_nodup",
+        "P196.Agent9.InverseFibers.preimages_nodup",
+        "P196.Agent9.InverseFibers.exact_fiber_bound",
+        "P196.Agent9.InverseFibers.exact_sharp_family"
+      ],
+      "object_sha256": "d20d9557f59463603082a9a93fac5599f5393f485ddd27c297ddf08e4103a60c"
+    },
+    "WordBridge": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/dependencies/WordBridge.lean",
+      "sha256": "83594b2cc412382fa2fc6c38979d7ae4a08e4ee49b0e3b46a7453b010c75a611",
+      "git_blob": "cf309798168db1f2a5feb012da108c5a1a8b4df3",
+      "imports": [
+        "PathCounts"
+      ],
+      "public_theorems": [
+        "P196.Agent9.InverseFibers.scan_append",
+        "P196.Agent9.InverseFibers.scan_length",
+        "P196.Agent9.InverseFibers.scan_carry_bound",
+        "P196.Agent9.InverseFibers.low_bound",
+        "P196.Agent9.InverseFibers.high_bound",
+        "P196.Agent9.InverseFibers.path_realizes",
+        "P196.Agent9.InverseFibers.low_mkState",
+        "P196.Agent9.InverseFibers.high_mkState",
+        "P196.Agent9.InverseFibers.realizes_path",
+        "P196.Agent9.InverseFibers.mem_preimages_iff_realizes"
+      ],
+      "object_sha256": "e669d7968c26ac013a80b4036bbcebad676961f7878fbbf90a0548c3712f4d61"
+    },
+    "OddCenter": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddCenter.lean",
+      "sha256": "72f1c2e64a587e25f85482b6f61ceea0763218d60c7c7cc5eaa7d1d31ca65728",
+      "git_blob": "7a5ec0d427fc96ebcbd2ddb973dfc851a06ef03e",
+      "imports": [
+        "WordBridge"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.oddMirror_nil",
+        "P196.Agent7.OddFibers.oddMirror_cons",
+        "P196.Agent7.OddFibers.oddMirror_length",
+        "P196.Agent7.OddFibers.oddMirror_reverse",
+        "P196.Agent7.OddFibers.center_iff",
+        "P196.Agent7.OddFibers.center_exists_iff",
+        "P196.Agent7.OddFibers.center_unique",
+        "P196.Agent7.OddFibers.centerValue_center",
+        "P196.Agent7.OddFibers.oddPath_length",
+        "P196.Agent7.OddFibers.oddPath_bounds",
+        "P196.Agent7.OddFibers.mem_oddExtend",
+        "P196.Agent7.OddFibers.length_oddExtend",
+        "P196.Agent7.OddFibers.mem_oddPreimages",
+        "P196.Agent7.OddFibers.oddExtend_nodup",
+        "P196.Agent7.OddFibers.oddPreimages_nodup"
+      ],
+      "object_sha256": "b3f8afe0599c9a8ac0dd641d3d3139a2acbad3de417afa5337bd89de2ef54c3b"
+    },
+    "PeriodObstructions": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/dependencies/PeriodObstructions.lean",
+      "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+      "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+      "imports": [
+        "Std"
+      ],
+      "public_theorems": [
+        "Agent8.mass_append",
+        "Agent8.mass_reverse",
+        "Agent8.mass_zipAdd",
+        "Agent8.mass_pair",
+        "Agent8.normalize_mass_mod",
+        "Agent8.step_mass_mod",
+        "Agent8.six_steps_mass_mod",
+        "Agent8.orbit_add",
+        "Agent8.six_multiple_mass_mod",
+        "Agent8.mass_replicate",
+        "Agent8.template_mass",
+        "Agent8.returned_template_mass_congruence",
+        "Agent8.finite_exterior_certificate",
+        "Agent8.exterior_bounds",
+        "Agent8.path_potential_bounds",
+        "Agent8.closed_path_bounds",
+        "Agent8.returned_period_at_least_four",
+        "Agent8.no_two_step_return",
+        "Agent8.six_step_forced_loss",
+        "Agent8.no_repeatable_six_step_return",
+        "Agent8.short_return_equal_gains",
+        "Agent8.twelve_step_gains",
+        "Agent8.eighteen_step_gains",
+        "Agent8.no_repeatable_six_step_template_return"
+      ],
+      "object_sha256": "f1d3a863ae4a7ffd57be92ab2c93e3e2976fbf7e60e6adbd37f5943d6dcda6ea"
+    },
+    "ActualWords": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/dependencies/ActualWords.lean",
+      "sha256": "c7937f95b80be88cf81268f4eae2c3d1ed066f49fc8cea6c84ce3a78dee7c324",
+      "git_blob": "48c0254f6b19ac99470c9239fd9706975b2c7b9d",
+      "imports": [
+        "WordBridge",
+        "PeriodObstructions"
+      ],
+      "public_theorems": [
+        "P196.Agent9.InverseFibers.normalize_scan",
+        "P196.Agent9.InverseFibers.zipAdd_repository",
+        "P196.Agent9.InverseFibers.zipAdd_length",
+        "P196.Agent9.InverseFibers.zipAdd_append",
+        "P196.Agent9.InverseFibers.zipAdd_comm",
+        "P196.Agent9.InverseFibers.zipAdd_reverse",
+        "P196.Agent9.InverseFibers.pair_halves",
+        "P196.Agent9.InverseFibers.realizes_actual",
+        "P196.Agent9.InverseFibers.actual_realizes",
+        "P196.Agent9.InverseFibers.mem_preimages_iff_actual",
+        "P196.Agent9.InverseFibers.canonical_membership",
+        "P196.Agent9.InverseFibers.canonical_nodup",
+        "P196.Agent9.InverseFibers.canonical_bound",
+        "P196.Agent9.InverseFibers.leading_eleven_positive",
+        "P196.Agent9.InverseFibers.canonical_sharp"
+      ],
+      "object_sha256": "8a6419f7ed3b3a22adc810fe37beacde718ba1e951732727635278b034523fc4"
+    },
+    "OddActual": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddActual.lean",
+      "sha256": "15b8a66e67da8fecaf6e244416825a2a28ecb1e188ac8eccbb53827cfff427bf",
+      "git_blob": "ea175f00a1d7bf602bc264210de0b7edaf716e78",
+      "imports": [
+        "OddCenter",
+        "ActualWords"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.oddPath_realizes",
+        "P196.Agent7.OddFibers.oddRealizes_path",
+        "P196.Agent7.OddFibers.oddPath_iff_realizes",
+        "P196.Agent7.OddFibers.pair_odd_halves",
+        "P196.Agent7.OddFibers.oddMirror_injective",
+        "P196.Agent7.OddFibers.oddRealizes_actual",
+        "P196.Agent7.OddFibers.oddActual_realizes",
+        "P196.Agent7.OddFibers.oddPath_iff_actual",
+        "P196.Agent7.OddFibers.oddPath_normalize"
+      ],
+      "object_sha256": "32ae5f75d7ba7941d6bb595b836d1943663cc4f261092eeace323a693d4133b3"
+    },
+    "OddWords": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddWords.lean",
+      "sha256": "f0827099cffeeab2997c0a572906d8bd370e048aa859beb3bb8189ad5bc217a3",
+      "git_blob": "6927c104b044a9080070d1c183869683704303c2",
+      "imports": [
+        "Std"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.symmetric_odd_decomposition",
+        "P196.Agent7.OddFibers.odd_word_encoding_injective",
+        "P196.Agent7.OddFibers.odd_word_center"
+      ],
+      "object_sha256": "2e442e7b1fd5a3e737af37405bd1036a099f863d53da2777aeb84fd983dcccdd"
+    },
+    "OddCanonical": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddCanonical.lean",
+      "sha256": "46529b9c0bd55a3ae069900789f4747e9de7f58b5c6f82350ee4c657a551e617",
+      "git_blob": "9a4110b59b068ba8c94df27f2cd8f0af9c7aac19",
+      "imports": [
+        "OddActual",
+        "OddWords"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.oddMirror_head",
+        "P196.Agent7.OddFibers.canonicalOdd_membership",
+        "P196.Agent7.OddFibers.canonicalOdd_nodup",
+        "P196.Agent7.OddFibers.fullOddPreimages_nodup",
+        "P196.Agent7.OddFibers.fullOddPreimages_membership_encoded",
+        "P196.Agent7.OddFibers.canonicalOdd_of_encoding",
+        "P196.Agent7.OddFibers.canonicalOdd_has_encoding",
+        "P196.Agent7.OddFibers.fullOddPreimages_membership",
+        "P196.Agent7.OddFibers.width_one_witness"
+      ],
+      "object_sha256": "0dfe1e1369ff062f7b3d79003f1a4931052d5cd567e6395ce1ea39c39c9c5236"
+    },
+    "OddCounts": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddCounts.lean",
+      "sha256": "7e7a97c04a065e4060d11c652807ba6e8f3531da505e4336070caf97beabe939",
+      "git_blob": "7a29e8946071eb6b331a8b61db3ce6c9fa79aa57",
+      "imports": [
+        "OddCenter"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.advance_eq_class",
+        "P196.Agent7.OddFibers.nineRun_succ",
+        "P196.Agent7.OddFibers.advance_nine_counts",
+        "P196.Agent7.OddFibers.nine_growth_good",
+        "P196.Agent7.OddFibers.nineRun_growth_good",
+        "P196.Agent7.OddFibers.advance_le_nine",
+        "P196.Agent7.OddFibers.four_class_bound",
+        "P196.Agent7.OddFibers.four_symbol_bound",
+        "P196.Agent7.OddFibers.run_le_nines",
+        "P196.Agent7.OddFibers.long_run_dominated",
+        "P196.Agent7.OddFibers.nine_near_balanced",
+        "P196.Agent7.OddFibers.nineRun_near_balanced",
+        "P196.Agent7.OddFibers.nineRun_total",
+        "P196.Agent7.OddFibers.nineRun_adjacent_exact",
+        "P196.Agent7.OddFibers.adjacent_monotone",
+        "P196.Agent7.OddFibers.one_class_adjacent_bound",
+        "P196.Agent7.OddFibers.two_class_adjacent_bound",
+        "P196.Agent7.OddFibers.three_class_adjacent_bound",
+        "P196.Agent7.OddFibers.adjacent_run_bound",
+        "P196.Agent7.OddFibers.odd_count_bound",
+        "P196.Agent7.OddFibers.nines_odd_count_sharp",
+        "P196.Agent7.OddFibers.odd_dot_suffix",
+        "P196.Agent7.OddFibers.odd_dot_run",
+        "P196.Agent7.OddFibers.odd_preimages_length",
+        "P196.Agent7.OddFibers.odd_preimages_bound",
+        "P196.Agent7.OddFibers.leading_eleven_odd_count",
+        "P196.Agent7.OddFibers.leading_eleven_odd_sharp",
+        "P196.Agent7.OddFibers.leading_eleven_odd_positive",
+        "P196.Agent7.OddFibers.odd_count_center_parity",
+        "P196.Agent7.OddFibers.odd_preimages_center_parity"
+      ],
+      "object_sha256": "6d609835e16674c518d79b709b3c6fea0aaa032915828c2aa57b7bc4f08f9a86"
+    },
+    "OddCountsFixedCenter": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddCountsFixedCenter.lean",
+      "sha256": "cc7fe4bad83f09c1abd4be37f63eaaa901497d568ce0d774243ab91f5e2dc0f0",
+      "git_blob": "c74ddfef90bf92e24cb5c6afd0e62e1d5a49bf78",
+      "imports": [
+        "OddCounts"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.oddEndpoint_monotone",
+        "P196.Agent7.OddFibers.one_class_endpoint_bound",
+        "P196.Agent7.OddFibers.two_class_endpoint_bound",
+        "P196.Agent7.OddFibers.three_class_endpoint_bound",
+        "P196.Agent7.OddFibers.odd_count_fixed_center_bound",
+        "P196.Agent7.OddFibers.odd_preimages_fixed_center_bound",
+        "P196.Agent7.OddFibers.leading_eleven_fixed_center_maximum"
+      ],
+      "object_sha256": "9d407743f0c01b9b7d868f063abe07039f0ebfa5c60bb7486f4d2be9dc8378b4"
+    },
+    "OddCountsPhase": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddCountsPhase.lean",
+      "sha256": "c5bbfdfd2d0ed704b132cb60d13cb14b2c79688b1c44a3c0135ac695a1666cff",
+      "git_blob": "cf5647fffd06c509ce17109be7dfadeab928d292",
+      "imports": [
+        "OddCountsFixedCenter"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.countPhase_advance",
+        "P196.Agent7.OddFibers.nineRun_countPhase",
+        "P196.Agent7.OddFibers.nineRun_even_endpoint",
+        "P196.Agent7.OddFibers.nineRun_odd_endpoint",
+        "P196.Agent7.OddFibers.nines_fixed_center_formula",
+        "P196.Agent7.OddFibers.odd_preimages_exact_center_bound",
+        "P196.Agent7.OddFibers.leading_eleven_exact_center",
+        "P196.Agent7.OddFibers.sharpCenter_six_or_seven",
+        "P196.Agent7.OddFibers.sharpCenter_large",
+        "P196.Agent7.OddFibers.oddCenterMax_sharp",
+        "P196.Agent7.OddFibers.explicit_leading_eleven_sharp",
+        "P196.Agent7.OddFibers.explicit_empty_sharp"
+      ],
+      "object_sha256": "1d969d7aacd66a464ffd30232053814cf2c3a044643bddf2bc916c00eef9b684"
+    },
+    "OddSharp": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddSharp.lean",
+      "sha256": "bc4d4fe2d7655a5bb81ecda5475f3b0abd9dbc91e41cc766dec92b35c5741d57",
+      "git_blob": "2f4c8e7fd3a6f640a840b9e3fdd380eac9443960",
+      "imports": [
+        "OddCanonical",
+        "OddCountsPhase"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.fullOddPreimages_length_le",
+        "P196.Agent7.OddFibers.fullOddPreimages_bound",
+        "P196.Agent7.OddFibers.canonical_leading_eleven",
+        "P196.Agent7.OddFibers.full_leading_eleven_length",
+        "P196.Agent7.OddFibers.fullOddPreimages_center_bound",
+        "P196.Agent7.OddFibers.full_fixed_center_maximum",
+        "P196.Agent7.OddFibers.sharpTargetHalf_length",
+        "P196.Agent7.OddFibers.sharpFamily_zero",
+        "P196.Agent7.OddFibers.sharpFamily_length",
+        "P196.Agent7.OddFibers.sharpFamily_exact",
+        "P196.Agent7.OddFibers.complete_canonical_odd_fiber_maximum"
+      ],
+      "object_sha256": "c5eaa18ee7a2adb65b8a37c3bdc134f104bd5983477c043973bfef55ef7b16f0"
+    },
+    "OddOutputRange": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddOutputRange.lean",
+      "sha256": "a74808c8f2bfaf8c8b40fc76878165913689dc267854e11c8d05ccd64a039e4a",
+      "git_blob": "0dbb4aaa6d9e50931233f93027d7bd79b0f73368",
+      "imports": [
+        "OddActual"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.scan_digits_lt_ten",
+        "P196.Agent7.OddFibers.odd_list_halves",
+        "P196.Agent7.OddFibers.zipAdd_digits_lt_nineteen",
+        "P196.Agent7.OddFibers.exists_symbol_list",
+        "P196.Agent7.OddFibers.odd_nooverflow_output_range",
+        "P196.Agent7.OddFibers.odd_output_range"
+      ],
+      "object_sha256": "23d35f49d9881db2833159b656f0542d846f1ac6c9cdea53ccc1257fa1fa17b6"
+    },
+    "OddComplete": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/OddComplete.lean",
+      "sha256": "d204cd708a5d63afe5010d49aeaaa0ddb9060565c2dc56a5fbd45a465899e743",
+      "git_blob": "f33c15a158dfedb681497ece96b48523d1445b56",
+      "imports": [
+        "OddSharp",
+        "OddOutputRange"
+      ],
+      "public_theorems": [
+        "P196.Agent7.OddFibers.decodeSymbol_val",
+        "P196.Agent7.OddFibers.targetHalf_encoded",
+        "P196.Agent7.OddFibers.targetCenter_encoded",
+        "P196.Agent7.OddFibers.universalOddPreimages_encoded",
+        "P196.Agent7.OddFibers.universalOddPreimages_nodup",
+        "P196.Agent7.OddFibers.universalOddPreimages_membership",
+        "P196.Agent7.OddFibers.universalOddPreimages_bound",
+        "P196.Agent7.OddFibers.universal_sharp_family",
+        "P196.Agent7.OddFibers.universal_odd_fiber_maximum",
+        "P196.Agent7.OddFibers.complete_odd_fiber_theorem",
+        "P196.Agent7.OddFibers.universal_width_one_zero",
+        "P196.Agent7.OddFibers.universal_width_one_six",
+        "P196.Agent7.OddFibers.universal_wrong_parity"
+      ],
+      "object_sha256": "1955dfeb9965c1265234a0287f5a0e8349a53b62df6ceb2991f030aca63b5a2a"
+    },
+    "ReviewCanonical": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-canonical/ReviewCanonical.lean",
+      "sha256": "1b3b4e930b15088e9e9949eae6bbbed3d21ecfe880e2856a1d60048f335a5805",
+      "git_blob": "698b7d4f1416c2206c80c24c78d53ca812580f78",
+      "imports": [
+        "OddCanonical"
+      ],
+      "public_theorems": [
+        "P196.Agent7.ReviewCanonical.width_one_complete",
+        "P196.Agent7.ReviewCanonical.odd_head_even_center_accepted",
+        "P196.Agent7.ReviewCanonical.even_head_odd_center_rejected",
+        "P196.Agent7.ReviewCanonical.width_three_complete",
+        "P196.Agent7.ReviewCanonical.empty_full_word_rejected"
+      ],
+      "object_sha256": "0ca6e3ca2d22c7cf9abba3fd04bb0c20e0ef451618cb292030817b52ec08d7c9"
+    },
+    "ReviewSharp": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/ReviewSharp.lean",
+      "sha256": "b04e2ac8627a0d94fdd8fa74c2a297bb62b43eed6a72c8736b3e0df47648f49c",
+      "git_blob": "a5e0fe089a5748395de8607f65b8d1d268ac84cb",
+      "imports": [
+        "OddSharp"
+      ],
+      "public_theorems": [
+        "P196.Agent7.ReviewSharp.small_global_maxima",
+        "P196.Agent7.ReviewSharp.zero_center_width_one_gap",
+        "P196.Agent7.ReviewSharp.positive_width_one_attainment",
+        "P196.Agent7.ReviewSharp.first_fixed_center_counts",
+        "P196.Agent7.ReviewSharp.third_fixed_center_counts",
+        "P196.Agent7.ReviewSharp.sixth_fixed_center_counts"
+      ],
+      "object_sha256": "8c33cabddf60fc3e80a60792202c25172d0baf2d45c41e89c2ef750b6041f63a"
+    },
+    "ReviewComplete": {
+      "original": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/ReviewComplete.lean",
+      "sha256": "d1682ec7b7281fa6d537f96a134a970bcb0668289d9e988333b89b666b759020",
+      "git_blob": "398e81c6bede8e6a51f59a18bce42412be5b0fcf",
+      "imports": [
+        "OddComplete"
+      ],
+      "public_theorems": [
+        "P196.Agent7.ReviewComplete.width_one_queries",
+        "P196.Agent7.ReviewComplete.invalid_target_queries",
+        "P196.Agent7.ReviewComplete.empty_width_one_target",
+        "P196.Agent7.ReviewComplete.three_column_explicit_fiber",
+        "P196.Agent7.ReviewComplete.three_column_literal_membership",
+        "P196.Agent7.ReviewComplete.zero_head_excluded",
+        "P196.Agent7.ReviewComplete.unbounded_asymmetric_output_range_control"
+      ],
+      "object_sha256": "5824fefdecba2a61152aabeda32e782c00bfb3ea8d221e3822f10dfbddb1e40f"
+    }
+  },
+  "build_order": [
+    "InverseFibers",
+    "PathCounts",
+    "WordBridge",
+    "OddCenter",
+    "PeriodObstructions",
+    "ActualWords",
+    "OddActual",
+    "OddWords",
+    "OddCanonical",
+    "OddCounts",
+    "OddCountsFixedCenter",
+    "OddCountsPhase",
+    "OddSharp",
+    "OddOutputRange",
+    "OddComplete",
+    "ReviewCanonical",
+    "ReviewSharp",
+    "ReviewComplete"
+  ],
+  "commands": [
+    {
+      "module": "InverseFibers",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "InverseFibers.olean",
+        "InverseFibers.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 11.307800870999927,
+      "log_sha256": "4c56ed962d3d1495c6eba3fdba338b59a53dba773323044f10eb1a1d9509c732"
+    },
+    {
+      "module": "PathCounts",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "PathCounts.olean",
+        "PathCounts.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4458765720000883,
+      "log_sha256": "5a16247b729f2e0ca41ffb0238fefd6d716de13c95884df488fae927a5694752"
+    },
+    {
+      "module": "WordBridge",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "WordBridge.olean",
+        "WordBridge.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 1.0202887989998999,
+      "log_sha256": "ac2d16ee8dc4bd7b955cb2f048f09247f7bae052d70534bde87441859cd25445"
+    },
+    {
+      "module": "OddCenter",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddCenter.olean",
+        "OddCenter.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 1.409644245999516,
+      "log_sha256": "d7aedab54556121098cdc7772b04754042370e1ac73b22fd44c8966e6b8056d3"
+    },
+    {
+      "module": "PeriodObstructions",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "PeriodObstructions.olean",
+        "PeriodObstructions.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 4.880430856999737,
+      "log_sha256": "d56d019704635693d25ddc1a86a6211515d44c28bb790edb543c46f49e0d74c4"
+    },
+    {
+      "module": "ActualWords",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ActualWords.olean",
+        "ActualWords.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8989472540006318,
+      "log_sha256": "4546768ef65613384d8be85d3dc868afabfa0799050c4cb91030a0dc59753816"
+    },
+    {
+      "module": "OddActual",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddActual.olean",
+        "OddActual.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3423404069999378,
+      "log_sha256": "7f3ce85bc71f344aa67348abd9ad911aaeab16f0cd98c0b6adbb5078d702886a"
+    },
+    {
+      "module": "OddWords",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddWords.olean",
+        "OddWords.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.46805414800019207,
+      "log_sha256": "2b958ec38d1756ad238b3f5f2698cbaa1ef2bd15829bca701481a9c8d5158942"
+    },
+    {
+      "module": "OddCanonical",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddCanonical.olean",
+        "OddCanonical.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.5917323050007326,
+      "log_sha256": "90ccaf0cd2c139d99ca716e0e578ccf61e14c31349cf606da47f80ec885cc203"
+    },
+    {
+      "module": "OddCounts",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddCounts.olean",
+        "OddCounts.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 4.553577929999847,
+      "log_sha256": "748743cdeb46ddda8c288b992aa0f69d65c167da189fd0ecced2f75a4689ab2a"
+    },
+    {
+      "module": "OddCountsFixedCenter",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddCountsFixedCenter.olean",
+        "OddCountsFixedCenter.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 2.179580366000664,
+      "log_sha256": "4c5adf21d853951b62f361ab9c2143cdd3654d4e46b1e3a91f5988f553605c82"
+    },
+    {
+      "module": "OddCountsPhase",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddCountsPhase.olean",
+        "OddCountsPhase.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 2.575597420000122,
+      "log_sha256": "101ab4323a415bacc8118fe95a90f8a15f703af2d65554cfb96baf439bd772e0"
+    },
+    {
+      "module": "OddSharp",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddSharp.olean",
+        "OddSharp.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.6771960200003377,
+      "log_sha256": "d2935a45389a4aad0fead389696bc76aca4dc1e259ca85f3d064bd4a14d4fcc4"
+    },
+    {
+      "module": "OddOutputRange",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddOutputRange.olean",
+        "OddOutputRange.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.6460397360006027,
+      "log_sha256": "4384cc85fd8835cc75a93beca9645ceb5e7b9aaf8c32fb4014574a08e5d0f235"
+    },
+    {
+      "module": "OddComplete",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OddComplete.olean",
+        "OddComplete.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.9526548869998805,
+      "log_sha256": "581add21d9f23a6be0081b77a18feefe6756eb62f8d82ffccf39e3f94214befe"
+    },
+    {
+      "module": "ReviewCanonical",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ReviewCanonical.olean",
+        "ReviewCanonical.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.5926773009996396,
+      "log_sha256": "72186aea1495213aa0f7897c0fd0c2388a048274a3b95a045b49af36ea6afb5f"
+    },
+    {
+      "module": "ReviewSharp",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ReviewSharp.olean",
+        "ReviewSharp.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 2.560060744999646,
+      "log_sha256": "16d63b55ddb865c2d0e6295adaa25cfed215fe9461be9c529049b1b6bf5ec82a"
+    },
+    {
+      "module": "ReviewComplete",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ReviewComplete.olean",
+        "ReviewComplete.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7082229079996978,
+      "log_sha256": "d81ae2859559e88ff407fc9f8c5ee4800edb95d6159fd25e9f79e0db172aaa3d"
+    },
+    {
+      "module": "PublicAudit",
+      "command": [
+        "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "PublicAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/aaafdd394dd6/agent7-runtime/source-repo/proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/review-sharp/final-001/source",
+      "exit_code": 0,
+      "elapsed_seconds": 12.50571880500047,
+      "log_sha256": "3e84c37cb92a1ce5e11d09b3e01c7c5b18a53cc217695fdc8f46cef3a5a8c5f0"
+    }
+  ],
+  "fresh_project_objects": true,
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "lean_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "public_theorem_count": 214,
+  "module_origin_theorem_count": 468,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "finished_at": "2026-10-16T21:31:06.725571+00:00"
+}
