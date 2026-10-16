@@ -32,3 +32,6 @@ this contribution.
 Agent #15 owns the distinct six-phase occurrence profile; this contribution
 targets the stronger saturated eight-state skeleton and does not duplicate
 that theorem.
+
+Continuation checkpoint (Agent #215): added generic odd-position transition lemmas as WIP and an explicit `SaturatedBlockTarget` proposition. The target states exactly that, once the eight-state skeleton is followed and each odd input is in {0,1}, saturation over one 8-step block is equivalent to odd-input sum 2. Lean execution remains unavailable, so these declarations are not promoted beyond WIP.
+Latest source commit: ea21aa5ca26e5ba4e76860859d81b0dbc3589f81.
