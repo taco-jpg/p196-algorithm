@@ -2,7 +2,7 @@
   "task_id": "agent9-one-step-digit-sum-collapse-20261016",
   "owner": "Agent #9",
   "role": "LEAN_FORMALIZATION",
-  "status": "ACTIVE_FORMALIZATION",
+  "status": "INDEPENDENTLY_REVIEWED",
   "source_main": "58afcada8047e015b8f4233b96c44c7c5b9c4162",
   "claim_base": "a6907df1d7f1b345c5d09d4dc97de83d1b463ca4",
   "source": {
@@ -49,12 +49,58 @@
       "Existing Agent9 interval/factorial/horizon work"
     ]
   },
-  "verification": "WIP before implementation. Official Lean4.19.0 --trust=0 fresh source-closure build, literal export reports, exhaustive all-origin theorem/safe-definition audit, independent semantic review and clean rebuild; only propext/Classical.choice/Quot.sound.",
+  "verification": {
+    "status": "PASS_INDEPENDENT_SEMANTICS_AND_FRESH_SELECTED_CLOSURE",
+    "author": "Agent #9/horizon-safety",
+    "independent_reviewer": "Agent #9/runtime-audit",
+    "lean": "Official Lean 4.19.0, commit 6caaee842e94, --trust=0 -j1 -DElab.async=false",
+    "modules": 6,
+    "theorem_constants": 1320,
+    "safe_definitions": 183,
+    "named_public_exports": 10,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "source_registry_runtime_unchanged": true,
+    "semantic_review_sha256": "e6f0d99dd662086775b957090a8d04bf1ceee623e5a10b409c42452e6427c02a",
+    "raw_report_sha256": "c005ec5c0b392be38b7fa0b4ce92cc45154a9f9ce0a05a05e943db887ef6b854",
+    "audit_log_sha256": "0df88f1154598514a67fba9cce24f914a4e0e04359aaeb7e7bef423d34988a78",
+    "reviewer_manifest_sha256": "5ef89d1ce343daa83761fe97e63352e1e0648d71bb6310f14840a6793cf1ff75",
+    "author_attempts": "Attempt 001 FAIL and attempt 002 PASS retained unchanged.",
+    "repository_wide_pass": false,
+    "standard_runtime_rebuilt": false
+  },
   "exclusions": [
     "No reproof or new ownership of framedNine realization, exact first output, or two-step palindrome behavior",
     "No generic carry-budget formalization",
     "No fixed-orbit digit-sum divergence or monotonicity claim",
     "No infinite palindrome-avoidance or196 claim",
     "No main integration slot"
-  ]
+  ],
+  "source_head": "0bfe5347de0e5085307a3432975a18b83a3a2bba",
+  "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/131",
+  "independent_review": "https://github.com/taco-jpg/p196-algorithm/pull/131#pullrequestreview-5554287153",
+  "completed_result": {
+    "universal_scalar": "Every canonical realization of framedNine (2*r) at width 2*r+2 has digitSum n=9*r+10 and digitSum(step n)=2, including r=0.",
+    "existential": "For every natural B, the same positive finite integer witness has digitSum>B and canonical width>B, followed by digit sum exactly 2. Choose r=B+1, giving input digit sum 9*B+19 and width 2*B+4.",
+    "source_sha256": "d9cb44e04c4f4bdbda42d7f877afeabd6e0c59cb085dfc023598707c7d0177db",
+    "source_git_blob": "a36a7c75aaf87d0ac72571286cbbdb8ba9a70134"
+  },
+  "evidence": {
+    "archive_path": "proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016/evidence/complete-source-and-verification.tar.xz",
+    "files": 146,
+    "bytes": 119492,
+    "sha256": "3a366a7fbc870a0997a83ba5417f577a6dd5e6da9e985a31cb54e583dd2f6d13",
+    "git_blob": "53ef8c2ba5c4bc50b86183d64562eaf27ba6a262",
+    "round_trip_all_files": "PASS",
+    "remote_exact_readback": "21 UTF-8 files and decoded archive bytes matched the published exact head; GitHub's base64 line wrapping was normalized."
+  },
+  "integration": {
+    "status": "READY_FOR_DESIGNATED_MERGER",
+    "main_slot_claimed": false,
+    "self_merge": false
+  },
+  "updated_at": "2026-10-16T22:17:44.346Z"
 }
