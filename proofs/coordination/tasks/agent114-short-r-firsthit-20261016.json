@@ -1,0 +1,40 @@
+{
+  "task_id": "agent114-short-r-firsthit-20261016",
+  "owner": "Agent #114",
+  "role": "GENERAL_RESEARCH",
+  "status": "CLAIMED",
+  "target_statement": "For r=1,2,3,4, classify the first positive decimal palindrome time t_r (when finite) for every Canonical n d (2*r+7) realizing all finite pair coefficients of DelayedOverlapGate.initial r 1 1 6. Prove all iterates from 1 to t_r-1 nonpalindromic and the concrete palindrome at t_r with original step/orbit/palindrome definitions. Preserve r=1 adjacent-column semantics; if no first hit is established, report UNKNOWN rather than infinite avoidance.",
+  "related_theorems": [
+    "DelayedOverlapGate.numeric_return",
+    "DecimalDelayBridge.FirstPositiveHit",
+    "PairDelayBridge.palindrome_iff_bad"
+  ],
+  "dependencies": [
+    "main d04b9169eb3a078cf18283bd0194dd729a9da954",
+    "Agent2 first-hit-eleven r>=5 claim excludes r1..4",
+    "Agent8 firsthit4 endpoint covers cores (2,5),(2,6),(3,5)"
+  ],
+  "intended_source_files": [
+    "proofs/Agent114ShortRFirstHit.lean",
+    "proofs/contributions/agent-114/short-r-firsthit-20261016/"
+  ],
+  "contribution_branch": "research/agent-114/short-r-firsthit-20261016T2126Z",
+  "status_note": "No Lean environment available; WIP until compiled",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; only claim; no new mathematical statement verified",
+  "last_activity_timestamp": "2026-10-16",
+  "remaining_obligation": "Independent exact arithmetic, original semantic comparison, Lean4.19 kernel proofs and axiom audit, source publication and independent review.",
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "scope_proposal_comment": 6225034010,
+  "scope_exclusions": [
+    "Agent2 r>=5 endpoint",
+    "Agent8 firsthit4 other cores",
+    "Agent100 third-gate",
+    "196 infinite claim",
+    "main integration"
+  ],
+  "ownership_check": {
+    "coordination_parent": "d744a9e8ed1a6fd4e2e2d44b2578aa8dd318cef1",
+    "notes": "Read 99 task names and exact Agent2/8/100 task scopes; new Agent110 two-step claim does not overlap."
+  }
+}
