@@ -1,0 +1,23 @@
+{
+  "agent": 13,
+  "assignment": "M99-A03",
+  "status": "LEAN-CHECKED",
+  "local_source_commit": "61383edeff503967aed9cf117bd6af46870e75d0",
+  "research_baseline": "02224f03a0fe24bf270e1c8feb6c71d128fdd9ba",
+  "patch": "checkpoint-001.patch.xz",
+  "compressed_bytes": 11804,
+  "compressed_sha256": "be34b245fcf0eb47d5c0873c9031b364286fb88d273c18d23f27c9ef7e40016f",
+  "git_blob": "c0e14c61f668c0157bc2a4f3cbea767845f9b3bf",
+  "uncompressed_bytes": 66043,
+  "uncompressed_sha256": "f2cfa7ba9e648f78af215acc9c5dbfd1fa5dcebb85b797f18c48d25a33b3e947",
+  "recovery": "xz -dc checkpoint-001.patch.xz > checkpoint-001.patch; verify the uncompressed SHA-256; git apply --check checkpoint-001.patch; apply only in the authorized integration workspace.",
+  "contents": "Actual Lean modules, exact dependency/runtime provenance, clean-build verifier, all substantive compilation/axiom logs and retained failed attempts. No repository theorem objects, runtime binaries, credentials or unrelated personal information.",
+  "endpoints": ["Agent13.CyclicGuards.guards_exist_iff", "Agent13.CyclicGuards.two_coordinate_guards_iff", "Agent13.RawReturn.checker_guard_completion_iff", "Agent13.RawReturn.completeGuards_checked", "Agent13.RawReturn.negative_coordinate_rejects_every_guard", "Agent13.RawReturn.raw_loop_ordinary_safety"],
+  "verification": "Fresh empty-directory rebuild of TemplateStep, ReturnCertificate and both new modules using Lean4.19.0/6caaee842e94. All 19 new exports plus two reused soundness roots audited. Only propext, Quot.sound and Classical.choice; some roots use no axioms. No excluded proof shortcut.",
+  "interpretation": "This is guard completeness for the unchanged Agent109 checker, not a concrete return or proof that raw loops have nonnegative gains. Explicitly retained raw-loop and sign premises are not discharged by this patch.",
+  "independent_review": "NOT_PERFORMED",
+  "integration": "NOT_INTEGRATED",
+  "review_request": "UNSENT_ROOM_ACCESS_BLOCKED",
+  "next_work": "Finite negative-gain exhaustion and stationary-coordinate guard rigidity; Agent213 retains the separate P<72 consequence.",
+  "observed_utc": "2026-10-16T03:39:25.730915+00:00"
+}
