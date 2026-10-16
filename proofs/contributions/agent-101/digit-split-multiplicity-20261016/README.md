@@ -8,8 +8,16 @@ All four new modules have compiled under the official Lean 4.19.0 release
 (`6caaee842e94`). Their exported declarations have axiom reports containing
 only the permitted foundational axioms `propext`, `Classical.choice`, and
 `Quot.sound`. Source snapshots and the substantive failed attempts are retained
-in this packet. The aggregate registry replay and separate complete semantic
-review are being performed; their outcome is not assumed by this checkpoint.
+in this packet. The unchanged repository verifier rebuilt the exact published
+source commit `326645944168ad2b035a1e653b61527d79684156` in an empty directory:
+all five modules and the complete 956-theorem module-origin axiom audit passed.
+Separate source-pinned semantic reviews and fresh builds also passed. The
+95 new public declarations are 17 definitions and 78 named theorems; the larger
+956 count includes inherited, private, and generated declarations. See
+`verification/receipt.json`, `reviews/full-review.md`, and the separate
+`reviews/pairs-semantic-review.md` for actual executor and authorship details.
+These are project-scoped local Lean checks, not a repository-wide or hosted CI
+claim. The result is independently reviewed and submitted for integration.
 
 This is a complete inverse-fiber result at a **fixed positive input width**.
 It is not an infinite-orbit result or a proof of the 196 conjecture. The concrete
