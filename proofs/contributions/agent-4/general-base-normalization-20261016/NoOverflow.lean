@@ -71,6 +71,7 @@ theorem normalized_pair_output_bound (b q c d : Nat)
       unfold normalSum
       rw [if_neg heq]
     rw [hs, neutral_output_pair b q c d (by omega) hc hd heq]
+    exact Nat.le_refl _
 
 /-- Fixed-width first output has only sub-base mirrored pair sums. -/
 theorem normalized_output_pairs_low (b n : Nat) (q : Nat → Nat)
