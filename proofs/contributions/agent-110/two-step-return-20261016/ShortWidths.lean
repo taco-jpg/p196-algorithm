@@ -19,7 +19,7 @@ theorem singleton_not_period_two (x : Nat) (hx : x ≤ 18) :
     advance (advance (⟨6, [x]⟩ : Exterior)) ≠ (⟨6, [x]⟩ : Exterior) := by
   have hxmem : x ∈ List.range 19 := List.mem_range.mpr (by omega)
   have h := List.all_eq_true.mp all_singletons_not_period_two x hxmem
-  exact of_decide_true h
+  exact of_decide_eq_true h
 
 #print axioms empty_not_period_two
 #print axioms all_singletons_not_period_two
