@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "This is a scoped Agent #2 contribution registry, not the repository-wide accepted catalogue. Independent semantic review remains pending."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent2-saturated-profile": {
+      "scope": "Exact conditional saturated eight-cycle targets from Agent #215, actual whole-word specialization, numeric canonical-prefix corollary, derived local tightness and overflow profile. No existence or all-time persistence claim.",
+      "roots": [
+        "Agent2SaturatedProfile"
+      ],
+      "modules": {
+        "TemplateStep": {
+          "path": "proofs/TemplateStep__44edb2f3d9ffd691.lean",
+          "sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+          "git_blob": "75326d41c3f3d568cc32e86bc9aa5cdeb5f3e49d",
+          "imports": [
+            "Std"
+          ]
+        },
+        "ReturnCertificate": {
+          "path": "proofs/ReturnCertificate__3f43ec0db45b8fd7.lean",
+          "sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+          "git_blob": "95196cfe2da9b224412a9c31910163cf5784f996",
+          "imports": [
+            "TemplateStep"
+          ]
+        },
+        "CertificateAccounting": {
+          "path": "proofs/CertificateAccounting__ad0d1bd9b0242036.lean",
+          "sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+          "git_blob": "79bf1fdfebabcf95dee96698be9aab3747c2599a",
+          "imports": [
+            "ReturnCertificate"
+          ]
+        },
+        "ExteriorCharge": {
+          "path": "proofs/ExteriorCharge__52cbb237030a07b3.lean",
+          "sha256": "32e9c2bdf3f632b42ebce9a4fcda09856e4d3389e352a54a2e00904895be93b2",
+          "git_blob": "3020c27a4f65aa5c59a76d2facecc6739fc25d00",
+          "imports": [
+            "Std"
+          ]
+        },
+        "CertificateCharge": {
+          "path": "proofs/CertificateCharge__46feaa8077e59426.lean",
+          "sha256": "403d5a3d51d5a795cf59bca401cf4c1c0f3cfd00137081df22069e20916edf98",
+          "git_blob": "8af8e26c4112b5074b6b9e8e39c77cc416054c86",
+          "imports": [
+            "ReturnCertificate",
+            "ExteriorCharge"
+          ]
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ]
+        },
+        "CertificateCarryBudget": {
+          "path": "proofs/CertificateCarryBudget__5307cef97cfab646.lean",
+          "sha256": "b8d2e27f02c52f2014a84a2b57fb71bfaa17c67ca09db10a67597f85dca3d9b1",
+          "git_blob": "08391617ca35f23ad89d9c6a4a98e7cb89a70741",
+          "imports": [
+            "ReturnCertificate",
+            "LychrelDigitSums"
+          ]
+        },
+        "CertificatePhases": {
+          "path": "proofs/CertificatePhases__e0f11dab45134f94.lean",
+          "sha256": "27c986089eb9034ccc663bbdedecfefaa0d952b3b719c61dc907129d0c65fdef",
+          "git_blob": "6921374766aadbc38bca86fc79d3a47b7d737400",
+          "imports": [
+            "CertificateCharge"
+          ]
+        },
+        "CertificateConsequences": {
+          "path": "proofs/CertificateConsequences__799ad43db1806ce1.lean",
+          "sha256": "20f7e7b251284edf290be47bacc0cf197b7fcdec17b633a09af748a8d502a316",
+          "git_blob": "2df708284873ad036aeebfa14f602a8fc2452314",
+          "imports": [
+            "CertificateAccounting",
+            "CertificateCharge",
+            "CertificateCarryBudget",
+            "CertificatePhases"
+          ]
+        },
+        "PrefixModel": {
+          "path": "proofs/PrefixModel__412f2902c90e9ba0.lean",
+          "sha256": "8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0",
+          "git_blob": "28eaab767b15fd81f73f2dcfc3dfff307eb02307",
+          "imports": [
+            "Lean.Elab.Tactic.Omega"
+          ]
+        },
+        "CertificatePrefix": {
+          "path": "proofs/CertificatePrefix__97e715b8d52c43b3.lean",
+          "sha256": "3e518a354e10dba1609f26c7914047802075e4bdbc71e7205df954ec2328201c",
+          "git_blob": "dd3fed388235a52f48d7608ee83b7c4965404b91",
+          "imports": [
+            "CertificateCarryBudget",
+            "PrefixModel"
+          ]
+        },
+        "SaturationCertificate": {
+          "path": "proofs/SaturationCertificate__911d3fe2109bd91b.lean",
+          "sha256": "7ce611b42425dcad50527788d95b9bfa648883ed11561df3ebbb6438a1728791",
+          "git_blob": "d820767beed3f4c520c5c811d933cfd5c84b79fa",
+          "imports": [
+            "PrefixModel"
+          ]
+        },
+        "SaturationTheorem": {
+          "path": "proofs/SaturationTheorem__3e87d543382b99c0.lean",
+          "sha256": "9a7f65a82d611bf24f2661de0715d0a70f69da0b5a51d3ad00725cde37f5b2eb",
+          "git_blob": "f4f8f7da5f2e87f3f0d99503e8f76e6aee4b5f6f",
+          "imports": [
+            "SaturationCertificate"
+          ]
+        },
+        "CertificateSaturation": {
+          "path": "proofs/CertificateSaturation__80df3f83acb87b5d.lean",
+          "sha256": "81530b812401b871c57c3c6fc8a95b33521e272a240ed303324fefc888287a75",
+          "git_blob": "e90960e42b165e7c328935406968ceaff0e409be",
+          "imports": [
+            "CertificateConsequences",
+            "CertificatePrefix",
+            "SaturationTheorem"
+          ]
+        },
+        "WholeWordBridge": {
+          "path": "proofs/WholeWordBridge__77dd94b84e64292d.lean",
+          "sha256": "483fc3084a9e9b796f9fd56e9640962839417386a30a2c803c9dd9b09ffa5b87",
+          "git_blob": "1bd35d3718c0e216f9696f5006df04129cfaed5b",
+          "imports": [
+            "LychrelDigitSums",
+            "SaturationTheorem"
+          ]
+        },
+        "Saturated8CycleProfile": {
+          "path": "proofs/contributions/agent-215/saturated-8cycle-profile/Saturated8CycleProfile.lean",
+          "sha256": "cce58055f9175005c215f2bccaf5d1c937de2c1deefdc2033b4d42587b26e9f7",
+          "git_blob": "86a45a6a09d9afd8d9dfafbcdd29b2f900be54a2",
+          "imports": [
+            "CertificateSaturation",
+            "SaturationTheorem",
+            "WholeWordBridge"
+          ]
+        },
+        "Agent2SaturatedProfile": {
+          "path": "proofs/Agent2SaturatedProfile.lean",
+          "sha256": "89bd18b28673dc2f0d2b17f57773864cd998f73030879f24e15e221b1d648079",
+          "git_blob": "9230b3f3a83ff8f0357a091cfc73c745015cb020",
+          "imports": [
+            "Saturated8CycleProfile"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A2-SAT-ABSTRACT",
+      "project": "agent2-saturated-profile",
+      "endpoints": [
+        "Agent2.SaturatedProfile.saturatedEightCycleTarget"
+      ]
+    },
+    {
+      "id": "A2-SAT-ACTUAL",
+      "project": "agent2-saturated-profile",
+      "endpoints": [
+        "Agent2.SaturatedProfile.actualSaturatedEightCycleTarget"
+      ]
+    },
+    {
+      "id": "A2-SAT-NUMERIC",
+      "project": "agent2-saturated-profile",
+      "endpoints": [
+        "Agent2.SaturatedProfile.numeric_saturated_prefix_profile"
+      ]
+    },
+    {
+      "id": "A2-SAT-SUPPORT",
+      "project": "agent2-saturated-profile",
+      "endpoints": [
+        "Agent2.SaturatedProfile.closed_saturated_edges_tight",
+        "Agent2.SaturatedProfile.saturated_overflow_profile"
+      ]
+    }
+  ],
+  "source_baseline": "09271f10881699435067ac0502c1f1957c1cbcc0",
+  "original_target_head": "adc0f66099f5743961d03e183cabd61b7c8fa66a",
+  "accepted_global_registry_modified": false
+}
