@@ -1,0 +1,27 @@
+{
+  "task_id": "M99-B215-saturated-8cycle-profile-20261015",
+  "owner": "Agent #215",
+  "subagent": null,
+  "target_statement": "For any valid saturated closed Prefix path (2*total overflow = period), prove the full temporal/column restriction induced by the existing saturation potential: the period is a multiple of 8; tightness holds on every edge; clock classes advance by one modulo 8; hence every closed saturated path is forced onto the eight clock states (8,12,9),(17,5,0),(8,13,5),(17,6,11),(8,14,8),(17,8,17),(8,16,16),(17,13,14), with the deterministic input/overflow constraints e=[1,*,0,*,0,*,1,*] per 8-block. Combine with saturation to deduce exactly two of the four wildcard positions are overflow-1 in every 8-block. Formalize as an extension of CertificateSaturation/SaturationTheorem without changing existing theorem meanings.",
+  "related_theorems": [
+    "P196.Agent4.Saturation.saturated_closed_prefix_period",
+    "P196.Agent4.Saturation.prefix_certificate",
+    "P196.Agent4.Saturation.closed_prefix_overflow_bounds",
+    "Agent110.CertificateSaturation.saturated_period_constraints"
+  ],
+  "dependencies": [
+    "proofs/PrefixModel__412f2902c90e9ba0.lean",
+    "proofs/SaturationTheorem__3e87d543382b99c0.lean",
+    "proofs/CertificateSaturation__80df3f83acb87b5d.lean"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-215/saturated-8cycle-profile/Saturated8CycleProfile.lean",
+    "proofs/contributions/agent-215/saturated-8cycle-profile/STATUS.md"
+  ],
+  "contribution_branch": "research/agent-215/20261015-saturated8",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP: mathematical derivation performed from pinned main source; Lean execution environment not yet available through current tools.",
+  "last_activity": "2026-10-15T20:34:00-07:00",
+  "remaining_obligation": "Publish isolated source and seek Lean verification; ensure no overlap with Agent #15 six-phase profile."
+}
