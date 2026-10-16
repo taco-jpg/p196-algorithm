@@ -1,0 +1,7 @@
+Agent #4 — retained failed attempt
+Commit: c4067d560172e800b8ce9fec3de4a01b2d8fb85b
+Run 38941462832, job 117109869852, exit 1.
+DigitsBridge SHA256: 2da57ab32772304a686ea1748a2f0ebcf4671c5990ca6acde6fc075676b5aa52
+Actual diagnostic: DigitsBridge.lean:88:22: error: unknown constant 'Nat.strong_induction_on'. This Mathlib-style name is absent from the pinned standalone imports. The two preceding modules rebuilt successfully. The failed representation theorem and its dependent endpoints carried Lean's error-recovery sorryAx and were rejected, not accepted.
+Correction: use ordinary Nat induction on a universally quantified upper bound N, proving the representation of every positive x<=N and instantiating N=a. This is not a bounded replacement theorem; the final statement remains every positive natural a with no finite cutoff.
+Artifact 12063457092, 4946 bytes; ZIP SHA256 4ea5ae7377d3471c65f1186e3a619b823ff087c3f4f0d9a061d479d6728bf7c2.

@@ -58,7 +58,6 @@ theorem value_div_base (b n : Nat) (d : Nat → Nat)
   rw [hm]
   constructor <;> omega
 
-/-- Independent arithmetic digit extraction: repeated division and remainder. -/
 def integerDigit (b a : Nat) : Nat → Nat
   | 0 => a % b
   | i + 1 => integerDigit b (a / b) i
@@ -70,8 +69,7 @@ theorem integerDigit_value (b n : Nat) (d : Nat → Nat)
   | zero => omega
   | succ n ih =>
       cases i with
-      | zero =>
-          exact value_mod_base b n d (hd 0 (by omega))
+      | zero => exact value_mod_base b n d (hd 0 (by omega))
       | succ i =>
           rw [integerDigit, value_div_base b n d hb (hd 0 (by omega))]
           apply ih
@@ -79,15 +77,18 @@ theorem integerDigit_value (b n : Nat) (d : Nat → Nat)
             exact hd (j + 1) (by omega)
           · omega
 
-/-- Every positive integer, not merely a supplied symbolic digit word. -/
+/-- Every positive natural; the auxiliary bound is universally quantified. -/
 theorem positive_has_digit_representation (b a : Nat) (hb : 2 ≤ b) (ha : 0 < a) :
     ∃ n : Nat, ∃ d : Nat → Nat, CanonicalDigits b n d ∧ value b d n = a := by
-  have H : ∀ a : Nat, 0 < a →
-      ∃ n : Nat, ∃ d : Nat → Nat, CanonicalDigits b n d ∧ value b d n = a := by
-    intro x
-    induction x using Nat.strong_induction_on with
-    | h x ih =>
-        intro hx
+  have H : ∀ N x : Nat, x ≤ N → 0 < x →
+      ∃ n : Nat, ∃ d : Nat → Nat, CanonicalDigits b n d ∧ value b d n = x := by
+    intro N
+    induction N with
+    | zero =>
+        intro x hle hx
+        omega
+    | succ N ih =>
+        intro x hle hx
         by_cases hsmall : x < b
         · refine ⟨1, (fun _ => x), ?_, ?_⟩
           · exact ⟨by decide, (fun _ _ => hsmall), hx⟩
@@ -103,7 +104,7 @@ theorem positive_has_digit_representation (b a : Nat) (hb : 2 ≤ b) (ha : 0 < a
             have hm := Nat.mul_le_mul_right x hb
             rw [Nat.mul_comm b x] at hm
             omega
-          obtain ⟨n, d, hd, hval⟩ := ih (x / b) hqlt hqpos
+          obtain ⟨n, d, hd, hval⟩ := ih (x / b) (by omega) hqpos
           refine ⟨n + 1, consDigit (x % b) d, ?_, ?_⟩
           · refine ⟨by omega, ?_, ?_⟩
             · intro i hi
@@ -115,9 +116,8 @@ theorem positive_has_digit_representation (b a : Nat) (hb : 2 ≤ b) (ha : 0 < a
               | succ k => simpa [consDigit] using hd.2.2
           · rw [value_consDigit, hval]
             exact Nat.mod_add_div x b
-  exact H a ha
+  exact H a a (by omega) ha
 
-/-- Canonical numeral expressed using the independently extracted digits. -/
 def CanonicalNumeral (b n a : Nat) : Prop :=
   CanonicalDigits b n (integerDigit b a) ∧ value b (integerDigit b a) n = a
 
@@ -188,7 +188,6 @@ theorem numeric_reverse_add_arithmetic (b n a : Nat)
   have h := reverse_add_arithmetic b n (integerDigit b a)
   simpa only [firstCarry, reverseAtWidth, ha.2] using h
 
-/-- Exact integer-level normalization subclaim, including prescribed pair sums. -/
 theorem normalized_integer_representative (b a : Nat)
     (hb : 4 ≤ b) (hbe : b % 2 = 0) (ha : 0 < a) :
     ∃ n z : Nat, CanonicalNumeral b n a ∧ CanonicalNumeral b n z ∧ 0 < z ∧
