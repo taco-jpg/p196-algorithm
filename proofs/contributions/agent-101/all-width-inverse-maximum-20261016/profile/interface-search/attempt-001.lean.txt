@@ -1,0 +1,9 @@
+import Lean
+import Agent101NumericFibers
+open Lean Elab Command
+run_cmd do
+  let env ← getEnv
+  for (n, ci) in env.constants.toList do
+    let s := n.toString
+    if s.startsWith "List." && ((s.contains "reverse" && (s.contains "Rec" || s.contains "zip" || s.contains "exists")) || s.contains "length_le" || s.contains "palindrome" || s.contains "Palindrome") then
+      logInfo m!"{n} : {ci.type}"
