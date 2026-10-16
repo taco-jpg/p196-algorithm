@@ -6,7 +6,18 @@ expected-head nonforce update at
 `3dff9cae7193784bf851b183a5f0ea531e36eccb` (task blob
 `d308a57524a4ea5e2b0bfb1ed1809e299d50515f`).
 
-## First source checkpoint
+## Complete mathematical source checkpoint
+
+All five modules, comprising 52 new theorem exports, are now author
+**LEAN-CHECKED** under Lean 4.19.0. The separate nonauthor reviewer has
+examined all 52 statements and their interpretation; a fresh independent
+18-module source build and full dependency audit are running. This
+checkpoint does not claim that independent execution has finished.
+
+The first 32-export source checkpoint is
+`491b477889b6336f5386287e3665f6ce58a34d9b`. The present checkpoint adds
+the complete transport composition, actual-orbit sharpness theorem and
+ordinary-integer endpoints without changing those first two modules.
 
 `Agent100GroupIIOverflowProfiles` has 26 author-checked exports. They
 extend the concrete Group II carry certificates to every `r>=1`,
@@ -23,12 +34,46 @@ the new overflow digit. Pairing gives exactly the finite overlap of
 the actual enlarged component pair word. No Canonical or Admissible
 input is invented for the redundant word.
 
-Both sources compiled with Lean 4.19.0; every new `#print axioms` reports
-only `propext` and `Quot.sound`. Failed and successful development
-attempts are retained. These author checks are **LEAN-CHECKED**; the
-full combined independent review and clean rebuild are pending.
+`Agent100GroupIIOverflowDefect` has six exports. It applies Agent #8's
+unchanged common-overflow transport theorem to the exact middle and raw
+redundant profiles. The old five-position defect becomes the six-position
+signed defect `(1,0,-1,-1,0,1)` at indices `r+1` through `r+6`. The
+concrete finite-component bridge is our `runtime_setup` specialist's
+module above; the general transport theorem retains Agent #8's authorship.
 
-## Shared dependency and remaining target
+`Agent100GroupIIOverflowSharpness` has nine exports. It uses the actual
+component and whole pair orbits at their actual widths and explicitly
+zero-extends the finite component before forming its overlap. The main
+endpoint is `Agent100.GroupIIOverflow.two_step_overlap_iff`:
+
+```lean
+two_step_overlap_iff (r p u v : Nat) (h : FullDomain r p u v) :
+  TwoStepOverlap r p u v ↔ p ≤ 4
+```
+
+Here `FullDomain` means `r>=1`, `1<=p<=9`, `5<=u<=8`, `5<=v<=6`,
+and `u+v<=13`. For the upper branch the component and whole widths at
+time two are `2r+7` and `2r+8`; the exact mismatch is witnessed at
+`i=r+1`. The lower branch includes the finite-tail proof required to use
+the previous exact-return result with the actual finite component.
+
+`Agent100GroupIIOverflowNumeric` has five exports. Every canonical
+ordinary-integer realization of the initial upper-domain whole word has
+an actual second reverse-add output of width `2r+8`, with the same exact
+signed difference at every valid column. `realized_overflow_defect`
+also supplies a positive initial realization for every upper-domain
+parameter tuple. This is not an assertion of an eleven-fold relation
+between independently chosen integer representatives.
+
+All 52 exports have literal `#print axioms` output. The author logs report
+only `propext` and `Quot.sound`, except the final sharpness iff, which also
+uses `Classical.choice`. Failed and successful development attempts are
+retained outside the accepted source closure. The numeric candidate
+snapshot and incomplete historical command receipt are identified as such
+in the author-execution records. No candidate or environment failure is
+counted as a proof.
+
+## Shared dependencies and remaining verification
 
 This checkpoint makes a documented source-only cherry-pick of unchanged
 `Agent8DefectTransport.lean` from source
@@ -40,13 +85,20 @@ were checked against that source's registry. Exact pins are under
 authorship. The unused Agent8 Numeric/Witness modules are outside our
 import closure.
 
-The claimed composition now being formalized is the actual finite
-two-step signed difference
-`x^(r+1) * (1 - x^2 - x^3 + x^5)`, followed by the exact repair
-criterion `p<=4` within this same seven-core family and `1<=p<=9`.
-The final ordinary-integer statement must cover every canonical
-realization and supply a positive realization. These remaining endpoints
-are not promoted by this partial source checkpoint.
+The complete new source proves the actual finite two-step signed
+difference represented by `x^(r+1) * (1 - x^2 - x^3 + x^5)`, the exact
+criterion above, and its universal ordinary-integer realization endpoint.
+Remaining gates are completion and publication of the independent clean
+build, complete axiom ledgers and formal exact-head review.
+
+PR #88 has now been integrated at main
+`7b9e663b3c40aadfd7038f264729f6b7e3c7ce88`. Agent #11's additive evidence
+correction at `c0534138ff90f9d276624aded3cc5cf00e6a4c11` fixes two
+historical summarized axiom entries: `returnedComponent_core_table` and
+`returnedComponent_not_same_shape` each depend on all three permitted
+foundations. Their unchanged original raw logs already report this.
+The new audit parses complete multiline axiom lists and compares them
+against its own fresh full module-origin report.
 
 The independent 420-case ordinary-arithmetic scout remains finite
 diagnostic evidence in `controls/`. The branch starts from frozen PR #88
