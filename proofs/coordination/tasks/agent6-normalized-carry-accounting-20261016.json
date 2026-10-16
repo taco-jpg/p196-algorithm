@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "task_id": "agent6-normalized-carry-accounting-20261016",
+  "owner": "Agent #6",
+  "assigned_subagents": {
+    "/root/landscape": "Own NormalizedCarry.lean: consume existing Agent109 band normalization to prove numeric carry preservation under suffix stripping.",
+    "/root/claims": "Own CarryControls.lean: kernel-check exact boundary and negative controls.",
+    "/root/runtime": "Independent nonauthor clean rebuild, full axiom audit, and interpretation review.",
+    "/root": "Sole Git writer; own CertificateCarryAccounting.lean and package/consumer integration."
+  },
+  "target_statement": [
+    "For every c:Nat and B:List Nat, c<=18 implies Agent6.ExteriorCoordinates.overflow c (Agent109.Outer.stripSuffix c B)=Agent6.ExteriorCoordinates.overflow c B, without a coefficient bound.",
+    "For every c:Nat and B:List Nat, Agent109.Bounded B implies the same numeric carry equality, without a phase bound.",
+    "For every s:Agent109.Cert.State, Agent109.Bounded s.B implies Agent6.ExteriorCoordinates.overflowBit (Agent116.CertificateExterior.stateOuter s)=Agent109.Cert.gam s, with arbitrary c,A,C and including phases0,9,18 and larger natural phases.",
+    "For every original Certificate whose listed raw B words are bounded, sumPrefix (fun i => (overflowBit (Agent6.CertificateCoordinates.rowOuter cert i):Int)) cert.P=Agent110.Accounting.totalGam cert.",
+    "For original check cert=true, rewrite Agent6.CertificateCoordinates.checked_row_weighted_balance into sum weightedPhase =9*sum weightedReverse+9*Agent110.Accounting.totalGam cert. Reuse totalGam_eq_twice_gains to expose the identical final term18*(totalG cert+totalH cert).",
+    "Kernel-check sharp controls: phase19/word[19] changes numeric carry2 to1 after full strip; permitted phase2/word[20] has indicator1 but raw gam2 without Bounded; stripped high phase18 retains incoming carry1 on the empty word."
+  ],
+  "larger_obligation": "Close the explicit normalized-indicator versus original-checker carry gap in PR115, so its exterior-coordinate balance can consume the original certificate band-gain accounting and later reviewed carry-flow results without an assumed normalization compatibility.",
+  "related_theorems": [
+    "Agent109.norm_band_tail",
+    "Agent109.norm_append",
+    "Agent109.gamma_le",
+    "Agent109.Outer.normalize7_eq",
+    "Agent109.Outer.stripSuffix_spec",
+    "Agent116.Exterior.Br_append_phase",
+    "Agent116.CertificateExterior.stateOuter",
+    "Agent110.CertificateBudget.gam_eq_overflow",
+    "Agent6.ExteriorCoordinates.overflow_eq_highValue",
+    "Agent6.CertificateCoordinates.checked_row_weighted_balance",
+    "Agent110.Accounting.sumPrefix_congr",
+    "Agent110.Accounting.totalGam_eq_twice_gains"
+  ],
+  "dependencies": {
+    "base_source_commit": "dca30e76474569a276c2e58bbd6ee0b96c554ecc",
+    "base_tree": "71c6fc1b01e23a86ac5864cefd09890f4e3107de",
+    "source_math_commit": "937c33ba3a98b9778bfee45a0bf2f0c0b3765055",
+    "existing_minimal_consumer_closure": "18 modules through CertificateCoordinates; excludes CertificateFilter, CertificateControls, Agent2 charge package, and PR107 experimental sources",
+    "source_census": "17 exact source captures and48 literal existing interfaces at claims-agent6/next-gam-scout; main7b9e source census1831 top-level Lean paths plus31 additional public contribution blobs. Parent checked main PR90+94 additions and all coordination task deltas."
+  },
+  "intended_source_files": [
+    "proofs/contributions/agent-6/normalized-carry-accounting-20261016/NormalizedCarry.lean",
+    "proofs/contributions/agent-6/normalized-carry-accounting-20261016/CertificateCarryAccounting.lean",
+    "proofs/contributions/agent-6/normalized-carry-accounting-20261016/CarryControls.lean"
+  ],
+  "contribution_branch": "research/agent-6/normalized-carry-accounting-20261016",
+  "status": "CLAIMED",
+  "latest_published_source_commit": "dca30e76474569a276c2e58bbd6ee0b96c554ecc",
+  "verification_status": "WIP: existing source-only census and scope review complete; no new Lean source or proof execution before successful guarded claim.",
+  "last_activity_timestamp": "2026-10-16 22:16:51 UTC",
+  "remaining_obligation": "After successful exact-head claim, begin structural carry preservation and checker accounting proofs in the isolated worktree, publish compiling interfaces promptly, then perform an independent fresh closure rebuild and exact-head review.",
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "scope_proposal_comment": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225635246",
+  "ownership_check": {
+    "coordination_parent": "47e808147f5f0a0dc5ec7340b062112018288c32",
+    "census_base": "5d54351a6cf3375351f2cf985e9ef40854a0dd8c",
+    "later_deltas": "All changed task records through115353c72243f6ad5b848d7ac5b4b77930ccb3df, then all16 changed task records through current parent0e853d217bd5c67258f79640d2cda80387cfdb60 read at exact blobs. Initial guarded write returned a GraphQL execution error; remote readback showed no claim. Inspected intervening Agent100 rebased-overlap new claim, Agent102 handoff, and Agent7 all-base/odd-fiber updates at exact5f67d2834e7c51e5376321e18df55a7441246295. These remain mathematically separate. Second stale-head candidate cea4e1c returned GraphQL error; readback lacked claim. Sole intervening record Agent105 affine-dynamics REVIEWED status at2b3e165cb5cb46b5a610841307c72996ac345206 read in full; unchanged separate scope. Third stale-head candidate7d34b093 did not publish. Read all four intervening Agent1 status records at771cf02c; GroupIII, periodic guard/safety, and PR104 repair scopes unchanged and separate. Fourth stale-head candidate3ed3c38 did not publish. Read Agent102 exact affine-parameter-interval new claim at47e80814; its static clipped run-parameter scope is separate.",
+    "conclusion": "No equivalent exported carry/strip or normalized original-checker carry bridge found in the stated scan; no equivalent active ownership found. Scoped census is not a universal theorem-equivalence certificate.",
+    "protocol": "Create commit on exactly inspected parent and update_ref(expected_sha=parent,force=false); inspect all intervening changes and reconsider scope after rejection."
+  },
+  "scope_exclusions": [
+    "Reuse original Agent109/Agent116 definitions and normalization theorems; no second band normalizer, suffix implementation, whole-template projection, or raw carry correspondence discovery.",
+    "Agent115 PR107 high-rho recurrence, positive gain, cycle telescope and overflow necessity remain excluded.",
+    "Agent110/Agent105 phase6 two-step exclusion and source boundary bridge remain excluded.",
+    "Agent216 Int/Nat general correspondence, Agent412 charge/period theorems, Agent1 periodic stripping, Agent4 zero-gap dynamics, and Agent5/7 actual stream/all-base carry work remain excluded.",
+    "No new accepting certificate, converse checker criterion, cap exclusion, infinite orbit, ordinary all-time realizability, or result settling196.",
+    "No main or shared-index write slot."
+  ],
+  "publication_authority": "User persistent Agent6 campaign explicitly authorizes isolated remote contribution branches, issue61 communication, reviewed PR submission, and optimistic-concurrency task claims; root is sole Git writer.",
+  "main_write_slot": false,
+  "publication_attempts": [
+    {
+      "candidate_commit": "af7419f43803ba0ba74095ffdb9195f7ee9206f9",
+      "parent": "0e853d217bd5c67258f79640d2cda80387cfdb60",
+      "result": "GraphQL execution error; remote head advanced to5f67; claim absent; no proof begun."
+    },
+    {
+      "candidate_commit": "cea4e1c280e44096b663cd6c83c074c1089c718d",
+      "parent": "5f67d2834e7c51e5376321e18df55a7441246295",
+      "result": "GraphQL execution error; head advanced to2b3; claim absent; no proof begun."
+    },
+    {
+      "candidate_commit": "7d34b093a2bd420a6ac71c990acfb765a8aa3d27",
+      "parent": "2b3e165cb5cb46b5a610841307c72996ac345206",
+      "result": "GraphQL execution error; head advanced to771cf; claim absent; no proof begun."
+    },
+    {
+      "candidate_commit": "3ed3c38cb5c8fe2f73e9338b57fb87127efa8ca6",
+      "parent": "771cf02c43fb02449e195c05d1ecbfeb246385df",
+      "result": "GraphQL execution error; head advanced to47e808; claim absent; no proof begun."
+    }
+  ]
+}
