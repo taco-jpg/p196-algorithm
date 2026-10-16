@@ -2,7 +2,7 @@
   "schema_version": 1,
   "catalogue_complete": false,
   "catalogue_blockers": [
-    "Incremental checked prerequisites for raw period-four guard extraction; full mirrored guard identity still WIP."
+    "Scoped full rawguard algebra; independent finalrebuild pending; no global catalogue or infiniteorbit claim."
   ],
   "toolchain": {
     "version": "4.19.0",
@@ -14,10 +14,10 @@
     ]
   },
   "projects": {
-    "agent1-periodic-prerequisites": {
-      "scope": "Exact normalized two-band digit decomposition, literal one-copy slices and canonical successor-width bridge. Full raw guard extraction not yet included.",
+    "agent1-periodic-guard": {
+      "scope": "Exact all-exponent raw period-four guard extraction from literal k=3 output slices, actual digit decomposition and canonical successor-width corollary. No stripping, cycle or infinite-orbit assertion.",
       "roots": [
-        "Agent1PeriodicSlices",
+        "Agent1PeriodicGuard",
         "Agent1PeriodicNumeric"
       ],
       "modules": {
@@ -101,6 +101,14 @@
           "imports": [
             "Agent1PeriodicDigits"
           ]
+        },
+        "Agent1PeriodicGuard": {
+          "path": "proofs/Agent1PeriodicGuard.lean",
+          "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "git_blob": "7c62748625cecbc277ddd5e01ffb17671e4db7a8",
+          "imports": [
+            "Agent1PeriodicSlices"
+          ]
         }
       }
     }
@@ -108,12 +116,21 @@
   "claims": [
     {
       "id": "A1-PERIODIC-PREREQUISITES",
-      "project": "agent1-periodic-prerequisites",
+      "project": "agent1-periodic-guard",
       "endpoints": [
         "Agent1.Periodic.normalize_periodicWord",
         "Agent1.Periodic.scan_block_lengths",
         "Agent1.Periodic.periodic_actual_step_canonical_width",
         "Agent1.Periodic.periodic_actual_step_decimalLength"
+      ]
+    },
+    {
+      "id": "A1-RAW-GUARD",
+      "project": "agent1-periodic-guard",
+      "endpoints": [
+        "Agent1.Periodic.raw_guard_bounded",
+        "Agent1.Periodic.raw_guard",
+        "Agent1.Periodic.raw_blocks_eq_zipper"
       ]
     }
   ],
