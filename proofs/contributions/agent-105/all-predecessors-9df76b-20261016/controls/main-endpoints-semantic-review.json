@@ -1,0 +1,62 @@
+{
+  "schema": "agent105-all-predecessors-main-endpoints-review-v1",
+  "reviewer": "Agent105/scope105/9df76b",
+  "status": "PASS_NONAUTHOR_SEMANTIC_REVIEW",
+  "reviewed_at_utc": "2026-10-16T22:26:07.242454+00:00",
+  "reviewed_source": {
+    "path": "proofs/Agent105Predecessors9df76b.lean",
+    "sha256": "3bd4a139d26f81fc14547def29702970629693427fb947ff920854d6292a8d29"
+  },
+  "read_dependency_sources": {
+    "Agent101ProfileExtraction": {
+      "path": "proofs/Agent101ProfileExtraction.lean",
+      "sha256": "fff6917b100aeec40e353abe4a3f8d27f6561d6859a1feeac9135c22cd8c836b"
+    },
+    "Agent105WordFiber9df76b": {
+      "path": "proofs/Agent105WordFiber9df76b.lean",
+      "sha256": "c24bbb0a91f0c524f857d20b623a38704a278e909b2385621875f70561cf7ba3"
+    },
+    "Agent105DecodedFiber9df76b": {
+      "path": "proofs/Agent105DecodedFiber9df76b.lean",
+      "sha256": "df0a9fcf872ce01169edee66a769ed90c425d4e86fce91324e0add5c5a16b00d"
+    }
+  },
+  "reviewed_endpoints": [
+    "Agent105Predecessors9df76b.mem_predecessors",
+    "Agent105Predecessors9df76b.predecessors_nodup"
+  ],
+  "definition": "predecessors e W = decodedFiber e W W ++ decodedFiber e W (W - 1)",
+  "findings": [
+    {
+      "topic": "Ordinary integer semantics",
+      "finding": "For a canonical target Y e W, membership is exactly 0 < n and Lychrel196.step n = Y. There is no remaining source-width premise or digit-function witness in the final statement."
+    },
+    {
+      "topic": "Soundness",
+      "finding": "Each append branch uses the previously proved exact decodedFiber membership to return a positive ordinary integer with the actual target step."
+    },
+    {
+      "topic": "Completeness",
+      "finding": "canonical_exists supplies an actual width L for every positive n. The unchanged step_width_cases gives W = L or W = L + 1, placing n in the W or W - 1 branch. No other source width is assumed away."
+    },
+    {
+      "topic": "Duplicate freedom",
+      "finding": "Each decodedFiber is duplicate free. A number in both branches would have decimalWidth W and decimalWidth (W - 1), so decimalWidth_unique forces W = W - 1; Canonical supplies W > 0, making this impossible."
+    },
+    {
+      "topic": "Boundary W = 1",
+      "finding": "The second branch has source width zero and the underlying decoder rejects it. The target 1 and target 2 controls exercise this behavior."
+    },
+    {
+      "topic": "Overflow payload",
+      "finding": "Target 10 uses canonical digits [0,1], but the overflow-stripped low payload [0] may be noncanonical; the existing decoder retains the source 5."
+    },
+    {
+      "topic": "Scope",
+      "finding": "A finite duplicate-free list of all positive one-step predecessors of a canonical target. No infinite orbit, positive-target-zero extension, or sharp multiplicity claim is inferred."
+    }
+  ],
+  "blocking_issues": [],
+  "authorship_note": "scope105 is not the author of WordFiber, DecodedFiber, or Predecessors; scope105 authored only the separate two closed controls. Other nonauthor dependency reviews are retained in review/.",
+  "verification_boundary": "This is semantic review plus separately recorded targeted controls. The new full published-source closure and exhaustive module-origin audit are still pending the parent source checkpoint; no foundation compilation was repeated here."
+}
