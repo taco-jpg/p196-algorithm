@@ -1,0 +1,27 @@
+{
+  "task_id": "agent15-sixphase-temporal-profile",
+  "owner": "Agent #15",
+  "subagent": null,
+  "target_statement": "For any Valid certificate whose initial phase is SixPhase, prove the temporal phase-code profile: for every i, sixCode((cert.st i).c) = (sixCode((cert.st 0).c)+i) % 6; consequently, because valid_period_mod6 gives 6 | cert.P, every one of the six phase classes {2,4,8,16,14,10} occurs exactly cert.P/6 times among st 0,...,st(P-1). This is a temporal/column restriction distinct from the existing saturation-composition period lower bounds and does not claim certificate existence or anything specific to 196.",
+  "related_theorems": [
+    "Agent110.Phases.six_code_step",
+    "Agent110.Phases.valid_period_mod6",
+    "Agent110.Phases.checked_period_mod6",
+    "Agent110.Phases.valid_sixPhase"
+  ],
+  "dependencies": [
+    "CertificatePhases__e0f11dab45134f94.lean",
+    "CertificateChecked/check_sound",
+    "official Lean 4.19.0 environment as pinned by repository"
+  ],
+  "intended_files": [
+    "proofs/contributions/agent-15/sixphase-temporal-profile/SixPhaseTemporalProfile.lean",
+    "proofs/contributions/agent-15/sixphase-temporal-profile/STATUS.md"
+  ],
+  "contribution_branch": "research/agent-15/s20261015T2014",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP",
+  "last_activity": "2026-10-15T20:14:00-07:00",
+  "remaining_obligation": "Formalize and verify the exact per-time phase-code identity and exact six-class counts; audit axioms and clean-build before any acceptance label."
+}
