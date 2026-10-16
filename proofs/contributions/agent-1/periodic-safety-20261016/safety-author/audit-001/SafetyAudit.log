@@ -1,0 +1,20 @@
+Agent1.Periodic.safePeriodic (B H w : Agent8.Word) : Bool
+'Agent1.Periodic.safePeriodic' does not depend on any axioms
+Agent1.Periodic.safePeriodic_iff_not_bad (B H w : Agent8.Word) (k : Nat) (hk : 0 < k) (hw : w ≠ []) :
+  Agent1.Periodic.safePeriodic B H w = true ↔
+    ¬FoldedDecimal.BadWord (List.length (Agent1.Periodic.periodicWord B H w k)) fun i =>
+        (Agent1.Periodic.periodicWord B H w k)[i]?.getD 0
+'Agent1.Periodic.safePeriodic_iff_not_bad' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.safePeriodic_strip (B H w : Agent8.Word) (hw : w ≠ []) :
+  Agent1.Periodic.safePeriodic (Agent1.Periodic.stripPeriodSuffix w B).fst (Agent1.Periodic.stripPeriodCenter w H).fst
+      w =
+    Agent1.Periodic.safePeriodic B H w
+'Agent1.Periodic.safePeriodic_strip' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.safePeriodic_quotient_eq_raw (B H w : Agent8.Word) (hv : Agent1.Periodic.ValidPeriodic B H w) :
+  Agent1.Periodic.safePeriodic (Agent1.Periodic.quotientOuter B H w) (Agent1.Periodic.quotientCenter B H w)
+      (Agent1.Periodic.rawPeriod B H w) =
+    Agent1.Periodic.safePeriodic (Agent1.Periodic.rawOuter B H w) (Agent1.Periodic.rawCenter B H w)
+      (Agent1.Periodic.rawPeriod B H w)
+'Agent1.Periodic.safePeriodic_quotient_eq_raw' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicSafety _private.Agent1PeriodicSafety.0._proof_1 : [propext, Quot.sound]
+SafetyAudit.lean:12:0: error: NONSAFE_DEFINITION Agent1PeriodicSafety Agent1.Periodic.safePeriodic._cstage2
