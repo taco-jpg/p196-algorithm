@@ -36,37 +36,12 @@ jobs:
           curl --fail --silent --show-error --location --retry 3 https://raw.githubusercontent.com/taco-jpg/p196-algorithm/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/agent4/complementary_bulk/CycleConstraints.lean -o CycleConstraints.lean
           test "$(git hash-object CycleConstraints.lean)" = 4c5cb80621b5a476e8062485dc8c73d125ee3b7e
           lean-4.19.0-linux/bin/lean CycleConstraints.lean 2>&1 | tee audit/baseline.log
-      - name: Record available arithmetic interfaces
-        if: always()
-        shell: bash
-        run: |
-          lean proofs/contributions/agent-4/general-base-normalization-20261016/Probe.lean > "$RUNNER_TEMP/audit/probe.log" 2>&1 || true
-          cat "$RUNNER_TEMP/audit/probe.log"
-      - name: Compile exact source in two clean directories
+      - name: Compile every owned target and audit every exported theorem twice
         shell: bash
         run: |
           set -euo pipefail
-          src=proofs/contributions/agent-4/general-base-normalization-20261016/GeneralBaseNormalization.lean
-          sha256sum "$src" | tee "$RUNNER_TEMP/audit/source.sha256"
           echo "$GITHUB_SHA" | tee "$RUNNER_TEMP/audit/source-commit.txt"
-          for pass in 1 2; do
-            mkdir "$RUNNER_TEMP/pass-$pass"
-            lean -o "$RUNNER_TEMP/pass-$pass/GeneralBaseNormalization.olean" "$src" 2>&1 | tee "$RUNNER_TEMP/audit/build-$pass.log"
-          done
-          python3 - <<'PY'
-          import os, pathlib, re
-          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'audit'
-          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          for name in ['build-1.log', 'build-2.log']:
-              text = (root / name).read_text()
-              assert not re.search(r'sorryAx|Lean.ofReduceBool|Lean.trustCompiler|error:|declaration uses', text), text
-              records = re.findall(r"'([^']+)' depends on axioms: \[([^\]]*)\]", text)
-              no_axioms = re.findall(r"'([^']+)' does not depend on any axioms", text)
-              assert len(records) + len(no_axioms) >= 18, text
-              for theorem, names in records:
-                  assert {x.strip() for x in names.split(',') if x.strip()} <= allowed, (theorem, names)
-          print('axiom whitelist PASS; two clean source checks PASS')
-          PY
+          python3 proofs/contributions/agent-4/general-base-normalization-20261016/check.py "$(command -v lean)" "$RUNNER_TEMP/audit" 2>&1 | tee "$RUNNER_TEMP/audit/complete-check.log"
       - name: Retain actual logs
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
