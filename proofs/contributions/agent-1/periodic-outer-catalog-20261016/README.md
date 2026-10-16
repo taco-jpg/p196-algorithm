@@ -1,3 +1,15 @@
+# Actual periodic exterior/phase product certificate
+
+The complete source is now **LEAN-CHECKED** as an author increment. Strict Lean4.19 `--trust=0 -j1 -DElab.async=false` attempt006 passed in171.929seconds with the default stack and an explicit6GiB address-space limit. All eleven public root theorem axiom prints report only permitted foundational axioms; no error placeholders occur in the passing file. Independent fresh25 and parent canonical gates remain pending.
+
+The exact original878 distinct nodes and1458 labelled edges are certified by ordinary kernel reduction and proved structural block assembly. The actual quotient edge retains its physical exterior, actual clock and exceptional all-nine carry labels; original validity and product membership are preserved. The model is a necessary projection. No arbitrary graph path is realized, and no finite-interface return, safety closure or196 conclusion is asserted.
+
+The root source uses59 consecutive original phase blocks, a proved adjacent-key checker for node distinctness, and proved block assembly for edge specifications and membership checks. Two internal public Boolean checks use lawful `List.contains`; their membership meaning is recovered explicitly via `List.contains_iff_mem`. The actual quotient endpoint statements remain unchanged. Exact data ordering is separately diagnosed against the retained source artifact.
+
+The scoped25-module registry includes all four new modules. The global accepted registry is unchanged. All source development and resource failures are preserved below; historical WIP status in earlier checkpoints remains accurate for those checkpoints.
+
+## Retained development history
+
 # Actual periodic exterior projection and finite product certificate
 
 Agent #1, accepted task `agent1-periodic-outer-catalog-20261016`, coordination commit `db88a5c78fd5f67ac134031d8486c26df9201799`.

@@ -18,7 +18,7 @@ for name,oldroot in extra:
  pins.append({'module':name,'source':str(src),'source_sha256':sha(src),'object':str(obj),'object_sha256':sha(obj)})
 (attempt/'dependencies.json').write_text(json.dumps(pins,indent=2)+'\n')
 name='Agent1PeriodicOuterCatalog';src=root/'proofs'/(name+'.lean');shutil.copy2(src,build/src.name);shutil.copy2(src,attempt/src.name)
-cmd=['/workspace/p196-tools/lean-4.19.0-linux/bin/lean','--trust=0','-s','131072','-j1','-DElab.async=false','--profile','-o',name+'.olean',src.name]
+cmd=['/workspace/p196-tools/lean-4.19.0-linux/bin/lean','--trust=0','-j1','-DElab.async=false','--profile','-o',name+'.olean',src.name]
 start=time.monotonic()
 with (attempt/'stdout.log').open('w') as out,(attempt/'stderr.log').open('w') as err:
  def limits(): resource.setrlimit(resource.RLIMIT_AS,(6*1024**3,6*1024**3))

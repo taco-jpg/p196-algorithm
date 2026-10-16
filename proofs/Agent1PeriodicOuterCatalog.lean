@@ -8,6 +8,32 @@ set_option maxHeartbeats 16000000
 namespace Agent1.Periodic
 open Agent8
 
+private inductive CatalogBlocksEq {α β : Type} (f : α → List β) :
+    List (List α) → List (List β) → Prop
+  | nil : CatalogBlocksEq f [] []
+  | cons {n ns e es} (he : e = n.flatMap f) (hs : CatalogBlocksEq f ns es) :
+      CatalogBlocksEq f (n :: ns) (e :: es)
+
+private theorem CatalogBlocksEq.flatten {α β : Type} {f : α → List β}
+    {ns : List (List α)} {es : List (List β)} (h : CatalogBlocksEq f ns es) :
+    es.flatten = ns.flatten.flatMap f := by
+  induction h with
+  | nil => rfl
+  | cons he hs ih => simp only [List.flatten_cons, List.flatMap_append, he, ih]
+
+private inductive CatalogBlocksAll {α : Type} (f : α → Bool) :
+    List (List α) → Prop
+  | nil : CatalogBlocksAll f []
+  | cons {n ns} (hn : n.all f = true) (hs : CatalogBlocksAll f ns) :
+      CatalogBlocksAll f (n :: ns)
+
+private theorem CatalogBlocksAll.flatten {α : Type} {f : α → Bool}
+    {ns : List (List α)} (h : CatalogBlocksAll f ns) :
+    ns.flatten.all f = true := by
+  induction h with
+  | nil => rfl
+  | cons hn hs ih => simp only [List.flatten_cons, List.all_append, hn, ih, Bool.and_self]
+
 private def outerNodes00 : List OuterNode := [
   ([0,0,0,0],1),
   ([0,0,0,0],2),
@@ -2816,132 +2842,19 @@ private def outerEdges58 : List OuterEdge := [
 
 private theorem outerBlockSpec58 : outerEdges58 = outerNodes58.flatMap outerOutputs := by rfl
 
-def outerCatalog : List OuterNode :=
-  outerNodes00 ++
-  outerNodes01 ++
-  outerNodes02 ++
-  outerNodes03 ++
-  outerNodes04 ++
-  outerNodes05 ++
-  outerNodes06 ++
-  outerNodes07 ++
-  outerNodes08 ++
-  outerNodes09 ++
-  outerNodes10 ++
-  outerNodes11 ++
-  outerNodes12 ++
-  outerNodes13 ++
-  outerNodes14 ++
-  outerNodes15 ++
-  outerNodes16 ++
-  outerNodes17 ++
-  outerNodes18 ++
-  outerNodes19 ++
-  outerNodes20 ++
-  outerNodes21 ++
-  outerNodes22 ++
-  outerNodes23 ++
-  outerNodes24 ++
-  outerNodes25 ++
-  outerNodes26 ++
-  outerNodes27 ++
-  outerNodes28 ++
-  outerNodes29 ++
-  outerNodes30 ++
-  outerNodes31 ++
-  outerNodes32 ++
-  outerNodes33 ++
-  outerNodes34 ++
-  outerNodes35 ++
-  outerNodes36 ++
-  outerNodes37 ++
-  outerNodes38 ++
-  outerNodes39 ++
-  outerNodes40 ++
-  outerNodes41 ++
-  outerNodes42 ++
-  outerNodes43 ++
-  outerNodes44 ++
-  outerNodes45 ++
-  outerNodes46 ++
-  outerNodes47 ++
-  outerNodes48 ++
-  outerNodes49 ++
-  outerNodes50 ++
-  outerNodes51 ++
-  outerNodes52 ++
-  outerNodes53 ++
-  outerNodes54 ++
-  outerNodes55 ++
-  outerNodes56 ++
-  outerNodes57 ++
-  outerNodes58
+private def outerNodeBlocks : List (List OuterNode) :=
+  [outerNodes00, outerNodes01, outerNodes02, outerNodes03, outerNodes04, outerNodes05, outerNodes06, outerNodes07, outerNodes08, outerNodes09, outerNodes10, outerNodes11, outerNodes12, outerNodes13, outerNodes14, outerNodes15, outerNodes16, outerNodes17, outerNodes18, outerNodes19, outerNodes20, outerNodes21, outerNodes22, outerNodes23, outerNodes24, outerNodes25, outerNodes26, outerNodes27, outerNodes28, outerNodes29, outerNodes30, outerNodes31, outerNodes32, outerNodes33, outerNodes34, outerNodes35, outerNodes36, outerNodes37, outerNodes38, outerNodes39, outerNodes40, outerNodes41, outerNodes42, outerNodes43, outerNodes44, outerNodes45, outerNodes46, outerNodes47, outerNodes48, outerNodes49, outerNodes50, outerNodes51, outerNodes52, outerNodes53, outerNodes54, outerNodes55, outerNodes56, outerNodes57, outerNodes58]
+private def outerEdgeBlocks : List (List OuterEdge) :=
+  [outerEdges00, outerEdges01, outerEdges02, outerEdges03, outerEdges04, outerEdges05, outerEdges06, outerEdges07, outerEdges08, outerEdges09, outerEdges10, outerEdges11, outerEdges12, outerEdges13, outerEdges14, outerEdges15, outerEdges16, outerEdges17, outerEdges18, outerEdges19, outerEdges20, outerEdges21, outerEdges22, outerEdges23, outerEdges24, outerEdges25, outerEdges26, outerEdges27, outerEdges28, outerEdges29, outerEdges30, outerEdges31, outerEdges32, outerEdges33, outerEdges34, outerEdges35, outerEdges36, outerEdges37, outerEdges38, outerEdges39, outerEdges40, outerEdges41, outerEdges42, outerEdges43, outerEdges44, outerEdges45, outerEdges46, outerEdges47, outerEdges48, outerEdges49, outerEdges50, outerEdges51, outerEdges52, outerEdges53, outerEdges54, outerEdges55, outerEdges56, outerEdges57, outerEdges58]
+def outerCatalog : List OuterNode := outerNodeBlocks.flatten
+def outerEdges : List OuterEdge := outerEdgeBlocks.flatten
 
-def outerEdges : List OuterEdge :=
-  outerEdges00 ++
-  outerEdges01 ++
-  outerEdges02 ++
-  outerEdges03 ++
-  outerEdges04 ++
-  outerEdges05 ++
-  outerEdges06 ++
-  outerEdges07 ++
-  outerEdges08 ++
-  outerEdges09 ++
-  outerEdges10 ++
-  outerEdges11 ++
-  outerEdges12 ++
-  outerEdges13 ++
-  outerEdges14 ++
-  outerEdges15 ++
-  outerEdges16 ++
-  outerEdges17 ++
-  outerEdges18 ++
-  outerEdges19 ++
-  outerEdges20 ++
-  outerEdges21 ++
-  outerEdges22 ++
-  outerEdges23 ++
-  outerEdges24 ++
-  outerEdges25 ++
-  outerEdges26 ++
-  outerEdges27 ++
-  outerEdges28 ++
-  outerEdges29 ++
-  outerEdges30 ++
-  outerEdges31 ++
-  outerEdges32 ++
-  outerEdges33 ++
-  outerEdges34 ++
-  outerEdges35 ++
-  outerEdges36 ++
-  outerEdges37 ++
-  outerEdges38 ++
-  outerEdges39 ++
-  outerEdges40 ++
-  outerEdges41 ++
-  outerEdges42 ++
-  outerEdges43 ++
-  outerEdges44 ++
-  outerEdges45 ++
-  outerEdges46 ++
-  outerEdges47 ++
-  outerEdges48 ++
-  outerEdges49 ++
-  outerEdges50 ++
-  outerEdges51 ++
-  outerEdges52 ++
-  outerEdges53 ++
-  outerEdges54 ++
-  outerEdges55 ++
-  outerEdges56 ++
-  outerEdges57 ++
-  outerEdges58
+private theorem outerBlocks_spec : CatalogBlocksEq outerOutputs outerNodeBlocks outerEdgeBlocks :=
+  CatalogBlocksEq.cons outerBlockSpec00 (CatalogBlocksEq.cons outerBlockSpec01 (CatalogBlocksEq.cons outerBlockSpec02 (CatalogBlocksEq.cons outerBlockSpec03 (CatalogBlocksEq.cons outerBlockSpec04 (CatalogBlocksEq.cons outerBlockSpec05 (CatalogBlocksEq.cons outerBlockSpec06 (CatalogBlocksEq.cons outerBlockSpec07 (CatalogBlocksEq.cons outerBlockSpec08 (CatalogBlocksEq.cons outerBlockSpec09 (CatalogBlocksEq.cons outerBlockSpec10 (CatalogBlocksEq.cons outerBlockSpec11 (CatalogBlocksEq.cons outerBlockSpec12 (CatalogBlocksEq.cons outerBlockSpec13 (CatalogBlocksEq.cons outerBlockSpec14 (CatalogBlocksEq.cons outerBlockSpec15 (CatalogBlocksEq.cons outerBlockSpec16 (CatalogBlocksEq.cons outerBlockSpec17 (CatalogBlocksEq.cons outerBlockSpec18 (CatalogBlocksEq.cons outerBlockSpec19 (CatalogBlocksEq.cons outerBlockSpec20 (CatalogBlocksEq.cons outerBlockSpec21 (CatalogBlocksEq.cons outerBlockSpec22 (CatalogBlocksEq.cons outerBlockSpec23 (CatalogBlocksEq.cons outerBlockSpec24 (CatalogBlocksEq.cons outerBlockSpec25 (CatalogBlocksEq.cons outerBlockSpec26 (CatalogBlocksEq.cons outerBlockSpec27 (CatalogBlocksEq.cons outerBlockSpec28 (CatalogBlocksEq.cons outerBlockSpec29 (CatalogBlocksEq.cons outerBlockSpec30 (CatalogBlocksEq.cons outerBlockSpec31 (CatalogBlocksEq.cons outerBlockSpec32 (CatalogBlocksEq.cons outerBlockSpec33 (CatalogBlocksEq.cons outerBlockSpec34 (CatalogBlocksEq.cons outerBlockSpec35 (CatalogBlocksEq.cons outerBlockSpec36 (CatalogBlocksEq.cons outerBlockSpec37 (CatalogBlocksEq.cons outerBlockSpec38 (CatalogBlocksEq.cons outerBlockSpec39 (CatalogBlocksEq.cons outerBlockSpec40 (CatalogBlocksEq.cons outerBlockSpec41 (CatalogBlocksEq.cons outerBlockSpec42 (CatalogBlocksEq.cons outerBlockSpec43 (CatalogBlocksEq.cons outerBlockSpec44 (CatalogBlocksEq.cons outerBlockSpec45 (CatalogBlocksEq.cons outerBlockSpec46 (CatalogBlocksEq.cons outerBlockSpec47 (CatalogBlocksEq.cons outerBlockSpec48 (CatalogBlocksEq.cons outerBlockSpec49 (CatalogBlocksEq.cons outerBlockSpec50 (CatalogBlocksEq.cons outerBlockSpec51 (CatalogBlocksEq.cons outerBlockSpec52 (CatalogBlocksEq.cons outerBlockSpec53 (CatalogBlocksEq.cons outerBlockSpec54 (CatalogBlocksEq.cons outerBlockSpec55 (CatalogBlocksEq.cons outerBlockSpec56 (CatalogBlocksEq.cons outerBlockSpec57 (CatalogBlocksEq.cons outerBlockSpec58 (CatalogBlocksEq.nil)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 
-/-- Exact retained ordered edges, assembled from independently checked small blocks. -/
-theorem outerEdges_spec : outerEdges = outerCatalog.flatMap outerOutputs := by
-  simpa only [outerCatalog, outerEdges, List.flatMap_append] using
-    (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec00 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec01 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec02 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec03 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec04 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec05 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec06 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec07 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec08 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec09 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec10 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec11 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec12 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec13 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec14 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec15 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec16 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec17 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec18 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec19 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec20 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec21 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec22 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec23 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec24 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec25 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec26 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec27 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec28 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec29 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec30 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec31 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec32 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec33 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec34 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec35 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec36 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec37 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec38 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec39 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec40 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec41 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec42 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec43 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec44 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec45 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec46 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec47 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec48 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec49 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec50 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec51 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec52 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec53 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec54 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec55 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec56 (congrArg₂ (fun (a b : List OuterEdge) => a ++ b) outerBlockSpec57 (outerBlockSpec58)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+/-- Exact retained ordered edges, using proved structural block assembly. -/
+theorem outerEdges_spec : outerEdges = outerCatalog.flatMap outerOutputs :=
+  CatalogBlocksEq.flatten outerBlocks_spec
 
 theorem outerCatalog_length : outerCatalog.length = 878 := by decide
 theorem outerCatalog_nodup : outerCatalog.Nodup := by
@@ -3305,15 +3218,19 @@ private theorem outerBlockPhases58 :
 private theorem outerBlockTargets58 :
     outerEdges58.all (fun e => outerCatalog.contains e.target) = true := by decide
 
+private theorem outerBlocks_phases : CatalogBlocksAll (fun s => phaseCatalog.contains s.1) outerNodeBlocks :=
+  CatalogBlocksAll.cons outerBlockPhases00 (CatalogBlocksAll.cons outerBlockPhases01 (CatalogBlocksAll.cons outerBlockPhases02 (CatalogBlocksAll.cons outerBlockPhases03 (CatalogBlocksAll.cons outerBlockPhases04 (CatalogBlocksAll.cons outerBlockPhases05 (CatalogBlocksAll.cons outerBlockPhases06 (CatalogBlocksAll.cons outerBlockPhases07 (CatalogBlocksAll.cons outerBlockPhases08 (CatalogBlocksAll.cons outerBlockPhases09 (CatalogBlocksAll.cons outerBlockPhases10 (CatalogBlocksAll.cons outerBlockPhases11 (CatalogBlocksAll.cons outerBlockPhases12 (CatalogBlocksAll.cons outerBlockPhases13 (CatalogBlocksAll.cons outerBlockPhases14 (CatalogBlocksAll.cons outerBlockPhases15 (CatalogBlocksAll.cons outerBlockPhases16 (CatalogBlocksAll.cons outerBlockPhases17 (CatalogBlocksAll.cons outerBlockPhases18 (CatalogBlocksAll.cons outerBlockPhases19 (CatalogBlocksAll.cons outerBlockPhases20 (CatalogBlocksAll.cons outerBlockPhases21 (CatalogBlocksAll.cons outerBlockPhases22 (CatalogBlocksAll.cons outerBlockPhases23 (CatalogBlocksAll.cons outerBlockPhases24 (CatalogBlocksAll.cons outerBlockPhases25 (CatalogBlocksAll.cons outerBlockPhases26 (CatalogBlocksAll.cons outerBlockPhases27 (CatalogBlocksAll.cons outerBlockPhases28 (CatalogBlocksAll.cons outerBlockPhases29 (CatalogBlocksAll.cons outerBlockPhases30 (CatalogBlocksAll.cons outerBlockPhases31 (CatalogBlocksAll.cons outerBlockPhases32 (CatalogBlocksAll.cons outerBlockPhases33 (CatalogBlocksAll.cons outerBlockPhases34 (CatalogBlocksAll.cons outerBlockPhases35 (CatalogBlocksAll.cons outerBlockPhases36 (CatalogBlocksAll.cons outerBlockPhases37 (CatalogBlocksAll.cons outerBlockPhases38 (CatalogBlocksAll.cons outerBlockPhases39 (CatalogBlocksAll.cons outerBlockPhases40 (CatalogBlocksAll.cons outerBlockPhases41 (CatalogBlocksAll.cons outerBlockPhases42 (CatalogBlocksAll.cons outerBlockPhases43 (CatalogBlocksAll.cons outerBlockPhases44 (CatalogBlocksAll.cons outerBlockPhases45 (CatalogBlocksAll.cons outerBlockPhases46 (CatalogBlocksAll.cons outerBlockPhases47 (CatalogBlocksAll.cons outerBlockPhases48 (CatalogBlocksAll.cons outerBlockPhases49 (CatalogBlocksAll.cons outerBlockPhases50 (CatalogBlocksAll.cons outerBlockPhases51 (CatalogBlocksAll.cons outerBlockPhases52 (CatalogBlocksAll.cons outerBlockPhases53 (CatalogBlocksAll.cons outerBlockPhases54 (CatalogBlocksAll.cons outerBlockPhases55 (CatalogBlocksAll.cons outerBlockPhases56 (CatalogBlocksAll.cons outerBlockPhases57 (CatalogBlocksAll.cons outerBlockPhases58 (CatalogBlocksAll.nil)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
 theorem outerCatalog_phases_checked :
-    outerCatalog.all (fun s => phaseCatalog.contains s.1) = true := by
-  simpa only [outerCatalog, List.all_append] using
-    (congrArg₂ Bool.and outerBlockPhases00 (congrArg₂ Bool.and outerBlockPhases01 (congrArg₂ Bool.and outerBlockPhases02 (congrArg₂ Bool.and outerBlockPhases03 (congrArg₂ Bool.and outerBlockPhases04 (congrArg₂ Bool.and outerBlockPhases05 (congrArg₂ Bool.and outerBlockPhases06 (congrArg₂ Bool.and outerBlockPhases07 (congrArg₂ Bool.and outerBlockPhases08 (congrArg₂ Bool.and outerBlockPhases09 (congrArg₂ Bool.and outerBlockPhases10 (congrArg₂ Bool.and outerBlockPhases11 (congrArg₂ Bool.and outerBlockPhases12 (congrArg₂ Bool.and outerBlockPhases13 (congrArg₂ Bool.and outerBlockPhases14 (congrArg₂ Bool.and outerBlockPhases15 (congrArg₂ Bool.and outerBlockPhases16 (congrArg₂ Bool.and outerBlockPhases17 (congrArg₂ Bool.and outerBlockPhases18 (congrArg₂ Bool.and outerBlockPhases19 (congrArg₂ Bool.and outerBlockPhases20 (congrArg₂ Bool.and outerBlockPhases21 (congrArg₂ Bool.and outerBlockPhases22 (congrArg₂ Bool.and outerBlockPhases23 (congrArg₂ Bool.and outerBlockPhases24 (congrArg₂ Bool.and outerBlockPhases25 (congrArg₂ Bool.and outerBlockPhases26 (congrArg₂ Bool.and outerBlockPhases27 (congrArg₂ Bool.and outerBlockPhases28 (congrArg₂ Bool.and outerBlockPhases29 (congrArg₂ Bool.and outerBlockPhases30 (congrArg₂ Bool.and outerBlockPhases31 (congrArg₂ Bool.and outerBlockPhases32 (congrArg₂ Bool.and outerBlockPhases33 (congrArg₂ Bool.and outerBlockPhases34 (congrArg₂ Bool.and outerBlockPhases35 (congrArg₂ Bool.and outerBlockPhases36 (congrArg₂ Bool.and outerBlockPhases37 (congrArg₂ Bool.and outerBlockPhases38 (congrArg₂ Bool.and outerBlockPhases39 (congrArg₂ Bool.and outerBlockPhases40 (congrArg₂ Bool.and outerBlockPhases41 (congrArg₂ Bool.and outerBlockPhases42 (congrArg₂ Bool.and outerBlockPhases43 (congrArg₂ Bool.and outerBlockPhases44 (congrArg₂ Bool.and outerBlockPhases45 (congrArg₂ Bool.and outerBlockPhases46 (congrArg₂ Bool.and outerBlockPhases47 (congrArg₂ Bool.and outerBlockPhases48 (congrArg₂ Bool.and outerBlockPhases49 (congrArg₂ Bool.and outerBlockPhases50 (congrArg₂ Bool.and outerBlockPhases51 (congrArg₂ Bool.and outerBlockPhases52 (congrArg₂ Bool.and outerBlockPhases53 (congrArg₂ Bool.and outerBlockPhases54 (congrArg₂ Bool.and outerBlockPhases55 (congrArg₂ Bool.and outerBlockPhases56 (congrArg₂ Bool.and outerBlockPhases57 (outerBlockPhases58)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+    outerCatalog.all (fun s => phaseCatalog.contains s.1) = true :=
+  CatalogBlocksAll.flatten outerBlocks_phases
+
+private theorem outerBlocks_targets : CatalogBlocksAll (fun e => outerCatalog.contains e.target) outerEdgeBlocks :=
+  CatalogBlocksAll.cons outerBlockTargets00 (CatalogBlocksAll.cons outerBlockTargets01 (CatalogBlocksAll.cons outerBlockTargets02 (CatalogBlocksAll.cons outerBlockTargets03 (CatalogBlocksAll.cons outerBlockTargets04 (CatalogBlocksAll.cons outerBlockTargets05 (CatalogBlocksAll.cons outerBlockTargets06 (CatalogBlocksAll.cons outerBlockTargets07 (CatalogBlocksAll.cons outerBlockTargets08 (CatalogBlocksAll.cons outerBlockTargets09 (CatalogBlocksAll.cons outerBlockTargets10 (CatalogBlocksAll.cons outerBlockTargets11 (CatalogBlocksAll.cons outerBlockTargets12 (CatalogBlocksAll.cons outerBlockTargets13 (CatalogBlocksAll.cons outerBlockTargets14 (CatalogBlocksAll.cons outerBlockTargets15 (CatalogBlocksAll.cons outerBlockTargets16 (CatalogBlocksAll.cons outerBlockTargets17 (CatalogBlocksAll.cons outerBlockTargets18 (CatalogBlocksAll.cons outerBlockTargets19 (CatalogBlocksAll.cons outerBlockTargets20 (CatalogBlocksAll.cons outerBlockTargets21 (CatalogBlocksAll.cons outerBlockTargets22 (CatalogBlocksAll.cons outerBlockTargets23 (CatalogBlocksAll.cons outerBlockTargets24 (CatalogBlocksAll.cons outerBlockTargets25 (CatalogBlocksAll.cons outerBlockTargets26 (CatalogBlocksAll.cons outerBlockTargets27 (CatalogBlocksAll.cons outerBlockTargets28 (CatalogBlocksAll.cons outerBlockTargets29 (CatalogBlocksAll.cons outerBlockTargets30 (CatalogBlocksAll.cons outerBlockTargets31 (CatalogBlocksAll.cons outerBlockTargets32 (CatalogBlocksAll.cons outerBlockTargets33 (CatalogBlocksAll.cons outerBlockTargets34 (CatalogBlocksAll.cons outerBlockTargets35 (CatalogBlocksAll.cons outerBlockTargets36 (CatalogBlocksAll.cons outerBlockTargets37 (CatalogBlocksAll.cons outerBlockTargets38 (CatalogBlocksAll.cons outerBlockTargets39 (CatalogBlocksAll.cons outerBlockTargets40 (CatalogBlocksAll.cons outerBlockTargets41 (CatalogBlocksAll.cons outerBlockTargets42 (CatalogBlocksAll.cons outerBlockTargets43 (CatalogBlocksAll.cons outerBlockTargets44 (CatalogBlocksAll.cons outerBlockTargets45 (CatalogBlocksAll.cons outerBlockTargets46 (CatalogBlocksAll.cons outerBlockTargets47 (CatalogBlocksAll.cons outerBlockTargets48 (CatalogBlocksAll.cons outerBlockTargets49 (CatalogBlocksAll.cons outerBlockTargets50 (CatalogBlocksAll.cons outerBlockTargets51 (CatalogBlocksAll.cons outerBlockTargets52 (CatalogBlocksAll.cons outerBlockTargets53 (CatalogBlocksAll.cons outerBlockTargets54 (CatalogBlocksAll.cons outerBlockTargets55 (CatalogBlocksAll.cons outerBlockTargets56 (CatalogBlocksAll.cons outerBlockTargets57 (CatalogBlocksAll.cons outerBlockTargets58 (CatalogBlocksAll.nil)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 
 theorem outerEdges_targets_checked :
-    outerEdges.all (fun e => outerCatalog.contains e.target) = true := by
-  simpa only [outerEdges, List.all_append] using
-    (congrArg₂ Bool.and outerBlockTargets00 (congrArg₂ Bool.and outerBlockTargets01 (congrArg₂ Bool.and outerBlockTargets02 (congrArg₂ Bool.and outerBlockTargets03 (congrArg₂ Bool.and outerBlockTargets04 (congrArg₂ Bool.and outerBlockTargets05 (congrArg₂ Bool.and outerBlockTargets06 (congrArg₂ Bool.and outerBlockTargets07 (congrArg₂ Bool.and outerBlockTargets08 (congrArg₂ Bool.and outerBlockTargets09 (congrArg₂ Bool.and outerBlockTargets10 (congrArg₂ Bool.and outerBlockTargets11 (congrArg₂ Bool.and outerBlockTargets12 (congrArg₂ Bool.and outerBlockTargets13 (congrArg₂ Bool.and outerBlockTargets14 (congrArg₂ Bool.and outerBlockTargets15 (congrArg₂ Bool.and outerBlockTargets16 (congrArg₂ Bool.and outerBlockTargets17 (congrArg₂ Bool.and outerBlockTargets18 (congrArg₂ Bool.and outerBlockTargets19 (congrArg₂ Bool.and outerBlockTargets20 (congrArg₂ Bool.and outerBlockTargets21 (congrArg₂ Bool.and outerBlockTargets22 (congrArg₂ Bool.and outerBlockTargets23 (congrArg₂ Bool.and outerBlockTargets24 (congrArg₂ Bool.and outerBlockTargets25 (congrArg₂ Bool.and outerBlockTargets26 (congrArg₂ Bool.and outerBlockTargets27 (congrArg₂ Bool.and outerBlockTargets28 (congrArg₂ Bool.and outerBlockTargets29 (congrArg₂ Bool.and outerBlockTargets30 (congrArg₂ Bool.and outerBlockTargets31 (congrArg₂ Bool.and outerBlockTargets32 (congrArg₂ Bool.and outerBlockTargets33 (congrArg₂ Bool.and outerBlockTargets34 (congrArg₂ Bool.and outerBlockTargets35 (congrArg₂ Bool.and outerBlockTargets36 (congrArg₂ Bool.and outerBlockTargets37 (congrArg₂ Bool.and outerBlockTargets38 (congrArg₂ Bool.and outerBlockTargets39 (congrArg₂ Bool.and outerBlockTargets40 (congrArg₂ Bool.and outerBlockTargets41 (congrArg₂ Bool.and outerBlockTargets42 (congrArg₂ Bool.and outerBlockTargets43 (congrArg₂ Bool.and outerBlockTargets44 (congrArg₂ Bool.and outerBlockTargets45 (congrArg₂ Bool.and outerBlockTargets46 (congrArg₂ Bool.and outerBlockTargets47 (congrArg₂ Bool.and outerBlockTargets48 (congrArg₂ Bool.and outerBlockTargets49 (congrArg₂ Bool.and outerBlockTargets50 (congrArg₂ Bool.and outerBlockTargets51 (congrArg₂ Bool.and outerBlockTargets52 (congrArg₂ Bool.and outerBlockTargets53 (congrArg₂ Bool.and outerBlockTargets54 (congrArg₂ Bool.and outerBlockTargets55 (congrArg₂ Bool.and outerBlockTargets56 (congrArg₂ Bool.and outerBlockTargets57 (outerBlockTargets58)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+    outerEdges.all (fun e => outerCatalog.contains e.target) = true :=
+  CatalogBlocksAll.flatten outerBlocks_targets
 
 theorem outerCatalog_phase_mem (s : OuterNode) (hs : s ∈ outerCatalog) :
     s.1 ∈ phaseCatalog :=
