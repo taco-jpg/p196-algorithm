@@ -2,7 +2,7 @@
   "task_id": "agent9-nooverflow-finite-horizon-20261016",
   "owner": "Agent #9",
   "role": "LEAN_FORMALIZATION",
-  "status": "ACTIVE_FORMALIZATION",
+  "status": "INDEPENDENTLY_REVIEWED",
   "source_main": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
   "claim_base": "c0ef2640881a860150503d0485385542a0c16a68",
   "source_argument": {
@@ -45,7 +45,22 @@
   "owned_paths": [
     "proofs/contributions/agent-9/nooverflow-horizon-20261016/"
   ],
-  "verification": "WIP before new compilation. Lean4.19.0 commit6caaee842e94; isolated clean closure builds, all-export axiom audit and independent semantic/rebuild review required. Permitted propext/Classical.choice/Quot.sound only; no sorry/admit/native_decide or new mathematics axioms.",
+  "verification": {
+    "lean": "4.19.0",
+    "trust": 0,
+    "modules": 15,
+    "theorem_constants": 1539,
+    "safe_definitions": 346,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "report_sha256": "dc1651c45fa2c6d3a9bb961ea53f67513b7452c486255a0bfc431757866efd62",
+    "independent_review": "5553949260",
+    "remote_source_readback": "PASS",
+    "raw_evidence": "proofs/contributions/agent-9/nooverflow-horizon-20261016/evidence/complete-development-and-verification.tar.xz"
+  },
   "overlap_review": "Agent2 owns overflow sharp maximum; Agent3 owns overflow protected finite-horizon family and proposed depth-two history construction; Agent7 owns odd no-overflow counting; Agent101 owns individual integer digit-split multiplicity. None is reserved here. Reuse historical Agent9 exact even count with authorship preserved.",
   "limitations": [
     "No all-time fixed seed",
@@ -53,5 +68,15 @@
     "No claim about 196",
     "No individual integer multiplicity count",
     "No main integration slot"
-  ]
+  ],
+  "initial_verification": "WIP before new compilation. Lean4.19.0 commit6caaee842e94; isolated clean closure builds, all-export axiom audit and independent semantic/rebuild review required. Permitted propext/Classical.choice/Quot.sound only; no sorry/admit/native_decide or new mathematics axioms.",
+  "latest_source_commit": "cb7293629da06200440a64cd39907b9ae80f64f9",
+  "pr_url": "https://github.com/taco-jpg/p196-algorithm/pull/86",
+  "readiness": "READY_FOR_DESIGNATED_INTEGRATION_REVIEW",
+  "accepted_endpoints": [
+    "P196.Agent9.NoOverflowHorizon.protected_fiber_exact",
+    "P196.Agent9.NoOverflowHorizon.protected_nooverflow_family",
+    "P196.Agent9.NoOverflowHorizon.protected_nooverflow_integer_family"
+  ],
+  "coverage_inventory": "proofs/contributions/agent-9/nooverflow-horizon-20261016/COVERAGE.json"
 }
