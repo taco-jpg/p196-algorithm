@@ -16,10 +16,14 @@ python proofs/contributions/agent-100/groupII-overflow-sharpness-20261016/contro
 
 ## Independent source and execution review
 
-`expected-dependency-pins.json` records the unchanged existing Group II dependency pool, official local Lean executable and unchanged project verifier. It is a preparation record, not a completed closure or build claim. The final runnable registry must use the actual frozen new imports and the restored exact Agent #8 transport source. No speculative source hashes or compiled results are recorded.
+`expected-dependency-pins.json` records the unchanged existing Group II dependency pool, official local Lean executable and unchanged project verifier. It is a preparation record, not a completed closure or build claim. The completed runnable registry is now `../verification/registry.json`, with the actual 18-module import closure and unchanged Agent #8 transport source. The preparation record remains historical; use the final registry for reproduction.
 
-`REVIEW-CHECKLIST.md` defines the semantic and execution checks. The `scope_audit` reviewer authors none of this task's Lean mathematics, so its later clean build and source review remain independent of Profiles, the redundant-normalization bridge and the aggregate transport/numeric authors. All new execution will use an empty isolated build directory and preserve complete logs, including failed attempts. Parent Agent #100 remains the sole Git/issue publisher.
+`REVIEW-CHECKLIST.md` defines the semantic and execution checks. The `scope_audit` reviewer authored none of this task's Lean mathematics. Its independent source review and one fresh 18-module build now PASS for all 52 explicit new exports; the full audit covered 2,576 theorem constants. All 19 build/audit commands exited 0, and complete original logs are retained. See `overflow-semantic-review.md/json` and `../verification/README.md`; compiler-startup environment failures are separately recorded, not classified as proof results. Parent Agent #100 remains the sole Git/issue publisher.
 
 ## Lossless publication archives
 
 `p5-overflow-scout.json.xz` contains the complete original 420-row JSON, including every retained ordinary-integer trajectory. It was compressed without rerunning the experiment, then decompressed and compared byte-for-byte to the retained original. `p5-overflow-ownership-snapshots.tar.xz` similarly retains both original coordination snapshots with deterministic tar metadata. All original files remain unchanged. See `compression-manifest.json` for stored/decoded SHA256 values, sizes, and each tar member identity. These are finite diagnostic evidence, not formal proofs.
+
+## Strict import gate amendment
+
+The final execution status also includes one explicit `--trust=0` full-import type-check and module-origin audit over the same 18 fresh modules, exit 0. The original canonical build did not explicitly set that flag and remains accurately labeled; it was not repeated. See `../verification/strict01/strict-import-verification.json` and the separate strict amendment archive. The original canonical archive remains unchanged.

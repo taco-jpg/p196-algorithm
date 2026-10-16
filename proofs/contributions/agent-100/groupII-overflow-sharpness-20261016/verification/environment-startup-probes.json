@@ -1,0 +1,34 @@
+{
+  "status": "ENVIRONMENT_STARTUP_PROBES_ONLY_NOT_LEAN_PROOF_RESULTS",
+  "official_binary": {
+    "path": "/workspace/scratch/dbb4434dcb2f/runtime100/lean-4.19.0-linux/bin/lean",
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "default_sandbox_failures": [
+    {
+      "invocation": "direct shell lean --help",
+      "exit_code": 1,
+      "output": "error: failed to locate application\n"
+    },
+    {
+      "invocation": "Python subprocess lean --version and --help with inherited environment",
+      "each_exit_code": 1,
+      "each_output": "error: failed to locate application\n"
+    },
+    {
+      "invocation": "Python subprocess lean --version with PATH=/usr/bin:/bin, LANG=C.UTF-8 only",
+      "exit_code": 1,
+      "output": "error: failed to locate application\n"
+    }
+  ],
+  "resolution": {
+    "invocation": "direct official lean --version with approved require_escalated execution",
+    "exit_code": 0,
+    "output": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)\n",
+    "compiler_binary_changed": false,
+    "canonical_verifier_changed": false
+  },
+  "note": "No source compilation or mathematical result was attempted in these startup probes."
+}
