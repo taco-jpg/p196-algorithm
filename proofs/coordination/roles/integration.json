@@ -5,15 +5,15 @@
   "owner": "Agent #12",
   "session": "aa9210d02a75",
   "task_id": "agent12-sessionaa9210-pr131-pr109-pr123-integration-20261016",
-  "status": "ACTIVE",
-  "active_editing": true,
+  "status": "RELEASED",
+  "active_editing": false,
   "selected_pr": 131,
   "reviewed_head": "0bfe5347de0e5085307a3432975a18b83a3a2bba",
-  "verified_main_head": "969dea943d09d2b2f0ca1d5d5cda7a6625990e41",
-  "verified_combined_tree": "284832009d11b89a878be9a43f305780146e6671",
+  "verified_main_head": "fa3921e58556250b1a6efd30af603fb65a9d9fbc",
+  "verified_combined_tree": "052e52c6d557ced7aa691250e08d557ba8d03259",
   "review_id": 5554529972,
   "evidence_commit": "5bd248a1fcad67677b3db65901b79af3f15d28f0",
-  "verification": "Exact-head independent semantic and fresh Lean verification PASS as linked. Last verified combination at main969dea94 is preserved below; current main fa3921e5 must be rebound before merge. The short integration slot includes this final base check and target readback.",
+  "verification": "Fresh independent six-module semantic and trust-zero proof/axiom audit PASS; final combination on fa3921e5 and actual merge tree 052e52c6 preserve all16239 base entries and add22 paths. Actual parents [base,reviewed head] and main readback match. No postmerge Lean or CI run is claimed.",
   "prior_record": {
     "git_blob": "4f03ee72cfe19d541eeb72dcbe7f3eb5ea14aaca",
     "status_at_claim": "RELEASED",
@@ -21,7 +21,56 @@
     "integrated_commit": "fa3921e58556250b1a6efd30af603fb65a9d9fbc"
   },
   "release_rule": "Release promptly after exact target readback; only session aa9210d02a75 owns this short main integration section.",
-  "integration_state": "FINAL_BASE_RECHECK",
-  "updated_at": "2026-10-16 23:05:52 UTC",
-  "observed_main_head": "fa3921e58556250b1a6efd30af603fb65a9d9fbc"
+  "integration_state": "VERIFIED_ON_TARGET",
+  "updated_at": "2026-10-16 23:09:34 UTC",
+  "observed_main_head": "d6dc581775e802e8a473e0435a9a8bfbe0145c3b",
+  "integrated_commit": "d6dc581775e802e8a473e0435a9a8bfbe0145c3b",
+  "postmerge": {
+    "schema_version": 1,
+    "pr": 131,
+    "status": "VERIFIED_ON_TARGET",
+    "observed_at": "2026-10-16 23:09:34 UTC",
+    "merged": true,
+    "head": "0bfe5347de0e5085307a3432975a18b83a3a2bba",
+    "base": "fa3921e58556250b1a6efd30af603fb65a9d9fbc",
+    "merge_commit": "d6dc581775e802e8a473e0435a9a8bfbe0145c3b",
+    "expected_tree": "052e52c6d557ced7aa691250e08d557ba8d03259",
+    "actual_tree": "052e52c6d557ced7aa691250e08d557ba8d03259",
+    "actual_parents": [
+      "fa3921e58556250b1a6efd30af603fb65a9d9fbc",
+      "0bfe5347de0e5085307a3432975a18b83a3a2bba"
+    ],
+    "main_readback": "d6dc581775e802e8a473e0435a9a8bfbe0145c3b",
+    "all_current_base_entries_preserved": 16239,
+    "added_paths": 22,
+    "fresh_premerge_Lean": {
+      "status": "PASS",
+      "modules": 6,
+      "theorem_constants": 1320,
+      "safe_definitions": 183,
+      "public_export_reports": 10,
+      "flags": [
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false"
+      ],
+      "runtime": "official Lean 4.19.0",
+      "runtime_distribution_rebuilt": false
+    },
+    "postmerge_Lean": "NOT_RUN: the actual merge tree exactly equals the independently checked combination, and all selected source/registry/verifier bytes equal the fresh passing audit inputs.",
+    "postmerge_check_runs": {
+      "count": 0,
+      "status": "NOT_RUN",
+      "items": []
+    },
+    "postmerge_actions_runs": {
+      "count": 0,
+      "status": "NOT_RUN",
+      "items": []
+    },
+    "premerge_platform_checks": "GitGuardian completed success on exact reviewed head; no other check was inferred.",
+    "independent_review_id": 5554529972,
+    "evidence_commit": "5bd248a1fcad67677b3db65901b79af3f15d28f0",
+    "verification_basis": "Actual ordinary merge API result, exact remote target commit tree and ordered parents, complete base preservation, and six-module exact-source binding to the fresh independent semantic/axiom audit. No 196 conjecture claim."
+  }
 }
