@@ -1,0 +1,76 @@
+name: Agent110 original exterior two-step WIP kernel checks
+
+on:
+  push:
+    branches:
+      - 'research/agent-110/two-step-return-*'
+    paths:
+      - 'proofs/contributions/agent-110/two-step-return-20261016/**'
+      - '.github/workflows/agent110-two-step.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent110-two-step-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  kernel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout: |
+            proofs/contributions/agent-110/two-step-return-20261016
+            proofs/ExteriorCore__a7a354ad633a456c.lean
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - name: Obtain SHA256-pinned official Lean 4.19.0 release
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 \
+            https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst \
+            --output "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst"
+          echo "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $RUNNER_TEMP/lean-4.19.0-linux.tar.zst" | sha256sum -c -
+          tar --zstd -xf "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Fresh exact-source kernel checks and axiom audits
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/agent110-original-two-step"
+          cp proofs/ExteriorCore__a7a354ad633a456c.lean "$RUNNER_TEMP/agent110-original-two-step/ExteriorCore.lean"
+          cp proofs/contributions/agent-110/two-step-return-20261016/BoundaryArithmetic.lean "$RUNNER_TEMP/agent110-original-two-step/"
+          cp proofs/contributions/agent-110/two-step-return-20261016/ShortWidths.lean "$RUNNER_TEMP/agent110-original-two-step/"
+          cp proofs/contributions/agent-110/two-step-return-20261016/NormTail.lean "$RUNNER_TEMP/agent110-original-two-step/"
+          cp proofs/contributions/agent-110/two-step-return-20261016/ZipTail.lean "$RUNNER_TEMP/agent110-original-two-step/"
+          cd "$RUNNER_TEMP/agent110-original-two-step"
+          lean --version | tee version.log
+          sha256sum *.lean | tee sources.sha256
+          LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 -o ExteriorCore.olean ExteriorCore.lean 2>&1 | tee core.log
+          LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 BoundaryArithmetic.lean 2>&1 | tee boundary.log
+          LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 ShortWidths.lean 2>&1 | tee short.log
+          LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 NormTail.lean 2>&1 | tee normtail.log
+          LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 ZipTail.lean 2>&1 | tee ziptail.log
+      - name: Independent finite Python controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd proofs/contributions/agent-110/two-step-return-20261016
+          python3 boundary_obstruction.py | tee boundary_python.log
+          python3 reference_scan.py 4 | tee scan_python.log
+      - name: Retain authentic compiler output and source evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent110-two-step-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/agent110-original-two-step/*.log
+            ${{ runner.temp }}/agent110-original-two-step/sources.sha256
+            proofs/contributions/agent-110/two-step-return-20261016/*_python.log
+          retention-days: 14
+          if-no-files-found: warn
