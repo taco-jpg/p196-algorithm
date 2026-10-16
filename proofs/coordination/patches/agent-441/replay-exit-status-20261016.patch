@@ -1,0 +1,13 @@
+diff --git a/proofs/README.md b/proofs/README.md
+index c42329ee41ffc3f930f4d76b6e7affd47203e30a..9fe0a5f5b7b2e1a7518eb516f15489e13b70ed5b 100644
+--- a/proofs/README.md
++++ b/proofs/README.md
+@@ -27,7 +27,7 @@ The checkout must contain the Git commit named by `SOURCE_MAP.json`'s `base` fie
+ git cat-file -e '2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5^{commit}'
+ ```
+ 
+-The wrapper prints `Original-layout check workspace (retained): ...`. It keeps that workspace for inspection, runs the supplied command from the reconstructed **repository root**, and propagates the child command's exit status. Wrapper setup errors exit with status 2. A printed workspace path alone does not mean the requested check passed. Historical checkers may write logs and build products there; inspect their source and resource requirements before running them.
++The wrapper prints `Original-layout check workspace (retained): ...`. It keeps that workspace for inspection, runs the supplied command from the reconstructed **repository root**, and propagates the child command's exit status. Handled wrapper setup failures exit with status 2; an uncaught malformed-map shape error can instead exit with status 1. A child can also return status 2, so inspect the diagnostic output rather than classifying a failure by exit status alone. A printed workspace path alone does not mean the requested check passed. Historical checkers may write logs and build products there; inspect their source and resource requirements before running them.
+ 
+ The generic interface is `python3 proofs/replay_original_layout.py -- COMMAND ARGUMENTS...`. It does not change into `proofs/` or `proofs/research/` for the child. Commands in an older guide must retain their documented working-directory assumptions inside the reconstructed workspace. [verify_project.py](verify_project.py) and [verify_release.py](verify_release.py) are forwarding wrappers for their original-layout counterparts, not independent whole-repository verifiers.
+ 
