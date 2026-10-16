@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Apply reviewed English text patches without executing research code.
+"""Publish reviewed English prose without executing research code.
 
-Original research archives remain byte-identical. English archive views are
-reading copies, not substitute build inputs or new verification records.
+Immutable historical archives remain the original evidence. English views are
+reading copies, not new builds or substitutes for hash-pinned original inputs.
 """
 from __future__ import annotations
-import ast, hashlib, json, os, pathlib, re, subprocess, sys
+import ast
+import hashlib
+import json
+import os
+import pathlib
+import re
+import subprocess
 
 BASE = '1f4ed4c5033754521c198506ad4b669232cad09f'
 FIRST = '3ff54bb56819f346f1165bc7184362a1e5807729'
@@ -42,6 +48,38 @@ def masked_ast(text):
             return node
     return ast.dump(Mask().visit(parsed), include_attributes=False)
 
+def load_reviewed_patch(file, written, encoding_repairs):
+    raw = file.read_text()
+    # A failed unpublished manuscript batch used literal LaTeX backslashes
+    # inside JSON strings. Canonicalize that transport representation, keeping
+    # every TeX backslash, including doubled row endings. An odd final slash
+    # before a quotation mark remains the JSON quotation escape.
+    literal_tex = re.search(r'(?<!\\)\\(?:[()\[\]{}]|text\b|underbrace\b|forall\b|quad\b|operatorname\b|mathbb\b)', raw)
+    if literal_tex:
+        def escape_run(match):
+            n = len(match.group())
+            quote = match.end() < len(raw) and raw[match.end()] == '"'
+            return '\\' * (2 * n - 1 if quote and n % 2 else 2 * n)
+        before = digest(raw.encode())
+        value = json.loads(re.sub(r'\\+', escape_run, raw))
+        canonical = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+        file.write_text(canonical)
+        written.append(str(file.relative_to(ROOT)))
+        encoding_repairs.append({'path': str(file.relative_to(ROOT)), 'input_sha256': before, 'output_sha256': digest(canonical.encode()), 'reason': 'Canonical JSON encoding of reviewed literal LaTeX; no translation content changed.'})
+    else:
+        value = json.loads(raw)
+    if not isinstance(value, dict):
+        raise RuntimeError('Patch root must be a dictionary: ' + str(file))
+    for changes in value.values():
+        if not isinstance(changes, dict):
+            raise RuntimeError('Patch lines must be a dictionary')
+        for index, translated in changes.items():
+            if not index.isdigit() or not isinstance(translated, str):
+                raise RuntimeError('Invalid patch line')
+            if any(ord(ch) < 32 for ch in translated):
+                raise RuntimeError('Control character in translated line: ' + str(file) + ':' + index)
+    return value
+
 def main():
     source_tree = tree(BASE)
     first_tree = tree(FIRST)
@@ -49,34 +87,35 @@ def main():
     previous_path = OWN / 'translation_manifest.json'
     previous = json.loads(previous_path.read_text()) if previous_path.exists() else {}
     owned_hashes = {r['output_path']: r['output_sha256'] for r in previous.get('translations', [])}
+    written, encoding_repairs = [], []
     patches = {}
     for file in sorted(OWN.glob('*-patches.json')):
-        for prefix, changes in json.loads(file.read_text()).items():
-            if prefix in patches:
-                raise RuntimeError('Duplicate source patch: ' + prefix)
+        for prefix, changes in load_reviewed_patch(file, written, encoding_repairs).items():
             matches = {r['oid'] for r in source_tree.values() if r['oid'].startswith(prefix)}
             if len(matches) != 1:
                 raise RuntimeError('Source prefix is not unique: ' + prefix)
-            patches[prefix] = changes
-    # Reuse translations only for byte-identical original lines. This includes
-    # identical older README paragraphs and duplicate preserved source copies.
-    memory = {}
-    for prefix, changes in patches.items():
-        oid = next(r['oid'] for r in source_tree.values() if r['oid'].startswith(prefix))
+            oid = matches.pop()
+            if oid in patches:
+                raise RuntimeError('Duplicate source patch: ' + prefix)
+            patches[oid] = changes
+    variants, heading_variants = {}, {}
+    for oid, changes in patches.items():
         lines = read_blob(oid).decode('utf-8').splitlines()
         for index, translated in changes.items():
             old = lines[int(index) - 1]
             if not CJK.search(old):
-                raise RuntimeError('Patch does not identify non-English text: ' + prefix + ':' + index)
+                raise RuntimeError('Patch does not identify non-English text: ' + oid + ':' + index)
             if CJK.search(translated):
                 raise RuntimeError('Untranslated script in reviewed patch')
-            if old in memory and memory[old] != translated:
-                raise RuntimeError('Conflicting translation of identical source text')
-            memory[old] = translated
-    written = []
-    records = []
-    pending = []
-    binary = []
+            variants.setdefault(old, set()).add(translated)
+            if re.match(r'^#{1,6}\s+', old) and re.match(r'^#{1,6}\s+', translated):
+                a = re.sub(r'^#{1,6}\s+', '', old)
+                b = re.sub(r'^#{1,6}\s+', '', translated)
+                heading_variants.setdefault(a, set()).add(b)
+    # Ambiguous reusable wording never overrides source-specific reviewed text.
+    memory = {a: next(iter(b)) for a, b in variants.items() if len(b) == 1}
+    headings = {a: next(iter(b)) for a, b in heading_variants.items() if len(b) == 1}
+    records, pending, binary = [], [], []
     current_changes = {}
     def write(path, data, source_oid=None):
         target = ROOT / path
@@ -86,9 +125,8 @@ def main():
             old = target.read_bytes()
             if old == data:
                 return
-            allowed = owned_hashes.get(path)
             is_source = source_oid is not None and path in head_tree and head_tree[path]['oid'] == source_oid
-            if not is_source and (allowed is None or digest(old) != allowed):
+            if not is_source and digest(old) != owned_hashes.get(path):
                 raise RuntimeError('Unrecognized concurrent output: ' + path)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
@@ -109,25 +147,27 @@ def main():
         if path in LANDING:
             output = (ROOT / path).read_bytes()
             if head_tree[path]['oid'] != first_tree[path]['oid']:
-                raise RuntimeError('Landing page changed after the reviewed translation: ' + path)
+                raise RuntimeError('Landing page changed after reviewed translation: ' + path)
             records.append({'source_path': path, 'source_blob': meta['oid'], 'source_sha256': digest(raw), 'output_path': path, 'output_sha256': digest(output), 'kind': 'current_translation', 'verification': 'Previously published exact English translation; original retained separately.'})
             continue
         lines = []
-        for line in text.splitlines(keepends=True):
+        explicit = patches.get(meta['oid'], {})
+        for index, line in enumerate(text.splitlines(keepends=True), 1):
             body = line.rstrip('\r\n')
             ending = line[len(body):]
-            if body in memory:
+            if str(index) in explicit:
+                body = explicit[str(index)]
+            elif body in memory:
                 body = memory[body]
+            elif body.startswith('- ') and body[2:] in headings:
+                body = '- ' + headings[body[2:]]
             elif set(CJK.findall(body)) == {'\u548c'}:
                 body = body.replace('\u548c', 'and')
             lines.append(body + ending)
         translated = ''.join(lines)
         if path == 'proofs/RESULTS.md':
-            if meta['oid'] != '8e815c9946fb2fe6c91a761480a122953fc1dc48b':
-                # The immutable BASE and exact table shape are also checked;
-                # the prefix avoids trusting an unobserved full object ID.
-                if not meta['oid'].startswith('8e815c9946'):
-                    raise RuntimeError('Unexpected results source')
+            if meta['oid'] != '8e815c9946c6c5ec9da48c9fcef073a023ef0ce8':
+                raise RuntimeError('Unexpected results source')
             src = text.splitlines()
             if sum(line.startswith('| [') for line in src) != 2570:
                 raise RuntimeError('Unexpected results table size')
@@ -159,7 +199,7 @@ def main():
             json.loads(translated)
             check = 'JSON parses; English reading copy only, not original verification evidence.'
         else:
-            check = 'Only reviewed non-English lines and the isolated English conjunction were translated; other lines retained.'
+            check = 'Reviewed non-English lines translated; unambiguous exact-line/heading translations reused; other lines retained.'
         archive = path.startswith('proofs/archive/')
         output_path = 'proofs/english/views/' + path if archive else path
         data = translated.encode('utf-8')
@@ -172,9 +212,6 @@ def main():
             if backup not in head_tree:
                 write(backup, raw)
         records.append({'source_path': path, 'source_blob': meta['oid'], 'source_sha256': digest(raw), 'output_path': output_path, 'output_sha256': digest(data), 'kind': 'archive_reading_copy' if archive else 'current_translation', 'verification': check})
-    # A translated source must never be passed off as the exact historical bytes.
-    # Original-layout replay uses preserved originals for those five paths;
-    # unchanged numerical source hashes and every historical record stay intact.
     map_path = ROOT / 'proofs/SOURCE_MAP.json'
     mapping = json.loads(read_blob(source_tree['proofs/SOURCE_MAP.json']['oid']))
     adjusted = []
@@ -192,12 +229,10 @@ def main():
             raise RuntimeError('Source mapping changed concurrently')
         owned_hashes['proofs/SOURCE_MAP.json'] = digest(map_path.read_bytes())
         write('proofs/SOURCE_MAP.json', map_bytes)
-    records.append({'source_path': 'proofs/SOURCE_MAP.json', 'source_blob': source_tree['proofs/SOURCE_MAP.json']['oid'], 'output_path': 'proofs/SOURCE_MAP.json', 'output_sha256': digest(map_bytes), 'kind': 'historical_replay_mapping', 'verification': 'Historical hashes preserved; only translated current paths are routed to their immutable originals for historical replay.', 'adjusted_paths': adjusted})
+    records.append({'source_path': 'proofs/SOURCE_MAP.json', 'source_blob': source_tree['proofs/SOURCE_MAP.json']['oid'], 'output_path': 'proofs/SOURCE_MAP.json', 'output_sha256': digest(map_bytes), 'kind': 'historical_replay_mapping', 'verification': 'Historical hashes preserved; translated current paths use immutable originals for historical replay.', 'adjusted_paths': adjusted})
     status = 'TEXT_TRANSLATION_COMPLETE' if not pending else 'IN_PROGRESS'
-    manifest = {'agent': 'Agent #1', 'baseline': BASE, 'status': status, 'translations': records, 'pending': pending, 'binary_files_preserved_without_repacking': binary, 'scope': 'Tracked UTF-8 text containing the inventoried non-English scripts. Mathematical symbols, original archives, binary data, and published Git history are preserved. English archive views are translations, not new builds.'}
-    manifest_bytes = (json.dumps(manifest, ensure_ascii=False, indent=2) + '\n').encode()
-    previous_path.parent.mkdir(parents=True, exist_ok=True)
-    previous_path.write_bytes(manifest_bytes)
+    manifest = {'agent': 'Agent #1', 'baseline': BASE, 'status': status, 'translations': records, 'pending': pending, 'patch_encoding_repairs': encoding_repairs, 'binary_files_preserved_without_repacking': binary, 'scope': 'Tracked UTF-8 text containing the inventoried non-English scripts. Mathematical symbols, original archives, binary data and published Git history are preserved. English archive views are translations, not new builds.'}
+    previous_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     written.append('proofs/english/translation_manifest.json')
     index = ['# English repository reading index', '', 'Current entry pages and completed current-file translations are English. Historical originals remain immutable; English archive views below are reading copies, not replacement verification records.', '', 'Translation does not independently verify or upgrade any mathematical claim. Relative links inside historical reading copies retain the original document layout; use each original source link when a target has not yet received an English view.', '', 'Status: **' + status + '**. Baseline: `' + BASE + '`.', '', '## Available English texts', '']
     for r in records:
@@ -213,20 +248,17 @@ def main():
     written.append('proofs/english/README.md')
     record_path = ROOT / 'proofs/ENGLISH_TRANSLATION.json'
     role = json.loads(record_path.read_text())
-    role.update({'status': status, 'current_translation_files': sum(r['kind'] == 'current_translation' for r in records), 'archive_reading_copies': sum(r['kind'] == 'archive_reading_copy' for r in records), 'pending_text_files': len(pending), 'manifest': 'proofs/english/translation_manifest.json', 'room_status': 'ROOM_ACCESS_BLOCKED', 'room_messages_delivered': 0, 'mathematical_verification_claim': 'None; source-language validation only. Historical evidence bytes and classifications preserved.'})
+    role.update({'status': status, 'current_translation_files': sum(r['kind'] == 'current_translation' for r in records), 'archive_reading_copies': sum(r['kind'] == 'archive_reading_copy' for r in records), 'pending_text_files': len(pending), 'manifest': 'proofs/english/translation_manifest.json', 'room_status': 'ROOM_ACCESS_BLOCKED', 'room_messages_delivered': 0, 'mathematical_verification_claim': 'None; source-language validation only. Historical evidence bytes and classifications preserved.', 'coordination_recheck': 'The p196/coordination branch was recreated during translation. At 82ca526693013ae91898fcefcaa391c8ad791d9b its live coordination directory contained tasks only, no integration role. Existing scoped translation writer and exact-main guards remain; no research task is reassigned.'})
     record_path.write_text(json.dumps(role, indent=2) + '\n')
     written.append('proofs/ENGLISH_TRANSLATION.json')
-    # Generated changes may touch only declared current outputs and new views,
-    # never the immutable original archive or an existing workflow.
     changed = git('diff', '--name-only').decode().splitlines()
     if any(path not in written for path in changed):
         raise RuntimeError('Unexpected existing-file changes: ' + repr(changed))
-    deleted = git('diff', '--name-only', '--diff-filter=D')
-    if deleted:
+    if git('diff', '--name-only', '--diff-filter=D'):
         raise RuntimeError('Deletion forbidden')
     git('add', '--', *sorted(set(written)))
     git('diff', '--cached', '--check')
-    print(json.dumps({'status': status, 'current_translations': role['current_translation_files'], 'archive_views': role['archive_reading_copies'], 'pending_files': len(pending), 'changed_paths': sorted(set(written))}, indent=2))
+    print(json.dumps({'status': status, 'current_translations': role['current_translation_files'], 'archive_views': role['archive_reading_copies'], 'pending_files': len(pending), 'patch_encoding_repairs': encoding_repairs, 'changed_paths': sorted(set(written))}, indent=2))
 
 if __name__ == '__main__':
     main()
