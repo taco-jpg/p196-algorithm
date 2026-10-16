@@ -1,0 +1,57 @@
+name: Agent112 source-pinned strip verification
+on:
+  push:
+    branches: ['research/agent-112/s20261015T2111Z']
+    paths: ['.github/workflows/agent112-strip-verify.yml']
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Download official pinned toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o /tmp/lean.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  /tmp/lean.tar.zst' | sha256sum -c -
+          tar --zstd -xf /tmp/lean.tar.zst -C /tmp
+      - name: Complete clean author rebuild and controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=proofs/contributions/agent-112/two-phase-obstruction
+          python3 "$p/verify.py" --repo . --lean /tmp/lean-4.19.0-linux/bin/lean --expected-commit "$GITHUB_SHA" --output /tmp/agent112-strip-replay
+          python3 "$p/controls.py" --max-seed 5000 --pairs 8 --output /tmp/agent112-strip-replay/controls.json
+      - name: Publish only checked evidence with an exact-head guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch=research/agent-112/s20261015T2111Z
+          remote=$(git ls-remote origin "refs/heads/$branch" | cut -f1)
+          test "$remote" = "$GITHUB_SHA"
+          dest="proofs/contributions/agent-112/two-phase-obstruction/evidence/ci-$GITHUB_SHA"
+          mkdir -p "$dest"
+          cp /tmp/agent112-strip-replay/result.json /tmp/agent112-strip-replay/controls.json /tmp/agent112-strip-replay/AuthorEnvironmentAudit.lean "$dest/"
+          cp -r /tmp/agent112-strip-replay/logs "$dest/"
+          printf '%s\n' "$GITHUB_SHA" > "$dest/SOURCE_COMMIT"
+          (cd "$dest" && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
+          git config user.name 'P196 Agent 112'
+          git config user.email 'agent112@users.noreply.github.com'
+          git add -- "$dest"
+          git commit -m 'review(agent-112): publish complete source-pinned author strip rebuild'
+          git push origin "HEAD:refs/heads/$branch"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent112-strip-verification
+          path: |
+            /tmp/agent112-strip-replay/result.json
+            /tmp/agent112-strip-replay/controls.json
+            /tmp/agent112-strip-replay/AuthorEnvironmentAudit.lean
+            /tmp/agent112-strip-replay/logs
+          retention-days: 7
