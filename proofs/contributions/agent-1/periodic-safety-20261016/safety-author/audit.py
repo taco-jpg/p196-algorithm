@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import hashlib,json,os,re,subprocess,time
+import hashlib,json,os,re,subprocess,sys,time
 
 ROOT=Path('/workspace/p196-agent1-safety-20261016')
 BUILD=Path('/workspace/p196-agent1-session-20261016/periodic-safety-author-build')
-OUT=ROOT/'proofs/contributions/agent-1/periodic-safety-20261016/safety-author/audit-001'
+OUT=ROOT/'proofs/contributions/agent-1/periodic-safety-20261016/safety-author'/sys.argv[1]
 LEAN=Path('/workspace/p196-tools/lean-4.19.0-linux/bin/lean')
 MODULE='Agent1PeriodicSafety'
 OUT.mkdir(exist_ok=False)
@@ -38,13 +38,17 @@ run_cmd do
             throwError m!"DISALLOWED_AXIOMS {name} : {axl}"
           logInfo m!"AUDIT_THEOREM {mod} {name} : {axl}"
         | .defnInfo v =>
-          if v.safety != .safe then throwError m!"NONSAFE_DEFINITION {mod} {name}"
-          defs := defs + 1
-          let axs ← liftCoreM (Lean.collectAxioms name)
-          let axl := axs.toList
-          if axl.any (fun ax => !(allowed.contains ax)) then
-            throwError m!"DISALLOWED_DEFINITION_AXIOMS {name} : {axl}"
-          logInfo m!"AUDIT_DEFINITION {mod} {name} : {axl}"
+          if v.safety != .safe then
+            if !(name.toString.endsWith "._cstage1" || name.toString.endsWith "._cstage2") then
+              throwError m!"NONCOMPILER_NONSAFE_DEFINITION {mod} {name}"
+            logInfo m!"COMPILER_IMPLEMENTATION_DEFINITION {mod} {name}"
+          else
+            defs := defs + 1
+            let axs ← liftCoreM (Lean.collectAxioms name)
+            let axl := axs.toList
+            if axl.any (fun ax => !(allowed.contains ax)) then
+              throwError m!"DISALLOWED_DEFINITION_AXIOMS {name} : {axl}"
+            logInfo m!"AUDIT_DEFINITION {mod} {name} : {axl}"
         | _ => pure ()
   if count == 0 || defs == 0 then throwError "MODULE_NOT_AUDITED"
   logInfo m!"MODULE_AUDIT theorems={count} definitions={defs} union={union}"
@@ -59,15 +63,18 @@ with (OUT/'SafetyAudit.log').open('w') as log:
 log=(OUT/'SafetyAudit.log').read_text()
 rows=re.findall(r'^AUDIT_THEOREM (\S+) (\S+) : (.*)$',log,re.M)
 defs=re.findall(r'^AUDIT_DEFINITION (\S+) (\S+) : (.*)$',log,re.M)
+implementations=re.findall(r'^COMPILER_IMPLEMENTATION_DEFINITION (\S+) (\S+)$',log,re.M)
 totals=re.findall(r'^MODULE_AUDIT theorems=(\d+) definitions=(\d+) union=(.*)$',log,re.M)
 printed=re.findall(r"'([^']+)' (?:depends on axioms|does not depend on any axioms)",log)
 passed=rc==0 and len(totals)==1 and int(totals[0][0])==len(rows) and int(totals[0][1])==len(defs)
 passed=passed and set(names)<=set(r[1] for r in rows) and set(names+definitions)==set(printed)
+passed=passed and set(definitions)<=set(r[1] for r in defs)
 record=dict(status='PASS' if passed else 'FAIL',exit_code=rc,command=argv,cwd=str(BUILD),
             LEAN_PATH=str(BUILD),seconds=time.monotonic()-start,source_sha256=sha(src),
             object_sha256=sha(BUILD/(MODULE+'.olean')),compiler_sha256=sha(LEAN),
             public_theorems=names,public_definitions=definitions,literal_print_count=len(printed),
             all_new_theorem_count=len(rows),all_new_safe_definition_count=len(defs),totals=totals,
+            compiler_implementation_definitions=implementations,
             audit_source_sha256=sha(OUT/'SafetyAudit.lean'),audit_log_sha256=sha(OUT/'SafetyAudit.log'),
             independent_clean_rebuild=False)
 (OUT/'run.json').write_text(json.dumps(record,indent=2)+'\n')
