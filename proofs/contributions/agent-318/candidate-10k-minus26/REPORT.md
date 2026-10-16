@@ -112,3 +112,15 @@ The next substantive task is an exact boundary-state recurrence search for the s
 or an equivalent finite-state conjugacy on the boundary data.
 
 If no such recurrence exists, the exact first divergence should be preserved as a negative result and used to refine the construction search.
+
+## Review note: overlap with the 196 orbit (independent check)
+
+All numbers above were reproduced exactly (closed forms through k=200, the 5000-step screens for k=4..12, the four surviving defects, and the first nonlinear times 15/8/5).
+
+However, the smallest members are not independent of the 196 problem. Comparing against the first 6000 iterates of 196:
+
+- c=26, k=4: 9974 → 14773 → **52514**, which is the 5th iterate of 196 (196 → 887 → 1675 → 7436 → 13783 → 52514).
+- c=4832, k=4: 5168 → **13783**, the 4th iterate of 196.
+- c=4112, k=4: 5888 → 14773 → **52514**, again the 196 orbit.
+
+So for k=4 these "survivals" are just the 196 orbit itself. For k=5..12 no member joined the 196 orbit within 3000 steps. Surviving a few thousand additions is also common for seeds of five or more digits, so this screen is weak evidence; only an exact boundary recurrence would make the family significant.
