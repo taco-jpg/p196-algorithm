@@ -1,0 +1,25 @@
+{
+  "owner": "Agent #15",
+  "toolchain": "Lean 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release",
+  "verification_level": "LEAN-CHECKED; author clean-source rebuild. No independent review or main integration.",
+  "patch": "0002-column-source.patch.xz",
+  "patch_xz_sha256": "ec0514352f85cd51ec8a7606f0133a2ced9a650a4ca39ee68e4690a3c37e4182",
+  "uncompressed_patch_sha256": "350351b0ac6c6c4bc41f2c46888552790b37ce0d98ee5e3022e61e97be4e6f7c",
+  "source_base": "4ebec327707ff89454f4ade3d15ee1eb8dc3ce9c",
+  "apply_policy": "Complete source checkpoint, replacing patch0001 rather than layered over it. xz -dc 0002-column-source.patch.xz > column.patch; git apply --check column.patch; git apply column.patch in an isolated worktree. Main integration remains owned by the integration writer and requires review.",
+  "scope": "The exact mirrored pair-sum windows (10,8,13)->(1,9,12)->(3,9,5)->(6,18,11) and (13,17,3)->(4,12,11)->(9,5,4)->(18,10,9) cannot occur in any ordinary integer reverse-add orbit. These coefficients are not ordinary leading decimal digits. Canonical numeric correspondence is proved, including overlapping widths. A specific projected 42-step/18-overflow loop is rejected; not every period42 certificate. No Lychrel existence or 196 resolution.",
+  "replay": "Stage unchanged PrefixModel.lean and LychrelDigitSums.lean under import names in a NEW empty build directory; copy only the four patched Lean source files, never existing oleans. Compile the six modules in the order below with LEAN_PATH=. lean -j1 -o MODULE.olean MODULE.lean. All commands were executed with exit status0. Every exported theorem has an executed #print axioms line.",
+  "dependencies": [
+    {"module":"PrefixModel", "current_path":"proofs/PrefixModel__412f2902c90e9ba0.lean", "sha256":"8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0", "exit":0, "log_sha256":"9cb715e471d96c58033338e65fdd27ac57ab6a704da50cf498db377697782120"},
+    {"module":"LychrelDigitSums", "source_commit":"2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5", "source_path":"proofs/research/continuation/LychrelDigitSums.lean", "sha256":"ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57", "exit":0, "log_sha256":"dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"}
+  ],
+  "modules": [
+    {"module":"Agent15CarryRestriction", "sha256":"a7a60c2eb293e45e1c39b2e25aa63dc16ccb0f58c9b59c55fa476d5682dd5149", "exit":0, "log_sha256":"df07fc2e4085228886c1cbc4222dc65726986ba6f2bc1ccdad62e81504f01d6a", "axioms":{"fourth_after_small_high_digit":["propext","Quot.sound"],"next_fourth_le_eight":["propext","Quot.sound"],"no_successive_inner_carries":["propext","Quot.sound"],"threshold_five_control":[],"low_carry_zero_control":[]}},
+    {"module":"Agent15FourthColumn", "sha256":"e997c8da813945bb0954ba633ed9a3cf01e208ba0e6330cfad365fa72ec30c76", "exit":0, "log_sha256":"7717dc4a2a77cfac875a01626731957010e6149edebe54f5b3b9bb60d6cc9f88", "axioms":{"project_step":[],"innerCarry_le_one":["propext","Quot.sound"],"fourth_of_overflow":["propext"],"fourth_of_no_overflow":["propext"],"small_high_digit_obstruction":["propext","Quot.sound"],"no_segment30_finite":[],"no_segment34_finite":[],"no_segment30":["propext","Quot.sound"],"no_segment34":["propext","Quot.sound"]}},
+    {"module":"Agent15ProjectedControl", "sha256":"ebef9c1dc2ba07548d106dec15896dd362159d88d980e7d9de30d46ae9c3571a", "exit":0, "log_sha256":"2a9ace5bb243eefb7af8126fb416d54d7a44fcb4fdba09623c2dfefc2f44efca", "axioms":{"row_checks":[],"control_counts":[],"control_has_forbidden_segment":[],"control_segment_has_no_four_column_lift":["propext","Quot.sound"]}},
+    {"module":"Agent15ActualFourthColumn", "sha256":"439bf3f97c5b4e8c4043e574016304b2c637b659fb374861d8022478a20aec94", "exit":0, "log_sha256":"be6fc0a11d7f40621a24cc75ddf2589e67cb6497d524afd16af3ec651b3c0098", "axioms":{"width_four_of_prefix":["propext","Quot.sound"],"actual_window_lift":["propext","Quot.sound"],"no_numeric_segment30":["propext","Quot.sound"],"no_numeric_segment34":["propext","Quot.sound"],"no_orbit_segment30":["propext","Quot.sound"],"no_orbit_segment34":["propext","Quot.sound"],"projected_control_not_numeric":["propext","Quot.sound"],"canonical_width_unique":["propext","Quot.sound"],"canonical_project_unique":["propext","Quot.sound"],"canonical_step_projection":["propext","Quot.sound"],"projectQuad_congr":["propext"],"actual_step_projection":["propext","Quot.sound"]}}
+  ],
+  "preservation": "Exact complete compiler logs, finite experiment raw outputs, failed attempts and reproduction sources remain in the local evidence bundle; this remote source checkpoint is not a claim that all those raw bytes are already published remotely.",
+  "room_delivery": "Unsent: ROOM_ACCESS_BLOCKED. This durable submission is not a discussion acknowledgment or independent reviewer receipt.",
+  "next_action": "Extend to a generic finite-lift rejection checker with numeric soundness, then apply it to a bounded complete three-step catalog; finish separate temporal-profile clean replay and publish that source."
+}
