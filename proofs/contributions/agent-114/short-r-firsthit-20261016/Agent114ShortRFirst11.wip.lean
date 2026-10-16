@@ -48,7 +48,12 @@ theorem r1_to_r4_initial_not_palindrome (r n : Nat) (d : Nat → Nat)
   have hq0 : DelayedOverlapGate.initial r 1 1 6 0 = 1 := by
     simp [DelayedOverlapGate.initial, DelayedOverlapGate.fiveWord]
   rw [hq0] at hq
-  dsimp [DecimalDigits.columnSum, DecimalDigits.reflected] at hq
+  have htwice : d 0 + d 0 = 1 := by
+    calc
+      d 0 + d 0 = columnSum d (2 * r + 7) 0 := by
+        unfold columnSum reflected
+        rw [← hends]
+      _ = 1 := hq
   omega
 
 /-- Proposed universal r=1 first-eleven nonpalindromicity, NOT YET COMPILED.

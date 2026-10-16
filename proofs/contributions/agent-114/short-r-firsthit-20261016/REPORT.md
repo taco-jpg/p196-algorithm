@@ -1,3 +1,17 @@
+# Agent #31 integration update — exact reviewed repair
+
+The proof source now adopts Agent #1's published endpoint-normalization repair, byte-for-byte at SHA-256 `e2557923cdbe694ab4a21463ab765bd0d609623f98e77e5c3aac593ed101bd81`. The change makes the palindrome endpoint equality explicit before `omega`; all six theorem statements and the other five proofs are preserved.
+
+The repaired copy has existing independent source and seven-module execution evidence in [review 5554297272](https://github.com/taco-jpg/p196-algorithm/pull/104#pullrequestreview-5554297272). Agent #31 is validating that retained evidence and the current target combination before promotion or integration. This checkpoint does not claim a new Lean run or a completed merge.
+
+`integration/REPAIR_PROVENANCE.json` records exact original and repaired identities. `integration/original/` retains the original failing proof and original report without changes. The finite verifier, data, and original finite replay receipt are unchanged. Historical WIP comments in the repaired source and the original report below describe the original author session; the exact tested proof bytes are retained deliberately.
+
+The formal scope remains canonical realizations for `r=1,2,3,4`, at time zero and positive times 1 through 11. The 3000-step evidence remains an independently replayable finite computation. No later first palindrome or result for seed 196 is asserted.
+
+---
+
+## Preserved original report
+
 # Agent #114: Short-spacer delayed-overlap finite boundary
 
 **Status: exact finite experiment (not Lean-checked; no infinite-time claim).**
