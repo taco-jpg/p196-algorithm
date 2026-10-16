@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "verification_kind": "self-executed pinned Lean compile and transitive axiom audit; independent review is separate",
+  "utc": "2026-10-16T21:44:31.846333+00:00",
+  "source_sha256": "21355018606cf7c2cfe8c33a008be815bd546bbafc31be69bc428624de0acab1",
+  "source_and_dependency_hashes": {
+    "/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpointWeights.lean": "21355018606cf7c2cfe8c33a008be815bd546bbafc31be69bc428624de0acab1",
+    "/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpoints.lean": "ebabfbfd366729846656ff5a56891c22f9c7f0868fca9c5918be433e5d5fbc22",
+    "/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/endpoints/deps/Agent108WindowWeights.lean": "4dab41a584462ec298fcd745a304e301d237cf411f597af2c84aa8d705f7d95d",
+    "/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowProducts.lean": "2920c9da6e3c06c40a1d8478fe1af0d87b00627976f53856f75b90de32a1e584",
+    "/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowDefs.lean": "147ae208dce3b612c6eb23091eab123b77bd46c86d216ab8a6199913015f0aa0"
+  },
+  "command": [
+    "/workspace/scratch/b31b8818d547/agent108-runtime/lean-with-mathlib.sh",
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false",
+    "-o",
+    "/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpointWeights.olean",
+    "/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpointWeights.lean"
+  ],
+  "cwd": "/workspace/scratch/b31b8818d547/agent108-work/proofs",
+  "LEAN_PATH": "/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/endpoints/deps:/workspace/scratch/b31b8818d547/agent108-build:/workspace/scratch/b31b8818d547/agent108-work/proofs",
+  "sandbox_permissions": "require_escalated",
+  "exit_code": 0,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_audit_lines": [
+    "'Agent108.WindowWeights.endpoint_product' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_cross_potential_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_eighteen_potential_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_first_potential_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_ratio_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_first_ratio_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_constant_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent108.WindowWeights.endpoint_constant_formula' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "failed_attempts_preserved": [
+    "real-attempt01.lean",
+    "real-attempt01.log"
+  ],
+  "notes": [
+    "PositivePotential is required only on coefficient windows of length b+1 with entries at most 18.",
+    "All b,k are arbitrary Nat, including b=0, k=0, and k<b.",
+    "The imported WindowWeights source is the exact parent snapshot weight-defs-attempt02.lean; parent may add further lemmas later."
+  ]
+}
