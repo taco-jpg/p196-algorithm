@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "task_id": "agent5-exact-digit-streams-20261016",
+  "owner": "Agent #5",
+  "subagents": [
+    "/root/research_scout",
+    "/root/lean_runtime",
+    "/root/semantic_review"
+  ],
+  "status": "CLAIMED",
+  "target_statement": "Define executable low 10-adic numerator-over-9 digits via d=((-a)%10).toNat and a'=(a-9*d)/10 and high fractional decimal digits via d=(10*r)/D and r'=(10*r)%D. Prove their exact correspondence to the existing outerNext low/high normalization lists and constant band tails. For nonneutralPhase c and all coefficients B<=18, including B=[], prove stripSuffix of their coordinatewise sum equals the unchanged outerNext word for every cutoff>=B.length+1. Use the actual carry selector first and reuse Agent6's rho threshold for the coordinate-only corollary.",
+  "related_theorems": [
+    "Agent115.ExteriorFactorization.normalize_eq",
+    "Agent115.ExteriorFactorization.lowValue_reverse",
+    "Agent115.ExteriorFactorization.rawSucc_values",
+    "Agent115.ExteriorFactorization.successor_observation"
+  ],
+  "scope_exclusions": [
+    "No duplicate Agent6 gamma/rho floor/threshold proof, signed beta increment, or cycle telescope",
+    "No duplicate Agent115 autonomy/injectivity or finite value-update theorem",
+    "No ordinary-integer all-time bridge, exterior-cycle exclusion, Lychrel or196 claim",
+    "No Agent4/216 Int/Nat-map or Agent411 invariant-domain claim"
+  ],
+  "dependencies": [
+    {
+      "commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+      "modules": [
+        "OuterFinite",
+        "TARGET",
+        "ExteriorFactorizationProof",
+        "ExteriorObservationInjective"
+      ]
+    },
+    {
+      "commit": "fba03a902e0f6b198cbf8f42efa8d11f8f2ba7a6",
+      "module": "ExteriorUpdateLaw",
+      "blob": "db2f3c5ea38b8d49ef7da82631b2ed7a95a29bea",
+      "status": "existing attributed dependency, not new work"
+    },
+    {
+      "owner": "Agent #6",
+      "target": "gamma/rho floor and threshold",
+      "status": "Awaiting published checked interface for coordinate-only selector; literal stream identities can proceed independently."
+    }
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-5/exact-digit-streams-20261016/DigitDefinitions.lean",
+    "proofs/contributions/agent-5/exact-digit-streams-20261016/AdicDigits.lean",
+    "proofs/contributions/agent-5/exact-digit-streams-20261016/FractionDigits.lean",
+    "proofs/contributions/agent-5/exact-digit-streams-20261016/CoordinateStreams.lean"
+  ],
+  "contribution_branch": "research/agent-5/digit-streams-20261016T2108Z",
+  "base_main": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "inspected_coordination_head": "b44424e24375f88456a6c4e63ffb5d859767e82e",
+  "coordination_notice": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6224643589",
+  "ownership_check": "Inspected coordination delta through6fae6e659e5c08c59666588c71a4ed06760de85e and issue61 through6224819449. New claims cover GroupIII, repeated-block normalization, multiplicities and interval counts; none claims literal numerator/fraction digit streams. Agent6 exact floor/threshold/dynamics scope remains excluded.",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; no new digit-stream theorem compiled yet",
+  "last_activity": "2026-10-16T21:15:37.290Z",
+  "remaining_obligation": "Pin dependency closure, develop low/high recursions in separate source files, compile and audit each interface, publish reusable checkpoints and final finite-cutoff theorem.",
+  "main_write_slot": false,
+  "retry_inspection": "Inspected intervening Agent1 progress and Agent103 residual-five claim; no literal-stream overlap. Previous expected-head update did not publish the claim."
+}
