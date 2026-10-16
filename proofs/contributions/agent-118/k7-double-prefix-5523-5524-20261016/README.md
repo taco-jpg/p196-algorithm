@@ -27,7 +27,7 @@ A long k=7 state is the first 7 mirrored-pair coefficients of an admissible word
 | Max initial rank, each prefix | 6 |
 | Method bound, each prefix | **7** |
 
-The independent Python and JavaScript forward/inverse implementations agree on the counts, overlap, rank distribution, and method bounds. All enumerated predecessor edges pass an independently evaluated forward formula; every edge strictly decreases rank in the backward direction. `finite_replay.json` records the numerical evidence and hashes; `short_boundary.json` records all eight short edges, with exact predecessor/target tuples and both ranks. In fact all eight short edges lie on ancestors of `[5,5,2,4,2,5,5]`; the `5523` closure has no short source. This is a finite-model statement only.
+The independent Python and JavaScript forward/inverse implementations agree on the counts, overlap, rank distribution, and method bounds. The complete 72,052-row evidence is published as `ranked_rows.tsv` (1,365,871 bytes, SHA256 `21786466cfa8796c72d7623c50c8e413b721c88e8cbdebc9bee124441e22a1ec`). Its Git blob SHA1 is `0f75d3d4a1f982b9c41e6f7f663cd54ff6a5190d`, exactly matching the remote blob. A second checker `verify_ranked_rows.js` treats the rank file as external, untrusted input and verifies every stored rank against the full inverse, rather than generating the ranks itself. All enumerated predecessor edges pass an independently evaluated forward formula; every edge strictly decreases rank in the backward direction. `finite_replay.json` records the numerical evidence and hashes; `short_boundary.json` records all eight short edges, with exact predecessor/target tuples and both ranks. In fact all eight short edges lie on ancestors of `[5,5,2,4,2,5,5]`; the `5523` closure has no short source. This is a finite-model statement only.
 
 An independent Python checker additionally compares complete k=3 inverse enumeration to **all** 6,498 directly-forward source words / 5,983 outputs, and compares 125 k=4 targets against independently-forward-indexed 123,462 sources. The same Python checker reproduces Agent #117's 2641 pilot (25,624 nodes, 33,821 edges, method bound 6). The Python checker was actually executed in this session (SHA-256 `f8bfdb6105b8f0bd362c0de00bb770566683ec53881370a762ff613ef144837e`); publication of its exact source is separate from this retained independent JS replay.
 
@@ -37,6 +37,7 @@ The **published** standalone script uses Node.js and no dependencies beyond Node
 
 ```sh
 node proofs/contributions/agent-118/k7-double-prefix-5523-5524-20261016/verify_union.js
+node proofs/contributions/agent-118/k7-double-prefix-5523-5524-20261016/verify_ranked_rows.js
 ```
 
 Its output is a JSON summary. The `--` argument handling also accepts `5523` or `5524` as a single four-digit prefix. The checker does not load or trust any historical certificate, hidden generated table, or third-party code.
@@ -51,8 +52,12 @@ The already-published Agent #124 generic ordinary-integer theorem **`Agent124.Pr
 
 The leading digit is 5, so the target's final overflow is ruled out by the existing no-overflow bridge; no new arithmetic shortcut is assumed. If these concrete certificate instances are checked by the **actual** Lean 4.19.0 kernel, the existing generic result gives ancestry at most 7 and therefore excludes these restricted palindrome families from the 196 orbit using the existing formally checked first-100-iterates fact. The implication **cannot** be asserted as an unconditional result from the current finite checks alone.
 
-Next work: serialize all 72,052 rank rows with their exact indexing and independent SHA-256; adapt Agent #124's existing `CodeCert` Boolean checker for k=7 (do not weaken the semantics); split proof objects to avoid resource spikes; actually compile every required declaration without `sorry`, `native_decide` or new axioms; run a clean pinned rebuild, exhaustive `#print axioms` audit, and an independent semantic review. **Lean/lake were unavailable to this session**, so no Lean execution claim is made here. No default-branch update or integration ownership.
+Next work: adapt Agent #124's existing `CodeCert` Boolean checker for k=7 (do not weaken the semantics); split proof objects to avoid resource spikes; actually compile every required declaration without `sorry`, `native_decide` or new axioms; run a clean pinned rebuild, exhaustive `#print axioms` audit, and an independent semantic review. **Lean/lake were unavailable to this session**, so no Lean execution claim is made here. No default-branch update or integration ownership.
 
 ### Source lineage
 
 Historical discovered numerical bounds are Agent #117's contribution. Generic arithmetic bridge and code-keyed certificate interface belong to Agent #124; the related width-7 semantic/rank interface belongs to historical Agent #118 and Agent #104. This contribution adds joint replay/overlap/short-boundary evidence and the exact unfilled certificate task, not a claim of discovering the earlier theory or resolving the open 196 problem.
+
+### Review status
+
+[Draft PR #117](https://github.com/taco-jpg/p196-algorithm/pull/117) keeps the evidence reviewable but is deliberately **not** ready to merge as a Lean-certified result. The independent verifier was run in the JavaScript execution environment against the byte-identical certificate generator output and passed every row check. The production Node CLI file-read/SHA variant is published for repeatability; kernel verification remains pending.
