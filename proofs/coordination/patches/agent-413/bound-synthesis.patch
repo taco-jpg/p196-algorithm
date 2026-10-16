@@ -1,0 +1,187 @@
+diff --git a/proofs/contributions/agent-413/band-bound-synthesis/BoundSynthesis.lean b/proofs/contributions/agent-413/band-bound-synthesis/BoundSynthesis.lean
+new file mode 100644
+index 0000000..3bb9c68
+--- /dev/null
++++ b/proofs/contributions/agent-413/band-bound-synthesis/BoundSynthesis.lean
+@@ -0,0 +1,181 @@
++import CycleBounds
++
++/-!
++Agent #413: a proof-producing preprocessor for the ORIGINAL return checker.
++Only Link.lo and Link.lo' are replaced. States and all supplied trim counts
++are preserved at every relevant index. CoreLocal consists exactly of the
++first nine conjuncts of the original LocalOK, not a new arithmetic model.
++-/
++namespace Agent413.BoundSynthesis
++open Agent109 Agent109.Cert Agent110.Accounting Agent413.CycleBounds
++
++/-- The original local transition, excluding only its four band-bound clauses. -/
++def CoreLocal (s s' : State) (L : Link) : Prop :=
++  Phase s.c ∧ Bounded s.B ∧ Bounded s.A ∧ Bounded s.C ∧
++  tOf s.c + tOf s.c = s'.c ∧
++  Br s.c s.B s.A s.C = s'.B ++ List.replicate L.j s'.c ∧
++  Ar s.c s.B s.A s.C =
++    List.replicate L.j1 s'.c ++ s'.A ++ List.replicate L.j2 (18 - s'.c) ∧
++  Cr s.c s.B s.A s.C =
++    List.replicate L.k (18 - s'.c) ++ s'.C ++ List.replicate L.k (18 - s'.c) ∧
++  ¬ StepPal s.c s.B s.A s.C
++
++instance (s s' : State) (L : Link) : Decidable (CoreLocal s s' L) := by
++  unfold CoreLocal
++  exact inferInstance
++
++theorem localOK_iff_core_bounds (s s' : State) (L L' : Link) :
++    LocalOK s s' L L' ↔ CoreLocal s s' L ∧
++      2 ≤ L.lo ∧ 2 ≤ L.lo' ∧
++      L'.lo + 2 ≤ L.lo + gam s + L.j + L.j1 ∧
++      L'.lo' + 2 ≤ L.lo' + gam s + L.j2 + L.k := by
++  simp only [LocalOK, CoreLocal, and_assoc]
++
++def CoreValid (cert : Certificate) : Prop :=
++  0 < cert.P ∧ ∀ i, i < cert.P →
++    CoreLocal (cert.st i) (cert.st ((i + 1) % cert.P)) (cert.lk i)
++
++def withBounds (L : Link) (g h : Nat) : Link := {L with lo := g, lo' := h}
++
++/-- There are exactly P output links, including when the original input used
++getD defaults. Such defaults retain the exact original trimming semantics. -/
++def setBounds (cert : Certificate) (g h : Nat → Nat) : Certificate :=
++  {states := cert.states,
++   links := (List.range cert.P).map fun i => withBounds (cert.lk i) (g i) (h i)}
++
++@[simp] theorem setBounds_P (cert : Certificate) (g h : Nat → Nat) :
++    (setBounds cert g h).P = cert.P := rfl
++
++@[simp] theorem setBounds_st (cert : Certificate) (g h : Nat → Nat) (i : Nat) :
++    (setBounds cert g h).st i = cert.st i := rfl
++
++theorem setBounds_lk (cert : Certificate) (g h : Nat → Nat) (i : Nat) (hi : i < cert.P) :
++    (setBounds cert g h).lk i = withBounds (cert.lk i) (g i) (h i) := by
++  simp only [setBounds, Certificate.lk, List.getD_eq_getElem?_getD,
++    List.getElem?_map, List.getElem?_range hi, Option.map_some, Option.getD_some]
++  rfl
++
++theorem coreValid_setBounds_iff (cert : Certificate) (g h : Nat → Nat) :
++    CoreValid (setBounds cert g h) ↔ CoreValid cert := by
++  simp only [CoreValid, setBounds_P, setBounds_st]
++  constructor
++  · rintro ⟨hp, hc⟩
++    refine ⟨hp, ?_⟩
++    intro i hi
++    have he := hc i hi
++    rw [setBounds_lk cert g h i hi] at he
++    exact he
++  · rintro ⟨hp, hc⟩
++    refine ⟨hp, ?_⟩
++    intro i hi
++    rw [setBounds_lk cert g h i hi]
++    exact hc i hi
++
++theorem totalG_setBounds (cert : Certificate) (g h : Nat → Nat) :
++    totalG (setBounds cert g h) = totalG cert := by
++  unfold totalG
++  simp only [setBounds_P, setBounds_st]
++  apply sumPrefix_congr
++  intro i hi
++  rw [setBounds_lk cert g h i hi]
++  rfl
++
++theorem totalH_setBounds (cert : Certificate) (g h : Nat → Nat) :
++    totalH (setBounds cert g h) = totalH cert := by
++  unfold totalH
++  simp only [setBounds_P, setBounds_st]
++  apply sumPrefix_congr
++  intro i hi
++  rw [setBounds_lk cert g h i hi]
++  rfl
++
++/-- Deterministic, finite construction; no choice of unproved bounds is made. -/
++def synthesize (cert : Certificate) : Certificate :=
++  setBounds cert
++    (prefixBound (fun i => dg (cert.st i) (cert.lk i)) cert.P)
++    (prefixBound (fun i => dh (cert.st i) (cert.lk i)) cert.P)
++
++theorem coreValid_of_valid (cert : Certificate) (hv : Valid cert) : CoreValid cert := by
++  refine ⟨hv.1, ?_⟩
++  intro i hi
++  exact ((localOK_iff_core_bounds _ _ _ _).1 (hv.2 i hi)).1
++
++/-- All four local bound clauses are discharged by the two exact cyclic gains. -/
++theorem synthesize_valid (cert : Certificate) (hc : CoreValid cert)
++    (hg : 0 ≤ totalG cert) (hh : 0 ≤ totalH cert) : Valid (synthesize cert) := by
++  refine ⟨hc.1, ?_⟩
++  intro i hi
++  change i < cert.P at hi
++  have hn : (i + 1) % cert.P < cert.P := Nat.mod_lt _ hc.1
++  let g := prefixBound (fun i => dg (cert.st i) (cert.lk i)) cert.P
++  let h := prefixBound (fun i => dh (cert.st i) (cert.lk i)) cert.P
++  change LocalOK (cert.st i) (cert.st ((i + 1) % cert.P))
++    ((setBounds cert g h).lk i) ((setBounds cert g h).lk ((i + 1) % cert.P))
++  rw [setBounds_lk cert g h i hi, setBounds_lk cert g h _ hn]
++  apply (localOK_iff_core_bounds _ _ _ _).2
++  refine ⟨hc.2 i hi, ?_, ?_, ?_, ?_⟩
++  · exact prefixBound_ge_two _ _ _ (by omega)
++  · exact prefixBound_ge_two _ _ _ (by omega)
++  · have hb := prefixBound_feasible (fun i => dg (cert.st i) (cert.lk i))
++      cert.P hc.1 hg i hi
++    change (g ((i + 1) % cert.P) : Int) ≤ (g i : Int) + dg (cert.st i) (cert.lk i) at hb
++    dsimp only [withBounds]
++    unfold dg at hb
++    omega
++  · have hb := prefixBound_feasible (fun i => dh (cert.st i) (cert.lk i))
++      cert.P hc.1 hh i hi
++    change (h ((i + 1) % cert.P) : Int) ≤ (h i : Int) + dh (cert.st i) (cert.lk i) at hb
++    dsimp only [withBounds]
++    unfold dh at hb
++    omega
++
++/-- Completeness of the original finite Boolean test. -/
++theorem original_check_complete (cert : Certificate) (hv : Valid cert) : check cert = true := by
++  unfold check
++  rw [Bool.and_eq_true]
++  refine ⟨decide_eq_true_iff.mpr hv.1, ?_⟩
++  apply List.all_eq_true.mpr
++  intro i hi
++  exact decide_eq_true_iff.mpr (hv.2 i (List.mem_range.mp hi))
++
++/-- Exact contract: preprocessing succeeds in the ORIGINAL checker iff its
++unchanged local geometry is valid and both signed total gains are nonnegative. -/
++theorem synthesize_check_iff (cert : Certificate) :
++    check (synthesize cert) = true ↔
++      CoreValid cert ∧ 0 ≤ totalG cert ∧ 0 ≤ totalH cert := by
++  constructor
++  · intro h
++    have hv := check_sound (synthesize cert) h
++    refine ⟨(coreValid_setBounds_iff cert _ _).mp (coreValid_of_valid _ hv), ?_, ?_⟩
++    · have hg := totalG_nonneg _ hv
++      simpa only [synthesize, totalG_setBounds] using hg
++    · have hh := totalH_nonneg _ hv
++      simpa only [synthesize, totalH_setBounds] using hh
++  · rintro ⟨hc, hg, hh⟩
++    exact original_check_complete _ (synthesize_valid cert hc hg hh)
++
++/-- Acceptance of some reassignment of the bounds is equivalent to acceptance
++of our explicit reassignment. No search for lo/lo' is necessary. -/
++theorem bounds_exist_iff_synthesis (cert : Certificate) :
++    (∃ g h : Nat → Nat, check (setBounds cert g h) = true) ↔
++      check (synthesize cert) = true := by
++  constructor
++  · rintro ⟨g, h, hb⟩
++    have hv := check_sound _ hb
++    apply (synthesize_check_iff cert).2
++    refine ⟨(coreValid_setBounds_iff cert g h).1 (coreValid_of_valid _ hv), ?_, ?_⟩
++    · simpa only [totalG_setBounds] using totalG_nonneg _ hv
++    · simpa only [totalH_setBounds] using totalH_nonneg _ hv
++  · intro hs
++    exact ⟨_, _, hs⟩
++
++#print axioms localOK_iff_core_bounds
++#print axioms setBounds_lk
++#print axioms coreValid_setBounds_iff
++#print axioms totalG_setBounds
++#print axioms totalH_setBounds
++#print axioms synthesize_valid
++#print axioms original_check_complete
++#print axioms synthesize_check_iff
++#print axioms bounds_exist_iff_synthesis
++end Agent413.BoundSynthesis
