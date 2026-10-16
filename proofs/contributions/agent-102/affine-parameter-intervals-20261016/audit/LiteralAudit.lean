@@ -1,4 +1,4 @@
-import Agent102ParameterSetDecisions
+import Agent102ParameterSetControls
 
 #print axioms Agent102.Affine.eval_zero
 #print axioms Agent102.Affine.eval_add
@@ -120,3 +120,23 @@ import Agent102ParameterSetDecisions
 #print axioms Agent102.ParameterSets.hasNonpalindromicParameter_spec
 #print axioms Agent102.ParameterSets.everyParameterPalindromic_spec
 #print axioms Agent102.ParameterSets.everyParameterNonpalindromic_spec
+#print axioms Agent102.ParameterSetControls.twoIsolated_certificate
+#print axioms Agent102.ParameterSetControls.twoIsolated_exact
+#print axioms Agent102.ParameterSetControls.boundedEmpty_certificate
+#print axioms Agent102.ParameterSetControls.boundedEmpty_exact
+#print axioms Agent102.ParameterSetControls.middleHole_certificate
+#print axioms Agent102.ParameterSetControls.middleHole_exact
+#print axioms Agent102.ParameterSetControls.interiorZero_certificate
+#print axioms Agent102.ParameterSetControls.interiorZero_exact
+#print axioms Agent102.ParameterSetControls.clippedSum_certificate
+#print axioms Agent102.ParameterSetControls.clippedSum_exact
+#print axioms Agent102.ParameterSetControls.badDigit_certificate
+#print axioms Agent102.ParameterSetControls.badDigit_exact
+#print axioms Agent102.ParameterSetControls.literalZero_certificate
+#print axioms Agent102.ParameterSetControls.literalZero_exact
+#print axioms Agent102.ParameterSetControls.boundedPalindrome_certificate
+#print axioms Agent102.ParameterSetControls.boundedPalindrome_exact
+#print axioms Agent102.ParameterSetControls.hugeHole_certificate
+#print axioms Agent102.ParameterSetControls.hugeHole_exact
+#print axioms Agent102.ParameterSetControls.hugeDeclining_certificate
+#print axioms Agent102.ParameterSetControls.hugeDeclining_exact
