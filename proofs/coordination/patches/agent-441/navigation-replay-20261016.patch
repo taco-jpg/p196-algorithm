@@ -1,0 +1,145 @@
+diff --git a/README.md b/README.md
+index f6d97cae12054c2bec6842b80a7498a2f5a21bc2..0536c0cda5bd398caf06f034b6d0aa0f6cb3b8b3 100644
+--- a/README.md
++++ b/README.md
+@@ -9,7 +9,21 @@ Directory organization, byte checks, finite computations, and conditional theore
+ - [Research results and corresponding source](proofs/RESULTS.md)
+ - [Status and limitations](proofs/STATUS.md)
+ - [Open problems](proofs/OPEN_PROBLEMS.md)
+-- The exact bytes of the original root README, its copyright notices, and production-computation records are preserved at the archive paths identified in `SOURCE_MAP.json`; this file does not change the original license.
++- The exact bytes of the original root README, its copyright notices, and production-computation records are preserved at the archive paths identified in [proofs/SOURCE_MAP.json](proofs/SOURCE_MAP.json); this file does not change the original license.
+ - `.github/` remains in the platform location required by GitHub.
+ 
+ All older versions can still be located through the migration manifests and preservation tags. Do not simply delete research files that appear redundant.
++
++## Find the right layer
++
++| Location | Start here | Interpretation |
++|---|---|---|
++| Current research | [Research entry point](proofs/README.md), then the result's source and review records | Selected source is not automatically a checked theorem. |
++| Computational products | [Product guide](calculation/README.md) and the exact release package | Retained software and historical performance records are separate from proof status. |
++| Historical evidence | [Original trees and versions](proofs/archive/) and [migration records](proofs/archive/migration/) | Preserve the original statement, dependencies, dates, and evidence labels. |
++| English reading copies | [Translation guide](proofs/english/README.md) | A reading copy does not replace the byte-identical archived original or its verification record. |
++| Automation | [Workflow sources](.github/workflows/) | Inspect the workflow's trigger, source revision, and scope before interpreting a run. |
++
++Historical guides can name paths that no longer exist in the flattened checkout. Follow the [original-layout replay instructions](proofs/README.md#verification-using-the-original-layout), not an improvised path substitution. A current status summary and a historical report answer different questions.
++
++Contributors must follow [AGENTS.md](AGENTS.md) and the [publication policy](proofs/PUBLICATION_POLICY.md). Keep the designated integration writer separate from documentation authors; retain provenance-bearing patches and original bytes rather than overwriting shared work.
+diff --git a/calculation/README.md b/calculation/README.md
+index 66d5842fa68f37eeee62402047d7662d5d506dd5..510c9efba3f0866056270085d3102c7da23e47e4 100644
+--- a/calculation/README.md
++++ b/calculation/README.md
+@@ -1,5 +1,17 @@
+ # Computational products
+ 
+-This directory retains all computational versions classified by content, not just the latest ZIP. Byte-distinct versions of the same path are stored in `history`; the migration manifests record their original branches, commits, and paths.
++This directory retains all computational versions classified by content, not just the latest ZIP. Byte-distinct versions of the same path are stored in [history](history/); the migration manifests record their original branches, commits, and paths.
+ 
+ The archived original README and the documentation inside each release package remain authoritative for older production versions and performance records. The directory migration does not start, upgrade, or modify production computations, checkpoints, or GPU processes. All ZIP files retain their original compressed bytes and are not repackaged.
++
++## Locate a retained product
++
++| Location | Role | Verification boundary |
++|---|---|---|
++| [196-Engine-Fixed.html](196-Engine-Fixed.html) | Retained HTML computational product | Its presence is not evidence of a new browser or engine test. |
++| `lychrel196_*.zip` and `math_v6.zip` in this directory | Original compressed release packages | Read the documentation for the exact package; a filename is not a recommendation to deploy it. |
++| [history/](history/) | Byte-distinct versions retained under separate paths | The same original filename can identify different bytes. Use the migration record to select the intended version. |
++
++The [archived original root README](../proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/README.md) retains the original production instructions, notices, and reported measurements. [SOURCE_MAP.json](../proofs/SOURCE_MAP.json) locates original-mainline paths; the [migration records](../proofs/archive/migration/) describe the broader version collection. Do not interpret a newer directory timestamp as a newer benchmark or extrapolate a finite computation to an infinite-time result.
++
++Before comparing two packages, record their retained paths and hashes, original source references, and the hardware/configuration used by any cited measurement. Inspect or extract a copy when needed; retain the published ZIP bytes unchanged. This guide neither starts a workload nor validates a checkpoint, GPU run, or release binary. Mathematical evidence is documented separately in the [research entry point](../proofs/README.md).
+diff --git a/proofs/README.md b/proofs/README.md
+index 15d570ab8b6652b2ee11fb187bdd9d17a7e6536c..c42329ee41ffc3f930f4d76b6e7affd47203e30a 100644
+--- a/proofs/README.md
++++ b/proofs/README.md
+@@ -8,7 +8,9 @@ Original mainline baseline: `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`.
+ 
+ ## Verification using the original layout
+ 
+-Existing scripts may depend on the original paths. `replay_original_layout.py` reconstructs that layout in a new temporary directory outside the repository, preferring matching current source from this directory and checking each file's hash without modifying the current working tree.
++Existing scripts may depend on the original paths. [replay_original_layout.py](replay_original_layout.py) reconstructs that layout in a new temporary directory outside the repository. For each mapped path it selects `current` when present, otherwise `preserved`, and verifies the recorded SHA-256 before copying. A changed selected source is an error: the wrapper does not silently switch to a historical version after a hash mismatch.
++
++Run from the repository root in a disposable Git checkout, with Python 3, Git, and the required Lean executable available:
+ 
+ ```sh
+ python3 proofs/verify_project.py --lean /absolute/path/to/lean --project consolidation-core --output /absolute/new/output/directory
+@@ -16,3 +18,23 @@ python3 proofs/verify_release.py
+ ```
+ 
+ These commands replay the corresponding checks for the original mainline; they do not claim to cover newly selected source or every historical project. Each other current source must retain its own independent verification commands and dependencies in the migration-check records. The cleanup tool's independent preservation verifier separately checks the entire migrated tree; the old release check is not a substitute.
++
++### Prerequisites and workspace behavior
++
++The checkout must contain the Git commit named by `SOURCE_MAP.json`'s `base` field. At this documentation snapshot that is the original mainline baseline above. A source ZIP alone is insufficient: the wrapper uses `git rev-parse`, a shared local clone, and `git read-tree`. A shallow checkout missing the baseline object cannot perform this reconstruction. Check object availability before the replay:
++
++```sh
++git cat-file -e '2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5^{commit}'
++```
++
++The wrapper prints `Original-layout check workspace (retained): ...`. It keeps that workspace for inspection, runs the supplied command from the reconstructed **repository root**, and propagates the child command's exit status. Wrapper setup errors exit with status 2. A printed workspace path alone does not mean the requested check passed. Historical checkers may write logs and build products there; inspect their source and resource requirements before running them.
++
++The generic interface is `python3 proofs/replay_original_layout.py -- COMMAND ARGUMENTS...`. It does not change into `proofs/` or `proofs/research/` for the child. Commands in an older guide must retain their documented working-directory assumptions inside the reconstructed workspace. [verify_project.py](verify_project.py) and [verify_release.py](verify_release.py) are forwarding wrappers for their original-layout counterparts, not independent whole-repository verifiers.
++
++### Locate a report without changing its evidence
++
++[FINDINGS.md](FINDINGS.md), [REPORTS.md](REPORTS.md), [REPRODUCE.md](REPRODUCE.md), and [CONSOLIDATION.md](CONSOLIDATION.md) preserve earlier checkpoints and can contain original-layout links. Use [SOURCE_MAP.json](SOURCE_MAP.json) to translate a known original path into its selected current and preserved locations; use the [migration records](archive/migration/) for other retained source versions. Do not guess a module's dependencies from a collision-suffixed filename.
++
++Keep [publication scope](PUBLICATION_SCOPE.md), [release statistics](release_stats.json), [validation records](VALIDATION.json), and [accepted-build records](ACCEPTED_BUILD.json) attached to their own snapshots and checks. A historical manifest is not a freshly generated inventory of the reorganized checkout. Hash preservation, a source build, an axiom audit, and independent mathematical review are distinct evidence levels. Pending branch results do not become integrated merely because they have been published.
++
++Command descriptions here were inspected against source commit `9de08d78db6526e2ce2dd66cedd5e63f600424bd`. They are not a new execution of the original mainline checks or a new Lean verification claim. Source changes require a fresh check of these instructions and of the mapping; do not edit hash-covered historical guides merely to repair current navigation.
+diff --git a/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/README.md b/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f6d97cae12054c2bec6842b80a7498a2f5a21bc2
+--- /dev/null
++++ b/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/README.md
+@@ -0,0 +1,15 @@
++# P196: reverse-and-add research and computation archive
++
++The current research entry point is [proofs/README.md](proofs/README.md). All computational products are in [calculation](calculation/README.md), and original and historical materials are preserved in [proofs/archive](proofs/archive).
++
++Directory organization, byte checks, finite computations, and conditional theorems do not prove an infinite-time conclusion about 196. Each file retains its own evidence classification; cleanup must not relabel "archived" as "proved".
++
++## Verification and recovery
++
++- [Research results and corresponding source](proofs/RESULTS.md)
++- [Status and limitations](proofs/STATUS.md)
++- [Open problems](proofs/OPEN_PROBLEMS.md)
++- The exact bytes of the original root README, its copyright notices, and production-computation records are preserved at the archive paths identified in `SOURCE_MAP.json`; this file does not change the original license.
++- `.github/` remains in the platform location required by GitHub.
++
++All older versions can still be located through the migration manifests and preservation tags. Do not simply delete research files that appear redundant.
+diff --git a/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/calculation/README.md b/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/calculation/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..66d5842fa68f37eeee62402047d7662d5d506dd5
+--- /dev/null
++++ b/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/calculation/README.md
+@@ -0,0 +1,5 @@
++# Computational products
++
++This directory retains all computational versions classified by content, not just the latest ZIP. Byte-distinct versions of the same path are stored in `history`; the migration manifests record their original branches, commits, and paths.
++
++The archived original README and the documentation inside each release package remain authoritative for older production versions and performance records. The directory migration does not start, upgrade, or modify production computations, checkpoints, or GPU processes. All ZIP files retain their original compressed bytes and are not repackaged.
+diff --git a/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/proofs/README.md b/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/proofs/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..15d570ab8b6652b2ee11fb187bdd9d17a7e6536c
+--- /dev/null
++++ b/proofs/archive/documentation-originals/9de08d78db6526e2ce2dd66cedd5e63f600424bd/proofs/README.md
+@@ -0,0 +1,18 @@
++# Current research entry point
++
++This directory retains the current source selected during the reorganization. A byte-identical historical original is preserved separately for every source version. A historical tree is not the current proof, and a timestamp is not evidence of validity.
++
++[Results directory](RESULTS.md) · [Status](STATUS.md) · [Open problems](OPEN_PROBLEMS.md) · [Source mapping](SOURCE_MAP.json)
++
++Original mainline baseline: `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`.
++
++## Verification using the original layout
++
++Existing scripts may depend on the original paths. `replay_original_layout.py` reconstructs that layout in a new temporary directory outside the repository, preferring matching current source from this directory and checking each file's hash without modifying the current working tree.
++
++```sh
++python3 proofs/verify_project.py --lean /absolute/path/to/lean --project consolidation-core --output /absolute/new/output/directory
++python3 proofs/verify_release.py
++```
++
++These commands replay the corresponding checks for the original mainline; they do not claim to cover newly selected source or every historical project. Each other current source must retain its own independent verification commands and dependencies in the migration-check records. The cleanup tool's independent preservation verifier separately checks the entire migrated tree; the old release check is not a substitute.
