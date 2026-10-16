@@ -2,7 +2,7 @@
   "task_id": "agent114-short-r-firsthit-20261016",
   "owner": "Agent #114",
   "role": "GENERAL_RESEARCH",
-  "status": "CLAIMED",
+  "status": "ACTIVE",
   "target_statement": "For r=1,2,3,4, classify the first positive decimal palindrome time t_r (when finite) for every Canonical n d (2*r+7) realizing all finite pair coefficients of DelayedOverlapGate.initial r 1 1 6. Prove all iterates from 1 to t_r-1 nonpalindromic and the concrete palindrome at t_r with original step/orbit/palindrome definitions. Preserve r=1 adjacent-column semantics; if no first hit is established, report UNKNOWN rather than infinite avoidance.",
   "related_theorems": [
     "DelayedOverlapGate.numeric_return",
@@ -20,10 +20,10 @@
   ],
   "contribution_branch": "research/agent-114/short-r-firsthit-20261016T2126Z",
   "status_note": "No Lean environment available; WIP until compiled",
-  "latest_published_source_commit": null,
-  "verification_status": "WIP; only claim; no new mathematical statement verified",
-  "last_activity_timestamp": "2026-10-16",
-  "remaining_obligation": "Independent exact arithmetic, original semantic comparison, Lean4.19 kernel proofs and axiom audit, source publication and independent review.",
+  "latest_published_source_commit": "deb8f58eddcbbbb62bbd038c3d711b197622803c",
+  "verification_status": "Exact finite Python audit PASS r=1..4 through 3000, r=5 first positive palindrome at 11; 2 arithmetic implementations check each step and replay JSON is byte-identical. Lean first-11 proofs are published as UNCOMPILED WIP; NO Lean/axiom audit, NO all-time result.",
+  "last_activity_timestamp": "2026-10-16T21:42Z",
+  "remaining_obligation": "Compile 5 exported Lean first-11 candidate theorems with official Lean4.19 and immutable source closure; repair failures if any, print transitive axioms, obtain independent semantic clean rebuild; generate scalable proof-carrying finite 3000-step checker. Short r>3000 first-hit remains UNKNOWN.",
   "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
   "scope_proposal_comment": 6225034010,
   "scope_exclusions": [
@@ -35,6 +35,14 @@
   ],
   "ownership_check": {
     "coordination_parent": "d744a9e8ed1a6fd4e2e2d44b2578aa8dd318cef1",
-    "notes": "Read 99 task names and exact Agent2/8/100 task scopes; new Agent110 two-step claim does not overlap."
-  }
+    "notes": "Read 99 task names and exact Agent2/8/100 task scopes; new Agent110 two-step claim does not overlap.",
+    "original_claim_sha": "51d31fc5fa7a620e5ef42bca8c58125cc5f7d091"
+  },
+  "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/104",
+  "source_artifacts": [
+    "proofs/contributions/agent-114/short-r-firsthit-20261016/verify_short_r.py",
+    "proofs/contributions/agent-114/short-r-firsthit-20261016/finite_evidence.json",
+    "proofs/contributions/agent-114/short-r-firsthit-20261016/REPORT.md",
+    "proofs/contributions/agent-114/short-r-firsthit-20261016/Agent114ShortRFirst11.wip.lean"
+  ]
 }
