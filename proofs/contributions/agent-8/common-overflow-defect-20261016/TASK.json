@@ -1,0 +1,62 @@
+{
+  "task_id": "agent8-common-overflow-defect-20261016",
+  "owner": "Agent #8",
+  "role": "LEAN FORMALIZATION",
+  "status": "ACTIVE_FORMALIZATION",
+  "source_snapshot": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "source_claim": {
+    "id": "A8-C01",
+    "original_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "path": "proofs/research/main_existence_attempt/renewal_pass/constructive/STATUS.md",
+    "git_blob": "d684dc1865a3e59e1c699ad1ec28a4dbec0a74e2",
+    "section": "2. General common-overflow antisymmetric digit-defect transport"
+  },
+  "target_statement": "For any equal-width finite coefficient inputs q,s of old width L whose actual normalized old-column digit difference e is antisymmetric under i -> L-1-i, and whose actual terminal carries agree at h in {0,1}, prove their actual paired-successor coefficient difference is (1-x^h)e, using zero extension of e. Include both overflow boundary columns, no-overflow cancellation, overflow injectivity/noncancellation for e != 0, and ordinary-decimal representation corollaries with explicit canonical premises. No pair equation is assumed.",
+  "dependencies": [
+    {
+      "module": "PairResponse",
+      "path": "proofs/PairResponse__18d2d58355ed97f4.lean",
+      "git_blob": "b7e822e798d873e9b51f7e97eb9c4c78821bd1c2"
+    },
+    {
+      "module": "SeamCoefficients",
+      "path": "proofs/SeamCoefficients__e73d67d37698e702.lean",
+      "git_blob": "b4200954f47c13d30890673ecab7092578537fe5"
+    },
+    {
+      "module": "RawSymmetryObstruction",
+      "path": "proofs/RawSymmetryObstruction__5c1be305a04af2b7.lean"
+    },
+    {
+      "module": "DelayedOverlapGate",
+      "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff"
+    }
+  ],
+  "assigned_subagents": [
+    "transport_semantics: statement review and arithmetic nonvacuity controls",
+    "runtime_audit: exact dependency baseline and independent clean rebuild",
+    "coverage_census: bounded claim census; reusable follow-up targets"
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-8/common-overflow-defect-20261016/"
+  ],
+  "inventory": "proofs/contributions/agent-8/common-overflow-defect-20261016/COVERAGE.json",
+  "contribution_branch": "formalize/agent-8/common-overflow-defect-20261016",
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "scope_proposal_comment": 6224648392,
+  "ownership_parent": "ecb251ce1d2e079dc22b9149f3dfd654f8335beb",
+  "scope_exclusions": [
+    "No Agent100 Group II repair ownership",
+    "No Agent2 first-hit-eleven or overflow-fiber ownership",
+    "No Agent3/7/9 fiber-counting ownership",
+    "No overwrite of Agent107 source or original gate definitions",
+    "No main-write slot",
+    "No all-time avoidance, finite-certificate instance, or P196 existence claim"
+  ],
+  "publication_authority": "Current direct assignment explicitly requests isolated contribution branches and incremental source publication.",
+  "verification_status": "WIP: statement semantic review complete; pinned runtime Std smoke passed; exact dependency baseline running; no new theorem compiled yet.",
+  "latest_published_source_commit": null,
+  "last_activity": "2026-10-16 21:04:34 UTC",
+  "remaining_obligation": "Complete exact coefficient transport, derive finite-difference injectivity and ordinary numerical representation, test nonzero admissible witness, clean rebuild and audit all dependencies."
+}

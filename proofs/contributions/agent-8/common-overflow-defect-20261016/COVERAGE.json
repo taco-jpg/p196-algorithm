@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "agent": "Agent8 coverage-census specialist",
+  "snapshot": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "verification": "Read-only bounded primary-source census; no new mathematical source written and no Lean execution performed.",
+  "summary": "Ten concrete remaining source claims or partially formalized chains; prefer A8-C01 or A8-C02 for a small fresh lane. All absence claims are limited to the inspected corpus and search coverage below.",
+  "sources": {
+    "renewal_constructive": {
+      "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/research/main_existence_attempt/renewal_pass/constructive/STATUS.md",
+      "blob": "d684dc1865a3e59e1c699ad1ec28a4dbec0a74e2"
+    },
+    "tails": {
+      "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/research/main_existence_attempt/renewal_pass/tails/STATUS.md",
+      "blob": "00f3e3fed54ee8f3823038b10289523d2a2f1aa8"
+    },
+    "gate_lifetimes": {
+      "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/contributions/2026-10-14-overlap-gate/EXACT_GATE_LIFETIMES.md",
+      "blob": "37604dd2e76ce9e21f8571c5417e0348ed7770cf"
+    },
+    "separation": {
+      "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/contributions/2026-10-14-overlap-gate/SEPARATION_EXHAUSTION.md",
+      "blob": "58d9e4d01f997d2f2fef5d2cabbd9eb298a1d2bd"
+    },
+    "density": {
+      "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/contributions/2026-10-14-finite-horizon-density/README.md",
+      "blob": "6d6d188df78e26eb6ffdde6ebc3bdb6fc749eb9c"
+    },
+    "language": {
+      "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/research/main_existence_attempt/renewal_pass/language/METHOD_AND_PROOF.md",
+      "blob": "9f33d0d3d1a135664b52f7128b0090bbf9b105ff"
+    },
+    "variable_return": {
+      "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/research/main_existence_attempt/continuation_pass/variable_return/VARIABLE_RETURN_THEOREMS.md",
+      "blob": "af8a18bf44cebf0fa56904338087d2f58f15de19"
+    }
+  },
+  "dependencies": {
+    "foundation": {
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "endpoints": [
+        "FoldedDecimal.representation_next",
+        "FoldedDecimal.BadWord",
+        "OverflowCarryNormalization.iterPairs_representation",
+        "DecimalWidthGrowth.lower_potential_step",
+        "DecimalWidthGrowth.width_lower_potential"
+      ]
+    },
+    "gate": {
+      "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+      "endpoints": [
+        "DelayedOverlapGate.carry_certificate",
+        "DelayedOverlapGate.numeric_return",
+        "DelayedOverlapGate.numeric_two_step_safety",
+        "DelayedOverlapGate.columnSum_eq_of_antisymmetric_difference"
+      ]
+    },
+    "first_hit_four": {
+      "path": "proofs/FirstHitFour__1466d67a549686d8.lean",
+      "blob": "c164aed12dc1df1774e004895bda812567753bfa",
+      "endpoints": [
+        "P196.Agent12.FirstHitFour.returned_carry",
+        "P196.Agent12.FirstHitFour.third_pairs_low",
+        "P196.Agent12.FirstHitFour.numeric_first_hit_four",
+        "P196.Agent12.FirstHitFour.realized_first_hit_four"
+      ]
+    },
+    "pair_delay": {
+      "path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+      "blob": "070a329cc676c8e83fafec5d711f06140e87d9d6",
+      "endpoints": [
+        "PairDelayBridge.S",
+        "PairDelayBridge.palindrome_iff_bad",
+        "PairDelayBridge.firstBad_iff_positive_hit"
+      ]
+    },
+    "decimal_delay": {
+      "path": "proofs/DecimalDelayBridge__83037365a26a750b.lean",
+      "blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df"
+    },
+    "safe_delay": {
+      "path": "proofs/SafeDelay__bc8a973241f692fd.lean",
+      "blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60"
+    },
+    "finite_horizon": {
+      "path": "proofs/FiniteHorizonBlocks__de01e0bf306b4eaa.lean",
+      "blob": "6e715fe012e239d3e69ad2bba50461031f8dd634",
+      "endpoints": [
+        "FiniteHorizonBlocks.blockLength",
+        "FiniteHorizonBlocks.mirroredNines_safe_prefix"
+      ]
+    },
+    "overflow_safe_runs": {
+      "path": "proofs/OverflowSafeRuns__e1d0c0648fbc6e55.lean",
+      "blob": "e73d072c98bbb983a0de288601e3f3971b7e8d33"
+    },
+    "decimal_safe_runs": {
+      "path": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+      "blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78"
+    },
+    "pair_response": {
+      "path": "proofs/PairResponse__18d2d58355ed97f4.lean",
+      "blob": "b7e822e798d873e9b51f7e97eb9c4c78821bd1c2",
+      "endpoints": [
+        "Agent107.PairResponse.nextColumns_actualCoeff",
+        "Agent107.PairResponse.pair_response"
+      ]
+    },
+    "seam_coefficients": {
+      "path": "proofs/SeamCoefficients__e73d67d37698e702.lean",
+      "blob": "b4200954f47c13d30890673ecab7092578537fe5"
+    },
+    "period_obstructions": {
+      "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+      "blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+      "endpoints": [
+        "Agent8.stepWord",
+        "Agent8.exterior_bounds",
+        "Agent8.path_potential_bounds"
+      ]
+    },
+    "eleven_prefix": {
+      "path": "proofs/archive/versions/15979183760c8440eda67ad95531449c4c58a1d692b4ac15cc8bb0a33fab1edf/proofs/contributions/agent-12/ElevenCarries.lean",
+      "blob": "6f60c5ebcc3c925a488052723b93b542090da305",
+      "endpoints": [
+        "P196.Agent12.FirstHitEleven.carries",
+        "P196.Agent12.FirstHitEleven.width_transition",
+        "P196.Agent12.FirstHitEleven.next_from_carries"
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "id": "A8-C01",
+      "priority": 1,
+      "title": "Common-overflow transport of an antisymmetric normalization defect",
+      "source": "renewal_constructive",
+      "location": "Section 2, lines 78–108",
+      "claim": "For equal-width inputs, let e be their normalized-digit difference in the old L columns. If rev_L(e)=-e and the terminal carry is the same h in {0,1}, their paired-output difference is exactly (1-x^h)e. In particular h=0 cancels, while h=1 and e!=0 imply distinct paired successors.",
+      "coverage": "Existing DelayedOverlapGate.columnSum_eq_of_antisymmetric_difference proves the no-overflow cancellation principle. Its release checker explicitly records global_overflow_transport_p_ge_5_formalized=false. Agent107.PairResponse gives actual-width pairing, but does not state the two-input transport law. Complete indexed search for 'antisymmetric' returned 57 paths and only the old gate mathematical module plus duplicates/audits.",
+      "dependencies": [
+        "foundation",
+        "gate",
+        "pair_response"
+      ],
+      "feasible_target": "A universal signed coefficient identity on indices 0..L, with the zero extension of e and a finite-difference nonvanishing corollary; then specialize to the existing gate defect. Avoid assuming the desired paired-output equation.",
+      "effort": "Small to medium",
+      "ownership": "No matching current Agent2/3 scope. Current Agent4–7 claim refresh still required. Does not own overflow fiber counting or Agent3's no-neutral list-normalization formula.",
+      "disposition": "ACTIVE_FORMALIZATION",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C02",
+      "priority": 2,
+      "title": "Exact decimal endpoints for the three all-spacer first-hit-four families",
+      "source": "tails",
+      "location": "Lines 39–54; also gate_lifetimes section 'Three cores terminate at the fourth addition'",
+      "claim": "For every canonical realization of initial r 1 u v, cores (2,5),(2,6),(3,5), r>=2, the fourth iterate is respectively 88·0^(r−2)·1906091/1992991/1796971·0^(r−2)·88. At r=1 the endpoints are respectively 899060998, 899929998, 897969798.",
+      "coverage": "FirstHitFour already proves exact FirstPositiveHit n 4 and positive realizations. Its source header and CONTRACT explicitly leave the displayed endpoint-string formulas separate. Do not re-prove or claim ownership of the timing theorem.",
+      "dependencies": [
+        "first_hit_four",
+        "gate",
+        "pair_delay",
+        "foundation"
+      ],
+      "feasible_target": "Strengthen the known returned-carry calculation to exact third pair coefficients, identify the no-carry fourth output, and prove the numeric value/string formula for every realization including r=1 overlap.",
+      "effort": "Small to medium",
+      "ownership": "Historical Agent12 time4 ownership excludes these endpoint-string claims. Fresh current claims must still be checked.",
+      "disposition": "UNFORMALIZED",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C03",
+      "priority": 4,
+      "title": "Complete the actual first-hit-eleven chain for core (1,6)",
+      "source": "tails",
+      "location": "Timing row line33, endpoint line50; full eleven-row proof in gate_lifetimes",
+      "claim": "For every r>=5 and every Canonical n d (2*r+7) whose pair word is DelayedOverlapGate.initial r 1 1 6, DecimalDelayBridge.FirstPositiveHit n 11. Supply positive realizability; do not assume carry correctness, transitions, safety or the final hit.",
+      "coverage": "Archived ElevenCarries proves actual carry certificates for t<10, width transitions, and a generic next formula, universally with r=k+5 including k=0. PREFIX_STATUS explicitly leaves next-pair identities, safety, final classification, ordinary-orbit induction and realization unfinished. Current main indexed FirstHitEleven search returned only this prefix module, its audits/manifest and historical claim.",
+      "dependencies": [
+        "eleven_prefix",
+        "gate",
+        "pair_delay",
+        "decimal_delay",
+        "foundation"
+      ],
+      "feasible_target": "Finish ten concrete nextColumns identities using the existing certificate, prove BadWord false at stages0..9 and true at stage10, compose through representation_next, then derive FirstPositiveHit and existence.",
+      "effort": "Medium; concrete stagewise work",
+      "ownership": "HISTORICAL OWNERSHIP CHECK NEEDED: retained agent12-first-hit-eleven task blob5f98bc9da490995ee525f634957e130576076f83 says ACTIVE_FORMALIZATION, branch formalize/agent-12/20261015-census. Do not treat old absence from current source as released ownership.",
+      "disposition": "ACTIVE_OTHER_AGENT",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C04",
+      "priority": 3,
+      "title": "The fourteen additional group-II/group-III two-step overlap gates",
+      "source": "renewal_constructive",
+      "location": "Section1 lines25–76",
+      "claim": "For all r>=1,p∈1..4, the additional seven group-II cores 5<=u<=8,v∈{5,6},u+v<=13 and seven group-III cores10<=u<=13,v∈{5,6},u+v<=18 give genuine safe two-step repairs. The exact returned components have r−1 gaps and the six-column cores stated in rows38–39.",
+      "coverage": "Current DelayedOverlapGate formalizes only group I: u>=1,v>=5,u+v<=8. Existing return_not_in_domain excludes reuse of that six-core Domain only. No exact wider group formula was found in the inspected current Lean names/declarations or targeted search.",
+      "dependencies": [
+        "gate",
+        "pair_delay",
+        "foundation"
+      ],
+      "feasible_target": "Add a new domain without altering the old one; prove actual carries, the exact antisymmetric defects and component/whole two-step returns, both positive-step safety, and realizability. A complete 'only80 of2430' classification is a further target, not supplied by proving the positive14 new cases.",
+      "effort": "Medium",
+      "ownership": "No matching current Agent2/3 scope; respect earlier gate authors. Current Agent4–7 claim refresh required.",
+      "disposition": "PARTIALLY_ACTIVE_OTHER_AGENT",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C05",
+      "priority": 5,
+      "title": "Four actual double-repair families and the uniform failure of their third repair",
+      "source": "renewal_constructive",
+      "location": "Sections3–4 lines110–161",
+      "claim": "With p=1, initial cores (1,6), r>=1, and (5,6),(6,6),(10,6), r>=2, actual overlap fails at times1/3, returns at2/4, and every ordinary output through4 is nonpalindromic. The proposed time6 return fails: component outer coefficient14 versus whole outer coefficient15, including the sole valid zero-gap boundary (1,6,r=1).",
+      "coverage": "The older gate's two-step identity does not prove these broader handoffs; the written note states this explicitly. Searches 'two-gate handoffs' and 'third gate' found written/Python records and the old third-palindrome criterion, not an actual six-step mismatch theorem.",
+      "dependencies": [
+        "gate",
+        "foundation",
+        "period_obstructions"
+      ],
+      "feasible_target": "A useful first slice is the universal two-step boundary mismatch for a canonical component starting16,0 and its canonical shift-one overlap; prove the exceptional16,1 boundary too. The full time6 theorem additionally requires exact time4 component identities from the four source rows.",
+      "effort": "Medium",
+      "ownership": "No matching current Agent2/3 scope. Must not claim all possible later returns excluded.",
+      "disposition": "UNFORMALIZED",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C06",
+      "priority": 6,
+      "title": "Exact separated-block whole-word dynamics and palindrome criterion",
+      "source": "separation",
+      "location": "Sections 'Exact block theorem' and 'An exact palindrome test during separation'",
+      "claim": "For canonical symmetric B,H and g>=1, Q=B 0^g H 0^g B^R. Let e,h be isolated final overflows, delta=max(e,h), D=N(H). Then G(Q)=G(B) 0^(g−delta) H' 0^(g−delta) rev(G(B)), where H'=x^(delta−e)D+x^(m+delta−1)D(x^-1), with exact widths and canonicality. N(Q) is palindromic iff e=h and N(B),N(H) are both palindromic.",
+      "coverage": "The written report expressly says the block theorem is not formalized. Existing actual normalization, partition response and palindrome-predecessor bridges supply ingredients. Indexed 'separation' search was capped at100 results; its only returned Lean result was unrelated UniformEscape.long_gap_split. No whole-word separated transition was found in targeted scans.",
+      "dependencies": [
+        "foundation",
+        "pair_response"
+      ],
+      "feasible_target": "Prove zero-gap-length-at-least-one carry reset and normalization concatenation; reflect at the actual L+e width; split four overflow cases; retain g=1 and positive central endpoints. Do not extend independence to g=0.",
+      "effort": "Medium to large",
+      "ownership": "No matching current Agent2/3 scope; no ancestry-run theorem duplication.",
+      "disposition": "UNFORMALIZED",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C07",
+      "priority": 7,
+      "title": "Sharp finite exhaustion of a separated zero spacer",
+      "source": "separation",
+      "location": "Sections 'No fixed finite spacer remains positive forever' and '(1,7) gate consequence'",
+      "claim": "The first zero-spacer time satisfies tau<=4*g0+P(a0)−3<=4*g0+1, with the published lower-width potential P. In the (1,7) gate, r>=2 gives tau<=4r−3; r=1 starts at zero. This does not assert a palindrome occurs at collision.",
+      "coverage": "DecimalWidthGrowth.lower_potential_step and width_lower_potential already prove the needed arithmetic potential. The report explicitly leaves the particular separated-word corollary unformalized. No current Lean exhaustion result was located in the capped indexed 'exhaustion' search.",
+      "dependencies": [
+        "foundation"
+      ],
+      "feasible_target": "After A8-C06 establishes actual separated dynamics, sum exterior overflow consumption against the existing width-potential inequality and derive the finite hitting bound. An abstract gap-budget lemma alone must be labeled as a supporting lemma, not the full actual-word result.",
+      "effort": "Small after A8-C06; medium with bridge",
+      "ownership": "Distinct from completed RunAncestry extinction (one0/18-run ancestry) and from Agent3 central18 persistence.",
+      "disposition": "UNFORMALIZED",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C08",
+      "priority": 8,
+      "title": "Exact block-avoidance counting and finite-horizon density bounds",
+      "source": "density",
+      "location": "Lines10–112; limits lines114–152",
+      "claim": "For L,H>=1, m=floor(L/2), r=min(2H−1,floor(7(H−1)/4)+2), J=floor(max(m−1,0)/r), the number of canonical L-digit seeds with no selected mirrored-nine block is9*10^(L−1−2rJ)*(10^(2r)−1)^J. Thus positive hits by H have fraction at most(1−10^(−2r))^J, with the exact initial-palindrome intersections/refinements in equations(4),(5). The source also proves density-one avoidance for fixedH and H(L)=max(1,floor(c log10 L)),0<c<2/7.",
+      "coverage": "FiniteHorizonBlocks.mirroredNines_safe_prefix already proves the deterministic actual-integer implication. Its header and README explicitly exclude counting and limits. Both current Counting files are byte-identical Agent13SafeFamily safe-predecessor counting (blob85fa09bce849b3292bddc23329ec493a2f345956), not ensemble block counting.",
+      "dependencies": [
+        "finite_horizon",
+        "overflow_safe_runs",
+        "decimal_safe_runs",
+        "foundation"
+      ],
+      "feasible_target": "Start with finite exact cardinality/bijection and integer inequality, avoiding analytic infrastructure. Reals, logarithms and limits form a larger follow-up requiring a separately pinned suitable library or explicit elementary sequence-limit development.",
+      "effort": "Medium for exact finite count; large for logarithmic limit",
+      "ownership": "Uses prior run theorem with attribution; does not overlap Agent3's specified5/14/18 fiber family. Fresh Agent4–7 claims required.",
+      "disposition": "UNFORMALIZED",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C09",
+      "priority": 9,
+      "title": "No finite symmetric-difference repair makes F10 forward closed",
+      "source": "language",
+      "location": "Lines84–121",
+      "claim": "For r>=5 the explicit folded A_r->B_r->C_r->Q_r ladder has first positive hit times14,13,12,11. Consequently C_r∈F10 but G(C_r)=Q_r∉F10, with widths2r+6 and2r+7. Every language differing from F10 at finitely many words has some such failure beyond its largest changed width, so is not forward closed.",
+      "coverage": "PairDelayBridge formalizes predecessor-tested S2 and exact delay semantics, but not these all-r ladder identities. The written language report retains the finite-edit theorem as written proof. Indexed F10 results returned written/Python records, not a full Lean F10 theorem.",
+      "dependencies": [
+        "pair_delay",
+        "safe_delay",
+        "eleven_prefix",
+        "foundation"
+      ],
+      "feasible_target": "Prove the three actual all-r ladder transitions and nonpalindromic outputs; complete/reuse A8-C03 forQ_r; derive exact delays and S2 membership; finish with a finite-set width-max argument. Generic finite-edit set reasoning alone is not the whole claim.",
+      "effort": "Large unless firsthit11 is supplied",
+      "ownership": "Depends on historical Agent12 firsthit11 work; coordinate that boundary. No ownership of Agent2/9 general fiber bounds.",
+      "disposition": "UNFORMALIZED",
+      "accepted_lean_theorems": []
+    },
+    {
+      "id": "A8-C10",
+      "priority": 10,
+      "title": "Variable-time additive affine returns stabilize to one safe tail time",
+      "source": "variable_return",
+      "location": "Section1 lines16–95",
+      "claim": "For a canonical fixed finite run-symbol family Q_k with positive affine lengths, total slope A>0 and fixed positive additive update s, eventual existence of positive returns G^tau(k)(Q_k)=Q_(k+s) implies one t andK working for allk>=K. If the supplied segments are safe, choose t uniformly safe. No multiplicative update claim.",
+      "coverage": "The source explicitly excludes this reduction from its Lean claims; its three-zero exterior theorem is separately formalized. Existing width potential yields tau<=4*A*s. No current affine-run normalization/stabilization theorem was located in filename/declaration and indexed searches.",
+      "dependencies": [
+        "foundation",
+        "period_obstructions"
+      ],
+      "feasible_target": "Formalize eventual fixed affine-run shape under one true normalization/pairing, unique positive RLE and eventual affine equality dichotomy. Combine finitely many candidate times bounded by4*A*s and the analogous eventual safety dichotomy.",
+      "effort": "Large; substantial RLE infrastructure",
+      "ownership": "Fresh Agent4–7 claims required; don't confuse with historical Agent7 PR79 documentation correction.",
+      "disposition": "UNFORMALIZED",
+      "accepted_lean_theorems": []
+    }
+  ],
+  "excluded_as_already_covered": [
+    "Exact first-hit-four timing and realizability: FirstHitFour blobc164aed12dc1df1774e004895bda812567753bfa.",
+    "Maximal0/18-run exact descendants/no merging and ancestry extinction: RunAncestry blobcdabce887a7f2ca952447f01bd99a2fe30855b81; old FINDINGS written-only description is stale.",
+    "General raw partition response: Agent107.PairResponse/PartitionDefect; old full-polynomial-written-only labels cannot establish a present gap.",
+    "Agent13 safe integer predecessor counts: both current Counting variants are same blob85fa09bce849b3292bddc23329ec493a2f345956.",
+    "Agent2 all-width overflow fiber upper/sharp bounds, Agent3 protected5/14/18 finite-horizon family, and prior Agent9 no-overflow fiber results are excluded per parent/issue61 ownership."
+  ],
+  "corpus": {
+    "tree_inventory": {
+      "tracked_paths": 13711,
+      "current_direct_lean_paths": 1814,
+      "original_research_files": 1770,
+      "original_research_md_txt": 169,
+      "path": "/tmp/agent8-tree-paths.txt"
+    },
+    "policy_reads": [
+      "AGENTS.md",
+      "proofs/README.md",
+      "proofs/OPEN_PROBLEMS.md",
+      "proofs/STATUS.md",
+      "proofs/PUBLICATION_POLICY.md",
+      "proofs/CONSOLIDATION.md"
+    ],
+    "indexes_inspected": [
+      "proofs/FINDINGS.md: claim/gap-bearing rows and late additions",
+      "proofs/REPORTS.md: structure and relevant report links",
+      "proofs/RESULTS.md: current source names; migration classifications are not proof statuses",
+      "proofs/ACCEPTED_BUILD.json:38modules/fivefamilies; catalogue_complete=false",
+      "proofs/REPRODUCE.md: gate and relevant scoped evidence"
+    ],
+    "original_reports": [
+      "proofs/research/main_existence_attempt/renewal_pass/constructive/STATUS.md",
+      "proofs/research/main_existence_attempt/renewal_pass/tails/STATUS.md",
+      "proofs/contributions/2026-10-14-overlap-gate/EXACT_GATE_LIFETIMES.md",
+      "proofs/contributions/2026-10-14-overlap-gate/SEPARATION_EXHAUSTION.md",
+      "proofs/contributions/2026-10-14-finite-horizon-density/README.md",
+      "proofs/research/main_existence_attempt/renewal_pass/language/METHOD_AND_PROOF.md",
+      "proofs/research/main_existence_attempt/continuation_pass/variable_return/VARIABLE_RETURN_THEOREMS.md"
+    ],
+    "lean_inspected": [
+      "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "proofs/FirstHitFour__1466d67a549686d8.lean",
+      "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+      "proofs/SafeDelay__bc8a973241f692fd.lean",
+      "proofs/FiniteHorizonBlocks__de01e0bf306b4eaa.lean",
+      "proofs/PairResponse__18d2d58355ed97f4.lean",
+      "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+      "proofs/archive/versions/15979183760c8440eda67ad95531449c4c58a1d692b4ac15cc8bb0a33fab1edf/proofs/contributions/agent-12/ElevenCarries.lean",
+      "proofs/Counting__30deb60dd72b6def.lean",
+      "proofs/Counting__6c2b07b0a2bfd92a.lean",
+      "proofs/OuterBlock__f3eeca89d7075870.lean",
+      "proofs/SaturationTheorem__3e87d543382b99c0.lean",
+      "proofs/RunAncestry__5f2702512ad8719e.lean",
+      "proofs/PartitionDefect__ce8354389152c8ed.lean",
+      "proofs/RawSymmetryObstruction__5c1be305a04af2b7.lean"
+    ],
+    "indexed_queries": [
+      "DelayedOverlapGate",
+      "finite horizon counting",
+      "affine run",
+      "F10",
+      "first hit eleven",
+      "separated block",
+      "finite symmetric difference",
+      "affine successor",
+      "twenty central gates",
+      "two-gate handoffs",
+      "third gate",
+      "overflow transport",
+      "FirstHitEleven",
+      "antisymmetric",
+      "separation",
+      "exhaustion",
+      "density",
+      "stabilize",
+      "saturated language"
+    ],
+    "indexed_query_limits": "Usually top10–15. Expanded queries antisymmetric=57,FirstHitEleven=4,stabilize=18,saturated language=53 returned uncapped under top100; separation/exhaustion/density each reached100 and are not complete result sets. Rate-limited antisymmetric/separation calls were retried successfully. Query 'fourteen fifteen' stayed rate-limited and supplied no evidence.",
+    "coordination": "Read issue61-startup.json with140comments through6224478897; fresh claims outside this snapshot not checked. Historical Agent12 task/prefix records read separately."
+  },
+  "known_gaps": [
+    "The partial clone has tree objects but no checkout; lazy blob access uses a failing proxy. Main blobs were read by the supported GitHub connector, with exact hashes returned. No mutation/fetch performed by this specialist.",
+    "No whole-current-Lean textual grep was possible yet; all1814 current Lean filenames were inventoried, with selected full source/declaration inspection and indexed searches.",
+    "SOURCE_MAP.json and INVENTORY.json fetches returned empty content, apparently API size limits; their source hashes alone were observed. They were not used as a completed census.",
+    "Seven original reports were deeply read for target detail: four under research/ and three under contributions/. The original research/ subtree alone has169Markdown/text notes, so many research, contribution and branch result families remain outside this scoped census.",
+    "All missing-proof statements mean no matching full theorem was located in this inspected snapshot/corpus, not a proof of repository-wide absence.",
+    "Fresh p196/coordination and current Agent4–7 claim records remain parent responsibilities before mathematical ownership."
+  ],
+  "current_task": "agent8-common-overflow-defect-20261016",
+  "coordination_claim_commit": "464ff3d33ed5d1cdefdbe3e5e0c78992ec062efc",
+  "current_refresh": {
+    "whole_current_direct_lean_text_sweep": true,
+    "query": "antisym|global_overflow_transport|same.*overflow.*defect|defect.*transport",
+    "result": "Found old no-overflow gate cancellation and written transport references; no general overflow transport declaration. Archived source was inspected selectively, not exhaustively.",
+    "new_ownership": {
+      "A8-C01": "Agent #8 ACTIVE_FORMALIZATION",
+      "A8-C03": "Agent #2 claimed exact first-hit-eleven on coordination branch",
+      "A8-C04": "Agent #100 owns Group II and its (1,6) double-gate application; Group III still unclaimed in last inspected records",
+      "A8-C05": "Agent #100 owns (1,6) four-step composition; remaining families not claimed here"
+    }
+  },
+  "exhaustive_census_complete": false
+}
