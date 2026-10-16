@@ -1,0 +1,37 @@
+Branch checkpoint
+=================
+Main completed result:
+  astra_counting_safe_image_fibers.txt
+  astra_counting_safe_fiber_certificate.py
+  astra_counting_safe_fiber_certificate.json
+
+These give an arbitrary-length proof that two safe incoming inverse
+layers plus any fixed future avoidance horizon do not lower the sharp
+overflow fiber exponential rate. All claims and quantifiers are stated
+in the main note. No positive decimal Lychrel proof was found.
+
+Exploratory exact inverse machinery:
+  astra_counting_image_depth.py
+  astra_counting_image_depth_results.json
+
+The predecessor generator was compared with exhaustive forward images
+through input width6. Its numerical depth counts include both incoming
+overflow schedules. They are finite data, not asymptotic theorems.
+
+Third no-overflow layer checkpoint:
+  astra_counting_nooverflow_depth.py
+  astra_counting_nooverflow_depth_results.json
+
+For target half-words beginning14 and then using only5/14, the exact
+determinized automata for d=1,2,3 incoming no-overflow layers have4,16,65
+states. For d=2 all16 carry states form one closed component. This is
+the source of the main theorem's arbitrary-prefix correction method.
+For d=3 there are64 carry states and an empty rejecting state. The
+64-state component has leakage to rejection, so that particular
+all-prefix correction argument fails. This observation is specific to
+the5/14 alphabet and the all-no-overflow incoming schedule; it supplies
+no upper bound on fibers allowing other alphabets or overflow schedules.
+
+The third-layer alternative-alphabet search was not started. No process
+is left running. All files in this branch use the astra_counting_ prefix;
+canonical Lean files and other agents' files were not modified.
