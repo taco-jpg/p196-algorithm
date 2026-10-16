@@ -115,10 +115,27 @@ by the diagnostic, including `eraseDups` and preservation of `e.carries`.
 - `Agent1PeriodicOuterChoices.lean` snapshot SHA256:
   `9bd84fb0c22b2252fb71f0310fe763e6a07192ef0fb80299763459ab48fb76ad`.
 
-These snapshots may precede final proof freeze. Only literal data and definition
-bodies are compared; Lean compilation, theorem adequacy, and axioms are outside
-this diagnostic review. `compare_lean_data.py` can bind unchanged data to a later
-frozen source without repeating the archived1,458-edge replay.
+The subsequent chunked-source rebind is retained in `lean-data-002/`, for Catalog
+SHA256 `d2733f0f4373969985e91e969e7c76e2f32e9bf20483b696d6bb186c2b846365`.
+The Choices source is unchanged. The independent parser expands the **actual
+public append expressions**, in their written order, using their59 named
+literal node blocks and59 named literal edge blocks. It rejects repeated,
+missing, undefined, unused, or mixed-phase blocks. It does not trust the
+author's chunk generator or assume a numeric block ordering.
+
+The expanded878-node and1,458-labelled-edge arrays equal both the original
+archive and the preserved `lean-data-001/` source, with exact ordering and all
+labels. Their serialized SHA256 values remain exactly
+`cc488b212f8fd622b47db4f0da91fd396127090fbb2097debaf8ec938341bff1` and
+`3c93c099cd4cb1eaf21db8709746e121379ea693ac446dae0febe6ced249622b` respectively.
+`lean-data-002/append-expansion.json` retains every actual block reference,
+block size, and phase order. Both source snapshots, both verification receipts,
+and the exact comparison script for each version are preserved. No1,458-edge
+formula replay was repeated for this representation-only rebind.
+
+Only literal data and definition bodies are compared; Lean compilation, theorem
+adequacy, and axioms remain outside this diagnostic review. The parser can bind
+unchanged data to a later proof freeze without repeating the archive diagnostic.
 
 ## Reproduce without graph discovery
 
