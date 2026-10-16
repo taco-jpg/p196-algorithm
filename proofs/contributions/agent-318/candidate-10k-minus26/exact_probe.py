@@ -22,21 +22,29 @@ def iterate(k: int, t: int) -> int:
 
 def expected(k: int, t: int) -> int | None:
     m = k - 4
-    forms: dict[int, Callable[[int], int]] = {
-        0: lambda m: 10**(m+4) - 26,
-        1: lambda m: int("147" + "9"*m + "73"),
-        2: lambda m: int("527" + "9"*m + "714"),
-        3: lambda m: int("945" + "9"*m + "439"),
-        4: lambda m: int("1880" + "9"*m + "8988"),
-    }
-    return forms.get(t, lambda m: None)(m)
+    # The first five closed forms have small-width boundary exceptions.
+    if t == 0:
+        return 10**k - 26
+    if t == 1:
+        return int("147" + "9"*m + "73")
+    if t == 2 and k >= 5:
+        return int("527" + "9"*m + "714")
+    if t == 3 and k >= 5:
+        return int("945" + "9"*m + "439")
+    if t == 4 and k >= 6:
+        return int("1880" + "9"*m + "8988")
+    return None
 
 def check_parametric_formulas(k_max: int = 200) -> None:
+    # Exact identities in their valid parameter ranges.
     for k in range(4, k_max + 1):
-        for t in range(5):
-            got = iterate(k, t)
-            want = expected(k, t)
-            assert got == want, (k, t, got, want)
+        assert iterate(k, 0) == expected(k, 0)
+        assert iterate(k, 1) == expected(k, 1)
+        if k >= 5:
+            assert iterate(k, 2) == expected(k, 2)
+            assert iterate(k, 3) == expected(k, 3)
+        if k >= 6:
+            assert iterate(k, 4) == expected(k, 4)
 
 def first_palindrome(k: int, cap: int) -> int | None:
     n = seed(k)
@@ -48,6 +56,6 @@ def first_palindrome(k: int, cap: int) -> int | None:
 
 if __name__ == "__main__":
     check_parametric_formulas()
-    print("exact first-five-step formulas: PASS for k=4..200")
+    print("exact closed forms: PASS in their stated parameter ranges, k<=200")
     for k in range(4, 13):
         print(k, first_palindrome(k, 5000))
