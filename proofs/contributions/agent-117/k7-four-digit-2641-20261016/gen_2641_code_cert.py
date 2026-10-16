@@ -27,7 +27,7 @@ from legacy_prefix_cycles import Pred  # noqa: E402
 # This file reads untrusted finite rows. An actual Lean kernel must verify them.
 K_REQUIRED = 7
 PREFIX_REQUIRED = (2, 6, 4, 1)
-RANK_TABLE = os.path.join(os.path.dirname(HERE), "rank_rows_k7_2641.tsv")
+RANK_TABLE = os.path.join(HERE, "rank_rows_k7_2641.tsv")
 
 def read_published_rank_table(path=RANK_TABLE):
     rows = {}
