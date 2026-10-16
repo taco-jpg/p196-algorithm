@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "project": "Agent #9: one-step ordinary digit-sum collapse",
+  "scope": "The scalar consequence of strengthening_notes section8, universally over canonical framedNine realizations, and positive witnesses with arbitrarily large input digit sum and canonical width but next digit sum2. Original family, realization, step value and two-step behavior are reused unchanged.",
+  "new_modules": [
+    "Agent9OneStepDigitSumCollapse"
+  ],
+  "roots": [
+    "Agent9OneStepDigitSumCollapse"
+  ],
+  "modules": {
+    "LychrelDigitSums": {
+      "base": "repository",
+      "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports": [
+        "Std"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/continuation/LychrelDigitSums.lean"
+      },
+      "preserved_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/continuation/LychrelDigitSums.lean",
+      "authorship": "Unchanged original continuation or renewal stream; recorded Git author sodium-qed."
+    },
+    "IncomingCarrySensitivity": {
+      "base": "repository",
+      "path": "proofs/IncomingCarrySensitivity__5d4952e23e746f6d.lean",
+      "sha256": "52850d75999a8fdad298e2e9da638965472ab6507f88630bf428698576ac631f",
+      "git_blob": "9ccc745471fd509fb68652fef40454478087e92e",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/renewal_pass/lean/incoming_carry/IncomingCarrySensitivity.lean"
+      },
+      "preserved_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/main_existence_attempt/renewal_pass/lean/incoming_carry/IncomingCarrySensitivity.lean",
+      "authorship": "Unchanged original continuation or renewal stream; recorded Git author sodium-qed."
+    },
+    "RawSymmetryObstruction": {
+      "base": "repository",
+      "path": "proofs/RawSymmetryObstruction__771d98886cbf5f19.lean",
+      "sha256": "922b660e5b3ac42389cd6ea00885075327d4b44fb315b9cc496e1323890e9c87",
+      "git_blob": "9d4250f3e5daa5ff26f097a7e12ce98830dd9e89",
+      "imports": [
+        "IncomingCarrySensitivity"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean"
+      },
+      "preserved_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/main_existence_attempt/renewal_pass/lean/raw_symmetry/RawSymmetryObstruction.lean",
+      "authorship": "Unchanged original continuation or renewal stream; recorded Git author sodium-qed."
+    },
+    "IntrinsicSeam": {
+      "base": "repository",
+      "path": "proofs/IntrinsicSeam__32ebb990c7babba0.lean",
+      "sha256": "de764dffc4d72b3060c3648339116adc4cfeb3d425a2edd5ef4e42056ec36b20",
+      "git_blob": "b72b5862529a698bccd9f43edc4c60e2123e381f",
+      "imports": [
+        "RawSymmetryObstruction"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/continuation_pass/lean/IntrinsicSeam.lean"
+      },
+      "preserved_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/main_existence_attempt/continuation_pass/lean/IntrinsicSeam.lean",
+      "authorship": "Unchanged original continuation or renewal stream; recorded Git author sodium-qed."
+    },
+    "SeamAnnihilation": {
+      "base": "repository",
+      "path": "proofs/SeamAnnihilation__a630ce7ec4e960bb.lean",
+      "sha256": "2cab9cc7cf887bbeddcdca2be2fc8d3816ce10e3f71b9028ba492b4985d94cb1",
+      "git_blob": "e4ac85235d683c7877cb9adaf6e038816cf32038",
+      "imports": [
+        "IntrinsicSeam"
+      ],
+      "historical_provenance": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "path": "proofs/research/main_existence_attempt/continuation_pass/lean/SeamAnnihilation.lean"
+      },
+      "preserved_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/main_existence_attempt/continuation_pass/lean/SeamAnnihilation.lean",
+      "authorship": "Unchanged original continuation or renewal stream; recorded Git author sodium-qed."
+    },
+    "Agent9OneStepDigitSumCollapse": {
+      "base": "package",
+      "path": "Agent9OneStepDigitSumCollapse.lean",
+      "sha256": "d9cb44e04c4f4bdbda42d7f877afeabd6e0c59cb085dfc023598707c7d0177db",
+      "git_blob": "a36a7c75aaf87d0ac72571286cbbdb8ba9a70134",
+      "imports": [
+        "SeamAnnihilation"
+      ],
+      "authorship": "Agent #9/horizon-safety; ordinary digit-sum scalar formalization only."
+    }
+  },
+  "endpoints": [
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_prefix_wordSum",
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_wordSum",
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_realization_digitSum_double",
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_realization_digitSum",
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_output_prefix_wordSum",
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_realization_step_digitSum",
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_realization_digitSums",
+    "P196.Agent9.OneStepDigitSumCollapse.framedNine_digitSums_realized",
+    "P196.Agent9.OneStepDigitSumCollapse.arbitrarily_large_digitSum_and_width",
+    "P196.Agent9.OneStepDigitSumCollapse.arbitrarily_large_digitSum"
+  ]
+}
