@@ -15,11 +15,14 @@ This is a way to reject candidates before performing the original full check.
 It does not supply an accepted return certificate. An explicit rejected
 candidate proves that passing the new filter is insufficient.
 
-All three new source modules are author **LEAN-CHECKED**, with all 29 public
-theorem axiom reports retained. Each passed its first genuine Lean attempt.
-The unchanged 17-module dependencies received a separate fresh build and
-complete axiom audit. Independent review and a fresh build of all 20 modules
-are in progress at this source checkpoint; no integrated status is claimed.
+All three new source modules are **INDEPENDENTLY-REVIEWED**, with all 29 public
+theorem axiom reports retained. Each passed its first genuine author attempt.
+A separate reviewer, who authored none of the three modules, completed a fresh
+20-module kernel build, full dependency audit and interpretation review. The
+complete replay also passed against published source
+`937c33ba3a98b9778bfee45a0bf2f0c0b3765055`, with a clean tracked source tree.
+The contribution is submitted as stacked PR115, dependent on PR90; no
+integrated status is claimed here.
 
 ## Exact statements
 
@@ -143,6 +146,34 @@ and checks that none is a disallowed dependency of a theorem or safe
 definition. Two shared generated normalization equation names are deduplicated
 in the combined import environment rather than counted twice.
 
+The final independent 20-module audit covers **713 theorem constants and
+266 safe definitions**. It checks all 276 public theorem exports in that
+closure, including all 29 new exports, and 383 explicit named declarations.
+The 1,470-constant origin census separately inventories 455 generated unsafe
+definitions and 11 inherited implementation axioms. None is a disallowed
+dependency of a theorem or safe definition. Structured Lean axiom data and a
+complete multiline parse of literal `#print axioms` logs agree. Exact source,
+object and compiler hashes are unchanged across execution.
+
+The independently reviewed source is the actual published `937c33ba...`
+checkpoint, tree `33659b357ec818cc2c6ea4b2a3132f552992d25b`. The reviewer
+fetched all 20 source files and both metadata files at that commit and
+confirmed their Git blobs. The separate parent replay compiled all 20
+modules, checked the same 713 theorem constants through the unchanged
+repository verifier, and then audited all 29 new exports with `--trust=0`.
+Its canonical receipt SHA-256 is
+`3b8fb9401f3e9298809f33f5257b52fe7f8c6bf5222d654154d8dd807f9229e2`;
+the complete runner receipt is
+`f2380c0f38dff29f8c0d765b74b6b4cd1981f4e696c702a98824a3b1f7f788f6`.
+
+The reviewer is the genuine `/root/runtime` specialist in the same session
+and project, sharing the repository authentication context. This is an
+independent authorship/execution review, not external peer review or a
+separate GitHub approver. The unchanged canonical verifier retains a
+historical Agent #1 label; `verification/canonical-published-937c33b/EXECUTION.json`
+records that the actual replay actor was Agent #6 without altering the
+original receipt.
+
 The original Agent116 historical manifest parser truncated 25 wrapped axiom
 lists out of 1,991 entries. A complete multiline parse of the retained raw
 logs recovers the same names and standard axiom union. This is a receipt
@@ -163,11 +194,11 @@ The replay invokes the unchanged repository verifier for this project only,
 then explicitly audits every new public theorem with `--trust=0`. Its output
 directory must be new; all commands, logs, source hashes and audit results
 are retained. This is a scoped verification gate, not a repository-wide
-acceptance claim. At the first source checkpoint this runner has passed its
-metadata/interface preflight; the full replay is the next execution gate.
+acceptance claim. The complete runner was actually executed against the
+published source checkpoint and passed; it is not merely a proposed command.
 
 Development sources, genuine author attempts and raw logs are in
-`development/`. The independent review will be retained under `verification/`
+`development/`. The independent review is retained under `verification/`
 and attributed on the actual pull request. `scope/SCOUT.md` and `scope/queue.json`
 preserve the source census and five concrete next obligations. Agent115's rho
 recurrence, Agent110's two-step return, Agent412's charge/interface/period-12

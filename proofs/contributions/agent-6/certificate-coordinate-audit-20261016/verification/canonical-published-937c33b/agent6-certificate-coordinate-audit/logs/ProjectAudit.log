@@ -1,0 +1,957 @@
+Agent6.CertificateCoordinates.rowOuter_orbit (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert)
+  (n : Nat) :
+  Agent6.ExteriorCoordinates.outerIter n (Agent6.CertificateCoordinates.rowOuter cert 0) =
+    Agent6.CertificateCoordinates.rowOuter cert (n % cert.P)
+Agent6.CertificateCoordinates.rowOuter_orbit_of_lt (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert)
+  (i : Nat) (hi : i < cert.P) :
+  Agent6.ExteriorCoordinates.outerIter i (Agent6.CertificateCoordinates.rowOuter cert 0) =
+    Agent6.CertificateCoordinates.rowOuter cert i
+Agent6.CertificateCoordinates.rowOuter_closed (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Agent6.ExteriorCoordinates.outerIter cert.P (Agent6.CertificateCoordinates.rowOuter cert 0) =
+    Agent6.CertificateCoordinates.rowOuter cert 0
+Agent6.CertificateCoordinates.rowSum_eq_orbitSum (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert)
+  (f : P196.Agent7.Finite.Outer → Int) :
+  Agent110.Accounting.sumPrefix (fun i => f (Agent6.CertificateCoordinates.rowOuter cert i)) cert.P =
+    Agent6.ExteriorCoordinates.orbitSum f (Agent6.CertificateCoordinates.rowOuter cert 0) cert.P
+Agent6.CertificateCoordinates.rowContributionSum_eq_contributionSum (cert : Agent109.Cert.Certificate)
+  (hv : Agent109.Cert.Valid cert) :
+  Agent6.CertificateCoordinates.rowContributionSum cert =
+    Agent6.ExteriorCoordinates.contributionSum (Agent6.CertificateCoordinates.rowOuter cert 0) cert.P
+Agent6.CertificateCoordinates.valid_row_contribution_sum_eq_zero (cert : Agent109.Cert.Certificate)
+  (hv : Agent109.Cert.Valid cert) : Agent6.CertificateCoordinates.rowContributionSum cert = 0
+Agent6.CertificateCoordinates.checked_row_contribution_sum_eq_zero (cert : Agent109.Cert.Certificate)
+  (hc : Agent109.Cert.check cert = true) : Agent6.CertificateCoordinates.rowContributionSum cert = 0
+Agent6.CertificateCoordinates.valid_row_both_signs (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  (∃ i, i < cert.P ∧ 0 < Agent6.CertificateCoordinates.rowContribution cert i) ∧
+    ∃ j, j < cert.P ∧ Agent6.CertificateCoordinates.rowContribution cert j < 0
+Agent6.CertificateCoordinates.checked_row_both_signs (cert : Agent109.Cert.Certificate)
+  (hc : Agent109.Cert.check cert = true) :
+  (∃ i, i < cert.P ∧ 0 < Agent6.CertificateCoordinates.rowContribution cert i) ∧
+    ∃ j, j < cert.P ∧ Agent6.CertificateCoordinates.rowContribution cert j < 0
+Agent6.CertificateCoordinates.checked_coordinate_conditions (cert : Agent109.Cert.Certificate)
+  (hc : Agent109.Cert.check cert = true) :
+  Agent6.CertificateCoordinates.rowContributionSum cert = 0 ∧
+    (∃ i, i < cert.P ∧ 0 < Agent6.CertificateCoordinates.rowContribution cert i) ∧
+      ∃ j, j < cert.P ∧ Agent6.CertificateCoordinates.rowContribution cert j < 0
+Agent6.CertificateCoordinates.checked_row_weighted_balance (cert : Agent109.Cert.Certificate)
+  (hc : Agent109.Cert.check cert = true) :
+  Agent110.Accounting.sumPrefix
+      (fun i => Agent6.ExteriorCoordinates.weightedPhase (Agent6.CertificateCoordinates.rowOuter cert i)) cert.P =
+    9 *
+        Agent110.Accounting.sumPrefix
+          (fun i => Agent6.ExteriorCoordinates.weightedReverse (Agent6.CertificateCoordinates.rowOuter cert i)) cert.P +
+      9 *
+        Agent110.Accounting.sumPrefix
+          (fun i => ↑(Agent6.ExteriorCoordinates.overflowBit (Agent6.CertificateCoordinates.rowOuter cert i))) cert.P
+Agent6.CertificateFilter.coordinateFilter_eq_true_iff (cert : Agent109.Cert.Certificate) :
+  Agent6.CertificateFilter.coordinateFilter cert = true ↔
+    Agent6.CertificateCoordinates.rowContributionSum cert = 0 ∧
+      (∃ i, i < cert.P ∧ 0 < Agent6.CertificateCoordinates.rowContribution cert i) ∧
+        ∃ j, j < cert.P ∧ Agent6.CertificateCoordinates.rowContribution cert j < 0
+Agent6.CertificateFilter.checked_coordinateFilter (cert : Agent109.Cert.Certificate)
+  (hc : Agent109.Cert.check cert = true) : Agent6.CertificateFilter.coordinateFilter cert = true
+Agent6.CertificateFilter.check_eq_false_of_coordinateFilter_eq_false (cert : Agent109.Cert.Certificate)
+  (hf : Agent6.CertificateFilter.coordinateFilter cert = false) : Agent109.Cert.check cert = false
+Agent6.CertificateFilter.period_pos_of_coordinateFilter (cert : Agent109.Cert.Certificate)
+  (hf : Agent6.CertificateFilter.coordinateFilter cert = true) : 0 < cert.P
+Agent6.CertificateFilter.coordinateFilter_eq_false_of_period_zero (cert : Agent109.Cert.Certificate) (hp : cert.P = 0) :
+  Agent6.CertificateFilter.coordinateFilter cert = false
+Agent6.CertificateFilter.filteredCheck_eq_check (cert : Agent109.Cert.Certificate) :
+  Agent6.CertificateFilter.filteredCheck cert = Agent109.Cert.check cert
+Agent6.CertificateControls.cancellationCandidate_period : Agent6.CertificateControls.cancellationCandidate.P = 2
+Agent6.CertificateControls.cancellationCandidate_link_count :
+  Agent6.CertificateControls.cancellationCandidate.links.length = Agent6.CertificateControls.cancellationCandidate.P
+Agent6.CertificateControls.cancellationCandidate_rows :
+  Agent6.CertificateCoordinates.rowOuter Agent6.CertificateControls.cancellationCandidate 0 = { c := 2, B := [1] } ∧
+    Agent6.CertificateCoordinates.rowOuter Agent6.CertificateControls.cancellationCandidate 1 = { c := 16, B := [8] }
+Agent6.CertificateControls.cancellationCandidate_contributions :
+  Agent6.CertificateCoordinates.rowContribution Agent6.CertificateControls.cancellationCandidate 0 = -11 ∧
+    Agent6.CertificateCoordinates.rowContribution Agent6.CertificateControls.cancellationCandidate 1 = 11
+Agent6.CertificateControls.cancellationCandidate_sum_zero :
+  Agent6.CertificateCoordinates.rowContributionSum Agent6.CertificateControls.cancellationCandidate = 0
+Agent6.CertificateControls.cancellationCandidate_filter_passes :
+  Agent6.CertificateFilter.coordinateFilter Agent6.CertificateControls.cancellationCandidate = true
+Agent6.CertificateControls.cancellationCandidate_first_phase_failure (L L' : Agent109.Cert.Link) :
+  ¬Agent109.Cert.LocalOK (Agent6.CertificateControls.cancellationCandidate.st 0)
+      (Agent6.CertificateControls.cancellationCandidate.st 1) L L'
+Agent6.CertificateControls.cancellationCandidate_check_false :
+  Agent109.Cert.check Agent6.CertificateControls.cancellationCandidate = false
+Agent6.CertificateControls.cancellationCandidate_filteredCheck_false :
+  Agent6.CertificateFilter.filteredCheck Agent6.CertificateControls.cancellationCandidate = false
+Agent6.CertificateControls.coordinateFilter_not_sufficient :
+  ¬∀ (cert : Agent109.Cert.Certificate),
+      Agent6.CertificateFilter.coordinateFilter cert = true → Agent109.Cert.check cert = true
+Agent6.CertificateControls.emptyCandidate_boundary :
+  Agent6.CertificateControls.emptyCandidate.P = 0 ∧
+    Agent6.CertificateCoordinates.rowContributionSum Agent6.CertificateControls.emptyCandidate = 0 ∧
+      Agent6.CertificateFilter.coordinateFilter Agent6.CertificateControls.emptyCandidate = false ∧
+        Agent109.Cert.check Agent6.CertificateControls.emptyCandidate = false
+Agent6.CertificateControls.zeroPhaseCandidate_boundary :
+  Agent6.CertificateControls.zeroPhaseCandidate.P = 1 ∧
+    Agent6.CertificateCoordinates.rowContributionSum Agent6.CertificateControls.zeroPhaseCandidate = 0 ∧
+      Agent6.CertificateCoordinates.rowContribution Agent6.CertificateControls.zeroPhaseCandidate 0 = 0 ∧
+        Agent6.CertificateFilter.coordinateFilter Agent6.CertificateControls.zeroPhaseCandidate = false ∧
+          Agent109.Cert.check Agent6.CertificateControls.zeroPhaseCandidate = false
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.revN_lt_power._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0._proof_59 : [propext]
+AUDIT_THEOREM OuterBridge P196.Agent7.Finite.outerNext.eq_1 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.inv_step._proof_21 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digits_evalL._proof_45 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_lastPos : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0._proof_27 : [propext]
+AUDIT_THEOREM TemplateStep Agent109.norm_template : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_band_tail._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.bounded_reverse : [propext]
+AUDIT_THEOREM OuterBridge Agent109.Outer.k_le : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_zero_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.rowSum_eq_orbitSum : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_of_zValue._proof_11 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.ten_power_mod_nine : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.stripSuffix_append_single : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_weighted._proof_29 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.one_overflow_negative_control : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate List.foldl._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_4
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalH_eq_totalK_sub_totalJ1 : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.carryScale_eq : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.zipAdd_append : [propext]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.injEq : [propext]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_sub : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_2 : []
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.both_signs_at_zero_overflow : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_append_single : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_band : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.Canon.match_1.eq_3 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_16 : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.step_eq_evalL_pair : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CoordinateSign Agent115.ExteriorFactorization.revN.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_pos._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CertificateAccounting _private.CertificateAccounting.0.Agent110.Accounting.sumPrefix.match_1.eq_1 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent115.ExteriorFactorization.rhoNum.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_15 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_18 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_congr._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.Ar_length._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue.eq_1 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.stripSuffix_spec : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.Data.mk.injEq : [propext]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realizes_next : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow.eq_1 : []
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_4._@.ReturnCertificate._hyg.2395 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_band._proof_9 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0._proof_6 : [propext]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_period : []
+AUDIT_THEOREM CertificateExterior _private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_2.eq_1 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_congr._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.both_signs_at_one_overflow : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_2 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalH_eq_trim_counts : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.t_le : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.inj : []
+AUDIT_THEOREM TemplateStep Agent109.template.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.pair_last._proof_57 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates _private.CertificateCoordinates.0.Agent6.CertificateCoordinates.orbitSum_eq_sumPrefix : [propext]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.highValue_lt : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.next_complement._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalG_eq_totalJ1 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_phase_index._proof_4 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.LastPos.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.next_phase._proof_22 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_band : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowBit_le_one : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof P196.Agent7.Finite.validOuter.eq_1 : []
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_check_false : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_first_phase_failure : [propext,
+ Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.inv_step : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OuterBounds _private.OuterBounds.0.P196.Agent7.Finite.outerIterate.match_1.eq_1 : []
+UNSAFE_IMPLEMENTATION_AXIOM TARGET List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.staysSmall.eq_1 : []
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_values._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_padding_return : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OuterBridge Agent109.Outer.normalize7_eq : [propext]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_outer_lower : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OuterBounds _private.OuterBounds.0.P196.Agent7.Finite.staysSmall.match_1.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_general : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_band._proof_10 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.complement_k._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.zipAdd_eq_zipWith : [propext]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.coordinateFilter_eq_true_iff : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.stripSuffix_last : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_1 : []
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.normalize.match_1.eq_2 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.normalize_eq_norm : [propext]
+AUDIT_THEOREM TemplateStep Agent109.Data.mk.inj : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_2 : []
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.Br_append_phase : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.digitsFuel.match_1.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.norm_template._proof_24 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_filter_passes : []
+AUDIT_THEOREM TemplateStep Agent109.complement_k._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls _private.CertificateControls.0._proof_4 : []
+AUDIT_THEOREM ExteriorNormalization P196.Agent7.Finite.stripSuffix.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.zipAdd_length : [propext]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.canonical_eq_le._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_weighted_balance : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.step_palindrome_template : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.last_ne_of_valid : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.canonical_eq_le : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.outerIterate_eq : []
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.sizeOf_spec : []
+AUDIT_THEOREM TemplateStep Agent109.stepWord.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.valid_row_contribution_sum_eq_zero : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_append : [propext]
+AUDIT_THEOREM TemplateStep Agent109.pair_last._proof_56 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext_raw._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.highValue_lt._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs._proof_22 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.t_le._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.Br_append_phase._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_digits._proof_37 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL.eq_2 : []
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext_raw : [Quot.sound, propext]
+AUDIT_THEOREM CoordinateDynamics _private.CoordinateDynamics.0.Agent6.ExteriorCoordinates.beta_arithmetic._proof_2 : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_band_tail._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.entries_le_of_valid : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_identity._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digits.eq_1 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.certificate_existence._proof_38 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_28 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_eq_fromScans : []
+AUDIT_THEOREM TemplateStep Agent109.reverseFuel_digits : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_quotient_iff : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_first_phase_failure._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.orbitWord.match_1.eq_2 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_step_outer._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digits_pos._proof_34 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_30 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_2.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.phase_facts : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics _private.CoordinateDynamics.0.Agent6.ExteriorCoordinates.beta_arithmetic : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.pair_last : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.canon_normalize : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_outer_lower._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_zero : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_phase_index._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_add : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_A_length_difference : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_carry_le._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_of_zValue : [propext, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.rowContributionSum_eq_contributionSum : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_le_one : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.exit_witness_of_false._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_filteredCheck_false : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle _private.CoordinateCycle.0._proof_24 : [propext]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0._proof_60 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.Canon.eq_3 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_cap2_exit : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_phase_index._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.State.mk.sizeOf_spec : []
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.u0.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.evalL_zipAdd : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates _private.CertificateCoordinates.0.Agent6.CertificateCoordinates.orbitSum_overflowBit_eq_count : [propext]
+AUDIT_THEOREM TemplateStep Agent109.digits_evalL._proof_48 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.step_palindrome_iff : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_pos_of_canon._proof_43 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_le._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_29 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate Std.Format.joinSep._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_7
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_bounded._proof_36 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.Link.mk.injEq : [propext]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.checked_coordinate_conditions : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.reverseAux._unary._proof_30 : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_le._proof_26 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_length : [propext, Quot.sound]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realizes_all : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OuterBridge Agent109.Outer.kOf_eq : []
+AUDIT_THEOREM TemplateStep Agent109.complement_phase : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.Certificate.mk.sizeOf_spec : []
+AUDIT_THEOREM TemplateStep Agent109.evalL_ge._proof_64 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_coordinates : [propext]
+AUDIT_THEOREM TemplateStep Agent109.orbit_succ_value : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.stateOuter_valid : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.data.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.norm.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_le_one : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate List.repr'._at._private.ReturnCertificate.0.Agent109.Cert.reprState.«_@».ReturnCertificate._hyg.2656._spec_1
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.stripSuffix_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.complement_phase._proof_20 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.valid_exceeds_cap : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.digitsFuel.eq_2 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_C_length_difference._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0._proof_28 : [propext]
+AUDIT_THEOREM TemplateStep Agent109.evalL_norm._proof_49 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.Link.mk.sizeOf_spec : []
+AUDIT_THEOREM CertificateFilter _private.CertificateFilter.0._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0._proof_35 : [propext]
+AUDIT_THEOREM TemplateStep Agent109.step.eq_1 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.check_sound : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.stripSuffix_length_le._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_B_length_difference._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds _private.OuterBounds.0.P196.Agent7.Finite.staysSmall.match_1.eq_1 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.Cr_length : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.Br.eq_1 : []
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.accepted_admissible_exceeds_two : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.Ar.eq_1 : []
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_ne_zero_of_pos : [propext, Quot.sound]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.check_eq_false_of_coordinateFilter_eq_false : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CertificateExterior Agent109.Outer.outerIter.eq_1 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_inner_lower : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_29 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0._proof_1 : [propext]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize : [Quot.sound, propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.Canon.match_1.eq_2 : []
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_contributions : []
+AUDIT_THEOREM TemplateStep Agent109.canon_normalize._proof_51 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.Br_append_phase._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.State.mk.injEq : [propext]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalJ1_add_totalJ2._proof_21 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realized_head_positive : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_5._@.ReturnCertificate._hyg.2395 : []
+AUDIT_THEOREM TemplateStep Agent109.next_phase : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_add._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_band_tail : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_trim : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.zero_overflow_positive_control : [propext, Quot.sound]
+AUDIT_THEOREM CertificateFilter _private.CertificateFilter.0._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.phase_facts._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls _private.CertificateControls.0._proof_3 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_31 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.complement_k._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.Br_append_phase._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.k_le._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.revN_lt_power._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_carry_le : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_sharp_seven : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.inv_step._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.highContribution_eq_weighted : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalG_nonneg : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.inv_not_palindrome : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.evalL_ge : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_pos._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.digits_pos._proof_35 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_zero : []
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate List.repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_5
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalG_eq_totalJ1._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digitsFuel_stable : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior _private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_2.eq_2 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.pairWord_step : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.Link.mk.inj : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_21 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digitsFuel_stable._proof_33 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_phase_index._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_lastPos._proof_33 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls _private.CertificateControls.0._proof_1 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_30 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.Phase.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_17 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM CertificateControls _private.CertificateControls.0._proof_2 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalJ1_add_totalJ2 : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.palindrome_iff._proof_67 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.canon_iff : [Quot.sound, propext]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.local_outer_step : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix.eq_1 : []
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0._proof_58 : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs._proof_21 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.period_pos_of_coordinateFilter._proof_3 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_template._proof_27 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_reverse._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.State.mk.inj : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.Certificate.mk.inj : []
+AUDIT_THEOREM CertificateAccounting _private.CertificateAccounting.0.Agent110.Accounting.sumPrefix.match_1.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf.eq_1 : []
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.cap2_exit_witness : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_26 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.stepWord_template : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.checked_row_contribution_sum_eq_zero : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_width_balance._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.canon_digits._proof_55 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_sub._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_5 : [propext]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.checked_row_both_signs : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_emod_ten_of_overflow_ne_zero : [propext,
+ Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.fromScans.eq_1 : []
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_eq : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_carry_le._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.stripSuffix_length_le : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent109.Outer.outerIter.eq_2 : []
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.filteredCheck_eq_check : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.unbounded_coefficient_control : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le._proof_13 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_trim._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_lt._proof_62 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_15 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM OuterFinite List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.«_@».OuterFinite._hyg.27._spec_1
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_le_eight : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_highValue : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.orbitWord.eq_1 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.highContribution_eq_weighted._proof_28 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.admissible_realizes_zero._proof_6 : [propext,
+ Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.outerIterate.eq_1 : []
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_norm : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.carryWord.eq_1 : []
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realizes_next._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_sum_zero : []
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.accepted_admissible_exceeds_cap : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OuterBridge Agent109.Outer.zipAdd_le._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.zeroPhaseCandidate_boundary : []
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.Canon.eq_2 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_inner_lower._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.canonical_eq_le._proof_7 : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_band_tail._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.stripSuffix_spec : [Quot.sound, propext]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_cap2_exit._proof_33 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalJ_eq_period._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics _private.CoordinateDynamics.0.Agent6.ExteriorCoordinates.beta_arithmetic._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_weighted_balance._proof_30 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle _private.CoordinateCycle.0._proof_27 : [propext]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.two_totalK : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OuterBridge Agent109.Outer.outerNext_eq._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_13._@.ReturnCertificate._hyg.2819 : []
+AUDIT_THEOREM TemplateStep Agent109.reverseFuel.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_reverse : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls _private.CertificateControls.0._proof_8 : []
+AUDIT_THEOREM TemplateStep Agent109.reverseAux.eq_def : [propext]
+AUDIT_THEOREM TemplateStep Agent109.norm_band._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_append : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_phase_index : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.norm_band : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_B_length_difference : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.canon_iff._proof_61 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_lt : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_append_single : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.highValue_append_single : [propext, Quot.sound]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.checked_coordinateFilter : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OuterBridge _private.OuterBridge.0._proof_14 : [propext]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.outerNext_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent109.Cert.gam.eq_1 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.admissible_realizes_zero : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.zero_overflow_negative_control : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_trim._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.inv_not_palindrome._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0._proof_34 : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_2._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero : []
+AUDIT_THEOREM TemplateStep Agent109.norm.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.norm_template._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_A_length_difference._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.lastPos_pairWord : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OuterBridge _private.OuterBridge.0._proof_16 : [propext]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.complement_t._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_31 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_1._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM TemplateStep Agent109.canon_normalize._proof_52 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_27 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior _private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_1.eq_1 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.filteredCheck.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_rho_quotient : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.Cr.eq_1 : []
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.coordinateFilter_not_sufficient : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_rows : []
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.highValue_reverse : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_width_balance : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.Ar_length._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_zipWith._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls _private.CertificateControls.0._proof_6 : []
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_exits_by_seven : []
+AUDIT_THEOREM TemplateStep Agent109.reverse10_eq : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.orbitWord.match_1.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.zipAdd.eq_2 : []
+AUDIT_THEOREM TemplateStep Agent109.digits_evalL : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_12._@.ReturnCertificate._hyg.2819 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_cap2_exit._proof_34 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalH_eq_totalK_sub_totalJ1._proof_24 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_two_mul._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digitsFuel_stable._proof_32 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.digits_evalL._proof_46 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.palindrome_iff : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.zipAdd_reverse : [propext]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.encoded.eq_1 : []
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.outerIterate.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_1 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.u_le._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_identity._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_weighted : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.Ar_length : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.complement_t._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0._proof_7 : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_2 : []
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.emptyCandidate_boundary : []
+AUDIT_THEOREM CoordinateSign Agent115.ExteriorFactorization.nonneutralPhase.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.norm_band_tail._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.takeWhile_eq_mem : [Quot.sound, propext]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.exit_witness_of_false._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.canon_last_pos : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.step_palindrome_template._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.rowOuter_orbit : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_bounded._proof_37 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.Cr_length._proof_13 : [propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate Std.Format.joinSep._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_3
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.highValue.eq_1 : []
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.staysSmall.eq_2 : []
+AUDIT_THEOREM TemplateStep Agent109.gamma_le : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.next_complement : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_length : [propext]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.inv_not_palindrome._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_values._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_succ : []
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.outerNext_of_partial_trim : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_zipWith : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decodeWord.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.reverseFuel_digits._proof_42 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_identity : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalGam_even : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_band._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_22 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_1.eq_2 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.local_C_length_difference : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le._proof_14 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_10._@.ReturnCertificate._hyg.2819 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_realized : [Quot.sound, propext]
+AUDIT_THEOREM TemplateStep Agent109.evalL_ge._proof_65 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.admissible_heads_positive : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue.eq_2 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.append_inj_left' : [propext]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_one : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_lt._proof_63 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_1 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_26 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.outerNext_stripSuffix_eq : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.normalize.eq_2 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_difference._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.certificate_existence : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_1.eq_1 : []
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.observation_injective : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_le : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior _private.CertificateExterior.0.Agent109.Outer.outerIter.match_1.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.quotient_identity_forall_iff : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CertificateCoordinates _private.CertificateCoordinates.0.Agent6.CertificateCoordinates.coordinateIter_eq_original : []
+AUDIT_THEOREM TemplateStep Agent109.Data.mk.sizeOf_spec : []
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.stripSuffix_idempotent : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.Canon.match_1.eq_1 : []
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_sharp_six : []
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_band._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge P196.Agent7.Finite.normalize.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.complement_t._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_phase_index._proof_3 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.Mirr.brecOn : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.Certificate.mk.injEq : [propext]
+AUDIT_THEOREM TemplateStep Agent109.digitsFuel.eq_1 : []
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.highValue_cons : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_zero : []
+AUDIT_THEOREM OuterBridge _private.OuterBridge.0._proof_13 : [propext]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realizes_next._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.reverseFuel.match_1.eq_1 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.norm_digits_le : [Quot.sound, propext]
+AUDIT_THEOREM TemplateStep Agent109.reverseFuel_digits._proof_40 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_14._@.ReturnCertificate._hyg.2819 : []
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.one_overflow_positive_control : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_band._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_digit_lt : [Quot.sound, propext]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.length_zipWith_eq : [propext]
+AUDIT_THEOREM TemplateStep Agent109.canon_normalize._proof_53 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.rowOuter_closed : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.u_le._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.bounded_pair_digits : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.complement_k : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_band : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.highValue_zipWith._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_succ : []
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realizes_next._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_digits : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_cyclic_difference : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.complement_k._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.exit_witness_of_false : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.zipAdd.match_1.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.u3.eq_1 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.betaNum_outerIter : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_outer_orbit._proof_24 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.stepWord_template._proof_28 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.evalL_append._proof_38 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalJ_eq_period : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.t_le._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.Canon.eq_1 : []
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_2.eq_2 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_pos : [propext, Quot.sound]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.period_pos_of_coordinateFilter : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.pairWord.eq_1 : []
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.stripSuffix_bounded : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_6._@.ReturnCertificate._hyg.2395 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_succ : []
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_9._@.ReturnCertificate._hyg.2819 : []
+AUDIT_THEOREM TemplateStep Agent109.actual_template_palindrome_iff : [propext, Classical.choice, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate List.foldl._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_8
+AUDIT_THEOREM ExteriorNormalization _private.ExteriorNormalization.0.Agent116.Exterior.dropWhile_eq_idempotent : [propext,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.u1.eq_1 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.next_phase._proof_21 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM OuterBridge _private.OuterBridge.0.P196.Agent7.Finite.normalize.match_1.eq_2 : []
+AUDIT_THEOREM OuterBridge P196.Agent7.Finite.normalize.eq_2 : []
+AUDIT_THEOREM TemplateStep Agent109.normalize_template : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.revN_lt_power : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digits_pos._proof_36 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.digitsFuel.match_1.eq_2 : []
+AUDIT_THEOREM TemplateStep Agent109.evalL_zipAdd._proof_39 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digits_zero : [propext]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_eq._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zipWith_append_single : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.actual_template_step : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_mirr : [propext]
+AUDIT_THEOREM TemplateStep Agent109.evalL_pos_of_canon : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_8._@.ReturnCertificate._hyg.2395 : []
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.evalL.match_1.eq_1 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.bounded_strip : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqState._proof_7._@.ReturnCertificate._hyg.2395 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalGam_eq_twice_gains._proof_26 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.valid_row_both_signs : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_digitsOf : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.reverse10.eq_1 : []
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.exit_witness_of_false._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.decode_complete._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.excluded_phase_controls : []
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.successor_observation : [Quot.sound, propext]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalH_nonneg : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.shape_palindrome_iff : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_replicate : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM TemplateStep Agent109.evalL_pos_of_canon._proof_44 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_cap2_exit._proof_32 : [Classical.choice, propext, Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate List.repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_1
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_carry_le : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digitsFuel_stable._proof_31 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior _private.CertificateExterior.0.P196.Agent7.Finite.validOuter.match_1.eq_2 : []
+AUDIT_THEOREM CertificateExterior _private.CertificateExterior.0.Agent109.Outer.outerIter.match_1.eq_2 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.outerNext_eq : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalG_eq_trim_counts : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.reverseAux._unary._proof_29 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.Br_length : [propext]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.valid_row_both_signs._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realizes_all._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.zipAdd_comm : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_le : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.mirr_wrap : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.two_totalK._proof_22 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_two_mul : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_length : [propext, Quot.sound]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.coordinateFilter_eq_false_of_period_zero : [propext]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0._proof_4 : []
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_6
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_values : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.zipAdd.match_1.eq_2 : []
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_11._@.ReturnCertificate._hyg.2819 : []
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.evalL.match_1.eq_2 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.u_le : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_22 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_telescope : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalGam_even._proof_27 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.zipAdd.eq_1 : []
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.stripSuffix_head_pos : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_6 : [propext]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.mirr_of_split : [propext]
+AUDIT_THEOREM TemplateStep Agent109.reverseFuel.eq_1 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_telescope._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_lastPos._proof_32 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.certificate_sound : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.tOf.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_of_values : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent115.ExteriorFactorization.zValue.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.evalL.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.pair_split : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.strip_zip_append : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.target : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM OuterBridge Agent109.Outer.actual_step_outer : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_outer_orbit : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.canon_digits : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.certificate_phase_index._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls Agent6.CertificateControls.cancellationCandidate_link_count : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.succ_bounded._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge _private.OuterBridge.0.P196.Agent7.Finite.normalize.match_1.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.digits_pos : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_append : [propext]
+AUDIT_THEOREM TemplateStep Agent109.zipAdd_replicate : [propext]
+AUDIT_THEOREM TemplateStep Agent109.norm_band._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_le._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.pair.eq_1 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowBit_le_one._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM OuterBridge Agent109.Outer.k_le._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.outerNext_eq_strip : []
+AUDIT_THEOREM TemplateStep Agent109.palindrome_iff._proof_66 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.digitWord.eq_1 : []
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_3._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.normalize.match_1.eq_1 : []
+AUDIT_THEOREM CertificateRealization Agent116.CertificateExterior.realizes_next._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.zero_phase_empty_control : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf_length : [propext]
+AUDIT_THEOREM TemplateStep Agent109.u2.eq_1 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.shape_reverse : [propext]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_congr : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.kOf.eq_1 : []
+AUDIT_THEOREM OuterBridge _private.OuterBridge.0._proof_3 : [propext]
+AUDIT_THEOREM TemplateStep Agent109.digits_evalL._proof_47 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.norm_template._proof_26 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.realize._proof_24 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.checked_accounting : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CertificateFilter Agent6.CertificateFilter.coordinateFilter.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.foldl_high : [propext]
+AUDIT_THEOREM TemplateStep Agent109.orbitWord.eq_2 : []
+AUDIT_THEOREM OuterBounds P196.Agent7.Finite.cap2_unencoded : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.carryScale_eq._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_two : [propext, Quot.sound]
+AUDIT_THEOREM CertificateExterior Agent116.CertificateExterior.escapeAt_two : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.pairWord_orbit : [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.complement_t : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle _private.CoordinateCycle.0._proof_6 : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.orbit.eq_2 : []
+AUDIT_THEOREM ReturnCertificate Agent109.Cert.template_bounded : [propext, Quot.sound]
+AUDIT_THEOREM OuterBounds _private.OuterBounds.0.P196.Agent7.Finite.outerIterate.match_1.eq_2 : []
+AUDIT_THEOREM TemplateStep Agent109.orbit.eq_1 : []
+AUDIT_THEOREM TemplateStep Agent109.reverseFuel_digits._proof_41 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_difference : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero : [Classical.choice,
+ propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM ReturnCertificate repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.«_@».ReturnCertificate._hyg.3379._spec_2
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0.Agent109.reverseFuel.match_1.eq_2 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_one._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateControls _private.CertificateControls.0._proof_7 : []
+AUDIT_THEOREM TemplateStep Agent109.complement_t._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalGam_eq_twice_gains : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM OuterBridge Agent109.Outer.norm_digits_le._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.bounded_pair_digits._proof_54 : [propext, Quot.sound]
+AUDIT_THEOREM ReturnCertificate _private.ReturnCertificate.0.Agent109.Cert.decEqLink._proof_15._@.ReturnCertificate._hyg.2819 : []
+AUDIT_THEOREM OuterBridge Agent109.Outer.zipAdd_le : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.canon_normalize._proof_50 : [Classical.choice, propext, Quot.sound]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.checked_row_weighted_balance : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CertificateCoordinates Agent6.CertificateCoordinates.rowOuter_orbit_of_lt : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.highValue_zipWith : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.totalGam_eq_twice_gains._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_succ : []
+AUDIT_THEOREM ExteriorNormalization Agent116.Exterior.Br_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep Agent109.normalize.eq_1 : []
+AUDIT_THEOREM CertificateAccounting Agent110.Accounting.sumPrefix_two._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM TemplateStep _private.TemplateStep.0._proof_3 : [propext]
+FULL_MODULE_AUDIT theorems=713 union=[Classical.choice, Quot.sound, propext]
