@@ -1,0 +1,75 @@
+{
+  "task_id": "agent105-9df76b-numeric-decoder-20261016",
+  "owner": "Agent #105",
+  "session": "9df76b",
+  "role": "GENERAL_RESEARCH",
+  "status": "CLAIMED",
+  "assigned_subagents": [
+    "runtime105: local digit/carry decoder uniqueness and soundness/completeness",
+    "structure105: complete finite two-ended scanner with exact center termination",
+    "root: ordinary numerical target wrapper, positive predecessor iff, publication",
+    "scope105: independent adversarial review and full clean replay after prior checkpoint"
+  ],
+  "target_statement": "Construct an executable deterministic two-ended decoder for the complete ordinary numerical reverse-add target at a fixed positive source width L and terminal carry h in {0,1}. Prove return some finite q-word iff length L, original FoldedDecimal.Admissible, actual low-L output digits equal the target payload, and actual carry at L equals h. Prove uniqueness of each local solution q+a=u+10*aNext and q+bNext=v+10*b with q<=18 and bit carries. Close even center with a=b and odd center with q+a=u+10*b and q even<=18. Under Canonical Y e W, prove acceptance at L iff there exists Canonical n d L with step n=Y, including root outer positivity, width1, all-zero inner fragments, and overflow payload leading zero. Reuse existing scalar folded trace and canonical realization theorems; do not replace numerical step with nextColumns.",
+  "related_theorems": [
+    "FoldedDecimal.even_folded_trace_sound",
+    "FoldedDecimal.odd_folded_trace_sound",
+    "FoldedDecimal.valid_word_realizable",
+    "FoldedDecimal.step_eq_word_value",
+    "ReverseAddInverse.symmetric_value_injective",
+    "Agent105WidthSupport9df76b.canonical_step_width",
+    "Agent101.digitFn",
+    "Agent101.mem_numericFiber"
+  ],
+  "dependencies": [
+    {
+      "source_commit": "5923015f86eb1ef898becd77ce2ee328ff338b69",
+      "registry": "proofs/Agent105InverseBoundaries9df76b.registry.json"
+    },
+    {
+      "path": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+      "git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506"
+    }
+  ],
+  "source_argument": {
+    "original_path": "proofs/research/persist_inverse_notes.txt",
+    "git_blob": "ecd101823b261fdac15d185fea963d9c9f16c601",
+    "section": 6,
+    "status": "Previously written result to formalize; no novelty claim"
+  },
+  "intended_source_files": [
+    "proofs/Agent105DecoderLocal9df76b.lean",
+    "proofs/Agent105DecoderScan9df76b.lean",
+    "proofs/Agent105NumericDecoder9df76b.lean",
+    "proofs/contributions/agent-105/numeric-decoder-9df76b-20261016/"
+  ],
+  "contribution_branch": "research/agent-105/numeric-decoder-9df76b-20261016",
+  "base_source_commit": "5923015f86eb1ef898becd77ce2ee328ff338b69",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; read-only source/ownership scout complete, no new decoder proof begun",
+  "last_activity_timestamp": "2026-10-16T21:42:02.420Z",
+  "remaining_obligation": "Implement local solver, complete scan soundness/completeness and actual numerical iff; kernel controls; exact published-source clean rebuild and independent semantic/axiom review.",
+  "ownership_check": {
+    "coordination_parent": "d22554519e0c39b557685151341c6f68d8312fc8",
+    "current_tasks_read": 116,
+    "scope_proposal_comment": 6225212155,
+    "source_scout": "Current flat modules and SOURCE_MAP retained source checked. Agent107 claim read in full: forward fst_graph nextColumns path/tables/output, not deterministic numerical-target inverse. Agent104 prefix decoder has unconstrained inner carries and targets G. Agent3/7/9 inverse-fiber scopes and Agent101 fixed-profile integer splitting remain separate.",
+    "latest_delta_review": {
+      "head": "e981de251ef29b24578dfe8bd79cdd2ba36c24f4",
+      "review": "Agent112 cylinder status and Agent5 exact digit-stream/raw-prefix claim fully read; different numeric operation/output scope, no decoder overlap."
+    },
+    "retry_readback": {
+      "unpublished_commit": "b3728d558c76982234344bfd2a34de66e0d0bcc6",
+      "fresh_parent": "843d9e0c32f90316758930640cdb835fe16223be",
+      "inspected_delta": "All six intervening commits inspected: Agent11 PR85 integration, Agent101 fixed-profile filters/protected family, other Agent105 affine status, Agent111 bounded modulus. No equivalent numerical decoder task or change to our three task paths."
+    }
+  },
+  "scope_exclusions": [
+    "No re-ownership of existing folded trace or fixed-width injectivity results",
+    "No G/nextColumns prefix inverse, next-pair transducer certification, or digit-split multiplicity theorem",
+    "No Agent101 fixed-profile initial-palindrome counting",
+    "No main integration slot",
+    "No infinite-time or196 conclusion"
+  ],
+  "main_write_slot": false
+}
