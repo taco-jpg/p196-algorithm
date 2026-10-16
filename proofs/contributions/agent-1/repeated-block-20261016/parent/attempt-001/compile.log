@@ -1,0 +1,21 @@
+Agent1RepeatedBlockContext.lean:39:6: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  terminalCarry (pow w (k + 1)) (terminalCarry B e)
+B w H : Word
+e k : Nat
+hB : Bounded B 18
+hw : Bounded w 18
+he : e ≤ 1
+hb : terminalCarry B e ≤ 1
+⊢ fixedDigits B e ++
+        (fixedDigits w (terminalCarry B e) ++ pow (fixedDigits w (terminalCarry w (terminalCarry B e))) k) ++
+      normalize H (terminalCarry (B ++ pow w (k + 1)) e) =
+    fixedDigits B e ++ fixedDigits w (terminalCarry B e) ++
+        pow (fixedDigits w (terminalCarry w (terminalCarry B e))) k ++
+      normalize H (terminalCarry w (terminalCarry B e))
+'Agent1.RepeatedBlock.pow_length' depends on axioms: [propext]
+'Agent1.RepeatedBlock.bounded_pow' depends on axioms: [propext, Quot.sound]
+'Agent1.RepeatedBlock.normalize_context' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent1.RepeatedBlock.terminalCarry_context' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.RepeatedBlock.terminalCarry_two_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.RepeatedBlock.terminalCarry_symmetric_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.RepeatedBlock.normalize_context_length' depends on axioms: [propext, Classical.choice, Quot.sound]
