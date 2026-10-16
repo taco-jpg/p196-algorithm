@@ -70,7 +70,11 @@ theorem occurs_for_leading_digit (k a c : Nat)
     simpa only [Nat.mod_mod_of_dvd _ (ten_dvd_pow k hk)] using h
   have hstep : step m % 10 = (a + c) % 10 := by
     change (m + reverse10 m) % 10 = (a + c) % 10
-    simp only [Nat.add_mod, hr, hunit, Nat.mod_eq_of_lt (show c < 10 by omega)]
+    calc
+      (m + reverse10 m) % 10
+          = (m % 10 + reverse10 m % 10) % 10 := Nat.add_mod _ _ _
+      _ = (a % 10 + c % 10) % 10 := by rw [hunit, hr]
+      _ = (a + c) % 10 := (Nat.add_mod a c 10).symm
   refine ⟨m, ?_, hres, hstep⟩
   omega
 
@@ -82,7 +86,7 @@ theorem any_occurrence_has_leading_digit (k a m : Nat)
   obtain ⟨d, L, hd⟩ := canonical_exists m hm
   let c : Nat := d (L - 1)
   have hc1 : 1 ≤ c := by simpa only [c] using hd.2.2.1
-  have hc9 : c ≤ 9 := hd.2.1 (L - 1) (by omega)
+  have hc9 : c ≤ 9 := hd.2.1 (L - 1) (by have hL := hd.1; omega)
   have hr : reverse10 m % 10 = c := by
     simpa only [c] using AstraModular.reverse10_mod10 m d L hd
   have hunit : m % 10 = a % 10 := by
@@ -90,7 +94,11 @@ theorem any_occurrence_has_leading_digit (k a m : Nat)
     simpa only [Nat.mod_mod_of_dvd _ (ten_dvd_pow k hk)] using h
   refine ⟨c, hc1, hc9, ?_⟩
   change (m + reverse10 m) % 10 = (a + c) % 10
-  simp only [Nat.add_mod, hr, hunit, Nat.mod_eq_of_lt (show c < 10 by omega)]
+  calc
+    (m + reverse10 m) % 10
+        = (m % 10 + reverse10 m % 10) % 10 := Nat.add_mod _ _ _
+    _ = (a % 10 + c % 10) % 10 := by rw [hunit, hr]
+    _ = (a + c) % 10 := (Nat.add_mod a c 10).symm
 
 /-- Exact nine-element image theorem. In particular, the output residue
 `a % 10` never occurs in this cylinder for `k >= 1`. -/
