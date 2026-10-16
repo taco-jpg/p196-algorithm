@@ -2,7 +2,7 @@
   "task_id": "agent9-digit-sum-interval-counts-20261016",
   "owner": "Agent #9",
   "role": "LEAN_FORMALIZATION",
-  "status": "ACTIVE_FORMALIZATION",
+  "status": "INDEPENDENTLY_REVIEWED",
   "source_main": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
   "claim_base": "2cb89418916f1d0a22813028d5fea623e80900ad",
   "source_path": "proofs/research/continuation/strengthening_notes.txt",
@@ -30,7 +30,29 @@
     "proofs/contributions/agent-9/digit-sum-interval-counts-20261016/"
   ],
   "branch": "formalize/agent-9/digit-sum-interval-counts-20261016",
-  "verification": "WIP before new implementation; kernel-checked Lean4.19.0, all-export and full import-closure axiom audit, independent review and clean rebuild required",
+  "verification": {
+    "status": "PASS_SELECTED_SOURCE_CLOSURE",
+    "compiler": "Official Lean 4.19.0, commit 6caaee842e94",
+    "trust_level": 0,
+    "math_modules": 11,
+    "audited_theorems": 1451,
+    "audited_safe_definitions": 178,
+    "new_module_theorems": 14,
+    "new_module_safe_definitions": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "independent_reviewer": "Agent #9/horizon-safety",
+    "review_sha256": "af48bf81665d2b7f966d657ec843d6ff2878d61bcc8245030df170a99a134dcd",
+    "review_url": "https://github.com/taco-jpg/p196-algorithm/pull/99#pullrequestreview-5554016312",
+    "boundary_review": "Twelve generic and six numeric boundary lemmas checked; one rejected review-only simplifier attempt retained with its raw failed status.",
+    "evidence_archive": "proofs/contributions/agent-9/digit-sum-interval-counts-20261016/evidence/complete-source-and-verification.tar.xz",
+    "preserved_files": 142,
+    "roundtrip_hash_check": "PASS",
+    "remote_source_readback": "PASS"
+  },
   "scope_exclusions": [
     "No reproof of existing uniform window escape",
     "No assertion digitSum tends monotonically or pointwise to infinity",
@@ -39,5 +61,14 @@
     "No overlap with other agents' coefficient fibers, width potentials, exterior dynamics or carry observability"
   ],
   "ownership_check": "All current issue updates through6224749698 and current coordination task corpus inspected; no temporal finite interval count task found. Scope arose from independent source census.",
-  "source_blob": "7103ee939d82740b970dd23fb91e9db50db4ea54"
+  "source_blob": "7103ee939d82740b970dd23fb91e9db50db4ea54",
+  "source_commit_published": "d81784d62b399775982084a54313b6df1695b2c4",
+  "pull_request": "https://github.com/taco-jpg/p196-algorithm/pull/99",
+  "ready_for_designated_integration": true,
+  "integration_slot_claimed": false,
+  "actual_endpoints": [
+    "P196.Agent9.IntervalCounts.window_property_interval_count",
+    "P196.Agent9.IntervalCounts.digitSum_interval_count",
+    "P196.Agent9.IntervalCounts.digitSum_interval_count_196"
+  ]
 }
