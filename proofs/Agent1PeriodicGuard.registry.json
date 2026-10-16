@@ -17,7 +17,7 @@
     "agent1-periodic-guard": {
       "scope": "Exact all-exponent raw period-four guard extraction from literal k=3 output slices, actual digit decomposition and canonical successor-width corollary. No stripping, cycle or infinite-orbit assertion.",
       "roots": [
-        "Agent1PeriodicGuard",
+        "Agent1PeriodicGuardFacts",
         "Agent1PeriodicNumeric"
       ],
       "modules": {
@@ -109,6 +109,14 @@
           "imports": [
             "Agent1PeriodicSlices"
           ]
+        },
+        "Agent1PeriodicGuardFacts": {
+          "path": "proofs/Agent1PeriodicGuardFacts.lean",
+          "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "git_blob": "45fec1c73f1fe4f60daa9186e36b1d19b0b69927",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ]
         }
       }
     }
@@ -131,6 +139,15 @@
         "Agent1.Periodic.raw_guard_bounded",
         "Agent1.Periodic.raw_guard",
         "Agent1.Periodic.raw_blocks_eq_zipper"
+      ]
+    },
+    {
+      "id": "A1-RAW-GUARD-OUTPUT",
+      "project": "agent1-periodic-guard",
+      "endpoints": [
+        "Agent1.Periodic.raw_block_lengths",
+        "Agent1.Periodic.raw_center_symmetric",
+        "Agent1.Periodic.raw_blocks_bounded"
       ]
     }
   ],
