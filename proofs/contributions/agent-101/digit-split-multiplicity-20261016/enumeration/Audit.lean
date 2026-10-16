@@ -1,0 +1,33 @@
+import Agent101SplitEnumeration
+
+#print axioms Agent101.coefficientWord
+#print axioms Agent101.digitPairSums
+#print axioms Agent101.digitsBounded
+#print axioms Agent101.canonicalDigits
+#print axioms Agent101.wrapDigits
+#print axioms Agent101.rawWords
+#print axioms Agent101.canonicalWords
+#print axioms Agent101.coefficientWord_cons
+#print axioms Agent101.length_coefficientWord
+#print axioms Agent101.length_digitPairSums
+#print axioms Agent101.length_wrapDigits
+#print axioms Agent101.getLastD_wrapDigits
+#print axioms Agent101.digitsBounded_wrapDigits
+#print axioms Agent101.canonicalDigits_wrapDigits
+#print axioms Agent101.digitPairSums_wrapDigits
+#print axioms Agent101.wrapDigits_injective
+#print axioms Agent101.exists_init_last
+#print axioms Agent101.exists_wrapDigits
+#print axioms Agent101.mem_centerWords_iff_pairSums
+#print axioms Agent101.mem_rawWords
+#print axioms Agent101.mem_canonicalWords_iff_rawWords
+#print axioms Agent101.mem_canonicalWords
+#print axioms Agent101.canonicalWords_length
+#print axioms Agent101.nodup_wrappedProduct
+#print axioms Agent101.rawWords_nodup
+#print axioms Agent101.canonicalWords_nodup
+#print axioms Agent101.length_wrappedProduct
+#print axioms Agent101.length_rawWords
+#print axioms Agent101.length_canonicalWords_cons
+#print axioms Agent101.length_canonicalWords_nil
+#print axioms Agent101.length_canonicalWords

@@ -1,0 +1,14 @@
+import Std
+#check List.prod
+#check List.sum
+#check List.sum_cons
+#check List.prod_nil
+#check List.foldl
+#check List.foldr
+#check List.length_map
+#check List.mem_cons
+#check List.reverse_reverse
+#check List.zipWith_self
+#check List.zipWith_eq_nil_iff
+#check List.length_pos_iff
+#check Option.toList
