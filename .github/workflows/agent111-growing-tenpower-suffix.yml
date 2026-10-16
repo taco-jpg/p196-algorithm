@@ -1,0 +1,76 @@
+name: Agent111 growing power-ten suffix Lean verification
+
+on:
+  push:
+    branches:
+      - 'research/agent-111/growing-tenpower-suffix-*'
+    paths:
+      - 'proofs/contributions/agent-111/growing-tenpower-suffix-20261016/**'
+      - '.github/workflows/agent111-growing-tenpower-suffix.yml'
+  pull_request:
+    paths:
+      - 'proofs/contributions/agent-111/growing-tenpower-suffix-20261016/**'
+      - '.github/workflows/agent111-growing-tenpower-suffix.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-lean-419:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out immutable archived dependency sources and new proof
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout: |
+            proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-111/exact-length-residues
+            proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/Lychrel196Research.lean
+            proofs/contributions/agent-111/growing-tenpower-suffix-20261016/GrowingSuffix.lean
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: Restore original accepted source layout to clean temporary directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/p196-verify"
+          SRC="proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs"
+          mkdir -p "$ROOT/proofs/contributions/agent-111/exact-length-residues" "$ROOT/proofs/research"
+          cp -a "$SRC/contributions/agent-111/exact-length-residues/." \
+            "$ROOT/proofs/contributions/agent-111/exact-length-residues/"
+          cp "$SRC/research/Lychrel196Research.lean" "$ROOT/proofs/research/"
+          cp proofs/contributions/agent-111/growing-tenpower-suffix-20261016/GrowingSuffix.lean \
+            "$ROOT/proofs/contributions/agent-111/exact-length-residues/GrowingSuffix.lean"
+          sha256sum "$ROOT/proofs/contributions/agent-111/exact-length-residues/GrowingSuffix.lean"
+
+      - name: Download pinned official Lean 4.19.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 --output lean-4.19.0-linux.tar.zst \
+            https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean-4.19.0-linux.tar.zst' | sha256sum -c -
+          tar --zstd -xf lean-4.19.0-linux.tar.zst
+
+      - name: Fresh imported source build and complete theorem dependency axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          unset LD_PRELOAD
+          ROOT="$RUNNER_TEMP/p196-verify"
+          python3 -B "$ROOT/proofs/contributions/agent-111/exact-length-residues/check.py" \
+            "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" \
+            --module GrowingSuffix \
+            --build-dir "$RUNNER_TEMP/agent111-growing-build" \
+            --output-dir "$RUNNER_TEMP/agent111-growing-report"
+
+      - name: Preserve success and failure logs plus axiom inventories
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent111-growing-tenpower-suffix-evidence
+          path: ${{ runner.temp }}/agent111-growing-report/
+          if-no-files-found: warn
+          retention-days: 30
