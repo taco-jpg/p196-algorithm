@@ -1,0 +1,9 @@
+{
+  "classification": "ENVIRONMENT_NAMESPACE_MISMATCH",
+  "exact_command": "python -B - <<'PY'\nfrom pathlib import Path\nimport json\nroot=Path('/dev/shm/p196-agent33-c78a2c28e1af')\nfor p in root.iterdir():\n print(p.name, 'dir' if p.is_dir() else p.stat().st_size)\ne=root/'original-independent-evidence119'\nfor p in sorted(e.rglob('*')):\n if p.is_file(): print(str(p.relative_to(e)),p.stat().st_size)\nPY",
+  "sandbox_permissions": "use_default",
+  "observed_exit_code": 1,
+  "observed_stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py\", line 1056, in iterdir\n    for name in os.listdir(self):\n                ^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/p196-agent33-c78a2c28e1af'\n",
+  "diagnosis": "Default sandbox had a separate empty /dev/shm. Parent confirmed owned evidence in host namespace; an explicitly approved require_escalated read succeeded. No missing evidence or failed mathematical verification was inferred.",
+  "evidence_integrity_checker_failures_before_final_run": 0
+}

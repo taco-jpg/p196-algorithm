@@ -1,0 +1,344 @@
+{
+  "conclusion": "PASS_REUSED_EVIDENCE_FOR_BYTE_IDENTICAL_SOURCE_CLOSURE: actual retained source, commands, logs, audit results, manifests and original independent review are mutually byte-bound. The evidence qualifies for reuse for the unchanged 22-module closure, with current PR/main binding handled by the delivery owner. Fresh execution is NOT_RUN.",
+  "development_archive": {
+    "bytes": 121316,
+    "exact_membership": true,
+    "git_blob": "b6fd7f60dc384305861c0b6b2914ed4fe9e81d1b",
+    "historical_failed_log_members_preserved": {
+      "count-development/attempt-001/compile.log": {
+        "raw_log": "/workspace/scratch/a1d46b1077ac/agent103-audit/count-dev/attempt-001/ResidualFiveResidueCount.lean:60:2: error: simp made no progress\n",
+        "sha256": "dbecc213fbb74d50f6e43fbefc00ce6c99c7273d45f0a1059c94b07727612825"
+      },
+      "residue-bridge-development/attempt-001/compile.log": {
+        "raw_log": "ResidualFiveResidueBridge.lean:13:8: error: unknown constant 'Nat.pow_mod'\n'Agent103.ResidualFiveFibers.fiber_member_mod9' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'Agent103.ResidualFiveFibers.fiber_mod99_iff_mod11' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'Agent103.ResidualFiveFibers.fiber_count_mod99_eq_mod11' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+        "sha256": "0c33b91fe107cc6da0b3866eccbee17c958f18adeed7f48c13ad9ef1835bce28"
+      },
+      "residue-bridge-development/attempt-002/compile.log": {
+        "raw_log": "ResidualFiveResidueBridge.lean:17:6: error: no goals to be solved\n'Agent103.ResidualFiveFibers.fiber_member_mod9' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'Agent103.ResidualFiveFibers.fiber_mod99_iff_mod11' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'Agent103.ResidualFiveFibers.fiber_count_mod99_eq_mod11' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+        "sha256": "40653d63b0e3ceea77448a0e0424e797bc126d5496a5a3188242101432be5624"
+      },
+      "residues-development/attempt-001/compile.log": {
+        "raw_log": "/workspace/scratch/a1d46b1077ac/agent103-audit/residue-dev/attempt-001/ResidualFiveResidues.lean:18:49: error: unsolved goals\na : Nat\nds : List Nat\n\u22a2 10 * value (fun i => ds[i]?.getD 0) ds.length = 10 * value (digitFn ds) ds.length\n/workspace/scratch/a1d46b1077ac/agent103-audit/residue-dev/attempt-001/ResidualFiveResidues.lean:41:4: error: no goals to be solved\n/workspace/scratch/a1d46b1077ac/agent103-audit/residue-dev/attempt-001/ResidualFiveResidues.lean:46:53: error: unsolved goals\na b r : Nat\nds : List Nat\nhlen : ds.length = 2 * r\n\u22a2 (a + (natValue ds * 10 + b * 10 % 11)) % 11 = (a + (b * 10 + natValue ds * 10)) % 11\n/workspace/scratch/a1d46b1077ac/agent103-audit/residue-dev/attempt-001/ResidualFiveResidues.lean:86:4: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  e \u2265 0\n  d \u2265 0\n  c \u2265 0\n  b \u2265 0\n  a \u2265 0\n  a + b \u2265 0\n  a + b - e \u2265 1\nwhere\n a := \u2191(List.countP P (List.map (fun p => f p w) ps))\n b := \u2191(List.countP P (List.flatMap (fun p => List.map (f p) ws) ps))\n c := \u2191(if P (f p w) = true then 1 else 0)\n d := \u2191(List.countP P (List.map (f p) ws))\n e := \u2191(List.countP P (List.flatMap (fun p => f p w :: List.map (f p) ws) ps))\n/workspace/scratch/a1d46b1077ac/agent103-audit/residue-dev/attempt-001/ResidualFiveResidues.lean:150:9: error: unsolved goals\ncase zero\nt : Nat\nht : t < 11\nhz : t \u2260 0\n\u22a2 \u00ac0 = t\n/workspace/scratch/a1d46b1077ac/agent103-audit/residue-dev/attempt-001/ResidualFiveResidues.lean:155:16: error: function expected at\n  ih\nterm has type\n  rawCount r t = rawCount r 1\n",
+        "sha256": "440bd62d9d6d6d50d50f0ad4d2f5cb16d176e6481c61c74d19dcfaefd87fde21"
+      }
+    },
+    "historical_failure_note": "Failed development logs, including historical sorryAx in bridge attempts, remain preserved outside the accepted build closure.",
+    "members_verified": 66,
+    "sha256": "394bbafb99db5f1e09e656489c5ab884ab246149cef41120336d86e7092084d2",
+    "status": "PASS"
+  },
+  "final_pr_snapshot": {
+    "exact_membership": true,
+    "files_verified": 46,
+    "head_binding_note": "Root obtained this manifest from exact H; this reviewer independently verifies every local byte/Git-blob match.",
+    "source_byte_manifest": {
+      "bytes": 12882,
+      "git_blob": "30a729c9ab9cb7b30470f2af86277e038fa543f6",
+      "sha256": "2c39a6c2dec91140a808aff59612d3520dbad31951bd97cb4ba5f7891256359f"
+    },
+    "status": "PASS"
+  },
+  "foundation_adapter": {
+    "body_bytes": 177451,
+    "body_lines": 4444,
+    "body_sha256": "c457c36664c186ce10f38d492460fe67f5318c7edf14ff9b930b00b7f67f3402",
+    "compiled_forwarder": {
+      "bytes": 24,
+      "git_blob": "59d5f72fbb3bf6846882474d6c74337d5e3ea4f0",
+      "sha256": "13dd9effbef33d3d10138baed5cb3a6f964691ba895cc5d453f2553f0ac81011"
+    },
+    "compiled_forwarder_utf8": "import LychrelDigitSums\n",
+    "container_start_byte_zero_based": 329,
+    "container_start_line_one_based": 11,
+    "original_bytes": 177462,
+    "status": "PASS",
+    "unique_container_occurrence": true
+  },
+  "fresh_lean_execution": "NOT_RUN",
+  "limitations": [
+    "No fresh Lean execution was requested or performed; all kernel runtime results are retained original nonauthor evidence.",
+    "Root must maintain current remote H binding, fresh main 11-source pin binding, combined-tree validity, platform gates, and target ownership.",
+    "This reviewer did not reverify omitted toolchain binaries or .olean objects and does not claim repository-wide execution.",
+    "The 33-entry unsafe ledger covers axiomInfo/isUnsafe only, not all unsafe definitions.",
+    "Historical failed development logs remain intact and are not accepted theorem evidence."
+  ],
+  "original_archive": {
+    "bytes": 139624,
+    "exact_membership": true,
+    "git_blob": "72c17da5b7c7f08525afad86b64377fe9b229496",
+    "indexed_members": 142,
+    "nested_indexes_verified": {
+      "FILES.json": 142,
+      "dependency-audit-001/FILES.json": 18,
+      "registry-check-only-001/FILES.json": 23,
+      "verification-clean-001/FILES.json": 71
+    },
+    "payload_bytes": 3161584,
+    "regular_members": 143,
+    "sha256": "1c649565710514ba3896293a5265978c70d98cacf117f2d8eadf43cbd9aac596",
+    "status": "PASS",
+    "tar_bytes": 3276800,
+    "tar_sha256": "3642091361a51e46c578e9e93b99d75b3aa9653d3796499ee80c92b1c4643a12"
+  },
+  "packaging_receipt_inventory": {
+    "all_seven_module_review_jsons_retained": true,
+    "assessment": "These helper entries are outside the original 142-entry evidence index. No missing accepted-source, raw compiler log, full theorem audit, or original semantic review was found. Their absence from this package does not invalidate the verified mathematical evidence.",
+    "original_mathematical_review_retained": [
+      "non-author-final-review.md",
+      "non-author-final-review.json"
+    ],
+    "original_runtime_evidence_complete": true,
+    "unpublished_helper_entries": {
+      "PR_REVIEW.md": {
+        "bytes": 3570,
+        "sha256": "18b6ff71d64053557ad5f4258d4a1e0cd52b755082ce08c77d9a23ee788b22dc"
+      },
+      "final-publication-tree.json": {
+        "bytes": 105842,
+        "sha256": "751f215f7648f4d9314b063d64bfc82f6444cb230d813165e7d23c7c58305801"
+      },
+      "publication-placeholders.json": {
+        "bytes": 4498,
+        "sha256": "78f5b1e7efdb239dbfff53c360e4729e8b3f004334487b1059ce74e331b1394d"
+      }
+    }
+  },
+  "raw_audit": {
+    "audit_source": {
+      "bytes": 1915,
+      "git_blob": "63f5ca126f4bb8c18f7cf64ee2d6cf6aa658dcf7",
+      "sha256": "62513a0bac62b3771fd2b561e2f489cfc245d95575d2e83ef2662419e81f2638"
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "dependency_constants": 1701,
+    "module_counts": {
+      "ActualPrefix": 65,
+      "Agent101DigitPairs": 27,
+      "Agent101MultiplicityBounds": 28,
+      "Agent101NumericFibers": 56,
+      "Agent101SplitEnumeration": 58,
+      "EightFamilies": 233,
+      "Lychrel196Research": 0,
+      "LychrelDigitSums": 986,
+      "PalindromeBridge": 15,
+      "PrefixInverse": 45,
+      "ResidualFive": 22,
+      "ResidualFiveConclusion": 8,
+      "ResidualFiveCountArithmetic": 13,
+      "ResidualFiveFiberConclusion": 20,
+      "ResidualFiveFibers": 17,
+      "ResidualFiveFilteredConclusion": 6,
+      "ResidualFiveResidueBridge": 6,
+      "ResidualFiveResidueCount": 23,
+      "ResidualFiveResidues": 26,
+      "ResidualFiveShape": 95,
+      "ResidualFiveWitness": 27,
+      "TemporalResidues": 36
+    },
+    "new_module_constants": 111,
+    "raw_log": {
+      "bytes": 311144,
+      "git_blob": "75458c39370067a047cc232b21d0c0dfea921bcf",
+      "sha256": "34e7d0321052d127eabe7f8b325fdf88b2b14bc789497c9e0c81f24c4d564145"
+    },
+    "registry_endpoints_matched": 11,
+    "status": "PASS",
+    "theorem_constants": 1812,
+    "unparsed_nonblank_output": 0,
+    "unsafe_axiomInfo_count": 33,
+    "unsafe_axiomInfo_inherited": 30,
+    "unsafe_axiomInfo_new": 3,
+    "unsafe_axiomInfo_used_by_theorems": 0,
+    "unsafe_scope": "Only ConstantInfo.axiomInfo entries with isUnsafe; not all unsafe defnInfo definitions."
+  },
+  "recorded_execution": {
+    "actual_logs_verified": 25,
+    "audit_invocations": 1,
+    "commands": 25,
+    "compiler_arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "finished_utc": "2026-10-16T21:56:02Z",
+    "lean": {
+      "files_sha256": {
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+      },
+      "path": "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+      "runtime_prefix": "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux",
+      "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
+    },
+    "module_compilations": 22,
+    "runtime_binary_hashes_recomputed_now": false,
+    "runtime_binary_note": "Runtime binaries and .olean objects are intentionally absent from the archive; original immutable hash records are retained, not presented as fresh binary verification.",
+    "started_utc": "2026-10-16T21:53:21Z",
+    "status": "PASS",
+    "version_prefix_queries": 2,
+    "zero_exits": 25
+  },
+  "reviewer": "Agent #33 /root/pr119_evidence_integrity",
+  "role": "Independent nonauthor evidence-integrity reviewer; no source authorship",
+  "scope": "Actual retained archive/source/log byte binding, not a repeated mathematical semantic review.",
+  "source_closure": {
+    "all_registered_modules_reachable": true,
+    "dependency_preflight_theorems_exact": 1701,
+    "existing_main_pins_for_root_to_bind": [
+      {
+        "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+        "module": "LychrelDigitSums",
+        "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+        "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+      },
+      {
+        "git_blob": "c9ba79545ec486297946c418014190f1e6f3a1f0",
+        "module": "PrefixInverse",
+        "path": "proofs/PrefixInverse__d258d04cb6f2792b.lean",
+        "sha256": "0a93622752fa22cf6c8de2efc8500dc313498d59831bb0e5381b3b351e0ab03e"
+      },
+      {
+        "git_blob": "ceb031e9987db556499fff75b16be4653c3c7ead",
+        "module": "ActualPrefix",
+        "path": "proofs/ActualPrefix__787f92e1c3116646.lean",
+        "sha256": "c136216ed9c4100a268643be9a471b6746320f63d0af2030b6418429e5551e76"
+      },
+      {
+        "git_blob": "a8066f82178786648c2c32b49a333e0c87e5810b",
+        "module": "PalindromeBridge",
+        "path": "proofs/PalindromeBridge__c6bbb7ab7e8b1c29.lean",
+        "sha256": "6c1de8cf02ec9381e80388e6b4915db6cfa4d1189d3e47c273400f0d37948093"
+      },
+      {
+        "git_blob": "c94378b93541f5a537e50500bd5a6a94dfb16f8b",
+        "module": "EightFamilies",
+        "path": "proofs/contributions/agent-103/residual-five-20261016/vendor/EightFamilies.lean",
+        "sha256": "3d865d82e4a648af36d0ce0c6ded12bdd5e184fd294951dc53e689458b3ede53"
+      },
+      {
+        "git_blob": "93dec0e8bb09dc8deaa5766214d3e02ca758db4c",
+        "module": "TemporalResidues",
+        "path": "proofs/contributions/agent-103/residual-five-20261016/vendor/TemporalResidues.lean",
+        "sha256": "f3a215bb9ee54628e83d0591bff2ed7f73980821931d56de99f0b3da5d4ab8ab"
+      },
+      {
+        "git_blob": "59d5f72fbb3bf6846882474d6c74337d5e3ea4f0",
+        "module": "Lychrel196Research",
+        "path": "proofs/contributions/agent-103/residual-five-20261016/vendor/Lychrel196Research.lean",
+        "sha256": "13dd9effbef33d3d10138baed5cb3a6f964691ba895cc5d453f2553f0ac81011"
+      },
+      {
+        "git_blob": "f167b4624c80815b22ccce6ed2bba8e641f052c8",
+        "module": "ResidualFiveShape",
+        "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFiveShape.lean",
+        "sha256": "592f4af76ee78c92f24dddf91042f0fc2c918944dd181d7e058eb3c57330ffa6"
+      },
+      {
+        "git_blob": "4cd8fe4d5ef6ceeec50d8bd8c7d56a4b928e8a47",
+        "module": "ResidualFive",
+        "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFive.lean",
+        "sha256": "e52aad8590495fe4b34b866c20b99fe14892c16f9af79a3fdaa24222af896a35"
+      },
+      {
+        "git_blob": "ef30a3af28ed83c758ab30605eda500408cdcf96",
+        "module": "ResidualFiveWitness",
+        "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFiveWitness.lean",
+        "sha256": "bdd3abc30bd4a24fe27df657c21dcc92555d8b3fa26f2c7c3abd3e7091bd1d3f"
+      },
+      {
+        "git_blob": "a09a775652aa102a912120ab95fa05042a6d62d6",
+        "module": "ResidualFiveConclusion",
+        "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFiveConclusion.lean",
+        "sha256": "1073466758b41e0c5b0f630b37ca3b652b6d345f64032f30455e321e7b2c34ef"
+      }
+    ],
+    "full_build_invocation": {
+      "bytes": 967,
+      "git_blob": "02f641583f1df8649a31f057193bd27c97abbab7",
+      "sha256": "7b66d2a631db42b1216d316383aa500ee1a7c4af85dc2a5a135f0888b2928ce8"
+    },
+    "full_build_process_observed_exit": 0,
+    "identical_archived_and_final_files": {
+      "BUILD_REGISTRY.json": {
+        "bytes": 15888,
+        "git_blob": "40cff50698b3aa165789d8339439b18a445be678",
+        "sha256": "9fba03adae842220c2e5a0481afa7559ce33026a7cbfec5b7f360989b204c89d"
+      },
+      "FILES.json": {
+        "bytes": 23719,
+        "git_blob": "69ecc5124226aa722b762ee98c7935d29f8fd489",
+        "sha256": "bf07dd812f041acfad7d3a5dc20f8c35045cc2fc53bfe668e53f817715fb1b85"
+      },
+      "REPRODUCE.md": {
+        "bytes": 3910,
+        "git_blob": "949e31f707fcab7b691f84beb2864c0496a21cfa",
+        "sha256": "0e00bb2da202c7ef3846cefedfbfc62ea5e9b58930c6cc096c53011f8243b14a"
+      },
+      "SOURCES.json": {
+        "bytes": 11275,
+        "git_blob": "e3d39d36e5621cf585fd70fa5f804dbc4a581817",
+        "sha256": "f00319ab8febfb4f66e91d91f4a5a2d29212738f7b7a304a75baaee7c5a6d14c"
+      },
+      "UNSAFE_IMPLEMENTATIONS.json": {
+        "bytes": 6225,
+        "git_blob": "919a1e13cb03f6f0fa99d3b8ae2d9a4d987d8718",
+        "sha256": "7c9a76886d2f4c68bbca21bb9b0420220974050a957d34848646bfc5f15a54ed"
+      },
+      "check.py": {
+        "bytes": 19873,
+        "git_blob": "db12d2a4ef1f8717df2de1531a8337b35a070e9a",
+        "sha256": "61ca73e9a673d78703426152489d49c8235f51be4f6fb14742c274334a45a348"
+      },
+      "non-author-final-review.json": {
+        "bytes": 8263,
+        "git_blob": "091d75bb2821f47fdc339d08995da83efc1801fa",
+        "sha256": "824c3da9f1a9914904827659f9c81e894daab1ae93221b37dd20474723f462cd"
+      },
+      "non-author-final-review.md": {
+        "bytes": 8717,
+        "git_blob": "241aa766267de6f1344cef0f5dbb125987980d79",
+        "sha256": "88992b4a997213a596c7574be1ba602ce282cd37ad61c0cb844c7e8fd5c5b9ed"
+      }
+    },
+    "original_and_compiled_modules_verified": 22,
+    "pr_bound_new_and_vendored_modules": [
+      "Agent101DigitPairs",
+      "Agent101MultiplicityBounds",
+      "Agent101SplitEnumeration",
+      "Agent101NumericFibers",
+      "ResidualFiveFibers",
+      "ResidualFiveFiberConclusion",
+      "ResidualFiveResidues",
+      "ResidualFiveResidueCount",
+      "ResidualFiveResidueBridge",
+      "ResidualFiveCountArithmetic",
+      "ResidualFiveFilteredConclusion"
+    ],
+    "recorded_build_order_topological": true,
+    "registry_check_only": "Recorded exit0, actual log and registry hashes verified; source/import compatibility only, not Lean compilation.",
+    "single_root": "ResidualFiveFilteredConclusion",
+    "staged_registry_sources_verified": 22,
+    "status": "PASS",
+    "written_definition_total": 8,
+    "written_theorem_counts": {
+      "ResidualFiveCountArithmetic": 3,
+      "ResidualFiveFiberConclusion": 7,
+      "ResidualFiveFibers": 11,
+      "ResidualFiveFilteredConclusion": 3,
+      "ResidualFiveResidueBridge": 3,
+      "ResidualFiveResidueCount": 16,
+      "ResidualFiveResidues": 20
+    },
+    "written_theorem_total": 63
+  },
+  "source_head": "b235d662ce481cf43f8db1335c18f5993953af9d",
+  "status": "PASS",
+  "verification_classification": "REUSED_EVIDENCE"
+}
