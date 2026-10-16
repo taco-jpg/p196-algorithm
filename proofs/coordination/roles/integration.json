@@ -5,16 +5,16 @@
   "owner": "Agent #12",
   "session": "aa9210d02a75",
   "task_id": "agent12-sessionaa9210-pr131-pr109-pr123-integration-20261016",
-  "status": "ACTIVE",
-  "active_editing": true,
+  "status": "RELEASED",
+  "active_editing": false,
   "selected_pr": 109,
   "reviewed_head": "18a82d9b5a2bd326751621e3e7a5458117561da7",
-  "observed_main_head": "1ed1a033be77ca2a1c91331ede67eb030b8ec6ca",
-  "verified_main_head": "d00135526e27396fda95cdb00e809737b301cdbc",
-  "verified_combined_tree": "481475f708d334d3367cfd9fa2053f5f871a3544",
+  "observed_main_head": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+  "verified_main_head": "1ed1a033be77ca2a1c91331ede67eb030b8ec6ca",
+  "verified_combined_tree": "becf57ddcc0d219988d9c2391648ca24ac08c3ad",
   "review_id": 5554677707,
   "evidence_commit": "bf6f18cfbcee5913ce7243e5a08fe8aac28d3718",
-  "verification": "Complete independent11-module fresh trust-zero audit and semantic review PASS: 1456 theorem constants,182 safe definitions,11 literal exports; full new evidence uploaded and read back. All17096 entries of the last checked base preserved with20 additions. New observed base must be rebound before merge.",
+  "verification": "Fresh independent eleven-module trust-zero gate PASS. Actual merge tree becf57dd and parents [1ed1a033,18a82d9b] match final verified combination. All17969 base entries preserved;20 additive paths. No postmerge Lean or CI execution claimed.",
   "prior_record": {
     "git_blob": "a670dff56a86962cfd78b9de15839a6cca450151",
     "status_at_claim": "RELEASED",
@@ -22,6 +22,49 @@
     "integrated_commit": "1ed1a033be77ca2a1c91331ede67eb030b8ec6ca"
   },
   "release_rule": "Release immediately after actual target tree and ordered parents are verified.",
-  "integration_state": "FINAL_BASE_RECHECK",
-  "updated_at": "2026-10-16 23:27:43 UTC"
+  "integration_state": "VERIFIED_ON_TARGET",
+  "updated_at": "2026-10-16 23:28:47 UTC",
+  "integrated_commit": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+  "postmerge": {
+    "schema_version": 1,
+    "pr": 109,
+    "status": "VERIFIED_ON_TARGET",
+    "observed_at": "2026-10-16 23:28:47 UTC",
+    "head": "18a82d9b5a2bd326751621e3e7a5458117561da7",
+    "base": "1ed1a033be77ca2a1c91331ede67eb030b8ec6ca",
+    "merge_commit": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+    "tree": "becf57ddcc0d219988d9c2391648ca24ac08c3ad",
+    "parents": [
+      "1ed1a033be77ca2a1c91331ede67eb030b8ec6ca",
+      "18a82d9b5a2bd326751621e3e7a5458117561da7"
+    ],
+    "main_readback": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
+    "merged": true,
+    "preserved_base_entries": 17969,
+    "added_paths": 20,
+    "fresh_premerge_Lean": {
+      "status": "PASS",
+      "modules": 11,
+      "theorem_constants": 1456,
+      "safe_definitions": 182,
+      "literal_public_exports": 11,
+      "flags": [
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false"
+      ]
+    },
+    "postmerge_Lean": "NOT_RUN; actual merge tree equals the checked final combination and every selected source, registry and verifier matches the fresh passing audit.",
+    "postmerge_check_runs": {
+      "count": 0,
+      "status": "NOT_RUN"
+    },
+    "postmerge_actions_runs": {
+      "count": 0,
+      "status": "NOT_RUN"
+    },
+    "independent_review": 5554677707,
+    "evidence_commit": "bf6f18cfbcee5913ce7243e5a08fe8aac28d3718",
+    "verification_basis": "Guarded ordinary merge API success; exact remote tree and ordered parents; full preservation of prior main entries; eleven-module byte identity to the fresh nonauthor semantic and axiom audit. No unrelated repository-wide build or196-conjecture claim."
+  }
 }
