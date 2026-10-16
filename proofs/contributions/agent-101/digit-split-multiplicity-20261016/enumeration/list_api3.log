@@ -1,0 +1,15 @@
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi3.lean:2:7: error: unknown constant 'List.prod'
+List.sum.{u_1} {α : Type u_1} [Add α] [Zero α] : List α → α
+List.sum_cons.{u} {α : Type u} [Add α] [Zero α] {a : α} {l : List α} : (a :: l).sum = a + l.sum
+proofs/contributions/agent-101/digit-split-multiplicity-20261016/enumeration/ListApi3.lean:5:7: error: unknown constant 'List.prod_nil'
+List.foldl.{u, v} {α : Type u} {β : Type v} (f : α → β → α) (init : α) : List β → α
+List.foldr.{u, v} {α : Type u} {β : Type v} (f : α → β → β) (init : β) (l : List α) : β
+List.length_map.{u_1, u_2} {α : Type u_1} {β : Type u_2} {as : List α} (f : α → β) : (List.map f as).length = as.length
+List.mem_cons.{u_1} {α✝ : Type u_1} {b : α✝} {l : List α✝} {a : α✝} : a ∈ b :: l ↔ a = b ∨ a ∈ l
+List.reverse_reverse.{u_1} {α : Type u_1} (as : List α) : as.reverse.reverse = as
+List.zipWith_self.{u_1, u_2} {α : Type u_1} {δ : Type u_2} {f : α → α → δ} {l : List α} :
+  List.zipWith f l l = List.map (fun a => f a a) l
+List.zipWith_eq_nil_iff.{u_1, u_2, u_3} {α : Type u_1} {β : Type u_2} {γ : Type u_3} {f : α → β → γ} {l : List α}
+  {l' : List β} : List.zipWith f l l' = [] ↔ l = [] ∨ l' = []
+List.length_pos_iff.{u_1} {α : Type u_1} {l : List α} : 0 < l.length ↔ l ≠ []
+Option.toList.{u_1} {α : Type u_1} : Option α → List α
