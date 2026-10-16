@@ -1,0 +1,1654 @@
+Agent109.Word : Type
+Agent109.zipAdd : Agent109.Word → Agent109.Word → Agent109.Word
+Agent109.pair (w : Agent109.Word) : Agent109.Word
+Agent109.normalize : Agent109.Word → Nat → Agent109.Word
+Agent109.stepWord (w : Agent109.Word) : Agent109.Word
+Agent109.template (c : Nat) (B A C : Agent109.Word) (g h : Nat) : Agent109.Word
+Agent109.zipAdd_eq_zipWith (a b : Agent109.Word) :
+  Eq.{1} (Agent109.zipAdd a b) (List.zipWith.{0, 0, 0} (fun x1 x2 => HAdd.hAdd.{0, 0, 0} x1 x2) a b)
+Agent109.zipAdd_append (a a' b b' : Agent109.Word) (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1} (Agent109.zipAdd (HAppend.hAppend.{0, 0, 0} a a') (HAppend.hAppend.{0, 0, 0} b b'))
+    (HAppend.hAppend.{0, 0, 0} (Agent109.zipAdd a b) (Agent109.zipAdd a' b'))
+Agent109.zipAdd_length (a b : Agent109.Word) (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1} (List.length.{0} (Agent109.zipAdd a b)) (List.length.{0} a)
+Agent109.zipAdd_comm (a b : Agent109.Word) : Eq.{1} (Agent109.zipAdd a b) (Agent109.zipAdd b a)
+Agent109.zipAdd_reverse (a b : Agent109.Word) (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1} (List.reverse.{0} (Agent109.zipAdd a b)) (Agent109.zipAdd (List.reverse.{0} a) (List.reverse.{0} b))
+Agent109.zipAdd_replicate (m p q : Nat) :
+  Eq.{1} (Agent109.zipAdd (List.replicate.{0} m p) (List.replicate.{0} m q))
+    (List.replicate.{0} m (HAdd.hAdd.{0, 0, 0} p q))
+Agent109.norm : Agent109.Word → Nat → Prod.{0, 0} Agent109.Word Nat
+Agent109.carryWord (e : Nat) : Agent109.Word
+Agent109.normalize_eq_norm (w : Agent109.Word) (e : Nat) :
+  Eq.{1} (Agent109.normalize w e)
+    (HAppend.hAppend.{0, 0, 0} (Prod.fst.{0, 0} (Agent109.norm w e))
+      (Agent109.carryWord (Prod.snd.{0, 0} (Agent109.norm w e))))
+Agent109.norm_length (w : Agent109.Word) (e : Nat) :
+  Eq.{1} (List.length.{0} (Prod.fst.{0, 0} (Agent109.norm w e))) (List.length.{0} w)
+Agent109.norm_append (a b : Agent109.Word) (e : Nat) :
+  Eq.{1} (Agent109.norm (HAppend.hAppend.{0, 0, 0} a b) e)
+    (Prod.mk.{0, 0}
+      (HAppend.hAppend.{0, 0, 0} (Prod.fst.{0, 0} (Agent109.norm a e))
+        (Prod.fst.{0, 0} (Agent109.norm b (Prod.snd.{0, 0} (Agent109.norm a e)))))
+      (Prod.snd.{0, 0} (Agent109.norm b (Prod.snd.{0, 0} (Agent109.norm a e)))))
+Agent109.Bounded (w : Agent109.Word) : Prop
+Agent109.norm_carry_le (w : Agent109.Word) (e : Nat) (hw : Agent109.Bounded w) (he : LE.le.{0} e 1) :
+  LE.le.{0} (Prod.snd.{0, 0} (Agent109.norm w e)) 1
+Agent109.norm_digit_lt (w : Agent109.Word) (e y : Nat) :
+  Membership.mem.{0, 0} (Prod.fst.{0, 0} (Agent109.norm w e)) y → LT.lt.{0} y 10
+Agent109.kOf (x : Nat) : Nat
+Agent109.tOf (x : Nat) : Nat
+Agent109.Phase (x : Nat) : Prop
+Agent109.norm_band_tail (x m : Nat) (hx : LE.le.{0} x 18) :
+  Eq.{1} (Agent109.norm (List.replicate.{0} m x) (Agent109.kOf x))
+    (Prod.mk.{0, 0} (List.replicate.{0} m (Agent109.tOf x)) (Agent109.kOf x))
+Agent109.norm_band (x m e : Nat) (hx : LE.le.{0} x 18) (hx9 : Ne.{1} x 9) (he : LE.le.{0} e 1) :
+  Eq.{1} (Agent109.norm (List.replicate.{0} (HAdd.hAdd.{0, 0, 0} m 1) x) e)
+    (Prod.mk.{0, 0}
+      (List.cons.{0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} x e) (HMul.hMul.{0, 0, 0} 10 (Agent109.kOf x)))
+        (List.replicate.{0} m (Agent109.tOf x)))
+      (Agent109.kOf x))
+Agent109.complement_k (c : Nat) (hc : Agent109.Phase c) :
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (Agent109.kOf c) (Agent109.kOf (HSub.hSub.{0, 0, 0} 18 c))) 1
+Agent109.complement_t (c : Nat) (hc : Agent109.Phase c) :
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf (HSub.hSub.{0, 0, 0} 18 c))) 9
+Agent109.complement_phase (c : Nat) (hc : Agent109.Phase c) : Agent109.Phase (HSub.hSub.{0, 0, 0} 18 c)
+Agent109.next_phase (c : Nat) (hc : Agent109.Phase c) :
+  Agent109.Phase (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c))
+Agent109.next_complement (c : Nat) (hc : Agent109.Phase c) :
+  Eq.{1} (HSub.hSub.{0, 0, 0} 18 (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c)))
+    (HAdd.hAdd.{0, 0, 0} (Agent109.tOf (HSub.hSub.{0, 0, 0} 18 c)) (Agent109.tOf (HSub.hSub.{0, 0, 0} 18 c)))
+Agent109.Data : Type
+Agent109.data (c : Nat) (B A C : Agent109.Word) : Agent109.Data
+Agent109.u0 (c : Nat) (B A C : Agent109.Word) : Nat
+Agent109.u1 (c : Nat) (B A C : Agent109.Word) : Nat
+Agent109.u2 (c : Nat) (B A C : Agent109.Word) : Nat
+Agent109.u3 (c : Nat) (B A C : Agent109.Word) : Nat
+Agent109.digitWord (c : Nat) (B A C : Agent109.Word) (g h : Nat) : Agent109.Word
+Agent109.bounded_reverse (w : Agent109.Word) (h : Agent109.Bounded w) : Agent109.Bounded (List.reverse.{0} w)
+Agent109.norm_template (c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c) (hB : Agent109.Bounded B)
+  (hA : Agent109.Bounded A) (hC : Agent109.Bounded C) :
+  Eq.{1} (Agent109.norm (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} g 1) (HAdd.hAdd.{0, 0, 0} h 1)) 0)
+    (Prod.mk.{0, 0} (Agent109.digitWord c B A C g h) (Agent109.Data.γ (Agent109.data c B A C)))
+Agent109.normalize_template (c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C) :
+  Eq.{1} (Agent109.normalize (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} g 1) (HAdd.hAdd.{0, 0, 0} h 1)) 0)
+    (HAppend.hAppend.{0, 0, 0} (Agent109.digitWord c B A C g h)
+      (Agent109.carryWord (Agent109.Data.γ (Agent109.data c B A C))))
+Agent109.gamma_le (c : Nat) (B A C : Agent109.Word) (hB : Agent109.Bounded B) :
+  LE.le.{0} (Agent109.Data.γ (Agent109.data c B A C)) 1
+Agent109.pair_split (X1 X2 X3 X4 X5 : Agent109.Word) (m n p q : Nat)
+  (h15 : Eq.{1} (List.length.{0} X1) (List.length.{0} X5)) (h24 : Eq.{1} (List.length.{0} X2) (List.length.{0} X4)) :
+  Eq.{1}
+    (Agent109.pair
+      (HAppend.hAppend.{0, 0, 0}
+        (HAppend.hAppend.{0, 0, 0}
+          (HAppend.hAppend.{0, 0, 0}
+            (HAppend.hAppend.{0, 0, 0}
+              (HAppend.hAppend.{0, 0, 0}
+                (HAppend.hAppend.{0, 0, 0}
+                  (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} X1 (List.replicate.{0} m p)) X2)
+                  (List.replicate.{0} n q))
+                X3)
+              (List.replicate.{0} n q))
+            X4)
+          (List.replicate.{0} m p))
+        X5))
+    (HAppend.hAppend.{0, 0, 0}
+      (HAppend.hAppend.{0, 0, 0}
+        (HAppend.hAppend.{0, 0, 0}
+          (HAppend.hAppend.{0, 0, 0}
+            (HAppend.hAppend.{0, 0, 0}
+              (HAppend.hAppend.{0, 0, 0}
+                (HAppend.hAppend.{0, 0, 0}
+                  (HAppend.hAppend.{0, 0, 0} (Agent109.zipAdd X1 (List.reverse.{0} X5))
+                    (List.replicate.{0} m (HAdd.hAdd.{0, 0, 0} p p)))
+                  (Agent109.zipAdd X2 (List.reverse.{0} X4)))
+                (List.replicate.{0} n (HAdd.hAdd.{0, 0, 0} q q)))
+              (Agent109.pair X3))
+            (List.replicate.{0} n (HAdd.hAdd.{0, 0, 0} q q)))
+          (List.reverse.{0} (Agent109.zipAdd X2 (List.reverse.{0} X4))))
+        (List.replicate.{0} m (HAdd.hAdd.{0, 0, 0} p p)))
+      (List.reverse.{0} (Agent109.zipAdd X1 (List.reverse.{0} X5))))
+Agent109.Br (c : Nat) (B A C : Agent109.Word) : Agent109.Word
+Agent109.Ar (c : Nat) (B A C : Agent109.Word) : Agent109.Word
+Agent109.Cr (c : Nat) (B A C : Agent109.Word) : Agent109.Word
+Agent109.stepWord_template (c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C) :
+  Eq.{1} (Agent109.stepWord (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} g 2) (HAdd.hAdd.{0, 0, 0} h 2)))
+    (Agent109.template (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c)) (Agent109.Br c B A C)
+      (Agent109.Ar c B A C) (Agent109.Cr c B A C) (HAdd.hAdd.{0, 0, 0} g (Agent109.Data.γ (Agent109.data c B A C)))
+      (HAdd.hAdd.{0, 0, 0} h (Agent109.Data.γ (Agent109.data c B A C))))
+Agent109.reverseAux (n acc : Nat) : Nat
+Agent109.reverseFuel : Nat → Nat → Nat → Nat
+Agent109.reverse10 (n : Nat) : Nat
+Agent109.Palindrome (n : Nat) : Prop
+Agent109.step (n : Nat) : Nat
+Agent109.orbitWord (w : Agent109.Word) : Nat → Agent109.Word
+Agent109.orbit (n : Nat) : Nat → Nat
+Agent109.evalL : Agent109.Word → Nat
+Agent109.digitsFuel : Nat → Nat → Agent109.Word
+Agent109.digits (n : Nat) : Agent109.Word
+Agent109.pairWord (n : Nat) : Agent109.Word
+Agent109.digitsFuel_stable (f f' n : Nat) (hf : LE.le.{0} n f) (hf' : LE.le.{0} n f') :
+  Eq.{1} (Agent109.digitsFuel f n) (Agent109.digitsFuel f' n)
+Agent109.digits_zero : Eq.{1} (Agent109.digits 0) List.nil.{0}
+Agent109.digits_pos (n : Nat) (hn : Ne.{1} n 0) :
+  Eq.{1} (Agent109.digits n) (List.cons.{0} (HMod.hMod.{0, 0, 0} n 10) (Agent109.digits (HDiv.hDiv.{0, 0, 0} n 10)))
+Agent109.evalL_digits (n : Nat) : Eq.{1} (Agent109.evalL (Agent109.digits n)) n
+Agent109.evalL_append (a b : Agent109.Word) :
+  Eq.{1} (Agent109.evalL (HAppend.hAppend.{0, 0, 0} a b))
+    (HAdd.hAdd.{0, 0, 0} (Agent109.evalL a)
+      (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} 10 (List.length.{0} a)) (Agent109.evalL b)))
+Agent109.evalL_zipAdd (a b : Agent109.Word) (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1} (Agent109.evalL (Agent109.zipAdd a b)) (HAdd.hAdd.{0, 0, 0} (Agent109.evalL a) (Agent109.evalL b))
+Agent109.reverseFuel_digits (fuel n acc : Nat) (h : LE.le.{0} n fuel) :
+  Eq.{1} (Agent109.reverseFuel fuel n acc)
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} acc (HPow.hPow.{0, 0, 0} 10 (List.length.{0} (Agent109.digits n))))
+      (Agent109.evalL (List.reverse.{0} (Agent109.digits n))))
+Agent109.reverse10_eq (n : Nat) : Eq.{1} (Agent109.reverse10 n) (Agent109.evalL (List.reverse.{0} (Agent109.digits n)))
+Agent109.step_eq_evalL_pair (n : Nat) : Eq.{1} (Agent109.step n) (Agent109.evalL (Agent109.pairWord n))
+Agent109.Canon : Agent109.Word → Prop
+Agent109.evalL_pos_of_canon (x : Nat) (xs : Agent109.Word) (h : Agent109.Canon (List.cons.{0} x xs)) :
+  LT.lt.{0} 0 (Agent109.evalL (List.cons.{0} x xs))
+Agent109.digits_evalL (D : Agent109.Word) (h : Agent109.Canon D) : Eq.{1} (Agent109.digits (Agent109.evalL D)) D
+Agent109.evalL_norm (w : Agent109.Word) (e : Nat) :
+  Eq.{1} (Agent109.evalL (Agent109.normalize w e)) (HAdd.hAdd.{0, 0, 0} (Agent109.evalL w) e)
+Agent109.LastPos (w : Agent109.Word) : Prop
+Agent109.canon_normalize (w : Agent109.Word) (e : Nat) (hw : Agent109.Bounded w) (he : LE.le.{0} e 1)
+  (hlast : Agent109.LastPos w) : Agent109.Canon (Agent109.normalize w e)
+Agent109.bounded_pair_digits (n : Nat) : Agent109.Bounded (Agent109.pairWord n)
+Agent109.canon_digits (n : Nat) : Agent109.Canon (Agent109.digits n)
+Agent109.canon_last_pos (E : Agent109.Word) (z : Nat)
+  (h : Agent109.Canon (HAppend.hAppend.{0, 0, 0} E (List.cons.{0} z List.nil.{0}))) : LT.lt.{0} 0 z
+Agent109.pair_last (E : Agent109.Word) (z : Nat) (hz : LT.lt.{0} 0 z) :
+  Agent109.LastPos (Agent109.pair (HAppend.hAppend.{0, 0, 0} E (List.cons.{0} z List.nil.{0})))
+Agent109.lastPos_pairWord (n : Nat) : Agent109.LastPos (Agent109.pairWord n)
+Agent109.pairWord_step (n : Nat) :
+  Eq.{1} (Agent109.pairWord (Agent109.step n)) (Agent109.stepWord (Agent109.pairWord n))
+Agent109.pairWord_orbit (n k : Nat) :
+  Eq.{1} (Agent109.pairWord (Agent109.orbit n k)) (Agent109.orbitWord (Agent109.pairWord n) k)
+Agent109.orbit_succ_value (n k : Nat) :
+  Eq.{1} (Agent109.orbit n (HAdd.hAdd.{0, 0, 0} k 1)) (Agent109.evalL (Agent109.orbitWord (Agent109.pairWord n) k))
+Agent109.actual_template_step (n c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C)
+  (hn : Eq.{1} (Agent109.pairWord n) (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} g 2) (HAdd.hAdd.{0, 0, 0} h 2))) :
+  Eq.{1} (Agent109.pairWord (Agent109.step n))
+    (Agent109.template (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c)) (Agent109.Br c B A C)
+      (Agent109.Ar c B A C) (Agent109.Cr c B A C) (HAdd.hAdd.{0, 0, 0} g (Agent109.Data.γ (Agent109.data c B A C)))
+      (HAdd.hAdd.{0, 0, 0} h (Agent109.Data.γ (Agent109.data c B A C))))
+Agent109.canon_iff (D : Agent109.Word) :
+  Iff (Agent109.Canon D) (And (∀ (y : Nat), Membership.mem.{0, 0} D y → LT.lt.{0} y 10) (Agent109.LastPos D))
+Agent109.evalL_lt (W : Agent109.Word) (h : ∀ (y : Nat), Membership.mem.{0, 0} W y → LT.lt.{0} y 10) :
+  LT.lt.{0} (Agent109.evalL W) (HPow.hPow.{0, 0, 0} 10 (List.length.{0} W))
+Agent109.evalL_ge (x : Nat) (xs : Agent109.Word) (h : Agent109.Canon (List.cons.{0} x xs)) :
+  LE.le.{0} (HPow.hPow.{0, 0, 0} 10 (List.length.{0} xs)) (Agent109.evalL (List.cons.{0} x xs))
+Agent109.palindrome_iff (m : Nat) :
+  Iff (Agent109.Palindrome m) (Eq.{1} (List.reverse.{0} (Agent109.digits m)) (Agent109.digits m))
+Agent109.step_palindrome_iff (n : Nat) :
+  Iff (Agent109.Palindrome (Agent109.step n))
+    (Eq.{1} (List.reverse.{0} (Agent109.normalize (Agent109.pairWord n) 0))
+      (Agent109.normalize (Agent109.pairWord n) 0))
+Agent109.actual_template_palindrome_iff (n c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C)
+  (hn : Eq.{1} (Agent109.pairWord n) (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} g 1) (HAdd.hAdd.{0, 0, 0} h 1))) :
+  Iff (Agent109.Palindrome (Agent109.step n))
+    (Eq.{1}
+      (List.reverse.{0}
+        (HAppend.hAppend.{0, 0, 0} (Agent109.digitWord c B A C g h)
+          (Agent109.carryWord (Agent109.Data.γ (Agent109.data c B A C)))))
+      (HAppend.hAppend.{0, 0, 0} (Agent109.digitWord c B A C g h)
+        (Agent109.carryWord (Agent109.Data.γ (Agent109.data c B A C)))))
+Agent109.Cert.append_inj_left' {a b c d : Agent109.Word}
+  (h : Eq.{1} (HAppend.hAppend.{0, 0, 0} a b) (HAppend.hAppend.{0, 0, 0} c d))
+  (hl : Eq.{1} (List.length.{0} a) (List.length.{0} c)) : And (Eq.{1} a c) (Eq.{1} b d)
+Agent109.Cert.shape_reverse (X1 X2 X3 X4 X5 : Agent109.Word) (m n p q : Nat) :
+  Eq.{1}
+    (List.reverse.{0}
+      (HAppend.hAppend.{0, 0, 0}
+        (HAppend.hAppend.{0, 0, 0}
+          (HAppend.hAppend.{0, 0, 0}
+            (HAppend.hAppend.{0, 0, 0}
+              (HAppend.hAppend.{0, 0, 0}
+                (HAppend.hAppend.{0, 0, 0}
+                  (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} X1 (List.replicate.{0} m p)) X2)
+                  (List.replicate.{0} n q))
+                X3)
+              (List.replicate.{0} n q))
+            X4)
+          (List.replicate.{0} m p))
+        X5))
+    (HAppend.hAppend.{0, 0, 0}
+      (HAppend.hAppend.{0, 0, 0}
+        (HAppend.hAppend.{0, 0, 0}
+          (HAppend.hAppend.{0, 0, 0}
+            (HAppend.hAppend.{0, 0, 0}
+              (HAppend.hAppend.{0, 0, 0}
+                (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} (List.reverse.{0} X5) (List.replicate.{0} m p))
+                  (List.reverse.{0} X4))
+                (List.replicate.{0} n q))
+              (List.reverse.{0} X3))
+            (List.replicate.{0} n q))
+          (List.reverse.{0} X2))
+        (List.replicate.{0} m p))
+      (List.reverse.{0} X1))
+Agent109.Cert.shape_palindrome_iff (X1 X2 X3 X4 X5 : Agent109.Word) (m n p q : Nat)
+  (h15 : Eq.{1} (List.length.{0} X1) (List.length.{0} X5)) (h24 : Eq.{1} (List.length.{0} X2) (List.length.{0} X4)) :
+  Iff
+    (Eq.{1}
+      (List.reverse.{0}
+        (HAppend.hAppend.{0, 0, 0}
+          (HAppend.hAppend.{0, 0, 0}
+            (HAppend.hAppend.{0, 0, 0}
+              (HAppend.hAppend.{0, 0, 0}
+                (HAppend.hAppend.{0, 0, 0}
+                  (HAppend.hAppend.{0, 0, 0}
+                    (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} X1 (List.replicate.{0} m p)) X2)
+                    (List.replicate.{0} n q))
+                  X3)
+                (List.replicate.{0} n q))
+              X4)
+            (List.replicate.{0} m p))
+          X5))
+      (HAppend.hAppend.{0, 0, 0}
+        (HAppend.hAppend.{0, 0, 0}
+          (HAppend.hAppend.{0, 0, 0}
+            (HAppend.hAppend.{0, 0, 0}
+              (HAppend.hAppend.{0, 0, 0}
+                (HAppend.hAppend.{0, 0, 0}
+                  (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} X1 (List.replicate.{0} m p)) X2)
+                  (List.replicate.{0} n q))
+                X3)
+              (List.replicate.{0} n q))
+            X4)
+          (List.replicate.{0} m p))
+        X5))
+    (And (Eq.{1} (List.reverse.{0} X5) X1) (And (Eq.{1} (List.reverse.{0} X4) X2) (Eq.{1} (List.reverse.{0} X3) X3)))
+Agent109.Cert.StepPal (c : Nat) (B A C : Agent109.Word) : Prop
+Agent109.Cert.step_palindrome_template (n c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C)
+  (hn : Eq.{1} (Agent109.pairWord n) (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} g 2) (HAdd.hAdd.{0, 0, 0} h 2))) :
+  Iff (Agent109.Palindrome (Agent109.step n)) (Agent109.Cert.StepPal c B A C)
+Agent109.Cert.template_trim (c : Nat) (B A C : Agent109.Word) (j j1 j2 k g h : Nat) :
+  Eq.{1}
+    (Agent109.template c (HAppend.hAppend.{0, 0, 0} B (List.replicate.{0} j c))
+      (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} (List.replicate.{0} j1 c) A)
+        (List.replicate.{0} j2 (HSub.hSub.{0, 0, 0} 18 c)))
+      (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} (List.replicate.{0} k (HSub.hSub.{0, 0, 0} 18 c)) C)
+        (List.replicate.{0} k (HSub.hSub.{0, 0, 0} 18 c)))
+      g h)
+    (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} g j) j1)
+      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} h j2) k))
+Agent109.Cert.State : Type
+Agent109.Cert.Link : Type
+Agent109.Cert.Certificate : Type
+Agent109.Cert.gam (s : Agent109.Cert.State) : Nat
+Agent109.Cert.LocalOK (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link) : Prop
+Agent109.Cert.Certificate.P (cert : Agent109.Cert.Certificate) : Nat
+Agent109.Cert.Certificate.st (cert : Agent109.Cert.Certificate) (i : Nat) : Agent109.Cert.State
+Agent109.Cert.Certificate.lk (cert : Agent109.Cert.Certificate) (i : Nat) : Agent109.Cert.Link
+Agent109.Cert.Valid (cert : Agent109.Cert.Certificate) : Prop
+Agent109.Cert.check (cert : Agent109.Cert.Certificate) : Bool
+Agent109.Cert.check_sound (cert : Agent109.Cert.Certificate) (h : Eq.{1} (Agent109.Cert.check cert) true) :
+  Agent109.Cert.Valid cert
+Agent109.Cert.Inv (cert : Agent109.Cert.Certificate) (m : Nat) : Prop
+Agent109.Cert.inv_not_palindrome (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) (m : Nat)
+  (hm : Agent109.Cert.Inv cert m) : Not (Agent109.Palindrome m)
+Agent109.Cert.inv_step (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) (m : Nat)
+  (hm : Agent109.Cert.Inv cert m) : Agent109.Cert.Inv cert (Agent109.step m)
+Agent109.Cert.certificate_sound (cert : Agent109.Cert.Certificate) (hc : Eq.{1} (Agent109.Cert.check cert) true)
+  (n G H : Nat)
+  (hn :
+    Eq.{1} (Agent109.pairWord n)
+      (Agent109.template (Agent109.Cert.State.c (Agent109.Cert.Certificate.st cert 0))
+        (Agent109.Cert.State.B (Agent109.Cert.Certificate.st cert 0))
+        (Agent109.Cert.State.A (Agent109.Cert.Certificate.st cert 0))
+        (Agent109.Cert.State.C (Agent109.Cert.Certificate.st cert 0)) G H))
+  (hG : LE.le.{0} (Agent109.Cert.Link.lo (Agent109.Cert.Certificate.lk cert 0)) G)
+  (hH : LE.le.{0} (Agent109.Cert.Link.lo' (Agent109.Cert.Certificate.lk cert 0)) H) (k : Nat) :
+  Not (Agent109.Palindrome (Agent109.orbit (Agent109.step n) k))
+Agent109.Cert.Mirr : Agent109.Word → Prop
+Agent109.Cert.realize (q : Agent109.Word) (hq : Agent109.Cert.Mirr q) (hb : Agent109.Bounded q) :
+  Exists.{1} fun D =>
+    And (Eq.{1} (Agent109.pair D) q)
+      (And (∀ (y : Nat), Membership.mem.{0, 0} D y → LT.lt.{0} y 10) (Agent109.LastPos q → Agent109.LastPos D))
+Agent109.Cert.mirr_wrap (X C : Agent109.Word) (hC : Agent109.Cert.Mirr C) :
+  Agent109.Cert.Mirr (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} X C) (List.reverse.{0} X))
+Agent109.Cert.template_mirr (c : Nat) (B A C : Agent109.Word) (g h : Nat) (hC : Agent109.Cert.Mirr C) :
+  Agent109.Cert.Mirr (Agent109.template c B A C g h)
+Agent109.Cert.template_lastPos (c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hg : LT.lt.{0} 0 g) (hB : ∀ (b : Nat), Eq.{1} (List.head?.{0} B) (some.{0} b) → LT.lt.{0} 0 b) :
+  Agent109.LastPos (Agent109.template c B A C g h)
+Agent109.Cert.template_bounded (c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C) :
+  Agent109.Bounded (Agent109.template c B A C g h)
+Agent109.Cert.template_realized (c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hg : LT.lt.{0} 0 g) (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C)
+  (hCm : Agent109.Cert.Mirr C) (hB0 : ∀ (b : Nat), Eq.{1} (List.head?.{0} B) (some.{0} b) → LT.lt.{0} 0 b) :
+  Exists.{1} fun n => Eq.{1} (Agent109.pairWord n) (Agent109.template c B A C g h)
+Agent109.Cert.Admissible0 (cert : Agent109.Cert.Certificate) (H M : Agent109.Word) : Prop
+Agent109.Cert.mirr_of_split (H M : Agent109.Word) (hM : LE.le.{0} (List.length.{0} M) 1)
+  (he : ∀ (m : Nat), Membership.mem.{0, 0} M m → Eq.{1} (HMod.hMod.{0, 0, 0} m 2) 0) :
+  Agent109.Cert.Mirr (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} H M) (List.reverse.{0} H))
+Agent109.Cert.certificate_existence (cert : Agent109.Cert.Certificate) (hc : Eq.{1} (Agent109.Cert.check cert) true)
+  (H M : Agent109.Word) (hadm : Eq.{1} (decide (Agent109.Cert.Admissible0 cert H M)) true) :
+  Exists.{1} fun m => ∀ (k : Nat), Not (Agent109.Palindrome (Agent109.orbit m k))
+P196.Agent7.Finite.Outer : Type
+P196.Agent7.Finite.normalize : List.{0} Nat → Nat → Prod.{0, 0} (List.{0} Nat) Nat
+P196.Agent7.Finite.bulkPhase (c : Nat) : Nat
+P196.Agent7.Finite.stripSuffix (c : Nat) (w : List.{0} Nat) : List.{0} Nat
+P196.Agent7.Finite.outerNext (s : P196.Agent7.Finite.Outer) : P196.Agent7.Finite.Outer
+P196.Agent7.Finite.decodeWord (k : Nat) : List.{0} Nat
+P196.Agent7.Finite.encoded (p : Fin 8) (k : Fin 381) : P196.Agent7.Finite.Outer
+P196.Agent7.Finite.validOuter (s : P196.Agent7.Finite.Outer) : Bool
+P196.Agent7.Finite.staysSmall : Nat → P196.Agent7.Finite.Outer → Bool
+P196.Agent7.Finite.cap2_exits_by_seven (p : Fin 8) (k : Fin 381) :
+  Eq.{1} (P196.Agent7.Finite.validOuter (P196.Agent7.Finite.encoded p k)) true →
+    Eq.{1} (P196.Agent7.Finite.staysSmall 7 (P196.Agent7.Finite.encoded p k)) false
+P196.Agent7.Finite.sharpStart : P196.Agent7.Finite.Outer
+P196.Agent7.Finite.cap2_sharp_six : Eq.{1} (P196.Agent7.Finite.staysSmall 6 P196.Agent7.Finite.sharpStart) true
+P196.Agent7.Finite.cap2_sharp_seven : Eq.{1} (P196.Agent7.Finite.staysSmall 7 P196.Agent7.Finite.sharpStart) false
+P196.Agent7.Finite.decode_complete (B : List.{0} Nat) (hlen : LE.le.{0} (List.length.{0} B) 2)
+  (hdigit : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18) :
+  Exists.{1} fun k => Eq.{1} (P196.Agent7.Finite.decodeWord ↑k) B
+P196.Agent7.Finite.cap2_unencoded (p : Fin 8) (B : List.{0} Nat) (hlen : LE.le.{0} (List.length.{0} B) 2)
+  (hdigit : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18)
+  (hvalid :
+    Eq.{1} (P196.Agent7.Finite.validOuter { c := HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1), B := B }) true) :
+  Eq.{1} (P196.Agent7.Finite.staysSmall 7 { c := HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1), B := B }) false
+P196.Agent7.Finite.outerIterate : Nat → P196.Agent7.Finite.Outer → P196.Agent7.Finite.Outer
+P196.Agent7.Finite.exit_witness_of_false (n : Nat) (s : P196.Agent7.Finite.Outer)
+  (h : Eq.{1} (P196.Agent7.Finite.staysSmall n s) false) :
+  Exists.{1} fun i =>
+    And (LE.le.{0} i n)
+      (LT.lt.{0} 2 (List.length.{0} (P196.Agent7.Finite.Outer.B (P196.Agent7.Finite.outerIterate i s))))
+P196.Agent7.Finite.cap2_exit_witness (p : Fin 8) (B : List.{0} Nat) (hlen : LE.le.{0} (List.length.{0} B) 2)
+  (hdigit : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18)
+  (hvalid :
+    Eq.{1} (P196.Agent7.Finite.validOuter { c := HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1), B := B }) true) :
+  Exists.{1} fun i =>
+    And (LE.le.{0} i 7)
+      (LT.lt.{0} 2
+        (List.length.{0}
+          (P196.Agent7.Finite.Outer.B
+            (P196.Agent7.Finite.outerIterate i { c := HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1), B := B }))))
+Agent109.Outer.normalize7_eq (w : Agent109.Word) (e : Nat) :
+  Eq.{1} (P196.Agent7.Finite.normalize w e) (Agent109.norm w e)
+Agent109.Outer.kOf_eq (c : Nat) : Eq.{1} (ite.{1} (LE.le.{0} 10 c) 1 0) (Agent109.kOf c)
+Agent109.Outer.outerNext_eq (c : Nat) (B A C : Agent109.Word) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := B })
+    { c := HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c),
+      B :=
+        P196.Agent7.Finite.stripSuffix (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c)) (Agent109.Br c B A C) }
+Agent109.Outer.stripSuffix_spec (c : Nat) (w : Agent109.Word) :
+  Exists.{1} fun j => Eq.{1} w (HAppend.hAppend.{0, 0, 0} (P196.Agent7.Finite.stripSuffix c w) (List.replicate.{0} j c))
+Agent109.Outer.norm_digits_le (w : Agent109.Word) (e y : Nat) :
+  Membership.mem.{0, 0} (Prod.fst.{0, 0} (Agent109.norm w e)) y → LE.le.{0} y 9
+Agent109.Outer.zipAdd_le (a b : Agent109.Word) (ha : ∀ (y : Nat), Membership.mem.{0, 0} a y → LE.le.{0} y 9)
+  (hb : ∀ (y : Nat), Membership.mem.{0, 0} b y → LE.le.{0} y 9) : Agent109.Bounded (Agent109.zipAdd a b)
+Agent109.Outer.k_le (x : Nat) : LE.le.{0} (Agent109.kOf x) 1
+Agent109.Outer.t_le (x : Nat) (hx : LE.le.{0} x 18) : LE.le.{0} (Agent109.tOf x) 9
+Agent109.Outer.u_le (x e : Nat) (hx : LE.le.{0} x 18) (hx9 : Ne.{1} x 9) (he : LE.le.{0} e 1) :
+  LE.le.{0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} x e) (HMul.hMul.{0, 0, 0} 10 (Agent109.kOf x))) 9
+Agent109.Outer.succ_bounded (c : Nat) (B A C : Agent109.Word) (hc : Agent109.Phase c) (hB : Agent109.Bounded B)
+  (hA : Agent109.Bounded A) (hC : Agent109.Bounded C) :
+  And (Agent109.Bounded (Agent109.Br c B A C))
+    (And (Agent109.Bounded (Agent109.Ar c B A C)) (Agent109.Bounded (Agent109.Cr c B A C)))
+Agent109.Outer.bounded_strip (c : Nat) (w : Agent109.Word) (hw : Agent109.Bounded w) :
+  Agent109.Bounded (P196.Agent7.Finite.stripSuffix c w)
+Agent109.Outer.actual_step_outer (n c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C)
+  (hn : Eq.{1} (Agent109.pairWord n) (Agent109.template c B A C (HAdd.hAdd.{0, 0, 0} g 2) (HAdd.hAdd.{0, 0, 0} h 2))) :
+  Exists.{1} fun G =>
+    And (LE.le.{0} g G)
+      (Eq.{1} (Agent109.pairWord (Agent109.step n))
+        (Agent109.template (P196.Agent7.Finite.Outer.c (P196.Agent7.Finite.outerNext { c := c, B := B }))
+          (P196.Agent7.Finite.Outer.B (P196.Agent7.Finite.outerNext { c := c, B := B })) (Agent109.Ar c B A C)
+          (Agent109.Cr c B A C) G (HAdd.hAdd.{0, 0, 0} h (Agent109.Data.γ (Agent109.data c B A C)))))
+Agent109.Outer.outerIter : Nat → P196.Agent7.Finite.Outer → P196.Agent7.Finite.Outer
+Agent109.Outer.outerIterate_eq (i : Nat) (s : P196.Agent7.Finite.Outer) :
+  Eq.{1} (P196.Agent7.Finite.outerIterate i s) (Agent109.Outer.outerIter i s)
+Agent109.Outer.actual_outer_orbit (n c : Nat) (B A C : Agent109.Word) (g h : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hA : Agent109.Bounded A) (hC : Agent109.Bounded C)
+  (hn : Eq.{1} (Agent109.pairWord n) (Agent109.template c B A C g h)) (i : Nat) :
+  LE.le.{0} (HMul.hMul.{0, 0, 0} 2 i) g →
+    LE.le.{0} (HMul.hMul.{0, 0, 0} 2 i) h →
+      Exists.{1} fun A' =>
+        Exists.{1} fun C' =>
+          Exists.{1} fun G =>
+            Exists.{1} fun H =>
+              And (Agent109.Phase (P196.Agent7.Finite.Outer.c (Agent109.Outer.outerIter i { c := c, B := B })))
+                (And (Agent109.Bounded (P196.Agent7.Finite.Outer.B (Agent109.Outer.outerIter i { c := c, B := B })))
+                  (And (Agent109.Bounded A')
+                    (And (Agent109.Bounded C')
+                      (And (LE.le.{0} g (HAdd.hAdd.{0, 0, 0} G (HMul.hMul.{0, 0, 0} 2 i)))
+                        (And (LE.le.{0} h (HAdd.hAdd.{0, 0, 0} H (HMul.hMul.{0, 0, 0} 2 i)))
+                          (Eq.{1} (Agent109.pairWord (Agent109.orbit n i))
+                            (Agent109.template
+                              (P196.Agent7.Finite.Outer.c (Agent109.Outer.outerIter i { c := c, B := B }))
+                              (P196.Agent7.Finite.Outer.B (Agent109.Outer.outerIter i { c := c, B := B })) A' C' G
+                              H)))))))
+Agent109.Outer.actual_cap2_exit (n : Nat) (p : Fin 8) (B A C : Agent109.Word) (g h : Nat) (hB : Agent109.Bounded B)
+  (hA : Agent109.Bounded A) (hC : Agent109.Bounded C) (hlen : LE.le.{0} (List.length.{0} B) 2)
+  (hvalid :
+    Eq.{1} (P196.Agent7.Finite.validOuter { c := HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1), B := B }) true)
+  (hg : LE.le.{0} 14 g) (hh : LE.le.{0} 14 h)
+  (hn :
+    Eq.{1} (Agent109.pairWord n) (Agent109.template (HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1)) B A C g h)) :
+  Exists.{1} fun i =>
+    And (LE.le.{0} i 7)
+      (Exists.{1} fun c' =>
+        Exists.{1} fun B' =>
+          Exists.{1} fun A' =>
+            Exists.{1} fun C' =>
+              Exists.{1} fun G =>
+                Exists.{1} fun H =>
+                  And (LT.lt.{0} 2 (List.length.{0} B'))
+                    (And
+                      (Eq.{1} B'
+                        (P196.Agent7.Finite.Outer.B
+                          (P196.Agent7.Finite.outerIterate i
+                            { c := HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1), B := B })))
+                      (Eq.{1} (Agent109.pairWord (Agent109.orbit n i)) (Agent109.template c' B' A' C' G H))))
+Agent116.CertificateExterior.Realizes (cert : Agent109.Cert.Certificate) (i : Nat) : Prop
+Agent116.CertificateExterior.realizes_next (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) (i : Nat)
+  (hi : LT.lt.{0} i (Agent109.Cert.Certificate.P cert)) (hr : Agent116.CertificateExterior.Realizes cert i) :
+  Agent116.CertificateExterior.Realizes cert
+    (HMod.hMod.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} i 1) (Agent109.Cert.Certificate.P cert))
+Agent116.CertificateExterior.realizes_all (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert)
+  (hzero : Agent116.CertificateExterior.Realizes cert 0) (i : Nat) :
+  LT.lt.{0} i (Agent109.Cert.Certificate.P cert) → Agent116.CertificateExterior.Realizes cert i
+Agent116.CertificateExterior.admissible_realizes_zero (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert)
+  (H M : Agent109.Word) (hadm : Agent109.Cert.Admissible0 cert H M) : Agent116.CertificateExterior.Realizes cert 0
+Agent116.CertificateExterior.realized_head_positive (n c : Nat) (B A C : Agent109.Word) (G H : Nat)
+  (hn : Eq.{1} (Agent109.pairWord n) (Agent109.template c B A C G H)) (b : Nat) (bs : List.{0} Nat) :
+  Eq.{1} B (List.cons.{0} b bs) → LT.lt.{0} 0 b
+Agent116.CertificateExterior.admissible_heads_positive (cert : Agent109.Cert.Certificate)
+  (hv : Agent109.Cert.Valid cert) (H M : Agent109.Word) (hadm : Agent109.Cert.Admissible0 cert H M) (i : Nat) :
+  LT.lt.{0} i (Agent109.Cert.Certificate.P cert) →
+    ∀ (b : Nat) (bs : List.{0} Nat),
+      Eq.{1} (Agent109.Cert.State.B (Agent109.Cert.Certificate.st cert i)) (List.cons.{0} b bs) → LT.lt.{0} 0 b
+Agent116.Exterior.stripSuffix_idempotent (c : Nat) (w : Agent109.Word) :
+  Eq.{1} (P196.Agent7.Finite.stripSuffix c (P196.Agent7.Finite.stripSuffix c w)) (P196.Agent7.Finite.stripSuffix c w)
+Agent116.Exterior.stripSuffix_append_replicate (c : Nat) (w : Agent109.Word) (j : Nat) :
+  Eq.{1} (P196.Agent7.Finite.stripSuffix c (HAppend.hAppend.{0, 0, 0} w (List.replicate.{0} j c)))
+    (P196.Agent7.Finite.stripSuffix c w)
+Agent116.Exterior.stripSuffix_length_le (c : Nat) (w : Agent109.Word) :
+  LE.le.{0} (List.length.{0} (P196.Agent7.Finite.stripSuffix c w)) (List.length.{0} w)
+Agent116.Exterior.stripSuffix_last (c : Nat) (w : Agent109.Word) (a : Nat)
+  (h : Eq.{1} (List.getLast?.{0} (P196.Agent7.Finite.stripSuffix c w)) (some.{0} a)) : Ne.{1} a c
+Agent116.Exterior.stripSuffix_head_pos (c : Nat) (w : Agent109.Word)
+  (hw : ∀ (a : Nat) (xs : List.{0} Nat), Eq.{1} w (List.cons.{0} a xs) → LT.lt.{0} 0 a) (a : Nat) (xs : List.{0} Nat) :
+  Eq.{1} (P196.Agent7.Finite.stripSuffix c w) (List.cons.{0} a xs) → LT.lt.{0} 0 a
+Agent116.Exterior.stripSuffix_bounded (c : Nat) (w : Agent109.Word) (hw : Agent109.Bounded w) :
+  Agent109.Bounded (P196.Agent7.Finite.stripSuffix c w)
+Agent116.Exterior.Br_append_phase (c : Nat) (B A C : Agent109.Word) (hc : Agent109.Phase c) (hB : Agent109.Bounded B) :
+  Eq.{1} (Agent109.Br c (HAppend.hAppend.{0, 0, 0} B (List.cons.{0} c List.nil.{0})) A C)
+    (HAppend.hAppend.{0, 0, 0} (Agent109.Br c B A C)
+      (List.cons.{0} (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c)) List.nil.{0}))
+Agent116.Exterior.Br_append_replicate (c : Nat) (B A C : Agent109.Word) (j : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) :
+  Eq.{1} (Agent109.Br c (HAppend.hAppend.{0, 0, 0} B (List.replicate.{0} j c)) A C)
+    (HAppend.hAppend.{0, 0, 0} (Agent109.Br c B A C)
+      (List.replicate.{0} j (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c))))
+Agent116.Exterior.outerNext_append_replicate (c : Nat) (B : Agent109.Word) (j : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := HAppend.hAppend.{0, 0, 0} B (List.replicate.{0} j c) })
+    (P196.Agent7.Finite.outerNext { c := c, B := B })
+Agent116.Exterior.outerNext_stripSuffix_eq (c : Nat) (B : Agent109.Word) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := P196.Agent7.Finite.stripSuffix c B })
+    (P196.Agent7.Finite.outerNext { c := c, B := B })
+Agent116.Exterior.outerNext_of_partial_trim (c c' : Nat) (B B' A C : Agent109.Word) (j : Nat) (hc : Agent109.Phase c)
+  (hB : Agent109.Bounded B) (hc' : Eq.{1} c' (HAdd.hAdd.{0, 0, 0} (Agent109.tOf c) (Agent109.tOf c)))
+  (htrim : Eq.{1} (Agent109.Br c B A C) (HAppend.hAppend.{0, 0, 0} B' (List.replicate.{0} j c'))) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := P196.Agent7.Finite.stripSuffix c B })
+    { c := c', B := P196.Agent7.Finite.stripSuffix c' B' }
+Agent116.CertificateExterior.stateOuter (s : Agent109.Cert.State) : P196.Agent7.Finite.Outer
+Agent116.CertificateExterior.local_outer_step (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link)
+  (h : Agent109.Cert.LocalOK s s' L L') :
+  Eq.{1} (P196.Agent7.Finite.outerNext (Agent116.CertificateExterior.stateOuter s))
+    (Agent116.CertificateExterior.stateOuter s')
+Agent116.CertificateExterior.certificate_outer_orbit (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert)
+  (n : Nat) :
+  Eq.{1}
+    (P196.Agent7.Finite.outerIterate n (Agent116.CertificateExterior.stateOuter (Agent109.Cert.Certificate.st cert 0)))
+    (Agent116.CertificateExterior.stateOuter
+      (Agent109.Cert.Certificate.st cert (HMod.hMod.{0, 0, 0} n (Agent109.Cert.Certificate.P cert))))
+Agent116.CertificateExterior.certificate_phase_index (cert : Agent109.Cert.Certificate)
+  (hv : Agent109.Cert.Valid cert) :
+  Exists.{1} fun p =>
+    Eq.{1} (Agent109.Cert.State.c (Agent109.Cert.Certificate.st cert 0))
+      (HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (↑p) 1))
+Agent116.CertificateExterior.stateOuter_valid (s : Agent109.Cert.State)
+  (hb : Agent109.Bounded (Agent109.Cert.State.B s))
+  (hpos : ∀ (b : Nat) (bs : List.{0} Nat), Eq.{1} (Agent109.Cert.State.B s) (List.cons.{0} b bs) → LT.lt.{0} 0 b) :
+  Eq.{1} (P196.Agent7.Finite.validOuter (Agent116.CertificateExterior.stateOuter s)) true
+Agent116.CertificateExterior.EscapeAt (cap : Nat) : Prop
+Agent116.CertificateExterior.valid_exceeds_cap (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert)
+  (hpos :
+    ∀ (b : Nat) (bs : List.{0} Nat),
+      Eq.{1} (Agent109.Cert.State.B (Agent109.Cert.Certificate.st cert 0)) (List.cons.{0} b bs) → LT.lt.{0} 0 b)
+  (cap : Nat) (hexit : Agent116.CertificateExterior.EscapeAt cap) :
+  Exists.{1} fun i =>
+    And (LT.lt.{0} i (Agent109.Cert.Certificate.P cert))
+      (LT.lt.{0} cap
+        (List.length.{0}
+          (P196.Agent7.Finite.stripSuffix (Agent109.Cert.State.c (Agent109.Cert.Certificate.st cert i))
+            (Agent109.Cert.State.B (Agent109.Cert.Certificate.st cert i)))))
+Agent116.CertificateExterior.accepted_admissible_exceeds_cap (cert : Agent109.Cert.Certificate)
+  (hc : Eq.{1} (Agent109.Cert.check cert) true) (H M : Agent109.Word) (hadm : Agent109.Cert.Admissible0 cert H M)
+  (cap : Nat) (hexit : Agent116.CertificateExterior.EscapeAt cap) :
+  Exists.{1} fun i =>
+    And (LT.lt.{0} i (Agent109.Cert.Certificate.P cert))
+      (LT.lt.{0} cap
+        (List.length.{0}
+          (P196.Agent7.Finite.stripSuffix (Agent109.Cert.State.c (Agent109.Cert.Certificate.st cert i))
+            (Agent109.Cert.State.B (Agent109.Cert.Certificate.st cert i)))))
+Agent116.CertificateExterior.escapeAt_two : Agent116.CertificateExterior.EscapeAt 2
+Agent116.CertificateExterior.accepted_admissible_exceeds_two (cert : Agent109.Cert.Certificate)
+  (hc : Eq.{1} (Agent109.Cert.check cert) true) (H M : Agent109.Word) (hadm : Agent109.Cert.Admissible0 cert H M) :
+  Exists.{1} fun i =>
+    And (LT.lt.{0} i (Agent109.Cert.Certificate.P cert))
+      (LT.lt.{0} 2
+        (List.length.{0}
+          (P196.Agent7.Finite.stripSuffix (Agent109.Cert.State.c (Agent109.Cert.Certificate.st cert i))
+            (Agent109.Cert.State.B (Agent109.Cert.Certificate.st cert i)))))
+Agent110.Accounting.width (s : Agent109.Cert.State) : Int
+Agent110.Accounting.dg (s : Agent109.Cert.State) (L : Agent109.Cert.Link) : Int
+Agent110.Accounting.dh (s : Agent109.Cert.State) (L : Agent109.Cert.Link) : Int
+Agent110.Accounting.sumPrefix (f : Nat → Int) : Nat → Int
+Agent110.Accounting.totalGam (cert : Agent109.Cert.Certificate) : Int
+Agent110.Accounting.totalG (cert : Agent109.Cert.Certificate) : Int
+Agent110.Accounting.totalH (cert : Agent109.Cert.Certificate) : Int
+Agent110.Accounting.totalJ (cert : Agent109.Cert.Certificate) : Int
+Agent110.Accounting.totalJ1 (cert : Agent109.Cert.Certificate) : Int
+Agent110.Accounting.totalJ2 (cert : Agent109.Cert.Certificate) : Int
+Agent110.Accounting.totalK (cert : Agent109.Cert.Certificate) : Int
+Agent110.Accounting.sumPrefix_congr {f g : Nat → Int} (n : Nat) (h : ∀ (i : Nat), LT.lt.{0} i n → Eq.{1} (f i) (g i)) :
+  Eq.{1} (Agent110.Accounting.sumPrefix f n) (Agent110.Accounting.sumPrefix g n)
+Agent110.Accounting.sumPrefix_add (f g : Nat → Int) (n : Nat) :
+  Eq.{1} (Agent110.Accounting.sumPrefix (fun i => HAdd.hAdd.{0, 0, 0} (f i) (g i)) n)
+    (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.sumPrefix f n) (Agent110.Accounting.sumPrefix g n))
+Agent110.Accounting.sumPrefix_sub (f g : Nat → Int) (n : Nat) :
+  Eq.{1} (Agent110.Accounting.sumPrefix (fun i => HSub.hSub.{0, 0, 0} (f i) (g i)) n)
+    (HSub.hSub.{0, 0, 0} (Agent110.Accounting.sumPrefix f n) (Agent110.Accounting.sumPrefix g n))
+Agent110.Accounting.sumPrefix_two_mul (f : Nat → Int) (n : Nat) :
+  Eq.{1} (Agent110.Accounting.sumPrefix (fun i => HMul.hMul.{0, 0, 0} 2 (f i)) n)
+    (HMul.hMul.{0, 0, 0} 2 (Agent110.Accounting.sumPrefix f n))
+Agent110.Accounting.sumPrefix_one (n : Nat) : Eq.{1} (Agent110.Accounting.sumPrefix (fun x => 1) n) ↑n
+Agent110.Accounting.sumPrefix_two (n : Nat) :
+  Eq.{1} (Agent110.Accounting.sumPrefix (fun x => 2) n) (HMul.hMul.{0, 0, 0} 2 ↑n)
+Agent110.Accounting.sumPrefix_le {f g : Nat → Int} (n : Nat) (h : ∀ (i : Nat), LT.lt.{0} i n → LE.le.{0} (f i) (g i)) :
+  LE.le.{0} (Agent110.Accounting.sumPrefix f n) (Agent110.Accounting.sumPrefix g n)
+Agent110.Accounting.sumPrefix_difference (f : Nat → Int) (n : Nat) :
+  Eq.{1} (Agent110.Accounting.sumPrefix (fun i => HSub.hSub.{0, 0, 0} (f (HAdd.hAdd.{0, 0, 0} i 1)) (f i)) n)
+    (HSub.hSub.{0, 0, 0} (f n) (f 0))
+Agent110.Accounting.sumPrefix_cyclic_difference (f : Nat → Int) (P : Nat) :
+  Eq.{1}
+    (Agent110.Accounting.sumPrefix
+      (fun i => HSub.hSub.{0, 0, 0} (f (HMod.hMod.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} i 1) P)) (f i)) P)
+    0
+Agent110.Accounting.Br_length (s : Agent109.Cert.State) :
+  Eq.{1}
+    (List.length.{0}
+      (Agent109.Br (Agent109.Cert.State.c s) (Agent109.Cert.State.B s) (Agent109.Cert.State.A s)
+        (Agent109.Cert.State.C s)))
+    (HAdd.hAdd.{0, 0, 0} (List.length.{0} (Agent109.Cert.State.B s)) 1)
+Agent110.Accounting.Ar_length (s : Agent109.Cert.State) (hB : Agent109.Bounded (Agent109.Cert.State.B s)) :
+  Eq.{1}
+    (HAdd.hAdd.{0, 0, 0}
+      (List.length.{0}
+        (Agent109.Ar (Agent109.Cert.State.c s) (Agent109.Cert.State.B s) (Agent109.Cert.State.A s)
+          (Agent109.Cert.State.C s)))
+      (Agent109.Cert.gam s))
+    (HAdd.hAdd.{0, 0, 0} (List.length.{0} (Agent109.Cert.State.A s)) 2)
+Agent110.Accounting.Cr_length (s : Agent109.Cert.State) (hB : Agent109.Bounded (Agent109.Cert.State.B s)) :
+  Eq.{1}
+    (HAdd.hAdd.{0, 0, 0}
+      (List.length.{0}
+        (Agent109.Cr (Agent109.Cert.State.c s) (Agent109.Cert.State.B s) (Agent109.Cert.State.A s)
+          (Agent109.Cert.State.C s)))
+      (Agent109.Cert.gam s))
+    (HAdd.hAdd.{0, 0, 0} (List.length.{0} (Agent109.Cert.State.C s)) 2)
+Agent110.Accounting.local_width_balance (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link)
+  (h : Agent109.Cert.LocalOK s s' L L') :
+  Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.width s')
+      (HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.dg s L) (Agent110.Accounting.dh s L))))
+    (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.width s) ↑(Agent109.Cert.gam s))
+Agent110.Accounting.local_outer_lower (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link)
+  (h : Agent109.Cert.LocalOK s s' L L') :
+  LE.le.{0} (HSub.hSub.{0, 0, 0} ↑(Agent109.Cert.Link.lo L') ↑(Agent109.Cert.Link.lo L)) (Agent110.Accounting.dg s L)
+Agent110.Accounting.local_inner_lower (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link)
+  (h : Agent109.Cert.LocalOK s s' L L') :
+  LE.le.{0} (HSub.hSub.{0, 0, 0} ↑(Agent109.Cert.Link.lo' L') ↑(Agent109.Cert.Link.lo' L)) (Agent110.Accounting.dh s L)
+Agent110.Accounting.local_B_length_difference (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link)
+  (h : Agent109.Cert.LocalOK s s' L L') :
+  Eq.{1}
+    (HSub.hSub.{0, 0, 0} ↑(List.length.{0} (Agent109.Cert.State.B s')) ↑(List.length.{0} (Agent109.Cert.State.B s)))
+    (HSub.hSub.{0, 0, 0} 1 ↑(Agent109.Cert.Link.j L))
+Agent110.Accounting.local_A_length_difference (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link)
+  (h : Agent109.Cert.LocalOK s s' L L') :
+  Eq.{1}
+    (HSub.hSub.{0, 0, 0} ↑(List.length.{0} (Agent109.Cert.State.A s')) ↑(List.length.{0} (Agent109.Cert.State.A s)))
+    (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} 2 ↑(Agent109.Cert.gam s))
+      (HAdd.hAdd.{0, 0, 0} ↑(Agent109.Cert.Link.j1 L) ↑(Agent109.Cert.Link.j2 L)))
+Agent110.Accounting.local_C_length_difference (s s' : Agent109.Cert.State) (L L' : Agent109.Cert.Link)
+  (h : Agent109.Cert.LocalOK s s' L L') :
+  Eq.{1}
+    (HSub.hSub.{0, 0, 0} ↑(List.length.{0} (Agent109.Cert.State.C s')) ↑(List.length.{0} (Agent109.Cert.State.C s)))
+    (HSub.hSub.{0, 0, 0} (HSub.hSub.{0, 0, 0} 2 ↑(Agent109.Cert.gam s))
+      (HMul.hMul.{0, 0, 0} 2 ↑(Agent109.Cert.Link.k L)))
+Agent110.Accounting.totalJ_eq_period (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Eq.{1} (Agent110.Accounting.totalJ cert) ↑(Agent109.Cert.Certificate.P cert)
+Agent110.Accounting.totalJ1_add_totalJ2 (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.totalJ1 cert) (Agent110.Accounting.totalJ2 cert))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 ↑(Agent109.Cert.Certificate.P cert))
+      (Agent110.Accounting.totalGam cert))
+Agent110.Accounting.two_totalK (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Eq.{1} (HMul.hMul.{0, 0, 0} 2 (Agent110.Accounting.totalK cert))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 ↑(Agent109.Cert.Certificate.P cert))
+      (Agent110.Accounting.totalGam cert))
+Agent110.Accounting.totalG_eq_trim_counts (cert : Agent109.Cert.Certificate) :
+  Eq.{1} (Agent110.Accounting.totalG cert)
+    (HSub.hSub.{0, 0, 0}
+      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.totalGam cert) (Agent110.Accounting.totalJ cert))
+        (Agent110.Accounting.totalJ1 cert))
+      (HMul.hMul.{0, 0, 0} 2 ↑(Agent109.Cert.Certificate.P cert)))
+Agent110.Accounting.totalH_eq_trim_counts (cert : Agent109.Cert.Certificate) :
+  Eq.{1} (Agent110.Accounting.totalH cert)
+    (HSub.hSub.{0, 0, 0}
+      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.totalGam cert) (Agent110.Accounting.totalJ2 cert))
+        (Agent110.Accounting.totalK cert))
+      (HMul.hMul.{0, 0, 0} 2 ↑(Agent109.Cert.Certificate.P cert)))
+Agent110.Accounting.totalG_eq_totalJ1 (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Eq.{1} (Agent110.Accounting.totalG cert)
+    (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.totalGam cert) (Agent110.Accounting.totalJ1 cert))
+      ↑(Agent109.Cert.Certificate.P cert))
+Agent110.Accounting.totalH_eq_totalK_sub_totalJ1 (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Eq.{1} (Agent110.Accounting.totalH cert)
+    (HSub.hSub.{0, 0, 0} (Agent110.Accounting.totalK cert) (Agent110.Accounting.totalJ1 cert))
+Agent110.Accounting.totalGam_eq_twice_gains (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Eq.{1} (Agent110.Accounting.totalGam cert)
+    (HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.totalG cert) (Agent110.Accounting.totalH cert)))
+Agent110.Accounting.totalG_nonneg (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  LE.le.{0} 0 (Agent110.Accounting.totalG cert)
+Agent110.Accounting.totalH_nonneg (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  LE.le.{0} 0 (Agent110.Accounting.totalH cert)
+Agent110.Accounting.totalGam_even (cert : Agent109.Cert.Certificate) (hv : Agent109.Cert.Valid cert) :
+  Exists.{1} fun q => And (LE.le.{0} 0 q) (Eq.{1} (Agent110.Accounting.totalGam cert) (HMul.hMul.{0, 0, 0} 2 q))
+Agent110.Accounting.checked_accounting (cert : Agent109.Cert.Certificate)
+  (hc : Eq.{1} (Agent109.Cert.check cert) true) :
+  And
+    (Eq.{1} (Agent110.Accounting.totalGam cert)
+      (HMul.hMul.{0, 0, 0} 2 (HAdd.hAdd.{0, 0, 0} (Agent110.Accounting.totalG cert) (Agent110.Accounting.totalH cert))))
+    (And (LE.le.{0} 0 (Agent110.Accounting.totalG cert))
+      (And (LE.le.{0} 0 (Agent110.Accounting.totalH cert))
+        (Exists.{1} fun q =>
+          And (LE.le.{0} 0 q) (Eq.{1} (Agent110.Accounting.totalGam cert) (HMul.hMul.{0, 0, 0} 2 q)))))
+Agent115.ExteriorFactorization.lowValue : List.{0} Nat → Nat
+Agent115.ExteriorFactorization.zValue (c : Nat) (B : List.{0} Nat) : Int
+Agent115.ExteriorFactorization.highValue (B : List.{0} Nat) : Nat
+Agent115.ExteriorFactorization.rhoNum (c : Nat) (B : List.{0} Nat) : Nat
+Agent115.ExteriorFactorization.nonneutralPhase (c : Nat) : Prop
+Agent115.ExteriorFactorization.Target : Prop
+Agent115.ExteriorFactorization.digitsOf : Nat → Nat → List.{0} Nat
+Agent115.ExteriorFactorization.digitsOf_length (n v : Nat) :
+  Eq.{1} (List.length.{0} (Agent115.ExteriorFactorization.digitsOf n v)) n
+Agent115.ExteriorFactorization.normalize_eq (B : List.{0} Nat) (carry : Nat) :
+  Eq.{1} (P196.Agent7.Finite.normalize B carry)
+    (Prod.mk.{0, 0}
+      (Agent115.ExteriorFactorization.digitsOf (List.length.{0} B)
+        (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue B) carry))
+      (HDiv.hDiv.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue B) carry)
+        (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+Agent115.ExteriorFactorization.normalize_length (B : List.{0} Nat) (carry : Nat) :
+  Eq.{1} (List.length.{0} (Prod.fst.{0, 0} (P196.Agent7.Finite.normalize B carry))) (List.length.{0} B)
+Agent115.ExteriorFactorization.lowValue_append (l₁ l₂ : List.{0} Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.lowValue (HAppend.hAppend.{0, 0, 0} l₁ l₂))
+    (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue l₁)
+      (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} 10 (List.length.{0} l₁)) (Agent115.ExteriorFactorization.lowValue l₂)))
+Agent115.ExteriorFactorization.highValue_append_single (B : List.{0} Nat) (x : Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.highValue (HAppend.hAppend.{0, 0, 0} B (List.cons.{0} x List.nil.{0})))
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 10 (Agent115.ExteriorFactorization.highValue B)) x)
+Agent115.ExteriorFactorization.foldl_high (B : List.{0} Nat) (a : Nat) :
+  Eq.{1} (List.foldl.{0, 0} (fun acc b => HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 10 acc) b) a B)
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} a (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))
+      (Agent115.ExteriorFactorization.highValue B))
+Agent115.ExteriorFactorization.lowValue_reverse (B : List.{0} Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.lowValue (List.reverse.{0} B)) (Agent115.ExteriorFactorization.highValue B)
+Agent115.ExteriorFactorization.normalize_carry_le (B : List.{0} Nat) (carry : Nat)
+  (hB : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18) (hc : LE.le.{0} carry 1) :
+  LE.le.{0} (Prod.snd.{0, 0} (P196.Agent7.Finite.normalize B carry)) 1
+Agent115.ExteriorFactorization.normalize_append_single (B : List.{0} Nat) (x carry : Nat) :
+  Eq.{1} (P196.Agent7.Finite.normalize (HAppend.hAppend.{0, 0, 0} B (List.cons.{0} x List.nil.{0})) carry)
+    (Prod.mk.{0, 0}
+      (HAppend.hAppend.{0, 0, 0} (Prod.fst.{0, 0} (P196.Agent7.Finite.normalize B carry))
+        (List.cons.{0}
+          (HMod.hMod.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} x (Prod.snd.{0, 0} (P196.Agent7.Finite.normalize B carry))) 10)
+          List.nil.{0}))
+      (HDiv.hDiv.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} x (Prod.snd.{0, 0} (P196.Agent7.Finite.normalize B carry))) 10))
+Agent115.ExteriorFactorization.fromScans (c : Nat) (L R : Prod.{0, 0} (List.{0} Nat) Nat) : P196.Agent7.Finite.Outer
+Agent115.ExteriorFactorization.outerNext_eq_fromScans (c : Nat) (B : List.{0} Nat) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := B })
+    (Agent115.ExteriorFactorization.fromScans c (P196.Agent7.Finite.normalize B 0)
+      (P196.Agent7.Finite.normalize (List.reverse.{0} B) (ite.{1} (LE.le.{0} 10 c) 1 0)))
+Agent115.ExteriorFactorization.stripSuffix_append_single (d : Nat) (w : List.{0} Nat) :
+  Eq.{1} (P196.Agent7.Finite.stripSuffix d (HAppend.hAppend.{0, 0, 0} w (List.cons.{0} d List.nil.{0})))
+    (P196.Agent7.Finite.stripSuffix d w)
+Agent115.ExteriorFactorization.zipWith_append_single (a b : List.{0} Nat) (x y : Nat)
+  (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1}
+    (List.zipWith.{0, 0, 0} (fun x y => HAdd.hAdd.{0, 0, 0} x y)
+      (HAppend.hAppend.{0, 0, 0} a (List.cons.{0} x List.nil.{0}))
+      (HAppend.hAppend.{0, 0, 0} b (List.cons.{0} y List.nil.{0})))
+    (HAppend.hAppend.{0, 0, 0} (List.zipWith.{0, 0, 0} (fun x y => HAdd.hAdd.{0, 0, 0} x y) a b)
+      (List.cons.{0} (HAdd.hAdd.{0, 0, 0} x y) List.nil.{0}))
+Agent115.ExteriorFactorization.strip_zip_append (a b : List.{0} Nat) (x y d : Nat)
+  (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) (hd : Eq.{1} (HAdd.hAdd.{0, 0, 0} x y) d) :
+  Eq.{1}
+    (P196.Agent7.Finite.stripSuffix d
+      (List.zipWith.{0, 0, 0} (fun x y => HAdd.hAdd.{0, 0, 0} x y)
+        (HAppend.hAppend.{0, 0, 0} a (List.cons.{0} x List.nil.{0}))
+        (HAppend.hAppend.{0, 0, 0} b (List.cons.{0} y List.nil.{0}))))
+    (P196.Agent7.Finite.stripSuffix d (List.zipWith.{0, 0, 0} (fun x y => HAdd.hAdd.{0, 0, 0} x y) a b))
+Agent115.ExteriorFactorization.phase_facts (c κ : Nat) (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (hκ : LE.le.{0} κ 1) :
+  And (Eq.{1} (HDiv.hDiv.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} c κ) 10) (ite.{1} (LE.le.{0} 10 c) 1 0))
+    (And
+      (Eq.{1} (HMod.hMod.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} c κ) 10)
+        (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} c κ) (HMul.hMul.{0, 0, 0} 10 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+      (And
+        (Eq.{1} (HMod.hMod.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} c (ite.{1} (LE.le.{0} 10 c) 1 0)) 10)
+          (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+        (And
+          (Eq.{1}
+            (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} c (ite.{1} (LE.le.{0} 10 c) 1 0))
+              (HMul.hMul.{0, 0, 0} 10 (ite.{1} (LE.le.{0} 10 c) 1 0)))
+            (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+          (LE.le.{0} c 18))))
+Agent115.ExteriorFactorization.outerNext_append_band (c : Nat) (B : List.{0} Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (hB : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := HAppend.hAppend.{0, 0, 0} B (List.cons.{0} c List.nil.{0}) })
+    (P196.Agent7.Finite.outerNext { c := c, B := B })
+Agent115.ExteriorFactorization.outerNext_append_replicate (c : Nat) (B : List.{0} Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) (hB : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18)
+  (m : Nat) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := HAppend.hAppend.{0, 0, 0} B (List.replicate.{0} m c) })
+    (P196.Agent7.Finite.outerNext { c := c, B := B })
+Agent115.ExteriorFactorization.outerNext_of_values (c : Nat) (B₁ B₂ : List.{0} Nat)
+  (hl : Eq.{1} (List.length.{0} B₁) (List.length.{0} B₂))
+  (hlow : Eq.{1} (Agent115.ExteriorFactorization.lowValue B₁) (Agent115.ExteriorFactorization.lowValue B₂))
+  (hhigh : Eq.{1} (Agent115.ExteriorFactorization.highValue B₁) (Agent115.ExteriorFactorization.highValue B₂)) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := B₁ }) (P196.Agent7.Finite.outerNext { c := c, B := B₂ })
+Agent115.ExteriorFactorization.zValue_append_band (c : Nat) (B : List.{0} Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.zValue c (HAppend.hAppend.{0, 0, 0} B (List.cons.{0} c List.nil.{0})))
+    (Agent115.ExteriorFactorization.zValue c B)
+Agent115.ExteriorFactorization.zValue_append_replicate (c : Nat) (B : List.{0} Nat) (m : Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.zValue c (HAppend.hAppend.{0, 0, 0} B (List.replicate.{0} m c)))
+    (Agent115.ExteriorFactorization.zValue c B)
+Agent115.ExteriorFactorization.rhoNum_append_band (c : Nat) (B : List.{0} Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.rhoNum c (HAppend.hAppend.{0, 0, 0} B (List.cons.{0} c List.nil.{0})))
+    (HMul.hMul.{0, 0, 0} 10 (Agent115.ExteriorFactorization.rhoNum c B))
+Agent115.ExteriorFactorization.rhoNum_append_replicate (c : Nat) (B : List.{0} Nat) (m : Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.rhoNum c (HAppend.hAppend.{0, 0, 0} B (List.replicate.{0} m c)))
+    (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} 10 m) (Agent115.ExteriorFactorization.rhoNum c B))
+Agent115.ExteriorFactorization.lowValue_of_zValue (c : Nat) (B₁ B₂ : List.{0} Nat)
+  (hl : Eq.{1} (List.length.{0} B₁) (List.length.{0} B₂))
+  (hz : Eq.{1} (Agent115.ExteriorFactorization.zValue c B₁) (Agent115.ExteriorFactorization.zValue c B₂)) :
+  Eq.{1} (Agent115.ExteriorFactorization.lowValue B₁) (Agent115.ExteriorFactorization.lowValue B₂)
+Agent115.ExteriorFactorization.entries_le_of_valid (c : Nat) (B : List.{0} Nat)
+  (hv : Eq.{1} (P196.Agent7.Finite.validOuter { c := c, B := B }) true) (x : Nat) :
+  Membership.mem.{0, 0} B x → LE.le.{0} x 18
+Agent115.ExteriorFactorization.factorization_le (c : Nat) (B₁ B₂ : List.{0} Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (h₁ : ∀ (x : Nat), Membership.mem.{0, 0} B₁ x → LE.le.{0} x 18)
+  (hle : LE.le.{0} (List.length.{0} B₁) (List.length.{0} B₂))
+  (hz : Eq.{1} (Agent115.ExteriorFactorization.zValue c B₁) (Agent115.ExteriorFactorization.zValue c B₂))
+  (hr :
+    Eq.{1}
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₁) (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₂)))
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₂)
+        (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₁)))) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := B₁ }) (P196.Agent7.Finite.outerNext { c := c, B := B₂ })
+Agent115.ExteriorFactorization.target : Agent115.ExteriorFactorization.Target
+Agent115.ExteriorFactorization.factorization_general (c : Nat) (B₁ B₂ : List.{0} Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (h₁ : ∀ (x : Nat), Membership.mem.{0, 0} B₁ x → LE.le.{0} x 18)
+  (h₂ : ∀ (x : Nat), Membership.mem.{0, 0} B₂ x → LE.le.{0} x 18)
+  (hz : Eq.{1} (Agent115.ExteriorFactorization.zValue c B₁) (Agent115.ExteriorFactorization.zValue c B₂))
+  (hr :
+    Eq.{1}
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₁) (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₂)))
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₂)
+        (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₁)))) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := B₁ }) (P196.Agent7.Finite.outerNext { c := c, B := B₂ })
+Agent115.ExteriorFactorization.highValue_cons (x : Nat) (xs : List.{0} Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.highValue (List.cons.{0} x xs))
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} x (HPow.hPow.{0, 0, 0} 10 (List.length.{0} xs)))
+      (Agent115.ExteriorFactorization.highValue xs))
+Agent115.ExteriorFactorization.highValue_lt (l : List.{0} Nat)
+  (hl : ∀ (x : Nat), Membership.mem.{0, 0} l x → LE.le.{0} x 18) :
+  LE.le.{0} (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue l) 2)
+    (HMul.hMul.{0, 0, 0} 2 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} l)))
+Agent115.ExteriorFactorization.eq_of_values (a b : List.{0} Nat) (hl : Eq.{1} (List.length.{0} a) (List.length.{0} b))
+  (ha : ∀ (x : Nat), Membership.mem.{0, 0} a x → LE.le.{0} x 18)
+  (hb : ∀ (x : Nat), Membership.mem.{0, 0} b x → LE.le.{0} x 18)
+  (hlow : Eq.{1} (Agent115.ExteriorFactorization.lowValue a) (Agent115.ExteriorFactorization.lowValue b))
+  (hhigh : Eq.{1} (Agent115.ExteriorFactorization.highValue a) (Agent115.ExteriorFactorization.highValue b)) :
+  Eq.{1} a b
+Agent115.ExteriorFactorization.canonical_eq_le (c : Nat) (B₁ B₂ : List.{0} Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (h₁ : ∀ (x : Nat), Membership.mem.{0, 0} B₁ x → LE.le.{0} x 18)
+  (h₂ : ∀ (x : Nat), Membership.mem.{0, 0} B₂ x → LE.le.{0} x 18) (hlast : Ne.{1} (List.getLast?.{0} B₂) (some.{0} c))
+  (hle : LE.le.{0} (List.length.{0} B₁) (List.length.{0} B₂))
+  (hz : Eq.{1} (Agent115.ExteriorFactorization.zValue c B₁) (Agent115.ExteriorFactorization.zValue c B₂))
+  (hr :
+    Eq.{1}
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₁) (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₂)))
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₂)
+        (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₁)))) :
+  Eq.{1} B₁ B₂
+Agent115.ExteriorFactorization.last_ne_of_valid (c : Nat) (B : List.{0} Nat)
+  (hv : Eq.{1} (P196.Agent7.Finite.validOuter { c := c, B := B }) true) : Ne.{1} (List.getLast?.{0} B) (some.{0} c)
+Agent115.ExteriorFactorization.observation_injective (c : Nat) (B₁ B₂ : List.{0} Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c)
+  (hv₁ : Eq.{1} (P196.Agent7.Finite.validOuter { c := c, B := B₁ }) true)
+  (hv₂ : Eq.{1} (P196.Agent7.Finite.validOuter { c := c, B := B₂ }) true)
+  (hz : Eq.{1} (Agent115.ExteriorFactorization.zValue c B₁) (Agent115.ExteriorFactorization.zValue c B₂))
+  (hr :
+    Eq.{1}
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₁) (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₂)))
+      (HMul.hMul.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B₂)
+        (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B₁)))) :
+  Eq.{1} B₁ B₂
+Agent115.ExteriorFactorization.revN (n y : Nat) : Nat
+Agent115.ExteriorFactorization.rawSucc (c : Nat) (B : List.{0} Nat) : List.{0} Nat
+Agent115.ExteriorFactorization.outerNext_eq_strip (c : Nat) (B : List.{0} Nat) :
+  Eq.{1} (P196.Agent7.Finite.outerNext { c := c, B := B })
+    { c := HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0))),
+      B :=
+        P196.Agent7.Finite.stripSuffix
+          (HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+          (Agent115.ExteriorFactorization.rawSucc c B) }
+Agent115.ExteriorFactorization.lowValue_digitsOf (n v : Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.digitsOf n v))
+    (HMod.hMod.{0, 0, 0} v (HPow.hPow.{0, 0, 0} 10 n))
+Agent115.ExteriorFactorization.lowValue_zipWith (a b : List.{0} Nat)
+  (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1} (Agent115.ExteriorFactorization.lowValue (List.zipWith.{0, 0, 0} (fun x y => HAdd.hAdd.{0, 0, 0} x y) a b))
+    (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue a) (Agent115.ExteriorFactorization.lowValue b))
+Agent115.ExteriorFactorization.length_zipWith_eq (a b : List.{0} Nat)
+  (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1} (List.length.{0} (List.zipWith.{0, 0, 0} (fun x y => HAdd.hAdd.{0, 0, 0} x y) a b)) (List.length.{0} a)
+Agent115.ExteriorFactorization.highValue_zipWith (a b : List.{0} Nat)
+  (h : Eq.{1} (List.length.{0} a) (List.length.{0} b)) :
+  Eq.{1} (Agent115.ExteriorFactorization.highValue (List.zipWith.{0, 0, 0} (fun x y => HAdd.hAdd.{0, 0, 0} x y) a b))
+    (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue a) (Agent115.ExteriorFactorization.highValue b))
+Agent115.ExteriorFactorization.lowValue_append_single (l : List.{0} Nat) (x : Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.lowValue (HAppend.hAppend.{0, 0, 0} l (List.cons.{0} x List.nil.{0})))
+    (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue l)
+      (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} 10 (List.length.{0} l)) x))
+Agent115.ExteriorFactorization.highValue_reverse (l : List.{0} Nat) :
+  Eq.{1} (Agent115.ExteriorFactorization.highValue (List.reverse.{0} l)) (Agent115.ExteriorFactorization.lowValue l)
+Agent115.ExteriorFactorization.rawSucc_values (c : Nat) (B : List.{0} Nat) :
+  And
+    (Eq.{1} (Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B))
+      (HAdd.hAdd.{0, 0, 0}
+        (HAdd.hAdd.{0, 0, 0}
+          (HMod.hMod.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue B) (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))
+          (HMul.hMul.{0, 0, 0}
+            (HSub.hSub.{0, 0, 0}
+              (HAdd.hAdd.{0, 0, 0} c
+                (HDiv.hDiv.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue B)
+                  (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+              (HMul.hMul.{0, 0, 0} 10 (ite.{1} (LE.le.{0} 10 c) 1 0)))
+            (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+        (ite.{1}
+          (Eq.{1}
+            (HDiv.hDiv.{0, 0, 0}
+              (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue B) (ite.{1} (LE.le.{0} 10 c) 1 0))
+              (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))
+            0)
+          (HAdd.hAdd.{0, 0, 0}
+            (Agent115.ExteriorFactorization.revN (List.length.{0} B)
+              (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue B) (ite.{1} (LE.le.{0} 10 c) 1 0)))
+            (HMul.hMul.{0, 0, 0} (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0)))
+              (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+          (HAdd.hAdd.{0, 0, 0} 1
+            (HMul.hMul.{0, 0, 0} 10
+              (Agent115.ExteriorFactorization.revN (List.length.{0} B)
+                (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue B) (ite.{1} (LE.le.{0} 10 c) 1 0))))))))
+    (Eq.{1} (Agent115.ExteriorFactorization.highValue (Agent115.ExteriorFactorization.rawSucc c B))
+      (HAdd.hAdd.{0, 0, 0}
+        (HAdd.hAdd.{0, 0, 0}
+          (HMul.hMul.{0, 0, 0} 10
+            (Agent115.ExteriorFactorization.revN (List.length.{0} B) (Agent115.ExteriorFactorization.lowValue B)))
+          (HSub.hSub.{0, 0, 0}
+            (HAdd.hAdd.{0, 0, 0} c
+              (HDiv.hDiv.{0, 0, 0} (Agent115.ExteriorFactorization.lowValue B)
+                (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+            (HMul.hMul.{0, 0, 0} 10 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+        (ite.{1}
+          (Eq.{1}
+            (HDiv.hDiv.{0, 0, 0}
+              (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue B) (ite.{1} (LE.le.{0} 10 c) 1 0))
+              (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))
+            0)
+          (HAdd.hAdd.{0, 0, 0}
+            (HMul.hMul.{0, 0, 0} 10
+              (HMod.hMod.{0, 0, 0}
+                (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue B) (ite.{1} (LE.le.{0} 10 c) 1 0))
+                (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+            (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+          (HAdd.hAdd.{0, 0, 0} (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))
+            (HMod.hMod.{0, 0, 0}
+              (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue B) (ite.{1} (LE.le.{0} 10 c) 1 0))
+              (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))))))
+Agent115.ExteriorFactorization.takeWhile_eq_mem (d : Nat) (l : List.{0} Nat) (x : Nat) :
+  Membership.mem.{0, 0} (List.takeWhile.{0} (fun x => BEq.beq.{0} x d) l) x → Eq.{1} x d
+Agent115.ExteriorFactorization.stripSuffix_spec (d : Nat) (w : List.{0} Nat) :
+  Exists.{1} fun m => Eq.{1} (HAppend.hAppend.{0, 0, 0} (P196.Agent7.Finite.stripSuffix d w) (List.replicate.{0} m d)) w
+Agent115.ExteriorFactorization.rawSucc_length (c : Nat) (B : List.{0} Nat) :
+  Eq.{1} (List.length.{0} (Agent115.ExteriorFactorization.rawSucc c B)) (HAdd.hAdd.{0, 0, 0} (List.length.{0} B) 1)
+Agent115.ExteriorFactorization.successor_observation (c : Nat) (B : List.{0} Nat) :
+  And
+    (Eq.{1}
+      (Agent115.ExteriorFactorization.zValue
+        (HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+        (P196.Agent7.Finite.Outer.B (P196.Agent7.Finite.outerNext { c := c, B := B })))
+      (HSub.hSub.{0, 0, 0}
+        (HMul.hMul.{0, 0, 0} 9 ↑(Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B)))
+        (HMul.hMul.{0, 0, 0}
+          (↑(HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0)))))
+          (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} 10 (HAdd.hAdd.{0, 0, 0} (List.length.{0} B) 1)) 1))))
+    (Eq.{1}
+      (HMul.hMul.{0, 0, 0}
+        (Agent115.ExteriorFactorization.rhoNum
+          (HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0))))
+          (P196.Agent7.Finite.Outer.B (P196.Agent7.Finite.outerNext { c := c, B := B })))
+        (HPow.hPow.{0, 0, 0} 10 (HAdd.hAdd.{0, 0, 0} (List.length.{0} B) 1)))
+      (HMul.hMul.{0, 0, 0}
+        (HAdd.hAdd.{0, 0, 0}
+          (HMul.hMul.{0, 0, 0} 9
+            (Agent115.ExteriorFactorization.highValue (Agent115.ExteriorFactorization.rawSucc c B)))
+          (HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0)))))
+        (HPow.hPow.{0, 0, 0} 10
+          (List.length.{0} (P196.Agent7.Finite.Outer.B (P196.Agent7.Finite.outerNext { c := c, B := B }))))))
+Agent6.ExteriorCoordinates.betaNum (c : Nat) (B : List.{0} Nat) : Int
+Agent6.ExteriorCoordinates.betaNum_eq (c : Nat) (B : List.{0} Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.betaNum c B)
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 9 ↑(Agent115.ExteriorFactorization.lowValue B))
+      (HMul.hMul.{0, 0, 0} (↑c) (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+Agent6.ExteriorCoordinates.highContribution (c : Nat) (B : List.{0} Nat) : Int
+Agent6.ExteriorCoordinates.betaNum_outerNext_raw (c : Nat) (B : List.{0} Nat) :
+  Eq.{1}
+    (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c (P196.Agent7.Finite.outerNext { c := c, B := B }))
+      (P196.Agent7.Finite.Outer.B (P196.Agent7.Finite.outerNext { c := c, B := B })))
+    (HSub.hSub.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0} 9 ↑(Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B)))
+      (HMul.hMul.{0, 0, 0}
+        (↑(HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} c (HMul.hMul.{0, 0, 0} 9 (ite.{1} (LE.le.{0} 10 c) 1 0)))))
+        (HPow.hPow.{0, 0, 0} 10 (HAdd.hAdd.{0, 0, 0} (List.length.{0} B) 1))))
+Agent6.ExteriorCoordinates.betaNum_outerNext (c : Nat) (B : List.{0} Nat) :
+  Eq.{1}
+    (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c (P196.Agent7.Finite.outerNext { c := c, B := B }))
+      (P196.Agent7.Finite.Outer.B (P196.Agent7.Finite.outerNext { c := c, B := B })))
+    (HAdd.hAdd.{0, 0, 0} (Agent6.ExteriorCoordinates.betaNum c B) (Agent6.ExteriorCoordinates.highContribution c B))
+Agent6.ExteriorCoordinates.phaseCarry (c : Nat) : Nat
+Agent6.ExteriorCoordinates.phaseDigit (c : Nat) : Nat
+Agent6.ExteriorCoordinates.overflow (c : Nat) (B : List.{0} Nat) : Nat
+Agent6.ExteriorCoordinates.phaseCarry_le_one (c : Nat) : LE.le.{0} (Agent6.ExteriorCoordinates.phaseCarry c) 1
+Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine (c : Nat) (hc : LE.le.{0} c 17) (hc9 : Ne.{1} c 9) :
+  Eq.{1} (Agent6.ExteriorCoordinates.phaseCarry c) (HDiv.hDiv.{0, 0, 0} c 9)
+Agent6.ExteriorCoordinates.phaseDigit_identity (c : Nat) :
+  Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 9 (Agent6.ExteriorCoordinates.phaseCarry c))
+      (Agent6.ExteriorCoordinates.phaseDigit c))
+    c
+Agent6.ExteriorCoordinates.phaseDigit_le_eight (c : Nat) (hc : LE.le.{0} c 17) (hc9 : Ne.{1} c 9) :
+  LE.le.{0} (Agent6.ExteriorCoordinates.phaseDigit c) 8
+Agent6.ExteriorCoordinates.phaseDigit_pos (c : Nat) (hc0 : LT.lt.{0} 0 c) :
+  LT.lt.{0} 0 (Agent6.ExteriorCoordinates.phaseDigit c)
+Agent6.ExteriorCoordinates.overflow_eq_highValue (c : Nat) (B : List.{0} Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.overflow c B)
+    (HDiv.hDiv.{0, 0, 0}
+      (HAdd.hAdd.{0, 0, 0} (Agent115.ExteriorFactorization.highValue B) (Agent6.ExteriorCoordinates.phaseCarry c))
+      (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))
+Agent6.ExteriorCoordinates.overflow_eq_rho_quotient (c : Nat) (B : List.{0} Nat) (hc : LE.le.{0} c 17)
+  (hc9 : Ne.{1} c 9) :
+  Eq.{1} (Agent6.ExteriorCoordinates.overflow c B)
+    (HDiv.hDiv.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B)
+      (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+Agent6.ExteriorCoordinates.overflow_le_one (c : Nat) (B : List.{0} Nat)
+  (hB : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18) : LE.le.{0} (Agent6.ExteriorCoordinates.overflow c B) 1
+Agent6.ExteriorCoordinates.overflow_eq_zero_iff (c : Nat) (B : List.{0} Nat) (hc : LE.le.{0} c 17) (hc9 : Ne.{1} c 9) :
+  Iff (Eq.{1} (Agent6.ExteriorCoordinates.overflow c B) 0)
+    (LT.lt.{0} (Agent115.ExteriorFactorization.rhoNum c B)
+      (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B))))
+Agent6.ExteriorCoordinates.overflow_eq_one_iff (c : Nat) (B : List.{0} Nat) (hc : LE.le.{0} c 17) (hc9 : Ne.{1} c 9)
+  (hB : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18) :
+  Iff (Eq.{1} (Agent6.ExteriorCoordinates.overflow c B) 1)
+    (LE.le.{0} (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))
+      (Agent115.ExteriorFactorization.rhoNum c B))
+Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator (c : Nat) (B : List.{0} Nat) (hc : LE.le.{0} c 17)
+  (hc9 : Ne.{1} c 9) (hB : ∀ (x : Nat), Membership.mem.{0, 0} B x → LE.le.{0} x 18) :
+  LT.lt.{0} (Agent115.ExteriorFactorization.rhoNum c B)
+    (HMul.hMul.{0, 0, 0} 18 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))
+Agent6.ExteriorCoordinates.empty_word_coordinates (c : Nat) :
+  And (Eq.{1} (Agent6.ExteriorCoordinates.overflow c List.nil.{0}) (Agent6.ExteriorCoordinates.phaseCarry c))
+    (Eq.{1} (Agent115.ExteriorFactorization.rhoNum c List.nil.{0}) c)
+Agent6.ExteriorCoordinates.empty_word_quotient_iff (c : Nat) :
+  Iff
+    (Eq.{1} (Agent6.ExteriorCoordinates.overflow c List.nil.{0})
+      (HDiv.hDiv.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c List.nil.{0})
+        (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} List.nil.{0})))))
+    (And (LE.le.{0} c 17) (Ne.{1} c 9))
+Agent6.ExteriorCoordinates.quotient_identity_forall_iff (c : Nat) :
+  Iff
+    (∀ (B : List.{0} Nat),
+      Eq.{1} (Agent6.ExteriorCoordinates.overflow c B)
+        (HDiv.hDiv.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum c B)
+          (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} B)))))
+    (And (LE.le.{0} c 17) (Ne.{1} c 9))
+Agent6.ExteriorCoordinates.excluded_phase_controls :
+  And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 9 List.nil.{0}) 0)
+    (And
+      (Eq.{1}
+        (HDiv.hDiv.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum 9 List.nil.{0})
+          (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} List.nil.{0}))))
+        1)
+      (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 18 List.nil.{0}) 1)
+        (Eq.{1}
+          (HDiv.hDiv.{0, 0, 0} (Agent115.ExteriorFactorization.rhoNum 18 List.nil.{0})
+            (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} List.nil.{0}))))
+          2)))
+Agent6.ExteriorCoordinates.unbounded_coefficient_control :
+  And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 0 (List.cons.{0} 20 List.nil.{0})) 2)
+    (LE.le.{0} (HMul.hMul.{0, 0, 0} 9 (HPow.hPow.{0, 0, 0} 10 (List.length.{0} (List.cons.{0} 20 List.nil.{0}))))
+      (Agent115.ExteriorFactorization.rhoNum 0 (List.cons.{0} 20 List.nil.{0})))
+Agent6.ExteriorCoordinates.revN_lt_power (n v : Nat) :
+  LT.lt.{0} (Agent115.ExteriorFactorization.revN n v) (HPow.hPow.{0, 0, 0} 10 n)
+Agent6.ExteriorCoordinates.highContribution_emod_ten_of_overflow_ne_zero (c : Nat) (B : List.{0} Nat)
+  (hg : Ne.{1} (Agent6.ExteriorCoordinates.overflow c B) 0) :
+  Eq.{1} (HMod.hMod.{0, 0, 0} (Agent6.ExteriorCoordinates.highContribution c B) 10) 9
+Agent6.ExteriorCoordinates.highContribution_ne_zero_of_pos (c : Nat) (B : List.{0} Nat) (hc : LT.lt.{0} 0 c) :
+  Ne.{1} (Agent6.ExteriorCoordinates.highContribution c B) 0
+Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral (c : Nat) (B : List.{0} Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) : Ne.{1} (Agent6.ExteriorCoordinates.highContribution c B) 0
+Agent6.ExteriorCoordinates.zero_phase_empty_control :
+  Eq.{1} (Agent6.ExteriorCoordinates.highContribution 0 List.nil.{0}) 0
+Agent6.ExteriorCoordinates.zero_overflow_negative_control :
+  And (Agent115.ExteriorFactorization.nonneutralPhase 2)
+    (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := List.cons.{0} 1 List.nil.{0} }) true)
+      (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 (List.cons.{0} 1 List.nil.{0})) 0)
+        (Eq.{1} (Agent6.ExteriorCoordinates.highContribution 2 (List.cons.{0} 1 List.nil.{0})) (-11))))
+Agent6.ExteriorCoordinates.zero_overflow_positive_control :
+  And (Agent115.ExteriorFactorization.nonneutralPhase 2)
+    (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := List.cons.{0} 3 List.nil.{0} }) true)
+      (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 (List.cons.{0} 3 List.nil.{0})) 0)
+        (Eq.{1} (Agent6.ExteriorCoordinates.highContribution 2 (List.cons.{0} 3 List.nil.{0})) 7)))
+Agent6.ExteriorCoordinates.one_overflow_negative_control :
+  And (Agent115.ExteriorFactorization.nonneutralPhase 2)
+    (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := List.cons.{0} 10 List.nil.{0} }) true)
+      (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 (List.cons.{0} 10 List.nil.{0})) 1)
+        (Eq.{1} (Agent6.ExteriorCoordinates.highContribution 2 (List.cons.{0} 10 List.nil.{0})) (-191))))
+Agent6.ExteriorCoordinates.one_overflow_positive_control :
+  And (Agent115.ExteriorFactorization.nonneutralPhase 2)
+    (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := List.cons.{0} 13 List.nil.{0} }) true)
+      (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 (List.cons.{0} 13 List.nil.{0})) 1)
+        (Eq.{1} (Agent6.ExteriorCoordinates.highContribution 2 (List.cons.{0} 13 List.nil.{0})) 79)))
+Agent6.ExteriorCoordinates.both_signs_at_zero_overflow :
+  Exists.{1} fun Bneg =>
+    Exists.{1} fun Bpos =>
+      And (Agent115.ExteriorFactorization.nonneutralPhase 2)
+        (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := Bneg }) true)
+          (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := Bpos }) true)
+            (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 Bneg) 0)
+              (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 Bpos) 0)
+                (And (LT.lt.{0} (Agent6.ExteriorCoordinates.highContribution 2 Bneg) 0)
+                  (LT.lt.{0} 0 (Agent6.ExteriorCoordinates.highContribution 2 Bpos)))))))
+Agent6.ExteriorCoordinates.both_signs_at_one_overflow :
+  Exists.{1} fun Bneg =>
+    Exists.{1} fun Bpos =>
+      And (Agent115.ExteriorFactorization.nonneutralPhase 2)
+        (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := Bneg }) true)
+          (And (Eq.{1} (P196.Agent7.Finite.validOuter { c := 2, B := Bpos }) true)
+            (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 Bneg) 1)
+              (And (Eq.{1} (Agent6.ExteriorCoordinates.overflow 2 Bpos) 1)
+                (And (LT.lt.{0} (Agent6.ExteriorCoordinates.highContribution 2 Bneg) 0)
+                  (LT.lt.{0} 0 (Agent6.ExteriorCoordinates.highContribution 2 Bpos)))))))
+Agent6.ExteriorCoordinates.outerIter : Nat → P196.Agent7.Finite.Outer → P196.Agent7.Finite.Outer
+Agent6.ExteriorCoordinates.orbitSum (f : P196.Agent7.Finite.Outer → Int) (s : P196.Agent7.Finite.Outer) : Nat → Int
+Agent6.ExteriorCoordinates.contributionSum (s : P196.Agent7.Finite.Outer) (n : Nat) : Int
+Agent6.ExteriorCoordinates.outerIter_zero (s : P196.Agent7.Finite.Outer) :
+  Eq.{1} (Agent6.ExteriorCoordinates.outerIter 0 s) s
+Agent6.ExteriorCoordinates.outerIter_succ (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.outerIter (HAdd.hAdd.{0, 0, 0} n 1) s)
+    (P196.Agent7.Finite.outerNext (Agent6.ExteriorCoordinates.outerIter n s))
+Agent6.ExteriorCoordinates.orbitSum_zero (f : P196.Agent7.Finite.Outer → Int) (s : P196.Agent7.Finite.Outer) :
+  Eq.{1} (Agent6.ExteriorCoordinates.orbitSum f s 0) 0
+Agent6.ExteriorCoordinates.orbitSum_succ (f : P196.Agent7.Finite.Outer → Int) (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.orbitSum f s (HAdd.hAdd.{0, 0, 0} n 1))
+    (HAdd.hAdd.{0, 0, 0} (Agent6.ExteriorCoordinates.orbitSum f s n) (f (Agent6.ExteriorCoordinates.outerIter n s)))
+Agent6.ExteriorCoordinates.contributionSum_zero (s : P196.Agent7.Finite.Outer) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum s 0) 0
+Agent6.ExteriorCoordinates.contributionSum_succ (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum s (HAdd.hAdd.{0, 0, 0} n 1))
+    (HAdd.hAdd.{0, 0, 0} (Agent6.ExteriorCoordinates.contributionSum s n)
+      (Agent6.ExteriorCoordinates.highContribution
+        (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter n s))
+        (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter n s))))
+Agent6.ExteriorCoordinates.orbitSum_telescope (a f : P196.Agent7.Finite.Outer → Int)
+  (hstep :
+    ∀ (q : P196.Agent7.Finite.Outer), Eq.{1} (a (P196.Agent7.Finite.outerNext q)) (HAdd.hAdd.{0, 0, 0} (a q) (f q)))
+  (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1} (a (Agent6.ExteriorCoordinates.outerIter n s))
+    (HAdd.hAdd.{0, 0, 0} (a s) (Agent6.ExteriorCoordinates.orbitSum f s n))
+Agent6.ExteriorCoordinates.betaNum_outerIter (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1}
+    (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter n s))
+      (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter n s)))
+    (HAdd.hAdd.{0, 0, 0}
+      (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c s) (P196.Agent7.Finite.Outer.B s))
+      (Agent6.ExteriorCoordinates.contributionSum s n))
+Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum s n)
+    (HSub.hSub.{0, 0, 0}
+      (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter n s))
+        (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter n s)))
+      (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c s) (P196.Agent7.Finite.Outer.B s)))
+Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn :
+    Eq.{1}
+      (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter n s))
+        (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter n s)))
+      (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c s) (P196.Agent7.Finite.Outer.B s))) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum s n) 0
+Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn : Eq.{1} (Agent6.ExteriorCoordinates.outerIter n s) s) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum s n) 0
+Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_padding_return (s : P196.Agent7.Finite.Outer) (n m : Nat)
+  (hc : Eq.{1} (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter n s)) (P196.Agent7.Finite.Outer.c s))
+  (hB :
+    Eq.{1} (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter n s))
+      (HAppend.hAppend.{0, 0, 0} (P196.Agent7.Finite.Outer.B s)
+        (List.replicate.{0} m (P196.Agent7.Finite.Outer.c s)))) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum s n) 0
+Agent6.ExteriorCoordinates.outerIter_eq_chain (q : Nat → P196.Agent7.Finite.Outer) (n : Nat)
+  (hstep : ∀ (i : Nat), LT.lt.{0} i n → Eq.{1} (q (HAdd.hAdd.{0, 0, 0} i 1)) (P196.Agent7.Finite.outerNext (q i))) :
+  Eq.{1} (Agent6.ExteriorCoordinates.outerIter n (q 0)) (q n)
+Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub (q : Nat → P196.Agent7.Finite.Outer) (n : Nat)
+  (hstep : ∀ (i : Nat), LT.lt.{0} i n → Eq.{1} (q (HAdd.hAdd.{0, 0, 0} i 1)) (P196.Agent7.Finite.outerNext (q i))) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum (q 0) n)
+    (HSub.hSub.{0, 0, 0}
+      (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c (q n)) (P196.Agent7.Finite.Outer.B (q n)))
+      (Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.Outer.c (q 0)) (P196.Agent7.Finite.Outer.B (q 0))))
+Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg (f : P196.Agent7.Finite.Outer → Int)
+  (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hnonneg : ∀ (i : Nat), LT.lt.{0} i n → LE.le.{0} 0 (f (Agent6.ExteriorCoordinates.outerIter i s)))
+  (hsum : Eq.{1} (Agent6.ExteriorCoordinates.orbitSum f s n) 0) (i : Nat) :
+  LT.lt.{0} i n → Eq.{1} (f (Agent6.ExteriorCoordinates.outerIter i s)) 0
+Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos (f : P196.Agent7.Finite.Outer → Int)
+  (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hnonpos : ∀ (i : Nat), LT.lt.{0} i n → LE.le.{0} (f (Agent6.ExteriorCoordinates.outerIter i s)) 0)
+  (hsum : Eq.{1} (Agent6.ExteriorCoordinates.orbitSum f s n) 0) (i : Nat) :
+  LT.lt.{0} i n → Eq.{1} (f (Agent6.ExteriorCoordinates.outerIter i s)) 0
+Agent6.ExteriorCoordinates.orbitSum_zero_both_signs (f : P196.Agent7.Finite.Outer → Int) (s : P196.Agent7.Finite.Outer)
+  (n : Nat) (hsum : Eq.{1} (Agent6.ExteriorCoordinates.orbitSum f s n) 0)
+  (hnonzero : Exists.{1} fun i => And (LT.lt.{0} i n) (Ne.{1} (f (Agent6.ExteriorCoordinates.outerIter i s)) 0)) :
+  And (Exists.{1} fun i => And (LT.lt.{0} i n) (LT.lt.{0} 0 (f (Agent6.ExteriorCoordinates.outerIter i s))))
+    (Exists.{1} fun j => And (LT.lt.{0} j n) (LT.lt.{0} (f (Agent6.ExteriorCoordinates.outerIter j s)) 0))
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hn : LT.lt.{0} 0 n) (hreturn : Eq.{1} (Agent6.ExteriorCoordinates.outerIter n s) s)
+  (hne :
+    Ne.{1} (Agent6.ExteriorCoordinates.highContribution (P196.Agent7.Finite.Outer.c s) (P196.Agent7.Finite.Outer.B s))
+      0) :
+  And
+    (Exists.{1} fun i =>
+      And (LT.lt.{0} i n)
+        (LT.lt.{0} 0
+          (Agent6.ExteriorCoordinates.highContribution
+            (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter i s))
+            (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter i s)))))
+    (Exists.{1} fun j =>
+      And (LT.lt.{0} j n)
+        (LT.lt.{0}
+          (Agent6.ExteriorCoordinates.highContribution
+            (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter j s))
+            (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter j s)))
+          0))
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hc : LT.lt.{0} 0 (P196.Agent7.Finite.Outer.c s)) (hn : LT.lt.{0} 0 n)
+  (hreturn : Eq.{1} (Agent6.ExteriorCoordinates.outerIter n s) s) :
+  And
+    (Exists.{1} fun i =>
+      And (LT.lt.{0} i n)
+        (LT.lt.{0} 0
+          (Agent6.ExteriorCoordinates.highContribution
+            (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter i s))
+            (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter i s)))))
+    (Exists.{1} fun j =>
+      And (LT.lt.{0} j n)
+        (LT.lt.{0}
+          (Agent6.ExteriorCoordinates.highContribution
+            (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter j s))
+            (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter j s)))
+          0))
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase (P196.Agent7.Finite.Outer.c s)) (hn : LT.lt.{0} 0 n)
+  (hreturn : Eq.{1} (Agent6.ExteriorCoordinates.outerIter n s) s) :
+  And
+    (Exists.{1} fun i =>
+      And (LT.lt.{0} i n)
+        (LT.lt.{0} 0
+          (Agent6.ExteriorCoordinates.highContribution
+            (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter i s))
+            (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter i s)))))
+    (Exists.{1} fun j =>
+      And (LT.lt.{0} j n)
+        (LT.lt.{0}
+          (Agent6.ExteriorCoordinates.highContribution
+            (P196.Agent7.Finite.Outer.c (Agent6.ExteriorCoordinates.outerIter j s))
+            (P196.Agent7.Finite.Outer.B (Agent6.ExteriorCoordinates.outerIter j s)))
+          0))
+Agent6.ExteriorCoordinates.overflowBit (s : P196.Agent7.Finite.Outer) : Nat
+Agent6.ExteriorCoordinates.carryScale (s : P196.Agent7.Finite.Outer) : Int
+Agent6.ExteriorCoordinates.weightedReverse (s : P196.Agent7.Finite.Outer) : Int
+Agent6.ExteriorCoordinates.weightedPhase (s : P196.Agent7.Finite.Outer) : Int
+Agent6.ExteriorCoordinates.overflowCount (s : P196.Agent7.Finite.Outer) : Nat → Nat
+Agent6.ExteriorCoordinates.overflowBit_le_one (s : P196.Agent7.Finite.Outer) :
+  LE.le.{0} (Agent6.ExteriorCoordinates.overflowBit s) 1
+Agent6.ExteriorCoordinates.carryScale_eq (s : P196.Agent7.Finite.Outer) :
+  Eq.{1} (Agent6.ExteriorCoordinates.carryScale s)
+    (HAdd.hAdd.{0, 0, 0} 1 (HMul.hMul.{0, 0, 0} 9 ↑(Agent6.ExteriorCoordinates.overflowBit s)))
+Agent6.ExteriorCoordinates.overflowCount_zero (s : P196.Agent7.Finite.Outer) :
+  Eq.{1} (Agent6.ExteriorCoordinates.overflowCount s 0) 0
+Agent6.ExteriorCoordinates.overflowCount_succ (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.overflowCount s (HAdd.hAdd.{0, 0, 0} n 1))
+    (HAdd.hAdd.{0, 0, 0} (Agent6.ExteriorCoordinates.overflowCount s n)
+      (Agent6.ExteriorCoordinates.overflowBit (Agent6.ExteriorCoordinates.outerIter n s)))
+Agent6.ExteriorCoordinates.overflowCount_le (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  LE.le.{0} (Agent6.ExteriorCoordinates.overflowCount s n) n
+Agent6.ExteriorCoordinates.highContribution_eq_weighted (s : P196.Agent7.Finite.Outer) :
+  Eq.{1} (Agent6.ExteriorCoordinates.highContribution (P196.Agent7.Finite.Outer.c s) (P196.Agent7.Finite.Outer.B s))
+    (HAdd.hAdd.{0, 0, 0}
+      (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 9 (Agent6.ExteriorCoordinates.weightedReverse s))
+        (Agent6.ExteriorCoordinates.weightedPhase s))
+      (HMul.hMul.{0, 0, 0} 9 ↑(Agent6.ExteriorCoordinates.overflowBit s)))
+Agent6.ExteriorCoordinates.contributionSum_eq_weighted (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Eq.{1} (Agent6.ExteriorCoordinates.contributionSum s n)
+    (HAdd.hAdd.{0, 0, 0}
+      (HSub.hSub.{0, 0, 0}
+        (HMul.hMul.{0, 0, 0} 9 (Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedReverse s n))
+        (Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedPhase s n))
+      (HMul.hMul.{0, 0, 0} 9 ↑(Agent6.ExteriorCoordinates.overflowCount s n)))
+Agent6.ExteriorCoordinates.closed_orbit_weighted_balance (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn : Eq.{1} (Agent6.ExteriorCoordinates.outerIter n s) s) :
+  Eq.{1} (Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedPhase s n)
+    (HAdd.hAdd.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0} 9 (Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedReverse s n))
+      (HMul.hMul.{0, 0, 0} 9 ↑(Agent6.ExteriorCoordinates.overflowCount s n)))
+'Agent109.Word' does not depend on any axioms
+'Agent109.zipAdd' does not depend on any axioms
+'Agent109.pair' does not depend on any axioms
+'Agent109.normalize' does not depend on any axioms
+'Agent109.stepWord' does not depend on any axioms
+'Agent109.template' does not depend on any axioms
+'Agent109.zipAdd_eq_zipWith' depends on axioms: [propext]
+'Agent109.zipAdd_append' depends on axioms: [propext]
+'Agent109.zipAdd_length' depends on axioms: [propext]
+'Agent109.zipAdd_comm' depends on axioms: [propext]
+'Agent109.zipAdd_reverse' depends on axioms: [propext]
+'Agent109.zipAdd_replicate' depends on axioms: [propext]
+'Agent109.norm' does not depend on any axioms
+'Agent109.carryWord' does not depend on any axioms
+'Agent109.normalize_eq_norm' depends on axioms: [propext]
+'Agent109.norm_length' depends on axioms: [propext]
+'Agent109.norm_append' depends on axioms: [propext]
+'Agent109.Bounded' does not depend on any axioms
+'Agent109.norm_carry_le' depends on axioms: [propext, Quot.sound]
+'Agent109.norm_digit_lt' depends on axioms: [propext, Quot.sound]
+'Agent109.kOf' does not depend on any axioms
+'Agent109.tOf' does not depend on any axioms
+'Agent109.Phase' does not depend on any axioms
+'Agent109.norm_band_tail' depends on axioms: [propext, Quot.sound]
+'Agent109.norm_band' depends on axioms: [propext, Quot.sound]
+'Agent109.complement_k' depends on axioms: [propext, Quot.sound]
+'Agent109.complement_t' depends on axioms: [propext, Quot.sound]
+'Agent109.complement_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.next_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.next_complement' depends on axioms: [propext, Quot.sound]
+'Agent109.Data' does not depend on any axioms
+'Agent109.data' does not depend on any axioms
+'Agent109.u0' does not depend on any axioms
+'Agent109.u1' does not depend on any axioms
+'Agent109.u2' does not depend on any axioms
+'Agent109.u3' does not depend on any axioms
+'Agent109.digitWord' does not depend on any axioms
+'Agent109.bounded_reverse' depends on axioms: [propext]
+'Agent109.norm_template' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.normalize_template' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.gamma_le' depends on axioms: [propext, Quot.sound]
+'Agent109.pair_split' depends on axioms: [propext]
+'Agent109.Br' does not depend on any axioms
+'Agent109.Ar' does not depend on any axioms
+'Agent109.Cr' does not depend on any axioms
+'Agent109.stepWord_template' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.reverseAux' depends on axioms: [propext]
+'Agent109.reverseFuel' does not depend on any axioms
+'Agent109.reverse10' does not depend on any axioms
+'Agent109.Palindrome' does not depend on any axioms
+'Agent109.step' does not depend on any axioms
+'Agent109.orbitWord' does not depend on any axioms
+'Agent109.orbit' does not depend on any axioms
+'Agent109.evalL' does not depend on any axioms
+'Agent109.digitsFuel' does not depend on any axioms
+'Agent109.digits' does not depend on any axioms
+'Agent109.pairWord' does not depend on any axioms
+'Agent109.digitsFuel_stable' depends on axioms: [propext, Quot.sound]
+'Agent109.digits_zero' depends on axioms: [propext]
+'Agent109.digits_pos' depends on axioms: [propext, Quot.sound]
+'Agent109.evalL_digits' depends on axioms: [propext, Quot.sound]
+'Agent109.evalL_append' depends on axioms: [propext, Quot.sound]
+'Agent109.evalL_zipAdd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.reverseFuel_digits' depends on axioms: [propext, Quot.sound]
+'Agent109.reverse10_eq' depends on axioms: [propext, Quot.sound]
+'Agent109.step_eq_evalL_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Canon' does not depend on any axioms
+'Agent109.evalL_pos_of_canon' depends on axioms: [propext, Quot.sound]
+'Agent109.digits_evalL' depends on axioms: [propext, Quot.sound]
+'Agent109.evalL_norm' depends on axioms: [propext, Quot.sound]
+'Agent109.LastPos' does not depend on any axioms
+'Agent109.canon_normalize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.bounded_pair_digits' depends on axioms: [propext, Quot.sound]
+'Agent109.canon_digits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.canon_last_pos' does not depend on any axioms
+'Agent109.pair_last' depends on axioms: [propext, Quot.sound]
+'Agent109.lastPos_pairWord' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.pairWord_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.pairWord_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.orbit_succ_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.actual_template_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.canon_iff' depends on axioms: [propext, Quot.sound]
+'Agent109.evalL_lt' depends on axioms: [propext, Quot.sound]
+'Agent109.evalL_ge' depends on axioms: [propext, Quot.sound]
+'Agent109.palindrome_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.step_palindrome_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.actual_template_palindrome_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Cert.append_inj_left'' depends on axioms: [propext]
+'Agent109.Cert.shape_reverse' depends on axioms: [propext]
+'Agent109.Cert.shape_palindrome_iff' depends on axioms: [propext]
+'Agent109.Cert.StepPal' does not depend on any axioms
+'Agent109.Cert.step_palindrome_template' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Cert.template_trim' depends on axioms: [propext, Quot.sound]
+'Agent109.Cert.State' does not depend on any axioms
+'Agent109.Cert.Link' does not depend on any axioms
+'Agent109.Cert.Certificate' does not depend on any axioms
+'Agent109.Cert.gam' does not depend on any axioms
+'Agent109.Cert.LocalOK' does not depend on any axioms
+'Agent109.Cert.Certificate.P' does not depend on any axioms
+'Agent109.Cert.Certificate.st' does not depend on any axioms
+'Agent109.Cert.Certificate.lk' does not depend on any axioms
+'Agent109.Cert.Valid' does not depend on any axioms
+'Agent109.Cert.check' does not depend on any axioms
+'Agent109.Cert.check_sound' depends on axioms: [propext, Quot.sound]
+'Agent109.Cert.Inv' does not depend on any axioms
+'Agent109.Cert.inv_not_palindrome' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Cert.inv_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Cert.certificate_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Cert.Mirr' does not depend on any axioms
+'Agent109.Cert.realize' depends on axioms: [propext, Quot.sound]
+'Agent109.Cert.mirr_wrap' depends on axioms: [propext]
+'Agent109.Cert.template_mirr' depends on axioms: [propext]
+'Agent109.Cert.template_lastPos' depends on axioms: [propext, Quot.sound]
+'Agent109.Cert.template_bounded' depends on axioms: [propext, Quot.sound]
+'Agent109.Cert.template_realized' depends on axioms: [propext, Quot.sound]
+'Agent109.Cert.Admissible0' does not depend on any axioms
+'Agent109.Cert.mirr_of_split' depends on axioms: [propext]
+'Agent109.Cert.certificate_existence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'P196.Agent7.Finite.Outer' does not depend on any axioms
+'P196.Agent7.Finite.normalize' does not depend on any axioms
+'P196.Agent7.Finite.bulkPhase' does not depend on any axioms
+'P196.Agent7.Finite.stripSuffix' does not depend on any axioms
+'P196.Agent7.Finite.outerNext' does not depend on any axioms
+'P196.Agent7.Finite.decodeWord' does not depend on any axioms
+'P196.Agent7.Finite.encoded' does not depend on any axioms
+'P196.Agent7.Finite.validOuter' does not depend on any axioms
+'P196.Agent7.Finite.staysSmall' does not depend on any axioms
+'P196.Agent7.Finite.cap2_exits_by_seven' does not depend on any axioms
+'P196.Agent7.Finite.sharpStart' does not depend on any axioms
+'P196.Agent7.Finite.cap2_sharp_six' does not depend on any axioms
+'P196.Agent7.Finite.cap2_sharp_seven' does not depend on any axioms
+'P196.Agent7.Finite.decode_complete' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.Finite.cap2_unencoded' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.Finite.outerIterate' does not depend on any axioms
+'P196.Agent7.Finite.exit_witness_of_false' depends on axioms: [propext, Quot.sound]
+'P196.Agent7.Finite.cap2_exit_witness' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.normalize7_eq' depends on axioms: [propext]
+'Agent109.Outer.kOf_eq' does not depend on any axioms
+'Agent109.Outer.outerNext_eq' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.stripSuffix_spec' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.norm_digits_le' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.zipAdd_le' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.k_le' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.t_le' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.u_le' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.succ_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Outer.bounded_strip' depends on axioms: [propext, Quot.sound]
+'Agent109.Outer.actual_step_outer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Outer.outerIter' does not depend on any axioms
+'Agent109.Outer.outerIterate_eq' does not depend on any axioms
+'Agent109.Outer.actual_outer_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent109.Outer.actual_cap2_exit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent116.CertificateExterior.Realizes' does not depend on any axioms
+'Agent116.CertificateExterior.realizes_next' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent116.CertificateExterior.realizes_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent116.CertificateExterior.admissible_realizes_zero' depends on axioms: [propext, Quot.sound]
+'Agent116.CertificateExterior.realized_head_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent116.CertificateExterior.admissible_heads_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent116.Exterior.stripSuffix_idempotent' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.stripSuffix_append_replicate' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.stripSuffix_length_le' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.stripSuffix_last' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.stripSuffix_head_pos' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.stripSuffix_bounded' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.Br_append_phase' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.Br_append_replicate' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.outerNext_append_replicate' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.outerNext_stripSuffix_eq' depends on axioms: [propext, Quot.sound]
+'Agent116.Exterior.outerNext_of_partial_trim' depends on axioms: [propext, Quot.sound]
+'Agent116.CertificateExterior.stateOuter' does not depend on any axioms
+'Agent116.CertificateExterior.local_outer_step' depends on axioms: [propext, Quot.sound]
+'Agent116.CertificateExterior.certificate_outer_orbit' depends on axioms: [propext, Quot.sound]
+'Agent116.CertificateExterior.certificate_phase_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent116.CertificateExterior.stateOuter_valid' depends on axioms: [propext, Quot.sound]
+'Agent116.CertificateExterior.EscapeAt' does not depend on any axioms
+'Agent116.CertificateExterior.valid_exceeds_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent116.CertificateExterior.accepted_admissible_exceeds_cap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent116.CertificateExterior.escapeAt_two' depends on axioms: [propext, Quot.sound]
+'Agent116.CertificateExterior.accepted_admissible_exceeds_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent110.Accounting.width' does not depend on any axioms
+'Agent110.Accounting.dg' does not depend on any axioms
+'Agent110.Accounting.dh' does not depend on any axioms
+'Agent110.Accounting.sumPrefix' does not depend on any axioms
+'Agent110.Accounting.totalGam' does not depend on any axioms
+'Agent110.Accounting.totalG' does not depend on any axioms
+'Agent110.Accounting.totalH' does not depend on any axioms
+'Agent110.Accounting.totalJ' does not depend on any axioms
+'Agent110.Accounting.totalJ1' does not depend on any axioms
+'Agent110.Accounting.totalJ2' does not depend on any axioms
+'Agent110.Accounting.totalK' does not depend on any axioms
+'Agent110.Accounting.sumPrefix_congr' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_add' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_sub' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_two_mul' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_one' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_two' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_le' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_difference' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.sumPrefix_cyclic_difference' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.Br_length' depends on axioms: [propext]
+'Agent110.Accounting.Ar_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.Cr_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.local_width_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.local_outer_lower' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.local_inner_lower' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.local_B_length_difference' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.local_A_length_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.local_C_length_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.totalJ_eq_period' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.totalJ1_add_totalJ2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.two_totalK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.totalG_eq_trim_counts' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.totalH_eq_trim_counts' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.totalG_eq_totalJ1' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.totalH_eq_totalK_sub_totalJ1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.totalGam_eq_twice_gains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.totalG_nonneg' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.totalH_nonneg' depends on axioms: [propext, Quot.sound]
+'Agent110.Accounting.totalGam_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent110.Accounting.checked_accounting' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue' does not depend on any axioms
+'Agent115.ExteriorFactorization.zValue' does not depend on any axioms
+'Agent115.ExteriorFactorization.highValue' does not depend on any axioms
+'Agent115.ExteriorFactorization.rhoNum' does not depend on any axioms
+'Agent115.ExteriorFactorization.nonneutralPhase' does not depend on any axioms
+'Agent115.ExteriorFactorization.Target' does not depend on any axioms
+'Agent115.ExteriorFactorization.digitsOf' does not depend on any axioms
+'Agent115.ExteriorFactorization.digitsOf_length' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.normalize_eq' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.normalize_length' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_append' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_append_single' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.foldl_high' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.lowValue_reverse' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.normalize_carry_le' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.normalize_append_single' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.fromScans' does not depend on any axioms
+'Agent115.ExteriorFactorization.outerNext_eq_fromScans' does not depend on any axioms
+'Agent115.ExteriorFactorization.stripSuffix_append_single' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.zipWith_append_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.strip_zip_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.phase_facts' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_append_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_append_replicate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.outerNext_of_values' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.zValue_append_band' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.zValue_append_replicate' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rhoNum_append_band' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rhoNum_append_replicate' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_of_zValue' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.entries_le_of_valid' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.factorization_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.target' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.factorization_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.highValue_cons' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_lt' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.eq_of_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.canonical_eq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.last_ne_of_valid' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.observation_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.revN' does not depend on any axioms
+'Agent115.ExteriorFactorization.rawSucc' does not depend on any axioms
+'Agent115.ExteriorFactorization.outerNext_eq_strip' does not depend on any axioms
+'Agent115.ExteriorFactorization.lowValue_digitsOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_zipWith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.length_zipWith_eq' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_zipWith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.lowValue_append_single' depends on axioms: [propext]
+'Agent115.ExteriorFactorization.highValue_reverse' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rawSucc_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent115.ExteriorFactorization.takeWhile_eq_mem' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.stripSuffix_spec' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.rawSucc_length' depends on axioms: [propext, Quot.sound]
+'Agent115.ExteriorFactorization.successor_observation' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.betaNum' does not depend on any axioms
+'Agent6.ExteriorCoordinates.betaNum_eq' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.highContribution' does not depend on any axioms
+'Agent6.ExteriorCoordinates.betaNum_outerNext_raw' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.betaNum_outerNext' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.phaseCarry' does not depend on any axioms
+'Agent6.ExteriorCoordinates.phaseDigit' does not depend on any axioms
+'Agent6.ExteriorCoordinates.overflow' does not depend on any axioms
+'Agent6.ExteriorCoordinates.phaseCarry_le_one' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.phaseDigit_identity' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.phaseDigit_le_eight' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.phaseDigit_pos' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.overflow_eq_highValue' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.overflow_eq_rho_quotient' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.overflow_le_one' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.overflow_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.overflow_eq_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.empty_word_coordinates' depends on axioms: [propext]
+'Agent6.ExteriorCoordinates.empty_word_quotient_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.quotient_identity_forall_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.excluded_phase_controls' does not depend on any axioms
+'Agent6.ExteriorCoordinates.unbounded_coefficient_control' does not depend on any axioms
+'Agent6.ExteriorCoordinates.revN_lt_power' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.highContribution_emod_ten_of_overflow_ne_zero' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.highContribution_ne_zero_of_pos' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.zero_phase_empty_control' does not depend on any axioms
+'Agent6.ExteriorCoordinates.zero_overflow_negative_control' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.zero_overflow_positive_control' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.one_overflow_negative_control' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.one_overflow_positive_control' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.both_signs_at_zero_overflow' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.both_signs_at_one_overflow' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.outerIter' does not depend on any axioms
+'Agent6.ExteriorCoordinates.orbitSum' does not depend on any axioms
+'Agent6.ExteriorCoordinates.contributionSum' does not depend on any axioms
+'Agent6.ExteriorCoordinates.outerIter_zero' does not depend on any axioms
+'Agent6.ExteriorCoordinates.outerIter_succ' does not depend on any axioms
+'Agent6.ExteriorCoordinates.orbitSum_zero' does not depend on any axioms
+'Agent6.ExteriorCoordinates.orbitSum_succ' does not depend on any axioms
+'Agent6.ExteriorCoordinates.contributionSum_zero' does not depend on any axioms
+'Agent6.ExteriorCoordinates.contributionSum_succ' does not depend on any axioms
+'Agent6.ExteriorCoordinates.orbitSum_telescope' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.betaNum_outerIter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_padding_return' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent6.ExteriorCoordinates.outerIter_eq_chain' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.orbitSum_zero_both_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Agent6.ExteriorCoordinates.overflowBit' does not depend on any axioms
+'Agent6.ExteriorCoordinates.carryScale' does not depend on any axioms
+'Agent6.ExteriorCoordinates.weightedReverse' does not depend on any axioms
+'Agent6.ExteriorCoordinates.weightedPhase' does not depend on any axioms
+'Agent6.ExteriorCoordinates.overflowCount' does not depend on any axioms
+'Agent6.ExteriorCoordinates.overflowBit_le_one' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.carryScale_eq' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.overflowCount_zero' does not depend on any axioms
+'Agent6.ExteriorCoordinates.overflowCount_succ' does not depend on any axioms
+'Agent6.ExteriorCoordinates.overflowCount_le' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.highContribution_eq_weighted' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.contributionSum_eq_weighted' depends on axioms: [propext, Quot.sound]
+'Agent6.ExteriorCoordinates.closed_orbit_weighted_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
