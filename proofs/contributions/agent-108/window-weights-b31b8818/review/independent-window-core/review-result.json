@@ -1,0 +1,343 @@
+{
+  "reviewer": "Agent #108 runtime, session b31b8818",
+  "review_scope": "Exact fixed source public declarations and mathematical transitive dependencies; compiler internals separately classified",
+  "source_sha256": {
+    "Agent108WindowDefs": "147ae208dce3b612c6eb23091eab123b77bd46c86d216ab8a6199913015f0aa0",
+    "Agent108WindowProducts": "2920c9da6e3c06c40a1d8478fe1af0d87b00627976f53856f75b90de32a1e584",
+    "Agent108WindowEndpoints": "ebabfbfd366729846656ff5a56891c22f9c7f0868fca9c5918be433e5d5fbc22"
+  },
+  "clean_source_build": {
+    "compiled": true,
+    "steps": [
+      {
+        "module": "Agent108WindowDefs",
+        "command": [
+          "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+          "-o",
+          "Agent108WindowDefs.olean",
+          "Agent108WindowDefs.lean"
+        ],
+        "cwd": "/workspace/scratch/b31b8818d547/agent108-runtime/core-review-build/001",
+        "exit_code": 0,
+        "seconds": 0.33911585807800293
+      },
+      {
+        "module": "Agent108WindowProducts",
+        "command": [
+          "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+          "-o",
+          "Agent108WindowProducts.olean",
+          "Agent108WindowProducts.lean"
+        ],
+        "cwd": "/workspace/scratch/b31b8818d547/agent108-runtime/core-review-build/001",
+        "exit_code": 0,
+        "seconds": 0.51951003074646
+      },
+      {
+        "module": "Agent108WindowEndpoints",
+        "command": [
+          "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+          "-o",
+          "Agent108WindowEndpoints.olean",
+          "Agent108WindowEndpoints.lean"
+        ],
+        "cwd": "/workspace/scratch/b31b8818d547/agent108-runtime/core-review-build/001",
+        "exit_code": 0,
+        "seconds": 0.7620584964752197
+      },
+      {
+        "module": "CoreCompleteAxioms",
+        "command": [
+          "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+          "-o",
+          "CoreCompleteAxioms.olean",
+          "CoreCompleteAxioms.lean"
+        ],
+        "cwd": "/workspace/scratch/b31b8818d547/agent108-runtime/core-review-build/001",
+        "exit_code": 0,
+        "seconds": 78.7447829246521
+      }
+    ],
+    "source_unchanged": true
+  },
+  "metadata_check": {
+    "command": [
+      "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+      "--trust=0",
+      "-o",
+      "CoreDeclarationMetadata.olean",
+      "CoreDeclarationMetadata.lean"
+    ],
+    "cwd": "/workspace/scratch/b31b8818d547/agent108-runtime/core-review-build/001",
+    "exit_code": 0,
+    "seconds": 2.243774175643921,
+    "source_sha256": {
+      "Agent108WindowDefs": "147ae208dce3b612c6eb23091eab123b77bd46c86d216ab8a6199913015f0aa0",
+      "Agent108WindowProducts": "2920c9da6e3c06c40a1d8478fe1af0d87b00627976f53856f75b90de32a1e584",
+      "Agent108WindowEndpoints": "ebabfbfd366729846656ff5a56891c22f9c7f0868fca9c5918be433e5d5fbc22"
+    }
+  },
+  "public_declaration_count": 17,
+  "public_correspondence": [
+    {
+      "declaration": "Agent108.WindowWeights.windows",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 13,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.buffer",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 18,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.block",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 20,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.blocks",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 24,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.inputHalf",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 29,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.targetHalf",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 32,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.localBlock",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 35,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.endpoint",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 38,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.choices",
+      "kind": "definition",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowDefs",
+      "source_kind": "def",
+      "source_line": 41,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.windows_nil",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowProducts",
+      "source_kind": "theorem",
+      "source_line": 5,
+      "axioms": [],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.windows_short",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowProducts",
+      "source_kind": "theorem",
+      "source_line": 7,
+      "axioms": [
+        "propext"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.windows_append_overlap",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowProducts",
+      "source_kind": "theorem",
+      "source_line": 13,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.windows_eq_range_map",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowProducts",
+      "source_kind": "theorem",
+      "source_line": 35,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.windows_length",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowProducts",
+      "source_kind": "theorem",
+      "source_line": 54,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.endpoint_window_cross",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowEndpoints",
+      "source_kind": "theorem",
+      "source_line": 13,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.endpoint_window_tail",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowEndpoints",
+      "source_kind": "theorem",
+      "source_line": 25,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "Agent108.WindowWeights.endpoint_windows",
+      "kind": "theorem",
+      "unsafe": false,
+      "partial": false,
+      "module": "Agent108WindowEndpoints",
+      "source_kind": "theorem",
+      "source_line": 39,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "pass": true
+    }
+  ],
+  "all_namespace_declaration_count": 84,
+  "safe_nonpartial_declaration_count": 45,
+  "unsafe_compiler_declaration_count": 36,
+  "partial_compiler_declaration_count": 3,
+  "all_safe_nonpartial_axiom_pass": true,
+  "all_public_axiom_pass": true,
+  "original_unclassified_audit_pass": false,
+  "compiler_only_unusual_dependency_reports": [
+    {
+      "declaration": "Agent108.WindowWeights.choices._cstage2",
+      "kind": "definition",
+      "unsafe": true,
+      "partial": false,
+      "axioms": [
+        "List.mapTR.loop._at.Agent108.WindowWeights.choices._spec_1",
+        "List.mapTR.loop._at.Agent108.WindowWeights.choices._spec_2"
+      ]
+    }
+  ],
+  "compiler_dependency_metadata": [
+    {
+      "declaration": "List.mapTR.loop._at.Agent108.WindowWeights.choices._spec_2._cstage2",
+      "kind": "definition",
+      "unsafe": true,
+      "partial": false
+    },
+    {
+      "declaration": "List.mapTR.loop._at.Agent108.WindowWeights.choices._spec_1",
+      "kind": "axiom",
+      "unsafe": true,
+      "partial": false
+    },
+    {
+      "declaration": "List.mapTR.loop._at.Agent108.WindowWeights.choices._spec_2",
+      "kind": "axiom",
+      "unsafe": true,
+      "partial": false
+    },
+    {
+      "declaration": "List.mapTR.loop._at.Agent108.WindowWeights.choices._spec_1._cstage2",
+      "kind": "definition",
+      "unsafe": true,
+      "partial": false
+    }
+  ],
+  "logical_axiom_allowlist": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "allowlist_was_not_extended": true,
+  "mathematical_semantics_review": "PASS for literal positive-width complete unpadded windows and all endpoint cases; no arithmetic transition, incoming membership, or infinite avoidance claim",
+  "pass": true
+}
