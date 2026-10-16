@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #103",
+  "status": "FROZEN",
+  "generation_owner": "agent103-residual-five-firsthit-two-20261016",
+  "title": "Additive scoped registry for residual-five first-positive hit two and full residue-phase compatibility",
+  "reviewed_source_map_sha256": "f6354e0411bc63c014c1ca0db07352a22f76ec6890417c097639a77c9539f8ba",
+  "toolchain": {
+    "release": "4.19.0",
+    "commit_prefix": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "compiler_arguments": [
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    {
+      "id": "CONTRIBUTION_SCOPED_REGISTRY",
+      "status": "OPEN",
+      "description": "This registry covers only the residual-five first-hit contribution and does not claim a complete repository catalogue."
+    }
+  ],
+  "projects": {
+    "agent103-residual-five-firsthit": {
+      "modules": {
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ],
+          "historical_source_commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+          "historical_original_path": "proofs/research/continuation/LychrelDigitSums.lean"
+        },
+        "PrefixInverse": {
+          "path": "proofs/PrefixInverse__d258d04cb6f2792b.lean",
+          "sha256": "0a93622752fa22cf6c8de2efc8500dc313498d59831bb0e5381b3b351e0ab03e",
+          "git_blob": "c9ba79545ec486297946c418014190f1e6f3a1f0",
+          "imports": [
+            "Std"
+          ],
+          "historical_source_commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+          "historical_original_path": "proofs/contributions/agent-104/seven-column-kernel/PrefixInverse.lean"
+        },
+        "ActualPrefix": {
+          "path": "proofs/ActualPrefix__787f92e1c3116646.lean",
+          "sha256": "c136216ed9c4100a268643be9a471b6746320f63d0af2030b6418429e5551e76",
+          "git_blob": "ceb031e9987db556499fff75b16be4653c3c7ead",
+          "imports": [
+            "LychrelDigitSums",
+            "PrefixInverse"
+          ],
+          "historical_source_commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+          "historical_original_path": "proofs/contributions/agent-104/seven-column-kernel/ActualPrefix.lean"
+        },
+        "PalindromeBridge": {
+          "path": "proofs/PalindromeBridge__c6bbb7ab7e8b1c29.lean",
+          "sha256": "6c1de8cf02ec9381e80388e6b4915db6cfa4d1189d3e47c273400f0d37948093",
+          "git_blob": "a8066f82178786648c2c32b49a333e0c87e5810b",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "historical_source_commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+          "historical_original_path": "proofs/contributions/agent-104/seven-column-kernel/PalindromeBridge.lean"
+        },
+        "EightFamilies": {
+          "path": "proofs/contributions/agent-103/residual-five-20261016/vendor/EightFamilies.lean",
+          "sha256": "3d865d82e4a648af36d0ce0c6ded12bdd5e184fd294951dc53e689458b3ede53",
+          "git_blob": "c94378b93541f5a537e50500bd5a6a94dfb16f8b",
+          "imports": [
+            "LychrelDigitSums",
+            "PrefixInverse",
+            "ActualPrefix",
+            "PalindromeBridge"
+          ],
+          "historical_source_commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+          "historical_original_path": "proofs/contributions/agent-119/eight-families/EightFamilies.lean"
+        },
+        "TemporalResidues": {
+          "path": "proofs/contributions/agent-103/residual-five-20261016/vendor/TemporalResidues.lean",
+          "sha256": "f3a215bb9ee54628e83d0591bff2ed7f73980821931d56de99f0b3da5d4ab8ab",
+          "git_blob": "93dec0e8bb09dc8deaa5766214d3e02ca758db4c",
+          "imports": [
+            "Lychrel196Research"
+          ],
+          "historical_source_commit": "6fae6e659e5c08c59666588c71a4ed06760de85e",
+          "historical_original_path": "proofs/coordination/submissions/agent423/TemporalResidues.lean"
+        },
+        "Lychrel196Research": {
+          "path": "proofs/contributions/agent-103/residual-five-20261016/vendor/Lychrel196Research.lean",
+          "sha256": "13dd9effbef33d3d10138baed5cb3a6f964691ba895cc5d453f2553f0ac81011",
+          "git_blob": "59d5f72fbb3bf6846882474d6c74337d5e3ea4f0",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "historical_source_commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+          "historical_original_path": "proofs/research/Lychrel196Research.lean",
+          "verified_forwarder_provenance": {
+            "original_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+            "original_git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506",
+            "container_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+            "complete_foundation_body_sha256": "c457c36664c186ce10f38d492460fe67f5318c7edf14ff9b930b00b7f67f3402",
+            "complete_foundation_body_lines": 4444,
+            "container_start_line_1_based": 11,
+            "meaning": "Exact import-only compatibility forwarder; no definitions or mathematical assumptions added.",
+            "evidence_record": "Fresh check.py output verification.json: sources.Lychrel196Research.adapter; the preflight dependency audit independently checks the Agent101 foundation blob."
+          }
+        },
+        "ResidualFiveShape": {
+          "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFiveShape.lean",
+          "sha256": "592f4af76ee78c92f24dddf91042f0fc2c918944dd181d7e058eb3c57330ffa6",
+          "git_blob": "f167b4624c80815b22ccce6ed2bba8e641f052c8",
+          "imports": [
+            "EightFamilies"
+          ],
+          "origin": "Agent103 frozen new source",
+          "historical_source_commit": "05e4ac30bb35ef87446d6d12a0733625c254bb0e"
+        },
+        "ResidualFive": {
+          "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFive.lean",
+          "sha256": "e52aad8590495fe4b34b866c20b99fe14892c16f9af79a3fdaa24222af896a35",
+          "git_blob": "4cd8fe4d5ef6ceeec50d8bd8c7d56a4b928e8a47",
+          "imports": [
+            "EightFamilies",
+            "TemporalResidues"
+          ],
+          "origin": "Agent103 frozen new source",
+          "historical_source_commit": "05e4ac30bb35ef87446d6d12a0733625c254bb0e"
+        },
+        "ResidualFiveWitness": {
+          "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFiveWitness.lean",
+          "sha256": "bdd3abc30bd4a24fe27df657c21dcc92555d8b3fa26f2c7c3abd3e7091bd1d3f",
+          "git_blob": "ef30a3af28ed83c758ab30605eda500408cdcf96",
+          "imports": [
+            "LychrelDigitSums",
+            "TemporalResidues"
+          ],
+          "origin": "Agent103 frozen new source",
+          "historical_source_commit": "05e4ac30bb35ef87446d6d12a0733625c254bb0e"
+        },
+        "ResidualFiveConclusion": {
+          "path": "proofs/contributions/agent-103/residual-five-20261016/ResidualFiveConclusion.lean",
+          "sha256": "1073466758b41e0c5b0f630b37ca3b652b6d345f64032f30455e321e7b2c34ef",
+          "git_blob": "a09a775652aa102a912120ab95fa05042a6d62d6",
+          "imports": [
+            "ResidualFive",
+            "ResidualFiveShape",
+            "ResidualFiveWitness"
+          ],
+          "origin": "Agent103 frozen new source",
+          "historical_source_commit": "05e4ac30bb35ef87446d6d12a0733625c254bb0e"
+        },
+        "Agent101DigitPairs": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/vendor/Agent101DigitPairs.lean",
+          "sha256": "5c76eae97efd2f30d1775650f7feca477c269419af1c02809800a95ca62821f8",
+          "git_blob": "e6dfe3f19b39bcf16ee82c182c06b46d678b332f",
+          "imports": [
+            "Std"
+          ],
+          "historical_source_commit": "326645944168ad2b035a1e653b61527d79684156",
+          "historical_original_path": "proofs/Agent101DigitPairs.lean"
+        },
+        "Agent101MultiplicityBounds": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/vendor/Agent101MultiplicityBounds.lean",
+          "sha256": "8fd487ce8025cfe7cbda3dc51b6a02595c856fbe3dd065a8781cea60b7e6b5c3",
+          "git_blob": "1e44939fe3cd938fe926f5fc80137b176a1a7baf",
+          "imports": [
+            "Agent101DigitPairs"
+          ],
+          "historical_source_commit": "326645944168ad2b035a1e653b61527d79684156",
+          "historical_original_path": "proofs/Agent101MultiplicityBounds.lean"
+        },
+        "Agent101SplitEnumeration": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/vendor/Agent101SplitEnumeration.lean",
+          "sha256": "8ce57c88984df3a965e33c181f4d8f138258fe48b14e2b835333fe6c30d79684",
+          "git_blob": "8d34b3a35dab5502507ed7ea3accccf7d971cafa",
+          "imports": [
+            "Agent101MultiplicityBounds"
+          ],
+          "historical_source_commit": "326645944168ad2b035a1e653b61527d79684156",
+          "historical_original_path": "proofs/Agent101SplitEnumeration.lean"
+        },
+        "Agent101NumericFibers": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/vendor/Agent101NumericFibers.lean",
+          "sha256": "bba80a597345f7f3bd207698a6e6b338ee20335e647f518604fa43654b13fd97",
+          "git_blob": "164ade8c8b42e9b6e7f67e36f7e1c60086787208",
+          "imports": [
+            "Lychrel196Research",
+            "Agent101SplitEnumeration"
+          ],
+          "historical_source_commit": "326645944168ad2b035a1e653b61527d79684156",
+          "historical_original_path": "proofs/Agent101NumericFibers.lean"
+        },
+        "ResidualFiveFibers": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveFibers.lean",
+          "sha256": "ae4f56df6844b09fb21a5375cf3a2295f7f2c17ba416181784361582b392e981",
+          "git_blob": "b8ec3c1404922e1c75148126e84939232d8e2f41",
+          "imports": [
+            "ResidualFiveShape",
+            "Agent101NumericFibers"
+          ],
+          "origin": "Frozen dependency from Agent103 prior complete fiber/count contribution",
+          "historical_source_commit": "018a49231cd3226506699282f0f173745e6b9f8d"
+        },
+        "ResidualFiveFiberConclusion": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveFiberConclusion.lean",
+          "sha256": "381cd362ea6a8cc2637dd05b2b97cb1307ca4eaa2a88dd44514cf1b05a9870a8",
+          "git_blob": "c0eb0a05590845a3c798166f8b0a88ed8ae7b34e",
+          "imports": [
+            "ResidualFiveFibers",
+            "ResidualFiveConclusion"
+          ],
+          "origin": "Frozen dependency from Agent103 prior complete fiber/count contribution",
+          "historical_source_commit": "018a49231cd3226506699282f0f173745e6b9f8d"
+        },
+        "ResidualFiveResidues": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveResidues.lean",
+          "sha256": "cbe3e496b3bfd62dfa14a2b9a6edfb13ea418073264c65d481056bc0f243cf01",
+          "git_blob": "0026e142a46eadff6430b9891aeedcf6945fecef",
+          "imports": [
+            "ResidualFiveFibers"
+          ],
+          "origin": "Frozen dependency from Agent103 prior complete fiber/count contribution",
+          "historical_source_commit": "018a49231cd3226506699282f0f173745e6b9f8d"
+        },
+        "ResidualFiveResidueCount": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveResidueCount.lean",
+          "sha256": "0909cbb8d27d17181f71dc9023733c6bf3669d60620f8a152d27a7bc3c4d6c41",
+          "git_blob": "79458b0ba2b03edb0055849cd9fb24bbae9983a0",
+          "imports": [
+            "ResidualFiveResidues",
+            "ResidualFiveResidueBridge",
+            "ResidualFiveCountArithmetic"
+          ],
+          "origin": "Frozen dependency from Agent103 prior complete fiber/count contribution",
+          "historical_source_commit": "018a49231cd3226506699282f0f173745e6b9f8d"
+        },
+        "ResidualFiveResidueBridge": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveResidueBridge.lean",
+          "sha256": "5e671c9a2c3301131238d5aec6d95b6e5df6c8eba7ef7ab11e42ed388ac467e0",
+          "git_blob": "d63f30e7b87cc7337224d5be517af24fcaef8619",
+          "imports": [
+            "ResidualFiveFibers"
+          ],
+          "origin": "Frozen dependency from Agent103 prior complete fiber/count contribution",
+          "historical_source_commit": "018a49231cd3226506699282f0f173745e6b9f8d"
+        },
+        "ResidualFiveCountArithmetic": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveCountArithmetic.lean",
+          "sha256": "8d600ad013e2a905f7353916b132026e417bdcc21104f55fd486ba42ea94434a",
+          "git_blob": "518e70c3cce7af4e6bfd76028fbe3297ff7a4f7c",
+          "imports": [
+            "Std"
+          ],
+          "origin": "Frozen dependency from Agent103 prior complete fiber/count contribution",
+          "historical_source_commit": "018a49231cd3226506699282f0f173745e6b9f8d"
+        },
+        "ResidualFiveFilteredConclusion": {
+          "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveFilteredConclusion.lean",
+          "sha256": "1b569a17abdf78007839a8e57c3f7234fc32a931af16495dfd6e290d2ad3ec2b",
+          "git_blob": "1bff94f6c832f8430fb53af1db2d0c272ff69585",
+          "imports": [
+            "ResidualFiveFiberConclusion",
+            "ResidualFiveResidueCount"
+          ],
+          "origin": "Frozen dependency from Agent103 prior complete fiber/count contribution",
+          "historical_source_commit": "018a49231cd3226506699282f0f173745e6b9f8d"
+        },
+        "Agent101PalindromeFibers": {
+          "path": "proofs/contributions/agent-103/residual-five-firsthit-two-20261016/vendor/Agent101PalindromeFibers.lean",
+          "sha256": "27ebcd2a7b790d87e45f19e51d0d7e2ff977f297742936503b9552026e3ea633",
+          "git_blob": "2ea26d6f8cd0d2a3ef7d3f887cb9e10fd66b5953",
+          "imports": [
+            "Agent101NumericFibers"
+          ],
+          "historical_source_commit": "71691d50497edc83247b3571af276bb0ee438491",
+          "historical_original_path": "proofs/Agent101PalindromeFibers.lean"
+        },
+        "ResidualFiveHitDynamics": {
+          "path": "proofs/contributions/agent-103/residual-five-firsthit-two-20261016/ResidualFiveHitDynamics.lean",
+          "sha256": "436a5e07a99800d57dfbae3a0369f829887d1815b2b2e2f4b104001c4a7c45f9",
+          "git_blob": "0f4d3633bf1a3f8eed8beb59368e200bfb8706b3",
+          "imports": [
+            "ResidualFiveFiberConclusion"
+          ],
+          "origin": "Agent103 frozen residual-five first-hit specialization"
+        },
+        "ResidualFiveInitialPalindromes": {
+          "path": "proofs/contributions/agent-103/residual-five-firsthit-two-20261016/ResidualFiveInitialPalindromes.lean",
+          "sha256": "8542f71b95f3ddbc4d54f99259687ef17b49274ddb03e12ebf6e91af0145be95",
+          "git_blob": "99f0554548add7a25a2c8076ff5d482c763f7ef7",
+          "imports": [
+            "ResidualFiveFibers",
+            "Agent101PalindromeFibers"
+          ],
+          "origin": "Agent103 frozen residual-five first-hit specialization"
+        },
+        "ResidualFivePhaseCompatibility": {
+          "path": "proofs/contributions/agent-103/residual-five-firsthit-two-20261016/ResidualFivePhaseCompatibility.lean",
+          "sha256": "f9605cff2d4d48a1d7e2a01097b24b8ca2b43cccb665179ecfd9b3c5e88696c7",
+          "git_blob": "6964074b4b3be2bc53967fb48009e512a829db7d",
+          "imports": [
+            "ResidualFiveFilteredConclusion"
+          ],
+          "origin": "Agent103 frozen residual-five first-hit specialization"
+        },
+        "ResidualFiveFirstHitConclusion": {
+          "path": "proofs/contributions/agent-103/residual-five-firsthit-two-20261016/ResidualFiveFirstHitConclusion.lean",
+          "sha256": "f73ee5d58400586091e61f89fc8831c540460db93b131187c30f1ba0728f7c27",
+          "git_blob": "48a6043fe3a01ca1101300772319884b19ec51e3",
+          "imports": [
+            "ResidualFiveHitDynamics",
+            "ResidualFiveInitialPalindromes",
+            "ResidualFivePhaseCompatibility"
+          ],
+          "origin": "Agent103 frozen residual-five first-hit specialization"
+        }
+      },
+      "roots": [
+        "ResidualFiveFirstHitConclusion"
+      ],
+      "scope": "Complete residual-five fibers: original first positive palindrome time two, exact initial-palindrome boundary, and all-time modulo99 phase agreement. No integer orbit equality, 196 reachability, or global avoidance claim.",
+      "historical_originals_unchanged": true
+    }
+  },
+  "claims": [
+    {
+      "id": "agent103-residual-five-firsthit-two",
+      "project": "agent103-residual-five-firsthit",
+      "module": "ResidualFiveFirstHitConclusion",
+      "scope": "Complete residual-five fibers: original first positive palindrome time two, exact initial-palindrome boundary, and all-time modulo99 phase agreement. No integer orbit equality, 196 reachability, or global avoidance claim.",
+      "endpoints": [
+        "Agent103.ResidualFiveFirstHit.first_positive_hit_two",
+        "Agent103.ResidualFiveFirstHit.complete_modular_first_hit_fiber",
+        "Agent103.ResidualFiveFirstHit.compatible_first_hit_exists"
+      ]
+    }
+  ],
+  "verification_note": "The project verifier uses the compiler arguments recorded above. The separate frozen check.py uses --trust=0 for the full freshly built closure, audits every theorem by actual module origin, records all unsafe implementation declarations, inventories definition/opaque safety, and audits every new safe definition."
+}
