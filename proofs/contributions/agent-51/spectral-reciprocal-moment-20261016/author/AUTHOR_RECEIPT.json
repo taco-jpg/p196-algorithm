@@ -1,0 +1,79 @@
+{
+  "status": "AUTHOR_LEAN_CHECKED_NOT_INDEPENDENT_REVIEW",
+  "created_utc": "2026-10-16T23:54:26.263721+00:00",
+  "source_path": "/dev/shm/p196-agent51/reciprocal-moment/source/ReciprocalMoment.lean",
+  "source_sha256": "76bad5a81d0fd7ddbd8c3a9a6a1fee433573b1276f4ba84b9b90b11967afc11a",
+  "source_git_blob": "484cb6f022b2c2397b98e262caa9bcd46076eb08",
+  "toolchain": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "source_imports": [
+    "ResidueSums"
+  ],
+  "dependency_source_commit": "7360b12a0a5889761c845a56a4b8d8a1df5f39b5",
+  "dependencies": [
+    {
+      "module": "OverflowDigits",
+      "source_sha256": "65adeb3ae7bea93e390a95fc5f8b58ec43f0f64f01ed9db3f51392657ba89a41",
+      "source_git_blob": "6ad7ea581c1ed9e6f8c4907dcb5ad73558423b97",
+      "unchanged_pinned_source": true,
+      "development_object_path": "/dev/shm/p196-agent51/build/author/OverflowDigits.olean",
+      "development_object_sha256": "598a5a9662768fe3201a3afc722a2ac0ccc58f9815c6a15a70952148c18b2eb6"
+    },
+    {
+      "module": "ResidueSums",
+      "source_sha256": "1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4",
+      "source_git_blob": "f1e3c1c5e7cd780b28f6752d980158bd9b9c98b6",
+      "unchanged_pinned_source": true,
+      "development_object_path": "/dev/shm/p196-agent51/build/author/ResidueSums.olean",
+      "development_object_sha256": "52b143f6ea3a5a3257fbfc4beb353a2728b1848b0cf3ddef248e80ec2218ecd0"
+    }
+  ],
+  "public_exports": [
+    "finiteSum_add_values",
+    "finiteSum_shift",
+    "finiteSum_reflected",
+    "reciprocal_first_moment",
+    "reciprocal_first_moment_literal",
+    "formalDerivativeValue",
+    "derivativeAtOne",
+    "derivativeAtOne_eq_finiteSum",
+    "formalDerivativeValue_one",
+    "reciprocal_derivative_at_one",
+    "reciprocal_derivative_mod_nine",
+    "reciprocal_derivative_mod_nine_determined",
+    "natural_mass_eq_polynomialValue",
+    "natural_reciprocal_derivative"
+  ],
+  "public_export_count": 14,
+  "explicit_axiom_print_count": 14,
+  "actual_export_axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "forbidden_source_tokens": [],
+  "final_attempt": "author/attempts/002",
+  "preserved_attempts": [
+    {
+      "path": "author/attempts/001",
+      "status": "FAIL",
+      "cause": "Missing explicit Nat binder type in List.map caused elaboration errors; unrestricted Int.mul_emod simplification loop hit recursion limit. All failed source/logs retained."
+    },
+    {
+      "path": "author/attempts/002",
+      "status": "PASS",
+      "cause": "Added explicit Nat binders and targeted modular rewrites; all original endpoint contracts unchanged."
+    }
+  ],
+  "contract_adjustments": "None. derivativeAtOne and formalDerivativeValue are literal independent coefficient sums; formalDerivativeValue_one connects their semantics. The natural wrapper directly uses the frozen polynomialValue.",
+  "boundary_coverage": [
+    "All natural widths, including0 and1",
+    "Arbitrary signed coefficients",
+    "Symmetry only below L",
+    "No nonzero leading coefficient requirement",
+    "No central coefficient parity or digit-bound premise",
+    "Same-width residue comparison requires symmetry separately for both words"
+  ],
+  "development_scope": "New module source compiled independently with strict trust0, one thread and 180s/6GiB limits, using previously checked pinned dependency objects. This is not a fresh full closure or independent review.",
+  "independent_review": false,
+  "remote_write_by_author": false,
+  "frozen": true
+}

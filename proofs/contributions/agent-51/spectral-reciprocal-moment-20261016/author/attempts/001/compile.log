@@ -1,0 +1,56 @@
+ReciprocalMoment.lean:82:52: error: application type mismatch
+  q i
+argument
+  i
+has type
+  Int : Type
+but is expected to have type
+  Nat : Type
+ReciprocalMoment.lean:89:46: error: application type mismatch
+  q i
+argument
+  i
+has type
+  Int : Type
+but is expected to have type
+  Nat : Type
+ReciprocalMoment.lean:89:50: error: failed to synthesize
+  HPow Int Int ?m.6130
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+ReciprocalMoment.lean:93:46: error: application type mismatch
+  q i
+argument
+  i
+has type
+  Int : Type
+but is expected to have type
+  Nat : Type
+ReciprocalMoment.lean:97:2: error: type mismatch
+  Eq.symm (finiteSum_eq_range ?m.6724 ?m.6725)
+has type
+  (List.map ?m.6724 (List.range ?m.6725)).sum = finiteSum ?m.6724 ?m.6725 : Prop
+but is expected to have type
+  derivativeAtOne q L = finiteSum (fun i => ↑i * q i) L : Prop
+ReciprocalMoment.lean:101:57: error: unsolved goals
+q : Nat → Int
+L : Nat
+⊢ (List.map (fun i => sorry) sorry).sum = (List.map (fun i => i * q sorry) sorry).sum
+ReciprocalMoment.lean:130:2: error: tactic 'simp' failed, nested error:
+maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+'P196.Agent51.finiteSum_add_values' depends on axioms: [propext, Quot.sound]
+'P196.Agent51.finiteSum_shift' depends on axioms: [propext, Quot.sound]
+'P196.Agent51.finiteSum_reflected' depends on axioms: [propext, Quot.sound]
+'P196.Agent51.reciprocal_first_moment' depends on axioms: [propext, Quot.sound]
+'P196.Agent51.reciprocal_first_moment_literal' depends on axioms: [sorryAx]
+'P196.Agent51.formalDerivativeValue' depends on axioms: [sorryAx]
+'P196.Agent51.derivativeAtOne' depends on axioms: [sorryAx]
+'P196.Agent51.derivativeAtOne_eq_finiteSum' depends on axioms: [sorryAx]
+'P196.Agent51.formalDerivativeValue_one' depends on axioms: [sorryAx]
+'P196.Agent51.reciprocal_derivative_at_one' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent51.reciprocal_derivative_mod_nine' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent51.reciprocal_derivative_mod_nine_determined' depends on axioms: [propext, sorryAx, Quot.sound]
+'P196.Agent51.natural_mass_eq_polynomialValue' depends on axioms: [propext, Quot.sound]
+'P196.Agent51.natural_reciprocal_derivative' depends on axioms: [propext, sorryAx, Quot.sound]
