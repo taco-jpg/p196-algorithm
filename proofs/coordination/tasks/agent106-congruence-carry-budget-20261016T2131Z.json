@@ -1,0 +1,58 @@
+{
+  "task_id": "agent106-congruence-carry-budget-20261016T2131Z",
+  "owner": "Agent #106",
+  "status": "CLAIMED",
+  "role": "GENERAL_RESEARCH",
+  "assigned_subagents": [
+    "/root/obligation_scout: exact ordinary source digit sum and canonical width",
+    "/root/claims_scout: sparse target bounds and congruence controls",
+    "/root/runtime_audit: independent kernel rebuild and axiom audit"
+  ],
+  "target_statement": "For k=floor(7*R/4)+1, y(k)=11*(10^k-1), a=k+2, and sparse(a)=10^a+990*a+(if a%2=1 then89 else989), prove for every R>=3 that digitSum(sparse(a))+36<9*a<=digitSum(Lychrel196.step(y(k)))+36, hence sparse(a) != step(y(k)). Supply unconditional generic actual-decimal carry-budget inequality 2*digitSum(n)<=digitSum(step(n))+9*decimalLength(n), exact canonical width k+2 and digitSum(y(k))=9*k for k>=2, and actual source/target modulo99 and growth controls. Optional in-scope strengthening: exact step(y(k))=10*y(k). Preserve a=8 boundary; do not claim the whole artificial path or an all-time orbit.",
+  "source": {
+    "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "path": "proofs/contributions/2026-10-15-congruence-family-obstruction/CONGRUENCE_PATHS.md",
+    "git_blob": "fc8bef244f236095de36b9319f07147f23d41d1a",
+    "section": "3. A stronger necessary condition still rejects the sparse jump"
+  },
+  "related_theorems": [
+    "DecimalMass.digitSum_step_balance",
+    "DecimalMass.digitSum_value",
+    "DecimalDigits.carry_bounded",
+    "DecimalDigits.Canonical",
+    "DecimalMass.digitSum_mod_div"
+  ],
+  "dependencies": [
+    {
+      "path": "proofs/LychrelDigitSums__bf5247272a7e3b69.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "module": "LychrelDigitSums",
+      "base_commit": "d04b9169eb3a078cf18283bd0194dd729a9da954"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/Agent106CarryBudget.lean",
+    "proofs/Agent106CongruenceSeed.lean",
+    "proofs/Agent106SparseTarget.lean",
+    "proofs/Agent106CongruenceObstruction.lean",
+    "proofs/contributions/agent-106/congruence-carry-budget-20261016T2131Z/"
+  ],
+  "contribution_branch": "research/agent-106/congruence-carry-budget-20261016T2131Z",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP: no new mathematical proof compiled yet; official Lean4.19.0 runtime --trust=0 smoke and reimport passed.",
+  "last_activity_timestamp": "2026-10-16T21:32:00Z",
+  "remaining_obligation": "Prove exact ordinary source representations, sparse-tail length/digitSum bound, full all-parameter carry-budget exclusion; publish source checkpoints and complete clean rebuild/axiom audit/independent interpretation review.",
+  "coordination_issue": 61,
+  "scope_proposal_comment": 6225079927,
+  "inspected_coordination_head": "edbcbc0d2c922c6516d9c8c455b7693b14ef25ac",
+  "ownership_check": "Independent scouts read all101 tasks at8ed738e and exact source declarations; parent inspected all four subsequent claims through85c95f3. No matching claim. Existing general-base421/422, Agent108 buffered weights, Agent101 fibers, Agent104/112 strips, Agent9 escape/count remain excluded.",
+  "main_write_slot": false,
+  "scope_exclusions": [
+    "No whole artificial-path map construction ownership",
+    "No alternative actual reverse-add definition",
+    "No infinite avoidance or196 theorem",
+    "No main or shared catalogue mutation"
+  ],
+  "publication_authority": "Current direct user instructions request isolated contribution branches and frequent non-force publication.",
+  "retry_inspection": "First candidate142fba6f was not published (task404). Inspected exact delta263badbc/507d0d3d/0931ed20/fe5a0ef1: Agent1GroupIII+rawguard, Agent112tenadic units, Agent107FST all distinct. Recreated claim against fresh head; no stale merge. Second candidate44cb04a9 absent after race; new Agent11 PR81 integration slot and Agent108 window-weight task inspected, distinct."
+}
