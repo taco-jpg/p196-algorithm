@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "task_id": "agent8-firsthit-four-endpoints-20261016",
+  "owner": "Agent #8",
+  "role": "LEAN_FORMALIZATION",
+  "status": "ACTIVE_FORMALIZATION",
+  "claim_ids": [
+    "A8-C02"
+  ],
+  "source_snapshot": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+  "original_source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "source_claims": [
+    {
+      "path": "proofs/research/main_existence_attempt/renewal_pass/tails/STATUS.md",
+      "git_blob": "00f3e3fed54ee8f3823038b10289523d2a2f1aa8",
+      "section": "First-hit-four endpoint formulas and r=1 boundary"
+    },
+    {
+      "path": "proofs/contributions/2026-10-14-overlap-gate/EXACT_GATE_LIFETIMES.md",
+      "git_blob": "37604dd2e76ce9e21f8571c5417e0348ed7770cf",
+      "section": "Exact sparse endpoint derivation"
+    }
+  ],
+  "target_statement": "For every r>=1, each existing FirstHitFour.Core(u,v)=(2,5),(2,6),(3,5), and every Canonical n d (2*r+7) realizing DelayedOverlapGate.initial r 1 u v on its finite width, prove a canonical fourth-iterate digit function and orbit(n,4)=88+M(u,v)*10^r+88*10^(2*r+5), where M=1906091,1992991,1796971 respectively. Recover the displayed r>=2 zero-gap strings and r=1 endpoints899060998,899929998,897969798. Reuse, do not reprove or re-own, existing FirstPositiveHit n4 timing.",
+  "boundary_cases": [
+    "r=1 uses additive overlap at columns1 and7, 8+1=9",
+    "Exact canonical width2*r+7 and leading digit8",
+    "No r=0 or extra nonpalindromic-seed premise",
+    "Finite word equality only at i<2*r+7",
+    "Universal over every canonical realization, not merely selected seed"
+  ],
+  "dependencies": [
+    {
+      "path": "proofs/FirstHitFour__1466d67a549686d8.lean",
+      "git_blob": "c164aed12dc1df1774e004895bda812567753bfa",
+      "interfaces": [
+        "Core",
+        "returned_carry",
+        "returned_no_overflow",
+        "third_pairs_low",
+        "numeric_first_hit_four"
+      ]
+    },
+    {
+      "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+      "interfaces": [
+        "initial",
+        "returned",
+        "numeric_return"
+      ]
+    },
+    {
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "interfaces": [
+        "Canonical",
+        "step_eq_word_value",
+        "representation_next",
+        "value_add"
+      ]
+    }
+  ],
+  "assigned_subagents": [
+    "transport_semantics: exact additive endpoint pair identity",
+    "coverage_census: original-source semantic contract and finite controls",
+    "runtime_audit: independent final source replay/review after C01"
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-8/firsthit-four-endpoints-20261016/"
+  ],
+  "contribution_branch": "formalize/agent-8/firsthit-four-endpoints-20261016",
+  "coordination_issue": "https://github.com/taco-jpg/p196-algorithm/issues/61",
+  "scope_proposal_comment": 6224870967,
+  "ownership_check": {
+    "coordination_parent": "5603baced62fcd85febf45cac4c02d3eb93f814b",
+    "current_tasks_checked": 85,
+    "comparison": "All85 current task records read at17c62e; inspected subsequent Agent11 PR80 mapping and Agent101 numeric fiber updates through5603. No equivalent first-hit-four endpoint claim found. Original FirstHitFour explicitly leaves these strings separate; current Lean search finds none of the six endpoint numerals. Census is bounded, not repository-wide completion."
+  },
+  "scope_exclusions": [
+    "Agent2 first-hit-eleven and its endpoint",
+    "Agent100 Group II/four-safe-step composition",
+    "Agent1 Group III and repeated-block normalization",
+    "Existing first-hit-four timing theorem authorship",
+    "All-time safe orbit or196 conclusion",
+    "Main integration slot"
+  ],
+  "verification_status": "WIP; independent contract review and finite semantic controls only. New Lean implementation begins after claim publication.",
+  "remaining_obligation": "Prove exact sparse third pair word, ordinary-integer fourth endpoint, value formula and boundary specializations; audit every export and transitive closure; independently review, publish, and continue.",
+  "last_activity_utc": "2026-10-16T21:20:18.134Z",
+  "publication_authority": "Current direct user assignment explicitly authorizes isolated contribution branches and frequent incremental source/evidence publication.",
+  "main_write_slot": false
+}
