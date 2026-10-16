@@ -1,0 +1,70 @@
+verify-only
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py"]
+exit: 0
+stdout:
+{"status": "PASS", "members_verified": 102, "archive_sha256": "6c1ec4e2aa0084369ad16f8133a24d8148b006dfbdaabab48ce0eb3a8e45a130", "files_written": 0, "identical_files_skipped": 0}
+stderr:
+
+
+extract-empty-directory
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--extract-to", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/fresh"]
+exit: 0
+stdout:
+{"status": "PASS", "members_verified": 102, "archive_sha256": "6c1ec4e2aa0084369ad16f8133a24d8148b006dfbdaabab48ce0eb3a8e45a130", "files_written": 102, "identical_files_skipped": 0}
+stderr:
+
+
+extract-identical-files-idempotent
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--extract-to", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/fresh"]
+exit: 0
+stdout:
+{"status": "PASS", "members_verified": 102, "archive_sha256": "6c1ec4e2aa0084369ad16f8133a24d8148b006dfbdaabab48ce0eb3a8e45a130", "files_written": 0, "identical_files_skipped": 102}
+stderr:
+
+
+refuse-different-existing-file
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--extract-to", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/conflict"]
+exit: 1
+stdout:
+stderr:
+FAIL: refusing to overwrite existing different file: /workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/conflict/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/dependencies/safe-high/SafeHighFamily.lean
+
+
+reject-whole-archive-hash-mismatch
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--archive", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/tampered.tar.gz"]
+exit: 1
+stdout:
+stderr:
+FAIL: archive size or SHA256 mismatch
+
+
+reject-per-member-hash-mismatch
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--manifest", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/wrong-member-manifest.json"]
+exit: 1
+stdout:
+stderr:
+FAIL: member SHA256 mismatch: proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/dependencies/safe-high/SafeHighFamily.lean
+
+
+reject-path-traversal
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--archive", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/traversal.tar.gz", "--manifest", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/traversal-manifest.json", "--extract-to", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/traversal-output"]
+exit: 1
+stdout:
+stderr:
+FAIL: non-relative or non-normalized archive path: ../outside-proof.lean
+
+
+reject-existing-symlink-ancestor
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--extract-to", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/symlink-root"]
+exit: 1
+stdout:
+stderr:
+FAIL: symlink or non-directory ancestor: /workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/symlink-root/proofs
+
+
+reject-archive-symlink-member
+command: ["/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3", "/workspace/scratch/2a8a87fd78df/p196-agent101/proofs/contributions/agent-101/protected-numeric-multiplicity-20261016/archives/verify-runtime-development.py", "--archive", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/link.tar.gz", "--manifest", "/workspace/scratch/2a8a87fd78df/agent101-runtime-archive-check-yj_8a27l/link-manifest.json"]
+exit: 1
+stdout:
+stderr:
+FAIL: unexpected, duplicate, or non-regular member: proofs/not-a-regular-file
