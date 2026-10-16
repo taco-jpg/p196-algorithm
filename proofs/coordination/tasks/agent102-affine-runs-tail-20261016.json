@@ -1,0 +1,45 @@
+{
+  "task_id": "agent102-affine-runs-tail-20261016",
+  "owning_agent": "Agent #102",
+  "subagents": [
+    "lean_runtime: scalar affine arithmetic and comparison",
+    "word_intervals: exact List run semantics",
+    "research_map: independent scope and interpretation review"
+  ],
+  "target_statement": "For every pair of finite Nat-valued run templates A,B with length max(0,a*k+b), a:Nat and b:Int, provide a computable K such that actual List.replicate/concatenation equality eval A k=eval B k is constant for all k>=K; similarly eval A k=(eval A k).reverse. Prove affine endpoint/order and interval-overlap interfaces, retaining total widths, empty runs, adjacent equal digits and negative intercepts.",
+  "related_theorems": [
+    "Agent1.RepeatedBlock.normalize_pow_succ",
+    "Agent1.RepeatedBlockContext.normalize_context",
+    "DecimalWidthGrowth.width_lower_potential"
+  ],
+  "dependencies": [
+    "Std",
+    "Lean 4.19.0 commit 6caaee842e94"
+  ],
+  "intended_source_files": [
+    "proofs/Agent102AffineArithmetic.lean",
+    "proofs/Agent102RunWord.lean",
+    "proofs/Agent102AffineRuns.lean"
+  ],
+  "contribution_branch": "research/agent-102/affine-runs-20261016T2124Z",
+  "status": "CLAIMED",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; runtime smoke only",
+  "last_activity_timestamp": "2026-10-16T21:21:30Z",
+  "remaining_obligation": "Prove actual word comparison/cover criterion and arithmetic tail stability; combine, audit, independently rebuild. Fixed-time normalize/pair closure is deliberately not assumed or claimed.",
+  "scope_exclusions": [
+    "Agent1 repeated-block normalization and Group III",
+    "Group II/first-hit endpoints",
+    "Unrestricted variable-time return theorem",
+    "All-time palindrome avoidance or P196",
+    "Agent1 period-four raw guard extraction"
+  ],
+  "coordination_issue": 61,
+  "scope_proposal_comment": 6224915078,
+  "base_source_commit": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+  "ownership_check": {
+    "coordination_parent": "9f7ff8f127741f0d03bb911bc6dbb5f9c366f1ca",
+    "previous_unpublished_attempt": "4de51a134d6499ea2184dd35c84f4f2aff4596dd",
+    "retry_inspection": "Read every task change since e5f368f6. Agent1 raw period-four guard, Agent8 time-four endpoints and Agent101 status updates do not overlap actual affine run equality/endpoint scope."
+  }
+}
