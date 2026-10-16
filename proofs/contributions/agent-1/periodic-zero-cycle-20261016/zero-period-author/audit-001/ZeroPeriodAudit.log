@@ -1,0 +1,26 @@
+Agent1.Periodic.leftPeriodDigits_zero (B : Agent8.Word) (hB : Agent8.Bounded B 18) :
+  Agent1.Periodic.leftPeriodDigits B [0, 0, 0, 0] = [0, 0, 0, 0]
+'Agent1.Periodic.leftPeriodDigits_zero' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.rightPeriodDigits_zero (B H : Agent8.Word) (hB : Agent8.Bounded B 18) (hH : Agent8.Bounded H 18) :
+  Agent1.Periodic.rightPeriodDigits B H [0, 0, 0, 0] = [0, 0, 0, 0]
+'Agent1.Periodic.rightPeriodDigits_zero' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.rawPeriod_zero (B H : Agent8.Word) (hB : Agent8.Bounded B 18) (hH : Agent8.Bounded H 18) :
+  Agent1.Periodic.rawPeriod B H [0, 0, 0, 0] = [0, 0, 0, 0]
+'Agent1.Periodic.rawPeriod_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.zero_quotient_valid (B H : Agent8.Word) (hv : Agent1.Periodic.ValidPeriodic B H [0, 0, 0, 0]) :
+  Agent1.Periodic.ValidPeriodic (Agent1.Periodic.quotientOuter B H [0, 0, 0, 0])
+    (Agent1.Periodic.quotientCenter B H [0, 0, 0, 0]) [0, 0, 0, 0]
+'Agent1.Periodic.zero_quotient_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod _private.Agent1PeriodicZeroPeriod.0._proof_3 : [propext]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod Agent1.Periodic.zero_quotient_valid : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod Agent1.Periodic.rawPeriod_zero._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod Agent1.Periodic.rightPeriodDigits_zero : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod _private.Agent1PeriodicZeroPeriod.0._proof_2 : [propext]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod Agent1.Periodic.rawPeriod_zero : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod _private.Agent1PeriodicZeroPeriod.0.Agent1.Periodic.four_zero_carry : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod _private.Agent1PeriodicZeroPeriod.0.Agent1.Periodic.four_zero_bounded : [propext]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod _private.Agent1PeriodicZeroPeriod.0.Agent1.Periodic.four_zero_carry._proof_1 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1PeriodicZeroPeriod Agent1.Periodic.leftPeriodDigits_zero : [propext, Quot.sound]
+MODULE_AUDIT theorems=10 definitions=0 union=[Classical.choice, Quot.sound, propext]

@@ -1,0 +1,232 @@
+{
+  "provenance": "/workspace/p196-agent1-zero-cycle-20261016/proofs/contributions/agent-1/periodic-validity-20261016/review/clean-001",
+  "object_origin": "/workspace/p196-agent1-session-20261016/periodic-validity-review-clean-001",
+  "qualification": "Author incremental reuse; not a fresh or independent rebuild.",
+  "modules": [
+    {
+      "module": "PeriodObstructions",
+      "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+      "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+      "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+      "imports": [
+        "Std"
+      ],
+      "reused_files": {
+        ".lean": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+        ".olean": "f1d3a863ae4a7ffd57be92ab2c93e3e2976fbf7e60e6adbd37f5943d6dcda6ea"
+      }
+    },
+    {
+      "module": "ActualWordBridge",
+      "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+      "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+      "git_blob": "d3f49353f9970c610d818d8f5da78ad5c739e7df",
+      "imports": [
+        "PeriodObstructions"
+      ],
+      "reused_files": {
+        ".lean": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+        ".olean": "025c6827606fd8a8357d3b49adeef00d796feeab727895ea6b516c7d7b3569e1"
+      }
+    },
+    {
+      "module": "PrefixSemantics",
+      "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+      "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+      "git_blob": "04a8cc9e73b87d271ca857a218b240e23f57c939",
+      "imports": [
+        "ActualWordBridge"
+      ],
+      "reused_files": {
+        ".lean": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+        ".olean": "8ea6174df692785a3879ea09cfc0eb0378310daa1b91281e76b6ab0f9fe1880a"
+      }
+    },
+    {
+      "module": "LychrelDigitSums",
+      "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports": [
+        "Std"
+      ],
+      "reused_files": {
+        ".lean": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+        ".olean": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978"
+      }
+    },
+    {
+      "module": "IncomingCarry",
+      "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+      "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+      "git_blob": "0eb66e9e176c6bdc8f9f94cf705bddd063d65345",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "reused_files": {
+        ".lean": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+        ".olean": "efac4ff836697877118d2b3b7ffa8287d05ebe3d1b0bacdcbc9a68bf4496d4a8"
+      }
+    },
+    {
+      "module": "Agent1RepeatedBlock",
+      "path": "proofs/Agent1RepeatedBlock.lean",
+      "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+      "git_blob": "4adf4bd714be87ef5d95f0e6d33632fe36075ca4",
+      "imports": [
+        "PrefixSemantics",
+        "IncomingCarry"
+      ],
+      "reused_files": {
+        ".lean": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+        ".olean": "ae33acf6a0c33b64f6bf0dd52a5f65740a91358ad5238fb251503240de2564e0"
+      }
+    },
+    {
+      "module": "Agent1RepeatedBlockContext",
+      "path": "proofs/Agent1RepeatedBlockContext.lean",
+      "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+      "git_blob": "91eb5c39029f90de058952eb3fc993c6a2b1ba21",
+      "imports": [
+        "Agent1RepeatedBlock"
+      ],
+      "reused_files": {
+        ".lean": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+        ".olean": "659526ee979b74fa997ef7844bb4b4fc4774e41205cc9b4f1b592a3e8a507e38"
+      }
+    },
+    {
+      "module": "Agent1PeriodicDigits",
+      "path": "proofs/Agent1PeriodicDigits.lean",
+      "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+      "git_blob": "6a6f02ae17d7aaa8e728a6588edf080c9ffd7ad5",
+      "imports": [
+        "Agent1RepeatedBlockContext"
+      ],
+      "reused_files": {
+        ".lean": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+        ".olean": "61a7870b2d9115958fcd4064fe766db03dfe3109aca3894be77d9bb3b3e2aaaa"
+      }
+    },
+    {
+      "module": "Agent1PeriodicSlices",
+      "path": "proofs/Agent1PeriodicSlices.lean",
+      "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+      "git_blob": "d0cdb8dcd06910ed0ea38801c91020c571bc1966",
+      "imports": [
+        "Agent1PeriodicDigits"
+      ],
+      "reused_files": {
+        ".lean": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+        ".olean": "ac73baf005748c3efbb9f26d21ffab1cee78d782d11bc97a38245e1fbc9b7854"
+      }
+    },
+    {
+      "module": "Agent1PeriodicGuard",
+      "path": "proofs/Agent1PeriodicGuard.lean",
+      "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+      "git_blob": "7c62748625cecbc277ddd5e01ffb17671e4db7a8",
+      "imports": [
+        "Agent1PeriodicSlices"
+      ],
+      "reused_files": {
+        ".lean": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+        ".olean": "d3ff810f27cc0598458f7763a4df7278b17d26ec45d01f43d165642e1c9f7818"
+      }
+    },
+    {
+      "module": "Agent1PeriodicGuardFacts",
+      "path": "proofs/Agent1PeriodicGuardFacts.lean",
+      "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+      "git_blob": "45fec1c73f1fe4f60daa9186e36b1d19b0b69927",
+      "imports": [
+        "Agent1PeriodicGuard"
+      ],
+      "reused_files": {
+        ".lean": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+        ".olean": "adb3d99b43076f817ab6f86632004e0d9f6c423213b39a53c30cddd099c119d6"
+      }
+    },
+    {
+      "module": "Agent1PeriodicOuterStrip",
+      "path": "proofs/Agent1PeriodicOuterStrip.lean",
+      "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+      "git_blob": "9e35c06bf3dd393f33dfd2af965a1ea2d4305bc7",
+      "imports": [
+        "Agent1PeriodicGuardFacts"
+      ],
+      "reused_files": {
+        ".lean": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+        ".olean": "a09a8fc7cad356c7f333ecf59d8b42c718d977289370f98dbea88504f0d41fb6"
+      }
+    },
+    {
+      "module": "Agent1PeriodicCenterStrip",
+      "path": "proofs/Agent1PeriodicCenterStrip.lean",
+      "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+      "git_blob": "bfcfd913cfd7b4063c9b632f2b0461aafd9ca437",
+      "imports": [
+        "Agent1PeriodicGuard"
+      ],
+      "reused_files": {
+        ".lean": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+        ".olean": "598d5526de7f1e46a550d5707a628a8a70c53909efc7c8361f5feb1fe907a0bf"
+      }
+    },
+    {
+      "module": "Agent1PeriodicQuotient",
+      "path": "proofs/Agent1PeriodicQuotient.lean",
+      "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+      "git_blob": "63bd5f4319f6a79924b7292db3eb82e0d027b26c",
+      "imports": [
+        "Agent1PeriodicGuardFacts",
+        "Agent1PeriodicOuterStrip",
+        "Agent1PeriodicCenterStrip"
+      ],
+      "reused_files": {
+        ".lean": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+        ".olean": "05d1f341e2ea739280d4f3429ef08c2290a35feec15657f51bd8ddf22e3533db"
+      }
+    },
+    {
+      "module": "Agent1PeriodicParity",
+      "path": "proofs/Agent1PeriodicParity.lean",
+      "sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+      "git_blob": "c5a2bfb004aa8421110403195abf9951572e7b4b",
+      "imports": [
+        "Agent1PeriodicQuotient"
+      ],
+      "reused_files": {
+        ".lean": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+        ".olean": "363a86272ec3b7a5cc21648fb4d4f3c2827609a3d798773078b4368b6b6444d7"
+      }
+    },
+    {
+      "module": "Agent1PeriodicPositivity",
+      "path": "proofs/Agent1PeriodicPositivity.lean",
+      "sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+      "git_blob": "bc392c470c3bf3389f4ae0166cf67dcaf2462e89",
+      "imports": [
+        "Agent1PeriodicOuterStrip"
+      ],
+      "reused_files": {
+        ".lean": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+        ".olean": "c683f990baf33da4e36cc54e84c4c17365a1dcfd280f87de5023b2ab3051bce5"
+      }
+    },
+    {
+      "module": "Agent1PeriodicValidity",
+      "path": "proofs/Agent1PeriodicValidity.lean",
+      "sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+      "git_blob": "3c5673981d4c9a73a0ade71552f5867d8f73dd69",
+      "imports": [
+        "Agent1PeriodicParity",
+        "Agent1PeriodicPositivity"
+      ],
+      "reused_files": {
+        ".lean": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+        ".olean": "3382b86aac246d3903db5451b63c22d218f08c0c1c73fe5699a0e31824a12b6c"
+      }
+    }
+  ]
+}
