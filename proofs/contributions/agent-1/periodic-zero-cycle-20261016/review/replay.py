@@ -163,7 +163,6 @@ summary = {'status': 'PASS', 'reviewer': 'Agent #1 specialist research_status',
            'unsafe_implementation_axioms_inventoried': re.findall(r'UNSAFE_IMPLEMENTATION_AXIOM (\S+) (\S+)', audit_log),
            'audited_named_exports': exports, 'periodic_exports': [x for x in exports if x.startswith('Agent1.Periodic.')], 'sources_unchanged_at_finish': True,
            'scope': 'Independent fresh periodic zero-cycle closure replay; reviewer authored no mathematical module in this package.'}
-(evidence / 'verification.json').write_text(json.dumps(summary, indent=2) + '\n')
 safe_names = set(re.findall(r'AUDIT_SAFE_DEFINITION (\S+) (\S+)', audit_log))
 cstages, unsafe_rec, unknown = [], [], []
 for mod, name in summary['nonsafe_definitions_inventoried']:
@@ -184,5 +183,6 @@ inventory = {'status': 'PASS' if not unknown and all(x['safe_base_audited'] for 
              'meaning': 'Implementation inventory is separate from checked theorem/safe-definition dependencies.'}
 (evidence / 'implementation-inventory.json').write_text(json.dumps(inventory, indent=2) + '\n')
 assert inventory['status'] == 'PASS', inventory
+(evidence / 'verification.json').write_text(json.dumps(summary, indent=2) + '\n')
 print(json.dumps({k: v for k, v in summary.items() if k not in ['nonsafe_definitions_inventoried', 'audited_named_exports', 'periodic_exports']}, indent=2), flush=True)
 
