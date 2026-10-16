@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-16T22:01:41.696395+00:00",
+  "reviewer": "/root/lean_runtime",
+  "source_author": "/root/formalization_scout",
+  "review_kind": "ADDITIVE_INTERNAL_NONAUTHOR_SOURCE_SEMANTIC_ARITHMETIC_AND_AUDIT_REVIEW",
+  "decision": "PASS_NO_BLOCKING_SOURCE_OR_SEMANTIC_ISSUES",
+  "blocking_findings": [],
+  "external_github_approval": false,
+  "authored_reviewed_modules": false,
+  "source_mutations_performed": false,
+  "reviewer_executed_lean": false,
+  "review_subject_commit": null,
+  "source_identity_note": "Pinned to the frozen source bytes, independent of subsequent repository integration.",
+  "reviewed_source": {
+    "module": "Agent10EightCarryCounterexample",
+    "author_path": "/workspace/scratch/4b20b8469eb3/agent10-count/Agent10EightCarryCounterexample.lean",
+    "path": "sources/Agent10EightCarryCounterexample.lean",
+    "sha256": "5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739",
+    "bytes": 12598,
+    "imports": [
+      "ActualCarryObservability"
+    ],
+    "explicit_theorem_count": 23,
+    "public_endpoint_count": 16
+  },
+  "prior_reviews": [
+    {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-bridge/review-combined/review.json",
+      "sha256": "73de724598437a48c539d19408d9f23b73c5d88ab7bf9bedd35edae1d4308d68",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-bridge/review-threecolumn/review.json",
+      "sha256": "446936bbd13ab3be512a3bd7f77ec19b205ec83908a985180ceb86d8d56246f9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-bridge/review-sevencounter/review.json",
+      "sha256": "e8b9d6e0ed0541cc1c8d435a9e62f5ea3cfba7b1f9590071ff924f6991e8bfba",
+      "unchanged": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "FROZEN_SOURCE_IDENTITY",
+      "decision": "PASS",
+      "finding": "Reviewed the exact frozen 12,598-byte source. The source snapshot, author source, staged compiled source and build receipt all have SHA256 5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739. No reviewed source was modified.",
+      "evidence": {
+        "path": "sources/Agent10EightCarryCounterexample.lean",
+        "sha256": "5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739",
+        "bytes": 12598
+      }
+    },
+    {
+      "id": "BASELINE_IMPORT_IDENTITY",
+      "decision": "PASS",
+      "finding": "The source imports only ActualCarryObservability. All three transitive local source and olean identities match canonical-build-003, and no dependency source or olean shadows these earlier in the local build search path. The Seven/Six modules supply a proof pattern, not imported mathematical assumptions.",
+      "evidence": "evidence-validation.json: dependency_pins"
+    },
+    {
+      "id": "CANONICAL_WIDTH_SEVENTEEN_INPUTS",
+      "decision": "PASS",
+      "finding": "Both explicit seventeen-digit lists have bounded decimal digits, a nonzero leading digit, and exactly the displayed integer values 90000000560706169 and 90000000806235169. Both canonical-input theorems are axiom-free.",
+      "evidence": "left_canonical, right_canonical; independent-arithmetic.json"
+    },
+    {
+      "id": "INITIAL_ROW_IDENTITY",
+      "decision": "PASS",
+      "finding": "The initial finite certificate checks every active columnSum coefficient for both Boolean branches. All thirty-four source digit values and all eighteen source pair rows agree with independently reconstructed ordinary arithmetic.",
+      "evidence": "initial_trace_fin; independent-arithmetic.json"
+    },
+    {
+      "id": "SIXTEEN_EXACT_TRANSITIONS",
+      "decision": "PASS",
+      "finding": "The kernel finite certificate covers both branches and all eight adjacent transitions against unchanged nextWidth/nextColumns. Fin 21 covers every active successor coefficient, including 318 active coefficient comparisons across the sixteen transitions.",
+      "evidence": "trace_steps_fin; independent-arithmetic.json"
+    },
+    {
+      "id": "ACTUAL_PREFIX_TRANSPORT",
+      "decision": "PASS",
+      "finding": "The induction in actual_trace transports exact widths and active coefficients from the bounded tables to the original iterPairs recursion through time eight. next_state_congr_upto requires only active coefficient equality, so irrelevant function tails are never silently identified.",
+      "evidence": "actual_trace; accepted ActualCarryObservability.next_state_congr_upto"
+    },
+    {
+      "id": "WIDTH_AND_TERMINAL_CARRY_BOUNDS",
+      "decision": "PASS",
+      "finding": "The actual widths are [17,18,19,20,20,20,20,21,21]. The Fin 22 carry certificate covers all indices at most the current width, including terminal index twenty-one. Both actual widths agree at every relevant time.",
+      "evidence": "trace_width_bound_fin, trace_carries_fin, left_widths, right_widths, widths_agree"
+    },
+    {
+      "id": "EIGHT_FULL_OBSERVATION_QUANTIFIERS",
+      "decision": "PASS",
+      "finding": "eight_complete_carries quantifies over every natural t < 8 and every i <= the current left width. Equal actual widths make these complete equal-length carry words at times zero through seven, rather than only terminal bits or a low-carry prefix.",
+      "evidence": "eight_complete_carries; 163 complete carry positions independently checked"
+    },
+    {
+      "id": "OBSERVATION_AND_TRANSITION_INDEXING",
+      "decision": "PASS",
+      "finding": "Eight matching observations are t = 0 through 7. The separately certified mismatch is at t = 8, the ninth observation. The source records nine states and eight transitions on each side; it does not assume a ninth matching word.",
+      "evidence": "trace_steps_fin, eight_complete_carries, ninth_carry_differs"
+    },
+    {
+      "id": "ORDINARY_NUMERIC_SEMANTICS",
+      "decision": "PASS",
+      "finding": "numeric_orbit_representations instantiates the unchanged iterPairs_representation theorem with the canonical inputs and actual initial column sums. Thus the tables describe ordinary reverse-and-add orbits. The unused t <= 8 premise is harmless because the inherited representation theorem holds for every natural t.",
+      "evidence": "numeric_orbit_representations; accepted OverflowCarryNormalization.iterPairs_representation"
+    },
+    {
+      "id": "ACTIVE_INITIAL_DIFFERENCE",
+      "decision": "PASS",
+      "finding": "The initial coefficient at index three is 6 on the left and 5 on the right; the source separately proves 3 < 17. The inequality concerns an active coefficient rather than an unconstrained function tail.",
+      "evidence": "initial_pair_sums_differ, initial_pair_difference_active"
+    },
+    {
+      "id": "EXACT_NEXT_INTEGER_DIFFERENCE",
+      "decision": "PASS",
+      "finding": "The source proves the exact next values 186160707060706178 and 186153261606235178 and their inequality with no axioms. Both values agree with the independent ordinary-integer replay.",
+      "evidence": "next_integer_values, next_integers_differ; independent-arithmetic.json"
+    },
+    {
+      "id": "FIRST_SEPARATING_TIME",
+      "decision": "PASS",
+      "finding": "At time eight, both widths are twenty-one and carry index four has values 1 and 0. first_separation_at_eight combines every earlier complete agreement with this in-range mismatch. It proves the first separating time; minimum mismatch index four is additionally confirmed by independent arithmetic rather than claimed as a separate source endpoint.",
+      "evidence": "ninth_carry_differs, first_separation_at_eight"
+    },
+    {
+      "id": "COUNTEREXAMPLE_SCOPE_AND_BASELINE_COMPATIBILITY",
+      "decision": "PASS",
+      "finding": "The final conjunction refutes universal full active-vector and next-integer reconstruction from eight observations. The first three initial coefficients still agree; initial terminal carries are both one and maximum initial coefficient difference is six. Thus the witness is compatible with the existing universal first-two-coordinate result and does not satisfy the earlier initial-nooverflow or difference-at-most-five sufficient conditions. It separates at the ninth observation.",
+      "evidence": "eight_carry_counterexample; retained trace row zero; independent-arithmetic.json"
+    },
+    {
+      "id": "INDEPENDENT_ARITHMETIC_TRACE",
+      "decision": "PASS",
+      "finding": "Recomputed all states directly from the two initial ordinary integers without using the discovery simulator or its prefix filter. All nine trace rows and all 144 row fields match, as do eighteen literal source pair rows, sixteen adjacent transitions and 163 complete matched carry positions.",
+      "evidence": "independent_controls.py; independent-arithmetic.json"
+    },
+    {
+      "id": "EXACT_FIRST_PALINDROMES",
+      "decision": "PASS",
+      "finding": "palindrome_values_at_four proves the exact values 16999899899899899961 and 16989989999998998961. palindrome_prefix_fin checks both inputs at every t < 4, including time zero; first_palindromes_at_four proves non-palindromicity before time four and palindromicity then. All three theorems are axiom-free, and the independent arithmetic replay agrees.",
+      "evidence": "palindrome_values_at_four, palindrome_prefix_fin, first_palindromes_at_four"
+    },
+    {
+      "id": "CONTINUED_ITERATION_AND_FILTER_SCOPE",
+      "decision": "PASS",
+      "finding": "The inherited orbit operator continues after a palindrome. The source explicitly states this scope and makes no palindrome-avoidance or 196 claim. It directly certifies the concrete witness and has no dependency on the computational prefix filter that discovered it.",
+      "evidence": "source module documentation, sole import, Lychrel196.orbit definition"
+    },
+    {
+      "id": "ALL_EXPLICIT_AND_GENERATED_THEOREM_AXIOMS",
+      "decision": "PASS",
+      "finding": "Independently parsed the twenty-three source #print axioms entries, all forty-eight module-origin theorem records including generated helpers, and the final audit summary. All explicit prints match the exhaustive records. Fourteen explicit and thirty-two total theorem declarations are axiom-free; the full module union is only propext and Quot.sound. All six finite certificates are axiom-free.",
+      "evidence": "validate_audit.py; source-log-audit.json"
+    },
+    {
+      "id": "PUBLIC_TYPES_AND_PROOF_SHORTCUTS",
+      "decision": "PASS",
+      "finding": "All sixteen source public theorem names match the sixteen full printed endpoint type blocks, their hashes, and their axiom records. Source scanning found no sorry, admit, custom axiom, native_decide, ofReduceBool, skipKernelTC or unsafe token after masking comments/strings. No UNSAFE_IMPLEMENTATION_AXIOM record occurs in the module-origin audit.",
+      "evidence": "source-controls.json; source-log-audit.json; evidence/EightCarryAudit.lean"
+    },
+    {
+      "id": "RETAINED_KERNEL_BUILD_EVIDENCE",
+      "decision": "PASS",
+      "finding": "Independently validated all eleven author artifact pins, all six dependency source/olean pins, the pinned Lean 4.19.0 executable/version, and both successful --trust=0 -j1 -DElab.async=false command records. These are the author new-module compile and module-origin audit using accepted dependency oleans; the reviewer did not run Lean or claim a fresh full dependency replay.",
+      "evidence": "evidence-validation.json"
+    },
+    {
+      "id": "ADDITIVE_INTERNAL_NONAUTHOR_ATTRIBUTION",
+      "decision": "PASS",
+      "finding": "The reviewer /root/lean_runtime did not author this source. Earlier five-module, ThreeColumn and Seven review receipts retain their exact hashes. This is internal independent specialist review, not external GitHub approval or maintainer acceptance.",
+      "evidence": "evidence-validation.json: prior_reviews"
+    }
+  ],
+  "passed_check_count": 21,
+  "independent_arithmetic": {
+    "path": "independent-arithmetic.json",
+    "sha256": "e48eb4df1a3b82d4f917509bd20b3a2c1b38e356ec4ed439d9a1c2d27b44c93a",
+    "bytes": 3451,
+    "script": {
+      "path": "independent_controls.py",
+      "sha256": "b8c5275ddb09453597de86b7a1e3d26851649cb16e678f6c2615f1af2492b109",
+      "bytes": 9601
+    },
+    "status": "PASS",
+    "trace_rows": 9,
+    "trace_fields": 144,
+    "source_pair_rows": 18,
+    "source_transitions": 16,
+    "complete_carry_positions": 163,
+    "first_mismatch_time": 8,
+    "first_mismatch_index": 4,
+    "first_palindrome_time_both_inputs": 4
+  },
+  "source_and_log_audit": {
+    "path": "source-log-audit.json",
+    "sha256": "d7c2a5c5412410aa3a926c5151458f774e1b4577bf3a86c0f015f814d70f4d4a",
+    "bytes": 18436,
+    "parser": {
+      "path": "validate_audit.py",
+      "sha256": "dcbd476c5dddd02e00e0aa98deac97683ef74c0115e9df0e44d58bd3ba170a29",
+      "bytes": 6145
+    },
+    "status": "PASS",
+    "explicit_theorems": 23,
+    "public_endpoints": 16,
+    "module_origin_theorems_including_generated": 48,
+    "module_origin_axiom_free_theorems": 32,
+    "module_origin_axiom_union": [
+      "Quot.sound",
+      "propext"
+    ],
+    "all_explicit_theorems_covered": true,
+    "environment_origin_exhaustive_for_new_module": true
+  },
+  "kernel_evidence": {
+    "author_receipt": {
+      "path": "evidence/author-verification.json",
+      "sha256": "a8d15217f76a963a09a6f5913f57959796181447895a17048fac0be765a62471",
+      "bytes": 18528
+    },
+    "module_log": {
+      "path": "evidence/Agent10EightCarryCounterexample.log",
+      "sha256": "c63ccbb205dd0694df6cc6d71d154b94b476b155cadf4aa9cd58d033ce3a1c0f",
+      "bytes": 2343
+    },
+    "audit_source": {
+      "path": "evidence/EightCarryAudit.lean",
+      "sha256": "9b277a07245ad117a77537ba5b592535b887c6a74510c2688c173dc64925ca46",
+      "bytes": 2180
+    },
+    "audit_log": {
+      "path": "evidence/EightCarryAudit.log",
+      "sha256": "874992d4d85a5998bfecd6a6c941e08b47da64de8fda044185da733f2dd1956d",
+      "bytes": 11997
+    },
+    "validation": {
+      "path": "evidence-validation.json",
+      "sha256": "f78f5a4c34eb85b9fa1d3729a79745c58e5de6c9c0b4c857c5c6069c33b83a13",
+      "bytes": 8665
+    },
+    "reported_successful_commands": 2,
+    "author_executed_build": true,
+    "reviewer_executed_build": false,
+    "dependency_origin": "canonical-build-003 accepted source/olean pins reused",
+    "fresh_expanded_canonical_gate": "Separate root-owned integration step; not asserted by this review."
+  },
+  "limitations": [
+    "Internal non-author specialist review is not external GitHub approval or independent maintainer acceptance.",
+    "Both inputs first reach palindromes at time four, then iteration continues. The witness does not establish a lower bound for palindrome-free histories, IsLychrel inputs, or the orbit of 196.",
+    "This module proves eight observations insufficient for universal full active pair-vector and next-integer reconstruction. A nine-observation upper bound and any exact uniform threshold theorem are separate results, not supplied by this source.",
+    "The origin audit covers the forty-eight theorem declarations of this new module, including generated helpers. The three imported baseline modules use previously checked, byte-pinned canonical-build-003 oleans; the parent owns the fresh expanded combined closure gate.",
+    "The independent Python replay corroborates the concrete arithmetic and row literals; Lean kernel checking of the exact source is established by the separately retained author execution.",
+    "No correctness or completeness claim for the computational discovery filter is needed or supplied by this direct witness proof."
+  ]
+}

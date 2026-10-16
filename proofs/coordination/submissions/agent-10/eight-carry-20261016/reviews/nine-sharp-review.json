@@ -1,0 +1,346 @@
+{
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "blocking_findings": [],
+  "check_count": 28,
+  "checks": [
+    {
+      "evidence": [
+        "Reviewer role /root/eight_carry_semantics",
+        "Parent author /root"
+      ],
+      "finding": "The semantic reviewer did not author or modify this parent-authored module. Prior Agent #10 proof authorship is not represented as independent review of those earlier modules.",
+      "id": "independent_of_module_author",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "input-verification.json: live_source, verified_build_inputs.source, copied_source_files"
+      ],
+      "finding": "Live source, parent build source, and retained review copy all hash to the requested final 98e587d source.",
+      "id": "frozen_source_identity",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "evidence/parent-verification.json",
+        "input-verification.json: verified_build_inputs"
+      ],
+      "finding": "The retained parent receipt records return code 0 with --trust=0, -j1, and -DElab.async=false; its exact source, compiler, and log sizes and hashes were independently checked.",
+      "id": "direct_build_evidence",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean: imports",
+        "input-verification.json: verified_direct_import_sources"
+      ],
+      "finding": "The two imports are precisely DifferenceObservability and Agent10EightCarryCounterexample. Their present source identities match the parent compile receipt and the review copies.",
+      "id": "direct_import_identity",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "input-verification.json: theorem_axiom_reports",
+        "evidence/parent-Agent10NineCarrySharp.log"
+      ],
+      "finding": "All nine named theorem reports are present exactly once and match the source print list. The union is propext, Classical.choice, Quot.sound. The two lower bounds and eight_insufficient use only propext and Quot.sound.",
+      "id": "nine_axiom_reports",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean",
+        "verify_inputs.py"
+      ],
+      "finding": "The new module is a direct Lean proof composition using imported theorems, omega, and decide. Source inspection and a supplementary lexical check found no sorry, admit, new axiom, unsafe proof, native_decide, or #eval in its executable source. This is not a replacement for the axiom audit.",
+      "id": "new_source_proof_constructions",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: predicate_definitions.UniformPairReconstruction",
+        "reviewed-endpoint-types.json: core_definitions.Admissible"
+      ],
+      "finding": "UniformPairReconstruction quantifies over both pair functions and one shared initial Nat width L, requires Admissible L for both, and ranges uniformly over every such input. No fixed-width enumeration is substituted for this quantification.",
+      "id": "pair_quantifiers",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: core_definitions.Admissible"
+      ],
+      "finding": "Admissible supplies positive width, positive outer pair sum, active bounds at most 18, reflection symmetry, and even central coefficient when applicable. The theorem retains this exact domain.",
+      "id": "positive_admissible_domain",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: predicate_definitions.UniformNextIntegerReconstruction",
+        "reviewed-endpoint-types.json: core_definitions.Canonical"
+      ],
+      "finding": "UniformNextIntegerReconstruction quantifies over n,m,d,e and a single shared L, with Canonical n d L and Canonical m e L. The core definition requires a positive width and a nonzero leading digit; this is the positive canonical decimal domain.",
+      "id": "numeric_quantifiers",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: predicate_definitions"
+      ],
+      "finding": "Both observation predicates cover exactly t<K beginning at time zero and every carry index i at most the evolving left width. In particular the terminal overflow carry is included. The theorem does not replace complete words with terminal bits or bounded prefixes.",
+      "id": "complete_history_bounds",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: difference_support.matched_widths",
+        "sources/DifferenceObservability.lean: matched_widths proof"
+      ],
+      "finding": "The existing matched_widths proof uses the common initial width and equality at the left terminal carry to show equal widths inductively. Restricting hc to preceding times applies that result at each observation time, so a separate right-width bound is unnecessary.",
+      "id": "evolving_width_coherence",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: predicate_definitions.UniformPairReconstruction"
+      ],
+      "finding": "The pair predicate concludes only forall i, i<L -> q i=r i. It never asserts equality of functions on inactive coordinates, including unrestricted singleton tails.",
+      "id": "active_coordinates_only",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean: pair_reconstruction_of_nine_le",
+        "reviewed-endpoint-types.json: difference_support.nine_carry_words_determine_pair_sums"
+      ],
+      "finding": "For 9<=K the pair proof applies the unchanged nine_carry_words_determine_pair_sums theorem. Each t<9 is also t<K, established by omega, and all index bounds are passed unchanged.",
+      "id": "upper_pair_bound_composition",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean: next_integer_reconstruction_of_nine_le",
+        "reviewed-endpoint-types.json: difference_support.nine_carry_words_determine_next_integer"
+      ],
+      "finding": "For 9<=K the numeric proof applies the unchanged nine_carry_words_determine_next_integer theorem with the same canonical inputs, width and complete-carry restrictions. It requires no added initial nonoverflow or count hypothesis.",
+      "id": "upper_numeric_bound_composition",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: predicate_definitions.UniformNextIntegerReconstruction",
+        "reviewed-endpoint-types.json: core_definitions.step",
+        "sources/DifferenceObservability.lean: nine_carry_words_determine_next_integer proof"
+      ],
+      "finding": "The numeric predicate and imported upper theorem conclude Lychrel196.step n=Lychrel196.step m. The core defines step n as n+reverse10 n. Neither theorem concludes n=m or unique initial digit splitting.",
+      "id": "numeric_conclusion_meaning",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean: not_pair_reconstruction_of_lt_nine",
+        "sources/Agent10NineCarrySharp.lean: not_next_integer_reconstruction_of_lt_nine"
+      ],
+      "finding": "For Nat K<9, K<=8. Thus t<K implies t<8 and the same eight-observation certificate supplies the premise for every smaller K. K=0 is included, with the observation premise vacuous.",
+      "id": "lower_observation_restriction",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: eight_support.left_canonical, right_canonical",
+        "reviewed-endpoint-types.json: core_support.canonical_admissible",
+        "sources/Agent10NineCarrySharp.lean: not_pair_reconstruction_of_lt_nine"
+      ],
+      "finding": "Both width-seventeen inputs have explicit Canonical certificates. NormalizationBridge.canonical_admissible converts them to the required admissible leftColumns/rightColumns without an unproved realizability assumption.",
+      "id": "canonical_lower_pair_domain",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: eight_support.initial_pair_sums_differ, initial_pair_difference_active",
+        "input-verification.json: initial_witness_sanity"
+      ],
+      "finding": "The instantiated pair predicate yields equality at index 3, whose proof 3<17 is decidable. The counterexample supplies an inequality at exactly that index, with pair values 6 and 5. This is an active-coordinate contradiction.",
+      "id": "active_lower_pair_contradiction",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean: not_next_integer_reconstruction_of_lt_nine",
+        "reviewed-endpoint-types.json: eight_support.next_integer_values, next_integers_differ",
+        "input-verification.json: initial_witness_sanity"
+      ],
+      "finding": "The numeric lower bound uses the same canonical width-seventeen witness and its separately certified unequal next integers. It does not infer unequal next integers solely from one unequal pair coefficient.",
+      "id": "lower_numeric_contradiction",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: eight_support.eight_complete_carries",
+        "sources/Agent10EightCarryCounterexample.lean: actual_trace, eight_complete_carries",
+        "sources/Agent10NineCarrySharp.lean: lower bound proofs"
+      ],
+      "finding": "The imported witness theorem is stated directly for carry(iterPairs ...), including all indices through the actual width for t<8. Its source transports finite bounded rows through actual nextWidth/nextColumns. The new sharpness composition uses no prefix-filter completeness assumption or exploratory search result.",
+      "id": "actual_carry_witness",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: eight_support.first_separation_at_eight",
+        "sources/Agent10NineCarrySharp.lean: lower bound proofs"
+      ],
+      "finding": "The dependency also certifies agreement at all t<8 and an in-range mismatch at t=8. The threshold lower bound needs only the preceding eight agreements and distinct reconstruction targets; it does not assume an unproved exact separation.",
+      "id": "first_separation_scope",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean: uniform_pair_reconstruction_iff, uniform_next_integer_reconstruction_iff, nine_is_exact_uniform_threshold"
+      ],
+      "finding": "Each equivalence proves necessity by contradiction with the K<9 lower bound and sufficiency by the 9<=K upper bound. The joint endpoint is the conjunction of both forall-K equivalences.",
+      "id": "iff_directions",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: nine_module_theorem_signatures.eight_insufficient, nine_sufficient",
+        "sources/Agent10NineCarrySharp.lean"
+      ],
+      "finding": "eight_insufficient specializes the two lower bounds to 8. nine_sufficient specializes the two upper bounds to 9. Both conjunctions retain the exact predicates.",
+      "id": "named_eight_nine_corollaries",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: predicate_definitions",
+        "reviewed-endpoint-types.json: nine_module_theorem_signatures.nine_is_exact_uniform_threshold"
+      ],
+      "finding": "The exact threshold is for uniform reconstruction over all qualifying inputs of a common width, not a claim that every individual input requires nine observations or that no smaller-width/subclass result is possible.",
+      "id": "uniform_worst_case_meaning",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: core_definitions.iterPairs, orbit",
+        "sources/Agent10NineCarrySharp.lean: module header"
+      ],
+      "finding": "The core iterPairs and ordinary orbit recurse for every Nat time without a palindrome stop condition. Neither predicate requires palindrome avoidance. The module header states this scope explicitly.",
+      "id": "unrestricted_iteration",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "reviewed-endpoint-types.json: eight_support.first_palindromes_at_four",
+        "sources/Agent10EightCarryCounterexample.lean: first_palindromes_at_four",
+        "sources/Agent10NineCarrySharp.lean: module header"
+      ],
+      "finding": "The imported counterexample certifies first palindromes at time four. It supports the stated unrestricted threshold; it does not establish a nine-word lower bound for histories required to remain palindrome-free.",
+      "id": "palindrome_lower_bound_limit",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "sources/Agent10NineCarrySharp.lean: definitions and theorem signatures"
+      ],
+      "finding": "The module proves reconstruction thresholds only. It adds no claim about eventual palindromes, all-time safety, initial-integer injectivity, different initial widths, or solving the 196 problem.",
+      "id": "research_claim_limit",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "input-verification.json: new_lean_build_run_by_this_review, compiled_artifact_scope",
+        "evidence/parent-verification.json: classification"
+      ],
+      "finding": "This receipt verifies retained direct build evidence without a redundant Lean build. Current .olean hashes are identity pins only. The final fresh sixteen-module closure audit is a separate parent-owned gate, not a result asserted by this review.",
+      "id": "review_gate_classification",
+      "status": "PASS"
+    }
+  ],
+  "created_utc": "2026-10-16T22:07:42.160740+00:00",
+  "full_sixteen_module_gate": "Separate parent-owned fresh build; not certified by this receipt.",
+  "material_scope_limits": [
+    "One common initial width, positive canonical decimal inputs in the numeric predicate.",
+    "All incoming carries through terminal overflow at times 0 through K-1.",
+    "Only active initial pair coefficients, or the next ordinary integer; no initial integer injectivity.",
+    "Unrestricted continued iteration; the lower-bound witness first reaches palindromes at time four.",
+    "Uniform worst-case threshold over the stated domains, not a per-instance minimum.",
+    "No assertion about the orbit of 196 or other all-time palindrome behavior."
+  ],
+  "new_lean_build_performed": false,
+  "preservation": "All predecessor artifacts and frozen proof sources, including package13, were left unchanged. This new review is not part of package13.",
+  "retained_direct_build_status": "PASS, returncode 0; source/compiler/import/log pins independently verified",
+  "retained_evidence": [
+    {
+      "bytes": 3839,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/README.md",
+      "relative_path": "README.md",
+      "sha256": "59fb8a7809cc95de6a602b3cb2ca7e2142c134f2567ba94619def747842b4368"
+    },
+    {
+      "bytes": 984,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/evidence/parent-Agent10NineCarrySharp.log",
+      "relative_path": "evidence/parent-Agent10NineCarrySharp.log",
+      "sha256": "9838435d63d76221838893e8e7781f692f361a844f9b9b2602f2c899dd7af06f"
+    },
+    {
+      "bytes": 2030,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/evidence/parent-verification.json",
+      "relative_path": "evidence/parent-verification.json",
+      "sha256": "254efae625aa0a885d4b3f6a22f250ed6b4cce66afdf0465d2d3cbef4d6c72e8"
+    },
+    {
+      "bytes": 5962,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/input-verification.json",
+      "relative_path": "input-verification.json",
+      "sha256": "9d218eae3c2b2dad1c4aa9c3dcfe2a1549890d112c44a1c1f434b5a6da804c4c"
+    },
+    {
+      "bytes": 7386,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/reviewed-endpoint-types.json",
+      "relative_path": "reviewed-endpoint-types.json",
+      "sha256": "ea2346cd32280ea92026a2816883eaaa9c1d56fb251a715a9dd02e5bb1790724"
+    },
+    {
+      "bytes": 12598,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/sources/Agent10EightCarryCounterexample.lean",
+      "relative_path": "sources/Agent10EightCarryCounterexample.lean",
+      "sha256": "5da46ec31d7641307a6d8c1a5f81bd3b8bdfb097a39b5afa73145e062683d739"
+    },
+    {
+      "bytes": 5361,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/sources/Agent10NineCarrySharp.lean",
+      "relative_path": "sources/Agent10NineCarrySharp.lean",
+      "sha256": "98e587d22229bdead323dc922b80760cdf79f3b27c14f3a1addaa4df2fb78266"
+    },
+    {
+      "bytes": 13336,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/sources/DifferenceObservability.lean",
+      "relative_path": "sources/DifferenceObservability.lean",
+      "sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7"
+    },
+    {
+      "bytes": 7184,
+      "path": "/workspace/scratch/4b20b8469eb3/agent10-semantic/review-nine-sharp-001/verify_inputs.py",
+      "relative_path": "verify_inputs.py",
+      "sha256": "f28cd27f9285fd2e2cd14643c0f516481f20ea8e96adf19aa58e04ec8a50f6a2"
+    }
+  ],
+  "reviewed_module": "Agent10NineCarrySharp.lean",
+  "reviewed_module_author": "/root",
+  "reviewed_source_identity": {
+    "bytes": 5361,
+    "path": "/workspace/scratch/4b20b8469eb3/agent10-sharp/build-001/source/Agent10NineCarrySharp.lean",
+    "sha256": "98e587d22229bdead323dc922b80760cdf79f3b27c14f3a1addaa4df2fb78266"
+  },
+  "reviewed_source_sha256": "98e587d22229bdead323dc922b80760cdf79f3b27c14f3a1addaa4df2fb78266",
+  "reviewer": "/root/eight_carry_semantics",
+  "schema": "agent10-independent-semantic-review-v1",
+  "scope": "Non-author semantic and retained-evidence review of the exact uniform pair and next-integer nine-word threshold composition.",
+  "source_changes_performed": false,
+  "source_changes_requested": false,
+  "status": "PASS",
+  "theorem_report_count": 9
+}

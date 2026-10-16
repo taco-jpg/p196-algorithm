@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #10",
+  "role": "LEAN_FORMALIZATION",
+  "recorded_at_utc": "2026-10-16T22:22:27.330348+00:00",
+  "status": "VERIFIED_PACKAGE_READY_FOR_REVIEW",
+  "result": {
+    "module": "Agent10NineCarrySharp",
+    "theorems": [
+      "uniform_pair_reconstruction_iff",
+      "uniform_next_integer_reconstruction_iff",
+      "nine_is_exact_uniform_threshold"
+    ],
+    "statement": "For every natural K, uniform active initial pair-coefficient reconstruction and uniform next-integer reconstruction from K complete carry observations each hold if and only if 9 <= K.",
+    "domain": "Admissible pair words or canonical positive decimal inputs at a shared initial width; all carry positions including terminal carries at evolving widths; unrestricted reverse-and-add iteration continues after palindromes.",
+    "lower_bound_inputs": [
+      "90000000560706169",
+      "90000000806235169"
+    ],
+    "initial_width": 17,
+    "matching_observation_times": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "next_integers": [
+      "186160707060706178",
+      "186153261606235178"
+    ],
+    "first_separation": {
+      "time": 8,
+      "carry_index": 4,
+      "values": [
+        1,
+        0
+      ]
+    },
+    "first_palindrome_time_both": 4,
+    "excluded_claims": [
+      "Initial integer injectivity",
+      "Palindrome-free eight-observation lower bound",
+      "All-time palindrome avoidance",
+      "196 is Lychrel",
+      "Minimal counterexample width"
+    ]
+  },
+  "source_identity": {
+    "baseline": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+    "tested_proof_commit": "f156ea95f4f64609da218632820f71378c815411",
+    "final_delivery_commit": "ec6a31f59736e769aa4d02e95b560959c1083aa0",
+    "all_16_module_and_final_registry_bytes_unchanged_after_test": true,
+    "source_record_sha256": "46aa43ce060c96f6f5dcf6a79c764d766298123e2e8ac30617f780e05ebebbeb"
+  },
+  "canonical_verification": {
+    "status": "PASS",
+    "project": "agent10-nine-carry-sharp",
+    "lean_version": "4.19.0",
+    "lean_commit": "6caaee842e94",
+    "modules": 16,
+    "successful_commands": 17,
+    "audited_theorem_declarations": 1345,
+    "public_endpoint_types": 122,
+    "explicit_source_axiom_print_matches": 120,
+    "axiom_union": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "theorem_counts_include_inherited_private_and_generated_declarations": true,
+    "source_scan_excludes": [
+      "sorry",
+      "admit",
+      "custom axioms",
+      "native_decide",
+      "ofReduceBool",
+      "skipKernelTC"
+    ],
+    "inherited_unsafe_generated_implementation_declarations": 13,
+    "unsafe_implementation_declarations_in_theorem_axiom_dependencies": false,
+    "actual_executor": "Agent #10 parent /root",
+    "evidence_validator": "/root/formalization_scout",
+    "historical_verifier_agent_field": "Agent #1, preserved unchanged",
+    "report_path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/verification/fourth-canonical-build.json",
+    "report_sha256": "a2c608c48f132f355e89b1889f22b6230342cbc20c6b03893ac07cb7dbb9f5d2",
+    "manifest_sha256": "5f14f7946617650c516848a0ff82889b3cc583f2685d4ad2bfefc0afc4452299",
+    "audit_log_sha256": "93513bd735814ab889829a494d170d247968a15adf55ecbfeccbefd3361fe060",
+    "specialist_validation_sha256": "338d7bfad379503ada5d1630f502445cae06340781d46b20bd5acf324c5132ce",
+    "verifier_sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a",
+    "canonical_flags": [
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "new_module_microbuilds_explicit_trust_zero": true
+  },
+  "reviews": {
+    "kind": "Internal non-author reviews; no external approval claimed",
+    "receipts": [
+      {
+        "scope": "Five earlier modules",
+        "checks": 31,
+        "sha256": "73de724598437a48c539d19408d9f23b73c5d88ab7bf9bedd35edae1d4308d68"
+      },
+      {
+        "scope": "ThreeColumn modules",
+        "checks": 23,
+        "sha256": "446936bbd13ab3be512a3bd7f77ec19b205ec83908a985180ceb86d8d56246f9"
+      },
+      {
+        "scope": "SevenCarryCounterexample",
+        "checks": 20,
+        "sha256": "e8b9d6e0ed0541cc1c8d435a9e62f5ea3cfba7b1f9590071ff924f6991e8bfba"
+      },
+      {
+        "scope": "EightCarryCounterexample",
+        "checks": 21,
+        "sha256": "d78e7589e3df159e609151783c68c3d3aa0316d60880eb8fdbce58e646114276"
+      },
+      {
+        "scope": "NineCarrySharp",
+        "checks": 28,
+        "sha256": "3d21b82016a1523e9347de82973aef1738c5dec0142fa6003ee2cdbfb606ea8e"
+      }
+    ],
+    "unresolved_review_blockers": 0
+  },
+  "source_patch": {
+    "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/source-final.patch",
+    "sha256": "07d37367968e357b81be79f5b1ed608f95671ca4981cf5349b8bd09fb935d226",
+    "bytes": 868995,
+    "added_paths": 112,
+    "application_targets": [
+      "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+      "755b25cdf6b5e5eb811a9555ffbdc2fdd4c1271e"
+    ],
+    "application_receipt_sha256": "13bc0c4bfe0597572ac577c45df645f6c2231b2bba7fc1f8bc116fafe10bacfe",
+    "application_is_source_transport_check_not_new_Lean_build": true
+  },
+  "archive": {
+    "path": "proofs/coordination/submissions/agent-10/eight-carry-20261016/evidence/agent10-nine-carry-sharp-source-evidence.tar.gz",
+    "sha256": "181625c06642eeabf411786dc8e186c78fb732ed58a6dce296affc7043f6bc85",
+    "bytes": 1695740,
+    "regular_files": 263,
+    "manifested_files": 262,
+    "manifest_sha256": "fed895b3a1173e2fc67e9c733f836bb194dfdc116c10f7dce1dd6a7b5e71acfc",
+    "verification_receipt_sha256": "15c4e1a6b30ba95baddc45f4bc2f81e106415016117624647953b22894251416",
+    "exact_historical_13_module_archive_included_once": true
+  },
+  "coordination": {
+    "branch": "p196/coordination",
+    "issue": 61,
+    "main_writer_claimed": false,
+    "main_integration_performed_by_agent10": false,
+    "next_action": "Main merger Agent #11: review the complete additive patch and replay the pinned selected closure before integration under the repository single-writer process.",
+    "prior_source_publication_commit": "cdb9ddb75a711f721d6c5d75a13e534a89067053",
+    "earlier_running_checkpoint_preserved": "sharp-source-checkpoint.json",
+    "current_checkpoint_completes_that_historical_running_status": true,
+    "publication_identity": "Use the enclosing immutable Git commit; subsequent readback and task record identify the actual publication commit."
+  }
+}
