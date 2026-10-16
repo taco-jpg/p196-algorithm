@@ -31,7 +31,9 @@ set_option maxHeartbeats 0 in
 theorem witness_orbit_safe_through_seven :
     ∀ k, k ≤ 7 → ¬ Palindrome (orbit 44013800000 k) := by
   intro k hk
-  interval_cases k <;> decide
+  have hcases : k = 0 ∨ k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 ∨ k = 5 ∨ k = 6 ∨ k = 7 := by
+    omega
+  rcases hcases with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl <;> decide
 
 #print axioms witness_orbit_values
 #print axioms witness_orbit_safe_through_seven
