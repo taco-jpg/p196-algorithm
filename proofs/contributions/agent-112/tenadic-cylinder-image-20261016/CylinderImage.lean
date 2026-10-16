@@ -74,7 +74,9 @@ theorem occurs_for_leading_digit (k a c : Nat)
       (m + reverse10 m) % 10
           = (m % 10 + reverse10 m % 10) % 10 := Nat.add_mod _ _ _
       _ = (a % 10 + c % 10) % 10 := by rw [hunit, hr]
-      _ = (a + c) % 10 := (Nat.add_mod a c 10).symm
+      _ = (a + c) % 10 := by
+        simpa only [Nat.mod_eq_of_lt (show c < 10 by omega)] using
+          (Nat.add_mod a c 10).symm
   refine ⟨m, ?_, hres, hstep⟩
   omega
 
@@ -98,7 +100,9 @@ theorem any_occurrence_has_leading_digit (k a m : Nat)
     (m + reverse10 m) % 10
         = (m % 10 + reverse10 m % 10) % 10 := Nat.add_mod _ _ _
     _ = (a % 10 + c % 10) % 10 := by rw [hunit, hr]
-    _ = (a + c) % 10 := (Nat.add_mod a c 10).symm
+    _ = (a + c) % 10 := by
+      simpa only [Nat.mod_eq_of_lt (show c < 10 by omega)] using
+        (Nat.add_mod a c 10).symm
 
 /-- Exact nine-element image theorem. In particular, the output residue
 `a % 10` never occurs in this cylinder for `k >= 1`. -/
