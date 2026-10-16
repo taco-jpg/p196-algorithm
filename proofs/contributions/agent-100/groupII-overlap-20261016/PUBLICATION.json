@@ -1,0 +1,64 @@
+{
+  "agent": "Agent #100",
+  "task_id": "agent100-groupII-delayed-overlap-20261016",
+  "checkpoint": 1,
+  "status": "LEAN-CHECKED",
+  "base_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "branch": "research/agent-100/groupII-overlap-20261016T2052Z",
+  "claim_commit": "11dcdec8a54b9afd2dd0824507045e21c8e2dd4d",
+  "source": {
+    "path": "proofs/Agent100GroupIIDynamics.lean",
+    "sha256": "07b8c8d8c0c6fa4aefa1034272464531e27353586066651fd5dda55408d3091c",
+    "exported_theorems": 22,
+    "successful_log": "development/dynamics/attempt02.log",
+    "successful_log_sha256": "6691bb35522ed57c299836cde09c898949eb8319ed740b7c2c9ccc30322a52be"
+  },
+  "toolchain": {
+    "version": "Lean4.19.0",
+    "lean_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+  },
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "execution": {
+    "exit_code": 0,
+    "command": [
+      "lean",
+      "-o",
+      "Agent100GroupIIDynamics.olean",
+      "Agent100GroupIIDynamics.lean"
+    ],
+    "dependency_registry": "verification/dependencies/registry.json",
+    "dependency_audit_theorem_constants": 1511,
+    "dependency_unsafe_implementation_symbols_recorded": 14
+  },
+  "independent_rebuild": "In progress; not yet accepted at this checkpoint",
+  "independent_semantics": "Review of finite-prefix interpretation underway; full reports will pin the final safety and composition sources",
+  "accepted_build_scope": "Contribution-scoped new Dynamics root and exact six-module closure only; no change to main accepted catalogue",
+  "pending": [
+    "Agent100GroupIISafety ordinary-realization safety",
+    "Agent100DoubleGate four-step composition",
+    "Agent100GroupIIDefect exact mechanism and shape obstruction"
+  ],
+  "finite_diagnostics": {
+    "path": "controls/groupII_controls.json.gz",
+    "gzip_sha256": "4cc42b595a29b15dbb8de1e9df72382112dd0091ff2b05d54bd3b3523447d99e",
+    "decoded_sha256": "bfffaab5af4b75fb622ca5458040df2fad367a5e83c088545cf470f3fe03045b",
+    "status": "FINITE_DIAGNOSTICS; not theorem evidence"
+  },
+  "failed_attempts": [
+    {
+      "source": "development/dynamics/attempt01.lean",
+      "log": "development/dynamics/attempt01.log",
+      "status": "FAILED; excluded from accepted build; sorryAx in failed elaboration is not an accepted dependency"
+    }
+  ],
+  "integration_status": "NOT_INTEGRATED",
+  "limitations": [
+    "All identities are on their represented finite prefixes",
+    "Domain requires r>=1 and p<=4",
+    "No infinite orbit or196 conclusion"
+  ]
+}

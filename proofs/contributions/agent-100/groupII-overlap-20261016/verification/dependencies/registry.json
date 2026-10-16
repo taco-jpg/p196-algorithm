@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped Agent #100 dependency check only; no repository-wide acceptance or new mathematical claim."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "dev": {
+      "scope": "Pinned six-module dependency closure for Group II delayed overlap research. Existing source is unchanged.",
+      "roots": [
+        "DelayedOverlapGate"
+      ],
+      "modules": {
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__cee9857896191714.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ],
+          "original_path": "proofs/contributions/2026-10-14-external-renewal-audit/sources/LychrelDigitSums.lean"
+        },
+        "SafeDelay": {
+          "path": "proofs/SafeDelay__bc8a973241f692fd.lean",
+          "sha256": "57d8d3fb7e3c2f747b276c3d03c7e81cda8714842c1b4794d3e682aff8e179d6",
+          "git_blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/SafeDelay.lean"
+        },
+        "DecimalSafeRuns": {
+          "path": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+          "sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+          "git_blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/DecimalSafeRuns.lean"
+        },
+        "DecimalDelayBridge": {
+          "path": "proofs/DecimalDelayBridge__83037365a26a750b.lean",
+          "sha256": "8e800eab397f44ac1b0ff47ac02cc7576cddeb7d45015375640213857e56e800",
+          "git_blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df",
+          "imports": [
+            "SafeDelay",
+            "DecimalSafeRuns"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/DecimalDelayBridge.lean"
+        },
+        "PairDelayBridge": {
+          "path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+          "sha256": "4faa6a3f05477bfabd8f504217119e0bb4db56987e3717c822f914f4cc7e70a5",
+          "git_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6",
+          "imports": [
+            "DecimalDelayBridge"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/correlation_pass/lean/PairDelayBridge.lean"
+        },
+        "DelayedOverlapGate": {
+          "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+          "sha256": "c24d7774af6487fcab63a4d60cd10aaabb1b270b3dc0f4ac42dd3655b416b112",
+          "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+          "imports": [
+            "PairDelayBridge"
+          ],
+          "original_path": "proofs/research/main_existence_attempt/renewal_pass/lean/DelayedOverlapGate.lean"
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "dependency-existing-endpoints",
+      "project": "dev",
+      "endpoints": [
+        "DelayedOverlapGate.numeric_return",
+        "DelayedOverlapGate.numeric_two_step_safety",
+        "DelayedOverlapGate.numeric_third_palindrome_iff",
+        "DelayedOverlapGate.realized_safe_gate",
+        "DelayedOverlapGate.return_not_in_domain"
+      ]
+    }
+  ],
+  "source_baseline": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "claim_commit": "11dcdec8a54b9afd2dd0824507045e21c8e2dd4d",
+  "claim_blob": "69729731db957686d2b1dd67d80b40af232778df",
+  "accepted_global_registry_modified": false
+}
