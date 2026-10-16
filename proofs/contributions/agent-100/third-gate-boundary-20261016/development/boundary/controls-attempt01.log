@@ -1,0 +1,50 @@
+Agent100ThirdGateControls.lean:23:2: error: failed to synthesize
+  Decidable
+    (Admissible 5 neighborNineLow ∧
+      neighborNineLow 0 = 7 ∧
+        neighborNineLow 1 = 9 ∧ nextWidth neighborNineLow 5 = 5 ∧ nextColumns neighborNineLow 5 0 = 14)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Agent100ThirdGateControls.lean:29:2: error: failed to synthesize
+  Decidable
+    (Admissible 5 neighborNineHigh ∧
+      neighborNineHigh 0 = 7 ∧
+        neighborNineHigh 1 = 9 ∧ nextWidth neighborNineHigh 5 = 5 ∧ nextColumns neighborNineHigh 5 0 = 15)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Agent100ThirdGateControls.lean:49:2: error: failed to synthesize
+  Decidable
+    (Admissible 6 spacerTwo ∧
+      spacerTwo 0 = 16 ∧ spacerTwo 1 = 2 ∧ (iterPairs spacerTwo 6 2).fst = 7 ∧ (iterPairs spacerTwo 6 2).snd 0 = 15)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Agent100ThirdGateControls.lean:68:2: error: failed to synthesize
+  Decidable
+    (Admissible 2 shortestHigh ∧
+      shortestHigh 0 = 16 ∧
+        shortestHigh 1 = 16 ∧
+          nextWidth shortestHigh 2 = 3 ∧
+            nextColumns shortestHigh 2 0 = 7 ∧
+              nextColumns shortestHigh 2 1 = 14 ∧
+                (iterPairs shortestHigh 2 2).fst = 3 ∧ (iterPairs shortestHigh 2 2).snd 0 = 15)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Agent100ThirdGateControls.lean:82:2: error: failed to synthesize
+  Decidable
+    (Canonical 97 digits97 2 ∧
+      Canonical 176 digits176 3 ∧
+        Canonical 847 digits847 3 ∧
+          orbit 97 1 = 176 ∧
+            orbit 97 2 = 847 ∧
+              (∀ (i : Nat), i < 2 → columnSum digits97 2 i = shortestHigh i) ∧
+                (∀ (i : Nat), i < 3 → nextColumns shortestHigh 2 i = columnSum digits176 3 i) ∧
+                  ∀ (i : Nat), i < 3 → (iterPairs shortestHigh 2 2).snd i = columnSum digits847 3 i)
+
+Additional diagnostic information may be available using the `set_option diagnostics true` command.
+'Agent100.ThirdGate.Controls.neighbor_nine_low_control' depends on axioms: [sorryAx]
+'Agent100.ThirdGate.Controls.neighbor_nine_high_control' depends on axioms: [sorryAx]
+'Agent100.ThirdGate.Controls.neighbor_nine_not_determined' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent100.ThirdGate.Controls.spacer_two_control' depends on axioms: [sorryAx]
+'Agent100.ThirdGate.Controls.low_bound_two_false' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent100.ThirdGate.Controls.shortest_high_control' depends on axioms: [sorryAx]
+'Agent100.ThirdGate.Controls.ordinary_97_control' depends on axioms: [sorryAx]
