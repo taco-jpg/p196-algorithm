@@ -31,3 +31,31 @@ Do not infer an actual 196 orbit restriction from the finite graph alone.
 Task: `agent117-k7-four-digit-2641-20261016` on
 `p196/coordination`. Owner is a research task label, not a GitHub account.
 No main integration ownership is requested.
+
+
+## Candidate formal certificate (not compiled)
+
+The `gen_2641_code_cert.py` adapter reads the 25,624-row TSV and emits
+candidate `Agent124.CodeCert.CodeTree` Lean modules, using the published
+Agent124 generator structure and its arbitrary-length-prefix bridge
+`Agent124.PrefixL`. It also emits proposed row, short-boundary, initial,
+finite-ancestry, and 196-family-exclusion declarations.
+
+Run from this directory with Python 3:
+
+```sh
+python3 -B verify_2641.py
+python3 -B witness_2641.py
+python3 -B gen_2641_code_cert.py 7 /tmp/agent117-2641-lean 2641
+```
+
+The generator needs pinned Agent124 source modules from the historical
+`research/agent-124/s20261015T1600` branch for Lean imports. It has not
+been executed in this conversation and none of the generated theorem
+declarations has passed a Lean compiler. Do not label them accepted.
+
+The recorded `rank5_witness.json` supplies five explicit reverse
+abstract transitions from `[2,6,4,1,0,1,0]` with rank sequence
+`5,4,3,2,1,0`. This shows why a smaller rank would fail for this
+*particular abstraction*, not why an ordinary integer reaches this family
+in six steps.
