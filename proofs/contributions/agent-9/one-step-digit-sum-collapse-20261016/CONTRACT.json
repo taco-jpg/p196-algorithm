@@ -1,0 +1,60 @@
+{
+  "task_id": "agent9-one-step-digit-sum-collapse-20261016",
+  "owner": "Agent #9",
+  "role": "LEAN_FORMALIZATION",
+  "status": "ACTIVE_FORMALIZATION",
+  "source_main": "58afcada8047e015b8f4233b96c44c7c5b9c4162",
+  "claim_base": "a6907df1d7f1b345c5d09d4dc97de83d1b463ca4",
+  "source": {
+    "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "path": "proofs/research/continuation/strengthening_notes.txt",
+    "git_blob": "7103ee939d82740b970dd23fb91e9db50db4ea54",
+    "section": "8. What obstructs stronger conclusions from the old static bound alone; one-step digit-sum collapse paragraph"
+  },
+  "target_statement": "For every canonical ordinary-decimal realization of SeamAnnihilation.framedNine (2*r) at width 2*r+2, prove digitSum n = 9*r+10 and digitSum(step n)=2. Reuse the existing positive realization theorem to prove that for every natural B some positive finite seed has initial digitSum>B and next digitSum exactly2, with the same family also giving arbitrarily large canonical width.",
+  "existing_results_reused": {
+    "source_path": "proofs/research/main_existence_attempt/continuation_pass/lean/SeamAnnihilation.lean",
+    "git_blob": "e4ac85235d683c7877cb9adaf6e038816cf32038",
+    "sha256": "2cab9cc7cf887bbeddcdca2be2fc8d3816ce10e3f71b9028ba492b4985d94cb1",
+    "theorems": [
+      "framedNine_even_admissible",
+      "framedNine_realization_step_value",
+      "even_family_realized",
+      "framedNine_realization_two_steps",
+      "DecimalMass.wordSum_columns",
+      "DecimalMass.digitSum_value"
+    ]
+  },
+  "interpretation": "The ordinary-digit-sum scalar consequence is the new formalization. The family, realization, exact step value, and two-step palindrome behavior already exist. The manuscript is attributed to its original source; no new discovery is claimed.",
+  "hypotheses": [
+    "The manuscript range even k>=2 is encoded by k=2*r and r>0 for the existential family.",
+    "Primary equality is universal over every canonical realization; any valid extension to r=0 must be explicit.",
+    "Original ordinary-decimal digitSum and Lychrel196.step are retained.",
+    "Quantified thresholds B include zero; canonical width refers to the same actual positive integer witness."
+  ],
+  "owned_paths": [
+    "proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016/"
+  ],
+  "branch": "formalize/agent-9/one-step-digit-sum-collapse-20261016",
+  "ownership_check": {
+    "current_coordination_task_records": 124,
+    "matching_current_records": 0,
+    "issue_through": 6225353231,
+    "source_census": "4,037 working-tree Lean paths, historical source/archive material, and 110 local reference names /101 distinct tips inspected. Nineteen distinct matching historical Lean blobs yielded no additional scalar collapse theorem. Historical task census separately inspected413 task blobs and216 coordination metadata blobs.",
+    "adjacent_scopes_preserved": [
+      "Agent107 integrated general seam/mass bridges",
+      "Agent104 exact-zero-gap-mass and running maximum",
+      "Agent106 congruence-carry-budget and its distinct seed family",
+      "Agent112 cylinder-image",
+      "Existing Agent9 interval/factorial/horizon work"
+    ]
+  },
+  "verification": "WIP before implementation. Official Lean4.19.0 --trust=0 fresh source-closure build, literal export reports, exhaustive all-origin theorem/safe-definition audit, independent semantic review and clean rebuild; only propext/Classical.choice/Quot.sound.",
+  "exclusions": [
+    "No reproof or new ownership of framedNine realization, exact first output, or two-step palindrome behavior",
+    "No generic carry-budget formalization",
+    "No fixed-orbit digit-sum divergence or monotonicity claim",
+    "No infinite palindrome-avoidance or196 claim",
+    "No main integration slot"
+  ]
+}

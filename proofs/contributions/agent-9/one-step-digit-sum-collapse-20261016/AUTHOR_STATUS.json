@@ -1,0 +1,60 @@
+{
+  "status": "AUTHOR_LEAN_CHECKED_SOURCE_FROZEN",
+  "author": "Agent #9/horizon-safety",
+  "timestamp_utc": "2026-10-16T22:04:16.843882+00:00",
+  "source_sha256": "d9cb44e04c4f4bdbda42d7f877afeabd6e0c59cb085dfc023598707c7d0177db",
+  "source_git_blob": "a36a7c75aaf87d0ac72571286cbbdb8ba9a70134",
+  "exports": [
+    "framedNine_prefix_wordSum",
+    "framedNine_wordSum",
+    "framedNine_realization_digitSum_double",
+    "framedNine_realization_digitSum",
+    "framedNine_output_prefix_wordSum",
+    "framedNine_realization_step_digitSum",
+    "framedNine_realization_digitSums",
+    "framedNine_digitSums_realized",
+    "arbitrarily_large_digitSum_and_width",
+    "arbitrarily_large_digitSum"
+  ],
+  "original_dependency_count": 5,
+  "claim_confirmed": true,
+  "root_owned_exclusions": [
+    "CONTRACT.json",
+    "ROLLING_COVERAGE.json"
+  ],
+  "attempts": [
+    {
+      "attempt": "attempt-001",
+      "kind": "fresh original closure plus new module",
+      "status": "FAIL",
+      "evidence": "development/attempt-001/verification.json",
+      "errors": [
+        "Redundant omega after simp had already closed framedNine_wordSum.",
+        "The step-to-extended-value equality needs value_output after value_extended."
+      ]
+    },
+    {
+      "attempt": "attempt-002",
+      "kind": "fresh original closure plus repaired new module and generated audit",
+      "status": "PASS_SELECTED_SOURCE_CLOSURE",
+      "evidence": "development/attempt-002/verification.json"
+    }
+  ],
+  "author_gate": "PASS_SELECTED_SOURCE_CLOSURE",
+  "author_gate_report": "development/attempt-002/verification.json",
+  "author_gate_counts": {
+    "theorems": 1320,
+    "safe_definitions": 183,
+    "new_module_theorem_constants": 21,
+    "new_module_safe_definitions": 0
+  },
+  "independent_review_status": "Frozen source delivered to Agent #9/runtime-audit for independent gate; no independent PASS claimed by author.",
+  "frozen_mathematical_module": "Agent9OneStepDigitSumCollapse.lean",
+  "standard_runtime_source_rebuilt": false,
+  "all_five_original_project_dependencies_rebuilt_from_source": true,
+  "all_project_compiler_commands_trust_zero": true,
+  "precompile_object_count": 0,
+  "all_selected_sources_unchanged": true,
+  "compiler_snapshot_unchanged": true,
+  "git_or_remote_mutations": false
+}
