@@ -1,0 +1,26 @@
+ActualHistories.lean:25:20: error: type mismatch, term
+  congrArg
+after simplification has type
+  ∀ (f : ?m.403 → ?m.404), ?m.405 = ?m.406 → f ?m.405 = f ?m.406 : Prop
+but is expected to have type
+  (firstLabels (jointStep b j) bs).length + 1 = bs.length + 1 : Prop
+ActualHistories.lean:26:15: error: unexpected identifier; expected command
+ActualHistories.lean:32:20: error: type mismatch, term
+  congrArg
+after simplification has type
+  ∀ (f : ?m.421 → ?m.422), ?m.423 = ?m.424 → f ?m.423 = f ?m.424 : Prop
+but is expected to have type
+  (secondLabels (jointStep b j) bs).length + 1 = bs.length + 1 : Prop
+ActualHistories.lean:33:15: error: unexpected identifier; expected command
+ActualHistories.lean:102:73: error: unsolved goals
+xs : List Bool
+k : Nat
+⊢ choice true = 14 ∧ (k = 0 ∨ ↑18 = 18)
+ActualHistories.lean:108:2: error: tactic 'apply' failed, failed to unify
+  Path (List.map symbol ?bs ++ ?ss) (Prod.fst ?j) (List.map Fin.val (firstLabels ?j ?bs) ++ ?xs)
+with
+  Path (historyTarget xs k) 0 (historyHalf1 xs k)
+xs : List Bool
+k : Nat
+⊢ Path (historyTarget xs k) 0 (historyHalf1 xs k)
+ActualHistories.lean:129:24: error: unknown constant 'Fin.val_ofNat'
