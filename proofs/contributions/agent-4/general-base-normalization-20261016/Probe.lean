@@ -1,0 +1,11 @@
+import Lean.Elab.Tactic.Omega
+#check Nat.div_eq_iff
+#check Nat.div_eq_of_lt
+#check Nat.div_eq_sub_div
+#check Nat.div_lt_iff_lt_mul
+#check Nat.le_div_iff_mul_le
+#check Nat.mul_div_cancel_left
+#check Nat.mod_add_div
+#check Nat.mul_add
+#check Nat.add_mul
+#check Nat.pow_succ
