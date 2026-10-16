@@ -1,0 +1,17 @@
+import Agent108WindowIncoming
+#print axioms Agent108.WindowWeights.finiteWindowWeight
+#print axioms Agent108.WindowWeights.finiteStateHalf_bounded
+#print axioms Agent108.WindowWeights.finiteWindowWeight_pos
+#print axioms Agent108.WindowWeights.finiteWindowWeight_partial_sum_le_incoming
+#print axioms Agent108.WindowWeights.choiceBits
+#print axioms Agent108.WindowWeights.choiceBits_ofFn
+#print axioms Agent108.WindowWeights.choiceBits_injective
+#print axioms Agent108.WindowWeights.embeddedState_window_weight
+#print axioms Agent108.WindowWeights.embeddedTarget_window_weight
+#print axioms Agent108.WindowWeights.embedded_choice_weight_sum
+#print axioms Agent108.WindowWeights.embedded_window_family_le_incoming
+#print axioms Agent108.WindowWeights.actual_window_family_total
+#print axioms Agent108.WindowWeights.incoming_window_lower_bound
+#print axioms Agent108.WindowWeights.incoming_window_ratio
+#print axioms Agent108.WindowWeights.no_uniform_window_multiplier
+#print axioms Agent108.WindowWeights.not_exists_uniform_window_bound

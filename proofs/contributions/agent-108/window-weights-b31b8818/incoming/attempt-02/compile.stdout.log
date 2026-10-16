@@ -1,0 +1,25 @@
+/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/incoming/attempt-02/Agent108WindowIncoming.lean:97:12: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  List.ofFn (?g ∘ ?f)
+r : ℕ
+f : List Bool → ℝ
+hs : (List.ofFn fun i => f ((choices r).get i)).sum = ∑ i, f ((choices r).get i)
+⊢ (List.ofFn fun i => f ((choices r).get i)).sum = (List.map f (choices r)).sum
+/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/incoming/attempt-02/Agent108WindowIncoming.lean:103:65: error: unsolved goals
+b p k r : ℕ
+A : ℕ → ℝ
+psi : List ℕ → ℝ
+oddWeight : FiniteWord → ℝ
+e : Fin r → Bool
+he : (embeddedState p k r e).fst % 2 = 0
+⊢ (if (embeddedTarget p k r).fst % 2 = 0 then
+      A (embeddedTarget p k r).fst * windowProduct b psi (inputHalf (4 * p) k (List.ofFn e))
+    else oddWeight (embeddedState p k r e)) =
+    A (embeddedTarget p k r).fst * windowProduct b psi (inputHalf (4 * p) k (List.ofFn e))
+/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/incoming/attempt-02/Agent108WindowIncoming.lean:132:38: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  ∑ i, ?f ((choices ?r).get i)
+b p k r : ℕ
+A : ℕ → ℝ
+psi : List ℕ → ℝ
+oddWeight : FiniteWord → ℝ
+⊢ A (embeddedTarget p k r).fst * ∑ i, windowProduct b psi (inputHalf (4 * p) k ((choices r).get i)) =
+    A (embeddedTarget p k r).fst * (List.map (fun es => windowProduct b psi (inputHalf (4 * p) k es)) (choices r)).sum
