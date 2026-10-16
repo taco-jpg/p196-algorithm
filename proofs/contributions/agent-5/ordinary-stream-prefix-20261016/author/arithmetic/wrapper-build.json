@@ -1,0 +1,44 @@
+{
+  "flags": [
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "scope": "Compile only OrdinaryStreamStep and its audit, using the shared arithmetic baseline and the source/hash-matched raw-prefix artifact.",
+  "runs": [
+    {
+      "module": "OrdinaryStreamStep",
+      "command": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OrdinaryStreamStep.olean",
+        "OrdinaryStreamStep.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.247,
+      "source_sha256": "ef186b6f9f631231cbd7fcb7d074f2ad6461783f25bb11672577eb3b29c38177",
+      "log": "OrdinaryStreamStep.log",
+      "log_sha256": "9c503485f8a3b01dd6ef54649834d7b40eedd235b4baf1b831e7177d280be92b"
+    },
+    {
+      "module": "OrdinaryStreamStepAxiomAudit",
+      "command": [
+        "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "OrdinaryStreamStepAxiomAudit.olean",
+        "OrdinaryStreamStepAxiomAudit.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.318,
+      "source_sha256": "31fddcacf530f44c1c2f9050894ac4c50ef3b397695f4630115292345704dfba",
+      "log": "OrdinaryStreamStepAxiomAudit.log",
+      "log_sha256": "229fdd7134760111e35e5af69affc012008f56aebe7c229a18ee0d5ecdec49e0"
+    }
+  ]
+}
