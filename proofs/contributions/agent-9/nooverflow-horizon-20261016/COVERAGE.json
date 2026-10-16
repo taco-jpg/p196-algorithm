@@ -1,0 +1,113 @@
+{
+  "inventory_scope": "Scoped continuation census; not exhaustive repository completion.",
+  "source_main": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "current_main_observed": "ae8bbdfd2a18e8910eebc25fd2a81661c01abc16",
+  "original_source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "corpus_record": "review/coverage-census/CENSUS.md; original reviewed paths and source pins are preserved in the complete evidence archive.",
+  "claims": [
+    {
+      "id": "A9-C01-finite",
+      "status": "INDEPENDENTLY_REVIEWED",
+      "source": "research/persist_inverse_fibers_proof.txt final no-overflow finite-horizon construction",
+      "task": "agent9-nooverflow-finite-horizon-20261016",
+      "owner": "Agent #9",
+      "branch": "formalize/agent-9/nooverflow-horizon-20261016",
+      "pr": 86,
+      "statement": "For every m,k>=1 the reflected target half11::9^m++18^k has exactly fib m canonical even no-overflow coefficient-word preimages; every canonical target realization is safe at positive times1..k, and positive realizations exist.",
+      "strengthening": "All naturalm,k count; nonempty onlym>0; target time0 included; every fiber member has an ordinary positive predecessor and all canonical predecessor realizations are safe at positive times1..k+1.",
+      "theorems": [
+        "protected_fiber_exact",
+        "protected_fiber_nonempty",
+        "protected_target_all_realizations_safe",
+        "protected_nooverflow_family",
+        "protected_nooverflow_integer_family"
+      ],
+      "namespace": "P196.Agent9.NoOverflowHorizon",
+      "verification": "Independent15module fresh --trust=0 build;1539theorems+346safe definitions; standard3axiomsonly. Original source contract, literal source, author/independent reviews and rawfailures retained.",
+      "report_sha256": "dc1651c45fa2c6d3a9bb961ea53f67513b7452c486255a0bfc431757866efd62",
+      "remaining": "Default-branch integration by designated owner; no main slot held."
+    },
+    {
+      "id": "A9-C01-rate",
+      "status": "UNFORMALIZED",
+      "source": "Same note's fixed-horizon asymptotic-rate statement",
+      "relation": "Finite construction proved, analytic rate limit remains separate.",
+      "owner": null,
+      "next": "Claim and prove an exact asymptotic statement if appropriate library support exists."
+    },
+    {
+      "id": "A9-C02",
+      "status": "UNFORMALIZED",
+      "source": "contributions/2026-10-14-finite-horizon-density/README.md exact finite seed counting",
+      "statement": "Exact canonical width-L seed count9*10^(L-1-2*r*J)*(10^(2*r)-1)^J under the manuscript's disjoint marker hypotheses.",
+      "owner": null,
+      "next": "Define complete duplicate-free canonical digit-vector enumeration; prove disjoint block product count."
+    },
+    {
+      "id": "A9-C03-finite",
+      "status": "LEAN_CHECKED",
+      "source": "research/continuation/strengthening_notes.txt section6",
+      "task": "agent9-digit-sum-interval-counts-20261016",
+      "owner": "Agent #9",
+      "branch": "formalize/agent-9/digit-sum-interval-counts-20261016",
+      "statement": "For all n>0,B,s,N:Nat, count digit-sum>B times in[s,s+N) is at least floor(N/(sharpDigitSumEscapeBound B+1)).",
+      "theorems": [
+        "P196.Agent9.IntervalCounts.window_property_interval_count",
+        "P196.Agent9.IntervalCounts.digitSum_interval_count",
+        "P196.Agent9.IntervalCounts.digitSum_interval_count_196"
+      ],
+      "verification": "Author source closure/literal exports pass; independent11module audit pass reported, final evidence packaging and publication active.",
+      "remaining": "Publish second contribution with independent report; no real density limit included."
+    },
+    {
+      "id": "A9-C03-density",
+      "status": "PARTIALLY_FORMALIZED",
+      "source": "Same section6 lower asymptotic and lower Banach density statements",
+      "relation": "Exact finite count established; real density definitions/limit deduction not formalized.",
+      "owner": null,
+      "next": "Preserve distinct real-limit claim; select suitable existing analysis environment before formalization."
+    },
+    {
+      "id": "A9-C04",
+      "status": "ACTIVE_FORMALIZATION",
+      "source": "research/continuation/strengthening_notes.txt section5 equation9",
+      "task": "agent9-escape-factorial-bound-20261016",
+      "owner": "Agent #9",
+      "claim_commit": "473a2865e2b3b4d7e8044b3537c9b94ba5ab18d1",
+      "branch": "formalize/agent-9/escape-factorial-bound-20261016",
+      "statement": "Generic exact recurrence estimate for positive kappa and M>=1; decimal sharpEscapeBound M<=20^(M-1)*factorialM; actual numeric explicit window.",
+      "next": "Delegated proof implementation following accepted semantic contract; E0 stays unconstrained in generic theorem."
+    },
+    {
+      "id": "A9-C05",
+      "status": "UNFORMALIZED",
+      "source": "research/continuation/strengthening_notes.txt later collapse example",
+      "statement": "For every evenk>=2, pairword(10,9^k,10) has positive realization with next value11*10^(k+1), next digit sum2, initial digit sum(9*k+20)/2.",
+      "owner": null,
+      "next": "Claim exact normalization, realization and digit-mass proof; preserve parity and ordinary integer semantics."
+    },
+    {
+      "id": "A9-C06",
+      "status": "PARTIALLY_FORMALIZED",
+      "source": "research/continuation/general_base_audit.txt section7 and UnboundedDigitSums.tex",
+      "statement": "Sharp decimal running-maximum liminf constant3/4 and its finite radical bound.",
+      "owner": null,
+      "next": "Existing coarser inequality does not close claim; prove sharpened mass/zero-run inequality first."
+    },
+    {
+      "id": "A9-C07",
+      "status": "UNFORMALIZED",
+      "source": "research/astra_modular_fixed_modulus_theorem.md section4",
+      "statement": "General distant-leading-digit reversal identity and congruence-neighborhood discontinuity consequence.",
+      "owner": null,
+      "next": "Claim canonical arbitrary-seed digit-spike identity, then prove exact finite congruence obstruction."
+    }
+  ],
+  "already_covered_or_reserved": "See original census corrections. Existing modular saturation/autonomy, historical even Fibonacci bounds, and other agents' odd fibers, overflow fibers, digit-split multiplicities, carry transport and normalization are not reclaimed.",
+  "known_gaps": [
+    "No exhaustive semantic reading of every historical/remote-only/generated source.",
+    "No repository-wide all-time palindrome avoidance proof.",
+    "Latest collaborator source endpoints retained on issue61 require source-specific future census."
+  ],
+  "next_active": "Factorial recurrence proof runs while completed horizon and interval packages are published."
+}
