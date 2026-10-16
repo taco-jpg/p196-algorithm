@@ -37,6 +37,14 @@
     {
       "commit": "c544bc14f12b5aaddb7754b3d141e9f19cef4033",
       "result": "PUBLISHED_AND_READ_BACK; all5 changed files byte-identical."
+    },
+    {
+      "commit": "38f79914241eb6a379b29ca13a19b95393fdc1c5",
+      "result": "PUBLISHED_AND_READ_BACK; all16filesexact, including12fullnewvalidationartifacts."
+    },
+    {
+      "commit": "cb9e0cda99bdbb3a880cc9c164b32446338989c2",
+      "result": "ACQUIRED_SHORT_MAIN_SLOT; exactrolecontentreadback; preservedreleasedAgent11PR138record"
     }
   ],
   "environment": {
@@ -95,7 +103,92 @@
     "main_protected": false,
     "visible_rulesets": [],
     "gate_limit": "Administrative branch-protection read403 observed in independent policy audit; ordinary merge endpoint will enforce actual requirements.",
-    "required_review_basis": "User's strict genuine nonauthor source/proof review, represented by actual subagents and inspected retained exact-source evidence. No fabricated extra reviewer or optional rebuild."
+    "required_review_basis": "User's strict genuine nonauthor source/proof review, represented by actual subagents and inspected retained exact-source evidence. No fabricated extra reviewer or optional rebuild.",
+    "actual_review": {
+      "id": 5554800210,
+      "state": "APPROVED",
+      "user": "sodium-qed",
+      "head": "71c2ab3393e26d44b908fcbcc04d7527fac569f7"
+    }
   },
-  "preservation": "No force push, no branch deletion, no removal of proof targets, no new axioms, no weakened statements, no auto-merge or permission changes."
+  "preservation": "No force push, no branch deletion, no removal of proof targets, no new axioms, no weakened statements, no auto-merge or permission changes.",
+  "integration": {
+    "merge_result": {
+      "sha": "25eb17d292e150592270720f49f53c9484e5f81e",
+      "merged": true,
+      "message": "Pull Request successfully merged"
+    },
+    "preflight": {
+      "B": "fd6064c94d6aae774b1facb2ca441b2faa8780b6",
+      "H": "71c2ab3393e26d44b908fcbcc04d7527fac569f7",
+      "T": "5bd365d733a0bf7ea03e2ac31ccf8eb9e1a931d9",
+      "coord": "1b5331365dbc679ba854ada93ac8979516259ae8",
+      "checks": [
+        {
+          "id": 117226408059,
+          "name": "GitGuardian Security Checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "role_confirmed": true,
+      "pr_mergeable": true,
+      "pr_mergeable_state": "clean",
+      "time": "2026-10-16 23:46:32 UTC"
+    },
+    "target_receipt": {
+      "schema_version": 1,
+      "pr": 114,
+      "delivery_owner": "Agent #17/session0abe49735fe9",
+      "status": "VERIFIED_ON_TARGET",
+      "source_head": "71c2ab3393e26d44b908fcbcc04d7527fac569f7",
+      "tested_base": "fd6064c94d6aae774b1facb2ca441b2faa8780b6",
+      "merge_commit": "25eb17d292e150592270720f49f53c9484e5f81e",
+      "combined_tree": "5bd365d733a0bf7ea03e2ac31ccf8eb9e1a931d9",
+      "actual_tree": "5bd365d733a0bf7ea03e2ac31ccf8eb9e1a931d9",
+      "ordered_parents": [
+        "fd6064c94d6aae774b1facb2ca441b2faa8780b6",
+        "71c2ab3393e26d44b908fcbcc04d7527fac569f7"
+      ],
+      "main_readback": "25eb17d292e150592270720f49f53c9484e5f81e",
+      "pr_state": "closed",
+      "merged": true,
+      "source_repairs": [],
+      "ready_transition": "Already Ready; no redundant Ready mutation",
+      "review_id": 5554800210,
+      "review_state": "APPROVED",
+      "review_head": "71c2ab3393e26d44b908fcbcc04d7527fac569f7",
+      "evidence_commit": "38f79914241eb6a379b29ca13a19b95393fdc1c5",
+      "initial_source_evidence_commit": "c544bc14f12b5aaddb7754b3d141e9f19cef4033",
+      "slot_claim_commit": "cb9e0cda99bdbb3a880cc9c164b32446338989c2",
+      "verification": {
+        "complete_pr_diff": "173uniqueaddedpaths; pagination100+73",
+        "original_main": "Complete current-base combination preserves allunchanged entries and subtrees by exactGit tree identities; actualmerge treeequalsverified combination",
+        "source_closure": "26source SHA256/Gitblob/importpins match accepted canonicalregistry and historical sourcebuild",
+        "embedded_foundation": "4444nonimportlines exact",
+        "fresh_session_lean": "NOT_RUN; inspected exact-source original26build and subsequentexplicittrust0Project/PublicAudits reused",
+        "retained_evidence": "All142final+41generic+102runtime+18historicalcensusarchive membersverified;51directpublishedcopies match; all27canonicallogs exact;1783theorem axiom lists and94publicsafetyrecords passed",
+        "new_evidence_validators": {
+          "result": "PASS",
+          "exit_codes": [
+            0,
+            0
+          ],
+          "failed_v01": "Preserved script andfailurelog; correctednewvalidatorlookupwithouteditingoriginalevidence"
+        }
+      },
+      "postmerge_lean": "NOT_RUN; actual complete merge treeequalschecked combination and exactacceptedsource closure. No furthermandatorybuild exposed.",
+      "postmerge_check_runs": {
+        "total_count": 0,
+        "check_runs": []
+      },
+      "postmerge_actions": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "whole_repository_build_claim": false,
+      "preservation": "Originalauthors,sourcebranches,all173contributionpaths,originalfailuresandarchivesretained;mergecommitpreservesbothhistories;noforcepushorbranchdeletion",
+      "verified_at": "2026-10-16 23:47:03 UTC"
+    }
+  }
 }
