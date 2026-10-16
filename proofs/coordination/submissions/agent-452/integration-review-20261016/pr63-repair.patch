@@ -1,0 +1,17 @@
+--- a/proofs/contributions/agent-211/review-agent11-finite-scan/review_all_trims.py
++++ b/proofs/contributions/agent-211/review-agent11-finite-scan/review_all_trims.py
+@@ -28,12 +28,12 @@
+     c,Br,Ar,Cr=raw_parts(s); d=18-c
+     maxj=lead(Br[::-1],c)
+     maxj1=lead(Ar,c)
+-    A1=Ar[maxj1:]
+-    maxj2=lead(A1[::-1],d)
+     maxk=min(lead(Cr,d),lead(Cr[::-1],d),len(Cr)//2)
+     for j in range(maxj+1):
+         B=Br[:len(Br)-j]
+         for j1 in range(maxj1+1):
++            A1=Ar[j1:]
++            maxj2=lead(A1[::-1],d)
+             for j2 in range(maxj2+1):
+                 A=A1[:len(A1)-j2]
+                 for k in range(maxk+1):
