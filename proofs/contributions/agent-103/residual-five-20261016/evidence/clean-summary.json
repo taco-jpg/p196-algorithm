@@ -1,0 +1,651 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-10-16T21:27:34Z",
+  "fresh_project_snapshot": true,
+  "repository_wide_pass": false,
+  "sources": {
+    "LychrelDigitSums": {
+      "kind": "pinned_git_source",
+      "commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "original_path": "proofs/research/continuation/LychrelDigitSums.lean",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "original_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "original_bytes": 218799,
+      "compiled_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "imports": [
+        "Std"
+      ],
+      "origin_group": "dependency",
+      "object_sha256": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978"
+    },
+    "PrefixInverse": {
+      "kind": "pinned_git_source",
+      "commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "original_path": "proofs/contributions/agent-104/seven-column-kernel/PrefixInverse.lean",
+      "git_blob": "c9ba79545ec486297946c418014190f1e6f3a1f0",
+      "original_sha256": "0a93622752fa22cf6c8de2efc8500dc313498d59831bb0e5381b3b351e0ab03e",
+      "original_bytes": 10333,
+      "compiled_sha256": "0a93622752fa22cf6c8de2efc8500dc313498d59831bb0e5381b3b351e0ab03e",
+      "imports": [
+        "Std"
+      ],
+      "origin_group": "dependency",
+      "object_sha256": "451a0390a7f1173086919908b72f99a00406bea7aff219b5e723f0bcedfcf41d"
+    },
+    "ActualPrefix": {
+      "kind": "pinned_git_source",
+      "commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "original_path": "proofs/contributions/agent-104/seven-column-kernel/ActualPrefix.lean",
+      "git_blob": "ceb031e9987db556499fff75b16be4653c3c7ead",
+      "original_sha256": "c136216ed9c4100a268643be9a471b6746320f63d0af2030b6418429e5551e76",
+      "original_bytes": 12619,
+      "compiled_sha256": "c136216ed9c4100a268643be9a471b6746320f63d0af2030b6418429e5551e76",
+      "imports": [
+        "LychrelDigitSums",
+        "PrefixInverse"
+      ],
+      "origin_group": "dependency",
+      "object_sha256": "e4e9a006f4cb2773dbf76ac90d13f4836a36f62870e7cc585ed383ef4e38a0e2"
+    },
+    "PalindromeBridge": {
+      "kind": "pinned_git_source",
+      "commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "original_path": "proofs/contributions/agent-104/seven-column-kernel/PalindromeBridge.lean",
+      "git_blob": "a8066f82178786648c2c32b49a333e0c87e5810b",
+      "original_sha256": "6c1de8cf02ec9381e80388e6b4915db6cfa4d1189d3e47c273400f0d37948093",
+      "original_bytes": 7671,
+      "compiled_sha256": "6c1de8cf02ec9381e80388e6b4915db6cfa4d1189d3e47c273400f0d37948093",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "origin_group": "dependency",
+      "object_sha256": "19c64eb9a55e3f8f57486236a8df93ea4e05a1941d183971ae246d31a101f299"
+    },
+    "EightFamilies": {
+      "kind": "pinned_git_source",
+      "commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "original_path": "proofs/contributions/agent-119/eight-families/EightFamilies.lean",
+      "git_blob": "c94378b93541f5a537e50500bd5a6a94dfb16f8b",
+      "original_sha256": "3d865d82e4a648af36d0ce0c6ded12bdd5e184fd294951dc53e689458b3ede53",
+      "original_bytes": 32537,
+      "compiled_sha256": "3d865d82e4a648af36d0ce0c6ded12bdd5e184fd294951dc53e689458b3ede53",
+      "imports": [
+        "LychrelDigitSums",
+        "PrefixInverse",
+        "ActualPrefix",
+        "PalindromeBridge"
+      ],
+      "origin_group": "dependency",
+      "object_sha256": "b3056a82e0f9dd688f6d05012f2014f6083463e150853e8a98e7b0d6630555fb"
+    },
+    "Lychrel196Research": {
+      "kind": "pinned_git_source",
+      "commit": "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "original_path": "proofs/research/Lychrel196Research.lean",
+      "git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506",
+      "original_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+      "original_bytes": 177462,
+      "adapter": {
+        "kind": "verified_embedded_foundation_import_forwarder",
+        "container_module": "LychrelDigitSums",
+        "excluded_exact_prefix_utf8": "import Std\n",
+        "body_line_count": 4444,
+        "container_start_line_1_based": 11,
+        "exact_compiled_source_utf8": "import LychrelDigitSums\n",
+        "compiled_sha256": "13dd9effbef33d3d10138baed5cb3a6f964691ba895cc5d453f2553f0ac81011",
+        "body_sha256": "c457c36664c186ce10f38d492460fe67f5318c7edf14ff9b930b00b7f67f3402",
+        "body_bytes": 177451,
+        "container_start_byte_0_based": 329,
+        "complete_body_byte_identical": true
+      },
+      "compiled_sha256": "13dd9effbef33d3d10138baed5cb3a6f964691ba895cc5d453f2553f0ac81011",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "origin_group": "dependency",
+      "object_sha256": "d5831d643ca259524dd92e18adf3cbbc81b62ab75abc70fc6ba2257de38a507b"
+    },
+    "TemporalResidues": {
+      "kind": "pinned_git_source",
+      "commit": "6fae6e659e5c08c59666588c71a4ed06760de85e",
+      "original_path": "proofs/coordination/submissions/agent423/TemporalResidues.lean",
+      "git_blob": "93dec0e8bb09dc8deaa5766214d3e02ca758db4c",
+      "original_sha256": "f3a215bb9ee54628e83d0591bff2ed7f73980821931d56de99f0b3da5d4ab8ab",
+      "original_bytes": 10079,
+      "compiled_sha256": "f3a215bb9ee54628e83d0591bff2ed7f73980821931d56de99f0b3da5d4ab8ab",
+      "imports": [
+        "Lychrel196Research"
+      ],
+      "origin_group": "dependency",
+      "object_sha256": "7d798018febc30b24405ae4d18cc2ecd47a04322aad83587aeaae2723f6db15e"
+    },
+    "ResidualFiveShape": {
+      "kind": "frozen_contribution_source",
+      "path": "source/ResidualFiveShape.lean",
+      "git_blob_of_bytes": "f167b4624c80815b22ccce6ed2bba8e641f052c8",
+      "original_sha256": "592f4af76ee78c92f24dddf91042f0fc2c918944dd181d7e058eb3c57330ffa6",
+      "original_bytes": 10689,
+      "compiled_sha256": "592f4af76ee78c92f24dddf91042f0fc2c918944dd181d7e058eb3c57330ffa6",
+      "imports": [
+        "EightFamilies"
+      ],
+      "origin_group": "new",
+      "object_sha256": "a02e69162ce4d9a4e0eaeba9bd6cfff0fbf1f36e1305f9be0492b80504d066ea"
+    },
+    "ResidualFive": {
+      "kind": "frozen_contribution_source",
+      "path": "source/ResidualFive.lean",
+      "git_blob_of_bytes": "4cd8fe4d5ef6ceeec50d8bd8c7d56a4b928e8a47",
+      "original_sha256": "e52aad8590495fe4b34b866c20b99fe14892c16f9af79a3fdaa24222af896a35",
+      "original_bytes": 4148,
+      "compiled_sha256": "e52aad8590495fe4b34b866c20b99fe14892c16f9af79a3fdaa24222af896a35",
+      "imports": [
+        "EightFamilies",
+        "TemporalResidues"
+      ],
+      "origin_group": "new",
+      "object_sha256": "b7944e15c45df93e881c740f2828ff96b35fbfe68ef0e5977d3ded5612e58992"
+    },
+    "ResidualFiveWitness": {
+      "kind": "frozen_contribution_source",
+      "path": "source/ResidualFiveWitness.lean",
+      "git_blob_of_bytes": "ef30a3af28ed83c758ab30605eda500408cdcf96",
+      "original_sha256": "bdd3abc30bd4a24fe27df657c21dcc92555d8b3fa26f2c7c3abd3e7091bd1d3f",
+      "original_bytes": 6822,
+      "compiled_sha256": "bdd3abc30bd4a24fe27df657c21dcc92555d8b3fa26f2c7c3abd3e7091bd1d3f",
+      "imports": [
+        "LychrelDigitSums",
+        "TemporalResidues"
+      ],
+      "origin_group": "new",
+      "object_sha256": "b72e22d10b864bdac73105376f9117498b9d83e266be2e48db8fd68855aa1e0c"
+    },
+    "ResidualFiveConclusion": {
+      "kind": "frozen_contribution_source",
+      "path": "source/ResidualFiveConclusion.lean",
+      "git_blob_of_bytes": "a09a775652aa102a912120ab95fa05042a6d62d6",
+      "original_sha256": "1073466758b41e0c5b0f630b37ca3b652b6d345f64032f30455e321e7b2c34ef",
+      "original_bytes": 3997,
+      "compiled_sha256": "1073466758b41e0c5b0f630b37ca3b652b6d345f64032f30455e321e7b2c34ef",
+      "imports": [
+        "ResidualFive",
+        "ResidualFiveShape",
+        "ResidualFiveWitness"
+      ],
+      "origin_group": "new",
+      "object_sha256": "f5e4161e116a379728ebaf8221baa9d683a5410d9f761b6b93571bc03dbe88b0"
+    }
+  },
+  "commands": [
+    {
+      "label": "version",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 0.114598,
+      "log": "logs/version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "prefix",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--print-prefix"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 0.067635,
+      "log": "logs/prefix.log",
+      "log_sha256": "02131bc5b3edeea150aac6758034dd1e637ac7009815ca899b173e78285d3d19"
+    },
+    {
+      "label": "LychrelDigitSums",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "LychrelDigitSums.olean",
+        "LychrelDigitSums.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 79.053205,
+      "log": "logs/LychrelDigitSums.log",
+      "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+    },
+    {
+      "label": "PrefixInverse",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "PrefixInverse.olean",
+        "PrefixInverse.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 2.429994,
+      "log": "logs/PrefixInverse.log",
+      "log_sha256": "808b2d1d699776bc5f9836ce0bc6066eddd8bd4a798c35ddbc1079f281608fbe"
+    },
+    {
+      "label": "ActualPrefix",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ActualPrefix.olean",
+        "ActualPrefix.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 2.838075,
+      "log": "logs/ActualPrefix.log",
+      "log_sha256": "67bbec2c0e5234b99c1dfac64fe86bdf4113e34cd1d82a549a9e704126f4694c"
+    },
+    {
+      "label": "PalindromeBridge",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "PalindromeBridge.olean",
+        "PalindromeBridge.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 0.767145,
+      "log": "logs/PalindromeBridge.log",
+      "log_sha256": "29d5330488c9bc15ea8148c682c499da9c56d752c8e76f7abf15da3c83c6ac00"
+    },
+    {
+      "label": "EightFamilies",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "EightFamilies.olean",
+        "EightFamilies.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 22.288988,
+      "log": "logs/EightFamilies.log",
+      "log_sha256": "f25413c6ca8044b0f20223bca5078d4b2e37e0cab0c3736887a3ba1251af3e78"
+    },
+    {
+      "label": "ResidualFiveShape",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ResidualFiveShape.olean",
+        "ResidualFiveShape.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 3.839911,
+      "log": "logs/ResidualFiveShape.log",
+      "log_sha256": "f43ab530f0e4bfd1231505b6714eb61a3f28e62e1e94a553eaa17bade730ad8d"
+    },
+    {
+      "label": "Lychrel196Research",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Lychrel196Research.olean",
+        "Lychrel196Research.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 0.214425,
+      "log": "logs/Lychrel196Research.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "TemporalResidues",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "TemporalResidues.olean",
+        "TemporalResidues.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 2.862956,
+      "log": "logs/TemporalResidues.log",
+      "log_sha256": "5f2e0407f3a250408d1ff9875596e0bd26dd23267159fb2f72dc59808fae0be4"
+    },
+    {
+      "label": "ResidualFive",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ResidualFive.olean",
+        "ResidualFive.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 1.527024,
+      "log": "logs/ResidualFive.log",
+      "log_sha256": "708e758c71d76064875db42b00d2aae66d78fd2f3513a1359a1c9da25424e55e"
+    },
+    {
+      "label": "ResidualFiveWitness",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ResidualFiveWitness.olean",
+        "ResidualFiveWitness.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 1.072346,
+      "log": "logs/ResidualFiveWitness.log",
+      "log_sha256": "e30719d8f5be3e552a152a89b4875d2c8ef7d4af0c290a99b513d63148e52d39"
+    },
+    {
+      "label": "ResidualFiveConclusion",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "ResidualFiveConclusion.olean",
+        "ResidualFiveConclusion.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 0.923868,
+      "log": "logs/ResidualFiveConclusion.log",
+      "log_sha256": "6c32ecbec62fd25d2522a63eb43ba91c4deaecbad2127f856b20a3a9d9ee813d"
+    },
+    {
+      "label": "AuditAllContributionModules",
+      "argv": [
+        "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "AuditAllContributionModules.lean"
+      ],
+      "cwd": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot",
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "TZ": "UTC",
+        "LEAN_PATH": "/workspace/scratch/a1d46b1077ac/agent103-work/verification-clean-001/snapshot"
+      },
+      "exit_code": 0,
+      "seconds": 34.117948,
+      "log": "logs/AuditAllContributionModules.log",
+      "log_sha256": "79fee50c1f7c6d5501fc9ec401f19e3188969f2818b6188ade87cc110b96ffec"
+    }
+  ],
+  "scope": "Exact contribution closure build and transitive axiom facts; no independent semantic proof claim.",
+  "manifest_sha256": "6e112f93d541b80e7b4bb16e4ce66e0e53212c1cef1c03fc085659715ed8842b",
+  "driver_sha256": "7440d37a162e7cd05b3e98b4543f171fbba3cd65d1b829ce6b76ed503d8b67aa",
+  "git_object_repository": "/workspace/scratch/a1d46b1077ac/agent103-runtime/current-repo",
+  "git_object_repository_head": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "selected_new_modules": [
+    "ResidualFiveShape",
+    "ResidualFive",
+    "ResidualFiveWitness",
+    "ResidualFiveConclusion"
+  ],
+  "build_order": [
+    "LychrelDigitSums",
+    "PrefixInverse",
+    "ActualPrefix",
+    "PalindromeBridge",
+    "EightFamilies",
+    "ResidualFiveShape",
+    "Lychrel196Research",
+    "TemporalResidues",
+    "ResidualFive",
+    "ResidualFiveWitness",
+    "ResidualFiveConclusion"
+  ],
+  "module_count": 11,
+  "dependency_modules": [
+    "LychrelDigitSums",
+    "PrefixInverse",
+    "ActualPrefix",
+    "PalindromeBridge",
+    "EightFamilies",
+    "Lychrel196Research",
+    "TemporalResidues"
+  ],
+  "unused_manifest_dependencies": [],
+  "lean": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "path": "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+    "runtime_prefix": "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux",
+    "files_sha256": {
+      "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/scratch/a1d46b1077ac/agent103-runtime/toolchain/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "audit_source_sha256": "0354df332da8195cdcd192d3dca65da106a7b81492ab59de676a7ef15daebc16",
+  "theorem_count": 1532,
+  "module_theorem_counts": {
+    "LychrelDigitSums": 986,
+    "PrefixInverse": 45,
+    "ActualPrefix": 65,
+    "PalindromeBridge": 15,
+    "EightFamilies": 233,
+    "ResidualFiveShape": 95,
+    "Lychrel196Research": 0,
+    "TemporalResidues": 36,
+    "ResidualFive": 22,
+    "ResidualFiveWitness": 27,
+    "ResidualFiveConclusion": 8
+  },
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unsafe_implementation_constants": [
+    [
+      "LychrelDigitSums",
+      "List.flatMapTR.go._at.OverflowNormalizationCertificate.finishFuel._spec_1"
+    ],
+    [
+      "PrefixInverse",
+      "List.mapTR.loop._at.SevenColumn.noOverflowPred._spec_1"
+    ],
+    [
+      "PrefixInverse",
+      "List.mapTR.loop._at.SevenColumn.overflowPred._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.mapTR.loop._at.OverflowNormalizationCertificate.feed._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.repr'._at._private.LychrelDigitSums.0.OverflowNormalizationCertificate.reprState.\u00ab_@\u00bb.LychrelDigitSums._hyg.20379._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_2"
+    ],
+    [
+      "PrefixInverse",
+      "List.flatMapTR.go._at.SevenColumn.noOverflowPred._spec_3"
+    ],
+    [
+      "PrefixInverse",
+      "List.filterTR.loop._at.SevenColumn.prefixPredecessors._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.mapTR.loop._at.OverflowNormalizationCertificate.next._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "OverflowCarryNormalization.iterPairs._elambda_1"
+    ],
+    [
+      "PrefixInverse",
+      "List.mapTR.loop._at.SevenColumn.overflowTailPred._spec_1"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.flatMapTR.go._at.OverflowNormalizationCertificate.initials._spec_3"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.flatMapTR.go._at.OverflowNormalizationCertificate.next._spec_2"
+    ],
+    [
+      "PrefixInverse",
+      "List.flatMapTR.go._at.SevenColumn.overflowTailPred._spec_2"
+    ],
+    [
+      "PrefixInverse",
+      "List.flatMapTR.go._at.SevenColumn.overflowTailPred._spec_3"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.flatMapTR.go._at.OverflowNormalizationCertificate.feed._spec_2"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_2"
+    ],
+    [
+      "PrefixInverse",
+      "List.flatMapTR.go._at.SevenColumn.noOverflowPred._spec_2"
+    ],
+    [
+      "LychrelDigitSums",
+      "List.flatMapTR.go._at.OverflowNormalizationCertificate.edge._spec_1"
+    ]
+  ],
+  "new_theorem_count": 152,
+  "dependency_theorem_count": 1380,
+  "all_source_hashes_unchanged": true,
+  "finished_utc": "2026-10-16T21:30:07Z",
+  "full_evidence": "complete-replay-evidence.tar.xz:clean/verification.json",
+  "source_theorem_declarations": 63,
+  "independent_compilation_count_note": "161 versus 152 new-module constants differs only by 9 generated _proof_N helpers. See complete archive publication/theorem-count-comparison.json."
+}
