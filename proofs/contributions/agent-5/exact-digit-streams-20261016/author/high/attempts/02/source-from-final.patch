@@ -1,0 +1,128 @@
+--- a/FractionDigits.lean
++++ b/FractionDigits.lean
+@@ -126,125 +126,4 @@
+   simp only [List.mem_cons, List.mem_nil_iff, or_false] at hc
+   rcases hc with h | h | h | h | h | h | h | h <;> subst h <;> decide
+ 
+-
+-/-- Exact high decimal exterior stream, including the empty word. The scale uses
+-its actual outgoing carry, without any threshold characterization of that carry. -/
+-theorem fractionDigits_exterior (c : Nat) (B : List Nat) (q : Nat)
+-    (hc : nonneutralPhase c) (hB : ∀ x ∈ B, x ≤ 18) :
+-    let k := if 10 ≤ c then 1 else 0
+-    let t := c - 9 * k
+-    let g := (normalize B.reverse k).2
+-    fractionDigits (B.length + 1 + q) (rhoNum c B) (9 * 10 ^ B.length * 10 ^ g) =
+-      (if g == 0 then (normalize B.reverse k).1.reverse ++ [t]
+-       else [1] ++ (normalize B.reverse k).1.reverse) ++ List.replicate q t := by
+-  let k := if 10 ≤ c then 1 else 0
+-  let t := c - 9 * k
+-  let g := (normalize B.reverse k).2
+-  let A := (normalize B.reverse k).1.reverse
+-  change fractionDigits (B.length + 1 + q) (rhoNum c B) (9 * 10 ^ B.length * 10 ^ g) =
+-    (if g == 0 then A ++ [t] else [1] ++ A) ++ List.replicate q t
+-  have hlen : A.length = B.length := by
+-    dsimp [A]
+-    rw [List.length_reverse, normalize_length, List.length_reverse]
+-  have ha : ∀ x ∈ A, x < 10 := by
+-    intro x hx
+-    exact normalize_digits_lt_ten B.reverse k x (List.mem_reverse.mp hx)
+-  have hk : k ≤ 1 := by dsimp [k]; split <;> decide
+-  have hb : ∀ x ∈ B.reverse, x ≤ 18 := by
+-    intro x hx
+-    exact hB x (List.mem_reverse.mp hx)
+-  have hg : g ≤ 1 := normalize_carry_le B.reverse k hb hk
+-  have ht := phase_tail_digit c hc
+-  change c = 9 * k + t ∧ t < 9 at ht
+-  have hv : highValue A + 10 ^ B.length * g = highValue B + k := by
+-    dsimp [A, g]
+-    rw [highValue_reverse_word]
+-    simpa [lowValue_reverse] using normalize_value_conservation B.reverse k
+-  by_cases hg0 : g = 0
+-  · have hnum : rhoNum c B = 9 * highValue A + t := by
+-      rw [hg0, Nat.mul_zero, Nat.add_zero] at hv
+-      unfold rhoNum
+-      omega
+-    have hf := fractionDigits_of_highValue A t (q + 1) ha ht.2
+-    simpa [hg0, hnum, hlen, List.replicate_succ, List.append_assoc,
+-      Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hf
+-  · have hg1 : g = 1 := by omega
+-    have ha1 : ∀ x ∈ (1 :: A), x < 10 := by
+-      intro x hx
+-      rcases List.mem_cons.mp hx with hx | hx
+-      · subst x; decide
+-      · exact ha x hx
+-    have hnum : rhoNum c B = 9 * highValue (1 :: A) + t := by
+-      rw [highValue_cons_digit, hlen, Nat.one_mul]
+-      rw [hg1, Nat.mul_one] at hv
+-      unfold rhoNum
+-      omega
+-    have hf := fractionDigits_of_highValue (1 :: A) t q ha1 ht.2
+-    simpa [hg1, hnum, hlen, Nat.pow_succ, Nat.mul_assoc] using hf
+-
+-/-- Asking for more digits preserves every already produced prefix. -/
+-theorem fractionDigits_prefix (n q r D : Nat) :
+-    (fractionDigits (n + q) r D).take n = fractionDigits n r D := by
+-  induction n generalizing r with
+-  | zero => simp [fractionDigits]
+-  | succ n ih => simp [fractionDigits, Nat.succ_add, ih]
+-
+-
+-/-- Long division of a proper fraction emits only decimal digits. -/
+-theorem fractionDigits_digits_lt_ten (n r D : Nat) (hr : r < D) :
+-    ∀ d ∈ fractionDigits n r D, d < 10 := by
+-  have hD : 0 < D := by omega
+-  induction n generalizing r with
+-  | zero => simp [fractionDigits]
+-  | succ n ih =>
+-    intro d hd
+-    simp only [fractionDigits] at hd
+-    rcases List.mem_cons.mp hd with hd | hd
+-    · subst d
+-      apply (Nat.div_lt_iff_lt_mul hD).2
+-      exact Nat.mul_lt_mul_of_pos_left hr (by decide)
+-    · exact ih _ (Nat.mod_lt _ hD) d hd
+-
+-/-- Every finite prefix of the exact high exterior stream contains decimal digits.
+-This follows from the stream formula and prefix consistency, without a separate
+-floor or threshold theorem for the outgoing carry. -/
+-theorem fractionDigits_exterior_digits_lt_ten (c : Nat) (B : List Nat) (n : Nat)
+-    (hc : nonneutralPhase c) (hB : ∀ x ∈ B, x ≤ 18) :
+-    let k := if 10 ≤ c then 1 else 0
+-    let g := (normalize B.reverse k).2
+-    ∀ d ∈ fractionDigits n (rhoNum c B) (9 * 10 ^ B.length * 10 ^ g), d < 10 := by
+-  let k := if 10 ≤ c then 1 else 0
+-  let t := c - 9 * k
+-  let g := (normalize B.reverse k).2
+-  let A := (normalize B.reverse k).1.reverse
+-  change ∀ d ∈ fractionDigits n (rhoNum c B) (9 * 10 ^ B.length * 10 ^ g), d < 10
+-  intro d hd
+-  have hp := fractionDigits_prefix n (B.length + 1) (rhoNum c B)
+-    (9 * 10 ^ B.length * 10 ^ g)
+-  have hlong : d ∈ fractionDigits (B.length + 1 + n) (rhoNum c B)
+-      (9 * 10 ^ B.length * 10 ^ g) := by
+-    rw [← hp] at hd
+-    have hmem := List.mem_of_mem_take hd
+-    simpa [Nat.add_comm] using hmem
+-  have he := fractionDigits_exterior c B n hc hB
+-  change fractionDigits (B.length + 1 + n) (rhoNum c B) (9 * 10 ^ B.length * 10 ^ g) =
+-    (if g == 0 then A ++ [t] else [1] ++ A) ++ List.replicate n t at he
+-  rw [he] at hlong
+-  have ht : t < 9 := (phase_tail_digit c hc).2
+-  have ha : ∀ x ∈ A, x < 10 := by
+-    intro x hx
+-    exact normalize_digits_lt_ten B.reverse k x (List.mem_reverse.mp hx)
+-  rcases List.mem_append.mp hlong with hfirst | htail
+-  · split at hfirst
+-    · rcases List.mem_append.mp hfirst with hA | ht'
+-      · exact ha d hA
+-      · have : d = t := by simpa using ht'
+-        omega
+-    · rcases List.mem_append.mp hfirst with h1 | hA
+-      · have : d = 1 := by simpa using h1
+-        omega
+-      · exact ha d hA
+-  · have : d = t := List.eq_of_mem_replicate htail
+-    omega
+-
+ end Agent5.ExactDigitStreams
