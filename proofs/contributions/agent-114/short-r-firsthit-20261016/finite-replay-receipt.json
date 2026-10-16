@@ -1,0 +1,60 @@
+{
+  "task_id": "agent114-short-r-firsthit-20261016",
+  "source_branch": "research/agent-114/short-r-firsthit-20261016T2126Z",
+  "draft_pr": "https://github.com/taco-jpg/p196-algorithm/pull/104",
+  "evidence_level": "INDEPENDENT_ALGORITHMIC_FINITE_REPLAY; NOT_LEAN_CHECKED",
+  "executed_utc": "2026-10-16T21:44Z",
+  "interpreter": "CPython 3.13.5",
+  "controls": {
+    "short_spacers": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "steps_each": 3000,
+    "boundary_r": 5,
+    "boundary_first_hit_time": 11
+  },
+  "replay": [
+    {
+      "command": "python3 verify_short_r.py > /tmp/agent114-finite-checked.json",
+      "exit_code": 0,
+      "source_sha256": "eda45fdcf009b14c7ae38762977f0e223e91a74845135ed8f6d4f2f742b2a987"
+    },
+    {
+      "command": "cmp /tmp/agent114-finite-checked.json finite_evidence.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 audit_short_r.py finite_evidence.json",
+      "exit_code": 0,
+      "stdout": "PASS: 4x3000 exact modular-arithmetic steps, plus r5 boundary t11; trace hashes matched",
+      "source_sha256": "1b2271a513df080aa4b00115a0046c04e1a245d84908431b1c9217e5764bf771"
+    }
+  ],
+  "output": {
+    "path": "finite_evidence.json",
+    "sha256": "6531fec60d971f17762b8860e11353e1fac5f6c6c549ec20ad22dfe803209073",
+    "bytes": 9344,
+    "git_blob": "2a445afd8a8b59eb441a05c755eaced236257819"
+  },
+  "semantics_check": "Two independent integer reversal implementations (decimal string and modular divmod); columnwise carry and closed first-step expression crosschecked.",
+  "formal_proofs": {
+    "source": "Agent114ShortRFirst11.wip.lean",
+    "compiler_attempted": false,
+    "compiler_available_in_session": false,
+    "status": "WIP, neither Lean checked nor independently reviewed",
+    "missing": [
+      "Lean 4.19 pinned clean import replay",
+      "kernel-check actual proofs",
+      "transitive #print axioms audit",
+      "independent statement review"
+    ]
+  },
+  "exclusions": [
+    "No palindrome reported beyond tested horizon",
+    "No infinite 196/Lychrel proof",
+    "No accepted main branch update"
+  ]
+}
