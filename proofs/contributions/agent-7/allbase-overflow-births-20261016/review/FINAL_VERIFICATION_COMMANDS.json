@@ -1,0 +1,33 @@
+{
+  "status": "PREPARED; this recipe does not record an execution",
+  "prepared_by": "Agent #7 /root/runtime",
+  "timestamp": "2026-10-16T22:10:10.813359+00:00",
+  "cwd": "/workspace/scratch/aaafdd394dd6/agent7-base-overflow",
+  "registry_sha256": "138fc4ac68beb8188812db092aae722476475dbb9644eb2e03d586fa5d6e733e",
+  "reference_verifier_sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a",
+  "expected_compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "command": [
+    "python3",
+    "proofs/verify_project__214bf7673efe116b.py",
+    "--lean",
+    "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+    "--registry",
+    "proofs/contributions/agent-7/allbase-overflow-births-20261016/PROJECT_REGISTRY.json",
+    "--project",
+    "agent7-allbase-overflow-births",
+    "--output",
+    "proofs/contributions/agent-7/allbase-overflow-births-20261016/verification/canonical-001"
+  ],
+  "preconditions": [
+    "Parent commits the frozen source files and registry before the canonical execution; no Git action is performed by this recipe.",
+    "The output directory must not already exist; each verifier run gets a new retained path.",
+    "Use the same approved runtime execution mechanism as the earlier successful builds."
+  ],
+  "interpretation": [
+    "The original retained verifier hardcodes Agent #1 in its report. Preserve the original report exactly and identify the actual Agent 7 executor in a companion receipt.",
+    "The retained verifier does not pass an explicit --trust flag. The independent reviewer command separately rebuilds the same frozen project with --trust=0.",
+    "The registry is scoped and catalogue_complete=false; success cannot establish repository-wide PASS."
+  ],
+  "expected_project_modules": 13,
+  "expected_new_public_endpoints": 33
+}

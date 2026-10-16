@@ -1,6 +1,6 @@
 # Actual all-base overflow births
 
-Status: complete mathematical source is author LEAN-CHECKED. The independent full-closure review and unchanged canonical verifier replay are pending at this source checkpoint. The registry records preparation, not an assumed acceptance result.
+Status: INDEPENDENTLY REVIEWED / canonical project verification PASS. All13 frozen modules,33 new public endpoints and338 module-origin theorem constants are checked. This scoped acceptance does not constitute a repository-wide build or main integration.
 
 Agent #7 owns task `agent7-allbase-overflow-births-20261016`, claimed at coordination commit `cc9c01d128808d9c0b2b1cf3921a76f7c00e9cf1`. The initial claim and ownership census remain in `SCOPE.json` and `scope/`; current proof and execution status are recorded here and in the development reports. `OverflowEndpoints.lean` splits the already-claimed endpoint obligation into its own module.
 
@@ -47,7 +47,7 @@ The final parent author replay is `canonical-dev/attempt-002/verification.json`,
 
 Each lane preserves its full author attempts, commands, source hashes, substantive logs and audit source. The canonical first attempt failed on a redundant `dsimp only` after the interior lets were already reduced; the original failed source and complete log remain. Its elaboration-error `sorryAx` is confined to the rejected attempt. The corrected accepted source introduces no sorry, axiom or unchecked shortcut. Endpoint fixture-only failures are likewise retained.
 
-A separate nonauthor execution already reviewed the actual index bridge, including off-by-one negative controls. Endpoint fixtures cover bounded nonsymmetric binary sources, excluded binary heads, an unbounded-head counterexample to the maximum criterion, and bound-free signed ternary coefficients. The final reviewer /root/runtime is independently executing the complete frozen closure and auditing all module-origin theorem constants; that result is not predeclared here.
+A separate nonauthor execution already reviewed the actual index bridge, including off-by-one negative controls. Endpoint fixtures cover bounded nonsymmetric binary sources, excluded binary heads, an unbounded-head counterexample to the maximum criterion, and bound-free signed ternary coefficients. The final reviewer /root/runtime independently compiled all13 frozen project modules with explicit trust0 and completed the full audit:338 project theorem constants plus11 constants from nine boundary contracts. All133 project public theorem roots plus9 review roots were inspected. The final report is review/final-003/verification.json, SHA256 eb4f8873b5001970d7a8140cb4a9b7c57661143e435010e9401ad49de8537101. Reviewer-only fixture/display failures remain preserved; the final audit pins the successfully compiled final-001 project objects. No mathematical source changed during review.
 
 The unchanged canonical verifier can replay this exact registry:
 
@@ -56,3 +56,11 @@ python proofs/verify_project__214bf7673efe116b.py --lean /path/to/lean-4.19.0/bi
 ```
 
 This is a one-step finite coefficient and numeral theorem. Run population, growth, ancestry, lifetime, infinite avoidance and the 196 conjecture are outside its scope. Agent #7 holds no main integration slot.
+
+## Final acceptance evidence
+
+The unchanged canonical verifier passed on clean local commit `96c618e812f3675c460d259ca76d3ce1b7073bd3`, whose complete tree `3d952a0a1deef7aec912a93d8654b33734e4b847` equals published/read-back source `4512ecb58abd9ff464d8d3b1c70b6abeb85472d0`. Its report SHA256 is `0d892b22478ed833adc75ee3da1e46b9a8420b7ba5fe0a12c9792e220a3db664`. `verification/AGENT7_EXECUTION_RECEIPT.json` identifies the actual Agent7 parent executor while preserving the original verifier's historical Agent1 label and compiler flags. The separate author and independent executions explicitly used `--trust=0`.
+
+`review/FINAL_REVIEW.json` records all semantic findings, authors/reviewers and the nine boundary contracts. The reviewer is a genuine nonauthor within the same Agent7 collaboration; no unaffiliated peer or separate-account approval is implied. `review/FINAL_STAGE_FILES.json` supplies the precise78-path final evidence packet. Publication manifests retain all substantive sources, failures, logs, commands and audits;122 identical source copies or reproducible objects have exact omission hashes. The four inherited compiler implementation constants are separately inventoried and absent from all theorem dependencies.
+
+The reviewable contribution is PR127. Integration remains the responsibility of the designated serial main owner.

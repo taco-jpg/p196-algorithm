@@ -1,0 +1,437 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent7-allbase-overflow-births": {
+      "status": "PASS",
+      "scope": "For every integer base b>=2, the original actual ordinary normalization of a bounded symmetric tagged coefficient word with computed terminal carry one has width L+1, the shifted adjacent interior pair identity and exact four-row zero/max classifiers, the neutral-neighbor necessary condition, and exact endpoint behavior including the binary exception. Canonical reverse-add specialization uses the unchanged ReverseAdd.reverse_add_normalization on bounded positive finite input digit words with literal coefficient projection. No orbit, lifetime, population or 196 claim is included.",
+      "sources": {
+        "BaseBirths": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/BaseBirths.lean",
+          "sha256": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33",
+          "build_sha256": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "SignedDigitUniqueness": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/SignedDigitUniqueness.lean",
+          "sha256": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+          "build_sha256": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "BaseReflection": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/BaseReflection.lean",
+          "sha256": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+          "build_sha256": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+          "imports": [
+            "SignedDigitUniqueness"
+          ],
+          "adapter": null
+        },
+        "ResetNormalization": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/ResetNormalization.lean",
+          "sha256": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+          "build_sha256": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+          "imports": [
+            "BaseReflection"
+          ],
+          "adapter": null
+        },
+        "AdjacentBirths": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/AdjacentBirths.lean",
+          "sha256": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59",
+          "build_sha256": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59",
+          "imports": [
+            "BaseBirths",
+            "ResetNormalization"
+          ],
+          "adapter": null
+        },
+        "PhysicalWidth": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/PhysicalWidth.lean",
+          "sha256": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+          "build_sha256": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+          "imports": [
+            "ResetNormalization"
+          ],
+          "adapter": null
+        },
+        "SeamSafety": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/SeamSafety.lean",
+          "sha256": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+          "build_sha256": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+          "imports": [
+            "PhysicalWidth"
+          ],
+          "adapter": null
+        },
+        "ReverseAdd": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/ReverseAdd.lean",
+          "sha256": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+          "build_sha256": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+          "imports": [
+            "SeamSafety"
+          ],
+          "adapter": null
+        },
+        "ActualBaseBirths": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/dependencies/ActualBaseBirths.lean",
+          "sha256": "e9fd9ed2a8065d7b6327d0400f7d94eea1049ba3f5b24241dcec244600121a6d",
+          "build_sha256": "e9fd9ed2a8065d7b6327d0400f7d94eea1049ba3f5b24241dcec244600121a6d",
+          "imports": [
+            "BaseBirths",
+            "ReverseAdd"
+          ],
+          "adapter": null
+        },
+        "OverflowDigits": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/OverflowDigits.lean",
+          "sha256": "37926723ba9d0d95b567f27607a810ea40d4fc622d60571d79228a5d33f33f8f",
+          "build_sha256": "37926723ba9d0d95b567f27607a810ea40d4fc622d60571d79228a5d33f33f8f",
+          "imports": [
+            "ActualBaseBirths"
+          ],
+          "adapter": null
+        },
+        "ActualOverflowBirths": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/ActualOverflowBirths.lean",
+          "sha256": "4c43069bfad9c9dc2f4af1a61c9e9438d26648a5cfe3e6958e001058e0d19b8d",
+          "build_sha256": "4c43069bfad9c9dc2f4af1a61c9e9438d26648a5cfe3e6958e001058e0d19b8d",
+          "imports": [
+            "AdjacentBirths",
+            "OverflowDigits"
+          ],
+          "adapter": null
+        },
+        "OverflowEndpoints": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/OverflowEndpoints.lean",
+          "sha256": "58a2656f3f38a891635f694b822a8fd41bdbea1d4f411a4ae3fa34a92dfdbe58",
+          "build_sha256": "58a2656f3f38a891635f694b822a8fd41bdbea1d4f411a4ae3fa34a92dfdbe58",
+          "imports": [
+            "OverflowDigits"
+          ],
+          "adapter": null
+        },
+        "CanonicalOverflowBirths": {
+          "path": "proofs/contributions/agent-7/allbase-overflow-births-20261016/CanonicalOverflowBirths.lean",
+          "sha256": "813b347aa3dac13033bd11f9281be7ad97fa6524346f91702397492185ff0f84",
+          "build_sha256": "813b347aa3dac13033bd11f9281be7ad97fa6524346f91702397492185ff0f84",
+          "imports": [
+            "ActualOverflowBirths",
+            "OverflowEndpoints"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "BaseBirths",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "BaseBirths.olean",
+            "BaseBirths.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 10.602512,
+          "log": "agent7-allbase-overflow-births/logs/BaseBirths.log",
+          "log_sha256": "2e8b81f2f0fde040767ca8191c13e33d0d32480670ae9ab9705d8fa3b55eb2e6"
+        },
+        {
+          "label": "SignedDigitUniqueness",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "SignedDigitUniqueness.olean",
+            "SignedDigitUniqueness.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.565756,
+          "log": "agent7-allbase-overflow-births/logs/SignedDigitUniqueness.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "BaseReflection",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "BaseReflection.olean",
+            "BaseReflection.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.918978,
+          "log": "agent7-allbase-overflow-births/logs/BaseReflection.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ResetNormalization",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ResetNormalization.olean",
+            "ResetNormalization.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.11905,
+          "log": "agent7-allbase-overflow-births/logs/ResetNormalization.log",
+          "log_sha256": "c68e347e10575d426d47addc8032e2198b791dc4489ac2476d35dcaf199dd52a"
+        },
+        {
+          "label": "AdjacentBirths",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "AdjacentBirths.olean",
+            "AdjacentBirths.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 12.361671,
+          "log": "agent7-allbase-overflow-births/logs/AdjacentBirths.log",
+          "log_sha256": "84ba9d432c9f797dfe96c828ec03ef5d9a51a9c2493b7d7787506935f3fa02e7"
+        },
+        {
+          "label": "PhysicalWidth",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PhysicalWidth.olean",
+            "PhysicalWidth.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.169316,
+          "log": "agent7-allbase-overflow-births/logs/PhysicalWidth.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "SeamSafety",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "SeamSafety.olean",
+            "SeamSafety.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.315067,
+          "log": "agent7-allbase-overflow-births/logs/SeamSafety.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ReverseAdd",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ReverseAdd.olean",
+            "ReverseAdd.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.617481,
+          "log": "agent7-allbase-overflow-births/logs/ReverseAdd.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ActualBaseBirths",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualBaseBirths.olean",
+            "ActualBaseBirths.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.76655,
+          "log": "agent7-allbase-overflow-births/logs/ActualBaseBirths.log",
+          "log_sha256": "fb60c617f1a3ce9b208189fdc04bde32688d6259e98c7fd27e9cd9a43115bcc1"
+        },
+        {
+          "label": "OverflowDigits",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OverflowDigits.olean",
+            "OverflowDigits.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.017041,
+          "log": "agent7-allbase-overflow-births/logs/OverflowDigits.log",
+          "log_sha256": "9868f16565dc186fe03303206dedbcad537da54bf86066f9c4e5e6c89a098f1f"
+        },
+        {
+          "label": "ActualOverflowBirths",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualOverflowBirths.olean",
+            "ActualOverflowBirths.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.57187,
+          "log": "agent7-allbase-overflow-births/logs/ActualOverflowBirths.log",
+          "log_sha256": "6a3e825d87d2b613a08f1fdcbd7ebf3087b571eff726975f1134640a61d6c0c5"
+        },
+        {
+          "label": "OverflowEndpoints",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "OverflowEndpoints.olean",
+            "OverflowEndpoints.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.616183,
+          "log": "agent7-allbase-overflow-births/logs/OverflowEndpoints.log",
+          "log_sha256": "aa72c326cc3933decfb946ef897c338fc038af19e1691072dbf92faf8868eaf1"
+        },
+        {
+          "label": "CanonicalOverflowBirths",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CanonicalOverflowBirths.olean",
+            "CanonicalOverflowBirths.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.365517,
+          "log": "agent7-allbase-overflow-births/logs/CanonicalOverflowBirths.log",
+          "log_sha256": "92e61684d6674473b3a49b4a52e0d7332868d702f23365fb710d86c5a21d5cfe"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 7.947593,
+          "log": "agent7-allbase-overflow-births/logs/ProjectAudit.log",
+          "log_sha256": "0c810952f9397980e636e99eff61bb2d0e35c5133031b56a99f87e0786b0cf71"
+        }
+      ],
+      "roots": [
+        "CanonicalOverflowBirths"
+      ],
+      "build_order": [
+        "BaseBirths",
+        "SignedDigitUniqueness",
+        "BaseReflection",
+        "ResetNormalization",
+        "AdjacentBirths",
+        "PhysicalWidth",
+        "SeamSafety",
+        "ReverseAdd",
+        "ActualBaseBirths",
+        "OverflowDigits",
+        "ActualOverflowBirths",
+        "OverflowEndpoints",
+        "CanonicalOverflowBirths"
+      ],
+      "theorem_count": 338,
+      "axiom_union": "[Quot.sound, propext, Classical.choice]",
+      "endpoints": [
+        "P196.Agent7.AllBaseOverflow.residue_zero_iff",
+        "P196.Agent7.AllBaseOverflow.residue_max_iff",
+        "P196.Agent7.AllBaseOverflow.adjacent_residues_zero_iff",
+        "P196.Agent7.AllBaseOverflow.adjacent_residues_max_iff",
+        "P196.Agent7.AllBaseOverflow.adjacentPair_zero_iff",
+        "P196.Agent7.AllBaseOverflow.adjacentPair_max_iff",
+        "P196.Agent7.AllBaseOverflow.adjacent_new_extreme_neutral",
+        "P196.Agent7.AllBaseOverflow.adjacent_without_neutral",
+        "P196.Agent7.AllBaseOverflow.ordinary_terminal_take_succ",
+        "P196.Agent7.AllBaseOverflow.incoming_succ",
+        "P196.Agent7.AllBaseOverflow.incoming_predecessor",
+        "P196.Agent7.AllBaseOverflow.incoming_mirror_predecessor",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_body",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_length",
+        "P196.Agent7.AllBaseOverflow.overflow_length_pos",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_at",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_last",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_pair_at",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_pair_getD",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_zero_iff",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_max_iff",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_new_extreme_neutral",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_without_neutral",
+        "P196.Agent7.AllBaseOverflow.endpoint_residue_positive",
+        "P196.Agent7.AllBaseOverflow.endpoint_residue_below_max",
+        "P196.Agent7.AllBaseOverflow.endpoint_residue_max_iff",
+        "P196.Agent7.AllBaseOverflow.overflow_head_coefficient_bound",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_pos",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonzero",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_max_iff",
+        "P196.Agent7.AllBaseOverflow.actual_overflow_endpoints_nonextreme",
+        "P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "BaseReflection",
+          "List.mapTR.loop._at.BaseReflection.residual._spec_1"
+        ],
+        [
+          "ResetNormalization",
+          "List.mapTR.loop._at.ResetNormalization.ordinaryTags._spec_1"
+        ],
+        [
+          "BaseReflection",
+          "List.mapTR.loop._at.BaseReflection.cs._spec_1"
+        ],
+        [
+          "BaseReflection",
+          "List.mapTR.loop._at.BaseReflection.qs._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792188705.211812,
+  "registry_sha256": "138fc4ac68beb8188812db092aae722476475dbb9644eb2e03d586fa5d6e733e",
+  "source_commit": "96c618e812f3675c460d259ca76d3ce1b7073bd3",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "This is the isolated Agent 7 all-base overflow-births contribution registry, not a complete repository-wide accepted-scope census."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792188746.6971169
+}

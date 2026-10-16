@@ -1,0 +1,261 @@
+{
+  "status": "INDEPENDENT SOURCE/SEMANTIC REVIEW PASS",
+  "reviewed_at": "2026-10-16T22:10:52.369472+00:00",
+  "reviewer": "/root/gap_inventory",
+  "author": "/root",
+  "reviewed_source": {
+    "path": "../CanonicalOverflowBirths.lean",
+    "sha256": "813b347aa3dac13033bd11f9281be7ad97fa6524346f91702397492185ff0f84",
+    "frozen_snapshot": "../canonical-dev/attempt-002/source/CanonicalOverflowBirths.lean"
+  },
+  "export": "P196.Agent7.AllBaseOverflow.canonical_reverse_add_overflow_theorem",
+  "all_thirteen_source_pins_rechecked": [
+    {
+      "module": "SignedDigitUniqueness",
+      "origin": "dependencies/SignedDigitUniqueness.lean",
+      "sha256": "2fcf33f52edfe006426ff521cca2a853e9c6180ffe8765fd6ec54622a1c75c64",
+      "bytes": 5610
+    },
+    {
+      "module": "BaseReflection",
+      "origin": "dependencies/BaseReflection.lean",
+      "sha256": "719deff95d949dd14d337d7a6fe2ff04fe268a7119fd3caf84c993153ff1db4c",
+      "bytes": 8676
+    },
+    {
+      "module": "ResetNormalization",
+      "origin": "dependencies/ResetNormalization.lean",
+      "sha256": "821647540a8231eb1329c44d1abf3aa5318d3ee27acde36ec3f7f636b692f3cf",
+      "bytes": 10009
+    },
+    {
+      "module": "PhysicalWidth",
+      "origin": "dependencies/PhysicalWidth.lean",
+      "sha256": "d44882a91123b114b39c2c64dd08f4dca37482210d22f937c4a8aca7867578de",
+      "bytes": 14654
+    },
+    {
+      "module": "SeamSafety",
+      "origin": "dependencies/SeamSafety.lean",
+      "sha256": "e7be7078d2351a20517c8c616710bbc9af01134cd191f205424f7cb966185f91",
+      "bytes": 4366
+    },
+    {
+      "module": "ReverseAdd",
+      "origin": "dependencies/ReverseAdd.lean",
+      "sha256": "ef99e631210b063b0ab76b15a57d0f5ee47f88c3bbbfededef9fd2d5b694dd7d",
+      "bytes": 8135
+    },
+    {
+      "module": "BaseBirths",
+      "origin": "dependencies/BaseBirths.lean",
+      "sha256": "dcca96672161ac382020d476c6bf75d2b3b47456c76193cba55fdfcd6650af33",
+      "bytes": 4278
+    },
+    {
+      "module": "ActualBaseBirths",
+      "origin": "dependencies/ActualBaseBirths.lean",
+      "sha256": "e9fd9ed2a8065d7b6327d0400f7d94eea1049ba3f5b24241dcec244600121a6d",
+      "bytes": 7600
+    },
+    {
+      "module": "AdjacentBirths",
+      "origin": "AdjacentBirths.lean",
+      "sha256": "6585cab8fbb64f64115f76c59a6a061598b3d03c563797642e2de70f38ae9c59",
+      "bytes": 7824
+    },
+    {
+      "module": "OverflowDigits",
+      "origin": "OverflowDigits.lean",
+      "sha256": "37926723ba9d0d95b567f27607a810ea40d4fc622d60571d79228a5d33f33f8f",
+      "bytes": 8084
+    },
+    {
+      "module": "ActualOverflowBirths",
+      "origin": "ActualOverflowBirths.lean",
+      "sha256": "4c43069bfad9c9dc2f4af1a61c9e9438d26648a5cfe3e6958e001058e0d19b8d",
+      "bytes": 5516
+    },
+    {
+      "module": "OverflowEndpoints",
+      "origin": "OverflowEndpoints.lean",
+      "sha256": "58a2656f3f38a891635f694b822a8fd41bdbea1d4f411a4ae3fa34a92dfdbe58",
+      "bytes": 5313
+    },
+    {
+      "module": "CanonicalOverflowBirths",
+      "origin": "CanonicalOverflowBirths.lean",
+      "sha256": "813b347aa3dac13033bd11f9281be7ad97fa6524346f91702397492185ff0f84",
+      "bytes": 3297
+    }
+  ],
+  "independent_execution_performed": false,
+  "execution_scope": "This receipt is independent source and meaning review only. The parent-author build receipt was inspected; /root/runtime owns the independent final closure and all-public-constant audit.",
+  "inspected_author_execution": {
+    "path": "../canonical-dev/attempt-002/verification.json",
+    "sha256": "691824d7d0122b32fb14f553ccdc49c615ef4552f7e254c963943e49657178d7",
+    "modules": 13,
+    "all_exit_zero": true,
+    "reported_canonical_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "findings": [
+    {
+      "area": "Literal numerical semantics",
+      "verdict": "PASS",
+      "reason": "output is a let alias for the unchanged PhysicalWidth.actualDigits b xs; Q is ReverseAdd.pairs output. The proof directly consumes ReverseAdd.reverse_add_normalization with exactly the supplied b, digits, xs, DigitBounds, PositiveLast and coefficient projection equality. No replacement evaluator, carrying function, digit representation or orbit is introduced."
+    },
+    {
+      "area": "Canonical input and output",
+      "verdict": "PASS",
+      "reason": "DigitBounds requires every input digit between zero and b-1. PositiveLast excludes empty/leading-zero most-significant input words. The original theorem supplies the same two properties for output, together with eval b output = eval b digits + reversedValue b digits. reversedValue is eval b digits.reverse, so reversal trailing zeros are evaluated correctly."
+    },
+    {
+      "area": "Derived source hypotheses",
+      "verdict": "PASS",
+      "reason": "tagged_pairs_bound derives Bounded b xs from the literal coefficient projection equality and input digit bounds. pairs_symmetric derives coefficient symmetry without assuming the input digit word is palindromic. Reset flags remain arbitrary; actualDigits and incoming perform ordinary continuous carrying."
+    },
+    {
+      "area": "Computed overflow premise",
+      "verdict": "PASS",
+      "reason": "ho states that the existing terminal function on ordinaryTags xs from zero equals one. The proof does not assume an independent outgoing carry. Substitution of ho into the original normalization length formula gives output.length = digits.length+1."
+    },
+    {
+      "area": "Source and output widths",
+      "verdict": "PASS",
+      "reason": "Applying List.length to hqs and using List.length_map and ReverseAdd.pairs_length gives xs.length = digits.length. Thus actual_overflow_length and pairs_length yield Q.length = xs.length+1, and xs.length is the genuine final output index."
+    },
+    {
+      "area": "Quantifier and endpoint coverage",
+      "verdict": "PASS",
+      "reason": "With L=xs.length, every valid actual paired-output index lies in exactly one of i=0, 0<i<L, or i=L. The theorem provides the exact endpoint formula, positivity and separate maximum equivalences at both boundary indices, plus complete zero/max classifications for every strict interior index. No output position is omitted."
+    },
+    {
+      "area": "Width-one and empty boundaries",
+      "verdict": "PASS",
+      "reason": "Terminal one excludes L=0. For L=1 the strict interior quantifier is empty, while output has length two and both endpoints remain explicitly covered. This preserves the width-one canonical input case."
+    },
+    {
+      "area": "getD defaults and predecessor access",
+      "verdict": "PASS",
+      "reason": "The hypotheses prove every referenced output index is valid and both source indices i-1/i are valid. The underlying bridge explicitly translates getD to getElem at these bounds. Default zero cannot manufacture an interior zero case or an endpoint value."
+    },
+    {
+      "area": "Shifted mirror and actual carries",
+      "verdict": "PASS",
+      "reason": "The wrapper sets a=q_(i-1), z=q_i, u=incoming b xs i, v=incoming b xs (L-i), matching the actual L+1-width mirror. ActualOverflowBirths discharges the predecessor and mirrored predecessor equations through the frozen OverflowDigits API; no abstract carry choices are substituted."
+    },
+    {
+      "area": "Complete interior extreme statements",
+      "verdict": "PASS",
+      "reason": "Both displayed four-row disjunctions agree with the frozen actual_zero/max classifiers, including their required outgoing carry values. The new-extreme implication excludes the corresponding homogeneous old extreme pair and states a necessary neutral-neighbor condition; it does not assert that neutrality alone is sufficient."
+    },
+    {
+      "area": "Endpoint maximum and base-three consequence",
+      "verdict": "PASS",
+      "reason": "Each endpoint separately has maximum iff b=2 and q0=1, using the correctly derived source bound. Positivity excludes zero. Consequently b>=3 excludes both extreme values at both endpoints, even though that corollary is not redundantly repeated as another conjunct."
+    },
+    {
+      "area": "Scope and provenance",
+      "verdict": "PASS",
+      "reason": "The result is universally quantified over bases b>=2 and finite canonical input words satisfying the actual computed overflow premise. It is a one-step theorem with no run growth, persistence, infinite orbit or 196 conclusion. It does not claim the pre-existing binary110 control as new."
+    }
+  ],
+  "issues": [],
+  "staging_review": {
+    "status": "PASS",
+    "scope": "Union of digits-dev and endpoint-dev flat staging manifests at the recorded hashes; no Git/index mutation performed.",
+    "manifests": {
+      "digits-dev": {
+        "manifest": "digits-dev/STAGE_FILES.json",
+        "manifest_sha256": "d8522cf84697437840cdaaf3c42a7a6f46aa7c0bd262957a5320e51a09764c85",
+        "paths": 35,
+        "missing_files": [],
+        "duplicate_paths": [],
+        "compiled_objects": [],
+        "copied_dependencies": [],
+        "nonempty_logs": [
+          "digits-dev/attempt-001/ActualBaseBirths.log",
+          "digits-dev/attempt-001/BaseBirths.log",
+          "digits-dev/attempt-001/OverflowDigits.log",
+          "digits-dev/attempt-001/ResetNormalization.log",
+          "digits-dev/attempt-001/compiler-version.log",
+          "digits-dev/attempt-002/ActualBaseBirths.log",
+          "digits-dev/attempt-002/BaseBirths.log",
+          "digits-dev/attempt-002/OverflowDigits.log",
+          "digits-dev/attempt-002/ResetNormalization.log",
+          "digits-dev/attempt-002/compiler-version.log"
+        ],
+        "omitted_nonempty_logs": [],
+        "omitted_required_attempt_evidence": [],
+        "publication_record_hash_drift": []
+      },
+      "endpoint-dev": {
+        "manifest": "endpoint-dev/STAGE_FILES.json",
+        "manifest_sha256": "d7335e616d9e2401b7c648c7f9ade917804d8058540ffd544e49b909e70bf823",
+        "paths": 59,
+        "missing_files": [],
+        "duplicate_paths": [],
+        "compiled_objects": [],
+        "copied_dependencies": [],
+        "nonempty_logs": [
+          "endpoint-dev/attempt-001/ActualBaseBirths.log",
+          "endpoint-dev/attempt-001/BaseBirths.log",
+          "endpoint-dev/attempt-001/EndpointBoundaryControls.log",
+          "endpoint-dev/attempt-001/OverflowDigits.log",
+          "endpoint-dev/attempt-001/OverflowEndpoints.log",
+          "endpoint-dev/attempt-001/ResetNormalization.log",
+          "endpoint-dev/attempt-001/compiler-version.log",
+          "endpoint-dev/attempt-002/ActualBaseBirths.log",
+          "endpoint-dev/attempt-002/BaseBirths.log",
+          "endpoint-dev/attempt-002/EndpointBoundaryControls.log",
+          "endpoint-dev/attempt-002/OverflowDigits.log",
+          "endpoint-dev/attempt-002/OverflowEndpoints.log",
+          "endpoint-dev/attempt-002/ResetNormalization.log",
+          "endpoint-dev/attempt-002/compiler-version.log",
+          "endpoint-dev/attempt-003/ActualBaseBirths.log",
+          "endpoint-dev/attempt-003/AllExportsAudit.log",
+          "endpoint-dev/attempt-003/BaseBirths.log",
+          "endpoint-dev/attempt-003/OverflowDigits.log",
+          "endpoint-dev/attempt-003/OverflowEndpoints.log",
+          "endpoint-dev/attempt-003/ResetNormalization.log",
+          "endpoint-dev/attempt-003/compiler-version.log"
+        ],
+        "omitted_nonempty_logs": [],
+        "omitted_required_attempt_evidence": [],
+        "publication_record_hash_drift": []
+      }
+    },
+    "union_paths": 94,
+    "cross_manifest_duplicate_paths": [],
+    "retained_nonempty_logs": 31,
+    "same_byte_source_checkpoint_groups": [
+      [
+        "OverflowDigits.lean",
+        "digits-dev/attempt-002/source/OverflowDigits.lean"
+      ],
+      [
+        "OverflowEndpoints.lean",
+        "endpoint-dev/attempt-001/source/OverflowEndpoints.lean",
+        "endpoint-dev/attempt-002/source/OverflowEndpoints.lean",
+        "endpoint-dev/attempt-003/source/OverflowEndpoints.lean"
+      ],
+      [
+        "endpoint-dev/EndpointBoundaryControls.lean",
+        "endpoint-dev/attempt-003/source/EndpointBoundaryControls.lean"
+      ],
+      [
+        "endpoint-dev/attempt-001/source/AllExportsAudit.lean",
+        "endpoint-dev/attempt-002/source/AllExportsAudit.lean",
+        "endpoint-dev/attempt-003/source/AllExportsAudit.lean"
+      ]
+    ],
+    "checkpoint_interpretation": "Repeated bytes in author source snapshots and generated audit snapshots intentionally preserve the exact inputs of each retained successful or failed attempt. They are not copied dependency infrastructure. No pinned dependency source copies or compiled objects are included.",
+    "publication_manifests_retained": true,
+    "additional_root_staging_file": "review/canonical-gap-source.json"
+  },
+  "source_mutations": "None. Only this review/canonical-gap-source.json receipt was created."
+}
