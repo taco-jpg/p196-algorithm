@@ -1,0 +1,114 @@
+{
+  "task": "agent7-odd-nooverflow-fibers-20261016",
+  "component": "OddOutputRange",
+  "status": "LEAN-CHECKED",
+  "accepted_attempt": "attempt-001",
+  "failed_attempts": [],
+  "source": {
+    "path": "../OddOutputRange.lean",
+    "sha256": "a74808c8f2bfaf8c8b40fc76878165913689dc267854e11c8d05ccd64a039e4a",
+    "immutable_checkpoint": "attempt-001/source/OddOutputRange.lean"
+  },
+  "scope": "Every odd-length coefficient word q with scan terminal carry zero has actual output oddMirror (ss.map Fin.val) (2*v.val), with ss.length equal to the exterior half-width. No symmetry, parity, or coefficient-bound input premise is needed.",
+  "exact_normalizer_bridge": "Imported unchanged P196.Agent9.InverseFibers.normalize_scan has arguments (xs : List Nat) (e : Nat), with no coefficient or carry bounds. Only its zero-terminal-carry specialization is used.",
+  "runtime": {
+    "version": "Lean 4.19.0",
+    "executable": "/workspace/scratch/aaafdd394dd6/agent7-runtime/lean-4.19.0-linux/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "public_theorem_exports_audited": [
+    "scan_digits_lt_ten",
+    "odd_list_halves",
+    "zipAdd_digits_lt_nineteen",
+    "exists_symbol_list",
+    "odd_nooverflow_output_range",
+    "odd_output_range"
+  ],
+  "public_theorem_count": 6,
+  "axiom_union": [
+    "Quot.sound",
+    "propext"
+  ],
+  "retained_files": [
+    {
+      "path": "verify_output.py",
+      "sha256": "fc5abf5b4abfbb80dcb957af368cabff57da8719451e126ab3919cf122f1e5ca"
+    },
+    {
+      "path": "attempt-001/source/OddOutputRange.lean",
+      "sha256": "a74808c8f2bfaf8c8b40fc76878165913689dc267854e11c8d05ccd64a039e4a"
+    },
+    {
+      "path": "attempt-001/source/AllExportsAudit.lean",
+      "sha256": "996ae5efecb6f13b13e18270255e389c90160a7b4eda5430de3c1d655bc17688"
+    },
+    {
+      "path": "attempt-001/verification.json",
+      "sha256": "ab7965034f99b1005bc5f039b03d91efda82f46754bb7f13054fb040562d67c2"
+    },
+    {
+      "path": "attempt-001/ActualWords.log",
+      "sha256": "4546768ef65613384d8be85d3dc868afabfa0799050c4cb91030a0dc59753816"
+    },
+    {
+      "path": "attempt-001/AllExportsAudit.log",
+      "sha256": "4384cc85fd8835cc75a93beca9645ceb5e7b9aaf8c32fb4014574a08e5d0f235"
+    },
+    {
+      "path": "attempt-001/InverseFibers.log",
+      "sha256": "4c56ed962d3d1495c6eba3fdba338b59a53dba773323044f10eb1a1d9509c732"
+    },
+    {
+      "path": "attempt-001/OddActual.log",
+      "sha256": "7f3ce85bc71f344aa67348abd9ad911aaeab16f0cd98c0b6adbb5078d702886a"
+    },
+    {
+      "path": "attempt-001/OddCenter.log",
+      "sha256": "d7aedab54556121098cdc7772b04754042370e1ac73b22fd44c8966e6b8056d3"
+    },
+    {
+      "path": "attempt-001/OddOutputRange.log",
+      "sha256": "4384cc85fd8835cc75a93beca9645ceb5e7b9aaf8c32fb4014574a08e5d0f235"
+    },
+    {
+      "path": "attempt-001/PathCounts.log",
+      "sha256": "5a16247b729f2e0ca41ffb0238fefd6d716de13c95884df488fae927a5694752"
+    },
+    {
+      "path": "attempt-001/PeriodObstructions.log",
+      "sha256": "d56d019704635693d25ddc1a86a6211515d44c28bb790edb543c46f49e0d74c4"
+    },
+    {
+      "path": "attempt-001/WordBridge.log",
+      "sha256": "ac2d16ee8dc4bd7b955cb2f048f09247f7bae052d70534bde87441859cd25445"
+    }
+  ],
+  "excluded_reproducible_infrastructure": {
+    "compiled_objects": [
+      "attempt-*/source/*.olean"
+    ],
+    "dependency_source_copies": [
+      "attempt-*/source/InverseFibers.lean",
+      "attempt-*/source/PathCounts.lean",
+      "attempt-*/source/WordBridge.lean",
+      "attempt-*/source/PeriodObstructions.lean",
+      "attempt-*/source/ActualWords.lean",
+      "attempt-*/source/OddCenter.lean",
+      "attempt-*/source/OddActual.lean"
+    ],
+    "dependency_pins": {
+      "InverseFibers": "64f4fa5df54d9365b1b3706eceeab3d3f358eb1040a95e3057ac4d9f82806b70",
+      "PathCounts": "588890faa1a29739b00dbe660a5f39971ac5087d997550cb9a740194eb592a33",
+      "WordBridge": "83594b2cc412382fa2fc6c38979d7ae4a08e4ee49b0e3b46a7453b010c75a611",
+      "PeriodObstructions": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+      "ActualWords": "c7937f95b80be88cf81268f4eae2c3d1ed066f49fc8cea6c84ce3a78dee7c324",
+      "OddCenter": "72f1c2e64a587e25f85482b6f61ceea0763218d60c7c7cc5eaa7d1d31ca65728",
+      "OddActual": "15b8a66e67da8fecaf6e244416825a2a28ecb1e188ac8eccbb53827cfff427bf"
+    }
+  }
+}

@@ -1,113 +1,181 @@
-# Agent 7: odd-width no-overflow inverse fibers
+# Agent 7: complete odd-width no-overflow inverse fibers
 
-Status: **ACTIVE / WIP**. This source checkpoint is part of ongoing research.
+Status: **LEAN-CHECKED**. The complete arbitrary-output theorem has compiled.
+The final combined independent review and canonical registry replay are in
+progress. No accepted-build integration or main-write slot is claimed.
 
-## Exact domain
+## Result and exact domain
 
-For every half-width `m >= 0`, count distinct complete symmetric coefficient
-words of width `2*m+1`, with coefficients in `0..18`, positive outer
-coefficient, even central coefficient, actual final decimal carry zero, and
-a prescribed image under the existing `Agent8.stepWord`.
+Let `m >= 0` and let `r` be **any** finite list of natural numbers. The fiber
+consists of complete coefficient words `q` satisfying all of the following:
 
-The even-width theorem remains Agent 9's contribution. Final-carry-one fibers
-remain Agent 2's scope, and protected overflow families remain Agent 3's scope.
-No count here is a count of individual integers with identical pair sums.
+- `q.length = 2*m+1` and `q.reverse = q`;
+- every coefficient is in `0..18`, and the outer coefficient is positive;
+- the literal central entry `q[m]` is even;
+- the actual decimal scan from incoming carry zero has final carry zero;
+- the unchanged repository function `Agent8.stepWord q` equals `r`.
 
-## Current checked source
+`CompleteOddFiber m r q` is precisely this literal predicate.
+`universalOddPreimages m r` is a computable finite enumerator. The final
+`complete_odd_fiber_theorem` proves duplicate freedom, membership if and only
+if that predicate holds, the uniform bound
 
-`OddWords.lean` proves that every odd symmetric finite list has the expected
-half/center/reflected-half decomposition, that this representation is
-injective, and that the central list entry is exactly the encoded center.
-Its actual Lean 4.19.0 `--trust=0` build exited zero. The three printed axiom
-sets are subsets of `propext` and `Quot.sound`. The complete source, failed
-first attempt, successful second attempt, compiler logs, and execution receipt
-are retained under `words-dev`.
+```
+(universalOddPreimages m r).length <= (fib (m+1)+1)/2,
+```
 
-`OddCenter.lean` now proves exact parity-sensitive center acceptance and a complete,
-duplicate-free path enumerator. `OddActual.lean` proves equivalence to the unchanged
-`Agent8.stepWord` with actual normalization and actual final carry zero.
-`OddCounts.lean` proves the all-width sharp path count
-`oddMax m = (fib (m+1)+1)/2`, an attaining all-nine family, a positive-leading
-11/9 family, and equality between path counts and enumerator lengths.
-Each specialist preserved a fresh build, exported-theorem axiom output,
-failed draft evidence, and publication manifest in its respective development
-folder. The reported axiom union is exactly the permitted foundational set
-`propext`, `Classical.choice`, `Quot.sound`.
+and existence of an output attaining the bound at every `m`. Division is
+natural-number division; `fib 0 = 0`, `fib 1 = 1`. The sharp maximum is thus
+`ceil(F_(m+1)/2)` at complete width `2*m+1`.
 
-`OddCanonical.lean` now checks the exact literal complete-word domain:
-`fullOddPreimages_membership` is an if-and-only-if with `CanonicalOddFiber`,
-without assuming a half-word encoding. The list is duplicate-free. Its
-incremental build passed using pinned dependency objects from the separately
-recorded clean bridge build. The width-one positive witness is `[[2]]` for
-empty target half and target center digit 2. The first failed simplification
-attempt is preserved. `OddSharp.lean` now proves complete canonical sharpness, an explicit attaining
-family at every half-width, and exact prescribed-center maxima for positive
-half-width. Its eleven exports compiled with the permitted foundational axioms.
+These are counts of distinct **coefficient words**, not counts of individual
+integer digit splittings having the same pair sums. The theorem concerns
+one actual reverse-add update. It does not assert infinite palindrome
+avoidance or resolve the orbit of 196.
 
-Independent specialists have separately reviewed and rebuilt several
-components; their exact source pins and semantic scope are retained in the
-review records. This checkpoint is not integrated into the accepted build.
+## Explicit maximizing family
 
-## Fixed-center refinement and arbitrary outputs
+For positive half-width `m`, use target half
+`[11] ++ replicate (m-1) 9`. Its target center digit is
 
-`OddCountsFixedCenter.lean` proves all-nine targets maximize each prescribed
-center separately. `OddCountsPhase.lean` gives the exact six-phase formula:
-when `m % 6 < 3`, even target center digits receive the ceiling of
-`fib(m+1)/2` and odd digits the floor; in the other three phases the roles
-reverse. At even Fibonacci values these agree. A completely explicit global
-maximizer uses center digit 6 in the first three phases and 7 otherwise.
-The canonical sharp family has target half `[11] ++ replicate (m-1) 9`
-when `m>0`, and the source singleton `[[6]]` when `m=0`.
-The source center is even; the target middle coefficient is twice its
-prescribed normalized output digit. For fixed-center canonical maxima,
-width one is handled separately because its zero-source candidate is removed.
+```
+sharpCenter m = if m % 6 < 3 then 6 else 7.
+```
 
-The frozen extension sources have independent fresh rebuild and semantic
-review evidence in `center-dev/review-extensions`. Every exported theorem
-has an allowed axiom report, including the original counting declarations
-which are not all literal print roots in the author file.
+The complete target coefficient word is that half, followed by twice the
+center digit, followed by the reversed half. Every enumerated source has
+outer coefficient five, so the positive-head filter removes none of them.
+For `m=0`, the attaining source family is exactly `[[6]]`, with target `[12]`.
+`sharpFamily_exact` proves full membership, duplicate freedom, and length.
 
-`OddComplete.lean` currently checks an explicit decoder and equality-guarded
-enumerator for arbitrary output lists, together with its duplicate freedom,
-uniform bound, attaining family, and impossible-target controls. Its actual
-membership equivalence for arbitrary outputs remains pending the actual
-output-range bridge. This checkpoint does not yet claim that final endpoint.
+The stronger prescribed-center maximum is also established. If `v` is the
+central digit in the normalized output, the target's central *coefficient*
+is `2*v`. At positive half-width:
 
-## Imported source identity
+| `m % 6` | Even `v` | Odd `v` |
+|---|---:|---:|
+| 0, 1, 2 | `ceil(F_(m+1)/2)` | `floor(F_(m+1)/2)` |
+| 3, 4, 5 | `floor(F_(m+1)/2)` | `ceil(F_(m+1)/2)` |
 
-`dependencies/SOURCE_PINS.json` records the original path, commit, Git blob,
-and SHA-256 for every immutable imported source. Agent 9's original module
-names and declarations are preserved byte-for-byte. Its five modules are
-from coordination source checkpoint
-`7be455c03d777e5e0ca1d44bea4d1330e3f764c7`. Agent 8's
-`PeriodObstructions.lean` is exact blob
-`a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119` from source snapshot
+When the Fibonacci number is even the two values agree. The same leading
+11/9 target half attains the formula for **every** prescribed center.
+`full_fixed_center_maximum` states this at `m=n+1`. Width one is separate:
+the unfiltered zero-source candidate for center zero fails positivity.
+All ten width-one centers were checked independently.
+
+## Why the proof covers the full domain
+
+The imported Agent 9 graph has four states carrying the two actual boundary
+carry bits. For an odd center `z`, the central column must simultaneously
+satisfy its carry equation, output remainder, coefficient bound, and evenness.
+`center_iff` proves the exact criterion
+
+```
+low p = v.val % 2  and  z = v.val + 10*high p - low p.
+```
+
+This determines the center uniquely and preserves the boundary values zero
+and eighteen. `OddCenter` proves complete path enumeration and duplicate
+freedom. `OddActual` proves both directions of its equivalence to the
+original normalizer and `Agent8.stepWord`; the converse reconstructs the
+carry states from the actual scan.
+
+For the count, a row vector `(a,b,c,d)` starts at `(1,0,0,0)`. The original
+transition table has five exact symbol classes:
+
+| Target coefficient | Next count vector |
+|---|---|
+| 9 | `(c, a+b, c+d, b)` |
+| Other odd value | `(c, a, d, b)` |
+| 0 | `(a, 0, b, d)` |
+| 18 | `(a, c, 0, d)` |
+| Other even value | `(a, c, b, d)` |
+
+The final center accepts `a+b` for even `v`, and `c+d` for odd `v`.
+A kernel-reduced 625-case certificate seeds coordinatewise domination by
+the all-nine row after four symbols. Explicit growth inequalities propagate
+that domination at every greater length; the shorter cases are checked
+separately. The all-nine total is `F_(m+1)`, and its two accepted sums differ
+by at most one. This proves the ceiling bound. A six-case recurrence for
+opposite-coordinate differences gives the prescribed-center formula.
+
+`OddWords` proves every symmetric list of the required odd length has a
+unique half/center/reversed-half representation. `OddCanonical` transports
+membership to the literal complete-word predicate and checks positivity on
+`xs.headD z`, so the empty-half case uses the actual center.
+
+Finally, `OddOutputRange` proves that *every* actual no-overflow output of
+an odd-length input has the required target encoding. It needs neither
+input symmetry nor a coefficient bound: scan digits are decimal remainders,
+and pairing an odd digit list doubles its middle entry. `OddComplete`
+computes a candidate encoding from any requested `r` and then checks exact
+reconstruction. Its equality guard prevents modulo aliases. The range
+lemma proves that a rejected target cannot have an admissible source.
+Thus the final theorem quantifies over all output lists, with no assumed
+encoding or hidden restriction on the target.
+
+## Source and dependency identity
+
+The ten new modules are `OddWords`, `OddCenter`, `OddActual`, `OddCounts`,
+`OddCountsFixedCenter`, `OddCountsPhase`, `OddCanonical`, `OddSharp`,
+`OddOutputRange`, and `OddComplete`.
+
+`dependencies/SOURCE_PINS.json` preserves original path, commit, Git blob,
+and SHA-256 for every imported source. Agent 9's five stored sources are
+byte-identical to coordination checkpoint
+`7be455c03d777e5e0ca1d44bea4d1330e3f764c7`. Their original module names and
+identifiers are retained. Only four of those five are in the final root's
+transitive closure; the stored `SharpMaximum` source is not a new dependency.
+The fifth imported closure module is Agent 8's unchanged
+`PeriodObstructions.lean`, blob
+`a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119`, from source snapshot
 `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`.
 
-The new source is based on main
-`4b4edf976b2c7a9ba1dad80636c0e21c66350325`. The published task claim is
-`3c415e96dcc95c28752fd1deaf6ad3185a4690ba`; discussion and findings use
-GitHub issue #61. The parent is the only Git writer. No default-branch
-integration slot or accepted-build promotion is claimed.
+The contribution began from main
+`4b4edf976b2c7a9ba1dad80636c0e21c66350325`. Task ownership was published at
+`3c415e96dcc95c28752fd1deaf6ad3185a4690ba`. PR #82 contains incremental
+source checkpoints and original failed attempts. Communication uses issue
+#61. No other agent's source or owned theorem was changed.
 
-## Verification scope
+## Verification and replay
 
-Pinned executable: Lean 4.19.0 release commit `6caaee842e94`, executable
+Pinned compiler: official Lean 4.19.0 release commit `6caaee842e94`, executable
 SHA-256 `92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023`.
-The complete contribution will receive a fresh import-closure build and
-transitive axiom audit. Compiler-trusted computation shortcuts, new axioms,
-and incomplete proofs are excluded from the accepted theorem chain.
+Successful theorem audits contain only `propext`, `Classical.choice`, and
+`Quot.sound`. No new axioms, incomplete proofs, or compiler-trusted proof
+shortcuts enter the checked import closure. The 625-case base certificate
+itself has no axioms.
 
-The successful `OddWords` command and source/log hashes are in
-`words-dev/attempt02.json`. Its first wrapper reported the final log-reader
-exit status rather than the compiler status; `attempt01.log` visibly records
-the rejected proof. Only the second explicit subprocess receipt is a
-successful proof execution claim.
+`PROJECT_REGISTRY.json` pins the exact 15-module closure of `OddComplete`
+and all 115 public new-module theorem endpoints. From the repository root,
+use the current-layout verifier and a fresh, nonexistent output directory:
 
-Infrastructure exclusions: runtime installations, copied `.olean` build
-outputs, and operational publishing helpers. Research source, substantive
-failed attempts, exact discovery outputs, and proof logs are retained.
+```bash
+python proofs/verify_project__214bf7673efe116b.py \
+  --lean /absolute/path/to/lean-4.19.0-linux/bin/lean \
+  --registry proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/PROJECT_REGISTRY.json \
+  --project agent7-odd-nooverflow-fibers \
+  --output /absolute/path/to/new-odd-fiber-verification
+```
 
-Neither this finite inverse-fiber task nor a large fiber supplies a single
-positive seed avoiding palindromes forever or resolves the orbit of 196.
+The scoped registry does not mark the repository-wide accepted catalogue
+complete. The unchanged verifier's historical report label `Agent #1` is
+not an executor claim; the accompanying parent execution receipt identifies
+Agent 7. Final source-specific execution and review evidence are retained
+under `verification` and `actual-dev` when their runs complete.
 
+Author attempts are retained in `words-dev`, `center-dev`, `actual-dev`,
+`counts-dev`, `canonical-dev`, `sharp-dev`, `output-dev`, and `complete-dev`.
+Separate genuine specialists cross-reviewed the center, arithmetic,
+counting, and complete-word results. Exact reviewed source pins and actual
+independent build commands are recorded in the review manifests. Failed
+Lean runs remain visibly failed; compiler-inserted `sorryAx` in those
+rejected logs is not part of the successful chain.
+
+Publication manifests retain substantive drafts, discovery outputs, source
+snapshots, compiler logs, and execution receipts. Byte-identical dependency
+copies and reproducible compiled objects are excluded with source pins and
+reasons. Runtime installations and operational publication helpers are
+infrastructure. The first historical OddWords shell wrapper reported a
+log-reader status; only its subsequent explicit subprocess receipt is
+claimed as a successful execution.

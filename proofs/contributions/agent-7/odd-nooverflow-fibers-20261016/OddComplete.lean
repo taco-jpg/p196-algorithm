@@ -1,9 +1,11 @@
 import OddSharp
+import OddOutputRange
 
 /-!
 An explicit decoder and equality-guarded enumerator for arbitrary output
-words. Failed encodings produce the empty list. Actual-output completeness
-is supplied by the output-range theorem in the final closure below.
+words. Failed encodings produce the empty list. The actual-output range
+theorem proves completeness for every requested output, including targets
+outside the encoded range. All source-word conditions remain literal.
 -/
 namespace P196.Agent7.OddFibers
 
@@ -63,6 +65,25 @@ theorem universalOddPreimages_nodup (m : Nat) (r : List Nat) :
   · exact fullOddPreimages_nodup _ _
   · exact List.nodup_nil
 
+/-- Membership is exactly the full original fiber for an arbitrary target,
+not just for targets already presented in half/center form. -/
+theorem universalOddPreimages_membership (m : Nat) (r q : List Nat) :
+    q ∈ universalOddPreimages m r ↔ CompleteOddFiber m r q := by
+  dsimp only [universalOddPreimages]
+  split
+  · rename_i h
+    rw [fullOddPreimages_membership]
+    simp only [CanonicalOddFiber, CompleteOddFiber, h.1, h.2]
+  · rename_i hbad
+    simp only [List.not_mem_nil, false_iff]
+    intro hf
+    obtain ⟨hlen, _, _, _, _, hc, hstep⟩ := hf
+    obtain ⟨ss, v, hs, hout⟩ := odd_nooverflow_output_range q m hlen hc
+    have hr : r = oddMirror (ss.map Fin.val) (2*v.val) := hstep.symm.trans hout
+    apply hbad
+    rw [hr, ← hs, targetHalf_encoded, targetCenter_encoded]
+    exact ⟨rfl, rfl⟩
+
 theorem universalOddPreimages_bound (m : Nat) (r : List Nat) :
     (universalOddPreimages m r).length ≤ oddMax m := by
   dsimp only [universalOddPreimages]
@@ -85,6 +106,20 @@ theorem universal_odd_fiber_maximum (m : Nat) :
   rw [universal_sharp_family]
   exact sharpFamily_length m
 
+/-- Complete theorem: exact duplicate-free enumeration of every literal
+canonical fiber, a uniform sharp bound, and an attained maximum for every
+odd width. This counts coefficient words, not individual digit splittings. -/
+theorem complete_odd_fiber_theorem (m : Nat) :
+    (∀ r : List Nat,
+      (universalOddPreimages m r).Nodup ∧
+      (∀ q, q ∈ universalOddPreimages m r ↔ CompleteOddFiber m r q) ∧
+      (universalOddPreimages m r).length ≤ (fib (m+1)+1)/2) ∧
+    (∃ r : List Nat, (universalOddPreimages m r).length = (fib (m+1)+1)/2) := by
+  refine ⟨?_, (universal_odd_fiber_maximum m).2⟩
+  intro r
+  exact ⟨universalOddPreimages_nodup m r,
+    universalOddPreimages_membership m r, universalOddPreimages_bound m r⟩
+
 theorem universal_width_one_zero : universalOddPreimages 0 [0] = [] := by decide
 
 theorem universal_width_one_six : universalOddPreimages 0 [12] = [[6]] := by decide
@@ -96,9 +131,11 @@ theorem universal_wrong_parity : universalOddPreimages 1 [11,1,11] = [] := by de
 #print axioms targetCenter_encoded
 #print axioms universalOddPreimages_encoded
 #print axioms universalOddPreimages_nodup
+#print axioms universalOddPreimages_membership
 #print axioms universalOddPreimages_bound
 #print axioms universal_sharp_family
 #print axioms universal_odd_fiber_maximum
+#print axioms complete_odd_fiber_theorem
 #print axioms universal_width_one_zero
 #print axioms universal_width_one_six
 #print axioms universal_wrong_parity
