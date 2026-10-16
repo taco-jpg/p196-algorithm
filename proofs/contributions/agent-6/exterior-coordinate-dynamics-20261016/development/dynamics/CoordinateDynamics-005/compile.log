@@ -1,0 +1,25 @@
+/workspace/scratch/f8aedc6d7adf/agent6-dev/attempts/CoordinateDynamics-005/CoordinateDynamics.lean:83:6: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  9 *
+      ↑(V % 10 ^ n + (c + V / 10 ^ n - 10 * k) * 10 ^ n +
+          if (H + k) / 10 ^ n = 0 then revN n (H + k) + (c - 9 * k) * 10 ^ n else 1 + 10 * revN n (H + k)) -
+    ↑(2 * (c - 9 * k)) * (10 * ↑10 ^ n)
+c : Nat
+B : List Nat
+k : Nat
+hk : 10 * k ≤ c
+n V H : Nat
+h :
+  9 *
+        ↑(V % 10 ^ n + (c + V / 10 ^ n - 10 * k) * 10 ^ n +
+            if (H + k) / 10 ^ n = 0 then revN n (H + k) + (c - 9 * k) * 10 ^ n else 1 + 10 * revN n (H + k)) -
+      ↑(2 * (c - 9 * k)) * (10 * ↑10 ^ n) =
+    9 * ↑V - ↑c * ↑10 ^ n +
+      (9 * ↑(if (H + k) / 10 ^ n = 0 then revN n (H + k) + (c - 9 * k) * 10 ^ n else 1 + 10 * revN n (H + k)) -
+        10 * ↑(c - 9 * k) * ↑10 ^ n)
+⊢ 9 *
+        ↑(V % 10 ^ n + (c + V / 10 ^ n - 10 * k) * 10 ^ n +
+            if (H + k) / 10 ^ n = 0 then revN n (H + k) + (c - 9 * k) * 10 ^ n else 1 + 10 * revN n (H + k)) -
+      ↑(2 * (c - 9 * k)) * (10 * 10 ^ n) =
+    9 * ↑V - ↑c * 10 ^ n +
+      if (H + k) / 10 ^ n = 0 then 9 * ↑(revN n (H + k)) - ↑(c - 9 * k) * 10 ^ n
+      else 9 + 90 * ↑(revN n (H + k)) - 10 * ↑(c - 9 * k) * 10 ^ n

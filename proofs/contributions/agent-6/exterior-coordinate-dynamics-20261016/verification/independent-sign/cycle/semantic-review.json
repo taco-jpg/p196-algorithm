@@ -1,0 +1,136 @@
+{
+  "status": "PASS_SEMANTIC_REVIEW",
+  "reviewer": "Agent #6 runtime/reproducibility specialist",
+  "source_sha256": "0b135c2b14c04cf3d980fc7cc2bd6852e65406edb0a6cdaa377a0fa427163f21",
+  "reviewed_utc": "2026-10-16T21:27:39Z",
+  "blocking_issues": [],
+  "definitions": {
+    "outerIter": "Exactly n successive applications of the unchanged literal outerNext; n=0 returns the initial state.",
+    "orbitSum": "Sum of f at outerIter i s for indices0<=i<n. The endpoint at time n is excluded from the sum.",
+    "contributionSum": "orbitSum applied to highContribution, with an empty sum of0.",
+    "overflowBit": "Indicator of a nonzero exact final high-side carry, using the same quotient test as highContribution. It is0 or1 even when the numerical carry exceeds1.",
+    "carryScale": "1 on zero carry,10 on nonzero carry; equals1+9*overflowBit.",
+    "weightedReverse": "carryScale times the fixed-width reversed high value, as an integer.",
+    "weightedPhase": "carryScale times phaseDigit times10^word_length, as an integer.",
+    "overflowCount": "Number of nonzero-overflow steps among the first n states; it counts indicators and is bounded by n."
+  },
+  "endpoint_groups": [
+    {
+      "theorems": [
+        "outerIter_zero",
+        "outerIter_succ",
+        "orbitSum_zero",
+        "orbitSum_succ",
+        "contributionSum_zero",
+        "contributionSum_succ"
+      ],
+      "assessment": "Exact recurrence equations; attribute-prefixed simp declarations are included in the independent export inventory."
+    },
+    {
+      "theorems": [
+        "orbitSum_telescope"
+      ],
+      "assessment": "Generic step law a(next q)=a(q)+f(q) telescopes by induction. The conclusion holds also for n=0."
+    },
+    {
+      "theorems": [
+        "betaNum_outerIter",
+        "contributionSum_eq_betaNum_sub"
+      ],
+      "assessment": "Specialization uses the final unconditional betaNum_outerNext theorem, giving exact coordinate difference for every finite length and arbitrary initial exterior state."
+    },
+    {
+      "theorems": [
+        "contributionSum_eq_zero_of_beta_return",
+        "closed_orbit_contributionSum_eq_zero"
+      ],
+      "assessment": "Coordinate return suffices for zero accumulated increment; literal state return supplies coordinate return. Existence of a return is a hypothesis, not a conclusion."
+    },
+    {
+      "theorems": [
+        "contributionSum_eq_zero_of_padding_return"
+      ],
+      "assessment": "Equal endpoint phase plus endpoint word equal to initial word padded with copies of that same phase preserves zValue, hence betaNum and the zero sum. Both phase equality and the specific padding form are explicit."
+    },
+    {
+      "theorems": [
+        "outerIter_eq_chain",
+        "contributionSum_eq_chain_betaNum_sub"
+      ],
+      "assessment": "A supplied Nat-indexed chain is required to satisfy the exact transition for every i<n. That finite premise identifies its endpoint with the canonical iterate. No transition after n is assumed."
+    },
+    {
+      "theorems": [
+        "orbitSum_eq_zero_of_nonneg",
+        "orbitSum_eq_zero_of_nonpos"
+      ],
+      "assessment": "Each theorem assumes a zero finite sum and a uniform weak sign on its first n terms, then concludes every summand is zero. They do not infer a zero sum from sign alone."
+    },
+    {
+      "theorems": [
+        "orbitSum_zero_both_signs"
+      ],
+      "assessment": "Zero sum plus an explicitly supplied nonzero summand forces a positive and a negative summand, each at an index<n. The nonzero-witness premise excludes the empty path."
+    },
+    {
+      "theorems": [
+        "closed_orbit_both_signs_of_initial_ne_zero"
+      ],
+      "assessment": "A positive period, exact state return, and nonzero initial increment supply the generic zero-sum and nonzero-witness premises. Only the initial increment is needed."
+    },
+    {
+      "theorems": [
+        "closed_orbit_both_signs_of_pos",
+        "closed_orbit_both_signs_of_nonneutral"
+      ],
+      "assessment": "Positive initial phase or the stated nonneutral initial phase supplies the nonzero initial increment via Sign. The positive period and exact return remain explicit hypotheses; no intermediate coefficient bound or phase premise is added."
+    },
+    {
+      "theorems": [
+        "overflowBit_le_one",
+        "carryScale_eq",
+        "overflowCount_zero",
+        "overflowCount_succ",
+        "overflowCount_le"
+      ],
+      "assessment": "These are indicator and finite-count identities. They do not assert that arbitrary numerical carries are at most1."
+    },
+    {
+      "theorems": [
+        "highContribution_eq_weighted",
+        "contributionSum_eq_weighted"
+      ],
+      "assessment": "The two carry branches expand to delta=9*weightedReverse-weightedPhase+9*overflowBit. Summing the exact recurrence gives the finite weighted identity with the indicator count."
+    },
+    {
+      "theorems": [
+        "closed_orbit_weighted_balance"
+      ],
+      "assessment": "An assumed exact return gives zero total contribution and therefore weightedPhase sum =9*weightedReverse sum+9*overflowCount. This is a necessary balance on a supplied return, without a sufficiency or existence claim."
+    }
+  ],
+  "boundary_checks": [
+    "All telescope, coordinate-difference, and balance statements include n=0, when both sums and overflowCount vanish.",
+    "Both-sign return specializations explicitly require 0<n, preventing a false conclusion from the always-valid zero-step return.",
+    "The integer phase subtraction inherits the exact stable Dynamics definition and its justified natural subtraction semantics.",
+    "No nonempty-word, positive-head, maximal-trimming, validOuter, even-phase, c<=17, c!=9, or coefficient<=18 premise is silently used by the unconditional telescope or weighted formulas.",
+    "The positive-phase Sign theorem supplies one nonzero term; later increments may have either sign and need no separately assumed nonvanishing premise.",
+    "Overflow count remains an indicator count on unbounded coefficients. A carry of2 contributes1 to overflowCount, not2."
+  ],
+  "scope_qualifications": [
+    "The source proves finite consequences for the literal exterior map and conditional returns. It supplies no closed orbit or positive-period return certificate.",
+    "Both signs across a supplied return do not establish return existence, and the separate Sign witnesses are not claimed to occur on a common orbit.",
+    "A zero increment sum or weighted balance is not claimed to imply state return.",
+    "No actual-orbit realization, infinite ordinary reverse-and-add orbit, safety certificate, or conclusion about196 is supplied."
+  ],
+  "count_policy": {
+    "Cycle_public_theorems": 28,
+    "Cycle_public_definitions": 8,
+    "Cycle_private_theorems": 0,
+    "all_four_new_modules_public_theorems": 58,
+    "previous_dependency_public_theorems": 47,
+    "generated_constants_and_rechecks_count_as_discoveries": false
+  },
+  "source_repairs": [],
+  "git_mutations": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "PASS_SEMANTIC_REVIEW",
+  "reviewer": "Agent #6 runtime/reproducibility specialist",
+  "reviewed_utc": "2026-10-16T21:25:12Z",
+  "modules": {
+    "CoordinateDynamics": "8f37d2991087c3c232e9e5a09c440e266672403fe895af59d770e2f90a72a05b",
+    "CoordinateSign": "9142e73dff4b25fd43dee0f708e5681a47f42b0630329512934916f370f0da21"
+  },
+  "blocking_issues": [],
+  "dynamics": {
+    "definition_stability": "betaNum and highContribution definitions are byte-identical to the earlier author-compiled attempt004 source. See definition-stability.json.",
+    "betaNum_eq": "For arbitrary c:Nat and finite natural B, betaNum = 9*lowValue B - c*10^length as an integer. No rational or 10-adic object is added to the formal environment.",
+    "betaNum_outerNext_raw": "successor_observation preserves zValue when trailing successor-phase coefficients are stripped. Subtracting the successor phase yields the exact raw-word coordinate with exponent length(B)+1, even if the final stripped word is shorter.",
+    "beta_arithmetic_private": "The explicit hypothesis 10*k<=c supplies both 9*k<=c and 10*k<=c+V/D, so integer casts of natural subtraction are justified. Nat.mod_add_div accounts for V without assuming V<D. The helper does not smuggle in a coefficient bound.",
+    "betaNum_outerNext": "With k=[10<=c], t=c-9k, D=10^length, and r=revN length(highValue B+k), the raw update gives delta=9*R-10*t*D. If the final carry is zero, R=r+t*D and delta=9*r-t*D; otherwise R=1+10*r and delta=9+90*r-10*t*D. These are exactly the highContribution branches.",
+    "hypotheses": "All three public Dynamics theorems quantify arbitrary natural c and arbitrary finite lists of natural coefficients. They impose no phase, nonempty-word, canonical-head, trimming, boundedness, validity, or orbit-realization premise.",
+    "interpretation": "The identity describes the literal imported outerNext map, including its fixed nonzero-carry branch. Extending the input domain beyond physical coefficient bounds does not assert a correspondence with ordinary reverse-and-add on that larger domain."
+  },
+  "sign": {
+    "revN_lt_power": "Induction bounds the value of the reversed fixed-width digit list below 10^n for every n,v. At n=0, revN=0 and 10^0=1; large v is reduced through its first n decimal digits.",
+    "private_modular_helper": "10^n mod9=1. If 9*r=t*10^n with r<10^n and t>0, reduction modulo9 gives t mod9=0, hence t>=9. This contradicts 9*r<9*10^n<=t*10^n. The proof also includes n=0.",
+    "overflow_residue": "For arbitrary c,B with overflow c B !=0, the nonzero-carry expression has integer Euclidean remainder9 modulo10. No phase or coefficient bound is used, and the actual carry may exceed1.",
+    "positive_phase_nonvanishing": "The zero-carry branch uses r<10^n and phaseDigit c>0; the other branch uses remainder9 modulo10. Therefore every positive natural phase has nonzero highContribution on every finite natural-coefficient word.",
+    "nonneutral_specialization": "Membership in [2,4,6,8,10,12,14,16] supplies positive phase; no extra coefficient or validity hypothesis is required.",
+    "zero_phase_control": "highContribution 0 []=0 invalidates removing the positive-phase hypothesis from the uniform theorem. The source does not claim an iff or characterize every individual c=0 word.",
+    "canonical_examples": [
+      {
+        "phase": 2,
+        "B": [
+          1
+        ],
+        "validOuter": true,
+        "nonneutralPhase": true,
+        "overflow": 0,
+        "highContribution": -11
+      },
+      {
+        "phase": 2,
+        "B": [
+          3
+        ],
+        "validOuter": true,
+        "nonneutralPhase": true,
+        "overflow": 0,
+        "highContribution": 7
+      },
+      {
+        "phase": 2,
+        "B": [
+          10
+        ],
+        "validOuter": true,
+        "nonneutralPhase": true,
+        "overflow": 1,
+        "highContribution": -191
+      },
+      {
+        "phase": 2,
+        "B": [
+          13
+        ],
+        "validOuter": true,
+        "nonneutralPhase": true,
+        "overflow": 1,
+        "highContribution": 79
+      }
+    ],
+    "both_signs_scope": "The two existential endpoints exhibit both signs among valid states at the same permitted phase, separately within overflow classes0 and1. They do not say these witness states occur on a common orbit, or that every orbit visits both signs.",
+    "coupling_to_final_dynamics": "The final betaNum_outerNext theorem identifies highContribution with the actual finite betaNum increment, so Sign results can be applied to that exact literal update. Nonzero increments alone do not prohibit cancellation on a finite return."
+  },
+  "count_policy": {
+    "Dynamics_public_theorems": 3,
+    "Dynamics_private_helpers": 1,
+    "Sign_public_theorems": 11,
+    "Sign_private_helpers": 2,
+    "rechecks_and_generated_constants_are_new_discoveries": false
+  },
+  "source_repairs": [],
+  "git_mutations": false
+}

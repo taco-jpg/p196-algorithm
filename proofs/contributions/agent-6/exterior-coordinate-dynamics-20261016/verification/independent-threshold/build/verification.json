@@ -1,0 +1,1291 @@
+{
+  "reviewer": "Agent #6 runtime/reproducibility specialist",
+  "review_type": "independent_new_root_review",
+  "source_commit": null,
+  "main_comparison_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+  "status": "PASS",
+  "started_utc": "2026-10-16T21:09:20Z",
+  "runner_sha256": "78b838e043e9624802175ea0a2a9f359e3692fd5c16765a5a847e5f17d37a2eb",
+  "source_manifest_sha256": "93e2b41a98881d56fc1a8ab0fb22686b3a20b20f82f893ec982a67b3df05dcbb",
+  "fresh_project_objects": true,
+  "reused_dependency_objects": false,
+  "source_repairs": [],
+  "git_mutations": false,
+  "original_source": "/workspace/scratch/f8aedc6d7adf/agent6-work/proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateThreshold.lean",
+  "original_source_sha256_snapshot": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+  "build_order": [
+    "OuterFinite",
+    "TARGET",
+    "ExteriorFactorizationProof",
+    "CoordinateThreshold"
+  ],
+  "commands": [
+    {
+      "label": "lean-version",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.063984,
+      "log": "build/logs/lean-version.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "label": "lean-prefix",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--print-prefix"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.03192,
+      "log": "build/logs/lean-prefix.log",
+      "log_sha256": "abf00c852e32c65283329216fadfc2d2100f267258c8639e3433d4febb96e7c9"
+    },
+    {
+      "label": "OuterFinite",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+        "-o",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects/OuterFinite.olean",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source/OuterFinite.lean"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 24.363255,
+      "log": "build/logs/OuterFinite.log",
+      "log_sha256": "ac86a2e22b11447702615b58a5b0a93a65c92f14973bd9df0868fe52e5abf5f4"
+    },
+    {
+      "label": "TARGET",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+        "-o",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects/TARGET.olean",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source/TARGET.lean"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 0.727487,
+      "log": "build/logs/TARGET.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ExteriorFactorizationProof",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+        "-o",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects/ExteriorFactorizationProof.olean",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source/ExteriorFactorizationProof.lean"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 2.156716,
+      "log": "build/logs/ExteriorFactorizationProof.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "CoordinateThreshold",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+        "-o",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects/CoordinateThreshold.olean",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source/CoordinateThreshold.lean"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/source",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 1.174139,
+      "log": "build/logs/CoordinateThreshold.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ExportAxioms",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/ExportAxioms.lean"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 2.380201,
+      "log": "build/logs/ExportAxioms.log",
+      "log_sha256": "81c69de6272f40c1f248008101c8f41cdd6ac43c8e271fdec978c9508a5916fc"
+    },
+    {
+      "label": "ModuleAudit",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "--root=/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build",
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/ModuleAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build",
+      "environment": {
+        "PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin:/usr/bin:/bin",
+        "LANG": "C.UTF-8",
+        "LEAN_PATH": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-threshold/build/objects"
+      },
+      "exit_code": 0,
+      "elapsed_seconds": 4.368591,
+      "log": "build/logs/ModuleAudit.log",
+      "log_sha256": "e75f0c86f1c3ac41389ff75ceed7812f9af2a7b3b5731344d46649635f00499c"
+    }
+  ],
+  "modules": [
+    {
+      "module": "OuterFinite",
+      "branch_path": "proofs/contributions/agent-109/outer-projection-bridge/agent7-deps/OuterFinite.lean",
+      "main_path": "proofs/OuterFinite__1c852c0ed5b8d706.lean",
+      "git_blob": "bc22ad1b950251fd231cccd40393b5749b8ad887",
+      "sha256": "3376873da457c698850f604ddda82aeba3e67f4196e5c33d8142bed945c5f3f6",
+      "bytes": 2573,
+      "matches_branch_tree": true,
+      "matches_original_build_evidence": true,
+      "matches_current_main": true,
+      "staged_from": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-update/source/OuterFinite.lean",
+      "independent_read_only_git_main_comparison": true,
+      "source_kind": "exact_published_dependency"
+    },
+    {
+      "module": "TARGET",
+      "branch_path": "proofs/contributions/agent-115/exterior-factorization/TARGET.lean",
+      "main_path": "proofs/TARGET__c7bc3cfee999c64e.lean",
+      "git_blob": "76b2633882fe44d1aea1f2134be97b38617ab5cf",
+      "sha256": "db5346737c58d3d6e6e62397d0d9270b81ebf62fd5d2eb0073e739ef0dffc717",
+      "bytes": 1795,
+      "matches_branch_tree": true,
+      "matches_original_build_evidence": true,
+      "matches_current_main": true,
+      "staged_from": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-update/source/TARGET.lean",
+      "independent_read_only_git_main_comparison": true,
+      "source_kind": "exact_published_dependency"
+    },
+    {
+      "module": "ExteriorFactorizationProof",
+      "branch_path": "proofs/contributions/agent-115/exterior-factorization/ExteriorFactorizationProof.lean",
+      "main_path": "proofs/ExteriorFactorizationProof__c2d8a9a4ee47c405.lean",
+      "git_blob": "9a9a0e3e8335b218d2863edaee58c2c26614c0ca",
+      "sha256": "eb682657cfd7916b4b56dde5069cc7316d65f8e69da6fff42981c23dc9a97301",
+      "bytes": 13575,
+      "matches_branch_tree": true,
+      "matches_original_build_evidence": true,
+      "matches_current_main": true,
+      "staged_from": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/review-update/source/ExteriorFactorizationProof.lean",
+      "independent_read_only_git_main_comparison": true,
+      "source_kind": "exact_published_dependency"
+    },
+    {
+      "module": "CoordinateThreshold",
+      "original_source": "/workspace/scratch/f8aedc6d7adf/agent6-work/proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/CoordinateThreshold.lean",
+      "git_blob": "34ddc74962d8bbef954f1626a80593de60906215",
+      "sha256": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+      "bytes": 5989,
+      "source_kind": "author_compiled_local_source_snapshot",
+      "commit_attribution": "pending_parent_publication"
+    }
+  ],
+  "original_source_sha256_before_build": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "prefix": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux",
+    "files": {
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    },
+    "shim_used": false,
+    "same_previously_verified_official_runtime": true
+  },
+  "source_parser": {
+    "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/source-snapshot/p196-algorithm-4b4edf976b2c7a9ba1dad80636c0e21c66350325/proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/verify_project.py",
+    "sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a"
+  },
+  "explicit_exported_theorems": {
+    "OuterFinite": [
+      "P196.Agent7.Finite.cap2_exits_by_seven",
+      "P196.Agent7.Finite.cap2_sharp_six",
+      "P196.Agent7.Finite.cap2_sharp_seven"
+    ],
+    "TARGET": [],
+    "ExteriorFactorizationProof": [
+      "Agent115.ExteriorFactorization.digitsOf_length",
+      "Agent115.ExteriorFactorization.normalize_eq",
+      "Agent115.ExteriorFactorization.normalize_length",
+      "Agent115.ExteriorFactorization.lowValue_append",
+      "Agent115.ExteriorFactorization.highValue_append_single",
+      "Agent115.ExteriorFactorization.foldl_high",
+      "Agent115.ExteriorFactorization.lowValue_reverse",
+      "Agent115.ExteriorFactorization.normalize_carry_le",
+      "Agent115.ExteriorFactorization.normalize_append_single",
+      "Agent115.ExteriorFactorization.outerNext_eq_fromScans",
+      "Agent115.ExteriorFactorization.stripSuffix_append_single",
+      "Agent115.ExteriorFactorization.zipWith_append_single",
+      "Agent115.ExteriorFactorization.strip_zip_append",
+      "Agent115.ExteriorFactorization.phase_facts",
+      "Agent115.ExteriorFactorization.outerNext_append_band",
+      "Agent115.ExteriorFactorization.outerNext_append_replicate",
+      "Agent115.ExteriorFactorization.outerNext_of_values",
+      "Agent115.ExteriorFactorization.zValue_append_band",
+      "Agent115.ExteriorFactorization.zValue_append_replicate",
+      "Agent115.ExteriorFactorization.rhoNum_append_band",
+      "Agent115.ExteriorFactorization.rhoNum_append_replicate",
+      "Agent115.ExteriorFactorization.lowValue_of_zValue",
+      "Agent115.ExteriorFactorization.entries_le_of_valid",
+      "Agent115.ExteriorFactorization.factorization_le",
+      "Agent115.ExteriorFactorization.target",
+      "Agent115.ExteriorFactorization.factorization_general"
+    ],
+    "CoordinateThreshold": [
+      "Agent6.ExteriorCoordinates.phaseCarry_le_one",
+      "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine",
+      "Agent6.ExteriorCoordinates.phaseDigit_identity",
+      "Agent6.ExteriorCoordinates.phaseDigit_le_eight",
+      "Agent6.ExteriorCoordinates.phaseDigit_pos",
+      "Agent6.ExteriorCoordinates.overflow_eq_highValue",
+      "Agent6.ExteriorCoordinates.overflow_eq_rho_quotient",
+      "Agent6.ExteriorCoordinates.overflow_le_one",
+      "Agent6.ExteriorCoordinates.overflow_eq_zero_iff",
+      "Agent6.ExteriorCoordinates.overflow_eq_one_iff",
+      "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator",
+      "Agent6.ExteriorCoordinates.empty_word_coordinates",
+      "Agent6.ExteriorCoordinates.empty_word_quotient_iff",
+      "Agent6.ExteriorCoordinates.quotient_identity_forall_iff",
+      "Agent6.ExteriorCoordinates.excluded_phase_controls",
+      "Agent6.ExteriorCoordinates.unbounded_coefficient_control"
+    ]
+  },
+  "explicit_export_count": 45,
+  "explicit_declarations": {
+    "OuterFinite": [
+      {
+        "kind": "structure",
+        "name": "P196.Agent7.Finite.Outer"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.normalize"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.bulkPhase"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.stripSuffix"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.outerNext"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.decodeWord"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.encoded"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.validOuter"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.staysSmall"
+      },
+      {
+        "kind": "theorem",
+        "name": "P196.Agent7.Finite.cap2_exits_by_seven"
+      },
+      {
+        "kind": "def",
+        "name": "P196.Agent7.Finite.sharpStart"
+      },
+      {
+        "kind": "theorem",
+        "name": "P196.Agent7.Finite.cap2_sharp_six"
+      },
+      {
+        "kind": "theorem",
+        "name": "P196.Agent7.Finite.cap2_sharp_seven"
+      }
+    ],
+    "TARGET": [
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.lowValue"
+      },
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.zValue"
+      },
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.highValue"
+      },
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.rhoNum"
+      },
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.nonneutralPhase"
+      },
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.Target"
+      }
+    ],
+    "ExteriorFactorizationProof": [
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.digitsOf"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.digitsOf_length"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.normalize_eq"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.normalize_length"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.lowValue_append"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.highValue_append_single"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.foldl_high"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.lowValue_reverse"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.normalize_carry_le"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.normalize_append_single"
+      },
+      {
+        "kind": "def",
+        "name": "Agent115.ExteriorFactorization.fromScans"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.outerNext_eq_fromScans"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.stripSuffix_append_single"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.zipWith_append_single"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.strip_zip_append"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.phase_facts"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.outerNext_append_band"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.outerNext_append_replicate"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.outerNext_of_values"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.zValue_append_band"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.zValue_append_replicate"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.rhoNum_append_band"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.rhoNum_append_replicate"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.lowValue_of_zValue"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.entries_le_of_valid"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.factorization_le"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.target"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent115.ExteriorFactorization.factorization_general"
+      }
+    ],
+    "CoordinateThreshold": [
+      {
+        "kind": "def",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry"
+      },
+      {
+        "kind": "def",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit"
+      },
+      {
+        "kind": "def",
+        "name": "Agent6.ExteriorCoordinates.overflow"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_le_one"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_identity"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_le_eight"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.phaseDigit_pos"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_highValue"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_rho_quotient"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.overflow_le_one"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_zero_iff"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.overflow_eq_one_iff"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.empty_word_coordinates"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.empty_word_quotient_iff"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.quotient_identity_forall_iff"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.excluded_phase_controls"
+      },
+      {
+        "kind": "theorem",
+        "name": "Agent6.ExteriorCoordinates.unbounded_coefficient_control"
+      }
+    ]
+  },
+  "explicit_declaration_count": 66,
+  "exported_axioms": {
+    "P196.Agent7.Finite.cap2_exits_by_seven": [],
+    "P196.Agent7.Finite.cap2_sharp_six": [],
+    "P196.Agent7.Finite.cap2_sharp_seven": [],
+    "Agent115.ExteriorFactorization.digitsOf_length": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.normalize_eq": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.normalize_length": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.lowValue_append": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.highValue_append_single": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.foldl_high": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.lowValue_reverse": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.normalize_carry_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.normalize_append_single": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.outerNext_eq_fromScans": [],
+    "Agent115.ExteriorFactorization.stripSuffix_append_single": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.zipWith_append_single": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.strip_zip_append": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.phase_facts": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.outerNext_append_band": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.outerNext_append_replicate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.outerNext_of_values": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.zValue_append_band": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.zValue_append_replicate": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.rhoNum_append_band": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.rhoNum_append_replicate": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.lowValue_of_zValue": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.entries_le_of_valid": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.factorization_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.target": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.factorization_general": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseCarry_le_one": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseDigit_identity": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseDigit_le_eight": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseDigit_pos": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_highValue": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_rho_quotient": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_le_one": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.empty_word_coordinates": [
+      "propext"
+    ],
+    "Agent6.ExteriorCoordinates.empty_word_quotient_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.quotient_identity_forall_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.excluded_phase_controls": [],
+    "Agent6.ExteriorCoordinates.unbounded_coefficient_control": []
+  },
+  "all_explicit_declaration_axioms": {
+    "Agent115.ExteriorFactorization.digitsOf_length": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.normalize_eq": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.normalize_length": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.lowValue_append": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.highValue_append_single": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.foldl_high": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.lowValue_reverse": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.normalize_carry_le": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.normalize_append_single": [
+      "propext"
+    ],
+    "Agent115.ExteriorFactorization.stripSuffix_append_single": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.zipWith_append_single": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.strip_zip_append": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.phase_facts": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.outerNext_append_band": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.outerNext_append_replicate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.outerNext_of_values": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.zValue_append_band": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.zValue_append_replicate": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.rhoNum_append_band": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.rhoNum_append_replicate": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.lowValue_of_zValue": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.entries_le_of_valid": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.factorization_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.target": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent115.ExteriorFactorization.factorization_general": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseCarry_le_one": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseDigit_identity": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseDigit_le_eight": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.phaseDigit_pos": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_highValue": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_rho_quotient": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_le_one": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.overflow_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.empty_word_coordinates": [
+      "propext"
+    ],
+    "Agent6.ExteriorCoordinates.empty_word_quotient_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Agent6.ExteriorCoordinates.quotient_identity_forall_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "P196.Agent7.Finite.Outer": [],
+    "P196.Agent7.Finite.normalize": [],
+    "P196.Agent7.Finite.bulkPhase": [],
+    "P196.Agent7.Finite.stripSuffix": [],
+    "P196.Agent7.Finite.outerNext": [],
+    "P196.Agent7.Finite.decodeWord": [],
+    "P196.Agent7.Finite.encoded": [],
+    "P196.Agent7.Finite.validOuter": [],
+    "P196.Agent7.Finite.staysSmall": [],
+    "P196.Agent7.Finite.cap2_exits_by_seven": [],
+    "P196.Agent7.Finite.sharpStart": [],
+    "P196.Agent7.Finite.cap2_sharp_six": [],
+    "P196.Agent7.Finite.cap2_sharp_seven": [],
+    "Agent115.ExteriorFactorization.lowValue": [],
+    "Agent115.ExteriorFactorization.zValue": [],
+    "Agent115.ExteriorFactorization.highValue": [],
+    "Agent115.ExteriorFactorization.rhoNum": [],
+    "Agent115.ExteriorFactorization.nonneutralPhase": [],
+    "Agent115.ExteriorFactorization.Target": [],
+    "Agent115.ExteriorFactorization.digitsOf": [],
+    "Agent115.ExteriorFactorization.fromScans": [],
+    "Agent115.ExteriorFactorization.outerNext_eq_fromScans": [],
+    "Agent6.ExteriorCoordinates.phaseCarry": [],
+    "Agent6.ExteriorCoordinates.phaseDigit": [],
+    "Agent6.ExteriorCoordinates.overflow": [],
+    "Agent6.ExteriorCoordinates.excluded_phase_controls": [],
+    "Agent6.ExteriorCoordinates.unbounded_coefficient_control": []
+  },
+  "all_theorem_constants_audited": 105,
+  "theorem_constant_counts_by_module": {
+    "CoordinateThreshold": 36,
+    "ExteriorFactorizationProof": 59,
+    "OuterFinite": 10
+  },
+  "module_constant_count": 273,
+  "module_constant_counts_by_kind": {
+    "OuterFinite": {
+      "definition": 99,
+      "theorem": 10,
+      "constructor": 1,
+      "recursor": 1,
+      "axiom": 1,
+      "inductive": 1
+    },
+    "TARGET": {
+      "definition": 22,
+      "axiom": 1
+    },
+    "ExteriorFactorizationProof": {
+      "theorem": 59,
+      "definition": 33
+    },
+    "CoordinateThreshold": {
+      "theorem": 36,
+      "definition": 9
+    }
+  },
+  "module_origins": {
+    "Agent6.ExteriorCoordinates.overflow_eq_zero_iff": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.lowValue_of_zValue._proof_11": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.stripSuffix_append_single": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.bulkPhase": "OuterFinite",
+    "Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_2": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.highValue._cstage2": "TARGET",
+    "Agent115.ExteriorFactorization.digitsOf._cstage2": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.rhoNum": "TARGET",
+    "P196.Agent7.Finite.Outer.mk.injEq": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.validOuter": "OuterFinite",
+    "Agent115.ExteriorFactorization.normalize_append_single": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.outerNext_append_band": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_16": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.phaseDigit_pos._proof_9": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.rhoNum.eq_1": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.phaseDigit": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_15": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_18": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.lowValue.eq_1": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.instDecidableEqOuter": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow.eq_1": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.zValue_append_band._proof_9": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.stripSuffix._lambda_1._cstage2": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_6._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_2": "ExteriorFactorizationProof",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_8._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.rhoNum._cstage1": "TARGET",
+    "P196.Agent7.Finite.Outer.mk.inj": "OuterFinite",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_6._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.sharpStart._closed_1._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.zValue_append_band": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine": "CoordinateThreshold",
+    "P196.Agent7.Finite.validOuter.eq_1": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.outerNext": "OuterFinite",
+    "List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1": "TARGET",
+    "P196.Agent7.Finite.validOuter.match_1": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow_eq_one_iff": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.fromScans._closed_1._cstage2": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.factorization_general": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.rhoNum_append_band._proof_10": "ExteriorFactorizationProof",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.splitter._cstage1": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.lowValue": "TARGET",
+    "P196.Agent7.Finite.instDecidableEqOuter._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_1": "ExteriorFactorizationProof",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_10._cstage2": "OuterFinite",
+    "Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_7": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.phaseDigit._cstage2": "CoordinateThreshold",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_2": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_3": "CoordinateThreshold",
+    "P196.Agent7.Finite.Outer.mk.sizeOf_spec": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.splitter": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.zValue_append_replicate": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.lowValue_append": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.entries_le_of_valid": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseDigit_identity._proof_6": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.outerNext_eq_fromScans": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.empty_word_quotient_iff": "CoordinateThreshold",
+    "P196.Agent7.Finite.validOuter.match_2": "OuterFinite",
+    "Agent115.ExteriorFactorization.phase_facts": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.outerNext._closed_1._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.Outer._sizeOf_1": "OuterFinite",
+    "P196.Agent7.Finite.Outer.B": "OuterFinite",
+    "Agent115.ExteriorFactorization.digitsOf.match_1._cstage1": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.normalize_carry_le._proof_4": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.lowValue_of_zValue": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseCarry_le_one": "CoordinateThreshold",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_2._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.Outer.mk": "OuterFinite",
+    "Agent115.ExteriorFactorization.digitsOf": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.staysSmall.match_1._cstage1": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_13._cstage2": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter._@.OuterFinite._hyg.27": "OuterFinite",
+    "P196.Agent7.Finite.sharpStart": "OuterFinite",
+    "Agent115.ExteriorFactorization.normalize_eq._proof_1": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_1._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.Outer.noConfusion": "OuterFinite",
+    "Agent115.ExteriorFactorization.fromScans._cstage1": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.zValue._closed_3._cstage2": "TARGET",
+    "P196.Agent7.Finite.sharpStart._closed_3._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.fromScans": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.empty_word_coordinates": "CoordinateThreshold",
+    "P196.Agent7.Finite.normalize": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow_le_one": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.phaseCarry._cstage1": "CoordinateThreshold",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_5._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.instDecidableEqOuter._cstage1": "OuterFinite",
+    "P196.Agent7.Finite.staysSmall.match_1": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_3._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.Outer.c": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_14": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.zValue._closed_2._cstage2": "TARGET",
+    "P196.Agent7.Finite.encoded": "OuterFinite",
+    "P196.Agent7.Finite.decodeWord._cstage1": "OuterFinite",
+    "Agent115.ExteriorFactorization.phase_facts._proof_7": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.lowValue._cstage2": "TARGET",
+    "P196.Agent7.Finite.sharpStart._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.zValue": "TARGET",
+    "P196.Agent7.Finite.cap2_sharp_seven": "OuterFinite",
+    "P196.Agent7.Finite.validOuter._closed_1._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.outerNext._closed_2._cstage2": "OuterFinite",
+    "Agent6.ExteriorCoordinates.phaseDigit_pos._proof_10": "CoordinateThreshold",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._cstage1": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.splitter._cstage1": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_5._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.splitter._cstage2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.bulkPhase._cstage2": "OuterFinite",
+    "Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_17": "CoordinateThreshold",
+    "P196.Agent7.Finite.staysSmall._unsafe_rec": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.splitter._cstage2": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.lowValue_reverse._proof_3": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.digitsOf.eq_1": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.Outer.rec": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0._proof_5": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.outerNext._closed_3._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.fromScans.eq_1": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.Outer.recOn": "OuterFinite",
+    "Agent6.ExteriorCoordinates.unbounded_coefficient_control": "CoordinateThreshold",
+    "P196.Agent7.Finite.Outer.casesOn": "OuterFinite",
+    "Agent115.ExteriorFactorization.factorization_le._proof_13": "ExteriorFactorizationProof",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1": "OuterFinite",
+    "Agent6.ExteriorCoordinates.phaseDigit_le_eight": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.overflow_eq_highValue": "CoordinateThreshold",
+    "P196.Agent7.Finite.instReprOuter._cstage1": "OuterFinite",
+    "Agent115.ExteriorFactorization.rhoNum._cstage2": "TARGET",
+    "Agent6.ExteriorCoordinates.phaseCarry": "CoordinateThreshold",
+    "P196.Agent7.Finite.sharpStart._cstage1": "OuterFinite",
+    "Agent115.ExteriorFactorization.digitsOf._cstage1": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.lowValue.match_1._cstage1": "TARGET",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.splitter": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.validOuter._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.lowValue_reverse": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.normalize._sunfold": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._@.OuterFinite._hyg.85": "OuterFinite",
+    "Agent115.ExteriorFactorization.lowValue._sunfold": "TARGET",
+    "P196.Agent7.Finite.outerNext._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0._proof_12": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.highValue_append_single": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_8._cstage2": "OuterFinite",
+    "List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1._cstage2": "TARGET",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_2._@.OuterFinite._hyg.85": "OuterFinite",
+    "Agent115.ExteriorFactorization.fromScans._closed_3._cstage2": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseCarry._cstage2": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.digitsOf.eq_2": "ExteriorFactorizationProof",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.splitter._rarg._cstage2": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.highValue._cstage1": "TARGET",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_1": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.staysSmall": "OuterFinite",
+    "P196.Agent7.Finite.outerNext._cstage1": "OuterFinite",
+    "P196.Agent7.Finite.stripSuffix._cstage1": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_1._@.OuterFinite._hyg.85": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow_eq_rho_quotient": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.lowValue._cstage1": "TARGET",
+    "P196.Agent7.Finite.encoded._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.cap2_exits_by_seven": "OuterFinite",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_11._cstage2": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_12._cstage2": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_12": "CoordinateThreshold",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.splitter": "ExteriorFactorizationProof",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_1": "ExteriorFactorizationProof",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_4._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.instReprOuter": "OuterFinite",
+    "Agent115.ExteriorFactorization.zValue._cstage2": "TARGET",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_1": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseDigit_identity._proof_5": "CoordinateThreshold",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_2": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_8": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.highValue": "TARGET",
+    "P196.Agent7.Finite.normalize.match_1._cstage1": "OuterFinite",
+    "Agent115.ExteriorFactorization.rhoNum_append_replicate": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseDigit._cstage1": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.highValue.eq_1": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.overflow": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.digitsOf.match_1": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter.\u00ab_@\u00bb.OuterFinite._hyg.85._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.zValue._closed_1._cstage2": "TARGET",
+    "Agent6.ExteriorCoordinates.phaseDigit_identity": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.outerNext_append_band._proof_8": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.factorization_le._proof_14": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.lowValue.eq_2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.stripSuffix": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_1": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._cstage2": "OuterFinite",
+    "Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_1": "CoordinateThreshold",
+    "P196.Agent7.Finite.instReprOuter._closed_1._cstage2": "OuterFinite",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_9._cstage2": "OuterFinite",
+    "Agent6.ExteriorCoordinates.quotient_identity_forall_iff": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.overflow._cstage1": "CoordinateThreshold",
+    "P196.Agent7.Finite.cap2_sharp_six": "OuterFinite",
+    "P196.Agent7.Finite.Outer._sizeOf_inst": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.splitter._cstage2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.normalize.eq_1": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_7._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.splitter._rarg._cstage2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.Outer.noConfusionType": "OuterFinite",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_7._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.Target": "TARGET",
+    "P196.Agent7.Finite.Outer": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow._cstage2": "CoordinateThreshold",
+    "P196.Agent7.Finite.staysSmall._cstage1": "OuterFinite",
+    "P196.Agent7.Finite.sharpStart._closed_2._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.digitsOf._unsafe_rec": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_9._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.rhoNum_append_band": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.validOuter.match_2._cstage1": "OuterFinite",
+    "Agent115.ExteriorFactorization.factorization_le": "ExteriorFactorizationProof",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_1._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.splitter._rarg._cstage2": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseDigit_pos": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.lowValue._unsafe_rec": "TARGET",
+    "Agent115.ExteriorFactorization.fromScans._cstage2": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter.match_1.\u00ab_@\u00bb.OuterFinite._hyg.85._cstage1": "OuterFinite",
+    "P196.Agent7.Finite.normalize.eq_2": "ExteriorFactorizationProof",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_2._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.splitter._cstage2": "ExteriorFactorizationProof",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.splitter._cstage2": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.zipWith_append_single": "ExteriorFactorizationProof",
+    "_private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.splitter._rarg._cstage2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.staysSmall._sunfold": "OuterFinite",
+    "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_11": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.excluded_phase_controls": "CoordinateThreshold",
+    "P196.Agent7.Finite.encoded._cstage1": "OuterFinite",
+    "Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator": "CoordinateThreshold",
+    "Agent115.ExteriorFactorization.outerNext_append_replicate": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.normalize_carry_le": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.normalize.match_1": "OuterFinite",
+    "P196.Agent7.Finite.normalize._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.normalize_eq": "ExteriorFactorizationProof",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.splitter": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter.match_1._@.OuterFinite._hyg.85": "OuterFinite",
+    "Agent115.ExteriorFactorization.normalize_length": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.bulkPhase._cstage1": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_15._cstage2": "OuterFinite",
+    "_private.OuterFinite.0._proof_4": "OuterFinite",
+    "P196.Agent7.Finite.decodeWord._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.digitsOf._sunfold": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.fromScans._closed_2._cstage2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.instReprOuter._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0._proof_6": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_14._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.normalize._cstage1": "OuterFinite",
+    "Agent115.ExteriorFactorization.zValue._cstage1": "TARGET",
+    "P196.Agent7.Finite.stripSuffix._cstage2": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.splitter._rarg._cstage2": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.outerNext_of_values": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.validOuter.match_1._cstage1": "OuterFinite",
+    "Agent115.ExteriorFactorization.strip_zip_append": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.target": "ExteriorFactorizationProof",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._closed_3._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.normalize._unsafe_rec": "OuterFinite",
+    "Agent115.ExteriorFactorization.nonneutralPhase": "TARGET",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.splitter._cstage1": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_10._cstage2": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter.\u00ab_@\u00bb.OuterFinite._hyg.85._cstage1": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.splitter._cstage1": "ExteriorFactorizationProof",
+    "Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_4": "CoordinateThreshold",
+    "Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_13": "CoordinateThreshold",
+    "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1._cstage2": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_3._@.OuterFinite._hyg.85": "OuterFinite",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_11._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.digitsOf_length": "ExteriorFactorizationProof",
+    "_private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._closed_4._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.foldl_high": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.Outer.mk._flat_ctor": "OuterFinite",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.splitter._cstage1": "ExteriorFactorizationProof",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_2": "ExteriorFactorizationProof",
+    "Agent115.ExteriorFactorization.normalize_eq._proof_2": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.validOuter._lambda_1._cstage2": "OuterFinite",
+    "P196.Agent7.Finite.validOuter._cstage1": "OuterFinite",
+    "P196.Agent7.Finite.staysSmall._cstage2": "OuterFinite",
+    "Agent115.ExteriorFactorization.lowValue.match_1": "TARGET",
+    "_private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.splitter": "ExteriorFactorizationProof",
+    "P196.Agent7.Finite.decodeWord": "OuterFinite"
+  },
+  "axiom_union": "[Classical.choice, Quot.sound, propext]",
+  "unsafe_implementation_axioms": [
+    [
+      "TARGET",
+      "List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1"
+    ],
+    [
+      "OuterFinite",
+      "List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.\u00ab_@\u00bb.OuterFinite._hyg.27._spec_1"
+    ]
+  ],
+  "original_source_sha256_after_build": "c50a07ee9dc4d3eff6e25b623235037850bc5a883ec057655503cc7a6cd068d8",
+  "source_unchanged_before_after": true,
+  "object_files": {
+    "build/objects/CoordinateThreshold.olean": {
+      "bytes": 316320,
+      "sha256": "57d67f5b95b27309d9982724f4a7a0cd2cd7baecdce375065b7374dd6416c111"
+    },
+    "build/objects/ExteriorFactorizationProof.olean": {
+      "bytes": 656632,
+      "sha256": "42069f7ed10fc92718109122824fa112b195971be0477b96c9a837227d753180"
+    },
+    "build/objects/OuterFinite.olean": {
+      "bytes": 202664,
+      "sha256": "0f30b0c915b3f0a603aadde506ebf0f09d1fc1aa7566ca93490057cbaa1f8b2c"
+    },
+    "build/objects/TARGET.olean": {
+      "bytes": 59464,
+      "sha256": "31b0354ccd72b373983c045ac64853e2390da73bff319f5f62b54196dca099e6"
+    }
+  },
+  "scope": "Independent clean compilation of a new four-module closure, explicit declaration axioms, and all theorem constants selected by imported module origin. Counts distinguish new authored exports, existing dependencies, and generated constants. Semantic scope is documented separately.",
+  "finished_utc": "2026-10-16T21:09:56Z"
+}

@@ -1,0 +1,540 @@
+Agent6.ExteriorCoordinates.phaseCarry_le_one (c : Nat) : Agent6.ExteriorCoordinates.phaseCarry c ≤ 1
+Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine (c : Nat) (hc : c ≤ 17) (hc9 : c ≠ 9) :
+  Agent6.ExteriorCoordinates.phaseCarry c = c / 9
+Agent6.ExteriorCoordinates.phaseDigit_identity (c : Nat) :
+  9 * Agent6.ExteriorCoordinates.phaseCarry c + Agent6.ExteriorCoordinates.phaseDigit c = c
+Agent6.ExteriorCoordinates.phaseDigit_le_eight (c : Nat) (hc : c ≤ 17) (hc9 : c ≠ 9) :
+  Agent6.ExteriorCoordinates.phaseDigit c ≤ 8
+Agent6.ExteriorCoordinates.phaseDigit_pos (c : Nat) (hc0 : 0 < c) : 0 < Agent6.ExteriorCoordinates.phaseDigit c
+Agent6.ExteriorCoordinates.overflow_eq_highValue (c : Nat) (B : List Nat) :
+  Agent6.ExteriorCoordinates.overflow c B =
+    (Agent115.ExteriorFactorization.highValue B + Agent6.ExteriorCoordinates.phaseCarry c) / 10 ^ B.length
+Agent6.ExteriorCoordinates.overflow_eq_rho_quotient (c : Nat) (B : List Nat) (hc : c ≤ 17) (hc9 : c ≠ 9) :
+  Agent6.ExteriorCoordinates.overflow c B = Agent115.ExteriorFactorization.rhoNum c B / (9 * 10 ^ B.length)
+Agent6.ExteriorCoordinates.overflow_le_one (c : Nat) (B : List Nat) (hB : ∀ (x : Nat), x ∈ B → x ≤ 18) :
+  Agent6.ExteriorCoordinates.overflow c B ≤ 1
+Agent6.ExteriorCoordinates.overflow_eq_zero_iff (c : Nat) (B : List Nat) (hc : c ≤ 17) (hc9 : c ≠ 9) :
+  Agent6.ExteriorCoordinates.overflow c B = 0 ↔ Agent115.ExteriorFactorization.rhoNum c B < 9 * 10 ^ B.length
+Agent6.ExteriorCoordinates.overflow_eq_one_iff (c : Nat) (B : List Nat) (hc : c ≤ 17) (hc9 : c ≠ 9)
+  (hB : ∀ (x : Nat), x ∈ B → x ≤ 18) :
+  Agent6.ExteriorCoordinates.overflow c B = 1 ↔ 9 * 10 ^ B.length ≤ Agent115.ExteriorFactorization.rhoNum c B
+Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator (c : Nat) (B : List Nat) (hc : c ≤ 17) (hc9 : c ≠ 9)
+  (hB : ∀ (x : Nat), x ∈ B → x ≤ 18) : Agent115.ExteriorFactorization.rhoNum c B < 18 * 10 ^ B.length
+Agent6.ExteriorCoordinates.empty_word_coordinates (c : Nat) :
+  Agent6.ExteriorCoordinates.overflow c [] = Agent6.ExteriorCoordinates.phaseCarry c ∧
+    Agent115.ExteriorFactorization.rhoNum c [] = c
+Agent6.ExteriorCoordinates.empty_word_quotient_iff (c : Nat) :
+  Agent6.ExteriorCoordinates.overflow c [] = Agent115.ExteriorFactorization.rhoNum c [] / (9 * 10 ^ [].length) ↔
+    c ≤ 17 ∧ c ≠ 9
+Agent6.ExteriorCoordinates.quotient_identity_forall_iff (c : Nat) :
+  (∀ (B : List Nat),
+      Agent6.ExteriorCoordinates.overflow c B = Agent115.ExteriorFactorization.rhoNum c B / (9 * 10 ^ B.length)) ↔
+    c ≤ 17 ∧ c ≠ 9
+Agent6.ExteriorCoordinates.excluded_phase_controls :
+  Agent6.ExteriorCoordinates.overflow 9 [] = 0 ∧
+    Agent115.ExteriorFactorization.rhoNum 9 [] / (9 * 10 ^ [].length) = 1 ∧
+      Agent6.ExteriorCoordinates.overflow 18 [] = 1 ∧
+        Agent115.ExteriorFactorization.rhoNum 18 [] / (9 * 10 ^ [].length) = 2
+Agent6.ExteriorCoordinates.unbounded_coefficient_control :
+  Agent6.ExteriorCoordinates.overflow 0 [20] = 2 ∧ 9 * 10 ^ [20].length ≤ Agent115.ExteriorFactorization.rhoNum 0 [20]
+Agent6.ExteriorCoordinates.betaNum_eq (c : Nat) (B : List Nat) :
+  Agent6.ExteriorCoordinates.betaNum c B = 9 * ↑(Agent115.ExteriorFactorization.lowValue B) - ↑c * 10 ^ B.length
+Agent6.ExteriorCoordinates.betaNum_outerNext_raw (c : Nat) (B : List Nat) :
+  Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.outerNext { c := c, B := B }).c
+      (P196.Agent7.Finite.outerNext { c := c, B := B }).B =
+    9 * ↑(Agent115.ExteriorFactorization.lowValue (Agent115.ExteriorFactorization.rawSucc c B)) -
+      ↑(2 * (c - 9 * if 10 ≤ c then 1 else 0)) * 10 ^ (B.length + 1)
+Agent6.ExteriorCoordinates.betaNum_outerNext (c : Nat) (B : List Nat) :
+  Agent6.ExteriorCoordinates.betaNum (P196.Agent7.Finite.outerNext { c := c, B := B }).c
+      (P196.Agent7.Finite.outerNext { c := c, B := B }).B =
+    Agent6.ExteriorCoordinates.betaNum c B + Agent6.ExteriorCoordinates.highContribution c B
+Agent6.ExteriorCoordinates.revN_lt_power (n v : Nat) : Agent115.ExteriorFactorization.revN n v < 10 ^ n
+Agent6.ExteriorCoordinates.highContribution_emod_ten_of_overflow_ne_zero (c : Nat) (B : List Nat)
+  (hg : Agent6.ExteriorCoordinates.overflow c B ≠ 0) : Agent6.ExteriorCoordinates.highContribution c B % 10 = 9
+Agent6.ExteriorCoordinates.highContribution_ne_zero_of_pos (c : Nat) (B : List Nat) (hc : 0 < c) :
+  Agent6.ExteriorCoordinates.highContribution c B ≠ 0
+Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral (c : Nat) (B : List Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase c) : Agent6.ExteriorCoordinates.highContribution c B ≠ 0
+Agent6.ExteriorCoordinates.zero_phase_empty_control : Agent6.ExteriorCoordinates.highContribution 0 [] = 0
+Agent6.ExteriorCoordinates.zero_overflow_negative_control :
+  Agent115.ExteriorFactorization.nonneutralPhase 2 ∧
+    P196.Agent7.Finite.validOuter { c := 2, B := [1] } = true ∧
+      Agent6.ExteriorCoordinates.overflow 2 [1] = 0 ∧ Agent6.ExteriorCoordinates.highContribution 2 [1] = -11
+Agent6.ExteriorCoordinates.zero_overflow_positive_control :
+  Agent115.ExteriorFactorization.nonneutralPhase 2 ∧
+    P196.Agent7.Finite.validOuter { c := 2, B := [3] } = true ∧
+      Agent6.ExteriorCoordinates.overflow 2 [3] = 0 ∧ Agent6.ExteriorCoordinates.highContribution 2 [3] = 7
+Agent6.ExteriorCoordinates.one_overflow_negative_control :
+  Agent115.ExteriorFactorization.nonneutralPhase 2 ∧
+    P196.Agent7.Finite.validOuter { c := 2, B := [10] } = true ∧
+      Agent6.ExteriorCoordinates.overflow 2 [10] = 1 ∧ Agent6.ExteriorCoordinates.highContribution 2 [10] = -191
+Agent6.ExteriorCoordinates.one_overflow_positive_control :
+  Agent115.ExteriorFactorization.nonneutralPhase 2 ∧
+    P196.Agent7.Finite.validOuter { c := 2, B := [13] } = true ∧
+      Agent6.ExteriorCoordinates.overflow 2 [13] = 1 ∧ Agent6.ExteriorCoordinates.highContribution 2 [13] = 79
+Agent6.ExteriorCoordinates.both_signs_at_zero_overflow :
+  ∃ Bneg Bpos,
+    Agent115.ExteriorFactorization.nonneutralPhase 2 ∧
+      P196.Agent7.Finite.validOuter { c := 2, B := Bneg } = true ∧
+        P196.Agent7.Finite.validOuter { c := 2, B := Bpos } = true ∧
+          Agent6.ExteriorCoordinates.overflow 2 Bneg = 0 ∧
+            Agent6.ExteriorCoordinates.overflow 2 Bpos = 0 ∧
+              Agent6.ExteriorCoordinates.highContribution 2 Bneg < 0 ∧
+                0 < Agent6.ExteriorCoordinates.highContribution 2 Bpos
+Agent6.ExteriorCoordinates.both_signs_at_one_overflow :
+  ∃ Bneg Bpos,
+    Agent115.ExteriorFactorization.nonneutralPhase 2 ∧
+      P196.Agent7.Finite.validOuter { c := 2, B := Bneg } = true ∧
+        P196.Agent7.Finite.validOuter { c := 2, B := Bpos } = true ∧
+          Agent6.ExteriorCoordinates.overflow 2 Bneg = 1 ∧
+            Agent6.ExteriorCoordinates.overflow 2 Bpos = 1 ∧
+              Agent6.ExteriorCoordinates.highContribution 2 Bneg < 0 ∧
+                0 < Agent6.ExteriorCoordinates.highContribution 2 Bpos
+Agent6.ExteriorCoordinates.outerIter_zero (s : P196.Agent7.Finite.Outer) : Agent6.ExteriorCoordinates.outerIter 0 s = s
+Agent6.ExteriorCoordinates.outerIter_succ (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.outerIter (n + 1) s =
+    P196.Agent7.Finite.outerNext (Agent6.ExteriorCoordinates.outerIter n s)
+Agent6.ExteriorCoordinates.orbitSum_zero (f : P196.Agent7.Finite.Outer → Int) (s : P196.Agent7.Finite.Outer) :
+  Agent6.ExteriorCoordinates.orbitSum f s 0 = 0
+Agent6.ExteriorCoordinates.orbitSum_succ (f : P196.Agent7.Finite.Outer → Int) (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.orbitSum f s (n + 1) =
+    Agent6.ExteriorCoordinates.orbitSum f s n + f (Agent6.ExteriorCoordinates.outerIter n s)
+Agent6.ExteriorCoordinates.contributionSum_zero (s : P196.Agent7.Finite.Outer) :
+  Agent6.ExteriorCoordinates.contributionSum s 0 = 0
+Agent6.ExteriorCoordinates.contributionSum_succ (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.contributionSum s (n + 1) =
+    Agent6.ExteriorCoordinates.contributionSum s n +
+      Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter n s).c
+        (Agent6.ExteriorCoordinates.outerIter n s).B
+Agent6.ExteriorCoordinates.orbitSum_telescope (a f : P196.Agent7.Finite.Outer → Int)
+  (hstep : ∀ (q : P196.Agent7.Finite.Outer), a (P196.Agent7.Finite.outerNext q) = a q + f q)
+  (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  a (Agent6.ExteriorCoordinates.outerIter n s) = a s + Agent6.ExteriorCoordinates.orbitSum f s n
+Agent6.ExteriorCoordinates.betaNum_outerIter (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.betaNum (Agent6.ExteriorCoordinates.outerIter n s).c
+      (Agent6.ExteriorCoordinates.outerIter n s).B =
+    Agent6.ExteriorCoordinates.betaNum s.c s.B + Agent6.ExteriorCoordinates.contributionSum s n
+Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.contributionSum s n =
+    Agent6.ExteriorCoordinates.betaNum (Agent6.ExteriorCoordinates.outerIter n s).c
+        (Agent6.ExteriorCoordinates.outerIter n s).B -
+      Agent6.ExteriorCoordinates.betaNum s.c s.B
+Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn :
+    Agent6.ExteriorCoordinates.betaNum (Agent6.ExteriorCoordinates.outerIter n s).c
+        (Agent6.ExteriorCoordinates.outerIter n s).B =
+      Agent6.ExteriorCoordinates.betaNum s.c s.B) :
+  Agent6.ExteriorCoordinates.contributionSum s n = 0
+Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) : Agent6.ExteriorCoordinates.contributionSum s n = 0
+Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_padding_return (s : P196.Agent7.Finite.Outer) (n m : Nat)
+  (hc : (Agent6.ExteriorCoordinates.outerIter n s).c = s.c)
+  (hB : (Agent6.ExteriorCoordinates.outerIter n s).B = s.B ++ List.replicate m s.c) :
+  Agent6.ExteriorCoordinates.contributionSum s n = 0
+Agent6.ExteriorCoordinates.outerIter_eq_chain (q : Nat → P196.Agent7.Finite.Outer) (n : Nat)
+  (hstep : ∀ (i : Nat), i < n → q (i + 1) = P196.Agent7.Finite.outerNext (q i)) :
+  Agent6.ExteriorCoordinates.outerIter n (q 0) = q n
+Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub (q : Nat → P196.Agent7.Finite.Outer) (n : Nat)
+  (hstep : ∀ (i : Nat), i < n → q (i + 1) = P196.Agent7.Finite.outerNext (q i)) :
+  Agent6.ExteriorCoordinates.contributionSum (q 0) n =
+    Agent6.ExteriorCoordinates.betaNum (q n).c (q n).B - Agent6.ExteriorCoordinates.betaNum (q 0).c (q 0).B
+Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg (f : P196.Agent7.Finite.Outer → Int)
+  (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hnonneg : ∀ (i : Nat), i < n → 0 ≤ f (Agent6.ExteriorCoordinates.outerIter i s))
+  (hsum : Agent6.ExteriorCoordinates.orbitSum f s n = 0) (i : Nat) :
+  i < n → f (Agent6.ExteriorCoordinates.outerIter i s) = 0
+Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos (f : P196.Agent7.Finite.Outer → Int)
+  (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hnonpos : ∀ (i : Nat), i < n → f (Agent6.ExteriorCoordinates.outerIter i s) ≤ 0)
+  (hsum : Agent6.ExteriorCoordinates.orbitSum f s n = 0) (i : Nat) :
+  i < n → f (Agent6.ExteriorCoordinates.outerIter i s) = 0
+Agent6.ExteriorCoordinates.orbitSum_zero_both_signs (f : P196.Agent7.Finite.Outer → Int) (s : P196.Agent7.Finite.Outer)
+  (n : Nat) (hsum : Agent6.ExteriorCoordinates.orbitSum f s n = 0)
+  (hnonzero : ∃ i, i < n ∧ f (Agent6.ExteriorCoordinates.outerIter i s) ≠ 0) :
+  (∃ i, i < n ∧ 0 < f (Agent6.ExteriorCoordinates.outerIter i s)) ∧
+    ∃ j, j < n ∧ f (Agent6.ExteriorCoordinates.outerIter j s) < 0
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hn : 0 < n) (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s)
+  (hne : Agent6.ExteriorCoordinates.highContribution s.c s.B ≠ 0) :
+  (∃ i,
+      i < n ∧
+        0 <
+          Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter i s).c
+            (Agent6.ExteriorCoordinates.outerIter i s).B) ∧
+    ∃ j,
+      j < n ∧
+        Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter j s).c
+            (Agent6.ExteriorCoordinates.outerIter j s).B <
+          0
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos (s : P196.Agent7.Finite.Outer) (n : Nat) (hc : 0 < s.c)
+  (hn : 0 < n) (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) :
+  (∃ i,
+      i < n ∧
+        0 <
+          Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter i s).c
+            (Agent6.ExteriorCoordinates.outerIter i s).B) ∧
+    ∃ j,
+      j < n ∧
+        Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter j s).c
+            (Agent6.ExteriorCoordinates.outerIter j s).B <
+          0
+Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hc : Agent115.ExteriorFactorization.nonneutralPhase s.c) (hn : 0 < n)
+  (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) :
+  (∃ i,
+      i < n ∧
+        0 <
+          Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter i s).c
+            (Agent6.ExteriorCoordinates.outerIter i s).B) ∧
+    ∃ j,
+      j < n ∧
+        Agent6.ExteriorCoordinates.highContribution (Agent6.ExteriorCoordinates.outerIter j s).c
+            (Agent6.ExteriorCoordinates.outerIter j s).B <
+          0
+Agent6.ExteriorCoordinates.overflowBit_le_one (s : P196.Agent7.Finite.Outer) :
+  Agent6.ExteriorCoordinates.overflowBit s ≤ 1
+Agent6.ExteriorCoordinates.carryScale_eq (s : P196.Agent7.Finite.Outer) :
+  Agent6.ExteriorCoordinates.carryScale s = 1 + 9 * ↑(Agent6.ExteriorCoordinates.overflowBit s)
+Agent6.ExteriorCoordinates.overflowCount_zero (s : P196.Agent7.Finite.Outer) :
+  Agent6.ExteriorCoordinates.overflowCount s 0 = 0
+Agent6.ExteriorCoordinates.overflowCount_succ (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.overflowCount s (n + 1) =
+    Agent6.ExteriorCoordinates.overflowCount s n +
+      Agent6.ExteriorCoordinates.overflowBit (Agent6.ExteriorCoordinates.outerIter n s)
+Agent6.ExteriorCoordinates.overflowCount_le (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.overflowCount s n ≤ n
+Agent6.ExteriorCoordinates.highContribution_eq_weighted (s : P196.Agent7.Finite.Outer) :
+  Agent6.ExteriorCoordinates.highContribution s.c s.B =
+    9 * Agent6.ExteriorCoordinates.weightedReverse s - Agent6.ExteriorCoordinates.weightedPhase s +
+      9 * ↑(Agent6.ExteriorCoordinates.overflowBit s)
+Agent6.ExteriorCoordinates.contributionSum_eq_weighted (s : P196.Agent7.Finite.Outer) (n : Nat) :
+  Agent6.ExteriorCoordinates.contributionSum s n =
+    9 * Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedReverse s n -
+        Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedPhase s n +
+      9 * ↑(Agent6.ExteriorCoordinates.overflowCount s n)
+Agent6.ExteriorCoordinates.closed_orbit_weighted_balance (s : P196.Agent7.Finite.Outer) (n : Nat)
+  (hreturn : Agent6.ExteriorCoordinates.outerIter n s = s) :
+  Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedPhase s n =
+    9 * Agent6.ExteriorCoordinates.orbitSum Agent6.ExteriorCoordinates.weightedReverse s n +
+      9 * ↑(Agent6.ExteriorCoordinates.overflowCount s n)
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.revN_lt_power._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_zero_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_of_zValue._proof_11 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.ten_power_mod_nine : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.stripSuffix_append_single : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_weighted._proof_29 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.one_overflow_negative_control : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.carryScale_eq : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.injEq : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_2 : []
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.both_signs_at_zero_overflow : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_append_single : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_band : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_16 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent115.ExteriorFactorization.revN.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_pos._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent115.ExteriorFactorization.rhoNum.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator._proof_15 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_18 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_band._proof_9 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0._proof_6 : [propext]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.both_signs_at_one_overflow : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_2 : []
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.inj : []
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.highValue_lt : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_band : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowBit_le_one : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof P196.Agent7.Finite.validOuter.eq_1 : []
+UNSAFE_IMPLEMENTATION_AXIOM TARGET List.foldl._at.Agent115.ExteriorFactorization.highValue._spec_1
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_values._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_padding_return : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_general : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_band._proof_10 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution.eq_1 : []
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_2 : []
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.canonical_eq_le._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_weighted_balance : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.last_ne_of_valid : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.canonical_eq_le : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.Outer.mk.sizeOf_spec : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zValue_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_append : [propext]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext_raw._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.highValue_lt._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs._proof_22 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_pos : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext_raw : [Quot.sound, propext]
+AUDIT_THEOREM CoordinateDynamics _private.CoordinateDynamics.0.Agent6.ExteriorCoordinates.beta_arithmetic._proof_2 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.entries_le_of_valid : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_identity._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_eq_fromScans : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_quotient_iff : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_2.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.phase_facts : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics _private.CoordinateDynamics.0.Agent6.ExteriorCoordinates.beta_arithmetic : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_zero : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_carry_le._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_of_zValue : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_le_one : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle _private.CoordinateCycle.0._proof_24 : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext : [Quot.sound, propext, Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_le._proof_26 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_length : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_coordinates : [propext]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_le_one : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_zero_of_beta_return : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_ne_zero_of_pos : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.zero_overflow_positive_control : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.phase_facts._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.revN_lt_power._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_sharp_seven : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.highContribution_eq_weighted : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_pos._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum.eq_1 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_zero : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_eq_chain._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.empty_word_quotient_iff._proof_17 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero_both_signs._proof_21 : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_reverse._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_5 : [propext]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_emod_ten_of_overflow_ne_zero : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.fromScans.eq_1 : []
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_eq : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.unbounded_coefficient_control : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le._proof_13 : [propext,
+ Quot.sound]
+UNSAFE_IMPLEMENTATION_AXIOM OuterFinite List.repr'._at._private.OuterFinite.0.P196.Agent7.Finite.reprOuter.«_@».OuterFinite._hyg.27._spec_1
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_le_eight : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_highValue : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.highContribution_eq_weighted._proof_28 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.canonical_eq_le._proof_7 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.stripSuffix_spec : [Quot.sound, propext]
+AUDIT_THEOREM CoordinateDynamics _private.CoordinateDynamics.0.Agent6.ExteriorCoordinates.beta_arithmetic._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_weighted_balance._proof_30 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle _private.CoordinateCycle.0._proof_27 : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue_reverse : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.eq_of_values._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.highContribution_ne_zero_of_nonneutral : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_append_single : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.highValue_append_single : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.zero_overflow_negative_control : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_2._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_zero : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.digitsOf.match_1.eq_1 : []
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_1._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_rho_quotient : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.highValue_reverse : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_zipWith._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_exits_by_seven : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_nonneutral : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.Agent115.ExteriorFactorization.lowValue.match_1.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.normalize.match_1.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_identity._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_weighted : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0._proof_7 : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_1.eq_2 : []
+AUDIT_THEOREM CoordinateSign Agent115.ExteriorFactorization.nonneutralPhase.eq_1 : []
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.takeWhile_eq_mem : [Quot.sound, propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_le_eight._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_replicate : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.highValue.eq_1 : []
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_values._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_succ : []
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_zipWith : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_identity : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_band._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_1.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le._proof_14 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.lowValue.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_1 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_le_one._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_1.eq_1 : []
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.observation_injective : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.quotient_identity_forall_iff : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM OuterFinite P196.Agent7.Finite.cap2_sharp_six : []
+AUDIT_THEOREM CoordinateSign _private.CoordinateSign.0.Agent6.ExteriorCoordinates.reversal_difference_ne_zero._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof P196.Agent7.Finite.normalize.eq_1 : []
+AUDIT_THEOREM ExteriorObservationInjective Agent115.ExteriorFactorization.highValue_cons : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.outerIter_zero : []
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_outerNext._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.one_overflow_positive_control : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.length_zipWith_eq : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_betaNum_sub : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.rhoNum_append_band : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.highValue_zipWith._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_succ : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.factorization_le : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.betaNum_outerIter : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_eq_chain_betaNum_sub : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorObservationInjective _private.ExteriorObservationInjective.0.P196.Agent7.Finite.validOuter.match_2.eq_2 : []
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseDigit_pos : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_succ : []
+AUDIT_THEOREM ExteriorFactorizationProof P196.Agent7.Finite.normalize.eq_2 : []
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.revN_lt_power : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent6.ExteriorCoordinates.betaNum_eq._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.zipWith_append_single : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_contributionSum_eq_zero : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.lowValue_digitsOf : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.excluded_phase_controls : []
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.successor_observation : [Quot.sound, propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.rhoNum_lt_twice_denominator : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_append_replicate : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_carry_le : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowCount_le : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_length : [propext, Quot.sound]
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0._proof_4 : []
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.rawSucc_values : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_telescope : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0._proof_6 : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_telescope._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonpos._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.outerNext_of_values : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateDynamics Agent115.ExteriorFactorization.zValue.eq_1 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.strip_zip_append : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.target : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.orbitSum_eq_zero_of_nonneg._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.phaseCarry_eq_div_nine._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.overflowBit_le_one._proof_23 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateThreshold Agent6.ExteriorCoordinates.overflow_eq_one_iff._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.outerNext_eq_strip : []
+AUDIT_THEOREM OuterFinite _private.OuterFinite.0.P196.Agent7.Finite.decEqOuter._proof_3._@.OuterFinite._hyg.85 : []
+AUDIT_THEOREM CoordinateSign Agent6.ExteriorCoordinates.zero_phase_empty_control : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.digitsOf_length : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.foldl_high : [propext]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.carryScale_eq._proof_25 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle _private.CoordinateCycle.0._proof_6 : [propext]
+AUDIT_THEOREM ExteriorFactorizationProof _private.ExteriorFactorizationProof.0.P196.Agent7.Finite.validOuter.match_2.eq_2 : []
+AUDIT_THEOREM ExteriorFactorizationProof Agent115.ExteriorFactorization.normalize_eq._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.closed_orbit_both_signs_of_initial_ne_zero : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM ExteriorUpdateLaw Agent115.ExteriorFactorization.highValue_zipWith : [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM CoordinateCycle Agent6.ExteriorCoordinates.contributionSum_succ : []
+FULL_MODULE_AUDIT theorems=235 union=[Classical.choice, Quot.sound, propext]
