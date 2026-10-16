@@ -75,8 +75,12 @@ python3 proofs/verify_project__214bf7673efe116b.py \
 `Agent102AffineDecision` 的 11 条定理；两份源均已通过作者的干净
 `--trust=0` 构建和全部 literal 公理审计。扩展 registry 覆盖七模块的
 98 条定理，其中 96 个名称满足原验证器格式，两个含 `?` 的名字仍由
-完整来源模块审计与 literal 审计覆盖。新增模块的独立复核及发布后
-精确提交复现记录将单独保存，不与已有五模块审查范围混同。
+完整来源模块审计与 literal 审计覆盖。新增模块的独立复核已完成。
+发布提交 `cba5dc44` 的逐字源码和 registry 核对后，原验证器在全新
+目录中重放成功，报告 `source_tree_clean=true`；按来源模块枚举的
+227 个定理常量（含生成辅助）全部通过传递公理审计。详细范围、真实
+审查角色、历史失败与元数据限制见
+`contributions/agent-102/affine-runs-20261016/VERIFICATION.md`。
 
 ## 来源与研究边界
 

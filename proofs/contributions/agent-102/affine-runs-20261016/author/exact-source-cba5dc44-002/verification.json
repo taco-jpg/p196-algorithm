@@ -1,0 +1,353 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent102-affine-runs": {
+      "status": "PASS",
+      "scope": "Literal affine run words: exact coverage, clipped-length endpoints, computable eventual equality and palindrome dichotomies.",
+      "sources": {
+        "Agent102RunDefs": {
+          "path": "proofs/Agent102RunDefs.lean",
+          "sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "build_sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Agent102AffineArithmetic": {
+          "path": "proofs/Agent102AffineArithmetic.lean",
+          "sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+          "build_sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+          "imports": [
+            "Agent102RunDefs"
+          ],
+          "adapter": null
+        },
+        "Agent102RunWord": {
+          "path": "proofs/Agent102RunWord.lean",
+          "sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+          "build_sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+          "imports": [
+            "Agent102RunDefs"
+          ],
+          "adapter": null
+        },
+        "Agent102RunEndpoints": {
+          "path": "proofs/Agent102RunEndpoints.lean",
+          "sha256": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+          "build_sha256": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+          "imports": [
+            "Agent102AffineArithmetic"
+          ],
+          "adapter": null
+        },
+        "Agent102AffineRuns": {
+          "path": "proofs/Agent102AffineRuns.lean",
+          "sha256": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4",
+          "build_sha256": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4",
+          "imports": [
+            "Agent102RunEndpoints",
+            "Agent102RunWord"
+          ],
+          "adapter": null
+        },
+        "Agent102AffineBoundary": {
+          "path": "proofs/Agent102AffineBoundary.lean",
+          "sha256": "7dda5da29f8086b7a35b30f041e6092da2b8ea97bd315b5a1b75c6934d01c35a",
+          "build_sha256": "7dda5da29f8086b7a35b30f041e6092da2b8ea97bd315b5a1b75c6934d01c35a",
+          "imports": [
+            "Agent102RunWord",
+            "Agent102AffineArithmetic"
+          ],
+          "adapter": null
+        },
+        "Agent102AffineDecision": {
+          "path": "proofs/Agent102AffineDecision.lean",
+          "sha256": "1f41f5159bb5c2b25ebdc272d64482c27bb345003a55f0e1b3a4c495acd4fbe4",
+          "build_sha256": "1f41f5159bb5c2b25ebdc272d64482c27bb345003a55f0e1b3a4c495acd4fbe4",
+          "imports": [
+            "Agent102AffineRuns"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "Agent102RunDefs",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102RunDefs.olean",
+            "Agent102RunDefs.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.620764,
+          "log": "agent102-affine-runs/logs/Agent102RunDefs.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent102RunWord",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102RunWord.olean",
+            "Agent102RunWord.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.534098,
+          "log": "agent102-affine-runs/logs/Agent102RunWord.log",
+          "log_sha256": "1157e212ffff300d3775fb0cd087ea0d0d0b81e318d5697b6316a542a02132b1"
+        },
+        {
+          "label": "Agent102AffineArithmetic",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102AffineArithmetic.olean",
+            "Agent102AffineArithmetic.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.388943,
+          "log": "agent102-affine-runs/logs/Agent102AffineArithmetic.log",
+          "log_sha256": "e2447af942b7970c10d091d54f40bfaf50d7c4b7892a2ee74bdbc9551d66c9fd"
+        },
+        {
+          "label": "Agent102AffineBoundary",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102AffineBoundary.olean",
+            "Agent102AffineBoundary.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.716269,
+          "log": "agent102-affine-runs/logs/Agent102AffineBoundary.log",
+          "log_sha256": "bf379ef1bece7eda61d40737766eb3ba9d7433a4bc451cbad364bb52eac99862"
+        },
+        {
+          "label": "Agent102RunEndpoints",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102RunEndpoints.olean",
+            "Agent102RunEndpoints.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.717398,
+          "log": "agent102-affine-runs/logs/Agent102RunEndpoints.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent102AffineRuns",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102AffineRuns.olean",
+            "Agent102AffineRuns.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.125695,
+          "log": "agent102-affine-runs/logs/Agent102AffineRuns.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent102AffineDecision",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent102AffineDecision.olean",
+            "Agent102AffineDecision.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.477152,
+          "log": "agent102-affine-runs/logs/Agent102AffineDecision.log",
+          "log_sha256": "bcbfce4e062cd9a71c758a017c96ef48d651c6b2c6d7ce18a16a146266b04a6d"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 5.831726,
+          "log": "agent102-affine-runs/logs/ProjectAudit.log",
+          "log_sha256": "64d146230161b87422b8798cd2fd294d357053220a2ab543196c1a0107e67842"
+        }
+      ],
+      "roots": [
+        "Agent102AffineBoundary",
+        "Agent102AffineDecision"
+      ],
+      "build_order": [
+        "Agent102RunDefs",
+        "Agent102RunWord",
+        "Agent102AffineArithmetic",
+        "Agent102AffineBoundary",
+        "Agent102RunEndpoints",
+        "Agent102AffineRuns",
+        "Agent102AffineDecision"
+      ],
+      "theorem_count": 227,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent102.Affine.eval_zero",
+        "Agent102.Affine.eval_add",
+        "Agent102.Affine.intercept_bounds_of_cutoff",
+        "Agent102.Affine.eval_pos_of_slope_pos",
+        "Agent102.Affine.eval_neg_of_slope_neg",
+        "Agent102.Affine.eval_nonneg_iff",
+        "Agent102.Affine.eval_neg_iff",
+        "Agent102.Affine.eval_positivePart",
+        "Agent102.Affine.eval_positivePart_nonneg",
+        "Agent102.Affine.compareCutoff_comm",
+        "Agent102.Affine.eval_lt_of_slope_lt",
+        "Agent102.Affine.eval_le_iff",
+        "Agent102.Affine.eval_lt_iff",
+        "Agent102.Affine.eval_eq_iff",
+        "Agent102.Affine.eval_le_stable",
+        "Agent102.Affine.eval_lt_stable",
+        "Agent102.Affine.eval_eq_stable",
+        "Agent102.word_nil",
+        "Agent102.word_cons",
+        "Agent102.word_append",
+        "Agent102.word_length",
+        "Agent102.word_reverse",
+        "Agent102.Span.shift_covers",
+        "Agent102.Span.shift_overlaps",
+        "Agent102.spansFrom_shift",
+        "Agent102.spansFrom_eq_map_spans",
+        "Agent102.spansFrom_append",
+        "Agent102.length_spansFrom",
+        "Agent102.length_spans",
+        "Agent102.mem_spansFrom_bounds",
+        "Agent102.exists_mem_spansFrom_covers",
+        "Agent102.exists_mem_spansFrom_covers_iff",
+        "Agent102.mem_spans_bounds",
+        "Agent102.exists_mem_spans_covers",
+        "Agent102.exists_mem_spans_covers_iff",
+        "Agent102.eq_of_mem_spansFrom_covers",
+        "Agent102.eq_of_mem_spans_covers",
+        "Agent102.Span.overlaps_iff_exists_covers",
+        "Agent102.Span.overlaps_of_covers",
+        "Agent102.word_eq_iff_length_and_overlap_digits",
+        "Agent102.word_eq_iff_count_sum_and_overlap_digits",
+        "Agent102.le_maxList_of_mem",
+        "Agent102.cutoff_le_lengthCutoff",
+        "Agent102.wordAt_nil",
+        "Agent102.wordAt_cons",
+        "Agent102.widthAffine_eval",
+        "Agent102.widthAffine_nonneg",
+        "Agent102.spanSpecsFrom_at",
+        "Agent102.spanSpecs_at",
+        "Agent102.spanSpecsFrom_nonneg",
+        "Agent102.spanSpecs_nonneg",
+        "Agent102.widthAffine_mem_endpoints",
+        "Agent102.lo_mem_endpoints",
+        "Agent102.hi_mem_endpoints",
+        "Agent102.endpoints_nonneg",
+        "Agent102.compareCutoff_le_pairCutoff",
+        "Agent102.left_lengthCutoff_le",
+        "Agent102.right_lengthCutoff_le",
+        "Agent102.pairCutoff_le_equalityCutoff",
+        "Agent102.combined_endpoints_nonneg",
+        "Agent102.endpoint_nat_lt_stable",
+        "Agent102.width_eq_stable",
+        "Agent102.Span.overlaps_iff_four",
+        "Agent102.span_overlap_stable",
+        "Agent102.wordAt_eq_iff_spans",
+        "Agent102.wordAt_eq_stable",
+        "Agent102.wordAt_reverse",
+        "Agent102.wordAt_palindrome_stable",
+        "Agent102.equalOnTail_spec",
+        "Agent102.unequalOnTail_spec",
+        "Agent102.equality_before_cutoff_of_tail_mismatch",
+        "Agent102.palindromicOnTail_spec",
+        "Agent102.nonpalindromicOnTail_spec",
+        "Agent102.AffineBoundary.wordAt_moving",
+        "Agent102.AffineBoundary.wordAt_fixed",
+        "Agent102.AffineBoundary.moving_fixed_eq_iff",
+        "Agent102.AffineBoundary.compareCutoff_moving_fixed",
+        "Agent102.AffineBoundary.moving_fixed_stable_iff",
+        "Agent102.AffineBoundary.equality_changes_arbitrarily_late",
+        "Agent102.AffineBoundary.no_uniform_wordAt_cutoff",
+        "Agent102.AffineBoundary.run_structure_counterexample",
+        "Agent102.AffineBoundary.overlap_digits_without_width",
+        "Agent102.AffineBoundary.zero_span_cross_inequalities",
+        "Agent102.AffineBoundary.zero_span_realized",
+        "Agent102.AffineBoundary.cross_inequalities_false_negative",
+        "Agent102.endpoint_ltOnTail_iff",
+        "Agent102.width_eq_iff_coefficients",
+        "Agent102.span_overlapsOnTail_iff",
+        "Agent102.fastEqualOnTail_iff_coefficients",
+        "Agent102.fastEqualOnTail_iff_wordAt",
+        "Agent102.fastEqualOnTail_eq_equalOnTail",
+        "Agent102.fastEqualOnTail_spec",
+        "Agent102.fastUnequalOnTail_spec",
+        "Agent102.fastPalindromicOnTail_eq",
+        "Agent102.fastPalindromicOnTail_spec",
+        "Agent102.fastNonpalindromicOnTail_spec"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "Agent102AffineRuns",
+          "List.mapTR.loop._at.Agent102.pairCutoff._spec_1"
+        ],
+        [
+          "Agent102RunEndpoints",
+          "List.flatMapTR.go._at.Agent102.endpoints._spec_1"
+        ],
+        [
+          "Agent102RunDefs",
+          "List.flatMapTR.go._at.Agent102.word._spec_1"
+        ],
+        [
+          "Agent102AffineRuns",
+          "List.flatMapTR.go._at.Agent102.pairCutoff._spec_2"
+        ],
+        [
+          "Agent102RunDefs",
+          "List.mapTR.loop._at.Agent102.runsAt._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792187162.0209546,
+  "registry_sha256": "af18234025f2f6eb50dc5952246cefcb9ba8e4171bc7227d4637ef178306fe11",
+  "source_commit": "cba5dc441289bbed383972aa522a45c473879396",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped affine run comparison only; actual decimal iteration closure and P196 are not supplied."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792187175.9472294
+}
