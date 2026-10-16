@@ -1,4 +1,6 @@
 import Agent1PeriodicGuardFacts
+import Agent1PeriodicOuterStrip
+import Agent1PeriodicCenterStrip
 
 /-!
 Exact whole-period absorption for the spatial quotient. The period word,
@@ -65,9 +67,81 @@ theorem stripped_width_balance (B H w B' H' : Word) (u v : Nat)
   rw [hhc] at hh
   omega
 
+def quotientOuter (B H w : Word) : Word :=
+  (stripPeriodSuffix (rawPeriod B H w) (rawOuter B H w)).1
+
+def quotientCenter (B H w : Word) : Word :=
+  (stripPeriodCenter (rawPeriod B H w) (rawCenter B H w)).1
+
+def outerPeriods (B H w : Word) : Nat :=
+  (stripPeriodSuffix (rawPeriod B H w) (rawOuter B H w)).2
+
+def centerPeriods (B H w : Word) : Nat :=
+  (stripPeriodCenter (rawPeriod B H w) (rawCenter B H w)).2
+
+def exponentDelta (B H w : Word) : Int :=
+  (outerPeriods B H w : Int) + (centerPeriods B H w : Int) - 2
+
+/-- The executable, maximally stripped quotient computes the exact actual
+one-step image for every admissible exponent. No stripping premise remains. -/
+theorem quotient_step_bounded (B H w : Word) (k : Nat)
+    (hB : Bounded B 18) (hH : Bounded H 18) (hw : Bounded w 18)
+    (hlen : w.length = 4) (hk : 3 ≤ k) :
+    stepWord (periodicWord B H w k) =
+      periodicWord (quotientOuter B H w) (quotientCenter B H w)
+        (rawPeriod B H w) ((k-2)+outerPeriods B H w+centerPeriods B H w) := by
+  have hp : rawPeriod B H w ≠ [] := by
+    have := (raw_block_lengths B H w hB hH hw hlen).2.1
+    intro he
+    simp only [he, List.length_nil] at this
+    omega
+  exact raw_guard_of_stripped B H w _ _ _ _ k hB hH hw hlen hk
+    (stripPeriodSuffix_spec _ _ hp) (stripPeriodCenter_decomposition _ _)
+
+/-- Maximality is about complete words, including nonprimitive periods. -/
+theorem quotient_irreducible (B H w : Word)
+    (hB : Bounded B 18) (hH : Bounded H 18) (hw : Bounded w 18)
+    (hlen : w.length = 4) :
+    (¬ ∃ D, quotientOuter B H w = D ++ rawPeriod B H w) ∧
+      (¬ ∃ K, quotientCenter B H w =
+        rawPeriod B H w ++ K ++ (rawPeriod B H w).reverse) := by
+  have hp : rawPeriod B H w ≠ [] := by
+    have := (raw_block_lengths B H w hB hH hw hlen).2.1
+    intro he
+    simp only [he, List.length_nil] at this
+    omega
+  exact ⟨stripPeriodSuffix_maximal _ _ hp, stripPeriodCenter_maximal _ _ hp⟩
+
+/-- Exact width balance for the executable quotient and signed shift. -/
+theorem quotient_width_balance (B H w : Word)
+    (hB : Bounded B 18) (hH : Bounded H 18) (hw : Bounded w 18)
+    (hlen : w.length = 4) :
+    2*((quotientOuter B H w).length : Int) +
+      ((quotientCenter B H w).length : Int) + 8*exponentDelta B H w =
+      2*(B.length : Int) + (H.length : Int) + (rawGamma B H w : Int) := by
+  have hp : rawPeriod B H w ≠ [] := by
+    have := (raw_block_lengths B H w hB hH hw hlen).2.1
+    intro he
+    simp only [he, List.length_nil] at this
+    omega
+  exact stripped_width_balance B H w _ _ _ _ hB hH hw hlen
+    (stripPeriodSuffix_spec _ _ hp) (stripPeriodCenter_decomposition _ _)
+
+/-- Natural exponents and the signed shift agree on every permitted input. -/
+theorem quotient_exponent_accounting (B H w : Word) (k : Nat) (hk : 3 ≤ k) :
+    1 ≤ (k-2)+outerPeriods B H w+centerPeriods B H w ∧
+      (((k-2)+outerPeriods B H w+centerPeriods B H w : Nat) : Int) =
+        (k : Int) + exponentDelta B H w := by
+  unfold exponentDelta
+  omega
+
 end Agent1.Periodic
 
 #print axioms Agent1.Periodic.periodicWord_absorb
 #print axioms Agent1.Periodic.periodicWord_length
 #print axioms Agent1.Periodic.raw_guard_of_stripped
 #print axioms Agent1.Periodic.stripped_width_balance
+#print axioms Agent1.Periodic.quotient_step_bounded
+#print axioms Agent1.Periodic.quotient_irreducible
+#print axioms Agent1.Periodic.quotient_width_balance
+#print axioms Agent1.Periodic.quotient_exponent_accounting
