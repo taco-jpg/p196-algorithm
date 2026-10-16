@@ -7,16 +7,17 @@ The contribution branch is
 
 ## Completed core and current verification
 
-Four new source modules have completed author Lean 4.19.0 checks with
-`--trust=0 -j1 -DElab.async=false`. All 24 named public theorem endpoints
+Five new source modules have completed author Lean 4.19.0 checks with
+`--trust=0 -j1 -DElab.async=false`. All 36 named public theorem endpoints
 have only standard logical axiom dependencies. Failed attempts and their
 exact sources/logs remain under `development/`.
 
 The genuine separate specialist `/root/runtime_audit` has independently
-reviewed the core arithmetic interpretation and checked the budget module;
-its fresh full-core rebuild and module-origin audit are in progress.
-The already-scoped modulo-99 and entry-growth controls are being added in
-a separate fifth module, without modifying these four frozen core sources.
+reviewed the core arithmetic interpretation and completed a fresh five-module
+core rebuild (including the original foundation), auditing all 1,089 theorem
+constants with only the standard three logical axioms. The modulo-99 and
+entry-growth controls are complete in the fifth new module; the reviewer is
+checking this exact extension while retaining the four frozen core sources.
 This is not yet a claim of completed final-package independent review or
 main integration.
 
@@ -52,6 +53,12 @@ hence c is not the true next iterate of y. The proof retains the boundary
 R=3 (a=8, c=100008909, s(c)=27); for a>=9 it proves the sharper
 `s(c)+44<=9*a` using `990*a+989<10^(a-5)`.
 
+For every R>=2, the same ordinary integer entry edge also satisfies
+`y%99=0`, `c%99=0`, `y<c<11*y`, and
+`decimalLength(c)=decimalLength(y)+1`. Thus for R>=3 these residue,
+growth, and width conditions coexist with the failure of the true-step
+carry budget. Both parameter thresholds are retained as stated.
+
 The quantitative carry restriction rejects this particular repair of a
 congruence-only counterpath. This result neither constructs the whole
 artificial path nor rules out every possible repaired countermodel. It
@@ -65,9 +72,10 @@ does not prove an infinite actual orbit or settle 196.
 | Agent106CongruenceSeed | denseOutput_digitSum; denseOutput_decimalLength; denseOutput_canonical; denseOutput_reverse; denseOutput_step; denseOutput_step_digitSum; finitePrefix_first_step |
 | Agent106SparseTarget | sparse_tail_bound; target_digitSum_le_of_lt_pow; target_digitSum_pow_add; sparse_digitSum_bound; sparse_eight_digitSum |
 | Agent106CongruenceObstruction | congruence_sparse_jump_separation; sparse_family_violates_actual_budget; congruence_sparse_jump_ne_actual |
+| Agent106CongruenceControls | denseOutput_mod99; sparse_mod99; sparse_family_entry_growth; sparse_family_entry_width; congruence_sparse_entry_controls |
 
 All new declarations are in namespace `Agent106.CongruenceBudget`.
-The four sources are at `proofs/<Module>.lean`.
+The five sources are at `proofs/<Module>.lean`.
 
 ## Original argument and dependency pin
 
