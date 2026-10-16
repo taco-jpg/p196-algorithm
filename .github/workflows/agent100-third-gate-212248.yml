@@ -23,7 +23,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/agent100-source"
           gzip -dc "$base/development/Agent100ThirdGateDescent.lean.gz" > "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean"
           gzip -dc "$base/controls/verify.py.gz" > "$RUNNER_TEMP/agent100-source/verify.py"
-          printf '%s  %s\n' '2c7a584f10fd12723dd4c108cdbff8cc08cc111419395e820589608f0d58a993' "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean" | sha256sum -c -
+          printf '%s  %s\n' '4b38b0a6f1aae52be2c74f47528e77378d57d2efa74b0d0e9efe45f122a29255' "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean" | sha256sum -c -
           printf '%s  %s\n' '228b7cb287457894ad04c36450fc46f5fdf8721cf75febbd4898b665d568f245' "$RUNNER_TEMP/agent100-source/verify.py" | sha256sum -c -
           printf '%s  %s\n' '2907112c58d5be871b7c267413f3e48f3b4e48d7762ead7b835b0aef1ad9d09f' "$base/controls/finite-control-300.json" | sha256sum -c -
           cp "$base/controls/finite-control-300.json" "$RUNNER_TEMP/agent100-source/"

@@ -39,8 +39,8 @@ a byte-identical `finite-control-300.json` record. The finite records are
 
 - `development/Agent100ThirdGateDescent.lean.gz` is exact lossless gzip of
   the original WIP Lean source (source SHA-256
-  `2c7a584f10fd12723dd4c108cdbff8cc08cc111419395e820589608f0d58a993`,
-  compressed SHA-256 `f2cefc2ec883156b47d3809a58fcfab280b0050573bbafb20f69368b12445431`).
+  `4b38b0a6f1aae52be2c74f47528e77378d57d2efa74b0d0e9efe45f122a29255`,
+  compressed SHA-256 `ca1742753c94de03155f5062d34813a0a05ec789bcf27ada92a9811152e1de4e`).
 - `controls/verify.py.gz` preserves the independent exact arithmetic checker
   (source SHA-256 `228b7cb287457894ad04c36450fc46f5fdf8721cf75febbd4898b665d568f245`,
   compressed SHA-256 `1a27e7a21dce9a62a4d11a697f8e480c332e6bbb48fd71ea5406997ef39545c3`).
@@ -62,3 +62,8 @@ dependency replay without modifying the six historical source modules.
 Parent source pin: `87ffd966a70f8271a0d22b395dd59824dfabd41f`.
 Claim: `proofs/coordination/tasks/agent100-third-gate-outer-descent-212248Z.json`;
 publication never writes the default branch.
+
+## CI attempt history
+
+- Attempt 001 [workflow 38971080535](https://github.com/taco-jpg/p196-algorithm/actions/runs/38971080535) has **failed** for this *new* Lean source; no new theorem may be described as checked. Its official Lean4.19.0 job did pass the six-module clean dependency replay and published Group II module, then reported unresolved proof obligations in the new module at original lines 71,75,86,104,117,134,140,147,153, including `sorryAx` in the unsuccessful generated theorem results. The full untouched GitHub Actions job log is retained under `verification/attempt01-ci.log`, and the original source is retained as `development/attempt01.lean.gz`.
+- Attempt 002 revises arithmetic width-index rewrites, reduces branch normalizations, removes unsupported `split_ifs` tactics, and restructures the sixth-width proof. These edits have **not yet** been Lean checked and may still fail; they remain WIP. The current development source is attempt 002.

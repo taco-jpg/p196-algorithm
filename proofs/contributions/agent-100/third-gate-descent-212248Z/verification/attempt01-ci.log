@@ -1,0 +1,363 @@
+﻿2026-10-16T21:41:45.6713837Z Current runner version: '2.337.0'
+2026-10-16T21:41:45.6739299Z ##[group]Runner Image Provisioner
+2026-10-16T21:41:45.6740318Z Hosted Compute Agent
+2026-10-16T21:41:45.6740918Z Version: 20261012.601
+2026-10-16T21:41:45.6741637Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-16T21:41:45.6742384Z Build Date: 2026-10-12T17:48:21Z
+2026-10-16T21:41:45.6743061Z Worker ID: {e22dedd8-3952-4f5d-850b-69873f306414}
+2026-10-16T21:41:45.6744102Z Region: eastus
+2026-10-16T21:41:45.6744651Z Cloud: Azure
+2026-10-16T21:41:45.6745255Z ##[endgroup]
+2026-10-16T21:41:45.6747213Z ##[group]Operating System
+2026-10-16T21:41:45.6747860Z Ubuntu
+2026-10-16T21:41:45.6748552Z 24.04.5
+2026-10-16T21:41:45.6749082Z LTS
+2026-10-16T21:41:45.6749588Z ##[endgroup]
+2026-10-16T21:41:45.6750210Z ##[group]Runner Image
+2026-10-16T21:41:45.6750812Z Image: ubuntu-24.04
+2026-10-16T21:41:45.6751452Z Version: 20261012.334.1
+2026-10-16T21:41:45.6752724Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-16T21:41:45.6754714Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-16T21:41:45.6755690Z ##[endgroup]
+2026-10-16T21:41:45.6756917Z ##[group]GITHUB_TOKEN Permissions
+2026-10-16T21:41:45.6759078Z Contents: read
+2026-10-16T21:41:45.6760176Z Metadata: read
+2026-10-16T21:41:45.6760770Z ##[endgroup]
+2026-10-16T21:41:45.6763809Z Secret source: Actions
+2026-10-16T21:41:45.6764807Z Cache mode: write
+2026-10-16T21:41:45.6765741Z Prepare workflow directory
+2026-10-16T21:41:45.7107413Z Prepare all required actions
+2026-10-16T21:41:45.7156367Z Getting action download info
+2026-10-16T21:41:45.9268686Z Download action repository 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)
+2026-10-16T21:41:46.1574042Z Complete job name: source-and-lean
+2026-10-16T21:41:46.2479929Z ##[group]Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+2026-10-16T21:41:46.2481054Z with:
+2026-10-16T21:41:46.2481532Z   persist-credentials: false
+2026-10-16T21:41:46.2482091Z   repository: taco-jpg/p196-algorithm
+2026-10-16T21:41:46.2486090Z   token: ***
+2026-10-16T21:41:46.2486532Z   ssh-strict: true
+2026-10-16T21:41:46.2486980Z   ssh-user: git
+2026-10-16T21:41:46.2487451Z   clean: true
+2026-10-16T21:41:46.2487903Z   sparse-checkout-cone-mode: true
+2026-10-16T21:41:46.2488437Z   fetch-depth: 1
+2026-10-16T21:41:46.2488877Z   fetch-tags: false
+2026-10-16T21:41:46.2489321Z   show-progress: true
+2026-10-16T21:41:46.2489771Z   lfs: false
+2026-10-16T21:41:46.2490191Z   submodules: false
+2026-10-16T21:41:46.2490651Z   set-safe-directory: true
+2026-10-16T21:41:46.2491484Z ##[endgroup]
+2026-10-16T21:41:46.3532924Z Syncing repository: taco-jpg/p196-algorithm
+2026-10-16T21:41:46.3535843Z ##[group]Getting Git version info
+2026-10-16T21:41:46.3537199Z Working directory is '/home/runner/work/p196-algorithm/p196-algorithm'
+2026-10-16T21:41:46.3539021Z [command]/usr/bin/git version
+2026-10-16T21:41:46.3610111Z git version 2.55.0
+2026-10-16T21:41:46.3632305Z ##[endgroup]
+2026-10-16T21:41:46.3651371Z Temporarily overriding HOME='/home/runner/work/_temp/e3fac79c-0a54-4a5e-a357-2a54cd92006d' before making global git config changes
+2026-10-16T21:41:46.3654409Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-16T21:41:46.3665104Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/p196-algorithm/p196-algorithm
+2026-10-16T21:41:46.3729148Z Deleting the contents of '/home/runner/work/p196-algorithm/p196-algorithm'
+2026-10-16T21:41:46.3733544Z ##[group]Initializing the repository
+2026-10-16T21:41:46.3739426Z [command]/usr/bin/git init /home/runner/work/p196-algorithm/p196-algorithm
+2026-10-16T21:41:46.3844960Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-16T21:41:46.3846707Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-16T21:41:46.3848262Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-16T21:41:46.3849843Z hint: call:
+2026-10-16T21:41:46.3850822Z hint:
+2026-10-16T21:41:46.3851647Z hint: 	git config --global init.defaultBranch <name>
+2026-10-16T21:41:46.3852631Z hint:
+2026-10-16T21:41:46.3854017Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-16T21:41:46.3855614Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-16T21:41:46.3856852Z hint:
+2026-10-16T21:41:46.3857503Z hint: 	git branch -m <name>
+2026-10-16T21:41:46.3858248Z hint:
+2026-10-16T21:41:46.3859251Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-16T21:41:46.3861051Z Initialized empty Git repository in /home/runner/work/p196-algorithm/p196-algorithm/.git/
+2026-10-16T21:41:46.3864113Z [command]/usr/bin/git remote add origin https://github.com/taco-jpg/p196-algorithm
+2026-10-16T21:41:46.3949319Z ##[endgroup]
+2026-10-16T21:41:46.3950675Z ##[group]Disabling automatic garbage collection
+2026-10-16T21:41:46.3953788Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-16T21:41:46.3988908Z ##[endgroup]
+2026-10-16T21:41:46.3990314Z ##[group]Setting up auth
+2026-10-16T21:41:46.3996964Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T21:41:46.4034841Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-16T21:41:46.4409107Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T21:41:46.4450317Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-16T21:41:46.4679215Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-16T21:41:46.4722250Z ##[endgroup]
+2026-10-16T21:41:46.4723434Z ##[group]Fetching the repository
+2026-10-16T21:41:46.4732481Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b3151d61c32246d1bebcbf7cfcb0179d2fef5d01:refs/remotes/origin/research/agent-100/third-gate-descent-212248Z
+2026-10-16T21:41:53.1230140Z From https://github.com/taco-jpg/p196-algorithm
+2026-10-16T21:41:53.1233391Z  * [new ref]           b3151d61c32246d1bebcbf7cfcb0179d2fef5d01 -> origin/research/agent-100/third-gate-descent-212248Z
+2026-10-16T21:41:53.1243758Z ##[endgroup]
+2026-10-16T21:41:53.1245672Z ##[group]Determining the checkout info
+2026-10-16T21:41:53.1247235Z ##[endgroup]
+2026-10-16T21:41:53.1248162Z [command]/usr/bin/git sparse-checkout disable
+2026-10-16T21:41:53.1305095Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-16T21:41:53.1339908Z ##[group]Checking out the ref
+2026-10-16T21:41:53.1348600Z [command]/usr/bin/git checkout --progress --force -B research/agent-100/third-gate-descent-212248Z refs/remotes/origin/research/agent-100/third-gate-descent-212248Z
+2026-10-16T21:41:54.1618780Z Updating files:  69% (9599/13736)
+2026-10-16T21:41:54.1831247Z Updating files:  70% (9616/13736)
+2026-10-16T21:41:54.1899701Z Updating files:  71% (9753/13736)
+2026-10-16T21:41:54.4536360Z Updating files:  72% (9890/13736)
+2026-10-16T21:41:54.4659054Z Updating files:  73% (10028/13736)
+2026-10-16T21:41:54.4756642Z Updating files:  74% (10165/13736)
+2026-10-16T21:41:54.4834424Z Updating files:  75% (10302/13736)
+2026-10-16T21:41:54.5247442Z Updating files:  76% (10440/13736)
+2026-10-16T21:41:54.5326941Z Updating files:  77% (10577/13736)
+2026-10-16T21:41:54.5439276Z Updating files:  78% (10715/13736)
+2026-10-16T21:41:54.5819722Z Updating files:  79% (10852/13736)
+2026-10-16T21:41:54.6421375Z Updating files:  80% (10989/13736)
+2026-10-16T21:41:54.6770896Z Updating files:  81% (11127/13736)
+2026-10-16T21:41:54.7100628Z Updating files:  82% (11264/13736)
+2026-10-16T21:41:54.7425700Z Updating files:  83% (11401/13736)
+2026-10-16T21:41:54.7912872Z Updating files:  84% (11539/13736)
+2026-10-16T21:41:54.8231863Z Updating files:  85% (11676/13736)
+2026-10-16T21:41:54.8621305Z Updating files:  86% (11813/13736)
+2026-10-16T21:41:54.8938028Z Updating files:  87% (11951/13736)
+2026-10-16T21:41:54.9276392Z Updating files:  88% (12088/13736)
+2026-10-16T21:41:55.0339571Z Updating files:  89% (12226/13736)
+2026-10-16T21:41:55.0762249Z Updating files:  90% (12363/13736)
+2026-10-16T21:41:55.1107829Z Updating files:  91% (12500/13736)
+2026-10-16T21:41:55.1374380Z Updating files:  92% (12638/13736)
+2026-10-16T21:41:55.1440937Z Updating files:  93% (12775/13736)
+2026-10-16T21:41:55.1530937Z Updating files:  94% (12912/13736)
+2026-10-16T21:41:55.1601072Z Updating files:  95% (13050/13736)
+2026-10-16T21:41:55.1837538Z Updating files:  95% (13160/13736)
+2026-10-16T21:41:55.1932884Z Updating files:  96% (13187/13736)
+2026-10-16T21:41:55.2008318Z Updating files:  97% (13324/13736)
+2026-10-16T21:41:55.2081328Z Updating files:  98% (13462/13736)
+2026-10-16T21:41:55.2156792Z Updating files:  99% (13599/13736)
+2026-10-16T21:41:55.2157410Z Updating files: 100% (13736/13736)
+2026-10-16T21:41:55.2164655Z Updating files: 100% (13736/13736), done.
+2026-10-16T21:41:55.2448881Z Switched to a new branch 'research/agent-100/third-gate-descent-212248Z'
+2026-10-16T21:41:55.2454733Z branch 'research/agent-100/third-gate-descent-212248Z' set up to track 'origin/research/agent-100/third-gate-descent-212248Z'.
+2026-10-16T21:41:55.2558751Z ##[endgroup]
+2026-10-16T21:41:55.2620503Z [command]/usr/bin/git log -1 --format=%H
+2026-10-16T21:41:55.2649277Z b3151d61c32246d1bebcbf7cfcb0179d2fef5d01
+2026-10-16T21:41:55.2660937Z ##[group]Removing auth
+2026-10-16T21:41:55.2665126Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T21:41:55.2702107Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-16T21:41:55.2973296Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T21:41:55.3003378Z http.https://github.com/.extraheader
+2026-10-16T21:41:55.3013606Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-16T21:41:55.3051039Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-16T21:41:55.3303484Z ##[endgroup]
+2026-10-16T21:41:55.3502492Z ##[group]Run set -euo pipefail
+2026-10-16T21:41:55.3502889Z [36;1mset -euo pipefail[0m
+2026-10-16T21:41:55.3503528Z [36;1mbase=proofs/contributions/agent-100/third-gate-descent-212248Z[0m
+2026-10-16T21:41:55.3504027Z [36;1mmkdir -p "$RUNNER_TEMP/agent100-source"[0m
+2026-10-16T21:41:55.3504730Z [36;1mgzip -dc "$base/development/Agent100ThirdGateDescent.lean.gz" > "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean"[0m
+2026-10-16T21:41:55.3505542Z [36;1mgzip -dc "$base/controls/verify.py.gz" > "$RUNNER_TEMP/agent100-source/verify.py"[0m
+2026-10-16T21:41:55.3506445Z [36;1mprintf '%s  %s\n' '2c7a584f10fd12723dd4c108cdbff8cc08cc111419395e820589608f0d58a993' "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean" | sha256sum -c -[0m
+2026-10-16T21:41:55.3507551Z [36;1mprintf '%s  %s\n' '228b7cb287457894ad04c36450fc46f5fdf8721cf75febbd4898b665d568f245' "$RUNNER_TEMP/agent100-source/verify.py" | sha256sum -c -[0m
+2026-10-16T21:41:55.3508750Z [36;1mprintf '%s  %s\n' '2907112c58d5be871b7c267413f3e48f3b4e48d7762ead7b835b0aef1ad9d09f' "$base/controls/finite-control-300.json" | sha256sum -c -[0m
+2026-10-16T21:41:55.3509696Z [36;1mcp "$base/controls/finite-control-300.json" "$RUNNER_TEMP/agent100-source/"[0m
+2026-10-16T21:41:55.3510280Z [36;1m(cd "$RUNNER_TEMP/agent100-source" && python3 verify.py)[0m
+2026-10-16T21:41:55.3511171Z [36;1mcmp "$base/controls/finite-control-300.json" "$RUNNER_TEMP/agent100-source/finite-control-300.json"[0m
+2026-10-16T21:41:55.3786631Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-16T21:41:55.3787151Z ##[endgroup]
+2026-10-16T21:41:55.3983139Z /home/runner/work/_temp/agent100-source/Agent100ThirdGateDescent.lean: OK
+2026-10-16T21:41:55.3998981Z /home/runner/work/_temp/agent100-source/verify.py: OK
+2026-10-16T21:41:55.4015456Z proofs/contributions/agent-100/third-gate-descent-212248Z/controls/finite-control-300.json: OK
+2026-10-16T21:41:55.5960790Z PASS 300 independent integer/column controls; report=finite-control-300.json sha256=2907112c58d5be871b7c267413f3e48f3b4e48d7762ead7b835b0aef1ad9d09f
+2026-10-16T21:41:55.6063055Z ##[group]Run set -euo pipefail
+2026-10-16T21:41:55.6063751Z [36;1mset -euo pipefail[0m
+2026-10-16T21:41:55.6064559Z [36;1mcurl --fail --location --retry 2             https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst             --output "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst"[0m
+2026-10-16T21:41:55.6065796Z [36;1mprintf '%s  %s\n' '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe' "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst" | sha256sum -c -[0m
+2026-10-16T21:41:55.6066603Z [36;1mtar --zstd -xf "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst" -C "$RUNNER_TEMP"[0m
+2026-10-16T21:41:55.6067080Z [36;1m"$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" --version[0m
+2026-10-16T21:41:55.6131993Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-16T21:41:55.6132375Z ##[endgroup]
+2026-10-16T21:41:55.6513247Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-16T21:41:55.6514395Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-16T21:41:55.6514885Z 
+2026-10-16T21:41:55.7580700Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-16T21:41:55.7581307Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-16T21:41:55.7581842Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-16T21:41:56.6858704Z 
+2026-10-16T21:41:56.7496487Z  93  327M   93  307M    0     0   297M      0  0:00:01  0:00:01 --:--:--  297M
+2026-10-16T21:41:56.7497295Z 100  327M  100  327M    0     0   298M      0  0:00:01  0:00:01 --:--:--  319M
+2026-10-16T21:41:57.0029033Z /home/runner/work/_temp/lean-4.19.0-linux.tar.zst: OK
+2026-10-16T21:41:59.7836550Z Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+2026-10-16T21:42:00.1954214Z ##[group]Run set -euo pipefail
+2026-10-16T21:42:00.1954593Z [36;1mset -euo pipefail[0m
+2026-10-16T21:42:00.1954905Z [36;1mlean="$RUNNER_TEMP/lean-4.19.0-linux/bin/lean"[0m
+2026-10-16T21:42:00.1955749Z [36;1mpython3 proofs/contributions/agent-100/groupII-overlap-20261016/verification/dependencies/replay.py             --lean "$lean" --output "$RUNNER_TEMP/agent100-closure"[0m
+2026-10-16T21:42:00.2023269Z [36;1mroot="$RUNNER_TEMP/agent100-closure/dev/source"[0m
+2026-10-16T21:42:00.2023904Z [36;1mcp proofs/Agent100GroupIIDynamics.lean "$root/Agent100GroupIIDynamics.lean"[0m
+2026-10-16T21:42:00.2024539Z [36;1mcp "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean" "$root/"[0m
+2026-10-16T21:42:00.2025027Z [36;1mcd "$root"[0m
+2026-10-16T21:42:00.2025613Z [36;1mexport LEAN_PATH="$root"[0m
+2026-10-16T21:42:00.2026580Z [36;1m"$lean" --trust=0 -j1 -DElab.async=false -o Agent100GroupIIDynamics.olean Agent100GroupIIDynamics.lean[0m
+2026-10-16T21:42:00.2028031Z [36;1m"$lean" --trust=0 -j1 -DElab.async=false -o Agent100ThirdGateDescent.olean Agent100ThirdGateDescent.lean[0m
+2026-10-16T21:42:00.2095668Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-16T21:42:00.2096072Z ##[endgroup]
+2026-10-16T21:43:09.5821733Z dev LychrelDigitSums exit=0
+2026-10-16T21:43:10.1482384Z dev SafeDelay exit=0
+2026-10-16T21:43:11.4658724Z dev DecimalSafeRuns exit=0
+2026-10-16T21:43:12.6333814Z dev DecimalDelayBridge exit=0
+2026-10-16T21:43:13.6004356Z dev PairDelayBridge exit=0
+2026-10-16T21:44:11.8476646Z dev DelayedOverlapGate exit=0
+2026-10-16T21:44:39.9774409Z dev ProjectAudit exit=0
+2026-10-16T21:44:40.1230148Z {"exit_code": 0, "output": "/home/runner/work/_temp/agent100-closure", "verification_status": "PASS"}
+2026-10-16T21:46:10.9189945Z 'Agent100.GroupII.domain_core_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-16T21:46:10.9192034Z 'Agent100.GroupII.domain_seven_cores' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-16T21:46:10.9194093Z 'Agent100.GroupII.component_low' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9195572Z 'Agent100.GroupII.component_carry' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9196891Z 'Agent100.GroupII.initial_carry' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9198173Z 'Agent100.GroupII.middle_carry' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9199585Z 'Agent100.GroupII.component_double_carry' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9201098Z 'Agent100.GroupII.component_no_overflow' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9202461Z 'Agent100.GroupII.initial_no_overflow' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9203950Z 'Agent100.GroupII.middle_no_overflow' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9205393Z 'Agent100.GroupII.component_double_no_overflow' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9206942Z 'Agent100.GroupII.returnedComponent_symmetric' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9208635Z 'Agent100.GroupII.returnedComponent_core_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-16T21:46:10.9210206Z 'Agent100.GroupII.returned_first_neighbor' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9211536Z 'Agent100.GroupII.component_next' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9212621Z 'Agent100.GroupII.component_double_next' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9213922Z 'Agent100.GroupII.initial_next' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9214949Z 'Agent100.GroupII.middle_next' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9215966Z 'Agent100.GroupII.returned_is_overlap' does not depend on any axioms
+2026-10-16T21:46:10.9217083Z 'Agent100.GroupII.intermediate_overlap_fails' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9218837Z 'Agent100.GroupII.component_two_step_return' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:10.9220061Z 'Agent100.GroupII.whole_two_step_return' depends on axioms: [propext, Quot.sound]
+2026-10-16T21:46:32.0548629Z Agent100ThirdGateDescent.lean:71:54: error: omega could not prove the goal:
+2026-10-16T21:46:32.0549372Z a possible counterexample may satisfy the constraints
+2026-10-16T21:46:32.0550161Z   c ≥ 0
+2026-10-16T21:46:32.0550531Z   b ≥ 0
+2026-10-16T21:46:32.0550928Z   b - c ≥ 1
+2026-10-16T21:46:32.0551348Z   a ≥ 1
+2026-10-16T21:46:32.0552061Z   2*a - c ≤ -8
+2026-10-16T21:46:32.0552401Z where
+2026-10-16T21:46:32.0552768Z  a := ↑r
+2026-10-16T21:46:32.0553406Z  b := ↑(width5 r)
+2026-10-16T21:46:32.0553822Z  c := ↑i
+2026-10-16T21:46:32.0554730Z Agent100ThirdGateDescent.lean:75:11: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+2026-10-16T21:46:32.0555775Z   carry (fourth r) (width4 r - i)
+2026-10-16T21:46:32.0556187Z r : Nat
+2026-10-16T21:46:32.0556558Z hr : 1 ≤ r
+2026-10-16T21:46:32.0556873Z i : Nat
+2026-10-16T21:46:32.0557196Z hi : i < width5 r
+2026-10-16T21:46:32.0557576Z hc0 : carry (fourth r) i = fourthCarry r i
+2026-10-16T21:46:32.0558193Z hc1 : carry (fourth r) (width4 r - i) = fourthCarry r (width4 r - i)
+2026-10-16T21:46:32.0558874Z ⊢ fifthCarry r (i + 1) =
+2026-10-16T21:46:32.0559258Z     ((if 1 = 0 then
+2026-10-16T21:46:32.0559926Z           (fourth r i + fourthCarry r i) % 10 + (fourth r (width4 r - 1 - i) + carry (fourth r) (width4 r - 1 - i)) % 10
+2026-10-16T21:46:32.0560792Z         else
+2026-10-16T21:46:32.0561093Z           (if i < width4 r then (fourth r i + fourthCarry r i) % 10 else 1) +
+2026-10-16T21:46:32.0561497Z             if width4 r + 1 - 1 - i < width4 r then
+2026-10-16T21:46:32.0561914Z               (fourth r (width4 r + 1 - 1 - i) + carry (fourth r) (width4 r + 1 - 1 - i)) % 10
+2026-10-16T21:46:32.0562300Z             else 1) +
+2026-10-16T21:46:32.0562516Z         fifthCarry r i) /
+2026-10-16T21:46:32.0562734Z       10
+2026-10-16T21:46:32.0563024Z Agent100ThirdGateDescent.lean:86:67: error: unsolved goals
+2026-10-16T21:46:32.0563782Z case isFalse.isTrue.isFalse.isFalse.isFalse.isFalse.isFalse.isFalse
+2026-10-16T21:46:32.0564169Z r : Nat
+2026-10-16T21:46:32.0564401Z hr : 1 ≤ r
+2026-10-16T21:46:32.0564581Z hc0 :
+2026-10-16T21:46:32.0564834Z   carry (shiftOne (GroupII.returnedComponent r 4 5 5)) 0 =
+2026-10-16T21:46:32.0565302Z     if 0 = 1 ∨ 0 = 2 ∨ 0 = 2 * r + 6 ∨ 0 = 2 * r + 7 then 1 else 0
+2026-10-16T21:46:32.0565628Z hcL : True
+2026-10-16T21:46:32.0565862Z h✝⁷ : ¬1 = 0
+2026-10-16T21:46:32.0566083Z h✝⁶ : 0 < 2 * r + 7
+2026-10-16T21:46:32.0566334Z h✝⁵ : ¬(True ∨ 0 = 2 * r + 5)
+2026-10-16T21:46:32.0566599Z h✝⁴ : ¬(0 = r ∨ 0 = r + 5)
+2026-10-16T21:46:32.0566855Z h✝³ : ¬(0 = r + 1 ∨ 0 = r + 4)
+2026-10-16T21:46:32.0567117Z h✝² : ¬(0 = r + 2 ∨ 0 = r + 3)
+2026-10-16T21:46:32.0567442Z h✝¹ : ¬(0 = 1 ∨ 0 = 2 ∨ 0 = 2 * r + 6 ∨ 0 = 2 * r + 7)
+2026-10-16T21:46:32.0567797Z h✝ : ¬2 * r + 7 + 1 - 1 - 0 < 2 * r + 7
+2026-10-16T21:46:32.0568094Z ⊢ (0 + 0 + 0) % 10 + 1 = 7
+2026-10-16T21:46:32.0568242Z 
+2026-10-16T21:46:32.0568355Z case isFalse.isFalse
+2026-10-16T21:46:32.0568572Z r : Nat
+2026-10-16T21:46:32.0568775Z hr : 1 ≤ r
+2026-10-16T21:46:32.0568955Z hc0 :
+2026-10-16T21:46:32.0569214Z   carry (shiftOne (GroupII.returnedComponent r 4 5 5)) 0 =
+2026-10-16T21:46:32.0569652Z     if 0 = 1 ∨ 0 = 2 ∨ 0 = 2 * r + 6 ∨ 0 = 2 * r + 7 then 1 else 0
+2026-10-16T21:46:32.0569958Z hcL : True
+2026-10-16T21:46:32.0570167Z h✝¹ : ¬1 = 0
+2026-10-16T21:46:32.0570382Z h✝ : ¬0 < 2 * r + 7
+2026-10-16T21:46:32.0570632Z ⊢ (1 +
+2026-10-16T21:46:32.0570843Z       if 2 * r + 7 + 1 - 1 - 0 < 2 * r + 7 then
+2026-10-16T21:46:32.0571265Z         (((if 2 * r + 7 + 1 - 1 - 0 = 0 ∨ 2 * r + 7 + 1 - 1 - 0 = 2 * r + 5 then 4 * 4
+2026-10-16T21:46:32.0571599Z               else
+2026-10-16T21:46:32.0571932Z                 if 2 * r + 7 + 1 - 1 - 0 = r ∨ 2 * r + 7 + 1 - 1 - 0 = r + 5 then 1
+2026-10-16T21:46:32.0572255Z                 else
+2026-10-16T21:46:32.0572816Z                   if 2 * r + 7 + 1 - 1 - 0 = r + 1 ∨ 2 * r + 7 + 1 - 1 - 0 = r + 4 then 4 * 5 - 19
+2026-10-16T21:46:32.0573792Z                   else if 2 * r + 7 + 1 - 1 - 0 = r + 2 ∨ 2 * r + 7 + 1 - 1 - 0 = r + 3 then 4 * 5 - 18 else 0) +
+2026-10-16T21:46:32.0574216Z               if 2 * r + 7 + 1 - 1 - 0 = 0 then 0
+2026-10-16T21:46:32.0574488Z               else
+2026-10-16T21:46:32.0574887Z                 if 2 * r + 7 + 1 - 1 - 0 - 1 = 0 ∨ 2 * r + 7 + 1 - 1 - 0 - 1 = 2 * r + 5 then 4 * 4
+2026-10-16T21:46:32.0575338Z                 else
+2026-10-16T21:46:32.0575707Z                   if 2 * r + 7 + 1 - 1 - 0 - 1 = r ∨ 2 * r + 7 + 1 - 1 - 0 - 1 = r + 5 then 1
+2026-10-16T21:46:32.0576045Z                   else
+2026-10-16T21:46:32.0576457Z                     if 2 * r + 7 + 1 - 1 - 0 - 1 = r + 1 ∨ 2 * r + 7 + 1 - 1 - 0 - 1 = r + 4 then 4 * 5 - 19
+2026-10-16T21:46:32.0576823Z                     else
+2026-10-16T21:46:32.0577259Z                       if 2 * r + 7 + 1 - 1 - 0 - 1 = r + 2 ∨ 2 * r + 7 + 1 - 1 - 0 - 1 = r + 3 then 4 * 5 - 18 else 0) +
+2026-10-16T21:46:32.0577844Z             carry (shiftOne (GroupII.returnedComponent r 4 5 5)) (2 * r + 7 + 1 - 1 - 0)) %
+2026-10-16T21:46:32.0578254Z           10
+2026-10-16T21:46:32.0578445Z       else 1) =
+2026-10-16T21:46:32.0578634Z     7
+2026-10-16T21:46:32.0579129Z Agent100ThirdGateDescent.lean:104:11: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+2026-10-16T21:46:32.0579726Z   carry (fourth r) (width4 r - 1)
+2026-10-16T21:46:32.0579973Z r : Nat
+2026-10-16T21:46:32.0580348Z hr : 1 ≤ r
+2026-10-16T21:46:32.0580573Z hc1 : carry (fourth r) 1 = fourthCarry r 1
+2026-10-16T21:46:32.0580967Z hcMirror : carry (fourth r) (width4 r - 1) = fourthCarry r (width4 r - 1)
+2026-10-16T21:46:32.0581339Z hcL : True
+2026-10-16T21:46:32.0581547Z ⊢ (if 1 = 0 then
+2026-10-16T21:46:32.0581949Z       (fourth r 1 + fourthCarry r 1) % 10 + (fourth r (width4 r - 1 - 1) + carry (fourth r) (width4 r - 1 - 1)) % 10
+2026-10-16T21:46:32.0582404Z     else
+2026-10-16T21:46:32.0582681Z       (if 1 < width4 r then (fourth r 1 + fourthCarry r 1) % 10 else 1) +
+2026-10-16T21:46:32.0583048Z         if width4 r + 1 - 1 - 1 < width4 r then
+2026-10-16T21:46:32.0583730Z           (fourth r (width4 r + 1 - 1 - 1) + carry (fourth r) (width4 r + 1 - 1 - 1)) % 10
+2026-10-16T21:46:32.0584110Z         else 1) =
+2026-10-16T21:46:32.0584322Z     if r = 1 then 15 else 14
+2026-10-16T21:46:32.0584868Z Agent100ThirdGateDescent.lean:117:13: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+2026-10-16T21:46:32.0585469Z   carry (fifth r) (width5 r - 1)
+2026-10-16T21:46:32.0585709Z r : Nat
+2026-10-16T21:46:32.0585916Z hr : 1 ≤ r
+2026-10-16T21:46:32.0586134Z hsym : fifth r 0 = fifth r (width5 r - 1 - 0)
+2026-10-16T21:46:32.0586442Z hcar0 : carry (fifth r) 0 = fifthCarry r 0
+2026-10-16T21:46:32.5415135Z hcarR : carry (fifth r) (width5 r - 1) = fifthCarry r (width5 r - 1)
+2026-10-16T21:46:32.5416218Z ⊢ (fifth r 0 + fifthCarry r 0) % 10 + (fifth r (width5 r - 1 - 0) + carry (fifth r) (width5 r - 1 - 0)) % 10 = 15
+2026-10-16T21:46:32.5416820Z Agent100ThirdGateDescent.lean:134:3: error: unknown tactic
+2026-10-16T21:46:32.5417258Z Agent100ThirdGateDescent.lean:140:56: error: unsolved goals
+2026-10-16T21:46:32.5417584Z r : Nat
+2026-10-16T21:46:32.5417802Z hr : 1 ≤ r
+2026-10-16T21:46:32.5418010Z ⊢ (if
+2026-10-16T21:46:32.5418239Z         carry (nextColumns (fourth r) (2 * r + 7))
+2026-10-16T21:46:32.5418620Z             (if carry (fourth r) (2 * r + 7) = 0 then 2 * r + 7 else 2 * r + 7 + 1) =
+2026-10-16T21:46:32.5418987Z           0 then
+2026-10-16T21:46:32.5419261Z       if carry (fourth r) (2 * r + 7) = 0 then 2 * r + 7 else 2 * r + 7 + 1
+2026-10-16T21:46:32.5419702Z     else (if carry (fourth r) (2 * r + 7) = 0 then 2 * r + 7 else 2 * r + 7 + 1) + 1) =
+2026-10-16T21:46:32.5420058Z     2 * r + 8
+2026-10-16T21:46:32.5420329Z Agent100ThirdGateDescent.lean:147:3: error: unknown tactic
+2026-10-16T21:46:32.5420745Z Agent100ThirdGateDescent.lean:145:29: error: unsolved goals
+2026-10-16T21:46:32.5421070Z r : Nat
+2026-10-16T21:46:32.5421670Z hr : 1 ≤ r
+2026-10-16T21:46:32.5421919Z ⊢ (if r = 1 then 11 else 8) < 15
+2026-10-16T21:46:32.5422238Z Agent100ThirdGateDescent.lean:153:3: error: unknown tactic
+2026-10-16T21:46:32.5422633Z Agent100ThirdGateDescent.lean:151:35: error: unsolved goals
+2026-10-16T21:46:32.5422978Z c : Nat → Nat
+2026-10-16T21:46:32.5423735Z ⊢ (c 0 + if True then 0 else c (0 - 1)) ≤ c 1 + if 1 = 0 then 0 else c 0
+2026-10-16T21:46:32.5424320Z 'Agent100.ThirdGateDescent.fourth_carry' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-16T21:46:32.5425067Z 'Agent100.ThirdGateDescent.fifth_carry' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-10-16T21:46:32.5425817Z 'Agent100.ThirdGateDescent.sixth_outer_zero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-10-16T21:46:32.5426574Z 'Agent100.ThirdGateDescent.sixth_outer_one' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-10-16T21:46:32.5427191Z 'Agent100.ThirdGateDescent.width_six' depends on axioms: [sorryAx]
+2026-10-16T21:46:32.5427864Z 'Agent100.ThirdGateDescent.no_third_overlap' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-10-16T21:46:32.5574905Z ##[error]Process completed with exit code 1.
+2026-10-16T21:46:32.5709081Z Post job cleanup.
+2026-10-16T21:46:32.6581135Z [command]/usr/bin/git version
+2026-10-16T21:46:32.6623853Z git version 2.55.0
+2026-10-16T21:46:32.6668017Z Temporarily overriding HOME='/home/runner/work/_temp/acacefe7-a70a-40be-ad1c-07f8e5f043b8' before making global git config changes
+2026-10-16T21:46:32.6669899Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-16T21:46:32.6674384Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/p196-algorithm/p196-algorithm
+2026-10-16T21:46:32.6714325Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T21:46:32.6748631Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-16T21:46:32.7048837Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T21:46:32.7086713Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-16T21:46:32.7582846Z Cleaning up orphan processes
+2026-10-16T21:46:32.7940162Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
