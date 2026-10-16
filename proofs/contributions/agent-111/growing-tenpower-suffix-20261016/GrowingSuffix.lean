@@ -23,7 +23,7 @@ theorem powerTen_saturation (k : Nat) (hk : 1 <= k) :
   · exact Nat.pow_pos (by decide)
   · decide
   · simp
-  · exact dvd_refl _
+  · exact ⟨1, by simp⟩
   · simp
   · decide
   · simp
