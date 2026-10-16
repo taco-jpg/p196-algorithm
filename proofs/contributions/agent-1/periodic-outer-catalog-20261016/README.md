@@ -1,3 +1,15 @@
+# Independently reviewed actual periodic exterior/phase certificate
+
+Final mathematical source `6be2aa2273e97ecf15445429827b02feb9bb83c0` is **INDEPENDENTLY-REVIEWED**. The separate nonauthor specialist completed a fresh25-module build with explicit Lean4.19 `--trust=0`, default stack and8GiB per-command cap: all26 commands PASS,1643 theorem constants,401 safe definitions and117 public theorem types (18 new). Logical dependencies use exactly `propext`, `Classical.choice`, and `Quot.sound`; compiler implementation declarations are separately inventoried and absent from the checked dependency chains.
+
+The parent independently ran the repository canonical verifier on the same25 sources: all module builds and ProjectAudit PASS. Its original report, flags and clean-tree result are preserved unchanged. That invocation has no explicit trust override; the separate reviewer uses explicit trust0. Every published source, compiled snapshot and registry pin agrees. `review/semantic-review.md`, `review/final-review-receipt.json`, `review/FILES.json` and `verification/parent-clean-001/PACKAGE-FILES.json` provide the reproducible evidence. The registry remains the exact source-pinned object used by both runs; its historical pending-verification metadata describes creation time and is superseded by these executed reports.
+
+The accepted scope is exact878 distinct nodes and1458 labelled edge-list entries, original phase/exterior choices and closure, and actual quotient projection preserving the physical head, terminal carry, exceptional all-nine entry carries, and complete original validity. Arbitrary graph paths, all-vertex reachability, safety closure, finite-interface returns, ordinary all-time exponent guards and196 are outside the result. The original data/order were independently rebound to final structural block assembly in `catalog-review/lean-data-003`.
+
+The accepted global registry and main are unchanged by this contribution. All failed development/resource attempts remain below with their original status. The following text is retained checkpoint history, not the final verification status.
+
+## Historical checkpoints
+
 # Actual periodic exterior/phase product certificate
 
 The complete source is now **LEAN-CHECKED** as an author increment. Strict Lean4.19 `--trust=0 -j1 -DElab.async=false` attempt006 passed in171.929seconds with the default stack and an explicit6GiB address-space limit. All eleven public root theorem axiom prints report only permitted foundational axioms; no error placeholders occur in the passing file. Independent fresh25 and parent canonical gates remain pending.

@@ -133,9 +133,24 @@ block size, and phase order. Both source snapshots, both verification receipts,
 and the exact comparison script for each version are preserved. No1,458-edge
 formula replay was repeated for this representation-only rebind.
 
+The final frozen-source rebind is `lean-data-003/`, Catalog SHA256
+`1e6ebcc4e47df94162467d52826cee4e64c5707a622ac775008671d3fb0391e2`.
+Here the public definitions use `outerNodeBlocks.flatten` and
+`outerEdgeBlocks.flatten`. The parser follows those exact public references,
+reads each named list's59 block references in its written order, and expands
+the literal blocks. The result again equals the original archive and **both**
+prior reviewed source snapshots, preserving every878 node and1,458 complete
+labelled edge. The two expanded array hashes above remain unchanged.
+
+`lean-data-003/verification.json` records the exact final source hash, both
+baseline source hashes, actual named-list assembly, array hashes, and no source
+drift. `append-expansion.json` retains the declared block order, and the exact
+third parser version is saved alongside the final source snapshot. All earlier
+receipts, sources, and parser snapshots remain intact. Only data parsing and
+comparison ran; the original1,458-edge diagnostic was not repeated.
+
 Only literal data and definition bodies are compared; Lean compilation, theorem
-adequacy, and axioms remain outside this diagnostic review. The parser can bind
-unchanged data to a later proof freeze without repeating the archive diagnostic.
+adequacy, and axioms remain outside this diagnostic review.
 
 ## Reproduce without graph discovery
 

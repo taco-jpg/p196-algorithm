@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Expand actual literal/append catalog definitions, without running Lean."""
+"""Expand literal, append, and named-list flatten definitions without Lean."""
 import argparse
 import ast
 import gzip
@@ -23,7 +23,7 @@ def parse_edges(body):
 
 
 def parse_catalog(source):
-    """Accept literal lists and explicit append chains only, preserving order."""
+    """Accept a small literal/list grammar only; preserve the declared order."""
     node_matches=list(re.finditer(r'^(?:private )?def (\w+) : List OuterNode := (\[.*?^\])',source,re.M|re.S))
     edge_matches=list(re.finditer(r'^(?:private )?def (\w+) : List OuterEdge := \[\n(.*?)^\]',source,re.M|re.S))
     node_defs={m[1]:json.loads(json.dumps(ast.literal_eval(m[2]))) for m in node_matches}
@@ -34,19 +34,32 @@ def parse_catalog(source):
     def expand(public_name,type_name,definitions):
         if public_name in definitions:
             assert set(definitions)=={public_name},'Unexpected unused literal definitions'
-            return definitions[public_name],[public_name]
-        declaration=re.search(r'^def '+public_name+r' : List '+type_name+r' :=\n(.*?)(?=\n\n)',source,re.M|re.S)
-        assert declaration,('Public append definition missing',public_name)
-        body=declaration[1].strip()
-        assert re.fullmatch(r'\w+(?:\s*\+\+\s*\w+)*',body),('Unsupported append expression',body)
-        references=re.split(r'\s*\+\+\s*',body)
+            return definitions[public_name],[public_name],'literal'
+        flattened=re.search(r'^def '+public_name+r' : List '+type_name+r' := (\w+)\.flatten[ \t]*$',source,re.M)
+        if flattened:
+            named_lists=list(re.finditer(r'^(?:private )?def (\w+) : List \(List '+type_name+r'\) :=\n\s*\[([^\]]*)\]',source,re.M))
+            assert len(named_lists)==1,('Unexpected named block-list inventory',public_name)
+            declaration=named_lists[0]
+            assert declaration[1]==flattened[1],('Wrong named flatten reference',public_name)
+            body=declaration[2].strip()
+            assert re.fullmatch(r'\w+(?:\s*,\s*\w+)*',body),('Unsupported named list expression',body)
+            references=re.split(r'\s*,\s*',body)
+            assembly='named-list flatten: '+flattened[1]
+        else:
+            declaration=re.search(r'^def '+public_name+r' : List '+type_name+r' :=\n(.*?)(?=\n\n)',source,re.M|re.S)
+            assert declaration,('Public append/flatten definition missing',public_name)
+            body=declaration[1].strip()
+            assert re.fullmatch(r'\w+(?:\s*\+\+\s*\w+)*',body),('Unsupported append expression',body)
+            references=re.split(r'\s*\+\+\s*',body)
+            assembly='append chain'
         assert len(references)==len(set(references))==59,('Repeated/missing block',public_name)
         assert set(references)==set(definitions),('Undefined or unused block',public_name)
-        return [item for name in references for item in definitions[name]],references
+        return [item for name in references for item in definitions[name]],references,assembly
 
-    states,node_refs=expand('outerCatalog','OuterNode',node_defs)
-    edges,edge_refs=expand('outerEdges','OuterEdge',edge_defs)
+    states,node_refs,node_assembly=expand('outerCatalog','OuterNode',node_defs)
+    edges,edge_refs,edge_assembly=expand('outerEdges','OuterEdge',edge_defs)
     metadata=dict(node_append_order=node_refs,edge_append_order=edge_refs,
+                  node_assembly=node_assembly,edge_assembly=edge_assembly,
                   node_block_sizes=[len(node_defs[name]) for name in node_refs],
                   edge_block_sizes=[len(edge_defs[name]) for name in edge_refs])
     if len(node_refs)==59:
@@ -61,7 +74,7 @@ def parse_catalog(source):
             phases.append(phase)
         assert len({tuple(phase) for phase in phases})==59,'Repeated phase block'
         metadata['phase_block_order']=phases
-        metadata['representation']='59 literal blocks in actual public append order'
+        metadata['representation']='59 literal blocks in actual declared order'
     else:
         metadata['representation']='single literal node and edge lists'
     return states,edges,metadata
@@ -89,12 +102,16 @@ expected_states=[row['source'] for row in graph['graph']]
 expected_edges=[dict(source=row['source'],**edge) for row in graph['graph'] for edge in row['edges']]
 assert states==expected_states,'Literal state list/order mismatch'
 assert edges==expected_edges,'Literal labelled edge list/order mismatch'
-baseline=Path(__file__).resolve().parent/'lean-data-001/Agent1PeriodicOuterCatalog.lean'
-baseline_bytes=baseline.read_bytes()
-baseline_sha=hashlib.sha256(baseline_bytes).hexdigest()
-assert baseline_sha=='6fdd1a6850553ecd56fe4663be3f9f9541e5315a1f3b489c4c9fa782b4c017d4'
-old_states,old_edges,_=parse_catalog(baseline_bytes.decode())
-assert states==old_states and edges==old_edges,'Expanded arrays differ from original reviewed source'
+baselines={
+    'lean-data-001':'6fdd1a6850553ecd56fe4663be3f9f9541e5315a1f3b489c4c9fa782b4c017d4',
+    'lean-data-002':'d2733f0f4373969985e91e969e7c76e2f32e9bf20483b696d6bb186c2b846365',
+}
+for directory,expected_sha in baselines.items():
+    baseline=Path(__file__).resolve().parent/directory/'Agent1PeriodicOuterCatalog.lean'
+    baseline_bytes=baseline.read_bytes()
+    assert hashlib.sha256(baseline_bytes).hexdigest()==expected_sha,('Baseline hash mismatch',directory)
+    old_states,old_edges,_=parse_catalog(baseline_bytes.decode())
+    assert states==old_states and edges==old_edges,('Expanded arrays differ from reviewed source',directory)
 (out/'append-expansion.json').write_text(json.dumps(expansion,indent=2,sort_keys=True)+'\n')
 for name,data in [('expanded-states.json',states),('expanded-labelled-edges.json',edges)]:
     (out/name).write_text(json.dumps(data,indent=2,sort_keys=True)+'\n')
@@ -113,12 +130,13 @@ assert all((root/'proofs'/name).read_bytes()==data for name,data in sources.item
 result=dict(status='PASS',scope='Literal data/formula comparison only; not Lean acceptance',
     source_sha256={name:hashlib.sha256(data).hexdigest() for name,data in sources.items()},
     state_count=len(states),labelled_edge_count=len(edges),exact_order_and_labels_match=True,
-    previous_reviewed_catalog_sha256=baseline_sha,
+    previous_reviewed_catalog_sha256=baselines,
     exact_previous_snapshot_arrays_match=True,
     representation=expansion['representation'],
     node_block_count=len(expansion['node_append_order']),
     edge_block_count=len(expansion['edge_append_order']),
-    actual_public_append_order_expanded=True,
+    actual_public_block_order_expanded=True,
+    node_assembly=expansion['node_assembly'],edge_assembly=expansion['edge_assembly'],
     expanded_states_sha256=hashlib.sha256((out/'expanded-states.json').read_bytes()).hexdigest(),
     expanded_labelled_edges_sha256=hashlib.sha256((out/'expanded-labelled-edges.json').read_bytes()).hexdigest(),
     outerImages_definition_matches_reviewed_formula=True,

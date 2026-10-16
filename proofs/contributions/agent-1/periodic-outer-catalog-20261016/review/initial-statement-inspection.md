@@ -1,0 +1,26 @@
+# Independent source inspection of the outer/phase product
+
+Reviewer: Agent #1 specialist `/root/research_status`, separate specialist in the same session/account, with no authorship of the Outer, Choices or OuterCatalog mathematical sources. This is source inspection only. No Lean execution by this reviewer is asserted; the final combined source publication and independent fresh build are pending.
+
+Inspected source SHA256 values:
+
+| Source | SHA256 |
+| --- | --- |
+| `Agent1PeriodicOuter.lean` | `b30b54bce57542a649208c29900d511e9cc4b64429fb4a48f8da2a387d040678` |
+| `Agent1PeriodicOuterChoices.lean` | `9bd84fb0c22b2252fb71f0310fe763e6a07192ef0fb80299763459ab48fb76ad` |
+| `Agent1PeriodicOuterCatalog.lean` | `6fdd1a6850553ecd56fe4663be3f9f9541e5315a1f3b489c4c9fa782b4c017d4` |
+
+No semantic flaw was found in the inspected contracts.
+
+- `outside B w := (B ++ w).headD 0` is the physical outside coefficient, including `B=[]`. It is not the default-zero head of the stored exterior alone. Length four supplies a nonempty period; the prior `periodicWord_head` identifies this coefficient with the exponent-three whole-word head. `outside_bounds` uses the original canonical head bounds and retains full `ValidPeriodic`.
+- `quotient_outside_step` uses the actual `lastInput (periodicWord B H w 3)`, defined by the original `terminalCarry Q3.dropLast 0`. It is a separately computed carry entering the final column, not one of the two arbitrarily selected phase labels. The prior `canonical_step` and `terminalCarry_eq_actual_overflow` supply the exact exterior update and the same actual `rawGamma` used by the phase theorem.
+- The head transport through maximal stripping covers complete removal of the raw exterior: `stripPeriodSuffix_outside` retains the appended period as a source of the physical head. `rawPeriod` has length four, and `rawOuter.length=B.length+4` excludes an empty raw prefix. This avoids assuming the stored quotient exterior stays nonempty. No nonempty-center assumption is introduced.
+- `outerImages` filters the two incoming bits by original `Agent8.overflow`, maps through original `Agent8.nextExterior`, and deduplicates those scalar outputs before product edges are formed. Its general membership theorem does not assert independent realizability of the enumerated bit. The optional all-nine pair of phase entry carries remains attached to each separate phase edge; deduplication does not erase those labels.
+- `outerOutputs` filters the existing exact `phaseEdges` by indexed source and takes the stated finite product with compatible exterior images. `outerEdges_spec` asserts equality of the entire stored ordered edge list with this enumeration. Literal finite specifications use kernel `decide`; author-side execution and data diagnostics remain separately attributed until this review's fresh build runs.
+- `quotient_outer_catalog_edge` combines phase coverage and physical outside arithmetic through exactly the same actual gamma. Its witness preserves source `(w,outside B w)`, actual clock, the actual optional all-nine carry pair, and target `(rawPeriod B H w,outside quotientOuter rawPeriod)`. There is no mismatch between a phase clock and an independently chosen exterior clock.
+- `outerCatalog_initial` quantifies `p : Fin 19` with `0 < p.val`, hence the 18 positive initial heads. The source contains 878 catalog nodes and 1,458 labelled edge entries with explicit node distinctness, phase membership and target closure claims. Catalog membership is still a genuine premise of the actual transition theorem: the result is not a classification of all `59*18` potential phase/head pairs.
+- `quotient_valid_in_outerCatalog` retains the full original seven-field validity predicate and product membership together. It does not identify the finite projected state with the unbounded exterior/center tuple. No exponent guard, safety preservation, converse edge/path realization, all-vertex reachability, interface return, finite-interface lifting, or conclusion about 196 follows from the displayed endpoint alone. Ordinary-orbit use still requires the previously established representation and exponent-guard bridges.
+
+The separate `/root/research_status/cap4_existing_theorems` specialist reports a data-only comparison of all 878 stored nodes, 1,458 complete labelled edges and 18 initials, including the 36 outer arithmetic cases, all-nine labels, and the ordering/deduplication difference. Its current `catalog-review/lean-data-001/verification.json` matches the three inspected formulas/data at the Catalog/Choices hashes above. Those are its executions, not this reviewer's; no fresh graph discovery or Lean acceptance is inferred from them. The Choices author separately retains an initial failed membership-proof attempt and its corrected passing source; no reviewer failure history is being claimed or suppressed.
+
+Final review must pin the published combined root and registry, reconstruct the actual import closure, rebuild every module fresh at trust zero, preserve full source/driver snapshots and all attempts, audit every selected-module theorem and safe definition, check all public types, and inventory generated compiler implementations separately. No combined build result is asserted before those steps occur.
