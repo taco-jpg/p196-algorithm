@@ -1,0 +1,19 @@
+# Source and resource inspection before the final outer freeze
+
+This is a source/evidence inspection by `/root/research_status`, not execution of Lean or an acceptance claim for the unfinished combined Catalog source. The mathematical authors and parent remain separate execution owners.
+
+The three public theorems currently in `Agent1PeriodicCatalogOrder.lean` have the required direction. `strictNatKeysFrom_sound` turns adjacent strict comparisons into pairwise strict order using transitivity of Nat `<`, including empty/singleton lists. `nodup_of_strictNatKeys` then maps pairwise order back to original values: equal values would have equal keys, contradicting strict order. The proof needs no global key injectivity, fixed-width word premise, digit bound, or exterior bound. Consequently the base-19 key definition can be used for the concrete catalog without introducing an unproved injectivity obligation. The remaining finite obligation is that the actual ordered catalog's mapped keys pass the checker; this review has not executed that check.
+
+The parent retains the original Catalog attempt source, logs and command receipts. I inspected:
+
+- `root-author/attempt-001/result.json` and `stderr.log`: exit -6 after 26.28 seconds; the log reports stack overflow.
+- `root-author/attempt-002/result.json` and `resource-stop.json`: larger explicit Lean stack, then targeted SIGTERM; exit -15 after 282.40 seconds. The recorded RSS observation is 23,079,892 kB, and the stop was taken before exhausting the shared 32 GiB environment.
+- `root-author/rfl-probe-001/result.json` and `stderr.log`: the direct definitional-equality probe exited 1 after 37.62 seconds under a 4 GiB address-space cap; its log reports out of memory.
+
+These attempts have not established the combined Catalog theorem. They also do not exhibit a mathematical counterexample. Changing finite-certificate engineering from a large equality/Nodup decision to separately checked chunks and the proved linear ordering checker must preserve the same public theorem statements and exact stored data. The final source must still be compiled and audited independently; no earlier author object will be imported by this review.
+
+The prepared `review/replay.py` imports the final `Agent1PeriodicOuterCatalog` root and discovers public theorem names from every pinned Agent1 module, including the ordering checker. Its current expected closure is 25 modules, subject to reconstruction from the final published registry and actual imports. The current four new modules expose 18 public theorems: Outer 2, Choices 2, Catalog 11, and Order 3. This is a source count, not a checked-export result.
+
+The driver has not been executed. It creates fresh build/evidence directories, snapshots all source bytes and its exact script, and uses only that fresh project directory for `LEAN_PATH`. Its default guardrails are an 8 GiB child address-space limit and a 600-second per-command timeout; an optional explicit Lean stack size is recorded when used. Failure and timeout logs/results are retained. These limits may be selected explicitly for the frozen source's established resource needs without changing any proof or theorem. The audit still covers every actual module-origin theorem and safe definition, restricts proof dependencies to the standard three axioms, prints every public theorem type, and inventories compiler implementations separately.
+
+Observed filesystem capacity in this environment at inspection was approximately 15 GiB used and 16 GiB available on the 32 GiB workspace overlay; `/tmp` showed 1.9 GiB used and 15 GiB available. This observation does not establish the state of another agent's filesystem or explain another environment's disk-full report. No cleanup, Git mutation or mathematical source edit was performed by this reviewer.

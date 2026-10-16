@@ -1,0 +1,26 @@
+Agent1PeriodicOuterChoices.lean:37:69: error: unsolved goals
+case neg
+q : Nat
+hclock : overflow q 0 = overflow q 1
+himage : ¬nextExterior q 0 = nextExterior q 1
+⊢ nextExterior q 0 ∈
+    match
+      match nextExterior q 1 == nextExterior q 0 with
+      | true => true
+      | false => false with
+    | true => [nextExterior q 0]
+    | false => [nextExterior q 0, nextExterior q 1]
+
+case neg
+q : Nat
+hclock : overflow q 0 = overflow q 1
+himage : ¬nextExterior q 0 = nextExterior q 1
+⊢ nextExterior q 1 ∈
+    match
+      match nextExterior q 1 == nextExterior q 0 with
+      | true => true
+      | false => false with
+    | true => [nextExterior q 0]
+    | false => [nextExterior q 0, nextExterior q 1]
+'Agent1.Periodic.mem_outerImages_of_actual' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent1.Periodic.outerOutputs_mem_of_phaseEdge' depends on axioms: [propext, Quot.sound]

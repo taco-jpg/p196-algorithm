@@ -1,0 +1,234 @@
+[
+  {
+    "module": "PeriodObstructions",
+    "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+    "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+    "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+    "imports": [
+      "Std"
+    ]
+  },
+  {
+    "module": "ActualWordBridge",
+    "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+    "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+    "git_blob": "d3f49353f9970c610d818d8f5da78ad5c739e7df",
+    "imports": [
+      "PeriodObstructions"
+    ]
+  },
+  {
+    "module": "PrefixSemantics",
+    "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+    "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+    "git_blob": "04a8cc9e73b87d271ca857a218b240e23f57c939",
+    "imports": [
+      "ActualWordBridge"
+    ]
+  },
+  {
+    "module": "LychrelDigitSums",
+    "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+    "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+    "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+    "imports": [
+      "Std"
+    ]
+  },
+  {
+    "module": "IncomingCarry",
+    "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+    "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+    "git_blob": "0eb66e9e176c6bdc8f9f94cf705bddd063d65345",
+    "imports": [
+      "LychrelDigitSums"
+    ]
+  },
+  {
+    "module": "Agent1RepeatedBlock",
+    "path": "proofs/Agent1RepeatedBlock.lean",
+    "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+    "git_blob": "4adf4bd714be87ef5d95f0e6d33632fe36075ca4",
+    "imports": [
+      "PrefixSemantics",
+      "IncomingCarry"
+    ]
+  },
+  {
+    "module": "Agent1RepeatedBlockContext",
+    "path": "proofs/Agent1RepeatedBlockContext.lean",
+    "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+    "git_blob": "91eb5c39029f90de058952eb3fc993c6a2b1ba21",
+    "imports": [
+      "Agent1RepeatedBlock"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicDigits",
+    "path": "proofs/Agent1PeriodicDigits.lean",
+    "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+    "git_blob": "6a6f02ae17d7aaa8e728a6588edf080c9ffd7ad5",
+    "imports": [
+      "Agent1RepeatedBlockContext"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicSlices",
+    "path": "proofs/Agent1PeriodicSlices.lean",
+    "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+    "git_blob": "d0cdb8dcd06910ed0ea38801c91020c571bc1966",
+    "imports": [
+      "Agent1PeriodicDigits"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicGuard",
+    "path": "proofs/Agent1PeriodicGuard.lean",
+    "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+    "git_blob": "7c62748625cecbc277ddd5e01ffb17671e4db7a8",
+    "imports": [
+      "Agent1PeriodicSlices"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicGuardFacts",
+    "path": "proofs/Agent1PeriodicGuardFacts.lean",
+    "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+    "git_blob": "45fec1c73f1fe4f60daa9186e36b1d19b0b69927",
+    "imports": [
+      "Agent1PeriodicGuard"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicOuterStrip",
+    "path": "proofs/Agent1PeriodicOuterStrip.lean",
+    "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+    "git_blob": "9e35c06bf3dd393f33dfd2af965a1ea2d4305bc7",
+    "imports": [
+      "Agent1PeriodicGuardFacts"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicCenterStrip",
+    "path": "proofs/Agent1PeriodicCenterStrip.lean",
+    "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+    "git_blob": "bfcfd913cfd7b4063c9b632f2b0461aafd9ca437",
+    "imports": [
+      "Agent1PeriodicGuard"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicQuotient",
+    "path": "proofs/Agent1PeriodicQuotient.lean",
+    "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+    "git_blob": "63bd5f4319f6a79924b7292db3eb82e0d027b26c",
+    "imports": [
+      "Agent1PeriodicGuardFacts",
+      "Agent1PeriodicOuterStrip",
+      "Agent1PeriodicCenterStrip"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicParity",
+    "path": "proofs/Agent1PeriodicParity.lean",
+    "sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+    "git_blob": "c5a2bfb004aa8421110403195abf9951572e7b4b",
+    "imports": [
+      "Agent1PeriodicQuotient"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicPositivity",
+    "path": "proofs/Agent1PeriodicPositivity.lean",
+    "sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+    "git_blob": "bc392c470c3bf3389f4ae0166cf67dcaf2462e89",
+    "imports": [
+      "Agent1PeriodicOuterStrip"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicValidity",
+    "path": "proofs/Agent1PeriodicValidity.lean",
+    "sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+    "git_blob": "3c5673981d4c9a73a0ade71552f5867d8f73dd69",
+    "imports": [
+      "Agent1PeriodicParity",
+      "Agent1PeriodicPositivity"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicSafetyAlphabet",
+    "path": "proofs/Agent1PeriodicSafetyAlphabet.lean",
+    "sha256": "ec2632bcdfc630947844098f09f54161e2bd4ab3473f0e4a139ec6bc2d56912c",
+    "git_blob": "e5c1480c24770054ff24b7c770e457a5162a7d26",
+    "imports": [
+      "Agent1PeriodicValidity"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicOuter",
+    "path": "proofs/Agent1PeriodicOuter.lean",
+    "sha256": "b30b54bce57542a649208c29900d511e9cc4b64429fb4a48f8da2a387d040678",
+    "git_blob": "aa17a6398fb1ef5c5215771cdfb2c2992bfb9472",
+    "imports": [
+      "Agent1PeriodicSafetyAlphabet"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicPhase",
+    "path": "proofs/Agent1PeriodicPhase.lean",
+    "sha256": "705c139614ffd4f9f20a305f7c4bff20059da0c7fa127ca180ff8a88397a51ce",
+    "git_blob": "ecb0816aa6411068956b9c746c61d267dcd11feb",
+    "imports": [
+      "Agent1PeriodicGuard"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicNines",
+    "path": "proofs/Agent1PeriodicNines.lean",
+    "sha256": "b8aae1033e8e90c78f48888ea698e5d345c21e6b99970842dc5a9f3341cd193c",
+    "git_blob": "fc4b17311a291870b122ff97e3618fb7452e978e",
+    "imports": [
+      "Agent1PeriodicGuardFacts"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicPhaseCatalog",
+    "path": "proofs/Agent1PeriodicPhaseCatalog.lean",
+    "sha256": "44445a343635503c940ea125727d0bbb75bbf7dce24be62c28a660241363f9f9",
+    "git_blob": "a9414bc8c9be783f5dfc48778db7161c481a96fc",
+    "imports": [
+      "Agent1PeriodicPhase",
+      "Agent1PeriodicNines",
+      "Agent1PeriodicValidity"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicOuterChoices",
+    "path": "proofs/Agent1PeriodicOuterChoices.lean",
+    "sha256": "9bd84fb0c22b2252fb71f0310fe763e6a07192ef0fb80299763459ab48fb76ad",
+    "git_blob": "6c107fa40f1b3d7a84d9c459a760e1a8f20b5110",
+    "imports": [
+      "Agent1PeriodicPhaseCatalog"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicCatalogOrder",
+    "path": "proofs/Agent1PeriodicCatalogOrder.lean",
+    "sha256": "0f59e74ecb35b9bb648150319beb3de9f7965c6a1aea7171e67a40f4bcb199c7",
+    "git_blob": "bcaddd73d8187dbeb74741558c6566f9068a12e5",
+    "imports": [
+      "Agent1PeriodicOuterChoices"
+    ]
+  },
+  {
+    "module": "Agent1PeriodicOuterCatalog",
+    "path": "proofs/Agent1PeriodicOuterCatalog.lean",
+    "sha256": "1e6ebcc4e47df94162467d52826cee4e64c5707a622ac775008671d3fb0391e2",
+    "git_blob": "a353f057308f7be8e7f5bb1af915e4d1793c9e3d",
+    "imports": [
+      "Agent1PeriodicOuter",
+      "Agent1PeriodicCatalogOrder"
+    ]
+  }
+]
