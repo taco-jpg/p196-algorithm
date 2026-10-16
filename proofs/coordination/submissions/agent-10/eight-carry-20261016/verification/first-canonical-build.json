@@ -1,0 +1,340 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent10-eight-carry": {
+      "status": "PASS",
+      "scope": "Every admissible width has at least three nonoverflows in seven actual transitions. Eight complete carry observations determine pair sums when the initial difference is bounded by five; initial nonoverflow implies this bound. Numeric consequence: equality of the next ordinary reverse-and-add integer at shared canonical initial width. Inherited sharp four-smoothing boundary is retained. No universal eight-word reconstruction, initial-integer injectivity, or palindrome-avoidance conclusion.",
+      "sources": {
+        "Lychrel196Research": {
+          "path": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+          "sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+          "build_sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "PrefixCarryBound": {
+          "path": "proofs/PrefixCarryBound__455b2da92054832d.lean",
+          "sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+          "build_sha256": "a13fa77fd7862885a1f87e8329b094a0806a3f8277267db789e3a138cb43c486",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ActualCarryObservability": {
+          "path": "proofs/ActualCarryObservability__03355aec74748bfc.lean",
+          "sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+          "build_sha256": "465c8f05f46aa3d9e44c9ce5136de74fb402d1aa2494e5b89644fab84d1db3c9",
+          "imports": [
+            "Lychrel196Research",
+            "PrefixCarryBound"
+          ],
+          "adapter": null
+        },
+        "DifferenceObservability": {
+          "path": "proofs/DifferenceObservability__302efefb5b9eab49.lean",
+          "sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+          "build_sha256": "60e724414ebd2bcbe590b0d61976147ef280eedfab6ff057d7cbdb7aeb0505d7",
+          "imports": [
+            "ActualCarryObservability"
+          ],
+          "adapter": null
+        },
+        "Agent10SmoothingBoundary": {
+          "path": "proofs/Agent10SmoothingBoundary.lean",
+          "sha256": "1bc8dcb2f189cc2c08490df5fd499a92b0a0c3d9ed911cb945fd38d73067fa28",
+          "build_sha256": "1bc8dcb2f189cc2c08490df5fd499a92b0a0c3d9ed911cb945fd38d73067fa28",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Agent10SmoothingBridge": {
+          "path": "proofs/Agent10SmoothingBridge.lean",
+          "sha256": "65f03279fce8dc05e621b293427def6c13a8f851f59091a4837dbf5f5b42defb",
+          "build_sha256": "65f03279fce8dc05e621b293427def6c13a8f851f59091a4837dbf5f5b42defb",
+          "imports": [
+            "DifferenceObservability",
+            "Agent10SmoothingBoundary"
+          ],
+          "adapter": null
+        },
+        "Agent10SevenStepCount": {
+          "path": "proofs/Agent10SevenStepCount.lean",
+          "sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+          "build_sha256": "38ae7cfa7ce9f92cce308bd85402235d582cd50e0639f8308785caee19d0464d",
+          "imports": [
+            "DifferenceObservability"
+          ],
+          "adapter": null
+        },
+        "Agent10EightCarry": {
+          "path": "proofs/Agent10EightCarry.lean",
+          "sha256": "ba15b5bcd651301e0356c420fc41881909c7a5ae87c4d1b859668a0b4fb05e3b",
+          "build_sha256": "ba15b5bcd651301e0356c420fc41881909c7a5ae87c4d1b859668a0b4fb05e3b",
+          "imports": [
+            "Agent10SevenStepCount",
+            "Agent10SmoothingBridge"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "Lychrel196Research",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Lychrel196Research.olean",
+            "Lychrel196Research.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 61.249362,
+          "log": "agent10-eight-carry/logs/Lychrel196Research.log",
+          "log_sha256": "3fe3c3c4e38267dac7b4559a79bd364874243dd7a9a699e8d65f37e0bc2df93f"
+        },
+        {
+          "label": "PrefixCarryBound",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PrefixCarryBound.olean",
+            "PrefixCarryBound.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 4.875563,
+          "log": "agent10-eight-carry/logs/PrefixCarryBound.log",
+          "log_sha256": "ae9591b2b0c548deaca7d7d2975ffcb62ed4803f343ce5f908b06b8c5c66c7bd"
+        },
+        {
+          "label": "ActualCarryObservability",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualCarryObservability.olean",
+            "ActualCarryObservability.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 5.817583,
+          "log": "agent10-eight-carry/logs/ActualCarryObservability.log",
+          "log_sha256": "5fa68bfc9db74f9d119b776315f09494b77c43acf0100b895eeefef7b0ff584e"
+        },
+        {
+          "label": "DifferenceObservability",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "DifferenceObservability.olean",
+            "DifferenceObservability.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 3.69107,
+          "log": "agent10-eight-carry/logs/DifferenceObservability.log",
+          "log_sha256": "1cdbebd1d5f2f5e71e73ead1a5c0046ed08793489c544160747134a922266747"
+        },
+        {
+          "label": "Agent10SevenStepCount",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent10SevenStepCount.olean",
+            "Agent10SevenStepCount.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.189867,
+          "log": "agent10-eight-carry/logs/Agent10SevenStepCount.log",
+          "log_sha256": "79a7dcff86f596f567199be155dd91b1d456f2771f3429b9a3ed45e64a3f7180"
+        },
+        {
+          "label": "Agent10SmoothingBoundary",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent10SmoothingBoundary.olean",
+            "Agent10SmoothingBoundary.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.472835,
+          "log": "agent10-eight-carry/logs/Agent10SmoothingBoundary.log",
+          "log_sha256": "83e0749732bd01c2a08ebeedde80424b2a6eeb4943736a1df3a1638e4cfede34"
+        },
+        {
+          "label": "Agent10SmoothingBridge",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent10SmoothingBridge.olean",
+            "Agent10SmoothingBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.269132,
+          "log": "agent10-eight-carry/logs/Agent10SmoothingBridge.log",
+          "log_sha256": "58ccbe10ee3ca399be1fd3725d115d7e02871b26c0cc356970c05ca3b1e00f3d"
+        },
+        {
+          "label": "Agent10EightCarry",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent10EightCarry.olean",
+            "Agent10EightCarry.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.568175,
+          "log": "agent10-eight-carry/logs/Agent10EightCarry.log",
+          "log_sha256": "44c42d2e7a9e7ba66a80b27d266cbe9b29bbb418761aabadc13a0ca00d6693d1"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 24.260987,
+          "log": "agent10-eight-carry/logs/ProjectAudit.log",
+          "log_sha256": "dd7908fb5400d4173d462a9a1f9f570fbff33249d0b778f3a668bdcba1fe97c2"
+        }
+      ],
+      "roots": [
+        "Agent10EightCarry"
+      ],
+      "build_order": [
+        "Lychrel196Research",
+        "PrefixCarryBound",
+        "ActualCarryObservability",
+        "DifferenceObservability",
+        "Agent10SevenStepCount",
+        "Agent10SmoothingBoundary",
+        "Agent10SmoothingBridge",
+        "Agent10EightCarry"
+      ],
+      "theorem_count": 1041,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent10SmoothingBoundary.prefix_rigidity",
+        "Agent10SmoothingBoundary.four_rigidity_at_five",
+        "Agent10SmoothingBoundary.witness_zero_after",
+        "Agent10SmoothingBoundary.witness_symmetric",
+        "Agent10SmoothingBoundary.witness_bounds",
+        "Agent10SmoothingBoundary.four_witness_zero_after",
+        "Agent10SmoothingBoundary.four_witness_bounds",
+        "Agent10SmoothingBoundary.six_is_not_rigid",
+        "Agent10SmoothingBoundary.sharp_threshold",
+        "Agent10SmoothingBridge.four_eq_smoothPow",
+        "Agent10SmoothingBridge.smooth_four_rigidity_at_five",
+        "Agent10SmoothingBridge.smooth_four_symmetric_counterexample",
+        "Agent10SmoothingBridge.eight_carries_small_difference",
+        "Agent10SmoothingBridge.initial_nonoverflow_difference_bound",
+        "Agent10SmoothingBridge.eight_carries_initial_nonoverflow",
+        "Agent10SevenStepCount.rank_seven_minimum_fin",
+        "Agent10SevenStepCount.rank_seven_minimum",
+        "Agent10SevenStepCount.seven_step_minimum",
+        "Agent10SevenStepCount.seven_step_path_bound",
+        "Agent10SevenStepCount.seven_step_trajectory_bound",
+        "Agent10SevenStepCount.actual_seven_step_count",
+        "Agent10SevenStepCount.singleton_seven_count",
+        "Agent10SevenStepCount.actual_seven_step_count_all_widths",
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_small_difference",
+        "Agent10EightCarry.eight_carry_words_determine_pair_sums_of_initial_nonoverflow",
+        "Agent10EightCarry.eight_carry_words_determine_next_integer_of_initial_nonoverflow"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "Lychrel196Research",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finishFuel._spec_1"
+        ],
+        [
+          "Lychrel196Research",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.feed._spec_1"
+        ],
+        [
+          "Lychrel196Research",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_2"
+        ],
+        [
+          "Lychrel196Research",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.next._spec_1"
+        ],
+        [
+          "Lychrel196Research",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_1"
+        ],
+        [
+          "Lychrel196Research",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_1"
+        ],
+        [
+          "Lychrel196Research",
+          "List.repr'._at._private.Lychrel196Research.0.OverflowNormalizationCertificate.reprState.\u00ab_@\u00bb.Lychrel196Research._hyg.20378._spec_1"
+        ],
+        [
+          "Lychrel196Research",
+          "OverflowCarryNormalization.iterPairs._elambda_1"
+        ],
+        [
+          "Lychrel196Research",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.initials._spec_3"
+        ],
+        [
+          "Lychrel196Research",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.next._spec_2"
+        ],
+        [
+          "Lychrel196Research",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.feed._spec_2"
+        ],
+        [
+          "Lychrel196Research",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_2"
+        ],
+        [
+          "Lychrel196Research",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.edge._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792184914.5180247,
+  "registry_sha256": "dae86c9b8b059d53e43e734aabc0d5c3bfc4cfb9a3e773f0689e4cba2db5d771",
+  "source_commit": "2083e6f1556fb8ce955abe247eac784750d9f2b8",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped Agent #10 candidate registry; repository-wide completeness and external independent acceptance are not asserted."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/tmp/p196-agent5-lean/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792185021.4375842
+}
