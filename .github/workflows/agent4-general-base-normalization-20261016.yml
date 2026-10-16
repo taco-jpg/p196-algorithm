@@ -20,18 +20,20 @@ jobs:
         with:
           sparse-checkout: proofs/contributions/agent-4/general-base-normalization-20261016
           persist-credentials: false
+          show-progress: false
       - name: Pinned official Lean and historical baseline
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/audit"
           cd "$RUNNER_TEMP"
-          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o lean.tar.zst
+          curl --fail --silent --show-error --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o lean.tar.zst
+          echo '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  lean.tar.zst' | sha256sum -c -
           sha256sum lean.tar.zst | tee audit/compiler-archive.sha256
           tar --zstd -xf lean.tar.zst
           echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
           lean-4.19.0-linux/bin/lean --version | tee audit/compiler-version.log
-          curl --fail --location --retry 3 https://raw.githubusercontent.com/taco-jpg/p196-algorithm/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/agent4/complementary_bulk/CycleConstraints.lean -o CycleConstraints.lean
+          curl --fail --silent --show-error --location --retry 3 https://raw.githubusercontent.com/taco-jpg/p196-algorithm/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/agent4/complementary_bulk/CycleConstraints.lean -o CycleConstraints.lean
           test "$(git hash-object CycleConstraints.lean)" = 4c5cb80621b5a476e8062485dc8c73d125ee3b7e
           lean-4.19.0-linux/bin/lean CycleConstraints.lean 2>&1 | tee audit/baseline.log
       - name: Record available arithmetic interfaces
@@ -39,6 +41,7 @@ jobs:
         shell: bash
         run: |
           lean proofs/contributions/agent-4/general-base-normalization-20261016/Probe.lean > "$RUNNER_TEMP/audit/probe.log" 2>&1 || true
+          cat "$RUNNER_TEMP/audit/probe.log"
       - name: Compile exact source in two clean directories
         shell: bash
         run: |

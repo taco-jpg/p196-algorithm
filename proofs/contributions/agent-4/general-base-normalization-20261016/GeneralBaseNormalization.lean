@@ -9,7 +9,6 @@ This module does not assert the four-step termination theorem.
 -/
 namespace P196.Agent4.GeneralBase
 
-/-- Schoolbook outgoing carry for a pair coefficient and a carry bit. -/
 def carryStep (b q c : Nat) : Nat := if b ≤ q + c then 1 else 0
 
 def carryAt (b : Nat) (q : Nat → Nat) : Nat → Nat
@@ -68,7 +67,9 @@ theorem normalize_column (b low q c d : Nat)
       split
       · next hzero =>
           have hh : ¬ b ≤ low + c := by omega
-          simp [carryStep, hh, ← hzero]
+          calc
+            carryStep b low c = 0 := by simp [carryStep, hh]
+            _ = carryStep b q c := hzero.symm
       · next hnzero =>
           have hbit := carryStep_bit b q c
           have hone : carryStep b q c = 1 := by omega
@@ -122,7 +123,7 @@ theorem normalized_even_center (b low n : Nat) (q : Nat → Nat)
   simp only [ite_true]
   split <;> assumption
 
-/-- Split each mirrored coefficient: floor on the low side, ceiling on the high. -/
+/-- Floor on the low side and ceiling on the high side of each mirrored pair. -/
 def splitDigit (n : Nat) (q : Nat → Nat) (i : Nat) : Nat :=
   if i < n - 1 - i then q i / 2 else q i - q i / 2
 
@@ -167,7 +168,6 @@ theorem symmetric_word_realizable (b n : Nat) (q : Nat → Nat)
   · exact splitDigit_leading_positive n q hn hs hout
   · exact splitDigit_pair_sum n q hs he
 
-/-- The report's choice is two without overflow, zero with overflow. -/
 def chosenLow (b n : Nat) (q : Nat → Nat) : Nat :=
   if carryAt b q n = 0 then 2 else 0
 
@@ -194,7 +194,7 @@ theorem normalized_outer_positive (b n : Nat) (q : Nat → Nat) (hb : 2 ≤ b) :
       · omega
   · omega
 
-/-- Exact normalization/realization subclaim. No orbit-termination conclusion. -/
+/-- Exact finite-word subclaim. Arithmetic quotient correspondence is separate. -/
 theorem normalization_has_same_width_representative (b n : Nat) (q : Nat → Nat)
     (hb : 4 ≤ b) (hbe : b % 2 = 0) (hn : 0 < n) (hs : Symmetric n q) :
     ∃ d : Nat → Nat,

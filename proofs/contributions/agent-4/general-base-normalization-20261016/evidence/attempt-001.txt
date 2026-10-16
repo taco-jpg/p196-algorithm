@@ -1,0 +1,9 @@
+Agent #4 actual failed compilation record
+Source commit: 3383876a7e039a5e5fd3b79e46a7e70c08ebba03
+Source SHA256: 253312cd146b0159587fb134d9c649bc39323b7e795d887b0471eab8230f1409
+Workflow run: 38939430853; job: 117103033355; exit status: 1
+Compiler: Lean 4.19.0, commit 6caaee842e94, x86_64-unknown-linux-gnu, Release
+Compiler archive SHA256: 6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe
+Historical baseline blob 4c5cb80621b5a476e8062485dc8c73d125ee3b7e: PASS; ten axiom reports use only propext/Quot.sound or no axioms.
+Error at GeneralBaseNormalization.lean:71:10: tactic simp failed: maximum recursion depth reached. The reverse zero rewrite caused the loop. Failed declarations normalize_column, complete_carry_word_preserved and normalization_has_same_width_representative were reported with sorryAx by Lean's error recovery and are NOT accepted. All remaining 15 declarations reported permitted foundations only. Full raw CI evidence is retained in run 38939430853 artifact 12062681579 (14-day retention); the source attempt itself is durable Git history.
+Correction: replace the reversed simplifier equality by an explicit two-step equality calculation. Do not increase recursion limits or accept Lean's error-recovery placeholders.
