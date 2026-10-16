@@ -1,0 +1,27 @@
+Agent1.Periodic.periodic_decimalLength_mod_eight : ∀ (B H w : Agent8.Word) (k n : Nat) (d : Nat → Nat),
+  List.length w = 4 →
+    DecimalDigits.Canonical n d (List.length (Agent1.Periodic.periodicWord B H w k)) →
+      DecimalQuantitativeMass.decimalLength n % 8 = Agent1.Periodic.widthResidue B H
+'Agent1.Periodic.periodic_decimalLength_mod_eight' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.periodic_actual_step_decimalLength_mod_eight : ∀ (B H w : Agent8.Word) (k : Nat),
+  0 < k →
+    ∀ (n : Nat) (d : Nat → Nat),
+      Agent8.Bounded B 18 →
+        Agent8.Bounded H 18 →
+          Agent8.Bounded w 18 →
+            DecimalDigits.Canonical n d (List.length (Agent1.Periodic.periodicWord B H w k)) →
+              (∀ (i : Nat),
+                  i < List.length (Agent1.Periodic.periodicWord B H w k) →
+                    DecimalDigits.columnSum d (List.length (Agent1.Periodic.periodicWord B H w k)) i =
+                      (Agent1.Periodic.periodicWord B H w k)[i]?.getD 0) →
+                List.length w = 4 →
+                  DecimalQuantitativeMass.decimalLength (Lychrel196.step n) % 8 =
+                    Agent1.Periodic.widthResidue (Agent1.Periodic.quotientOuter B H w)
+                      (Agent1.Periodic.quotientCenter B H w)
+'Agent1.Periodic.periodic_actual_step_decimalLength_mod_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_actual_step_decimalLength_mod_eight : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.periodic_decimalLength_mod_eight : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_actual_step_decimalLength_mod_eight._proof_1 : [propext, Quot.sound]
+MODULE_AUDIT theorems=3 definitions=0 opaque=0 union=[Classical.choice, Quot.sound, propext]
