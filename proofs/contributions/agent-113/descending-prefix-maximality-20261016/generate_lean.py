@@ -52,6 +52,31 @@ def ValidFirst (a b c : Nat) (steps : List InvStep) : Prop :=
   | s :: _ => topCarry s.s0 s.s1 s.s2 s.e = 0 ∧
     ValidChain (a,b,c) steps
 
+/-- Constructive decidability of the recursive symbolic edge property. -/
+private def chainDecidable (target : Triple) :
+    (steps : List InvStep) → Decidable (ValidChain target steps)
+  | [] => by
+      simp only [ValidChain]
+      infer_instance
+  | s :: rest => by
+      letI : Decidable (ValidChain (asTriple s) rest) :=
+        chainDecidable (asTriple s) rest
+      simp only [ValidChain]
+      infer_instance
+
+instance (target : Triple) (steps : List InvStep) :
+    Decidable (ValidChain target steps) := chainDecidable target steps
+
+instance (a b c : Nat) (steps : List InvStep) :
+    Decidable (ValidFirst a b c steps) := by
+  cases steps with
+  | nil =>
+      simp only [ValidFirst]
+      infer_instance
+  | cons s rest =>
+      simp only [ValidFirst]
+      infer_instance
+
 -- Four explicit inverse edges, read right-to-left as forward `nextTriple`.
 theorem cycle01 : nextTriple 10 4 6 0 = (1,5,10) := by decide +kernel
 theorem cycle12 : nextTriple 5 2 3 0 = (10,4,6) := by decide +kernel
