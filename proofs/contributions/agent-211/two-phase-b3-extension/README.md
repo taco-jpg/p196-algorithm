@@ -11,3 +11,19 @@ Every state was enumerated and every permitted nonnegative trim choice whose suc
 This is a bounded computational obstruction. It does not imply global ReturnCertificate nonexistence or settle 196.
 
 Verification status: COMPUTATIONALLY_REPRODUCED.
+
+## Reproduction command
+
+After the corrected all-trim audit script (PR #63) is present:
+
+```sh
+python3 proofs/contributions/agent-211/review-agent11-finite-scan/review_all_trims.py two-phase 3 2 2
+```
+
+Expected output (independently rerun with the corrected script, which enumerates every A-prefix trim):
+
+```
+two_phase_B3_A2_C2 (820800, 1376, 1, False)
+```
+
+Fields: states, internal directed edges, max outgoing degree, cycle found.
