@@ -17,7 +17,6 @@ theorem quotient_remainder_of_column (b x digit carry : Nat)
   rw [hdiv] at hmod
   exact ⟨hdiv, by omega⟩
 
-/-- Every certificate row is a checked ordinary integer equality. -/
 theorem certified_carry_word (b n : Nat) (q e c : Nat → Nat)
     (hb : 0 < b) (he : ∀ i < n, e i < b) (hzero : c 0 = 0)
     (hrows : ∀ i < n, q i + c i = e i + b * c (i + 1))
@@ -49,7 +48,6 @@ theorem certified_value (b n : Nat) (q e c : Nat → Nat)
   rw [hval, certified_carry_word b n q e c hb he hzero hrows n (by omega)] at h
   exact h
 
-/-- The certificate-to-numeric-step bridge when the final carry is zero. -/
 theorem certified_numeric_step_same_width (b n : Nat) (d e c : Nat → Nat)
     (hb : 0 < b) (hd : ∀ i < n, d i < b) (he : ∀ i < n, e i < b)
     (hzero : c 0 = 0) (hend : c n = 0)
@@ -62,7 +60,6 @@ theorem certified_numeric_step_same_width (b n : Nat) (d e c : Nat → Nat)
   rw [pair_value] at h
   exact h
 
-/-- The extra output digit is the checked final carry, not a presumed overflow. -/
 theorem certified_numeric_step_extra_digit (b n : Nat) (d e c : Nat → Nat)
     (hb : 0 < b) (hd : ∀ i < n, d i < b) (he : ∀ i < n, e i < b)
     (hzero : c 0 = 0) (hend : e n = c n)
@@ -80,7 +77,9 @@ theorem numeric_nonpalindrome_of_mismatch (b n : Nat) (d : Nat → Nat)
     reverseAtWidth b n (value b d n) ≠ value b d n := by
   intro h
   rw [reverseAtWidth_value b n d hb hd] at h
-  have hdigits := congrArg (fun x : Nat => integerDigit b x i) h
+  have hdigits : integerDigit b (value b (fun j => d (n - 1 - j)) n) i =
+      integerDigit b (value b d n) i :=
+    congrArg (fun x : Nat => integerDigit b x i) h
   have hrev : ∀ j < n, d (n - 1 - j) < b := by
     intro j hj
     exact hd (n - 1 - j) (by omega)
