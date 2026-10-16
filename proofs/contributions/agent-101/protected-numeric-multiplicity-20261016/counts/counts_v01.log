@@ -1,0 +1,36 @@
+Agent101ProtectedMultiplicity.lean:117:69: error: unsolved goals
+xs : List Bool
+k : Nat
+⊢ 5 * natProduct (List.map (pairCount false ∘ choice) xs ++ List.replicate k 1) =
+    5 *
+      natProduct
+        (List.map (fun b => if choice b ≤ 9 then choice b + 1 else if choice b ≤ 18 then 19 - choice b else 0) xs)
+Agent101ProtectedMultiplicity.lean:129:2: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  a ≥ 0
+  a - 5*c ≥ 1
+where
+ a := ↑(pairCount false (choice b)) * ↑(5 * natProduct (List.map (fun b => pairCount false (choice b)) xs))
+ c := ↑(pairCount false (choice b)) * ↑(natProduct (List.map (fun b => pairCount false (choice b)) xs))
+'Agent101.Protected.protectedSeeds' does not depend on any axioms
+'Agent101.Protected.coefficientWord_inputHalf' depends on axioms: [propext]
+'Agent101.Protected.coefficientWord_inputHalf_bounded' depends on axioms: [propext, Quot.sound]
+'Agent101.Protected.mem_inputFiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.mem_protectedSeeds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.mem_protectedSeeds_numeric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.mem_protectedSeeds_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.mem_protectedSeeds_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.inputFiber_index_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.inputFibers_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.protectedSeeds_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent101.Protected.natProduct_append' depends on axioms: [propext]
+'Agent101.Protected.length_inputFiber' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent101.Protected.length_inputFiber_cons' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent101.Protected.length_flatMap_scale' depends on axioms: [propext]
+'Agent101.Protected.length_protectedSeeds_cons_choice' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Agent101.Protected.length_protectedSeeds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Agent101.Protected.protectedSeeds_exact' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

@@ -1,0 +1,61 @@
+{
+  "agent": "Agent #101",
+  "scope": "protected-family ordinary-integer multiplicity",
+  "source": "proofs/Agent101ProtectedMultiplicity.lean",
+  "source_sha256": "503dcb1c7d90f031a54caffb89ce8a632edbdc77c9383d06dbacfdbffaf0c1ac",
+  "compiler": "/workspace/scratch/2a8a87fd78df/agent101-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+  "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "version": "Lean 4.19.0 (commit 6caaee842e94)",
+  "build_directory": "/workspace/scratch/2a8a87fd78df/agent101-protected-count-build",
+  "LEAN_PATH": "/workspace/scratch/2a8a87fd78df/agent101-protected-count-build:/workspace/scratch/2a8a87fd78df/agent101-numeric-build",
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "-o",
+        "Agent101ProtectedMultiplicity.olean",
+        "Agent101ProtectedMultiplicity.lean"
+      ],
+      "exit_code": 0,
+      "log": "counts_v02_pass.log"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/2a8a87fd78df/agent101-runtime/toolchain/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-o",
+        "Agent101ProtectedMultiplicity.olean",
+        "Agent101ProtectedMultiplicity.lean"
+      ],
+      "exit_code": 0,
+      "log": "counts_v03_trust0.log"
+    }
+  ],
+  "audited_declarations": [
+    "Agent101.Protected.protectedSeeds",
+    "Agent101.Protected.coefficientWord_inputHalf",
+    "Agent101.Protected.coefficientWord_inputHalf_bounded",
+    "Agent101.Protected.mem_inputFiber",
+    "Agent101.Protected.mem_protectedSeeds",
+    "Agent101.Protected.mem_protectedSeeds_numeric",
+    "Agent101.Protected.mem_protectedSeeds_width",
+    "Agent101.Protected.mem_protectedSeeds_positive",
+    "Agent101.Protected.inputFiber_index_unique",
+    "Agent101.Protected.inputFibers_disjoint",
+    "Agent101.Protected.protectedSeeds_nodup",
+    "Agent101.Protected.natProduct_append",
+    "Agent101.Protected.length_inputFiber",
+    "Agent101.Protected.length_inputFiber_cons",
+    "Agent101.Protected.length_flatMap_scale",
+    "Agent101.Protected.length_protectedSeeds_cons_choice",
+    "Agent101.Protected.length_protectedSeeds",
+    "Agent101.Protected.protectedSeeds_exact"
+  ],
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "result": "PASS",
+  "independence_note": "Author-local module proof check, with original Agent3 dependency modules compiled in this isolated directory and unchanged Agent101 numerical dependency oleans imported from their previously independently checked build. Whole-source closure review is delegated separately."
+}
