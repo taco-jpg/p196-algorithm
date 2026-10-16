@@ -57,7 +57,8 @@ theorem witness_q_admissible :
   · intro i hi
     exact columnSum_symmetric witnessDigits 11 hi
   · intro i hi hcenter
-    subst hcenter
+    have hi5 : i = 5 := by omega
+    subst i
     decide [witnessQ, columnSum, reflected, witnessDigits]
 
 theorem witness_initial_boundary :
@@ -69,9 +70,9 @@ theorem witness_first_guard :
   decide [SevenGuards, controlAt, actualControl, innerCarryAt,
     iterPairs, witnessQ, columnSum, reflected, witnessDigits, carry]
 
-theorem witness_returned_middle :
-    (iterPairs witnessQ 11 7).2 =
-      fun i =>
+theorem witness_returned_middle_prefix :
+    ∀ i, i < 8 →
+      (iterPairs witnessQ 11 7).2 i =
         match i with
         | 0 => 3
         | 1 => 5
@@ -82,7 +83,7 @@ theorem witness_returned_middle :
         | 6 => 5
         | 7 => 3
         | _ => 0 := by
-  funext i
+  intro i hi
   interval_cases i <;>
     decide [iterPairs, witnessQ, columnSum, reflected, witnessDigits,
       carry, nextWidth, nextColumns, output, extended]
@@ -108,7 +109,7 @@ theorem guard_preservation_counterexample :
 #print axioms witness_digits_canonical
 #print axioms witness_q_admissible
 #print axioms witness_first_guard
-#print axioms witness_returned_middle
+#print axioms witness_returned_middle_prefix
 #print axioms witness_next_guard_fails
 #print axioms guard_preservation_counterexample
 
