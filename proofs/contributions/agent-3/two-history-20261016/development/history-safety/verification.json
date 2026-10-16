@@ -1,0 +1,119 @@
+{
+  "source": "proofs/contributions/agent-3/two-history-20261016/HistorySafety.lean",
+  "source_sha256": "16ea25b00f12eed305519eb8de73b564bae5ff3a5ddd255895d5485bebfd33ff",
+  "compiler": {
+    "path": "/workspace/scratch/4ce7c54d31f6/lean-runtime/lean-4.19.0-linux/bin/lean",
+    "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)"
+  },
+  "compile": {
+    "command": [
+      "/workspace/scratch/4ce7c54d31f6/lean-runtime/lean-4.19.0-linux/bin/lean",
+      "--trust=0",
+      "-o",
+      "/workspace/scratch/4ce7c54d31f6/agent3-history-safety-build/HistorySafety.olean",
+      "/workspace/scratch/4ce7c54d31f6/agent3-history-safety-build/HistorySafety.lean"
+    ],
+    "cwd": "/workspace/scratch/4ce7c54d31f6/agent3-history-safety-build",
+    "LEAN_PATH": "/workspace/scratch/4ce7c54d31f6/agent3-history-safety-build:/workspace/scratch/4ce7c54d31f6/agent3-history-integer-build:/workspace/scratch/4ce7c54d31f6/agent3-history-build",
+    "exit_code": 0,
+    "seconds": 0.24151747999985673,
+    "source_sha256": "16ea25b00f12eed305519eb8de73b564bae5ff3a5ddd255895d5485bebfd33ff"
+  },
+  "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "audit": {
+    "command": [
+      "/workspace/scratch/4ce7c54d31f6/lean-runtime/lean-4.19.0-linux/bin/lean",
+      "--trust=0",
+      "/workspace/scratch/4ce7c54d31f6/p196-history/proofs/contributions/agent-3/two-history-20261016/development/history-safety/HistorySafetyAudit.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 0.5423893239994868,
+    "source_sha256": "1982b84ca22fbbe9a2d14109b031c12964b5f0b8a3a4cdbcb860165f96730382",
+    "log_sha256": "2b093aae9d3b4192743d534ed3c8200f1d7fa61a73c460e4bf1c6611d09133bf",
+    "exported_theorems": 7,
+    "axioms": {
+      "P196.Agent3.TwoHistory.history_realizes_one": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "P196.Agent3.TwoHistory.history_realizes_two": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "P196.Agent3.TwoHistory.history_orbit_three": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "P196.Agent3.TwoHistory.history_integer_safe_prefix": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "P196.Agent3.TwoHistory.history_integer_common_time_four": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "P196.Agent3.TwoHistory.history_integer_realization_package": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "P196.Agent3.TwoHistory.history_positive_integer_exists": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "accepted_source_shortcut_scan": {
+    "matches": [],
+    "result": "pass"
+  },
+  "direct_dependencies": [
+    {
+      "module": "ActualHistories",
+      "source": "proofs/contributions/agent-3/two-history-20261016/ActualHistories.lean",
+      "source_sha256": "b72d9a6ef082c3d980b3f6f2a9dee64835d38ed32fb7d040abb39b9ea02c6ec4",
+      "staged_source": "/workspace/scratch/4ce7c54d31f6/agent3-history-build/ActualHistories.lean",
+      "olean_sha256": "236cc14077835850acf871dc118e3f148433622bb2adb5fca8ec9399d1b0d555"
+    },
+    {
+      "module": "IntegerInterfaces",
+      "source": "proofs/contributions/agent-3/two-history-20261016/IntegerInterfaces.lean",
+      "source_sha256": "bc6d2926cd16c43de990ede025b9ba69e50d1e7e2a578044ad65bdf348e8b4fe",
+      "staged_source": "/workspace/scratch/4ce7c54d31f6/agent3-history-integer-build/IntegerInterfaces.lean",
+      "olean_sha256": "87b617bc509f43672206dc288785767382a2b5d414e43c570f2fdaaec95da53b"
+    },
+    {
+      "module": "FiniteHorizonTheorem",
+      "source": "proofs/contributions/agent-3/finite-horizon-overflow-20261016/FiniteHorizonTheorem.lean",
+      "source_sha256": "3316df9f3ce5baeac971faff53cfe5d6616beebf50c116c5662476c261f0d697",
+      "staged_source": "/workspace/scratch/4ce7c54d31f6/agent3-history-safety-build/FiniteHorizonTheorem.lean",
+      "olean_sha256": "cccd087d1fb7bec7035b534229b45a689a274328e552ebfd32cfdae4a36a77c8"
+    }
+  ],
+  "preserved_attempts": [
+    {
+      "source": "attempt-001.lean.txt",
+      "log": "attempt-001.log",
+      "metadata": "attempt-001.json",
+      "outcome": "Two redundant decide tactics after rw had already closed the head parity goals."
+    },
+    {
+      "source": "attempt-002.lean.txt",
+      "log": "attempt-002.log",
+      "metadata": "attempt-002.json",
+      "outcome": "Lean --trust=0 exit 0, no warnings or output."
+    }
+  ]
+}
