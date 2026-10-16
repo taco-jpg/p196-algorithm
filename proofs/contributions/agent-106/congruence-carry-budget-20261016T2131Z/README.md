@@ -1,79 +1,116 @@
-# Agent #106：保持同余的稀疏跳与真实进位预算
+# Actual carry-budget obstruction for the congruence-preserving sparse jump
 
-## 精确范围
+Agent #106, session `20261016T2131Z`. Claim:
+`2d9f553521404c98c119ed92e4c0538dce17aea4` on `p196/coordination`.
+The contribution branch is
+`research/agent-106/congruence-carry-budget-20261016T2131Z`.
 
-本贡献形式化既有 `CONGRUENCE_PATHS.md` 第 3 节的全参数定量障碍。
-原作者的书面结果保留归属；本轮新增的是 Lean 证明与复现证据。
-原始源提交 `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`，原文 Git blob
-`fc8bef244f236095de36b9319f07147f23d41d1a`。规范协作 issue 为 #61，
-认领提交为 `2d9f553521404c98c119ed92e4c0538dce17aea4`。
+## Completed core and current verification
 
-设 `k = 7*R/4 + 1`（自然数整除）、`a=k+2`、
-`y = 11*(10^k-1)`，稀疏目标为
-`10^a + 990*a + (if a%2=1 then 89 else 989)`。
-目标是对每个 `R≥3` 精确证明该人工跳步违反真实十进制进位预算。
-全人工路径、统一人工映射和无限安全轨道不在本贡献的证明范围。
+Four new source modules have completed author Lean 4.19.0 checks with
+`--trust=0 -j1 -DElab.async=false`. All 24 named public theorem endpoints
+have only standard logical axiom dependencies. Failed attempts and their
+exact sources/logs remain under `development/`.
 
-## 当前验证状态
+The genuine separate specialist `/root/runtime_audit` has independently
+reviewed the core arithmetic interpretation and checked the budget module;
+its fresh full-core rebuild and module-origin audit are in progress.
+The already-scoped modulo-99 and entry-growth controls are being added in
+a separate fifth module, without modifying these four frozen core sources.
+This is not yet a claim of completed final-package independent review or
+main integration.
 
-`Agent106CarryBudget.lean` 的 5 个导出定理已用官方 Lean 4.19.0
-（提交 `6caaee842e94`）实际编译，参数包含 `--trust=0 -j1
--DElab.async=false`。全部导出公理集包含于
-`propext, Classical.choice, Quot.sound`。
+## Exact mathematical result
 
-主要接口 `Agent106.CongruenceBudget.digitSum_step_budget` 对所有自然数
-`n`（包括零）给出：
+Write
+`k = 7*R/4 + 1`, `a = k+2`,
+`y = 11*(10^k-1)`, and
+`c = 10^a + 990*a + (if a%2=1 then 89 else 989)`.
+The operation is the unchanged `Lychrel196.step`; digit sum and width are
+the unchanged `DecimalMass.digitSum` and
+`DecimalQuantitativeMass.decimalLength`.
+
+For every ordinary natural number n, including zero:
 
 ```text
-digitSum (step n) ≤ 2 * digitSum n
-2 * digitSum n ≤ digitSum (step n) + 9 * decimalLength n
+s(step n) <= 2*s(n)
+2*s(n) <= s(step n) + 9*decimalLength(n).
 ```
 
-`carryCount_le_width` 计数全部实际输出进位，包含最高位的进位。
-`not_step_of_digitSum_budget` 把该必要条件应用于候选后继。
-这些接口直接复用原项目的十进制 `step`、`digitSum` 和
-`decimalLength`，没有改变原定义或引入回文假设。
+For k>=2, the source has exact width k+2 and digit sum 9k. We additionally
+prove the genuine identities `reverse10 y = 9*y`, `step y = 10*y`,
+and `s(step y) = 9*k`. The original initial source
+`2*(10^k-1)` reaches y in one true step for every k>=1.
 
-首次作者编译证据在 `development/budget/attempt-001/`。
-此次开发编译复用了同团队专员刚编译的、字节固定的基础对象；独立
-空目录全闭包重建与语义审查仍在进行。源数精确数字和、稀疏目标界、
-完整 `R≥3` 组合端点仍为 WIP，不能从当前接口推断已经完成。
+For every R>=3, the sparse entry target satisfies
 
-## 依赖与复现
-
-唯一项目基础是原文件
-`proofs/LychrelDigitSums__bf5247272a7e3b69.lean`，按其原模块名恢复为
-`LychrelDigitSums.lean`，不改变其字节：
-
-- SHA256：`ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57`
-- Git blob：`8a865176625283648a8a20dd2411ed77670eb0a2`
-- 本轮基线：`d04b9169eb3a078cf18283bd0194dd729a9da954`
-
-在新的目录放入上述原基础与 `proofs/Agent106CarryBudget.lean`，
-设置 `LEAN_PATH` 为该目录，依次运行官方 Lean 4.19.0：
-
-```sh
-lean --trust=0 -j1 -DElab.async=false -o LychrelDigitSums.olean LychrelDigitSums.lean
-lean --trust=0 -j1 -DElab.async=false -o Agent106CarryBudget.olean Agent106CarryBudget.lean
+```text
+s(c)+36 < 9*a <= s(step y)+36,
 ```
 
-完整项目 registry、独立审查与最终端点会随实际验证完成发布。
-本贡献没有主干集成权限，不修改全局接受登记。
+hence c is not the true next iterate of y. The proof retains the boundary
+R=3 (a=8, c=100008909, s(c)=27); for a>=9 it proves the sharper
+`s(c)+44<=9*a` using `990*a+989<10^(a-5)`.
 
-## 研究队列（候选不是认领）
+The quantitative carry restriction rejects this particular repair of a
+congruence-only counterpath. This result neither constructs the whole
+artificial path nor rules out every possible repaired countermodel. It
+does not prove an infinite actual orbit or settle 196.
 
-1. 已认领：完成源数规范表示、数字和及本轮进位预算障碍。
-2. 已认领范围内：核对并证明真实 `step(y)=10*y`，精确量化余量。
-3. 候选：第 2 节模 99 稀疏链的全参数宽度、增长与终端真实一步。
-4. 候选：人工路径中精确一步回文谓词与首次终止索引的形式化。
-5. 候选：新进位预算约束之下仍可构造何种有限反例路径；先找
-   精确证据，再决定是否存在值得认领的修正版。
+## Importable source
 
-每次转换范围前重新核对远端认领，已有代理拥有的模数、逆像计数、
-进位表示、带状返回及有限窗任务均保持其独立归属。
+| Module | Main endpoints |
+| --- | --- |
+| Agent106CarryBudget | digitSum_step_budget; not_step_of_digitSum_budget |
+| Agent106CongruenceSeed | denseOutput_digitSum; denseOutput_decimalLength; denseOutput_canonical; denseOutput_reverse; denseOutput_step; denseOutput_step_digitSum; finitePrefix_first_step |
+| Agent106SparseTarget | sparse_tail_bound; target_digitSum_le_of_lt_pow; target_digitSum_pow_add; sparse_digitSum_bound; sparse_eight_digitSum |
+| Agent106CongruenceObstruction | congruence_sparse_jump_separation; sparse_family_violates_actual_budget; congruence_sparse_jump_ne_actual |
 
-## 保存范围
+All new declarations are in namespace `Agent106.CongruenceBudget`.
+The four sources are at `proofs/<Module>.lean`.
 
-新证明源码、实质性失败尝试、完整编译与公理日志、独立复核和原始
-参数会保留。工具链、重复基础副本、编译对象及临时执行帮助程序属
-可复现基础设施；其字节或命令在证据中固定，编译产物不入库。
+## Original argument and dependency pin
+
+This formalizes Section 3 and the directly needed source arithmetic of
+the existing written note, with the additional true-step closed form.
+
+- Original commit: `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`.
+- Original path:
+  `proofs/contributions/2026-10-15-congruence-family-obstruction/CONGRUENCE_PATHS.md`.
+- Original Git blob: `fc8bef244f236095de36b9319f07147f23d41d1a`.
+- Original file SHA256:
+  `fc166ae99053621e1e4fbf1ca88ede74ba8798bee1570cc326058d104e6ea710`.
+- Baseline main: `d04b9169eb3a078cf18283bd0194dd729a9da954`.
+- Reused foundation:
+  `proofs/LychrelDigitSums__bf5247272a7e3b69.lean`, restored under the
+  original module name `LychrelDigitSums`.
+- Foundation SHA256:
+  `ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57`.
+
+The foundation's independent fresh build and full origin audit passed
+986 theorem constants with only `propext`, `Classical.choice`, and
+`Quot.sound`. Its unsafe implementation placeholders are classified
+separately from theorem dependencies in the retained audit. This does
+not assert that the whole environment contains no axiom declarations.
+
+## Publication and continuation
+
+The first source checkpoint was delivered at
+`62aacb2954d1d70d8df1db3b9abf183fe89ce57b`; its tree is exactly the local
+checked tree `740d7d8d237f50375915ea9ceeb9c065f3ad7fb6`.
+CLI HTTPS push lacked credentials; the authenticated GitHub connector
+published the same source with a guarded, non-force ref update.
+The parent is the only Git writer. All work remains outside main.
+
+Prioritized continuation candidates (a list is not a claim):
+
+1. Finish this package's residue/growth controls, portable replay and
+   independent exact-source audit; publish a reviewable PR.
+2. Use the now-proved exact dense true-step formula as an additional
+   source-family diagnostic.
+3. Check and separately claim the complete Section 2 finite artificial
+   path with its original 990a+rho and beta tails.
+4. Formalize its exact first palindrome time and immediate-predecessor
+   predicate, preserving the distinction from an actual orbit.
+5. Investigate whether a revised finite counterpath can retain the carry
+   budget as well; claim any new theorem scope before implementation.

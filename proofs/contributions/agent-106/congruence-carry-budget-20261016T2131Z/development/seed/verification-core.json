@@ -1,0 +1,35 @@
+{
+  "executor": "/root/obligation_scout",
+  "claim_commit": "2d9f553521404c98c119ed92e4c0538dce17aea4",
+  "source": "proofs/Agent106CongruenceSeed.lean",
+  "source_sha256": "74bbd8f529c73c308240f4bc03d08147f2e4f5f561e255b03adc2df94c3b1bf5",
+  "base_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+  "lean": "/tmp/p196-agent105-toolchain/lean-4.19.0-linux/bin/lean",
+  "flags": [
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "build_directory": "/workspace/scratch/336e9413679a/agent106-build-seed",
+  "base_exit_code": 0,
+  "module_exit_code": 0,
+  "module_log": "compile-02.log",
+  "failed_attempts": [
+    {
+      "source": "attempt-01.lean",
+      "log": "compile-01.log",
+      "exit_code": 1,
+      "reason": "Redundant final omega after rewriting had already closed denseOutput_decimalLength."
+    }
+  ],
+  "endpoints": [
+    "Agent106.CongruenceBudget.denseOutput_digitSum",
+    "Agent106.CongruenceBudget.denseOutput_decimalLength",
+    "Agent106.CongruenceBudget.denseOutput_canonical"
+  ],
+  "endpoint_axiom_union": [
+    "propext",
+    "Quot.sound"
+  ],
+  "limitation": "Scoped compile and three endpoint axiom reports; not an independent semantic review or repository-wide theorem audit."
+}
