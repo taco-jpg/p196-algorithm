@@ -1,0 +1,108 @@
+diff --git a/proofs/contributions/agent-413/band-bound-synthesis/CycleBounds.lean b/proofs/contributions/agent-413/band-bound-synthesis/CycleBounds.lean
+new file mode 100644
+index 0000000..06a4ea9
+--- /dev/null
++++ b/proofs/contributions/agent-413/band-bound-synthesis/CycleBounds.lean
+@@ -0,0 +1,102 @@
++import CertificateAccounting
++
++/-!
++Agent #413: constructive discharge of the cyclic band-bound witnesses.
++The difference inequalities are those of Agent109.Cert.LocalOK, expressed in
++Int. Development status is recorded separately from source text.
++-/
++namespace Agent413.CycleBounds
++open Agent110.Accounting
++
++/-- Minimum of the prefix sums at indices 0,...,P, including the empty sum. -/
++def prefixFloor (d : Nat → Int) : Nat → Int
++  | 0 => 0
++  | P + 1 => min (prefixFloor d P) (sumPrefix d (P + 1))
++
++theorem prefixFloor_le_prefix (d : Nat → Int) (P i : Nat) (hi : i ≤ P) :
++    prefixFloor d P ≤ sumPrefix d i := by
++  induction P with
++  | zero =>
++    have : i = 0 := by omega
++    subst i
++    exact Int.le_refl _
++  | succ P ih =>
++    by_cases h : i ≤ P
++    · exact Int.le_trans (Int.min_le_left _ _) (ih h)
++    · have : i = P + 1 := by omega
++      subst i
++      exact Int.min_le_right _ _
++
++/-- The existing prefix-shift construction, translated to natural bounds. -/
++def prefixBound (d : Nat → Int) (P i : Nat) : Nat :=
++  (2 - prefixFloor d P + sumPrefix d i).toNat
++
++theorem prefixBound_cast (d : Nat → Int) (P i : Nat) (hi : i ≤ P) :
++    (prefixBound d P i : Int) = 2 - prefixFloor d P + sumPrefix d i := by
++  have h := prefixFloor_le_prefix d P i hi
++  simp only [prefixBound, Int.toNat_of_nonneg (by omega :
++    0 ≤ 2 - prefixFloor d P + sumPrefix d i)]
++
++theorem prefixBound_ge_two (d : Nat → Int) (P i : Nat) (hi : i ≤ P) :
++    2 ≤ prefixBound d P i := by
++  have h := prefixFloor_le_prefix d P i hi
++  have hc := prefixBound_cast d P i hi
++  omega
++
++/-- The last-to-first inequality is exactly where nonnegative total gain is
++used; all other inequalities are equalities of consecutive prefix sums. -/
++theorem prefixBound_feasible (d : Nat → Int) (P : Nat) (hP : 0 < P)
++    (hs : 0 ≤ sumPrefix d P) (i : Nat) (hi : i < P) :
++    (prefixBound d P ((i + 1) % P) : Int) ≤ (prefixBound d P i : Int) + d i := by
++  have hnext : (i + 1) % P < P := Nat.mod_lt _ hP
++  rw [prefixBound_cast d P _ (by omega), prefixBound_cast d P i (by omega)]
++  by_cases h : i + 1 < P
++  · rw [Nat.mod_eq_of_lt h]
++    simp only [sumPrefix]
++    omega
++  · have e : i + 1 = P := by omega
++    rw [e, Nat.mod_self]
++    have hs' : 0 ≤ sumPrefix d i + d i := by simpa [← e, sumPrefix] using hs
++    simp only [sumPrefix]
++    omega
++
++/-- Exact feasibility contract, with natural lower bounds and no upper bound
++on individual increments. This theorem includes both directions. -/
++theorem feasible_iff_total_nonnegative (d : Nat → Int) (P : Nat) (hP : 0 < P) :
++    (∃ b : Nat → Nat, (∀ i, i < P → 2 ≤ b i) ∧
++      ∀ i, i < P → (b ((i + 1) % P) : Int) ≤ (b i : Int) + d i) ↔
++    0 ≤ sumPrefix d P := by
++  constructor
++  · rintro ⟨b, _, hb⟩
++    have h := sumPrefix_le P (f := fun i => ((b ((i + 1) % P) : Int) - (b i : Int)))
++      (g := d) (fun i hi => by dsimp; have := hb i hi; omega)
++    rw [sumPrefix_cyclic_difference (fun i => (b i : Int)) P] at h
++    exact h
++  · intro hs
++    exact ⟨prefixBound d P, fun i hi => prefixBound_ge_two d P i (by omega),
++      fun i hi => prefixBound_feasible d P hP hs i hi⟩
++
++/-- A two-edge control: the historical prefix-shift bounds are feasible but
++need not be pointwise minimal when the total gain is positive. -/
++def exampleIncrement (i : Nat) : Int := if i = 0 then 2 else -1
++
++def smallerBound (i : Nat) : Nat := if i = 0 then 2 else 3
++
++theorem prefix_shift_not_pointwise_minimal :
++    prefixBound exampleIncrement 2 0 = 2 ∧
++    prefixBound exampleIncrement 2 1 = 4 ∧
++    (∀ i, i < 2 → 2 ≤ smallerBound i ∧
++      (smallerBound ((i + 1) % 2) : Int) ≤ (smallerBound i : Int) + exampleIncrement i) ∧
++    smallerBound 1 < prefixBound exampleIncrement 2 1 := by
++  refine ⟨by decide, by decide, ?_, by decide⟩
++  intro i hi
++  have : i = 0 ∨ i = 1 := by omega
++  rcases this with rfl | rfl <;> decide
++
++#print axioms prefixFloor_le_prefix
++#print axioms prefixBound_cast
++#print axioms prefixBound_ge_two
++#print axioms prefixBound_feasible
++#print axioms feasible_iff_total_nonnegative
++#print axioms prefix_shift_not_pointwise_minimal
++end Agent413.CycleBounds
