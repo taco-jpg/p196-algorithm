@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "This is the explicit three-module closure for the selected reciprocal-moment source claim, not a complete repository census."
+  ],
+  "projects": {
+    "agent51-reciprocal-moment": {
+      "scope": "Exact reciprocal first moment and derivative redundancy modulo9, all fixed natural widths and arbitrary signed symmetric coefficients, with literal formal coefficient differentiation and unchanged natural polynomialValue bridge.",
+      "modules": {
+        "OverflowDigits": {
+          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/OverflowDigits.lean",
+          "sha256": "65adeb3ae7bea93e390a95fc5f8b58ec43f0f64f01ed9db3f51392657ba89a41",
+          "git_blob": "6ad7ea581c1ed9e6f8c4907dcb5ad73558423b97",
+          "imports": [
+            "Std"
+          ]
+        },
+        "ResidueSums": {
+          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/ResidueSums.lean",
+          "sha256": "1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4",
+          "git_blob": "f1e3c1c5e7cd780b28f6752d980158bd9b9c98b6",
+          "imports": [
+            "OverflowDigits"
+          ]
+        },
+        "ReciprocalMoment": {
+          "path": "proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/ReciprocalMoment.lean",
+          "sha256": "76bad5a81d0fd7ddbd8c3a9a6a1fee433573b1276f4ba84b9b90b11967afc11a",
+          "git_blob": "484cb6f022b2c2397b98e262caa9bcd46076eb08",
+          "imports": [
+            "ResidueSums"
+          ]
+        }
+      },
+      "roots": [
+        "ReciprocalMoment"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "id": "A51-SPEC-RECIPROCAL-MOMENT",
+      "project": "agent51-reciprocal-moment",
+      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/astra_spectral_carry_quotient.md",
+      "source_blob": "eac5b8f61385a615d9cc3e7796a4d698c66b716b",
+      "source_location": "Lines103–118, reciprocal polynomial identity and derivative-coordinate redundancy",
+      "endpoints": [
+        "P196.Agent51.inputDigit",
+        "P196.Agent51.pairWord",
+        "P196.Agent51.inputDigit_bounded",
+        "P196.Agent51.inputDigit_zero",
+        "P196.Agent51.inputDigit_last",
+        "P196.Agent51.inputDigit_pair",
+        "P196.Agent51.pairWord_values",
+        "P196.Agent51.pairWord_zero",
+        "P196.Agent51.finiteSum",
+        "P196.Agent51.finiteSum_eq_range",
+        "P196.Agent51.polynomialValue",
+        "P196.Agent51.polynomialValue_eq_finiteSum",
+        "P196.Agent51.finiteSum_congr",
+        "P196.Agent51.finiteSum_add_length",
+        "P196.Agent51.finiteSum_const",
+        "P196.Agent51.finiteSum_mul_left",
+        "P196.Agent51.pairWord_polynomial_blocks",
+        "P196.Agent51.int_one_pow",
+        "P196.Agent51.pairWord_value_one",
+        "P196.Agent51.int_pow_add",
+        "P196.Agent51.neg_one_pow",
+        "P196.Agent51.alternating_prefix",
+        "P196.Agent51.power_prefix_shift",
+        "P196.Agent51.pairWord_value_neg_one",
+        "P196.Agent51.pairWord_neg_one_dvd",
+        "P196.Agent51.pairWord_neg_one_even",
+        "P196.Agent51.sourceS",
+        "P196.Agent51.sourceR",
+        "P196.Agent51.pairWord_half_value_one",
+        "P196.Agent51.pairWord_sourceS",
+        "P196.Agent51.pairWord_sourceS_nat",
+        "P196.Agent51.pairWord_sourceR",
+        "P196.Agent51.residue_parameter",
+        "P196.Agent51.polynomialValue_congr",
+        "P196.Agent51.sourceS_congr",
+        "P196.Agent51.sourceR_congr",
+        "P196.Agent51.finiteSum_add_values",
+        "P196.Agent51.finiteSum_shift",
+        "P196.Agent51.finiteSum_reflected",
+        "P196.Agent51.reciprocal_first_moment",
+        "P196.Agent51.reciprocal_first_moment_literal",
+        "P196.Agent51.formalDerivativeValue",
+        "P196.Agent51.derivativeAtOne",
+        "P196.Agent51.derivativeAtOne_eq_finiteSum",
+        "P196.Agent51.formalDerivativeValue_one",
+        "P196.Agent51.reciprocal_derivative_at_one",
+        "P196.Agent51.reciprocal_derivative_mod_nine",
+        "P196.Agent51.reciprocal_derivative_mod_nine_determined",
+        "P196.Agent51.natural_mass_eq_polynomialValue",
+        "P196.Agent51.natural_reciprocal_derivative"
+      ],
+      "final_endpoints": [
+        "P196.Agent51.reciprocal_first_moment",
+        "P196.Agent51.reciprocal_first_moment_literal",
+        "P196.Agent51.reciprocal_derivative_at_one",
+        "P196.Agent51.reciprocal_derivative_mod_nine",
+        "P196.Agent51.reciprocal_derivative_mod_nine_determined",
+        "P196.Agent51.natural_reciprocal_derivative"
+      ]
+    }
+  ]
+}
