@@ -1,0 +1,52 @@
+name: Agent100 third-gate WIP Lean check
+on:
+  push:
+    branches: ['research/agent-100/third-gate-descent-212248Z']
+    paths:
+      - 'proofs/contributions/agent-100/third-gate-descent-212248Z/**'
+      - '.github/workflows/agent100-third-gate-212248.yml'
+permissions:
+  contents: read
+jobs:
+  source-and-lean:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify pinned source and finite controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=proofs/contributions/agent-100/third-gate-descent-212248Z
+          mkdir -p "$RUNNER_TEMP/agent100-source"
+          gzip -dc "$base/development/Agent100ThirdGateDescent.lean.gz" > "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean"
+          gzip -dc "$base/controls/verify.py.gz" > "$RUNNER_TEMP/agent100-source/verify.py"
+          printf '%s  %s\n' '2c7a584f10fd12723dd4c108cdbff8cc08cc111419395e820589608f0d58a993' "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean" | sha256sum -c -
+          printf '%s  %s\n' '228b7cb287457894ad04c36450fc46f5fdf8721cf75febbd4898b665d568f245' "$RUNNER_TEMP/agent100-source/verify.py" | sha256sum -c -
+          printf '%s  %s\n' '2907112c58d5be871b7c267413f3e48f3b4e48d7762ead7b835b0aef1ad9d09f' "$base/controls/finite-control-300.json" | sha256sum -c -
+          cp "$base/controls/finite-control-300.json" "$RUNNER_TEMP/agent100-source/"
+          (cd "$RUNNER_TEMP/agent100-source" && python3 verify.py)
+          cmp "$base/controls/finite-control-300.json" "$RUNNER_TEMP/agent100-source/finite-control-300.json"
+      - name: Acquire official pinned Lean 4.19.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 2             https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst             --output "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst"
+          printf '%s  %s\n' '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe' "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst" | sha256sum -c -
+          tar --zstd -xf "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" --version
+      - name: Clean build exact dependencies and attempt new kernel proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean="$RUNNER_TEMP/lean-4.19.0-linux/bin/lean"
+          python3 proofs/contributions/agent-100/groupII-overlap-20261016/verification/dependencies/replay.py             --lean "$lean" --output "$RUNNER_TEMP/agent100-closure"
+          root="$RUNNER_TEMP/agent100-closure/dev/source"
+          cp proofs/Agent100GroupIIDynamics.lean "$root/Agent100GroupIIDynamics.lean"
+          cp "$RUNNER_TEMP/agent100-source/Agent100ThirdGateDescent.lean" "$root/"
+          cd "$root"
+          export LEAN_PATH="$root"
+          "$lean" --trust=0 -j1 -DElab.async=false -o Agent100GroupIIDynamics.olean Agent100GroupIIDynamics.lean
+          "$lean" --trust=0 -j1 -DElab.async=false -o Agent100ThirdGateDescent.olean Agent100ThirdGateDescent.lean
