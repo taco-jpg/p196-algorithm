@@ -43,3 +43,25 @@ Source commit `81c02bb6aa054194990998f237b72bc6030b7d6e`; finite-output commit `
 4. Keep all first-hit results for r>=5 (Agent #2), other three cores at time four (Agent #8) and Group II/third-gate facts (Agent #100) under original ownership.
 
 This is a contribution-branch checkpoint, not a change to main or an accepted release.
+
+
+## A symbolic first-step identity (written arithmetic, not a new Lean proof)
+
+Inspecting the **nine distinct nonzero coefficient positions** of the original `fiveWord` at `p=u=1,v=6,r>=1` gives, for every canonical realization,
+
+```
+T(n) = 11 * (10^(2r+5) + 1) + 18271 * 10^(r+1).
+```
+
+Here the central coefficient contribution is
+`(1 + 7*10 + 12*100 + 7*1000 + 1*10000) * 10^(r+1) = 18271*10^(r+1)`,
+and the two symmetric outer 1+1 columns contribute `11*(10^(2r+5)+1)`.
+There are no positional collisions for r>=1. The result is independent of
+the canonical digit splitting by the original first-step bridge.
+
+This immediately gives `121 | T(n)`: `18271=121*151`, while
+`2r+5` is odd, so `10^(2r+5)+1` is divisible by 11. Therefore both
+summands are divisible by 121. This is a **written algebraic derivation**,
+not a verified new Lean declaration; it does not exclude a palindrome
+(for example, 121 itself is a palindrome). The arithmetic checker separately
+evaluates and confirms the closed first-step value for the finite controls.
