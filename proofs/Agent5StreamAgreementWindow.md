@@ -4,5 +4,5 @@ The mathematical statement, sharpness families, current verification scope, and 
 
 The executable registry is `Agent5StreamAgreementWindow.registry.json`; the status report is `Agent5StreamAgreementWindow.verification.json`.
 
-The complete package remains WIP until both new modules, independent review, and the exact published-source full replay have finished. The general seven-export window module is already author-checked.
+Both new modules are author-checked: 24 theorem exports and two canonical-family definitions. The seventeen-module registry is complete. Independent full-origin review and the exact published-source fresh replay remain in progress; the PR is still Draft.
 

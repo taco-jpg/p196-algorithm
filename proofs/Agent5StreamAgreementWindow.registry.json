@@ -2,7 +2,7 @@
   "schema_version": 1,
   "catalogue_complete": false,
   "catalogue_blockers": [
-    "Scoped finite ordinary stream agreement. Full-package independent review, all-gap sharpness, and exact published-source replay remain WIP. No repository-wide completeness claim."
+    "Scoped finite ordinary stream agreement and uniform sharpness; no repository-wide completeness claim."
   ],
   "toolchain": {
     "version": "4.19.0",
@@ -15,9 +15,10 @@
   },
   "projects": {
     "agent5-stream-agreement-window": {
-      "scope": "Finite one-step literal-stream agreement for q <= gap + exact outgoing carry, under the original surrounded shape. This first checkpoint registers the seven-export general window module; sharpness and full verification remain WIP.",
+      "scope": "Exact finite one-step literal-stream agreement through q <= gap + outgoing carry, with canonical all-gap witnesses proving uniform sharpness in both carry branches. Original surrounded shape, eight phases, coefficient bounds18 and canonical numeral hypotheses remain explicit.",
       "roots": [
-        "StreamAgreementWindow"
+        "StreamAgreementWindow",
+        "StreamWindowSharpness"
       ],
       "modules": {
         "OuterFinite": {
@@ -150,6 +151,14 @@
           "imports": [
             "OrdinaryStreamStep"
           ]
+        },
+        "StreamWindowSharpness": {
+          "path": "proofs/contributions/agent-5/stream-agreement-window-20261016/StreamWindowSharpness.lean",
+          "sha256": "b0b0cfbc7e716071e2011f3ab0e80848223bd833f20770db1803b5c2e6a6d006",
+          "git_blob": "2bdab169701d258a1961a2d505e4f7c3dcd8a53c",
+          "imports": [
+            "OrdinaryStreamStep"
+          ]
         }
       }
     }
@@ -166,6 +175,31 @@
         "Agent5.OrdinaryStreamWindow.ordinary_raw_prefix_from_streams_window",
         "Agent5.OrdinaryStreamWindow.ordinary_raw_prefix_from_streams_window_quotient",
         "Agent5.OrdinaryStreamWindow.ordinary_reverse_add_from_streams_window"
+      ]
+    },
+    {
+      "id": "A5-STREAM-WINDOW-SHARPNESS",
+      "project": "agent5-stream-agreement-window",
+      "endpoints": [
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0_decimal",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1_decimal",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0_positive_last",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1_positive_last",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0_paired",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1_paired",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0_reverseAddDigits",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1_reverseAddDigits",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0_first_excluded_prefix",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1_first_excluded_prefix",
+        "Agent5.OrdinaryStreamWindow.Sharpness.empty_exterior_carry_controls",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0_coordinate_streams",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1_coordinate_streams",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D0_stream_mismatch",
+        "Agent5.OrdinaryStreamWindow.Sharpness.D1_stream_mismatch",
+        "Agent5.OrdinaryStreamWindow.Sharpness.gap_zero_actual_prefixes",
+        "Agent5.OrdinaryStreamWindow.Sharpness.gap_zero_stream_prefixes"
       ]
     }
   ]

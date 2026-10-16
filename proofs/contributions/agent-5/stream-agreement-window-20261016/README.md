@@ -2,7 +2,7 @@
 
 ## Result and current status
 
-The seven-export general window source is author-checked with Lean 4.19.0 `--trust=0 -j1 -DElab.async=false`. The two canonical all-gap sharpness proofs and independent execution are in progress. This checkpoint is WIP for the complete package; no full published-source replay is yet claimed.
+Both new source modules are author-checked with Lean 4.19.0 `--trust=0 -j1 -DElab.async=false`, with explicit standard-axiom audits. The seven general-window theorems and seventeen sharpness theorems are complete; the registry also checks the two canonical-family definitions. The general module has separately passed independent strict compilation. The combined independent audit and parent full published-source replay remain in progress; this PR remains Draft until those gates finish.
 
 Let `D, B, W : List Nat`, let `c` be one of `[2,4,6,8,10,12,14,16]`, and assume every coefficient of `B` and `W` is at most 18. Use the original exact shape
 
@@ -34,7 +34,7 @@ The original `surrounded_normalization` formula exposes `gap + 1` stable digits 
 
 The outgoing carry is the exact coordinate threshold. It can differ from the initial phase carry `[10 <= c]`.
 
-## Uniform sharpness targets
+## Proved uniform sharpness families
 
 For every natural gap `g`, define the following little-endian digit words. Write `R(m,d)` for `List.replicate m d`.
 
@@ -47,9 +47,21 @@ The gap-zero ordinary inputs are 11911 and 55055. These families establish unifo
 
 ## Source, provenance, and scope
 
-`StreamAgreementWindow.lean` imports the unchanged `OrdinaryStreamStep` package. The sharpness source is authored independently from the same prerequisite. All original authorship, normalizer definitions, carry semantics, and coordinate definitions are retained.
+`StreamAgreementWindow.lean` imports the unchanged `OrdinaryStreamStep` package. `StreamWindowSharpness.lean` imports that same unchanged prerequisite and proves all-gap canonicality, exact shape, exact ordinary output, the two displayed prefix formulas, literal-stream formulas, and mismatch. Its author is a different specialist from the general-window author. All original authorship, normalizer definitions, carry semantics, and coordinate definitions are retained.
 
 The accepted task claim is `034572d95e15a884e30a2ed8e94816bceadb55be`, task blob `a99d084a5c2ea1957b9e2b775abfecccf20cee39`. The complete prerequisite is [PR #121](https://github.com/taco-jpg/p196-algorithm/pull/121), frozen mathematical source `5b4238ebe95f5fb80512d1b1ad3dbe3b062279a3` and evidence descendant `5c4d394f20b70547aa7cb8dd14091bcd391e424c`. Public coordination is [issue #61](https://github.com/taco-jpg/p196-algorithm/issues/61).
 
 This is a finite one-step theorem under an explicit input shape. It establishes neither later shape persistence nor an all-time ordinary orbit result or a conclusion about 196. Agent #5 holds no main integration slot.
 
+
+## Reproduce
+
+```sh
+python3 proofs/verify_project__214bf7673efe116b.py \
+  --registry proofs/Agent5StreamAgreementWindow.registry.json \
+  --project agent5-stream-agreement-window \
+  --lean /absolute/path/to/lean-4.19.0-linux/bin/lean \
+  --output /absolute/new/agent5-stream-window-check
+```
+
+The seventeen-module registry pins every source. The first seven-export checkpoint and its historical `CHECKPOINT.json` belong to commit `b03d20e36cc624b159ddcc1255da3b6c588e3a73`. Later reports keep author, independent, and parent execution scopes separate.
