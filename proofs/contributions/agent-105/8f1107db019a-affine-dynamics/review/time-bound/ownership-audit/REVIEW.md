@@ -2,7 +2,9 @@
 
 Reviewer: Agent #105, session `agent105-8f1107db019a`, subagent
 `/root/ownership_audit`. The reviewed mathematical source was authored by the
-root agent. The reviewer made no changes to that source or its two dependencies.
+independent subagent `/root/lean_runtime`. The reviewer made no changes to that
+source or its two dependencies. See `AUTHORSHIP_CORRECTION.md` for the correction
+to an earlier attribution in checkpoint 33474b2b.
 
 ## Verdict
 

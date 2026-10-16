@@ -1,0 +1,242 @@
+{
+  "dependencies": [
+    {
+      "module": "Agent102RunDefs",
+      "source_path": "proofs/Agent102RunDefs.lean",
+      "source_sha256": "1544d22e098c659f804e27faab228f4ebb13c8f9d8fc290c6d90f413286cefcf",
+      "imports": [
+        "Std"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent102RunDefs.olean",
+      "olean_sha256": "061783d0c7aed3758b7f19f8e5ccfc0893fdf6e87c7eea4b72d9765ec1d5101e",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "PeriodObstructions",
+      "source_path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+      "source_sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+      "imports": [
+        "Std"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/PeriodObstructions.olean",
+      "olean_sha256": "04310d93f3f753f89f117cf962362ac099422ca9edb1630f5b90a476da866e5e",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "ActualWordBridge",
+      "source_path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+      "source_sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+      "imports": [
+        "PeriodObstructions"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/ActualWordBridge.olean",
+      "olean_sha256": "be273ffe00a1798d6d2b29b6c995b9a6d6846a66edc18b7c84196a7b3a431f26",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105AffineBasics",
+      "source_path": "proofs/Agent105AffineBasics.lean",
+      "source_sha256": "cc4e630313694e8b75b2a37f695b09f428e2f911ed49dd99df8fc22c9af15cc5",
+      "imports": [
+        "Agent102RunDefs",
+        "ActualWordBridge"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105AffineBasics.olean",
+      "olean_sha256": "5455969363a3c270a215369554b5d52971c8e92bb27442cc45e3b94faf4e0538",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "PrefixSemantics",
+      "source_path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+      "source_sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+      "imports": [
+        "ActualWordBridge"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/PrefixSemantics.olean",
+      "olean_sha256": "88cf11b444946389c457311c9dbfae46b00f26308600f3fbc5f2120d8ee35171",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "LychrelDigitSums",
+      "source_path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+      "source_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "imports": [
+        "Std"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/LychrelDigitSums.olean",
+      "olean_sha256": "04f6415a1debf574cfe9f2414015773a193da28d4b53745626f54b9f10c8e48e",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "IncomingCarry",
+      "source_path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+      "source_sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/IncomingCarry.olean",
+      "olean_sha256": "80a799e1449b29915250131610a35e4709f645ed8aedad50ba85a03a662a75d8",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent1RepeatedBlock",
+      "source_path": "proofs/contributions/agent-105/8f1107db019a-affine-dynamics/author/normalize/refs/Agent1RepeatedBlock.lean",
+      "source_sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+      "imports": [
+        "PrefixSemantics",
+        "IncomingCarry"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent1RepeatedBlock.olean",
+      "olean_sha256": "23f05f20e227442d0002ec9afeaa5ae7a1ea90986be0ad1e708c55b7f90f9f3d",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent102AffineArithmetic",
+      "source_path": "proofs/Agent102AffineArithmetic.lean",
+      "source_sha256": "a36d4a0e572ab083cb8408ee71a5d2281bc838df508ce184e6a313a23b9a3df2",
+      "imports": [
+        "Agent102RunDefs"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent102AffineArithmetic.olean",
+      "olean_sha256": "29f049e74905c290a1d84788019fe18dd1cb83280e57cf7fc9e177a9143f885e",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105AffineNormalize",
+      "source_path": "proofs/Agent105AffineNormalize.lean",
+      "source_sha256": "c2605568740b442bbe2494181a8a44f963d177ef1465d75a7b056badf9c1e33c",
+      "imports": [
+        "Agent1RepeatedBlock",
+        "Agent102RunDefs",
+        "Agent102AffineArithmetic",
+        "Agent105AffineBasics"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105AffineNormalize.olean",
+      "olean_sha256": "19c9e8a76b40d61be10d7cd6c2675c1dca9b2e2cdfff120c33af6b529f465eec",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105AffineZip",
+      "source_path": "proofs/Agent105AffineZip.lean",
+      "source_sha256": "a84de11022956ed05f7937a8e5858925c30d5f60459dc1a98b7b18df0ab12b20",
+      "imports": [
+        "Agent105AffineBasics",
+        "Agent102AffineArithmetic"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105AffineZip.olean",
+      "olean_sha256": "98c7b7c9919055ab3a8afa365196a2911aa890aee463974595866a46196a2ef8",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105AffineOrbit",
+      "source_path": "proofs/Agent105AffineOrbit.lean",
+      "source_sha256": "9a868ac42de6a6b63659d50b170299a775b68f71b39ed5a75717984035255960",
+      "imports": [
+        "Agent105AffineBasics",
+        "Agent105AffineNormalize",
+        "Agent105AffineZip"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105AffineOrbit.olean",
+      "olean_sha256": "d5b9789e90d0d7fc5d4782410fd710fc44dc48beab880a075b5df37ae39a257d",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent102RunEndpoints",
+      "source_path": "proofs/Agent102RunEndpoints.lean",
+      "source_sha256": "297199a5a4c51f2981b27df76413669474e7598238ab9087a50788d5b548e129",
+      "imports": [
+        "Agent102AffineArithmetic"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent102RunEndpoints.olean",
+      "olean_sha256": "cfb10efe31cfd86f66a57f53d3cb52fc1a9f32f3151c4fd9a06f3a937ae227e2",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105AffineShape",
+      "source_path": "proofs/Agent105AffineShape.lean",
+      "source_sha256": "979c493bdb2ff26d8f88e50a440c906948a5dbf66f7ae53c800793447cd13a16",
+      "imports": [
+        "Agent105AffineNormalize",
+        "Agent102RunEndpoints"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105AffineShape.olean",
+      "olean_sha256": "bdf0292c3b847c415b3fc960e1f9102faf5144bfc18e4176141759a09478e057",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent102RunWord",
+      "source_path": "proofs/Agent102RunWord.lean",
+      "source_sha256": "ffaeac956ec8e22ef6f40c9fff6cd07382339b1306de993a273f2f282a1d8edd",
+      "imports": [
+        "Agent102RunDefs"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent102RunWord.olean",
+      "olean_sha256": "57059f7b3538f21c53f2a121a643f1bf96b76a137384fe745b89066df1f85100",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent102AffineRuns",
+      "source_path": "proofs/Agent102AffineRuns.lean",
+      "source_sha256": "1b5ca50cdf2076332481193732f11814428affaace674b03f4f0ef04d7f88ef4",
+      "imports": [
+        "Agent102RunEndpoints",
+        "Agent102RunWord"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent102AffineRuns.olean",
+      "olean_sha256": "9caec6989704be432be23ad7d56b61fb364b0471fb84e071d97e5a1bfb470818",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105TailSelection",
+      "source_path": "proofs/Agent105TailSelection.lean",
+      "source_sha256": "6357e5bc0cb38368949f376a7e6b907dfac87ec3c93ab7b8d2114e3f75e007a6",
+      "imports": [
+        "Std"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105TailSelection.olean",
+      "olean_sha256": "b74242ad3d588bdf544285d7035ffc0a1c984845e766e7f6aadcc14976cbe8f4",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105AffineStability",
+      "source_path": "proofs/Agent105AffineStability.lean",
+      "source_sha256": "e332ae2c6b281cab3cc03b0376eccfb68a665d6ff6a72e3a08ecd5eb5eba012e",
+      "imports": [
+        "Agent102AffineRuns",
+        "Agent105AffineBasics",
+        "Agent105TailSelection"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105AffineStability.olean",
+      "olean_sha256": "9aab88c09b883d371f7bf218eede37c26ebda7c9efaa8b6c5ffb45c3371a2cda",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105ReturnTimeBound",
+      "source_path": "proofs/Agent105ReturnTimeBound.lean",
+      "source_sha256": "93384ce0e3a2443ca37fbb2c510ce927f0f2334509b6430d7b91ff252d0d57f7",
+      "imports": [
+        "ActualWordBridge"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105ReturnTimeBound.olean",
+      "olean_sha256": "2e7f1121d07906f9f21c25b69d48de1e0d3ecf4f9b57ebf39914df864f09d20f",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    },
+    {
+      "module": "Agent105UniformReturn",
+      "source_path": "proofs/Agent105UniformReturn.lean",
+      "source_sha256": "fba98eb095ca439835e82a90315254090ed03935c3d17d9e6ae8ebe5bb7b7fa7",
+      "imports": [
+        "Agent105AffineOrbit",
+        "Agent105AffineShape",
+        "Agent105AffineStability",
+        "Agent105ReturnTimeBound"
+      ],
+      "olean_origin": "/tmp/agent105-uniform-plain-8f1107db019a/Agent105UniformReturn.olean",
+      "olean_sha256": "7ba1df64e01f9ba91ff6162753595fecf812581dcd5fc3111877bf77e7db977b",
+      "mode": "只复用精确源依赖，不计为本轮fresh依赖重建"
+    }
+  ],
+  "count": 20,
+  "target_olean_reused": false,
+  "snapshot_utc": "2026-10-16T21:52:34.189421+00:00"
+}

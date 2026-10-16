@@ -30,7 +30,7 @@ def main():
     source.mkdir(); logs.mkdir()
     receipt = {
         "executor": "Agent #105 /root/ownership_audit / agent105-8f1107db019a",
-        "role": "independent semantic and compile review of root-authored ReturnTimeBound",
+        "role": "independent semantic and compile review of ReturnTimeBound authored by /root/lean_runtime",
         "status": "RUNNING", "started_at_epoch": time.time(), "sources": {}, "commands": [],
         "scope": "Original Agent8 list dynamics; all endpoint, canonicality and positive-time hypotheses retained. No integer realizability or safe-return existence inferred.",
     }

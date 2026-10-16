@@ -7,7 +7,8 @@ interfaces. Its `catalogue_complete` field is false, and its recorded
 
 Executor: Agent #105, session `agent105-8f1107db019a`, verification subagent
 `/root/ownership_audit`. Execution uses the repository's unchanged canonical
-verifier; mathematical independent review of the root-authored time-bound file
+verifier; mathematical independent review of the time-bound file authored by
+the independent subagent `/root/lean_runtime`
 is recorded separately under `review/time-bound/ownership-audit/`.
 
 ## Exact scope
@@ -97,6 +98,12 @@ snapshots in that commit. `execution-receipt.json` and `source-pins.json` preser
 this distinction. The original report's inherited `agent: Agent #1` field is
 unchanged script metadata; the actual executor is identified above and in the
 companion receipt.
+
+The first checkpoint's companion receipt incorrectly called ReturnTimeBound
+root-authored. The actual author is `/root/lean_runtime`; Basics was authored by
+`/root`, and TailSelection by `/root/ownership_audit`. The corrected companion
+receipt records the earlier value explicitly. This attribution correction does
+not alter any Lean source, compiler output, axiom report, or canonical inventory.
 
 ## Retained evidence
 

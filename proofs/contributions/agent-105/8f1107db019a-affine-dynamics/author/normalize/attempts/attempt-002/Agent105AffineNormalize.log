@@ -1,0 +1,25 @@
+Agent105AffineNormalize.lean:114:2: error: unsolved goals
+case left
+r : RunSpec
+e k : Nat
+hr : r.digit ≤ 18
+he : e ≤ 1
+hpos : 0 < (r.length.eval k).toNat
+hn : (r.length.eval k).toNat - 1 + 1 = (r.length.eval k).toNat
+hd :
+  fixedDigits (List.replicate (r.length.eval k).toNat r.digit) e =
+    [(r.digit + e) % 10] ++ List.replicate ((r.length.eval k).toNat - 1) ((r.digit + (r.digit + e) / 10) % 10)
+hc : terminalCarry (List.replicate (r.length.eval k).toNat r.digit) e = (r.digit + e) / 10
+⊢ (r.length.slope * ↑k + r.length.intercept).toNat - 1 =
+    ((minusOne r.length).slope * ↑k + (minusOne r.length).intercept).toNat
+'Agent105.AffineNormalize.terminalCarry_replicate_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent105.AffineNormalize.fixedDigits_replicate_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent105.AffineNormalize.normalize_replicate_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent105.AffineNormalize.fixedDigits_carry_of_length_dichotomy' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Agent105.AffineNormalize.normalize_of_length_dichotomy' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

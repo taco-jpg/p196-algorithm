@@ -1,0 +1,575 @@
+Agent105.AffineDynamics.SpecBound (rs : List Agent102.RunSpec) (b : Nat) : Prop
+'Agent105.AffineDynamics.SpecBound' does not depend on any axioms
+Agent105.AffineDynamics.HasAffineRuns (w : Nat → List Nat) (b : Nat) : Prop
+'Agent105.AffineDynamics.HasAffineRuns' does not depend on any axioms
+Agent105.AffineDynamics.constRun (digit count : Nat) : Agent102.RunSpec
+'Agent105.AffineDynamics.constRun' does not depend on any axioms
+Agent105.AffineDynamics.minusOne (f : Agent102.Affine) : Agent102.Affine
+'Agent105.AffineDynamics.minusOne' does not depend on any axioms
+Agent105.AffineDynamics.wordAt_nil (k : Nat) : Agent102.wordAt [] k = []
+'Agent105.AffineDynamics.wordAt_nil' does not depend on any axioms
+Agent105.AffineDynamics.wordAt_cons (r : Agent102.RunSpec) (rs : List Agent102.RunSpec) (k : Nat) :
+  Agent102.wordAt (r :: rs) k = List.replicate (r.length.eval k).toNat r.digit ++ Agent102.wordAt rs k
+'Agent105.AffineDynamics.wordAt_cons' depends on axioms: [propext]
+Agent105.AffineDynamics.wordAt_append (rs ss : List Agent102.RunSpec) (k : Nat) :
+  Agent102.wordAt (rs ++ ss) k = Agent102.wordAt rs k ++ Agent102.wordAt ss k
+'Agent105.AffineDynamics.wordAt_append' depends on axioms: [propext]
+Agent105.AffineDynamics.wordAt_singleton (r : Agent102.RunSpec) (k : Nat) :
+  Agent102.wordAt [r] k = List.replicate (r.length.eval k).toNat r.digit
+'Agent105.AffineDynamics.wordAt_singleton' depends on axioms: [propext]
+Agent105.AffineDynamics.wordAt_constRun (digit count k : Nat) :
+  Agent102.wordAt [Agent105.AffineDynamics.constRun digit count] k = List.replicate count digit
+'Agent105.AffineDynamics.wordAt_constRun' depends on axioms: [propext]
+Agent105.AffineDynamics.wordAt_reverse (rs : List Agent102.RunSpec) (k : Nat) :
+  Agent102.wordAt rs.reverse k = (Agent102.wordAt rs k).reverse
+'Agent105.AffineDynamics.wordAt_reverse' depends on axioms: [propext]
+Agent105.AffineDynamics.minusOne_eval (f : Agent102.Affine) (k : Nat) :
+  (Agent105.AffineDynamics.minusOne f).eval k = f.eval k - 1
+'Agent105.AffineDynamics.minusOne_eval' depends on axioms: [propext]
+Agent105.AffineDynamics.minusOne_toNat (f : Agent102.Affine) (k : Nat) :
+  ((Agent105.AffineDynamics.minusOne f).eval k).toNat = (f.eval k).toNat - 1
+'Agent105.AffineDynamics.minusOne_toNat' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.specBound_nil (b : Nat) : Agent105.AffineDynamics.SpecBound [] b
+'Agent105.AffineDynamics.specBound_nil' depends on axioms: [propext]
+Agent105.AffineDynamics.specBound_cons {r : Agent102.RunSpec} {rs : List Agent102.RunSpec} {b : Nat} (hr : r.digit ≤ b)
+  (hs : Agent105.AffineDynamics.SpecBound rs b) : Agent105.AffineDynamics.SpecBound (r :: rs) b
+'Agent105.AffineDynamics.specBound_cons' depends on axioms: [propext]
+Agent105.AffineDynamics.specBound_reverse {rs : List Agent102.RunSpec} {b : Nat}
+  (h : Agent105.AffineDynamics.SpecBound rs b) : Agent105.AffineDynamics.SpecBound rs.reverse b
+'Agent105.AffineDynamics.specBound_reverse' depends on axioms: [propext]
+Agent105.AffineDynamics.wordAt_bounded (rs : List Agent102.RunSpec) (b k : Nat)
+  (h : Agent105.AffineDynamics.SpecBound rs b) : Agent8.Bounded (Agent102.wordAt rs k) b
+'Agent105.AffineDynamics.wordAt_bounded' depends on axioms: [propext]
+Agent105.AffineDynamics.hasAffineRuns_wordAt (rs : List Agent102.RunSpec) (b : Nat)
+  (h : Agent105.AffineDynamics.SpecBound rs b) : Agent105.AffineDynamics.HasAffineRuns (Agent102.wordAt rs) b
+'Agent105.AffineDynamics.hasAffineRuns_wordAt' does not depend on any axioms
+Agent105.AffineNormalize.singleton_pow (x k : Nat) : Agent1.RepeatedBlock.pow [x] k = List.replicate k x
+'Agent105.AffineNormalize.singleton_pow' depends on axioms: [propext]
+Agent105.AffineNormalize.terminalCarry_replicate_succ (x e k : Nat) (hx : x ≤ 18) (he : e ≤ 1) :
+  Agent8.terminalCarry (List.replicate (k + 1) x) e = (x + e) / 10
+'Agent105.AffineNormalize.terminalCarry_replicate_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.fixedDigits_replicate_succ (x e k : Nat) (hx : x ≤ 18) (he : e ≤ 1) :
+  Agent8.fixedDigits (List.replicate (k + 1) x) e = [(x + e) % 10] ++ List.replicate k ((x + (x + e) / 10) % 10)
+'Agent105.AffineNormalize.fixedDigits_replicate_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.normalize_replicate_succ (x e k : Nat) (hx : x ≤ 18) (he : e ≤ 1) :
+  Agent8.normalize (List.replicate (k + 1) x) e =
+    [(x + e) % 10] ++ List.replicate k ((x + (x + e) / 10) % 10) ++ if (x + e) / 10 = 0 then [] else [(x + e) / 10]
+'Agent105.AffineNormalize.normalize_replicate_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.terminalCarry_replicate_nine (m e : Nat) (he : e ≤ 1) :
+  Agent8.terminalCarry (List.replicate m 9) e = e
+'Agent105.AffineNormalize.terminalCarry_replicate_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.fixedDigits_replicate_nine (m e : Nat) (he : e ≤ 1) :
+  Agent8.fixedDigits (List.replicate m 9) e = List.replicate m ((9 + e) % 10)
+'Agent105.AffineNormalize.fixedDigits_replicate_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.normalize_replicate_nine (m e : Nat) (he : e ≤ 1) :
+  Agent8.normalize (List.replicate m 9) e = List.replicate m ((9 + e) % 10) ++ if e = 0 then [] else [e]
+'Agent105.AffineNormalize.normalize_replicate_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.fixedRunSpec (r : Agent102.RunSpec) (e : Nat) : List Agent102.RunSpec
+'Agent105.AffineNormalize.fixedRunSpec' does not depend on any axioms
+Agent105.AffineNormalize.fixedRunSpec_bound (r : Agent102.RunSpec) (e : Nat) :
+  Agent105.AffineDynamics.SpecBound (Agent105.AffineNormalize.fixedRunSpec r e) 9
+'Agent105.AffineNormalize.fixedRunSpec_bound' depends on axioms: [propext, Quot.sound]
+Agent105.AffineNormalize.fixedDigits_carry_positive_run (r : Agent102.RunSpec) (e k : Nat) (hr : r.digit ≤ 18)
+  (he : e ≤ 1) (hpos : 0 < (r.length.eval k).toNat) :
+  Agent8.fixedDigits (List.replicate (r.length.eval k).toNat r.digit) e =
+      Agent102.wordAt (Agent105.AffineNormalize.fixedRunSpec r e) k ∧
+    Agent8.terminalCarry (List.replicate (r.length.eval k).toNat r.digit) e = (r.digit + e) / 10
+'Agent105.AffineNormalize.fixedDigits_carry_positive_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.LengthDichotomy (f : Agent102.Affine) : Prop
+'Agent105.AffineNormalize.LengthDichotomy' does not depend on any axioms
+Agent105.AffineNormalize.lengthDichotomy (f : Agent102.Affine) : Agent105.AffineNormalize.LengthDichotomy f
+'Agent105.AffineNormalize.lengthDichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.fixedDigits_carry_of_length_dichotomy (rs : List Agent102.RunSpec) (e : Nat)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (he : e ≤ 1)
+  (hlen : ∀ (r : Agent102.RunSpec), r ∈ rs → Agent105.AffineNormalize.LengthDichotomy r.length) :
+  ∃ ds c K,
+    Agent105.AffineDynamics.SpecBound ds 9 ∧
+      c ≤ 1 ∧
+        ∀ (k : Nat),
+          K ≤ k →
+            Agent8.fixedDigits (Agent102.wordAt rs k) e = Agent102.wordAt ds k ∧
+              Agent8.terminalCarry (Agent102.wordAt rs k) e = c
+'Agent105.AffineNormalize.fixedDigits_carry_of_length_dichotomy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.AffineNormalize.normalize_of_length_dichotomy (rs : List Agent102.RunSpec) (e : Nat)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (he : e ≤ 1)
+  (hlen : ∀ (r : Agent102.RunSpec), r ∈ rs → Agent105.AffineNormalize.LengthDichotomy r.length) :
+  ∃ ds c K,
+    Agent105.AffineDynamics.SpecBound ds 9 ∧
+      c ≤ 1 ∧
+        ∀ (k : Nat),
+          K ≤ k →
+            Agent8.normalize (Agent102.wordAt rs k) e = Agent102.wordAt ds k ∧
+              Agent8.terminalCarry (Agent102.wordAt rs k) e = c
+'Agent105.AffineNormalize.normalize_of_length_dichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.hasAffineRuns_normalize_of_length_dichotomy
+  (hlen : ∀ (f : Agent102.Affine), Agent105.AffineNormalize.LengthDichotomy f) (w : Nat → List Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w 18) (e : Nat) (he : e ≤ 1) :
+  Agent105.AffineDynamics.HasAffineRuns (fun k => Agent8.normalize (w k) e) 9
+'Agent105.AffineNormalize.hasAffineRuns_normalize_of_length_dichotomy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.AffineNormalize.fixedDigits_wordAt_eventually (rs : List Agent102.RunSpec) (e : Nat)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (he : e ≤ 1) :
+  ∃ ds c K,
+    Agent105.AffineDynamics.SpecBound ds 9 ∧
+      c ≤ 1 ∧
+        ∀ (k : Nat),
+          K ≤ k →
+            Agent8.fixedDigits (Agent102.wordAt rs k) e = Agent102.wordAt ds k ∧
+              Agent8.terminalCarry (Agent102.wordAt rs k) e = c
+'Agent105.AffineNormalize.fixedDigits_wordAt_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.normalize_wordAt_eventually (rs : List Agent102.RunSpec) (e : Nat)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (he : e ≤ 1) :
+  ∃ ds c K,
+    Agent105.AffineDynamics.SpecBound ds 9 ∧
+      c ≤ 1 ∧
+        ∀ (k : Nat),
+          K ≤ k →
+            Agent8.normalize (Agent102.wordAt rs k) e = Agent102.wordAt ds k ∧
+              Agent8.terminalCarry (Agent102.wordAt rs k) e = c
+'Agent105.AffineNormalize.normalize_wordAt_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineNormalize.hasAffineRuns_normalize (w : Nat → List Nat) (hw : Agent105.AffineDynamics.HasAffineRuns w 18)
+  (e : Nat) (he : e ≤ 1) : Agent105.AffineDynamics.HasAffineRuns (fun k => Agent8.normalize (w k) e) 9
+'Agent105.AffineNormalize.hasAffineRuns_normalize' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.shiftAffine (f : Agent102.Affine) (s : Nat) : Agent102.Affine
+'Agent105.AffineDynamics.shiftAffine' does not depend on any axioms
+Agent105.AffineDynamics.shiftRun (r : Agent102.RunSpec) (s : Nat) : Agent102.RunSpec
+'Agent105.AffineDynamics.shiftRun' does not depend on any axioms
+Agent105.AffineDynamics.shiftSpecs (rs : List Agent102.RunSpec) (s : Nat) : List Agent102.RunSpec
+'Agent105.AffineDynamics.shiftSpecs' does not depend on any axioms
+Agent105.AffineDynamics.shiftAffine_eval (f : Agent102.Affine) (s k : Nat) :
+  (Agent105.AffineDynamics.shiftAffine f s).eval k = f.eval (k + s)
+'Agent105.AffineDynamics.shiftAffine_eval' depends on axioms: [propext]
+Agent105.AffineDynamics.shiftRun_digit (r : Agent102.RunSpec) (s : Nat) :
+  (Agent105.AffineDynamics.shiftRun r s).digit = r.digit
+'Agent105.AffineDynamics.shiftRun_digit' does not depend on any axioms
+Agent105.AffineDynamics.runsAt_shift (rs : List Agent102.RunSpec) (s k : Nat) :
+  Agent102.runsAt (Agent105.AffineDynamics.shiftSpecs rs s) k = Agent102.runsAt rs (k + s)
+'Agent105.AffineDynamics.runsAt_shift' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.wordAt_shift (rs : List Agent102.RunSpec) (s k : Nat) :
+  Agent102.wordAt (Agent105.AffineDynamics.shiftSpecs rs s) k = Agent102.wordAt rs (k + s)
+'Agent105.AffineDynamics.wordAt_shift' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.specBound_shift (rs : List Agent102.RunSpec) (b s : Nat)
+  (h : Agent105.AffineDynamics.SpecBound rs b) :
+  Agent105.AffineDynamics.SpecBound (Agent105.AffineDynamics.shiftSpecs rs s) b
+'Agent105.AffineDynamics.specBound_shift' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.shiftSpecs_append (rs ss : List Agent102.RunSpec) (s : Nat) :
+  Agent105.AffineDynamics.shiftSpecs (rs ++ ss) s =
+    Agent105.AffineDynamics.shiftSpecs rs s ++ Agent105.AffineDynamics.shiftSpecs ss s
+'Agent105.AffineDynamics.shiftSpecs_append' depends on axioms: [propext]
+Agent105.AffineDynamics.shiftSpecs_reverse (rs : List Agent102.RunSpec) (s : Nat) :
+  Agent105.AffineDynamics.shiftSpecs rs.reverse s = (Agent105.AffineDynamics.shiftSpecs rs s).reverse
+'Agent105.AffineDynamics.shiftSpecs_reverse' depends on axioms: [propext]
+Agent105.AffineDynamics.hasAffineRuns_reverse (w : Nat → List Nat) (b : Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w b) : Agent105.AffineDynamics.HasAffineRuns (fun k => (w k).reverse) b
+'Agent105.AffineDynamics.hasAffineRuns_reverse' depends on axioms: [propext]
+Agent105.AffineDynamics.hasAffineRuns_shift (w : Nat → List Nat) (b s : Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w b) : Agent105.AffineDynamics.HasAffineRuns (fun k => w (k + s)) b
+'Agent105.AffineDynamics.hasAffineRuns_shift' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.hasAffineRuns_shift_reverse (w : Nat → List Nat) (b s : Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w b) :
+  Agent105.AffineDynamics.HasAffineRuns (fun k => (w (k + s)).reverse) b
+'Agent105.AffineDynamics.hasAffineRuns_shift_reverse' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.hasAffineRuns_zipAdd (w v : Nat → List Nat) (M N : Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w M) (hv : Agent105.AffineDynamics.HasAffineRuns v N) :
+  Agent105.AffineDynamics.HasAffineRuns (fun k => Agent8.zipAdd (w k) (v k)) (M + N)
+'Agent105.AffineDynamics.hasAffineRuns_zipAdd' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.hasAffineRuns_pair (w : Nat → List Nat) (hw : Agent105.AffineDynamics.HasAffineRuns w 9) :
+  Agent105.AffineDynamics.HasAffineRuns (fun k => Agent8.pair (w k)) 18
+'Agent105.AffineDynamics.hasAffineRuns_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.hasAffineRuns_stepWord (w : Nat → List Nat) (hw : Agent105.AffineDynamics.HasAffineRuns w 18) :
+  Agent105.AffineDynamics.HasAffineRuns (fun k => Agent8.stepWord (w k)) 18
+'Agent105.AffineDynamics.hasAffineRuns_stepWord' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.hasAffineRuns_orbit (w : Nat → List Nat) (hw : Agent105.AffineDynamics.HasAffineRuns w 18)
+  (t : Nat) : Agent105.AffineDynamics.HasAffineRuns (fun k => Agent8.orbit (w k) t) 18
+'Agent105.AffineDynamics.hasAffineRuns_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.hasAffineRuns_normalized_orbit (w : Nat → List Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w 18) (t e : Nat) (he : e ≤ 1) :
+  Agent105.AffineDynamics.HasAffineRuns (fun k => Agent8.normalize (Agent8.orbit (w k) t) e) 9
+'Agent105.AffineDynamics.hasAffineRuns_normalized_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.stepWord_wordAt_eventually (rs : List Agent102.RunSpec)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) :
+  ∃ ts,
+    Agent105.AffineDynamics.SpecBound ts 18 ∧
+      ∃ K, ∀ (k : Nat), K ≤ k → Agent8.stepWord (Agent102.wordAt rs k) = Agent102.wordAt ts k
+'Agent105.AffineDynamics.stepWord_wordAt_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.orbit_wordAt_eventually (rs : List Agent102.RunSpec)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (t : Nat) :
+  ∃ ts,
+    Agent105.AffineDynamics.SpecBound ts 18 ∧
+      ∃ K, ∀ (k : Nat), K ≤ k → Agent8.orbit (Agent102.wordAt rs k) t = Agent102.wordAt ts k
+'Agent105.AffineDynamics.orbit_wordAt_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.normalized_orbit_wordAt_eventually (rs : List Agent102.RunSpec)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (t e : Nat) (he : e ≤ 1) :
+  ∃ ts,
+    Agent105.AffineDynamics.SpecBound ts 9 ∧
+      ∃ K, ∀ (k : Nat), K ≤ k → Agent8.normalize (Agent8.orbit (Agent102.wordAt rs k) t) e = Agent102.wordAt ts k
+'Agent105.AffineDynamics.normalized_orbit_wordAt_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.widthSlope (rs : List Agent102.RunSpec) : Nat
+'Agent105.AffineShape.widthSlope' does not depend on any axioms
+Agent105.AffineShape.widthIntercept (rs : List Agent102.RunSpec) : Int
+'Agent105.AffineShape.widthIntercept' does not depend on any axioms
+Agent105.AffineShape.positivePart_slope_nonneg (f : Agent102.Affine) : 0 ≤ f.positivePart.slope
+'Agent105.AffineShape.positivePart_slope_nonneg' depends on axioms: [propext, Quot.sound]
+Agent105.AffineShape.positivePart_slope_toNat (f : Agent102.Affine) : f.positivePart.slope.toNat = f.slope.toNat
+'Agent105.AffineShape.positivePart_slope_toNat' depends on axioms: [propext, Quot.sound]
+Agent105.AffineShape.widthSlope_eq_slope_toNat_sum (rs : List Agent102.RunSpec) :
+  Agent105.AffineShape.widthSlope rs = (List.map (fun r => r.length.slope.toNat) rs).sum
+'Agent105.AffineShape.widthSlope_eq_slope_toNat_sum' depends on axioms: [propext, Quot.sound]
+Agent105.AffineShape.widthSlope_int_eq_slope_sum (rs : List Agent102.RunSpec)
+  (hs : ∀ (r : Agent102.RunSpec), r ∈ rs → 0 ≤ r.length.slope) :
+  ↑(Agent105.AffineShape.widthSlope rs) = (List.map (fun r => r.length.slope) rs).sum
+'Agent105.AffineShape.widthSlope_int_eq_slope_sum' depends on axioms: [propext, Quot.sound]
+Agent105.AffineShape.widthAffine_slope (rs : List Agent102.RunSpec) :
+  (Agent102.widthAffine rs).slope = ↑(Agent105.AffineShape.widthSlope rs)
+'Agent105.AffineShape.widthAffine_slope' depends on axioms: [propext, Quot.sound]
+Agent105.AffineShape.widthAffine_slope_nonneg (rs : List Agent102.RunSpec) : 0 ≤ (Agent102.widthAffine rs).slope
+'Agent105.AffineShape.widthAffine_slope_nonneg' depends on axioms: [propext, Quot.sound]
+Agent105.AffineShape.widthIntercept_eq_sum (rs : List Agent102.RunSpec) :
+  Agent105.AffineShape.widthIntercept rs = (List.map (fun r => r.length.positivePart.intercept) rs).sum
+'Agent105.AffineShape.widthIntercept_eq_sum' does not depend on any axioms
+Agent105.AffineShape.wordAt_length_affine (rs : List Agent102.RunSpec) (k : Nat) (hk : Agent102.lengthCutoff rs ≤ k) :
+  ↑(Agent102.wordAt rs k).length = ↑(Agent105.AffineShape.widthSlope rs) * ↑k + Agent105.AffineShape.widthIntercept rs
+'Agent105.AffineShape.wordAt_length_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.wordAt_length_eventually (rs : List Agent102.RunSpec) :
+  ∃ K,
+    ∀ (k : Nat),
+      K ≤ k →
+        ↑(Agent102.wordAt rs k).length =
+          ↑(Agent105.AffineShape.widthSlope rs) * ↑k + Agent105.AffineShape.widthIntercept rs
+'Agent105.AffineShape.wordAt_length_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.wordAt_length_shift (rs : List Agent102.RunSpec) (k s : Nat) (hk : Agent102.lengthCutoff rs ≤ k) :
+  (Agent102.wordAt rs (k + s)).length = (Agent102.wordAt rs k).length + Agent105.AffineShape.widthSlope rs * s
+'Agent105.AffineShape.wordAt_length_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.wordAt_length_shift_eventually (rs : List Agent102.RunSpec) :
+  ∃ K,
+    ∀ (k : Nat),
+      K ≤ k →
+        ∀ (s : Nat),
+          (Agent102.wordAt rs (k + s)).length = (Agent102.wordAt rs k).length + Agent105.AffineShape.widthSlope rs * s
+'Agent105.AffineShape.wordAt_length_shift_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.wordAt_headOption_eventually (rs : List Agent102.RunSpec) :
+  ∃ d K, ∀ (k : Nat), K ≤ k → (Agent102.wordAt rs k).head? = d
+'Agent105.AffineShape.wordAt_headOption_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.wordAt_headD_eventually (rs : List Agent102.RunSpec) (default : Nat) :
+  ∃ d K, ∀ (k : Nat), K ≤ k → (Agent102.wordAt rs k).headD default = d
+'Agent105.AffineShape.wordAt_headD_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.wordAt_head_eventually (rs : List Agent102.RunSpec) :
+  ∃ d K, ∀ (k : Nat), K ≤ k → (Agent102.wordAt rs k).headD 0 = d
+'Agent105.AffineShape.wordAt_head_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineShape.wordAt_head_width_eventually (rs : List Agent102.RunSpec) :
+  ∃ d K,
+    ∀ (k : Nat),
+      K ≤ k →
+        (Agent102.wordAt rs k).headD 0 = d ∧
+          ∀ (s : Nat),
+            (Agent102.wordAt rs (k + s)).length = (Agent102.wordAt rs k).length + Agent105.AffineShape.widthSlope rs * s
+'Agent105.AffineShape.wordAt_head_width_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineStability.tailStable_of_eventual_iff {P Q : Nat → Prop}
+  (hPQ : Agent105.TailSelection.Eventually fun k => P k ↔ Q k) (hP : Agent105.TailSelection.TailStable P) :
+  Agent105.TailSelection.TailStable Q
+'Agent105.AffineStability.tailStable_of_eventual_iff' depends on axioms: [propext]
+Agent105.AffineStability.wordAt_equality_tailStable (rs ss : List Agent102.RunSpec) :
+  Agent105.TailSelection.TailStable fun k => Agent102.wordAt rs k = Agent102.wordAt ss k
+'Agent105.AffineStability.wordAt_equality_tailStable' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineStability.wordAt_palindrome_tailStable (rs : List Agent102.RunSpec) :
+  Agent105.TailSelection.TailStable fun k => Agent102.wordAt rs k = (Agent102.wordAt rs k).reverse
+'Agent105.AffineStability.wordAt_palindrome_tailStable' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineStability.hasAffineRuns_equality_tailStable (w v : Nat → List Nat) (M N : Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w M) (hv : Agent105.AffineDynamics.HasAffineRuns v N) :
+  Agent105.TailSelection.TailStable fun k => w k = v k
+'Agent105.AffineStability.hasAffineRuns_equality_tailStable' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineStability.hasAffineRuns_palindrome_tailStable (w : Nat → List Nat) (M : Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w M) : Agent105.TailSelection.TailStable fun k => (w k).reverse = w k
+'Agent105.AffineStability.hasAffineRuns_palindrome_tailStable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.AffineStability.hasAffineRuns_nonpalindrome_tailStable (w : Nat → List Nat) (M : Nat)
+  (hw : Agent105.AffineDynamics.HasAffineRuns w M) : Agent105.TailSelection.TailStable fun k => (w k).reverse ≠ w k
+'Agent105.AffineStability.hasAffineRuns_nonpalindrome_tailStable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.AffineDynamics.zipAdd_replicate_prefix_le (x y m n : Nat) (as bs : List Nat) (hle : m ≤ n) :
+  Agent8.zipAdd (List.replicate m x ++ as) (List.replicate n y ++ bs) =
+    List.replicate m (x + y) ++ Agent8.zipAdd as (List.replicate (n - m) y ++ bs)
+'Agent105.AffineDynamics.zipAdd_replicate_prefix_le' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.zipAdd_replicate_prefix_ge (x y m n : Nat) (as bs : List Nat) (hle : n ≤ m) :
+  Agent8.zipAdd (List.replicate m x ++ as) (List.replicate n y ++ bs) =
+    List.replicate n (x + y) ++ Agent8.zipAdd (List.replicate (m - n) x ++ as) bs
+'Agent105.AffineDynamics.zipAdd_replicate_prefix_ge' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.AffineDifferenceClosure : Prop
+'Agent105.AffineDynamics.AffineDifferenceClosure' does not depend on any axioms
+Agent105.AffineDynamics.AffineComparisonStable : Prop
+'Agent105.AffineDynamics.AffineComparisonStable' does not depend on any axioms
+Agent105.AffineDynamics.zipAdd_of_length_arithmetic (hdiff : Agent105.AffineDynamics.AffineDifferenceClosure)
+  (hcompare : Agent105.AffineDynamics.AffineComparisonStable) (rs ss : List Agent102.RunSpec) (M N : Nat)
+  (hr : Agent105.AffineDynamics.SpecBound rs M) (hs : Agent105.AffineDynamics.SpecBound ss N) :
+  ∃ ts,
+    Agent105.AffineDynamics.SpecBound ts (M + N) ∧
+      ∃ K, ∀ (k : Nat), K ≤ k → Agent8.zipAdd (Agent102.wordAt rs k) (Agent102.wordAt ss k) = Agent102.wordAt ts k
+'Agent105.AffineDynamics.zipAdd_of_length_arithmetic' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.affineDifference (f g : Agent102.Affine) : Agent102.Affine
+'Agent105.AffineDynamics.affineDifference' does not depend on any axioms
+Agent105.AffineDynamics.affineDifference_eval (f g : Agent102.Affine) (k : Nat) :
+  (Agent105.AffineDynamics.affineDifference f g).eval k = f.positivePart.eval k - g.positivePart.eval k
+'Agent105.AffineDynamics.affineDifference_eval' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.affineDifferenceClosure : Agent105.AffineDynamics.AffineDifferenceClosure
+'Agent105.AffineDynamics.affineDifferenceClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.AffineDynamics.affineComparisonStable : Agent105.AffineDynamics.AffineComparisonStable
+'Agent105.AffineDynamics.affineComparisonStable' depends on axioms: [propext, Quot.sound]
+Agent105.AffineDynamics.zipAdd_wordAt_eventually (rs ss : List Agent102.RunSpec) (M N : Nat)
+  (hr : Agent105.AffineDynamics.SpecBound rs M) (hs : Agent105.AffineDynamics.SpecBound ss N) :
+  ∃ ts,
+    Agent105.AffineDynamics.SpecBound ts (M + N) ∧
+      ∃ K, ∀ (k : Nat), K ≤ k → Agent8.zipAdd (Agent102.wordAt rs k) (Agent102.wordAt ss k) = Agent102.wordAt ts k
+'Agent105.AffineDynamics.zipAdd_wordAt_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.IntegerSafety.palindrome_orbit_succ_iff (n k : Nat) :
+  Lychrel196.Palindrome (Lychrel196.orbit n (k + 1)) ↔
+    List.reverse (Agent8.normalize (Agent8.orbit (Agent109.pairWord n) k) 0) =
+      Agent8.normalize (Agent8.orbit (Agent109.pairWord n) k) 0
+'Agent105.IntegerSafety.palindrome_orbit_succ_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.IntegerSafety.palindrome_orbit_positive_iff (n i : Nat) (hi : 1 ≤ i) :
+  Lychrel196.Palindrome (Lychrel196.orbit n i) ↔
+    List.reverse (Agent8.normalize (Agent8.orbit (Agent109.pairWord n) (i - 1)) 0) =
+      Agent8.normalize (Agent8.orbit (Agent109.pairWord n) (i - 1)) 0
+'Agent105.IntegerSafety.palindrome_orbit_positive_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.IntegerSafety.palindrome_orbit_positive_iff_of_pairWord (n i : Nat) (w : Agent8.Word) (hi : 1 ≤ i)
+  (hrep : Agent109.pairWord n = w) :
+  Lychrel196.Palindrome (Lychrel196.orbit n i) ↔
+    List.reverse (Agent8.normalize (Agent8.orbit w (i - 1)) 0) = Agent8.normalize (Agent8.orbit w (i - 1)) 0
+'Agent105.IntegerSafety.palindrome_orbit_positive_iff_of_pairWord' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.IntegerSafety.nonpalindrome_orbit_positive_iff_of_pairWord (n i : Nat) (w : Agent8.Word) (hi : 1 ≤ i)
+  (hrep : Agent109.pairWord n = w) :
+  ¬Lychrel196.Palindrome (Lychrel196.orbit n i) ↔
+    List.reverse (Agent8.normalize (Agent8.orbit w (i - 1)) 0) ≠ Agent8.normalize (Agent8.orbit w (i - 1)) 0
+'Agent105.IntegerSafety.nonpalindrome_orbit_positive_iff_of_pairWord' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.ReturnTimeBound.orbit_width_potential_bound (w : Agent8.Word) (t : Nat) (hw : Agent8.CanonicalPair w) :
+  ↑t + Agent8.lowerPotential (List.headD (Agent8.orbit w t) 0) + 4 * ↑(List.length w) ≤
+    Agent8.lowerPotential (List.headD w 0) + 4 * ↑(List.length (Agent8.orbit w t))
+'Agent105.ReturnTimeBound.orbit_width_potential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.ReturnTimeBound.return_width_potential_bound (w v : Agent8.Word) (t : Nat) (hw : Agent8.CanonicalPair w)
+  (hreturn : Agent8.orbit w t = v) :
+  ↑t + Agent8.lowerPotential (List.headD v 0) + 4 * ↑(List.length w) ≤
+    Agent8.lowerPotential (List.headD w 0) + 4 * ↑(List.length v)
+'Agent105.ReturnTimeBound.return_width_potential_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.ReturnTimeBound.return_time_bounds_of_width_gain (w v : Agent8.Word) (t gain : Nat)
+  (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v) (hhead : List.headD v 0 = List.headD w 0)
+  (hwidth : List.length v = List.length w + gain) : 2 * gain ≤ t ∧ t ≤ 4 * gain
+'Agent105.ReturnTimeBound.return_time_bounds_of_width_gain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.ReturnTimeBound.positive_return_time_bound_of_width_gain (w v : Agent8.Word) (t gain : Nat)
+  (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v) (hhead : List.headD v 0 = List.headD w 0)
+  (hwidth : List.length v = List.length w + gain) (ht : 0 < t) : 1 ≤ t ∧ t ≤ 4 * gain
+'Agent105.ReturnTimeBound.positive_return_time_bound_of_width_gain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.ReturnTimeBound.return_time_bound_with_offset (w v : Agent8.Word) (t gain sourceOffset targetOffset : Nat)
+  (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v)
+  (hwidth : List.length v + sourceOffset ≤ List.length w + gain + targetOffset) :
+  ↑t + 4 * ↑sourceOffset + Agent8.lowerPotential (List.headD v 0) ≤
+    4 * ↑gain + 4 * ↑targetOffset + Agent8.lowerPotential (List.headD w 0)
+'Agent105.ReturnTimeBound.return_time_bound_with_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.ReturnTimeBound.same_head_return_time_bound_with_offset (w v : Agent8.Word)
+  (t gain sourceOffset targetOffset : Nat) (hw : Agent8.CanonicalPair w) (hreturn : Agent8.orbit w t = v)
+  (hhead : List.headD v 0 = List.headD w 0)
+  (hwidth : List.length v + sourceOffset ≤ List.length w + gain + targetOffset) :
+  t + 4 * sourceOffset ≤ 4 * gain + 4 * targetOffset
+'Agent105.ReturnTimeBound.same_head_return_time_bound_with_offset' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.ReturnTimeBound.word_family_return_time_bound (Q : Nat → Agent8.Word) (k s A t : Nat) (hA : 0 < A) (hs : 0 < s)
+  (ht : 0 < t) (hcanonical : Agent8.CanonicalPair (Q k)) (hreturn : Agent8.orbit (Q k) t = Q (k + s))
+  (hhead : List.headD (Q (k + s)) 0 = List.headD (Q k) 0)
+  (hwidth : List.length (Q (k + s)) = List.length (Q k) + A * s) : 0 < 4 * A * s ∧ 1 ≤ t ∧ t ≤ 4 * A * s
+'Agent105.ReturnTimeBound.word_family_return_time_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.ReturnTimeBound.affine_endpoint_return_time_bound (Q : Nat → Agent8.Word) (k s A B t : Nat) (hA : 0 < A)
+  (hs : 0 < s) (ht : 0 < t) (hcanonical : Agent8.CanonicalPair (Q k)) (hreturn : Agent8.orbit (Q k) t = Q (k + s))
+  (hhead : List.headD (Q (k + s)) 0 = List.headD (Q k) 0) (hsource : List.length (Q k) = A * k + B)
+  (htarget : List.length (Q (k + s)) = A * (k + s) + B) : 0 < 4 * A * s ∧ 1 ≤ t ∧ t ≤ 4 * A * s
+'Agent105.ReturnTimeBound.affine_endpoint_return_time_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.ReturnTimeBound.affine_endpoint_return_time_bound_with_offset (Q : Nat → Agent8.Word)
+  (k s A sourceOffset targetOffset t : Nat) (hA : 0 < A) (hs : 0 < s) (ht : 0 < t)
+  (hcanonical : Agent8.CanonicalPair (Q k)) (hreturn : Agent8.orbit (Q k) t = Q (k + s))
+  (hhead : List.headD (Q (k + s)) 0 = List.headD (Q k) 0) (hsource : List.length (Q k) = A * k + sourceOffset)
+  (htarget : List.length (Q (k + s)) = A * (k + s) + targetOffset) :
+  0 < 4 * A * s ∧ 1 ≤ t ∧ t + 4 * sourceOffset ≤ 4 * A * s + 4 * targetOffset
+'Agent105.ReturnTimeBound.affine_endpoint_return_time_bound_with_offset' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Agent105.TailSelection.Eventually (P : Nat → Prop) : Prop
+'Agent105.TailSelection.Eventually' does not depend on any axioms
+Agent105.TailSelection.TailStable (P : Nat → Prop) : Prop
+'Agent105.TailSelection.TailStable' does not depend on any axioms
+Agent105.TailSelection.eventually_of_forall {P : Nat → Prop} (h : ∀ (k : Nat), P k) :
+  Agent105.TailSelection.Eventually P
+'Agent105.TailSelection.eventually_of_forall' does not depend on any axioms
+Agent105.TailSelection.eventually_mono {P Q : Nat → Prop} (hP : Agent105.TailSelection.Eventually P)
+  (hPQ : ∀ (k : Nat), P k → Q k) : Agent105.TailSelection.Eventually Q
+'Agent105.TailSelection.eventually_mono' does not depend on any axioms
+Agent105.TailSelection.eventually_and {P Q : Nat → Prop} (hP : Agent105.TailSelection.Eventually P)
+  (hQ : Agent105.TailSelection.Eventually Q) : Agent105.TailSelection.Eventually fun k => P k ∧ Q k
+'Agent105.TailSelection.eventually_and' depends on axioms: [propext]
+Agent105.TailSelection.eventually_not_contradiction {P : Nat → Prop} (hP : Agent105.TailSelection.Eventually P)
+  (hN : Agent105.TailSelection.Eventually fun k => ¬P k) : False
+'Agent105.TailSelection.eventually_not_contradiction' depends on axioms: [propext]
+Agent105.TailSelection.tailStable_const (p : Prop) : Agent105.TailSelection.TailStable fun x => p
+'Agent105.TailSelection.tailStable_const' does not depend on any axioms
+Agent105.TailSelection.tailStable_congr {P Q : Nat → Prop} (hPQ : ∀ (k : Nat), P k ↔ Q k)
+  (hP : Agent105.TailSelection.TailStable P) : Agent105.TailSelection.TailStable Q
+'Agent105.TailSelection.tailStable_congr' does not depend on any axioms
+Agent105.TailSelection.tailStable_of_eventually {P : Nat → Prop} (hP : Agent105.TailSelection.Eventually P) :
+  Agent105.TailSelection.TailStable P
+'Agent105.TailSelection.tailStable_of_eventually' does not depend on any axioms
+Agent105.TailSelection.tailStable_of_eventually_not {P : Nat → Prop}
+  (hP : Agent105.TailSelection.Eventually fun k => ¬P k) : Agent105.TailSelection.TailStable P
+'Agent105.TailSelection.tailStable_of_eventually_not' does not depend on any axioms
+Agent105.TailSelection.tailStable_not {P : Nat → Prop} (hP : Agent105.TailSelection.TailStable P) :
+  Agent105.TailSelection.TailStable fun k => ¬P k
+'Agent105.TailSelection.tailStable_not' does not depend on any axioms
+Agent105.TailSelection.tailStable_and {P Q : Nat → Prop} (hP : Agent105.TailSelection.TailStable P)
+  (hQ : Agent105.TailSelection.TailStable Q) : Agent105.TailSelection.TailStable fun k => P k ∧ Q k
+'Agent105.TailSelection.tailStable_and' depends on axioms: [propext]
+Agent105.TailSelection.tailStable_iff_eventually_or_not {P : Nat → Prop} :
+  Agent105.TailSelection.TailStable P ↔
+    Agent105.TailSelection.Eventually P ∨ Agent105.TailSelection.Eventually fun k => ¬P k
+'Agent105.TailSelection.tailStable_iff_eventually_or_not' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.TailSelection.eventually_forall_list.{u} {α : Type u} (xs : List α) {P : α → Nat → Prop}
+  (hP : ∀ (a : α), a ∈ xs → Agent105.TailSelection.Eventually (P a)) :
+  Agent105.TailSelection.Eventually fun k => ∀ (a : α), a ∈ xs → P a k
+'Agent105.TailSelection.eventually_forall_list' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.tailStable_forall_list.{u} {α : Type u} (xs : List α) {P : α → Nat → Prop}
+  (hP : ∀ (a : α), a ∈ xs → Agent105.TailSelection.TailStable (P a)) :
+  Agent105.TailSelection.TailStable fun k => ∀ (a : α), a ∈ xs → P a k
+'Agent105.TailSelection.tailStable_forall_list' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.tailStable_forall_pos_le (B : Nat) {R : Nat → Nat → Prop}
+  (hR : ∀ (t : Nat), 1 ≤ t → t ≤ B → Agent105.TailSelection.TailStable (R t)) :
+  Agent105.TailSelection.TailStable fun k => ∀ (t : Nat), 1 ≤ t → t ≤ B → R t k
+'Agent105.TailSelection.tailStable_forall_pos_le' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.uniform_tail_of_finite_cover.{u} {α : Type u} (xs : List α) {R : α → Nat → Prop}
+  (hStable : ∀ (t : α), t ∈ xs → Agent105.TailSelection.TailStable (R t))
+  (hCover : Agent105.TailSelection.Eventually fun k => ∃ t, t ∈ xs ∧ R t k) :
+  ∃ t, t ∈ xs ∧ Agent105.TailSelection.Eventually (R t)
+'Agent105.TailSelection.uniform_tail_of_finite_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.TailSelection.uniform_bounded_tail_selection (B : Nat) {R : Nat → Nat → Prop}
+  (hStable : ∀ (t : Nat), 1 ≤ t → t ≤ B → Agent105.TailSelection.TailStable (R t))
+  (hCover : Agent105.TailSelection.Eventually fun k => ∃ t, 1 ≤ t ∧ t ≤ B ∧ R t k) :
+  ∃ t, 1 ≤ t ∧ t ≤ B ∧ Agent105.TailSelection.Eventually (R t)
+'Agent105.TailSelection.uniform_bounded_tail_selection' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.TailSelection.return_and_safety_tailStable (t : Nat) {Return Safe : Nat → Nat → Prop}
+  (hReturn : Agent105.TailSelection.TailStable (Return t))
+  (hSafe : ∀ (i : Nat), 1 ≤ i → i ≤ t → Agent105.TailSelection.TailStable (Safe i)) :
+  Agent105.TailSelection.TailStable fun k => Return t k ∧ ∀ (i : Nat), 1 ≤ i → i ≤ t → Safe i k
+'Agent105.TailSelection.return_and_safety_tailStable' depends on axioms: [propext, Quot.sound]
+Agent105.TailSelection.uniform_safe_return_time (B : Nat) {Return Safe : Nat → Nat → Prop}
+  (hReturn : ∀ (t : Nat), 1 ≤ t → t ≤ B → Agent105.TailSelection.TailStable (Return t))
+  (hSafe : ∀ (i : Nat), 1 ≤ i → i ≤ B → Agent105.TailSelection.TailStable (Safe i))
+  (hCover :
+    Agent105.TailSelection.Eventually fun k =>
+      ∃ t, 1 ≤ t ∧ t ≤ B ∧ Return t k ∧ ∀ (i : Nat), 1 ≤ i → i ≤ t → Safe i k) :
+  ∃ t, 1 ≤ t ∧ t ≤ B ∧ ∃ K, ∀ (k : Nat), K ≤ k → Return t k ∧ ∀ (i : Nat), 1 ≤ i → i ≤ t → Safe i k
+'Agent105.TailSelection.uniform_safe_return_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.safeThrough_iff_integer (n : Nat) (w : List Nat) (t : Nat) (hrep : Agent109.pairWord n = w) :
+  Agent105.UniformReturn.SafeThrough w t ↔ ∀ (i : Nat), 1 ≤ i → i ≤ t → ¬Lychrel196.Palindrome (Lychrel196.orbit n i)
+'Agent105.UniformReturn.safeThrough_iff_integer' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.uniform_integer_return (rs : List Agent102.RunSpec)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (s : Nat) (hA : 0 < Agent105.AffineShape.widthSlope rs) (hs : 0 < s)
+  (hcover :
+    Agent105.TailSelection.Eventually fun k =>
+      ∃ n t,
+        n ≠ 0 ∧
+          0 < t ∧
+            Agent109.pairWord n = Agent102.wordAt rs k ∧
+              Agent109.pairWord (Lychrel196.orbit n t) = Agent102.wordAt rs (k + s)) :
+  ∃ t,
+    1 ≤ t ∧
+      t ≤ 4 * Agent105.AffineShape.widthSlope rs * s ∧
+        ∃ K,
+          ∀ (k : Nat),
+            K ≤ k →
+              (∃ n, n ≠ 0 ∧ Agent109.pairWord n = Agent102.wordAt rs k) ∧
+                ∀ (n : Nat),
+                  Agent109.pairWord n = Agent102.wordAt rs k →
+                    Agent109.pairWord (Lychrel196.orbit n t) = Agent102.wordAt rs (k + s)
+'Agent105.UniformReturn.uniform_integer_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.uniform_integer_safe_return (rs : List Agent102.RunSpec)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (s : Nat) (hA : 0 < Agent105.AffineShape.widthSlope rs) (hs : 0 < s)
+  (hcover :
+    Agent105.TailSelection.Eventually fun k =>
+      ∃ n t,
+        n ≠ 0 ∧
+          0 < t ∧
+            Agent109.pairWord n = Agent102.wordAt rs k ∧
+              Agent109.pairWord (Lychrel196.orbit n t) = Agent102.wordAt rs (k + s) ∧
+                ∀ (i : Nat), 1 ≤ i → i ≤ t → ¬Lychrel196.Palindrome (Lychrel196.orbit n i)) :
+  ∃ t,
+    1 ≤ t ∧
+      t ≤ 4 * Agent105.AffineShape.widthSlope rs * s ∧
+        ∃ K,
+          ∀ (k : Nat),
+            K ≤ k →
+              (∃ n, n ≠ 0 ∧ Agent109.pairWord n = Agent102.wordAt rs k) ∧
+                ∀ (n : Nat),
+                  Agent109.pairWord n = Agent102.wordAt rs k →
+                    Agent109.pairWord (Lychrel196.orbit n t) = Agent102.wordAt rs (k + s) ∧
+                      ∀ (i : Nat), 1 ≤ i → i ≤ t → ¬Lychrel196.Palindrome (Lychrel196.orbit n i)
+'Agent105.UniformReturn.uniform_integer_safe_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.outputWord (w : List Nat) (i : Nat) : List Nat
+'Agent105.UniformReturn.outputWord' does not depend on any axioms
+Agent105.UniformReturn.SafeThrough (w : List Nat) (t : Nat) : Prop
+'Agent105.UniformReturn.SafeThrough' does not depend on any axioms
+Agent105.UniformReturn.actual_return_tailStable (Q : Nat → List Nat) (hQ : Agent105.AffineDynamics.HasAffineRuns Q 18)
+  (s t : Nat) : Agent105.TailSelection.TailStable fun k => Agent8.orbit (Q k) t = Q (k + s)
+'Agent105.UniformReturn.actual_return_tailStable' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.actual_output_safety_tailStable (Q : Nat → List Nat)
+  (hQ : Agent105.AffineDynamics.HasAffineRuns Q 18) (i : Nat) :
+  Agent105.TailSelection.TailStable fun k =>
+    (Agent105.UniformReturn.outputWord (Q k) i).reverse ≠ Agent105.UniformReturn.outputWord (Q k) i
+'Agent105.UniformReturn.actual_output_safety_tailStable' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.uniform_bounded_safe_return (Q : Nat → List Nat)
+  (hQ : Agent105.AffineDynamics.HasAffineRuns Q 18) (s B : Nat)
+  (hcover :
+    Agent105.TailSelection.Eventually fun k =>
+      ∃ t, 1 ≤ t ∧ t ≤ B ∧ Agent8.orbit (Q k) t = Q (k + s) ∧ Agent105.UniformReturn.SafeThrough (Q k) t) :
+  ∃ t,
+    1 ≤ t ∧
+      t ≤ B ∧ ∃ K, ∀ (k : Nat), K ≤ k → Agent8.orbit (Q k) t = Q (k + s) ∧ Agent105.UniformReturn.SafeThrough (Q k) t
+'Agent105.UniformReturn.uniform_bounded_safe_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.uniform_safe_return_wordAt (rs : List Agent102.RunSpec)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (s : Nat) (hA : 0 < Agent105.AffineShape.widthSlope rs) (hs : 0 < s)
+  (hcanonical : Agent105.TailSelection.Eventually fun k => Agent8.CanonicalPair (Agent102.wordAt rs k))
+  (hreturn :
+    Agent105.TailSelection.Eventually fun k =>
+      ∃ t,
+        0 < t ∧
+          Agent8.orbit (Agent102.wordAt rs k) t = Agent102.wordAt rs (k + s) ∧
+            Agent105.UniformReturn.SafeThrough (Agent102.wordAt rs k) t) :
+  ∃ t,
+    1 ≤ t ∧
+      t ≤ 4 * Agent105.AffineShape.widthSlope rs * s ∧
+        ∃ K,
+          ∀ (k : Nat),
+            K ≤ k →
+              Agent8.orbit (Agent102.wordAt rs k) t = Agent102.wordAt rs (k + s) ∧
+                Agent105.UniformReturn.SafeThrough (Agent102.wordAt rs k) t
+'Agent105.UniformReturn.uniform_safe_return_wordAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.uniform_bounded_return (Q : Nat → List Nat) (hQ : Agent105.AffineDynamics.HasAffineRuns Q 18)
+  (s B : Nat)
+  (hcover : Agent105.TailSelection.Eventually fun k => ∃ t, 1 ≤ t ∧ t ≤ B ∧ Agent8.orbit (Q k) t = Q (k + s)) :
+  ∃ t, 1 ≤ t ∧ t ≤ B ∧ ∃ K, ∀ (k : Nat), K ≤ k → Agent8.orbit (Q k) t = Q (k + s)
+'Agent105.UniformReturn.uniform_bounded_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent105.UniformReturn.uniform_return_wordAt (rs : List Agent102.RunSpec)
+  (hrs : Agent105.AffineDynamics.SpecBound rs 18) (s : Nat) (hA : 0 < Agent105.AffineShape.widthSlope rs) (hs : 0 < s)
+  (hcanonical : Agent105.TailSelection.Eventually fun k => Agent8.CanonicalPair (Agent102.wordAt rs k))
+  (hreturn :
+    Agent105.TailSelection.Eventually fun k =>
+      ∃ t, 0 < t ∧ Agent8.orbit (Agent102.wordAt rs k) t = Agent102.wordAt rs (k + s)) :
+  ∃ t,
+    1 ≤ t ∧
+      t ≤ 4 * Agent105.AffineShape.widthSlope rs * s ∧
+        ∃ K, ∀ (k : Nat), K ≤ k → Agent8.orbit (Agent102.wordAt rs k) t = Agent102.wordAt rs (k + s)
+'Agent105.UniformReturn.uniform_return_wordAt' depends on axioms: [propext, Classical.choice, Quot.sound]
