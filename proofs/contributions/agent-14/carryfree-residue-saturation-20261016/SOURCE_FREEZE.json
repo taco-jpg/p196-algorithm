@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "AUTHOR_SOURCE_FROZEN_FOR_INDEPENDENT_REVIEW",
+  "project": "agent14-carryfree-saturation",
+  "source_root": "/dev/shm/agent14-carryfree-d43e317f00d9",
+  "contract_path": "/dev/shm/agent14-carryfree-d43e317f00d9/proofs/contributions/agent-14/carryfree-residue-saturation-20261016/CONTRACT.md",
+  "contract_sha256": "ac077f99d5c5bbf49e5e5ef8801872178f3082888f03d417279b45a280c01feb",
+  "modules": {
+    "LychrelDigitSums": {
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports": [
+        "Std"
+      ]
+    },
+    "Agent14CarryfreeResidues": {
+      "path": "proofs/Agent14CarryfreeResidues.lean",
+      "sha256": "7785adc325f7ae100cfcde21238f27d06a558c23d74a3fa03464ea356867ece6",
+      "git_blob": "52526e5d8c400783bbf03220fd5937bb5153eb60",
+      "imports": [
+        "Std"
+      ]
+    },
+    "Agent14CarryfreeDigits": {
+      "path": "proofs/Agent14CarryfreeDigits.lean",
+      "sha256": "ae394c8a19e6fc497c1cf83fdf77943abd3f0b8fd681e59006bc8f7524f4ece9",
+      "git_blob": "8b7f903a870c772d7c7e329f93931de3e4ab5fac",
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    "Agent14CarryfreeCoordinates": {
+      "path": "proofs/Agent14CarryfreeCoordinates.lean",
+      "sha256": "5c2b5b72f14b8f002719fa77b54b63aef1a2fa644dd379bdb94dec4b3dbfa519",
+      "git_blob": "e06631541818a8ee8bf266193f35637a5a07bd21",
+      "imports": [
+        "Agent14CarryfreeDigits"
+      ]
+    },
+    "Agent14CarryfreeSaturation": {
+      "path": "proofs/Agent14CarryfreeSaturation.lean",
+      "sha256": "2427fcac82b20afe208ae2529b1dc9436217395eef63fcceb707447b0064171a",
+      "git_blob": "856d9a7b95e4b43501c0fb4b07955fc5279b8c26",
+      "imports": [
+        "Agent14CarryfreeResidues",
+        "Agent14CarryfreeDigits",
+        "Agent14CarryfreeCoordinates"
+      ]
+    }
+  },
+  "registry_path": "/dev/shm/agent14-carryfree-d43e317f00d9/proofs/Agent14Carryfree.registry.json",
+  "registry_sha256": "0a8454b8dbcf7ece3c117a3bcb2f7d3cffbf562f7decdefafbb4e72fc842f53c",
+  "registry_git_blob": "cf974d5d91fb0256cc99107e2a50f80e339d50e2",
+  "endpoint_count": 22,
+  "author_final_attempt": "development/Agent14CarryfreeSaturation/attempt-004",
+  "independent_status": "NOT_YET_RUN"
+}
