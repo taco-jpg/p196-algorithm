@@ -1,0 +1,66 @@
+diff --git a/proofs/Agent15CarryRestriction.lean b/proofs/Agent15CarryRestriction.lean
+new file mode 100644
+--- /dev/null
++++ b/proofs/Agent15CarryRestriction.lean
+@@ -0,0 +1,61 @@
++import Lean.Elab.Tactic.Omega
++
++/-!
++Agent #15 / M99-A05. Universal arithmetic restriction.
++Author-compiled with Lean 4.19.0; clean rebuild and independent review tracked separately.
++The hypotheses describe ordinary digit/carry equations, not an assumed
++nonexistence statement. No claim about a complete integer orbit is made.
++-/
++namespace Agent15.CarryRestriction
++
++/-- A digit at most four followed by a low digit gives a sum at most thirteen. -/
++theorem fourth_after_small_high_digit (x h : Nat) (hh : h ≤ 4) :
++    x % 10 + h ≤ 13 := by omega
++
++/-- Under an incoming carry of one and a low-side carry of one,
++a fourth coefficient at most thirteen produces a coefficient at most eight. -/
++theorem next_fourth_le_eight (y e : Nat) (hy : y ≤ 13) (he : e ≤ 1)
++    (hin : (y + e) / 10 = 1) :
++    (y + 1) % 10 + (y + e) % 10 ≤ 8 := by omega
++
++/-- Such an output cannot immediately supply another carry of one. -/
++theorem no_successive_inner_carries (x h y z e f : Nat)
++    (hh : h ≤ 4) (he : e ≤ 1) (hf : f ≤ 1)
++    (hy : y = x % 10 + h)
++    (hin : (y + e) / 10 = 1)
++    (hz : z = (y + 1) % 10 + (y + e) % 10)
++    (hnext : (z + f) / 10 = 1) : False := by
++  have hbound : y ≤ 13 := by
++    rw [hy]
++    exact fourth_after_small_high_digit x h hh
++  have hout := next_fourth_le_eight y e hbound he hin
++  omega
++
++/-- Raising the high-digit bound from four to five permits the carry pattern.
++This is an arithmetic control, not a complete return-certificate witness. -/
++theorem threshold_five_control :
++    let x : Nat := 9
++    let h : Nat := 5
++    let y := x % 10 + h
++    let e : Nat := 0
++    let z := (y + 1) % 10 + (y + e) % 10
++    h ≤ 5 ∧ e ≤ 1 ∧ (y + e) / 10 = 1 ∧ (z + 1) / 10 = 1 := by
++  decide
++
++/-- Dropping the low-side carry-one hypothesis also permits the pattern. -/
++theorem low_carry_zero_control :
++    let x : Nat := 5
++    let h : Nat := 4
++    let y := x % 10 + h
++    let e : Nat := 1
++    let z := (y + 0) % 10 + (y + e) % 10
++    h ≤ 4 ∧ e ≤ 1 ∧ (y + e) / 10 = 1 ∧ (z + 1) / 10 = 1 := by
++  decide
++
++#print axioms fourth_after_small_high_digit
++#print axioms next_fourth_le_eight
++#print axioms no_successive_inner_carries
++#print axioms threshold_five_control
++#print axioms low_carry_zero_control
++
++end Agent15.CarryRestriction
