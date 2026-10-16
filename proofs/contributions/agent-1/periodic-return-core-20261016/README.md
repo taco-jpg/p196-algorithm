@@ -1,3 +1,15 @@
+# Independently reviewed restriction on full periodic returns
+
+Mathematical source `a0ae20330cbc1da2a98dc5721228d6590f8ba6da` is **INDEPENDENTLY-REVIEWED**. The nonauthor specialist built all 38 exact source modules from an empty project build with explicit Lean 4.19 trust0: all 39 commands passed on the first reviewer attempt. The full originating-module audit covers 1,942 theorem constants, 566 safe definitions and 163 public theorem types (14 new). Only `propext`, `Classical.choice` and `Quot.sound` occur in the logical dependencies. Compiler implementation declarations are separately inventoried and excluded from those chains.
+
+A separate canonical fresh 38-module build and full theorem audit passed on the same sources. Its original source_tree_clean=true, reports and flags are retained; its command has no explicit trust override, while the independent run does. All source/registry pins agree. The independent 126-file manifest and parent 82-file package manifest validate. Complete semantic review, command/source snapshots, logs and receipts are under review/ and verification/parent-clean-001. Historical pending registry metadata is superseded by these executed reports; the exact tested registry bytes remain frozen.
+
+The result constrains positive full `(B,H,w)` quotient returns: all projected states stay in one retained nonzero label, and starting phase `[14,14,4,4]` forces physical outside 9 or 10. Original validity supplies the initial catalog membership for that corollary. The proof retains full tuple equality and positive return length, reuses the existing component-interval theorem, and excludes the zero label through the exact full-state no-return bridge. It asserts no SCC maximality, return existence, arbitrary graph realization, safety closure or196 conclusion.
+
+The accepted global registry and main are unchanged. All development failures, original finite data, source-only inspections and earlier checkpoints remain below with their proper evidence levels.
+
+## Retained author checkpoint
+
 # Checked concrete periodic full-return restriction
 
 All four new mathematical sources are frozen after strict author compilation and complete new-module axiom audits. Final `Agent1PeriodicReturnCore` source SHA256 is271fbd1e8c5487e515420ccd145391c039f8dccab3b8f134cf31ff9b8dd7255f. The exact38-module scoped registry and14 public endpoints are frozen; combined parent and independent fresh verification remain pending.
