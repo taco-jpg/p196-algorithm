@@ -1,0 +1,89 @@
+name: Agent115 rational exterior Lean probe
+on:
+  push:
+    branches:
+      - research/agent-115/rho-cycle-balance-20261016T2130Z
+    paths:
+      - .github/workflows/agent115-rho-lean.yml
+      - proofs/contributions/agent-115/rho-cycle-balance-20261016/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent115-rho-lean-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact source without persistent credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install official SHA-pinned Lean 4.19.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst -o "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst"
+          echo "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $RUNNER_TEMP/lean-4.19.0-linux.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean-4.19.0-linux.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Compile pinned imports and Agent115 experimental lemmas from source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, shutil, subprocess, sys
+          repo=pathlib.Path.cwd()
+          prefix=pathlib.Path('proofs/contributions/agent-115/rho-cycle-balance-20261016')
+          reg=json.loads((repo/'proofs/contributions/agent-6/exterior-coordinate-dynamics-20261016/coordinates.registry.json').read_text())
+          modules=reg['projects']['agent6-coordinate-dynamics']['modules']
+          out=pathlib.Path(os.environ['RUNNER_TEMP'])/'agent115-rho-evidence'
+          out.mkdir(parents=True,exist_ok=True)
+          build=out/'scratch'
+          build.mkdir(exist_ok=True)
+          for name, info in modules.items():
+            src=repo/info['path']
+            data=src.read_bytes()
+            assert hashlib.sha256(data).hexdigest()==info['sha256'], (name,src)
+            (build/(name+'.lean')).write_bytes(data)
+          for name,rel in [('RhoCycleTargets','development/RhoCycleTargets.lean'),('RhoCycleLemmas','development/RhoCycleLemmas.lean')]:
+            shutil.copy2(repo/prefix/rel, build/(name+'.lean'))
+          done=set()
+          todo=dict(modules)
+          order=[]
+          while todo:
+            ready=[name for name,item in todo.items() if all(dep not in modules or dep in done for dep in item['imports'])]
+            if not ready: raise RuntimeError('Module import cycle or missing closure: '+str(todo.keys()))
+            for name in ready:
+              order.append(name)
+              done.add(name)
+              del todo[name]
+          order+=['RhoCycleTargets','RhoCycleLemmas']
+          env=os.environ.copy()
+          env['LEAN_PATH']=str(build.resolve())
+          records=[]
+          for module in order:
+            p=subprocess.run(['lean','--trust=0','-o',module+'.olean',module+'.lean'],cwd=build,env=env,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+            (out/(module+'.log')).write_text(p.stdout)
+            records.append({'module':module,'exit_code':p.returncode,'sha256':hashlib.sha256((build/(module+'.lean')).read_bytes()).hexdigest()})
+            print(module,'exit',p.returncode,flush=True)
+            if p.returncode:
+              print(p.stdout[-7000:],flush=True)
+              break
+          data={'source_commit':os.environ.get('GITHUB_SHA'),'toolchain':'official Lean 4.19.0 6caaee842e94','status':'PASS' if len(records)==len(order) and all(r['exit_code']==0 for r in records) else 'FAILED','modules':records,'status_scope':'Only precise WIP targets and three proposed lemmas; not a proof of the rho recurrence/cycle/196'}
+          (out/'verification.json').write_text(json.dumps(data,indent=2)+'\n')
+          if data['status']!='PASS':sys.exit(1)
+          PY
+      - name: Retain complete logs and source hashes even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent115-rho-lean-${{ github.sha }}
+          path: ${{ runner.temp }}/agent115-rho-evidence/
+          retention-days: 14
+          if-no-files-found: warn
