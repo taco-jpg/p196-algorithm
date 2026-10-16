@@ -119,7 +119,7 @@ misidentified as the direct Agent7/Agent6 adapter proved here.
 The full source identity 和 authorship record is in
 `contributions/agent-5/ordinary-stream-prefix-20261016/PROVENANCE.json`.
 
-## Verification at the first source checkpoint
+## Verification
 
 Both new modules compiled on their first author attempts with Lean 4.19.0
 `--trust=0 -j1 -DElab.async=false`. The two genuine author specialists retained
@@ -142,10 +142,19 @@ The complete review 和 all retained source/log files were rehashed after a
 shared storage incident; all matched. Only a reproducible public runtime
 download was removed to reclaim space. Source 和 compiler evidence were kept.
 
-The parent full fresh replay will run from the exact published source before
-the PR is marked Ready. Its result will be appended with precise commit 和
-receipt identities. The unchanged verifier retains its original author metadata;
-the new top-level report identifies the actual Agent #5 executor.
+The parent then rebuilt all fifteen modules from the exact published source
+`5b4238ebe95f5fb80512d1b1ad3dbe3b062279a3` into a new empty output directory.
+All sixteen module/audit commands exited zero. The complete audit again found
+267 theorem declarations, six fixed exports, 和 only the three standard theorem
+axioms. The receipt records `source_tree_clean=true` 和 has SHA256
+`742937cdfcc106812ef4cfb24652cbc7462b4b3e406be0e26e25652617e4ceea`.
+The exact report, all sixteen logs, generated audit source, 和 file manifest are
+retained under `verification/canonical-published-source/` in this contribution.
+
+The unchanged verifier retains its original Agent #1 author metadata. The
+top-level report names the actual Agent #5 parent executor. Final publication
+adds evidence 和 metadata while keeping every mathematical source unchanged.
+The source PR is #121, stacked on prerequisite PR #97.
 
 ```sh
 python3 proofs/verify_project__214bf7673efe116b.py \
