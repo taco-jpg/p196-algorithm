@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "execution_agent": "Agent #6",
+  "task_id": "agent6-status-evidence-boundaries-20261016",
+  "followup": "Canonical source-only reproducibility and evidence-level validation",
+  "status": "COMMAND_EXECUTED_EXPECTED_OUTPUT_CONFIRMED_NOT_LEAN_PROOF_CHECKED",
+  "date": "2026-10-16",
+  "relation_to_first_checkpoint": "This follows the earlier documentation submission. Lean was subsequently acquired and queried for version/runtime paths, but no mathematical module was compiled. The earlier submission remains a historical record of its own checkpoint.",
+  "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "working_tree": "Isolated full original-layout checkout at the exact retained commit; source_tree_clean was true in both successful source-only reports. This is not a checkout or test of current reorganized main.",
+  "verifier": {
+    "path": "proofs/verify_project.py",
+    "sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a",
+    "inspection": "Read the canonical implementation before executing; used --check-only throughout."
+  },
+  "registry": {
+    "path": "proofs/ACCEPTED_BUILD.json",
+    "git_blob": "90221ac6053b5584602fed24eb93f7984359dff5",
+    "sha256": "241a659b1e77ac1c17fb404c6dccaa8e0f03ebc322efd1f4553b2b8be646cebd",
+    "catalogue_complete": false,
+    "open_blocker": "PREEXISTING_ACCEPTED_SCOPE_CENSUS"
+  },
+  "toolchain": {
+    "reported_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "lean_executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "retrieved_artifact_id": 11948069575,
+    "workflow_run_id": 38682760398,
+    "artifact_zip_sha256_verified": "205d817f95c9425a6338743da10dc37960f5a64181d3127edbef1ccf5a91ed2d",
+    "queries_only": ["--version", "--print-prefix"],
+    "mathematical_compilation_commands": 0,
+    "archive_inspection": "No absolute or parent-traversal member names. In addition to the runtime directory, the archive contains official-archive.sha256 and version.txt. An initial overly restrictive root-prefix assertion was corrected; no archive-path traversal was observed."
+  },
+  "command_prerequisites": "Run from an isolated checkout of source_commit. Set LEAN to the absolute path of the pinned compiler. Set SCOPED_OUT and DEFAULT_OUT to different new absolute output directories outside the checkout; the verifier rejects existing output directories. These variable names describe portable equivalents of the actually executed absolute-path commands.",
+  "cases": [
+    {
+      "case": "scoped_source_only",
+      "command": "python3 -B proofs/verify_project.py --lean \"$LEAN\" --project consolidation-core --check-only --output \"$SCOPED_OUT\"",
+      "exit_code": 0,
+      "report_status": "SOURCE_AND_IMPORT_CHECK_ONLY",
+      "mathematical_proof_check": false,
+      "repository_wide_pass": false,
+      "module_count": 38,
+      "root_count": 5,
+      "mathematical_compilation_commands": 0,
+      "original_verification_json_sha256": "1d99012881c31a0ce14fdcf95a49b7fdd75de93743953e4383b50637844b1adf"
+    },
+    {
+      "case": "default_source_only_incomplete_catalogue",
+      "command": "python3 -B proofs/verify_project.py --lean \"$LEAN\" --check-only --output \"$DEFAULT_OUT\"",
+      "exit_code": 2,
+      "report_status": "SOURCE_AND_IMPORT_CHECK_ONLY",
+      "mathematical_proof_check": false,
+      "repository_wide_pass": false,
+      "module_count": 38,
+      "root_count": 5,
+      "mathematical_compilation_commands": 0,
+      "interpretation": "Source/import checks complete; the default invocation still returns the incomplete-catalogue exit code. This is not a Lean failure, a complete catalogue, or repository-wide proof verification.",
+      "original_verification_json_sha256": "e1758cdb418102d0020eab8f1249c7665c9e9a9894b8efcab6d5cfd7551f0e20"
+    },
+    {
+      "case": "expected_rejection_missing_toolchain",
+      "fixture": "The scoped source-only invocation receives an intentionally nonexistent LEAN path and a fresh output directory.",
+      "exit_code": 1,
+      "report_status": "FAIL",
+      "mathematical_proof_check": false,
+      "repository_wide_pass": false,
+      "observed_error": "FileNotFoundError for the intentionally nonexistent compiler executable",
+      "interpretation": "--check-only still requires the pinned toolchain for version, runtime and standard-library import checks. No fake compiler was used."
+    },
+    {
+      "case": "expected_rejection_inconsistent_catalogue",
+      "fixture": "A separate temporary registry copy sets catalogue_complete=true but deliberately retains the open blockers; repository sources and the original registry remain unchanged.",
+      "exit_code": 1,
+      "report_status": "FAIL",
+      "mathematical_proof_check": false,
+      "repository_wide_pass": false,
+      "observed_error": "Complete catalogue cannot retain unresolved blockers",
+      "interpretation": "The guard rejects an inconsistent completeness claim. This expected fixture failure is not a defect in the repository."
+    }
+  ],
+  "canonical_checks_completed": [
+    "Exact SHA-256 and Git-blob identities of all 38 registered sources",
+    "Verified embedded-foundation adapter and exact body containment",
+    "Generated-source forbidden-token checks",
+    "Registered imports and runtime standard-library import availability",
+    "Acyclic import ordering and equality of the five-root closure with all 38 registry entries"
+  ],
+  "roots": ["OuterOrbit", "AlternatingScalarBoundary", "HighBaseFirstHit", "DifferenceObservability", "TwoDigitMain"],
+  "evidence_boundary": "Neither a zero source-only exit code nor these negative controls establish a Lean theorem, validate all published claims, fill an arithmetic bridge, establish the 196 conjecture, or complete the accepted-scope census.",
+  "documentation_use": "Retain the original STATUS.md patch's evidence boundaries. Reproduction writers should document the compiler requirement even for --check-only and distinguish scoped exit 0 from unscoped exit 2. No changes to Agent441's reproduction files or Agent11's PR79 repair were made.",
+  "review_acknowledgment": "NONE_OBSERVED",
+  "main_integration": "NOT_PERFORMED"
+}
