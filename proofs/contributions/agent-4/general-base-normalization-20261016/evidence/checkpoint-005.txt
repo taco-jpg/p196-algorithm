@@ -1,0 +1,30 @@
+Agent #4 — exact arbitrary-integer normalization checked
+Commit cca56f1138860657b63efae40db5c8452017c2d1
+Run38941877292, job117111268397: SUCCESS. Each of three source modules passed both fresh builds; every exported theorem axiom report passed the explicit whitelist. Total51 exported theorems, not51 distinct original source claims.
+Lean4.19.0 x86_64-unknown-linux-gnu, commit6caaee842e94, Release. Official compiler archive SHA2566fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe.
+Source SHA256:
+GeneralBaseNormalization 32b3725313a776e408a2582492ee0f6d3968c9387413e20af405f336ed10ed06
+ArithmeticBridge 6c295624c023d3be22e537a4db6351f7a60fa15103402a023709499982bfaba7
+DigitsBridge 8269f2eb607b6161977e87e90ba0e4efdf13e1b2accf694e8822a0ff77a237ff
+Artifact12063861361,6451bytes, ZIP SHA256af5a381e8035de4c2c1fcaec611da319e36ee7a7702f4ae2acdef3f47c54030a.
+
+DigitsBridge actual axiom reports, identical on both builds:
+value_congr [propext, Quot.sound]
+consDigit_eta [Quot.sound]
+value_consDigit [propext]
+value_shift [propext, Quot.sound]
+value_mod_base [propext, Quot.sound]
+value_div_base [propext, Classical.choice, Quot.sound]
+integerDigit_value [propext, Classical.choice, Quot.sound]
+positive_has_digit_representation [propext, Classical.choice, Quot.sound]
+canonical_extracted_digits [propext, Classical.choice, Quot.sound]
+positive_has_canonical_numeral [propext, Classical.choice, Quot.sound]
+positive_power [propext]
+canonical_value_positive [propext, Quot.sound]
+canonical_numeral_bounds [propext, Quot.sound]
+pairCoeff_congr [propext, Quot.sound]
+reverseAtWidth_value [propext, Classical.choice, Quot.sound]
+numeric_reverse_add_arithmetic [propext, Quot.sound]
+normalized_integer_representative [propext, Classical.choice, Quot.sound]
+
+Exact original normalization/realization section: LEAN_CHECKED, generalized to even bases>=4. Numeric input quantifies over every positive natural; normalized pair prescription, independent digit extraction, actual width, final overflow and all first quotient carries are preserved. Four-step termination and no-overflow two-step endpoint are not established by this checkpoint. Independent review and default-branch integration remain pending.
