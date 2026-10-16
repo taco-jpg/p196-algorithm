@@ -1,0 +1,341 @@
+Agent100GroupIIOverflowBridge.lean:63:64: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 0
+  a ≥ 0
+  a ≥ -3
+  2*a - b ≥ -6
+where
+ a := ↑r
+ b := ↑?m.5533
+Agent100GroupIIOverflowBridge.lean:60:2: error: unsolved goals
+case pos
+r p u v : Nat
+h : UpperDomain r p u v
+hi : 2 * r + 7 < 2 * r + 8
+hs : 2 * r + 7 - 1 = 2 * r + 6
+⊢ 1 = componentDigits r p u v (2 * r + 6)
+Agent100GroupIIOverflowBridge.lean:71:4: error: unsolved goals
+case pos.isTrue.isFalse.isFalse.isTrue.isFalse.isFalse.isFalse.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+hi : 0 < 2 * r + 8
+he : ¬0 = 2 * r + 7
+hi' : 0 < 2 * r + 7
+h✝⁷ : True ∨ 0 = 1 ∨ 0 = 2 * r + 5 ∨ 0 = 2 * r + 6
+h✝⁶ : ¬(0 = r + 3 ∨ 0 = r + 4 ∨ 0 = r + 5)
+h✝⁵ : ¬(0 = 1 ∨ 0 = 2 ∨ 0 = r + 2 ∨ 0 = r + 6 ∨ 0 = 2 * r + 6 ∨ 0 = 2 * r + 7)
+h✝⁴ : 0 < 2 * r + 6
+h✝³ : ¬(True ∨ 0 = 2 * r + 5)
+h✝² : ¬(0 = r + 1 ∨ 0 = r + 4)
+h✝¹ : ¬(0 = r + 2 ∨ 0 = r + 3)
+h✝ : ¬(0 = 1 ∨ 0 = r + 2 ∨ 0 = r + 3 ∨ 0 = r + 4 ∨ 0 = r + 5 ∨ 0 = 2 * r + 6)
+⊢ (2 * p + 0) % 10 = (0 + 0) % 10
+
+case pos.isTrue.isFalse.isFalse.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+hi : 0 < 2 * r + 8
+he : ¬0 = 2 * r + 7
+hi' : 0 < 2 * r + 7
+h✝³ : True ∨ 0 = 1 ∨ 0 = 2 * r + 5 ∨ 0 = 2 * r + 6
+h✝² : ¬(0 = r + 3 ∨ 0 = r + 4 ∨ 0 = r + 5)
+h✝¹ : ¬(0 = 1 ∨ 0 = 2 ∨ 0 = r + 2 ∨ 0 = r + 6 ∨ 0 = 2 * r + 6 ∨ 0 = 2 * r + 7)
+h✝ : ¬0 < 2 * r + 6
+⊢ (2 * p + 0) % 10 = if 0 = 2 * r + 6 then 1 else 0
+
+case pos.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+hi : 0 < 2 * r + 8
+he : ¬0 = 2 * r + 7
+hi' : 0 < 2 * r + 7
+h✝ : ¬(True ∨ 0 = 1 ∨ 0 = 2 * r + 5 ∨ 0 = 2 * r + 6)
+⊢ ((2 * if 0 = r + 1 ∨ 0 = r + 5 then u else if 0 = r + 2 ∨ 0 = r + 4 then u + v else if 0 = r + 3 then 2 * v else 0) +
+        if 0 = r + 3 ∨ 0 = r + 4 ∨ 0 = r + 5 then 2
+        else if 0 = 1 ∨ 0 = 2 ∨ 0 = r + 2 ∨ 0 = r + 6 ∨ 0 = 2 * r + 6 ∨ 0 = 2 * r + 7 then 1 else 0) %
+      10 =
+    if 0 < 2 * r + 6 then
+      ((if True ∨ 0 = 2 * r + 5 then 2 * p
+          else if 0 = r + 1 ∨ 0 = r + 4 then 2 * u else if 0 = r + 2 ∨ 0 = r + 3 then 2 * v else 0) +
+          if 0 = 1 ∨ 0 = r + 2 ∨ 0 = r + 3 ∨ 0 = r + 4 ∨ 0 = r + 5 ∨ 0 = 2 * r + 6 then 1 else 0) %
+        10
+    else if 0 = 2 * r + 6 then 1 else 0
+Agent100GroupIIOverflowBridge.lean:77:4: error: unsolved goals
+case neg.isFalse.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isTrue.isTrue
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝¹⁴ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝¹³ : ¬(i = r + 1 ∨ i = r + 5)
+h✝¹² : ¬(i = r + 2 ∨ i = r + 4)
+h✝¹¹ : i = r + 3
+h✝¹⁰ : i = r + 3 ∨ i = r + 4 ∨ i = r + 5
+h✝⁹ : i < 2 * r + 6
+h✝⁸ : ¬(i = 0 ∨ i = 2 * r + 5)
+h✝⁷ : ¬(i = r + 1 ∨ i = r + 4)
+h✝⁶ : i = r + 2 ∨ i = r + 3
+h✝⁵ : i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6
+h✝⁴ : i - 1 < 2 * r + 6
+h✝³ : ¬(i - 1 = 0 ∨ i - 1 = 2 * r + 5)
+h✝² : ¬(i - 1 = r + 1 ∨ i - 1 = r + 4)
+h✝¹ : i - 1 = r + 2 ∨ i - 1 = r + 3
+h✝ : i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6
+⊢ (2 * (2 * v) + 2) % 10 = (2 * v + 1) % 10 + (2 * v + 1) % 10
+
+case neg.isFalse.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isTrue.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝¹⁴ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝¹³ : ¬(i = r + 1 ∨ i = r + 5)
+h✝¹² : ¬(i = r + 2 ∨ i = r + 4)
+h✝¹¹ : i = r + 3
+h✝¹⁰ : i = r + 3 ∨ i = r + 4 ∨ i = r + 5
+h✝⁹ : i < 2 * r + 6
+h✝⁸ : ¬(i = 0 ∨ i = 2 * r + 5)
+h✝⁷ : ¬(i = r + 1 ∨ i = r + 4)
+h✝⁶ : i = r + 2 ∨ i = r + 3
+h✝⁵ : i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6
+h✝⁴ : i - 1 < 2 * r + 6
+h✝³ : ¬(i - 1 = 0 ∨ i - 1 = 2 * r + 5)
+h✝² : ¬(i - 1 = r + 1 ∨ i - 1 = r + 4)
+h✝¹ : i - 1 = r + 2 ∨ i - 1 = r + 3
+h✝ : ¬(i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6)
+⊢ (2 * (2 * v) + 2) % 10 = (2 * v + 1) % 10 + (2 * v + 0) % 10
+
+case neg.isFalse.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝¹³ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝¹² : ¬(i = r + 1 ∨ i = r + 5)
+h✝¹¹ : ¬(i = r + 2 ∨ i = r + 4)
+h✝¹⁰ : i = r + 3
+h✝⁹ : i = r + 3 ∨ i = r + 4 ∨ i = r + 5
+h✝⁸ : i < 2 * r + 6
+h✝⁷ : ¬(i = 0 ∨ i = 2 * r + 5)
+h✝⁶ : ¬(i = r + 1 ∨ i = r + 4)
+h✝⁵ : i = r + 2 ∨ i = r + 3
+h✝⁴ : i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6
+h✝³ : i - 1 < 2 * r + 6
+h✝² : ¬(i - 1 = 0 ∨ i - 1 = 2 * r + 5)
+h✝¹ : ¬(i - 1 = r + 1 ∨ i - 1 = r + 4)
+h✝ : ¬(i - 1 = r + 2 ∨ i - 1 = r + 3)
+⊢ (2 * (2 * v) + 2) % 10 =
+    (2 * v + 1) % 10 +
+      (0 +
+          if i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6 then 1
+          else 0) %
+        10
+
+case neg.isFalse.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isTrue.isTrue.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝¹⁰ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝⁹ : ¬(i = r + 1 ∨ i = r + 5)
+h✝⁸ : ¬(i = r + 2 ∨ i = r + 4)
+h✝⁷ : i = r + 3
+h✝⁶ : i = r + 3 ∨ i = r + 4 ∨ i = r + 5
+h✝⁵ : i < 2 * r + 6
+h✝⁴ : ¬(i = 0 ∨ i = 2 * r + 5)
+h✝³ : ¬(i = r + 1 ∨ i = r + 4)
+h✝² : i = r + 2 ∨ i = r + 3
+h✝¹ : i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6
+h✝ : ¬i - 1 < 2 * r + 6
+⊢ (2 * (2 * v) + 2) % 10 = (2 * v + 1) % 10 + if i - 1 = 2 * r + 6 then 1 else 0
+
+case neg.isFalse.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isTrue.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝⁹ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝⁸ : ¬(i = r + 1 ∨ i = r + 5)
+h✝⁷ : ¬(i = r + 2 ∨ i = r + 4)
+h✝⁶ : i = r + 3
+h✝⁵ : i = r + 3 ∨ i = r + 4 ∨ i = r + 5
+h✝⁴ : i < 2 * r + 6
+h✝³ : ¬(i = 0 ∨ i = 2 * r + 5)
+h✝² : ¬(i = r + 1 ∨ i = r + 4)
+h✝¹ : i = r + 2 ∨ i = r + 3
+h✝ : ¬(i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6)
+⊢ (2 * (2 * v) + 2) % 10 =
+    (2 * v + 0) % 10 +
+      if i - 1 < 2 * r + 6 then
+        ((if i - 1 = 0 ∨ i - 1 = 2 * r + 5 then 2 * p
+            else if i - 1 = r + 1 ∨ i - 1 = r + 4 then 2 * u else if i - 1 = r + 2 ∨ i - 1 = r + 3 then 2 * v else 0) +
+            if i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6 then 1
+            else 0) %
+          10
+      else if i - 1 = 2 * r + 6 then 1 else 0
+
+case neg.isFalse.isFalse.isFalse.isTrue.isTrue.isTrue.isFalse.isFalse.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝⁸ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝⁷ : ¬(i = r + 1 ∨ i = r + 5)
+h✝⁶ : ¬(i = r + 2 ∨ i = r + 4)
+h✝⁵ : i = r + 3
+h✝⁴ : i = r + 3 ∨ i = r + 4 ∨ i = r + 5
+h✝³ : i < 2 * r + 6
+h✝² : ¬(i = 0 ∨ i = 2 * r + 5)
+h✝¹ : ¬(i = r + 1 ∨ i = r + 4)
+h✝ : ¬(i = r + 2 ∨ i = r + 3)
+⊢ (2 * (2 * v) + 2) % 10 =
+    (0 + if i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6 then 1 else 0) % 10 +
+      if i - 1 < 2 * r + 6 then
+        ((if i - 1 = 0 ∨ i - 1 = 2 * r + 5 then 2 * p
+            else if i - 1 = r + 1 ∨ i - 1 = r + 4 then 2 * u else if i - 1 = r + 2 ∨ i - 1 = r + 3 then 2 * v else 0) +
+            if i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6 then 1
+            else 0) %
+          10
+      else if i - 1 = 2 * r + 6 then 1 else 0
+
+case neg.isFalse.isFalse.isFalse.isTrue.isTrue.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝⁵ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝⁴ : ¬(i = r + 1 ∨ i = r + 5)
+h✝³ : ¬(i = r + 2 ∨ i = r + 4)
+h✝² : i = r + 3
+h✝¹ : i = r + 3 ∨ i = r + 4 ∨ i = r + 5
+h✝ : ¬i < 2 * r + 6
+⊢ (2 * (2 * v) + 2) % 10 =
+    (if i = 2 * r + 6 then 1 else 0) +
+      if i - 1 < 2 * r + 6 then
+        ((if i - 1 = 0 ∨ i - 1 = 2 * r + 5 then 2 * p
+            else if i - 1 = r + 1 ∨ i - 1 = r + 4 then 2 * u else if i - 1 = r + 2 ∨ i - 1 = r + 3 then 2 * v else 0) +
+            if i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6 then 1
+            else 0) %
+          10
+      else if i - 1 = 2 * r + 6 then 1 else 0
+
+case neg.isFalse.isFalse.isFalse.isTrue.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝⁴ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝³ : ¬(i = r + 1 ∨ i = r + 5)
+h✝² : ¬(i = r + 2 ∨ i = r + 4)
+h✝¹ : i = r + 3
+h✝ : ¬(i = r + 3 ∨ i = r + 4 ∨ i = r + 5)
+⊢ (2 * (2 * v) + if i = 1 ∨ i = 2 ∨ i = r + 2 ∨ i = r + 6 ∨ i = 2 * r + 6 ∨ i = 2 * r + 7 then 1 else 0) % 10 =
+    (if i < 2 * r + 6 then
+        ((if i = 0 ∨ i = 2 * r + 5 then 2 * p
+            else if i = r + 1 ∨ i = r + 4 then 2 * u else if i = r + 2 ∨ i = r + 3 then 2 * v else 0) +
+            if i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6 then 1 else 0) %
+          10
+      else if i = 2 * r + 6 then 1 else 0) +
+      if i - 1 < 2 * r + 6 then
+        ((if i - 1 = 0 ∨ i - 1 = 2 * r + 5 then 2 * p
+            else if i - 1 = r + 1 ∨ i - 1 = r + 4 then 2 * u else if i - 1 = r + 2 ∨ i - 1 = r + 3 then 2 * v else 0) +
+            if i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6 then 1
+            else 0) %
+          10
+      else if i - 1 = 2 * r + 6 then 1 else 0
+
+case neg.isFalse.isFalse.isFalse.isFalse
+r p u v : Nat
+h : 1 ≤ r ∧ 5 ≤ p ∧ p ≤ 9 ∧ 5 ≤ u ∧ u ≤ 8 ∧ 5 ≤ v ∧ v ≤ 6 ∧ u + v ≤ 13
+i : Nat
+hi : i < 2 * r + 8
+he : ¬i = 2 * r + 7
+hi' : i < 2 * r + 7
+hz : ¬i = 0
+h✝³ : ¬(i = 0 ∨ i = 1 ∨ i = 2 * r + 5 ∨ i = 2 * r + 6)
+h✝² : ¬(i = r + 1 ∨ i = r + 5)
+h✝¹ : ¬(i = r + 2 ∨ i = r + 4)
+h✝ : ¬i = r + 3
+⊢ (2 * 0 +
+        if i = r + 3 ∨ i = r + 4 ∨ i = r + 5 then 2
+        else if i = 1 ∨ i = 2 ∨ i = r + 2 ∨ i = r + 6 ∨ i = 2 * r + 6 ∨ i = 2 * r + 7 then 1 else 0) %
+      10 =
+    (if i < 2 * r + 6 then
+        ((if i = 0 ∨ i = 2 * r + 5 then 2 * p
+            else if i = r + 1 ∨ i = r + 4 then 2 * u else if i = r + 2 ∨ i = r + 3 then 2 * v else 0) +
+            if i = 1 ∨ i = r + 2 ∨ i = r + 3 ∨ i = r + 4 ∨ i = r + 5 ∨ i = 2 * r + 6 then 1 else 0) %
+          10
+      else if i = 2 * r + 6 then 1 else 0) +
+      if i - 1 < 2 * r + 6 then
+        ((if i - 1 = 0 ∨ i - 1 = 2 * r + 5 then 2 * p
+            else if i - 1 = r + 1 ∨ i - 1 = r + 4 then 2 * u else if i - 1 = r + 2 ∨ i - 1 = r + 3 then 2 * v else 0) +
+            if i - 1 = 1 ∨ i - 1 = r + 2 ∨ i - 1 = r + 3 ∨ i - 1 = r + 4 ∨ i - 1 = r + 5 ∨ i - 1 = 2 * r + 6 then 1
+            else 0) %
+          10
+      else if i - 1 = 2 * r + 6 then 1 else 0
+Agent100GroupIIOverflowBridge.lean:124:54: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 0
+  a ≥ 0
+  a ≥ -3
+  a ≥ -3
+  2*a - b ≥ -6
+where
+ a := ↑r
+ b := ↑?m.636993
+Agent100GroupIIOverflowBridge.lean:118:2: error: unsolved goals
+case pos
+r p u v : Nat
+h : UpperDomain r p u v
+hi : 0 < 2 * r + 8
+hj : 2 * r + 8 - 1 - 0 < 2 * r + 8
+ha : 0 < 2 * r + 7
+hb : 2 * r + 8 - 1 - 0 = 2 * r + 7
+hc : 2 * r + 7 - 1 = 2 * r + 6
+⊢ componentDigits r p u v 0 + (componentDigits r p u v (2 * r + 7) + componentDigits r p u v (2 * r + 6)) =
+    componentDigits r p u v 0 + componentDigits r p u v (2 * r + 6)
+Agent100GroupIIOverflowBridge.lean:135:56: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 0
+  a ≥ 0
+  a ≥ -3
+  a ≥ -3
+  2*a - b ≥ -6
+where
+ a := ↑r
+ b := ↑?m.639440
+Agent100GroupIIOverflowBridge.lean:138:6: error: 'change' tactic failed, pattern
+  componentDigits r p u v (2 * r + 6) + componentDigits r p u v 0 = finiteNextComponent r p u v (2 * r + 6)
+is not definitionally equal to target
+  componentDigits r p u v (2 * r + 7) + componentDigits r p u v (2 * r + 6) + componentDigits r p u v 0 =
+    if 2 * r + 6 < 2 * r + 7 then nextColumns (component r (2 * p) (2 * u) (2 * v)) (2 * r + 6) (2 * r + 6) else 0
+'Agent100.GroupIIOverflow.component_digits_formula' depends on axioms: [propext, Quot.sound]
+'Agent100.GroupIIOverflow.component_digits_zero_after_width' depends on axioms: [propext, Quot.sound]
+'Agent100.GroupIIOverflow.redundant_extended_digits' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent100.GroupIIOverflow.adjacent_normalized_sum_bounded' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent100.GroupIIOverflow.finite_next_component_columns' depends on axioms: [propext, Quot.sound]
+'Agent100.GroupIIOverflow.redundant_next_is_finite_overlap' depends on axioms: [propext, sorryAx, Quot.sound]
