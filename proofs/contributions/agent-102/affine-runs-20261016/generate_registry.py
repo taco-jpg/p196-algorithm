@@ -4,7 +4,8 @@ import hashlib, json, re
 
 ROOT = Path(__file__).resolve().parents[4]
 MODULES = ['Agent102RunDefs', 'Agent102AffineArithmetic', 'Agent102RunWord',
-           'Agent102RunEndpoints', 'Agent102AffineRuns']
+           'Agent102RunEndpoints', 'Agent102AffineRuns',
+           'Agent102AffineBoundary', 'Agent102AffineDecision']
 PROJECT = 'agent102-affine-runs'
 records = {}
 endpoints = []
@@ -34,13 +35,13 @@ registry = dict(schema_version=1, catalogue_complete=False,
     toolchain=dict(version='4.19.0', commit='6caaee842e94',
         allowed_axioms=['propext','Classical.choice','Quot.sound']),
     projects={PROJECT: dict(scope='Literal affine run words: exact coverage, clipped-length endpoints, computable eventual equality and palindrome dichotomies.',
-        roots=['Agent102AffineRuns'], modules=records)},
+        roots=['Agent102AffineBoundary', 'Agent102AffineDecision'], modules=records)},
     claims=[dict(id='A102-AFFINE-RUN-TAIL',project=PROJECT,endpoints=registry_names)],
     literal_audit_extra_endpoints=[n for n in endpoints if n not in registry_names],
     registry_name_note='The unchanged verifier only accepts alphanumeric endpoint names. All exports, including names containing ?, remain in LiteralAudit and the exhaustive module-origin audit.',
     source_baseline='ae8bbdfd2a18e8910eebc25fd2a81661c01abc16')
 (ROOT/'proofs/Agent102AffineRuns.registry.json').write_text(json.dumps(registry,indent=2)+'\n')
-audit = 'import Agent102AffineRuns\n\n' + '\n'.join('#print axioms '+n for n in endpoints)+'\n'
+audit = 'import Agent102AffineBoundary\nimport Agent102AffineDecision\n\n' + '\n'.join('#print axioms '+n for n in endpoints)+'\n'
 dest=Path(__file__).resolve().parent/'audit'
 dest.mkdir(exist_ok=True)
 (dest/'LiteralAudit.lean').write_text(audit)

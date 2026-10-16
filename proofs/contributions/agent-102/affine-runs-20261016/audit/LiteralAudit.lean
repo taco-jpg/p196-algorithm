@@ -1,4 +1,5 @@
-import Agent102AffineRuns
+import Agent102AffineBoundary
+import Agent102AffineDecision
 
 #print axioms Agent102.Affine.eval_zero
 #print axioms Agent102.Affine.eval_add
@@ -75,3 +76,26 @@ import Agent102AffineRuns
 #print axioms Agent102.equality_before_cutoff_of_tail_mismatch
 #print axioms Agent102.palindromicOnTail_spec
 #print axioms Agent102.nonpalindromicOnTail_spec
+#print axioms Agent102.AffineBoundary.wordAt_moving
+#print axioms Agent102.AffineBoundary.wordAt_fixed
+#print axioms Agent102.AffineBoundary.moving_fixed_eq_iff
+#print axioms Agent102.AffineBoundary.compareCutoff_moving_fixed
+#print axioms Agent102.AffineBoundary.moving_fixed_stable_iff
+#print axioms Agent102.AffineBoundary.equality_changes_arbitrarily_late
+#print axioms Agent102.AffineBoundary.no_uniform_wordAt_cutoff
+#print axioms Agent102.AffineBoundary.run_structure_counterexample
+#print axioms Agent102.AffineBoundary.overlap_digits_without_width
+#print axioms Agent102.AffineBoundary.zero_span_cross_inequalities
+#print axioms Agent102.AffineBoundary.zero_span_realized
+#print axioms Agent102.AffineBoundary.cross_inequalities_false_negative
+#print axioms Agent102.endpoint_ltOnTail_iff
+#print axioms Agent102.width_eq_iff_coefficients
+#print axioms Agent102.span_overlapsOnTail_iff
+#print axioms Agent102.fastEqualOnTail_iff_coefficients
+#print axioms Agent102.fastEqualOnTail_iff_wordAt
+#print axioms Agent102.fastEqualOnTail_eq_equalOnTail
+#print axioms Agent102.fastEqualOnTail_spec
+#print axioms Agent102.fastUnequalOnTail_spec
+#print axioms Agent102.fastPalindromicOnTail_eq
+#print axioms Agent102.fastPalindromicOnTail_spec
+#print axioms Agent102.fastNonpalindromicOnTail_spec

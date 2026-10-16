@@ -17,7 +17,8 @@
     "agent102-affine-runs": {
       "scope": "Literal affine run words: exact coverage, clipped-length endpoints, computable eventual equality and palindrome dichotomies.",
       "roots": [
-        "Agent102AffineRuns"
+        "Agent102AffineBoundary",
+        "Agent102AffineDecision"
       ],
       "modules": {
         "Agent102RunDefs": {
@@ -59,6 +60,23 @@
           "imports": [
             "Agent102RunEndpoints",
             "Agent102RunWord"
+          ]
+        },
+        "Agent102AffineBoundary": {
+          "path": "proofs/Agent102AffineBoundary.lean",
+          "sha256": "7dda5da29f8086b7a35b30f041e6092da2b8ea97bd315b5a1b75c6934d01c35a",
+          "git_blob": "abda251432ec4fffdff064c0eb796141c7ff2dc4",
+          "imports": [
+            "Agent102RunWord",
+            "Agent102AffineArithmetic"
+          ]
+        },
+        "Agent102AffineDecision": {
+          "path": "proofs/Agent102AffineDecision.lean",
+          "sha256": "1f41f5159bb5c2b25ebdc272d64482c27bb345003a55f0e1b3a4c495acd4fbe4",
+          "git_blob": "16fe35921aa842dcf987b6d85db03eea231d315c",
+          "imports": [
+            "Agent102AffineRuns"
           ]
         }
       }
@@ -141,7 +159,30 @@
         "Agent102.unequalOnTail_spec",
         "Agent102.equality_before_cutoff_of_tail_mismatch",
         "Agent102.palindromicOnTail_spec",
-        "Agent102.nonpalindromicOnTail_spec"
+        "Agent102.nonpalindromicOnTail_spec",
+        "Agent102.AffineBoundary.wordAt_moving",
+        "Agent102.AffineBoundary.wordAt_fixed",
+        "Agent102.AffineBoundary.moving_fixed_eq_iff",
+        "Agent102.AffineBoundary.compareCutoff_moving_fixed",
+        "Agent102.AffineBoundary.moving_fixed_stable_iff",
+        "Agent102.AffineBoundary.equality_changes_arbitrarily_late",
+        "Agent102.AffineBoundary.no_uniform_wordAt_cutoff",
+        "Agent102.AffineBoundary.run_structure_counterexample",
+        "Agent102.AffineBoundary.overlap_digits_without_width",
+        "Agent102.AffineBoundary.zero_span_cross_inequalities",
+        "Agent102.AffineBoundary.zero_span_realized",
+        "Agent102.AffineBoundary.cross_inequalities_false_negative",
+        "Agent102.endpoint_ltOnTail_iff",
+        "Agent102.width_eq_iff_coefficients",
+        "Agent102.span_overlapsOnTail_iff",
+        "Agent102.fastEqualOnTail_iff_coefficients",
+        "Agent102.fastEqualOnTail_iff_wordAt",
+        "Agent102.fastEqualOnTail_eq_equalOnTail",
+        "Agent102.fastEqualOnTail_spec",
+        "Agent102.fastUnequalOnTail_spec",
+        "Agent102.fastPalindromicOnTail_eq",
+        "Agent102.fastPalindromicOnTail_spec",
+        "Agent102.fastNonpalindromicOnTail_spec"
       ]
     }
   ],
