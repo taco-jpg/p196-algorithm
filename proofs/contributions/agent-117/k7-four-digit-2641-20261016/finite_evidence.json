@@ -1,0 +1,91 @@
+{
+  "task_id": "agent117-k7-four-digit-2641-20261016",
+  "evidence_status": "CHECKED_FINITE_COMPUTATION_NOT_LEAN",
+  "date_utc": "2026-10-16",
+  "historical_source": {
+    "branch": "research/agent-117/s20261015",
+    "path": "proofs/contributions/agent-117/remaining-prefix-cycles/prefix_cycles.py",
+    "github_blob_sha": "35a28bdce9b020aa4254e1214d433f272996bb9b",
+    "historical_claim": "PURE_PREFIX_CATALOGUE.md §5, 2641:6, checked computation"
+  },
+  "methods": [
+    "Local CPython 3 isolated finite graph closure, explicit forward edge checks and Kahn ranks",
+    "Independent JavaScript finite inversion and rank enumeration with exhaustive 10467 complete-short-word candidates and forward edge checks"
+  ],
+  "result": {
+    "prefix": "2641",
+    "width": 7,
+    "initial_long": 1000,
+    "initial_short": 0,
+    "all_short_sources_checked": 10467,
+    "short_predecessor_hits": 0,
+    "closure_long": 25624,
+    "closure_short": 0,
+    "graph_edges": 33821,
+    "acyclic": true,
+    "max_rank": 5,
+    "max_initial_rank": 5,
+    "finite_method_bound": 6,
+    "rank_histogram": {
+      "0": 9276,
+      "1": 4593,
+      "2": 4300,
+      "3": 6836,
+      "4": 491,
+      "5": 128
+    }
+  },
+  "row_data": {
+    "branch": "research/agent-117/k7-four-digit-2641-20261016T2129Z",
+    "path": "proofs/contributions/agent-117/k7-four-digit-2641-20261016/rank_rows_k7_2641.tsv",
+    "blob_sha": "5c4406ff4ff41699dccc7490cd897794e331e0d0",
+    "commit": "7ddbdb58fe5d26036a91fc6e369e74ba589e3b68",
+    "rows": 25624,
+    "notes": "Input rows and strict-descent ranks in numeric base19 order, plaintext."
+  },
+  "local_python_canonical_tuple_sort_sha256": "8bfd15c3020de0831b83834a1d888c282f30229f6f47880dca8bedf911ec6fbe",
+  "unproved_obligations": [
+    "Execute generator and kernel-check all 25624 published CodeTree rows against Agent124's complete fast inverse, including completeness theorem",
+    "Kernel-check width<7 short-word cases and 4-digit initial entryOK; in particular all 1000 long initial rows",
+    "Instantiate previously proved arbitrary-length PrefixL ordinary-orbit bridge with 2641 and verify no-overflow guard",
+    "Clean Lean 4.19.0 build and full transitive axiom audit on exact pinned sources",
+    "Independent review of semantics/leading-zero/carry and reachability interpretation"
+  ],
+  "claims_not_made": [
+    "Infinite avoidance for 196",
+    "Any new accepted Lean theorem",
+    "Exclusion of every palindrome prefix",
+    "Ownership of default-branch integration"
+  ],
+  "known_reusable_formal_dependencies": [
+    {
+      "ref": "research/agent-124/s20261015T1600",
+      "path": "proofs/contributions/agent-124/prefix-five-six/Agent124CodeCert.lean",
+      "git_blob": "4860b198f285848ec19869a8f76e68796f38d13b",
+      "identifiers": [
+        "Agent124.CodeCert.rowsClosed_of_all",
+        "Agent124.CodeCert.shortClosed_of_widths"
+      ],
+      "status": "source inspected; prior author's historical Lean dev verification, not new check"
+    },
+    {
+      "ref": "research/agent-124/s20261015T1600",
+      "path": "proofs/contributions/agent-124/prefix-five-six/Agent124PrefixL.lean",
+      "git_blob": "514273f7313721551758324264a87948ec087b8a",
+      "identifiers": [
+        "Agent124.PrefixL.entryOK",
+        "Agent124.PrefixL.ancestry_of_entries",
+        "Agent124.PrefixL.no_196_of_entries"
+      ],
+      "status": "source inspected; prior author's historical Lean dev verification, not independently rebuilt"
+    },
+    {
+      "ref": "research/agent-124/s20261015T1600",
+      "path": "proofs/contributions/agent-124/prefix-five-six/gen/gen_code.py",
+      "git_blob": "95877d0668b1805cf0d348d34e429bf176ce715d",
+      "status": "generator structure reused in explicit WIP adaptation"
+    }
+  ],
+  "path_lower_bound_witness": "rank5_witness.json",
+  "lean_target_file": "lean_wip/Agent1172641Targets.lean (goals only, no proofs)"
+}
