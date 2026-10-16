@@ -1,0 +1,119 @@
+{
+  "source": "proofs/Agent100GroupIIDynamics.lean",
+  "source_sha256": "07b8c8d8c0c6fa4aefa1034272464531e27353586066651fd5dda55408d3091c",
+  "git_blob": "d6fe51dd088f8a53937bb4ca66b1e3614528e098",
+  "namespace": "Agent100.GroupII",
+  "theorem_count": 22,
+  "statements": [
+    {
+      "name": "Agent100.GroupII.domain_core_bounds",
+      "signature_source": "theorem domain_core_bounds (r p u v : Nat) (h : Domain r p u v) :\n    1 \u2264 4 * u - 19 \u2227 4 * u - 19 \u2264 13 \u2227\n      2 \u2264 4 * v - 18 \u2227 4 * v - 18 \u2264 6 \u2227\n      1 \u2264 2 * (u + v) - 19 \u2227 2 * (u + v) - 19 \u2264 7",
+      "signature_sha256": "2577cd17ccf6481c13182ab907959d093d78443013d64617301979fb966a38e9"
+    },
+    {
+      "name": "Agent100.GroupII.domain_seven_cores",
+      "signature_source": "theorem domain_seven_cores (r p u v : Nat) (h : Domain r p u v) :\n    (u = 5 \u2227 v = 5) \u2228 (u = 5 \u2227 v = 6) \u2228\n      (u = 6 \u2227 v = 5) \u2228 (u = 6 \u2227 v = 6) \u2228\n      (u = 7 \u2227 v = 5) \u2228 (u = 7 \u2227 v = 6) \u2228 (u = 8 \u2227 v = 5)",
+      "signature_sha256": "fd012d1dfde16cdb5ad0a5fc64beec0dd6987beff9f2ba8b55c2c7310490326a"
+    },
+    {
+      "name": "Agent100.GroupII.component_low",
+      "signature_source": "theorem component_low (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, component r p u v i \u2264 9",
+      "signature_sha256": "96a7aebbaf29dea8b259fac4f0fbb04e67d5f74bb26f7ad03cc3e4627e2da545"
+    },
+    {
+      "name": "Agent100.GroupII.component_carry",
+      "signature_source": "theorem component_carry (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i \u2264 2 * r + 6 \u2192 carry (component r p u v) i = 0",
+      "signature_sha256": "f8521fa7944fc8d25cab68c7767eced87b3cd3afb71acec8480237cf7a611f86"
+    },
+    {
+      "name": "Agent100.GroupII.initial_carry",
+      "signature_source": "theorem initial_carry (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i \u2264 2 * r + 7 \u2192 carry (initial r p u v) i = initialCarry r i",
+      "signature_sha256": "6a0a1dd1bcb4fe954b19cd563faaabc07464caef4c775846e3ae2f46808a8fd4"
+    },
+    {
+      "name": "Agent100.GroupII.middle_carry",
+      "signature_source": "theorem middle_carry (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i \u2264 2 * r + 7 \u2192 carry (middle r p u v) i = middleCarry r i",
+      "signature_sha256": "728481e04bc6ab5e0b94ceeb7e7d7ee4ab26c2cd161271e95f79338a6c65fc82"
+    },
+    {
+      "name": "Agent100.GroupII.component_double_carry",
+      "signature_source": "theorem component_double_carry (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i \u2264 2 * r + 6 \u2192 carry (component r (2 * p) (2 * u) (2 * v)) i =\n      componentDoubleCarry r i",
+      "signature_sha256": "ad4916c8d95ad0dce52c37ad5b3d01df785169833882f838a38b68313667e75c"
+    },
+    {
+      "name": "Agent100.GroupII.component_no_overflow",
+      "signature_source": "theorem component_no_overflow (r p u v : Nat) (h : Domain r p u v) :\n    carry (component r p u v) (2 * r + 6) = 0",
+      "signature_sha256": "eed9344b1b9ab8cdddd32ea542ac7b37d269d61e49775e1c94c496c589cae8bf"
+    },
+    {
+      "name": "Agent100.GroupII.initial_no_overflow",
+      "signature_source": "theorem initial_no_overflow (r p u v : Nat) (h : Domain r p u v) :\n    carry (initial r p u v) (2 * r + 7) = 0",
+      "signature_sha256": "3c7898bba8ee973e9ca020e4a1c438d6de57b0ae0c2c21aa909a422095ae5be7"
+    },
+    {
+      "name": "Agent100.GroupII.middle_no_overflow",
+      "signature_source": "theorem middle_no_overflow (r p u v : Nat) (h : Domain r p u v) :\n    carry (middle r p u v) (2 * r + 7) = 0",
+      "signature_sha256": "1d1d1b64e044554181786464baa974b619cba5d3332465bfcfe529a299e2a380"
+    },
+    {
+      "name": "Agent100.GroupII.component_double_no_overflow",
+      "signature_source": "theorem component_double_no_overflow (r p u v : Nat) (h : Domain r p u v) :\n    carry (component r (2 * p) (2 * u) (2 * v)) (2 * r + 6) = 0",
+      "signature_sha256": "5f34ccb528165648a0935d4c21ba676349ffd2ffc6a8899708aba3b998d1ea66"
+    },
+    {
+      "name": "Agent100.GroupII.returnedComponent_symmetric",
+      "signature_source": "theorem returnedComponent_symmetric (r p u v : Nat) (hr : 1 \u2264 r) :\n    \u2200 i, i < 2 * r + 6 \u2192\n      returnedComponent r p u v i = returnedComponent r p u v (2 * r + 6 - 1 - i)",
+      "signature_sha256": "615773c9627582875fd9d2cf10c7b79cff28957069ea6e41bdfd73ae9f303856"
+    },
+    {
+      "name": "Agent100.GroupII.returnedComponent_core_table",
+      "signature_source": "theorem returnedComponent_core_table (r p u v : Nat) (hr : 1 \u2264 r) :\n    returnedComponent r p u v r = 1 \u2227\n      returnedComponent r p u v (r + 1) = 4 * u - 19 \u2227\n      returnedComponent r p u v (r + 2) = 4 * v - 18 \u2227\n      returnedComponent r p u v (r + 3) = 4 * v - 18 \u2227\n      returnedComponent r p u v (r + 4) = 4 * u - 19 \u2227\n      returnedComponent r p u v (r + 5) = 1",
+      "signature_sha256": "015bfacc2e128e3568470dca15dda4725b320ab01c56de3686671d57cb80a4db"
+    },
+    {
+      "name": "Agent100.GroupII.returned_first_neighbor",
+      "signature_source": "theorem returned_first_neighbor (r p u v : Nat) (hr : 1 \u2264 r) :\n    returned r p u v 1 = 4 * p + if r = 1 then 1 else 0",
+      "signature_sha256": "9c2d78ddbddbb573c168e2d3140d3271d98236deff85bbded73d86722c6e8603"
+    },
+    {
+      "name": "Agent100.GroupII.component_next",
+      "signature_source": "theorem component_next (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i < 2 * r + 6 \u2192 nextColumns (component r p u v) (2 * r + 6) i =\n      component r (2 * p) (2 * u) (2 * v) i",
+      "signature_sha256": "be6252cedf077c3026dd3f5318f3ff6d34af565fc872dc035d45471fa88cfb26"
+    },
+    {
+      "name": "Agent100.GroupII.component_double_next",
+      "signature_source": "theorem component_double_next (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i < 2 * r + 6 \u2192\n      nextColumns (component r (2 * p) (2 * u) (2 * v)) (2 * r + 6) i =\n        returnedComponent r p u v i",
+      "signature_sha256": "6cd478852e44a71a3051025d4abf655dc87287786c8e65d0cd65d36d69efbcb6"
+    },
+    {
+      "name": "Agent100.GroupII.initial_next",
+      "signature_source": "theorem initial_next (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i < 2 * r + 7 \u2192 nextColumns (initial r p u v) (2 * r + 7) i =\n      middle r p u v i",
+      "signature_sha256": "91a1bfd998de32ede97fb286d00eb873e48d54feb35b1ee380869ba45e8a0bc5"
+    },
+    {
+      "name": "Agent100.GroupII.middle_next",
+      "signature_source": "theorem middle_next (r p u v : Nat) (h : Domain r p u v) :\n    \u2200 i, i < 2 * r + 7 \u2192 nextColumns (middle r p u v) (2 * r + 7) i =\n      returned r p u v i",
+      "signature_sha256": "a4f8f99eb78536c44fc2171c97c4f5c83f22f2e4bc5e0b1254e538f4e88e0d23"
+    },
+    {
+      "name": "Agent100.GroupII.returned_is_overlap",
+      "signature_source": "theorem returned_is_overlap (r p u v : Nat) :\n    \u2200 i, returned r p u v i = shiftOne (returnedComponent r p u v) i",
+      "signature_sha256": "ce3b214cad4103bf53324293c4c8252d7dc67dd5eaa71a48de80dc67cd4b5743"
+    },
+    {
+      "name": "Agent100.GroupII.intermediate_overlap_fails",
+      "signature_source": "theorem intermediate_overlap_fails (r p u v : Nat) (h : Domain r p u v) :\n    \u00ac \u2200 i, i < 2 * r + 7 \u2192\n      nextColumns (initial r p u v) (2 * r + 7) i =\n        shiftOne (component r (2 * p) (2 * u) (2 * v)) i",
+      "signature_sha256": "23687f48c79a2aade3913a5ebd894a5002c5b74aa4e58de3eb19253d7d66b2f1"
+    },
+    {
+      "name": "Agent100.GroupII.component_two_step_return",
+      "signature_source": "theorem component_two_step_return (r p u v : Nat) (h : Domain r p u v) :\n    (iterPairs (component r p u v) (2 * r + 6) 2).1 = 2 * r + 6 \u2227\n      \u2200 i, i < 2 * r + 6 \u2192 (iterPairs (component r p u v) (2 * r + 6) 2).2 i =\n        returnedComponent r p u v i",
+      "signature_sha256": "284dcbcc8f7c033a381f2a5cb2802d48feb32a3ff2130461bdc71987a38b1c08"
+    },
+    {
+      "name": "Agent100.GroupII.whole_two_step_return",
+      "signature_source": "theorem whole_two_step_return (r p u v : Nat) (h : Domain r p u v) :\n    (iterPairs (initial r p u v) (2 * r + 7) 2).1 = 2 * r + 7 \u2227\n      \u2200 i, i < 2 * r + 7 \u2192 (iterPairs (initial r p u v) (2 * r + 7) 2).2 i =\n        shiftOne (returnedComponent r p u v) i",
+      "signature_sha256": "25271b11eef6868c9331c921f7b65e28ad6e53928fda529e459ce5131d03d869"
+    }
+  ]
+}

@@ -19,9 +19,18 @@
 - `../../../Agent100GroupIIDynamics.lean`：精确进位和有限列返回。
 - `../../../Agent100GroupIISafety.lean`：任意普通整数实现的两步安全。
 - `../../../Agent100DoubleGate.lean`：旧第一组与新第二组的一次四步组合。
+- `../../../Agent100GroupIIDefect.lean`：精确有符号误差、下一步抵消，以及同 r/同宽旧四核模板的不闭合。
 - `controls/`：独立普通整数交叉检查、完整压缩结果及语义审查。
 - `verification/dependencies/`：原六模块的精确源码依赖和复建入口。
 - `development/`：保留实际编译尝试及日志。
 - `RESEARCH_QUEUE.json`：候选与活动义务；候选不构成所有权认领。
 
 主分支的接受清单和归档保持其各自范围。当前贡献分支的完整验证命令会随源检查点发布。
+
+## 已核验结果与重放
+
+四份新源码的53个导出定理已在 Lean4.19.0 中完成。独立十模块干净重建和完整1,932个 theorem constants 的传递公理审计通过，仅有 Classical.choice、Quot.sound、propext。该常量数含依赖和自动生成辅助项，不是新发现计数。普通整数结论覆盖每一个满足初始 canonical pair-sum 条件的实现；另有有限正整数存在性证明。
+
+相同 r 下返回中心由四核扩为六核，在原四核模板中不能直接闭合。冗余比较词不是 Admissible 的实际 pair word；它只用于归一化误差抵消证明。以上均不排除其他后续形状或时间。
+
+完整入口：`python3 proofs/contributions/agent-100/groupII-overlap-20261016/verification/checkpoint02/replay.py --lean /absolute/path/to/lean-4.19.0 --output /absolute/path/to/fresh-output`。输出目录必须尚不存在。完整控制逐例JSON保存在对应 evidence.tar.xz 的 checkpoint/ 下；失败尝试完整保留在 history-excluded/ 下。
