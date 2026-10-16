@@ -43,7 +43,7 @@ the following bounded even coefficient:
 
 This table was separately kernel checked for all 760 triples
 `v : Fin 10`, `p : Fin 4`, `z : Fin 19` in
-`ReviewCenter.center_carry_table`. Its proof uses direct `decide` reduction of
+`P196.Agent7.ReviewOddCenter.center_carry_table`. Its proof uses direct `decide` reduction of
 `Center`, not the author's `center_iff` theorem. The finite fixture checks the
 explicit table interpretation; the author's universal `center_iff` supplies
 the all-natural-source statement with its explicit bound.

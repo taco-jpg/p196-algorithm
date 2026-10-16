@@ -40,12 +40,38 @@ without assuming a half-word encoding. The list is duplicate-free. Its
 incremental build passed using pinned dependency objects from the separately
 recorded clean bridge build. The width-one positive witness is `[[2]]` for
 empty target half and target center digit 2. The first failed simplification
-attempt is preserved. Complete canonical sharpness packaging and a final
-combined fresh import-closure audit remain the next checkpoint.
+attempt is preserved. `OddSharp.lean` now proves complete canonical sharpness, an explicit attaining
+family at every half-width, and exact prescribed-center maxima for positive
+half-width. Its eleven exports compiled with the permitted foundational axioms.
 
 Independent specialists have separately reviewed and rebuilt several
 components; their exact source pins and semantic scope are retained in the
 review records. This checkpoint is not integrated into the accepted build.
+
+## Fixed-center refinement and arbitrary outputs
+
+`OddCountsFixedCenter.lean` proves all-nine targets maximize each prescribed
+center separately. `OddCountsPhase.lean` gives the exact six-phase formula:
+when `m % 6 < 3`, even target center digits receive the ceiling of
+`fib(m+1)/2` and odd digits the floor; in the other three phases the roles
+reverse. At even Fibonacci values these agree. A completely explicit global
+maximizer uses center digit 6 in the first three phases and 7 otherwise.
+The canonical sharp family has target half `[11] ++ replicate (m-1) 9`
+when `m>0`, and the source singleton `[[6]]` when `m=0`.
+The source center is even; the target middle coefficient is twice its
+prescribed normalized output digit. For fixed-center canonical maxima,
+width one is handled separately because its zero-source candidate is removed.
+
+The frozen extension sources have independent fresh rebuild and semantic
+review evidence in `center-dev/review-extensions`. Every exported theorem
+has an allowed axiom report, including the original counting declarations
+which are not all literal print roots in the author file.
+
+`OddComplete.lean` currently checks an explicit decoder and equality-guarded
+enumerator for arbitrary output lists, together with its duplicate freedom,
+uniform bound, attaining family, and impossible-target controls. Its actual
+membership equivalence for arbitrary outputs remains pending the actual
+output-range bridge. This checkpoint does not yet claim that final endpoint.
 
 ## Imported source identity
 

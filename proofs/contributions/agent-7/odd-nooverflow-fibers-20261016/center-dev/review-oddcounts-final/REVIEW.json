@@ -1,0 +1,74 @@
+{
+  "status": "INDEPENDENTLY-REVIEWED",
+  "components_reviewed": [
+    "OddCounts at frozen 7e7a97c04a065e4060d11c652807ba6e8f3531da505e4336070caf97beabe939",
+    "OddActual at frozen 15b8a66e67da8fecaf6e244416825a2a28ecb1e188ac8eccbb53827cfff427bf"
+  ],
+  "reviewer": "Agent #7 center/enumerator specialist; did not author OddCounts or OddActual",
+  "dependency_disclosure": "Reviewer authored OddCenter. Its 15 exports were executed/audited here but are not characterized as independently semantically reviewed by this reviewer. The actual-arithmetic specialist separately reviewed OddCenter.",
+  "toolchain": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "fresh_build": {
+    "empty_directory": true,
+    "flags": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "module_count": 8,
+    "additional_review_modules": [
+      "EndpointAudit",
+      "AllExportsAudit"
+    ],
+    "results_file": "results.json",
+    "all_passed": true
+  },
+  "axiom_audit": {
+    "file": "axiom-audit.json",
+    "every_public_theorem": true,
+    "counts": {
+      "OddCenter": 15,
+      "OddCounts": 30,
+      "OddActual": 9
+    },
+    "total": 54,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unexpected_axioms": []
+  },
+  "source_pins": {
+    "OddCenter": "72f1c2e64a587e25f85482b6f61ceea0763218d60c7c7cc5eaa7d1d31ca65728",
+    "OddCounts": "7e7a97c04a065e4060d11c652807ba6e8f3531da505e4336070caf97beabe939",
+    "OddActual": "15b8a66e67da8fecaf6e244416825a2a28ecb1e188ac8eccbb53827cfff427bf"
+  },
+  "semantic_findings": {
+    "OddCounts": [
+      "The five classes are derived from the exact imported arithmetic table; zero and eighteen boundary symbols are retained. The four-symbol finite base proves coordinatewise bounds for all 5^4 class sequences by kernel reduction.",
+      "The GrowthGood reference invariant begins at two nine steps; arbitrary words are seeded by the separate four-symbol theorem, and lengths zero through three are separately bounded. No unproved domination at zero or one is used.",
+      "NearBalanced bounds A+B versus C+D within one; the exact all-nine total is fib(m+1), giving oddMax(m)=(fib(m+1)+1)/2 with natural-number rounding.",
+      "oddEndpoint chooses A+B for even output-center digit and C+D for odd, precisely matching low p=v%2 in the unique Center equation. The suffix/forward dot identity counts actual explicit preimages and introduces no second center multiplicity.",
+      "leading_eleven_odd_sharp attains the maximum for every positive half-width. leading_eleven_odd_positive proves each source has leading coefficient five. Half-width zero has an explicit positive witness with v=2,z=2 in the independent controls.",
+      "Equal center-digit parity implies equal enumerator length, not identical source words; the theorem states exactly this count equality."
+    ],
+    "OddActual": [
+      "OddRealizes requires source half-length, every coefficient bound, and even bounded source center. Its scan equation preserves both boundary carries and the output middle digit.",
+      "Both OddPath-to-scan and scan-to-OddPath directions are proved. The converse constructs the state from actual inner scan carries, derives carry bounds from coefficient bounds, and recovers actual outside digits without guessed carry assumptions.",
+      "pair_odd_halves doubles the actual output middle digit. oddActual_realizes uses full odd-word injectivity to recover both the outer target sums and equality of the normalized center digit.",
+      "OddActualFiber fixes initial and final whole-word carries at zero through the actual scan. Its stepWord equality uses the unchanged imported repository normalizer and pair operation. No widened or weakened reverse-add map is substituted.",
+      "The empty-half case is preserved. Explicit independent fixtures establish OddActualFiber [] 2 [] 2 and OddActualFiber [11] 0 [5] 10, while source-center coefficient one is rejected."
+    ]
+  },
+  "scope_limits": [
+    "The bound counts distinct symmetric source pair-coefficient words (half-word plus even center), not distinct original integers or digit splits realizing those pair sums.",
+    "The unfiltered enumerator includes zero outer coefficients; positive canonical filtering and complete-word cardinality transport are separate parent modules.",
+    "OddActualFiber concerns the repository coefficient-word normalization map with no overflow. This review does not add a new ordinary-integer realization theorem or an infinite orbit conclusion.",
+    "Later fixed-center extensions to OddCounts, OddCanonical, and OddSharp are outside this frozen source review."
+  ],
+  "independent_control_source": "source/EndpointAudit.lean",
+  "reproduce_commands": [
+    "python3 proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/center-dev/review-oddcounts-final/check.py",
+    "python3 proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/center-dev/review-oddcounts-final/all_exports_check.py"
+  ]
+}
