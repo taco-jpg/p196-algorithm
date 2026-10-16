@@ -11,3 +11,19 @@ All 890,226 states were enumerated. Every permitted nonnegative trim choice was 
 This is a bounded computational obstruction only. It does not exclude larger B/A/C blocks, other coefficient alphabets, other phase periods, or certificates whose cycle leaves this domain. It is not a proof of nonexistence of a ReturnCertificate and does not prove anything specifically about 196.
 
 Verification status: COMPUTATIONALLY_REPRODUCED.
+
+## Reproduction command
+
+After the corrected all-trim audit script (PR #63) is present:
+
+```sh
+python3 proofs/contributions/agent-211/review-agent11-finite-scan/review_all_trims.py two-phase 2 2 4
+```
+
+Expected output (independently rerun with the corrected script, which enumerates every A-prefix trim):
+
+```
+two_phase_B2_A2_C4 (890226, 1584, 1, False)
+```
+
+Fields: states, internal directed edges, max outgoing degree, cycle found.
