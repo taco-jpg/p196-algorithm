@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #11",
+  "title": "Agent #2 exact canonical overflow-fiber maximum: scoped source closure",
+  "toolchain": {
+    "release": "4.19.0",
+    "commit_prefix": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "compiler_arguments": [
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    {
+      "id": "SCOPED_CONTRIBUTION_ONLY",
+      "status": "OPEN",
+      "description": "This dedicated registry covers the complete Agent2 overflow-fiber contribution only; it makes no repository-wide census or verification claim."
+    }
+  ],
+  "projects": {
+    "agent2-overflow-fibers": {
+      "modules": {
+        "Agent2OverflowActual": {
+          "path": "proofs/Agent2OverflowActual.lean",
+          "sha256": "ae8776a396c90286e303c16210fd036ab405c461796be48e5f384ff958fd5dc1",
+          "git_blob": "8a23434bae505596ce0ee481e438e2e3be4e905d",
+          "imports": [
+            "PeriodObstructions"
+          ]
+        },
+        "Agent2OverflowBound": {
+          "path": "proofs/Agent2OverflowBound.lean",
+          "sha256": "d0d602d806e430babef7350d7c4ccfdb2ccd0c44f34cd700c2e18ec2a851c6be",
+          "git_blob": "7a8ec5eb70cf418ef23f0a55654b88031797bfb4",
+          "imports": [
+            "Agent2OverflowActual",
+            "Agent2OverflowLocal"
+          ]
+        },
+        "Agent2OverflowFibers": {
+          "path": "proofs/Agent2OverflowFibers.lean",
+          "sha256": "55ae050107a063ab8ec59453bab340a765bd8ccd91e8c5e1e8141ee52129cb06",
+          "git_blob": "445086036a8b3884633b0b1ba6384edbae41b81b",
+          "imports": [
+            "Agent2OverflowBound",
+            "Agent2OverflowImage"
+          ]
+        },
+        "Agent2OverflowImage": {
+          "path": "proofs/Agent2OverflowImage.lean",
+          "sha256": "2f8f8b909a46fd270d2f10cf8c99823deee0a4635c31b6343f73bea64dd262f2",
+          "git_blob": "4519227d3e015cd889ceb5fdfca88f515d99e54a",
+          "imports": [
+            "Agent2OverflowActual",
+            "Agent2OverflowLocal",
+            "Agent2OverflowSharp"
+          ]
+        },
+        "Agent2OverflowLocal": {
+          "path": "proofs/Agent2OverflowLocal.lean",
+          "sha256": "5fc0ef519aeb5a8f56d6a1aecfbcdd445ab85397f3cc31d3e0d8572425fb3f7d",
+          "git_blob": "6a2e4f55863d458f3bb32e69e3eaaebdfdb6445f",
+          "imports": [
+            "Std"
+          ]
+        },
+        "Agent2OverflowSharp": {
+          "path": "proofs/Agent2OverflowSharp.lean",
+          "sha256": "3475b6626721a2f0ad9040ccdd369e960508d08114e5194e49b9870f13ed2ead",
+          "git_blob": "061561e03a7eaf79c60b81b7aa8d4b7c27438a85",
+          "imports": [
+            "PeriodObstructions"
+          ]
+        },
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+          "imports": [
+            "Std"
+          ]
+        }
+      },
+      "roots": [
+        "Agent2OverflowFibers"
+      ],
+      "scope": "For every input width L>=2, the complete canonical coefficient-word fiber of the literal Agent8.stepWord with actual final carry1 has size at most2^(L/2-1); the explicit 5/10 target attains the bound and its immediate normalization is nonpalindromic. Coefficient words only; no digit-splitting count or all-time claim.",
+      "source_head": "302791955bf40ab34b7d702c713b2f8bf79862a0",
+      "source_base": "4b4edf976b2c7a9ba1dad80636c0e21c66350325"
+    }
+  },
+  "claims": [
+    {
+      "id": "agent2-overflow-sharp-maximum",
+      "project": "agent2-overflow-fibers",
+      "module": "Agent2OverflowFibers",
+      "scope": "Complete actual overflow fibers, both input parities, L>=2.",
+      "endpoints": [
+        "P196.Agent2.OverflowFibers.actualOverflowPreimages_membership",
+        "P196.Agent2.OverflowFibers.actual_overflow_fiber_bound",
+        "P196.Agent2.OverflowFibers.actualOverflowPreimages_sharp",
+        "P196.Agent2.OverflowFibers.actual_overflow_sharp_maximum",
+        "P196.Agent2.OverflowFibers.sharpWord_actualOverflowFiber",
+        "P196.Agent2.OverflowFibers.sharpTarget_normalize"
+      ]
+    }
+  ],
+  "retained_not_accepted": []
+}
