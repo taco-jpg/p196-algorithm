@@ -1,0 +1,47 @@
+{
+  "reviewer": "/root/source_audit",
+  "author": "/root/scope_scan",
+  "independent": true,
+  "source_sha256": "592f4af76ee78c92f24dddf91042f0fc2c918944dd181d7e058eb3c57330ffa6",
+  "compile_exit_code": 0,
+  "environment_audit_exit_code": 0,
+  "explicit_theorems": 27,
+  "audited_kernel_theorems_including_generated": 104,
+  "audited_safe_constants": 106,
+  "generated_unsafe_compiler_artifacts": 4,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "source_semantics": "核对原 NoOverflow、实际整宽 actual_noOverflow、V_succ 与 canonical value；无存在性、数字拆分唯一性或全时域排除越权。",
+  "checks": [
+    "r=0 短宽四边界",
+    "内部进位区间 2..2r+3",
+    "末端进位在 2r+4 归零",
+    "源字默认值仅在明确宽度范围内使用",
+    "自然数中间项 33*10^(2r+2)+22"
+  ],
+  "files": {
+    "ResidualFiveShape.lean": {
+      "sha256": "592f4af76ee78c92f24dddf91042f0fc2c918944dd181d7e058eb3c57330ffa6",
+      "bytes": 10689
+    },
+    "ResidualFiveShape.olean": {
+      "sha256": "93ee1c2ec2b6957b2bd8ab504752a970f3e9a5037f6cbe438db8b140546d7734",
+      "bytes": 1011008
+    },
+    "ShapeEnvironmentAudit.lean": {
+      "sha256": "b215c3f0d1deac92e145503d4928cd5e1a0a859ff241f71d54ca3d22055c6880",
+      "bytes": 1239
+    },
+    "compile.log": {
+      "sha256": "f43ab530f0e4bfd1231505b6714eb61a3f28e62e1e94a553eaa17bade730ad8d",
+      "bytes": 421
+    },
+    "environment-audit.log": {
+      "sha256": "caa0433687d0818b1c4edf708221b037aad4fcc5ae0dd155d11e589c0ecc7b37",
+      "bytes": 10323
+    }
+  }
+}
