@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "verification_scope": "Driver adaptation provenance; inherited guard outcomes are not a fresh test run.",
+  "driver_predecessor": {
+    "source": "proofs/contributions/agent-3/two-history-20261016/verification/verify.py",
+    "source_commit": "89287c9d3eb7dd801c2b1a59eff03140d47d24ec",
+    "sha256": "bf91485edd05e0afb993f4c67949300ce1251d2d74808d1e0e52dbb97372fdcb"
+  },
+  "manifest_predecessor": {
+    "source": "proofs/contributions/agent-3/two-history-20261016/verification/source-pins.json",
+    "source_commit": "89287c9d3eb7dd801c2b1a59eff03140d47d24ec",
+    "sha256": "055a7a18a87e56c4c786943517874fd7f82b2e4a138f7c9a8bd6846c85948f84"
+  },
+  "current_driver_sha256": "072d88ffbb7aeb2b93cc1d9deb240b8460690b18c88e86dbd6ce87ef99544e9e",
+  "current_manifest_sha256": "197e33a9262c10b1b3741c01bae6115dbb6219c136266e3a3c410b51e7d83462",
+  "allowed_changes": [
+    "Module docstring describes the three-layer contribution.",
+    "AUDIT_NAMESPACES adds P196.Agent3.ThreeLayer; no existing namespace is removed."
+  ],
+  "otherwise_byte_identical": true,
+  "ast_identical_after_removing_only_module_docstring_and_namespace_assignment": true,
+  "acceptance_check_logic_unchanged": true,
+  "guard_suite": {
+    "count": 14,
+    "result": "PASS",
+    "fresh_run": false,
+    "tested_driver_sha256": "bf91485edd05e0afb993f4c67949300ce1251d2d74808d1e0e52dbb97372fdcb",
+    "reason_for_reuse": "Every acceptance check is unchanged; only the contribution namespace set is extended.",
+    "retained_original_files": [
+      {
+        "source": "proofs/contributions/agent-3/two-history-20261016/verification/development/check_verifier_guards.py",
+        "source_commit": "89287c9d3eb7dd801c2b1a59eff03140d47d24ec",
+        "retained": "development/inherited-check_verifier_guards.py",
+        "sha256": "4e2482f892c6096d3f5840e686dab12221d2015ee06512fabe56d718ff9b7d73"
+      },
+      {
+        "source": "proofs/contributions/agent-3/two-history-20261016/verification/development/verifier-guard-checks.json",
+        "source_commit": "89287c9d3eb7dd801c2b1a59eff03140d47d24ec",
+        "retained": "development/inherited-verifier-guard-checks.json",
+        "sha256": "b88827a1571045ed783a57ffd1b8e22b29f8f3195b58bc18d8e5179bb9fec963"
+      },
+      {
+        "source": "proofs/contributions/agent-3/two-history-20261016/verification/development/verifier-guard-checks.log",
+        "source_commit": "89287c9d3eb7dd801c2b1a59eff03140d47d24ec",
+        "retained": "development/inherited-verifier-guard-checks.log",
+        "sha256": "b88827a1571045ed783a57ffd1b8e22b29f8f3195b58bc18d8e5179bb9fec963"
+      }
+    ]
+  },
+  "mathematical_source_commit": "6ce47fddb10f15b4af1025954f1694825093673d",
+  "preflight_source_count": 27,
+  "preflight_explicit_declaration_count": 231,
+  "new_module_explicit_counts": {
+    "DeadPrefix": 15,
+    "ActualDepth": 14,
+    "SharpHistoryFamily": 16,
+    "SharpHistoryTheorem": 7
+  },
+  "preparation_script_sha256": "bed88427a98e8c5916fad638a1911c9308751b4b4f4c67b60b8f828a48deb270"
+}
