@@ -1,0 +1,3857 @@
+{
+  "created_utc": "2026-10-16T22:14:53.534111+00:00",
+  "scope": "Retrospective source enumeration only; no new compilation or kernel audit.",
+  "old_strategy": "order[1:], then original column-zero def/theorem/abbrev regex",
+  "old_regex": "^(?:noncomputable )?(?:def|theorem|abbrev)\\s+([A-Za-z0-9_]+)",
+  "comment_aware_regex": "^[ \\t]*(?:@\\[[^\\]\\n]*\\][ \\t]*)*(?P<modifiers>(?:(?:private|protected|noncomputable|unsafe|partial)[ \\t]+)*)(?P<kind>def|theorem|lemma|abbrev|axiom|opaque|instance|inductive|structure|class)[ \\t]+(?P<name>[^\\s({:]+)",
+  "old_generated_audit_exactly_reproduced": true,
+  "old_generated_audit_count": 112,
+  "old_commands_explicit_trust_zero": false,
+  "core_seven_explicit_count": 448,
+  "core_seven_old_generated_audit_count": 86,
+  "ten_modules_explicit_count": 475,
+  "ten_modules_absent_from_old_generated_audit": 363,
+  "old_evidence_checks": [
+    {
+      "file": "build_independent.py",
+      "expected_sha256": "7ea991d739688bb6e4d100c6013517327390cb6de5dd5eb136acb1ec692d1e34",
+      "actual_sha256": "7ea991d739688bb6e4d100c6013517327390cb6de5dd5eb136acb1ec692d1e34",
+      "unchanged": true
+    },
+    {
+      "file": "source-map.json",
+      "expected_sha256": "1b11a5d0b88329bedafb58fedebb69e0899afccc1a5cd73cbba05306b7cad481",
+      "actual_sha256": "1b11a5d0b88329bedafb58fedebb69e0899afccc1a5cd73cbba05306b7cad481",
+      "unchanged": true
+    },
+    {
+      "file": "IndependentDependencyAudit.lean",
+      "expected_sha256": "f619ce1c34a22256dc6fa012e0fefba260198e5aab5429c4445c6583343a859f",
+      "actual_sha256": "f619ce1c34a22256dc6fa012e0fefba260198e5aab5429c4445c6583343a859f",
+      "unchanged": true
+    },
+    {
+      "file": "build-results-approved02.json",
+      "expected_sha256": "0e747f6ff445514c9a12a2a372062c3e8af4010a199b76de769c205378c840ec",
+      "actual_sha256": "0e747f6ff445514c9a12a2a372062c3e8af4010a199b76de769c205378c840ec",
+      "unchanged": true
+    },
+    {
+      "file": "buffered-published-tip-validation.json",
+      "expected_sha256": "dc2d65f772be742e6aca83e80cce9e37072eb1052335b0463bf74d3a72daf1e9",
+      "actual_sha256": "dc2d65f772be742e6aca83e80cce9e37072eb1052335b0463bf74d3a72daf1e9",
+      "unchanged": true
+    },
+    {
+      "file": "build-results.json",
+      "expected_sha256": "fd14c6745e3490ef0fabec23932904d23498f19a520e2cf16d6511787a941c81",
+      "actual_sha256": "fd14c6745e3490ef0fabec23932904d23498f19a520e2cf16d6511787a941c81",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs/LychrelDigitSums.stdout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs/LychrelDigitSums.stderr.log",
+      "expected_sha256": "c82df870ca9b5c1f3b845ad4db1390a1c2eb49cdd84e15c5945db5e5dc20089d",
+      "actual_sha256": "c82df870ca9b5c1f3b845ad4db1390a1c2eb49cdd84e15c5945db5e5dc20089d",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Products.stdout.log",
+      "expected_sha256": "586ab3f6cf646390259c27abfa4199749aaa5f4b54446ed84556f47ad29a80d4",
+      "actual_sha256": "586ab3f6cf646390259c27abfa4199749aaa5f4b54446ed84556f47ad29a80d4",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Trace.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Indexing.stdout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/FiniteWords.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/WholeWord.stdout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/WholeWord.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/IndependentDependencyAudit.stdout.log",
+      "expected_sha256": "11bacc1237fdd91b480bfd2f8c255ab481d65895d6cb12b786fdbb6bc32cd084",
+      "actual_sha256": "11bacc1237fdd91b480bfd2f8c255ab481d65895d6cb12b786fdbb6bc32cd084",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Trace.stdout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Obstruction.stdout.log",
+      "expected_sha256": "9b4ae62c97637441114f2bf1d4ea64a0d9fd9686e0be5b9229e3b0df2ae52b70",
+      "actual_sha256": "9b4ae62c97637441114f2bf1d4ea64a0d9fd9686e0be5b9229e3b0df2ae52b70",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/CarryPath.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Safety.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Products.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/LychrelDigitSums.stdout.log",
+      "expected_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e",
+      "actual_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/FamilyStates.stdout.log",
+      "expected_sha256": "5900e685f1b127809c969ef900a42b83bc922dc07f02fe9571065cef569823a4",
+      "actual_sha256": "5900e685f1b127809c969ef900a42b83bc922dc07f02fe9571065cef569823a4",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/LychrelDigitSums.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/CarryPath.stdout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Obstruction.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/FiniteWords.stdout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Indexing.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/Safety.stdout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/FamilyStates.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "file": "build-logs-approved02/IndependentDependencyAudit.stderr.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    }
+  ],
+  "modules": [
+    {
+      "module": "LychrelDigitSums",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/research/continuation/LychrelDigitSums.lean",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": false,
+      "old_regex_raw_matches": 353,
+      "old_generated_audit_count": 0,
+      "comment_aware_explicit_count": 362,
+      "kind_counts": {
+        "def": 63,
+        "theorem": 296,
+        "structure": 2,
+        "inductive": 1
+      },
+      "private_explicit_count": 5,
+      "source_embedded_print_axioms_count": 126,
+      "declarations": [
+        {
+          "line": 85,
+          "kind": "def",
+          "name": "reverseAux",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 93,
+          "kind": "def",
+          "name": "reverseFuel",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 99,
+          "kind": "theorem",
+          "name": "reverseFuel_correct",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 116,
+          "kind": "def",
+          "name": "reverse10",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 118,
+          "kind": "def",
+          "name": "Palindrome",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 123,
+          "kind": "def",
+          "name": "step",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 126,
+          "kind": "def",
+          "name": "orbit",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 131,
+          "kind": "def",
+          "name": "IsLychrel",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 135,
+          "kind": "def",
+          "name": "Decimal196Conjecture",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 138,
+          "kind": "def",
+          "name": "DecimalLychrelExistence",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 140,
+          "kind": "theorem",
+          "name": "reverseAux_mod9",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 154,
+          "kind": "theorem",
+          "name": "reverse10_mod9",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 159,
+          "kind": "theorem",
+          "name": "step_mod9",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 163,
+          "kind": "theorem",
+          "name": "conjecture196_implies_existence",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 168,
+          "kind": "theorem",
+          "name": "lychrel_of_invariant",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 178,
+          "kind": "theorem",
+          "name": "orbit_from_step",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 187,
+          "kind": "theorem",
+          "name": "lychrel_step",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 194,
+          "kind": "def",
+          "name": "noPalindromeFor",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 200,
+          "kind": "theorem",
+          "name": "noPalindromeFor_sound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 223,
+          "kind": "theorem",
+          "name": "reverse_examples",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 229,
+          "kind": "theorem",
+          "name": "first_steps",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 236,
+          "kind": "theorem",
+          "name": "carry_counterexample",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 242,
+          "kind": "theorem",
+          "name": "finite_check_196",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 245,
+          "kind": "theorem",
+          "name": "no_palindrome_through_100",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 279,
+          "kind": "theorem",
+          "name": "no_overflow_palindrome_has_no_carries",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 321,
+          "kind": "theorem",
+          "name": "overflow_carry_compatibility",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 333,
+          "kind": "theorem",
+          "name": "overflow_palindrome_digit_sums",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 408,
+          "kind": "theorem",
+          "name": "small_digit_sums_give_palindrome",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 445,
+          "kind": "theorem",
+          "name": "zero_or_eleven_digit_sums_give_palindrome",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 513,
+          "kind": "def",
+          "name": "value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 518,
+          "kind": "def",
+          "name": "reflected",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 522,
+          "kind": "def",
+          "name": "columnSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 526,
+          "kind": "def",
+          "name": "carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 531,
+          "kind": "def",
+          "name": "output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 534,
+          "kind": "theorem",
+          "name": "columnSum_symmetric",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 540,
+          "kind": "theorem",
+          "name": "columnSum_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 549,
+          "kind": "theorem",
+          "name": "column_equation",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 554,
+          "kind": "theorem",
+          "name": "carry_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 567,
+          "kind": "theorem",
+          "name": "output_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 572,
+          "kind": "theorem",
+          "name": "value_add",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 582,
+          "kind": "theorem",
+          "name": "value_output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 597,
+          "kind": "theorem",
+          "name": "reverse_add_value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 604,
+          "kind": "theorem",
+          "name": "no_overflow_palindrome_iff",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 629,
+          "kind": "theorem",
+          "name": "overflow_palindrome_iff",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 657,
+          "kind": "theorem",
+          "name": "value_congr",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 665,
+          "kind": "theorem",
+          "name": "value_shift",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 678,
+          "kind": "theorem",
+          "name": "reflected_value_shift",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 693,
+          "kind": "theorem",
+          "name": "value_positive",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 704,
+          "kind": "theorem",
+          "name": "reverseAux_value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 739,
+          "kind": "theorem",
+          "name": "reverse10_value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 748,
+          "kind": "theorem",
+          "name": "step_value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 760,
+          "kind": "theorem",
+          "name": "value_injective",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 780,
+          "kind": "theorem",
+          "name": "palindrome_value_iff",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 795,
+          "kind": "theorem",
+          "name": "output_leading_positive",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 806,
+          "kind": "theorem",
+          "name": "step_palindrome_iff_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 820,
+          "kind": "def",
+          "name": "extended",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 823,
+          "kind": "theorem",
+          "name": "value_extended",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 834,
+          "kind": "theorem",
+          "name": "extended_symmetry_iff",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 860,
+          "kind": "theorem",
+          "name": "step_palindrome_iff_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 883,
+          "kind": "theorem",
+          "name": "step_palindrome_iff",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 907,
+          "kind": "def",
+          "name": "Canonical",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 911,
+          "kind": "theorem",
+          "name": "canonical_exists",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 945,
+          "kind": "def",
+          "name": "PalindromePredecessor",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 953,
+          "kind": "theorem",
+          "name": "palindromePredecessor_iff",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 966,
+          "kind": "theorem",
+          "name": "orbit_positive",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 975,
+          "kind": "theorem",
+          "name": "isLychrel_iff_avoids_predecessors",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 995,
+          "kind": "theorem",
+          "name": "conjecture196_iff_avoids_predecessors",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1031,
+          "kind": "theorem",
+          "name": "orbit_add",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1040,
+          "kind": "structure",
+          "name": "BlockCertificate",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1058,
+          "kind": "theorem",
+          "name": "BlockCertificate.sound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1073,
+          "kind": "theorem",
+          "name": "BlockCertificate.implies_existence",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1080,
+          "kind": "theorem",
+          "name": "lychrel_of_shifted_family",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1100,
+          "kind": "theorem",
+          "name": "expanding_family_certificate",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1110,
+          "kind": "theorem",
+          "name": "lychrel_of_entry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1124,
+          "kind": "theorem",
+          "name": "conjecture196_of_entry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1152,
+          "kind": "def",
+          "name": "nextColumns",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1158,
+          "kind": "theorem",
+          "name": "canonical_next_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1169,
+          "kind": "theorem",
+          "name": "canonical_next_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1183,
+          "kind": "theorem",
+          "name": "actual_overflow_cases",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1192,
+          "kind": "theorem",
+          "name": "next_column_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1206,
+          "kind": "theorem",
+          "name": "next_column_overflow_outer",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1220,
+          "kind": "theorem",
+          "name": "next_column_overflow_interior",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1241,
+          "kind": "theorem",
+          "name": "folded_carry_transition",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1252,
+          "kind": "theorem",
+          "name": "folded_emission_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1262,
+          "kind": "theorem",
+          "name": "folded_emission_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1271,
+          "kind": "theorem",
+          "name": "folded_delay_update",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1282,
+          "kind": "theorem",
+          "name": "even_center_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1289,
+          "kind": "theorem",
+          "name": "odd_center_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1295,
+          "kind": "theorem",
+          "name": "odd_center_input",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1303,
+          "kind": "theorem",
+          "name": "odd_center_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1312,
+          "kind": "theorem",
+          "name": "even_center_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1321,
+          "kind": "theorem",
+          "name": "odd_center_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1330,
+          "kind": "theorem",
+          "name": "forward_trace_unique",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1344,
+          "kind": "theorem",
+          "name": "backward_trace_unique",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1369,
+          "kind": "theorem",
+          "name": "even_folded_trace_sound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1388,
+          "kind": "theorem",
+          "name": "odd_folded_trace_sound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1407,
+          "kind": "def",
+          "name": "realizingDigit",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1412,
+          "kind": "theorem",
+          "name": "realizingDigit_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1426,
+          "kind": "theorem",
+          "name": "realizingDigit_columns",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1446,
+          "kind": "theorem",
+          "name": "realizingDigit_leading_positive",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1469,
+          "kind": "theorem",
+          "name": "valid_word_realizable",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1515,
+          "kind": "def",
+          "name": "nextWidth",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1520,
+          "kind": "def",
+          "name": "Admissible",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1526,
+          "kind": "def",
+          "name": "BadWord",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1530,
+          "kind": "theorem",
+          "name": "carry_congr_upto",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1540,
+          "kind": "theorem",
+          "name": "output_congr_upto",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1546,
+          "kind": "theorem",
+          "name": "extended_congr_upto",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1557,
+          "kind": "theorem",
+          "name": "step_eq_word_value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1568,
+          "kind": "theorem",
+          "name": "representation_next",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1595,
+          "kind": "def",
+          "name": "RepresentedBy",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1599,
+          "kind": "theorem",
+          "name": "representedBy_closed",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1606,
+          "kind": "theorem",
+          "name": "representedBy_next_not_palindrome",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1625,
+          "kind": "theorem",
+          "name": "representedBy_step_lychrel",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1642,
+          "kind": "theorem",
+          "name": "symbolic_language_seed_sound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1656,
+          "kind": "theorem",
+          "name": "symbolic_language_implies_decimal_existence",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1686,
+          "kind": "def",
+          "name": "norm",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1688,
+          "kind": "theorem",
+          "name": "norm_local",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1700,
+          "kind": "theorem",
+          "name": "norm_symmetric",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1706,
+          "kind": "theorem",
+          "name": "norm_range",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1711,
+          "kind": "def",
+          "name": "normalized",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1714,
+          "kind": "theorem",
+          "name": "normalized_preserves_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1738,
+          "kind": "theorem",
+          "name": "normalized_symmetric",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1745,
+          "kind": "theorem",
+          "name": "normalized_admissible",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1756,
+          "kind": "theorem",
+          "name": "normalized_next_low",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1782,
+          "kind": "theorem",
+          "name": "same_carries_two_step_palindrome",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1831,
+          "kind": "theorem",
+          "name": "centered_binary_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1836,
+          "kind": "theorem",
+          "name": "centered_binary_output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1842,
+          "kind": "theorem",
+          "name": "centered_quaternary_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1847,
+          "kind": "theorem",
+          "name": "centered_quaternary_output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1853,
+          "kind": "theorem",
+          "name": "dilated_binary_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1858,
+          "kind": "theorem",
+          "name": "dilated_binary_output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1865,
+          "kind": "theorem",
+          "name": "dilated_quaternary_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1870,
+          "kind": "theorem",
+          "name": "dilated_quaternary_output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1885,
+          "kind": "theorem",
+          "name": "reversed_centered_quaternary_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1891,
+          "kind": "theorem",
+          "name": "reversed_centered_quaternary_output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1917,
+          "kind": "structure",
+          "name": "State",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1923,
+          "kind": "def",
+          "name": "normEdges",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1929,
+          "kind": "def",
+          "name": "edge",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1941,
+          "kind": "def",
+          "name": "feed",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1948,
+          "kind": "def",
+          "name": "finishFuel",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1966,
+          "kind": "def",
+          "name": "finish",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1969,
+          "kind": "def",
+          "name": "next",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1973,
+          "kind": "def",
+          "name": "initials",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1980,
+          "kind": "def",
+          "name": "finals",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1986,
+          "kind": "inductive",
+          "name": "Reach",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1990,
+          "kind": "theorem",
+          "name": "reach_subset",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 1999,
+          "kind": "def",
+          "name": "cert10",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2039,
+          "kind": "def",
+          "name": "cert9",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2201,
+          "kind": "theorem",
+          "name": "cert10_initial",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2202,
+          "kind": "theorem",
+          "name": "cert10_closed",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2203,
+          "kind": "theorem",
+          "name": "cert10_safe",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2205,
+          "kind": "theorem",
+          "name": "cert9_initial",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2206,
+          "kind": "theorem",
+          "name": "cert9_closed",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2207,
+          "kind": "theorem",
+          "name": "cert9_safe",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2209,
+          "kind": "theorem",
+          "name": "normalized10_graph_safe",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2213,
+          "kind": "theorem",
+          "name": "normalized9_graph_safe",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2227,
+          "kind": "def",
+          "name": "normZero",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2229,
+          "kind": "theorem",
+          "name": "normZero_local",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2240,
+          "kind": "theorem",
+          "name": "normZero_symmetric",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2246,
+          "kind": "theorem",
+          "name": "normZero_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2251,
+          "kind": "def",
+          "name": "normalizedZero",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2254,
+          "kind": "theorem",
+          "name": "normalizedZero_preserves_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2277,
+          "kind": "theorem",
+          "name": "normalizedZero_symmetric",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2284,
+          "kind": "theorem",
+          "name": "normalizedZero_outer",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2291,
+          "kind": "theorem",
+          "name": "normalizedZero_admissible",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2306,
+          "kind": "theorem",
+          "name": "normalizedZero_realizable",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2324,
+          "kind": "theorem",
+          "name": "normZero_input_edge",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2343,
+          "kind": "theorem",
+          "name": "normalizedZero_folded_edge",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2372,
+          "kind": "theorem",
+          "name": "normalizedZero_odd_center",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2393,
+          "kind": "def",
+          "name": "iterPairs",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2400,
+          "kind": "theorem",
+          "name": "iterPairs_representation",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2416,
+          "kind": "theorem",
+          "name": "iterPairs_low_palindrome",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2433,
+          "kind": "theorem",
+          "name": "normalizedZero_low_extraction",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2449,
+          "kind": "theorem",
+          "name": "all_carry_words_terminate_by_four_of_low",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2492,
+          "kind": "def",
+          "name": "traceState",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2495,
+          "kind": "theorem",
+          "name": "traceState_fields",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2505,
+          "kind": "theorem",
+          "name": "traceState_initial",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2510,
+          "kind": "theorem",
+          "name": "edge_trace",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2537,
+          "kind": "theorem",
+          "name": "feed_cons_mem",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2543,
+          "kind": "theorem",
+          "name": "canonical_admissible",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2553,
+          "kind": "theorem",
+          "name": "admissible_congr",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2560,
+          "kind": "theorem",
+          "name": "admissible_next",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2566,
+          "kind": "theorem",
+          "name": "outer_small_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2578,
+          "kind": "theorem",
+          "name": "finish_even_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2584,
+          "kind": "theorem",
+          "name": "finish_even_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2590,
+          "kind": "theorem",
+          "name": "finish_odd_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2596,
+          "kind": "theorem",
+          "name": "finish_odd_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2606,
+          "kind": "theorem",
+          "name": "finish_empty_none",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2609,
+          "kind": "theorem",
+          "name": "finish_empty_some",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2614,
+          "kind": "theorem",
+          "name": "finish_trace_even_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2626,
+          "kind": "theorem",
+          "name": "finish_trace_even_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2636,
+          "kind": "theorem",
+          "name": "finish_trace_odd_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2647,
+          "kind": "theorem",
+          "name": "finish_trace_odd_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2672,
+          "kind": "def",
+          "name": "badPrefix",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2676,
+          "kind": "theorem",
+          "name": "badPrefix_eq_false_iff",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2690,
+          "kind": "theorem",
+          "name": "initial_mem",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2701,
+          "kind": "theorem",
+          "name": "next_mem",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2710,
+          "kind": "theorem",
+          "name": "reach_of_traces",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2735,
+          "kind": "theorem",
+          "name": "finals_mem_none",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2741,
+          "kind": "theorem",
+          "name": "finals_mem_some",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2747,
+          "kind": "theorem",
+          "name": "finishFuel_true",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2776,
+          "kind": "theorem",
+          "name": "finish_false_implies_bad_false",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2782,
+          "kind": "theorem",
+          "name": "finals_false_implies_bad_false",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2801,
+          "kind": "theorem",
+          "name": "normalized10_low_after_two",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2943,
+          "kind": "theorem",
+          "name": "outer_large_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 2955,
+          "kind": "theorem",
+          "name": "normalized9_low_after_three",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3118,
+          "kind": "theorem",
+          "name": "normalized9_iterPairs_low_after_three",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3172,
+          "kind": "theorem",
+          "name": "same_carry_word_palindrome_within_four",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3187,
+          "kind": "theorem",
+          "name": "every_positive_integer_has_fast_same_carry_representative",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3217,
+          "kind": "def",
+          "name": "slowCarry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3220,
+          "kind": "theorem",
+          "name": "five_first_values",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3254,
+          "kind": "theorem",
+          "name": "five_values_checked",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3261,
+          "kind": "theorem",
+          "name": "slow_carry_requires_at_least_four",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3279,
+          "kind": "def",
+          "name": "witnessDigit",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3281,
+          "kind": "theorem",
+          "name": "witness_canonical",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3289,
+          "kind": "theorem",
+          "name": "witness_carries",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3294,
+          "kind": "theorem",
+          "name": "witness_reaches_at_four",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3299,
+          "kind": "theorem",
+          "name": "four_is_optimal",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3320,
+          "kind": "theorem",
+          "name": "next_first_difference",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3354,
+          "kind": "theorem",
+          "name": "next_lower_equal",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3367,
+          "kind": "def",
+          "name": "noOverflowCount",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3373,
+          "kind": "theorem",
+          "name": "first_difference_over_time",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3419,
+          "kind": "theorem",
+          "name": "five_nonoverflows_determine_pair_sums",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3469,
+          "kind": "theorem",
+          "name": "iterPairs_admissible",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3477,
+          "kind": "theorem",
+          "name": "iterPairs_carry_history_injective",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3525,
+          "kind": "def",
+          "name": "outerPotential",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3531,
+          "kind": "theorem",
+          "name": "outerPotential_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3535,
+          "kind": "theorem",
+          "name": "finite_no_overflow",
+          "modifiers": [
+            "private"
+          ],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3539,
+          "kind": "theorem",
+          "name": "finite_overflow",
+          "modifiers": [
+            "private"
+          ],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3545,
+          "kind": "theorem",
+          "name": "outer_potential_step",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3581,
+          "kind": "theorem",
+          "name": "nonoverflow_growth_bound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3603,
+          "kind": "theorem",
+          "name": "twelve_carry_words_determine_pair_sums",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3620,
+          "kind": "theorem",
+          "name": "four_nonoverflows_and_endpoint_determine_pair_sums",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3671,
+          "kind": "theorem",
+          "name": "iterPairs_endpoint_carry_history_injective",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3710,
+          "kind": "theorem",
+          "name": "eleven_carry_words_determine_pair_sums",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3741,
+          "kind": "theorem",
+          "name": "carries_equal_of_symmetric_output_equal",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3785,
+          "kind": "theorem",
+          "name": "symmetric_value_injective",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3833,
+          "kind": "theorem",
+          "name": "same_width_step_eq_iff_pair_sums",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3866,
+          "kind": "def",
+          "name": "lowerPotential",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3873,
+          "kind": "theorem",
+          "name": "lowerPotential_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3877,
+          "kind": "theorem",
+          "name": "finite_no_overflow",
+          "modifiers": [
+            "private"
+          ],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3881,
+          "kind": "theorem",
+          "name": "finite_overflow",
+          "modifiers": [
+            "private"
+          ],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3886,
+          "kind": "theorem",
+          "name": "lower_potential_step",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3924,
+          "kind": "theorem",
+          "name": "width_lower_potential",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3941,
+          "kind": "theorem",
+          "name": "width_lower_bound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3947,
+          "kind": "theorem",
+          "name": "width_count_identity",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3958,
+          "kind": "theorem",
+          "name": "width_upper_bound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3965,
+          "kind": "theorem",
+          "name": "width_upper_potential",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3984,
+          "kind": "theorem",
+          "name": "numeric_width_bounds",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3995,
+          "kind": "def",
+          "name": "digits196",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 3997,
+          "kind": "theorem",
+          "name": "canonical196",
+          "modifiers": [
+            "private"
+          ],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4005,
+          "kind": "theorem",
+          "name": "numeric196_width_bounds",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4043,
+          "kind": "theorem",
+          "name": "ten_pow_mod99",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4056,
+          "kind": "theorem",
+          "name": "reflected_mod99",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4080,
+          "kind": "theorem",
+          "name": "reverse10_mod99",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4089,
+          "kind": "theorem",
+          "name": "step_mod99",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4101,
+          "kind": "theorem",
+          "name": "reverse10_mod_of_dvd99",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4107,
+          "kind": "theorem",
+          "name": "step_mod_of_dvd99",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4113,
+          "kind": "theorem",
+          "name": "even_width_step_dvd11",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4119,
+          "kind": "theorem",
+          "name": "step_preserves_dvd11",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4133,
+          "kind": "theorem",
+          "name": "orbit_preserves_dvd11",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4140,
+          "kind": "theorem",
+          "name": "all_odd_widths_constant",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4157,
+          "kind": "theorem",
+          "name": "exists_even_width_by_five",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4171,
+          "kind": "theorem",
+          "name": "orbit_six_dvd11",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4184,
+          "kind": "theorem",
+          "name": "orbit_eventually_dvd11",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4189,
+          "kind": "theorem",
+          "name": "orbit_mod11_eq_zero_of_six_le",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4198,
+          "kind": "theorem",
+          "name": "six_step_bound_sharp",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4203,
+          "kind": "theorem",
+          "name": "reverse10_mod10",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4214,
+          "kind": "theorem",
+          "name": "zero_units_step_nonzero",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4224,
+          "kind": "theorem",
+          "name": "no_consecutive_zero_units",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4234,
+          "kind": "theorem",
+          "name": "late_compatible_state",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4252,
+          "kind": "theorem",
+          "name": "large_width_compatible_state",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4264,
+          "kind": "theorem",
+          "name": "large_width_compatible_residue",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4280,
+          "kind": "theorem",
+          "name": "even_symmetric_value_dvd11",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4292,
+          "kind": "theorem",
+          "name": "value_scale",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4300,
+          "kind": "theorem",
+          "name": "even_width_palindromic_overflow_dvd121",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4325,
+          "kind": "theorem",
+          "name": "even_width_overflow_not_palindrome_of_not_dvd121",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4355,
+          "kind": "def",
+          "name": "carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4359,
+          "kind": "def",
+          "name": "digit",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4362,
+          "kind": "theorem",
+          "name": "complementary_column",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4370,
+          "kind": "theorem",
+          "name": "mismatched_column_repair",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4375,
+          "kind": "theorem",
+          "name": "neutral_column_preserves_mismatch",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4381,
+          "kind": "theorem",
+          "name": "half_complement_carries",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4398,
+          "kind": "theorem",
+          "name": "half_complement_digits",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4407,
+          "kind": "theorem",
+          "name": "half_complement_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4415,
+          "kind": "def",
+          "name": "addColumns",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4420,
+          "kind": "def",
+          "name": "qstep",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4424,
+          "kind": "def",
+          "name": "lowOnly",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4429,
+          "kind": "theorem",
+          "name": "correlated_seed_counterexample",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4440,
+          "kind": "theorem",
+          "name": "odd_marked_defect_counterexample",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4484,
+          "kind": "def",
+          "name": "digitSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4490,
+          "kind": "theorem",
+          "name": "digitSum_zero",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4495,
+          "kind": "theorem",
+          "name": "digitSum_mod_div",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4504,
+          "kind": "def",
+          "name": "wordSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4508,
+          "kind": "theorem",
+          "name": "wordSum_congr",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4515,
+          "kind": "theorem",
+          "name": "wordSum_add",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4521,
+          "kind": "theorem",
+          "name": "wordSum_mul",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4527,
+          "kind": "theorem",
+          "name": "wordSum_zero",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4532,
+          "kind": "theorem",
+          "name": "wordSum_shift",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4539,
+          "kind": "theorem",
+          "name": "wordSum_reflected",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4555,
+          "kind": "theorem",
+          "name": "wordSum_columns",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4563,
+          "kind": "theorem",
+          "name": "digitSum_value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4580,
+          "kind": "theorem",
+          "name": "digitSum_positive",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4589,
+          "kind": "def",
+          "name": "carryCount",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4594,
+          "kind": "theorem",
+          "name": "wordSum_output",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4603,
+          "kind": "theorem",
+          "name": "wordSum_extended",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4615,
+          "kind": "theorem",
+          "name": "digitSum_step_balance",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4634,
+          "kind": "theorem",
+          "name": "carryCount_zero_of_small",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4649,
+          "kind": "theorem",
+          "name": "columns_eq_eleven_carry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4663,
+          "kind": "theorem",
+          "name": "palindrome_step_digitSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4687,
+          "kind": "theorem",
+          "name": "palindrome_step_digitSum_all",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4699,
+          "kind": "theorem",
+          "name": "nonpalindrome_of_digitSum_preserved",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4707,
+          "kind": "theorem",
+          "name": "step_isLychrel_of_constant_digitSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4716,
+          "kind": "theorem",
+          "name": "isLychrel_of_constant_digitSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4727,
+          "kind": "theorem",
+          "name": "existence_of_constant_digitSum_orbit",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4736,
+          "kind": "theorem",
+          "name": "doubling_ratio_attained",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4749,
+          "kind": "theorem",
+          "name": "exceptional_ratio_attained",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4762,
+          "kind": "theorem",
+          "name": "exceptional_ratio_not_sufficient",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4800,
+          "kind": "def",
+          "name": "ZeroBound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4805,
+          "kind": "theorem",
+          "name": "zeroBound_length",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4810,
+          "kind": "def",
+          "name": "backCarry",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4813,
+          "kind": "def",
+          "name": "backOutput",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4815,
+          "kind": "theorem",
+          "name": "back_column_equation",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4823,
+          "kind": "theorem",
+          "name": "backCarry_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4828,
+          "kind": "theorem",
+          "name": "simultaneous_zero_carries",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4843,
+          "kind": "theorem",
+          "name": "adjacent_zero_columns",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4858,
+          "kind": "theorem",
+          "name": "simultaneous_zero_interval",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4893,
+          "kind": "theorem",
+          "name": "wordSum_mono_length",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4910,
+          "kind": "theorem",
+          "name": "interval_length_le_mass",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4925,
+          "kind": "theorem",
+          "name": "next_zero_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4933,
+          "kind": "theorem",
+          "name": "next_zero_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4955,
+          "kind": "theorem",
+          "name": "zero_column_carries",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 4967,
+          "kind": "theorem",
+          "name": "zero_core_extends",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5005,
+          "kind": "theorem",
+          "name": "zeroBound_next",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5079,
+          "kind": "theorem",
+          "name": "wordSum_split",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5092,
+          "kind": "theorem",
+          "name": "length_le_of_zero_runs",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5143,
+          "kind": "theorem",
+          "name": "iterPairs_wordSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5158,
+          "kind": "theorem",
+          "name": "length_le_of_mass_zero_runs",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5168,
+          "kind": "theorem",
+          "name": "iterPairs_width_unbounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5176,
+          "kind": "theorem",
+          "name": "digitSum_unbounded_of_zero_run_propagation",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5226,
+          "kind": "theorem",
+          "name": "digitSum_unbounded",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5232,
+          "kind": "theorem",
+          "name": "not_constant_digitSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5255,
+          "kind": "theorem",
+          "name": "digitSum_unbounded_after",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5264,
+          "kind": "theorem",
+          "name": "not_eventually_bounded_digitSum",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5273,
+          "kind": "theorem",
+          "name": "digitSum_196_unbounded_after",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5302,
+          "kind": "def",
+          "name": "decimalLength",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5308,
+          "kind": "theorem",
+          "name": "decimalLength_zero",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5314,
+          "kind": "theorem",
+          "name": "decimalLength_value",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5338,
+          "kind": "theorem",
+          "name": "decimalLength_of_canonical",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5344,
+          "kind": "def",
+          "name": "gapBound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5347,
+          "kind": "def",
+          "name": "widthBound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5350,
+          "kind": "def",
+          "name": "escapeBound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5352,
+          "kind": "theorem",
+          "name": "initial_le_widthBound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5362,
+          "kind": "theorem",
+          "name": "bounded_prefix_width",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5392,
+          "kind": "theorem",
+          "name": "bounded_prefix_time",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5403,
+          "kind": "theorem",
+          "name": "digitSum_escape_of_canonical",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5421,
+          "kind": "theorem",
+          "name": "digitSum_escape",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5429,
+          "kind": "theorem",
+          "name": "digitSum_escape_coarse",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5438,
+          "kind": "def",
+          "name": "runningMax",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5442,
+          "kind": "theorem",
+          "name": "digitSum_le_runningMax",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5458,
+          "kind": "theorem",
+          "name": "runningMax_attained",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 5473,
+          "kind": "theorem",
+          "name": "runningMax_lower_bound",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        }
+      ]
+    },
+    {
+      "module": "Trace",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-binary-family/Trace.lean",
+      "git_blob": "eb7b0887e00a39d59c2d0fe09af06775274d62f9",
+      "sha256": "0ebded79e1c0ad1dcfe68bb2f9f07745da6d531d1f6647d09ea29489eeefe662",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 15,
+      "old_generated_audit_count": 15,
+      "comment_aware_explicit_count": 15,
+      "kind_counts": {
+        "def": 8,
+        "theorem": 7
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 7,
+          "kind": "def",
+          "name": "blockDigit",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 8,
+          "kind": "def",
+          "name": "blockLow",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 9,
+          "kind": "def",
+          "name": "blockHigh",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 11,
+          "kind": "theorem",
+          "name": "block_start",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 14,
+          "kind": "theorem",
+          "name": "block_finish",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 18,
+          "kind": "theorem",
+          "name": "block_edges",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 26,
+          "kind": "def",
+          "name": "halfWidth",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 28,
+          "kind": "def",
+          "name": "inputHalf",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 33,
+          "kind": "def",
+          "name": "targetHalf",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 35,
+          "kind": "def",
+          "name": "lowTrace",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 38,
+          "kind": "def",
+          "name": "highTrace",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 42,
+          "kind": "theorem",
+          "name": "block_join",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 57,
+          "kind": "theorem",
+          "name": "outer_trace",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 62,
+          "kind": "theorem",
+          "name": "terminal_boundary",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 66,
+          "kind": "theorem",
+          "name": "trace_edges",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "WholeWord",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-binary-family/WholeWord.lean",
+      "git_blob": "28606c392883370d1e9772db516daa6964ef169d",
+      "sha256": "5d647c31cce3d1c15265a4a86a162c5a68baa48afc2e27ef47ac5c2c5271dc62",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 17,
+      "old_generated_audit_count": 17,
+      "comment_aware_explicit_count": 17,
+      "kind_counts": {
+        "def": 3,
+        "theorem": 14
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 7,
+          "kind": "def",
+          "name": "reflectHalf",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 10,
+          "kind": "def",
+          "name": "inputWord",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 13,
+          "kind": "def",
+          "name": "targetWord",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 16,
+          "kind": "theorem",
+          "name": "reflect_low",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 19,
+          "kind": "theorem",
+          "name": "reflect_symm",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 26,
+          "kind": "theorem",
+          "name": "reflect_admissible",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 39,
+          "kind": "theorem",
+          "name": "inputHalf_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 49,
+          "kind": "theorem",
+          "name": "targetHalf_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 55,
+          "kind": "theorem",
+          "name": "input_admissible",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 60,
+          "kind": "theorem",
+          "name": "target_admissible",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 66,
+          "kind": "theorem",
+          "name": "actual_trace",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 83,
+          "kind": "theorem",
+          "name": "binary_family_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 87,
+          "kind": "theorem",
+          "name": "nextColumns_symm_no_overflow",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 93,
+          "kind": "theorem",
+          "name": "binary_family_half_transition",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 107,
+          "kind": "theorem",
+          "name": "binary_family_transition",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 123,
+          "kind": "theorem",
+          "name": "binary_family_actual_step",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 136,
+          "kind": "theorem",
+          "name": "binary_family_realization",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "Safety",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-binary-family/Safety.lean",
+      "git_blob": "56f3ef696b417117001537210ac4a4352fa51d50",
+      "sha256": "7457b8cc978ca974dc61841abe2e46afcca7cdb4d94213c7745babd5ec140430",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 12,
+      "old_generated_audit_count": 12,
+      "comment_aware_explicit_count": 12,
+      "kind_counts": {
+        "def": 1,
+        "theorem": 11
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 7,
+          "kind": "def",
+          "name": "WordSafe",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 9,
+          "kind": "theorem",
+          "name": "central_input",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 18,
+          "kind": "theorem",
+          "name": "central_target",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 26,
+          "kind": "theorem",
+          "name": "eighteen_not_bad",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 34,
+          "kind": "theorem",
+          "name": "admissible_safe",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 49,
+          "kind": "theorem",
+          "name": "binary_family_safe",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 59,
+          "kind": "theorem",
+          "name": "realization_nonpalindrome",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 71,
+          "kind": "theorem",
+          "name": "input_outer",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 74,
+          "kind": "theorem",
+          "name": "target_outer",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 77,
+          "kind": "theorem",
+          "name": "binary_family_initial_nonpalindrome",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 84,
+          "kind": "theorem",
+          "name": "target_initial_nonpalindrome",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 92,
+          "kind": "theorem",
+          "name": "binary_family_safe_realization",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "Indexing",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-binary-family/Indexing.lean",
+      "git_blob": "9514313487a903c3e0fa776528535a48ffcf497e",
+      "sha256": "42e6a23bbc66f0e582366a5eb0da8e5ef39ec0b435836c565fa71a645d87f3e3",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 12,
+      "old_generated_audit_count": 12,
+      "comment_aware_explicit_count": 12,
+      "kind_counts": {
+        "theorem": 9,
+        "def": 3
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 7,
+          "kind": "theorem",
+          "name": "input_word_bits_injective",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 19,
+          "kind": "theorem",
+          "name": "input_word_congr",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 34,
+          "kind": "def",
+          "name": "bit",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 38,
+          "kind": "def",
+          "name": "encode",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 42,
+          "kind": "theorem",
+          "name": "encode_bound",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 50,
+          "kind": "theorem",
+          "name": "encode_bit",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 59,
+          "kind": "theorem",
+          "name": "bit_encode",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 74,
+          "kind": "theorem",
+          "name": "encode_congr",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 81,
+          "kind": "def",
+          "name": "indexedWord",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 84,
+          "kind": "theorem",
+          "name": "indexed_word_injective",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 92,
+          "kind": "theorem",
+          "name": "indexed_word_complete",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 99,
+          "kind": "theorem",
+          "name": "exact_binary_family",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "FiniteWords",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-product-weights/FiniteWords.lean",
+      "git_blob": "9e709c2d72efbdde53e3e6e21b9838f0e8358f0f",
+      "sha256": "77a560658d9d9b006fd987d9c07cf4fd130dd5fbfc75594a9a7029db3c1c1575",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 21,
+      "old_generated_audit_count": 21,
+      "comment_aware_explicit_count": 21,
+      "kind_counts": {
+        "abbrev": 1,
+        "def": 7,
+        "theorem": 13
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 13,
+          "kind": "abbrev",
+          "name": "FiniteWord",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 15,
+          "kind": "def",
+          "name": "digits",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 17,
+          "kind": "def",
+          "name": "encodeWord",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 20,
+          "kind": "theorem",
+          "name": "digits_bounded",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 26,
+          "kind": "theorem",
+          "name": "encodeWord_width",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 29,
+          "kind": "theorem",
+          "name": "digits_encodeWord",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 33,
+          "kind": "theorem",
+          "name": "digits_at",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 36,
+          "kind": "theorem",
+          "name": "finiteWord_ext",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 49,
+          "kind": "def",
+          "name": "MapsTo",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 52,
+          "kind": "def",
+          "name": "SafeState",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 55,
+          "kind": "theorem",
+          "name": "mapsTo_width_le",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 62,
+          "kind": "def",
+          "name": "stateBox",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 64,
+          "kind": "theorem",
+          "name": "mem_stateBox_iff",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 69,
+          "kind": "def",
+          "name": "safeFiber",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 73,
+          "kind": "theorem",
+          "name": "mem_safeFiber_iff",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 80,
+          "kind": "def",
+          "name": "incoming",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 82,
+          "kind": "theorem",
+          "name": "full_safe_fiber_finite",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 90,
+          "kind": "theorem",
+          "name": "mapsTo_actual_step",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 101,
+          "kind": "theorem",
+          "name": "canonical_width_unique",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 119,
+          "kind": "theorem",
+          "name": "actual_step_mapsTo",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 135,
+          "kind": "theorem",
+          "name": "partial_sum_le_incoming",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "FamilyStates",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-product-weights/FamilyStates.lean",
+      "git_blob": "7bc577184a7da71f172a71ad7342a7b948944c2f",
+      "sha256": "9767c2a60539e0cc5231878f714e28645d909e323ce35e6f7e6db039016160c0",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 9,
+      "old_generated_audit_count": 9,
+      "comment_aware_explicit_count": 9,
+      "kind_counts": {
+        "def": 3,
+        "theorem": 6
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 6,
+          "kind": "def",
+          "name": "extendBits",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 8,
+          "kind": "def",
+          "name": "familyState",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 12,
+          "kind": "def",
+          "name": "targetState",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 15,
+          "kind": "theorem",
+          "name": "encoded_safe",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 37,
+          "kind": "theorem",
+          "name": "encoded_transition",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 54,
+          "kind": "theorem",
+          "name": "targetState_safe",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 57,
+          "kind": "theorem",
+          "name": "familyState_spec",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 63,
+          "kind": "theorem",
+          "name": "familyState_injective",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 75,
+          "kind": "theorem",
+          "name": "safe_state_realizable",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "Products",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-product-weights/Products.lean",
+      "git_blob": "11491f0feb564ad2251d7d99293c0b4257a388d7",
+      "sha256": "704491458c472bbd5ce1197663b706fc97a29d61540ded0b0889d7f99523eeb1",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 12,
+      "old_generated_audit_count": 12,
+      "comment_aware_explicit_count": 12,
+      "kind_counts": {
+        "def": 2,
+        "theorem": 10
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 9,
+          "kind": "def",
+          "name": "blockWeight",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 11,
+          "kind": "def",
+          "name": "coefficientWeight",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 14,
+          "kind": "theorem",
+          "name": "coefficientWeight_pos",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 27,
+          "kind": "theorem",
+          "name": "encoded_reflection_weight",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 38,
+          "kind": "theorem",
+          "name": "single_block_product",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 42,
+          "kind": "theorem",
+          "name": "all_blocks_product",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 58,
+          "kind": "theorem",
+          "name": "input_half_product",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 89,
+          "kind": "theorem",
+          "name": "target_half_product",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 114,
+          "kind": "theorem",
+          "name": "familyState_weight",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 128,
+          "kind": "theorem",
+          "name": "targetState_weight",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 136,
+          "kind": "theorem",
+          "name": "binary_product_sum",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 143,
+          "kind": "theorem",
+          "name": "family_weight_sum",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "Obstruction",
+      "source_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+      "repo_path": "proofs/contributions/agent-13/folded-product-weights/Obstruction.lean",
+      "git_blob": "88ef0c2f66714b8238460ca831245e775956c6fb",
+      "sha256": "c80be4873e6a0502b563b9bffce6ff262a567bec7de3c82ee7f16a7b435daf52",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 6,
+      "old_generated_audit_count": 6,
+      "comment_aware_explicit_count": 6,
+      "kind_counts": {
+        "def": 1,
+        "theorem": 5
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 10,
+          "kind": "def",
+          "name": "amplification",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 13,
+          "kind": "theorem",
+          "name": "ratio_identity",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 28,
+          "kind": "theorem",
+          "name": "incoming_product_ratio",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 43,
+          "kind": "theorem",
+          "name": "amplification_unbounded",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 60,
+          "kind": "theorem",
+          "name": "no_uniform_product_multiplier",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 69,
+          "kind": "theorem",
+          "name": "not_exists_uniform_product_bound",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    },
+    {
+      "module": "CarryPath",
+      "source_commit": "d04b9169eb3a078cf18283bd0194dd729a9da954",
+      "repo_path": "proofs/archive/versions/7762aee51124422e3b984cf7fb8a4353211466ec7c7da416078a2c65565452c8/proofs/contributions/agent-13/buffered-binary-family/CarryPath.lean",
+      "git_blob": "e9580d26775ad925a26e60ce7103d57d558b428e",
+      "sha256": "08ecf3ead10a233bcd4b0c92e5fb442a781fcfc8bf86c63fedbf404548177c2c",
+      "compiled_by_old_driver": true,
+      "selected_by_old_enumeration": true,
+      "old_regex_raw_matches": 8,
+      "old_generated_audit_count": 8,
+      "comment_aware_explicit_count": 9,
+      "kind_counts": {
+        "abbrev": 1,
+        "def": 1,
+        "inductive": 1,
+        "theorem": 6
+      },
+      "private_explicit_count": 0,
+      "source_embedded_print_axioms_count": 0,
+      "declarations": [
+        {
+          "line": 6,
+          "kind": "abbrev",
+          "name": "CarryState",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 8,
+          "kind": "def",
+          "name": "CarryEdge",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 13,
+          "kind": "inductive",
+          "name": "CarryPath",
+          "modifiers": [],
+          "in_old_generated_audit": false
+        },
+        {
+          "line": 19,
+          "kind": "theorem",
+          "name": "path_append",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 26,
+          "kind": "theorem",
+          "name": "path_lengths",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 32,
+          "kind": "theorem",
+          "name": "path_repeat",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 39,
+          "kind": "theorem",
+          "name": "path_trace",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 62,
+          "kind": "theorem",
+          "name": "path_actual_carries",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        },
+        {
+          "line": 80,
+          "kind": "theorem",
+          "name": "path_actual_transition",
+          "modifiers": [],
+          "in_old_generated_audit": true
+        }
+      ]
+    }
+  ],
+  "generated_names": [
+    "Agent13FoldedFamily.blockDigit",
+    "Agent13FoldedFamily.blockLow",
+    "Agent13FoldedFamily.blockHigh",
+    "Agent13FoldedFamily.block_start",
+    "Agent13FoldedFamily.block_finish",
+    "Agent13FoldedFamily.block_edges",
+    "Agent13FoldedFamily.halfWidth",
+    "Agent13FoldedFamily.inputHalf",
+    "Agent13FoldedFamily.targetHalf",
+    "Agent13FoldedFamily.lowTrace",
+    "Agent13FoldedFamily.highTrace",
+    "Agent13FoldedFamily.block_join",
+    "Agent13FoldedFamily.outer_trace",
+    "Agent13FoldedFamily.terminal_boundary",
+    "Agent13FoldedFamily.trace_edges",
+    "Agent13FoldedFamily.reflectHalf",
+    "Agent13FoldedFamily.inputWord",
+    "Agent13FoldedFamily.targetWord",
+    "Agent13FoldedFamily.reflect_low",
+    "Agent13FoldedFamily.reflect_symm",
+    "Agent13FoldedFamily.reflect_admissible",
+    "Agent13FoldedFamily.inputHalf_bounded",
+    "Agent13FoldedFamily.targetHalf_bounded",
+    "Agent13FoldedFamily.input_admissible",
+    "Agent13FoldedFamily.target_admissible",
+    "Agent13FoldedFamily.actual_trace",
+    "Agent13FoldedFamily.binary_family_no_overflow",
+    "Agent13FoldedFamily.nextColumns_symm_no_overflow",
+    "Agent13FoldedFamily.binary_family_half_transition",
+    "Agent13FoldedFamily.binary_family_transition",
+    "Agent13FoldedFamily.binary_family_actual_step",
+    "Agent13FoldedFamily.binary_family_realization",
+    "Agent13FoldedFamily.WordSafe",
+    "Agent13FoldedFamily.central_input",
+    "Agent13FoldedFamily.central_target",
+    "Agent13FoldedFamily.eighteen_not_bad",
+    "Agent13FoldedFamily.admissible_safe",
+    "Agent13FoldedFamily.binary_family_safe",
+    "Agent13FoldedFamily.realization_nonpalindrome",
+    "Agent13FoldedFamily.input_outer",
+    "Agent13FoldedFamily.target_outer",
+    "Agent13FoldedFamily.binary_family_initial_nonpalindrome",
+    "Agent13FoldedFamily.target_initial_nonpalindrome",
+    "Agent13FoldedFamily.binary_family_safe_realization",
+    "Agent13FoldedFamily.input_word_bits_injective",
+    "Agent13FoldedFamily.input_word_congr",
+    "Agent13FoldedFamily.bit",
+    "Agent13FoldedFamily.encode",
+    "Agent13FoldedFamily.encode_bound",
+    "Agent13FoldedFamily.encode_bit",
+    "Agent13FoldedFamily.bit_encode",
+    "Agent13FoldedFamily.encode_congr",
+    "Agent13FoldedFamily.indexedWord",
+    "Agent13FoldedFamily.indexed_word_injective",
+    "Agent13FoldedFamily.indexed_word_complete",
+    "Agent13FoldedFamily.exact_binary_family",
+    "Agent13ProductWeights.FiniteWord",
+    "Agent13ProductWeights.digits",
+    "Agent13ProductWeights.encodeWord",
+    "Agent13ProductWeights.digits_bounded",
+    "Agent13ProductWeights.encodeWord_width",
+    "Agent13ProductWeights.digits_encodeWord",
+    "Agent13ProductWeights.digits_at",
+    "Agent13ProductWeights.finiteWord_ext",
+    "Agent13ProductWeights.MapsTo",
+    "Agent13ProductWeights.SafeState",
+    "Agent13ProductWeights.mapsTo_width_le",
+    "Agent13ProductWeights.stateBox",
+    "Agent13ProductWeights.mem_stateBox_iff",
+    "Agent13ProductWeights.safeFiber",
+    "Agent13ProductWeights.mem_safeFiber_iff",
+    "Agent13ProductWeights.incoming",
+    "Agent13ProductWeights.full_safe_fiber_finite",
+    "Agent13ProductWeights.mapsTo_actual_step",
+    "Agent13ProductWeights.canonical_width_unique",
+    "Agent13ProductWeights.actual_step_mapsTo",
+    "Agent13ProductWeights.partial_sum_le_incoming",
+    "Agent13ProductWeights.extendBits",
+    "Agent13ProductWeights.familyState",
+    "Agent13ProductWeights.targetState",
+    "Agent13ProductWeights.encoded_safe",
+    "Agent13ProductWeights.encoded_transition",
+    "Agent13ProductWeights.targetState_safe",
+    "Agent13ProductWeights.familyState_spec",
+    "Agent13ProductWeights.familyState_injective",
+    "Agent13ProductWeights.safe_state_realizable",
+    "Agent13ProductWeights.blockWeight",
+    "Agent13ProductWeights.coefficientWeight",
+    "Agent13ProductWeights.coefficientWeight_pos",
+    "Agent13ProductWeights.encoded_reflection_weight",
+    "Agent13ProductWeights.single_block_product",
+    "Agent13ProductWeights.all_blocks_product",
+    "Agent13ProductWeights.input_half_product",
+    "Agent13ProductWeights.target_half_product",
+    "Agent13ProductWeights.familyState_weight",
+    "Agent13ProductWeights.targetState_weight",
+    "Agent13ProductWeights.binary_product_sum",
+    "Agent13ProductWeights.family_weight_sum",
+    "Agent13ProductWeights.amplification",
+    "Agent13ProductWeights.ratio_identity",
+    "Agent13ProductWeights.incoming_product_ratio",
+    "Agent13ProductWeights.amplification_unbounded",
+    "Agent13ProductWeights.no_uniform_product_multiplier",
+    "Agent13ProductWeights.not_exists_uniform_product_bound",
+    "Agent13BufferedFamily.CarryState",
+    "Agent13BufferedFamily.CarryEdge",
+    "Agent13BufferedFamily.path_append",
+    "Agent13BufferedFamily.path_lengths",
+    "Agent13BufferedFamily.path_repeat",
+    "Agent13BufferedFamily.path_trace",
+    "Agent13BufferedFamily.path_actual_carries",
+    "Agent13BufferedFamily.path_actual_transition"
+  ],
+  "limitations": [
+    "This lexical source census does not enumerate generated Lean environment constants.",
+    "Source-embedded #print axioms outputs remain in the historical compile logs; absence from the generated 112-name file does not mean a declaration never appeared in any log.",
+    "The separate recovered Lychrel196Research file was not an eleventh compiled module; its original text is incorporated in the pinned LychrelDigitSums source."
+  ]
+}

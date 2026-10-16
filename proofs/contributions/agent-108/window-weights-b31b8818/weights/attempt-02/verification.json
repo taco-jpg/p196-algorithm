@@ -1,0 +1,32 @@
+{
+  "module": "Agent108WindowWeights",
+  "source_sha256": "4dab41a584462ec298fcd745a304e301d237cf411f597af2c84aa8d705f7d95d",
+  "source_unchanged_during_build": true,
+  "declarations_audited": [
+    "windowProduct",
+    "PositivePotential",
+    "windowProduct_overlap"
+  ],
+  "results": [
+    {
+      "stage": "compile",
+      "command": [
+        "/workspace/scratch/b31b8818d547/agent108-runtime/lean-with-mathlib.sh",
+        "-o",
+        "/workspace/scratch/b31b8818d547/agent108-build/Agent108WindowWeights.olean",
+        "/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowWeights.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "audit",
+      "command": [
+        "/workspace/scratch/b31b8818d547/agent108-runtime/lean-with-mathlib.sh",
+        "/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/weights/attempt-02/Agent108WindowWeightsAudit.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "audit_output": "'Agent108.WindowWeights.windowProduct' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Agent108.WindowWeights.PositivePotential' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Agent108.WindowWeights.windowProduct_overlap' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "status": "LEAN-CHECKED"
+}

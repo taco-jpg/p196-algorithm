@@ -1,0 +1,34 @@
+import Agent108WindowFamilyProducts
+
+#print axioms Agent108.WindowWeights.windows
+#print axioms Agent108.WindowWeights.buffer
+#print axioms Agent108.WindowWeights.block
+#print axioms Agent108.WindowWeights.blocks
+#print axioms Agent108.WindowWeights.inputHalf
+#print axioms Agent108.WindowWeights.targetHalf
+#print axioms Agent108.WindowWeights.localBlock
+#print axioms Agent108.WindowWeights.endpoint
+#print axioms Agent108.WindowWeights.choices
+#print axioms Agent108.WindowWeights.windows_nil
+#print axioms Agent108.WindowWeights.windows_short
+#print axioms Agent108.WindowWeights.windows_append_overlap
+#print axioms Agent108.WindowWeights.windows_eq_range_map
+#print axioms Agent108.WindowWeights.windows_length
+#print axioms Agent108.WindowWeights.windowProduct
+#print axioms Agent108.WindowWeights.PositivePotential
+#print axioms Agent108.WindowWeights.windowProduct_overlap
+#print axioms Agent108.WindowWeights.window_mem_valid
+#print axioms Agent108.WindowWeights.positive_list_product
+#print axioms Agent108.WindowWeights.windowProduct_pos
+#print axioms Agent108.WindowWeights.windowProduct_single
+#print axioms Agent108.WindowWeights.windows_replicate
+#print axioms Agent108.WindowWeights.windowProduct_replicate
+#print axioms Agent108.WindowWeights.blockProduct
+#print axioms Agent108.WindowWeights.blockProduct_pos
+#print axioms Agent108.WindowWeights.blockProduct_false
+#print axioms Agent108.WindowWeights.prefix_buffer_product
+#print axioms Agent108.WindowWeights.block_buffer_product
+#print axioms Agent108.WindowWeights.blocks_buffer_product
+#print axioms Agent108.WindowWeights.assembledHalf_product
+#print axioms Agent108.WindowWeights.inputHalf_product
+#print axioms Agent108.WindowWeights.targetHalf_product

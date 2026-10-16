@@ -1,0 +1,13 @@
+/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpoints.lean:38:40: error: type mismatch, term
+  hjb
+after simplification has type
+  j ≤ b : Prop
+but is expected to have type
+  j ≤ b + 1 : Prop
+/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpoints.lean:38:58: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  List.drop ?m.3041 (List.replicate ?m.3042 ?m.3040)
+b k a j : Nat
+hjb : j ≤ b
+hjk : j ≤ k
+⊢ List.take (b + 1) (List.drop j (List.replicate b 9 ++ [a]) ++ List.replicate k 18) =
+    List.replicate (b - j) 9 ++ [a] ++ List.replicate j 18

@@ -1,0 +1,70 @@
+{
+  "utc": "2026-10-16T22:02:41.282031+00:00",
+  "kind": "author compile and transitive axiom audit, not independent review",
+  "source_sha256": "8929758722b9d66c327654bb182c011b072be6aec100f801349e70040a65b5f6",
+  "source_unchanged": true,
+  "LEAN_PATH": "/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/incoming/attempt-04/build:/workspace/scratch/b31b8818d547/agent108-runtime/embedding-build/006:/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/review/independent-family-ratio-051dcb4/build:/workspace/scratch/b31b8818d547/agent108-dependencies/build-independent-approved02:/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/review/independent-algebra-0dd91993/build",
+  "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "original_dependencies_commit": "12a32789056f5eec8247166564ac2ef745c3c9d6",
+  "dependency_source_sha256": {
+    "Agent108WindowDefs": "147ae208dce3b612c6eb23091eab123b77bd46c86d216ab8a6199913015f0aa0",
+    "Agent108WindowProducts": "2920c9da6e3c06c40a1d8478fe1af0d87b00627976f53856f75b90de32a1e584",
+    "Agent108WindowWeights": "5bc7f457187ad0af4a4f7a340acf7f827b8e89537d73624519805d232c762eae",
+    "Agent108WindowEndpoints": "ebabfbfd366729846656ff5a56891c22f9c7f0868fca9c5918be433e5d5fbc22",
+    "Agent108WindowEndpointWeights": "21355018606cf7c2cfe8c33a008be815bd546bbafc31be69bc428624de0acab1",
+    "Agent108WindowObstruction": "0dd91993667dddac3740ccadd7b2764cc2e6122121f19bd0a8354a9e0507a90a",
+    "Agent108WindowFamilyProducts": "d4449500c98887a82dca222af318e8d99e8ef0d1ad5e58719658406c1650fdc8",
+    "Agent108WindowFamilyRatio": "051dcb42849d9cffb2fec0de77af138b6d7d6c415ff27d65725dcdf9cfcf7afc",
+    "Agent108WindowEmbedding": "1acb5964188bcb7828bec58cbd8b5328ff9d68467e5951eb3a4bf87d78eb4e7f"
+  },
+  "results": [
+    {
+      "stage": "compile",
+      "command": [
+        "/workspace/scratch/b31b8818d547/agent108-runtime/lean-with-mathlib.sh",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/incoming/attempt-04/build/Agent108WindowIncoming.olean",
+        "/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/incoming/attempt-04/Agent108WindowIncoming.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "audit",
+      "command": [
+        "/workspace/scratch/b31b8818d547/agent108-runtime/lean-with-mathlib.sh",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "/workspace/scratch/b31b8818d547/agent108-work/proofs/contributions/agent-108/window-weights-b31b8818/incoming/attempt-04/IncomingAudit.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "public_declarations_audited": [
+    "finiteWindowWeight",
+    "finiteStateHalf_bounded",
+    "finiteWindowWeight_pos",
+    "finiteWindowWeight_partial_sum_le_incoming",
+    "choiceBits",
+    "choiceBits_ofFn",
+    "choiceBits_injective",
+    "embeddedState_window_weight",
+    "embeddedTarget_window_weight",
+    "embedded_choice_weight_sum",
+    "embedded_window_family_le_incoming",
+    "actual_window_family_total",
+    "incoming_window_lower_bound",
+    "incoming_window_ratio",
+    "no_uniform_window_multiplier",
+    "not_exists_uniform_window_bound"
+  ],
+  "private_helpers_covered_transitively": [
+    "ofFn_bitsFromList",
+    "sum_choices_get"
+  ],
+  "unexpected_axioms": [],
+  "status": "PASS"
+}

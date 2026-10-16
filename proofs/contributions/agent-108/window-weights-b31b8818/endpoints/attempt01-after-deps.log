@@ -1,0 +1,13 @@
+/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpoints.lean:28:8: error: no goals to be solved
+/workspace/scratch/b31b8818d547/agent108-work/proofs/Agent108WindowEndpoints.lean:29:6: error: unsolved goals
+case neg
+α : Type
+d : Nat
+hd : 0 < d
+x : α
+xs : List α
+ih : windows d xs = List.map (fun i => List.take d (List.drop i xs)) (List.range (xs.length + 1 - d))
+h : ¬d ≤ (x :: xs).length
+hz : (x :: xs).length + 1 - d = 0
+⊢ (if d ≤ xs.length + 1 then List.take d (x :: xs) :: windows d xs else []) =
+    List.map (fun i => List.take d (List.drop i (x :: xs))) (List.range (xs.length + 1 + 1 - d))
