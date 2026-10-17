@@ -1,0 +1,3 @@
+# Initial-phase strict-return assembly: author verification
+
+The exact new source compiled under official Lean4.19.0 with --trust=0 -j1 -DElab.async=false. The complete originating-module audit then passed: seven theorem constants, three public endpoints, zero definitions and zero custom axioms. Transitive logical dependencies use only propext, Classical.choice and Quot.sound. Exact source snapshots, commands, exit statuses, compiler hash, full logs and all57 reused dependency source/object identities are retained in attempt-001. This is an incremental author build, not an independent or fresh full-closure run. No source change followed this first successful attempt.

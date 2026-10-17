@@ -1,0 +1,42 @@
+Agent1.Periodic.physicalPrefix (B w : Agent8.Word) : P196.Agent4.Saturation.Prefix
+Agent1.Periodic.firstThree_periodicWord (B H w : Agent8.Word) (k : Nat) (hlen : List.length w = 4) (hk : 1 ≤ k) :
+  Agent8.firstThree (Agent1.Periodic.periodicWord B H w k) = Agent8.firstThree (B ++ w)
+Agent1.Periodic.physicalPrefix_a (B w : Agent8.Word) (hlen : List.length w = 4) :
+  (Agent1.Periodic.physicalPrefix B w).a = Agent1.Periodic.outside B w
+Agent1.Periodic.physicalPrefix_valid (B H w : Agent8.Word) (hv : Agent1.Periodic.ValidPeriodic B H w) :
+  P196.Agent4.Saturation.Valid (Agent1.Periodic.physicalPrefix B w)
+Agent1.Periodic.physicalPrefix_step (B H w : Agent8.Word) (hv : Agent1.Periodic.ValidPeriodic B H w) :
+  P196.Agent4.Saturation.Valid (Agent1.Periodic.physicalPrefix B w) ∧
+    Agent8.inputThree (Agent1.Periodic.periodicWord B H w 3) ≤ 1 ∧
+      P196.Agent4.Saturation.advance (Agent1.Periodic.physicalPrefix B w)
+          (Agent8.inputThree (Agent1.Periodic.periodicWord B H w 3)) =
+        (Agent1.Periodic.physicalPrefix (Agent1.Periodic.quotientOuter B H w) (Agent1.Periodic.rawPeriod B H w),
+          Agent1.Periodic.rawGamma B H w)
+NONSAFE_INVENTORY _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple._cstage2
+NONSAFE_INVENTORY Agent1.Periodic.physicalPrefix._cstage1
+NONSAFE_INVENTORY Agent1.Periodic.physicalPrefix._cstage2
+NONSAFE_INVENTORY _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple._cstage1
+AUDIT_THEOREM Agent1.Periodic.physicalPrefix_step._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.firstThree_periodicWord : [propext, Quot.sound]
+COMPILER_IMPLEMENTATION_DEFINITION _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple._cstage2
+AUDIT_DEFINITION _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple._cstage2 : []
+AUDIT_THEOREM _private.Agent1PeriodicPrefix.0.Agent1.Periodic.firstThree_append_of_length : [propext]
+AUDIT_THEOREM Agent1.Periodic.physicalPrefix_a._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple_advance : [propext]
+AUDIT_DEFINITION Agent1.Periodic.physicalPrefix : []
+AUDIT_THEOREM Agent1.Periodic.firstThree_periodicWord._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.physicalPrefix_valid : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.firstThree_periodicWord._proof_2 : [propext, Quot.sound]
+COMPILER_IMPLEMENTATION_DEFINITION Agent1.Periodic.physicalPrefix._cstage1
+AUDIT_DEFINITION Agent1.Periodic.physicalPrefix._cstage1 : []
+COMPILER_IMPLEMENTATION_DEFINITION Agent1.Periodic.physicalPrefix._cstage2
+AUDIT_DEFINITION Agent1.Periodic.physicalPrefix._cstage2 : []
+AUDIT_THEOREM Agent1.Periodic.physicalPrefix_step : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.physicalPrefix_valid._proof_4 : [propext, Quot.sound]
+COMPILER_IMPLEMENTATION_DEFINITION _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple._cstage1
+AUDIT_DEFINITION _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple._cstage1 : []
+AUDIT_THEOREM Agent1.Periodic.physicalPrefix_a : [propext, Quot.sound]
+AUDIT_DEFINITION _private.Agent1PeriodicPrefix.0.Agent1.Periodic.prefixOfTriple : []
+MODULE_AUDIT theorems=11 safe_definitions=2 compiler_implementation_definitions=4 required_public_names=5 custom_axioms=0 union=[Classical.choice,
+ Quot.sound,
+ propext]

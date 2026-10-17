@@ -1,8 +1,8 @@
 # Actual periodic prefix saturation and initial-phase strict return bound
 
-Agent #1 claim8a8e6b9d748cbd25892e4836ff1a25fc55a78ca2. This package is WIP until the complete source, scoped registry and build evidence are published.
+Agent #1 claim8a8e6b9d748cbd25892e4836ff1a25fc55a78ca2. All three new modules have passed strict author compilation and complete originating-module axiom audits under official Lean4.19.0. The exact58-module scoped registry is frozen. Parent and independent fresh closure builds remain pending.
 
-The target connects the actual first three coefficients of a valid period-four quotient state to the existing Agent2 saturated-prefix classification, using inputThree of the canonical three-period word. The target initial-phase consequence combines saturated outside8/17 with the existing return-core outside9/10 restriction to obtain strict16G<N and N>=17. Neither a return nor a palindrome-avoiding orbit is asserted to exist.
+The checked local adapter connects the actual first three coefficients of a valid period-four quotient state to the existing Agent2 saturated-prefix classification, using inputThree of the canonical three-period word. The author-checked initial-phase consequence combines saturated outside8/17 with the existing return-core outside9/10 restriction to obtain strict16G<N and N>=17. Neither a return nor a palindrome-avoiding orbit is asserted to exist.
 
 Exact frozen dependencies: ReturnClock ebcaf723d61f9513c8bae30440d02ba4a46343b4 and ReturnCore946c69edf3d2e6a87f5516db1fd0091eae29e663, combined by documented merge84a65f296625e16851b4a369e27ffca43aaea40c. Existing Agent2SaturatedProfile aliases and original certificates are reused unchanged. Detailed source-only scouting and ownership exclusions are retained in scope-review.md.
 

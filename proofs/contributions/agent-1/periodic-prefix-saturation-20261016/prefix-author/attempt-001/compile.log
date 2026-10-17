@@ -1,0 +1,55 @@
+Agent1PeriodicPrefix.lean:73:2: error: tactic 'split' failed, consider using `set_option trace.split.failure true`
+case mk.mk
+e a b c : Nat
+⊢ (let l1 := { a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.a / 10;
+    let l2 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.b + l1) / 10;
+    let d0 := { a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.a % 10;
+    let d1 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.b + l1) % 10;
+    let d2 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.c + l2) % 10;
+    let r2 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.c + e) / 10;
+    let r1 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.b + r2) / 10;
+    let gamma := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.a + r1) / 10;
+    let h0 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.a + r1) % 10;
+    let h1 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.b + r2) % 10;
+    let h2 := ({ a := (a, b, c).fst, b := (a, b, c).snd.fst, c := (a, b, c).snd.snd }.c + e) % 10;
+    if gamma = 0 then ({ a := d0 + h0, b := d1 + h1, c := d2 + h2 }, gamma)
+    else ({ a := d0 + 1, b := d1 + h0, c := d2 + h1 }, gamma)) =
+    ({
+        a :=
+          (let p := (a, b, c).fst;
+            let a_1 := (a, b, c).snd.fst;
+            let b := (a, b, c).snd.snd;
+            let l1 := p / 10;
+            let l2 := (a_1 + l1) / 10;
+            let r2 := (b + e) / 10;
+            let r1 := (a_1 + r2) / 10;
+            let g := (p + r1) / 10;
+            if g = 0 then (p % 10 + (p + r1) % 10, (a_1 + l1) % 10 + (a_1 + r2) % 10, (b + l2) % 10 + (b + e) % 10)
+            else (p % 10 + 1, (a_1 + l1) % 10 + (p + r1) % 10, (b + l2) % 10 + (a_1 + r2) % 10)).fst,
+        b :=
+          (let p := (a, b, c).fst;
+              let a_1 := (a, b, c).snd.fst;
+              let b := (a, b, c).snd.snd;
+              let l1 := p / 10;
+              let l2 := (a_1 + l1) / 10;
+              let r2 := (b + e) / 10;
+              let r1 := (a_1 + r2) / 10;
+              let g := (p + r1) / 10;
+              if g = 0 then (p % 10 + (p + r1) % 10, (a_1 + l1) % 10 + (a_1 + r2) % 10, (b + l2) % 10 + (b + e) % 10)
+              else (p % 10 + 1, (a_1 + l1) % 10 + (p + r1) % 10, (b + l2) % 10 + (a_1 + r2) % 10)).snd.fst,
+        c :=
+          (let p := (a, b, c).fst;
+              let a_1 := (a, b, c).snd.fst;
+              let b := (a, b, c).snd.snd;
+              let l1 := p / 10;
+              let l2 := (a_1 + l1) / 10;
+              let r2 := (b + e) / 10;
+              let r1 := (a_1 + r2) / 10;
+              let g := (p + r1) / 10;
+              if g = 0 then (p % 10 + (p + r1) % 10, (a_1 + l1) % 10 + (a_1 + r2) % 10, (b + l2) % 10 + (b + e) % 10)
+              else (p % 10 + 1, (a_1 + l1) % 10 + (p + r1) % 10, (b + l2) % 10 + (a_1 + r2) % 10)).snd.snd },
+      ((a, b, c).fst + ((a, b, c).snd.fst + ((a, b, c).snd.snd + e) / 10) / 10) / 10)
+'Agent1.Periodic.firstThree_periodicWord' depends on axioms: [propext, Quot.sound]
+'Agent1.Periodic.physicalPrefix_a' depends on axioms: [propext, Quot.sound]
+'Agent1.Periodic.physicalPrefix_valid' depends on axioms: [propext, Quot.sound]
+'Agent1.Periodic.physicalPrefix_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

@@ -1,0 +1,24 @@
+Agent1.Periodic.quotient_return_initial_clock_strict (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hphase : w 0 = [14, 14, 4, 4]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  2 * Agent1.Periodic.quotientClockSum B H w N < N
+Agent1.Periodic.quotient_return_initial_clock_gain (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hphase : w 0 = [14, 14, 4, 4]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  ∃ G,
+    0 < G ∧
+      Agent1.Periodic.quotientClockSum B H w N = 8 * G ∧
+        Agent1.Periodic.quotientDeltaSum B H w N = ↑G ∧ 16 * G < N ∧ N ≤ 32 * G
+Agent1.Periodic.quotient_return_initial_length_ge_seventeen (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hphase : w 0 = [14, 14, 4, 4]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) : 17 ≤ N
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_length_ge_seventeen._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_clock_gain._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_clock_strict._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_length_ge_seventeen : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_clock_strict._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_clock_gain : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_clock_strict : [propext, Quot.sound, Classical.choice]
+MODULE_AUDIT theorems=7 public_endpoints=3 safe_definitions=0 custom_axioms=0 union=[Classical.choice,
+ Quot.sound,
+ propext]
