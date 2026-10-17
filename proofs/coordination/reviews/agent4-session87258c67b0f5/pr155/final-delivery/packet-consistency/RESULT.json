@@ -1,0 +1,135 @@
+{
+  "status": "PASS_NO_CONCRETE_CONTRADICTION_FOUND",
+  "kind": "EDITORIAL_EVIDENCE_CONSISTENCY_CHECK_NOT_NEW_ACCEPTANCE_GATE",
+  "reviewer": "/root/pr155_independent_review",
+  "read_scope": "Two specifically assigned delivery JSON files and four already-known review files only. No additional local snapshots, searches, remote reads or compiler execution.",
+  "exact_reads": [
+    {
+      "path": "/workspace/scratch/87258c67b0f5/pr155-final-delivery/DELIVERY_PACKET_V2.json",
+      "bytes": 19943,
+      "sha256": "7f85d2deefd69484727b554faa6ccd18b6be1e563ce7d312985c2c6fd5ff7ec3"
+    },
+    {
+      "path": "/workspace/scratch/87258c67b0f5/pr155-final-delivery/PR148_REMOTE_PUBLICATION_RECEIPT.json",
+      "bytes": 7580,
+      "sha256": "6e0c34ea937e2d1f80cfc9c010dfda301ce3ffc449d7fdded3fac7437f035628"
+    },
+    {
+      "path": "/workspace/scratch/87258c67b0f5/pr155-evidence/review/INDEPENDENT_REVIEW.md",
+      "bytes": 30583,
+      "sha256": "8c27179ea983e5a0f61867e429565ac00fd52494bfa9df8c00cfeb7172b7da93"
+    },
+    {
+      "path": "/workspace/scratch/87258c67b0f5/pr155-evidence/review/REVIEW_RESULT.json",
+      "bytes": 2681,
+      "sha256": "b788890a61204e7811409f274d30c6dcdc9e56096b4e772d796703276450b577"
+    },
+    {
+      "path": "/workspace/scratch/87258c67b0f5/pr148-replay-evidence/review/EXECUTION_EVIDENCE_REVIEW.md",
+      "bytes": 14976,
+      "sha256": "1cfb11fd24b439fa3ea455cd600f6aece9bcbb0fe53b6e27a1899fb6dfbe808e"
+    },
+    {
+      "path": "/workspace/scratch/87258c67b0f5/pr148-replay-evidence/review/REVIEW_RESULT.json",
+      "bytes": 2910,
+      "sha256": "3dc8bd651212c8072ffbfdcc661fce3a2521a334795b2644037b1e57e42f1efe"
+    }
+  ],
+  "checks": [
+    {
+      "check": "pr155_source_and_base_identity",
+      "pass": true,
+      "detail": "H155 and H148 remain distinct exact source identities."
+    },
+    {
+      "check": "ownership_preserved",
+      "pass": true,
+      "detail": "Agent4 delivery155; Agent28 delivery148; Agent51 source; Agent31 main. Support role does not transfer ownership."
+    },
+    {
+      "check": "new_replay_not_original_recovery",
+      "pass": true,
+      "detail": "New replay and bounded historical nonrecovery are explicitly separate; 117 is historical payload metadata."
+    },
+    {
+      "check": "original_archive_hash_consistent",
+      "pass": true,
+      "detail": "The unavailable original archive has the same reported hash in all compared records."
+    },
+    {
+      "check": "review_report_hashes",
+      "pass": true,
+      "detail": "Packet pins match the actual known independent report/result bytes."
+    },
+    {
+      "check": "pr155_review_receipt_hashes",
+      "pass": true,
+      "detail": "PR155 canonical003/supplement002 references match its accepted review result."
+    },
+    {
+      "check": "pr148_review_receipt_hashes",
+      "pass": true,
+      "detail": "PR148 canonical001/supplement001/log references match the already accepted evidence review."
+    },
+    {
+      "check": "pr155_counters",
+      "pass": true,
+      "detail": "Counters agree with the previously completed PR155 review; no failed attempt is relabeled PASS."
+    },
+    {
+      "check": "pr148_counters",
+      "pass": true,
+      "detail": "Execution category counts and permitted axiom unions agree with the accepted new replay; no historical count equivalence is asserted."
+    },
+    {
+      "check": "runtime_and_flags",
+      "pass": true,
+      "detail": "Recorded 4 GiB cap, exact flags and rounded elapsed values agree; no measured Lean RSS is claimed."
+    },
+    {
+      "check": "publication_cross_references",
+      "pass": true,
+      "detail": "Archive commit, path, bytes, digest, blob and manifest identity agree across packet and receipt."
+    },
+    {
+      "check": "payload_arithmetic",
+      "pass": true,
+      "detail": "109+33+20=162 retained files; 162+9 excluded paths=171 original files. These are new package counts, not the missing historical117."
+    },
+    {
+      "check": "published_file_arithmetic",
+      "pass": true,
+      "detail": "21 distinct text files plus the binary archive account for22 published files."
+    },
+    {
+      "check": "formal_review_not_approval",
+      "pass": true,
+      "detail": "Actual formal reviews are COMMENTED at their exact heads; no platform APPROVED state is asserted."
+    },
+    {
+      "check": "no_merge_handoff_or_slot_claim",
+      "pass": true,
+      "detail": "Ready is kept separate from merge; conditional future steps do not claim execution, transfer or target acceptance."
+    },
+    {
+      "check": "provisional_tree_and_base_limits",
+      "pass": true,
+      "detail": "Hypothetical merge trees remain provisional; stale PR metadata and direct-main observation are distinguished. No target acceptance is inferred."
+    },
+    {
+      "check": "reviewer_role_and_failure_labels",
+      "pass": true,
+      "detail": "Reviewer independence and existing failure labels remain explicit; this editorial check performs no new proof review or build."
+    }
+  ],
+  "concrete_errors": [],
+  "limitations": [
+    "Remote publication, current platform state, queue ownership census, main-role freshness and provisional merge-tree computations are not independently re-executed by this editorial check. Their representations are checked for consistency and scope against the assigned receipt and already accepted reports.",
+    "The original corpus preservation/reconciliation finding remains an external delivery matter; this check neither creates a new mandatory approval nor reopens completed mathematical/execution acceptance.",
+    "No publication, main slot, transfer, retarget or merge is performed."
+  ],
+  "modified_frozen_roots": false,
+  "lean_executed": false,
+  "remote_actions": false,
+  "mathematical_review_repeated": false
+}

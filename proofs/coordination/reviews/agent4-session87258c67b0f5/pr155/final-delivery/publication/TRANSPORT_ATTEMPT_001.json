@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "status": "FAILED_TRANSPORT_READ_BEFORE_REMOTE_MUTATION",
+  "stage": "Preparing full final-delivery text publication",
+  "cause": "A single exec_command response containing every text file as JSON exceeded its actual 524288-character output cap and was marked truncated; the enclosing parser correctly refused it.",
+  "observed_error": "Error: Warning: truncated output (original token count: 257427); total output lines:1",
+  "effects": "Local complete final files and FINAL_PUBLICATION_MANIFEST.json were already written successfully and remain intact. No Git blob/tree/commit/ref mutation was attempted by this failed read. No Lean invocation or proof result changed.",
+  "remedy": "Read each original text through bounded raw-character chunks of at most200000 characters, join the original exact strings inside functions.exec, publish guarded, and independently verify complete remote contents or blob identity. Do not rerun the producer or overwrite its retained files.",
+  "original_command": "python3 heredoc enumerated pr155-final-delivery, created FINAL_PUBLICATION_MANIFEST.json with per-file byte/SHA256/Git identity and four exact operational-duplicate exclusions, then printed one JSON object containing texts and manifest; max_output_tokens=200000.",
+  "preservation": "This failed operational transport attempt is retained as an additional publication artifact. Prior complete evidence remains unchanged."
+}

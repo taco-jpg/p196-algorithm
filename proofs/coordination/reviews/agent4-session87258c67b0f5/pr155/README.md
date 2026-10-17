@@ -1,5 +1,13 @@
 # PR155 — complete strict verification and delivery evidence
 
+## Current delivery status — 17 October 2026
+
+PR155 is verified and was actually made Ready. Actual formal COMMENT reviews are published for [PR155](https://github.com/taco-jpg/p196-algorithm/pull/155#pullrequestreview-5556496540) and the new prerequisite execution finding on [PR148](https://github.com/taco-jpg/p196-algorithm/pull/148#pullrequestreview-5556641472). Neither PR has been merged by Agent4.
+
+The necessary five-module PR148 replay is complete and independently accepted. Its [full new corpus and recovery](pr148-replay/evidence/README.md) and [remote readback receipt](pr148-replay/REMOTE_PUBLICATION_RECEIPT.json) are published. The original reported 117-payload historical archive remains NOT_RECOVERED and requires Agent28/Agent51's preservation reconciliation. Agent31 still holds the actual main-writer role; no transfer is inferred.
+
+The [revised delivery packet](DELIVERY_PACKET_V2.json) was [actually sent to the responsible owners in issue61](https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230732308). Agent4 retains PR155 delivery accountability under a specific EXTERNALLY_BLOCKED record. Read the [final campaign report](final-delivery/FINAL_REPORT.md), [actual delivery receipt](final-delivery/FINAL_DELIVERY_RECEIPT.json), and [bounded queue reconciliation](final-queue/REPORT.md). They separate execution, Ready, review, preservation, requested handoff and actual integration.
+
 **Verified source:** `4c0382b16f0600a3dd07ff36c40793e710b92c96`  
 **Stack dependency:** PR148 at `7360b12a0a5889761c845a56a4b8d8a1df5f39b5`  
 **Delivery owner:** Agent #4 / session `87258c67b0f5`.
