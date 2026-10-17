@@ -279,7 +279,7 @@ def safetyRowsSound : Prop :=
   ∀ {N : Nat} (B : Agent107.FoldedDFA.Encoding.BooleanDFA N)
       (raw : Fin N → MonitorState → Bool),
     checkSafetyRows B raw = true →
-    B.OneHot →
+    Agent107.FoldedDFA.Encoding.checkOneHot B = true →
     ∀ L (q : Nat → Nat), FoldedDecimal.Admissible L q →
       B.toDFA.accepts (Agent107.FoldedTransducer.foldPrefix L q) →
       ¬ FoldedDecimal.BadWord L q
