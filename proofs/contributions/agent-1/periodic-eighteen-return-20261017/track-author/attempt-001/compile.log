@@ -1,0 +1,39 @@
+Agent1PeriodicEighteenTrack.lean:52:8: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  (stepWord W)[i]?.getD 0
+case intro.intro.intro.intro.refine_1
+W : Word
+a b : Nat
+hab : a < b
+hbL : b ≤ List.length (stepWord W)
+hrun : ∀ (i : Nat), a ≤ i → i < b → FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) i = 18
+hleft : a = 0 ∨ FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) (a - 1) ≠ 18
+hright : b = List.length (stepWord W) ∨ FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) b ≠ 18
+i : Nat
+hai : a ≤ i
+hib : i < b
+⊢ (fun j => (stepWord W)[j]?.getD 0) i = 18
+Agent1PeriodicEighteenTrack.lean:57:10: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  (stepWord W)[a - 1]?.getD 0
+case intro.intro.intro.intro.refine_2.inr.h
+W : Word
+a b : Nat
+hab : a < b
+hbL : b ≤ List.length (stepWord W)
+hrun : ∀ (i : Nat), a ≤ i → i < b → FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) i = 18
+hright : b = List.length (stepWord W) ∨ FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) b ≠ 18
+hne : FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) (a - 1) ≠ 18
+⊢ (fun j => (stepWord W)[j]?.getD 0) (a - 1) ≠ 18
+Agent1PeriodicEighteenTrack.lean:64:12: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  (stepWord W)[b]?.getD 0
+case neg.h
+W : Word
+a b : Nat
+hab : a < b
+hbL : b ≤ List.length (stepWord W)
+hrun : ∀ (i : Nat), a ≤ i → i < b → FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) i = 18
+hleft : a = 0 ∨ FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) (a - 1) ≠ 18
+hne : FoldedDecimal.nextColumns (fun j => W[j]?.getD 0) (List.length W) b ≠ 18
+hend : ¬b = List.length (stepWord W)
+⊢ (fun j => (stepWord W)[j]?.getD 0) b ≠ 18
+'Agent1.Periodic.quotientEighteenTrack' does not depend on any axioms
+'Agent1.Periodic.quotient_eighteen_track' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

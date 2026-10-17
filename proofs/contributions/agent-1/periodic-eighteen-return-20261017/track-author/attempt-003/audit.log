@@ -1,0 +1,84 @@
+Agent1.Periodic.quotient_eighteen_track (B H w : Nat → Agent8.Word) (k C : Nat → Nat) (N a0 b0 I : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hguard : ∀ (t : Nat), t < N → 3 ≤ k t)
+  (hkstep :
+    ∀ (t : Nat),
+      t < N →
+        k (t + 1) =
+          k t - 2 + Agent1.Periodic.outerPeriods (B t) (H t) (w t) + Agent1.Periodic.centerPeriods (B t) (H t) (w t))
+  (hC0 : C 0 = 0)
+  (hCstep :
+    ∀ (t : Nat),
+      t < N →
+        C (t + 1) =
+          C t +
+            DecimalDigits.carry (fun j => (Agent1.Periodic.quotientPathWord B H w k t)[j]?.getD 0)
+              (List.length (Agent1.Periodic.quotientPathWord B H w k t)))
+  (hr0 :
+    RunAncestry.MaximalRun (fun j => (Agent1.Periodic.quotientPathWord B H w k 0)[j]?.getD 0)
+      (List.length (Agent1.Periodic.quotientPathWord B H w k 0)) 18 a0 b0)
+  (hleft : a0 + N ≤ I) (hright : I + N < b0) (t : Nat) :
+  t ≤ N →
+    let p := Agent1.Periodic.quotientEighteenTrack B H w k a0 b0 t;
+    RunAncestry.MaximalRun (fun j => (Agent1.Periodic.quotientPathWord B H w k t)[j]?.getD 0)
+        (List.length (Agent1.Periodic.quotientPathWord B H w k t)) 18 p.fst p.snd ∧
+      p.fst ≤ a0 + t ∧ b0 ≤ p.snd + t ∧ a0 + C t ≤ p.fst ∧ p.fst ≤ I ∧ I < p.snd
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_run_stepWord._proof_7 : [propext,
+ Quot.sound]
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientEighteenTrack : []
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_run_stepWord._proof_8 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_10 : [propext, Quot.sound]
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.quotientEighteenTrack._unsafe_rec SAFETY Lean.DefinitionSafety.partial
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_descendant_endpoint_bounds : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_descendant_endpoint_bounds._proof_2 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_15 : [propext, Quot.sound]
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.quotientEighteenTrack._lambda_1._cstage2 SAFETY Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_descendant_endpoint_bounds._proof_1 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_descendant_endpoint_bounds._proof_5 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientEighteenTrack._sunfold : []
+GENERATED_RUNTIME_IMPLEMENTATION _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.quotientEighteenTrack.match_1.splitter._cstage1 SAFETY Lean.DefinitionSafety.unsafe
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.quotientEighteenTrack._cstage2 SAFETY Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_run_stepWord._proof_6 : [propext,
+ Quot.sound]
+GENERATED_RUNTIME_IMPLEMENTATION _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.quotientEighteenTrack.match_1.splitter._rarg._cstage2 SAFETY Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.quotientEighteenTrack.eq_2 : []
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_run_stepWord : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.quotientEighteenTrack.match_1.splitter : []
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientEighteenTrack.match_1 : []
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_descendant_endpoint_bounds._proof_4 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientEighteenTrack.eq_1 : []
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.quotientEighteenTrack.match_1.eq_1 : []
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.quotientEighteenTrack._cstage1 SAFETY Lean.DefinitionSafety.unsafe
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.quotientEighteenTrack.match_1._cstage1 SAFETY Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.eighteen_descendant_endpoint_bounds._proof_3 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_eighteen_track._proof_9 : [propext, Quot.sound]
+GENERATED_RUNTIME_IMPLEMENTATION _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.quotientEighteenTrack.match_1.splitter._cstage2 SAFETY Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM _private.Agent1PeriodicEighteenTrack.0.Agent1.Periodic.quotientEighteenTrack.match_1.eq_2 : []
+MODULE_AUDIT theorems=27 required_endpoints=1 safe_definitions=4 generated_runtime=8 custom_axioms=0 union=[Classical.choice,
+ Quot.sound,
+ propext]
