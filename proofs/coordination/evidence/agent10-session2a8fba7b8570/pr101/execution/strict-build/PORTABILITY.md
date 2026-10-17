@@ -1,0 +1,9 @@
+# Execution checkpoint 002 portability
+
+This archive is a preserved evidence payload, with relative member paths rooted at `strict-build/`. It contains the completed second build, both WIP/audit supplements including the original failure, the exact four-token repair, inspected runner source, all selected source copies, full raw logs, and hash manifests. It intentionally excludes only regenerable `.olean` object files; their exact identities remain in object manifests.
+
+The original generator/source closure and first failed build remain in immutable checkpoint commit `a676d2c8ee41b1e76e9b7c9f98d83936fda18015`, under the delivery owner's `pr101/checkpoint-001/` prefix. `SUMMARY.json` binds the original and later runner versions and points to the full source/runtime manifests. Checkpoint 001 is a prerequisite for recovering the full historical provenance; checkpoint 002 does not replace it.
+
+The retained runners and receipts preserve their actual absolute source, runtime, and output paths. Those paths are historical command evidence, not archive member paths. Restoring an arbitrary directory does not make those historical runners immediately runnable: the pinned runtime and the checkpoint-001 source layout must be made available, or an independently inspected relocation wrapper must preserve the same source/runtime hashes, exact import closure, strict flags, resource limits, and isolated object search path. No runtime download or new verification is performed by archive extraction.
+
+`MEMBERS.json` lists every payload member's relative path, byte count, and SHA256. The packaging receipt records the archive SHA256, excluded object identities, successful safe extraction into a newly created directory, full member-by-member identity comparisons, and base64 chunk reassembly identity. No absolute path, parent traversal, symlink, hardlink, special device, or duplicate member is permitted in the archive.
