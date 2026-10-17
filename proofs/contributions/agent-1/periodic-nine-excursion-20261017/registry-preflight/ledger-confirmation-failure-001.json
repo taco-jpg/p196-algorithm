@@ -1,0 +1,15 @@
+{
+  "status": "HELPER_SCHEMA_FAILURE",
+  "command": [
+    "python3",
+    "proofs/contributions/agent-1/periodic-nine-excursion-20261017/registry-preflight/confirm-ledger.py"
+  ],
+  "exit_code": 1,
+  "exception": "KeyError: 'sha256'",
+  "location": "confirm-ledger.py:28",
+  "diagnosis": "The compiler receipt stores hashes under files[absolute compiler path], not a top-level sha256 field.",
+  "source_changed": false,
+  "Lean_executed": false,
+  "original_script_sha256": "c3ae58f5f37bcfdaa310bef084654870488e863119b38b106014d90678ad8c68",
+  "correction": "New confirm-ledger-v2.py reads the actual recorded files schema; original helper and this first failure retained."
+}

@@ -1,0 +1,46 @@
+AUDIT_THEOREM Agent1.Periodic.quotientCenter_nines_length_balance._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_center_balance._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.ninesExtraSum.eq_1 : []
+AUDIT_SAFE_DEFINITION Agent1.Periodic.ninesExtraSum._sunfold : []
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_center_balance : [propext, Quot.sound, Classical.choice]
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraStrips._closed_2._cstage2
+AUDIT_THEOREM _private.Agent1PeriodicNinesLedger.0.Agent1.Periodic.ninesExtraSum.match_1.eq_1 : []
+AUDIT_SAFE_DEFINITION Agent1.Periodic.ninesExtraStrips : []
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraSum.match_1._cstage1
+GENERATED_RUNTIME _private.Agent1PeriodicNinesLedger.0.Agent1.Periodic.ninesExtraSum.match_1.splitter._cstage2
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraSum._cstage1
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraSum._unsafe_rec
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraStrips._cstage1
+AUDIT_THEOREM _private.Agent1PeriodicNinesLedger.0.Agent1.Periodic.ninesExtraSum.match_1.eq_2 : []
+AUDIT_THEOREM Agent1.Periodic.quotientCenter_nines_length_balance : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_center_balance._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_center_balance._proof_3 : [propext, Quot.sound]
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraStrips._closed_1._cstage2
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicNinesLedger.0.Agent1.Periodic.ninesExtraSum.match_1.splitter : []
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraStrips._closed_3._cstage2
+GENERATED_RUNTIME _private.Agent1PeriodicNinesLedger.0.Agent1.Periodic.ninesExtraSum.match_1.splitter._rarg._cstage2
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraStrips._cstage2
+AUDIT_SAFE_DEFINITION Agent1.Periodic.ninesExtraSum.match_1 : []
+AUDIT_THEOREM Agent1.Periodic.ninesExtraSum.eq_2 : []
+GENERATED_RUNTIME _private.Agent1PeriodicNinesLedger.0.Agent1.Periodic.ninesExtraSum.match_1.splitter._cstage1
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraSum._cstage2
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_center_balance._proof_2 : [propext, Quot.sound]
+GENERATED_RUNTIME Agent1.Periodic.ninesExtraStrips._closed_4._cstage2
+AUDIT_SAFE_DEFINITION Agent1.Periodic.ninesExtraSum : []
+MODULE_AUDIT theorems=11 safe_definitions=5 generated_runtime=13 custom_axioms=0 theorem_union=[Classical.choice,
+ Quot.sound,
+ propext] definition_union=[]
+Agent1.Periodic.ninesExtraStrips (B H : Agent8.Word) : Nat
+Agent1.Periodic.ninesExtraSum (B H : Nat → Agent8.Word) : Nat → Nat
+Agent1.Periodic.quotientCenter_nines_length_balance (B H : Agent8.Word) (hB : Agent8.Bounded B 18)
+  (hH : Agent8.Bounded H 18) (hmix : Agent1.Periodic.leftEntry B + Agent1.Periodic.rightEntry B H [9, 9, 9, 9] = 1) :
+  List.length (Agent1.Periodic.quotientCenter B H [9, 9, 9, 9]) + 8 * Agent1.Periodic.ninesExtraStrips B H =
+    List.length H + Agent1.Periodic.rawGamma B H [9, 9, 9, 9]
+Agent1.Periodic.quotient_path_nines_center_balance (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hw0 : w 0 = [9, 9, 9, 9]) (hwN : w N = [9, 9, 9, 9]) :
+  List.length (H N) + 8 * Agent1.Periodic.ninesExtraSum B H N =
+    List.length (H 0) + Agent1.Periodic.quotientClockSum B H w N
+'Agent1.Periodic.ninesExtraStrips' does not depend on any axioms
+'Agent1.Periodic.ninesExtraSum' does not depend on any axioms
+'Agent1.Periodic.quotientCenter_nines_length_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.Periodic.quotient_path_nines_center_balance' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,32 @@
+Agent1.Periodic.quotient_return_nines_center_excursion (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hw0 : w 0 = [9, 9, 9, 9]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  (∀ (i : Nat), i ≤ N → H i ≠ []) ∧ ∃ i, i < N ∧ List.length (H (i + 1)) + 7 ≤ List.length (H i)
+Agent1.Periodic.quotient_path_nines_small_centers_no_return (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hw0 : w 0 = [9, 9, 9, 9]) (hN : 0 < N) (hsmall : ∀ (i : Nat), i < N → List.length (H i) ≤ 7) :
+  ¬(B N = B 0 ∧ H N = H 0 ∧ w N = w 0)
+'Agent1.Periodic.quotient_return_nines_center_excursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.Periodic.quotient_path_nines_small_centers_no_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_small_centers_no_return._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExcursion.0.Agent1.Periodic.center_nonempty_of_mixed_nines : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExcursion.0.Agent1.Periodic.ninesExtraSum_pos_index : [Quot.sound, propext]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExcursion.0.Agent1.Periodic.ninesExtraSum_pos_index._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_excursion._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_excursion._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_excursion : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExcursion.0.Agent1.Periodic.center_nonempty_of_mixed_nines._proof_1 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExcursion.0.Agent1.Periodic.ninesExtraSum_pos_index._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_small_centers_no_return._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_excursion._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExcursion.0.Agent1.Periodic.ninesExtraSum_pos_index._proof_2 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_excursion._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExcursion.0.Agent1.Periodic.ninesExtraSum_pos_index._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_small_centers_no_return : [propext, Quot.sound, Classical.choice]
+MODULE_AUDIT theorem_constants=15 safe_defs=0 runtime=0 custom_axioms=0

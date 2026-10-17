@@ -1,0 +1,7 @@
+# Independent nine-excursion review: PASS
+
+Published source `ee58c494d1021aa27ff71ef75653b962cf6a2006`; registry SHA256 `f169295f2aa28b7f433cf8512a128644b7f28d85628f17b38a137e15b29e4a9e`. Reviewer `center_review_resume` authored none of the mathematical modules and independently rebuilt the exact 29-module closure with official Lean 4.19.0, explicit trust zero, and no reused project objects. All 30 compile/audit commands passed. Full origin audit: 1504 theorem constants, 241 safe definitions. New modules: 26 theorem constants, five safe definitions, four public theorems and two public definitions. Literal public types/axioms and separate runtime inventory are retained.
+
+See `semantic-review.md`, `frozen-receipt.json`, and `clean-001/ReviewAudit.log`. This establishes an actual additional-strip ledger, a necessary at-least-seven center drop on a positive original-valid full nine return, and the restricted source-cap-seven no-return consequence. It establishes no general nonreturn, cycle, positive seed, or result about 196.
+
+To reproduce, run `replay.py --source-root /workspace/p196-agent1-nine-excursion-20261017 --build-dir NEW_EMPTY_DIRECTORY_OUTSIDE_WORKTREE --evidence-dir NEW_EMPTY_EVIDENCE --lean /workspace/p196-tools/lean-4.19.0-linux/bin/lean --memory-mib 8192 --module-timeout-seconds 600`. Every run requires new directories. `pin_published.py` generated the immutable source identity. Source-only preflight and preparation records retain their historical status. No math source, registry, or Git state was written by this reviewer.

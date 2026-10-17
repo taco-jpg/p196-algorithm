@@ -1,0 +1,1 @@
+Root authored Excursion. First attempt001 strict compile and complete new-origin theorem audit passed. All commands, source, logs and28 reused dependency source/object pins are retained. This author increment is not a fresh closure rebuild. No failed proof attempt or source revision occurred. Generated objects are excluded.
