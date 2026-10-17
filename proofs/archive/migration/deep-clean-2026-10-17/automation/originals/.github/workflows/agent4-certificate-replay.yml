@@ -1,0 +1,71 @@
+name: Agent4 byte-exact certificate publication
+
+on:
+  push:
+    paths:
+      - '.github/workflows/agent4-certificate-replay.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  replay-and-publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Checkout isolated research paths
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout: proofs/agent4
+          fetch-depth: 1
+      - name: Regenerate exact certificate and independently replay it
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd proofs/agent4/complementary_bulk
+          mkdir -p logs
+          echo "Input commit: $GITHUB_SHA" > logs/certificate-ci.log
+          python --version >> logs/certificate-ci.log
+          sha256sum quotient.py search.py replay.py test_quotient.py >> logs/certificate-ci.log
+          python -m unittest -v test_quotient 2>&1 | tee -a logs/certificate-ci.log
+          python search.py --cap 6 2>&1 | tee -a logs/certificate-ci.log
+          python - <<'PY'
+          import base64, hashlib, json
+          from pathlib import Path
+          summary=json.loads(Path('results/cap6-summary.json').read_text())
+          assert summary['vertices']==637632
+          assert summary['edges']==15260 and summary['exits']==622372
+          assert summary['cycles']==[] and summary['max_exit_transitions']==5
+          assert summary['edge_stream_sha256']=='edd32c9bac703996e0817b6bc7118e1a88b92e573b982794bd756dd86d710833'
+          assert summary['rank_json_sha256']=='bc0edd6916638340bac7115e99313485176c5b9e0ed242195b2528f8f54198ee'
+          p=Path('results/cap6-ranks.json.gz')
+          Path(str(p)+'.b64').write_text(base64.encodebytes(p.read_bytes()).decode())
+          p.unlink()  # Force independent replay to test the published text encoding.
+          PY
+          python replay.py --cap 6 2>&1 | tee -a logs/certificate-ci.log
+      - name: Publish only independently verified Agent4 results
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add proofs/agent4/complementary_bulk/results/cap6-summary.json \
+            proofs/agent4/complementary_bulk/results/cap6-ranks.json.gz.b64 \
+            proofs/agent4/complementary_bulk/results/cap6-replay.json \
+            proofs/agent4/complementary_bulk/logs/certificate-ci.log
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'proofs(agent4): publish byte-exact regenerated cap-six certificate and independent CI replay'
+          # Concurrent agents own all other paths. Rebase without force; any real
+          # conflict aborts this job instead of overwriting another contribution.
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+      - name: Retain exact checked research snapshot
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent4-checked-research-snapshot
+          path: proofs/agent4/complementary_bulk/
+          retention-days: 7
+          if-no-files-found: error

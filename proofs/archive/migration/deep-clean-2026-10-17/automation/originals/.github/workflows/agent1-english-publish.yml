@@ -1,0 +1,109 @@
+name: Agent1 verified English translation publication
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/agent1-english-publish.yml
+      - proofs/english/*-patches.json
+      - proofs/english/apply_translation.py
+permissions:
+  contents: read
+concurrency:
+  group: p196-agent1-english-publication
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Apply reviewed language-only transformations and validate source structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agent1-english-output
+          python3 -B proofs/english/apply_translation.py > /tmp/agent1-english-output/validation.json
+          git diff --cached --check
+          git config user.name 'Agent #1 English translation'
+          git config user.email '128518157+sodium-qed@users.noreply.github.com'
+          git commit -m 'Agent #1: publish validated English text and immutable-archive reading copies'
+          git rev-parse HEAD > /tmp/agent1-english-output/commit.txt
+          printf '%s\n' "$GITHUB_SHA" > /tmp/agent1-english-output/parent.txt
+          git bundle create /tmp/agent1-english-output/translation.bundle HEAD ^"$GITHUB_SHA"
+          git bundle verify /tmp/agent1-english-output/translation.bundle
+          cp proofs/english/translation_manifest.json /tmp/agent1-english-output/
+          (cd /tmp/agent1-english-output && sha256sum commit.txt parent.txt translation.bundle translation_manifest.json validation.json > SHA256SUMS)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: agent1-english-translation-output
+          path: /tmp/agent1-english-output/
+          retention-days: 7
+          if-no-files-found: error
+  publish:
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: agent1-english-translation-output
+          path: /tmp/agent1-english-output
+      - name: Validate exact generated candidate without executing its contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd /tmp/agent1-english-output && sha256sum -c SHA256SUMS)
+          test "$(cat /tmp/agent1-english-output/parent.txt)" = "$GITHUB_SHA"
+          git bundle verify /tmp/agent1-english-output/translation.bundle
+          git fetch /tmp/agent1-english-output/translation.bundle HEAD
+          RESULT=$(cat /tmp/agent1-english-output/commit.txt)
+          test "$(git rev-parse FETCH_HEAD)" = "$RESULT"
+          test "$(git show -s --format=%P "$RESULT")" = "$GITHUB_SHA"
+          test -z "$(git diff --name-only --diff-filter=D "$GITHUB_SHA" "$RESULT")"
+          test -z "$(git diff --name-only "$GITHUB_SHA" "$RESULT" -- .github calculation)"
+          export RESULT
+          python3 - <<'PY'
+          import hashlib,json,os,subprocess
+          base=os.environ['GITHUB_SHA']; result=os.environ['RESULT']
+          validation=json.load(open('/tmp/agent1-english-output/validation.json'))
+          expected=set(validation['changed_paths'])
+          changed=set(subprocess.check_output(['git','diff','--name-only',base,result],text=True).splitlines())
+          if not changed <= expected: raise RuntimeError('Unexpected generated paths')
+          role=json.loads(subprocess.check_output(['git','show',base+':proofs/ENGLISH_TRANSLATION.json']))
+          if role['agent']!='Agent #1' or role['task_id']!='agent1-english-translation-20261016':raise RuntimeError('Translation ownership mismatch')
+          for path in changed:
+              if path.startswith('proofs/archive/'):
+                  if not path.startswith('proofs/archive/english-translation-originals/'):
+                      raise RuntimeError('Original research archive changed')
+                  if subprocess.run(['git','cat-file','-e',base+':'+path],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0:
+                      raise RuntimeError('Existing backup changed')
+              if path.endswith('.lean'): raise RuntimeError('Lean source change not authorized by this translation pass')
+          manifest=json.load(open('/tmp/agent1-english-output/translation_manifest.json'))
+          for r in manifest['translations']:
+              data=subprocess.check_output(['git','show',result+':'+r['output_path']])
+              if hashlib.sha256(data).hexdigest()!=r['output_sha256']:raise RuntimeError('Output identity mismatch')
+          PY
+      - name: Publish one non-force fast-forward only from the exact inspected main
+        shell: bash
+        env:
+          GH_TRANSLATION_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          RESULT=$(cat /tmp/agent1-english-output/commit.txt)
+          CURRENT=$(git ls-remote origin refs/heads/main | cut -f1)
+          test "$CURRENT" = "$GITHUB_SHA"
+          AUTH=$(printf 'x-access-token:%s' "$GH_TRANSLATION_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin "$RESULT:refs/heads/main"
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$RESULT"
+          printf 'Published English translation commit %s\n' "$RESULT"

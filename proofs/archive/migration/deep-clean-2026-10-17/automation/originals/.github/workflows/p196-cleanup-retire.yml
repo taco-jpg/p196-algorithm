@@ -1,0 +1,20 @@
+name: P196 canonical cleanup retirement
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/p196-cleanup-retire.yml]
+permissions:
+  contents: write
+concurrency:
+  group: p196-canonical-cleanup-retirement
+  cancel-in-progress: false
+jobs:
+  retire-preserved-branches:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Preserve exact branch tips and atomically retire selected refs
+        run: python3 proofs/archive/migration/668beb73f0a69c7ad8d8/retire_transport.py proofs/archive/migration/668beb73f0a69c7ad8d8/transport-plan.json

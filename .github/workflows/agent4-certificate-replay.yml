@@ -1,31 +1,54 @@
-name: Agent4 byte-exact certificate publication
+name: Agent4 historical byte-exact certificate replay
 
 on:
-  push:
-    paths:
-      - '.github/workflows/agent4-certificate-replay.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  replay-and-publish:
+  historical-replay:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
       - name: Checkout isolated research paths
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5
           sparse-checkout: proofs/agent4
           fetch-depth: 1
+          persist-credentials: false
+      - name: Verify immutable historical input identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5
+          test "$(git rev-parse HEAD:proofs/agent4)" = 6d59c68f8f5922f85f5238081ce46226af0e1c02
+          printf '{"workflow_source":"%s","historical_source":"%s","input_tree":"%s","scope":"Historical replay; not final-main acceptance"}\n' "$GITHUB_SHA" "$(git rev-parse HEAD)" "$(git rev-parse HEAD:proofs/agent4)" > proofs/agent4/WORKFLOW_SOURCE.json
+      - name: Separate retained historical outputs from this execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          for dir in proofs/agent4/complementary_bulk/logs proofs/agent4/complementary_bulk/results proofs/agent4/prefix_growth/logs proofs/agent4/prefix_growth/integration/logs; do
+            if test -d "$dir"; then
+              mkdir -p "$RUNNER_TEMP/agent4-historical-outputs/$(dirname "$dir")"
+              mv "$dir" "$RUNNER_TEMP/agent4-historical-outputs/$dir"
+            fi
+            mkdir -p "$dir"
+          done
+          summary=proofs/agent4/prefix_growth/saturation-summary.json
+          if test -f "$summary"; then
+            mkdir -p "$RUNNER_TEMP/agent4-historical-outputs/$(dirname "$summary")"
+            mv "$summary" "$RUNNER_TEMP/agent4-historical-outputs/$summary"
+          fi
+
       - name: Regenerate exact certificate and independently replay it
         shell: bash
         run: |
           set -euo pipefail
           cd proofs/agent4/complementary_bulk
           mkdir -p logs
-          echo "Input commit: $GITHUB_SHA" > logs/certificate-ci.log
+          echo "Historical input commit: $(git rev-parse HEAD); workflow commit: $GITHUB_SHA" > logs/certificate-ci.log
           python --version >> logs/certificate-ci.log
           sha256sum quotient.py search.py replay.py test_quotient.py >> logs/certificate-ci.log
           python -m unittest -v test_quotient 2>&1 | tee -a logs/certificate-ci.log
@@ -44,28 +67,20 @@ jobs:
           p.unlink()  # Force independent replay to test the published text encoding.
           PY
           python replay.py --cap 6 2>&1 | tee -a logs/certificate-ci.log
-      - name: Publish only independently verified Agent4 results
+      - name: Hand replay evidence to the canonical writer
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add proofs/agent4/complementary_bulk/results/cap6-summary.json \
-            proofs/agent4/complementary_bulk/results/cap6-ranks.json.gz.b64 \
-            proofs/agent4/complementary_bulk/results/cap6-replay.json \
-            proofs/agent4/complementary_bulk/logs/certificate-ci.log
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'proofs(agent4): publish byte-exact regenerated cap-six certificate and independent CI replay'
-          # Concurrent agents own all other paths. Rebase without force; any real
-          # conflict aborts this job instead of overwriting another contribution.
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          printf 'Historical inputs: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5. Replay outputs are retained in this run artifact.\n' >> "$GITHUB_STEP_SUMMARY"
+          printf 'The canonical writer reviews and preserves this evidence before any repository publication. This workflow performs no Git ref mutation.\n' >> "$GITHUB_STEP_SUMMARY"
       - name: Retain exact checked research snapshot
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: agent4-checked-research-snapshot
-          path: proofs/agent4/complementary_bulk/
+          path: |
+            ${{ runner.temp }}/agent4-historical-outputs/
+            proofs/agent4/WORKFLOW_SOURCE.json
+            proofs/agent4/complementary_bulk/
           retention-days: 7
           if-no-files-found: error
