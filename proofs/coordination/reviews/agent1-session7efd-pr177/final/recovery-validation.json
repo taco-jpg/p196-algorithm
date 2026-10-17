@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "PASS_PACKAGING_AND_RECOVERY",
+  "proof_execution_performed": false,
+  "archive": {
+    "path": "pr177-evidence.tar.xz",
+    "bytes": 184440,
+    "sha256": "0c26796c36c7d1dc46bc2c10a9ae5f2f4385849cc3fe9cb14056dd0345afe927"
+  },
+  "member_count": 215,
+  "member_bytes": 3809945,
+  "part_count": 13,
+  "checks": [
+    {
+      "check": "Every recovered member equals original packaged bytes",
+      "files": 215,
+      "status": "PASS"
+    },
+    {
+      "check": "pr177-evidence still equals packaged inputs",
+      "files": 109,
+      "status": "PASS"
+    },
+    {
+      "check": "pr177-review still equals packaged inputs",
+      "files": 5,
+      "status": "PASS"
+    },
+    {
+      "check": "No compiled objects or Python caches recovered",
+      "status": "PASS"
+    },
+    {
+      "check": "Corrupted base64 part SHA256",
+      "status": "REJECTED_BEFORE_WRITING_MEMBERS",
+      "exit_code": 1,
+      "error": "ValueError: SHA256 mismatch: parts/part-0001.b64"
+    },
+    {
+      "check": "traversal",
+      "status": "REJECTED_BEFORE_WRITING_MEMBERS",
+      "exit_code": 1,
+      "error": "ValueError: Unsafe member path component"
+    },
+    {
+      "check": "absolute-path",
+      "status": "REJECTED_BEFORE_WRITING_MEMBERS",
+      "exit_code": 1,
+      "error": "ValueError: Absolute or nonportable member path"
+    },
+    {
+      "check": "tar-symlink",
+      "status": "REJECTED_BEFORE_WRITING_MEMBERS",
+      "exit_code": 1,
+      "error": "ValueError: Nonregular member (links/devices forbidden): link.txt"
+    }
+  ],
+  "package_manifest": {
+    "bytes": 49986,
+    "sha256": "c0d372a5a77317cb57fc410a42fe770a55a06f1f62ace83e58419b68d1f070f2"
+  },
+  "recover_script": {
+    "bytes": 5844,
+    "sha256": "9e990f5a2bddf604530a548df2a79dba8acd5607fa8d00da9e657ce1b72759b5"
+  }
+}
