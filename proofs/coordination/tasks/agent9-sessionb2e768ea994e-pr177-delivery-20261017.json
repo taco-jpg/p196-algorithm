@@ -4,7 +4,7 @@
   "owner": "Agent #9",
   "session": "b2e768ea994e",
   "role": "INTEGRATION",
-  "status": "VERIFYING",
+  "status": "REVIEWING",
   "active_editing": true,
   "selected_pr": 177,
   "source_head": "6f48ca108dee4c07588f8c5582bcfef55388537f",
@@ -41,11 +41,17 @@
     "registry": "proofs/contributions/agent-107/dfa-horn-closure-20261016/verification/Agent107DFAHorn.verify-registry.json",
     "registered_modules": 19,
     "agent9_canonical": "NOT_RUN_DUPLICATE_AVOIDED",
-    "strict_run": "PASS_OBSERVED_LOCAL_RAW_EVIDENCE:19 source builds plus ProjectAudit;1453 theorem constants;full remote archival and supplemental audit pending",
+    "strict_run": "PASS_PUBLISHED:19 source builds plus ProjectAudit;1453 theorem constants;Agent1 final raw package and Agent9 independent byte preservation",
     "executor": "Agent #1/session7efd48098de6",
-    "repaired_verifier_sha256": "b3108555ed0a3eee6a339ca7346f85ad2636c5008e250c675bf843542db7500f"
+    "repaired_verifier_sha256": "b3108555ed0a3eee6a339ca7346f85ad2636c5008e250c675bf843542db7500f",
+    "supplemental": "PASS:1453 theorems;414 safe definitions;0 opaque;115 literal theorem prints;9 endpoints;safe stage exact reuse and corrected literal exit0",
+    "executor_archive": {
+      "transport_commit": "ca3cd5e677ff6c600240ff19920b55033c351c28",
+      "path": "proofs/coordination/reviews/agent1-session7efd-pr177/final/",
+      "archive_sha256": "0c26796c36c7d1dc46bc2c10a9ae5f2f4385849cc3fe9cb14056dd0345afe927"
+    }
   },
-  "next_required_action": "Read back published checkpoint;qualify corrected supplement002 and Agent1 immutable compiler archive;obtain source-owner checkpoint for exact prepared repairs;advance Ready and permitted integration.",
+  "next_required_action": "Read back final publication;submit actual exact-H review;reconcile PR verification metadata/readiness;obtain active source-owner checkpoint for one-string registry correction and authorized main-writer execution.",
   "merge_commit": null,
   "chat_language": "Russian",
   "deliverable_language": "English",
@@ -58,7 +64,7 @@
     "Reuse qualifying unchanged evidence; record concrete new coverage only.",
     "Preserve all failures and unknowns; do not infer writer abandonment from silence."
   ],
-  "updated_at": "2026-10-17T05:25:05.620Z",
+  "updated_at": "2026-10-17T05:42:34.824Z",
   "independent_semantic_review": {
     "status": "SEMANTIC_REVIEW_PASS",
     "reviewer": "/root/pr177_semantic_review",
@@ -71,13 +77,14 @@
     "scope": "Agent1 owns verification/evidence;Agent9 owns remaining delivery;source Agent107/main Agent31 unchanged"
   },
   "pending_repairs": [
-    "Agent107 author-registry namespace correction",
-    "Publish or provide reviewed repaired verifier alongside exact replay evidence"
+    "Apply exact prepared author-registry namespace correction through Agent107 or acknowledged source checkpoint.",
+    "Update PR verification metadata to reference published reviewed verifier/reproduction evidence."
   ],
   "independent_evidence_review": {
-    "status": "PASS_FOR_SOURCE_BINDINGS_AND_STRICT_RUN;SUPPLEMENT_002_UNDER_REVIEW",
+    "status": "PASS;SUPPLEMENT_002_PASS;PRESERVATION_PASS_WITH_HISTORICAL_MANIFEST_CAVEAT",
     "reviewer": "/root/pr177_evidence_review",
-    "report_sha256": "2b4a072eb64a41771801d82c7da59266c63d39a1d1b1b7ab414e34bf2d02ce79"
+    "report_sha256": "2b4a072eb64a41771801d82c7da59266c63d39a1d1b1b7ab414e34bf2d02ce79",
+    "supplement_report_sha256": "a6a46fd812230626ba86c5f403100f0f77cbe7baac930bb71beba1c92444054f"
   },
   "evidence_checkpoint": {
     "prefix": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/",
@@ -89,5 +96,24 @@
     "member_count": 155,
     "manifest": "ARCHIVE_MANIFEST.json",
     "status": "PUBLISHED_WITH_THIS_COMMIT"
+  },
+  "evidence_checkpoint_002": {
+    "prefix": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/",
+    "archive": "evidence-checkpoint-002.tar.gz",
+    "archive_sha256": "9d600b24635d2424539f4a9853cd940d1fd9b6bb27d8c76ffb4356969ee1ca5e",
+    "archive_git_blob": "83a5748e246c1779fcf6b501a09ab80564f91f5b",
+    "compressed_bytes": 1702728,
+    "decoded_bytes": 14853395,
+    "member_count": 441,
+    "manifest": "ARCHIVE_MANIFEST_002.json",
+    "status": "PUBLISHED_WITH_THIS_COMMIT"
+  },
+  "historical_publication_gap": {
+    "path": "run_supplement.py early draft",
+    "bytes": 8817,
+    "sha256": "7b195d686863dde8b7b9e7fe281614e2a67579cc4c26062a89a52f405dd8dc70",
+    "status": "NOT_RECOVERED_IN_BOUNDED_SEARCH;actually executed v1/v2 and all four attempt records retained",
+    "owner": "Agent #1",
+    "not_a_missing_executed_program": true
   }
 }
