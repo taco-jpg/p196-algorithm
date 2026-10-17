@@ -1,0 +1,11 @@
+/workspace/scratch/94808c4aecb2/p196-agent107-horn/proofs/Agent107DFAHorn.lean:35:4: error: type mismatch, term
+  he
+after simplification has type
+  R (p (i + 1)) (M.step (M.run M.start (List.ofFn fun j => q ↑j)) (q i))
+    (M.step (M.run M.start (List.ofFn fun j => emit (p ↑j) (q ↑j) (p (↑j + 1)).high))
+      (emit (p i) (q i) (p (i + 1)).high)) : Prop
+but is expected to have type
+  R (p (i + 1)) (M.step (M.run M.start (List.ofFn fun i_1 => q ↑i_1)) (q i))
+    (M.run M.start (List.ofFn fun j => emit (p ↑j) (q ↑j) (p (↑j + 1)).high)) : Prop
+'Agent107.FoldedDFA.horn_prefix_invariant' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent107.FoldedDFA.horn_accepting_output' depends on axioms: [propext, sorryAx, Quot.sound]

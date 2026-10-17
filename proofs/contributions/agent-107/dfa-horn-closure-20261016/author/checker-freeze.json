@@ -1,0 +1,53 @@
+{
+  "source": "proofs/Agent107DFAChecker.lean",
+  "sha256": "a9a411034cf44aeb9752c85246d05140067b88c2c00b5c62651d423af1be2238",
+  "git_blob": "941bf379c7798398bf82c66cce3dcb88828c17f7",
+  "direct_import": "Agent107DFA",
+  "direct_import_sha256": "d0fe8accc9d80110230ea3b4061f554d8d9d9dc5b8ea1a89f44e7d2fc977969e",
+  "status": "AUTHOR_TRUST_ZERO_AND_FULL_MODULE_ORIGIN_AUDIT_PASS",
+  "independent_review": "Pending separate semantic_review agent; author does not claim independent checker review",
+  "public_endpoints": [
+    "Agent107.FoldedDFA.boolImplies_iff",
+    "Agent107.FoldedDFA.allFin_iff",
+    "Agent107.FoldedDFA.checkStarts_iff",
+    "Agent107.FoldedDFA.checkEdges_iff",
+    "Agent107.FoldedDFA.checkTerminals_iff",
+    "Agent107.FoldedDFA.checkHorn_iff"
+  ],
+  "module_origin_theorems": 20,
+  "axiom_sets": [
+    {
+      "axioms": [],
+      "count": 6
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "count": 9
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "count": 5
+    }
+  ],
+  "unsafe_implementation_axioms": [],
+  "attempts": [
+    {
+      "path": "checker-001",
+      "status": "FAIL",
+      "source_sha256": "9165765521fdc8e8bc6ae65de2612e0ae053318ac407fa3f12e95cb8faee713a",
+      "reason": "Initial-state reverse reflection did not simplify the impossible empty-list membership branch before omega; exact source and failed log retained before correction."
+    },
+    {
+      "path": "checker-002",
+      "status": "PASS",
+      "source_sha256": "a9a411034cf44aeb9752c85246d05140067b88c2c00b5c62651d423af1be2238"
+    }
+  ],
+  "olean_path": "/tmp/agent107-runtime/task2-checker-build/Agent107DFAChecker.olean",
+  "olean_sha256": "54a641755a7c68ba269ffd7af8f70225709c14a6190050a2e331e2f661526a0d"
+}
