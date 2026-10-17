@@ -119,6 +119,46 @@ theorem palindrome_with_given_suffix_ceil (n k L : Nat)
   refine ⟨P, ds, hPpos, hc, hp, ?_⟩
   simpa [A, Nat.mod_eq_of_lt hA] using hres
 
+
+/-- A width-k digit vector with decimal digits represents a value below
+10^k. This helper is needed to recover individual low digits from a residue. -/
+theorem value_lt_pow10 (d : Nat → Nat) (k : Nat)
+    (hd : ∀ i, i < k → d i ≤ 9) :
+    value d k < 10 ^ k := by
+  induction k generalizing d with
+  | zero => simp [value]
+  | succ k ih =>
+    rw [value_shift]
+    have h0 : d 0 ≤ 9 := hd 0 (by omega)
+    have ht : value (fun i => d (i + 1)) k < 10 ^ k :=
+      ih (fun i => d (i + 1)) (fun i hi => hd (i + 1) (by omega))
+    simp only [Nat.pow_succ]
+    omega
+
+/-- If a canonical L-digit value agrees with n modulo 10^k and k≤L,
+then its first k low-to-high digits are exactly the digits of n. -/
+theorem lowDigits_eq_of_mod_eq (P n k L : Nat) (e : Nat → Nat)
+    (hcan : Canonical P e L) (hkL : k ≤ L) (hn : n < 10 ^ k)
+    (hmod : P % (10 ^ k) = n) :
+    ∀ i, i < k → e i = paddedDigits n i := by
+  have hlow : ∀ i, i < k → e i = truncateDigits e k i := by
+    intro i hi
+    simp [truncateDigits, hi]
+  have hmodE := value_mod_eq_of_low_eq e (truncateDigits e k) k L
+    (10 ^ k) (dvd_refl (10 ^ k)) hlow
+  rw [truncateDigits_value e k L hkL] at hmodE
+  rw [hcan.2.2.2] at hmodE
+  rw [hmod] at hmodE
+  have hbound : value e k < 10 ^ k :=
+    value_lt_pow10 e k (fun i hi => hcan.2.1 i (by omega))
+  rw [Nat.mod_eq_of_lt hbound, Nat.mod_eq_of_lt hn] at hmodE
+  have hval : value e k = value (paddedDigits n) k := by
+    rw [hmodE, paddedDigits_value n k hn]
+  have hdigits := value_injective e (paddedDigits n) k
+    (fun i hi => hcan.2.1 i (by omega))
+    (fun i hi => paddedDigits_bound n i) hval
+  exact hdigits
+
 /-- Converse obstruction target. When the suffix is longer than the low
 half plus center, exhibit one nonzero-units input that no exact-width
 palindrome can realize. This remains unproved. -/
