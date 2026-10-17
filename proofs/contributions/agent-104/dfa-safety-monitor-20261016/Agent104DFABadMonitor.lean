@@ -192,6 +192,25 @@ theorem runMonitorFrom_m2_iff_allExceptional (symbols : List Nat) :
       · simp [runMonitorFrom_cons, monitorStep, allExceptional, hq, ih]
       · simp [runMonitorFrom_cons, monitorStep, allExceptional, hq, runMonitorFrom_m3]
 
+theorem runMonitor_m1_iff (symbols : List Nat) :
+    runMonitor symbols = .m1 ↔ symbols ≠ [] ∧ allLow symbols = true := by
+  cases symbols with
+  | nil => simp [runMonitor]
+  | cons q qs =>
+      rw [runMonitor_cons_m1]
+      simp [allLow]
+
+theorem runMonitor_m2_iff (symbols : List Nat) :
+    runMonitor symbols = .m2 ↔
+      (∃ q qs, symbols = q :: qs ∧ q = 11 ∧ allExceptional qs = true) := by
+  cases symbols with
+  | nil => simp [runMonitor]
+  | cons q qs =>
+      rw [runMonitor_cons_m2]
+      exact Iff.intro
+        (fun h => ⟨q, qs, rfl, h.1, h.2⟩)
+        (fun h => by rcases h with ⟨_, _, rfl, hq, he⟩; exact ⟨hq, he⟩)
+
 theorem runMonitor_cons_m1 (q : Nat) (qs : List Nat) :
     runMonitor (q :: qs) = .m1 ↔ q ≤ 9 ∧ allLow qs = true := by
   unfold runMonitor
