@@ -1,0 +1,241 @@
+{
+  "status": "STRICT_BUILD_AND_AXIOM_AUDIT_PASSED",
+  "source_head": "361de9f7ee5190c8f486c2e5b91ba563cbb95cac",
+  "historical_commit": "a4d803f489c3104455555ec6e5d9156d61c3aa05",
+  "verified_modules": 104,
+  "historical_modules": 17,
+  "generated_modules": 86,
+  "repaired_wip_modules": 1,
+  "successful_compilations": {
+    "attempt-001": 6,
+    "attempt-002": 97,
+    "supplement-002": 1
+  },
+  "reused_successful_objects_in_attempt-002": 6,
+  "source_repair": {
+    "original": "/workspace/scratch/2a8fba7b8570/agent10-pr101/source-closure/snapshot/pr101/proofs/contributions/agent-117/k7-four-digit-2641-20261016/lean_wip/Agent1172641Targets.lean",
+    "original_identity": {
+      "bytes": 1124,
+      "sha256": "408f14252ab599c39723b0deca031099ba32d7f081a4b7ca23b6c2b62d880c9b"
+    },
+    "repaired": "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/repair/Agent1172641Targets.lean",
+    "repaired_identity": {
+      "bytes": 1140,
+      "sha256": "961bd5aa6a6462443434b40b53da032236201d8e7a543c92d73841283881dd15"
+    },
+    "scope": "Escape four occurrences of reserved identifier prefix; no statement or proof changes"
+  },
+  "audit": {
+    "modules": 104,
+    "origin_declarations": 29808,
+    "audited_declarations": 2660,
+    "print_axioms_commands": 2660,
+    "kinds": {
+      "THEOREM": 2188,
+      "SAFE_DEFINITION": 472
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "compiler_inventory": {
+    "kinds": {
+      "UNSAFE_DEFINITION": 26990,
+      "UNSAFE_IMPLEMENTATION_AXIOM": 70,
+      "PARTIAL_DEFINITION": 38
+    },
+    "name_pattern_categories": {
+      "compiler_stage_2": 26654,
+      "compiler_stage_1": 336,
+      "compiler_specialized_unsafe_implementation_axiom": 69,
+      "compiler_unsafe_recursive_implementation": 38,
+      "compiler_eager_lambda_lifting_implementation_axiom": 1
+    },
+    "unclassified": []
+  },
+  "failed_checks": [
+    {
+      "attempt": "attempt-001",
+      "command": "007-LychrelDigitSums",
+      "reason": "2 GiB virtual-memory limit: INTERNAL PANIC: out of memory",
+      "repair": "3 GiB cap; six passing objects retained and reused by exact hash"
+    },
+    {
+      "attempt": "supplement-001",
+      "command": "001-original-wip",
+      "reason": "reserved identifier prefix at line 17 causes parse error",
+      "repair": "four identifier occurrences escaped as \u00abprefix\u00bb in isolated copy"
+    }
+  ],
+  "attempts": {
+    "attempt-001": {
+      "status": "FAILED",
+      "elapsed_seconds": 35.06199440299679,
+      "lean_commands": 8,
+      "cpu_seconds": 31.648717,
+      "max_rss_kib": 1615448
+    },
+    "attempt-002": {
+      "status": "BUILD_PASSED_AXIOM_AUDIT_PENDING",
+      "elapsed_seconds": 558.7164517199999,
+      "lean_commands": 98,
+      "cpu_seconds": 551.1064480000002,
+      "max_rss_kib": 2201400
+    },
+    "supplement-001": {
+      "status": "FAILED",
+      "elapsed_seconds": 3.7809116420030477,
+      "lean_commands": 1,
+      "cpu_seconds": 0.40659599999999996,
+      "max_rss_kib": 430984
+    },
+    "supplement-002": {
+      "status": "PASSED",
+      "elapsed_seconds": 99.28709665899805,
+      "lean_commands": 2,
+      "cpu_seconds": 92.88741,
+      "max_rss_kib": 990956
+    }
+  },
+  "total_recorded_attempt_elapsed_seconds": 696.8464544239978,
+  "all_success_inputs_unchanged": true,
+  "independent_review": "Exact repaired WIP, 103-module build records, complete 104-module audit and compiler-generated inventory independently qualified by /root/pr101_semantics; no semantic blocker reported. Durable review supplement is separate.",
+  "integration_scope": "Historical pinned source closure only; no current-main combined-tree claim, Ready transition, source-branch publication, or merge performed by execution specialist",
+  "prior_checkpoint": {
+    "commit": "a676d2c8ee41b1e76e9b7c9f98d83936fda18015",
+    "path_suffix": "pr101/checkpoint-001/",
+    "contains": "Original generated sources, dependency provenance, initial runner and failed attempt-001 with six successful modules"
+  },
+  "artifact_bindings": {
+    "run_strict.py": {
+      "bytes": 11531,
+      "sha256": "0cb90c92f164792eb2d57f41da7e74c80ce1aae0bb0a7acb6c6fd912ccba2087"
+    },
+    "run_strict_002.py": {
+      "bytes": 13164,
+      "sha256": "2669c704bdfd91d1966c78b9ae72ddb86b2151aa9917148b3839f4d95b2f314c"
+    },
+    "run_supplement.py": {
+      "bytes": 8577,
+      "sha256": "cb1ad77d73fd752429dd769d79f714ed86d4de8696887f293638bd57bdecf581"
+    },
+    "run_supplement_002.py": {
+      "bytes": 9312,
+      "sha256": "427d38cd466799e87a23c42eaf6c4fea1393872e563590a32550c263603b8076"
+    },
+    "AuditBody.lean.txt": {
+      "bytes": 2642,
+      "sha256": "bd3c1302eeeebe5aa366ed24dd0717e6dd2170b593160b3859d21e10d3874648"
+    },
+    "resource-check-002.json": {
+      "bytes": 1501,
+      "sha256": "8b92e276491d2c3723a0c24866244668c21898fbee66108d5f6f571c674ab290"
+    },
+    "resource-check-003.json": {
+      "bytes": 1498,
+      "sha256": "69fb6b9fce98fb84dd11ed512a89111975de0a2873feb51c6171a8d6a93aa967"
+    },
+    "resource-check-004.json": {
+      "bytes": 1490,
+      "sha256": "bf26f15d405b61f315e6c81e32d5df3327214fcb84eb325ce54b96611f8cd19f"
+    },
+    "EXECUTION_REPORT.md": {
+      "bytes": 12183,
+      "sha256": "e733ddddf4460e3f2ea0b47d03659f669f021166e45b93e39f27df6351c7abaa"
+    },
+    "PORTABILITY.md": {
+      "bytes": 1927,
+      "sha256": "12b3c861de2bc2f6f443f11a1f7572736e861c4675d82582631eb296dd5b76d5"
+    },
+    "repair/Agent1172641Targets.lean": {
+      "bytes": 1140,
+      "sha256": "961bd5aa6a6462443434b40b53da032236201d8e7a543c92d73841283881dd15"
+    },
+    "repair/reserved-identifier.patch": {
+      "bytes": 1210,
+      "sha256": "bea81183087a5270cc870e636685a5eb49dde723184b0a2cf7f0c9caec16de60"
+    },
+    "attempt-001/receipt.json": {
+      "bytes": 11484,
+      "sha256": "623233d29bd54c8b69575cdd2df3e28f310248515923f0192bacb1c720421d07"
+    },
+    "attempt-002/receipt.json": {
+      "bytes": 134599,
+      "sha256": "2965c47a51a973e70614cb216bf818bf7bdd0b332f9cf502dff78662340946ef"
+    },
+    "attempt-002/build-order.json": {
+      "bytes": 2668,
+      "sha256": "a388a4cc7e131d7cbfb3077e116c35119e3dd51d8dbbde5debc892fffd393b82"
+    },
+    "attempt-002/object-manifest.json": {
+      "bytes": 14464,
+      "sha256": "190f14d0e4eb539f7ce196ab3c94f3304470890bcea49c54a538ad2339ad49b8"
+    },
+    "attempt-002/source-before.json": {
+      "bytes": 32796,
+      "sha256": "ff7149aec802dc3ae764e693e5c5796a93f3c1be8fd1bab59a9f227c6439983c"
+    },
+    "attempt-002/source-after.json": {
+      "bytes": 32796,
+      "sha256": "ff7149aec802dc3ae764e693e5c5796a93f3c1be8fd1bab59a9f227c6439983c"
+    },
+    "attempt-002/runtime-before.json": {
+      "bytes": 292443,
+      "sha256": "56be6af9ce3cd3eb4326b424522391ad015840230c9f52dfd1c279fcecf0a48b"
+    },
+    "attempt-002/runtime-after.json": {
+      "bytes": 292443,
+      "sha256": "56be6af9ce3cd3eb4326b424522391ad015840230c9f52dfd1c279fcecf0a48b"
+    },
+    "supplement-001/receipt.json": {
+      "bytes": 2395,
+      "sha256": "d140ec1deef0114be80a0b754ab88509e46b7420e36127719bea33f4726984a2"
+    },
+    "supplement-002/receipt.json": {
+      "bytes": 4298722,
+      "sha256": "c097e948f26aca17bf4c535004d5a2226066964b85db358b49edbb4b104db691"
+    },
+    "supplement-002/input-before.json": {
+      "bytes": 373259,
+      "sha256": "dc6eff95b4be97b5295b7c251ba2e8e851736a820e45e69efee5e086ec3162a7"
+    },
+    "supplement-002/input-after.json": {
+      "bytes": 373259,
+      "sha256": "dc6eff95b4be97b5295b7c251ba2e8e851736a820e45e69efee5e086ec3162a7"
+    },
+    "supplement-002/audit-declarations.json": {
+      "bytes": 443045,
+      "sha256": "3eb9b905424c15ddaa12e1917f6719e8e2cba64e830c919f1f2b51cbbd741de9"
+    },
+    "supplement-002/module-origins.json": {
+      "bytes": 4363901,
+      "sha256": "47c05e31243d0e54c11873ee8bb301997a640511614e43654cbc945d24f81965"
+    },
+    "supplement-002/logs/002-full-audit.stdout.log": {
+      "bytes": 3403608,
+      "sha256": "bbbef1d3b8107a10ef58a324647bb7144727cabdedc2800436e6acbea9e713b8"
+    },
+    "supplement-001/object-manifest.json": {
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    "supplement-002/object-manifest.json": {
+      "bytes": 272,
+      "sha256": "661e2e78d543ba282a892fcbc6dbb7cb3b63598be79fd5781a04002207c4b0b3"
+    }
+  },
+  "source_manifest_bindings": {
+    "historical_source_pins": {
+      "path": "../../source-closure/SOURCE_PINS.json",
+      "bytes": 49764,
+      "sha256": "d38b14961abe7a1139dd3a229872907a3e8912680a90099b9160edb0d41b2907"
+    },
+    "generator_receipt": {
+      "path": "../generator-original-001/receipt.json",
+      "bytes": 21029,
+      "sha256": "6061a16a7a91b32bb024c4660d664aa32b22458448bf580de3f2ae08a2b79db4"
+    }
+  }
+}
