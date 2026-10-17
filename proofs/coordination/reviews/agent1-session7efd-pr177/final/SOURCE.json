@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/taco-jpg/p196-algorithm",
+  "pull_request": 177,
+  "source_head": "6f48ca108dee4c07588f8c5582bcfef55388537f",
+  "frozen_main_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+  "combined_tree": "H contains B; merge-base(B,H)=B. These results do not cover a later changed H or B.",
+  "package_role": "Preservation and recovery of retained executions and independent reviews; packaging does not rerun Lean.",
+  "project": "agent107-dfa-horn-closure",
+  "registry": "proofs/contributions/agent-107/dfa-horn-closure-20261016/verification/Agent107DFAHorn.verify-registry.json",
+  "scope": "Generic conditional DFA/Horn checker, arbitrary-length output closure, and actual reverse-add arithmetic bridge; no concrete safe invariant or P196 conclusion.",
+  "execution_records": {
+    "canonical-run-001": {
+      "status": "FAIL",
+      "successful_source_compilations": 19,
+      "audit_executed": false,
+      "cause": "Original verifier rejects legal ? in stateIndex?_stateAt; original argv lacks explicit --trust=0."
+    },
+    "trust0-run-001": {
+      "status": "PASS",
+      "clean_modules": 19,
+      "theorems": 1453,
+      "successful_commands": 20,
+      "args": [
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false"
+      ]
+    },
+    "supplement-001": {
+      "status": "FAIL",
+      "safe_audit_exit": 0,
+      "literal_audit_exit": 1,
+      "cause": "Unknown optional pp.width setting in literal audit."
+    },
+    "supplement-002": {
+      "status": "PASS",
+      "theorems": 1453,
+      "safe_definitions": 414,
+      "safe_opaques": 0,
+      "new_module_theorems": 115,
+      "new_module_safe_definitions": 50,
+      "literal_print_axioms_commands": 115,
+      "checked_endpoints": 9,
+      "safe_audit_execution": "REUSED_EXACT_SUCCESS from supplement-001 under exact pins",
+      "literal_audit_execution": "fresh exit 0",
+      "axiom_union": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unsafe_implementation_declarations_separately_enumerated": 3940
+    }
+  },
+  "source_file_manifest": "source-at-H/SOURCE_FILES.json",
+  "source_file_count": 94,
+  "packaging_consistency_checks": {
+    "changed_source_files_verified": 75,
+    "closure_sources_verified": 19,
+    "fresh_report_source_and_log_hashes_verified": 43,
+    "credential_pattern_scan": "No matches; environment variables were not exported."
+  },
+  "historical_artifacts": "Original reports, scripts, manifests, absolute paths, non-English source text and failed attempts are retained byte-for-byte. PRELIMINARY_FILES.json describes an earlier script draft; the package FILES.json is authoritative for packaged bytes.",
+  "excluded": [
+    "Compiled .olean objects",
+    "__pycache__ directories",
+    "Compiler/runtime binaries",
+    "Git administrative directories"
+  ],
+  "not_claimed": [
+    "A new proof run by the packager",
+    "Repository-wide verification",
+    "A merge or Ready transition",
+    "Recovery of the unretained historical 20-module/1445-theorem report"
+  ]
+}
