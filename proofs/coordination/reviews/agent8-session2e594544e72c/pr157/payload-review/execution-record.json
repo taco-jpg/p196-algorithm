@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "scope": "Preserved records of the completed local PR157 integration payload audit; no new mathematical review or mandatory gate.",
+  "head": "056e6e9256ef446b372354c911e2be3d3c006dd1",
+  "assigned_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+  "reviewer": "/root/pr157_payload_audit",
+  "report": "../PAYLOAD_AUDIT.md",
+  "provenance": "Command text and stdout saved from the actual functions.exec/tools.exec_command call and response in this subagent's conversation. This is a saved record of the earlier completed execution, not a newly executed check and not a fabricated historical compiler log.",
+  "actual_execution": {
+    "command_file": "audit-command.sh",
+    "stdout_file": "audit-stdout.txt",
+    "tool": "tools.exec_command",
+    "response_chunk_id": "cf6757",
+    "exit_code": 0,
+    "wall_time_seconds": 0.240517443,
+    "original_token_count": 2968,
+    "command_max_output_tokens": 10000,
+    "separate_stderr_field_available": false
+  },
+  "checks_executed_in_original_audit": [
+    "Verify all 17 supplied paths, byte counts, Git blob SHA-1 values and SHA-256 values against SOURCE_MANIFEST.json",
+    "Verify the source filesystem inventory exactly matches the manifest",
+    "Parse all six JSON source files",
+    "Compare the recorded complete inspection program byte-for-byte to the published Python utility",
+    "Compare recorded complete-inspection stdout as parsed JSON to the retained-evidence receipt",
+    "Compare the earlier reviewed 11-path inventory to the final 17-path inventory",
+    "Verify preservation identities for both replaced reviewed documents",
+    "Print and inspect the two modified-document diffs"
+  ],
+  "new_audit_execution_during_persistence": false,
+  "fresh_lean_execution": false,
+  "retained_archive_inspection_rerun": false,
+  "remote_mutation": false,
+  "limitations": "Original source-reading calls remain in the conversation but are not reproduced as separate command logs here. This saved command checks supplied source identity and internal consistency; it does not independently establish remote patch completeness, combined-tree identity, historical compiler execution or platform approval. The report remains verbatim from the previously returned final answer."
+}
