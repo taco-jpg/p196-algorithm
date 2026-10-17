@@ -1,4 +1,5 @@
 import PrefixMachine
+import BinaryBlockCounts
 
 /-!
 WIP formalization of the regenerated clock=(0,0,0), y=5 rejecting-block
@@ -111,5 +112,55 @@ theorem regeneratedWitness_rejects (p : Triple) :
 #print axioms regeneratedRejectingWords_nodup
 #print axioms regeneratedWitness_rejects_all
 #print axioms regeneratedWitness_rejects
+
+/-- Extend every finite rejecting witness to a common block length nine.
+The absorbing state remains rejecting under every padding symbol. -/
+def paddedRejectingWitness (q : Option Triple) : List Bool :=
+  match q with
+  | none => List.replicate 9 false
+  | some p =>
+      regeneratedWitness p ++ List.replicate (9 - (regeneratedWitness p).length) false
+
+theorem paddedRejectingWitness_length (q : Option Triple) :
+    (paddedRejectingWitness q).length = 9 := by
+  cases q with
+  | none => simp [paddedRejectingWitness]
+  | some p =>
+      obtain ⟨hlen, _⟩ := regeneratedWitness_rejects p
+      simp [paddedRejectingWitness, List.length_append]
+      omega
+
+theorem paddedRejectingWitness_rejects (q : Option Triple) :
+    prefixRun q (paddedRejectingWitness q) = none := by
+  cases q with
+  | none => simp [paddedRejectingWitness, prefixRun, advance_none]
+  | some p =>
+      obtain ⟨_, hrun⟩ := regeneratedWitness_rejects p
+      simp [paddedRejectingWitness, prefixRun, List.foldl_append, hrun, advance_none]
+
+/-- The regenerated certificate supplies the exact uniform nine-symbol
+rejection premise required by the generic binary block-count theorem. -/
+theorem paddedRejectingWitness_uniform :
+    ∀ q : Option Triple,
+      ∃ bits : List Bool,
+        bits.length = 9 ∧
+          BinaryCount.runBits advance q bits = none := by
+  intro q
+  refine ⟨paddedRejectingWitness q, paddedRejectingWitness_length q, ?_⟩
+  simpa [BinaryCount.runBits, prefixRun] using paddedRejectingWitness_rejects q
+
+/-- Conditional-to-concrete count specialization: at most 511 survivors per
+nine-symbol block, once the finite certificate checks in Lean. -/
+theorem survivorCount_div_mod_511 (q : Option Triple) (n : Nat) :
+    BinaryCount.survivorCount advance none q n ≤
+      511 ^ (n / 9) * 2 ^ (n % 9) := by
+  have h := BinaryCount.survivorCount_div_mod advance none
+    (fun b => advance_none b) 9 paddedRejectingWitness_uniform q n
+  simpa only [show 2 ^ 9 - 1 = 511 by decide] using h
+
+#print axioms paddedRejectingWitness_length
+#print axioms paddedRejectingWitness_rejects
+#print axioms paddedRejectingWitness_uniform
+#print axioms survivorCount_div_mod_511
 
 end P196.Agent3.PrefixContraction
