@@ -1,0 +1,21 @@
+Agent1.Periodic.nines_extra_strip_control :
+  let B := [1];
+  let H := [9, 9, 9, 14, 18, 18, 14, 9, 9, 9];
+  let w := [9, 9, 9, 9];
+  Agent1.Periodic.ValidPeriodic B H w ∧
+    Agent1.Periodic.stripPeriodCenter w H = (H, 0) ∧
+      Agent1.Periodic.leftEntry B + Agent1.Periodic.rightEntry B H w = 1 ∧
+        Agent1.Periodic.rawPeriod B H w = w ∧
+          Agent1.Periodic.centerPeriods B H w = 2 ∧
+            Agent1.Periodic.quotientCenter B H w = [18, 18] ∧
+              Agent1.Periodic.quotientOuter B H w = [3] ∧
+                Agent1.Periodic.rawPeriod (Agent1.Periodic.quotientOuter B H w) (Agent1.Periodic.quotientCenter B H w)
+                    (Agent1.Periodic.rawPeriod B H w) =
+                  w
+'Agent1.Periodic.nines_extra_strip_control' depends on axioms: [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExtraStrip.0._proof_2 : [propext]
+AUDIT_THEOREM Agent1.Periodic.nines_extra_strip_control._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.nines_extra_strip_control._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesExtraStrip.0._proof_1 : [propext]
+AUDIT_THEOREM Agent1.Periodic.nines_extra_strip_control : [propext, Quot.sound]
+MODULE_AUDIT theorem_constants=5 safe_defs=0 runtime=0 custom_axioms=0
