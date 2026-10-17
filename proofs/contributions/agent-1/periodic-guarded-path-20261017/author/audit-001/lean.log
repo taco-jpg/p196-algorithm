@@ -1,0 +1,93 @@
+Agent1.Periodic.quotientPathWord : (Nat → Agent8.Word) →
+  (Nat → Agent8.Word) → (Nat → Agent8.Word) → (Nat → Nat) → Nat → Agent8.Word
+'Agent1.Periodic.quotientPathWord' does not depend on any axioms
+Agent1.Periodic.quotientPathExponent : (Nat → Agent8.Word) → (Nat → Agent8.Word) → (Nat → Agent8.Word) → Nat → Nat → Nat
+'Agent1.Periodic.quotientPathExponent' does not depend on any axioms
+Agent1.Periodic.quotient_path_guarded_step : ∀ (B H w : Nat → Agent8.Word) (k : Nat → Nat) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    (∀ (i : Nat), i < N → 3 ≤ k i) →
+      (∀ (i : Nat),
+          i < N →
+            k (i + 1) =
+              k i - 2 + Agent1.Periodic.outerPeriods (B i) (H i) (w i) +
+                Agent1.Periodic.centerPeriods (B i) (H i) (w i)) →
+        ∀ (i : Nat),
+          i < N →
+            Agent8.stepWord (Agent1.Periodic.quotientPathWord B H w k i) =
+              Agent1.Periodic.quotientPathWord B H w k (i + 1)
+'Agent1.Periodic.quotient_path_guarded_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.quotient_path_actual_prefix : ∀ (B H w : Nat → Agent8.Word) (k : Nat → Nat) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    (∀ (i : Nat), i < N → 3 ≤ k i) →
+      (∀ (i : Nat),
+          i < N →
+            k (i + 1) =
+              k i - 2 + Agent1.Periodic.outerPeriods (B i) (H i) (w i) +
+                Agent1.Periodic.centerPeriods (B i) (H i) (w i)) →
+        ∀ (n : Nat) (d : Nat → Nat),
+          DecimalDigits.Canonical n d (List.length (Agent1.Periodic.quotientPathWord B H w k 0)) →
+            (∀ (j : Nat),
+                j < List.length (Agent1.Periodic.quotientPathWord B H w k 0) →
+                  DecimalDigits.columnSum d (List.length (Agent1.Periodic.quotientPathWord B H w k 0)) j =
+                    (Agent1.Periodic.quotientPathWord B H w k 0)[j]?.getD 0) →
+              ∀ (t : Nat),
+                t ≤ N →
+                  0 < Lychrel196.orbit n t ∧
+                    ∃ d',
+                      DecimalDigits.Canonical (Lychrel196.orbit n t) d'
+                          (List.length (Agent1.Periodic.quotientPathWord B H w k t)) ∧
+                        ∀ (j : Nat),
+                          j < List.length (Agent1.Periodic.quotientPathWord B H w k t) →
+                            DecimalDigits.columnSum d' (List.length (Agent1.Periodic.quotientPathWord B H w k t)) j =
+                              (Agent1.Periodic.quotientPathWord B H w k t)[j]?.getD 0
+'Agent1.Periodic.quotient_path_actual_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.quotientPathExponent_lower_bound : ∀ (B H w : Nat → Agent8.Word) (N i : Nat),
+  i ≤ N → 2 * (N - i) + 3 ≤ Agent1.Periodic.quotientPathExponent B H w (2 * N + 3) i
+'Agent1.Periodic.quotientPathExponent_lower_bound' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.quotient_path_finite_realizable : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0) →
+      let k := Agent1.Periodic.quotientPathExponent B H w (2 * N + 3);
+      ∃ n,
+        0 < n ∧
+          ∀ (t : Nat),
+            t ≤ N →
+              ∃ d,
+                DecimalDigits.Canonical (Lychrel196.orbit n t) d
+                    (List.length (Agent1.Periodic.quotientPathWord B H w k t)) ∧
+                  ∀ (j : Nat),
+                    j < List.length (Agent1.Periodic.quotientPathWord B H w k t) →
+                      DecimalDigits.columnSum d (List.length (Agent1.Periodic.quotientPathWord B H w k t)) j =
+                        (Agent1.Periodic.quotientPathWord B H w k t)[j]?.getD 0
+'Agent1.Periodic.quotient_path_finite_realizable' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_actual_prefix._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_actual_prefix : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_lower_bound._proof_4 : [propext, Quot.sound]
+NON_SAFE_DEFINITION _private.Agent1PeriodicGuardedPath.0.Agent1.Periodic.quotientPathExponent.match_1.splitter._rarg._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicGuardedPath.0.Agent1.Periodic.quotientPathExponent.match_1.splitter._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.quotient_path_guarded_step : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicGuardedPath.0.Agent1.Periodic.quotientPathExponent.match_1.eq_2 : []
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_lower_bound : [propext, Quot.sound]
+NON_SAFE_DEFINITION Agent1.Periodic.quotientPathExponent._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.quotient_path_finite_realizable._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_lower_bound._proof_3 : [propext, Quot.sound]
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientPathWord : []
+NON_SAFE_DEFINITION Agent1.Periodic.quotientPathExponent.match_1._cstage1 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.quotientPathWord._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicGuardedPath.0.Agent1.Periodic.quotientPathExponent.match_1.splitter : []
+AUDIT_THEOREM Agent1.Periodic.quotient_path_finite_realizable._proof_5 : [propext, Quot.sound]
+NON_SAFE_DEFINITION Agent1.Periodic.quotientPathWord._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientPathExponent : []
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent.eq_2 : []
+AUDIT_THEOREM Agent1.Periodic.quotient_path_finite_realizable._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_actual_prefix._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent.eq_1 : []
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientPathExponent._sunfold : []
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientPathExponent.match_1 : []
+AUDIT_THEOREM Agent1.Periodic.quotientPathWord.eq_1 : []
+NON_SAFE_DEFINITION Agent1.Periodic.quotientPathExponent._unsafe_rec Lean.DefinitionSafety.partial
+AUDIT_THEOREM Agent1.Periodic.quotient_path_finite_realizable : [propext, Quot.sound, Classical.choice]
+NON_SAFE_DEFINITION Agent1.Periodic.quotientPathExponent._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM _private.Agent1PeriodicGuardedPath.0.Agent1.Periodic.quotientPathExponent.match_1.eq_1 : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicGuardedPath.0.Agent1.Periodic.quotientPathExponent.match_1.splitter._cstage2 Lean.DefinitionSafety.unsafe
+MODULE_AUDIT theorems=16 definitions=5 opaque=0 union=[Classical.choice, Quot.sound, propext]
