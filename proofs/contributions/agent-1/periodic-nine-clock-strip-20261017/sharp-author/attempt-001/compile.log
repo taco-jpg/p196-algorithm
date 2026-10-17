@@ -1,0 +1,64 @@
+Agent1PeriodicNinesSharpExcursion.lean:41:5: error: unknown tactic
+Agent1PeriodicNinesSharpExcursion.lean:40:54: error: unsolved goals
+B H w : Nat → Word
+N : Nat
+hp : QuotientPath B H w N
+hv : ValidPeriodic (B 0) (H 0) (w 0)
+hw0 : w 0 = [9, 9, 9, 9]
+hN : 0 < N
+hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0
+hne : ∀ (i : Nat), i ≤ N → H i ≠ []
+i : Nat
+hi : i < N
+hdrop : List.length (H (i + 1)) + 7 ≤ List.length (H i)
+hwN : w N = [9, 9, 9, 9]
+hwi : w i = [9, 9, 9, 9]
+hmix : leftEntry (B i) + rightEntry (B i) (H i) [9, 9, 9, 9] = 1
+hB : Bounded (B i) 18
+hH : Bounded (H i) 18
+hw : Bounded (w i) 18
+left✝¹ : List.length (w i) = 4
+left✝ : B (i + 1) = quotientOuter (B i) (H i) (w i)
+hnext : H (i + 1) = quotientCenter (B i) (H i) [9, 9, 9, 9]
+right✝ : w (i + 1) = rawPeriod (B i) (H i) (w i)
+hlocal :
+  List.length (H (i + 1)) + 8 * ninesExtraStrips (B i) (H i) = List.length (H i) + rawGamma (B i) (H i) [9, 9, 9, 9]
+hgamma : rawGamma (B i) (H i) [9, 9, 9, 9] ≤ 1
+⊢ rawGamma (B i) (H i) [9, 9, 9, 9] = 0
+Agent1PeriodicNinesSharpExcursion.lean:27:58: error: unsolved goals
+case intro.intro.intro.intro.intro.intro.intro.intro.intro
+B H w : Nat → Word
+N : Nat
+hp : QuotientPath B H w N
+hv : ValidPeriodic (B 0) (H 0) (w 0)
+hw0 : w 0 = [9, 9, 9, 9]
+hN : 0 < N
+hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0
+hne : ∀ (i : Nat), i ≤ N → H i ≠ []
+i : Nat
+hi : i < N
+hdrop : List.length (H (i + 1)) + 7 ≤ List.length (H i)
+hwN : w N = [9, 9, 9, 9]
+hwi : w i = [9, 9, 9, 9]
+hmix : leftEntry (B i) + rightEntry (B i) (H i) [9, 9, 9, 9] = 1
+hB : Bounded (B i) 18
+hH : Bounded (H i) 18
+hw : Bounded (w i) 18
+left✝¹ : List.length (w i) = 4
+left✝ : B (i + 1) = quotientOuter (B i) (H i) (w i)
+hnext : H (i + 1) = quotientCenter (B i) (H i) [9, 9, 9, 9]
+right✝ : w (i + 1) = rawPeriod (B i) (H i) (w i)
+hlocal :
+  List.length (H (i + 1)) + 8 * ninesExtraStrips (B i) (H i) = List.length (H i) + rawGamma (B i) (H i) [9, 9, 9, 9]
+hgamma : rawGamma (B i) (H i) [9, 9, 9, 9] ≤ 1
+hgzero : rawGamma (B i) (H i) [9, 9, 9, 9] = 0
+⊢ (∀ (i : Nat), i ≤ N → H i ≠ []) ∧ ∃ i, i < N ∧ List.length (H (i + 1)) + 8 ≤ List.length (H i)
+Agent1PeriodicNinesSharpExcursion.lean:69:4: warning: `List.length_pos` has been deprecated: use `List.length_pos_iff` instead
+'Agent1.Periodic.quotient_return_nines_center_drop_eight' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Agent1.Periodic.quotient_path_nines_centers_le_eight_no_return' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

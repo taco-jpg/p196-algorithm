@@ -1,0 +1,15 @@
+AUDIT_THEOREM Agent1.Periodic.quotient_path_return_centers_normal._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_return_centers_normal : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_return_centers_normal._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_return_centers_normal._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.stripPeriodCenter_of_maximal : [propext]
+MODULE_AUDIT theorems=5 safe_definitions=0 generated_runtime=0 custom_axioms=0 theorem_union=[Classical.choice,
+ Quot.sound,
+ propext] definition_union=[]
+Agent1.Periodic.stripPeriodCenter_of_maximal (w H : Agent8.Word) (hmax : ¬∃ K, H = w ++ K ++ List.reverse w) :
+  Agent1.Periodic.stripPeriodCenter w H = (H, 0)
+Agent1.Periodic.quotient_path_return_centers_normal (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hN : 0 < N) (hHreturn : H N = H 0) (hwreturn : w N = w 0) (i : Nat) :
+  i ≤ N → Agent1.Periodic.stripPeriodCenter (w i) (H i) = (H i, 0)
+'Agent1.Periodic.stripPeriodCenter_of_maximal' depends on axioms: [propext]
+'Agent1.Periodic.quotient_path_return_centers_normal' depends on axioms: [propext, Classical.choice, Quot.sound]

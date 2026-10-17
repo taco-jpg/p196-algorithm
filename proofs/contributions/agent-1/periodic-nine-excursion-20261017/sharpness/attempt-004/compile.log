@@ -1,0 +1,15 @@
+Agent1PeriodicNinesClockStrip.lean:107:11: error: unsolved goals
+case succ
+R : Word
+hn : ¬∃ K, R = [9, 9, 9, 9] ++ K ++ [9, 9, 9, 9]
+htest : ¬R = [9, 9, 9, 9] ++ stripPeriodMiddle [9, 9, 9, 9] R ++ [9, 9, 9, 9].reverse
+n : Nat
+hlen : List.length R = n + 1
+⊢ (if R = 9 :: 9 :: 9 :: 9 :: (stripPeriodMiddle [9, 9, 9, 9] R ++ [9, 9, 9, 9]) then
+        ((stripPeriodCenterAux [9, 9, 9, 9] n (stripPeriodMiddle [9, 9, 9, 9] R)).fst,
+          (stripPeriodCenterAux [9, 9, 9, 9] n (stripPeriodMiddle [9, 9, 9, 9] R)).snd + 1)
+      else (R, 0)).snd =
+    0
+Agent1PeriodicNinesClockStrip.lean:131:2: warning: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+'Agent1.Periodic.centerPeriods_nines_clock_one' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

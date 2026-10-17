@@ -1,0 +1,22 @@
+Agent1.Periodic.quotient_return_nines_center_drop_eight (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hw0 : w 0 = [9, 9, 9, 9]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  (∀ (i : Nat), i ≤ N → H i ≠ []) ∧ ∃ i, i < N ∧ List.length (H (i + 1)) + 8 ≤ List.length (H i)
+Agent1.Periodic.quotient_path_nines_centers_le_eight_no_return (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hw0 : w 0 = [9, 9, 9, 9]) (hN : 0 < N) (hsmall : ∀ (i : Nat), i < N → List.length (H i) ≤ 8) :
+  ¬(B N = B 0 ∧ H N = H 0 ∧ w N = w 0)
+'Agent1.Periodic.quotient_return_nines_center_drop_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.Periodic.quotient_path_nines_centers_le_eight_no_return' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_centers_le_eight_no_return : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_drop_eight._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_drop_eight._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_drop_eight._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_drop_eight : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_centers_le_eight_no_return._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_drop_eight._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_centers_le_eight_no_return._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_nines_center_drop_eight._proof_3 : [propext, Quot.sound]
+MODULE_AUDIT theorem_constants=9 safe_defs=0 runtime=0 custom_axioms=0
