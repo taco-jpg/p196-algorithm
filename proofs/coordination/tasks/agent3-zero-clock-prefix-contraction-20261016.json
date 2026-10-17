@@ -90,10 +90,10 @@
   ],
   "contribution_branch": "research/agent-3/prefix-contraction-20261016-2232",
   "source_baseline": "8a67ea8204757cc4f80bf5f576e2cc8024bea97b",
-  "latest_published_source_commit": "53889ba2220fe81a2cf038bac491882be3647fdd",
-  "verification_status": "Existing PrefixMachine (27 explicit declarations) and BinaryBlockCounts (17 explicit declarations) remain author-compiled under Lean 4.19.0 --trust=0 at c5369c653aa5279402417718a7634a4e3e259782. New one-case clock000/y5 certificate and reproducible stdlib generator are published at 53889ba2220fe81a2cf038bac491882be3647fdd (generator source commit 1854046070727ed776fc030fcdadaaffd2a1c4bf). The regenerated automaton has 65 states: 64 singleton live states plus absorbing empty state index 13; every state has a computed rejecting continuation of length at most 9. All 128 live transitions were computationally cross-checked against PrefixMachine.nextCarry/emitted/machineStep under original InverseFibers.State encoding p.val=2*a+b, with zero mismatches; initial 14 transition maps (0,0,0) to (0,1,1). This remains computational/source-level evidence only, not kernel verification.",
-  "last_activity_utc": "2026-10-17T10:12:00Z",
-  "remaining_obligation": "Implement the regenerated certificate as a Lean-checkable finite object, prove the checker soundly covers all 64 original carry triples and each rejection witness reaches the absorbing state, then prove the original Path necessary-prefix induction, concrete count specialization, and ActualFiber prefix-list bound. Obtain fresh canonical and independent source/axiom gates. Historical omitted certificate bytes remain unrecovered.",
+  "latest_published_source_commit": "b7672957fec13d216bf4909288d721d0763af1f0",
+  "verification_status": "WIP: regenerated one-case certificate and stdlib generator are published, with 65 automaton states (64 live singleton states and absorbing empty index 13), all shortest rejecting witnesses length <=9, and a source-level computational cross-check of all 128 live transitions against PrefixMachine/original InverseFibers encoding. A candidate NineColumnCertificate.lean has been added at b7672957fec13d216bf4909288d721d0763af1f0, encoding all 64 witness triples and `decide` proof targets, but this environment has no Lean/Lake binary and no checkout; the file has NOT been compiled or axiom-audited. Only the prior PrefixMachine and BinaryBlockCounts modules retain their earlier actual author-build evidence at c5369c653aa5279402417718a7634a4e3e259782.",
+  "last_activity_utc": "2026-10-17T10:14:00Z",
+  "remaining_obligation": "Run the exact multi-root Lean 4.19.0 build for NineColumnCertificate.lean with --trust=0 and inspect all #print axioms; repair any elaboration/reduction issue in a new WIP checkpoint, not by claiming the source is checked. Then prove the original Path necessary-prefix induction, concrete count specialization, and ActualFiber prefix-list bound; obtain fresh canonical and independent source/axiom gates. The historical omitted certificate bytes remain unrecovered.",
   "ownership_check": {
     "proposal_comment": 6225907260,
     "proposal_url": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225907260",
@@ -139,8 +139,10 @@
   "latest_certificate": {
     "generator_commit": "1854046070727ed776fc030fcdadaaffd2a1c4bf",
     "certificate_commit": "53889ba2220fe81a2cf038bac491882be3647fdd",
+    "lean_wip_commit": "b7672957fec13d216bf4909288d721d0763af1f0",
     "generator_path": "proofs/contributions/agent-3/prefix-contraction-20261016/source-preservation/regenerate_clock000_y5_certificate.py",
     "certificate_path": "proofs/contributions/agent-3/prefix-contraction-20261016/source-preservation/regenerated_clock000_y5_certificate.json",
+    "lean_path": "proofs/contributions/agent-3/prefix-contraction-20261016/NineColumnCertificate.lean",
     "summary": {
       "state_count": 65,
       "live_state_count": 64,
@@ -150,6 +152,6 @@
       "live_edges_checked": 128,
       "edge_mismatches": 0
     },
-    "verification_level": "COMPUTATIONAL_REGENERATION_AND_SOURCE_LEVEL_CROSS_CHECK_ONLY_NOT_LEAN_CHECKED"
+    "verification_level": "COMPUTATIONAL_REGENERATION_AND_SOURCE_LEVEL_CROSS_CHECK; LEAN SOURCE WIP NOT COMPILED"
   }
 }
