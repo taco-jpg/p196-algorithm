@@ -1,0 +1,472 @@
+{
+  "source": "/workspace/p196-agent1-zero-width-loop-20261016/proofs/Agent1PeriodicZeroWidthLoop.lean",
+  "source_sha256": "e00095f228fc552a3c870d84abdaa68dbaf720778ddcebd529d999c31fd5d2bd",
+  "source_git_blob": "46ca7616fb83d2cb28fc7240492a47d57136be03",
+  "compiler_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "dependencies": {
+    "PeriodObstructions": {
+      "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+      "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+      "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+      "imports": [
+        "Std"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/PeriodObstructions.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/PeriodObstructions.olean",
+      "object_sha256": "f1d3a863ae4a7ffd57be92ab2c93e3e2976fbf7e60e6adbd37f5943d6dcda6ea"
+    },
+    "ActualWordBridge": {
+      "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+      "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+      "git_blob": "d3f49353f9970c610d818d8f5da78ad5c739e7df",
+      "imports": [
+        "PeriodObstructions"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/ActualWordBridge.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/ActualWordBridge.olean",
+      "object_sha256": "025c6827606fd8a8357d3b49adeef00d796feeab727895ea6b516c7d7b3569e1"
+    },
+    "PrefixSemantics": {
+      "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+      "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+      "git_blob": "04a8cc9e73b87d271ca857a218b240e23f57c939",
+      "imports": [
+        "ActualWordBridge"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/PrefixSemantics.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/PrefixSemantics.olean",
+      "object_sha256": "8ea6174df692785a3879ea09cfc0eb0378310daa1b91281e76b6ab0f9fe1880a"
+    },
+    "LychrelDigitSums": {
+      "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports": [
+        "Std"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/LychrelDigitSums.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/LychrelDigitSums.olean",
+      "object_sha256": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978"
+    },
+    "IncomingCarry": {
+      "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+      "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+      "git_blob": "0eb66e9e176c6bdc8f9f94cf705bddd063d65345",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/IncomingCarry.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/IncomingCarry.olean",
+      "object_sha256": "efac4ff836697877118d2b3b7ffa8287d05ebe3d1b0bacdcbc9a68bf4496d4a8"
+    },
+    "Agent1RepeatedBlock": {
+      "path": "proofs/Agent1RepeatedBlock.lean",
+      "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+      "git_blob": "4adf4bd714be87ef5d95f0e6d33632fe36075ca4",
+      "imports": [
+        "PrefixSemantics",
+        "IncomingCarry"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1RepeatedBlock.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1RepeatedBlock.olean",
+      "object_sha256": "ae33acf6a0c33b64f6bf0dd52a5f65740a91358ad5238fb251503240de2564e0"
+    },
+    "Agent1RepeatedBlockContext": {
+      "path": "proofs/Agent1RepeatedBlockContext.lean",
+      "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+      "git_blob": "91eb5c39029f90de058952eb3fc993c6a2b1ba21",
+      "imports": [
+        "Agent1RepeatedBlock"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1RepeatedBlockContext.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1RepeatedBlockContext.olean",
+      "object_sha256": "659526ee979b74fa997ef7844bb4b4fc4774e41205cc9b4f1b592a3e8a507e38"
+    },
+    "Agent1PeriodicDigits": {
+      "path": "proofs/Agent1PeriodicDigits.lean",
+      "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+      "git_blob": "6a6f02ae17d7aaa8e728a6588edf080c9ffd7ad5",
+      "imports": [
+        "Agent1RepeatedBlockContext"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicDigits.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicDigits.olean",
+      "object_sha256": "61a7870b2d9115958fcd4064fe766db03dfe3109aca3894be77d9bb3b3e2aaaa"
+    },
+    "Agent1PeriodicSlices": {
+      "path": "proofs/Agent1PeriodicSlices.lean",
+      "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+      "git_blob": "d0cdb8dcd06910ed0ea38801c91020c571bc1966",
+      "imports": [
+        "Agent1PeriodicDigits"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicSlices.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicSlices.olean",
+      "object_sha256": "ac73baf005748c3efbb9f26d21ffab1cee78d782d11bc97a38245e1fbc9b7854"
+    },
+    "Agent1PeriodicGuard": {
+      "path": "proofs/Agent1PeriodicGuard.lean",
+      "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+      "git_blob": "7c62748625cecbc277ddd5e01ffb17671e4db7a8",
+      "imports": [
+        "Agent1PeriodicSlices"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicGuard.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicGuard.olean",
+      "object_sha256": "d3ff810f27cc0598458f7763a4df7278b17d26ec45d01f43d165642e1c9f7818"
+    },
+    "Agent1PeriodicGuardFacts": {
+      "path": "proofs/Agent1PeriodicGuardFacts.lean",
+      "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+      "git_blob": "45fec1c73f1fe4f60daa9186e36b1d19b0b69927",
+      "imports": [
+        "Agent1PeriodicGuard"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicGuardFacts.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicGuardFacts.olean",
+      "object_sha256": "adb3d99b43076f817ab6f86632004e0d9f6c423213b39a53c30cddd099c119d6"
+    },
+    "Agent1PeriodicOuterStrip": {
+      "path": "proofs/Agent1PeriodicOuterStrip.lean",
+      "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+      "git_blob": "9e35c06bf3dd393f33dfd2af965a1ea2d4305bc7",
+      "imports": [
+        "Agent1PeriodicGuardFacts"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuterStrip.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuterStrip.olean",
+      "object_sha256": "a09a8fc7cad356c7f333ecf59d8b42c718d977289370f98dbea88504f0d41fb6"
+    },
+    "Agent1PeriodicCenterStrip": {
+      "path": "proofs/Agent1PeriodicCenterStrip.lean",
+      "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+      "git_blob": "bfcfd913cfd7b4063c9b632f2b0461aafd9ca437",
+      "imports": [
+        "Agent1PeriodicGuard"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicCenterStrip.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicCenterStrip.olean",
+      "object_sha256": "598d5526de7f1e46a550d5707a628a8a70c53909efc7c8361f5feb1fe907a0bf"
+    },
+    "Agent1PeriodicQuotient": {
+      "path": "proofs/Agent1PeriodicQuotient.lean",
+      "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+      "git_blob": "63bd5f4319f6a79924b7292db3eb82e0d027b26c",
+      "imports": [
+        "Agent1PeriodicGuardFacts",
+        "Agent1PeriodicOuterStrip",
+        "Agent1PeriodicCenterStrip"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicQuotient.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicQuotient.olean",
+      "object_sha256": "05d1f341e2ea739280d4f3429ef08c2290a35feec15657f51bd8ddf22e3533db"
+    },
+    "Agent1PeriodicParity": {
+      "path": "proofs/Agent1PeriodicParity.lean",
+      "sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+      "git_blob": "c5a2bfb004aa8421110403195abf9951572e7b4b",
+      "imports": [
+        "Agent1PeriodicQuotient"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicParity.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicParity.olean",
+      "object_sha256": "363a86272ec3b7a5cc21648fb4d4f3c2827609a3d798773078b4368b6b6444d7"
+    },
+    "Agent1PeriodicPositivity": {
+      "path": "proofs/Agent1PeriodicPositivity.lean",
+      "sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+      "git_blob": "bc392c470c3bf3389f4ae0166cf67dcaf2462e89",
+      "imports": [
+        "Agent1PeriodicOuterStrip"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicPositivity.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicPositivity.olean",
+      "object_sha256": "c683f990baf33da4e36cc54e84c4c17365a1dcfd280f87de5023b2ab3051bce5"
+    },
+    "Agent1PeriodicValidity": {
+      "path": "proofs/Agent1PeriodicValidity.lean",
+      "sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+      "git_blob": "3c5673981d4c9a73a0ade71552f5867d8f73dd69",
+      "imports": [
+        "Agent1PeriodicParity",
+        "Agent1PeriodicPositivity"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicValidity.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicValidity.olean",
+      "object_sha256": "3382b86aac246d3903db5451b63c22d218f08c0c1c73fe5699a0e31824a12b6c"
+    },
+    "Agent1PeriodicSafetyAlphabet": {
+      "path": "proofs/Agent1PeriodicSafetyAlphabet.lean",
+      "sha256": "ec2632bcdfc630947844098f09f54161e2bd4ab3473f0e4a139ec6bc2d56912c",
+      "git_blob": "e5c1480c24770054ff24b7c770e457a5162a7d26",
+      "imports": [
+        "Agent1PeriodicValidity"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicSafetyAlphabet.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicSafetyAlphabet.olean",
+      "object_sha256": "1b9caf511ec28ae23ab71d23f26697c21948ae500d3792763f7d0cc722ac7b36"
+    },
+    "Agent1PeriodicOuter": {
+      "path": "proofs/Agent1PeriodicOuter.lean",
+      "sha256": "b30b54bce57542a649208c29900d511e9cc4b64429fb4a48f8da2a387d040678",
+      "git_blob": "aa17a6398fb1ef5c5215771cdfb2c2992bfb9472",
+      "imports": [
+        "Agent1PeriodicSafetyAlphabet"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuter.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuter.olean",
+      "object_sha256": "e4ad6584db009d263d69cb4bafeadcd9d5a3123773d87017ae20ae36c6d2fe19"
+    },
+    "Agent1PeriodicPhase": {
+      "path": "proofs/Agent1PeriodicPhase.lean",
+      "sha256": "705c139614ffd4f9f20a305f7c4bff20059da0c7fa127ca180ff8a88397a51ce",
+      "git_blob": "ecb0816aa6411068956b9c746c61d267dcd11feb",
+      "imports": [
+        "Agent1PeriodicGuard"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicPhase.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicPhase.olean",
+      "object_sha256": "b589178df51c92967831984856fc169ee38f235b90482e729a85ee7ba9c8987c"
+    },
+    "Agent1PeriodicNines": {
+      "path": "proofs/Agent1PeriodicNines.lean",
+      "sha256": "b8aae1033e8e90c78f48888ea698e5d345c21e6b99970842dc5a9f3341cd193c",
+      "git_blob": "fc4b17311a291870b122ff97e3618fb7452e978e",
+      "imports": [
+        "Agent1PeriodicGuardFacts"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicNines.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicNines.olean",
+      "object_sha256": "3735d465f0db0c816d23fdd43b6e74f8ff9a13d35b5fced58dd9ef1b018e356c"
+    },
+    "Agent1PeriodicPhaseCatalog": {
+      "path": "proofs/Agent1PeriodicPhaseCatalog.lean",
+      "sha256": "44445a343635503c940ea125727d0bbb75bbf7dce24be62c28a660241363f9f9",
+      "git_blob": "a9414bc8c9be783f5dfc48778db7161c481a96fc",
+      "imports": [
+        "Agent1PeriodicPhase",
+        "Agent1PeriodicNines",
+        "Agent1PeriodicValidity"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicPhaseCatalog.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicPhaseCatalog.olean",
+      "object_sha256": "8058d3aa333a70e544f891cbcc599ad797d0ae04cef716076cd7b65bea98c674"
+    },
+    "Agent1PeriodicOuterChoices": {
+      "path": "proofs/Agent1PeriodicOuterChoices.lean",
+      "sha256": "9bd84fb0c22b2252fb71f0310fe763e6a07192ef0fb80299763459ab48fb76ad",
+      "git_blob": "6c107fa40f1b3d7a84d9c459a760e1a8f20b5110",
+      "imports": [
+        "Agent1PeriodicPhaseCatalog"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuterChoices.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuterChoices.olean",
+      "object_sha256": "af7c7eca5f141d79ea51ba00b63b350bb79c6d12b71dae0bf607822c10d03248"
+    },
+    "Agent1PeriodicCatalogOrder": {
+      "path": "proofs/Agent1PeriodicCatalogOrder.lean",
+      "sha256": "0f59e74ecb35b9bb648150319beb3de9f7965c6a1aea7171e67a40f4bcb199c7",
+      "git_blob": "bcaddd73d8187dbeb74741558c6566f9068a12e5",
+      "imports": [
+        "Agent1PeriodicOuterChoices"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicCatalogOrder.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicCatalogOrder.olean",
+      "object_sha256": "80916c3ba75a1bfbd1f4482cd8411dd41dc78acf257f93d152d02738ae2f786a"
+    },
+    "Agent1PeriodicOuterCatalog": {
+      "path": "proofs/Agent1PeriodicOuterCatalog.lean",
+      "sha256": "1e6ebcc4e47df94162467d52826cee4e64c5707a622ac775008671d3fb0391e2",
+      "git_blob": "a353f057308f7be8e7f5bb1af915e4d1793c9e3d",
+      "imports": [
+        "Agent1PeriodicOuter",
+        "Agent1PeriodicCatalogOrder"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuterCatalog.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicOuterCatalog.olean",
+      "object_sha256": "5d37aad11fb5d76590c1a28d2e085b12d6bb1bb5be3694ad26490c1c10f36b42"
+    },
+    "Agent1PeriodicWidth": {
+      "path": "proofs/Agent1PeriodicWidth.lean",
+      "sha256": "0ae4dbb296dd596f305c115b7626afc44f69d7fdc0de7d56140205e4bbff8be3",
+      "git_blob": "3ef9f257fe773f362c60d5840efe2029e673a94a",
+      "imports": [
+        "Agent1PeriodicQuotient"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-width-parent-clean-001/agent1-periodic-width-projection/source/Agent1PeriodicWidth.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-width-parent-clean-001/agent1-periodic-width-projection/source/Agent1PeriodicWidth.olean",
+      "object_sha256": "5f551c383e80a3c2e1587f409ae841c258f613039b10c836e6333a711b7fd012"
+    },
+    "Agent1PeriodicWidthLift": {
+      "path": "proofs/Agent1PeriodicWidthLift.lean",
+      "sha256": "a3897a4d7dc58b2f33efb519be75ea5f7ef61b8e6c4602749c0249de52b49978",
+      "git_blob": "d8e7a0273ade37bcced1c1aab564020881057487",
+      "imports": [
+        "Agent1PeriodicOuterCatalog",
+        "Agent1PeriodicWidth"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-width-parent-clean-001/agent1-periodic-width-projection/source/Agent1PeriodicWidthLift.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-width-parent-clean-001/agent1-periodic-width-projection/source/Agent1PeriodicWidthLift.olean",
+      "object_sha256": "85843b4b73f2c2b502e4bc697531da58d51fc3973da79637c5e8ce53af445de8"
+    },
+    "Agent1PeriodicWidthPath": {
+      "path": "proofs/Agent1PeriodicWidthPath.lean",
+      "sha256": "e97afd670460a3df90e836360fed59797cb60b339ee63e42d51de826c46a2241",
+      "git_blob": "ad3cee7e70fddbf0220c66313d8421e99f90678b",
+      "imports": [
+        "Agent1PeriodicQuotient"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicWidthPath.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicWidthPath.olean",
+      "object_sha256": "4970a0e33b79e4e120f4038fbd408d0d941dc95c4b13863b6784b7dbf9ef0757"
+    },
+    "Agent1PeriodicZeroPeriod": {
+      "path": "proofs/Agent1PeriodicZeroPeriod.lean",
+      "sha256": "3761744f62cabdf25cf69f8e2990ce81eec9ac75cfb2273a5e80974304795a8a",
+      "git_blob": "abcff9926278c746d311ad24fc0c0d0a22c24a3a",
+      "imports": [
+        "Agent1PeriodicValidity"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroPeriod.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroPeriod.olean",
+      "object_sha256": "82d859dc166e732826705d1be75204ef196dc240054a1d9edf8039405e0d1549"
+    },
+    "Agent1PeriodicZeroState": {
+      "path": "proofs/Agent1PeriodicZeroState.lean",
+      "sha256": "9e80cfe62a227bc6f7f5468549d2e5f6e9cbf22a3e927ee769c13eb573550aa1",
+      "git_blob": "67052c0bd350b320d3a8fb55bea99bacbcbc1dce",
+      "imports": [
+        "Agent1PeriodicZeroPeriod"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroState.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroState.olean",
+      "object_sha256": "92d25713724f69ab7edd453d5c774455112678cd0ee312fe8ae816ede6cfc3a0"
+    },
+    "Agent1PeriodicZeroExponent": {
+      "path": "proofs/Agent1PeriodicZeroExponent.lean",
+      "sha256": "5b9156d0f31a5def3de5e559014cecba35bd80756d5ec45b1cf7a21f5a688adf",
+      "git_blob": "6de5dd192d043b9c2c3fbd75648f22d857304be5",
+      "imports": [
+        "Agent1PeriodicZeroState"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroExponent.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroExponent.olean",
+      "object_sha256": "1add8d487de7158a8c87c168a8c1527440bede50dc11d86f4005e2ad84b6333c"
+    },
+    "Agent1PeriodicZeroNumeric": {
+      "path": "proofs/Agent1PeriodicZeroNumeric.lean",
+      "sha256": "8e561a621f18d783aa52ef0f2d6985b0a6cd0293b80fe4b174250665cee07b89",
+      "git_blob": "043300254bb2f95cae725f9963848a011cc2cd58",
+      "imports": [
+        "Agent1PeriodicZeroPeriod"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroNumeric.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroNumeric.olean",
+      "object_sha256": "9ca183f1a6c9d8a19712f1cebf70ca5bba1e784c33bf147987eedfcf67ce3834"
+    },
+    "Agent1PeriodicZeroMass": {
+      "path": "proofs/Agent1PeriodicZeroMass.lean",
+      "sha256": "1889a8d60b97de528550cd9944396cda15776049f080f402a50e6d9d36ce6e36",
+      "git_blob": "2238a79636796a4049066556bf69f4b1b9200128",
+      "imports": [
+        "Agent1PeriodicValidity"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroMass.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroMass.olean",
+      "object_sha256": "a590c7277bb3e716cd9e5e08459b3513ee5a9e180a588ca78a9aa351d58ad54e"
+    },
+    "Agent1PeriodicRealizability": {
+      "path": "proofs/Agent1PeriodicRealizability.lean",
+      "sha256": "cfa1fb0e7562976600e8f56e15d5ee9970979757eacb77c00c80df3de3625953",
+      "git_blob": "68a7b98e7d7ea9078c27a5df85061bcad994ce99",
+      "imports": [
+        "Agent1PeriodicValidity"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicRealizability.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicRealizability.olean",
+      "object_sha256": "ca80fa5328ce78141fc3b288009c78257be56e56f8023c9c9ef88558d0d6c0ba"
+    },
+    "Agent1PeriodicZeroCycle": {
+      "path": "proofs/Agent1PeriodicZeroCycle.lean",
+      "sha256": "ffea963ec5895ef493c289430d5a50e81ae241014d2baf8756beaa6996a23fbd",
+      "git_blob": "b49d76e77da6ead4a9a96ff870102b1f028cc55c",
+      "imports": [
+        "Agent1PeriodicZeroExponent",
+        "Agent1PeriodicZeroNumeric",
+        "Agent1PeriodicZeroMass",
+        "Agent1PeriodicRealizability"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroCycle.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroCycle.olean",
+      "object_sha256": "a0657c5db9009c47ddcfb6f4e0f9e260ab1123756d28995172828963114cf0a6"
+    },
+    "Agent1PeriodicZeroPath": {
+      "path": "proofs/Agent1PeriodicZeroPath.lean",
+      "sha256": "078d6356f3eba5286f77d11e202df4759ecfd8e6473f5475d4ef443799732d0a",
+      "git_blob": "e281f0cca1a8333892d4b9bbc9b85fa0a40e1842",
+      "imports": [
+        "Agent1PeriodicWidthPath",
+        "Agent1PeriodicZeroCycle"
+      ],
+      "reused_source": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroPath.lean",
+      "reused_object": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/agent1-periodic-return-core/source/Agent1PeriodicZeroPath.olean",
+      "object_sha256": "96b6f348237ba5c0cf2623b2d9c1dc6d41cb82a23796dd38278bd4b65bd1d45f"
+    }
+  },
+  "reused_builds": [
+    {
+      "registry": "/workspace/p196-agent1-zero-width-loop-20261016/proofs/Agent1PeriodicReturnCore.registry.json",
+      "registry_sha256": "59f1a4693cb3adb500f731af76175ba49bf7336a6aff265bd3905713c4f52a22",
+      "build_report": "/workspace/p196-agent1-session-20261016/periodic-return-parent-clean-001/verification.json",
+      "build_report_sha256": "a14209d6e252ab210233a0c5ce7e2466c4e31ec374eaad02e2cae11a44381f79"
+    },
+    {
+      "registry": "/workspace/p196-agent1-zero-width-loop-20261016/proofs/Agent1PeriodicWidthLift.registry.json",
+      "registry_sha256": "e6530e34648d564be293d737a0ff666f67f7054dd122ca9b9f9e77cdde4a1980",
+      "build_report": "/workspace/p196-agent1-session-20261016/periodic-width-parent-clean-001/verification.json",
+      "build_report_sha256": "3bbc1b01edcb5afa84bd65161c171a24f3063cad361f569cac1e353b8061f42b"
+    }
+  ],
+  "fresh_dependency_build": false,
+  "dependency_count": 36,
+  "dependency_order": [
+    "PeriodObstructions",
+    "ActualWordBridge",
+    "PrefixSemantics",
+    "LychrelDigitSums",
+    "IncomingCarry",
+    "Agent1RepeatedBlock",
+    "Agent1RepeatedBlockContext",
+    "Agent1PeriodicDigits",
+    "Agent1PeriodicSlices",
+    "Agent1PeriodicGuard",
+    "Agent1PeriodicGuardFacts",
+    "Agent1PeriodicOuterStrip",
+    "Agent1PeriodicCenterStrip",
+    "Agent1PeriodicQuotient",
+    "Agent1PeriodicParity",
+    "Agent1PeriodicPositivity",
+    "Agent1PeriodicValidity",
+    "Agent1PeriodicSafetyAlphabet",
+    "Agent1PeriodicOuter",
+    "Agent1PeriodicPhase",
+    "Agent1PeriodicNines",
+    "Agent1PeriodicPhaseCatalog",
+    "Agent1PeriodicOuterChoices",
+    "Agent1PeriodicCatalogOrder",
+    "Agent1PeriodicOuterCatalog",
+    "Agent1PeriodicWidth",
+    "Agent1PeriodicWidthLift",
+    "Agent1PeriodicWidthPath",
+    "Agent1PeriodicZeroPeriod",
+    "Agent1PeriodicZeroState",
+    "Agent1PeriodicZeroExponent",
+    "Agent1PeriodicZeroNumeric",
+    "Agent1PeriodicZeroMass",
+    "Agent1PeriodicRealizability",
+    "Agent1PeriodicZeroCycle",
+    "Agent1PeriodicZeroPath"
+  ],
+  "author_object_paths": []
+}
