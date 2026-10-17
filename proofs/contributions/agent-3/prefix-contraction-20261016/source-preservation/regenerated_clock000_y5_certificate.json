@@ -2583,5 +2583,28 @@
     "each_witness_reaches_empty": true,
     "witness_lengths_match_distances": true,
     "all_witnesses_at_most_nine": true
+  },
+  "lean_machine_correspondence": {
+    "status": "SOURCE_LEVEL_COMPUTATIONAL_CROSS_CHECK_NOT_KERNEL_PROOF",
+    "state_encoding": "Original local state (a,b,-1) maps to InverseFibers.State p : Fin 4 by p.val = 2*a+b, since low p = p.val/2 and high p = p.val%2.",
+    "checked_live_states": 64,
+    "checked_input_edges": 128,
+    "mismatched_edges": 0,
+    "initial_transition": {
+      "input_digit": 14,
+      "source": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        1,
+        1
+      ],
+      "certificate_state_index": 0,
+      "matched": true
+    },
+    "method": "Compared every certificate live singleton's two transitions against the exact nextCarry/emitted/machineStep equations in PrefixMachine.lean and the low/high encoding in the pinned original InverseFibers.lean. This is an external finite computation and source comparison, not a Lean theorem or kernel verification."
   }
 }
