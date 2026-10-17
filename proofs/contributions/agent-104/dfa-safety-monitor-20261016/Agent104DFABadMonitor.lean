@@ -227,11 +227,11 @@ def checkSafetyRows {N : Nat} (B : Agent107.FoldedDFA.Encoding.BooleanDFA N)
     (raw : Fin N → MonitorState → Bool) : Bool :=
   let starts := raw B.zero .m0
   let transitions :=
-    (List.finRange N).all fun a =>
+    Agent107.FoldedDFA.allFin fun a =>
       monitorStates.all fun m =>
         pairSymbols.all fun q =>
           if pairAllowed (m == .m0) q.val then
-            (List.finRange N).all fun b =>
+            Agent107.FoldedDFA.allFin fun b =>
               Agent107.FoldedDFA.boolImplies
                 (raw a m && B.d a q b)
                 (raw b (monitorStep m q.val))
