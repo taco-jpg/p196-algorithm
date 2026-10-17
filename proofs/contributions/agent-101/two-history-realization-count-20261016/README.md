@@ -40,3 +40,25 @@ Do not replace the original PR91 family with the later forced-prefix subfamily, 
 5. Run a pinned Lean 4.19.0 clean build and explicit `--trust=0` audits on the exact published closure. Until then all new targets remain WIP.
 
 The current execution container has no `lean` or `lake` executable on PATH; the source can be inspected and published, but compilation must be handed to an actual pinned Lean environment. No existing logs are being relabelled as this session's run.
+
+
+## Refined proof route from the exact interfaces
+
+The cross-profile disjointness proof need not assume injectivity of the ordinary
+reverse-add step. If an integer (n) occurs in two numeric fibers, use
+`mem_numericFiber_digits` to obtain canonical finite digit lists (d,e)
+with `natValue d = n = natValue e` and
+`digitPairSums d = coefficientWord (historyHalf0 xs k) none`,
+`digitPairSums e = coefficientWord (historyHalf0 ys k) none`.
+The existing `natValue_injective_canonical` gives (d=e), hence the
+two symmetric coefficient profiles are equal. The original
+`historyWord0_injective` then gives (xs=ys). This is a source-level proof
+plan only; no new theorem term has been compiled for it.
+
+The per-profile count is immediate from the already verified
+`length_numericFiber_cons`: the first coefficient is 3,
+`pairCount true 3 = 3`, the center is `none` so its count is one, and
+each appended terminal coefficient 18 contributes
+`pairCount false 18 = 1`. The remaining product is precisely
+`profileWeight xs (0,1)`. The missing formal work is the exact Lean
+factorization and the `allBits` induction proving `stateWeightSumTarget`.
