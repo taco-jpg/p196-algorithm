@@ -38,6 +38,87 @@ theorem outerDigits_symmetric_ceil (d : Nat → Nat) (k L i : Nat)
     · simp [ha, hb]
     · simp [ha, hb]
 
+
+/-- Canonicality of the mirrored outer digits also holds at the one-center
+overlap boundary. The only case not covered by k<L is the one-digit word. -/
+theorem outerDigits_canonical_ceil (d : Nat → Nat) (k L : Nat)
+    (hk : 0 < k) (hL : 2 * k ≤ L + 1)
+    (hd : ∀ i, i < k → d i ≤ 9) (hd0 : 0 < d 0) :
+    Canonical (value (outerDigits d k L) L) (outerDigits d k L) L := by
+  by_cases hLone : L = 1
+  · subst L
+    have hkone : k = 1 := by omega
+    subst k
+    refine ⟨by decide, ?_, ?_, rfl⟩
+    · intro i hi
+      have hi0 : i = 0 := by omega
+      subst i
+      simpa [outerDigits] using hd 0 (by omega)
+    · simpa [outerDigits] using hd0
+  · have hkL : k < L := by omega
+    refine ⟨by omega, ?_, ?_, rfl⟩
+    · intro i hi
+      by_cases ha : i < k
+      · simpa [outerDigits, ha] using hd i ha
+      · by_cases hb : L - 1 - i < k
+        · simpa [outerDigits, ha, hb] using hd (L - 1 - i) hb
+        · simp [outerDigits, ha, hb]
+    · have ha : ¬ L - 1 < k := by omega
+      have hb : L - 1 - (L - 1) = 0 := by omega
+      simpa [outerDigits, ha, hb] using hd0
+
+/-- The exact-width outer-digit construction is an ordinary integer
+palindrome at the full low-half boundary, including the odd center. -/
+theorem outerValue_palindrome_ceil (A k L : Nat) (hk : 0 < k)
+    (hL : 2 * k ≤ L + 1) (hA0 : A % 10 ≠ 0) :
+    Palindrome (value (outerDigits (paddedDigits A) k L) L) := by
+  have hc := outerDigits_canonical_ceil (paddedDigits A) k L hk hL
+    (fun i _ => paddedDigits_bound A i)
+    (by simpa [paddedDigits] using Nat.pos_of_ne_zero hA0)
+  apply (palindrome_value_iff (outerDigits (paddedDigits A) k L) L
+    hc.2.1 hc.2.2.1).mpr
+  intro i hi
+  exact outerDigits_symmetric_ceil (paddedDigits A) k L i hL hi
+
+/-- WIP strengthening of Agent111's suffix realization: the single shared
+center digit is permitted. The proof reuses the original low-modulus lemma
+and the generalized outer-digit construction above. -/
+theorem palindrome_with_given_suffix_ceil (n k L : Nat)
+    (hk : 0 < k) (hL : 2 * k ≤ L + 1) (hunit : ¬ 10 ∣ n) :
+    ∃ P e, 0 < P ∧ Canonical P e L ∧ Palindrome P ∧
+      P % (10 ^ k) = n % (10 ^ k) := by
+  let A := n % (10 ^ k)
+  let ds := outerDigits (paddedDigits A) k L
+  let P := value ds L
+  have hA : A < 10 ^ k := Nat.mod_lt n (Nat.pow_pos (by decide))
+  have hten : 10 ∣ 10 ^ k := ten_dvd_pow k (by omega)
+  have hA0 : A % 10 ≠ 0 := by
+    change n % (10 ^ k) % 10 ≠ 0
+    rw [Nat.mod_mod_of_dvd n hten]
+    intro hz
+    exact hunit (Nat.dvd_of_mod_eq_zero hz)
+  have hkL : k ≤ L := by omega
+  have hc : Canonical P ds L := by
+    simpa [P, ds] using outerDigits_canonical_ceil (paddedDigits A) k L
+      hk hL (fun i _ => paddedDigits_bound A i)
+      (by simpa [paddedDigits] using Nat.pos_of_ne_zero hA0)
+  have hp : Palindrome P := by
+    simpa [P, ds] using outerValue_palindrome_ceil A k L hk hL hA0
+  have hPpos : 0 < P := by
+    rw [← hc.2.2.2]
+    exact value_positive ds L hc.1 hc.2.2.1
+  have hlow : LowerPositions k L ([] : List Nat) := by
+    intro i hi
+    simp at hi
+  have hmod := realizedDigits_mod_outer (paddedDigits A) k L (10 ^ k) []
+    hkL (dvd_refl (10 ^ k)) hlow
+  rw [paddedDigits_value A k hA] at hmod
+  have hres : P % (10 ^ k) = A := by
+    simpa [P, ds, realizedDigits, pairDigits, selectedDigit,
+      Nat.mod_eq_of_lt hA] using hmod
+  refine ⟨P, ds, hPpos, hc, hp, ?_⟩
+  simpa [A, Nat.mod_eq_of_lt hA] using hres
+
 /-- Converse obstruction target. When the suffix is longer than the low
 half plus center, exhibit one nonzero-units input that no exact-width
 palindrome can realize. This remains unproved. -/
