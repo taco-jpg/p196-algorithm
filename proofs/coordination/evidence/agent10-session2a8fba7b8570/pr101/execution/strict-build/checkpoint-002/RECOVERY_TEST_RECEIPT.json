@@ -1,0 +1,136 @@
+{
+  "status": "PASSED",
+  "tests": [
+    {
+      "label": "001-default-verify",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002/recover_checkpoint002.py"
+      ],
+      "cwd": "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002",
+      "exit_code": 0,
+      "elapsed_seconds": 0.13727089400344994,
+      "result": {
+        "status": "VERIFIED",
+        "receipt_sha256": "805e7fc04886ac8b4531c529747b67ca6e071545a21e442492c521d96220f1e0",
+        "member_manifest_sha256": "6ced7e8ba17509fdac798c328c08c515016e4eb3d2ca2cfa1e3c7555d0e382d0",
+        "archive_sha256": "047b431acab1f452fd67e07cf705acb7c07221002ec496d1d2852cf414a64956",
+        "archive_bytes": 702340,
+        "verified_member_count": 342,
+        "verified_payload_bytes": 16138045,
+        "all_members_verified_before_any_extraction": true,
+        "recovered_code_executed": false
+      },
+      "stdout": {
+        "bytes": 486,
+        "sha256": "bf38271f4b7fb71c54c37a53cdc3cc8fba1c6fe085f5ab2daa8b40a370d9233e"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "002-fresh-extraction",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002/recover_checkpoint002.py",
+        "--extract-to",
+        "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002/helper-verified-extraction-001"
+      ],
+      "cwd": "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002",
+      "exit_code": 0,
+      "elapsed_seconds": 0.3876017760048853,
+      "result": {
+        "status": "VERIFIED_AND_EXTRACTED",
+        "receipt_sha256": "805e7fc04886ac8b4531c529747b67ca6e071545a21e442492c521d96220f1e0",
+        "member_manifest_sha256": "6ced7e8ba17509fdac798c328c08c515016e4eb3d2ca2cfa1e3c7555d0e382d0",
+        "archive_sha256": "047b431acab1f452fd67e07cf705acb7c07221002ec496d1d2852cf414a64956",
+        "archive_bytes": 702340,
+        "verified_member_count": 342,
+        "verified_payload_bytes": 16138045,
+        "all_members_verified_before_any_extraction": true,
+        "recovered_code_executed": false,
+        "destination": "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002/helper-verified-extraction-001",
+        "extracted_member_count": 342,
+        "all_extracted_bytes_verified": true
+      },
+      "stdout": {
+        "bytes": 708,
+        "sha256": "acad0cc569a7846c3c4dd149dbeab0325c6843f9cb675d5fbfdb09825ae3e1d2"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "003-existing-destination-rejection",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002/recover_checkpoint002.py",
+        "--extract-to",
+        "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002/helper-verified-extraction-001"
+      ],
+      "cwd": "/workspace/scratch/2a8fba7b8570/agent10-pr101/execution/strict-build/checkpoint-002",
+      "exit_code": 1,
+      "elapsed_seconds": 0.13848928699735552,
+      "result": {
+        "status": "REJECTED",
+        "reason": "Extraction destination already exists"
+      },
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 74,
+        "sha256": "b4d6fcaae756e0901bd62add9ff194535f605d48ece35e381c9f78e5f1b46c38"
+      }
+    },
+    {
+      "label": "004-parent-traversal-rejection",
+      "scope": "Direct focused invocation of the same member-name validator used before extraction",
+      "input": "strict-build/../../escape",
+      "status": "REJECTED_AS_REQUIRED",
+      "reason": "Parent traversal rejected: strict-build/../../escape"
+    }
+  ],
+  "started_at": "2026-10-17T06:32:46.145630+00:00",
+  "frozen_original_payload_members": 342,
+  "frozen_transport_files": 6,
+  "additive_helper": {
+    "bytes": 10176,
+    "sha256": "172c65e2f75e35310ad68e9ebc58fdbf83e92451d901772c2131d312f63a788d"
+  },
+  "additive_document": {
+    "bytes": 4789,
+    "sha256": "1c1ea8c1ea99b6401e6d861257a77feba8d4b55175429feab63e8944de21cef8"
+  },
+  "test_script": {
+    "bytes": 6085,
+    "sha256": "13ed44c6eb470d97715c11c89fe5eedcc0896a429ba7eb807bfe7078b6d0f3a2"
+  },
+  "independent_extraction_comparison": {
+    "member_count": 342,
+    "all_hashes_equal": true
+  },
+  "final_source_runtime_recheck": {
+    "current_input_files_checked": 1855,
+    "runtime_files_bound_in_these_inputs": 1503,
+    "all_current_hashes_match_final_manifest": true,
+    "source_unchanged": true,
+    "runtime_unchanged": true,
+    "successful_build_new_modules": 97,
+    "reused_modules": 6,
+    "repaired_wip_modules": 1,
+    "audited_modules": 104,
+    "audited_safe_declarations": 2660
+  },
+  "all_frozen_payload_transport_reports_and_manifests_unchanged": true,
+  "finished_at": "2026-10-17T06:32:48.942045+00:00",
+  "elapsed_seconds": 2.796421584003838
+}
