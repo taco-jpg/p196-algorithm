@@ -1,0 +1,23 @@
+Agent1.Periodic.quotientPathExponent_accounting (B H w : Nat → Agent8.Word) (k0 N : Nat)
+  (hguard : ∀ (i : Nat), i < N → 3 ≤ Agent1.Periodic.quotientPathExponent B H w k0 i) :
+  ↑(Agent1.Periodic.quotientPathExponent B H w k0 N) = ↑k0 + Agent1.Periodic.quotientDeltaSum B H w N
+Agent1.Periodic.quotientCycleExponent_guarded (B H w : Nat → Agent8.Word) (N G : Nat) (hN : 0 < N) (t : Nat) :
+  3 ≤ Agent1.Periodic.quotientCycleExponent B H w N G t
+Agent1.Periodic.quotientCycleExponent_step (B H w : Nat → Agent8.Word) (N G : Nat) (hN : 0 < N)
+  (hend : Agent1.Periodic.quotientPathExponent B H w (2 * N + 3) N = 2 * N + 3 + G) (t : Nat) :
+  Agent1.Periodic.quotientCycleExponent B H w N G (t + 1) =
+    Agent1.Periodic.quotientCycleExponent B H w N G t - 2 +
+        Agent1.Periodic.outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+      Agent1.Periodic.centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+Agent1.Periodic.quotient_return_guarded_schedule (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (hN : 0 < N)
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  ∃ k,
+    k 0 = 2 * N + 3 ∧
+      (∀ (t : Nat), 3 ≤ k t) ∧
+        ∀ (t : Nat),
+          k (t + 1) =
+            k t - 2 + Agent1.Periodic.outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+              Agent1.Periodic.centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_accounting : [propext, Quot.sound, Classical.choice]
+GuardAudit.lean:11:0: error: UNEXPECTED_UNSAFE_DEFINITION Agent1.Periodic.quotientCycleExponent._cstage1

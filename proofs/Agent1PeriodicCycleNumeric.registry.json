@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped 30-module contribution registry; not a repository-wide catalogue.",
+    "All three new modules completed strict author compilation and full new-module audits; parent and independent fresh combined verification remain pending."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent1-periodic-cycle-adapter": {
+      "scope": "Conditional realization of repeated copies of one supplied positive-length exact period-four full quotient cycle from original-valid initial data. Literal natural copy guards retain a fixed initial exponent and one ordinary seed for all times. Explicit safePeriodic=true at every finite cycle state supplies all-time nonpalindromicity of the successor seed through existing numeric safety. This formalizes the original METHOD section4 positive-cycle criterion. No qualifying cycle is constructed; no unconditional decimal existence, 196 result, arbitrary graph-cycle realization, safety-preservation theorem, or finite-witness quantifier swap is asserted.",
+      "roots": [
+        "Agent1PeriodicCycleNumeric"
+      ],
+      "modules": {
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+          "imports": [
+            "Std"
+          ]
+        },
+        "ActualWordBridge": {
+          "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+          "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "git_blob": "d3f49353f9970c610d818d8f5da78ad5c739e7df",
+          "imports": [
+            "PeriodObstructions"
+          ]
+        },
+        "PrefixSemantics": {
+          "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+          "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "git_blob": "04a8cc9e73b87d271ca857a218b240e23f57c939",
+          "imports": [
+            "ActualWordBridge"
+          ]
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ]
+        },
+        "IncomingCarry": {
+          "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+          "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "git_blob": "0eb66e9e176c6bdc8f9f94cf705bddd063d65345",
+          "imports": [
+            "LychrelDigitSums"
+          ]
+        },
+        "Agent1RepeatedBlock": {
+          "path": "proofs/Agent1RepeatedBlock.lean",
+          "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "git_blob": "4adf4bd714be87ef5d95f0e6d33632fe36075ca4",
+          "imports": [
+            "PrefixSemantics",
+            "IncomingCarry"
+          ]
+        },
+        "Agent1RepeatedBlockContext": {
+          "path": "proofs/Agent1RepeatedBlockContext.lean",
+          "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+          "git_blob": "91eb5c39029f90de058952eb3fc993c6a2b1ba21",
+          "imports": [
+            "Agent1RepeatedBlock"
+          ]
+        },
+        "Agent1PeriodicDigits": {
+          "path": "proofs/Agent1PeriodicDigits.lean",
+          "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+          "git_blob": "6a6f02ae17d7aaa8e728a6588edf080c9ffd7ad5",
+          "imports": [
+            "Agent1RepeatedBlockContext"
+          ]
+        },
+        "Agent1PeriodicSlices": {
+          "path": "proofs/Agent1PeriodicSlices.lean",
+          "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+          "git_blob": "d0cdb8dcd06910ed0ea38801c91020c571bc1966",
+          "imports": [
+            "Agent1PeriodicDigits"
+          ]
+        },
+        "Agent1PeriodicGuard": {
+          "path": "proofs/Agent1PeriodicGuard.lean",
+          "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "git_blob": "7c62748625cecbc277ddd5e01ffb17671e4db7a8",
+          "imports": [
+            "Agent1PeriodicSlices"
+          ]
+        },
+        "Agent1PeriodicGuardFacts": {
+          "path": "proofs/Agent1PeriodicGuardFacts.lean",
+          "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "git_blob": "45fec1c73f1fe4f60daa9186e36b1d19b0b69927",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ]
+        },
+        "Agent1PeriodicOuterStrip": {
+          "path": "proofs/Agent1PeriodicOuterStrip.lean",
+          "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+          "git_blob": "9e35c06bf3dd393f33dfd2af965a1ea2d4305bc7",
+          "imports": [
+            "Agent1PeriodicGuardFacts"
+          ]
+        },
+        "Agent1PeriodicCenterStrip": {
+          "path": "proofs/Agent1PeriodicCenterStrip.lean",
+          "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+          "git_blob": "bfcfd913cfd7b4063c9b632f2b0461aafd9ca437",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ]
+        },
+        "Agent1PeriodicQuotient": {
+          "path": "proofs/Agent1PeriodicQuotient.lean",
+          "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+          "git_blob": "63bd5f4319f6a79924b7292db3eb82e0d027b26c",
+          "imports": [
+            "Agent1PeriodicGuardFacts",
+            "Agent1PeriodicOuterStrip",
+            "Agent1PeriodicCenterStrip"
+          ]
+        },
+        "Agent1PeriodicParity": {
+          "path": "proofs/Agent1PeriodicParity.lean",
+          "sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+          "git_blob": "c5a2bfb004aa8421110403195abf9951572e7b4b",
+          "imports": [
+            "Agent1PeriodicQuotient"
+          ]
+        },
+        "Agent1PeriodicPositivity": {
+          "path": "proofs/Agent1PeriodicPositivity.lean",
+          "sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+          "git_blob": "bc392c470c3bf3389f4ae0166cf67dcaf2462e89",
+          "imports": [
+            "Agent1PeriodicOuterStrip"
+          ]
+        },
+        "Agent1PeriodicValidity": {
+          "path": "proofs/Agent1PeriodicValidity.lean",
+          "sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+          "git_blob": "3c5673981d4c9a73a0ade71552f5867d8f73dd69",
+          "imports": [
+            "Agent1PeriodicParity",
+            "Agent1PeriodicPositivity"
+          ]
+        },
+        "Agent1PeriodicSafetyAlphabet": {
+          "path": "proofs/Agent1PeriodicSafetyAlphabet.lean",
+          "sha256": "ec2632bcdfc630947844098f09f54161e2bd4ab3473f0e4a139ec6bc2d56912c",
+          "git_blob": "e5c1480c24770054ff24b7c770e457a5162a7d26",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ]
+        },
+        "Agent1PeriodicOuter": {
+          "path": "proofs/Agent1PeriodicOuter.lean",
+          "sha256": "b30b54bce57542a649208c29900d511e9cc4b64429fb4a48f8da2a387d040678",
+          "git_blob": "aa17a6398fb1ef5c5215771cdfb2c2992bfb9472",
+          "imports": [
+            "Agent1PeriodicSafetyAlphabet"
+          ]
+        },
+        "Agent1PeriodicWidthPath": {
+          "path": "proofs/Agent1PeriodicWidthPath.lean",
+          "sha256": "e97afd670460a3df90e836360fed59797cb60b339ee63e42d51de826c46a2241",
+          "git_blob": "ad3cee7e70fddbf0220c66313d8421e99f90678b",
+          "imports": [
+            "Agent1PeriodicQuotient"
+          ]
+        },
+        "Agent1PeriodicReturnClock": {
+          "path": "proofs/Agent1PeriodicReturnClock.lean",
+          "sha256": "ef4b8ae6380db3b2286ed166e26fe432626eb36a812c8de5c72d54d0c6bb309e",
+          "git_blob": "100736c98e2eaaf3dbf198b18de128c3b7538dfd",
+          "imports": [
+            "Agent1PeriodicOuter",
+            "Agent1PeriodicWidthPath"
+          ]
+        },
+        "Agent1PeriodicCyclePath": {
+          "path": "proofs/Agent1PeriodicCyclePath.lean",
+          "sha256": "196f04ef0d9ca89e0eb6151905c0f3abf217eefcf8469c32269e0954423384a9",
+          "git_blob": "74012aada269a04ca03bf2cbf2309590e518f009",
+          "imports": [
+            "Agent1PeriodicReturnClock"
+          ]
+        },
+        "Agent1PeriodicZeroPeriod": {
+          "path": "proofs/Agent1PeriodicZeroPeriod.lean",
+          "sha256": "3761744f62cabdf25cf69f8e2990ce81eec9ac75cfb2273a5e80974304795a8a",
+          "git_blob": "abcff9926278c746d311ad24fc0c0d0a22c24a3a",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ]
+        },
+        "Agent1PeriodicZeroNumeric": {
+          "path": "proofs/Agent1PeriodicZeroNumeric.lean",
+          "sha256": "8e561a621f18d783aa52ef0f2d6985b0a6cd0293b80fe4b174250665cee07b89",
+          "git_blob": "043300254bb2f95cae725f9963848a011cc2cd58",
+          "imports": [
+            "Agent1PeriodicZeroPeriod"
+          ]
+        },
+        "Agent1PeriodicRealizability": {
+          "path": "proofs/Agent1PeriodicRealizability.lean",
+          "sha256": "cfa1fb0e7562976600e8f56e15d5ee9970979757eacb77c00c80df3de3625953",
+          "git_blob": "68a7b98e7d7ea9078c27a5df85061bcad994ce99",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ]
+        },
+        "Agent1PeriodicGuardedPath": {
+          "path": "proofs/Agent1PeriodicGuardedPath.lean",
+          "sha256": "66b821219ee88fa711a88eabc6985b33525e3ebaa0f224430395202e2012d916",
+          "git_blob": "e80d35796417b6c754067c53c16193d2fbc153b1",
+          "imports": [
+            "Agent1PeriodicWidthPath",
+            "Agent1PeriodicZeroNumeric",
+            "Agent1PeriodicRealizability"
+          ]
+        },
+        "Agent1PeriodicCycleGuard": {
+          "path": "proofs/Agent1PeriodicCycleGuard.lean",
+          "sha256": "357d626233997cd7b1d9b2606c63f196814854abd29f7e72a1a51254c9aa2041",
+          "git_blob": "3b2ab9ce3628125fb44379bac8ee574c88ae850c",
+          "imports": [
+            "Agent1PeriodicGuardedPath",
+            "Agent1PeriodicReturnClock"
+          ]
+        },
+        "Agent1PeriodicSafety": {
+          "path": "proofs/Agent1PeriodicSafety.lean",
+          "sha256": "d779d12e1ab558bd9135840cbe562ef8a778938e7260a70c3ec1032158b2b979",
+          "git_blob": "1584e39d28a04c409eb078b4cacbf3f9bc830be8",
+          "imports": [
+            "Agent1PeriodicSafetyAlphabet"
+          ]
+        },
+        "Agent1PeriodicSafetyNumeric": {
+          "path": "proofs/Agent1PeriodicSafetyNumeric.lean",
+          "sha256": "b874515ae6ea49613d82eb2b1e0f3cd2f433e13a90592c7b0a37645aebd53c38",
+          "git_blob": "3446b79a7ab7ccf073f14b0cc88bf5add119cccf",
+          "imports": [
+            "Agent1PeriodicSafety"
+          ]
+        },
+        "Agent1PeriodicCycleNumeric": {
+          "path": "proofs/Agent1PeriodicCycleNumeric.lean",
+          "sha256": "4cbf4ee50c819e71ee09d108ab62fd703af1287507b969988a09e61b3fe2c527",
+          "git_blob": "920e7a58f61eba4a913e12ac4d3dd92d0883ce41",
+          "imports": [
+            "Agent1PeriodicCyclePath",
+            "Agent1PeriodicCycleGuard",
+            "Agent1PeriodicSafetyNumeric"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A1-PERIODIC-CYCLE-ADAPTER",
+      "project": "agent1-periodic-cycle-adapter",
+      "endpoints": [
+        "Agent1.Periodic.repeatWordState",
+        "Agent1.Periodic.repeatWordState_zero",
+        "Agent1.Periodic.repeatWordState_succ",
+        "Agent1.Periodic.quotient_path_repeat",
+        "Agent1.Periodic.quotient_path_repeat_valid",
+        "Agent1.Periodic.quotientPathExponent_accounting",
+        "Agent1.Periodic.quotientCycleExponent",
+        "Agent1.Periodic.quotientCycleExponent_guarded",
+        "Agent1.Periodic.quotientCycleExponent_step",
+        "Agent1.Periodic.quotient_return_guarded_schedule",
+        "Agent1.Periodic.quotient_cycle_actual_orbit",
+        "Agent1.Periodic.quotient_cycle_safe_positive_seed"
+      ]
+    }
+  ],
+  "source_baseline": "3b018f7032b537cd7f6218fb9ad979842bb286d0",
+  "source_pin_origins": [
+    {
+      "path": "proofs/Agent1PeriodicGuardedPath.registry.json",
+      "sha256": "49da9ec693d2a5d59d7bd46991928cdd65516646744b5d941d0325338dcc12e8",
+      "git_blob": "6ae574f68c09ea1cfb5178126dd0ce643c46759a",
+      "baseline_commit": "3b018f7032b537cd7f6218fb9ad979842bb286d0"
+    },
+    {
+      "path": "proofs/Agent1PeriodicReturnClock.registry.json",
+      "sha256": "ee55b22734714ee081010abaab377e8110fb728ee3b6de083db214b378e3f3e1",
+      "git_blob": "e49fd9dbe91dce01762e2277eab53a794b1bb5a2",
+      "baseline_commit": "3b018f7032b537cd7f6218fb9ad979842bb286d0"
+    },
+    {
+      "path": "proofs/Agent1PeriodicSafety.registry.json",
+      "sha256": "993e891a88fa46602e18a5b001cd38dbd08a7e7713210aaa620aea0ac02b42cc",
+      "git_blob": "ec00d69d864ca00a82e09cafee2d9892e199e331",
+      "baseline_commit": "3b018f7032b537cd7f6218fb9ad979842bb286d0"
+    }
+  ],
+  "accepted_global_registry_modified": false,
+  "verification_status": "FROZEN_AUTHOR_CHECKED_FRESH_REVIEW_PENDING",
+  "metadata_validation": {
+    "exact_actual_import_dfs": true,
+    "module_count": 30,
+    "new_module_count": 3,
+    "new_public_declaration_count": 12,
+    "new_public_theorem_count": 10,
+    "matching_duplicate_prior_pins": 36,
+    "source_tokens_checked": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "axiom",
+      "implemented_by",
+      "extern",
+      "unsafe",
+      "ofReduceBool",
+      "trustCompiler"
+    ],
+    "source_token_hits": [],
+    "lean_execution_performed_by_this_preflight": false,
+    "claim_commit": "b4dc82e6d8d521b4295236f171b8d9e1a1d690cd",
+    "claim_git_blob": "bbec37ae66adfa1e5321d7c85d3e5a0a67a13373",
+    "claim_sha256": "8441d78c38bb7f43437c66eaac55480e7120f74e64c5e3d47212ebc6c31081d6"
+  },
+  "author_verification": {
+    "new_modules_compile": "PASS",
+    "new_module_origin_audits": "PASS",
+    "fresh_combined_verification": "PENDING",
+    "evidence_path": "proofs/contributions/agent-1/periodic-cycle-adapter-20261017/registry-preflight/author-confirmation.json",
+    "evidence_sha256": "f77bea7030710369aa8dc770893de4c25611db0fc4c069c60b380dbe48506a19",
+    "qualification": "Actual author confirmations and receipts checked; no Lean run by this preflight."
+  }
+}

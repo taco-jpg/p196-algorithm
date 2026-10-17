@@ -1,0 +1,27 @@
+Agent1.Periodic.quotient_cycle_actual_orbit (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (hN : 0 < N)
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  ∃ k,
+    k 0 = 2 * N + 3 ∧
+      (∀ (t : Nat), 3 ≤ k t) ∧
+        ∃ n,
+          0 < n ∧
+            ∀ (t : Nat),
+              ∃ d,
+                DecimalDigits.Canonical (Lychrel196.orbit n t) d
+                    (List.length (Agent1.Periodic.periodicWord (B (t % N)) (H (t % N)) (w (t % N)) (k t))) ∧
+                  ∀ (j : Nat),
+                    j < List.length (Agent1.Periodic.periodicWord (B (t % N)) (H (t % N)) (w (t % N)) (k t)) →
+                      DecimalDigits.columnSum d
+                          (List.length (Agent1.Periodic.periodicWord (B (t % N)) (H (t % N)) (w (t % N)) (k t))) j =
+                        (Agent1.Periodic.periodicWord (B (t % N)) (H (t % N)) (w (t % N)) (k t))[j]?.getD 0
+Agent1.Periodic.quotient_cycle_safe_positive_seed (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (hN : 0 < N)
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0)
+  (hsafe : ∀ (i : Nat), i < N → Agent1.Periodic.safePeriodic (B i) (H i) (w i) = true) :
+  ∃ m, 0 < m ∧ Lychrel196.IsLychrel m
+AUDIT_THEOREM Agent1.Periodic.quotient_cycle_safe_positive_seed._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_cycle_actual_orbit._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_cycle_actual_orbit : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_cycle_safe_positive_seed : [propext, Quot.sound, Classical.choice]
+NumericAudit.lean:9:0: error: INCOMPLETE_DEFINITION_INVENTORY

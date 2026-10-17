@@ -1,0 +1,33 @@
+Agent1.Periodic.repeatWordState : (Nat → Agent8.Word) → Nat → Nat → Agent8.Word
+'Agent1.Periodic.repeatWordState' does not depend on any axioms
+Agent1.Periodic.repeatWordState_zero : ∀ (x : Nat → Agent8.Word) (N : Nat), Agent1.Periodic.repeatWordState x N 0 = x 0
+'Agent1.Periodic.repeatWordState_zero' depends on axioms: [propext]
+Agent1.Periodic.repeatWordState_succ : ∀ (x : Nat → Agent8.Word) (N : Nat),
+  0 < N → x N = x 0 → ∀ (t : Nat), Agent1.Periodic.repeatWordState x N (t + 1) = x (t % N + 1)
+'Agent1.Periodic.repeatWordState_succ' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.quotient_path_repeat : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    0 < N →
+      B N = B 0 ∧ H N = H 0 ∧ w N = w 0 →
+        ∀ (M : Nat),
+          Agent1.Periodic.QuotientPath (Agent1.Periodic.repeatWordState B N) (Agent1.Periodic.repeatWordState H N)
+            (Agent1.Periodic.repeatWordState w N) M
+'Agent1.Periodic.quotient_path_repeat' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.quotient_path_repeat_valid : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0) →
+      0 < N →
+        ∀ (t : Nat),
+          Agent1.Periodic.ValidPeriodic (Agent1.Periodic.repeatWordState B N t) (Agent1.Periodic.repeatWordState H N t)
+            (Agent1.Periodic.repeatWordState w N t)
+'Agent1.Periodic.quotient_path_repeat_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+NON_SAFE_DEFINITION Agent1.Periodic.repeatWordState._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.repeatWordState_succ._proof_1 : [propext, Quot.sound]
+AUDIT_SAFE_DEFINITION Agent1.Periodic.repeatWordState : []
+AUDIT_THEOREM Agent1.Periodic.repeatWordState.eq_1 : []
+AUDIT_THEOREM Agent1.Periodic.repeatWordState_succ : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.repeatWordState_zero : [propext]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_repeat : [propext, Quot.sound]
+NON_SAFE_DEFINITION Agent1.Periodic.repeatWordState._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.quotient_path_repeat_valid : [propext, Quot.sound, Classical.choice]
+MODULE_AUDIT theorems=6 definitions=1 opaque=0 union=[Classical.choice, Quot.sound, propext]
