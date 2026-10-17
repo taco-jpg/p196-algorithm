@@ -1,0 +1,35 @@
+Agent1.Periodic.quotient_path_nines_phase (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hw0 : w 0 = [9, 9, 9, 9]) (hwN : w N = [9, 9, 9, 9]) (i : Nat) :
+  i ≤ N → w i = [9, 9, 9, 9]
+Agent1.Periodic.quotient_path_nines_entry_sum (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hw0 : w 0 = [9, 9, 9, 9]) (hwN : w N = [9, 9, 9, 9]) (i : Nat)
+  (hi : i < N) : Agent1.Periodic.leftEntry (B i) + Agent1.Periodic.rightEntry (B i) (H i) [9, 9, 9, 9] = 1
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_phase._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_eighteen_absorbing._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_nines_trichotomy : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.quotient_path_nines_trichotomy : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_nines_trichotomy._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_eighteen_absorbing : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.quotient_path_nines_trichotomy._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0._proof_1 : [propext]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0._proof_2 : [propext]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_phase : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_entry_sum : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_phase._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_entry_sum._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.quotient_path_nines_trichotomy._proof_6 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_entry_sum._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_nines_entry_sum._proof_11 : [propext, Quot.sound]
+MODULE_AUDIT theorems=16 required_endpoints=2 safe_definitions=0 generated_runtime=0 custom_axioms=0 union=[Classical.choice,
+ Quot.sound,
+ propext]

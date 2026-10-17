@@ -1,0 +1,169 @@
+{
+  "status": "FROZEN_PASS",
+  "module": "Agent1PeriodicNinesCycle",
+  "source": "/workspace/p196-agent1-nine-cycle-20261017/proofs/Agent1PeriodicNinesCycle.lean",
+  "source_sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+  "source_git_blob": "73fd8965d5f0ba919f740e9e949df0adb321be3e",
+  "direct_imports": [
+    "Agent1PeriodicCycleNumeric",
+    "Agent1PeriodicNinesPath"
+  ],
+  "public_declarations": [
+    "Agent1.Periodic.periodic_nines_input_nonpalindrome",
+    "Agent1.Periodic.quotient_cycle_nines_safe",
+    "Agent1.Periodic.quotient_cycle_nines_positive_seed"
+  ],
+  "strict_compile_attempt": "attempt-003",
+  "audit_attempt": "attempt-003",
+  "all_attempts": {
+    "attempt-001": {
+      "exit_code": 0,
+      "source_sha256": "d00e5b388cb694fe12a13dcee70c5c53a3d17e9449b79183a85ce72359133870",
+      "dependency_count": 30,
+      "dependency_objects_reused": true,
+      "fresh_full_closure": false
+    },
+    "attempt-002": {
+      "exit_code": 0,
+      "source_sha256": "97cdee3d8b9856286284bc6dbdd0d6451d9154b473be28fe497fd5ef624b7630",
+      "dependency_count": 30,
+      "dependency_objects_reused": true,
+      "fresh_full_closure": false
+    },
+    "attempt-003": {
+      "exit_code": 0,
+      "source_sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "dependency_count": 33,
+      "dependency_objects_reused": true,
+      "fresh_full_closure": false
+    }
+  },
+  "origin_audit": {
+    "status": "PASS",
+    "module": "Agent1PeriodicNinesCycle",
+    "theorem_constants": 7,
+    "safe_definitions": 0,
+    "safe_opaques": 0,
+    "generated_unsafe_definitions": 0,
+    "custom_axioms": 0,
+    "unsafe_axioms": 0,
+    "unsafe_opaques": 0,
+    "axiom_union": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "public_declarations": [
+      "Agent1.Periodic.periodic_nines_input_nonpalindrome",
+      "Agent1.Periodic.quotient_cycle_nines_safe",
+      "Agent1.Periodic.quotient_cycle_nines_positive_seed"
+    ],
+    "all_theorem_names": [
+      "Agent1.Periodic.periodic_nines_input_nonpalindrome._proof_1",
+      "Agent1.Periodic.quotient_cycle_nines_positive_seed",
+      "_private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase._proof_3",
+      "_private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase._proof_2",
+      "Agent1.Periodic.quotient_cycle_nines_safe",
+      "Agent1.Periodic.periodic_nines_input_nonpalindrome",
+      "_private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase"
+    ],
+    "audit_log_sha256": "0f71af554f95c2b8daf99478e49fe811aff562e53ef63a5a5d000bf55a087c4c"
+  },
+  "dependency_provenance": {
+    "verification_role": "author incremental verification, not a fresh full closure build",
+    "dependency_count": 33,
+    "own_closure_count": 34,
+    "inherited_modules": 32,
+    "new_path_dependency": "Agent1PeriodicNinesPath",
+    "new_path_source_sha256": "72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866",
+    "new_path_attempt": "path-author/attempt-002",
+    "parent_fresh_reports": [
+      {
+        "path": "/workspace/p196-agent1-session-20261016/cycle-adapter-parent-clean-001/verification.json",
+        "sha256": "5fdf2d024f33a2c00e370e9419d847ba2bd9a18a41d8b71d7aa6ec48ed557966",
+        "reported_result": "PASS"
+      },
+      {
+        "path": "/workspace/p196-agent1-session-20261016/periodic-phase-parent-clean-001/verification.json",
+        "sha256": "e8bcd1b8368a6d06f2e8617f5db6ec3cc8ef40e8402dc3bcfcf0d06eb087930d",
+        "reported_result": "PASS"
+      }
+    ],
+    "dependency_manifest": "attempt-003/dependencies.json",
+    "dependency_manifest_sha256": "1c08717b4bc9382e996b33dcb5da25c8fb8a69e2f096b3e0d7d876eb79ebe319",
+    "all_dependency_source_and_object_pins_rechecked": true,
+    "fresh_combined_verification": "pending parent and independent review"
+  },
+  "source_object_sha256": "d77ad3d94afde54065551467d57e9d6fad4683c8b55f648bdfd790260e932efb",
+  "commands": [
+    {
+      "name": "compile",
+      "command": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent1PeriodicNinesCycle.olean",
+        "Agent1PeriodicNinesCycle.lean"
+      ],
+      "cwd": "/workspace/p196-agent1-nine-cycle-20261017/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003",
+      "LEAN_PATH": "/workspace/p196-agent1-nine-cycle-20261017/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003:/workspace/p196-agent1-nine-cycle-20261017/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002:/workspace/p196-agent1-session-20261016/cycle-adapter-parent-clean-001/agent1-periodic-cycle-adapter/source:/workspace/p196-agent1-session-20261016/periodic-phase-parent-clean-001/agent1-periodic-phase-catalog/source",
+      "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "address_space_limit_bytes": 4294967296,
+      "exit_code": 0,
+      "elapsed_seconds": 0.3659131290005462,
+      "max_rss_kib": 448132
+    },
+    {
+      "name": "audit",
+      "command": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "NinesCycleAudit.lean"
+      ],
+      "cwd": "/workspace/p196-agent1-nine-cycle-20261017/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003",
+      "LEAN_PATH": "/workspace/p196-agent1-nine-cycle-20261017/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003:/workspace/p196-agent1-nine-cycle-20261017/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002:/workspace/p196-agent1-session-20261016/cycle-adapter-parent-clean-001/agent1-periodic-cycle-adapter/source:/workspace/p196-agent1-session-20261016/periodic-phase-parent-clean-001/agent1-periodic-phase-catalog/source",
+      "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "address_space_limit_bytes": 4294967296,
+      "exit_code": 0,
+      "elapsed_seconds": 1.4185487249997095,
+      "max_rss_kib": 757276
+    }
+  ],
+  "files_sha256": {
+    ".gitignore": "86b39a77c61a8f8505898b297e68cfc319590f0472e7d73cc976665ebba09a59",
+    "NinesCycleAudit.lean": "de6782e3a55bb68c26b455e4b68e48e23fc42ee70b8069f3ae5f1a36575d3d5a",
+    "README.md": "53578f11c09291815ca58e445cfd65239a619b4f5d9b9379049d3a2dd7d940b1",
+    "SOURCE-SCOUT.md": "5fe1d321688192d172c1732c732fd9400fa92dc05daeb41b6b82c2bf816ad002",
+    "attempt-001/Agent1PeriodicNinesCycle.lean": "d00e5b388cb694fe12a13dcee70c5c53a3d17e9449b79183a85ce72359133870",
+    "attempt-001/commands.json": "5f1c6d045462b9f93c35bf750be952cd8abc4d21c04b0bfd8c8dd73a458aef5a",
+    "attempt-001/compile.log": "dffc694c689992d630c5d48e5dc9691bc74bf6a9e1f68ae8f0d16ba8a7f79cb5",
+    "attempt-001/dependencies.json": "609ea4202094a013c7151ac6ebccfecd7bbd86ca56769a1fdf8183b4117ab156",
+    "attempt-001/lean-version.txt": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "attempt-001/result.json": "1754d26db5e74d22d22293c578614de214ee08e8e50a6193d3e75e77faf8cfb7",
+    "attempt-001/run.py": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25",
+    "attempt-002/Agent1PeriodicNinesCycle.lean": "97cdee3d8b9856286284bc6dbdd0d6451d9154b473be28fe497fd5ef624b7630",
+    "attempt-002/commands.json": "df19faa8c0f98b57db36b6c4291d5ba5008fb2c3c0930eb57c0373056ee987fd",
+    "attempt-002/compile.log": "dffc694c689992d630c5d48e5dc9691bc74bf6a9e1f68ae8f0d16ba8a7f79cb5",
+    "attempt-002/dependencies.json": "609ea4202094a013c7151ac6ebccfecd7bbd86ca56769a1fdf8183b4117ab156",
+    "attempt-002/lean-version.txt": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "attempt-002/result.json": "4180c98a45d3718ff84370389ee18aec0ade2529e6cfcd51c4ee5bc4b982d744",
+    "attempt-002/run.py": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25",
+    "attempt-003/Agent1PeriodicNinesCycle.lean": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+    "attempt-003/NinesCycleAudit.lean": "de6782e3a55bb68c26b455e4b68e48e23fc42ee70b8069f3ae5f1a36575d3d5a",
+    "attempt-003/audit.log": "0f71af554f95c2b8daf99478e49fe811aff562e53ef63a5a5d000bf55a087c4c",
+    "attempt-003/commands.json": "9560278439f3c35672aa4049edfa5d9bb1bb0dd2dc8d85527193775ca90ec827",
+    "attempt-003/compile.log": "01faf2c0216ecf72927669ec048709019db5decd667e819d4b92374d6024c571",
+    "attempt-003/dependencies.json": "1c08717b4bc9382e996b33dcb5da25c8fb8a69e2f096b3e0d7d876eb79ebe319",
+    "attempt-003/lean-version.txt": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "attempt-003/result.json": "f1eb37b3dbbb95cad21a95e4d88b14c2f2d2a2cc51d84c41aea6636b75fa8033",
+    "attempt-003/run.py": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25",
+    "dependency-provenance.json": "0a72eafbf57342d68a46853aa4c0fae858859c0cf3a5b5545ed54ae2173178ea",
+    "draft.lean": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+    "origin-summary.json": "5f14c79aa26687478cf8f903b8a8402a3dab894488ce648f3cff7aae5872f5d0",
+    "run.py": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25"
+  }
+}
