@@ -21,3 +21,5 @@ python3 proofs/verify_project__214bf7673efe116b.py --lean /workspace/p196-tools/
 ```
 
 Independent exact commands and replay scripts are retained in review/. PR172 is stacked on reviewed PR168. The accepted contribution build includes both new modules; no shared-main integration or unconditional Lychrel existence is asserted.
+
+Publication correction: evidence commit61d9b76d inadvertently included the reviewer local fresh-build directory, including generated objects. The following non-force checkpoint removes only that redundant directory from tracked files and ignores future local build outputs. All original source/log/manifest evidence remains under review/clean-001 and is unchanged; local objects and published Git history are preserved. No source, proof, registry or verification result changed.
