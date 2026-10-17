@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "task_id": "agent14-spectral-four-case-evolution-20261016",
+  "owner": "Agent #14",
+  "session": "d43e317f00d9",
+  "role": "LEAN_FORMALIZATION",
+  "status": "CLAIMED",
+  "chat_language": "Spanish",
+  "deliverable_language": "English",
+  "reasoning_effort_subagents": "ultra retained from actual initial configuration; followup has no new effort selector",
+  "source_snapshot": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+  "source": {
+    "historical_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/creative_global_spectral_notes.md",
+    "git_blob": "cb1c355fa05916a770816a4d5ef680e54079cccb",
+    "companion": "proofs/creative_global_spectral__8de5a77a944d0d04.py",
+    "sha256": "e4a1e6b61848f473693c36d91d2a453b1dc82b26a347fa76b2a0b9a7e1228e27",
+    "location": "Four-case exact spectral update and T/R/U/S carry-coordinate formulas"
+  },
+  "target_statement": [
+    "For every q:Nat→Nat and original FoldedDecimal.Admissible L q, let c_i=DecimalDigits.carry q(i+1), h=carry q L, A=(Agent14.Spectral.coordinate q L:Int), A'=(coordinate (FoldedDecimal.nextColumns q L) (FoldedDecimal.nextWidth q L):Int). J is P196.Agent15.SpectralCarry.carryCharge of the full outgoing carry list, cast to Int entries, with exact high-minus-low orientation.",
+    "Define H literally: if L=2m+1, c_m + sum(i<m) (c_i+c_(L-1-i))*(Agent14.Spectral.T(m-i)/2); if L=2m, sum(i<m)(c_i+c_(L-1-i))*Agent14.Spectral.R(m-1-i). Cast weights to Int; prove evenness/exact division of T. H is not defined from the desired evolution law.",
+    "Prove in Int: odd L and h=0 gives A'=2*A+198*J; odd L and h=1 gives A'=A-9*H+99*J; even L and h=0 gives A'=2*A+9*J; even L and h=1 gives A'=22*A-99*H+99*J.",
+    "Preserve all positive admissible widths including1 and2, actual carry recurrence and width-changing original nextColumns. Export canonical ordinary-integer corollaries via existing normalization and representation_next, requiring equality only on the actual next-width prefix. No extra no-nine, nonpalindrome or orbit hypotheses."
+  ],
+  "intended_source_files": [
+    "proofs/Agent14SpectralWeightRelations.lean",
+    "proofs/Agent14SpectralCarryHeight.lean",
+    "proofs/Agent14SpectralMoments.lean",
+    "proofs/Agent14SpectralEvolution.lean",
+    "proofs/Agent14SpectralEvolutionDecimal.lean",
+    "proofs/Agent14SpectralEvolution.registry.json",
+    "proofs/contributions/agent-14/spectral-four-case-evolution-20261016/"
+  ],
+  "expected_theorems": [
+    "Agent14.Spectral.odd_no_overflow_evolution",
+    "Agent14.Spectral.odd_overflow_evolution",
+    "Agent14.Spectral.even_no_overflow_evolution",
+    "Agent14.Spectral.even_overflow_evolution"
+  ],
+  "contribution_branch": "formalize/agent-14/spectral-four-case-evolution-20261016",
+  "dependency_pins": {
+    "pr144": {
+      "source": "1418f5c176582435d6aa824da72513117da2832b",
+      "final": "719987c7e739c55796c2cb527aaac37391bf6511",
+      "merged": "116efc60f8d3a29bac4fcf5cdcaf2bbdcdceb3de"
+    },
+    "pr145": {
+      "source": "e8d706dc8a67248e1531b0b828fbe05ff50052ed",
+      "final": "679d10a5b1382b51b68a7240bb9c6562ccf144d9",
+      "namespace": "P196.Agent15.SpectralCarry",
+      "modules": [
+        "SpectralWeights",
+        "BinaryCode",
+        "ChargeSymmetry",
+        "SourceFormula"
+      ]
+    },
+    "core": {
+      "module": "LychrelDigitSums",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+    }
+  },
+  "assigned_subagents": {
+    "/root/coverage": "Author T/R/U/S cross-identities and literal H after successful claim; own WeightRelations/CarryHeight files only.",
+    "/root": "Author finite weighted column balance, coordinate moments, four-case composition and canonical wrappers; sole Git writer.",
+    "/root/spectral_semantics": "Genuine nonauthor exact contract/source semantics and adversarial boundary review.",
+    "/root/runtime": "Genuine nonauthor dependency mapping, clean full closure builds and complete public/origin/axiom audit after freeze."
+  },
+  "ownership_check": {
+    "exact_parent": "534b2aee1b98411565ce92c92d44e7da10c02e43",
+    "base_census": "b00c7bfe7ae4fd009bacd8fed110681898d9eea0",
+    "base_records": 200,
+    "latest_records": 222,
+    "delta_review": "Complete path/blob comparison:31 changed records to db22a83c,17 to2e7a427c,4 to8cfd4d0a; all mathematical targets read. No equivalent four-law/H task. Latest tasks for Agent1 clocks/prefix/zero loops, Agent51 reciprocal moment, Agent52 general-base intervals and documentary/delivery records are distinct.",
+    "source_dedup": "Original notes/companion read; exact frozen PR144/145 sources mapped. Agent15 explicitly excludes H/four laws in both charge and support tasks. SourceFormula existing sum bridges reused. Agent51 reciprocal derivative excluded.",
+    "proposal_comment": 6227029330,
+    "retry": {
+      "unpublished_candidate": "0cf0377817c9693babac4f6608c0f592f84bd276",
+      "result": "Guarded update returned UNKNOWN; subsequent current ref1e4e6783 and own-task404 establish no accepted claim. Intervening changes: Agent16 PR146 delivery state and new Agent64 documentary guide only; no equivalent mathematical claim."
+    },
+    "additional_retry": {
+      "candidate": "8db81dad4ebf83560b3c4b0d62f3205685dfb29e",
+      "result": "Guarded update UNKNOWN; current task listing at534b2aee shows own new task absent and both prior task blobs unchanged. Delta only Agent22 integrated135 and Agent28 delivery148; no source overlap."
+    }
+  },
+  "verification_status": "CONTRACT_REVIEW: original source/boundaries checked by genuine nonauthor; Agent15 J source read and confirmed high-low with exact U/S index/scale. Written contract finalization pending. No new Lean source or build yet.",
+  "acceptance": [
+    "Official Lean4.19.0 commit6caaee842e94",
+    "Actual source --trust=0 -j1 -DElab.async=false",
+    "No sorry/admit/sorryAx/native_decide/new mathematical axioms",
+    "Only propext/Classical.choice/Quot.sound allowed in transitive theorem axioms",
+    "Exact statement/source matching and independent fresh selected-closure build",
+    "All substantive source/attempt/log evidence retained and source hashes checked"
+  ],
+  "scope_exclusions": [
+    "No reproof/mutation of PR144 injection or PR145 J symmetry/support",
+    "No Agent51 ordinary reciprocal moment, overflow saturation or quotient classification",
+    "No generic canonical Q(-1) physical-label bridge reserved here",
+    "No real beta embedding theorem, polynomial ideal/universal quotient classification",
+    "No no-nine or nonpalindrome assumption added to four-law hypotheses",
+    "No global orbit safety,196 conclusion,main write slot or other owners' source changes"
+  ],
+  "main_write_slot": false,
+  "last_activity_utc": "2026-10-17T00:04:09.490Z",
+  "remaining_obligation": "Finalize frozen written contract, prove finite weighted carry balance and cross-weight identities, compose all four exact laws and canonical wrappers, publish checkpoints and obtain complete independent builds/audits."
+}
