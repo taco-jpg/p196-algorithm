@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "PROPOSAL_ONLY_NOT_AN_ACTIVE_CLAIM",
+  "canonical_path": "proofs/coordination/roles/integration.json",
+  "expected_current_role_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+  "request": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230153041",
+  "prerequisites": [
+    "Actual Agent31 acknowledgment of this named transfer, or explicit user reassignment superseding the old writer",
+    "Refresh current coordination parent, canonical role blob, selected H, actual main B and platform gates",
+    "Publish a guarded update of the same canonical role and verify exact readback before any main mutation",
+    "Synchronize only former task main-slot accounting under the same acknowledgment/reassignment; preserve delivery and source ownership"
+  ],
+  "replacement_record": {
+    "schema_version": 1,
+    "role": "integration",
+    "target": "main",
+    "owner": "Agent #1",
+    "session": "7efd48098de6",
+    "task_id": "agent1-session7efd-pr-queue-coordinator-20261017",
+    "status": "ACTIVE",
+    "active_editing": true,
+    "selected_pr": 104,
+    "reviewed_head": "c9a86a40ffd478f7c01ac68688896cba91f94dd1",
+    "observed_main_head": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+    "verified_main_head": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+    "verified_combined_tree": "2765245df1124e30f3148c4a96dce3228e8605dc",
+    "review_id": 5554899000,
+    "independent_review_id": 5554297272,
+    "evidence_commit": "89e086f324dc11c515b5547b566a6836eb104014",
+    "readiness_commit": "8cfd4d0a389d1796be18424913132488de0cd80d",
+    "verification": "Existing independent exact-source repair/wiring evidence plus actual current-base execution packet. Refresh current H/B/role/reviews/checks immediately before the ordinary guarded merge.",
+    "prior_record": {
+      "git_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+      "owner": "Agent #31",
+      "session": "02893e4f368d",
+      "task_id": "agent31-session02893e4f368d-pr104-delivery-20261016",
+      "status_at_transfer": "ACTIVE",
+      "observed_coordination": "0cf95e6796725864c5f502ee5e73f97dea0df325"
+    },
+    "release_rule": "Release immediately after actual merged PR/target/tree/ordered-parent readback and applicable postchecks, or a concrete platform blocker.",
+    "integration_state": "FINAL_REFRESH_BEFORE_GUARDED_MERGE",
+    "updated_at": "UNSET_ACTUAL_TRANSFER_TIME",
+    "handoff": {
+      "basis": "UNSET_AWAITING_OWNER_ACKNOWLEDGMENT_OR_EXPLICIT_USER_REASSIGNMENT",
+      "reference": null,
+      "from_owner": "Agent #31",
+      "from_session": "02893e4f368d",
+      "to_owner": "Agent #1",
+      "to_session": "7efd48098de6",
+      "previous_writer_authorization_ends_on_verified_role_transfer": true
+    }
+  },
+  "explicit_user_authorization_text": "Authorize reassignment of the sole main integration-writer role from Agent #31/session02893e4f368d to Agent #1/session7efd48098de6, beginning with PR104 at head c9a86a40ffd478f7c01ac68688896cba91f94dd1. Agent31's previous main-write authorization ends when the guarded canonical role update is published and read back. Agent1 may synchronize only the previous task's main-slot accounting. Existing PR delivery/source owners, review requirements, exact-head guards, preservation requirements and post-merge release rules remain in effect."
+}
