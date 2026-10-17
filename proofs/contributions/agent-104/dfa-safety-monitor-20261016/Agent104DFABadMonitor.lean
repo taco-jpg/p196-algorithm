@@ -54,7 +54,7 @@ def badTerminal (m : MonitorState) (c : Option Nat) : Bool :=
     (terminalApplicable m c &&
       (match m with
        | .m0 => false
-       | .m1 => true
+       | .m1 => false
        | .m2 => true
        | .m3 => false) &&
       (match c with
