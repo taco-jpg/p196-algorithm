@@ -151,9 +151,11 @@ theorem lowDigits_eq_of_mod_eq (P n k L : Nat) (e : Nat → Nat)
   rw [hmod] at hmodE
   have hbound : value e k < 10 ^ k :=
     value_lt_pow10 e k (fun i hi => hcan.2.1 i (by omega))
-  rw [Nat.mod_eq_of_lt hbound, Nat.mod_eq_of_lt hn] at hmodE
+  rw [Nat.mod_eq_of_lt hbound] at hmodE
   have hval : value e k = value (paddedDigits n) k := by
-    rw [hmodE, paddedDigits_value n k hn]
+    calc
+      value e k = n := hmodE.symm
+      _ = value (paddedDigits n) k := (paddedDigits_value n k hn).symm
   have hdigits := value_injective e (paddedDigits n) k
     (fun i hi => hcan.2.1 i (by omega))
     (fun i hi => paddedDigits_bound n i) hval
