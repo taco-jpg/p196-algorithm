@@ -1,0 +1,65 @@
+/workspace/scratch/9df76b503b84/agent105-decoder-work/proofs/Agent105DecoderScan9df76b.lean:121:9: error: unknown tactic
+/workspace/scratch/9df76b503b84/agent105-decoder-work/proofs/Agent105DecoderScan9df76b.lean:118:4: error: missing cases:
+(Nat.succ _), _, _
+/workspace/scratch/9df76b503b84/agent105-decoder-work/proofs/Agent105DecoderScan9df76b.lean:120:26: error: unsolved goals
+L : Nat
+e : Nat → Nat
+a b : Nat
+qs : List Nat
+ha : a ≤ 1
+hb : b ≤ 1
+ih :
+  ∀ (m : Nat),
+    m < 0 →
+      ∀ (e : Nat → Nat) (a b : Nat) (qs : List Nat),
+        a ≤ 1 →
+          b ≤ 1 →
+            scan m e a b = some qs →
+              qs.length = m ∧
+                (∀ (i : Nat), i < m → digitFn qs i ≤ 18) ∧
+                  (∀ (i : Nat), i < m → digitFn qs i = digitFn qs (m - 1 - i)) ∧
+                    (∀ (i : Nat), i < m → i = m - 1 - i → digitFn qs i % 2 = 0) ∧
+                      ∃ c,
+                        c 0 = a ∧
+                          c m = b ∧
+                            (∀ (i : Nat), i ≤ m → c i ≤ 1) ∧
+                              ∀ (i : Nat), i < m → digitFn qs i + c i = e i + 10 * c (i + 1)
+hscan : scan 0 e a b = some qs
+⊢ a = b
+/workspace/scratch/9df76b503b84/agent105-decoder-work/proofs/Agent105DecoderScan9df76b.lean:119:8: error: unsolved goals
+L : Nat
+e : Nat → Nat
+a b : Nat
+qs : List Nat
+ha : a ≤ 1
+hb : b ≤ 1
+ih :
+  ∀ (m : Nat),
+    m < 0 →
+      ∀ (e : Nat → Nat) (a b : Nat) (qs : List Nat),
+        a ≤ 1 →
+          b ≤ 1 →
+            scan m e a b = some qs →
+              qs.length = m ∧
+                (∀ (i : Nat), i < m → digitFn qs i ≤ 18) ∧
+                  (∀ (i : Nat), i < m → digitFn qs i = digitFn qs (m - 1 - i)) ∧
+                    (∀ (i : Nat), i < m → i = m - 1 - i → digitFn qs i % 2 = 0) ∧
+                      ∃ c,
+                        c 0 = a ∧
+                          c m = b ∧
+                            (∀ (i : Nat), i ≤ m → c i ≤ 1) ∧
+                              ∀ (i : Nat), i < m → digitFn qs i + c i = e i + 10 * c (i + 1)
+hscan : scan 0 e a b = some qs
+hab : a = b
+⊢ qs.length = 0 ∧
+    (∀ (i : Nat), i < 0 → digitFn qs i ≤ 18) ∧
+      (∀ (i : Nat), i < 0 → digitFn qs i = digitFn qs (0 - 1 - i)) ∧
+        (∀ (i : Nat), i < 0 → i = 0 - 1 - i → digitFn qs i % 2 = 0) ∧
+          ∃ c,
+            c 0 = a ∧
+              c 0 = b ∧ (∀ (i : Nat), i ≤ 0 → c i ≤ 1) ∧ ∀ (i : Nat), i < 0 → digitFn qs i + c i = e i + 10 * c (i + 1)
+'Agent105DecoderScan9df76b.digitFn_wrap_zero' does not depend on any axioms
+'Agent105DecoderScan9df76b.digitFn_wrap_last' depends on axioms: [propext]
+'Agent105DecoderScan9df76b.digitFn_wrap_inner' depends on axioms: [propext]
+'Agent105DecoderScan9df76b.wrap_word_conditions' depends on axioms: [propext, Quot.sound]
+'Agent105DecoderScan9df76b.scan_sound' depends on axioms: [sorryAx]
