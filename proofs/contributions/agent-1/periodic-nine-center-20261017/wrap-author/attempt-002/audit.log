@@ -1,0 +1,12 @@
+Agent1.Periodic.stripPeriodCenter_wrap : ∀ (w K : Agent8.Word),
+  w ≠ [] →
+    Agent1.Periodic.stripPeriodCenter w (w ++ K ++ List.reverse w) =
+      ((Agent1.Periodic.stripPeriodCenter w K).fst, (Agent1.Periodic.stripPeriodCenter w K).snd + 1)
+'Agent1.Periodic.stripPeriodCenter_wrap' depends on axioms: [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.stripPeriodCenter_wrap._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.stripPeriodCenter_wrap : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel._proof_2 : [propext, Quot.sound]
+MODULE_AUDIT theorems=6 definitions=0 opaque=0 union=[Quot.sound, propext]

@@ -1,0 +1,135 @@
+{
+  "status": "FROZEN_PASS",
+  "module": "Agent1PeriodicCenterWrap",
+  "source": "/workspace/p196-agent1-nine-center-20261017/proofs/Agent1PeriodicCenterWrap.lean",
+  "source_sha256": "dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523",
+  "source_git_blob": "175241722dd9295024e5563790986a5e4798cd64",
+  "direct_imports": [
+    "Agent1PeriodicCenterStrip"
+  ],
+  "public_declarations": [
+    "Agent1.Periodic.stripPeriodCenter_wrap"
+  ],
+  "strict_compile_attempt": "attempt-002",
+  "first_pass_attempt": "attempt-001",
+  "audit_attempt": "attempt-002",
+  "all_attempts": {
+    "attempt-001": {
+      "exit_code": 0,
+      "source_sha256": "dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523",
+      "dependency_count": 11,
+      "dependency_objects_reused": true,
+      "fresh_full_closure": false
+    },
+    "attempt-002": {
+      "exit_code": 0,
+      "source_sha256": "dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523",
+      "dependency_count": 11,
+      "dependency_objects_reused": true,
+      "fresh_full_closure": false
+    }
+  },
+  "origin_audit": {
+    "status": "PASS",
+    "module": "Agent1PeriodicCenterWrap",
+    "theorem_constants": 6,
+    "safe_definitions": 0,
+    "safe_opaques": 0,
+    "generated_unsafe_definitions": 0,
+    "custom_axioms": 0,
+    "unsafe_axioms": 0,
+    "unsafe_opaques": 0,
+    "axiom_union": [
+      "propext",
+      "Quot.sound"
+    ],
+    "public_declarations": [
+      "Agent1.Periodic.stripPeriodCenter_wrap"
+    ],
+    "all_theorem_names": [
+      "_private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel",
+      "_private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel._proof_3",
+      "Agent1.Periodic.stripPeriodCenter_wrap._proof_4",
+      "Agent1.Periodic.stripPeriodCenter_wrap",
+      "_private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel._proof_1",
+      "_private.Agent1PeriodicCenterWrap.0.Agent1.Periodic.centerAux_extraFuel._proof_2"
+    ],
+    "audit_log_sha256": "7c33eb3a9f400092d1b678a91dfe8c5d58d26a681f88ac5483714864d3ab0f2a"
+  },
+  "dependency_provenance": {
+    "verification_role": "author incremental verification, not a fresh full closure build",
+    "dependency_count": 11,
+    "own_closure_count": 12,
+    "parent_fresh_report": "/workspace/p196-agent1-session-20261016/nine-cycle-parent-clean-001/verification.json",
+    "parent_fresh_report_sha256": "1188f7fbf170fd27b9451d93013109c9f77d600dbce62fba4700010d0ac1748a",
+    "parent_fresh_report_status": "PASS",
+    "dependency_manifest": "attempt-002/dependencies.json",
+    "dependency_manifest_sha256": "50e2ddd4c031a257f2480e6f8d7f995ed32ff5935311a410423aca7dd57f4c0c",
+    "all_dependency_source_and_object_pins_rechecked": true,
+    "fresh_combined_verification": "pending parent and independent review"
+  },
+  "source_object_sha256": "a285f96f6d1748bf4fe5232dcf62852a08d90368f47c77277827da4518aade7b",
+  "commands": [
+    {
+      "name": "compile",
+      "command": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent1PeriodicCenterWrap.olean",
+        "Agent1PeriodicCenterWrap.lean"
+      ],
+      "cwd": "/workspace/p196-agent1-nine-center-20261017/proofs/contributions/agent-1/periodic-nine-center-20261017/wrap-author/attempt-002",
+      "LEAN_PATH": "/workspace/p196-agent1-nine-center-20261017/proofs/contributions/agent-1/periodic-nine-center-20261017/wrap-author/attempt-002:/workspace/p196-agent1-session-20261016/nine-cycle-parent-clean-001/agent1-periodic-nine-cycle/source",
+      "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "address_space_limit_bytes": 4294967296,
+      "exit_code": 0,
+      "elapsed_seconds": 0.26508122899758746,
+      "max_rss_kib": 444344
+    },
+    {
+      "name": "audit",
+      "command": [
+        "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "CenterWrapAudit.lean"
+      ],
+      "cwd": "/workspace/p196-agent1-nine-center-20261017/proofs/contributions/agent-1/periodic-nine-center-20261017/wrap-author/attempt-002",
+      "LEAN_PATH": "/workspace/p196-agent1-nine-center-20261017/proofs/contributions/agent-1/periodic-nine-center-20261017/wrap-author/attempt-002:/workspace/p196-agent1-session-20261016/nine-cycle-parent-clean-001/agent1-periodic-nine-cycle/source",
+      "compiler_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "address_space_limit_bytes": 4294967296,
+      "exit_code": 0,
+      "elapsed_seconds": 1.217776364999736,
+      "max_rss_kib": 751988
+    }
+  ],
+  "files_sha256": {
+    ".gitignore": "86b39a77c61a8f8505898b297e68cfc319590f0472e7d73cc976665ebba09a59",
+    "CenterWrapAudit.lean": "544e3d21ae5401bd56a800d77f34e3294dc377a9803b19dd4890e76c213b0b96",
+    "README.md": "4d1e8c775a2c691b2d0ae07d8f4be79d14c93638b31db6d7d2868519cdfb982c",
+    "attempt-001/Agent1PeriodicCenterWrap.lean": "dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523",
+    "attempt-001/commands.json": "67ac34457d50d1aa8c0b5cc071222962356b2178d69b4bf28dba6a8445bc44ce",
+    "attempt-001/compile.log": "cb7f03f78a367225307a1ed4ec96c0468090ce12fd300e3fdd7f61035d2c3b6a",
+    "attempt-001/dependencies.json": "50e2ddd4c031a257f2480e6f8d7f995ed32ff5935311a410423aca7dd57f4c0c",
+    "attempt-001/lean-version.txt": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "attempt-001/result.json": "99c0200e55cd50c1a4def1b3b25d88a838fa6608dad66a59e414f82b75cee513",
+    "attempt-001/run.py": "126599b3a53f3aae67d288dedfe7cf3ca49337e8cc80176da880796b63be3408",
+    "attempt-002/Agent1PeriodicCenterWrap.lean": "dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523",
+    "attempt-002/CenterWrapAudit.lean": "544e3d21ae5401bd56a800d77f34e3294dc377a9803b19dd4890e76c213b0b96",
+    "attempt-002/audit.log": "7c33eb3a9f400092d1b678a91dfe8c5d58d26a681f88ac5483714864d3ab0f2a",
+    "attempt-002/commands.json": "75d897ad67252c52361eb0e9422f6da5e94bac21c631d342a1e00f64054f6cdd",
+    "attempt-002/compile.log": "cb7f03f78a367225307a1ed4ec96c0468090ce12fd300e3fdd7f61035d2c3b6a",
+    "attempt-002/dependencies.json": "50e2ddd4c031a257f2480e6f8d7f995ed32ff5935311a410423aca7dd57f4c0c",
+    "attempt-002/lean-version.txt": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+    "attempt-002/result.json": "99c0200e55cd50c1a4def1b3b25d88a838fa6608dad66a59e414f82b75cee513",
+    "attempt-002/run.py": "126599b3a53f3aae67d288dedfe7cf3ca49337e8cc80176da880796b63be3408",
+    "dependency-provenance.json": "e5f806d3b3827b24e64d7b139eae42ed1a6d93923722e2d8e30ca6a1545fbe33",
+    "draft.lean": "dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523",
+    "origin-summary.json": "da18de233bbd6e50b0bb812818e3f673c5c0a0d67880ec199fcb546c8936510d",
+    "run.py": "126599b3a53f3aae67d288dedfe7cf3ca49337e8cc80176da880796b63be3408"
+  }
+}
