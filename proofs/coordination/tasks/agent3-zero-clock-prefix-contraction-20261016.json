@@ -90,10 +90,10 @@
   ],
   "contribution_branch": "research/agent-3/prefix-contraction-20261016-2232",
   "source_baseline": "8a67ea8204757cc4f80bf5f576e2cc8024bea97b",
-  "latest_published_source_commit": "a97228b7af95a465013219b7e58749e24f1241d1",
-  "verification_status": "Existing PrefixMachine (27 explicit declarations) and BinaryBlockCounts (17 explicit declarations) remain author-compiled under Lean 4.19.0 --trust=0 with only the standard three axioms, at c5369c653aa5279402417718a7634a4e3e259782. Newly regenerated clock000/y5 computational certificate is published at a97228b7af95a465013219b7e58749e24f1241d1 with generator at 1854046070727ed776fc030fcdadaaffd2a1c4bf. The 65-state subset automaton has 64 singleton live states, empty index 13, and a shortest rejecting continuation of length <=9 from every state; all recorded witness paths were replayed against the recorded transition table. This regeneration is computational evidence only: no Lean source/checker or kernel verification has been completed for the certificate.",
-  "last_activity_utc": "2026-10-17T10:10:00Z",
-  "remaining_obligation": "Translate the regenerated clock000/y5 transition/distance/kill witness table into a Lean-checkable certificate and prove the checker soundly covers all 64 original carry triples; then prove the original Path necessary-prefix induction, concrete count specialization, and ActualFiber prefix-list bound. Obtain fresh canonical and independent source/axiom gates. The historical omitted certificate bytes remain unrecovered and must not be described as restored.",
+  "latest_published_source_commit": "53889ba2220fe81a2cf038bac491882be3647fdd",
+  "verification_status": "Existing PrefixMachine (27 explicit declarations) and BinaryBlockCounts (17 explicit declarations) remain author-compiled under Lean 4.19.0 --trust=0 at c5369c653aa5279402417718a7634a4e3e259782. New one-case clock000/y5 certificate and reproducible stdlib generator are published at 53889ba2220fe81a2cf038bac491882be3647fdd (generator source commit 1854046070727ed776fc030fcdadaaffd2a1c4bf). The regenerated automaton has 65 states: 64 singleton live states plus absorbing empty state index 13; every state has a computed rejecting continuation of length at most 9. All 128 live transitions were computationally cross-checked against PrefixMachine.nextCarry/emitted/machineStep under original InverseFibers.State encoding p.val=2*a+b, with zero mismatches; initial 14 transition maps (0,0,0) to (0,1,1). This remains computational/source-level evidence only, not kernel verification.",
+  "last_activity_utc": "2026-10-17T10:12:00Z",
+  "remaining_obligation": "Implement the regenerated certificate as a Lean-checkable finite object, prove the checker soundly covers all 64 original carry triples and each rejection witness reaches the absorbing state, then prove the original Path necessary-prefix induction, concrete count specialization, and ActualFiber prefix-list bound. Obtain fresh canonical and independent source/axiom gates. Historical omitted certificate bytes remain unrecovered.",
   "ownership_check": {
     "proposal_comment": 6225907260,
     "proposal_url": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225907260",
@@ -138,7 +138,7 @@
   "main_write_slot": false,
   "latest_certificate": {
     "generator_commit": "1854046070727ed776fc030fcdadaaffd2a1c4bf",
-    "certificate_commit": "a97228b7af95a465013219b7e58749e24f1241d1",
+    "certificate_commit": "53889ba2220fe81a2cf038bac491882be3647fdd",
     "generator_path": "proofs/contributions/agent-3/prefix-contraction-20261016/source-preservation/regenerate_clock000_y5_certificate.py",
     "certificate_path": "proofs/contributions/agent-3/prefix-contraction-20261016/source-preservation/regenerated_clock000_y5_certificate.json",
     "summary": {
@@ -146,8 +146,10 @@
       "live_state_count": 64,
       "empty_state_index": 13,
       "max_rejection_length": 9,
-      "all_states_reach_empty": true
+      "all_states_reach_empty": true,
+      "live_edges_checked": 128,
+      "edge_mismatches": 0
     },
-    "verification_level": "COMPUTATIONAL_REGENERATION_ONLY_NOT_LEAN_CHECKED"
+    "verification_level": "COMPUTATIONAL_REGENERATION_AND_SOURCE_LEVEL_CROSS_CHECK_ONLY_NOT_LEAN_CHECKED"
   }
 }
