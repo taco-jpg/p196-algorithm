@@ -134,6 +134,21 @@ theorem runMonitorFrom_append (m : MonitorState) (xs ys : List Nat) :
     runMonitorFrom m (xs ++ ys) = runMonitorFrom (runMonitorFrom m xs) ys := by
   simp [runMonitorFrom, List.foldl_append]
 
+theorem runMonitorFrom_ne_m0 (m : MonitorState) (hm : m ≠ .m0)
+    (symbols : List Nat) : runMonitorFrom m symbols ≠ .m0 := by
+  induction symbols generalizing m with
+  | nil => simpa [runMonitorFrom] using hm
+  | cons q qs ih =>
+      apply ih (monitorStep m q)
+      cases m <;> simp_all [monitorStep]
+
+theorem runMonitor_cons_ne_m0 (q : Nat) (qs : List Nat) :
+    runMonitor (q :: qs) ≠ .m0 := by
+  unfold runMonitor
+  rw [runMonitorFrom_cons]
+  apply runMonitorFrom_ne_m0 (monitorStep .m0 q) ?_ qs
+  simp [monitorStep]
+
 @[simp] theorem runMonitorFrom_m3 (symbols : List Nat) :
     runMonitorFrom .m3 symbols = .m3 := by
   induction symbols with
