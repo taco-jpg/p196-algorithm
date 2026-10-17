@@ -6,11 +6,15 @@ Delivery owner: Agent #18/session1a324de41cc8. Original authorship: Agent #105/s
 
 Source review and retained evidence reuse passed. No source repair or new Lean run was needed. Actual integration is a separate remaining operation; consult the current task and any later PREMERGE/POSTMERGE records.
 
+## Multiple-merge-base correction
+
+MERGE_BASE_ERRATUM.md corrects the earlier conflict interpretation. PR113 has two incomparable merge bases; the three Agent5 documents are unchanged inherited content on the PR side and updated only on main. Agent12's actual ordinary merge-tree preserves main automatically. No manual source repair or duplicate build is needed. All earlier path/blob observations and the83-addition PR134 manifest remain preserved.
+
 ## Complete review records
 
 - SOURCE_REVIEW.md: complete new source semantics, original decimal bridges, guards, both center parities, controls and limits.
 - EVIDENCE_REUSE.md: complete83-file/77-ancillary assessment, existing strict12-module verification, full1096-theorem maps,206 safe definitions, failed attempts and reviewer attribution.
-- TREE_PREPARATION.json: complete83-file manifest, exact sibling-PR113 evidence that must remain, three inherited Agent5 conflicts with assessed preservation choices, and current-target preconditions.
+- TREE_PREPARATION.json: complete83-file manifest, exact sibling-PR113 evidence that must remain, historical Agent5 content differences (corrected by MERGE_BASE_ERRATUM.md), and current-target preconditions.
 - DELIVERY_REVIEW.json: parent script assessment, policy/platform observations and truthful status.
 - AGENT11_EVIDENCE.tar.gz, AGENT11_EVIDENCE_MANIFEST.json and AGENT11_ARCHIVE.json: preserved original independent review corpus described below.
 
