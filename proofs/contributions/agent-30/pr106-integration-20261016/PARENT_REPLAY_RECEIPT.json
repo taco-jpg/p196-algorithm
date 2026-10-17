@@ -1,0 +1,613 @@
+{
+  "commit": "ed9b9048adfdda70f699a8a40997a4330b76dc16",
+  "runtime": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+  "runtime_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "runtime_manifest_sha256": "8616c028d9329b1232dfd67c2e6747f1690615cec3310399337d7eee91135920",
+  "harness_hashes": {
+    "Agent30FullAudit.lean": "b3018588eb7ef174f379c7f62b1b7fd933200a8ff93ac5f2557c310aa62192d0",
+    "Agent30EndpointTypes.lean": "b99ffbd26265d647e5575dbf6240f21b04f7585c40f79e9a39f52e4c63556707"
+  },
+  "cwd": "/dev/shm/p196-agent30-4ab29b6d0234/parent-replay",
+  "subprocess_environment": {
+    "PATH": "/usr/bin:/bin",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "LEAN_PATH": "/dev/shm/p196-agent30-4ab29b6d0234/parent-replay"
+  },
+  "initial_project_oleans": [],
+  "sources": [
+    {
+      "module": "LychrelDigitSums",
+      "input_file": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/LychrelDigitSums.lean",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "bytes": 218799,
+      "imports": [
+        "Std"
+      ]
+    },
+    {
+      "module": "Agent106CarryBudget",
+      "input_file": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CarryBudget.lean",
+      "git_blob": "8ab159e79cbd601bb0fad884f0ac392574f38d7b",
+      "sha256": "5eb8d4684584f3941bec9a7ea61b8ca3d7049a8f2ae60d02d64d9e2b6f2b7edc",
+      "bytes": 2884,
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    {
+      "module": "Agent106CongruenceSeed",
+      "input_file": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceSeed.lean",
+      "git_blob": "4af21bdc673ffebfbad5bda77b79fc788f281259",
+      "sha256": "3c14410f4ccb7a7398c24ba5f24123197dfceb295d09b9aade9b4917e4aa36ed",
+      "bytes": 8384,
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    {
+      "module": "Agent106SparseTarget",
+      "input_file": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106SparseTarget.lean",
+      "git_blob": "d35c537d35bb12d63d2b338a7b8b8289129b4ae5",
+      "sha256": "6275b20e7648c309e3e9c3f412e2bbedd4f801f95d4a2b1631c1d1f4ee9bc193",
+      "bytes": 5339,
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    {
+      "module": "Agent106CongruenceObstruction",
+      "input_file": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceObstruction.lean",
+      "git_blob": "1a1d6060087f9ba596d686a1e8ec76f81c8f3475",
+      "sha256": "c8b4e1567f93e3b8769348b92b33a8e847e4e32440ec6bcc0905f16411d5fb93",
+      "bytes": 3219,
+      "imports": [
+        "Agent106CarryBudget",
+        "Agent106CongruenceSeed",
+        "Agent106SparseTarget"
+      ]
+    },
+    {
+      "module": "Agent106CongruenceControls",
+      "input_file": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceControls.lean",
+      "git_blob": "c95c7591e6363d6671818b208e442bf18da97929",
+      "sha256": "6ef0f20a8a18a0f35264d0007a735aa99b45e0e0f93de1ff865ad708d6cd31f0",
+      "bytes": 6241,
+      "imports": [
+        "Agent106CongruenceObstruction"
+      ]
+    }
+  ],
+  "address_space_bytes": 4294967296,
+  "cpu_seconds": 900,
+  "timeout_seconds": 960,
+  "start_utc": "2026-10-16T23:48:30.052585+00:00",
+  "complete": true,
+  "commands": [
+    {
+      "label": "lean-version",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "start_utc": "2026-10-16T23:48:32.182033+00:00",
+      "end_utc": "2026-10-16T23:48:32.250520+00:00",
+      "wall_seconds": 0.06849492299988924,
+      "returncode": 0,
+      "stdout": {
+        "file": "lean-version.stdout.log",
+        "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+        "bytes": 78
+      },
+      "stderr": {
+        "file": "lean-version.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "lean-prefix",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--print-prefix"
+      ],
+      "start_utc": "2026-10-16T23:48:32.251335+00:00",
+      "end_utc": "2026-10-16T23:48:32.292242+00:00",
+      "wall_seconds": 0.04092277600102534,
+      "returncode": 0,
+      "stdout": {
+        "file": "lean-prefix.stdout.log",
+        "sha256": "abf00c852e32c65283329216fadfc2d2100f267258c8639e3433d4febb96e7c9",
+        "bytes": 65
+      },
+      "stderr": {
+        "file": "lean-prefix.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "LychrelDigitSums",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "LychrelDigitSums.olean",
+        "LychrelDigitSums.lean"
+      ],
+      "start_utc": "2026-10-16T23:48:32.293036+00:00",
+      "end_utc": "2026-10-16T23:49:43.977373+00:00",
+      "wall_seconds": 71.68435602200043,
+      "returncode": 0,
+      "stdout": {
+        "file": "LychrelDigitSums.stdout.log",
+        "sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e",
+        "bytes": 11659
+      },
+      "stderr": {
+        "file": "LychrelDigitSums.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "Agent106CarryBudget",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent106CarryBudget.olean",
+        "Agent106CarryBudget.lean"
+      ],
+      "start_utc": "2026-10-16T23:49:43.978044+00:00",
+      "end_utc": "2026-10-16T23:49:44.569389+00:00",
+      "wall_seconds": 0.5914432179997675,
+      "returncode": 0,
+      "stdout": {
+        "file": "Agent106CarryBudget.stdout.log",
+        "sha256": "54b8dc63b144f1d99c3885b900875bf5ecd18cde488c4970955d874f549888bf",
+        "bytes": 504
+      },
+      "stderr": {
+        "file": "Agent106CarryBudget.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "Agent106CongruenceSeed",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent106CongruenceSeed.olean",
+        "Agent106CongruenceSeed.lean"
+      ],
+      "start_utc": "2026-10-16T23:49:44.570109+00:00",
+      "end_utc": "2026-10-16T23:49:46.684128+00:00",
+      "wall_seconds": 2.1140382819994556,
+      "returncode": 0,
+      "stdout": {
+        "file": "Agent106CongruenceSeed.stdout.log",
+        "sha256": "c409e85bc2bce2e007fd8d47c902e74a8da0a4482766a109f8c69719eae25ee8",
+        "bytes": 639
+      },
+      "stderr": {
+        "file": "Agent106CongruenceSeed.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "Agent106SparseTarget",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent106SparseTarget.olean",
+        "Agent106SparseTarget.lean"
+      ],
+      "start_utc": "2026-10-16T23:49:46.684857+00:00",
+      "end_utc": "2026-10-16T23:49:47.527624+00:00",
+      "wall_seconds": 0.8427862220014504,
+      "returncode": 0,
+      "stdout": {
+        "file": "Agent106SparseTarget.stdout.log",
+        "sha256": "95f92f15f984a5b4813ed776a74301ff0d5f718491a41df2c28b6276dd43c353",
+        "bytes": 448
+      },
+      "stderr": {
+        "file": "Agent106SparseTarget.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "Agent106CongruenceObstruction",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent106CongruenceObstruction.olean",
+        "Agent106CongruenceObstruction.lean"
+      ],
+      "start_utc": "2026-10-16T23:49:47.528360+00:00",
+      "end_utc": "2026-10-16T23:49:48.098552+00:00",
+      "wall_seconds": 0.5702117959990574,
+      "returncode": 0,
+      "stdout": {
+        "file": "Agent106CongruenceObstruction.stdout.log",
+        "sha256": "be055257ea845e90a59eca8f4a8925aad0d6ae24cfc5c627cdf000c4e4e796cf",
+        "bytes": 644
+      },
+      "stderr": {
+        "file": "Agent106CongruenceObstruction.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "Agent106CongruenceControls",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "-o",
+        "Agent106CongruenceControls.olean",
+        "Agent106CongruenceControls.lean"
+      ],
+      "start_utc": "2026-10-16T23:49:48.099288+00:00",
+      "end_utc": "2026-10-16T23:49:49.369278+00:00",
+      "wall_seconds": 1.2700067589994433,
+      "returncode": 0,
+      "stdout": {
+        "file": "Agent106CongruenceControls.stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "file": "Agent106CongruenceControls.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "Agent30FullAudit",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "Agent30FullAudit.lean"
+      ],
+      "start_utc": "2026-10-16T23:49:49.369967+00:00",
+      "end_utc": "2026-10-16T23:51:18.612717+00:00",
+      "wall_seconds": 89.2427666049989,
+      "returncode": 0,
+      "stdout": {
+        "file": "Agent30FullAudit.stdout.log",
+        "sha256": "304f068d16eca64452a2dcb855e80642557723b9635abc03ee6777a9af1c4e90",
+        "bytes": 285392
+      },
+      "stderr": {
+        "file": "Agent30FullAudit.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "Agent30EndpointTypes",
+      "argv": [
+        "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean",
+        "--trust=0",
+        "-j1",
+        "-DElab.async=false",
+        "Agent30EndpointTypes.lean"
+      ],
+      "start_utc": "2026-10-16T23:51:18.613842+00:00",
+      "end_utc": "2026-10-16T23:51:19.765634+00:00",
+      "wall_seconds": 1.1518116549996193,
+      "returncode": 0,
+      "stdout": {
+        "file": "Agent30EndpointTypes.stdout.log",
+        "sha256": "f25e68fd9a9b70e3b3558c21eeeb7a38a2e01c839999fefdda2319e094f56ee6",
+        "bytes": 13351
+      },
+      "stderr": {
+        "file": "Agent30EndpointTypes.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "inputs_before": {
+    "sources": [
+      {
+        "module": "LychrelDigitSums",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/LychrelDigitSums.lean",
+        "original_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+        "staged_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+      },
+      {
+        "module": "Agent106CarryBudget",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CarryBudget.lean",
+        "original_sha256": "5eb8d4684584f3941bec9a7ea61b8ca3d7049a8f2ae60d02d64d9e2b6f2b7edc",
+        "staged_sha256": "5eb8d4684584f3941bec9a7ea61b8ca3d7049a8f2ae60d02d64d9e2b6f2b7edc"
+      },
+      {
+        "module": "Agent106CongruenceSeed",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceSeed.lean",
+        "original_sha256": "3c14410f4ccb7a7398c24ba5f24123197dfceb295d09b9aade9b4917e4aa36ed",
+        "staged_sha256": "3c14410f4ccb7a7398c24ba5f24123197dfceb295d09b9aade9b4917e4aa36ed"
+      },
+      {
+        "module": "Agent106SparseTarget",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106SparseTarget.lean",
+        "original_sha256": "6275b20e7648c309e3e9c3f412e2bbedd4f801f95d4a2b1631c1d1f4ee9bc193",
+        "staged_sha256": "6275b20e7648c309e3e9c3f412e2bbedd4f801f95d4a2b1631c1d1f4ee9bc193"
+      },
+      {
+        "module": "Agent106CongruenceObstruction",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceObstruction.lean",
+        "original_sha256": "c8b4e1567f93e3b8769348b92b33a8e847e4e32440ec6bcc0905f16411d5fb93",
+        "staged_sha256": "c8b4e1567f93e3b8769348b92b33a8e847e4e32440ec6bcc0905f16411d5fb93"
+      },
+      {
+        "module": "Agent106CongruenceControls",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceControls.lean",
+        "original_sha256": "6ef0f20a8a18a0f35264d0007a735aa99b45e0e0f93de1ff865ad708d6cd31f0",
+        "staged_sha256": "6ef0f20a8a18a0f35264d0007a735aa99b45e0e0f93de1ff865ad708d6cd31f0"
+      }
+    ],
+    "harnesses": [
+      {
+        "file": "Agent30FullAudit.lean",
+        "original_sha256": "b3018588eb7ef174f379c7f62b1b7fd933200a8ff93ac5f2557c310aa62192d0",
+        "staged_sha256": "b3018588eb7ef174f379c7f62b1b7fd933200a8ff93ac5f2557c310aa62192d0"
+      },
+      {
+        "file": "Agent30EndpointTypes.lean",
+        "original_sha256": "b99ffbd26265d647e5575dbf6240f21b04f7585c40f79e9a39f52e4c63556707",
+        "staged_sha256": "b99ffbd26265d647e5575dbf6240f21b04f7585c40f79e9a39f52e4c63556707"
+      }
+    ],
+    "replay_sha256": "9f74650271a79dea35b5371aece874c77fd89fe2bfbfe93946552025d135126c",
+    "runtime_manifest_sha256": "8616c028d9329b1232dfd67c2e6747f1690615cec3310399337d7eee91135920",
+    "bundled_runtime": {
+      "file_count": 1503,
+      "total_bytes": 1538151001,
+      "inventory_sha256": "9a758c733afd6283cf8182f75ac5afacf6b58f925961a2945aa9c2b3d2abec28"
+    },
+    "loader": {
+      "ldd_stdout": "\tlinux-vdso.so.1 (0x00007f93740bc000)\n\tlibInit_shared.so => /workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/../lib/lean/libInit_shared.so (0x00007f93740ac000)\n\tlibleanshared_1.so => /workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/../lib/lean/libleanshared_1.so (0x00007f93740a8000)\n\tlibleanshared.so => /workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/../lib/lean/libleanshared.so (0x00007f936c243000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f936c235000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f936c230000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f936c145000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f936bf33000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f936bf2e000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f93740be000)\n",
+      "files": [
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+          "sha256": "6222a16be7f2d458d6870efe6e715fc0c8d45766fb79cf7dcc3125538d703e28",
+          "bytes": 236616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "511f825ee075610ac9c0f7f91e2c13de2000d0f7b859f6461137e809a0a009d0",
+          "bytes": 2125328
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+          "sha256": "feee7549138dc862300b9ba9b2b02502059c838a6c0b92d2ea4c0a357e8e0b45",
+          "bytes": 14408
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "f06f2ce1f1833df5f41cf13b6447ff07bea993ad9b27297d3428c2f70ab3f0e7",
+          "bytes": 952616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+          "sha256": "4472cde19acc87a431ad1eefe9e86f8238dd1f26f8dac692cff7040474d9d085",
+          "bytes": 14408
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/librt.so.1",
+          "sha256": "4b3a59575a0812a466235bc745814ca5b13825ef5f8ad5680637872ac64cc7ca",
+          "bytes": 14624
+        },
+        {
+          "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libInit_shared.so",
+          "sha256": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+          "bytes": 6120
+        },
+        {
+          "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared.so",
+          "sha256": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+          "bytes": 153918616
+        },
+        {
+          "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared_1.so",
+          "sha256": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+          "bytes": 6120
+        }
+      ]
+    }
+  },
+  "inputs_after": {
+    "sources": [
+      {
+        "module": "LychrelDigitSums",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/LychrelDigitSums.lean",
+        "original_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+        "staged_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57"
+      },
+      {
+        "module": "Agent106CarryBudget",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CarryBudget.lean",
+        "original_sha256": "5eb8d4684584f3941bec9a7ea61b8ca3d7049a8f2ae60d02d64d9e2b6f2b7edc",
+        "staged_sha256": "5eb8d4684584f3941bec9a7ea61b8ca3d7049a8f2ae60d02d64d9e2b6f2b7edc"
+      },
+      {
+        "module": "Agent106CongruenceSeed",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceSeed.lean",
+        "original_sha256": "3c14410f4ccb7a7398c24ba5f24123197dfceb295d09b9aade9b4917e4aa36ed",
+        "staged_sha256": "3c14410f4ccb7a7398c24ba5f24123197dfceb295d09b9aade9b4917e4aa36ed"
+      },
+      {
+        "module": "Agent106SparseTarget",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106SparseTarget.lean",
+        "original_sha256": "6275b20e7648c309e3e9c3f412e2bbedd4f801f95d4a2b1631c1d1f4ee9bc193",
+        "staged_sha256": "6275b20e7648c309e3e9c3f412e2bbedd4f801f95d4a2b1631c1d1f4ee9bc193"
+      },
+      {
+        "module": "Agent106CongruenceObstruction",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceObstruction.lean",
+        "original_sha256": "c8b4e1567f93e3b8769348b92b33a8e847e4e32440ec6bcc0905f16411d5fb93",
+        "staged_sha256": "c8b4e1567f93e3b8769348b92b33a8e847e4e32440ec6bcc0905f16411d5fb93"
+      },
+      {
+        "module": "Agent106CongruenceControls",
+        "original": "/dev/shm/p196-agent30-4ab29b6d0234/parent-source/Agent106CongruenceControls.lean",
+        "original_sha256": "6ef0f20a8a18a0f35264d0007a735aa99b45e0e0f93de1ff865ad708d6cd31f0",
+        "staged_sha256": "6ef0f20a8a18a0f35264d0007a735aa99b45e0e0f93de1ff865ad708d6cd31f0"
+      }
+    ],
+    "harnesses": [
+      {
+        "file": "Agent30FullAudit.lean",
+        "original_sha256": "b3018588eb7ef174f379c7f62b1b7fd933200a8ff93ac5f2557c310aa62192d0",
+        "staged_sha256": "b3018588eb7ef174f379c7f62b1b7fd933200a8ff93ac5f2557c310aa62192d0"
+      },
+      {
+        "file": "Agent30EndpointTypes.lean",
+        "original_sha256": "b99ffbd26265d647e5575dbf6240f21b04f7585c40f79e9a39f52e4c63556707",
+        "staged_sha256": "b99ffbd26265d647e5575dbf6240f21b04f7585c40f79e9a39f52e4c63556707"
+      }
+    ],
+    "replay_sha256": "9f74650271a79dea35b5371aece874c77fd89fe2bfbfe93946552025d135126c",
+    "runtime_manifest_sha256": "8616c028d9329b1232dfd67c2e6747f1690615cec3310399337d7eee91135920",
+    "bundled_runtime": {
+      "file_count": 1503,
+      "total_bytes": 1538151001,
+      "inventory_sha256": "9a758c733afd6283cf8182f75ac5afacf6b58f925961a2945aa9c2b3d2abec28"
+    },
+    "loader": {
+      "ldd_stdout": "\tlinux-vdso.so.1 (0x00007fec1a95f000)\n\tlibInit_shared.so => /workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/../lib/lean/libInit_shared.so (0x00007fec1a94f000)\n\tlibleanshared_1.so => /workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/../lib/lean/libleanshared_1.so (0x00007fec1a94b000)\n\tlibleanshared.so => /workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/../lib/lean/libleanshared.so (0x00007fec12ae6000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fec12ad8000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fec12ad3000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fec129e8000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fec127d6000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fec127d1000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fec1a961000)\n",
+      "files": [
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+          "sha256": "6222a16be7f2d458d6870efe6e715fc0c8d45766fb79cf7dcc3125538d703e28",
+          "bytes": 236616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "511f825ee075610ac9c0f7f91e2c13de2000d0f7b859f6461137e809a0a009d0",
+          "bytes": 2125328
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+          "sha256": "feee7549138dc862300b9ba9b2b02502059c838a6c0b92d2ea4c0a357e8e0b45",
+          "bytes": 14408
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "f06f2ce1f1833df5f41cf13b6447ff07bea993ad9b27297d3428c2f70ab3f0e7",
+          "bytes": 952616
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+          "sha256": "4472cde19acc87a431ad1eefe9e86f8238dd1f26f8dac692cff7040474d9d085",
+          "bytes": 14408
+        },
+        {
+          "path": "/usr/lib/x86_64-linux-gnu/librt.so.1",
+          "sha256": "4b3a59575a0812a466235bc745814ca5b13825ef5f8ad5680637872ac64cc7ca",
+          "bytes": 14624
+        },
+        {
+          "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libInit_shared.so",
+          "sha256": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+          "bytes": 6120
+        },
+        {
+          "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared.so",
+          "sha256": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+          "bytes": 153918616
+        },
+        {
+          "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/lib/lean/libleanshared_1.so",
+          "sha256": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+          "bytes": 6120
+        }
+      ]
+    }
+  },
+  "end_utc": "2026-10-16T23:51:21.272886+00:00",
+  "audit_summary": {
+    "violations": [],
+    "unsafe_logical_dependencies": [],
+    "theorems": 1126,
+    "status": "PASS",
+    "selected_unsafe_constants": 778,
+    "selected_safe_constants": 1277,
+    "selected_partial_constants": 17,
+    "selected_implementation_dependencies": [],
+    "selected_implementation_constants": 795,
+    "safe_definitions": 137,
+    "reachable_kernel_constants": 3027,
+    "partial_logical_dependencies": [],
+    "other_safe_constants": 14,
+    "module_count": 6,
+    "independent_graph_axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "endpoint_count": 36,
+    "collectAxioms_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "outputs": [
+    {
+      "file": "Agent106CarryBudget.olean",
+      "sha256": "efa21e26dd3ff277207770837cc810044c90a3e28b5ca9fd3943a7a650892104",
+      "bytes": 150928
+    },
+    {
+      "file": "Agent106CongruenceControls.olean",
+      "sha256": "5d11772bebe1f367fac318ed2c0ed43eb183c82215771da6fc4a7da7bcdfc69c",
+      "bytes": 485152
+    },
+    {
+      "file": "Agent106CongruenceObstruction.olean",
+      "sha256": "c689fbfeeaa9dab98a850b4fdd7f4b7c6d664ef6446db64d99040139c60715f7",
+      "bytes": 150232
+    },
+    {
+      "file": "Agent106CongruenceSeed.olean",
+      "sha256": "e3b73d0a1d08febfb1956c52bf1c694643da470569ca45bde9e43090e553b017",
+      "bytes": 753672
+    },
+    {
+      "file": "Agent106SparseTarget.olean",
+      "sha256": "f83856da3d29f307eedec0bab40bd238e88d96fd10bdd70d92bc5175254c3420",
+      "bytes": 339672
+    },
+    {
+      "file": "LychrelDigitSums.olean",
+      "sha256": "69dc2ddcd2c17246e2c60ed61195436cc9aefff662f0c49eb769f94baec93978",
+      "bytes": 13560888
+    }
+  ]
+}
