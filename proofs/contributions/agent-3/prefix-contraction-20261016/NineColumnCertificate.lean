@@ -96,10 +96,17 @@ theorem regeneratedRejectingWords_nodup :
 
 /-- Every triple has a listed continuation of length at most nine that reaches
 the absorbing empty state of the exact original-local prefix machine. -/
+theorem regeneratedWitness_rejects_all :
+    ∀ a b c : State,
+      (regeneratedWitness (a, b, c)).length ≤ 9 ∧
+        prefixRun (some (a, b, c)) (regeneratedWitness (a, b, c)) = none := by
+  decide
+
 theorem regeneratedWitness_rejects (p : Triple) :
     (regeneratedWitness p).length ≤ 9 ∧
       prefixRun (some p) (regeneratedWitness p) = none := by
-  decide
+  rcases p with ⟨a, b, c⟩
+  exact regeneratedWitness_rejects_all a b c
 
 #print axioms regeneratedRejectingWords_nodup
 #print axioms regeneratedWitness_rejects
