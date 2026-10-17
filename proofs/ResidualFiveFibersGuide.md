@@ -72,7 +72,7 @@ for natural `t,r`, and concludes
 orbit 196 (t - 2) ∈ modularFiber r.
 ```
 
-The [preceding occurrence lemmas][fiber-endpoint] derive the required time lower bound and predecessor phase from that occurrence. No additional modulo-99 assumption is inserted into the endpoint. The family notation and time convention remain those of the original imported source.
+The [preceding occurrence lemmas][fiber-endpoint] derive the required time lower bound and predecessor phase from that occurrence. No additional modulo-99 assumption is inserted into the endpoint. The inherited [`Agent103.ResidualFive.occurrence_necessary_conditions`][prior-occurrence] specifically derives `105 ≤ t`, `1 ≤ r`, and `t % 6 = 3` from that same hypothesis. These are consequences of an occurrence; the complete local fiber classification above still includes `r = 0`. The family notation and time convention remain those of the original imported source.
 
 This implication is one-way. Membership in `modularFiber r` does not imply that the integer occurs on the orbit starting at 196. Moreover, [`Agent103.ResidualFiveResidueCount.residueCount_positive` and `fiber_mod99_exists`][count-source] establish that the local filter retains candidates for every `r`. Therefore this filter alone does not exclude the residual-five family.
 
@@ -206,3 +206,4 @@ The historical contribution README, reproduction text, review, unsafe ledger, an
 [package-reproduce]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/contributions/agent-103/residual-five-fibers-20261016/REPRODUCE.md
 [historical-wrapper]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/verify_project.py
 [doc-inspector]: contributions/agent-62/residual-five-guide/verify_retained_evidence.py
+[prior-occurrence]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/contributions/agent-103/residual-five-20261016/ResidualFiveConclusion.lean
