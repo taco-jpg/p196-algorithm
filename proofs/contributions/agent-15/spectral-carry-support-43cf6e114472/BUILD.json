@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "status": "CONFIGURATION_PINNED",
+  "task_id": "agent15-spectral-carry-support-43cf6e114472",
+  "claim_commit": "3de89d0bd03534c92f65886a29b7996525571ff5",
+  "source_snapshot": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+  "spectral_source_commit": "e8d706dc8a67248e1531b0b828fbe05ff50052ed",
+  "toolchain": "leanprover/lean4:v4.19.0",
+  "compiler_commit": "6caaee842e94",
+  "flags": [
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false"
+  ],
+  "modules": [
+    "LychrelDigitSums",
+    "IncomingCarrySensitivity",
+    "RawSymmetryObstruction",
+    "SpectralWeights",
+    "BinaryCode",
+    "ChargeSymmetry",
+    "SourceFormula",
+    "ActualCarrySupport"
+  ],
+  "source_pins": {
+    "LychrelDigitSums": {
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "bytes": 218799,
+      "imports": [
+        "Std"
+      ]
+    },
+    "IncomingCarrySensitivity": {
+      "path": "proofs/IncomingCarrySensitivity__5d4952e23e746f6d.lean",
+      "sha256": "52850d75999a8fdad298e2e9da638965472ab6507f88630bf428698576ac631f",
+      "git_blob": "9ccc745471fd509fb68652fef40454478087e92e",
+      "bytes": 12041,
+      "imports": [
+        "LychrelDigitSums"
+      ]
+    },
+    "RawSymmetryObstruction": {
+      "path": "proofs/RawSymmetryObstruction__5c1be305a04af2b7.lean",
+      "sha256": "922b660e5b3ac42389cd6ea00885075327d4b44fb315b9cc496e1323890e9c87",
+      "git_blob": "9d4250f3e5daa5ff26f097a7e12ce98830dd9e89",
+      "bytes": 23848,
+      "imports": [
+        "IncomingCarrySensitivity"
+      ]
+    },
+    "SpectralWeights": {
+      "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SpectralWeights.lean",
+      "sha256": "07b3831f17a0d2e43a7e27cfd8a63d364a98ccbbcef87362a20cfbf24fb49db1",
+      "git_blob": "40afa93196976972e5c0f6772a18e50c1e635a3f",
+      "bytes": 4445,
+      "imports": [
+        "Std"
+      ]
+    },
+    "BinaryCode": {
+      "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/BinaryCode.lean",
+      "sha256": "8db88d52e00dddbd32610dc09b7f8833f1ec1dc623b82236060b67bd2c9171f9",
+      "git_blob": "35ba9bee5afb9bb47f39738e44860a02ea9b2469",
+      "bytes": 2655,
+      "imports": [
+        "SpectralWeights"
+      ]
+    },
+    "ChargeSymmetry": {
+      "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/ChargeSymmetry.lean",
+      "sha256": "28d11217cf147750ec2d07e64dbc6dabeee7deec7e543987817da611201b60a3",
+      "git_blob": "f69efd4bc0642759dddf99834d5d093c929761a5",
+      "bytes": 3240,
+      "imports": [
+        "BinaryCode"
+      ]
+    },
+    "SourceFormula": {
+      "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SourceFormula.lean",
+      "sha256": "be165a538963922f6096e63934e5f3c1010d760cabc9e08baa96a0bb43c105d8",
+      "git_blob": "1db4a109629abddf355d12e8a14f2cfb0e26a39b",
+      "bytes": 5059,
+      "imports": [
+        "ChargeSymmetry"
+      ]
+    },
+    "ActualCarrySupport": {
+      "path": "proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/ActualCarrySupport.lean",
+      "sha256": "4c06522efae7aa254b6281003d042e49f6b60162d01d00881d50052c7a73c646",
+      "git_blob": "c0e5562e1661570546bced3dca82dd4fb459fa5f",
+      "bytes": 10166,
+      "imports": [
+        "SourceFormula",
+        "RawSymmetryObstruction"
+      ]
+    }
+  },
+  "new_exports": [
+    "P196.Agent15.SpectralSupport.outgoing",
+    "P196.Agent15.SpectralSupport.actualCharge",
+    "P196.Agent15.SpectralSupport.outgoing_length",
+    "P196.Agent15.SpectralSupport.outgoing_getElem",
+    "P196.Agent15.SpectralSupport.outgoing_getElem?",
+    "P196.Agent15.SpectralSupport.outgoing_last",
+    "P196.Agent15.SpectralSupport.outgoing_binary",
+    "P196.Agent15.SpectralSupport.outgoing_reverse_iff",
+    "P196.Agent15.SpectralSupport.actualCharge_zero_iff",
+    "P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine",
+    "P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry",
+    "P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine",
+    "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_iff",
+    "P196.Agent15.SpectralSupport.canonical_outgoing_reflected_eq_of_nonnine",
+    "P196.Agent15.SpectralSupport.canonical_actualCharge_nonzero_iff_nine_asymmetry",
+    "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_of_no_nine",
+    "P196.Agent15.SpectralSupport.actualCharge_width_zero",
+    "P196.Agent15.SpectralSupport.actualCharge_width_one",
+    "P196.Agent15.SpectralSupport.Controls.nine_zero_charge",
+    "P196.Agent15.SpectralSupport.Controls.even_overflow_zero_charge",
+    "P196.Agent15.SpectralSupport.Controls.odd_free_center",
+    "P196.Agent15.SpectralSupport.Controls.odd_nine_asymmetry"
+  ],
+  "critical_prerequisites": [
+    "DecimalDigits.Canonical",
+    "DecimalDigits.columnSum",
+    "DecimalDigits.carry",
+    "DecimalDigits.carry_bounded",
+    "DecimalDigits.columnSum_bounded",
+    "DecimalDigits.columnSum_symmetric",
+    "RawSymmetryObstruction.nonnine_binary_div",
+    "P196.Agent15.SpectralCarry.Binary",
+    "P196.Agent15.SpectralCarry.carryCharge",
+    "P196.Agent15.SpectralCarry.carryCharge_zero_iff",
+    "P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum",
+    "P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum",
+    "P196.Agent15.SpectralCarry.oddWeight_superincreasing",
+    "P196.Agent15.SpectralCarry.evenWeight_superincreasing",
+    "P196.Agent15.SpectralCarry.weighted_injective_binary"
+  ],
+  "expected_runtime": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "executable_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+    "shared_library_sha256": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+    "stdlib_root_sha256": "7d3771da25b893da62564bf8198487ff28f01af5cbd410be88d493a4921b2bb1",
+    "runtime_olean_count": 1471,
+    "runtime_olean_inventory_sha256": "3006ed0315f417028aac57869ba6a033fa9fb23c75e5795aa3087d9f5e039b32",
+    "runtime_olean_inventory_encoding": "UTF-8 JSON, sort_keys=True, separators=(comma,colon), trailing LF; entries sorted by relative POSIX path and containing path, sha256, bytes."
+  },
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "external_imports": [
+    "Std"
+  ],
+  "checker_provenance": {
+    "source_commit": "e8d706dc8a67248e1531b0b828fbe05ff50052ed",
+    "git_blob": "ea730bac77298967a8be4e103b0de5b40cd2a5a8",
+    "sha256": "f0da79f56ca4c2e24ff90700f3491d4999247f9b88db6cc306074ac84c646ab3",
+    "source_path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/check.py"
+  },
+  "canonical_check": "python3 check.py --lean /absolute/path/to/lean-4.19.0/bin/lean --output /absolute/new/directory",
+  "verification_result": "The requested output/verification.json records each actual canonical driver run.",
+  "independent_review": "Recorded separately; this configuration asserts no independent review or integration status."
+}

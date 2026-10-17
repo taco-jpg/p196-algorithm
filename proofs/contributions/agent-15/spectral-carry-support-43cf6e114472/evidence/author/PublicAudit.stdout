@@ -1,0 +1,617 @@
+def P196.Agent15.SpectralSupport.outgoing : (Nat → Nat) → Nat → List Nat :=
+fun q L => List.map (fun i => DecimalDigits.carry q (i + 1)) (List.range L)
+'P196.Agent15.SpectralSupport.outgoing' does not depend on any axioms
+def P196.Agent15.SpectralSupport.actualCharge : (Nat → Nat) → Nat → Int :=
+fun q L => P196.Agent15.SpectralCarry.carryCharge (P196.Agent15.SpectralSupport.outgoing q L)
+'P196.Agent15.SpectralSupport.actualCharge' does not depend on any axioms
+theorem P196.Agent15.SpectralSupport.outgoing_length : ∀ (q : Nat → Nat) (L : Nat),
+  (P196.Agent15.SpectralSupport.outgoing q L).length = L :=
+fun q L =>
+  of_eq_true
+    (Eq.trans
+      (congrArg (fun x => x = L) (Eq.trans (List.length_map fun i => DecimalDigits.carry q (i + 1)) List.length_range))
+      (eq_self L))
+'P196.Agent15.SpectralSupport.outgoing_length' depends on axioms: [propext]
+theorem P196.Agent15.SpectralSupport.outgoing_getElem : ∀ (q : Nat → Nat) (L i : Nat) (hi : i < L),
+  (P196.Agent15.SpectralSupport.outgoing q L)[i] = DecimalDigits.carry q (i + 1) :=
+fun q L i hi =>
+  of_eq_true
+    (Eq.trans
+      (congrArg (fun x => x = DecimalDigits.carry q (i + 1))
+        (Eq.trans (List.getElem_map fun i => DecimalDigits.carry q (i + 1))
+          (congrArg (fun x => DecimalDigits.carry q (x + 1))
+            (List.getElem_range
+              ((List.length_map fun i => DecimalDigits.carry q (i + 1)) ▸
+                id (Eq.refl (List.map (fun i => DecimalDigits.carry q (i + 1)) (List.range L))) ▸
+                  Eq.refl i ▸
+                    Eq.mpr (id (congrArg (LT.lt i) (P196.Agent15.SpectralSupport.outgoing_length q L))) hi)))))
+      (eq_self (DecimalDigits.carry q (i + 1))))
+'P196.Agent15.SpectralSupport.outgoing_getElem' depends on axioms: [propext]
+theorem P196.Agent15.SpectralSupport.outgoing_getElem? : ∀ (q : Nat → Nat) (L i : Nat),
+  i < L → (P196.Agent15.SpectralSupport.outgoing q L)[i]? = some (DecimalDigits.carry q (i + 1)) :=
+fun q L i hi =>
+  let_fun hlen := Eq.mpr (id (congrArg (LT.lt i) (P196.Agent15.SpectralSupport.outgoing_length q L))) hi;
+  Eq.mpr (id (congrArg (fun _a => _a = some (DecimalDigits.carry q (i + 1))) (List.getElem?_eq_getElem hlen)))
+    ((fun {α} val val_1 e_val => e_val ▸ Eq.refl (some val)) (P196.Agent15.SpectralSupport.outgoing q L)[i]
+      (DecimalDigits.carry q (i + 1)) (P196.Agent15.SpectralSupport.outgoing_getElem q L i hi))
+'P196.Agent15.SpectralSupport.outgoing_getElem?' depends on axioms: [propext]
+theorem P196.Agent15.SpectralSupport.outgoing_last : ∀ (q : Nat → Nat) (L : Nat) (hL : 0 < L),
+  (P196.Agent15.SpectralSupport.outgoing q L)[L - 1] = DecimalDigits.carry q L :=
+fun q L hL =>
+  let_fun hi := Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_last._proof_1 L hL a;
+  let_fun hind := Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_last._proof_2 L hL hi a;
+  Eq.mp (congrArg (fun x => (P196.Agent15.SpectralSupport.outgoing q L)[L - 1] = DecimalDigits.carry q x) hind)
+    (P196.Agent15.SpectralSupport.outgoing_getElem q L (L - 1) hi)
+'P196.Agent15.SpectralSupport.outgoing_last' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralSupport.outgoing_binary : ∀ (q : Nat → Nat) (L : Nat),
+  (∀ (i : Nat), i < L → q i ≤ 18) → P196.Agent15.SpectralCarry.Binary (P196.Agent15.SpectralSupport.outgoing q L) :=
+fun q L hb a ha =>
+  id
+    (fun ha =>
+      Exists.casesOn (List.mem_map.mp ha) fun i h =>
+        And.casesOn h fun hi right =>
+          Eq.ndrec (motive := fun a =>
+            a ∈ List.map (fun i => DecimalDigits.carry q (i + 1)) (List.range L) → a = 0 ∨ a = 1)
+            (fun ha =>
+              let_fun hiL := List.mem_range.mp hi;
+              let_fun hc :=
+                DecimalDigits.carry_bounded q L hb (i + 1)
+                  (Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_binary._proof_3 L i hiL a);
+              Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_binary._proof_4 q L i hc a)
+            right ha)
+    ha
+'P196.Agent15.SpectralSupport.outgoing_binary' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralSupport.outgoing_reverse_iff : ∀ (q : Nat → Nat) (L : Nat),
+  (P196.Agent15.SpectralSupport.outgoing q L).reverse = P196.Agent15.SpectralSupport.outgoing q L ↔
+    ∀ (i : Nat), i < L → DecimalDigits.carry q (i + 1) = DecimalDigits.carry q (L - i) :=
+fun q L =>
+  {
+    mp := fun h i hi =>
+      let_fun he := congrArg (fun xs => xs[i]?) h;
+      id
+        (fun he =>
+          let_fun hiW := Eq.mpr (id (congrArg (LT.lt i) (P196.Agent15.SpectralSupport.outgoing_length q L))) hi;
+          let_fun hj :=
+            Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_reverse_iff._proof_5 q L i hi a;
+          let_fun hind :=
+            Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_reverse_iff._proof_6 q L i hi a;
+          Eq.symm
+            (Option.some.inj
+              (Eq.mp (congrArg (fun _a => some (DecimalDigits.carry q _a) = some (DecimalDigits.carry q (i + 1))) hind)
+                (Eq.mp
+                  (congrArg (fun _a => some (DecimalDigits.carry q (L - 1 - i + 1)) = _a)
+                    (P196.Agent15.SpectralSupport.outgoing_getElem? q L i hi))
+                  (Eq.mp
+                    (congrArg (fun _a => _a = (P196.Agent15.SpectralSupport.outgoing q L)[i]?)
+                      (P196.Agent15.SpectralSupport.outgoing_getElem? q L (L - 1 - i) hj))
+                    (Eq.mp
+                      (congrArg
+                        (fun _a =>
+                          (P196.Agent15.SpectralSupport.outgoing q L)[_a - 1 - i]? =
+                            (P196.Agent15.SpectralSupport.outgoing q L)[i]?)
+                        (P196.Agent15.SpectralSupport.outgoing_length q L))
+                      (Eq.mp
+                        (congrArg (fun _a => _a = (P196.Agent15.SpectralSupport.outgoing q L)[i]?)
+                          (List.getElem?_reverse hiW))
+                        he)))))))
+        he,
+    mpr := fun h =>
+      List.ext_getElem? fun i =>
+        if hi : i < L then
+          let_fun hiW := Eq.mpr (id (congrArg (LT.lt i) (P196.Agent15.SpectralSupport.outgoing_length q L))) hi;
+          Eq.mpr
+            (id (congrArg (fun _a => _a = (P196.Agent15.SpectralSupport.outgoing q L)[i]?) (List.getElem?_reverse hiW)))
+            (Eq.mpr
+              (id
+                (congrArg
+                  (fun _a =>
+                    (P196.Agent15.SpectralSupport.outgoing q L)[_a - 1 - i]? =
+                      (P196.Agent15.SpectralSupport.outgoing q L)[i]?)
+                  (P196.Agent15.SpectralSupport.outgoing_length q L)))
+              (let_fun hj :=
+                Decidable.byContradiction fun a =>
+                  P196.Agent15.SpectralSupport.outgoing_reverse_iff._proof_5 q L i hi a;
+              Eq.mpr
+                (id
+                  (congrArg (fun _a => _a = (P196.Agent15.SpectralSupport.outgoing q L)[i]?)
+                    (P196.Agent15.SpectralSupport.outgoing_getElem? q L (L - 1 - i) hj)))
+                (Eq.mpr
+                  (id
+                    (congrArg (fun _a => some (DecimalDigits.carry q (L - 1 - i + 1)) = _a)
+                      (P196.Agent15.SpectralSupport.outgoing_getElem? q L i hi)))
+                  (let_fun hind :=
+                    Decidable.byContradiction fun a =>
+                      P196.Agent15.SpectralSupport.outgoing_reverse_iff._proof_6 q L i hi a;
+                  Eq.mpr
+                    (id
+                      (congrArg (fun _a => some (DecimalDigits.carry q _a) = some (DecimalDigits.carry q (i + 1)))
+                        hind))
+                    (Eq.mpr (id (congrArg (fun _a => some (DecimalDigits.carry q (L - i)) = some _a) (h i hi)))
+                      (Eq.refl (some (DecimalDigits.carry q (L - i)))))))))
+        else
+          let_fun hw :=
+            Eq.mpr (id (congrArg (fun x => x ≤ i) (P196.Agent15.SpectralSupport.outgoing_length q L)))
+              (Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_reverse_iff._proof_7 L i hi a);
+          let_fun hr :=
+            Eq.mpr
+              (id
+                (congrArg (fun x => x ≤ i)
+                  (Eq.trans List.length_reverse (P196.Agent15.SpectralSupport.outgoing_length q L))))
+              (Eq.mp (congrArg (fun x => x ≤ i) (P196.Agent15.SpectralSupport.outgoing_length q L)) hw);
+          Eq.mpr
+            (id (congrArg (fun _a => _a = (P196.Agent15.SpectralSupport.outgoing q L)[i]?) (List.getElem?_eq_none hr)))
+            (Eq.mpr (id (congrArg (fun _a => none = _a) (List.getElem?_eq_none hw))) (Eq.refl none)) }
+'P196.Agent15.SpectralSupport.outgoing_reverse_iff' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralSupport.actualCharge_zero_iff : ∀ (q : Nat → Nat) (L : Nat),
+  (∀ (i : Nat), i < L → q i ≤ 18) →
+    (P196.Agent15.SpectralSupport.actualCharge q L = 0 ↔
+      ∀ (i : Nat), i < L → DecimalDigits.carry q (i + 1) = DecimalDigits.carry q (L - i)) :=
+fun q L hb =>
+  id
+    (Iff.trans (P196.Agent15.SpectralCarry.carryCharge_zero_iff (P196.Agent15.SpectralSupport.outgoing_binary q L hb))
+      (P196.Agent15.SpectralSupport.outgoing_reverse_iff q L))
+'P196.Agent15.SpectralSupport.actualCharge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine : ∀ (q : Nat → Nat) (L : Nat),
+  (∀ (i : Nat), i < L → q i ≤ 18) →
+    (∀ (i : Nat), i < L → q i = q (L - 1 - i)) →
+      ∀ (i : Nat), i < L → q i ≠ 9 → DecimalDigits.carry q (i + 1) = DecimalDigits.carry q (L - i) :=
+fun q L hb hs i hi hne =>
+  let_fun hindex :=
+    Decidable.byContradiction fun a => P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine._proof_8 L i hi a;
+  Eq.mpr (id (congrArg (fun _a => DecimalDigits.carry q (i + 1) = DecimalDigits.carry q _a) hindex))
+    (id
+      (Eq.mpr
+        (id
+          (congrArg (fun _a => (q i + DecimalDigits.carry q i) / 10 = (_a + DecimalDigits.carry q (L - 1 - i)) / 10)
+            (Eq.symm (hs i hi))))
+        (RawSymmetryObstruction.nonnine_binary_div (q i) (DecimalDigits.carry q i) (DecimalDigits.carry q (L - 1 - i))
+          (hb i hi) hne
+          (DecimalDigits.carry_bounded q L hb i
+            (Decidable.byContradiction fun a =>
+              P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine._proof_9 L i hi a))
+          (DecimalDigits.carry_bounded q L hb (L - 1 - i)
+            (Decidable.byContradiction fun a =>
+              P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine._proof_10 L i hi hindex a)))))
+'P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry : ∀ (q : Nat → Nat) (L : Nat),
+  (∀ (i : Nat), i < L → q i ≤ 18) →
+    (∀ (i : Nat), i < L → q i = q (L - 1 - i)) →
+      (P196.Agent15.SpectralSupport.actualCharge q L ≠ 0 ↔
+        ∃ i, i < L ∧ q i = 9 ∧ DecimalDigits.carry q (i + 1) ≠ DecimalDigits.carry q (L - i)) :=
+fun q L hb hs =>
+  {
+    mp := fun hn =>
+      let_fun hex :=
+        Classical.byContradiction fun h =>
+          hn
+            ((P196.Agent15.SpectralSupport.actualCharge_zero_iff q L hb).mpr fun i hi =>
+              Classical.byContradiction fun hc => h (Exists.intro i ⟨hi, hc⟩));
+      Exists.casesOn hex fun i h =>
+        And.casesOn h fun hi ha =>
+          Exists.intro i
+            ⟨hi,
+              ⟨Classical.byContradiction fun hnotnine =>
+                  ha (P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine q L hb hs i hi hnotnine),
+                ha⟩⟩,
+    mpr := fun a =>
+      Exists.casesOn a fun i h =>
+        And.casesOn h fun hi right =>
+          And.casesOn right fun left ha hz =>
+            ha ((P196.Agent15.SpectralSupport.actualCharge_zero_iff q L hb).mp hz i hi) }
+'P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+theorem P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine : ∀ (q : Nat → Nat) (L : Nat),
+  (∀ (i : Nat), i < L → q i ≤ 18) →
+    (∀ (i : Nat), i < L → q i = q (L - 1 - i)) →
+      (∀ (i : Nat), i < L → q i ≠ 9) → P196.Agent15.SpectralSupport.actualCharge q L = 0 :=
+fun q L hb hs hn =>
+  (P196.Agent15.SpectralSupport.actualCharge_zero_iff q L hb).mpr fun i hi =>
+    P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine q L hb hs i hi (hn i hi)
+'P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralSupport.canonical_actualCharge_zero_iff : ∀ (n : Nat) (d : Nat → Nat) (L : Nat),
+  DecimalDigits.Canonical n d L →
+    (P196.Agent15.SpectralSupport.actualCharge (DecimalDigits.columnSum d L) L = 0 ↔
+      ∀ (i : Nat),
+        i < L →
+          DecimalDigits.carry (DecimalDigits.columnSum d L) (i + 1) =
+            DecimalDigits.carry (DecimalDigits.columnSum d L) (L - i)) :=
+fun n d L hc =>
+  P196.Agent15.SpectralSupport.actualCharge_zero_iff (DecimalDigits.columnSum d L) L
+    (DecimalDigits.columnSum_bounded d L hc.right.left)
+'P196.Agent15.SpectralSupport.canonical_actualCharge_zero_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+theorem P196.Agent15.SpectralSupport.canonical_outgoing_reflected_eq_of_nonnine : ∀ (n : Nat) (d : Nat → Nat) (L : Nat),
+  DecimalDigits.Canonical n d L →
+    ∀ (i : Nat),
+      i < L →
+        DecimalDigits.columnSum d L i ≠ 9 →
+          DecimalDigits.carry (DecimalDigits.columnSum d L) (i + 1) =
+            DecimalDigits.carry (DecimalDigits.columnSum d L) (L - i) :=
+fun n d L hc i hi hne =>
+  P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine (DecimalDigits.columnSum d L) L
+    (DecimalDigits.columnSum_bounded d L hc.right.left) (DecimalDigits.columnSum_symmetric d L) i hi hne
+'P196.Agent15.SpectralSupport.canonical_outgoing_reflected_eq_of_nonnine' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralSupport.canonical_actualCharge_nonzero_iff_nine_asymmetry : ∀ (n : Nat) (d : Nat → Nat)
+  (L : Nat),
+  DecimalDigits.Canonical n d L →
+    (P196.Agent15.SpectralSupport.actualCharge (DecimalDigits.columnSum d L) L ≠ 0 ↔
+      ∃ i,
+        i < L ∧
+          DecimalDigits.columnSum d L i = 9 ∧
+            DecimalDigits.carry (DecimalDigits.columnSum d L) (i + 1) ≠
+              DecimalDigits.carry (DecimalDigits.columnSum d L) (L - i)) :=
+fun n d L hc =>
+  P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry (DecimalDigits.columnSum d L) L
+    (DecimalDigits.columnSum_bounded d L hc.right.left) (DecimalDigits.columnSum_symmetric d L)
+'P196.Agent15.SpectralSupport.canonical_actualCharge_nonzero_iff_nine_asymmetry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+theorem P196.Agent15.SpectralSupport.canonical_actualCharge_zero_of_no_nine : ∀ (n : Nat) (d : Nat → Nat) (L : Nat),
+  DecimalDigits.Canonical n d L →
+    (∀ (i : Nat), i < L → DecimalDigits.columnSum d L i ≠ 9) →
+      P196.Agent15.SpectralSupport.actualCharge (DecimalDigits.columnSum d L) L = 0 :=
+fun n d L hc hn =>
+  P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine (DecimalDigits.columnSum d L) L
+    (DecimalDigits.columnSum_bounded d L hc.right.left) (DecimalDigits.columnSum_symmetric d L) hn
+'P196.Agent15.SpectralSupport.canonical_actualCharge_zero_of_no_nine' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+theorem P196.Agent15.SpectralSupport.actualCharge_width_zero : ∀ (q : Nat → Nat),
+  P196.Agent15.SpectralSupport.actualCharge q 0 = 0 :=
+fun q =>
+  of_eq_true
+    (Eq.trans
+      (congrArg (fun x => x = 0)
+        (Eq.trans
+          (ite_cond_eq_false (P196.Agent15.SpectralCarry.oddCharge (P196.Agent15.SpectralSupport.outgoing q 0))
+            (P196.Agent15.SpectralCarry.evenCharge (P196.Agent15.SpectralSupport.outgoing q 0))
+            (Eq.trans (congrArg (fun x => x = 1) (Nat.zero_mod 2)) (eq_false' fun h => Nat.noConfusion h)))
+          (Eq.trans
+            (congr
+              (congrArg
+                (fun x => HSub.hSub (P196.Agent15.SpectralCarry.weighted P196.Agent15.SpectralCarry.evenWeight x))
+                (Eq.trans (congrArg (fun x => List.take x []) (Nat.zero_div 2)) List.take_nil))
+              (congrArg (P196.Agent15.SpectralCarry.weighted P196.Agent15.SpectralCarry.evenWeight)
+                (Eq.trans (congrArg (fun x => List.take x []) (Nat.zero_div 2)) List.take_nil)))
+            (Int.sub_self 0))))
+      (eq_self 0))
+'P196.Agent15.SpectralSupport.actualCharge_width_zero' depends on axioms: [propext]
+theorem P196.Agent15.SpectralSupport.actualCharge_width_one : ∀ (q : Nat → Nat),
+  P196.Agent15.SpectralSupport.actualCharge q 1 = 0 :=
+fun q =>
+  of_eq_true
+    (Eq.trans
+      (congrArg (fun x => x = 0)
+        (Eq.trans
+          (ite_cond_eq_true (P196.Agent15.SpectralCarry.oddCharge (P196.Agent15.SpectralSupport.outgoing q 1))
+            (P196.Agent15.SpectralCarry.evenCharge (P196.Agent15.SpectralSupport.outgoing q 1))
+            (Eq.trans
+              (congrArg (fun x => x % 2 = 1)
+                (Eq.trans (List.length_map fun i => DecimalDigits.carry q (i + 1)) List.length_range))
+              (eq_self 1)))
+          (Eq.trans
+            (congr
+              (congrArg
+                (fun x =>
+                  HSub.hSub
+                    (P196.Agent15.SpectralCarry.weighted P196.Agent15.SpectralCarry.oddWeight
+                      (List.take (x / 2) (List.map (fun i => DecimalDigits.carry q (i + 1)) (List.range 1)).reverse)))
+                (Eq.trans (List.length_map fun i => DecimalDigits.carry q (i + 1)) List.length_range))
+              (congrArg
+                (fun x =>
+                  P196.Agent15.SpectralCarry.weighted P196.Agent15.SpectralCarry.oddWeight
+                    (List.take (x / 2) (List.map (fun i => DecimalDigits.carry q (i + 1)) (List.range 1))))
+                (Eq.trans (List.length_map fun i => DecimalDigits.carry q (i + 1)) List.length_range)))
+            (Int.sub_self 0))))
+      (eq_self 0))
+'P196.Agent15.SpectralSupport.actualCharge_width_one' depends on axioms: [propext]
+theorem P196.Agent15.SpectralSupport.Controls.nine_zero_charge : P196.Agent15.SpectralSupport.outgoing (fun x => 9) 2 =
+    [0, 0] ∧
+  P196.Agent15.SpectralSupport.actualCharge (fun x => 9) 2 = 0 ∧ ∃ i, i < 2 ∧ (fun x => 9) i = 9 :=
+⟨of_decide_eq_true (id (Eq.refl true)),
+  ⟨of_decide_eq_true (id (Eq.refl true)), Exists.intro 0 ⟨of_decide_eq_true (id (Eq.refl true)), rfl⟩⟩⟩
+'P196.Agent15.SpectralSupport.Controls.nine_zero_charge' does not depend on any axioms
+theorem P196.Agent15.SpectralSupport.Controls.even_overflow_zero_charge : P196.Agent15.SpectralSupport.outgoing
+      (fun x => 10) 2 =
+    [1, 1] ∧
+  P196.Agent15.SpectralSupport.actualCharge (fun x => 10) 2 = 0 :=
+of_decide_eq_true (id (Eq.refl true))
+'P196.Agent15.SpectralSupport.Controls.even_overflow_zero_charge' does not depend on any axioms
+theorem P196.Agent15.SpectralSupport.Controls.odd_free_center : P196.Agent15.SpectralSupport.outgoing
+      (fun i => if i = 1 then 18 else 8) 3 =
+    [0, 1, 0] ∧
+  P196.Agent15.SpectralSupport.actualCharge (fun i => if i = 1 then 18 else 8) 3 = 0 :=
+of_decide_eq_true (id (Eq.refl true))
+'P196.Agent15.SpectralSupport.Controls.odd_free_center' does not depend on any axioms
+theorem P196.Agent15.SpectralSupport.Controls.odd_nine_asymmetry : P196.Agent15.SpectralSupport.outgoing
+      (fun i => if i = 1 then 18 else 9) 3 =
+    [0, 1, 1] ∧
+  P196.Agent15.SpectralSupport.actualCharge (fun i => if i = 1 then 18 else 9) 3 = 1 :=
+of_decide_eq_true (id (Eq.refl true))
+'P196.Agent15.SpectralSupport.Controls.odd_nine_asymmetry' does not depend on any axioms
+def DecimalDigits.Canonical : Nat → (Nat → Nat) → Nat → Prop :=
+fun n d L => 0 < L ∧ (∀ (i : Nat), i < L → d i ≤ 9) ∧ 0 < d (L - 1) ∧ DecimalDigits.value d L = n
+'DecimalDigits.Canonical' does not depend on any axioms
+def DecimalDigits.columnSum : (Nat → Nat) → Nat → Nat → Nat :=
+fun d L i => d i + DecimalDigits.reflected d L i
+'DecimalDigits.columnSum' does not depend on any axioms
+def DecimalDigits.carry : (Nat → Nat) → Nat → Nat :=
+fun q x =>
+  Nat.brecOn x fun x f =>
+    (match (motive := (x : Nat) → Nat.below x → Nat) x with
+      | 0 => fun x => 0
+      | k.succ => fun x => (q k + x.1) / 10)
+      f
+'DecimalDigits.carry' does not depend on any axioms
+theorem DecimalDigits.carry_bounded : ∀ (q : Nat → Nat) (L : Nat),
+  (∀ (i : Nat), i < L → q i ≤ 18) → ∀ (i : Nat), i ≤ L → DecimalDigits.carry q i ≤ 1 :=
+fun q L hq i =>
+  Nat.recAux (motive := fun i => i ≤ L → DecimalDigits.carry q i ≤ 1)
+    (fun a => of_eq_true (Init.Data.Nat.Basic._auxLemma.1 1))
+    (fun i ih hi =>
+      let_fun hc := ih (Decidable.byContradiction fun a => DecimalDigits.carry_bounded._proof_62 L i hi a);
+      let_fun hqi := hq i (Decidable.byContradiction fun a => DecimalDigits.carry_bounded._proof_63 q L i hi a);
+      id (Decidable.byContradiction fun a => DecimalDigits.carry_bounded._proof_64 q L i hc hqi a))
+    i
+'DecimalDigits.carry_bounded' depends on axioms: [propext, Quot.sound]
+theorem DecimalDigits.columnSum_bounded : ∀ (d : Nat → Nat) (L : Nat),
+  (∀ (i : Nat), i < L → d i ≤ 9) → ∀ (i : Nat), i < L → DecimalDigits.columnSum d L i ≤ 18 :=
+fun d L hd i hi =>
+  let_fun ha := hd i hi;
+  let_fun hb :=
+    hd (L - 1 - i) (Decidable.byContradiction fun a => DecimalDigits.columnSum_bounded._proof_60 d L i hi a);
+  id (Decidable.byContradiction fun a => DecimalDigits.columnSum_bounded._proof_61 d L i ha hb a)
+'DecimalDigits.columnSum_bounded' depends on axioms: [propext, Quot.sound]
+theorem DecimalDigits.columnSum_symmetric : ∀ (d : Nat → Nat) (L i : Nat),
+  i < L → DecimalDigits.columnSum d L i = DecimalDigits.columnSum d L (L - 1 - i) :=
+fun d L i hi =>
+  let_fun h := Decidable.byContradiction fun a => DecimalDigits.columnSum_symmetric._proof_58 L i hi a;
+  Eq.mpr (id (congrArg (fun x => d i + d (L - 1 - i) = d (L - 1 - i) + d x) h))
+    (Decidable.byContradiction fun a => DecimalDigits.columnSum_symmetric._proof_59 d L i a)
+'DecimalDigits.columnSum_symmetric' depends on axioms: [propext, Quot.sound]
+theorem RawSymmetryObstruction.nonnine_binary_div : ∀ (a b c : Nat),
+  a ≤ 18 → a ≠ 9 → b ≤ 1 → c ≤ 1 → (a + b) / 10 = (a + c) / 10 :=
+fun a b c ha hne hb hc =>
+  Decidable.byContradiction fun a_1 => RawSymmetryObstruction.nonnine_binary_div._proof_68 a b c ha hne hb hc a_1
+'RawSymmetryObstruction.nonnine_binary_div' depends on axioms: [propext, Quot.sound]
+def P196.Agent15.SpectralCarry.Binary : List Nat → Prop :=
+fun cs => ∀ (a : Nat), a ∈ cs → a = 0 ∨ a = 1
+'P196.Agent15.SpectralCarry.Binary' does not depend on any axioms
+def P196.Agent15.SpectralCarry.carryCharge : List Nat → Int :=
+fun cs =>
+  if cs.length % 2 = 1 then P196.Agent15.SpectralCarry.oddCharge cs else P196.Agent15.SpectralCarry.evenCharge cs
+'P196.Agent15.SpectralCarry.carryCharge' does not depend on any axioms
+theorem P196.Agent15.SpectralCarry.carryCharge_zero_iff : ∀ {cs : List Nat},
+  P196.Agent15.SpectralCarry.Binary cs → (P196.Agent15.SpectralCarry.carryCharge cs = 0 ↔ cs.reverse = cs) :=
+fun {cs} hc =>
+  id
+    (Decidable.casesOn (instDecidableEqNat (cs.length % 2) 1)
+      (fun h =>
+        Eq.mpr (id (congrArg (fun x => x = 0 ↔ cs.reverse = cs) (if_neg h)))
+          (P196.Agent15.SpectralCarry.evenCharge_zero_iff hc))
+      fun h =>
+      Eq.mpr (id (congrArg (fun x => x = 0 ↔ cs.reverse = cs) (if_pos h)))
+        (P196.Agent15.SpectralCarry.oddCharge_zero_iff hc))
+'P196.Agent15.SpectralCarry.carryCharge_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+theorem P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum : ∀ (cs : List Nat) (m : Nat),
+  cs.length = 2 * m + 1 →
+    P196.Agent15.SpectralCarry.carryCharge cs =
+      P196.Agent15.SpectralCarry.sumFirst
+        (fun i => (↑(cs[2 * m - i]?.getD 0) - ↑(cs[i]?.getD 0)) * P196.Agent15.SpectralCarry.U (m - i)) m :=
+fun cs m hlen =>
+  let_fun hp :=
+    Decidable.byContradiction fun a => P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum._proof_11 cs m hlen a;
+  Eq.mpr
+    (id
+      (congrArg
+        (fun x =>
+          x =
+            P196.Agent15.SpectralCarry.sumFirst
+              (fun i => (↑(cs[2 * m - i]?.getD 0) - ↑(cs[i]?.getD 0)) * P196.Agent15.SpectralCarry.U (m - i)) m)
+        (ite_cond_eq_true (P196.Agent15.SpectralCarry.oddCharge cs) (P196.Agent15.SpectralCarry.evenCharge cs)
+          (Eq.trans (congrArg (fun x => x = 1) hp) (eq_self 1)))))
+    (P196.Agent15.SpectralCarry.oddCharge_eq_source_sum cs m hlen)
+'P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum : ∀ (cs : List Nat) (m : Nat),
+  cs.length = 2 * m →
+    P196.Agent15.SpectralCarry.carryCharge cs =
+      P196.Agent15.SpectralCarry.sumFirst
+        (fun i => (↑(cs[2 * m - 1 - i]?.getD 0) - ↑(cs[i]?.getD 0)) * P196.Agent15.SpectralCarry.S (m - 1 - i)) m :=
+fun cs m hlen =>
+  let_fun hp := fun a => P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum._proof_12 cs m hlen a;
+  Eq.mpr
+    (id
+      (congrArg
+        (fun x =>
+          x =
+            P196.Agent15.SpectralCarry.sumFirst
+              (fun i => (↑(cs[2 * m - 1 - i]?.getD 0) - ↑(cs[i]?.getD 0)) * P196.Agent15.SpectralCarry.S (m - 1 - i)) m)
+        (ite_cond_eq_false (P196.Agent15.SpectralCarry.oddCharge cs) (P196.Agent15.SpectralCarry.evenCharge cs)
+          (eq_false hp))))
+    (P196.Agent15.SpectralCarry.evenCharge_eq_source_sum cs m hlen)
+'P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.oddWeight_superincreasing : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.oddWeight n <
+    P196.Agent15.SpectralCarry.oddWeight n :=
+fun n =>
+  P196.Agent15.SpectralCarry.sum_lt_of_growth✝ P196.Agent15.SpectralCarry.oddWeight
+    P196.Agent15.SpectralCarry.oddWeight_pos P196.Agent15.SpectralCarry.oddWeight_growth n
+'P196.Agent15.SpectralCarry.oddWeight_superincreasing' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.evenWeight_superincreasing : ∀ (n : Nat),
+  P196.Agent15.SpectralCarry.weightSum P196.Agent15.SpectralCarry.evenWeight n <
+    P196.Agent15.SpectralCarry.evenWeight n :=
+fun n =>
+  P196.Agent15.SpectralCarry.sum_lt_of_growth✝ P196.Agent15.SpectralCarry.evenWeight
+    P196.Agent15.SpectralCarry.evenWeight_pos P196.Agent15.SpectralCarry.evenWeight_growth n
+'P196.Agent15.SpectralCarry.evenWeight_superincreasing' depends on axioms: [propext, Quot.sound]
+theorem P196.Agent15.SpectralCarry.weighted_injective_binary : ∀ (w : Nat → Int),
+  (∀ (n : Nat), 0 ≤ w n) →
+    (∀ (n : Nat), P196.Agent15.SpectralCarry.weightSum w n < w n) →
+      ∀ {xs ys : List Nat},
+        P196.Agent15.SpectralCarry.Binary xs →
+          P196.Agent15.SpectralCarry.Binary ys →
+            xs.length = ys.length →
+              P196.Agent15.SpectralCarry.weighted w xs = P196.Agent15.SpectralCarry.weighted w ys → xs = ys :=
+fun w hpos hdom {xs ys} hx hy hlen hvalue =>
+  List.rec (motive := fun {xs} =>
+    ∀ {ys : List Nat},
+      P196.Agent15.SpectralCarry.Binary xs →
+        P196.Agent15.SpectralCarry.Binary ys →
+          xs.length = ys.length →
+            P196.Agent15.SpectralCarry.weighted w xs = P196.Agent15.SpectralCarry.weighted w ys → xs = ys)
+    (fun {ys} hx hy hlen hvalue =>
+      List.casesOn (motive := fun t => ys = t → [] = ys) ys
+        (fun h =>
+          Eq.ndrec (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              [].length = ys.length →
+                P196.Agent15.SpectralCarry.weighted w [] = P196.Agent15.SpectralCarry.weighted w ys → [] = ys)
+            (fun hy hlen hvalue => Eq.refl []) (Eq.symm h) hy hlen hvalue)
+        (fun b ys_1 h =>
+          Eq.ndrec (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              [].length = ys.length →
+                P196.Agent15.SpectralCarry.weighted w [] = P196.Agent15.SpectralCarry.weighted w ys → [] = ys)
+            (fun hy hlen hvalue =>
+              False.elim
+                (Eq.mp (Eq.trans Init.Data.Nat.Lemmas._auxLemma.10 (Init.Data.Nat.Basic._auxLemma.3 ys_1.length)) hlen))
+            (Eq.symm h) hy hlen hvalue)
+        (Eq.refl ys))
+    (fun a xs ih {ys} hx hy hlen hvalue =>
+      List.casesOn (motive := fun t => ys = t → a :: xs = ys) ys
+        (fun h =>
+          Eq.ndrec (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              (a :: xs).length = ys.length →
+                P196.Agent15.SpectralCarry.weighted w (a :: xs) = P196.Agent15.SpectralCarry.weighted w ys →
+                  a :: xs = ys)
+            (fun hy hlen hvalue => False.elim (Eq.mp (Init.Data.Nat.Basic._auxLemma.3 xs.length) hlen)) (Eq.symm h) hy
+            hlen hvalue)
+        (fun b ys_1 h =>
+          Eq.ndrec (motive := fun {ys} =>
+            P196.Agent15.SpectralCarry.Binary ys →
+              (a :: xs).length = ys.length →
+                P196.Agent15.SpectralCarry.weighted w (a :: xs) = P196.Agent15.SpectralCarry.weighted w ys →
+                  a :: xs = ys)
+            (fun hy hlen hvalue =>
+              let_fun hx' := P196.Agent15.SpectralCarry.binary_tail hx;
+              let_fun hy' := P196.Agent15.SpectralCarry.binary_tail hy;
+              let_fun hlen' := Eq.mp Init.Data.Nat.Lemmas._auxLemma.6 hlen;
+              let_fun bx := P196.Agent15.SpectralCarry.weighted_bounds w hpos hx';
+              let_fun by' := P196.Agent15.SpectralCarry.weighted_bounds w hpos hy';
+              let_fun dx := hdom xs.length;
+              let_fun dy := hdom ys_1.length;
+              let_fun ha :=
+                hx a
+                  (of_eq_true
+                    (Eq.trans Init.Data.List.Lemmas._auxLemma.9
+                      (Eq.trans (congrArg (fun x => x ∨ a ∈ xs) (eq_self a)) (true_or (a ∈ xs)))));
+              let_fun hb :=
+                hy b
+                  (of_eq_true
+                    (Eq.trans Init.Data.List.Lemmas._auxLemma.9
+                      (Eq.trans (congrArg (fun x => x ∨ b ∈ ys_1) (eq_self b)) (true_or (b ∈ ys_1)))));
+              let_fun hab :=
+                Or.casesOn ha
+                  (fun h =>
+                    Eq.ndrec (motive := fun a =>
+                      P196.Agent15.SpectralCarry.Binary (a :: xs) →
+                        (a :: xs).length = (b :: ys_1).length →
+                          P196.Agent15.SpectralCarry.weighted w (a :: xs) =
+                              P196.Agent15.SpectralCarry.weighted w (b :: ys_1) →
+                            a = b)
+                      (fun hx hlen hvalue =>
+                        Or.casesOn hb
+                          (fun h =>
+                            Eq.ndrec (motive := fun b =>
+                              P196.Agent15.SpectralCarry.Binary (b :: ys_1) →
+                                (0 :: xs).length = (b :: ys_1).length →
+                                  P196.Agent15.SpectralCarry.weighted w (0 :: xs) =
+                                      P196.Agent15.SpectralCarry.weighted w (b :: ys_1) →
+                                    0 = b)
+                              (fun hy hlen hvalue => Eq.refl 0) (Eq.symm h) hy hlen hvalue)
+                          fun h =>
+                          Eq.ndrec (motive := fun b =>
+                            P196.Agent15.SpectralCarry.Binary (b :: ys_1) →
+                              (0 :: xs).length = (b :: ys_1).length →
+                                P196.Agent15.SpectralCarry.weighted w (0 :: xs) =
+                                    P196.Agent15.SpectralCarry.weighted w (b :: ys_1) →
+                                  0 = b)
+                            (fun hy hlen hvalue =>
+                              Decidable.byContradiction fun a =>
+                                P196.Agent15.SpectralCarry.weighted_injective_binary._proof_3 w xs ys_1 bx
+                                  (Eq.mp
+                                    (congrArg
+                                      (fun _a =>
+                                        0 ≤ P196.Agent15.SpectralCarry.weighted w ys_1 ∧
+                                          P196.Agent15.SpectralCarry.weighted w ys_1 ≤
+                                            P196.Agent15.SpectralCarry.weightSum w _a)
+                                      (Eq.symm hlen'))
+                                    by')
+                                  dx (Eq.mp ⋯ hvalue))
+                            (Eq.symm h) hy hlen hvalue)
+                      (Eq.symm h) hx hlen hvalue)
+                  fun h =>
+                  Eq.ndrec (motive := fun a =>
+                    P196.Agent15.SpectralCarry.Binary (a :: xs) →
+                      (a :: xs).length = (b :: ys_1).length →
+                        P196.Agent15.SpectralCarry.weighted w (a :: xs) =
+                            P196.Agent15.SpectralCarry.weighted w (b :: ys_1) →
+                          a = b)
+                    (fun hx hlen hvalue =>
+                      Or.casesOn hb
+                        (fun h =>
+                          Eq.ndrec (motive := fun b =>
+                            P196.Agent15.SpectralCarry.Binary (b :: ys_1) →
+                              (1 :: xs).length = (b :: ys_1).length →
+                                P196.Agent15.SpectralCarry.weighted w (1 :: xs) =
+                                    P196.Agent15.SpectralCarry.weighted w (b :: ys_1) →
+                                  1 = b)
+                            (fun hy hlen hvalue =>
+                              Decidable.byContradiction fun a =>
+                                P196.Agent15.SpectralCarry.weighted_injective_binary._proof_4 w xs ys_1 bx
+                                  (Eq.mp
+                                    (congrArg
+                                      (fun _a =>
+                                        0 ≤ P196.Agent15.SpectralCarry.weighted w ys_1 ∧
+                                          P196.Agent15.SpectralCarry.weighted w ys_1 ≤
+                                            P196.Agent15.SpectralCarry.weightSum w _a)
+                                      (Eq.symm hlen'))
+                                    by')
+                                  dx (Eq.mp ⋯ hvalue))
+                            (Eq.symm h) hy hlen hvalue)
+                        fun h =>
+                        Eq.ndrec (motive := fun b =>
+                          P196.Agent15.SpectralCarry.Binary (b :: ys_1) →
+                            (1 :: xs).length = (b :: ys_1).length →
+                              P196.Agent15.SpectralCarry.weighted w (1 :: xs) =
+                                  P196.Agent15.SpectralCarry.weighted w (b :: ys_1) →
+                                1 = b)
+                          (fun hy hlen hvalue => Eq.refl 1) (Eq.symm h) hy hlen hvalue)
+                    (Eq.symm h) hx hlen hvalue;
+              Eq.ndrec (motive := fun b =>
+                P196.Agent15.SpectralCarry.Binary (b :: ys_1) →
+                  (a :: xs).length = (b :: ys_1).length →
+                    P196.Agent15.SpectralCarry.weighted w (a :: xs) =
+                        P196.Agent15.SpectralCarry.weighted w (b :: ys_1) →
+                      b = 0 ∨ b = 1 → a :: xs = b :: ys_1)
+                (fun hy hlen hvalue hb =>
+                  let_fun htail :=
+                    Decidable.byContradiction fun a_1 =>
+                      P196.Agent15.SpectralCarry.weighted_injective_binary._proof_5 w a xs ys_1
+                        (Eq.mp
+                          (congrArg
+                            (fun _a =>
+                              ↑a * w xs.length + P196.Agent15.SpectralCarry.weighted w xs =
+                                ↑a * w _a + P196.Agent15.SpectralCarry.weighted w ys_1)
+                            (Eq.symm hlen'))
+                          hvalue)
+                        a_1;
+                  congrArg (List.cons a) (ih hx' hy' hlen' htail))
+                hab hy hlen hvalue hb)
+            (Eq.symm h) hy hlen hvalue)
+        (Eq.refl ys))
+    xs hx hy hlen hvalue
+'P196.Agent15.SpectralCarry.weighted_injective_binary' depends on axioms: [propext, Classical.choice, Quot.sound]

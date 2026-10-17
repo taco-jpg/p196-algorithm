@@ -1,0 +1,44 @@
+{
+  "target": "ActualCarrySupport",
+  "modules": [
+    "LychrelDigitSums",
+    "IncomingCarrySensitivity",
+    "RawSymmetryObstruction",
+    "SpectralWeights",
+    "BinaryCode",
+    "ChargeSymmetry",
+    "SourceFormula",
+    "ActualCarrySupport"
+  ],
+  "edges": {
+    "LychrelDigitSums": [
+      "Std"
+    ],
+    "IncomingCarrySensitivity": [
+      "LychrelDigitSums"
+    ],
+    "RawSymmetryObstruction": [
+      "IncomingCarrySensitivity"
+    ],
+    "SpectralWeights": [
+      "Std"
+    ],
+    "BinaryCode": [
+      "SpectralWeights"
+    ],
+    "ChargeSymmetry": [
+      "BinaryCode"
+    ],
+    "SourceFormula": [
+      "ChargeSymmetry"
+    ],
+    "ActualCarrySupport": [
+      "SourceFormula",
+      "RawSymmetryObstruction"
+    ]
+  },
+  "external_imports": [
+    "Std"
+  ],
+  "complete": true
+}

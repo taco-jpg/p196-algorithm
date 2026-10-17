@@ -1,0 +1,8 @@
+{
+  "operation": "Validate frozen author archive against its exact manifest",
+  "exit_code": 1,
+  "diagnostic": "KeyError: 'archive_path'",
+  "cause": "Root packaging code used archive_path; the reviewed manifest names the key archive_member.",
+  "effects": "Validation stopped before evidence copying or documentation changes; source/checker/BUILD/review files are unchanged.",
+  "resolution": "Preserve this script and diagnostic, then use the observed archive_member key in attempt002."
+}

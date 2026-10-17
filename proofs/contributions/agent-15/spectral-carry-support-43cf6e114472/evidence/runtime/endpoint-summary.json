@@ -1,0 +1,311 @@
+[
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing : (Nat \u2192 Nat) \u2192 Nat \u2192 List.{0} Nat",
+    "axioms": [],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.actualCharge",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.actualCharge : (Nat \u2192 Nat) \u2192 Nat \u2192 Int",
+    "axioms": [],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing_length",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing_length : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  @Eq.{1} Nat (@List.length.{0} Nat (P196.Agent15.SpectralSupport.outgoing q L)) L",
+    "axioms": [
+      "propext"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing_getElem",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing_getElem : \u2200 (q : Nat \u2192 Nat) (L i : Nat) (hi : @LT.lt.{0} Nat instLTNat i L),\n  @Eq.{1} Nat\n    (@GetElem.getElem.{0, 0, 0} (List.{0} Nat) Nat Nat\n      (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as)) (@List.instGetElemNatLtLength.{0} Nat)\n      (P196.Agent15.SpectralSupport.outgoing q L) i \u22ef)\n    (DecimalDigits.carry q\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))",
+    "axioms": [
+      "propext"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing_getElem?",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing_getElem? : \u2200 (q : Nat \u2192 Nat) (L i : Nat),\n  @LT.lt.{0} Nat instLTNat i L \u2192\n    @Eq.{1} (Option.{0} Nat)\n      (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n        (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as)) (@List.instGetElem?NatLtLength.{0} Nat)\n        (P196.Agent15.SpectralSupport.outgoing q L) i)\n      (@Option.some.{0} Nat\n        (DecimalDigits.carry q\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n            (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))))",
+    "axioms": [
+      "propext"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing_last",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing_last : \u2200 (q : Nat \u2192 Nat) (L : Nat)\n  (hL : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) L),\n  @Eq.{1} Nat\n    (@GetElem.getElem.{0, 0, 0} (List.{0} Nat) Nat Nat\n      (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as)) (@List.instGetElemNatLtLength.{0} Nat)\n      (P196.Agent15.SpectralSupport.outgoing q L)\n      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) \u22ef)\n    (DecimalDigits.carry q L)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing_binary",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing_binary : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192 @LE.le.{0} Nat instLENat (q i) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))) \u2192\n    P196.Agent15.SpectralCarry.Binary (P196.Agent15.SpectralSupport.outgoing q L)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing_reverse_iff",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing_reverse_iff : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  Iff\n    (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat (P196.Agent15.SpectralSupport.outgoing q L))\n      (P196.Agent15.SpectralSupport.outgoing q L))\n    (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192\n        @Eq.{1} Nat\n          (DecimalDigits.carry q\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n              (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n          (DecimalDigits.carry q (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L i)))",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.actualCharge_zero_iff",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.actualCharge_zero_iff : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192 @LE.le.{0} Nat instLENat (q i) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))) \u2192\n    Iff (@Eq.{1} Int (P196.Agent15.SpectralSupport.actualCharge q L) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n      (\u2200 (i : Nat),\n        @LT.lt.{0} Nat instLTNat i L \u2192\n          @Eq.{1} Nat\n            (DecimalDigits.carry q\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n                (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n            (DecimalDigits.carry q (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L i)))",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192 @LE.le.{0} Nat instLENat (q i) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))) \u2192\n    (\u2200 (i : Nat),\n        @LT.lt.{0} Nat instLTNat i L \u2192\n          @Eq.{1} Nat (q i)\n            (q\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L\n                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n                i))) \u2192\n      \u2200 (i : Nat),\n        @LT.lt.{0} Nat instLTNat i L \u2192\n          @Ne.{1} Nat (q i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)) \u2192\n            @Eq.{1} Nat\n              (DecimalDigits.carry q\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n              (DecimalDigits.carry q (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L i))",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192 @LE.le.{0} Nat instLENat (q i) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))) \u2192\n    (\u2200 (i : Nat),\n        @LT.lt.{0} Nat instLTNat i L \u2192\n          @Eq.{1} Nat (q i)\n            (q\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L\n                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n                i))) \u2192\n      Iff (@Ne.{1} Int (P196.Agent15.SpectralSupport.actualCharge q L) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n        (@Exists.{1} Nat fun i =>\n          And (@LT.lt.{0} Nat instLTNat i L)\n            (And (@Eq.{1} Nat (q i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))\n              (@Ne.{1} Nat\n                (DecimalDigits.carry q\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n                    (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n                (DecimalDigits.carry q (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L i)))))",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192 @LE.le.{0} Nat instLENat (q i) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))) \u2192\n    (\u2200 (i : Nat),\n        @LT.lt.{0} Nat instLTNat i L \u2192\n          @Eq.{1} Nat (q i)\n            (q\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L\n                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n                i))) \u2192\n      (\u2200 (i : Nat), @LT.lt.{0} Nat instLTNat i L \u2192 @Ne.{1} Nat (q i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9))) \u2192\n        @Eq.{1} Int (P196.Agent15.SpectralSupport.actualCharge q L) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_iff",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_iff : \u2200 (n : Nat) (d : Nat \u2192 Nat) (L : Nat),\n  DecimalDigits.Canonical n d L \u2192\n    Iff\n      (@Eq.{1} Int (P196.Agent15.SpectralSupport.actualCharge (DecimalDigits.columnSum d L) L)\n        (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n      (\u2200 (i : Nat),\n        @LT.lt.{0} Nat instLTNat i L \u2192\n          @Eq.{1} Nat\n            (DecimalDigits.carry (DecimalDigits.columnSum d L)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n                (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n            (DecimalDigits.carry (DecimalDigits.columnSum d L)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L i)))",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.canonical_outgoing_reflected_eq_of_nonnine",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.canonical_outgoing_reflected_eq_of_nonnine : \u2200 (n : Nat) (d : Nat \u2192 Nat) (L : Nat),\n  DecimalDigits.Canonical n d L \u2192\n    \u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192\n        @Ne.{1} Nat (DecimalDigits.columnSum d L i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)) \u2192\n          @Eq.{1} Nat\n            (DecimalDigits.carry (DecimalDigits.columnSum d L)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n                (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n            (DecimalDigits.carry (DecimalDigits.columnSum d L)\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L i))",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.canonical_actualCharge_nonzero_iff_nine_asymmetry",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.canonical_actualCharge_nonzero_iff_nine_asymmetry : \u2200 (n : Nat) (d : Nat \u2192 Nat) (L : Nat),\n  DecimalDigits.Canonical n d L \u2192\n    Iff\n      (@Ne.{1} Int (P196.Agent15.SpectralSupport.actualCharge (DecimalDigits.columnSum d L) L)\n        (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n      (@Exists.{1} Nat fun i =>\n        And (@LT.lt.{0} Nat instLTNat i L)\n          (And (@Eq.{1} Nat (DecimalDigits.columnSum d L i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))\n            (@Ne.{1} Nat\n              (DecimalDigits.carry (DecimalDigits.columnSum d L)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n              (DecimalDigits.carry (DecimalDigits.columnSum d L)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L i)))))",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_of_no_nine",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_of_no_nine : \u2200 (n : Nat) (d : Nat \u2192 Nat) (L : Nat),\n  DecimalDigits.Canonical n d L \u2192\n    (\u2200 (i : Nat),\n        @LT.lt.{0} Nat instLTNat i L \u2192\n          @Ne.{1} Nat (DecimalDigits.columnSum d L i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9))) \u2192\n      @Eq.{1} Int (P196.Agent15.SpectralSupport.actualCharge (DecimalDigits.columnSum d L) L)\n        (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.actualCharge_width_zero",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.actualCharge_width_zero : \u2200 (q : Nat \u2192 Nat),\n  @Eq.{1} Int (P196.Agent15.SpectralSupport.actualCharge q (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))\n    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))",
+    "axioms": [
+      "propext"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.actualCharge_width_one",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.actualCharge_width_one : \u2200 (q : Nat \u2192 Nat),\n  @Eq.{1} Int (P196.Agent15.SpectralSupport.actualCharge q (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0))",
+    "axioms": [
+      "propext"
+    ],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.Controls.nine_zero_charge",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.Controls.nine_zero_charge : And\n  (@Eq.{1} (List.{0} Nat)\n    (P196.Agent15.SpectralSupport.outgoing (fun x => @OfNat.ofNat.{0} Nat 9 (instOfNatNat 9))\n      (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))\n    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))\n      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat))))\n  (And\n    (@Eq.{1} Int\n      (P196.Agent15.SpectralSupport.actualCharge (fun x => @OfNat.ofNat.{0} Nat 9 (instOfNatNat 9))\n        (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))\n      (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n    (@Exists.{1} Nat fun i =>\n      And (@LT.lt.{0} Nat instLTNat i (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))\n        (@Eq.{1} Nat ((fun x => @OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)) i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))))",
+    "axioms": [],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.Controls.even_overflow_zero_charge",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.Controls.even_overflow_zero_charge : And\n  (@Eq.{1} (List.{0} Nat)\n    (P196.Agent15.SpectralSupport.outgoing (fun x => @OfNat.ofNat.{0} Nat 10 (instOfNatNat 10))\n      (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))\n    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))\n      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat))))\n  (@Eq.{1} Int\n    (P196.Agent15.SpectralSupport.actualCharge (fun x => @OfNat.ofNat.{0} Nat 10 (instOfNatNat 10))\n      (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)))\n    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))",
+    "axioms": [],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.Controls.odd_free_center",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.Controls.odd_free_center : And\n  (@Eq.{1} (List.{0} Nat)\n    (P196.Agent15.SpectralSupport.outgoing\n      (fun i =>\n        @ite.{1} Nat (@Eq.{1} Nat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n          (instDecidableEqNat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))\n          (@OfNat.ofNat.{0} Nat 8 (instOfNatNat 8)))\n      (@OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)))\n    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))\n      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))\n        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (@List.nil.{0} Nat)))))\n  (@Eq.{1} Int\n    (P196.Agent15.SpectralSupport.actualCharge\n      (fun i =>\n        @ite.{1} Nat (@Eq.{1} Nat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n          (instDecidableEqNat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))\n          (@OfNat.ofNat.{0} Nat 8 (instOfNatNat 8)))\n      (@OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)))\n    (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))",
+    "axioms": [],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralSupport.Controls.odd_nine_asymmetry",
+    "origin_signature_presentation": "P196.Agent15.SpectralSupport.Controls.odd_nine_asymmetry : And\n  (@Eq.{1} (List.{0} Nat)\n    (P196.Agent15.SpectralSupport.outgoing\n      (fun i =>\n        @ite.{1} Nat (@Eq.{1} Nat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n          (instDecidableEqNat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))\n          (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))\n      (@OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)))\n    (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))\n      (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))\n        (@List.cons.{0} Nat (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (@List.nil.{0} Nat)))))\n  (@Eq.{1} Int\n    (P196.Agent15.SpectralSupport.actualCharge\n      (fun i =>\n        @ite.{1} Nat (@Eq.{1} Nat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n          (instDecidableEqNat i (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))\n          (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))\n      (@OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)))\n    (@OfNat.ofNat.{0} Int 1 (@instOfNat 1)))",
+    "axioms": [],
+    "module": "ActualCarrySupport",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "DecimalDigits.carry",
+    "origin_signature_presentation": "DecimalDigits.carry : (Nat \u2192 Nat) \u2192 Nat \u2192 Nat",
+    "axioms": [],
+    "module": "LychrelDigitSums",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "DecimalDigits.carry_bounded",
+    "origin_signature_presentation": "DecimalDigits.carry_bounded : \u2200 (q : Nat \u2192 Nat) (L : Nat),\n  (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192 @LE.le.{0} Nat instLENat (q i) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))) \u2192\n    \u2200 (i : Nat),\n      @LE.le.{0} Nat instLENat i L \u2192\n        @LE.le.{0} Nat instLENat (DecimalDigits.carry q i) (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "LychrelDigitSums",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "DecimalDigits.columnSum",
+    "origin_signature_presentation": "DecimalDigits.columnSum : (Nat \u2192 Nat) \u2192 Nat \u2192 Nat \u2192 Nat",
+    "axioms": [],
+    "module": "LychrelDigitSums",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "DecimalDigits.columnSum_bounded",
+    "origin_signature_presentation": "DecimalDigits.columnSum_bounded : \u2200 (d : Nat \u2192 Nat) (L : Nat),\n  (\u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192 @LE.le.{0} Nat instLENat (d i) (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9))) \u2192\n    \u2200 (i : Nat),\n      @LT.lt.{0} Nat instLTNat i L \u2192\n        @LE.le.{0} Nat instLENat (DecimalDigits.columnSum d L i) (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18))",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "LychrelDigitSums",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "DecimalDigits.columnSum_symmetric",
+    "origin_signature_presentation": "DecimalDigits.columnSum_symmetric : \u2200 (d : Nat \u2192 Nat) (L i : Nat),\n  @LT.lt.{0} Nat instLTNat i L \u2192\n    @Eq.{1} Nat (DecimalDigits.columnSum d L i)\n      (DecimalDigits.columnSum d L\n        (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) L (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n          i))",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "LychrelDigitSums",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "DecimalDigits.Canonical",
+    "origin_signature_presentation": "DecimalDigits.Canonical : Nat \u2192 (Nat \u2192 Nat) \u2192 Nat \u2192 Prop",
+    "axioms": [],
+    "module": "LychrelDigitSums",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "RawSymmetryObstruction.nonnine_binary_div",
+    "origin_signature_presentation": "RawSymmetryObstruction.nonnine_binary_div : \u2200 (a b c : Nat),\n  @LE.le.{0} Nat instLENat a (@OfNat.ofNat.{0} Nat 18 (instOfNatNat 18)) \u2192\n    @Ne.{1} Nat a (@OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)) \u2192\n      @LE.le.{0} Nat instLENat b (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) \u2192\n        @LE.le.{0} Nat instLENat c (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) \u2192\n          @Eq.{1} Nat\n            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a b)\n              (@OfNat.ofNat.{0} Nat 10 (instOfNatNat 10)))\n            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a c)\n              (@OfNat.ofNat.{0} Nat 10 (instOfNatNat 10)))",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "RawSymmetryObstruction",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralCarry.Binary",
+    "origin_signature_presentation": "P196.Agent15.SpectralCarry.Binary : List.{0} Nat \u2192 Prop",
+    "axioms": [],
+    "module": "BinaryCode",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralCarry.carryCharge",
+    "origin_signature_presentation": "P196.Agent15.SpectralCarry.carryCharge : List.{0} Nat \u2192 Int",
+    "axioms": [],
+    "module": "ChargeSymmetry",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralCarry.carryCharge_zero_iff",
+    "origin_signature_presentation": "P196.Agent15.SpectralCarry.carryCharge_zero_iff : \u2200 {cs : List.{0} Nat},\n  P196.Agent15.SpectralCarry.Binary cs \u2192\n    Iff (@Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge cs) (@OfNat.ofNat.{0} Int 0 (@instOfNat 0)))\n      (@Eq.{1} (List.{0} Nat) (@List.reverse.{0} Nat cs) cs)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "module": "ChargeSymmetry",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum",
+    "origin_signature_presentation": "P196.Agent15.SpectralCarry.carryCharge_eq_odd_source_sum : \u2200 (cs : List.{0} Nat) (m : Nat),\n  @Eq.{1} Nat (@List.length.{0} Nat cs)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)\n        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) \u2192\n    @Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge cs)\n      (P196.Agent15.SpectralCarry.sumFirst\n        (fun i =>\n          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)\n            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)\n              (@Nat.cast.{0} Int instNatCastInt\n                (@Option.getD.{0} Nat\n                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                    (@List.instGetElem?NatLtLength.{0} Nat) cs\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                        (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)\n                      i))\n                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))\n              (@Nat.cast.{0} Int instNatCastInt\n                (@Option.getD.{0} Nat\n                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                    (@List.instGetElem?NatLtLength.{0} Nat) cs i)\n                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))\n            (P196.Agent15.SpectralCarry.U (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m i)))\n        m)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "SourceFormula",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  },
+  {
+    "name": "P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum",
+    "origin_signature_presentation": "P196.Agent15.SpectralCarry.carryCharge_eq_even_source_sum : \u2200 (cs : List.{0} Nat) (m : Nat),\n  @Eq.{1} Nat (@List.length.{0} Nat cs)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m) \u2192\n    @Eq.{1} Int (P196.Agent15.SpectralCarry.carryCharge cs)\n      (P196.Agent15.SpectralCarry.sumFirst\n        (fun i =>\n          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)\n            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)\n              (@Nat.cast.{0} Int instNatCastInt\n                (@Option.getD.{0} Nat\n                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                    (@List.instGetElem?NatLtLength.{0} Nat) cs\n                    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                      (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                          (@OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) m)\n                        (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n                      i))\n                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))\n              (@Nat.cast.{0} Int instNatCastInt\n                (@Option.getD.{0} Nat\n                  (@GetElem?.getElem?.{0, 0, 0} (List.{0} Nat) Nat Nat\n                    (fun as i => @LT.lt.{0} Nat instLTNat i (@List.length.{0} Nat as))\n                    (@List.instGetElem?NatLtLength.{0} Nat) cs i)\n                  (@OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))\n            (P196.Agent15.SpectralCarry.S\n              (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)\n                (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) m\n                  (@OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))\n                i)))\n        m)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "module": "SourceFormula",
+    "unelided_full_print_log": "supplemental-public-print-001/full-public-prints.log"
+  }
+]
