@@ -1,6 +1,6 @@
 # Initial-phase upper return clock gap
 
-Accepted Agent1 claim ffb0ae839ea8fcfeb71aacdbc9cc3d1afb2349d5. Status: LEAN-CHECKED author increment; canonical parent and independent fresh41 verification remain pending.
+Accepted Agent1 claim ffb0ae839ea8fcfeb71aacdbc9cc3d1afb2349d5. Status: INDEPENDENTLY-REVIEWED. Canonical parent and separate nonauthor fresh41 verification both PASS.
 
 For one supplied exact positive quotient path that returns its full (B,H,w) tuple to the original phase [14,14,4,4], original validity forces the last actual overflow to be one. The existing returned outside9/10 condition and original scalar lower potential then yield N+2 <= 4*C. The existing positive gain G therefore satisfies C=8G, signed delta=G, 16G <= N and N+2 <= 32G. This last theorem retains the non-strict lower bound; the separate PR161 strengthens that endpoint.
 
@@ -16,4 +16,10 @@ Reproduction from the repository root:
 python3 proofs/verify_project__214bf7673efe116b.py --lean /workspace/p196-tools/lean-4.19.0-linux/bin/lean --registry proofs/Agent1PeriodicReturnUpper.registry.json --project agent1-periodic-return-upper-gap --output /tmp/agent1-upper-gap-clean
 ```
 
-Use a fresh nonexistent output directory. The canonical parent verifier has its original flags; the separate independent reviewer uses explicit trust0 and records complete theorem/safe-definition origin inventories and public types. Those gates and the actual PR review remain pending at this checkpoint. Generated objects are excluded from publication.
+Use a fresh nonexistent output directory. The canonical parent verifier has its original flags; the separate independent reviewer uses explicit trust0 and records complete theorem/safe-definition origin inventories and public types. Both fresh gates have passed; the actual formal PR review remains a publication step. Generated objects are excluded from publication.
+
+The independent reviewer rebuilt41 modules from empty output, with all42 commands passing and no object reuse. Its complete audit covers1980 theorem constants,566 safe definitions and172 named public theorem interfaces (five new). The theorem axiom union is exactly propext, Classical.choice, Quot.sound. Compiler-generated implementation constants are inventoried separately (12146 nonsafe definitions and32 unsafe implementation axioms); no unsafe opaque or unclassified entry was found. Full semantic review reports no defect.
+
+Complete reviewer evidence has a144-file manifest. The canonical parent package preserves its original85-entry FILES and verification report unchanged, including source_tree_clean=true and original flags without an explicit trust override; a separate88-entry packaging manifest records the wrapper files. Historical author-reused and fresh-independent verification levels remain distinct.
+
+The mathematical source24cbcc99754cadb2d9ce4ba448e3a91171b9f4f0 is now published. A transient authentication failure after workspace reconnect was diagnosed and preserved locally; later actual Git reads, issue61 API reads and the source push succeeded. Review metadata that says remote publication pending records its earlier capture time. The source and registry bytes remained frozen throughout recovery. No integration into main is claimed.

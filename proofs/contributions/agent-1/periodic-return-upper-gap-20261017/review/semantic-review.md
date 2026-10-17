@@ -1,8 +1,8 @@
 # Initial-phase upper return gap: review in progress
 
-This is source inspection and replay preparation only. No fresh Lean execution has occurred for this package. The current baseline is `84a65f296625e16851b4a369e27ffca43aaea40c`; final published source pins remain pending. The reviewer authored neither new module. ReturnUpper is authored by a separate specialist child agent; its execution and authorship are distinct from mine.
+The independent fresh rebuild passed against frozen local commit `24cbcc99754cadb2d9ce4ba448e3a91171b9f4f0`, based on `84a65f296625e16851b4a369e27ffca43aaea40c`. Remote publication is pending because the parent's attempted push failed after an environment reconnect with invalid GitHub authentication. Local source identity is checked separately from remote publication status. The reviewer authored neither new module nor any imported mathematical source. ReturnUpper is authored by a separate specialist child agent; its execution and authorship are distinct from mine. This is a separate same-session/account review, not an external-account approval.
 
-The unchanged ReturnCore and ReturnClock registries have 39 distinct logical modules, with identical records wherever they overlap. The expected closure is those 39 plus InitialIncoming and ReturnUpper. Prefix and Saturation are not dependencies. The final published registry and actual import graph will be reconstructed independently before execution.
+The unchanged ReturnCore and ReturnClock registries have 39 distinct logical modules, with identical records wherever they overlap. Independent reconstruction confirms exactly those 39 plus InitialIncoming and ReturnUpper. Prefix and Saturation are not dependencies. All 41 source files, literal imports, Git blobs, and registry bytes match the frozen local commit. Registry SHA256 is `9045d97fc4f687d1e9c7eb38c6d4002afaeb488bae7cc8ab524ac2e6bd819d1c`.
 
 The observed ReturnUpper source has three public endpoints. `quotient_path_lower_potential` is an open exact quotient-path bound with original endpoint potentials and actual rawGamma sum, including the empty path. It inductively uses the unchanged local `Agent8.exterior_bounds`; it does not copy ReturnClock's private clock-total adapter. It propagates all original validity fields, obtains the actual last-column control from `quotient_outside_step`, and substitutes the literal quotient successor equations.
 
@@ -16,4 +16,23 @@ The actual final-edge adapter derives initial outer catalog membership from orig
 
 The observed final ReturnUpper source is SHA256 `ff200fa0dbfd1d01ded585f2c182dd65e1fe296f881e1408e219aff166aecd97`. InitialIncoming's first incremental compile and audit are recorded as PASS by its author. Upper attempt001 failed on unknown `Nat.cast_zero`; attempt002 passed the smaller open-potential module before InitialIncoming was ready; attempt003 added the two final endpoints and passed the author's full new-module audit. Those are author executions with reused dependency objects, not this review's fresh execution, and the failed attempt remains retained.
 
-The observed 41-module registry was read and independently checked against actual imports and source hashes. This reviewer did not generate or modify it; its earlier creation provenance is unknown to the reviewer and parent will finalize it. Final publication pinning, fresh compilation, full-origin/safe-definition dependency checks, public type prints, and parent evidence packaging remain pending. No unresolved source-level semantic defect was found.
+The observed 41-module registry was read and independently checked against actual imports and source hashes, then matched to the parent's frozen local commit. This reviewer did not generate or modify it; its earlier creation provenance is unknown to the reviewer. Fresh compilation, full-origin/safe-definition dependency checks, public type prints, and separate parent evidence packaging are now complete. No unresolved source-level semantic defect was found.
+
+
+## Independent fresh execution
+
+All 41 source compilations and ReviewAudit passed on the first attempt in 278.303 seconds. The exact executed replay driver is archived in clean-001, SHA256 `3abb9f3ca2b8c7053eea6edc4be1f1a92f7b02d59a3eb85a0a0e5cc9d942665a`. Every command uses official Lean 4.19.0, explicit `--trust=0 -j1 -DElab.async=false`, default stack, an 8-GiB address-space cap and a 600-second timeout. LEAN_PATH points only to the newly created build directory. No project objects were reused.
+
+The complete actual-origin audit checked 1,980 theorem constants and 566 safe definitions/opaques. The theorem axiom union is `propext`, `Classical.choice`, and `Quot.sound`; safe definitions use only `propext` and `Quot.sound`. All 172 named public theorem types and their source axiom prints were checked: five new and 167 prior. InitialIncoming contributes 7 actual-origin theorem constants; ReturnUpper contributes 14; neither new module contains safe definitions.
+
+The separate implementation inventory records 32 unsafe compiler implementation axioms and 12,146 nonsafe generated definitions (12,111 cstage helpers and 35 unsafe recursion implementations whose safe bases were audited). There are zero unsafe opaques and zero unclassified implementations. These runtime entries do not enlarge the logical dependency sets. The comment-aware forbidden-token postcheck passed; all source inputs and log hashes, the generated audit source, and the archived replay driver were rechecked. No failed Lean command, wrapper failure, timeout or source drift occurred.
+
+The source and registry identity receipt records agreement among the frozen LOCAL commit, worktree, compiled inputs and archived full-source snapshots. It does not assert successful remote publication. The accepted claim is unchanged; the authentication failure is a publication limitation, not a failed proof check.
+
+## Separate parent canonical execution
+
+The parent independently completed its canonical fresh 41-module check, with 1,980 theorem constants. This specialist verified and copied only its text evidence into ../verification/parent-clean-001. All 85 original manifest entries and the original FILES.json are preserved byte-for-byte. The actual original source_tree_clean value is `true`. Original command flags are unchanged and do not explicitly include --trust=0; every command in this specialist's own run does. All 41 parent source inputs match the frozen local sources.
+
+The exact canonical checker and a separate source-identity receipt are additional files, covered by a separate 88-entry PACKAGE-FILES.json. No compiled objects are packaged. Parent execution is not attributed to this reviewer.
+
+No unresolved semantic defect remains. The proven endpoint is a necessary condition for positive exact complete-tuple returns at the specified initial phase: N+2≤4C, and positive G with C=8G, signed delta G, 16G≤N and N+2≤32G. This package does not include the separate strict lower bound, prove a return exists, classify generic equality cycles, lift an arbitrary graph path, assert safety or an infinite ordinary trajectory, or prove a statement about 196.
