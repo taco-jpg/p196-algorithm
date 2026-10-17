@@ -1,0 +1,59 @@
+# Bounded historical ownership and source comparison
+
+## Decision boundary
+
+The fresh data run establishes the exact historical task contents, the explicitly selected source identities, and complete results of newly specified text searches. It supports the source-census report's distinction between the supplied finite normalized-nine control and adjacent algorithm/formula/safety work. It does not prove global theorem novelty or exhaustive historical non-overlap. It does not recover historical branch/API snapshots and supplies no current ownership authorization.
+
+The comparison below is source-only. It reads declarations and historical target/exclusion fields; it does not run the retained Python transition, construct a candidate, prove a new mathematical theorem, or revalidate Lean. The existing final-head mathematical review and its qualified finite conclusion remain the evidence for PR 174's theorem.
+
+## Historical ownership candidates
+
+All paths in this section are relative to `run-001/task-records/proofs/coordination/tasks/`. Their exact original bytes, Git blob, Git mode, SHA256 and immutable COORD commit are recorded by `run-001/task-manifest.json`.
+
+The broad declared discovery query selected 87 tasks. The five tasks matching the more specific center-strip / extra-removal / strip-bound / closest-control / exact-H pattern groups are listed first below. The validity and nearby cycle/path tasks are added as explicit adjacent context. Pattern selection includes references and exclusions, so a hit is not automatically an ownership overlap. The remaining broad-context candidates are fully enumerated in `run-001/REPORT.md`; no claim of full semantic adjudication of all 87 is made.
+
+| Historical task | Recorded owner/status at COORD | Actual target and relevance to the finite control |
+| --- | --- | --- |
+| `agent1-periodic-nine-center-20261017.json` | Agent #1 / CLAIMED | Two named targets: the arbitrary nonempty-period wrapper identity, and the actual mixed-entry nine raw/residual-center formula with count `(stripPeriodCenter w9 R).2+1`. The target retains possible extra strips; it does not state the supplied fixed-H counterexample or a bound of at most one. Its exclusions expressly preserve no center-descent/no-return claim, no affirmative-cycle search and no historical ownership transfer. |
+| `agent1-periodic-block-stripping-20261016.json` | Agent #1 / INTEGRATED | Certifies the existing literal maximal outer/center algorithms, decomposition, stopped conditions and width balance. It explicitly excludes full validity, safety/cycles/lifts and historical finite-interface search. This is the algorithm prerequisite, not the specific original-valid normalized-nine control. |
+| `agent1-periodic-safety-20261016.json` | Agent #1 / INTEGRATED | Relates the original safety Boolean to coefficient-word safety and stripping invariance. It permits a checked safe-source/unsafe-successor boundary example, explicitly rejects safe-successor closure, and lists `Agent1PeriodicSafetyBoundary.lean`. Its period-ten boundary control is compared below. |
+| `agent6-normalized-carry-accounting-20261016.json` | Agent #6 / REVIEWED | Numeric carry preservation under scalar suffix stripping and original-certificate carry accounting. The explicit exclusions name Agent1 periodic stripping. Its different phase/word controls do not claim this center-period finite tuple. |
+| `agent61-current-findings-replay-20261016.json` | Agent #61 / READY_FOR_REVIEW | Documentation and historical evidence navigation. Its target expressly excludes mathematical/verifier implementation changes. Center-strip references in this task's retained review metadata are context, not a new mathematical center scope. |
+| `agent1-periodic-validity-20261016.json` | Agent #1 / INTEGRATED | Preservation of the unchanged seven-field `ValidPeriodic` predicate through actual raw/stripped transitions. Safety, later exponent guards, cycle/search work and historical ownership takeover are excluded. |
+| `agent1-periodic-nine-cycle-20261017.json` | Agent #1 / REVIEWED | Conditional results for a supplied exact nine-period path/full return; excludes cycle construction and finite-center no-return. It supplies no tuple instance or fixed-H strip bound. |
+| `agent1-periodic-cycle-adapter-20261017.json` | Agent #1 / REVIEWED | Conditional realization of a supplied entire safe full cycle. It preserves historical affirmative search ownership and asserts no witness. |
+| `agent1-periodic-guarded-path-20261017.json` | Agent #1 / REVIEWED | Finite supplied-path realization with explicit exponent schedule; exclusions preserve historical affirmative search and prohibit an infinite fixed-seed inference. |
+
+The reconstructed nine-center task is Git blob `3208a10bccdcdcaa3556d683eff7bb9cc6afefe7`, agreeing with the historical report's explicitly named task blob. This recovers that task's bytes at COORD; it does not independently recover the original API read or claim-acceptance transaction.
+
+No task text in the complete retained COORD task set matches the declared whitespace-tolerant fixed-H pattern. This is a bounded textual observation only. The task selection does not cover historical branch bodies, unpublished work, equivalent algebraic formulations or conversation messages. The evidence is insufficient for a stronger universal ownership assertion.
+
+## Closest source controls and actual interfaces
+
+The seven report-pinned sources and two new supporting selections are preserved under `run-001/source-files/`. Paths below are relative to that directory. The exact source manifests bind them to SOURCE; all seven principal report pins are also unchanged at H. These are fresh source copies, not the missing original eleven-file snapshot layout.
+
+| Source location | Read source fact | Scope consequence |
+| --- | --- | --- |
+| `proofs/contributions/agent-1/periodic-block-strip-20261016/center-author/CenterControls.lean`, `two_nonsymmetric_periods` | The statement is `stripPeriodCenter [1,2] [1,2,1,2,9,2,1,2,1] = ([9],2)`. Other declarations cover empty period/center, overlap rejection, unreversed suffix and empty remainder. | This already provides an arbitrary-word two-pair algorithm control. Its statement does not assert original validity, initial normalization of the proposed nine input, or that this center is an actual raw quotient center. |
+| `proofs/Agent1PeriodicSafetyBoundary.lean`, `tens_valid`, `tens_raw`, `tens_quotient` | The named period is `[10,10,10,10]`, with empty original outer/center. The displayed quotient has center `[2]` and `centerPeriods = 1`. | This is an actual period-ten transition and safe-successor boundary witness. It is a different fixed state and a single-pair result, so it does not supply the proposed normalized-nine multiple-removal control. |
+| `proofs/Agent1PeriodicCenterStrip.lean`, definitions and public decomposition/maximality/length declarations | The nonempty-period function uses original center-length fuel. A successful whole mirrored-boundary test recurses on the middle and adds one to the count. The length statement uses `2 * (count * w.length)` plus residual length. | Counts measure mirrored pairs. The displayed general statements express decomposition and maximality; they do not state an upper bound of one for actual raw images. |
+| `proofs/Agent1PeriodicCenterWrap.lean`, `stripPeriodCenter_wrap` (**new selection**) | For nonempty `w`, wrapping any `K` with `w` and `w.reverse` leaves the stripped middle unchanged and adds one to the existing count. | This source at c42 is a distinct, canonical wrapper module. It does not determine the finite candidate's validity, actual carry sum, initial normalization, residual or next phase. It is not the separately observed missing-canonical `Agent1PeriodicNinesCenter` blob. |
+| `proofs/Agent1PeriodicGuard.lean`, `rawGamma`, `rawOuter`, `rawPeriod`, `rawCenter`, `ValidPeriodic` | The raw slices use the actual exponent-three `stepWord` and original `B.length+4` / `B.length+8` offsets. The record has bounds for three words, period length four, center symmetry/parity and positive outer/period head. | The valid-state predicate does not include an initially stripped center, safety, a cycle or future phase. Those remain separate assertions in the finite target. |
+| `proofs/Agent1PeriodicDigits.lean`, `leftEntry`, `leftCarry`, `rightEntry` | These are original `terminalCarry` scans through B, period and H. | The mixed-entry equation in the finite target refers to actual computed entries, not free carry bits. |
+| `proofs/Agent1PeriodicQuotient.lean`, `quotientCenter`, `centerPeriods` | Both project the same actual `stripPeriodCenter (rawPeriod B H w) (rawCenter B H w)` result. | A count on the next raw center differs from initial center normalization. No alternate quotient definition is introduced. |
+| `proofs/Agent1PeriodicNines.lean`, `rawPeriod_nines` | The displayed raw-period formula retains the actual entry sum. | The nine-phase interface is already available; a text hit does not establish the supplied tuple's concrete finite properties. |
+| `proofs/periodic_word_quotient__8404d0a63dd1fa13.py`, lines 42–59 (**new selection**) | The actual source has a maximal center `while` loop at line 52 and returns `absorbed_center_pairs=v` at line 59. It also contains validity/safety assertions and a historical traversal in `main`. | The preserved loop has no one-pair truncation. This is source inspection only; neither the transition nor traversal was executed. Historical traversal and affirmative-cycle work remain outside this task. |
+
+The named Python path is independently corroborated by the historical block-stripping task's dependency field, which pins blob `c7b87ad87287a7fafb6849c2e6cf9c4cd4ebe72a`. The actual SOURCE copy and its exact hash are in `run-001/source-manifest.json`. The extra wrapper file is explicitly a new selection chosen to inspect the formula interface at c42. Neither file is asserted to be one of the unnamed four original scout selections.
+
+## Interpretation of fresh negatives and retained finite boundary
+
+The complete new literal searches find no exact H tuple in SOURCE Lean/Python/Markdown, even with whitespace between its fixed coefficients. The API query retains 9,104 lines, including duplicated evidence copies, to make the source comparison inspectable. These textual results support only the stated discovery scope. They do not certify the old 3,334-line result or rule out equivalent prior work under different syntax.
+
+The inherited evidence qualification remains the basis for the final PR theorem: fixed `B=[1]`, `H=[9,9,9,14,18,18,14,9,9,9]`, `w=[9,9,9,9]`; original validity and initial zero-strip normalization; actual mixed-entry sum one; same next raw period; exactly two mirrored pairs; nonempty residual `[18,18]`; quotient outer `[3]`; and one further nine raw period. This package does not recalculate any of those facts. The inherited qualification does not assert full tuple return, safe infinite continuation, center descent/no-return, reachability from 196 or a solution of the 196 problem. Those limits are preserved here.
+
+## Remaining publication decision
+
+Fresh reconstruction now makes the immutable task bodies and an explicitly defined replacement source search available for inspection. The historical original archive, branch pages, API responses, eleven-file membership and old failed/corrected index remain NOT_RECOVERED. This package must be described as new verification plus an explicit preservation-gap correction, never as recovered original evidence or complete historical compliance.
+
+The parent must review this package before any additive publication or policy-gap disposition. This specialist neither closes the entire gap nor publishes, claims a supplemental ownership scope, alters the source branch, or changes the accepted mathematical review status.
