@@ -1,8 +1,0 @@
-import ResidualFiveConclusion
-
-#print Agent103.ResidualFive.occurrence_necessary_conditions
-#print Agent103.ResidualFive.occurrence_necessary_conditions_unfolded
-#print Agent103.ResidualFiveWitness.first_positive_hit_six
-#print Agent103.ResidualFiveWitness.mod99_matches_196
-#print Agent103.ResidualFiveWitness.mod99_trajectory_insufficient
-#print Agent103.ResidualFiveWitness.residual_five_witness

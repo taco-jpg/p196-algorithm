@@ -1,7 +1,0 @@
-import CertificateSaturation
-
-#print axioms Agent110.CertificateSaturation.closed_prefix_path_of_projection
-#print axioms Agent110.CertificateSaturation.saturation_total_cast
-#print axioms Agent110.CertificateSaturation.path_total_eq_totalGam
-#print axioms Agent110.CertificateSaturation.period_at_least_forty_two_of_path
-#print axioms Agent110.CertificateSaturation.saturated_period_constraints_of_path

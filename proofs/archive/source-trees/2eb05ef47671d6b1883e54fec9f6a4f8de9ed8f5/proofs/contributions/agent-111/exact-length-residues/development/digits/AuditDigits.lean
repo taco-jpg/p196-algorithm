@@ -1,7 +1,0 @@
-import PalindromeDigits
-#print axioms ExactLengthResidues.paddedDigits_value
-#print axioms ExactLengthResidues.realizedDigits_canonical
-#print axioms ExactLengthResidues.realizedDigits_palindrome
-#print axioms ExactLengthResidues.realizedDigits_mod_outer
-#print axioms ExactLengthResidues.outerValue_dvd11
-#print axioms ExactLengthResidues.two_pool_realization

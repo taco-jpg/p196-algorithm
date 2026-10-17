@@ -1,6 +1,0 @@
-import FastInverse
-#print axioms SevenColumn.noCandidate_eq
-#print axioms SevenColumn.overflowCandidate_eq
-#print axioms SevenColumn.longCompatible_mem_fastPrefixPredecessors
-#print axioms SevenColumn.mem_fastPrefixPredecessors_iff
-#print axioms SevenColumn.fastPrefixPredecessors_mem_iff

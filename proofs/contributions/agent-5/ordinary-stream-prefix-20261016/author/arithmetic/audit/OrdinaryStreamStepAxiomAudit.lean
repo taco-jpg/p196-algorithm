@@ -1,5 +1,0 @@
-import OrdinaryStreamStep
-
-#print axioms P196.Agent6.reverseAddDigits_correct
-#print axioms Agent5.OrdinaryStreamPrefix.ordinary_raw_prefix_from_streams
-#print axioms Agent5.OrdinaryStreamPrefix.ordinary_reverse_add_from_streams

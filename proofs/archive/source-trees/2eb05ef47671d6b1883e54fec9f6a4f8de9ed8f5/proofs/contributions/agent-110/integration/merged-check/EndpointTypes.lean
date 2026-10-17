@@ -1,9 +1,0 @@
-import All
-import RadixExterior
-#check Agent110.Checked.period_at_least_four
-#check Agent110.Checked.six_phase_constraints
-#check Agent110.Checked.saturated_period_constraints
-#check Agent110.RadixExterior.no_autonomous_radix_factor
-#check Agent110.RadixExterior.no_overflow_strict_radix_observable
-#check Agent110.RadixExterior.no_overflow_strict_radix_potential
-#check Agent110.RadixExterior.witness_not_state_return

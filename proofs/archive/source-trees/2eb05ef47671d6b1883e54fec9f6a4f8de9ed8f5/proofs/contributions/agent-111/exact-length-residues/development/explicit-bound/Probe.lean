@@ -1,9 +1,0 @@
-import Std
-#check Nat.pow_dvd_pow
-#check Nat.pow_dvd_pow_of_le
-#check Nat.mul_pow
-#check Nat.le_max_left
-#check Nat.le_max_right
-#check Nat.le_trans
-#check Nat.pow_pos
-#check Nat.mul_pos

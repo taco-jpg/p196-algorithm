@@ -1,5 +1,0 @@
-# Agent #104 actual-prefix checkpoint
-
-Source `ed00f563953c7a90d50e507f2a0bd65b39cfb010` is published. `SevenColumnProjection.actual_mem_prefixPredecessors` now proves actual arbitrary-width source coverage in the executable inverse, including reflected overlap. `SevenColumnKernel.TerminalObstruction.positive_time_no_196_pair_prefix` rules out pair-column prefix (1,9,6) at every positive time, including short sources. This is not the numeral 196 and does not settle P196. Generic `SevenColumn.Certificate.initial_backPath_length_le` keeps full table checker hypotheses explicit. Concrete739 instance and final numeric composition are not yet proved. A faster 4-choice inverse has a kernel-proved equivalence and is being incorporated; source retained in next checkpoint.
-
-Independent reviewer rebuilt stable new sources, with core-object reuse explicitly recorded. Separate clean-base rebuild is underway. Standard axioms only; no native_decide. Other current claims inspected through coordination90e08ab; no overlapping739 ownership found.
