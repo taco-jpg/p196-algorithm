@@ -1,0 +1,39 @@
+Agent1.Periodic.quotient_path_valid (B H w : Nat → Agent8.Word) (N : Nat) (hp : Agent1.Periodic.QuotientPath B H w N)
+  (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (i : Nat) (hi : i ≤ N) :
+  Agent1.Periodic.ValidPeriodic (B i) (H i) (w i)
+Agent1.Periodic.quotient_path_closed_outside_clock_bounds (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hclosed : Agent1.Periodic.outside (B N) (w N) = Agent1.Periodic.outside (B 0) (w 0)) :
+  2 * Agent1.Periodic.quotientClockSum B H w N ≤ N ∧ N ≤ 4 * Agent1.Periodic.quotientClockSum B H w N
+Agent1.Periodic.quotient_return_clock_gain (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (hN : 0 < N)
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  ∃ G,
+    0 < G ∧
+      Agent1.Periodic.quotientClockSum B H w N = 8 * G ∧
+        Agent1.Periodic.quotientDeltaSum B H w N = ↑G ∧ 16 * G ≤ N ∧ N ≤ 32 * G
+Agent1.Periodic.quotient_return_length_ge_sixteen (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (hN : 0 < N)
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) : 16 ≤ N
+AUDIT_THEOREM Agent1.Periodic.quotient_return_clock_gain : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_closed_outside_clock_bounds._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicReturnClock.0.Agent1.Periodic.quotient_path_clock_total._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_clock_gain._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_clock_gain._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicReturnClock.0.Agent1.Periodic.quotient_path_clock_total._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicReturnClock.0.Agent1.Periodic.quotient_path_clock_total : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_valid._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_clock_gain._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_closed_outside_clock_bounds : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_length_ge_sixteen : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_length_ge_sixteen._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_closed_outside_clock_bounds._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_closed_outside_clock_bounds._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_valid : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_clock_gain._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_valid._proof_2 : [propext, Quot.sound]
+MODULE_AUDIT theorems=17 public_endpoints=4 definitions=0 custom_axioms=0 union=[Classical.choice, Quot.sound, propext]
