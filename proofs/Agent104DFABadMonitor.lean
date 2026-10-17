@@ -271,6 +271,71 @@ def checkSafetyRowsReflects : Prop :=
         ∀ c, c ∈ centerSymbols → raw a m = true →
           badTerminal m c = true → B.toDFA.final a c = false)
 
+/-- The finite Boolean safety checker reflects exactly its start,
+transition and terminal clauses. This theorem is an author proof attempt and
+has not yet been compiled in the pinned runtime. -/
+theorem checkSafetyRows_reflects : checkSafetyRowsReflects := by
+  intro N B raw
+  unfold checkSafetyRowsReflects checkSafetyRows
+  constructor
+  · intro h
+    have hparts := Bool.and_eq_true.mp h
+    have hst := Bool.and_eq_true.mp hparts.1
+    refine ⟨hst.1, ?_, ?_⟩
+    · intro a m hm q hq hp b hr hd
+      have ha := (Agent107.FoldedDFA.allFin_iff _).mp hst.2 a
+      have hm' := (List.all_eq_true.mp ha) m hm
+      have hq' := (List.all_eq_true.mp hm') q hq
+      have hif : (if pairAllowed (m == .m0) q.val then
+          Agent107.FoldedDFA.allFin fun b =>
+            Agent107.FoldedDFA.boolImplies
+              (raw a m && B.d a q b) (raw b (monitorStep m q.val))
+          else true) = true := hq'
+      simp [hp] at hif
+      have hb := (Agent107.FoldedDFA.allFin_iff _).mp hif b
+      have himp := (Agent107.FoldedDFA.boolImplies_iff _ _).mp hb
+      exact himp (Bool.and_eq_true.mpr ⟨hr, hd⟩)
+    · intro a m hm c hc hr hbad
+      have ha := (Agent107.FoldedDFA.allFin_iff _).mp hparts.2 a
+      have hm' := (List.all_eq_true.mp ha) m hm
+      have hc' := (List.all_eq_true.mp hm') c hc
+      have himp := (Agent107.FoldedDFA.boolImplies_iff _ _).mp hc'
+      have hnot := himp (Bool.and_eq_true.mpr ⟨hr, hbad⟩)
+      simpa using hnot
+  · rintro ⟨hs, ⟨htrans, hterm⟩⟩
+    apply Bool.and_eq_true.mpr
+    constructor
+    · apply Bool.and_eq_true.mpr
+      constructor
+      · exact hs
+      · apply (Agent107.FoldedDFA.allFin_iff _).mpr
+        intro a
+        apply List.all_eq_true.mpr
+        intro m hm
+        apply List.all_eq_true.mpr
+        intro q hq
+        cases hpair : pairAllowed (m == .m0) q.val with
+        | false => simp [hpair]
+        | true =>
+            simp [hpair]
+            apply (Agent107.FoldedDFA.allFin_iff _).mpr
+            intro b
+            apply (Agent107.FoldedDFA.boolImplies_iff _ _).mpr
+            intro hand
+            rcases Bool.and_eq_true.mp hand with ⟨hr, hd⟩
+            exact htrans a m hm q hq hpair b hr hd
+    · apply (Agent107.FoldedDFA.allFin_iff _).mpr
+      intro a
+      apply List.all_eq_true.mpr
+      intro m hm
+      apply List.all_eq_true.mpr
+      intro c hc
+      apply (Agent107.FoldedDFA.boolImplies_iff _ _).mpr
+      intro hand
+      rcases Bool.and_eq_true.mp hand with ⟨hr, hbad⟩
+      have hf := hterm a m hm c hc hr hbad
+      simp [hf]
+
 /-- Exact safety target: finite safety rows plus one-hot transition rows
 exclude BadWord for every accepted original folded prefix. This proposition
 is intentionally left as a target until the reflection and path-induction
