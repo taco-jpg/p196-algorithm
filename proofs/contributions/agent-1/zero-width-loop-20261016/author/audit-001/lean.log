@@ -1,0 +1,100 @@
+Agent1.Periodic.zeroWidthNode : Nat → Agent1.Periodic.WidthNode
+'Agent1.Periodic.zeroWidthNode' does not depend on any axioms
+Agent1.Periodic.zeroWidthEdge : Nat → Agent1.Periodic.WidthEdge
+'Agent1.Periodic.zeroWidthEdge' does not depend on any axioms
+Agent1.Periodic.zeroWidthEdge_mem : ∀ (t : Nat), Agent1.Periodic.zeroWidthEdge t ∈ Agent1.Periodic.widthEdges
+'Agent1.Periodic.zeroWidthEdge_mem' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.zeroWidthEdge_labels : ∀ (t : Nat),
+  t < 16 →
+    (Agent1.Periodic.zeroWidthEdge t).source = Agent1.Periodic.zeroWidthNode t ∧
+      (Agent1.Periodic.zeroWidthEdge t).target = Agent1.Periodic.zeroWidthNode (t + 1) ∧
+        (Agent1.Periodic.zeroWidthEdge t).clock = t % 2 ∧ (Agent1.Periodic.zeroWidthEdge t).carries = none
+'Agent1.Periodic.zeroWidthEdge_labels' does not depend on any axioms
+Agent1.Periodic.zeroWidthNode_mem : ∀ (t : Nat), Agent1.Periodic.zeroWidthNode t ∈ Agent1.Periodic.widthCatalog
+'Agent1.Periodic.zeroWidthNode_mem' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.zeroWidthNode_closed : Agent1.Periodic.zeroWidthNode 16 = Agent1.Periodic.zeroWidthNode 0
+'Agent1.Periodic.zeroWidthNode_closed' does not depend on any axioms
+Agent1.Periodic.zeroWidthEdge_clock_sum : (List.map (fun t => (Agent1.Periodic.zeroWidthEdge t).clock)
+      (List.range 16)).sum =
+  8
+'Agent1.Periodic.zeroWidthEdge_clock_sum' does not depend on any axioms
+Agent1.Periodic.zeroWidthLoop_initial_valid : Agent1.Periodic.ValidPeriodic [9] [] [0, 0, 0, 0]
+'Agent1.Periodic.zeroWidthLoop_initial_valid' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.zeroWidthLoop_initial_projection : Agent1.Periodic.widthProjection [9] [] [0, 0, 0, 0] =
+  Agent1.Periodic.zeroWidthNode 0
+'Agent1.Periodic.zeroWidthLoop_initial_projection' does not depend on any axioms
+Agent1.Periodic.zeroWidthLoop_initial_realizable : ∃ n d,
+  0 < n ∧
+    DecimalDigits.Canonical n d (List.length (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3)) ∧
+      ∀ (i : Nat),
+        i < List.length (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3) →
+          DecimalDigits.columnSum d (List.length (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3)) i =
+            (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3)[i]?.getD 0
+'Agent1.Periodic.zeroWidthLoop_initial_realizable' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.zeroWidthLoop_certificate : (∀ (t : Nat),
+    t < 16 →
+      Agent1.Periodic.zeroWidthEdge t ∈ Agent1.Periodic.widthEdges ∧
+        (Agent1.Periodic.zeroWidthEdge t).source = Agent1.Periodic.zeroWidthNode t ∧
+          (Agent1.Periodic.zeroWidthEdge t).target = Agent1.Periodic.zeroWidthNode (t + 1) ∧
+            (Agent1.Periodic.zeroWidthEdge t).clock = t % 2 ∧ (Agent1.Periodic.zeroWidthEdge t).carries = none) ∧
+  (∀ (t : Nat), t ≤ 16 → Agent1.Periodic.zeroWidthNode t ∈ Agent1.Periodic.widthCatalog) ∧
+    Agent1.Periodic.zeroWidthNode 16 = Agent1.Periodic.zeroWidthNode 0 ∧
+      (List.map (fun t => (Agent1.Periodic.zeroWidthEdge t).clock) (List.range 16)).sum = 8
+'Agent1.Periodic.zeroWidthLoop_certificate' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.zeroWidthLoop_no_full_return : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    B 0 = [9] → H 0 = [] → w 0 = [0, 0, 0, 0] → 0 < N → ¬(B N = B 0 ∧ H N = H 0 ∧ w N = w 0)
+'Agent1.Periodic.zeroWidthLoop_no_full_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.zeroWidthLoop_projection_not_sufficient : Agent1.Periodic.widthProjection [9] [] [0, 0, 0, 0] =
+    Agent1.Periodic.zeroWidthNode 0 ∧
+  Agent1.Periodic.zeroWidthNode 16 = Agent1.Periodic.zeroWidthNode 0 ∧
+    (∀ (t : Nat),
+        t < 16 →
+          Agent1.Periodic.zeroWidthEdge t ∈ Agent1.Periodic.widthEdges ∧
+            (Agent1.Periodic.zeroWidthEdge t).source = Agent1.Periodic.zeroWidthNode t ∧
+              (Agent1.Periodic.zeroWidthEdge t).target = Agent1.Periodic.zeroWidthNode (t + 1)) ∧
+      (∃ n d,
+          0 < n ∧
+            DecimalDigits.Canonical n d (List.length (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3)) ∧
+              ∀ (i : Nat),
+                i < List.length (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3) →
+                  DecimalDigits.columnSum d (List.length (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3)) i =
+                    (Agent1.Periodic.periodicWord [9] [] [0, 0, 0, 0] 3)[i]?.getD 0) ∧
+        ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+          Agent1.Periodic.QuotientPath B H w N →
+            B 0 = [9] → H 0 = [] → w 0 = [0, 0, 0, 0] → 0 < N → ¬(B N = B 0 ∧ H N = H 0 ∧ w N = w 0)
+'Agent1.Periodic.zeroWidthLoop_projection_not_sufficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._closed_3._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase1._closed_1._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION Agent1.Periodic.zeroWidthEdge._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase1._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0_mem : [propext]
+AUDIT_THEOREM Agent1.Periodic.zeroWidthEdge_mem : [propext, Quot.sound]
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0 : []
+AUDIT_THEOREM Agent1.Periodic.zeroWidthNode_mem : [propext, Quot.sound]
+NON_SAFE_DEFINITION Agent1.Periodic.zeroWidthNode._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.zeroWidthLoop_certificate : [propext, Quot.sound]
+NON_SAFE_DEFINITION Agent1.Periodic.zeroWidthEdge._cstage1 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._closed_2._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase1._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.zeroWidthLoop_projection_not_sufficient : [propext, Quot.sound, Classical.choice]
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._closed_7._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase1_mem : [propext]
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase1 : []
+AUDIT_THEOREM Agent1.Periodic.zeroWidthLoop_no_full_return : [Quot.sound, propext, Classical.choice]
+NON_SAFE_DEFINITION Agent1.Periodic.zeroWidthNode._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._cstage1 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.zeroWidthEdge : []
+AUDIT_THEOREM Agent1.Periodic.zeroWidthEdge_clock_sum : []
+AUDIT_THEOREM Agent1.Periodic.zeroWidthEdge_labels : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._closed_6._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._closed_1._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_SAFE_DEFINITION Agent1.Periodic.zeroWidthNode : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._closed_4._cstage2 Lean.DefinitionSafety.unsafe
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._closed_5._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.zeroWidthLoop_initial_realizable : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.zeroWidthLoop_initial_valid : [Quot.sound, propext]
+AUDIT_THEOREM Agent1.Periodic.zeroWidthLoop_initial_projection : []
+NON_SAFE_DEFINITION _private.Agent1PeriodicZeroWidthLoop.0.Agent1.Periodic.zeroWidthBase0._cstage2 Lean.DefinitionSafety.unsafe
+AUDIT_THEOREM Agent1.Periodic.zeroWidthNode_closed : []
+MODULE_AUDIT theorems=13 definitions=4 opaque=0 union=[Classical.choice, Quot.sound, propext]
