@@ -14,7 +14,7 @@ open Lychrel196 DecimalDigits ExactLengthResidues
 palindrome with the same residue modulo 10^k. -/
 def UniversalSuffixRealization (k L : Nat) : Prop :=
   ∀ n : Nat, ¬ 10 ∣ n →
-    ∃ P e : Nat, 0 < P ∧ Canonical P e L ∧ Palindrome P ∧
+    ∃ P : Nat, ∃ e : Nat → Nat, 0 < P ∧ Canonical P e L ∧ Palindrome P ∧
       P % (10 ^ k) = n % (10 ^ k)
 
 /-- Candidate sharp range: a prescribed suffix can occupy at most the
@@ -32,11 +32,12 @@ theorem outerDigits_symmetric_ceil (d : Nat → Nat) (k L i : Nat)
   by_cases ha : i < k
   · by_cases hb : L - 1 - i < k
     · have hcenter : i = L - 1 - i := by omega
-      simp [ha, hb, hcenter]
-    · simp [ha, hb]
+      simp only [if_pos ha, if_pos hb]
+      exact congrArg d hcenter
+    · simp only [if_pos ha, if_neg hb]
   · by_cases hb : L - 1 - i < k
-    · simp [ha, hb]
-    · simp [ha, hb]
+    · simp only [if_neg ha, if_pos hb]
+    · simp only [if_neg ha, if_neg hb]
 
 
 /-- Canonicality of the mirrored outer digits also holds at the one-center
@@ -65,7 +66,8 @@ theorem outerDigits_canonical_ceil (d : Nat → Nat) (k L : Nat)
         · simp [outerDigits, ha, hb]
     · have ha : ¬ L - 1 < k := by omega
       have hb : L - 1 - (L - 1) = 0 := by omega
-      simpa [outerDigits, ha, hb] using hd0
+      rw [outerDigits, if_neg ha, hb, if_pos (by omega : 0 < k)]
+    exact hd0
 
 /-- The exact-width outer-digit construction is an ordinary integer
 palindrome at the full low-half boundary, including the odd center. -/
@@ -76,7 +78,7 @@ theorem outerValue_palindrome_ceil (A k L : Nat) (hk : 0 < k)
     (fun i _ => paddedDigits_bound A i)
     (by simpa [paddedDigits] using Nat.pos_of_ne_zero hA0)
   apply (palindrome_value_iff (outerDigits (paddedDigits A) k L) L
-    hc.2.1 hc.2.2.1).mpr
+    hc.2.1 (Or.inr hc.2.2.1)).mpr
   intro i hi
   exact outerDigits_symmetric_ceil (paddedDigits A) k L i hL hi
 
@@ -111,7 +113,7 @@ theorem palindrome_with_given_suffix_ceil (n k L : Nat)
     intro i hi
     simp at hi
   have hmod := realizedDigits_mod_outer (paddedDigits A) k L (10 ^ k) []
-    hkL (dvd_refl (10 ^ k)) hlow
+    hkL (⟨1, by simp⟩) hlow
   rw [paddedDigits_value A k hA] at hmod
   have hres : P % (10 ^ k) = A := by
     simpa [P, ds, realizedDigits, pairDigits, selectedDigit,
@@ -145,7 +147,7 @@ theorem lowDigits_eq_of_mod_eq (P n k L : Nat) (e : Nat → Nat)
     intro i hi
     simp [truncateDigits, hi]
   have hmodE := value_mod_eq_of_low_eq e (truncateDigits e k) k L
-    (10 ^ k) (dvd_refl (10 ^ k)) hlow
+    (10 ^ k) (⟨1, by simp⟩) hlow
   rw [truncateDigits_value e k L hkL] at hmodE
   rw [hcan.2.2.2] at hmodE
   rw [hmod] at hmodE
@@ -167,7 +169,7 @@ palindrome can realize. This remains unproved. -/
 def ConverseObstruction (k L : Nat) : Prop :=
   2 * k > L + 1 →
     ∃ n : Nat, ¬ 10 ∣ n ∧
-      ∀ P e : Nat, Canonical P e L → Palindrome P →
+      ∀ P : Nat, ∀ e : Nat → Nat, Canonical P e L → Palindrome P →
         P % (10 ^ k) ≠ n % (10 ^ k)
 
 /-- Candidate witness used in the converse: n=1+2*10^(k-1). For k≤L,
