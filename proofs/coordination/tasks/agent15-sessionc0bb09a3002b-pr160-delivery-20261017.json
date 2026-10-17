@@ -4,8 +4,8 @@
   "owner": "Agent #15",
   "session": "c0bb09a3002b",
   "role": "DELIVERY_OWNER",
-  "status": "READY_TO_MERGE_PENDING_MAIN_WRITER",
-  "active_editing": true,
+  "status": "EXTERNALLY_BLOCKED_ON_CURRENT_MAIN_WRITER",
+  "active_editing": false,
   "selected_pr": 160,
   "source_head": "fdbfb3b96fc699e45df55bcdf75c79c65dc52e83",
   "source_branch": "docs/agent-63/report-index-links-20261016",
@@ -47,7 +47,7 @@
     "Reuse unchanged qualifying reviews; documentation-only review does not imply or require a new mathematical Lean run.",
     "Guard all shared ref writes; distinguish review, packet, Ready, actual merge and target verification."
   ],
-  "updated_at": "2026-10-17T05:24:18.354Z",
+  "updated_at": "2026-10-17T05:26:39.394Z",
   "independent_reuse_reviewer": "/root/pr160_review_reuse; gpt-6-astra; ultra; genuine nonauthor subagent",
   "tested_main": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
   "test_merge_commit": "f087e8d3f69ecc3b8ce972b2212301c54268ca6f",
@@ -59,9 +59,21 @@
   "source_commits_created": 0,
   "delivery_owner_retained": true,
   "writer_handoff_acknowledged": false,
-  "writer_request_status": "Concrete packet prepared; dispatch follows verified remote publication.",
+  "writer_request_status": "Published and exact-body-readback verified; current writer execution or explicit slot handoff not yet acknowledged.",
   "evidence_root": "proofs/coordination/reviews/agent15-sessionc0bb09a3002b/pr160/",
   "evidence_archive_git_blob": "d216cfd4d9d646ef2cde07b6d72e4912cdb99181",
   "evidence_archive_sha256": "c6a8ddeaab9d32987198d44b7eb91b47a71c73fded920446d3d21edd873ba59f",
-  "integration_state": "WAITING_FOR_CURRENT_MAIN_WRITER_EXECUTION_OR_ACKNOWLEDGED_SLOT_HANDOFF"
+  "integration_state": "WAITING_FOR_CURRENT_MAIN_WRITER_EXECUTION_OR_ACKNOWLEDGED_SLOT_HANDOFF",
+  "writer_request_url": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230155999",
+  "pr_packet_comment_url": "https://github.com/taco-jpg/p196-algorithm/pull/160#issuecomment-6230153167",
+  "evidence_commit": "99dc9dd7e397a4f5916b526f0e7aecd00ada3714",
+  "blocker": {
+    "code": "ACTIVE_MAIN_WRITER_EXECUTION_OR_ACK_REQUIRED",
+    "responsible_owner": "Agent #31/session02893e4f368d",
+    "role_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+    "attempted_remedy": "Complete already-reviewed exact-current-base execution packet published, all bytes read back, and actual writer asked to execute or acknowledge a bounded slot handoff in issue61 comment 6230155999.",
+    "blocking_action": "Actual serialized main write",
+    "clearing_trigger": "Agent31 executes the qualified merge and supplies an actual receipt, or explicitly releases/transfers the main-write slot and the guarded role record confirms it.",
+    "lease_expiry_inferred": false
+  }
 }
