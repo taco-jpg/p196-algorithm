@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #107",
+  "generation_owner": "agent107-dfa-horn-closure-20261016",
+  "title": "Exact-source scoped verification registry for Agent #107 DFA/Horn closure",
+  "toolchain": {
+    "release": "4.19.0",
+    "commit_prefix": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "compiler_arguments": [
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    {
+      "id": "GLOBAL_CATALOGUE_INCOMPLETE",
+      "status": "OPEN",
+      "description": "This registry covers only the exact folded-transducer dependency closure plus Agent #107 DFA/Horn modules; it cannot establish repository-wide PASS."
+    }
+  ],
+  "projects": {
+    "agent107-dfa-horn-closure": {
+      "scope": "Exact finite folded transducer Horn certificate implies arbitrary-length DFA output closure and actual reverse-add numeric step, conditional on a given Boolean DFA/Horn certificate. No concrete safe instance or 196 resolution.",
+      "modules": {
+        "Agent107TransducerGraph": {
+          "path": "proofs/Agent107TransducerGraph.lean",
+          "sha256": "b24422cb928ab6d9abc796478ab6c0c2631106f5c196385646c631a6f310b02a",
+          "git_blob": "f7925c5afa2983d95942cf98f6100221a659417a",
+          "imports": [
+            "Agent107TransducerNumeric",
+            "Agent107TransducerReachable"
+          ]
+        },
+        "Agent107TransducerNumeric": {
+          "path": "proofs/Agent107TransducerNumeric.lean",
+          "sha256": "67d88fb4dea6639a0230c5d0f93d8ed778e6393c073679233ab0e792160e086a",
+          "git_blob": "f27fb02b4b422af06e55ee288cc9f8ecd50a8552",
+          "imports": [
+            "Agent107TransducerInput",
+            "Agent107TransducerOutput"
+          ]
+        },
+        "Agent107TransducerInput": {
+          "path": "proofs/Agent107TransducerInput.lean",
+          "sha256": "91fbfa4d00f3c8ef8229c571f26847246b72502a24f4a7bd7de7692f898c873b",
+          "git_blob": "55a811ec593ba8f0ccea5290e8ef8b6f53c46bb3",
+          "imports": [
+            "Agent107TransducerPath"
+          ]
+        },
+        "Agent107TransducerPath": {
+          "path": "proofs/Agent107TransducerPath.lean",
+          "sha256": "718a0a82b010f75949e02ed7665e61f1b5014c38c4661726cebd00ac0f6db21c",
+          "git_blob": "990a8c083bdb44955b434e25ba6fff4dc73ea124",
+          "imports": [
+            "Agent107TransducerDefs"
+          ]
+        },
+        "Agent107TransducerDefs": {
+          "path": "proofs/Agent107TransducerDefs.lean",
+          "sha256": "5df72daaa1a29f7df4d9b967215b735b7e39ebbd9245d1135d1073473178a530",
+          "git_blob": "03b290b828321dc9144a8741990f7089f07ece53",
+          "imports": [
+            "Lychrel196Research"
+          ]
+        },
+        "Lychrel196Research": {
+          "path": "proofs/Lychrel196Research__c696e0ea3db39d92.lean",
+          "sha256": "f8950d138fa4231b536059e2334d36b6496de3d25a806f4cf3925941aa05144c",
+          "git_blob": "c6c1f5441c54a36f2d82b3ef78dff1ccdbc5a506",
+          "imports": [
+            "Std"
+          ]
+        },
+        "Agent107TransducerOutput": {
+          "path": "proofs/Agent107TransducerOutput.lean",
+          "sha256": "5e71e9bd7a693e19fed7716e71a951d4c06708f42cffc8b1afde4f65aa6e2d67",
+          "git_blob": "f4cda74629b74db4ed8e4d9f98825e5eb70cb217",
+          "imports": [
+            "Agent107TransducerPath"
+          ]
+        },
+        "Agent107TransducerReachable": {
+          "path": "proofs/Agent107TransducerReachable.lean",
+          "sha256": "7e4dc0b05d441f27bc56f96d3c1cdc7fafa59393b5456fc1ad7feaa93180681b",
+          "git_blob": "7ecaee195da124b420a91590fcfdd274bcf39a87",
+          "imports": [
+            "Agent107TransducerTables"
+          ]
+        },
+        "Agent107TransducerTables": {
+          "path": "proofs/Agent107TransducerTables.lean",
+          "sha256": "418febdd3cfcf513b2727543532b00e8add1881c1c826dc8112f96365523c67f",
+          "git_blob": "4eeb388160245c1057debc70c49d24f586832a2b",
+          "imports": [
+            "Agent107TransducerTablesChecks"
+          ]
+        },
+        "Agent107TransducerTablesChecks": {
+          "path": "proofs/Agent107TransducerTablesChecks.lean",
+          "sha256": "3b87f981d86ed80d8870ea627c7459f7b3b0bffa987fe13378b2f29966b3a60b",
+          "git_blob": "0461201189bdd1ddd78a1e44a284abce4c1e5c66",
+          "imports": [
+            "Agent107TransducerTablesData"
+          ]
+        },
+        "Agent107TransducerTablesData": {
+          "path": "proofs/Agent107TransducerTablesData.lean",
+          "sha256": "70bc2285605fb1b581bc0bc14adef8593ee451b312adb5f79fcf19cce83988ef",
+          "git_blob": "afc8b382cfe84b2660ef0e559901b8baf136885d",
+          "imports": [
+            "Agent107TransducerDefs"
+          ]
+        },
+        "Agent107TransducerBoundary": {
+          "path": "proofs/Agent107TransducerBoundary.lean",
+          "sha256": "cbdc094ba800bf4198bc5a1f2ece8b971aaea91ed2ceb2f1b36a24a978baa89c",
+          "git_blob": "7c46227bc4fd31517ee016ba35bbca2385a0f2fe",
+          "imports": [
+            "Agent107TransducerDefs"
+          ]
+        },
+        "Agent107DFA": {
+          "path": "proofs/Agent107DFA.lean",
+          "sha256": "d0fe8accc9d80110230ea3b4061f554d8d9d9dc5b8ea1a89f44e7d2fc977969e",
+          "git_blob": "80886bfb2a9ac9fb579a609132e4c1212d355164",
+          "imports": [
+            "Agent107TransducerGraph"
+          ]
+        },
+        "Agent107DFAHorn": {
+          "path": "proofs/Agent107DFAHorn.lean",
+          "sha256": "e443d30c868d50de911662b885354e53853b7802f415fc41a09ba2317b2974a7",
+          "git_blob": "01b9d2cbe417d90c5879ac1f378fba65627866c0",
+          "imports": [
+            "Agent107DFA"
+          ]
+        },
+        "Agent107DFAChecker": {
+          "path": "proofs/Agent107DFAChecker.lean",
+          "sha256": "a9a411034cf44aeb9752c85246d05140067b88c2c00b5c62651d423af1be2238",
+          "git_blob": "941bf379c7798398bf82c66cce3dcb88828c17f7",
+          "imports": [
+            "Agent107DFA"
+          ]
+        },
+        "Agent107DFAAlphabet": {
+          "path": "proofs/Agent107DFAAlphabet.lean",
+          "sha256": "64f13d225a8d4439d0e69384b01138173006897f3c5536708c953d3ae25aa534",
+          "git_blob": "e526b3b7ecda09cf804575a4c394c210a479fc0c",
+          "imports": [
+            "Agent107DFA"
+          ]
+        },
+        "Agent107DFABoolean": {
+          "path": "proofs/Agent107DFABoolean.lean",
+          "sha256": "3ffcc064a10c455128f5d39ff82a756f1045e2137ab0aff92ded9e929f462e9b",
+          "git_blob": "af2df3da241c01b66317869dee1c26ad7b2f9b03",
+          "imports": [
+            "Agent107DFAAlphabet",
+            "Agent107DFAChecker"
+          ]
+        },
+        "Agent107DFARelation": {
+          "path": "proofs/Agent107DFARelation.lean",
+          "sha256": "64d8606e1592428cb184b40e5cd2650175c78411a046a68c72f2a24a78a2b748",
+          "git_blob": "c5df077e095550189168b1452796a5679ed92405",
+          "imports": [
+            "Agent107DFA"
+          ]
+        },
+        "Agent107DFAArithmetic": {
+          "path": "proofs/Agent107DFAArithmetic.lean",
+          "sha256": "10c24e67d811fcda392de2e473cf907793da82a12d0fd5cfc4dc890b50b40169",
+          "git_blob": "43c3d7978c716898e5e35643b51a05f6ad2f81a4",
+          "imports": [
+            "Agent107DFAHorn"
+          ]
+        }
+      },
+      "roots": [
+        "Agent107DFAArithmetic",
+        "Agent107DFABoolean",
+        "Agent107DFARelation",
+        "Agent107TransducerBoundary"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "project": "agent107-dfa-horn-closure",
+      "endpoints": [
+        "Agent107.FoldedDFA.horn_prefix_invariant",
+        "Agent107.FoldedDFA.horn_accepting_output",
+        "Agent107.FoldedDFA.checkHorn_iff",
+        "Agent107.FoldedDFA.Encoding.checkOneHot_iff",
+        "Agent107.FoldedDFA.Encoding.BooleanDFA.transition_iff",
+        "Agent107.FoldedDFA.Encoding.stateIndex?_stateAt",
+        "Agent107.FoldedDFA.Encoding.liftRelation_stateAt",
+        "Agent107.FoldedDFA.horn_next_closed",
+        "Agent107.FoldedDFA.horn_canonical_step"
+      ]
+    }
+  ]
+}

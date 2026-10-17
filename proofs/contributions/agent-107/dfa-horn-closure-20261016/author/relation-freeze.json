@@ -1,0 +1,81 @@
+{
+  "source": "proofs/Agent107DFARelation.lean",
+  "sha256": "64d8606e1592428cb184b40e5cd2650175c78411a046a68c72f2a24a78a2b748",
+  "git_blob": "c5df077e095550189168b1452796a5679ed92405",
+  "namespace": "Agent107.FoldedDFA.Encoding",
+  "direct_import": "Agent107DFA",
+  "direct_import_sha256": "d0fe8accc9d80110230ea3b4061f554d8d9d9dc5b8ea1a89f44e7d2fc977969e",
+  "status": "AUTHOR_TRUST_ZERO_AND_FULL_MODULE_ORIGIN_AUDIT_PASS",
+  "independent_review": "Pending separate semantic_review agent; author does not claim independent relation review",
+  "lookup_implementation": "Table.states.finIdxOf?",
+  "index_type": "Fin Table.states.length",
+  "first_two_rows": {
+    "index0": "initial 0 = State.mk 0 0 0 (-1) false",
+    "index1": "initial 1 = State.mk 1 0 1 1 false"
+  },
+  "public_endpoints": [
+    "stateAt_injective",
+    "stateAt_mem",
+    "stateIndex?_stateAt",
+    "stateIndex?_eq_some_iff",
+    "stateIndex?_eq_none_iff",
+    "state_mem_iff_exists_stateAt",
+    "state_mem_iff_exists_index",
+    "initial0Index_val",
+    "initial1Index_val",
+    "stateAt_initial0Index",
+    "stateAt_initial1Index",
+    "stateIndex?_initial0",
+    "stateIndex?_initial1",
+    "liftRelation_stateAt",
+    "liftRelation_of_not_mem",
+    "liftRelation_initial0",
+    "liftRelation_initial1",
+    "liftRelation_initial0_start",
+    "liftRelation_initial1_start"
+  ],
+  "module_origin_theorems": 23,
+  "axiom_sets": [
+    {
+      "axioms": [],
+      "count": 8
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "count": 13
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "count": 1
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "count": 1
+    }
+  ],
+  "unsafe_implementation_axioms": [],
+  "attempts": [
+    {
+      "path": "relation-001",
+      "status": "FAIL",
+      "source_sha256": "b36ec8d27f27e0dbb3835406d7a0e8167ce7e0ae2802e53a9cf954855534715c",
+      "reason": "Treated the earlier Fin index as a Nat and rebuilt a coerced Fin index, preventing omega from identifying projections. Exact source and failed log retained before correction."
+    },
+    {
+      "path": "relation-002",
+      "status": "PASS",
+      "source_sha256": "64d8606e1592428cb184b40e5cd2650175c78411a046a68c72f2a24a78a2b748"
+    }
+  ],
+  "olean_path": "/tmp/agent107-runtime/task2-relation-build/Agent107DFARelation.olean",
+  "olean_sha256": "1b0b2be57e9b6e59f027c5728069c7a826b6e6fe8eee3a97912ab93376bb6b9e"
+}
