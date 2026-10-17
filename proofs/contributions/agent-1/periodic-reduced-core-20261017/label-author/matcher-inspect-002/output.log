@@ -1,0 +1,133 @@
+def Agent1.Periodic.outerComponent.match_9.{u_1} : (motive : Agent8.Word → Sort u_1) →
+  (x : Agent8.Word) →
+    (Unit → motive [0, 0, 0, 0]) →
+      (Unit → motive [9, 9, 9, 9]) →
+        (Unit → motive [18, 18, 18, 18]) →
+          (Unit → motive [1, 1, 17, 17]) →
+            (Unit → motive [1, 17, 17, 1]) →
+              (Unit → motive [2, 9, 16, 9]) →
+                (Unit → motive [3, 3, 15, 15]) →
+                  (Unit → motive [3, 15, 15, 3]) →
+                    (Unit → motive [4, 4, 14, 14]) →
+                      (Unit → motive [4, 9, 14, 9]) →
+                        (Unit → motive [4, 14, 14, 4]) →
+                          (Unit → motive [6, 9, 12, 9]) →
+                            (Unit → motive [7, 7, 11, 11]) →
+                              (Unit → motive [7, 11, 11, 7]) →
+                                (Unit → motive [9, 2, 9, 16]) →
+                                  (Unit → motive [9, 4, 9, 14]) →
+                                    (Unit → motive [9, 6, 9, 12]) →
+                                      (Unit → motive [9, 12, 9, 6]) →
+                                        (Unit → motive [9, 14, 9, 4]) →
+                                          (Unit → motive [9, 16, 9, 2]) →
+                                            (Unit → motive [11, 7, 7, 11]) →
+                                              (Unit → motive [11, 11, 7, 7]) →
+                                                (Unit → motive [12, 9, 6, 9]) →
+                                                  (Unit → motive [14, 4, 4, 14]) →
+                                                    (Unit → motive [14, 9, 4, 9]) →
+                                                      (Unit → motive [14, 14, 4, 4]) →
+                                                        (Unit → motive [15, 3, 3, 15]) →
+                                                          (Unit → motive [15, 15, 3, 3]) →
+                                                            (Unit → motive [16, 9, 2, 9]) →
+                                                              (Unit → motive [17, 1, 1, 17]) →
+                                                                (Unit → motive [17, 17, 1, 1]) →
+                                                                  ((x : Agent8.Word) → motive x) → motive x :=
+fun motive x h_1 h_2 h_3 h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12 h_13 h_14 h_15 h_16 h_17 h_18 h_19 h_20 h_21 h_22 h_23
+    h_24 h_25 h_26 h_27 h_28 h_29 h_30 h_31 h_32 =>
+  List.casesOn x (h_32 []) fun head tail =>
+    if h_1_1 : head = 0 then
+      ⋯ ▸
+        ⋯ ▸
+          List.casesOn tail (h_32 [0]) fun head tail =>
+            if h_1_2 : head = 0 then
+              ⋯ ▸
+                ⋯ ▸
+                  List.casesOn tail (h_32 [0, 0]) fun head tail =>
+                    if h_1_3 : head = 0 then ⋯ ▸ ⋯ else h_32 (0 :: 0 :: head :: tail)
+            else h_32 (0 :: head :: tail)
+    else
+      if h_2_1 : head = 9 then
+        Eq.ndrec (motive := fun head => ¬head = 0 → motive (head :: tail))
+          (fun h_1 =>
+            ⋯ ▸
+              List.casesOn tail (h_32 [9]) fun head tail =>
+                if h_1 : head = 9 then ⋯ ▸ ⋯ ▸ List.casesOn tail (h_32 [9, 9]) fun head tail => ⋯
+                else
+                  if h_2 : head = 2 then
+                    Eq.ndrec (motive := fun head => ¬head = 9 → motive (9 :: head :: tail))
+                      (fun h_1 => ⋯ ▸ List.casesOn tail (h_32 [9, 2]) ⋯) ⋯ h_1
+                  else
+                    if h_3 : head = 4 then
+                      Eq.ndrec (motive := fun head => ¬head = 9 → ¬head = 2 → motive (9 :: head :: tail))
+                        (fun h_1 h_2 => ⋯) ⋯ h_1 h_2
+                    else
+                      if h_4 : head = 6 then
+                        Eq.ndrec (motive := fun head => ¬head = 9 → ¬head = 2 → ¬head = 4 → motive (9 :: head :: tail))
+                          (fun h_1 => ⋯) ⋯ h_1 h_2 h_3
+                      else
+                        if h_5 : head = 12 then
+                          Eq.ndrec (motive := fun head =>
+                            ¬head = 9 → ¬head = 2 → ¬head = 4 → ¬head = 6 → motive (9 :: head :: tail)) ⋯ ⋯ h_1 h_2 h_3
+                            h_4
+                        else if h_6 : head = 14 then ⋯ else ⋯)
+          ⋯ h_1_1
+      else
+        if h_3_1 : head = 18 then
+          Eq.ndrec (motive := fun head => ¬head = 0 → ¬head = 9 → motive (head :: tail))
+            (fun h_1 h_2 =>
+              ⋯ ▸
+                List.casesOn tail (h_32 [18]) fun head tail =>
+                  if h_1 : head = 18 then ⋯ ▸ ⋯ ▸ List.casesOn tail (h_32 [18, 18]) ⋯ else h_32 (18 :: head :: tail))
+            ⋯ h_1_1 h_2_1
+        else
+          if h_4_1 : head = 1 then
+            Eq.ndrec (motive := fun head => ¬head = 0 → ¬head = 9 → ¬head = 18 → motive (head :: tail))
+              (fun h_1 h_2 h_3 =>
+                ⋯ ▸
+                  List.casesOn tail (h_32 [1]) fun head tail =>
+                    if h_1 : head = 1 then ⋯ ▸ ⋯ else if h_2 : head = 17 then ⋯ else h_32 (1 :: head :: tail))
+              ⋯ h_1_1 h_2_1 h_3_1
+          else
+            if h_5 : head = 2 then
+              Eq.ndrec (motive := fun head => ¬head = 0 → ¬head = 9 → ¬head = 18 → ¬head = 1 → motive (head :: tail))
+                (fun h_1 h_2 h_3 h_4 => ⋯ ▸ List.casesOn tail (h_32 [2]) fun head tail => ⋯) ⋯ h_1_1 h_2_1 h_3_1 h_4_1
+            else
+              if h_6 : head = 3 then
+                Eq.ndrec (motive := fun head =>
+                  ¬head = 0 → ¬head = 9 → ¬head = 18 → ¬head = 1 → ¬head = 2 → motive (head :: tail))
+                  (fun h_1 h_2 h_3 h_4 h_5 => ⋯ ▸ List.casesOn tail (h_32 [3]) ⋯) ⋯ h_1_1 h_2_1 h_3_1 h_4_1 h_5
+              else
+                if h_7 : head = 4 then
+                  Eq.ndrec (motive := fun head =>
+                    ¬head = 0 → ¬head = 9 → ¬head = 18 → ¬head = 1 → ¬head = 2 → ¬head = 3 → motive (head :: tail))
+                    (fun h_1 h_2 h_3 h_4 h_5 h_6 => ⋯) ⋯ h_1_1 h_2_1 h_3_1 h_4_1 h_5 h_6
+                else
+                  if h_8 : head = 6 then
+                    Eq.ndrec (motive := fun head =>
+                      ¬head = 0 →
+                        ¬head = 9 → ¬head = 18 → ¬head = 1 → ¬head = 2 → ¬head = 3 → ¬head = 4 → motive (head :: tail))
+                      (fun h_1 h_2 h_3 h_4 h_5 => ⋯) ⋯ h_1_1 h_2_1 h_3_1 h_4_1 h_5 h_6 h_7
+                  else
+                    if h_9 : head = 7 then
+                      Eq.ndrec (motive := fun head =>
+                        ¬head = 0 →
+                          ¬head = 9 →
+                            ¬head = 18 →
+                              ¬head = 1 → ¬head = 2 → ¬head = 3 → ¬head = 4 → ¬head = 6 → motive (head :: tail))
+                        (fun h_1 h_2 h_3 h_4 => ⋯) ⋯ h_1_1 h_2_1 h_3_1 h_4_1 h_5 h_6 h_7 h_8
+                    else
+                      if h_10 : head = 11 then
+                        Eq.ndrec (motive := fun head => ¬head = 0 → ¬head = 9 → ⋯) (fun h_1 h_2 h_3 => ⋯) ⋯ h_1_1 h_2_1
+                          h_3_1 h_4_1 h_5 h_6 h_7 h_8 h_9
+                      else
+                        if h_11 : head = 12 then
+                          Eq.ndrec (motive := fun head => ¬head = 0 → ⋯) (fun h_1 h_2 => ⋯) ⋯ h_1_1 h_2_1 h_3_1 h_4_1
+                            h_5 h_6 h_7 h_8 h_9 h_10
+                        else
+                          if h_12 : head = 14 then
+                            Eq.ndrec (motive := fun head => ⋯) (fun h_1 => ⋯) ⋯ h_1_1 h_2_1 h_3_1 h_4_1 h_5 h_6 h_7 h_8
+                              h_9 h_10 h_11
+                          else
+                            if h_13 : head = 15 then
+                              Eq.ndrec (motive := ⋯) ⋯ ⋯ h_1_1 h_2_1 h_3_1 h_4_1 h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12
+                            else if h_14 : head = 16 then ⋯ else ⋯
