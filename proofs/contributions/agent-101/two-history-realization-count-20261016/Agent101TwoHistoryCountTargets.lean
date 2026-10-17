@@ -96,14 +96,14 @@ theorem prefixWeightSum_attempt (b : Bool) (xss : List (List Bool)) (j : Joint) 
 exactly the state-weight recurrence. This has not been compiled here. -/
 theorem stateWeight_sum_attempt (m : Nat) (j : Joint) :
     stateWeightSumTarget m j := by
+  unfold stateWeightSumTarget
   induction m generalizing j with
   | zero =>
-      simp [stateWeightSumTarget, stateWeight, allBits, profileWeightSum,
-        profileWeight, correctionWeight]
+      simp [stateWeight, allBits, profileWeightSum, profileWeight, correctionWeight]
   | succ m ih =>
-      rw [stateWeightSumTarget, stateWeight, allBits,
-        profileWeightSum_append_attempt, prefixWeightSum_attempt,
-        prefixWeightSum_attempt, ih (jointStep false j), ih (jointStep true j)]
+      rw [stateWeight, allBits, profileWeightSum_append_attempt,
+        prefixWeightSum_attempt, prefixWeightSum_attempt,
+        ih (jointStep false j), ih (jointStep true j)]
 
 /-- Target: the flattened list is exactly the union of all original ordinary
 integer realizations of the initial words, with no omissions or duplicates. -/
