@@ -1,0 +1,80 @@
+RawBridge.lean:62:43: error: unsolved goals
+case isTrue
+c : Nat
+w : Word
+h✝ : 10 ≤ c
+⊢ min (List.length w + 1)
+      (if (norm (List.reverse w) 1).snd = 0 then List.reverse (norm (List.reverse w) 1).fst ++ [c - 9]
+        else 1 :: List.reverse (norm (List.reverse w) 1).fst).length =
+    List.length w + 1
+
+case isFalse
+c : Nat
+w : Word
+h✝ : ¬10 ≤ c
+⊢ min (List.length w + 1)
+      (if (norm (List.reverse w) 0).snd = 0 then List.reverse (norm (List.reverse w) 0).fst ++ [c]
+        else 1 :: List.reverse (norm (List.reverse w) 0).fst).length =
+    List.length w + 1
+RawBridge.lean:80:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 19
+  0 ≤ b ≤ 9
+  0 ≤ a ≤ 9
+where
+ a := ↑x
+ b := ↑y
+ c := ↑(x.add y)
+RawBridge.lean:98:6: error: simp made no progress
+RawBridge.lean:102:6: error: simp made no progress
+RawBridge.lean:157:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 1
+  f ≥ 0
+  f + g ≥ 0
+  0 ≤ e ≤ 9
+  0 ≤ d ≤ 1
+  0 ≤ b ≤ 1
+  9*b - h ≤ 0
+where
+ b := ↑k
+ d := ↑(norm xs 0).snd
+ e := ↑y
+ f := ↑ys.length
+ g := ↑[].length
+ h := ↑c
+RawBridge.lean:166:8: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  List.zipWith Nat.add (?m.18003 ++ [?m.18005]) (?m.18004 ++ [?m.18006])
+case neg.intro.intro
+c k t : Nat
+xs : Word
+x : Nat
+hk : (if 10 ≤ c then 1 else 0) = k
+ht : c - 9 * k = t
+hw : Bounded (xs ++ [x])
+a : Nat := (norm xs 0).snd
+mu : Nat := (norm (List.reverse (xs ++ [x])) k).snd
+hxs : Bounded xs
+ha : a ≤ 1
+hkbit : k ≤ 1
+hmu : mu ≤ 1
+hrev : List.reverse (xs ++ [x]) = x :: List.reverse xs
+hnorm :
+  norm (List.reverse (xs ++ [x])) k =
+    ((x + k) % 10 :: (norm (List.reverse xs) ((x + k) / 10)).fst, (norm (List.reverse xs) ((x + k) / 10)).snd)
+hlen : List.length (norm xs 0).fst = (List.reverse (norm (List.reverse xs) ((x + k) / 10)).fst).length
+hm : ¬mu = 0
+hrne : 1 :: List.reverse (norm (List.reverse xs) ((x + k) / 10)).fst ≠ []
+ys : List Nat
+y : Nat
+hy : 1 :: List.reverse (norm (List.reverse xs) ((x + k) / 10)).fst = ys ++ [y]
+hybound : y ≤ 9
+hyslen : List.length (norm xs 0).fst = ys.length
+hz : (norm (List.reverse xs) ((x + k) / 10)).snd ≠ 0
+⊢ List.zipWith Nat.add ((norm xs 0).fst ++ [(x + (norm xs 0).snd) % 10] ++ [c + (x + (norm xs 0).snd) / 10 - 10 * k])
+      (if false = true then List.reverse (norm (List.reverse xs) ((x + k) / 10)).fst ++ [(x + k) % 10] ++ [t]
+      else ys ++ [y] ++ [(x + k) % 10]) =
+    List.zipWith Nat.add (norm xs 0).fst ys ++
+      [(x + (norm xs 0).snd) % 10 + y, c + (x + (norm xs 0).snd) / 10 - 10 * k + if mu = 0 then t else (x + k) % 10]
+RawBridge.lean:166:37: error: simp made no progress

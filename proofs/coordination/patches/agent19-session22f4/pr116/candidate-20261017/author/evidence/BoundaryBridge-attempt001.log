@@ -1,0 +1,92 @@
+BoundaryBridge.lean:33:2: error: unsolved goals
+case intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.inl
+xs ys : Word
+x w : Nat
+hx : x ≠ 6
+hw : w ≠ 12
+hB : Bounded (xs ++ [x])
+hW : Bounded (ys ++ [w])
+a mu : Nat
+p : Word
+P : Nat
+ha : a ≤ 1
+hmu : mu ≤ 1
+hraw1 : rawWord 6 (xs ++ [x]) = p ++ [P, firstLast mu x a]
+hP : firstPenultPossible mu x a P = true
+b nu : Nat
+z : Word
+Q : Nat
+hb : b ≤ 1
+hnu : nu ≤ 1
+hraw2 : rawWord 12 (ys ++ [w]) = z ++ [Q, secondLast nu w b]
+hQ : secondPenultPossible nu w b Q = true
+hxbound : x ≤ 18
+hwbound : w ≤ 18
+hfirst : rawWord 6 (xs ++ [x]) = ys ++ [w] ++ List.replicate 0 12
+hsecond : rawWord 12 (ys ++ [w]) = xs ++ [x] ++ List.replicate 2 6
+hqr : 0 + 2 = 2
+hl1 : firstLast mu x a = w
+hl2 : Q = 6 ∧ secondLast nu w b = 6
+⊢ ¬x = Q
+BoundaryBridge.lean:41:2: error: unsolved goals
+case intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.inr.inl
+xs ys : Word
+x w : Nat
+hx : x ≠ 6
+hw : w ≠ 12
+hB : Bounded (xs ++ [x])
+hW : Bounded (ys ++ [w])
+a mu : Nat
+p : Word
+P : Nat
+ha : a ≤ 1
+hmu : mu ≤ 1
+hraw1 : rawWord 6 (xs ++ [x]) = p ++ [P, firstLast mu x a]
+hP : firstPenultPossible mu x a P = true
+b nu : Nat
+z : Word
+Q : Nat
+hb : b ≤ 1
+hnu : nu ≤ 1
+hraw2 : rawWord 12 (ys ++ [w]) = z ++ [Q, secondLast nu w b]
+hQ : secondPenultPossible nu w b Q = true
+hxbound : x ≤ 18
+hwbound : w ≤ 18
+hfirst : rawWord 6 (xs ++ [x]) = ys ++ [w] ++ List.replicate 1 12
+hsecond : rawWord 12 (ys ++ [w]) = xs ++ [x] ++ List.replicate 1 6
+hqr : 1 + 1 = 2
+hl1 : P = w ∧ firstLast mu x a = 12
+hl2 : Q = x ∧ secondLast nu w b = 6
+⊢ (¬Q = 6 ∧ (firstLast mu Q a = 12 ∧ ¬P = 12) ∧ firstPenultPossible mu Q a P = true) ∧
+    secondLast nu P b = 6 ∧ secondPenultPossible nu P b Q = true
+BoundaryBridge.lean:49:2: error: unsolved goals
+case intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.intro.inr.inr
+xs ys : Word
+x w : Nat
+hx : x ≠ 6
+hw : w ≠ 12
+hB : Bounded (xs ++ [x])
+hW : Bounded (ys ++ [w])
+a mu : Nat
+p : Word
+P : Nat
+ha : a ≤ 1
+hmu : mu ≤ 1
+hraw1 : rawWord 6 (xs ++ [x]) = p ++ [P, firstLast mu x a]
+hP : firstPenultPossible mu x a P = true
+b nu : Nat
+z : Word
+Q : Nat
+hb : b ≤ 1
+hnu : nu ≤ 1
+hraw2 : rawWord 12 (ys ++ [w]) = z ++ [Q, secondLast nu w b]
+hQ : secondPenultPossible nu w b Q = true
+hxbound : x ≤ 18
+hwbound : w ≤ 18
+hfirst : rawWord 6 (xs ++ [x]) = ys ++ [w] ++ List.replicate 2 12
+hsecond : rawWord 12 (ys ++ [w]) = xs ++ [x] ++ List.replicate 0 6
+hqr : 2 + 0 = 2
+hl1 : P = 12 ∧ firstLast mu x a = 12
+hl2 : secondLast nu w b = x
+⊢ ¬w = P
+'Agent19.TwoStep.boundary_from_suffixes' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

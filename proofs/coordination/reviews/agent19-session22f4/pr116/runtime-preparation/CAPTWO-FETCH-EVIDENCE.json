@@ -1,0 +1,40 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "content": "import ExteriorCore\n\nnamespace P196.Agent6\nset_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\ntheorem capTwo_check :\n    (List.range 8).all (fun i =>\n      (List.range 18).all (fun j => checkChunk 1 7 i j)) = true := by\n  decide\n\ntheorem capTwo_escape (i j z : Nat) (hi : i < 8) (hj : j < 18)\n    (hz : z < 19) :\n    \u2203 t, t \u2264 7 \u2227 2 < (iterate t (decode 1 i j z)).word.length := by\n  apply checkChunk_sound 1 7 i j z hz\n  exact List.all_eq_true.mp (List.all_eq_true.mp capTwo_check i\n    (List.mem_range.mpr hi)) j (List.mem_range.mpr hj)\n\ntheorem capTwo_sharp :\n    escapes 2 6 (decode 1 6 1 17) = false \u2227\n    escapes 2 7 (decode 1 6 1 17) = true := by\n  decide\n\n#print axioms capTwo_check\n#print axioms capTwo_escape\n#print axioms capTwo_sharp\nend P196.Agent6\n",
+        "encoding": "utf-8",
+        "sha": "feed03ae38829a27b1664fb42b3a466b84069be1",
+        "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/ExteriorCapTwo__dfbc1fedf9443b89.lean",
+        "display_title": "ExteriorCapTwo__dfbc1fedf9443b89.lean"
+      },
+      "isError": false
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "content": "import ExteriorCore\n\nnamespace P196.Agent6\nset_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\ntheorem capTwo_check :\n    (List.range 8).all (fun i =>\n      (List.range 18).all (fun j => checkChunk 1 7 i j)) = true := by\n  decide\n\ntheorem capTwo_escape (i j z : Nat) (hi : i < 8) (hj : j < 18)\n    (hz : z < 19) :\n    \u2203 t, t \u2264 7 \u2227 2 < (iterate t (decode 1 i j z)).word.length := by\n  apply checkChunk_sound 1 7 i j z hz\n  exact List.all_eq_true.mp (List.all_eq_true.mp capTwo_check i\n    (List.mem_range.mpr hi)) j (List.mem_range.mpr hj)\n\ntheorem capTwo_sharp :\n    escapes 2 6 (decode 1 6 1 17) = false \u2227\n    escapes 2 7 (decode 1 6 1 17) = true := by\n  decide\n\n#print axioms capTwo_check\n#print axioms capTwo_escape\n#print axioms capTwo_sharp\nend P196.Agent6\n",
+        "encoding": "utf-8",
+        "sha": "feed03ae38829a27b1664fb42b3a466b84069be1",
+        "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/ExteriorCapTwo__5d4221076034654d.lean",
+        "display_title": "ExteriorCapTwo__5d4221076034654d.lean"
+      },
+      "isError": false
+    }
+  }
+]

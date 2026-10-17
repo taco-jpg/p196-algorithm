@@ -1,0 +1,18 @@
+List.dropWhile_cons.{u_1} {α : Type u_1} {x : α} {xs : List α} {p : α → Bool} :
+  List.dropWhile p (x :: xs) = if p x = true then List.dropWhile p xs else x :: xs
+/dev/shm/p196-agent19-session22f4/pr116-trim/Probe.lean:3:7: error: unknown constant 'List.dropWhile_eq_nil_iff'
+List.reverse_reverse.{u_1} {α : Type u_1} (as : List α) : as.reverse.reverse = as
+List.getLast?_reverse.{u_1} {α : Type u_1} {l : List α} : l.reverse.getLast? = l.head?
+List.head?_reverse.{u_1} {α : Type u_1} {l : List α} : l.reverse.head? = l.getLast?
+List.getLast?_eq_getLast.{u_1} {α : Type u_1} {l : List α} (h : l ≠ []) : l.getLast? = some (l.getLast h)
+List.replicate_succ.{u} {α : Type u} {a : α} {n : Nat} : List.replicate (n + 1) a = a :: List.replicate n a
+List.reverse_replicate.{u_1} {α : Type u_1} {n : Nat} {a : α} : (List.replicate n a).reverse = List.replicate n a
+/dev/shm/p196-agent19-session22f4/pr116-trim/Probe.lean:10:7: error: unknown constant 'List.dropWhile_dropWhile'
+/dev/shm/p196-agent19-session22f4/pr116-trim/Probe.lean:11:7: error: unknown constant 'List.mem_of_mem_dropWhile'
+List.length_replicate.{u} {α : Type u} {n : Nat} {a : α} : (List.replicate n a).length = n
+List.getLast?_append.{u_1} {α : Type u_1} {l l' : List α} : (l ++ l').getLast? = l'.getLast?.or l.getLast?
+List.getLast?_concat.{u_1} {α : Type u_1} {l : List α} {a : α} : (l ++ [a]).getLast? = some a
+List.dropWhile_cons_of_pos.{u_1} {α : Type u_1} {p : α → Bool} {a : α} {l : List α} (h : p a = true) :
+  List.dropWhile p (a :: l) = List.dropWhile p l
+List.dropWhile_cons_of_neg.{u_1} {α : Type u_1} {p : α → Bool} {a : α} {l : List α} (h : ¬p a = true) :
+  List.dropWhile p (a :: l) = a :: l

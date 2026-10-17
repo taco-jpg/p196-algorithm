@@ -1,0 +1,130 @@
+{
+  "agent": "Agent #6 runtime specialist",
+  "status": "RUNTIME_READY_SOURCE_HASH_VERIFIED",
+  "project_theorem_build_performed": false,
+  "toolchain": {
+    "official_release_url": "https://github.com/leanprover/lean4/releases/tag/v4.19.0",
+    "official_archive_url": "https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst",
+    "archive_bytes": 343842845,
+    "archive_sha256": "6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe",
+    "official_stream_hash_matches_reused_archive": true,
+    "original_reused_archive": "/tmp/p196-agent5-lean/lean-4.19.0-linux.tar.zst",
+    "extracted_root": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux",
+    "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "lake_version": "Lake version 5.0.0-6caaee8 (Lean version 4.19.0)",
+    "version_exit_code": 0,
+    "smoke_command": [
+      "lean",
+      "--trust=0",
+      "-o",
+      "RuntimeSmoke.olean",
+      "RuntimeSmoke.lean"
+    ],
+    "smoke_exit_code": 0,
+    "smoke_scope": "Imports Std and Lean; checks and prints axioms of Nat.add_assoc. No project theorem claim."
+  },
+  "source": {
+    "commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+    "tree": "d0ead2bb8b2f316c8f7a5f150c4a2078b7f04702",
+    "snapshot_path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/source-snapshot/p196-algorithm-4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+    "archive_url": "https://codeload.github.com/taco-jpg/p196-algorithm/tar.gz/4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+    "archive_sha256": "d96fd5aa638208299c7273e336f6462022cf8b99b219df6e2751f1dd1decfd05",
+    "archive_bytes": 372414315,
+    "blob_verification": {
+      "source_commit": "4b4edf976b2c7a9ba1dad80636c0e21c66350325",
+      "tree_sha": "d0ead2bb8b2f316c8f7a5f150c4a2078b7f04702",
+      "truncated": false,
+      "checked_blob_count": 13711,
+      "checked_bytes": 745387433,
+      "lean_file_count": 3965,
+      "errors": [],
+      "all_blobs_match": true
+    }
+  },
+  "execution": {
+    "default_sandbox_lean_error": "error: failed to locate application",
+    "diagnosis": "Numeric /proc/PID/exe access is denied in the default sandbox; /proc/self/exe is available.",
+    "approved_recovery": "Use tools.exec_command sandbox_permissions=require_escalated for Lean execution and necessary public source fetches.",
+    "binary_or_kernel_shim_used": false,
+    "archive_extraction": "tar --no-same-owner --zstd -xf ARCHIVE -C runtime-agent6",
+    "source_extraction": "Python tarfile.extractall(..., filter=\"data\")",
+    "source_snapshot_policy": "Keep unchanged; stage copies or use a separately owned Git checkout for work."
+  },
+  "staging": {
+    "helper": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/stage_pinned_registry.py",
+    "consolidation-core": {
+      "modules": 38,
+      "status": "SOURCE_AND_IMPORT_CHECK_ONLY",
+      "report": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/staged/consolidation-core/staging.json"
+    },
+    "agent2-saturated-profile": {
+      "modules": 17,
+      "status": "SOURCE_AND_IMPORT_CHECK_ONLY",
+      "report": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/staged/agent2-saturated-profile/staging.json"
+    }
+  },
+  "git_cache": {
+    "path": "/workspace/scratch/f8aedc6d7adf/runtime-agent6/git-cache",
+    "clone_options": [
+      "--filter=blob:none",
+      "--no-checkout"
+    ],
+    "shallow": false,
+    "historical_commit_objects_verified": [
+      "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "09271f10881699435067ac0502c1f1957c1cbcc0",
+      "adc0f66099f5743961d03e183cabd61b7c8fa66a"
+    ],
+    "remote_write_performed": false,
+    "current_main_blobs_complete": true,
+    "object_coverage_receipt": "/workspace/scratch/f8aedc6d7adf/tmp-agent6-runtime/git-cache-object-coverage.json",
+    "blob_seeding_receipt": "/workspace/scratch/f8aedc6d7adf/tmp-agent6-runtime/git-main-blob-seeding.json",
+    "missing_historical_objects_may_require_lazy_fetch": false
+  },
+  "files": {
+    "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lean": {
+      "bytes": 8880,
+      "sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023"
+    },
+    "/workspace/scratch/f8aedc6d7adf/runtime-agent6/lean-4.19.0-linux/bin/lake": {
+      "bytes": 11928,
+      "sha256": "5111aee5c9434ab05d4265606475ef22e8bda69aaf3a0657b61a7eec6e550bed"
+    },
+    "/workspace/scratch/f8aedc6d7adf/runtime-agent6/smoke/RuntimeSmoke.lean": {
+      "bytes": 73,
+      "sha256": "3c3b429a519167e2b2171515b8ac61c6c30a139ddeac74d6150ee3d703651e0b"
+    },
+    "/workspace/scratch/f8aedc6d7adf/runtime-agent6/smoke/RuntimeSmoke.log": {
+      "bytes": 100,
+      "sha256": "8a7294505b031897bd45a24d832113ab5b242cfebddbd0489cc70010835db422"
+    },
+    "/workspace/scratch/f8aedc6d7adf/runtime-agent6/stage_pinned_registry.py": {
+      "bytes": 8896,
+      "sha256": "a561315998521d8efec989a3f7459e201aa17a7ebe96064c3f3ae1b0ce3c81c3"
+    },
+    "/workspace/scratch/f8aedc6d7adf/runtime-agent6/staged/consolidation-core/staging.json": {
+      "bytes": 22817,
+      "sha256": "f6b5c97cd137554e50817b81ba3a7cc495b1013dd8406d28570738b8eaa1dd1b"
+    },
+    "/workspace/scratch/f8aedc6d7adf/runtime-agent6/staged/agent2-saturated-profile/staging.json": {
+      "bytes": 10825,
+      "sha256": "e0690a1c1971ff142b396bcb49cf63208ca6d445dd6273b30ab10d606bdb847a"
+    },
+    "/workspace/scratch/f8aedc6d7adf/tmp-agent6-runtime/source-blob-verification.json": {
+      "bytes": 277,
+      "sha256": "698119c68f64ebb954fc72b206cc68074ac2a36400cf236ba218695ac7a4adc8"
+    },
+    "/workspace/scratch/f8aedc6d7adf/tmp-agent6-runtime/upstream-lean-archive.sha256": {
+      "bytes": 68,
+      "sha256": "52bb197dbc6e3498bdb8bb0e592503333e39a2813ee96dec8c7850fecb75ba21"
+    },
+    "/workspace/scratch/f8aedc6d7adf/tmp-agent6-runtime/git-cache-object-coverage.json": {
+      "bytes": 6477,
+      "sha256": "36bcc26ef4290559667c0e8b318b669259bb26840ba18d815791712d018ff105"
+    },
+    "/workspace/scratch/f8aedc6d7adf/tmp-agent6-runtime/git-main-blob-seeding.json": {
+      "bytes": 358,
+      "sha256": "b884fbe272bc90ea64d191eab30e0ec28e14dc65ef6faf0e6cc00344151e45a3"
+    }
+  }
+}

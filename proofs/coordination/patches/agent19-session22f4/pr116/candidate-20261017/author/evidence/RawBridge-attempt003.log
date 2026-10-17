@@ -1,0 +1,26 @@
+RawBridge.lean:64:12: error: tactic 'split' failed, consider using `set_option trace.split.failure true`
+case isTrue
+c : Nat
+w : Word
+h✝ : 10 ≤ c
+⊢ (let k := 1;
+      let t := c - 9 * k;
+      let left := norm w 0;
+      let right := norm (List.reverse w) k;
+      let u := c + left.snd - 10 * k;
+      let rhs := if (right.snd == 0) = true then List.reverse right.fst ++ [t] else 1 :: List.reverse right.fst;
+      List.zipWith Nat.add (left.fst ++ [u]) rhs).length =
+    List.length w + 1
+RawBridge.lean:64:12: error: tactic 'split' failed, consider using `set_option trace.split.failure true`
+case isFalse
+c : Nat
+w : Word
+h✝ : ¬10 ≤ c
+⊢ (let k := 0;
+      let t := c - 9 * k;
+      let left := norm w 0;
+      let right := norm (List.reverse w) k;
+      let u := c + left.snd - 10 * k;
+      let rhs := if (right.snd == 0) = true then List.reverse right.fst ++ [t] else 1 :: List.reverse right.fst;
+      List.zipWith Nat.add (left.fst ++ [u]) rhs).length =
+    List.length w + 1

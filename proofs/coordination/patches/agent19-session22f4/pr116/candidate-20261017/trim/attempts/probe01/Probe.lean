@@ -1,0 +1,16 @@
+import ExteriorCore
+#check List.dropWhile_cons
+#check List.dropWhile_eq_nil_iff
+#check List.reverse_reverse
+#check List.getLast?_reverse
+#check List.head?_reverse
+#check List.getLast?_eq_getLast
+#check List.replicate_succ
+#check List.reverse_replicate
+#check List.dropWhile_dropWhile
+#check List.mem_of_mem_dropWhile
+#check List.length_replicate
+#check List.getLast?_append
+#check List.getLast?_concat
+#check List.dropWhile_cons_of_pos
+#check List.dropWhile_cons_of_neg

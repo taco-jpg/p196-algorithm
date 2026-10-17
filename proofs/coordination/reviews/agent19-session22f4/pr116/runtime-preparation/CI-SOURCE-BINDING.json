@@ -1,0 +1,125 @@
+{
+  "repository": "taco-jpg/p196-algorithm",
+  "commit": "51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378",
+  "job_id": 117215969204,
+  "run_id": 38973106121,
+  "job": {
+    "id": 117215969204,
+    "name": "kernel",
+    "status": "completed",
+    "conclusion": "success",
+    "run_id": 38973106121,
+    "logs_url": null,
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1
+      },
+      {
+        "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2
+      },
+      {
+        "name": "Obtain SHA256-pinned official Lean 4.19.0 release",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3
+      },
+      {
+        "name": "Fresh exact-source kernel checks and axiom audits",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4
+      },
+      {
+        "name": "Independent finite Python controls",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5
+      },
+      {
+        "name": "Retain authentic compiler output and source evidence",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6
+      },
+      {
+        "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 12
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13
+      }
+    ]
+  },
+  "raw_log_file": "CI-job-117215969204.log",
+  "raw_log_sha256": "92dcbf4d4cd9869b1dab49a03538021271ca8446aa3c5186699fcdf7957db00e",
+  "actual_compiler_commands": [
+    "LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 -o ExteriorCore.olean ExteriorCore.lean 2>&1 | tee core.log",
+    "LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 BoundaryArithmetic.lean 2>&1 | tee boundary.log",
+    "LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 ShortWidths.lean 2>&1 | tee short.log",
+    "LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 NormTail.lean 2>&1 | tee normtail.log",
+    "LEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 ZipTail.lean 2>&1 | tee ziptail.log"
+  ],
+  "old_CI_has_DElab_async_flag": false,
+  "source_binding": [
+    {
+      "module_source": "ExteriorCore.lean",
+      "github_blob_matches_computed": true,
+      "fetched_sha256": "4f4f31795a5198bffccf86ba1b7beed33da43e93063dfd0253266e8d1626d8e2",
+      "CI_sha256": "4f4f31795a5198bffccf86ba1b7beed33da43e93063dfd0253266e8d1626d8e2",
+      "match": true
+    },
+    {
+      "module_source": "BoundaryArithmetic.lean",
+      "github_blob_matches_computed": true,
+      "fetched_sha256": "2e4c678e7a40ec06f44fc6ba2339c65f8f3e20e5312ef29c73f488c7131d2f1d",
+      "CI_sha256": "2e4c678e7a40ec06f44fc6ba2339c65f8f3e20e5312ef29c73f488c7131d2f1d",
+      "match": true
+    },
+    {
+      "module_source": "ShortWidths.lean",
+      "github_blob_matches_computed": true,
+      "fetched_sha256": "cbda20c98147e04a0201fc4eceb11ce0b8f35b13d5e1d9b81432ebd40f4131c3",
+      "CI_sha256": "cbda20c98147e04a0201fc4eceb11ce0b8f35b13d5e1d9b81432ebd40f4131c3",
+      "match": true
+    },
+    {
+      "module_source": "NormTail.lean",
+      "github_blob_matches_computed": true,
+      "fetched_sha256": "3f78fb5d1842b4f188b246e6390a3a48a49f06add0a04da6b55a959f4bb51292",
+      "CI_sha256": "3f78fb5d1842b4f188b246e6390a3a48a49f06add0a04da6b55a959f4bb51292",
+      "match": true
+    },
+    {
+      "module_source": "ZipTail.lean",
+      "github_blob_matches_computed": true,
+      "fetched_sha256": "47e0353787aaa884c1bed169b089edf72da1fec4bfe8c9d811d6a0fbbdb7b6c4",
+      "CI_sha256": "47e0353787aaa884c1bed169b089edf72da1fec4bfe8c9d811d6a0fbbdb7b6c4",
+      "match": true
+    }
+  ],
+  "endpoint_axiom_lines": [
+    "'P196.Agent6.escapes_sound' depends on axioms: [propext]",
+    "'P196.Agent6.checkChunk_sound' depends on axioms: [propext, Quot.sound]",
+    "'Agent110.TwoStepBoundary.no_abstract_two_step_boundary' does not depend on any axioms",
+    "'Agent110.TwoStepShort.empty_not_period_two' does not depend on any axioms",
+    "'Agent110.TwoStepShort.all_singletons_not_period_two' does not depend on any axioms",
+    "'Agent110.TwoStepShort.singleton_not_period_two' depends on axioms: [propext, Quot.sound]",
+    "'Agent110.TwoStepNorm.norm_snoc' depends on axioms: [propext]",
+    "'Agent110.TwoStepNorm.norm_digits_length' depends on axioms: [propext]",
+    "'Agent110.TwoStepNorm.norm_terminal_digit' depends on axioms: [propext]",
+    "'Agent110.TwoStepNorm.norm_terminal_carry' depends on axioms: [propext]",
+    "'Agent110.TwoStepZip.zipWith_add_snoc' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "'Agent110.TwoStepZip.zipWith_add_terminal' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ]
+}

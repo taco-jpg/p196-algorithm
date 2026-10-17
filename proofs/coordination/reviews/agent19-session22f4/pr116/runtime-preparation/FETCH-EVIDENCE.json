@@ -1,0 +1,277 @@
+{
+  "fetches": [
+    {
+      "i": 0,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "\ufeff2026-10-16T22:00:48.2096263Z Current runner version: '2.337.0'\n2026-10-16T22:00:48.2111927Z ##[group]Runner Image Provisioner\n2026-10-16T22:00:48.2112547Z Hosted Compute Agent\n2026-10-16T22:00:48.2112926Z Version: 20261012.601\n2026-10-16T22:00:48.2113304Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d\n2026-10-16T22:00:48.2113803Z Build Date: 2026-10-12T17:48:21Z\n2026-10-16T22:00:48.2114205Z Worker ID: {27b35de7-5be9-451e-a696-bea166bd3270}\n2026-10-16T22:00:48.2114612Z Region: westus3\n2026-10-16T22:00:48.2115015Z Cloud: Azure\n2026-10-16T22:00:48.2115345Z ##[endgroup]\n2026-10-16T22:00:48.2116213Z ##[group]Operating System\n2026-10-16T22:00:48.2116572Z Ubuntu\n2026-10-16T22:00:48.2116875Z 24.04.5\n2026-10-16T22:00:48.2117228Z LTS\n2026-10-16T22:00:48.2117539Z ##[endgroup]\n2026-10-16T22:00:48.2117919Z ##[group]Runner Image\n2026-10-16T22:00:48.2118288Z Image: ubuntu-24.04\n2026-10-16T22:00:48.2118629Z Version: 20261012.334.1\n2026-10-16T22:00:48.2119655Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md\n2026-10-16T22:00:48.2120570Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334\n2026-10-16T22:00:48.2121248Z ##[endgroup]\n2026-10-16T22:00:48.2121932Z ##[group]GITHUB_TOKEN Permissions\n2026-10-16T22:00:48.2123272Z Contents: read\n2026-10-16T22:00:48.2123641Z Metadata: read\n2026-10-16T22:00:48.2124038Z ##[endgroup]\n2026-10-16T22:00:48.2125289Z Secret source: Actions\n2026-10-16T22:00:48.2125861Z Cache mode: write\n2026-10-16T22:00:48.2126323Z Prepare workflow directory\n2026-10-16T22:00:48.2326680Z Prepare all required actions\n2026-10-16T22:00:48.2357239Z Getting action download info\n2026-10-16T22:00:48.5072190Z Download action repository 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)\n2026-10-16T22:00:48.6017945Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)\n2026-10-16T22:00:48.8180317Z Complete job name: kernel\n2026-10-16T22:00:48.8629204Z ##[group]Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683\n2026-10-16T22:00:48.8629708Z with:\n2026-10-16T22:00:48.8630210Z   sparse-checkout: proofs/contributions/agent-110/two-step-return-20261016\nproofs/ExteriorCore__a7a354ad633a456c.lean\n\n2026-10-16T22:00:48.8631085Z   sparse-checkout-cone-mode: false\n2026-10-16T22:00:48.8631403Z   persist-credentials: false\n2026-10-16T22:00:48.8631691Z   repository: taco-jpg/p196-algorithm\n2026-10-16T22:00:48.8633939Z   token: ***\n2026-10-16T22:00:48.8634168Z   ssh-strict: true\n2026-10-16T22:00:48.8634405Z   ssh-user: git\n2026-10-16T22:00:48.8634635Z   clean: true\n2026-10-16T22:00:48.8634864Z   fetch-depth: 1\n2026-10-16T22:00:48.8635098Z   fetch-tags: false\n2026-10-16T22:00:48.8635344Z   show-progress: true\n2026-10-16T22:00:48.8635586Z   lfs: false\n2026-10-16T22:00:48.8635806Z   submodules: false\n2026-10-16T22:00:48.8636048Z   set-safe-directory: true\n2026-10-16T22:00:48.8636483Z ##[endgroup]\n2026-10-16T22:00:48.9267742Z Syncing repository: taco-jpg/p196-algorithm\n2026-10-16T22:00:48.9269253Z ##[group]Getting Git version info\n2026-10-16T22:00:48.9269891Z Working directory is '/home/runner/work/p196-algorithm/p196-algorithm'\n2026-10-16T22:00:48.9270941Z [command]/usr/bin/git version\n2026-10-16T22:00:48.9332971Z git version 2.55.0\n2026-10-16T22:00:48.9347526Z ##[endgroup]\n2026-10-16T22:00:48.9357988Z Temporarily overriding HOME='/home/runner/work/_temp/c0ee7c7d-ba7a-49eb-8732-4ebeab12f660' before making global git config changes\n2026-10-16T22:00:48.9359023Z Adding repository directory to the temporary git global config as a safe directory\n2026-10-16T22:00:48.9361869Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/p196-algorithm/p196-algorithm\n2026-10-16T22:00:48.9407323Z Deleting the contents of '/home/runner/work/p196-algorithm/p196-algorithm'\n2026-10-16T22:00:48.9409732Z ##[group]Initializing the repository\n2026-10-16T22:00:48.9413560Z [command]/usr/bin/git init /home/runner/work/p196-algorithm/p196-algorithm\n2026-10-16T22:00:48.9519510Z hint: Using 'master' as the name for the initial branch. This default branch name\n2026-10-16T22:00:48.9520157Z hint: will change to \"main\" in Git 3.0. To configure the initial branch name\n2026-10-16T22:00:48.9520877Z hint: to use in all of your new repositories, which will suppress this warning,\n2026-10-16T22:00:48.9521772Z hint: call:\n2026-10-16T22:00:48.9522098Z hint:\n2026-10-16T22:00:48.9522660Z hint: \tgit config --global init.defaultBranch <name>\n2026-10-16T22:00:48.9523362Z hint:\n2026-10-16T22:00:48.9524233Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\n2026-10-16T22:00:48.9525106Z hint: 'development'. The just-created branch can be renamed via this command:\n2026-10-16T22:00:48.9525754Z hint:\n2026-10-16T22:00:48.9526107Z hint: \tgit branch -m <name>\n2026-10-16T22:00:48.9526495Z hint:\n2026-10-16T22:00:48.9527031Z hint: Disable this message with \"git config set advice.defaultBranchName false\"\n2026-10-16T22:00:48.9528005Z Initialized empty Git repository in /home/runner/work/p196-algorithm/p196-algorithm/.git/\n2026-10-16T22:00:48.9537882Z [command]/usr/bin/git remote add origin https://github.com/taco-jpg/p196-algorithm\n2026-10-16T22:00:48.9583568Z ##[endgroup]\n2026-10-16T22:00:48.9584000Z ##[group]Disabling automatic garbage collection\n2026-10-16T22:00:48.9591415Z [command]/usr/bin/git config --local gc.auto 0\n2026-10-16T22:00:48.9613481Z ##[endgroup]\n2026-10-16T22:00:48.9614061Z ##[group]Setting up auth\n2026-10-16T22:00:48.9619195Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n2026-10-16T22:00:48.9645992Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n2026-10-16T22:00:48.9940533Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\n2026-10-16T22:00:48.9970140Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n2026-10-16T22:00:49.0145658Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***\n2026-10-16T22:00:49.0179697Z ##[endgroup]\n2026-10-16T22:00:49.0180285Z ##[group]Fetching the repository\n2026-10-16T22:00:49.0186312Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378:refs/remotes/origin/research/agent-110/two-step-return-20261016T2123Z\n2026-10-16T22:00:49.8516050Z From https://github.com/taco-jpg/p196-algorithm\n2026-10-16T22:00:49.8518179Z  * [new ref]         51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378 -> origin/research/agent-110/two-step-return-20261016T2123Z\n2026-10-16T22:00:49.8522013Z ##[endgroup]\n2026-10-16T22:00:49.8523026Z ##[group]Determining the checkout info\n2026-10-16T22:00:49.8524182Z ##[endgroup]\n2026-10-16T22:00:49.8525122Z ##[group]Setting up sparse checkout\n2026-10-16T22:00:49.8526153Z [command]/usr/bin/git config core.sparseCheckout true\n2026-10-16T22:00:49.8557585Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout\n2026-10-16T22:00:49.8577823Z .git/info/sparse-checkout\n2026-10-16T22:00:49.8584309Z ##[endgroup]\n2026-10-16T22:00:49.8585327Z ##[group]Checking out the ref\n2026-10-16T22:00:49.8588716Z [command]/usr/bin/git checkout --progress --force -B research/agent-110/two-step-return-20261016T2123Z refs/remotes/origin/research/agent-110/two-step-return-20261016T2123Z\n2026-10-16T22:00:50.2759724Z Switched to a new branch 'research/agent-110/two-step-return-20261016T2123Z'\n2026-10-16T22:00:50.2763642Z branch 'research/agent-110/two-step-return-20261016T2123Z' set up to track 'origin/research/agent-110/two-step-return-20261016T2123Z'.\n2026-10-16T22:00:50.2772381Z ##[endgroup]\n2026-10-16T22:00:50.2815092Z [command]/usr/bin/git log -1 --format=%H\n2026-10-16T22:00:50.2836738Z 51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378\n2026-10-16T22:00:50.2843629Z ##[group]Removing auth\n2026-10-16T22:00:50.2845581Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n2026-10-16T22:00:50.2870456Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n2026-10-16T22:00:50.3061167Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\n2026-10-16T22:00:50.3084424Z http.https://github.com/.extraheader\n2026-10-16T22:00:50.3089911Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n2026-10-16T22:00:50.3117005Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n2026-10-16T22:00:50.3296890Z ##[endgroup]\n2026-10-16T22:00:50.3442557Z ##[group]Run set -euo pipefail\n2026-10-16T22:00:50.3442795Z \u001b[36;1mset -euo pipefail\u001b[0m\n2026-10-16T22:00:50.3442982Z \u001b[36;1mcurl --fail --location --retry 3 \\\u001b[0m\n2026-10-16T22:00:50.3443313Z \u001b[36;1m  https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst \\\u001b[0m\n2026-10-16T22:00:50.3443646Z \u001b[36;1m  --output \"$RUNNER_TEMP/lean-4.19.0-linux.tar.zst\"\u001b[0m\n2026-10-16T22:00:50.3444043Z \u001b[36;1mecho \"6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe  $RUNNER_TEMP/lean-4.19.0-linux.tar.zst\" | sha256sum -c -\u001b[0m\n2026-10-16T22:00:50.3444462Z \u001b[36;1mtar --zstd -xf \"$RUNNER_TEMP/lean-4.19.0-linux.tar.zst\" -C \"$RUNNER_TEMP\"\u001b[0m\n2026-10-16T22:00:50.3444742Z \u001b[36;1mecho \"$RUNNER_TEMP/lean-4.19.0-linux/bin\" >> \"$GITHUB_PATH\"\u001b[0m\n2026-10-16T22:00:50.3661847Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}\n2026-10-16T22:00:50.3662074Z ##[endgroup]\n2026-10-16T22:00:50.3799083Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n2026-10-16T22:00:50.3799574Z                                  Dload  Upload   Total   Spent    Left  Speed\n2026-10-16T22:00:50.3799793Z \n2026-10-16T22:00:50.6417296Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n2026-10-16T22:00:50.6417684Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n2026-10-16T22:00:51.2415058Z \n2026-10-16T22:00:51.7712678Z  42  327M   42  140M    0     0   163M      0  0:00:02 --:--:--  0:00:02  163M\n2026-10-16T22:00:51.7713231Z 100  327M  100  327M    0     0   235M      0  0:00:01  0:00:01 --:--:--  353M\n2026-10-16T22:00:51.9568107Z /home/runner/work/_temp/lean-4.19.0-linux.tar.zst: OK\n2026-10-16T22:00:53.7223580Z ##[group]Run set -euo pipefail\n2026-10-16T22:00:53.7223813Z \u001b[36;1mset -euo pipefail\u001b[0m\n2026-10-16T22:00:53.7223986Z \u001b[36;1mmkdir \"$RUNNER_TEMP/agent110-original-two-step\"\u001b[0m\n2026-10-16T22:00:53.7224305Z \u001b[36;1mcp proofs/ExteriorCore__a7a354ad633a456c.lean \"$RUNNER_TEMP/agent110-original-two-step/ExteriorCore.lean\"\u001b[0m\n2026-10-16T22:00:53.7224768Z \u001b[36;1mcp proofs/contributions/agent-110/two-step-return-20261016/BoundaryArithmetic.lean \"$RUNNER_TEMP/agent110-original-two-step/\"\u001b[0m\n2026-10-16T22:00:53.7225251Z \u001b[36;1mcp proofs/contributions/agent-110/two-step-return-20261016/ShortWidths.lean \"$RUNNER_TEMP/agent110-original-two-step/\"\u001b[0m\n2026-10-16T22:00:53.7225698Z \u001b[36;1mcp proofs/contributions/agent-110/two-step-return-20261016/NormTail.lean \"$RUNNER_TEMP/agent110-original-two-step/\"\u001b[0m\n2026-10-16T22:00:53.7226141Z \u001b[36;1mcp proofs/contributions/agent-110/two-step-return-20261016/ZipTail.lean \"$RUNNER_TEMP/agent110-original-two-step/\"\u001b[0m\n2026-10-16T22:00:53.7226502Z \u001b[36;1mcd \"$RUNNER_TEMP/agent110-original-two-step\"\u001b[0m\n2026-10-16T22:00:53.7226704Z \u001b[36;1mlean --version | tee version.log\u001b[0m\n2026-10-16T22:00:53.7226879Z \u001b[36;1msha256sum *.lean | tee sources.sha256\u001b[0m\n2026-10-16T22:00:53.7227226Z \u001b[36;1mLEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 -o ExteriorCore.olean ExteriorCore.lean 2>&1 | tee core.log\u001b[0m\n2026-10-16T22:00:53.7227830Z \u001b[36;1mLEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 BoundaryArithmetic.lean 2>&1 | tee boundary.log\u001b[0m\n2026-10-16T22:00:53.7228236Z \u001b[36;1mLEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 ShortWidths.lean 2>&1 | tee short.log\u001b[0m\n2026-10-16T22:00:53.7228624Z \u001b[36;1mLEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 NormTail.lean 2>&1 | tee normtail.log\u001b[0m\n2026-10-16T22:00:53.7229001Z \u001b[36;1mLEAN_PATH=. lean --trust=0 -j1 -DmaxHeartbeats=0 -DmaxRecDepth=100000 ZipTail.lean 2>&1 | tee ziptail.log\u001b[0m\n2026-10-16T22:00:53.7285057Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}\n2026-10-16T22:00:53.7285270Z ##[endgroup]\n2026-10-16T22:00:53.8740558Z Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)\n2026-10-16T22:00:53.8772072Z 2e4c678e7a40ec06f44fc6ba2339c65f8f3e20e5312ef29c73f488c7131d2f1d  BoundaryArithmetic.lean\n2026-10-16T22:00:53.8772823Z 4f4f31795a5198bffccf86ba1b7beed33da43e93063dfd0253266e8d1626d8e2  ExteriorCore.lean\n2026-10-16T22:00:53.8773238Z 3f78fb5d1842b4f188b246e6390a3a48a49f06add0a04da6b55a959f4bb51292  NormTail.lean\n2026-10-16T22:00:53.8773775Z cbda20c98147e04a0201fc4eceb11ce0b8f35b13d5e1d9b81432ebd40f4131c3  ShortWidths.lean\n2026-10-16T22:00:53.8774326Z 47e0353787aaa884c1bed169b089edf72da1fec4bfe8c9d811d6a0fbbdb7b6c4  ZipTail.lean\n2026-10-16T22:00:54.1206725Z 'P196.Agent6.escapes_sound' depends on axioms: [propext]\n2026-10-16T22:00:54.1207244Z 'P196.Agent6.checkChunk_sound' depends on axioms: [propext, Quot.sound]\n2026-10-16T22:00:57.5089496Z 'Agent110.TwoStepBoundary.no_abstract_two_step_boundary' does not depend on any axioms\n2026-10-16T22:00:57.7664491Z 'Agent110.TwoStepShort.empty_not_period_two' does not depend on any axioms\n2026-10-16T22:00:57.7671296Z 'Agent110.TwoStepShort.all_singletons_not_period_two' does not depend on any axioms\n2026-10-16T22:00:57.7671801Z 'Agent110.TwoStepShort.singleton_not_period_two' depends on axioms: [propext, Quot.sound]\n2026-10-16T22:00:57.9414253Z 'Agent110.TwoStepNorm.norm_snoc' depends on axioms: [propext]\n2026-10-16T22:00:57.9421357Z 'Agent110.TwoStepNorm.norm_digits_length' depends on axioms: [propext]\n2026-10-16T22:00:57.9421804Z 'Agent110.TwoStepNorm.norm_terminal_digit' depends on axioms: [propext]\n2026-10-16T22:00:57.9422226Z 'Agent110.TwoStepNorm.norm_terminal_carry' depends on axioms: [propext]\n2026-10-16T22:00:58.1422195Z 'Agent110.TwoStepZip.zipWith_add_snoc' depends on axioms: [propext, Classical.choice, Quot.sound]\n2026-10-16T22:00:58.1422815Z 'Agent110.TwoStepZip.zipWith_add_terminal' depends on axioms: [propext, Classical.choice, Quot.sound]\n2026-10-16T22:00:58.1556845Z ##[group]Run set -euo pipefail\n2026-10-16T22:00:58.1557038Z \u001b[36;1mset -euo pipefail\u001b[0m\n2026-10-16T22:00:58.1557230Z \u001b[36;1mcd proofs/contributions/agent-110/two-step-return-20261016\u001b[0m\n2026-10-16T22:00:58.1557478Z \u001b[36;1mpython3 boundary_obstruction.py | tee boundary_python.log\u001b[0m\n2026-10-16T22:00:58.1557718Z \u001b[36;1mpython3 reference_scan.py 4 | tee scan_python.log\u001b[0m\n2026-10-16T22:00:58.1610028Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}\n2026-10-16T22:00:58.1610225Z ##[endgroup]\n2026-10-16T22:00:58.1772049Z q,mu1,mu2,candidate-count 0 0 0 38\n2026-10-16T22:00:58.1772328Z q,mu1,mu2,candidate-count 0 0 1 0\n2026-10-16T22:00:58.1772577Z q,mu1,mu2,candidate-count 0 1 0 44\n2026-10-16T22:00:58.1772800Z q,mu1,mu2,candidate-count 0 1 1 0\n2026-10-16T22:00:58.1773022Z q,mu1,mu2,candidate-count 1 0 0 15\n2026-10-16T22:00:58.1773192Z q,mu1,mu2,candidate-count 1 0 1 20\n2026-10-16T22:00:58.1773625Z q,mu1,mu2,candidate-count 1 1 0 20\n2026-10-16T22:00:58.1774242Z q,mu1,mu2,candidate-count 1 1 1 0\n2026-10-16T22:00:58.1774493Z q,mu1,mu2,candidate-count 2 0 0 0\n2026-10-16T22:00:58.1774711Z q,mu1,mu2,candidate-count 2 0 1 0\n2026-10-16T22:00:58.1774938Z q,mu1,mu2,candidate-count 2 1 0 72\n2026-10-16T22:00:58.1775166Z q,mu1,mu2,candidate-count 2 1 1 72\n2026-10-16T22:00:58.1775398Z feasible-candidate-count 0\n2026-10-16T22:00:58.1775941Z PASS: finite necessary conditions exclude canonical phase6 two-cycles; Lean bridge still WIP\n2026-10-16T22:00:58.5880446Z original six-state witness: PASS\n2026-10-16T22:00:58.5880914Z length,checked,period2,equal-length,lengthDeltaHistogram: (0, 1, 0, 0, {1: 1})\n2026-10-16T22:00:58.5881342Z length,checked,period2,equal-length,lengthDeltaHistogram: (1, 17, 0, 0, {1: 13, 2: 4})\n2026-10-16T22:00:58.5881696Z length,checked,period2,equal-length,lengthDeltaHistogram: (2, 324, 0, 21, {0: 21, 1: 187, 2: 116})\n2026-10-16T22:00:58.5882104Z length,checked,period2,equal-length,lengthDeltaHistogram: (3, 6156, 0, 388, {-1: 15, 0: 388, 1: 3481, 2: 2272})\n2026-10-16T22:00:58.5882554Z length,checked,period2,equal-length,lengthDeltaHistogram: (4, 116964, 0, 7483, {-3: 1, -2: 28, -1: 260, 0: 7483, 1: 65958, 2: 43234})\n2026-10-16T22:00:58.5960064Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02\n2026-10-16T22:00:58.5960290Z with:\n2026-10-16T22:00:58.5960464Z   name: agent110-two-step-51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378\n2026-10-16T22:00:58.5961142Z   path: /home/runner/work/_temp/agent110-original-two-step/*.log\n/home/runner/work/_temp/agent110-original-two-step/sources.sha256\nproofs/contributions/agent-110/two-step-return-20261016/*_python.log\n\n2026-10-16T22:00:58.5961578Z   retention-days: 14\n2026-10-16T22:00:58.5961709Z   if-no-files-found: warn\n2026-10-16T22:00:58.5961840Z   compression-level: 6\n2026-10-16T22:00:58.5961961Z   overwrite: false\n2026-10-16T22:00:58.5962080Z   include-hidden-files: false\n2026-10-16T22:00:58.5962216Z ##[endgroup]\n2026-10-16T22:00:58.7001921Z (node:2214) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n2026-10-16T22:00:58.7002631Z (Use `node --trace-deprecation ...` to show where the warning was created)\n2026-10-16T22:00:58.7077833Z Multiple search paths detected. Calculating the least common ancestor of all paths\n2026-10-16T22:00:58.7079222Z The least common ancestor is /home/runner/work. This will be the root directory of the artifact\n2026-10-16T22:00:58.7079891Z With the provided path, there will be 9 files uploaded\n2026-10-16T22:00:58.7080881Z Artifact name is valid!\n2026-10-16T22:00:58.7081255Z Root directory input is valid!\n2026-10-16T22:00:59.0450951Z Beginning upload of artifact content to blob storage\n2026-10-16T22:00:59.0621807Z (node:2214) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\n2026-10-16T22:00:59.2581097Z Uploaded bytes 3115\n2026-10-16T22:00:59.4341188Z Finished uploading artifact content to blob storage!\n2026-10-16T22:00:59.4341971Z SHA256 digest of uploaded artifact zip is f4054deee6c2ed68be9de1b025f2ad1b573ff1b1afc060146cb88a70224c4670\n2026-10-16T22:00:59.4343142Z Finalizing artifact upload\n2026-10-16T22:00:59.6747047Z Artifact agent110-two-step-51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378.zip successfully finalized. Artifact ID 12078030116\n2026-10-16T22:00:59.6747592Z Artifact agent110-two-step-51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378 has been successfully uploaded! Final size is 3115 bytes. Artifact ID is 12078030116\n2026-10-16T22:00:59.6751665Z Artifact download URL: https://github.com/taco-jpg/p196-algorithm/actions/runs/38973106121/artifacts/12078030116\n2026-10-16T22:00:59.6895131Z Post job cleanup.\n2026-10-16T22:00:59.7427956Z [command]/usr/bin/git version\n2026-10-16T22:00:59.7458245Z git version 2.55.0\n2026-10-16T22:00:59.7482455Z Temporarily overriding HOME='/home/runner/work/_temp/5a494381-e54d-43b9-9654-8630c4b3df19' before making global git config changes\n2026-10-16T22:00:59.7482958Z Adding repository directory to the temporary git global config as a safe directory\n2026-10-16T22:00:59.7485911Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/p196-algorithm/p196-algorithm\n2026-10-16T22:00:59.7514527Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n2026-10-16T22:00:59.7540096Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n2026-10-16T22:00:59.7765761Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\n2026-10-16T22:00:59.7795751Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n2026-10-16T22:00:59.8117393Z Cleaning up orphan processes\n2026-10-16T22:00:59.8302838Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/\n"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "i": 1,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "jobs": [
+              {
+                "id": 117215969204,
+                "name": "kernel",
+                "status": "completed",
+                "conclusion": "success",
+                "run_id": 38973106121,
+                "logs_url": null,
+                "steps": [
+                  {
+                    "name": "Set up job",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 1
+                  },
+                  {
+                    "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 2
+                  },
+                  {
+                    "name": "Obtain SHA256-pinned official Lean 4.19.0 release",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 3
+                  },
+                  {
+                    "name": "Fresh exact-source kernel checks and axiom audits",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 4
+                  },
+                  {
+                    "name": "Independent finite Python controls",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 5
+                  },
+                  {
+                    "name": "Retain authentic compiler output and source evidence",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 6
+                  },
+                  {
+                    "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 12
+                  },
+                  {
+                    "name": "Complete job",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "number": 13
+                  }
+                ]
+              }
+            ]
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "i": 2,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "import Std\n\n/-! Exact autonomous exterior map for the decimal complementary-band quotient.\nThe ordinary reverse-and-add bridge is a separate written proof. -/\nnamespace P196.Agent6\n\nabbrev Word := List Nat\n\n/-- Normalize a finite coefficient word with a specified incoming carry. -/\ndef norm : Word \u2192 Nat \u2192 Word \u00d7 Nat\n  | [], e => ([], e)\n  | x :: xs, e =>\n      let rest := norm xs ((x + e) / 10)\n      ((x + e) % 10 :: rest.1, rest.2)\n\nstructure Exterior where\n  phase : Nat\n  word : Word\n  deriving DecidableEq, Repr\n\n/-- Delete the homogeneous phase suffix, leaving the canonical interface. -/\ndef trim (c : Nat) (w : Word) : Word :=\n  (w.reverse.dropWhile (fun x => x == c)).reverse\n\n/-- The actual overflow is computed, not independently selected. -/\ndef advance (s : Exterior) : Exterior :=\n  let c := s.phase\n  let k := if 10 \u2264 c then 1 else 0\n  let t := c - 9 * k\n  let left := norm s.word 0\n  let right := norm s.word.reverse k\n  let u := c + left.2 - 10 * k\n  let rhs := if right.2 == 0 then right.1.reverse ++ [t]\n             else 1 :: right.1.reverse\n  let raw := List.zipWith Nat.add (left.1 ++ [u]) rhs\n  \u27e82 * t, trim (2 * t) raw\u27e9\n\ndef iterate : Nat \u2192 Exterior \u2192 Exterior\n  | 0, s => s\n  | n + 1, s => iterate n (advance s)\n\n/-- True exactly when the exterior exceeds the cap at some time at most n. -/\ndef escapes (cap : Nat) : Nat \u2192 Exterior \u2192 Bool\n  | 0, s => decide (cap < s.word.length)\n  | n + 1, s => if cap < s.word.length then true else escapes cap n (advance s)\n\ntheorem escapes_sound (cap n : Nat) (s : Exterior)\n    (h : escapes cap n s = true) :\n    \u2203 t, t \u2264 n \u2227 cap < (iterate t s).word.length := by\n  induction n generalizing s with\n  | zero =>\n      have hs : cap < s.word.length := by simpa [escapes] using h\n      exact \u27e80, Nat.le_refl 0, hs\u27e9\n  | succ n ih =>\n      by_cases hs : cap < s.word.length\n      \u00b7 exact \u27e80, Nat.zero_le _, hs\u27e9\n      \u00b7 have hn : escapes cap n (advance s) = true := by\n          simpa [escapes, hs] using h\n        obtain \u27e8t, ht, hw\u27e9 := ih (advance s) hn\n        exact \u27e8t + 1, Nat.succ_le_succ ht, hw\u27e9\n\n/-- Fixed-width base-19 digits, least significant first. -/\ndef digits19 : Nat \u2192 Nat \u2192 Word\n  | 0, _ => []\n  | n + 1, z => z % 19 :: digits19 n (z / 19)\n\n/-- All periodic phases, positive first coefficient, then `tailWidth` digits.\nCanonical trimming gives a bijection with exteriors of length <=tailWidth+1. -/\ndef decode (tailWidth phaseIndex firstIndex tailCode : Nat) : Exterior :=\n  let c := 2 * (phaseIndex + 1)\n  \u27e8c, trim c ((firstIndex + 1) :: digits19 tailWidth tailCode)\u27e9\n\ndef checkChunk (tailWidth bound phaseIndex firstIndex : Nat) : Bool :=\n  (List.range (19 ^ tailWidth)).all fun z =>\n    escapes (tailWidth + 1) bound (decode tailWidth phaseIndex firstIndex z)\n\ntheorem checkChunk_sound (tailWidth bound phaseIndex firstIndex z : Nat)\n    (hz : z < 19 ^ tailWidth)\n    (h : checkChunk tailWidth bound phaseIndex firstIndex = true) :\n    \u2203 t, t \u2264 bound \u2227 tailWidth + 1 <\n      (iterate t (decode tailWidth phaseIndex firstIndex z)).word.length := by\n  apply escapes_sound\n  exact List.all_eq_true.mp h z (List.mem_range.mpr hz)\n\n#print axioms escapes_sound\n#print axioms checkChunk_sound\n\nend P196.Agent6\n",
+            "encoding": "utf-8",
+            "sha": "aab842a9da5e052115cac89b5229f2aa68f8e4e7",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/ExteriorCore__a7a354ad633a456c.lean",
+            "display_title": "ExteriorCore__a7a354ad633a456c.lean"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "i": 3,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "import Std\n\n/-!\nAgent #110 \u2014 research-only arithmetic kernel. UNCOMPILED in this session.\nIntended complete proof must additionally import exact P196.Agent6.advance\nand show any canonical period-two phase-6 orbit yields a boundaryCandidate.\nThis source is OUTSIDE every accepted Lean build. No axioms/admissions/unsafe.\n-/\nnamespace Agent110.TwoStepBoundary\n\ndef firstLast (mu x a : Nat) : Nat :=\n  if mu == 0 then 12 + (x + a) / 10\n  else 6 + (x + a) / 10 + x % 10\n\ndef firstPenultPossible (mu x a want : Nat) : Bool :=\n  if mu == 0 then decide (want = (x + a) % 10 + x % 10)\n  else decide ((x + a) % 10 \u2264 want \u2227 want \u2264 (x + a) % 10 + 9)\n\ndef secondLast (nu w b : Nat) : Nat :=\n  if nu == 0 then 5 + (w + b) / 10\n  else 2 + (w + b) / 10 + (w + 1) % 10\n\ndef secondPenultPossible (nu w b want : Nat) : Bool :=\n  if nu == 0 then decide (want = (w + b) % 10 + (w + 1) % 10)\n  else decide ((w + b) % 10 \u2264 want \u2227 want \u2264 (w + b) % 10 + 9)\n\n/-- q = first trim count; 2-q = second trim count; mu/nu overflow bits.\nx is original terminal coefficient; w first-step surviving terminal coefficient.\nThe free reflected digits are allowed their full 0..9 range (overapprox). -/\ndef boundaryCandidate (q mu nu x a b w : Nat) : Bool :=\n  (x != 6) &&\n  (let L := firstLast mu x a\n   if q == 0 then L != 12 && w == L\n   else if q == 1 then\n     L == 12 && w != 12 && firstPenultPossible mu x a w\n   else\n     L == 12 && firstPenultPossible mu x a 12 && w != 12) &&\n  (let L := secondLast nu w b\n   if q == 0 then L == 6 && secondPenultPossible nu w b 6\n   else if q == 1 then L == 6 && secondPenultPossible nu w b x\n   else L == x)\n\n/-- Full finite search over necessary terminal-boundary parameters only.\nNo width cap is encoded, but the missing source-to-boundary theorem matters. -/\ndef anyBoundaryCandidate : Bool :=\n  (List.range 3).any fun q =>\n    (List.range 2).any fun mu =>\n      (List.range 2).any fun nu =>\n        (List.range 19).any fun x =>\n          (List.range 2).any fun a =>\n            (List.range 2).any fun b =>\n              (List.range 19).any fun w =>\n                boundaryCandidate q mu nu x a b w\n\n/-- WIP: candidate kernel-reduction check; awaiting official Lean 4.19.0.\nDo not label LEAN-CHECKED before compiling under the actual dependency pins. -/\ntheorem no_abstract_two_step_boundary : anyBoundaryCandidate = false := by\n  decide\n\n#print axioms no_abstract_two_step_boundary\n\n/-!\nMISSING FORMAL BRIDGES:\n1. For canonical phase6 words of length >=2, exact norm/trim and\n   the two-step state equality imply q+secondTrim=2.\n2. Extract bounded x, w, carry bits a,b and overflow bits mu,nu,\n   and prove boundaryCandidate q mu nu x a b w = true.\n3. Handle empty and singleton source words by the exact source semantics.\n4. Import this self-contained arithmetic result into the ORIGINAL\n   ExteriorCore/ExteriorCoverage theorem without weakening Canonical.\n-/\nend Agent110.TwoStepBoundary\n",
+            "encoding": "utf-8",
+            "sha": "e65c2c23343f629982052a238946d8cfb92b873b",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/contributions/agent-110/two-step-return-20261016/BoundaryArithmetic.lean",
+            "display_title": "BoundaryArithmetic.lean"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "i": 4,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "import ExteriorCore\n\n/-! Agent #110: exact finite widths 0 and 1 for the original Agent6.advance.\nAt this checkpoint compilation is pending; no theorem acceptance is inferred. -/\nnamespace Agent110.TwoStepShort\nopen P196.Agent6\n\ntheorem empty_not_period_two :\n    advance (advance (\u27e86, []\u27e9 : Exterior)) \u2260 (\u27e86, []\u27e9 : Exterior) := by\n  decide\n\ntheorem all_singletons_not_period_two :\n    (List.range 19).all (fun x =>\n      decide (advance (advance (\u27e86, [x]\u27e9 : Exterior)) \u2260 (\u27e86, [x]\u27e9 : Exterior))) =\n      true := by\n  decide\n\ntheorem singleton_not_period_two (x : Nat) (hx : x \u2264 18) :\n    advance (advance (\u27e86, [x]\u27e9 : Exterior)) \u2260 (\u27e86, [x]\u27e9 : Exterior) := by\n  have hxmem : x \u2208 List.range 19 := List.mem_range.mpr (by omega)\n  have h := List.all_eq_true.mp all_singletons_not_period_two x hxmem\n  exact of_decide_eq_true h\n\n#print axioms empty_not_period_two\n#print axioms all_singletons_not_period_two\n#print axioms singleton_not_period_two\nend Agent110.TwoStepShort\n",
+            "encoding": "utf-8",
+            "sha": "3771491c25d5fe220be5dfd868b8607a77b78fee",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/contributions/agent-110/two-step-return-20261016/ShortWidths.lean",
+            "display_title": "ShortWidths.lean"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "i": 5,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "import ExteriorCore\n\n/-! Agent #110: exact carry interface for original P196.Agent6.norm.\nProposed source-bridge layer; no all-width nonreturn theorem claimed. -/\nnamespace Agent110.TwoStepNorm\nopen P196.Agent6\n\ntheorem norm_snoc (xs : Word) (x e : Nat) :\n    norm (xs ++ [x]) e =\n      ((norm xs e).1 ++ [(x + (norm xs e).2) % 10],\n       (x + (norm xs e).2) / 10) := by\n  induction xs generalizing e with\n  | nil => simp [norm]\n  | cons y ys ih => simp [norm, ih]\n\ntheorem norm_digits_length (xs : Word) (e : Nat) :\n    (norm xs e).1.length = xs.length := by\n  induction xs generalizing e with\n  | nil => rfl\n  | cons x xs ih => simp [norm, ih]\n\ntheorem norm_terminal_digit (xs : Word) (x e : Nat) :\n    (norm (xs ++ [x]) e).1.getLast? =\n      some ((x + (norm xs e).2) % 10) := by\n  rw [norm_snoc]\n  simp\n\ntheorem norm_terminal_carry (xs : Word) (x e : Nat) :\n    (norm (xs ++ [x]) e).2 =\n      (x + (norm xs e).2) / 10 := by\n  rw [norm_snoc]\n\n#print axioms norm_snoc\n#print axioms norm_digits_length\n#print axioms norm_terminal_digit\n#print axioms norm_terminal_carry\nend Agent110.TwoStepNorm\n",
+            "encoding": "utf-8",
+            "sha": "25eacfd8b973f949244f84609f47a39825ac416e",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/contributions/agent-110/two-step-return-20261016/NormTail.lean",
+            "display_title": "NormTail.lean"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "i": 6,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "import ExteriorCore\n\n/-! Generic last-column preservation for original exterior raw zipWith Nat.add.\nThis is a bridge lemma, not an all-length cycle theorem. -/\nnamespace Agent110.TwoStepZip\nopen P196.Agent6\n\ntheorem zipWith_add_snoc (xs ys : Word) (x y : Nat)\n    (hlen : xs.length = ys.length) :\n    List.zipWith Nat.add (xs ++ [x]) (ys ++ [y]) =\n      List.zipWith Nat.add xs ys ++ [x + y] := by\n  induction xs generalizing ys with\n  | nil =>\n      cases ys with\n      | nil => simp\n      | cons y ys => simp at hlen\n  | cons a as ih =>\n      cases ys with\n      | nil => simp at hlen\n      | cons b bs =>\n          have htail : as.length = bs.length := by simpa using hlen\n          simp [List.zipWith, ih bs htail]\n\ntheorem zipWith_add_terminal (xs ys : Word) (x y : Nat)\n    (hlen : xs.length = ys.length) :\n    (List.zipWith Nat.add (xs ++ [x]) (ys ++ [y])).getLast? =\n      some (x + y) := by\n  rw [zipWith_add_snoc xs ys x y hlen]\n  simp\n\n#print axioms zipWith_add_snoc\n#print axioms zipWith_add_terminal\nend Agent110.TwoStepZip\n",
+            "encoding": "utf-8",
+            "sha": "f57dc4d2f754dc29b59656301451310106af7c25",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/contributions/agent-110/two-step-return-20261016/ZipTail.lean",
+            "display_title": "ZipTail.lean"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "i": 7,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "# Agent #110 | Actual exterior two-step return investigation (WIP)\n\n**Claim:** agent110-exterior-two-step-return-20261016, coordinated in https://github.com/taco-jpg/p196-algorithm/issues/61. Source baseline: historical Agent6 ExteriorCore.lean and ExteriorCoverage.lean at commit e775dd342df5190643a61595ff8d93dabfe98a69. Authenticated GitHub account taco-jpg is NOT a dedicated agent identity.\n\n**Precise target:** prove for every canonical P196.Agent6.Exterior state s with phase=6 that advance(advance s) != s, or construct and verify a true counterexample. The phase 6\u219212\u21926 is the only possible two-step phase loop of the canonical even nonneutral phases. All finite word lengths are in scope, with the empty word and singleton handled separately.\n\n**Verification status:** This is written proof development and exact exploratory computation only. BoundaryArithmetic.lean has NOT been compiled or axiom audited. No final all-width Lean result, complete palindrome-avoidance result, new integer orbit or infinite 196 theorem is claimed. Do not put source in any accepted build yet.\n\n## Concrete results\n\n- reference_scan.py is a literal independent Python port of original norm, trim, advance and Canonical, validated against the six-state historical Agent110 radial-observable witness. Exhaustive phase6 canonical widths 0..5 yielded counts [1,17,324,6156,116964,2222316], **2,345,778 distinct states** total, zero exact two-step state returns. Full width histogram in scan-length-0-to-5.log. This proves nothing about all widths.\n- boundary_obstruction.py checks all necessary terminal-column digit/carry constraints for a putative two-step return, permitting arbitrary digits of the unknown interior reflected normalizations. It finds zero candidate tuples over 3 choices of first trim, 2*2 overflow bits, x and w in 0..18, and both incoming carries in 0..1. This finite abstraction is width-independent but only gives an all-width theorem when the exact source-to-abstraction bridge is proved in Lean.\n- BoundaryArithmetic.lean defines the same abstract finite predicate with an intended pure kernel decide theorem, isolated as uncompiled WIP. No native_decide, new axiom, sorry or admitted proof is used.\n- An exploratory fixed-width mixed-integer model including full 0/1 carries and actual trim/width constraints found solver-infeasible cases for every width 1..40 and spot widths 50,100,200,400, across all 12 branches. This is **not** an UNSAT proof certificate and requires no acceptance inference.\n\n## Width-independent terminal-column derivation (written candidate, not yet Lean verified)\n\nLet B be a canonical phase6 word with n>=2, x its terminal coefficient (0<=x<=18, x!=6), a in {0,1} the forward carry entering x, and mu in {0,1} its reflected overflow bit. Since raw output length of each advance is old word length plus one, a true two-step equality implies **q+r=2**, where q is first trim count and r second trim count. Thus q is exactly 0,1,2. Set lam1=floor((x+a)/10), e=x%10. The last raw coefficient L1 equals 12+lam1 if mu=0, or 6+lam1+e if mu=1. The penultimate raw coefficient P1 is (x+a)%10+x%10 if mu=0, or (x+a)%10+d with a free reflected digit 0<=d<=9 if mu=1.\n\nIf q=0, the final surviving first-step coefficient is w=L1 !=12. If q=1, L1=12, w=P1 !=12. If q=2, L1=P1=12, and w is some 0..18 coefficient !=12.\n\nFor phase12 set b in {0,1} for incoming forward carry into w, nu in {0,1} for reflected overflow, lam2=floor((w+b)/10). The second raw final coefficient L2 equals 5+lam2 if nu=0, or 2+lam2+(w+1)%10 if nu=1. Its penultimate raw coefficient P2 equals (w+b)%10+(w+1)%10 if nu=0, or (w+b)%10+f for a free 0<=f<=9 if nu=1.\n\nIf q=0 then r=2 entails L2=P2=6; if q=1 then r=1 entails L2=6 and P2=x; if q=2 then r=0 entails L2=x. These necessary conditions are inconsistent, as checked by exhaustive finite arithmetic.\n\nManual case audit:\n- q=0, mu=0: no first trim implies lam1=1, hence w=13. With nu=0, P2=7+b>6; with nu=1, L2=7.\n- q=0, mu=1: w>=6 and w!=12. For nu=1, L2=6 would require w=3 or 12, impossible. For nu=0, L2=P2=6 would require w=12, impossible.\n- q=1, mu=0: L1=12 implies x+a<=9 and w=2x+a !=12. If nu=0, equality of P2=x gives 3x+2a+b=19; its only solution with a,b in {0,1} is (x,a,b)=(6,0,1), excluded by canonicality. If nu=1, L2=6 implies w=3 (w12 excluded), giving x=1,a=1 but P2>=3>x.\n- q=1, mu=1: L1=12 forces x=15 (alternative x=6 excluded), and w lies between 5 and 15 inclusive, w!=12. With nu=0, P2<=12<x; with nu=1, L2=6 forces w=3 or 12.\n- q=2, mu=0: L1=P1=12 would force x=6 (excluded). For mu=1 it forces x=15, whereas the untrimmed second L2<=12.\n- Boundary cases n=0 and n=1 checked by Python exact enumeration, but NOT by Lean; require separate kernel checks.\n\n## Formalization obligations\n\n(1) Prove terminal-digit/terminal-carry extraction from the *original* norm and both reflected normalizations. (2) Prove raw width = prior width +1, exact prefix/suffix trimming, and bound all new coefficients by 18 for the relevant canonical inputs. (3) Extract q,r and the abstract witness from actual equality of two exteriors; in particular n>=2 allows a penultimate raw coefficient, and q+r=2. (4) Rebuild the finite arithmetic kernel with Lean 4.19.0 and #print axioms; then prove the imported original-map two-cycle exclusion. (5) Kernel-check n=0 and1. Review exact semantics and hypothesis preservation independently before accepting any theorem.\n\nThe known Agent9 ExteriorErasure full_binary_collapse has arbitrarily deep one-step contractions for specific words, so width monotonicity must NOT be assumed. The existing historical Agent110 radion/phase observable returns without actual state return; the old result is preserved and not duplicated. The current scope does not take Agent #6 signed-beta update/telescope, Agent #416 return-certificate lower bounds, or any shared main-branch integration slot.\n\n## Reproduce (Python 3, only the optional MILP discovery needs SciPy)\n\n    python3 reference_scan.py 5\n    python3 boundary_obstruction.py\n\nSource of the exact port, finite scan, abstraction, and uncompiled Lean draft is retained in this contribution.\n",
+            "encoding": "utf-8",
+            "sha": "7176d1856bbce5f2d45fc1635602d3890e9bad0a",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/contributions/agent-110/two-step-return-20261016/RESEARCH.md",
+            "display_title": "RESEARCH.md"
+          },
+          "isError": false
+        }
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "path": "proofs/ExteriorCoverage__a0c468583e72152b.lean",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "import ExteriorCapTwo\n\nnamespace P196.Agent6\n\n@[simp] theorem trim_append_phase (c : Nat) (w : Word) :\n    trim c (w ++ [c]) = trim c w := by\n  simp [trim, List.reverse_append]\n\n@[simp] theorem trim_phase_pair (c : Nat) : trim c [c,c] = [] := by\n  simp [trim]\n\n/-- Structural assumptions on a canonical periodic exterior. -/\ndef Canonical (s : Exterior) : Prop :=\n  0 < s.phase \u2227 s.phase \u2264 16 \u2227 s.phase % 2 = 0 \u2227\n  (\u2200 x \u2208 s.word, x \u2264 18) \u2227\n  (\u2200 x xs, s.word = x :: xs \u2192 0 < x) \u2227\n  trim s.phase s.word = s.word\n\n/-- Every canonical cap-two exterior is represented by the checked decoder. -/\ntheorem capTwo_coverage (s : Exterior) (hs : Canonical s)\n    (hlen : s.word.length \u2264 2) :\n    \u2203 i j z, i < 8 \u2227 j < 18 \u2227 z < 19 \u2227 s = decode 1 i j z := by\n  rcases s with \u27e8c,w\u27e9\n  rcases hs with \u27e8hpos,hmax,heven,hcoeff,hhead,htrim\u27e9\n  dsimp only at hpos hmax heven hcoeff hhead htrim hlen\n  have hi : c / 2 - 1 < 8 := by omega\n  have hc : 2 * (c / 2 - 1 + 1) = c := by omega\n  cases w with\n  | nil =>\n      refine \u27e8c/2-1,c-1,c,hi,by omega,by omega,?_\u27e9\n      have hm : c % 19 = c := Nat.mod_eq_of_lt (by omega)\n      simp [decode,digits19,hc,hm,show c-1+1=c by omega]\n  | cons x xs =>\n      have hxpos : 0 < x := hhead x xs rfl\n      have hxmax : x \u2264 18 := hcoeff x (by simp)\n      cases xs with\n      | nil =>\n          refine \u27e8c/2-1,x-1,c,hi,by omega,by omega,?_\u27e9\n          have hm : c % 19 = c := Nat.mod_eq_of_lt (by omega)\n          simp only [decode,digits19,hc,hm,show x-1+1=x by omega]\n          congr 1\n          change [x] = trim c ([x] ++ [c])\n          rw [trim_append_phase, htrim]\n      | cons y ys =>\n          have hymax : y \u2264 18 := hcoeff y (by simp)\n          have hys : ys = [] := by\n            have : ys.length = 0 := by simp only [List.length_cons] at hlen; omega\n            exact List.length_eq_zero_iff.mp this\n          subst ys\n          refine \u27e8c/2-1,x-1,y,hi,by omega,by omega,?_\u27e9\n          have hm : y % 19 = y := Nat.mod_eq_of_lt (by omega)\n          simp [decode,digits19,hc,hm,show x-1+1=x by omega,htrim]\n\n/-- Unconditional finite certificate for all canonical exteriors of length <=2. -/\ntheorem capTwo_uniform_escape (s : Exterior) (hs : Canonical s)\n    (hlen : s.word.length \u2264 2) :\n    \u2203 t, t \u2264 7 \u2227 2 < (iterate t s).word.length := by\n  obtain \u27e8i,j,z,hi,hj,hz,heq\u27e9 := capTwo_coverage s hs hlen\n  subst s\n  exact capTwo_escape i j z hi hj hz\n\n/-- There is no seven-transition canonical path entirely inside cap two. -/\ntheorem capTwo_no_confined_path (s : Exterior) (hs : Canonical s)\n    (hpath : \u2200 t, t \u2264 7 \u2192 (iterate t s).word.length \u2264 2) : False := by\n  have hlen : s.word.length \u2264 2 := hpath 0 (by omega)\n  obtain \u27e8t,ht,he\u27e9 := capTwo_uniform_escape s hs hlen\n  have hb := hpath t ht\n  omega\n\n#print axioms trim_append_phase\n#print axioms trim_phase_pair\n#print axioms capTwo_coverage\n#print axioms capTwo_uniform_escape\n#print axioms capTwo_no_confined_path\nend P196.Agent6\n",
+            "encoding": "utf-8",
+            "sha": "fc61a9fc042aaf3462d5a9026ca26f26bb9a117b",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/ExteriorCoverage__a0c468583e72152b.lean",
+            "display_title": "ExteriorCoverage__a0c468583e72152b.lean"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "path": "proofs/ExteriorCoverage__bfe0d45bc5bd453e.lean",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "content": "import ExteriorCapTwo\n\nnamespace P196.Agent6\n\n@[simp] theorem trim_append_phase (c : Nat) (w : Word) :\n    trim c (w ++ [c]) = trim c w := by\n  simp [trim, List.reverse_append]\n\n@[simp] theorem trim_phase_pair (c : Nat) : trim c [c,c] = [] := by\n  simp [trim]\n\n/-- Structural assumptions on a canonical periodic exterior. -/\ndef Canonical (s : Exterior) : Prop :=\n  0 < s.phase \u2227 s.phase \u2264 16 \u2227 s.phase % 2 = 0 \u2227\n  (\u2200 x \u2208 s.word, x \u2264 18) \u2227\n  (\u2200 x xs, s.word = x :: xs \u2192 0 < x) \u2227\n  trim s.phase s.word = s.word\n\n/-- Every canonical cap-two exterior is represented by the checked decoder. -/\ntheorem capTwo_coverage (s : Exterior) (hs : Canonical s)\n    (hlen : s.word.length \u2264 2) :\n    \u2203 i j z, i < 8 \u2227 j < 18 \u2227 z < 19 \u2227 s = decode 1 i j z := by\n  rcases s with \u27e8c,w\u27e9\n  rcases hs with \u27e8hpos,hmax,heven,hcoeff,hhead,htrim\u27e9\n  dsimp only at hpos hmax heven hcoeff hhead htrim hlen\n  have hi : c / 2 - 1 < 8 := by omega\n  have hc : 2 * (c / 2 - 1 + 1) = c := by omega\n  cases w with\n  | nil =>\n      refine \u27e8c/2-1,c-1,c,hi,by omega,by omega,?_\u27e9\n      have hm : c % 19 = c := Nat.mod_eq_of_lt (by omega)\n      simp [decode,digits19,hc,hm,show c-1+1=c by omega]\n  | cons x xs =>\n      have hxpos : 0 < x := hhead x xs rfl\n      have hxmax : x \u2264 18 := hcoeff x (by simp)\n      cases xs with\n      | nil =>\n          refine \u27e8c/2-1,x-1,c,hi,by omega,by omega,?_\u27e9\n          have hm : c % 19 = c := Nat.mod_eq_of_lt (by omega)\n          simp only [decode,digits19,hc,hm,show x-1+1=x by omega]\n          congr 1\n          change [x] = trim c ([x] ++ [c])\n          rw [trim_append_phase, htrim]\n      | cons y ys =>\n          have hymax : y \u2264 18 := hcoeff y (by simp)\n          have hys : ys = [] := by\n            have : ys.length = 0 := by simp only [List.length_cons] at hlen; omega\n            exact List.length_eq_zero_iff.mp this\n          subst ys\n          refine \u27e8c/2-1,x-1,y,hi,by omega,by omega,?_\u27e9\n          have hm : y % 19 = y := Nat.mod_eq_of_lt (by omega)\n          simp [decode,digits19,hc,hm,show x-1+1=x by omega,htrim]\n\n/-- Unconditional finite certificate for all canonical exteriors of length <=2. -/\ntheorem capTwo_uniform_escape (s : Exterior) (hs : Canonical s)\n    (hlen : s.word.length \u2264 2) :\n    \u2203 t, t \u2264 7 \u2227 2 < (iterate t s).word.length := by\n  obtain \u27e8i,j,z,hi,hj,hz,heq\u27e9 := capTwo_coverage s hs hlen\n  subst s\n  exact capTwo_escape i j z hi hj hz\n\n/-- There is no seven-transition canonical path entirely inside cap two. -/\ntheorem capTwo_no_confined_path (s : Exterior) (hs : Canonical s)\n    (hpath : \u2200 t, t \u2264 7 \u2192 (iterate t s).word.length \u2264 2) : False := by\n  have hlen : s.word.length \u2264 2 := hpath 0 (by omega)\n  obtain \u27e8t,ht,he\u27e9 := capTwo_uniform_escape s hs hlen\n  have hb := hpath t ht\n  omega\n\n#print axioms trim_append_phase\n#print axioms trim_phase_pair\n#print axioms capTwo_coverage\n#print axioms capTwo_uniform_escape\n#print axioms capTwo_no_confined_path\nend P196.Agent6\n",
+            "encoding": "utf-8",
+            "sha": "fc61a9fc042aaf3462d5a9026ca26f26bb9a117b",
+            "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/51f8f8d523eb8434b6a80ad7dc1e30fe63ab8378/proofs/ExteriorCoverage__bfe0d45bc5bd453e.lean",
+            "display_title": "ExteriorCoverage__bfe0d45bc5bd453e.lean"
+          },
+          "isError": false
+        }
+      }
+    }
+  ]
+}
