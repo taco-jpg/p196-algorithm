@@ -66,7 +66,7 @@ theorem outerDigits_canonical_ceil (d : Nat → Nat) (k L : Nat)
         · simp [outerDigits, ha, hb]
     · have ha : ¬ L - 1 < k := by omega
       have hb : L - 1 - (L - 1) = 0 := by omega
-      rw [outerDigits, if_neg ha, if_pos (by omega : 0 < k), hb]
+      rw [outerDigits, if_neg ha, hb, if_pos (by omega : 0 < k)]
     exact hd0
 
 /-- The exact-width outer-digit construction is an ordinary integer
@@ -169,7 +169,7 @@ palindrome can realize. This remains unproved. -/
 def ConverseObstruction (k L : Nat) : Prop :=
   2 * k > L + 1 →
     ∃ n : Nat, ¬ 10 ∣ n ∧
-      ∀ P e : Nat, Canonical P e L → Palindrome P →
+      ∀ P : Nat, ∀ e : Nat → Nat, Canonical P e L → Palindrome P →
         P % (10 ^ k) ≠ n % (10 ^ k)
 
 /-- Candidate witness used in the converse: n=1+2*10^(k-1). For k≤L,
