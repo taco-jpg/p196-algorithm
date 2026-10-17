@@ -1,0 +1,98 @@
+{
+  "status": "COMMAND_INSPECTED",
+  "source_commit": "10a173cb635fa8d03e357f454232816fc3e77609",
+  "mathematical_proof_check": false,
+  "package": {
+    "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/check.py",
+    "git_blob": "db12d2a4ef1f8717df2de1531a8337b35a070e9a",
+    "arguments": [
+      "ap.add_argument(\"--repo\", type=Path, required=True, help=\"Git object repository containing all pinned commits\")",
+      "ap.add_argument(\"--lean\", type=Path, required=True)",
+      "ap.add_argument(\"--evidence\", type=Path, required=True, help=\"Must not already exist\")",
+      "ap.add_argument(\"--manifest\", type=Path, default=HERE / \"SOURCES.json\")",
+      "ap.add_argument(\"--module\", action=\"append\", default=[], help=\"Select frozen new modules; include their local module imports (default: all)\")",
+      "ap.add_argument(\"--timeout-seconds\", type=int, default=1800)"
+    ],
+    "required": [
+      "--repo",
+      "--lean",
+      "--evidence"
+    ],
+    "default_timeout_seconds": 1800,
+    "compiler_arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "new_modules": [
+      "ResidualFiveFibers",
+      "ResidualFiveFiberConclusion",
+      "ResidualFiveResidues",
+      "ResidualFiveResidueCount",
+      "ResidualFiveResidueBridge",
+      "ResidualFiveCountArithmetic",
+      "ResidualFiveFilteredConclusion"
+    ],
+    "dependency_commits": [
+      "913441a936a437e5f4b82d03d7e7fae32da877af",
+      "6fae6e659e5c08c59666588c71a4ed06760de85e",
+      "326645944168ad2b035a1e653b61527d79684156",
+      "05e4ac30bb35ef87446d6d12a0733625c254bb0e"
+    ],
+    "new_execution": false
+  },
+  "source_import_route": {
+    "path": "proofs/verify_project__214bf7673efe116b.py",
+    "git_blob": "21131b03dfa516eb19a0a7a4df4f2a41020d4db1",
+    "arguments": [
+      "parser.add_argument('--lean', type=Path, required=True)",
+      "parser.add_argument('--output', type=Path, required=True)",
+      "parser.add_argument('--project', action='append', default=[])",
+      "parser.add_argument('--check-only', action='store_true')",
+      "parser.add_argument('--registry', type=Path, default=ROOT / 'proofs/ACCEPTED_BUILD.json')"
+    ],
+    "registry": "proofs/contributions/agent-103/residual-five-fibers-20261016/BUILD_REGISTRY.json",
+    "project": "agent103-residual-five-fibers",
+    "roots": [
+      "ResidualFiveFilteredConclusion"
+    ],
+    "registered_modules": 22,
+    "reachable_modules": 22,
+    "unused_modules": [],
+    "topological_order": [
+      "LychrelDigitSums",
+      "PrefixInverse",
+      "ActualPrefix",
+      "PalindromeBridge",
+      "EightFamilies",
+      "ResidualFiveShape",
+      "Lychrel196Research",
+      "Agent101DigitPairs",
+      "Agent101MultiplicityBounds",
+      "Agent101SplitEnumeration",
+      "Agent101NumericFibers",
+      "ResidualFiveFibers",
+      "TemporalResidues",
+      "ResidualFive",
+      "ResidualFiveWitness",
+      "ResidualFiveConclusion",
+      "ResidualFiveFiberConclusion",
+      "ResidualFiveResidues",
+      "ResidualFiveResidueBridge",
+      "ResidualFiveCountArithmetic",
+      "ResidualFiveResidueCount",
+      "ResidualFiveFilteredConclusion"
+    ],
+    "catalogue_complete": false,
+    "requires_lean_for_source_check": true,
+    "check_only_compiles_modules": false,
+    "check_only_validates_endpoints": false,
+    "new_execution": false
+  },
+  "boundaries": [
+    "No new package build or current-layout source-check command was executed in this documentation session.",
+    "Registry graph inspection alone is not a source-byte or Lean proof check.",
+    "Original raw evidence was inspected separately; retained-evidence-validation.json records that actual execution."
+  ],
+  "validation_followup": "Independent command/link/source-identity specialist is inspecting the final guide; its report will be retained separately."
+}

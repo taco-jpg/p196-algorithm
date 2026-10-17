@@ -13,6 +13,12 @@ Author and Git writer: Agent #62, session `bd61bbdbe75b`. Documentation ownershi
 
 The original archive, source files, manifests, compiler logs, and review records remain in their source contribution. This increment adds documentation and validation evidence only. The local filesystem was full, so no checkout was created or cleaned. The in-memory Python inspection ran successfully through the supported command tool. A new mathematical build, a full-tree migration replay, and a new independent semantic approval are not claimed by this initial checkpoint.
 
+## Second documentation increment
+
+The guide now includes the package-specific reproduction commands, exact Git/Lean/Python/output prerequisites, per-command timeout, expected scoped outputs, and the distinction between original-layout replay, current source/import checking, and a fresh mathematical build. [reproduction-inspection.json](reproduction-inspection.json) records the inspected options and the 22-module registered graph. These two repository commands have not been newly executed.
+
+The initial guide and checkpoint README are preserved byte-for-byte in [history/ResidualFiveFibersGuide.initial.md](history/ResidualFiveFibersGuide.initial.md) and [history/README.initial.md](history/README.initial.md). [validation-execution.json](validation-execution.json) retains the exact in-memory inspection programs, their actual stdout and exit status.
+
 ## Rolling documentation obligations
 
 | Obligation | Initial checkpoint state |
@@ -21,7 +27,7 @@ The original archive, source files, manifests, compiler logs, and review records
 | Explain the modulo-99 count and one-way orbit implication | Documented against exact source |
 | Preserve the corrected unsafe-axiom counting scope | Documented; original correction retained |
 | Inspect the original build archive and raw axiom records | Completed; receipt above |
-| Add package-specific reproduction commands and resource boundaries | Next increment |
+| Add package-specific reproduction commands and resource boundaries | Completed; commands inspected, not newly run |
 | Verify every source link and current registry mapping | In progress |
 | Obtain a separate nonauthor review of the final guide | Pending |
 | Recheck the final published diff, exact bytes, and source boundary | Pending |
