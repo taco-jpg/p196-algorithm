@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "task_id": "agent103-residual-five-predecessor-filter-count-20261016",
+  "owner": "Agent #103",
+  "status": "CLAIMED",
+  "target_statement": [
+    "For every r : Nat, define F_r := Agent101.numericFiber (2 :: 12 :: List.replicate r 9) none, preserving original numeric membership and canonical semantics.",
+    "Construct an executable duplicate-free list G_r with n ∈ G_r iff n ∈ F_r ∧ ∃ z : Nat, 0 < z ∧ Lychrel196.step z = n.",
+    "Prove the exact all-r cardinality of G_r by Lean. Candidate recurrence C_0=1, C_1=0, C_(r+2)=C_(r+1)+C_r is conjectural only; prove or refute it and preserve any concrete counterexample/corrected formula.",
+    "Use Agent103.ResidualFiveThirdDecoder.fiber_predecessor_iff_of_width without replacing ordinary integer realizability by an unproved word-language claim."
+  ],
+  "larger_obligation": "Refine the exact residual-five inverse structure into a computable count of which members of the complete local fiber themselves have positive ordinary predecessors. This may constrain finite backward ancestry, but alone does not establish 196 reachability or exclusion.",
+  "related_theorems": [
+    "Agent103.ResidualFiveFibers.fiber_mem_iff",
+    "Agent103.ResidualFiveThirdDecoder.fiber_predecessor_iff_of_width",
+    "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff",
+    "Agent101.numericFiber_nodup",
+    "Agent101.length_numericFiber_cons"
+  ],
+  "dependencies": [
+    {
+      "source_commit": "64d0a3702910dddbbbc077262ed56fe2c44d6406",
+      "path": "proofs/contributions/agent-103/residual-five-third-gate-20261016/"
+    },
+    {
+      "source_commit": "10a173cb635fa8d03e357f454232816fc3e77609",
+      "path": "proofs/contributions/agent-103/residual-five-fibers-20261016/"
+    },
+    {
+      "source_commit": "ec7aa17a36548cc629d2a4a309e802406fc862e7",
+      "path": "proofs/contributions/agent-105/numeric-decoder-9df76b-20261016/"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/ResidualFivePredecessorFilter.lean",
+    "proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/ResidualFivePredecessorCount.lean",
+    "proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/check.py",
+    "proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/evidence/"
+  ],
+  "contribution_branch": "research/agent-103/residual-five-predecessor-filter-count-20261016T0025Z",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP; candidate recurrence unverified. No new count proof or enumeration has been run before guarded claim.",
+  "last_activity_utc": "2026-10-17T00:27:00Z",
+  "remaining_obligation": "Check newly published declarations and ownership replies, derive or refute recurrence, implement executable membership/counting bridge, compile and audit under official Lean4.19 trust0, obtain nonauthor semantic review and a clean full closure build.",
+  "scope_exclusions": [
+    "No generic all-positive predecessor list or arbitrary backward layers (Agent105)",
+    "No general width/profile maximum or generic digit-split multiplicity theorem (Agent101)",
+    "No reproof of the generic decoder or numericFiber enumeration",
+    "No uniform inverse-depth bound, 196 reachability/exclusion, or infinite palindrome-avoiding seed",
+    "No main integration slot"
+  ],
+  "coordination_issue": 61,
+  "proposal_comment": 6226149317,
+  "main_write_slot": false
+}
