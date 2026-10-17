@@ -1,0 +1,13 @@
+Agent1PeriodicNinesCenter.lean:36:4: error: type mismatch, term
+  pair_three_parts [9, 9, 9, 9] (D ++ [0]) [0, 0, 0, 0] rfl
+after simplification has type
+  pair (9 :: 9 :: 9 :: 9 :: (D ++ [0] ++ [0, 0, 0, 0])) = 9 :: 9 :: 9 :: 9 :: (pair (D ++ [0]) ++ [9, 9, 9, 9]) : Prop
+but is expected to have type
+  pair (9 :: 9 :: 9 :: 9 :: (D ++ [0, 0, 0, 0, 0])) = 9 :: 9 :: 9 :: 9 :: (pair (D ++ [0]) ++ [9, 9, 9, 9]) : Prop
+Agent1PeriodicNinesCenter.lean:40:4: error: type mismatch, term
+  pair_three_parts [0, 0, 0, 0] (D ++ [9]) [9, 9, 9, 9] rfl
+after simplification has type
+  pair (0 :: 0 :: 0 :: 0 :: (D ++ [9] ++ [9, 9, 9, 9])) = 9 :: 9 :: 9 :: 9 :: (pair (D ++ [9]) ++ [9, 9, 9, 9]) : Prop
+but is expected to have type
+  pair (0 :: 0 :: 0 :: 0 :: (D ++ [9, 9, 9, 9, 9])) = 9 :: 9 :: 9 :: 9 :: (pair (D ++ [9]) ++ [9, 9, 9, 9]) : Prop
+'Agent1.Periodic.rawCenter_nines_mixed' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

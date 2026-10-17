@@ -1,0 +1,18 @@
+Agent1PeriodicNinesCenter.lean:92:26: error: application type mismatch
+  congrArg Prod.fst (Agent1.Periodic.strip_rawCenter_nines_mixed B H hB hH hmix)
+argument
+  Agent1.Periodic.strip_rawCenter_nines_mixed B H hB hH hmix
+has type
+  stripPeriodCenter (rawPeriod B H [9, 9, 9, 9]) (rawCenter B H [9, 9, 9, 9]) =
+    ((stripPeriodCenter [9, 9, 9, 9]
+          (pair (fixedDigits H (leftEntry B) ++ List.replicate (rawGamma B H [9, 9, 9, 9]) (9 * leftEntry B)))).fst,
+      (stripPeriodCenter [9, 9, 9, 9]
+            (pair (fixedDigits H (leftEntry B) ++ List.replicate (rawGamma B H [9, 9, 9, 9]) (9 * leftEntry B)))).snd +
+        1) : Prop
+but is expected to have type
+  stripPeriodCenter (rawPeriod B H [9, 9, 9, 9]) (rawCenter B H [9, 9, 9, 9]) =
+    stripPeriodCenter [9, 9, 9, 9]
+      (pair (fixedDigits H (leftEntry B) ++ List.replicate (rawGamma B H [9, 9, 9, 9]) (9 * leftEntry B))) : Prop
+'Agent1.Periodic.rawCenter_nines_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.Periodic.quotientCenter_nines_mixed' depends on axioms: [sorryAx]
+'Agent1.Periodic.centerPeriods_nines_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]

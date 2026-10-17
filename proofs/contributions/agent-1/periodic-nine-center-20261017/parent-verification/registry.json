@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped 17-module contribution registry; not a repository-wide catalogue.",
+    "Both new modules completed strict author compilation and full new-module audits; parent and independent fresh combined verification remain pending."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent1-periodic-nine-center": {
+      "scope": "For any nonempty period w and arbitrary center K, the original maximal center-strip function removes an added w/K/reverse-w wrapper, retains the same residual as stripping K, and increases the count by one. For bounded B,H and the actual mixed nine entry condition, the raw center is a nine wrapper around pair(fixedDigits H (leftEntry B) appended with rawGamma copies of 9*leftEntry B). The quotient center is that residual stripped center and its period count is the residual strip count plus one. Computed entries, clock and original executable fuel semantics are retained. No center descent, no-return obstruction, free carry assignment, qualifying cycle construction, unconditional decimal existence, or conclusion about196 is asserted.",
+      "roots": [
+        "Agent1PeriodicNinesCenter"
+      ],
+      "modules": {
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+          "imports": [
+            "Std"
+          ]
+        },
+        "ActualWordBridge": {
+          "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+          "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "git_blob": "d3f49353f9970c610d818d8f5da78ad5c739e7df",
+          "imports": [
+            "PeriodObstructions"
+          ]
+        },
+        "PrefixSemantics": {
+          "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+          "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "git_blob": "04a8cc9e73b87d271ca857a218b240e23f57c939",
+          "imports": [
+            "ActualWordBridge"
+          ]
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ]
+        },
+        "IncomingCarry": {
+          "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+          "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "git_blob": "0eb66e9e176c6bdc8f9f94cf705bddd063d65345",
+          "imports": [
+            "LychrelDigitSums"
+          ]
+        },
+        "Agent1RepeatedBlock": {
+          "path": "proofs/Agent1RepeatedBlock.lean",
+          "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "git_blob": "4adf4bd714be87ef5d95f0e6d33632fe36075ca4",
+          "imports": [
+            "PrefixSemantics",
+            "IncomingCarry"
+          ]
+        },
+        "Agent1RepeatedBlockContext": {
+          "path": "proofs/Agent1RepeatedBlockContext.lean",
+          "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+          "git_blob": "91eb5c39029f90de058952eb3fc993c6a2b1ba21",
+          "imports": [
+            "Agent1RepeatedBlock"
+          ]
+        },
+        "Agent1PeriodicDigits": {
+          "path": "proofs/Agent1PeriodicDigits.lean",
+          "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+          "git_blob": "6a6f02ae17d7aaa8e728a6588edf080c9ffd7ad5",
+          "imports": [
+            "Agent1RepeatedBlockContext"
+          ]
+        },
+        "Agent1PeriodicSlices": {
+          "path": "proofs/Agent1PeriodicSlices.lean",
+          "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+          "git_blob": "d0cdb8dcd06910ed0ea38801c91020c571bc1966",
+          "imports": [
+            "Agent1PeriodicDigits"
+          ]
+        },
+        "Agent1PeriodicGuard": {
+          "path": "proofs/Agent1PeriodicGuard.lean",
+          "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "git_blob": "7c62748625cecbc277ddd5e01ffb17671e4db7a8",
+          "imports": [
+            "Agent1PeriodicSlices"
+          ]
+        },
+        "Agent1PeriodicGuardFacts": {
+          "path": "proofs/Agent1PeriodicGuardFacts.lean",
+          "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "git_blob": "45fec1c73f1fe4f60daa9186e36b1d19b0b69927",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ]
+        },
+        "Agent1PeriodicNines": {
+          "path": "proofs/Agent1PeriodicNines.lean",
+          "sha256": "b8aae1033e8e90c78f48888ea698e5d345c21e6b99970842dc5a9f3341cd193c",
+          "git_blob": "fc4b17311a291870b122ff97e3618fb7452e978e",
+          "imports": [
+            "Agent1PeriodicGuardFacts"
+          ]
+        },
+        "Agent1PeriodicOuterStrip": {
+          "path": "proofs/Agent1PeriodicOuterStrip.lean",
+          "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+          "git_blob": "9e35c06bf3dd393f33dfd2af965a1ea2d4305bc7",
+          "imports": [
+            "Agent1PeriodicGuardFacts"
+          ]
+        },
+        "Agent1PeriodicCenterStrip": {
+          "path": "proofs/Agent1PeriodicCenterStrip.lean",
+          "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+          "git_blob": "bfcfd913cfd7b4063c9b632f2b0461aafd9ca437",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ]
+        },
+        "Agent1PeriodicQuotient": {
+          "path": "proofs/Agent1PeriodicQuotient.lean",
+          "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+          "git_blob": "63bd5f4319f6a79924b7292db3eb82e0d027b26c",
+          "imports": [
+            "Agent1PeriodicGuardFacts",
+            "Agent1PeriodicOuterStrip",
+            "Agent1PeriodicCenterStrip"
+          ]
+        },
+        "Agent1PeriodicCenterWrap": {
+          "path": "proofs/Agent1PeriodicCenterWrap.lean",
+          "sha256": "dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523",
+          "git_blob": "175241722dd9295024e5563790986a5e4798cd64",
+          "imports": [
+            "Agent1PeriodicCenterStrip"
+          ]
+        },
+        "Agent1PeriodicNinesCenter": {
+          "path": "proofs/Agent1PeriodicNinesCenter.lean",
+          "sha256": "7d6d27081c480345e796c6b8e950c08a5ce0d7207e4030d24e504db4abde695e",
+          "git_blob": "e6f1850b5e2e1f56491f88fbe92d587b9c739e77",
+          "imports": [
+            "Agent1PeriodicNines",
+            "Agent1PeriodicQuotient",
+            "Agent1PeriodicCenterWrap"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A1-PERIODIC-NINE-CENTER",
+      "project": "agent1-periodic-nine-center",
+      "endpoints": [
+        "Agent1.Periodic.stripPeriodCenter_wrap",
+        "Agent1.Periodic.rawCenter_nines_mixed",
+        "Agent1.Periodic.quotientCenter_nines_mixed",
+        "Agent1.Periodic.centerPeriods_nines_mixed"
+      ]
+    }
+  ],
+  "source_baseline": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80",
+  "source_pin_origins": [
+    {
+      "path": "proofs/Agent1PeriodicNinesCycle.registry.json",
+      "sha256": "d3fca8aa3b055bd287f347a21d132a02c41c6713cdd754fd42a90bf5afcccc80",
+      "git_blob": "efe03f3f3f146d7ddce2e96cb126ea81f710fcc3",
+      "baseline_commit": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80"
+    },
+    {
+      "path": "proofs/Agent1PeriodicQuotient.registry.json",
+      "sha256": "84fe6fcaab4420539334b058808ae5b9732cf5612b158aff196921bba8206761",
+      "git_blob": "289d558374886268a8b0d50a03261418049def22",
+      "baseline_commit": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80"
+    }
+  ],
+  "accepted_global_registry_modified": false,
+  "verification_status": "FROZEN_AUTHOR_CHECKED_FRESH_REVIEW_PENDING",
+  "metadata_validation": {
+    "exact_actual_import_dfs": true,
+    "module_count": 17,
+    "new_module_count": 2,
+    "new_public_declaration_count": 4,
+    "new_public_theorem_count": 4,
+    "matching_duplicate_prior_pins": 14,
+    "source_tokens_checked": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "axiom",
+      "implemented_by",
+      "extern",
+      "unsafe",
+      "ofReduceBool",
+      "trustCompiler"
+    ],
+    "source_token_hits": [],
+    "lean_execution_performed_by_this_preflight": false,
+    "claim_commit": "7fd992f8a842eb7e870cd047df0d1e995de77128",
+    "claim_git_blob": "3208a10bccdcdcaa3556d683eff7bb9cc6afefe7",
+    "claim_sha256": "ed6d299cf56bc7405a1e03b87f40c1c3c54ff5d93bdbaff7f9dea450824d416a"
+  },
+  "author_verification": {
+    "new_modules_compile": "PASS",
+    "new_module_origin_audits": "PASS",
+    "fresh_combined_verification": "PENDING",
+    "evidence_path": "proofs/contributions/agent-1/periodic-nine-center-20261017/registry-preflight/author-confirmation.json",
+    "evidence_sha256": "cf6777dcdf606fb88a1c4d4b2d9746f492bca6503ddffa3b94258baa84abf743",
+    "qualification": "Actual author confirmations and receipts checked; no Lean run by this preflight."
+  }
+}
