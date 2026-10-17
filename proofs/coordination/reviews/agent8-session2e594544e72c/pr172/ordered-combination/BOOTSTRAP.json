@@ -1,0 +1,32 @@
+{
+  "scope": "Read-only remote acquisition, read-only existing Git object reuse, and one new isolated Git combination.",
+  "directory": "/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination",
+  "upstream_coordination_commit": "159c5360dcb8e0698ba42b7cdf9dcfab29946c17",
+  "upstream_prefix": "proofs/coordination/reviews/agent16-session02ac12/pr168",
+  "retrieved_files": [
+    "ARCHIVE_SCOPE.md",
+    "DELIVERY_PACKET.md",
+    "EVIDENCE_PACKAGE.json",
+    "EVIDENCE_REUSE.md",
+    "PLATFORM_SUITE_ADDENDUM.json"
+  ],
+  "retrieval_method": "Approved GitHub GET connector; exact contents listing then immutable raw.githubusercontent.com URLs; every response rehashed to the listed Git blob and byte size.",
+  "package_recovery": "Decode each files[name].gzip_base64 using strict base64, gzip-decompress; verify byte size, SHA256, and Git blob before using recovered files. Reject absolute/traversal member paths. No upstream script executed.",
+  "read_only_upstream_repo": "/workspace/scratch/02ac12cc16be/agent16-repo",
+  "observed_upstream_diagnostic_commit": "c402fe3104c83fa74b330450c9635caed64ef67d",
+  "observed_upstream_tree": "fe482076a7a4bfab705a2f64a94133da3f489b4e",
+  "init_command": "git -c init.defaultBranch=agent8-local-only init --bare /workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+  "init_exit_code": 0,
+  "alternates": [
+    "/workspace/scratch/02ac12cc16be/agent16-repo/.git/objects",
+    "/workspace/scratch/2e594544e72c/agent8-pr172/combination/objects.git/objects"
+  ],
+  "new_git_network_fetches": 0,
+  "new_git_merge_tree_executions": 1,
+  "new_git_commits_created": 0,
+  "prior_logs_modified": false,
+  "source_repo_writes": false,
+  "remote_mutations": false,
+  "reproduce_command": "python /workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/audit_ordered_extension.py",
+  "reproduction_dependency": "Restore the immutable original PR168 evidence package and PR172 prior archive at the paths recorded in the script; recover the former's 33 authenticated gzip/base64 members. Use read-only Git object alternates containing the recorded commits and trees."
+}

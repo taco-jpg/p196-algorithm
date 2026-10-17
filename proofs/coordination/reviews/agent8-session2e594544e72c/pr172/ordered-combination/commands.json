@@ -1,0 +1,171 @@
+[
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "--version"
+    ],
+    "label": "git-version",
+    "returncode": 0,
+    "stderr": "git-version.stderr",
+    "stdout": "git-version.stdout",
+    "stdout_bytes": 19,
+    "stdout_sha256": "86e56d87412c17ab76c1b5a3d50f9d374e5e28887068e6823973fd1232f1d6c6"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "show-ref"
+    ],
+    "label": "refs-before",
+    "returncode": 1,
+    "stderr": "refs-before.stderr",
+    "stdout": "refs-before.stdout",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "ls-tree",
+      "-r",
+      "-z",
+      "--full-tree",
+      "74a1c3922eb7af438fe40b23d2105ad07556e3f5"
+    ],
+    "label": "tree-B",
+    "returncode": 0,
+    "stderr": "tree-B.stderr",
+    "stdout": "tree-B.stdout",
+    "stdout_bytes": 3967128,
+    "stdout_sha256": "a8289e7067a247532d09ca036bee3db660fcbff0061d76265c32278858bf4061"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "ls-tree",
+      "-r",
+      "-z",
+      "--full-tree",
+      "c402fe3104c83fa74b330450c9635caed64ef67d"
+    ],
+    "label": "tree-upstream-final",
+    "returncode": 0,
+    "stderr": "tree-upstream-final.stderr",
+    "stdout": "tree-upstream-final.stdout",
+    "stdout_bytes": 4257818,
+    "stdout_sha256": "b5d5e9b9830f19424a76bbe89ec90c3daaa743ab3a155975fe5f36cb44da2d23"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "cat-file",
+      "commit",
+      "c402fe3104c83fa74b330450c9635caed64ef67d"
+    ],
+    "label": "upstream-diagnostic-commit",
+    "returncode": 0,
+    "stderr": "upstream-diagnostic-commit.stderr",
+    "stdout": "upstream-diagnostic-commit.stdout",
+    "stdout_bytes": 414,
+    "stdout_sha256": "587969544a63adf2ae3796b6da593dd5c179c25e86824224a89aa002aa01151c"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "merge-base",
+      "--all",
+      "c402fe3104c83fa74b330450c9635caed64ef67d",
+      "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80"
+    ],
+    "label": "merge-base-upstream-H",
+    "returncode": 0,
+    "stderr": "merge-base-upstream-H.stderr",
+    "stdout": "merge-base-upstream-H.stdout",
+    "stdout_bytes": 41,
+    "stdout_sha256": "b0acdff0900438dc9d6416c2be82110fbdb3082ae7a59332163ca1c1d4c30cb2"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "merge-base",
+      "--is-ancestor",
+      "7f23ce839fcc88acb235b1816c2c57dc12e16a33",
+      "c402fe3104c83fa74b330450c9635caed64ef67d"
+    ],
+    "label": "P-ancestor-upstream",
+    "returncode": 0,
+    "stderr": "P-ancestor-upstream.stderr",
+    "stdout": "P-ancestor-upstream.stdout",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "merge-base",
+      "--is-ancestor",
+      "7f23ce839fcc88acb235b1816c2c57dc12e16a33",
+      "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80"
+    ],
+    "label": "P-ancestor-H",
+    "returncode": 0,
+    "stderr": "P-ancestor-H.stderr",
+    "stdout": "P-ancestor-H.stdout",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "merge-tree",
+      "--write-tree",
+      "c402fe3104c83fa74b330450c9635caed64ef67d",
+      "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80"
+    ],
+    "label": "merge-tree-upstream-H",
+    "returncode": 0,
+    "stderr": "merge-tree-upstream-H.stderr",
+    "stdout": "merge-tree-upstream-H.stdout",
+    "stdout_bytes": 41,
+    "stdout_sha256": "fb81e3c212404053181fe68cf9d449cb7ec5a743a2563e076c9876bfa3574f75"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "ls-tree",
+      "-r",
+      "-z",
+      "--full-tree",
+      "15b872d3d0ad0eeed568951e3ec2c9451b982768"
+    ],
+    "label": "tree-ordered-PR172",
+    "returncode": 0,
+    "stderr": "tree-ordered-PR172.stderr",
+    "stdout": "tree-ordered-PR172.stdout",
+    "stdout_bytes": 4305267,
+    "stdout_sha256": "8c66b11438b5e516db229cd5611aa59698b12b8d7defbcab07d83e6a5bbce017"
+  },
+  {
+    "argv": [
+      "git",
+      "--git-dir=/workspace/scratch/2e594544e72c/agent8-pr172/ordered-combination/objects.git",
+      "show-ref"
+    ],
+    "label": "refs-after",
+    "returncode": 1,
+    "stderr": "refs-after.stderr",
+    "stdout": "refs-after.stdout",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

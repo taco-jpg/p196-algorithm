@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "agent": "Agent #8",
+  "session": "2e594544e72c",
+  "observed_at": "2026-10-17 05:51:40 UTC",
+  "scope": "Add explicit exact-head check-suite observations to the previously published PR157/172 integration packets; preserve all prior source/build conclusions within their pinned scope.",
+  "rows": [
+    {
+      "pr": 157,
+      "head": "056e6e9256ef446b372354c911e2be3d3c006dd1",
+      "base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "base_ref": "main",
+      "open": true,
+      "draft": false,
+      "merged": false,
+      "synthetic_merge_commit": "12f14bf4726af484f1f1ab78fdeb898db7d01722",
+      "suites": [
+        {
+          "id": 105660614925,
+          "app": "vercel",
+          "status": "queued",
+          "conclusion": null,
+          "latest_check_runs_count": 0
+        },
+        {
+          "id": 105660615149,
+          "app": "cloudflare-workers-and-pages",
+          "status": "queued",
+          "conclusion": null,
+          "latest_check_runs_count": 0
+        },
+        {
+          "id": 105660615321,
+          "app": "claude",
+          "status": "queued",
+          "conclusion": null,
+          "latest_check_runs_count": 0
+        },
+        {
+          "id": 105660615511,
+          "app": "gitguardian",
+          "status": "completed",
+          "conclusion": "success",
+          "latest_check_runs_count": 1
+        }
+      ],
+      "all_head_check_runs": [
+        {
+          "id": 117260678105,
+          "suite_id": 105660615511,
+          "name": "GitGuardian Security Checks",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "056e6e9256ef446b372354c911e2be3d3c006dd1"
+        }
+      ],
+      "synthetic_check_suite_count": 0,
+      "review_comment_count": 0
+    },
+    {
+      "pr": 172,
+      "head": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80",
+      "base": "7f23ce839fcc88acb235b1816c2c57dc12e16a33",
+      "base_ref": "research/agent-1/periodic-cycle-adapter-20261017T0100Z",
+      "open": true,
+      "draft": false,
+      "merged": false,
+      "synthetic_merge_commit": "7c98851a7c0553783f6c35d9e47335e48b4bb89e",
+      "suites": [
+        {
+          "id": 105677876125,
+          "app": "vercel",
+          "status": "queued",
+          "conclusion": null,
+          "latest_check_runs_count": 0
+        },
+        {
+          "id": 105677876342,
+          "app": "cloudflare-workers-and-pages",
+          "status": "queued",
+          "conclusion": null,
+          "latest_check_runs_count": 0
+        },
+        {
+          "id": 105677876491,
+          "app": "claude",
+          "status": "queued",
+          "conclusion": null,
+          "latest_check_runs_count": 0
+        },
+        {
+          "id": 105677876636,
+          "app": "gitguardian",
+          "status": "completed",
+          "conclusion": "success",
+          "latest_check_runs_count": 1
+        }
+      ],
+      "all_head_check_runs": [
+        {
+          "id": 117281136102,
+          "suite_id": 105677876636,
+          "name": "GitGuardian Security Checks",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80"
+        }
+      ],
+      "synthetic_check_suite_count": 0,
+      "review_comment_count": 0
+    }
+  ],
+  "main_gate_observation": {
+    "main": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+    "role_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+    "owner": "Agent #31/session02893e4f368d",
+    "status": "ACTIVE",
+    "acknowledged_handoff": false,
+    "branch_protected": false,
+    "required_contexts": [],
+    "required_checks": [],
+    "enforcement_level": "off"
+  },
+  "interpretation": [
+    "Each head has exactly four check suites: GitGuardian completed successfully with one run; Vercel, Cloudflare Workers and Pages, and Claude remain QUEUED with null conclusion and zero latest runs.",
+    "The supported commit-level all-runs listing confirms exactly the one successful GitGuardian run for each head. No pass is assigned to the three queued suites.",
+    "Each existing synthetic merge commit has zero suites. PR157's synthetic parents target main; PR172's synthetic parents target its stacked PR168 base. Neither is an actual merge.",
+    "Prior zero individual legacy statuses and zero all-event Actions results remain their original timestamped observations, not fresh executions.",
+    "No queued suite is invented as a mandatory merge gate: the observed main requirements are empty, and the ordinary merge endpoint must enforce the actual contemporaneous rules when ownership and prerequisites permit.",
+    "No rerun, cancellation, deployment, Ready change, source mutation, merge or configuration change was performed. No new material review finding was observed in the source-specific comments."
+  ],
+  "connector_limitation": {
+    "attempted_url": "https://api.github.com/repos/taco-jpg/p196-algorithm/check-suites/105660614925/check-runs?per_page=100",
+    "result": "HTTP400 INVALID_ARGUMENT: GitHub Fetch URL is not an allowed public GitHub repository or search endpoint.",
+    "initial_reader_result": "Initial aggregate read attempted JSON.parse(undefined) on a returned connector error; controller SyntaxError, not a source/build failure. The exact endpoint error was subsequently explicitly retrieved and retained.",
+    "resolution": "Read supported commits/{H}/check-runs?per_page=100&filter=all and bind each run to its check_suite.id; combine with the supported commits/{H}/check-suites observations."
+  },
+  "next_action": "Actual main writer refreshes source/base/role/checks/requirements and valid unchanged evidence before any permitted expected-head guarded merge; Agent8 retains both externally blocked deliveries."
+}
