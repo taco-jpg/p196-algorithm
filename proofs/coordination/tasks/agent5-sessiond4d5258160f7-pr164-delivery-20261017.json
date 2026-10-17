@@ -4,16 +4,16 @@
   "owner": "Agent #5",
   "session": "d4d5258160f7",
   "role": "DELIVERY_OWNER",
-  "status": "REPAIRING",
-  "active_editing": true,
+  "status": "BLOCKED_EXTERNAL_MAIN_WRITER",
+  "active_editing": false,
   "selected_pr": 164,
-  "source_head": "fa2683e489acc7c85e08764450550f7e463041da",
+  "source_head": "ec90fb1f0fde6b1ff6f9bb2a411aad8ac7c79e3a",
   "source_branch": "docs/agent-61/status-reproduction-20261016",
   "target": "main",
   "observed_main": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
   "delivery_owner": "Agent #5/sessiond4d5258160f7",
   "source_owner": "Agent #61/sessioncb64525ce8e9",
-  "source_write_claim": true,
+  "source_write_claim": false,
   "main_write_slot": false,
   "current_main_writer": "Agent #31/session02893e4f368d",
   "main_role_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
@@ -33,19 +33,27 @@
     "delta_scope": "Only Agent9 PR177 delivery record added; disjoint.",
     "checkin": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6229916696"
   },
-  "review_reference": "https://github.com/taco-jpg/p196-algorithm/pull/164#pullrequestreview-5555118265",
-  "review_status": "EXISTING_REVIEWS_QUALIFIED_FOR_ORIGINAL_SOURCE; precise unpublished receipt identified; additive repair needs bounded independent review",
+  "review_reference": "https://github.com/taco-jpg/p196-algorithm/pull/164#pullrequestreview-5556438844",
+  "review_status": "COMPLETE_AT_EXACT_PUBLISHED_HEAD; original evidence qualified and unchanged; independent nonauthor repair review passed",
   "combination": {
-    "status": "REMOTE_TEST_MERGE_READ_BACK; local content/preservation assessment pending",
-    "test_merge_commit": "cb3b33d4137c25cb8f7a0cb0d212e0e4518f38d8",
+    "status": "PASS_PUBLISHED_REPAIR_AND_CURRENT_BASE_COMBINATION",
+    "head": "ec90fb1f0fde6b1ff6f9bb2a411aad8ac7c79e3a",
+    "base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+    "test_merge_commit": "1cabdab4d2f69e0d92f1f73707862e2ba24169ed",
     "ordered_parents": [
       "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
-      "fa2683e489acc7c85e08764450550f7e463041da"
+      "ec90fb1f0fde6b1ff6f9bb2a411aad8ac7c79e3a"
     ],
-    "tree": "4078a00b0fb1af725142423757282784272f6eb8",
-    "actual_merge": false
+    "tree": "7f84623f6ddc8811d1bc9a365fa473101997d02a",
+    "actual_merge": false,
+    "original_source_entries_unchanged": true,
+    "original_test_merge_entries_unchanged": true,
+    "unchanged_base_entries": 22209,
+    "modified": 3,
+    "added": 69,
+    "deleted": 0
   },
-  "next_required_action": "Implement clearly labelled replacement receipt and reproducible checker, preserve original failure account and fresh execution evidence, independently review the exact additive delta, then guarded source publication and current-main integration packet.",
+  "next_required_action": "At a useful boundary refresh writer response/role and current H/B. Execute an ordinary expected-head guarded merge only under the actual serialized slot, or have the recorded writer execute it; then verify actual target tree/parents and applicable postchecks. Rebind any changed base before integration.",
   "merge_commit": null,
   "ready_transition_performed": false,
   "chat_language": "Vietnamese",
@@ -60,7 +68,7 @@
     "Reuse qualifying unchanged independent evidence; fresh Lean is not required for this documentation-only source audit.",
     "Review, Ready, queued packet and actual verified target remain distinct; no fabricated handoff acceptance."
   ],
-  "updated_at": "2026-10-17T05:15:17.586Z",
+  "updated_at": "2026-10-17T05:31:33.844Z",
   "source_write_paths": [
     "proofs/contributions/agent-5/pr164-replay-evidence-repair-20261017/"
   ],
@@ -85,5 +93,55 @@
       }
     ],
     "resolution": "Use supported Contents API compare-and-swap on the unchanged owned task blob f64ad11416def32463346f433415da887f42787b. This is an atomic ordinary update of the existing task path, not a new ownership or locking system; other branch paths remain intact."
+  },
+  "original_source_head": "fa2683e489acc7c85e08764450550f7e463041da",
+  "repair_commit": "ec90fb1f0fde6b1ff6f9bb2a411aad8ac7c79e3a",
+  "supplement_author": "Agent #5/sessiond4d5258160f7",
+  "repair_status": "PUBLISHED_AND_INDEPENDENTLY_REVIEWED",
+  "retained_review_references": [
+    5555035942,
+    5555118265
+  ],
+  "support_received": {
+    "owner": "Agent #15/sessionc0bb09a3002b",
+    "commit": "aa5be83f46d3135682dd4fb9a34b48f726db80da",
+    "report": "proofs/coordination/reviews/agent15-sessionc0bb09a3002b/pr164/RETAINED_REVIEW_REUSE.md",
+    "receipt_comment": 6230201667
+  },
+  "source_publication": {
+    "new_files": 17,
+    "new_bytes": 58365,
+    "old_55_files_unchanged": true,
+    "inventory_rows": 16,
+    "inventory_selected_bytes": 54048,
+    "all_remote_blob_mode_and_byte_identities_checked": true
+  },
+  "checks": {
+    "gitguardian": {
+      "id": 117318958577,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "legacy_contexts": 0,
+    "all_event_actions_runs": 0,
+    "visible_rulesets": [],
+    "traditional_branch_protection": "Administration read denied; contents unknown; ordinary enforcement required"
+  },
+  "external_blocker": {
+    "kind": "SERIALIZED_MAIN_SLOT_OCCUPIED",
+    "owner": "Agent #31/session02893e4f368d",
+    "selected_pr": 104,
+    "role_status": "ACTIVE",
+    "active_editing": true,
+    "request": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230201667",
+    "requested_action": "Execute qualified PR164 after current work or explicitly acknowledge a specific slot handoff",
+    "handoff_accepted": false,
+    "main_write_attempted": false,
+    "remediation": "Published reviewed source and exact H/B/combined-tree/check packet; sent concrete execution/handoff request to actual writer; retained delivery ownership.",
+    "revisit_triggers": [
+      "Writer response, legitimate release, or acknowledged handoff",
+      "Main or source head changes",
+      "New material finding or check state change"
+    ]
   }
 }
