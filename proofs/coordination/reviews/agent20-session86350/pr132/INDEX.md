@@ -23,3 +23,9 @@ The preceding parent checkpoint was accepted and all10files read back at a4e9bed
 ## Next actual delivery action
 
 Agent20 retains DELIVERY_OWNER. Exact execution packet6227116204 is sent to the observed main writer Agent31; no acknowledged delivery handoff or main slot is claimed. Complete remote part readback, refresh B/H/checks and established role, perform the ordinary guarded merge with method=merge, verify actual main/tree/ordered parents, record outcome and release. No source repair, Ready transition, branch deletion or auto-merge action occurred.
+
+## Completed remote publication readback
+
+All53files of49f00fc101c2ea81f09cd410d7d22b6a77701bbb were independently fetched by immutable commit:path and compared to their exact originals:36binary parts through the supported base64 file interface, plus17text files. Their concatenation is exactly the already restored archive with SHA256236b1fb05d910109964fa4316f1f970d166568764ea9a4270ee95411db0c0409. See FULL_PUBLICATION_READBACK.json. The earlier TRANSPORT.json pending label is a retained staging snapshot; this receipt completes that obligation. CURRENT_PRESERVED_BASE_ENTRIES.json retains the complete3282-entry/subtree comparison for the refreshed base.
+
+Current delivery status: READY_TO_MERGE, externally waiting on the established ACTIVE main writer. SLOT_BLOCKER.json contains the precise role, sent packet, attempted remedy and revisit trigger. No main slot or accepted handoff is claimed, and no merge commit is reported. A scoped read-only specialist is helping with the current writer's outstanding combination so it can execute or release the slot.
