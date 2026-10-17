@@ -1,0 +1,12 @@
+--- initial-checker.RECONSTRUCTED.py
++++ ../check_adoption_wiring.py
+@@ -176,7 +176,8 @@
+     if name.endswith('/README.md'):
+         check(after.startswith(before) and b'## 2026-10-17 verification and proposed source adoption' in after[len(before):], 'Dated append-only README')
+     elif name.endswith('/lean_wip/Agent1172641Targets.lean'):
+-        check(before.count(b'prefix') == 4 and before.replace(b'prefix','«prefix»'.encode()) == after, 'Four identifier escapes only')
++        check(after.count('«prefix»'.encode()) == 4 and after.replace('«prefix»'.encode(), b'prefix') == before,
++              'Four identifier escapes only; historical comment remains unchanged')
+         check(after == (PROPOSED/'proofs/Agent1172641Targets.lean').read_bytes(), 'Two fixed WIP copies equal')
+     else: check(before == after and name not in changes, 'Unmodified original file ' + name)
+     original_results.append({'path':name, 'changed':before != after, 'original':identity(before), 'proposed':identity(after)})
