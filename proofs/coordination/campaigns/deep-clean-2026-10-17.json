@@ -3,7 +3,7 @@
   "campaign_id": "deep-clean-2026-10-17",
   "prompt_revision": "2026-10-17-r2",
   "stage": "INTAKE",
-  "updated_at": "2026-10-17T17:24:37.096Z",
+  "updated_at": "2026-10-17T18:22:08.304Z",
   "authority": {
     "role": "proofs/coordination/roles/integration.json",
     "epoch": 1,
@@ -11,7 +11,7 @@
     "session": "agent5-20261017T170158Z-7715aed70ad3"
   },
   "initial_main": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
-  "published_main": "ed5202b2839b5fedf3d97309481ac7a4bd556675",
+  "published_main": "dec8b5db082619126c6fc2ec3126db3114f9c880",
   "inventory": {
     "heads": 169,
     "tags": 52,
@@ -39,14 +39,30 @@
       "count": 164,
       "bytes": 4410661403,
       "owner": "Agent #2 / agent2-20261017T170018Z-f3e6e0959817",
-      "status": "Complete inventory; content inspection and preservation ongoing",
-      "six_zip_bytes_in_prepared_package": 404141
+      "status": "159 original ZIPs / 3,397,092,283 bytes independently verified at 18:15 UTC; remaining permitted captures and inspections continue.",
+      "six_zip_bytes_in_prepared_package": 404141,
+      "observed_at": "2026-10-17T18:15:04Z",
+      "original_zip_blockers": [
+        {
+          "artifact_id": 12007536356,
+          "bytes": 628350397,
+          "sha256": "ae2071f50942dbf7af88ca9bac7054489f3c6a52ae2dc2cebb7565f601289a6d",
+          "expires_at": "2026-10-17T21:12:02Z",
+          "status": "NOT_CAPTURED_CONNECTOR_SIZE_LIMIT",
+          "connector_limit_bytes": 536870912
+        },
+        {
+          "artifact_id": 12062414473,
+          "status": "EXPIRED_ORIGINAL_RETURNS_AUTHENTICATED_404",
+          "scope": "Six producer file payloads recovered; bounded exact ZIP reconstruction in progress, original ZIP identity not yet established."
+        }
+      ]
     },
     "unknowns": [
       "Unavailable private/unpublished work",
-      "Broader external artifact completeness",
+      "Remaining external artifact byte preservation and expired/oversized originals",
       "Complete semantic content accounting",
-      "Late refs"
+      "Late refs and new campaign delta backup"
     ],
     "retirement": "NOT_STARTED"
   },
@@ -67,7 +83,7 @@
         "stale autonomous publisher and retirement workflow repair"
       ],
       "status": "ACTIVE_ISOLATED_REPAIR",
-      "first_action": "Full tree hygiene census and all39 active workflow/script review; preserve exact originals before bounded repair."
+      "first_action": "PR178 public source independently reviewed; second automation and current-core CI patches independently ready; remaining historical replay workflows under bounded repair."
     },
     {
       "id": "docs-external",
@@ -77,10 +93,11 @@
         "PR158",
         "PR159",
         "PR163",
-        "164 workflow artifacts"
+        "PR157",
+        "164 original workflow artifacts"
       ],
       "status": "ACTIVE",
-      "first_action": "Independent complete bundle restore and Git external-marker scan passed; exact doc validation and artifact inspection executing."
+      "first_action": "Four documentation deliveries plus PR160 are merged; PR157 qualified; original workflow ZIP preservation and independent verification continue."
     },
     {
       "id": "core-build",
@@ -93,7 +110,7 @@
         "accepted build census"
       ],
       "status": "ACTIVE_ISOLATED_REPAIR",
-      "first_action": "38-source path closure verified; actual baseline build with shared compiler; direct runner repair keeps catalogue_complete=false."
+      "first_action": "Strict direct core runner completed and independently reviewed; expanded accepted scopes executing one sequential compiler job, catalogue_complete remains false."
     },
     {
       "id": "pr108-repair",
@@ -105,7 +122,7 @@
         "original failed-source preservation"
       ],
       "status": "ACTIVE_ISOLATED_REPAIR",
-      "first_action": "Finite checker/generator and two real failure artifacts inspected; minimal redundant-tactic repair and complete strict dependency build."
+      "first_action": "PR108 exact repair, strict build/audit, original failure archives and independent review complete; source adoption queued, PR142 strict verification in progress."
     },
     {
       "id": "delivery-preservation",
@@ -120,7 +137,7 @@
         "bounded semantic consolidation census"
       ],
       "status": "ACTIVE",
-      "first_action": "Two actual merges with target guards and remote parent/tree/PR readback; complete independent Git restore; corrected recovery package prepared."
+      "first_action": "Nine actual guarded merges and remote postchecks, complete independently restored initial Git capture, bounded semantic-consolidation proposal, and current repair publication."
     }
   ],
   "deliveries": [
@@ -130,7 +147,12 @@
       "merge": "6f25e32c39c2f8e17a0c25c159f577bfcbd44414",
       "tree": "2765245df1124e30f3148c4a96dce3228e8605dc",
       "status": "MERGED_REMOTE_POSTCHECKED",
-      "verification": "Exact-source/context reuse of actual independent seven-module trust-zero build/1694-constant audit; all133 archived members and every pre-existing main entry preserved"
+      "verification": "Exact-source/context reuse of actual independent seven-module trust-zero build/1694-constant audit; all133 archived members and every pre-existing main entry preserved",
+      "parents": [
+        "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+        "c9a86a40ffd478f7c01ac68688896cba91f94dd1"
+      ],
+      "merged_at": "2026-10-17T17:13:14Z"
     },
     {
       "pr": 160,
@@ -138,53 +160,180 @@
       "merge": "ed5202b2839b5fedf3d97309481ac7a4bd556675",
       "tree": "6644397600d18b6c8b69ad2a07b903c99a577acc",
       "status": "MERGED_REMOTE_POSTCHECKED",
-      "verification": "9161 effective replay mappings;356 historical target byte identities;355 destinations repaired; original documents retained; actual fixtures0/2/0/2"
+      "verification": "9161 effective replay mappings;356 historical target byte identities;355 destinations repaired; original documents retained; actual fixtures0/2/0/2",
+      "merged_at": "2026-10-17T17:18:38Z"
+    },
+    {
+      "pr": 156,
+      "head": "34e8f2151cc169aedf4d4594642553cfebcceab5",
+      "merge": "d045982f4566d3292ac7accea933817b6ae058c9",
+      "tree": "c7dd6d18dc1ec8c7f0a29816004f755a287242f6",
+      "parents": [
+        "ed5202b2839b5fedf3d97309481ac7a4bd556675",
+        "34e8f2151cc169aedf4d4594642553cfebcceab5"
+      ],
+      "merged_at": "2026-10-17T17:45:07Z",
+      "status": "MERGED_REMOTE_POSTCHECKED",
+      "verification": "Exact source/evidence review; original OPEN_PROBLEMS retained; dependency/source pins and actual combined target verified."
+    },
+    {
+      "pr": 158,
+      "head": "48d08d318925ef56acfdecdec1af9012e53a8c53",
+      "merge": "89221ea7be7137e65cc85fd0f1429151bebd8ed9",
+      "tree": "cadc433fd3f4e8acbfb6af4dd97d2d612f712792",
+      "parents": [
+        "d045982f4566d3292ac7accea933817b6ae058c9",
+        "48d08d318925ef56acfdecdec1af9012e53a8c53"
+      ],
+      "merged_at": "2026-10-17T17:51:06Z",
+      "status": "MERGED_REMOTE_POSTCHECKED",
+      "verification": "Eight exact additions; 317 archived members restored and source/evidence pins verified; historical theorem scope retained."
+    },
+    {
+      "pr": 159,
+      "head": "5dff11d2ab91242ef77dd9b69cbeeab2f2a4697c",
+      "merge": "e8d66358edbf4b4ef68b38a8019623b94e73208d",
+      "tree": "b4e7e251486d40b20bc10a02fc3dab76c9589c51",
+      "parents": [
+        "89221ea7be7137e65cc85fd0f1429151bebd8ed9",
+        "5dff11d2ab91242ef77dd9b69cbeeab2f2a4697c"
+      ],
+      "merged_at": "2026-10-17T17:53:31Z",
+      "status": "MERGED_REMOTE_POSTCHECKED",
+      "verification": "Seven additions and preserved STATUS update; original complete text remains an exact prefix and explicit archive; source/module pins verified."
+    },
+    {
+      "pr": 163,
+      "head": "b5448228f38b925f9924030b2fafd12e13ea8fc3",
+      "merge": "817ae5a6f35d279f97d335453beb86dbd39c6995",
+      "tree": "600359b5f5e73f882892720b69a611ad33e9e37c",
+      "parents": [
+        "e8d66358edbf4b4ef68b38a8019623b94e73208d",
+        "b5448228f38b925f9924030b2fafd12e13ea8fc3"
+      ],
+      "merged_at": "2026-10-17T18:02:13Z",
+      "status": "MERGED_REMOTE_POSTCHECKED",
+      "verification": "Forty-six exact additions; all 9,161 effective source mappings preserved; independent resolution of the changed navigation-only STATUS dependency."
+    },
+    {
+      "pr": 97,
+      "head": "9e59a77ae4e13a84eedc25aff689339e0225ad90",
+      "merge": "3a6a2e3afe95173a52e2269b43b05a3db62a6df5",
+      "tree": "e174cb298be0f48a0e52c7fedf3f609f50462863",
+      "parents": [
+        "817ae5a6f35d279f97d335453beb86dbd39c6995",
+        "9e59a77ae4e13a84eedc25aff689339e0225ad90"
+      ],
+      "merged_at": "2026-10-17T18:05:38Z",
+      "status": "MERGED_REMOTE_POSTCHECKED",
+      "verification": "One hundred sixty-six exact additions; complete published restoration packet, source/dependency/audit evidence revalidated with historical execution limits explicit."
+    },
+    {
+      "pr": 121,
+      "head": "5c4d394f20b70547aa7cb8dd14091bcd391e424c",
+      "merge": "5437e5074e5c1060cc561960e58cd8cd67da9f3b",
+      "tree": "d39e20ea7aa76175c33c77c9f7ac2dcb871ca1c8",
+      "parents": [
+        "3a6a2e3afe95173a52e2269b43b05a3db62a6df5",
+        "5c4d394f20b70547aa7cb8dd14091bcd391e424c"
+      ],
+      "merged_at": "2026-10-17T18:15:31Z",
+      "status": "MERGED_REMOTE_POSTCHECKED",
+      "verification": "Ninety-two exact additions after actual PR97; full independent source/raw evidence qualification, manifests and dependency closure revalidated; no new compiler run claimed."
+    },
+    {
+      "pr": 133,
+      "head": "9b1535d80ab3cb32d131306f089bcf524482ab09",
+      "merge": "dec8b5db082619126c6fc2ec3126db3114f9c880",
+      "tree": "2851f93249cc8e25c676177580232cfb44929ccf",
+      "parents": [
+        "5437e5074e5c1060cc561960e58cd8cd67da9f3b",
+        "9b1535d80ab3cb32d131306f089bcf524482ab09"
+      ],
+      "merged_at": "2026-10-17T18:18:32Z",
+      "status": "MERGED_REMOTE_POSTCHECKED",
+      "verification": "Twenty-seven exact additions after actual PR121; independent semantic review and retained full seventeen-module explicit trust-zero execution/audit, 140 original archive members verified."
     }
   ],
   "delivery_queue": [
     {
-      "owner": "Agent #2",
-      "prs": [
-        156,
-        158,
-        159,
-        163
-      ],
-      "gate": "Exact source/review, consumer validation and current-main rebind"
-    },
-    {
-      "owner": "Agent #4",
-      "prs": [
-        108
-      ],
-      "gate": "Strict complete closure and axiom audit; independent review; preserved originals; current-main rebind"
-    },
-    {
       "owner": "Agent #1",
-      "item": "automation repair",
-      "gate": "Applicable preservation/write gates plus complete workflow review"
+      "pr": 178,
+      "head": "7002585762f997c6e31aab9f3a83d3c725f32cfe",
+      "gate": "Actual public independent review 5559257952 complete; Ready, current-target/platform rebind and guarded integration next."
     },
     {
       "owner": "Agent #3",
-      "item": "core direct verifier",
-      "gate": "Applicable preservation/write gates plus historical selectors, full strict core and consumer checks"
+      "item": "current core build runner",
+      "source": "47e58423ef768ba3fe0ce302ee253f3579c4f9ee",
+      "gate": "Complete strict 38-module core/consumer/audit and independent review; all 13 public adoption blobs uploaded with exact identities, public source/PR and provenance rebind next."
+    },
+    {
+      "owner": "Agent #4",
+      "pr": 108,
+      "source": "1476a713c49284aa98131155efb453080c226998",
+      "gate": "Prepared remote commit tree equals independently reviewed repair; guarded source adoption then actual-head independent formal review."
+    },
+    {
+      "owner": "Agent #2",
+      "pr": 157,
+      "source": "056e6e9256ef446b372354c911e2be3d3c006dd1",
+      "gate": "Independent review 5559155860 qualified; current-main rebind and guarded delivery next."
+    },
+    {
+      "owner": "Agent #5 independent verifier",
+      "pr": 106,
+      "source": "0a490cc9d179c567be45a5f98c3e951db6d869d2",
+      "gate": "Source, preservation and two strict builds/full safe-root audit qualified; current-main rebind next."
+    },
+    {
+      "owner": "Agent #5 independent verifier",
+      "pr": 113,
+      "gate": "Source reading complete; retained strict execution and full archive qualification in progress."
+    },
+    {
+      "owner": "Agent #1",
+      "item": "second automation repair",
+      "source": "eb8f6009efd4ed82deb8b342be9b57afa463aef3",
+      "gate": "Independent review complete; publish after PR178, preserve original author commits and exact source context."
+    },
+    {
+      "owner": "Agent #1",
+      "item": "current-core CI and producer rules",
+      "source": "9c18ab8ba89ade0578460f1f6a02be862aea38c7",
+      "gate": "Independent review and 33 control fixtures pass; requires Agent3 core runner actual delivery."
+    },
+    {
+      "owner": "Agent #4",
+      "pr": 142,
+      "gate": "Missing historical strict build evidence being replaced by an actual independent 27-module replay and audit; complete result pending."
     }
   ],
   "delta_queue": [
     {
-      "ref": "main",
+      "ref": "refs/heads/main",
       "initial": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
-      "current": "ed5202b2839b5fedf3d97309481ac7a4bd556675"
+      "current": "dec8b5db082619126c6fc2ec3126db3114f9c880",
+      "status": "Nine actual deliveries; preserve post-initial history in delta backup"
     },
     {
-      "ref": "p196/coordination",
+      "ref": "refs/heads/p196/coordination",
       "initial": "4df8ac56a0242a9d0aeb506a4af1db85f56ea146",
-      "status": "Role recovery, task claims and ledger; refresh before delta backup"
+      "status": "Role recovery, claims and campaign records; exact ref refresh required before delta backup and coordination retirement"
+    },
+    {
+      "ref": "refs/heads/deep-clean/automation-20261017",
+      "initial": null,
+      "current": "7002585762f997c6e31aab9f3a83d3c725f32cfe",
+      "pr": 178,
+      "status": "Deliberate temporary review branch; complete preservation/integration/retirement gates still required"
     }
   ],
   "deadline": "2026-10-18T06:59:59Z",
   "initial_final_reserve": "2026-10-18T04:59:59Z",
   "final_acceptance": "NOT_PASSED",
   "one_branch_target": "UNMET",
-  "next_action": "Continue independently qualified deliveries and isolated repairs while preparing the precise external-save approval; no restructuring or destructive retirement certification while preservation gate remains blocked."
+  "next_action": "Complete qualified queued deliveries and scoped repairs; publish current core build repair for actual-head independent review. Resolve explicit external backup approval and original artifact capability gaps before broad restructuring or final preservation/retirement.",
+  "published_main_tree": "2851f93249cc8e25c676177580232cfb44929ccf",
+  "current_complete_remote_head_inventory": "NOT_YET_REFRESHED_AFTER_INITIAL_SNAPSHOT"
 }
