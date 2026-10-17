@@ -96,7 +96,35 @@ def allLow (symbols : List Nat) : Bool :=
 def allExceptional (symbols : List Nat) : Bool :=
   symbols.all (fun q => decide (q = 0 ∨ q = 11))
 
-@[simp] theorem runMonitorFrom_nil (m : MonitorState) :
+@[simp] theorem allLow_ofFn_iff (L : Nat) (q : Nat → Nat) :
+    allLow (List.ofFn (fun i : Fin (L / 2) => q i.val)) = true ↔
+      ∀ i, i < L / 2 → q i ≤ 9 := by
+  unfold allLow
+  rw [List.all_eq_true]
+  constructor
+  · intro h i hi
+    have hm : q i ∈ List.ofFn (fun j : Fin (L / 2) => q j.val) :=
+      List.mem_ofFn.mpr ⟨⟨i, hi⟩, rfl⟩
+    exact of_decide_eq_true (h (q i) hm)
+  · intro h x hx
+    rcases List.mem_ofFn.mp hx with ⟨i, rfl⟩
+    exact of_decide_eq_true (h i.val i.isLt)
+
+theorem allExceptional_ofFn_iff (L : Nat) (q : Nat → Nat) :
+    allExceptional (List.ofFn (fun i : Fin (L / 2) => q i.val)) = true ↔
+      ∀ i, i < L / 2 → q i = 0 ∨ q i = 11 := by
+  unfold allExceptional
+  rw [List.all_eq_true]
+  constructor
+  · intro h i hi
+    have hm : q i ∈ List.ofFn (fun j : Fin (L / 2) => q j.val) :=
+      List.mem_ofFn.mpr ⟨⟨i, hi⟩, rfl⟩
+    exact of_decide_eq_true (h (q i) hm)
+  · intro h x hx
+    rcases List.mem_ofFn.mp hx with ⟨i, rfl⟩
+    exact of_decide_eq_true (h i.val i.isLt)
+
+theorem runMonitorFrom_nil (m : MonitorState) :
     runMonitorFrom m [] = m := rfl
 
 @[simp] theorem runMonitorFrom_cons (m : MonitorState) (q : Nat) (qs : List Nat) :
