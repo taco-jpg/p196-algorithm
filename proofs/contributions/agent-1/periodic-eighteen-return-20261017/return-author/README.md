@@ -1,0 +1,9 @@
+# Final return obstruction author check
+
+The exact source `Agent1PeriodicEighteenReturn.lean` compiled on its first actual Lean execution, in attempt-002, with explicit --trust=0, one job, asynchronous elaboration disabled. The full new-module-origin audit passed all 14 theorem constants, including the exact exported no-return statement. No originating definitions, runtime implementations, custom axioms or excluded dependencies were observed. The reported theorem axiom union is propext, Classical.choice and Quot.sound.
+
+Attempt-001 failed during dependency-path resolution, before any Lean invocation: the Clock publication snapshot contained no binary object. The actual Clock author command receipt identified its separate execution directory. Correcting only the supplied dependency-directory argument allowed attempt-002 to run; both exact source snapshots and original driver bytes are retained. No mathematical source edit was needed. The setup-failure record accurately reports the observed StopIteration.
+
+The check reuses 30 dependencies whose source and object hashes are recorded in dependencies.json. It is an author check, not a fresh combined rebuild or independent interpretation review. The driver records cumulative child-process RSS rather than a per-invocation isolated maximum. Complete commands, compiler identity, output logs and exit codes remain in attempt-002. The final clean gates are separate.
+
+The proof chooses the finite budget2*N+3 and one initial maximal band run, follows its literal descendant through every intermediate original-valid word, then compares its static left boundary after full tuple return with advance by the positive actual overflow sum. It does not assume intermediate periods are18, restrict B/H to be nonempty, assert no births elsewhere, or assume a safety flag. It excludes one return class and does not establish a palindrome or an infinite safe ordinary orbit.

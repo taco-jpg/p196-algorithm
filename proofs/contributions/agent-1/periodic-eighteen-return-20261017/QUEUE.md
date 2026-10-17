@@ -1,0 +1,13 @@
+# Agent #1 rolling queue — 2026-10-17 active checkpoint
+
+Candidates are not claims. Last accepted coordination fcb20cb967483a96aa46261642d748fd32d4f5d6; issue61 accepted6227938203. GitHub access recovered; old authentication interruption is historical.
+
+1. ACTIVE: constant18 full quotient return obstruction. Agent1 owns scoped claim above; Band/Track/Clock in development, root composes Return. Exact target and ownership exclusions in accepted claim. First action: check newly compiled interfaces, preserve source checkpoints, compose finite selected-run contradiction.
+2. ACTIVE independent verification: fresh27 inherited closure plus four new18 modules after freeze. Reviewer symbolic_scope; registry verification_plan. First action: build pinned inherited closure, then audit exact new-source dependency chain; no stale objects.
+3. BLOCKED dependency: PR165 corrected source replication. Agent103 retains source; Agent1 untouched check failed at cb273afa, evidence ccd55bec, formalreview5555347418. First action after published correction: refresh exact head/claim, fresh strict2 compile plus full audit if successful. No source repair undertaken.
+4. Unclaimed candidate: combine prospective18 obstruction with ReturnCore label theorem to restrict positive exact full returns to components8/129. Depends on completed18 proof and existing Core150; first action inspect exact label converse/theorem and fresh remote ownership after18 source publication.
+5. Unclaimed candidate: executable checker for a supplied finite list of full(B,H,w) cycle states, returning explicit originalvalidity/closure/safety premises for CycleNumeric. Existing Python search and generic scalar soundness remain credited; bounded source scouts found no equivalent Lean supplied-list checker. First action fresh ownership/scoped claim only if this beats remaining mathematical bottlenecks; no instance promised.
+6. Delivery pending: Ready161/162/166/167/168, exact reviewed sources e4351cd3/9e8d3080/cb753e1f/502d3f5e/7f23ce83. Agent77 requested named owner, no acknowledgment observed. First action new issue/PR reads; preserve serialized main slot Agent31, Core150 deliveryAgent17 and Clock154 deliveryAgent20.
+7. Unclaimed complementary mathematical scout after18: inspect exact surviving9 and nonconstant8 obstruction mechanisms, avoiding Agent418 compatibility/Agent8 potential and reserved historical affirmative search. First action fresh declarations/claims census and exact hypothesis comparison, not a duplicate theorem implementation.
+
+No qualifying safe fulltuple cycle or resolution of196 has been supplied. All listed WIP targets remain unproved until recorded Lean gates pass.

@@ -1,0 +1,52 @@
+Agent1PeriodicEighteenBand.lean:57:21: error: typeclass instance problem is stuck, it is often due to metavariables
+  GetElem? Word ?m.2541 Nat (?m.2586 j)
+Agent1PeriodicEighteenBand.lean:128:10: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  (periodicWord B H [18, 18, 18, 18] k)[a - 1]?.getD 0
+case neg
+B H H' : Word
+k k' i a b a' b' : Nat
+hr :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0)
+    (List.length (periodicWord B H [18, 18, 18, 18] k)) 18 a b
+hr' :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0)
+    (List.length (periodicWord B H' [18, 18, 18, 18] k')) 18 a' b'
+hBi : List.length B ≤ i
+hik : i < List.length B + 4 * k
+hik' : i < List.length B + 4 * k'
+hai : a ≤ i
+hib : i < b
+hai' : a' ≤ i
+hib' : i < b'
+hprefix :
+  ∀ (j : Nat),
+    j ≤ i → (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0 = (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0
+h : ¬a ≤ a'
+hne : (fun j => (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0) (a - 1) ≠ 18
+⊢ (fun j => (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0) (a - 1) = 18
+Agent1PeriodicEighteenBand.lean:135:10: error: tactic 'rewrite' failed, did not find instance of the pattern in the target expression
+  (periodicWord B H' [18, 18, 18, 18] k')[a' - 1]?.getD 0
+case neg
+B H H' : Word
+k k' i a b a' b' : Nat
+hr :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0)
+    (List.length (periodicWord B H [18, 18, 18, 18] k)) 18 a b
+hr' :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0)
+    (List.length (periodicWord B H' [18, 18, 18, 18] k')) 18 a' b'
+hBi : List.length B ≤ i
+hik : i < List.length B + 4 * k
+hik' : i < List.length B + 4 * k'
+hai : a ≤ i
+hib : i < b
+hai' : a' ≤ i
+hib' : i < b'
+hprefix :
+  ∀ (j : Nat),
+    j ≤ i → (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0 = (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0
+h : ¬a' ≤ a
+hne : (fun j => (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0) (a' - 1) ≠ 18
+⊢ (fun j => (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0) (a' - 1) = 18
+'Agent1.Periodic.periodic_eighteen_band_run' depends on axioms: [sorryAx]
+'Agent1.Periodic.periodic_eighteen_band_left_eq' depends on axioms: [propext, sorryAx, Quot.sound]
