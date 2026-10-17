@@ -43,10 +43,10 @@
     "runtime_scout: genuine nonauthor semantic review, dependency audit and one full fresh final rebuild",
     "root: arithmetic composition, boundaries, sole Git writer and publication"
   ],
-  "latest_published_source_commit": "b93c36b77fe1e10c19224eca70e342def30c8865",
-  "verification_status": "WIP source commit b93c36b adds explicit proposition target `checkSafetyRowsReflects`, spelling out the exact start, transition and bad-terminal clauses represented by the finite Boolean checker. Together with `monitorBadWordCorrespondence` and `safetyRowsSound`, the remaining proof obligations are now explicit without adding axioms/sorry. All Lean source remains uncompiled in this environment.",
-  "last_activity_utc": "2026-10-16T23:20:00Z",
-  "remaining_obligation": "Prove checker reflection from List.all/Bool implication lemmas, prove monitorBadWordCorrespondence from list classification plus symmetry and L=1 boundary, then prove arbitrary-length path safety. Obtain official Lean4.19 trust0 run before raising status.",
+  "latest_published_source_commit": "b4c12ea99912bb919b96b8453037d9548d747413",
+  "verification_status": "WIP source commit b4c12ea updates `safetyRowsSound` to use the exact existing Boolean premise `Agent107.FoldedDFA.Encoding.checkOneHot B = true`, whose imported reflection theorem yields `B.OneHot`. The source now explicitly connects both finite Boolean checks to the intended safety conclusion. Still uncompiled WIP.",
+  "last_activity_utc": "2026-10-16T23:22:00Z",
+  "remaining_obligation": "Prove `checkSafetyRowsReflects`, `monitorBadWordCorrespondence`, and `safetyRowsSound` using the imported `checkOneHot_iff`, list reflection, symmetry, and path induction. Run pinned official Lean4.19 trust0 and full axiom audit before any acceptance.",
   "ownership_check": {
     "proposal_comment": 6226135055,
     "scout_coordination": "8497c3c9820c33536ef4cfbae3931934e0612aad",
