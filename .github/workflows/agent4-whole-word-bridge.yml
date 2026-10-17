@@ -1,13 +1,10 @@
-name: Agent4 whole-word and numeric bridge
+name: Agent4 historical whole-word and numeric replay
 
 on:
-  push:
-    paths:
-      - '.github/workflows/agent4-whole-word-bridge.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-numeric-bridge:
@@ -17,9 +14,34 @@ jobs:
       - name: Checkout own sources without persistent credentials
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5
           sparse-checkout: proofs/agent4
           fetch-depth: 1
           persist-credentials: false
+      - name: Verify immutable historical input identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5
+          test "$(git rev-parse HEAD:proofs/agent4)" = 6d59c68f8f5922f85f5238081ce46226af0e1c02
+          printf '{"workflow_source":"%s","historical_source":"%s","input_tree":"%s","scope":"Historical replay; not final-main acceptance"}\n' "$GITHUB_SHA" "$(git rev-parse HEAD)" "$(git rev-parse HEAD:proofs/agent4)" > proofs/agent4/WORKFLOW_SOURCE.json
+      - name: Separate retained historical outputs from this execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          for dir in proofs/agent4/complementary_bulk/logs proofs/agent4/complementary_bulk/results proofs/agent4/prefix_growth/logs proofs/agent4/prefix_growth/integration/logs; do
+            if test -d "$dir"; then
+              mkdir -p "$RUNNER_TEMP/agent4-historical-outputs/$(dirname "$dir")"
+              mv "$dir" "$RUNNER_TEMP/agent4-historical-outputs/$dir"
+            fi
+            mkdir -p "$dir"
+          done
+          summary=proofs/agent4/prefix_growth/saturation-summary.json
+          if test -f "$summary"; then
+            mkdir -p "$RUNNER_TEMP/agent4-historical-outputs/$(dirname "$summary")"
+            mv "$summary" "$RUNNER_TEMP/agent4-historical-outputs/$summary"
+          fi
+
       - name: Install the exact official Lean compiler
         shell: bash
         run: |
@@ -44,7 +66,7 @@ jobs:
           cd agent4_wholeword_ci
           echo 'ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57  LychrelDigitSums.lean' | sha256sum -c -
           echo '483fc3084a9e9b796f9fd56e9640962839417386a30a2c803c9dd9b09ffa5b87  WholeWordBridge.lean' | sha256sum -c -
-          { echo "Input commit: $GITHUB_SHA"; lean --version; sha256sum *.lean; } \
+          { echo "Historical input commit: $(git rev-parse HEAD); workflow commit: $GITHUB_SHA"; lean --version; sha256sum *.lean; } \
             > ../proofs/agent4/prefix_growth/integration/logs/source-manifest.log
       - name: Compile the unchanged foundational source from scratch
         shell: bash
@@ -57,7 +79,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python proofs/agent4/prefix_growth/verify_lean.py \
+          env GITHUB_SHA=2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5 python proofs/agent4/prefix_growth/verify_lean.py \
             --lean "$RUNNER_TEMP/lean-4.19.0-linux/bin/lean" \
             --output proofs/agent4/prefix_growth/integration/logs \
             agent4_wholeword_ci/PrefixModel.lean agent4_wholeword_ci/SaturationCertificate.lean \
@@ -65,22 +87,12 @@ jobs:
           cd proofs/agent4/prefix_growth
           python test_prefix_projection.py
           mv prefix-projection-controls.json integration/logs/
-      - name: Publish only successful own audit records
+      - name: Hand replay evidence to the canonical writer
         shell: bash
-        env:
-          PUBLICATION_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add proofs/agent4/prefix_growth/integration/logs/
-          if ! git diff --cached --quiet; then
-            git commit -m 'proofs(agent4): publish fresh whole-word and numeric bridge verification'
-            HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$PUBLICATION_TOKEN" | base64 -w0)"
-            git -c "http.https://github.com/.extraheader=$HEADER" fetch origin main
-            git rebase origin/main
-            git -c "http.https://github.com/.extraheader=$HEADER" push origin HEAD:main
-          fi
+          printf 'Historical inputs: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5. Replay outputs are retained in this run artifact.\n' >> "$GITHUB_STEP_SUMMARY"
+          printf 'The canonical writer reviews and preserves this evidence before any repository publication. This workflow performs no Git ref mutation.\n' >> "$GITHUB_STEP_SUMMARY"
       - name: Retrieve pinned Agent109 sources for subsequent independent review
         shell: bash
         run: |
@@ -100,6 +112,8 @@ jobs:
         with:
           name: agent4-numeric-bridge-and-agent109-inputs
           path: |
+            ${{ runner.temp }}/agent4-historical-outputs/
+            proofs/agent4/WORKFLOW_SOURCE.json
             agent4_wholeword_ci/*.lean
             proofs/agent4/prefix_growth/integration/logs/
             agent109_review_inputs/

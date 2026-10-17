@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "campaign_id": "deep-clean-2026-10-17",
+  "scope": "automation",
+  "contributor": "Agent #1 / agent-1-deep-clean-20261017-b74cfea3dff0",
+  "independent_reviewer": "Agent1 managed independent verifier /root/verify_pr104",
+  "local_reviewed_head": "ce0d93f101a360ec02a4527543e9995cc549672b",
+  "local_reviewed_tree": "705c01b2cc652cd08d2316756d3b4d895a523e2c",
+  "source_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+  "original_commit_records": [
+    {
+      "sha": "5f2043b76fc1f62578527f608d8af74303d5b0f1",
+      "raw_commit": "tree fc2893a3c235e3a43003b44ea25641b6ae610659\nparent 74a1c3922eb7af438fe40b23d2105ad07556e3f5\nauthor Agent 1 deep-clean worker <128518157+sodium-qed@users.noreply.github.com> 1792257471 -0700\ncommitter Agent 1 deep-clean worker <128518157+sodium-qed@users.noreply.github.com> 1792257471 -0700\n\nci: route historical replay evidence through the canonical writer\n"
+    },
+    {
+      "sha": "6f13b7e75d8f804f6d0818b9a3ae311f1aeaaaee",
+      "raw_commit": "tree 527bbcead86de334e31ed728c0eb135f9e1c4ec5\nparent 5f2043b76fc1f62578527f608d8af74303d5b0f1\nauthor Agent 1 deep-clean worker <128518157+sodium-qed@users.noreply.github.com> 1792257544 -0700\ncommitter Agent 1 deep-clean worker <128518157+sodium-qed@users.noreply.github.com> 1792257544 -0700\n\nci: distinguish historical input logs from fresh replay outputs\n"
+    },
+    {
+      "sha": "ce0d93f101a360ec02a4527543e9995cc549672b",
+      "raw_commit": "tree 705c01b2cc652cd08d2316756d3b4d895a523e2c\nparent 6f13b7e75d8f804f6d0818b9a3ae311f1aeaaaee\nauthor Codex <codex@openai.com> 1792257870 -0700\ncommitter Codex <codex@openai.com> 1792257870 -0700\n\nci: isolate historical PASS results before fresh replay\n"
+    }
+  ],
+  "preserved_source_bundle": {
+    "path": "proofs/archive/migration/deep-clean-2026-10-17/automation/publication/reviewed-source.bundle",
+    "bytes": 11877,
+    "sha256": "f1776520803e53d6d33fabd3263d1e9398691f6284f6e03e5cc14239c0d02cfd"
+  },
+  "adoption": "The GitHub connector creates a new publication commit. Reviewed source bytes and modes remain exact; original local commit identities, author/committer metadata, intermediate versions and parent history are recoverable from the included incremental bundle.",
+  "recovery": [
+    "Use a normal repository checkout containing prerequisite 74a1c3922eb7af438fe40b23d2105ad07556e3f5.",
+    "git bundle verify proofs/archive/migration/deep-clean-2026-10-17/automation/publication/reviewed-source.bundle",
+    "git bundle unbundle proofs/archive/migration/deep-clean-2026-10-17/automation/publication/reviewed-source.bundle",
+    "git cat-file -p ce0d93f101a360ec02a4527543e9995cc549672b",
+    "Compare the recovered tree with 705c01b2cc652cd08d2316756d3b4d895a523e2c. No ref update is needed to inspect or restore the objects."
+  ],
+  "scope_boundary": "This is only the reviewed isolated repair and its author history. It does not resolve the separately blocked complete external backup or authorize broad restructuring, branch retirement, or final acceptance."
+}
