@@ -1,0 +1,29 @@
+Agent1.Periodic.quotient_path_valid_catalog (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hs : (w 0, Agent1.Periodic.outside (B 0) (w 0)) ∈ Agent1.Periodic.outerCatalog) (i : Nat) (hi : i ≤ N) :
+  Agent1.Periodic.ValidPeriodic (B i) (H i) (w i) ∧
+    (w i, Agent1.Periodic.outside (B i) (w i)) ∈ Agent1.Periodic.outerCatalog
+'Agent1.Periodic.quotient_path_valid_catalog' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.quotient_path_outer_edge (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hs : (w 0, Agent1.Periodic.outside (B 0) (w 0)) ∈ Agent1.Periodic.outerCatalog) (i : Nat) (hi : i < N) :
+  ∃ e,
+    e ∈ Agent1.Periodic.outerEdges ∧
+      e.source = (w i, Agent1.Periodic.outside (B i) (w i)) ∧
+        e.clock = Agent1.Periodic.rawGamma (B i) (H i) (w i) ∧
+          (e.carries =
+              if w i = [9, 9, 9, 9] then
+                some (Agent1.Periodic.leftEntry (B i), Agent1.Periodic.rightEntry (B i) (H i) (w i))
+              else none) ∧
+            e.target = (w (i + 1), Agent1.Periodic.outside (B (i + 1)) (w (i + 1)))
+'Agent1.Periodic.quotient_path_outer_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicQuotientPath Agent1.Periodic.quotient_path_valid_catalog._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicQuotientPath Agent1.Periodic.quotient_path_outer_edge._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicQuotientPath Agent1.Periodic.quotient_path_outer_edge : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent1PeriodicQuotientPath Agent1.Periodic.quotient_path_valid_catalog._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1PeriodicQuotientPath Agent1.Periodic.quotient_path_valid_catalog : [propext,
+ Quot.sound,
+ Classical.choice]
+MODULE_AUDIT theorems=5 definitions=0 union=[Classical.choice, Quot.sound, propext]

@@ -1,0 +1,1718 @@
+{
+  "agent": "Agent #1",
+  "status": "PASS",
+  "projects": {
+    "agent1-periodic-prefix-saturation": {
+      "status": "PASS",
+      "scope": "Necessary actual three-column projection of the original maximal period-four quotient, followed by reuse of the existing checked saturated eight-state prefix profile. For positive complete-tuple returns from period [14,14,4,4], derive strict unsaturation and positive gain G with clock=8G, signed shift=G, and 16G<N<=32G, hence N>=17. No generic saturation/profile reproof, odd-control balance, arbitrary graph realization, safety closure, saved outside-17/8 witness rejection, cycle existence or 196 conclusion.",
+      "sources": {
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "build_sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ActualWordBridge": {
+          "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+          "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "build_sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "imports": [
+            "PeriodObstructions"
+          ],
+          "adapter": null
+        },
+        "PrefixSemantics": {
+          "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+          "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "build_sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "imports": [
+            "ActualWordBridge"
+          ],
+          "adapter": null
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "build_sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "IncomingCarry": {
+          "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+          "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "build_sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "imports": [
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "Agent1RepeatedBlock": {
+          "path": "proofs/Agent1RepeatedBlock.lean",
+          "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "build_sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "imports": [
+            "PrefixSemantics",
+            "IncomingCarry"
+          ],
+          "adapter": null
+        },
+        "Agent1RepeatedBlockContext": {
+          "path": "proofs/Agent1RepeatedBlockContext.lean",
+          "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+          "build_sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+          "imports": [
+            "Agent1RepeatedBlock"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicDigits": {
+          "path": "proofs/Agent1PeriodicDigits.lean",
+          "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+          "build_sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+          "imports": [
+            "Agent1RepeatedBlockContext"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicSlices": {
+          "path": "proofs/Agent1PeriodicSlices.lean",
+          "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+          "build_sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+          "imports": [
+            "Agent1PeriodicDigits"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicGuard": {
+          "path": "proofs/Agent1PeriodicGuard.lean",
+          "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "build_sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "imports": [
+            "Agent1PeriodicSlices"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicGuardFacts": {
+          "path": "proofs/Agent1PeriodicGuardFacts.lean",
+          "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "build_sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicOuterStrip": {
+          "path": "proofs/Agent1PeriodicOuterStrip.lean",
+          "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+          "build_sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+          "imports": [
+            "Agent1PeriodicGuardFacts"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicCenterStrip": {
+          "path": "proofs/Agent1PeriodicCenterStrip.lean",
+          "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+          "build_sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicQuotient": {
+          "path": "proofs/Agent1PeriodicQuotient.lean",
+          "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+          "build_sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+          "imports": [
+            "Agent1PeriodicGuardFacts",
+            "Agent1PeriodicOuterStrip",
+            "Agent1PeriodicCenterStrip"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicParity": {
+          "path": "proofs/Agent1PeriodicParity.lean",
+          "sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+          "build_sha256": "8eb97092e0c402f24e8163b51ed902f7e83f39b3c2a663698b08375147f2e129",
+          "imports": [
+            "Agent1PeriodicQuotient"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicPositivity": {
+          "path": "proofs/Agent1PeriodicPositivity.lean",
+          "sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+          "build_sha256": "481768dfb0d8884d61c038a886d5fc05131fc085286869c32190f80691e0b3d6",
+          "imports": [
+            "Agent1PeriodicOuterStrip"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicValidity": {
+          "path": "proofs/Agent1PeriodicValidity.lean",
+          "sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+          "build_sha256": "4652df468f38ed9696f5b68616f5bfd9225ab6f377a4d449289d8c2ad65b0e52",
+          "imports": [
+            "Agent1PeriodicParity",
+            "Agent1PeriodicPositivity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicSafetyAlphabet": {
+          "path": "proofs/Agent1PeriodicSafetyAlphabet.lean",
+          "sha256": "ec2632bcdfc630947844098f09f54161e2bd4ab3473f0e4a139ec6bc2d56912c",
+          "build_sha256": "ec2632bcdfc630947844098f09f54161e2bd4ab3473f0e4a139ec6bc2d56912c",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicOuter": {
+          "path": "proofs/Agent1PeriodicOuter.lean",
+          "sha256": "b30b54bce57542a649208c29900d511e9cc4b64429fb4a48f8da2a387d040678",
+          "build_sha256": "b30b54bce57542a649208c29900d511e9cc4b64429fb4a48f8da2a387d040678",
+          "imports": [
+            "Agent1PeriodicSafetyAlphabet"
+          ],
+          "adapter": null
+        },
+        "PrefixModel": {
+          "path": "proofs/PrefixModel__412f2902c90e9ba0.lean",
+          "sha256": "8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0",
+          "build_sha256": "8ea1199dbd413869efd8e48955119361cb44c6d7cc69722d276cb1c825da37b0",
+          "imports": [
+            "Lean.Elab.Tactic.Omega"
+          ],
+          "adapter": null
+        },
+        "SaturationCertificate": {
+          "path": "proofs/SaturationCertificate__911d3fe2109bd91b.lean",
+          "sha256": "7ce611b42425dcad50527788d95b9bfa648883ed11561df3ebbb6438a1728791",
+          "build_sha256": "7ce611b42425dcad50527788d95b9bfa648883ed11561df3ebbb6438a1728791",
+          "imports": [
+            "PrefixModel"
+          ],
+          "adapter": null
+        },
+        "SaturationTheorem": {
+          "path": "proofs/SaturationTheorem__3e87d543382b99c0.lean",
+          "sha256": "9a7f65a82d611bf24f2661de0715d0a70f69da0b5a51d3ad00725cde37f5b2eb",
+          "build_sha256": "9a7f65a82d611bf24f2661de0715d0a70f69da0b5a51d3ad00725cde37f5b2eb",
+          "imports": [
+            "SaturationCertificate"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicPrefix": {
+          "path": "proofs/Agent1PeriodicPrefix.lean",
+          "sha256": "591c10a3f34c75d0dc058fc64db5b3934c1345b6f4fa9015eb64a3586dec8377",
+          "build_sha256": "591c10a3f34c75d0dc058fc64db5b3934c1345b6f4fa9015eb64a3586dec8377",
+          "imports": [
+            "Agent1PeriodicOuter",
+            "SaturationTheorem"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicWidthPath": {
+          "path": "proofs/Agent1PeriodicWidthPath.lean",
+          "sha256": "e97afd670460a3df90e836360fed59797cb60b339ee63e42d51de826c46a2241",
+          "build_sha256": "e97afd670460a3df90e836360fed59797cb60b339ee63e42d51de826c46a2241",
+          "imports": [
+            "Agent1PeriodicQuotient"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicReturnClock": {
+          "path": "proofs/Agent1PeriodicReturnClock.lean",
+          "sha256": "ef4b8ae6380db3b2286ed166e26fe432626eb36a812c8de5c72d54d0c6bb309e",
+          "build_sha256": "ef4b8ae6380db3b2286ed166e26fe432626eb36a812c8de5c72d54d0c6bb309e",
+          "imports": [
+            "Agent1PeriodicOuter",
+            "Agent1PeriodicWidthPath"
+          ],
+          "adapter": null
+        },
+        "TemplateStep": {
+          "path": "proofs/TemplateStep__44edb2f3d9ffd691.lean",
+          "sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+          "build_sha256": "76ad132fec23f9da8733f72a6baf22c3dbfe68d402a8165766bd8d163549d2ed",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "ReturnCertificate": {
+          "path": "proofs/ReturnCertificate__3f43ec0db45b8fd7.lean",
+          "sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+          "build_sha256": "b6d34e8fb031401171b517eef8a2d91222334a5745cc88329e0a2ad13db47058",
+          "imports": [
+            "TemplateStep"
+          ],
+          "adapter": null
+        },
+        "CertificateAccounting": {
+          "path": "proofs/CertificateAccounting__ad0d1bd9b0242036.lean",
+          "sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+          "build_sha256": "29d43a2ed06c1ef8b10f44ba210d1272ee911a01d40f34ff4ca69b526fc85977",
+          "imports": [
+            "ReturnCertificate"
+          ],
+          "adapter": null
+        },
+        "ExteriorCharge": {
+          "path": "proofs/ExteriorCharge__52cbb237030a07b3.lean",
+          "sha256": "32e9c2bdf3f632b42ebce9a4fcda09856e4d3389e352a54a2e00904895be93b2",
+          "build_sha256": "32e9c2bdf3f632b42ebce9a4fcda09856e4d3389e352a54a2e00904895be93b2",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "CertificateCharge": {
+          "path": "proofs/CertificateCharge__46feaa8077e59426.lean",
+          "sha256": "403d5a3d51d5a795cf59bca401cf4c1c0f3cfd00137081df22069e20916edf98",
+          "build_sha256": "403d5a3d51d5a795cf59bca401cf4c1c0f3cfd00137081df22069e20916edf98",
+          "imports": [
+            "ReturnCertificate",
+            "ExteriorCharge"
+          ],
+          "adapter": null
+        },
+        "CertificateCarryBudget": {
+          "path": "proofs/CertificateCarryBudget__5307cef97cfab646.lean",
+          "sha256": "b8d2e27f02c52f2014a84a2b57fb71bfaa17c67ca09db10a67597f85dca3d9b1",
+          "build_sha256": "b8d2e27f02c52f2014a84a2b57fb71bfaa17c67ca09db10a67597f85dca3d9b1",
+          "imports": [
+            "ReturnCertificate",
+            "LychrelDigitSums"
+          ],
+          "adapter": null
+        },
+        "CertificatePhases": {
+          "path": "proofs/CertificatePhases__e0f11dab45134f94.lean",
+          "sha256": "27c986089eb9034ccc663bbdedecfefaa0d952b3b719c61dc907129d0c65fdef",
+          "build_sha256": "27c986089eb9034ccc663bbdedecfefaa0d952b3b719c61dc907129d0c65fdef",
+          "imports": [
+            "CertificateCharge"
+          ],
+          "adapter": null
+        },
+        "CertificateConsequences": {
+          "path": "proofs/CertificateConsequences__799ad43db1806ce1.lean",
+          "sha256": "20f7e7b251284edf290be47bacc0cf197b7fcdec17b633a09af748a8d502a316",
+          "build_sha256": "20f7e7b251284edf290be47bacc0cf197b7fcdec17b633a09af748a8d502a316",
+          "imports": [
+            "CertificateAccounting",
+            "CertificateCharge",
+            "CertificateCarryBudget",
+            "CertificatePhases"
+          ],
+          "adapter": null
+        },
+        "CertificatePrefix": {
+          "path": "proofs/CertificatePrefix__97e715b8d52c43b3.lean",
+          "sha256": "3e518a354e10dba1609f26c7914047802075e4bdbc71e7205df954ec2328201c",
+          "build_sha256": "3e518a354e10dba1609f26c7914047802075e4bdbc71e7205df954ec2328201c",
+          "imports": [
+            "CertificateCarryBudget",
+            "PrefixModel"
+          ],
+          "adapter": null
+        },
+        "CertificateSaturation": {
+          "path": "proofs/CertificateSaturation__80df3f83acb87b5d.lean",
+          "sha256": "81530b812401b871c57c3c6fc8a95b33521e272a240ed303324fefc888287a75",
+          "build_sha256": "81530b812401b871c57c3c6fc8a95b33521e272a240ed303324fefc888287a75",
+          "imports": [
+            "CertificateConsequences",
+            "CertificatePrefix",
+            "SaturationTheorem"
+          ],
+          "adapter": null
+        },
+        "WholeWordBridge": {
+          "path": "proofs/WholeWordBridge__77dd94b84e64292d.lean",
+          "sha256": "483fc3084a9e9b796f9fd56e9640962839417386a30a2c803c9dd9b09ffa5b87",
+          "build_sha256": "483fc3084a9e9b796f9fd56e9640962839417386a30a2c803c9dd9b09ffa5b87",
+          "imports": [
+            "LychrelDigitSums",
+            "SaturationTheorem"
+          ],
+          "adapter": null
+        },
+        "Saturated8CycleProfile": {
+          "path": "proofs/contributions/agent-215/saturated-8cycle-profile/Saturated8CycleProfile.lean",
+          "sha256": "cce58055f9175005c215f2bccaf5d1c937de2c1deefdc2033b4d42587b26e9f7",
+          "build_sha256": "cce58055f9175005c215f2bccaf5d1c937de2c1deefdc2033b4d42587b26e9f7",
+          "imports": [
+            "CertificateSaturation",
+            "SaturationTheorem",
+            "WholeWordBridge"
+          ],
+          "adapter": null
+        },
+        "Agent2SaturatedProfile": {
+          "path": "proofs/Agent2SaturatedProfile.lean",
+          "sha256": "89bd18b28673dc2f0d2b17f57773864cd998f73030879f24e15e221b1d648079",
+          "build_sha256": "89bd18b28673dc2f0d2b17f57773864cd998f73030879f24e15e221b1d648079",
+          "imports": [
+            "Saturated8CycleProfile"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicSaturation": {
+          "path": "proofs/Agent1PeriodicSaturation.lean",
+          "sha256": "032cba5f7a393e842bf3ab393b4a63559eb8b9349614521e9b88bbfed1cb46b6",
+          "build_sha256": "032cba5f7a393e842bf3ab393b4a63559eb8b9349614521e9b88bbfed1cb46b6",
+          "imports": [
+            "Agent1PeriodicPrefix",
+            "Agent1PeriodicReturnClock",
+            "Agent2SaturatedProfile"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicPhase": {
+          "path": "proofs/Agent1PeriodicPhase.lean",
+          "sha256": "705c139614ffd4f9f20a305f7c4bff20059da0c7fa127ca180ff8a88397a51ce",
+          "build_sha256": "705c139614ffd4f9f20a305f7c4bff20059da0c7fa127ca180ff8a88397a51ce",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicNines": {
+          "path": "proofs/Agent1PeriodicNines.lean",
+          "sha256": "b8aae1033e8e90c78f48888ea698e5d345c21e6b99970842dc5a9f3341cd193c",
+          "build_sha256": "b8aae1033e8e90c78f48888ea698e5d345c21e6b99970842dc5a9f3341cd193c",
+          "imports": [
+            "Agent1PeriodicGuardFacts"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicPhaseCatalog": {
+          "path": "proofs/Agent1PeriodicPhaseCatalog.lean",
+          "sha256": "44445a343635503c940ea125727d0bbb75bbf7dce24be62c28a660241363f9f9",
+          "build_sha256": "44445a343635503c940ea125727d0bbb75bbf7dce24be62c28a660241363f9f9",
+          "imports": [
+            "Agent1PeriodicPhase",
+            "Agent1PeriodicNines",
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicOuterChoices": {
+          "path": "proofs/Agent1PeriodicOuterChoices.lean",
+          "sha256": "9bd84fb0c22b2252fb71f0310fe763e6a07192ef0fb80299763459ab48fb76ad",
+          "build_sha256": "9bd84fb0c22b2252fb71f0310fe763e6a07192ef0fb80299763459ab48fb76ad",
+          "imports": [
+            "Agent1PeriodicPhaseCatalog"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicCatalogOrder": {
+          "path": "proofs/Agent1PeriodicCatalogOrder.lean",
+          "sha256": "0f59e74ecb35b9bb648150319beb3de9f7965c6a1aea7171e67a40f4bcb199c7",
+          "build_sha256": "0f59e74ecb35b9bb648150319beb3de9f7965c6a1aea7171e67a40f4bcb199c7",
+          "imports": [
+            "Agent1PeriodicOuterChoices"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicOuterCatalog": {
+          "path": "proofs/Agent1PeriodicOuterCatalog.lean",
+          "sha256": "1e6ebcc4e47df94162467d52826cee4e64c5707a622ac775008671d3fb0391e2",
+          "build_sha256": "1e6ebcc4e47df94162467d52826cee4e64c5707a622ac775008671d3fb0391e2",
+          "imports": [
+            "Agent1PeriodicOuter",
+            "Agent1PeriodicCatalogOrder"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicOuterRank": {
+          "path": "proofs/Agent1PeriodicOuterRank.lean",
+          "sha256": "e345ef2c5fe7734f64ead7e971f0ea8b807dfcc2d84e3d50625109871fe10477",
+          "build_sha256": "e345ef2c5fe7734f64ead7e971f0ea8b807dfcc2d84e3d50625109871fe10477",
+          "imports": [
+            "Agent1PeriodicOuterCatalog"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicQuotientPath": {
+          "path": "proofs/Agent1PeriodicQuotientPath.lean",
+          "sha256": "7735197ffa2a779c6ff1e0d76c2ed338ceb1afef75623adb7f2ce9a62c0d4e67",
+          "build_sha256": "7735197ffa2a779c6ff1e0d76c2ed338ceb1afef75623adb7f2ce9a62c0d4e67",
+          "imports": [
+            "Agent1PeriodicWidthPath",
+            "Agent1PeriodicOuterCatalog"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroPeriod": {
+          "path": "proofs/Agent1PeriodicZeroPeriod.lean",
+          "sha256": "3761744f62cabdf25cf69f8e2990ce81eec9ac75cfb2273a5e80974304795a8a",
+          "build_sha256": "3761744f62cabdf25cf69f8e2990ce81eec9ac75cfb2273a5e80974304795a8a",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroState": {
+          "path": "proofs/Agent1PeriodicZeroState.lean",
+          "sha256": "9e80cfe62a227bc6f7f5468549d2e5f6e9cbf22a3e927ee769c13eb573550aa1",
+          "build_sha256": "9e80cfe62a227bc6f7f5468549d2e5f6e9cbf22a3e927ee769c13eb573550aa1",
+          "imports": [
+            "Agent1PeriodicZeroPeriod"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroExponent": {
+          "path": "proofs/Agent1PeriodicZeroExponent.lean",
+          "sha256": "5b9156d0f31a5def3de5e559014cecba35bd80756d5ec45b1cf7a21f5a688adf",
+          "build_sha256": "5b9156d0f31a5def3de5e559014cecba35bd80756d5ec45b1cf7a21f5a688adf",
+          "imports": [
+            "Agent1PeriodicZeroState"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroNumeric": {
+          "path": "proofs/Agent1PeriodicZeroNumeric.lean",
+          "sha256": "8e561a621f18d783aa52ef0f2d6985b0a6cd0293b80fe4b174250665cee07b89",
+          "build_sha256": "8e561a621f18d783aa52ef0f2d6985b0a6cd0293b80fe4b174250665cee07b89",
+          "imports": [
+            "Agent1PeriodicZeroPeriod"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroMass": {
+          "path": "proofs/Agent1PeriodicZeroMass.lean",
+          "sha256": "1889a8d60b97de528550cd9944396cda15776049f080f402a50e6d9d36ce6e36",
+          "build_sha256": "1889a8d60b97de528550cd9944396cda15776049f080f402a50e6d9d36ce6e36",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicRealizability": {
+          "path": "proofs/Agent1PeriodicRealizability.lean",
+          "sha256": "cfa1fb0e7562976600e8f56e15d5ee9970979757eacb77c00c80df3de3625953",
+          "build_sha256": "cfa1fb0e7562976600e8f56e15d5ee9970979757eacb77c00c80df3de3625953",
+          "imports": [
+            "Agent1PeriodicValidity"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroCycle": {
+          "path": "proofs/Agent1PeriodicZeroCycle.lean",
+          "sha256": "ffea963ec5895ef493c289430d5a50e81ae241014d2baf8756beaa6996a23fbd",
+          "build_sha256": "ffea963ec5895ef493c289430d5a50e81ae241014d2baf8756beaa6996a23fbd",
+          "imports": [
+            "Agent1PeriodicZeroExponent",
+            "Agent1PeriodicZeroNumeric",
+            "Agent1PeriodicZeroMass",
+            "Agent1PeriodicRealizability"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicZeroPath": {
+          "path": "proofs/Agent1PeriodicZeroPath.lean",
+          "sha256": "078d6356f3eba5286f77d11e202df4759ecfd8e6473f5475d4ef443799732d0a",
+          "build_sha256": "078d6356f3eba5286f77d11e202df4759ecfd8e6473f5475d4ef443799732d0a",
+          "imports": [
+            "Agent1PeriodicWidthPath",
+            "Agent1PeriodicZeroCycle"
+          ],
+          "adapter": null
+        },
+        "CondensationBound": {
+          "path": "proofs/CondensationBound__7ecf1469405ab8d0.lean",
+          "sha256": "04bb2ec87115a532ca91d5d0d453c0062f6c46f030c1fe072ee649db000a0ef8",
+          "build_sha256": "04bb2ec87115a532ca91d5d0d453c0062f6c46f030c1fe072ee649db000a0ef8",
+          "imports": [
+            "Std"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicReturnCore": {
+          "path": "proofs/Agent1PeriodicReturnCore.lean",
+          "sha256": "271fbd1e8c5487e515420ccd145391c039f8dccab3b8f134cf31ff9b8dd7255f",
+          "build_sha256": "271fbd1e8c5487e515420ccd145391c039f8dccab3b8f134cf31ff9b8dd7255f",
+          "imports": [
+            "Agent1PeriodicOuterRank",
+            "Agent1PeriodicQuotientPath",
+            "Agent1PeriodicZeroPath",
+            "CondensationBound"
+          ],
+          "adapter": null
+        },
+        "Agent1PeriodicInitialUnsaturated": {
+          "path": "proofs/Agent1PeriodicInitialUnsaturated.lean",
+          "sha256": "17c6e8475a10439dde4488e015e52b2e472febae2015c3ee99f44742dd1e27fe",
+          "build_sha256": "17c6e8475a10439dde4488e015e52b2e472febae2015c3ee99f44742dd1e27fe",
+          "imports": [
+            "Agent1PeriodicSaturation",
+            "Agent1PeriodicReturnCore"
+          ],
+          "adapter": null
+        }
+      },
+      "commands": [
+        {
+          "label": "PeriodObstructions",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PeriodObstructions.olean",
+            "PeriodObstructions.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.923222,
+          "log": "agent1-periodic-prefix-saturation/logs/PeriodObstructions.log",
+          "log_sha256": "d56d019704635693d25ddc1a86a6211515d44c28bb790edb543c46f49e0d74c4"
+        },
+        {
+          "label": "ActualWordBridge",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ActualWordBridge.olean",
+            "ActualWordBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.470785,
+          "log": "agent1-periodic-prefix-saturation/logs/ActualWordBridge.log",
+          "log_sha256": "dbc11776204bf37aa9f026b2fe50c5b0e08f9cd89939b0e21a03a95cb02850e8"
+        },
+        {
+          "label": "PrefixSemantics",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PrefixSemantics.olean",
+            "PrefixSemantics.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.019596,
+          "log": "agent1-periodic-prefix-saturation/logs/PrefixSemantics.log",
+          "log_sha256": "9815bf999eb3ce9e00a7ee038958b3bb5057951e9ebfb15310a37fc938ad25a6"
+        },
+        {
+          "label": "LychrelDigitSums",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "LychrelDigitSums.olean",
+            "LychrelDigitSums.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 42.959659,
+          "log": "agent1-periodic-prefix-saturation/logs/LychrelDigitSums.log",
+          "log_sha256": "dca02a44ce2530c3741e06bc8b31c9dcb9283ea7cae65563c0891dd657ef2a5e"
+        },
+        {
+          "label": "IncomingCarry",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "IncomingCarry.olean",
+            "IncomingCarry.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.069974,
+          "log": "agent1-periodic-prefix-saturation/logs/IncomingCarry.log",
+          "log_sha256": "0c4c316858c7512fbea04178eeef8970b0ed2603d08fae346095b625ae41b88c"
+        },
+        {
+          "label": "Agent1RepeatedBlock",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1RepeatedBlock.olean",
+            "Agent1RepeatedBlock.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.317812,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1RepeatedBlock.log",
+          "log_sha256": "0958b628aa9dbcf920c45f114cd0eafe3f0ed2bcd5e1e8d8bfc2bb629a42b59c"
+        },
+        {
+          "label": "Agent1RepeatedBlockContext",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1RepeatedBlockContext.olean",
+            "Agent1RepeatedBlockContext.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.427993,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1RepeatedBlockContext.log",
+          "log_sha256": "2541037e758242dc7e7edbfce32ddfffe91089f84c5d6b8191b2dd077cbff090"
+        },
+        {
+          "label": "Agent1PeriodicDigits",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicDigits.olean",
+            "Agent1PeriodicDigits.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.368428,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicDigits.log",
+          "log_sha256": "8050bff82141fee354aeb2699dbb8c32877c42c7258ca32e6e05e2d1ea16753c"
+        },
+        {
+          "label": "Agent1PeriodicSlices",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicSlices.olean",
+            "Agent1PeriodicSlices.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.216351,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicSlices.log",
+          "log_sha256": "7f5d906cf00719694eca18f0802676ea49d66c69983809d1190ca379cd3ca284"
+        },
+        {
+          "label": "Agent1PeriodicGuard",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicGuard.olean",
+            "Agent1PeriodicGuard.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.919111,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicGuard.log",
+          "log_sha256": "843b5aa20530c06837b08ecbe3ccf12f82a970b3c7702cbda1577e6a7ab06cc5"
+        },
+        {
+          "label": "Agent1PeriodicGuardFacts",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicGuardFacts.olean",
+            "Agent1PeriodicGuardFacts.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.267506,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicGuardFacts.log",
+          "log_sha256": "eafc95ef99c5c4df42fdef784083b5a747937bc1a1790dc757c2ad5f02014509"
+        },
+        {
+          "label": "Agent1PeriodicOuterStrip",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicOuterStrip.olean",
+            "Agent1PeriodicOuterStrip.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.427694,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicOuterStrip.log",
+          "log_sha256": "565d6545bbeec40e2b47585cae3539daed028a41f7a5e0db1c71b79da53fb0d4"
+        },
+        {
+          "label": "Agent1PeriodicCenterStrip",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicCenterStrip.olean",
+            "Agent1PeriodicCenterStrip.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.725387,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicCenterStrip.log",
+          "log_sha256": "769e4bb3807f6a573ced1cffc06fe3714825f2dc54bdd1c5ce38dcc51fc3a132"
+        },
+        {
+          "label": "Agent1PeriodicQuotient",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicQuotient.olean",
+            "Agent1PeriodicQuotient.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.571066,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicQuotient.log",
+          "log_sha256": "8162634ab3deab19b5c651aa5cef54ee43b5780322301c3ab4bf2953baba582b"
+        },
+        {
+          "label": "Agent1PeriodicParity",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicParity.olean",
+            "Agent1PeriodicParity.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.517817,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicParity.log",
+          "log_sha256": "f1b8509ee15a950f45497452600b6f8bc7a4df209a774730a42e3a0762a38d71"
+        },
+        {
+          "label": "Agent1PeriodicPositivity",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicPositivity.olean",
+            "Agent1PeriodicPositivity.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.315112,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicPositivity.log",
+          "log_sha256": "b15541413ff9fd717ac540d0193b07f0f477aaad019bfcb1d46e7cd202aa5bfc"
+        },
+        {
+          "label": "Agent1PeriodicValidity",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicValidity.olean",
+            "Agent1PeriodicValidity.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.316625,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicValidity.log",
+          "log_sha256": "8403ca20661d55d2f08a738e3b17096aa8bce6da6f9fbb834a7551aeef5d3352"
+        },
+        {
+          "label": "Agent1PeriodicSafetyAlphabet",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicSafetyAlphabet.olean",
+            "Agent1PeriodicSafetyAlphabet.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.26607,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicSafetyAlphabet.log",
+          "log_sha256": "cf10edd5f674976414c61acdec7ecc527011df1c01605fc9d1c1ce1c9bdc1ba4"
+        },
+        {
+          "label": "Agent1PeriodicOuter",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicOuter.olean",
+            "Agent1PeriodicOuter.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.264241,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicOuter.log",
+          "log_sha256": "a9c13d951c64dc0b21820621596e7f6b6ea2151f8c1b46d79d4066d5c9c25196"
+        },
+        {
+          "label": "PrefixModel",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "PrefixModel.olean",
+            "PrefixModel.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.48914,
+          "log": "agent1-periodic-prefix-saturation/logs/PrefixModel.log",
+          "log_sha256": "9cb715e471d96c58033338e65fdd27ac57ab6a704da50cf498db377697782120"
+        },
+        {
+          "label": "SaturationCertificate",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "SaturationCertificate.olean",
+            "SaturationCertificate.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 41.649394,
+          "log": "agent1-periodic-prefix-saturation/logs/SaturationCertificate.log",
+          "log_sha256": "83c45d8c7fd6d79bc2cd4a54b051205b513dc9dde92e18d388ee8091119a50c2"
+        },
+        {
+          "label": "SaturationTheorem",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "SaturationTheorem.olean",
+            "SaturationTheorem.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.63522,
+          "log": "agent1-periodic-prefix-saturation/logs/SaturationTheorem.log",
+          "log_sha256": "e4d17ceeed0ae12b02f95fe7fd0d19fd05130d4a9f6a01cdffefde951befe057"
+        },
+        {
+          "label": "Agent1PeriodicPrefix",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicPrefix.olean",
+            "Agent1PeriodicPrefix.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.517701,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicPrefix.log",
+          "log_sha256": "a437ac84bc79abd3afeef6edde517500801fae3d119c6314daf89eaa26435ad4"
+        },
+        {
+          "label": "Agent1PeriodicWidthPath",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicWidthPath.olean",
+            "Agent1PeriodicWidthPath.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.468191,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicWidthPath.log",
+          "log_sha256": "1b4db8384019ad4711f88bcbb8e3e327c47ed2358c62c6ad021bc1cd192f5f63"
+        },
+        {
+          "label": "Agent1PeriodicReturnClock",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicReturnClock.olean",
+            "Agent1PeriodicReturnClock.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.618543,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicReturnClock.log",
+          "log_sha256": "dd2b6ab6acabe1ebbb1922f9e2ed44c912be6ad46b75032b3e4c4d9aec9ad95b"
+        },
+        {
+          "label": "TemplateStep",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "TemplateStep.olean",
+            "TemplateStep.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 3.231198,
+          "log": "agent1-periodic-prefix-saturation/logs/TemplateStep.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ReturnCertificate",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ReturnCertificate.olean",
+            "ReturnCertificate.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 2.038912,
+          "log": "agent1-periodic-prefix-saturation/logs/ReturnCertificate.log",
+          "log_sha256": "f2c6882924b64da43f79d98a9884c4196e8b90008eb9fa20a2a861818274e50a"
+        },
+        {
+          "label": "CertificateAccounting",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateAccounting.olean",
+            "CertificateAccounting.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.190449,
+          "log": "agent1-periodic-prefix-saturation/logs/CertificateAccounting.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "ExteriorCharge",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "ExteriorCharge.olean",
+            "ExteriorCharge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 4.153227,
+          "log": "agent1-periodic-prefix-saturation/logs/ExteriorCharge.log",
+          "log_sha256": "121ac59501da405a0325e64f29a483c9832f0abd1116752d07eed5cdd88bbef6"
+        },
+        {
+          "label": "CertificateCharge",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateCharge.olean",
+            "CertificateCharge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 3.291368,
+          "log": "agent1-periodic-prefix-saturation/logs/CertificateCharge.log",
+          "log_sha256": "5082f518c25b5a2e98612e58a5459577de4902649bd61822dc95b7a4fd42782f"
+        },
+        {
+          "label": "CertificateCarryBudget",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateCarryBudget.olean",
+            "CertificateCarryBudget.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.172955,
+          "log": "agent1-periodic-prefix-saturation/logs/CertificateCarryBudget.log",
+          "log_sha256": "e98fdca11f268d9d570bc3b1e4782223b4bf2fd2d84f4823632c9c6085eeff31"
+        },
+        {
+          "label": "CertificatePhases",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificatePhases.olean",
+            "CertificatePhases.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.56873,
+          "log": "agent1-periodic-prefix-saturation/logs/CertificatePhases.log",
+          "log_sha256": "23e5ddd0831960ba7450de0cca2b444edec3c7da1f9a0c93036693c76474e28b"
+        },
+        {
+          "label": "CertificateConsequences",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateConsequences.olean",
+            "CertificateConsequences.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.220251,
+          "log": "agent1-periodic-prefix-saturation/logs/CertificateConsequences.log",
+          "log_sha256": "d0c20330072e0a66315957b948bf9a600f68584e96b34f2ae06681ee92ae75cf"
+        },
+        {
+          "label": "CertificatePrefix",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificatePrefix.olean",
+            "CertificatePrefix.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.725413,
+          "log": "agent1-periodic-prefix-saturation/logs/CertificatePrefix.log",
+          "log_sha256": "88fd07844d9dc2eb1db863e3d7ebb759929ce85ac745fcadd7dd90372416b532"
+        },
+        {
+          "label": "CertificateSaturation",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CertificateSaturation.olean",
+            "CertificateSaturation.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.870136,
+          "log": "agent1-periodic-prefix-saturation/logs/CertificateSaturation.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "WholeWordBridge",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "WholeWordBridge.olean",
+            "WholeWordBridge.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.869591,
+          "log": "agent1-periodic-prefix-saturation/logs/WholeWordBridge.log",
+          "log_sha256": "d9f2c9be9e8bd6e4d7a28fb163082519d3d48a02802b9321a26bdba3892f5064"
+        },
+        {
+          "label": "Saturated8CycleProfile",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Saturated8CycleProfile.olean",
+            "Saturated8CycleProfile.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.665786,
+          "log": "agent1-periodic-prefix-saturation/logs/Saturated8CycleProfile.log",
+          "log_sha256": "ad8191507a76d409717848dba1d0ea89ff23e95d075ccea4fb8c15876d38702a"
+        },
+        {
+          "label": "Agent2SaturatedProfile",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent2SaturatedProfile.olean",
+            "Agent2SaturatedProfile.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 5.443158,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent2SaturatedProfile.log",
+          "log_sha256": "b3bd1953c4ea89bcedaebc46fcf26d3ceed3f4d25e10e8e98446ce573530831c"
+        },
+        {
+          "label": "Agent1PeriodicSaturation",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicSaturation.olean",
+            "Agent1PeriodicSaturation.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.468186,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicSaturation.log",
+          "log_sha256": "262b82a026c3b5b1bbc2a2be1ac6e452b24fec86350d946ec902fbe7eabd057b"
+        },
+        {
+          "label": "Agent1PeriodicPhase",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicPhase.olean",
+            "Agent1PeriodicPhase.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.268254,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicPhase.log",
+          "log_sha256": "19000eb9fc42d193ba13391ccee2ad31a59fe6012682518d9f433d25d1f30b7a"
+        },
+        {
+          "label": "Agent1PeriodicNines",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicNines.olean",
+            "Agent1PeriodicNines.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.367233,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicNines.log",
+          "log_sha256": "d5039663084bcf0d871d45b48833dc7c16abe7784137612df4a479268f974397"
+        },
+        {
+          "label": "Agent1PeriodicPhaseCatalog",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicPhaseCatalog.olean",
+            "Agent1PeriodicPhaseCatalog.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 3.264541,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicPhaseCatalog.log",
+          "log_sha256": "e3d6e5a0639f5957f1dda19e941fdf814ee813d6b630830f7f2c917ccb97ccb7"
+        },
+        {
+          "label": "Agent1PeriodicOuterChoices",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicOuterChoices.olean",
+            "Agent1PeriodicOuterChoices.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.419462,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicOuterChoices.log",
+          "log_sha256": "82159b1768f2f2b867957c02e68267e60de4a3ec2c0bc509e121de28810a64f4"
+        },
+        {
+          "label": "Agent1PeriodicCatalogOrder",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicCatalogOrder.olean",
+            "Agent1PeriodicCatalogOrder.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.225089,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicCatalogOrder.log",
+          "log_sha256": "78bf0461e62e71bfa77b917c41fed0322d95b2f3f8b1bf0b4a3d17993b2bdc74"
+        },
+        {
+          "label": "Agent1PeriodicOuterCatalog",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicOuterCatalog.olean",
+            "Agent1PeriodicOuterCatalog.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 177.75998,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicOuterCatalog.log",
+          "log_sha256": "f24b265ff4c7a59de55c2187eeef9914691f9c4c725c168f06d00412496680e0"
+        },
+        {
+          "label": "Agent1PeriodicOuterRank",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicOuterRank.olean",
+            "Agent1PeriodicOuterRank.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 17.861631,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicOuterRank.log",
+          "log_sha256": "fe6224abc6204fa542f21a98c00e37a3a127e99c43375bedeb2f97e46c53fe1f"
+        },
+        {
+          "label": "Agent1PeriodicQuotientPath",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicQuotientPath.olean",
+            "Agent1PeriodicQuotientPath.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.314664,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicQuotientPath.log",
+          "log_sha256": "2ff4ed4e21177c6dc11d56a79fe8982246b99afba5bb387a1d26f7651209913a"
+        },
+        {
+          "label": "Agent1PeriodicZeroPeriod",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroPeriod.olean",
+            "Agent1PeriodicZeroPeriod.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.314621,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicZeroPeriod.log",
+          "log_sha256": "4292544eb311b62ae9a4be7c8194a4ef3a053ad5eb84952813c4c6872de3031f"
+        },
+        {
+          "label": "Agent1PeriodicZeroState",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroState.olean",
+            "Agent1PeriodicZeroState.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.414797,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicZeroState.log",
+          "log_sha256": "9620de669c0e37feeaca888d247441a669c2bae52f361352a50f849806e4bd4b"
+        },
+        {
+          "label": "Agent1PeriodicZeroExponent",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroExponent.olean",
+            "Agent1PeriodicZeroExponent.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.464931,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicZeroExponent.log",
+          "log_sha256": "7c22f0c44fe8762aeb64a05b431cd219fa79c4fabe90c8025fbb6d5e17ca3ade"
+        },
+        {
+          "label": "Agent1PeriodicZeroNumeric",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroNumeric.olean",
+            "Agent1PeriodicZeroNumeric.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.514906,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicZeroNumeric.log",
+          "log_sha256": "baed2194df7b8beb15c7dc9701148818ee419e0dd22901aa03056d274bed0cd8"
+        },
+        {
+          "label": "Agent1PeriodicZeroMass",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroMass.olean",
+            "Agent1PeriodicZeroMass.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.314459,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicZeroMass.log",
+          "log_sha256": "08becc456729e4bcbd8dea3063828e42465a77b1e4e80dec88d3760fb25c686e"
+        },
+        {
+          "label": "Agent1PeriodicRealizability",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicRealizability.olean",
+            "Agent1PeriodicRealizability.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.414825,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicRealizability.log",
+          "log_sha256": "a617cf8da193c2c41f4abcb3c57638310dfb910c96c8512cb43972318203e10f"
+        },
+        {
+          "label": "Agent1PeriodicZeroCycle",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroCycle.olean",
+            "Agent1PeriodicZeroCycle.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.368436,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicZeroCycle.log",
+          "log_sha256": "01621fe4561b3d613fafc8b21756d898bbc948c166856b23e60f67dab8673a04"
+        },
+        {
+          "label": "Agent1PeriodicZeroPath",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicZeroPath.olean",
+            "Agent1PeriodicZeroPath.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.314533,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicZeroPath.log",
+          "log_sha256": "b5c2bf2a6550bcb10d9a609d5cd7340f483020c860b4f3e802571e5cd5a76c48"
+        },
+        {
+          "label": "CondensationBound",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "CondensationBound.olean",
+            "CondensationBound.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.916377,
+          "log": "agent1-periodic-prefix-saturation/logs/CondensationBound.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "Agent1PeriodicReturnCore",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicReturnCore.olean",
+            "Agent1PeriodicReturnCore.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.465019,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicReturnCore.log",
+          "log_sha256": "2a0ca00e618308fb52d1ab883e729a67b9af11a51e4641e93433fcb082cb7e7d"
+        },
+        {
+          "label": "Agent1PeriodicInitialUnsaturated",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "-o",
+            "Agent1PeriodicInitialUnsaturated.olean",
+            "Agent1PeriodicInitialUnsaturated.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.723088,
+          "log": "agent1-periodic-prefix-saturation/logs/Agent1PeriodicInitialUnsaturated.log",
+          "log_sha256": "11664b9db281eb73c5c69ce68597ca903a3bf17d6cec42e55abf5e6c28cdf128"
+        },
+        {
+          "label": "ProjectAudit",
+          "argv": [
+            "/workspace/p196-tools/lean-4.19.0-linux/bin/lean",
+            "-j1",
+            "-DElab.async=false",
+            "ProjectAudit.lean"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 28.996944,
+          "log": "agent1-periodic-prefix-saturation/logs/ProjectAudit.log",
+          "log_sha256": "d31d398e6445e6f23e749595c723e8e9da588c72c9f782d585aa5d10ef067ae3"
+        }
+      ],
+      "roots": [
+        "Agent1PeriodicInitialUnsaturated"
+      ],
+      "build_order": [
+        "PeriodObstructions",
+        "ActualWordBridge",
+        "PrefixSemantics",
+        "LychrelDigitSums",
+        "IncomingCarry",
+        "Agent1RepeatedBlock",
+        "Agent1RepeatedBlockContext",
+        "Agent1PeriodicDigits",
+        "Agent1PeriodicSlices",
+        "Agent1PeriodicGuard",
+        "Agent1PeriodicGuardFacts",
+        "Agent1PeriodicOuterStrip",
+        "Agent1PeriodicCenterStrip",
+        "Agent1PeriodicQuotient",
+        "Agent1PeriodicParity",
+        "Agent1PeriodicPositivity",
+        "Agent1PeriodicValidity",
+        "Agent1PeriodicSafetyAlphabet",
+        "Agent1PeriodicOuter",
+        "PrefixModel",
+        "SaturationCertificate",
+        "SaturationTheorem",
+        "Agent1PeriodicPrefix",
+        "Agent1PeriodicWidthPath",
+        "Agent1PeriodicReturnClock",
+        "TemplateStep",
+        "ReturnCertificate",
+        "CertificateAccounting",
+        "ExteriorCharge",
+        "CertificateCharge",
+        "CertificateCarryBudget",
+        "CertificatePhases",
+        "CertificateConsequences",
+        "CertificatePrefix",
+        "CertificateSaturation",
+        "WholeWordBridge",
+        "Saturated8CycleProfile",
+        "Agent2SaturatedProfile",
+        "Agent1PeriodicSaturation",
+        "Agent1PeriodicPhase",
+        "Agent1PeriodicNines",
+        "Agent1PeriodicPhaseCatalog",
+        "Agent1PeriodicOuterChoices",
+        "Agent1PeriodicCatalogOrder",
+        "Agent1PeriodicOuterCatalog",
+        "Agent1PeriodicOuterRank",
+        "Agent1PeriodicQuotientPath",
+        "Agent1PeriodicZeroPeriod",
+        "Agent1PeriodicZeroState",
+        "Agent1PeriodicZeroExponent",
+        "Agent1PeriodicZeroNumeric",
+        "Agent1PeriodicZeroMass",
+        "Agent1PeriodicRealizability",
+        "Agent1PeriodicZeroCycle",
+        "Agent1PeriodicZeroPath",
+        "CondensationBound",
+        "Agent1PeriodicReturnCore",
+        "Agent1PeriodicInitialUnsaturated"
+      ],
+      "theorem_count": 2784,
+      "axiom_union": "[Classical.choice, Quot.sound, propext]",
+      "endpoints": [
+        "Agent1.Periodic.firstThree_periodicWord",
+        "Agent1.Periodic.physicalPrefix_a",
+        "Agent1.Periodic.physicalPrefix_valid",
+        "Agent1.Periodic.physicalPrefix_step",
+        "Agent1.Periodic.quotient_return_saturated_profile",
+        "Agent1.Periodic.quotient_return_saturated_outside",
+        "Agent1.Periodic.quotient_return_initial_clock_strict",
+        "Agent1.Periodic.quotient_return_initial_clock_gain",
+        "Agent1.Periodic.quotient_return_initial_length_ge_seventeen"
+      ],
+      "unsafe_implementation_axioms": [
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finishFuel._spec_1"
+        ],
+        [
+          "ReturnCertificate",
+          "List.foldl._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_4"
+        ],
+        [
+          "Agent1PeriodicPhaseCatalog",
+          "Option.repr._at._private.Agent1PeriodicPhaseCatalog.0.Agent1.Periodic.reprPhaseEdge.\u00ab_@\u00bb.Agent1PeriodicPhaseCatalog._hyg.309._spec_1"
+        ],
+        [
+          "Agent1PeriodicOuterChoices",
+          "List.eraseDups._at.Agent1.Periodic.outerImages._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.feed._spec_1"
+        ],
+        [
+          "Agent1PeriodicOuterChoices",
+          "List.mapTR.loop._at.Agent1.Periodic.outerOutputs._spec_1"
+        ],
+        [
+          "Agent1PeriodicCatalogOrder",
+          "List.foldl._at.Agent1.Periodic.catalogOrderKey._spec_1"
+        ],
+        [
+          "ExteriorCharge",
+          "List.sum._at.Agent2Exterior.charge._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.repr'._at._private.LychrelDigitSums.0.OverflowNormalizationCertificate.reprState.\u00ab_@\u00bb.LychrelDigitSums._hyg.20379._spec_1"
+        ],
+        [
+          "Agent1PeriodicPhaseCatalog",
+          "List.mapTR.loop._at.Agent1.Periodic.phaseOutputs._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_2"
+        ],
+        [
+          "ReturnCertificate",
+          "Std.Format.joinSep._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_7"
+        ],
+        [
+          "ReturnCertificate",
+          "List.repr'._at._private.ReturnCertificate.0.Agent109.Cert.reprState.\u00ab_@\u00bb.ReturnCertificate._hyg.2656._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.next._spec_1"
+        ],
+        [
+          "ReturnCertificate",
+          "List.repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_5"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.mapTR.loop._at.OverflowNormalizationCertificate.initials._spec_1"
+        ],
+        [
+          "Agent1PeriodicPhaseCatalog",
+          "List.mapTR.loop._at.Agent1.Periodic.phaseOutputs._spec_2"
+        ],
+        [
+          "Agent1PeriodicOuterChoices",
+          "List.filterMapTR.go._at.Agent1.Periodic.outerImages._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_1"
+        ],
+        [
+          "Agent1PeriodicOuterChoices",
+          "List.eraseDups.loop._at.Agent1.Periodic.outerImages._spec_3"
+        ],
+        [
+          "Agent1PeriodicPhaseCatalog",
+          "List.flatMapTR.go._at.Agent1.Periodic.phaseOutputs._spec_4"
+        ],
+        [
+          "Agent1PeriodicPhaseCatalog",
+          "List.flatMapTR.go._at.Agent1.Periodic.phaseOutputs._spec_3"
+        ],
+        [
+          "Agent1PeriodicPhaseCatalog",
+          "Prod.repr._at._private.Agent1PeriodicPhaseCatalog.0.Agent1.Periodic.reprPhaseEdge.\u00ab_@\u00bb.Agent1PeriodicPhaseCatalog._hyg.309._spec_2"
+        ],
+        [
+          "Agent1PeriodicOuterCatalog",
+          "List.flatMapTR.go._at.Agent1.Periodic.outerEdges._spec_1"
+        ],
+        [
+          "Agent1PeriodicZeroState",
+          "List.sum._at.Agent1.Periodic.zeroStateMeasure._spec_1"
+        ],
+        [
+          "Agent1PeriodicOuterChoices",
+          "Prod.repr._at._private.Agent1PeriodicOuterChoices.0.Agent1.Periodic.reprOuterEdge.\u00ab_@\u00bb.Agent1PeriodicOuterChoices._hyg.317._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "OverflowCarryNormalization.iterPairs._elambda_1"
+        ],
+        [
+          "ReturnCertificate",
+          "Std.Format.joinSep._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_3"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.initials._spec_3"
+        ],
+        [
+          "Agent1PeriodicOuterChoices",
+          "List.filterTR.loop._at.Agent1.Periodic.outerOutputs._spec_2"
+        ],
+        [
+          "Agent1PeriodicPhaseCatalog",
+          "_private.Init.Data.Option.Basic.0.Option.decEqOption.\u00ab_@\u00bb.Init.Data.Option.Basic._hyg.4._at._private.Agent1PeriodicPhaseCatalog.0.Agent1.Periodic.decEqPhaseEdge.\u00ab_@\u00bb.Agent1PeriodicPhaseCatalog._hyg.48._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.next._spec_2"
+        ],
+        [
+          "ReturnCertificate",
+          "List.foldl._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_8"
+        ],
+        [
+          "Agent1PeriodicOuterCatalog",
+          "List.flatMapTR.go._at.Agent1.Periodic.outerCatalog._spec_1"
+        ],
+        [
+          "Agent1PeriodicOuterChoices",
+          "List.flatMapTR.go._at.Agent1.Periodic.outerOutputs._spec_3"
+        ],
+        [
+          "Agent1PeriodicReturnCore",
+          "List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1"
+        ],
+        [
+          "ReturnCertificate",
+          "List.repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_1"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.feed._spec_2"
+        ],
+        [
+          "ReturnCertificate",
+          "repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_6"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.finals._spec_2"
+        ],
+        [
+          "ReturnCertificate",
+          "repr._at._private.ReturnCertificate.0.Agent109.Cert.reprCertificate.\u00ab_@\u00bb.ReturnCertificate._hyg.3379._spec_2"
+        ],
+        [
+          "LychrelDigitSums",
+          "List.flatMapTR.go._at.OverflowNormalizationCertificate.edge._spec_1"
+        ]
+      ]
+    }
+  },
+  "mathematical_proof_check": true,
+  "repository_wide_pass": false,
+  "started_at_epoch": 1792195810.455342,
+  "registry_sha256": "a7d016a392e9e593cc9a98371fbc940da60c43f4e1938b72d032248103829c7e",
+  "source_commit": "71e8fd6f3b7e4c14d1df1b0e792e4b5e6e0158c6",
+  "source_tree_clean": true,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped 58-module contribution registry; not a repository-wide accepted catalogue.",
+    "All three new modules have completed strict author compilation and full new-module audits. Complete parent and independent fresh combined verification remain pending."
+  ],
+  "compiler": {
+    "version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "files": {
+      "/workspace/p196-tools/lean-4.19.0-linux/bin/lean": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libInit_shared.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libLake_shared.so": "41d978bb36ca6e187a24688c92a047b9293c43b0562049e1d6407cc0b3d39208",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared.so": "2ab605c74c78f9ba4431a7b5305a4b28a9071d8a826f223eb14fe5530f78e14d",
+      "/workspace/p196-tools/lean-4.19.0-linux/lib/lean/libleanshared_1.so": "44bc5837306f8e24a5db0db56d56ca3114415bd65e3b107426d3c93e21d20098"
+    }
+  },
+  "finished_at_epoch": 1792196175.3647282
+}

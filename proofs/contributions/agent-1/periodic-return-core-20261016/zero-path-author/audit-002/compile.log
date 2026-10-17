@@ -1,0 +1,15 @@
+Agent1.Periodic.quotient_path_zeroStateOrbit (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hzero : w 0 = [0, 0, 0, 0]) (i : Nat) :
+  i ≤ N → w i = [0, 0, 0, 0] ∧ (B i, H i) = Agent1.Periodic.zeroStateOrbit (B 0, H 0) i
+Agent1.Periodic.quotient_path_zero_interface_ne (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hzero : w 0 = [0, 0, 0, 0]) (hN : 0 < N) : (B N, H N) ≠ (B 0, H 0)
+Agent1.Periodic.quotient_path_zero_no_return (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hzero : w 0 = [0, 0, 0, 0]) (hN : 0 < N) : ¬(B N = B 0 ∧ H N = H 0 ∧ w N = w 0)
+AUDIT_THEOREM Agent1.Periodic.quotient_path_zero_no_return : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_zeroStateOrbit._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_zero_interface_ne : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_zeroStateOrbit : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_zeroStateOrbit._proof_1 : [propext, Quot.sound]
+ZeroPathAudit.lean:10:0: error: WRONG_DECLARATION_COUNT 5

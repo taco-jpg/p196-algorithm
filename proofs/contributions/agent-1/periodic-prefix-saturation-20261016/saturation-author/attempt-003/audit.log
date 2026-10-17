@@ -1,0 +1,36 @@
+Agent1.Periodic.quotient_return_saturated_profile (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) (hsat : 2 * Agent1.Periodic.quotientClockSum B H w N = N) :
+  ∃ r,
+    ∀ (i : Nat),
+      i < N →
+        Agent1.Periodic.physicalPrefix (B i) (w i) = Agent215.Saturated8.cycleState (↑r + i) ∧
+          Agent1.Periodic.rawGamma (B i) (H i) (w i) = (↑r + i) % 2
+Agent1.Periodic.quotient_return_saturated_outside (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (hN : 0 < N)
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) (hsat : 2 * Agent1.Periodic.quotientClockSum B H w N = N) :
+  Agent1.Periodic.outside (B 0) (w 0) = 8 ∨ Agent1.Periodic.outside (B 0) (w 0) = 17
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_7 : []
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent1.Periodic.prefix_total_eq_quotientClockSum : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_6 : []
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_2 : []
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent1.Periodic.prefix_total_eq_quotientClockSum._proof_2 : [propext,
+ Quot.sound]
+AUDIT_SAFE_DEFINITION _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.splitter : []
+AUDIT_THEOREM Agent1.Periodic.quotient_return_saturated_outside : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent1.Periodic.prefix_total_eq_quotientClockSum._proof_1 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_5 : []
+GENERATED_RUNTIME_IMPLEMENTATION _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.splitter._rarg._cstage2
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_4 : []
+GENERATED_RUNTIME_IMPLEMENTATION _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.splitter._cstage1
+AUDIT_THEOREM Agent1.Periodic.quotient_return_saturated_profile._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_1 : []
+GENERATED_RUNTIME_IMPLEMENTATION _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.splitter._cstage2
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_8 : []
+AUDIT_THEOREM Agent1.Periodic.quotient_return_saturated_profile : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicSaturation.0.Agent215.Saturated8.cycleState.match_1.eq_3 : []
+MODULE_AUDIT theorems=14 public_endpoints=2 safe_definitions=1 generated_runtime=3 custom_axioms=0 union=[Classical.choice,
+ Quot.sound,
+ propext]
