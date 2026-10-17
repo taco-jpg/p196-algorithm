@@ -1,0 +1,13 @@
+# Source-only supporting semantic review
+
+Supporting specialist /root/control_review/semantic_check independently inspected the frozen source and canonical definitions. Its returned source-only conclusion was: no semantic defect found in the stated local counterexample. Target SHA256 matched e50a7e04b272f8b0d78d380b1ec1e2df80fc4b1647719dd31bdac02109a8107e. This document records that supporting report; it is not a Lean execution receipt.
+
+The eight conjuncts at Agent1PeriodicNinesExtraStrip.lean:17–28 supply original ValidPeriodic, initial strip=(H,0), actual entry-carry sum=1, rawPeriod=w, centerPeriods=2, nonempty quotientCenter=[18,18], quotientOuter=[3], and rawPeriod at that quotient=w. Thus a blanket centerPeriods<=1 bound fails even with the stated initial normalization and nonempty-residual restrictions.
+
+Original operations checked: ValidPeriodic is at Agent1PeriodicGuard.lean:180; literal rawOuter/rawPeriod/rawCenter slices at 167/170/173; Agent8.normalize and stepWord at PeriodObstructions__70ce034b31b5b218.lean:24/28. Actual entry carries are Agent1PeriodicDigits.lean:14–16, using terminalCarry in ActualWordBridge__7f032d27940694a8.lean:10. centerPeriods at Agent1PeriodicQuotient.lean:79 is the second component of the original strip on the actual raw output. The stripping recursion at Agent1PeriodicCenterStrip.lean:62–73 increments once per mirrored pair; exact length accounting is at line148. Count2 removes two four-entry blocks from each side, sixteen coefficients altogether.
+
+The last conjunct evaluates the actual rawPeriod function at the computed quotient tuple; it is not a return to the initial state. Source-level context: quotient_step_bounded (Agent1PeriodicQuotient.lean:87) connects the first quotient to any actual input exponent k>=3, with successor exponent (k-2)+outerPeriods+2>=3. The displayed quotient tuple has the coefficient bounds and period length needed by the unchanged raw guard for the following actual transition. This contextual explanation is not a separately supplied new formal theorem or a safety claim.
+
+Terminology caveats: initial center normalization means maximal spatial stripping, not decimal digit normalization. The nine phase is the four-entry all-nine word [9,9,9,9], not minimal period length nine. The theorem gives no safe continuation, return cycle, infinite orbit, reachability from196, or refutation of a bound with further temporal restrictions.
+
+No Lean/Python mathematical execution, source editing, or Git mutation was performed by the supporting specialist. Main reviewer control_review independently inspected the same canonical definitions and retains responsibility for the final combined semantic/build verdict.

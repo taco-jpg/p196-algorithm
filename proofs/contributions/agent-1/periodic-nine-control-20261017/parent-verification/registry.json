@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "Scoped 15-module contribution registry, not a repository-wide catalogue.",
+    "Strict author compile/origin audit passed; fresh independent and parent verification pending at freeze."
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "projects": {
+    "agent1-periodic-nine-control": {
+      "scope": "One explicit finite control B=[1], H=[9,9,9,14,18,18,14,9,9,9], w=[9,9,9,9]: original ValidPeriodic; initial literal strip=(H,0); actual entry sum1; actual raw period unchanged; exactly two mirrored period pairs stripped; residual [18,18]; quotient outer [3]; next actual raw period also nine. Refutes only a blanket one-step centerPeriods<=1 bound on this original-valid initially normalized input domain with nonempty residual. No safe successor, cycle, infinite continuation, temporal descent or 196 conclusion.",
+      "roots": [
+        "Agent1PeriodicNinesExtraStrip"
+      ],
+      "modules": {
+        "PeriodObstructions": {
+          "path": "proofs/PeriodObstructions__70ce034b31b5b218.lean",
+          "sha256": "83102a949036799a929ba72d74ce9d76bc2a11cb3adf61e0bc06b6013b22991a",
+          "git_blob": "a89dda20e9a9b3452f7d0272b4fbd28f7d6ce119",
+          "imports": [
+            "Std"
+          ]
+        },
+        "ActualWordBridge": {
+          "path": "proofs/ActualWordBridge__7f032d27940694a8.lean",
+          "sha256": "3123e8f86fe751e61307ea528390bd265515a8d69c731f51e2808fb78d0a6ec6",
+          "git_blob": "d3f49353f9970c610d818d8f5da78ad5c739e7df",
+          "imports": [
+            "PeriodObstructions"
+          ]
+        },
+        "PrefixSemantics": {
+          "path": "proofs/PrefixSemantics__3798a605dd95d8c6.lean",
+          "sha256": "5dca5a84536801f771020660d496063426c5946a4e1912ec2a17f0ae246b23b5",
+          "git_blob": "04a8cc9e73b87d271ca857a218b240e23f57c939",
+          "imports": [
+            "ActualWordBridge"
+          ]
+        },
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__75febdc48f0ca802.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ]
+        },
+        "IncomingCarry": {
+          "path": "proofs/IncomingCarry__13645dd30c0ce73b.lean",
+          "sha256": "d8a7cfa955204d03f454fcd1234ca66c2d15f361f9fbc036420dc91ac7579849",
+          "git_blob": "0eb66e9e176c6bdc8f9f94cf705bddd063d65345",
+          "imports": [
+            "LychrelDigitSums"
+          ]
+        },
+        "Agent1RepeatedBlock": {
+          "path": "proofs/Agent1RepeatedBlock.lean",
+          "sha256": "4dc552677e5b7f1484fa2c765378bae02236033a4c5d42858f84b258a9f30d12",
+          "git_blob": "4adf4bd714be87ef5d95f0e6d33632fe36075ca4",
+          "imports": [
+            "PrefixSemantics",
+            "IncomingCarry"
+          ]
+        },
+        "Agent1RepeatedBlockContext": {
+          "path": "proofs/Agent1RepeatedBlockContext.lean",
+          "sha256": "d73d6825fbae0da63595073d82ee32e7cdf7dad1a8c6aa4efa8e29cf99911eb3",
+          "git_blob": "91eb5c39029f90de058952eb3fc993c6a2b1ba21",
+          "imports": [
+            "Agent1RepeatedBlock"
+          ]
+        },
+        "Agent1PeriodicDigits": {
+          "path": "proofs/Agent1PeriodicDigits.lean",
+          "sha256": "dc6cc1dadb74c4927f0635107fdc1eb62cebac3038dea4e97ad4229fc8703eab",
+          "git_blob": "6a6f02ae17d7aaa8e728a6588edf080c9ffd7ad5",
+          "imports": [
+            "Agent1RepeatedBlockContext"
+          ]
+        },
+        "Agent1PeriodicSlices": {
+          "path": "proofs/Agent1PeriodicSlices.lean",
+          "sha256": "8c1afe94c85fcfc3d7318a651cfd236f7d833aa257972c73815110dfe9003e43",
+          "git_blob": "d0cdb8dcd06910ed0ea38801c91020c571bc1966",
+          "imports": [
+            "Agent1PeriodicDigits"
+          ]
+        },
+        "Agent1PeriodicGuard": {
+          "path": "proofs/Agent1PeriodicGuard.lean",
+          "sha256": "4ba3877f27250e066bbe19dd066b55fa667576281e8dc984334b9a9b82fcee91",
+          "git_blob": "7c62748625cecbc277ddd5e01ffb17671e4db7a8",
+          "imports": [
+            "Agent1PeriodicSlices"
+          ]
+        },
+        "Agent1PeriodicGuardFacts": {
+          "path": "proofs/Agent1PeriodicGuardFacts.lean",
+          "sha256": "106cd4c4f3454fbe6ac5304691951b8292ef8477f0901424f323fb2fa4f366c9",
+          "git_blob": "45fec1c73f1fe4f60daa9186e36b1d19b0b69927",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ]
+        },
+        "Agent1PeriodicOuterStrip": {
+          "path": "proofs/Agent1PeriodicOuterStrip.lean",
+          "sha256": "734a8d8f639e5eac254e76de6eb8d9a41e377c6e87e0574be4478a3669cfb85c",
+          "git_blob": "9e35c06bf3dd393f33dfd2af965a1ea2d4305bc7",
+          "imports": [
+            "Agent1PeriodicGuardFacts"
+          ]
+        },
+        "Agent1PeriodicCenterStrip": {
+          "path": "proofs/Agent1PeriodicCenterStrip.lean",
+          "sha256": "566c7c5eac1fa54b98a9150a21f7ac61c403d8b0391b7aa92c1dbdea51c300c3",
+          "git_blob": "bfcfd913cfd7b4063c9b632f2b0461aafd9ca437",
+          "imports": [
+            "Agent1PeriodicGuard"
+          ]
+        },
+        "Agent1PeriodicQuotient": {
+          "path": "proofs/Agent1PeriodicQuotient.lean",
+          "sha256": "562ad271c282a8a246de344b5fa9ea7e96bd64f74098c3799c839853e792a9a4",
+          "git_blob": "63bd5f4319f6a79924b7292db3eb82e0d027b26c",
+          "imports": [
+            "Agent1PeriodicGuardFacts",
+            "Agent1PeriodicOuterStrip",
+            "Agent1PeriodicCenterStrip"
+          ]
+        },
+        "Agent1PeriodicNinesExtraStrip": {
+          "path": "proofs/Agent1PeriodicNinesExtraStrip.lean",
+          "sha256": "e50a7e04b272f8b0d78d380b1ec1e2df80fc4b1647719dd31bdac02109a8107e",
+          "git_blob": "21dc3897b77499d95aee131ab02d7056ee676ae2",
+          "imports": [
+            "Agent1PeriodicQuotient"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "A1-PERIODIC-NINE-EXTRA-STRIP-CONTROL",
+      "project": "agent1-periodic-nine-control",
+      "endpoints": [
+        "Agent1.Periodic.nines_extra_strip_control"
+      ]
+    }
+  ],
+  "source_baseline": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80",
+  "source_pin_origins": [
+    {
+      "path": "proofs/Agent1PeriodicQuotient.registry.json",
+      "sha256": "84fe6fcaab4420539334b058808ae5b9732cf5612b158aff196921bba8206761",
+      "git_blob": "289d558374886268a8b0d50a03261418049def22",
+      "baseline_commit": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80"
+    }
+  ],
+  "accepted_global_registry_modified": false,
+  "verification_status": "FROZEN_AUTHOR_CHECKED_FRESH_REVIEW_PENDING",
+  "metadata_validation": {
+    "exact_actual_import_dfs": true,
+    "module_count": 15,
+    "new_module_count": 1,
+    "new_public_declaration_count": 1,
+    "new_public_theorem_count": 1,
+    "source_tokens_checked": [
+      "sorry",
+      "admit",
+      "sorryAx",
+      "native_decide",
+      "axiom",
+      "implemented_by",
+      "extern",
+      "unsafe",
+      "ofReduceBool",
+      "trustCompiler"
+    ],
+    "source_token_hits": [],
+    "lean_execution_performed_by_this_preflight": false,
+    "claim_commit": "d3eb5690eeb7d8b1daf002f44435a6a89470b581",
+    "claim_git_blob": "b979fa3c7adc68fc8b89f5e42c102bd3a1b4ec3e",
+    "claim_sha256": "219b01b481a641a2ccdf6e2b5bea0e4c79155d677af72ac10c1044ba7b84f3f6"
+  },
+  "author_verification": {
+    "author_confirmation_received": true,
+    "confirmation": "Root message: frozen first attempt001 PASS, no further source changes.",
+    "source_sha256": "e50a7e04b272f8b0d78d380b1ec1e2df80fc4b1647719dd31bdac02109a8107e",
+    "result_path": "proofs/contributions/agent-1/periodic-nine-control-20261017/author/attempt-001/result.json",
+    "result_sha256": "867e36f0cffe112b2199bad3004f8c70ca3edb431139a327d1604ef3246b68df",
+    "fresh_closure": false,
+    "author_reused_pinned_dependencies": 14
+  }
+}
