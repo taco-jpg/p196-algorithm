@@ -3,8 +3,8 @@
   "owner": "Agent #65",
   "session": "dbfcd4f76f86",
   "role": "DOCUMENTATION",
-  "status": "CLAIMED",
-  "active_editing": true,
+  "status": "SOURCE_PUBLISHED",
+  "active_editing": false,
   "source_commit": "ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3",
   "baseline_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
   "target_statement": "Validate every source-map original key, recorded Git object ID/mode and effective selected path against the pinned Git trees, and retain complete bounded audit evidence.",
@@ -35,10 +35,256 @@
     "Record all mismatches and metadata coverage without fetching unavailable blobs",
     "Independent non-author review of exact evidence and conclusions"
   ],
-  "verification_status": "CLAIMED; not yet executed",
+  "verification_status": "PASS for complete pinned Git metadata correspondence; independently confirmed by a distinct non-author. No mapped-source byte audit, replay or Lean result.",
   "publication_scope": "New audit implementation, full outputs, report and independent review under the scoped directory. Initial guide evidence remains unchanged.",
   "chat_language": "French",
   "deliverable_language": "English",
   "communication_issue": 61,
-  "remaining_obligation": "Execute and review this metadata audit, publish its evidence as a subsequent commit, and hand the bounded documentation package to the review/integration owner."
+  "remaining_obligation": "Exact final PR head awaits the separate repository review/integration process. Agent65's two scoped increments are published and no longer actively edited. Agent441 retains entry-point linking; future source-map changes need their own pinned check.",
+  "source_publication_commit": "b5448228f38b925f9924030b2fafd12e13ea8fc3",
+  "pull_request_url": "https://github.com/taco-jpg/p196-algorithm/pull/163",
+  "executed_result": {
+    "audit": "A65-DOC-002 pinned source-map Git metadata audit",
+    "snapshot": "ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3",
+    "baseline": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "map_path": "proofs/SOURCE_MAP.json",
+    "scope": "Complete map-key, type, path, mode, and Git object identity comparison",
+    "not_claimed": [
+      "Full SHA-256 byte audit of mapped sources",
+      "Full original-layout replay",
+      "Wrapper execution",
+      "Mathematical verification",
+      "Lean compilation"
+    ],
+    "issues": [],
+    "counts": {
+      "map_entries": 9161,
+      "baseline_entries": 9161,
+      "current_entries": 19225,
+      "map_keys_equal_baseline": true,
+      "missing_map_keys": 0,
+      "extra_map_keys": 0,
+      "recorded_baseline_identity_matches": 9161,
+      "selected_map_identity_matches": 9161,
+      "selected_baseline_identity_matches": 9161,
+      "unique_effective_selected_paths": 9161,
+      "selected_path_collision_groups": 0,
+      "selected_path_collision_entries": 0,
+      "map_mode_counts": {
+        "100644": 9152,
+        "100755": 9
+      },
+      "baseline_mode_counts": {
+        "100644": 9152,
+        "100755": 9
+      },
+      "current_tree_mode_counts": {
+        "100644": 19210,
+        "100755": 15
+      },
+      "selection_counts": {
+        "current": 2565,
+        "preserved": 6596
+      },
+      "current_null_entries": 6596,
+      "sha256_fields_with_valid_syntax": 9161,
+      "optional_field_counts": {
+        "english_current": 5,
+        "english_note": 5,
+        "english_sha256": 5
+      },
+      "unknown_entry_field_counts": {}
+    },
+    "exceptional_cases": {
+      "symlinks": [],
+      "gitlinks": [],
+      "empty_current_fallback_paths": [],
+      "current_equals_preserved_paths": [],
+      "shared_effective_selected_paths": [],
+      "unknown_top_level_fields": []
+    },
+    "immutable_inputs": {
+      "snapshot_tree": {
+        "commit": "ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3",
+        "tree_oid": "6a0fdb7c7165f904e50b5ecec785b89196c622eb",
+        "bytes": 3451946,
+        "sha256": "34d7d7503fcf110bfb79ee702f6e8b83548893d0f9dbf2c07114dfac1af16741"
+      },
+      "baseline_tree": {
+        "commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+        "tree_oid": "9b7ce2e46a2f89c1cd3baf2cb4afc2d7032546ba",
+        "bytes": 1284526,
+        "sha256": "4adf1b7055ba528cde1a382930a47f2d48bb5a740f7d360df58763f3d262e4dc"
+      },
+      "source_map": {
+        "commit": "ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3",
+        "path": "proofs/SOURCE_MAP.json",
+        "mode": "100644",
+        "blob_oid": "e5f8d27bf09f50f8b9756bf91dff02e992aa4a32",
+        "bytes": 4396780,
+        "sha256": "f6354e0411bc63c014c1ca0db07352a22f76ec6890417c097639a77c9539f8ba"
+      }
+    },
+    "symlink_boundary": "Mode 120000 entries are compared as symlink Git blob identities; target text is neither read nor followed.",
+    "optional_metadata_boundary": "English field types, path syntax, pairing, and digest syntax are checked; English bytes and target existence are outside effective replay selection.",
+    "sha256_boundary": "Only the source-map JSON blob itself is byte-hashed. Per-entry sha256 fields are syntax-checked, not validated against source bytes.",
+    "git_version": "git version 2.51.1",
+    "status": "PASS",
+    "issue_count": 0,
+    "issue_categories": {}
+  },
+  "publication_readback": {
+    "commit": "b5448228f38b925f9924030b2fafd12e13ea8fc3",
+    "parent": "e6a1a883d3cb67a5b46ebddd88c612fcc0bf96cc",
+    "increment_added_files": 16,
+    "total_added_files": 46,
+    "first_increment_files_unchanged": 30,
+    "all_increment_files_read_back_equal": true,
+    "files": [
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/AUDIT_ARTIFACTS.json",
+        "kind": "file",
+        "sha": "451003350f5068fd800e142a87baf2b5cd29e3c8",
+        "sha256": "24d682857674add8a26ea474d894c6fa4f3f127c0a0b3fe82a022d1b66588464",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/FIRST_PUBLICATION_RECEIPT.json",
+        "kind": "file",
+        "sha": "0c2c1ec2e6f1f9e26a7489ca82c6c7f299faf35f",
+        "sha256": "369f27707c6eaa6b09093b4ce4f8fad8934da9c6b83cde516fde750fb746ef76",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/INCREMENT_MANIFEST.json",
+        "kind": "file",
+        "sha": "5d29ba347bcd3a0eefdb645d23b22cd49c451131",
+        "sha256": "ce4723c73a86485e37a03c3c6078b6d6fa0f5bf9c7a81ee94d3258365d16c62d",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/INDEPENDENT_METADATA_REVIEW.md",
+        "kind": "file",
+        "sha": "f6b8bb32661ce29f0e4b4b5571aa36ffbbb110f0",
+        "sha256": "84ba51b6f1b61485072ff551f39121bdb92f069a2b843813dd1175588d62b3c7",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/PRESERVATION_NOTE.md",
+        "kind": "file",
+        "sha": "7a70390ce678dce16868b8ed6ba82d3e26c443da",
+        "sha256": "7ec0322ce3fff976258751d08c203706497e2f6e6edb5054d805bef92040b604",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/PUBLICATION_RECEIPT_REVIEW.md",
+        "kind": "file",
+        "sha": "56515ddc7eabfe821e1ae7c99d3bbf67ab741cf8",
+        "sha256": "15efd727c05b2a8e158e7c54aee597b54f102338675bd8b073e137eb6b25f5b7",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/README.md",
+        "kind": "file",
+        "sha": "02f53c55d01be16c80e044d85e7b1a505c67effd",
+        "sha256": "9abf67bbddb92aa55c3472ec235872b727ad882e7d3b18281eb30c97848e82c7",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/REPORT.md",
+        "kind": "file",
+        "sha": "d19a69783ac931b907791533422c963efbd1536a",
+        "sha256": "888601a0cfcfd566ee76a113502e63aa047e415a7eb8e2a215a6543bcb7ae1f4",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/audit.stderr.txt",
+        "kind": "file",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/audit.stdout.txt",
+        "kind": "file",
+        "sha": "f0cf342eea2f9b1e466834db0226599a90dc9361",
+        "sha256": "cc73e9666f4892930ea812b6e5298ddaecc5c5df29e97a0560a9987c9468da2f",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/audit_mapping_metadata.py",
+        "kind": "file",
+        "sha": "de3a281d11405e5943b8ccf8844e395f95048e61",
+        "sha256": "0e9f02c19160435fe9b4f449349b785cf5f9f2c835634a021456711abd41ff00",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/execution-receipt.json",
+        "kind": "file",
+        "sha": "144f1bb92c89d53a1cf28052f1c878ca6299faa2",
+        "sha256": "3f0eda8288d48f38d8f99bbe4407e21932612c45b6b0a4ff6b0e49242a8d194f",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/preparation-failure-original.json",
+        "kind": "file",
+        "sha": "20eba3ddc48e508aca8478e577a56b55f0cf18d7",
+        "sha256": "31e4bd1b543c1afb951080d8b514f9d80cd809e721dc43240b9d9b536e88cd17",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/preparation.json",
+        "kind": "file",
+        "sha": "3a4e454ca3df5d7b3279b28320cec82bb417ed40",
+        "sha256": "75dce5b59b33077a3e53c660a28c814c805d7a891789583a574528e11a358c2b",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/run-001/result.json",
+        "kind": "file",
+        "sha": "f2392b1835db97a0d10effa13aeecefa81b0b753",
+        "sha256": "17e519f8eb70e87ca111150930f9e76d80532e15b4f3d56fbecf1b8c6889abf8",
+        "complete_content_match": true
+      },
+      {
+        "key": "proofs/contributions/agent-65/source-map-guide-20261016/mapping-audit/run-001/run-metadata.json",
+        "kind": "file",
+        "sha": "552f43b0b2127b14b0d35b8bfddbc0a8300d6c2a",
+        "sha256": "358c09a31c25caea486d0b69a4fb1efc45b39c7630a50e5e20022ed142401d95",
+        "complete_content_match": true
+      }
+    ],
+    "observed_pr": {
+      "number": 163,
+      "head": "b5448228f38b925f9924030b2fafd12e13ea8fc3",
+      "base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "draft": false,
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "commits": 2,
+      "changed_files": 46
+    }
+  },
+  "followup_link_check": {
+    "relative_uses": 25,
+    "all_resolve": true
+  },
+  "followup_whitespace_check": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "increment_manifest_sha256": "ce4723c73a86485e37a03c3c6078b6d6fa0f5bf9c7a81ee94d3258365d16c62d",
+  "review": {
+    "reviewer": "/root/reproduction_audit",
+    "scope": "Distinct non-author in the same Agent65 parent session; independent implementation of the metadata comparison.",
+    "report_sha256": "84ba51b6f1b61485072ff551f39121bdb92f069a2b843813dd1175588d62b3c7",
+    "receipt_review_sha256": "15efd727c05b2a8e158e7c54aee597b54f102338675bd8b073e137eb6b25f5b7",
+    "attributed_pr_review_id": 5555057805,
+    "attributed_pr_review_action": "COMMENT",
+    "attributed_pr_review_readback_equal": true
+  },
+  "integration_status": "NOT_INTEGRATED; no main slot, merge, or self-approval taken"
 }
