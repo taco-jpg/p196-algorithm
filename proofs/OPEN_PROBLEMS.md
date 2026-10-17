@@ -43,6 +43,29 @@ this documentation increment. The retained verification records must be
 read with their exact source and dependency scope; no fresh compilation
 or axiom audit is claimed here.
 
+### Retained verification for this chain
+
+The [historical build manifest][historical-build] records a successful
+Lean 4.19.0 run completed on 15 October 2026. Its nineteen selected project
+modules include `ReturnCertificate`, `AdmissibleHeads`, and
+`CertificateChecked`; it records an initially empty build directory,
+no reused project objects, and successful exits for the recorded
+compilation and audit commands.
+
+The [saved ReturnCertificate output][return-log] and
+[saved AdmissibleHeads output][heads-log] name the five interfaces in the
+table above. Their recorded axiom dependencies are subsets of
+`propext`, `Classical.choice`, and `Quot.sound`.
+The [historical semantic review][historical-review] separately explains
+why automatic admissibility does not assume the desired integer
+realization, and preserves the exact phase and saturation hypotheses of
+the checked restrictions.
+
+Those are retained execution and review records for their stated source
+closure. This documentation update reads those records and compares
+source identities; it does not perform that build again or extend its
+coverage to every current contribution.
+
 ### The missing input to this particular route
 
 The linked implication modules do not supply a concrete accepted
@@ -132,11 +155,15 @@ certificate instance, discovery computation, or mathematical acceptance.
 [status]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/STATUS.md
 [policy]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/PUBLICATION_POLICY.md
 [registry]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ACCEPTED_BUILD.json
-[checker]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__3f43ec0db45b8fd7.lean#L187-L223
-[soundness]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__3f43ec0db45b8fd7.lean#L256-L273
-[realization]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__3f43ec0db45b8fd7.lean#L371-L380
-[original-existence]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__3f43ec0db45b8fd7.lean#L383-L416
+[checker]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__b037c18e81a43bb5.lean#L187-L223
+[soundness]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__b037c18e81a43bb5.lean#L256-L273
+[realization]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__b037c18e81a43bb5.lean#L371-L380
+[original-existence]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ReturnCertificate__b037c18e81a43bb5.lean#L383-L416
 [automatic]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/AdmissibleHeads__e610dff2fe6106d5.lean#L165-L168
 [check-existence]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/AdmissibleHeads__e610dff2fe6106d5.lean#L170-L173
 [period]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/CertificateChecked__28f9e37f0a4c7634.lean#L11-L46
 [original]: archive/documentation/agent-60/10a173cb635fa8d03e357f454232816fc3e77609/OPEN_PROBLEMS.md
+[historical-build]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-110/review-checked/rebuild-d611d7f/manifest.json
+[return-log]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-110/review-checked/rebuild-d611d7f/ReturnCertificate.log
+[heads-log]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-110/review-checked/rebuild-d611d7f/AdmissibleHeads.log
+[historical-review]: https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-110/review-checked/SEMANTIC_REVIEW.md
