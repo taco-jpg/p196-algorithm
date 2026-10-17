@@ -40,6 +40,14 @@ def profileWeightConsTarget (b : Bool) (xs : List Bool) (j : Joint) : Prop :=
   profileWeight (b :: xs) j =
     localWeight b j * profileWeight xs (jointStep b j)
 
+/-- Proof attempt: the emitted symbol is the first factor and the remainder
+starts at the exact next joint state. This has not been compiled in this
+execution environment. -/
+theorem profileWeight_cons (b : Bool) (xs : List Bool) (j : Joint) :
+    profileWeight (b :: xs) j =
+      localWeight b j * profileWeight xs (jointStep b j) := by
+  rfl
+
 /-- Exact weighted recurrence over the original four-by-four joint state.
 No state-independent replacement for the six-bit correction is permitted. -/
 def stateWeight : Nat → Joint → Nat
