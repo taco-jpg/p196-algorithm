@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "toolchain": {
+    "release": "leanprover/lean4:v4.19.0",
+    "compiler_commit": "6caaee842e94",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "strict_flags": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "This scoped contribution is not a complete repository-wide accepted-source census.",
+    "Main integration and shared registry reconciliation remain assigned to the integration owner."
+  ],
+  "projects": {
+    "agent15-spectral-carry-support": {
+      "scope": "Exact original integer U/S charge of the existing computed decimal outgoing word: charge zero iff reflected carries agree under in-width bounds; under coefficient symmetry, nonzero charge iff an asymmetric reflected pair occurs at coefficient nine, with the literal no-nine consequence and existing Canonical digit specializations.",
+      "status": "INDEPENDENTLY_REVIEWED",
+      "frozen_source_commit": "5d02e88f13f59f6fcd09cf75d8c7f188c6645727",
+      "roots": [
+        "ActualCarrySupport"
+      ],
+      "modules": {
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "bytes": 218799,
+          "imports": [
+            "Std"
+          ]
+        },
+        "IncomingCarrySensitivity": {
+          "path": "proofs/IncomingCarrySensitivity__5d4952e23e746f6d.lean",
+          "sha256": "52850d75999a8fdad298e2e9da638965472ab6507f88630bf428698576ac631f",
+          "git_blob": "9ccc745471fd509fb68652fef40454478087e92e",
+          "bytes": 12041,
+          "imports": [
+            "LychrelDigitSums"
+          ]
+        },
+        "RawSymmetryObstruction": {
+          "path": "proofs/RawSymmetryObstruction__5c1be305a04af2b7.lean",
+          "sha256": "922b660e5b3ac42389cd6ea00885075327d4b44fb315b9cc496e1323890e9c87",
+          "git_blob": "9d4250f3e5daa5ff26f097a7e12ce98830dd9e89",
+          "bytes": 23848,
+          "imports": [
+            "IncomingCarrySensitivity"
+          ]
+        },
+        "SpectralWeights": {
+          "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SpectralWeights.lean",
+          "sha256": "07b3831f17a0d2e43a7e27cfd8a63d364a98ccbbcef87362a20cfbf24fb49db1",
+          "git_blob": "40afa93196976972e5c0f6772a18e50c1e635a3f",
+          "bytes": 4445,
+          "imports": [
+            "Std"
+          ]
+        },
+        "BinaryCode": {
+          "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/BinaryCode.lean",
+          "sha256": "8db88d52e00dddbd32610dc09b7f8833f1ec1dc623b82236060b67bd2c9171f9",
+          "git_blob": "35ba9bee5afb9bb47f39738e44860a02ea9b2469",
+          "bytes": 2655,
+          "imports": [
+            "SpectralWeights"
+          ]
+        },
+        "ChargeSymmetry": {
+          "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/ChargeSymmetry.lean",
+          "sha256": "28d11217cf147750ec2d07e64dbc6dabeee7deec7e543987817da611201b60a3",
+          "git_blob": "f69efd4bc0642759dddf99834d5d093c929761a5",
+          "bytes": 3240,
+          "imports": [
+            "BinaryCode"
+          ]
+        },
+        "SourceFormula": {
+          "path": "proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/SourceFormula.lean",
+          "sha256": "be165a538963922f6096e63934e5f3c1010d760cabc9e08baa96a0bb43c105d8",
+          "git_blob": "1db4a109629abddf355d12e8a14f2cfb0e26a39b",
+          "bytes": 5059,
+          "imports": [
+            "ChargeSymmetry"
+          ]
+        },
+        "ActualCarrySupport": {
+          "path": "proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/ActualCarrySupport.lean",
+          "sha256": "4c06522efae7aa254b6281003d042e49f6b60162d01d00881d50052c7a73c646",
+          "git_blob": "c0e5562e1661570546bced3dca82dd4fb459fa5f",
+          "bytes": 10166,
+          "imports": [
+            "SourceFormula",
+            "RawSymmetryObstruction"
+          ]
+        }
+      },
+      "acceptance_checker": "proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/check.py",
+      "independent_review": "proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/evidence/runtime/FROZEN_EXECUTION_REVIEW.md",
+      "independent_semantic_review": "proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/evidence/semantic/FINAL_SEMANTIC_REVIEW.md"
+    }
+  },
+  "claims": [
+    {
+      "id": "A15-SPEC-010",
+      "project": "agent15-spectral-carry-support",
+      "status": "INDEPENDENTLY_REVIEWED",
+      "endpoints": [
+        "P196.Agent15.SpectralSupport.outgoing_binary",
+        "P196.Agent15.SpectralSupport.outgoing_reverse_iff",
+        "P196.Agent15.SpectralSupport.actualCharge_zero_iff",
+        "P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine",
+        "P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry",
+        "P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine",
+        "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_iff",
+        "P196.Agent15.SpectralSupport.canonical_outgoing_reflected_eq_of_nonnine",
+        "P196.Agent15.SpectralSupport.canonical_actualCharge_nonzero_iff_nine_asymmetry",
+        "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_of_no_nine"
+      ],
+      "supporting_endpoints": [
+        "P196.Agent15.SpectralSupport.outgoing_length",
+        "P196.Agent15.SpectralSupport.outgoing_getElem",
+        "P196.Agent15.SpectralSupport.outgoing_getElem?",
+        "P196.Agent15.SpectralSupport.outgoing_last"
+      ]
+    }
+  ],
+  "integration_note": "The shared verify_project runner was not executed for this contribution. This compatible scoped registry is metadata; strict verification rests on the actual canonical check.py run and the separate genuine semantic, fresh-build, full-origin axiom and unelided-public-print gates. No shared registry was modified. Main integration and acceptance/publication records remain with the designated coordinator."
+}
