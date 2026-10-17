@@ -118,6 +118,15 @@ def realizationWidthTarget (m k : Nat) : Prop :=
   ∀ n, n ∈ twoHistorySeeds m k →
     0 < n ∧ decimalWidth n (2 * (m + k + 7))
 
+/-- Target: if one integer lies in two listed profile fibers of the same
+fixed Boolean-word length, the original history words coincide. This is the
+cross-profile disjointness step; it does not assume the ordinary step map is
+globally injective. -/
+def fiberOverlapForcesSameHistoryTarget (m k : Nat) : Prop :=
+  ∀ xs ys : List Bool, xs.length = m → ys.length = m →
+    ∀ n, n ∈ numericFiber (historyHalf0 xs k) none →
+      n ∈ numericFiber (historyHalf0 ys k) none → xs = ys
+
 /-- Target: the complete integer union has no duplicates, including across
 distinct coefficient profiles. Per-profile Nodup alone is insufficient. -/
 def realizationNodupTarget (m k : Nat) : Prop :=
