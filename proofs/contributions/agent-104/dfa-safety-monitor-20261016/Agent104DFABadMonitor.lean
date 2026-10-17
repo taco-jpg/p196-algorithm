@@ -237,7 +237,7 @@ def checkSafetyRows {N : Nat} (B : Agent107.FoldedDFA.Encoding.BooleanDFA N)
                 (raw b (monitorStep m q.val))
           else true
   let terminals :=
-    (List.finRange N).all fun a =>
+    Agent107.FoldedDFA.allFin fun a =>
       monitorStates.all fun m =>
         centerSymbols.all fun c =>
           Agent107.FoldedDFA.boolImplies
