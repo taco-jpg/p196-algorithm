@@ -1,4 +1,4 @@
-# Exact nine-center normalization — WIP
+# Exact nine-center normalization — author checked
 
 Accepted claim7fd992f8a842eb7e870cd047df0d1e995de77128; issue61 proposal6228319054. This isolated branch preserves reviewed NineCycleb8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80 ancestry without reimplementing any existing proof.
 
@@ -9,3 +9,7 @@ This is a local arithmetic correspondence prerequisite for controlling additiona
 cap4_existing_theorems owns NinesCenter; numeric_bridge_review owns CenterWrap; verification_plan owns registry/preflight; symbolic_scope independently reviews both new proofs; root is sole Git writer and parent verifier. Source-only scope reports are retained as proposed-interface evidence, not new accepted mathematical claims. Actual proof/compilation status will be appended at useful publication checkpoints.
 
 First reusable checked checkpoint: Agent1PeriodicCenterWrap sourceSHA dd0cba7b9f1fd97eb733d8815e1059440040a464508a3a3a265bf11084383523. Its exact stripPeriodCenter_wrap compiles with explicit trust0, only nonempty-period premise, preserving arbitrary middle and count+1. Full new-origin audit6 theorem constants, no definitions/runtime, only propext and Quot.sound. Both author attempts and exact11 inherited object/source reuse pins are retained; this is not a new fresh full-closure pass. The dependent center proof and registry will be published at their next frozen checkpoint.
+
+Completed dependent source: Agent1PeriodicNinesCenter SHA7d6d27081c480345e796c6b8e950c08a5ce0d7207e4030d24e504db4abde695e. Its three public raw-center, quotient-center and count identities compile with explicit trust0 and complete origin audit12 theorem constants, standard3, no definitions/runtime. Both failed elaborations and the successful raw-identity increment are preserved. The exact count is one plus the residual stripping count, with all further removals retained.
+
+The frozen registry d76263fe94ddaa93ea5ae364e39c8d3577faa6f6cc7c8b8422428b73b2c4a813 includes17 modules and four public endpoints. Both sources are LEAN-CHECKED author increments with honestly reused pinned dependency objects. Parent and independent fresh combined verification remain pending. The proposed interfaces described above are now proved at these source hashes; no temporal descent, center no-return or shared-main integration is asserted.

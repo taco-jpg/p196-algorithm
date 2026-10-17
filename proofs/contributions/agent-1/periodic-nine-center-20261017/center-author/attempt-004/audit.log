@@ -1,0 +1,45 @@
+Agent1.Periodic.rawCenter_nines_mixed (B H : Agent8.Word) (hB : Agent8.Bounded B 18) (hH : Agent8.Bounded H 18)
+  (hmix : Agent1.Periodic.leftEntry B + Agent1.Periodic.rightEntry B H [9, 9, 9, 9] = 1) :
+  Agent1.Periodic.rawCenter B H [9, 9, 9, 9] =
+    [9, 9, 9, 9] ++
+        Agent8.pair
+          (Agent8.fixedDigits H (Agent1.Periodic.leftEntry B) ++
+            List.replicate (Agent1.Periodic.rawGamma B H [9, 9, 9, 9]) (9 * Agent1.Periodic.leftEntry B)) ++
+      [9, 9, 9, 9]
+Agent1.Periodic.quotientCenter_nines_mixed (B H : Agent8.Word) (hB : Agent8.Bounded B 18) (hH : Agent8.Bounded H 18)
+  (hmix : Agent1.Periodic.leftEntry B + Agent1.Periodic.rightEntry B H [9, 9, 9, 9] = 1) :
+  Agent1.Periodic.quotientCenter B H [9, 9, 9, 9] =
+    (Agent1.Periodic.stripPeriodCenter [9, 9, 9, 9]
+        (Agent8.pair
+          (Agent8.fixedDigits H (Agent1.Periodic.leftEntry B) ++
+            List.replicate (Agent1.Periodic.rawGamma B H [9, 9, 9, 9]) (9 * Agent1.Periodic.leftEntry B)))).fst
+Agent1.Periodic.centerPeriods_nines_mixed (B H : Agent8.Word) (hB : Agent8.Bounded B 18) (hH : Agent8.Bounded H 18)
+  (hmix : Agent1.Periodic.leftEntry B + Agent1.Periodic.rightEntry B H [9, 9, 9, 9] = 1) :
+  Agent1.Periodic.centerPeriods B H [9, 9, 9, 9] =
+    (Agent1.Periodic.stripPeriodCenter [9, 9, 9, 9]
+          (Agent8.pair
+            (Agent8.fixedDigits H (Agent1.Periodic.leftEntry B) ++
+              List.replicate (Agent1.Periodic.rawGamma B H [9, 9, 9, 9]) (9 * Agent1.Periodic.leftEntry B)))).snd +
+      1
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0.Agent1.Periodic.zipperCenter_nines_mixed._proof_4 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0.Agent1.Periodic.nines_carry : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.rawCenter_nines_mixed : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0._proof_1 : [propext]
+AUDIT_THEOREM Agent1.Periodic.centerPeriods_nines_mixed : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0.Agent1.Periodic.zipperCenter_nines_mixed : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCenter_nines_mixed : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0.Agent1.Periodic.zipperCenter_nines_mixed._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0.Agent1.Periodic.nines_bounded : [propext]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0.Agent1.Periodic.strip_rawCenter_nines_mixed : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0._proof_2 : [propext]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCenter.0.Agent1.Periodic.nines_carry._proof_3 : [propext, Quot.sound]
+MODULE_AUDIT theorems=12 required_endpoints=3 safe_definitions=0 generated_runtime=0 custom_axioms=0 union=[Quot.sound,
+ propext,
+ Classical.choice]
