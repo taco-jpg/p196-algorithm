@@ -1,0 +1,10 @@
+{
+  "status": "FAILED_BEFORE_CANDIDATE_WRITE",
+  "command_operation": "git cat-file -t BASELINE:proofs/contributions/agent-1/consolidation-20261015/reviews/batch2.md",
+  "exit_code": 128,
+  "error": "The partial clone attempted to fetch promisor blob 319a384c6e754dd628f363c8a43aeec7ce44217d; the network connection failed. No fetch succeeded.",
+  "source_commit": "10a173cb635fa8d03e357f454232816fc3e77609",
+  "historical_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+  "corrective_change": "Use git ls-tree to inspect pinned tree entries and set GIT_NO_LAZY_FETCH=1 for all subsequent Git reads.",
+  "interpretation": "An absent local promisor blob does not establish an absent committed link target. No full document checker or Lean command was executed."
+}

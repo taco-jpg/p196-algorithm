@@ -72,14 +72,21 @@ def main():
         assert hashlib.sha256(original).hexdigest() == record['sha256']
         preserved.append({'path': doc, 'bytes': len(original), 'sha256': record['sha256'], 'git_blob': record['oid'], 'archive': archive_path})
 
-    findings = (repo / 'proofs/FINDINGS.md').read_text()
-    marker = f'<!-- BEGIN HISTORICAL FINDINGS: {BASE} -->\n\n'
-    historical = findings.split(marker, 1)[1].rsplit('\n<!-- END HISTORICAL FINDINGS -->', 1)[0]
-    rewrites = json.loads((repo / PACKAGE / 'findings-link-rewrites.json').read_text())['links']
-    inverse = {x['pinned']: x['original'] for x in rewrites}
-    historical = re.sub(r'\[([^\]]*)\]\(([^\s)]+)\)', lambda m: f'[{m[1]}]({inverse.get(m[2], m[2])})', historical)
-    historical = re.sub(r'^#(#{1,5}) ', r'\1 ', historical, flags=re.M)
-    assert historical.encode() == git('show', f'{PIN}:proofs/FINDINGS.md'), 'historical prose changed'
+    historical_checks = {}
+    for doc in docs:
+        name = Path(doc).stem
+        text = (repo / doc).read_text()
+        marker = f'<!-- BEGIN HISTORICAL {name}: {BASE} -->\n\n'
+        body = text.split(marker, 1)[1]
+        parts = re.split(r'\n<!-- END HISTORICAL ' + name + r'(?:: ' + BASE + r')? -->', body, maxsplit=1)
+        assert len(parts) == 2, ('missing historical end marker', doc)
+        historical = parts[0]
+        rewrites = json.loads((repo / PACKAGE / f'{name.lower()}-link-rewrites.json').read_text())['links']
+        inverse = {x['pinned']: x['original'] for x in rewrites}
+        historical = re.sub(r'\[([^\]]*)\]\(([^\s)]+)\)', lambda m: f'[{m[1]}]({inverse.get(m[2], m[2])})', historical)
+        historical = re.sub(r'^#(#{1,5}) ', r'\1 ', historical, flags=re.M)
+        assert historical.encode() == git('show', f'{PIN}:{doc}'), ('historical prose changed', doc)
+        historical_checks[doc] = {'original_bytes_restored_by_inverse': True, 'links_repaired': len(rewrites)}
 
     links_checked = []
     for doc in docs:
@@ -133,7 +140,8 @@ def main():
         'effective_replay_identity_digest': hashlib.sha256(json.dumps(effective, separators=(',', ':')).encode()).hexdigest(),
         'map_fields_changed': changed_fields, 'originals_preserved': preserved,
         'historical_findings_prose_unchanged_except_heading_depth_and_link_destinations': True,
-        'historical_findings_links_repaired': len(rewrites), 'document_links_checked': len(links_checked),
+        'historical_findings_links_repaired': historical_checks['proofs/FINDINGS.md']['links_repaired'],
+        'historical_documents': historical_checks, 'document_links_checked': len(links_checked),
         'phase_catalog_module_source_hashes_checked': len(modules),
         'current_file_sha256': hashes, 'tracked_changed_paths': changed,
         'lean_execution': 'NOT_RUN', 'actual_original_layout_replay': 'NOT_RUN',

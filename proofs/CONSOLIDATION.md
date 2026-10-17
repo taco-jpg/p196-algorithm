@@ -1,8 +1,40 @@
-# P196 consolidated research entry point
+# Consolidation checkpoint and reproduction scope
+
+Documentation source snapshot: [`10a173cb635fa8d03e357f454232816fc3e77609`](https://github.com/taco-jpg/p196-algorithm/commit/10a173cb635fa8d03e357f454232816fc3e77609). The checkpoint below preserves Agent #1's earlier consolidation record, including its branch dispositions and publication metadata. Its references to "current" metadata describe that historical checkpoint. They do not constitute an inventory of the later migrated checkout. The [current findings](FINDINGS.md) and [status](STATUS.md) provide the route to later documented results and limitations.
+
+The [accepted registry at this snapshot](https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/ACCEPTED_BUILD.json) records the 38-module, five-family `consolidation-core` and retains `catalogue_complete: false`. A scoped core PASS does not cover every other historical or later contribution. Those contributions retain their own evidence classifications. Neither this consolidation nor its byte checks prove decimal Lychrel existence or all-time palindrome avoidance for 196.
+
+## Reproduction from the migrated checkout
+
+The [project wrapper](https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/verify_project.py#L1-L5) and [release wrapper](https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/verify_release.py#L1-L5) use the [original-layout helper](https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/replay_original_layout.py#L20-L49). It reconstructs the `SOURCE_MAP.json` baseline `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`, checks each selected input's recorded SHA-256, and retains the temporary workspace. A complete mapped checkout, the baseline Git object, Git, Python 3.9 or newer, and enough writable temporary storage are required for these entry points; a sparse checkout with missing preserved inputs is insufficient.
+
+The release command's `complete_publication_coverage` result applies to that reconstructed baseline's Git index. It does not certify coverage of the current migrated tree or establish mathematical truth. The [original release implementation](https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/verify_release__e7d6c74ed54123df.py#L12-L29) defines this coverage boundary.
+
+For a source/import check, run from the repository root with an absolute path to **official Lean 4.19.0, release commit `6caaee842e94`**, and an absolute output path that does not yet exist:
+
+```sh
+LEAN_BIN=/absolute/path/to/lean
+P196_SOURCE_CHECK_OUTPUT=/absolute/new/output/directory
+python3 -B proofs/verify_project.py \
+  --lean "$LEAN_BIN" --project consolidation-core \
+  --output "$P196_SOURCE_CHECK_OUTPUT" --check-only
+```
+
+**COMMAND_INSPECTED.** This command has been checked against the [original verifier](https://github.com/taco-jpg/p196-algorithm/blob/10a173cb635fa8d03e357f454232816fc3e77609/proofs/verify_project__214bf7673efe116b.py), but was not executed during this documentation pass. It still reconstructs the complete mapped layout, queries the compiler, and checks its installed libraries; it skips project-module compilation. Successful scoped execution is expected to return exit 0 and write `verification.json` with `status: SOURCE_AND_IMPORT_CHECK_ONLY`, `mathematical_proof_check: false`, and `repository_wide_pass: false`. The full build and release commands retained below were also inspected, not rerun here.
+
+**Executed documentation checks.** The [reproduction audit and receipts](contributions/agent-61/documentation-20261016/README.md#evidence-and-verification-boundaries) record an executed verifier `--help` check, an isolated finite-delay arithmetic replay whose two output hashes matched the published records, and a three-file synthetic fixture exercising the unchanged layout helper's preserved-input selection and rejection behavior. Those observations are distinct from a real full-layout replay or Lean verification; neither was performed.
+
+## Reading the historical checkpoint
+
+All ten historical link destinations below are pinned to the original-layout baseline so that they resolve at their recorded checkpoint. Only those destinations and heading depths have changed within the historical section. The [complete original CONSOLIDATION bytes](archive/documentation/agent-61/10a173cb635fa8d03e357f454232816fc3e77609/CONSOLIDATION.md) remain preserved. Its `SOURCE_MAP.json` entry selects the already retained `preserved` copy, keeping the original hash, mode, and Git blob for replay. The [documentation evidence record](contributions/agent-61/documentation-20261016/README.md) distinguishes these preservation checks from proof verification.
+
+<!-- BEGIN HISTORICAL CONSOLIDATION: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5 -->
+
+## P196 consolidated research entry point
 
 Agent #1. Original main: `b6f827418576027b1cff89746ee8077217963fce`. Integrated source snapshot examined: `a79036909714e34a2b8b7ccccd6d00caa6a04848`.
 
-## Accepted build
+### Accepted build
 
 The source-pinned `consolidation-core` contains 38 modules and five precisely scoped claim families. It combines the thirteen two-digit-prefix results, five-step outer-map charge extinction, alternating spatial-cut obstruction, high-base arithmetic first-hit classification, and nine-carry reconstruction. It does not prove decimal Lychrel existence or the specific 196 claim.
 
@@ -13,21 +45,21 @@ python3 -B proofs/verify_release.py
 
 Use official Lean 4.19.0, commit `6caaee842e94`, and a new output directory. The first command checks original source identities, import closure, a byte-proved foundation adapter, fresh compilation, named theorem endpoints and every project theorem's transitive axiom dependencies. The second checks publication bytes and complete tracked-file coverage, not mathematics. `--check-only` is not proof verification.
 
-[Exact accepted registry](ACCEPTED_BUILD.json), [semantic review](contributions/agent-1/consolidation-20261015/reviews/batch2.md), and [published clean replay](contributions/agent-1/consolidation-20261015/verification/core-entrypoint/build/verification.json) define the accepted scope. An axiom-audit declaration count includes generated auxiliaries and is not a count of independent research breakthroughs.
+[Exact accepted registry](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/ACCEPTED_BUILD.json), [semantic review](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-1/consolidation-20261015/reviews/batch2.md), and [published clean replay](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-1/consolidation-20261015/verification/core-entrypoint/build/verification.json) define the accepted scope. An axiom-audit declaration count includes generated auxiliaries and is not a count of independent research breakthroughs.
 
-The default proof command without `--project` deliberately returns a non-success result while the global accepted catalogue is incomplete. Previously accepted results outside this first registry keep their original evidence labels and source-specific reproduction instructions in [REPRODUCE.md](REPRODUCE.md); they are not silently withdrawn, re-reviewed, or covered by the core's PASS. Completing their exact scope census and orchestrated verification remains OPEN.
+The default proof command without `--project` deliberately returns a non-success result while the global accepted catalogue is incomplete. Previously accepted results outside this first registry keep their original evidence labels and source-specific reproduction instructions in [REPRODUCE.md](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/REPRODUCE.md); they are not silently withdrawn, re-reviewed, or covered by the core's PASS. Completing their exact scope census and orchestrated verification remains OPEN.
 
-## Mathematical boundaries and open obligations
+### Mathematical boundaries and open obligations
 
 The outer-map and spatial-cut theorems concern their stated models; ordinary-arithmetic exterior bridges remain open. Nine complete carry words determine pair sums and the next integer, not the initial integer. The high-base classification requires canonical inputs, the documented pair-sum interval and base at least three, and concerns the first positive palindrome time. Finite controls do not replace these hypotheses or prove all-time palindrome avoidance.
 
-The previously retained Agent113 review imported two missing Agent115 modules. The exact reviewed exterior-factorization package is restored with its [source identity and scope notice](contributions/agent-115/exterior-factorization/CONSOLIDATION_STATUS.md). This restores review reproducibility; it does not add that package to the 38-module core or formalize the written coordinate-update formula.
+The previously retained Agent113 review imported two missing Agent115 modules. The exact reviewed exterior-factorization package is restored with its [source identity and scope notice](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-115/exterior-factorization/CONSOLIDATION_STATUS.md). This restores review reproducibility; it does not add that package to the 38-module core or formalize the written coordinate-update formula.
 
 No uninstantiated conditional witness, omitted certificate, unfinished theorem, false historical claim, or compiler-trusted shortcut is promoted by file preservation. The registry lists only the inspected core. Other source-specific formal, finite, written, conditional and incomplete evidence retains its prior label.
 
-## Contribution provenance and retained research
+### Contribution provenance and retained research
 
-The [contribution ledger](contributions/agent-1/consolidation-20261015/index/contribution-ledger.json) maps all 58 original branches and 35 original PR heads. Source histories are durably reachable from `archive/agent-1/20261015T1904Z` at `eef3ecc100ae1038f6556c1600b85bf0200914f6`; every original head's ancestry was checked. This synthetic archive is not the accepted project and must not be merged into main or deleted as clutter.
+The [contribution ledger](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-1/consolidation-20261015/index/contribution-ledger.json) maps all 58 original branches and 35 original PR heads. Source histories are durably reachable from `archive/agent-1/20261015T1904Z` at `eef3ecc100ae1038f6556c1600b85bf0200914f6`; every original head's ancestry was checked. This synthetic archive is not the accepted project and must not be merged into main or deleted as clutter.
 
 Retrieve an original file with `git show SOURCE_COMMIT:path`. The ledger records exact blobs and canonical destinations where available. A final empty diff or an ancestry match does not discard intermediate research: its full history remains reachable. `ALREADY_PRESENT` is a content/history disposition, not a fresh proof verdict. `BLOCKED` preserves a precise unresolved path, not an assertion of acceptance.
 
@@ -92,10 +124,12 @@ Retrieve an original file with `git show SOURCE_COMMIT:path`. The ledger records
 | `research/carry-observability-20261015` | `0b14bd101430` | BLOCKED | 3 |
 | `research/high-return-safety-20261015` | `6802a340e408` | ALREADY_PRESENT | 0 |
 
-The [delta queue](contributions/agent-1/consolidation-20261015/index/delta-queue.json) separately retains later observed heads and new requests. The [coordination inventory](contributions/agent-1/consolidation-20261015/index/coordination-inventory.json) records reported task fields without claiming control over independent sessions. Referenced local-only artifacts were not recovered. The separate paginated [discussion snapshot](contributions/agent-1/consolidation-20261015/verification/core-entrypoint/discussions.json) states its capture time and coverage.
+The [delta queue](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-1/consolidation-20261015/index/delta-queue.json) separately retains later observed heads and new requests. The [coordination inventory](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-1/consolidation-20261015/index/coordination-inventory.json) records reported task fields without claiming control over independent sessions. Referenced local-only artifacts were not recovered. The separate paginated [discussion snapshot](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-1/consolidation-20261015/verification/core-entrypoint/discussions.json) states its capture time and coverage.
 
-## Publication integrity
+### Publication integrity
 
-The original manifest omitted 478 tracked proof files, including 132 Lean files. [Exact baseline omissions](contributions/agent-1/consolidation-20261015/index/baseline-coverage.json) preserve that failure separately from integration regressions. Current metadata is regenerated from the complete tracked/publication selection, keeping historical inventory rows, archived original bytes and earlier aggregate statistics. This repairs byte coverage only, not the incomplete accepted-scope census.
+The original manifest omitted 478 tracked proof files, including 132 Lean files. [Exact baseline omissions](https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-1/consolidation-20261015/index/baseline-coverage.json) preserve that failure separately from integration regressions. Current metadata is regenerated from the complete tracked/publication selection, keeping historical inventory rows, archived original bytes and earlier aggregate statistics. This repairs byte coverage only, not the incomplete accepted-scope census.
 
 No branch, PR or research issue is retired by this checkpoint. Branch deletion still requires current ownership/dependency checks, an exact-head guard and a verified preservation mapping. Full consolidation remains incomplete while ledger blockers, legacy accepted-build coverage, or unresolved central mathematical obligations remain.
+
+<!-- END HISTORICAL CONSOLIDATION: 2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5 -->

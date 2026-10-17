@@ -1,0 +1,13 @@
+{
+  "status": "FAILED_CHECK_PRESERVED",
+  "stage": "Initial common two-document validator run",
+  "command": "python3 proofs/contributions/agent-61/documentation-20261016/validate_documentation.py --increment complete",
+  "exit_code": 1,
+  "observed_error": "AssertionError: ('historical prose changed', 'proofs/CONSOLIDATION.md')",
+  "receipt_stdout_bytes": 0,
+  "followup_read_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+  "diagnosis": "The FINDINGS end marker omits the baseline suffix; the CONSOLIDATION end marker includes it. The initial validator recognized only the former and included the latter marker in the extracted historical body. The candidate document itself was unchanged.",
+  "correction": "Require an end marker for the exact document, accepting either no suffix or the exact expected baseline, then compare the complete inverse bytes.",
+  "source_document_changes_for_correction": false,
+  "mathematical_failure": false
+}
