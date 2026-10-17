@@ -40,6 +40,30 @@ def bad_word(q):
             or (q[0] == 11 and all(x in (0, 11) for x in q)))
 
 
+def check_flag_transition_table():
+    # Exact (low, exceptional, started) tuples in the original learner.
+    flags = {
+        0: (True, True, False),
+        1: (True, False, True),
+        2: (False, True, True),
+        3: (False, False, True),
+    }
+    checked = 0
+    for state, (low, exceptional, started) in flags.items():
+        for q in range(19):
+            if not started and q == 0:
+                continue
+            next_state = monitor_step(state, q)
+            expected = (
+                low and q <= 9,
+                exceptional and (q in (0, 11) if started else q == 11),
+                True,
+            )
+            assert flags[next_state] == expected, (state, q, next_state, expected, flags[next_state])
+            checked += 1
+    return checked
+
+
 def check_length(length):
     half_len = length // 2
     count = 0
@@ -70,6 +94,8 @@ def check_length(length):
 
 
 if __name__ == "__main__":
+    flag_checks = check_flag_transition_table()
+    print(f"flag_transitions={flag_checks} PASS")
     total = 0
     for length in range(1, 8):
         count = check_length(length)
