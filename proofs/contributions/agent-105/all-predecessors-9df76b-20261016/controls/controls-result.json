@@ -1,0 +1,108 @@
+{
+  "schema": "agent105-all-predecessors-controls-v1",
+  "status": "PASS_TARGETED_KERNEL_CONTROLS",
+  "recorded_at_utc": "2026-10-16T22:26:07.242454+00:00",
+  "source": {
+    "path": "proofs/Agent105PredecessorControls9df76b.lean",
+    "sha256": "2286e7580ef72d122db6a8c9368aeb4d16aba21d69045ead33e1b9e3ce9378c2"
+  },
+  "imports": [
+    "Agent105Predecessors9df76b"
+  ],
+  "exports": [
+    "Agent105PredecessorControls9df76b.small_targets",
+    "Agent105PredecessorControls9df76b.two_width_121"
+  ],
+  "target_outputs": {
+    "1": [],
+    "2": [
+      1
+    ],
+    "10": [
+      5
+    ],
+    "121": [
+      110,
+      92,
+      83,
+      74,
+      65,
+      56,
+      47,
+      38,
+      29
+    ]
+  },
+  "canonical_target_certificates_included": true,
+  "method": "Actual Lean #eval first determined the four requested output lists and their order. Final list equalities use kernel decide; finite canonical digit proofs use canonicalDigits_iff and simp. No large reverseFuel expansion or Witness import.",
+  "successful_attempt": "kernel-attempt-002",
+  "successful_attempt_elapsed_seconds": 0.4905337989994223,
+  "axioms": {
+    "Agent105PredecessorControls9df76b.small_targets": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Agent105PredecessorControls9df76b.two_width_121": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  "failed_attempts": [
+    {
+      "path": "kernel-attempt-001",
+      "exit_code": 1,
+      "source_sha256": "3207ec7d980859dbe4cb1cd5beeea2f6f8663bac2ce8fe60f87c9f730d7659cf",
+      "reason": "No Decidable instance was synthesized for opaque canonicalDigits on the four literal lists. Finite list bounds were instead discharged by simp after unfolding canonicalDigits and digitsBounded. Statements and computed lists were unchanged.",
+      "compiler_placeholder_note": "The failed compile log consequently reports generated sorryAx placeholders; it is retained as a failed attempt and is not accepted evidence."
+    }
+  ],
+  "command": [
+    "/workspace/scratch/fb513c1676b0/agent102-runtime/lean-4.19.0-linux/bin/lean",
+    "--trust=0",
+    "-j1",
+    "-DElab.async=false",
+    "-o",
+    "Agent105PredecessorControls9df76b.olean",
+    "Agent105PredecessorControls9df76b.lean"
+  ],
+  "cache_provenance": "Four frozen new author module caches, plus the previous complete decoder explicit-trust-zero cache. Every cached source and olean hash is recorded in the attempt receipts. No foundation module was rebuilt.",
+  "new_project_full_closure_status": "PENDING_PUBLISHED_SOURCE_CHECKPOINT",
+  "artifacts": {
+    "order-probe-001/Probe.lean": {
+      "bytes": 386,
+      "sha256": "31468e9281e3e68d52a2e6797687d2b3ceebcd6d5db07874c67c64c584f01dce"
+    },
+    "order-probe-001/compile.log": {
+      "bytes": 49,
+      "sha256": "7b127e44374b44593257b5fc304286f3d92d3cefe03a9df3af59b6d914889e9f"
+    },
+    "order-probe-001/result.json": {
+      "bytes": 11735,
+      "sha256": "122b7233a80e09e498ef4d4198f93c1011be8cf8f8bd8de26cc1cfb7fb049e49"
+    },
+    "kernel-attempt-001/Agent105PredecessorControls9df76b.lean": {
+      "bytes": 1612,
+      "sha256": "3207ec7d980859dbe4cb1cd5beeea2f6f8663bac2ce8fe60f87c9f730d7659cf"
+    },
+    "kernel-attempt-001/compile.log": {
+      "bytes": 1021,
+      "sha256": "2f24e81714c8c674459fd1e6672dd531ae4d60ecaed95dc9b9a1ad8e87124d91"
+    },
+    "kernel-attempt-001/result.json": {
+      "bytes": 11765,
+      "sha256": "3619eed687254d59ff8e9029dcc6636cab16caf17ec25a6fdd82abb9e6ada381"
+    },
+    "kernel-attempt-002/Agent105PredecessorControls9df76b.lean": {
+      "bytes": 1736,
+      "sha256": "2286e7580ef72d122db6a8c9368aeb4d16aba21d69045ead33e1b9e3ce9378c2"
+    },
+    "kernel-attempt-002/compile.log": {
+      "bytes": 182,
+      "sha256": "8ff65f6dcebee02c3015fa03f5ad3e9c6fe6e021277ff3beffb410324dfd40de"
+    },
+    "kernel-attempt-002/result.json": {
+      "bytes": 11989,
+      "sha256": "1f2e49ba9a7e97cf301bf496faeb42a0852b1ec3d70bff935e62bdaa63fb9406"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema": "agent105-nonauthor-semantic-review-v1",
+  "reviewed_at_utc": "2026-10-16T22:21:36.887086+00:00",
+  "reviewer": "/root/structure105",
+  "reviewed_authors": {
+    "Agent105WordFiber9df76b": "/root/runtime105",
+    "Agent101ProfileExtraction": "Agent #101"
+  },
+  "session": "9df76b",
+  "review_kind": "written_internal_semantic_audit",
+  "verdict": "PASS",
+  "modifications_requested": [],
+  "unresolved_findings": [],
+  "independence": {
+    "nonauthor_of_both_reviewed_sources": true,
+    "relationship": "Author of consuming Agent105DecodedFiber9df76b module; consumer but not author of WordFiber or ProfileExtraction."
+  },
+  "source_sha256": {
+    "Agent105WordFiber9df76b.lean": "c24bbb0a91f0c524f857d20b623a38704a278e909b2385621875f70561cf7ba3",
+    "Agent101ProfileExtraction.lean": "fff6917b100aeec40e353abe4a3f8d27f6561d6859a1feeac9135c22cd8c836b"
+  },
+  "profile_extraction_source_commit": "9bf1b2c35129500da39388727e17523f55fae80e",
+  "snapshot_byte_equal": true,
+  "reviewed_exports": {
+    "Agent105WordFiber9df76b": [
+      "half",
+      "center",
+      "wordFiber",
+      "half_coefficientWord",
+      "center_coefficientWord",
+      "coefficientWord_roundtrip",
+      "mem_wordFiber",
+      "wordFiber_nodup"
+    ],
+    "Agent101ProfileExtraction": [
+      "reverse_wrapDigits",
+      "exists_coefficientWord_of_reverse",
+      "coefficientWord_half_length",
+      "digitFn_coefficientWord_cons_zero",
+      "digitPairSums_reverse",
+      "digitPairSums_profile",
+      "digitPairSums_profile_cons"
+    ]
+  },
+  "checks": [
+    {
+      "name": "exact_sources",
+      "status": "PASS",
+      "description": "Frozen files match claimed SHA values and retained source/compile snapshots."
+    },
+    {
+      "name": "half_projection",
+      "status": "PASS",
+      "description": "Floor half-length gives exactly the original low half for both center cases."
+    },
+    {
+      "name": "center_projection",
+      "status": "PASS",
+      "description": "Even length gives none; odd length gives some original coefficient without dividing it."
+    },
+    {
+      "name": "empty_singleton",
+      "status": "PASS",
+      "description": "Empty and singleton lists covered; numericFiber retains canonical and center guards."
+    },
+    {
+      "name": "roundtrip_reuse",
+      "status": "PASS",
+      "description": "Uses Agent101 existing symmetric-list existence theorem and computes its projections."
+    },
+    {
+      "name": "membership_domain",
+      "status": "PASS",
+      "description": "Symmetry and coefficient bound remain explicit; actual width and step semantics come from original mem_numericFiber."
+    },
+    {
+      "name": "unconditional_nodup",
+      "status": "PASS",
+      "description": "Direct reuse of numericFiber_nodup, including nonsymmetric inputs."
+    },
+    {
+      "name": "profile_extraction",
+      "status": "PASS",
+      "description": "All seven imported list theorems checked, including strict induction descent and both terminal cases."
+    },
+    {
+      "name": "axiom_evidence",
+      "status": "PASS",
+      "description": "Read exact trust=0 successful receipts and standard-axiom logs; no fresh full-chain run claimed."
+    }
+  ],
+  "read_compile_evidence": [
+    "word-fiber/attempt-002/receipt.json",
+    "word-fiber/attempt-002/stdout.log",
+    "word-fiber/dependency-ProfileExtraction-001/receipt.json",
+    "word-fiber/dependency-ProfileExtraction-001/stdout.log"
+  ],
+  "definitions_axioms": [],
+  "allowed_theorem_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "independent_full_chain_build_assignee": "/root/scope105",
+  "new_mathematical_source_written": false,
+  "report": "word-fiber-semantic.md"
+}
