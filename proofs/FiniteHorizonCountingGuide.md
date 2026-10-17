@@ -84,9 +84,79 @@ The theorem is quantified over every permitted natural parameter, while each pop
 
 The independent run occurred on 2026-10-16, from 22:21:42 to 22:23:42 UTC. Its receipt reports 1,505 theorem constants, 239 safe definitions, and 100 literal exports (78 theorems and 22 definitions). These are different audit units, not counts of independent discoveries. Fifteen module origins contain declarations; the sixteenth is the unchanged import-only `Lychrel196Research` adapter. The recorded mathematical axiom union is `propext`, `Classical.choice`, and `Quot.sound`; compiler implementation constants are reported separately. None of these scoped records is a repository-wide build claim.
 
-## Detailed argument and retained reproduction records
+## Reproduction and retained evidence
 
-Read the [original written counting argument][original-argument], the [contribution explanation][contribution], and the [publication and archive-recovery instructions][publication] together. Some build snapshots and raw logs are stored only in the contribution's lossless archive; the publication record identifies their recovery and original paths. Package-specific reproduction must retain its dependency pins and distinguish a new run from the saved historical receipts.
+These commands have been inspected against the source snapshot above. This documentation session has not executed them; success conditions below describe what a new run must report.
+
+Use a disposable checkout of the pinned snapshot, keeping the historical commits needed for provenance checks. Recovery restores the original published files, and the finite controls write their receipt inside the package. Use Python 3.9 or later with its standard library, Git, and tar with xz support. The independent driver uses `Path.is_relative_to`. Lean builds require the official Lean 4.19.0 release, commit `6caaee842e94`.
+
+### Recover the retained evidence first
+
+Run the following from the repository root. Keep the `package` variable available for the later commands in the same shell.
+
+```sh
+package=proofs/contributions/agent-9/finite-ensemble-marker-count-20261016
+tar -xJf "$package/evidence/complete-source-and-verification.tar.xz" \
+  -C "$package"
+```
+
+The [evidence manifest][archive-manifest] records the archive SHA-256 as `f6311264b4335c320e5763a868f61059d27bee26c7d81ddc1d682f255a39c562`, with 317 recovered files and 215,004 stored bytes. It records each recovered path, byte count and hash. Those are retained publication metadata, not a new extraction or hash replay by this guide.
+
+Recovery supplies the independent `frozen-source/` snapshots, saved execution reports, and the package's `verification/` directory. This last directory matters: [`controls.py`][controls] writes `verification/finite-controls.json` without creating its parent. The pinned checkout stores that directory in the archive. Running the controls directly before recovery can therefore finish the calculation and then fail while writing its receipt.
+
+### Author verification
+
+Replace the executable and output placeholders. The build and report directories must be distinct, new, nonexistent paths; use locations outside the checkout.
+
+```sh
+python3 -B "$package/verify.py" \
+  --lean /absolute/path/to/lean-4.19.0/bin/lean \
+  --repo-root "$PWD" \
+  --build-dir /absolute/path/to/new-author-build \
+  --report-dir /absolute/path/to/new-author-report
+```
+
+The [author driver][author-driver] checks eleven dependency hashes and the frozen five mathematical modules plus audit source, then compiles with `--trust=0 -j1 -DElab.async=false`. On success its new report directory contains `summary.json` with `status: LEAN_CHECKED`. The original author receipt is a separate recovered file, `verification/full-001/summary.json`.
+
+### Optional finite arithmetic controls
+
+```sh
+python3 -B "$package/controls.py"
+```
+
+The ten [published parameter rows][controls-parameters] entail 1,999,008 seed/case visits. This is the workload derived from those inputs, not an enumeration newly performed for this guide. The controls print JSON and overwrite `verification/finite-controls.json` inside the disposable package. They supplement the general formal result. The script has no reduced-case or alternate-output command-line option.
+
+### Replay the independent verifier
+
+The [independent driver][independent-driver] uses its own [source registry][independent-registry] and generates its own audit. Its Git provenance checks need the original registry commits locally available, including `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5` and `f44c06c4851b26523bcec920d93a52b93fd2a0a6`. A checkout missing those objects cannot satisfy the recorded provenance checks.
+
+Use a separate nonexistent output directory. Replace the auditor placeholder with the actual replay executor's identity; otherwise the driver's default would retain the historical reviewer's name.
+
+```sh
+review="$package/review/horizon-safety"
+python3 -B "$review/verify.py" \
+  --repo "$PWD" \
+  --package-root "$review" \
+  --manifest "$review/verification/source-registry.json" \
+  --lean /absolute/path/to/lean-4.19.0/bin/lean \
+  --output /absolute/path/to/new-independent-replay \
+  --auditor 'Actual replay executor identity'
+```
+
+The fresh output contains `verification.json`, `FILES.json`, source snapshots, build objects and logs. A successful run reports `PASS_SELECTED_SOURCE_CLOSURE`. The original independent receipt is separately recovered at `review/horizon-safety/runs/full-001/verification.json`; its earlier interpretation remains in [RESULT.json][review-result] and the [semantic review][semantic]. Re-running this driver is a new compiler replay; independent semantic review requires its own actual reading and attribution.
+
+The independent driver's subprocess timeout is 1,800 seconds per command, not a total-runtime guarantee. The driver sets no overall memory limit. Neither the standard Lean runtime nor unrelated repository projects are rebuilt by this scoped project check.
+
+## Detailed argument and documentation checks
+
+The [original written counting argument][original-argument] remains accessible at its retained original commit. The [contribution explanation][contribution] and [publication record][publication] describe the formalization and archive separately. The guide's [documentation evidence][doc-evidence] records source inspection, the correction to the archive-only link in the first draft, and the separate review of this new prose.
+
+[archive-manifest]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/evidence/MANIFEST.json
+[author-driver]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/verify.py
+[controls]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/controls.py
+[controls-parameters]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/controls_parameters.json
+[independent-driver]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/review/horizon-safety/verify.py
+[independent-registry]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/review/horizon-safety/verification/source-registry.json
 
 [numeric]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/Agent9NumericMarkerCount.lean
 [words]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/Agent9MarkerWords.lean
@@ -99,5 +169,5 @@ Read the [original written counting argument][original-argument], the [contribut
 [semantic]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/review/horizon-safety/SEMANTIC_REVIEW.md
 [contribution]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/README.md
 [publication]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/PUBLICATION.md
-[original-argument]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/source/README.original.md
+[original-argument]: https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/2026-10-14-finite-horizon-density/README.md
 [doc-evidence]: contributions/agent-64/finite-horizon-count-guide-20261016/README.md

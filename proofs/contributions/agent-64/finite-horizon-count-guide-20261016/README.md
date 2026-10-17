@@ -13,13 +13,13 @@ This package records a source-pinned explanation of integrated PR #123. The only
 
 ## Checks and attribution
 
-Agent #64 is the sole documentation author and Git writer. Genuine read-only specialists `/root/source_gaps` and `/root/reproduction_links` were explicitly launched with `gpt-6-astra`, `reasoning_effort=ultra`. Their later assignments retained that configuration; the followup API has no separate effort setting. They did not author shared files, mutate Git, post external comments, or run Lean.
+Agent #64 is the primary documentation author and sole Git writer. The source and reproduction specialists assisted with source analysis and draft wording; the final prose is reviewed by a separate nonauthor. Genuine read-only specialists `/root/source_gaps` and `/root/reproduction_links` were explicitly launched with `gpt-6-astra`, `reasoning_effort=ultra`. Their later assignments retained that configuration; the followup API has no separate effort setting. They did not author shared files, mutate Git, post external comments, or run Lean.
 
 The author read the exact numeric and finite-horizon endpoint modules, contribution README, independent semantic review and RESULT.json, original-layout helper, repository instructions, publication policy, active documentation claims, and the actual PR123 merge metadata. The source specialist additionally compared all sixteen registry source blobs at observed main `116efc60f8d3a29bac4fcf5cdcaf2bbdcdceb3de` and compared the five new modules directly at the reviewed head and documentation pin. All reported identities matched. Source identity is not a fresh compiler check.
 
-The reproduction specialist inspected the project verifier, frozen source/dependency records, archive publication instructions and controls. A separate reproduction increment will record its concrete prerequisite correction and exact inspected commands. No project command, archive extraction, certificate replay or Lean build has run in this documentation session.
+The reproduction specialist inspected the project verifier, frozen source/dependency records, archive publication instructions and controls. The second increment adds the concrete archive-recovery prerequisite before the finite controls and independent replay, explicit arguments, fresh output-directory requirements, and truthful executor attribution. The parent read both drivers, controls and publication manifest. [REPRODUCTION_REVIEW.md](REPRODUCTION_REVIEW.md) and [SOURCE_INSPECTION.json](SOURCE_INSPECTION.json) retain the source ledger and actual check boundaries. No project command, archive extraction, certificate replay or Lean build has run in this documentation session.
 
-Independent review of the actual new guide is pending at this first source-published increment. The retained Agent9 mathematical review is attributed separately and does not approve this new prose.
+A third genuine specialist, `/root/guide_independent_review`, was explicitly launched with `gpt-6-astra`, `reasoning_effort=ultra`, and no authorship role. Its first review of commit `cf8882a4a396da0dbf9fa89522ac49cb770f7f1d` requested a correction to one link: the selected original argument was archive-only at the guide snapshot. The second increment uses the accessible original commit and exact blob `6d6d188df78e26eb6ffdde6ebc3bdb6fc749eb9c`. This finding is retained, not erased by the correction. The second increment awaits that reviewer's final review; the earlier Agent9 mathematical review does not approve the new prose.
 
 ## Environment limitations
 
@@ -27,6 +27,6 @@ The initial root upload read and capability checks ran. Direct terminal Git acce
 
 ## Preservation and next increment
 
-The guide and this evidence directory are new paths. Their addition leaves all previously selected original-layout bytes intact, so no SOURCE_MAP rewrite or historical inventory regeneration is required. The small commit delta is to be checked and read back after publication.
+The guide and this evidence directory are new paths. Their addition leaves all previously selected original-layout bytes intact, so no SOURCE_MAP rewrite or historical inventory regeneration is required. The first published commit `cf8882a4a396da0dbf9fa89522ac49cb770f7f1d` was compared with the exact baseline: two added files, 135 added lines and zero deletions; both complete files matched remote readback. Its original bytes remain preserved in that ancestor commit of this isolated branch. Later increments require their own comparison and readback.
 
-Remaining bounded obligations: add source-inspected package reproduction with archive recovery; validate all links and declarations; obtain a genuine nonauthor review of the concrete text; publish the final readback and review request. Completion refers to this pinned guide, not ongoing background maintenance.
+Remaining bounded obligations: validate all links and declarations in the completed guide, obtain a genuine nonauthor review of the concrete second increment, and publish the final readback and review request. Completion refers to this pinned guide, not ongoing background maintenance.
