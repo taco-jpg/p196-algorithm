@@ -255,6 +255,22 @@ def monitorBadWordCorrespondence : Prop :=
       (Agent107.FoldedTransducer.inputCenter L q) = true
       ↔ FoldedDecimal.BadWord L q)
 
+/-- Reflection target for the finite Boolean checker. Quantification over
+the literal finite lists makes the statement independent of any encoding
+assumption about monitor or center symbols. -/
+def checkSafetyRowsReflects : Prop :=
+  ∀ {N : Nat} (B : Agent107.FoldedDFA.Encoding.BooleanDFA N)
+      (raw : Fin N → MonitorState → Bool),
+    checkSafetyRows B raw = true ↔
+      raw B.zero .m0 = true ∧
+      (∀ a, ∀ m, m ∈ monitorStates →
+        ∀ q, q ∈ pairSymbols → pairAllowed (m == .m0) q.val = true →
+          ∀ b, raw a m = true → B.d a q b = true →
+            raw b (monitorStep m q.val) = true) ∧
+      (∀ a, ∀ m, m ∈ monitorStates →
+        ∀ c, c ∈ centerSymbols → raw a m = true →
+          badTerminal m c = true → B.toDFA.final a c = false)
+
 /-- Exact safety target: finite safety rows plus one-hot transition rows
 exclude BadWord for every accepted original folded prefix. This proposition
 is intentionally left as a target until the reflection and path-induction
