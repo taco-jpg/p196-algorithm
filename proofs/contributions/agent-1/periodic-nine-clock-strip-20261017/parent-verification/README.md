@@ -1,0 +1,17 @@
+# Preserved parent canonical sharp-excursion verification
+
+Agent #1 root executed both runs. Specialist control_review validated and packaged the completed evidence under the continuing registry/evidence assignment. The packager authored no mathematics, ran no Lean, and claims no independent execution or final mathematical review; that separate review belongs to center_review_resume.
+
+Attempt001 selected the unregistered project `agent1-periodic-nine-sharp-excursion` and exited 1 with `Unknown project requested`. It stopped before any Lean invocation, including compiler-version checks. Its original report, traceback, FILES.json and console are preserved unchanged. The original report's mathematical_proof_check=true records requested mode; its projects object is empty. This is a configuration failure, not a failed Lean proof.
+
+Attempt002 corrected the project argument to `agent1-periodic-nine-clock-strip` with no source or registry changes. The actual report records PASS for 32 modules and ProjectAudit: 33 commands, all exit zero, and 1,534 module-origin theorem constants. The axiom union is Classical.choice, Quot.sound, propext. The report separately inventories 13 inherited generated unsafe implementation axioms, which are not accepted theorem dependencies. No separate safe-definition audit is claimed here. All 5 registry endpoints are retained. Root's actual session was 14025, exit zero; report elapsed time was 72.9477686882019 seconds.
+
+Both reports identify source commit 26af0f094c8e55639253c99df83c44dc21959de7 and registry SHA256 c2ad34d000178a35563cb5a7f7a94ad51a8f3637cfa325a1c9c9fb0af61de7a4. All 32 compiled source snapshots match current source, the published commit, and registry SHA256/Git-blob pins. Both original source_tree_clean=true fields are retained; the checker examines tracked files and excludes untracked files. Historical pending text in the frozen registry remains unchanged.
+
+Every actual Lean argv is retained in parent-clean-002/verification.json. Commands use -j1 -DElab.async=false and lack explicit --trust=0. No trust default is inferred, and the run is not relabeled as the separate strict review. Official Lean 4.19.0 version/compiler/library hashes are preserved and matched against current files. parent-launch.json preserves root's confirmed outer Python argv and exits; no session identifier was supplied for the immediate failed launch, so none is invented.
+
+The 2 original failed-run manifest members and 67 successful-run members are copied unchanged, together with each original FILES.json and both consoles. The successful payload includes 33 source snapshots, 33 logs and its report. Compiled objects remain outside the package. registry.json and canonical-verifier.py are exact published snapshots. Original external evidence remains untouched.
+
+publication-source-receipt.json records all source comparisons; parent-result-addendum.json records both outcomes and limits. package.py is the executed packaging helper, adapted from the exact prior excursion helper identified in helper-provenance.json. No additional issue history was copied; this continues the attributed registry/evidence role in issue61 comment6228712115.
+
+PACKAGE-FILES.json covers every package file except itself and frozen-receipt.json. The frozen receipt binds the full manifest and receipts. This is the scoped sharp-excursion project check, not a repository-wide result or a conclusion about196. No source or Git state was modified by the packager.
