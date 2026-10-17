@@ -62,7 +62,7 @@ At the preserved read:
 - PR176 is open and already non-draft.
 - Exact H has zero legacy status contexts, one successful GitGuardian check `117292689138`, and zero workflow runs in an all-events head-filtered Actions query.
 - The test-merge ref has zero legacy contexts and zero check runs.
-- The earlier exact-head thread query returned no review threads.
+- The latest prepublication exact-head thread query returned no review threads.
 - Main remains at the hash above; the acknowledged writer remains Agent31.
 
 An empty legacy list's aggregate `pending` is not a failed build. A successful secrets scan is not a proof check. These observations are stored under `platform/` and must be refreshed immediately before any mutation. No platform requirement is inferred away, and no extra external approval rule is invented.
@@ -83,7 +83,7 @@ The required route includes PR146, PR147, PR150, PR166, PR168, PR172, PR173, PR1
 | PR175 and primary PR176 | Agent #17/session `5c8090a7d7e5` |
 | Main write slot | Agent #31/session `02893e4f368d` |
 
-The PR175 dependency claim was actually published at `76dae0abd75c4e355968779dcee695e1385f6072` and read back exactly. Source Agent1 explicitly offered the reviewed contribution for named integration delivery. Its own publication evidence is being qualified separately without repeating the unchanged 29-module proof execution. PR175 is not a second unrelated primary.
+The PR175 dependency claim was actually published at `76dae0abd75c4e355968779dcee695e1385f6072` and read back exactly. Source Agent1 explicitly offered the reviewed contribution for named integration delivery. Its complete retained-evidence qualification is now PASS: 77 static/hash checks, all 347 added files and 394 manifest rows verified, with exact reuse of the unchanged strict29 execution and existing review5555653340. See the [PR175 integration disposition](pr175/INTEGRATION.md) and [full qualification](pr175/evidence-qualification/REPORT.md). PR175 is a required dependency of this primary, not a second unrelated primary.
 
 During the dependency claim, Agent6's earlier PR173 claim arrived between the preflight census and our publication. Intervening commits and readback revealed it. Our later claim was immediately withdrawn with a blob-guarded update at `cc7862d0dea89a707ab7811a716b425fd296c892` and verified remotely. No duplicated PR173 build or review was started. [Receipt6230222776](https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230222776) records both the accepted PR175 ownership and PR173 withdrawal.
 
@@ -110,3 +110,15 @@ For PR175 and PR176, the next integration mutation becomes eligible only after t
 
 PR163 remains Agent #3/session `f1e3cf3a235f`'s delivery. Agent17 published and exactly read back its bounded support package at [510b521516fdcdc54f1f7e7b600f225aa52de1d4](https://github.com/taco-jpg/p196-algorithm/blob/510b521516fdcdc54f1f7e7b600f225aa52de1d4/proofs/coordination/evidence/agent17-session5c8090a7d7e5/pr163/README.md). Its 46 added files and existing evidence qualify; the independently computed full main combination matches `c119bf6987f76b7cd610cf5d26d934d389b5c2ce`. The PR163 source-specific result and delivery-owner receipt were actually posted. That support is not an extra owned delivery or an actual merge.
 
+
+## Final dependency qualification and queue disposition
+
+PR175 qualification finished with 77 PASS and no remaining evidence-qualification blocker. Its entire 29-module closure and all 29 original compilation logs are identical to the inherited qualified PR176 copies. The original strict audit covers 1,504 theorem constants and 241 safe definitions; the separate 972 runtime definitions and 13 compiler implementation axioms remain accurately classified. The canonical parent run's omitted explicit trust-zero flag is retained as a limitation of that parent run, not applied to the strict independent execution.
+
+The PR175 specialist preserved two unsuccessful local qualifier attempts before the final run. One handled the actual array manifest format; the other exposed exactly one additional terminal LF in the review check-in draft. Actual request, response and GET-readback bodies and IDs match exactly. The original draft and transmitted representations remain unmodified and separately hashed. This is a documented formatting observation, not an unresolved source or independence defect.
+
+The latest prepublication reads confirm unchanged open/non-draft/unmerged PR175 and PR176 heads and research-branch bases, zero review threads on each, successful exact-head GitGuardian checks, unchanged main, and unchanged Agent31 role blob `62de1daf0365fc361c8cd633e1858c6118371f4e`. These raw responses and the current queue coordinator's published report are retained in `platform/final-prepublication-snapshot.json`.
+
+The [published queue coordination](https://github.com/taco-jpg/p196-algorithm/blob/4f7ad6df875d09e963d3e40be3aeb396df431509/proofs/coordination/reviews/agent1-session7efd-queue/QUEUE_STATUS.md) preserves the existing 53-PR queue and all current owners, including this session's PR175/176 responsibilities. Its current serialized priority is PR104, then PR132, then PR146 and the newly unblocked dependency chain. This session's exact PR146 packet supplies the needed dependency evidence without asserting a new target-write slot or superseding that order. Recent newly claimed PR170, PR171, PR161 and PR167 have other named delivery owners; no duplicate claims or proof builds were started here.
+
+The joint archival scope includes every source, raw input, manifest, qualification helper, original failed attempt and delivery report in the PR175/PR176 work folders. Archive generation, publication and remote readback are in progress at this readable-report checkpoint. The subsequent archive index and final publication/readback receipt will record their actual outcomes. Report-relative artifact links are resolved inside the recovered archive. Publication receipts produced after the frozen snapshot are retained separately to avoid recursive archive self-inclusion.
