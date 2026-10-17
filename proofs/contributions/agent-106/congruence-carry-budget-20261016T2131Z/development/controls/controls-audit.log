@@ -1,0 +1,99 @@
+Agent106.CongruenceBudget.familyIndex_ge_four (R : Nat) (hR : 2 ≤ R) : 4 ≤ Agent106.CongruenceBudget.familyIndex R
+Agent106.CongruenceBudget.familyWidth_ge_six (R : Nat) (hR : 2 ≤ R) : 6 ≤ Agent106.CongruenceBudget.familyWidth R
+Agent106.CongruenceBudget.sparse_entry_tail_bound (a : Nat) (ha : 5 ≤ a) : 990 * a + 989 < 10 ^ (a - 1)
+Agent106.CongruenceBudget.sparse_entry_bounds (a : Nat) (ha : 5 ≤ a) :
+  10 ^ a ≤ Agent106.CongruenceBudget.sparse a ∧ Agent106.CongruenceBudget.sparse a < 11 * 10 ^ (a - 1)
+Agent106.CongruenceBudget.sparse_decimalLength (a : Nat) (ha : 5 ≤ a) :
+  DecimalQuantitativeMass.decimalLength (Agent106.CongruenceBudget.sparse a) = a + 1
+Agent106.CongruenceBudget.denseOutput_mod99 (k : Nat) : 11 * (10 ^ k - 1) % 99 = 0
+Agent106.CongruenceBudget.sparse_mod99 (a : Nat) : Agent106.CongruenceBudget.sparse a % 99 = 0
+Agent106.CongruenceBudget.familySource_mod99 (R : Nat) : Agent106.CongruenceBudget.familySource R % 99 = 0
+Agent106.CongruenceBudget.familySource_decimalLength (R : Nat) (hR : 2 ≤ R) :
+  DecimalQuantitativeMass.decimalLength (Agent106.CongruenceBudget.familySource R) =
+    Agent106.CongruenceBudget.familyWidth R
+Agent106.CongruenceBudget.sparse_family_entry_growth (R : Nat) (hR : 2 ≤ R) :
+  Agent106.CongruenceBudget.familySource R <
+      Agent106.CongruenceBudget.sparse (Agent106.CongruenceBudget.familyWidth R) ∧
+    Agent106.CongruenceBudget.sparse (Agent106.CongruenceBudget.familyWidth R) <
+      11 * Agent106.CongruenceBudget.familySource R
+Agent106.CongruenceBudget.sparse_family_entry_width (R : Nat) (hR : 2 ≤ R) :
+  DecimalQuantitativeMass.decimalLength (Agent106.CongruenceBudget.sparse (Agent106.CongruenceBudget.familyWidth R)) =
+    DecimalQuantitativeMass.decimalLength (Agent106.CongruenceBudget.familySource R) + 1
+Agent106.CongruenceBudget.congruence_sparse_entry_controls (R : Nat) (hR : 2 ≤ R) :
+  Agent106.CongruenceBudget.familySource R % 99 = 0 ∧
+    Agent106.CongruenceBudget.sparse (Agent106.CongruenceBudget.familyWidth R) % 99 = 0 ∧
+      Agent106.CongruenceBudget.familySource R <
+          Agent106.CongruenceBudget.sparse (Agent106.CongruenceBudget.familyWidth R) ∧
+        Agent106.CongruenceBudget.sparse (Agent106.CongruenceBudget.familyWidth R) <
+            11 * Agent106.CongruenceBudget.familySource R ∧
+          DecimalQuantitativeMass.decimalLength
+              (Agent106.CongruenceBudget.sparse (Agent106.CongruenceBudget.familyWidth R)) =
+            DecimalQuantitativeMass.decimalLength (Agent106.CongruenceBudget.familySource R) + 1
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.familyIndex_ge_four._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.denseOutput_mod99 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.familyWidth_ge_six : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_family_entry_growth._proof_22 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_family_entry_growth : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.familySource_mod99 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_entry_tail_bound : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.rho.eq_1 : []
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_entry_bounds._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.familyWidth_ge_six._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_decimalLength : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_entry_tail_bound._proof_6 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.controls_decimalLength_between_powers._proof_9 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_family_entry_growth._proof_21 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_mod99._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_entry_tail_bound._proof_5 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_family_entry_width : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_mod99._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.entry_tail_bound_shift : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_family_entry_growth._proof_19 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.familySource_decimalLength._proof_17 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.controls_decimalLength_between_powers : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_decimalLength._proof_13 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.controls_decimalLength_between_powers._proof_10 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.controls_decimalLength_between_powers._proof_11 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.entry_tail_bound_shift._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.denseOutput_mod99._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_family_entry_growth._proof_18 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_mod99 : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_family_entry_growth._proof_20 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.controls_decimalLength_between_powers._proof_12 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.familySource_decimalLength : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls _private.Agent106CongruenceControls.0.Agent106.CongruenceBudget.entry_tail_bound_shift._proof_4 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.familyIndex_ge_four : [propext, Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_entry_bounds._proof_8 : [Classical.choice,
+ propext,
+ Quot.sound]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.sparse_entry_bounds : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_THEOREM Agent106CongruenceControls Agent106.CongruenceBudget.congruence_sparse_entry_controls : [propext,
+ Quot.sound,
+ Classical.choice]
+FULL_MODULE_AUDIT theorems=37 union=[Classical.choice, Quot.sound, propext]
