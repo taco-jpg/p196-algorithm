@@ -1,0 +1,506 @@
+{
+  "status": "PASS_EXACT_EXPECTED_COMBINATION_REMOTE_MATERIALIZATION_PENDING",
+  "timestamp_utc": "2026-10-17T00:50:24.877330+00:00",
+  "support_agent": "Agent20/session86350e418736",
+  "delivery_owner_and_main_writer": "Agent31/session02893e4f368d",
+  "B": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+  "B_tree": "ba552a911841c2f2654cb4481c92e559e42d2a9b",
+  "H": "c9a86a40ffd478f7c01ac68688896cba91f94dd1",
+  "H_tree": "4a26e6e9b0f8ef964a9cebe5dafb64069baf0907",
+  "merge_bases": [
+    "d04b9169eb3a078cf18283bd0194dd729a9da954"
+  ],
+  "T_expected": "2765245df1124e30f3148c4a96dce3228e8605dc",
+  "T_remote_exists": false,
+  "T_remote_lookup": "404 NOT_FOUND",
+  "checks": {
+    "all_nonrecursive_tree_responses_complete": true,
+    "MB_to_H_only_proofs": true,
+    "MB_to_H_proofs_only_contributions": true,
+    "MB_to_H_contributions_only_agent114": true,
+    "agent114_absent_in_mergebase_and_current_B": true,
+    "Hagent_contains_only_owned_scope": true,
+    "full_paginated_PR_diff_21_additions_zero_deletions": true,
+    "full_PR_diff_equals_complete_owned_subtree": true,
+    "list_changed_filenames_agrees": true,
+    "immutable_compare_agrees": true,
+    "mergebase_and_complete_linear_12_commit_head_lineage": true,
+    "all_20_text_patches_reconstruct_exact_published_blobs": true,
+    "entire_seven_module_tested_closure_exact": true,
+    "canonical_verifier_unchanged": true,
+    "candidate_preserves_all_5_other_root_entries": true,
+    "candidate_preserves_all_3243_other_proofs_entries": true,
+    "candidate_preserves_all_33_existing_contributions_entries": true,
+    "final_main_ref_matches_B": true,
+    "final_PR_H_open_ready_matches": true,
+    "remote_expected_tree_lookup_404": true
+  },
+  "failed_checks": [],
+  "source_closure": [
+    {
+      "module": "LychrelDigitSums",
+      "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+      "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "imports": [
+        "Std"
+      ],
+      "original_tested_path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+      "actual_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+      "review_pin_match": true,
+      "head_blob": "8a865176625283648a8a20dd2411ed77670eb0a2"
+    },
+    {
+      "module": "SafeDelay",
+      "path": "proofs/SafeDelay__bc8a973241f692fd.lean",
+      "sha256": "57d8d3fb7e3c2f747b276c3d03c7e81cda8714842c1b4794d3e682aff8e179d6",
+      "git_blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "original_tested_path": "proofs/SafeDelay__bc8a973241f692fd.lean",
+      "actual_blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60",
+      "review_pin_match": true,
+      "head_blob": "8551abd3629cd91b2a84a9e2f28d0a0003eded60"
+    },
+    {
+      "module": "DecimalSafeRuns",
+      "path": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+      "sha256": "2d0e44adfbfa2592b1eaedfb46d2dff3f62db0a2ca05171bb2a7c1a66ec03f22",
+      "git_blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78",
+      "imports": [
+        "LychrelDigitSums"
+      ],
+      "original_tested_path": "proofs/DecimalSafeRuns__aaaac5a66315c5e2.lean",
+      "actual_blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78",
+      "review_pin_match": true,
+      "head_blob": "5013589f2ad97f111a9b9e1885152990a1fe8e78"
+    },
+    {
+      "module": "DecimalDelayBridge",
+      "path": "proofs/DecimalDelayBridge__83037365a26a750b.lean",
+      "sha256": "8e800eab397f44ac1b0ff47ac02cc7576cddeb7d45015375640213857e56e800",
+      "git_blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df",
+      "imports": [
+        "SafeDelay",
+        "DecimalSafeRuns"
+      ],
+      "original_tested_path": "proofs/DecimalDelayBridge__83037365a26a750b.lean",
+      "actual_blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df",
+      "review_pin_match": true,
+      "head_blob": "5ccc296bb74415d3faa77d0e2c1d1d1dd139b3df"
+    },
+    {
+      "module": "PairDelayBridge",
+      "path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+      "sha256": "4faa6a3f05477bfabd8f504217119e0bb4db56987e3717c822f914f4cc7e70a5",
+      "git_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6",
+      "imports": [
+        "DecimalDelayBridge"
+      ],
+      "original_tested_path": "proofs/PairDelayBridge__c453a1542e8182cd.lean",
+      "actual_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6",
+      "review_pin_match": true,
+      "head_blob": "070a329cc676c8e83fafec5d711f06140e87d9d6"
+    },
+    {
+      "module": "DelayedOverlapGate",
+      "path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "sha256": "c24d7774af6487fcab63a4d60cd10aaabb1b270b3dc0f4ac42dd3655b416b112",
+      "git_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+      "imports": [
+        "PairDelayBridge"
+      ],
+      "original_tested_path": "proofs/DelayedOverlapGate__61c024546b1d5b6d.lean",
+      "actual_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff",
+      "review_pin_match": true,
+      "head_blob": "9ab1db741e07fc25e965dd17bb2e67e07a3c3eff"
+    },
+    {
+      "module": "Agent114ShortRFirst11",
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/Agent114ShortRFirst11.wip.lean",
+      "sha256": "e2557923cdbe694ab4a21463ab765bd0d609623f98e77e5c3aac593ed101bd81",
+      "git_blob": "b7ee9c4d16e8477439d343ac18483462599ebf6c",
+      "imports": [
+        "DelayedOverlapGate"
+      ],
+      "original_tested_path": "proofs/contributions/agent-1/pr104-review-20261016/repaired/Agent114ShortRFirst11.lean",
+      "actual_blob": "b7ee9c4d16e8477439d343ac18483462599ebf6c",
+      "review_pin_match": true
+    }
+  ],
+  "paths_added": [
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/Agent114ShortRFirst11.wip.lean",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b7ee9c4d16e8477439d343ac18483462599ebf6c",
+      "size": 6800,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/b7ee9c4d16e8477439d343ac18483462599ebf6c"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/audit_short_r.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "127042df0e0e86b784df74d9f98e9e56484aefa5",
+      "size": 2207,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/127042df0e0e86b784df74d9f98e9e56484aefa5"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/finite_evidence.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a445afd8a8b59eb441a05c755eaced236257819",
+      "size": 9344,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/2a445afd8a8b59eb441a05c755eaced236257819"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/finite-replay-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6dc2629a4065a4c8e931d5c8e69788efde646a03",
+      "size": 2091,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/6dc2629a4065a4c8e931d5c8e69788efde646a03"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/BUILD_REGISTRY.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e03c575476da82f1545bfb6c01cec2dd3ea1047a",
+      "size": 5687,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/e03c575476da82f1545bfb6c01cec2dd3ea1047a"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/endpoint-normalization.patch",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e47be78501bcb07584ae5900c1b9087825006010",
+      "size": 682,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/e47be78501bcb07584ae5900c1b9087825006010"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/evidence/pr104-evidence.tar.xz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d6b5875d436a11fdcf9123247e408795becfc65",
+      "size": 169700,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/0d6b5875d436a11fdcf9123247e408795becfc65"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/evidence/pr104-package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0dfabe39fdf3affac4afa08bf0795c4327112c2a",
+      "size": 46680,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/0dfabe39fdf3affac4afa08bf0795c4327112c2a"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/FINITE_REPLAY.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cded981094859c5d52c2acdbab36eaed8ac2a17d",
+      "size": 1516,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/cded981094859c5d52c2acdbab36eaed8ac2a17d"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/LOCAL_FIXTURE_PROVENANCE.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e04c8802e9e8326c4dca7b5b91a3e31b6b684018",
+      "size": 4928,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/e04c8802e9e8326c4dca7b5b91a3e31b6b684018"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/original/Agent114ShortRFirst11.wip.lean",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be3d2eb5858401cd6314b19a2d907fbbce5d80af",
+      "size": 6694,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/be3d2eb5858401cd6314b19a2d907fbbce5d80af"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/original/PR_DESCRIPTION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5f700dc6fce6f78479374d075cc6992dda516da",
+      "size": 2184,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/c5f700dc6fce6f78479374d075cc6992dda516da"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/original/REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b632df1e49409d8cbd8fd568855860cc428a9f5",
+      "size": 5554,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/8b632df1e49409d8cbd8fd568855860cc428a9f5"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/REPAIR_PROVENANCE.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b87fc4891ec412538fbf83be7504c647b2fe9e46",
+      "size": 3503,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/b87fc4891ec412538fbf83be7504c647b2fe9e46"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/REPRODUCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f525b64b4b574a85d8d1b68ec4b46712d93d573",
+      "size": 4779,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/0f525b64b4b574a85d8d1b68ec4b46712d93d573"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/reviews/RETAINED_EVIDENCE_REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6cafdeee09f85161bc37832255b1884ba69638a6",
+      "size": 12629,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/6cafdeee09f85161bc37832255b1884ba69638a6"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/reviews/WIRING_REVIEW.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c2cfd60af26e3d1fb062712763a7e0011ca326b2",
+      "size": 1301,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/c2cfd60af26e3d1fb062712763a7e0011ca326b2"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/reviews/WIRING_REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "185303099c83ff576616a4f887ff4a9ccfd97360",
+      "size": 3029,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/185303099c83ff576616a4f887ff4a9ccfd97360"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/STRUCTURAL_CHECK.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79ccac747a37b6df0964c0068e847496ce82b67d",
+      "size": 1447,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/79ccac747a37b6df0964c0068e847496ce82b67d"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56c48985eaa1891f4bf7531b3e6ce97ba2095aeb",
+      "size": 10080,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/56c48985eaa1891f4bf7531b3e6ce97ba2095aeb"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/verify_short_r.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e0f8117e98c8cb196401589d494010fc952cefb",
+      "size": 3826,
+      "url": "https://api.github.com/repos/taco-jpg/p196-algorithm/git/blobs/3e0f8117e98c8cb196401589d494010fc952cefb"
+    }
+  ],
+  "paths_modified": [],
+  "paths_deleted": [],
+  "text_diff_identity_checks": [
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/Agent114ShortRFirst11.wip.lean",
+      "actual_git_blob": "b7ee9c4d16e8477439d343ac18483462599ebf6c",
+      "expected_git_blob": "b7ee9c4d16e8477439d343ac18483462599ebf6c",
+      "match": true,
+      "byte_length": 6800,
+      "sha256": "e2557923cdbe694ab4a21463ab765bd0d609623f98e77e5c3aac593ed101bd81"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/REPORT.md",
+      "actual_git_blob": "56c48985eaa1891f4bf7531b3e6ce97ba2095aeb",
+      "expected_git_blob": "56c48985eaa1891f4bf7531b3e6ce97ba2095aeb",
+      "match": true,
+      "byte_length": 10080,
+      "sha256": "04497611bc6203c59b7e5660895fb608237fc37bc87be0704faa0971253e88c2"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/audit_short_r.py",
+      "actual_git_blob": "127042df0e0e86b784df74d9f98e9e56484aefa5",
+      "expected_git_blob": "127042df0e0e86b784df74d9f98e9e56484aefa5",
+      "match": true,
+      "byte_length": 2207,
+      "sha256": "1b2271a513df080aa4b00115a0046c04e1a245d84908431b1c9217e5764bf771"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/finite-replay-receipt.json",
+      "actual_git_blob": "6dc2629a4065a4c8e931d5c8e69788efde646a03",
+      "expected_git_blob": "6dc2629a4065a4c8e931d5c8e69788efde646a03",
+      "match": true,
+      "byte_length": 2091,
+      "sha256": "63abf7584166a860aa0b50ac656e0c2830f880299704c3a319e95a32e2c3f54f"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/finite_evidence.json",
+      "actual_git_blob": "2a445afd8a8b59eb441a05c755eaced236257819",
+      "expected_git_blob": "2a445afd8a8b59eb441a05c755eaced236257819",
+      "match": true,
+      "byte_length": 9344,
+      "sha256": "6531fec60d971f17762b8860e11353e1fac5f6c6c549ec20ad22dfe803209073"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/BUILD_REGISTRY.json",
+      "actual_git_blob": "e03c575476da82f1545bfb6c01cec2dd3ea1047a",
+      "expected_git_blob": "e03c575476da82f1545bfb6c01cec2dd3ea1047a",
+      "match": true,
+      "byte_length": 5687,
+      "sha256": "78f4ca4b5b23c0aed22e69f7564d35caed8e3a3c368243837dd29a48679ba20d"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/FINITE_REPLAY.json",
+      "actual_git_blob": "cded981094859c5d52c2acdbab36eaed8ac2a17d",
+      "expected_git_blob": "cded981094859c5d52c2acdbab36eaed8ac2a17d",
+      "match": true,
+      "byte_length": 1516,
+      "sha256": "313da76ded1e510b24cec5ec1ddd6bd4bdf6e9b6f4ac30953c5be15ba62f8e7c"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/LOCAL_FIXTURE_PROVENANCE.json",
+      "actual_git_blob": "e04c8802e9e8326c4dca7b5b91a3e31b6b684018",
+      "expected_git_blob": "e04c8802e9e8326c4dca7b5b91a3e31b6b684018",
+      "match": true,
+      "byte_length": 4928,
+      "sha256": "d4a38edd1fe434cf17284dc59828181e11a46760df6076403ff30866bc474a88"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/REPAIR_PROVENANCE.json",
+      "actual_git_blob": "b87fc4891ec412538fbf83be7504c647b2fe9e46",
+      "expected_git_blob": "b87fc4891ec412538fbf83be7504c647b2fe9e46",
+      "match": true,
+      "byte_length": 3503,
+      "sha256": "2dc30065ad9525f610f8235ad7740b97fddd26114b4c3a4dac44fb250c031972"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/REPRODUCE.md",
+      "actual_git_blob": "0f525b64b4b574a85d8d1b68ec4b46712d93d573",
+      "expected_git_blob": "0f525b64b4b574a85d8d1b68ec4b46712d93d573",
+      "match": true,
+      "byte_length": 4779,
+      "sha256": "d010335245fe80e25b21235a1d7261c19df2c51aef7f959de863d7ba3ebce6dd"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/STRUCTURAL_CHECK.json",
+      "actual_git_blob": "79ccac747a37b6df0964c0068e847496ce82b67d",
+      "expected_git_blob": "79ccac747a37b6df0964c0068e847496ce82b67d",
+      "match": true,
+      "byte_length": 1447,
+      "sha256": "108b958f82d49b4d5499f1d7a6ddc73dde156b25fae18ca0c9bc9d44cbe87f55"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/endpoint-normalization.patch",
+      "actual_git_blob": "e47be78501bcb07584ae5900c1b9087825006010",
+      "expected_git_blob": "e47be78501bcb07584ae5900c1b9087825006010",
+      "match": true,
+      "byte_length": 682,
+      "sha256": "dc801c17aa35ca9fd170db36566d74f0571ed545022f7ef4cd5091061cf8da2c"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/evidence/pr104-package.json",
+      "actual_git_blob": "0dfabe39fdf3affac4afa08bf0795c4327112c2a",
+      "expected_git_blob": "0dfabe39fdf3affac4afa08bf0795c4327112c2a",
+      "match": true,
+      "byte_length": 46680,
+      "sha256": "18dd04e2d9094636bf839662e2e19293f0e2471a7a71c17a0b4c95e0b23173fc"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/original/Agent114ShortRFirst11.wip.lean",
+      "actual_git_blob": "be3d2eb5858401cd6314b19a2d907fbbce5d80af",
+      "expected_git_blob": "be3d2eb5858401cd6314b19a2d907fbbce5d80af",
+      "match": true,
+      "byte_length": 6694,
+      "sha256": "b5712b2051605a0ff95a1f6d8e18927d2aea4c91fbf2e8d38b688205033874cd"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/original/PR_DESCRIPTION.md",
+      "actual_git_blob": "c5f700dc6fce6f78479374d075cc6992dda516da",
+      "expected_git_blob": "c5f700dc6fce6f78479374d075cc6992dda516da",
+      "match": true,
+      "byte_length": 2184,
+      "sha256": "272547ac4c32164f4b5dd10081382e5dadb750a0810cbbfdb0a8a243168470d1"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/original/REPORT.md",
+      "actual_git_blob": "8b632df1e49409d8cbd8fd568855860cc428a9f5",
+      "expected_git_blob": "8b632df1e49409d8cbd8fd568855860cc428a9f5",
+      "match": true,
+      "byte_length": 5554,
+      "sha256": "877701023d31f6ddddcb194a58c312bf53f81a391eca8944e5aefff60a98cfc5"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/reviews/RETAINED_EVIDENCE_REVIEW.md",
+      "actual_git_blob": "6cafdeee09f85161bc37832255b1884ba69638a6",
+      "expected_git_blob": "6cafdeee09f85161bc37832255b1884ba69638a6",
+      "match": true,
+      "byte_length": 12629,
+      "sha256": "f5789a91a4d8d1615129b67d0ddd6dceb770cfb1c60278a57d90252af816d640"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/reviews/WIRING_REVIEW.json",
+      "actual_git_blob": "c2cfd60af26e3d1fb062712763a7e0011ca326b2",
+      "expected_git_blob": "c2cfd60af26e3d1fb062712763a7e0011ca326b2",
+      "match": true,
+      "byte_length": 1301,
+      "sha256": "56324326df2f6b53de887f0b0defc7ec80ab3ffe5a50d3c62fd68326723e34d7"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/integration/reviews/WIRING_REVIEW.md",
+      "actual_git_blob": "185303099c83ff576616a4f887ff4a9ccfd97360",
+      "expected_git_blob": "185303099c83ff576616a4f887ff4a9ccfd97360",
+      "match": true,
+      "byte_length": 3029,
+      "sha256": "b2d6059fd19e65123587207ecd7c82474650c598e40cb78d4d3fa6d6d406b356"
+    },
+    {
+      "path": "proofs/contributions/agent-114/short-r-firsthit-20261016/verify_short_r.py",
+      "actual_git_blob": "3e0f8117e98c8cb196401589d494010fc952cefb",
+      "expected_git_blob": "3e0f8117e98c8cb196401589d494010fc952cefb",
+      "match": true,
+      "byte_length": 3826,
+      "sha256": "eda45fdcf009b14c7ae38762977f0e223e91a74845135ed8f6d4f2f742b2a987"
+    }
+  ],
+  "qualified_evidence_reused": {
+    "integration_review": 5554899000,
+    "independent_repair_review": 5554297272,
+    "independent_evidence_commit": "36f3a58b22c93bef9f6fbc234d9bab8b5ebd43d0",
+    "readiness_commit": "8cfd4d0a389d1796be18424913132488de0cd80d"
+  },
+  "fresh_Lean": "NOT_RUN",
+  "new_mathematical_review": "NOT_RUN",
+  "original_failure": "FAIL_PRESERVED",
+  "interrupted_create_tree": {
+    "tool": "mcp__codex_apps__github_create_tree",
+    "arguments": {
+      "repository_full_name": "taco-jpg/p196-algorithm",
+      "base_tree_sha": "ba552a911841c2f2654cb4481c92e559e42d2a9b",
+      "tree_elements": [
+        {
+          "path": "proofs/contributions/agent-114",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "c5eb7c0de136a5b4bf1b63f28f104d1f93aff6e2"
+        }
+      ]
+    },
+    "response": "aborted by user after 1123.7s",
+    "returned_object": false,
+    "permission_rejection": false,
+    "auto_review_rejection": false,
+    "ambiguous_remote_object_creation": true
+  },
+  "policy_404_then_located": {
+    "missing_path": "PUBLICATION_POLICY.md",
+    "correct_path": "proofs/PUBLICATION_POLICY.md",
+    "correct_blob": "515b507a806c141ea30ac3bfb59200745a8c9e15"
+  },
+  "PR_base_metadata_discrepancy": {
+    "PR_payload_base_sha": "1559b845c69663eda40cdbf63718ab29c570131d",
+    "authoritative_main_ref": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+    "handling": "All combination calculations use the direct main ref and immutable B, not the stale PR payload base SHA."
+  },
+  "next_obligation": "Actual writer/parent may materialize this exact expected tree with create-tree-input.json, read it back nonrecursively, then refresh main/head and platform state before any authorized ordinary merge. Any B or H advance invalidates this fixed combination."
+}
