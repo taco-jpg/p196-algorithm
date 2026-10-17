@@ -133,6 +133,29 @@ def checkSafetyRows {N : Nat} (B : Agent107.FoldedDFA.Encoding.BooleanDFA N)
             (!(B.toDFA.final a c))
   starts && transitions && terminals
 
+/-- Exact universal target: on admissible symmetric words, the monitor's
+terminal rejection predicate agrees with the original two-branch BadWord
+definition. This is a target, not yet a proved theorem. -/
+def monitorBadWordCorrespondence : Prop :=
+  ∀ L (q : Nat → Nat), FoldedDecimal.Admissible L q →
+    (badTerminal
+      (runMonitor (List.ofFn (fun i : Fin (L / 2) => q i.val)))
+      (Agent107.FoldedTransducer.inputCenter L q) = true
+      ↔ FoldedDecimal.BadWord L q)
+
+/-- Exact safety target: finite safety rows plus one-hot transition rows
+exclude BadWord for every accepted original folded prefix. This proposition
+is intentionally left as a target until the reflection and path-induction
+proofs are complete. -/
+def safetyRowsSound : Prop :=
+  ∀ {N : Nat} (B : Agent107.FoldedDFA.Encoding.BooleanDFA N)
+      (raw : Fin N → MonitorState → Bool),
+    checkSafetyRows B raw = true →
+    B.OneHot →
+    ∀ L (q : Nat → Nat), FoldedDecimal.Admissible L q →
+      B.toDFA.accepts (Agent107.FoldedTransducer.foldPrefix L q) →
+      ¬ FoldedDecimal.BadWord L q
+
 end Agent104.DFASafety
 
 #print axioms Agent104.DFASafety.centerCode_none
