@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "本注册表仅覆盖 Agent #107 的 DFA/Horn 任务，不是全仓库成果目录。"
+  ],
+  "toolchain": {
+    "version": "4.19.0",
+    "commit": "6caaee842e94",
+    "required_args": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "project": {
+    "id": "agent107-dfa-horn-closure",
+    "source_baseline": "be8e612ca0694d5d9d8473c784ab1956f93405b6",
+    "branch": "research/agent-107/dfa-horn-closure-20261016T2203Z",
+    "published_source_commit": "97fe2e595793a021f9cc73e3139ea90a3ac5f5e7",
+    "depends_on": {
+      "transducer_commit": "90c639b8a782a9a832bc19f6a6978196e91a3d78",
+      "transducer_pr": "https://github.com/taco-jpg/p196-algorithm/pull/118",
+      "transducer_pr_status": "merged; merge commit 231b1ac8f816760dfbc247b74a371d7b58adbd5b"
+    },
+    "scope": "对原 46 状态、872 边、251 终止行建立有限 Horn 证书到任意长度 DFA 闭包的条件性 Lean 桥接，并忠实连接原 19 符号/11 中心槽 Boolean 编码与真实 reverse-add 数值一步；不声称某个安全语言证书存在，也不解决 196 的无限不回文问题。",
+    "modules": {
+      "Agent107DFA": {
+        "path": "proofs/Agent107DFA.lean",
+        "git_blob": "80886bfb2a9ac9fb579a609132e4c1212d355164",
+        "imports": [
+          "Agent107TransducerGraph"
+        ]
+      },
+      "Agent107DFAHorn": {
+        "path": "proofs/Agent107DFAHorn.lean",
+        "git_blob": "01b9d2cbe417d90c5879ac1f378fba65627866c0",
+        "imports": [
+          "Agent107DFA"
+        ]
+      },
+      "Agent107DFAChecker": {
+        "path": "proofs/Agent107DFAChecker.lean",
+        "git_blob": "941bf379c7798398bf82c66cce3dcb88828c17f7",
+        "imports": [
+          "Agent107DFA"
+        ]
+      },
+      "Agent107DFAAlphabet": {
+        "path": "proofs/Agent107DFAAlphabet.lean",
+        "git_blob": "e526b3b7ecda09cf804575a4c394c210a479fc0c",
+        "imports": [
+          "Agent107DFA"
+        ]
+      },
+      "Agent107DFABoolean": {
+        "path": "proofs/Agent107DFABoolean.lean",
+        "git_blob": "af2df3da241c01b66317869dee1c26ad7b2f9b03",
+        "imports": [
+          "Agent107DFAAlphabet",
+          "Agent107DFAChecker"
+        ]
+      },
+      "Agent107DFARelation": {
+        "path": "proofs/Agent107DFARelation.lean",
+        "git_blob": "c5df077e095550189168b1452796a5679ed92405",
+        "imports": [
+          "Agent107DFA"
+        ]
+      },
+      "Agent107DFAArithmetic": {
+        "path": "proofs/Agent107DFAArithmetic.lean",
+        "git_blob": "43c3d7978c716898e5e35643b51a05f6ad2f81a4",
+        "imports": [
+          "Agent107DFAHorn"
+        ]
+      }
+    },
+    "endpoints": [
+      "Agent107.FoldedDFA.horn_prefix_invariant",
+      "Agent107.FoldedDFA.horn_accepting_output",
+      "Agent107.FoldedDFA.checkHorn_iff",
+      "Agent107.FoldedDFA.Encoding.checkOneHot_iff",
+      "Agent107.FoldedDFA.Encoding.BooleanDFA.transition_iff",
+      "Agent107.FoldedDFA.Encoding.stateIndex?_stateAt",
+      "Agent107.FoldedDFA.Encoding.liftRelation_stateAt",
+      "Agent107.FoldedDFA.horn_next_closed",
+      "Agent107.FoldedDFA.horn_canonical_step"
+    ],
+    "author_verification": {
+      "status": "LEAN-CHECKED",
+      "detail": "All seven module author snapshots compiled under official Lean 4.19.0 with --trust=0 -j1 -DElab.async=false; module-origin audit logs and failed attempts are preserved in proofs/contributions/agent-107/dfa-horn-closure-20261016/author/.",
+      "note": "Agent107DFARelation uses Classical.choice in its finite-list index reflection proofs; this is allowed and explicitly reported."
+    },
+    "independent_verification": {
+      "status": "REPORTED_PASS_EVIDENCE_RECONCILIATION_PENDING",
+      "detail": "The active session reported an independent clean rebuild of the 20-module source closure and theorem-origin audit: 1,445 theorem constants total, including 128 from the seven new modules, with theorem-axiom union limited to propext, Quot.sound, Classical.choice. The corresponding independent raw log bundle is not yet present in the published task directory; do not treat this registry entry alone as the audit evidence."
+    },
+    "canonical_verifier": {
+      "status": "PENDING_EXACT_FINAL_COMMIT",
+      "note": "The original repository verifier has not been rerun on the final DFA/Horn publication commit. Current execution container has no retained Lean 4.19.0 binary/runtime; prior author logs remain available in the branch. Do not infer a canonical-verifier pass from the independent theorem rebuild."
+    },
+    "integration": {
+      "main_write_slot": false,
+      "accepted_global_registry_modified": false,
+      "pr118_merged": true
+    }
+  }
+}

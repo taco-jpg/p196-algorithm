@@ -4,8 +4,8 @@
   "owner": "Agent #9",
   "session": "b2e768ea994e",
   "role": "INTEGRATION",
-  "status": "REVIEWING",
-  "active_editing": true,
+  "status": "EXTERNALLY_BLOCKED",
+  "active_editing": false,
   "selected_pr": 177,
   "source_head": "6f48ca108dee4c07588f8c5582bcfef55388537f",
   "source_branch": "research/agent-107/dfa-horn-closure-20261016T2203Z",
@@ -48,10 +48,11 @@
     "executor_archive": {
       "transport_commit": "ca3cd5e677ff6c600240ff19920b55033c351c28",
       "path": "proofs/coordination/reviews/agent1-session7efd-pr177/final/",
-      "archive_sha256": "0c26796c36c7d1dc46bc2c10a9ae5f2f4385849cc3fe9cb14056dd0345afe927"
+      "archive_sha256": "0c26796c36c7d1dc46bc2c10a9ae5f2f4385849cc3fe9cb14056dd0345afe927",
+      "final_commit": "7cd14450ac9509f9bb2e54ca342afc93dbed38cb"
     }
   },
-  "next_required_action": "Read back final publication;submit actual exact-H review;reconcile PR verification metadata/readiness;obtain active source-owner checkpoint for one-string registry correction and authorized main-writer execution.",
+  "next_required_action": "Agent107 applies the exact prepared one-string registry correction or acknowledges Agent9's narrow one-file checkpoint; rebind the resulting metadata delta; then Agent31 executes after serialized current-base checks or acknowledges an exact main handoff. Reuse unchanged qualifying proof/review evidence.",
   "merge_commit": null,
   "chat_language": "Russian",
   "deliverable_language": "English",
@@ -64,21 +65,22 @@
     "Reuse qualifying unchanged evidence; record concrete new coverage only.",
     "Preserve all failures and unknowns; do not infer writer abandonment from silence."
   ],
-  "updated_at": "2026-10-17T05:42:34.824Z",
+  "updated_at": "2026-10-17T06:00:04.526Z",
   "independent_semantic_review": {
     "status": "SEMANTIC_REVIEW_PASS",
     "reviewer": "/root/pr177_semantic_review",
     "report_sha256": "8134235a5696213372c4c57375edd8ed45b488dae7501f761dd08faa669f4b55",
-    "publication": "PUBLISHED_WITH_THIS_COMMIT"
+    "publication": "9c24e93971d589f077b3c1ebbf02e6bb2a4ec3aa"
   },
   "verification_handoff": {
     "status": "ACKNOWLEDGED",
     "reference": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6229987085",
-    "scope": "Agent1 owns verification/evidence;Agent9 owns remaining delivery;source Agent107/main Agent31 unchanged"
+    "scope": "Agent1 owns verification/evidence;Agent9 owns remaining delivery;source Agent107/main Agent31 unchanged",
+    "final_receipt": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230254242",
+    "accepted_final_receipt": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230384348"
   },
   "pending_repairs": [
-    "Apply exact prepared author-registry namespace correction through Agent107 or acknowledged source checkpoint.",
-    "Update PR verification metadata to reference published reviewed verifier/reproduction evidence."
+    "Apply exact prepared author-registry namespace correction through Agent107 or an acknowledged narrow source checkpoint."
   ],
   "independent_evidence_review": {
     "status": "PASS;SUPPLEMENT_002_PASS;PRESERVATION_PASS_WITH_HISTORICAL_MANIFEST_CAVEAT",
@@ -95,7 +97,8 @@
     "decoded_bytes": 1862090,
     "member_count": 155,
     "manifest": "ARCHIVE_MANIFEST.json",
-    "status": "PUBLISHED_WITH_THIS_COMMIT"
+    "status": "PUBLISHED_AND_READ_BACK",
+    "commit": "9c24e93971d589f077b3c1ebbf02e6bb2a4ec3aa"
   },
   "evidence_checkpoint_002": {
     "prefix": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/",
@@ -106,7 +109,8 @@
     "decoded_bytes": 14853395,
     "member_count": 441,
     "manifest": "ARCHIVE_MANIFEST_002.json",
-    "status": "PUBLISHED_WITH_THIS_COMMIT"
+    "status": "PUBLISHED_AND_BYTE_EXACT_REMOTE_READ_BACK",
+    "commit": "d0f96e1a668c16dfe393494ec9530c88d1eb24af"
   },
   "historical_publication_gap": {
     "path": "run_supplement.py early draft",
@@ -114,6 +118,95 @@
     "sha256": "7b195d686863dde8b7b9e7fe281614e2a67579cc4c26062a89a52f405dd8dc70",
     "status": "NOT_RECOVERED_IN_BOUNDED_SEARCH;actually executed v1/v2 and all four attempt records retained",
     "owner": "Agent #1",
-    "not_a_missing_executed_program": true
+    "not_a_missing_executed_program": true,
+    "exact_recovery_request": "https://github.com/taco-jpg/p196-algorithm/pull/177#issuecomment-6230352048"
+  },
+  "delivery_ownership_retained": true,
+  "readiness": {
+    "status": "READY_FOR_REVIEW_ACTUALLY_PERFORMED",
+    "actor": "Agent #9/sessionb2e768ea994e",
+    "operation": "mark_pull_request_ready_for_review",
+    "action_updated_at": "2026-10-17T05:47:16Z",
+    "actual_draft": false,
+    "actual_state": "open",
+    "actual_merged": false,
+    "observed_at": "2026-10-17 05:56:47 UTC",
+    "source_head": "6f48ca108dee4c07588f8c5582bcfef55388537f",
+    "base_head": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+    "readback_evidence": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/READINESS_RECEIPT.json",
+    "ready_is_not_merge_or_main_ownership": true
+  },
+  "pr_metadata_repair": {
+    "status": "COMPLETED_AND_READ_BACK",
+    "description_matches": true,
+    "source_branch_changed": false,
+    "original_description_preserved_in": "evidence-checkpoint-002.tar.gz",
+    "current_description": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/PR_DESCRIPTION_AFTER.md"
+  },
+  "formal_review": {
+    "status": "REUSED_ELIGIBLE_EXACT_HEAD_COMMENT",
+    "id": 5556453802,
+    "url": "https://github.com/taco-jpg/p196-algorithm/pull/177#pullrequestreview-5556453802",
+    "commit_id": "6f48ca108dee4c07588f8c5582bcfef55388537f",
+    "agent9_submitted_duplicate_review": false
+  },
+  "source_checkpoint": {
+    "status": "REQUESTED_NOT_ACKNOWLEDGED",
+    "owner": "Agent #107",
+    "task_blob": "78c58fb2695a3ea3299998cfe9337b4d7c5f4090",
+    "request": "https://github.com/taco-jpg/p196-algorithm/pull/177#issuecomment-6230352048",
+    "path": "proofs/Agent107DFAHorn.registry.json",
+    "patch_sha256": "8dcca936bb19e050e2e8d5cabe7690350e372c4282b8445af068784338fcd229",
+    "patch": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/registry-endpoint.patch",
+    "source_write_claim": false
+  },
+  "main_handoff": {
+    "status": "REQUESTED_NOT_ACKNOWLEDGED",
+    "owner": "Agent #31/session02893e4f368d",
+    "role_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+    "active_task_pr": 104,
+    "request": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230384348",
+    "main_write_slot": false,
+    "automatic_expiry_inferred": false
+  },
+  "revisit_triggers": [
+    "Source-registry correction published",
+    "Explicit narrow source checkpoint acknowledged",
+    "Source head or actual main base changes",
+    "Applicable check or material finding changes",
+    "Current main writer executes or acknowledges exact handoff"
+  ],
+  "final_delivery_packet": {
+    "status": "PUBLISHED_WITH_THIS_TASK_COMMIT",
+    "prefix": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/",
+    "report": "READINESS_AND_HANDOFF.md",
+    "receipt": "READINESS_RECEIPT.json",
+    "manifest": "PACKET_MANIFEST_003.json",
+    "proof_scope": "Generic conditional finite DFA/Horn certificate; no concrete safe instance and no all-time 196 result."
+  },
+  "bounded_queue_continuation": {
+    "status": "CHECKED_CANDIDATES_NOW_DELIVERY_OWNED",
+    "previous_candidates": [
+      173,
+      174,
+      175,
+      170,
+      171,
+      161,
+      167
+    ],
+    "preserved_owners": {
+      "161": "Agent #7/sessionb465a4701a3e",
+      "167": "Agent #15/sessionc0bb09a3002b",
+      "170": "Agent #2/sessionacfe54025bfc",
+      "171": "Agent #18/sessionc6d78d258d21",
+      "173": "Agent #6/session01c8ccabdd45",
+      "174": "Agent #5/sessiond4d5258160f7",
+      "175": "Agent #17/session5c8090a7d7e5"
+    },
+    "latest_evidence": "proofs/coordination/reviews/agent9-sessionb2e768ea994e/pr177/queue-availability-refresh.json",
+    "new_claim": false,
+    "duplicate_review_or_build": false,
+    "queue_wide_processed_claim": false
   }
 }

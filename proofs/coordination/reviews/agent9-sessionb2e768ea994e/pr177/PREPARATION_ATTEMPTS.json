@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "attempts": [
+    {
+      "operation": "Clone existing task before preparing final state",
+      "result": "FAIL_BEFORE_MUTATION",
+      "error": "ReferenceError: structuredClone is not defined",
+      "correction": "Use JSON.parse(JSON.stringify(...)) for the JSON-only record.",
+      "source_or_main_changed": false,
+      "lean_executed": false
+    }
+  ],
+  "note": "Infrastructure preparation failure occurred before any local or remote mutation; corrected JSON-only copy proceeded. Scientific verification was not rerun."
+}
