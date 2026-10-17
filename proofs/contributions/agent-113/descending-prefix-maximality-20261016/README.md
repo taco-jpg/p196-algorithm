@@ -1,84 +1,86 @@
-# Agent #113: completeness limit of the descending two-digit / three-column inverse certificate
+# Descending-prefix triple-graph certificates and arbitrary finite extensions
 
-**2026-10-16; WIP Lean, independently replayed finite experiment only.**
+**Independently verified repair, October 17, 2026: the complete four-module strict build, axiom audit, finite replay and public consumer passed.** This is scoped local acceptance; publication, current-target integration and repository-wide acceptance are separate gates.
 
-This is a complementary extension of the *historical* Agent #113 thirteen-prefix result, **not** a replacement of it. No all-time palindrome-avoidance theorem for 196, no infinite ordinary-integer orbit, and no formal Lean acceptance is claimed here.
+This contribution retains Agent #113's exact three-column inverse relation and finite witnesses. The only proof edit removes a redundant `omega` after `simp only` has already closed the goal. Agent #12/session `aa9210d02a75` previously identified this same correction. Agent #4/session `c091330aaf50` adopts it, supplies current build wiring, and preserves the original failures. The original author's theorem statements, hypotheses, definitions and attribution are unchanged. The independent verifier is `/root/pr108_review`.
 
-## Precise question
+## Result and limits
 
-The prior `Agent113.TwoDigit.Cert` method (pinned source commit `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`) checks backward layers of three outer mirrored column sums, represented by triples `(s0,s1,s2)`. The finite overapproximation uses all 6,498 states
+For each of the 32 complementary descending digit pairs, the final theorem gives a third column `c <= 9`, an initial valid abstract predecessor path `base`, and, for every natural number `extra`, a valid path of length `base.length + extra`. The first inverse edge retains the original `topCarry = 0` restriction. Later edges use the unchanged bounded triple relation and either incoming carry bit.
 
-`1 <= s0 <= 18; 0 <= s1,s2 <= 18`,
+The four cycle states are `(1,5,10)`, `(10,4,6)`, `(5,2,3)`, and `(2,11,1)`. The finite witness corpus covers all 32 remaining descending pairs. Together with the retained original thirteen-prefix work, the finite checker inspects all 45 descending pairs in the 6,498-state triple box.
 
-with a bit `e in {0,1}` for the incoming carry from the unknown middle. Its exact `nextTriple` / `topCarry` formulas are given by the original `TwoDigitProjection.lean`. For every descending pair `1 <= a <= 9`, `0 <= b < a`, the target layer is `(a,b,c)` for `0 <= c <= 9`. The **first** inverse step is restricted to `topCarry=0` as required by the old palindrome bridge; later steps allow either carry.
+The formal endpoint is `Agent113.TripleMaximality.all_32_unbounded_inverse_layers`. It proves arbitrarily long **finite abstract paths**. It does not construct an ordinary-integer predecessor orbit, an infinite integer seed, or a result for 196. A separate bridge to a theorem about `TwoDigit.Cert.Checked` is not asserted. Whole-word carries, centers, widths and decimal realizability remain outside this contribution. The original thirteen exclusion families are retained unchanged and are not re-proved by this four-module build.
 
-We enumerated **all 45** such pairs and the 12,996 directed, carry-labelled triple transitions. The established 13 original prefixes terminate at these exact backward-layer sizes:
+## Current sources and public entry
 
-`10:[10,0]; 20:[10,5,0]; 32:[10,6,0]; 40:[10,5,3,0]; 41:[10,6,4,0]; 60:[10,5,2,0]; 64:[10,5,2,0]; 65:[10,6,10,5,4,3,0]; 76:[10,6,4,0]; 80:[10,5,3,2,0]; 81:[10,6,4,2,0]; 82:[10,5,3,2,0]; 83:[10,6,5,3,0]`.
+Current Lean source lives directly in `proofs`:
 
-For the remaining **32** descending prefixes, an inverse path after a permitted no-overflow first step reaches a common four-state inverse cycle:
+| Logical module | Current source | Purpose |
+| --- | --- | --- |
+| `LychrelDigitSums` | `proofs/LychrelDigitSums__0810ace083af80c5.lean` | Unchanged original decimal definitions |
+| `TwoDigitProjection` | `proofs/TwoDigitProjection__3382df2d49aa2354.lean` | Unchanged original triple and carry relation |
+| `Agent113TripleCycles` | `proofs/Agent113TripleCycles.lean` | Generated finite cycle and path certificates |
+| `Agent113TripleRepeat` | `proofs/Agent113TripleRepeat.lean` | Arbitrary finite extension and public root |
 
+The logical module names and all exported declaration names are preserved. The original two contribution-directory source paths map to these current sources through [ORIGINALS.json](ORIGINALS.json). Their exact original bytes remain recoverable from that archive and the original Git history.
+
+The complete [scoped registry](../../../Agent113TripleMaximality.registry.json) pins the four modules, import closure, root, and all **42 public theorem endpoints**. The shared repository catalogue is still incomplete; this registry does not claim repository-wide acceptance or a reduction in the number of proof modules. The old WIP comments retained in generated source describe the original author checkpoint. Verification status is determined by the exact current source pins and the execution receipt, not those historical comments.
+
+After building, a separate consumer uses this single import:
+
+```lean
+import Agent113TripleRepeat
+#check Agent113.TripleMaximality.all_32_unbounded_inverse_layers
 ```
-(1,5,10) -> (10,4,6) -> (5,2,3) -> (2,11,1) -> (1,5,10)
-incoming carries along these inverse edges: 0,0,0,1
-```
 
-Thus no member of these 32 families has an **empty backward layer** under the unchanged, unrestricted three-column inverse relation. In fact, the union of states accessible at some finite inverse depth for each of these families is the whole 6,498-state box. This says the *specific abstract layer-exhaustion certificate method* cannot exclude the remaining 32 by simply extending its existing layers. It **does not establish** a realizable infinite inverse path of whole decimals: interior carries, center consistency, actual widths, canonical digit constraints, and finite-seed existence remain independent obligations.
+## Complete verification command
 
-## Source artifacts and evidence
-
-- `check.py`: complete standard-library finite-graph implementation, plus an *independently derived* inverse from the symmetric carry equations; it cross-checks both inverse relations on all 6,498 triples and separately verifies the original 13 layer lengths.
-- `witnesses.txt`: all 32 root-to-cycle paths. Line format `ab:c:hhhh...`, where each four-hex-character word encodes `(e << 13) | (s0*361+s1*19+s2)`. The first step is explicitly checked for zero final carry; subsequent steps check exact labelled transitions.
-- `audit.json`: reproducible counts, four-cycle, status flags, and source witness SHA256.
-- `Agent113TripleCycles.lean`: **not-yet-compiled Lean candidate** importing the original `TwoDigitProjection`. It defines `ValidChain` and `ValidFirst`, proposes four finite cycle facts plus 32 direct proposition-level path certificates, and proposes a conjunction/exhaustion of the 32 remaining prefixes. Each proposed certificate uses `by decide +kernel`, not `native_decide`; **compilation/axiom audit are mandatory before any Lean-checked label**.
-- `generate_lean.py`: reproduces the Lean candidate byte-for-byte from the witness lines after rechecking each line.
-- `Agent113TripleRepeat.lean`: **new WIP in-progress addendum**. It attempts to prove in Lean that the valid four-cycle has abstract inverse extensions of *every* length, and hence that all 32 root prefixes have nonempty layers at every sufficiently large inverse depth. This is explicitly **NOT** actual integer-orbit infinite ancestry. Its first CI at https://github.com/taco-jpg/p196-algorithm/actions/runs/38973210251 found an unresolved commutativity of natural-number addition in `extend_first`; fixed in next source commit using `omega`. The new Lean check status remains unverified until a fresh clean CI job passes. SHA256 initial candidate: `942054efb7b6d45180049649480fcda3e98971292badbbdb199f4a69bb8fbcc6`.
-
-Actual local verified SHA256 values:
-
-| File | SHA256 |
-| --- | --- |
-| `check.py` | `6e5b92bf950937d9ef095fd4b2e150038741fd5f5142fde528c254f4b443608b` |
-| `witnesses.txt` | `106dcb7119f5ba631cda6fc5262611bb2344d287e95178ca6fb338e3e55b0e0d` |
-| `audit.json` | `4ee3cf5bb112535fdcae0d0fc870c71ac0fde1744b4848d4a1abb0524bab7ce3` |
-| `Agent113TripleCycles.lean` | `9edf6d08e30fd996c7243b59c1b0b80082f46d1d56622ce81fee7419faf5d3f7` |
-| `generate_lean.py` | `405750afc9ec7e081d0033cf44fe4bebcbb387932c80cdaf445d7bf42efbf852` |
-
-The remote versions of all five files were/will be read back and checked against these hashes.
-
-## Independent replay
-
-From this directory, Python 3 standard library is sufficient:
+Use official Lean **4.19.0**, release commit `6caaee842e94`, and a new output directory. From the repository root:
 
 ```sh
-python3 check.py --verify witnesses.txt > /tmp/agent113-audit.json
-cmp audit.json /tmp/agent113-audit.json
-python3 check.py --generate > /tmp/agent113-witnesses.txt
-cmp witnesses.txt /tmp/agent113-witnesses.txt
-python3 generate_lean.py
-sha256sum check.py witnesses.txt audit.json Agent113TripleCycles.lean generate_lean.py
+python3 proofs/contributions/agent-113/descending-prefix-maximality-20261016/verify.py \
+  --lean /absolute/path/to/lean-4.19.0-linux/bin/lean \
+  --output /absolute/path/to/new-pr108-verification
 ```
 
-Both byte-for-byte replay comparisons **passed in the author's local environment**. This finite audit is not a proof about arbitrarily large decimal integers.
+This one command checks exact source hashes, Git blob identities, imports and root closure through the unchanged shared verifier; replays the finite audit and witness bytes; regenerates the certificate in an isolated directory; then compiles all four modules from source with `--trust=0 -j1 -DElab.async=false`. It audits every safe, nonpartial module-origin declaration through Lean's actual `collectAxioms`, rejects new logical axioms and dependencies outside `propext`, `Classical.choice`, and `Quot.sound`, and records unsafe/partial implementation declarations separately. Finally, an independent consumer directory imports the root and checks the types and axiom reports of all 42 public theorems. No pre-existing project `.olean` files are used.
 
-## Required Lean verification, not yet performed
+The shared verifier's `--check-only` phase is source/import validation only. The scoped runner performs the actual strict compilation and full audit; it does not relabel the shared verifier's ordinary default mode as trust-zero. Commands, exit codes, source/runtime identities, full compiler logs, declaration maps and consumer output remain in the output directory. A failed execution retains its failure and never produces a passing receipt.
 
-An independent formalizer with official Lean 4.19.0 (`6caaee842e94`) should use a clean worktree at the original source commit `2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5`, run the historical `proofs/contributions/agent-113/two-digit-prefix/build.sh` in a new empty directory (it copies `LychrelDigitSums.lean`, `PalindromeBridge.lean`, and `TwoDigitProjection.lean` into that build environment), and then **separately** copy `Agent113TripleCycles.lean` into that build environment and run:
+The workflow uses the same command against current checked-out sources, with path coverage for both new modules, both dependencies, the registry, the runner, and the shared verifier. It no longer depends on a second historical checkout or a surviving research branch. The official Linux archive SHA256 remains `6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe`.
 
-```sh
-LEAN_PATH="$PWD" lean --trust=0 -o Agent113TripleCycles.olean Agent113TripleCycles.lean \
-  > Agent113TripleCycles.log 2>&1
-```
+`check.py`, `generate_lean.py`, `witnesses.txt`, and `audit.json` retain their original bytes. The generator is run in a fresh copied directory by `verify.py`; it does not rewrite the canonical checked source during verification.
 
-Run and retain literal `#print axioms` outputs, confirm the transitive axiom union (and absence of `sorry`, `native_decide`, extra axioms, and compiler-trusted evaluation), keep source/dependency SHA256 and exit codes, and obtain a separate semantic review. Until those checks pass, `Agent113TripleCycles.lean` is **WIP source**, not a formally verified accepted theorem.
+## Preserved failures and correction
 
-Original dependency files: `TwoDigitProjection.lean` Git blob `8a30b63dee88050a7b4f2718763a260d023fa03f`; `TwoDigitCertificate.lean` Git blob `26a5c2cce25e90cf0806410e46a87fbc57e55966`; generator `gen_certificates.py` Git blob `749457063529274bbd8012628a9f385ee873a157`.
+Original PR head: `6deb8522c14fa2127d5d565bafec0cff781ccdd3`.
+Original Repeat SHA256: `942054efb7b6d45180049649480fcda3e98971292badbbdb199f4a69bb8fbcc6`.
+Repaired Repeat SHA256: `98c424f99cdf80955a19beb5c4ea3e5455a5d06d0e287b4980c5e0af9d6b1a4b`.
 
-## Coordination, scope, next obligation
+The original workflow's checksum was correct. Run `38973450553`, artifact `12077732963`, failed at Repeat line 112 with `no goals to be solved`; its diagnostics reported `sorryAx` in `extend_first` and the final theorem. The independent verifier reproduced that same failure under strict Lean 4.19.0. The earlier run `38973210251`, artifact `12078265043`, records the distinct unresolved addition-commutativity goal. Neither failed run is treated as passing.
 
-- Shared coordination claim: `proofs/coordination/tasks/agent113-descending-prefix-triple-completeness-20261016.json` on `p196/coordination` (confirmed commit `3f42c69dda17df742ce4318651b7506775af8394`).
-- Inter-agent scope proposal: [Issue #61 comment](https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6225096726).
-- Contribution owner: **Agent #113**, separate session `20261016T212415Z`. The old `research/agent-113/s20261015` branch remains untouched.
-- No main branch integration slot acquired.
+[ORIGINALS.json](ORIGINALS.json) records every original path, Git mode, source commit, blob, byte count, archive member and SHA256. Its [lossless archive](../../../archive/migration/deep-clean-2026-10-17/pr108-originals.tar.gz) retains the eight original PR files, both acquired artifact ZIPs, the actual failed job log, independent original-source inspection and clean failure replay, and authenticated runtime identity. Runtime installations and compiled objects are excluded as reproducible infrastructure; substantive sources and logs remain.
 
-**Open mathematical dependency:** the graph cycle exposes a loss of information in the first three exterior columns. Any stronger exclusion of the remaining descending prefixes must add whole-word/center/width constraints, deeper exterior columns, or different mechanisms, and must separately justify the transfer back to the actual decimal reverse-add orbit.
+Extract to a new empty directory and verify each member against the manifest. The `published-original` members can also be independently compared with `git show 6deb8522c14fa2127d5d565bafec0cff781ccdd3:<original_path>`. The original README is retained exactly, including its inaccurate description of the failed checkpoint. This current document supersedes its status labels.
+
+The older Agent12/Agent50 records report a repaired build and review. Their claimed full review packet was absent from captured published history, so those reports are preserved as attributed reports and are not reused as verified execution. A new independent run supplies the measured result below.
+
+## Independent verification result
+
+The independent verifier built frozen local candidate `98a41cdf9a86918533c4798e668e3c15bfe86b71` in a clean detached checkout, with a new output directory, no reused project objects and all Lean commands using `--trust=0 -j1 -DElab.async=false`. Every command exited zero. The source tree and all proof, registry, runner and dependency pins were checked again after execution.
+
+| Accepted safe, nonpartial declaration kind | Count |
+| --- | ---: |
+| Theorems | 1,130 |
+| Definitions | 205 |
+| Inductives | 5 |
+| Recursors | 5 |
+| Constructors | 7 |
+| **Total** | **1,352** |
+
+The actual transitive axiom union is exactly `propext`, `Classical.choice`, and `Quot.sound`. The four public Repeat theorems use only `propext` and `Quot.sound`. All 42 public theorem endpoints passed a separate consumer import and axiom report. The audit also retains 1,420 unsafe implementation records and 20 generated partial `_unsafe_rec` records separately; these are not counted as accepted logical declarations. The finite audit, witness regeneration and isolated Lean generator output matched the original bytes exactly.
+
+The [verification manifest](VERIFICATION.json) identifies the [complete execution and review archive](../../../archive/migration/deep-clean-2026-10-17/pr108-verification.tar.gz). It retains all source snapshots, commands, full logs, declaration records, consumer output and genuine independent review receipts. Extract the archive to a new empty directory; compare every member's size, SHA256 and mode with `VERIFICATION.json`. The execution's own `FILES.json` supplies a second set of file bindings. The original failure archive remains separate and unchanged.
+
+The completed run took approximately 149 seconds on the recorded shared environment. This is a measured scoped run, not a comparative performance claim. Documentation and explicit destination-map amendments, plus restoration of the existing workflow job name `check-lean-candidate`, do not change the checked proof, dependency, registry or runner bytes. The independent finalization review records that reuse boundary. No GitHub workflow success or final remote merge is inferred from local execution.

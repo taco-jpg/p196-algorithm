@@ -109,7 +109,6 @@ theorem extend_first (a b c : Nat) (steps : List InvStep) (k : Nat)
       obtain ⟨tail, hlen, hgood⟩ := extend_chain (a,b,c) (s :: rest) k hpath
       refine ⟨(s :: rest) ++ tail, ?_, ?_⟩
       · simp only [List.length_append, List.length_cons, hlen]
-        omega
       · change Agent113.TwoDigit.topCarry s.s0 s.s1 s.s2 s.e = 0 ∧
           ValidChain (a,b,c) ((s :: rest) ++ tail)
         exact ⟨htop, hgood⟩

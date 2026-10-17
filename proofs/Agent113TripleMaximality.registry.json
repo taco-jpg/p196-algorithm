@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "toolchain": {
+    "version": "Lean 4.19.0",
+    "release_commit": "6caaee842e9495688c1567e78c0e68dbb96942aa",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "strict_runner_arguments": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ]
+  },
+  "catalogue_complete": false,
+  "catalogue_blockers": [
+    "This registry covers the complete four-module PR108 contribution only; the global accepted catalogue remains a separate campaign obligation."
+  ],
+  "projects": {
+    "agent113-triple-maximality": {
+      "scope": "All 32 complementary descending prefixes have first-edge-no-overflow abstract three-column predecessor paths of arbitrarily large exact depths. This is an incompleteness result for the finite abstraction, not ordinary integer orbit realizability or a 196 result.",
+      "roots": [
+        "Agent113TripleRepeat"
+      ],
+      "modules": {
+        "LychrelDigitSums": {
+          "path": "proofs/LychrelDigitSums__0810ace083af80c5.lean",
+          "sha256": "ca5f46523b7cff02c00918b6466a97963087b499fb5f184232b8b3d806dc0b57",
+          "git_blob": "8a865176625283648a8a20dd2411ed77670eb0a2",
+          "imports": [
+            "Std"
+          ]
+        },
+        "TwoDigitProjection": {
+          "path": "proofs/TwoDigitProjection__3382df2d49aa2354.lean",
+          "sha256": "712e7df580b6cfc455aa159ba844487189984f54c738353984820f24bd8ed279",
+          "git_blob": "8a30b63dee88050a7b4f2718763a260d023fa03f",
+          "imports": [
+            "LychrelDigitSums"
+          ]
+        },
+        "Agent113TripleCycles": {
+          "path": "proofs/Agent113TripleCycles.lean",
+          "sha256": "9edf6d08e30fd996c7243b59c1b0b80082f46d1d56622ce81fee7419faf5d3f7",
+          "git_blob": "e9984fb13efae8fcec7048f883e6f2f4ea752deb",
+          "imports": [
+            "TwoDigitProjection"
+          ]
+        },
+        "Agent113TripleRepeat": {
+          "path": "proofs/Agent113TripleRepeat.lean",
+          "sha256": "98c424f99cdf80955a19beb5c4ea3e5455a5d06d0e287b4980c5e0af9d6b1a4b",
+          "git_blob": "69b741f17485a9942eea39473d689bf645877495",
+          "imports": [
+            "Agent113TripleCycles"
+          ]
+        }
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "agent113-triple-maximality-PR108",
+      "project": "agent113-triple-maximality",
+      "classification": "Abstract finite-state inverse-path certificates and unbounded finite extension theorem; no ordinary-integer witness.",
+      "endpoints": [
+        "Agent113.TripleMaximality.cycle01",
+        "Agent113.TripleMaximality.cycle12",
+        "Agent113.TripleMaximality.cycle23",
+        "Agent113.TripleMaximality.cycle30",
+        "Agent113.TripleMaximality.path21_valid",
+        "Agent113.TripleMaximality.path30_valid",
+        "Agent113.TripleMaximality.path31_valid",
+        "Agent113.TripleMaximality.path42_valid",
+        "Agent113.TripleMaximality.path43_valid",
+        "Agent113.TripleMaximality.path50_valid",
+        "Agent113.TripleMaximality.path51_valid",
+        "Agent113.TripleMaximality.path52_valid",
+        "Agent113.TripleMaximality.path53_valid",
+        "Agent113.TripleMaximality.path54_valid",
+        "Agent113.TripleMaximality.path61_valid",
+        "Agent113.TripleMaximality.path62_valid",
+        "Agent113.TripleMaximality.path63_valid",
+        "Agent113.TripleMaximality.path70_valid",
+        "Agent113.TripleMaximality.path71_valid",
+        "Agent113.TripleMaximality.path72_valid",
+        "Agent113.TripleMaximality.path73_valid",
+        "Agent113.TripleMaximality.path74_valid",
+        "Agent113.TripleMaximality.path75_valid",
+        "Agent113.TripleMaximality.path84_valid",
+        "Agent113.TripleMaximality.path85_valid",
+        "Agent113.TripleMaximality.path86_valid",
+        "Agent113.TripleMaximality.path87_valid",
+        "Agent113.TripleMaximality.path90_valid",
+        "Agent113.TripleMaximality.path91_valid",
+        "Agent113.TripleMaximality.path92_valid",
+        "Agent113.TripleMaximality.path93_valid",
+        "Agent113.TripleMaximality.path94_valid",
+        "Agent113.TripleMaximality.path95_valid",
+        "Agent113.TripleMaximality.path96_valid",
+        "Agent113.TripleMaximality.path97_valid",
+        "Agent113.TripleMaximality.path98_valid",
+        "Agent113.TripleMaximality.cover_descending_45",
+        "Agent113.TripleMaximality.remaining32_path_exists",
+        "Agent113.TripleMaximality.cycle_unbounded",
+        "Agent113.TripleMaximality.extend_chain",
+        "Agent113.TripleMaximality.extend_first",
+        "Agent113.TripleMaximality.all_32_unbounded_inverse_layers"
+      ]
+    }
+  ],
+  "replay_inputs": {
+    "check.py": "6e5b92bf950937d9ef095fd4b2e150038741fd5f5142fde528c254f4b443608b",
+    "generate_lean.py": "405750afc9ec7e081d0033cf44fe4bebcbb387932c80cdaf445d7bf42efbf852",
+    "witnesses.txt": "106dcb7119f5ba631cda6fc5262611bb2344d287e95178ca6fb338e3e55b0e0d",
+    "audit.json": "4ee3cf5bb112535fdcae0d0fc870c71ac0fde1744b4848d4a1abb0524bab7ce3"
+  },
+  "provenance": {
+    "source_head": "6deb8522c14fa2127d5d565bafec0cff781ccdd3",
+    "original_dependency_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+    "source_author": "Agent #113 / 20261016T212415Z",
+    "prior_repair_author": "Agent #12 / aa9210d02a75 (recorded same one-line repair; unpublished reported execution not reused)",
+    "adoption_and_build_wiring": "Agent #4 / c091330aaf50",
+    "independent_verifier": "/root/pr108_review",
+    "originals_manifest": "proofs/contributions/agent-113/descending-prefix-maximality-20261016/ORIGINALS.json",
+    "canonical_verifier": "proofs/verify_project__214bf7673efe116b.py",
+    "canonical_verifier_sha256": "c047ff1ff1fe12b2c2094ca5f36af871b1c6faf89db593a102f9c2f7d48cc98a",
+    "canonical_verifier_scope": "Unchanged shared verifier is used for source/import-only preflight. The scoped verify.py executes all actual Lean commands with explicit trust zero and audits every safe module-origin declaration.",
+    "source_relocation": "The two new modules retain logical module and declaration names under proofs directly; all original paths/bytes are archived and their original Git history remains retained."
+  }
+}
