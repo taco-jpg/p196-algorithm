@@ -1,0 +1,14 @@
+Agent1.Periodic.phaseEdge_initial_clock (e : Agent1.Periodic.PhaseEdge) (he : e ∈ Agent1.Periodic.phaseEdges)
+  (ht : e.target = [14, 14, 4, 4]) : e.clock = 1
+Agent1.Periodic.quotient_return_initial_last_clock (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hphase : w 0 = [14, 14, 4, 4]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  Agent1.Periodic.rawGamma (B (N - 1)) (H (N - 1)) (w (N - 1)) = 1
+AUDIT_THEOREM _private.Agent1PeriodicInitialIncoming.0.Agent1.Periodic.phaseEdges_initial_clock_checked : []
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_last_clock : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_last_clock._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.phaseEdge_initial_clock : [Quot.sound, propext]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_last_clock._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_last_clock._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_last_clock._proof_4 : [propext, Quot.sound]
+MODULE_AUDIT theorems=7 required_public_names=2 custom_axioms=0 union=[Classical.choice, Quot.sound, propext]

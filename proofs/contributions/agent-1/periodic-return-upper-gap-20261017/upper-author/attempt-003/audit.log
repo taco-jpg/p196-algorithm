@@ -1,0 +1,35 @@
+Agent1.Periodic.quotient_path_lower_potential (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) :
+  ↑N ≤
+    4 * ↑(Agent1.Periodic.quotientClockSum B H w N) + Agent8.lowerPotential (Agent1.Periodic.outside (B 0) (w 0)) -
+      Agent8.lowerPotential (Agent1.Periodic.outside (B N) (w N))
+Agent1.Periodic.quotient_return_initial_upper_gap (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hphase : w 0 = [14, 14, 4, 4]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  N + 2 ≤ 4 * Agent1.Periodic.quotientClockSum B H w N
+Agent1.Periodic.quotient_return_initial_upper_gain (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0))
+  (hphase : w 0 = [14, 14, 4, 4]) (hN : 0 < N) (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  ∃ G,
+    0 < G ∧
+      Agent1.Periodic.quotientClockSum B H w N = 8 * G ∧
+        Agent1.Periodic.quotientDeltaSum B H w N = ↑G ∧ 16 * G ≤ N ∧ N + 2 ≤ 32 * G
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_upper_gap._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_lower_potential._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicReturnUpper.0.Agent1.Periodic.returning_overflow_gap._proof_1 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_upper_gap : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_lower_potential._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_lower_potential._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_upper_gap._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_upper_gain : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicReturnUpper.0.Agent1.Periodic.returning_overflow_gap._proof_2 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_initial_upper_gain._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_lower_potential._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_lower_potential._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicReturnUpper.0.Agent1.Periodic.returning_overflow_gap : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_path_lower_potential : [propext, Quot.sound, Classical.choice]
+MODULE_AUDIT theorems=14 required_endpoints=3 safe_definitions=0 custom_axioms=0 union=[Classical.choice,
+ Quot.sound,
+ propext]
