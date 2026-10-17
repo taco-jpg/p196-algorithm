@@ -1,0 +1,1220 @@
+diff --git a/proofs/Agent51ReciprocalMoment.registry.json b/proofs/Agent51ReciprocalMoment.registry.json
+new file mode 100644
+index 0000000..73df79a
+--- /dev/null
++++ b/proofs/Agent51ReciprocalMoment.registry.json
+@@ -0,0 +1,119 @@
++{
++  "schema_version": 1,
++  "toolchain": {
++    "version": "4.19.0",
++    "commit": "6caaee842e94",
++    "allowed_axioms": [
++      "propext",
++      "Classical.choice",
++      "Quot.sound"
++    ]
++  },
++  "catalogue_complete": false,
++  "catalogue_blockers": [
++    "This is the explicit three-module closure for the selected reciprocal-moment source claim, not a complete repository census."
++  ],
++  "projects": {
++    "agent51-reciprocal-moment": {
++      "scope": "Exact reciprocal first moment and derivative redundancy modulo9, all fixed natural widths and arbitrary signed symmetric coefficients, with literal formal coefficient differentiation and unchanged natural polynomialValue bridge.",
++      "modules": {
++        "OverflowDigits": {
++          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/OverflowDigits.lean",
++          "sha256": "65adeb3ae7bea93e390a95fc5f8b58ec43f0f64f01ed9db3f51392657ba89a41",
++          "git_blob": "6ad7ea581c1ed9e6f8c4907dcb5ad73558423b97",
++          "imports": [
++            "Std"
++          ]
++        },
++        "ResidueSums": {
++          "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/ResidueSums.lean",
++          "sha256": "1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4",
++          "git_blob": "f1e3c1c5e7cd780b28f6752d980158bd9b9c98b6",
++          "imports": [
++            "OverflowDigits"
++          ]
++        },
++        "ReciprocalMoment": {
++          "path": "proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/ReciprocalMoment.lean",
++          "sha256": "76bad5a81d0fd7ddbd8c3a9a6a1fee433573b1276f4ba84b9b90b11967afc11a",
++          "git_blob": "484cb6f022b2c2397b98e262caa9bcd46076eb08",
++          "imports": [
++            "ResidueSums"
++          ]
++        }
++      },
++      "roots": [
++        "ReciprocalMoment"
++      ]
++    }
++  },
++  "claims": [
++    {
++      "id": "A51-SPEC-RECIPROCAL-MOMENT",
++      "project": "agent51-reciprocal-moment",
++      "source_path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/astra_spectral_carry_quotient.md",
++      "source_blob": "eac5b8f61385a615d9cc3e7796a4d698c66b716b",
++      "source_location": "Lines103–118, reciprocal polynomial identity and derivative-coordinate redundancy",
++      "endpoints": [
++        "P196.Agent51.inputDigit",
++        "P196.Agent51.pairWord",
++        "P196.Agent51.inputDigit_bounded",
++        "P196.Agent51.inputDigit_zero",
++        "P196.Agent51.inputDigit_last",
++        "P196.Agent51.inputDigit_pair",
++        "P196.Agent51.pairWord_values",
++        "P196.Agent51.pairWord_zero",
++        "P196.Agent51.finiteSum",
++        "P196.Agent51.finiteSum_eq_range",
++        "P196.Agent51.polynomialValue",
++        "P196.Agent51.polynomialValue_eq_finiteSum",
++        "P196.Agent51.finiteSum_congr",
++        "P196.Agent51.finiteSum_add_length",
++        "P196.Agent51.finiteSum_const",
++        "P196.Agent51.finiteSum_mul_left",
++        "P196.Agent51.pairWord_polynomial_blocks",
++        "P196.Agent51.int_one_pow",
++        "P196.Agent51.pairWord_value_one",
++        "P196.Agent51.int_pow_add",
++        "P196.Agent51.neg_one_pow",
++        "P196.Agent51.alternating_prefix",
++        "P196.Agent51.power_prefix_shift",
++        "P196.Agent51.pairWord_value_neg_one",
++        "P196.Agent51.pairWord_neg_one_dvd",
++        "P196.Agent51.pairWord_neg_one_even",
++        "P196.Agent51.sourceS",
++        "P196.Agent51.sourceR",
++        "P196.Agent51.pairWord_half_value_one",
++        "P196.Agent51.pairWord_sourceS",
++        "P196.Agent51.pairWord_sourceS_nat",
++        "P196.Agent51.pairWord_sourceR",
++        "P196.Agent51.residue_parameter",
++        "P196.Agent51.polynomialValue_congr",
++        "P196.Agent51.sourceS_congr",
++        "P196.Agent51.sourceR_congr",
++        "P196.Agent51.finiteSum_add_values",
++        "P196.Agent51.finiteSum_shift",
++        "P196.Agent51.finiteSum_reflected",
++        "P196.Agent51.reciprocal_first_moment",
++        "P196.Agent51.reciprocal_first_moment_literal",
++        "P196.Agent51.formalDerivativeValue",
++        "P196.Agent51.derivativeAtOne",
++        "P196.Agent51.derivativeAtOne_eq_finiteSum",
++        "P196.Agent51.formalDerivativeValue_one",
++        "P196.Agent51.reciprocal_derivative_at_one",
++        "P196.Agent51.reciprocal_derivative_mod_nine",
++        "P196.Agent51.reciprocal_derivative_mod_nine_determined",
++        "P196.Agent51.natural_mass_eq_polynomialValue",
++        "P196.Agent51.natural_reciprocal_derivative"
++      ],
++      "final_endpoints": [
++        "P196.Agent51.reciprocal_first_moment",
++        "P196.Agent51.reciprocal_first_moment_literal",
++        "P196.Agent51.reciprocal_derivative_at_one",
++        "P196.Agent51.reciprocal_derivative_mod_nine",
++        "P196.Agent51.reciprocal_derivative_mod_nine_determined",
++        "P196.Agent51.natural_reciprocal_derivative"
++      ]
++    }
++  ]
++}
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/README.md b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/README.md
+new file mode 100644
+index 0000000..486abde
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/README.md
+@@ -0,0 +1,63 @@
++# Reciprocal first moments and derivative residue redundancy
++
++This contribution formalizes the identity `2 Q'(1) = (L-1) Q(1)` and its modulo-nine consequence from the original `astra_spectral_carry_quotient.md`, lines103–118, source blob `eac5b8f61385a615d9cc3e7796a4d698c66b716b`.
++
++## Exact statement
++
++For every `q : Nat → Int` and every natural fixed width `L`, assume only `q i = q (L-1-i)` for `i<L`. Then:
++
++```text
++2 * sum(i<L, i*q(i)) = ((L:Int)-1) * sum(i<L, q(i))
++```
++
++Both sums have literal `List.range` interpretations. `formalDerivativeValue q L x` is explicitly the finite sum of `(i:Int)*q(i)*x^(i-1)`; the zero-index term vanishes. Its value at one equals the independently defined weighted coefficient sum `derivativeAtOne`.
++
++The checked modulo-nine formula is:
++
++```text
++derivativeAtOne q L %9 =
++  (5 * (((L:Int)-1) * finiteSum q L)) %9
++```
++
++Consequently two separately symmetric words of the same width, with equal coefficient masses modulo9, have equal derivatives at one modulo9. The natural-coefficient specialization has the unchanged imported `polynomialValue q L 1` on the right.
++
++All natural widths are included. At `L=0`, the sums vanish and the integer factor is `-1`. Negative coefficients and zero boundary coefficients are permitted; width means the fixed reflection window and need not equal the actual polynomial degree plus one. Nothing is assumed outside that window.
++
++## Public source endpoints
++
++All names are in `P196.Agent51`:
++
++- `reciprocal_first_moment`
++- `reciprocal_first_moment_literal`
++- `reciprocal_derivative_at_one`
++- `reciprocal_derivative_mod_nine`
++- `reciprocal_derivative_mod_nine_determined`
++- `natural_reciprocal_derivative`
++
++The module exports14 public declarations, including reusable integer finite-sum additivity and reflection helpers. The reflection helper acknowledges the related original natural-valued `DecimalMass.wordSum_reflected` argument. This contribution formalizes existing source mathematics; it does not claim its discovery.
++
++## Dependencies and build coverage
++
++The exact local import closure is `OverflowDigits → ResidueSums → ReciprocalMoment`. The first two modules are reused byte-for-byte from PR148, mathematical source commit `7360b12a0a5889761c845a56a4b8d8a1df5f39b5`; they are not reauthored here. The registry `proofs/Agent51ReciprocalMoment.registry.json` selects this entire three-module closure and all50 explicitly public declarations across it.
++
++From a checkout containing this contribution:
++
++```sh
++python proofs/verify_project__214bf7673efe116b.py \
++  --lean /absolute/path/to/lean-4.19.0-linux/bin/lean \
++  --output /absolute/path/to/a-new-output-directory \
++  --registry proofs/Agent51ReciprocalMoment.registry.json \
++  --project agent51-reciprocal-moment
++```
++
++This is the unchanged existing verifier implementation, called directly to use the repository's current flattened source paths. Its actual flags are `-j1 -DElab.async=false`. This checkpoint records no completed canonical replay of the new registry yet.
++
++## Verification at the source checkpoint
++
++The genuine author specialist `/root/claim_census` compiled the frozen source with official Lean4.19.0, `--trust=0 -j1 -DElab.async=false`. Author attempt002 passed; all14 explicit public declarations printed only `propext` and `Quot.sound`. The initial elaboration/rewrite failure remains unabridged under `author/attempts/001`, outside the accepted source closure.
++
++The author development reused recorded previously built dependency objects. A genuine nonauthor source-semantic review and a separate clean three-module source build plus exhaustive module-origin audit are in progress. Author compilation is not being presented as those independent acceptance steps. No accepted proof uses an admitted proof, a new mathematical axiom or compiler-trusted evaluation.
++
++The complete Laurent-polynomial quotient classification, carry dynamics and decimal saturation remain separate claims. This theorem proves the stated coefficient identity and coordinate redundancy.
++
++Task `agent51-spectral-reciprocal-moment-20261016` was published and read back at coordination `61ed23a9e1dc36f0ad3d0b49e46eaa5c104433f8`, blob `2b26e99231b0e5731345af0de22b5cea9677af72`. The branch is stacked on PR148 and must be retargeted only after that prerequisite is actually integrated. No main-write role is claimed.
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/ReciprocalMoment.lean b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/ReciprocalMoment.lean
+new file mode 100644
+index 0000000..484cb6f
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/ReciprocalMoment.lean
+@@ -0,0 +1,171 @@
++import ResidueSums
++
++/-!
++# Reciprocal coefficient moments and derivative residue redundancy
++
++Source: astra_spectral_carry_quotient.md, lines 103-118, Git blob
++ eac5b8f61385a615d9cc3e7796a4d698c66b716b. The original identity is
++2 Q'(1) = (L-1) Q(1). This module proves its exact finite coefficient
++meaning, including signed coefficients and the empty-width extension.
++
++The reflection helper generalizes the natural-valued finite-sum argument
++of DecimalMass.wordSum_reflected in the original LychrelDigitSums source.
++It is a supporting generalization, not a claim of mathematical discovery.
++The imported ResidueSums and its polynomialValue definition are unchanged.
++-/
++
++namespace P196.Agent51
++
++/-- Additivity of the existing integer finite-sum helper. -/
++theorem finiteSum_add_values (f g : Nat → Int) (L : Nat) :
++    finiteSum (fun i => f i + g i) L = finiteSum f L + finiteSum g L := by
++  induction L with
++  | zero => rfl
++  | succ L ih => simp only [finiteSum, ih]; omega
++
++/-- Splitting off the first term, without any coefficient restriction. -/
++theorem finiteSum_shift (f : Nat → Int) (L : Nat) :
++    finiteSum f (L + 1) = f 0 + finiteSum (fun i => f (i + 1)) L := by
++  induction L with
++  | zero => simp [finiteSum]
++  | succ L ih => simp only [finiteSum] at ih ⊢; omega
++
++/-- Integer version of DecimalMass.wordSum_reflected, with the same finite reversal. -/
++theorem finiteSum_reflected (f : Nat → Int) (L : Nat) :
++    finiteSum (fun i => f (L - 1 - i)) L = finiteSum f L := by
++  induction L generalizing f with
++  | zero => rfl
++  | succ L ih =>
++    have href : finiteSum (fun i => f (L + 1 - 1 - i)) L =
++        finiteSum (fun i => f (L - 1 - i + 1)) L := by
++      apply finiteSum_congr
++      intro i hi
++      congr 1
++      omega
++    rw [finiteSum, href, ih (fun i => f (i + 1)), finiteSum_shift]
++    simp
++    omega
++
++/-- The exact reciprocal first-moment identity for arbitrary signed coefficients. -/
++theorem reciprocal_first_moment (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * finiteSum (fun i => (i : Int) * q i) L =
++      ((L : Int) - 1) * finiteSum q L := by
++  let m := finiteSum (fun i => (i : Int) * q i) L
++  have href : finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q i) L = m := by
++    calc
++      _ = finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q (L - 1 - i)) L := by
++        apply finiteSum_congr
++        intro i hi
++        rw [hsymm i hi]
++      _ = m := finiteSum_reflected (fun i => (i : Int) * q i) L
++  calc
++    _ = finiteSum (fun i => (i : Int) * q i) L +
++        finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q i) L := by
++      change 2 * m = m + _
++      rw [href]
++      omega
++    _ = finiteSum (fun i => (i : Int) * q i +
++        ((L - 1 - i : Nat) : Int) * q i) L :=
++      (finiteSum_add_values _ _ L).symm
++    _ = finiteSum (fun i => ((L : Int) - 1) * q i) L := by
++      apply finiteSum_congr
++      intro i hi
++      rw [← Int.add_mul]
++      have hindex : (i : Int) + ((L - 1 - i : Nat) : Int) = (L : Int) - 1 := by omega
++      rw [hindex]
++    _ = _ := finiteSum_mul_left _ _ _
++
++/-- The same source identity in literal finite List.range sums. -/
++theorem reciprocal_first_moment_literal (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * ((List.range L).map (fun (i : Nat) => (i : Int) * q i)).sum =
++      ((L : Int) - 1) * ((List.range L).map q).sum := by
++  simpa only [finiteSum_eq_range] using reciprocal_first_moment q L hsymm
++
++/-- Literal coefficient formula for formal polynomial differentiation evaluated at x.
++The index-zero summand vanishes because its multiplier is zero. -/
++def formalDerivativeValue (q : Nat → Int) (L : Nat) (x : Int) : Int :=
++  ((List.range L).map (fun (i : Nat) => (i : Int) * q i * x ^ (i - 1))).sum
++
++/-- The literal weighted coefficient sum representing the formal derivative at one. -/
++def derivativeAtOne (q : Nat → Int) (L : Nat) : Int :=
++  ((List.range L).map (fun (i : Nat) => (i : Int) * q i)).sum
++
++theorem derivativeAtOne_eq_finiteSum (q : Nat → Int) (L : Nat) :
++    derivativeAtOne q L = finiteSum (fun i => (i : Int) * q i) L := by
++  exact (finiteSum_eq_range _ _).symm
++
++/-- Evaluation of the literal formal derivative at one agrees with its first moment. -/
++theorem formalDerivativeValue_one (q : Nat → Int) (L : Nat) :
++    formalDerivativeValue q L 1 = derivativeAtOne q L := by
++  unfold formalDerivativeValue derivativeAtOne
++  simp only [int_one_pow, Int.mul_one]
++
++/-- The source equation 2 Q'(1) = (L-1) Q(1), using coefficientwise differentiation. -/
++theorem reciprocal_derivative_at_one (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * formalDerivativeValue q L 1 = ((L : Int) - 1) * finiteSum q L := by
++  rw [formalDerivativeValue_one, derivativeAtOne_eq_finiteSum]
++  exact reciprocal_first_moment q L hsymm
++
++/-- The derivative residue is determined by width and mass, since 2*5 = 1 modulo 9. -/
++theorem reciprocal_derivative_mod_nine (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    derivativeAtOne q L % 9 =
++      (5 * (((L : Int) - 1) * finiteSum q L)) % 9 := by
++  have h := reciprocal_first_moment q L hsymm
++  rw [derivativeAtOne_eq_finiteSum]
++  omega
++
++/-- Two separately symmetric words of the same width and mass residue
++have the same derivative residue; exact equality of masses is not required. -/
++theorem reciprocal_derivative_mod_nine_determined (q r : Nat → Int) (L : Nat)
++    (hq : ∀ i < L, q i = q (L - 1 - i))
++    (hr : ∀ i < L, r i = r (L - 1 - i))
++    (hmass : finiteSum q L % 9 = finiteSum r L % 9) :
++    derivativeAtOne q L % 9 = derivativeAtOne r L % 9 := by
++  rw [reciprocal_derivative_mod_nine q L hq,
++    reciprocal_derivative_mod_nine r L hr]
++  have hproduct : (((L : Int) - 1) * finiteSum q L) % 9 =
++      (((L : Int) - 1) * finiteSum r L) % 9 := by
++    rw [Int.mul_emod ((L : Int) - 1) (finiteSum q L) 9,
++      Int.mul_emod ((L : Int) - 1) (finiteSum r L) 9, hmass]
++  rw [Int.mul_emod 5 (((L : Int) - 1) * finiteSum q L) 9,
++    Int.mul_emod 5 (((L : Int) - 1) * finiteSum r L) 9, hproduct]
++
++/-- Natural coefficient mass agrees with the unchanged literal polynomialValue at one. -/
++theorem natural_mass_eq_polynomialValue (q : Nat → Nat) (L : Nat) :
++    finiteSum (fun i => (q i : Int)) L = polynomialValue q L 1 := by
++  rw [polynomialValue_eq_finiteSum]
++  apply finiteSum_congr
++  intro i _
++  simp only [int_one_pow, Int.mul_one]
++
++/-- Natural-coefficient specialization linked to the original polynomialValue definition. -/
++theorem natural_reciprocal_derivative (q : Nat → Nat) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * formalDerivativeValue (fun i => (q i : Int)) L 1 =
++      ((L : Int) - 1) * polynomialValue q L 1 := by
++  have hs : ∀ i < L, (q i : Int) = (q (L - 1 - i) : Int) := by
++    intro i hi
++    rw [hsymm i hi]
++  rw [← natural_mass_eq_polynomialValue]
++  exact reciprocal_derivative_at_one _ L hs
++
++#print axioms finiteSum_add_values
++#print axioms finiteSum_shift
++#print axioms finiteSum_reflected
++#print axioms reciprocal_first_moment
++#print axioms reciprocal_first_moment_literal
++#print axioms formalDerivativeValue
++#print axioms derivativeAtOne
++#print axioms derivativeAtOne_eq_finiteSum
++#print axioms formalDerivativeValue_one
++#print axioms reciprocal_derivative_at_one
++#print axioms reciprocal_derivative_mod_nine
++#print axioms reciprocal_derivative_mod_nine_determined
++#print axioms natural_mass_eq_polynomialValue
++#print axioms natural_reciprocal_derivative
++
++end P196.Agent51
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/AUTHOR_RECEIPT.json b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/AUTHOR_RECEIPT.json
+new file mode 100644
+index 0000000..c9a7805
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/AUTHOR_RECEIPT.json
+@@ -0,0 +1,79 @@
++{
++  "status": "AUTHOR_LEAN_CHECKED_NOT_INDEPENDENT_REVIEW",
++  "created_utc": "2026-10-16T23:54:26.263721+00:00",
++  "source_path": "/dev/shm/p196-agent51/reciprocal-moment/source/ReciprocalMoment.lean",
++  "source_sha256": "76bad5a81d0fd7ddbd8c3a9a6a1fee433573b1276f4ba84b9b90b11967afc11a",
++  "source_git_blob": "484cb6f022b2c2397b98e262caa9bcd46076eb08",
++  "toolchain": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
++  "source_imports": [
++    "ResidueSums"
++  ],
++  "dependency_source_commit": "7360b12a0a5889761c845a56a4b8d8a1df5f39b5",
++  "dependencies": [
++    {
++      "module": "OverflowDigits",
++      "source_sha256": "65adeb3ae7bea93e390a95fc5f8b58ec43f0f64f01ed9db3f51392657ba89a41",
++      "source_git_blob": "6ad7ea581c1ed9e6f8c4907dcb5ad73558423b97",
++      "unchanged_pinned_source": true,
++      "development_object_path": "/dev/shm/p196-agent51/build/author/OverflowDigits.olean",
++      "development_object_sha256": "598a5a9662768fe3201a3afc722a2ac0ccc58f9815c6a15a70952148c18b2eb6"
++    },
++    {
++      "module": "ResidueSums",
++      "source_sha256": "1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4",
++      "source_git_blob": "f1e3c1c5e7cd780b28f6752d980158bd9b9c98b6",
++      "unchanged_pinned_source": true,
++      "development_object_path": "/dev/shm/p196-agent51/build/author/ResidueSums.olean",
++      "development_object_sha256": "52b143f6ea3a5a3257fbfc4beb353a2728b1848b0cf3ddef248e80ec2218ecd0"
++    }
++  ],
++  "public_exports": [
++    "finiteSum_add_values",
++    "finiteSum_shift",
++    "finiteSum_reflected",
++    "reciprocal_first_moment",
++    "reciprocal_first_moment_literal",
++    "formalDerivativeValue",
++    "derivativeAtOne",
++    "derivativeAtOne_eq_finiteSum",
++    "formalDerivativeValue_one",
++    "reciprocal_derivative_at_one",
++    "reciprocal_derivative_mod_nine",
++    "reciprocal_derivative_mod_nine_determined",
++    "natural_mass_eq_polynomialValue",
++    "natural_reciprocal_derivative"
++  ],
++  "public_export_count": 14,
++  "explicit_axiom_print_count": 14,
++  "actual_export_axioms": [
++    "propext",
++    "Quot.sound"
++  ],
++  "forbidden_source_tokens": [],
++  "final_attempt": "author/attempts/002",
++  "preserved_attempts": [
++    {
++      "path": "author/attempts/001",
++      "status": "FAIL",
++      "cause": "Missing explicit Nat binder type in List.map caused elaboration errors; unrestricted Int.mul_emod simplification loop hit recursion limit. All failed source/logs retained."
++    },
++    {
++      "path": "author/attempts/002",
++      "status": "PASS",
++      "cause": "Added explicit Nat binders and targeted modular rewrites; all original endpoint contracts unchanged."
++    }
++  ],
++  "contract_adjustments": "None. derivativeAtOne and formalDerivativeValue are literal independent coefficient sums; formalDerivativeValue_one connects their semantics. The natural wrapper directly uses the frozen polynomialValue.",
++  "boundary_coverage": [
++    "All natural widths, including0 and1",
++    "Arbitrary signed coefficients",
++    "Symmetry only below L",
++    "No nonzero leading coefficient requirement",
++    "No central coefficient parity or digit-bound premise",
++    "Same-width residue comparison requires symmetry separately for both words"
++  ],
++  "development_scope": "New module source compiled independently with strict trust0, one thread and 180s/6GiB limits, using previously checked pinned dependency objects. This is not a fresh full closure or independent review.",
++  "independent_review": false,
++  "remote_write_by_author": false,
++  "frozen": true
++}
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/ReciprocalMoment.lean b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/ReciprocalMoment.lean
+new file mode 100644
+index 0000000..5affd63
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/ReciprocalMoment.lean
+@@ -0,0 +1,166 @@
++import ResidueSums
++
++/-!
++# Reciprocal coefficient moments and derivative residue redundancy
++
++Source: astra_spectral_carry_quotient.md, lines 103-118, Git blob
++ eac5b8f61385a615d9cc3e7796a4d698c66b716b. The original identity is
++2 Q'(1) = (L-1) Q(1). This module proves its exact finite coefficient
++meaning, including signed coefficients and the empty-width extension.
++
++The reflection helper generalizes the natural-valued finite-sum argument
++of DecimalMass.wordSum_reflected in the original LychrelDigitSums source.
++It is a supporting generalization, not a claim of mathematical discovery.
++The imported ResidueSums and its polynomialValue definition are unchanged.
++-/
++
++namespace P196.Agent51
++
++/-- Additivity of the existing integer finite-sum helper. -/
++theorem finiteSum_add_values (f g : Nat → Int) (L : Nat) :
++    finiteSum (fun i => f i + g i) L = finiteSum f L + finiteSum g L := by
++  induction L with
++  | zero => rfl
++  | succ L ih => simp only [finiteSum, ih]; omega
++
++/-- Splitting off the first term, without any coefficient restriction. -/
++theorem finiteSum_shift (f : Nat → Int) (L : Nat) :
++    finiteSum f (L + 1) = f 0 + finiteSum (fun i => f (i + 1)) L := by
++  induction L with
++  | zero => simp [finiteSum]
++  | succ L ih => simp only [finiteSum] at ih ⊢; omega
++
++/-- Integer version of DecimalMass.wordSum_reflected, with the same finite reversal. -/
++theorem finiteSum_reflected (f : Nat → Int) (L : Nat) :
++    finiteSum (fun i => f (L - 1 - i)) L = finiteSum f L := by
++  induction L generalizing f with
++  | zero => rfl
++  | succ L ih =>
++    have href : finiteSum (fun i => f (L + 1 - 1 - i)) L =
++        finiteSum (fun i => f (L - 1 - i + 1)) L := by
++      apply finiteSum_congr
++      intro i hi
++      congr 1
++      omega
++    rw [finiteSum, href, ih (fun i => f (i + 1)), finiteSum_shift]
++    simp
++    omega
++
++/-- The exact reciprocal first-moment identity for arbitrary signed coefficients. -/
++theorem reciprocal_first_moment (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * finiteSum (fun i => (i : Int) * q i) L =
++      ((L : Int) - 1) * finiteSum q L := by
++  let m := finiteSum (fun i => (i : Int) * q i) L
++  have href : finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q i) L = m := by
++    calc
++      _ = finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q (L - 1 - i)) L := by
++        apply finiteSum_congr
++        intro i hi
++        rw [hsymm i hi]
++      _ = m := finiteSum_reflected (fun i => (i : Int) * q i) L
++  calc
++    _ = finiteSum (fun i => (i : Int) * q i) L +
++        finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q i) L := by
++      change 2 * m = m + _
++      rw [href]
++      omega
++    _ = finiteSum (fun i => (i : Int) * q i +
++        ((L - 1 - i : Nat) : Int) * q i) L :=
++      (finiteSum_add_values _ _ L).symm
++    _ = finiteSum (fun i => ((L : Int) - 1) * q i) L := by
++      apply finiteSum_congr
++      intro i hi
++      rw [← Int.add_mul]
++      have hindex : (i : Int) + ((L - 1 - i : Nat) : Int) = (L : Int) - 1 := by omega
++      rw [hindex]
++    _ = _ := finiteSum_mul_left _ _ _
++
++/-- The same source identity in literal finite List.range sums. -/
++theorem reciprocal_first_moment_literal (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * ((List.range L).map (fun i => (i : Int) * q i)).sum =
++      ((L : Int) - 1) * ((List.range L).map q).sum := by
++  simpa only [finiteSum_eq_range] using reciprocal_first_moment q L hsymm
++
++/-- Literal coefficient formula for formal polynomial differentiation evaluated at x.
++The index-zero summand vanishes because its multiplier is zero. -/
++def formalDerivativeValue (q : Nat → Int) (L : Nat) (x : Int) : Int :=
++  ((List.range L).map (fun i => (i : Int) * q i * x ^ (i - 1))).sum
++
++/-- The literal weighted coefficient sum representing the formal derivative at one. -/
++def derivativeAtOne (q : Nat → Int) (L : Nat) : Int :=
++  ((List.range L).map (fun i => (i : Int) * q i)).sum
++
++theorem derivativeAtOne_eq_finiteSum (q : Nat → Int) (L : Nat) :
++    derivativeAtOne q L = finiteSum (fun i => (i : Int) * q i) L := by
++  exact (finiteSum_eq_range _ _).symm
++
++/-- Evaluation of the literal formal derivative at one agrees with its first moment. -/
++theorem formalDerivativeValue_one (q : Nat → Int) (L : Nat) :
++    formalDerivativeValue q L 1 = derivativeAtOne q L := by
++  unfold formalDerivativeValue derivativeAtOne
++  simp only [int_one_pow, Int.mul_one]
++
++/-- The source equation 2 Q'(1) = (L-1) Q(1), using coefficientwise differentiation. -/
++theorem reciprocal_derivative_at_one (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * formalDerivativeValue q L 1 = ((L : Int) - 1) * finiteSum q L := by
++  rw [formalDerivativeValue_one, derivativeAtOne_eq_finiteSum]
++  exact reciprocal_first_moment q L hsymm
++
++/-- The derivative residue is determined by width and mass, since 2*5 = 1 modulo 9. -/
++theorem reciprocal_derivative_mod_nine (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    derivativeAtOne q L % 9 =
++      (5 * (((L : Int) - 1) * finiteSum q L)) % 9 := by
++  have h := reciprocal_first_moment q L hsymm
++  rw [derivativeAtOne_eq_finiteSum]
++  omega
++
++/-- Two separately symmetric words of the same width and mass residue
++have the same derivative residue; exact equality of masses is not required. -/
++theorem reciprocal_derivative_mod_nine_determined (q r : Nat → Int) (L : Nat)
++    (hq : ∀ i < L, q i = q (L - 1 - i))
++    (hr : ∀ i < L, r i = r (L - 1 - i))
++    (hmass : finiteSum q L % 9 = finiteSum r L % 9) :
++    derivativeAtOne q L % 9 = derivativeAtOne r L % 9 := by
++  rw [reciprocal_derivative_mod_nine q L hq,
++    reciprocal_derivative_mod_nine r L hr]
++  simp only [Int.mul_emod, hmass]
++
++/-- Natural coefficient mass agrees with the unchanged literal polynomialValue at one. -/
++theorem natural_mass_eq_polynomialValue (q : Nat → Nat) (L : Nat) :
++    finiteSum (fun i => (q i : Int)) L = polynomialValue q L 1 := by
++  rw [polynomialValue_eq_finiteSum]
++  apply finiteSum_congr
++  intro i _
++  simp only [int_one_pow, Int.mul_one]
++
++/-- Natural-coefficient specialization linked to the original polynomialValue definition. -/
++theorem natural_reciprocal_derivative (q : Nat → Nat) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * formalDerivativeValue (fun i => (q i : Int)) L 1 =
++      ((L : Int) - 1) * polynomialValue q L 1 := by
++  have hs : ∀ i < L, (q i : Int) = (q (L - 1 - i) : Int) := by
++    intro i hi
++    rw [hsymm i hi]
++  rw [← natural_mass_eq_polynomialValue]
++  exact reciprocal_derivative_at_one _ L hs
++
++#print axioms finiteSum_add_values
++#print axioms finiteSum_shift
++#print axioms finiteSum_reflected
++#print axioms reciprocal_first_moment
++#print axioms reciprocal_first_moment_literal
++#print axioms formalDerivativeValue
++#print axioms derivativeAtOne
++#print axioms derivativeAtOne_eq_finiteSum
++#print axioms formalDerivativeValue_one
++#print axioms reciprocal_derivative_at_one
++#print axioms reciprocal_derivative_mod_nine
++#print axioms reciprocal_derivative_mod_nine_determined
++#print axioms natural_mass_eq_polynomialValue
++#print axioms natural_reciprocal_derivative
++
++end P196.Agent51
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/compile.log b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/compile.log
+new file mode 100644
+index 0000000..71ab8a3
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/compile.log
+@@ -0,0 +1,56 @@
++ReciprocalMoment.lean:82:52: error: application type mismatch
++  q i
++argument
++  i
++has type
++  Int : Type
++but is expected to have type
++  Nat : Type
++ReciprocalMoment.lean:89:46: error: application type mismatch
++  q i
++argument
++  i
++has type
++  Int : Type
++but is expected to have type
++  Nat : Type
++ReciprocalMoment.lean:89:50: error: failed to synthesize
++  HPow Int Int ?m.6130
++
++Additional diagnostic information may be available using the `set_option diagnostics true` command.
++ReciprocalMoment.lean:93:46: error: application type mismatch
++  q i
++argument
++  i
++has type
++  Int : Type
++but is expected to have type
++  Nat : Type
++ReciprocalMoment.lean:97:2: error: type mismatch
++  Eq.symm (finiteSum_eq_range ?m.6724 ?m.6725)
++has type
++  (List.map ?m.6724 (List.range ?m.6725)).sum = finiteSum ?m.6724 ?m.6725 : Prop
++but is expected to have type
++  derivativeAtOne q L = finiteSum (fun i => ↑i * q i) L : Prop
++ReciprocalMoment.lean:101:57: error: unsolved goals
++q : Nat → Int
++L : Nat
++⊢ (List.map (fun i => sorry) sorry).sum = (List.map (fun i => i * q sorry) sorry).sum
++ReciprocalMoment.lean:130:2: error: tactic 'simp' failed, nested error:
++maximum recursion depth has been reached
++use `set_option maxRecDepth <num>` to increase limit
++use `set_option diagnostics true` to get diagnostic information
++'P196.Agent51.finiteSum_add_values' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.finiteSum_shift' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.finiteSum_reflected' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.reciprocal_first_moment' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.reciprocal_first_moment_literal' depends on axioms: [sorryAx]
++'P196.Agent51.formalDerivativeValue' depends on axioms: [sorryAx]
++'P196.Agent51.derivativeAtOne' depends on axioms: [sorryAx]
++'P196.Agent51.derivativeAtOne_eq_finiteSum' depends on axioms: [sorryAx]
++'P196.Agent51.formalDerivativeValue_one' depends on axioms: [sorryAx]
++'P196.Agent51.reciprocal_derivative_at_one' depends on axioms: [propext, sorryAx, Quot.sound]
++'P196.Agent51.reciprocal_derivative_mod_nine' depends on axioms: [propext, sorryAx, Quot.sound]
++'P196.Agent51.reciprocal_derivative_mod_nine_determined' depends on axioms: [propext, sorryAx, Quot.sound]
++'P196.Agent51.natural_mass_eq_polynomialValue' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.natural_reciprocal_derivative' depends on axioms: [propext, sorryAx, Quot.sound]
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/result.json b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/result.json
+new file mode 100644
+index 0000000..860dac8
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/001/result.json
+@@ -0,0 +1,22 @@
++{
++  "command": [
++    "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
++    "--trust=0",
++    "-j1",
++    "-DElab.async=false",
++    "-o",
++    "/dev/shm/p196-agent51/reciprocal-moment/author/attempts/001/ReciprocalMoment.olean",
++    "ReciprocalMoment.lean"
++  ],
++  "cwd": "/dev/shm/p196-agent51/reciprocal-moment/source",
++  "source_sha256": "f80ebb202f302fd2404f5b2de738ced81a822902cad369fd121893b7621b4232",
++  "start_utc": "2026-10-16T23:53:03.824361+00:00",
++  "max_wall_seconds": 180,
++  "max_address_space": 6442450944,
++  "development_dependency_objects": "Reuse previously checked unchanged OverflowDigits.olean and ResidueSums.olean in /dev/shm/p196-agent51/build/author. Full independent fresh closure is separate.",
++  "exit_code": 1,
++  "status": "FAIL",
++  "seconds": 1.117896699000994,
++  "max_rss_kib": 424728,
++  "source_unchanged": true
++}
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/ReciprocalMoment.lean b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/ReciprocalMoment.lean
+new file mode 100644
+index 0000000..484cb6f
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/ReciprocalMoment.lean
+@@ -0,0 +1,171 @@
++import ResidueSums
++
++/-!
++# Reciprocal coefficient moments and derivative residue redundancy
++
++Source: astra_spectral_carry_quotient.md, lines 103-118, Git blob
++ eac5b8f61385a615d9cc3e7796a4d698c66b716b. The original identity is
++2 Q'(1) = (L-1) Q(1). This module proves its exact finite coefficient
++meaning, including signed coefficients and the empty-width extension.
++
++The reflection helper generalizes the natural-valued finite-sum argument
++of DecimalMass.wordSum_reflected in the original LychrelDigitSums source.
++It is a supporting generalization, not a claim of mathematical discovery.
++The imported ResidueSums and its polynomialValue definition are unchanged.
++-/
++
++namespace P196.Agent51
++
++/-- Additivity of the existing integer finite-sum helper. -/
++theorem finiteSum_add_values (f g : Nat → Int) (L : Nat) :
++    finiteSum (fun i => f i + g i) L = finiteSum f L + finiteSum g L := by
++  induction L with
++  | zero => rfl
++  | succ L ih => simp only [finiteSum, ih]; omega
++
++/-- Splitting off the first term, without any coefficient restriction. -/
++theorem finiteSum_shift (f : Nat → Int) (L : Nat) :
++    finiteSum f (L + 1) = f 0 + finiteSum (fun i => f (i + 1)) L := by
++  induction L with
++  | zero => simp [finiteSum]
++  | succ L ih => simp only [finiteSum] at ih ⊢; omega
++
++/-- Integer version of DecimalMass.wordSum_reflected, with the same finite reversal. -/
++theorem finiteSum_reflected (f : Nat → Int) (L : Nat) :
++    finiteSum (fun i => f (L - 1 - i)) L = finiteSum f L := by
++  induction L generalizing f with
++  | zero => rfl
++  | succ L ih =>
++    have href : finiteSum (fun i => f (L + 1 - 1 - i)) L =
++        finiteSum (fun i => f (L - 1 - i + 1)) L := by
++      apply finiteSum_congr
++      intro i hi
++      congr 1
++      omega
++    rw [finiteSum, href, ih (fun i => f (i + 1)), finiteSum_shift]
++    simp
++    omega
++
++/-- The exact reciprocal first-moment identity for arbitrary signed coefficients. -/
++theorem reciprocal_first_moment (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * finiteSum (fun i => (i : Int) * q i) L =
++      ((L : Int) - 1) * finiteSum q L := by
++  let m := finiteSum (fun i => (i : Int) * q i) L
++  have href : finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q i) L = m := by
++    calc
++      _ = finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q (L - 1 - i)) L := by
++        apply finiteSum_congr
++        intro i hi
++        rw [hsymm i hi]
++      _ = m := finiteSum_reflected (fun i => (i : Int) * q i) L
++  calc
++    _ = finiteSum (fun i => (i : Int) * q i) L +
++        finiteSum (fun i => ((L - 1 - i : Nat) : Int) * q i) L := by
++      change 2 * m = m + _
++      rw [href]
++      omega
++    _ = finiteSum (fun i => (i : Int) * q i +
++        ((L - 1 - i : Nat) : Int) * q i) L :=
++      (finiteSum_add_values _ _ L).symm
++    _ = finiteSum (fun i => ((L : Int) - 1) * q i) L := by
++      apply finiteSum_congr
++      intro i hi
++      rw [← Int.add_mul]
++      have hindex : (i : Int) + ((L - 1 - i : Nat) : Int) = (L : Int) - 1 := by omega
++      rw [hindex]
++    _ = _ := finiteSum_mul_left _ _ _
++
++/-- The same source identity in literal finite List.range sums. -/
++theorem reciprocal_first_moment_literal (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * ((List.range L).map (fun (i : Nat) => (i : Int) * q i)).sum =
++      ((L : Int) - 1) * ((List.range L).map q).sum := by
++  simpa only [finiteSum_eq_range] using reciprocal_first_moment q L hsymm
++
++/-- Literal coefficient formula for formal polynomial differentiation evaluated at x.
++The index-zero summand vanishes because its multiplier is zero. -/
++def formalDerivativeValue (q : Nat → Int) (L : Nat) (x : Int) : Int :=
++  ((List.range L).map (fun (i : Nat) => (i : Int) * q i * x ^ (i - 1))).sum
++
++/-- The literal weighted coefficient sum representing the formal derivative at one. -/
++def derivativeAtOne (q : Nat → Int) (L : Nat) : Int :=
++  ((List.range L).map (fun (i : Nat) => (i : Int) * q i)).sum
++
++theorem derivativeAtOne_eq_finiteSum (q : Nat → Int) (L : Nat) :
++    derivativeAtOne q L = finiteSum (fun i => (i : Int) * q i) L := by
++  exact (finiteSum_eq_range _ _).symm
++
++/-- Evaluation of the literal formal derivative at one agrees with its first moment. -/
++theorem formalDerivativeValue_one (q : Nat → Int) (L : Nat) :
++    formalDerivativeValue q L 1 = derivativeAtOne q L := by
++  unfold formalDerivativeValue derivativeAtOne
++  simp only [int_one_pow, Int.mul_one]
++
++/-- The source equation 2 Q'(1) = (L-1) Q(1), using coefficientwise differentiation. -/
++theorem reciprocal_derivative_at_one (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * formalDerivativeValue q L 1 = ((L : Int) - 1) * finiteSum q L := by
++  rw [formalDerivativeValue_one, derivativeAtOne_eq_finiteSum]
++  exact reciprocal_first_moment q L hsymm
++
++/-- The derivative residue is determined by width and mass, since 2*5 = 1 modulo 9. -/
++theorem reciprocal_derivative_mod_nine (q : Nat → Int) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    derivativeAtOne q L % 9 =
++      (5 * (((L : Int) - 1) * finiteSum q L)) % 9 := by
++  have h := reciprocal_first_moment q L hsymm
++  rw [derivativeAtOne_eq_finiteSum]
++  omega
++
++/-- Two separately symmetric words of the same width and mass residue
++have the same derivative residue; exact equality of masses is not required. -/
++theorem reciprocal_derivative_mod_nine_determined (q r : Nat → Int) (L : Nat)
++    (hq : ∀ i < L, q i = q (L - 1 - i))
++    (hr : ∀ i < L, r i = r (L - 1 - i))
++    (hmass : finiteSum q L % 9 = finiteSum r L % 9) :
++    derivativeAtOne q L % 9 = derivativeAtOne r L % 9 := by
++  rw [reciprocal_derivative_mod_nine q L hq,
++    reciprocal_derivative_mod_nine r L hr]
++  have hproduct : (((L : Int) - 1) * finiteSum q L) % 9 =
++      (((L : Int) - 1) * finiteSum r L) % 9 := by
++    rw [Int.mul_emod ((L : Int) - 1) (finiteSum q L) 9,
++      Int.mul_emod ((L : Int) - 1) (finiteSum r L) 9, hmass]
++  rw [Int.mul_emod 5 (((L : Int) - 1) * finiteSum q L) 9,
++    Int.mul_emod 5 (((L : Int) - 1) * finiteSum r L) 9, hproduct]
++
++/-- Natural coefficient mass agrees with the unchanged literal polynomialValue at one. -/
++theorem natural_mass_eq_polynomialValue (q : Nat → Nat) (L : Nat) :
++    finiteSum (fun i => (q i : Int)) L = polynomialValue q L 1 := by
++  rw [polynomialValue_eq_finiteSum]
++  apply finiteSum_congr
++  intro i _
++  simp only [int_one_pow, Int.mul_one]
++
++/-- Natural-coefficient specialization linked to the original polynomialValue definition. -/
++theorem natural_reciprocal_derivative (q : Nat → Nat) (L : Nat)
++    (hsymm : ∀ i < L, q i = q (L - 1 - i)) :
++    2 * formalDerivativeValue (fun i => (q i : Int)) L 1 =
++      ((L : Int) - 1) * polynomialValue q L 1 := by
++  have hs : ∀ i < L, (q i : Int) = (q (L - 1 - i) : Int) := by
++    intro i hi
++    rw [hsymm i hi]
++  rw [← natural_mass_eq_polynomialValue]
++  exact reciprocal_derivative_at_one _ L hs
++
++#print axioms finiteSum_add_values
++#print axioms finiteSum_shift
++#print axioms finiteSum_reflected
++#print axioms reciprocal_first_moment
++#print axioms reciprocal_first_moment_literal
++#print axioms formalDerivativeValue
++#print axioms derivativeAtOne
++#print axioms derivativeAtOne_eq_finiteSum
++#print axioms formalDerivativeValue_one
++#print axioms reciprocal_derivative_at_one
++#print axioms reciprocal_derivative_mod_nine
++#print axioms reciprocal_derivative_mod_nine_determined
++#print axioms natural_mass_eq_polynomialValue
++#print axioms natural_reciprocal_derivative
++
++end P196.Agent51
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/compile.log b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/compile.log
+new file mode 100644
+index 0000000..84f0ba0
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/compile.log
+@@ -0,0 +1,14 @@
++'P196.Agent51.finiteSum_add_values' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.finiteSum_shift' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.finiteSum_reflected' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.reciprocal_first_moment' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.reciprocal_first_moment_literal' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.formalDerivativeValue' does not depend on any axioms
++'P196.Agent51.derivativeAtOne' does not depend on any axioms
++'P196.Agent51.derivativeAtOne_eq_finiteSum' depends on axioms: [propext]
++'P196.Agent51.formalDerivativeValue_one' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.reciprocal_derivative_at_one' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.reciprocal_derivative_mod_nine' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.reciprocal_derivative_mod_nine_determined' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.natural_mass_eq_polynomialValue' depends on axioms: [propext, Quot.sound]
++'P196.Agent51.natural_reciprocal_derivative' depends on axioms: [propext, Quot.sound]
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/result.json b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/result.json
+new file mode 100644
+index 0000000..e68b937
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/author/attempts/002/result.json
+@@ -0,0 +1,22 @@
++{
++  "command": [
++    "/tmp/p196-agent5-lean/lean-4.19.0-linux/bin/lean",
++    "--trust=0",
++    "-j1",
++    "-DElab.async=false",
++    "-o",
++    "/dev/shm/p196-agent51/reciprocal-moment/author/attempts/002/ReciprocalMoment.olean",
++    "ReciprocalMoment.lean"
++  ],
++  "cwd": "/dev/shm/p196-agent51/reciprocal-moment/source",
++  "source_sha256": "76bad5a81d0fd7ddbd8c3a9a6a1fee433573b1276f4ba84b9b90b11967afc11a",
++  "start_utc": "2026-10-16T23:53:34.446916+00:00",
++  "max_wall_seconds": 180,
++  "max_address_space": 6442450944,
++  "development_dependency_objects": "Reuse previously checked unchanged OverflowDigits.olean and ResidueSums.olean in /dev/shm/p196-agent51/build/author. Full independent fresh closure is separate.",
++  "exit_code": 0,
++  "status": "PASS",
++  "seconds": 0.9681263289967319,
++  "max_rss_kib": 431708,
++  "source_unchanged": true
++}
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/claim-receipt.json b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/claim-receipt.json
+new file mode 100644
+index 0000000..708033e
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/claim-receipt.json
+@@ -0,0 +1,4 @@
++{
++  "commit": "61ed23a9e1dc36f0ad3d0b49e46eaa5c104433f8",
++  "blob": "2b26e99231b0e5731345af0de22b5cea9677af72"
++}
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/review/CONTRACT_REVIEW.md b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/review/CONTRACT_REVIEW.md
+new file mode 100644
+index 0000000..d5dce08
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/review/CONTRACT_REVIEW.md
+@@ -0,0 +1,120 @@
++# Independent contract review: reciprocal coefficient moment
++
++## Verdict and role
++
++**PASS — the proposed contract is mathematically correct and preserves the selected source claim, while giving a valid stronger coefficient-level statement. No mathematical correction is required before implementation.**
++
++This is an independent, read-only semantic review of a proposed contract. The reviewer has not authored proof code, reserved this task, contacted remote coordination, or run a new Lean build. The coordinator is separately refreshing and publishing the protected claim. This review must not be interpreted as ownership publication or successful execution.
++
++Task identifier: `A51-SPEC-RECIPROCAL-MOMENT`. The full dedicated-formalization safeguards continue to apply. The review keeps the existing overflow-saturation proof modules frozen, requires ordinary kernel-checkable proofs, and does not authorize custom axioms, proof holes, or `native_decide`.
++
++## Source and dependency pins
++
++The exact original source is `proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/astra_spectral_carry_quotient.md`, Git blob `eac5b8f61385a615d9cc3e7796a4d698c66b716b`, at pinned source snapshot `54ac7c885e54ce74190b85ec82cceca2b23c2e38`. The selected passage immediately after the three quotient coordinates asserts:
++
++    For a reciprocal polynomial of degree L-1,
++    2 Q_derivative(1) = (L-1)Q(1).
++
++It then states that the derivative component modulo 9 adds no information when the length is known, because 2 is invertible modulo 9.
++
++The reviewer re-read the surrounding passage and confirmed that the retained source SHA-256 remains `d39212c9ab98f4c5b0fccb733d3b662e41a09804878178c82b8762684e97fb09`.
++
++The reusable finite-sum and literal natural-coefficient polynomial definitions are in the frozen `ResidueSums.lean`, SHA-256 `1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4`. Their definitions and bridge statements were inspected again for this review.
++
++## Precise intended proposition
++
++Let q be a function from natural indices to integers, let L be a natural number, and assume only
++
++    for every i < L, q(i) = q(L - 1 - i).
++
++Define the mass and first coefficient moment by the finite sums
++
++    mass(q,L)   = sum_{0 <= i < L} q(i),
++    moment(q,L) = sum_{0 <= i < L} (integer i) * q(i).
++
++The proposed general theorem is
++
++    2 * moment(q,L) = ((integer L) - 1) * mass(q,L).
++
++The quantification is universal in q and L. Symmetry is a bounded premise, not a property required at every natural index. In particular q outside the finite interval is irrelevant. The multiplier must use integer subtraction `((L : Int) - 1)`, as proposed; the source polynomial degree convention must not silently become natural subtraction in the statement.
++
++The theorem should also be exported in the literal `List.range L` form, using the established `finiteSum_eq_range` bridge. This ensures that the source claim is not confined to an unexplained recursive helper.
++
++## Why the generalization is valid
++
++For L > 0, the map i -> L-1-i permutes exactly the indices below L and is its own inverse. Reindexing the finite moment sum and applying bounded coefficient symmetry replaces the weight i by L-1-i. Adding the original and reflected sums makes every coefficient weight equal to L-1. This is the required identity over integers and does not require nonnegative coefficients, positive mass, or bounded decimal digits.
++
++For L = 0, both sums are empty and equal to zero. The integer multiplier is -1, but the right side remains zero. No index below zero exists, so the symmetry premise is vacuous. The source's canonical positive-width setting is a specialization of this harmless extension, not a reason to exclude L = 0.
++
++For L = 1, the moment is zero and the multiplier is zero; the sole coefficient is unrestricted. For odd L > 1, the central coefficient contributes once, with twice its index equal to L-1. No evenness assumption on that coefficient is needed for this algebraic identity. Such an assumption belongs to physical mirrored digit-sum realizability, a separate property.
++
++The fixed reversal index L-1 is essential. A polynomial that happens to be reciprocal with respect to some different degree does not automatically satisfy this contract at an arbitrarily padded width. The proposed explicit symmetry hypothesis correctly fixes the relevant width and prevents that ambiguity.
++
++The source has canonical natural coefficients and nonzero endpoints, so its actual polynomial degree is L-1. The generalization permits signed coefficients and vanishing endpoints; in those cases the result is an identity for a coefficient word symmetric relative to the specified width. It must not be advertised as a statement that all such words have actual polynomial degree L-1.
++
++## Derivative interpretation
++
++For the formal polynomial
++
++    Q(x) = sum_{0 <= i < L} q(i) * x^i,
++
++coefficientwise formal differentiation gives
++
++    Q'(x) = sum_{1 <= i < L} (integer i) * q(i) * x^(i-1).
++
++Thus Q'(1) is exactly `moment(q,L)`, since the omitted index-zero term would be zero. A direct derivative-at-one definition by the literal weighted coefficient sum is a valid transparent representation of this value. It should be explicitly documented as formal polynomial differentiation and tied to the finite-sum version by a proved equality.
++
++An alternative acceptable representation defines derivative coefficient j as `(integer (j+1))*q(j+1)` and sums the first L-1 such coefficients. If that representation is chosen, the shift and the empty cases must be proved. No real or complex analytic differentiation is required for the source's integer-polynomial assertion.
++
++The derivative must not be defined as half of `(L-1)*mass`, as that would build the desired theorem into the definition. Likewise a generic moment name with no coefficient-derivative interpretation is insufficient for the requested direct source mapping. The proposed explicit coefficient definition avoids both problems.
++
++## Modulo-nine consequence
++
++The proposed consequence is correct for all signed coefficient words satisfying the contract:
++
++    moment(q,L) % 9 =
++      (5 * (((integer L) - 1) * mass(q,L))) % 9.
++
++Indeed 2*moment = (L-1)*mass, and 5 is the inverse of 2 modulo 9 because 2*5 = 10 is congruent to 1. This argument uses multiplication in the residue ring, not integer division of an arbitrary residue by 2. It remains valid for negative mass and moment values under Lean's integer remainder at the positive modulus 9.
++
++The same-width determination corollary must quantify over two functions q and r, require bounded symmetry for both at the same L, and assume only
++
++    mass(q,L) % 9 = mass(r,L) % 9.
++
++It can then conclude
++
++    moment(q,L) % 9 = moment(r,L) % 9.
++
++This is exactly the source's claim that the derivative coordinate modulo 9 adds no information once the width and mass coordinate modulo 9 are fixed. Exact equality of the masses is unnecessary. Symmetry for just one of the two words, or equality at unrelated widths without an additional width congruence premise, would not give that result.
++
++## Required natural-coefficient bridge
++
++The existing `polynomialValue` accepts q : Nat -> Nat and is the literal integer sum of `(q(i) : Int) * x^i` over `List.range L`. The natural wrapper must prove, for the same q and L,
++
++    finiteSum (fun i => (q(i) : Int)) L = polynomialValue q L 1.
++
++This follows by the existing finite-list bridge and evaluation of 1^i, but it must be supplied as an actual checked equality. Bounded natural coefficient symmetry transfers by casting to the integer symmetry premise. The resulting source-facing theorem must state the derivative-at-one expression and the actual `polynomialValue q L 1`, rather than silently introducing a second mass semantics.
++
++There is no need to assume decimal digit bounds, canonicality, or positivity in this wrapper. If a later theorem instantiates q with actual decimal column sums, it should use the existing bounded column-sum symmetry interface. That further decimal specialization is optional unless the final claim record adds it explicitly.
++
++## Contract completeness and acceptance obligations
++
++The final protected record should name the actual exported theorem identifiers before acceptance: the integer moment identity, literal finite-list identity, derivative-at-one source statement, modulo-nine formula, same-width determination corollary, and natural-coefficient source bridge. Exact identifiers have not yet been supplied to this reviewer; this is an administrative detail to record, not a mathematical defect in the proposed statements.
++
++Final source review should verify all of the following:
++
++1. The symmetry premise applies only below L, all sum limits agree, and arbitrary signed coefficients and L = 0 remain included.
++2. Reindexing really is a finite-range permutation; natural subtraction is justified only at in-range indices.
++3. The public derivative expression has the explicit formal coefficient interpretation described above.
++4. The same-width result assumes symmetry for both words and equal mass residues at the same modulus.
++5. The natural wrapper connects to the frozen literal `polynomialValue`, without changing its definition or any overflow-saturation file.
++6. No circular hypotheses, proof holes, new mathematical axioms, or forbidden evaluation shortcuts occur.
++7. Exact final sources and their entire local import closure are freshly compiled; the actual endpoint and transitive axiom output is retained and independently reviewed.
++
++No finite computation over selected widths can replace the universal coefficient identity. Kernel-checkable arithmetic for the fixed inverse 5 modulo 9 is acceptable and does not restrict the width quantifier.
++
++## Scope boundary
++
++This task can close the reciprocal first-moment identity and the derivative-coordinate redundancy modulo 9 at fixed width. It does not establish the carry-defect ideal, the quotient-ring isomorphism, the quotient cardinality, all residue realizability claims, or any ordinary-orbit persistence or all-time 196 result. Those statements require their own exact proof chains.
++
++The proposed contract is ready for proof implementation after the coordinator's separate ownership publication succeeds.
+diff --git a/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/task.json b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/task.json
+new file mode 100644
+index 0000000..2b26e99
+--- /dev/null
++++ b/proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/task.json
+@@ -0,0 +1,135 @@
++{
++  "schema_version": 1,
++  "task_id": "agent51-spectral-reciprocal-moment-20261016",
++  "owner": "Agent #51",
++  "session": "3551b32d054b",
++  "role": "LEAN_FORMALIZATION",
++  "status": "CLAIMED",
++  "chat_language": "German",
++  "deliverable_language": "English",
++  "coordination_issue": 61,
++  "main_write_slot": false,
++  "source_snapshot": "54ac7c885e54ce74190b85ec82cceca2b23c2e38",
++  "inventory_claims": [
++    "A51-SPEC-RECIPROCAL-MOMENT"
++  ],
++  "source_claim": {
++    "path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/astra_spectral_carry_quotient.md",
++    "blob": "eac5b8f61385a615d9cc3e7796a4d698c66b716b",
++    "section": "Lines103–118, reciprocal polynomial identity and derivative-coordinate redundancy",
++    "statement": "For the fixed-width reciprocal coefficient word q of Q, 2 Q'(1)=(L-1)Q(1). Because2 is invertible modulo9, the derivative coordinate is determined by width L and Q(1) modulo9."
++  },
++  "target_statement": [
++    "For every q:Nat→Int and L:Nat, assuming only ∀i<L,q i=q(L-1-i), prove 2*finiteSum(fun i=>(i:Int)*q i)L=((L:Int)-1)*finiteSum q L.",
++    "Export the same identity using literal List.range sums. Define the finite formal coefficient derivative evaluation and connect its value at1 with the weighted sum, including the vanishing index0 term.",
++    "Prove derivativeAtOne q L %9=(5*(((L:Int)-1)*coefficientMass q L))%9. For two symmetric words of the same width, equality of coefficient masses mod9 implies equality of derivatives at1 mod9.",
++    "For natural coefficients, connect coefficientMass (fun i=>(q i:Int)) L with existing literal polynomialValue q L 1 and export the exact reciprocal identity."
++  ],
++  "hypotheses": [
++    "Only finite reflection symmetry; no coefficient sign, digit bound, actual polynomial degree, canonical-number or carry assumption."
++  ],
++  "quantifier_order": "For every fixed width L and every integer coefficient function q, under symmetry on i<L. For determination: one common L, two separately symmetric coefficient functions, then their equal mass residue.",
++  "boundary_cases": [
++    "L=0 has empty sums and integer factor-1; exact algebraic extension of the source.",
++    "L=1 has zero derivative and right-hand factor0.",
++    "Signed coefficients and zero boundary coefficients allowed; L is reflection width rather than necessarily actual polynomial degree.",
++    "No condition outside i<L."
++  ],
++  "relationship_to_source": "Exact original identity plus a signed-coefficient generalization. The natural-coefficient wrapper preserves the original Q(1). Full Laurent quotient classification is outside scope.",
++  "expected_final_theorems": [
++    "P196.Agent51.reciprocal_first_moment",
++    "P196.Agent51.reciprocal_first_moment_literal",
++    "P196.Agent51.reciprocal_derivative_at_one",
++    "P196.Agent51.reciprocal_derivative_mod_nine",
++    "P196.Agent51.reciprocal_derivative_mod_nine_determined",
++    "P196.Agent51.natural_reciprocal_derivative"
++  ],
++  "owned_paths": [
++    "proofs/contributions/agent-51/spectral-reciprocal-moment-20261016/",
++    "proofs/Agent51ReciprocalMoment.registry.json"
++  ],
++  "contribution_branch": "formalize/agent-51/spectral-reciprocal-moment-20261016",
++  "branch_base_dependency": "7360b12a0a5889761c845a56a4b8d8a1df5f39b5",
++  "dependencies": [
++    {
++      "module": "ResidueSums",
++      "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/ResidueSums.lean",
++      "sha256": "1333e156e2da6f02a18ff67f83e8ce36955e93c00e425cf67aff713f916140d4",
++      "git_blob": "f1e3c1c5e7cd780b28f6752d980158bd9b9c98b6"
++    },
++    {
++      "module": "OverflowDigits",
++      "path": "proofs/contributions/agent-51/spectral-overflow-saturation-20261016/OverflowDigits.lean",
++      "sha256": "65adeb3ae7bea93e390a95fc5f8b58ec43f0f64f01ed9db3f51392657ba89a41",
++      "git_blob": "6ad7ea581c1ed9e6f8c4907dcb5ad73558423b97"
++    }
++  ],
++  "missing_helpers": [
++    "Finite integer sum invariance under index reflection.",
++    "Finite integer sum additivity; existing Nat-valued wordSum_reflected is a related foundation helper, not this weighted theorem."
++  ],
++  "ownership_check": {
++    "coordination_parent": "86541584a15b9070d21ebe7da7fe2aa9cc938416",
++    "baseline": "38f79914241eb6a379b29ca13a19b95393fdc1c5",
++    "tasks_in_baseline": 201,
++    "issue_last_seen": 6226832339,
++    "result": "Read-only specialist checked current task names/hashes and relevant mathematical scopes, Agent14 actual coordinate source at a883847381cd800b13e511d8ccc8909ba998866c (blob e06631541818a8ee8bf266193f35637a5a07bd21), targeted existing theorem searches, and recent issue61. Root inspected subsequent changed task scopes: distinct Agent1 quotient return-clock and integration/delivery records. No equivalent first-moment reservation found. Bounded evidence; not a globally exhaustive absence claim.",
++    "retry": {
++      "unpublished_commit": "3d3643b1386c52ee40f92eb62a2fac675d9e8353",
++      "task_readback": 404,
++      "intervening_scope": "Inspected Agent17 PR147 delivery, Agent18 PR134 delivery update and Agent32 PR117 exact certificate repair. All are distinct from reciprocal moments. No equivalent new ownership."
++    }
++  },
++  "contract_review": {
++    "reviewer": "Genuine nonauthor /root/semantic_review",
++    "status": "PASS",
++    "sha256": "4a6004fcd0690fbc43f73500e1bc3b4265248e0efbfa80cb8c27fb531ac87165"
++  },
++  "acceptance": {
++    "lean": "4.19.0",
++    "commit_prefix": "6caaee842e94",
++    "compiler_args": [
++      "--trust=0",
++      "-j1",
++      "-DElab.async=false"
++    ],
++    "allowed_axioms": [
++      "propext",
++      "Classical.choice",
++      "Quot.sound"
++    ],
++    "forbidden": [
++      "sorry",
++      "admit",
++      "sorryAx",
++      "native_decide",
++      "Lean.ofReduceBool",
++      "new mathematical axioms"
++    ],
++    "required": [
++      "Exact source-semantic contract review",
++      "Fresh source compilation of entire local import closure",
++      "Actual public and transitive axiom audit",
++      "Genuine nonauthor semantic review and clean rebuild",
++      "Source hashes and all substantive attempts/logs retained"
++    ]
++  },
++  "subagents": {
++    "author": "/root/claim_census, reassigned after protected claim acceptance",
++    "semantic_review": "/root/semantic_review, genuine nonauthor",
++    "execution_review": "/root/environment_audit, genuine nonauthor",
++    "initial_model": "gpt-6-astra",
++    "initial_reasoning_effort": "ultra",
++    "followup_control": "Tool exposes no reasoning-effort parameter; initial ultra setting remains inherited. No invented reassignment setting."
++  },
++  "scope_exclusions": [
++    "No carryfree or overflow saturation reproof",
++    "No T/R or U/S or carry-support takeover",
++    "No four A/H/J evolution laws",
++    "No full quotient-ring classification",
++    "No threshold-optimality claim",
++    "No main write slot"
++  ],
++  "verification_status": "Contract independently reviewed; no new mathematical source or Lean build yet.",
++  "next_action": "After successful guarded claim and exact readback, author the integer finite-sum reflection argument and derivative/mod9 bridges; preserve all attempts, independently review and rebuild."
++}
