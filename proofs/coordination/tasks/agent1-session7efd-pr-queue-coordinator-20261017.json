@@ -4,8 +4,8 @@
   "owner": "Agent #1",
   "session": "7efd48098de6",
   "role": "PR_QUEUE_COORDINATOR",
-  "status": "ACTIVE_COORDINATION_AWAITING_CONFIRMED_MAIN_HANDOFF",
-  "active_editing": true,
+  "status": "EXTERNALLY_BLOCKED_CONFIRMED_MAIN_WRITER_TRANSFER",
+  "active_editing": false,
   "owned_paths": [
     "proofs/coordination/tasks/agent1-session7efd-pr-queue-coordinator-20261017.json",
     "proofs/coordination/reviews/agent1-session7efd-queue/"
@@ -21,39 +21,96 @@
     "observed_main": "74a1c3922eb7af438fe40b23d2105ad07556e3f5"
   },
   "handoff": {
-    "status": "REQUESTED_NOT_ACKNOWLEDGED",
+    "status": "REQUESTED_NOT_ACKNOWLEDGED_EXACT_USER_REASSIGNMENT_PREPARED",
     "request": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230153041",
     "requested_recipient": "Agent #31/session02893e4f368d",
     "requested_scope": "Sole serialized main integration slot beginning with exact PR104; keep existing delivery/source owners and postcheck/release rule.",
     "acknowledgment_reference": null,
-    "explicit_user_reassignment_reference": null
+    "explicit_user_reassignment_reference": null,
+    "proposal": "https://github.com/taco-jpg/p196-algorithm/blob/816169bcae008e55be703a7673b7a9c4e79144b1/proofs/coordination/reviews/agent1-session7efd-queue/MAIN_HANDOFF_PROPOSAL.json",
+    "current_authorized_writer_unchanged": true
   },
   "immediate_queue": [
     {
       "pr": 104,
+      "delivery_owner": "Agent #31 / 02893e4f368d",
       "head": "c9a86a40ffd478f7c01ac68688896cba91f94dd1",
-      "delivery_owner": "Agent #31/session02893e4f368d",
-      "state": "READY_PACKET_AWAITING_AUTHORIZED_WRITER",
       "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
       "tested_tree": "2765245df1124e30f3148c4a96dce3228e8605dc",
-      "packet": "https://github.com/taco-jpg/p196-algorithm/blob/89e086f324dc11c515b5547b566a6836eb104014/proofs/coordination/reviews/agent6-session01c8/pr104-current-base/EXECUTION_PACKET.md"
+      "packet": "https://github.com/taco-jpg/p196-algorithm/blob/89e086f324dc11c515b5547b566a6836eb104014/proofs/coordination/reviews/agent6-session01c8/pr104-current-base/EXECUTION_PACKET.md",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
     },
     {
       "pr": 132,
+      "delivery_owner": "Agent #20 / 86350e418736",
       "head": "43219b02c191325d0263b4ad2fa1f4ebb1470a5c",
-      "delivery_owner": "Agent #20/session86350e418736",
-      "state": "READY_PACKET_REBIND_AFTER_PRIOR_MERGE",
       "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
-      "tested_tree": "9bc492bce34807d80ba9528918725a939dd66111"
+      "tested_tree": "9bc492bce34807d80ba9528918725a939dd66111",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6227116204",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
+    },
+    {
+      "pr": 146,
+      "delivery_owner": "Agent #16 / 2b1962844ca1",
+      "head": "159ed83569f5cc4d058557c2b24b28839552b75a",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "d7f318d76f05fea5a5ac8328090524c91bc6572c",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/blob/3d0fc6740207171d1de646959354b19cecfbf6c6/proofs/coordination/reviews/agent1-session7efd-queue/PR146_WRITER_PACKET.md",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
+    },
+    {
+      "pr": 140,
+      "delivery_owner": "Agent #29 / 1f13321af678",
+      "head": "1c1bff874c915d90d2820090e028b40002145375",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "a55dc6c6279b417f243b67b3724abe315f374d4c",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230254906",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
     },
     {
       "pr": 163,
+      "delivery_owner": "Agent #3 / f1e3cf3a235f",
       "head": "b5448228f38b925f9924030b2fafd12e13ea8fc3",
-      "delivery_owner": "Agent #3/sessionf1e3cf3a235f",
-      "state": "READY_PACKET_REBIND_AFTER_PRIOR_MERGE",
       "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
       "tested_tree": "c119bf6987f76b7cd610cf5d26d934d389b5c2ce",
-      "packet": "https://github.com/taco-jpg/p196-algorithm/blob/ad32bebcca68f916ab675689c0a97dc419d17638/proofs/coordination/reviews/agent3-sessionf1e3cf3a235f/pr163/INDEX.md"
+      "packet": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230135257",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
+    },
+    {
+      "pr": 157,
+      "delivery_owner": "Agent #8 / 2e594544e72c",
+      "head": "056e6e9256ef446b372354c911e2be3d3c006dd1",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "a01aee0be2a6045ad6b8560a135230eb37a16e00",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230064066",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
+    },
+    {
+      "pr": 127,
+      "delivery_owner": "Agent #13 / 6124a6476634",
+      "head": "c68b0aaa5344f2cc646c035e2efca187852cb57d",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "46b14363da5a50107c209e2ae823a9e60a44fb62",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230185131",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
+    },
+    {
+      "pr": 160,
+      "delivery_owner": "Agent #15 / c0bb09a3002b",
+      "head": "fdbfb3b96fc699e45df55bcdf75c79c65dc52e83",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "4123ca2ba0be99d36bf88cf0ccb6afe3f84bdee2",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230155999",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
+    },
+    {
+      "pr": 164,
+      "delivery_owner": "Agent #5 / d4d5258160f7",
+      "head": "ec90fb1f0fde6b1ff6f9bb2a411aad8ac7c79e3a",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "7f84623f6ddc8811d1bc9a365fa473101997d02a",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230201667",
+      "status": "PUBLISHED_PACKET_FRESH_MUTATION_PREFLIGHT_REQUIRED"
     }
   ],
   "owned_verification": {
@@ -61,13 +118,43 @@
     "head": "6f48ca108dee4c07588f8c5582bcfef55388537f",
     "delivery_owner": "Agent #9/sessionb2e768ea994e",
     "task": "proofs/coordination/tasks/agent1-session7efd-pr177-verification-20261017.json",
-    "state": "COMPLETE_PASS_FINAL_RAW_PUBLICATION_IN_PROGRESS",
+    "state": "COMPLETE_PASS_FINAL_PUBLICATION_READ_BACK_FORMAL_REVIEW_SUBMITTED",
     "source_module_count": 19,
     "theorem_count": 1453,
-    "safe_definition_count": 414
+    "safe_definition_count": 414,
+    "publication": "https://github.com/taco-jpg/p196-algorithm/blob/7cd14450ac9509f9bb2e54ca342afc93dbed38cb/proofs/coordination/reviews/agent1-session7efd-pr177/final/INDEX.md",
+    "formal_review": 5556453802,
+    "delivery_receipt": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230254242"
   },
   "actual_merges_this_session": [],
   "actual_ready_transitions_this_session": [],
-  "next_action": "Publish completed PR177 raw evidence and independent reviews; reconcile ready packets and repair owners while awaiting real Agent31 acknowledgment. Do not write main until exclusive role transfer is confirmed.",
-  "updated_at": "2026-10-17T05:27:04.759Z"
+  "next_action": "Obtain actual Agent31 acknowledgment/release or explicit user reassignment; then publish/read back one guarded canonical role and main-slot accounting transition, refresh PR104 exact H/current B/qualified evidence/platform gates, perform ordinary guarded merge and target/postchecks, release, and continue prioritized queue. Until authorization, no main mutation.",
+  "updated_at": "2026-10-17T05:43:31.007Z",
+  "queue_publication": {
+    "commit": "4f7ad6df875d09e963d3e40be3aeb396df431509",
+    "path": "proofs/coordination/reviews/agent1-session7efd-queue/QUEUE_STATUS.md",
+    "snapshot": "proofs/coordination/reviews/agent1-session7efd-queue/QUEUE_SNAPSHOT.json",
+    "readback": "EXACT",
+    "open_pr_count": 53,
+    "published_writer_packet_count": 9
+  },
+  "additional_completed_support": [
+    {
+      "pr": 146,
+      "status": "CURRENT_BASE_WRITER_ROUTING_GAP_RESOLVED",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/blob/3d0fc6740207171d1de646959354b19cecfbf6c6/proofs/coordination/reviews/agent1-session7efd-queue/PR146_WRITER_PACKET.md",
+      "delivery_owner": "Agent #16/session2b1962844ca1",
+      "new_proof_build": false
+    },
+    {
+      "pr": 148,
+      "status": "BOUNDED_ARCHIVE_RECOVERY_ATTEMPT_COMPLETE_EXACT_BYTES_NOT_LOCATED",
+      "receipt": "https://github.com/taco-jpg/p196-algorithm/blob/3d0fc6740207171d1de646959354b19cecfbf6c6/proofs/coordination/reviews/agent1-session7efd-queue/PR148_RECOVERY_STATUS.json",
+      "delivery_owner": "Agent #28/session72ab3fa8c99b",
+      "required_artifact_sha256": "9acf14d0b1eacc34d4ec7334eee37917e7e2367f4406468165de9a10a8930c15",
+      "next_action": "Actual holder supplies exact original bytes or immutable accessible locator; Agent11 has accepted further recovery support."
+    }
+  ],
+  "pending_user_decision": "Whether to supersede Agent31's active main role using the exact prepared reassignment. No user reassignment has been received.",
+  "background_execution_claim": false
 }
