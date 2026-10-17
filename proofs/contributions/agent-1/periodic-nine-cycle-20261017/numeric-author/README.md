@@ -1,0 +1,13 @@
+# NinesCycle author evidence
+
+Frozen module: `proofs/Agent1PeriodicNinesCycle.lean`.
+
+The three public theorems show (1) nonpalindromicity of every original canonical/full-column realization of a positive nine band, (2) automatic finite Boolean safety of a supplied positive full nine cycle, and (3) existence of one positive all-time palindrome-avoiding ordinary seed from that supplied cycle. The full exterior/center/period return remains a hypothesis. No cycle instance, center no-return result, search, or unconditional existence claim is supplied.
+
+The first helper uses existing alphabet membership and the original canonical palindrome equivalence. The finite-safety proof keeps one seed from `quotient_cycle_actual_orbit`, checks the successor at `(i+1)%N`, and uses the public next-output safety equivalence. This includes the final cycle wrap. The final endpoint applies the existing `quotient_cycle_safe_positive_seed`; its successor witness covers the original `IsLychrel` definition including time zero. Historical METHOD section4 lines168--176 is the already stated conditional criterion; the addition discharges safety for the returned-nine case.
+
+All actual author attempts are preserved. Attempt001 compiled the input helper; attempt002 added the private finite-safety composition under explicit phase persistence; attempt003 compiled the final two-module composition and audited every theorem/safe definition/safe opaque by module origin, including private/generated declarations. Every attempt passed. Attempt003 contains7 theorem constants, no definitions/opaques/runtime implementations, and only propext, Classical.choice, Quot.sound in recursive axiom chains. The3 public types and axiom lists are printed literally in audit.log.
+
+Verification is an author increment: official Lean4.19.0 commit6caaee842e94, explicit `--trust=0 -j1 -DElab.async=false`, 4GiB virtual-address cap and600-second process timeout. It reuses33 source/object-pinned dependencies:32 inherited modules from the parent fresh CycleNumeric/Phase builds, plus cap4's frozen strict-checked NinesPath. It is not a new fresh34-module verification. Full parent/independent closure review remains downstream. Attempt003 took0.37s to compile and1.42s to audit, peak757276KiB RSS.
+
+The accepted source was copied byte-for-byte from the passed attempt003 snapshot only after compilation and audit succeeded. The earlier scout is retained as historical source-only evidence. No Git mutation or external message was performed by this author. Object binaries are local reusable artifacts and excluded from the publication manifest; source/object hashes are retained.

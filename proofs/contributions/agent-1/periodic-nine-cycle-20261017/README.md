@@ -1,0 +1,11 @@
+# Conditional nine-cycle adapter — author checked
+
+Accepted task claim ec362fbee11009628944ee14ec6a1d1b29990e2e; proposal issue61 comment6228190397. This isolated branch starts from reviewed CycleAdapter7f23ce839fcc88acb235b1816c2c57dc12e16a33 (PR168), preserving original theorem identifiers and dependencies.
+
+The new theorem assumes an exact positive-length complete-tuple quotient return, original initial validity and initial period[9,9,9,9]. It discharges finite safety and yields a positive ordinary all-time palindrome-avoiding seed conditionally on that supplied cycle. No cycle or infinite orbit is constructed here, and no196 conclusion is asserted. The preliminary finite persistence theorem needs only the exact path and both nine endpoints, including the zero-length case. Full bounds, leading conventions and actual carries remain those of the original definitions.
+
+Source-only scouts are retained in scope/. They are interpretation/proposal evidence, not newly established mathematical results. cap4_existing_theorems owns NinesPath; numeric_bridge_review owns NinesCycle; symbolic_scope independently reviews both; verification_plan owns registry checks; root is sole Git writer. Author Lean checks, exact source pins and fresh full-closure verification will be recorded as they occur. Historical affirmative discovery, component8, center no-return and generic population work are outside this claim.
+
+Both new modules are now LEAN-CHECKED with complete new-origin author audits. NinesPath sourceSHA72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866 contributes16 theorem constants; NinesCycle sourceSHA2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd contributes7. Each uses only propext, Classical.choice and Quot.sound, with no new safe definitions/runtime entries. All five exported theorem axiom reports are preserved. Author checks honestly reuse pinned dependency objects; a failed first Path elaboration and every successful incremental numeric checkpoint remain retained.
+
+The frozen registry d3fca8aa3b055bd287f347a21d132a02c41c6713cdd754fd42a90bf5afcccc80 includes exactly34 modules and all five public endpoints. Source-derived closure and public API checks passed. Fresh parent and independent complete verification are next; this checkpoint does not assert those gates passed or shared-main integration.

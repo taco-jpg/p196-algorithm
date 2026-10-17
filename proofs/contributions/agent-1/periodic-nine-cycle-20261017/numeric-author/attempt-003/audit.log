@@ -1,0 +1,33 @@
+Agent1.Periodic.periodic_nines_input_nonpalindrome : ∀ (B H : Agent8.Word) (k n : Nat) (d : Nat → Nat),
+  0 < k →
+    DecimalDigits.Canonical n d (List.length (Agent1.Periodic.periodicWord B H [9, 9, 9, 9] k)) →
+      (∀ (i : Nat),
+          i < List.length (Agent1.Periodic.periodicWord B H [9, 9, 9, 9] k) →
+            DecimalDigits.columnSum d (List.length (Agent1.Periodic.periodicWord B H [9, 9, 9, 9] k)) i =
+              (Agent1.Periodic.periodicWord B H [9, 9, 9, 9] k)[i]?.getD 0) →
+        ¬Lychrel196.Palindrome n
+'Agent1.Periodic.periodic_nines_input_nonpalindrome' depends on axioms: [propext, Quot.sound]
+Agent1.Periodic.quotient_cycle_nines_safe : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0) →
+      w 0 = [9, 9, 9, 9] →
+        0 < N →
+          B N = B 0 ∧ H N = H 0 ∧ w N = w 0 → ∀ (i : Nat), i < N → Agent1.Periodic.safePeriodic (B i) (H i) (w i) = true
+'Agent1.Periodic.quotient_cycle_nines_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.quotient_cycle_nines_positive_seed : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0) →
+      w 0 = [9, 9, 9, 9] → 0 < N → B N = B 0 ∧ H N = H 0 ∧ w N = w 0 → ∃ n, 0 < n ∧ Lychrel196.IsLychrel n
+'Agent1.Periodic.quotient_cycle_nines_positive_seed' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_nines_input_nonpalindrome._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_cycle_nines_positive_seed : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase._proof_3 : [propext,
+ Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase._proof_2 : [propext,
+ Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_cycle_nines_safe : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.periodic_nines_input_nonpalindrome : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase : [propext,
+ Quot.sound,
+ Classical.choice]
+MODULE_AUDIT theorems=7 definitions=0 opaque=0 union=[Classical.choice, Quot.sound, propext]
