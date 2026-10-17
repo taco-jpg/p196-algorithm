@@ -131,6 +131,26 @@ theorem runMonitorFrom_m2_iff_allExceptional (symbols : List Nat) :
       · simp [runMonitorFrom_cons, monitorStep, allExceptional, hq, ih]
       · simp [runMonitorFrom_cons, monitorStep, allExceptional, hq, runMonitorFrom_m3]
 
+theorem runMonitor_cons_m1 (q : Nat) (qs : List Nat) :
+    runMonitor (q :: qs) = .m1 ↔ q ≤ 9 ∧ allLow qs = true := by
+  unfold runMonitor
+  rw [runMonitorFrom_cons]
+  by_cases hq : q ≤ 9
+  · simp [monitorStep, hq, runMonitorFrom_m1_iff_allLow]
+  · by_cases h11 : q = 11
+    · simp [monitorStep, hq, h11, runMonitorFrom_m2_iff_allExceptional]
+    · simp [monitorStep, hq, h11, runMonitorFrom_m3]
+
+theorem runMonitor_cons_m2 (q : Nat) (qs : List Nat) :
+    runMonitor (q :: qs) = .m2 ↔ q = 11 ∧ allExceptional qs = true := by
+  unfold runMonitor
+  rw [runMonitorFrom_cons]
+  by_cases hq : q ≤ 9
+  · simp [monitorStep, hq, runMonitorFrom_m1_iff_allLow]
+  · by_cases h11 : q = 11
+    · simp [monitorStep, hq, h11, runMonitorFrom_m2_iff_allExceptional]
+    · simp [monitorStep, hq, h11, runMonitorFrom_m3]
+
 /-- Finite monitor alphabet and all valid optional center symbols. -/
 def monitorStates : List MonitorState := [.m0, .m1, .m2, .m3]
 
