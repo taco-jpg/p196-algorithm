@@ -1,0 +1,9 @@
+# Nine-center excursion — author checked
+
+Accepted remote claim4a96b34d8991f7cb13484e6dc25548ea7870f271; issue61 proposal6228582331. Branch ancestry is reviewedfa8cf902 (PR173). The exact goal is a conditional temporal restriction: every positive original-valid full nine tuple return has nonempty centers through the endpoint and some used center-length decrease of at least7. This excludes only returns with all source center lengths at most7. No unrestricted no-return theorem or cycle construction is asserted.
+
+The prerequisite ledger uses the actual computed residual strip count, original left entry and original whole-word clock. All cases, including zero-length paths and empty centers, remain in the ledger. The nonempty conclusion uses actual mixed carries rather than a hypothesis excluding empty centers. A separate bounded local sharpness investigation asks whether a clock-one drop of7 can occur; its status is independent of the temporal theorem.
+
+Authors: center_parent_receipt owns NinesLedger; root owns NinesExcursion and is sole Git writer; suffix_receipt_resume owns optional sharpness investigation; control_review owns registry metadata; center_review_resume independently reviews new proof sources. Proposed contracts and source attempts are WIP until actual Lean checks and axiom receipts are recorded. Source-only census is retained under scope/.
+
+Both initial modules now passed first-attempt strict author checks with full new-origin audits. Ledger sourcef3cbfad8 has11 theorem constants,5 axiom-free safe definitions and13 generated runtime definitions; Excursion sourceb923e5ac has15 theorem constants and0 newdefinitions/runtime. Permitted standard foundational axioms are reported explicitly. Reused prior dependency objects are recorded,24 for Ledger and28 for Excursion. The combined fresh parent and independent review remain pending. The optional clock-one sharpening remains WIP and is excluded from the initial accepted scope.
