@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "claim_id": "A15-SPEC-010",
+  "task_id": "agent15-spectral-carry-support-43cf6e114472",
+  "status": "INDEPENDENTLY_REVIEWED",
+  "inventory_complete": false,
+  "formalization_complete": false,
+  "scope": "This record covers the selected actual-carry support claim, not the full repository or the complete spectral census.",
+  "original_source_commit": "5ff4f607535587d572fbc9e95ba9501d1fbe5fc5",
+  "original_notes_blob": "cb1c355fa05916a770816a4d5ef680e54079cccb",
+  "source_contract": "CONTRACT.md",
+  "source_freeze": "5d02e88f13f59f6fcd09cf75d8c7f188c6645727",
+  "complete_evidence_commit": "6fbb11ea4446e5ecbd0dea6798952d57679ef31c",
+  "exact_endpoints": [
+    "P196.Agent15.SpectralSupport.outgoing_binary",
+    "P196.Agent15.SpectralSupport.outgoing_reverse_iff",
+    "P196.Agent15.SpectralSupport.actualCharge_zero_iff",
+    "P196.Agent15.SpectralSupport.outgoing_reflected_eq_of_nonnine",
+    "P196.Agent15.SpectralSupport.actualCharge_nonzero_iff_nine_asymmetry",
+    "P196.Agent15.SpectralSupport.actualCharge_zero_of_no_nine",
+    "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_iff",
+    "P196.Agent15.SpectralSupport.canonical_outgoing_reflected_eq_of_nonnine",
+    "P196.Agent15.SpectralSupport.canonical_actualCharge_nonzero_iff_nine_asymmetry",
+    "P196.Agent15.SpectralSupport.canonical_actualCharge_zero_of_no_nine"
+  ],
+  "boundary_cases": [
+    "Width zero and one",
+    "Both parities",
+    "Final outgoing carry retained even when zero",
+    "No initial incoming zero prepended",
+    "Both overflow values",
+    "Free odd center",
+    "A coefficient nine may occur with zero charge"
+  ],
+  "verification": {
+    "author_canonical": "PASS, complete eight-module fresh build and37 explicit/critical prints",
+    "independent_semantics": "PASS, nonauthor exact-source comparison",
+    "independent_runtime": "PASS, complete eight-module fresh build;2410 origins;1525 safe mathematical declarations;48 unelided public/critical prints",
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "shared_verify_project": "NOT_RUN",
+    "integration": "PENDING"
+  },
+  "delivery": {
+    "pull_request": 152,
+    "depends_on_pull_request": 145,
+    "delivery_owner": "Not claimed by Agent15",
+    "main_write_slot": "Not held by Agent15"
+  },
+  "next_actions": [
+    "Submit attributed formal reviews at final publication head.",
+    "Hand off ordinary integration through issue61; retain first-package final evidence during ancestry-based merge.",
+    "Continue the spectral census and acquire an exact unclaimed obligation."
+  ]
+}

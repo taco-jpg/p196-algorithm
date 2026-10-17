@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-10-17T00:02:47.875309+00:00",
+  "stage": "Git tree publication",
+  "attempt": 1,
+  "status": "REJECTED_LOCALLY_BEFORE_REMOTE_COMMIT_OR_REF_MUTATION",
+  "expected_complete_tree": "d028dbac6601227dd1ad000212bbb407dd218d17",
+  "constructed_tree": "ff3e1b7f84a45ae3396e32156a1d87497c20519a",
+  "diagnosis": "The publication pack incorrectly assigned mode100644 to every text entry. The committed checker has executable mode100755. Full git diff-tree --raw inspection identified this sole mode discrepancy; bytes and blob identity were unchanged.",
+  "affected_path": "proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/check.py",
+  "checker_blob": "ff326ec8517dc270759b53d3e39ba0ecfc23af13",
+  "incorrect_mode": "100644",
+  "committed_mode": "100755",
+  "correction": "Create an immutable tree over the attempted tree with only the checker mode corrected; exact complete tree equality then passed. Only after equality was the remote commit created and branch advanced by expected_sha CAS.",
+  "successful_remote_commit": "6fbb11ea4446e5ecbd0dea6798952d57679ef31c",
+  "archives": "All three uploaded archive blobs matched their independently computed local Git object IDs before either tree attempt. No archive was changed or reconstructed to repair the mode.",
+  "source_and_checker_bytes_changed": false,
+  "related_read_only_diagnostic": "A later metadata read requested nonexistent COVERAGE.json before its creation; FileNotFoundError changed no file. Scoped coverage is now created explicitly."
+}
