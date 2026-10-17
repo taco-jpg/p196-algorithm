@@ -1,0 +1,216 @@
+GENERATED_RUNTIME_IMPLEMENTATION List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1._closed_5._cstage2
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.returnCore._cstage2
+AUDIT_SAFE_CONSTANT Agent1.Periodic.quotient_return_component_constant theorem=true : [propext,
+ Quot.sound,
+ Classical.choice]
+GENERATED_RUNTIME_IMPLEMENTATION List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1._closed_1._cstage2
+AUDIT_SAFE_CONSTANT Agent1.Periodic.quotient_return_component_constant._proof_1 theorem=true : [propext, Quot.sound]
+AUDIT_SAFE_CONSTANT Agent1.Periodic.quotient_return_initial_outside theorem=true : [propext,
+ Quot.sound,
+ Classical.choice]
+AUDIT_SAFE_CONSTANT Agent1.Periodic.quotient_return_core theorem=true : [propext, Quot.sound, Classical.choice]
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.returnCore._cstage1
+AUDIT_SAFE_CONSTANT Agent1.Periodic.quotient_return_initial_outside._proof_6 theorem=true : [propext, Quot.sound]
+AUDIT_SAFE_CONSTANT _private.Agent1PeriodicReturnCore.0._proof_5 theorem=true : [propext]
+GENERATED_RUNTIME_IMPLEMENTATION List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1._closed_3._cstage2
+AUDIT_SAFE_CONSTANT _private.Agent1PeriodicReturnCore.0._proof_4 theorem=true : [propext]
+AUDIT_SAFE_CONSTANT Agent1.Periodic.quotient_return_component_constant._proof_2 theorem=true : [propext, Quot.sound]
+GENERATED_RUNTIME_IMPLEMENTATION List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1._cstage2
+AUDIT_SAFE_CONSTANT Agent1.Periodic.returnCore theorem=false : [propext, Quot.sound]
+AUDIT_SAFE_CONSTANT Agent1.Periodic.quotient_return_core._proof_3 theorem=true : [propext, Quot.sound]
+GENERATED_RUNTIME_IMPLEMENTATION List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1._closed_4._cstage2
+GENERATED_RUNTIME_IMPLEMENTATION List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1
+GENERATED_RUNTIME_IMPLEMENTATION List.filterTR.loop._at.Agent1.Periodic.returnCore._spec_1._closed_2._cstage2
+RETURN_CORE_MODULE_AUDIT theorems=9 safeConstants=10 unsafeImplementations=9 union=[Classical.choice,
+ Quot.sound,
+ propext]
+theorem Agent1.Periodic.quotient_return_component_constant : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0) →
+      (w 0, Agent1.Periodic.outside (B 0) (w 0)) ∈ Agent1.Periodic.outerCatalog →
+        B N = B 0 ∧ H N = H 0 ∧ w N = w 0 →
+          ∀ (i : Nat),
+            i ≤ N →
+              Agent1.Periodic.outerComponent (w i, Agent1.Periodic.outside (B i) (w i)) =
+                Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) :=
+fun B H w N hp hv hmem hreturn =>
+  let component := fun i => Agent1.Periodic.outerComponent (w i, Agent1.Periodic.outside (B i) (w i));
+  let_fun hcert :=
+    ⟨fun i a => id (Agent1.Periodic.componentRank_pos (component i)), fun i hi hne =>
+      Exists.casesOn
+        (Agent1.Periodic.quotient_path_outer_edge B H w N hp hv hmem i
+          (Decidable.byContradiction fun a => Agent1.Periodic.quotient_return_component_constant._proof_1 N i hi a))
+        fun e h =>
+        And.casesOn h fun he right =>
+          And.casesOn right fun hs right =>
+            And.casesOn right fun left right =>
+              And.casesOn right fun left ht =>
+                let_fun hne' :=
+                  Eq.mpr
+                    (id
+                      (congrArg (fun _a => Agent1.Periodic.outerComponent _a ≠ Agent1.Periodic.outerComponent e.target)
+                        hs))
+                    (Eq.mpr
+                      (id
+                        (congrArg
+                          (fun _a =>
+                            Agent1.Periodic.outerComponent (w i, Agent1.Periodic.outside (B i) (w i)) ≠
+                              Agent1.Periodic.outerComponent _a)
+                          ht))
+                      hne);
+                let_fun hd := Agent1.Periodic.outerEdge_rank_drop e he hne';
+                id
+                  (Eq.mp
+                    (congr
+                      (congrArg (fun x => LE.le (1 + Agent1.Periodic.componentRank (Agent1.Periodic.outerComponent x)))
+                        ht)
+                      (congrArg (fun x => Agent1.Periodic.componentRank (Agent1.Periodic.outerComponent x)) hs))
+                    hd)⟩;
+  let_fun hclose :=
+    id
+      (Eq.mpr
+        (id
+          (congrArg
+            (fun _a =>
+              Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) =
+                Agent1.Periodic.outerComponent (w N, Agent1.Periodic.outside _a (w N)))
+            hreturn.left))
+        (Eq.mpr
+          (id
+            (congrArg
+              (fun _a =>
+                Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) =
+                  Agent1.Periodic.outerComponent (_a, Agent1.Periodic.outside (B 0) _a))
+              hreturn.right.right))
+          (Eq.refl (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0))))));
+  let_fun hinter :=
+    CondensationBound.component_interval component (fun x => 1) Agent1.Periodic.componentRank (N + 1) 0 N hcert
+      (fun x x => Nat.zero_lt_one) (Nat.zero_le N)
+      (Decidable.byContradiction fun a => Agent1.Periodic.quotient_return_component_constant._proof_2 B w N a) hclose;
+  fun i hi => hinter i (Nat.zero_le i) hi
+theorem Agent1.Periodic.quotient_return_core : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0) →
+      (w 0, Agent1.Periodic.outside (B 0) (w 0)) ∈ Agent1.Periodic.outerCatalog →
+        0 < N →
+          B N = B 0 ∧ H N = H 0 ∧ w N = w 0 →
+            ∃ c,
+              c ∈ [8, 129, 130] ∧
+                ∀ (i : Nat),
+                  i ≤ N →
+                    (w i, Agent1.Periodic.outside (B i) (w i)) ∈ Agent1.Periodic.returnCore ∧
+                      Agent1.Periodic.outerComponent (w i, Agent1.Periodic.outside (B i) (w i)) = c :=
+fun B H w N hp hv hmem hN hreturn =>
+  let_fun hconstant := Agent1.Periodic.quotient_return_component_constant B H w N hp hv hmem hreturn;
+  Exists.casesOn (Agent1.Periodic.quotient_path_outer_edge B H w N hp hv hmem 0 hN) fun e h =>
+    And.casesOn h fun he right =>
+      And.casesOn right fun hs right =>
+        And.casesOn right fun left right =>
+          And.casesOn right fun left ht =>
+            let_fun heq :=
+              Eq.mpr
+                (id
+                  (congrArg (fun _a => Agent1.Periodic.outerComponent _a = Agent1.Periodic.outerComponent e.target) hs))
+                (Eq.mpr
+                  (id
+                    (congrArg
+                      (fun _a =>
+                        Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) =
+                          Agent1.Periodic.outerComponent _a)
+                      ht))
+                  (Eq.symm
+                    (hconstant 1
+                      (Decidable.byContradiction fun a =>
+                        Agent1.Periodic.quotient_return_core._proof_3 B H w N hN e a))));
+            let_fun hfour := Agent1.Periodic.outerEdge_internal_component e he heq;
+            let_fun hnonzero := fun hzero =>
+              let_fun hwzero :=
+                Agent1.Periodic.outerComponent_zero_phase (w 0, Agent1.Periodic.outside (B 0) (w 0)) hmem hzero;
+              Agent1.Periodic.quotient_path_zero_no_return B H w N hp hv hwzero hN hreturn;
+            let_fun hlabel :=
+              Eq.mpr
+                (id
+                  (Eq.trans _proof_4✝
+                    (congrArg (Or (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) = 8))
+                      (Eq.trans _proof_4✝
+                        (congrArg (Or (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) = 129))
+                          (Eq.trans _proof_4✝
+                            (Eq.trans
+                              (congrArg
+                                (Or (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) = 130))
+                                _proof_5✝)
+                              (or_false
+                                (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) =
+                                  130)))))))))
+                (Or.casesOn
+                  (Eq.mp
+                    (Eq.trans _proof_4✝
+                      (congrArg (Or (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) = 8))
+                        (Eq.trans _proof_4✝
+                          (congrArg
+                            (Or (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) = 129))
+                            (Eq.trans _proof_4✝
+                              (congrArg
+                                (Or (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) = 130))
+                                (Eq.trans _proof_4✝
+                                  (Eq.trans
+                                    (congrArg
+                                      (Or
+                                        (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) =
+                                          131))
+                                      _proof_5✝)
+                                    (or_false
+                                      (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) =
+                                        131))))))))))
+                    (Eq.mp (congrArg (fun _a => Agent1.Periodic.outerComponent _a ∈ [8, 129, 130, 131]) hs) hfour))
+                  (fun h8 => Or.inl h8) fun h =>
+                  Or.casesOn h (fun h129 => Or.inr (Or.inl h129)) fun h =>
+                    Or.casesOn h (fun h130 => Or.inr (Or.inr h130)) fun h131 => False.elim (hnonzero h131));
+            Exists.intro (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)))
+              ⟨hlabel, fun i hi =>
+                let_fun hiMem := (Agent1.Periodic.quotient_path_valid_catalog B H w N hp hv hmem i hi).right;
+                let_fun hiComponent := hconstant i hi;
+                ⟨List.mem_filter.mpr
+                    ⟨hiMem,
+                      Eq.mpr
+                        (id
+                          (Eq.trans
+                            (congrArg (fun x => x = true)
+                              ((fun p p_1 e_p =>
+                                  @Eq.rec Prop p
+                                    (fun p_2 e_p => ∀ {h : Decidable p} [h_1 : Decidable p_2], decide p = decide p_2)
+                                    (fun {h} [h_1 : Decidable p] => Subsingleton.elim h h_1 ▸ Eq.refl (decide p)) p_1
+                                    e_p)
+                                (Agent1.Periodic.outerComponent (w i, Agent1.Periodic.outside (B i) (w i)) ∈
+                                  [8, 129, 130])
+                                (Agent1.Periodic.outerComponent (w 0, Agent1.Periodic.outside (B 0) (w 0)) ∈
+                                  [8, 129, 130])
+                                (congrArg (Membership.mem [8, 129, 130]) hiComponent)))
+                            decide_eq_true_eq))
+                        hlabel⟩,
+                  hiComponent⟩⟩
+theorem Agent1.Periodic.quotient_return_initial_outside : ∀ (B H w : Nat → Agent8.Word) (N : Nat),
+  Agent1.Periodic.QuotientPath B H w N →
+    Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0) →
+      w 0 = [14, 14, 4, 4] →
+        0 < N →
+          B N = B 0 ∧ H N = H 0 ∧ w N = w 0 →
+            Agent1.Periodic.outside (B 0) (w 0) = 9 ∨ Agent1.Periodic.outside (B 0) (w 0) = 10 :=
+fun B H w N hp hv hphase hN hreturn =>
+  let_fun hb := Agent1.Periodic.outside_bounds (B 0) (H 0) (w 0) hv;
+  let_fun hfinite :=
+    Decidable.byContradiction fun a => Agent1.Periodic.quotient_return_initial_outside._proof_6 B w N hb a;
+  let_fun hmem :=
+    let_fun hi := Agent1.Periodic.outerCatalog_initial ⟨Agent1.Periodic.outside (B 0) (w 0), hfinite⟩ hb.left;
+    Eq.mpr
+      (id
+        (congrArg (Membership.mem Agent1.Periodic.outerCatalog)
+          (congr (congrArg Prod.mk hphase) (congrArg (Agent1.Periodic.outside (B 0)) hphase))))
+      (Eq.mp
+        (congrArg (fun x => ([14, 14, 4, 4], Agent1.Periodic.outside (B 0) x) ∈ Agent1.Periodic.outerCatalog) hphase)
+        hi);
+  Exists.casesOn (Agent1.Periodic.quotient_return_core B H w N hp hv hmem hN hreturn) fun c h =>
+    And.casesOn h fun hc hall =>
+      let_fun hc0 := (hall 0 (Nat.zero_le N)).right;
+      Agent1.Periodic.outerComponent_initial_core (w 0, Agent1.Periodic.outside (B 0) (w 0)) hmem hphase
+        (Eq.mpr (id (congrArg (fun _a => _a ∈ [8, 129, 130]) hc0)) hc)

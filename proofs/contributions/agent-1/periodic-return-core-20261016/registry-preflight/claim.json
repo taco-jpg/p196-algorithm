@@ -1,0 +1,69 @@
+{
+  "task_id": "agent1-periodic-return-core-20261016",
+  "owner": "Agent #1",
+  "status": "CLAIMED",
+  "target_statement": [
+    "For a finite exact QuotientPath B H w N with original ValidPeriodic initially and initial (w,outside B w) in outerCatalog, positive N and equality of all three endpoint blocks, prove every projected state on the return lies in one of the original nonzero retained component classes (stored labels8,129,130) and in the same class. Certify local edge rank inequalities and internal-edge exclusions only; do not claim SCC maximality or reachability.",
+    "In particular, if initial phase is [14,14,4,4] and the full interface returns after positive N, prove initial outside coefficient is9 or10. No claim of return existence at those two values.",
+    "Connect a literal zero-phase quotient path to existing zeroStateOrbit, then reuse zeroStateOrbit_no_cycle to exclude full zero returns. This does not exclude zero projected cycles or zero actual paths with growing interfaces."
+  ],
+  "related_theorem_identifiers": [
+    "Agent1.Periodic.quotient_outer_catalog_edge",
+    "Agent1.Periodic.quotient_valid_in_outerCatalog",
+    "Agent1.Periodic.QuotientPath",
+    "Agent1.Periodic.zeroStateOrbit_no_cycle",
+    "CondensationBound.component_interval",
+    "CondensationBound.rank_antitone",
+    "Sofic.projection_sound"
+  ],
+  "dependencies": [
+    {
+      "commit": "8f9249c855418eaadf9bb68bd645948d15777b5b",
+      "scope": "Exact QuotientPath source with unchanged checked width accounting; original Outer25 dependency source6be2aa2 now fresh independently reviewed."
+    },
+    {
+      "commit": "5d3b027df045eb017a8e37d3826b10105a587e9b",
+      "pull_request": 139,
+      "merge": "a41ed0bd28e0a0de339f661a44161fc54ac22f24",
+      "scope": "Existing zeroStateOrbit no-return proof."
+    }
+  ],
+  "intended_source_files": [
+    "proofs/Agent1PeriodicOuterRank.lean",
+    "proofs/Agent1PeriodicQuotientPath.lean",
+    "proofs/Agent1PeriodicZeroPath.lean",
+    "proofs/Agent1PeriodicReturnCore.lean",
+    "proofs/Agent1PeriodicReturnCore.registry.json",
+    "proofs/contributions/agent-1/periodic-return-core-20261016/"
+  ],
+  "assigned_subagents": [
+    "/root/research_status/numeric_bridge_review: literal finite component/rank certificate, ownsOuterRank",
+    "/root/verification_plan: exact finite path validity and projection, ownsQuotientPath",
+    "/root/verification_plan/handoff_boundary: exact zero path iteration bridge, ownsZeroPath",
+    "/root/research_status/cap4_existing_theorems: independent original data/rank diagnostic only",
+    "/root/symbolic_scope: concrete closed path restriction assembly, ownsReturnCore",
+    "/root/research_status: nonauthor fresh verification after current Width package",
+    "/root: sole Git writer, registry and publication"
+  ],
+  "contribution_branch": "research/agent-1/periodic-return-core-20261016T2335Z",
+  "latest_published_source_commit": null,
+  "verification_status": "WIP target only; no new proof yet. Existing Outer fresh25 and ZeroCycle fresh24 independently PASS; WidthPath author-check PASS, combined fresh30 pending.",
+  "last_activity_timestamp": "2026-10-16T23:32:33.392799+00:00",
+  "remaining_obligation": "Pin original stored component assignment/rank; kernel-check local edge inequalities and internal-edge exclusions; develop exact path and zero-iteration bridges; assemble sharp initial outside9/10 exclusion.",
+  "scope_proposal": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6226539144",
+  "ownership_check": {
+    "exact_parent": "31cf6514b9058ae442ef1ed7e9915cf64303f880",
+    "scout_report_sha256": "77ecdbd19213231d9b0cb370feebbf5f75414b8906be14b52aaa67f8a8105c8e",
+    "comparison": "Source-only scout compared actual Agent2/7/107/110/414 declarations and174 task records through b89dc1f; root inspected every subsequent task delta through this exact parent, consisting of independent delivery/review claims and distinct spectral claims. No exact concrete878 return restriction found. Scope-limited finding, no exhaustive historical equivalence claim.",
+    "retry": "Initial unpublished57484820 rejected by concurrent branch advance; inspected all delta tasks (Agent13 review, Agent18 PR134, Agent29 PR140 delivery), no return-core overlap; replayed only own unpublished commit."
+  },
+  "scope_exclusions": [
+    "No generic SCC or condensation soundness reproof",
+    "No affirmative finite-interface search or historicalperiodic_interface_followup takeover",
+    "No constant-eighteen acyclicity (Agent7 retains renewal scope)",
+    "No arbitrary graph realization or ordinary guarded orbit theorem",
+    "No safe orbit or196 conclusion",
+    "No main slot"
+  ],
+  "main_write_slot": false
+}
