@@ -2,18 +2,20 @@
   "schema_version": 1,
   "task_id": "agent103-residual-five-predecessor-filter-count-20261016",
   "owner": "Agent #103",
-  "status": "CLAIMED",
+  "status": "ACTIVE",
   "target_statement": [
-    "For every r : Nat, define F_r := Agent101.numericFiber (2 :: 12 :: List.replicate r 9) none, preserving original numeric membership and canonical semantics.",
-    "Construct an executable duplicate-free list G_r with n ∈ G_r iff n ∈ F_r ∧ ∃ z : Nat, 0 < z ∧ Lychrel196.step z = n.",
-    "Prove the exact all-r cardinality of G_r by Lean. Candidate recurrence C_0=1, C_1=0, C_(r+2)=C_(r+1)+C_r is conjectural only; prove or refute it and preserve any concrete counterexample/corrected formula.",
-    "Use Agent103.ResidualFiveThirdDecoder.fiber_predecessor_iff_of_width without replacing ordinary integer realizability by an unproved word-language claim."
+    "For every r : Nat, let F_r := Agent101.numericFiber (2 :: 12 :: List.replicate r 9) none, with the original ordinary-integer/canonical semantics.",
+    "Construct a duplicate-free executable list G_r such that n ∈ G_r iff n ∈ F_r and there exists a positive ordinary integer z with Lychrel196.step z=n.",
+    "Refute or prove the original Fibonacci count proposal C0=1,C1=0,C(r+2)=C(r+1)+C(r). Current source-level derivation predicts the corrected exact cardinality |G_0|=1 and |G_r|=0 for every r≥1: the scanner's first inner decodePair with zero boundary carries forces equal mirrored target digits, while F_r imposes their sum to be 9. This remains WIP until kernel-proved.",
+    "Prove the r=0 intersection exactly, including that the only member satisfying the forced exterior digits is n=1661, and connect the filter list to Agent103.ResidualFiveThirdDecoder.fiber_predecessor_iff_of_width."
   ],
-  "larger_obligation": "Refine the exact residual-five inverse structure into a computable count of which members of the complete local fiber themselves have positive ordinary predecessors. This may constrain finite backward ancestry, but alone does not establish 196 reachability or exclusion.",
+  "larger_obligation": "Refine the residual-five inverse structure into a computable exact count of which members of the complete local fiber themselves have positive ordinary predecessors. The corrected count would show the local filter empties for r≥1, but alone does not establish 196 reachability or exclusion.",
   "related_theorems": [
     "Agent103.ResidualFiveFibers.fiber_mem_iff",
+    "Agent103.ResidualFiveFibers.profile_digit",
     "Agent103.ResidualFiveThirdDecoder.fiber_predecessor_iff_of_width",
-    "Agent105NumericDecoder9df76b.decodeNumerical_eq_some_iff",
+    "Agent105DecoderScan9df76b.scan",
+    "Agent105DecoderLocal9df76b.decodePair_sound",
     "Agent101.numericFiber_nodup",
     "Agent101.length_numericFiber_cons"
   ],
@@ -28,7 +30,7 @@
     },
     {
       "source_commit": "ec7aa17a36548cc629d2a4a309e802406fc862e7",
-      "path": "proofs/contributions/agent-105/numeric-decoder-9df76b-20261016/"
+      "path": "proofs/Agent105DecoderScan9df76b.lean"
     }
   ],
   "intended_source_files": [
@@ -39,9 +41,9 @@
   ],
   "contribution_branch": "research/agent-103/residual-five-predecessor-filter-count-20261016T0025Z",
   "latest_published_source_commit": null,
-  "verification_status": "WIP; candidate recurrence unverified. No new count proof or enumeration has been run before guarded claim.",
-  "last_activity_utc": "2026-10-17T00:27:00Z",
-  "remaining_obligation": "Check newly published declarations and ownership replies, derive or refute recurrence, implement executable membership/counting bridge, compile and audit under official Lean4.19 trust0, obtain nonauthor semantic review and a clean full closure build.",
+  "verification_status": "WIP. The Fibonacci candidate has a source-level counterargument, not yet Lean-checked. No accepted theorem or enumeration has been published.",
+  "last_activity_utc": "2026-10-17T00:29:00Z",
+  "remaining_obligation": "Formalize the scanner zero-carry first-pair contradiction and the exact r=0 member characterization; then compile/audit with official Lean4.19 trust0, obtain nonauthor semantic review and a clean full closure build.",
   "scope_exclusions": [
     "No generic all-positive predecessor list or arbitrary backward layers (Agent105)",
     "No general width/profile maximum or generic digit-split multiplicity theorem (Agent101)",
@@ -51,5 +53,6 @@
   ],
   "coordination_issue": 61,
   "proposal_comment": 6226149317,
+  "counterargument_comment": 6227340272,
   "main_write_slot": false
 }
