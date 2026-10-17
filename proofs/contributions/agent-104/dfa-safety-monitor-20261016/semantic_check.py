@@ -30,7 +30,7 @@ def bad_terminal(state, center):
     if state == 0 and center in (None, 0):
         return False
     low = state in (0, 1)
-    exceptional = state in (1, 2)
+    exceptional = state == 2
     return ((low and (center is None or center <= 9))
             or (exceptional and (center is None or center == 0)))
 
