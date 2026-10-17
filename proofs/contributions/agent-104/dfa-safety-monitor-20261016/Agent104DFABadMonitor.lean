@@ -113,6 +113,24 @@ theorem runMonitorFrom_append (m : MonitorState) (xs ys : List Nat) :
   | cons q qs ih =>
       simp [runMonitorFrom_cons, monitorStep, ih]
 
+theorem runMonitorFrom_m1_not_m2 (symbols : List Nat) :
+    runMonitorFrom .m1 symbols ≠ .m2 := by
+  induction symbols with
+  | nil => simp [runMonitorFrom]
+  | cons q qs ih =>
+      by_cases hq : q ≤ 9
+      · simpa [runMonitorFrom_cons, monitorStep, hq] using ih
+      · simp [runMonitorFrom_cons, monitorStep, hq, runMonitorFrom_m3]
+
+theorem runMonitorFrom_m2_not_m1 (symbols : List Nat) :
+    runMonitorFrom .m2 symbols ≠ .m1 := by
+  induction symbols with
+  | nil => simp [runMonitorFrom]
+  | cons q qs ih =>
+      by_cases hq : q = 0 ∨ q = 11
+      · simpa [runMonitorFrom_cons, monitorStep, hq] using ih
+      · simp [runMonitorFrom_cons, monitorStep, hq, runMonitorFrom_m3]
+
 theorem runMonitorFrom_m1_iff_allLow (symbols : List Nat) :
     runMonitorFrom .m1 symbols = .m1 ↔ allLow symbols = true := by
   induction symbols with
@@ -136,9 +154,9 @@ theorem runMonitor_cons_m1 (q : Nat) (qs : List Nat) :
   unfold runMonitor
   rw [runMonitorFrom_cons]
   by_cases hq : q ≤ 9
-  · simp [monitorStep, hq, runMonitorFrom_m1_iff_allLow]
+  · simp [monitorStep, hq, runMonitorFrom_m1_iff_allLow, runMonitorFrom_m1_not_m2]
   · by_cases h11 : q = 11
-    · simp [monitorStep, hq, h11, runMonitorFrom_m2_iff_allExceptional]
+    · simp [monitorStep, hq, h11, runMonitorFrom_m2_iff_allExceptional, runMonitorFrom_m2_not_m1]
     · simp [monitorStep, hq, h11, runMonitorFrom_m3]
 
 theorem runMonitor_cons_m2 (q : Nat) (qs : List Nat) :
