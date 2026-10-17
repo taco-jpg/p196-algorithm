@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "task_id": "agent1-session7efd-pr-queue-coordinator-20261017",
+  "owner": "Agent #1",
+  "session": "7efd48098de6",
+  "role": "PR_QUEUE_COORDINATOR",
+  "status": "ACTIVE_COORDINATION_AWAITING_CONFIRMED_MAIN_HANDOFF",
+  "active_editing": true,
+  "owned_paths": [
+    "proofs/coordination/tasks/agent1-session7efd-pr-queue-coordinator-20261017.json",
+    "proofs/coordination/reviews/agent1-session7efd-queue/"
+  ],
+  "main_write_slot": false,
+  "source_write_claim": false,
+  "delivery_ownership_changes": [],
+  "current_main_writer": {
+    "owner": "Agent #31",
+    "session": "02893e4f368d",
+    "role_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+    "observed_coordination": "0cf95e6796725864c5f502ee5e73f97dea0df325",
+    "observed_main": "74a1c3922eb7af438fe40b23d2105ad07556e3f5"
+  },
+  "handoff": {
+    "status": "REQUESTED_NOT_ACKNOWLEDGED",
+    "request": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230153041",
+    "requested_recipient": "Agent #31/session02893e4f368d",
+    "requested_scope": "Sole serialized main integration slot beginning with exact PR104; keep existing delivery/source owners and postcheck/release rule.",
+    "acknowledgment_reference": null,
+    "explicit_user_reassignment_reference": null
+  },
+  "immediate_queue": [
+    {
+      "pr": 104,
+      "head": "c9a86a40ffd478f7c01ac68688896cba91f94dd1",
+      "delivery_owner": "Agent #31/session02893e4f368d",
+      "state": "READY_PACKET_AWAITING_AUTHORIZED_WRITER",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "2765245df1124e30f3148c4a96dce3228e8605dc",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/blob/89e086f324dc11c515b5547b566a6836eb104014/proofs/coordination/reviews/agent6-session01c8/pr104-current-base/EXECUTION_PACKET.md"
+    },
+    {
+      "pr": 132,
+      "head": "43219b02c191325d0263b4ad2fa1f4ebb1470a5c",
+      "delivery_owner": "Agent #20/session86350e418736",
+      "state": "READY_PACKET_REBIND_AFTER_PRIOR_MERGE",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "9bc492bce34807d80ba9528918725a939dd66111"
+    },
+    {
+      "pr": 163,
+      "head": "b5448228f38b925f9924030b2fafd12e13ea8fc3",
+      "delivery_owner": "Agent #3/sessionf1e3cf3a235f",
+      "state": "READY_PACKET_REBIND_AFTER_PRIOR_MERGE",
+      "tested_base": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "tested_tree": "c119bf6987f76b7cd610cf5d26d934d389b5c2ce",
+      "packet": "https://github.com/taco-jpg/p196-algorithm/blob/ad32bebcca68f916ab675689c0a97dc419d17638/proofs/coordination/reviews/agent3-sessionf1e3cf3a235f/pr163/INDEX.md"
+    }
+  ],
+  "owned_verification": {
+    "pr": 177,
+    "head": "6f48ca108dee4c07588f8c5582bcfef55388537f",
+    "delivery_owner": "Agent #9/sessionb2e768ea994e",
+    "task": "proofs/coordination/tasks/agent1-session7efd-pr177-verification-20261017.json",
+    "state": "COMPLETE_PASS_FINAL_RAW_PUBLICATION_IN_PROGRESS",
+    "source_module_count": 19,
+    "theorem_count": 1453,
+    "safe_definition_count": 414
+  },
+  "actual_merges_this_session": [],
+  "actual_ready_transitions_this_session": [],
+  "next_action": "Publish completed PR177 raw evidence and independent reviews; reconcile ready packets and repair owners while awaiting real Agent31 acknowledgment. Do not write main until exclusive role transfer is confirmed.",
+  "updated_at": "2026-10-17T05:27:04.759Z"
+}
