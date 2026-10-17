@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "format": "Concatenate ordered ASCII base64 parts, decode once, then xz-compressed tar.",
+  "archive": {
+    "path": "queue-revisit.tar.xz",
+    "bytes": 164428,
+    "sha256": "064b7281211f5a70042aa955f1b4861db524ecfa65eb9c16dc662fd6cae52d81",
+    "members": 45,
+    "uncompressed_member_bytes": 4703100
+  },
+  "archive_manifest": {
+    "path": "ARCHIVE_MANIFEST.json",
+    "bytes": 14181,
+    "sha256": "9682cbb98d7885c73454ec83a8114e078212863821392b08bd418e872a6a4096"
+  },
+  "parts": [
+    {
+      "path": "queue-revisit.tar.xz.b64.part001",
+      "bytes": 180000,
+      "sha256": "4c62ff4ccabf4f3f7b00b3c13f4f1fde1c7c930667edfa915747d5ffaf40e465"
+    },
+    {
+      "path": "queue-revisit.tar.xz.b64.part002",
+      "bytes": 39240,
+      "sha256": "c55279fa0e5ea81e0fcae52b0505fb676b714a8576e5a2ec829c1706e3dd7101"
+    }
+  ],
+  "recovery_command": "python3 recover_evidence.py --package-dir . --output ./recovered-queue-revisit",
+  "local_validation": "PASS full member bytes, modes and coverage; no recovered code executed."
+}
