@@ -1,0 +1,130 @@
+{
+  "bytes_scanned": 887991,
+  "files_scanned": 26,
+  "limitation": "Pattern and URL classification screening is evidence of these specific checks, not an absolute proof of absence of all possible secrets. Public issue/PR text and requested API response metadata remain unmodified.",
+  "method": "UTF-8 raw byte patterns plus JSON-decoded string/HTML-unescaped URL analysis; all requested bytes retained.",
+  "pattern_classes": [
+    "aws_key",
+    "bearer_credential",
+    "github_token",
+    "private_key",
+    "private_prompt_marker"
+  ],
+  "pattern_matches": [],
+  "querystring_classes": [
+    {
+      "classification": "GitHub notifications URI template, not a credential or transient download",
+      "files": [
+        "pr153-delivery-watch/pr153-status.json",
+        "pr153-delivery-watch/pr153.json",
+        "pr153-publication/DELIVERY_ACTIONS.json"
+      ],
+      "host": "api.github.com",
+      "parameter_names": []
+    },
+    {
+      "classification": "Public GitHub source reference or read-only query/pagination parameters",
+      "files": [
+        "pr153-delivery-watch/pr153-actions.json",
+        "pr153-publication/DELIVERY_ACTIONS.json"
+      ],
+      "host": "api.github.com",
+      "parameter_names": [
+        "head_sha",
+        "per_page"
+      ]
+    },
+    {
+      "classification": "Public GitHub source reference or read-only query/pagination parameters",
+      "files": [
+        "pr153-delivery-watch/pr153-check-runs.json",
+        "pr153-delivery-watch/pr153-comments.json",
+        "pr153-delivery-watch/pr153-reviews.json",
+        "pr153-delivery-watch/pr153-status.json"
+      ],
+      "host": "api.github.com",
+      "parameter_names": [
+        "per_page"
+      ]
+    },
+    {
+      "classification": "Public GitHub source reference or read-only query/pagination parameters",
+      "files": [
+        "pr153-delivery-watch/issue61-page11.json"
+      ],
+      "host": "api.github.com",
+      "parameter_names": [
+        "per_page",
+        "page"
+      ]
+    },
+    {
+      "classification": "Public GitHub source reference or read-only query/pagination parameters",
+      "files": [
+        "pr153-delivery-watch/integration-role.json",
+        "pr153-delivery-watch/role-directory-final.json",
+        "pr153-delivery-watch/role-directory.json",
+        "pr153-publication/DELIVERY_ACTIONS.json"
+      ],
+      "host": "api.github.com",
+      "parameter_names": [
+        "ref"
+      ]
+    },
+    {
+      "classification": "Public GitHub source reference or read-only query/pagination parameters",
+      "files": [
+        "pr153-delivery-watch/issue61-recent.json"
+      ],
+      "host": "api.github.com",
+      "parameter_names": [
+        "since",
+        "per_page",
+        "page"
+      ]
+    },
+    {
+      "classification": "Public avatar version parameter",
+      "files": [
+        "pr153-delivery-watch/issue61-page11.json",
+        "pr153-delivery-watch/issue61-recent.json",
+        "pr153-delivery-watch/issue61.json",
+        "pr153-delivery-watch/pr153-check-runs.json",
+        "pr153-delivery-watch/pr153-reviews.json",
+        "pr153-delivery-watch/pr153-status.json",
+        "pr153-delivery-watch/pr153.json",
+        "pr153-publication/DELIVERY_ACTIONS.json"
+      ],
+      "host": "avatars.githubusercontent.com",
+      "parameter_names": [
+        "v"
+      ]
+    },
+    {
+      "classification": "Public marketing attribution on a GitGuardian login link",
+      "files": [
+        "pr153-delivery-watch/pr153-check-runs.json",
+        "pr153-publication/DELIVERY_ACTIONS.json"
+      ],
+      "host": "dashboard.gitguardian.com",
+      "parameter_names": [
+        "utm_medium",
+        "utm_source",
+        "utm_campaign"
+      ]
+    }
+  ],
+  "schema": 1,
+  "status": "PASS_NO_CREDENTIAL_OR_PRIVATE_PROMPT_PATTERNS",
+  "symlinks_or_special_files_found": false,
+  "transient_signed_download_urls_found": false,
+  "url_hosts": [
+    "api.github.com",
+    "avatars.githubusercontent.com",
+    "dashboard.gitguardian.com",
+    "docs.github.com",
+    "github.com",
+    "raw.githubusercontent.com",
+    "www.chatgpt.com"
+  ]
+}
