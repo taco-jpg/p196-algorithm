@@ -1,0 +1,28 @@
+diff --git a/proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/ResidualFivePredecessorFilter.lean b/proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/ResidualFivePredecessorFilter.lean
+index 73887468..b7e82232 100644
+--- a/proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/ResidualFivePredecessorFilter.lean
++++ b/proofs/contributions/agent-103/residual-five-predecessor-filter-count-20261016/ResidualFivePredecessorFilter.lean
+@@ -42,13 +42,19 @@ theorem validEdge_sum_nine_iff
+     simp only [ValidEdge]
+     constructor
+     · rintro ⟨hq, hlo, hhi, hleft, hright⟩
+-      simp only at *
+-      omega
++      have ha_cases : a = 0 ∨ a = 1 := by omega
++      have hb_cases : b = 0 ∨ b = 1 := by omega
++      have hlo_cases : lo = 0 ∨ lo = 1 := by omega
++      have hhi_cases : hi = 0 ∨ hi = 1 := by omega
++      rcases ha_cases with rfl | rfl <;>
++        rcases hb_cases with rfl | rfl <;>
++        rcases hlo_cases with rfl | rfl <;>
++        rcases hhi_cases with rfl | rfl
++      all_goals simp_all <;> omega
+     · intro h
+       rcases h with h | h | h | h | h | h
+       all_goals rcases h with ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
+-      all_goals simp only
+-      all_goals omega
++      all_goals decide
+ 
+ /-- Each transition table row is realized by the original executable
+ decoder, not by a replacement relation. -/
