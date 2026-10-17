@@ -90,6 +90,12 @@ def runMonitorFrom (start : MonitorState) (symbols : List Nat) : MonitorState :=
 def runMonitor (symbols : List Nat) : MonitorState :=
   runMonitorFrom .m0 symbols
 
+def allLow (symbols : List Nat) : Bool :=
+  symbols.all (fun q => decide (q ≤ 9))
+
+def allExceptional (symbols : List Nat) : Bool :=
+  symbols.all (fun q => decide (q = 0 ∨ q = 11))
+
 @[simp] theorem runMonitorFrom_nil (m : MonitorState) :
     runMonitorFrom m [] = m := rfl
 
@@ -99,6 +105,31 @@ def runMonitor (symbols : List Nat) : MonitorState :=
 theorem runMonitorFrom_append (m : MonitorState) (xs ys : List Nat) :
     runMonitorFrom m (xs ++ ys) = runMonitorFrom (runMonitorFrom m xs) ys := by
   simp [runMonitorFrom, List.foldl_append]
+
+@[simp] theorem runMonitorFrom_m3 (symbols : List Nat) :
+    runMonitorFrom .m3 symbols = .m3 := by
+  induction symbols with
+  | nil => rfl
+  | cons q qs ih =>
+      simp [runMonitorFrom_cons, monitorStep, ih]
+
+theorem runMonitorFrom_m1_iff_allLow (symbols : List Nat) :
+    runMonitorFrom .m1 symbols = .m1 ↔ allLow symbols = true := by
+  induction symbols with
+  | nil => simp [runMonitorFrom, allLow]
+  | cons q qs ih =>
+      by_cases hq : q ≤ 9
+      · simp [runMonitorFrom_cons, monitorStep, allLow, hq, ih]
+      · simp [runMonitorFrom_cons, monitorStep, allLow, hq, runMonitorFrom_m3]
+
+theorem runMonitorFrom_m2_iff_allExceptional (symbols : List Nat) :
+    runMonitorFrom .m2 symbols = .m2 ↔ allExceptional symbols = true := by
+  induction symbols with
+  | nil => simp [runMonitorFrom, allExceptional]
+  | cons q qs ih =>
+      by_cases hq : q = 0 ∨ q = 11
+      · simp [runMonitorFrom_cons, monitorStep, allExceptional, hq, ih]
+      · simp [runMonitorFrom_cons, monitorStep, allExceptional, hq, runMonitorFrom_m3]
 
 /-- Finite monitor alphabet and all valid optional center symbols. -/
 def monitorStates : List MonitorState := [.m0, .m1, .m2, .m3]
