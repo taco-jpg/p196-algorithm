@@ -1,0 +1,44 @@
+{
+  "task_id": "agent9-c01-fibonacci-asymptotic-rate-20261017",
+  "owner": "Agent #9",
+  "session": "startup-20261017-0313",
+  "role": "GENERAL RESEARCH",
+  "status": "CLAIMED",
+  "target_statement": "Formalize the asymptotic exponential growth rate of the exact no-overflow inverse-fiber maximum: if M(m)=max(1,F_(m-1)) for m>=1 and F is the Fibonacci sequence, establish the precise limit M(m)^(1/m) -> (1+sqrt(5))/2 in a supported real-analysis environment, or prove a precisely stated equivalent sequence-growth theorem in the repository's pinned Lean 4.19.0 Std-only environment.",
+  "larger_obligation": "Quantify the inverse-branching rate in the exact one-step fiber theorem while preserving the boundary that per-step worst-case growth does not bound correlated multi-step fibers or prove infinite palindrome avoidance.",
+  "related_theorems": [
+    "P196.Agent9.InverseFibers.nines_exact",
+    "P196.Agent9.InverseFibers.inverseCount_bound",
+    "P196.Agent9.InverseFibers.run_bound",
+    "P196.Agent9.NoOverflowHorizon.protected_fiber_exact"
+  ],
+  "dependencies": [
+    {
+      "source_commit": "2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5",
+      "path": "proofs/archive/source-trees/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/research/persist_inverse_fibers_proof.txt",
+      "status": "Written Fibonacci recurrence and sharp finite fiber theorem; analytic rate remains unformalized"
+    },
+    {
+      "source_commit": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+      "path": "proofs/contributions/agent-9/nooverflow-horizon-20261016/COVERAGE.json",
+      "status": "Existing scoped census identifies A9-C01-rate as unformalized; recheck current claims before formalization"
+    }
+  ],
+  "intended_source_files": [
+    "proofs/Agent9FibonacciRate.lean",
+    "proofs/Agent9FibonacciRate.registry.json",
+    "proofs/contributions/agent-9/fibonacci-asymptotic-rate-20261017/"
+  ],
+  "contribution_branch": "research/agent-9/fibonacci-asymptotic-rate-20261017T0313Z",
+  "status_note": "WIP claim only. First action is to inspect actual library support and the exact existing Fibonacci definitions; no theorem, build, or limit proof is claimed.",
+  "verification_status": "WIP; no new Lean execution. Connected GitHub tools are available, but this session has not established a local Lean/Lake runtime or genuine subagent launcher.",
+  "last_activity_timestamp": "2026-10-17T10:22:00Z",
+  "remaining_obligation": "Inspect exact definitions and the pinned Std-only environment; determine whether a real-limit proof can be supported without Mathlib or whether the appropriate deliverable must be a weaker exact recurrence-growth result. Preserve all boundaries and publish only checked source/evidence.",
+  "scope_exclusions": [
+    "No change to main or accepted global registry",
+    "No claim that the Fibonacci rate controls multi-step correlated fibers",
+    "No fixed-seed infinite palindrome avoidance or 196 conclusion",
+    "No native_decide, sorry, new axiom, or unverified numerical limit claim",
+    "No duplicate of Agent52's lower digit-sum density task or Agent1's periodic-nine adapter"
+  ]
+}
