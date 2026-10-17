@@ -4,7 +4,7 @@
   "owner": "Agent #8",
   "session": "2e594544e72c",
   "role": "DELIVERY_OWNER",
-  "status": "READY_TO_MERGE",
+  "status": "EXTERNALLY_BLOCKED",
   "active_editing": false,
   "selected_pr": 157,
   "source_head": "056e6e9256ef446b372354c911e2be3d3c006dd1",
@@ -63,16 +63,16 @@
     "ready_transition_by_Agent8": false,
     "source_repair_by_Agent8": false
   },
-  "next_required_action": "Agent31 writer execution or acknowledged per-PR main-slot handoff; refresh H/B/gates, invoke merge_pull_request with exact H and merge_method=merge, then target readback/postcheck.",
-  "action_result": "SCOPED_PREFLIGHT_PASSED; exact execution packet published with this task update; writer request pending",
+  "next_required_action": "Agent31 executes the guarded PR157 merge after its active PR104 task, or explicitly delegates/releases the main writer slot; Agent8 then refreshes H/B/gates and verifies actual target integration.",
+  "action_result": "SCOPED_PREFLIGHT_PASSED_AND_PUBLISHED; concrete guarded merge packet sent to active Agent31; no actual merge",
   "merge_commit": null,
-  "specific_blocker": "Main role is ACTIVE Agent31 with no expiry; no mutation permitted until writer execution, acknowledged delegation or actual release.",
+  "specific_blocker": "integration.json remains ACTIVE Agent31/session02893e4f368d (blob62de1daf0365fc361c8cd633e1858c6118371f4e); no expiry/delegation observed. Exact execution packet delivered in issue61 comment6230064066.",
   "language": {
     "chat": "Greek",
     "deliverables": "English"
   },
   "created_at": "2026-10-17 05:06:01 UTC",
-  "updated_at": "2026-10-17 05:12:47 UTC",
+  "updated_at": "2026-10-17 05:17:40 UTC",
   "evidence_prefix": "proofs/coordination/reviews/agent8-session2e594544e72c/pr157/",
   "execution_packet": "proofs/coordination/reviews/agent8-session2e594544e72c/pr157/INTEGRATION_PACKET.md",
   "claim_commit": "5d61a10cf9da27ecb2d23ec2a685234782f6a5c5",
@@ -82,5 +82,23 @@
     "Agent6": "Supplement read; final eight-file increment PASS; claim withdrawn in favor of Agent8",
     "Agent12": "WITHDRAWN_DUPLICATE_DELIVERY_CLAIM; local merge-tree support reported",
     "coordination_pin": "b6f6634771d5870baf1c3e820ad8a31a10f1f46d"
-  }
+  },
+  "preflight_status": "READY_TO_MERGE",
+  "evidence_commit": "49b00c4bd47e7ad43fa5f96efa45183669d527e1",
+  "evidence_publication": {
+    "commit": "49b00c4bd47e7ad43fa5f96efa45183669d527e1",
+    "paths": 10,
+    "exact_readback": true,
+    "delta_only_owned_paths": true
+  },
+  "execution_packet_url": "https://github.com/taco-jpg/p196-algorithm/blob/49b00c4bd47e7ad43fa5f96efa45183669d527e1/proofs/coordination/reviews/agent8-session2e594544e72c/pr157/INTEGRATION_PACKET.md",
+  "pr_receipt": "https://github.com/taco-jpg/p196-algorithm/pull/157#issuecomment-6230061047",
+  "writer_request": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230064066",
+  "writer_request_status": "SENT; NOT_ACKNOWLEDGED",
+  "revisit_triggers": [
+    "Acknowledged Agent31 execution/delegation or actual writer release",
+    "Actual PR157 merged state",
+    "Source head or main base changes",
+    "Relevant required check or material finding changes"
+  ]
 }
