@@ -38,6 +38,22 @@ theorem outerDigits_symmetric_ceil (d : Nat → Nat) (k L i : Nat)
     · simp [ha, hb]
     · simp [ha, hb]
 
+/-- Converse obstruction target. When the suffix is longer than the low
+half plus center, exhibit one nonzero-units input that no exact-width
+palindrome can realize. This remains unproved. -/
+def ConverseObstruction (k L : Nat) : Prop :=
+  2 * k > L + 1 →
+    ∃ n : Nat, ¬ 10 ∣ n ∧
+      ∀ P e : Nat, Canonical P e L → Palindrome P →
+        P % (10 ^ k) ≠ n % (10 ^ k)
+
+/-- Candidate witness used in the converse: n=1+2*10^(k-1). For k≤L,
+the forced mirrored positions L-k and k-1 disagree; for k>L,
+the witness itself is too large to be an exact-L-digit canonical P.
+This explanation is not yet a Lean proof. -/
+def ProposedConverseWitness (k : Nat) : Nat :=
+  1 + 2 * 10 ^ (k - 1)
+
 /-- Unproved research target. This is deliberately a proposition definition,
 not an accepted theorem. A counterexample must be preserved if the proposed
 converse is false under the exact original Canonical/Palindrome semantics. -/
