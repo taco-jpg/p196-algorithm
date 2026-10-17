@@ -28,6 +28,24 @@ def correctionWeight (j : Joint) : Nat :=
   natProduct ((secondLabels j (correction j)).map
     fun s => pairCount false s.val)
 
+/-- Multiplicity of the free Boolean word followed by its original
+state-dependent correction, before multiplying the fixed leading outer pair. -/
+def profileWeight (xs : List Bool) (j : Joint) : Nat :=
+  natProduct ((secondLabels j (xs ++ correction (runStates j xs))).map
+    fun s => pairCount false s.val)
+
+/-- One transition contributes its actual emitted low/high split count, then
+continues at the exact original joint state. -/
+def profileWeightConsTarget (b : Bool) (xs : List Bool) (j : Joint) : Prop :=
+  profileWeight (b :: xs) j =
+    localWeight b j * profileWeight xs (jointStep b j)
+
+/-- The state recurrence must equal the sum of profile multiplicities over
+all Boolean words of the requested length. -/
+def stateWeightSumTarget (m : Nat) (j : Joint) : Prop :=
+  stateWeight m j = natProduct [] * 0 +
+    ((allBits m).map fun xs => profileWeight xs j).foldl (fun acc x => acc + x) 0
+
 /-- Exact weighted recurrence over the original four-by-four joint state.
 No state-independent replacement for the six-bit correction is permitted. -/
 def stateWeight : Nat → Joint → Nat
