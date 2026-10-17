@@ -1,5 +1,6 @@
 import Agent101NumericFibers
 import HistoryFamily
+import HistorySafety
 
 /-!
 WIP specification for Agent #101's weighted ordinary-integer realization count.
