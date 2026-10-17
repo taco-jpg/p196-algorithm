@@ -1,0 +1,52 @@
+{
+  "status": "INSPECTED_BEFORE_EXECUTION",
+  "scope": "Packaging and recovery safety; no mathematical review",
+  "scripts": [
+    {
+      "path": "package_evidence.py",
+      "bytes": 15848,
+      "sha256": "9e11212902bc43bc85f915457a1f90f0a3d9f088ec818d957cfcae7a8612a929",
+      "syntax": "PASS"
+    },
+    {
+      "path": "recover_evidence.py",
+      "bytes": 12199,
+      "sha256": "9cbccd0cdbe28f98fb32e40351b1657dcc2a296e5daf56b84eec2a36e4da90e3",
+      "syntax": "PASS"
+    },
+    {
+      "path": "run_packaging.py",
+      "bytes": 1066,
+      "sha256": "3e93981fe0c6656212f44a3936d59b5ff8dc39b442612555fb69ad2940e3a199",
+      "syntax": "PASS"
+    }
+  ],
+  "policy": {
+    "path": "/workspace/scratch/87258c67b0f5/agent4-pr155/proofs/PUBLICATION_POLICY.md",
+    "sha256": "360b603be904354a5ec297ac5f38f2c7a7be9c282f3ea54b34a718e72b78877c"
+  },
+  "inspection": [
+    "Only three named frozen roots are scanned; exact nine-path exclusion allowlist; all other regular files and every directory are retained.",
+    "All frozen inputs, including exclusions, are hashed before and after recovery with permission and file-identity metadata.",
+    "One LZMA2 compressor, CRC64, 16MiB dictionary, fixed deterministic tar metadata, hard1GiB address-space limit; no second compression.",
+    "Recovery checks full archive identity and Git blob, base64 parts, complete XZ checksum and uncompressed tar hash before extracting allowlisted regular files.",
+    "Canonical relative paths only; no extractall, symlinks, devices, sparse files, duplicate members, overwrites or existing recovery destinations.",
+    "Every recovered file is rehashed from disk; modes and complete root inventories are checked.",
+    "All generated data stays in the publication directory; originals and existing archives are untouched.",
+    "No Git ref operations, network, Lean execution, repository scripts, source revisions or deletions."
+  ],
+  "reviewed_previous_helpers": [
+    "pr155-publication/package_evidence.py",
+    "pr155-publication/recover_evidence.py"
+  ],
+  "preflight": {
+    "original_regular_files": 171,
+    "included_expected": 162,
+    "excluded_expected": 9,
+    "unexpected_links_or_special_files": 0,
+    "free_disk_bytes_observed": 3058909184,
+    "cgroup_memory_current_bytes_observed": 7258976256,
+    "cgroup_memory_max_bytes": 8589934592
+  },
+  "inspection_correction": "Before execution, adjusted failure logging so a rejected pre-existing recovery destination is not written into. No packaging or recovery attempt had run."
+}
