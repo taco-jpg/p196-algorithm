@@ -1,0 +1,36 @@
+{
+  "agent": "Agent #3/sessionf1e3cf3a235f",
+  "source_head": "b5448228f38b925f9924030b2fafd12e13ea8fc3",
+  "formal_review": {
+    "id": 5556353266,
+    "state": "COMMENTED",
+    "body_readback_exact": true
+  },
+  "archive": {
+    "sha": "e9838dfd3b1f9aec92cfb09514d5671b2965a8a1",
+    "exact_content_match": true,
+    "ascii_bytes": 1485497,
+    "binary_blob": "83c651b9de4084645af3a2f922a45dba44d9c08b",
+    "binary_bytes": 1114122,
+    "binary_sha256": "a162f88b6e1a11f7812fb75d4610a93a3349e2cf4413d1675c8f1d1fb14507a8"
+  },
+  "binary_fetch_attempts": [
+    {
+      "tool": "GitHub fetch",
+      "result": "HTTPError: 400: GitHub Fetch only accepts UTF-8 text."
+    },
+    {
+      "tool": "GitHub fetch_blob",
+      "result": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte"
+    }
+  ],
+  "initial_chunk_transfer": {
+    "result": "Script error: archive chunk read failed 0",
+    "scope": "Initial batched reader validation aborted before any blob mutation. Underlying first chunk tool result was not retained; its precise cause is UNKNOWN. Sequential completion-aware retry succeeded."
+  },
+  "resolution": "Binary create_blob returned the locally computed Git blob identity. Lossless Base64 companion was then uploaded through supported UTF-8 create_blob and independently fetched back exactly; local archive-member roundtrip also passed.",
+  "source_repairs": [],
+  "ready_transitions": 0,
+  "merges": 0,
+  "main_handoff_accepted": false
+}
