@@ -72,6 +72,39 @@ all Boolean words of the requested length. -/
 def stateWeightSumTarget (m : Nat) (j : Joint) : Prop :=
   stateWeight m j = profileWeightSum (allBits m) j
 
+/-- Proof attempt: splitting a sum of profile weights over appended lists. -/
+theorem profileWeightSum_append_attempt (xss yss : List (List Bool)) (j : Joint) :
+    profileWeightSum (xss ++ yss) j =
+      profileWeightSum xss j + profileWeightSum yss j := by
+  induction xss with
+  | nil => simp [profileWeightSum]
+  | cons xs xss ih =>
+      simp [profileWeightSum, ih, Nat.add_assoc]
+
+/-- Proof attempt: a fixed leading bit factors from the sum over profiles. -/
+theorem prefixWeightSum_attempt (b : Bool) (xss : List (List Bool)) (j : Joint) :
+    profileWeightSum (xss.map (b :: ·)) j =
+      localWeight b j * profileWeightSum xss (jointStep b j) := by
+  induction xss with
+  | nil => simp [profileWeightSum]
+  | cons xs xss ih =>
+      simp only [List.map_cons, profileWeightSum]
+      rw [profileWeight_cons, ih]
+      simp [Nat.mul_add]
+
+/-- Proof attempt: the original false/true recursion for allBits realizes
+exactly the state-weight recurrence. This has not been compiled here. -/
+theorem stateWeight_sum_attempt (m : Nat) (j : Joint) :
+    stateWeightSumTarget m j := by
+  induction m generalizing j with
+  | zero =>
+      simp [stateWeightSumTarget, stateWeight, allBits, profileWeightSum,
+        profileWeight, correctionWeight]
+  | succ m ih =>
+      rw [stateWeightSumTarget, stateWeight, allBits,
+        profileWeightSum_append_attempt, prefixWeightSum_attempt,
+        prefixWeightSum_attempt, ih (jointStep false j), ih (jointStep true j)]
+
 /-- Target: the flattened list is exactly the union of all original ordinary
 integer realizations of the initial words, with no omissions or duplicates. -/
 def completeRealizationTarget (m k : Nat) : Prop :=
