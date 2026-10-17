@@ -1,0 +1,62 @@
+{
+  "snapshot_utc": "2026-10-17 05:20:24 UTC",
+  "pr_snapshot": {
+    "url": "https://github.com/taco-jpg/p196-algorithm/pull/169",
+    "number": 169,
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "draft": false,
+    "body": "## Summary\n\nAdds the complete executable predecessor list for every canonical target, reusing the verified numerical decoder and Agent101's unchanged profile extraction. For every canonical target `Y` and natural `n`, `Agent105Predecessors9df76b.mem_predecessors` proves membership iff `0 < n ∧ Lychrel196.step n = Y`; `predecessors_nodup` proves duplicate freedom. No palindrome-target assumption is imposed.\n\n## Verification\n\nThe exact published source checkpoint is `d37aa2f2af91f2a073d741999310305bf626b77e` (tree `3a53718ab15b5d5475c3523f9a33e8ec5d2bfe60`). The 15-module closure passed two fresh builds: canonical run 99.90 s and a separate empty-directory run with explicit `--trust=0` in 98.50 s. The shared audit covers 1,105 theorem constants; only the project's standard foundational axioms occur. Four new modules passed author trust0 checks and independent statement/semantic review. The package adds 13 theorems and 5 executable definitions.\n\nBoundary examples kernel-checked include `1 → []`, `2 → [1]`, `10 → [5]`, and the complete predecessor list for 121: `[110, 92, 83, 74, 65, 56, 47, 38, 29]`.\n\nThis PR is stacked on the numerical decoder contribution and should be integrated only after its dependency. It does not establish an infinite-time statement about 196.",
+    "title": "Enumerate every positive numerical predecessor without duplicates",
+    "base": "research/agent-105/numeric-decoder-9df76b-20261016",
+    "base_sha": "ec7aa17a36548cc629d2a4a309e802406fc862e7",
+    "head": "research/agent-105/all-predecessors-9df76b-20261016",
+    "head_sha": "d37aa2f2af91f2a073d741999310305bf626b77e",
+    "head_repo_id": 1417407400,
+    "head_repo_full_name": "taco-jpg/p196-algorithm",
+    "merge_commit_sha": "57d2ff38ec91181b1a1ea03349629773fd57f759",
+    "user": {
+      "login": "taco-jpg",
+      "name": "taco-jpg",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/173271134?v=4",
+      "id": 173271134
+    },
+    "requested_reviewers": null,
+    "requested_team_reviewers": null,
+    "diff": null,
+    "comments": null,
+    "created_at": "2026-10-17T01:28:49Z",
+    "updated_at": "2026-10-17T01:28:56Z",
+    "closed_at": null,
+    "merged_at": null,
+    "commits": 1,
+    "changed_files": 99,
+    "additions": 8985,
+    "deletions": 0,
+    "display_url": "https://github.com/taco-jpg/p196-algorithm/pull/169",
+    "display_title": "Enumerate every positive numerical predecessor without duplicates"
+  },
+  "previous_body_origin": "github_get_pr_info actual read before any Agent14 PR metadata mutation",
+  "integration_role": {
+    "content": "{\n  \"schema_version\": 1,\n  \"role\": \"integration\",\n  \"target\": \"main\",\n  \"owner\": \"Agent #31\",\n  \"session\": \"02893e4f368d\",\n  \"task_id\": \"agent31-session02893e4f368d-pr104-delivery-20261016\",\n  \"status\": \"ACTIVE\",\n  \"active_editing\": true,\n  \"selected_pr\": 104,\n  \"reviewed_head\": \"c9a86a40ffd478f7c01ac68688896cba91f94dd1\",\n  \"observed_main_head\": \"74a1c3922eb7af438fe40b23d2105ad07556e3f5\",\n  \"verified_main_head\": \"ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3\",\n  \"verified_combined_tree\": \"8d258f38783ee04dc78610dcd2ad87bebec78fa4\",\n  \"review_id\": 5554899000,\n  \"independent_review_id\": 5554297272,\n  \"evidence_commit\": \"c9a86a40ffd478f7c01ac68688896cba91f94dd1\",\n  \"readiness_commit\": \"8cfd4d0a389d1796be18424913132488de0cd80d\",\n  \"verification\": \"PASS exact reviewed repair, unchanged seven-module strict build/1694-constant audit, independent wiring, actual finite/structural checks and complete tested-base preservation. Current base rebind immediately before guarded merge.\",\n  \"prior_record\": {\n    \"git_blob\": \"812f4d545d4fe1a61d0766f47a5c908c396600f2\",\n    \"status_at_claim\": \"RELEASED\",\n    \"owner\": \"Agent #22\",\n    \"session\": \"d1fa86c3a213\",\n    \"integrated_commit\": \"74a1c3922eb7af438fe40b23d2105ad07556e3f5\"\n  },\n  \"release_rule\": \"Release immediately after actual merged PR/target/tree/ordered-parent readback and applicable postchecks, or a concrete platform blocker.\",\n  \"integration_state\": \"FINAL_BASE_RECHECK\",\n  \"updated_at\": \"2026-10-17T00:05:12.990Z\"\n}\n",
+    "encoding": "utf-8",
+    "sha": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+    "display_url": "https://github.com/taco-jpg/p196-algorithm/blob/p196/coordination/proofs/coordination/roles/integration.json",
+    "display_title": "integration.json"
+  },
+  "branch_protection_visibility": {
+    "error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"403\"}",
+    "error_code": "FORBIDDEN",
+    "error_data": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+      "status": "403"
+    }
+  },
+  "rules_endpoint_attempt": {
+    "error": "HTTPError: 400: GitHub Fetch URL is not an allowed public GitHub repository or search endpoint. (Response: None)",
+    "error_code": "INVALID_ARGUMENT"
+  }
+}

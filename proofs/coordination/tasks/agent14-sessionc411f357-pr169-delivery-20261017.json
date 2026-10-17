@@ -4,7 +4,7 @@
   "owner": "Agent #14",
   "session": "c411f357feb2",
   "role": "DELIVERY_OWNER",
-  "status": "REVIEWING",
+  "status": "SOURCE_REVIEW_PASSED_EVIDENCE_PUBLICATION_PENDING_READBACK",
   "PR_NUMBER": 169,
   "SOURCE_HEAD": "d37aa2f2af91f2a073d741999310305bf626b77e",
   "DELIVERY_OWNER": "Agent #14/sessionc411f357feb2",
@@ -23,16 +23,18 @@
   ],
   "dependencies": [
     {
-      "pr": 134,
-      "head": "ec7aa17a36548cc629d2a4a309e802406fc862e7",
-      "delivery_owner": "Existing Agent18/Agent26 records; resolve current acknowledged owner before request",
-      "status": "OPEN"
-    },
-    {
       "pr": 113,
       "head": "cd11afd68833051c81051df22573e8827ab6b671",
       "delivery_owner": "Agent #12/sessionaa9210d02a75",
-      "status": "OPEN"
+      "task": "agent12-sessionaa9210-pr113-pr115-review-20261016",
+      "status": "OPEN; existing independent review completed, actual main integration pending"
+    },
+    {
+      "pr": 134,
+      "head": "ec7aa17a36548cc629d2a4a309e802406fc862e7",
+      "delivery_owner": "Agent #18/session1a324de41cc8",
+      "task": "agent18-session1a324-pr134-delivery-20261016",
+      "status": "REVIEWED_PENDING_PREREQUISITE113; Agent26 duplicate delivery withdrawn"
     }
   ],
   "ownership_basis": {
@@ -44,11 +46,11 @@
     "publication_method": "Atomic create of verified-absent unique coordination task, followed by exact readback and reconciliation of intervening ownership changes; no source/main mutation.",
     "checkin": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6229923773"
   },
-  "REVIEW_REFERENCE": "UNKNOWN",
-  "REVIEW_STATUS": "EXISTING_RETAINED_EVIDENCE_UNDER_ASSESSMENT",
-  "NEXT_REQUIRED_ACTION": "Materialize full exact PR169 delta and retained independent evidence; inspect source-origin closure and actual formal review state; reuse valid builds instead of duplicating them.",
-  "ACTION_RESULT": "Source task and exact advertised scope read. No new build, formal review, Ready or merge yet.",
-  "MERGE_COMMIT_OR_SPECIFIC_BLOCKER": "UNKNOWN",
+  "REVIEW_REFERENCE": "Agent11 independent receipt ab72654ae6888966bdcb4df521b8812b4bc059cf0fea59002b04ee999fcde16a; actual formal PR review remains next.",
+  "REVIEW_STATUS": "EXACT_HEAD_NONAUTHOR_SEMANTICS_AND_RETAINED_STRICT_REPLAY_QUALIFIED",
+  "NEXT_REQUIRED_ACTION": "Read back this evidence publication; correct PR verification description with preserved original; submit exact-head eligible formal review; send current writer and prerequisite owners the concrete113→134→169 packet and execute any acknowledged authorized next action.",
+  "ACTION_RESULT": "Source/evidence/semantic/combination obligations qualified without new Lean build. Recovered original Agent11 raw evidence and all current qualification/combination logs selected losslessly. No source edit, Ready change, main slot, actual merge or accepted handoff.",
+  "MERGE_COMMIT_OR_SPECIFIC_BLOCKER": "PR113 and PR134 remain under existing delivery owners; main role occupied by Agent31. Concrete writer execution/handoff request follows publication/formal review.",
   "merge_commit": null,
   "prior_selection": {
     "pr": 155,
@@ -64,5 +66,79 @@
     "Reuse qualifying unchanged independent review; a shared account is not an independent formal platform approval.",
     "No actual merge before prerequisite integration, correct target, valid write ownership and actual platform gates."
   ],
-  "updated_at": "2026-10-17 05:08:52 UTC"
+  "updated_at": "2026-10-17 05:29:21 UTC",
+  "evidence": {
+    "directory": "proofs/coordination/evidence/agent14-sessionc411f357-pr169-delivery-20261017",
+    "source_head": "d37aa2f2af91f2a073d741999310305bf626b77e",
+    "source_tree": "3a53718ab15b5d5475c3523f9a33e8ec5d2bfe60",
+    "added_paths": 99,
+    "manifest_entries": 98,
+    "modules": 15,
+    "reused_executor": "Agent #11 /root/review134_resume",
+    "new_lean_build": false,
+    "strict_flags": [
+      "--trust=0",
+      "-j1",
+      "-DElab.async=false"
+    ],
+    "recorded_commands": 22,
+    "all_commands_exit_zero": true,
+    "theorem_constants": 1105,
+    "safe_definitions": 211,
+    "literal_exports": 25,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "agent11_replay_seconds": 95.09639024734497,
+    "historical_99_90_and_98_50_runs": "UNVERIFIED_MISSING_EXECUTION_ARTIFACTS; attributed erratum preserves claims and uses distinct qualified Agent11 replay.",
+    "agent11_archive": {
+      "path": "AGENT11_RETAINED_EVIDENCE.tar.gz",
+      "sha256": "6a2cbba59c9e4479681be2bf5e478d330447be615c426e073bb165a171337f92",
+      "git_blob": "5d8f0be7a2fcc4d15b7a505f9b613e7abb1c078d",
+      "original_files": 64,
+      "original_bytes": 1180248,
+      "all_members_rehashed": true
+    },
+    "qualification_archive": {
+      "path": "AGENT14_QUALIFICATION_DETAILS.tar.xz",
+      "sha256": "50490a44bc1cefff0c9379721ec036824120c8b48a35d29dbc729ddac71cf59a",
+      "git_blob": "0b163f68632516d2f188ef6b8f8cbaae86ac2b34",
+      "files": 130,
+      "original_bytes": 49874790,
+      "all_members_rehashed": true
+    }
+  },
+  "combination": {
+    "actual_main": "74a1c3922eb7af438fe40b23d2105ad07556e3f5",
+    "observed_utc": "2026-10-17 05:21:58 UTC",
+    "sequence": [
+      113,
+      134,
+      169
+    ],
+    "prospective_trees": [
+      "907f29031db9452d433d11eafcda50d72e776712",
+      "e39cd3e9316c78eb471f977f5aa625d3b4e99988",
+      "6f007afa2cb091958908d9d278708d625259e1b9"
+    ],
+    "all_merge_tree_exit_zero": true,
+    "current_main_entries_preserved": 22212,
+    "cumulative_additions": 247,
+    "modifications": 0,
+    "deletions": 0,
+    "source_closure_identical": true,
+    "actual_merge": false,
+    "direct169_not_equivalent": "Would omit eight final113evidence files and retain older113README/FILES; prerequisite sequence required."
+  },
+  "publication_attempts": [
+    {
+      "candidate": "323a09ab7038bbbbe84d31a6b486ed438c6a0cd6",
+      "parent": "93c0a6128eac4e66a06386ba82fb327952a7f670",
+      "result": "UNKNOWN GraphQL internal error; branch readback showed four unrelated intervening transactions and our directory still absent.",
+      "observed_after": "74666d2d0e4f002ebc059e9d9141f86886e1074a",
+      "remedy": "Reapply the identical twelve evidence artifacts and this owned task to a freshly read coordination parent; non-force guarded update."
+    }
+  ]
 }
