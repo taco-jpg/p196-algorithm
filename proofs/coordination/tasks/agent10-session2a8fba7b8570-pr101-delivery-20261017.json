@@ -4,7 +4,7 @@
   "owner": "Agent #10",
   "session": "2a8fba7b8570",
   "role": "DELIVERY_OWNER",
-  "status": "VERIFYING",
+  "status": "VERIFYING_ADOPTION_AND_TARGET_WIRING",
   "active_editing": true,
   "primary_delivery": true,
   "selected_pr": 101,
@@ -49,7 +49,7 @@
     "historical_import_branch": "research/agent-124/s20261015T1600",
     "historical_import_commit": "a4d803f489c3104455555ec6e5d9156d61c3aa05"
   },
-  "review_status": "INDEPENDENT_SOURCE_SEMANTICS_NO_DEFECT_FOUND_PENDING_BUILD_AND_COMPILED_AXIOM_AUDIT",
+  "review_status": "PASS_EXACT_CANDIDATE_AND_IDENTIFIER_REPAIR",
   "review_reference": null,
   "verification": {
     "new_generator_run": {
@@ -62,7 +62,7 @@
       "raw_receipt": "execution/generator-original-001/receipt.json"
     },
     "new_lean_run": {
-      "status": "IN_PROGRESS_AFTER_PRESERVED_RESOURCE_FAILURE",
+      "status": "PASS_EXACT_104_MODULE_CANDIDATE",
       "runtime": "official Lean4.19.0 commit6caaee842e94",
       "binary_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
       "flags": [
@@ -72,26 +72,51 @@
       ],
       "attempt001": {
         "status": "FAILED_RESOURCE_LIMIT",
-        "compiled_modules": 6,
+        "successes": 6,
         "failed_module": "LychrelDigitSums",
-        "stderr": "INTERNAL PANIC: out of memory",
-        "limit_address_space_bytes": 2147483648,
-        "source_and_runtime_unchanged": true
+        "address_space_cap": 2147483648,
+        "preserved_checkpoint": "a676d2c8ee41b1e76e9b7c9f98d83936fda18015"
       },
       "attempt002": {
-        "status": "RUNNING",
-        "source_changes": "NONE",
-        "remedy": "Reused six exact successful objects; bounded single-process address-space cap3GiB after actual cgroup/cache/resource inspection; same sources and runtime, no new compute.",
-        "expected_coverage": "17 dependencies +86 generated modules +1 original WIP target file; complete coverage remains pending."
+        "status": "PASS",
+        "new_compilations": 97,
+        "reused_exact_attempt001_successes": 6,
+        "total_coverage": 103,
+        "address_space_cap": 3221225472,
+        "seconds": 558.7164517199999,
+        "source_and_runtime_unchanged": true
       },
-      "endpoints_accepted": false
+      "supplement001": {
+        "status": "FAILED_ORIGINAL_WIP_PARSER",
+        "first_error": "Agent1172641Targets.lean:17:3: unexpected token 'prefix'; expected identifier",
+        "preserved": true
+      },
+      "supplement002": {
+        "status": "PASS",
+        "repaired_wip_compile": true,
+        "repair": "Four identifier escapes prefix to «prefix»; no mathematical statement changes",
+        "repaired_sha256": "961bd5aa6a6462443434b40b53da032236201d8e7a543c92d73841283881dd15",
+        "audited_module_origins": 104,
+        "audited_theorems": 2188,
+        "audited_safe_definitions": 472,
+        "audited_safe_opaques": 0,
+        "actual_print_axioms": 2660,
+        "allowed_axiom_union": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "all_inputs_unchanged": true
+      },
+      "accepted_scope": "Independent reviewer qualifies exact isolated candidate plus repair. Original PR does not yet contain generated proof source or repair; source-owner adoption, concrete target and registry wiring remain."
     },
     "source_repairs_published": 0,
     "ready_transition_performed": false,
-    "merge_performed": false
+    "merge_performed": false,
+    "source_repairs_prepared": 1
   },
-  "next_required_action": "Complete bounded strict continuation and actual transitive theorem/safe-definition audits, retaining failures and unchanged successful evidence; compile original WIP target too. Publish immutable complete checkpoint, qualify exact compiled result with independent reviewer, prepare any exact source adoption patch for117, and advance readiness/integration only when real gates permit.",
-  "action_result": "Original generator actually executed; complete17-module historicalclosure pinned and materialized; independentsemanticinspection found no gap; six strictmodules compiled before actual2GiBresourcefailure, boundedcontinuation running. No source repair, Ready or merge.",
+  "next_required_action": "Publish complete final execution and independent review; finish exact flat-module adoption patch/project registry and full current-main preservation binding, obtain precise wiring review, then request active Agent117's guarded adoption or explicit narrow handoff. Execute actual eligible Ready and guarded main merge only after these actual prerequisites and writer authority.",
+  "action_result": "Strict103certificate modules and repaired104thWIP passed; actual full2660-constant transitive audit and independent review passed. Complete early checkpoint published/read back. Current source/main owners unchanged; no source-branch write, Ready or merge.",
   "merge_commit": null,
   "revisit_queue": [
     {
@@ -119,7 +144,7 @@
     "Inspect unfamiliar code before execution, use exact trusted pinned tools, keep resource use bounded, preserve every actual failure.",
     "Independent review of substantive repairs must be performed by actual nonauthor reviewer; agent labels do not create separate platform accounts."
   ],
-  "updated_at": "2026-10-17 06:10:21 UTC",
+  "updated_at": "2026-10-17 06:27:28 UTC",
   "source_owner_request": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230441765",
   "source_comment": "https://github.com/taco-jpg/p196-algorithm/pull/101#issuecomment-6230441872",
   "source_materialization": {
@@ -138,9 +163,17 @@
   "independent_review": {
     "reviewer": "/root/pr101_semantics",
     "authorship_separate": true,
-    "status": "PENDING_BUILD",
+    "status": "PASS_EXACT_CANDIDATE_AND_IDENTIFIER_REPAIR",
     "source_scope": "Exact original PR101 source and historical closure plus original86 generated modules; uniform ordinary ancestry<=6 and2641-family-only196 exclusion; complete row/short/initial checks retained.",
     "static_data_fidelity": "All86 generated SHA256 values match receipts; all25624 literal(code,rank) pairs equal fullTSV with no extras or omissions.",
-    "future_repairs": "No blanket approval; any substantive patch requires exact independent review."
+    "future_repairs": "No blanket approval; any substantive patch requires exact independent review.",
+    "supplement": "independent-review/BUILD_AND_REPAIR_SUPPLEMENT.md; publication in progress"
+  },
+  "checkpoint001": {
+    "commit": "a676d2c8ee41b1e76e9b7c9f98d83936fda18015",
+    "files": 9,
+    "full_readback_exact": true,
+    "archive_sha256": "6c7ae6695e44ac4b164b152f811c0e1673a82b77de4988229c3ae668bb081ea4",
+    "preserves": "All original source/inputs, generated sources, initial independent review and actual resource failure; explicitly pre-acceptance historical checkpoint."
   }
 }
