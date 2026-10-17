@@ -109,6 +109,7 @@ theorem regeneratedWitness_rejects (p : Triple) :
   exact regeneratedWitness_rejects_all a b c
 
 #print axioms regeneratedRejectingWords_nodup
+#print axioms regeneratedWitness_rejects_all
 #print axioms regeneratedWitness_rejects
 
 end P196.Agent3.PrefixContraction
