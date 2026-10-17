@@ -83,6 +83,39 @@ theorem monitorStep_m2 (q : Nat) :
 
 theorem monitorStep_m3 (q : Nat) : monitorStep .m3 q = .m3 := rfl
 
+/-- Finite monitor alphabet and all valid optional center symbols. -/
+def monitorStates : List MonitorState := [.m0, .m1, .m2, .m3]
+
+def pairSymbols : List (Fin 19) := List.finRange 19
+
+def centerSymbols : List (Option Nat) :=
+  none :: (List.range 10).map (fun k => some (2 * k))
+
+/-- Check the initial product state, every monitor/DFA transition implication,
+and rejection of every bad terminal center. This is a finite Boolean
+certificate predicate; its soundness theorem is a separate WIP obligation. -/
+def checkSafetyRows {N : Nat} (B : Agent107.FoldedDFA.Encoding.BooleanDFA N)
+    (raw : Fin N → MonitorState → Bool) : Bool :=
+  let starts := raw B.zero .m0
+  let transitions :=
+    (List.finRange N).all fun a =>
+      monitorStates.all fun m =>
+        pairSymbols.all fun q =>
+          if pairAllowed (m == .m0) q.val then
+            (List.finRange N).all fun b =>
+              Agent107.FoldedDFA.boolImplies
+                (raw a m && B.d a q b)
+                (raw b (monitorStep m q.val))
+          else true
+  let terminals :=
+    (List.finRange N).all fun a =>
+      monitorStates.all fun m =>
+        centerSymbols.all fun c =>
+          Agent107.FoldedDFA.boolImplies
+            (raw a m && badTerminal m c)
+            (!(B.toDFA.final a c))
+  starts && transitions && terminals
+
 end Agent104.DFASafety
 
 #print axioms Agent104.DFASafety.centerCode_none
