@@ -169,7 +169,7 @@ All four endpoints are in namespace `Agent105.UniformReturn`:
 | [`uniform_integer_return`][a66-integer] | Positive ordinary-integer realizers and actual variable-time pair-word returns imply a uniform return for every natural-number representative with that pair word. |
 | [`uniform_integer_safe_return`][a66-integer] | The integer statement with `Lychrel196.Palindrome` excluded at every time `1 <= i <= t`. |
 
-The integer hypotheses explicitly supply, for every sufficiently large `k),
+The integer hypotheses explicitly supply, for every sufficiently large `k`,
 some `n != 0` and positive `t(k)` realizing `Q(k)` and the claimed return
 under the original `Lychrel196.orbit`. Canonicality is derived from those
 positive realizers. The conclusion retains existence of a positive realizer
@@ -212,6 +212,50 @@ closure, fixed-time tail stability, eventual common head and the finite time
 bound are proved inside the package; they should not be listed as additional
 unproved assumptions of these final endpoints.
 
+
+### Replay the PR105 package
+
+From the root of a Git checkout containing the pinned sources, use Python 3.9
+or later, Git and the official Lean 4.19.0 release
+(commit `6caaee842e94`). The [direct verifier][a66-verifier] uses the Python
+standard library and the Lean runtime's own `Init`, `Std` and `Lean`
+modules. Its registry supplies the complete 26-module project closure.
+
+Replace the absolute paths below. Choose a new output directory outside the
+checkout; the verifier creates it and refuses to overwrite an existing one.
+
+```sh
+P196_LEAN=/absolute/path/to/lean-4.19.0-linux/bin/lean
+P196_REPLAY_OUT=/absolute/path/outside-checkout/new-agent105-integer-replay
+python3 -B proofs/verify_project__214bf7673efe116b.py \
+  --lean "$P196_LEAN" \
+  --registry proofs/Agent105UniformIntegerReturn.registry.json \
+  --project agent105-uniform-integer-return \
+  --output "$P196_REPLAY_OUT"
+```
+
+This command selects a fresh single-stage replay of this package. On success,
+the verifier exits 0 and writes `verification.json` with `status: PASS`
+and `repository_wide_pass: false`, together with the project source snapshots,
+per-command logs and `FILES.json`. It uses its existing compiler flags
+`-j1 -DElab.async=false`; this command does not add `--trust=0`.
+The [retained two-stage instructions][a66-verification] reproduce the distinct
+execution actually recorded above.
+
+Appending `--check-only` instead checks source identities and import closure.
+It still requires Git, the official Lean executable and runtime, and a new
+output directory; its status is `SOURCE_AND_IMPORT_CHECK_ONLY`, not a
+mathematical verification pass. The explicit registry and project are essential:
+`proofs/verify_project.py` is the original-layout wrapper for the historical
+registry and does not select this PR105 project.
+
+**Validation of these instructions in this documentation session:
+`COMMAND_INSPECTED`.** The parser, source paths, toolchain checks, output
+handling and report statuses were read in the pinned verifier.
+`COMMAND_EXECUTED` and `EXPECTED_OUTPUT_CONFIRMED` are not claimed here;
+the shell was blocked before launch by ENOSPC. The earlier retained build
+receipts remain separate execution evidence.
+
 The [previous complete status document][a66-original] is preserved byte-for-byte.
 The historical checkpoint, its evidence labels and generated inventories remain
 unchanged.
@@ -228,5 +272,6 @@ unchanged.
 [a66-registry]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent105UniformIntegerReturn.registry.json
 [a66-receipt]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-105/8f1107db019a-affine-dynamics/verification/uniform-integer-return/execution-receipt.json
 [a66-verification]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-105/8f1107db019a-affine-dynamics/verification/uniform-integer-return/README.md
+[a66-verifier]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/verify_project__214bf7673efe116b.py
 [a66-original]: archive/documentation/agent-66/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/STATUS.md
 <!-- END AGENT66 PR105 STATUS -->
