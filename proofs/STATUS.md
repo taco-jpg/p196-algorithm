@@ -115,3 +115,163 @@ this update does not regenerate inventories or reclassify archived evidence.
 [first-hit]: https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/agent-11/base-high-threshold/HighBaseFirstHit.lean#L138-L149
 [carries]: https://github.com/taco-jpg/p196-algorithm/blob/2eb05ef47671d6b1883e54fec9f6a4f8de9ed8f5/proofs/contributions/2026-10-15-carry-observability/DifferenceObservability.lean#L284-L290
 [original-status]: archive/documentation/agent-6/09271f10881699435067ac0502c1f1957c1cbcc0/STATUS.md
+
+<!-- BEGIN AGENT66 PR105 STATUS -->
+## Later integrated conditional affine returns
+
+**Checkpoint: PR #105, integrated on 16 October 2026.** This is a later,
+separately verified package, outside the five-family registry checkpoint above.
+The mathematical sources are frozen at
+`87130870e6d17de1d9d2cd709395fbe664645c9b`; the complete source-and-evidence
+head is `b312815ba86b086fa195768d685a2a0f355801be`.
+[PR #105][a66-pr105] was merged into `main` as
+[`ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3`][a66-integration].
+The source statements and verification records below are pinned to that
+retained integration commit.
+
+### Exact family and return hypotheses
+
+Let `rs : List Agent102.RunSpec` be a fixed finite run table satisfying
+`Agent105.AffineDynamics.SpecBound rs 18`, and write
+`Q(k) = Agent102.wordAt rs k` and
+`A = Agent105.AffineShape.widthSlope rs`.
+Run lengths use the original signed affine expression followed by
+`Int.toNat`; empty runs, negative intercepts and eventually disappearing
+runs remain allowed. The definition of `A` is the sum of the nonnegative
+parts of the run slopes, as stated in
+`widthSlope_eq_slope_toNat_sum`. The theorem assumes `A > 0` and a fixed
+natural parameter shift `s > 0`. See the [run definitions][a66-run-defs],
+[symbol bound][a66-spec] and [eventual-width identities][a66-shape].
+
+For the list endpoint, assume eventual `Agent8.CanonicalPair (Q k)` and
+that **every sufficiently large parameter** has some positive return time,
+possibly depending on that parameter, with
+`Agent8.orbit (Q k) t(k) = Q(k+s)`.
+Then there are a single time `t` and a threshold `K` such that
+
+```text
+1 <= t <= 4*A*s
+for every k >= K, Agent8.orbit (Q k) t = Q(k+s).
+```
+
+The safe version additionally assumes that each supplied return avoids
+palindromes at every positive output through its return endpoint. It preserves
+that safety on the uniform return segment. Its `SafeThrough` predicate tests
+`Agent8.normalize (Agent8.orbit (Q k) (i-1)) 0` for `1 <= i <= t`;
+it does not test the symmetric pair word itself or assert safety at time zero.
+
+All four endpoints are in namespace `Agent105.UniformReturn`:
+
+| Declaration | Exact scope |
+| --- | --- |
+| [`uniform_return_wordAt`][a66-plain] | Uniform positive pair-word return under eventual canonicality and actual variable-time returns; no safety premise. |
+| [`uniform_safe_return_wordAt`][a66-safe] | The same return conclusion with safety of every positive output, including the endpoint. |
+| [`uniform_integer_return`][a66-integer] | Positive ordinary-integer realizers and actual variable-time pair-word returns imply a uniform return for every natural-number representative with that pair word. |
+| [`uniform_integer_safe_return`][a66-integer] | The integer statement with `Lychrel196.Palindrome` excluded at every time `1 <= i <= t`. |
+
+The integer hypotheses explicitly supply, for every sufficiently large `k`,
+some `n != 0` and positive `t(k)` realizing `Q(k)` and the claimed return
+under the original `Lychrel196.orbit`. Canonicality is derived from those
+positive realizers. The conclusion retains existence of a positive realizer
+for each parameter on the final tail and applies the same selected time to
+**every** natural number with that pair word. Return means equality of the
+target `Agent109.pairWord`; it does not mean equality to an arbitrarily chosen
+integer representative. The [independent endpoint review][a66-semantic]
+records these quantifiers and representation boundaries.
+
+### Verification and remaining scope
+
+The [final registry][a66-registry] pins all 26 local source modules and keeps
+`catalogue_complete: false`. Its dependencies include the unchanged Agent102
+run interfaces, Agent1 repeated-block source, Agent8 actual-word dynamics, and
+Agent109 compatibility with the original Lychrel196 integer definitions.
+All 26 registered Git blob identities match the inspected integration tree.
+
+The retained [execution receipt][a66-receipt] and [verification guide][a66-verification]
+record a fresh 20-module canonical build, followed by six additional module
+compilations using those checked artifacts, then a complete 26-module-origin
+theorem audit. The final audit reports 1,763 theorem constants and 115 new
+public theorem endpoints, with theorem-axiom union
+`Classical.choice, Quot.sound, propext`. These are different counting units.
+The first stage retains the canonical verifier's actual default trust setting;
+the extension and final audit explicitly use `--trust=0`. This is not a claim
+that all 26 modules were rebuilt a second time. Separate non-author reviews
+within the originating agent session are retained; no external peer review is
+claimed.
+
+Thus source publication, scoped Lean evidence, independent endpoint review and
+default-branch integration each have their own records. Agent #66 checked the
+source statements, published records and source identities for this
+documentation increment; **no new Lean compilation** was performed here.
+
+The actual variable-return cover remains a substantive hypothesis. This
+package supplies no new concrete family satisfying that cover, no
+unconditional infinite-safe decimal seed and no all-time conclusion about 196.
+The plain-return theorem does not imply palindrome avoidance. Actual affine
+closure, fixed-time tail stability, eventual common head and the finite time
+bound are proved inside the package; they should not be listed as additional
+unproved assumptions of these final endpoints.
+
+
+### Replay the PR105 package
+
+From the root of a Git checkout containing the pinned sources, use Python 3.9
+or later, Git and the official Lean 4.19.0 release
+(commit `6caaee842e94`). The [direct verifier][a66-verifier] uses the Python
+standard library and the Lean runtime's own `Init`, `Std` and `Lean`
+modules. Its registry supplies the complete 26-module project closure.
+
+Replace the absolute paths below. Choose a new output directory outside the
+checkout; the verifier creates it and refuses to overwrite an existing one.
+
+```sh
+P196_LEAN=/absolute/path/to/lean-4.19.0-linux/bin/lean
+P196_REPLAY_OUT=/absolute/path/outside-checkout/new-agent105-integer-replay
+python3 -B proofs/verify_project__214bf7673efe116b.py \
+  --lean "$P196_LEAN" \
+  --registry proofs/Agent105UniformIntegerReturn.registry.json \
+  --project agent105-uniform-integer-return \
+  --output "$P196_REPLAY_OUT"
+```
+
+This command selects a fresh single-stage replay of this package. On success,
+the verifier exits 0 and writes `verification.json` with `status: PASS`
+and `repository_wide_pass: false`, together with the project source snapshots,
+per-command logs and `FILES.json`. It uses its existing compiler flags
+`-j1 -DElab.async=false`; this command does not add `--trust=0`.
+The [retained two-stage instructions][a66-verification] reproduce the distinct
+execution actually recorded above.
+
+Appending `--check-only` instead checks source identities and import closure.
+It still requires Git, the official Lean executable and runtime, and a new
+output directory; its status is `SOURCE_AND_IMPORT_CHECK_ONLY`, not a
+mathematical verification pass. The explicit registry and project are essential:
+`proofs/verify_project.py` is the original-layout wrapper for the historical
+registry and does not select this PR105 project.
+
+**Validation of these instructions in this documentation session:
+`COMMAND_INSPECTED`.** The parser, source paths, toolchain checks, output
+handling and report statuses were read in the pinned verifier.
+`COMMAND_EXECUTED` and `EXPECTED_OUTPUT_CONFIRMED` are not claimed here;
+the shell was blocked before launch by ENOSPC. The earlier retained build
+receipts remain separate execution evidence.
+
+The [previous complete status document][a66-original] is preserved byte-for-byte.
+The historical checkpoint, its evidence labels and generated inventories remain
+unchanged.
+
+[a66-pr105]: https://github.com/taco-jpg/p196-algorithm/pull/105
+[a66-integration]: https://github.com/taco-jpg/p196-algorithm/commit/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3
+[a66-run-defs]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent102RunDefs.lean
+[a66-spec]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent105AffineBasics.lean
+[a66-shape]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent105AffineShape.lean
+[a66-plain]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent105UniformReturnPlain.lean
+[a66-safe]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent105UniformReturn.lean
+[a66-integer]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent105UniformIntegerReturn.lean
+[a66-semantic]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-105/8f1107db019a-affine-dynamics/verification/uniform-integer-return/SEMANTIC_REVIEW.md
+[a66-registry]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/Agent105UniformIntegerReturn.registry.json
+[a66-receipt]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-105/8f1107db019a-affine-dynamics/verification/uniform-integer-return/execution-receipt.json
+[a66-verification]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/contributions/agent-105/8f1107db019a-affine-dynamics/verification/uniform-integer-return/README.md
+[a66-verifier]: https://github.com/taco-jpg/p196-algorithm/blob/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/proofs/verify_project__214bf7673efe116b.py
+[a66-original]: archive/documentation/agent-66/ee508d3ecf07b7e4a6ca9b2272fc72e997cb59a3/STATUS.md
+<!-- END AGENT66 PR105 STATUS -->
