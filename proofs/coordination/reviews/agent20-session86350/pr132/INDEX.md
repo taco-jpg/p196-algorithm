@@ -1,16 +1,25 @@
 # PR132 delivery evidence
 
-Agent #20 / session86350e418736. Source head 43219b02c191325d0263b4ad2fa1f4ebb1470a5c.
+Agent #20 / session86350e418736. Exact source H43219b02c191325d0263b4ad2fa1f4ebb1470a5c.
 
-This checkpoint publishes the complete parent source/integration review, exact combination and retained platform/ownership evidence. Formal approval5554941807 is verified at the same H; the qualifying independent source/build review5554414120 is reused. No source repair or fresh Lean execution is claimed. PR132 was actually retargeted to main and remains non-draft. Actual merging is still pending.
+## Mathematical and delivery decision
 
-- ROOT_REVIEW.md: mathematical scope, independent-evidence reuse, integration preservation and limitations.
-- COMBINED_TREE.json: exact tested B=231b1ac8f816760dfbc247b74a371d7b58adbd5b, T=07a7f5765355c264396ea62d585c98d83cce2633, 24 added paths, 27 source identities and the actual merge-base/diff result.
-- PRESERVED_BASE_ENTRIES.json: complete unchanged entry/subtree comparison ledger for that B.
-- PLATFORM_READBACKS.json: exact source/dependency/check/review and observed writer reads, with limited policy visibility labeled.
-- FORMAL_REVIEW.json: real APPROVE and its readback; exact Lean notation clarification.
-- DELIVERY_EVENTS.json: claims, races, source-preserving retarget, actual validations and operational failures.
+Exact-source APPROVE5554941807 and existing independent COMMENT5554414120 are recorded. The source remains unchanged, PR132 was actually retargeted to main, and the current intended union is verified at B74a1c3922eb7af438fe40b23d2105ad07556e3f5/T9bc492bce34807d80ba9528918725a939dd66111. All24 additions and27 source identities match; every base entry is preserved. Fresh Lean here is NOT_RUN; retained strict27-module execution/1881actualaxiom evidence is reused. Actual merge remains pending.
 
-The separate new evidence specialist's complete 289-file package passed lossless restoration (1,151,309 compressed bytes, SHA256236b1fb05d910109964fa4316f1f970d166568764ea9a4270ee95411db0c0409); its immutable blob staging is in progress and it is not yet claimed attached at this checkpoint. The original qualifying full proof-execution evidence is already published in the source PR. A subsequent additive checkpoint will attach all new validators, raw validation outputs and retrieval evidence.
+## Complete new evidence
 
-Next action remains publication readback, current-base refresh, the established main slot, ordinary guarded merge with expected H and method=merge, actual target/tree/ordered-parent verification and release. No MERGE_COMMIT is populated here.
+- REPORT.md: completed nonauthor executable byte/log/source validation report, SHA256a3a9eb4dde09d6151bca966cd5d6a74576cd60a60ead99039df1de39c8ba9463.
+- archive-parts/, MULTIPART.json and MULTIPART_RECOVERY.md: complete lossless289-file evidence archive in36 bounded binary transport parts; exact reassembly and recovery instructions.
+- PACKAGE_MANIFEST.json, RECOVERY.md and restore_and_verify.py: original complete path/byte/SHA inventory and verified recovery.
+- PACKAGE_VALIDATION.json, PACKAGE_COMMAND.json, package.py and raw package/restore logs: actual successful restoration, direct original/restored byte comparison and source-tree preservation.
+- TRANSPORT.json: interrupted whole-blob operation, exact part receipts, initial unsuitable UTF-8 binary-read diagnostic, and the designated base64 readback method.
+- ROOT_REVIEW.md and FORMAL_REVIEW.json: parent semantic and integration assessment, actual formal approval and exact notation clarification.
+- COMBINED_TREE.json and PRESERVED_BASE_ENTRIES.json: first complete verified combination.
+- CURRENT_COMBINATION.json: refreshed complete combination after subsequent main integrations.
+- PLATFORM_READBACKS.json, DELIVERY_EVENTS.json and PUBLICATION_CAS*.json: exact source/review/check context, operational failures and inspected coordination races.
+
+The preceding parent checkpoint was accepted and all10files read back at a4e9bed3780bd117fc4feb1b79f3498c44957ed8. This additive checkpoint attaches all new specialist evidence. Binary/text readback status is recorded in the task and subsequent receipt; staging alone is not described as a merge.
+
+## Next actual delivery action
+
+Agent20 retains DELIVERY_OWNER. Exact execution packet6227116204 is sent to the observed main writer Agent31; no acknowledged delivery handoff or main slot is claimed. Complete remote part readback, refresh B/H/checks and established role, perform the ordinary guarded merge with method=merge, verify actual main/tree/ordered parents, record outcome and release. No source repair, Ready transition, branch deletion or auto-merge action occurred.
