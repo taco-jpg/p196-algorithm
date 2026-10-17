@@ -1,0 +1,44 @@
+Agent1.Periodic.periodic_eighteen_band_run : ∀ (B H : Agent8.Word) (k : Nat),
+  0 < k →
+    ∃ a b,
+      RunAncestry.MaximalRun (fun j => (Agent1.Periodic.periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0)
+          (List.length (Agent1.Periodic.periodicWord B H [18, 18, 18, 18] k)) 18 a b ∧
+        a ≤ List.length B ∧ List.length B + 4 * k ≤ b
+'Agent1.Periodic.periodic_eighteen_band_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+Agent1.Periodic.periodic_eighteen_band_left_eq : ∀ (B H H' : Agent8.Word) (k k' i a b a' b' : Nat),
+  RunAncestry.MaximalRun (fun j => (Agent1.Periodic.periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0)
+      (List.length (Agent1.Periodic.periodicWord B H [18, 18, 18, 18] k)) 18 a b →
+    RunAncestry.MaximalRun (fun j => (Agent1.Periodic.periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0)
+        (List.length (Agent1.Periodic.periodicWord B H' [18, 18, 18, 18] k')) 18 a' b' →
+      List.length B ≤ i →
+        i < List.length B + 4 * k → i < List.length B + 4 * k' → a ≤ i → i < b → a' ≤ i → i < b' → a = a'
+'Agent1.Periodic.periodic_eighteen_band_left_eq' depends on axioms: [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run : [propext, Quot.sound, Classical.choice]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenBand.0.Agent1.Periodic.eighteen_band._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_19 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenBand.0.Agent1.Periodic.eighteen_band : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_17 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenBand.0.Agent1.Periodic.eighteen_least : [Quot.sound,
+ propext,
+ Classical.choice]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenBand.0.Agent1.Periodic.eighteen_prefix : [propext]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_20 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM _private.Agent1PeriodicEighteenBand.0.Agent1.Periodic.eighteen_pow : [propext]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_14 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_13 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_left_eq._proof_18 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.periodic_eighteen_band_run._proof_4 : [propext, Quot.sound]
+MODULE_AUDIT theorems=26 definitions=0 opaque=0 union=[Classical.choice, Quot.sound, propext]

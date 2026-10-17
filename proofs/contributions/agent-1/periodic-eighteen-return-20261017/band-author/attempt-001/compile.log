@@ -1,0 +1,52 @@
+Agent1PeriodicEighteenBand.lean:19:12: error: unknown constant 'List.replicate_add'
+Agent1PeriodicEighteenBand.lean:17:14: error: unsolved goals
+case succ
+k : Nat
+ih : pow [18, 18, 18, 18] k = List.replicate (4 * k) 18
+⊢ 18 :: 18 :: 18 :: 18 :: List.replicate (4 * k) 18 = List.replicate (4 + 4 * k) 18
+Agent1PeriodicEighteenBand.lean:86:5: error: unknown tactic
+Agent1PeriodicEighteenBand.lean:120:5: error: unknown tactic
+Agent1PeriodicEighteenBand.lean:120:2: error: unsolved goals
+case h₁
+B H H' : Word
+k k' i a b a' b' : Nat
+hr :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0)
+    (List.length (periodicWord B H [18, 18, 18, 18] k)) 18 a b
+hr' :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0)
+    (List.length (periodicWord B H' [18, 18, 18, 18] k')) 18 a' b'
+hBi : List.length B ≤ i
+hik : i < List.length B + 4 * k
+hik' : i < List.length B + 4 * k'
+hai : a ≤ i
+hib : i < b
+hai' : a' ≤ i
+hib' : i < b'
+hprefix :
+  ∀ (j : Nat),
+    j ≤ i → (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0 = (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0
+⊢ a ≤ a'
+Agent1PeriodicEighteenBand.lean:110:14: error: unsolved goals
+case h₂
+B H H' : Word
+k k' i a b a' b' : Nat
+hr :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0)
+    (List.length (periodicWord B H [18, 18, 18, 18] k)) 18 a b
+hr' :
+  RunAncestry.MaximalRun (fun j => (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0)
+    (List.length (periodicWord B H' [18, 18, 18, 18] k')) 18 a' b'
+hBi : List.length B ≤ i
+hik : i < List.length B + 4 * k
+hik' : i < List.length B + 4 * k'
+hai : a ≤ i
+hib : i < b
+hai' : a' ≤ i
+hib' : i < b'
+hprefix :
+  ∀ (j : Nat),
+    j ≤ i → (periodicWord B H [18, 18, 18, 18] k)[j]?.getD 0 = (periodicWord B H' [18, 18, 18, 18] k')[j]?.getD 0
+⊢ a' ≤ a
+'Agent1.Periodic.periodic_eighteen_band_run' depends on axioms: [sorryAx]
+'Agent1.Periodic.periodic_eighteen_band_left_eq' depends on axioms: [propext, sorryAx, Quot.sound]
