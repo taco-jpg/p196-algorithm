@@ -1,0 +1,3828 @@
+{
+  "status": "PASS_SCOPED_ARCHIVE_PAYLOAD",
+  "source_head": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80",
+  "scope_file_count": 81,
+  "scope_bytes": 655098,
+  "checks_passed": 658,
+  "manifest_checks": [
+    {
+      "manifest": "numeric-author/frozen-receipt.json files_sha256",
+      "checked_entries": 31
+    },
+    {
+      "manifest": "path-author/manifest.json files",
+      "checked_entries": 19
+    },
+    {
+      "manifest": "path-author/manifest.json runtime_objects",
+      "checked_entries": 1
+    },
+    {
+      "manifest": "registry-preflight/FILES.json",
+      "checked_entries": 23
+    },
+    {
+      "manifest": "author-confirmation/Agent1PeriodicNinesPath",
+      "checked_entries": 6
+    },
+    {
+      "manifest": "author-confirmation/Agent1PeriodicNinesCycle",
+      "checked_entries": 6
+    }
+  ],
+  "attempts": [
+    {
+      "lane": "numeric-author",
+      "attempt": "attempt-001",
+      "source_sha256": "d00e5b388cb694fe12a13dcee70c5c53a3d17e9449b79183a85ce72359133870",
+      "exit_code": 0,
+      "commands": 1,
+      "dependency_count": 30,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "numeric-author",
+      "attempt": "attempt-002",
+      "source_sha256": "97cdee3d8b9856286284bc6dbdd0d6451d9154b473be28fe497fd5ef624b7630",
+      "exit_code": 0,
+      "commands": 1,
+      "dependency_count": 30,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "numeric-author",
+      "attempt": "attempt-003",
+      "source_sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "exit_code": 0,
+      "commands": 2,
+      "dependency_count": 33,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "path-author",
+      "attempt": "attempt-001",
+      "source_sha256": "ad6b04e9921b71b111ce5f0f603c0f2c680ac26db80b8e66381b3e149d07a516",
+      "exit_code": 1,
+      "commands": 1,
+      "dependency_count": 21,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "path-author",
+      "attempt": "attempt-002",
+      "source_sha256": "72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866",
+      "exit_code": 0,
+      "commands": 2,
+      "dependency_count": 21,
+      "fresh_full_closure": false
+    }
+  ],
+  "registry": {
+    "module_count": 34,
+    "inherited_count": 32,
+    "new_modules": [
+      "Agent1PeriodicNinesPath",
+      "Agent1PeriodicNinesCycle"
+    ],
+    "endpoints": [
+      "Agent1.Periodic.quotient_path_nines_phase",
+      "Agent1.Periodic.quotient_path_nines_entry_sum",
+      "Agent1.Periodic.periodic_nines_input_nonpalindrome",
+      "Agent1.Periodic.quotient_cycle_nines_safe",
+      "Agent1.Periodic.quotient_cycle_nines_positive_seed"
+    ],
+    "sha256": "d3fca8aa3b055bd287f347a21d132a02c41c6713cdd754fd42a90bf5afcccc80"
+  },
+  "published_runtime_object": {
+    "path": "proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/Agent1PeriodicNinesPath.olean",
+    "sha256": "e2f3c12921db554e0af373154c850c2af7268f041cd9868f96da403c76dfaf0c",
+    "bytes": 247912,
+    "numeric_dependency_match": true
+  },
+  "warnings": [
+    {
+      "boundary": "Historical numeric object and external reused dependency objects are deliberately not published; their recorded hashes are not claimed to have been rehashed in this review. Published Path object was rehashed and cross-bound."
+    }
+  ],
+  "lean_execution": "NOT_RUN",
+  "historical_scripts_executed": false,
+  "inputs": {
+    "SOURCE_MANIFEST.json": {
+      "bytes": 107849,
+      "sha256": "bcfda70c1e4feaea02cd3b2a510d502e9c52f92b51eb0c27bf3653b441357eaf",
+      "git_blob": "01d18d31f384529163c4f04f4c58813a353d0b25"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/QUEUE.md": {
+      "bytes": 2590,
+      "sha256": "578dd7f195c56b0362fe7b49391d42e8f69eca5cd2e6bdf9c20dd132f16d2726",
+      "git_blob": "71da6e6af0a5a08986f3c6431cc1e4676ac9c533"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/README.md": {
+      "bytes": 4888,
+      "sha256": "20e7b2ff34706f3991add00a42f4ed774da1a0d9781e6334a1b50d3c7df2b650",
+      "git_blob": "fa11e544d900e3e0fedbe0879c4d4e97a9ba99dc"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/.gitignore": {
+      "bytes": 33,
+      "sha256": "86b39a77c61a8f8505898b297e68cfc319590f0472e7d73cc976665ebba09a59",
+      "git_blob": "c04758a58802442a2ca19960ea77fd6d2f85b6db"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/NinesCycleAudit.lean": {
+      "bytes": 2320,
+      "sha256": "de6782e3a55bb68c26b455e4b68e48e23fc42ee70b8069f3ae5f1a36575d3d5a",
+      "git_blob": "5e9788c3064795af7d32e1fcfa9761b1206eb132"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/README.md": {
+      "bytes": 2650,
+      "sha256": "53578f11c09291815ca58e445cfd65239a619b4f5d9b9379049d3a2dd7d940b1",
+      "git_blob": "0dd61b2af3915c60b36d6861b782287cc4761a28"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/SOURCE-SCOUT.md": {
+      "bytes": 20762,
+      "sha256": "5fe1d321688192d172c1732c732fd9400fa92dc05daeb41b6b82c2bf816ad002",
+      "git_blob": "bede31eb1f3b3c6c115e26e0d5c9920f0b84f8d5"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/Agent1PeriodicNinesCycle.lean": {
+      "bytes": 1167,
+      "sha256": "d00e5b388cb694fe12a13dcee70c5c53a3d17e9449b79183a85ce72359133870",
+      "git_blob": "ddec043e421b6e3b92e3e6a76c24adcb2e92031a"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/commands.json": {
+      "bytes": 1000,
+      "sha256": "5f1c6d045462b9f93c35bf750be952cd8abc4d21c04b0bfd8c8dd73a458aef5a",
+      "git_blob": "376fa2e81e3f1f71ef29311cef1aa7783fc27d16"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/compile.log": {
+      "bytes": 94,
+      "sha256": "dffc694c689992d630c5d48e5dc9691bc74bf6a9e1f68ae8f0d16ba8a7f79cb5",
+      "git_blob": "53bb6ab779e17efb77ecfd725342bfa1050f6592"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/dependencies.json": {
+      "bytes": 18989,
+      "sha256": "609ea4202094a013c7151ac6ebccfecd7bbd86ca56769a1fdf8183b4117ab156",
+      "git_blob": "992c4be1d6ba30a5a8523dc99e9119cdf09cd469"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/lean-version.txt": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "git_blob": "507e58dc270fb40a999f3a0a9f2245cc58f7fa19"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/result.json": {
+      "bytes": 202,
+      "sha256": "1754d26db5e74d22d22293c578614de214ee08e8e50a6193d3e75e77faf8cfb7",
+      "git_blob": "a41aad4e0cc38b3e26be565ef36d12e9ebbdd36f"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/run.py": {
+      "bytes": 4376,
+      "sha256": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25",
+      "git_blob": "3fde8037c2cdd6ae7eb7b04bfcaac868820b5c0c"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/Agent1PeriodicNinesCycle.lean": {
+      "bytes": 2272,
+      "sha256": "97cdee3d8b9856286284bc6dbdd0d6451d9154b473be28fe497fd5ef624b7630",
+      "git_blob": "1dbab7700d764db86574ff6220f8b28c6251a9fd"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/commands.json": {
+      "bytes": 999,
+      "sha256": "df19faa8c0f98b57db36b6c4291d5ba5008fb2c3c0930eb57c0373056ee987fd",
+      "git_blob": "497c634e10b90d90a89458982d6732b73dde32ae"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/compile.log": {
+      "bytes": 94,
+      "sha256": "dffc694c689992d630c5d48e5dc9691bc74bf6a9e1f68ae8f0d16ba8a7f79cb5",
+      "git_blob": "53bb6ab779e17efb77ecfd725342bfa1050f6592"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/dependencies.json": {
+      "bytes": 18989,
+      "sha256": "609ea4202094a013c7151ac6ebccfecd7bbd86ca56769a1fdf8183b4117ab156",
+      "git_blob": "992c4be1d6ba30a5a8523dc99e9119cdf09cd469"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/lean-version.txt": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "git_blob": "507e58dc270fb40a999f3a0a9f2245cc58f7fa19"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/result.json": {
+      "bytes": 202,
+      "sha256": "4180c98a45d3718ff84370389ee18aec0ade2529e6cfcd51c4ee5bc4b982d744",
+      "git_blob": "e57d5c5d66dc18b159308a8147ae9d0787fe7a71"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/run.py": {
+      "bytes": 4376,
+      "sha256": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25",
+      "git_blob": "3fde8037c2cdd6ae7eb7b04bfcaac868820b5c0c"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/Agent1PeriodicNinesCycle.lean": {
+      "bytes": 4298,
+      "sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "git_blob": "73fd8965d5f0ba919f740e9e949df0adb321be3e"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/NinesCycleAudit.lean": {
+      "bytes": 2320,
+      "sha256": "de6782e3a55bb68c26b455e4b68e48e23fc42ee70b8069f3ae5f1a36575d3d5a",
+      "git_blob": "5e9788c3064795af7d32e1fcfa9761b1206eb132"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/audit.log": {
+      "bytes": 2408,
+      "sha256": "0f71af554f95c2b8daf99478e49fe811aff562e53ef63a5a5d000bf55a087c4c",
+      "git_blob": "5dbdf37ecd0371bd43d1282d22d3b4e1d1c5f087"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/commands.json": {
+      "bytes": 2182,
+      "sha256": "9560278439f3c35672aa4049edfa5d9bb1bb0dd2dc8d85527193775ca90ec827",
+      "git_blob": "efac8eed092878dd6e229fdb3f470f30d01decc7"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/compile.log": {
+      "bytes": 309,
+      "sha256": "01faf2c0216ecf72927669ec048709019db5decd667e819d4b92374d6024c571",
+      "git_blob": "c980e90af720b2f82721a46892b64845d40abd8a"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/dependencies.json": {
+      "bytes": 20897,
+      "sha256": "1c08717b4bc9382e996b33dcb5da25c8fb8a69e2f096b3e0d7d876eb79ebe319",
+      "git_blob": "564fc75051d61fb4bd91b2e4b91126bf2536429b"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/lean-version.txt": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "git_blob": "507e58dc270fb40a999f3a0a9f2245cc58f7fa19"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/result.json": {
+      "bytes": 202,
+      "sha256": "f1eb37b3dbbb95cad21a95e4d88b14c2f2d2a2cc51d84c41aea6636b75fa8033",
+      "git_blob": "7bc03488ec8d57a22156ee26d7b7db515f37c624"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/run.py": {
+      "bytes": 4376,
+      "sha256": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25",
+      "git_blob": "3fde8037c2cdd6ae7eb7b04bfcaac868820b5c0c"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/dependency-provenance.json": {
+      "bytes": 1164,
+      "sha256": "0a72eafbf57342d68a46853aa4c0fae858859c0cf3a5b5545ed54ae2173178ea",
+      "git_blob": "ebf4c455b71023600586a1ef369cdc158aa6db6e"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/draft.lean": {
+      "bytes": 4298,
+      "sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "git_blob": "73fd8965d5f0ba919f740e9e949df0adb321be3e"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/frozen-receipt.json": {
+      "bytes": 9375,
+      "sha256": "0a3de08102914a52feb3462f9f305cc6d9ec0c8bae7f5f1822f9ff24d2587cd1",
+      "git_blob": "66c2681361782ec149e3724c9c0e576b98fe961a"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/origin-summary.json": {
+      "bytes": 1139,
+      "sha256": "5f14c79aa26687478cf8f903b8a8402a3dab894488ce648f3cff7aae5872f5d0",
+      "git_blob": "13c691949bbdc7175cc4cbc4ef50847287a7e88c"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/run.py": {
+      "bytes": 4376,
+      "sha256": "feb48142293be4af57afd17406867b15914ab3aa909c9bbaf85f4069efae6a25",
+      "git_blob": "3fde8037c2cdd6ae7eb7b04bfcaac868820b5c0c"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/PathAudit.lean": {
+      "bytes": 1502,
+      "sha256": "4a74e44fed7448e64cf7f194e0d50f3beba329b8ab4bbecf5a89acbbad2f6dcf",
+      "git_blob": "7fc893d19d88e2e318a3d83910ae991656081cea"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/README.md": {
+      "bytes": 3931,
+      "sha256": "1b008199d209724f8f85f5b356b0a386c8ecfb5918e58fe452a716ed2f71309f",
+      "git_blob": "7ab135ba29019512b4e79b81245199bf1fc2fe1a"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/Agent1PeriodicNinesPath.lean": {
+      "bytes": 4471,
+      "sha256": "ad6b04e9921b71b111ce5f0f603c0f2c680ac26db80b8e66381b3e149d07a516",
+      "git_blob": "5246eae8df26987503ed41b4c871f17b0eab39ec"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/commands.json": {
+      "bytes": 882,
+      "sha256": "41efc0ec1fe282f893103c0bd0b728edbf46b9c0113aae9bef2a3cbe7e13671d",
+      "git_blob": "3ebe4bda4af8476e3e3f9bd27508ed289fdd8564"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/compile.log": {
+      "bytes": 495,
+      "sha256": "b20b08c639a08eaaf5e0ef78108a75b711d2e9324a1072b387bb2e6533301578",
+      "git_blob": "f6dfebbcd4e4a744ea91ecc0ffe797f8b963f8ca"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/dependencies.json": {
+      "bytes": 13187,
+      "sha256": "7d6bdea7206e41e3da612381b056245a85f6a9a687a6256ef178cad0e95b2c03",
+      "git_blob": "d27214bc84edeef83b044e5b1d27fe9faf886f03"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/lean-version.txt": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "git_blob": "507e58dc270fb40a999f3a0a9f2245cc58f7fa19"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/result.json": {
+      "bytes": 202,
+      "sha256": "0b70a5c8421bd3b7bb514d6a36fa570a0348466bab9549576107ab32808dba36",
+      "git_blob": "f461a9865dc7117a729e47975864d2fc078e4d71"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/run.py": {
+      "bytes": 3895,
+      "sha256": "9ff607ecd6142ee004d823066eb60fef2f8f8dae0783fd3dff26d7b5ef0c7939",
+      "git_blob": "ecce41d08f87f721d7f78f5479db7a35507c3435"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/Agent1PeriodicNinesPath.lean": {
+      "bytes": 4510,
+      "sha256": "72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866",
+      "git_blob": "8f6097c21dcad8affd4a2053ff8482e229358761"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/Agent1PeriodicNinesPath.olean": {
+      "bytes": 247912,
+      "sha256": "e2f3c12921db554e0af373154c850c2af7268f041cd9868f96da403c76dfaf0c",
+      "git_blob": "fbbe216b37b000f837db4f2a16caf0ff630694a5"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/PathAudit.lean": {
+      "bytes": 1502,
+      "sha256": "4a74e44fed7448e64cf7f194e0d50f3beba329b8ab4bbecf5a89acbbad2f6dcf",
+      "git_blob": "7fc893d19d88e2e318a3d83910ae991656081cea"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/audit.log": {
+      "bytes": 2406,
+      "sha256": "537c11e45af2c5ac846017c1c1abd0e53749953a5cd92bdc5adcb080fd0a8a45",
+      "git_blob": "5b14c67356ffdb3ee0570f096f4cd733ac748e51"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/commands.json": {
+      "bytes": 1694,
+      "sha256": "c2a6b15b9bd98a0466b8ba6fdb32c8b75668f29653821c5d3138e395ac098bb3",
+      "git_blob": "e5a1332c7cd6bed26331eb58692d422ad5f5aa1a"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/compile.log": {
+      "bytes": 210,
+      "sha256": "32376961085b4a1904507ba7f5a800e5a7d5c7cf31564fd528b8741086a1a6c2",
+      "git_blob": "d7d74dd8d6f381535fc1d4301750d91fe20c941b"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/dependencies.json": {
+      "bytes": 13187,
+      "sha256": "7d6bdea7206e41e3da612381b056245a85f6a9a687a6256ef178cad0e95b2c03",
+      "git_blob": "d27214bc84edeef83b044e5b1d27fe9faf886f03"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/lean-version.txt": {
+      "bytes": 78,
+      "sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "git_blob": "507e58dc270fb40a999f3a0a9f2245cc58f7fa19"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/result.json": {
+      "bytes": 202,
+      "sha256": "c61bfbe1b4068b0d780a6786e4890a2f4610e261c833d3d8e7ac0986eac7f5e0",
+      "git_blob": "c2617ac9c17e501d18691e5dfe74226188ff9807"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/run.py": {
+      "bytes": 3895,
+      "sha256": "9ff607ecd6142ee004d823066eb60fef2f8f8dae0783fd3dff26d7b5ef0c7939",
+      "git_blob": "ecce41d08f87f721d7f78f5479db7a35507c3435"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/manifest.json": {
+      "bytes": 3515,
+      "sha256": "9120193baecb263780779b43272dfe1ec231dbaffea921c32a594ffb525c39f1",
+      "git_blob": "f952c7725c489e1f9597697cb4d5730456af8062"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/run.py": {
+      "bytes": 3895,
+      "sha256": "9ff607ecd6142ee004d823066eb60fef2f8f8dae0783fd3dff26d7b5ef0c7939",
+      "git_blob": "ecce41d08f87f721d7f78f5479db7a35507c3435"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/FILES.json": {
+      "bytes": 3383,
+      "sha256": "4913bb51d6b3f85c1e1a735aadea34458d95301531c3a685a6f386d05f5140b8",
+      "git_blob": "1faf95a9eb68f883e85fe3f8b8ae5b74f878401f"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/README.md": {
+      "bytes": 2950,
+      "sha256": "e8567f7e4bee5734e782612f1117c6d3263abc6852d31e4a8f85a39ef18a3f4f",
+      "git_blob": "012f068ae404b21a2d88deec0e5507e05d1f983f"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/author-confirmation.json": {
+      "bytes": 4543,
+      "sha256": "fd889bfbb4f57f7a0517bfdeefc1d8f98bf6ac69a08c7b27abff5df9f1b3ddd6",
+      "git_blob": "68882c62c700da49882b5dee0428edb85c16c724"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/claim-read.json": {
+      "bytes": 581,
+      "sha256": "30e6aab03b7a42e948d94ea2c968b89c7cabce59df8700eacfdd4604a1bbbb16",
+      "git_blob": "cbb526e4c8119247d0b170092d39a16ce668a696"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/claim.json": {
+      "bytes": 3195,
+      "sha256": "9d3f6c7f1215932109063df468b307d13649367bc7824491f9d2802f1ef8d8e6",
+      "git_blob": "e76f2f837124963ecb0645aa00b67623df87167c"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/confirm-authors.py": {
+      "bytes": 3539,
+      "sha256": "7b8b577acd506f53eeb56c4f579d97014b2667634cd197681abeb84e726c3a01",
+      "git_blob": "310caf8e8bf42761e025e33f47b80ed750193473"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/helper-provenance.json": {
+      "bytes": 445,
+      "sha256": "d4ba344066f47751707d8db04edeac9fae0a3f96e5a85d774f3cf0e232defb0e",
+      "git_blob": "1f275c99b3ba9008a444b1feb4644c7c0acb425a"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/prepare.py": {
+      "bytes": 11993,
+      "sha256": "2022ff8839163ebef2e500cf6f89f7edb1d4259565d83b6e6ef829021fe35ac5",
+      "git_blob": "33906838eb641ed44bb06d44d20571fe3ae4a06f"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-000/modules.json": {
+      "bytes": 9358,
+      "sha256": "b8bae97b84a64ca4cd3ebf5664872981d4c8f3efc5d6ff83187cd7c5c0b097dd",
+      "git_blob": "ceadc0af314a3b6fb4e963f02b302616f87883d4"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-000/prepare.py": {
+      "bytes": 11993,
+      "sha256": "2022ff8839163ebef2e500cf6f89f7edb1d4259565d83b6e6ef829021fe35ac5",
+      "git_blob": "33906838eb641ed44bb06d44d20571fe3ae4a06f"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-000/report.json": {
+      "bytes": 6435,
+      "sha256": "1cc5dac4517bda1805c8432c4614bd216cb411ad0c8feacac2baf5fed4a99659",
+      "git_blob": "b47b46918ef18247aa7dadd204187a589ed250c2"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/Agent1PeriodicNinesCycle.lean": {
+      "bytes": 4298,
+      "sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "git_blob": "73fd8965d5f0ba919f740e9e949df0adb321be3e"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/Agent1PeriodicNinesPath.lean": {
+      "bytes": 4510,
+      "sha256": "72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866",
+      "git_blob": "8f6097c21dcad8affd4a2053ff8482e229358761"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/modules.json": {
+      "bytes": 10056,
+      "sha256": "a23e96ae9696e80201b4d56cc4ab4e5d7aed2a13adbb2ec37f2a10f3c20acfdb",
+      "git_blob": "39e603dbd02a4e249a64999dba44b031cc5d3ba2"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/prepare.py": {
+      "bytes": 11993,
+      "sha256": "2022ff8839163ebef2e500cf6f89f7edb1d4259565d83b6e6ef829021fe35ac5",
+      "git_blob": "33906838eb641ed44bb06d44d20571fe3ae4a06f"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/registry.json": {
+      "bytes": 15075,
+      "sha256": "83a07252f6afb1099dc425faf316e9b229fb860cb6a52731f8086bcd9a8f24b9",
+      "git_blob": "6c394b5d3fe3a7df64555cf659b7bf1ebf9a858c"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/report.json": {
+      "bytes": 7556,
+      "sha256": "e63c49db26abae03a05005b8d959842ccde56419991d5915dfeb2f7017724159",
+      "git_blob": "c0f9f47f2ecad1620756ae29f6a9def6182755a5"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/Agent1PeriodicNinesCycle.lean": {
+      "bytes": 4298,
+      "sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "git_blob": "73fd8965d5f0ba919f740e9e949df0adb321be3e"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/Agent1PeriodicNinesPath.lean": {
+      "bytes": 4510,
+      "sha256": "72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866",
+      "git_blob": "8f6097c21dcad8affd4a2053ff8482e229358761"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/author-confirmation.json": {
+      "bytes": 4543,
+      "sha256": "fd889bfbb4f57f7a0517bfdeefc1d8f98bf6ac69a08c7b27abff5df9f1b3ddd6",
+      "git_blob": "68882c62c700da49882b5dee0428edb85c16c724"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/modules.json": {
+      "bytes": 10056,
+      "sha256": "a23e96ae9696e80201b4d56cc4ab4e5d7aed2a13adbb2ec37f2a10f3c20acfdb",
+      "git_blob": "39e603dbd02a4e249a64999dba44b031cc5d3ba2"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/prepare.py": {
+      "bytes": 11993,
+      "sha256": "2022ff8839163ebef2e500cf6f89f7edb1d4259565d83b6e6ef829021fe35ac5",
+      "git_blob": "33906838eb641ed44bb06d44d20571fe3ae4a06f"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/registry.json": {
+      "bytes": 15615,
+      "sha256": "d3fca8aa3b055bd287f347a21d132a02c41c6713cdd754fd42a90bf5afcccc80",
+      "git_blob": "efe03f3f3f146d7ddce2e96cb126ea81f710fcc3"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/report.json": {
+      "bytes": 7581,
+      "sha256": "9bfd095886001acae2f3cad66860d8b6c83d89e3bbc42858a844a460d478d810",
+      "git_blob": "7f132c4311ed5d5b9162374652c8433a5c59f4bc"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/scope/nines-phase-review.md": {
+      "bytes": 8607,
+      "sha256": "0a1294a052d336955779afe3e2758e1181a06a5f679e158a94e52ee05eb31ffa",
+      "git_blob": "fdac1b87287ff208d080a61c669771978241106e"
+    },
+    "source/proofs/contributions/agent-1/periodic-nine-cycle-20261017/scope/periodic-nines-return-scope.md": {
+      "bytes": 20762,
+      "sha256": "5fe1d321688192d172c1732c732fd9400fa92dc05daeb41b6b82c2bf816ad002",
+      "git_blob": "bede31eb1f3b3c6c115e26e0d5c9920f0b84f8d5"
+    },
+    "source/proofs/Agent1PeriodicNinesCycle.registry.json": {
+      "bytes": 15615,
+      "sha256": "d3fca8aa3b055bd287f347a21d132a02c41c6713cdd754fd42a90bf5afcccc80",
+      "git_blob": "efe03f3f3f146d7ddce2e96cb126ea81f710fcc3"
+    },
+    "source/proofs/Agent1PeriodicNinesPath.lean": {
+      "bytes": 4510,
+      "sha256": "72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866",
+      "git_blob": "8f6097c21dcad8affd4a2053ff8482e229358761"
+    },
+    "source/proofs/Agent1PeriodicNinesCycle.lean": {
+      "bytes": 4298,
+      "sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "git_blob": "73fd8965d5f0ba919f740e9e949df0adb321be3e"
+    }
+  },
+  "checks": [
+    {
+      "check": "source manifest head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/QUEUE.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/README.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/.gitignore",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/NinesCycleAudit.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/README.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/SOURCE-SCOUT.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/Agent1PeriodicNinesCycle.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/commands.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/compile.log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/dependencies.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/lean-version.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/result.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-001/run.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/Agent1PeriodicNinesCycle.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/commands.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/compile.log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/dependencies.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/lean-version.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/result.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-002/run.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/Agent1PeriodicNinesCycle.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/NinesCycleAudit.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/audit.log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/commands.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/compile.log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/dependencies.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/lean-version.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/result.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/run.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/dependency-provenance.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/draft.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/frozen-receipt.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/origin-summary.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/run.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/PathAudit.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/README.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/Agent1PeriodicNinesPath.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/commands.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/compile.log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/dependencies.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/lean-version.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/result.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-001/run.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/Agent1PeriodicNinesPath.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/Agent1PeriodicNinesPath.olean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/PathAudit.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/audit.log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/commands.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/compile.log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/dependencies.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/lean-version.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/result.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/run.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/manifest.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/run.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/FILES.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/README.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/author-confirmation.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/claim-read.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/claim.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/confirm-authors.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/helper-provenance.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/prepare.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-000/modules.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-000/prepare.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-000/report.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/Agent1PeriodicNinesCycle.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/Agent1PeriodicNinesPath.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/modules.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/prepare.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/registry.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-001/report.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/Agent1PeriodicNinesCycle.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/Agent1PeriodicNinesPath.lean",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/author-confirmation.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/modules.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/prepare.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/registry.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/registry-preflight/run-002/report.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/scope/nines-phase-review.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "materialized scope identity proofs/contributions/agent-1/periodic-nine-cycle-20261017/scope/periodic-nines-return-scope.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: .gitignore SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: NinesCycleAudit.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: README.md SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: SOURCE-SCOUT.md SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-001/Agent1PeriodicNinesCycle.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-001/commands.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-001/compile.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-001/dependencies.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-001/lean-version.txt SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-001/result.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-001/run.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-002/Agent1PeriodicNinesCycle.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-002/commands.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-002/compile.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-002/dependencies.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-002/lean-version.txt SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-002/result.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-002/run.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/Agent1PeriodicNinesCycle.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/NinesCycleAudit.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/audit.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/commands.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/compile.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/dependencies.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/lean-version.txt SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/result.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: attempt-003/run.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: dependency-provenance.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: draft.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: origin-summary.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric-author/frozen-receipt.json files_sha256: run.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: PathAudit.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: PathAudit.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: README.md SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: README.md size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/Agent1PeriodicNinesPath.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/Agent1PeriodicNinesPath.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/commands.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/commands.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/compile.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/compile.log size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/dependencies.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/dependencies.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/lean-version.txt SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/lean-version.txt size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/result.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/result.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/run.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-001/run.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/Agent1PeriodicNinesPath.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/Agent1PeriodicNinesPath.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/PathAudit.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/PathAudit.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/audit.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/audit.log size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/commands.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/commands.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/compile.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/compile.log size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/dependencies.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/dependencies.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/lean-version.txt SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/lean-version.txt size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/result.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/result.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/run.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: attempt-002/run.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: run.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json files: run.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json runtime_objects: attempt-002/Agent1PeriodicNinesPath.olean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "path-author/manifest.json runtime_objects: attempt-002/Agent1PeriodicNinesPath.olean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: README.md SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: README.md size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: author-confirmation.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: author-confirmation.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: claim-read.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: claim-read.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: claim.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: claim.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: confirm-authors.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: confirm-authors.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: helper-provenance.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: helper-provenance.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: prepare.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: prepare.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-000/modules.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-000/modules.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-000/prepare.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-000/prepare.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-000/report.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-000/report.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/Agent1PeriodicNinesCycle.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/Agent1PeriodicNinesCycle.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/Agent1PeriodicNinesPath.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/Agent1PeriodicNinesPath.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/modules.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/modules.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/prepare.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/prepare.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/registry.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/registry.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/report.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-001/report.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/Agent1PeriodicNinesCycle.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/Agent1PeriodicNinesCycle.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/Agent1PeriodicNinesPath.lean SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/Agent1PeriodicNinesPath.lean size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/author-confirmation.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/author-confirmation.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/modules.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/modules.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/prepare.py SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/prepare.py size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/registry.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/registry.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/report.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "registry-preflight/FILES.json: run-002/report.json size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "one scoped project and one root",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "34 registered source modules",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "only flat proofs Lean sources in registered closure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "global registry explicitly excluded",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "only two canonical new proof files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no accepted build or workflow mutation in incoming manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicCycleNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicCyclePath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicOuter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicCycleGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicGuardedPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicZeroNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicRealizability",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicSafetyNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicSafety",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicNines",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicPhase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "import module registered Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all registered modules reachable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "five endpoint names",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no archive module registered",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "new module byte identity Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "new module imports match registry Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "new module byte identity Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "new module imports match registry Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "endpoints equal five public source theorems",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt source pin numeric-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt compile exit numeric-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author honest increment numeric-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author dependency count numeric-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "runner preserved numeric-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiler version retained numeric-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "strict argv numeric-author/attempt-001/compile",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicCycleGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicCycleGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicCycleNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicCycleNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicCyclePath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicCyclePath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicGuardedPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicGuardedPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicOuter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicOuter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicRealizability",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicRealizability",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicSafety",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicSafety",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicSafetyNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicSafetyNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicZeroNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicZeroNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-001/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-001/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "successful compile excludes error/sorryAx",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt source pin numeric-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt compile exit numeric-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author honest increment numeric-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author dependency count numeric-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "runner preserved numeric-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiler version retained numeric-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "strict argv numeric-author/attempt-002/compile",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicCycleGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicCycleGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicCycleNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicCycleNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicCyclePath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicCyclePath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicGuardedPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicGuardedPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicOuter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicOuter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicRealizability",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicRealizability",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicSafety",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicSafety",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicSafetyNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicSafetyNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicZeroNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicZeroNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-002/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-002/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "successful compile excludes error/sorryAx",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt source pin numeric-author/attempt-003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt compile exit numeric-author/attempt-003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author honest increment numeric-author/attempt-003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author dependency count numeric-author/attempt-003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "runner preserved numeric-author/attempt-003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiler version retained numeric-author/attempt-003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "strict argv numeric-author/attempt-003/compile",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "strict argv numeric-author/attempt-003/audit",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicCycleGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicCycleGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicCycleNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicCycleNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicCyclePath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicCyclePath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicGuardedPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicGuardedPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicNines",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicNines",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicOuter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicOuter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicPhase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicPhase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicRealizability",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicRealizability",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicReturnClock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicSafety",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicSafety",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicSafetyAlphabet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicSafetyNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicSafetyNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicZeroNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicZeroNumeric",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin numeric-author/attempt-003/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format numeric-author/attempt-003/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "successful compile excludes error/sorryAx",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "final author snapshot equals canonical Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "final author includes successful audit Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author origin theorem count Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.periodic_nines_input_nonpalindrome._proof_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_cycle_nines_positive_seed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase._proof_3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase._proof_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_cycle_nines_safe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.periodic_nines_input_nonpalindrome",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesCycle.0.Agent1.Periodic.nines_cycle_safe_of_phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author summary matches count Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt source pin path-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt compile exit path-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author honest increment path-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author dependency count path-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "runner preserved path-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiler version retained path-author/attempt-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "strict argv path-author/attempt-001/compile",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicNines",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicNines",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicPhase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicPhase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-001/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-001/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "failed author evidence retained truthfully",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt source pin path-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "attempt compile exit path-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author honest increment path-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author dependency count path-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "runner preserved path-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiler version retained path-author/attempt-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "strict argv path-author/attempt-002/compile",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "strict argv path-author/attempt-002/audit",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/ActualWordBridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicCenterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicDigits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicGuard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicGuardFacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicNines",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicNines",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicOuterStrip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicParity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicPhase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicPhase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicPositivity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicQuotient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicSlices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicValidity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicWidthPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1PeriodicZeroPeriod",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1RepeatedBlock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/Agent1RepeatedBlockContext",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/IncomingCarry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/LychrelDigitSums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/PeriodObstructions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency source pin path-author/attempt-002/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "dependency object hash format path-author/attempt-002/PrefixSemantics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "successful compile excludes error/sorryAx",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "final author snapshot equals canonical Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "final author includes successful audit Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author origin theorem count Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_path_nines_phase._proof_7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_eighteen_absorbing._proof_3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_nines_trichotomy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.quotient_path_nines_trichotomy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_nines_trichotomy._proof_4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.rawPeriod_eighteen_absorbing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.quotient_path_nines_trichotomy._proof_5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0._proof_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0._proof_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_path_nines_phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_path_nines_entry_sum",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_path_nines_phase._proof_8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_path_nines_entry_sum._proof_9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms _private.Agent1PeriodicNinesPath.0.Agent1.Periodic.quotient_path_nines_trichotomy._proof_6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_path_nines_entry_sum._proof_10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author theorem permitted axioms Agent1.Periodic.quotient_path_nines_entry_sum._proof_11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author summary matches count Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "published path object matches numeric author dependency",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric manifest embedded attempts match actual result files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric receipt commands match final command record",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric receipt embedded origin summary",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric receipt embedded dependency provenance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numeric excluded object absent from publication manifest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation script pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "confirmation does not claim fresh execution",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesPath: proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/manifest.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesPath: proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/README.md SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesPath: proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/result.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesPath: proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/commands.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesPath: proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/compile.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesPath: proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/audit.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author confirmation source binding Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesCycle: proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/frozen-receipt.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesCycle: proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/origin-summary.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesCycle: proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/result.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesCycle: proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/commands.json SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesCycle: proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/compile.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-confirmation/Agent1PeriodicNinesCycle: proofs/contributions/agent-1/periodic-nine-cycle-20261017/numeric-author/attempt-003/audit.log SHA256",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author confirmation source binding Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author confirmation total",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical claim exact local identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight source script identity run-000",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight module count run-000",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight inherited source pins run-000",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight claim pin run-000",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight honest no compiler execution run-000",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight matching duplicate source pins run-000",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight source script identity run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight module count run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight inherited source pins run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight claim pin run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight honest no compiler execution run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight matching duplicate source pins run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight registry file pin run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight registry modules run-001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight snapshot run-001/Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight snapshot run-001/Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight source script identity run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight module count run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight inherited source pins run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight claim pin run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight honest no compiler execution run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight matching duplicate source pins run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight registry file pin run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight registry modules run-002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight snapshot run-002/Agent1PeriodicNinesPath",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "preflight snapshot run-002/Agent1PeriodicNinesCycle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "final preflight registry equals canonical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "final confirmation duplicated without alteration",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "same historical numeric scout duplicated without alteration",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical pending explicitly disclosed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "queue explicitly candidates not claims",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

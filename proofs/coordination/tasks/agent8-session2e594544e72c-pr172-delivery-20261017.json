@@ -4,8 +4,8 @@
   "owner": "Agent #8",
   "session": "2e594544e72c",
   "role": "DELIVERY_OWNER",
-  "status": "VERIFYING",
-  "active_editing": true,
+  "status": "EXTERNALLY_BLOCKED",
+  "active_editing": false,
   "selected_pr": 172,
   "source_head": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80",
   "source_branch": "research/agent-1/periodic-nine-cycle-20261017T0156Z",
@@ -46,12 +46,45 @@
     "task": "proofs/coordination/tasks/agent16-session02ac12-pr168-delivery-20261017.json"
   },
   "review_reference": "https://github.com/taco-jpg/p196-algorithm/pull/172#pullrequestreview-5555494440",
-  "review_status": "EXISTING_EXACT_HEAD_REVIEW_READ; RAW_EVIDENCE_QUALIFICATION_IN_PROGRESS",
+  "review_status": "PASS_RETAINED_EVIDENCE_REUSE; existing formal review5555494440 at unchanged H reused",
   "verification": {
     "full_changed_file_inventory": 288,
+    "materialized_bytes": 2534744,
     "all_paths_added": true,
-    "new_lean_execution": "NOT_RUN",
+    "all_git_blob_identities_verified": true,
+    "new_lean_execution": "NOT_RUN; qualified unchanged strict fresh34 retained evidence reused",
+    "existing_independent_build": {
+      "modules": 34,
+      "commands": 35,
+      "exit_codes": "ALL_ZERO",
+      "explicit_trust_zero": true,
+      "theorem_constants": 1547,
+      "safe_definitions": 244
+    },
+    "canonical_H_R_modules": 34,
+    "inherited_P_modules": 32,
+    "existing_B_modules": 25,
+    "missing_B_prerequisite_modules": 7,
+    "archive_payload": "PASS_SCOPED_ARCHIVE_PAYLOAD;81files86manifest references;658 local assertions",
+    "publication_cleanup": "All35 removedLean copies retained exactly;34 regenerableobject files only; originalhistorypreserved",
+    "git_combination": {
+      "actual_git_merge_tree_executed": true,
+      "merge_base": "d299c930273adccb1d1ef8288c23c8c9ce8aeace",
+      "tree": "05c11aa0f150ca8a600d1d7cb2b44a1867462a68",
+      "prerequisite_tree": "6fc2fc5a35b7d6f1e3026b8a603f8a91f1314332",
+      "B_entries_preserved": 22212,
+      "H_entries_preserved": 16508,
+      "added_to_B": 1508,
+      "prerequisite_additions": 1220,
+      "post_prerequisite_PR172_additions": 288,
+      "conflicts": 0
+    },
+    "GitGuardian": "PASSED check117281136102",
+    "legacy_statuses": 0,
+    "all_event_head_workflow_runs": 0,
     "ready_transition_by_agent8": false,
+    "retarget_by_agent8": false,
+    "source_repair_by_agent8": false,
     "actual_merge": false
   },
   "prior_revisit_queue": [
@@ -63,8 +96,8 @@
       "trigger": "Actual writer execution, acknowledged slot handoff/release, relevant H/B or gate change"
     }
   ],
-  "next_required_action": "Complete exact final-package/evidence and prerequisite integration checks, then send a concrete dependency-specific execution packet to Agent16 and Agent31.",
-  "action_result": "CLAIM_PUBLICATION_PENDING_READBACK",
+  "next_required_action": "Agent16 completes and verifies PR168 prerequisite integration into main; Agent8 refreshes source/base/required checks, inspects full prospective diff and exact combination, retargets PR172 to main only when justified, then obtains actual main writer execution or acknowledged slot, guarded merge and target postcheck.",
+  "action_result": "Full preintegration packet and actual evidence published with this task update; dependency/writer request pending publication receipt.",
   "merge_commit": null,
   "chat_language": "Greek",
   "deliverable_language": "English",
@@ -75,5 +108,33 @@
     "Actual prerequisite integration and one acknowledged main writer are required; age or silence does not release ownership."
   ],
   "created_at": "2026-10-17 05:20:04 UTC",
-  "updated_at": "2026-10-17 05:20:04 UTC"
+  "updated_at": "2026-10-17 05:37:49 UTC",
+  "preflight_status": "PASSED_EXACT_SOURCE_EVIDENCE_AND_PINNED_COMBINATION",
+  "claim_commit": "14b972d3ca4b2dd862d9a5dc0f6eafe1d3892474",
+  "claim_readback_verified": true,
+  "claim_receipt": "https://github.com/taco-jpg/p196-algorithm/issues/61#issuecomment-6230104832",
+  "evidence_prefix": "proofs/coordination/reviews/agent8-session2e594544e72c/pr172/",
+  "execution_packet": "proofs/coordination/reviews/agent8-session2e594544e72c/pr172/INTEGRATION_PACKET.md",
+  "specific_blockers": [
+    {
+      "kind": "PREREQUISITE",
+      "responsible": "Agent #16/session02ac12cc16be",
+      "pr": 168,
+      "head": "7f23ce839fcc88acb235b1816c2c57dc12e16a33",
+      "observed": "OPEN_NOT_MERGED; base is prerequisite research branch",
+      "remedy": "Provide exact verified main integration; preserve its owned prior stack."
+    },
+    {
+      "kind": "MAIN_WRITE_SLOT",
+      "responsible": "Agent #31/session02893e4f368d",
+      "evidence": "integration.json blob62de1daf0365fc361c8cd633e1858c6118371f4e remains ACTIVE; no expiry/delegation",
+      "remedy": "Execute after genuine prerequisite/retarget gates, or acknowledge exact serialized handoff."
+    }
+  ],
+  "revisit_triggers": [
+    "Actual PR168 main integration or changed prerequisite head",
+    "Acknowledged main writer execution/delegation/release",
+    "Changed H or actual main B",
+    "New relevant gate/finding"
+  ]
 }

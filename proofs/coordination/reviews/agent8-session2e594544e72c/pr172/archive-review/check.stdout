@@ -1,0 +1,109 @@
+{
+  "status": "PASS_SCOPED_ARCHIVE_PAYLOAD",
+  "source_head": "b8c17a5204ae56ad1fc99d8f9932ca9f57b6ac80",
+  "scope_file_count": 81,
+  "scope_bytes": 655098,
+  "checks_passed": 658,
+  "manifest_checks": [
+    {
+      "manifest": "numeric-author/frozen-receipt.json files_sha256",
+      "checked_entries": 31
+    },
+    {
+      "manifest": "path-author/manifest.json files",
+      "checked_entries": 19
+    },
+    {
+      "manifest": "path-author/manifest.json runtime_objects",
+      "checked_entries": 1
+    },
+    {
+      "manifest": "registry-preflight/FILES.json",
+      "checked_entries": 23
+    },
+    {
+      "manifest": "author-confirmation/Agent1PeriodicNinesPath",
+      "checked_entries": 6
+    },
+    {
+      "manifest": "author-confirmation/Agent1PeriodicNinesCycle",
+      "checked_entries": 6
+    }
+  ],
+  "attempts": [
+    {
+      "lane": "numeric-author",
+      "attempt": "attempt-001",
+      "source_sha256": "d00e5b388cb694fe12a13dcee70c5c53a3d17e9449b79183a85ce72359133870",
+      "exit_code": 0,
+      "commands": 1,
+      "dependency_count": 30,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "numeric-author",
+      "attempt": "attempt-002",
+      "source_sha256": "97cdee3d8b9856286284bc6dbdd0d6451d9154b473be28fe497fd5ef624b7630",
+      "exit_code": 0,
+      "commands": 1,
+      "dependency_count": 30,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "numeric-author",
+      "attempt": "attempt-003",
+      "source_sha256": "2bcd823a039a8fd1e9a4f54c01ae367cb2e46f97b96b9d31e29336342953dafd",
+      "exit_code": 0,
+      "commands": 2,
+      "dependency_count": 33,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "path-author",
+      "attempt": "attempt-001",
+      "source_sha256": "ad6b04e9921b71b111ce5f0f603c0f2c680ac26db80b8e66381b3e149d07a516",
+      "exit_code": 1,
+      "commands": 1,
+      "dependency_count": 21,
+      "fresh_full_closure": false
+    },
+    {
+      "lane": "path-author",
+      "attempt": "attempt-002",
+      "source_sha256": "72518762371d6174e300104d817b0e4cbe7a72d2f0f548ce6b6a9e1c79717866",
+      "exit_code": 0,
+      "commands": 2,
+      "dependency_count": 21,
+      "fresh_full_closure": false
+    }
+  ],
+  "registry": {
+    "module_count": 34,
+    "inherited_count": 32,
+    "new_modules": [
+      "Agent1PeriodicNinesPath",
+      "Agent1PeriodicNinesCycle"
+    ],
+    "endpoints": [
+      "Agent1.Periodic.quotient_path_nines_phase",
+      "Agent1.Periodic.quotient_path_nines_entry_sum",
+      "Agent1.Periodic.periodic_nines_input_nonpalindrome",
+      "Agent1.Periodic.quotient_cycle_nines_safe",
+      "Agent1.Periodic.quotient_cycle_nines_positive_seed"
+    ],
+    "sha256": "d3fca8aa3b055bd287f347a21d132a02c41c6713cdd754fd42a90bf5afcccc80"
+  },
+  "published_runtime_object": {
+    "path": "proofs/contributions/agent-1/periodic-nine-cycle-20261017/path-author/attempt-002/Agent1PeriodicNinesPath.olean",
+    "sha256": "e2f3c12921db554e0af373154c850c2af7268f041cd9868f96da403c76dfaf0c",
+    "bytes": 247912,
+    "numeric_dependency_match": true
+  },
+  "warnings": [
+    {
+      "boundary": "Historical numeric object and external reused dependency objects are deliberately not published; their recorded hashes are not claimed to have been rehashed in this review. Published Path object was rehashed and cross-bound."
+    }
+  ],
+  "lean_execution": "NOT_RUN",
+  "historical_scripts_executed": false
+}
