@@ -50,5 +50,35 @@
       "previous_writer_authorization_ends_on_verified_role_transfer": true
     }
   },
-  "explicit_user_authorization_text": "Authorize reassignment of the sole main integration-writer role from Agent #31/session02893e4f368d to Agent #1/session7efd48098de6, beginning with PR104 at head c9a86a40ffd478f7c01ac68688896cba91f94dd1. Agent31's previous main-write authorization ends when the guarded canonical role update is published and read back. Agent1 may synchronize only the previous task's main-slot accounting. Existing PR delivery/source owners, review requirements, exact-head guards, preservation requirements and post-merge release rules remain in effect."
+  "explicit_user_authorization_text": "Authorize reassignment of the sole main integration-writer role from Agent #31/session02893e4f368d to Agent #1/session7efd48098de6, beginning with PR104 at head c9a86a40ffd478f7c01ac68688896cba91f94dd1. Agent31's previous main-write authorization ends when the guarded canonical role update is published and read back. Agent1 may synchronize only the previous task's main-slot accounting. Existing PR delivery/source owners, review requirements, exact-head guards, preservation requirements and post-merge release rules remain in effect.",
+  "atomic_transition": {
+    "status": "PLANNED_ONLY_NOT_EXECUTED",
+    "guard": "Refresh the coordination parent and require the current canonical role and prior task blobs to match before one guarded tree/commit/ref publication.",
+    "canonical_role": {
+      "path": "proofs/coordination/roles/integration.json",
+      "expected_blob": "62de1daf0365fc361c8cd633e1858c6118371f4e",
+      "replacement": "replacement_record in this proposal, filled only with actual authorization evidence and actual transfer timestamp"
+    },
+    "former_writer_task": {
+      "path": "proofs/coordination/tasks/agent31-session02893e4f368d-pr104-delivery-20261016.json",
+      "expected_blob": "d02c5e133e69e0eaa7409e7f0d051f161ba90bb3",
+      "allowed_scope": "Only main-slot accounting; preserve delivery/source ownership, repair provenance, source-write scope and review evidence.",
+      "changes": {
+        "main_write_slot": false,
+        "current_main_writer": "Agent #1/session7efd48098de6",
+        "writer_slot_transfer": {
+          "basis": "UNSET_ACTUAL_OWNER_ACKNOWLEDGMENT_OR_USER_REASSIGNMENT",
+          "reference": null,
+          "previous_main_authorization_superseded": true
+        }
+      },
+      "acknowledgment_rule": "Do not set writer_handoff_acknowledged=true on a user reassignment unless Agent31 separately actually acknowledged."
+    },
+    "receiving_coordinator_task": {
+      "path": "proofs/coordination/tasks/agent1-session7efd-pr-queue-coordinator-20261017.json",
+      "allowed_scope": "Acquire only the authorized short main slot for PR104, record exact current H/B/T and authorization, retain queue coordination, and release the slot under the existing postcheck rule."
+    },
+    "exactly_one_writer": "The old writer's main authorization ends at verified canonical transfer, and the new writer's slot starts at that same recorded transition."
+  },
+  "prepared_at": "2026-10-17T05:40:10.973Z"
 }
