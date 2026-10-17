@@ -40,12 +40,6 @@ def profileWeightConsTarget (b : Bool) (xs : List Bool) (j : Joint) : Prop :=
   profileWeight (b :: xs) j =
     localWeight b j * profileWeight xs (jointStep b j)
 
-/-- The state recurrence must equal the sum of profile multiplicities over
-all Boolean words of the requested length. -/
-def stateWeightSumTarget (m : Nat) (j : Joint) : Prop :=
-  stateWeight m j = natProduct [] * 0 +
-    ((allBits m).map fun xs => profileWeight xs j).foldl (fun acc x => acc + x) 0
-
 /-- Exact weighted recurrence over the original four-by-four joint state.
 No state-independent replacement for the six-bit correction is permitted. -/
 def stateWeight : Nat → Joint → Nat
@@ -53,6 +47,12 @@ def stateWeight : Nat → Joint → Nat
   | n + 1, j =>
       localWeight false j * stateWeight n (jointStep false j) +
       localWeight true j * stateWeight n (jointStep true j)
+
+/-- The state recurrence must equal the sum of profile multiplicities over
+all Boolean words of the requested length. -/
+def stateWeightSumTarget (m : Nat) (j : Joint) : Prop :=
+  stateWeight m j =
+    ((allBits m).map fun xs => profileWeight xs j).foldl (fun acc x => acc + x) 0
 
 /-- Target: the flattened list is exactly the union of all original ordinary
 integer realizations of the initial words, with no omissions or duplicates. -/
