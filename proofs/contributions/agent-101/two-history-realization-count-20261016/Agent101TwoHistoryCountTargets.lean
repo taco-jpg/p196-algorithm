@@ -56,11 +56,21 @@ def stateWeight : Nat → Joint → Nat
       localWeight false j * stateWeight n (jointStep false j) +
       localWeight true j * stateWeight n (jointStep true j)
 
+/-- Sum of profile multiplicities over a finite list of Boolean words. -/
+def profileWeightSum : List (List Bool) → Joint → Nat
+  | [], _ => 0
+  | xs :: xss, j => profileWeight xs j + profileWeightSum xss j
+
+/-- Prefixing every word by one fixed bit factors out that transition's
+split count and changes the state to the exact next joint state. -/
+def prefixWeightSumTarget (b : Bool) (xss : List (List Bool)) (j : Joint) : Prop :=
+  profileWeightSum (xss.map (b :: ·)) j =
+    localWeight b j * profileWeightSum xss (jointStep b j)
+
 /-- The state recurrence must equal the sum of profile multiplicities over
 all Boolean words of the requested length. -/
 def stateWeightSumTarget (m : Nat) (j : Joint) : Prop :=
-  stateWeight m j =
-    ((allBits m).map fun xs => profileWeight xs j).foldl (fun acc x => acc + x) 0
+  stateWeight m j = profileWeightSum (allBits m) j
 
 /-- Target: the flattened list is exactly the union of all original ordinary
 integer realizations of the initial words, with no omissions or duplicates. -/
