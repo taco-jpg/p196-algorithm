@@ -1,0 +1,11 @@
+--- a/verify_pr153.py
++++ b/verify_pr153.py
+@@ -468,7 +468,7 @@
+             raise ValueError("Missing module declaration inventory")
+         dump(out / "declaration-audit.json", parsed)
+         literal = "import Agent52DigitSumDensity\nimport Lean\n"
+-        literal += "set_option pp.all true\nset_option pp.width 160\nset_option pp.maxDepth 100000\n"
++        literal += "set_option pp.all true\nset_option format.width 160\nset_option pp.deepTerms true\n"
+         literal += "set_option pp.maxSteps 10000000\n"
+         literal += "set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n"
+         for endpoint in endpoints:
