@@ -1,0 +1,48 @@
+Agent1.Periodic.quotientPathExponent_accounting (B H w : Nat → Agent8.Word) (k0 N : Nat)
+  (hguard : ∀ (i : Nat), i < N → 3 ≤ Agent1.Periodic.quotientPathExponent B H w k0 i) :
+  ↑(Agent1.Periodic.quotientPathExponent B H w k0 N) = ↑k0 + Agent1.Periodic.quotientDeltaSum B H w N
+Agent1.Periodic.quotientCycleExponent_guarded (B H w : Nat → Agent8.Word) (N G : Nat) (hN : 0 < N) (t : Nat) :
+  3 ≤ Agent1.Periodic.quotientCycleExponent B H w N G t
+Agent1.Periodic.quotientCycleExponent_step (B H w : Nat → Agent8.Word) (N G : Nat) (hN : 0 < N)
+  (hend : Agent1.Periodic.quotientPathExponent B H w (2 * N + 3) N = 2 * N + 3 + G) (t : Nat) :
+  Agent1.Periodic.quotientCycleExponent B H w N G (t + 1) =
+    Agent1.Periodic.quotientCycleExponent B H w N G t - 2 +
+        Agent1.Periodic.outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+      Agent1.Periodic.centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+Agent1.Periodic.quotient_return_guarded_schedule (B H w : Nat → Agent8.Word) (N : Nat)
+  (hp : Agent1.Periodic.QuotientPath B H w N) (hv : Agent1.Periodic.ValidPeriodic (B 0) (H 0) (w 0)) (hN : 0 < N)
+  (hreturn : B N = B 0 ∧ H N = H 0 ∧ w N = w 0) :
+  ∃ k,
+    k 0 = 2 * N + 3 ∧
+      (∀ (t : Nat), 3 ≤ k t) ∧
+        ∀ (t : Nat),
+          k (t + 1) =
+            k t - 2 + Agent1.Periodic.outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+              Agent1.Periodic.centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_accounting : [propext, Quot.sound, Classical.choice]
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.quotientCycleExponent._cstage1
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_accounting._proof_2 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_guarded : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_guarded_schedule._proof_16 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_7 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_accounting._proof_3 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_6 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_10 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_11 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_guarded._proof_4 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientPathExponent_accounting._proof_1 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_13 : [propext, Quot.sound]
+GENERATED_RUNTIME_IMPLEMENTATION Agent1.Periodic.quotientCycleExponent._cstage2
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_8 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotient_return_guarded_schedule._proof_15 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_12 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_guarded._proof_5 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent_step._proof_9 : [propext, Quot.sound]
+AUDIT_THEOREM Agent1.Periodic.quotientCycleExponent.eq_1 : []
+AUDIT_THEOREM Agent1.Periodic.quotient_return_guarded_schedule._proof_14 : [propext, Quot.sound]
+AUDIT_SAFE_DEFINITION Agent1.Periodic.quotientCycleExponent : []
+AUDIT_THEOREM Agent1.Periodic.quotient_return_guarded_schedule : [propext, Quot.sound, Classical.choice]
+MODULE_AUDIT theorems=21 required_endpoints=4 safe_definitions=1 generated_runtime=2 custom_axioms=0 union=[Classical.choice,
+ Quot.sound,
+ propext]

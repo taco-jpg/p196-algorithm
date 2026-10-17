@@ -1,0 +1,30 @@
+{
+  "status": "SOURCE_ONLY_PREPARATION_PENDING_FINAL_SOURCES_AND_PUBLISHED_FREEZE",
+  "registry": "proofs/Agent1PeriodicCycleNumeric.registry.json",
+  "project": "agent1-periodic-cycle-adapter",
+  "proposed_roots": [
+    "Agent1PeriodicCycleNumeric"
+  ],
+  "new_modules": [
+    "Agent1PeriodicCyclePath",
+    "Agent1PeriodicCycleGuard",
+    "Agent1PeriodicCycleNumeric"
+  ],
+  "proposed_total_modules": 30,
+  "lean_execution_performed": false,
+  "math_source_edits": false,
+  "reviewer_authored_new_modules": false,
+  "prior_frozen_dependency_authorship_disclosed": true,
+  "semantic_checkpoints": {
+    "N_positive_and_wrap": "Use t%N only with N>0 for dynamics; complete B/H/w endpoint equations at N-1\u21920.",
+    "natural_guards": "Establish source guard before replacing Nat subtraction by signed accounting; no circular reliance on an unguarded update.",
+    "fixed_seed": "One fixed initial n,d,k0 selected before all time horizons; no repeated finite-realizer calls varying k0 with horizon.",
+    "safety_timing": "safePeriodic at state t excludes palindrome at t+1; conclude IsLychrel(step n) unless initial avoidance is separately assumed.",
+    "exact_inputs": "Original full QuotientPath/ValidPeriodic and all finite-cycle safety states; no graph or width-only substitute.",
+    "scope": "Conditional adapter of supplied cycle only; no actual cycle witness, safety preservation, arbitrary graph realization, or 196 result."
+  },
+  "drivers": {
+    "replay.py": "3b251ae86d1fe64c4e03335d1f9443c5c9fb759ccc9fb30d8f5bafb6581006af",
+    "pin_published.py": "0d98bf4d3d9f94d34cadb2a4b48064cf1b16b72d9b1d42fbaafa34968fd60570"
+  }
+}

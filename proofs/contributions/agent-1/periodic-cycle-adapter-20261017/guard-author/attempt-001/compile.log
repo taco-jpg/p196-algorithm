@@ -1,0 +1,55 @@
+Agent1PeriodicCycleGuard.lean:71:7: error: unknown tactic
+Agent1PeriodicCycleGuard.lean:70:57: error: unsolved goals
+B H w : Nat → Word
+N G : Nat
+hN : 0 < N
+hend : quotientPathExponent B H w (2 * N + 3) N = 2 * N + 3 + G
+t : Nat
+hr : t % N < N
+hguard : 2 * (N - t % N) + 3 ≤ quotientPathExponent B H w (2 * N + 3) (t % N)
+hdecomp : t + 1 = t % N + 1 + N * (t / N)
+hwrap : t % N + 1 = N
+hm : (t + 1) % N = 0
+hd : (t + 1) / N = t / N + 1
+⊢ quotientPathExponent B H w (2 * N + 3) N =
+    quotientPathExponent B H w (2 * N + 3) (t % N) - 2 + outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+      centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+Agent1PeriodicCycleGuard.lean:61:2: error: unsolved goals
+case pos
+B H w : Nat → Word
+N G : Nat
+hN : 0 < N
+hend : quotientPathExponent B H w (2 * N + 3) N = 2 * N + 3 + G
+t : Nat
+hr : t % N < N
+hguard : 2 * (N - t % N) + 3 ≤ quotientPathExponent B H w (2 * N + 3) (t % N)
+hdecomp : t + 1 = t % N + 1 + N * (t / N)
+hwrap : t % N + 1 = N
+hm : (t + 1) % N = 0
+hd : (t + 1) / N = t / N + 1
+hf :
+  quotientPathExponent B H w (2 * N + 3) N =
+    quotientPathExponent B H w (2 * N + 3) (t % N) - 2 + outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+      centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+⊢ quotientCycleExponent B H w N G (t + 1) =
+    quotientCycleExponent B H w N G t - 2 + outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+      centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+Agent1PeriodicCycleGuard.lean:54:55: error: unsolved goals
+case neg
+B H w : Nat → Word
+N G : Nat
+hN : 0 < N
+hend : quotientPathExponent B H w (2 * N + 3) N = 2 * N + 3 + G
+t : Nat
+hr : t % N < N
+hguard : 2 * (N - t % N) + 3 ≤ quotientPathExponent B H w (2 * N + 3) (t % N)
+hdecomp : t + 1 = t % N + 1 + N * (t / N)
+hwrap : ¬t % N + 1 = N
+⊢ quotientCycleExponent B H w N G (t + 1) =
+    quotientCycleExponent B H w N G t - 2 + outerPeriods (B (t % N)) (H (t % N)) (w (t % N)) +
+      centerPeriods (B (t % N)) (H (t % N)) (w (t % N))
+'Agent1.Periodic.quotientPathExponent_accounting' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Agent1.Periodic.quotientCycleExponent' does not depend on any axioms
+'Agent1.Periodic.quotientCycleExponent_guarded' depends on axioms: [propext, Quot.sound]
+'Agent1.Periodic.quotientCycleExponent_step' depends on axioms: [propext, sorryAx, Quot.sound]
+'Agent1.Periodic.quotient_return_guarded_schedule' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

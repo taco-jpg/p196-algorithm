@@ -1,0 +1,3 @@
+Root author CycleNumeric evidence
+
+The exact mathematical source compiled on the first attempt. The first copied Guard audit rejected its own stale definition-count assertion after checking all four Numeric theorem constants; its complete evidence is preserved. Attempt002 corrected only the audit inventory, compiled identical source and passed the full four-theorem/two-public-endpoint audit with no originating definitions. Both exact original commands, source snapshots, dependency source/object pins and complete logs are retained. Only propext/Classical.choice/Quot.sound occur. This reuses checked source/object-pinned dependencies; it is not a fresh closure rebuild. Generated objects are reproducible and omitted from Git.
