@@ -83,6 +83,23 @@ theorem monitorStep_m2 (q : Nat) :
 
 theorem monitorStep_m3 (q : Nat) : monitorStep .m3 q = .m3 := rfl
 
+/-- Run the monitor from an arbitrary state over a finite list of pair symbols. -/
+def runMonitorFrom (start : MonitorState) (symbols : List Nat) : MonitorState :=
+  symbols.foldl monitorStep start
+
+def runMonitor (symbols : List Nat) : MonitorState :=
+  runMonitorFrom .m0 symbols
+
+@[simp] theorem runMonitorFrom_nil (m : MonitorState) :
+    runMonitorFrom m [] = m := rfl
+
+@[simp] theorem runMonitorFrom_cons (m : MonitorState) (q : Nat) (qs : List Nat) :
+    runMonitorFrom m (q :: qs) = runMonitorFrom (monitorStep m q) qs := rfl
+
+theorem runMonitorFrom_append (m : MonitorState) (xs ys : List Nat) :
+    runMonitorFrom m (xs ++ ys) = runMonitorFrom (runMonitorFrom m xs) ys := by
+  simp [runMonitorFrom, List.foldl_append]
+
 /-- Finite monitor alphabet and all valid optional center symbols. -/
 def monitorStates : List MonitorState := [.m0, .m1, .m2, .m3]
 
