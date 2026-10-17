@@ -1,0 +1,28 @@
+--- a/proofs/contributions/agent-117/k7-four-digit-2641-20261016/lean_wip/Agent1172641Targets.lean
++++ b/proofs/contributions/agent-117/k7-four-digit-2641-20261016/lean_wip/Agent1172641Targets.lean
+@@ -14,21 +14,21 @@
+ open Lychrel196
+ open Agent124.CodeCert Agent124.PrefixK Agent124.PrefixR Agent124.PrefixL
+ 
+-def prefix : List Nat := [2, 6, 4, 1]
++def «prefix» : List Nat := [2, 6, 4, 1]
+ 
+ /-- Complete acceptance premises for the published 25624-row code tree. -/
+ def CertificatePremises (tree : CodeTree) : Prop :=
+   tree.All (fun c r => rowOK tree 7 c r = true) ∧
+   (∀ n, n < 7 → (symWords n).all (shortOKC tree) = true) ∧
+-  entryOK 7 (R tree) (prefix, 5) = true
++  entryOK 7 (R tree) («prefix», 5) = true
+ 
+ /-- Arithmetic consequence sought only AFTER the concrete certificate passes. -/
+ def BoundedTarget : Prop :=
+   ∀ A P t, 0 < A →
+-    PalStartsL prefix P → orbit A t = P → t ≤ 6
++    PalStartsL «prefix» P → orbit A t = P → t ≤ 6
+ 
+ /-- A proper subfamily exclusion, not a solution of the 196 conjecture. -/
+ def ExcludeTargetFor196 : Prop :=
+-  ∀ t, ¬ PalStartsL prefix (orbit 196 t)
++  ∀ t, ¬ PalStartsL «prefix» (orbit 196 t)
+ 
+ end Agent117.C2641
