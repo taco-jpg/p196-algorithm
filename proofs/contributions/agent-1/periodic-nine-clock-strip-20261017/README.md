@@ -1,0 +1,9 @@
+# Actual clock-one stripping and sharp excursion — WIP integration
+
+Accepted dedicated claim215f7c42462db4bccc2eb19917d0ea60f694d929 explicitly continues the optional local proof previously authorized under9d09aea2. Source baselineee58c494 retains the checked drop7 ledger/excursion. This separate branch preserves the first package unchanged.
+
+First reusable source: centerPeriods_nines_clock_one (sourcecf78db24) states that original ValidPeriodic, literal input normalization, actual mixed entries and actual rawGamma=1 imply centerPeriods=1. Its actual boundary-peel proof uses bounded symmetric center and computed mixed carries; it does not use the parity field internally, correcting the earlier source-only speculation recorded in issue6228673931. The public statement retains original validity. It supplies no general no-return or ordinary orbit.
+
+Specialist suffix_receipt_resume authored and checked the local source under the predecessor claim. The full unchanged sharpness evidence is retained at its original contribution path periodic-nine-excursion-20261017/sharpness/, including bounded discovery, failed attempts001/002/004/005, partialhelperPASS003, finalPASS006 and final full-origin audit16 theorem constants with standard foundational axioms only. Author compilation reused17 pinned reviewed dependency objects; no fresh closure is claimed yet. The original evidence reports its execution paths in the older worktree; copying those sealed bytes here does not relabel or reexecute them.
+
+New dependent work remains WIP: center_parent_receipt will prove literal normalization on every state of a positive closed quotient path, including the initial state; root will use that premise to strengthen the necessary nine-center drop to8 and exclude all-center-length<=8 full returns. Scoped registry and fresh independent review follow completed sources. Root is soleGitwriter and holds no main-write slot.

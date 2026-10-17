@@ -1,0 +1,78 @@
+import Agent1PeriodicNinesCenter
+
+/-!
+Clock-one boundary ancestry for an initially maximally stripped nine center.
+The boundary entries and clock are the original actual scans. This file does
+not assert a full-return obstruction or independently selectable carry bits.
+-/
+
+namespace Agent1.Periodic
+open Agent8
+
+private theorem clock_pad_peel (H : Word) (e : Nat)
+    (he : e ≤ 1) (hb : Bounded H 18) (hs : H.reverse = H)
+    (hm : e + terminalCarry H e = 1) (K : Word)
+    (hp : pair (fixedDigits H e ++ [9*e]) = [9] ++ K ++ [9]) :
+    ∃ T : Word, H = [9] ++ T ++ [9] ∧ T.reverse = T ∧
+      Bounded T 18 ∧ e + terminalCarry T e = 1 ∧
+      pair (fixedDigits T e ++ [9*e]) = K := by
+  cases H with
+  | nil => simp only [terminalCarry] at hm; omega
+  | cons a A =>
+    have ha : a ≤ 18 := hb a (by simp)
+    have hh : (fixedDigits (a :: A) e ++ [9*e]).head? = some ((a+e)%10) := rfl
+    have hl : (fixedDigits (a :: A) e ++ [9*e]).getLast? = some (9*e) := by simp
+    have hhead := pair_head (fixedDigits (a :: A) e ++ [9*e]) _ _ hh hl
+    rw [hp] at hhead
+    have ha9 : a = 9 := by
+      simp only [List.singleton_append, List.head?_cons, Option.some.injEq] at hhead
+      have heCases : e = 0 ∨ e = 1 := by omega
+      rcases heCases with rfl | rfl
+      · simp at hhead
+        omega
+      · simp at hhead
+        omega
+    subst a
+    rcases List.eq_nil_or_concat A with hA | ⟨T, b, hA⟩
+    · subst A
+      simp only [terminalCarry] at hm
+      omega
+    · rw [List.concat_eq_append] at hA
+      subst A
+      have hb9 : b = 9 := by
+        have h := congrArg List.head? hs
+        simpa using h
+      subst b
+      have hT : T.reverse = T := by
+        have h : 9 :: (T.reverse ++ [9]) = 9 :: (T ++ [9]) := by simpa using hs
+        exact List.append_cancel_right (List.cons.inj h).2
+      have hbT : Bounded T 18 := by
+        intro x hx
+        exact hb x (by simp [hx])
+      have ht : terminalCarry T e ≤ 1 := terminalCarry_le_one T e hbT he
+      have hcarry : terminalCarry (9 :: (T ++ [9])) e = terminalCarry T e := by
+        simp only [terminalCarry, terminalCarry_append]
+        have heq : (9+e)/10 = e := by omega
+        rw [heq]
+        omega
+      rw [hcarry] at hm
+      have hd : fixedDigits (9 :: (T ++ [9])) e =
+          [9-9*e] ++ fixedDigits T e ++ [9*e] := by
+        simp only [fixedDigits, fixedDigits_append, terminalCarry]
+        have heq : (9+e)/10 = e := by omega
+        rw [heq]
+        have hfirst : (9+e)%10 = 9-9*e := by omega
+        have hlast : (9+terminalCarry T e)%10 = 9*e := by omega
+        simp [hfirst, hlast]
+      have hpair : pair (fixedDigits (9 :: (T ++ [9])) e ++ [9*e]) =
+          [9] ++ pair (fixedDigits T e ++ [9*e]) ++ [9] := by
+        rw [hd]
+        have h := pair_three_parts [9-9*e] (fixedDigits T e ++ [9*e]) [9*e] rfl
+        have hadd : 9-9*e+9*e = 9 := by omega
+        simpa [List.append_assoc, zipAdd, hadd] using h
+      have hK : pair (fixedDigits T e ++ [9*e]) = K := by
+        have h := hpair.symm.trans hp
+        exact List.append_cancel_right (List.cons.inj h).2
+      exact ⟨T, rfl, hT, hbT, hm, hK⟩
+
+end Agent1.Periodic
