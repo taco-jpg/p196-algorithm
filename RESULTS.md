@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 82 results (2181 checked endpoints — the theorems and definitions a reader should rely on — in 3216 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 221 results (5393 checked endpoints — the theorems and definitions a reader should rely on — in 4459 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -196,7 +196,7 @@ no_196_all : ∀ t, ∀ e ∈ classes, ¬ PalStarts3 e.1 e.2.1 e.2.2.1 (orbit 19
 Ordinary reverse-and-add ancestry bound t <= 6 for every positive A ending at a canonical palindrome with prefix 2641, and all-time exclusion of that family from orbit 196. No other palindrome-family or unrestricted 196 conclusion.
 
 - Root module(s): `P196.Agent117P2641.A124117P2641K7Final`
-- 104 modules, 2 checked endpoints
+- 103 modules, 2 checked endpoints
 - Claim `A117-2641-ANCESTRY`: For all A P t, 0 < A and PalStartsL [2,6,4,1] P and orbit A t = P imply t <= 6.
 - Claim `A117-2641-NO196`: For all t, not PalStartsL [2,6,4,1] (orbit 196 t). This excludes only the 2641-prefix palindrome family.
 
@@ -2027,4 +2027,253 @@ Agent2.SaturatedProfile.numeric_saturated_prefix_profile : ∀ (seed : Nat) (d :
                           Agent215.Saturated8.cycleState (↑r + i))
 ```
 </details>
+
+## Excluded palindrome prefixes — all results combined
+
+One table instead of several overlapping lists. A cell is the three-digit prefix (row = first two digits, column = third digit). If the orbit of 196 ever reaches a palindrome, that palindrome cannot begin with any marked prefix. Several results overlap; each cell shows one source, the others are counted below.
+
+`C` two-digit prefix (Core) · `K` single-prefix kernel (217, 218, 620, 739, 777) · `S` the 33 three-digit classes · `F` the forward-invariant list (277 prefixes) · `x` this method provably cannot decide it (Agent117RemainingCycles) · `.` open
+
+| | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+| --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| **10** | C | C | C | C | C | C | C | C | C | C |
+| **11** | . | . | x | . | . | . | . | . | . | S |
+| **12** | . | . | . | . | . | . | . | . | . | . |
+| **13** | F | . | . | . | . | . | . | . | x | . |
+| **14** | F | F | . | . | . | . | . | . | . | . |
+| **15** | F | F | F | . | . | . | . | . | . | . |
+| **16** | F | F | F | F | x | . | . | . | . | . |
+| **17** | F | F | F | F | F | . | . | . | . | . |
+| **18** | F | F | F | F | F | F | . | . | . | . |
+| **19** | F | F | F | F | F | F | F | . | x | . |
+| **20** | C | C | C | C | C | C | C | C | C | C |
+| **21** | . | . | . | S | . | . | S | K | K | . |
+| **22** | . | . | . | . | . | . | . | . | . | . |
+| **23** | . | . | . | . | . | . | . | . | . | . |
+| **24** | . | . | . | . | . | . | . | . | x | . |
+| **25** | . | . | . | . | . | . | . | S | . | . |
+| **26** | F | F | . | . | . | . | . | . | . | . |
+| **27** | . | . | . | . | . | x | S | S | S | . |
+| **28** | F | F | F | F | . | . | . | . | . | . |
+| **29** | . | . | . | . | . | . | . | . | . | . |
+| **30** | F | F | F | F | F | F | F | F | F | . |
+| **31** | . | . | . | . | . | . | . | . | . | . |
+| **32** | C | C | C | C | C | C | C | C | C | C |
+| **33** | F | F | F | F | F | F | F | F | F | F |
+| **34** | F | F | F | F | F | F | F | F | S | . |
+| **35** | F | . | . | . | . | . | . | . | . | . |
+| **36** | F | F | . | . | . | . | . | . | . | . |
+| **37** | F | F | F | . | . | . | . | S | . | . |
+| **38** | F | F | F | F | S | S | . | . | . | . |
+| **39** | . | . | . | . | . | . | . | . | x | . |
+| **40** | C | C | C | C | C | C | C | C | C | C |
+| **41** | C | C | C | C | C | C | C | C | C | C |
+| **42** | . | . | . | . | . | . | S | . | . | S |
+| **43** | . | . | . | . | . | . | . | . | . | . |
+| **44** | . | . | . | . | . | . | . | . | . | . |
+| **45** | . | . | . | . | . | . | . | . | . | . |
+| **46** | . | . | . | . | . | . | . | . | . | . |
+| **47** | . | . | . | . | S | . | . | . | . | . |
+| **48** | . | . | . | . | . | . | . | . | . | . |
+| **49** | . | . | . | . | . | . | . | . | . | . |
+| **50** | F | F | F | F | F | F | F | F | F | . |
+| **51** | . | . | . | . | . | . | . | . | . | . |
+| **52** | F | . | . | . | . | . | . | . | . | . |
+| **53** | . | F | F | F | F | F | F | F | F | F |
+| **54** | F | F | F | F | F | F | F | F | F | . |
+| **55** | . | . | . | . | . | . | . | . | . | . |
+| **56** | . | . | . | . | . | . | . | . | . | . |
+| **57** | . | . | . | . | . | . | . | . | . | . |
+| **58** | F | F | F | . | . | . | . | . | . | . |
+| **59** | . | . | . | . | . | . | . | . | . | . |
+| **60** | C | C | C | C | C | C | C | C | C | C |
+| **61** | F | F | F | F | F | F | F | F | F | . |
+| **62** | K | . | . | . | . | . | x | . | . | . |
+| **63** | . | . | . | . | . | . | . | . | . | . |
+| **64** | C | C | C | C | C | C | C | C | C | C |
+| **65** | C | C | C | C | C | C | C | C | C | C |
+| **66** | . | . | . | . | . | . | . | . | . | . |
+| **67** | . | . | . | . | S | . | . | . | . | . |
+| **68** | F | . | . | . | . | . | . | . | . | . |
+| **69** | . | . | . | . | . | . | . | . | . | . |
+| **70** | F | F | F | F | F | F | F | F | F | . |
+| **71** | x | . | . | . | . | . | x | . | . | . |
+| **72** | F | F | F | F | F | F | F | F | F | . |
+| **73** | . | . | . | . | . | . | . | S | . | K |
+| **74** | F | F | F | F | F | F | F | F | F | . |
+| **75** | . | . | . | . | . | S | . | . | . | . |
+| **76** | C | C | C | C | C | C | C | C | C | C |
+| **77** | . | . | . | . | . | . | . | K | S | F |
+| **78** | . | . | . | S | S | S | S | S | S | S |
+| **79** | x | . | . | . | . | . | . | . | . | . |
+| **80** | C | C | C | C | C | C | C | C | C | C |
+| **81** | C | C | C | C | C | C | C | C | C | C |
+| **82** | C | C | C | C | C | C | C | C | C | C |
+| **83** | C | C | C | C | C | C | C | C | C | C |
+| **84** | . | . | . | . | . | . | . | . | . | . |
+| **85** | . | . | . | . | . | . | S | S | S | S |
+| **86** | . | . | . | . | . | . | . | . | . | . |
+| **87** | . | . | . | . | . | . | . | . | . | . |
+| **88** | . | . | . | . | . | . | . | . | . | . |
+| **89** | . | . | . | . | . | . | . | . | . | . |
+| **90** | F | . | . | . | . | S | S | . | . | . |
+| **91** | . | x | . | . | . | . | . | . | . | . |
+| **92** | F | . | . | S | . | . | . | . | . | . |
+| **93** | . | . | . | . | . | S | x | . | . | . |
+| **94** | F | F | F | F | F | F | F | F | F | . |
+| **95** | . | . | x | . | . | . | . | . | . | . |
+| **96** | F | . | . | . | . | . | . | . | . | . |
+| **97** | . | . | . | . | . | . | . | . | . | . |
+| **98** | F | . | . | . | . | . | . | . | . | . |
+| **99** | . | . | . | . | . | . | . | . | . | . |
+
+321 of the 900 three-digit prefixes are excluded (124 of them by more than one result), 14 are provably out of reach of this method, and 565 are open.
+
+Four-digit refinements: 1731 four-digit prefixes whose three-digit parent is still open are excluded (lists `entries..` in `Agent124FourDigit`, plus 2641 in `Agent117P2641`).
+
+## Additional draft results (not reviewed)
+
+139 groups of draft files from the old branches. They compile, pass the axiom audit, and each file proves at least one theorem statement that appears nowhere else in the repository; nobody has reviewed them. Earlier versions and copies whose statements are already covered were left out (they remain in the archive tags).
+
+| Group | Files | New theorem statements | Source |
+| --- | ---: | ---: | --- |
+| `Drafts.Agent100GroupIIOverflowSharpness` | 7 | 36 | `proofs/contributions/agent-100/groupII-overflow-sharpness-20261016/development/bridge/attempt02/Agent100GroupIIOverflowBridge.lean` … |
+| `Drafts.Agent100GroupIIOverlap` | 1 | 5 | `proofs/contributions/agent-100/groupII-overlap-20261016/development/dynamics/attempt02.lean` |
+| `Drafts.Agent100GroupIIRebase` | 10 | 22 | `proofs/contributions/agent-100/groupII-rebase-20261016/development/algebra/attempt02/Agent100GroupIIRebaseAlgebra.lean` … |
+| `Drafts.Agent100ThirdGateBoundary` | 6 | 28 | `proofs/contributions/agent-100/third-gate-boundary-20261016/development/boundary/attempt02.lean` … |
+| `Drafts.Agent102AffineParameterIntervals` | 3 | 12 | `proofs/contributions/agent-102/affine-parameter-intervals-20261016/development/compact-author/controls-001/CompactControls.lean` … |
+| `Drafts.Agent102AffineRuns` | 3 | 23 | `proofs/contributions/agent-102/affine-runs-20261016/independent-lean/decision/source/LargeCoefficientExamples.lean` … |
+| `Drafts.Agent103BroaderReturnFormal` | 30 | 22 | `proofs/contributions/agent-103/broader-return-formal/BroaderClock.lean` … |
+| `Drafts.Agent103ResidualFive` | 1 | 17 | `proofs/contributions/agent-103/residual-five-20261016/evidence/independent-shape/ResidualFiveShape.lean` |
+| `Drafts.Agent103ResidualFiveFibers` | 6 | 53 | `proofs/contributions/agent-103/residual-five-fibers-20261016/ResidualFiveCountArithmetic.lean` … |
+| `Drafts.Agent103ResidualFiveFirsthitTwo` | 3 | 6 | `proofs/contributions/agent-103/residual-five-firsthit-two-20261016/ResidualFiveInitialPalindromes.lean` |
+| `Drafts.Agent104Prefix620Kernel` | 170 | 3 | `proofs/contributions/agent-104/prefix620-kernel-20261016/development/coverage/attempt-002/Agent104Prefix620DataCoverage.lean` … |
+| `Drafts.Agent104ReviewAgent13RealWeights` | 4 | 34 | `proofs/contributions/agent-104/review-agent13-real-weights/execution/hosted-38700059129-1/independent-audit/original-sources/proofs/contributions/agent-13/safe-predecessor-family/Counting.lean` … |
+| `Drafts.Agent104ReviewAgent4TemporalStrip` | 3 | 27 | `proofs/contributions/agent-104/review-agent4-temporal-strip/semantic/ExactTypesApplied.lean` … |
+| `Drafts.Agent104ReviewAgent4WholeWord` | 1 | 9 | `proofs/contributions/agent-104/review-agent4-whole-word/semantic/ReviewScopeWitnesses.lean` |
+| `Drafts.Agent104SevenColumnKernel` | 3 | 7 | `proofs/contributions/agent-104/seven-column-kernel/certificate/Pilot739.lean` … |
+| `Drafts.Agent105ActualHighReturn` | 7 | 22 | `proofs/contributions/agent-105/actual-high-return/dev_logs/composition/attempt_002.lean` … |
+| `Drafts.Agent105HighReturnCriterion` | 10 | 14 | `proofs/contributions/agent-105/high-return-criterion/dev_logs/criterion/attempt_004.lean` … |
+| `Drafts.Agent105ResidueTrap` | 8 | 8 | `proofs/contributions/agent-105/residue-trap/dev_logs/palindromes/attempt_003.lean` … |
+| `Drafts.Agent106CongruenceCarryBudget` | 5 | 36 | `proofs/contributions/agent-106/congruence-carry-budget-20261016T2131Z/development/budget/attempt-001/Agent106CarryBudget.lean` … |
+| `Drafts.Agent106RunBirths` | 9 | 123 | `proofs/contributions/agent-106/run-births/OverflowBirths.lean` … |
+| `Drafts.Agent107DfaHornClosure` | 4 | 23 | `proofs/contributions/agent-107/dfa-horn-closure-20261016/author/arithmetic-001/Agent107DFAArithmetic.lean` … |
+| `Drafts.Agent107PartitionSeamResponse` | 6 | 47 | `proofs/contributions/agent-107/partition-seam-response/development/pair-closure/attempt_002.lean` … |
+| `Drafts.Agent107ReviewAgent109Outer` | 1 | 1 | `proofs/contributions/agent-107/review-agent109-outer/execution/agent107-outer109-clean-syq1jnqb/source-commit-OuterCompat.stdout.log` |
+| `Drafts.Agent108ModularAutonomy` | 7 | 38 | `proofs/contributions/agent-108/modular-autonomy/AutonomyBasic.lean` … |
+| `Drafts.Agent108WindowWeightsB31b8818` | 7 | 46 | `proofs/contributions/agent-108/window-weights-b31b8818/review/final-package-fresh17-001/sources/Indexing.lean` … |
+| `Drafts.Agent109BoundaryKernelRecheck` | 239 | 280 | `proofs/contributions/agent-109/boundary-kernel-recheck/BoundaryCertificateK.lean` … |
+| `Drafts.Agent109TemplateReturnCertificate` | 1 | 2 | `proofs/contributions/agent-109/template-return-certificate/CertCompat.lean` |
+| `Drafts.Agent109TemplateStepSafety` | 1 | 7 | `proofs/contributions/agent-109/template-step-safety/NoPalStep.lean` |
+| `Drafts.Agent110ReviewRadix` | 3 | 22 | `proofs/contributions/agent-110/review-radix/source_snapshots/ExteriorCapTwo.lean` … |
+| `Drafts.Agent110Runtime` | 1 | 2 | `proofs/contributions/agent-110/runtime/Smoke.lean` |
+| `Drafts.Agent110TwoStepReturn` | 4 | 10 | `proofs/contributions/agent-110/two-step-return-20261016/BoundaryArithmetic.lean` … |
+| `Drafts.Agent111ExactLengthResidues` | 1 | 6 | `proofs/contributions/agent-111/exact-length-residues/development/outer/OuterBlock.attempt03.lean` |
+| `Drafts.Agent112CertificateAdmissibility` | 2 | 3 | `proofs/contributions/agent-112/certificate-admissibility/AdmissibleCompat.lean` |
+| `Drafts.Agent112EventualRealizability` | 4 | 16 | `proofs/contributions/agent-112/eventual-realizability/EventualCompat.lean` … |
+| `Drafts.Agent112SmallPeriodObstruction` | 3 | 16 | `proofs/contributions/agent-112/small-period-obstruction/ProjectionControls.lean` … |
+| `Drafts.Agent112TenadicCylinderImage` | 4 | 6 | `proofs/contributions/agent-112/tenadic-cylinder-image-20261016/CylinderImage.lean` … |
+| `Drafts.Agent112TwoPhaseObstruction` | 5 | 19 | `proofs/contributions/agent-112/two-phase-obstruction/ActualInfiniteStrip.lean` … |
+| `Drafts.Agent114Cap4KernelActualExit` | 2 | 10 | `proofs/contributions/agent-114/cap4-kernel-actual-exit/lean/ActualExit.lean` … |
+| `Drafts.Agent114ReviewTemplateBridge` | 2 | 8 | `proofs/contributions/agent-114/review-template-bridge-20261015/ScopeRegression.lean` |
+| `Drafts.Agent116Cap3Kernel` | 121 | 19 | `proofs/contributions/agent-116/cap3-kernel/Cap3AllBase.lean` … |
+| `Drafts.Agent116CertificateExterior` | 123 | 6 | `proofs/contributions/agent-116/certificate-exterior/development/certificate/cap3-attempt-001.lean` … |
+| `Drafts.Agent116Integration` | 126 | 9 | `proofs/contributions/agent-116/integration/endpoints/EndpointAudit.lean` |
+| `Drafts.Agent116Review` | 1 | 3 | `proofs/contributions/agent-116/review/CanonicalityCounterexample.lean` |
+| `Drafts.Agent119FourColumnPrefix` | 2 | 12 | `proofs/contributions/agent-119/four-column-prefix/FourColumnAncestry.lean` … |
+| `Drafts.Agent120NeutralBandCalibration` | 4 | 72 | `proofs/contributions/agent-120/neutral-band-calibration/lean/A120Base.lean` … |
+| `Drafts.Agent121MergedTemplateSafetyReview` | 3 | 10 | `proofs/contributions/agent-121/merged-template-safety-review/Agent121ScopeRegression.lean` |
+| `Drafts.Agent121ReviewAgent116Checkpoint01` | 1 | 3 | `proofs/contributions/agent-121/review-agent116-checkpoint01/evidence/accepted-clean-rebuild/inputs/Agent121CertificateContracts.lean` |
+| `Drafts.Agent123SeamMaskRealizability` | 4 | 20 | `proofs/contributions/agent-123/seam-mask-realizability/SeamMaskMass.lean` … |
+| `Drafts.Agent123TemplateCertificateReplication` | 4 | 6 | `proofs/contributions/agent-123/template-certificate-replication/ContractProbes.lean` |
+| `Drafts.Agent12ElevenCarries` | 1 | 3 | `proofs/contributions/agent-12/ElevenCarries.lean` |
+| `Drafts.Agent12FirstHitFour` | 1 | 7 | `proofs/contributions/agent-12/FirstHitFour.lean` |
+| `Drafts.Agent12FixedTarget` | 2 | 14 | `proofs/contributions/agent-12/FixedTarget.lean` |
+| `Drafts.Agent13BufferedBinaryFamily` | 5 | 6 | `proofs/contributions/agent-13/buffered-binary-family/CarryPath.lean` |
+| `Drafts.Agent13M99A03GapGainAudit` | 1 | 1 | `proofs/contributions/agent-13/m99-a03-gap-gain-audit/Audit.lean` |
+| `Drafts.Agent14OrdinaryExteriorSixTwelveBridge` | 1 | 2 | `proofs/contributions/agent-14/ordinary-exterior-six-twelve-bridge/BridgeContract.lean` |
+| `Drafts.Agent15SpectralCarryCharge` | 7 | 56 | `proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472/evidence/independent/runtime/environment-history/RuntimeSmoke.lean` … |
+| `Drafts.Agent15SpectralCarrySupport` | 5 | 20 | `proofs/contributions/agent-15/spectral-carry-support-43cf6e114472/ActualCarrySupport.lean` |
+| `Drafts.Agent19Session22f4Agent19Session22f4` | 9 | 23 | `proofs/coordination/patches/agent19-session22f4/pr116/candidate-20261017/author/evidence/BoundaryBridge-attempt003.lean` … |
+| `Drafts.Agent19Session8ff2acAgent19Session8ff2ac` | 1 | 7 | `proofs/coordination/patches/agent19-session8ff2ac/pr165-repair-20261017/source/ResidualFivePredecessorFilter.lean` |
+| `Drafts.Agent1Agent104MonitorVerification` | 4 | 31 | `proofs/contributions/agent-1/agent104-monitor-verification-20261017/fresh-001/source/Agent107DFA.lean` … |
+| `Drafts.Agent1CeilhalfVerification` | 10 | 78 | `proofs/contributions/agent-1/ceilhalf-verification-20261017/corrected-9ab3/fresh-002/compiled-sources/ArithmeticCRT.lean` … |
+| `Drafts.Agent1PeriodicBlockStrip` | 1 | 6 | `proofs/contributions/agent-1/periodic-block-strip-20261016/center-author/clean-001/CenterControls.lean` |
+| `Drafts.Agent1PeriodicOuterCatalog` | 1 | 2 | `proofs/contributions/agent-1/periodic-outer-catalog-20261016/choices-author/audit-001/ChoicesControls.lean` |
+| `Drafts.Agent1PeriodicWidthProjection` | 1 | 1 | `proofs/contributions/agent-1/periodic-width-projection-20261016/width-lift-author/support-001/Support.lean` |
+| `Drafts.Agent213GapgainSub72` | 2 | 2 | `proofs/contributions/agent-213/gapgain-sub72/GapGainSub72.lean` |
+| `Drafts.Agent216Agent216GeneralNatExteriorCorrespondence` | 4 | 2 | `proofs/contributions/agent-216/agent216-general-nat-exterior-correspondence/ConcreteEdge.lean` |
+| `Drafts.Agent216Agent216Mod22AbsorptionAudit` | 1 | 2 | `proofs/contributions/agent-216/agent216-mod22-absorption-audit/Mod22AbsorptionAudit.lean` |
+| `Drafts.Agent216Agent216ResidueFilterDownstreamAudit` | 4 | 2 | `proofs/contributions/agent-216/agent216-residue-filter-downstream-audit/CanonicalCounterexample.lean` |
+| `Drafts.Agent21M99A01RealizabilityInterface` | 7 | 2 | `proofs/contributions/agent-21/m99-a01-realizability-interface/M99A01RealizabilityInterface.lean` |
+| `Drafts.Agent222M99B222GuardCounterexample` | 6 | 9 | `proofs/contributions/agent-222/M99-B222-guard-counterexample/GuardPreservationCounterexample.lean` … |
+| `Drafts.Agent23M99A03GainIntegerBridge` | 3 | 2 | `proofs/contributions/agent-23/m99-a03-gain-integer-bridge/CertificateToInteger.lean` |
+| `Drafts.Agent312M99C312BlockGuard` | 4 | 2 | `proofs/contributions/agent-312/M99-C312-block-guard/BlockGuard.lean` |
+| `Drafts.Agent315TemporalColumn1199` | 1 | 2 | `proofs/contributions/agent-315/temporal-column-11-99/Divisor99Absorption.lean` |
+| `Drafts.Agent317M99C317Uniformity` | 1 | 4 | `proofs/contributions/agent-317/m99-c317-uniformity/UniformityBridge.lean` |
+| `Drafts.Agent34Sessionc91cAgent34Sessionc91c` | 2 | 5 | `proofs/coordination/evidence/agent34-sessionc91c/pr107/repair-20261016/repaired/RhoCycleLemmas.lean` |
+| `Drafts.Agent3FiniteHorizonOverflow` | 1 | 2 | `proofs/contributions/agent-3/finite-horizon-overflow-20261016/review/cardinality/CardinalityIndependentReview.lean` |
+| `Drafts.Agent3PrefixContraction` | 15 | 79 | `proofs/contributions/agent-3/prefix-contraction-20261016/NineColumnCertificate.lean` … |
+| `Drafts.Agent3ThreeLayerPrefix` | 14 | 45 | `proofs/contributions/agent-3/three-layer-prefix-20261016/development/actual-depth/attempt-002.lean.txt` … |
+| `Drafts.Agent3TwoHistory` | 11 | 113 | `proofs/contributions/agent-3/two-history-20261016/dependencies/agent9/ActualWords.lean` … |
+| `Drafts.Agent412Agent412` | 5 | 22 | `proofs/coordination/submissions/agent412/PeriodTwelve.lean` … |
+| `Drafts.Agent414Agent414` | 7 | 7 | `proofs/coordination/submissions/agent-414/boundary-kernel/Agent414BoundaryGraph0Bridge.lean` … |
+| `Drafts.Agent418Agent418` | 5 | 34 | `proofs/coordination/submissions/agent-418/saturated-input-audit/Agent418AllPatternsRealizable.lean` … |
+| `Drafts.Agent421Agent421` | 9 | 55 | `proofs/coordination/submissions/agent-421/general-base-nooverflow/Agent421NoOverflowConsequences.lean` … |
+| `Drafts.Agent422Agent422` | 3 | 36 | `proofs/coordination/submissions/agent-422/checkpoint001/Agent422BaseDigits.lean` … |
+| `Drafts.Agent4ComplementaryBulk` | 1 | 9 | `proofs/agent4/complementary_bulk/CycleConstraints.lean` |
+| `Drafts.Agent4GeneralBaseNormalization` | 8 | 79 | `proofs/contributions/agent-4/general-base-normalization-20261016/ArithmeticBridge.lean` … |
+| `Drafts.Agent4PrefixGrowth` | 1 | 2 | `proofs/agent4/prefix_growth/ModelSharpness.lean` |
+| `Drafts.Agent4SaturationLift` | 5 | 30 | `proofs/agent4/saturation_lift/ActualWordStrip.lean` … |
+| `Drafts.Agent5` | 2 | 19 | `proofs/agent5/GeneralOuterBudget.lean` … |
+| `Drafts.Agent53BoundaryTableTranscription` | 5 | 1 | `proofs/contributions/agent-53/boundary-table-transcription-20261016/development/attempt-001/Agent53RootRanks.lean` |
+| `Drafts.Agent6ComplementaryBulkExteriorAbsorbedObstruction` | 3 | 9 | `proofs/contributions/agent6-complementary-bulk/ExteriorAbsorbedObstruction.lean` |
+| `Drafts.Agent6ComplementaryBulkExteriorOrdinaryWitnesses` | 4 | 3 | `proofs/contributions/agent6-complementary-bulk/ExteriorOrdinaryWitnesses.lean` |
+| `Drafts.Agent6ComplementaryBulkExteriorPotentialObstruction` | 3 | 8 | `proofs/contributions/agent6-complementary-bulk/ExteriorPotentialObstruction.lean` |
+| `Drafts.Agent6ComplementaryBulkExteriorSharp` | 3 | 1 | `proofs/contributions/agent6-complementary-bulk/ExteriorSharp.lean` |
+| `Drafts.Agent7` | 1 | 5 | `proofs/agent7/OuterRank.lean` |
+| `Drafts.Agent7AllbaseOverflowBirths` | 4 | 38 | `proofs/contributions/agent-7/allbase-overflow-births-20261016/arithmetic-dev/attempt-001/source/AdjacentBirths.lean` … |
+| `Drafts.Agent7OddNooverflowFibers` | 20 | 156 | `proofs/contributions/agent-7/odd-nooverflow-fibers-20261016/actual-dev/attempt-003/source/OddActual.lean` … |
+| `Drafts.Agent7RunPopulationRenewal` | 5 | 38 | `proofs/contributions/agent-7/run-population-renewal-20261016/dependencies/AncestryExtinction.lean` … |
+| `Drafts.Agent8Agent8` | 1 | 5 | `proofs/coordination/patches/agent-8/lower-growth-20261016/Agent8LowerGrowth.lean` |
+| `Drafts.Agent9FiniteEnsembleMarkerCount` | 7 | 78 | `proofs/contributions/agent-9/finite-ensemble-marker-count-20261016/Agent9FiniteHorizonCount.lean` … |
+| `Drafts.Agent9NooverflowHorizon` | 10 | 35 | `proofs/contributions/agent-9/nooverflow-horizon-20261016/Agent9HorizonCounts.lean` … |
+| `Drafts.Agent9OneStepDigitSumCollapse` | 3 | 10 | `proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016/Agent9OneStepDigitSumCollapse.lean` |
+| `Drafts.D20261014CollisionFormalCarryTransferNormalForm` | 1 | 5 | `proofs/contributions/2026-10-14-collision-formal/CarryTransferNormalForm.lean` |
+| `Drafts.D20261014CollisionMassCarryResponseMass` | 1 | 17 | `proofs/contributions/2026-10-14-collision-mass/CarryResponseMass.lean` |
+| `Drafts.D20261014ComponentHierarchyFormalComponentHierarchy` | 1 | 4 | `proofs/contributions/2026-10-14-component-hierarchy-formal/ComponentHierarchy.lean` |
+| `Drafts.D20261014FiniteHorizonDensityFiniteHorizonBlocks` | 2 | 4 | `proofs/contributions/2026-10-14-finite-horizon-density/FiniteHorizonBlocks.lean` |
+| `Drafts.D20261014LiftHierarchyFormalLiftHierarchy` | 1 | 3 | `proofs/contributions/2026-10-14-lift-hierarchy-formal/LiftHierarchy.lean` |
+| `Drafts.D20261014OverflowMismatchFormalOverflowMismatch` | 1 | 14 | `proofs/contributions/2026-10-14-overflow-mismatch-formal/OverflowMismatch.lean` |
+| `Drafts.D20261014PrefixExtensionFormalPrefixExtension` | 1 | 8 | `proofs/contributions/2026-10-14-prefix-extension-formal/PrefixExtension.lean` |
+| `Drafts.D20261014SafePrefixOverflowSafeRuns` | 1 | 20 | `proofs/contributions/2026-10-14-safe-prefix/OverflowSafeRuns.lean` |
+| `Drafts.D20261014SevenStepExtensionFormalActualRank` | 6 | 4 | `proofs/contributions/2026-10-14-seven-step-extension-formal/ActualRank.lean` |
+| `Drafts.D20261014SevenStepExtensionFormalClockPaths` | 4 | 6 | `proofs/contributions/2026-10-14-seven-step-extension-formal/ClockPaths.lean` |
+| `Drafts.D20261014SevenStepExtensionFormalNoFourReturns` | 17 | 11 | `proofs/contributions/2026-10-14-seven-step-extension-formal/NoFourReturns.lean` |
+| `Drafts.D20261014SevenStepExtensionFormalRankCertificate` | 12 | 2 | `proofs/contributions/2026-10-14-seven-step-extension-formal/RankCertificate.lean` |
+| `Drafts.D20261014SevenStepExtensionFormalSixPrefix` | 2 | 7 | `proofs/contributions/2026-10-14-seven-step-extension-formal/SixPrefix.lean` |
+| `Drafts.D20261014SevenStepFormalActualBoundary` | 2 | 7 | `proofs/contributions/2026-10-14-seven-step-formal/ActualBoundary.lean` |
+| `Drafts.D20261014SevenStepFormalBoundaryTransducer` | 1 | 7 | `proofs/contributions/2026-10-14-seven-step-formal/BoundaryTransducer.lean` |
+| `Drafts.D20261014SevenStepFormalSevenStepOrbit` | 3 | 15 | `proofs/contributions/2026-10-14-seven-step-formal/SevenStepOrbit.lean` |
+| `Drafts.D20261015ActualPrefixLiftReviewLabelNineCounterexample` | 7 | 3 | `proofs/contributions/2026-10-15-actual-prefix-lift-review/LabelNineCounterexample.lean` |
+| `Drafts.D20261015Agent2ComplementarySearchAlternatingCharge` | 1 | 15 | `proofs/contributions/2026-10-15-agent2-complementary-search/AlternatingCharge.lean` |
+| `Drafts.D20261015Agent3ComplementaryBulkBulkPhase` | 1 | 13 | `proofs/contributions/2026-10-15-agent3-complementary-bulk/BulkPhase.lean` |
+| `Drafts.D20261015Agent3ComplementaryBulkOuterEscape` | 1 | 10 | `proofs/contributions/2026-10-15-agent3-complementary-bulk/OuterEscape.lean` |
+| `Drafts.D20261015Agent8ComplementaryBulkAllPhaseRefinement` | 1 | 5 | `proofs/contributions/2026-10-15-agent8-complementary-bulk/AllPhaseRefinement.lean` |
+| `Drafts.D20261015Agent9ComplementaryBulkExteriorErasure` | 1 | 25 | `proofs/contributions/2026-10-15-agent9-complementary-bulk/ExteriorErasure.lean` |
+| `Drafts.D20261015BaseIntrinsicFormalIntrinsicCarry` | 1 | 10 | `proofs/contributions/2026-10-15-base-intrinsic-formal/IntrinsicCarry.lean` |
+| `Drafts.D20261015BaseIntrinsicFormalIntrinsicPattern` | 2 | 15 | `proofs/contributions/2026-10-15-base-intrinsic-formal/IntrinsicPattern.lean` |
+| `Drafts.D20261015BaseIntrinsicFormalIntrinsicReverseAdd` | 3 | 2 | `proofs/contributions/2026-10-15-base-intrinsic-formal/IntrinsicReverseAdd.lean` |
+| `Drafts.D20261015ExternalIntrinsicReviewSources` | 2 | 31 | `proofs/contributions/2026-10-15-external-intrinsic-review/sources/IntrinsicSeam.lean` … |
+| `Drafts.D20261015HighColumnFormalHighColumns` | 1 | 13 | `proofs/contributions/2026-10-15-high-column-formal/HighColumns.lean` |
+| `Drafts.D20261015OverflowMismatchReductionFormalOverflowMismatchRedu` | 2 | 12 | `proofs/contributions/2026-10-15-overflow-mismatch-reduction-formal/OverflowMismatchReduction.lean` |
+| `Drafts.D20261015SafeHighReturnSafeHighFamily` | 2 | 69 | `proofs/contributions/2026-10-15-safe-high-return/SafeHighFamily.lean` |
+| `Drafts.D20261015SafeHighReturnSafeHighWitness` | 1 | 5 | `proofs/contributions/2026-10-15-safe-high-return/SafeHighWitness.lean` |
+| `Drafts.D20261015ScalarClockFormalActualScalar` | 2 | 7 | `proofs/contributions/2026-10-15-scalar-clock-formal/ActualScalar.lean` |
+| `Drafts.D20261015ScalarClockFormalScalarClock` | 1 | 6 | `proofs/contributions/2026-10-15-scalar-clock-formal/ScalarClock.lean` |
+| `Drafts.D20261015ScalarFiniteCertificateFormalPilotArray` | 11 | 10 | `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/pilot-array/PilotChecks.lean.txt` … |
+| `Drafts.D20261015ScalarHierarchyReviewSourceSnapshots` | 16 | 56 | `proofs/contributions/2026-10-15-scalar-hierarchy-review/source_snapshots/ActualJobFamily.lean` … |
+| `Drafts.Misc` | 527 | 217 | `proofs/Agent100DoubleGate.lean` … |
+| `Drafts.Research` | 6 | 24 | `proofs/research/persist_arithmetic_width_rank.lean` … |
+| `Drafts.ResearchMainExistenceAttempt` | 10 | 91 | `proofs/research/main_existence_attempt/ancestry_direct_pass/lean/FiniteAncestry.lean` … |
 

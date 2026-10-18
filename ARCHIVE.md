@@ -30,166 +30,78 @@ Available under the tag `archive/2026-10-17/main`:
 
 ## Unregistered Lean drafts that are not on `main`
 
-Every distinct Lean file from every branch and pull request was compiled on 17 October 2026 (Lean 4.19.0). The drafts with real results about 196 were registered and are now on `main` (see README). The directories below hold the remaining drafts: intermediate versions, attempts, reviews and smaller side results. Many share theorems with results on `main` under other names or are earlier versions of them. "Compiles" counts files that built without errors and without `sorry`.
+Every distinct Lean file from every branch and pull request was compiled on 17 October 2026 (Lean 4.19.0). Every draft file that proves at least one theorem statement found nowhere else is now on `main` (results about 196 in `lean/P196/<Result>/`, the rest in `lean/P196/Drafts/`). The files counted below are what is left: earlier versions, copies and attempts whose theorem statements all already appear on `main`, files that do not compile, and files using `sorry`, `native_decide` or custom axioms. "Compiles" counts files that built without errors and without `sorry`.
 
 | Source directory | Lean files | compiles | theorems | Tag that contains it |
 | --- | ---: | ---: | ---: | --- |
-| `proofs/contributions/agent-103/broader-return-formal` | 40 | 40 | 2698 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/generated` | 33 | 30 | 2691 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-104/prefix620-kernel-20261016` | 372 | 6 | 605 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-119/four-column-prefix` | 24 | 23 | 543 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-104/seven-column-kernel` | 50 | 48 | 504 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-108/window-weights-b31b8818` | 37 | 7 | 331 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-109/boundary-kernel-recheck` | 242 | 242 | 298 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-7/odd-nooverflow-fibers-20261016` | 36 | 27 | 284 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-106/run-births` | 12 | 11 | 143 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-116/cap3-kernel` | 121 | 121 | 135 | `archive/2026-10-17/research/agent-115/s20261015-review-broader` |
-| `proofs/contributions/agent-3/two-history-20261016` | 16 | 16 | 130 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-3/prefix-contraction-20261016` | 8 | 4 | 104 | `archive/2026-10-17/research/agent-3/prefix-contraction-20261016-2232` |
-| `proofs/contributions/agent-9/finite-ensemble-marker-count-20261016` | 9 | 7 | 102 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-103/residual-five-20261016` | 6 | 1 | 94 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-4/general-base-normalization-20261016` | 8 | 8 | 84 | `archive/2026-10-17/formalize/agent-4/general-base-normalization-20261016` |
-| `proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472` | 7 | 6 | 83 | `archive/2026-10-17/formalize/agent-15/spectral-carry-charge-43cf6e114472` |
-| `proofs/contributions/agent-1/ceilhalf-verification-20261017` | 11 | 10 | 82 | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
-| `proofs/contributions/agent-120/neutral-band-calibration` | 4 | 4 | 79 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-103/residual-five-fibers-20261016` | 8 | 5 | 74 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-safe-high-return/SafeHighFamily.lean` | 1 | 1 | 70 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-104/review-agent13-real-weights` | 8 | 4 | 66 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-7/allbase-overflow-births-20261016` | 16 | 5 | 64 | `archive/2026-10-17/formalize/agent-52/general-base-zero-interval-20261016` |
-| `proofs/contributions/agent-100/groupII-overflow-sharpness-20261016` | 8 | 6 | 64 | `archive/2026-10-17/main` |
+| `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/generated` | 31 | 28 | 2691 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-103/broader-return-formal` | 21 | 21 | 2676 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-104/prefix620-kernel-20261016` | 369 | 3 | 593 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-119/four-column-prefix` | 22 | 21 | 526 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-104/seven-column-kernel` | 48 | 46 | 498 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-108/window-weights-b31b8818` | 30 | 0 | 282 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-7/odd-nooverflow-fibers-20261016` | 20 | 11 | 127 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-103/residual-five-20261016` | 5 | 0 | 67 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-122/finite-seed-countermodel` | 6 | 0 | 62 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/agent-106/congruence-carry-budget-20261016T2131Z` | 8 | 7 | 60 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-107/dfa-horn-closure-20261016` | 8 | 5 | 50 | `archive/2026-10-17/research/agent-1/agent104-monitor-verification-20261017T0307Z` |
-| `proofs/contributions/agent-107/partition-seam-response` | 10 | 10 | 49 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-1/agent104-monitor-verification-20261017` | 6 | 4 | 46 | `archive/2026-10-17/research/agent-1/agent104-monitor-verification-20261017T0307Z` |
-| `proofs/contributions/agent-3/three-layer-prefix-20261016` | 8 | 8 | 45 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-105/actual-high-return` | 10 | 9 | 44 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-9/nooverflow-horizon-20261016` | 6 | 6 | 41 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankChecks0.lean` | 1 | 1 | 38 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-108/modular-autonomy` | 18 | 14 | 36 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-102/affine-runs-20261016` | 16 | 15 | 34 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-100/groupII-rebase-20261016` | 7 | 5 | 33 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-external-intrinsic-review/sources` | 2 | 2 | 31 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-3/prefix-contraction-20261016` | 5 | 1 | 54 | `archive/2026-10-17/research/agent-3/prefix-contraction-20261016-2232` |
+| `proofs/contributions/agent-7/allbase-overflow-births-20261016` | 13 | 2 | 37 | `archive/2026-10-17/formalize/agent-52/general-base-zero-interval-20261016` |
 | `proofs/contributions/agent-101/digit-split-multiplicity-20261016` | 6 | 2 | 31 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-104/review-agent13-real-weights` | 5 | 1 | 30 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-52/digit-sum-density-20261016` | 2 | 0 | 29 | `archive/2026-10-17/formalize/agent-52/digit-sum-density-20261016` |
-| `proofs/contributions/2026-10-15-agent9-complementary-bulk/ExteriorErasure.lean` | 1 | 1 | 28 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-100/third-gate-boundary-20261016` | 3 | 3 | 28 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-112/eventual-realizability` | 5 | 5 | 27 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
+| `proofs/contributions/agent-107/dfa-horn-closure-20261016` | 5 | 2 | 27 | `archive/2026-10-17/research/agent-1/agent104-monitor-verification-20261017T0307Z` |
+| `proofs/contributions/agent-15/spectral-carry-charge-43cf6e114472` | 2 | 1 | 25 | `archive/2026-10-17/formalize/agent-15/spectral-carry-charge-43cf6e114472` |
+| `proofs/contributions/agent-9/finite-ensemble-marker-count-20261016` | 4 | 2 | 24 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-104/dfa-safety-monitor-20261016` | 1 | 0 | 23 | `archive/2026-10-17/research/agent-104/dfa-safety-monitor-20261016T2250Z` |
-| `proofs/contributions/agent-100/groupII-overlap-20261016` | 1 | 1 | 22 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-safe-prefix/OverflowSafeRuns.lean` | 1 | 1 | 20 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-15/spectral-carry-support-43cf6e114472` | 1 | 1 | 20 | `archive/2026-10-17/formalize/agent-15/spectral-carry-support-43cf6e114472` |
-| `proofs/contributions/agent-103/residual-five-firsthit-two-20261016` | 4 | 1 | 20 | `archive/2026-10-17/research/agent-103/residual-five-firsthit-two-20261016T2200Z` |
-| `proofs/contributions/agent-116/integration` | 2 | 2 | 19 | `archive/2026-10-17/research/agent-115/s20261015-review-broader` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankChecks1.lean` | 1 | 1 | 19 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankChecks2.lean` | 1 | 1 | 19 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankChecks3.lean` | 1 | 1 | 19 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankChecks4.lean` | 1 | 1 | 19 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankChecks5.lean` | 1 | 1 | 19 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankChecks6.lean` | 1 | 1 | 19 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-collision-mass/CarryResponseMass.lean` | 1 | 1 | 17 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-116/certificate-exterior` | 6 | 6 | 15 | `archive/2026-10-17/research/agent-115/s20261015-review-broader` |
+| `proofs/contributions/agent-103/residual-five-fibers-20261016` | 3 | 0 | 21 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-109/boundary-kernel-recheck` | 6 | 6 | 18 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-111/exact-length-residues` | 13 | 7 | 15 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/2026-10-15-agent2-complementary-search/AlternatingCharge.lean` | 1 | 1 | 15 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-base-intrinsic-formal/IntrinsicPattern.lean` | 1 | 1 | 15 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-overflow-mismatch-formal/OverflowMismatch.lean` | 1 | 1 | 15 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-110/exterior-global` | 1 | 1 | 15 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/2026-10-15-scalar-clock-formal/ScalarOrbit.lean` | 1 | 1 | 15 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-formal/SevenStepOrbit.lean` | 1 | 1 | 15 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-105/high-return-criterion` | 5 | 5 | 14 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-12/FixedTarget.lean` | 1 | 1 | 14 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-high-column-formal/HighColumns.lean` | 1 | 1 | 14 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-109/template-step-safety` | 2 | 2 | 14 | `archive/2026-10-17/main` |
 | `proofs/contributions/2026-10-15-agent8-complementary-bulk/SaturationPaths.lean` | 1 | 0 | 14 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-102/affine-runs-20261016` | 14 | 13 | 14 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-1/agent104-monitor-verification-20261017` | 2 | 0 | 14 | `archive/2026-10-17/research/agent-1/agent104-monitor-verification-20261017T0307Z` |
 | `proofs/contributions/agent-103/residual-five-third-gate-20261016` | 4 | 0 | 14 | `archive/2026-10-17/research/agent-1/pr165-verification-20261017T0118Z` |
-| `proofs/contributions/2026-10-15-agent3-complementary-bulk/BulkPhase.lean` | 1 | 1 | 13 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-high-carry-reduction-formal/HighCarryReduction.lean` | 1 | 1 | 13 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-hierarchy-review/source_snapshots` | 2 | 2 | 13 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-overflow-mismatch-reduction-formal/OverflowMismatchReduction.lean` | 1 | 1 | 12 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-102/affine-parameter-intervals-20261016` | 9 | 9 | 12 | `archive/2026-10-17/research/agent-102/affine-parameter-intervals-20261016T2215Z` |
-| `proofs/contributions/agent-121/review-agent116-checkpoint01` | 8 | 2 | 11 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/agent-102/ancestry-lean` | 1 | 1 | 11 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/NoFourReturns.lean` | 1 | 1 | 11 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-121/merged-template-safety-review` | 5 | 5 | 10 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/2026-10-15-base-intrinsic-formal/IntrinsicCarry.lean` | 1 | 1 | 10 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-agent3-complementary-bulk/OuterEscape.lean` | 1 | 1 | 10 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-103/residual-five-firsthit-two-20261016` | 3 | 0 | 14 | `archive/2026-10-17/research/agent-103/residual-five-firsthit-two-20261016T2200Z` |
+| `proofs/contributions/agent-100/groupII-overflow-sharpness-20261016` | 3 | 1 | 12 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-100/groupII-rebase-20261016` | 4 | 2 | 11 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-105/actual-high-return` | 5 | 4 | 10 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-116/integration` | 1 | 1 | 10 | `archive/2026-10-17/research/agent-115/s20261015-review-broader` |
 | `proofs/contributions/agent-1/groupIII-handoff-20261016` | 4 | 4 | 10 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-9/one-step-digit-sum-collapse-20261016` | 1 | 1 | 10 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-110/two-step-return-20261016` | 4 | 4 | 10 | `archive/2026-10-17/research/agent-110/two-step-return-20261016T2123Z` |
-| `proofs/contributions/2026-10-15-actual-prefix-lift-formal/ActualPrefixLift.lean` | 1 | 1 | 9 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-104/review-agent4-whole-word` | 3 | 3 | 9 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent6-complementary-bulk/ExteriorAbsorbedObstruction.lean` | 1 | 1 | 9 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-prefix-extension-formal/PrefixExtension.lean` | 1 | 1 | 9 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-105/residue-trap` | 3 | 3 | 8 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-114/review-template-bridge-20261015` | 3 | 3 | 8 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/agent6-complementary-bulk/ExteriorPotentialObstruction.lean` | 1 | 1 | 8 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/PilotChecks.lean` | 1 | 1 | 8 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-formal/ActualBoundary.lean` | 1 | 1 | 7 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-104/review-agent4-temporal-strip` | 6 | 5 | 7 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-clock-formal/ActualScalar.lean` | 1 | 1 | 7 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-formal/BoundaryTransducer.lean` | 1 | 1 | 7 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-12/FirstHitFour.lean` | 1 | 1 | 7 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-106/run-births` | 4 | 3 | 8 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-116/certificate-exterior` | 2 | 2 | 8 | `archive/2026-10-17/research/agent-115/s20261015-review-broader` |
+| `proofs/contributions/agent-121/review-agent116-checkpoint01` | 7 | 1 | 7 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
 | `proofs/contributions/2026-10-15-scalar-period-composition/ScalarBound.lean` | 1 | 1 | 7 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-clock-formal/ScalarClock.lean` | 1 | 1 | 7 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/SixPrefix.lean` | 1 | 1 | 7 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-1/pr165-verification-20261017` | 1 | 0 | 7 | `archive/2026-10-17/research/agent-1/pr165-verification-20261017T0118Z` |
-| `proofs/contributions/agent-112/tenadic-cylinder-image-20261016` | 2 | 2 | 7 | `archive/2026-10-17/research/agent-104/review-pr100-cylinder-20261016T2227Z` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/ClockPaths.lean` | 1 | 1 | 6 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-actual-prefix-lift-formal/ScalarRoot.lean` | 1 | 1 | 6 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-clock-formal/WidthOne.lean` | 1 | 1 | 6 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-105/ceil-half-suffix-8f1107db019a` | 1 | 0 | 6 | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
 | `proofs/contributions/agent-111/growing-tenpower-suffix-20261016` | 2 | 0 | 6 | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
-| `proofs/contributions/agent-1/periodic-block-strip-20261016` | 3 | 3 | 6 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-105/inverse-boundaries-9df76b-20261016` | 1 | 0 | 6 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-106/congruence-carry-budget-20261016T2131Z` | 3 | 2 | 6 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-105/all-predecessors-9df76b-20261016` | 3 | 2 | 6 | `archive/2026-10-17/research/agent-1/backward-layers-verification-20261017T0142Z` |
-| `proofs/contributions/2026-10-15-agent8-complementary-bulk/AllPhaseRefinement.lean` | 1 | 1 | 5 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-bounded-prefix-lift-formal/BoundedPrefixLift.lean` | 1 | 1 | 5 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-collision-formal/CarryTransferNormalForm.lean` | 1 | 1 | 5 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent6-complementary-bulk/ExteriorCoverage.lean` | 1 | 1 | 5 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-high-return-rank-formal/HighReturnRank.lean` | 1 | 1 | 5 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-safe-high-return/SafeHighWitness.lean` | 1 | 1 | 5 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-1/ceilhalf-verification-20261017` | 2 | 1 | 6 | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
+| `proofs/contributions/agent-108/modular-autonomy` | 12 | 8 | 5 | `archive/2026-10-17/main` |
 | `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/ScalarHierarchy.lean` | 1 | 1 | 5 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-315/temporal-column-11-99` | 2 | 2 | 5 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-111/bounded-variable-modulus-20261016` | 1 | 0 | 5 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/ActualRank.lean` | 1 | 1 | 4 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-component-hierarchy-formal/ComponentHierarchy.lean` | 1 | 1 | 4 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/FiniteGraph.lean` | 1 | 1 | 4 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-finite-horizon-density/FiniteHorizonBlocks.lean` | 1 | 1 | 4 | `archive/2026-10-17/main` |
 | `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/ScalarHierarchyData.lean` | 1 | 1 | 4 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-222/M99-B222-guard-counterexample` | 2 | 2 | 4 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-317/m99-c317-uniformity` | 1 | 1 | 4 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-105/numeric-decoder-9df76b-20261016` | 1 | 0 | 4 | `archive/2026-10-17/research/agent-1/backward-layers-verification-20261017T0142Z` |
 | `proofs/contributions/agent-101/two-history-realization-count-20261016` | 1 | 0 | 4 | `archive/2026-10-17/research/agent-101/two-history-realizations-20261016T2238Z` |
-| `proofs/contributions/agent-110/certificate-budget` | 5 | 5 | 3 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/2026-10-15-bounded-prefix-lift-formal/ActualJobFamily.lean` | 1 | 1 | 3 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-112/certificate-admissibility` | 3 | 3 | 3 | `archive/2026-10-17/research/agent-119/s20261015T2005-eight-families` |
-| `proofs/contributions/agent6-complementary-bulk/ExteriorCapTwo.lean` | 1 | 1 | 3 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent6-complementary-bulk/ExteriorOrdinaryWitnesses.lean` | 1 | 1 | 3 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-lift-hierarchy-formal/LiftHierarchy.lean` | 1 | 1 | 3 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-14-seven-step-extension-formal/RankCertificate.lean` | 1 | 1 | 3 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-17/m99-a07-uniform-finite-seed` | 1 | 1 | 3 | `archive/2026-10-17/main` |
+| `proofs/contributions/agent-315/temporal-column-11-99` | 1 | 1 | 3 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-1/backward-layers-verification-20261017` | 1 | 0 | 3 | `archive/2026-10-17/research/agent-1/backward-layers-verification-20261017T0142Z` |
 | `proofs/contributions/agent-16/m99-a06` | 1 | 0 | 3 | `archive/2026-10-17/research/agent-16/m99-a06-20261015` |
 | `proofs/contributions/agent-217/uniformity` | 1 | 0 | 3 | `archive/2026-10-17/research/agent-217/s20261015-uniformity` |
-| `proofs/contributions/agent-109/template-return-certificate` | 4 | 4 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-base-intrinsic-formal/IntrinsicReverseAdd.lean` | 1 | 1 | 2 | `archive/2026-10-17/main` |
 | `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/RangeChecks.lean` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/2026-10-15-scalar-finite-certificate-formal/RankRows.lean` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-21/m99-a01-realizability-interface` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-213/gapgain-sub72` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-216/agent216-general-nat-exterior-correspondence` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-216/agent216-mod22-absorption-audit` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-23/m99-a03-gain-integer-bridge` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-312/M99-C312-block-guard` | 1 | 1 | 2 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-1/periodic-outer-catalog-20261016` | 3 | 3 | 2 | `archive/2026-10-17/research/agent-1/periodic-reduced-core-20261017T0135Z` |
-| `proofs/contributions/agent-1/periodic-width-projection-20261016` | 11 | 7 | 2 | `archive/2026-10-17/research/agent-1/periodic-reduced-core-20261017T0135Z` |
-| `proofs/contributions/agent-14/ordinary-exterior-six-twelve-bridge` | 1 | 1 | 2 | `archive/2026-10-17/research/agent-14/ordinary-exterior-six-twelve-bridge-20261015` |
 | `proofs/contributions/agent-15/sixphase-temporal-profile` | 1 | 0 | 2 | `archive/2026-10-17/research/agent-15/s20261015T2014` |
-| `proofs/contributions/agent6-complementary-bulk/ExteriorSharp.lean` | 1 | 1 | 1 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-109/outer-projection-bridge` | 1 | 1 | 1 | `archive/2026-10-17/main` |
 | `proofs/contributions/agent-124/prefix-five-six` | 1 | 1 | 1 | `archive/2026-10-17/research/agent-124/s20261015T1600` |
-| `proofs/contributions/agent-13/m99-a03-gap-gain-audit` | 1 | 1 | 1 | `archive/2026-10-17/main` |
-| `proofs/contributions/agent-53/boundary-table-transcription-20261016` | 1 | 1 | 1 | `archive/2026-10-17/formalize/agent-53/20261016-c04cf11f6ff8` |
+
+## Drafts left out because they are too heavy to build
+
+These 5 draft files compile and prove statements found nowhere else, but they are large `decide` certificates (or depend on one) that need 20-40 GB of memory and up to an hour per file, beyond the build budget in AGENTS.md rule 8 (an ordinary 16 GB machine, which is also what GitHub Actions has). They stay in the archive tags; to bring one back, split or rewrite its certificate so each file fits the budget.
+
+| Original path | Tag that contains it |
+| --- | --- |
+| `proofs/contributions/2026-10-15-scalar-hierarchy-review/source_snapshots/ScalarHierarchy.lean` | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
+| `proofs/contributions/2026-10-15-scalar-period-composition/ScalarBound.lean` | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
+| `proofs/contributions/agent-103/broader-return-formal/BroaderScalarBound.lean` | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
+| `proofs/contributions/agent-103/broader-return-formal/stage2/BroaderBound.lean` | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
+| `proofs/contributions/agent-103/broader-return-formal/stage2/generated/BroaderHierarchy.lean` | `archive/2026-10-17/research/agent-1/ceilhalf-verification-20261017T0210Z` |
 
 ## Tags
 

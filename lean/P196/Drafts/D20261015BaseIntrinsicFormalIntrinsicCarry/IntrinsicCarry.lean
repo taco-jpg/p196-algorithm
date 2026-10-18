@@ -1,0 +1,144 @@
+import P196.Core.SeamSafety
+
+/-! All-base extension of the external decimal IntrinsicSeam result at
+commit e52125515490b668d14e95b0cf8d31767bcde7c4. Singleton maximality and
+high/neutral adjacency are prior decimal results; this module generalizes
+them to variable integer bases, with output safety restricted to b>=3. -/
+namespace IntrinsicCarry
+open BaseReflection ResetNormalization PhysicalWidth SeamSafety
+
+theorem carry_low (b q i : Int) (hb : 2 ≤ b) (hq : 0 ≤ q ∧ q < b-1)
+    (hi : 0 ≤ i ∧ i ≤ 1) : (q+i)/b=0 :=
+  Int.ediv_eq_zero_of_lt (by omega) (by omega)
+
+theorem carry_neutral (b i : Int) (hb : 2 ≤ b) (hi : 0 ≤ i ∧ i ≤ 1) :
+    (b-1+i)/b=i := by
+  have hic : i=0 ∨ i=1 := by omega
+  rcases hic with rfl | rfl
+  · exact Int.ediv_eq_zero_of_lt (by omega) (by omega)
+  · have he : b-1+1=b := by omega
+    rw [he,Int.ediv_self (by omega)]
+
+theorem carry_high (b q i : Int) (hb : 2 ≤ b) (hq : b ≤ q ∧ q ≤ 2*b-2)
+    (hi : 0 ≤ i ∧ i ≤ 1) : (q+i)/b=1 := by
+  have hc := carry_bit b q i hb (by omega) hi
+  have hn : ¬ (q+i)/b ≤ 0 := by
+    rw [Int.ediv_le_iff_le_mul (show 0 < b by omega)]
+    simp only [Int.zero_mul,Int.zero_add]
+    omega
+  omega
+
+theorem carry_one_iff (b q i : Int) (hb : 2 ≤ b)
+    (hq : 0 ≤ q ∧ q ≤ 2*b-2) (hi : 0 ≤ i ∧ i ≤ 1) :
+    (q+i)/b=1 ↔ b ≤ q ∨ (q=b-1 ∧ i=1) := by
+  by_cases hl : q < b-1
+  · rw [carry_low b q i hb ⟨hq.1,hl⟩ hi]
+    omega
+  · by_cases hn : q=b-1
+    · subst q
+      rw [carry_neutral b i hb hi]
+      omega
+    · rw [carry_high b q i hb (by omega) hi]
+      omega
+
+theorem local_defect_iff (b q i : Int) (hb : 2 ≤ b)
+    (hq : 0 ≤ q ∧ q ≤ 2*b-2) (hi : 0 ≤ i ∧ i ≤ 1) :
+    (q+i)/b ≠ q/b ↔ q=b-1 ∧ i=1 := by
+  by_cases hl : q < b-1
+  · have h1 := carry_low b q i hb ⟨hq.1,hl⟩ hi
+    have h0 := carry_low b q 0 hb ⟨hq.1,hl⟩ (by omega)
+    simp only [Int.add_zero] at h0
+    rw [h1,h0]
+    omega
+  · by_cases hn : q=b-1
+    · subst q
+      have h0 := carry_neutral b 0 hb (by omega)
+      simp only [Int.add_zero] at h0
+      rw [carry_neutral b i hb hi,h0]
+      omega
+    · have h1 := carry_high b q i hb (by omega) hi
+      have h0 := carry_high b q 0 hb (by omega) (by omega)
+      simp only [Int.add_zero] at h0
+      rw [h1,h0]
+      omega
+
+def singletonTags (xs : List (Int × Bool)) : List (Int × Bool) :=
+  xs.map (fun p => (p.1,true))
+
+def out (b i : Int) : List (Int × Bool) → Nat → Int
+  | [], _ => 0
+  | (q,r)::xs, 0 => (q + if r then 0 else i)/b
+  | (q,r)::xs, k+1 => out b ((q + if r then 0 else i)/b) xs k
+
+theorem out_eq_getD (b i : Int) (xs : List (Int × Bool)) (k : Nat) :
+    out b i xs k = ((columns b i xs).getD k (0,0)).2 := by
+  induction xs generalizing i k with
+  | nil => simp [out,columns,List.getD]
+  | cons p xs ih =>
+    rcases p with ⟨q,r⟩
+    cases k with
+    | zero => rfl
+    | succ k => exact ih _ k
+
+theorem out_zero_eq_outgoing (b : Int) (xs : List (Int × Bool)) (k : Nat) :
+    out b 0 xs k = outgoing b xs k := out_eq_getD b 0 xs k
+
+theorem singleton_out_minimal (b i j : Int) (xs : List (Int × Bool)) (k : Nat)
+    (hb : 2 ≤ b) (hi : 0 ≤ i ∧ i ≤ 1) (hj : 0 ≤ j ∧ j ≤ 1)
+    (hbound : Bounded b xs) : out b i (singletonTags xs) k ≤ out b j xs k := by
+  induction xs generalizing i j k with
+  | nil => exact Int.le_refl 0
+  | cons p xs ih =>
+    rcases p with ⟨q,r⟩
+    have hq := hbound (q,r) (by simp)
+    have ht : Bounded b xs := by
+      intro p hp; exact hbound p (by simp [hp])
+    let active : Int := if r then 0 else j
+    have ha : 0 ≤ active ∧ active ≤ 1 := by dsimp [active]; split <;> omega
+    have h0 := carry_bit b q 0 hb hq (by omega)
+    simp only [Int.add_zero] at h0
+    have hc := carry_bit b q active hb hq ha
+    cases k with
+    | zero =>
+      simp only [singletonTags,List.map_cons,out,↓reduceIte,Int.add_zero]
+      change q/b ≤ (q+active)/b
+      exact Int.ediv_le_ediv (by omega) (by omega)
+    | succ k =>
+      simp only [singletonTags,List.map_cons,out,↓reduceIte,Int.add_zero]
+      change out b (q/b) (singletonTags xs) k ≤ out b ((q+active)/b) xs k
+      exact ih _ _ k (by omega) (by omega) ht
+
+theorem reset_out_le_ordinary (b i j : Int) (xs : List (Int × Bool)) (k : Nat)
+    (hb : 2 ≤ b) (hi : 0 ≤ i ∧ i ≤ 1) (hj : 0 ≤ j ∧ j ≤ 1)
+    (hij : i ≤ j) (hbound : Bounded b xs) :
+    out b i xs k ≤ out b j (ordinaryTags xs) k := by
+  induction xs generalizing i j k with
+  | nil => exact Int.le_refl 0
+  | cons p xs ih =>
+    rcases p with ⟨q,r⟩
+    have hq := hbound (q,r) (by simp)
+    have ht : Bounded b xs := by
+      intro p hp; exact hbound p (by simp [hp])
+    let active : Int := if r then 0 else i
+    have ha : 0 ≤ active ∧ active ≤ 1 := by dsimp [active]; split <;> omega
+    have haj : active ≤ j := by dsimp [active]; split <;> omega
+    have hc := carry_bit b q active hb hq ha
+    have hd := carry_bit b q j hb hq hj
+    have hle := Int.ediv_le_ediv (show 0 < b by omega) (show q+active ≤ q+j by omega)
+    cases k with
+    | zero => exact hle
+    | succ k =>
+      exact ih ((q+active)/b) ((q+j)/b) k (by omega) (by omega) hle ht
+
+/-- Singleton blocks maximize each actual-minus-reset outgoing defect. -/
+theorem singleton_defect_maximal (b : Int) (xs : List (Int × Bool)) (k : Nat)
+    (hb : 2 ≤ b) (hbound : Bounded b xs) :
+    0 ≤ outgoing b (ordinaryTags xs) k - outgoing b xs k ∧
+    outgoing b (ordinaryTags xs) k - outgoing b xs k ≤
+      outgoing b (ordinaryTags xs) k - outgoing b (singletonTags xs) k := by
+  have hlo := singleton_out_minimal b 0 0 xs k hb (by omega) (by omega) hbound
+  have hhi := reset_out_le_ordinary b 0 0 xs k hb (by omega) (by omega) (by omega) hbound
+  simp only [out_zero_eq_outgoing] at hlo hhi
+  omega
+
+end IntrinsicCarry

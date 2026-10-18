@@ -1,0 +1,38 @@
+import P196.Drafts.D20261015BaseIntrinsicFormalIntrinsicPattern.IntrinsicPattern
+import P196.Core.ReverseAdd
+
+namespace IntrinsicReverseAdd
+open BaseReflection ResetNormalization PhysicalWidth SeamSafety
+open IntrinsicCarry IntrinsicPattern ReverseAdd SignedDigitUniqueness
+
+/-- The local high/neutral pattern is a partition-free certificate for
+ordinary reverse-and-add output safety in every base at least three. -/
+theorem highNeutral_reverse_add_safety (b : Int) (digits : List Int)
+    (xs : List (Int × Bool)) (hb : 3 ≤ b)
+    (hd : DigitBounds b digits) (hp : PositiveLast digits)
+    (hqs : xs.map Prod.fst = pairs digits)
+    (hh : HighNeutral b (pairs digits)) :
+    (∀ d ∈ actualDigits b xs, 0 ≤ d ∧ d < b) ∧
+    PositiveLast (actualDigits b xs) ∧
+    eval b (actualDigits b xs) = eval b digits + reversedValue b digits ∧
+    (actualDigits b xs).reverse ≠ actualDigits b xs := by
+  obtain ⟨hout,hpos,_,hvalue⟩ := reverse_add_normalization b digits xs (by omega) hd hp hqs
+  have hbound := tagged_pairs_bound b digits xs hd hqs
+  have hsym : (xs.map Prod.fst).reverse = xs.map Prod.fst := by
+    rw [hqs]; exact pairs_symmetric digits
+  exact ⟨hout,hpos,hvalue,highNeutral_output_safe b xs hb hbound hsym (by rwa [hqs])⟩
+
+/-- The combinatorial characterization holds in binary, but output safety
+does not: 110 base two plus its reversal is the palindrome 1001. -/
+theorem binary_safety_boundary :
+    pairs [0,1,1] = [1,2,1] ∧
+    HighNeutral 2 (pairs [0,1,1]) ∧
+    outgoing 2 (tags [1,2,1] true) 2 = 0 ∧
+    outgoing 2 (ordinaryTags (tags [1,2,1] true)) 2 = 1 ∧
+    actualDigits 2 (tags [1,2,1] true) = [1,0,0,1] ∧
+    ([1,0,0,1] : List Int).reverse = [1,0,0,1] := by
+  refine ⟨rfl,?_,by decide⟩
+  change HighNeutral 2 [1,2,1]
+  simp [HighNeutral,StartsNeutral]
+
+end IntrinsicReverseAdd

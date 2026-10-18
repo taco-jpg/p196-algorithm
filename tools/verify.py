@@ -11,7 +11,7 @@
    no native_decide).
 Exit status 0 means everything passed.
 """
-import hashlib, json, os, re, subprocess, sys, tempfile
+import collections, hashlib, json, os, re, subprocess, sys, tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEAN = os.path.join(ROOT, "lean")
@@ -62,6 +62,17 @@ print(f"[rules] {len(files)} Lean files, {len(REG['projects'])} projects, "
       f"{'OK' if not fail else str(len(fail)) + ' problem(s)'}", flush=True)
 
 # 2. build
+# Lake runs one lean process per thread of LEAN_NUM_THREADS (default: every core). A single file may
+# need several GB, so by default run at most one file per 8 GB of RAM (set LEAN_NUM_THREADS to override).
+def ram_gb():
+    try:
+        if sys.platform == "darwin":
+            return int(subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True).stdout) / 2**30
+        return os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES") / 2**30
+    except Exception:
+        return 8
+os.environ.setdefault("LEAN_NUM_THREADS", str(max(1, min(os.cpu_count() or 1, int(ram_gb() // 8)))))
+print(f"[build] up to {os.environ['LEAN_NUM_THREADS']} Lean file(s) at a time", flush=True)
 r = subprocess.run(["lake", "build"], cwd=LEAN, capture_output=True, text=True)
 sys.stdout.write(r.stdout[-4000:]); sys.stderr.write(r.stderr[-4000:])
 if "declaration uses 'sorry'" in r.stdout + r.stderr:
@@ -79,14 +90,21 @@ with tempfile.TemporaryDirectory() as td:
     for name, p in sorted(REG["projects"].items()):
         eps = p["endpoints"]
         if not eps: continue
-        src = "".join(f"import {m}\n" for m in p["roots"]) + "".join(f"#print axioms {e}\n" for e in eps)
-        f = os.path.join(td, f"Audit{name}.lean")
-        open(f, "w").write(src)
-        out = subprocess.run(["lake", "env", "lean", f], cwd=LEAN, capture_output=True, text=True)
-        text = (out.stdout + out.stderr).replace("\n ", " ")
+        # one audit file per root set; drafts audit each module on its own (versions may clash if imported together)
+        batches = collections.defaultdict(list)
+        if p.get("endpoint_modules"):
+            for e in eps: batches[(p["endpoint_modules"][e],)].append(e)
+        else:
+            batches[tuple(p["roots"])] = eps
         got = {}
-        for m in AX.finditer(text):
-            got[m.group(1)] = [a.strip() for a in (m.group(2) or "").split(",") if a.strip()]
+        for i, (roots, bes) in enumerate(sorted(batches.items())):
+            src = "".join(f"import {m}\n" for m in roots) + "".join(f"#print axioms {e}\n" for e in bes)
+            f = os.path.join(td, f"Audit{name.replace('.', '_')}_{i}.lean")
+            open(f, "w").write(src)
+            out = subprocess.run(["lake", "env", "lean", f], cwd=LEAN, capture_output=True, text=True)
+            text = (out.stdout + out.stderr).replace("\n ", " ")
+            for m in AX.finditer(text):
+                got[m.group(1)] = [a.strip() for a in (m.group(2) or "").split(",") if a.strip()]
         for e in eps:
             if e not in got:
                 fail.append(f"{name}: endpoint {e} not found"); continue

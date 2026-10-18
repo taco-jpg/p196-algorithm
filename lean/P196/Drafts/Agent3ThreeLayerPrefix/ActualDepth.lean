@@ -1,0 +1,113 @@
+import P196.Drafts.Agent3ThreeLayerPrefix.DeadPrefix
+import P196.Drafts.Agent3TwoHistory.ActualHistories
+
+/-!
+Actual no-overflow depth of the protected dead-prefix family.
+The converse from full-word arithmetic to folded paths is the original
+Agent #9 composition `actual_realizes` followed by `realizes_path`.
+The final predecessor exclusion states its exact width and coefficient
+bounds and its zero-carry hypothesis explicitly.
+-/
+
+namespace P196.Agent3.ThreeLayer
+
+open P196.Agent9.InverseFibers
+open P196.Agent3.TwoHistory
+
+def depthBits (free : List Bool) : List Bool := [true, true, false] ++ free
+
+/-- The first incoming coefficient half, retaining its finite symbols. -/
+def historySymbol1 (xs : List Bool) (k : Nat) : List Symbol :=
+  firstLabels (0, 0) (historyBits xs) ++ List.replicate k 18
+
+/-- The second incoming coefficient half, retaining its finite symbols. -/
+def historySymbol0 (xs : List Bool) (k : Nat) : List Symbol :=
+  secondLabels (0, 0) (historyBits xs) ++ List.replicate k 18
+
+theorem historySymbol1_values (xs : List Bool) (k : Nat) :
+    (historySymbol1 xs k).map Fin.val = historyHalf1 xs k := by
+  have h18 : (18 : Symbol).val = 18 := rfl
+  simp only [historySymbol1, historyHalf1, List.map_append, List.map_replicate, h18]
+
+theorem historySymbol0_values (xs : List Bool) (k : Nat) :
+    (historySymbol0 xs k).map Fin.val = historyHalf0 xs k := by
+  have h18 : (18 : Symbol).val = 18 := rfl
+  simp only [historySymbol0, historyHalf0, List.map_append, List.map_replicate, h18]
+
+theorem historySymbol1_path (xs : List Bool) (k : Nat) :
+    Path (historyTarget xs k) 0 ((historySymbol1 xs k).map Fin.val) := by
+  simpa only [historySymbol1_values] using history_path1 xs k
+
+theorem historySymbol0_path (xs : List Bool) (k : Nat) :
+    Path (historySymbol1 xs k) 0 ((historySymbol0 xs k).map Fin.val) := by
+  simpa only [historySymbol1, historySymbol0_values] using history_path0 xs k
+
+theorem historySymbol1_actual (xs : List Bool) (k : Nat) :
+    ActualFiber (historyTarget xs k) ((historySymbol1 xs k).map Fin.val) :=
+  realizes_actual _ _ (path_realizes _ _ _ (historySymbol1_path xs k))
+
+theorem historySymbol0_actual (xs : List Bool) (k : Nat) :
+    ActualFiber (historySymbol1 xs k) ((historySymbol0 xs k).map Fin.val) :=
+  realizes_actual _ _ (path_realizes _ _ _ (historySymbol0_path xs k))
+
+/-- The two existing incoming histories are actual bounded, equal-width,
+zero-carry full-word fibers. -/
+theorem history_has_two_actual_layers (xs : List Bool) (k : Nat) :
+    ∃ a b : List Symbol,
+      ActualFiber (historyTarget xs k) (a.map Fin.val) ∧
+      ActualFiber a (b.map Fin.val) := by
+  exact ⟨historySymbol1 xs k, historySymbol0 xs k,
+    historySymbol1_actual xs k, historySymbol0_actual xs k⟩
+
+/-- Every tail following the dead prefix excludes three actual layers.
+The original complete arithmetic converse supplies all three paths. -/
+theorem no_three_actual_fibers (tail a b : List Symbol) (c : List Nat) :
+    ¬ (ActualFiber ([14, 14, 14, 5] ++ tail) (a.map Fin.val) ∧
+      ActualFiber a (b.map Fin.val) ∧ ActualFiber b c) := by
+  rintro ⟨ha, hb, hc⟩
+  exact no_three_paths_dead_prefix tail a b c
+    ⟨realizes_path _ _ _ (actual_realizes _ _ ha),
+      realizes_path _ _ _ (actual_realizes _ _ hb),
+      realizes_path _ _ _ (actual_realizes _ _ hc)⟩
+
+theorem historyTarget_depth_prefix (free : List Bool) (k : Nat) :
+    ∃ tail : List Symbol,
+      historyTarget (depthBits free) k = [14, 14, 14, 5] ++ tail := by
+  refine ⟨free.map symbol ++
+    (correction (runStates (0, 1) (depthBits free))).map symbol ++
+    List.replicate k 18, ?_⟩
+  simp only [historyTarget, historyBits, completedBits, depthBits,
+    List.map_append, List.map_cons, List.map_nil, List.cons_append,
+    List.nil_append, List.append_assoc, symbol_true, symbol_false]
+
+/-- Arbitrary three-layer actual incoming histories into the protected
+target are excluded, uniformly in the free suffix and reservoir length. -/
+theorem no_three_actual_histories (free : List Bool) (k : Nat)
+    (a b : List Symbol) (c : List Nat) :
+    ¬ (ActualFiber (historyTarget (depthBits free) k) (a.map Fin.val) ∧
+      ActualFiber a (b.map Fin.val) ∧ ActualFiber b c) := by
+  obtain ⟨tail, htail⟩ := historyTarget_depth_prefix free k
+  rw [htail]
+  exact no_three_actual_fibers tail a b c
+
+/-- No bounded mirrored coefficient half of the same width can enter
+the second predecessor through an actual zero-carry step. -/
+theorem historyWord0_no_zero_predecessor (free : List Bool) (k : Nat)
+    (ys : List Nat)
+    (hlen : ys.length = (historyHalf0 (depthBits free) k).length)
+    (hb : ∀ y ∈ ys, y < 19)
+    (hc : Agent8.terminalCarry (mirror ys) 0 = 0) :
+    Agent8.stepWord (mirror ys) ≠ historyWord0 (depthBits free) k := by
+  intro hstep
+  apply no_three_actual_histories free k
+    (historySymbol1 (depthBits free) k) (historySymbol0 (depthBits free) k) ys
+  refine ⟨historySymbol1_actual (depthBits free) k,
+    historySymbol0_actual (depthBits free) k, ?_⟩
+  refine ⟨?_, hb, ?_, ?_⟩
+  · have hlength := congrArg List.length (historySymbol0_values (depthBits free) k)
+    simp only [List.length_map] at hlength
+    exact hlen.trans hlength.symm
+  · simpa only [scan_terminalCarry] using hc
+  · simpa only [historySymbol0_values, historyWord0] using hstep
+
+end P196.Agent3.ThreeLayer

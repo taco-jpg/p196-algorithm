@@ -5,7 +5,7 @@ Whether one ever appears (whether 196 is a *Lychrel number*) is an open problem.
 This repository holds two things:
 
 1. **Verified mathematics** (`lean/`): 82 machine-checked Lean 4 results about reverse-and-add,
-   each with an explicit scope. They narrow the problem; **none of them settles it**.
+   each with an explicit scope, plus 139 groups of unreviewed draft results. They narrow the problem; **none of them settles it**.
 2. **Computation** (`calculation/`): the GPU engine that iterates the actual orbit of 196.
 
 ## Main results
@@ -29,6 +29,9 @@ Other facts about the orbit of 196:
 - **The first 101 iterates (times 0–100) are not palindromes** (`lean/P196/Orbit196Basics`).
 - **The digit sum grows:** it exceeds any bound B within an explicit window of steps, from any starting time
   (`lean/P196/Orbit196Basics`, `lean/P196/Agent9DigitSumWindows`).
+
+Altogether **321 of the 900 three-digit prefixes** are excluded, plus
+1731 four-digit prefixes under the others; [RESULTS.md](RESULTS.md) has them in one combined table.
 
 Each exclusion works the same way: every positive seed that reaches a palindrome with that prefix does so within a
 few dozen steps, and the first 100 steps of 196 contain no palindrome.
@@ -72,7 +75,7 @@ python3 tools/verify.py
 ```
 
 This checks the repository rules (no unregistered or duplicate Lean files, no `sorry`/`axiom`/`native_decide`),
-builds all 3216 modules with `lake build`, and audits the axioms of all 2181 registered endpoints.
+builds all 4459 modules with `lake build`, and audits the axioms of all 5393 registered endpoints.
 It prints `ALL CHECKS PASSED` on success (about 30–60 minutes on a laptop the first time).
 
 ## Layout
@@ -81,6 +84,7 @@ It prints `ALL CHECKS PASSED` on success (about 30–60 minutes on a laptop the 
 | --- | --- |
 | `RESULTS.md` | Every verified result, grouped by topic, with its scope |
 | `lean/registry.json` | Machine-readable list of results: modules, root modules, checked endpoints |
+| `lean/P196/Drafts/` | Unreviewed draft results from the old branches (each file proves something found nowhere else) |
 | `lean/P196/<Result>/` | Lean modules introduced by that result. A result may also import modules of other results; modules used by ten or more results are in `lean/P196/Foundations/`. A few results consist only of other results' modules, so they have no directory |
 | `tools/verify.py` | One-command verification |
 | `calculation/` | GPU engine releases and the browser engine page |
@@ -96,7 +100,7 @@ exactly once, and every old branch and pull request is preserved inside one of 6
 ## 中文概要
 
 本仓库研究 196 的“逆序相加”问题（196 是否为 Lychrel 数，至今未解决）。`lean/` 里是 82 个经 Lean 4
-机器验证的结论，每个都有明确适用范围，**没有一个证明了 196 是 Lychrel 数**。关于 196 本身：其轨道上若出现回文，
+机器验证的结论（另有 139 组未经审阅的草稿结论），每个都有明确适用范围，**没有一个证明了 196 是 Lychrel 数**。关于 196 本身：其轨道上若出现回文，
 开头不可能是 13 个指定的两位数、217、218、620、739、777、另外 33 个三位数前缀类、2641，以及一份 277 个前缀的清单；
 八类 dd0…0dd 回文也不会出现；
 另有 14 个三位数前缀已证明这种方法处理不了。另有一条条件路线：只要找到一个通过检查器的“返回证书”，就能得到某个
