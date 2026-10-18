@@ -1,0 +1,32 @@
+import P196.Agent113FiveLayer.FiveLayerData
+
+/-! Generated (Agent #113): kernel checks of closure rows (layer 3, s0 = 6). -/
+
+namespace Agent113.FiveLayer
+
+open Agent113.FourColumn
+
+theorem r3_6_0 : cert5.stepRow 3 6 0 = true := by decide +kernel
+theorem r3_6_1 : cert5.stepRow 3 6 1 = true := by decide +kernel
+theorem r3_6_2 : cert5.stepRow 3 6 2 = true := by decide +kernel
+theorem r3_6_3 : cert5.stepRow 3 6 3 = true := by decide +kernel
+theorem r3_6_4 : cert5.stepRow 3 6 4 = true := by decide +kernel
+theorem r3_6_5 : cert5.stepRow 3 6 5 = true := by decide +kernel
+theorem r3_6_6 : cert5.stepRow 3 6 6 = true := by decide +kernel
+theorem r3_6_7 : cert5.stepRow 3 6 7 = true := by decide +kernel
+theorem r3_6_8 : cert5.stepRow 3 6 8 = true := by decide +kernel
+theorem r3_6_9 : cert5.stepRow 3 6 9 = true := by decide +kernel
+theorem r3_6_10 : cert5.stepRow 3 6 10 = true := by decide +kernel
+theorem r3_6_11 : cert5.stepRow 3 6 11 = true := by decide +kernel
+theorem r3_6_12 : cert5.stepRow 3 6 12 = true := by decide +kernel
+theorem r3_6_13 : cert5.stepRow 3 6 13 = true := by decide +kernel
+theorem r3_6_14 : cert5.stepRow 3 6 14 = true := by decide +kernel
+theorem r3_6_15 : cert5.stepRow 3 6 15 = true := by decide +kernel
+theorem r3_6_16 : cert5.stepRow 3 6 16 = true := by decide +kernel
+theorem r3_6_17 : cert5.stepRow 3 6 17 = true := by decide +kernel
+theorem r3_6_18 : cert5.stepRow 3 6 18 = true := by decide +kernel
+
+theorem r3_6 : ∀ b, b ≤ 18 → cert5.stepRow 3 6 b = true :=
+  cover19 r3_6_0 r3_6_1 r3_6_2 r3_6_3 r3_6_4 r3_6_5 r3_6_6 r3_6_7 r3_6_8 r3_6_9 r3_6_10 r3_6_11 r3_6_12 r3_6_13 r3_6_14 r3_6_15 r3_6_16 r3_6_17 r3_6_18
+
+end Agent113.FiveLayer

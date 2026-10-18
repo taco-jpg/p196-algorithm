@@ -1,0 +1,28 @@
+import P196.Agent118PrefixKernel.Rank217
+import P196.Agent118PrefixKernel.PrefixChecksBase
+namespace Agent118.Cert217
+open SevenColumn.Certificate Agent118.PrefixKernel
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+theorem row_leaf2195_0 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,7,15] 2 = true := by decide +kernel
+theorem row_leaf2195_1 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,7,16] 2 = true := by decide +kernel
+theorem row_leaf2195_2 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,7,17] 2 = true := by decide +kernel
+theorem row_leaf2195_3 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,7,18] 2 = true := by decide +kernel
+theorem row_leaf2195_4 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,8,0] 5 = true := by decide +kernel
+theorem row_leaf2195_5 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,8,4] 5 = true := by decide +kernel
+theorem row_leaf2195_6 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,9] 5 = true := by decide +kernel
+theorem row_leaf2195_7 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,10] 5 = true := by decide +kernel
+theorem row_leaf2195_8 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,11] 5 = true := by decide +kernel
+theorem row_leaf2195_9 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,12] 5 = true := by decide +kernel
+theorem row_leaf2195_10 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,13] 2 = true := by decide +kernel
+theorem row_leaf2195_11 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,14] 2 = true := by decide +kernel
+theorem row_leaf2195_12 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,15] 2 = true := by decide +kernel
+theorem row_leaf2195_13 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,16] 2 = true := by decide +kernel
+theorem row_leaf2195_14 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,17] 2 = true := by decide +kernel
+theorem row_leaf2195_15 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,9,18] 2 = true := by decide +kernel
+theorem row_leaf2195_16 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,10,0] 2 = true := by decide +kernel
+theorem row_leaf2195_17 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,10,1] 2 = true := by decide +kernel
+theorem row_leaf2195_18 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,10,2] 5 = true := by decide +kernel
+theorem row_leaf2195_19 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,10,4] 5 = true := by decide +kernel
+theorem row_leaf2195_20 : checkRow ranks (fastLongPred 7) [7,8,4,7,11,10,5] 5 = true := by decide +kernel
+end Agent118.Cert217

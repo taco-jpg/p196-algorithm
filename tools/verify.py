@@ -72,7 +72,8 @@ if r.returncode != 0:
 print("[build] OK", flush=True)
 
 # 3. axiom audit
-AX = re.compile(r"^'([^']+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)", re.M)
+# names may contain ' (e.g. value_lt'), so match up to the last "' depends" / "' does not" on the line
+AX = re.compile(r"^'(.+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)", re.M)
 total = 0
 with tempfile.TemporaryDirectory() as td:
     for name, p in sorted(REG["projects"].items()):

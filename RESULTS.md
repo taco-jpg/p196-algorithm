@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 71 results (1884 checked endpoints — the theorems and definitions a reader should rely on — in 406 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 82 results (2181 checked endpoints — the theorems and definitions a reader should rely on — in 3216 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -8,7 +8,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 ## Contents
 
-1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (4)
+1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (15)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (12)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (14)
@@ -38,6 +38,41 @@ DecimalUnboundedMass.digitSum_196_unbounded_after : ∀ (B start : Nat),
 ```
 </details>
 
+### Agent315Orbit196Residues
+
+*The orbit of 196 is never divisible by 3 or 9*
+
+No iterate of 196 is divisible by 3 (hence not by 9) (`not_dvd3_orbit196`, `not_dvd9_orbit196`). Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent315Orbit196Residues.Orbit196Mod3`, `P196.Agent315Orbit196Residues.Orbit196Mod9`
+- 3 modules, 4 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+not_dvd3_orbit196 (k : Nat) : ¬ 3 ∣ orbit 196 k
+not_dvd9_orbit196 (k : Nat) : ¬ 9 ∣ orbit 196 k
+```
+</details>
+
+### Agent9DigitSumWindows
+
+*Digit sums along the orbit of 196 grow within explicit windows*
+
+Quantitative digit-sum escape for 196: for every bound B and start s there is a time t in [s, s + W(B)] with digit sum of the t-th iterate greater than B, for explicit window sizes W (including a factorial bound 20^(2B-1)·(2B)! and a sharper one), and a lower bound on how many times in any interval exceed B. Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent9DigitSumWindows.UniformDecimal`, `P196.Agent9DigitSumWindows.SharpUniformDecimal`, `P196.Agent9DigitSumWindows.Agent9DecimalFactorialEscape`, `P196.Agent9DigitSumWindows.Agent9DigitSumIntervalCounts`
+- 13 modules, 12 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+digitSum_uniform_window_196 (B s : Nat) : ∃ t, s ≤ t ∧ t ≤ s + digitSumEscapeBound B ∧ B < digitSum (orbit 196 t)
+digitSum_uniform_window_196_factorial (B s : Nat) : ∃ t, s ≤ t ∧ t ≤ s + 20 ^ (2 * B - 1) * factorial (2 * B) ∧ B < DecimalMass.digitSum (Lychrel196.orbit 196 t)
+digitSum_interval_count_196 (B s N : Nat) : N / (DecimalUniformEscape.sharpDigitSumEscapeBound B + 1) ≤ ((List.range' s N).filter (fun t => decide (B < DecimalMass.digitSum (Lychrel196.orbit 196 t)))).length
+```
+</details>
+
 ### Core
 
 *Explicit accepted module registry: consolidation-reviewed core*
@@ -63,21 +98,40 @@ Agent113.TwoDigit.startsTwo_iff : ∀ (a b P : Nat),
 ```
 </details>
 
-### Agent117P2641
+### Agent118PrefixKernel
 
-Ordinary reverse-and-add ancestry bound t <= 6 for every positive A ending at a canonical palindrome with prefix 2641, and all-time exclusion of that family from orbit 196. No other palindrome-family or unrestricted 196 conclusion.
+*Prefixes 217, 218 and 777 excluded from the orbit of 196*
 
-- Root module(s): `P196.Agent117P2641.A124117P2641K7Final`
-- 104 modules, 2 checked endpoints
-- Claim `A117-2641-ANCESTRY`: For all A P t, 0 < A and PalStartsL [2,6,4,1] P and orbit A t = P imply t <= 6.
-- Claim `A117-2641-NO196`: For all t, not PalStartsL [2,6,4,1] (orbit 196 t). This excludes only the 2641-prefix palindrome family.
+Kernel-checked prefix certificates (Agent #118): every positive seed that reaches a palindrome beginning with 217, 218 or 777 does so within 23, 33 and 25 steps respectively; since the first 100 iterates of 196 contain no palindrome, no palindrome in the orbit of 196 begins with 217, 218 or 777 (`no_196_217_palindrome`, `no_196_218_palindrome`, `no_196_777_palindrome`). Controls show the 218 bound 33 is attained and the family is reached (10700 reaches 21812 in two steps). Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent118PrefixKernel.Conclusion217`, `P196.Agent118PrefixKernel.Conclusion777`, `P196.Agent118PrefixKernel.Controls218`, `P196.Agent118PrefixKernel.Witnesses`, `P196.Agent118PrefixKernel.Conclusion218`
+- 1551 modules, 28 checked endpoints
 
 <details><summary>Main statements (Lean)</summary>
 
 ```lean
-Agent124.Cert117P2641K7.ancestry_2641 : ∀ (A P t : Nat),
-  0 < A → Agent124.PrefixL.PalStartsL [2, 6, 4, 1] P → Lychrel196.orbit A t = P → t ≤ 6
-Agent124.Cert117P2641K7.no_196_2641 : ∀ (t : Nat), ¬Agent124.PrefixL.PalStartsL [2, 6, 4, 1] (Lychrel196.orbit 196 t)
+no_196_217_palindrome : ∀ t, ¬ PalindromeStarts3 2 1 7 (orbit 196 t)
+no_196_218_palindrome : ∀ t, ¬ PalindromeStarts3 2 1 8 (orbit 196 t)
+no_196_777_palindrome : ∀ t, ¬ PalindromeStarts3 7 7 7 (orbit 196 t)
+ancestry_bound23 : ∀ A P t, 0 < A → PalindromeStarts3 2 1 7 P → orbit A t = P → t ≤ 23
+ancestry_bound25 : ∀ A P t, 0 < A → PalindromeStarts3 7 7 7 P → orbit A t = P → t ≤ 25
+```
+</details>
+
+### Agent124Prefix620
+
+*Prefix 620 excluded from the orbit of 196*
+
+Every positive seed that reaches a palindrome beginning with 620 does so within 12 steps (sharp: see Agent104P620Witness), so no palindrome in the orbit of 196 begins with 620 (`no_196_620`). Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent124Prefix620.A124Prefix620Final`
+- 327 modules, 2 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+ancestry_620 : ∀ A P t, 0 < A → PalStarts3 6 2 0 P → orbit A t = P → t ≤ 12
+no_196_620 : ∀ t, ¬ PalStarts3 6 2 0 (orbit 196 t)
 ```
 </details>
 
@@ -99,6 +153,148 @@ Agent104.Prefix620Witness.twelve_steps : Lychrel196.orbit Agent104.Prefix620Witn
   Agent104.Prefix620Witness.target
 Agent104.Prefix620Witness.target_canonical : DecimalDigits.Canonical Agent104.Prefix620Witness.target
   Agent104.Prefix620Witness.targetDigit 14
+```
+</details>
+
+### Agent104Prefix739
+
+*Prefix 739 excluded from the orbit of 196*
+
+Seven-column prefix certificate: every positive seed that reaches a palindrome beginning with 739 does so within 39 steps, so no palindrome in the orbit of 196 begins with 739 (`no_196_739_palindrome`). Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent104Prefix739.Conclusion739`
+- 346 modules, 3 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+no_196_739_palindrome : ∀ t, ¬ PalindromeStarts739 (orbit 196 t)
+ancestry_bound39 : ∀ A P t, 0 < A → PalindromeStarts739 P → orbit A t = P → t ≤ 39
+```
+</details>
+
+### Agent124PrefixFiveSix
+
+*33 three-digit prefix classes excluded from the orbit of 196*
+
+For each of 33 three-digit prefix classes (a, b, c) there is an ancestry bound of at most 40 steps for every positive seed, so no palindrome in the orbit of 196 begins with any of these prefixes (`no_196_all`; the list is `classes` in the Lean source). Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent124PrefixFiveSix.Agent124PrefixSummary`
+- 358 modules, 3 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+classes_length : classes.length = 33
+ancestry_all : ∀ e ∈ classes, ∀ A P t, 0 < A → PalStarts3 e.1 e.2.1 e.2.2.1 P → orbit A t = P → t ≤ e.2.2.2
+no_196_all : ∀ t, ∀ e ∈ classes, ¬ PalStarts3 e.1 e.2.1 e.2.2.1 (orbit 196 t)
+```
+</details>
+
+### Agent117P2641
+
+Ordinary reverse-and-add ancestry bound t <= 6 for every positive A ending at a canonical palindrome with prefix 2641, and all-time exclusion of that family from orbit 196. No other palindrome-family or unrestricted 196 conclusion.
+
+- Root module(s): `P196.Agent117P2641.A124117P2641K7Final`
+- 104 modules, 2 checked endpoints
+- Claim `A117-2641-ANCESTRY`: For all A P t, 0 < A and PalStartsL [2,6,4,1] P and orbit A t = P imply t <= 6.
+- Claim `A117-2641-NO196`: For all t, not PalStartsL [2,6,4,1] (orbit 196 t). This excludes only the 2641-prefix palindrome family.
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+Agent124.Cert117P2641K7.ancestry_2641 : ∀ (A P t : Nat),
+  0 < A → Agent124.PrefixL.PalStartsL [2, 6, 4, 1] P → Lychrel196.orbit A t = P → t ≤ 6
+Agent124.Cert117P2641K7.no_196_2641 : ∀ (t : Nat), ¬Agent124.PrefixL.PalStartsL [2, 6, 4, 1] (Lychrel196.orbit 196 t)
+```
+</details>
+
+### Agent124FourDigit
+
+*Longer-prefix refinements excluded from the orbit of 196*
+
+Refinements by longer digit prefixes (lists `entries00`, `entries01`, ... in the F4 and F5 certificates), each with an ancestry bound: no palindrome in the orbit of 196 begins with any listed prefix (`no_196_00` ... `no_196_06`). Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent124FourDigit.A124F4Final`, `P196.Agent124FourDigit.A124F5Final`
+- 100 modules, 24 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+ancestry_00 : ∀ e ∈ entries00, ∀ A P t, 0 < A → PalStartsL e.1 P → orbit A t = P → t ≤ e.2 + 1
+no_196_00 : ∀ t, ∀ e ∈ entries00, ¬ PalStartsL e.1 (orbit 196 t)
+```
+</details>
+
+### Agent124ForwardInvariant
+
+*277 digit prefixes excluded from the orbit of 196 (forward invariant)*
+
+An explicit list `excluded` of 277 digit prefixes: no iterate of 196, at any time, is a palindrome beginning with one of them (`no_196_excluded`). Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent124ForwardInvariant.A124W3Summary`
+- 22 modules, 2 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+excluded_length : excluded.length = 277
+no_196_excluded : ∀ T, ∀ w ∈ excluded, ¬ PalStartsL w (orbit 196 T)
+```
+</details>
+
+### Agent119EightFamilies
+
+*Eight palindrome families dd0…0dd never occur in the orbit of 196*
+
+For d in {1,2,3,4,6,7,8,9} and every r, the palindrome dd 0^(2r) dd (= 11·d·(10^(2r+2)+1)) is never an iterate of 196 (`orbit196_ne_fam`; d = 5 is open). Also: the orbit of 196 is never divisible by 3 or by 99, is divisible by 11 from time 3 on, and its residues mod 99 from time 6 are 2^k·88 mod 99 — yet every such residue has a palindrome representative, so residues mod 99 alone cannot exclude palindromes. Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent119EightFamilies.EightFamilies`, `P196.Agent119EightFamilies.TemporalResidues`
+- 6 modules, 85 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+orbit196_ne_fam (d r t : Nat) (hd : d = 1 ∨ d = 2 ∨ d = 3 ∨ d = 4 ∨ d = 6 ∨ d = 7 ∨ d = 8 ∨ d = 9) : orbit 196 t ≠ fam d r
+orbit196_never_dvd99 (k : Nat) : ¬ 99 ∣ orbit 196 k
+orbit196_mod99_after_six (k : Nat) : orbit 196 (6 + k) % 99 = (2 ^ k * 88) % 99
+phase_has_palindrome_representative (k : Nat) : ∃ p : Nat, 0 < p ∧ Palindrome p ∧ p % 99 = orbit 196 (6 + k) % 99
+```
+</details>
+
+### Agent113FiveLayer
+
+*Uniform five-layer obstruction*
+
+If X has width at least five and its outer pair sums follow the stated pattern, no positive orbit reaches X at any time t >= 5; in particular no iterate of 196 has this full pattern (`no_196_full_pattern`, sharp via 10000 -> 80008 in four steps). Includes a generic four-column backward-layer certificate giving depth bounds. Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent113FiveLayer.FiveLayer`, `P196.Agent113FiveLayer.FourColumnChain`
+- 101 modules, 28 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+five_layer (A X : Nat) (hA : 0 < A) (hX : FullPattern X) : ∀ t, 5 ≤ t → orbit A t ≠ X
+no_196_full_pattern : ∀ t, ¬ FullPattern (orbit 196 t)
+sharp_four : orbit 10000 4 = 80008 ∧ FullPattern 80008
+Cert4.depth_bound (C : Cert4) (hC : C.Checked) : ∀ A t X, 0 < A → orbit A t = X → 4 ≤ width X → C.inLayer 0 (quad X) = true → t < C.h
+```
+</details>
+
+### Agent117RemainingCycles
+
+*Where the prefix-exclusion method stops: 14 cycle witnesses*
+
+Method limits, not exclusions: for 14 three-digit prefixes (112, 138, 164, 198, 248, 275, 398, 626, 710, 716, 790, 911, 936, 952) the finite k-column backward abstraction contains a reachable cycle, so this finite-prefix method cannot give an ancestry bound for them; plus the projection lemma from k+1 to k columns. Unregistered before 2026-10-17; compiled and axiom-audited during consolidation, not independently reviewed.
+
+- Root module(s): `P196.Agent117RemainingCycles.Projection`, `P196.Agent117RemainingCycles.Cycle112_k8`, `P196.Agent117RemainingCycles.Cycle138_k7`, `P196.Agent117RemainingCycles.Cycle164_k7`, `P196.Agent117RemainingCycles.Cycle198_k7`, `P196.Agent117RemainingCycles.Cycle248_k7`, `P196.Agent117RemainingCycles.Cycle275_k8`, `P196.Agent117RemainingCycles.Cycle398_k7`, `P196.Agent117RemainingCycles.Cycle626_k7`, `P196.Agent117RemainingCycles.Cycle710_k7`, `P196.Agent117RemainingCycles.Cycle716_k7`, `P196.Agent117RemainingCycles.Cycle790_k7`, `P196.Agent117RemainingCycles.Cycle911_k7`, `P196.Agent117RemainingCycles.Cycle936_k7`, `P196.Agent117RemainingCycles.Cycle952_k7`
+- 20 modules, 106 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+forwardAdmitted_project {s p : List Nat} {x : Nat} (hx : x < 19) (h : ForwardAdmitted (s ++ [x]) p) : ForwardAdmitted s (p.take s.length)
+cycle_ok : walkOK ((z, 0) :: cycle) = true
 ```
 </details>
 
