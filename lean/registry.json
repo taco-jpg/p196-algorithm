@@ -23634,6 +23634,36 @@
     "P196.FibonacciRateCriterion.lower_prefix_iff",
     "P196.FibonacciRateCriterion.lower_all_iff"
    ]
+  },
+  "DigitSumTenTermination": {
+   "id": "digit-sum-ten-termination",
+   "title": "Sharp termination at digit sum ten with the unique exception 190",
+   "scope": "Every positive ordinary decimal integer with digit sum at most ten reaches a palindrome within four positive steps unless it is 190. The imported exact seven-step first hit of 190 gives a sharp uniform bound of seven and a characterization of the sole input avoiding palindromes at positive times one through four. The four-step bound away from 190 is attained by 280. At digit sum eleven, 20900 first hits at twelve, so the same seven-step bound does not extend to that threshold. The arbitrary-width proof uses exact central-carry locations, distinct-position digit-mass bounds, and the ordinary canonical integer bridge. Consequently every iterate of a hypothetical decimal Lychrel seed has digit sum at least eleven. No Lychrel seed is constructed, and no assertion decides whether the orbit of 196 reaches a palindrome.",
+   "roots": [
+    "P196.DigitSumTenTermination.Main"
+   ],
+   "modules": [
+    "P196.Foundations.LychrelDigitSums",
+    "P196.LowDigitSumTermination.CentralCarry",
+    "P196.LowDigitSumTermination.DigitMass",
+    "P196.LowDigitSumTermination.Main",
+    "P196.DigitSumTenTermination.CarryMass",
+    "P196.DigitSumTenTermination.CentralRefinement",
+    "P196.DigitSumTenTermination.DigitGeometry",
+    "P196.DigitSumTenTermination.Main"
+   ],
+   "endpoints": [
+    "DigitSumTenTermination.step_palindrome_of_digitSum_le_four",
+    "DigitSumTenTermination.central_next_exterior_exact",
+    "DigitSumTenTermination.central_three_steps_refined",
+    "DigitSumTenTermination.central_four_steps_refined",
+    "DigitSumTenTermination.palindrome_within_four_of_digitSum_le_ten_except_190",
+    "DigitSumTenTermination.palindrome_within_seven_of_digitSum_le_ten",
+    "DigitSumTenTermination.no_palindrome_in_first_four_iff_190",
+    "DigitSumTenTermination.sharp_example_280",
+    "DigitSumTenTermination.threshold_control_20900",
+    "DigitSumTenTermination.lychrel_orbit_digitSum_ge_eleven"
+   ]
   }
  }
 }
