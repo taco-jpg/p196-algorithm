@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 240 results (5597 checked endpoints — the theorems and definitions a reader should rely on — in 4517 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 241 results (5601 checked endpoints — the theorems and definitions a reader should rely on — in 4522 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (20)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (20)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (21)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (5)
@@ -652,6 +652,8 @@ end Agent7.MaximalDigitSplitFibers
 ## Carries: what carry sequences reveal and how they evolve
 
 Carry observability, carry accounting and exterior coordinates over finitely many steps.
+
+- **CommonOverflowRigidity:** At every shared width, symmetric coefficient words bounded by eighteen with common first overflow agree at every index below that width if their normalized digit differences are antisymmetric at both consecutive normalizations (`P196.CommonOverflowRigidity.Main`). The second terminal carries are derived to agree; positivity and center parity are unnecessary. Canonical initial numerals then have equal first reverse-and-add outputs. The original digit split need not agree, and no other defect-pattern or infinite-orbit exclusion, palindrome-avoidance result, or 196 conclusion is claimed.
 
 - **LowDigitSumTermination:** Every positive integer with decimal digit sum at most 9 reaches a palindrome in 1–3 steps (`LowDigitSumTermination.palindrome_within_three_of_digitSum_le_nine`); 180 attains time 3, while digit-sum-10 input 190 first hits at time 7. Every iterate of a hypothetical Lychrel seed therefore has digit sum at least 10. No existence or 196 conclusion. Root: `P196.LowDigitSumTermination.Main`; 4 modules, 8 checked endpoints.
 
