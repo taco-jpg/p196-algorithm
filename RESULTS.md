@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 283 results (6197 checked endpoints — the theorems and definitions a reader should rely on — in 4798 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 284 results (6205 checked endpoints — the theorems and definitions a reader should rely on — in 4804 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (31)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (49)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (50)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1673,6 +1673,16 @@ An explicit total executable decoder enumerates the entire complete-stream fiber
 - Root module(s): `P196.CompleteStreamDecoder.Decoder`
 - 62 modules, 8 checked endpoints
 - Endpoints: `Agent5.CompleteStreamDecoder.zValue_eq_of_low_prefix`, `Agent5.CompleteStreamDecoder.same_phase_streams_iff_prefixes`, `Agent5.CompleteStreamDecoder.same_streams_iff_prefixes`, `Agent5.CompleteStreamDecoder.complete_competitor_length_le`, `Agent5.CompleteStreamDecoder.mem_completeCandidates`, `Agent5.CompleteStreamDecoder.completeCandidates_length`, `Agent5.CompleteStreamDecoder.completeCandidates_nodup`, `Agent5.CompleteStreamDecoder.boundary_width_slack_sharp`
+
+### OriginalStreamSuccessor
+
+*Exact exterior successor decoding and future coalescence from original streams*
+
+An explicit total executable function of a cutoff and two finite lists reconstructs the exact original exterior successor whenever the inputs are the original low and high prefixes of a coefficient word bounded by eighteen, its phase is one of the ten even phases from zero through eighteen, and the cutoff is at least its word length plus two. The function recovers the phase from the last low term and does not receive the actual carry. At phase eighteen it subtracts one from the high value of the complete finite high prefix and reconstructs the same number of decimal places before summing the two windows and stripping the new phase suffix. This corrects the distinction between the original terminating rational expansion and the native scan with trailing nines, including improper first high terms. A new boundary reconstruction theorem proves literal equality with the native high scan followed by its constant tail at both phases zero and eighteen; all interior assembly is imported. The fixed-phase assembly only requires cutoff at least word length plus one. Consequently two bounded-coefficient states in the ten even phases with equal original prefixes at cutoff at least the maximum of their word lengths plus two have exactly equal original successors. Equality of both complete original streams therefore implies equal successors and equal exact exterior iterates at every positive time. No validity, positive head, trimmed suffix, nonempty word, competing carry equality, or assumptions on future states are supplied to these reconstruction and coalescence theorems. Each original high stream keeps its own word width and calculated carry in the denominator. The valid phase-eighteen source [8] explicitly refutes the uncorrected stream-sum formula. Imported boundary families give, in each of phases zero and eighteen and every shared width m+3, distinct valid initial states with opposite calculated carries, identical original low and high stream histories at every time, and identical exact states at every positive time. Their initial carries differ, so this is not equality of observations that additionally record that initial carry. The function is total on arbitrary lists, but semantic correctness requires the stated source and cutoff conditions. No recognition of those conditions from arbitrary inputs, equality for unbounded finite-prefix imitators, successor injectivity, recovery of the initial carry, odd or unrestricted phase classification, optimal cutoff, complexity bound, ordinary integer realization, equality of ordinary integer orbits, palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.OriginalStreamSuccessor.Controls`
+- 54 modules, 8 checked endpoints
+- Endpoints: `Agent5.OriginalStreamSuccessor.boundary_high_reconstruction`, `Agent5.OriginalStreamSuccessor.outerNext_from_corrected_prefixes`, `Agent5.OriginalStreamSuccessor.successorFromPrefixes_correct`, `Agent5.OriginalStreamSuccessor.outerNext_eq_of_prefixes`, `Agent5.OriginalStreamSuccessor.outerNext_eq_of_complete_streams`, `Agent5.OriginalStreamSuccessor.outerIter_positive_eq_of_complete_streams`, `Agent5.OriginalStreamSuccessor.uncorrected_phase_eighteen_failure`, `Agent5.OriginalStreamSuccessor.boundary_full_history_ambiguity`
 
 ### Agent5EvenBaseAbsorption
 
