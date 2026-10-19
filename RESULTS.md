@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 246 results (5665 checked endpoints — the theorems and definitions a reader should rely on — in 4589 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 247 results (5673 checked endpoints — the theorems and definitions a reader should rely on — in 4592 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (21)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (22)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (24)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -670,6 +670,32 @@ theorem fixed_width_preimages_gap (Y L : Nat) (xs : List Nat)
     xs.length ≤ 81 * 10 ^ (L / 2 - 2)
 
 end Agent7.MaximalDigitSplitFibers
+```
+</details>
+
+### EvenTargetPredecessorParity
+
+For every positive canonical even decimal target Y, the complete positive ordinary reverse-and-add predecessor count is odd exactly when Y / 2 is a palindrome and Y has one digit or leading digit one. This closed form uses only the target's half, width and leading digit. The per-width theorem also retains membership of Y / 2 in the specified complete fiber, and the formula holds for every duplicate-free list containing exactly the positive ordinary predecessors. Supporting profile equivalences include invalid profiles; the source/target shape bridge does not require a palindromic source. No orbit, ancestry bound or Lychrel conclusion.
+
+- Root module(s): `P196.EvenTargetPredecessorParity.Integration`
+- 26 modules, 8 checked endpoints; main theorem: `EvenTargetPredecessorParity.even_target_predecessor_parity`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+EvenTargetPredecessorParity.even_target_predecessor_parity
+    (Y : Nat) (e : Nat → Nat) (W : Nat)
+    (hY : DecimalDigits.Canonical Y e W) (heven : Y % 2 = 0) :
+    (Agent105Predecessors9df76b.predecessors e W).length % 2 =
+      if Lychrel196.Palindrome (Y / 2) ∧ (W = 1 ∨ e (W - 1) = 1)
+      then 1 else 0
+
+EvenTargetPredecessorParity.even_target_odd_decoded_iff
+    (Y : Nat) (e : Nat → Nat) (W L : Nat)
+    (hY : DecimalDigits.Canonical Y e W) (heven : Y % 2 = 0) :
+    CompleteFiberParity.oddDecoded e W L = true ↔
+      (Y / 2 ∈ Agent105DecodedFiber9df76b.decodedFiber e W L) ∧
+      Lychrel196.Palindrome (Y / 2) ∧ (W = 1 ∨ e (W - 1) = 1)
 ```
 </details>
 
