@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 255 results (5762 checked endpoints — the theorems and definitions a reader should rely on — in 4638 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 256 results (5806 checked endpoints — the theorems and definitions a reader should rely on — in 4648 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (23)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (24)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (29)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -724,6 +724,36 @@ OddTargetPredecessorParity.odd_target_odd_decoded_iff
     (hY : DecimalDigits.Canonical Y e W) (hodd : Y % 2 = 1) :
     CompleteFiberParity.oddDecoded e W L = true ↔
       OddTargetPredecessorParity.candidateAccepts Y L
+```
+</details>
+
+### OddPredecessorTargetCensus
+
+An executable duplicate-free list contains exactly all positive decimal targets of width W with an odd complete ordinary reverse-and-add predecessor count. Every listed integer has the requested width. The counts are 0 at width zero, 4 at width one, 50 at width three, 10^(k+1) at every width 2*k+2, and 505*10^k at every width 2*k+5. The generator enumerates accepted symmetric coefficient profiles: from source width three onward their nonoverflow and overflow counts are respectively 45*10^((L-3)/2) and 55*10^((L-3)/2). Exact decoding and the existing cross-width divisibility result establish numerical uniqueness and complete ordinary semantics. No orbit, ancestry bound, asymptotic-density or Lychrel conclusion.
+
+- Root module(s): `P196.OddPredecessorTargetCensus.Integration`
+- 33 modules, 44 checked endpoints; main theorems: `OddPredecessorTargetCensus.mem_targets`, `OddPredecessorTargetCensus.length_targets_even`, `OddPredecessorTargetCensus.length_targets_odd`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+OddPredecessorTargetCensus.targets_nodup (W : Nat) :
+    (OddPredecessorTargetCensus.targets W).Nodup
+
+OddPredecessorTargetCensus.mem_targets (Y : Nat) (e : Nat → Nat) (W : Nat)
+    (hY : DecimalDigits.Canonical Y e W) :
+    Y ∈ OddPredecessorTargetCensus.targets W ↔
+      (Agent105Predecessors9df76b.predecessors e W).length % 2 = 1
+
+OddPredecessorTargetCensus.targets_have_width (W Y : Nat)
+    (hY : Y ∈ OddPredecessorTargetCensus.targets W) :
+    Agent101.decimalWidth Y W
+
+OddPredecessorTargetCensus.length_targets_even (k : Nat) :
+    (OddPredecessorTargetCensus.targets (2 * k + 2)).length = 10 ^ (k + 1)
+
+OddPredecessorTargetCensus.length_targets_odd (k : Nat) :
+    (OddPredecessorTargetCensus.targets (2 * k + 5)).length = 505 * 10 ^ k
 ```
 </details>
 
