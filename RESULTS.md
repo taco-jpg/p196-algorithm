@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 225 results (5433 checked endpoints — the theorems and definitions a reader should rely on — in 4475 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 226 results (5438 checked endpoints — the theorems and definitions a reader should rely on — in 4478 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (15)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (16)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (14)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (15)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (3)
@@ -914,6 +914,16 @@ Agent5.OrdinaryStreamWindow.surrounded_raw_exterior_window : ∀ (B W : List Nat
                 List.replicate q (P196.Agent6.digitPhase c))
 ```
 </details>
+
+### StreamObservationInjectivity
+
+*Finite reconstruction from separate exterior digit streams*
+
+At a fixed nonneutral phase and common width n, the first n+1 digits of the separate original low and high coordinate streams determine every coefficient of a word bounded by 18, with the actual outgoing carry decoded from stream residues rather than supplied separately. Includes empty, zero-head, and untrimmed words. Phase-two witnesses show that n digits can fail at every positive width, even for validOuter words, so the uniform n+1 cutoff is sharp. No ordinary integer-orbit, reverse-and-add injectivity, or 196 conclusion is claimed.
+
+- Root module(s): `P196.StreamObservationInjectivity.Injectivity`, `P196.StreamObservationInjectivity.Sharpness`
+- 11 modules, 5 checked endpoints
+- Endpoints: `Agent5.StreamObservationInjectivity.no_overflow_iff_stream_residues`, `Agent5.StreamObservationInjectivity.decodeCarry_correct`, `Agent5.StreamObservationInjectivity.exterior_eq_of_stream_prefixes`, `Agent5.StreamObservationInjectivity.exterior_eq_of_streams_at_cutoff`, `Agent5.StreamObservationInjectivity.observation_cutoff_sharp`
 
 ### Agent5EvenBaseAbsorption
 

@@ -23189,6 +23189,47 @@
     "P196.PalindromeRuns.Basic",
     "P196.PalindromeRuns.Windows"
    ]
+  },
+  "StreamObservationInjectivity": {
+   "id": "stream-observation-injectivity",
+   "title": "Finite reconstruction from separate exterior digit streams",
+   "scope": "At a fixed nonneutral phase and common width n, the first n+1 digits of the separate original low and high coordinate streams determine every coefficient of a word bounded by 18, with the actual outgoing carry decoded from stream residues rather than supplied separately. Includes empty, zero-head, and untrimmed words. Phase-two witnesses show that n digits can fail at every positive width, even for validOuter words, so the uniform n+1 cutoff is sharp. No ordinary integer-orbit, reverse-and-add injectivity, or 196 conclusion is claimed.",
+   "roots": [
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Sharpness"
+   ],
+   "modules": [
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Sharpness",
+    "P196.StreamObservationInjectivity.Values"
+   ],
+   "claims": [
+    {
+     "id": "A5-STREAM-OBSERVATION-INJECTIVITY",
+     "endpoints": [
+      "Agent5.StreamObservationInjectivity.no_overflow_iff_stream_residues",
+      "Agent5.StreamObservationInjectivity.decodeCarry_correct",
+      "Agent5.StreamObservationInjectivity.exterior_eq_of_stream_prefixes",
+      "Agent5.StreamObservationInjectivity.exterior_eq_of_streams_at_cutoff",
+      "Agent5.StreamObservationInjectivity.observation_cutoff_sharp"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.StreamObservationInjectivity.no_overflow_iff_stream_residues",
+    "Agent5.StreamObservationInjectivity.decodeCarry_correct",
+    "Agent5.StreamObservationInjectivity.exterior_eq_of_stream_prefixes",
+    "Agent5.StreamObservationInjectivity.exterior_eq_of_streams_at_cutoff",
+    "Agent5.StreamObservationInjectivity.observation_cutoff_sharp"
+   ]
   }
  }
 }
