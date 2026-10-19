@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 251 results (5730 checked endpoints — the theorems and definitions a reader should rely on — in 4614 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 252 results (5736 checked endpoints — the theorems and definitions a reader should rely on — in 4616 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -14,7 +14,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (26)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
-7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (6)
+7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
 
 ## The orbit of 196 and palindrome-prefix exclusions
 
@@ -2185,6 +2185,8 @@ Finite models whose limits are stated explicitly.
 - **PrefixTruncation**: every positive truncation preserves complete backward prefix edges and exact path lengths, transporting reachable positive-cycle rank obstructions to smaller widths; a nine-edge `[1]` cycle and a checked rank-zero refinement `[1, 9, 6]` show the converse fails (`P196.PrefixTruncation.Controls`, 9 modules, 12 endpoints). This concerns coefficient words and does not establish ordinary-orbit realizability or a 196 exclusion.
 
 - **PrefixEdgeRealization**: every valid coefficient prefix of length `k` with either high inner carry bit has an actual positive integer witness at canonical source width `2*k+1`; the complete executable inverse is exactly one-step prefix realizability and is equivalent to the two existing forward carry-bit checks (`P196.PrefixEdgeRealization.Realization`, 12 modules, 5 endpoints). Witnesses may differ between edges; no joint path or cycle realization, fixed-seed reachability or palindrome avoidance is claimed.
+
+- **PrefixWidthRealization**: explicit overlap symmetry, center parity and boundary-carry tests characterize actual positive integer one-step realizability at every source width at least the nonempty prefix length; full, double and odd boundary widths are specialized, and the constant prefix of twos proves the sharp universal threshold `L > 2*k` for both prescribed bits (`P196.PrefixWidthRealization.Controls`, 14 modules, 6 endpoints). Source and successor representations are canonical; no joint path or cycle realization, fixed-seed reachability or palindrome avoidance is claimed.
 
 ### Agent107FoldedTransducer
 
