@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 248 results (5686 checked endpoints — the theorems and definitions a reader should rely on — in 4597 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 249 results (5706 checked endpoints — the theorems and definitions a reader should rely on — in 4604 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (22)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (25)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (26)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (6)
@@ -708,6 +708,8 @@ Carry observability, carry accounting and exterior coordinates over finitely man
 - **LowDigitSumTermination:** Every positive integer with decimal digit sum at most 9 reaches a palindrome in 1–3 steps (`LowDigitSumTermination.palindrome_within_three_of_digitSum_le_nine`); 180 attains time 3, while digit-sum-10 input 190 first hits at time 7. Every iterate of a hypothetical Lychrel seed therefore has digit sum at least 10. No existence or 196 conclusion. Root: `P196.LowDigitSumTermination.Main`; 4 modules, 8 checked endpoints.
 
 - **DigitSumTenTermination:** Every positive integer with decimal digit sum at most 10 reaches a palindrome in 1–4 steps except for 190, whose first hit at 7 makes the uniform seven-step bound sharp. Input 280 attains the four-step bound away from 190; digit-sum-11 input 20900 first hits at 12. Every iterate of a hypothetical Lychrel seed therefore has digit sum at least 11. No existence or 196 conclusion. Root: `P196.DigitSumTenTermination.Main`; 8 modules, 10 checked endpoints.
+
+- **DigitSumElevenClassification:** Every positive integer with decimal digit sum at most 11 reaches a palindrome in 1–12 steps except `100090001` and `200090000`, exactly the two positive-time exceptions through time 12. Their positive orbits agree; the first is palindromic at time zero, and the second has no positive reverse-and-add predecessor. Every positive-time term of a hypothetical Lychrel orbit therefore has digit sum at least 12. The imported `20900` control makes twelve sharp outside the exceptions. No infinite avoidance, existence, or 196 conclusion. Root: `P196.DigitSumElevenClassification.Main`; 19 modules, 20 checked endpoints.
 
 - **CommonOverflowGap:** At equal initial canonical width, common first-step terminal carry one and an antisymmetric normalized old-width digit difference imply `step (step n) + 9 * step n = step (step m) + 9 * step m`; hence strict order reversal and exact ninefold gap scaling, without requiring equal second-output widths (`P196.CommonOverflowGap.Numeric`). Includes a structural value identity and the existing canonical witness; no repeated-overflow, infinite-orbit or 196 conclusion.
 
