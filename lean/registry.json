@@ -24280,6 +24280,43 @@
     "PrefixWidthRealization.fits_replicate_two",
     "PrefixWidthRealization.universal_width_iff"
    ]
+  },
+  "UniformCarryWindows": {
+   "id": "uniform-carry-windows",
+   "title": "Width-independent carry escape windows and finite interval frequency",
+   "scope": "A nonnegative linear-profile comparison bounds initial decimal digit sum by weighted total outgoing carry accumulation independently of source width. The general weighted inequality and its eight-step and twelve-step constants include seed zero. If the first twelve carry counts are at most B, the initial digit sum is at most 11 * B. For every positive ordinary decimal reverse-and-add seed, every half-open window of length sharpDigitSumEscapeBound (11 * B) + 12 contains a time with total outgoing carry count greater than B; every interval of length N contains at least N divided by that window length such times. Counts include the terminal outgoing carry, the bound depends only on B, and ordinary iteration continues after palindromes. No optimal constants or window length, existence of a density limit, convergence of every carry count to infinity, palindrome avoidance, or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.UniformCarryWindows.UniformEscape"
+   ],
+   "modules": [
+    "P196.Agent104ExactMass.ProfileDynamics",
+    "P196.Agent104ExactMass.SharedProfile",
+    "P196.Agent104ExactMass.SharpProfileBounds",
+    "P196.Agent9DigitSumWindows.Agent9WindowIntervalCounts",
+    "P196.Agent9DigitSumWindows.DecimalEmbedding",
+    "P196.Agent9DigitSumWindows.ProfileIsolation",
+    "P196.Agent9DigitSumWindows.SharpUniformDecimal",
+    "P196.Agent9DigitSumWindows.SharpUniformEscape",
+    "P196.Agent9DigitSumWindows.UniformEscape",
+    "P196.CarryCountDecoding.CarryCountDecoding",
+    "P196.CarryCountGrowth.CarryCountGrowth",
+    "P196.Drafts.Agent106CongruenceCarryBudget.Agent106CarryBudget",
+    "P196.Foundations.LychrelDigitSums",
+    "P196.UniformCarryWindows.ActualCarryBudget",
+    "P196.UniformCarryWindows.LinearEnvelope",
+    "P196.UniformCarryWindows.UniformEscape"
+   ],
+   "endpoints": [
+    "UniformCarryWindows.LinearEnvelope.mass_bound",
+    "UniformCarryWindows.weighted_mass_bound",
+    "UniformCarryWindows.eight_carry_budget",
+    "UniformCarryWindows.twelve_carry_budget",
+    "UniformCarryWindows.digitSum_le_of_twelve_carry_ceiling",
+    "UniformCarryWindows.outgoingCarryCount_escape_of_digitSum",
+    "UniformCarryWindows.outgoingCarryCount_uniform_escape",
+    "UniformCarryWindows.outgoingCarryCount_uniform_window",
+    "UniformCarryWindows.outgoingCarryCount_interval_count"
+   ]
   }
  }
 }
