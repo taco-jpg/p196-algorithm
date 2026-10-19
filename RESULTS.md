@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 242 results (5614 checked endpoints — the theorems and definitions a reader should rely on — in 4530 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 243 results (5626 checked endpoints — the theorems and definitions a reader should rely on — in 4533 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (20)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (21)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (22)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -613,6 +613,30 @@ For every positive canonical target Y ending in zero, the complete positive ordi
 
 - Root module(s): `P196.ZeroEndingPredecessorParity.Integration`
 - 19 modules, 7 checked endpoints; main theorem: `ZeroEndingPredecessorParity.predecessor_count_parity`
+
+### CompleteFiberParity
+
+For every canonical decimal target Y, an explicit coefficient test computes the parity of its complete positive ordinary reverse-and-add predecessor count. Apply the existing numerical decoder at the only possible source widths W and W-1, then take the Boolean OR of the two profile tests. For arbitrary source widths L < K, a nonempty width-K fiber forces the complete width-L count to be divisible by eight, so both counts cannot be odd. The formula also holds for any duplicate-free list containing exactly the positive ordinary predecessors. No orbit, ancestry bound or Lychrel conclusion.
+
+- Root module(s): `P196.CompleteFiberParity.Integration`
+- 22 modules, 12 checked endpoints; main theorem: `CompleteFiberParity.complete_predecessor_parity`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+CompleteFiberParity.complete_predecessor_parity (Y : Nat) (e : Nat → Nat) (W : Nat)
+    (htarget : DecimalDigits.Canonical Y e W) :
+    (Agent105Predecessors9df76b.predecessors e W).length % 2 =
+      if CompleteFiberParity.oddDecoded e W W ||
+        CompleteFiberParity.oddDecoded e W (W - 1) then 1 else 0
+
+CompleteFiberParity.shorter_fiber_divisible_by_eight_of_longer_nonempty
+    (Y : Nat) (e : Nat → Nat) (W L K : Nat)
+    (htarget : DecimalDigits.Canonical Y e W) (hLK : L < K)
+    (hlonger : Agent105DecodedFiber9df76b.decodedFiber e W K ≠ []) :
+    8 ∣ (Agent105DecodedFiber9df76b.decodedFiber e W L).length
+```
+</details>
 
 ### MaximalDigitSplitFibers
 
