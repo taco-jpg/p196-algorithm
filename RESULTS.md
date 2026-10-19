@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 286 results (6238 checked endpoints — the theorems and definitions a reader should rely on — in 4814 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (50)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (51)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1751,6 +1751,16 @@ An explicit total executable function of a cutoff and two finite lists reconstru
 - Root module(s): `P196.OriginalStreamSuccessor.Controls`
 - 54 modules, 8 checked endpoints
 - Endpoints: `Agent5.OriginalStreamSuccessor.boundary_high_reconstruction`, `Agent5.OriginalStreamSuccessor.outerNext_from_corrected_prefixes`, `Agent5.OriginalStreamSuccessor.successorFromPrefixes_correct`, `Agent5.OriginalStreamSuccessor.outerNext_eq_of_prefixes`, `Agent5.OriginalStreamSuccessor.outerNext_eq_of_complete_streams`, `Agent5.OriginalStreamSuccessor.outerIter_positive_eq_of_complete_streams`, `Agent5.OriginalStreamSuccessor.uncorrected_phase_eighteen_failure`, `Agent5.OriginalStreamSuccessor.boundary_full_history_ambiguity`
+
+### BoundaryOrdinaryStreams
+
+*Ordinary boundary digit windows and finite protected exterior histories*
+
+At each boundary phase zero or eighteen, a valid original exterior word B other than the empty zero-phase state has a positive ordinary reverse-and-add realization for every requested cutoff and finite horizon T. Its initial pair word is exactly the original surrounded shape with empty center and gap parameter 2*T+cutoff, hence physical band length 2*T+cutoff+2 on each side and exact decimal width 2*B.length+2*(2*T+cutoff+2). At every time t through T inclusively, the terminal normalization carry of the actual ordinary transition and the separate low and high prefixes of the canonical digits at time t+1 equal the stated exterior observation of the original outerIter t. The low prefix and actual high carry retain their original definitions. The high readout applies the published phase-eighteen correction to a complete window of length B.length+1+cutoff before taking the requested cutoff. It is proved coherent under further prefix cuts, of exact requested length, and independent of which complete corrected window containing that cutoff is used. For any actual surrounded pair word with bounded exterior and middle, the complete one-step window has length B.length+1+q whenever q is at most the gap parameter plus the actual terminal carry. The original high denominator keeps the original word width and separately computed carry. Two general band normalizations isolate both decimal ends; the phase-free pairing theorem and suffix transport then prove that an actual ordinary step follows the original exterior successor, with bounded new exterior and middle and loss of at most two units of gap parameter. These conditional window and propagation theorems assume bounded coefficients and the actual ordinary pair-word representation, without extra validity or positivity premises. The positive realization theorem imports the generic mirrored-word realization and supplies its canonicality explicitly. No ordinary integer, including zero, has either protected zero bands around an empty exterior or the coherent one-digit observation of that state. Kernel controls show that directly correcting a short high prefix can fail, and that equal short original prefixes with equal actual carry can correspond to different ordinary high digits; the latter is realized by two explicit positive seeds. No single seed for all horizons, optimal cutoff or band reserve, arbitrary-phase classification, reconstruction of ordinary digits from ambiguous short input, equality or injectivity of ordinary integers, infinite palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.BoundaryOrdinaryStreams.Family`
+- 70 modules, 16 checked endpoints
+- Endpoints: `Agent5.BoundaryOrdinaryStreams.complete_high_window_take`, `Agent5.BoundaryOrdinaryStreams.coherentHigh_prefix`, `Agent5.BoundaryOrdinaryStreams.coherentHigh_length`, `Agent5.BoundaryOrdinaryStreams.boundary_surrounded_normalization`, `Agent5.BoundaryOrdinaryStreams.boundary_pairWord_propagation`, `Agent5.BoundaryOrdinaryStreams.ordinary_boundary_window`, `Agent5.BoundaryOrdinaryStreams.ordinary_boundary_observation`, `Agent5.BoundaryOrdinaryStreams.boundary_surrounded_orbit`, `Agent5.BoundaryOrdinaryStreams.boundary_history_of_surrounded`, `Agent5.BoundaryOrdinaryStreams.positive_boundary_surrounded_realized`, `Agent5.BoundaryOrdinaryStreams.zero_empty_surrounded_not_realizable`, `Agent5.BoundaryOrdinaryStreams.zero_empty_observation_not_realizable`, `Agent5.BoundaryOrdinaryStreams.short_high_correction_failure`, `Agent5.BoundaryOrdinaryStreams.short_original_prefix_ambiguity`, `Agent5.BoundaryOrdinaryStreams.ordinary_short_prefix_ambiguity`, `Agent5.BoundaryOrdinaryStreams.boundary_history_realized`
 
 ### Agent5EvenBaseAbsorption
 
