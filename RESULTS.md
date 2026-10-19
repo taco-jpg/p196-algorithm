@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 280 results (6130 checked endpoints — the theorems and definitions a reader should rely on — in 4777 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 281 results (6143 checked endpoints — the theorems and definitions a reader should rely on — in 4788 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (30)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (47)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (48)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1262,6 +1262,25 @@ The new upper bounds at widths four and six follow from a global fourth-smoothin
 - Root module(s): `P196.ExactSmallWidthCarryThresholds.Thresholds`
 - 98 modules, 21 checked endpoints
 - Main endpoints: `ExactSmallWidthCarryThresholds.pair_reconstruction_iff`, `ExactSmallWidthCarryThresholds.next_integer_reconstruction_iff`, `ExactSmallWidthCarryThresholds.exact_width_counterexample`, `ExactSmallWidthCarryThresholds.six_carry_words_determine_pair_sums_of_width_four`, `ExactSmallWidthCarryThresholds.six_carry_words_determine_pair_sums_of_width_six`
+
+### ExactWidthCarryThresholds
+
+For each fixed positive initial width L from one through seventeen and every observation count K, the following exact minimum characterizes both reconstruction of all initially active pair coefficients and recovery of the next ordinary integer. The pair property ranges over all admissible profiles at that exact width; the integer property ranges over canonical inputs sharing that width. The fixed-width predicates and the entire classification through width eight are imported unchanged.
+
+| Exact initial width L | Minimum complete carry observations |
+|---|---|
+| 1 | 4 |
+| 2 | 5 |
+| 4, 6 | 6 |
+| 3, 5, 7, 8, 10 | 7 |
+| 9, 11, 12, 13, 14, 15, 16 | 8 |
+| 17 | 9 |
+
+The new positive case is seven-observation reconstruction at width ten. Removing the already determined exterior pair leaves a symmetric width-eight integer series with fourth smoothing in [-2,2]; it must be zero or one of the two signs of [1,-2,2,-1,-1,2,-2,1]. Three new kernel certificates supply 893 one-sided finite obligations, reusing the existing first-three and even-fourth coefficient covers, and exact width-ten reflection excludes both nonzero orientations. Five new canonical pairs at widths ten, eleven, twelve, fourteen and sixteen share one fewer complete observation, differ in an active initial pair coefficient, and have unequal next integers. Their pair recursion represents ordinary numeric iteration at every time. The other lower witnesses and the eight- and nine-observation upper bounds are imported unchanged. Terminal carries are included, later widths are unrestricted, and iteration continues after palindromes. No minimum is asserted at width zero or above seventeen, and no original digit splitting, initial-integer injectivity, or palindrome avoidance is claimed.
+
+- Root module(s): `P196.ExactWidthCarryThresholds.Thresholds`
+- 120 modules, 13 checked endpoints
+- Main endpoints: `ExactWidthCarryThresholds.pair_reconstruction_iff`, `ExactWidthCarryThresholds.next_integer_reconstruction_iff`, `ExactWidthCarryThresholds.exact_width_counterexample`, `ExactWidthCarryThresholds.seven_carry_words_determine_pair_sums_of_width_ten`, `ExactWidthCarryThresholds.smooth_four_box_two_width_eight_classification`
 
 ### Agent6CertificateCoordinateAudit
 
