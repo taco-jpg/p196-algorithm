@@ -26784,6 +26784,62 @@
     "Agent5.OriginalStreamSuccessor.uncorrected_phase_eighteen_failure",
     "Agent5.OriginalStreamSuccessor.boundary_full_history_ambiguity"
    ]
+  },
+  "CrossWidthTargetRecurrence": {
+   "id": "cross-width-target-recurrence",
+   "title": "Exact recurrence and arithmetic evaluation of ordinary cross-width target counts",
+   "scope": "Let C_L be the length of the unchanged CrossWidthTargetCensus.targets L list, which contains exactly once every ordinary output shared by canonical sources of widths L and L+1. For every natural L, C_(L+6)=2*C_(L+4)+3*C_(L+2)+C_L, including L=0 and L=1. The even-terminal indicator e and the productive-successor transfer T satisfy the kernel-checked pointwise identity T^3(e)=2*T^2(e)+3*T(e)+e on the existing eleven-state catalogue. Summing weights over the unchanged walkPrefixes enumeration proves H_(k+1)(w)=H_k(Tw) for every natural-valued state weight and identifies H_k(e) with the even target-list length. Productive membership of every enumerated last state lifts the finite certificate to exact ordinary counts. The existing paired-length theorem supplies odd shorter widths, and the existing census controls supply the zero and one boundary equations without another target-list evaluation. The executable countWindow starts at (1,2,7) and updates (a,b,c) to (b,c,2*c+3*b+a); all three components equal the corresponding consecutive even-family counts. The all-width targetCount returns zero below width two and otherwise selects the first component at (L-2)/2, with exact equality to C_L for every L. Kernel evaluation of nine arithmetic windows gives 1,2,7,21,65,200,616,1897,5842. Requires only the complete CrossWidthTargetCensus closure and Lean Core list algebra; no second target or walk enumeration, state quotient, or state reachability proof is introduced. No real-valued growth limit, asymptotic estimate, generating-function formalism, minimal recurrence order, optimal runtime or bit complexity, source digit-split uniqueness, orbit-frequency estimate, palindrome avoidance or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.CrossWidthTargetRecurrence.Evaluator"
+   ],
+   "modules": [
+    "P196.Agent101DigitSplit.Agent101DigitPairs",
+    "P196.Agent101DigitSplit.Agent101MultiplicityBounds",
+    "P196.Agent101DigitSplit.Agent101NumericFibers",
+    "P196.Agent101DigitSplit.Agent101SplitEnumeration",
+    "P196.Agent105InverseBoundaries.Agent105CrossWidth9df76b",
+    "P196.Agent105InverseBoundaries.Agent105WidthSupport9df76b",
+    "P196.CrossWidthCollisionPaths.Actual",
+    "P196.CrossWidthCollisionPaths.Profiles",
+    "P196.CrossWidthCollisionPaths.Realization",
+    "P196.CrossWidthCollisionPaths.Recovery",
+    "P196.CrossWidthCollisionStates.ActualTrace",
+    "P196.CrossWidthCollisionStates.StateSpace",
+    "P196.CrossWidthTargetCensus.Census",
+    "P196.CrossWidthTargetCensus.Enumeration",
+    "P196.CrossWidthTargetCensus.Families",
+    "P196.CrossWidthTargetCensus.Pairing",
+    "P196.CrossWidthTargetCensus.Tuples",
+    "P196.CrossWidthTargetRecurrence.Certificate",
+    "P196.CrossWidthTargetRecurrence.Evaluator",
+    "P196.CrossWidthTargetRecurrence.Recurrence",
+    "P196.CrossWidthTargetRecurrence.Weighted",
+    "P196.CrossWidthTargetRecurrence.Weights",
+    "P196.Drafts.Agent9FiniteEnsembleMarkerCount.Agent9FiniteProducts",
+    "P196.FoldedCollisionPrefixes.Even",
+    "P196.FoldedCollisionPrefixes.Odd",
+    "P196.FoldedCollisionPrefixes.Prefixes",
+    "P196.FoldedCollisionPrefixes.Targets",
+    "P196.FoldedCollisionPrefixes.Terminals",
+    "P196.Foundations.LychrelDigitSums"
+   ],
+   "endpoints": [
+    "CrossWidthTargetRecurrence.terminalWeight",
+    "CrossWidthTargetRecurrence.transfer",
+    "CrossWidthTargetRecurrence.weightedWalks",
+    "CrossWidthTargetRecurrence.weightedWalks_zero",
+    "CrossWidthTargetRecurrence.weightedWalks_succ",
+    "CrossWidthTargetRecurrence.weightedWalks_terminal",
+    "CrossWidthTargetRecurrence.transfer_cubic",
+    "CrossWidthTargetRecurrence.weightedWalks_cubic",
+    "CrossWidthTargetRecurrence.even_count_recurrence",
+    "CrossWidthTargetRecurrence.target_count_recurrence",
+    "CrossWidthTargetRecurrence.countWindow",
+    "CrossWidthTargetRecurrence.countWindow_eq_lengths",
+    "CrossWidthTargetRecurrence.targetCount",
+    "CrossWidthTargetRecurrence.targetCount_eq_length",
+    "CrossWidthTargetRecurrence.small_countWindow"
+   ]
   }
  }
 }

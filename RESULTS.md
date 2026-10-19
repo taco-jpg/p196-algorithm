@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 284 results (6205 checked endpoints — the theorems and definitions a reader should rely on — in 4804 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 285 results (6220 checked endpoints — the theorems and definitions a reader should rely on — in 4809 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (31)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (32)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (50)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -1070,6 +1070,40 @@ CrossWidthTargetCensus.extendEven_truncate
     {k : Nat} {p : FoldedCollisionPrefixes.Prefix (k + 1)}
     (h : FoldedCollisionPrefixes.OddAccepted k p) :
     CrossWidthTargetCensus.extendEven (CrossWidthTargetCensus.truncatePrefix p) = p
+```
+</details>
+
+### CrossWidthTargetRecurrence
+
+For C_L equal to the number of distinct ordinary reverse-and-add outputs shared by canonical sources of widths L and L+1, the exact recurrence C_(L+6)=2*C_(L+4)+3*C_(L+2)+C_L holds for every natural L, including zero and one. A kernel-checked cubic identity on the existing productive collision states is transported through a weighted fold of the unchanged walk enumeration; the terminal indicator counts exactly the existing target list. The executable three-count window starts at (1,2,7) and updates (a,b,c) to (b,c,2*c+3*b+a). Every component matches its census count, and the all-width arithmetic evaluator agrees exactly with the duplicate-free target-list length. The first nine even-family counts are 1,2,7,21,65,200,616,1897,5842. No asymptotic growth, generating-function formalism, minimal recurrence order, optimal complexity, source digit-split uniqueness, orbit or Lychrel conclusion.
+
+Requires the complete `CrossWidthTargetCensus.Census` closure and Lean Core list algebra.
+
+- Root module(s): `P196.CrossWidthTargetRecurrence.Evaluator`
+- 29 modules, 15 checked endpoints; main theorems: `CrossWidthTargetRecurrence.weightedWalks_succ`, `CrossWidthTargetRecurrence.transfer_cubic`, `CrossWidthTargetRecurrence.target_count_recurrence`, `CrossWidthTargetRecurrence.countWindow_eq_lengths`, `CrossWidthTargetRecurrence.targetCount_eq_length`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+CrossWidthTargetRecurrence.target_count_recurrence (L : Nat) :
+    (CrossWidthTargetCensus.targets (L + 6)).length =
+      2 * (CrossWidthTargetCensus.targets (L + 4)).length +
+      3 * (CrossWidthTargetCensus.targets (L + 2)).length +
+      (CrossWidthTargetCensus.targets L).length
+
+CrossWidthTargetRecurrence.countWindow_eq_lengths (k : Nat) :
+    CrossWidthTargetRecurrence.countWindow k =
+      ((CrossWidthTargetCensus.targets (2 * k + 2)).length,
+       (CrossWidthTargetCensus.targets (2 * (k + 1) + 2)).length,
+       (CrossWidthTargetCensus.targets (2 * (k + 2) + 2)).length)
+
+CrossWidthTargetRecurrence.targetCount_eq_length (L : Nat) :
+    CrossWidthTargetRecurrence.targetCount L =
+      (CrossWidthTargetCensus.targets L).length
+
+CrossWidthTargetRecurrence.small_countWindow :
+    (List.range 9).map (fun k => (CrossWidthTargetRecurrence.countWindow k).1) =
+      [1, 2, 7, 21, 65, 200, 616, 1897, 5842]
 ```
 </details>
 
