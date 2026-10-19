@@ -78,6 +78,12 @@ This checks the repository rules (no unregistered or duplicate Lean files, no `s
 builds all 4459 modules with `lake build`, and audits the axioms of all 5393 registered endpoints.
 It prints `ALL CHECKS PASSED` on success (about 30–60 minutes on a laptop the first time).
 
+To check only your own new or changed files (what contributors run before pushing; minutes instead of hours):
+
+```bash
+python3 tools/verify.py --changed
+```
+
 ## Layout
 
 | Path | What it is |

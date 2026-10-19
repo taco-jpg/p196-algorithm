@@ -1,12 +1,17 @@
 # Rules for contributors (people and agents)
 
-The repository has one branch, `main`, and it must always pass `python3 tools/verify.py`.
+The repository has one branch, `main`, and it must always pass `python3 tools/verify.py` (the full check,
+run nightly by GitHub Actions).
 
 1. **One branch, verified pushes.** Commit directly to `main`; never create branches, pull requests or tags, never
-   force-push or rewrite history. Before every push: `git fetch && git rebase origin/main && python3 tools/verify.py`
-   must end with `ALL CHECKS PASSED` (rerun it if the rebase brought in new commits). One commit = one complete result
-   or one fix. Discussion and task claims happen in GitHub issues (one `[task]` issue per task; issue #61 for
-   coordination). If you cannot run `verify.py`, do not push: post the patch in the task issue instead.
+   force-push or rewrite history. Before every push run
+   `git fetch && git rebase origin/main && python3 tools/verify.py --changed`; it must end with `ALL CHECKS PASSED`
+   (rerun it if the rebase brought in new commits). `--changed` checks the repository rules everywhere, but builds and
+   audits only the files you added or changed and the files that import them, so it takes minutes, not hours.
+   GitHub Actions repeats this check on every push and checks the whole repository every night; a red run must be
+   fixed or reverted at once. One commit = one complete result or one fix. Discussion and task claims happen in
+   GitHub issues (one `[task]` issue per task; issue #61 for coordination). If you cannot run `verify.py --changed`,
+   do not push: post the patch in the task issue instead.
 2. **Every Lean file is part of a registered result.** A new result is a new directory `lean/P196/<ResultName>/`
    plus one entry in `lean/registry.json` with: `scope` (one paragraph, including what is *not* claimed),
    `roots`, `modules`, `endpoints` (the theorems a reader should trust). `verify.py` rejects unregistered files.

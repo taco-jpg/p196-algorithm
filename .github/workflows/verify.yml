@@ -1,20 +1,49 @@
 name: verify
+# On every push: check only what the push changed (python3 tools/verify.py --changed <previous main>).
+# Every night and on demand: check the whole repository (python3 tools/verify.py).
+# Built Lean modules are cached between runs, so only new or changed files are compiled.
 on:
   push:
     branches: [main]
-  pull_request:
+  schedule:
+    - cron: "17 10 * * *"
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: verify-${{ github.event_name == 'push' && 'push' || 'full' }}
+  cancel-in-progress: false
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 100
       - name: Install elan
         run: |
           curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Restore built modules
+        uses: actions/cache/restore@v4
+        with:
+          path: lean/.lake
+          key: lake-${{ hashFiles('lean/lean-toolchain') }}-${{ github.sha }}
+          restore-keys: lake-${{ hashFiles('lean/lean-toolchain') }}-
       - name: Verify
-        run: python3 tools/verify.py
+        timeout-minutes: 330
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] && [ -n "$BEFORE" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            python3 tools/verify.py --changed "$BEFORE"
+          else
+            python3 tools/verify.py
+          fi
+      - name: Save built modules (also after a failure or timeout, so progress is kept)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: lean/.lake
+          key: lake-${{ hashFiles('lean/lean-toolchain') }}-${{ github.sha }}
