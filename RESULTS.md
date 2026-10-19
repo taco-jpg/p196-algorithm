@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 270 results (5974 checked endpoints — the theorems and definitions a reader should rely on — in 4719 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 271 results (5988 checked endpoints — the theorems and definitions a reader should rely on — in 4724 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (27)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (40)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (41)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1365,6 +1365,16 @@ An ordinary observation consists of the full terminal carry of the mirrored-pair
 - Root module(s): `P196.OrdinaryExteriorHistories.Family`
 - 38 modules, 12 checked endpoints
 - Endpoints: `Agent5.OrdinaryExteriorHistories.digits_step_eq_normalize`, `Agent5.OrdinaryExteriorHistories.phase_of_nonneutral`, `Agent5.OrdinaryExteriorHistories.ordinary_step_observation_of_template`, `Agent5.OrdinaryExteriorHistories.ordinary_history_of_template`, `Agent5.OrdinaryExteriorHistories.digits_step_length`, `Agent5.OrdinaryExteriorHistories.digits_length_of_template`, `Agent5.OrdinaryExteriorHistories.positive_template_realized`, `Agent5.OrdinaryExteriorHistories.template_phase_injective`, `Agent5.OrdinaryExteriorHistories.distinct_phase_seeds`, `Agent5.OrdinaryExteriorHistories.digit_widths_of_same_history`, `Agent5.OrdinaryExteriorHistories.arbitrarily_wide_all_phase_ordinary_history`, `Agent5.OrdinaryExteriorHistories.eight_phase_ordinary_family`
+
+### PhaseEighteenIsolation
+
+*Finite original observations isolate the upper exterior boundary*
+
+A coefficient-bounded phase-18 exterior target B is finitely isolated among all coefficient-bounded competitors A at arbitrary natural phases d at most 18, without an upper bound on the competing width. Equality of the actual outgoing normalization carries, the original low prefixes of length L=B.length+1, and the original high prefixes of length L plus the target actual carry implies d=18 and equality of the maximally phase-stripped words. Each high observation keeps its own original word width and calculated carry in its denominator. Consequently equality of the carry and both original prefixes at the common cutoff B.length+2 recovers the phase and canonical core. The generic theorem assumes only coefficient bound 18 and d<=18, allowing empty, zero-head, and untrimmed words, and competing phases 0,9 and odd values. For original validOuter states it recovers the entire competing word A=B. The proof pads the target by one 18 and the competitor by its own phase, compares equal-width positional values modulo nine, and forces the exact maximal tail quotient. Reusable interfaces identify positive literal fractional-prefix values with scaled integer quotients without requiring proper fractions or digits below ten; identify low block prefixes with positional residues; and separate the high block value from its remaining-tail quotient. For bounded coefficients and d<=18 that quotient is at most two and equals two exactly when d=18 and every tail coefficient is 18. It is distinct from the actual normalization carry. Phase padding preserves the original carry and both streams for every natural phase at most 18, without coefficient bounds; the carry proof reuses the existing suffix-removal invariance. Original validity is exposed as a suffix-retraction interface. The exact valid control (18,[8]) has actual carry zero and first literal high output 10, demonstrating why the high-prefix arithmetic cannot assume ordinary decimal digits at this boundary. The original observations, normalizer and exterior state definitions are unchanged. No optimal cutoff, removal of the supplied carry, complete phase-zero classification, extension to competing phases above 18, ordinary integer realization, infinite orbit, palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.PhaseEighteenIsolation.Isolation`
+- 36 modules, 14 checked endpoints
+- Endpoints: `Agent5.PhaseEighteenIsolation.fractionDigits_value`, `Agent5.PhaseEighteenIsolation.low_prefix_append_value`, `Agent5.PhaseEighteenIsolation.high_prefix_append_value`, `Agent5.PhaseEighteenIsolation.rho_quotient_le_two`, `Agent5.PhaseEighteenIsolation.rho_quotient_eq_two_iff`, `Agent5.PhaseEighteenIsolation.boundary_values_rigidity`, `Agent5.PhaseEighteenIsolation.phase_padding_carry_of_le_eighteen`, `Agent5.PhaseEighteenIsolation.phase_padding_high_of_le_eighteen`, `Agent5.PhaseEighteenIsolation.sameObservation_phase_padding`, `Agent5.PhaseEighteenIsolation.stripSuffix_eq_of_valid`, `Agent5.PhaseEighteenIsolation.phase18_canonical_fiber_of_prefixes`, `Agent5.PhaseEighteenIsolation.phase18_canonical_fiber_of_observation`, `Agent5.PhaseEighteenIsolation.phase18_valid_state_isolated`, `Agent5.PhaseEighteenIsolation.phase18_high_coefficient_ten`
 
 ### Agent5EvenBaseAbsorption
 
