@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 278 results (6085 checked endpoints — the theorems and definitions a reader should rely on — in 4766 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 279 results (6092 checked endpoints — the theorems and definitions a reader should rely on — in 4772 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (29)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (46)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (47)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1530,6 +1530,16 @@ Among original valid exterior states in the ten even phases from zero through ei
 - Root module(s): `P196.CompleteExteriorFibers.Obstruction`
 - 53 modules, 16 checked endpoints
 - Endpoints: `Agent5.CompleteExteriorFibers.eq_of_low_residue_highValue`, `Agent5.CompleteExteriorFibers.same_phase_core_eq_of_observation`, `Agent5.CompleteExteriorFibers.same_phase_valid_eq_of_observation`, `Agent5.CompleteExteriorFibers.same_phase_eq_of_streams_and_carry`, `Agent5.CompleteExteriorFibers.adicNumeratorDigits_even_phase`, `Agent5.CompleteExteriorFibers.low_prefix_even_phase`, `Agent5.CompleteExteriorFibers.phase_eq_of_low_prefix`, `Agent5.CompleteExteriorFibers.phase_eq_of_complete_streams`, `Agent5.CompleteExteriorFibers.same_phase_complete_fiber_at_most_two`, `Agent5.CompleteExteriorFibers.complete_fiber_at_most_two`, `Agent5.CompleteExteriorFibers.interior_complete_fiber_singleton`, `Agent5.CompleteExteriorFibers.boundary_values`, `Agent5.CompleteExteriorFibers.boundary_carries`, `Agent5.CompleteExteriorFibers.boundary_sameStreams`, `Agent5.CompleteExteriorFibers.boundary_double_fiber`, `Agent5.CompleteExteriorFibers.no_boundary_complete_decoder`
+
+### BoundedStreamCandidates
+
+*Exact two-candidate decoding of bounded original stream prefixes*
+
+An explicit total executable decoder takes arbitrary low and high input lists and a natural word-width bound N. Its output contains exactly the original valid exterior states in the ten even phases from zero through eighteen whose word length is at most N and whose two original prefixes of length N+2 equal the entire supplied lists. No phase or actual carry is supplied to the list decoder. Each high prefix retains its own numerator, original word width and calculated carry in its denominator, including improper first high terms. The output always has length at most two and has no repeated states, without any input consistency, length or digit assumptions. The decoder recovers the phase from the last low term, then tests actual-carry guesses zero and one. For each guess it works at the positive width N+1, computes candidate positional values from prefixes, chooses between the two low lifts by a modulo-nine test, applies the published recursive positional decoder and removes the phase suffix. A decidable filter checks original validity, phase membership, width, both complete finite input lists and the actual calculated carry of the candidate. This uses two positional reconstructions, without exhaustive search over words. Correctness for the actual carry guess permits every known natural phase at most eighteen, including odd phases and nine, and valid words of width at most N. The standalone low-phase recovery requires only coefficients at most eighteen and the width bound, allowing empty, untrimmed and zero-head words. The scalar lift theorem covers every natural padded width, including zero. Existing boundary collision families show that, for either phase zero or eighteen and every N at least three, some valid word of exactly width N produces an output of length exactly two. The old positional decoder, padding, quotient identities, low-tail formula and boundary collisions are imported without changing them. The result characterizes finite-prefix compatibility within the supplied width bound. No equivalence with complete-stream fibers beyond that statement, optimal cutoff, minimum collision width, runtime or bit-complexity bound, recovery without a width bound, odd or unrestricted unknown-phase recovery, ordinary integer realization, equality of orbits, palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.BoundedStreamCandidates.Sharpness`
+- 52 modules, 7 checked endpoints
+- Endpoints: `Agent5.BoundedStreamCandidates.phaseFromLow_correct`, `Agent5.BoundedStreamCandidates.restoreLow_correct`, `Agent5.BoundedStreamCandidates.candidateAtCarry_correct`, `Agent5.BoundedStreamCandidates.mem_decodeCandidates`, `Agent5.BoundedStreamCandidates.decodeCandidates_length`, `Agent5.BoundedStreamCandidates.decodeCandidates_nodup`, `Agent5.BoundedStreamCandidates.boundary_candidates_length_two`
 
 ### Agent5EvenBaseAbsorption
 

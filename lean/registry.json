@@ -26218,6 +26218,91 @@
     "CrossWidthCollisionPaths.short_center_obstruction",
     "CrossWidthCollisionPaths.long_center_obstruction"
    ]
+  },
+  "BoundedStreamCandidates": {
+   "id": "bounded-stream-candidates",
+   "title": "Exact two-candidate decoding of bounded original stream prefixes",
+   "scope": "An explicit total executable decoder takes arbitrary low and high input lists and a natural word-width bound N. Its output contains exactly the original valid exterior states in the ten even phases from zero through eighteen whose word length is at most N and whose two original prefixes of length N+2 equal the entire supplied lists. No phase or actual carry is supplied to the list decoder. Each high prefix retains its own numerator, original word width and calculated carry in its denominator, including improper first high terms. The output always has length at most two and has no repeated states, without any input consistency, length or digit assumptions. The decoder recovers the phase from the last low term, then tests actual-carry guesses zero and one. For each guess it works at the positive width N+1, computes candidate positional values from prefixes, chooses between the two low lifts by a modulo-nine test, applies the published recursive positional decoder and removes the phase suffix. A decidable filter checks original validity, phase membership, width, both complete finite input lists and the actual calculated carry of the candidate. This uses two positional reconstructions, without exhaustive search over words. Correctness for the actual carry guess permits every known natural phase at most eighteen, including odd phases and nine, and valid words of width at most N. The standalone low-phase recovery requires only coefficients at most eighteen and the width bound, allowing empty, untrimmed and zero-head words. The scalar lift theorem covers every natural padded width, including zero. Existing boundary collision families show that, for either phase zero or eighteen and every N at least three, some valid word of exactly width N produces an output of length exactly two. The old positional decoder, padding, quotient identities, low-tail formula and boundary collisions are imported without changing them. The result characterizes finite-prefix compatibility within the supplied width bound. No equivalence with complete-stream fibers beyond that statement, optimal cutoff, minimum collision width, runtime or bit-complexity bound, recovery without a width bound, odd or unrestricted unknown-phase recovery, ordinary integer realization, equality of orbits, palindrome avoidance, or conclusion about 196 is claimed.",
+   "roots": [
+    "P196.BoundedStreamCandidates.Sharpness"
+   ],
+   "modules": [
+    "P196.Agent2SaturatedProfile.ReturnCertificate",
+    "P196.Agent2SaturatedProfile.TemplateStep",
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CertificateCoordinateAudit.ExteriorNormalization",
+    "P196.Agent6CertificateCoordinateAudit.OuterBounds",
+    "P196.Agent6CertificateCoordinateAudit.OuterBridge",
+    "P196.Agent6CoordinateDynamics.CoordinateCycle",
+    "P196.Agent6CoordinateDynamics.CoordinateDynamics",
+    "P196.Agent6CoordinateDynamics.CoordinateSign",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateDynamics.ExteriorUpdateLaw",
+    "P196.Agent6CoordinateThreshold.CoordinateThreshold",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.Agent6NormalizedCarryAccounting.NormalizedCarry",
+    "P196.BidirectionalWordDecoder.Numeric",
+    "P196.BoundedStreamCandidates.Arithmetic",
+    "P196.BoundedStreamCandidates.Candidates",
+    "P196.BoundedStreamCandidates.Definitions",
+    "P196.BoundedStreamCandidates.Phase",
+    "P196.BoundedStreamCandidates.Recovery",
+    "P196.BoundedStreamCandidates.Sharpness",
+    "P196.CompleteExteriorFibers.BoundaryFamily",
+    "P196.CompleteExteriorFibers.Definitions",
+    "P196.CompleteExteriorFibers.LowTail",
+    "P196.FiniteExteriorHistories.Evolution",
+    "P196.FiniteExteriorHistories.History",
+    "P196.FiniteExteriorHistories.Obstruction",
+    "P196.FiniteExteriorHistories.Prefix",
+    "P196.FiniteExteriorHistories.Reset",
+    "P196.FiniteObservationIsolation.Classification",
+    "P196.FiniteObservationIsolation.Extension",
+    "P196.FiniteObservationIsolation.Family",
+    "P196.FiniteObservationIsolation.FractionPrefixes",
+    "P196.FiniteObservationIsolation.ZeroControl",
+    "P196.PhaseEighteenIsolation.Extremal",
+    "P196.PhaseEighteenIsolation.Isolation",
+    "P196.PhaseEighteenIsolation.Padding",
+    "P196.PhaseEighteenIsolation.Quotients",
+    "P196.PhaseEighteenIsolation.Rigidity",
+    "P196.StreamNonisolation.Append",
+    "P196.StreamNonisolation.Extension",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Values",
+    "P196.TrimmedStreamObservation.LowPrefix",
+    "P196.TrimmedStreamObservation.WidthRecovery",
+    "P196.UniversalPhasePrefixes.Extension",
+    "P196.UniversalPhasePrefixes.Relay"
+   ],
+   "claims": [
+    {
+     "id": "A5-BOUNDED-STREAM-CANDIDATES",
+     "endpoints": [
+      "Agent5.BoundedStreamCandidates.phaseFromLow_correct",
+      "Agent5.BoundedStreamCandidates.restoreLow_correct",
+      "Agent5.BoundedStreamCandidates.candidateAtCarry_correct",
+      "Agent5.BoundedStreamCandidates.mem_decodeCandidates",
+      "Agent5.BoundedStreamCandidates.decodeCandidates_length",
+      "Agent5.BoundedStreamCandidates.decodeCandidates_nodup",
+      "Agent5.BoundedStreamCandidates.boundary_candidates_length_two"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.BoundedStreamCandidates.phaseFromLow_correct",
+    "Agent5.BoundedStreamCandidates.restoreLow_correct",
+    "Agent5.BoundedStreamCandidates.candidateAtCarry_correct",
+    "Agent5.BoundedStreamCandidates.mem_decodeCandidates",
+    "Agent5.BoundedStreamCandidates.decodeCandidates_length",
+    "Agent5.BoundedStreamCandidates.decodeCandidates_nodup",
+    "Agent5.BoundedStreamCandidates.boundary_candidates_length_two"
+   ]
   }
  }
 }
