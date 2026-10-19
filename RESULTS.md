@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 262 results (5864 checked endpoints — the theorems and definitions a reader should rely on — in 4670 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 263 results (5882 checked endpoints — the theorems and definitions a reader should rely on — in 4675 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (25)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (34)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (35)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1243,6 +1243,16 @@ For every valid exterior target at a nonneutral phase, every finite cutoff, and 
 - Root module(s): `P196.UniversalPhasePrefixes.Obstruction`
 - 16 modules, 11 checked endpoints
 - Endpoints: `Agent5.UniversalPhasePrefixes.low_prefix_phase_independent`, `Agent5.UniversalPhasePrefixes.relay_high_carry`, `Agent5.UniversalPhasePrefixes.high_prefix_normalized`, `Agent5.UniversalPhasePrefixes.relay_high_prefix`, `Agent5.UniversalPhasePrefixes.universalWord_length`, `Agent5.UniversalPhasePrefixes.universalWord_canonical`, `Agent5.UniversalPhasePrefixes.universalWord_valid`, `Agent5.UniversalPhasePrefixes.universalWord_same_prefixes`, `Agent5.UniversalPhasePrefixes.arbitrarily_wide_all_phase_same_prefixes`, `Agent5.UniversalPhasePrefixes.no_finite_phase_certificate`, `Agent5.UniversalPhasePrefixes.no_finite_phase_decoder`
+
+### FiniteExteriorHistories
+
+*Finite exterior histories cannot determine phase or bound canonical width*
+
+For every nonneutral phase c and coefficient word B bounded by 18, the existing universalWord c B m reproduces the target's actual high normalization carry and both original coordinate-stream prefixes of length cut at every time t at most T under the original outerIter, at every alternative initial nonneutral phase d, provided 2*T is at most m and cut+T is at most B.length+m. The generic theorem allows empty, zero-head, and untrimmed words. Consequently every valid target, finite cutoff, finite time horizon, and lower width W admit one word longer than both the target and W that is initially valid and maximally trimmed at all eight phases simultaneously and matches the entire finite observation history. This same initial word is chosen before the alternative phase and time; the explicit sufficient padding is max(cut,W)+2*T. Each observation uses its own current phase, word width, numerator, denominator, and calculated carry. The proof exposes an every-cutoff identity equating the phase-extended successor coefficient prefix to the sum of the two original digit prefixes. A shared coefficient window through one target-phase position beyond the target word forces the actual high carry and both one-shorter prefixes. Step and iterate phase/coefficient bounds require only nonneutral phase and bound 18; width growth by at most one per step requires neither. A general propagation theorem retains radius N-t when the initial window is N and the target initial width plus 2*t is at most N. A literal finite list records carry, low prefix, and high prefix at times zero through T. At every valid target, that history cannot certify its initial phase or any finite upper bound on canonical core width; the latter obstruction holds even when the initial phase is known. No decoder selected for fixed cut and T recovers every valid initial phase from that finite list alone. The alternative depends on the finite horizon and cutoff. No optimality of the buffer, single alternative matching all times or cutoffs, equality of complete streams, ordinary integer-orbit realization, palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.FiniteExteriorHistories.Obstruction`
+- 25 modules, 18 checked endpoints
+- Endpoints: `Agent5.FiniteExteriorHistories.coefficientPrefix_stripSuffix`, `Agent5.FiniteExteriorHistories.sameObservation_take`, `Agent5.FiniteExteriorHistories.coefficientPrefix_outerNext`, `Agent5.FiniteExteriorHistories.outerNext_nonneutral`, `Agent5.FiniteExteriorHistories.outerNext_bounded`, `Agent5.FiniteExteriorHistories.outerNext_length_le`, `Agent5.FiniteExteriorHistories.outerIter_nonneutral`, `Agent5.FiniteExteriorHistories.outerIter_bounded`, `Agent5.FiniteExteriorHistories.outerIter_length_le`, `Agent5.FiniteExteriorHistories.sameObservation_of_coefficientPrefix`, `Agent5.FiniteExteriorHistories.sameObservation_step`, `Agent5.FiniteExteriorHistories.sameObservation_outerIter`, `Agent5.FiniteExteriorHistories.universalWord_same_history`, `Agent5.FiniteExteriorHistories.arbitrarily_wide_all_phase_same_history`, `Agent5.FiniteExteriorHistories.observationHistory_eq_iff`, `Agent5.FiniteExteriorHistories.no_finite_history_phase_certificate`, `Agent5.FiniteExteriorHistories.no_finite_history_core_width_certificate`, `Agent5.FiniteExteriorHistories.no_finite_history_phase_decoder`
 
 ### Agent5EvenBaseAbsorption
 

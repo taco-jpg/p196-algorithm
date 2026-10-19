@@ -24852,6 +24852,86 @@
     "SymmetricCarryCensus.internal_carry_count",
     "SymmetricCarryCensus.terminal_counterexample"
    ]
+  },
+  "FiniteExteriorHistories": {
+   "id": "finite-exterior-histories",
+   "title": "Finite exterior histories cannot determine phase or bound canonical width",
+   "scope": "For every nonneutral phase c and coefficient word B bounded by 18, the existing universalWord c B m reproduces the target's actual high normalization carry and both original coordinate-stream prefixes of length cut at every time t at most T under the original outerIter, at every alternative initial nonneutral phase d, provided 2*T is at most m and cut+T is at most B.length+m. The generic theorem allows empty, zero-head, and untrimmed words. Consequently every valid target, finite cutoff, finite time horizon, and lower width W admit one word longer than both the target and W that is initially valid and maximally trimmed at all eight phases simultaneously and matches the entire finite observation history. This same initial word is chosen before the alternative phase and time; the explicit sufficient padding is max(cut,W)+2*T. Each observation uses its own current phase, word width, numerator, denominator, and calculated carry. The proof exposes an every-cutoff identity equating the phase-extended successor coefficient prefix to the sum of the two original digit prefixes. A shared coefficient window through one target-phase position beyond the target word forces the actual high carry and both one-shorter prefixes. Step and iterate phase/coefficient bounds require only nonneutral phase and bound 18; width growth by at most one per step requires neither. A general propagation theorem retains radius N-t when the initial window is N and the target initial width plus 2*t is at most N. A literal finite list records carry, low prefix, and high prefix at times zero through T. At every valid target, that history cannot certify its initial phase or any finite upper bound on canonical core width; the latter obstruction holds even when the initial phase is known. No decoder selected for fixed cut and T recovers every valid initial phase from that finite list alone. The alternative depends on the finite horizon and cutoff. No optimality of the buffer, single alternative matching all times or cutoffs, equality of complete streams, ordinary integer-orbit realization, palindrome avoidance, or conclusion about 196 is claimed.",
+   "roots": [
+    "P196.FiniteExteriorHistories.Obstruction"
+   ],
+   "modules": [
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CoordinateDynamics.CoordinateCycle",
+    "P196.Agent6CoordinateDynamics.CoordinateDynamics",
+    "P196.Agent6CoordinateDynamics.CoordinateSign",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateDynamics.ExteriorUpdateLaw",
+    "P196.Agent6CoordinateThreshold.CoordinateThreshold",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.FiniteExteriorHistories.Evolution",
+    "P196.FiniteExteriorHistories.History",
+    "P196.FiniteExteriorHistories.Obstruction",
+    "P196.FiniteExteriorHistories.Prefix",
+    "P196.FiniteExteriorHistories.Reset",
+    "P196.StreamNonisolation.Append",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Values",
+    "P196.TrimmedStreamObservation.LowPrefix",
+    "P196.TrimmedStreamObservation.WidthRecovery",
+    "P196.UniversalPhasePrefixes.Extension",
+    "P196.UniversalPhasePrefixes.Relay"
+   ],
+   "claims": [
+    {
+     "id": "A5-FINITE-EXTERIOR-HISTORIES",
+     "endpoints": [
+      "Agent5.FiniteExteriorHistories.coefficientPrefix_stripSuffix",
+      "Agent5.FiniteExteriorHistories.sameObservation_take",
+      "Agent5.FiniteExteriorHistories.coefficientPrefix_outerNext",
+      "Agent5.FiniteExteriorHistories.outerNext_nonneutral",
+      "Agent5.FiniteExteriorHistories.outerNext_bounded",
+      "Agent5.FiniteExteriorHistories.outerNext_length_le",
+      "Agent5.FiniteExteriorHistories.outerIter_nonneutral",
+      "Agent5.FiniteExteriorHistories.outerIter_bounded",
+      "Agent5.FiniteExteriorHistories.outerIter_length_le",
+      "Agent5.FiniteExteriorHistories.sameObservation_of_coefficientPrefix",
+      "Agent5.FiniteExteriorHistories.sameObservation_step",
+      "Agent5.FiniteExteriorHistories.sameObservation_outerIter",
+      "Agent5.FiniteExteriorHistories.universalWord_same_history",
+      "Agent5.FiniteExteriorHistories.arbitrarily_wide_all_phase_same_history",
+      "Agent5.FiniteExteriorHistories.observationHistory_eq_iff",
+      "Agent5.FiniteExteriorHistories.no_finite_history_phase_certificate",
+      "Agent5.FiniteExteriorHistories.no_finite_history_core_width_certificate",
+      "Agent5.FiniteExteriorHistories.no_finite_history_phase_decoder"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.FiniteExteriorHistories.coefficientPrefix_stripSuffix",
+    "Agent5.FiniteExteriorHistories.sameObservation_take",
+    "Agent5.FiniteExteriorHistories.coefficientPrefix_outerNext",
+    "Agent5.FiniteExteriorHistories.outerNext_nonneutral",
+    "Agent5.FiniteExteriorHistories.outerNext_bounded",
+    "Agent5.FiniteExteriorHistories.outerNext_length_le",
+    "Agent5.FiniteExteriorHistories.outerIter_nonneutral",
+    "Agent5.FiniteExteriorHistories.outerIter_bounded",
+    "Agent5.FiniteExteriorHistories.outerIter_length_le",
+    "Agent5.FiniteExteriorHistories.sameObservation_of_coefficientPrefix",
+    "Agent5.FiniteExteriorHistories.sameObservation_step",
+    "Agent5.FiniteExteriorHistories.sameObservation_outerIter",
+    "Agent5.FiniteExteriorHistories.universalWord_same_history",
+    "Agent5.FiniteExteriorHistories.arbitrarily_wide_all_phase_same_history",
+    "Agent5.FiniteExteriorHistories.observationHistory_eq_iff",
+    "Agent5.FiniteExteriorHistories.no_finite_history_phase_certificate",
+    "Agent5.FiniteExteriorHistories.no_finite_history_core_width_certificate",
+    "Agent5.FiniteExteriorHistories.no_finite_history_phase_decoder"
+   ]
   }
  }
 }
