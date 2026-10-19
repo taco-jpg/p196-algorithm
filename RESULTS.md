@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 271 results (5988 checked endpoints — the theorems and definitions a reader should rely on — in 4724 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 272 results (5991 checked endpoints — the theorems and definitions a reader should rely on — in 4728 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (27)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (41)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (42)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -865,6 +865,8 @@ Carry observability, carry accounting and exterior coordinates over finitely man
 - **SymmetricCarryCensus**: the original `symWords L` list contains every admissible symmetric coefficient word exactly once; its size is zero at width zero, nine at width one, and `18 * 19^(L/2-1)` times an odd-width factor ten otherwise. A whole-word complement involution proves that each actual carry bit occurs exactly `9 * 19^(L/2-1)` times that factor at every strictly internal position `0 < j < L`; the checked pair `[9,18,9]` and `[10,0,10]` shows terminal carries need not complement (`P196.SymmetricCarryCensus.Census`, 16 modules, 6 endpoints). Counts are unweighted coefficient words; no integer multiplicity, joint-path realization, fixed-seed reachability or palindrome avoidance is claimed.
 
 - **TerminalCarryCensus**: the original `symWords` enumeration has exactly `(19^m - 1)/2` terminal-one words at width `2*m` and `5*19^m` at width `2*m+1`, including widths zero and one. A finite complementary-scan theorem isolates the all-nine exception; a complement involution on the existing half-word products gives the count, and terminal carry one forces the positive exterior needed to transfer it to the original enumeration (`P196.TerminalCarryCensus.Terminal`, 18 modules, 3 endpoints). Counts are unweighted coefficient words; no integer multiplicity, target-fiber count, trajectory frequency, joint-path realization or palindrome avoidance is claimed.
+
+- **MirroredCarryCensus**: for `0 < j <= m`, the original `symWords` enumeration has exact joint counts at mirrored internal carry positions. At even width `2*m`, each equal-bit pair occurs `(A+E)/2` times and each unequal-bit pair `(A-E)/2` times, where `A=9*19^(m-1)` and `E=9*19^(j-1)`; at odd width `2*m+1`, each of the four pairs occurs `45*19^(m-1)` times. Complementing only the middle preserves the left carry and pairs the right carry except on an all-nine middle, whose count follows by insertion and deletion. The even boundary `j=m` is included (`P196.MirroredCarryCensus.Census`, 22 modules, 3 endpoints). Counts are unweighted coefficient words; no full carry-word independence, integer multiplicity, target-fiber count, trajectory frequency, joint-path realization or palindrome avoidance is claimed.
 
 - **CommonOverflowRigidity:** At every shared width, symmetric coefficient words bounded by eighteen with common first overflow agree at every index below that width if their normalized digit differences are antisymmetric at both consecutive normalizations (`P196.CommonOverflowRigidity.Main`). The second terminal carries are derived to agree; positivity and center parity are unnecessary. Canonical initial numerals then have equal first reverse-and-add outputs. The original digit split need not agree, and no other defect-pattern or infinite-orbit exclusion, palindrome-avoidance result, or 196 conclusion is claimed.
 

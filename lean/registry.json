@@ -25642,6 +25642,43 @@
     "Agent5.PhaseEighteenIsolation.phase18_valid_state_isolated",
     "Agent5.PhaseEighteenIsolation.phase18_high_coefficient_ten"
    ]
+  },
+  "MirroredCarryCensus": {
+   "id": "mirrored-carry-census",
+   "title": "Exact joint carry counts at mirrored internal positions",
+   "scope": "For 0 < j and 2*j <= L in the unchanged Agent124.PrefixK.symWords enumeration, complementing only the coefficient interval [j,L-j) is an admissibility-preserving involution that fixes the actual carry at j. The original and transformed carries at L-j sum to twice that fixed carry when the middle is all nine, and otherwise sum to one. At width 2*m, for 0 < j <= m and bits a,b, the joint count of actual carries a at j and b at 2*m-j is (9*19^(m-1) + 9*19^(j-1))/2 when a=b and (9*19^(m-1) - 9*19^(j-1))/2 otherwise. At width 2*m+1, each of the four pairs at j and 2*m+1-j occurs exactly 45*19^(m-1) times. Inserting or deleting an all-nine middle identifies the even neutral class with the existing width-2*j marginal census; an even center excludes that class at odd width. The even boundary j=m, where the two observations coincide, is included. Counts are unweighted admissible coefficient words. No independence of the full carry word, ordinary-integer multiplicity, fixed-target fiber count, trajectory frequency, joint-path realization, fixed-seed reachability, palindrome avoidance, or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.MirroredCarryCensus.Census"
+   ],
+   "modules": [
+    "P196.Agent104P620Witness.ActualPrefix",
+    "P196.Agent104P620Witness.Agent124PrefixK",
+    "P196.Agent104P620Witness.FastInverse",
+    "P196.Agent104P620Witness.FastRowsBase",
+    "P196.Agent104P620Witness.LongRowsBase",
+    "P196.Agent104P620Witness.PalindromeBridge",
+    "P196.Agent104P620Witness.PrefixCertificate",
+    "P196.Agent104P620Witness.PrefixInverse",
+    "P196.Agent104P620Witness.ShortBoundary",
+    "P196.Drafts.Agent9FiniteEnsembleMarkerCount.Agent9FiniteProducts",
+    "P196.Foundations.IncomingCarry",
+    "P196.Foundations.LychrelDigitSums",
+    "P196.MirroredCarryCensus.Census",
+    "P196.MirroredCarryCensus.Middle",
+    "P196.MirroredCarryCensus.Neutral",
+    "P196.MirroredCarryCensus.Scan",
+    "P196.SymmetricCarryCensus.Census",
+    "P196.SymmetricCarryCensus.Complement",
+    "P196.SymmetricCarryCensus.Counts",
+    "P196.SymmetricCarryCensus.Enumeration",
+    "P196.SymmetricCarryCensus.Support",
+    "P196.TerminalCarryCensus.Scan"
+   ],
+   "endpoints": [
+    "MirroredCarryCensus.middle_complement_spec",
+    "MirroredCarryCensus.mirrored_count_even",
+    "MirroredCarryCensus.mirrored_count_odd"
+   ]
   }
  }
 }
