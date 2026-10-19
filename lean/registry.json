@@ -24818,6 +24818,40 @@
     "OddPredecessorTargetSparsity.below_quadratic",
     "OddPredecessorTargetSparsity.below_effectively_sparse"
    ]
+  },
+  "SymmetricCarryCensus": {
+   "id": "symmetric-carry-census",
+   "title": "Exact symmetric-word counts and balanced internal carries",
+   "scope": "The original Agent124.PrefixK.symWords enumeration contains exactly the admissible symmetric decimal coefficient words of each width, without duplicates. Its length is zero at width zero, nine at width one, and 18 * 19^(L/2-1) times an odd-width factor ten at every width at least two. Subtracting both outer coefficients from 19 and all interior coefficients from 18 gives an admissibility-preserving involution at widths at least two; it complements the actual DecimalDigits.carry bit simultaneously at every strictly internal position. Each such bit class therefore contains exactly half the original enumeration. A kernel-checked width-three pair has terminal carry one on both sides and records the necessary strict position bound. These are unweighted coefficient-word counts, not counts of their ordinary digit realizations. No terminal-carry balance, arbitrary joint carry-path realization, fixed-seed reachability, palindrome avoidance, or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.SymmetricCarryCensus.Census"
+   ],
+   "modules": [
+    "P196.Agent104P620Witness.ActualPrefix",
+    "P196.Agent104P620Witness.Agent124PrefixK",
+    "P196.Agent104P620Witness.FastInverse",
+    "P196.Agent104P620Witness.FastRowsBase",
+    "P196.Agent104P620Witness.LongRowsBase",
+    "P196.Agent104P620Witness.PalindromeBridge",
+    "P196.Agent104P620Witness.PrefixCertificate",
+    "P196.Agent104P620Witness.PrefixInverse",
+    "P196.Agent104P620Witness.ShortBoundary",
+    "P196.Drafts.Agent9FiniteEnsembleMarkerCount.Agent9FiniteProducts",
+    "P196.Foundations.LychrelDigitSums",
+    "P196.SymmetricCarryCensus.Census",
+    "P196.SymmetricCarryCensus.Complement",
+    "P196.SymmetricCarryCensus.Counts",
+    "P196.SymmetricCarryCensus.Enumeration",
+    "P196.SymmetricCarryCensus.Support"
+   ],
+   "endpoints": [
+    "SymmetricCarryCensus.mem_symWords_iff",
+    "SymmetricCarryCensus.symWords_nodup",
+    "SymmetricCarryCensus.symWords_length",
+    "SymmetricCarryCensus.complement_spec",
+    "SymmetricCarryCensus.internal_carry_count",
+    "SymmetricCarryCensus.terminal_counterexample"
+   ]
   }
  }
 }
