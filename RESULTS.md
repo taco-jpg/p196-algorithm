@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 241 results (5601 checked endpoints — the theorems and definitions a reader should rely on — in 4522 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 242 results (5614 checked endpoints — the theorems and definitions a reader should rely on — in 4530 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (20)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (21)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (22)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (5)
@@ -1021,6 +1021,16 @@ At a fixed nonneutral phase and common width n, the first n+1 digits of the sepa
 - Root module(s): `P196.StreamObservationInjectivity.Injectivity`, `P196.StreamObservationInjectivity.Sharpness`
 - 11 modules, 5 checked endpoints
 - Endpoints: `Agent5.StreamObservationInjectivity.no_overflow_iff_stream_residues`, `Agent5.StreamObservationInjectivity.decodeCarry_correct`, `Agent5.StreamObservationInjectivity.exterior_eq_of_stream_prefixes`, `Agent5.StreamObservationInjectivity.exterior_eq_of_streams_at_cutoff`, `Agent5.StreamObservationInjectivity.observation_cutoff_sharp`
+
+### TrimmedStreamObservation
+
+*Sharp asymmetric observation of trimmed exterior words*
+
+At a fixed nonneutral phase and shared width n, coefficient words bounded by 18 and terminally trimmed are determined by n low digits and n+1 high digits of the separate original coordinate streams, without supplied equality of normalization carries. Includes empty and zero-head words, validOuter specializations, and larger independent cutoffs. The residue classification isolates phases eight and ten; outside those phases the same shared-width recovery requires no trimming, while positive-head collisions at both exceptional phases show that trimming cannot be dropped uniformly. Terminally trimmed words of potentially different widths are recovered from both streams at a common cutoff at least max(lengths)+1; a valid phase-ten unequal-width collision shows that reducing its low cutoff to max(lengths) can fail even with every high cutoff known. Phase-four valid witnesses make n-1 low digits insufficient at every positive width even with every high cutoff known. Phase-two valid witnesses make n high digits insufficient at every width n>=2 even with every low cutoff known. These sharpness claims are uniform over nonneutral phases, not assertions of optimality at each phase separately. No ordinary integer-orbit, reverse-and-add injectivity, palindrome-avoidance, or 196 conclusion is claimed.
+
+- Root module(s): `P196.TrimmedStreamObservation.Injectivity`, `P196.TrimmedStreamObservation.RegularPhases`, `P196.TrimmedStreamObservation.WidthRecovery`, `P196.TrimmedStreamObservation.Controls`, `P196.TrimmedStreamObservation.Sharpness`, `P196.TrimmedStreamObservation.LowSharpness`
+- 19 modules, 13 checked endpoints
+- Endpoints: `Agent5.TrimmedStreamObservation.cross_highValue_phase_carries`, `Agent5.TrimmedStreamObservation.low_carry_eq_of_trimmed_high`, `Agent5.TrimmedStreamObservation.exterior_eq_of_mixed_prefixes`, `Agent5.TrimmedStreamObservation.valid_exterior_eq_of_mixed_prefixes`, `Agent5.TrimmedStreamObservation.exterior_eq_of_mixed_cutoffs`, `Agent5.TrimmedStreamObservation.exterior_eq_of_mixed_prefixes_of_regular_phase`, `Agent5.TrimmedStreamObservation.exterior_eq_of_common_prefixes`, `Agent5.TrimmedStreamObservation.valid_exterior_eq_of_common_prefixes`, `Agent5.TrimmedStreamObservation.untrimmed_phase_eight_collision`, `Agent5.TrimmedStreamObservation.untrimmed_phase_ten_collision`, `Agent5.TrimmedStreamObservation.unequal_width_mixed_collision`, `Agent5.TrimmedStreamObservation.high_cutoff_sharp_with_complete_low`, `Agent5.TrimmedStreamObservation.low_cutoff_sharp_with_complete_high`
 
 ### Agent5EvenBaseAbsorption
 
