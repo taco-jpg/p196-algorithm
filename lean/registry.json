@@ -26516,6 +26516,103 @@
     "ExactWidthCarryThresholds.pair_reconstruction_iff",
     "ExactWidthCarryThresholds.next_integer_reconstruction_iff"
    ]
+  },
+  "CompleteStreamDecoder": {
+   "id": "complete-stream-decoder",
+   "title": "Exact decoding of complete original stream fibers from a bounded source",
+   "scope": "An explicit total executable decoder enumerates the entire complete-stream fiber of an original valid exterior source in the ten even phases from zero through eighteen, given a natural bound N on the source word length and its two original prefixes of length N+3. Membership is equivalent to the candidate being valid, having one of those phases and sharing both complete original streams with the source. No candidate width bound is supplied, and neither phase nor actual carry is provided to the decoder. Each high stream retains its own numerator, original word width and separately calculated carry in the denominator, including improper first high terms. The function reuses the published bounded candidate decoder with width bound N+1. On arbitrary input lists it always returns at most two states and has no repetitions. A new intrinsic width theorem proves that a valid complete-stream competitor is at most one coefficient longer than its source; symmetry therefore bounds their width difference by one. It imports the existing interior singleton result and proves the two boundary cases from the centered low coordinate and the terminal trimming condition. A finite-to-complete equivalence at cutoff at least the maximum of both word lengths plus two requires only coefficient bounds of eighteen: it covers every fixed natural phase at most eighteen, including odd phases and nine, and also unknown phases among the ten even phases. It assumes neither validity, positive heads, trimmed suffixes nor equality of actual carries. A separate low-only theorem recovers the exact centered low coordinate at a fixed phase under the same coefficient and cutoff bounds. Empty words are included throughout. Explicit valid pairs prove that the extra position is necessary in both boundary phases: [11] and [1,1] in phase zero, and [11,9,7] and [1,0,18,17] in phase eighteen, with actual carries one and zero. Existing padding, positional bounds, prefix quotients, phase recovery and rational digit scaling are imported. The decoder membership theorem presupposes observations from a valid source with the supplied width bound. No isolation against unbounded finite-prefix imitators, optimal cutoff, complexity bound, decoding without a source-width bound, unrestricted unknown-phase classification, ordinary integer realization, equality of orbits, palindrome avoidance, or conclusion about 196 is claimed.",
+   "roots": [
+    "P196.CompleteStreamDecoder.Decoder"
+   ],
+   "modules": [
+    "P196.Agent2SaturatedProfile.ReturnCertificate",
+    "P196.Agent2SaturatedProfile.TemplateStep",
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CertificateCoordinateAudit.ExteriorNormalization",
+    "P196.Agent6CertificateCoordinateAudit.OuterBounds",
+    "P196.Agent6CertificateCoordinateAudit.OuterBridge",
+    "P196.Agent6CoordinateDynamics.CoordinateCycle",
+    "P196.Agent6CoordinateDynamics.CoordinateDynamics",
+    "P196.Agent6CoordinateDynamics.CoordinateSign",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateDynamics.ExteriorUpdateLaw",
+    "P196.Agent6CoordinateThreshold.CoordinateThreshold",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.Agent6NormalizedCarryAccounting.NormalizedCarry",
+    "P196.BidirectionalWordDecoder.Numeric",
+    "P196.BoundedStreamCandidates.Arithmetic",
+    "P196.BoundedStreamCandidates.Candidates",
+    "P196.BoundedStreamCandidates.Definitions",
+    "P196.BoundedStreamCandidates.Phase",
+    "P196.BoundedStreamCandidates.Recovery",
+    "P196.CompleteExteriorFibers.Definitions",
+    "P196.CompleteExteriorFibers.Fibers",
+    "P196.CompleteExteriorFibers.LowTail",
+    "P196.CompleteExteriorFibers.Recovery",
+    "P196.CompleteExteriorFibers.Values",
+    "P196.CompleteStreamDecoder.Decoder",
+    "P196.CompleteStreamDecoder.LowValues",
+    "P196.CompleteStreamDecoder.Prefixes",
+    "P196.CompleteStreamDecoder.Sharpness",
+    "P196.CompleteStreamDecoder.Width",
+    "P196.FiniteExteriorHistories.Evolution",
+    "P196.FiniteExteriorHistories.History",
+    "P196.FiniteExteriorHistories.Obstruction",
+    "P196.FiniteExteriorHistories.Prefix",
+    "P196.FiniteExteriorHistories.Reset",
+    "P196.FiniteObservationIsolation.Classification",
+    "P196.FiniteObservationIsolation.Extension",
+    "P196.FiniteObservationIsolation.Family",
+    "P196.FiniteObservationIsolation.FractionPrefixes",
+    "P196.FiniteObservationIsolation.ZeroControl",
+    "P196.PhaseEighteenIsolation.Extremal",
+    "P196.PhaseEighteenIsolation.Isolation",
+    "P196.PhaseEighteenIsolation.Padding",
+    "P196.PhaseEighteenIsolation.Quotients",
+    "P196.PhaseEighteenIsolation.Rigidity",
+    "P196.PhaseStreamRecovery.CanonicalFibers",
+    "P196.PhaseStreamRecovery.Decoder",
+    "P196.PhaseStreamRecovery.Injectivity",
+    "P196.PhaseStreamRecovery.WidthRecovery",
+    "P196.StreamNonisolation.Append",
+    "P196.StreamNonisolation.Extension",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Values",
+    "P196.TrimmedStreamObservation.LowPrefix",
+    "P196.TrimmedStreamObservation.WidthRecovery",
+    "P196.UniversalPhasePrefixes.Extension",
+    "P196.UniversalPhasePrefixes.Relay"
+   ],
+   "claims": [
+    {
+     "id": "A5-COMPLETE-STREAM-DECODER",
+     "endpoints": [
+      "Agent5.CompleteStreamDecoder.zValue_eq_of_low_prefix",
+      "Agent5.CompleteStreamDecoder.same_phase_streams_iff_prefixes",
+      "Agent5.CompleteStreamDecoder.same_streams_iff_prefixes",
+      "Agent5.CompleteStreamDecoder.complete_competitor_length_le",
+      "Agent5.CompleteStreamDecoder.mem_completeCandidates",
+      "Agent5.CompleteStreamDecoder.completeCandidates_length",
+      "Agent5.CompleteStreamDecoder.completeCandidates_nodup",
+      "Agent5.CompleteStreamDecoder.boundary_width_slack_sharp"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.CompleteStreamDecoder.zValue_eq_of_low_prefix",
+    "Agent5.CompleteStreamDecoder.same_phase_streams_iff_prefixes",
+    "Agent5.CompleteStreamDecoder.same_streams_iff_prefixes",
+    "Agent5.CompleteStreamDecoder.complete_competitor_length_le",
+    "Agent5.CompleteStreamDecoder.mem_completeCandidates",
+    "Agent5.CompleteStreamDecoder.completeCandidates_length",
+    "Agent5.CompleteStreamDecoder.completeCandidates_nodup",
+    "Agent5.CompleteStreamDecoder.boundary_width_slack_sharp"
+   ]
   }
  }
 }

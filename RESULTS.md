@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 281 results (6143 checked endpoints — the theorems and definitions a reader should rely on — in 4788 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 282 results (6151 checked endpoints — the theorems and definitions a reader should rely on — in 4793 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (30)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (48)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (49)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1618,6 +1618,16 @@ An explicit total executable decoder takes arbitrary low and high input lists an
 - Root module(s): `P196.BoundedStreamCandidates.Sharpness`
 - 52 modules, 7 checked endpoints
 - Endpoints: `Agent5.BoundedStreamCandidates.phaseFromLow_correct`, `Agent5.BoundedStreamCandidates.restoreLow_correct`, `Agent5.BoundedStreamCandidates.candidateAtCarry_correct`, `Agent5.BoundedStreamCandidates.mem_decodeCandidates`, `Agent5.BoundedStreamCandidates.decodeCandidates_length`, `Agent5.BoundedStreamCandidates.decodeCandidates_nodup`, `Agent5.BoundedStreamCandidates.boundary_candidates_length_two`
+
+### CompleteStreamDecoder
+
+*Exact decoding of complete original stream fibers from a bounded source*
+
+An explicit total executable decoder enumerates the entire complete-stream fiber of an original valid exterior source in the ten even phases from zero through eighteen, given a natural bound N on the source word length and its two original prefixes of length N+3. Membership is equivalent to the candidate being valid, having one of those phases and sharing both complete original streams with the source. No candidate width bound is supplied, and neither phase nor actual carry is provided to the decoder. Each high stream retains its own numerator, original word width and separately calculated carry in the denominator, including improper first high terms. The function reuses the published bounded candidate decoder with width bound N+1. On arbitrary input lists it always returns at most two states and has no repetitions. A new intrinsic width theorem proves that a valid complete-stream competitor is at most one coefficient longer than its source; symmetry therefore bounds their width difference by one. It imports the existing interior singleton result and proves the two boundary cases from the centered low coordinate and the terminal trimming condition. A finite-to-complete equivalence at cutoff at least the maximum of both word lengths plus two requires only coefficient bounds of eighteen: it covers every fixed natural phase at most eighteen, including odd phases and nine, and also unknown phases among the ten even phases. It assumes neither validity, positive heads, trimmed suffixes nor equality of actual carries. A separate low-only theorem recovers the exact centered low coordinate at a fixed phase under the same coefficient and cutoff bounds. Empty words are included throughout. Explicit valid pairs prove that the extra position is necessary in both boundary phases: [11] and [1,1] in phase zero, and [11,9,7] and [1,0,18,17] in phase eighteen, with actual carries one and zero. Existing padding, positional bounds, prefix quotients, phase recovery and rational digit scaling are imported. The decoder membership theorem presupposes observations from a valid source with the supplied width bound. No isolation against unbounded finite-prefix imitators, optimal cutoff, complexity bound, decoding without a source-width bound, unrestricted unknown-phase classification, ordinary integer realization, equality of orbits, palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.CompleteStreamDecoder.Decoder`
+- 62 modules, 8 checked endpoints
+- Endpoints: `Agent5.CompleteStreamDecoder.zValue_eq_of_low_prefix`, `Agent5.CompleteStreamDecoder.same_phase_streams_iff_prefixes`, `Agent5.CompleteStreamDecoder.same_streams_iff_prefixes`, `Agent5.CompleteStreamDecoder.complete_competitor_length_le`, `Agent5.CompleteStreamDecoder.mem_completeCandidates`, `Agent5.CompleteStreamDecoder.completeCandidates_length`, `Agent5.CompleteStreamDecoder.completeCandidates_nodup`, `Agent5.CompleteStreamDecoder.boundary_width_slack_sharp`
 
 ### Agent5EvenBaseAbsorption
 
