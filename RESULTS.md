@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 245 results (5660 checked endpoints — the theorems and definitions a reader should rely on — in 4587 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 246 results (5665 checked endpoints — the theorems and definitions a reader should rely on — in 4589 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -14,7 +14,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (24)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
-7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (5)
+7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (6)
 
 ## The orbit of 196 and palindrome-prefix exclusions
 
@@ -2117,6 +2117,8 @@ Finite models whose limits are stated explicitly.
 **PrefixCycleLift:** Zero-based rows `31, 30, 29, 28` of the existing seven-column `Cycle398_k7` witness, read in forward time, have no eighth-column extension: the possible added coefficients shrink from `0..18` to `7..17`, then `14..18`, then the empty set. A sound checker and canonical integer bridge exclude this four-row trace from any ordinary orbit whose state at the trace start has width at least eight, including subsequent overflow and width increases. This does not exclude palindrome prefix `398` or invalidate the existing seven-column cycle. Root: `P196.PrefixCycleLift.Cycle398`; 15 modules, 15 endpoints.
 
 - **PrefixTruncation**: every positive truncation preserves complete backward prefix edges and exact path lengths, transporting reachable positive-cycle rank obstructions to smaller widths; a nine-edge `[1]` cycle and a checked rank-zero refinement `[1, 9, 6]` show the converse fails (`P196.PrefixTruncation.Controls`, 9 modules, 12 endpoints). This concerns coefficient words and does not establish ordinary-orbit realizability or a 196 exclusion.
+
+- **PrefixEdgeRealization**: every valid coefficient prefix of length `k` with either high inner carry bit has an actual positive integer witness at canonical source width `2*k+1`; the complete executable inverse is exactly one-step prefix realizability and is equivalent to the two existing forward carry-bit checks (`P196.PrefixEdgeRealization.Realization`, 12 modules, 5 endpoints). Witnesses may differ between edges; no joint path or cycle realization, fixed-seed reachability or palindrome avoidance is claimed.
 
 ### Agent107FoldedTransducer
 

@@ -23960,6 +23960,35 @@
     "CarryCountDecoding.carryCount_history_determines_digitSum",
     "CarryCountDecoding.carryCount_history_iff_digitSum_history"
    ]
+  },
+  "PrefixEdgeRealization": {
+   "id": "prefix-edge-realization",
+   "title": "Exact integer realizability of complete prefix inverse edges",
+   "scope": "Every finite coefficient prefix with entries below 19 and positive exterior, together with either prescribed high inner carry bit, occurs in a positive ordinary decimal reverse-and-add step at canonical source width 2 * k + 1. Both source and successor digit representations are canonical, and the boundary carry is the source's actual computed carry. The complete executable backward prefix relation is equivalent to valid forward admission, to the disjunction of the existing two carry-bit checks, and, with a nonempty-source guard, to existential actual one-step prefix realizability at that fixed width. Each edge may use a different integer witness. No joint realization of an arbitrary path or cycle, fixed-seed or 196 reachability, palindrome avoidance, or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.PrefixEdgeRealization.Realization"
+   ],
+   "modules": [
+    "P196.Agent104P620Witness.ActualPrefix",
+    "P196.Agent104P620Witness.FastInverse",
+    "P196.Agent104P620Witness.PalindromeBridge",
+    "P196.Agent104P620Witness.PrefixCertificate",
+    "P196.Agent104P620Witness.PrefixInverse",
+    "P196.Agent107FoldedTransducer.Agent107TransducerDefs",
+    "P196.Agent107FoldedTransducer.Agent107TransducerInput",
+    "P196.Agent107FoldedTransducer.Agent107TransducerPath",
+    "P196.Agent117RemainingCycles.PrefixCycle",
+    "P196.Foundations.LychrelDigitSums",
+    "P196.PrefixEdgeRealization.Compatibility",
+    "P196.PrefixEdgeRealization.Realization"
+   ],
+   "endpoints": [
+    "PrefixEdgeRealization.longCompatible_forwardAdmitted",
+    "PrefixEdgeRealization.mem_prefixPredecessors_iff_forwardAdmitted",
+    "PrefixEdgeRealization.mem_prefixPredecessors_iff_edgeOK",
+    "PrefixEdgeRealization.forwardPrefix_realizable",
+    "PrefixEdgeRealization.mem_prefixPredecessors_iff_realizable"
+   ]
   }
  }
 }
