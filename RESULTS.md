@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 236 results (5549 checked endpoints — the theorems and definitions a reader should rely on — in 4503 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 237 results (5579 checked endpoints — the theorems and definitions a reader should rely on — in 4509 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (17)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (18)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (19)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (19)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -610,6 +610,41 @@ For every positive canonical target Y ending in zero, the complete positive ordi
 
 - Root module(s): `P196.ZeroEndingPredecessorParity.Integration`
 - 19 modules, 7 checked endpoints; main theorem: `ZeroEndingPredecessorParity.predecessor_count_parity`
+
+### MaximalDigitSplitFibers
+
+*Exact maximum equality and sharp submaximum of fixed-width predecessor fibers*
+
+The fixed-profile maximum is attained exactly by outer sum nine or ten, all inner sums nine, and a realizable center. **When there is at least one inner pair**, the sharp submaximum requires exactly one inner sum eight or ten instead. For every ordinary integer target and complete duplicate-free predecessor list at a prescribed source width L >= 4, any count below the maximum 9 * 10^(L/2-1) is at most 81 * 10^(L/2-2), with explicit complete fibers attaining this bound at every such width. With no inner pairs, the sharp profile submaximum is eight, also with complete numerical witnesses. Different source widths are not combined; no multi-step or infinite-orbit result is asserted.
+
+- Root module(s): `P196.MaximalDigitSplitFibers.Main`
+- 17 modules, 30 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+namespace Agent7.MaximalDigitSplitFibers
+
+open Agent101 Lychrel196
+
+theorem numericFiber_max_iff (s : Nat) (h : List Nat) (c : Option Nat) :
+    (numericFiber (s :: h) c).length = 9 * 10 ^ h.length ↔
+      (s = 9 ∨ s = 10) ∧ (∀ t ∈ h, t = 9) ∧ centerCount c = 1
+
+theorem numericFiber_submax_iff (s : Nat) (h : List Nat) (c : Option Nat)
+    (hlen : 0 < h.length) :
+    (numericFiber (s :: h) c).length = 81 * 10 ^ (h.length - 1) ↔
+      (s = 9 ∨ s = 10) ∧ singleInnerDefect h ∧ centerCount c = 1
+
+theorem fixed_width_preimages_gap (Y L : Nat) (xs : List Nat)
+    (hL : 4 ≤ L) (hxs : xs.Nodup)
+    (hm : ∀ n, n ∈ xs ↔ decimalWidth n L ∧ step n = Y)
+    (hne : xs.length ≠ 9 * 10 ^ (L / 2 - 1)) :
+    xs.length ≤ 81 * 10 ^ (L / 2 - 2)
+
+end Agent7.MaximalDigitSplitFibers
+```
+</details>
 
 ## Carries: what carry sequences reveal and how they evolve
 
