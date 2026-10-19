@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 249 results (5706 checked endpoints — the theorems and definitions a reader should rely on — in 4604 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 250 results (5711 checked endpoints — the theorems and definitions a reader should rely on — in 4607 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -8,7 +8,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 ## Contents
 
-1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
+1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (22)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (26)
@@ -19,6 +19,8 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 ## The orbit of 196 and palindrome-prefix exclusions
 
 Results about the actual orbit of 196, and the prefix-exclusion method used for it. `Core` also bundles four reviewed results on other topics (listed as its claims).
+
+- **AllTimePowerResidues:** Exact fixed-exponent root counts modulo 99 for the ordinary orbit of 196 at every natural time: the first three residues have an additional `gcd(e,10)` condition and multiplicity, while the later count is zero or `gcd(e,6)` (`P196.AllTimePowerResidues.Main`). Includes the complete initial-time phase formula, necessary restrictions on actual powers, fifth-power compatibility exactly from time three onward, and incompatibility of exponent zero. These are modular conditions; no actual power occurrence, palindrome avoidance, or Lychrel conclusion is claimed.
 
 - **OrbitPowerObstruction:** For every decimal seed and time, its orbit residue modulo 99 matches some power with exponent at least two exactly when the seed is not congruent to 3 or 6 modulo 9; every compatible residue has the explicit seventh-power representative with base `r ^ 13 % 99` (`P196.OrbitPowerObstruction.Main`). Seeds divisible by 3 but not by 9 therefore have no nontrivial integer power anywhere in their orbits. The modular converse asserts no actual power occurrence, and no palindrome or Lychrel conclusion is claimed.
 
