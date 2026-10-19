@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 254 results (5755 checked endpoints — the theorems and definitions a reader should rely on — in 4623 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 255 results (5762 checked endpoints — the theorems and definitions a reader should rely on — in 4638 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (23)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (28)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (29)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -886,6 +886,14 @@ Sixteen is the exact largest uniform common initial decimal width bound for reco
 - Root module(s): `P196.EightCarryMaximalWidth.Sharpness`
 - 71 modules, 25 checked endpoints
 - Main endpoints: `EightCarryMaximalWidth.eight_carry_words_determine_pair_sums_of_width_le_sixteen`, `EightCarryMaximalWidth.eight_carry_words_determine_next_integer_of_width_le_sixteen`, `EightCarryMaximalWidth.eight_pair_reconstruction_iff_width_le_sixteen`, `EightCarryMaximalWidth.eight_next_integer_reconstruction_iff_width_le_sixteen`, `EightCarryMaximalWidth.pair_reconstruction_up_to_sixteen_iff`, `EightCarryMaximalWidth.next_integer_reconstruction_up_to_sixteen_iff`
+
+### EightCarryThreePairSharp
+
+At every common admissible initial decimal width, eight complete carry observations determine the first three active initial pair coefficients. Three is the exact largest uniform recoverable prefix length: an imported canonical width-seventeen pair with eight equal complete carry words differs at index three. The proof adds a necessary prefix classification for integer inputs in [-9,9] with fourth smoothing in [-1,1] and a kernel-certified finite exclusion of the remaining seven-column pattern, importing the proved bridge from actual histories and the five-column candidate cover from EightCarryMaximalWidth. Terminal overflow carries are included, later widths are unrestricted, and ordinary iteration continues after palindromes. No optimal observation count for the first three pairs, full pair recovery at arbitrary width, individual initial-digit reconstruction, or palindrome-avoidance conclusion is claimed.
+
+- Root module(s): `P196.EightCarryThreePairSharp.Sharpness`
+- 82 modules, 7 checked endpoints
+- Main endpoints: `EightCarryThreePairSharp.eight_carries_determine_first_three_active_pairs`, `EightCarryThreePairSharp.eight_carry_prefix_reconstruction_iff`
 
 ### Agent6CertificateCoordinateAudit
 
