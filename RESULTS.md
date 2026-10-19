@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 279 results (6092 checked endpoints — the theorems and definitions a reader should rely on — in 4772 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 280 results (6130 checked endpoints — the theorems and definitions a reader should rely on — in 4777 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (29)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (30)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (47)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -966,6 +966,65 @@ CrossWidthCollisionPaths.short_center_obstruction :
 CrossWidthCollisionPaths.long_center_obstruction :
     CrossWidthCollisionPaths.Closed 4 CrossWidthCollisionPaths.longCenterPath ∧
       ¬ CrossWidthCollisionPaths.Valid 4 CrossWidthCollisionPaths.longCenterPath
+```
+</details>
+
+### FoldedCollisionPrefixes
+
+Finite tuples containing the independent half of the collision trace uniquely parametrize ordinary common reverse-and-add targets at each specified pair of adjacent source widths. Shorter widths 2*k+2 use k+1 states and an even coefficient on the central reflected edge; shorter widths 2*k+3 use k+2 states with a reflection-fixed, even central state. These acceptance conditions are exactly full-trace validity. Extraction and reflection give exact finite-tuple and active-interval round trips, and the existing full-path realization and value-injectivity theorems give ordinary target surjectivity and tuple-value injectivity. Every edge reverses under reflection. Odd terminal successors are always unique; on the productive catalogue their existence is exactly the even terminal condition, with an explicit extension state. No target enumeration, cardinality formula, cross-width count equality, recurrence, source digit-split uniqueness, off-window function equality, orbit or Lychrel conclusion.
+
+Requires the Realization closure of `CrossWidthCollisionPaths`.
+
+- Root module(s): `P196.FoldedCollisionPrefixes.Targets`
+- 18 modules, 38 checked endpoints; main theorems: `FoldedCollisionPrefixes.even_valid_iff`, `FoldedCollisionPrefixes.odd_valid_iff`, `FoldedCollisionPrefixes.even_targets_iff`, `FoldedCollisionPrefixes.odd_targets_iff`, `FoldedCollisionPrefixes.even_value_eq_iff`, `FoldedCollisionPrefixes.odd_value_eq_iff`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+FoldedCollisionPrefixes.even_valid_iff
+    (k : Nat) (p : FoldedCollisionPrefixes.Prefix k) :
+    FoldedCollisionPrefixes.EvenAccepted k p ↔
+      CrossWidthCollisionPaths.Valid (2 * k + 2)
+        (FoldedCollisionPrefixes.evenTrace k p)
+
+FoldedCollisionPrefixes.odd_valid_iff
+    (k : Nat) (p : FoldedCollisionPrefixes.Prefix (k + 1)) :
+    FoldedCollisionPrefixes.OddAccepted k p ↔
+      CrossWidthCollisionPaths.Valid (2 * k + 3)
+        (FoldedCollisionPrefixes.oddTrace k p)
+
+FoldedCollisionPrefixes.even_targets_iff (k Y : Nat) :
+    FoldedCollisionPrefixes.CommonTarget (2 * k + 2) Y ↔
+      ∃ p : FoldedCollisionPrefixes.Prefix k,
+        FoldedCollisionPrefixes.EvenAccepted k p ∧
+        FoldedCollisionPrefixes.evenValue k p = Y
+
+FoldedCollisionPrefixes.odd_targets_iff (k Y : Nat) :
+    FoldedCollisionPrefixes.CommonTarget (2 * k + 3) Y ↔
+      ∃ p : FoldedCollisionPrefixes.Prefix (k + 1),
+        FoldedCollisionPrefixes.OddAccepted k p ∧
+        FoldedCollisionPrefixes.oddValue k p = Y
+
+FoldedCollisionPrefixes.even_value_eq_iff
+    {k : Nat} {p q : FoldedCollisionPrefixes.Prefix k}
+    (hp : FoldedCollisionPrefixes.EvenAccepted k p)
+    (hq : FoldedCollisionPrefixes.EvenAccepted k q) :
+    FoldedCollisionPrefixes.evenValue k p =
+      FoldedCollisionPrefixes.evenValue k q ↔ p = q
+
+FoldedCollisionPrefixes.odd_value_eq_iff
+    {k : Nat} {p q : FoldedCollisionPrefixes.Prefix (k + 1)}
+    (hp : FoldedCollisionPrefixes.OddAccepted k p)
+    (hq : FoldedCollisionPrefixes.OddAccepted k q) :
+    FoldedCollisionPrefixes.oddValue k p =
+      FoldedCollisionPrefixes.oddValue k q ↔ p = q
+
+FoldedCollisionPrefixes.productive_terminal_extension_iff
+    {s t : CrossWidthCollisionStates.State}
+    (hs : s ∈ CrossWidthCollisionStates.productive) :
+    (CrossWidthCollisionStates.Edge s t ∧ FoldedCollisionPrefixes.OddTerminal t) ↔
+      (FoldedCollisionPrefixes.EvenTerminal s ∧
+        t = FoldedCollisionPrefixes.terminalExtension s)
 ```
 </details>
 
