@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 232 results (5506 checked endpoints — the theorems and definitions a reader should rely on — in 4492 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 233 results (5518 checked endpoints — the theorems and definitions a reader should rely on — in 4495 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -14,7 +14,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (19)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
-7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (3)
+7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (4)
 
 ## The orbit of 196 and palindrome-prefix exclusions
 
@@ -2018,6 +2018,8 @@ Agent105.AffineDynamics.wordAt_append : ∀ (rs ss : List Agent102.RunSpec) (k :
 ## Finite abstractions and transducers
 
 Finite models whose limits are stated explicitly.
+
+- **PrefixTruncation**: every positive truncation preserves complete backward prefix edges and exact path lengths, transporting reachable positive-cycle rank obstructions to smaller widths; a nine-edge `[1]` cycle and a checked rank-zero refinement `[1, 9, 6]` show the converse fails (`P196.PrefixTruncation.Controls`, 9 modules, 12 endpoints). This concerns coefficient words and does not establish ordinary-orbit realizability or a 196 exclusion.
 
 ### Agent107FoldedTransducer
 
