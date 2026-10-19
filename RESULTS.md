@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 227 results (5444 checked endpoints — the theorems and definitions a reader should rely on — in 4481 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 228 results (5461 checked endpoints — the theorems and definitions a reader should rely on — in 4483 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -8,7 +8,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 ## Contents
 
-1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (15)
+1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (16)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (16)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (16)
@@ -295,6 +295,36 @@ Method limits, not exclusions: for 14 three-digit prefixes (112, 138, 164, 198, 
 ```lean
 forwardAdmitted_project {s p : List Nat} {x : Nat} (hx : x < 19) (h : ForwardAdmitted (s ++ [x]) p) : ForwardAdmitted s (p.take s.length)
 cycle_ok : walkOK ((z, 0) :: cycle) = true
+```
+</details>
+
+### ExactModulo99Periods
+
+For every positive ordinary decimal seed and every absolute time t >= 6, the reverse-and-add orbit has the exact modulo-99 phase 11 * ((2^(t % 6) * 5 * n) % 9). Classifies point returns and all suffix periods by divisibility by the least positive period: one for n % 9 = 0, two for n % 9 != 0 and n % 3 = 0, and six otherwise. Equal-time eventual residues agree exactly when the positive seeds agree modulo nine. The seed 100 shows that the displayed phase formula cannot be extended uniformly to time five. This is a residue classification, not periodicity or merging of integer orbits, a per-seed first-entry classification, palindrome avoidance, or a conclusion settling whether 196 is a Lychrel number.
+
+- Root module(s): `P196.ExactModulo99Periods.Main`
+- 5 modules, 17 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+namespace Agent7.ResiduePeriods
+
+open Lychrel196
+
+theorem orbit_mod99_eq_phase99 (n t : Nat)
+    (hn : 0 < n) (ht : 6 ≤ t) :
+    orbit n t % 99 = phase99 n t
+
+theorem orbit_mod99_shift_iff (n s P : Nat)
+    (hn : 0 < n) (hs : 6 ≤ s) :
+    (orbit n (s + P) % 99 = orbit n s % 99) ↔ residuePeriod n ∣ P
+
+theorem orbit_mod99_seed_iff (n m t : Nat)
+    (hn : 0 < n) (hm : 0 < m) (ht : 6 ≤ t) :
+    (orbit n t % 99 = orbit m t % 99) ↔ n % 9 = m % 9
+
+end Agent7.ResiduePeriods
 ```
 </details>
 
