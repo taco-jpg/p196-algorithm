@@ -24571,6 +24571,40 @@
     "OddPredecessorTargetCensus.length_targets_even",
     "OddPredecessorTargetCensus.length_targets_odd"
    ]
+  },
+  "AdaptiveCarryDecoding": {
+   "id": "adaptive-carry-decoding",
+   "title": "An observation-derived finite carry-total decoder without an initial width bound",
+   "scope": "Every nine ordinary decimal reverse-and-add operations grow digit sum by at most eight doublings, including seed zero. For a positive seed, any ceiling B on its first twelve total outgoing carry counts determines the sufficient observation length 9 * (Nat.log2 (11 * B) + 2), at which the exact weighted carry decoder recovers its initial digit sum. An executable list decoder computes B from the first twelve supplied entries, returns none until the required number is present, and then returns the exact initial digit sum on every actual positive-seed prefix. The first twelve observations determine a finite stopping length. Counts include the terminal carry, and ordinary iteration continues after palindromes. No external initial-width bound is required; no realizability test for arbitrary lists, initial-integer reconstruction, optimal horizon, palindrome avoidance, or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.AdaptiveCarryDecoding.Decoder"
+   ],
+   "modules": [
+    "P196.AdaptiveCarryDecoding.Bounds",
+    "P196.AdaptiveCarryDecoding.Decoder",
+    "P196.Agent104ExactMass.ProfileDynamics",
+    "P196.Agent104ExactMass.SharedProfile",
+    "P196.Agent104ExactMass.SharpProfileBounds",
+    "P196.Agent9DigitSumWindows.Agent9WindowIntervalCounts",
+    "P196.Agent9DigitSumWindows.DecimalEmbedding",
+    "P196.Agent9DigitSumWindows.ProfileIsolation",
+    "P196.Agent9DigitSumWindows.SharpUniformDecimal",
+    "P196.Agent9DigitSumWindows.SharpUniformEscape",
+    "P196.Agent9DigitSumWindows.UniformEscape",
+    "P196.CarryCountDecoding.CarryCountDecoding",
+    "P196.CarryCountGrowth.CarryCountGrowth",
+    "P196.Drafts.Agent106CongruenceCarryBudget.Agent106CarryBudget",
+    "P196.Foundations.LychrelDigitSums",
+    "P196.UniformCarryWindows.ActualCarryBudget",
+    "P196.UniformCarryWindows.LinearEnvelope",
+    "P196.UniformCarryWindows.UniformEscape"
+   ],
+   "endpoints": [
+    "AdaptiveCarryDecoding.digitSum_nine_blocks",
+    "AdaptiveCarryDecoding.digitSum_eq_decode_of_first_twelve",
+    "AdaptiveCarryDecoding.decodeList_actual_prefix",
+    "AdaptiveCarryDecoding.decodeList_terminates"
+   ]
   }
  }
 }
