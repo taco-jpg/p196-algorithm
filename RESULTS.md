@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 243 results (5626 checked endpoints — the theorems and definitions a reader should rely on — in 4533 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 244 results (5651 checked endpoints — the theorems and definitions a reader should rely on — in 4586 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (21)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (22)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (23)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (5)
@@ -818,6 +818,14 @@ Exactly eight complete carry observations are necessary and sufficient uniformly
 - Root module(s): `P196.EightCarryWidthBound.Sharpness`
 - 15 modules, 18 checked endpoints
 - Main endpoints: `EightCarryWidthBound.eight_carry_words_determine_pair_sums_of_width_le_fourteen`, `EightCarryWidthBound.eight_carry_words_determine_next_integer_of_width_le_fourteen`, `EightCarryWidthBound.WidthThirteenWitness.seven_carry_counterexample`, `EightCarryWidthBound.eight_is_exact_threshold_through_fourteen`
+
+### EightCarryMaximalWidth
+
+Sixteen is the exact largest uniform common initial decimal width bound for reconstruction from eight complete carry observations, both for every active pair coefficient of admissible words and for the next integer of canonical ordinary inputs. Eight is also the exact smallest uniform observation count over widths at most sixteen. The proof adds exact symmetric core classifications at nominal widths eleven and twelve and a complete kernel-certified seven-column prefix exclusion with a proved bridge to actual carry histories. It imports the width-fourteen upper bound, the canonical width-thirteen seven-observation collision, and the canonical width-seventeen eight-observation collision. All terminal carries are included, later widths are unrestricted, and ordinary iteration continues after a palindrome. No initial-integer injectivity, separate optimality at each individual width, arbitrary-width eight-observation reconstruction, or palindrome-avoidance result is claimed.
+
+- Root module(s): `P196.EightCarryMaximalWidth.Sharpness`
+- 71 modules, 25 checked endpoints
+- Main endpoints: `EightCarryMaximalWidth.eight_carry_words_determine_pair_sums_of_width_le_sixteen`, `EightCarryMaximalWidth.eight_carry_words_determine_next_integer_of_width_le_sixteen`, `EightCarryMaximalWidth.eight_pair_reconstruction_iff_width_le_sixteen`, `EightCarryMaximalWidth.eight_next_integer_reconstruction_iff_width_le_sixteen`, `EightCarryMaximalWidth.pair_reconstruction_up_to_sixteen_iff`, `EightCarryMaximalWidth.next_integer_reconstruction_up_to_sixteen_iff`
 
 ### Agent6CertificateCoordinateAudit
 
