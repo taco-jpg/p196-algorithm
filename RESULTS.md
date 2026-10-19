@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 275 results (6027 checked endpoints — the theorems and definitions a reader should rely on — in 4738 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 276 results (6043 checked endpoints — the theorems and definitions a reader should rely on — in 4745 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (28)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (44)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (45)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1453,6 +1453,16 @@ Among original valid exterior states at the ten even phases from zero through ei
 - Root module(s): `P196.FiniteObservationIsolation.Classification`
 - 42 modules, 11 checked endpoints
 - Endpoints: `Agent5.FiniteObservationIsolation.fractionDigits_eq_of_highValue_eq`, `Agent5.FiniteObservationIsolation.fractionDigits_add_small_tail`, `Agent5.FiniteObservationIsolation.first_high_zero_iff`, `Agent5.FiniteObservationIsolation.zero_empty_state_isolated`, `Agent5.FiniteObservationIsolation.zero_extension_carry`, `Agent5.FiniteObservationIsolation.zero_extension_low`, `Agent5.FiniteObservationIsolation.zero_extension_high`, `Agent5.FiniteObservationIsolation.zero_extension_sameObservation`, `Agent5.FiniteObservationIsolation.zero_extension_valid`, `Agent5.FiniteObservationIsolation.arbitrarily_wide_zero_all_phase_same_observation`, `Agent5.FiniteObservationIsolation.finitely_isolated_iff`
+
+### CompleteExteriorFibers
+
+*Complete exterior stream fibers have at most two valid states*
+
+Among original valid exterior states in the ten even phases from zero through eighteen, a pair of complete original low and high streams has at most two state representatives. The complete-stream predicate means equality of both literal prefixes at every cutoff, without supplying equality of the actual high carries; each high stream keeps its own numerator, word width and calculated carry in its denominator. A valid interior-phase target is the unique valid representative even when competitors may use either boundary phase, reusing the existing interior classification. The upper bound two is attained in both boundary phases zero and eighteen at every common word width m+3. Explicit valid words have first coefficients one and eleven, calculated high carries zero and one, equal low values and a high numerator and denominator that both scale by ten. Thus their two original streams agree at every cutoff. No decoder chosen with knowledge of the boundary phase and exact width at least three recovers every valid word from the two complete streams alone. A reusable fixed-phase recovery theorem allows every natural phase at most eighteen, including odd phases and nine: for words with coefficients at most eighteen, equality of the actual carry and original prefixes at a cutoff at least max of the two word lengths plus two determines the maximally phase-stripped words; original validity gives full word equality. Empty, untrimmed and zero-head words are included in the core theorem. The proof pads to one positive width, derives a low positional residue and an exact high positional value, and imports the published boundary rigidity instead of repeating its modulo-nine proof. This gives at most two valid representatives at each fixed natural phase at most eighteen. Extending only the missing boundary low-tail cases and importing the interior formula shows that, for words with coefficients at most eighteen, a low prefix at the same max-length-plus-two cutoff identifies the phase among the ten even phases; this yields the global two-state bound without an a priori width bound on complete-stream competitors. The explicit boundary carry interface permits any natural phase, while its value and stream collision interfaces retain the two boundary phases. No new normalizer or dynamics is introduced. No claim that every boundary state has a second representative, optimal finite cutoff, minimal collision width, phase recovery over odd or unrestricted phases, ordinary integer realization, equality of orbits, infinite dynamical conclusion, palindrome avoidance, or conclusion about 196 is made.
+
+- Root module(s): `P196.CompleteExteriorFibers.Obstruction`
+- 53 modules, 16 checked endpoints
+- Endpoints: `Agent5.CompleteExteriorFibers.eq_of_low_residue_highValue`, `Agent5.CompleteExteriorFibers.same_phase_core_eq_of_observation`, `Agent5.CompleteExteriorFibers.same_phase_valid_eq_of_observation`, `Agent5.CompleteExteriorFibers.same_phase_eq_of_streams_and_carry`, `Agent5.CompleteExteriorFibers.adicNumeratorDigits_even_phase`, `Agent5.CompleteExteriorFibers.low_prefix_even_phase`, `Agent5.CompleteExteriorFibers.phase_eq_of_low_prefix`, `Agent5.CompleteExteriorFibers.phase_eq_of_complete_streams`, `Agent5.CompleteExteriorFibers.same_phase_complete_fiber_at_most_two`, `Agent5.CompleteExteriorFibers.complete_fiber_at_most_two`, `Agent5.CompleteExteriorFibers.interior_complete_fiber_singleton`, `Agent5.CompleteExteriorFibers.boundary_values`, `Agent5.CompleteExteriorFibers.boundary_carries`, `Agent5.CompleteExteriorFibers.boundary_sameStreams`, `Agent5.CompleteExteriorFibers.boundary_double_fiber`, `Agent5.CompleteExteriorFibers.no_boundary_complete_decoder`
 
 ### Agent5EvenBaseAbsorption
 
