@@ -24317,6 +24317,70 @@
     "UniformCarryWindows.outgoingCarryCount_uniform_window",
     "UniformCarryWindows.outgoingCarryCount_interval_count"
    ]
+  },
+  "BidirectionalWordDecoder": {
+   "id": "bidirectional-word-decoder",
+   "title": "Sharp constructive decoding of exterior observations",
+   "scope": "An explicit total recursive decoder reconstructs a natural coefficient word from its width and its two original decimal positional values when all coefficients are at most 90, using one reconstruction step per position and no enumeration or noncomputable choice. A parameterized bound for coefficients at most 9k supports the proof. The positional pair is injective at every coefficient bound in widths zero through two, exactly through bound 100 in width three, and exactly through bound 90 at each width at least four. Explicit collisions at 101 and 91 prove necessity, with positive-head witnesses at every width at least four; the exact uniform threshold over all widths is 90. The recursive decoder correctness itself is asserted through 90, independently of the stronger width-three injectivity bound. Composing the original phase/carry and positional-value identities gives executable recovery of the whole exterior state from n+1 original low and high digits. That stream theorem retains nonneutral phases and the coefficient bound of 18, including empty, zero-head, and untrimmed words. Under the same nonneutral-phase and bound-18 assumptions, a canonical decoder receives only a cutoff parameter N and the two N+1 prefixes; it returns the phase and original stripSuffix core whenever the core length is at most N, even when phase padding makes the original width arbitrarily larger. No ordinary integer-orbit injectivity, palindrome-avoidance, or 196 conclusion is claimed.",
+   "roots": [
+    "P196.BidirectionalWordDecoder.CanonicalDecoder",
+    "P196.BidirectionalWordDecoder.Sharpness"
+   ],
+   "modules": [
+    "P196.Agent2SaturatedProfile.ReturnCertificate",
+    "P196.Agent2SaturatedProfile.TemplateStep",
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CertificateCoordinateAudit.ExteriorNormalization",
+    "P196.Agent6CertificateCoordinateAudit.OuterBounds",
+    "P196.Agent6CertificateCoordinateAudit.OuterBridge",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.BidirectionalWordDecoder.CanonicalDecoder",
+    "P196.BidirectionalWordDecoder.Numeric",
+    "P196.BidirectionalWordDecoder.Sharpness",
+    "P196.BidirectionalWordDecoder.StreamDecoder",
+    "P196.PhaseStreamRecovery.CanonicalFibers",
+    "P196.PhaseStreamRecovery.Decoder",
+    "P196.PhaseStreamRecovery.Injectivity",
+    "P196.PhaseStreamRecovery.WidthRecovery",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Values",
+    "P196.TrimmedStreamObservation.WidthRecovery"
+   ],
+   "claims": [
+    {
+     "id": "A5-BIDIRECTIONAL-WORD-DECODER",
+     "endpoints": [
+      "Agent5.BidirectionalWordDecoder.highValue_bound",
+      "Agent5.BidirectionalWordDecoder.decodeValues_length",
+      "Agent5.BidirectionalWordDecoder.decodeValues_correct",
+      "Agent5.BidirectionalWordDecoder.width_three_collision",
+      "Agent5.BidirectionalWordDecoder.width_ge_four_collision",
+      "Agent5.BidirectionalWordDecoder.values_injective_at_iff",
+      "Agent5.BidirectionalWordDecoder.values_injective_bound_iff",
+      "Agent5.BidirectionalWordDecoder.observedValues_correct",
+      "Agent5.BidirectionalWordDecoder.decodeState_correct",
+      "Agent5.BidirectionalWordDecoder.decodeCanonicalState_correct"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.BidirectionalWordDecoder.highValue_bound",
+    "Agent5.BidirectionalWordDecoder.decodeValues_length",
+    "Agent5.BidirectionalWordDecoder.decodeValues_correct",
+    "Agent5.BidirectionalWordDecoder.width_three_collision",
+    "Agent5.BidirectionalWordDecoder.width_ge_four_collision",
+    "Agent5.BidirectionalWordDecoder.values_injective_at_iff",
+    "Agent5.BidirectionalWordDecoder.values_injective_bound_iff",
+    "Agent5.BidirectionalWordDecoder.observedValues_correct",
+    "Agent5.BidirectionalWordDecoder.decodeState_correct",
+    "Agent5.BidirectionalWordDecoder.decodeCanonicalState_correct"
+   ]
   }
  }
 }

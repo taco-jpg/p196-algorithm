@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 253 results (5745 checked endpoints — the theorems and definitions a reader should rely on — in 4619 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 254 results (5755 checked endpoints — the theorems and definitions a reader should rely on — in 4623 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (23)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (27)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (28)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1133,6 +1133,16 @@ For coefficient words bounded by 18, explicit total decoders receiving only the 
 - Root module(s): `P196.PhaseStreamRecovery.CanonicalFibers`, `P196.PhaseStreamRecovery.Sharpness`
 - 23 modules, 13 checked endpoints
 - Endpoints: `Agent5.PhaseStreamRecovery.decodePhase_correct`, `Agent5.PhaseStreamRecovery.decodeHighCarry_correct`, `Agent5.PhaseStreamRecovery.phase_eq_of_stream_prefixes`, `Agent5.PhaseStreamRecovery.state_eq_of_stream_prefixes`, `Agent5.PhaseStreamRecovery.state_eq_of_streams_at_cutoff`, `Agent5.PhaseStreamRecovery.state_eq_of_common_prefixes`, `Agent5.PhaseStreamRecovery.valid_state_eq_of_common_prefixes`, `Agent5.PhaseStreamRecovery.phase_low_cutoff_sharp`, `Agent5.PhaseStreamRecovery.phase_high_cutoff_sharp`, `Agent5.PhaseStreamRecovery.stripSuffix_low_stream`, `Agent5.PhaseStreamRecovery.stripSuffix_high_stream`, `Agent5.PhaseStreamRecovery.state_streams_eq_iff`, `Agent5.PhaseStreamRecovery.all_streams_eq_iff`
+
+### BidirectionalWordDecoder
+
+*Sharp constructive decoding of exterior observations*
+
+An explicit total recursive decoder reconstructs a natural coefficient word from its width and its two original decimal positional values when all coefficients are at most 90, using one reconstruction step per position and no enumeration or noncomputable choice. A parameterized bound for coefficients at most 9k supports the proof. The positional pair is injective at every coefficient bound in widths zero through two, exactly through bound 100 in width three, and exactly through bound 90 at each width at least four. Explicit collisions at 101 and 91 prove necessity, with positive-head witnesses at every width at least four; the exact uniform threshold over all widths is 90. The recursive decoder correctness itself is asserted through 90, independently of the stronger width-three injectivity bound. Composing the original phase/carry and positional-value identities gives executable recovery of the whole exterior state from n+1 original low and high digits. That stream theorem retains nonneutral phases and the coefficient bound of 18, including empty, zero-head, and untrimmed words. Under the same nonneutral-phase and bound-18 assumptions, a canonical decoder receives only a cutoff parameter N and the two N+1 prefixes; it returns the phase and original stripSuffix core whenever the core length is at most N, even when phase padding makes the original width arbitrarily larger. No ordinary integer-orbit injectivity, palindrome-avoidance, or 196 conclusion is claimed.
+
+- Root module(s): `P196.BidirectionalWordDecoder.CanonicalDecoder`, `P196.BidirectionalWordDecoder.Sharpness`
+- 24 modules, 10 checked endpoints
+- Endpoints: `Agent5.BidirectionalWordDecoder.highValue_bound`, `Agent5.BidirectionalWordDecoder.decodeValues_length`, `Agent5.BidirectionalWordDecoder.decodeValues_correct`, `Agent5.BidirectionalWordDecoder.width_three_collision`, `Agent5.BidirectionalWordDecoder.width_ge_four_collision`, `Agent5.BidirectionalWordDecoder.values_injective_at_iff`, `Agent5.BidirectionalWordDecoder.values_injective_bound_iff`, `Agent5.BidirectionalWordDecoder.observedValues_correct`, `Agent5.BidirectionalWordDecoder.decodeState_correct`, `Agent5.BidirectionalWordDecoder.decodeCanonicalState_correct`
 
 ### Agent5EvenBaseAbsorption
 
