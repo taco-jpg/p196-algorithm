@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 229 results (5468 checked endpoints — the theorems and definitions a reader should rely on — in 4485 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 230 results (5486 checked endpoints — the theorems and definitions a reader should rely on — in 4488 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (16)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (17)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (16)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (17)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (3)
@@ -731,6 +731,14 @@ Agent10SmoothingBoundary.four_rigidity_at_five : ∀ (f : Agent10SmoothingBounda
 Agent10SmoothingBoundary.witness_zero_after : ∀ (i : Nat), 11 ≤ i → Agent10SmoothingBoundary.witness i = 0
 ```
 </details>
+
+### EightCarryWidthBound
+
+Exactly eight complete carry observations are necessary and sufficient uniformly at shared initial decimal widths at most fourteen, both for all active initial pair coefficients of admissible words and for the next integer of canonical ordinary inputs. The upper bound adds rigidity of symmetric integer series that vanish outside an initial segment of length at most ten and whose fourth smoothing has every coefficient in [-1,1], without an input coefficient bound. A kernel-certified width-thirteen pair, 9000004163209 and 9000001716109, has seven identical complete carry words but different next integers. All terminal carries are observed, later widths are unrestricted, and ordinary iteration continues after a palindrome. No initial-integer injectivity, optimality of the width-fourteen bound, separate optimality at every individual width, arbitrary-width eight-word reconstruction, or palindrome-avoidance result is claimed.
+
+- Root module(s): `P196.EightCarryWidthBound.Sharpness`
+- 15 modules, 18 checked endpoints
+- Main endpoints: `EightCarryWidthBound.eight_carry_words_determine_pair_sums_of_width_le_fourteen`, `EightCarryWidthBound.eight_carry_words_determine_next_integer_of_width_le_fourteen`, `EightCarryWidthBound.WidthThirteenWitness.seven_carry_counterexample`, `EightCarryWidthBound.eight_is_exact_threshold_through_fourteen`
 
 ### Agent6CertificateCoordinateAudit
 
