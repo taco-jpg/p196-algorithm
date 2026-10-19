@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 259 results (5825 checked endpoints — the theorems and definitions a reader should rely on — in 4656 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 260 results (5836 checked endpoints — the theorems and definitions a reader should rely on — in 4659 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (24)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (32)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (33)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1195,6 +1195,16 @@ At every nonneutral phase, every valid exterior word and every finite cutoff adm
 - Root module(s): `P196.StreamNonisolation.Obstruction`
 - 15 modules, 10 checked endpoints
 - Endpoints: `Agent5.StreamNonisolation.append_low_prefix`, `Agent5.StreamNonisolation.append_high_carry`, `Agent5.StreamNonisolation.append_high_prefix`, `Agent5.StreamNonisolation.extendWord_length`, `Agent5.StreamNonisolation.extendWord_canonical`, `Agent5.StreamNonisolation.extendWord_valid`, `Agent5.StreamNonisolation.extendWord_same_prefixes`, `Agent5.StreamNonisolation.arbitrarily_wide_valid_same_prefixes`, `Agent5.StreamNonisolation.no_finite_stream_decoder`, `Agent5.StreamNonisolation.no_finite_core_width_certificate`
+
+### UniversalPhasePrefixes
+
+*One canonical word realizes every nonneutral phase at a finite observation*
+
+For every valid exterior target at a nonneutral phase, every finite cutoff, and every lower width, one strictly longer word is simultaneously valid and maximally trimmed at all eight nonneutral phases, with the same calculated high carry and both original observed prefixes as the target. The witness appends phase padding and the odd coefficient 1 or 11; it is chosen before the alternative phase and is independent of that phase. The terminal coefficient transfers either incoming phase carry to the incoming carry of the target phase, while its position lies beyond the observed window. Generic low-prefix phase independence holds through the word width for arbitrary natural phases and coefficients. Generic high carry transfer also needs no bounds; the normalized high-prefix and high relay identities retain nonneutral phases and coefficient bound 18. Each original high denominator retains its own word width and calculated carry. Bounded intermediate statements include zero heads and untrimmed words; the main theorem uses original validity and includes the empty word and cutoff zero. At every individual valid target, finite prefixes and even the supplied actual high carry cannot certify its phase among unrestricted widths. No decoder selected for a fixed cutoff recovers every valid state phase from those three observations. The common alternative depends on the finite cutoff; equality of complete streams or agreement of future dynamical observations is not asserted. No ordinary integer-orbit reachability, palindrome-avoidance, or 196 conclusion is claimed.
+
+- Root module(s): `P196.UniversalPhasePrefixes.Obstruction`
+- 16 modules, 11 checked endpoints
+- Endpoints: `Agent5.UniversalPhasePrefixes.low_prefix_phase_independent`, `Agent5.UniversalPhasePrefixes.relay_high_carry`, `Agent5.UniversalPhasePrefixes.high_prefix_normalized`, `Agent5.UniversalPhasePrefixes.relay_high_prefix`, `Agent5.UniversalPhasePrefixes.universalWord_length`, `Agent5.UniversalPhasePrefixes.universalWord_canonical`, `Agent5.UniversalPhasePrefixes.universalWord_valid`, `Agent5.UniversalPhasePrefixes.universalWord_same_prefixes`, `Agent5.UniversalPhasePrefixes.arbitrarily_wide_all_phase_same_prefixes`, `Agent5.UniversalPhasePrefixes.no_finite_phase_certificate`, `Agent5.UniversalPhasePrefixes.no_finite_phase_decoder`
 
 ### Agent5EvenBaseAbsorption
 
