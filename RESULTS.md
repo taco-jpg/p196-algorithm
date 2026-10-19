@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 244 results (5651 checked endpoints — the theorems and definitions a reader should rely on — in 4586 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 245 results (5660 checked endpoints — the theorems and definitions a reader should rely on — in 4587 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (21)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (23)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (24)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (5)
@@ -686,6 +686,8 @@ Carry observability, carry accounting and exterior coordinates over finitely man
 - **CommonOverflowGap:** At equal initial canonical width, common first-step terminal carry one and an antisymmetric normalized old-width digit difference imply `step (step n) + 9 * step n = step (step m) + 9 * step m`; hence strict order reversal and exact ninefold gap scaling, without requiring equal second-output widths (`P196.CommonOverflowGap.Numeric`). Includes a structural value identity and the existing canonical witness; no repeated-overflow, infinite-orbit or 196 conclusion.
 
 - **CarryCountGrowth**: every positive ordinary decimal orbit has arbitrarily large outgoing carry counts after every starting time, with an explicit window from the current actual width; the count includes the terminal carry (`P196.CarryCountGrowth.CarryCountGrowth`, 3 modules, 12 endpoints). This includes the continued orbit of 196 and does not establish palindrome avoidance, carry density or convergence to infinity.
+
+- **CarryCountDecoding**: the first `Nat.log2 L + 6` total outgoing carry counts recover the initial digit sum of every positive seed of decimal width at most `L`, via an exact powers-of-two weighted decoder; equal finite histories allow different initial widths, and complete carry-count histories are equivalent to complete digit-sum histories (`P196.CarryCountDecoding.CarryCountDecoding`, 4 modules, 9 endpoints). Ordinary iteration continues after palindromes; no initial-integer reconstruction, optimal horizon or palindrome avoidance is claimed.
 
 ### Agent10CarryObservability
 
