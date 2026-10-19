@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 235 results (5540 checked endpoints — the theorems and definitions a reader should rely on — in 4501 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 236 results (5549 checked endpoints — the theorems and definitions a reader should rely on — in 4503 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -8,7 +8,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 ## Contents
 
-1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (16)
+1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (17)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (18)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (19)
@@ -19,6 +19,8 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 ## The orbit of 196 and palindrome-prefix exclusions
 
 Results about the actual orbit of 196, and the prefix-exclusion method used for it. `Core` also bundles four reviewed results on other topics (listed as its claims).
+
+- **OrbitPowerResidues:** For every positive exponent `e` and time `6 + t`, the number of distinct residues modulo 99 whose `e`-th powers match the ordinary orbit of 196 is `gcd e 6` if `gcd e 6` divides `t + 4`, and zero otherwise (`P196.OrbitPowerResidues.Main`). Gives exact modular compatibility and necessary time restrictions for actual powers, including squares, cubes, and sixth powers; compatibility does not assert that a power occurs in the integer orbit, and no palindrome or Lychrel conclusion is claimed.
 
 ### Orbit196Basics
 
