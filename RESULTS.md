@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 276 results (6043 checked endpoints — the theorems and definitions a reader should rely on — in 4745 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 277 results (6064 checked endpoints — the theorems and definitions a reader should rely on — in 4761 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (28)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (45)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (46)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1136,6 +1136,20 @@ For every initial-width bound W, requested active-prefix length J, and observati
 - Root module(s): `P196.BoundedCarryPrefixThresholds.Thresholds`
 - 113 modules, 3 checked endpoints
 - Main endpoints: `BoundedCarryPrefixThresholds.reconstruction_iff`, `BoundedCarryPrefixThresholds.reconstruction_iff_either`, `BoundedCarryPrefixThresholds.prefix_cutoff_reduction`
+
+### ExactSmallWidthCarryThresholds
+
+For each fixed positive initial width L from one through eight and every observation count K, reconstruction of all initially active pair coefficients holds exactly when K reaches the corresponding threshold below. The same thresholds characterize recovery of the next ordinary integer from canonical inputs sharing that exact initial width. The pair property ranges over all admissible profiles at that width.
+
+| Exact initial width L | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| Minimum complete carry observations | 4 | 5 | 7 | 6 | 7 | 6 | 7 | 7 |
+
+The new upper bounds at widths four and six follow from a global fourth-smoothing bound [-4,4], symmetric rigidity at width four, and a necessary two-core factorization at width six. Seven kernel certificates give one-sided prefix covers; the actual width-six reflection excludes both nonzero cores in both orientations. Earlier upper bounds at the other widths and the lower witnesses at widths one through three are imported unchanged. Five new canonical pairs at widths four through eight share one fewer observation, differ in an active initial pair coefficient, and have unequal next integers; their pair recursion represents ordinary numeric iteration at every time. Terminal carries are included, later widths are unrestricted, and iteration continues after palindromes. No exact-width minimum is asserted outside one through eight, and no original digit splitting or palindrome avoidance is claimed.
+
+- Root module(s): `P196.ExactSmallWidthCarryThresholds.Thresholds`
+- 98 modules, 21 checked endpoints
+- Main endpoints: `ExactSmallWidthCarryThresholds.pair_reconstruction_iff`, `ExactSmallWidthCarryThresholds.next_integer_reconstruction_iff`, `ExactSmallWidthCarryThresholds.exact_width_counterexample`, `ExactSmallWidthCarryThresholds.six_carry_words_determine_pair_sums_of_width_four`, `ExactSmallWidthCarryThresholds.six_carry_words_determine_pair_sums_of_width_six`
 
 ### Agent6CertificateCoordinateAudit
 
