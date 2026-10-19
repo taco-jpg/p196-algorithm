@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 274 results (6005 checked endpoints — the theorems and definitions a reader should rely on — in 4734 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 275 results (6027 checked endpoints — the theorems and definitions a reader should rely on — in 4738 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (27)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (28)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (44)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -855,6 +855,64 @@ OrdinaryImageSparsity.allBelow_cubic (N : Nat) :
 OrdinaryImageSparsity.allBelow_effectively_sparse (r N : Nat)
     (hN : 900 * r ^ 3 ≤ N) :
     r * (OrdinaryImageSparsity.allBelow N).length ≤ N
+```
+</details>
+
+### CrossWidthCollisionStates
+
+For any two canonical positive sources of different widths with the same ordinary reverse-and-add target, the paired carry-difference trace is a closed walk from (11,2,2) in an explicit finite graph. Every state in the full index range 1<=i<=L lies in an eleven-element list, and six ordinary collision pairs with longer source width at most nine realize all eleven states. The second short/long coefficient pair is exactly one of (0,1), (9,0), (10,1), and (11,2), with global witnesses for each; consequently the common target ends in 01, 11, or 21. Existing adjacent-width, outer-coefficient and ordinary witness theorems are imported. No converse for arbitrary graph walks, exact overlap census, count recurrence, optimal witness-width bound, attainment of all states or coefficient pairs at each fixed width, orbit or Lychrel conclusion.
+
+- Root module(s): `P196.CrossWidthCollisionStates.Classification`
+- 12 modules, 22 checked endpoints; main theorems: `CrossWidthCollisionStates.cross_width_state_closed_walk`, `CrossWidthCollisionStates.state_realized_iff`, `CrossWidthCollisionStates.second_pair_realized_iff`, `CrossWidthCollisionStates.cross_width_output_mod100`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+CrossWidthCollisionStates.productive_nodup :
+    CrossWidthCollisionStates.productive.Nodup
+
+CrossWidthCollisionStates.productive_length :
+    CrossWidthCollisionStates.productive.length = 11
+
+CrossWidthCollisionStates.cross_width_state_productive
+    {n m L K i : Nat} {d e : Nat → Nat}
+    (hn : DecimalDigits.Canonical n d L) (hm : DecimalDigits.Canonical m e K)
+    (hLK : L < K) (hstep : Lychrel196.step n = Lychrel196.step m)
+    (hi : 1 ≤ i) (hiL : i ≤ L) :
+    CrossWidthCollisionStates.stateAt
+      (DecimalDigits.columnSum d L) (DecimalDigits.columnSum e K) L i ∈
+        CrossWidthCollisionStates.productive
+
+CrossWidthCollisionStates.state_realized_iff (s : CrossWidthCollisionStates.State) :
+    (∃ (n m L K i : Nat) (d e : Nat → Nat),
+      DecimalDigits.Canonical n d L ∧ DecimalDigits.Canonical m e K ∧ L < K ∧
+      Lychrel196.step n = Lychrel196.step m ∧ 1 ≤ i ∧ i ≤ L ∧
+      CrossWidthCollisionStates.stateAt
+        (DecimalDigits.columnSum d L) (DecimalDigits.columnSum e K) L i = s) ↔
+    s ∈ CrossWidthCollisionStates.productive
+
+CrossWidthCollisionStates.productive_realized_small
+    (s : CrossWidthCollisionStates.State)
+    (hs : s ∈ CrossWidthCollisionStates.productive) :
+    ∃ (n m L K i : Nat) (d e : Nat → Nat),
+      DecimalDigits.Canonical n d L ∧ DecimalDigits.Canonical m e K ∧ L < K ∧
+      Lychrel196.step n = Lychrel196.step m ∧ 1 ≤ i ∧ i ≤ L ∧ K ≤ 9 ∧
+      CrossWidthCollisionStates.stateAt
+        (DecimalDigits.columnSum d L) (DecimalDigits.columnSum e K) L i = s
+
+CrossWidthCollisionStates.second_pair_realized_iff (a b : Nat) :
+    (∃ (n m L K : Nat) (d e : Nat → Nat),
+      DecimalDigits.Canonical n d L ∧ DecimalDigits.Canonical m e K ∧ L < K ∧
+      Lychrel196.step n = Lychrel196.step m ∧
+      DecimalDigits.columnSum d L 1 = a ∧ DecimalDigits.columnSum e K 1 = b) ↔
+    (a, b) ∈ CrossWidthCollisionStates.secondPairs
+
+CrossWidthCollisionStates.cross_width_output_mod100
+    {n m L K : Nat} {d e : Nat → Nat}
+    (hn : DecimalDigits.Canonical n d L) (hm : DecimalDigits.Canonical m e K)
+    (hLK : L < K) (hstep : Lychrel196.step n = Lychrel196.step m) :
+    Lychrel196.step n % 100 = 1 ∨
+      Lychrel196.step n % 100 = 11 ∨ Lychrel196.step n % 100 = 21
 ```
 </details>
 
