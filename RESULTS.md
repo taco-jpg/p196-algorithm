@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 282 results (6151 checked endpoints — the theorems and definitions a reader should rely on — in 4793 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 283 results (6197 checked endpoints — the theorems and definitions a reader should rely on — in 4798 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (30)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (31)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (49)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -1025,6 +1025,51 @@ FoldedCollisionPrefixes.productive_terminal_extension_iff
     (CrossWidthCollisionStates.Edge s t ∧ FoldedCollisionPrefixes.OddTerminal t) ↔
       (FoldedCollisionPrefixes.EvenTerminal s ∧
         t = FoldedCollisionPrefixes.terminalExtension s)
+```
+</details>
+
+### CrossWidthTargetCensus
+
+An executable duplicate-free census lists exactly the ordinary reverse-and-add outputs shared by canonical sources of widths L and L+1, for every natural L. The lists are empty at shorter widths zero and one. Productive finite-walk enumeration and the existing terminal test give exactly the accepted even prefixes. Explicit terminal extension and truncation pair these prefixes bijectively with the accepted odd prefixes; the existing target-value injectivity then gives equally many distinct outputs at shorter widths 2*k+2 and 2*k+3. Kernel-checked counts for L = 0,...,7 are 0,0,1,1,2,2,7,7, with exact first nonempty lists [121] and [1111]. No recurrence, closed cardinality formula, asymptotic estimate, source digit-split uniqueness, orbit or Lychrel conclusion.
+
+Requires `FoldedCollisionPrefixes.Targets` and the existing generic finite-product Nodup theorem from `Agent9FiniteProducts`.
+
+- Root module(s): `P196.CrossWidthTargetCensus.Census`
+- 24 modules, 46 checked endpoints; main theorems: `CrossWidthTargetCensus.mem_targets`, `CrossWidthTargetCensus.targets_nodup`, `CrossWidthTargetCensus.targets_paired_length`, `CrossWidthTargetCensus.small_target_counts`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+CrossWidthTargetCensus.mem_targets (L Y : Nat) :
+    Y ∈ CrossWidthTargetCensus.targets L ↔
+      FoldedCollisionPrefixes.CommonTarget L Y
+
+CrossWidthTargetCensus.targets_nodup (L : Nat) :
+    (CrossWidthTargetCensus.targets L).Nodup
+
+CrossWidthTargetCensus.targets_paired_length (k : Nat) :
+    (CrossWidthTargetCensus.targets (2 * k + 2)).length =
+      (CrossWidthTargetCensus.targets (2 * k + 3)).length
+
+CrossWidthTargetCensus.small_target_counts :
+    (List.range 8).map (fun L => (CrossWidthTargetCensus.targets L).length) =
+      [0, 0, 1, 1, 2, 2, 7, 7]
+
+CrossWidthTargetCensus.targets_two :
+    CrossWidthTargetCensus.targets 2 = [121]
+
+CrossWidthTargetCensus.targets_three :
+    CrossWidthTargetCensus.targets 3 = [1111]
+
+CrossWidthTargetCensus.extendEven_accepted
+    {k : Nat} {p : FoldedCollisionPrefixes.Prefix k}
+    (h : FoldedCollisionPrefixes.EvenAccepted k p) :
+    FoldedCollisionPrefixes.OddAccepted k (CrossWidthTargetCensus.extendEven p)
+
+CrossWidthTargetCensus.extendEven_truncate
+    {k : Nat} {p : FoldedCollisionPrefixes.Prefix (k + 1)}
+    (h : FoldedCollisionPrefixes.OddAccepted k p) :
+    CrossWidthTargetCensus.extendEven (CrossWidthTargetCensus.truncatePrefix p) = p
 ```
 </details>
 
