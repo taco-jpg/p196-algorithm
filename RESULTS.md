@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 257 results (5810 checked endpoints — the theorems and definitions a reader should rely on — in 4650 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 258 results (5820 checked endpoints — the theorems and definitions a reader should rely on — in 4653 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (24)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (30)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (31)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1183,6 +1183,16 @@ An explicit total recursive decoder reconstructs a natural coefficient word from
 - Root module(s): `P196.BidirectionalWordDecoder.CanonicalDecoder`, `P196.BidirectionalWordDecoder.Sharpness`
 - 24 modules, 10 checked endpoints
 - Endpoints: `Agent5.BidirectionalWordDecoder.highValue_bound`, `Agent5.BidirectionalWordDecoder.decodeValues_length`, `Agent5.BidirectionalWordDecoder.decodeValues_correct`, `Agent5.BidirectionalWordDecoder.width_three_collision`, `Agent5.BidirectionalWordDecoder.width_ge_four_collision`, `Agent5.BidirectionalWordDecoder.values_injective_at_iff`, `Agent5.BidirectionalWordDecoder.values_injective_bound_iff`, `Agent5.BidirectionalWordDecoder.observedValues_correct`, `Agent5.BidirectionalWordDecoder.decodeState_correct`, `Agent5.BidirectionalWordDecoder.decodeCanonicalState_correct`
+
+### StreamNonisolation
+
+*No finite coordinate observation isolates a canonical exterior state*
+
+At every nonneutral phase, every valid exterior word and every finite cutoff admit a strictly longer valid canonical word, beyond any supplied lower width, with the same calculated high carry and the same two original coordinate-stream prefixes. The explicit witness appends sufficiently many copies of the phase and then the phase plus one. Its terminal coefficient prevents maximal phase-suffix removal, so this is a different canonical state rather than a padded representation of the original. Generic append lemmas preserve low observations through the old width for arbitrary natural coefficients and phases; high preservation uses nonneutral phases, coefficients at most 18, and a carry-preserving final coefficient. All high expressions retain the actual word widths and calculated normalization carries in their original denominators. The main valid-word theorem includes empty words and cutoff zero; its bounded-word intermediate also permits zero heads and untrimmed inputs. Consequently no decoder of a fixed finite pair of prefixes recovers all valid states, even when chosen with knowledge of the phase and cutoff. At each individual valid state, the observations cannot certify any finite upper bound on canonical core width, even when the actual high carry is supplied. The alternative word depends on the finite cutoff; equality of complete infinite streams is not asserted. No ordinary integer-orbit reachability, palindrome-avoidance, or 196 conclusion is claimed.
+
+- Root module(s): `P196.StreamNonisolation.Obstruction`
+- 15 modules, 10 checked endpoints
+- Endpoints: `Agent5.StreamNonisolation.append_low_prefix`, `Agent5.StreamNonisolation.append_high_carry`, `Agent5.StreamNonisolation.append_high_prefix`, `Agent5.StreamNonisolation.extendWord_length`, `Agent5.StreamNonisolation.extendWord_canonical`, `Agent5.StreamNonisolation.extendWord_valid`, `Agent5.StreamNonisolation.extendWord_same_prefixes`, `Agent5.StreamNonisolation.arbitrarily_wide_valid_same_prefixes`, `Agent5.StreamNonisolation.no_finite_stream_decoder`, `Agent5.StreamNonisolation.no_finite_core_width_certificate`
 
 ### Agent5EvenBaseAbsorption
 

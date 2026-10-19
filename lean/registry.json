@@ -24605,6 +24605,60 @@
     "AdaptiveCarryDecoding.decodeList_actual_prefix",
     "AdaptiveCarryDecoding.decodeList_terminates"
    ]
+  },
+  "StreamNonisolation": {
+   "id": "stream-nonisolation",
+   "title": "No finite coordinate observation isolates a canonical exterior state",
+   "scope": "At every nonneutral phase, every valid exterior word and every finite cutoff admit a strictly longer valid canonical word, beyond any supplied lower width, with the same calculated high carry and the same two original coordinate-stream prefixes. The explicit witness appends sufficiently many copies of the phase and then the phase plus one. Its terminal coefficient prevents maximal phase-suffix removal, so this is a different canonical state rather than a padded representation of the original. Generic append lemmas preserve low observations through the old width for arbitrary natural coefficients and phases; high preservation uses nonneutral phases, coefficients at most 18, and a carry-preserving final coefficient. All high expressions retain the actual word widths and calculated normalization carries in their original denominators. The main valid-word theorem includes empty words and cutoff zero; its bounded-word intermediate also permits zero heads and untrimmed inputs. Consequently no decoder of a fixed finite pair of prefixes recovers all valid states, even when chosen with knowledge of the phase and cutoff. At each individual valid state, the observations cannot certify any finite upper bound on canonical core width, even when the actual high carry is supplied. The alternative word depends on the finite cutoff; equality of complete infinite streams is not asserted. No ordinary integer-orbit reachability, palindrome-avoidance, or 196 conclusion is claimed.",
+   "roots": [
+    "P196.StreamNonisolation.Obstruction"
+   ],
+   "modules": [
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.StreamNonisolation.Append",
+    "P196.StreamNonisolation.Extension",
+    "P196.StreamNonisolation.Obstruction",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Values",
+    "P196.TrimmedStreamObservation.LowPrefix",
+    "P196.TrimmedStreamObservation.WidthRecovery"
+   ],
+   "claims": [
+    {
+     "id": "A5-STREAM-NONISOLATION",
+     "endpoints": [
+      "Agent5.StreamNonisolation.append_low_prefix",
+      "Agent5.StreamNonisolation.append_high_carry",
+      "Agent5.StreamNonisolation.append_high_prefix",
+      "Agent5.StreamNonisolation.extendWord_length",
+      "Agent5.StreamNonisolation.extendWord_canonical",
+      "Agent5.StreamNonisolation.extendWord_valid",
+      "Agent5.StreamNonisolation.extendWord_same_prefixes",
+      "Agent5.StreamNonisolation.arbitrarily_wide_valid_same_prefixes",
+      "Agent5.StreamNonisolation.no_finite_stream_decoder",
+      "Agent5.StreamNonisolation.no_finite_core_width_certificate"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.StreamNonisolation.append_low_prefix",
+    "Agent5.StreamNonisolation.append_high_carry",
+    "Agent5.StreamNonisolation.append_high_prefix",
+    "Agent5.StreamNonisolation.extendWord_length",
+    "Agent5.StreamNonisolation.extendWord_canonical",
+    "Agent5.StreamNonisolation.extendWord_valid",
+    "Agent5.StreamNonisolation.extendWord_same_prefixes",
+    "Agent5.StreamNonisolation.arbitrarily_wide_valid_same_prefixes",
+    "Agent5.StreamNonisolation.no_finite_stream_decoder",
+    "Agent5.StreamNonisolation.no_finite_core_width_certificate"
+   ]
   }
  }
 }
