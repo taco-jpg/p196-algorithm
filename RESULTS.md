@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 266 results (5932 checked endpoints — the theorems and definitions a reader should rely on — in 4702 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 267 results (5944 checked endpoints — the theorems and definitions a reader should rely on — in 4708 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (26)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (37)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (38)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1297,6 +1297,16 @@ For every nonneutral phase c and coefficient word B bounded by 18, the existing 
 - Root module(s): `P196.FiniteExteriorHistories.Obstruction`
 - 25 modules, 18 checked endpoints
 - Endpoints: `Agent5.FiniteExteriorHistories.coefficientPrefix_stripSuffix`, `Agent5.FiniteExteriorHistories.sameObservation_take`, `Agent5.FiniteExteriorHistories.coefficientPrefix_outerNext`, `Agent5.FiniteExteriorHistories.outerNext_nonneutral`, `Agent5.FiniteExteriorHistories.outerNext_bounded`, `Agent5.FiniteExteriorHistories.outerNext_length_le`, `Agent5.FiniteExteriorHistories.outerIter_nonneutral`, `Agent5.FiniteExteriorHistories.outerIter_bounded`, `Agent5.FiniteExteriorHistories.outerIter_length_le`, `Agent5.FiniteExteriorHistories.sameObservation_of_coefficientPrefix`, `Agent5.FiniteExteriorHistories.sameObservation_step`, `Agent5.FiniteExteriorHistories.sameObservation_outerIter`, `Agent5.FiniteExteriorHistories.universalWord_same_history`, `Agent5.FiniteExteriorHistories.arbitrarily_wide_all_phase_same_history`, `Agent5.FiniteExteriorHistories.observationHistory_eq_iff`, `Agent5.FiniteExteriorHistories.no_finite_history_phase_certificate`, `Agent5.FiniteExteriorHistories.no_finite_history_core_width_certificate`, `Agent5.FiniteExteriorHistories.no_finite_history_phase_decoder`
+
+### OrdinaryExteriorHistories
+
+*Eight distinct ordinary seeds of equal width realize every finite exterior history*
+
+An ordinary observation consists of the full terminal carry of the mirrored-pair-word normalization at time t and the separate low and high prefixes of the canonical decimal digits of the accepted Lychrel196 integer orbit at time t+1. If an ordinary integer realizes an existing complementary template at a nonneutral phase, all three finite blocks have coefficients bounded by 18, and both initial bands have length at least 2*T+cut+2, these observations agree with the original exterior observation of outerIter through every t at most T. The actual carry, separate ends, original stream numerators, current exterior widths, and carry-dependent high denominators are retained. The adapter reuses the existing whole-template normalization and actual_outer_orbit; no supplied interior path, initial trimming, or extra positivity hypothesis is needed. For every nonneutral valid exterior target, finite cut and T, and lower width W, the existing all-phase exterior history construction yields one word A longer than both the target and W, initially valid and maximally trimmed at all eight phases. With g=2*T+cut+2, each phase d has a positive ordinary seed whose exact pair word is template d A [] [] g g, whose initial decimal width is 2*A.length+4*g, and whose observations through T equal the target exterior history. The same A is chosen before d. An explicit injective family indexed by Fin 8 realizes phases 2,4,6,8,10,12,14,16; all eight seeds have equal full decimal widths at every time through T+1. Reusable adapters identify the canonical digits of every ordinary successor with the full pair-word normalization and its width increment with the actual terminal carry, including zero. Equal finite ordinary histories and equal initial widths therefore preserve equal widths through the successor of the last observed transition. Literal template length gives positive realizations of the stated common width; the first positive-length phase band separates template phases and hence ordinary seeds, without assuming pairWord injective. The seeds depend on the finite cutoff and horizon. No single integer realizing an infinite exterior history, replacement of an arbitrary separately supplied integer history, optimal band length, total carry count, palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.OrdinaryExteriorHistories.Family`
+- 38 modules, 12 checked endpoints
+- Endpoints: `Agent5.OrdinaryExteriorHistories.digits_step_eq_normalize`, `Agent5.OrdinaryExteriorHistories.phase_of_nonneutral`, `Agent5.OrdinaryExteriorHistories.ordinary_step_observation_of_template`, `Agent5.OrdinaryExteriorHistories.ordinary_history_of_template`, `Agent5.OrdinaryExteriorHistories.digits_step_length`, `Agent5.OrdinaryExteriorHistories.digits_length_of_template`, `Agent5.OrdinaryExteriorHistories.positive_template_realized`, `Agent5.OrdinaryExteriorHistories.template_phase_injective`, `Agent5.OrdinaryExteriorHistories.distinct_phase_seeds`, `Agent5.OrdinaryExteriorHistories.digit_widths_of_same_history`, `Agent5.OrdinaryExteriorHistories.arbitrarily_wide_all_phase_ordinary_history`, `Agent5.OrdinaryExteriorHistories.eight_phase_ordinary_family`
 
 ### Agent5EvenBaseAbsorption
 
