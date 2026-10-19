@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 272 results (5991 checked endpoints — the theorems and definitions a reader should rely on — in 4728 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 273 results (5994 checked endpoints — the theorems and definitions a reader should rely on — in 4729 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (27)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (42)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (43)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1070,6 +1070,14 @@ The proof adds width-one and width-two upper bounds and canonical witness pairs 
 - Root module(s): `P196.CarryWidthThresholds.Thresholds`
 - 95 modules, 10 checked endpoints
 - Main endpoints: `CarryWidthThresholds.pair_reconstruction_iff`, `CarryWidthThresholds.next_integer_reconstruction_iff`
+
+### BoundedCarryPrefixThresholds
+
+For every initial-width bound W, requested active-prefix length J, and observation count K, uniform pair-prefix reconstruction holds exactly when min(widthThreshold W, prefixThreshold J) ≤ K. The imported width threshold is 0, 4, 5, 7, 8, or 9 for W equal to zero, one, two, three through eight, nine through sixteen, or at least seventeen. The imported prefix threshold is 0 for J zero, 7 for J one, 8 for J two or three, and 9 thereafter. Equivalently, the joint property holds exactly when either full bounded-width reconstruction or arbitrary-width prefix reconstruction holds. Replacing J by min(J,W) preserves the property. All positive reconstruction results and the five lower witnesses at widths one, two, three, nine, and seventeen are imported unchanged. Both the requested-prefix and initially active-index guards are retained; terminal carries are observed and later widths are unrestricted. These are thresholds for cumulative width classes and active pair coefficients, with no claim about exact individual-width minima, original digit splitting, or palindrome avoidance.
+
+- Root module(s): `P196.BoundedCarryPrefixThresholds.Thresholds`
+- 113 modules, 3 checked endpoints
+- Main endpoints: `BoundedCarryPrefixThresholds.reconstruction_iff`, `BoundedCarryPrefixThresholds.reconstruction_iff_either`, `BoundedCarryPrefixThresholds.prefix_cutoff_reduction`
 
 ### Agent6CertificateCoordinateAudit
 
