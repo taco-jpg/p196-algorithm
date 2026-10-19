@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 285 results (6220 checked endpoints — the theorems and definitions a reader should rely on — in 4809 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 286 results (6238 checked endpoints — the theorems and definitions a reader should rely on — in 4814 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (32)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (50)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -1104,6 +1104,40 @@ CrossWidthTargetRecurrence.targetCount_eq_length (L : Nat) :
 CrossWidthTargetRecurrence.small_countWindow :
     (List.range 9).map (fun k => (CrossWidthTargetRecurrence.countWindow k).1) =
       [1, 2, 7, 21, 65, 200, 616, 1897, 5842]
+```
+</details>
+
+### OrdinaryImageCensus
+
+An executable duplicate-free slice of the existing allBelow list contains exactly every ordinary reverse-and-add output of decimal width W with a positive predecessor. Write M_W for its length and J_L for the existing adjacent-source-width overlap count. The exact formulas are M_0=0, M_1=4, 2*M_(2*k+2)+2*J_(2*k+1)=27*19^k+1, and 2*M_(2*k+3)+2*J_(2*k+2)+1=189*19^k. The proof identifies the output-width census with the union of the original same-width carry-zero values and preceding-width carry-one values, with intersection exactly the unchanged common-target census. It reuses the original profile and terminal-carry counts. The arithmetic imageCount evaluator equals the complete numerical list length at every width; its first nine values are 0,4,14,93,256,1793,4872,34107,92590. No exact cumulative or arbitrary-cutoff formula, optimal density constant, asymptotic growth, optimal complexity, orbit or Lychrel conclusion.
+
+Requires `SymmetricCarryCensus.Counts`, `TerminalCarryCensus.Terminal`, `OrdinaryImageSparsity.Enumeration`, `CrossWidthTargetRecurrence.Evaluator`, and the existing canonical width interfaces. The two original coefficient-count results retain their separate source ownership.
+
+- Root module(s): `P196.OrdinaryImageCensus.Evaluator`
+- 53 modules, 18 checked endpoints; main theorems: `OrdinaryImageCensus.mem_widthTargets`, `OrdinaryImageCensus.count_balance`, `OrdinaryImageCensus.count_even`, `OrdinaryImageCensus.count_odd`, `OrdinaryImageCensus.imageCount_eq_length`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+OrdinaryImageCensus.mem_widthTargets (W Y : Nat) :
+    Y ∈ OrdinaryImageCensus.widthTargets W ↔
+      Agent101.decimalWidth Y W ∧
+        ∃ n : Nat, 0 < n ∧ Lychrel196.step n = Y
+
+OrdinaryImageCensus.count_even (k : Nat) :
+    2 * (OrdinaryImageCensus.widthTargets (2 * k + 2)).length +
+      2 * CrossWidthTargetRecurrence.targetCount (2 * k + 1) = 27 * 19 ^ k + 1
+
+OrdinaryImageCensus.count_odd (k : Nat) :
+    2 * (OrdinaryImageCensus.widthTargets (2 * k + 3)).length +
+      2 * CrossWidthTargetRecurrence.targetCount (2 * k + 2) + 1 = 189 * 19 ^ k
+
+OrdinaryImageCensus.imageCount_eq_length (W : Nat) :
+    OrdinaryImageCensus.imageCount W = (OrdinaryImageCensus.widthTargets W).length
+
+OrdinaryImageCensus.small_imageCount :
+    (List.range 9).map OrdinaryImageCensus.imageCount =
+      [0, 4, 14, 93, 256, 1793, 4872, 34107, 92590]
 ```
 </details>
 
