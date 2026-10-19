@@ -24659,6 +24659,35 @@
     "Agent5.StreamNonisolation.no_finite_stream_decoder",
     "Agent5.StreamNonisolation.no_finite_core_width_certificate"
    ]
+  },
+  "SparseProfileGrowth": {
+   "id": "sparse-profile-growth",
+   "title": "Finite support propagation and width-independent linear digit-sum growth",
+   "scope": "For every valid finite nonsymmetric decimal half-line profile, each positive next coefficient has a positive old coefficient within distance one, and every positive coefficient after t steps has a positive initial origin within distance t. A generic finite neighborhood estimate bounds bounded output mass by M * (2 * t + 1) times source mass when every positive output coefficient has such an origin. Applied to the original profile map, this gives mass (iter s t) at most 18 * (2 * t + 1) * mass s. The existing exact padded numeric bridge gives digitSum (orbit n t) at most 18 * (2 * t + 1) * digitSum n for all natural seeds and times, including seed zero. No initial-width parameter is needed, and ordinary iteration continues after palindromes. No optimal constant or slope, exact support equality, digit-sum monotonicity or positive lower growth rate, palindrome avoidance, or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.SparseProfileGrowth.NumericGrowth"
+   ],
+   "modules": [
+    "P196.Agent104ExactMass.ProfileDynamics",
+    "P196.Agent104ExactMass.SharedProfile",
+    "P196.Agent9DigitSumWindows.DecimalEmbedding",
+    "P196.Agent9DigitSumWindows.ProfileIsolation",
+    "P196.Drafts.Agent106RunBirths.OverflowBirths",
+    "P196.Drafts.Agent106RunBirths.PopulationGrowth",
+    "P196.Drafts.Agent106RunBirths.PopulationObstructions",
+    "P196.Drafts.Agent106RunBirths.UnboundedBirths",
+    "P196.Foundations.LychrelDigitSums",
+    "P196.SparseProfileGrowth.FiniteNeighborhoods",
+    "P196.SparseProfileGrowth.NumericGrowth",
+    "P196.SparseProfileGrowth.Propagation"
+   ],
+   "endpoints": [
+    "SparseProfileGrowth.phi_positive_origin",
+    "SparseProfileGrowth.iter_positive_origin",
+    "SparseProfileGrowth.mass_le_of_positive_origin",
+    "SparseProfileGrowth.mass_iter_le_linear",
+    "SparseProfileGrowth.digitSum_orbit_le_linear"
+   ]
   }
  }
 }

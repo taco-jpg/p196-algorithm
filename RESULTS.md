@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 258 results (5820 checked endpoints — the theorems and definitions a reader should rely on — in 4653 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 259 results (5825 checked endpoints — the theorems and definitions a reader should rely on — in 4656 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (24)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (31)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (32)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -778,6 +778,8 @@ Carry observability, carry accounting and exterior coordinates over finitely man
 - **UniformCarryWindows**: a width-independent weighted carry budget implies that twelve consecutive total outgoing carry counts at most `B` force initial digit sum at most `11*B`; every positive orbit has a count greater than `B` in each half-open window of length `H = sharpDigitSumEscapeBound (11*B) + 12`, and every interval of length `N` contains at least `N/H` such times (`P196.UniformCarryWindows.UniformEscape`, 16 modules, 9 endpoints). Terminal carries are included and ordinary iteration continues after palindromes; no optimal bound, density-limit existence, convergence of every carry count or palindrome avoidance is claimed.
 
 - **AdaptiveCarryDecoding**: the maximum `B` of the first twelve total outgoing carry counts determines a sufficient total observation length `9 * (Nat.log2 (11*B) + 2)` without an initial-width bound; a chronological list decoder returns the exact initial digit sum for every positive actual seed once that many observations arrive, with an explicit finite termination theorem and a nine-step growth bound (`P196.AdaptiveCarryDecoding.Decoder`, 18 modules, 4 endpoints). Terminal carries are included and ordinary iteration continues after palindromes; no arbitrary-list realizability test, initial-integer reconstruction, optimal horizon or palindrome avoidance is claimed.
+
+- **SparseProfileGrowth**: every positive coefficient after `t` actual nonsymmetric profile steps has a positive initial origin within distance `t`; a finite neighborhood mass bound and the exact integer bridge imply `digitSum (orbit n t) ≤ 18*(2*t+1)*digitSum n` for all seeds and times, including zero, independently of the initial width (`P196.SparseProfileGrowth.NumericGrowth`, 12 modules, 5 endpoints). Ordinary iteration continues after palindromes; no optimal bound, exact support equality, digit-sum monotonicity, positive lower growth rate or palindrome avoidance is claimed.
 
 ### Agent10CarryObservability
 
