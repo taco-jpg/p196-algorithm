@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 277 results (6064 checked endpoints — the theorems and definitions a reader should rely on — in 4761 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 278 results (6085 checked endpoints — the theorems and definitions a reader should rely on — in 4766 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (28)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (29)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (46)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -913,6 +913,59 @@ CrossWidthCollisionStates.cross_width_output_mod100
     (hLK : L < K) (hstep : Lychrel196.step n = Lychrel196.step m) :
     Lychrel196.step n % 100 = 1 ∨
       Lychrel196.step n % 100 = 11 ∨ Lychrel196.step n % 100 = 21
+```
+</details>
+
+### CrossWidthCollisionPaths
+
+Reflected closed paths in the collision graph arise from canonical ordinary sources of widths L and L+1 exactly when both reconstructed coefficient words have even self-reflected centers. Closed paths already reconstruct bounded symmetric words with equal positional values and exactly the supplied carry states; the center conditions make them admissible decimal digit-pair words. Their pathValue is the actual common reverse-and-add output, and at a fixed L it determines the entire finite trace 1<=i<=L. Two explicit closed paths show that the shorter and longer center requirements cannot be omitted. No uniqueness of original source digit splits or off-window path values, unrestricted-walk realization, folded-path enumeration, exact overlap census, counting recurrence, orbit or Lychrel conclusion.
+
+Requires the StateSpace and ActualTrace modules of `CrossWidthCollisionStates`.
+
+- Root module(s): `P196.CrossWidthCollisionPaths.Obstructions`
+- 14 modules, 21 checked endpoints; main theorems: `CrossWidthCollisionPaths.valid_iff_realized`, `CrossWidthCollisionPaths.pathValue_eq_step`, `CrossWidthCollisionPaths.pathValue_eq_iff`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+CrossWidthCollisionPaths.valid_iff_realized
+    (L : Nat) (f : Nat → CrossWidthCollisionStates.State) :
+    CrossWidthCollisionPaths.Valid L f ↔
+      ∃ (n m : Nat) (d e : Nat → Nat),
+        DecimalDigits.Canonical n d L ∧ DecimalDigits.Canonical m e (L + 1) ∧
+        Lychrel196.step n = Lychrel196.step m ∧
+        ∀ i, 1 ≤ i → i ≤ L →
+          CrossWidthCollisionStates.stateAt
+            (DecimalDigits.columnSum d L) (DecimalDigits.columnSum e (L + 1)) L i = f i
+
+CrossWidthCollisionPaths.closed_values_equal
+    {L : Nat} {f : Nat → CrossWidthCollisionStates.State}
+    (h : CrossWidthCollisionPaths.Closed L f) :
+    DecimalDigits.value (CrossWidthCollisionPaths.shortWord f) L =
+      DecimalDigits.value (CrossWidthCollisionPaths.longWord L f) (L + 1)
+
+CrossWidthCollisionPaths.closed_trace_recovered
+    {L : Nat} {f : Nat → CrossWidthCollisionStates.State}
+    (h : CrossWidthCollisionPaths.Closed L f) :
+    ∀ i, 1 ≤ i → i ≤ L →
+      CrossWidthCollisionStates.stateAt
+        (CrossWidthCollisionPaths.shortWord f)
+        (CrossWidthCollisionPaths.longWord L f) L i = f i
+
+CrossWidthCollisionPaths.pathValue_eq_iff
+    {L : Nat} {f g : Nat → CrossWidthCollisionStates.State}
+    (hf : CrossWidthCollisionPaths.Valid L f)
+    (hg : CrossWidthCollisionPaths.Valid L g) :
+    CrossWidthCollisionPaths.pathValue L f = CrossWidthCollisionPaths.pathValue L g ↔
+      ∀ i, 1 ≤ i → i ≤ L → f i = g i
+
+CrossWidthCollisionPaths.short_center_obstruction :
+    CrossWidthCollisionPaths.Closed 3 CrossWidthCollisionPaths.shortCenterPath ∧
+      ¬ CrossWidthCollisionPaths.Valid 3 CrossWidthCollisionPaths.shortCenterPath
+
+CrossWidthCollisionPaths.long_center_obstruction :
+    CrossWidthCollisionPaths.Closed 4 CrossWidthCollisionPaths.longCenterPath ∧
+      ¬ CrossWidthCollisionPaths.Valid 4 CrossWidthCollisionPaths.longCenterPath
 ```
 </details>
 

@@ -26171,6 +26171,53 @@
     "ExactSmallWidthCarryThresholds.pair_reconstruction_iff",
     "ExactSmallWidthCarryThresholds.next_integer_reconstruction_iff"
    ]
+  },
+  "CrossWidthCollisionPaths": {
+   "id": "cross-width-collision-paths",
+   "title": "Exact ordinary realization and uniqueness of reflected collision traces",
+   "scope": "At each specified shorter width L, Valid L f characterizes exactly the finite traces of equal-output ordinary reverse-and-add collisions between canonical sources of widths L and L+1. Closed requires L>=2, initial state (11,2,2) at both endpoints, every bounded graph edge, and reflection swapping the two encoded carry coordinates. The shorter coefficient word reads the state x coordinates; the longer word has outer coefficients one and the guarded edge coefficients inside. Closed alone gives bounded symmetric words, equal positional values, short terminal carry one, zero incoming carry at the longer last coefficient, and exact recovery of the supplied states on 1<=i<=L. Valid adds even self-reflected centers for both words, enabling the existing admissible-word realization theorem. Conversely every actual collision trace satisfies these conditions and reconstructs both original coefficient words. Its pathValue is the ordinary common output. At fixed L, two valid paths have equal pathValue exactly when their states agree throughout 1<=i<=L, by the existing injectivity of bounded symmetric coefficient values. Explicit reflected closed paths at L=3 and L=4 fail the shorter and longer center conditions respectively. Requires the StateSpace and ActualTrace modules of CrossWidthCollisionStates. No equality of path-function tails, uniqueness of original source digit splits, unrestricted graph-walk realization, finite-list folded-path enumeration, exact overlap or target census, counting recurrence, optimal sparsity constant, orbit or Lychrel conclusion is claimed.",
+   "roots": [
+    "P196.CrossWidthCollisionPaths.Obstructions"
+   ],
+   "modules": [
+    "P196.Agent101DigitSplit.Agent101DigitPairs",
+    "P196.Agent101DigitSplit.Agent101MultiplicityBounds",
+    "P196.Agent101DigitSplit.Agent101NumericFibers",
+    "P196.Agent101DigitSplit.Agent101SplitEnumeration",
+    "P196.Agent105InverseBoundaries.Agent105CrossWidth9df76b",
+    "P196.Agent105InverseBoundaries.Agent105WidthSupport9df76b",
+    "P196.CrossWidthCollisionPaths.Actual",
+    "P196.CrossWidthCollisionPaths.Obstructions",
+    "P196.CrossWidthCollisionPaths.Profiles",
+    "P196.CrossWidthCollisionPaths.Realization",
+    "P196.CrossWidthCollisionPaths.Recovery",
+    "P196.CrossWidthCollisionStates.ActualTrace",
+    "P196.CrossWidthCollisionStates.StateSpace",
+    "P196.Foundations.LychrelDigitSums"
+   ],
+   "endpoints": [
+    "CrossWidthCollisionPaths.flip",
+    "CrossWidthCollisionPaths.shortWord",
+    "CrossWidthCollisionPaths.longWord",
+    "CrossWidthCollisionPaths.Closed",
+    "CrossWidthCollisionPaths.Valid",
+    "CrossWidthCollisionPaths.closed_columns",
+    "CrossWidthCollisionPaths.closed_word_properties",
+    "CrossWidthCollisionPaths.valid_words",
+    "CrossWidthCollisionPaths.closed_terminal_carries",
+    "CrossWidthCollisionPaths.closed_values_equal",
+    "CrossWidthCollisionPaths.closed_trace_recovered",
+    "CrossWidthCollisionPaths.actual_trace_words",
+    "CrossWidthCollisionPaths.actual_trace_valid",
+    "CrossWidthCollisionPaths.pathValue",
+    "CrossWidthCollisionPaths.valid_iff_realized",
+    "CrossWidthCollisionPaths.pathValue_eq_step",
+    "CrossWidthCollisionPaths.pathValue_eq_iff",
+    "CrossWidthCollisionPaths.shortCenterPath",
+    "CrossWidthCollisionPaths.longCenterPath",
+    "CrossWidthCollisionPaths.short_center_obstruction",
+    "CrossWidthCollisionPaths.long_center_obstruction"
+   ]
   }
  }
 }
