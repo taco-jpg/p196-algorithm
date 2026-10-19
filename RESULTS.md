@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 247 results (5673 checked endpoints — the theorems and definitions a reader should rely on — in 4592 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 248 results (5686 checked endpoints — the theorems and definitions a reader should rely on — in 4597 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (18)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (22)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (24)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (25)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (6)
@@ -1091,6 +1091,16 @@ At a fixed nonneutral phase and shared width n, coefficient words bounded by 18 
 - Root module(s): `P196.TrimmedStreamObservation.Injectivity`, `P196.TrimmedStreamObservation.RegularPhases`, `P196.TrimmedStreamObservation.WidthRecovery`, `P196.TrimmedStreamObservation.Controls`, `P196.TrimmedStreamObservation.Sharpness`, `P196.TrimmedStreamObservation.LowSharpness`
 - 19 modules, 13 checked endpoints
 - Endpoints: `Agent5.TrimmedStreamObservation.cross_highValue_phase_carries`, `Agent5.TrimmedStreamObservation.low_carry_eq_of_trimmed_high`, `Agent5.TrimmedStreamObservation.exterior_eq_of_mixed_prefixes`, `Agent5.TrimmedStreamObservation.valid_exterior_eq_of_mixed_prefixes`, `Agent5.TrimmedStreamObservation.exterior_eq_of_mixed_cutoffs`, `Agent5.TrimmedStreamObservation.exterior_eq_of_mixed_prefixes_of_regular_phase`, `Agent5.TrimmedStreamObservation.exterior_eq_of_common_prefixes`, `Agent5.TrimmedStreamObservation.valid_exterior_eq_of_common_prefixes`, `Agent5.TrimmedStreamObservation.untrimmed_phase_eight_collision`, `Agent5.TrimmedStreamObservation.untrimmed_phase_ten_collision`, `Agent5.TrimmedStreamObservation.unequal_width_mixed_collision`, `Agent5.TrimmedStreamObservation.high_cutoff_sharp_with_complete_low`, `Agent5.TrimmedStreamObservation.low_cutoff_sharp_with_complete_high`
+
+### PhaseStreamRecovery
+
+*Recovering exterior phase and word from sharp finite observations*
+
+For coefficient words bounded by 18, explicit total decoders receiving only the width and the first n+1 original low and high digits recover the nonneutral phase and the actual high normalization carry. The same observations jointly identify the phase and every coefficient at a shared width n, without trimming, positive-head, or supplied carry equality assumptions; empty words and zero heads are included. Each stream uses its own phase and its own calculated high denominator. Terminally trimmed words of potentially different widths and phases are identified at any common cutoff at least max(lengths)+1, including validOuter states. At nonneutral phases, for arbitrary untrimmed bounded words, equality of both complete streams is equivalent to equal phases and equal canonical stripSuffix cores. This equivalence already holds at any finite cutoff at least max(core lengths)+1, independently of the numbers of appended phase letters. Removing the maximal phase suffix preserves every low prefix for all natural phases and every high prefix at nonneutral phases, without coefficient bounds. Each n+1 observation budget is separately sharp at every width, including zero, when the opposite cutoff stays at n+1: the same valid word at phases ten and twelve defeats low cutoff n, while phases two and twelve defeat high cutoff n. These sharpness witnesses give finite prefix collisions, not equality of complete infinite streams. No ordinary integer-orbit, reverse-and-add injectivity, palindrome-avoidance, or 196 conclusion is claimed.
+
+- Root module(s): `P196.PhaseStreamRecovery.CanonicalFibers`, `P196.PhaseStreamRecovery.Sharpness`
+- 23 modules, 13 checked endpoints
+- Endpoints: `Agent5.PhaseStreamRecovery.decodePhase_correct`, `Agent5.PhaseStreamRecovery.decodeHighCarry_correct`, `Agent5.PhaseStreamRecovery.phase_eq_of_stream_prefixes`, `Agent5.PhaseStreamRecovery.state_eq_of_stream_prefixes`, `Agent5.PhaseStreamRecovery.state_eq_of_streams_at_cutoff`, `Agent5.PhaseStreamRecovery.state_eq_of_common_prefixes`, `Agent5.PhaseStreamRecovery.valid_state_eq_of_common_prefixes`, `Agent5.PhaseStreamRecovery.phase_low_cutoff_sharp`, `Agent5.PhaseStreamRecovery.phase_high_cutoff_sharp`, `Agent5.PhaseStreamRecovery.stripSuffix_low_stream`, `Agent5.PhaseStreamRecovery.stripSuffix_high_stream`, `Agent5.PhaseStreamRecovery.state_streams_eq_iff`, `Agent5.PhaseStreamRecovery.all_streams_eq_iff`
 
 ### Agent5EvenBaseAbsorption
 

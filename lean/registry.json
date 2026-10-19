@@ -24035,6 +24035,75 @@
     "EvenTargetPredecessorParity.even_target_predecessor_parity",
     "EvenTargetPredecessorParity.ordinary_complete_even_target_parity"
    ]
+  },
+  "PhaseStreamRecovery": {
+   "id": "phase-stream-recovery",
+   "title": "Recovering exterior phase and word from sharp finite observations",
+   "scope": "For coefficient words bounded by 18, explicit total decoders receiving only the width and the first n+1 original low and high digits recover the nonneutral phase and the actual high normalization carry. The same observations jointly identify the phase and every coefficient at a shared width n, without trimming, positive-head, or supplied carry equality assumptions; empty words and zero heads are included. Each stream uses its own phase and its own calculated high denominator. Terminally trimmed words of potentially different widths and phases are identified at any common cutoff at least max(lengths)+1, including validOuter states. At nonneutral phases, for arbitrary untrimmed bounded words, equality of both complete streams is equivalent to equal phases and equal canonical stripSuffix cores. This equivalence already holds at any finite cutoff at least max(core lengths)+1, independently of the numbers of appended phase letters. Removing the maximal phase suffix preserves every low prefix for all natural phases and every high prefix at nonneutral phases, without coefficient bounds. Each n+1 observation budget is separately sharp at every width, including zero, when the opposite cutoff stays at n+1: the same valid word at phases ten and twelve defeats low cutoff n, while phases two and twelve defeat high cutoff n. These sharpness witnesses give finite prefix collisions, not equality of complete infinite streams. No ordinary integer-orbit, reverse-and-add injectivity, palindrome-avoidance, or 196 conclusion is claimed.",
+   "roots": [
+    "P196.PhaseStreamRecovery.CanonicalFibers",
+    "P196.PhaseStreamRecovery.Sharpness"
+   ],
+   "modules": [
+    "P196.Agent2SaturatedProfile.ReturnCertificate",
+    "P196.Agent2SaturatedProfile.TemplateStep",
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CertificateCoordinateAudit.ExteriorNormalization",
+    "P196.Agent6CertificateCoordinateAudit.OuterBounds",
+    "P196.Agent6CertificateCoordinateAudit.OuterBridge",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.PhaseStreamRecovery.CanonicalFibers",
+    "P196.PhaseStreamRecovery.Decoder",
+    "P196.PhaseStreamRecovery.Injectivity",
+    "P196.PhaseStreamRecovery.Sharpness",
+    "P196.PhaseStreamRecovery.WidthRecovery",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Sharpness",
+    "P196.StreamObservationInjectivity.Values",
+    "P196.TrimmedStreamObservation.LowPrefix",
+    "P196.TrimmedStreamObservation.WidthRecovery"
+   ],
+   "claims": [
+    {
+     "id": "A5-PHASE-STREAM-RECOVERY",
+     "endpoints": [
+      "Agent5.PhaseStreamRecovery.decodePhase_correct",
+      "Agent5.PhaseStreamRecovery.decodeHighCarry_correct",
+      "Agent5.PhaseStreamRecovery.phase_eq_of_stream_prefixes",
+      "Agent5.PhaseStreamRecovery.state_eq_of_stream_prefixes",
+      "Agent5.PhaseStreamRecovery.state_eq_of_streams_at_cutoff",
+      "Agent5.PhaseStreamRecovery.state_eq_of_common_prefixes",
+      "Agent5.PhaseStreamRecovery.valid_state_eq_of_common_prefixes",
+      "Agent5.PhaseStreamRecovery.phase_low_cutoff_sharp",
+      "Agent5.PhaseStreamRecovery.phase_high_cutoff_sharp",
+      "Agent5.PhaseStreamRecovery.stripSuffix_low_stream",
+      "Agent5.PhaseStreamRecovery.stripSuffix_high_stream",
+      "Agent5.PhaseStreamRecovery.state_streams_eq_iff",
+      "Agent5.PhaseStreamRecovery.all_streams_eq_iff"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.PhaseStreamRecovery.decodePhase_correct",
+    "Agent5.PhaseStreamRecovery.decodeHighCarry_correct",
+    "Agent5.PhaseStreamRecovery.phase_eq_of_stream_prefixes",
+    "Agent5.PhaseStreamRecovery.state_eq_of_stream_prefixes",
+    "Agent5.PhaseStreamRecovery.state_eq_of_streams_at_cutoff",
+    "Agent5.PhaseStreamRecovery.state_eq_of_common_prefixes",
+    "Agent5.PhaseStreamRecovery.valid_state_eq_of_common_prefixes",
+    "Agent5.PhaseStreamRecovery.phase_low_cutoff_sharp",
+    "Agent5.PhaseStreamRecovery.phase_high_cutoff_sharp",
+    "Agent5.PhaseStreamRecovery.stripSuffix_low_stream",
+    "Agent5.PhaseStreamRecovery.stripSuffix_high_stream",
+    "Agent5.PhaseStreamRecovery.state_streams_eq_iff",
+    "Agent5.PhaseStreamRecovery.all_streams_eq_iff"
+   ]
   }
  }
 }
