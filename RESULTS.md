@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 234 results (5533 checked endpoints — the theorems and definitions a reader should rely on — in 4498 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 235 results (5540 checked endpoints — the theorems and definitions a reader should rely on — in 4501 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (16)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (17)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (18)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (19)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -601,6 +601,13 @@ P196.Agent51.pairWord : Nat → Nat → Nat → Nat
 P196.Agent51.inputDigit_bounded : ∀ (L k i : Nat), P196.Agent51.inputDigit L k i ≤ 9
 ```
 </details>
+
+### ZeroEndingPredecessorParity
+
+For every positive canonical target Y ending in zero, the complete positive ordinary reverse-and-add predecessor fiber has odd cardinality exactly when Y / 2 is a palindrome. Decimal reversal pairs all nonfixed predecessors; the fixed-point sublist is exactly [Y / 2] or empty. All source widths are included. No infinite-orbit or 196-orbit conclusion.
+
+- Root module(s): `P196.ZeroEndingPredecessorParity.Integration`
+- 19 modules, 7 checked endpoints; main theorem: `ZeroEndingPredecessorParity.predecessor_count_parity`
 
 ## Carries: what carry sequences reveal and how they evolve
 
