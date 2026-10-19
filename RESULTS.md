@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 269 results (5957 checked endpoints — the theorems and definitions a reader should rely on — in 4716 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 270 results (5974 checked endpoints — the theorems and definitions a reader should rely on — in 4719 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (26)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (27)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (40)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -818,6 +818,43 @@ SharpOddTargetSparsity.uniform_integer_constant_iff (c : Nat) :
 SharpOddTargetSparsity.below_effectively_sparse_nine (r N : Nat)
     (hN : 9 * r ^ 2 ≤ N) :
     r * (OddPredecessorTargetSparsity.below N).length ≤ N
+```
+</details>
+
+### OrdinaryImageSparsity
+
+An executable duplicate-free list contains exactly all ordinary reverse-and-add targets Y<N with a positive integer predecessor. If A_N is its length, then A_N^3 <= 900*N^2 for every natural cutoff N, and N>=900*r^3 implies r*A_N<=N. The proof evaluates the original shortWordsK coefficient words, removes numerical collisions, and uses their exact cumulative counts C_(2*k+1)+2=11*19^k and C_(2*k+2)+2=29*19^k. The intermediate bound is C_W^3<=9*10^(2*W). These statements cover the entire positive ordinary image. No optimal constant, exact distinct-target count formula, terminal-carry or overlap census, orbit-frequency estimate, ancestry bound, palindrome avoidance or Lychrel conclusion.
+
+Requires the `SymmetricCarryCensus` result for the original profile census and the decimal cutoff bound in `OddPredecessorTargetSparsity`.
+
+- Root module(s): `P196.OrdinaryImageSparsity.Integration`
+- 51 modules, 17 checked endpoints; main theorems: `OrdinaryImageSparsity.mem_allBelow`, `OrdinaryImageSparsity.allBelow_cubic`, `OrdinaryImageSparsity.allBelow_effectively_sparse`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+OrdinaryImageSparsity.allBelow_nodup (N : Nat) :
+    (OrdinaryImageSparsity.allBelow N).Nodup
+
+OrdinaryImageSparsity.mem_allBelow (Y N : Nat) :
+    Y ∈ OrdinaryImageSparsity.allBelow N ↔
+      Y < N ∧ ∃ n : Nat, 0 < n ∧ Lychrel196.step n = Y
+
+OrdinaryImageSparsity.profileCount_odd (k : Nat) :
+    OrdinaryImageSparsity.profileCount (2 * k + 1) + 2 = 11 * 19 ^ k
+
+OrdinaryImageSparsity.profileCount_even (k : Nat) :
+    OrdinaryImageSparsity.profileCount (2 * k + 2) + 2 = 29 * 19 ^ k
+
+OrdinaryImageSparsity.profileCount_cubic (W : Nat) :
+    OrdinaryImageSparsity.profileCount W ^ 3 ≤ 9 * 10 ^ (2 * W)
+
+OrdinaryImageSparsity.allBelow_cubic (N : Nat) :
+    (OrdinaryImageSparsity.allBelow N).length ^ 3 ≤ 900 * N ^ 2
+
+OrdinaryImageSparsity.allBelow_effectively_sparse (r N : Nat)
+    (hN : 900 * r ^ 3 ≤ N) :
+    r * (OrdinaryImageSparsity.allBelow N).length ≤ N
 ```
 </details>
 
