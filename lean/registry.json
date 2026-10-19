@@ -23389,6 +23389,33 @@
     "LowDigitSumTermination.threshold_control_190",
     "LowDigitSumTermination.lychrel_orbit_digitSum_ge_ten"
    ]
+  },
+  "CarryCountGrowth": {
+   "id": "carry-count-growth",
+   "title": "Unbounded outgoing carry counts with explicit escape windows",
+   "scope": "For every positive ordinary decimal reverse-and-add orbit, the number of outgoing carry positions in a single step exceeds every prescribed bound after every starting time. The numerical count is identified with the literal canonical column count, including the terminal carry. A large initial digit sum forces an escape within 2 * L + 3 input times, and the existing digit-sum escape bound yields an explicit window depending only on the current actual decimal width and the requested count threshold. Includes the ordinary orbit of 196 continued after any palindrome. No palindrome avoidance, Lychrel-existence result, optimal window, carry-density bound, or convergence of carry counts to infinity is claimed.",
+   "roots": [
+    "P196.CarryCountGrowth.CarryCountGrowth"
+   ],
+   "modules": [
+    "P196.CarryCountGrowth.CarryCountGrowth",
+    "P196.Drafts.Agent106CongruenceCarryBudget.Agent106CarryBudget",
+    "P196.Foundations.LychrelDigitSums"
+   ],
+   "endpoints": [
+    "CarryCountGrowth.outgoingCarryCount_zero",
+    "CarryCountGrowth.outgoingCarryCount_of_canonical",
+    "CarryCountGrowth.outgoingCarryCount_balance",
+    "CarryCountGrowth.outgoingCarryCount_le_decimalLength",
+    "CarryCountGrowth.digitSum_twice_upper_bound_of_canonical",
+    "CarryCountGrowth.outgoingCarryCount_escape_of_large_digitSum",
+    "CarryCountGrowth.outgoingCarryCount_escape_of_canonical",
+    "CarryCountGrowth.outgoingCarryCount_escape",
+    "CarryCountGrowth.outgoingCarryCount_window",
+    "CarryCountGrowth.outgoingCarryCount_unbounded_after",
+    "CarryCountGrowth.not_eventually_bounded_outgoingCarryCount",
+    "CarryCountGrowth.outgoingCarryCount_196_unbounded_after"
+   ]
   }
  }
 }
