@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 265 results (5917 checked endpoints — the theorems and definitions a reader should rely on — in 4690 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 266 results (5932 checked endpoints — the theorems and definitions a reader should rely on — in 4702 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (26)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (36)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (37)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1002,6 +1002,14 @@ The exact uniform complete-carry observation threshold is zero for an empty init
 - Root module(s): `P196.CarryPrefixThresholds.Thresholds`
 - 93 modules, 14 checked endpoints
 - Main endpoints: `CarryPrefixThresholds.seven_carries_determine_exterior_pair`, `CarryPrefixThresholds.SevenCarryWitness.seven_carry_counterexample`, `CarryPrefixThresholds.prefix_reconstruction_iff`
+
+### SevenCarryMaximalWidth
+
+Seven complete carry observations determine every active initial pair coefficient and the next ordinary integer uniformly over common positive initial widths at most W exactly when W ≤ 8. After removing the already recovered exterior coefficient, the proof classifies symmetric residuals of width at most six under a fourth-smoothing bound in [-2,2]. Only two signed nonzero profiles at residual width five remain; kernel-certified finite coverage, center parity, and the reflected fifth coefficient exclude their actual width-seven realizations. The existing canonical width-nine witness supplies both lower bounds without another witness computation. The algebraic classifications are necessary conditions and the finite lists are one-sided covers. Terminal carries are observed, later widths are unrestricted, and ordinary iteration continues after palindromes. The observation count is fixed at seven; no minimum-observation-count, initial-integer-injectivity, or palindrome-avoidance claim is made.
+
+- Root module(s): `P196.SevenCarryMaximalWidth.Sharpness`
+- 92 modules, 15 checked endpoints
+- Main endpoints: `SevenCarryMaximalWidth.seven_carry_words_determine_pair_sums_of_width_le_eight`, `SevenCarryMaximalWidth.seven_pair_reconstruction_iff_width_le_eight`, `SevenCarryMaximalWidth.seven_next_integer_reconstruction_iff_width_le_eight`
 
 ### Agent6CertificateCoordinateAudit
 
