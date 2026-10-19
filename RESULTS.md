@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 260 results (5836 checked endpoints — the theorems and definitions a reader should rely on — in 4659 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 261 results (5858 checked endpoints — the theorems and definitions a reader should rely on — in 4665 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (24)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (25)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (33)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -754,6 +754,42 @@ OddPredecessorTargetCensus.length_targets_even (k : Nat) :
 
 OddPredecessorTargetCensus.length_targets_odd (k : Nat) :
     (OddPredecessorTargetCensus.targets (2 * k + 5)).length = 505 * 10 ^ k
+```
+</details>
+
+### OddPredecessorTargetSparsity
+
+Executable duplicate-free lists enumerate exactly the positive targets with odd complete ordinary reverse-and-add predecessor cardinality below every decimal power and every exclusive numerical cutoff. For the count S_W below 10^W, the exact cumulative identities are 9*S_(2*k+4)+29=1505*10^k and 9*S_(2*k+3)+29=605*10^k, with initial counts 0, 4, 14 and 64. The bound S_W^2 <= 5*10^W holds at all decimal powers, and integer constant four fails at width three. For the count A_N below an arbitrary cutoff N, A_N^2 <= 50*N and N >= 50*r^2 imply r*A_N <= N. A finite kernel certificate gives A_2000=124, ruling out constant five at arbitrary cutoffs. Constant fifty is not claimed optimal. No real-analysis limit API, orbit-frequency, ancestry or Lychrel conclusion.
+
+- Root module(s): `P196.OddPredecessorTargetSparsity.Integration`
+- 39 modules, 22 checked endpoints; main theorems: `OddPredecessorTargetSparsity.mem_below`, `OddPredecessorTargetSparsity.below_quadratic`, `OddPredecessorTargetSparsity.below_effectively_sparse`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+OddPredecessorTargetSparsity.mem_below (Y : Nat) (e : Nat → Nat) (K N : Nat)
+    (hY : DecimalDigits.Canonical Y e K) :
+    Y ∈ OddPredecessorTargetSparsity.below N ↔
+      Y < N ∧ (Agent105Predecessors9df76b.predecessors e K).length % 2 = 1
+
+OddPredecessorTargetSparsity.belowPower_count_even (k : Nat) :
+    9 * (OddPredecessorTargetSparsity.belowPower (2 * k + 4)).length + 29 = 1505 * 10 ^ k
+
+OddPredecessorTargetSparsity.belowPower_count_odd (k : Nat) :
+    9 * (OddPredecessorTargetSparsity.belowPower (2 * k + 3)).length + 29 = 605 * 10 ^ k
+
+OddPredecessorTargetSparsity.belowPower_quadratic (W : Nat) :
+    (OddPredecessorTargetSparsity.belowPower W).length ^ 2 ≤ 5 * 10 ^ W
+
+OddPredecessorTargetSparsity.below_quadratic (N : Nat) :
+    (OddPredecessorTargetSparsity.below N).length ^ 2 ≤ 50 * N
+
+OddPredecessorTargetSparsity.below_effectively_sparse (r N : Nat)
+    (hN : 50 * r ^ 2 ≤ N) :
+    r * (OddPredecessorTargetSparsity.below N).length ≤ N
+
+OddPredecessorTargetSparsity.below_two_thousand :
+    (OddPredecessorTargetSparsity.below 2000).length = 124
 ```
 </details>
 
