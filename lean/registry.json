@@ -23365,6 +23365,30 @@
     "EightCarryWidthBound.next_integer_reconstruction_up_to_fourteen_iff",
     "EightCarryWidthBound.eight_is_exact_threshold_through_fourteen"
    ]
+  },
+  "LowDigitSumTermination": {
+   "id": "low-digit-sum-termination",
+   "title": "Digit sum at most nine forces a palindrome within three steps",
+   "scope": "Every positive ordinary decimal integer with digit sum at most nine reaches a palindrome in one, two, or three reverse-and-add steps, independently of its width. Exact controls give first hit three at 180 and first hit seven at the digit-sum-ten input 190. The proof derives the exact isolated central carry and transports the resulting bounds through the existing canonical integer bridge. Consequently every iterate of a hypothetical decimal Lychrel seed has digit sum at least ten. No Lychrel seed is constructed, and no assertion decides whether the orbit of 196 reaches a palindrome.",
+   "roots": [
+    "P196.LowDigitSumTermination.Main"
+   ],
+   "modules": [
+    "P196.Foundations.LychrelDigitSums",
+    "P196.LowDigitSumTermination.CentralCarry",
+    "P196.LowDigitSumTermination.DigitMass",
+    "P196.LowDigitSumTermination.Main"
+   ],
+   "endpoints": [
+    "LowDigitSumTermination.central_carry_exact",
+    "LowDigitSumTermination.central_two_steps_palindrome",
+    "LowDigitSumTermination.central_three_steps_palindrome",
+    "LowDigitSumTermination.single_digit_terminates",
+    "LowDigitSumTermination.palindrome_within_three_of_digitSum_le_nine",
+    "LowDigitSumTermination.sharp_example_180",
+    "LowDigitSumTermination.threshold_control_190",
+    "LowDigitSumTermination.lychrel_orbit_digitSum_ge_ten"
+   ]
   }
  }
 }
