@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 224 results (5424 checked endpoints — the theorems and definitions a reader should rely on — in 4473 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 225 results (5433 checked endpoints — the theorems and definitions a reader should rely on — in 4475 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (15)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (15)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (16)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (14)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -329,6 +329,8 @@ Agent112.Admissibility.no_bounded_width_orbit : ∀ (w : Agent109.Word),
 ## One reverse-and-add step: predecessors, fibers, palindromic outputs
 
 Exact structure of a single ordinary decimal step: who can map to a given number, how many, and when the output is a palindrome.
+
+**PalindromeRuns:** Exact criterion for a canonical positive seed to remain palindromic at times `0..k`: it is initially palindromic and every digit `d` satisfies `2^k * d <= 9`. Thus every positive orbit has at most four consecutive palindromes, every five-state window contains a nonpalindrome, and every interval of `N` states has at least `N / 5` nonpalindromes (integer division). The four-state bound is attained from `1` and after `10`; no asymptotically sharp density or infinite palindrome-avoidance claim is made. Root: `P196.PalindromeRuns.Windows`; 4 modules, 9 endpoints.
 
 - `ResidualFivePredecessorCount` (`P196.ResidualFivePredecessorCount.Basic`): the executable duplicate-free `survivors r` lists exactly the members of the existing residual-five fiber having a positive ordinary predecessor of any width; `survivors 0 = [1661]` and `(survivors (r + 1)).length = P196.Agent9.InverseFibers.fib r`. Counts distinct target integers, not predecessor multiplicities; no exclusion from the orbit of 196, arbitrary inverse-depth bound, or infinite-time claim.
 - `ResidualFivePredecessorMass` (`P196.ResidualFivePredecessorMass.Basic`): the duplicate-free `predecessors r` lists exactly the positive ordinary integers `m` with `step m` in the existing residual-five fiber, with no source-width restriction; its distinct-source count satisfies `A(0) = 7`, `A(1) = 0`, and `A(r + 2) = 10*A(r + 1) + 25*A(r)`. No completeness claim for that fiber among unrestricted predecessors of its associated middle integer, or claim about the orbit of 196, is made.

@@ -23164,6 +23164,31 @@
     "P196.ResidualFivePredecessorDigitMass.predecessor_digitSum",
     "P196.ResidualFivePredecessorDigitMass.predecessor_carryCount"
    ]
+  },
+  "PalindromeRuns": {
+   "id": "palindrome-runs",
+   "title": "Exact consecutive-palindrome classification and sharp four-state bound",
+   "scope": "For every canonical positive ordinary decimal seed n with digits d, the states at times zero through k are all palindromic exactly when n is palindromic and every active digit satisfies 2^k * d i <= 9. Consequently no positive ordinary orbit has five consecutive palindromic states, every inclusive five-state window contains a nonpalindrome, and every half-open interval of N states contains at least N / 5 nonpalindromes. Kernel-checked seeds 1 and 10 attain a four-state palindrome run, including a run beginning after time zero. The sharpness concerns the run length only; no asymptotically sharp density, infinite palindrome-free orbit, or conclusion about whether 196 reaches a palindrome is claimed.",
+   "roots": [
+    "P196.PalindromeRuns.Windows"
+   ],
+   "endpoints": [
+    "PalindromeRuns.palindrome_step_iff_digits_le_four",
+    "PalindromeRuns.canonical_double_of_palindromes",
+    "PalindromeRuns.palindrome_prefix_iff",
+    "PalindromeRuns.not_five_palindromes",
+    "PalindromeRuns.nonpalindrome_first_five",
+    "PalindromeRuns.nonpalindrome_in_five",
+    "PalindromeRuns.nonpalindrome_interval_count",
+    "PalindromeRuns.four_palindromes_sharp",
+    "PalindromeRuns.positive_time_four_palindromes"
+   ],
+   "modules": [
+    "P196.Agent9DigitSumWindows.Agent9WindowIntervalCounts",
+    "P196.Foundations.LychrelDigitSums",
+    "P196.PalindromeRuns.Basic",
+    "P196.PalindromeRuns.Windows"
+   ]
   }
  }
 }
