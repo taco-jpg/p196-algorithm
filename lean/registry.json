@@ -25807,6 +25807,89 @@
     "BoundedCarryPrefixThresholds.reconstruction_iff_either",
     "BoundedCarryPrefixThresholds.prefix_cutoff_reduction"
    ]
+  },
+  "FiniteObservationIsolation": {
+   "id": "finite-observation-isolation",
+   "title": "Finite original observation isolation in all ten even exterior phases",
+   "scope": "Among original valid exterior states at the ten even phases from zero through eighteen, finite original observations isolate exactly all phase-eighteen states and the empty phase-zero state. The isolation predicate chooses one cutoff depending on the target before quantifying over every valid competitor in those ten phases, without any competing word-width bound. Observations contain the actual outgoing high normalization carry and both original literal prefixes, each with its own word width and calculated carry in the high denominator. The proof imports the existing nonisolation theorem for the eight interior phases and the phase-eighteen isolation theorem. The new lower-boundary classification proves that, for any natural phase without an upper phase bound, a valid state has first literal high output zero exactly when its phase is zero and its word is empty; this control alone isolates that state. For every nonempty valid zero-phase target and every cutoff and lower width, one arbitrarily wide canonical word works simultaneously at all ten even alternative phases, preserving the actual carry and both finite observations. The word is the existing universalWord at phase zero: append max(cutoff, lower width) zeros and then one. Nonemptiness preserves its positive first coefficient. Its validity interface allows every natural alternative phase different from one. Carry preservation allows arbitrary natural phases and unbounded coefficient words; low-prefix preservation has the same scope through the padded word width. High-prefix and joint preservation allow unbounded coefficient words at phases at most eighteen when the zero padding length is at least the cutoff. Reusable fractional prefix interfaces recover an equal-length literal output list from its highValue at positive denominators, even for improper initial fractions, and prove exact stability after replacing r/D by (scale*r+tail)/(scale*D) when D and scale are positive and 10^cutoff*tail<scale. No new normalizer, stream, or state dynamics is introduced. No optimal cutoff, isolation classification for odd target phases or phases above eighteen, equality of infinite streams, one fixed word matching all finite temporal histories, ordinary integer realization, infinite orbit, palindrome avoidance, or conclusion about 196 is claimed.",
+   "roots": [
+    "P196.FiniteObservationIsolation.Classification"
+   ],
+   "modules": [
+    "P196.Agent2SaturatedProfile.ReturnCertificate",
+    "P196.Agent2SaturatedProfile.TemplateStep",
+    "P196.Agent5ExactDigitStreams.AdicDigits",
+    "P196.Agent5ExactDigitStreams.CoordinateStreams",
+    "P196.Agent5ExactDigitStreams.DigitDefinitions",
+    "P196.Agent5ExactDigitStreams.FractionDigits",
+    "P196.Agent6CertificateCoordinateAudit.ExteriorNormalization",
+    "P196.Agent6CertificateCoordinateAudit.OuterBounds",
+    "P196.Agent6CertificateCoordinateAudit.OuterBridge",
+    "P196.Agent6CoordinateDynamics.CoordinateCycle",
+    "P196.Agent6CoordinateDynamics.CoordinateDynamics",
+    "P196.Agent6CoordinateDynamics.CoordinateSign",
+    "P196.Agent6CoordinateDynamics.ExteriorObservationInjective",
+    "P196.Agent6CoordinateDynamics.ExteriorUpdateLaw",
+    "P196.Agent6CoordinateThreshold.CoordinateThreshold",
+    "P196.Agent6CoordinateThreshold.ExteriorFactorizationProof",
+    "P196.Agent6CoordinateThreshold.OuterFinite",
+    "P196.Agent6CoordinateThreshold.TARGET",
+    "P196.Agent6NormalizedCarryAccounting.NormalizedCarry",
+    "P196.FiniteExteriorHistories.Evolution",
+    "P196.FiniteExteriorHistories.History",
+    "P196.FiniteExteriorHistories.Obstruction",
+    "P196.FiniteExteriorHistories.Prefix",
+    "P196.FiniteExteriorHistories.Reset",
+    "P196.FiniteObservationIsolation.Classification",
+    "P196.FiniteObservationIsolation.Extension",
+    "P196.FiniteObservationIsolation.Family",
+    "P196.FiniteObservationIsolation.FractionPrefixes",
+    "P196.FiniteObservationIsolation.ZeroControl",
+    "P196.PhaseEighteenIsolation.Extremal",
+    "P196.PhaseEighteenIsolation.Isolation",
+    "P196.PhaseEighteenIsolation.Padding",
+    "P196.PhaseEighteenIsolation.Quotients",
+    "P196.PhaseEighteenIsolation.Rigidity",
+    "P196.StreamNonisolation.Append",
+    "P196.StreamNonisolation.Extension",
+    "P196.StreamObservationInjectivity.Injectivity",
+    "P196.StreamObservationInjectivity.Values",
+    "P196.TrimmedStreamObservation.LowPrefix",
+    "P196.TrimmedStreamObservation.WidthRecovery",
+    "P196.UniversalPhasePrefixes.Extension",
+    "P196.UniversalPhasePrefixes.Relay"
+   ],
+   "claims": [
+    {
+     "id": "A5-FINITE-OBSERVATION-ISOLATION",
+     "endpoints": [
+      "Agent5.FiniteObservationIsolation.fractionDigits_eq_of_highValue_eq",
+      "Agent5.FiniteObservationIsolation.fractionDigits_add_small_tail",
+      "Agent5.FiniteObservationIsolation.first_high_zero_iff",
+      "Agent5.FiniteObservationIsolation.zero_empty_state_isolated",
+      "Agent5.FiniteObservationIsolation.zero_extension_carry",
+      "Agent5.FiniteObservationIsolation.zero_extension_low",
+      "Agent5.FiniteObservationIsolation.zero_extension_high",
+      "Agent5.FiniteObservationIsolation.zero_extension_sameObservation",
+      "Agent5.FiniteObservationIsolation.zero_extension_valid",
+      "Agent5.FiniteObservationIsolation.arbitrarily_wide_zero_all_phase_same_observation",
+      "Agent5.FiniteObservationIsolation.finitely_isolated_iff"
+     ]
+    }
+   ],
+   "endpoints": [
+    "Agent5.FiniteObservationIsolation.fractionDigits_eq_of_highValue_eq",
+    "Agent5.FiniteObservationIsolation.fractionDigits_add_small_tail",
+    "Agent5.FiniteObservationIsolation.first_high_zero_iff",
+    "Agent5.FiniteObservationIsolation.zero_empty_state_isolated",
+    "Agent5.FiniteObservationIsolation.zero_extension_carry",
+    "Agent5.FiniteObservationIsolation.zero_extension_low",
+    "Agent5.FiniteObservationIsolation.zero_extension_high",
+    "Agent5.FiniteObservationIsolation.zero_extension_sameObservation",
+    "Agent5.FiniteObservationIsolation.zero_extension_valid",
+    "Agent5.FiniteObservationIsolation.arbitrarily_wide_zero_all_phase_same_observation",
+    "Agent5.FiniteObservationIsolation.finitely_isolated_iff"
+   ]
   }
  }
 }

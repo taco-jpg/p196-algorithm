@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 273 results (5994 checked endpoints — the theorems and definitions a reader should rely on — in 4729 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 274 results (6005 checked endpoints — the theorems and definitions a reader should rely on — in 4734 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -11,7 +11,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (27)
-4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (43)
+4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (44)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
@@ -1385,6 +1385,16 @@ A coefficient-bounded phase-18 exterior target B is finitely isolated among all 
 - Root module(s): `P196.PhaseEighteenIsolation.Isolation`
 - 36 modules, 14 checked endpoints
 - Endpoints: `Agent5.PhaseEighteenIsolation.fractionDigits_value`, `Agent5.PhaseEighteenIsolation.low_prefix_append_value`, `Agent5.PhaseEighteenIsolation.high_prefix_append_value`, `Agent5.PhaseEighteenIsolation.rho_quotient_le_two`, `Agent5.PhaseEighteenIsolation.rho_quotient_eq_two_iff`, `Agent5.PhaseEighteenIsolation.boundary_values_rigidity`, `Agent5.PhaseEighteenIsolation.phase_padding_carry_of_le_eighteen`, `Agent5.PhaseEighteenIsolation.phase_padding_high_of_le_eighteen`, `Agent5.PhaseEighteenIsolation.sameObservation_phase_padding`, `Agent5.PhaseEighteenIsolation.stripSuffix_eq_of_valid`, `Agent5.PhaseEighteenIsolation.phase18_canonical_fiber_of_prefixes`, `Agent5.PhaseEighteenIsolation.phase18_canonical_fiber_of_observation`, `Agent5.PhaseEighteenIsolation.phase18_valid_state_isolated`, `Agent5.PhaseEighteenIsolation.phase18_high_coefficient_ten`
+
+### FiniteObservationIsolation
+
+*Finite original observation isolation in all ten even exterior phases*
+
+Among original valid exterior states at the ten even phases from zero through eighteen, finite original observations isolate exactly all phase-eighteen states and the empty phase-zero state. The isolation predicate chooses one cutoff depending on the target before quantifying over every valid competitor in those ten phases, without any competing word-width bound. Observations contain the actual outgoing high normalization carry and both original literal prefixes, each with its own word width and calculated carry in the high denominator. The proof imports the existing nonisolation theorem for the eight interior phases and the phase-eighteen isolation theorem. The new lower-boundary classification proves that, for any natural phase without an upper phase bound, a valid state has first literal high output zero exactly when its phase is zero and its word is empty; this control alone isolates that state. For every nonempty valid zero-phase target and every cutoff and lower width, one arbitrarily wide canonical word works simultaneously at all ten even alternative phases, preserving the actual carry and both finite observations. The word is the existing universalWord at phase zero: append max(cutoff, lower width) zeros and then one. Nonemptiness preserves its positive first coefficient. Its validity interface allows every natural alternative phase different from one. Carry preservation allows arbitrary natural phases and unbounded coefficient words; low-prefix preservation has the same scope through the padded word width. High-prefix and joint preservation allow unbounded coefficient words at phases at most eighteen when the zero padding length is at least the cutoff. Reusable fractional prefix interfaces recover an equal-length literal output list from its highValue at positive denominators, even for improper initial fractions, and prove exact stability after replacing r/D by (scale*r+tail)/(scale*D) when D and scale are positive and 10^cutoff*tail<scale. No new normalizer, stream, or state dynamics is introduced. No optimal cutoff, isolation classification for odd target phases or phases above eighteen, equality of infinite streams, one fixed word matching all finite temporal histories, ordinary integer realization, infinite orbit, palindrome avoidance, or conclusion about 196 is claimed.
+
+- Root module(s): `P196.FiniteObservationIsolation.Classification`
+- 42 modules, 11 checked endpoints
+- Endpoints: `Agent5.FiniteObservationIsolation.fractionDigits_eq_of_highValue_eq`, `Agent5.FiniteObservationIsolation.fractionDigits_add_small_tail`, `Agent5.FiniteObservationIsolation.first_high_zero_iff`, `Agent5.FiniteObservationIsolation.zero_empty_state_isolated`, `Agent5.FiniteObservationIsolation.zero_extension_carry`, `Agent5.FiniteObservationIsolation.zero_extension_low`, `Agent5.FiniteObservationIsolation.zero_extension_high`, `Agent5.FiniteObservationIsolation.zero_extension_sameObservation`, `Agent5.FiniteObservationIsolation.zero_extension_valid`, `Agent5.FiniteObservationIsolation.arbitrarily_wide_zero_all_phase_same_observation`, `Agent5.FiniteObservationIsolation.finitely_isolated_iff`
 
 ### Agent5EvenBaseAbsorption
 
