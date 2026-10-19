@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 264 results (5896 checked endpoints — the theorems and definitions a reader should rely on — in 4684 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 265 results (5917 checked endpoints — the theorems and definitions a reader should rely on — in 4690 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -10,7 +10,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
-3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (25)
+3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (26)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (36)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (9)
@@ -790,6 +790,34 @@ OddPredecessorTargetSparsity.below_effectively_sparse (r N : Nat)
 
 OddPredecessorTargetSparsity.below_two_thousand :
     (OddPredecessorTargetSparsity.below 2000).length = 124
+```
+</details>
+
+### SharpOddTargetSparsity
+
+Nine is the smallest natural-number constant in the uniform quadratic bound for the complete odd-predecessor target census. If A_N counts all positive ordinary reverse-and-add targets below the exclusive cutoff N whose complete predecessor cardinality is odd, then A_N^2 <= 9*N for every N. A kernel certificate gives A_200000=1269 and 1269^2>8*200000, proving that a natural-number constant c works at every cutoff exactly when c>=9. The explicit reciprocal-proportion threshold improves to N>=9*r^2. The proof uses the original coefficient families, their first one or two positional terms, finite leading-block inequalities at all ninety two-digit interval indices, and the existing exact cumulative counts. Sharpness is only among natural-number constants. No best real or rational constant, orbit-frequency, ancestry or Lychrel conclusion.
+
+- Root module(s): `P196.SharpOddTargetSparsity.Integration`
+- 45 modules, 21 checked endpoints; main theorems: `SharpOddTargetSparsity.below_quadratic_nine`, `SharpOddTargetSparsity.uniform_integer_constant_iff`, `SharpOddTargetSparsity.below_effectively_sparse_nine`
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+SharpOddTargetSparsity.below_quadratic_nine (N : Nat) :
+    (OddPredecessorTargetSparsity.below N).length ^ 2 ≤ 9 * N
+
+SharpOddTargetSparsity.below_two_hundred_thousand :
+    (OddPredecessorTargetSparsity.below 200000).length = 1269
+
+SharpOddTargetSparsity.below_quadratic_eight_fails :
+    ¬ ∀ N : Nat, (OddPredecessorTargetSparsity.below N).length ^ 2 ≤ 8 * N
+
+SharpOddTargetSparsity.uniform_integer_constant_iff (c : Nat) :
+    (∀ N : Nat, (OddPredecessorTargetSparsity.below N).length ^ 2 ≤ c * N) ↔ 9 ≤ c
+
+SharpOddTargetSparsity.below_effectively_sparse_nine (r N : Nat)
+    (hN : 9 * r ^ 2 ≤ N) :
+    r * (OddPredecessorTargetSparsity.below N).length ≤ N
 ```
 </details>
 
