@@ -18,6 +18,7 @@ The GPU engine that iterates the actual reverse-and-add orbit of 196. Each zip i
 | `lychrel196_v8.zip` | engine release |
 | `lychrel196_v8b.zip` | engine release |
 | `lychrel196_v9.zip` | engine release |
+| `lychrel196_v10.zip` | engine release (decimal pair sums in the warp windows; not yet measured on a GPU) |
 | `math_v6.zip` | math package |
 
 Computation is evidence about finitely many steps only; it does not prove anything about all times.
