@@ -332,6 +332,7 @@ Exact structure of a single ordinary decimal step: who can map to a given number
 
 - `ResidualFivePredecessorCount` (`P196.ResidualFivePredecessorCount.Basic`): the executable duplicate-free `survivors r` lists exactly the members of the existing residual-five fiber having a positive ordinary predecessor of any width; `survivors 0 = [1661]` and `(survivors (r + 1)).length = P196.Agent9.InverseFibers.fib r`. Counts distinct target integers, not predecessor multiplicities; no exclusion from the orbit of 196, arbitrary inverse-depth bound, or infinite-time claim.
 - `ResidualFivePredecessorMass` (`P196.ResidualFivePredecessorMass.Basic`): the duplicate-free `predecessors r` lists exactly the positive ordinary integers `m` with `step m` in the existing residual-five fiber, with no source-width restriction; its distinct-source count satisfies `A(0) = 7`, `A(1) = 0`, and `A(r + 2) = 10*A(r + 1) + 25*A(r)`. No completeness claim for that fiber among unrestricted predecessors of its associated middle integer, or claim about the orbit of 196, is made.
+- `ResidualFivePredecessorDigitMass` (`P196.ResidualFivePredecessorDigitMass.Basic`): every member of the existing residual-five fiber has decimal digit sum `9*r + 14`; every positive ordinary predecessor has digit sum `9*r + 7` and exactly `r` outgoing carries in any canonical representation. General digit-split mass bridges and an exact complementary-middle scan invariant are included. No unrestricted-fiber identification, orbit-of-196, or arbitrary inverse-depth claim is made.
 
 ### Agent101AllWidthMaximum
 
