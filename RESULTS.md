@@ -330,6 +330,8 @@ Agent112.Admissibility.no_bounded_width_orbit : ∀ (w : Agent109.Word),
 
 Exact structure of a single ordinary decimal step: who can map to a given number, how many, and when the output is a palindrome.
 
+- `ResidualFivePredecessorCount` (`P196.ResidualFivePredecessorCount.Basic`): the executable duplicate-free `survivors r` lists exactly the members of the existing residual-five fiber having a positive ordinary predecessor of any width; `survivors 0 = [1661]` and `(survivors (r + 1)).length = P196.Agent9.InverseFibers.fib r`. Counts distinct target integers, not predecessor multiplicities; no exclusion from the orbit of 196, arbitrary inverse-depth bound, or infinite-time claim.
+
 ### Agent101AllWidthMaximum
 
 Sharp maximum cardinality of complete positive ordinary-integer reverse-add predecessor fibers across all decimal input widths: 9 * 10 ^ (D / 2 - 1) for every target width D >= 2, and one for target width one; arbitrary duplicate-free predecessor-list upper bounds and explicit complete attaining fibers.
