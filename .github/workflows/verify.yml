@@ -2,6 +2,8 @@ name: verify
 # On every push: check only what the push changed (python3 tools/verify.py --changed <previous main>).
 # Every night and on demand: check the whole repository (python3 tools/verify.py).
 # Built Lean modules are cached between runs, so only new or changed files are compiled.
+# The cache key is unique per run: a run that times out still saves its progress (a key that
+# another run already used for the same commit cannot be saved again).
 on:
   push:
     branches: [main]
@@ -29,7 +31,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: lean/.lake
-          key: lake-${{ hashFiles('lean/lean-toolchain') }}-${{ github.sha }}
+          key: lake-${{ hashFiles('lean/lean-toolchain') }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: lake-${{ hashFiles('lean/lean-toolchain') }}-
       - name: Verify
         timeout-minutes: 330
@@ -46,4 +48,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: lean/.lake
-          key: lake-${{ hashFiles('lean/lean-toolchain') }}-${{ github.sha }}
+          key: lake-${{ hashFiles('lean/lean-toolchain') }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
