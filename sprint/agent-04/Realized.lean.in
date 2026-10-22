@@ -1,0 +1,148 @@
+import P196.Sprint.Agent04.Trap
+
+/-!
+# Sprint agent 04: cycles of the width-7 abstraction realized by actual integers
+
+`RealizedAt k n w e` says: `n` has canonical decimal digits `dg n` of width `wd n ≥ k`
+(`DecimalDigits.Canonical`), its outer `k` column sums are `w`
+(`SevenColumnProjection.wordPrefix (columnSum …) k`, the projection used by every prefix
+certificate) and the actual low-scan carry into column `wd n - k` is `e` (the boundary carry that
+`forwardPrefix` leaves free).
+
+* `realized_10097`, `closedA`, `backA_ok`, `backA_words`: the width-7 words of `orbit 10097 t` for
+  `t = 220 … 228` return to their start, and these eight actual steps (actual carries) are a closed
+  walk of the abstraction.  Hence the realized word has no rank in any `RowsClosed 7` function.
+* `realized_10151`, `backB_ok`, `backB_actual`, `trajectory_no_rank`: every width-7 word of
+  `orbit 10151 t`, `t = 5 … 80`, lies in no `RowsClosed 7` rank function: the actual trajectory is a
+  backward walk from `t = 80` to `t = 5`, continued by an abstract walk (63 steps) to the length-7 cycle.
+  `trajectory_nodup`: these 76 words are pairwise distinct (no closed walk is realized on this stretch).
+* `palindrome_81`: `orbit 10151 81` is a palindrome beginning 1337, so `no_certificate_1337_from_orbit`
+  obtains the width-7 method limit for 1337 from the actual last predecessor word.
+
+Nothing here is about 196, and a closed walk realized once is not an orbit that repeats forever.
+-/
+
+namespace Sprint04.Realized
+
+open DecimalDigits Lychrel196 SevenColumn.Certificate Agent117
+open Agent124.PrefixR Agent124.PrefixL Sprint04
+
+/-- Little-endian decimal digits (fuel bounds the number of digits). -/
+def digitsFuel : Nat → Nat → List Nat
+  | 0, _ => []
+  | f + 1, n => if n = 0 then [] else n % 10 :: digitsFuel f (n / 10)
+
+def dg (n : Nat) (i : Nat) : Nat := (digitsFuel 512 n).getD i 0
+def wd (n : Nat) : Nat := (digitsFuel 512 n).length
+
+instance (n : Nat) (d : Nat → Nat) (L : Nat) : Decidable (Canonical n d L) :=
+  inferInstanceAs (Decidable (0 < L ∧ (∀ i, i < L → d i ≤ 9) ∧ 0 < d (L - 1) ∧ value d L = n))
+
+/-- `n` is canonical with digits `dg n`, width at least `k`, outer `k`-column word `w`, and actual
+carry `e` into column `wd n - k`. -/
+def RealizedAt (k n : Nat) (w : List Nat) (e : Nat) : Prop :=
+  Canonical n (dg n) (wd n) ∧ k ≤ wd n ∧
+    SevenColumnProjection.wordPrefix (columnSum (dg n) (wd n)) k = w ∧
+    DecimalDigits.carry (columnSum (dg n) (wd n)) (wd n - k) = e
+
+instance (k n : Nat) (w : List Nat) (e : Nat) : Decidable (RealizedAt k n w e) :=
+  inferInstanceAs (Decidable (Canonical n (dg n) (wd n) ∧ k ≤ wd n ∧
+    SevenColumnProjection.wordPrefix (columnSum (dg n) (wd n)) k = w ∧
+    DecimalDigits.carry (columnSum (dg n) (wd n)) (wd n - k) = e))
+
+/-! ## A closed walk realized by the orbit of 10097, t = 220 … 228 -/
+
+def wordsA : List (List Nat) := @A_WORDS@
+def carriesA : List Nat := @A_CARRIES@
+
+theorem realized_10097 : ∀ i, i < 9 →
+    RealizedAt 7 (orbit 10097 (220 + i)) (wordsA.getD i []) (carriesA.getD i 0) := by
+  decide +kernel
+
+theorem closedA : wordsA.getD 8 [] = wordsA.getD 0 [] := by decide +kernel
+
+/-- Backward closed walk `w228 ← w227 ← … ← w220` (packed by `Agent117.unpack 7`). -/
+def backAData : List Nat := @A_BACK@
+def backA : List (List Nat × Nat) := backAData.map (unpack 7)
+
+theorem backA_words :
+    backA = (List.range 8).reverse.map (fun i => (wordsA.getD i [], carriesA.getD i 0)) := by
+  decide +kernel
+theorem backA_ok : walkOKk 7 ((wordsA.getD 8 [], 0) :: backA) = true := by decide +kernel
+theorem backA_end : (backA.getLastD (wordsA.getD 8 [], 0)).1 = wordsA.getD 8 [] := by
+  decide +kernel
+
+/-- The word realized at `t = 220` (and `t = 228`) has no rank in any `RowsClosed 7` function. -/
+theorem realized_10097_no_rank {R : List Nat → Option Nat} (rows : RowsClosed 7 R) :
+    R (wordsA.getD 0 []) = none := by
+  rw [← closedA]
+  exact R_none_of_walks rows [] backA (wordsA.getD 8 []) (wordsA.getD 8 []) 0 0
+    (by decide +kernel) rfl backA_ok backA_end (by decide +kernel)
+
+/-! ## The orbit of 10151 inside the trap, t = 5 … 80, and the palindrome at t = 81 -/
+
+def wordsB : List (List Nat) := @B_WORDS@
+def carriesB : List Nat := @B_CARRIES@
+
+theorem realized_10151 : ∀ i, i < @B_LEN@ →
+    RealizedAt 7 (orbit 10151 (5 + i)) (wordsB.getD i []) (carriesB.getD i 0) := by
+  decide +kernel
+
+theorem trajectory_nodup : wordsB.Nodup := by decide +kernel
+
+/-- `w80 ← w79 ← … ← w5` with the actual carries, then an abstract walk from `w5` to `z7`. -/
+def backBData : List Nat := @B_BACK@
+def backB : List (List Nat × Nat) := backBData.map (unpack 7)
+
+theorem backB_actual :
+    backB.take 75 = (List.range 75).reverse.map (fun i => (wordsB.getD i [], carriesB.getD i 0)) := by
+  decide +kernel
+theorem backB_ok : walkOKk 7 ((wordsB.getD 75 [], 0) :: backB) = true := by decide +kernel
+theorem backB_end : (((wordsB.getD 75 [], 0) :: backB).getLastD ([], 0)).1 = z7 := by
+  decide +kernel
+
+/-- Every width-7 word of `orbit 10151 t`, `t = 5 … 80`, has no rank in any `RowsClosed 7` function. -/
+theorem trajectory_no_rank {R : List Nat → Option Nat} (rows : RowsClosed 7 R) :
+    ∀ i, i < 76 → R (wordsB.getD i []) = none := by
+  intro i hi
+  have hall := R_none_of_mem_walk7 rows ((wordsB.getD 75 [], 0) :: backB) backB_ok backB_end
+  by_cases h75 : i = 75
+  · subst h75
+    exact hall _ List.mem_cons_self
+  · have hmem : (wordsB.getD i [], carriesB.getD i 0) ∈ backB.take 75 := by
+      rw [backB_actual]
+      simp only [List.mem_map, List.mem_reverse, List.mem_range]
+      exact ⟨i, by omega, rfl⟩
+    exact hall _ (List.mem_cons_of_mem _ (List.mem_of_mem_take hmem))
+
+theorem palindrome_81 : PalStartsL [1, 3, 3, 7] (orbit 10151 81) := by
+  refine ⟨by decide +kernel, dg (orbit 10151 81), wd (orbit 10151 81), by decide +kernel,
+    by decide +kernel, by decide +kernel⟩
+
+theorem orbit_81_value : orbit 10151 81 = @P81@ := by decide +kernel
+
+theorem w80_eq : wordsB.getD 75 [] = [1, 3, 3, 7] ++ [8, 6, 5] := by decide +kernel
+
+theorem w80_initial : wordsB.getD 75 [] ∈ initialWordsL 7 [1, 3, 3, 7] := by
+  rw [w80_eq]
+  exact mem_initialWordsL_of_full 7 [1, 3, 3, 7] [8, 6, 5] (by decide) (by decide)
+
+/-- The width-7 method limit for 1337, obtained from the actual last predecessor word
+(`orbit 10151 80`) of the palindrome `orbit 10151 81`. -/
+theorem no_certificate_1337_from_orbit {R : List Nat → Option Nat} (rows : RowsClosed 7 R)
+    (bound : Nat) : entryOK 7 R ([1, 3, 3, 7], bound) = false :=
+  entryOK_false_of_none [1, 3, 3, 7] bound w80_initial (trajectory_no_rank rows 75 (by decide))
+
+end Sprint04.Realized
+
+#print axioms Sprint04.Realized.realized_10097
+#print axioms Sprint04.Realized.closedA
+#print axioms Sprint04.Realized.backA_words
+#print axioms Sprint04.Realized.realized_10097_no_rank
+#print axioms Sprint04.Realized.realized_10151
+#print axioms Sprint04.Realized.trajectory_nodup
+#print axioms Sprint04.Realized.backB_actual
+#print axioms Sprint04.Realized.trajectory_no_rank
+#print axioms Sprint04.Realized.palindrome_81
+#print axioms Sprint04.Realized.w80_initial
+#print axioms Sprint04.Realized.no_certificate_1337_from_orbit

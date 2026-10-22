@@ -1,0 +1,41 @@
+  literal forwardPrefix cross-check on 123462 words OK (0.9s)
+k=4: valid words N=123462, edges(dedup)=185193, self-loops=0
+  |I_4| = 47980, fraction = 47980/123462 = 0.388622
+  max finite backward rank (words not in I) = 20; rank histogram tail: [26, 28, 24, 1, 1]
+  cross-check: forward closure of cyclic SCCs == peeled set: OK; nodes on a cycle in full graph = 47980
+  SCCs of I-induced subgraph: 1; sizes (desc, first 20) = [47980]
+  size multiset = [(47980, 1)]
+  every word of I lies on a cycle: True (on-cycle 47980 / 47980)
+  girth = 4; closed walks of length girth = 20; distinct cycles = 5
+  distinct cycles (enumerated, min-rotation canonical) = 5
+    [[1, 5, 10, 9], [2, 11, 1, 0], [5, 2, 3, 1], [10, 4, 6, 3]]
+    [[1, 5, 10, 10], [2, 11, 1, 1], [5, 2, 3, 2], [10, 4, 6, 4]]
+    [[1, 5, 10, 11], [2, 11, 1, 3], [5, 2, 3, 7], [10, 4, 6, 14]]
+    [[1, 5, 11, 15], [2, 11, 3, 12], [5, 2, 8, 4], [10, 4, 16, 8]]
+    [[1, 5, 11, 16], [2, 11, 3, 14], [5, 2, 8, 9], [10, 4, 16, 18]]
+  timings: {'build': 0.06, 'peel': 0.02, 'scc': 0.02, 'girth': 0.02}
+[k=4 total 1.0s]
+  literal forwardPrefix cross-check on 200000 words OK (1.8s)
+k=5: valid words N=2345778, edges(dedup)=3518667, self-loops=0
+  |I_5| = 497471, fraction = 497471/2345778 = 0.212071
+  max finite backward rank (words not in I) = 48; rank histogram tail: [253, 11, 2, 4, 5]
+  cross-check: forward closure of cyclic SCCs == peeled set: OK; nodes on a cycle in full graph = 497471
+  SCCs of I-induced subgraph: 1; sizes (desc, first 20) = [497471]
+  size multiset = [(497471, 1)]
+  every word of I lies on a cycle: True (on-cycle 497471 / 497471)
+  girth = 4; closed walks of length girth = 20; distinct cycles = 5
+  distinct cycles (enumerated, min-rotation canonical) = 5
+    [[1, 5, 10, 11, 5], [2, 11, 1, 3, 12], [5, 2, 3, 7, 4], [10, 4, 6, 14, 9]]
+    [[1, 5, 11, 15, 10], [2, 11, 3, 12, 2], [5, 2, 8, 4, 5], [10, 4, 16, 8, 11]]
+    [[1, 5, 11, 16, 14], [2, 11, 3, 14, 10], [5, 2, 8, 9, 2], [10, 4, 16, 18, 5]]
+    [[1, 5, 11, 16, 15], [2, 11, 3, 14, 11], [5, 2, 8, 9, 3], [10, 4, 16, 18, 6]]
+    [[1, 5, 11, 16, 16], [2, 11, 3, 14, 13], [5, 2, 8, 9, 8], [10, 4, 16, 18, 16]]
+  timings: {'build': 1.7, 'peel': 0.67, 'scc': 0.42, 'girth': 0.32}
+[k=5 total 5.1s]
+Task 4: prefixes considered = 8973
+  no initial word in I_4 (k=4): 5045
+  no initial word in I_5 but had one in I_4: 612
+  (total with no initial word in I_5: 5657; in I_5 but not I_4: 0)
+  first few no4: [1003, 1004, 1005, 1006, 1007, 1008, 1009, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1023]
+  first few no5_but4: [1198, 1199, 1213, 1215, 1216, 1217, 1218, 1219, 1432, 1655, 1981, 2109, 2110, 2125, 2126]
+[task4 0.1s]
