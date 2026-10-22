@@ -1,0 +1,19 @@
+# peel K R.bin            (first line of output)  +  settool diff F_K R_K  +  scc K F S D w100
+# measured 2026-10-22 on the sprint sandbox (2 cores, 8 GB)
+K=3 nodes=6498 survivors=4194 max_rank=9
+|A|=4194 |B|=4194 |A\B|=0 |B\A|=0
+3 4194 4194 14 31
+K=4 nodes=123462 survivors=47980 max_rank=20
+|A|=47980 |B|=47980 |A\B|=0 |B\A|=0
+4 47980 47980 18 52
+K=5 nodes=2345778 survivors=497471 max_rank=48
+|A|=497471 |B|=497471 |A\B|=0 |B\A|=0
+5 497471 497471 21 83
+K=6 nodes=44569782 survivors=4985132 max_rank=55
+|A|=4985132 |B|=4985132 |A\B|=0 |B\A|=0
+6 4985132 4985132 27 93
+K=7 nodes=846825858 survivors=48820141 max_rank=62
+|A|=48820141 |B|=48820141 |A\B|=0 |B\A|=0
+7 48820141 48820141 31 121
+# peel K=7: wall 156.9 s, peak RSS 2075076 KiB ; scc K=7: wall 95.4 s, peak RSS 1202004 KiB
+# columns of the scc line: K |F_K| |SCC(w100) ∩ F_K| sweeps max_BFS_distance_from_w100

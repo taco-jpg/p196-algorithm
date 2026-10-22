@@ -1,0 +1,62 @@
+{
+ "SprintAgent03": {
+  "id": "sprint-agent03-enriched-forward",
+  "title": "Unguarded enrichment of the forward prefix abstraction gains nothing; 196's prefix state lies on a cycle (k = 3..7)",
+  "scope": "Two statements about the k-column forward prefix abstraction (forwardPrefix with inner carry 0 or 1). (1) For any extra state X and any update \u03b4 : X \u2192 List Nat \u2192 Nat \u2192 X that never blocks a carry, the words of the least enriched invariant are exactly Reach w0 (proj_iff), and any enriched forward-closed set containing the start covers every Reach-word (enriched_invariant_covers, no_new_exclusion); this covers residues mod 99, width mod m, time mod 6 and the previous carry. (2) A word on a forward cycle, and every word forward-reachable from it, has no rank under any RowsClosed k rank function (rank_none_of_cycle, no_rank_of_cycleOK); the width-k projection of orbit 196 100 lies on such a cycle for k = 3..7 (kernel-checked carry witnesses), so no width-k batch entry for a k-digit prefix in its forward closure can pass entryOK (entryOK_false_3 .. entryOK_false_7). Not claimed: anything about palindromes of 196, that the forward closure equals the infinite-rank region (that was only computed), or anything at k \u2265 8.",
+  "roots": [
+   "P196.Sprint.Agent03.EnrichedNoGain",
+   "P196.Sprint.Agent03.CycleRank"
+  ],
+  "modules": [
+   "P196.Agent104P620Witness.ActualPrefix",
+   "P196.Agent104P620Witness.Agent124PrefixK",
+   "P196.Agent104P620Witness.FastInverse",
+   "P196.Agent104P620Witness.FastRowsBase",
+   "P196.Agent104P620Witness.LongRowsBase",
+   "P196.Agent104P620Witness.PalindromeBridge",
+   "P196.Agent104P620Witness.PrefixCertificate",
+   "P196.Agent104P620Witness.PrefixInverse",
+   "P196.Agent104P620Witness.ShortBoundary",
+   "P196.Agent117P2641.Agent124CodeCert",
+   "P196.Agent117P2641.Agent124FastPred",
+   "P196.Agent117P2641.Agent124LeadOne",
+   "P196.Agent117P2641.Agent124PrefixL",
+   "P196.Agent117P2641.Agent124PrefixR",
+   "P196.Agent117RemainingCycles.PrefixCycle",
+   "P196.Agent124ForwardInvariant.Agent124Forward",
+   "P196.Foundations.LychrelDigitSums",
+   "P196.Sprint.Agent03.CycleRank",
+   "P196.Sprint.Agent03.EnrichedNoGain"
+  ],
+  "claims": [
+   {
+    "id": "sprint-agent03-enriched-forward",
+    "endpoints": []
+   }
+  ],
+  "endpoints": [
+   "Sprint.Agent03.proj_iff",
+   "Sprint.Agent03.enriched_invariant_covers",
+   "Sprint.Agent03.no_new_exclusion",
+   "Sprint.Agent03.overflow_driven_no_new_exclusion",
+   "Sprint.Agent03.rank_none_of_cycle",
+   "Sprint.Agent03.no_rank_of_cycleOK",
+   "Sprint.Agent03.entryOK_false_of_cycleOK",
+   "Sprint.Agent03.no_rank_3",
+   "Sprint.Agent03.no_rank_4",
+   "Sprint.Agent03.no_rank_5",
+   "Sprint.Agent03.no_rank_6",
+   "Sprint.Agent03.no_rank_7",
+   "Sprint.Agent03.entryOK_false_3",
+   "Sprint.Agent03.entryOK_false_4",
+   "Sprint.Agent03.entryOK_false_5",
+   "Sprint.Agent03.entryOK_false_6",
+   "Sprint.Agent03.entryOK_false_7"
+  ],
+  "origin": {
+   "registered": "not registered (sprint branch)",
+   "status": "compiled and axiom-audited locally, not independently reviewed",
+   "source": []
+  }
+ }
+}
