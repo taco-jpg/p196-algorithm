@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 289 results (6263 checked endpoints — the theorems and definitions a reader should rely on — in 4827 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -9,7 +9,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 ## Contents
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
-2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (1)
+2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (3)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (51)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
@@ -361,6 +361,28 @@ Agent112.Admissibility.no_bounded_width_orbit : ∀ (w : Agent109.Word),
         (∀ (k : Nat), List.length (Agent109.orbitWord w k) = L) → False
 ```
 </details>
+
+### CertificateBounds208
+
+*LEAN-VERIFIED: exact elimination of return-certificate lower-bound search*
+
+For fixed original states 和 trimming counts, some reassignment of `lo` 和 `lo'` passes the unchanged Agent109 checker exactly when the structural phase/block equations hold 和 both total signed band gains are nonnegative. The construction computes a prefix-floor bound; the existing `Agent109.NoPal.not_stepPal` theorem supplies the redundant safety guard. Composing with the existing ordinary-integer bridge gives conditional decimal Lychrel existence directly from these reduced hypotheses. No structural cycle or accepted certificate instance is supplied.
+
+- Root: `P196.CertificateBounds208.BoundSynthesis`
+- New module count: 1; checked endpoints: 4.
+- Endpoints: `Agent208.CertificateBounds.cyclic_bounds_iff`, `Agent208.CertificateBounds.synthesize_valid`, `Agent208.CertificateBounds.bounds_exist_iff`, `Agent208.CertificateBounds.structural_cycle_existence`.
+- Report: [REPORT_208.md](REPORT_208.md).
+
+### CertificateInterface208
+
+*LEAN-VERIFIED: every accepted return certificate needs an interface of length at least 3*
+
+The unchanged original checker rejects every certificate whose interface blocks remain of length at most 2. A decreasing finite rank covers all 3048 bounded short-interface states across the eight even phases, either terminal-carry bit, 和 every permitted trim. Exact LocalOK projection 和 cyclic rank descent remove every exterior-width, center-width, band-length, or period restriction. No exclusion of wider interfaces or accepted certificate instance is asserted.
+
+- Root: `P196.CertificateInterface208.CertificateInterface`
+- New module count: 3; checked endpoints: 5.
+- Endpoints: `Agent208.Interface.rank_decreases`, `Agent208.Interface.local_rank_decreases`, `Agent208.Interface.valid_has_wide_interface`, `Agent208.Interface.checked_has_wide_interface`, `Agent208.Interface.short_interfaces_rejected`.
+- Report: [REPORT_208.md](REPORT_208.md).
 
 ## One reverse-and-add step: predecessors, fibers, palindromic outputs
 
