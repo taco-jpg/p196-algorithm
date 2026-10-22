@@ -4,7 +4,7 @@ Agent: **216**. Direction: **6**. Date: **2026-10-22**. Repository baseline: `c6
 
 ## Answer in 1 paragraph
 
-No decimal Lychrel witness or returning template is established in 这 report. **THEOREM:** the abstraction retaining only digit-length parity 和 the single central column sum 有 exactly 29 states 和 188 realizable transitions; its 13 universally safe states reduce to 3, then to none after 2 closure rounds, excluding every nonempty universal invariant based only on 那 information. **THEOREM:** a maximal centered constant run cannot grow without overflow; on overflow its exact successor length is the length of the maximal centered block over the companion alphabet \(\{a,a+9\}\), minus 1. 这 gives an exact renewal balance 和 excludes persistent centered-band constructions with no companion absorption. **THEOREM:** whole-word companion blocks in residue classes \(a=1,2,3,4\), with high outer coefficient, reach a palindrome within 2 steps; the explicit growth example \(2119\to11231\to24442\) refutes the inference that a growing center alone supplies safety. The complete proofs below distinguish 这 conclusions from existing **LEAN-VERIFIED** palindrome, center, 和 extreme-run results. Bounded checks cover all 10,467 realizable profiles of lengths 1–6, all 188 abstract transitions through 836 constructed fixtures, 1000 additional transitions, 和 1000 consecutive ordinary steps from each of 2 seeds. The remaining question is whether a bounded interface can replenish the required companion material through a full bulk-symbol cycle while preserving an actual global return.
+No decimal Lychrel witness or returning template is established in 这 report. **THEOREM:** the abstraction retaining only digit-length parity 和 the single central column sum 有 exactly 29 states 和 188 realizable transitions; its 13 universally safe states reduce to 3, then to none after 2 closure rounds, excluding every nonempty universal invariant based only on 那 information. **THEOREM:** a maximal centered constant run cannot grow without overflow; on overflow its exact successor length 是 the length of the maximal centered block over the companion alphabet \(\{a,a+9\}\), minus 1. 这 gives an exact renewal balance 和 excludes persistent centered-band constructions with no companion absorption. **THEOREM:** whole-word companion blocks in residue classes \(a=1,2,3,4\), with high outer coefficient, reach a palindrome within 2 steps; the explicit growth example \(2119\to11231\to24442\) refutes the inference that a growing center alone supplies safety. The complete proofs below distinguish 这 conclusions from existing **LEAN-VERIFIED** palindrome, center, 和 extreme-run results. Bounded checks cover all 10,467 realizable profiles of lengths 1–6, all 188 abstract transitions through 836 constructed fixtures, 1000 additional transitions, 和 1000 consecutive ordinary steps from each of 2 seeds. The remaining question is whether a bounded interface can replenish the required companion material through a full bulk-symbol cycle while preserving an actual global return.
 
 ## 1. Scope, conventions, 和 existing results
 
@@ -23,7 +23,7 @@ Append \(e_L=1\) exactly when \(c_L=1\). The output width is \(L'=L+c_L\), 和 i
 q'_i=e_i+e_{L'-1-i}.
 \]
 
-Every carry is a bit: induction from \(c_0=0\) gives \(0\le q_i+c_i\le19\), hence \(c_{i+1}\in\{0,1\}\). The carry update is explicitly
+Every carry 是 a bit: induction from \(c_0=0\) gives \(0\le q_i+c_i\le19\), hence \(c_{i+1}\in\{0,1\}\). The carry update is explicitly
 
 \[
 f(s,x)=\left\lfloor\frac{s+x}{10}\right\rfloor
@@ -36,7 +36,7 @@ x,&s=9,\\
 
 A realizable positive folded word is symmetric, 有 coefficients in \([0,18]\), 有 positive outer coefficient, 和 有 an even central coefficient at odd length. 这 conditions are sufficient: for every reflected pair choose its high digit as \(\min(q_i,9)\), its low digit as \(q_i-\min(q_i,9)\), 和 at an odd center choose \(q_i/2\). The high outer digit is positive. 这 realization is used below to ensure that abstract transitions come from actual integers.
 
-**LEAN-VERIFIED — existing repository groundwork.** The following source declarations were inspected at the baseline above. Their status is the repository's existing source/registry status; no new Lean compilation is claimed in 这 report.
+**LEAN-VERIFIED — existing repository groundwork.** The following source declarations were inspected at the baseline above. Their status 是 the repository's existing source/registry status; no new Lean compilation is claimed in 这 report.
 
 | Existing result | Exact source |
 |---|---|
@@ -61,7 +61,7 @@ For every positive canonical decimal input,
 \tag{1}
 \]
 
-这 is the existing `DecimalDigits.step_palindrome_iff`, restated with its mechanism because every later safety statement depends on both branches.
+这 是 the existing `DecimalDigits.step_palindrome_iff`, restated with its mechanism 因为 every later safety statement depends on both branches.
 
 ### No overflow
 
@@ -71,19 +71,19 @@ Assume \(c_L=0\), so reflection pairs \(i\) with \(j=L-1-i\). If the output is s
 c_i-c_j=10(c_{i+1}-c_{j+1}).
 \]
 
-The left side lies in \(\{-1,0,1\}\), while the right side is a multiple of 10. Thus
+The left side lies in \(\{-1,0,1\}\), while the right side 是 a multiple of 10. Thus
 
 \[
 c_i=c_{L-1-i},\qquad c_{i+1}=c_{L-i}.
 \]
 
-For \(0\le i\le L-2\), the first equality at \(i\) 和 the second equality at \(L-2-i\) give \(c_i=c_{i+2}\). Also \(c_0=0\) 和 the second equality at \(i=0\) gives \(c_1=c_L=0\). Every carry is therefore zero, including the width-1 case. The column equation now gives \(q_i=e_i\le9\).
+For \(0\le i\le L-2\), the first equality at \(i\) 和 the second equality at \(L-2-i\) give \(c_i=c_{i+2}\). 也 \(c_0=0\) 和 the second equality at \(i=0\) gives \(c_1=c_L=0\). Every carry is therefore zero, including the width-1 case. The column equation 现在 gives \(q_i=e_i\le9\).
 
 Conversely, if every \(q_i\le9\), induction from \(c_0=0\) gives every carry zero. Hence \(e_i=q_i\), a symmetric word.
 
 ### Overflow
 
-Assume \(c_L=1\), so reflection pairs \(i\) with \(L-i\). Palindromicity forces \(e_0=e_L=1\), hence \(q_0\in\{1,11\}\). The value \(q_0=1\) is impossible, because symmetry gives
+Assume \(c_L=1\), so reflection pairs \(i\) with \(L-i\). Palindromicity forces \(e_0=e_L=1\), hence \(q_0\in\{1,11\}\). The value \(q_0=1\) is impossible, 因为 symmetry gives
 
 \[
 c_L=\left\lfloor\frac{q_0+c_{L-1}}{10}\right\rfloor=0.
@@ -103,7 +103,7 @@ q_i=10c_{i+1}+c_{L-i}.
 
 The candidates are \(0,1,10,11\). For \(q_i=1\), 这 equation requires \(c_{L-i}=1\), but the mirrored coefficient 1 forces 那 carry to 0. For \(q_i=10\), the equation requires \(c_{L-i}=0\), but the mirrored coefficient 10 forces it to 1. Thus only 0 和 11 remain. 这 induction covers every coefficient.
 
-Conversely, write \(q_i=11x_i\), where \(x_i\) is a symmetric bit word with \(x_0=1\). Each column forces \(c_{i+1}=x_i\). With \(x_{-1}=x_L=0\), all output positions, including the appended carry, satisfy
+Conversely, write \(q_i=11x_i\), where \(x_i\) 是 a symmetric bit word with \(x_0=1\). Each column forces \(c_{i+1}=x_i\). With \(x_{-1}=x_L=0\), all output positions, including the appended carry, satisfy
 
 \[
 e_i=x_i+x_{i-1},\qquad 0\le i\le L.
@@ -111,7 +111,7 @@ e_i=x_i+x_{i-1},\qquad 0\le i\le L.
 
 Symmetry of \(x\) gives \(e_i=e_{L-i}\). 这 completes both directions of (1). ∎
 
-**THEOREM — immediate center consequence.** A central sum at least 10 和 different from 11 rules out both alternatives in (1). At odd input width the central sum is even, so a nonzero central digit already rules out the overflow-palindrome alternative; a high coefficient somewhere is still required to rule out the no-carry alternative. A zero odd center alone does 不 force a palindrome, because all remaining coefficients must also satisfy (1).
+**THEOREM — immediate center consequence.** A central sum at least 10 和 different from 11 rules out both alternatives in (1). At odd input width the central sum is even, so a nonzero central digit already rules out the overflow-palindrome alternative; a high coefficient somewhere is still required to rule out the no-carry alternative. A zero odd center alone does 不 force a palindrome, 因为 all remaining coefficients must 也 satisfy (1).
 
 ## 3. THEOREM 2 — The complete realizable center abstraction
 
@@ -121,7 +121,7 @@ Define
 \mathcal C=\{O_r:r=0,2,\ldots,18\}\cup\{E_s:s=0,1,\ldots,18\}.
 \]
 
-State \(O_r\) records odd width 和 central folded sum \(r\). State \(E_s\) records even width 和 the common value \(s\) of the two central folded coefficients. An edge means that some positive canonical decimal input in the source state 有 a successor in the target state. Width 和 all exterior data are forgotten.
+State \(O_r\) records odd width 和 central folded sum \(r\). State \(E_s\) records even width 和 the common value \(s\) of the 两 central folded coefficients. An edge means that some positive canonical decimal input in the source state 有 a successor in the target state. Width 和 all exterior data are forgotten.
 
 The exact successor relation is:
 
@@ -133,11 +133,11 @@ The exact successor relation is:
 | \(E_9\) | \(E_0,E_{18}\) | \(O_0,O_{18}\) |
 | \(E_s\), \(10\le s\le18\) | \(E_{2s-19},E_{2s-18}\) | \(O_{2s-18}\) |
 
-There are 29 states 和 exactly \(10\cdot13+18\cdot3+4=188\) edges.
+有 29 states 和 exactly \(10\cdot13+18\cdot3+4=188\) edges.
 
 ### Odd input: all carry cases
 
-Without overflow, the central folded output is \(2((r+c_h)\bmod10)\). The two carry values give exactly the displayed odd-to-odd entries.
+Without overflow, the central folded output is \(2((r+c_h)\bmod10)\). The 两 carry values give exactly the displayed odd-to-odd entries.
 
 For overflow at width \(L=2h+1\ge3\), put \(s=q_{h-1}=q_{h+1}\), \(a=c_{h-1}\), \(b=f(s,a)\), \(\delta=f(r,b)\), 和 \(k=f(s,\delta)\). Since \(r\) is even, \(\delta=0\) for \(r\le8\), 和 \(\delta=1\) for \(r\ge10\). The new central pair 有 sum
 
@@ -165,7 +165,7 @@ For \(\delta=1\), the union is
 [r-9,r-1]\cup\{r-10,r-9\}\cup[r-8,r]=[r-10,r].
 \]
 
-At width 1 there is no adjacent coefficient. Overflow requires \(r\ge10\); its output digits are \(r-10,1\), giving center sum \(r-9\), which is already in the displayed interval. Without overflow, the actual entering carry is zero, also covered by the table.
+At width 1 没有 adjacent coefficient. Overflow requires \(r\ge10\); its output digits are \(r-10,1\), giving center sum \(r-9\), which is already in the displayed interval. Without overflow, the actual entering carry is zero, 也 covered by the table.
 
 ### Even input: all carry cases
 
@@ -201,7 +201,7 @@ All fixtures satisfy the realizability conditions in Section 1. Thus every liste
 
 ## 4. THEOREM 3 — No universal invariant based only on parity 和 the central sum
 
-A state is *universally safe* when every positive input with that state 有 a nonpalindromic next output. The complete safe set is
+A state is *universally safe* when every positive input with 那 state 有 a nonpalindromic next output. The complete safe set is
 
 \[
 S_0=\{O_{10},O_{12},O_{14},O_{16},O_{18}\}
@@ -274,7 +274,7 @@ Suppose a set \(P\subseteq\mathcal C\) guarantees a nonpalindromic next output f
 
 ## 5. THEOREM 4 — Exact maximal centered-run renewal
 
-For a symbol \(s\), its maximal centered-run length is 0 if the central position, or central pair, does 不 consist of \(s\). Otherwise it is the length of the largest centered constant \(s\)-block.
+For a symbol \(s\), its maximal centered-run length is 0 if the central position, or central pair, does 不 consist of \(s\). Otherwise it 是 the length of the largest centered constant \(s\)-block.
 
 Suppose the input 有 such a nonempty maximal run on \([p,b]\), where \(p+b=L-1\), with length \(r=b-p+1\), 和 \(s\ne9\). Define
 
@@ -293,7 +293,7 @@ If \(c_L=0\), the maximal centered \(F(s)\)-run in the output 有 exactly
 \tag{3}
 \]
 
-For \(p+1\le i\le b\), the output digit is \(e_i=s-9\kappa\). At every strictly interior folded position, both digits therefore sum to \(F(s)\). If \(r\ge2\), the two folded boundary values are
+For \(p+1\le i\le b\), the output digit is \(e_i=s-9\kappa\). At every strictly interior folded position, both digits therefore sum to \(F(s)\). If \(r\ge2\), the 两 folded boundary values are
 
 \[
 q'_p=q'_b=F(s)+(v-\kappa).
@@ -301,7 +301,7 @@ q'_p=q'_b=F(s)+(v-\kappa).
 
 A mismatched entering carry removes exactly 2 positions; if \(r=2\), the new center contains no \(F(s)\). If \(r=1\), the central digit is counted twice, giving \(q'_p=F(s)+2(v-\kappa)\); mismatch then gives length 0.
 
-For a matched carry, expansion must also be excluded. If \(p=0\), the run fills the word. Otherwise put \(t=q_{p-1}=q_{b+1}\ne s\), \(u=c_{p-1}\), 和 \(\eta=f(t,\kappa)\). Since \(c_p=\kappa\), the first outside folded value is
+For a matched carry, expansion must 也 be excluded. If \(p=0\), the run fills the word. Otherwise put \(t=q_{p-1}=q_{b+1}\ne s\), \(u=c_{p-1}\), 和 \(\eta=f(t,\kappa)\). Since \(c_p=\kappa\), the first outside folded value is
 
 \[
 q'_{p-1}=(t+u-10\kappa)+(t+\kappa-10\eta).
@@ -317,7 +317,7 @@ For \(\kappa=0\), parity forces \(u=0\). The equation \(f(t,u)=\kappa=0\) then g
 
 ### B. Overflow: exact companion coalescence
 
-Now assume \(c_L=1\) 和 \(s\in\{1,\ldots,17\}\setminus\{9\}\). Set
+现在 assume \(c_L=1\) 和 \(s\in\{1,\ldots,17\}\setminus\{9\}\). Set
 
 \[
 a=s-9\kappa\in\{1,\ldots,8\},\qquad A_a=\{a,a+9\}.
@@ -332,7 +332,7 @@ Let \(B\) be the length of the maximal centered block over \(A_a\). Then
 
 is the exact maximal centered \(2a=F(s)\)-run length after the step. 这 includes \(B=1\), giving length 0.
 
-Write the maximal companion block as \([u,w]\), with \(u+w=L-1\). Inside it write \(q_i=a+9x_i\), where \(x_i\in\{0,1\}\). Because \(1\le a\le8\), each coefficient forces \(c_{i+1}=x_i\), independently of its entering carry. For \(u+1\le i\le w\),
+Write the maximal companion block as \([u,w]\), with \(u+w=L-1\). Inside it write \(q_i=a+9x_i\), where \(x_i\in\{0,1\}\). 因为 \(1\le a\le8\), each coefficient forces \(c_{i+1}=x_i\), independently of its entering carry. For \(u+1\le i\le w\),
 
 \[
 e_i=a+x_{i-1}-x_i.
@@ -363,7 +363,7 @@ The entering carry is constrained by \(v=\lfloor(t+c_{u-1})/10\rfloor\). Equalit
 
 If \(u=0\), the companion block fills the word. Overflow forces \(q_0=a+9\), giving \(e_0=a-1\), \(e_L=1\), 和 \(q'_0=a\ne2a\). Thus expansion is impossible in the whole-word case as well. For \(B=1\), 这 first outside positions are exactly the new central pair; they fail the target equality, confirming length 0. ∎
 
-**LEAN-VERIFIED — existing extreme-symbol specialization.** At \(s=0\) or \(18\), equation (3) holds, while overflow gives \(r'=r-1\). 这 is already covered by the inspected `RunAncestry.central_run_step` 和 maximality theorem. The new companion formula (4) concerns the nonextreme symbols. The symbol 9 is excluded because its carry map transmits its input instead of resetting it.
+**LEAN-VERIFIED — existing extreme-symbol specialization.** At \(s=0\) or \(18\), equation (3) holds, while overflow gives \(r'=r-1\). 这 is already covered by the inspected `RunAncestry.central_run_step` 和 maximality theorem. The new companion formula (4) concerns the nonextreme symbols. The symbol 9 is excluded 因为 its carry map transmits its input instead of resetting it.
 
 ## 6. THEOREM 5 — Exact growth balance 和 an obstruction class
 
@@ -379,7 +379,7 @@ At overflow steps let \(B_t\) be the companion-block length 和
 h_t=(B_t-r_t)/2.
 \]
 
-Both blocks are centered in the same word, so \(h_t\) is a nonnegative integer. Equations (3)–(4) give
+Both blocks are centered in the same word, so \(h_t\) 是 a nonnegative integer. Equations (3)–(4) give
 
 \[
 r_{t+1}=\begin{cases}
@@ -411,11 +411,11 @@ The bulk-symbol map 有 the cycles
 \qquad 6\to12\to6.
 \]
 
-Every nonextreme starting symbol enters one of 这 cycles after at most 1 step. At their even phases, the companion differing by 9 is odd. Because the constant run is maximal, any strict enlargement to its companion block begins with that other, odd coefficient on each side. Thus every growing overflow step requires actual adjacent odd companion material.
+Every nonextreme starting symbol enters one of 这 cycles after at most 1 step. At their even phases, the companion differing by 9 is odd. 因为 the constant run is maximal, any strict enlargement to its companion block begins with 那 other, odd coefficient on each side. Thus every growing overflow step requires actual adjacent odd companion material.
 
-**THEOREM — no persistent centered band without absorption.** There is no infinite positive orbit with a nonempty tracked centered run at every time, with its symbols following \(F\) in the nonextreme phases, 和 \(B_t=r_t\) at every overflow. No-overflow steps never increase its length, including the small-run cases in (3); each overflow removes exactly 1. For a positive integer, its reversed integer is at least 1, so \(n_t\ge n_0+t\). Hence digit length is unbounded. Each step increases length by at most 1, so infinitely many overflows occur. A finite initial run cannot remain nonempty through infinitely many unit losses. ∎
+**THEOREM — no persistent centered band without absorption.** 没有 infinite positive orbit with a nonempty tracked centered run at every time, with its symbols following \(F\) in the nonextreme phases, 和 \(B_t=r_t\) at every overflow. No-overflow steps never increase its length, including the small-run cases in (3); each overflow removes exactly 1. For a positive integer, its reversed integer is at least 1, so \(n_t\ge n_0+t\). Hence digit length is unbounded. Each step increases length by at most 1, so infinitely many overflows occur. A finite initial run cannot remain nonempty through infinitely many unit losses. ∎
 
-这 excludes an entire specified class of centered-band certificates. It does 不 exclude larger constructions that replace the center phase after its tracked run disappears, or that replenish companion blocks. Equation (5) is a balance along actual transitions; arbitrary assignments to \(h_t\), carries, 和 overflow bits do 不 establish that those transitions are realizable together.
+这 excludes an entire specified class of centered-band certificates. It does 不 exclude larger constructions that replace the center phase after its tracked run disappears, or that replenish companion blocks. Equation (5) 是 a balance along actual transitions; arbitrary assignments to \(h_t\), carries, 和 overflow bits do 不 establish that those transitions are realizable together.
 
 ## 7. THEOREM 6 — A growing center can still reach a palindrome immediately afterward
 
@@ -443,11 +443,11 @@ The maximal center grows from a 2-run of length 2 to a 4-run of length 3, but th
 
 ## 8. Implications for the existing return framework
 
-**LEAN-VERIFIED — existing safety, not a new certificate.** `Agent109.NoPal.not_stepPal` already excludes the template palindrome test for every allowed phase 和 bounded exterior/interface blocks, with no assumption on its center block `C`. The actual-template corollary is in the same inspected source. Thus the center does 不 need to supply an additional palindrome obstruction for the already safe complementary-band family.
+**LEAN-VERIFIED — existing safety, 不 a new certificate.** `Agent109.NoPal.not_stepPal` already excludes the template palindrome test for every allowed phase 和 bounded exterior/interface blocks, with no assumption on its center block `C`. The actual-template corollary is in the same inspected source. Thus the center does 不 need to supply an additional palindrome obstruction for the already safe complementary-band family.
 
 **THEOREM — direct coefficient explanation.** For any realized folded word containing both \(c\) 和 \(18-c\), where \(1\le c\le17\), \(c\ne9\), one coefficient exceeds 9. Both positive complementary symbols cannot belong to \(\{0,11\}\): if they did, both would equal 11, contradicting their sum 18. Equation (1) therefore excludes a palindromic next output. Each band need only be nonempty for 这 coefficient argument.
 
-**IDEA — consequence for further work.** The useful center question is whether interfaces can maintain a compatible global return 和 satisfy (5). Re-establishing single-step safety, or imposing a predicate on just the central sum, does 不 address that requirement. The existing checker remains conditional: 这 report supplies no accepted return certificate.
+**IDEA — consequence for further work.** The useful center question is whether interfaces can maintain a compatible global return 和 satisfy (5). Re-establishing single-step safety, or imposing a predicate on just the central sum, does 不 address 那 requirement. The existing checker remains conditional: 这 report supplies no accepted return certificate.
 
 ## 9. Reproducible bounded checks
 
@@ -753,4 +753,4 @@ Does there exist a finite set of center/interface states, realized by actual dec
 
 while all remaining blocks return compatibly 和 every phase retains a global nonpalindrome guard?
 
-An affirmative construction needs the full carry-consistent return, including both ends, the center, 和 every run-length update. A negative theorem bounding the available companion absorption below the right side would exclude that whole return class. The present results identify 这 replenishment requirement exactly; they do 不 resolve it.
+An affirmative construction needs the full carry-consistent return, including both ends, the center, 和 every run-length update. A negative theorem bounding the available companion absorption below the right side would exclude 那 whole return class. The present results identify 这 replenishment requirement exactly; they do 不 resolve it.
