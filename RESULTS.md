@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
+Every formal result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -2612,6 +2612,8 @@ Agent1.RepeatedBlock.terminalCarry_symmetric_bands : ∀ (B w H : Agent8.Word) (
 ## Affine run words
 
 Digit words made of runs whose lengths are affine in a parameter: equality/palindrome decisions and uniform returns.
+
+**Research note — THEOREM (written proof):** [Agent 220: exact constant-band algebra](REPORT_220.md) gives whole-word boundary formulas, the protected-core length \(\ell-2m+K_m\), an obstruction to consecutive entirely even column states in a palindrome-avoiding trajectory, a fixed-time return obstruction for unbounded central \(9\)-bands, 和 exact internal \(9\)-spacer erosion/absorption accounting. Existing bulk-phase results are credited. Includes reproducible bounded identity checks 和 six explicit \(1000\)-step integer checks. Verification status: written proofs 和 Python checks; this note adds zero Lean endpoints 和 is outside the formal-result counts. Decimal Lychrel existence remains unresolved by the note.
 
 ### Agent102AffineBoundary
 
