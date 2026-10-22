@@ -36,8 +36,10 @@ listed below.
 Both files build with the repo lakefile (`lake build P196.Sprint.Agent03.CycleRank`), no `sorry`,
 no `native_decide`, no custom axioms. Measured with `lake env lean <file>` on this sandbox:
 `EnrichedNoGain.lean` 2.0 s / 430 MB, `CycleRank.lean` 2.5 s / 562 MB. They are **not** in
-`lean/registry.json` (I must not edit it); `registry_entry.json` here is a ready entry, so
-`tools/verify.py` will report them as unregistered until someone adds it.
+`lean/registry.json` (I must not edit it), so `tools/verify.py --changed` currently fails only with
+"unregistered Lean file" for these two modules. With the ready entry `registry_entry.json` merged
+into `lean/registry.json` locally (not committed), `python3 tools/verify.py --changed` printed
+`[axioms] 17 endpoints checked` and `ALL CHECKS PASSED (changed files only, against origin/main)`.
 
 `lean/P196/Sprint/Agent03/EnrichedNoGain.lean` — all endpoints depend on **no axioms**:
 
@@ -88,8 +90,8 @@ t ≤ 3,000; the orbit to t = 200,000 (82,927 digits) has no palindrome.
 
 Checks: k = 3,4,5 bitsets equal a pure-Python BFS (`chk_bfs.py`); the k = 3 three-digit exclusion
 count is 277, equal to the repo's `Agent124.FwdW3.excluded_length`; all 757 + 6 entries of branch
-`prefix-k45-certificates` and all 1,730 entries of `Agent124FourDigit` are forward-excluded at their
-width (k = 5 for all of the latter). Newly excluded four-digit prefixes per width: 612 (k=5),
+`prefix-k45-certificates` are forward-excluded at their certificate width, and all 1,730 four-digit
+entries of `Agent124FourDigit` are forward-excluded at k = 5 (1,267 of them already at k = 4). Newly excluded four-digit prefixes per width: 612 (k=5),
 134 (k=6), 32 (k=7), 16 (k=8) — identical to the brief's backward per-width counts — and **7 at
 k = 9: 3537, 3899, 3984, 4307, 5838, 6311, 9123** (the brief lists 6 at k = 9; I do not have the
 batch lists, so I cannot say which one is the extra prefix or whether the backward search reached
