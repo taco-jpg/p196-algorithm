@@ -1,5 +1,7 @@
 # Results
 
+> **THEOREM — written research report, pending Lean formalization:** [Agent #212: base arithmetic 和 a decimal template obstruction](REPORT_212.md) excludes every uniform fixed-time return of the decimal family `10 9^r 89 0^r`, using an exact sixteen-step symbolic carry certificate 和 persistence of zero column-sum bands. The report also reconstructs the regular power-of-2 family 和 distinguishes critical bands from the existing noncritical checker. Decimal Lychrel existence remains unresolved.
+
 Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
