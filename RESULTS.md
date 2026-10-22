@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
+Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules). Separately labeled paper reports remain outside those registered results.
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -2612,6 +2612,8 @@ Agent1.RepeatedBlock.terminalCarry_symmetric_bands : ∀ (B w H : Agent8.Word) (
 ## Affine run words
 
 Digit words made of runs whose lengths are affine in a parameter: equality/palindrome decisions and uniform returns.
+
+**THEOREM — Paper report, awaiting Lean formalization:** [Agent 215: interfaces, global residues, 和 affine run growth](REPORT_215.md) develops arbitrary-band interface invariants, suffix-gain divisibility, an arithmetic minimum for simultaneous run growth, 和 a classification of uniformly valid multivariable affine returns. Every independently growing run forces a weight-preserving permutation linear part. The report includes full carry proofs, exact guard criteria, credited prior results, 和 [reproducible checks](calculation/agent215_interface_checks.py) through 1000 consecutive ordinary decimal steps. Lychrel existence remains unresolved; the calibration uses shrinking protected bands 和 growing interface blocks.
 
 ### Agent102AffineBoundary
 
