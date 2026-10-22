@@ -6,8 +6,7 @@ forward-reachable set shrinks per added component.
 
 ## 1. Answer
 
-**None of the suggested components shrinks the forward-reachable set by a single word, and none
-can.** Every one of them (n mod 99, n mod 11, n mod 9, width mod m, time mod 6, the inner carry used
+**None of the suggested components shrinks the forward-reachable set by a single word.** Every one of them (n mod 99, n mod 11, n mod 9, width mod m, time mod 6, the inner carry used
 on the previous step) is updated from the previous value, the word and the carry without ever
 forbidding a carry; for any such update the least enriched invariant projects *exactly* onto the
 plain forward closure (LEAN-VERIFIED, `EnrichedNoGain.lean`). The measurements agree: in 63 enriched
@@ -20,9 +19,10 @@ gives no shrink either. The forward route's four-digit exclusions at width k hav
 batch generator's cumulative backward counts (5,045 / 5,657 / 5,791 / 5,823 / 5,839 at k = 4..8,
 and every backward-certified entry published in the repo is among them), and conversely no backward
 certificate can ever certify a word of this forward closure (LEAN-VERIFIED for k = 3..7,
-`CycleRank.lean`). No guard on the
-free carry can come from residues, width or outer digits: every combination (word, carry, residue
-mod 99 compatible with 196, width mod 12) is realized by an actual integer (COMPUTED). The only
+`CycleRank.lean`). The Lean theorem covers enrichments without a guard; that no *guard* on the free
+carry can come from residues, width or outer digits is only COMPUTED: every combination (word,
+carry, residue mod 99 compatible with 196, width mod 12) was realized by an actual integer,
+exhaustively at k = 3 and for 2,000 sampled words at each k = 4..7. The only
 component that shrinks the set is **the next column**: π_k(F_{k+1}) is 11.4–16.7 % smaller than F_k
 (k = 3..8). Lifting through F_8, the width-9 closure (4,466,505,279 words) excludes **5,846**
 four-digit prefixes — one more than the 5,845 the brief lists for backward search at widths ≤ 9
@@ -61,7 +61,7 @@ into `lean/registry.json` locally (not committed), `python3 tools/verify.py --ch
 | `entryOK_false_of_cycleOK` | for such `w0` and a `k`-digit `pre` with `Reach w0 pre`: `Agent124.PrefixL.entryOK k R (pre, bound) = false` for every bound |
 | `wordPrefix_q100` | `wordPrefix Agent124.Forward.q100 k = [8,8,13,9,14,14,14].take k` (k ≤ 7) — the projection of `orbit 196 100` |
 | `no_rank_3` … `no_rank_7` | every word of `Reach (wordPrefix q100 k)` has no rank under any `RowsClosed k` function (cycle witnesses of 17, 22, 28, 28, 42 steps, checked by `decide +kernel`) |
-| `entryOK_false_3` … `entryOK_false_7` | no batch entry for a `k`-digit prefix in that forward closure can pass `entryOK k` |
+| `entryOK_false_3` … `entryOK_false_7` | no batch entry for a `k`-digit prefix in that forward closure can pass `entryOK k` (prefixes of length exactly k only; e.g. four-digit prefixes at width 5..7 follow the same way but are not formalised) |
 
 Together with the existing `Agent124.Forward.no_196_outside` (which excludes everything *outside* a
 forward-closed set containing the time-100 projection): at k = 3..7, every k-digit prefix the
@@ -127,6 +127,9 @@ projects onto all of F_k.
 | 6 | 4,985,132 | 55 | 4,985,132 | 93 | 7 | 28 |
 | 7 | 48,820,141 | 62 | 48,820,141 | 121 | 8 | 42 |
 
+An independent uncapped k = 7 run on the Mac Studio (`~/p196-forward-check`, global graph of
+846,836,325 nodes = the 846,825,858 long words plus the 10,467 admissible short words of widths 1..6)
+found the same single nontrivial component of 48,820,141 nodes and the same entry time t = 8.
 So F_k = R_k = one SCC at k = 3..7, and F_k(t0) = F_k for every start time t0 ≥ the entry time —
 a later start is not an enrichment that helps. At k = 8: w(196,100) lies on a forward cycle
 (it is in the closure of w(196,101), and |F_8(101)| = |F_8(100)| = 470,163,112), hence F_8 ⊆ R_8;
@@ -152,8 +155,10 @@ exact arithmetic (905,904 + 4 × 432,000 realizations). So no statement "(word, 
   Checked k = 3..7; at k = 8 and 9 only F_k ⊆ R_k (196's state is on a cycle), plus at k = 8 the
   agreement of the four-digit counts with the backward batch (5,839).
 - If so, at every width the forward route and the backward rank route exclude the same prefixes
-  (up to the rank ≤ 99 requirement of the backward route, which the forward route does not need),
-  and the brief's 2,091 "undetermined" prefixes are decided by computing F_10, F_11, … forward.
+  (up to the rank ≤ 99 requirement of the backward route, which the forward route does not need).
+  Computing F_10, F_11, … forward then settles, *within the abstraction*, which of the brief's
+  2,091 "undetermined" prefixes are excludable at each width. A prefix that stays inside F_k is
+  not shown to occur in 196's orbit, and forward exclusions at k ≥ 8 have no Lean certificate.
 
 ### IDEA
 
@@ -164,6 +169,18 @@ exact arithmetic (905,904 + 4 × 432,000 realizations). So no statement "(word, 
 - Lean-verifying forward exclusions at k ≥ 8 cannot go through an explicit closed set (10^8–10^9
   words). A scalable route: a Boolean checker over a *compressed* closed set (e.g. a DFA over the
   column word recognising a superset of F_k that is still forward closed), proved correct once.
+
+### Independent review
+
+A separate review agent (no access to my reasoning) recompiled both Lean files, used `no_rank_4` with
+the repo's real width-4 certificate (`Agent124.CertF4.allRows`) to confirm `RowsClosed` is not vacuous,
+re-implemented `forwardPrefix` from the Lean definition, and reproduced |F_3|..|F_7|, the 2-successor
+counts, π_3 F_4 = 3,716, the L-mod-2 product (8,388 states), R_k = F_k at k = 3, 4, the SCC sizes and
+BFS radii at k = 3..7, the entry times at k = 3..6, the exclusion counts 277 / 5,045 / 5,657 / 5,791 /
+5,823, the enrichment counts, the orbit value at t = 100 and the absence of palindromes to t = 200,000.
+It could not check k = 8, 9 (memory), the brief's counts or the `verify.py` run. Its corrections
+(a reversed sentence in the `CycleRank.lean` docstring, and wording in sections 1 and 2 that
+overstated the sampled realizations and the reach of the forward classification) are applied above.
 
 ## 3. Reproduce
 
@@ -188,8 +205,9 @@ F_k; `QUERY=` membership), `peel.c` (infinite-rank region), `scc.c` (SCC + BFS d
 
 1. **Width, not enrichment.** Run `run_all.sh WORK 9 10` on the Mac (direct k = 9 needs ~80 GB, the
    k = 10 lift ~25 GB) and continue lifting (k = 11 needs F_10 as a full bitset, 766 GB — instead
-   generalise `fwdlift` to index through a compressed F_k). Each width gives the complete forward
-   classification of all four-digit prefixes, with no node cap; compare with the 2,091 undetermined.
+   generalise `fwdlift` to index through a compressed F_k). Each width gives a complete classification
+   of all four-digit prefixes *within the abstraction* (excluded at width k or not), with no node cap;
+   compare with the 2,091 undetermined. These are computed exclusions, not Lean certificates.
 2. **Identify the extra k = 9 prefix** among 3537, 3899, 3984, 4307, 5838, 6311, 9123 against the
    batch lists, and run the backward search on it without a node cap (or check whether its rank
    exceeds 99, which the forward route does not need).

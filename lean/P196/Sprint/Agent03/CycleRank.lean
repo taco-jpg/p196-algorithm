@@ -21,10 +21,13 @@ This file proves the matching limitation of the backward rank method
   (`no_rank_k`), and every batch entry `(pre, bound)` with such a `k`-digit
   `pre` fails `entryOK k R` (`entryOK_false_k`).
 
-Together with `Agent124.Forward.no_196_outside` this says: at these widths the
-forward-invariant route can only exclude words the backward route might also
-exclude.  (The converse — that the two exclusion sets are *equal* — was measured
-by computation in `sprint/agent-03/REPORT.md`; it is not proved here.)
+Together with `Agent124.Forward.no_196_outside` this says: at these widths every
+`k`-digit word the backward route can certify at width `k` lies outside the
+forward closure, so the forward route excludes it too (backward ⊆ forward).
+The converse — that the two exclusion sets are *equal* — was only measured by
+computation in `sprint/agent-03/REPORT.md`; it is not proved here.  The prefix
+statements `entryOK_false_k` cover prefixes of length exactly `k`; shorter
+prefixes at width `k` are not formalised here.
 
 Nothing here proves or disproves any palindrome statement about 196.
 -/
