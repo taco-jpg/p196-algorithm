@@ -1,0 +1,28 @@
+# fwdbfs K none F_K.bin w(196,100)[0..K-1]    -> K NE reach proj branching passes cpu_secs
+3 1 4194 4194 2035 15 0.00
+4 1 47980 47980 23152 27 0.00
+5 1 497471 497471 238457 39 0.06
+6 1 4985132 4985132 2376057 43 0.86
+7 1 48820141 48820141 23148265 50 15.35
+8 1 470163112 470163112 222036860 55 216.91      (wall 229.9 s, peak RSS 4147688 KiB)
+# fwdlift 8 F8.bin ... w(196,100)[0..8]   (validated: fwdlift 6 / fwdlift 7 reproduce F_7, F_8 and their lists exactly)
+K+1=9 |F_K|=470163112 |F_K+1|=4466505279 |pi_K F_K+1|=391459503 passes=70 bfs_secs=964.5   (wall 1027.0 s, peak RSS 4515604 KiB)
+
+# settool proj F_{k+1} ; settool diff F_k pi_k(F_{k+1})
+proj F4 -> 3716 at K=3      |A|=4194 |B|=3716 |A\B|=478 |B\A|=0
+proj F5 -> 40907 at K=4     |A|=47980 |B|=40907 |A\B|=7073 |B\A|=0
+proj F6 -> 421312 at K=5    |A|=497471 |B|=421312 |A\B|=76159 |B\A|=0
+proj F7 -> 4206465 at K=6   |A|=4985132 |B|=4206465 |A\B|=778667 |B\A|=0
+proj F8 -> 40936006 at K=7  |A|=48820141 |B|=40936006 |A\B|=7884135 |B\A|=0
+pi_8 F9 = 391459503 (from fwdlift)  vs |F_8| = 470163112
+
+# settool excl F_K K  (j-digit prefixes, noOverflowPre, with no K-digit digit-extension in F_K)
+K=3: len2 11  len3 277
+K=4: len2 11  len3 353  len4 5045
+K=5: len2 11  len3 379  len4 5657  len5 66585
+K=6: len2 13  len3 389  len4 5791  len5 69753  len6 762600
+K=7: len2 13  len3 390  len4 5823  len5 70415  len6 781873  len7 8213453
+K=8: len2 14  len3 391  len4 5839  len5 70658  len6 785883  len7 8323670  len8 85545821
+K=9: len2 14  len3 391  len4 5846  len5 70759  len6 787469
+# four-digit prefixes newly excluded at width K (comm of the sorted lists)
+K=5: 612   K=6: 134   K=7: 32   K=8: 16   K=9: 7  -> 3537 3899 3984 4307 5838 6311 9123
