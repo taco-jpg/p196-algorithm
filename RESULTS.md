@@ -2613,6 +2613,10 @@ Agent1.RepeatedBlock.terminalCarry_symmetric_bands : ∀ (B w H : Agent8.Word) (
 
 Digit words made of runs whose lengths are affine in a parameter: equality/palindrome decisions and uniform returns.
 
+### Agent207ThreeRunObstruction — hand proof
+
+**THEOREM; Lean formalization pending.** From decimal width at least five, a full symmetric column-sum word with at most three maximal constant runs produces a palindrome or at least five runs within 两 reverse-add steps. Hence a palindrome-free orbit visits at least five runs in every three sufficiently late states, with lower asymptotic density at least one third. A separate parity theorem excludes consecutive profiles consisting entirely of even coefficients. [REPORT_207.md](REPORT_207.md) contains complete carry cases, sharpness witnesses, reproducible finite checks, 和 1,000-step consistency checks. The statements concern whole profiles; return templates with more intermediate runs or odd interface coefficients remain outside these exclusions. Zero Lean modules or declarations are introduced.
+
 ### Agent102AffineBoundary
 
 Explicit affine run-word boundary examples, including failure of a template-independent uniform cutoff.
