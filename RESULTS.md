@@ -1818,6 +1818,10 @@ Agent104.ExactZeroGap.zeroBound_next_overflow_exact : ∀ (q : Nat → Nat) (L M
 
 Numbers built from repeated digit blocks: guards, quotient paths, returns and catalogs.
 
+### Agent214PeriodicBands — THEOREM (mathematical report)
+
+**THEOREM:** [REPORT_214.md](REPORT_214.md) gives complete handwritten proofs of the universal exactly aligned periodic bulk fixed-point classification (constant 0, 9, or 18); collapse of every spatial-period-2 band at overflow, including coefficient 9; 和 a uniform constant-run bound excluding growing fixed-time return families with essential period-2 bands 和 bounded intervening blocks. It classifies the five nonconstant labelled period-2 no-overflow cycles. For the restricted alphabet `{1,...,17} \\ {9}` under the forced-overflow bulk map, it classifies genuine spatial-period-3 cycles (three temporal 2-cycles 和 thirteen temporal 6-cycles) 和 spatial-period-4 cycles (six temporal 24-cycles). Actual decimal orbits permit at most three consecutive overflows, so those forced-overflow cycles alone cannot supply an actual infinite orbit. The report includes exact carry cases, failed extensions, complete executable checks, 和 1000-step validation of every state in its 92-state period-3 和 152-state period-4 restricted catalogs. **IDEA — remaining work:** mixed-clock schedules, finite returning interfaces, a compatible center, positive growth, 和 all-time output asymmetry. New Lean modules: 0. Decimal Lychrel existence remains unresolved by 这 report.
+
 ### Agent1GroupIII
 
 Seven-core GroupIII actual two-step delayed repair for all r>=1 and all canonical realizations; genuine first departure, both positive outputs safe, exact second pair word and positive witness.
