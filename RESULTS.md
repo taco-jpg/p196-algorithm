@@ -1818,6 +1818,11 @@ Agent104.ExactZeroGap.zeroBound_next_overflow_exact : ∀ (q : Nat → Nat) (L M
 
 Numbers built from repeated digit blocks: guards, quotient paths, returns and catalogs.
 
+### Agent204PeriodicBandReport — paper proofs
+
+**THEOREM (paper proof; no new Lean verification).** [REPORT_204.md](REPORT_204.md) gives exact general-period bulk maps, anchored fixed-point classification, complete period-2 cycle classification via doubling modulo 99, 和 a bounded-interface obstruction: after an overflow within m steps, r period-at-most-2 column bands plus B other columns yield at most B+(4m+1)r+m constant pieces. A positive-growth return cannot retain an unbounded primitive period-2 band. A general-period integer-gcd argument excludes nonconstant bulk returns whose intermediate phases use uniform carries. Explicit period-3/4 bulk cycles, complete carry tables, reproducible 1000-step checks, 和 failed finite embeddings document the remaining interface problem. Decimal Lychrel existence remains unresolved.
+
+
 ### Agent1GroupIII
 
 Seven-core GroupIII actual two-step delayed repair for all r>=1 and all canonical realizations; genuine first departure, both positive outputs safe, exact second pair word and positive witness.
