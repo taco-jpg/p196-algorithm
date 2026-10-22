@@ -12,7 +12,7 @@ fraction of all admissible words (64.5 % at k=3, 1.46 % at k=9, roughly halving 
 but it is **exactly the infinite-history core** C_k of the abstraction: the set of words that
 have arbitrarily long backward paths (equivalently, the backward method's obstruction set). For
 k = 3..8 the forward closure from orbit(196,100) equals C_k word for word, C_k is a single
-strongly connected component (checked k = 3..7), and the forward closure from 196's state at
+strongly connected component (checked k = 3..8), and the forward closure from 196's state at
 t = 1,000, 10,000, 100,000 and 300,000 is the same set. Consequently, prefix by prefix, the
 forward test ("no initial word of P is forward-reachable") and the backward test ("no initial
 word of P lies on or after a cycle") give **identical** answers at every width k = 4..9, and the
@@ -72,7 +72,7 @@ begins with the prefix (the possible last predecessors of a non-overflow palindr
 | 5 | 497,471 | 0.21207 | 497,471 | yes | yes | 23,360 | 3,327 | 612 | 5,657 | 612 |
 | 6 | 4,985,132 | 0.11185 | 4,985,132 | yes | yes | 137,214 | 3,193 | 134 | 5,791 | 134 |
 | 7 | 48,820,141 | 0.05765 | 48,820,141 | yes | yes | 785,927 | 3,161 | 32 | 5,823 | 32 |
-| 8 | 470,163,112 | 0.02922 | 470,163,112 | yes | SCC8 | 4,452,206 | 3,145 | 16 | 5,839 | 16 |
+| 8 | 470,163,112 | 0.02922 | 470,163,112 | yes | yes | 4,452,206 | 3,145 | 16 | 5,839 | 16 |
 | 9 | 4,466,505,279 | 0.01461 | not computed | F_9 ⊆ C_9 (see below) | – | 24,965,162 | 3,138 | 7 | 5,846 | 6 |
 
 * k=3 reproduces `Agent124ForwardInvariant` exactly: my F_3 equals the Lean `fset` key set
@@ -84,8 +84,9 @@ begins with the prefix (the possible last predecessors of a non-overflow palindr
 * Peel depth (longest backward path to a non-core word, long regime) = 9, 20, 48, 55, 62 at
   k = 3..7. Any width-k state with a longer actual history is in C_k.
 * Later start times: 196's projections at t = 1,000 / 10^4 / 10^5 / 3·10^5 lie in F_k and in
-  the backward-reach of w100 for k = 3..7, so F_k(t) = F_k(100) = C_k. At k=8 and k=9 they lie
-  in F_k; at k=9 the forward closure from t=1,000 has exactly the same size (4,466,505,279) and
+  the backward-reach of w100 for k = 3..8, so F_k(t) = F_k(100) = C_k (k=8 single-SCC check:
+  `layer 8 … fs`, 54 Gauss–Seidel sweeps, 1,490 s, `results/L8scc.log`). At k=9 they lie
+  in F_9; at k=9 the forward closure from t=1,000 has exactly the same size (4,466,505,279) and
   contains w100, hence F_9(1000) = F_9(100) and w100 lies on a cycle, so F_9 ⊆ C_9.
 * k=9 prefix equivalence: hit by F_9 ⇒ hit by C_9 (F_9 ⊆ C_9). For the 7 prefixes first
   excluded at k=9 (3537, 3899, 3984, 4307, 5838, 6311, 9123) `backcore` computes the backward
@@ -123,10 +124,21 @@ begins with the prefix (the possible last predecessors of a non-overflow palindr
   abstract steps, 4456 needs 34. Every walk re-checked by the independent Python reference
   (`verify_walks.py`: 0 failures).
 
+### Independent cross-check (REPORTED by a separate run on the Mac Studio, not reproduced here)
+
+A separate agent (`~/p196-forward-check` on the Studio, own code `rinf.cpp` / `glob.cpp`, full
+uncapped k=7 graph) reported: state space 846,836,325 nodes (= my 846,825,858 long words + the
+10,467 admissible short words of widths 1–6); exactly one nontrivial SCC, of 48,820,141 nodes,
+equal to its infinite-rank set (= my C_7 = F_7); R(P,7) = whole space for all 3,134 open
+four-digit and 14 open three-digit prefixes; 196's orbit in that set at 199,993 of 200,001
+steps, first at t = 8 (the first 7-digit iterate, 1067869), and two random control orbits
+likewise (199,997 and 200,000 steps). Its 20M-node-capped per-prefix runs hit the cap for every
+open prefix, which the single-SCC structure explains. Every overlapping number agrees with §2.
+
 ### CONJECTURE
 
-* F_k = C_k and C_k strongly connected for every k ≥ 3 (verified k = 3..8 for F=C, 3..7 for
-  SCC). If true, the forward abstraction (from any time ≥ 100) is equivalent to the backward
+* F_k = C_k and C_k strongly connected for every k ≥ 3 (verified k = 3..8 for both). If
+  true, the forward abstraction (from any time ≥ 100) is equivalent to the backward
   acyclicity test at every width, and only enriched states (assignment 3) can do better.
 * The number of hit four-digit prefixes converges to a positive limit (3,940 → 3,327 → 3,193 →
   3,161 → 3,145 → 3,138; increments 613, 134, 32, 16, 7). If the limit is > 0, the k-column
@@ -160,6 +172,7 @@ the allocated array size unless "peak RSS" is stated):
 | dense closure k=7 | `./fwdclosure 7 out/F7.t100 8,8,13,9,14,14,14` | 3 s | 224 MB |
 | core k=7 | `./peel 7 out/F7.t100.bits out/peel7` | 85 s | ~3 GB |
 | SCC k=7 | `./sccchk 7 out/F7.t100.bits <w100> <later states>` | 117 s | 224 MB |
+| SCC k=8 | `./layer 8 out/F7.t100.bits out/L8scc fs <w100> <later states>` | 1,490 s | ~0.35 GB RSS (ps) |
 | width 8 forward+core | `./layer 8 out/F7.t100.bits out/L8 fdc <w100> ...` | 54 s + 143 s | ~2.6 GB |
 | width 9 forward | `./layer 9 out/L8.bits out/L9 f <w100> ...` | 550 s | ~4.6 GB |
 | width 9 from t=1000 | `./layer 9 out/L8.bits out/L9from1000 f <w1000> ...` | 550 s | ~4.6 GB |
