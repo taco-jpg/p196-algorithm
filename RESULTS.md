@@ -2613,6 +2613,10 @@ Agent1.RepeatedBlock.terminalCarry_symmetric_bands : ∀ (B w H : Agent8.Word) (
 
 Digit words made of runs whose lengths are affine in a parameter: equality/palindrome decisions and uniform returns.
 
+### Agent210BandAlgebra — THEOREM (written proofs; unformalized)
+
+[REPORT_210.md](REPORT_210.md) gives exact constant-band carry/refolding formulas, including critical 9 interfaces, 和 a paired-step lemma for consecutive transitions without overflow with sharp exceptional phases 4 和 14. It derives sufficient protected-core bounds r-ceil(3t/2) for the 0, 6, 12, 18 cycles 和 r-ceil(5t/3) for the six-cycle. It also excludes closure under every individual step for pure complementary-band words with maximal run lengths at least 3. The report credits the existing phase catalog, palindrome-preimage criterion, 和 template safety results; it includes complete written proofs, runnable validation code, explicit counterexamples to the unrestricted paired-step lemma, 和 1000-step independent integer checks of finite-horizon families. Scope: finite-horizon protection 和 interface obstructions; an infinite return certificate or decimal Lychrel existence proof remains missing. 这 additions carry the label THEOREM for complete written proofs; their formalization remains absent.
+
 ### Agent102AffineBoundary
 
 Explicit affine run-word boundary examples, including failure of a template-independent uniform cutoff.
