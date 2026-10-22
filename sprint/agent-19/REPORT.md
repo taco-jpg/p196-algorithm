@@ -98,12 +98,14 @@ ArithTransfer 0.7 s, ArithLight 2.7 s.
   - `forward_plain : ∀ T k, Palindrome (orbit 196 T) → ∀ w ∈ excluded, orbit 196 T / 10^k ≠ fromDigits w`.
 - `CycleFormats.lean` — 42 theorems `no_rank_P`, `no_tree_P`, `no_entry_P` for the 14 prefixes
   (§2.1), via `none_of_walks` and `rowsClosed_of_checked`.
+- `ArithFourDigit.lean` — `F4_00_valid` … `F5_04_valid` (all 1,730 prefixes are valid digit words)
+  and `plain_F4_00` … `plain_F5_04`: `Palindrome (orbit 196 t) → ∀ e ∈ entriesNN,
+  orbit 196 t / 10^k ≠ fromDigits e.1` (3.7 s, after `Agent124FourDigit` was built here).
 
 ### Written, not yet compiled here (need the certificate modules built)
 
 `Arith118.lean` (`plain_217`, `plain_218`, `plain_777`), `Arith620.lean`, `Arith739.lean`,
-`ArithClasses.lean` (`classes_valid`, `plain_classes`), `ArithFourDigit.lean` (`*_valid`,
-`plain_F4_*`, `plain_F5_*`), `AuditHeavy.lean` (prints axioms of all 60 endpoints of the five
+`ArithClasses.lean` (`classes_valid`, `plain_classes`), `AuditHeavy.lean` (prints axioms of all 60 endpoints of the five
 certificate results). Each is a one-line application of a verified transfer lemma, but **until it
 builds it is not LEAN-VERIFIED**. The container has 2 vCPUs and 8 GB; the modules these files
 import (2,718 modules not yet built here, 39.8 MB of Lean source) did not finish in this session. `AuditLight.lean` (all 237 registered endpoints of the six
@@ -114,9 +116,14 @@ light results) runs here: 66 × `[propext, Classical.choice, Quot.sound]`, 74 ×
 
 - Built locally from source here, with all printed axioms within the allowed set:
   Agent315Orbit196Residues, Agent119EightFamilies, Agent9DigitSumWindows, Agent117RemainingCycles,
-  Agent124ForwardInvariant, Agent113FiveLayer (`lake build <roots>`, exit 0; the five-layer
-  result took 41 min on 2 vCPUs).
-- Not rebuilt here (Agent124FourDigit, Agent124Prefix620, Agent104Prefix739,
+  Agent124ForwardInvariant, Agent113FiveLayer, Agent124FourDigit (`lake build <roots>`, exit 0;
+  the five-layer result took 41 min and the four-digit result 9 min on 2 vCPUs). The 24
+  four-digit endpoints all print `[propext, Classical.choice, Quot.sound]`.
+- Agent124Prefix620: the local build was killed by the kernel (Lean exit code 137, out of memory)
+  in `A124Prefix620Initial` and `A124Prefix620Short` while Lake ran two Lean processes at once on
+  this 8 GB container. This says nothing about the repository's 8 GB-per-file budget; it was not
+  retried with one job.
+- Not rebuilt here (Agent124Prefix620, Agent104Prefix739,
   Agent124PrefixFiveSix, Agent118PrefixKernel): COMPUTED by CI only — the nightly full
   `python3 tools/verify.py` run 39803889093 on commit c6902ac (2026-10-22 15:20–19:54 UTC) ended
   `[axioms] 6254 endpoints checked` / `ALL CHECKS PASSED`; its log shows e.g.
