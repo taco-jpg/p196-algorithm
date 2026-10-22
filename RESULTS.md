@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
+Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules). Separately labeled research reports are outside 这 Lean census.
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -337,6 +337,8 @@ end Agent7.ResiduePeriods
 ## A conditional route to a Lychrel number
 
 What a successful certificate would give. No certificate is known.
+
+**Research report — THEOREM (paper proofs; no new Lean endpoints):** [Agent 216: center obstructions 和 exact run renewal](REPORT_216.md) gives the complete realizable 29-state/188-edge parity-center abstraction, whose universal safety kernel is empty after 2 closure rounds; exact maximal centered-run evolution, including overflow absorption from the alphabet `{a,a+9}`; the resulting run-length balance 和 the impossibility of a persistent centered band without companion absorption. Complete carry proofs 和 reproducible bounded checks are included, with 1000 ordinary transitions from each of 2 seeds. Existing palindrome classification, complementary-band safety, 和 0/18 ancestry are credited. No decimal Lychrel witness or return certificate is supplied. 这 report is excluded from the registered-result counts.
 
 ### CertificateToLychrel
 
