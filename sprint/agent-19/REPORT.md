@@ -106,20 +106,33 @@ ArithTransfer 0.7 s, ArithLight 2.7 s.
 `plain_F4_*`, `plain_F5_*`), `AuditHeavy.lean` (prints axioms of all 60 endpoints of the five
 certificate results). Each is a one-line application of a verified transfer lemma, but **until it
 builds it is not LEAN-VERIFIED**. The container has 2 vCPUs and 8 GB; the modules these files
-import (2,718 modules not yet built here, 39.8 MB of Lean source) did not finish in this session. `AuditLight.lean` (237 endpoints of the six
-light results) is in the same state until `Agent113FiveLayer` finishes building here.
+import (2,718 modules not yet built here, 39.8 MB of Lean source) did not finish in this session. `AuditLight.lean` (all 237 registered endpoints of the six
+light results) runs here: 66 × `[propext, Classical.choice, Quot.sound]`, 74 × `[propext, Quot.sound]`,
+11 × `[propext]`, 86 × no axioms; no `sorryAx` (6.1 s).
 
 ### Build and axiom status of the 11 results
 
 - Built locally from source here, with all printed axioms within the allowed set:
   Agent315Orbit196Residues, Agent119EightFamilies, Agent9DigitSumWindows, Agent117RemainingCycles,
-  Agent124ForwardInvariant (`lake build <roots>`, exit 0).
-- Not rebuilt here (Agent113FiveLayer, Agent124FourDigit, Agent124Prefix620, Agent104Prefix739,
+  Agent124ForwardInvariant, Agent113FiveLayer (`lake build <roots>`, exit 0; the five-layer
+  result took 41 min on 2 vCPUs).
+- Not rebuilt here (Agent124FourDigit, Agent124Prefix620, Agent104Prefix739,
   Agent124PrefixFiveSix, Agent118PrefixKernel): COMPUTED by CI only — the nightly full
   `python3 tools/verify.py` run 39803889093 on commit c6902ac (2026-10-22 15:20–19:54 UTC) ended
   `[axioms] 6254 endpoints checked` / `ALL CHECKS PASSED`; its log shows e.g.
   `Agent118.Finite217.no_196_217_palindrome depends on axioms: [propext, Classical.choice, Quot.sound]`.
   CI restores built modules from a cache, so that run did not recompile everything from scratch.
+
+### Independent re-check
+
+A separate reader (fresh context, read-only) re-checked the seven load-bearing claims against the
+sources: the 218 bound (`Conclusion218.lean:14` gives `t ≤ 34`; `registry.json` says 33), the
+rank meaning of `bound33_attained`, the 2r zeros of `fam`, the direction of
+`forwardAdmitted_project`, the `prefixPredecessors` vs `longPred k` format gap, the meaning of
+`Starts3`/`StartsL`/`Canonical`, and the core `orbit`/`Palindrome` definitions with the t ≤ 100
+check. All confirmed. It also notes that the prefix predicates do not range-check the prefix
+itself (a leading 0 or a digit > 9 would make an exclusion vacuous); every listed prefix passes
+that check (§2, vacuity).
 
 ### COMPUTED (scripts in `sprint/agent-19/`)
 
