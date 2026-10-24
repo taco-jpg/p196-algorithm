@@ -1,0 +1,20 @@
+import P196.PrefixK45.NewK4Tree
+
+/-! Generated certificate data (untrusted; kernel-checked use). -/
+namespace PrefixK45.NewK4
+open Agent124.CodeCert
+set_option maxRecDepth 100000
+
+theorem rows_leaf0024 : leaf0024.All (fun c r => rowOK ranks 4 c r = true) :=
+  allRowsC_sound (by decide +kernel)
+
+theorem rows_leaf0025 : leaf0025.All (fun c r => rowOK ranks 4 c r = true) :=
+  allRowsC_sound (by decide +kernel)
+
+theorem rows_leaf0026 : leaf0026.All (fun c r => rowOK ranks 4 c r = true) :=
+  allRowsC_sound (by decide +kernel)
+
+theorem rows_leaf0027 : leaf0027.All (fun c r => rowOK ranks 4 c r = true) :=
+  allRowsC_sound (by decide +kernel)
+
+end PrefixK45.NewK4

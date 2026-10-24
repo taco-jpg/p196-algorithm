@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 299 results (6563 checked endpoints — the theorems and definitions a reader should rely on — in 5121 modules). The only exception is the last section, [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified): those are paper proofs and computations by research agents, not Lean theorems.
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 300 results (6581 checked endpoints — the theorems and definitions a reader should rely on — in 5144 modules). The only exception is the last section, [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified): those are paper proofs and computations by research agents, not Lean theorems.
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -8,7 +8,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 
 ## Contents
 
-1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
+1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (20)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (4)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (51)
@@ -225,6 +225,23 @@ Refinements by longer digit prefixes (lists `entries00`, `entries01`, ... in the
 
 - Root module(s): `P196.Agent124FourDigit.A124F4Final`, `P196.Agent124FourDigit.A124F5Final`
 - 100 modules, 24 checked endpoints
+
+<details><summary>Main statements (Lean)</summary>
+
+```lean
+ancestry_00 : ∀ e ∈ entries00, ∀ A P t, 0 < A → PalStartsL e.1 P → orbit A t = P → t ≤ e.2 + 1
+no_196_00 : ∀ t, ∀ e ∈ entries00, ¬ PalStartsL e.1 (orbit 196 t)
+```
+</details>
+
+### PrefixK45
+
+*763 further digit prefixes excluded from the orbit of 196 (width-4 and width-5 certificates)*
+
+Width-4 and width-5 backward prefix certificates in the same format as `Agent124FourDigit`, with their own rank trees (4222 and 1190 nodes) checked by the existing `Agent124.CodeCert` row and short-word checkers: 757 four-digit prefixes at width 4 (`entries00` ... `entries07` in `PrefixK45.NewK4`) and 6 at width 5 (`entries00` in `PrefixK45.NewK5`), each with an ancestry bound of at most 14 steps, so no palindrome in the orbit of 196 begins with any listed prefix (`no_196_..`). None of these prefixes was excluded by an earlier result; together with the earlier refinements they exclude all ten four-digit refinements of 75 more three-digit prefixes (cells `R` in the combined table). Compiled and axiom-audited, not independently reviewed.
+
+- Root module(s): `P196.PrefixK45.NewK4Final`, `P196.PrefixK45.NewK5Final`
+- 23 modules, 18 checked endpoints
 
 <details><summary>Main statements (Lean)</summary>
 
@@ -2941,7 +2958,7 @@ Agent2.SaturatedProfile.numeric_saturated_prefix_profile : ∀ (seed : Nat) (d :
 
 One table instead of several overlapping lists. A cell is the three-digit prefix (row = first two digits, column = third digit). If the orbit of 196 ever reaches a palindrome, that palindrome cannot begin with any marked prefix. Several results overlap; each cell shows one source, the others are counted below.
 
-`C` two-digit prefix (Core) · `K` single-prefix kernel (217, 218, 620, 739, 777) · `S` the 33 three-digit classes · `F` the forward-invariant list (277 prefixes) · `x` this method provably cannot decide it (Agent117RemainingCycles) · `.` open
+`C` two-digit prefix (Core) · `K` single-prefix kernel (217, 218, 620, 739, 777) · `S` the 33 three-digit classes · `F` the forward-invariant list (277 prefixes) · `R` all ten four-digit refinements excluded (Agent124FourDigit together with PrefixK45) · `x` this method provably cannot decide it (Agent117RemainingCycles) · `.` open
 
 | | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -2954,91 +2971,91 @@ One table instead of several overlapping lists. A cell is the three-digit prefix
 | **16** | F | F | F | F | x | . | . | . | . | . |
 | **17** | F | F | F | F | F | . | . | . | . | . |
 | **18** | F | F | F | F | F | F | . | . | . | . |
-| **19** | F | F | F | F | F | F | F | . | x | . |
+| **19** | F | F | F | F | F | F | F | R | x | . |
 | **20** | C | C | C | C | C | C | C | C | C | C |
-| **21** | . | . | . | S | . | . | S | K | K | . |
+| **21** | . | . | . | S | R | R | S | K | K | . |
 | **22** | . | . | . | . | . | . | . | . | . | . |
 | **23** | . | . | . | . | . | . | . | . | . | . |
-| **24** | . | . | . | . | . | . | . | . | x | . |
-| **25** | . | . | . | . | . | . | . | S | . | . |
-| **26** | F | F | . | . | . | . | . | . | . | . |
-| **27** | . | . | . | . | . | x | S | S | S | . |
-| **28** | F | F | F | F | . | . | . | . | . | . |
+| **24** | R | R | . | . | . | . | . | . | x | . |
+| **25** | R | . | . | . | . | . | R | S | . | . |
+| **26** | F | F | R | . | . | . | . | . | . | . |
+| **27** | . | . | R | R | . | x | S | S | S | . |
+| **28** | F | F | F | F | R | . | . | . | . | . |
 | **29** | . | . | . | . | . | . | . | . | . | . |
 | **30** | F | F | F | F | F | F | F | F | F | . |
-| **31** | . | . | . | . | . | . | . | . | . | . |
+| **31** | R | . | . | . | . | . | . | . | . | . |
 | **32** | C | C | C | C | C | C | C | C | C | C |
 | **33** | F | F | F | F | F | F | F | F | F | F |
 | **34** | F | F | F | F | F | F | F | F | S | . |
 | **35** | F | . | . | . | . | . | . | . | . | . |
 | **36** | F | F | . | . | . | . | . | . | . | . |
-| **37** | F | F | F | . | . | . | . | S | . | . |
+| **37** | F | F | F | . | . | . | R | S | . | . |
 | **38** | F | F | F | F | S | S | . | . | . | . |
 | **39** | . | . | . | . | . | . | . | . | x | . |
 | **40** | C | C | C | C | C | C | C | C | C | C |
 | **41** | C | C | C | C | C | C | C | C | C | C |
-| **42** | . | . | . | . | . | . | S | . | . | S |
+| **42** | . | . | . | R | R | . | S | R | R | S |
 | **43** | . | . | . | . | . | . | . | . | . | . |
 | **44** | . | . | . | . | . | . | . | . | . | . |
 | **45** | . | . | . | . | . | . | . | . | . | . |
 | **46** | . | . | . | . | . | . | . | . | . | . |
-| **47** | . | . | . | . | S | . | . | . | . | . |
-| **48** | . | . | . | . | . | . | . | . | . | . |
+| **47** | . | . | . | . | S | . | . | . | R | . |
+| **48** | R | R | R | . | . | . | . | . | . | . |
 | **49** | . | . | . | . | . | . | . | . | . | . |
 | **50** | F | F | F | F | F | F | F | F | F | . |
 | **51** | . | . | . | . | . | . | . | . | . | . |
-| **52** | F | . | . | . | . | . | . | . | . | . |
+| **52** | F | R | . | . | . | R | . | . | . | . |
 | **53** | . | F | F | F | F | F | F | F | F | F |
 | **54** | F | F | F | F | F | F | F | F | F | . |
 | **55** | . | . | . | . | . | . | . | . | . | . |
-| **56** | . | . | . | . | . | . | . | . | . | . |
+| **56** | R | R | . | . | . | . | . | . | . | . |
 | **57** | . | . | . | . | . | . | . | . | . | . |
-| **58** | F | F | F | . | . | . | . | . | . | . |
-| **59** | . | . | . | . | . | . | . | . | . | . |
+| **58** | F | F | F | . | . | . | . | . | . | R |
+| **59** | . | R | R | . | . | . | . | . | . | . |
 | **60** | C | C | C | C | C | C | C | C | C | C |
 | **61** | F | F | F | F | F | F | F | F | F | . |
-| **62** | K | . | . | . | . | . | x | . | . | . |
+| **62** | K | R | . | . | . | R | x | . | . | R |
 | **63** | . | . | . | . | . | . | . | . | . | . |
 | **64** | C | C | C | C | C | C | C | C | C | C |
 | **65** | C | C | C | C | C | C | C | C | C | C |
 | **66** | . | . | . | . | . | . | . | . | . | . |
-| **67** | . | . | . | . | S | . | . | . | . | . |
+| **67** | . | . | . | . | S | . | R | . | . | . |
 | **68** | F | . | . | . | . | . | . | . | . | . |
-| **69** | . | . | . | . | . | . | . | . | . | . |
+| **69** | R | R | . | . | . | . | . | . | R | . |
 | **70** | F | F | F | F | F | F | F | F | F | . |
 | **71** | x | . | . | . | . | . | x | . | . | . |
 | **72** | F | F | F | F | F | F | F | F | F | . |
-| **73** | . | . | . | . | . | . | . | S | . | K |
+| **73** | . | R | . | . | . | . | . | S | . | K |
 | **74** | F | F | F | F | F | F | F | F | F | . |
-| **75** | . | . | . | . | . | S | . | . | . | . |
+| **75** | R | . | . | . | R | S | . | . | . | . |
 | **76** | C | C | C | C | C | C | C | C | C | C |
-| **77** | . | . | . | . | . | . | . | K | S | F |
-| **78** | . | . | . | S | S | S | S | S | S | S |
+| **77** | . | R | R | R | R | R | R | K | S | F |
+| **78** | R | R | R | S | S | S | S | S | S | S |
 | **79** | x | . | . | . | . | . | . | . | . | . |
 | **80** | C | C | C | C | C | C | C | C | C | C |
 | **81** | C | C | C | C | C | C | C | C | C | C |
 | **82** | C | C | C | C | C | C | C | C | C | C |
 | **83** | C | C | C | C | C | C | C | C | C | C |
-| **84** | . | . | . | . | . | . | . | . | . | . |
-| **85** | . | . | . | . | . | . | S | S | S | S |
-| **86** | . | . | . | . | . | . | . | . | . | . |
+| **84** | . | . | . | . | . | R | R | R | R | . |
+| **85** | R | R | R | R | R | R | S | S | S | S |
+| **86** | . | . | . | . | . | . | . | R | R | . |
 | **87** | . | . | . | . | . | . | . | . | . | . |
 | **88** | . | . | . | . | . | . | . | . | . | . |
 | **89** | . | . | . | . | . | . | . | . | . | . |
-| **90** | F | . | . | . | . | S | S | . | . | . |
+| **90** | F | R | R | R | R | S | S | . | . | . |
 | **91** | . | x | . | . | . | . | . | . | . | . |
-| **92** | F | . | . | S | . | . | . | . | . | . |
-| **93** | . | . | . | . | . | S | x | . | . | . |
+| **92** | F | R | R | S | . | R | . | . | . | . |
+| **93** | . | . | . | . | . | S | x | . | . | R |
 | **94** | F | F | F | F | F | F | F | F | F | . |
 | **95** | . | . | x | . | . | . | . | . | . | . |
-| **96** | F | . | . | . | . | . | . | . | . | . |
-| **97** | . | . | . | . | . | . | . | . | . | . |
-| **98** | F | . | . | . | . | . | . | . | . | . |
+| **96** | F | R | . | . | . | . | . | . | R | . |
+| **97** | . | . | . | . | R | R | R | . | . | . |
+| **98** | F | R | R | R | . | . | . | . | . | . |
 | **99** | . | . | . | . | . | . | . | . | . | . |
 
-321 of the 900 three-digit prefixes are excluded (124 of them by more than one result), 14 are provably out of reach of this method, and 565 are open.
+396 of the 900 three-digit prefixes are excluded (321 by a three-digit or two-digit result, 124 of them by more than one, and 75 marked `R` because all ten of their four-digit refinements are excluded), 14 are provably out of reach of this method, and 490 are open.
 
-Four-digit refinements: 1731 four-digit prefixes whose three-digit parent is still open are excluded (lists `entries..` in `Agent124FourDigit`, plus 2641 in `Agent117P2641`).
+Four-digit refinements: 2494 four-digit prefixes outside the C/K/S/F cells are excluded: 1731 from the lists `entries..` in `Agent124FourDigit` plus the single prefix 2641 in `Agent117P2641`, and 763 from `PrefixK45` (750 of them fill the `R` cells). Counting every result, 5704 of the 9000 four-digit prefixes (63.4%) are excluded.
 
 ## Additional draft results (not reviewed)
 
