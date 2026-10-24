@@ -4,6 +4,7 @@ Every registered result below is a Lean 4 theorem that builds from source in thi
 Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 289 results (6263 checked endpoints — the theorems and definitions a reader should rely on — in 4827 modules).
 Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 288 results (6274 checked endpoints — the theorems and definitions a reader should rely on — in 4825 modules).
+Every result in the registered sections below is a Lean 4 theorem that builds from source in this repository 和 whose axioms are only `propext`, `Classical.choice` 和 `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -3202,4 +3203,10 @@ Four-digit refinements: 1731 four-digit prefixes whose three-digit parent is sti
 | `Drafts.Misc` | 527 | 217 | `proofs/Agent100DoubleGate.lean` … |
 | `Drafts.Research` | 6 | 24 | `proofs/research/persist_arithmetic_width_rank.lean` … |
 | `Drafts.ResearchMainExistenceAttempt` | 10 | 91 | `proofs/research/main_existence_attempt/ancestry_direct_pass/lean/FiniteAncestry.lean` … |
+
+## Manuscript reports (outside the Lean registry)
+
+### Agent 201 — bounded template decidability
+
+**THEOREM (paper proofs; unformalized):** [REPORT_201.md](REPORT_201.md) gives an explicit finite graph bound for existence of original return certificates at each specified finite-block bound, including an explicit period bound 和 exact elimination of run-length thresholds. It 也 treats bounded uniform-translation template families, excludes the entirely empty-block certificate class, 和 supplies a counterexample to fixed run-length capping. An accepted decimal certificate remains absent. These results are outside the verified counts above. Targeted validation code: [agent201_template_checks.py](calculation/agent201_template_checks.py).
 
