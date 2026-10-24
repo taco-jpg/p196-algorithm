@@ -352,6 +352,16 @@ end Agent7.ResiduePeriods
 
 What a successful certificate would give. No certificate is known.
 
+### Agent218CertificateAudit
+
+*Exact threshold feasibility, template reframing, 和 a six-phase counterexample*
+
+**LEAN-VERIFIED:** for fixed cyclic states 和 trimming counts, the original checker's lower-bound clauses are feasible exactly when each total band gain is nonnegative. Common-padding identities permit exact transitions that move band letters into finite blocks; a concrete local example cannot satisfy the old one-sided trim equation with the same representatives. A period-three local strip counterexample refutes direct extension of scalar predecessor erasure to six-phase bulk. **THEOREM (paper proof in `REPORT_218.md`):** every accepted certificate in phase class `{6,12}` satisfies `2 * totalGam < P`; the common-cut argument excludes saturation for arbitrary finite block widths. The new combined obstruction endpoint is outside the compiled endpoint list. The report supplies complete carry bookkeeping, code 和 1000-step checks. Global checker satisfiability remains unresolved; no accepted certificate or decimal Lychrel witness is supplied.
+
+- Root modules: `P196.Agent218CertificateAudit.ThresholdFeasibility`, `P196.Agent218CertificateAudit.TemplateReframe`, `P196.Agent218CertificateAudit.SixPhaseCounterexample`
+- 3 modules, 11 checked endpoints
+- Report: [REPORT_218.md](REPORT_218.md)
+
 ### CertificateToLychrel
 
 *From a checked return certificate to a Lychrel number*
