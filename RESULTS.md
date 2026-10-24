@@ -1,10 +1,13 @@
 # Results
 
 Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules). Separately labeled paper reports remain outside those registered results.
+Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
 Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, root modules, every endpoint).
+
+Paper-proof supplement: [REPORT_202.md](REPORT_202.md) (Agent #202, direction 2). **THEOREM:** complete carry formulas characterize every transition between pure complementary nonneutral profiles; every such profile leaves that class within the sharp bound `ceil(log2(base))`, giving 4 steps in decimal. The report also derives the general-base bulk-period condition 和 the exact obstruction to the known power-of-2 reset itinerary, with reproducible numerical checks. Arbitrary bounded interface blocks remain outside the obstruction. These are paper proofs; this supplement adds no registered Lean endpoint or decimal Lychrel construction.
 
 ## Contents
 
