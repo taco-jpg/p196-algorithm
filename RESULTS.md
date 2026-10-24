@@ -1,37 +1,22 @@
 # Results
 
-Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules). Separately labeled paper reports remain outside those registered results.
-Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 289 results (6263 checked endpoints — the theorems and definitions a reader should rely on — in 4827 modules).
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 288 results (6274 checked endpoints — the theorems and definitions a reader should rely on — in 4825 modules).
-Every result in the registered sections below is a Lean 4 theorem that builds from source in this repository 和 whose axioms are only `propext`, `Classical.choice` 和 `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
-## Research reports outside the Lean registry
-
-- **Agent 219 — THEOREM (written proofs):** [REPORT_219.md](REPORT_219.md) derives the exact endpoint-limit carry relation, identifies the unresolved finite-center compatibility condition, excludes bounded-gap returns with one central zero/nine band 和 bounded end blocks, gives exact constant-center endpoint dynamics 和 necessary cycle congruences, 和 refutes specified binary block encodings. Includes reproducible 1000-step checks. No decimal Lychrel construction or new Lean theorem is claimed; these report results are outside the registered endpoint counts below.
-
-## Registered Lean results
-> **THEOREM — written research report, pending Lean formalization:** [Agent #212: base arithmetic 和 a decimal template obstruction](REPORT_212.md) excludes every uniform fixed-time return of the decimal family `10 9^r 89 0^r`, using an exact sixteen-step symbolic carry certificate 和 persistence of zero column-sum bands. The report also reconstructs the regular power-of-2 family 和 distinguishes critical bands from the existing noncritical checker. Decimal Lychrel existence remains unresolved.
-
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
-Every formal result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
-Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules). Separately labeled research reports are outside 这 Lean census.
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 299 results (6563 checked endpoints — the theorems and definitions a reader should rely on — in 5121 modules). The only exception is the last section, [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified): those are paper proofs and computations by research agents, not Lean theorems.
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
 Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, root modules, every endpoint).
 
-Paper-proof supplement: [REPORT_202.md](REPORT_202.md) (Agent #202, direction 2). **THEOREM:** complete carry formulas characterize every transition between pure complementary nonneutral profiles; every such profile leaves that class within the sharp bound `ceil(log2(base))`, giving 4 steps in decimal. The report also derives the general-base bulk-period condition 和 the exact obstruction to the known power-of-2 reset itinerary, with reproducible numerical checks. Arbitrary bounded interface blocks remain outside the obstruction. These are paper proofs; this supplement adds no registered Lean endpoint or decimal Lychrel construction.
-
 ## Contents
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
-2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (3)
-2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (2)
+2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (4)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (51)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
 6. [Affine run words](#affine-run-words) (10)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
+8. [Sprint agent results (PRs #261–#287)](#sprint-agent-results-prs-261287) (7)
+9. [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified) (19)
 
 ## The orbit of 196 and palindrome-prefix exclusions
 
@@ -355,17 +340,6 @@ end Agent7.ResiduePeriods
 
 What a successful certificate would give. No certificate is known.
 
-### Agent218CertificateAudit
-
-*Exact threshold feasibility, template reframing, 和 a six-phase counterexample*
-
-**LEAN-VERIFIED:** for fixed cyclic states 和 trimming counts, the original checker's lower-bound clauses are feasible exactly when each total band gain is nonnegative. Common-padding identities permit exact transitions that move band letters into finite blocks; a concrete local example cannot satisfy the old one-sided trim equation with the same representatives. A period-three local strip counterexample refutes direct extension of scalar predecessor erasure to six-phase bulk. **THEOREM (paper proof in `REPORT_218.md`):** every accepted certificate in phase class `{6,12}` satisfies `2 * totalGam < P`; the common-cut argument excludes saturation for arbitrary finite block widths. The new combined obstruction endpoint is outside the compiled endpoint list. The report supplies complete carry bookkeeping, code 和 1000-step checks. Global checker satisfiability remains unresolved; no accepted certificate or decimal Lychrel witness is supplied.
-
-- Root modules: `P196.Agent218CertificateAudit.ThresholdFeasibility`, `P196.Agent218CertificateAudit.TemplateReframe`, `P196.Agent218CertificateAudit.SixPhaseCounterexample`
-- 3 modules, 11 checked endpoints
-- Report: [REPORT_218.md](REPORT_218.md)
-**Research report — THEOREM (paper proofs; no new Lean endpoints):** [Agent 216: center obstructions 和 exact run renewal](REPORT_216.md) gives the complete realizable 29-state/188-edge parity-center abstraction, whose universal safety kernel is empty after 2 closure rounds; exact maximal centered-run evolution, including overflow absorption from the alphabet `{a,a+9}`; the resulting run-length balance 和 the impossibility of a persistent centered band without companion absorption. Complete carry proofs 和 reproducible bounded checks are included, with 1000 ordinary transitions from each of 2 seeds. Existing palindrome classification, complementary-band safety, 和 0/18 ancestry are credited. No decimal Lychrel witness or return certificate is supplied. 这 report is excluded from the registered-result counts.
-
 ### CertificateToLychrel
 
 *From a checked return certificate to a Lychrel number*
@@ -390,11 +364,21 @@ Agent112.Admissibility.no_bounded_width_orbit : ∀ (w : Agent109.Word),
 ```
 </details>
 
+### Agent218CertificateAudit
+
+*Exact threshold feasibility, template reframing, and a six-phase counterexample*
+
+**LEAN-VERIFIED:** for fixed cyclic states and trimming counts, the original checker's lower-bound clauses are feasible exactly when each total band gain is nonnegative. Common-padding identities permit exact transitions that move band letters into finite blocks; a concrete local example cannot satisfy the old one-sided trim equation with the same representatives. A period-three local strip counterexample refutes direct extension of scalar predecessor erasure to six-phase bulk. **THEOREM (paper proof in `REPORT_218.md`):** every accepted certificate in phase class `{6,12}` satisfies `2 * totalGam < P`; the common-cut argument excludes saturation for arbitrary finite block widths. The new combined obstruction endpoint is outside the compiled endpoint list. The report supplies complete carry bookkeeping, code and 1000-step checks. Global checker satisfiability remains unresolved; no accepted certificate or decimal Lychrel witness is supplied.
+
+- Root modules: `P196.Agent218CertificateAudit.ThresholdFeasibility`, `P196.Agent218CertificateAudit.TemplateReframe`, `P196.Agent218CertificateAudit.SixPhaseCounterexample`
+- 3 modules, 11 checked endpoints
+- Report: [REPORT_218.md](REPORT_218.md)
+
 ### CertificateBounds208
 
 *LEAN-VERIFIED: exact elimination of return-certificate lower-bound search*
 
-For fixed original states 和 trimming counts, some reassignment of `lo` 和 `lo'` passes the unchanged Agent109 checker exactly when the structural phase/block equations hold 和 both total signed band gains are nonnegative. The construction computes a prefix-floor bound; the existing `Agent109.NoPal.not_stepPal` theorem supplies the redundant safety guard. Composing with the existing ordinary-integer bridge gives conditional decimal Lychrel existence directly from these reduced hypotheses. No structural cycle or accepted certificate instance is supplied.
+For fixed original states and trimming counts, some reassignment of `lo` and `lo'` passes the unchanged Agent109 checker exactly when the structural phase/block equations hold and both total signed band gains are nonnegative. The construction computes a prefix-floor bound; the existing `Agent109.NoPal.not_stepPal` theorem supplies the redundant safety guard. Composing with the existing ordinary-integer bridge gives conditional decimal Lychrel existence directly from these reduced hypotheses. No structural cycle or accepted certificate instance is supplied.
 
 - Root: `P196.CertificateBounds208.BoundSynthesis`
 - New module count: 1; checked endpoints: 4.
@@ -405,28 +389,22 @@ For fixed original states 和 trimming counts, some reassignment of `lo` 和 `lo
 
 *LEAN-VERIFIED: every accepted return certificate needs an interface of length at least 3*
 
-The unchanged original checker rejects every certificate whose interface blocks remain of length at most 2. A decreasing finite rank covers all 3048 bounded short-interface states across the eight even phases, either terminal-carry bit, 和 every permitted trim. Exact LocalOK projection 和 cyclic rank descent remove every exterior-width, center-width, band-length, or period restriction. No exclusion of wider interfaces or accepted certificate instance is asserted.
+The unchanged original checker rejects every certificate whose interface blocks remain of length at most 2. A decreasing finite rank covers all 3048 bounded short-interface states across the eight even phases, either terminal-carry bit, and every permitted trim. Exact LocalOK projection and cyclic rank descent remove every exterior-width, center-width, band-length, or period restriction. No exclusion of wider interfaces or accepted certificate instance is asserted.
 
 - Root: `P196.CertificateInterface208.CertificateInterface`
 - New module count: 3; checked endpoints: 5.
 - Endpoints: `Agent208.Interface.rank_decreases`, `Agent208.Interface.local_rank_decreases`, `Agent208.Interface.valid_has_wide_interface`, `Agent208.Interface.checked_has_wide_interface`, `Agent208.Interface.short_interfaces_rejected`.
 - Report: [REPORT_208.md](REPORT_208.md).
+
 ### Agent213KnownBaseMechanisms
 
-*Known-base neutral certificates 和 selected center rigidity*
+*Known-base neutral certificates and selected center rigidity*
 
-**LEAN-VERIFIED:** Explicit neutral-band certificates yield Lychrel template values for every gap at least four in bases 11, 17, 26, plus concrete seeds 和 existence theorems. Each cycle has two overflows 和 trimming gain three. Separate integer equations extracted from a specified four-phase center itinerary force base 26; their decimal specialization is contradictory. The complete carry reconstruction, exact itinerary hypotheses, source audit, Python checks, 和 base-20 source gap appear in [REPORT_213.md](REPORT_213.md). The itinerary-to-equations derivation is a paper proof; no decimal existence or universal decimal obstruction is asserted.
+**LEAN-VERIFIED:** Explicit neutral-band certificates yield Lychrel template values for every gap at least four in bases 11, 17, 26, plus concrete seeds and existence theorems. Each cycle has two overflows and trimming gain three. Separate integer equations extracted from a specified four-phase center itinerary force base 26; their decimal specialization is contradictory. The complete carry reconstruction, exact itinerary hypotheses, source audit, Python checks, and base-20 source gap appear in [REPORT_213.md](REPORT_213.md). The itinerary-to-equations derivation is a paper proof; no decimal existence or universal decimal obstruction is asserted.
 
 - Root modules: `P196.Agent213KnownBaseMechanisms.CenterRigidity`, `P196.Agent213KnownBaseMechanisms.KnownBases`.
 - 2 new modules, 20 checked endpoints; imports the existing `A120Certificate` soundness theorem.
-- Principal endpoints: `Agent213.center_rigidity`, `Agent213.center_base10_impossible`, `Agent213.KnownBases.lychrel11_template`, `Agent213.KnownBases.lychrel17_template`, `Agent213.KnownBases.lychrel26_template`, 和 the corresponding `exists_lychrel11`, `exists_lychrel17`, `exists_lychrel26`.
-### Agent203SealReconstruction — manuscript results
-
-**THEOREM (manuscript; Lean verification absent).** [REPORT_203.md](REPORT_203.md) reconstructs Seal's base-11, base-17, 和 base-26 families with complete carry tables, all-parameter return identities, 和 phase-specific nonpalindrome witnesses. It also reconstructs the regular power-of-two family 和 identifies its exact first-overflow reset condition, `b = 2^(j+1)`. The decimal specialization `10998900` reaches a palindrome at step 10.
-
-**THEOREM (scope of the current saturated template).** For `Phase c`, the number of coefficients equal to 9 in `template c B A C g h` equals `2*N9(B) + 2*N9(A) + N9(C)`, independently of the variable run lengths. Every finite collection of such states therefore imposes a uniform bound on this count. A growing decimal analogue of Seal's complementary digit bands would have at least `2*n` such coefficients, so that mechanism lies outside this exact finite framework. The report includes the necessary carry-sensitive normalization rule for critical-9 bands; it makes no claim that every return certificate is impossible.
-
-The self-contained Python code in the report checks each reconstructed sporadic family through 1000 steps from each of three starting run lengths, 和 five regular power-of-two examples through 1000 steps, with independent integer-addition checks. **IDEA / unresolved reconstruction:** the opened primary source omits its asserted base-20 witness. Decimal existence remains open.
+- Principal endpoints: `Agent213.center_rigidity`, `Agent213.center_base10_impossible`, `Agent213.KnownBases.lychrel11_template`, `Agent213.KnownBases.lychrel17_template`, `Agent213.KnownBases.lychrel26_template`, and the corresponding `exists_lychrel11`, `exists_lychrel17`, `exists_lychrel26`.
 
 ## One reverse-and-add step: predecessors, fibers, palindromic outputs
 
@@ -1211,9 +1189,6 @@ OrdinaryImageCensus.small_imageCount :
 
 Carry observability, carry accounting and exterior coordinates over finitely many steps.
 
-- **THEOREM — Agent209BinaryEmbedding (written proof):** [REPORT_209.md](REPORT_209.md) excludes fixed-time growing returns for literal digit substitutions of the binary expanding family, including unequal constant-digit codeblock widths. A separate finite four-arrow obstruction excludes every uniform decimal block width from reproducing the binary four-phase cycle one step at a time, including leading-zero deletion. The proofs use complete carry transport 和 an exact reversed-prefix charge; 1,000-step controls 和 full reproduction code accompany the report. Complete written proofs accompany these statements; new Lean verification: 没有. Corrected interfaces, changed intermediate phases, 和 general decimal Lychrel existence remain unresolved.
-- **Agent206CenterObstruction — THEOREM (complete hand proof; Lean formalization outstanding):** Every positive decimal reverse-and-add orbit 有 infinitely many states with central column sum at most 9. An initial central sum from 10 through 17 falls below 10 within six transitions (five for odd initial length); a central 18-run of initial length r gives the bound 5r+6. Exact parity/overflow equations, deficit doubling, 和 the existing central-run erosion law exclude every invariant requiring the physical center to remain high at every phase. The complete proof, prior-result attribution, counterexamples, code, 和 outputs appear in [REPORT_206.md](REPORT_206.md). Finite validation covers 3,969 short admissible profiles 和 fourteen 1,000-transition sample orbits. Decimal existence 和 general return-certificate satisfiability remain unresolved.
-
 - **SymmetricCarryCensus**: the original `symWords L` list contains every admissible symmetric coefficient word exactly once; its size is zero at width zero, nine at width one, and `18 * 19^(L/2-1)` times an odd-width factor ten otherwise. A whole-word complement involution proves that each actual carry bit occurs exactly `9 * 19^(L/2-1)` times that factor at every strictly internal position `0 < j < L`; the checked pair `[9,18,9]` and `[10,0,10]` shows terminal carries need not complement (`P196.SymmetricCarryCensus.Census`, 16 modules, 6 endpoints). Counts are unweighted coefficient words; no integer multiplicity, joint-path realization, fixed-seed reachability or palindrome avoidance is claimed.
 
 - **TerminalCarryCensus**: the original `symWords` enumeration has exactly `(19^m - 1)/2` terminal-one words at width `2*m` and `5*19^m` at width `2*m+1`, including widths zero and one. A finite complementary-scan theorem isolates the all-nine exception; a complement involution on the existing half-word products gives the count, and terminal carry one forces the positive exterior needed to transfer it to the original enumeration (`P196.TerminalCarryCensus.Terminal`, 18 modules, 3 endpoints). Counts are unweighted coefficient words; no integer multiplicity, target-fiber count, trajectory frequency, joint-path realization or palindrome avoidance is claimed.
@@ -1886,14 +1861,6 @@ Agent104.ExactZeroGap.zeroBound_next_overflow_exact : ∀ (q : Nat → Nat) (L M
 ## Periodic (repeated-block) words and their quotient dynamics
 
 Numbers built from repeated digit blocks: guards, quotient paths, returns and catalogs.
-
-### Agent214PeriodicBands — THEOREM (mathematical report)
-
-**THEOREM:** [REPORT_214.md](REPORT_214.md) gives complete handwritten proofs of the universal exactly aligned periodic bulk fixed-point classification (constant 0, 9, or 18); collapse of every spatial-period-2 band at overflow, including coefficient 9; 和 a uniform constant-run bound excluding growing fixed-time return families with essential period-2 bands 和 bounded intervening blocks. It classifies the five nonconstant labelled period-2 no-overflow cycles. For the restricted alphabet `{1,...,17} \\ {9}` under the forced-overflow bulk map, it classifies genuine spatial-period-3 cycles (three temporal 2-cycles 和 thirteen temporal 6-cycles) 和 spatial-period-4 cycles (six temporal 24-cycles). Actual decimal orbits permit at most three consecutive overflows, so those forced-overflow cycles alone cannot supply an actual infinite orbit. The report includes exact carry cases, failed extensions, complete executable checks, 和 1000-step validation of every state in its 92-state period-3 和 152-state period-4 restricted catalogs. **IDEA — remaining work:** mixed-clock schedules, finite returning interfaces, a compatible center, positive growth, 和 all-time output asymmetry. New Lean modules: 0. Decimal Lychrel existence remains unresolved by 这 report.
-### Agent204PeriodicBandReport — paper proofs
-
-**THEOREM (paper proof; no new Lean verification).** [REPORT_204.md](REPORT_204.md) gives exact general-period bulk maps, anchored fixed-point classification, complete period-2 cycle classification via doubling modulo 99, 和 a bounded-interface obstruction: after an overflow within m steps, r period-at-most-2 column bands plus B other columns yield at most B+(4m+1)r+m constant pieces. A positive-growth return cannot retain an unbounded primitive period-2 band. A general-period integer-gcd argument excludes nonconstant bulk returns whose intermediate phases use uniform carries. Explicit period-3/4 bulk cycles, complete carry tables, reproducible 1000-step checks, 和 failed finite embeddings document the remaining interface problem. Decimal Lychrel existence remains unresolved.
-
 
 ### Agent1GroupIII
 
@@ -2688,20 +2655,7 @@ Agent1.RepeatedBlock.terminalCarry_symmetric_bands : ∀ (B w H : Agent8.Word) (
 
 ## Affine run words
 
-### Agent205InterfaceGrowth
-
-**LEAN-VERIFIED — exact cyclic run-length guards.** For a positive finite cycle of signed increments with arbitrary phase thresholds, cyclic lower bounds exist exactly when the total increment is nonnegative. The maximum prefix deficit gives the least initial reserve 和 protects every phase of every later traversal. The result includes natural lower bounds 和 independent pairs of coordinates. This is generic arithmetic; an exact decimal state cycle 和 its nonpalindrome tests remain separate obligations. Root: `P196.Agent205InterfaceGrowth.CyclicGuards`; 1 module, 7 checked endpoints. [REPORT_205.md](REPORT_205.md) supplies the written multi-band charge obstruction, complement-reflection obstruction, proofs, 和 reproducible identity checks; those additional results are labeled THEOREM rather than LEAN-VERIFIED.
-
 Digit words made of runs whose lengths are affine in a parameter: equality/palindrome decisions and uniform returns.
-
-**THEOREM — Paper report, awaiting Lean formalization:** [Agent 215: interfaces, global residues, 和 affine run growth](REPORT_215.md) develops arbitrary-band interface invariants, suffix-gain divisibility, an arithmetic minimum for simultaneous run growth, 和 a classification of uniformly valid multivariable affine returns. Every independently growing run forces a weight-preserving permutation linear part. The report includes full carry proofs, exact guard criteria, credited prior results, 和 [reproducible checks](calculation/agent215_interface_checks.py) through 1000 consecutive ordinary decimal steps. Lychrel existence remains unresolved; the calibration uses shrinking protected bands 和 growing interface blocks.
-### Agent207ThreeRunObstruction — hand proof
-
-**THEOREM; Lean formalization pending.** From decimal width at least five, a full symmetric column-sum word with at most three maximal constant runs produces a palindrome or at least five runs within 两 reverse-add steps. Hence a palindrome-free orbit visits at least five runs in every three sufficiently late states, with lower asymptotic density at least one third. A separate parity theorem excludes consecutive profiles consisting entirely of even coefficients. [REPORT_207.md](REPORT_207.md) contains complete carry cases, sharpness witnesses, reproducible finite checks, 和 1,000-step consistency checks. The statements concern whole profiles; return templates with more intermediate runs or odd interface coefficients remain outside these exclusions. Zero Lean modules or declarations are introduced.
-**Research note — THEOREM (written proof):** [Agent 220: exact constant-band algebra](REPORT_220.md) gives whole-word boundary formulas, the protected-core length \(\ell-2m+K_m\), an obstruction to consecutive entirely even column states in a palindrome-avoiding trajectory, a fixed-time return obstruction for unbounded central \(9\)-bands, 和 exact internal \(9\)-spacer erosion/absorption accounting. Existing bulk-phase results are credited. Includes reproducible bounded identity checks 和 six explicit \(1000\)-step integer checks. Verification status: written proofs 和 Python checks; this note adds zero Lean endpoints 和 is outside the formal-result counts. Decimal Lychrel existence remains unresolved by the note.
-### Agent210BandAlgebra — THEOREM (written proofs; unformalized)
-
-[REPORT_210.md](REPORT_210.md) gives exact constant-band carry/refolding formulas, including critical 9 interfaces, 和 a paired-step lemma for consecutive transitions without overflow with sharp exceptional phases 4 和 14. It derives sufficient protected-core bounds r-ceil(3t/2) for the 0, 6, 12, 18 cycles 和 r-ceil(5t/3) for the six-cycle. It also excludes closure under every individual step for pure complementary-band words with maximal run lengths at least 3. The report credits the existing phase catalog, palindrome-preimage criterion, 和 template safety results; it includes complete written proofs, runnable validation code, explicit counterexamples to the unrestricted paired-step lemma, 和 1000-step independent integer checks of finite-horizon families. Scope: finite-horizon protection 和 interface obstructions; an infinite return certificate or decimal Lychrel existence proof remains missing. 这 additions carry the label THEOREM for complete written proofs; their formalization remains absent.
 
 ### Agent102AffineBoundary
 
@@ -2896,23 +2850,13 @@ Agent105.AffineDynamics.wordAt_append : ∀ (rs ss : List Agent102.RunSpec) (k :
 ```
 </details>
 
+### Agent205InterfaceGrowth
+
+**LEAN-VERIFIED — exact cyclic run-length guards.** For a positive finite cycle of signed increments with arbitrary phase thresholds, cyclic lower bounds exist exactly when the total increment is nonnegative. The maximum prefix deficit gives the least initial reserve and protects every phase of every later traversal. The result includes natural lower bounds and independent pairs of coordinates. This is generic arithmetic; an exact decimal state cycle and its nonpalindrome tests remain separate obligations. Root: `P196.Agent205InterfaceGrowth.CyclicGuards`; 1 module, 7 checked endpoints. [REPORT_205.md](REPORT_205.md) supplies the written multi-band charge obstruction, complement-reflection obstruction, proofs, and reproducible identity checks; those additional results are labeled THEOREM rather than LEAN-VERIFIED.
+
 ## Finite abstractions and transducers
 
 Finite models whose limits are stated explicitly.
-
-**THEOREM — Agent211SeparatedTemplates (prose proof; Lean formalization pending):**
-[REPORT_211.md](REPORT_211.md) gives an explicitly bounded deterministic graph
-with integer run-length displacements for canonical constant-band templates
-with at most `r` long bands, each of length at least `B+5`, 和 gaps of length at
-most `B` at every phase. Existence in that separated class is equivalent to a
-cycle with nonnegative componentwise drift; strict growth requires positive
-drift. The report includes a width bound for a conditional witness, complete
-carry bookkeeping, a proof that every 3 consecutive column-sum words of a
-palindrome-free orbit include a maximal run of length 1 or 2, 和 exact
-counterexamples to length clipping even with fixed residues. The scope excludes a decimal
-Lychrel construction or unrestricted bounded-run decidability.
-The embedded Python audit includes 1000 steps for each concrete numerical
-example; the finite graph enumeration remains unexecuted.
 
 **PrefixCycleLift:** Zero-based rows `31, 30, 29, 28` of the existing seven-column `Cycle398_k7` witness, read in forward time, have no eighth-column extension: the possible added coefficients shrink from `0..18` to `7..17`, then `14..18`, then the empty set. A sound checker and canonical integer bridge exclude this four-row trace from any ordinary orbit whose state at the trace start has width at least eight, including subsequent overflow and width increases. This does not exclude palindrome prefix `398` or invalidate the existing seven-column cycle. Root: `P196.PrefixCycleLift.Cycle398`; 15 modules, 15 endpoints.
 
@@ -3242,9 +3186,94 @@ Four-digit refinements: 1731 four-digit prefixes whose three-digit parent is sti
 | `Drafts.Research` | 6 | 24 | `proofs/research/persist_arithmetic_width_rank.lean` … |
 | `Drafts.ResearchMainExistenceAttempt` | 10 | 91 | `proofs/research/main_existence_attempt/ancestry_direct_pass/lean/FiniteAncestry.lean` … |
 
-## Manuscript reports (outside the Lean registry)
+## Sprint agent results (PRs #261–#287)
 
-### Agent 201 — bounded template decidability
+Results of the Claude sprint agents, registered when their pull requests were merged. The scope text is the agent's own; each report under `sprint/` explains what is and is not claimed.
 
-**THEOREM (paper proofs; unformalized):** [REPORT_201.md](REPORT_201.md) gives an explicit finite graph bound for existence of original return certificates at each specified finite-block bound, including an explicit period bound 和 exact elimination of run-length thresholds. It 也 treats bounded uniform-translation template families, excludes the entirely empty-block certificate class, 和 supplies a counterexample to fixed run-length capping. An accepted decimal certificate remains absent. These results are outside the verified counts above. Targeted validation code: [agent201_template_checks.py](calculation/agent201_template_checks.py).
+### Sprint01ForwardWalk
 
+*Forward walks: 3,145 four-digit prefixes the width-8 forward invariant from time 100 cannot exclude*
+
+Obstruction for the Agent124.Forward method, not a statement about palindromes of 196. For each of the 3,145 four-digit prefixes in `obstructed8` (3,134 with noOverflowPre plus 11 lead-one prefixes), an explicit list of inner carries walks the width-8 projection of orbit 196 100 to a full-width digit word beginning with that prefix (`forward_obstruction8`), so every code set that is closed under both forwardPrefix carry choices (fwdOK at width 8) and contains that projection contains an element of initialWordsL 8 pre. Generic lemma `forward_cannot_exclude`. Not claimed: anything at other widths or start times, anything about whether such palindromes occur, or about the backward (rank-certificate) method.
+
+- Root modules: `P196.Sprint.Agent01.W8Final`
+- 35 modules, 5 checked endpoints
+- Report: [sprint/agent-01/REPORT.md](sprint/agent-01/REPORT.md)
+
+### SprintAgent03
+
+*Unguarded enrichment of the forward prefix abstraction gains nothing; 196's prefix state lies on a cycle (k = 3..7)*
+
+Two statements about the k-column forward prefix abstraction (forwardPrefix with inner carry 0 or 1). (1) For any extra state X and any update δ : X → List Nat → Nat → X that never blocks a carry, the words of the least enriched invariant are exactly Reach w0 (proj_iff), and any enriched forward-closed set containing the start covers every Reach-word (enriched_invariant_covers, no_new_exclusion); this covers residues mod 99, width mod m, time mod 6 and the previous carry. (2) A word on a forward cycle, and every word forward-reachable from it, has no rank under any RowsClosed k rank function (rank_none_of_cycle, no_rank_of_cycleOK); the width-k projection of orbit 196 100 lies on such a cycle for k = 3..7 (kernel-checked carry witnesses), so no width-k batch entry for a k-digit prefix in its forward closure can pass entryOK (entryOK_false_3 .. entryOK_false_7). Not claimed: anything about palindromes of 196, that the forward closure equals the infinite-rank region (that was only computed), or anything at k ≥ 8.
+
+- Root modules: `P196.Sprint.Agent03.EnrichedNoGain`, `P196.Sprint.Agent03.CycleRank`
+- 19 modules, 17 checked endpoints
+- Report: [sprint/agent-03/REPORT.md](sprint/agent-03/REPORT.md)
+
+### SprintAgent04
+
+*Width-7 cycle obstructions through one shared cycle; cycles realized by actual orbits*
+
+Method limits, not exclusions. For the RowsClosed rank interface consumed by Agent124.PrefixL.entryOK: a word that reaches a backward closed walk has no rank, so entryOK fails for every bound for any prefix having such an initial word. Instances at width 7, all through one explicit length-7 cycle: 13 three-digit prefixes (138, 164, 198, 248, 275, 398, 626, 710, 716, 790, 911, 936, 952), 20 four-digit prefixes (1337, 1475, 2288, 6820, 8834, 8935, 8846, 4668, 1386, 3657, 4965, 8835, 1114, 4345, 3654, 6787, 1299, 4439, 1452, 8802) and 4456. Also: the canonical width-7 column words of orbit 10097 at times 220..228 form a closed walk with the actual carries; every width-7 column word of orbit 10151 at times 5..80 has no rank in any RowsClosed 7 function, and orbit 10151 81 is a palindrome beginning 1337. NOT claimed: minimality of the length-7 cycle, any statement about higher widths, any exclusion of palindromes from the orbit of 196, or that any orbit repeats forever.
+
+- Root modules: `P196.Sprint.Agent04.PrefixesK7`, `P196.Sprint.Agent04.Realized`
+- 3 modules, 58 checked endpoints
+- Report: [sprint/agent-04/REPORT.md](sprint/agent-04/REPORT.md)
+
+### Sprint.Agent05
+
+*Delay witnesses: lower bounds for every prefix certificate*
+
+A positive seed A with orbit A t a palindrome beginning with pre forces every Agent124 certificate entry (pre, b) accepted by entryOK (any width k, any rank function with RowsClosed/ShortClosed) to satisfy t <= b + 1, and keeps pre out of every entry list passing the two premises of no_196_of_entries with base check N < t. Instances: seed 1186060307891929990 reaches its first palindrome (119 digits, prefix 4456) at t = 261, so 4456, 445 and 44 can never pass the t <= 100 route; 449 four-digit prefixes (and their three- and two-digit parents) with kernel-checked witnesses t > 100 (Over100); 1514 certified four-digit entries whose bound b + 1 is attained by a real seed (Sharp). Not claimed: anything about whether 196 is a Lychrel number; witnesses are lower bounds only, absence of a large witness does not make a prefix certifiable.
+
+- Root modules: `P196.Sprint.Agent05.Witness4456`, `P196.Sprint.Agent05.Over100`, `P196.Sprint.Agent05.Sharp`
+- 33 modules, 32 checked endpoints
+- Report: [sprint/agent-05/REPORT.md](sprint/agent-05/REPORT.md)
+
+### SprintAgent02
+
+Sprint agent 02 result; see sprint/agent-02/REPORT.md for what is and is NOT claimed. Registered by the owner when merging PR without editing the statements; nothing here proves that 196 is a Lychrel number.
+
+- Root modules: `P196.Sprint.Agent02.P2342`, `P196.Sprint.Agent02.P9149P6676`, `P196.Sprint.Agent02.W3Final`
+- 216 modules, 13 checked endpoints
+- Report: [sprint/agent-02/REPORT.md](sprint/agent-02/REPORT.md)
+
+### SprintAgent19
+
+Sprint agent 19 result; see sprint/agent-19/REPORT.md for what is and is NOT claimed. Registered by the owner when merging PR without editing the statements; nothing here proves that 196 is a Lychrel number.
+
+- Root modules: `P196.Sprint.Agent19.Arith118`, `P196.Sprint.Agent19.Arith620`, `P196.Sprint.Agent19.Arith739`, `P196.Sprint.Agent19.ArithClasses`, `P196.Sprint.Agent19.ArithFourDigit`, `P196.Sprint.Agent19.ArithLight`, `P196.Sprint.Agent19.AuditHeavy`, `P196.Sprint.Agent19.AuditLight`, `P196.Sprint.Agent19.CycleFormats`
+- 11 modules, 96 checked endpoints
+- Report: [sprint/agent-19/REPORT.md](sprint/agent-19/REPORT.md)
+
+### SprintAgent20
+
+Sprint agent 20 result; see sprint/agent-20/REPORT.md for what is and is NOT claimed. Registered by the owner when merging PR without editing the statements; nothing here proves that 196 is a Lychrel number.
+
+- Root modules: `P196.Sprint.Agent20.Controls`, `P196.Sprint.Agent20.DelayWitnesses`, `P196.Sprint.Agent20.TextbookPrefixes`
+- 4 modules, 41 checked endpoints
+- Report: [sprint/agent-20/REPORT.md](sprint/agent-20/REPORT.md)
+
+## Written research reports (not Lean-verified)
+
+Paper proofs and computations by research agents (PRs #266–#286). **None of these is a Lean theorem**; their claims were spot-checked by independent computation on 2026-10-22, but they are not machine-verified. All are obstructions or tools; none gives a decimal Lychrel number.
+
+- [REPORT_214.md](REPORT_214.md) (PR #268): Agent 214: periodic-band obstruction and restricted cycle classifications
+- [REPORT_205.md](REPORT_205.md) (PR #269): Agent 205: interface growth obstructions and exact cyclic guards
+- [REPORT_215.md](REPORT_215.md) (PR #270): Agent 215: global interface residues and affine run growth obstructions
+- [REPORT_202.md](REPORT_202.md) (PR #271): Agent #202: sharp complementary-profile obstruction and base arithmetic
+- [REPORT_211.md](REPORT_211.md) (PR #272): Agent 211: finite graph for separated templates and short-interface obstruction
+- [REPORT_204.md](REPORT_204.md) (PR #273): Agent 204: periodic band obstructions and short-period bulk cycles
+- [REPORT_208.md](REPORT_208.md) (PR #274): Agent 208: exact certificate-bound synthesis and interface obstruction
+- [REPORT_213.md](REPORT_213.md) (PR #275): Agent 213: known-base certificates and restricted center rigidity
+- [REPORT_201.md](REPORT_201.md) (PR #276): Agent 201: bounded template decidability and exact cap obstruction
+- [REPORT_219.md](REPORT_219.md) (PR #277): Agent 219: endpoint-limit carry obstruction and constant-center return bounds
+- [REPORT_207.md](REPORT_207.md) (PR #278): Agent 207: three-run and parity obstructions
+- [REPORT_209.md](REPORT_209.md) (PR #279): Agent 209: binary embedding obstructions and finite block-code test
+- [REPORT_218.md](REPORT_218.md) (PR #280): Agent 218: certificate feasibility audit and saturated phase obstruction
+- [REPORT_220.md](REPORT_220.md) (PR #281): Agent 220: exact band algebra and scoped obstructions
+- [REPORT_206.md](REPORT_206.md) (PR #282): Agent 206: recurring low centers exclude permanent central high witnesses
+- [REPORT_210.md](REPORT_210.md) (PR #283): Agent 210: exact band algebra and improved finite-horizon bounds
+- [REPORT_212.md](REPORT_212.md) (PR #284): Agent #212: exclude uniform returns of the decimal dyadic family
+- [REPORT_203.md](REPORT_203.md) (PR #285): Agent 203: Seal constructions and critical-band obstruction
+- [REPORT_216.md](REPORT_216.md) (PR #286): Agent 216: exact center obstruction and run renewal
