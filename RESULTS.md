@@ -3,6 +3,7 @@
 Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules). Separately labeled paper reports remain outside those registered results.
 Every registered result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 289 results (6263 checked endpoints — the theorems and definitions a reader should rely on — in 4827 modules).
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 288 results (6274 checked endpoints — the theorems and definitions a reader should rely on — in 4825 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -14,6 +15,7 @@ Paper-proof supplement: [REPORT_202.md](REPORT_202.md) (Agent #202, direction 2)
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (19)
 2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (3)
+2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (2)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (51)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
@@ -387,6 +389,15 @@ The unchanged original checker rejects every certificate whose interface blocks 
 - New module count: 3; checked endpoints: 5.
 - Endpoints: `Agent208.Interface.rank_decreases`, `Agent208.Interface.local_rank_decreases`, `Agent208.Interface.valid_has_wide_interface`, `Agent208.Interface.checked_has_wide_interface`, `Agent208.Interface.short_interfaces_rejected`.
 - Report: [REPORT_208.md](REPORT_208.md).
+### Agent213KnownBaseMechanisms
+
+*Known-base neutral certificates 和 selected center rigidity*
+
+**LEAN-VERIFIED:** Explicit neutral-band certificates yield Lychrel template values for every gap at least four in bases 11, 17, 26, plus concrete seeds 和 existence theorems. Each cycle has two overflows 和 trimming gain three. Separate integer equations extracted from a specified four-phase center itinerary force base 26; their decimal specialization is contradictory. The complete carry reconstruction, exact itinerary hypotheses, source audit, Python checks, 和 base-20 source gap appear in [REPORT_213.md](REPORT_213.md). The itinerary-to-equations derivation is a paper proof; no decimal existence or universal decimal obstruction is asserted.
+
+- Root modules: `P196.Agent213KnownBaseMechanisms.CenterRigidity`, `P196.Agent213KnownBaseMechanisms.KnownBases`.
+- 2 new modules, 20 checked endpoints; imports the existing `A120Certificate` soundness theorem.
+- Principal endpoints: `Agent213.center_rigidity`, `Agent213.center_base10_impossible`, `Agent213.KnownBases.lychrel11_template`, `Agent213.KnownBases.lychrel17_template`, `Agent213.KnownBases.lychrel26_template`, 和 the corresponding `exists_lychrel11`, `exists_lychrel17`, `exists_lychrel26`.
 
 ## One reverse-and-add step: predecessors, fibers, palindromic outputs
 
