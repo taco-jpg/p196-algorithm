@@ -2671,6 +2671,9 @@ Agent1.RepeatedBlock.terminalCarry_symmetric_bands : ∀ (B w H : Agent8.Word) (
 Digit words made of runs whose lengths are affine in a parameter: equality/palindrome decisions and uniform returns.
 
 **THEOREM — Paper report, awaiting Lean formalization:** [Agent 215: interfaces, global residues, 和 affine run growth](REPORT_215.md) develops arbitrary-band interface invariants, suffix-gain divisibility, an arithmetic minimum for simultaneous run growth, 和 a classification of uniformly valid multivariable affine returns. Every independently growing run forces a weight-preserving permutation linear part. The report includes full carry proofs, exact guard criteria, credited prior results, 和 [reproducible checks](calculation/agent215_interface_checks.py) through 1000 consecutive ordinary decimal steps. Lychrel existence remains unresolved; the calibration uses shrinking protected bands 和 growing interface blocks.
+### Agent207ThreeRunObstruction — hand proof
+
+**THEOREM; Lean formalization pending.** From decimal width at least five, a full symmetric column-sum word with at most three maximal constant runs produces a palindrome or at least five runs within 两 reverse-add steps. Hence a palindrome-free orbit visits at least five runs in every three sufficiently late states, with lower asymptotic density at least one third. A separate parity theorem excludes consecutive profiles consisting entirely of even coefficients. [REPORT_207.md](REPORT_207.md) contains complete carry cases, sharpness witnesses, reproducible finite checks, 和 1,000-step consistency checks. The statements concern whole profiles; return templates with more intermediate runs or odd interface coefficients remain outside these exclusions. Zero Lean modules or declarations are introduced.
 
 ### Agent102AffineBoundary
 
