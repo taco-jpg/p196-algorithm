@@ -418,6 +418,13 @@ The unchanged original checker rejects every certificate whose interface blocks 
 - Root modules: `P196.Agent213KnownBaseMechanisms.CenterRigidity`, `P196.Agent213KnownBaseMechanisms.KnownBases`.
 - 2 new modules, 20 checked endpoints; imports the existing `A120Certificate` soundness theorem.
 - Principal endpoints: `Agent213.center_rigidity`, `Agent213.center_base10_impossible`, `Agent213.KnownBases.lychrel11_template`, `Agent213.KnownBases.lychrel17_template`, `Agent213.KnownBases.lychrel26_template`, 和 the corresponding `exists_lychrel11`, `exists_lychrel17`, `exists_lychrel26`.
+### Agent203SealReconstruction — manuscript results
+
+**THEOREM (manuscript; Lean verification absent).** [REPORT_203.md](REPORT_203.md) reconstructs Seal's base-11, base-17, 和 base-26 families with complete carry tables, all-parameter return identities, 和 phase-specific nonpalindrome witnesses. It also reconstructs the regular power-of-two family 和 identifies its exact first-overflow reset condition, `b = 2^(j+1)`. The decimal specialization `10998900` reaches a palindrome at step 10.
+
+**THEOREM (scope of the current saturated template).** For `Phase c`, the number of coefficients equal to 9 in `template c B A C g h` equals `2*N9(B) + 2*N9(A) + N9(C)`, independently of the variable run lengths. Every finite collection of such states therefore imposes a uniform bound on this count. A growing decimal analogue of Seal's complementary digit bands would have at least `2*n` such coefficients, so that mechanism lies outside this exact finite framework. The report includes the necessary carry-sensitive normalization rule for critical-9 bands; it makes no claim that every return certificate is impossible.
+
+The self-contained Python code in the report checks each reconstructed sporadic family through 1000 steps from each of three starting run lengths, 和 five regular power-of-two examples through 1000 steps, with independent integer-addition checks. **IDEA / unresolved reconstruction:** the opened primary source omits its asserted base-20 witness. Decimal existence remains open.
 
 ## One reverse-and-add step: predecessors, fibers, palindromic outputs
 
