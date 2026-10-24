@@ -4,7 +4,7 @@ Repeatedly reverse the digits of 196 and add: 196 → 887 → 1675 → 7436 → 
 Whether one ever appears (whether 196 is a *Lychrel number*) is an open problem.
 This repository holds two things:
 
-1. **Verified mathematics** (`lean/`): 148 machine-checked Lean 4 results about reverse-and-add,
+1. **Verified mathematics** (`lean/`): 150 machine-checked Lean 4 results about reverse-and-add,
    each with an explicit scope, plus 139 groups of unreviewed draft results. They narrow the problem; **none of them settles it**.
 2. **Computation** (`calculation/`): the GPU engine that iterates the actual orbit of 196.
 
@@ -75,7 +75,7 @@ python3 tools/verify.py
 ```
 
 This checks the repository rules (no unregistered or duplicate Lean files, no `sorry`/`axiom`/`native_decide`),
-builds all 4823 modules with `lake build`, and audits the axioms of all 6254 registered endpoints.
+builds all 4827 modules with `lake build`, and audits the axioms of all 6263 registered endpoints.
 It prints `ALL CHECKS PASSED` on success (about 30–60 minutes on a laptop the first time).
 
 To check only your own new or changed files (what contributors run before pushing; minutes instead of hours):
@@ -105,7 +105,7 @@ exactly once, and every old branch and pull request is preserved inside one of 6
 
 ## 中文概要
 
-本仓库研究 196 的“逆序相加”问题（196 是否为 Lychrel 数，至今未解决）。`lean/` 里是 148 个经 Lean 4
+本仓库研究 196 的“逆序相加”问题（196 是否为 Lychrel 数，至今未解决）。`lean/` 里是 150 个经 Lean 4
 机器验证的结论（另有 139 组未经审阅的草稿结论），每个都有明确适用范围，**没有一个证明了 196 是 Lychrel 数**。关于 196 本身：其轨道上若出现回文，
 开头不可能是 13 个指定的两位数、217、218、620、739、777、另外 33 个三位数前缀类、2641，以及一份 277 个前缀的清单；
 八类 dd0…0dd 回文也不会出现；
