@@ -2823,6 +2823,20 @@ Agent105.AffineDynamics.wordAt_append : ∀ (rs ss : List Agent102.RunSpec) (k :
 
 Finite models whose limits are stated explicitly.
 
+**THEOREM — Agent211SeparatedTemplates (prose proof; Lean formalization pending):**
+[REPORT_211.md](REPORT_211.md) gives an explicitly bounded deterministic graph
+with integer run-length displacements for canonical constant-band templates
+with at most `r` long bands, each of length at least `B+5`, 和 gaps of length at
+most `B` at every phase. Existence in that separated class is equivalent to a
+cycle with nonnegative componentwise drift; strict growth requires positive
+drift. The report includes a width bound for a conditional witness, complete
+carry bookkeeping, a proof that every 3 consecutive column-sum words of a
+palindrome-free orbit include a maximal run of length 1 or 2, 和 exact
+counterexamples to length clipping even with fixed residues. The scope excludes a decimal
+Lychrel construction or unrestricted bounded-run decidability.
+The embedded Python audit includes 1000 steps for each concrete numerical
+example; the finite graph enumeration remains unexecuted.
+
 **PrefixCycleLift:** Zero-based rows `31, 30, 29, 28` of the existing seven-column `Cycle398_k7` witness, read in forward time, have no eighth-column extension: the possible added coefficients shrink from `0..18` to `7..17`, then `14..18`, then the empty set. A sound checker and canonical integer bridge exclude this four-row trace from any ordinary orbit whose state at the trace start has width at least eight, including subsequent overflow and width increases. This does not exclude palindrome prefix `398` or invalidate the existing seven-column cycle. Root: `P196.PrefixCycleLift.Cycle398`; 15 modules, 15 endpoints.
 
 - **PrefixTruncation**: every positive truncation preserves complete backward prefix edges and exact path lengths, transporting reachable positive-cycle rank obstructions to smaller widths; a nine-edge `[1]` cycle and a checked rank-zero refinement `[1, 9, 6]` show the converse fails (`P196.PrefixTruncation.Controls`, 9 modules, 12 endpoints). This concerns coefficient words and does not establish ordinary-orbit realizability or a 196 exclusion.
