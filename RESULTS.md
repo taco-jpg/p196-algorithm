@@ -13,7 +13,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (51)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
-6. [Affine run words](#affine-run-words) (9)
+6. [Affine run words](#affine-run-words) (10)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
 
 ## The orbit of 196 and palindrome-prefix exclusions
@@ -2614,6 +2614,10 @@ Agent1.RepeatedBlock.terminalCarry_symmetric_bands : ∀ (B w H : Agent8.Word) (
 </details>
 
 ## Affine run words
+
+### Agent205InterfaceGrowth
+
+**LEAN-VERIFIED — exact cyclic run-length guards.** For a positive finite cycle of signed increments with arbitrary phase thresholds, cyclic lower bounds exist exactly when the total increment is nonnegative. The maximum prefix deficit gives the least initial reserve 和 protects every phase of every later traversal. The result includes natural lower bounds 和 independent pairs of coordinates. This is generic arithmetic; an exact decimal state cycle 和 its nonpalindrome tests remain separate obligations. Root: `P196.Agent205InterfaceGrowth.CyclicGuards`; 1 module, 7 checked endpoints. [REPORT_205.md](REPORT_205.md) supplies the written multi-band charge obstruction, complement-reflection obstruction, proofs, 和 reproducible identity checks; those additional results are labeled THEOREM rather than LEAN-VERIFIED.
 
 Digit words made of runs whose lengths are affine in a parameter: equality/palindrome decisions and uniform returns.
 
