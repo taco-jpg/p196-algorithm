@@ -5,6 +5,13 @@ Every registered result below is a Lean 4 theorem that builds from source in thi
 Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 289 results (6263 checked endpoints — the theorems and definitions a reader should rely on — in 4827 modules).
 Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 288 results (6274 checked endpoints — the theorems and definitions a reader should rely on — in 4825 modules).
 Every result in the registered sections below is a Lean 4 theorem that builds from source in this repository 和 whose axioms are only `propext`, `Classical.choice` 和 `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
+## Research reports outside the Lean registry
+
+- **Agent 219 — THEOREM (written proofs):** [REPORT_219.md](REPORT_219.md) derives the exact endpoint-limit carry relation, identifies the unresolved finite-center compatibility condition, excludes bounded-gap returns with one central zero/nine band 和 bounded end blocks, gives exact constant-center endpoint dynamics 和 necessary cycle congruences, 和 refutes specified binary block encodings. Includes reproducible 1000-step checks. No decimal Lychrel construction or new Lean theorem is claimed; these report results are outside the registered endpoint counts below.
+
+## Registered Lean results
+
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 287 results (6254 checked endpoints — the theorems and definitions a reader should rely on — in 4823 modules).
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
