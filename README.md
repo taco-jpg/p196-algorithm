@@ -4,7 +4,7 @@ Repeatedly reverse the digits of 196 and add: 196 → 887 → 1675 → 7436 → 
 Whether one ever appears (whether 196 is a *Lychrel number*) is an open problem.
 This repository holds two things:
 
-1. **Verified mathematics** (`lean/`): 301 machine-checked Lean 4 results about reverse-and-add,
+1. **Verified mathematics** (`lean/`): 162 machine-checked Lean 4 results about reverse-and-add,
    each with an explicit scope, plus 139 groups of unreviewed draft results. They narrow the problem; **none of them settles it**.
 2. **Computation** (`calculation/`): the GPU engine that iterates the actual orbit of 196.
 
@@ -18,7 +18,7 @@ About the orbit of 196 itself — palindrome prefixes that can never occur:
   `lean/P196/Agent104Prefix739`),
   and **33 further three-digit prefix classes** (`lean/P196/Agent124PrefixFiveSix`).
 - **Longer prefixes:** 2641 (`lean/P196/Agent117P2641`), the longer-prefix refinement lists
-  (`lean/P196/Agent124FourDigit`), and an explicit list of **277 digit prefixes** (`lean/P196/Agent124ForwardInvariant`).
+  (`lean/P196/Agent124FourDigit`, `lean/P196/PrefixK45`, `lean/P196/PrefixBatch4K6`), and an explicit list of **277 digit prefixes** (`lean/P196/Agent124ForwardInvariant`).
 - **A five-layer digit pattern** never occurs in the orbit of 196 (`lean/P196/Agent113FiveLayer`).
 - **Eight palindrome families** dd 0…0 dd (d = 1, 2, 3, 4, 6, 7, 8, 9) never occur (`lean/P196/Agent119EightFamilies`).
 
@@ -30,8 +30,11 @@ Other facts about the orbit of 196:
 - **The digit sum grows:** it exceeds any bound B within an explicit window of steps, from any starting time
   (`lean/P196/Orbit196Basics`, `lean/P196/Agent9DigitSumWindows`).
 
-Altogether **321 of the 900 three-digit prefixes** are excluded, plus
-1731 four-digit prefixes under the others; [RESULTS.md](RESULTS.md) has them in one combined table.
+Altogether **5808 of the 9000 four-digit prefixes (64.5%)** are excluded by Lean results on `main`.
+**The status of every four-digit prefix** — excluded on `main` (and by which result), Lean-verified only offline
+(`calculation/math_v7.zip`, 42 prefixes at widths 7–8), search only (13), cyclic (1030), undecided at the node cap
+(2089), or not applicable (18) — is in [`calculation/prefix4_status.csv`](calculation/prefix4_status.csv);
+[RESULTS.md](RESULTS.md) has the combined table.
 
 Each exclusion works the same way: every positive seed that reaches a palindrome with that prefix does so within a
 few dozen steps, and the first 100 steps of 196 contain no palindrome.
@@ -105,7 +108,7 @@ exactly once, and every old branch and pull request is preserved inside one of 6
 
 ## 中文概要
 
-本仓库研究 196 的“逆序相加”问题（196 是否为 Lychrel 数，至今未解决）。`lean/` 里是 161 个经 Lean 4
+本仓库研究 196 的“逆序相加”问题（196 是否为 Lychrel 数，至今未解决）。`lean/` 里是 162 个经 Lean 4
 机器验证的结论（另有 139 组未经审阅的草稿结论），每个都有明确适用范围，**没有一个证明了 196 是 Lychrel 数**。关于 196 本身：其轨道上若出现回文，
 开头不可能是 13 个指定的两位数、217、218、620、739、777、另外 33 个三位数前缀类、2641，以及一份 277 个前缀的清单；
 八类 dd0…0dd 回文也不会出现；
