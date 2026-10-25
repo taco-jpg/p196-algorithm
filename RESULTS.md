@@ -366,6 +366,19 @@ end Agent7.ResiduePeriods
 
 What a successful certificate would give. No certificate is known.
 
+**Neutral-band search (computation, not a Lean result; 2026-10-25).** The neutral one-band certificate format of
+`Drafts/Agent120NeutralBandCalibration` (`Agent120.Neutral.lychrel_of_cycle`) is proved sound in Lean for *every*
+base: a cycle accepted by `cycleOK b` gives a base-`b` Lychrel number. Certificates in this format are
+kernel-checked for bases 2, 4, 8, 16, 32 and 11, 17, 26 (`Agent213KnownBaseMechanisms`); a single accepted
+certificate with `b = 10` would prove that a decimal Lychrel number exists. `calculation/neutral_band_search.py`
+mirrors the Lean checker exactly (its `selftest` re-accepts all eight known certificates and finds them inside the
+real base-11 and base-26 orbits). Base-10 results so far: every start with exterior `|B| <= 2` and symmetric
+center `|C| <= 4` (273,960 starts) breaks the template (the two band carries become equal) within 65 steps; in
+the orbits of 152 decimal Lychrel-candidate thread representatives below 100,000 (3,000 steps each) the pair
+word has a template shape 348,126 times, and none of these runs returns to its interface (longest run before
+breaking: 56 steps). Known certificates in other bases have exteriors of 7–29 and centers of 4–42 coefficients,
+so these small searches do not rule the format out for base 10.
+
 ### CertificateToLychrel
 
 *From a checked return certificate to a Lychrel number*
