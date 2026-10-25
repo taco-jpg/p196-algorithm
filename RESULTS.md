@@ -394,11 +394,11 @@ Agent112.Admissibility.no_bounded_width_orbit : ∀ (w : Agent109.Word),
 
 *Exact threshold feasibility, template reframing, and a six-phase counterexample*
 
-**LEAN-VERIFIED:** for fixed cyclic states and trimming counts, the original checker's lower-bound clauses are feasible exactly when each total band gain is nonnegative. Common-padding identities permit exact transitions that move band letters into finite blocks; a concrete local example cannot satisfy the old one-sided trim equation with the same representatives. A period-three local strip counterexample refutes direct extension of scalar predecessor erasure to six-phase bulk. **THEOREM (paper proof in `REPORT_218.md`):** every accepted certificate in phase class `{6,12}` satisfies `2 * totalGam < P`; the common-cut argument excludes saturation for arbitrary finite block widths. The new combined obstruction endpoint is outside the compiled endpoint list. The report supplies complete carry bookkeeping, code and 1000-step checks. Global checker satisfiability remains unresolved; no accepted certificate or decimal Lychrel witness is supplied.
+**LEAN-VERIFIED:** for fixed cyclic states and trimming counts, the original checker's lower-bound clauses are feasible exactly when each total band gain is nonnegative. Common-padding identities permit exact transitions that move band letters into finite blocks; a concrete local example cannot satisfy the old one-sided trim equation with the same representatives. A period-three local strip counterexample refutes direct extension of scalar predecessor erasure to six-phase bulk. **THEOREM (paper proof in `reports/REPORT_218.md`):** every accepted certificate in phase class `{6,12}` satisfies `2 * totalGam < P`; the common-cut argument excludes saturation for arbitrary finite block widths. The new combined obstruction endpoint is outside the compiled endpoint list. The report supplies complete carry bookkeeping, code and 1000-step checks. Global checker satisfiability remains unresolved; no accepted certificate or decimal Lychrel witness is supplied.
 
 - Root modules: `P196.Agent218CertificateAudit.ThresholdFeasibility`, `P196.Agent218CertificateAudit.TemplateReframe`, `P196.Agent218CertificateAudit.SixPhaseCounterexample`
 - 3 modules, 11 checked endpoints
-- Report: [REPORT_218.md](REPORT_218.md)
+- Report: [reports/REPORT_218.md](reports/REPORT_218.md)
 
 ### CertificateBounds208
 
@@ -409,7 +409,7 @@ For fixed original states and trimming counts, some reassignment of `lo` and `lo
 - Root: `P196.CertificateBounds208.BoundSynthesis`
 - New module count: 1; checked endpoints: 4.
 - Endpoints: `Agent208.CertificateBounds.cyclic_bounds_iff`, `Agent208.CertificateBounds.synthesize_valid`, `Agent208.CertificateBounds.bounds_exist_iff`, `Agent208.CertificateBounds.structural_cycle_existence`.
-- Report: [REPORT_208.md](REPORT_208.md).
+- Report: [reports/REPORT_208.md](reports/REPORT_208.md).
 
 ### CertificateInterface208
 
@@ -420,13 +420,13 @@ The unchanged original checker rejects every certificate whose interface blocks 
 - Root: `P196.CertificateInterface208.CertificateInterface`
 - New module count: 3; checked endpoints: 5.
 - Endpoints: `Agent208.Interface.rank_decreases`, `Agent208.Interface.local_rank_decreases`, `Agent208.Interface.valid_has_wide_interface`, `Agent208.Interface.checked_has_wide_interface`, `Agent208.Interface.short_interfaces_rejected`.
-- Report: [REPORT_208.md](REPORT_208.md).
+- Report: [reports/REPORT_208.md](reports/REPORT_208.md).
 
 ### Agent213KnownBaseMechanisms
 
 *Known-base neutral certificates and selected center rigidity*
 
-**LEAN-VERIFIED:** Explicit neutral-band certificates yield Lychrel template values for every gap at least four in bases 11, 17, 26, plus concrete seeds and existence theorems. Each cycle has two overflows and trimming gain three. Separate integer equations extracted from a specified four-phase center itinerary force base 26; their decimal specialization is contradictory. The complete carry reconstruction, exact itinerary hypotheses, source audit, Python checks, and base-20 source gap appear in [REPORT_213.md](REPORT_213.md). The itinerary-to-equations derivation is a paper proof; no decimal existence or universal decimal obstruction is asserted.
+**LEAN-VERIFIED:** Explicit neutral-band certificates yield Lychrel template values for every gap at least four in bases 11, 17, 26, plus concrete seeds and existence theorems. Each cycle has two overflows and trimming gain three. Separate integer equations extracted from a specified four-phase center itinerary force base 26; their decimal specialization is contradictory. The complete carry reconstruction, exact itinerary hypotheses, source audit, Python checks, and base-20 source gap appear in [reports/REPORT_213.md](reports/REPORT_213.md). The itinerary-to-equations derivation is a paper proof; no decimal existence or universal decimal obstruction is asserted.
 
 - Root modules: `P196.Agent213KnownBaseMechanisms.CenterRigidity`, `P196.Agent213KnownBaseMechanisms.KnownBases`.
 - 2 new modules, 20 checked endpoints; imports the existing `A120Certificate` soundness theorem.
@@ -2878,7 +2878,7 @@ Agent105.AffineDynamics.wordAt_append : ∀ (rs ss : List Agent102.RunSpec) (k :
 
 ### Agent205InterfaceGrowth
 
-**LEAN-VERIFIED — exact cyclic run-length guards.** For a positive finite cycle of signed increments with arbitrary phase thresholds, cyclic lower bounds exist exactly when the total increment is nonnegative. The maximum prefix deficit gives the least initial reserve and protects every phase of every later traversal. The result includes natural lower bounds and independent pairs of coordinates. This is generic arithmetic; an exact decimal state cycle and its nonpalindrome tests remain separate obligations. Root: `P196.Agent205InterfaceGrowth.CyclicGuards`; 1 module, 7 checked endpoints. [REPORT_205.md](REPORT_205.md) supplies the written multi-band charge obstruction, complement-reflection obstruction, proofs, and reproducible identity checks; those additional results are labeled THEOREM rather than LEAN-VERIFIED.
+**LEAN-VERIFIED — exact cyclic run-length guards.** For a positive finite cycle of signed increments with arbitrary phase thresholds, cyclic lower bounds exist exactly when the total increment is nonnegative. The maximum prefix deficit gives the least initial reserve and protects every phase of every later traversal. The result includes natural lower bounds and independent pairs of coordinates. This is generic arithmetic; an exact decimal state cycle and its nonpalindrome tests remain separate obligations. Root: `P196.Agent205InterfaceGrowth.CyclicGuards`; 1 module, 7 checked endpoints. [reports/REPORT_205.md](reports/REPORT_205.md) supplies the written multi-band charge obstruction, complement-reflection obstruction, proofs, and reproducible identity checks; those additional results are labeled THEOREM rather than LEAN-VERIFIED.
 
 ## Finite abstractions and transducers
 
@@ -3286,22 +3286,22 @@ Sprint agent 20 result; see sprint/agent-20/REPORT.md for what is and is NOT cla
 
 Paper proofs and computations by research agents (PRs #266–#286). **None of these is a Lean theorem**; their claims were spot-checked by independent computation on 2026-10-22, but they are not machine-verified. All are obstructions or tools; none gives a decimal Lychrel number.
 
-- [REPORT_214.md](REPORT_214.md) (PR #268): Agent 214: periodic-band obstruction and restricted cycle classifications
-- [REPORT_205.md](REPORT_205.md) (PR #269): Agent 205: interface growth obstructions and exact cyclic guards
-- [REPORT_215.md](REPORT_215.md) (PR #270): Agent 215: global interface residues and affine run growth obstructions
-- [REPORT_202.md](REPORT_202.md) (PR #271): Agent #202: sharp complementary-profile obstruction and base arithmetic
-- [REPORT_211.md](REPORT_211.md) (PR #272): Agent 211: finite graph for separated templates and short-interface obstruction
-- [REPORT_204.md](REPORT_204.md) (PR #273): Agent 204: periodic band obstructions and short-period bulk cycles
-- [REPORT_208.md](REPORT_208.md) (PR #274): Agent 208: exact certificate-bound synthesis and interface obstruction
-- [REPORT_213.md](REPORT_213.md) (PR #275): Agent 213: known-base certificates and restricted center rigidity
-- [REPORT_201.md](REPORT_201.md) (PR #276): Agent 201: bounded template decidability and exact cap obstruction
-- [REPORT_219.md](REPORT_219.md) (PR #277): Agent 219: endpoint-limit carry obstruction and constant-center return bounds
-- [REPORT_207.md](REPORT_207.md) (PR #278): Agent 207: three-run and parity obstructions
-- [REPORT_209.md](REPORT_209.md) (PR #279): Agent 209: binary embedding obstructions and finite block-code test
-- [REPORT_218.md](REPORT_218.md) (PR #280): Agent 218: certificate feasibility audit and saturated phase obstruction
-- [REPORT_220.md](REPORT_220.md) (PR #281): Agent 220: exact band algebra and scoped obstructions
-- [REPORT_206.md](REPORT_206.md) (PR #282): Agent 206: recurring low centers exclude permanent central high witnesses
-- [REPORT_210.md](REPORT_210.md) (PR #283): Agent 210: exact band algebra and improved finite-horizon bounds
-- [REPORT_212.md](REPORT_212.md) (PR #284): Agent #212: exclude uniform returns of the decimal dyadic family
-- [REPORT_203.md](REPORT_203.md) (PR #285): Agent 203: Seal constructions and critical-band obstruction
-- [REPORT_216.md](REPORT_216.md) (PR #286): Agent 216: exact center obstruction and run renewal
+- [reports/REPORT_214.md](reports/REPORT_214.md) (PR #268): Agent 214: periodic-band obstruction and restricted cycle classifications
+- [reports/REPORT_205.md](reports/REPORT_205.md) (PR #269): Agent 205: interface growth obstructions and exact cyclic guards
+- [reports/REPORT_215.md](reports/REPORT_215.md) (PR #270): Agent 215: global interface residues and affine run growth obstructions
+- [reports/REPORT_202.md](reports/REPORT_202.md) (PR #271): Agent #202: sharp complementary-profile obstruction and base arithmetic
+- [reports/REPORT_211.md](reports/REPORT_211.md) (PR #272): Agent 211: finite graph for separated templates and short-interface obstruction
+- [reports/REPORT_204.md](reports/REPORT_204.md) (PR #273): Agent 204: periodic band obstructions and short-period bulk cycles
+- [reports/REPORT_208.md](reports/REPORT_208.md) (PR #274): Agent 208: exact certificate-bound synthesis and interface obstruction
+- [reports/REPORT_213.md](reports/REPORT_213.md) (PR #275): Agent 213: known-base certificates and restricted center rigidity
+- [reports/REPORT_201.md](reports/REPORT_201.md) (PR #276): Agent 201: bounded template decidability and exact cap obstruction
+- [reports/REPORT_219.md](reports/REPORT_219.md) (PR #277): Agent 219: endpoint-limit carry obstruction and constant-center return bounds
+- [reports/REPORT_207.md](reports/REPORT_207.md) (PR #278): Agent 207: three-run and parity obstructions
+- [reports/REPORT_209.md](reports/REPORT_209.md) (PR #279): Agent 209: binary embedding obstructions and finite block-code test
+- [reports/REPORT_218.md](reports/REPORT_218.md) (PR #280): Agent 218: certificate feasibility audit and saturated phase obstruction
+- [reports/REPORT_220.md](reports/REPORT_220.md) (PR #281): Agent 220: exact band algebra and scoped obstructions
+- [reports/REPORT_206.md](reports/REPORT_206.md) (PR #282): Agent 206: recurring low centers exclude permanent central high witnesses
+- [reports/REPORT_210.md](reports/REPORT_210.md) (PR #283): Agent 210: exact band algebra and improved finite-horizon bounds
+- [reports/REPORT_212.md](reports/REPORT_212.md) (PR #284): Agent #212: exclude uniform returns of the decimal dyadic family
+- [reports/REPORT_203.md](reports/REPORT_203.md) (PR #285): Agent 203: Seal constructions and critical-band obstruction
+- [reports/REPORT_216.md](reports/REPORT_216.md) (PR #286): Agent 216: exact center obstruction and run renewal

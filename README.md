@@ -96,7 +96,9 @@ python3 tools/verify.py --changed
 | `lean/P196/Drafts/` | Unreviewed draft results from the old branches (each file proves something found nowhere else) |
 | `lean/P196/<Result>/` | Lean modules introduced by that result. A result may also import modules of other results; modules used by ten or more results are in `lean/P196/Foundations/`. A few results consist only of other results' modules, so they have no directory |
 | `tools/verify.py` | One-command verification |
-| `calculation/` | GPU engine releases and the browser engine page |
+| `calculation/` | GPU engine releases, the browser engine page, `math_v*.zip` math packages (`math_v7.zip`: offline Lean-verified width-7/8 prefix certificates), and `prefix4_status.csv` (status of every four-digit prefix) |
+| `reports/` | Written research reports (paper proofs and computations, **not** Lean-verified), listed at the end of `RESULTS.md` |
+| `sprint/` | Reports, scripts and small data of the Claude sprint agents; see `sprint/README.md` |
 | `AGENTS.md` | Rules for people and agents who add work |
 | `ARCHIVE.md` | Where the pre-cleanup history, branches, pull requests and unregistered drafts are kept |
 

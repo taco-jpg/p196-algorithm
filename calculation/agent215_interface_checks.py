@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Focused checks for REPORT_215.md; this does not search for Lychrel seeds."""
+"""Focused checks for reports/REPORT_215.md; this does not search for Lychrel seeds."""
 from dataclasses import dataclass
 from math import gcd
 import random

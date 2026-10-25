@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Targeted checks for REPORT_201.md; no seed search or existence claim."""
+"""Targeted checks for reports/REPORT_201.md; no seed search or existence claim."""
 
 from itertools import product
 
