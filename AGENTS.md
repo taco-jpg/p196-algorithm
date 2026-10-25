@@ -18,7 +18,9 @@ run nightly by GitHub Actions).
 3. **No duplicates.** Import existing modules instead of copying them; `verify.py` rejects byte-identical files.
    Before proving something, search `RESULTS.md` and `lean/registry.json` for an existing statement.
 4. **No escape hatches.** No `sorry`, `admit`, custom `axiom` or `native_decide`. Allowed axioms: `propext`,
-   `Classical.choice`, `Quot.sound`.
+   `Classical.choice`, `Quot.sound`. No meta-programming that could bypass the kernel: no `set_option debug.*`,
+   `run_cmd`/`run_elab`/`run_meta`, `addDecl`, `implemented_by`, `@[extern]`, `unsafe`, `elab`, `#eval`.
+   `verify.py` also replays every built module through the kernel with lean4checker.
 5. **Commit results, not process.** No logs, review transcripts, evidence bundles, base64 archives, probe files or
    failed attempts in the repository. Keep those locally.
 6. **Update `RESULTS.md`** with the new result in the right topic section.

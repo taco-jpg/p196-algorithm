@@ -4,8 +4,10 @@
 1. Repository rules: every .lean file under lean/P196 is a module of at least
    one registered project, no two files have identical content, the registry
    lists no missing module, and no source (outside comments and strings) uses
-   sorry, admit, native_decide or declares an axiom.
-2. `lake build` of every module (Lean 4.19.0, pinned in lean/lean-toolchain).
+   sorry, admit, native_decide or declares an axiom, and none uses meta-programming that
+   can bypass the kernel (debug options, run_cmd/run_elab, addDecl, implemented_by, unsafe, #eval, ...).
+2. `lake build` of every module (Lean 4.19.0, pinned in lean/lean-toolchain), then
+   lean4checker on every built module: the kernel re-checks every stored declaration.
 3. `#print axioms` for every registered endpoint; only propext,
    Classical.choice and Quot.sound are allowed (so no sorry, no custom axiom,
    no native_decide).
@@ -73,11 +75,20 @@ def strip(src):
         out.append(c); i += 1
     return "".join(out)
 BANNED = re.compile(r"(?<![\w.'])(sorry|admit|native_decide)(?![\w'])|^\s*(?:@\[[^\]]*\]\s*)*(?:private\s+|protected\s+)?axiom\s", re.M)
+# Meta-programming that can put declarations into the environment without the kernel checking them
+# (e.g. `set_option debug.skipKernelTC true` + `addDecl`), or replace code at run time. Step 2b
+# (lean4checker) is the real guard; this catches the obvious forms early and with a line number.
+META = re.compile(r"set_option\s+debug\.|(?<![\w.'])(run_cmd|run_elab|run_meta|addDecl|addAndCompile|"
+                  r"implemented_by|unsafe|modifyEnv|setEnv|initialize|builtin_initialize|elab_rules|elab|#eval)"
+                  r"(?![\w'])|@\[\s*extern", re.M)
 for m in sorted(files):
     src = strip(open(os.path.join(LEAN, *m.split(".")) + ".lean", encoding="utf-8").read())
     for hit in BANNED.finditer(src):
         line = src.count("\n", 0, hit.start()) + 1
         fail.append(f"{m}:{line}: forbidden '{hit.group(0).strip()}'")
+    for hit in META.finditer(src):
+        line = src.count("\n", 0, hit.start()) + 1
+        fail.append(f"{m}:{line}: forbidden meta-programming '{hit.group(0).strip()}'")
 print(f"[rules] {len(files)} Lean files, {len(REG['projects'])} projects, "
       f"{'OK' if not fail else str(len(fail)) + ' problem(s)'}", flush=True)
 
@@ -131,6 +142,34 @@ if r.returncode != 0:
     fail.append("lake build failed")
     print("\n".join(fail)); sys.exit(1)
 print("[build] OK", flush=True)
+
+# 2b. kernel replay: lean4checker re-checks every declaration stored in each built module with the
+# kernel, so a declaration that was added without kernel checking (a meta-programming trick that
+# `#print axioms` does not see) is rejected. Built once from the tag matching lean/lean-toolchain.
+def lean4checker():
+    exe = os.environ.get("LEAN4CHECKER")
+    if exe: return exe
+    tag = open(os.path.join(LEAN, "lean-toolchain")).read().strip().split(":")[-1]
+    d = os.path.join(LEAN, ".lake", "lean4checker")
+    exe = os.path.join(d, ".lake", "build", "bin", "lean4checker")
+    if not os.path.exists(exe):
+        if not os.path.isdir(d):
+            subprocess.run(["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", "--branch", tag,
+                            "https://github.com/leanprover/lean4checker", d], check=True)
+        subprocess.run(["lake", "build"], cwd=d, check=True, capture_output=True)
+    return exe
+check_mods = sorted(targets) if targets is not None else sorted(files)
+if check_mods:
+    import concurrent.futures
+    exe = lean4checker()
+    def replay(m):
+        out = subprocess.run(["lake", "env", exe, m], cwd=LEAN, capture_output=True, text=True)
+        return m, out.returncode, (out.stdout + out.stderr).strip()
+    with concurrent.futures.ThreadPoolExecutor(int(os.environ["LEAN_NUM_THREADS"])) as ex:
+        for m, rc, text in ex.map(replay, check_mods):
+            if rc != 0:
+                fail.append(f"lean4checker rejects {m}: {text[-300:]}")
+print(f"[kernel replay] {len(check_mods)} module(s) re-checked by lean4checker", flush=True)
 
 # 3. axiom audit
 # names may contain ' (e.g. value_lt'), so match up to the last "' depends" / "' does not" on the line
