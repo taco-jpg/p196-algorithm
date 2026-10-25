@@ -4,7 +4,7 @@ Repeatedly reverse the digits of 196 and add: 196 → 887 → 1675 → 7436 → 
 Whether one ever appears (whether 196 is a *Lychrel number*) is an open problem.
 This repository holds two things:
 
-1. **Verified mathematics** (`lean/`): 161 machine-checked Lean 4 results about reverse-and-add,
+1. **Verified mathematics** (`lean/`): 301 machine-checked Lean 4 results about reverse-and-add,
    each with an explicit scope, plus 139 groups of unreviewed draft results. They narrow the problem; **none of them settles it**.
 2. **Computation** (`calculation/`): the GPU engine that iterates the actual orbit of 196.
 
@@ -75,7 +75,7 @@ python3 tools/verify.py
 ```
 
 This checks the repository rules (no unregistered or duplicate Lean files, no `sorry`/`axiom`/`native_decide`),
-builds all 5144 modules with `lake build`, and audits the axioms of all 6581 registered endpoints.
+builds all 5217 modules with `lake build`, and audits the axioms of all 6585 registered endpoints.
 It prints `ALL CHECKS PASSED` on success (about 30–60 minutes on a laptop the first time).
 
 To check only your own new or changed files (what contributors run before pushing; minutes instead of hours):

@@ -1,6 +1,6 @@
 # Results
 
-Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 300 results (6581 checked endpoints — the theorems and definitions a reader should rely on — in 5144 modules). The only exception is the last section, [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified): those are paper proofs and computations by research agents, not Lean theorems.
+Every result below is a Lean 4 theorem that builds from source in this repository and whose axioms are only `propext`, `Classical.choice` and `Quot.sound` (checked by `python3 tools/verify.py`). There are 301 results (6585 checked endpoints — the theorems and definitions a reader should rely on — in 5217 modules). The only exception is the last section, [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified): those are paper proofs and computations by research agents, not Lean theorems.
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
@@ -250,6 +250,15 @@ ancestry_00 : ∀ e ∈ entries00, ∀ A P t, 0 < A → PalStartsL e.1 P → orb
 no_196_00 : ∀ t, ∀ e ∈ entries00, ¬ PalStartsL e.1 (orbit 196 t)
 ```
 </details>
+
+### PrefixBatch4K6
+
+*101 further width-6 digit prefixes excluded from the orbit of 196*
+
+Width-6 backward prefix certificates for 101 four-digit prefixes that were not yet excluded in the repository, built as one package with one shared rank tree (329,042 nodes), with ancestry bounds of at most 44 steps.
+
+- Root module(s): `P196.PrefixBatch4K6.K6C000Final`
+- 73 modules, 4 checked endpoints
 
 ### Agent124ForwardInvariant
 
@@ -3056,6 +3065,8 @@ One table instead of several overlapping lists. A cell is the three-digit prefix
 396 of the 900 three-digit prefixes are excluded (321 by a three-digit or two-digit result, 124 of them by more than one, and 75 marked `R` because all ten of their four-digit refinements are excluded), 14 are provably out of reach of this method, and 490 are open.
 
 Four-digit refinements: 2494 four-digit prefixes outside the C/K/S/F cells are excluded: 1731 from the lists `entries..` in `Agent124FourDigit` plus the single prefix 2641 in `Agent117P2641`, and 763 from `PrefixK45` (750 of them fill the `R` cells). Counting every result, 5704 of the 9000 four-digit prefixes (63.4%) are excluded.
+
+Per-prefix status for all 9000 four-digit prefixes is in [calculation/prefix4_status.csv](calculation/prefix4_status.csv) (columns prefix, status, width, bound, where, note). `lean_main` (5808): excluded by a Lean result on main, either listed in a registered entries list (Agent124FourDigit 1730, PrefixK45 763, PrefixBatch4K6 101, Sprint Agent02 3, Agent117P2641 1) or through the cells C, K, S or F above. `lean_offline` (42): Lean-verified only in [calculation/math_v7.zip](calculation/math_v7.zip) (30 width-7 and 12 width-8 prefixes), not on main. `search_only` (13): certified by the backward search at widths 9 and 10, with no Lean proof (the Lean check of the width-9 package hit a heartbeat limit). `cycle` (1030): the backward search has a cycle at width 10. `nodecap` (2089): undecided, the search hit the 30M node cap at width 10. `leadone` (18): method not applicable (leading digit 1, all digits at most 2). Total 9000. Only `lean_main` is Lean-verified on main; `lean_offline` is Lean-verified but not on main; `search_only`, `cycle` and `nodecap` are not Lean proofs.
 
 ## Additional draft results (not reviewed)
 

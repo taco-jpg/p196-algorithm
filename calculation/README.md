@@ -14,6 +14,7 @@ The GPU engine that iterates the actual reverse-and-add orbit of 196. Each zip i
 | `lychrel196_v6r2.zip` | engine release |
 | `lychrel196_v6r3.zip` | engine release |
 | `lychrel196_v7.zip` | engine release |
+| `math_v7.zip` | offline, Lean-verified width-7 and width-8 prefix exclusions (not on main, not built by CI); see the README inside |
 | `lychrel196_v7r.zip` | engine release |
 | `lychrel196_v8.zip` | engine release |
 | `lychrel196_v8b.zip` | engine release |
