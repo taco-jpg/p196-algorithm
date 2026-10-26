@@ -378,6 +378,11 @@ the orbits of 152 decimal Lychrel-candidate thread representatives below 100,000
 word has a template shape 348,126 times, and none of these runs returns to its interface (longest run before
 breaking: 56 steps). Known certificates in other bases have exteriors of 7–29 and centers of 4–42 coefficients,
 so these small searches do not rule the format out for base 10.
+Further (2026-10-25, four independent search toolkits in `calculation/neutral_band/`, see its README): the exterior B
+evolves independently of the center (the flip condition forces `e2 = 1 - e1`) and any closed cycle is automatically
+a certificate (`Σ(u+v) = 1.5·Σgam`). In base 10 exterior cycles exist only at periods 11 (|B| = 29) and 12
+(|B| = 52–53) among periods ≤ 15; for the period-11 exterior no center of any length closes in one period. The
+period-22 and period-24 center searches are open.
 
 ### CertificateToLychrel
 
