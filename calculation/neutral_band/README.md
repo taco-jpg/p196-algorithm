@@ -63,4 +63,7 @@ cd calculation/neutral_band/structure && g++ -O2 -o bauto bauto.cpp && g++ -O2 -
    python3 full_search.py --in b10.jsonl --procs 24 --zlo 3 --zhi 100 --tl 600 --out certs10.jsonl`.
 4. Lower priority: `bash ../solver/run_studio.sh phase1` (whole-cycle CP-SAT, p ≤ 12, |B| ≤ 30, |C| ≤ 45).
 
+macOS notes: there is no `timeout` command (drop it or install coreutils' `gtimeout`); for `solver/run_studio.sh`
+set `PY=~/nbenv/bin/python3` and `REPO=<repo clone>`.
+
 Any hit: keep the full edge list and check `cycleOK 10` in Lean (`decide`) before claiming anything.
