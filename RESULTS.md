@@ -381,8 +381,8 @@ so these small searches do not rule the format out for base 10.
 Further (2026-10-25, four independent search toolkits in `calculation/neutral_band/`, see its README): the exterior B
 evolves independently of the center (the flip condition forces `e2 = 1 - e1`) and any closed cycle is automatically
 a certificate (`Σ(u+v) = 1.5·Σgam`). In base 10 exterior cycles exist only at periods 11 (|B| = 29) and 12
-(|B| = 52–53) among periods ≤ 15; for the period-11 exterior no center of any length closes in one period. The
-period-22 and period-24 center searches are open.
+(|B| = 52–53) among periods ≤ 15; for these exteriors no center of any length closes in one or two periods (period 11, 22, and 24 for all three
+period-12 streams; `cauto_fast`, all trim patterns). Base-10 exteriors with periods 16 and above are not yet searched.
 
 ### CertificateToLychrel
 

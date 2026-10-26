@@ -27,9 +27,15 @@ Four toolkits, written by four independent agents on 2026-10-25 (computation onl
   stream `g = 11100010000`, `e = 10100110011` (|B| = 29; re-checked by hand: B returns after 11 steps); at p = 12
   `g = 100010001000` with three `e` (|B| = 52–53). p = 16, 18 undecided. Base 10 needs Σgam ≥ 4 per cycle
   (every known certificate in other bases has Σgam = 2).
-* Base 10, C side: for the p = 11 stream with one period (k = 1) no C exists of any length (`cauto -allm`);
-  k = 2, 3 have no C up to width 81 / 41 (CP-SAT). **Open: p = 11 with k = 2 (period 22) and p = 12 with k = 2
-  (period 24, needed because its Σgam = 3 is odd), for all C lengths.**
+* Base 10, C side (all C lengths, `cauto -allm`): **no center closes** for the p = 11 stream with one period
+  (k = 1, 55 trim patterns), with two periods (k = 2, period 22, all 7,315 patterns), and for each of the three
+  p = 12 streams with two periods (k = 2, period 24, 2,024 patterns each). The three p = 12 streams are one
+  B-cycle started at different steps. (CP-SAT also found no C for p = 11, k = 3 up to width 41.)
+* `structure/cauto_fast.cpp` gives the same answers as `cauto.cpp` about 3,000 times faster (prefix sharing
+  across trim patterns, per-segment factorisation, `-sym` time-shift symmetry; `-skip`/`-patterns` to resume).
+  Differential tests: 131,896 brute-force cases and 8,106 old-vs-new patterns, 0 mismatches; the base-11/26
+  pipeline output is byte-identical. The old `cauto` packs its state into 128 bits, which truncates the last
+  field when the period is 22 or more; use `cauto_fast` for long periods.
 
 ## Run book for the Mac Studio (32 cores, ≤ 150 GB)
 
@@ -43,20 +49,15 @@ cd calculation/neutral_band/structure && g++ -O2 -o bauto bauto.cpp && g++ -O2 -
 0. **Validation (≈ 5 min).** `python3 pipeline.py 11 3 1 2 | head -5` (must print a base-11 cycle with cycleOK = True);
    `./bauto 10 11 12` (must print the p = 12 ACCEPT lines); `(cd ../breaks/studio && python3 test_bcore.py &&
    python3 test_cpad.py 26 4 20 20)`; `(cd ../solver && bash run_studio.sh phase0)`.
-1. **The two open center jobs (most important).** 30 processes × ≈ 2 GB:
-   ```bash
-   G=11100010000;  E=10100110011
-   for i in $(seq 0 14); do ./cauto 10 $E$E $G$G 1 1 -vall -allm -w -cap 30000000 -part $i 15 > out/c_p11k2_$i.txt 2> out/c_p11k2_$i.err & done
-   G=100010001000; E=101010010101
-   for i in $(seq 0 14); do ./cauto 10 $E$E $G$G 1 1 -vall -allm -w -cap 30000000 -part $i 15 > out/c_p12k2_$i.txt 2> out/c_p12k2_$i.err & done
-   wait; grep -h "FEASIBLE\|NOPERIOD\|CAPPED" out/c_p1*k2_*.txt | sort | uniq -c
-   ```
-   Then repeat the p = 12 job with the other two streams `E=010110101001` and `E=100101011010`.
-   FEASIBLE / FEASIBLE_CLASS = a hit (run `python3 pipeline.py` on it to get the edge list). CAPPED or NOPERIOD =
-   undecided: rerun that part with `-cap 100000000`. Nothing = no certificate for that stream, any C length.
+1. **Confirm the center results with `cauto_fast` (minutes).**
+   `g++ -O2 -std=c++17 -o cauto_fast cauto_fast.cpp`, then for each stream (p = 11: `G=11100010000 E=10100110011`;
+   p = 12: `G=100010001000` with `E=101010010101`):
+   `for i in $(seq 0 29); do ./cauto_fast 10 $E$E $G$G 1 1 -vall -allm -cap 30000000 -sym -part $i 30 > out/f_$i.txt 2> out/f_$i.err & done; wait`
+   `grep -h "FEASIBLE\|NOPERIOD\|CAPPED" out/f_*.txt | sort | uniq -c` (empty = no certificate; every `DONE` line
+   should say `status=none`). Next candidates, now cheap: p = 11 with k = 3 (`$E$E$E $G$G$G`) and p = 12 with k = 4.
 2. **More B-cycles (p = 16–24).** ≤ 10 GB per process, so at most 12 processes:
    `for i in $(seq 0 11); do ./bauto 10 16 24 -w -part $i 12 -cap 300000000 > out/b_$i.txt 2> out/b_$i.err & done; wait`
-   Every new `ACCEPT` stream goes through step 1 (k = 1, and k = 2 if Σg is odd). "state cap" in .err = undecided.
+   Every new `ACCEPT` stream goes through step 1 with `cauto_fast` (k = 1, 2, and more while cheap). "state cap" in .err = undecided.
 3. **Independent cross-check of step 1** with CP-SAT (different code, different author):
    `cd ../breaks/studio && python3 run_btransfer.py --base 10 --pmin 11 --pmax 12 --procs 4 --out b10.jsonl &&
    python3 full_search.py --in b10.jsonl --procs 24 --zlo 3 --zhi 100 --tl 600 --out certs10.jsonl`.
