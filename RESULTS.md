@@ -372,8 +372,8 @@ base: a cycle accepted by `cycleOK b` gives a base-`b` Lychrel number. Certifica
 kernel-checked for bases 2, 4, 8, 16, 32 and 11, 17, 26 (`Agent213KnownBaseMechanisms`); a single accepted
 certificate with `b = 10` would prove that a decimal Lychrel number exists. `calculation/neutral_band_search.py`
 mirrors the Lean checker exactly (its `selftest` re-accepts all eight known certificates and finds them inside the
-real base-11 and base-26 orbits). Base-10 results so far: every start with exterior `|B| <= 2` and symmetric
-center `|C| <= 4` (273,960 starts) breaks the template (the two band carries become equal) within 65 steps; in
+real base-11 and base-26 orbits). Base-10 results so far: every start with exterior `|B| <= 3` and symmetric
+center `|C| <= 6` (99,296,982 starts) breaks the template (the two band carries become equal) within 72 steps; in
 the orbits of 152 decimal Lychrel-candidate thread representatives below 100,000 (3,000 steps each) the pair
 word has a template shape 348,126 times, and none of these runs returns to its interface (longest run before
 breaking: 56 steps). Known certificates in other bases have exteriors of 7–29 and centers of 4–42 coefficients,
