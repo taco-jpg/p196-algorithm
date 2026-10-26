@@ -147,29 +147,52 @@ print("[build] OK", flush=True)
 # kernel, so a declaration that was added without kernel checking (a meta-programming trick that
 # `#print axioms` does not see) is rejected. Built once from the tag matching lean/lean-toolchain.
 def lean4checker():
-    exe = os.environ.get("LEAN4CHECKER")
-    if exe: return exe
+    """Command prefix that runs lean4checker on module names, or None if it cannot run here.
+    Uses the compiled binary; if that cannot start (e.g. new macOS rejects binaries linked by the
+    toolchain's linker: 'dyld: __DATA_CONST segment missing SG_READ_ONLY flag'), runs the same
+    program in Lean's interpreter (`lean --run`), which needs no linking. LEAN4CHECKER overrides."""
+    if os.environ.get("LEAN4CHECKER"): return ["lake", "env", os.environ["LEAN4CHECKER"]], {}
     tag = open(os.path.join(LEAN, "lean-toolchain")).read().strip().split(":")[-1]
     d = os.path.join(LEAN, ".lake", "lean4checker")
+    if not os.path.isdir(d):
+        subprocess.run(["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", "--branch", tag,
+                        "https://github.com/leanprover/lean4checker", d], check=True)
+    subprocess.run(["lake", "build", "Lean4Checker"], cwd=d, check=True, capture_output=True)
+    subprocess.run(["lake", "build", "lean4checker"], cwd=d, capture_output=True)
     exe = os.path.join(d, ".lake", "build", "bin", "lean4checker")
-    if not os.path.exists(exe):
-        if not os.path.isdir(d):
-            subprocess.run(["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", "--branch", tag,
-                            "https://github.com/leanprover/lean4checker", d], check=True)
-        subprocess.run(["lake", "build"], cwd=d, check=True, capture_output=True)
-    return exe
+    # smoke test on a small core module (no arguments would mean "check the whole project")
+    if os.path.exists(exe) and subprocess.run(["lake", "env", exe, "Init.Prelude"], cwd=LEAN,
+                                              capture_output=True).returncode == 0:
+        return ["lake", "env", exe], {}
+    lp = subprocess.run(["lake", "env", "printenv", "LEAN_PATH"], cwd=LEAN, capture_output=True, text=True).stdout.strip()
+    env = dict(os.environ, LEAN_PATH=lp + os.pathsep + os.path.join(d, ".lake", "build", "lib", "lean"))
+    cmd = ["lean", "--run", os.path.join(d, "Main.lean")]
+    if subprocess.run(cmd + ["Init.Prelude"], cwd=LEAN, env=env, capture_output=True).returncode == 0:
+        print("[kernel replay] compiled lean4checker cannot start here; using the interpreter (lean --run)", flush=True)
+        return cmd, env
+    return None, None
 check_mods = sorted(targets) if targets is not None else sorted(files)
 if check_mods:
     import concurrent.futures
-    exe = lean4checker()
-    def replay(m):
-        out = subprocess.run(["lake", "env", exe, m], cwd=LEAN, capture_output=True, text=True)
-        return m, out.returncode, (out.stdout + out.stderr).strip()
-    with concurrent.futures.ThreadPoolExecutor(int(os.environ["LEAN_NUM_THREADS"])) as ex:
-        for m, rc, text in ex.map(replay, check_mods):
-            if rc != 0:
-                fail.append(f"lean4checker rejects {m}: {text[-300:]}")
-print(f"[kernel replay] {len(check_mods)} module(s) re-checked by lean4checker", flush=True)
+    cmd, env = lean4checker()
+    if cmd is None:
+        fail.append("lean4checker could not be started on this machine (neither compiled nor interpreted); "
+                    "kernel replay NOT done")
+    else:
+        def replay(mods):
+            out = subprocess.run(cmd + mods, cwd=LEAN, env=env or None, capture_output=True, text=True)
+            return mods, out.returncode, (out.stdout + out.stderr).strip()
+        chunks = [check_mods[i:i + 25] for i in range(0, len(check_mods), 25)]
+        bad_chunks = []
+        with concurrent.futures.ThreadPoolExecutor(max(1, int(os.environ["LEAN_NUM_THREADS"]) // 2)) as ex:
+            for mods, rc, text in ex.map(replay, chunks):
+                if rc != 0: bad_chunks.append(mods)
+        # a failing chunk stops at its first problem: re-check its modules one by one to list all of them
+        with concurrent.futures.ThreadPoolExecutor(max(1, int(os.environ["LEAN_NUM_THREADS"]) // 2)) as ex:
+            for mods, rc, text in ex.map(lambda m: replay([m]), [m for c in bad_chunks for m in c]):
+                if rc != 0:
+                    fail.append(f"lean4checker rejects {mods[0]}: {text[-300:]}")
+        print(f"[kernel replay] {len(check_mods)} module(s) re-checked by lean4checker", flush=True)
 
 # 3. axiom audit
 # names may contain ' (e.g. value_lt'), so match up to the last "' depends" / "' does not" on the line
