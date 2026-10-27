@@ -3962,15 +3962,17 @@
   },
   "Agent112NeutralNumericalArithmetic": {
    "id": "agent112-neutral-numerical-arithmetic",
-   "title": "All-base A120 numerical normalization, center sign, and raw center step",
-   "scope": "Formal bridge for the unchanged Agent120.Neutral checker. For every positive base and arbitrary natural coefficient list/incoming carry, normalization is determined by width and total value, with exact quotient/remainder and prescribed-width digits defined by norm on a zero word. For base at least two, bounded coefficients and an incoming bit, carry flip is equivalent to the signed-value threshold, zero transmits, and a flipping bit exists uniquely exactly off zero. Under actual Hyp, the exact raw nextC list factors through center width/value and the actual e1/gam bits; identical numerical data give identical raw lists, and their signed raw recurrence is proved. Symmetry and positive width are not additional assumptions. Credits prior decimal/general-base arithmetic and existing paper center formulas; no new arithmetic discovery, neutral trim/padding theorem, symmetric injectivity, periodic-realization theorem, decimal certificate, or unrestricted impossibility is claimed. Unmerged review result.",
+   "title": "All-base A120 numerical normalization and raw center/exterior steps",
+   "scope": "Formal bridge for the unchanged Agent120.Neutral checker. For every positive base and arbitrary natural coefficient list/incoming carry, normalization is determined by width and total value, with exact quotient/remainder and prescribed-width digits defined by norm on a zero word. For base at least two, bounded coefficients and an incoming bit, carry flip is equivalent to the signed-value threshold, zero transmits, and a flipping bit exists uniquely exactly off zero. Under actual Hyp, the exact raw nextC list factors through center width/value and the actual e1/gam bits; identical numerical data give identical raw lists, and their signed raw recurrence is proved. The actual exterior e1/gam, literal raw nextB, and both forward/reversed output values factor through exterior width and its forward/reversed values; equality of these three inputs forces equal raw outputs. Symmetry and positive width are not additional assumptions. Credits prior decimal/general-base arithmetic and existing paper formulas; no new arithmetic discovery, neutral trim/padding theorem, symmetric injectivity, periodic-realization theorem, search exclusion, decimal certificate, or unrestricted impossibility is claimed. Unmerged review result.",
    "roots": [
-    "P196.Agent112NeutralNumericalArithmetic.CenterStep"
+    "P196.Agent112NeutralNumericalArithmetic.CenterStep",
+    "P196.Agent112NeutralNumericalArithmetic.ExteriorStep"
    ],
    "modules": [
     "P196.Agent112NeutralNumericalArithmetic.Normalization",
     "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
-    "P196.Agent112NeutralNumericalArithmetic.CenterStep"
+    "P196.Agent112NeutralNumericalArithmetic.CenterStep",
+    "P196.Agent112NeutralNumericalArithmetic.ExteriorStep"
    ],
    "claims": [],
    "endpoints": [
@@ -3992,7 +3994,13 @@
     "Agent112.NeutralNumericalArithmetic.nextC_eq_pairs_fixedDigits",
     "Agent112.NeutralNumericalArithmetic.nextC_eq_of_numerical_data",
     "Agent112.NeutralNumericalArithmetic.val_nextC_eq_numerical_data",
-    "Agent112.NeutralNumericalArithmetic.signedValue_nextC"
+    "Agent112.NeutralNumericalArithmetic.signedValue_nextC",
+    "Agent112.NeutralNumericalArithmetic.e1_eq_div",
+    "Agent112.NeutralNumericalArithmetic.gam_eq_div",
+    "Agent112.NeutralNumericalArithmetic.nextB_eq_fixedDigits",
+    "Agent112.NeutralNumericalArithmetic.val_nextB_eq_numerical_data",
+    "Agent112.NeutralNumericalArithmetic.val_reverse_nextB_eq_numerical_data",
+    "Agent112.NeutralNumericalArithmetic.nextB_eq_of_bidirectional_data"
    ],
    "endpoint_modules": {
     "Agent112.NeutralNumericalArithmetic.norm_carry_eq_div": "P196.Agent112NeutralNumericalArithmetic.Normalization",
@@ -4013,14 +4021,21 @@
     "Agent112.NeutralNumericalArithmetic.nextC_eq_pairs_fixedDigits": "P196.Agent112NeutralNumericalArithmetic.CenterStep",
     "Agent112.NeutralNumericalArithmetic.nextC_eq_of_numerical_data": "P196.Agent112NeutralNumericalArithmetic.CenterStep",
     "Agent112.NeutralNumericalArithmetic.val_nextC_eq_numerical_data": "P196.Agent112NeutralNumericalArithmetic.CenterStep",
-    "Agent112.NeutralNumericalArithmetic.signedValue_nextC": "P196.Agent112NeutralNumericalArithmetic.CenterStep"
+    "Agent112.NeutralNumericalArithmetic.signedValue_nextC": "P196.Agent112NeutralNumericalArithmetic.CenterStep",
+    "Agent112.NeutralNumericalArithmetic.e1_eq_div": "P196.Agent112NeutralNumericalArithmetic.ExteriorStep",
+    "Agent112.NeutralNumericalArithmetic.gam_eq_div": "P196.Agent112NeutralNumericalArithmetic.ExteriorStep",
+    "Agent112.NeutralNumericalArithmetic.nextB_eq_fixedDigits": "P196.Agent112NeutralNumericalArithmetic.ExteriorStep",
+    "Agent112.NeutralNumericalArithmetic.val_nextB_eq_numerical_data": "P196.Agent112NeutralNumericalArithmetic.ExteriorStep",
+    "Agent112.NeutralNumericalArithmetic.val_reverse_nextB_eq_numerical_data": "P196.Agent112NeutralNumericalArithmetic.ExteriorStep",
+    "Agent112.NeutralNumericalArithmetic.nextB_eq_of_bidirectional_data": "P196.Agent112NeutralNumericalArithmetic.ExteriorStep"
    },
    "origin": {
     "registered": "2026-10-27",
     "status": "review-only formalization of existing arithmetic in the A120 API",
     "source": [
      "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433120329",
-     "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433267993"
+     "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433267993",
+     "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433452510"
     ]
    }
   },
