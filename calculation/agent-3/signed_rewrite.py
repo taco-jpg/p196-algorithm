@@ -71,11 +71,11 @@ def signed_cycleOK(b,phases,move_traces):
     """Returns a valid seed (g0,h0) or None. Sound by induction ON PAPER.
 
     Requires nonnegative total gains in each band and at least one positive.
-    Each fixed phase has a nonzero leading digit and unequal outer digits.
+    Nonpalindromicity is witnessed by fixed mirrored-block mismatch or a nonempty unequal repeated-digit band.
     """
     p=len(phases)
     if p==0 or len(move_traces)!=p:return None
-    if not all(valid_phase(b,q) and q.A[0]!=q.E[-1] for q in phases):return None
+    if not all(valid_phase(b,q) for q in phases):return None
     edges=[]
     for j,q in enumerate(phases):
         out=signed_edge(b,q,phases[(j+1)%p],move_traces[j])
@@ -85,8 +85,13 @@ def signed_cycleOK(b,phases,move_traces):
     total_h=sum(e[1] for e in edges)
     if min(total_g,total_h)<0 or total_g+total_h==0:return None
     g0=h0=0;sg=sh=0
-    for dg,dh,ng,nh in edges:
+    for q,(dg,dh,ng,nh) in zip(phases,edges):
         g0=max(g0,ng-sg);h0=max(h0,nh-sh)
+        fixed_mismatch=(q.A!=q.E[::-1] or q.B!=q.D[::-1] or q.M!=q.M[::-1])
+        if not fixed_mismatch:
+            if q.x!=q.y:g0=max(g0,1-sg)
+            elif q.u!=q.v:h0=max(h0,1-sh)
+            else:return None # permanently palindromic phase
         sg+=dg;sh+=dh
     return g0,h0
 
@@ -123,8 +128,31 @@ def selftest(n=12000):
         w=word(p,g,h)
         assert val(10,word(q,g+1,h+1))==val(10,w)+val(10,w[::-1])
     print('base10_two_band_nontrivial_step_delta_1_1 PASS')
-    # This is only an edge, not a full orbit certificate.
-    assert signed_cycleOK(10,(p,q),(moves,())) is None
-    print('NO_CYCLE_CERTIFICATE_OR_DECIMAL_LYCHREL_CLAIM')
+    # A nontrivial, positive-gain four-phase known-base control in base two.
+    p0=Phase((1,0),(1,1),(1,1,0,1),(0,0),(0,0),1,0,1,0)
+    p1=Phase((1,1),(0,0),(1,0,0,0),(1,1),(0,1),0,1,0,1)
+    p2=Phase((1,0),(1,1),(1,0,1),(0,0),(0,0),1,0,1,0)
+    p3=Phase((1,1),(0,0),(0,1,0),(1,1),(0,1),0,1,0,1)
+    moves01=()
+    moves12=(Move(0,'L',1),Move(0,'R',-1),Move(1,'L',1),Move(2,'L',1))
+    moves23=()
+    moves30=(Move(0,'L',1),Move(0,'R',-1),Move(1,'L',1),Move(1,'R',-1))
+    ps=(p0,p1,p2,p3); ms=(moves01,moves12,moves23,moves30)
+    assert [signed_edge(2,ps[j],ps[(j+1)%4],ms[j])[:2] for j in range(4)] == [(0,0),(0,1),(0,0),(0,0)]
+    seed=signed_cycleOK(2,ps,ms)
+    assert seed is not None
+    g,h=(max(seed[0],2),max(seed[1],2))
+    x=val(2,word(ps[0],g,h))
+    for j in range(1000):
+        p=ps[j%4]
+        assert x==val(2,word(p,g,h)),(j,g,h)
+        w=word(p,g,h)
+        assert w!=w[::-1]
+        independent_rev=int(bin(x)[2:][::-1],2)
+        assert independent_rev==val(2,w[::-1])
+        x+=independent_rev
+        if j%4==1:h+=1
+    print('base2_signed_cycle_4_phases_positive_inner_gain_1 seed',seed,'1000_steps_integer_replay_PASS')
+    print('NO_DECIMAL_LYCHREL_CERTIFICATE_CLAIMED')
 
 if __name__=='__main__':selftest()
