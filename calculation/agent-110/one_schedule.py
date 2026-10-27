@@ -69,8 +69,11 @@ def classify(stdout, returncode, pattern, all_lengths=True):
         if not all_lengths:
             return "NO_CENTER_AT_PROFILE", "complete none at the prescribed width profile"
         try:
-            if int(row["period"]) < 1 or int(row["classes"]) < 1:
-                raise ValueError("incomplete classes")
+            period = int(row["period"])
+            # The allm tail has both length parities for every generic-frontier
+            # residue. A completed negative must cover exactly 2*period classes.
+            if period < 1 or int(row["classes"]) != 2 * period:
+                raise ValueError("incomplete or mismatched classes")
             if int(row["feasible_classes"]) != 0:
                 raise ValueError("contradictory class counts")
         except (KeyError, ValueError):
@@ -101,6 +104,11 @@ def selftest():
         (none + "\nCAPPED b=10", 0, "UNDECIDED"),
         (none + "\nFEASIBLE b=10", 0, "UNDECIDED"),
         (none.replace("classes=2", "classes=0"), 0, "UNDECIDED"),
+        (none.replace("classes=2", "classes=1"), 0, "UNDECIDED"),
+        (none.replace("classes=2", "classes=3"), 0, "UNDECIDED"),
+        (none.replace("period=1", "period=2"), 0, "UNDECIDED"),
+        (none.replace("period=1", "period=2").replace("classes=2", "classes=4"),
+         0, "NO_CENTER_ALL_LENGTHS"),
         (none.replace("period=1", "period=0"), 0, "UNDECIDED"),
         (none.replace("v=10", "v=01"), 0, "UNDECIDED"),
         (none + "\n" + none, 0, "UNDECIDED"),

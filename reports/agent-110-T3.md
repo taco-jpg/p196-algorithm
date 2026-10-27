@@ -165,8 +165,11 @@ COMPUTED independent controls: **891,720** padding identities across bases
 4,095 even-weight binary overflow streams of lengths 1..12. Empty/all-neutral
 carry-flip failures were checked explicitly. Every listed check passed.
 
-The runner has 15 completion-classification regressions, including contradictory
-output, missing class coverage, caps, nonzero exit, 和 missing completion.
+The runner has 19 completion-classification regressions, including contradictory
+output, missing/mismatched class coverage, caps, nonzero exit, 和 missing completion.
+An all-length negative requires exactly `classes=2*period`: both length parities
+for every eventual generic-frontier residue. The backend checks a consecutive
+range of `2*period` valid widths beyond its positive-length threshold.
 Six CLI integer-width regressions cover the supported endpoint 和 rejection
 before solver launch at unsafe signed-32-bit/overflow bounds. The unchanged
 solver uses signed `int` for `m[t]+g[t]+1`, so execution requires
