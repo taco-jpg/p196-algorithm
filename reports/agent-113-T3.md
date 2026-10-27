@@ -210,7 +210,8 @@ prefix controls. Production short/interior positive-tail tests in bases
 ```sh
 python3 calculation/agent-113/test_p11_regular.py --engine /tmp/a113_regular --depths 1 2 5
 python3 calculation/agent-113/test_p11_regular.py --engine /tmp/a113_regular --base 2 --e 1010 --g 1010 --v 0001 --depths 1 2 5
-python3 -O calculation/agent-113/test_p11_regular.py --engine /tmp/a113_regular --positive-tails --guards
+python3 -O calculation/agent-113/test_p11_regular.py --engine /tmp/a113_regular --positive-tails
+python3 -O calculation/agent-113/test_p11_regular.py --engine /tmp/a113_regular --guards
 c++ -O2 -std=c++17 calculation/agent-113/test_finite_automata.cpp -o /tmp/a113_fa_test
 /tmp/a113_fa_test
 ```
