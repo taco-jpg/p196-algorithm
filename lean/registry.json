@@ -7,6 +7,32 @@
   "Quot.sound"
  ],
  "projects": {
+    "Agent108NeutralAlternatingCharge": {
+      "id": "agent108-neutral-alternating-charge",
+      "scope": "Decimal Agent120 neutral-band checker bridge for the existing alternating-charge invariant: arbitrary neutral suffix trims preserve charge; checked edges double charge modulo 11 without overflow and reset it to zero with overflow; any checked closed cycle with positive total overflow has zero charge at every edge source and target, excluding empty or entirely neutral exteriors. Reuses the registered Agent2Exterior alternating-charge algebra. Positive overflow is an explicit hypothesis. No certificate existence, unrestricted decimal Lychrel conclusion, or universal exterior-cycle exclusion is asserted.",
+      "roots": [
+        "P196.Agent108NeutralAlternatingCharge.Cycle"
+      ],
+      "modules": [
+        "P196.Agent108NeutralAlternatingCharge.Base",
+        "P196.Agent108NeutralAlternatingCharge.Step",
+        "P196.Agent108NeutralAlternatingCharge.Cycle"
+      ],
+      "endpoints": [
+        "Agent108.NeutralCharge.norm10_eq_normalize",
+        "Agent108.NeutralCharge.norm_alternating_mod11",
+        "Agent108.NeutralCharge.charge_replicate",
+        "Agent108.NeutralCharge.charge_append_neutral",
+        "Agent108.NeutralCharge.raw_charge_nooverflow",
+        "Agent108.NeutralCharge.raw_charge_overflow",
+        "Agent108.NeutralCharge.edge_charge_step",
+        "Agent108.NeutralCharge.chain_zero_of_positive_overflow",
+        "Agent108.NeutralCharge.cycle_charge_zero",
+        "Agent108.NeutralCharge.cycle_each_edge_charge_zero",
+        "Agent108.NeutralCharge.cycle_exterior_ne_nil",
+        "Agent108.NeutralCharge.cycle_exterior_ne_replicate"
+      ]
+    },
   "Agent101AllWidthMaximum": {
    "id": "agent101-all-width-maximum",
    "title": null,
