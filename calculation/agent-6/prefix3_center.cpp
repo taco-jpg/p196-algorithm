@@ -2,6 +2,7 @@
 // Full center C (length <= D), padded first R coefficients of exterior B.
 // Compile: c++ -O3 -std=c++17 -o a6 prefix3_center.cpp
 // Run: ./a6 3 6   (D<=6,R<=3, resource guard <100M graph vertices)
+#include <algorithm>
 #include <array>
 #include <cstdint>
 #include <iostream>
@@ -84,13 +85,13 @@ int main(int argc,char**argv){
  make_center();make_prefix();
  Wide n=Wide(centers.size())*pe.size();
  if(n>100000000ULL)throw runtime_error("UNDECIDED: state budget");
- vector<U>deg(n),q;q.reserve(n);Wide arcs=0;
+ vector<U>deg(n),q;q.reserve(n);vector<U>longest(n,0);Wide arcs=0;
  for(U s=0;s<n;s++)successors(s,[&](U t){++deg[t];++arcs;});
  for(U s=0;s<n;s++)if(deg[s]==0)q.push_back(s);
- for(size_t k=0;k<q.size();k++)successors(q[k],[&](U t){if(--deg[t]==0)q.push_back(t);});
+ for(size_t k=0;k<q.size();k++){U s=q[k];successors(s,[&](U t){if(longest[t]<longest[s]+1)longest[t]=longest[s]+1; if(--deg[t]==0)q.push_back(t);});}
  cout<<"R="<<R<<" D="<<D<<" P="<<pe.size()<<" C="<<centers.size()
      <<" states="<<n<<" edges="<<arcs<<" removed="<<q.size()
-     <<" residual="<<n-q.size()<<" status="<<(n==q.size()?"ACYCLIC":"CYCLIC_CORE")<<'\n';
+     <<" residual="<<n-q.size()<<" max_path_edges="<<*max_element(longest.begin(),longest.end())<<" status="<<(n==q.size()?"ACYCLIC":"CYCLIC_CORE")<<'\n';
  return 0;
  }catch(const bad_alloc&){cerr<<"UNDECIDED: allocation\n";return 3;}
  catch(const exception&e){cerr<<e.what()<<'\n';return 2;}
