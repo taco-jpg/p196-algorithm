@@ -28411,6 +28411,44 @@
     "Agent104.NeutralJointWidth.normalizedSearch_false_iff",
     "Agent104.NeutralJointWidth.jointDecidable"
    ]
+  },
+  "Agent104NeutralFunctionalSearch": {
+   "id": "agent104-neutral-functional-search",
+   "title": "Verified executable functional search for bounded neutral cycles",
+   "scope": "Refines the previously proved complete finite joint-width specification into a literal partial successor and positive-return iteration. The target is recovered from unchanged A120 nextB/nextC, cheap carrier checks and exact original edgeOK; target Hyp is deliberately not required. A finite search over every carrier start with at most the proved N steps is equivalent to original cycleOK existence under raw caps M/W, W at least two, and equal to the earlier exhaustive Boolean specification. Includes small kernel-reduced boundary/negative controls and an explicit binary positive return. No external Python refinement, fixed-driver period descent, useful-width performance claim, new decimal negative/certificate or unrestricted impossibility. Large full-carrier kernel control attempts were resource-limited and are not claimed as proofs.",
+   "roots": [
+    "P196.Agent104NeutralFunctionalSearch.Controls"
+   ],
+   "modules": [
+    "P196.Agent104NeutralFunctionalSearch.Successor",
+    "P196.Agent104NeutralFunctionalSearch.Iteration",
+    "P196.Agent104NeutralFunctionalSearch.Main",
+    "P196.Agent104NeutralFunctionalSearch.Controls"
+   ],
+   "endpoints": [
+    "Agent104.NeutralFunctionalSearch.stateOK_iff_mem",
+    "Agent104.NeutralFunctionalSearch.successor_eq_some_iff",
+    "Agent104.NeutralFunctionalSearch.successor_source",
+    "Agent104.NeutralFunctionalSearch.successor_target",
+    "Agent104.NeutralFunctionalSearch.successor_edgeOK",
+    "Agent104.NeutralFunctionalSearch.successor_normalized",
+    "Agent104.NeutralFunctionalSearch.returns_chain_sound",
+    "Agent104.NeutralFunctionalSearch.returns_cycle_sound",
+    "Agent104.NeutralFunctionalSearch.returns_cycle_complete",
+    "Agent104.NeutralFunctionalSearch.functionalSearch_sound",
+    "Agent104.NeutralFunctionalSearch.functionalSearch_complete",
+    "Agent104.NeutralFunctionalSearch.functionalSearch_iff",
+    "Agent104.NeutralFunctionalSearch.functionalSearch_false_iff",
+    "Agent104.NeutralFunctionalSearch.functionalSearch_eq_normalizedSearch",
+    "Agent104.NeutralFunctionalSearch.functionalDecidable",
+    "Agent104.NeutralFunctionalSearch.accepted_invalid_target",
+    "Agent104.NeutralFunctionalSearch.invalid_target_stops",
+    "Agent104.NeutralFunctionalSearch.binary_empty_exterior_search",
+    "Agent104.NeutralFunctionalSearch.binary_small_search",
+    "Agent104.NeutralFunctionalSearch.binary_return_witness",
+    "Agent104.NeutralFunctionalSearch.binary_positive_search",
+    "Agent104.NeutralFunctionalSearch.binary_positive_exists"
+   ]
   }
  }
 }
