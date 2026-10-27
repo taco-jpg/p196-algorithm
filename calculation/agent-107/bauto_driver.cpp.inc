@@ -94,11 +94,8 @@ static Outcome107 search107(const Options107 &o) {
   if (o.witness) parent[start] = {0, {}};
   unordered_set<u64> acceptedE;
   vector<K128> frontier = {start}, next;
-  for (int depth = 0; ; ++depth) {
-    out.depth = depth;
-    if (frontier.empty()) { out.reason = "frontier_empty"; break; }
-    // Harvest the entire reached layer even when its expansion is capped.
-    for (K128 s : frontier) {
+  auto harvest = [&](const vector<K128> &layer, int depth) {
+    for (K128 s : layer) {
       u64 L, H; int Y[64];
       unpack(s, L, H, Y, ng);
       if (accepting(L,H,Y,ng) && acceptedE.insert(L).second) {
@@ -122,6 +119,12 @@ static Outcome107 search107(const Options107 &o) {
         out.accepted.push_back(move(a));
       }
     }
+  };
+  for (int depth = 0; ; ++depth) {
+    out.depth = depth;
+    if (frontier.empty()) { out.reason = "frontier_empty"; break; }
+    // Harvest the entire reached layer even when its expansion is capped.
+    harvest(frontier, depth);
     if (depth >= o.depth) { out.reason = "depth_cap"; break; }
     next.clear();
     try {
@@ -139,7 +142,13 @@ static Outcome107 search107(const Options107 &o) {
             if (o.witness) parent[k] = {s, vector<int>(xs,xs+p)};
           });
       }
-    } catch (const StateCap107 &) { out.reason = "state_cap"; break; }
+    } catch (const StateCap107 &) {
+      // Newly inserted states are already reached, even if this next layer
+      // could not be completed. Keep their witnesses without claiming exhaustion.
+      harvest(next, depth+1);
+      out.reason = "state_cap";
+      break;
+    }
     frontier.swap(next);
   }
   out.states = seen.size();

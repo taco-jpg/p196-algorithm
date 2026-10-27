@@ -46,6 +46,11 @@ It checks the state limit before inserting a new state, preventing whole-layer
 overshoot. Acceptance at the reached depth limit is retained even though
 enumeration is incomplete.
 
+The driver 也 harvests the already discovered partial next layer when the state
+cap interrupts expansion. Those witnesses remain valid while completion stays
+`UNDECIDED`. `STREAM.depth` records the layer being expanded; a witness in the
+partial next layer can therefore 有 a depth 1 larger.
+
 | Status / reason | Exact meaning |
 | --- | --- |
 | `EXHAUSTED / frontier_empty` | Reachable frontier processed completely; inspect `accepted` separately. |
@@ -85,7 +90,7 @@ control 和 does 不 claim new authorship for that mathematical scope.
 
 ## Validation
 
-The independently authored `test_bauto_guarded.py` passes 9 tests. It compiles
+The independently authored `test_bauto_guarded.py` passes 10 tests. It compiles
 the 两个 programs, compares their positive outputs, 和 replays returned B words
 using separate elementary carry arithmetic.
 
@@ -99,10 +104,12 @@ using separate elementary carry arithmetic.
 | p11 `11100010000` | 18,061 states; original e=`10100110011`, depth29, exact B witness preserved |
 | p12 `100010001000` | 136,653 states; original 3 carry streams 和 depth53 witnesses preserved |
 | p11 depth29 limit | Witness retained; completion still `UNDECIDED` |
+| p11 state cap 10,736 | Depth29 witness retained from the partial next layer; `UNDECIDED/state_cap` at expansion depth28 |
 | p16 four-overflow control | 13,170 states, exhausted, zero accepts |
 | p1–5 split into 2 partitions | Same 23 necklaces/results as the unsplit run; disjoint partitions |
 
-Measured regression suite: 5.593 seconds in the independent test run. Controls
+The original 9-test regression suite completed in 5.593 seconds. The 10-test
+revision adds the partial-next-layer state-cap regression. Controls
 fit comfortably inside the per-run sandbox budget. The implementation changes
 completion/reporting behavior; it does **不** formally verify the underlying
 position automaton. No Lean source or registry entry is changed.

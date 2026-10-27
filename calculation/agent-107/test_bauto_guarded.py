@@ -233,6 +233,19 @@ class GuardedAutomatonTests(unittest.TestCase):
         self.assertEqual(rows[0]["states"], 13170)
         self.assertEqual(rows[0]["accepted"], [])
 
+    def test_state_cap_retains_acceptance_in_partial_next_layer(self):
+        rows, _ = self.invoke(10, 11, 11, "-g", P11_G, "-cap", 10736,
+                              "-w", expected_code=3)
+        row = rows[0]
+        self.assertEqual(row["status"], "UNDECIDED")
+        self.assertEqual(row["reason"], "state_cap")
+        self.assertEqual(row["states"], 10736)
+        self.assertEqual(row["depth"], 28)
+        self.assertEqual({entry["e"] for entry in row["accepted"]}, {"10100110011"})
+        for accepted in row["accepted"]:
+            self.assertEqual(accepted["depth"], 29)
+            self.replay_witness(row, accepted)
+
     def test_partition_preserves_every_small_necklace_once(self):
         whole, _ = self.invoke(10, 1, 5)
         first, _ = self.invoke(10, 1, 5, "-part", 0, 2)
