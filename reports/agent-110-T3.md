@@ -167,9 +167,16 @@ carry-flip failures were checked explicitly. Every listed check passed.
 
 The runner has 15 completion-classification regressions, including contradictory
 output, missing class coverage, caps, nonzero exit, 和 missing completion.
-It conservatively retains the unchanged solver's `P<=32` boundary 和 rejects
-legacy/fallback keys exceeding 256 bits; larger-period compiled extensions
-belong to other agents.
+Six CLI integer-width regressions cover the supported endpoint 和 rejection
+before solver launch at unsafe signed-32-bit/overflow bounds. The unchanged
+solver uses signed `int` for `m[t]+g[t]+1`, so execution requires
+`2<=W<=2147483645` (`INT32_MAX-2`). Larger bounds return `UNDECIDED`;
+the paper theorem itself retains its unrestricted integer `W>=2` scope.
+The guard also prevents out-of-range `atoi` conversion from turning an
+unsupported width into skipped, falsely negative instances. Base `2..62`,
+period `P<=32`, 和 cap `1..30000000` fit the corresponding integer fields.
+Legacy/fallback keys exceeding 256 bits are rejected; larger-period compiled
+extensions belong to other agents.
 
 ## 5. Existing decimal negatives reproduced with one schedule
 

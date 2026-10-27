@@ -15,6 +15,11 @@ import time
 from pathlib import Path
 
 
+# The unchanged C++ solver parses widths as signed 32-bit int and evaluates
+# m[t] + g[t] + 1 before dividing by two. Both profiles satisfy m[t] <= W.
+MAX_PROFILE_WIDTH = (1 << 31) - 3
+
+
 def bitstream(value):
     if not value or any(c not in "01" for c in value):
         raise ValueError("streams must be nonempty binary strings")
@@ -110,8 +115,39 @@ def selftest():
         actual = classify(output, rc, pattern)[0]
         if actual != expected_status:
             raise RuntimeError(f"classification regression: {actual} != {expected_status}")
+
+    # Exercise the CLI boundary before any subprocess can run. In particular,
+    # W=2**32 used to reach atoi as widths -1/0 and falsely report no center.
+    from contextlib import redirect_stdout
+    from io import StringIO
+    from unittest.mock import patch
+
+    command = [str(Path(__file__)), "/unused/cauto_fast", "--base", "2",
+               "--e", "1010", "--g", "1010", "--width"]
+    rejected_widths = (MAX_PROFILE_WIDTH + 1, (1 << 31) - 1,
+                       1 << 31, 1 << 32, 1 << 63)
+    for width in rejected_widths:
+        output = StringIO()
+        with patch.object(sys, "argv", command + [str(width)]), redirect_stdout(output), \
+                patch.object(subprocess, "run", side_effect=RuntimeError("unsupported width launched")):
+            rc = main()
+        result = json.loads(output.getvalue().splitlines()[-1])
+        if rc != 2 or result.get("status") != "UNDECIDED":
+            raise RuntimeError("unsupported width was classified as a completed decision")
+    # The largest supported bound reaches both exact profiles; simulate an
+    # interrupted solver rather than allocating a billion-layer computation.
+    output = StringIO()
+    interrupted = subprocess.CompletedProcess([], 1, stdout="", stderr="")
+    with patch.object(sys, "argv", command + [str(MAX_PROFILE_WIDTH)]), redirect_stdout(output), \
+            patch.object(subprocess, "run", return_value=interrupted) as run:
+        rc = main()
+    widths = [call.args[0][4:6] for call in run.call_args_list]
+    if rc != 2 or widths != [[str(MAX_PROFILE_WIDTH - 1)] * 2,
+                            [str(MAX_PROFILE_WIDTH)] * 2]:
+        raise RuntimeError("supported integer boundary lost its exact profiles")
     print(json.dumps({"schedule_controls": len(expected),
-                      "status_controls": len(cases), "status": "PASS"}))
+                      "status_controls": len(cases),
+                      "integer_width_controls": len(rejected_widths) + 1, "status": "PASS"}))
 
 
 def main():
@@ -165,6 +201,10 @@ def main():
     # This first runner deliberately targets the unchanged repository MAXP=32 solver.
     if len(g) > 32:
         print(json.dumps({"status": "UNDECIDED", "reason": "unchanged cauto_fast supports P <= 32"}))
+        return 2
+    if args.width is not None and args.width > MAX_PROFILE_WIDTH:
+        print(json.dumps({"status": "UNDECIDED", "reason":
+                          f"unchanged cauto_fast requires W <= {MAX_PROFILE_WIDTH} for signed-int m+g+1"}))
         return 2
     if plan["legacy_packed_bits"] > 256:
         print(json.dumps({"status": "UNDECIDED", "reason": "legacy/fallback packed key exceeds 256 bits"}))
