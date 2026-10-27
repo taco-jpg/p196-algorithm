@@ -89,6 +89,11 @@ assert "".join(gs) == "11100010000" * 2
 assert "".join(es) == "10100110011" * 2
 print("KNOWN_P11_B_REPLAY_AT_11_AND_22=", True)
 
+# The prior 11-cycle repetition MUST be recognized as ACCEPT, never 'negative'.
+old_record = next((z for z in results if z[0] == old_g), None)
+assert old_record is not None and old_record[1] == "ACCEPT", old_record
+assert (" e=" + "10100110011" * 2) in details[old_g]
+
 # A full p22 negative is NOT available while hard_g is capped.
 allowed = all(
     status == "EXHAUSTED-NO-B-CYCLE"
