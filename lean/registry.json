@@ -3962,13 +3962,15 @@
   },
   "Agent112NeutralNumericalArithmetic": {
    "id": "agent112-neutral-numerical-arithmetic",
-   "title": "All-base A120 normalization arithmetic and center carry-sign bridge",
-   "scope": "Formal bridge for the unchanged Agent120.Neutral checker: for every positive base and arbitrary natural coefficient list/incoming carry, normalized digit value and outgoing carry are the positional remainder and quotient. For base at least two, coefficients at most 2*(b-1), and incoming carry at most one, carry flip is equivalent to the exact signed-value threshold, zero signed value transmits the bit, and a flipping bit exists uniquely exactly off zero. Direct Hyp corollaries give the center sign and nonzero signed value. Symmetry and nonempty lists are not assumed. Credits existing decimal normalization and the prior Python sign observation; no new arithmetic observation, integer-cycle realization theorem, padding result, decimal certificate, or unrestricted impossibility is claimed. Unmerged review result.",
+   "title": "All-base A120 numerical normalization, center sign, and raw center step",
+   "scope": "Formal bridge for the unchanged Agent120.Neutral checker. For every positive base and arbitrary natural coefficient list/incoming carry, normalization is determined by width and total value, with exact quotient/remainder and prescribed-width digits defined by norm on a zero word. For base at least two, bounded coefficients and an incoming bit, carry flip is equivalent to the signed-value threshold, zero transmits, and a flipping bit exists uniquely exactly off zero. Under actual Hyp, the exact raw nextC list factors through center width/value and the actual e1/gam bits; identical numerical data give identical raw lists, and their signed raw recurrence is proved. Symmetry and positive width are not additional assumptions. Credits prior decimal/general-base arithmetic and existing paper center formulas; no new arithmetic discovery, neutral trim/padding theorem, symmetric injectivity, periodic-realization theorem, decimal certificate, or unrestricted impossibility is claimed. Unmerged review result.",
    "roots": [
-    "P196.Agent112NeutralNumericalArithmetic.Normalization"
+    "P196.Agent112NeutralNumericalArithmetic.CenterStep"
    ],
    "modules": [
-    "P196.Agent112NeutralNumericalArithmetic.Normalization"
+    "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
+    "P196.Agent112NeutralNumericalArithmetic.CenterStep"
    ],
    "claims": [],
    "endpoints": [
@@ -3980,7 +3982,17 @@
     "Agent112.NeutralNumericalArithmetic.center_flip_exists_iff",
     "Agent112.NeutralNumericalArithmetic.center_flip_unique",
     "Agent112.NeutralNumericalArithmetic.hyp_center_sign",
-    "Agent112.NeutralNumericalArithmetic.hyp_center_nonzero"
+    "Agent112.NeutralNumericalArithmetic.hyp_center_nonzero",
+    "Agent112.NeutralNumericalArithmetic.norm_eq_zero_word",
+    "Agent112.NeutralNumericalArithmetic.norm_digits_eq_digitsAtWidth",
+    "Agent112.NeutralNumericalArithmetic.norm_eq_of_length_value",
+    "Agent112.NeutralNumericalArithmetic.digitsAtWidth_length",
+    "Agent112.NeutralNumericalArithmetic.digitsAtWidth_digit_lt",
+    "Agent112.NeutralNumericalArithmetic.digitsAtWidth_value_eq_mod",
+    "Agent112.NeutralNumericalArithmetic.nextC_eq_pairs_fixedDigits",
+    "Agent112.NeutralNumericalArithmetic.nextC_eq_of_numerical_data",
+    "Agent112.NeutralNumericalArithmetic.val_nextC_eq_numerical_data",
+    "Agent112.NeutralNumericalArithmetic.signedValue_nextC"
    ],
    "endpoint_modules": {
     "Agent112.NeutralNumericalArithmetic.norm_carry_eq_div": "P196.Agent112NeutralNumericalArithmetic.Normalization",
@@ -3991,13 +4003,24 @@
     "Agent112.NeutralNumericalArithmetic.center_flip_exists_iff": "P196.Agent112NeutralNumericalArithmetic.Normalization",
     "Agent112.NeutralNumericalArithmetic.center_flip_unique": "P196.Agent112NeutralNumericalArithmetic.Normalization",
     "Agent112.NeutralNumericalArithmetic.hyp_center_sign": "P196.Agent112NeutralNumericalArithmetic.Normalization",
-    "Agent112.NeutralNumericalArithmetic.hyp_center_nonzero": "P196.Agent112NeutralNumericalArithmetic.Normalization"
+    "Agent112.NeutralNumericalArithmetic.hyp_center_nonzero": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.norm_eq_zero_word": "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
+    "Agent112.NeutralNumericalArithmetic.norm_digits_eq_digitsAtWidth": "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
+    "Agent112.NeutralNumericalArithmetic.norm_eq_of_length_value": "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
+    "Agent112.NeutralNumericalArithmetic.digitsAtWidth_length": "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
+    "Agent112.NeutralNumericalArithmetic.digitsAtWidth_digit_lt": "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
+    "Agent112.NeutralNumericalArithmetic.digitsAtWidth_value_eq_mod": "P196.Agent112NeutralNumericalArithmetic.FixedDigits",
+    "Agent112.NeutralNumericalArithmetic.nextC_eq_pairs_fixedDigits": "P196.Agent112NeutralNumericalArithmetic.CenterStep",
+    "Agent112.NeutralNumericalArithmetic.nextC_eq_of_numerical_data": "P196.Agent112NeutralNumericalArithmetic.CenterStep",
+    "Agent112.NeutralNumericalArithmetic.val_nextC_eq_numerical_data": "P196.Agent112NeutralNumericalArithmetic.CenterStep",
+    "Agent112.NeutralNumericalArithmetic.signedValue_nextC": "P196.Agent112NeutralNumericalArithmetic.CenterStep"
    },
    "origin": {
     "registered": "2026-10-27",
     "status": "review-only formalization of existing arithmetic in the A120 API",
     "source": [
-     "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433120329"
+     "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433120329",
+     "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433267993"
     ]
    }
   },
