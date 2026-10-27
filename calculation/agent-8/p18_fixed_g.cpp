@@ -60,9 +60,11 @@ int main(int argc,char**argv){
   string gs=argv[1];p=int(gs.size());cap=argc>=3?strtoull(argv[2],nullptr,10):300000;
   if(p<1||p>20){cerr<<"p must be in 1..20\n";return 2;}
   for(char c:gs){if(c!='0'&&c!='1')return 2;g.push_back(c-'0');}
-  idx.assign(p,-1);ng=0; U start=0;
-  for(int t=0;t<p;t++)if(g[t]){idx[t]=ng;ng++;start|=U(1)<<(p+t);start|=U(1)<<(2*p+4*idx[t]);}
+  idx.assign(p,-1);ng=0;
+  for(int t=0;t<p;t++)if(g[t])idx[t]=ng++;
   if(2*p+4*ng>64){cerr<<"ENCODING TOO WIDE\n";return 2;}
+  U start=0;
+  for(int t=0;t<p;t++)if(g[t]){start|=U(1)<<(p+t);start|=U(1)<<(2*p+4*idx[t]);}
   seen.reserve(min(cap+1, size_t(10000000)));seen.insert(start);frontier.push_back(start);
   int depth=0;
   while(!frontier.empty()){
