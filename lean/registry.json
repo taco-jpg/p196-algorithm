@@ -3960,6 +3960,47 @@
     "author": null
    }
   },
+  "Agent112NeutralNumericalArithmetic": {
+   "id": "agent112-neutral-numerical-arithmetic",
+   "title": "All-base A120 normalization arithmetic and center carry-sign bridge",
+   "scope": "Formal bridge for the unchanged Agent120.Neutral checker: for every positive base and arbitrary natural coefficient list/incoming carry, normalized digit value and outgoing carry are the positional remainder and quotient. For base at least two, coefficients at most 2*(b-1), and incoming carry at most one, carry flip is equivalent to the exact signed-value threshold, zero signed value transmits the bit, and a flipping bit exists uniquely exactly off zero. Direct Hyp corollaries give the center sign and nonzero signed value. Symmetry and nonempty lists are not assumed. Credits existing decimal normalization and the prior Python sign observation; no new arithmetic observation, integer-cycle realization theorem, padding result, decimal certificate, or unrestricted impossibility is claimed. Unmerged review result.",
+   "roots": [
+    "P196.Agent112NeutralNumericalArithmetic.Normalization"
+   ],
+   "modules": [
+    "P196.Agent112NeutralNumericalArithmetic.Normalization"
+   ],
+   "claims": [],
+   "endpoints": [
+    "Agent112.NeutralNumericalArithmetic.norm_carry_eq_div",
+    "Agent112.NeutralNumericalArithmetic.norm_digits_value_eq_mod",
+    "Agent112.NeutralNumericalArithmetic.center_carry_flip_iff",
+    "Agent112.NeutralNumericalArithmetic.center_carry_flip_iff_sign",
+    "Agent112.NeutralNumericalArithmetic.center_zero_transmits",
+    "Agent112.NeutralNumericalArithmetic.center_flip_exists_iff",
+    "Agent112.NeutralNumericalArithmetic.center_flip_unique",
+    "Agent112.NeutralNumericalArithmetic.hyp_center_sign",
+    "Agent112.NeutralNumericalArithmetic.hyp_center_nonzero"
+   ],
+   "endpoint_modules": {
+    "Agent112.NeutralNumericalArithmetic.norm_carry_eq_div": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.norm_digits_value_eq_mod": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.center_carry_flip_iff": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.center_carry_flip_iff_sign": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.center_zero_transmits": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.center_flip_exists_iff": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.center_flip_unique": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.hyp_center_sign": "P196.Agent112NeutralNumericalArithmetic.Normalization",
+    "Agent112.NeutralNumericalArithmetic.hyp_center_nonzero": "P196.Agent112NeutralNumericalArithmetic.Normalization"
+   },
+   "origin": {
+    "registered": "2026-10-27",
+    "status": "review-only formalization of existing arithmetic in the A120 API",
+    "source": [
+     "https://github.com/taco-jpg/p196-algorithm/issues/289#issuecomment-6433120329"
+    ]
+   }
+  },
   "Agent113FiveLayer": {
    "id": "agent113-five-layer",
    "title": "Uniform five-layer obstruction",
