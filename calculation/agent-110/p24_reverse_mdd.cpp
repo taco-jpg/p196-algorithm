@@ -41,12 +41,13 @@
 #include <utility>
 #include <vector>
 #include <sys/resource.h>
+#include "count256.hpp"
 
 namespace {
 using Id = std::uint32_t;
 using Word = std::vector<std::uint32_t>;
 using Arc = std::pair<std::uint32_t, Id>;
-__extension__ typedef unsigned __int128 Count;
+using Count = agent110::Count256;
 using Clock = std::chrono::steady_clock;
 struct Stop { std::string reason; };
 
@@ -64,11 +65,7 @@ std::uint64_t natural(const std::string& s) {
 }
 
 std::string decimal(Count v) {
-    if (!v) return "0";
-    std::string s;
-    while (v) { s += static_cast<char>('0' + v % 10); v /= 10; }
-    std::reverse(s.begin(), s.end());
-    return s;
+    return v.decimal();
 }
 
 struct Options {
@@ -121,11 +118,11 @@ Options parse(int argc, char** argv) {
             o.export_layer = static_cast<int>(n);
         } else throw std::invalid_argument("unknown option");
     }
-    if (o.e.empty() || o.e.size() > 32 || o.e.size() != o.g.size() ||
+    if (o.e.empty() || o.e.size() > 64 || o.e.size() != o.g.size() ||
         o.e.find_first_not_of("01") != std::string::npos ||
         o.g.find_first_not_of("01") != std::string::npos ||
         o.g.find('1') == std::string::npos)
-        throw std::invalid_argument("E/G require equal positive periods <=32 and positive G");
+        throw std::invalid_argument("E/G require equal positive periods <=64 and positive G");
     if (o.nodes < 2 || o.nodes >= std::numeric_limits<Id>::max() ||
         !o.operations || !o.export_cap || o.export_cap > 10000000)
         throw std::invalid_argument("invalid resource cap");
@@ -184,8 +181,8 @@ public:
         for (unsigned t = 0; t < period; ++t) if (o.g[t] == '1') positions.push_back(t);
         unsigned bits = 0;
         while ((1U << bits) < base) ++bits;
-        if (2 * period + bits * positions.size() > 120)
-            throw std::invalid_argument("count representation outside 120 bits");
+        if (2 * period + bits * positions.size() > 240)
+            throw std::invalid_argument("cut-space bound exceeds 2^240");
         for (std::size_t j = 0; j < positions.size(); ++j) {
             const unsigned next = j + 1 < positions.size() ? positions[j + 1] : positions[0] + period;
             const unsigned length = next - positions[j];
@@ -195,7 +192,10 @@ public:
         }
     }
     Word encode(const State& s) const {
-        if ((s.low >> period) || (s.high >> period) || s.lag.size() != blocks.size())
+        // A uint64 mask already has exactly the permitted range at P=64.
+        // Short-circuit before any shift by the full word width.
+        if ((period < 64 && ((s.low >> period) || (s.high >> period))) ||
+            s.lag.size() != blocks.size())
             throw std::invalid_argument("state dimensions");
         Word out;
         for (std::size_t j = 0; j < blocks.size(); ++j) {
@@ -332,9 +332,6 @@ public:
             first = false; previous = a.first;
             hash = (hash ^ a.first) * 1099511628211ULL;
             hash = (hash ^ a.second) * 1099511628211ULL;
-            const Count maximum = ~Count(0);
-            if (maximum - count < nodes[a.second].count)
-                throw std::logic_error("cardinality arithmetic overflow");
             count += nodes[a.second].count;
         }
         auto it = unique.find(hash);
