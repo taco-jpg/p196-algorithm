@@ -28166,6 +28166,69 @@
     "Agent119.NeutralCenterPadding.edgeOK_transport",
     "Agent119.NeutralCenterPadding.transportEdge_gam"
    ]
+  },
+  "Agent119NeutralLengthAccounting": {
+   "id": "agent119-neutral-length-accounting",
+   "title": "Exact neutral-band chain lengths and automatic certificate gain",
+   "scope": "Formalization of the existing neutral-band paper counting argument for the unchanged Agent120 checker, in arbitrary bases and without width, symmetry or maximal-trimming restrictions: raw successor lengths, additive trim telescoping for checked chains, exact closed-chain exterior/center/gain totals, even overflow, exact band increment, and equivalence of cycleOK acceptance with a nonempty closed checked chain. Reuses the existing conditional Lychrel theorem without a separate gain hypothesis. No decimal certificate, overflow-positivity result or general nonexistence theorem is supplied.",
+   "roots": [
+    "P196.Agent119NeutralLengthAccounting.Main"
+   ],
+   "modules": [
+    "P196.Agent119NeutralLengthAccounting.StepLengths",
+    "P196.Agent119NeutralLengthAccounting.Main"
+   ],
+   "endpoints": [
+    "Agent119.NeutralLengthAccounting.nextB_length",
+    "Agent119.NeutralLengthAccounting.nextC_length",
+    "Agent119.NeutralLengthAccounting.edge_lengths",
+    "Agent119.NeutralLengthAccounting.sumGain_eq",
+    "Agent119.NeutralLengthAccounting.chain_length_balance",
+    "Agent119.NeutralLengthAccounting.closed_chain_totals",
+    "Agent119.NeutralLengthAccounting.closed_chain_gain",
+    "Agent119.NeutralLengthAccounting.closed_chain_even",
+    "Agent119.NeutralLengthAccounting.closed_chain_gap",
+    "Agent119.NeutralLengthAccounting.cycleOK_iff_closed_chain",
+    "Agent119.NeutralLengthAccounting.cycleOK_totals",
+    "Agent119.NeutralLengthAccounting.lychrel_of_closed_chain"
+   ]
+  },
+  "Agent104NeutralBalancedWidth": {
+   "id": "agent104-neutral-balanced-width",
+   "title": "Width-preserving balanced neutral center representatives",
+   "scope": "Formalizes Agent110 balanced-width reduction using the unchanged Agent120 checker and Agent119 local padding and length accounting. For every base, an accepted cycle with center widths at most W, W at least two, has an accepted representative with positive widths W-1 or W and binary center trims forced exactly by overflow at full width. Preserves the full exterior edge data and trims, lower-carry/overflow streams, listed edge count, total gain, and the same width cap. At fixed initial exterior and complete exterior/stream data, bounded existence is equivalent to balanced existence. No maximal-stripping, least-period preservation, new finite search negative, decimal certificate, or unrestricted impossibility claim.",
+   "roots": [
+    "P196.Agent104NeutralBalancedWidth.Main"
+   ],
+   "modules": [
+    "P196.Agent104NeutralBalancedWidth.Step",
+    "P196.Agent104NeutralBalancedWidth.Chain",
+    "P196.Agent104NeutralBalancedWidth.Main"
+   ],
+   "endpoints": [
+    "Agent104.NeutralBalancedWidth.balanceCenter_length",
+    "Agent104.NeutralBalancedWidth.balanceCenter_length_bounds",
+    "Agent104.NeutralBalancedWidth.balanceCenter_lengths",
+    "Agent104.NeutralBalancedWidth.balanceTrim_balance",
+    "Agent104.NeutralBalancedWidth.edgeOK_balance",
+    "Agent104.NeutralBalancedWidth.balanceEdge_gam",
+    "Agent104.NeutralBalancedWidth.balanced_length_balance",
+    "Agent104.NeutralBalancedWidth.balanceTrim_le_one",
+    "Agent104.NeutralBalancedWidth.balanceTrim_exact",
+    "Agent104.NeutralBalancedWidth.cycle_interface_cap",
+    "Agent104.NeutralBalancedWidth.balanceEdges_length",
+    "Agent104.NeutralBalancedWidth.balanceEdges_fields",
+    "Agent104.NeutralBalancedWidth.balanceEdges_endB",
+    "Agent104.NeutralBalancedWidth.balanceEdges_endC",
+    "Agent104.NeutralBalancedWidth.balanceEdges_chainOK",
+    "Agent104.NeutralBalancedWidth.balanceEdges_streams",
+    "Agent104.NeutralBalancedWidth.balanceEdges_sumGam",
+    "Agent104.NeutralBalancedWidth.cycleOK_balance",
+    "Agent104.NeutralBalancedWidth.cycle_balance_gain",
+    "Agent104.NeutralBalancedWidth.balanceEdges_balanced",
+    "Agent104.NeutralBalancedWidth.balanced_sourceCap",
+    "Agent104.NeutralBalancedWidth.bounded_iff_balanced"
+   ]
   }
  }
 }
