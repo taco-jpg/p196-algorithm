@@ -92,16 +92,37 @@ static void build_tiles(int length){
   }
 }
 
-struct Node { int level; vector<Arc> arcs; Count count,accepts; };
+struct Node { int level; vector<Arc> arcs; Count count,accepts; bool marked=false; };
+// A live arena releases entire dead node objects, not only their arc vectors.
+// Numeric IDs are monotone and never recycled. Retained equal languages keep
+// canonical IDs because their complete suffix DAGs remain in the intern table.
+struct NodeStore {
+  bool sparse; uint64_t created=0; size_t peak=0;
+  deque<Node> dense;
+  unordered_map<Id,Node> resident;
+  explicit NodeStore(bool live):sparse(live){}
+  size_t size()const{return sparse?resident.size():dense.size();}
+  bool contains(Id id)const{return sparse?resident.count(id)!=0:id<dense.size();}
+  Node &operator[](Id id){return sparse?resident.at(id):dense.at(id);}
+  const Node &operator[](Id id)const{return sparse?resident.at(id):dense.at(id);}
+  Id append(Node node){
+    if(created>numeric_limits<Id>::max())throw Limit{"node_id_cap"};
+    Id id=Id(created++);
+    if(sparse)resident.emplace(id,move(node));else dense.push_back(move(node));
+    peak=max(peak,size());return id;
+  }
+};
 struct Arena {
   int G,P;vector<int> lengths,starts,required_low;size_t cap;uint64_t operation_cap,operations=0;
   unsigned seconds;chrono::steady_clock::time_point began;
-  deque<Node> nodes;
+  bool live;unsigned collect_every;uint64_t boundaries=0,collections=0,collected_nodes=0,collected_arcs=0;
+  size_t retained_roots=0,peak_retained_roots=0;double collection_seconds=0;
+  NodeStore nodes;
   unordered_map<uint64_t,vector<Id>> unique;
   unordered_map<uint64_t,Id> union_memo;
-  Arena(const Pattern &p,const string &e,size_t n,uint64_t ops,unsigned sec):G(p.lengths.size()),P(p.P),lengths(p.lengths),starts(p.starts),required_low(target_low(p,e)),cap(n),operation_cap(ops),seconds(sec),began(chrono::steady_clock::now()){
+  Arena(const Pattern &p,const string &e,size_t n,uint64_t ops,unsigned sec,bool bounded=false,unsigned cadence=1):G(p.lengths.size()),P(p.P),lengths(p.lengths),starts(p.starts),required_low(target_low(p,e)),cap(n),operation_cap(ops),seconds(sec),began(chrono::steady_clock::now()),live(bounded),collect_every(cadence),nodes(bounded){
     for(int length:lengths)build_tiles(length);
-    nodes.push_back({-1,{},0,0});nodes.push_back({G,{},1,1});
+    nodes.append({-1,{},0,0});nodes.append({G,{},1,1});
   }
   double elapsed()const{return chrono::duration<double>(chrono::steady_clock::now()-began).count();}
   void tick(){if(operations>=operation_cap)throw Limit{"operation_cap"};++operations;if((operations&16383)==0&&elapsed()>=seconds)throw Limit{"time_cap"};}
@@ -111,14 +132,44 @@ struct Arena {
     uint64_t hash=1469598103934665603ULL;hash=(hash^uint64_t(level))*1099511628211ULL;
     int prior=-1;
     for(Arc a:arcs){
-      if(a.first<=prior||a.first>=10*(1<<(2*lengths[level]))||a.first<0||a.second>=nodes.size()||nodes[a.second].level!=level+1)
+      if(a.first<=prior||a.first>=10*(1<<(2*lengths[level]))||a.first<0||!nodes.contains(a.second)||nodes[a.second].level!=level+1)
         throw logic_error("malformed ordered MDD node");
       prior=a.first;hash=(hash^uint64_t(a.first))*1099511628211ULL;hash=(hash^uint64_t(a.second))*1099511628211ULL;
     }
     auto &bucket=unique[hash];for(Id id:bucket)if(nodes[id].level==level&&nodes[id].arcs==arcs)return id;
     if(nodes.size()>=cap)throw Limit{"node_cap"};
     Count count=0,accepts=0;for(Arc a:arcs){count+=nodes[a.second].count;if(terminal_symbol(a.first,lengths[level],required_low[level]))accepts+=nodes[a.second].accepts;}
-    Id id=nodes.size();nodes.push_back({level,move(arcs),count,accepts});bucket.push_back(id);return id;
+    Id id=nodes.append({level,move(arcs),count,accepts});bucket.push_back(id);return id;
+  }
+  void collect(vector<Id> roots,bool force=false){
+    if(!live)return;
+    sort(roots.begin(),roots.end());roots.erase(std::unique(roots.begin(),roots.end()),roots.end());
+    retained_roots=roots.size();peak_retained_roots=max(peak_retained_roots,retained_roots);
+    if(!force&&++boundaries%collect_every)return;
+    auto start=chrono::steady_clock::now();
+    // No recursive image/predecessor call is active here. Clear every cache
+    // containing unmarked IDs before deleting any nodes.
+    union_memo.clear();union_memo.rehash(0);
+    for(auto &entry:nodes.resident)entry.second.marked=false;
+    roots.push_back(0);roots.push_back(1);
+    while(!roots.empty()){
+      Id id=roots.back();roots.pop_back();Node &node=nodes[id];
+      if(node.marked)continue;
+      node.marked=true;
+      for(Arc a:node.arcs)roots.push_back(a.second);
+    }
+    for(auto it=nodes.resident.begin();it!=nodes.resident.end();){
+      if(it->second.marked){++it;continue;}
+      ++collected_nodes;collected_arcs+=it->second.arcs.size();it=nodes.resident.erase(it);
+    }
+    for(auto it=unique.begin();it!=unique.end();){
+      auto &ids=it->second;
+      ids.erase(remove_if(ids.begin(),ids.end(),[&](Id id){return !nodes.contains(id);}),ids.end());
+      if(ids.empty())it=unique.erase(it);else{ids.shrink_to_fit();++it;}
+    }
+    nodes.resident.rehash(0);unique.rehash(0);
+    ++collections;collection_seconds+=chrono::duration<double>(chrono::steady_clock::now()-start).count();
+    if(elapsed()>=seconds)throw Limit{"time_cap"};
   }
   Id unite(Id a,Id b){
     tick();if(a==b||b==0)return a;if(a==0)return b;if(a>b)swap(a,b);
@@ -176,6 +227,31 @@ struct Arena {
     for(int initial=0;initial<19;++initial)if(visit(root,initial,initial))return {word,column};
     throw logic_error("reached MDD word has no predecessor");
   }
+  vector<vector<int>> replay_witness(Id physical,int depth,const vector<int> &terminal,const vector<int> &initial){
+    // Divide-and-conquer replay keeps O(log depth) frontier roots. Output
+    // coefficients themselves necessarily occupy O(P*depth) space.
+    vector<vector<int>> columns(depth);vector<Id> pinned;
+    function<vector<int>(Id,int,int,const vector<int>&)> restore=
+      [&](Id start,int low,int high,const vector<int> &target)->vector<int>{
+        size_t old_size=pinned.size();pinned.push_back(start);
+        vector<int> result;
+        if(high==low){result=target;}
+        else if(high-low==1){
+          auto pred=predecessor(start,target,low==0);result=move(pred.first);columns[low]=move(pred.second);
+        }else{
+          int middle=low+(high-low)/2;Id root=start;
+          for(int n=low;n<middle;++n){
+            root=image(root,n==0);auto keep=pinned;keep.push_back(root);collect(move(keep));
+          }
+          vector<int> midpoint=restore(root,middle,high,target);
+          result=restore(start,low,middle,midpoint);
+        }
+        pinned.resize(old_size);return result;
+      };
+    collect({physical},true);
+    if(restore(physical,0,depth,terminal)!=initial)throw logic_error("replayed witness misses physical boundary");
+    collect({physical},true);return columns;
+  }
 };
 
 static void print_words(Arena &arena,Id root,size_t cap){
@@ -194,7 +270,8 @@ static int run(int argc,char **argv){
     int length=number(argv[2],5);if(length<1)throw invalid_argument("tile length must be 1..5");build_tiles(length);
     for(size_t s=0;s<tables[length].size();++s)for(int left=0;left<19;++left)for(const Tile&t:tables[length][s][left]){
       cout<<s<<' '<<t.out<<' '<<left<<' '<<t.right<<' '<<t.positive;
-      for(int j=0;j<length;++j)cout<<' '<<t.coefficients[j];cout<<'\n';
+      for(int j=0;j<length;++j)cout<<' '<<t.coefficients[j];
+      cout<<'\n';
     }
     return 0;
   }
@@ -206,42 +283,72 @@ static int run(int argc,char **argv){
     string extra;if(cin>>extra)throw invalid_argument("trailing finite-set input");
     print_words(arena,arena.image(root,first),1000000);return 0;
   }
-  if(argc<6)throw invalid_argument("usage: GWORD NODE_CAP OPERATION_CAP DEPTH_CAP SECONDS [--e EWORD] [--witness] [--export-layer N]");
+  if(argc<6)throw invalid_argument("usage: GWORD NODE_CAP OPERATION_CAP DEPTH_CAP SECONDS [--e EWORD] [--witness] [--live] [--collect-every N] [--export-layer N]");
   Pattern p=pattern(argv[1]);
   size_t cap=number(argv[2],numeric_limits<uint32_t>::max());
   uint64_t ops=number(argv[3],numeric_limits<uint64_t>::max());
   int depthcap=number(argv[4],1000000);unsigned seconds=number(argv[5],1700);
   if(cap<2||!ops||!seconds)throw invalid_argument("invalid resource limit");
-  bool witness=false;int export_layer=-1;string wanted_e;
-  for(int j=6;j<argc;++j){string s=argv[j];if(s=="--witness")witness=true;else if(s=="--export-layer"&&j+1<argc)export_layer=number(argv[++j],depthcap);else if(s=="--e"&&j+1<argc){wanted_e=argv[++j];if(wanted_e.empty())throw invalid_argument("empty requested e");}else throw invalid_argument("unknown or incomplete option");}
-  Arena arena(p,wanted_e,cap,ops,seconds);vector<Id> roots;unordered_map<Id,int> prior;
-  Id root=0;int depth=0,cycle_start=-1;string reason;bool feasible=false;
+  bool witness=false,live=false,cadence_given=false,witness_complete=false;
+  unsigned collect_every=1;int export_layer=-1;string wanted_e;
+  for(int j=6;j<argc;++j){
+    string s=argv[j];
+    if(s=="--witness")witness=true;
+    else if(s=="--live")live=true;
+    else if(s=="--collect-every"&&j+1<argc){collect_every=number(argv[++j],1000000);cadence_given=true;}
+    else if(s=="--export-layer"&&j+1<argc)export_layer=number(argv[++j],depthcap);
+    else if(s=="--e"&&j+1<argc){wanted_e=argv[++j];if(wanted_e.empty())throw invalid_argument("empty requested e");}
+    else throw invalid_argument("unknown or incomplete option");
+  }
+  if(!collect_every||(cadence_given&&!live))throw invalid_argument("collection cadence requires --live and positive N");
+  Arena arena(p,wanted_e,cap,ops,seconds,live,collect_every);vector<Id> roots;unordered_map<Id,int> prior;
+  Id root=0,physical=0,anchor=0;int depth=0,cycle_start=-1,anchor_depth=-1;
+  uint64_t power=1,distance=0;string reason;bool feasible=false;
   try{
-    root=arena.singleton(p.initial);roots.push_back(root);
+    root=physical=arena.singleton(p.initial);if(!live)roots.push_back(root);
     for(;;++depth){
       if(export_layer==depth){print_words(arena,root,1000000);return 0;}
-      cout<<"{\"type\":\"LAYER\",\"depth\":"<<depth<<",\"root\":"<<root<<",\"states\":\""<<decimal(arena.nodes[root].count)<<"\",\"accepts\":\""<<decimal(arena.nodes[root].accepts)<<"\",\"nodes\":"<<arena.nodes.size()<<",\"operations\":"<<arena.operations<<"}\n"<<flush;
+      cout<<"{\"type\":\"LAYER\",\"depth\":"<<depth<<",\"root\":"<<root<<",\"states\":\""<<decimal(arena.nodes[root].count)<<"\",\"accepts\":\""<<decimal(arena.nodes[root].accepts)<<"\",\"nodes\":"<<arena.nodes.size()<<",\"nodes_created\":"<<arena.nodes.created<<",\"collected_nodes\":"<<arena.collected_nodes<<",\"operations\":"<<arena.operations<<"}\n"<<flush;
       if(arena.nodes[root].accepts){feasible=true;reason="terminal_reached";break;}
       if(!root){reason="empty_layer";break;}
-      if(depth>=1){auto it=prior.find(root);if(it!=prior.end()){cycle_start=it->second;reason="exact_layer_repeat";break;}prior[root]=depth;}
+      if(depth>=1){
+        if(live){
+          // Brent starts at F1: only the generic stationary image may repeat.
+          // Compare before replacing an anchor, never just after replacement.
+          if(anchor_depth<0){anchor=root;anchor_depth=depth;}
+          else{
+            ++distance;
+            if(root==anchor){cycle_start=anchor_depth;reason="exact_layer_repeat";break;}
+            if(distance==power){anchor=root;anchor_depth=depth;power*=2;distance=0;}
+          }
+        }else{
+          auto it=prior.find(root);if(it!=prior.end()){cycle_start=it->second;reason="exact_layer_repeat";break;}prior[root]=depth;
+        }
+      }
       if(depth>=depthcap){reason="depth_cap";break;}
-      root=arena.image(root,depth==0);roots.push_back(root);
+      root=arena.image(root,depth==0);
+      if(live){vector<Id> keep{physical,root};if(anchor_depth>=1)keep.push_back(anchor);arena.collect(move(keep));}
+      else roots.push_back(root);
     }
     if(feasible&&witness){
       vector<int> terminal=arena.accepted_word(root),current=terminal;
       vector<vector<int>> columns;
-      for(int n=depth;n>=1;--n){auto pred=arena.predecessor(roots[n-1],current,n==1);current=move(pred.first);columns.push_back(move(pred.second));}
-      if(current!=p.initial)throw logic_error("witness does not start at physical boundary");
-      reverse(columns.begin(),columns.end());string rotated_e;
+      if(live)columns=arena.replay_witness(physical,depth,terminal,p.initial);
+      else{
+        for(int n=depth;n>=1;--n){auto pred=arena.predecessor(roots[n-1],current,n==1);current=move(pred.first);columns.push_back(move(pred.second));}
+        if(current!=p.initial)throw logic_error("witness does not start at physical boundary");
+        reverse(columns.begin(),columns.end());
+      }
+      string rotated_e;
       for(size_t j=0;j<terminal.size();++j)for(int t=0;t<p.lengths[j];++t)rotated_e+=char('0'+((terminal[j]>>t)&1));
       string e=rotated_e.substr(p.P-p.shift)+rotated_e.substr(0,p.P-p.shift);
       cout<<"{\"type\":\"WITNESS\",\"g\":\""<<p.original<<"\",\"e\":\""<<e<<"\",\"B_t\":[";
-      for(int t=0;t<p.P;++t){if(t)cout<<',';int phase=(t-p.shift+p.P)%p.P;vector<int> row;for(const auto &col:columns)row.push_back(col[phase]);while(!row.empty()&&row.back()==9)row.pop_back();cout<<'[';for(size_t j=0;j<row.size();++j){if(j)cout<<',';cout<<row[j];}cout<<']';}cout<<"]}\n"<<flush;
+      for(int t=0;t<p.P;++t){if(t)cout<<',';int phase=(t-p.shift+p.P)%p.P;vector<int> row;for(const auto &col:columns)row.push_back(col[phase]);while(!row.empty()&&row.back()==9)row.pop_back();cout<<'[';for(size_t j=0;j<row.size();++j){if(j)cout<<',';cout<<row[j];}cout<<']';}cout<<"]}\n"<<flush;witness_complete=true;
     }
   }catch(const Limit &limit){reason=limit.reason;}
   bool negative=reason=="empty_layer"||reason=="exact_layer_repeat";
   string status=feasible?"FEASIBLE":negative?(wanted_e.empty()?"EXHAUSTED_NO_B":"EXHAUSTED_NO_B_FOR_E"):"UNDECIDED";
-  cout<<"{\"type\":\"RESULT\",\"g\":\""<<p.original<<"\",\"requested_e\":\""<<wanted_e<<"\",\"period\":"<<p.P<<",\"G\":"<<p.lengths.size()<<",\"phase_rotation\":"<<p.shift<<",\"status\":\""<<status<<"\",\"reason\":\""<<reason<<"\",\"depth\":"<<depth<<",\"cycle_start\":"<<cycle_start<<",\"nodes\":"<<arena.nodes.size()<<",\"operations\":"<<arena.operations<<",\"seconds\":"<<arena.elapsed()<<"}\n"<<flush;
+  cout<<"{\"type\":\"RESULT\",\"g\":\""<<p.original<<"\",\"requested_e\":\""<<wanted_e<<"\",\"period\":"<<p.P<<",\"G\":"<<p.lengths.size()<<",\"phase_rotation\":"<<p.shift<<",\"status\":\""<<status<<"\",\"reason\":\""<<reason<<"\",\"depth\":"<<depth<<",\"cycle_start\":"<<cycle_start<<",\"mode\":\""<<(live?"live":"history")<<"\",\"nodes\":"<<arena.nodes.size()<<",\"nodes_created\":"<<arena.nodes.created<<",\"peak_live_nodes\":"<<arena.nodes.peak<<",\"collections\":"<<arena.collections<<",\"collected_nodes\":"<<arena.collected_nodes<<",\"collected_arcs\":"<<arena.collected_arcs<<",\"retained_roots\":"<<arena.retained_roots<<",\"peak_retained_roots\":"<<arena.peak_retained_roots<<",\"collection_seconds\":"<<arena.collection_seconds<<",\"witness_complete\":"<<(witness_complete?"true":"false")<<",\"operations\":"<<arena.operations<<",\"seconds\":"<<arena.elapsed()<<"}\n"<<flush;
   return feasible||negative?0:3;
 }
 int main(int argc,char **argv){
