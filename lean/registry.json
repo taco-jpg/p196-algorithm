@@ -28208,6 +28208,104 @@
     "Agent119.NeutralCenterCanonicalization.normalizeEdges_idempotent",
     "Agent119.NeutralCenterCanonicalization.normalizeEdges_retraction"
    ]
+  },
+  "Agent114NeutralExteriorPadding": {
+   "id": "agent114-neutral-exterior-padding",
+   "title": "Neutral exterior padding covariance and checked-edge transport",
+   "scope": "For every base b >= 2 and arbitrary finite exterior and center interfaces, appending a neutral suffix preserves the unchanged A120 Hyp, carries, overflow and center successor; the exterior successor gains the same suffix. The exact original Boolean edge check is equivalent under source/target exterior padding whenever the natural trim counts satisfy a + u = w + a'. Includes empty exteriors. Formalizes prior paper padding arguments; no cycle instance, canonicalizer, decimal Lychrel existence or general impossibility is asserted.",
+   "roots": [
+    "P196.Agent114NeutralExteriorPadding.EdgeTransport"
+   ],
+   "modules": [
+    "P196.Agent114NeutralExteriorPadding.ExteriorPadding",
+    "P196.Agent114NeutralExteriorPadding.EdgeTransport"
+   ],
+   "endpoints": [
+    "Agent114.NeutralExteriorPadding.hyp_suffixPad_iff",
+    "Agent114.NeutralExteriorPadding.e1_suffixPad",
+    "Agent114.NeutralExteriorPadding.e2_suffixPad",
+    "Agent114.NeutralExteriorPadding.gam_suffixPad",
+    "Agent114.NeutralExteriorPadding.DB_suffixPad",
+    "Agent114.NeutralExteriorPadding.DC_suffixPad",
+    "Agent114.NeutralExteriorPadding.DR_suffixPad",
+    "Agent114.NeutralExteriorPadding.xd_suffixPad",
+    "Agent114.NeutralExteriorPadding.yd_suffixPad",
+    "Agent114.NeutralExteriorPadding.nextB_suffixPad",
+    "Agent114.NeutralExteriorPadding.nextC_suffixPad",
+    "Agent114.NeutralExteriorPadding.edgeOK_iff",
+    "Agent114.NeutralExteriorPadding.edgeOK_suffixPad_iff",
+    "Agent114.NeutralExteriorPadding.edgeOK_suffixPad"
+   ]
+  },
+  "Agent114NeutralExteriorCycle": {
+   "id": "agent114-neutral-exterior-cycle",
+   "title": "Exterior padding transport of complete chains and cycle schedules",
+   "scope": "For arbitrary natural phase offsets satisfying a_i + u_i = w_i + a_(i+1), exact equivalence of the unchanged A120 chainOK and, with closed offsets, cycleOK checks under exterior suffix padding. Proves transported endpoints, accepted-chain carry and overflow streams, length preservation and gain telescoping. An explicit natural prefix-plus-suffix construction realizes every replacement exterior-trim schedule of the same length and total, preserving centers and center trims. Imports the registered local exterior-padding result. No new certificate, decimal existence, width-preserving reduction, minimal padding bound or maximal-trim canonicalizer is asserted.",
+   "roots": [
+    "P196.Agent114NeutralExteriorCycle.ScheduleTransport"
+   ],
+   "modules": [
+    "P196.Agent114NeutralExteriorCycle.CycleTransport",
+    "P196.Agent114NeutralExteriorCycle.ScheduleTransport"
+   ],
+   "endpoints": [
+    "Agent114.NeutralExteriorCycle.PadChain.length_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.endB_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.endC_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.chainOK_iff",
+    "Agent114.NeutralExteriorCycle.PadChain.gain_balance",
+    "Agent114.NeutralExteriorCycle.PadChain.sumGain_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.sumGam_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.streams_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.cycleOK_iff",
+    "Agent114.NeutralExteriorCycle.retimeEdges_plan",
+    "Agent114.NeutralExteriorCycle.retimeEdges_trims",
+    "Agent114.NeutralExteriorCycle.retimeEdges_centers",
+    "Agent114.NeutralExteriorCycle.retimeEdges_cycleOK_iff",
+    "Agent114.NeutralExteriorCycle.exists_cycle_with_exterior_schedule"
+   ]
+  },
+  "Agent114NeutralExteriorCanonical": {
+   "id": "agent114-neutral-exterior-canonical",
+   "title": "Maximal exterior normalization of accepted A120 cycle certificates",
+   "scope": "For arbitrary bases and finite interfaces, reuse the existing generic maximal constant-suffix remover to normalize every exterior in an accepted unchanged A120 chain or cycle. The normalized exterior trim is the uniquely forced maximal neutral suffix of the actual raw successor; its shift formula is proved nonnegative. Accepted cycles normalize to accepted cycles with no terminal neutral exterior coefficient, preserving centers and their trims, listed edge count, carry and overflow streams, and total gain. Includes empty and all-neutral exterior words. This formalizes the exterior portion of prior paper canonicalization. No unconditional checker equivalence on rejected edge lists, joint center canonicalization, least-period preservation, new certificate, decimal existence or global impossibility is asserted.",
+   "roots": [
+    "P196.Agent114NeutralExteriorCanonical.CanonicalCycle"
+   ],
+   "modules": [
+    "P196.Agent114NeutralExteriorCanonical.SuffixNormalization",
+    "P196.Agent114NeutralExteriorCanonical.CanonicalEdge",
+    "P196.Agent114NeutralExteriorCanonical.CanonicalCycle"
+   ],
+   "endpoints": [
+    "Agent114.NeutralExteriorCanonical.canonB_length_le",
+    "Agent114.NeutralExteriorCanonical.canonB_decompose",
+    "Agent114.NeutralExteriorCanonical.canonB_suffixPad",
+    "Agent114.NeutralExteriorCanonical.suffixDepth_suffixPad",
+    "Agent114.NeutralExteriorCanonical.canonB_idempotent",
+    "Agent114.NeutralExteriorCanonical.suffixDepth_canonB",
+    "Agent114.NeutralExteriorCanonical.canonB_last_ne",
+    "Agent114.NeutralExteriorCanonical.canonB_eq_self_iff",
+    "Agent114.NeutralExteriorCanonical.canonB_hyp_iff",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_raw_target",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_balance",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_restore",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_ok",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_raw_eq",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_shift_nonnegative",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_trim_formula",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_trims_unique",
+    "Agent114.NeutralExteriorCanonical.canonicalEdges_length",
+    "Agent114.NeutralExteriorCanonical.canonicalEdges_normal",
+    "Agent114.NeutralExteriorCanonical.canonicalEdges_centers",
+    "Agent114.NeutralExteriorCanonical.canonical_chain_plan",
+    "Agent114.NeutralExteriorCanonical.canonical_chainOK",
+    "Agent114.NeutralExteriorCanonical.canonical_chain_streams",
+    "Agent114.NeutralExteriorCanonical.canonical_cycleOK",
+    "Agent114.NeutralExteriorCanonical.canonical_cycle_gain",
+    "Agent114.NeutralExteriorCanonical.canonical_chain_sumGam",
+    "Agent114.NeutralExteriorCanonical.cycle_exists_iff_exterior_normal"
+   ]
   }
  }
 }
