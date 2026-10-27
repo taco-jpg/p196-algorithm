@@ -1,6 +1,6 @@
 # Agent 3 — T5: paper-sound signed two-band pumping format
 
-**Research status:** Conditional certificate **format** specified with an independently checkable Python implementation and arithmetic audits. PAPER PROOF of soundness; COMPUTED cross-tests. Not Lean-verified. **No actual closed positive-gain certificate has been found**, in base 10 or any other base, so this does not prove existence of a Lychrel number. Review only; #289 Manager's AGENTS.md contribution-policy hold applies.
+**Research status:** Conditional certificate **format** with PAPER PROOF of soundness and COMPUTED arithmetic audits. A nontrivial **base-2 four-phase positive-gain certificate** was found and independently replayed for 1,000 integer steps. This is a new-format positive control, **not** a novel claim of base-2 Lychrel existence (already Lean-proved by other repository certificates). No base-10 cycle, no new Lean result. Draft PR is UNVERIFIED / DO NOT MERGE; no `verify.py --changed` run.
 
 ## Exact digit template
 
@@ -8,7 +8,7 @@ Fix a base `b>=2`. A *phase* consists of five ordinary base-b digit blocks `A,B,
 
 `W(g,h) = A ++ [x]^g ++ B ++ [u]^h ++ M ++ [v]^h ++ D ++ [y]^g ++ E`
 
-for any natural g,h. These are **two independently parameterized neutral mirrored pairs**, not just an extra empty band in the one-band format. If `A[0]!=E[-1]`, all W(g,h) are nonpalindromic for arbitrary g,h.
+for any natural g,h. These are **two independently parameterized neutral mirrored pairs**, not just an extra empty band in the one-band format. A sufficient nonpalindrome witness is any unequal corresponding fixed mirrored blocks (`A!=reverse(E)`, `B!=reverse(D)`, or `M!=reverse(M)`), or a nonempty mirrored run with unequal left/right digits (`g>0 and x!=y` or `h>0 and u!=v`). In fact their disjunction is an exact nonpalindrome test for this aligned block structure.
 
 ## PAPER PROOF 1: two-band carry-transmission lemma
 
@@ -41,9 +41,9 @@ Allow the reverse elementary operation too. An output word is represented by fiv
 
 Every move is a literal word identity. A finite sequence of moves is checked exactly, using the run characters from PAPER PROOF 1; no opaque solver or arbitrary sample bound is used. For each run it also records the most negative intermediate exponent offset. A transition is accepted only if the final blocks match exactly a valid successor phase, the final run digits match, and the two mirrored exponents have matching shifts `δg` and `δh`. This is the attached `signed_edge` predicate.
 
-A candidate closed phase itinerary `(P_j, moves_j)` is accepted by `signed_cycleOK` only when every signed edge is accepted, each phase has nonzero initial digit and a distinct first/last digit, the total increments over a full cycle satisfy `Δg>=0`, `Δh>=0`, and `Δg+Δh>0`. Signed offsets during an individual step may be negative; the checker computes a sufficiently large initial pair `(g0,h0)` covering every intermediate deficit in the first cycle. At subsequent cycles the entry parameters do not decrease because total increments are nonnegative, so every elementary move remains valid.
+A candidate closed phase itinerary `(P_j, moves_j)` is accepted by `signed_cycleOK` only when every signed edge is accepted, each phase has a nonzero initial digit and the exact block/run nonpalindrome disjunction holds at the selected seed bounds, the total increments over a full cycle satisfy `Δg>=0`, `Δh>=0`, and `Δg+Δh>0`. Signed offsets during an individual step may be negative; the checker computes a sufficiently large initial pair `(g0,h0)` covering every intermediate deficit in the first cycle. At subsequent cycles the entry parameters do not decrease because total increments are nonnegative, so every elementary move remains valid.
 
-**Conditional soundness:** induction on all steps proves the actual reverse-and-add orbit has precisely the declared phase words with evolving `(g,h)`. Every phase word is nonpalindromic by its unequal outer digits, so any accepted *positive-gain cycle witness* would produce a genuine base-b Lychrel integer. This is a PAPER PROOF conditional theorem, not a Lean theorem; no witness is claimed here.
+**Conditional soundness:** induction on all steps proves the actual reverse-and-add orbit has precisely the declared phase words with evolving `(g,h)`. Every phase word is nonpalindromic either by a mismatch in its fixed mirrored blocks or by a nonempty repeated-digit band with unequal reflected run digits. Choosing the returned seed ensures this at all phases; subsequent cycles have weakly greater g,h. Hence any accepted positive-gain cycle produces a base-b Lychrel integer as a **PAPER PROOF conditional theorem**, not a Lean kernel theorem.
 
 ## COMPUTED controls
 
@@ -62,7 +62,8 @@ synthetic_valid_phase_transitions 5 PASS
 NO BASE-10 CYCLE CLAIMED
 signed_rewrite_word_equalities 36000 PASS 12000 random traces
 base10_two_band_nontrivial_step_delta_1_1 PASS
-NO_CYCLE_CERTIFICATE_OR_DECIMAL_LYCHREL_CLAIM
+base2_signed_cycle_4_phases_positive_inner_gain_1 seed (0, 0) 1000_steps_integer_replay_PASS
+NO_DECIMAL_LYCHREL_CERTIFICATE_CLAIMED
 ~~~
 
 The integer tests independently evaluate full template words and their digit reversals, including large g,h; rewrite tests compare 36,000 full **digit-word equalities** (not only their numerical values), with both positive and negative boundary shifts.
@@ -75,6 +76,36 @@ One concrete genuinely two-band decimal **single step** (NOT a closed cycle):
 
 The four positive boundary moves are `(run0,L,+1), (run1,L,+1), (run2,L,+1), (run3,L,+1)`. Both initial and target band digits are different on adjacent neutral runs; the example has a nonempty separating pair of fixed blocks and unequal fixed outer digits. It demonstrates a nonzero-gain transition, but does **not** yield infinite nonpalindrome without a return certificate.
 
+## COMPUTED positive control: explicit closed base-2 two-band cycle
+
+**Important correction:** This positive known-base control supersedes the previous "no witness found" statement. It is **not** a decimal certificate and is not Lean-verified in this new format. The base-2 Lychrel-existence theorem was already established in the repository through Agent120's independent one-band certificate; the novelty here is the *two-band certificate format* with genuine nonzero pumping.
+
+The four phase records below are `(A,B,M,D,E; x,y,u,v)` in **most-significant-first base-2 digits**:
+
+| phase | A | B | M | D | E | x y u v |
+| --- | --- | --- | --- | --- | --- | --- |
+| P0 | 10 | 11 | 1101 | 00 | 00 | 1 0 1 0 |
+| P1 | 11 | 00 | 1000 | 11 | 01 | 0 1 0 1 |
+| P2 | 10 | 11 | 101 | 00 | 00 | 1 0 1 0 |
+| P3 | 11 | 00 | 010 | 11 | 01 | 0 1 0 1 |
+
+Define move notation `(run, side, delta)` with run 0=outer-left,1=inner-left,2=inner-right,3=outer-right; `L`/`R` means fixed block bordering that run; a positive delta extracts digits from a block, a negative delta absorbs digits back into it. Four checked transitions:
+
+1. P0→P1: no moves, gains `(0,0)`.
+2. P1→P2: `(0,L,+1),(0,R,-1),(1,L,+1),(2,L,+1)`, gains `(0,+1)`.
+3. P2→P3: no moves, gains `(0,0)`.
+4. P3→P0: `(0,L,+1),(0,R,-1),(1,L,+1),(1,R,-1)`, gains `(0,0)`.
+
+Every fixed phase satisfies complementary digit pairs, nonzero leading digit, and the output fixed-block identity. The signed checker **accepts all four edges** and returns minimal parameter seed `(g0,h0)=(0,0)`; for the independent integer demonstration select `(g0,h0)=(2,2)` so *both neutral-band pairs are nonempty*. Every phase is nonpalindromic. Consequently, as a PAPER PROOF (subject to reviewing the edge checker), for all `g,h≥2`, the four reverse-and-add steps satisfy
+
+`T_2^4(val_2(W_P0(g,h))) = val_2(W_P0(g,h+1))`.
+
+In particular, start `W_P0(2,2)=10111111110100000000₂ = 785664` (integer decimal representation), and the first four phase values are `785664, 788733, 1571328, 1574397`; the return is `3144192 = val_2(W_P0(2,3))`. The script checks **1,000** actual integer steps with each intermediate phase word matched and never palindromic. It also compares numerical reversal to independent binary string reversal. This is a substantive positive pumping **control in base 2**, not a new base-10 discovery.
+
+## COMPUTED bounded discovery scope
+
+`python3 calculation/agent-3/base2_bounded.py` (standard library; approximately 13 seconds in the test container) independently builds a base-2 phase graph with `1≤|A|=|E|≤2`, `0≤|B|=|D|≤2`, `0≤|M|≤4`, and one signed move per each of the eight run boundaries in `{-1,0,+1}`. It reports `26,040` phases, `6,720` active phase images, `12,088` admissible directed edges, and `26,028` vertices removed by Kahn leaving a **12-vertex cyclic core**. It then checks that the explicit four-phase positive-gain witness appears in those edges and independently passes `signed_cycleOK`. This is a bounded *discovery search*, not an exhaustive all-width/all-traces completeness theorem.
+
 ## Limits, next action
 
-No Lean file or registry entry has been created; `verify.py` has not run. The current signed checker has no accepted closed-cycle witness, and its precise scope is strictly the declared two-band word language with *trace-witnessed* boundary moves. It does not claim to be complete for all two-band identities. A next step is to search for small-base known positive pumping cycles as nonvacuity controls, followed by targeted base-10 search. A truly accepted base-10 witness must be translated to a registered Lean theorem and independently verified before any Lychrel-existence claim.
+No Lean file or registry entry has been created; `verify.py --changed` has NOT been run. The signed checker admits the explicit b=2 positive-gain cycle but no b=10 cycle is known. The format is strictly the declared two-band word language with *trace-witnessed* boundary moves; it makes no claim of completeness for all two-band identities. Future work: optimize bounded b=10 graph constraints and seek a positive-return witness, independently re-check any candidate, and then register/build a Lean theorem as required before claiming decimal Lychrel existence.
