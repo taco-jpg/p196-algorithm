@@ -28208,6 +28208,39 @@
     "Agent119.NeutralCenterCanonicalization.normalizeEdges_idempotent",
     "Agent119.NeutralCenterCanonicalization.normalizeEdges_retraction"
    ]
+  },
+  "Agent114NeutralCenterTrimSites": {
+   "id": "agent114-neutral-center-trim-sites",
+   "title": "A120 center symmetry and exact canonical center trim restrictions",
+   "scope": "Formalizes the center part of Agent7 PAPER Theorem C using unchanged A120 definitions and Agent119 center canonicalization. Raw nextC is symmetric without hypotheses; accepted edge targets and all accepted cycle sources/targets are symmetric. Exact first-coefficient formulas imply overflow preserves head neutrality, so a nonneutral source head forces center trim zero on overflow. Symmetric Hyp-valid centers of paired depth zero have nonneutral heads; positive trims then force nonoverflow and the exact all-base head/last-coefficient and last-incoming-carry sites, specializing to decimal (e,head,carry)=(0,14,1) or (1,4,0). The existing accepted center-normalized cycle satisfies these gates; accepted-cycle existence is equivalent to adding these restrictions. Source symmetry is explicitly required when converting pair-core normality to a head restriction; arbitrary asymmetric accepted sources are not claimed to satisfy that implication. No new canonicalizer, joint quotient, numerical injectivity, finite graph/search theorem, decimal certificate, or unrestricted obstruction.",
+   "roots": [
+    "P196.Agent114NeutralCenterTrimSites.Main"
+   ],
+   "modules": [
+    "P196.Agent114NeutralCenterTrimSites.CenterSymmetry",
+    "P196.Agent114NeutralCenterTrimSites.HeadCoefficient",
+    "P196.Agent114NeutralCenterTrimSites.CenterGates",
+    "P196.Agent114NeutralCenterTrimSites.Main"
+   ],
+   "endpoints": [
+    "Agent114.NeutralCenterTrimSites.nextC_reverse",
+    "Agent114.NeutralCenterTrimSites.edge_target_center_symmetric",
+    "Agent114.NeutralCenterTrimSites.chain_centers_symmetric",
+    "Agent114.NeutralCenterTrimSites.nonempty_chain_endC_symmetric",
+    "Agent114.NeutralCenterTrimSites.cycle_centers_symmetric",
+    "Agent114.NeutralCenterTrimSites.nextC_head_overflow",
+    "Agent114.NeutralCenterTrimSites.nextC_head_nooverflow",
+    "Agent114.NeutralCenterTrimSites.overflow_head_neutral_iff",
+    "Agent114.NeutralCenterTrimSites.nooverflow_head_thresholds",
+    "Agent114.NeutralCenterTrimSites.head_normal_overflow_trim_zero",
+    "Agent114.NeutralCenterTrimSites.head_normal_positive_trim_nonoverflow",
+    "Agent114.NeutralCenterTrimSites.symmetric_core_head_ne",
+    "Agent114.NeutralCenterTrimSites.symmetric_positive_trim_site",
+    "Agent114.NeutralCenterTrimSites.decimal_positive_center_trim_site",
+    "Agent114.NeutralCenterTrimSites.canonical_center_edge_trim_gates",
+    "Agent114.NeutralCenterTrimSites.normalized_cycle_center_trim_gates",
+    "Agent114.NeutralCenterTrimSites.cycle_exists_iff_center_trim_gates"
+   ]
   }
  }
 }
