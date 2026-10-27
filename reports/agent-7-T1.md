@@ -180,7 +180,7 @@ three original and normalized cycles with zero mismatches, with
 normalized phase sequences (g,U,V):
 
     base11:  (0,0,0),(0,1,0),(1,0,0),(0,0,0),(0,1,1),(1,0,0)
-    base17:  (1,0,0),(0,0,0),(0,0,0),(0,2,1),(1,0,0)
+    base17:  (1,0,0),(0,0,0),(0,0,0),(0,0,0),(0,2,1),(1,0,0)
     base26:  (0,1,0),(1,0,0),(0,1,1),(1,0,0)
 
 All three keep sum U=2 and sum V=1. These known certificates
