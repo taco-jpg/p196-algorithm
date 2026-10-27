@@ -8,7 +8,7 @@ Use most-significant-first digit blocks and complement-paired runs:
 
 `W(g,h) = A x^g B u^h M v^h D y^g E`
 
-where `x+y=u+v=b-1`, `|A|=|E|>=1`, `|B|=|D|`, `A[0]!=0`, and all digits are legitimate base-`b` digits. A signed edge uses **exactly one boundary move at each of the eight boundaries**, size in `{-1,0,+1}` (zero allowed), with **any ordering**. Positive moves extract a matching digit from the fixed block into its run; negative moves absorb a run digit back into the block. Every finite set of such moves is valid for sufficiently large initial `g,h`. This report excludes multiple moves on a boundary, absolute shifts above 1, larger fixed-block bounds, and other certificate languages.
+where `x+y=u+v=b-1`, `|A|=|E|>=1`, `|B|=|D|`, `A[0]!=0`, and all digits are legitimate base-`b` digits. A signed edge uses **exactly one boundary move at each of the eight boundaries**, size in `{-1,0,+1}` (zero allowed), with **any ordering**. Positive moves extract a matching digit from the fixed block into its run; negative moves absorb a run digit back into the block. For an accepted finite move trace, sufficiently large initial `g,h` ensure that signed run absorptions do not underflow. This report excludes multiple moves on a boundary, absolute shifts above 1, larger fixed-block bounds, and other certificate languages.
 
 The exact exhaustive state family is:
 
