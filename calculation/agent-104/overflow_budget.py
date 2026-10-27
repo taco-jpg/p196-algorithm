@@ -258,9 +258,11 @@ def main():
     print("SOURCE " + json.dumps({"path": str(SOURCE.relative_to(ROOT)),
                                   "sha256": digest}, sort_keys=True), flush=True)
     all_results = []
+    necklace_totals = Counter()
     for weight in sorted(set(args.weights)):
         for period in range(weight, 4 * weight + 1):
             words = necklaces(period, weight)
+            necklace_totals[weight] += len(words)
             survivors = [word for word in words if head_possible(word)]
             results = [decide(word, args.binary, args.state_cap, args.seconds, bstep)
                        for word in survivors]
@@ -279,6 +281,8 @@ def main():
     tally = Counter(item["status"] for _, _, item in all_results)
     print("FINAL " + json.dumps({"complete": not tally["UNDECIDED"],
           "weights": sorted(set(args.weights)), "exhausted_words": tally["EXHAUSTED"],
+          "necklaces": sum(necklace_totals.values()),
+          "necklaces_by_weight": dict(necklace_totals),
           "undecided_words": tally["UNDECIDED"],
           "accepted_g": sum(bool(item["accepts"]) for _, _, item in all_results),
           "accepted_e": sum(len(item["accepts"]) for _, _, item in all_results)},

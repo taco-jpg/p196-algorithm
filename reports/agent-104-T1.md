@@ -124,7 +124,12 @@ accepted e stream covers every possible driver seen by the center.
 | 4 | 14 | 73 | 3 | 3 | 0 |
 | 4 | 15 | 91 | 1 | 1 | 0 |
 | 4 | 16 | 116 | 1 | 1 | 0 |
-| **Total** | | **580** | **48** | **48** | **1** |
+| **Total** | | **480** | **48** | **48** | **1** |
+
+The totals are 16 necklaces for G2 和 464 for G4. Agent 103's independent
+audit caught an initial summary addition error; the per-period table,
+enumerated inputs, state counts, 和 mathematical conclusion were correct.
+The harness now prints these aggregate counts directly.
 
 The unique accepted pair is
 
@@ -250,7 +255,7 @@ python3 tools/verify.py --changed
 The B script ends with:
 
 ```text
-FINAL {"accepted_e": 1, "accepted_g": 1, "complete": true, "exhausted_words": 48, "undecided_words": 0, "weights": [2, 4]}
+FINAL {"accepted_e": 1, "accepted_g": 1, "complete": true, "exhausted_words": 48, "necklaces": 480, "necklaces_by_weight": {"2": 16, "4": 464}, "undecided_words": 0, "weights": [2, 4]}
 ```
 
 The center script ends with `CENTER_G4_SURVIVOR_EXCLUDED`.
