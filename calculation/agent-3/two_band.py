@@ -24,10 +24,10 @@ class Phase:
 
 def valid_phase(b,p):
     blocks=(p.A,p.B,p.M,p.D,p.E)
-    return (b>=2 and bool(p.A) and p.A[0]>0 and len(p.A)==len(p.E)
+    return (isinstance(b,int) and b>=2 and bool(p.A) and p.A[0]>0 and len(p.A)==len(p.E)
       and len(p.B)==len(p.D) and p.x+p.y==b-1 and p.u+p.v==b-1
       and all(isinstance(z,int) and 0<=z<b for W in blocks for z in W)
-      and all(0<=z<b for z in (p.x,p.y,p.u,p.v)))
+      and all(isinstance(z,int) and 0<=z<b for z in (p.x,p.y,p.u,p.v)))
 
 
 def word(p,g,h):
