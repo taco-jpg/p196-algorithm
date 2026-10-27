@@ -19,11 +19,24 @@ as new. Exact coefficient transitions come from `A120Template.lean` 和
 `calculation/neutral_band_search.py`. Agent 7's neutral-padding covariance 和
 canonical-cycle normalization are recorded in PRs #315/#326.
 
+Decimal fixed-width injectivity already has a Lean proof:
+`ReverseAddInverse.symmetric_value_injective` in
+`lean/P196/Foundations/LychrelDigitSums.lean` covers symmetric coefficients
+through18. The uniform decimal alphabet threshold90 is also already formal:
+`Agent5.BidirectionalWordDecoder.values_injective_bound_iff` in
+`lean/P196/BidirectionalWordDecoder/Sharpness.lean` proves the corresponding
+two-evaluation theorem. On symmetric words the two evaluations agree;
+its width-four collision at91 is symmetric too. Section2 gives an elementary
+general-base extension/reproof, rather than a new decimal injectivity result.
+No per-width classification for symmetric words is inferred from that source.
+
 This result proves faithful numerical representations, an exact integer
 transition, a decoding algorithm, 和 an obstruction to a specific scalar
 compression. Overflow g is supplied externally. Compatibility with an actual
 exterior B remains a separate requirement. This result supplies neither a
 decimal certificate nor an unrestricted center nonexistence theorem.
+Every center on a cycle is symmetric because each is a paired, trimmed
+output of its predecessor; the symmetric domain therefore covers cycles.
 
 ## 2. PAPER PROOF — fixed-width injectivity
 
