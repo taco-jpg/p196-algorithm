@@ -28161,6 +28161,53 @@
     "Agent119.NeutralCenterUnpadding.not_Hyp_neutral_center",
     "Agent119.NeutralCenterUnpadding.Hyp_center_ne_nil"
    ]
+  },
+  "Agent119NeutralCenterCanonicalization": {
+   "id": "agent119-neutral-center-canonicalization",
+   "title": "Maximal center normalization of accepted neutral-band cycles",
+   "scope": "All-base center component of the existing paper normal form, using the unchanged generic Agent1 singleton-period stripper and unchanged Agent120 checker. Every accepted chain or cycle maps to one with maximally stripped centers; B/B2/u, both carry labels, overflow stream and listed length are preserved. Closed center chains retain total gain, with exact endpoint-depth accounting for open chains. The new center trim is the actual maximal strip count of the raw normalized-center successor. Includes idempotence and retraction on checked normalized input. No arbitrary malformed-input acceptance iff, joint deterministic exterior-center quotient, decimal certificate or unrestricted obstruction is asserted. Depends on Agent119NeutralCenterPadding and Agent119NeutralCenterUnpadding.",
+   "roots": [
+    "P196.Agent119NeutralCenterCanonicalization.Main"
+   ],
+   "modules": [
+    "P196.Agent119NeutralCenterCanonicalization.Core",
+    "P196.Agent119NeutralCenterCanonicalization.Edge",
+    "P196.Agent119NeutralCenterCanonicalization.Main"
+   ],
+   "endpoints": [
+    "Agent119.NeutralCenterCanonicalization.decompose",
+    "Agent119.NeutralCenterCanonicalization.core_padC",
+    "Agent119.NeutralCenterCanonicalization.depth_padC",
+    "Agent119.NeutralCenterCanonicalization.core_idempotent",
+    "Agent119.NeutralCenterCanonicalization.depth_core",
+    "Agent119.NeutralCenterCanonicalization.core_length_le",
+    "Agent119.NeutralCenterCanonicalization.core_irreducible",
+    "Agent119.NeutralCenterCanonicalization.Hyp_core_iff",
+    "Agent119.NeutralCenterCanonicalization.Hyp_core",
+    "Agent119.NeutralCenterCanonicalization.normalized_center_equation",
+    "Agent119.NeutralCenterCanonicalization.normalize_center_core",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdge_balance",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdge_ok",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdge_e1",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdge_e2",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdge_gam",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdge_idempotent",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdge_retraction",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdges_length",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdges_eq_nil_iff",
+    "Agent119.NeutralCenterCanonicalization.endB_normalizeEdges",
+    "Agent119.NeutralCenterCanonicalization.endC_normalizeEdges",
+    "Agent119.NeutralCenterCanonicalization.chainOK_normalize",
+    "Agent119.NeutralCenterCanonicalization.chain_gain_balance",
+    "Agent119.NeutralCenterCanonicalization.sumGain_normalize_closed",
+    "Agent119.NeutralCenterCanonicalization.sumGam_normalize",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdges_streams",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdges_core_depth",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdges_core_widths",
+    "Agent119.NeutralCenterCanonicalization.cycleOK_normalize",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdges_idempotent",
+    "Agent119.NeutralCenterCanonicalization.normalizeEdges_retraction"
+   ]
   }
  }
 }
