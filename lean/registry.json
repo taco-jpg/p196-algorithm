@@ -28229,6 +28229,188 @@
     "Agent104.NeutralBalancedWidth.balanced_sourceCap",
     "Agent104.NeutralBalancedWidth.bounded_iff_balanced"
    ]
+  },
+  "Agent114NeutralExteriorPadding": {
+   "id": "agent114-neutral-exterior-padding",
+   "title": "Neutral exterior padding covariance and checked-edge transport",
+   "scope": "For every base b >= 2 and arbitrary finite exterior and center interfaces, appending a neutral suffix preserves the unchanged A120 Hyp, carries, overflow and center successor; the exterior successor gains the same suffix. The exact original Boolean edge check is equivalent under source/target exterior padding whenever the natural trim counts satisfy a + u = w + a'. Includes empty exteriors. Formalizes prior paper padding arguments; no cycle instance, canonicalizer, decimal Lychrel existence or general impossibility is asserted.",
+   "roots": [
+    "P196.Agent114NeutralExteriorPadding.EdgeTransport"
+   ],
+   "modules": [
+    "P196.Agent114NeutralExteriorPadding.ExteriorPadding",
+    "P196.Agent114NeutralExteriorPadding.EdgeTransport"
+   ],
+   "endpoints": [
+    "Agent114.NeutralExteriorPadding.hyp_suffixPad_iff",
+    "Agent114.NeutralExteriorPadding.e1_suffixPad",
+    "Agent114.NeutralExteriorPadding.e2_suffixPad",
+    "Agent114.NeutralExteriorPadding.gam_suffixPad",
+    "Agent114.NeutralExteriorPadding.DB_suffixPad",
+    "Agent114.NeutralExteriorPadding.DC_suffixPad",
+    "Agent114.NeutralExteriorPadding.DR_suffixPad",
+    "Agent114.NeutralExteriorPadding.xd_suffixPad",
+    "Agent114.NeutralExteriorPadding.yd_suffixPad",
+    "Agent114.NeutralExteriorPadding.nextB_suffixPad",
+    "Agent114.NeutralExteriorPadding.nextC_suffixPad",
+    "Agent114.NeutralExteriorPadding.edgeOK_iff",
+    "Agent114.NeutralExteriorPadding.edgeOK_suffixPad_iff",
+    "Agent114.NeutralExteriorPadding.edgeOK_suffixPad"
+   ]
+  },
+  "Agent114NeutralExteriorCycle": {
+   "id": "agent114-neutral-exterior-cycle",
+   "title": "Exterior padding transport of complete chains and cycle schedules",
+   "scope": "For arbitrary natural phase offsets satisfying a_i + u_i = w_i + a_(i+1), exact equivalence of the unchanged A120 chainOK and, with closed offsets, cycleOK checks under exterior suffix padding. Proves transported endpoints, accepted-chain carry and overflow streams, length preservation and gain telescoping. An explicit natural prefix-plus-suffix construction realizes every replacement exterior-trim schedule of the same length and total, preserving centers and center trims. Imports the registered local exterior-padding result. No new certificate, decimal existence, width-preserving reduction, minimal padding bound or maximal-trim canonicalizer is asserted.",
+   "roots": [
+    "P196.Agent114NeutralExteriorCycle.ScheduleTransport"
+   ],
+   "modules": [
+    "P196.Agent114NeutralExteriorCycle.CycleTransport",
+    "P196.Agent114NeutralExteriorCycle.ScheduleTransport"
+   ],
+   "endpoints": [
+    "Agent114.NeutralExteriorCycle.PadChain.length_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.endB_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.endC_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.chainOK_iff",
+    "Agent114.NeutralExteriorCycle.PadChain.gain_balance",
+    "Agent114.NeutralExteriorCycle.PadChain.sumGain_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.sumGam_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.streams_eq",
+    "Agent114.NeutralExteriorCycle.PadChain.cycleOK_iff",
+    "Agent114.NeutralExteriorCycle.retimeEdges_plan",
+    "Agent114.NeutralExteriorCycle.retimeEdges_trims",
+    "Agent114.NeutralExteriorCycle.retimeEdges_centers",
+    "Agent114.NeutralExteriorCycle.retimeEdges_cycleOK_iff",
+    "Agent114.NeutralExteriorCycle.exists_cycle_with_exterior_schedule"
+   ]
+  },
+  "Agent114NeutralExteriorCanonical": {
+   "id": "agent114-neutral-exterior-canonical",
+   "title": "Maximal exterior normalization of accepted A120 cycle certificates",
+   "scope": "For arbitrary bases and finite interfaces, reuse the existing generic maximal constant-suffix remover to normalize every exterior in an accepted unchanged A120 chain or cycle. The normalized exterior trim is the uniquely forced maximal neutral suffix of the actual raw successor; its shift formula is proved nonnegative. Accepted cycles normalize to accepted cycles with no terminal neutral exterior coefficient, preserving centers and their trims, listed edge count, carry and overflow streams, and total gain. Includes empty and all-neutral exterior words. This formalizes the exterior portion of prior paper canonicalization. No unconditional checker equivalence on rejected edge lists, joint center canonicalization, least-period preservation, new certificate, decimal existence or global impossibility is asserted.",
+   "roots": [
+    "P196.Agent114NeutralExteriorCanonical.CanonicalCycle"
+   ],
+   "modules": [
+    "P196.Agent114NeutralExteriorCanonical.SuffixNormalization",
+    "P196.Agent114NeutralExteriorCanonical.CanonicalEdge",
+    "P196.Agent114NeutralExteriorCanonical.CanonicalCycle"
+   ],
+   "endpoints": [
+    "Agent114.NeutralExteriorCanonical.canonB_length_le",
+    "Agent114.NeutralExteriorCanonical.canonB_decompose",
+    "Agent114.NeutralExteriorCanonical.canonB_suffixPad",
+    "Agent114.NeutralExteriorCanonical.suffixDepth_suffixPad",
+    "Agent114.NeutralExteriorCanonical.canonB_idempotent",
+    "Agent114.NeutralExteriorCanonical.suffixDepth_canonB",
+    "Agent114.NeutralExteriorCanonical.canonB_last_ne",
+    "Agent114.NeutralExteriorCanonical.canonB_eq_self_iff",
+    "Agent114.NeutralExteriorCanonical.canonB_hyp_iff",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_raw_target",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_balance",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_restore",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_ok",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_raw_eq",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_shift_nonnegative",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_trim_formula",
+    "Agent114.NeutralExteriorCanonical.canonicalEdge_trims_unique",
+    "Agent114.NeutralExteriorCanonical.canonicalEdges_length",
+    "Agent114.NeutralExteriorCanonical.canonicalEdges_normal",
+    "Agent114.NeutralExteriorCanonical.canonicalEdges_centers",
+    "Agent114.NeutralExteriorCanonical.canonical_chain_plan",
+    "Agent114.NeutralExteriorCanonical.canonical_chainOK",
+    "Agent114.NeutralExteriorCanonical.canonical_chain_streams",
+    "Agent114.NeutralExteriorCanonical.canonical_cycleOK",
+    "Agent114.NeutralExteriorCanonical.canonical_cycle_gain",
+    "Agent114.NeutralExteriorCanonical.canonical_chain_sumGam",
+    "Agent114.NeutralExteriorCanonical.cycle_exists_iff_exterior_normal"
+   ]
+  },
+  "Agent114NeutralUniformExterior": {
+   "id": "agent114-neutral-uniform-exterior",
+   "title": "Exact uniform exterior width model for bounded A120 certificates",
+   "scope": "For every accepted unchanged A120 cycle whose starting and edge exterior interfaces fit a natural cap M, pad each exterior to exactly M and replace its exterior trim by its actual overflow. Proves chain and cycle acceptance, exact width, carry and overflow streams, unchanged center words and center trims, listed edge count and total gain. Certificate existence under a width cap, including a cap only after maximal exterior canonicalization, is equivalent to accepted uniform-width certificates with u = gam. Reuses the verified Agent119 length identity and Agent114 padding/cycle/canonicalization modules. Includes M = 0 and empty words at the level of the generic statements. No solver completeness theorem, fixed-driver exclusion, minimal-period claim, center canonicalization, decimal certificate or Lychrel existence assertion.",
+   "roots": [
+    "P196.Agent114NeutralUniformExterior.Main"
+   ],
+   "modules": [
+    "P196.Agent114NeutralUniformExterior.UniformEdge",
+    "P196.Agent114NeutralUniformExterior.UniformChain",
+    "P196.Agent114NeutralUniformExterior.Main"
+   ],
+   "endpoints": [
+    "Agent114.NeutralUniformExterior.padWidth_length",
+    "Agent114.NeutralUniformExterior.uniformEdge_balance",
+    "Agent114.NeutralUniformExterior.uniformEdge_ok",
+    "Agent114.NeutralUniformExterior.uniformEdge_widths",
+    "Agent114.NeutralUniformExterior.uniformEdge_trim_eq_gam",
+    "Agent114.NeutralUniformExterior.equal_width_trim",
+    "Agent114.NeutralUniformExterior.uniformEdges_length",
+    "Agent114.NeutralUniformExterior.uniformEdges_centers",
+    "Agent114.NeutralUniformExterior.uniform_chain_plan",
+    "Agent114.NeutralUniformExterior.uniform_chainOK",
+    "Agent114.NeutralUniformExterior.uniform_chain_streams",
+    "Agent114.NeutralUniformExterior.uniform_cycleOK",
+    "Agent114.NeutralUniformExterior.uniform_cycle_gain",
+    "Agent114.NeutralUniformExterior.uniform_widths",
+    "Agent114.NeutralUniformExterior.uniformEdges_trims",
+    "Agent114.NeutralUniformExterior.uniformWidth_implies_bound",
+    "Agent114.NeutralUniformExterior.bounded_cycle_exists_iff_uniform",
+    "Agent114.NeutralUniformExterior.canonical_width_bound_of_bound",
+    "Agent114.NeutralUniformExterior.canonical_bounded_cycle_exists_iff_uniform"
+   ]
+  },
+  "Agent104NeutralJointWidth": {
+   "id": "agent104-neutral-joint-width",
+   "title": "Complete finite decision under joint neutral interface width caps",
+   "scope": "For the unchanged Agent120 checker, compose credited uniform exterior and balanced center padding to preserve raw exterior/center width caps. Prove an explicit finite coefficient carrier, deterministic accepted normalized edges, extraction of a simple checked subcycle, and certificate existence iff a finite Boolean search using original cycleOK accepts. For center ceiling W at least two, the complete period cutoff is (2b-1)^M*((2b-1)^(W-1)+(2b-1)^W). Empty exteriors, arbitrary original natural trims and actual joint carry compatibility are covered. Subcycle extraction varies initial state and driver; no fixed-driver period descent, practical complexity, external optimized-solver verification, new decimal computation/certificate or unrestricted impossibility claim. Credits Agent7/109/110/114/119 finite-graph and padding work.",
+   "roots": [
+    "P196.Agent104NeutralJointWidth.Decision"
+   ],
+   "modules": [
+    "P196.Agent104NeutralJointWidth.NormalForm",
+    "P196.Agent104NeutralJointWidth.FiniteStates",
+    "P196.Agent104NeutralJointWidth.Edges",
+    "P196.Agent104NeutralJointWidth.FiniteCycle",
+    "P196.Agent104NeutralJointWidth.Decision"
+   ],
+   "endpoints": [
+    "Agent104.NeutralJointWidth.jointCaps_widthBound",
+    "Agent104.NeutralJointWidth.jointEdges_length",
+    "Agent104.NeutralJointWidth.jointEdges_cycleOK",
+    "Agent104.NeutralJointWidth.jointEdges_normalized",
+    "Agent104.NeutralJointWidth.jointEdges_gain",
+    "Agent104.NeutralJointWidth.cycle_normalized_representative",
+    "Agent104.NeutralJointWidth.normalizedEdges_caps",
+    "Agent104.NeutralJointWidth.bounded_cycle_exists_iff_normalized",
+    "Agent104.NeutralJointWidth.listsOf_length",
+    "Agent104.NeutralJointWidth.mem_listsOf",
+    "Agent104.NeutralJointWidth.words_length",
+    "Agent104.NeutralJointWidth.mem_words",
+    "Agent104.NeutralJointWidth.states_length",
+    "Agent104.NeutralJointWidth.mem_states",
+    "Agent104.NeutralJointWidth.hyp_mem_states",
+    "Agent104.NeutralJointWidth.mem_edgeAlphabet",
+    "Agent104.NeutralJointWidth.edgeAlphabet_normalized",
+    "Agent104.NeutralJointWidth.edgeAlphabet_source",
+    "Agent104.NeutralJointWidth.edgeAlphabet_target",
+    "Agent104.NeutralJointWidth.edge_mem_alphabet",
+    "Agent104.NeutralJointWidth.cycle_source_states",
+    "Agent104.NeutralJointWidth.cycle_start_mem",
+    "Agent104.NeutralJointWidth.cycle_target_mem",
+    "Agent104.NeutralJointWidth.cycle_mem_edgeAlphabet",
+    "Agent104.NeutralJointWidth.normalized_edge_deterministic",
+    "Agent104.NeutralJointWidth.cycleOK_exists_simple",
+    "Agent104.NeutralJointWidth.cycleOK_exists_bounded",
+    "Agent104.NeutralJointWidth.normalizedSearch_sound",
+    "Agent104.NeutralJointWidth.normalizedSearch_complete",
+    "Agent104.NeutralJointWidth.joint_iff_short_normalized",
+    "Agent104.NeutralJointWidth.normalizedSearch_iff",
+    "Agent104.NeutralJointWidth.normalizedSearch_false_iff",
+    "Agent104.NeutralJointWidth.jointDecidable"
+   ]
   }
  }
 }
