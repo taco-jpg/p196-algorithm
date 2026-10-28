@@ -27,7 +27,13 @@ struct Lat {
    W.assign(p,vector<int>(m));cu.assign(p,vector<int>(m));
    for(auto &row:W)for(auto &a:row)if(fscanf(f,"%d",&a)!=1)return false;
    for(auto &row:cu)for(auto &a:row)if(fscanf(f,"%d",&a)!=1)return false;
-   fclose(f);return true;
+   fclose(f);
+   // Fail closed on malformed inputs; invalid carry/coefficient domains
+   // could otherwise turn a claimed finite-width exclusion into garbage.
+   for(int g:gam)if(g!=0&&g!=1)return false;
+   for(const auto& row:W)for(int v:row)if(v<0||v>2*b-2)return false;
+   for(const auto& row:cu)for(int v:row)if(v!=0&&v!=1)return false;
+   return true;
  }
  int idx(long k)const {int r=(int)((k-nB)%m);return r<0?r+m:r;}
  int cell(int t,long x)const {return W[t%p][idx(x)];}
