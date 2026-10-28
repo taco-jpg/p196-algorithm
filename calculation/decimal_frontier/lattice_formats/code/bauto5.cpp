@@ -139,7 +139,8 @@ int main(int argc, char** argv) {
     for (u64 gm : streams) {
       g.assign(p, 0); Gidx.clear(); for (int t = 0; t < p; t++) { g[t] = (gm >> t) & 1; if (g[t]) Gidx.push_back(t); }
       ng = Gidx.size();
-      if (2 * p + ydig * ng > 191 || p > 60) { nskip++; fprintf(stderr, "key too long p=%d ng=%d\n", p, ng); continue; }
+      // Key has three 64-bit words, so an exactly 192-bit encoding is valid.
+      if (2 * p + ydig * ng > 192 || p > 60) { nskip++; fprintf(stderr, "key too long p=%d ng=%d\n", p, ng); continue; }
       string gs; for (int t = 0; t < p; t++) gs += char('0' + g[t]);
       int Y0[64]; for (int i = 0; i < ng; i++) Y0[i] = 1;
       u64 Hs = 0; for (int t = 0; t < p; t++) Hs |= (u64)g[t] << t;
