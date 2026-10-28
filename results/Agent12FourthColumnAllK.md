@@ -1,0 +1,7 @@
+# Agent12FourthColumnAllK
+**PAPER PROOF:** For every k>=1, canonical-root base-10 position-automaton prefix g=(11000)^k has exactly F_k=4^k+(4+2√10)^k+(4−2√10)^k time-closed **first-four-spatial-column** coefficient/carry histories.
+Based on the existing all-k first-three-column lemma (`Agent12ThreeColumnAllK`): the exhaustive five-step fourth-column transfer has 51 labeled edges and a unique eight-state cyclic SCC, with integer characteristic polynomial x^5(x−4)(x²−8x−24).
+**COMPUTED controls (complete finite graphs):** independent transfer enumerator checks all 19 starts, four carry-labels and all 32 outgoing carry words per start without caps. The independent whole-time DFS/DP checks k=1..8: 12,128,1152,11648,118272,1215488,12521472,129179648; full-SCC b9/b13 controls reproduce 956310/250302 reachable states and 7/5 SCCs.
+All new code and controls: `calculation/decimal_frontier/fourcol_allk/{fourcol_block_graph.py,fourcol_independent.cpp,full_scc_controls.cpp}`; proof and exact data: `reports/Agent12FourthColumnAllK.md`.
+Reproduce: `python3 calculation/decimal_frontier/fourcol_allk/fourcol_block_graph.py`; `c++ -O2 -std=c++17` each `.cpp`, run `fourcol_independent 8` and `full_scc_controls` (standard library only).
+Scope: time-rooted g=(11000)^k for arbitrary k, only first 4 spatial columns and their time-period-p closure; does NOT establish accepting exterior SCC, periodic centre, a decimal Lychrel number, orbit 196, or Lean verification.
