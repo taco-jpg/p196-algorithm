@@ -1,0 +1,7 @@
+# Agent12FifthColumnAllK
+**PAPER PROOF:** For every k>=1, the exact base-10 canonical-root position automaton with g=(11000)^k admits exactly **0** time-closed first-FIVE-column histories when k is odd, and exactly **2·6^(k/2)** when k is even.
+The published three-column theorem forces the first three coefficient histories; for each five-time block the fourth/fifth joint transfer over all third-outgoing-carry labels has 266 participating states, 846 weighted state pairs and 2874 exact paths. Its sole recurrent SCC has states (9,9),(15,0),(15,9) and weighted matrix ((0,1,1),(4,0,0),(2,0,0)); characteristic polynomial x(x²−6).
+**COMPUTED finite controls:** Exhaustive exact transfer enumeration (no cap) and independent whole-5k-step pair arithmetic k=1..12 agree; counts are 0,12,0,72,0,432,0,2592,0,15552,0,93312. Base-9/base-13 mandatory complete SCC controls reproduce 956310/250302 states, 7/5 SCCs.
+Source/checkers: `calculation/decimal_frontier/fivecol_allk/{fivecol_transfer.py,fivecol_whole_time.cpp,full_scc_controls.cpp}`. Paper proof, exact commands, data and scope: `reports/Agent12FifthColumnAllK.md`.
+Reproduce: `python3 calculation/decimal_frontier/fivecol_allk/fivecol_transfer.py`; compile both C++17 files with `c++ -O2 -std=c++17` and run `fivecol_whole_time 12` and `full_scc_controls`.
+Scope: canonical time-rooted g=(11000)^k, exact time-closure through five spatial columns only. Not claimed: sixth-column survival, accepting exterior SCC, centre, any decimal Lychrel number, orbit 196, or Lean verification.
