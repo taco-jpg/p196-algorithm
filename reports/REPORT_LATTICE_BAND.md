@@ -48,3 +48,19 @@ checker rejects the same data with a wrong start phase. A corrupted digit in `W3
 - COMPUTED (outside Lean): the two certificates were first validated in Python (all 10 edges of each cycle).
 - Not claimed: anything for base 10; the family `b ≡ 1 (mod 3)`; novelty beyond the Wikipedia/OEIS A060382 list
   (no literature search was done).
+
+## Search in other bases (COMPUTED, not Lean)
+
+Tool: `calculation/decimal_frontier/lattice_formats/code/bauto3.cpp` (position automaton, state cap 3,000,000), then
+`replay_sym.py` (big-integer replay) for each SCC with `m | S` and a palindromic lattice word.
+
+- Controls reproduced: base 9 `g=1100011000` gives `m = 4`, `|B| = 61`; base 13 `g=1010010000` gives `|B| = 75, 55`.
+- Bases 5, 6, 7, 8, 11, 12, 14 to 31, all overflow necklaces of length `p ≤ 12`: every SCC that satisfies `m | S` with a
+  palindromic lattice is a *neutral* band (all entries `b-1`); these need a centre and the big-integer replay fails at
+  step 1. No further absorbing self-mirror lattice was found. A few streams hit the state cap (for example
+  base 11, 17, 18, 24, 27: one each; base 20: two).
+- Bases 7, 19, 22, 25, `13 ≤ p ≤ 16`: no candidate among decided streams; capped streams: base 7 `p=15 100100100100100`,
+  `p=16 1100110011001100`; base 19 `p=15 101001010010100`; base 22 `p=13 1010001010000`, `p=15 100001000010000`;
+  base 25 `p=16 1010101010101010`.
+- So bases 9 and 13 are the only ones with a certificate of this kind in the covered range; there is no evidence yet for a
+  general family `b ≡ 1 (mod 3)`. UNDECIDED.
