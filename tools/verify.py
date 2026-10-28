@@ -31,6 +31,27 @@ REG = json.load(open(os.path.join(LEAN, "registry.json")))
 ALLOWED = set(REG["allowed_axioms"])
 fail = []
 
+# Registry fragments: lean/registry.d/<Name>.json holds {"<Name>": {project entry}}.  New results go there, so that
+# parallel contributors never edit the same file (lean/registry.json is the frozen legacy part).
+def load_fragments(read_text, names):
+    out = {}
+    for n in names:
+        stem = os.path.basename(n)[:-5]
+        try:
+            frag = json.loads(read_text(n))
+        except Exception as e:
+            fail.append(f"{n}: not valid JSON ({e})"); continue
+        if list(frag) != [stem]:
+            fail.append(f"{n}: must contain exactly one project named {stem!r}"); continue
+        out[stem] = frag[stem]
+    return out
+_rd = os.path.join(LEAN, "registry.d")
+_names = sorted(os.path.join(_rd, f) for f in os.listdir(_rd) if f.endswith(".json")) if os.path.isdir(_rd) else []
+for _k, _v in load_fragments(lambda n: open(n, encoding="utf-8").read(), _names).items():
+    if _k in REG["projects"]:
+        fail.append(f"project {_k!r} is in both lean/registry.json and lean/registry.d/")
+    REG["projects"][_k] = _v
+
 CHANGED = "--changed" in sys.argv
 BASE = None
 if CHANGED:
@@ -114,6 +135,10 @@ if CHANGED:
         old_reg = json.loads(git("show", f"{BASE}:lean/registry.json").stdout)["projects"]
     except Exception:
         old_reg = {}
+    _old = [x for x in git("ls-tree", "-r", "--name-only", BASE, "lean/registry.d").stdout.split() if x.endswith(".json")]
+    _fail_before = len(fail)
+    old_reg.update(load_fragments(lambda n: git("show", f"{BASE}:{n}").stdout, _old))
+    del fail[_fail_before:]
     audit_projects = {n for n, p in REG["projects"].items()
                       if set(p["modules"]) & targets or old_reg.get(n) != p}
     print(f"[changed] against {BASE}: {len(changed)} new/changed Lean file(s); building {len(targets)} module(s); "

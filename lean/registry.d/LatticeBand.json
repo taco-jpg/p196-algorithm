@@ -1,0 +1,44 @@
+{
+ "LatticeBand": {
+  "id": "lattice-band",
+  "title": "Periodic-lattice absorbing-band certificates and a base-9 Lychrel number",
+  "scope": "A third certificate format, proved sound for every base: templates B ++ band(W, l) ++ reverse B whose period block W (any length, here 4) is absorbing, i.e. the carry leaving W is one constant for either incoming carry, so no centre block and no flip condition are needed. The band length l is the first l entries of the periodic word W W W ..., and one reverse-and-add step maps the template to a template with a new block W2 = gen Y d, a new B2, and band length l + gm with phase (rho + gm) mod |W| (never shrinking). A cycle of checked edges (lcycleOK, evaluated by the kernel) yields a Lychrel template value for every band length l >= 2|W| in the right residue class (lychrel_of_lcycle). Instance: two explicit 10-edge cycles in base 9 (period block length 4, |B| = 61, overflow word 1100011000) give exists_lychrel9 : exists n, Lychrel 9 n for each, with Lychrel the unchanged Agent120.Neutral.Lychrel, plus one rejected wrong-phase certificate per cycle. Base 9 is not among the bases (11, 17, 20, 26, powers of two) for which, as far as Wikipedia and OEIS A060382 record, Lychrel existence was previously known; no literature search beyond that was done. Nothing is claimed about base 10 or 196: the decimal period-8 lattice exteriors need a periodic centre, and none is known.",
+  "roots": [
+   "P196.LatticeBand.Base9",
+   "P196.LatticeBand.Base9b"
+  ],
+  "modules": [
+   "P196.LatticeBand.Band",
+   "P196.LatticeBand.Digits",
+   "P196.LatticeBand.Pairs",
+   "P196.LatticeBand.Step",
+   "P196.LatticeBand.Cert",
+   "P196.LatticeBand.Base9",
+   "P196.LatticeBand.Base9b"
+  ],
+  "endpoints": [
+   "LatticeBand.digits_tm",
+   "LatticeBand.pairs_lattice",
+   "LatticeBand.step_tm",
+   "LatticeBand.not_isPal_tm",
+   "LatticeBand.ledge_step",
+   "LatticeBand.lchain_run",
+   "LatticeBand.lychrel_of_lcycle",
+   "LatticeBand.Base9.cert_ok",
+   "LatticeBand.Base9.lychrel_template",
+   "LatticeBand.Base9.exists_lychrel9",
+   "LatticeBand.Base9.cert_wrong_phase",
+   "LatticeBand.Base9b.cert_ok",
+   "LatticeBand.Base9b.lychrel_template",
+   "LatticeBand.Base9b.exists_lychrel9",
+   "LatticeBand.Base9b.cert_wrong_phase"
+  ],
+  "origin": {
+   "registered": "2026-10-28",
+   "status": "Claude research session; compiled and axiom-audited",
+   "source": [
+    "reports/REPORT_LATTICE_BAND.md"
+   ]
+  }
+ }
+}

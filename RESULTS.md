@@ -4,7 +4,7 @@ Every result below is a Lean 4 theorem that builds from source in this repositor
 
 **None of them proves that 196 is a Lychrel number.** Each result has an explicit scope; the scope text is the author's own description and says what is *not* claimed.
 
-Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, root modules, every endpoint).
+Machine-readable version: [`lean/registry.json`](lean/registry.json) and [`lean/registry.d/`](lean/registry.d/) (modules, root modules, every endpoint). Results added after 2026-10-28 are described in [`results/`](results/), one short note each; this file is assembled from them by the maintainer.
 
 ## Contents
 
