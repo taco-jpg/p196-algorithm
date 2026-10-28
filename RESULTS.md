@@ -16,7 +16,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 6. [Affine run words](#affine-run-words) (10)
 7. [Finite abstractions and transducers](#finite-abstractions-and-transducers) (7)
 8. [Sprint agent results (PRs #261–#287)](#sprint-agent-results-prs-261287) (7)
-9. [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified) (19)
+9. [Written research reports (not Lean-verified)](#written-research-reports-not-lean-verified) (20)
 
 ## The orbit of 196 and palindrome-prefix exclusions
 
@@ -382,7 +382,7 @@ Further (2026-10-25, four independent search toolkits in `calculation/neutral_ba
 evolves independently of the center (the flip condition forces `e2 = 1 - e1`) and any closed cycle is automatically
 a certificate (`Σ(u+v) = 1.5·Σgam`). In base 10 exterior cycles exist only at periods 11 (|B| = 29) and 12
 (|B| = 52–53) among periods ≤ 15; for these exteriors no center of any length closes in one or two periods (period 11, 22, and 24 for all three
-period-12 streams; `cauto_fast`, all trim patterns). Base-10 exteriors with periods 16 and above are not yet searched.
+period-12 streams; `cauto_fast`, all trim patterns). Update (2026-10-27, [reports/REPORT_DECIMAL_FRONTIER.md](reports/REPORT_DECIMAL_FRONTIER.md), computation): the exterior census is complete for periods ≤ 32 except 54 capped words, with no new exterior stream; a density theorem 2G ≤ p ≤ 4G and a mod-9 charge law (paper proofs) exclude one-overflow exteriors in base 10.
 
 ### CertificateToLychrel
 
@@ -3315,6 +3315,7 @@ Sprint agent 20 result; see sprint/agent-20/REPORT.md for what is and is NOT cla
 
 Paper proofs and computations by research agents (PRs #266–#286). **None of these is a Lean theorem**; their claims were spot-checked by independent computation on 2026-10-22, but they are not machine-verified. All are obstructions or tools; none gives a decimal Lychrel number.
 
+- [reports/REPORT_DECIMAL_FRONTIER.md](reports/REPORT_DECIMAL_FRONTIER.md) (2026-10-27): decimal frontier for neutral-band, absorbing-band and lattice certificates — exterior census p ≤ 32, density and mod-9 theorems, p11/p12 centre checks, the decimal p=8 lattice and its kinks; no decimal certificate
 - [reports/REPORT_214.md](reports/REPORT_214.md) (PR #268): Agent 214: periodic-band obstruction and restricted cycle classifications
 - [reports/REPORT_205.md](reports/REPORT_205.md) (PR #269): Agent 205: interface growth obstructions and exact cyclic guards
 - [reports/REPORT_215.md](reports/REPORT_215.md) (PR #270): Agent 215: global interface residues and affine run growth obstructions
