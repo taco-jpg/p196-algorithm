@@ -9,7 +9,7 @@ Machine-readable version: [`lean/registry.json`](lean/registry.json) (modules, r
 ## Contents
 
 1. [The orbit of 196 and palindrome-prefix exclusions](#the-orbit-of-196-and-palindrome-prefix-exclusions) (20)
-2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (4)
+2. [A conditional route to a Lychrel number](#a-conditional-route-to-a-lychrel-number) (6)
 3. [One reverse-and-add step: predecessors, fibers, palindromic outputs](#one-reverse-and-add-step-predecessors-fibers-palindromic-outputs) (33)
 4. [Carries: what carry sequences reveal and how they evolve](#carries-what-carry-sequences-reveal-and-how-they-evolve) (51)
 5. [Periodic (repeated-block) words and their quotient dynamics](#periodic-repeated-block-words-and-their-quotient-dynamics) (28)
@@ -449,6 +449,17 @@ The unchanged original checker rejects every certificate whose interface blocks 
 - Root modules: `P196.Agent213KnownBaseMechanisms.CenterRigidity`, `P196.Agent213KnownBaseMechanisms.KnownBases`.
 - 2 new modules, 20 checked endpoints; imports the existing `A120Certificate` soundness theorem.
 - Principal endpoints: `Agent213.center_rigidity`, `Agent213.center_base10_impossible`, `Agent213.KnownBases.lychrel11_template`, `Agent213.KnownBases.lychrel17_template`, `Agent213.KnownBases.lychrel26_template`, and the corresponding `exists_lychrel11`, `exists_lychrel17`, `exists_lychrel26`.
+
+### AbsorbingBand
+
+*Absorbing-band certificates and a base-13 Lychrel number*
+
+**LEAN-VERIFIED:** a second certificate format, proved sound for every base: templates `B ++ c^l ++ reverse B` whose single band value `c` (`c ≠ b-1`) is *absorbing* (the band's outgoing carry is `[b ≤ c]` for either incoming carry), so no centre block and no flip condition are needed. Two explicit 10-edge cycles in base 13 (band values 16/8, overflow word `1010010000`) give `∃ n, Lychrel 13 n` with the unchanged `Agent120.Neutral.Lychrel`. As far as Wikipedia/OEIS A060382 record, Lychrel existence was known only for bases 11, 17, 20, 26 and powers of two. Nothing about base 10 or 196 is claimed; computed searches found no decimal cycle in this format.
+
+- Root modules: `P196.AbsorbingBand.Base13`, `P196.AbsorbingBand.Base13b`, `P196.AbsorbingBand.Base13N0`, `P196.AbsorbingBand.Base13Check`, `P196.AbsorbingBand.Base13Neg`.
+- 8 new modules, 12 checked endpoints; imports the A120 core files unchanged.
+- Principal endpoints: `AbsorbingBand.lychrel_of_lcycle`, `AbsorbingBand.step_ltmpl`, `AbsorbingBand.not_isPal_ltmpl`, `AbsorbingBand.Base13.exists_lychrel13`, `AbsorbingBand.Base13.lychrel_N0`.
+- Report: [reports/REPORT_ABSORBING_BAND.md](reports/REPORT_ABSORBING_BAND.md).
 
 ## One reverse-and-add step: predecessors, fibers, palindromic outputs
 

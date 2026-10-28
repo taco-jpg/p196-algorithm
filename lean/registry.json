@@ -28096,6 +28096,49 @@
     "status": "compiled and axiom-audited, not independently reviewed",
     "source": []
    }
+  },
+  "AbsorbingBand": {
+   "id": "absorbing-band",
+   "title": "Absorbing-band certificates and a base-13 Lychrel number",
+   "scope": "A second certificate format, proved sound for every base: templates B ++ c^l ++ reverse B whose single band value c (c <= 2(b-1), c != b-1) is absorbing, i.e. the band's outgoing carry is the constant [b <= c] for either incoming carry, so no centre block and no flip condition are needed; the band value evolves as c -> 2((c + [b <= c]) mod b). A cycle of checked edges (lcycleOK) whose band-length bookkeeping never decreases yields a Lychrel template value for every band length at least minL (lychrel_of_lcycle). Instance: two explicit 10-edge cycles in base 13 (band values 16/8, overflow word 1010010000, |B| = 75 and 55) give exists_lychrel13 : ∃ n, Lychrel 13 n, with Lychrel the unchanged Agent120.Neutral.Lychrel, plus a 151-digit seed N0 one step before the template (lychrel_N0), direct kernel orbit checks and seven rejected corrupted certificates. As far as Wikipedia and OEIS A060382 record, Lychrel existence was previously known only for bases 11, 17, 20, 26 and powers of two; no literature search beyond that was done. Nothing is claimed about base 10 or 196: computed searches found no decimal cycle in this format (exteriors up to period 24).",
+   "roots": [
+    "P196.AbsorbingBand.Base13",
+    "P196.AbsorbingBand.Base13b",
+    "P196.AbsorbingBand.Base13N0",
+    "P196.AbsorbingBand.Base13Check",
+    "P196.AbsorbingBand.Base13Neg"
+   ],
+   "modules": [
+    "P196.AbsorbingBand.Absorb",
+    "P196.AbsorbingBand.Step",
+    "P196.AbsorbingBand.Cert",
+    "P196.AbsorbingBand.Base13",
+    "P196.AbsorbingBand.Base13b",
+    "P196.AbsorbingBand.Base13N0",
+    "P196.AbsorbingBand.Base13Check",
+    "P196.AbsorbingBand.Base13Neg"
+   ],
+   "endpoints": [
+    "AbsorbingBand.norm_replicate_absorb",
+    "AbsorbingBand.step_ltmpl",
+    "AbsorbingBand.not_isPal_ltmpl",
+    "AbsorbingBand.ltmpl_trim",
+    "AbsorbingBand.lychrel_of_lcycle",
+    "AbsorbingBand.Base13.cert_ok",
+    "AbsorbingBand.Base13.cert_minL",
+    "AbsorbingBand.Base13.lychrel_template",
+    "AbsorbingBand.Base13.exists_lychrel13",
+    "AbsorbingBand.Base13.lychrel_N0",
+    "AbsorbingBand.Base13b.cert_ok",
+    "AbsorbingBand.Base13b.exists_lychrel13"
+   ],
+   "origin": {
+    "registered": "2026-10-28",
+    "status": "Claude research session; compiled and axiom-audited twice from clean copies",
+    "source": [
+     "reports/REPORT_ABSORBING_BAND.md"
+    ]
+   }
   }
  }
 }
