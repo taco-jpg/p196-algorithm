@@ -1,0 +1,10 @@
+# E2P21M9AllTemporal
+
+**COMPUTED.** Complete all-temporal-period census of base-10, `g=001001010101001010101` (p=21), self-mirror absorbing **bulk** rows with primitive spatial period 9.
+Nine reflection axes, each `19^5=2,476,099` possible palindromic rows, give **22,284,891** exact finite-graph vertices, no cap. The 21-step row map preserves each axis because the stream has nine overflows.
+Each axis has exactly **35** recurrent cycles, of which **23** have primitive spatial period 9, and exactly one initially undefined neutral row. Every possible temporal multiplier is decided by following the complete functional graph.
+Primitive cycle counts over all axes by minimal multiplier `k`: `2:45,4:54,8:9,16:36,24:18,30:9,32:18,34:9,54:9`; no other `k` occurs. The corresponding axis-labelled recurrent *starts* are `90,216,72,576,432,270,576,306,486` (total **3,024**).
+Modulo spatial rotation and complete 21-step time shifts these are **23 equivalence families**, respectively `5,6,1,4,2,1,2,1,1` by `k`. The maximum minimal temporal period is **1,134** steps (`54×21`).
+The known eight-block limits (`90,216,72` primitive starts for `k=2,4,8`) are reproduced exactly. All **207** primitive axis-labelled cycles were independently replayed step by step against the cyclic-carry fixed-point implementation and moving reflection axis; an additional 200,000 deterministic differential controls passed.
+Reproduce: `g++ -O3 -std=c++17 calculation/decimal_frontier/lattice_formats/code/census_p21_m9_all_temporal.cpp -o /tmp/p21full`; run `/tmp/p21full --selftest`, then `/tmp/p21full /tmp/p21full.state /tmp/p21full.summary /tmp/p21full.cycles`; run `python3 calculation/decimal_frontier/lattice_formats/code/cluster_p21_m9_all_temporal.py /tmp/p21full.cycles`. A completed axis is locally checkpointed.
+**Not claimed:** root reachability of any exterior, a palindromeless integer reverse-add orbit, a centre, non-self-mirror lattices, spatial periods other than 9, or any base-10 Lychrel certificate. Root reachability remains **UNDECIDED**.
