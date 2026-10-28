@@ -1,0 +1,8 @@
+# Agent12TripleOnesRoot
+**PAPER PROOF.** For every integer `r>=1`, `k>=1`, the canonical first spatial column of the decimal position automaton under the fixed time-rooted overflow word `g=(111 0^r)^k` admits a temporally closed history iff `r=4`; the number is exactly `4^k` in that case.
+The leading triple ones force the initial coefficient 18 and first coefficients `(18,9,10,1)`, with free carries at the first and third ones. Each subsequent zero doubles the coefficient and optionally adds one, subject to an outgoing carry of zero.
+For `r=1,2,3` the next coefficient after one block is below 18, hence cannot start the next triple; for `r>=5` the fifth zero is already impossible; at `r=4` exactly four single-block returns occur with carries `(a,1,b,0,0,1,0)`, `a,b in {0,1}`.
+**COMPUTED independent controls:** a full-time integer DP agrees for `1<=r<=100`, `1<=k<=12` (1200 cases); a separate block enumerator checks `1<=r<=60`, `1<=k<=12` (720 cases). No state cap in these finite tests.
+Mandatory full exterior positive controls reproduced: base 9 `g=1100011000`, 956310 states / 7 nontrivial SCCs, m4 depth61; base 13 `g=1010010000`, 250302 states / 5 nontrivial SCCs, fixed-point depths55,75.
+**Reproduce:** `python3 calculation/decimal_frontier/triple_ones_root/root_theorem.py --rmax 60 --kmax 12`; `g++ -std=c++17 -O2 calculation/decimal_frontier/triple_ones_root/independent_root.cpp -o /tmp/agent12_root && /tmp/agent12_root 100 12`; compile/run `full_scc_controls.cpp` likewise.
+**UNDECIDED:** whether the exceptional `r=4` schedule permits a full reachable spatial SCC, a centre, or a Lychrel certificate. This theorem is only an exact first-column classification, not a decimal Lychrel result or Lean theorem.
