@@ -461,6 +461,17 @@ The unchanged original checker rejects every certificate whose interface blocks 
 - Principal endpoints: `AbsorbingBand.lychrel_of_lcycle`, `AbsorbingBand.step_ltmpl`, `AbsorbingBand.not_isPal_ltmpl`, `AbsorbingBand.Base13.exists_lychrel13`, `AbsorbingBand.Base13.lychrel_N0`.
 - Report: [reports/REPORT_ABSORBING_BAND.md](reports/REPORT_ABSORBING_BAND.md).
 
+### LatticeBand
+
+*Periodic-lattice absorbing-band certificates and a base-9 Lychrel number*
+
+**LEAN-VERIFIED:** a third certificate format, proved sound for every base: templates `B ++ band(W, l) ++ reverse B` whose period block `W` (here length 4) is absorbing (its outgoing carry is one constant for either incoming carry), so no centre block and no flip condition are needed. One reverse-and-add step maps a template to a template with new `B`, new `W`, band length `l + gm` and phase `(ρ + gm) mod |W|`. Two explicit 10-edge cycles in base 9 (`|B| = 61`, overflow word `1100011000`) give `∃ n, Lychrel 9 n` with the unchanged `Agent120.Neutral.Lychrel`. Base 9 is not among the bases (11, 17, 20, 26, powers of two) for which, as far as Wikipedia/OEIS A060382 record, Lychrel existence was known; no further literature search was done. Nothing about base 10 or 196 is claimed.
+
+- Root modules: `P196.LatticeBand.Base9`, `P196.LatticeBand.Base9b`.
+- 7 new modules, 15 checked endpoints; imports the A120 core files unchanged.
+- Principal endpoints: `LatticeBand.lychrel_of_lcycle`, `LatticeBand.step_tm`, `LatticeBand.not_isPal_tm`, `LatticeBand.Base9.exists_lychrel9`, `LatticeBand.Base9b.exists_lychrel9`.
+- Report: [reports/REPORT_LATTICE_BAND.md](reports/REPORT_LATTICE_BAND.md).
+
 ## One reverse-and-add step: predecessors, fibers, palindromic outputs
 
 Exact structure of a single ordinary decimal step: who can map to a given number, how many, and when the output is a palindrome.
