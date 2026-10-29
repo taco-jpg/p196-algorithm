@@ -1,5 +1,5 @@
 # FOCUS SWARM: rooted decimal W9/U3 regeneration
-**Coordinator:** agent-R37. **Snapshot:** 2026-10-28, 22:52 PDT session; issue [#474](https://github.com/taco-jpg/p196-algorithm/issues/474), through agent-R38 claim. **Status: UNDECIDED. No base-10 all-time certificate, no ALERT.**
+**Coordinator:** agent-R37. **Snapshot:** 2026-10-28, 22:52 PDT session; issue [#474](https://github.com/taco-jpg/p196-algorithm/issues/474), through agent-R38 claim and subsequent R02/R05/R07/R09/R10/R15/N05/N07 FEED updates. **Status: UNDECIDED. No base-10 all-time certificate, no ALERT.**
 
 ## Exact proof obligation (T*)
 
@@ -12,7 +12,7 @@ with a **palindromic coefficient centre** `C` (an asymmetric *physical carry/cen
 
 **Known length arithmetic:** 120 phases have 30 actual overflows, precisely `2*|U|*5=30` new coefficient positions. The stationary W9 count has zero gain, so *all* required replenishment is at U3. `sum(U)=27`, so the five-copy addition has zero mod-9 charge; the cut invariant from Q39 imposes the stronger root-compatible `Q(U)=0`, not mere residue agreement. Q04's published twelve rooted two-ended exterior gate labels are `(01,1,0,0,01,1,0,1,01,1,0,0)`. These are necessary interface conditions, not a solution.
 
-## New parity-complete mod-11 gate (PAPER PROOF, all widths; NOT a certificate)
+## Parity-complete mod-11 gate (PAPER PROOF, all widths; independently reported also by R07; NOT a certificate)
 
 Write `A(X)=sum_i (-1)^i X_i` for LSD-first alternating coefficient sum. For a palindromic `C` of **even** length, `A(C)=0` identically and `A(H C reverse(H))=0` **for every** `H`; hence mod 11 imposes **no** restriction on `J` or `U`. For a palindromic `C` of **odd** length, the published `A(B)=-11`, `A(W)=-22`, and odd lengths of W and U give
 `A(P) = (-1)^q [2A(J)+(-1)^|J|(2*epsilon_k*A(U)+(-1)^k*A(C))] (mod 11)`,
@@ -20,7 +20,7 @@ where `epsilon_k = k mod 2`. Requiring zero residue at *both* parities of indepe
 `A(U)=A(C) (mod 11)` and `2A(J)+(-1)^|J| A(C)=0 (mod 11)`.
 The mirror cancellation for even C and the displayed expansion for odd C prove this without any finite-width extrapolation. These are the **odd-centre** Q39 gates, not unconditional rules. Return of all independently large k requires the target phase-0 pairword to have residue zero: after the first actual reverse-and-add from the rooted word its leading coefficient 10 creates the even/odd digit-length alternation, and the subsequent even-digit step annihilates mod 11. More directly, the entire returning family must be divisible by 11 once the orbit has entered a zero-residue state.
 
-**Independent counterexample to unconditional pruning:** `J=[0], U=[9,0,18], C=[2,2]`; here `A(U)=27` and `A(C)=0`, so Q39's odd-centre test would reject it, but `A(P)=0` for every `q,k`. Actual canonical source digits exist and two independent ordinary-decimal engines match through all 120 steps for `q=k=20,40,80,160`. This is **not** a returning interface: first mismatch is `|B|+9q-22` on all four widths.
+**Independent counterexample to unconditional pruning (distinct from R07's published J=[5], C=[1,1] example):** `J=[0], U=[9,0,18], C=[2,2]`; here `A(U)=27` and `A(C)=0`, so Q39's odd-centre test would reject it, but `A(P)=0` for every `q,k`. Actual canonical source digits exist and two independent ordinary-decimal engines match through all 120 steps for `q=k=20,40,80,160`. This is **not** a returning interface: first mismatch is `|B|+9q-22` on all four widths.
 
 ## Independent finite diagnostic, explicitly not positive progress
 
@@ -47,6 +47,16 @@ The even-centre counterexample above also has the correct 120-bit clock and no r
 3. **Q01/Y18 216-step obstruction vs Q39 120-step route:** Y18 addresses 72k-step gain of **W9 with unchanged centre charge**. T* instead keeps W9 fixed and enlarges a different, charge-zero U3 band; the old 216-step exclusion cannot be transplanted. The 72-step Q07 and 360-step R15 lanes also have different temporal/seam closure obligations.
 4. **N09 or N02 local preserved root vs N08/N27 eroding seam:** apparent disagreement is not a contradiction until the **entire** W9 root and identical seam location are compared for the *same* J,U,C, temporal phase and step count. N02's 72-step `U=[12,6,9]` test is a different clock and does not close a 120-step inner interface.
 5. **Finite bulk recurrence vs all-time renewal:** correct `g`, surviving W cells and returning U bulk do not imply a complete physical seam/cap return. No current FEED, DONE, or ALERT establishes the missing implication.
+
+## Fresh FEED reconciliation after the initial coordinator snapshot
+
+- **R07 independently confirms the even-centre correction.** Its canonical even-C counterexample `J=[5], C=[1,1], U=[9,2,16]` obeys the 120-edge clock despite violating the odd-C-only congruences. Distinct from R37's algebraic proof/example; give both agents attribution rather than claiming exclusivity. This directly changes R01/R02/R22 search pruning: keep **even-centre** branches.
+- **R05 new mod-101 physical carry cocycle (reported, not audited here):** an additional weighted-carry obstruction beyond mod-9/11. Ask R05 and R33 to reconcile the exact `N_(t+2)` and `K_t` conventions before imposing it as a hard SAT filter.
+- **R09 emitter gate (reported, not audited here):** first non-9 junction coefficient determines the upper W9 carry independent of centre and U exponent, with an all-9 junction exception; R09's 960 true-integer checks suggest a fast pruning candidate. Have R04/R12 check both-sided port phases and source convention before global use.
+- **R02 stronger *finite* near miss:** a 19-coefficient J and U=(8,9,10) reach seam−9 at four widths but do not return. R11/R38 should use its concrete mismatched digits for active corrective packets, never as positive renewal.
+- **N07 centre partial closure:** two U3 rotations return five central coefficients and one neighboring U site, but fail the next port. This may seed R03 inverse meeting and R21 transducer-language work, with no full-cycle claim.
+- **R15 360-step phase obligation:** intermediate 72-edge centre residues change under `a=2→10→0→14→6→2`; a fixed intermediate C is incompatible with that proposed factorization. Phase-mutating centre states are a separate route from 120 fixed-C closure.
+- **N05 three-phase alternate target:** `U=[9,6,12]`, `C=[9,14,9]`, and `J=[4,6]→[10,12]→[16,18]→[4,6]` are proposed with `(q,k)→(q+1,k+2)` per 120-edge phase. Length accounting: `2*(9*1+3*2)=30`, so the overflow count fits. Over all three phases, `Δq=3,Δk=6` and `Γ=90`. The **actual 360-edge physically rooted full interface return is still unproved**, and this cannot be merged into fixed-q T* without a distinct proof. Assign as a live alternative to R15/R13, not a completed solution.
 
 ## Promotion and next update rules
 
