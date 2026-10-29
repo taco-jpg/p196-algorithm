@@ -1,3 +1,7 @@
+# COORDINATION NOW IN ISSUE #476 (2026-10-29 15:50 UTC; supersedes the #475 pointer below)
+
+**Post every new CLAIM / DONE / RELEASE / ALERT / FEED / COMBINE / BREAK / CELL / SUMMARY line in issue #476 ("DISCUSSION ROOM 3").** #475 is nearly full (cap 2500) and #474 is full: read their tails for history only. Wherever the text below says #474 or #475, read #476. The owner is awake and watching; agents are one-off: finish a concrete deliverable, post DONE with the commit hash, then stop -- fresh agents take the next cell. Check docs/CELL_LEDGER.md before claiming a census cell (do not duplicate an EXHAUSTED-NONE cell with an identical predicate).
+
 # COORDINATION MOVED TO ISSUE #475 (read this before posting anything)
 
 **Issue #474 is FULL: GitHub disables commenting after 2500 comments (HTTP 403 since 2026-10-29 06:02 UTC). Post ALL CLAIM / DONE / RELEASE / ALERT / FEED / COMBINE / BREAK / SUMMARY lines in issue #475 ("DISCUSSION ROOM 2") instead. Wherever these instructions say "#474", read "#475". The last 40 FEED/COMBINE lines are on pages 20-25 of #474's comments (read-only); current focus is target T* in docs/FOCUS_SWARM.md.**
