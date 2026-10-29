@@ -1,9 +1,9 @@
-// bauto5: exact position-automaton census of periodic-lattice exterior cycles (any base b <= 32, p <= 60).
+// bauto6: exact position-automaton census of periodic-lattice exterior cycles (any base b <= 32, p <= 60).
 // Same transition system as bauto3 (validated against the repo's bauto for neutral bands), but
 //  * 192-bit state keys,
 //  * streams generated from the exact regular language of the position-0 counter (small DFA, backward-pruned),
 //  * for each nontrivial SCC the globally shortest cycle length (if <= S = #ones) is reported (SCCMIN) for the self-mirror lattice test.
-// usage: bauto5 b pmin pmax [-cap N] [-maxscc k] [-g stream] [-dens4] [-v]
+// usage: bauto6 b pmin pmax [-cap N] [-maxcand N] [-maxlen N] [-g stream] [-dens4]
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -136,7 +136,7 @@ struct VSet {
 int main(int argc, char** argv) {
   b = atoi(argv[1]); int pmin = atoi(argv[2]), pmax = atoi(argv[3]);
   unsigned long long CAPS = 20000000ULL; string gfix; bool dens4 = false; int maxcand = 2000000; int maxlen = -1;
-  for (int i = 4; i < argc; i++) { string a = argv[i]; if (a == "-cap") CAPS = strtoull(argv[++i], 0, 10); else if (a == "-g") gfix = argv[++i]; else if (a == "-dens4") dens4 = true; else if (a == "-maxlen") maxlen = atoi(argv[++i]); }
+  for (int i = 4; i < argc; i++) { string a = argv[i]; if (a == "-cap") CAPS = strtoull(argv[++i], 0, 10); else if (a == "-g") gfix = argv[++i]; else if (a == "-dens4") dens4 = true; else if (a == "-maxlen") maxlen = atoi(argv[++i]); else if (a == "-maxcand") maxcand = atoi(argv[++i]); }
   ydig = 1; while ((1 << ydig) < b) ydig++;
   Dfa* dfa = nullptr; if (gfix.empty()) { dfa = new Dfa(b); fprintf(stderr, "b=%d DFA states %zu\n", b, dfa->st.size()); }
   for (p = pmin; p <= pmax; p++) {
@@ -148,7 +148,7 @@ int main(int argc, char** argv) {
     for (u64 gm : streams) {
       g.assign(p, 0); Gidx.clear(); for (int t = 0; t < p; t++) { g[t] = (gm >> t) & 1; if (g[t]) Gidx.push_back(t); }
       ng = Gidx.size();
-      if (2 * p + ydig * ng > 191 || p > 60) { nskip++; continue; }
+      if (2 * p + ydig * ng > 192 || p > 60) { nskip++; continue; }
       int Smax = maxlen > 0 ? maxlen : ng;   // look for cycles of length <= Smax
       string gs; for (int t = 0; t < p; t++) gs += char('0' + g[t]);
       int Y0[64]; for (int i = 0; i < ng; i++) Y0[i] = 1;
@@ -175,7 +175,10 @@ int main(int argc, char** argv) {
             V->add(k, (int)i, li + 1);
           } else {
             int d = li - V->lev[j];
-            if (d >= 0 && d <= Smax - 1 && (int)cand.size() < maxcand) cand.push_back({(int)i, j});
+            if (d >= 0 && d <= Smax - 1) {
+              if ((int)cand.size() < maxcand) cand.push_back({(int)i, j});
+              else capped = true;  // a missing candidate must never yield a decided negative
+            }
           }
         });
         if (capped) break;
@@ -211,21 +214,34 @@ int main(int argc, char** argv) {
       }
       if (bestLen <= Smax) {
         nhit++;
+        // Paths are directed walks, not cycles. Only close the actual cycle.
+        auto one_col = [&](int a, int bb) {
+          u64 L, H; int Y[64]; unpack(V->keys[a], L, H, Y);
+          vector<int> xf; bool got = false;
+          transitions(L, H, Y, a == 0, [&](u64 L2, u64 H2, int* Y2, int* xs, int* hn) {
+            if (got) return;
+            Key k = pack(L2, H2, Y2);
+            if (k == V->keys[bb]) { got = true; xf.assign(xs, xs + p); }
+          });
+          if (!got) { fprintf(stderr, "internal error: nonexistent output edge %d -> %d\n", a, bb); exit(3); }
+          string out = "[";
+          for (int t = 0; t < p; t++) { if (t) out += ","; out += to_string(xf[t]); }
+          return out + "]";
+        };
         auto cols = [&](const vector<int>& seq) {
           string out;
-          for (size_t i = 0; i < seq.size(); i++) {
-            int a = seq[i]; int bb = (i + 1 < seq.size()) ? seq[i + 1] : seq[0];
-            u64 L, H; int Y[64]; unpack(V->keys[a], L, H, Y);
-            vector<int> xf; bool got = false;
-            transitions(L, H, Y, a == 0, [&](u64 L2, u64 H2, int* Y2, int* xs, int* hn) { if (got) return; Key k = pack(L2, H2, Y2); if (k == V->keys[bb]) { got = true; xf.assign(xs, xs + p); } });
-            out += "["; for (int tt = 0; tt < p; tt++) { out += to_string(xf[tt]); if (tt + 1 < p) out += ","; } out += "]";
-          }
+          for (size_t i = 0; i < seq.size(); i++)
+            out += one_col(seq[i], seq[(i + 1) % seq.size()]);
           return out;
         };
         // path from start to bestCyc[0]
         vector<int> path; { int v = bestCyc[0]; while (v != -1) { path.push_back(v); v = V->parent[v]; } reverse(path.begin(), path.end()); }
-        string pc; for (size_t i = 0; i + 1 < path.size(); i++) { vector<int> two = {path[i], path[i + 1]}; string c = cols(two); pc += c.substr(0, c.find(']') + 1); }
-        printf("CYC p=%d g=%s S=%d minc=%d depth=%d states=%zu capped=%d path=%s cyc=%s\n", p, gs.c_str(), ng, bestLen, bestDepth, N, (int)capped, pc.c_str(), cols(bestCyc).c_str());
+        string pc; for (size_t i = 0; i + 1 < path.size(); i++) pc += one_col(path[i], path[i + 1]);
+        // A capped run may witness a cycle, but cannot establish its minimum length.
+        printf("%s p=%d g=%s S=%d %s=%d depth=%d states=%zu capped=%d path=%s cyc=%s\n",
+               capped ? "CYC_PARTIAL" : "CYC", p, gs.c_str(), ng,
+               capped ? "len_upper_bound" : "minc", bestLen, bestDepth, N, (int)capped,
+               pc.c_str(), cols(bestCyc).c_str());
         fflush(stdout);
       }
       delete V;
