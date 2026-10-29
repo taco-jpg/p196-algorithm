@@ -39,14 +39,30 @@ struct Big9{
  string digits() const{string out=to_string(limbs.back());char buf[10];for(int i=(int)limbs.size()-2;i>=0;i--){uint32_t v=limbs[i];for(int k=8;k>=0;k--){buf[k]=char('0'+(v%10));v/=10;}out.append(buf,9);}return out;}
  Big9& operator+=(const Big9 &other){size_t n=max(limbs.size(),other.limbs.size());limbs.resize(n,0);uint64_t carry=0;for(size_t i=0;i<n;i++){uint64_t s=carry+limbs[i]+(i<other.limbs.size()?other.limbs[i]:0);limbs[i]=s%BASE;carry=s/BASE;}if(carry)limbs.push_back((uint32_t)carry);return *this;}
 };
-int main(int argc,char** argv){int q=argc>1?atoi(argv[1]):300,k=argc>2?atoi(argv[2]):4200,T=argc>3?atoi(argv[3]):20000,interval=argc>4?atoi(argv[4]):1000;auto rows=cycle();Word P=make_P(q,k),d=realize(P);int idx=39+20*q;const int end=idx+10*k;bool enough=(idx+T+3<end-T-3);if(!enough)bad("empty guarded island");if(pairs(d)!=P)bad("seed realization");Big9 N(tostr(d));
+int main(int argc,char** argv){int q=argc>1?atoi(argv[1]):300,k=argc>2?atoi(argv[2]):4200,T=argc>3?atoi(argv[3]):20000,interval=argc>4?atoi(argv[4]):1000;auto rows=cycle();Word P=make_P(q,k),d=realize(P);int idx=39+20*q;const int end=idx+10*k;
+#ifdef W30_ASYM_GUARD
+bool enough=(idx+T+3<end-T/2-3);
+#else
+bool enough=(idx+T+3<end-T-3);
+
+#endif
+if(!enough)bad("empty guarded island");if(pairs(d)!=P)bad("seed realization");Big9 N(tostr(d));
 #ifdef W30_GMP
 mpz_class GMP_N(tostr(d),10);
 #endif
 int odd=0,gammaCount=0;cout<<"start n="<<d.size()<<" q="<<q<<" k="<<k<<" T="<<T<<" initial="<<summary(d)<<"\n";
 for(int t=0;t<=T;t++){
   // Compare EVERY coefficient in a two-sided light-cone-protected island, every time.
-  int lo=idx+t+2,hi=end-t-2;if(lo>=hi)bad("guard depleted");int mismatches=0,oddProtected=0;for(int j=lo;j<hi;j++){int expect=rows[t%40][(j-idx)%5];if(P[j]!=expect)mismatches++;if(P[j]%2)oddProtected++;}
+  int lo=idx+t+2;
+#ifdef W30_ASYM_GUARD
+  // Reflection locking converts the high boundary to n_t-lo,
+  // where n_t=n_0+ceil(t/2) for the verified alternating overflow word.
+  int hi=end-t/2-2;
+#else
+  int hi=end-t-2;
+
+#endif
+if(lo>=hi)bad("guard depleted");int mismatches=0,oddProtected=0;for(int j=lo;j<hi;j++){int expect=rows[t%40][(j-idx)%5];if(P[j]!=expect)mismatches++;if(P[j]%2)oddProtected++;}
   if(mismatches)bad("island carrier shape t="+to_string(t)+" bad="+to_string(mismatches));
   if(!oddProtected)bad("no guarded odd witness at t="+to_string(t));
   // Full arithmetic check: GMP big integer -> exact decimal string, compare ALL digits.
@@ -64,7 +80,7 @@ if(s!=GMP_N.get_str(10))bad("GMP mismatch at t="+to_string(t));
 #ifdef W30_GMP
 string g_str=GMP_N.get_str(10);reverse(g_str.begin(),g_str.end());mpz_class GR(g_str,10);GMP_N+=GR;
 #endif
-  auto [nextD,g]=digit_step(d);auto [nextP,g2]=pair_step(P);if(g!=g2)bad("carry disagreement");if(g!=(t%2==0))bad("overflow schedule t="+to_string(t));gammaCount+=g;
+  auto [nextD,g]=digit_step(d);auto [nextP,g2]=pair_step(P);if(g!=g2)bad("carry disagreement");if(g!=(t%2==0))bad("overflow schedule t="+to_string(t)+" expected="+to_string(int(t%2==0))+" observed="+to_string(g));gammaCount+=g;
   P.swap(nextP);d.swap(nextD);
 }
 cout<<"PASS "<<T<<" independent base-1e9 bigint and decimal-digit steps, phase-40 five-site carrier, full pairword every step, zero palindromes\n";
