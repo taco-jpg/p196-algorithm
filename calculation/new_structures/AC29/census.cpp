@@ -2,6 +2,7 @@
 #include <array>
 #include <algorithm>
 #include <iostream>
+#include <string>
 #include <map>
 #include <cstdint>
 #include <cstdlib>
@@ -23,12 +24,12 @@ int main(int argc,char**argv){
    if(odd&&mod(A,11)!=6){skipped++;continue;}
    int C[3]={4,14,4},nc=odd?3:2;if(!odd)C[1]=4;
    // H=B8 ++ W8^14 ++ J ++ U^100; P=H ++ C ++ reverse(H).
-   int H[700],N=0;
+   int H[10000],N=0;
    for(int x:B)H[N++]=x;
    for(int t=0;t<14;t++)for(int x:W)H[N++]=x;
    for(int x:J)H[N++]=x;
    for(int t=0;t<100;t++)for(int x:u)H[N++]=x;
-   int p[1200],d[1200],temp[1200],T[1200],L=0;
+   int p[20000],d[20000],temp[20000],T[20000],L=0;
    for(int i=0;i<N;i++)p[L++]=H[i];
    for(int i=0;i<nc;i++)p[L++]=C[i];
    for(int i=N-1;i>=0;i--)p[L++]=H[i];
