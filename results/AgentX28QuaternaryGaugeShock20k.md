@@ -1,0 +1,11 @@
+# AgentX28QuaternaryGaugeShock20k
+- **COMPUTED, finite-horizon, all-parameter:** every canonical decimal `N_r=30(9^r)69(0^r)`, **all integer `r>=12062`**, is nonpalindromic at every state `t=0..20000` under ordinary reverse-and-add.
+- **PAPER PROOF (method):** the uniformly guarded affine run-length carry transducer is sound for *all* `r>=R`; carry-gauge `b=4,k=3,B=10` specializes the already published base-change theorem in `AgentX28BinaryGaugeAvalanche20k`.
+- **Distinct positive mechanism:** two reflected pair-coefficient-9 bands persist through `t=17`, then two pair-coefficient-0 bands persist from `t=18` through `t=20000`, without any bounded periodic centre.
+- Symbolic run: 312,979,902 pair-segment transitions, no invalid affine branch, 20,001 all-parameter nonpalindrome checks; minimum band lengths 12,054 (q9) and 3 (q0).
+- Smallest certified seed: **24,128 digits** at `r=12062`; independent full GMP/digit-array replay 20,000 additions, final **32,420 digits**, FNV64 `7ab87e9f1db231f0` (entire canonical MSD-first decimal word).
+- A second seed `r=12063` passes 1,200 independent additions. Uniform RLE guards stop at `t=20002` for `r=12062`; this is **not a palindrome or no-go claim**.
+- Reproduce: `g++ -O3 -std=c++17 calculation/new_structures/agent-X28/quaternary_affine.cpp -o /tmp/qaff && /tmp/qaff 12062 20000`.
+- Reproduce independently: `g++ -O3 -std=c++17 calculation/new_structures/agent-X28/quaternary_replay.cpp -lgmpxx -lgmp -o /tmp/qgmp && /tmp/qgmp 12062 20000`.
+- Report: `reports/AgentX28QuaternaryGaugeShock20k.md`; compact logs `calculation/new_structures/agent-X28/quaternary_{affine,replay}_12062_20000.txt`.
+- No claim about time `>20000`, base-10 Lychrel existence, 196, or Lean verification.
