@@ -1,0 +1,10 @@
+# AgentX10TransparentOverlapFormat
+- **PAPER PROOF**: a finite affine-support overlap-capacity cycle format is sound for base-10 reverse-and-add. Each digit position may contain multiple packet coefficients provided their sum is at most 9; reversing the aggregate distributes linearly across the packets, and per-packet carrying preserves integer value. Exact target capacity, nonpalindrome witnesses, and parameter-invariant return imply an infinite nonpalindromic orbit (conditional criterion; no decimal cycle constructed).
+- Computed positive decimal crossing: `N(q)=88*10^(2q+4)+78*10^q+75`, for EVERY integer `q>=11`, follows 13 exact symbolic packet steps and remains nonpalindromic at all states `t=0..13`.
+- Sheet exponents are `0,q,q+4,2q+4`. The two distinct middle packets genuinely overlap at `t=4..13` (10 states) with up to 4 occupied collision sites and maximum aggregate digit 9.
+- At `t=14` the formal packet successor violates the capacity guard at four decimal positions (maximum aggregate 14): first failure of this *format*, not proof of a palindrome or failure of actual arithmetic.
+- Universal parameter bound `q>=11` is derived exactly from all external packet separation constraints, without finite-q sampling. Symbolic per-packet updates plus aggregate capacity and exposed-outer-pair asymmetry are checked at every state.
+- Independent C++ schoolbook decimal digits match the COMPLETE symbolic word at each of the 14 inspected states for q=11,12,100,600; independent Python big-integer additions and nonpalindrome controls also pass.
+- Code/data: `calculation/new_structures/agent-X10/{overlap_capacity.cpp,overlap_capacity_check.txt,overlap_bigint.py,overlap_reproduce.sh}`; report: `reports/AgentX10TransparentOverlapFormat.md`.
+- Reproduce: `bash calculation/new_structures/agent-X10/overlap_reproduce.sh` (g++, Python3).
+- **NOT CLAIMED**: a closed base-10 certificate, an infinite Lychrel orbit, a Lean formalization, or any conclusion for 196. This complements, rather than extends to infinity, the earlier X10 20,000-step disjoint-sheet result.
