@@ -1,0 +1,3 @@
+# AC19 notebook
+
+2026-10-29: Read AGENTS, OPEN_PROBLEMS, FOCUS_SWARM, CELL_LEDGER, audits and B10/W10 lattice rows; registered CLAIM at issue #476. Checked exact 120-step paired carry-cone semantics with independent Python bigint and schoolbook digit-array updates, 7,500 random property tests, 300 independent histogram comparisons; posted BREAK identifying incorrect AB19 coefficient-10 claim. Completed 5 disjoint C++ search blocks of 823,080 each (4,115,400 total); no W9 restorations, no undecided cases; printed full reproducibility histogram in REPORT.md. No claim of a global all-time base-10 certificate.
