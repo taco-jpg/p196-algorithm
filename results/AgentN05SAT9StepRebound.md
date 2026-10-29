@@ -1,0 +1,7 @@
+# AgentN05SAT9StepRebound
+**COMPUTED.** Constructive phase-7 decimal period-12/m9 defect packets **coalesce** and perform a nine-step collapse/rebound moving-front excursion: two different coefficient sources [17,8,0,2] and [17,3,10,6] near x=1008 have **identical full pairwords at step 2**, hence **identical full positive decimal integers at step 3**.
+The common packet initially expands to five occupied sites (steps 3..5), collapses to three at offsets +3..+5 (steps 6..7), then rebounds to four at +1..+4 (steps 8..9). This is non-injective, non-monotone finite transport, not a recurrent glider.
+SAT with only the first two source coefficients pinned synthesizes the first source's remaining coefficients. Ordinary independent integer replay of both 6072-digit seeds proves the coalescence, and 1000 steps have zero palindrome and 250 length overflows; exact local pairwords match.
+The support grows beyond four cells again at step 10. No infinite Lychrel certificate or claim about 196.
+Code: `calculation/new_structures/agent-N05/sat_h9_rebound.py` and `integer_collision.py`; data: `sat_h9_rebound.json`; report: `reports/AgentN05SAT9StepRebound.md`.
+Reproduce: `python3 calculation/new_structures/agent-N05/sat_h9_rebound.py`; `python3 calculation/new_structures/agent-N05/integer_collision.py`; `python3 calculation/new_structures/agent-N05/phase_packet.py --steps 1000 --band 3000 --x 1008 --phase 7 --patch 17,8,0,2`.
