@@ -1,0 +1,11 @@
+# N06CoMovingGlider161
+- Label: COMPUTED. Exact scope: one decimal orbit N_225, times 2000..19810, no infinite-time claim.
+- Define F(t) as the longest source SCC pairword prefix matched by the orbit. Let M(t) be its next 161 pair coefficients, starting at F(t).
+- For every integer t=2000..19722 inclusive (17,723 tests), F(t+88)=F(t)-20 and M(t+88)=M(t); minimum full matched motif length 161.
+- First violation at t=19723: F(t)=57, F(t+88)=37, matched motif length 0. Front has reached the nonperiodic 39-site entrance.
+- This is an explicit finite co-moving 161-cell period-88 glider, a stricter structural observation than the F(t) translation alone in N06RenormBufferedP8.
+- Checked independently using arbitrary-precision GMP decimal integer arithmetic, complete pairwords at every sampled step, and original vector source control.
+- Reproduce: bash calculation/new_structures/agent-N06/glider/run_glider.sh
+- Sources: calculation/new_structures/agent-N06/glider/{gmp_glider.cpp,run_glider.sh,glider_observations.json}
+- Full report: reports/N06CoMovingGlider161.md
+- Not claimed: a stable infinite glider, a closed central restart rule, a decimal Lychrel certificate, or a theorem about 196.
