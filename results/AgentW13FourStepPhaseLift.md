@@ -1,0 +1,8 @@
+# AgentW13FourStepPhaseLift
+- **PAPER PROOF:** A second, phase-shifted rooted decimal p8/m20 eraser: at temporal phase 1, replace any separated occurrence of pairword [3,2,7] by [5,16,0] or [1,6,5]. Both are genuine mod-9-changing defects; both remain localized and join the unmodified pairword after exactly **four** steps, reaching the same ordinary decimal integer after five steps.
+- **PAPER PROOF:** For every M>=1 and q>=30+10M, replacing the triples at offsets 39+20(30+10m)+10 for m=0..M-1 gives 3^M distinct canonical positive decimal starting integers with identical fifth reverse-and-add iterates, by four exact two-ended non-9 carry-reset boundary contracts.
+- The first local step sends the two replacements to phase-2 triples [12,12,2] and [3,12,11] (both belong to W13's eight three-step sinks). They become the *same defective pairword* after two steps, while the original joins after four; this is a two-level preimage funnel, not a stationary glider.
+- **COMPUTED:** All 27/27 q65,M3 options verified by coefficient arithmetic; 36 independently checked Python big-integer and digit-vector controls through integer step 5.
+- **COMPUTED:** For q=300,M=25, ordinary digit-array and independent GMP reverse-add agree at every t=0..20,000. All states are nonpalindromic, with a 39-column odd exterior and 60 complete phase-8/period-20 bands. Length 12,080->22,080 digits; 10,000 overflows; final FNV64 6268b4257ba99e6f.
+- **NOT CLAIMED:** an infinite decimal Lychrel orbit or any regenerated exterior band, a Lean certificate, or closure of a temporal renewal cycle.
+- Reproduce: sh calculation/new_structures/agent-W13/run_phase1.sh; sources and data in that directory; full soundness argument in reports/AgentW13FourStepPhaseLift.md.
