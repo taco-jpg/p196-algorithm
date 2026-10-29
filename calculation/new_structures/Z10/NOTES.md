@@ -8,3 +8,13 @@
 - Independent replay_controls.py uses Python arbitrary-precision integers and the literal operation n + reverse10(n). Its first-64-J histograms match the bit-sliced engine exactly for both U rotations. Thirty additional bigint controls (two seam examples per U, q=14/20/40/80/160 with k=100 at q=14 and k=4q otherwise) all reproduce the rooted overflow clock through 240 steps, the reported cut offsets, no full 120/240 template return, and no palindrome.
 - Existing T12 cut/insertion theorem lifts failure of the reference uniform-return obligation to all independent q>=14,k>=100 for each fixed J,C,U. Its reset-cone bounds give C-independence of the W9-prefix result at the reference: 300 U coefficients minus at most 152 junction-side and 122 centre-side coefficients leaves 26 protected coefficients.
 - This is a scoped negative result. It is not a decimal Lychrel nonexistence proof, and it does not claim every individual width fails; it excludes the required uniform all-width fixed-seam return for the two U rotations in this slice.
+
+
+## 2026-10-29 — phase-0 J5 slice 11/12
+
+- Claimed neighboring route in #475 comment 6495138761: ranks 11 and 23 in the fixed lexicographic ordering, U=(9,0,18) and (12,6,9), all 19^5 junctions per U.
+- Compiled bit-sliced scan exhausted 2,476,099 J words per U at (q,k)=(14,100). All 2,476,099 per U passed the rooted 120-step overflow clock; 0 per U restored the required B34 W9^14 prefix. The mismatch histograms partition the entire candidate domain.
+- No R02/V48 MDD prefilter was used; the compiled scan directly covered all junctions. No candidate survives the necessary first-epoch prefix gate, so the second-epoch template check has no candidates to advance.
+- Independent arbitrary-precision decimal replay checked 40 controls (4 J values per U at q=14,20,40,80,160; k=100,100,200,400,800 respectively). All controls matched the 120/240 overflow clocks, all failed the full template return, and none reached a palindrome through step 240. At q=14 the independent first-mismatch offsets match the bit-sliced scan for all chosen controls.
+- Independent first-64-J big-integer histograms exactly match the C++ bit-sliced histograms for both U rotations: U=(9,0,18): -23:29,-22:35; U=(12,6,9): -23:27,-22:37.
+- The existing T12Rooted120CutPumping theorem plus the 26-coefficient protected interval lifts the reference prefix failure to the required uniform all-width fixed-J/C return exclusion for this U slice. This is a scoped negative result, not a global decimal Lychrel nonexistence theorem.

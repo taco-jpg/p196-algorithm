@@ -32,3 +32,28 @@ From repository root, run:
     python3 calculation/new_structures/Z10/replay_controls.py --mode all --out calculation/new_structures/Z10/bigint_controls.json
 
 The two-epoch check is correctly skipped because no candidate survives the necessary first-epoch W9-prefix gate. This is a scoped fixed-seam obstruction, not a global decimal Lychrel nonexistence result. The commit hash is recorded in the accompanying #475 DONE line.
+
+
+## Slice 11/12 — phase-0 J5 (2026-10-29)
+
+**Status: EXHAUSTED-NONE. Label: COMPUTED, using the existing T12 PAPER PROOF for the all-width reduction.**
+
+Scope: canonical rooted decimal p12/m9 phase 0, |J|=5, all J in {0,...,18}^5, and U ranks 11 and 23 in the lexicographically sorted 30 charge-zero rotations: U=(9,0,18),(12,6,9). Each U has 19^5=2,476,099 cases, combined 4,952,198. Reference exponents q=14,k=100 and representative palindromic centre C=[2].
+
+The bit-sliced scan was compiled and run directly over every J. For each U, clock_survivors=2,476,099, W9_prefix_survivors=0, and the first-mismatch histogram total is 2,476,099. No MDD prefilter was used. The complete histograms are in `scan_slice11_output.txt`:
+
+- U=(9,0,18): -25:27,893; -24:58,828; -23:1,160,751; -22:983,301; -21:112,943; -20:113,596; -19:8,332; -18:8,576; -16:861; -15:798; -14:122; -13:75; -12:23.
+- U=(12,6,9): -25:27,794; -24:58,557; -23:1,161,664; -22:983,641; -21:113,440; -20:113,328; -19:7,928; -18:8,083; -16:835; -15:701; -14:63; -13:37; -12:10; -11:18.
+
+The mismatch histogram accounts for the whole domain for each U; all mismatches lie 11–25 coefficients before the W9|J cut. The independent first-64-J arbitrary-precision histogram matches the bit-sliced output exactly for both U words. The independent checker also ran 40 genuine-integer controls at q=20,40,80,160 with k scaled as 5q (and q=14,k=100): all exact 120/240 clocks matched; no control returned the full template at either checkpoint, and no palindrome occurred through 240 steps. See `bigint_controls_slice11.tsv`.
+
+The existing `results/T12Rooted120CutPumping.md` theorem says a fixed J,C,U uniform return for all q>=14,k>=100 is equivalent to the reference return at (14,100). The reset-cone bounds give a 26-coefficient protected interval in U^100 (300-152-122), so the tested B34 W9^14 prefix is independent of every admissible finite palindromic centre. Since the necessary prefix is wrong for every J, no fixed-seam member of this U slice can be the required all-width 120-step return. This is not a global nonexistence proof for decimal Lychrel numbers.
+
+Reproduce from repository root:
+
+```sh
+g++ -O3 -std=c++17 -Wall -Wextra -o /tmp/z10slice11 calculation/new_structures/Z10/scan_slice11.cpp
+/tmp/z10slice11 --lattice calculation/new_structures/Z10/input_lat_p12m9.txt > calculation/new_structures/Z10/scan_slice11_output.txt
+/tmp/z10slice11 --lattice calculation/new_structures/Z10/input_lat_p12m9.txt --limit 64 > calculation/new_structures/Z10/scan_slice11_first64.txt
+python3 calculation/new_structures/Z10/replay_controls_slice11.py --lattice calculation/new_structures/Z10/input_lat_p12m9.txt --out calculation/new_structures/Z10/bigint_controls_slice11.json
+```
