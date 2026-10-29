@@ -24,12 +24,15 @@ int main(int argc,char**argv) {
    if(odd){odd_all++;total_odd+=count_odd;}
    else {even_all++;if(first_no_odd<0)first_no_odd=t;
          cout<<"EVENONLY step="<<t<<" len="<<n<<"\n";}
+   // Both addends must use the original source state, not partially overwritten digits.
+   vector<unsigned char> next(n);
    int carry=0;
    for(int i=0;i<n;i++){
       int z=d[i]+d[n-1-i]+carry;
-      d[i]=z%10;carry=z/10;
+      next[i]=z%10;carry=z/10;
    }
-   if(carry){d.push_back(carry);inc++;}
+   if(carry){next.push_back(carry);inc++;}
+   d.swap(next);
    if(t==0||t==1||t==2||t==10||t==100||t==999||t==steps-1)
       cout<<"STEP "<<t<<" len="<<n<<" next_len="<<d.size()
           <<" odd_pairs="<<count_odd<<" gamma="<<carry<<"\n";

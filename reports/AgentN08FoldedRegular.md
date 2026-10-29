@@ -34,8 +34,15 @@ one extra leading digit and shifts every upper partner by one place.
 At the terminal E(None), require a=z. Emit E(None) when gamma=0
 or E(2h) when gamma=1. At E(pmid), require
 floor((pmid+a)/b)=z, put mid=(pmid+a) mod b, and emit E(2mid)
-when gamma=0 or the extra ordinary pair symbol (mid+h) then E(None)
-when gamma=1. There are finitely many states and at most one output
+when gamma=0. When gamma=1 and at least one outer pair was read,
+emit the extra ordinary pair symbol (mid+h) then E(None).
+**Special case (one source digit, no outer pair):** when gamma=1
+and h is the initial sentinel, emit (mid+1) then E(None). This is
+necessary because the new leading 1 pairs with the only normalized
+digit. For b=10 and source 7, P=[14], the exact output pairword is
+[5,5] (successor 14); the previous transducer wrongly rejected this
+valid edge. This corrects general transducer totality for n=1, not a
+failure of the odd-pair-guarded certificate (one-digit pairwords are even). There are finitely many states and at most one output
 symbol beyond input length. Every successful path is a valid
 normalisation, and for a given valid P exactly one of the two
 gamma-transducers has a successful path, with one resulting word.
@@ -85,10 +92,13 @@ Python-bigint script checks the exact regular-language phase at
 ## Decimal exploratory test (COMPUTED, not a certificate)
 
 A separate C++ implementation uses only ordinary decimal digits.
-Seed 196 survives all 20,000 checked states, final length 8,211.
-Pairwords containing an odd coefficient occur at 19,998 states;
-the only failures of the odd guard occur at steps 1 and 7.
-The measured overflow count is 8,208; no palindrome encountered.
+Seed 196 has no palindrome among 20,000 checked source states;
+after 20,000 additions the final length is 8,296. Pairwords containing
+an odd coefficient occur at 19,997 states; the only failures of this
+particular odd guard are steps 8,13,19. The genuine overflow count
+is 8,293. The previous reported 8,211 / 19,998 / 1,7 / 8,208 values
+were invalid: the decimal C++ driver overwrote low digits before reading
+their mirrored source partners. It now uses a separate output buffer.
 These finite observations do NOT imply 196 is Lychrel and are not
 an exclusion of any candidate family. The next search should infer a
 **carry-coupled DFA invariant with a transient entry prefix**, not
@@ -98,9 +108,10 @@ force a naive single-letter parity guard onto the entire orbit.
 
     sh calculation/new_structures/agent-N08/run.sh
 
-The transducer script checks 3,230 fully enumerated palindromic words
-across bases 2,3,4,10,13 and 20,000 seeded random cases (bases 2..40,
-lengths 2..180) against its independent ordinary digit normalizer,
+The transducer script checks the original 3,230 fully enumerated
+palindromic words across bases 2,3,4,10,13; every canonical one-digit
+input in bases 2..40 (including overflow); and 20,000 seeded random cases
+(bases 2..40, lengths 2..180) against its independent ordinary digit normalizer,
 including rejection of the incorrect gamma. The regular product
 checker exhausts all reachable finite states. The bigint and C++
 scripts do not import the transducer. Neither the repo-wide

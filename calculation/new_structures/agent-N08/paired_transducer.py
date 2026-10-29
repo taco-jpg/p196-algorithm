@@ -49,6 +49,7 @@ def terminals(b,gamma,state,centre):
         middle=(centre+low_c)%b
         if gamma==0:yield ((),2*middle)
         elif prev_upper>=0:yield ((middle+prev_upper,),None)
+        else:yield ((middle+1,),None)  # n=1: overflow digit pairs with the only normalized digit
 
 def enumerate_folds(b,half,centre,gamma):
     paths=[((0,gamma,-1),())]
@@ -60,6 +61,13 @@ def enumerate_folds(b,half,centre,gamma):
 
 def selftest():
     cases=0
+    # Complete the one-digit domain (no outer pair, including overflow).
+    for b in range(2,41):
+        for d in range(1,b):
+            _,P2,gamma=step_digits([2*d],b)
+            assert enumerate_folds(b,(),2*d,gamma)==[fold(P2)]
+            assert enumerate_folds(b,(),2*d,1-gamma)==[]
+            cases+=1
     for b,maxn in [(2,10),(3,7),(4,6),(10,4),(13,3)]:
         for n in range(2,maxn+1):
             for h in product(range(2*b-1),repeat=n//2):
