@@ -1,25 +1,21 @@
 # AA56 report
 
-Status: PARTIAL (four documented seam seeds tested; no all-time lemma supplied).
+Status: PARTIAL. A universal one-epoch transition is now symbolically checked; no closed cycle or all-time lemma is established.
 
-## Question
-Can a 360-step macro restore the phase-0 rooted p12/m9 template while allowing a moving seam/centre family, rather than demanding a fixed seam at each 120-step epoch?
+## Exact transition discovered
+The source family is the rooted p12/m9 pairword with J=[5], U=(9,14,4), C=[10]. The 360-step epoch does not return to the same template. It maps to a new family with:
+- q' = q - 8;
+- k' = k - 90;
+- U' = (4,9,14);
+- a fixed output seam J' of length 252;
+- a fixed palindromic output centre C' of length 273.
 
-## Reproducible test
-Run `python3 calculation/new_structures/AA56/replay_360.py`. The script embeds the canonical phase-zero B and W rows from `calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt`, constructs canonical integers from symmetric coefficient pairwords, performs 360 ordinary reverse-and-add steps, and compares the final folded pairword against fixed-seam target T(q,k+15).
+The output template is constructed from one concrete seed only to discover the finite words J' and C'. The script then uses the R30 symbolic pairword checker to verify the full 360-step equality for all independent q,k >= 2048. It also checks the exact overflow clock `(1000)^90`, total overflow 90, and an odd pair-coefficient witness at every one of the 360 intermediate phases. This is a universal width-parametric edge, not a finite-width extrapolation.
 
-It performs 44 exact mismatch replays across four known seed triples at q in {20,40,80,160}, with diagonal/off-diagonal k values from {max(20,q/2),q,2q}. All give 90 overflows and first mismatch indices 9q-32, 9q-36, 9q-34, or 9q-33 for the respective seeds.
+Reproduce with `python3 calculation/new_structures/AA56/check_epoch1_symbolic.py`. The result is recorded in `results/AA56_Epoch1BoundaryTransition.md` (label COMPUTED).
 
-| case | J | U | C | first mismatch |
-|---:|---|---|---|---|
-| 0 | [5] | [9,14,4] | [10] | 9q-32 |
-| 1 | [6,4] | [9,2,16] | [12] | 9q-36 |
-| 2 | [1,8,2] | [9,0,18] | [4,8,4] | 9q-34 |
-| 3 | [5] | [14,4,9] | [10] | 9q-33 |
+## Why this does not solve the target
+The edge consumes 8 W9 copies and 90 U3 copies per 360-step epoch, while the seam and centre expand. The second and third transitions also show changing width-loss/growth increments, so no invariant or cycle has been proved. This is useful state-map data, but it is not a decimal Lychrel certificate and must not be ALERTed as one.
 
-The script additionally performs 36 signature checks for q,k in {40,80,160}. For each seed, the last 90 coefficients of the observed W-region are identical across all nine (q,k) pairs. The central 21-coefficient window is independent of q for each sampled k, but differs across sampled k values. These are finite computed observations, not uniform theorems.
-
-## Boundary-state observation
-W starts at coefficient index 34 and ends at 34+9q. The first mismatch lies a fixed distance from the inner end of W^q: 66, 70, 68, and 67 coefficients for cases 0–3. It is not a defect deep in the repeated band. A seam extension or moving boundary defect with a finite apron could absorb the mismatch, but exact closure must track the width-dependent centre too.
-
-Next step: encode the 90-coefficient apron and centre state as an explicit epoch state, then derive and verify its 360-step transition. No certificate, general obstruction, or all-time result is claimed.
+## Earlier diagnostics
+The companion `replay_360.py` contains 44 concrete big-integer mismatch replays for four documented fixed-seam seeds plus 36 boundary/centre signature checks. These identify a finite boundary apron and a centre state that depends on k. See `IDEAS.md` for the scoped negative interpretation.
