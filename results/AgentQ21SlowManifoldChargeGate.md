@@ -7,3 +7,5 @@ If gcd(sum(V),9)=1, any such return requires r>=6 (at least 528 additions). Thre
 Full proof and exact scope: reports/AgentQ21SlowManifoldChargeGate.md.
 Independent tests: calculation/new_structures/Q21/charge_gate.py (true-integer vs pairword arithmetic at q=20,40,80,160).
 No physical periodic repair, safe all-phase cycle, Lean verification, 196 claim or all-time decimal instance is proved.
+
+**Stronger one-dimensional slow-manifold PAPER corollary:** if q(s)=a*s+beta with integer a>=0 and the exact macroreturn is s->s+delta, then the unit-charge condition forces 9|r and 9|delta, hence at least 792 (9*88) true additions, even without independently adjustable q,s. Reproduce: `python3 calculation/new_structures/Q21/correlated_gate.py`. No positive cycle is constructed.
