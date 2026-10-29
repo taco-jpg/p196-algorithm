@@ -60,3 +60,8 @@ The next route is phase-zero slice 1/12: U ranks 1, 13, and 25, namely (0,9,18),
 ## Adjacent follow-on target: slice 2/12
 
 Phase-zero J5 slice 2/12 uses lexicographic U ranks 2, 14, and 26: (0,18,9), (9,6,12), and (14,9,4), exhausting every 19^5 J word per U at (q,k)=(14,100). The scoped report and reproduction files are under slice02/.
+
+
+## Adjacent follow-on target: slice 5/12
+
+Phase-zero J5 slice 5/12 uses lexicographic U ranks 5, 17, and 29: (4,9,14), (9,12,6), and (18,0,9), exhausting every 19^5 J word per U at (q,k)=(14,100). Its scoped report and reproduction files are under slice05/.
