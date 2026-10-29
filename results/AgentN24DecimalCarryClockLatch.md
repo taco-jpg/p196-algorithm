@@ -1,0 +1,7 @@
+# AgentN24DecimalCarryClockLatch
+- **PAPER PROOF (conditional)**: exact two-coefficient decimal carry-port recurrence and a four-state boundary latch. Initial pair coefficients `(17,5)` plus **actual** odd-step upper-second carry ports repeating `0011` forever imply every reverse-and-add iterate is nonpalindromic.
+- The proof monitors only two outer pair coefficients and **one binary carry per two steps**; center and band may have unrestricted evolution. A genuine decimal infinite certificate still requires an independently proven finite carry-source generator; none is claimed.
+- **COMPUTED controls**: 30,000 randomized ordinary decimal digit-list one-step checks of the formula; all pass. The existing explicit p8/m48 hybrid seed physically exhibits the `0011` carry clock at 10,000/10,000 odd times through step 20,000, matching both independent full-number SHA-256 fingerprints.
+- The observed source is **finite-time only**. Periodic carry port persistence beyond 20,000 and an infinite base-10 Lychrel number remain **UNDECIDED**.
+- Code / independent checker: `calculation/new_structures/agent-N24/carry_latch.py`; full 20k checkpoints: `calculation/new_structures/agent-N24/carry_latch_evidence.json`.
+- Input: `calculation/new_structures/agent-N24/p8_hybrid_data.json`; proof and exact reproduction commands: `reports/AgentN24DecimalCarryClockLatch.md`.
