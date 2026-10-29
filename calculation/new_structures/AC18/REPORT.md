@@ -1,0 +1,25 @@
+# AC18: phase-9 short-junction endpoint-only obstruction
+
+**Status: COMPUTED (exhaustive finite reference-width cell), with a PAPER PROOF of the carry-collar soundness lemma. NOT a base-10 Lychrel certificate.**
+
+## Exact predicate
+
+Let B9 = (1,5,10,10,5,8,17,1,4,11,9,9,15,16,7,12,4,3,3,2,3,2,4,7,6,8,6,4,8,12,12,12,9,7), W9 = (10,4,5,10,14,13,12,9,7), in the rooted p12/m9 data (`calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt`). For each J in {0,...,18}^{3,4}, U one of the 30 rotations of (9,a,18-a) for a even 0..18, q=14 and k=100, define H = B9 ++ W9^q ++ J ++ U^k and P = H ++ C ++ reverse(H), for any palindromic centre C with coefficients 0..18 (odd-length centre has even central coefficient if physically realized).
+
+**Claim (reference-width, endpoint only):** The true 120-step decimal reverse/add pairword never equals the target H' ++ C ++ reverse(H'), where H' = B9 ++ W9^14 ++ J ++ U^105. In fact a mismatch occurs strictly before the W9 cut at coefficient index 160, regardless of C. The proof is a finite-exhaustive carry-collar check, not a universal no-go for other phases, different seam lengths, growing seams, or other independent q,k without a separately proved lift.
+
+## Two-ended carry-collar lemma (PAPER PROOF, all steps)
+
+For a palindrome pair-coefficient word P with each entry in 0..18 and any length >=2R, suppose its first R entries A are known. The final R entries are reverse(A). When normalizing P in base 10, the carry from the LSD end is initially 0, and every carry is in {0,1}, because x<=18 and x+c<=19. Hence the first R ordinary digits of normalize(P) are computable exactly. The last R output digits, read from the MSD end, depend on the unknown carry entering that segment; evaluate **both** possibilities 0 and 1, not a guessed value. If both give the same final outgoing carry g, the physical overflow g is determined. If the final output digits agree in their first h positions from the MSD end, then the next palindrome pairword P' = digits(normalize(P)) + reverse(digits(normalize(P))) has an exactly determined first min(R,h+g) entries. When g=1 the first entry uses the new leading carry, and the high-side digit needed at index i>=1 is the old position i-1. Since P' is palindromic, this is again an exact collar. Iterate; the abstract transition never imposes W9 survival at intermediate times and is valid for arbitrary palindromic interiors (including both centre parities). A case is excluded only if the certified collar contains an actual mismatch with the endpoint target. If the carry choices disagree on g, or the collar ends before a mismatch, the program marks the case unresolved, never excluded.
+
+## Reproduction and independent verification
+
+Compile `g++ -std=c++20 -O3 -o census census.cpp`, then run `./census --rank-start 0 --rank-end 30 --prefix 300`. U order is (9,a,18-a),(a,18-a,9),(18-a,9,a) for a=0,2,...,18. J words are enumerated as base-19 integers of exact lengths 3 and 4. The collar starts with the first 300 coefficients of H (strictly before the unknown centre). No strict-per-phase W9 MDD pruning or odd-centre mod-11 pruning is used.
+
+**Exhaustive output:** 4,115,400/4,115,400 J/U cases had a certified endpoint mismatch; unresolved=0; minimum certified post-120 collar radius=163, strictly past the entire B9++W9^14 prefix (length 160). All had exactly 30 genuine overflow positions. First mismatch index histogram: 135:1,704,214; 136:644,674; 138:926,526; 139:714,860; 140:69,599; 141:46,156; 142:5,004; 143:3,480; 144:354; 145:429; 147:43; 148:55; 149:2; 150:4. All 4,115,400 mismatches fall **inside** W9. Search: 30 x (19^3 + 19^4) exact J/U cases; independently of C, not 8,230,800 separately tested centres. Four disjoint U-rank partitions [0,8),[8,16),[16,24),[24,30) each completed without unresolved entries. The full scan used initial collar=300 and took ~200 seconds wall time across four workers.
+
+`python3 audit.py` cross-checks physical sources, independent Python unbounded-integer n+reverse(n) and schoolbook digit arrays stepwise for 96 full 120-step controls at (q,k)=(14,100),(20,80),(40,160),(80,320),(160,640), with both centre parities. Additional 60 random palindromic centres of lengths 1..33 and 10,000 independent arbitrary-palindrome one-step collar checks agreed. Phase-9 overflow clock in physical controls is (0001)^30, as expected from the phase offset. Unlike an earlier AB18 sample, first mismatches are near indices 135..145, not coefficient 10; B9[0]=1 requires choosing a physical source digit split with a nonzero highest digit.
+
+## Interpretation
+
+This completes one narrowly scoped reference-width necessary-condition subcase of PHYSICAL_TSTAR_RETURN_AT_REFERENCE_WIDTH: no fixed J of length 3 or 4 at clock phase 9 can provide a 120-step return using any of the thirty U3 words and any palindromic centre at q=14,k=100. It supplies neither a periodic repair nor the missing all-time growing template cycle; no ALERT is justified.
