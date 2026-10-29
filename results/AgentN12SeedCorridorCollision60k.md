@@ -1,0 +1,13 @@
+# AgentN12SeedCorridorCollision60k
+- **Label: COMPUTED** (finite base-10 orbits only; no infinite-time certificate).
+- Seed: 39 ++ 0^31000 ++ 43, exact decimal reverse-and-add, 60,000 transitions.
+- No palindrome at any of 60,001 states; two independent positional engines agree on every trace row.
+- Second engine is genuine arbitrary-precision arithmetic in radix 10^9 limbs, not digit-vector carry replay.
+- At step 50,000 the pairword still has an 878-digit central zero band.
+- First central zero corridor disappearance: step 51,464, state length 52,288 digits.
+- Inserting one more zero preserves the shape and mismatch trace through step 51,464; first divergence step 51,465.
+- Last checked state length 55,807 digits and no palindrome; postcollision zero-pumping proof does not apply.
+- Full-trace SHA256: 6e0a9285178df82218b6529e59bef201fa139e1bfc13640a5ef7579fdbce6854.
+- Reproduce: bash calculation/new_structures/agent-N12/run_collision_60k.sh.
+- Source/data: calculation/new_structures/agent-N12/{chunk_bigint_replay.cpp,checkpoints_60k.csv}.
+- Further details: reports/AgentN12SeedCorridorCollision60k.md.
