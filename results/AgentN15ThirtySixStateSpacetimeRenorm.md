@@ -1,0 +1,8 @@
+# AgentN15ThirtySixStateSpacetimeRenorm
+**PAPER PROOF.** A finite **36-state binary substitution of entire 16-row decimal space-time macrotiles**, with each state carrying exact pair-coefficient outputs for times t=3,...,18, exists for all dyadic heights h>=7 (uniform bulk); the same decimal seed hierarchy has **18 exact nonpalindromic reverse-and-add steps for every h>=2**.
+Unlike an isolated time-15 spatial coding, each 36-state tile carries a complete **16-element temporal output vector** and both scale-doubling child states. This 2D slab is exactly reproduced by spatial substitution at successive dyadic heights. Its quotient uses 376 length-125 Thue–Morse factors, reduced to 36 minimal Moore classes. The finite time3..17 restriction requires only 32 classes; t18 refines these to 36, identifying a concrete nonstationary temporal state transition.
+The all-height carry proof includes neutral 9 runs of length at most 2: 376 universal length-125 factors of sigma^7(UV), two parity boundary classes, h2..9 full exceptional checks, and fixed decimal overflow word `011000010101001001`.
+Independent ordinary decimal C++ replay, h2..14, checks 506,368 exact temporal coefficients, 234,240 across-height child identities, 376 mutation witnesses and no palindromes N0..N18.
+Complete machine, code, compact tables, exact commands and proof: `reports/AgentN15ThirtySixStateSpacetimeRenorm.md` and `calculation/new_structures/agent-N15/`.
+Reproduce: `sh calculation/new_structures/agent-N15/run_spacetime36.sh`.
+**Scope excludes temporal macrocycle closure, any infinite decimal Lychrel certificate, Lean verification, or conclusions about 196.**
