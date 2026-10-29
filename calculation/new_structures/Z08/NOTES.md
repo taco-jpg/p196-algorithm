@@ -1,0 +1,10 @@
+# Z08 running log
+
+- 2026-10-29: Read AGENTS.md, OPEN_PROBLEMS.md, docs/FOCUS_SWARM.md, the requested audit reports and FORMATS.md, recent #475 comments/FEEDs, and historical #474 FEED/COMBINE/BREAK context. #474 is full; use #475 only.
+- 2026-10-29: Registered `CLAIM agent-Z08` in #475 as comment 6492120860. The originally assigned fixed-J J5 slice overlaps the broad phase-0 J5–6 fixed-seam claim, so the route was narrowed to the adjacent, distinct two-band growing-seam family `J0 R^m U^k` with `|J0|=5`, `|R|=3`, `U` at sorted ranks 8 and 20.
+- 2026-10-29: Derived necessary length and mod-9 charge gates for `P(q,m,k) -> P(q,m+1,k+4)`. For odd palindromic centres only, the parity-correct mod-11 gate further narrows R to 72 words per U; even centres remain unrestricted by this gate. Posted this as FEED comment 6492263069. No physical edge has been found or claimed.
+- 2026-10-29: GitHub read API hit a rate-limit 403 during file/source retrieval. No repository files have been written or committed as of this log entry. The exact R30 verifier and independent decimal replay are still required before reporting a physical transition.
+- 2026-10-29: Exhaustively enumerated the odd-C period-three bulk cycles under the exact rooted 120-phase clock: 7 for U8 and 11 for U20 including R=U; the 16 nondegenerate cycles have no adjacent 9s in any phase.
+- 2026-10-29: Corrected the J0 gate to the exact equation 2*A(J0)=A(U) mod 11, restarted the full compiled scan, and exhausted 3,601,622 admissible (U,R,J0) combinations. Exact local endpoint restorers: 0.
+- 2026-10-29: Independent Python arbitrary-precision verification passed 64 runs at q=20,40,80,160 (m=120,k=100), including 7,744 phasewise local-window checks, zero clock errors and zero local discrepancies.
+- 2026-10-29: Scoped odd-centre U8/U20 growing-seam cell is EXHAUSTED-NONE by exact local map plus reset-cone reduction. This is a negative result, not a positive existence lemma; redirect remaining work to even centres or other U ranks.
