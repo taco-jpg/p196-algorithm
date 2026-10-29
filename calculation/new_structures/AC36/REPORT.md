@@ -4,7 +4,7 @@
 The previously reported AB36 claim that *every* phase-3 |J|=6 endpoint first differs at LSD-first coefficient **7** is false. The actual published phase-3 root is
 B3=[5,2,3,12,16,2,15,10,9,7,18,8,15,9,1,14,0,3,10,0,17,17,9,3,3,15,8,7,9,4,3,3,9,2],
 W3=[4,0,17,11,9,12,2,9,2].
-For J=(0,0,0,0,0,0), U=(0,9,18), C=(4,4), q=14,k=100, the genuine 120-step decimal orbit has 30 overflows, clock (0001)^30 (zero-based t=1 mod 4) and first endpoint mismatch **135**, not 7. Indices 0..134 match the target, including coefficient 7. Correcting the erroneous early gate prevents unsound elimination of potentially repairing junctions.
+For J=(0,0,0,0,0,0), U=(0,9,18), C=(4,4), q=14,k=100, the genuine 120-step decimal orbit has 30 overflows, clock (0100)^30 (zero-based t=1 mod 4) and first endpoint mismatch **135**, not 7. Indices 0..134 match the target, including coefficient 7. Correcting the erroneous early gate prevents unsound elimination of potentially repairing junctions.
 
 ## Exhausted only for explicit fixed-suffix subcells
 For EACH U rank in {1,13,25}, in the lexicographically sorted 30 U words (U=(0,9,18),(9,4,14),(14,4,9)), fix J[0]=0, let J[1],J[2],J[3] independently cover 0..18, and fix (J[4],J[5]) to one of (0,0),(0,1),(1,0),(1,1). Both C=(4,4) and C=(4,14,4) are included.
