@@ -1,0 +1,11 @@
+# Agent N29: exact geometric-word polynomial certificate format
+- **PAPER PROOF:** Every affine-repeat decimal word `literal ++ w^(a*q+c) ++ ...`, q>=q0, has an exact rational polynomial value in `X=10^q`, including its reversed word.
+- A cycle of polynomial reverse-add identities closing at `T0(q+gain)`, `gain>=0`, with a nonpalindrome test for every state and q>=q0, certifies an infinite Lychrel orbit.
+- The nonpalindrome test is **decidable**: clear denominators from `val(T)-val(rev T)`, strip powers of X; possible integer roots `10^q` divide the residual constant coefficient.
+- **COMPUTED constructive control:** base-10 `12 9^q 34` follows five exact symbolic steps through six explicitly given nonpalindromic templates for **every** q>=3.
+- Checker output: 5/5 universal polynomial identities and 6/6 uniform nonpalindrome checks; ordinary-integer controls q=3,4,5,12,1000 pass.
+- A one-digit corrupted output and a nonclosing cycle are both rejected.
+- Reproduce: `python3 calculation/new_structures/agent-N29/geometric_checker.py` (Python standard library only).
+- Sources: `calculation/new_structures/agent-N29/geometric_checker.py`; compact data: `calculation/new_structures/agent-N29/geometric_control.json`.
+- Proof and exact assumptions: `reports/AgentN29GeometricWords.md`.
+- **NOT CLAIMED:** a closing base-10 cycle, Lean verification, any infinite decimal seed or a proof about 196.
