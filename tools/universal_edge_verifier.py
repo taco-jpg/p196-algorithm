@@ -24,6 +24,10 @@ import math
 import sys
 from pathlib import Path
 
+# Assertions are proof obligations; refuse optimized Python which removes them.
+if not __debug__:
+    raise RuntimeError("Certificate verification requires assertions: do not use python -O")
+
 
 def lit(w):
     return {"lit": list(w)}
