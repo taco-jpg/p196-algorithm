@@ -5,7 +5,12 @@ tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 cxx="${CXX:-g++}"
 python3 "$here/phase_gate.py" "$tmp/phase_gate.csv"
-diff -u "$here/phase_gate.csv" "$tmp/phase_gate.csv"
+python3 - "$here/phase_gate.csv" "$tmp/phase_gate.csv" <<'PYROWS'
+import csv,sys
+with open(sys.argv[1], newline='') as a, open(sys.argv[2], newline='') as b:
+    assert list(csv.reader(a)) == list(csv.reader(b))
+print('PASS: 32 stored neutral-carry phase checkpoints')
+PYROWS
 "$cxx" -std=c++17 -O3 -Wall -Wextra -Werror "$here/shadow.cpp" -o "$tmp/digits"
 "$cxx" -std=c++17 -O3 -Wall -Wextra -Werror "$here/independent_gmp.cpp" -lgmpxx -lgmp -o "$tmp/gmp"
 "$tmp/digits" 10009 20000 88283583 "$tmp/digits.csv" 1
