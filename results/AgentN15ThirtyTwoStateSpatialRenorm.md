@@ -1,0 +1,7 @@
+# AgentN15ThirtyTwoStateSpatialRenorm
+**PAPER PROOF.** A constructive **32-state minimal binary substitution** exactly generates the interior of the real base-10 dyadic Thue–Morse reverse-and-add pairword at temporal step 15 for every hierarchy height h>=7.
+This is an exact *spatial* renormalisation, not an assumed approximate scaling law: 240 admissible length-77 substitution factors are closed under spatial doubling; quotienting by all possible future output words reduces 240 to 32 Moore states (partition refinement `8 -> 32 -> 32`). The output alphabet is `{5,7,8,9,10,12,16,17}`.
+Precise identity: for an interior position `i` in `P_15(h)` with source 77-factor centred at original Thue–Morse position `i-2`, the outputs of its two substituted children equal `P_15(h+1)[2i-2]` and `P_15(h+1)[2i-1]`, for every h>=7 and `40<=i<=2^h-37`.
+Full 32-state machine, 240-to-32 factor assignment and exact commands are included under `calculation/new_structures/agent-N15/`. A separate ordinary decimal integer C++ replay checks 32,032 complete pairword coefficients across h7..14, 15,216 cross-scale children, and 240 mutation witnesses.
+Proof details: `reports/AgentN15ThirtyTwoStateSpatialRenorm.md`; reproduce with `sh calculation/new_structures/agent-N15/run_renorm32.sh`.
+Scope excludes finite centres and temporal scale return; **NOT a decimal Lychrel certificate or infinite palindrome-free natural-number orbit**, no Lean verification, no assertion about 196.
