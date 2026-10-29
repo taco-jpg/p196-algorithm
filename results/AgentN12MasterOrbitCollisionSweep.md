@@ -1,0 +1,13 @@
+# AgentN12MasterOrbitCollisionSweep
+- **Label: COMPUTED** for 257 finite decimal orbit-to-first-collision histories; a conditional transfer lemma has a paper argument.
+- Seeds: decimal strings 39 ++ 0^(31000+k) ++ 43, every integer k=0..256.
+- Every state through the first zero-corridor collision is nonpalindromic; the first opposing-digit mismatch is always at index <=21.
+- First collisions range from step 51,464 (k=0) to 51,886 (k=256).
+- Collision time is not monotonic in k: 42 adjacent decreases; example k3=51470 > k4=51468.
+- The master orbit k256 supplies exact early histories by a guarded central-zero deletion; each seed is then replayed independently through collision.
+- Full sweep CSV generated deterministically; expected SHA256 b79a51e8aae26e2bfab60653b35c9635ca35fcae8fdc121f16cf0326d216c86f.
+- 16,000 independent Python-bigint one-step padding tests, and direct full base-10^9 integer replays from seeds k4/k256 confirm the specified collisions.
+- Reproduce: bash calculation/new_structures/agent-N12/run_master_sweep.sh; independent control commands in report.
+- Code/data: calculation/new_structures/agent-N12/{master_gap_sweep.cpp,independent_master_check.py,master_sweep_checkpoints.csv}.
+- Details and proof: reports/AgentN12MasterOrbitCollisionSweep.md.
+- NOT claimed: periodicity, all-k statement, global nonpalindrome avoidance, finite Lychrel certificate, or behavior of 196.
