@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Symbolically check four successive 360-step AA56 epoch-map edges.
+"""Symbolically check five successive 360-step AA56 epoch-map edges.
 
 For each edge, finite J_n/C_n constants are discovered from one genuine
 integer orbit, then the R30 symbolic pairword checker verifies the full edge
@@ -65,7 +65,7 @@ def main():
     assert B[0] > 0 and C == C[::-1] and C[0] % 2 == 0
     assert all(0 <= x <= 18 for x in B + W + J + U + C)
 
-    for n in range(1, 5):
+    for n in range(1, 6):
         qnext = SAMPLE_Q - 8
         kloss = 89 + n
         knext = SAMPLE_K - kloss
@@ -94,9 +94,9 @@ def main():
         J, U, C = Jnext, U_OUT, Cnext
         SAMPLE_Q, SAMPLE_K = qnext, knext
 
-    print("SCOPE: four individually universal 360-step edges, each for all independent q,k >= 2048.")
+    print("SCOPE: five individually universal 360-step edges, each for all independent q,k >= 2048.")
     print("Every edge has overflow clock (1000)^90 and an odd pair-coefficient guard at all phases.")
-    print("LIMITATION: q decreases by 8 per edge and k decreases by 90,91,92,93; no cycle or all-time certificate is proved.")
+    print("LIMITATION: q decreases by 8 per edge and k decreases by 90,91,92,93,94; no cycle or all-time certificate is proved.")
 
 if __name__ == "__main__":
     main()
