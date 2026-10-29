@@ -1,0 +1,9 @@
+# AgentX10FusedCentreCarry20000
+- **COMPUTED.** New two-stage *carry-healing* decimal affine support: first transparent middle-sheet overlaps `t=4..13`, then exactly fuse their coefficients at `t=13` into one canonical centre packet whose shared carries repair the four-sheet capacity failure at `t=14`.
+- Explicit seed family **`N(q)=88*10^(2q+4)+78*10^q+75`**. For EVERY integer `q>=12002`, all states `t=0..20000` satisfy the exact 4-to-3 packet symbolic arithmetic and a nonpalindromic outer-digit witness, not merely sampled q.
+- Exact universal separation bound rises to 12 at t14; 56 at t88; 166 at t264; 614 at t1000; 3020 at t5000; 6031 at t10000; **12002 at t20000**. The entire trace is a finite symbolic computation. No unbounded recurrence or invariant return is claimed.
+- Independently implemented ordinary whole-decimal schoolbook reverse-add checks EVERY digit of EVERY state: `q=12002` (initial 24010 digits, final 32264) and `q=12003` (initial 24012, final 32266), 20001/20001 matches and nonpalindromes for each; `q=614` independently passes 1001 states.
+- Centre packet grows from 15 digits at t13 to 12021 digits at t20000, with the outer low packet growing to 10122 digits. The healing mechanism works for a finite protected corridor; the gap reserve is consumed, so this does NOT constitute an infinite Lychrel certificate.
+- Independent code, boundary traces and reproduction: `calculation/new_structures/agent-X10/{fused_20k.cpp,fused_20k_replay.cpp,fused20k_reproduce.sh,fused_20k.txt,fused_20k_replay.txt,fused_20k_replay_q12003.txt,fused_1000_replay_q614.txt}`.
+- Reproduce: `bash calculation/new_structures/agent-X10/fused20k_reproduce.sh` (C++17 + Python3). Full report: `reports/AgentX10FusedCentreCarry20000.md`.
+- **Not claimed:** Lean verification, a return cycle, a base-10 infinite Lychrel number, or any theorem about the seed 196.
