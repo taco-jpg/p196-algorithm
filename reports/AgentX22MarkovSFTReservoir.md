@@ -1,0 +1,21 @@
+# Agent X22: positive-entropy decimal defect reservoir
+
+**COMPUTED** exact finite arithmetic and 20,000 genuine decimal steps. **PAPER PROOF** for the local carry-tile lemma. NOT Lean-verified; NOT an infinite decimal Lychrel certificate.
+
+## Exact Markov-SFT format
+The previously published rooted p8/m20 periodic bulk W[t] is the reference row. For folded pair coefficients p_i in 0..18, let lower carry a_i and upper carry r_i be bits. Write L_i=(p_i+a_i)%10, a_(i+1)=floor((p_i+a_i)/10), U_i=(p_i+r_i)%10, and r_(i-1)=floor((p_i+r_i)/10). For overflow g=0 the next folded coefficient is q_i=L_i+U_i; for g=1 it is q_i=L_i+U_(i-1). The upper-track shift is essential.
+
+Use spatial finite-state edges with state (a_i,r_(i-1),U_(i-1)) for g=1, or just the first two components for g=0. An edge labeled input p_i guesses r_i, enforces both carry equations, emits q_i, and moves to state (a_(i+1),r_i,U_i). There are 40 states for g=1 and 4 for g=0. **Sound local lemma (PAPER PROOF):** composing edges implements exact grade-school normalization conditional on its two carry ports, by induction on the columns. Closed same-port paths concatenate without changing their emitted output. This does not prove compatibility of arbitrary outer and central number caps.
+
+## Exact matrix result
+Let E(q) be the integer adjacency matrix of edges emitting q and let M_t=E(W_(t+1)[0])...E(W_(t+1)[19]). Source sft.py enumerates every carry edge and checks all entries of M_t^2=lambda_t*M_t with integer arithmetic. Phases t=0,2,4,6 have lambda=51200, tr(M)=51200, tr(M^2)=2621440000, tr(M^3)=134217728000000. Phases t=1,3,5,7 have lambda=1 and traces of all positive powers equal 2. Explicit enumeration finds exactly 51200 distinct periodic predecessor coefficient words for each overflow phase and two for each non-overflow phase, all with an odd coefficient. Thus the cyclic spatial model has exactly log2(51200)/20=0.7821928094887362 bits per coefficient of predecessor-path entropy at overflow phases and zero otherwise.
+
+At t=0, the fixed port (1,1,4) has 12800 distinct 20-cell return words. For every k, freely concatenating any k such loops gives 12800^k distinct local coefficient inputs with the identical target W1^k. This is a positive-entropy **one-step defect erasure mechanism**, not a closed SFT across time. The guaranteed same-port subshift entropy is log2(12800)/20=0.6821928094887363 bits/cell.
+
+## Canonical decimal controls
+Use the published rec0 B0 (39 coefficients), then 600 independently RNG-selected same-port tiles from seed.py, then the mirror. For each low half coefficient p, take low digit min(9,p) and reflected high digit p-min(9,p). The canonical number has 24078 digits and leading digit 8. Both C++ digit-array and independent GMP whole-integer replays perform 20000 *actual* reverse-and-add steps and reject a palindrome at every t=0..20000. At every t=1..20000, they check a contiguous phase-correct W[t mod 8] band; the minimum longest run is 7455 coefficients. The final number has 34078 digits. Every digit of every state contributes to a matching cross-engine FNV-1a transcript digest a86eb2bb1535bd (a diagnostic, not a mathematical identity proof), and all eleven full size/band checkpoints agree.
+
+Forty other independently sampled 10..38-tile mosaics pass 17600 interior pairword comparisons against genuine Python big integers, excluding 20-column caps. Another small mosaic survives 300 integer steps. Local edge soundness does not imply the entire kink ever regenerates, and this finite horizon does not prove infinity.
+
+## Reproduction and next step
+Run: sh calculation/new_structures/agent-X22/run.sh (Python3, C++17 g++, gmpxx). The run generates the 24078-digit seed instead of committing bulky raw digits, checks every transfer-matrix identity, checks 40 random seeds, and compares two independent 20000-step replays. This result redirects search to a two-scale Markov **renewal interface**: a finite macrostep must consume one or more free reservoir tiles, repair a central defect, and replenish at least as many compatible tiles, with exact outer/centre cap checks and a palindrome-exclusion guard on all intermediate states. None of those global obligations is solved here.

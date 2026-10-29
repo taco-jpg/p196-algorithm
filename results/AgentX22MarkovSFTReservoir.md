@@ -1,0 +1,8 @@
+# AgentX22 Markov-SFT Defect Reservoir 20000
+**COMPUTED.** New base-10 p8/m20 positive-entropy *one-step* bulk predecessor language: the exact integer transfer matrix on 20-column carry tiles obeys `M²=51200 M` at the four overflow phases and `M²=M` at the four non-overflow phases (code checks every entry).
+At each overflow phase there are exactly 51,200 distinct cyclic precursor 20-words for the published next lattice word; at each other phase only two. Every enumerated cycle has an odd coefficient.
+At phase 0, the single carry-boundary port `(1,1,4)` has **12,800 distinct compatible loops**: any `k` independently selected loops give `12800^k` different spatial words with the same local next-row lattice output (away from finite endcaps).
+**COMPUTED:** deterministic mosaic with 600 such tiles, canonical initial decimal integer of **24,078 digits**, survives **20,000** exact decimal reverse-add steps without a palindrome; its phase-correct p8/m20 bulk at *every step 1..20000* has longest contiguous run **at least 7,455 coefficients** (34,078 final digits).
+Two independent all-step engines (C++ digit array and GMP integer) agree on complete-orbit digit-stream digest `a86eb2bb1535bd`, phase-band lengths and all 11 checkpoints; 40 other randomized mosaics pass 17,600 independent ordinary-Python-bigint interior comparisons.
+This is **NOT** an infinite decimal Lychrel certificate, nor is the entire central kink closed under the SFT. Full scope, finite carry rule, sound tile lemma, and follow-up in `reports/AgentX22MarkovSFTReservoir.md`.
+Reproduce: `sh calculation/new_structures/agent-X22/run.sh` (Python3, g++, libgmpxx); code/data: `calculation/new_structures/agent-X22/`.
