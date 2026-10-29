@@ -1,0 +1,12 @@
+# AgentW16AsymmetricIndependentPump20k
+- Label: COMPUTED. Exact scope: every integer pair `kw>=440`, `kv>=530` in the family below, reverse-and-add states `t=0..20000`. No claim about later states.
+- Pair-coefficient seed (LSD first): `P0 = H ++ [9] ++ reverse(H)`, `H = B ++ W^kw ++ [9] ++ V^kv`, with explicit `B,W,V` in the checker; the initial decimal integer is `normalize(P0)`.
+- The two independently pumped bulk domains have periods 20 and 48, with unequal reference counts (440,530) and phase-respecting cuts at 839 and 24200.
+- Every one of 20,000 edges passes a two-slot carry-loop/overflow-shift contract; every one of 20,001 states has a nonpalindrome witness outside both variable bands. Standard paired-insertion soundness gives all independent nonnegative increments.
+- Tested ordinary decimal-digit reverse-add at every edge, plus independent GMP big-integer replay of the baseline over 20,000 additions. The full two-counter expanded-word identity is separately checked at steps 0,1,8,88,1000,10000,19999.
+- Baseline digits: 68562 -> 78562, final LSD-first FNV64 `6f2ca1d4b5434a41`.
+- Distinct shifted control `(kw,kv)=(443,537)` also passes 20000 edges; FNV64 `cff824488bacf9ae`.
+- First loss of the prescribed 960-cell V guard in the baseline occurs at t=24547, index 23840; it is not a palindrome report.
+- Reproduce: `sh calculation/new_structures/agent-W16/run.sh` (C++17, GMP development library).
+- Source/checker/data: `calculation/new_structures/agent-W16/{skew_contract.cpp,independent_gmp.cpp,observations.json,run.sh}`. Proof details: `reports/AgentW16AsymmetricIndependentPump20k.md`.
+- NOT claimed: a closed template cycle, infinite base-10 Lychrel number, or behavior of seed 196.

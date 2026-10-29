@@ -1,0 +1,57 @@
+{
+  "label": "COMPUTED",
+  "scope": "For each pair (kw, kv) with kw>=440, kv>=530, all first 20000 reverse-and-add additions starting from normalize(P(kw,kv)) are nonpalindromic; no claim for later steps.",
+  "seed_pairword": "B ++ W^kw ++ [9] ++ V^kv ++ [9] ++ reverse(B ++ W^kw ++ [9] ++ V^kv)",
+  "word_sizes": {
+    "B": 39,
+    "W": 20,
+    "V": 48
+  },
+  "baseline": {
+    "kw": 440,
+    "kv": 530,
+    "seed_digits": 68562,
+    "final_digits": 78562,
+    "states": 20001,
+    "fnv64_lsd_first": "6f2ca1d4b5434a41"
+  },
+  "shifted_control": {
+    "kw": 443,
+    "kv": 537,
+    "seed_digits": 69354,
+    "final_digits": 79354,
+    "fnv64_lsd_first": "cff824488bacf9ae"
+  },
+  "pump_cuts_lsd_first": [
+    839,
+    24200
+  ],
+  "fixed_windows": {
+    "W": {
+      "start": 439,
+      "length": 1000
+    },
+    "V": {
+      "start_relative_to_V_base": 15000,
+      "length": 960
+    }
+  },
+  "temporal_clock": "gamma(t)=1 for even t; gamma(t)=0 for odd t, all 0<=t<20000",
+  "finite_contracts": 20000,
+  "snapshot_full_pump_controls": [
+    0,
+    1,
+    8,
+    88,
+    1000,
+    10000,
+    19999
+  ],
+  "independent_baseline_gmp_steps": 20000,
+  "not_claimed": "No periodic closure, infinite reverse-and-add proof, decimal Lychrel number or claim about seed 196.",
+  "first_guard_failure": {
+    "time": 24547,
+    "kind": "V periodic guard mismatch",
+    "index": 23840
+  }
+}
