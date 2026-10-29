@@ -1,0 +1,29 @@
+{
+  "label": "COMPUTED",
+  "base": 10,
+  "two_parameter_uniform_horizon": 20000,
+  "seed_unions": [
+    {"minimum_m": 427, "minimum_n": 509, "baseline_final_digits": 76026, "baseline_fnv64": "fd9b296c175cbcce"},
+    {"minimum_m": 509, "minimum_n": 427, "baseline_final_digits": 71434, "baseline_fnv64": "29d9fb65743a3d46"}
+  ],
+  "insertion_sites": {
+    "w_low_cut": 639,
+    "v_low_cut": "39+20*m0+1+15168",
+    "w_period": 20,
+    "v_period": 48,
+    "mirror": true,
+    "both_carry_boundaries_saturated": true,
+    "periodic_guard_either_side_of_each_cut": 2
+  },
+  "one_step_exact_commutation_checks": {
+    "per_baseline": 20001,
+    "modes": ["insert_W_only","insert_V_only","insert_both"],
+    "total_full_word_equalities_per_baseline": 60003,
+    "total_full_word_equalities_both_baselines": 120006,
+    "first_odd_coefficient_witness": "within initial 8 coefficients of P_(t+1) for every t=0..20000",
+    "negative_controls": "No infinite certificate or claim after t=20000"
+  },
+  "independent_python_bigint_64_step_controls": [[428,509],[427,510],[428,510],[510,427],[509,428]],
+  "source_dependencies": ["calculation/new_structures/agent-X20/two_counter.cpp", "calculation/new_structures/agent-X20/asymmetric20k.cpp"],
+  "scope": "Every independent parameter pair in the union of two northeast quadrants, exactly 20001 states t=0..20000; no infinite orbit or Lean theorem."
+}
