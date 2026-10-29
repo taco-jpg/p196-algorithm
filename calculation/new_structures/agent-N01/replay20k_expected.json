@@ -1,0 +1,37 @@
+{
+  "label": "COMPUTED",
+  "scope": "one finite decimal orbit, no infinite certificate",
+  "seed": {
+    "k": 500,
+    "source_coefficient_length": 68081,
+    "initial_canonical_decimal_digits": 68082,
+    "source_formula": "B W^k [9] V^k [9] reverse(B W^k [9] V^k); source arrays in replay20k.cpp"
+  },
+  "verified_additions": 20000,
+  "verified_nonpalindromic_states": 20001,
+  "final_canonical_decimal_digits": 78082,
+  "gamma": "t even =>1; t odd =>0 for 0<=t<=20000",
+  "periodic_window_20": {
+    "start_inclusive": 439,
+    "end_exclusive": 1439,
+    "count": 50,
+    "word": "W_t from period20 base10 bulk update"
+  },
+  "periodic_window_48": {
+    "start_inclusive": 25040,
+    "end_exclusive": 26000,
+    "count": 20,
+    "phase": 24,
+    "word": "rot(V_t,24) from period48 base10 bulk update"
+  },
+  "full_pairword_half": "prefix[0:439] ++ W_t^50 ++ bridge[1439:25040] ++ rot(V_t,24)^20 ++ suffix[26000:floor(len(P_t)/2)]",
+  "decimal_final_digit_hash_algorithm": "64-bit FNV-1a over canonical digits least-significant-first, offset 1469598103934665603, multiplier 1099511628211",
+  "final_digit_hash_hex": "3fc9680e7260649",
+  "arithmetic_checks": [
+    "independent digit-array ordinary decimal reverse-and-add, 20k steps",
+    "independent digit-array coefficient normalization and pairword, 20k steps",
+    "GMP mpz_class arbitrary-precision ordinary reverse-and-add, 20k steps, same final hash"
+  ],
+  "front_table": "fronts.csv",
+  "conclusion": "finite survival with two shrinking intact lattice regions; NO time-periodic centre or infinite Lychrel certificate"
+}
