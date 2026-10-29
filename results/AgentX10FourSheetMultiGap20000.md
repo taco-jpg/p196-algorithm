@@ -1,14 +1,15 @@
-# AgentX10FourSheetMultiGap20000
-**COMPUTED**: exact base-10 two-parameter four-sheet mechanism for `N(q,r)=88*10^(3q+r)+37*10^q+75`.
-For **every integer q,r >= 11984**, all 20,001 orbit states t=0..20,000 are nonpalindromic and satisfy the explicit four-sheet affine-digit recurrence.
-The four slope vectors `(0,0),(1,0),(2,1),(3,1)` close under reversal about the leading `(3,1)` sheet; ordinary decimal carries stay within sheets under the checked separation guard.
-The C++ symbolic engine certifies all 20,001 states; maximal lower-gap bound is 11,984; zero symbolic palindromes.
-Explicit seed `q=r=11985` has 47,942 digits; at step 20,000 it has 56,196 digits.
-An independent grade-school full-integer reverse-and-add implementation checked **all digits** against all four sheets at **every one** of 20,001 states: 20,001/20,001 exact and no palindromes.
-Separate Python `int` reverse-and-add agrees with the two-parameter symbolic formula for all 264 steps at `(q,r)=(164,165),(179,191),(212,164)`.
-At `q=r=200`, the model's separation guard expires at t=329 and its **first** actual-integer shape mismatch is t=329; this is a falsifiable finite-horizon mechanism.
-Code: `calculation/new_structures/agent-X10/{four_sheet.py,four_sheet_fast.cpp,decimal_replay.cpp,reproduce.sh}`.
-Compact data: same directory `{four_sheet_data.json,fast_20k.csv,replay_20k.txt,replay_collision.txt}`.
-Reproduce: `bash calculation/new_structures/agent-X10/reproduce.sh`; requires Python3 and g++ (no third-party libraries).
-Soundness of the parametric four-sheet decomposition and exact limitation: `reports/AgentX10FourSheetMultiGap20000.md`.
-**NOT CLAIMED:** an infinite base-10 Lychrel orbit, a closing parameter-growth cycle, a proof for 196, or Lean verification.
+# AgentX10FourSheetMultiGap20000 (strengthened exact polyhedral guard)
+**COMPUTED**: base-10 four-sheet family `N(q,r)=88*10^(3q+r)+37*10^q+75`, two integer parameters.
+For **EVERY q>=11984 and q+r>=12024** (r may be negative), all 20,001 states t=0..20,000 are nonpalindromic and follow the exact four-sheet recurrence.
+Four closed exponent slopes `(0,0),(1,0),(2,1),(3,1)` with ordinary carry normalization; exact maximal guards `q>=11984`, `q+r>=12024`, `2q+r>=1884`, `3q+r>=1865`.
+The last two constraints follow automatically from the first two. Independent checker proves all gap separations for all states, not merely sampled q,r.
+Explicit boundary seed `(q,r)=(11984,40)`: 35,994 digits initially, 44,248 digits after 20,000 reverse-add steps.
+Independent full-decimal schoolbook arithmetic checked **ALL 20,001 full words** against symbolic four-sheet values, zero mismatches and zero palindromes.
+Independent full-word 20,000-step controls `(q,r)=(11985,11985)` and `(20000,-7976)` also pass, including a negative-r instance.
+Independent Python `int` reverse-add reproduces all 264 steps at `(164,165),(179,191),(212,164)` (uniform q,r>=162 initial control).
+At `q=r=200`, first actual guard failure and first integer/template mismatch both t=329, demonstrating finite-horizon exhaustion.
+Code: `calculation/new_structures/agent-X10/{four_sheet.py,four_sheet_fast.cpp,poly_guard.cpp,decimal_replay.cpp,reproduce.sh}`.
+Data: same directory `{four_sheet_data.json,fast_20k.csv,poly_guard.txt,replay_20k.txt,replay_wedge_20k.txt,replay_min_wedge_20k.txt,replay_collision.txt}`.
+Reproduce: `bash calculation/new_structures/agent-X10/reproduce.sh` (Python 3 and C++17, no dependencies).
+Proof and scope: `reports/AgentX10FourSheetMultiGap20000.md`.
+**NOT CLAIMED:** an infinite base-10 Lychrel orbit, a closing parameter-growth cycle, 196, or Lean verification.

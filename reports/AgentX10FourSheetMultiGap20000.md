@@ -43,3 +43,22 @@ For q=r=200, the chamber threshold first exceeds 200 at t=329, and the independe
 Reproduce from the repository root via `bash calculation/new_structures/agent-X10/reproduce.sh`. Outputs under that directory are compact checkpoints, not whole-number data dumps. `four_sheet.py` is written independently of `four_sheet_fast.cpp` and provides another transition realization for 264 steps. `decimal_replay.cpp` uses ordinary full-decimal digit arithmetic, not the four-sheet arithmetic, to advance the actual integer.
 
 **What is not proved:** Nothing shows that any fixed q,r can keep its gap guards satisfied forever; G_t grows roughly linearly in the tested range. This is no decimal Lychrel certificate and says nothing about 196. The next constructive target is a resetting or replenishing packet rule that makes the boundary offsets recur while maintaining nonnegative q,r parameter drift.
+
+## Strengthening: exact polyhedral two-gap region, negative r allowed
+
+The original reproducibility run restricted both q and r to be at least 11,984; this is a sufficient but unnecessarily strong orthant. A *separate C++ boundary checker* computes the exact maximum guard terms from all 20,001 four-packet states, without evaluating huge decimal numbers:
+
+- `q >= Q = 11984` from exterior-to-near-centre and far-centre-to-exterior separations, and nonnegative P1 exponents;
+- `q+r >= D = 12024` from central two-sheet separation;
+- `2q+r = q+(q+r) >= U = 1884` for nonnegative P2 exponents;
+- `3q+r = 2q+(q+r) >= V = 1865` for nonnegative P3 exponents.
+
+With `q>=11984` and `q+r>=12024`, the latter two conditions hold automatically. Since every guard is linear in q and r, this proves that the **whole closed lattice polyhedral wedge**, including negative values of r, satisfies the same 20,000-step symbolic trace. It is not an extrapolation from a finite grid of integer parameter samples. `poly_guard.cpp` records the monotone maxima and their exact values, and `decimal_replay.cpp` now checks these actual per-instance guards rather than incorrectly imposing an independent lower bound on r.
+
+Three independent full-word 20,000-step controls now pass with zero palindrome and 20,001/20,001 exact digit-template matches:
+
+- boundary `q=11984,r=40`: seed length 35,994, final length 44,248;
+- interior `q=11985,r=11985`: seed length 47,942, final length 56,196;
+- skewed negative-r `q=20000,r=-7976`: seed length 52,026, final length 60,280.
+
+This is a **strictly stronger finite result** than the first uniform statement. The 35,994-digit seed is the smallest seed by length *within this proven wedge*, not claimed smallest among all decimal seeds surviving 20,000 iterations. Every case is still finite-horizon and no infinite recurrence is proved.

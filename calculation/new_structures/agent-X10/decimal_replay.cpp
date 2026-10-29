@@ -31,6 +31,17 @@ static string raa(const string&s){
     if(carry)t.insert(t.begin(),(char)('0'+carry));
     return t;
 }
+// Exact concrete-parameter guard; unlike a uniform q,r>=G bound, it also
+// admits r<0 when q+r is still a sufficiently wide middle gap.
+static bool actual_gap_guard(const S&x,int q,int r){
+    const int bases[4]={0,q,2*q+r,3*q+r};
+    for(int k=0;k<4;k++)
+        if(!x[k].empty()&&bases[k]+x[k].start<0)return false;
+    for(int k=0;k<3;k++)
+        if(!x[k].empty()&&!x[k+1].empty()&&
+           bases[k+1]+x[k+1].start<=bases[k]+x[k].end())return false;
+    return !x[3].empty();
+}
 static bool ispal(const string&s){
     for(int i=0,j=(int)s.size()-1;i<j;i++,j--)if(s[i]!=s[j])return false;
     return true;
@@ -43,7 +54,7 @@ int main(int argc,char**argv){
     int G=0,matched=0,nonpal=0,first_mismatch=-1,first_guard=-1;
     for(int t=0;t<=T;t++){
         G=max(G,needed_G(x));
-        if((q<G||r<G)&&first_guard==-1)first_guard=t;
+        if(!actual_gap_guard(x,q,r)&&first_guard==-1)first_guard=t;
         bool ok=true;
         try{ok=(expected(x,q,r)==actual);}catch(const exception& e){ok=false;}
         if(ok)matched++;
