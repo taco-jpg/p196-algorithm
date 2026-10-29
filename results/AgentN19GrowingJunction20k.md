@@ -1,0 +1,8 @@
+# Agent N19: decimal two-block counter-machine centre survives 20,000 steps
+- **COMPUTED:** Explicit seed `9 8^15000 59 9^15000 80 7^15000 20 0^15000 1` (60,008 decimal digits) has no palindrome in all 20,001 checked states t=0..20,000.
+- At **EVERY** checked step the folded pairword contains two ordered disjoint, constant-period-six bulk runs (8,16), (16,14), (14,10), (10,2), (2,4), (4,8), each length ≥100, separated by an **unbounded-width empirical junction**.
+- First/second block lengths 15000/15000 at t=0; 1820/1786 at t=20,000. Junction grows 2→13183. Final integer has 68,241 decimal digits.
+- Two independent implementations: direct digit-vector reverse-add and GMP `N+rev(N)` with independently generated pairwords. Full per-step hashes, lengths, positions and counts match for all 20,001 states, trace SHA256 `0ac6f1d97ed2da30430bd1d8f393918691de847abcf4b678738b27187b297851`.
+- Complete reproducibility: `bash calculation/new_structures/agent-N19/run_bulk20k.sh` (C++17/GMP/Python3/SHA256); compact checkpoints under `calculation/new_structures/agent-N19/bulk20k_checkpoints.csv`.
+- Earlier universal six-edge nonregular two-counter format: `results/AgentN19UniversalTwoCounter.md`; longer mechanism report: `reports/AgentN19GrowingJunction20k.md`.
+- **UNDECIDED:** no closed infinite certificate, no result for 196, no Lean proof, no claim beyond the specified finite horizon and seed. The two bulk runs erode and thus currently need a replenishment mechanism.
