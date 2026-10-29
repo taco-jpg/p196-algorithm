@@ -1,0 +1,11 @@
+# AgentX28BinaryGaugeAvalanche20k
+- **PAPER PROOF:** carry-coboundary base-change lemma: for `B=k*(b-1)+1`, scaling every base-`b` input digit by `k` gives identical carry histories under one ordinary reverse-add step; each output column differs from scaled base-`b` output by `(k-1)*(c_out-c_in)`; the appended overflow digit is `1` in both bases.
+- **PAPER PROOF:** soundness of the affine run-length verifier: all splits, carries, palindrome-witness comparisons and paired-band runs are guarded for *every* integer `r>=R`; each accepted state represents the exact next integer family.
+- **COMPUTED:** base-10 family `N_r = 90(9^r)09(0^r)`, all integers `r>=14000`, for *every* time `t=0..20000`: nonpalindromic, with two mirrored pair-coefficient-9 bands (t<20, each >=13991) or two mirrored pair-coefficient-0 bands (t>=20, each >=1957).
+- **COMPUTED:** independently replayed `r=14000` with per-step GMP decimal integers and unrelated digit-array addition, 20000 steps, 0 disagreements, initial/final 28004/36298 digits, final FNV64 `3e5fc41a315ba602`; `r=14001` independently replayed through 1000 steps.
+- Exact symbolic checker: 312031239 paired run transitions and 20001 explicit palindrome checks, 0 unsafe parameter-dependent splits, `SUCCESS`.
+- The binary lifted first-step carry switches occur at low-first columns `r` and `2r+2`, producing localized `+8` and `-8` digit defects. At step 20 a carry shock converts the long coefficient-9 plateau into coefficient-0.
+- Reproduce: `g++ -O3 -std=c++17 calculation/new_structures/agent-X28/affine_carry.cpp -o /tmp/x28_affine && /tmp/x28_affine 14000 20000`.
+- Independently: `g++ -O3 -std=c++17 calculation/new_structures/agent-X28/lift_replay.cpp -lgmpxx -lgmp -o /tmp/x28_replay && /tmp/x28_replay 14000 20000`; `python3 calculation/new_structures/agent-X28/carry_gauge.py 25000`.
+- Sources/data: `calculation/new_structures/agent-X28/{affine_carry.cpp,lift_replay.cpp,carry_gauge.py,affine_14000_20000.txt,replay_14000_20000.txt}`; proof and limits: `reports/AgentX28BinaryGaugeAvalanche20k.md`.
+- **NOT** an infinite decimal Lychrel certificate, a result about 196, a closed temporal cycle, or LEAN-VERIFIED. The remaining structural question is how to regenerate the coefficient-0 band before its finite buffer is consumed.
