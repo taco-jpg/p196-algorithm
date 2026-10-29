@@ -1,0 +1,5 @@
+# AC41 NOTES
+2026-10-29: Read AGENTS, OPEN_PROBLEMS, FOCUS_SWARM, CELL_LEDGER, audit, #476, lattice rows and R30; registered CLAIM #6502695236 and FEED #6502883059.
+Exact full-word phase8 controls: 60,000 lexicographic and 60,060 spread J/U/C cases; all 30 physical overflows and no exact return. 25 true bigint paths at q14/20/40/80/160, all 120 pairword steps cross-checked.
+10,000 adversarial unknown-centre single-step validations and 100x120 genuine bigint/prefix checks passed.
+Existing AC11/AC15/AC26 contain equivalent general cone lemma. Full J0=0/U=(9,0,18) census: 2,476,099 exact endpoint W9 failures, zero unresolved/clock errors, 135:1,359,194,136:1,116,905. NOT a Lychrel existence proof.
