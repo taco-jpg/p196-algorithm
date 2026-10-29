@@ -1,3 +1,7 @@
+# STRONGER RESULT (supersedes the scope below)
+
+See CONE_REPORT.md: a self-contained two-ended carry-cone proof eliminates BOTH fixed centres for all J, all q>=14,k>=100, and every U orientation under the proven phase-4 clock. The old odd-centre census below remains a valid redundant independent check.
+
 # AC37 phase-4 J6, J[0]=0, odd fixed-centre elimination
 
 **COMPUTED (exhaustive reference-width check); PAPER PROOF (mod-11 necessary gate); not LEAN-VERIFIED.** This is a restricted negative subcell, not a decimal Lychrel certificate.
