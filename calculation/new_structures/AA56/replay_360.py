@@ -30,7 +30,7 @@ def pairword(n):
     d = list(map(int, str(n)[::-1]))
     return [d[i] + d[-1-i] for i in range(len(d))]
 
-def replay(q, k, J, U, C, steps=360):
+def final_pairword(q, k, J, U, C, steps=360):
     h = B + W*q + J + U*k
     n = realize_pair(h + C + h[::-1])
     overflow = []
@@ -38,9 +38,12 @@ def replay(q, k, J, U, C, steps=360):
         before = len(str(n))
         n = rev_add(n)
         overflow.append(len(str(n)) - before)
+    return pairword(n), overflow
+
+def replay(q, k, J, U, C, steps=360):
+    got, overflow = final_pairword(q, k, J, U, C, steps)
     target_h = B + W*q + J + U*(k + 15)
     target = target_h + C + target_h[::-1]
-    got = pairword(n)
     mismatch = next((i for i, (x, y) in enumerate(zip(got, target)) if x != y),
                     min(len(got), len(target)) if len(got) != len(target) else None)
     return mismatch, sum(overflow), ''.join(map(str, overflow[:48])), len(got), len(target)
@@ -50,9 +53,7 @@ def main():
     runs = 0
     for idx, (J, U, C, offset) in enumerate(CASES):
         for q in (20, 40, 80, 160):
-            # Include diagonal and off-diagonal independent band widths.
-            ks = sorted(set((max(20, q//2), q, 2*q)))
-            for k in ks:
+            for k in sorted(set((max(20, q//2), q, 2*q))):
                 mismatch, total, prefix, got_len, target_len = replay(q, k, J, U, C)
                 assert mismatch == 9*q + offset, (idx, q, k, mismatch, 9*q+offset)
                 assert total == 90, (idx, q, k, total)
@@ -61,7 +62,20 @@ def main():
                 runs += 1
                 print(f'case={idx} q={q} k={k} steps=360 overflow_sum={total} '
                       f'first_mismatch={mismatch} boundary_offset={34+9*q-mismatch}')
-    print(f'AA56 scoped negative replay PASS; runs={runs}; no all-width claim.')
+
+    # Boundary-apron diagnostic: compare the last 90 coefficients of W^q.
+    # The local suffix is stable in these two widths, while the centre window changes.
+    for idx, (J, U, C, _) in enumerate(CASES):
+        p1, _ = final_pairword(40, 40, J, U, C)
+        p2, _ = final_pairword(80, 160, J, U, C)
+        w1 = p1[len(B):len(B)+9*40][-90:]
+        w2 = p2[len(B):len(B)+9*80][-90:]
+        assert w1 == w2, ("boundary suffix changed", idx)
+        c1 = p1[len(p1)//2-10:len(p1)//2+11]
+        c2 = p2[len(p2)//2-10:len(p2)//2+11]
+        assert c1 != c2, ("centre window unexpectedly identical", idx)
+        print(f'case={idx} boundary_suffix_90=stable centre_window_21=changes')
+    print(f'AA56 scoped diagnostic PASS; big-int replays={runs+8}; no all-width claim.')
 
 if __name__ == '__main__':
     main()
