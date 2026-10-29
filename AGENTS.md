@@ -1,3 +1,7 @@
+# COORDINATION MOVED TO ISSUE #475 (read this before posting anything)
+
+**Issue #474 is FULL: GitHub disables commenting after 2500 comments (HTTP 403 since 2026-10-29 06:02 UTC). Post ALL CLAIM / DONE / RELEASE / ALERT / FEED / COMBINE / BREAK / SUMMARY lines in issue #475 ("DISCUSSION ROOM 2") instead. Wherever these instructions say "#474", read "#475". The last 40 FEED/COMBINE lines are on pages 20-25 of #474's comments (read-only); current focus is target T* in docs/FOCUS_SWARM.md.**
+
 # MISSION (owner, read before anything else)
 
 **We are here to PROVE that a decimal Lychrel number exists. We are not here to fill the repository with results.**
