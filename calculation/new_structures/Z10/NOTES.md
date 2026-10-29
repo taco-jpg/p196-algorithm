@@ -18,3 +18,11 @@
 - Independent arbitrary-precision decimal replay checked 40 controls (4 J values per U at q=14,20,40,80,160; k=100,100,200,400,800 respectively). All controls matched the 120/240 overflow clocks, all failed the full template return, and none reached a palindrome through step 240. At q=14 the independent first-mismatch offsets match the bit-sliced scan for all chosen controls.
 - Independent first-64-J big-integer histograms exactly match the C++ bit-sliced histograms for both U rotations: U=(9,0,18): -23:29,-22:35; U=(12,6,9): -23:27,-22:37.
 - The existing T12Rooted120CutPumping theorem plus the 26-coefficient protected interval lifts the reference prefix failure to the required uniform all-width fixed-J/C return exclusion for this U slice. This is a scoped negative result, not a global decimal Lychrel nonexistence theorem.
+
+
+## 2026-10-29 — phase-0 J5 slice 12/12
+
+- Claimed adjacent route in #475 comment 6495393976: U ranks 12 and 24, U=(9,2,16),(12,9,6), all 19^5 J words per U.
+- Compiled bit-sliced scan exhausted 2,476,099 J words per U at (q,k)=(14,100). All cases passed the rooted 120-step overflow clock; 0 restored the B34 W9^14 prefix. Histograms account for every candidate.
+- Independent arbitrary-precision replay checked 40 controls at q=14,20,40,80,160 with k=100,100,200,400,800. All 120/240 clocks matched; no full return or palindrome occurred in these controls. First-64-J big-integer mismatch histograms match the C++ engine for both U words.
+- T12 protected-cut insertion/reset-cone result lifts the reference prefix obstruction to a fixed-J/C uniform all-width return obstruction in this slice. No candidate passes the first-epoch W9 prefix, so there is no 240-step candidate to advance.
