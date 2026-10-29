@@ -15,3 +15,24 @@
 **6. Uniform bounds and pumping equivalence.** For q>=14 take W cut cW=34+18=52, after two copies. The rooted prefix has lost at most 91 at time 120, so even at q=14 the cut retains at least one complete W period plus reset guard on each side for each step t<120. For k>=100 take U cut cU=34+9q+|J|+165, after 55 copies. Since U-side losses are at most 152 and 122, the chosen cut has at least 13 protected columns on both sides even at time 120, more than one U reset period and the gamma shift. Therefore by induction through t=0..120, P_t(q+1,k)=Insert_(cW,W_(t mod12))(P_t(q,k)) and P_t(q,k+1)=Insert_(cU,U_t)(P_t(q,k)). At t=120 both inserted rows are back to W0 and U0, exactly matching the insertions in target P(q,k+5). Since insertion at a named cut is injective, Return(q+1,k) iff Return(q,k), and Return(q,k+1) iff Return(q,k). Induction in both independent counters proves Return(q,k) iff Return(14,100), for all q>=14,k>=100.
 
 **7. Reproduction, independence, limits.** Run python3 calculation/new_structures/T12/cut.py from the repository root. It checks the 12-root two-port identities, W phase map, every 30-word U phase cycle and its cone, and 120 full paired insertion orbits (30 U words, two sizes q/k=(14,100)/(20,160), both W and U insertions, t=0..120). Every trajectory step is computed by both Python arbitrary-precision n+reverse(n) and a separately coded schoolbook digit-array method; tested centres include odd [10] and even [8,8] and nontrivial arbitrary junctions. These checks confirm the small arithmetic identities; the all-width quantifier follows from the reset and insertion induction, not from sampled widths. No specific J,C,U is known to satisfy Return(14,100); no actual decimal Lychrel number is proved.
+
+
+## 8. Exact minimal carry-port cone for one 120-step epoch
+
+For a carry inlet c in {0,1}, the local carry transfer is T_x(c)=floor((x+c)/10). If x is any coefficient other than 9, T_x(0)=T_x(1), so an inlet-carry difference is reset after that coefficient. At x=9, T_9(0)=0 and T_9(1)=1, so the difference propagates and the causal front advances one extra coefficient. The coefficient values may be 0..18; this reset dichotomy still holds because the outgoing carry is always 0 or 1.
+
+For the rooted W9 boundary, let m_t=34+9q be the currently protected B+W prefix length, with q>=14. Its seam-facing edge is at W index 8 modulo 9. If r_t is the consecutive 9-run at that edge (the published W rows have no adjacent 9s, so r_t is 0 or 1), then m_(t+1)=m_t-(1+r_t-gamma_t). The recurrence depends on q only through m_t mod 9, which is fixed because 34+9q-35 is 8 modulo 9. Exhausting the 120 phase-locked rows gives exactly 91 columns of retreat: 89 steps of displacement 1, 30 overflow phases with displacement 0, and one non-overflow phase with displacement 2. This is the minimal uniform radius for arbitrary carry-port differences in this rooted W9 carry model.
+
+For U3, all 120 rows of each of the 30 allowed words have exactly one isolated 9 and the phase map returns to its starting row at t=120. The exact front recurrences are l_(t+1)=l_t+1+1[V_t[l_t mod 3]=9] and r_(t+1)=r_t+1+1[V_t[(-r_t-1) mod 3]=9]-gamma_t. Exact sums give the following complete table (each row covers all ten even a values):
+
+| Rotation of (9,a,18-a) | Junction-side radius | Centre-side radius | Number of words |
+|---|---:|---:|---:|
+| (9,a,18-a) | 152 | 121 | 10 |
+| (a,18-a,9) | 151 | 122 | 10 |
+| (18-a,9,a) | 150 | 120 | 10 |
+
+The maxima 152 and 122 occur at different rotations. These are exact minimal worst-case radii for the stated arbitrary 0/1 carry-inlet model: the recurrence follows the actual transfer difference, and each 9 encountered transmits that difference. They are not claims that every extremal carry pattern is physically reachable from a canonical seam.
+
+Thus for fixed finite J, the 120-step seam map depends on at most 91 W coefficients, all of J, and 152 U coefficients: a window of 243+|J| pair coefficients. The centre-side radius 122 is separate; when k>=100 the 300-coefficient U band has at least 300-152-122=26 coefficients between the two worst-case fronts. At q=14, the W root prefix leaves 17 coefficients beyond the cut after two W periods (69 protected coefficients versus cut position 52). This makes the local map finite-state for each fixed J, independently of q and k.
+
+Independent compiled reproduction is in calculation/new_structures/T12/verify.cpp. It checks the 30 U phase cycles, the exact cone table, 240 full paired-insertion cases at q=20,40,80,160 with k=q+80, every phase t=0..120, overflow clocks and odd-pair nonpalindrome guards; eight case configurations additionally cross-check every step against boost::multiprecision::cpp_int. Command and output are recorded in verify.log. This strengthens the local lemma only; it finds no returning seam and does not prove decimal Lychrel existence.

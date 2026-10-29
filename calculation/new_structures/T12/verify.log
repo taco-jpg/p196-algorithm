@@ -1,0 +1,11 @@
+Command:
+  g++ -O3 -std=c++17 calculation/new_structures/T12/verify.cpp -o /tmp/t12-verify
+  /tmp/t12-verify calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt
+
+Observed output:
+PASS cases=240 q=20,40,80,160 k=q+80; U-words=30; each insertion identity checked at t=0..120; exact digit-vector orbit; cpp_int cross-check cases=8
+CONE exact worst-case carry-port radii: W=91, U-junction-side=152 (min 150), U-centre-side=122 (min 120)
+  U cone (150,120): 10 words
+  U cone (151,122): 10 words
+  U cone (152,121): 10 words
+  Fixed-phase W retreat: 89 steps of 1, 30 of 0, 1 of 2 = 91 columns
