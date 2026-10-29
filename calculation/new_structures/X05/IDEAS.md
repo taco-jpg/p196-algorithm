@@ -1,0 +1,1 @@
+2026-10-29: EXHAUSTED-NONE for rooted phase-0 U=(9,6,12), |J|=3–4, odd C lengths 15–23: every one of 137,180 J words misses the W9 endpoint at t=120; the 27-cell reset-cone gap and T12 insertion theorem lift this to all q>=14,k>=100. REDIRECT: move to longer J, even centres, other U orientations, or a moving seam.
