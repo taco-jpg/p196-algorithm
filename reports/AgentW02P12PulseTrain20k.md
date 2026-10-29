@@ -1,0 +1,22 @@
+# W02: explicit 50,000-digit decimal triple, 20k full replay, and phase-labelled frontier pulses
+
+## Constructive nonpalindromic 20,000-step decimal candidate family
+**COMPUTED, exact finite horizon, base 10.** Use the same 34-site rooted p12/m9 phase-2 exterior and 9-periodic bulk from `AgentW02P12BallisticFront`: least-significant-first palindromic pair coefficients P, with B2=(2,11,1,6,8,1,7,15,9,3,9,4,7,9,10,16,9,11,4,10,8,8,9,11,11,7,4,3,9,12,1,1,9,11) and W2=(1,10,8,5,9,16,0,9,11), repeated to half-length of 25,000. Realize each coefficient by low digit P-min(9,P) and mirrored high digit min(9,P). This makes a canonical 50,000-digit decimal positive integer. For two further integers, overwrite symmetric pair coefficients starting at lower-half column 5997 by exactly one of
+- A=(6,1,0,1,11,14,10,6,11,16,1)
+- B=(16,0,9,11,1,10,8,5,14,18,0).
+
+Three integer orbits are advanced independently by an ordinary-decimal vector addition algorithm for `N+reverse(N)` (no lattice recurrence or carry table used). At *every* 0<=t<=20000, each number is nonpalindromic; all three digit lengths agree, from 50,000 to 55,000; the two complete lower-half pairword differences against the background match 64-bit FNV hashes from a separately written two-direction lattice carry transducer; both defect support endpoints and the rightmost two pair coefficients also match. That is **60,003 palindrome checks** and **40,002 full-difference hash comparisons**, not a sample. The 20,002-line generated trace hash is SHA256 `2b196574f6302f3263febb8629ae926d3d6861531539f86d1dfa76070e755fba`.
+
+## One-cell ballistic lock and next-cell pulse grammar
+Define R_X(t) to be the rightmost lower-half index at which X's pairword differs from the reference, and Q_X(t) the *actual* pair coefficient one site behind that rightmost difference, for X in {A,B}.
+
+- **COMPUTED:** `R_A(t+76)=R_A(t)+33` for every integer 337<=t<=19924. Likewise for B for every 155<=t<=19924. The (76,33) bulk/carry period identity is checked separately in the first W02 result; here only the finite physical front lock is claimed.
+- **COMPUTED:** for t=500..19924, the second-cell failure event is `Q_X(t+76)!=Q_X(t)`. For A the failures form exactly 20 blocks of 3 consecutive time points. Their start times are [4514,4590,5578,5654,5958,6034,7630,7706,8086,8162,10746,10822,11278,11354,12570,12646,12950,13026,14546,14622]. Every start is phase 30 modulo 76; blocks make ten pairs spaced 76.
+- **COMPUTED:** B has 42 blocks total, of which 38 are length 3 and four length 4. Excluding two exceptional groups, the remaining 30 blocks form 15 pairs, with starts phase 6 modulo 76 and 76 steps apart. Two distinct exceptional episodes start at t=941 and 18573, separated by **17632=232*76**. The six within-episode pulse starts have offsets (0,5,53,76,81,129), and lengths (3,4,3,3,4,3) in each episode. This equality is a *timing-pattern* recurrence, not a claim that full arithmetic snapshots return.
+
+The 20k forward replay substantially extends the first W02 result's 5000-step horizon and produces a new **phase-labelled, sparse-error** renormalization target. Front displacement and narrow error bursts are consistent with a finite-state moving *leading edge*, but the tail widens, and no complete incoming-outgoing collision packet or self-sustaining infinite certificate is established.
+
+## Independent reproducibility, exact cap and failure statement
+From the repository root execute `sh calculation/new_structures/agent-W02/run_20k.sh`. The runner builds two independent C++17 programs, checks the trace SHA256, performs three actual full 20k decimal vector replays and all hashes/endpoints, runs a separate Python pulse classifier whose expected counts, residues and times are asserted, and verifies that deliberate trace corruption is rejected. Reproduction takes finite local runtime; there are no external datasets. Expected summary is stored in `calculation/new_structures/agent-W02/pulse_expected.json`.
+
+**Not claimed:** infinitely many steps, a periodic wake, closure of any collision rewrite, SAT soundness for unbounded gaps, a proven base-10 Lychrel number, a Lean theorem, or anything about the number 196 specifically. The shape and no-palindrome assertions are exact for t=0..20000 only. This is a constructive finite-horizon candidate and a refinement of the certificate target, not the requested final infinite certificate.
