@@ -1,0 +1,11 @@
+# W12 six-digit 100000-step pumped decimal family
+
+**COMPUTED** finite trajectory family, plus the already published **PAPER PROOF** affine-polynomial soundness lemma. No infinite closure and no Lean verification.
+
+Take base-ten N_0(q)=12(428571)^q34, all q>=16000. At each time t=0..100000, cut the actual q=16000 MSB-first decimal word A_tB_t at c_t=floor(n_t/2). The independently replayed q=16001 word is exactly A_t U_t B_t for a six-digit U_t; the length difference is exactly six, at every phase, not only checkpoints. For any k>=0 let S_t(k)=A_t U_t^k B_t. Then S_t(k), reverse(S_t(k)) and S_(t+1)(k) have values affine over Q in X=10^(6k). The literal schoolbook decimal reverse-add equations at k=0 and k=1 determine both coefficients, hence hold for all k. A mismatch outside the insertion cut at every phase proves S_t(k) never palindromic. This gives the all-q>=16000, 100000-edge finite claim. It does not yield an unbounded temporal loop.
+
+The independent arithmetic layer parses literal decimal strings into base-10000 limbs, separately reverses the input decimal string and adds with limb carries; it checks BOTH q=16000 and q=16001 at every t divisible by 1000. All 100000 steps are directly replayed by the separate schoolbook decimal-digit engine. This is not claimed to be a second full 100000-step independent replayer.
+
+The 100000-step run uses four 25000-step chunks with exact decimal strings and carry/period counters persisted under a disposable temporary directory. The source file and compact expected checkpoint file reproduce the entire run without network, external libraries, or any uncommitted input. All central 128-digit windows have primitive period 1 or 6, and all reflected pair-coefficient windows have period 1 or 6. The six-digit periodic region becomes uniform early; the remaining centre is an expendable reservoir, NOT a self-renewing band.
+
+Reproduction: sh calculation/new_structures/agent-W12/run_long.sh . The runner compiles long.cpp, runs 0..25000..50000..75000..100000 and diffs every checkpoint against long_expected.txt. No repository-wide tools/verify.py --changed run was possible without a local full checkout (github.com DNS unavailable); no Lean files are changed.
