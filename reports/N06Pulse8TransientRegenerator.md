@@ -1,0 +1,17 @@
+# N06: Eight-symbol decimal centre pulse with a 248-step transient delay
+
+**COMPUTED** finite-time constructive mechanism only; not a periodic centre or an infinite decimal Lychrel proof.
+
+Use the original base-10 p8 SCC rec0 entrance A of length39 and spatial periodic word W length20 in calculation/decimal_frontier/lattice_formats/p8_scc.txt. Define Q_L=A ++ W^L ++ C with **C=[18,9,8,14,2,11,13,16]**. Pairword P_L=Q_L ++ reverse(Q_L). Construct a canonical positive decimal integer by splitting each low-half coefficient x into low digit min(9,x) and its high mirror partner x-min(9,x). Its decimal length is 78+40L+16. This centre is **transient**, not a stationary kink.
+
+The original unpulsed N06 family Q_L=A++W^L first fails the tracked eight-phase first-eight pairword at t=228+88L for tested L>=1. With C, independent digit-vector simulation finds exact first failure **t=476+88L**, a gain of 248 steps at **every tested** L=1,2,10,221,222. Respective pulsed first failures: 564,652,1356,19924,20012. This is a useful renormalisation delay circuit: a standard 20-symbol periodic W gives 88 steps, while the 8-symbol pulse gives 248 steps, roughly 56.36 effective lattice positions. None of these observations is a universal all-L formula.
+
+**Same-length controls** at L=1, total 134 decimal digits: all-zero 8-symbol centre fails at t310; first eight W coefficients [17,3,1,13,17,11,14,3] fail at t348; engineered centre fails at t564. Thus the effect is not simply extra decimal digits or periodic filler.
+
+**Independent big-integer replay** at L=222: 8,974-digit explicit decimal seed, SHA256 including newline 27422d16426c85d5c74498fc382958d8ff6bd78335dac425a805ec99ad4d95e8. Separate decimal digit-vector and GNU GMP arbitrary-precision integer engines both perform 20,000 actual decimal reverse-and-add operations, check every one of the 20,001 states for palindrome, validate the full eight tracked pair coefficients against all eight temporal phases, and check alternating overflow 10101010. No mismatch or palindrome. At t=20000 the integer has 18,974 decimal digits, residue mod1000000007 = 383594414, and decimal-string FNV64 = 746813162037088509 (identical between engines). This seed is 104 digits shorter than the earlier unpulsed 9,078-digit N225 20k witness.
+
+**Exact failure mechanism:** the first-eight pattern holds at all times through t20011 inclusive. At **t20012** frontier length drops to seven, because pair coefficient index7 is 13 whereas the temporal phase expects 14. The integer itself is not claimed to become a palindrome then; only the protective pattern fails.
+
+Source and reproduction in calculation/new_structures/agent-N06/pulse8/{pulse8_digit.cpp,pulse8_gmp.cpp,pulse8_front.cpp,run_checks.sh,observations.json}. From repository root run bash calculation/new_structures/agent-N06/pulse8/run_checks.sh (C++17 and GMP required). The two engines implement actual ordinary integer reverse/add independently. Controls and exact hashes are asserted. Scope of every formula is the explicit finite set L=1,2,10,221,222; no Lean or all-length theorem is claimed.
+
+**Next structural question:** explain the 8-symbol centre as a finite carry-state delay transducer and search for a *regenerating* return edge, rather than assuming a finite transient can be iterated indefinitely.
