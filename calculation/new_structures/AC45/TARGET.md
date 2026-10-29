@@ -1,2 +1,2 @@
-# Exact target (UNDECIDED)
-Decide whether there exist arbitrary finite J, one of the 30 charge-zero U3 rotations, and a physically realizable palindromic C (both parities), such that rooted p12/m9 P(14,100;J,U,C) maps after exactly 120 *genuine decimal* reverse-and-add steps to identical P(14,105;J,U,C), with every phase and carry port physical. No strict-W9 preservation requirement at intermediate steps. This is the reference-width lemma feeding the T12 all-width lift.
+# AC45 TARGET
+Decide whether a phase-0 rooted canonical physical P(14,100;J,U,C) can undergo 120 ordinary base-ten reverse/add steps and equal P(14,105;J,U,C) for any finite SAME J, charge-zero U3, and palindromic C, accounting for both physical carry directions and actual overflows. The established T12 pumping reduction would lift any positive result to all q>=14,k>=100. Status: UNDECIDED. The one-layer MDD control in symbolic.py does not decide this.

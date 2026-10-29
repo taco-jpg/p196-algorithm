@@ -1,4 +1,3 @@
-# AC45 exploratory notes
-- A local single-column carry ROBDD has 50 live nodes but this is not a 120-layer state bound. Naive extrapolation from it would be invalid.
-- The 120-layer physical two-sided transducer must store upper-port state and the overflow-induced one-digit lag; a single forward carry chain is insufficient.
-- Need a toy-clock planted return with a fully completed product before trusting an emptiness result.
+# AC45 IDEAS
+- Single-spatial-layer (l,h) MDD does not by itself constrain a physical 120-time trajectory. Need 120-bit carry track per column and gamma-dependent shifted partner; using the four-state count as the pi185 count would be erroneous.
+- No strict phasewise W9 pruning in the full product: endpoint healing is allowed.
