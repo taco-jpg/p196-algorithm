@@ -39,7 +39,7 @@ For a reproducible multi-fixture test, including an even centre, an odd centre, 
 
     bash calculation/new_structures/U43/test_controls.sh
 
-pairword_code uses 012345678ABCDEFGHI: digits 0 through 9 represent coefficients 0 through 9, and A through I represent 10 through 18. This is an exact lossless encoding, not a digest.
+pairword_code uses 0123456789ABCDEFGHI: digits 0 through 9 represent coefficients 0 through 9, and A through I represent 10 through 18. This is an exact lossless encoding, not a digest.
 
 ## Scope and limitations
 
