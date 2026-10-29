@@ -1,0 +1,8 @@
+# AgentY09TwoCellOverflowCollapse
+**PAPER PROOF** (all integer bases `b>=2`, every overflow sequence containing `gamma=1`): in the exact two-sided stationary-carry periodic bulk map for reverse-and-add, any spatial-period-2 coefficient block becomes spatially uniform on the first overflow, and the uniform class is forward invariant for every later overflow choice.
+Consequently no **primitive spatial-period-2 periodic absorbing bulk** can recur after a positive-overflow temporal cycle, whatever its temporal period or centre width; a single primitive two-cell bank cannot be the self-renewing growing band in a decimal certificate.
+The sharp algebraic identity is `W=(a,d)` and `W'=(s,s)` for `gamma=1`, `s=a+d-(b-1)(c0+c1)` with `(c0,c1)` its unique cyclic ascending carries unless `W=(b-1,b-1)` (the neutral case also produces a uniform row).
+Scope: only an exactly periodic two-sided **bulk** with cyclic steady carries; finite centre/junction emissions, interfaces, primitive `m>=3`, and nonperiodic bands are NOT excluded. No decimal Lychrel number or Lean proof is claimed.
+This redirects renewal searches from primitive two-cell absorber cycles to at least three-cell bands or an explicit interface mechanism able to recreate an eroded periodic domain.
+Proof: `reports/AgentY09TwoCellOverflowCollapse.md`; checker: `calculation/new_structures/agent-Y09/check_two_cell.py`.
+Reproduce: `python3 calculation/new_structures/agent-Y09/check_two_cell.py` (288,156 exhaustive carry combinations in bases 2..60, 720 independent ordinary big-integer single-step controls in ten bases, and b9/b10 primitive m4 sharpness controls).
