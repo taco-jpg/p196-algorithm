@@ -1,0 +1,8 @@
+# AgentW30OddFiveCarrier
+**COMPUTED:** A previously unrooted 5-site base-10 *odd carrier* in pairword space has 40-step exact local period under overflow `10101010` and translates +2 sites each eight steps. Every phase has an odd coefficient and no 9.
+**PAPER PROOF (local identity):** Away from the ends and centre, if adjacent pair coefficients avoid 9, the next coefficient is exactly `2p_i+h(p_{i-1})+h(p_{i+1})-20h(p_i)` for overflow 0, and `p_i+p_{i-1}-9(h(p_i)+h(p_{i-1}))` for overflow 1, where `h(x)=[x>=10]`.
+**COMPUTED (ordinary integers):** The explicitly realizable decimal seed with pairword `B0 ++ W0^300 ++ V^8400 ++ reverse(W0^300) ++ reverse(B0)`, `V=[17,3,14,3,17]` and published N10 `B0,W0`, survives **20,000** additions without a palindrome; its entire pairword and a two-sided guarded odd-carrier island agree at **every one** of 20,001 states with independent base-10^9 arbitrary-precision integer arithmetic.
+Initial length 54,078 digits, final length 64,078; alternating overflow has exactly 10,000 ones. The guarded 5-periodic interval has length 41,996 initially and 1,996 at step 20,000.
+**Scope:** A new concrete finite-horizon *moving odd wave inside an otherwise distinct p8/m20 exterior*, NOT an infinite decimal certificate. The conservative corridor shrinks two cells per update, and a self-replenishing edge/interface is not established.
+Code and data: `calculation/new_structures/agent-W30/`; full formulas and replay conditions: `reports/AgentW30OddFiveCarrier.md`.
+Reproduce: `sh calculation/new_structures/agent-W30/run.sh` (optional extra GMP short control with `W30_GMP=1`). No Lean file was changed.
