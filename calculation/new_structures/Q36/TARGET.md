@@ -1,21 +1,16 @@
-# Q36 target: T* U3 screw phase
+# Q36 target: phase-resolved odd-centre gate
 
-Prove the exact local bulk transfer for every charge-zero U3 word
-S = { cyclic rotations of (9,a,18-a) : a in {0,2,...,18} }
-under the rooted p12/m9 overflow clock gamma_t = 1 iff t mod 12 is 0, 4, or 8.
+Using the exact local U3 transfer in tstar_screw.py, prove the phase-specific
+mod-11 gate for every phase-indexed T* family with independently variable q/k
+parities and an odd palindromic centre:
+A(C_t)=A(U_t) and 2A(J_t)+(-1)^|J_t|A(U_t)=-2A(B_t) (mod 11), where
+A(X)=sum_i (-1)^i X_i and the p12 root satisfies 2A(B_t)+A(W_t)=0.
 
-For each U, decimal normalization of U and reverse(U) has a carry-reset state
-because each word contains a coefficient other than 9. If Y- and Y+ are their
-normalized digit blocks with their reset carries, define
-F_gamma(U)[r] = Y-[r] + Y+[(gamma-1-r) mod 3], r=0,1,2.
+Combine the U3 screw phase U_(t+40)=rot_left(U_t,1) with exterior phases 0,4,8.
+The centre-charge requirements at t=0,40,80 must be pairwise distinct for
+every charge-zero U3 start. Check the complete finite state set and the
+modular parity equations exactly.
 
-Exact finite-state target: for every U0 in S, iterating U_(t+1)=F_gamma_t(U_t)
-keeps U_t in S and gives U_(t+40)=rotate_left(U_t,1),
-U_(t+80)=rotate_left(U_t,2), and U_(t+120)=U_t, with every U_t having
-three distinct entries. The 12-step macro graph should split into three
-10-cycles. The local formula must be justified for any sufficiently protected
-interior U^k / reverse(U)^k block, independently of J, C, q, and k.
-
-What remains open: synthesize a physical J/C carry-history transition that
-respects this three-state screw phase and restores the complete T* interface
-with positive net growth. This target alone is not a seam return or a Lychrel proof.
+Remaining problem: find actual phase-indexed J_t/C_t words satisfying the
+required residues and all exact carry equations, or prove no such trajectory
+exists. Even-centre phases are not excluded by this mod-11 gate.

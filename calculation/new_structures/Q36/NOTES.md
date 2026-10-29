@@ -7,3 +7,6 @@
 - Independent schoolbook digit-array and ordinary BigInt controls: 28,800 T* edges across q=k=20,40,80,160, all 30 U rotations and odd/even centre controls. These controls verify arithmetic/clock only, not survival or closure.
 - The reproduction script also rechecks the base-9 20-edge control and base-50 16-edge control at four widths.
 - Remaining gap: a real physical seam/carry-state repair with positive growth and phasewise nonpalindrome proof. No decimal certificate or ALERT.
+- Extended the screw-phase result with a phase-specific odd-centre mod-11 gate. Direct expansion of A(P) gives A(C_t)=A(U_t) and 2A(J_t)+(-1)^|J_t|A(U_t)=-2A(B_t), assuming both q/k parities occur and the root compatibility 2A(B_t)+A(W_t)=0 holds.
+- Exhaustively checked the mod-11 truth table over all 12 exterior phases, 30 U states, both J parities, and all residues A(J), A(C). At checkpoints 0/40/80 the required centre charges are always pairwise distinct; the J target is constant only in two recorded cases.
+- Scope guard: this is an odd-centre condition only. It does not rule out even-centre phases, and a 120-edge certificate may vary J/C at the 40/80 checkpoints.
