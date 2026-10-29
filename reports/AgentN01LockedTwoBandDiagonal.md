@@ -31,3 +31,6 @@ This is an exact **single edge only**, not a finite temporal cycle. The period-4
 From repository root:
     python3 calculation/new_structures/agent-N01/reproduce.py
 Requires only Python 3 standard library. The code generates target data from the k=2 integer, then checks the full finite Boolean matrix semigroup and independent big integers at six more lengths. A repository-wide tools/verify.py run and Lean kernel check were not available in the sandbox; **no Lean verification is claimed**.
+
+## Reproducibility correction
+The first posted source accidentally transcribed two rec0-root path entries incorrectly (indices 35 and 37, zero-based). The current reproduce.py corrects these to 15 and 7, matching the first SCC path in p8_scc.txt. The stated all-k matrix-power check and independent ordinary-integer examples both pass with the correction; the 128-edge chain also reruns successfully. The previous source was a different valid finite family, but must not be described as the exact path from p8_scc.txt.
