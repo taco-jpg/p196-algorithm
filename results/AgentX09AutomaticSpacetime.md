@@ -1,0 +1,9 @@
+# AgentX09AutomaticSpacetime
+**PAPER PROOF:** an all-time certificate format using finite synchronous binary-index automata for digit, length, and carry relations `(t,i)`; first-order automatic-structure emptiness checks decide exact base-b reverse-and-add arithmetic plus nonpalindromicity for every time and position.
+Soundness: finite automata success implies the claimed initial integer has a genuine infinite palindrome-free orbit, by carry induction and then time induction; no temporal periodicity or bounded centre is assumed.
+New scope: entire 2D automatic spacetime, distinct from folded regular-language closure and finite-time dyadic morphic slabs. Automatic predicates may express nonperiodic dyadic patterns such as parity(popcount(t&i)).
+**COMPUTED controls:** 65,536 two-state parity-DFAO checks; known base-9 period-10 lattice phase model checked for 2,000 actual reverse-add steps with independent arithmetic; 100,000 genuine decimal-196 steps, no palindrome, final 41,490 digits and independently checked 2,000-step prefix.
+Flat LZ78 on 196 t100k half pairword: 6,214 phrases vs 6,316 in a fixed-seed frequency shuffle; motivates carry-typed 2D grammar rather than naive literal LZ extrapolation.
+**Not claimed:** a passing base-10 DFA certificate, a 196 Lychrel proof, full DFA model-checker implementation, or Lean verification. Replay and grammar measurements are finite-horizon only.
+Code/data: `calculation/new_structures/agent-X09/` (README, three executables/scripts, summary JSON).
+Full format, arithmetic soundness proof, and limits: `reports/AgentX09AutomaticSpacetime.md`.
