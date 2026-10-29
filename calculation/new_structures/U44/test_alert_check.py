@@ -94,7 +94,7 @@ def test_r18_phase4_fixed_seam_rejected() -> None:
         "require_odd_pair_guard": True,
     }
     claim = ac.normalize_claim(raw, ROOT / "calculation/new_structures/U44/r18_phase4.json")
-    result = [ac.run_sample(claim, q, k) for q, k in claim["samples"]]
+    result = [ac.run_sample(claim, sample["q"], sample["k"], sample["targets"]) for sample in claim["samples"]]
     expected_first = [215, 395, 755, 1475]
     for item, first in zip(result, expected_first):
         endpoints = item["endpoint_returns"]
@@ -106,6 +106,37 @@ def test_r18_phase4_fixed_seam_rejected() -> None:
             raise RuntimeError(f"R18 first mismatch differs from expected {first}: {endpoints}")
         if endpoints[0]["return"] or endpoints[1]["return"]:
             raise RuntimeError("R18 fixed seam was falsely accepted")
+
+
+def test_phase_changing_endpoint_template_rejected() -> None:
+    raw = {
+        "name": "R18 C5/J23 changed-endpoint regression",
+        "base": 10,
+        "B": [10,4,7,5,13,6,11,1,9,16,16,18,10,9,4,8,1,7,0,2,15,15,9,7,7,10,17,14,18,8,6,6,18,4],
+        "W": [8,1,15,4,0,5,5,18,4],
+        "J": [17,5,5,9,6,6,6,14,5,11,7,10,14,7,8,15,9,6,4,18,9,10,17,2],
+        "U": [18,0,9], "C": [4,14,4],
+        "samples": [[20,40]], "q_gain": 0, "k_gain": 5,
+        "epoch_steps": 120, "epochs": 2,
+        "overflow_clock": "1000", "overflow_repeats": 30,
+        "endpoint_templates": [
+            {"J": [17,5,1,9,6,6,6,0,5,18,7,10,14,7,8,0,9,6,4,0,9,10,17],
+             "U": [18,0,9], "C": [10,0,0,0,10], "q_offset": 0, "k_offset": 5},
+            {"J": [17,5,1,9,6,6,6,0,5,18,7,10,14,7,8,0,9,6,4,0,9,10,17],
+             "U": [18,0,9], "C": [10,0,0,0,10], "q_offset": 0, "k_offset": 10},
+        ],
+    }
+    claim = ac.normalize_claim(raw, ROOT / "calculation/new_structures/U44/r18_c5_j23.json")
+    result = ac.run_sample(claim, 20, 40)
+    endpoints = result["endpoint_returns"]
+    if result["status"] != "FAIL" or len(endpoints) != 2:
+        raise RuntimeError("phase-changing target family was not checked at both endpoints")
+    if endpoints[0]["target_J_length"] != 23 or endpoints[0]["target_C_length"] != 5:
+        raise RuntimeError("explicit endpoint J/C family was ignored")
+    if endpoints[0]["first_mismatch"] != 215 or endpoints[0]["return"]:
+        raise RuntimeError(f"expected exact C5/J23 full-interface failure at 215: {endpoints}")
+    if result["engine_mismatch_times"] or result["clock_mismatch_times"] or result["palindrome_times"]:
+        raise RuntimeError("changed-endpoint control's engine/clock/guard audit failed")
 
 
 def test_invalid_template_rejected() -> None:
@@ -123,5 +154,6 @@ if __name__ == "__main__":
     test_known_nonreturning_control()
     test_prefix_only_seam_rejected()
     test_r18_phase4_fixed_seam_rejected()
+    test_phase_changing_endpoint_template_rejected()
     test_invalid_template_rejected()
     print("U44_ALERT_CHECK_TESTS_PASS")

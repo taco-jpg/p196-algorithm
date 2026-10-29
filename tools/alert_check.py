@@ -5,8 +5,12 @@ This tool checks the physical base-10 orbit with two independent engines:
 (1) Python's unbounded integer plus decimal-string reversal, and (2) an LSD-first
 schoolbook digit-array reverse-and-add. At t=120 and t=240, the complete folded
 pair-coefficient word must equal the claimed template with the specified gains.
-It checks every ordinary step's overflow bit, actual non-palindromicity, and the
-stronger odd-pair-coefficient guard.
+
+JSON claims supply either a lattice path or explicit B/W arrays, plus J/U/C.
+Use samples: [[q,k], ...] or q_values with k_values/k_scale; the default widths
+are q=k=20,40,80,160. The default epoch clock is 1000 repeated 30 times.
+For phase-changing seam families, endpoint_templates (two objects) or each
+sample's targets can override B/W/J/U/C and the q/k offsets at t=120 and t=240.
 
 A PASS is a finite differential replay only. It is not an all-width lemma or an
 all-time Lychrel proof. For an all-width claim, use a symbolic checker too.
@@ -160,6 +164,32 @@ def digit_array_step(d: list[int]) -> list[int]:
     return out
 
 
+def normalize_target_spec(spec: dict[str, Any], *, B: list[int], W: list[int],
+                         J: list[int], U: list[int], C: list[int],
+                         q: int, k: int, epoch: int,
+                         q_gain: int, k_gain: int) -> dict[str, Any]:
+    need(isinstance(spec, dict), f"endpoint template {epoch} must be a JSON object")
+    if "B" in spec or "W" in spec:
+        need("B" in spec and "W" in spec, f"endpoint template {epoch} must provide both B and W")
+        target_B = parse_coefficients(spec["B"], f"endpoint_templates[{epoch-1}].B")
+        target_W = parse_coefficients(spec["W"], f"endpoint_templates[{epoch-1}].W")
+    else:
+        target_B, target_W = B, W
+    target_J = parse_coefficients(spec["J"], f"endpoint_templates[{epoch-1}].J") if "J" in spec else J
+    target_U = parse_coefficients(spec["U"], f"endpoint_templates[{epoch-1}].U") if "U" in spec else U
+    target_C = parse_coefficients(spec["C"], f"endpoint_templates[{epoch-1}].C") if "C" in spec else C
+    q_offset = spec.get("q_offset", epoch * q_gain)
+    k_offset = spec.get("k_offset", epoch * k_gain)
+    need(type(q_offset) is int and q_offset >= 0, f"endpoint template {epoch} q_offset must be nonnegative")
+    need(type(k_offset) is int and k_offset >= 0, f"endpoint template {epoch} k_offset must be nonnegative")
+    need(len(target_B) == 34 and len(target_W) == 9 and len(target_U) == 3,
+         f"endpoint template {epoch} must use B34/W9/U3")
+    need(target_C == target_C[::-1], f"endpoint template {epoch} C must be a palindrome")
+    build_template(target_B, target_W, target_J, target_U, target_C, q + q_offset, k + k_offset)
+    return {"B": target_B, "W": target_W, "J": target_J, "U": target_U, "C": target_C,
+            "q_offset": q_offset, "k_offset": k_offset}
+
+
 def normalize_claim(raw: dict[str, Any], claim_path: Path) -> dict[str, Any]:
     need(isinstance(raw, dict), "claim must be a JSON object")
     need(raw.get("base", 10) == 10, "this alert checker is for base 10 only")
@@ -208,6 +238,10 @@ def normalize_claim(raw: dict[str, Any], claim_path: Path) -> dict[str, Any]:
         clock = clock * repeats
     need(len(clock) == epoch_steps,
          f"overflow_clock must contain exactly {epoch_steps} bits (or a pattern with overflow_repeats)")
+    global_targets = raw.get("endpoint_templates")
+    if global_targets is not None:
+        need(isinstance(global_targets, list) and len(global_targets) == 2,
+             "endpoint_templates must contain exactly two endpoint objects (t=120 and t=240)")
     samples = raw.get("samples")
     if samples is None:
         q_values = raw.get("q_values", list(DEFAULT_Q_VALUES))
@@ -225,22 +259,36 @@ def normalize_claim(raw: dict[str, Any], claim_path: Path) -> dict[str, Any]:
         samples = [{"q": q, "k": k} for q, k in zip(q_values, k_values)]
     need(isinstance(samples, list) and samples, "samples must be a nonempty list")
     normalized_samples = []
+    seen_samples = set()
     for i, sample in enumerate(samples):
         if isinstance(sample, list) and len(sample) == 2:
             q, k = sample
+            sample_targets = None
         elif isinstance(sample, dict):
             q, k = sample.get("q"), sample.get("k")
+            sample_targets = sample.get("targets")
         else:
-            raise CheckError(f"samples[{i}] must be [q,k] or {{\"q\":q,\"k\":k}}")
+            raise CheckError(f"samples[{i}] must be [q,k] or an object with q,k and optional targets")
         need(type(q) is int and q >= 20 and type(k) is int and k >= 20,
              f"samples[{i}] requires q,k >= 20")
-        normalized_samples.append((q, k))
-    need(len(set(normalized_samples)) == len(normalized_samples), "duplicate q,k samples")
-    for q, k in normalized_samples:
-        # Reject malformed/noncanonical family claims before starting long replays.
+        need((q, k) not in seen_samples, "duplicate q,k samples")
+        seen_samples.add((q, k))
+        if sample_targets is not None:
+            need(isinstance(sample_targets, list) and len(sample_targets) == 2,
+                 f"samples[{i}].targets must contain exactly two endpoint objects")
+            target_raws = sample_targets
+        elif global_targets is not None:
+            target_raws = global_targets
+        else:
+            target_raws = [{}, {}]
+        targets = [
+            normalize_target_spec(target_raws[epoch - 1], B=B, W=W, J=J, U=U, C=C,
+                                  q=q, k=k, epoch=epoch, q_gain=q_gain, k_gain=k_gain)
+            for epoch in (1, 2)
+        ]
+        # Reject malformed/noncanonical source and endpoint families before replay.
         build_template(B, W, J, U, C, q, k)
-        for epoch in (1, 2):
-            build_template(B, W, J, U, C, q + epoch * q_gain, k + epoch * k_gain)
+        normalized_samples.append({"q": q, "k": k, "targets": targets})
     odd_guard = raw.get("require_odd_pair_guard", True)
     need(type(odd_guard) is bool, "require_odd_pair_guard must be a JSON boolean")
     return {
@@ -259,8 +307,19 @@ def first_difference(got: list[int], expected: list[int]) -> int | None:
     return None if len(got) == len(expected) else limit
 
 
-def run_sample(claim: dict[str, Any], q: int, k: int) -> dict[str, Any]:
+def run_sample(claim: dict[str, Any], q: int, k: int,
+               targets: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     B, W, J, U, C = (claim[name] for name in ("B", "W", "J", "U", "C"))
+    if targets is None:
+        sample = next((item for item in claim["samples"] if item["q"] == q and item["k"] == k), None)
+        if sample is not None:
+            targets = sample["targets"]
+        else:
+            targets = [
+                normalize_target_spec({}, B=B, W=W, J=J, U=U, C=C, q=q, k=k,
+                                      epoch=epoch, q_gain=claim["q_gain"], k_gain=claim["k_gain"])
+                for epoch in (1, 2)
+            ]
     source_pair = build_template(B, W, J, U, C, q, k)
     digits = realize_pairword(source_pair)
     number = int("".join(str(x) for x in reversed(digits)))
@@ -298,12 +357,15 @@ def run_sample(claim: dict[str, Any], q: int, k: int) -> dict[str, Any]:
                     fail(f"t={t}: no odd pair-coefficient witness for the non-palindrome guard")
             if t > 0 and t % claim["epoch_steps"] == 0:
                 epoch = t // claim["epoch_steps"]
-                target_q = q + epoch * claim["q_gain"]
-                target_k = k + epoch * claim["k_gain"]
-                expected = build_template(B, W, J, U, C, target_q, target_k)
+                target_spec = targets[epoch - 1]
+                target_q = q + target_spec["q_offset"]
+                target_k = k + target_spec["k_offset"]
+                expected = build_template(target_spec["B"], target_spec["W"], target_spec["J"],
+                                          target_spec["U"], target_spec["C"], target_q, target_k)
                 diff = first_difference(pw_digits, expected)
                 result = {
                     "step": t, "target_q": target_q, "target_k": target_k,
+                    "target_J_length": len(target_spec["J"]), "target_C_length": len(target_spec["C"]),
                     "return": diff is None, "actual_pairword_length": len(pw_digits),
                     "expected_pairword_length": len(expected), "first_mismatch": diff,
                 }
@@ -369,9 +431,10 @@ def main() -> int:
                       "q_gain_per_epoch": claim["q_gain"], "k_gain_per_epoch": claim["k_gain"]}, sort_keys=True), flush=True)
     all_pass = True
     results = []
-    for q, k in claim["samples"]:
+    for sample in claim["samples"]:
+        q, k = sample["q"], sample["k"]
         try:
-            result = run_sample(claim, q, k)
+            result = run_sample(claim, q, k, sample["targets"])
         except CheckError as exc:
             result = {"status": "FAIL", "q": q, "k": k, "failure_count": 1, "failures": [str(exc)],
                       "scope_warning": "Finite-width replay only; not an all-width or all-time proof."}
