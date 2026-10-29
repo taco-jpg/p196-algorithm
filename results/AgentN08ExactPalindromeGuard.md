@@ -1,0 +1,11 @@
+# Agent N08: exact palindrome-output guard for folded regular languages
+- **PAPER PROOF:** For any integer base b>=2, the set of folded palindromic pairwords P for which the normalized integer val_b(P) is itself a palindrome is regular.
+- A finite three-component carry transducer checks this property **for every input length**, with full gamma=0/1 and even/odd centre handling.
+- **PAPER PROOF:** In N08's regular-language certificate criterion, replace "every P has an odd pair coefficient" by the strictly weaker exact edge guard "val_b(P) is not a palindrome for every accepted P".
+- The existing finite-state language-inclusion obligations plus this edge guard imply non-palindromic iterates for **all time** by induction, conditional on finding a closed language cycle and non-palindromic seed.
+- **COMPUTED:** complete product search confirms the exact guard for all m>=1 in the explicit decimal family P_m=[2,4,12]++[0]^m++[12,4,2]. The normalized outer digits agree (2/2), but the next inner digits differ (5/4).
+- Every P_m has only even coefficients; the old odd-pair guard therefore cannot certify even a single edge of this family.
+- Explicit decimal realization N_m=2*10^(m+5)+4*10^(m+4)+6*10^(m+3)+600, with N_m+rev(N_m) non-palindromic for all m>=1.
+- Standalone code `calculation/new_structures/agent-N08/exact_palindrome_guard.py`; run `python3 calculation/new_structures/agent-N08/exact_palindrome_guard.py`.
+- 34,993 exhaustive normalization comparisons (bases 2,3,4,10,13, lengths <=6) plus palindromic positive-control DFA; these test the checker, not an orbit horizon.
+- **UNDECIDED:** no closed base-10 language cycle, no all-time decimal orbit, no seed-196 theorem, and no Lean verification.
