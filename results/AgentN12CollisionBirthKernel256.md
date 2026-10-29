@@ -1,0 +1,14 @@
+# AgentN12CollisionBirthKernel256
+- **Label: COMPUTED**; exact first central defect events for all 256 adjacent base-10 seed pairs, not infinite Lychrel certificates.
+- Seeds: 39 ++ 0^(31000+k) ++ 43 versus 39 ++ 0^(31001+k) ++ 43, k=0..255.
+- Central padding gives exact identity before collision; after it breaks, first changed region is always <=3 digits.
+- Exact classification: 242 births change 2 digits, 14 births change 3; radii <=2.
+- First divergence happens 1..5 steps after the earlier zero-corridor collision: counts 110,97,33,12,4.
+- Outer 16 symmetric pair coefficients match at EVERY measured defect birth.
+- Gap k3/k4 inversion: collisions t51470/t51468, birth t51469, changed positions [-1,0].
+- Distinct three-cell example k12/k13: birth t51483, changed positions [0,1,2].
+- Full 256-row birth table SHA256: 8e9e43633153ca7993bcd486e258acbcc8b4fee2e0a7109706f5fdceee28004a.
+- Independent base-10^9 bigint replay from four literal original seeds confirms both birth types and all prior states nonpalindromic.
+- Reproduce: bash calculation/new_structures/agent-N12/run_pair_emission.sh; exact bigint control commands in report.
+- Code/data: calculation/new_structures/agent-N12/{master_pair_emission.cpp,birth_integer_oracle.cpp,verify_pair_emission.py,verify_birth_snapshots.py,pair_emission_checkpoints.csv}.
+- Details and limitations: reports/AgentN12CollisionBirthKernel256.md; no all-k or self-healing claim.
