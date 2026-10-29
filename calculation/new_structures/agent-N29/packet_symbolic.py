@@ -20,7 +20,7 @@ def run(prefix, suffix, q, steps, snapshot=1000):
     required_q=0
     uniform_q=0
     checkpoints=[]
-    for t in range(steps):
+    for t in range(steps+1):
         sa,sb=str(A),str(B)
         e=q+s
         gap=e-len(sb)
@@ -39,6 +39,7 @@ def run(prefix, suffix, q, steps, snapshot=1000):
             checkpoints.append({'step':t,'A_digits':len(sa),'B_digits':len(sb),'shift':s,
                                 'gap':gap,'number_digits':len(word),
                                 'sha256':hashlib.sha256(word.encode('ascii')).hexdigest()})
+        if t==steps: break
         d=len(sa)-len(sb)
         ra,rb=reverse_decimal(sa),reverse_decimal(sb)
         if d>=0:
@@ -48,7 +49,7 @@ def run(prefix, suffix, q, steps, snapshot=1000):
             s+=d
         B+=ra
     return {'label':'COMPUTED','base':10,'prefix':prefix,'suffix':suffix,'q':q,
-            'steps':steps,'palindromes':0,'required_q_for_nonoverlap':required_q,
+            'steps':steps,'checked_states':steps+1,'palindromes':0,'required_q_for_nonoverlap':required_q,
             'uniform_no_palindrome_q_bound':uniform_q,
             'minimum_central_zero_gap':min_gap,'checkpoints':checkpoints,
             'scope':'Finite T-step family for all integer q >= uniform_no_palindrome_q_bound; not infinite.'}

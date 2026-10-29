@@ -1,11 +1,11 @@
 # Agent N29: decimal two-ended affine-packet trajectory
-- **COMPUTED**, exact scope: base 10, initial word `88 0^14000 75`, 20,000 iterations numbered 0..19,999, none palindromic.
+- **COMPUTED**, exact scope: base 10, initial word `88 0^14000 75`, 20,000 additions, 20,001 inspected orbit states numbered 0..20,000, none palindromic.
 - Full-number ordinary-GMP reverse-add agrees with the separate two-ended packet formula on **every** iterate, not only on samples; this also determines the complete pairword.
 - Symbolic packet state: `N_t(q)=A_t*10^(q+s_t)+B_t`, starting `(A,B,s)=(8800,75,0)`.
-- At `q=14000`, minimum interior zero run in checked iterates is 2,016 digits; largest necessary no-overlap `q` is 11,984.
-- A uniform finite-time nonpalindrome family is proved conditional on the checked recurrence: for **every** integer `q>=22105`, the first 20,000 iterates of `88 0^q 75` are nonpalindromic.
-- The 21 full-number SHA-256 checkpoints agree between symbolic Python and independent GMP C++.
+- At `q=14000`, minimum interior zero run in checked iterates is 2,015 digits; largest necessary no-overlap `q` is 11,985.
+- A uniform finite-time nonpalindrome family is proved conditional on the checked recurrence: for **every** integer `q>=22107`, all 20,001 states through the 20,000th addition of `88 0^q 75` are nonpalindromic.
+- The 22 full-number SHA-256 checkpoints agree between symbolic Python and independent GMP C++.
 - Reproduce: `python3 calculation/new_structures/agent-N29/run_all.py` (needs g++, GMP, OpenSSL).
 - Sources and compact data: `calculation/new_structures/agent-N29/{packet_symbolic.py,replay_gmp.cpp,run_all.py,checkpoints.txt}`.
 - Detailed recurrence and proof scope: `reports/AgentN29AffinePackets.md`.
-- **NOT CLAIMED:** infinite base-10 Lychrel existence, a certificate for 196, a periodic centre, or any lower bound beyond step 19,999.
+- **NOT CLAIMED:** infinite base-10 Lychrel existence, a certificate for 196, a periodic centre, or any lower bound beyond step 20,000.
