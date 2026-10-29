@@ -1,0 +1,42 @@
+{
+  "agent": "W20",
+  "label": "COMPUTED",
+  "base": 10,
+  "temporal_period": 8,
+  "spatial_period": 20,
+  "root_columns": 39,
+  "template": "B ++ W^q ++ [8,0,0] ++ U ++ [16] ++ reverse(U) ++ [0,0,8] ++ reverse(W^q) ++ reverse(B)",
+  "U_length": 43,
+  "U_default": 1,
+  "U_fixed_0_based": {"13": 7, "20": 7, "30": 6},
+  "U_free_0_based": [40, 41, 42],
+  "exhaustive": {
+    "q": 1,
+    "payload_alphabet": [0, 18],
+    "number_tested": 6859,
+    "t88_full_band": 6859,
+    "t176_full_band": 6859,
+    "t264_prefix_classes": {"8": 64, "13": 603, "20": 6192},
+    "representatives": {"8": [4,0,3], "13": [8,1,8], "20": [0,0,0]},
+    "t352_for_all_6192_full_t264": {"matched_prefix": 2, "root_correct": true}
+  },
+  "ordinary_integer_representative_replays": {"q_values": [1,2,3,4], "cases": 12, "horizons": [264,352], "palindromes": 0, "q_independent_inner_words": true},
+  "long_replay": {
+    "payload": [0,0,0], "q": 240, "steps": 20000,
+    "seed_digits": 9771, "final_digits": 19771,
+    "overflows": 10000, "first_root_mismatch_through_20000": null,
+    "palindromes": 0, "pairword_disagreements": 0,
+    "gmp_ascii_fnv64": {
+      "0": "2778674429807864880",
+      "88": "17697668253978233923",
+      "176": "14467144887705930953",
+      "264": "18281926951328083133",
+      "352": "8252771856672700004",
+      "5000": "1095291039759116707",
+      "10000": "11276623321491626629",
+      "15000": "10867638363170485418",
+      "20000": "16422078354326034688"
+    }
+  },
+  "limitations": "No infinite certificate; no all-q universality or theorem; no base-10 Lychrel number proved."
+}
