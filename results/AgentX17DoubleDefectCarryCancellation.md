@@ -1,0 +1,11 @@
+# AgentX17DoubleDefectCarryCancellation
+- **Label: COMPUTED**, finite decimal horizon; not a Lychrel certificate or Lean result.
+- Explicit 10001-digit seed `P + 10^4993 + 10^4992` with `P` palindrome motif `88283583` survives actual base-10 reverse-and-add at `t=0..20000`, never palindromic.
+- Two individual defects at offsets 7 or 8 each activate a 4912-column 9-carry avalanche at t107, leaving only 60 common high-side digits at t108; their **sum** cancels the incoming carry charge and preserves 4971 high-side matched digits.
+- Entire baseline and perturbed decimal words independently reproduced and compared at **all 20001 states** by C++ digit arithmetic and GMP big integer reverse/add; minimum common **both** exteriors = 2154, final length = 18316.
+- 211 exact synchronized checkpoints with witness indices and full-word checks; 18 independent Python bigint gate controls at n=2001,6001,10001.
+- Important countercontrol `{1,2}` also cancels t107 charge but loses exterior witness t458 and length synchronization t520; no global recurrence claim.
+- Exact carry-equality firewall is a PAPER arithmetic identity, but persistent recurrence is UNDECIDED.
+- Reproduce: `bash calculation/new_structures/agent-X17/pair_gate_reproduce.sh`.
+- Code/data: `calculation/new_structures/agent-X17/{pair_gate.py,shadow_pair.cpp,independent_pair_gmp.cpp,pair_gate_reproduce.sh,pair_gate.csv,pair78_checkpoints.csv}`.
+- Analysis and explicit limitations: `reports/AgentX17DoubleDefectCarryCancellation.md`.
