@@ -1,0 +1,7 @@
+# Agent W01: nine-geometry base-10 nonlinear scattering covariance
+**COMPUTED**: Nine explicit second-pulse positions `y=8000+80k` (`-3≤k≤5`), each with four 24,000-digit decimal seeds, are all replayed for 20,000 true reverse-and-add steps (36 total orbits); no palindrome on any checked step (odd pair witness).
+For all `k ≠ 0` and every `3020≤t≤min(20000,20000-88k)`, the interaction-only daughter's first front satisfies `f_y(t+88k)=f_8000(t)+60k` and **both actual low and high signed digit residuals** agree exactly at all 61 offsets `-20..40`.
+**134,528 aligned rows; 16,412,416 exact signed digit equalities; 0 failures.** Collision birth at `(t,j)=(2154+88k,7514+60k)` for all nine geometries. Last preregime exception `t=3019` (k=2). Wrong spatial and time shifts fail.
+Independent GMP ordinary-integer replay verifies both 4-orbit groups `y=8000,8080` through step 4,500, including 1,393 exact shifted two-ended windows and sharp onset, with no use of digit-vector arithmetic.
+Reproduce: `bash calculation/new_structures/agent-W01/phase_run.sh`. Code/control: `calculation/new_structures/agent-W01/{w01_scatter_phase.cpp,w01_phase_gmp.cpp,phase_verify.py,phase_run.sh}`. Details: `reports/AgentW01ScatteringPhaseCovariance.md`.
+**UNDECIDED**: arbitrary separations, infinite regeneration, closed carry interface, future steps beyond 20,000, all of 196, or a base-10 Lychrel certificate. No Lean verification.
