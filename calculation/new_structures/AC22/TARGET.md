@@ -1,0 +1,2 @@
+# AC22 exact target
+For B1=(1,5,10,12,13,10,3,7,14,11,4,2,3,9,15,7,9,15,11,14,13,13,14,5,5,13,11,11,9,5,10,10,4,5), W1=(10,14,13,12,9,7,10,4,5), U=(9,0,18), q=14: no palindromic coefficient centre C and no J in {0,...,18}^5 yield the physically realized 120-step return P(14,k;J,U,C) -> P(14,k+5;J,U,C) for any k>=52. Pairwords are LSD-first, symmetric, and realized by a canonical positive decimal source. This is a fixed-phase, fixed-q, fixed-seam necessary-condition no-go, not a certificate of a Lychrel number.
