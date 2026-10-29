@@ -52,3 +52,25 @@ And for the length-14, three-fixed-letter gate, run:
 The exact scan enumerates 10*19^3=68,590 C7 centres and 19^4=130,321 C8 centres per U; offsets permit disjoint chunks. An independent Python arbitrary-precision integer engine checked EVERY one of 120 steps against schoolbook coefficient normalization on 120 seeded controls: five widths (14,100),(20,80),(40,160),(80,320),(160,640), three U rotations, and all lengths 7..14 = **14,400 individual matching decimal transitions**, with the correct clock. The two scripts are test_crosscheck.py and independent.py.
 
 The unknown C9..C14 classes remain UNDECIDED. Repairing the loss of correlations in the sound abstraction with a relational two-ended carry automaton is the next route. Finite endpoint obstructions are not a proof that any decimal number is Lychrel.
+
+## NEW: all-length symbolic prefix-pumping lemma (PAPER PROOF + COMPUTED)
+
+**Theorem (sound necessary constraint, no upper bound on centre length).**
+For the reference rooted phase-0 B34/W9, q=14,k=100,J=[5], and ANY physically realizable palindromic C of ANY length L>=7, let a,b be its first two least-significant-side centre coefficients. The following exact 120-step fixed-C return is impossible for:
+- U=(9,6,12): 228 of 361 ordered (a,b) pairs (the sound masked first-mismatch index is new centre-46 for 46 pairs and centre-45 for 182 pairs);
+- U=(6,12,9): 25 of 361 pairs (index centre-43);
+- U=(12,9,6): 82 of 361 pairs (index centre-44).
+
+Each exclusion holds for EVERY admissible choice of C's remaining coefficients and for BOTH centre parities, independently of centre length. The other 133,336,279 outer pairs are UNDECIDED; this is NOT a no-go for all C and NOT an all-time Lychrel certificate. No W9 strict-phase constraint or fixed overflow assumption has been imposed: the 120-bit clock is derived from the carry masks and certified unique for every case.
+
+**Abstract pumping proof (all L, not tested extrapolation).**
+Let A be the set of possible pair coefficients {0,..,18}, D the digits {0,..,9}, and F={0,1} the carry set. For every nonempty carry input subset of F, normalizing A yields exactly digit-mask D and outgoing carry-mask F. Thus the set-valued pairword P=X A^K reverse(X), K>=1, normalizes to dL D^K dR (possibly followed by overflow digit 1); dL is computed from X with incoming carry {0}, and dR from reverse(X) with incoming carry F, BOTH independent of K. Pairing digits across the two ends gives exactly X' A^K reverse(X') on zero overflow and X' A^(K-1) reverse(X') on one overflow, with X' computed from the finite dL,dR and gamma only. If X' ends in a full mask A, move that symmetric trailing pair into the central run to increment K by 2. This canonicalization is equality of masked words and never discards possibilities. Hence the finite sequence X_t is independent of the initial K, and K_t=K_0+delta_t, as long as K_t>=1. The concrete admissible C has initial coefficient word INCLUDED in X_0 A^(L-4) reverse(X_0), where X_0 contains the physical rooted H and fixed a,b; even midpoint of odd C is safely relaxed to A. All admissible L>=7 have K_0=L-4>=3.
+
+**Finite checked part.**
+The new code symbolic_all_lengths.py executes this exact symbolic mask recurrence for all 3*19^2=1,083 ordered U/prefix cases through all 120 phases with baseline K_0=3. Every case has min_t K_t>=2 (indeed all have min exactly 2), no ambiguous overflow, and precisely gamma=(1000)^30. A final target left-collar coefficient is ABSENT in 228+25+82=335 prefix cases at the positions above. Because larger K_0 simply adds an unchanged number of A symbols at EVERY phase, the terminal left-side masks and their absent target values are identical for ALL L>=7. This proves an infinite-length necessary gate, not a finite-horizon extrapolation. The code also checks the final collar lies wholly before the right boundary of the symbolic A run.
+
+**Independent physical checks.**
+test_symbolic_replay.py chose 20 concrete rejected-prefix completions per U across centre lengths 7..46 (60 cases total). The independent arbitrary-precision ordinary decimal implementation executed 120 steps each and found the predicted specific missing coefficient in the target left U collar in EVERY case. Existing test_crosscheck.py separately checked 14,400 physical decimal steps against the schoolbook normalizer at five (q,k) widths. Run:
+    python3 symbolic_all_lengths.py
+    python3 test_symbolic_replay.py
+The symbolic checker is deliberately a sound overapproximation: a nonrejected prefix does not imply a physical returning centre, and an infinite-length candidate would still need an identical regenerative seam and all-width proof.
