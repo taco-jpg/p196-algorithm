@@ -1,0 +1,12 @@
+PAPER-PROOF TWO-STEP FAMILY: a=5..8, h>=1, 2^(h-1) distinct decimal seeds N0 with half pairword [a+9] ++ {a,a+9}^(h-1) share N2=(a+1)(2a-9)^(2h-2)(2a-10)a.
+EXHAUSTIVE Python b=5..8, h=1..11: 8188 seeds pass.
+COMPUTED C++ decimal digit arithmetic a=8 h=20200 H=20000:
+FUNNEL_PASS h=20200 length_N0=40400 length_N1=40401 length_N2=40401
+CLOSED_FORM_PASS N2=9 7^(40398) 68
+DIGIT_FNV64=e55e4d3ead4fa4c0
+REPLAY_PASS H=20000 checked_central_paircells=489875762 min_corridor=8644 final_digits=48684
+COMPUTED independent GNU GMP arbitrary-precision integer replay:
+GMP_INDEPENDENT_PASS H=20000 n=48684 checked=489875762 mincorr=8644 digit_fnv64=e55e4d3ead4fa4c0
+For each replay t=0..20000 starting at N2, at EVERY j in [t+20,n_t-t-21] the pair-digit is [14,10,2,4,8,16][t mod 6].
+Both decimal implementations found no palindrome at t=0..20000. N0 and N1 are also nonpalindromic by direct construction.
+No 20,000-step observation is an infinite certificate.
