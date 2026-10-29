@@ -1,0 +1,61 @@
+{
+  "label": "PAPER PROOF local front transfer; COMPUTED antiphase lock in five explicit decimal orbits",
+  "local": {
+    "base": "all integers b>=2",
+    "q_min": 3,
+    "max_coefficient": "2*(b-1)",
+    "condition": "L suffix last digit not 2*(b-1); central C=L ++ max^q ++ reverse(L)",
+    "carry": "c=outgoing carry of normalize(L,e1)",
+    "gamma": "actual decimal overflow or externally specified 0/1 target length difference",
+    "equation": "q_next=q-gamma-2*(1-gamma)*(1-c)",
+    "exhaustive_controls_bases_2_to_20": 255816
+  },
+  "cases": [
+    {
+      "m": 40,
+      "horizon": 94,
+      "checked": 89,
+      "c0g0": 0,
+      "c0g1": 37,
+      "c1g0": 52,
+      "c1g1": 0
+    },
+    {
+      "m": 80,
+      "horizon": 185,
+      "checked": 182,
+      "c0g0": 0,
+      "c0g1": 77,
+      "c1g0": 105,
+      "c1g1": 0
+    },
+    {
+      "m": 200,
+      "horizon": 476,
+      "checked": 473,
+      "c0g0": 0,
+      "c0g1": 197,
+      "c1g0": 276,
+      "c1g1": 0
+    },
+    {
+      "m": 500,
+      "horizon": 1184,
+      "checked": 1181,
+      "c0g0": 0,
+      "c0g1": 497,
+      "c1g0": 684,
+      "c1g1": 0
+    },
+    {
+      "m": 3000,
+      "horizon": 7254,
+      "checked": 7251,
+      "c0g0": 0,
+      "c0g1": 2997,
+      "c1g0": 4254,
+      "c1g1": 0
+    }
+  ],
+  "redirection": "A closed certificate needs an absorbing-species handoff or regeneration mechanism, not only a single saturated centre whose run length is nonincreasing."
+}
