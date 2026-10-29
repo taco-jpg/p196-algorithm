@@ -39,7 +39,7 @@ def check(q,k,J,U,C):
  assert gamma==[0,0,1,0]*30,(q,k,gamma)
  target=source(q,k+5,J,U,C)
  mismatch=next((i for i,(a,b) in enumerate(zip(P,target)) if a!=b),None)
- assert mismatch is not None and 135<=mismatch<=150 and mismatch<160
+ assert mismatch is not None and 10<=34+9*q-mismatch<=25 and mismatch<34+9*q
  assert P[10]==target[10]==0
  print("BIGINT_PASS",q,k,"J",J,"U",U,"C",C,"first_mismatch",mismatch)
 for q,k,J,U,C in [
