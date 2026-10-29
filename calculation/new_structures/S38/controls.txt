@@ -1,12 +1,19 @@
-Compiled control
+Compiled carry-source control
   g++ -O3 -std=c++17 -Wall -Wextra -Werror calculation/new_structures/S38/odd_centre_delta.cpp -o /tmp/s38_odd_centre_delta
   /tmp/s38_odd_centre_delta
 PASS: 69,120 parity-complete carry-source cases (30 U motifs x 3 J x 3 odd palindromic C x 256 independent q,k pairs).
 Each source and k+5 target is a genuine canonical integer; cpp_int n+reverse(n), fresh-buffer schoolbook digit addition, and coefficient normalization agree.
 Exact five-copy delta formula agrees with directly accumulated K(P(q,k+5))-K(P(q,k)) in every case.
 
-Independent Python control
+Independent Python carry-source control
   python3 calculation/new_structures/S38/verify_odd_centre_delta.py
 PASS: 8,370 cases; full 3x3 collar/centre cross-product at q,k in {20,40,80,160}, plus off-diagonal q=20..23, k=40..43 across all 30 U motifs, J collars, and odd centres.
 Python arbitrary-precision n+reverse(n), fresh-buffer schoolbook addition, and coefficient normalization agree for both source and k+5 target.
 Every predicted mod-101 carry-source delta equals direct K(P(q,k+5))-K(P(q,k)).
+
+Odd-centre folded endpoint and physical cocycle control
+  python3 calculation/new_structures/S38/verify_odd_centre_endpoint.py
+PASS: 8,370 odd-centre endpoint/cocycle cases.
+The folded V_10 formula and U^5/D moment transition match direct coefficient evaluation.
+The physical single-step V_10/K cocycle matches genuine n+reverse(n) for odd-length pairwords at all exact q,k widths.
+Every case yields the unique mod-101 120-step weighted carry-source sum required by the endpoint equation.

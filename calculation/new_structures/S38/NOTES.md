@@ -28,3 +28,19 @@
   the universal quantifiers. No 120-step return or Lychrel number is claimed.
 - No Lean file is included because this environment has no Lean/lake toolchain
   and the repository's tools/verify.py --changed could not be run locally.
+- After completing the carry-source parity lift, claimed the adjacent missing
+  endpoint lemma in #475 (comment 6498585007): exact odd-centre V_10 folding
+  and the k->k+5 moment transition, to provide a parity-correct target for the
+  120-step physical carry cocycle.
+- Derived P=Y++[c]++reverse(Y), with Y=A U^k D and
+  C=D++[c]++reverse(D). For m=|Y| mod 4, V_10(P) is 2E+c, 20O+10c,
+  2E-c, or 20O-10c for m=0,1,2,3 respectively. Inserting U^5 before D
+  updates M=(E,O) by M' = M + R^s M(U^5) + R^(s+15)M(D) - R^s M(D),
+  R(E,O)=(-O,E).
+- The endpoint formula gives the unique required packet-weighted carry sum
+  W120=(S_(k+5)-84*S_k)/(57*10^L) modulo 101. Independent Python bigint,
+  schoolbook, and coefficient-normalization checks passed 8,370 cases; the
+  single-step physical cocycle passed for all q,k in {20,40,80,160} and all
+  U/J/C choices, with a separate off-diagonal q=20..23,k=40..43 phase grid.
+- This closes the endpoint-residue side of the odd-centre modular interface;
+  actual 120-step carry-source closure and phase safety remain open.

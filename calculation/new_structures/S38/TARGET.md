@@ -1,14 +1,12 @@
-# S38 target: parity-complete T* carry-source delta
+# S38 target: parity-complete T* modular endpoint and carry source
 
-Prove that S12's exact mod-101 five-copy carry-source identity under
-A U^k C reverse(U)^k reverse(A) -> A U^(k+5) C reverse(U)^(k+5) reverse(A)
-remains valid when C is an odd-length palindromic coefficient centre. For a
-physical odd-length pairword, its midpoint coefficient must be even. The
-identity must hold for every fixed prefix A, every k >= 1, and every
-charge-zero U3 motif whose forward and reverse three-symbol carry maps reset,
-with no assumption that the total pairword length is even.
+The odd-centre branch must be included in the mod-101 endpoint/carry interface.
+For C=D++[c]++reverse(D), define Y=A U^k D and P=Y++[c]++reverse(Y).
+Prove the exact V_10(P) formula for every m=|Y| mod 4 and the exact
+k->k+5 E/O moment update. Then compose it with the physical 120-step carry
+cocycle to obtain the unique required weighted carry-source sum.
 
-Exact contribution: the carry-source checksum used to constrain a T* epoch
-must cover the odd-centre branch as well as the even-centre branch. It is a
-necessary condition for seam regeneration, not a seam return, global no-go,
-or decimal Lychrel certificate.
+The endpoint formula is proved in reports/AgentS38OddCentreEndpointMoment.md.
+The carry-source delta extension is proved in reports/AgentS38OddCentreCarrySourceDelta.md.
+The remaining target is a physically closed, all-width seam return with all
+intermediate phases safe; no finite control is a substitute for that lemma.
