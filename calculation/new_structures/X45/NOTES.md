@@ -1,0 +1,8 @@
+# X45 running notes
+
+- Read AGENTS.md, OPEN_PROBLEMS.md, FOCUS_SWARM.md, AUDIT_N.md, AUDIT_Nseries.md, FORMATS.md, T12 notes, S20, Q03, and the recent #475 FEED/claim stream. The original phase-0 all-U3 J3-4/C2-13 cell is held by X12; neighboring fixed-phase cells are also claimed, so registered a distinct cross-cell moving-seam route.
+- Reused T12's protected U3 cut after 55 copies and the epoch seam as a dynamical system. Did not repeat the fixed-state pi141 obstruction or pi179 SCC dichotomy.
+- Derived exact length conservation `2|J'|+|C'|=2|J|+|C|` and phase lock `U'=rotate_left(U, delta mod 3)` for a genuine 120-step endpoint transition with `delta=|J'|-|J|=+/-1`.
+- Proved the phase-shifted insertion bridge: source/target U cuts differ by delta, but their inserted phase rows differ by the matching cyclic rotation, so inserting a whole U3 period at either cut yields the same endpoint word. The common W9 cut lifts q. Hence any exact reference-width edge at (14,100) lifts to all q>=14,k>=100, conditional on the edge and phase-lock hypotheses.
+- Independent checker: all 30 U3 words x q={20,40,80,160} x two seam-width directions x even/odd centre controls; k=100; 480 actual integer trajectories, 57,600 step-by-step bigint/digit-array comparisons. All pass, including clock, nonpalindrome guard, every-phase protected U block, rotation equivariance, and shifted insertion identity.
+- Remaining: exhaust or soundly quotient the finite centre-value/carry-state graph at (14,100). No full seam return found or claimed; no finite-horizon survival is being promoted.
