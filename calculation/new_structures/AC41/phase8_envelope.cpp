@@ -1,5 +1,6 @@
 // AC41. Endpoint-only phase8 J6, J0=0, U=(9,0,18) full suffix census.
-// Reproduce: g++ -O3 -std=c++17 census.cpp -o ac11 && ./ac11 0 137180
+// Reproduce: g++ -O3 -std=c++17 phase8_envelope.cpp -o ac41 && ./ac41 0 2476099 0
+// Optional third argument U rank 0..29; rank 1 is (0,18,9).
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -59,12 +60,16 @@ static Result test(int nj,const int*J,const int*U) {
 }
 int main(int argc,char**argv) {
   long long first=0,last=2476099;
-  if(argc==3){first=atoll(argv[1]);last=atoll(argv[2]);}
+  if(argc>=3){first=atoll(argv[1]);last=atoll(argv[2]);}
   if(first<0||last>2476099||first>=last)return 2;
   long long total=0,unresolved=0,invalid=0;
   int minKnown=MAXN,minDiff=MAXN,maxDiff=-1;
   array<long long,190> hist{};
-  int U[3]={9,0,18};
+  int rank=argc==4?atoi(argv[3]):0;
+  if(rank<0||rank>=30)return 2;
+  int a=2*(rank/3),rot=rank%3;
+  int base[3]={9,a,18-a};
+  int U[3]={base[rot],base[(rot+1)%3],base[(rot+2)%3]};
   for(long long code=first;code<last;code++){
     long long z=code;int J[6]={0,0,0,0,0,0};
     for(int j=1;j<6;j++){J[j]=int(z%19);z/=19;}
@@ -74,7 +79,7 @@ int main(int argc,char**argv) {
     else if(r.mismatch<0)unresolved++;
     else {hist[r.mismatch]++;minDiff=min(minDiff,r.mismatch);maxDiff=max(maxDiff,r.mismatch);}
   }
-  printf("PHASE=8 |J|=6 J0=0 U=(9,0,18) q=14 k>=40 C=ANY_REALIZABLE_PALINDROMIC\n");
+  printf("PHASE=8 |J|=6 J0=0 URANK=%d U=(%d,%d,%d) q=14 k>=40 C=ANY_REALIZABLE_PALINDROMIC\n",rank,U[0],U[1],U[2]);
   printf("RANGE=[%lld,%lld) TOTAL=%lld W9_FAIL=%lld UNRESOLVED=%lld INVALID=%lld MIN_KNOWN=%d DIFF_MIN=%d DIFF_MAX=%d\n",
     first,last,total,total-unresolved-invalid,unresolved,invalid,minKnown,minDiff,maxDiff);
   printf("HIST=");for(int j=0;j<int(hist.size());j++)if(hist[j])printf(" %d:%lld",j,hist[j]);puts("");
