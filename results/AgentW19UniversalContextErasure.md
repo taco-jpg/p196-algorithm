@@ -1,0 +1,6 @@
+# AgentW19UniversalContextErasure
+**PAPER PROOF:** A base-10 two-step non-gauge local packet eraser works in ARBITRARY coefficient contexts, not merely the period-eight lattice. Let an outer word E begin with any coefficient 10..17 and let Q be any inner word. Insert any number of packets C0=(14,9,9,0) or C1=(0,14,9,0), each preceded by a two-coefficient guard (a,13), a independently in {6,7,8}. Every mask has a distinct first pairword image; the second pairword is identical. For physical seeds, odd-length pairword centres have even coefficients; every ordinary integer merges after exactly three reverse-and-add steps and is nonpalindromic at steps 0..2.
+**COMPUTED controls:** Complete 24-case local carry table; 240 seeded arbitrary-context tests covering 25,886 masks; 150 independent Python-bigint context tests covering 5,506 masks. Both total-length parities covered.
+**Scope:** Strengthens AgentW19TwoStepPacketErasure by eliminating ALL periodic-exterior and bounded-centre requirements, and shortening spacers from 20 coefficients to 2. Not a regenerative template cycle, infinite decimal Lychrel certificate, Lean proof or statement about 196.
+Reproduce: bash calculation/new_structures/agent-W19/universal_guard_run.sh
+Details: reports/AgentW19UniversalContextErasure.md. Data: calculation/new_structures/agent-W19/universal_guard_expected.json.
