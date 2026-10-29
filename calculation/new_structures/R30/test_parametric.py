@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """All symbolic phases vs independent integers; independent GMP-free C++ cross-check."""
 import argparse,json,subprocess
-from parametric import (CannotProve,R,Q,actual,actual_pair,digits,realize,tpl,step,
-                        load_lattice,zip_pair)
+from parametric import (R,Q,actual,actual_pair,digits,realize,tpl,step,load_lattice,zip_pair)
 
 def expand(s,q,k):
     out=[]
@@ -12,30 +11,33 @@ def expand(s,q,k):
         out.extend(r.word*n)
     return out
 
+def check_symbolic(B,W,J,U,C,trials,label):
+    sy=tpl(B,W,J,U,C)
+    states=[realize(expand(sy,q,k)) for q,k in trials]
+    for t in range(120):
+        for (q,k),n in zip(trials,states):
+            assert expand(sy,q,k)==actual_pair(n),(label,t,q,k)
+        new,g=step(sy,256,256);nxt=[]
+        for (q,k),n in zip(trials,states):
+            d=digits(n);nn=n+int(str(n)[::-1])
+            assert len(digits(nn))-len(d)==g,(label,t,q,k)
+            nxt.append(nn)
+        sy,states=new,nxt
+    for (q,k),n in zip(trials,states):
+        assert expand(sy,q,k)==actual_pair(n),(label,120,q,k)
+    print('SYMBOLIC_VS_BIGINT_120_PHASES_PASS',label,'incl t=120 and off-diagonal q,k')
+
 def main():
     a=argparse.ArgumentParser()
     a.add_argument('--lattice',required=True);a.add_argument('--cpp',required=True)
     args=a.parse_args();B,W,gamma=load_lattice(args.lattice)
-    # Regression for a false-UNDECIDED caused by nonprimitive run words:
-    # (9)^q(99)^q == (999)^q for every q>=1.
+    # Regression for an exact alias: (9)^q(99)^q == (999)^q for all q>=1.
     alias=zip_pair([R((9,),Q),R((9,9),Q)],[R((9,9,9),Q)],1,1,compare=True)
     assert alias['return'],alias
-    J,U,C=[5],[9,14,4],[10]
-    sy=tpl(B,W,J,U,C);trials=[(256,256),(257,263),(263,256)]
-    states=[realize(expand(sy,q,k)) for q,k in trials]
-    for t in range(120):
-        for (q,k),n in zip(trials,states):
-            assert expand(sy,q,k)==actual_pair(n),(t,q,k)
-        new,g=step(sy,256,256);nxt=[]
-        for (q,k),n in zip(trials,states):
-            d=digits(n);rv=int(str(n)[::-1]);nn=n+rv
-            assert len(digits(nn))-len(d)==g,(t,q,k)
-            nxt.append(nn)
-        sy,states=new,nxt
-    for (q,k),n in zip(trials,states):
-        assert expand(sy,q,k)==actual_pair(n),(120,q,k)
-    print('SYMBOLIC_VS_BIGINT_120_PHASES_PASS incl t=120 and off-diagonal q,k')
-    seeds=[([5],[9,14,4],[10]),([6,4],[9,2,16],[12]),([1,8,2],[9,0,18],[4,8,4])]
+    trials=[(256,256),(257,263),(263,256)]
+    check_symbolic(B,W,[5],[9,14,4],[10],trials,'U-base')
+    check_symbolic(B,W,[5],[14,4,9],[10],trials,'U-rotation')
+    seeds=[([5],[9,14,4],[10]),([6,4],[9,2,16],[12]),([1,8,2],[9,0,18],[4,8,4]),([5],[14,4,9],[10])]
     for index,(J,U,C) in enumerate(seeds):
         for q,k in [(20,20),(40,40),(80,80),(160,160)]:
             py=actual(B,W,J,U,C,q,k,120)

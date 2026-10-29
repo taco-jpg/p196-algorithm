@@ -2,7 +2,7 @@
 
 Scope: PAPER PROOF of a conditional checker-soundness lemma, plus COMPUTED differential controls. No base-10 Lychrel certificate or successful 120-step return is claimed.
 
-For canonical phase-zero B34 and W9 of calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt, let U=(9,a,18-a) with a even, J be a finite coefficient word, and C a finite palindrome of coefficients (an odd midpoint must be even). Let H(q,k)=B++W^q++J++U^k and P(q,k)=H(q,k)++C++reverse(H(q,k)), least-significant coefficient first.
+For canonical phase-zero B34 and W9 of calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt, let U be any of the 30 cyclic rotations of (9,a,18-a) with a even in {0,2,...,18}, J be a finite coefficient word, and C a finite palindrome of coefficients (an odd midpoint must be even). Let H(q,k)=B++W^q++J++U^k and P(q,k)=H(q,k)++C++reverse(H(q,k)), least-significant coefficient first.
 
 Missing lemma to prove: for every independent q>=q0 and k>=k0, the genuine 120-step reverse-and-add map returns the pairword P(q,k+5), with the exact 120-bit physical overflow clock, and each intermediate pairword has an odd coefficient (sufficient to exclude a palindrome). Since q stays fixed and k increases, these conditions imply an all-time nonpalindromic decimal orbit by induction.
 
@@ -17,7 +17,7 @@ Proof of soundness:
 
 Negative demonstration, NOT a proof of a decimal Lychrel number: J=[5], U=[9,14,4], C=[10] gives the genuine overflow clock (100010001000)^10 and sum overflow 30. At ALL q,k>=256, the first mismatch from the required 120-step return is at coefficient index 9q+14. Independent Python integers and GMP-free C++ fresh-buffer digit arithmetic agree at q=k=20,40,80,160: positions 194,374,734,1454, respectively.
 
-Verifier audit corrections: `clean` reduces repeated blocks to primitive periods before alignment, so exact aliases such as `(9)^q(99)^q=(999)^q` no longer spuriously return UNDECIDED. The C++ oracle reads the full fixture layout (12 W rows, 12 auxiliary 9-column rows, 12 B rows), and the regression compares symbolic pairwords through phase 120 at off-diagonal `(q,k)` values.
+Verifier audit corrections: `clean` reduces repeated blocks to primitive periods before alignment, so exact aliases such as `(9)^q(99)^q=(999)^q` no longer spuriously return UNDECIDED. The C++ oracle reads the full fixture layout (12 W rows, 12 auxiliary 9-column rows, 12 B rows). The regression covers a rotated U3 motif and compares symbolic pairwords through phase 120 at off-diagonal `(q,k)` values.
 
 Reproduce:
   python3 tools/parametric_verify_r30.py --lattice calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt --J 5 --U 9,14,4 --C 10 --qmin 256 --kmin 256

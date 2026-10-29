@@ -51,6 +51,8 @@ int main(int argc,char**argv){
  if(q<0||k<0)throw std::runtime_error("negative exponent");
  V J=csv(argv[4]),U=csv(argv[5]),C=csv(argv[6]);
  if(U.size()!=3||C!=mirror(C))throw std::runtime_error("bad U or C");
+ bool validU=false;for(int a=0;a<=18;a+=2){V base={9,a,18-a};for(int shift=0;shift<3;shift++){V rot={base[shift],base[(shift+1)%3],base[(shift+2)%3]};if(U==rot)validU=true;}}
+ if(!validU)throw std::runtime_error("U is not one of the 30 charge-zero U3 rotations");
  V source=templ(B,W,J,U,C,q,k),wanted=templ(B,W,J,U,C,q,k+5);
  V d=realize(source);int pal_time=-1;std::string overflows;
  for(int t=0;t<std::stoi(argv[7]);t++){

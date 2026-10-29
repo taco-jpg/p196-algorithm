@@ -241,7 +241,11 @@ def main():
     U=[int(x) for x in args.U.split(',') if x]
     assert C==C[::-1] and all(0<=x<=18 for x in B+W+J+U+C)
     assert B[0]>0 and (len(C)%2==0 or C[len(C)//2]%2==0), 'not a realizable pairword'
-    assert len(U)==3 and U[0]==9 and U[1]+U[2]==18 and U[1]%2==0
+    allowed_u=set()
+    for a0 in range(0,19,2):
+        base=[9,a0,18-a0]
+        for shift in range(3):allowed_u.add(tuple(base[shift:]+base[:shift]))
+    assert len(U)==3 and tuple(U) in allowed_u, 'U must be one of the 30 charge-zero U3 rotations'
     assert args.qmin>=1 and args.kmin>=1
     if not args.only_symbolic:
         for q,k in [(20,20),(40,40),(80,80),(160,160)]:
