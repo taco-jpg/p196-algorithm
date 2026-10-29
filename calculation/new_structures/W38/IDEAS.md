@@ -1,0 +1,1 @@
+- EXHAUSTED-NONE (scoped all-width cell): the phase-0 U=(9,16,2) odd-centre |J|=3–4, C=3..13 cell cannot preserve W9 after 120 steps; redirect effort to other U orientations/parities or wider/moving seams. Do not generalize this result beyond its stated cell.
