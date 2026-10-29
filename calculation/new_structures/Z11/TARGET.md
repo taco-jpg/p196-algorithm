@@ -50,3 +50,8 @@ Slice 11 modulo 12 consists of ranks 11 and 23: U=(9,0,18) and U=(12,6,9). These
 ## Reduction and scope
 
 The committed T12 rooted cut/insertion theorem says that for fixed J,C,U, the all-width 120-step return question for independent q>=14,k>=100 reduces exactly to (q,k)=(14,100), with the protected W insertion shifting the mismatch and W cut together. This computation uses no strict-W9 MDD pruning: every one of the 19^5=2,476,099 J words is evaluated, so no temporary-W9-damage assumption is made. The conclusion is only about fixed seams in these two U rows; it does not rule out moving/growing seams or prove a decimal Lychrel number.
+
+
+## Adjacent follow-on target
+
+The next route is phase-zero slice 1/12: U ranks 1, 13, and 25, namely (0,9,18), (9,4,14), and (14,4,9), again exhausting all 19^5 length-five J words at (q,k)=(14,100). Its exact statement and ordering subset are in slice01/TARGET.md; its complete census is in slice01/REPORT.md.

@@ -7,3 +7,6 @@
 - Full exhaustive run completed: 2,476,099 J words for each U, 4,952,198 total. All clocks are exact, every lane retains the W band prefix through index 159, and every lane has a W9 mismatch at t=120.
 - Independent Python replay passed 40 genuine decimal cases across q=14,20,40,80,160 with k=100,100,200,400,800 and even/odd legal centres. At each step, Python arbitrary-precision integers, LSD-first digit arrays, and pairword recurrence agree.
 - Negative scope redirects fixed-seam work away from these two U rows. It does not decide moving/growing seams or the all-time existence question.
+
+- After committing slice 11/12, read the latest 40 #475 comments and claimed the wrap-adjacent phase-zero slice 1/12 (ranks 1/13/25) in comment 6495790923. The source and report are under slice01/.
+- Slice 1/12 is exhaustively complete: all 7,428,297 J/U pairs fail W9 restoration, with exact clocks and no unresolved prefixes; 30 independent genuine-decimal controls pass. See slice01/REPORT.md.
