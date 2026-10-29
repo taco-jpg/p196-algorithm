@@ -48,8 +48,15 @@ def replay(q, k, J, U, C, steps=360):
                     min(len(got), len(target)) if len(got) != len(target) else None)
     return mismatch, sum(overflow), ''.join(map(str, overflow[:48])), len(got), len(target)
 
+def signatures(q, k, J, U, C):
+    p, _ = final_pairword(q, k, J, U, C)
+    w_suffix = tuple(p[len(B):len(B)+9*q][-90:])
+    mid = len(p)//2
+    centre = tuple(p[mid-10:mid+11])
+    return w_suffix, centre
+
 def main():
-    # These are known candidate seeds, not a census of seam space.
+    # Known candidate seeds, not a census of seam space.
     runs = 0
     for idx, (J, U, C, offset) in enumerate(CASES):
         for q in (20, 40, 80, 160):
@@ -63,19 +70,25 @@ def main():
                 print(f'case={idx} q={q} k={k} steps=360 overflow_sum={total} '
                       f'first_mismatch={mismatch} boundary_offset={34+9*q-mismatch}')
 
-    # Boundary-apron diagnostic: compare the last 90 coefficients of W^q.
-    # The local suffix is stable in these two widths, while the centre window changes.
+    # Test whether a finite boundary apron is stable once both widths are >= 40.
     for idx, (J, U, C, _) in enumerate(CASES):
-        p1, _ = final_pairword(40, 40, J, U, C)
-        p2, _ = final_pairword(80, 160, J, U, C)
-        w1 = p1[len(B):len(B)+9*40][-90:]
-        w2 = p2[len(B):len(B)+9*80][-90:]
-        assert w1 == w2, ("boundary suffix changed", idx)
-        c1 = p1[len(p1)//2-10:len(p1)//2+11]
-        c2 = p2[len(p2)//2-10:len(p2)//2+11]
-        assert c1 != c2, ("centre window unexpectedly identical", idx)
-        print(f'case={idx} boundary_suffix_90=stable centre_window_21=changes')
-    print(f'AA56 scoped diagnostic PASS; big-int replays={runs+8}; no all-width claim.')
+        baseline_apron = None
+        centres_by_k = {k: [] for k in (40, 80, 160)}
+        for q in (40, 80, 160):
+            for k in (40, 80, 160):
+                apron, centre = signatures(q, k, J, U, C)
+                if baseline_apron is None:
+                    baseline_apron = apron
+                assert apron == baseline_apron, ('apron depends on q,k', idx, q, k)
+                centres_by_k[k].append(centre)
+        for k, windows in centres_by_k.items():
+            assert all(x == windows[0] for x in windows), ('centre depends on q in sample', idx, k)
+        centre_states = {windows[0] for windows in centres_by_k.values()}
+        assert len(centre_states) > 1, ('centre did not vary with k', idx)
+        runs += 9
+        print(f'case={idx} W-apron-90 stable for q,k=40,80,160; '
+              f'centre-window stable across q at fixed k but varies with k')
+    print(f'AA56 scoped diagnostic PASS; big-int replays={runs}; no all-width claim.')
 
 if __name__ == '__main__':
     main()
