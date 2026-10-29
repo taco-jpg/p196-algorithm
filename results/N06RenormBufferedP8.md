@@ -1,0 +1,11 @@
+# N06RenormBufferedP8
+- Label: COMPUTED (explicit decimal finite-time orbit; NOT a Lychrel proof).
+- Family: P(N_k) = Q_k ++ reverse(Q_k), Q_k = entrance(39) ++ period(20)^k, with digit split specified in the report.
+- k=225: 9,078-digit seed; independently checked reverse-and-add at t=0..20,000 (20,001 states). No palindrome; first eight pairword coefficients follow 8-phase p8 SCC; gamma=10101010; final length 19,078 digits.
+- Two implementations: C++ digit-list and independent GMP big integer, matching modular and FNV64 final checksums.
+- Renormalisation: F(t+88)=F(t)-20 at 18,901 tested time positions, t=100..19,000. Empirical, not an infinite-time theorem.
+- Tested k>=1: eight-column prefix first breaks at t=228+88k (listed sample widths only).
+- Reproduce: bash calculation/new_structures/agent-N06/run_checks.sh
+- Source/data: calculation/new_structures/agent-N06/{buffered_prefix.cpp,independent_gmp.cpp,frontier.cpp,observations.json}
+- Detail and exact limitations: reports/N06RenormBufferedP8.md
+- Not claimed: a decimal infinite-time certificate, Lean verification, or the fate of 196.
