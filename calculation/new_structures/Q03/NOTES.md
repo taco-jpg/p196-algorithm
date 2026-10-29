@@ -1,6 +1,6 @@
 # Q03 running NOTES
-- 2026-10-28: Registered CLAIM in GitHub issue #474, first-contact two-ended interface route; checked AGENTS.md, OPEN_PROBLEMS.md, audit, FORMATS.md, known gamma0 gate and T02 all-width port criterion.
-- Base9 Lean certificate and base50 neutral four-edge positive controls reproduced through 20 ordinary integer iterations for widths 20,40,80,160 (positive_controls.py).
-- Derived overflow gamma1 universal prefix-only gate: delta +/-9, non-9 immediately outer neighbor, twenty directed types and exact physical carry ports. Confirmed 24 universal types including gamma0 have genuine integer witnesses.
-- All rooted p8/m20 phases: full physical integer enumeration at m=4,5,6,7,20,40,80,160; 1,824 full successor checks, exact 17/1/17/1/17/1/17/1 first-contact residues, with 16/0/16/0/16/0/16/0 entire-successor one-toggle coincidences.
-- Distinguish logical necessity from sufficiency: a first-contact erasure can be local and transient. No decimal periodic repair or all-time number obtained.
+
+- 2026-10-29: Read fresh AGENTS.md coordination migration, OPEN_PROBLEMS.md, docs/FOCUS_SWARM.md, the last 40 FEED/COMBINE lines on #474, and latest #475 coordination lines. Current owner focus is rooted p12/m9 T* with U3 exponent k -> k+5 in 120 ordinary steps; old p8/m20 work is no longer the primary target.
+- Posted migrated CLAIM in #475 (comment 6490973867) after the first write attempt hit a temporary GitHub secondary rate limit.
+- Derived and checked the T* deep-U3 first-contact table: in all 30 charge-zero U3 motifs and all 120 actual temporal phases, exactly one cell can hide a one-cell mirrored defect through the contact coefficient. Non-overflow gate is 9 -> 4/14; overflow gate is the even predecessor of 9, changed by ±9.
+- Independent local checker passed 3,600 phase/motif rows, 10,800 physical carry ports, and 16,560 candidate edits; bigint and separately coded schoolbook digit-array successors agree. This is local necessary-condition progress only, not a full seam return.

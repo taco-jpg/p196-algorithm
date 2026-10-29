@@ -1,7 +1,17 @@
-# Agent Q03 formal target
+# Agent Q03 formal target (migrated to current T*)
 
-ULTIMATE TARGET (not proved): There exist q0>=1, k>=1, a finite list of symbolic palindromic coefficient templates T_i(q) with canonical first/last decimal digits for ALL q>=q0, and integers d>0, such that for EVERY q>=q0, EVERY 0<=i<k, the exact ordinary base-10 reverse/add step maps the integer represented by T_i(q) to T_(i+1)(q) (with the last step mapping to T_0(q+d)); every T_i(q) is nonpalindromic. Induction yields an all-time decimal Lychrel number.
+## Ultimate target
+Find fixed finite J, fixed realizable palindromic coefficient centre C, and one charge-zero U3 motif U=(9,a,18-a), with even a, such that for every independent q>=14,k>=100, the canonical rooted decimal family
 
-Q03 PROVED SUBLEMMA (PAPER PROOF): for same-overflow palindromic pairwords with first lower-half difference at j>=1, equality of their exact next coefficient prefix through j forces the 24 finite two-ended carry-port gate types in reports/Q03FirstContactInterface.md, including gamma1 +/-9 plus outer-neighbour !=9. In the published rooted p8/m20 periodic interior, permissible contact residues are exactly the eight rows of that report for every band multiplicity m>=4.
+P(q,k)=B ++ W^q ++ J ++ U^k ++ C ++ reverse(U)^k ++ reverse(J) ++ reverse(W)^q ++ reverse(B)
 
-OPEN LINK IN TARGET: prove an actual physically rooted centre/exterior interface program has a periodic positive-growth return and realizes necessary carry-port gates on EVERY cycle. Finite first-contact compatibility by itself does not prove any all-time orbit.
+has an exact 120 ordinary reverse-and-add step return P(q,k) -> P(q,k+5), with every intermediate state nonpalindromic and every phase's complete two-ended carry/overflow state restored. The published T12 paired-insertion theorem reduces this fixed-J,C,U return claim to the finite instance (q,k)=(14,100); full physical seam equality and phase guards still have to be checked.
+
+## Q03 proved sublemma
+For any deep U3-bulk contact site in any of the 30 U3 motifs over all 120 rooted p12/m9 phases, if a one-cell mirrored source perturbation preserves the next pairword prefix through the first changed coefficient and has the same overflow, the only possible gate is:
+- g=0: the unique 9 -> 4 with carries (1,0), or 9 -> 14 with carries (0,1);
+- g=1: the even coefficient immediately before the unique 9, x -> x+9 for x<=8 with carries (1,1), or x -> x-9 for x>=10 with carries (0,0).
+The exact all-width statement and independent physical controls are in reports/Q03TStarU3FirstContact.md and calculation/new_structures/Q03/tstar_u3_first_contact.py.
+
+## Remaining missing implication
+The local gate must be embedded in a physically reachable finite seam/carry state that returns after 120 ordinary steps while keeping q fixed and gaining five U3 copies. First-contact equality is not full-interface equality and does not by itself imply a decimal Lychrel number.
