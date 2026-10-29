@@ -1,0 +1,51 @@
+{
+  "label": "COMPUTED",
+  "base": 10,
+  "source": "H_k=B ++ W^k ++ [9] ++ V^k; P_k=H_k ++ [9] ++ reverse(H_k)",
+  "min_k": 40,
+  "time_edges": 480,
+  "time_states": 481,
+  "first_band_period": 20,
+  "second_band_period": 48,
+  "halfword_cut_indices": [
+    "0",
+    "199",
+    "20*k-601",
+    "20*k+616",
+    "68*k-1304",
+    "floor(len(P_t)/2)"
+  ],
+  "fixed_outer_size": 199,
+  "fixed_bridge_size": 1217,
+  "centre_suffix_t0": 1344,
+  "centre_suffix_t480": 1464,
+  "all_edge_matrices_idempotent": true,
+  "exact_r_checks_per_edge": [
+    0,
+    1
+  ],
+  "explicit_integer_replay_k": [
+    40,
+    41,
+    42
+  ],
+  "gmp_control": {
+    "k": 45,
+    "steps": 480,
+    "digits": 6442,
+    "hash_fnv64": "43d7778659e5a1ae"
+  },
+  "temporal_return_at480": {
+    "first_lattice": true,
+    "second_lattice": true,
+    "outer_prefix": true,
+    "junction": false,
+    "junction_mismatching_coefficients": 391,
+    "junction_mismatch_offset_range": [
+      530,
+      933
+    ],
+    "centre_suffix": false
+  },
+  "conclusion": "finite family, no period cycle, no decimal Lychrel proof"
+}
