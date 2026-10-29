@@ -105,6 +105,26 @@ def main():
         patterns.append(''.join(map(str,bits)))
     assert len(set(patterns))==30
 
+    # Among odd-centre phases the required low/high midpoint class follows tau_U.
+    # Count the mandatory class switches over each 120-step clock.
+    switch_counts=[]
+    for initial_parity in (0,1):
+        for U0 in rows:
+            U=tuple(U0); parity=initial_parity; odd_tau=[]
+            for t in range(120):
+                tau=core.steady_path(U)[0]
+                if parity == 1:
+                    odd_tau.append(tau)
+                g=gamma[t%12]
+                U=bulk_successor(U,g)
+                parity ^= g
+            assert len(odd_tau)==60 and set(odd_tau)=={0,1}
+            assert sorted((odd_tau.count(0),odd_tau.count(1))) == [28,32]
+            switches=sum(odd_tau[i]!=odd_tau[i-1] for i in range(1,len(odd_tau)))
+            assert switches in (33,34)
+            switch_counts.append(switches)
+    assert min(switch_counts)==33 and max(switch_counts)==34
+
     # Exhaustively validate the exact centre-splice criterion through length 8.
     centres=0
     for n in range(1,9):
@@ -119,6 +139,7 @@ def main():
     assert centres==419920
     print(f'TSTAR_BULK_MAP_PASS: {len(WIDTH_PAIRS)*12*len(rows)} phase/U bigint checks across {len(WIDTH_PAIRS)} independent (q,k) widths')
     print('TSTAR_CLOCK_PASS: all 30 U3 rows return after 120 steps; each tau word has 60 zeros and 60 ones')
+    print('CENTRE_TYPE_SWITCH_PASS: on odd-centre phases tau has 28/32 or 32/28 split and requires 33 or 34 low/high switches per 120 steps')
     print(f'CENTRE_SPLICE_PASS: exact criterion matches {centres} palindromic-centre/carry cases through length 8')
     print('Scope: no stationary centre can carry complementary reflection at every phase; asymmetric centre/interface routes remain open')
 

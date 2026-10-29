@@ -11,3 +11,5 @@
 
 8. Extended the T* route from the bulk law to the exact phase clock and centre splice. Derived the all-width bulk maps F0/F1, enumerated all 30 U3 rows under gamma=(1000)^3 for 120 phases, and proved each tau_U sequence has 60 zeros and 60 ones. A fixed C cannot preserve complement-reflection through every phase.
 9. Independent controls: 1,440 actual canonical-integer phase/U cases across (q,k)=(20,20),(40,80),(80,40),(160,160) matched the exact bulk formulas; 419,920 centre/carry cases through centre length 8 matched the splice criterion. Local scripts passed. Existing route CLAIM/DONE are #475 comments 6491013898 and 6491016933; this extension is the same symmetry-audit route, not a new certificate claim.
+
+10. Strengthened the centre gate: over odd-length-centre phases, every U3 start and either initial parity has both tau classes (28/32 or 32/28) and 33 or 34 class switches per 120 steps. A symmetric centre-state route therefore needs at least 33 midpoint-class switches per clock, besides the unavoidable even-centre symmetry breaks.

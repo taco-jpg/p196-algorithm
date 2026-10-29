@@ -32,7 +32,7 @@ For odd n, the canonical central pair coefficient is even, hence is either low (
 
 Reason: a low coefficient resets carry to 0 and can satisfy reflected complementarity only when entered with 1; a high coefficient resets to 1 and can satisfy it only when entered with 0; a 9 transmits carry unchanged. Thus non-9 types must alternate. Since C is palindromic, sigma(C) is palindromic; the odd central coefficient is non-9, so the centre type agrees with the first type. The stated input condition is therefore both necessary and sufficient.
 
-Consequently, at a phase with tau_U=1 a centre preserving this symmetry must have a low central coefficient; at a phase with tau_U=0 it must have a high central coefficient. Section 1 proves that both tau values occur (60 times each) in every 120-phase U3 cycle. **No single fixed centre C can extend the complementary-reflection carry invariant through the centre at every phase of the T* clock.**
+Consequently, at a phase with tau_U=1 a centre preserving this symmetry must have a low central coefficient; at a phase with tau_U=0 it must have a high central coefficient. Section 1 proves that both tau values occur (60 times each) in every 120-phase U3 cycle. More sharply, across the 60 odd-length-centre phases, every U3 start and either initial length parity gives a tau split of 28/32 or 32/28, with 33 or 34 changes between consecutive odd phases. Thus any centre that preserves the law on all odd phases must switch its low/high central class at least 33 times per 120-step clock. **No single fixed centre C can extend the complementary-reflection carry invariant through the centre at every phase of the T* clock.**
 
 ## 3. Search consequence and scope
 
@@ -47,6 +47,7 @@ Run from the repository root:
 Executed controls in an isolated local mirror:
 - 1,440 actual canonical-integer phase/U checks across (q,k)=(20,20),(40,80),(80,40),(160,160), all matching the exact bulk map;
 - all 30 U3 rows return after 120 formula-driven phase steps, each with 60 zero and 60 one carry states;
+- over the 60 odd-centre phases, tau splits 28/32 or 32/28 and changes class 33 or 34 times for every U3 start and either initial length parity;
 - 419,920 palindromic-centre/incoming-carry cases through centre length 8 agree with the exact centre-splice criterion.
 
 These finite controls validate the formula implementation; the uniform-width statements follow from the exact carry derivation and finite 30-state enumeration. No full T* seam return or Lychrel number is claimed.
