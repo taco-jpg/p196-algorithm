@@ -1,0 +1,9 @@
+# W07 exact two-step decimal central eraser
+- **PAPER PROOF, every q>=0:** Let H_q=B++W^q (|B|=39, |W|=20), L=39+20q, P_q=H_q++reverse(H_q), and P'_q replace the TWO central coefficients 13,13 by 4,4. These distinct source pairwords have distinct first reverse-add integers with identical successor pairwords; their second integer successors coincide.
+- **PAPER PROOF:** A coefficient 7 immediately before the centre resets carry to zero. First-successor digit triples (low-first L-1,L,L+1) change (3,4,8) to (4,4,7), preserving the reflected pair sum 11. All other normalized digits agree; overflow 1 makes the successor length odd with midpoint L.
+- Every q yields 2^(2q+1) explicit distinct positive seeds (two genuine pairword classes, 2q independently splittable coefficient-1 sites in each), all coalescing by step 2.
+- **PAPER PROOF with AgentW07UniformBackwardFibres:** q>=300 guarantees nonpalindromic states t=0..20000 for this enlarged family; t0 has odd exterior coefficient17; both first-successor pairwords agree; t>=2 are the identical certified ordinary integer.
+- **COMPUTED:** q300 mutated-centre direct decimal-digit replay for 20,000 steps: zero palindromes, all phase-eight 39-coefficient caps, at least 72 complete phase-20 bands at all 20,001 states, 10,000 length overflows, final 22,078 digits, FNV64 10989435956851471335.
+- Independent GMP 20,000-step modified-centre q300 replay agrees. Python ordinary-bigint + inverse-decoder controls q=0..100,300,301; centre-5 negative control rejects step-2 merger.
+- Source/tests: calculation/new_structures/agent-W07/; reproduce: sh calculation/new_structures/agent-W07/two_step_run.sh (C++17/GMP). Proof: reports/AgentW07TwoStepCentreEraser.md.
+- **UNDECIDED:** any fixed-seed infinite base-10 orbit or a Lychrel certificate; no result about 196. Finite centre eraser, not a recurrent band.

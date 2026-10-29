@@ -12,8 +12,9 @@ using namespace std;
 using V=vector<int>;
 static const V B={17,5,0,1,13,4,14,12,9,8,15,16,17,13,17,9,1,4,4,11,8,16,0,9,14,11,9,11,6,13,18,9,4,7,17,15,9,7,13};
 static const V W={17,3,1,13,17,11,14,3,18,1,2,0,7,3,14,12,15,9,7,13};
-string seed(int q){
+string seed(int q,int centre=13){
  V p=B;for(int k=0;k<q;k++)p.insert(p.end(),W.begin(),W.end());
+ if(centre!=13){assert(p.back()==13);p.back()=centre;}
  string low,high;
  for(int x:p){int a=min(x,9);low.push_back('0'+a);high.push_back('0'+x-a);}
  reverse(low.begin(),low.end());
@@ -34,8 +35,8 @@ uint64_t fnv(const string&s){
  return h;
 }
 int main(int argc,char**argv){
- int q=argc>1?atoi(argv[1]):300,steps=argc>2?atoi(argv[2]):20000;
- mpz_class x(seed(q),10);
+ int q=argc>1?atoi(argv[1]):300,steps=argc>2?atoi(argv[2]):20000,centre=argc>3?atoi(argv[3]):13;
+ mpz_class x(seed(q,centre),10);
  assert(x.get_str().size()==size_t(78+40*q));
  array<V,8> Bph,Wph;
  mpz_class cal(seed(max(q+200,500)),10);
@@ -61,7 +62,7 @@ int main(int argc,char**argv){
   if(j<1){cerr<<"BAND BAD "<<t<<"\n";return 4;}
   if(t==steps){
    assert((int)s.size()==(int)(78+40*q+10000));
-   cout<<"W07_GMP_"<<steps<<"_PASS len="<<s.size()
+   cout<<"W07_GMP_"<<steps<<"_PASS centre="<<centre<<" len="<<s.size()
     <<" minbands="<<minbands<<" gammas1="<<overflows
     <<" final_fnv64="<<fnv(s)<<"\n";
    assert(q!=300 || fnv(s)==10989435956851471335ULL);
