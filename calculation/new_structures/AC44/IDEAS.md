@@ -1,0 +1,2 @@
+# AC44 failures and open leads
+Random finite replays did not establish sound pruning; switched to complete carry-domain enclosures. Abstracting the palindromic centre C itself as unrestricted coefficients erased the forced mismatch for all 30 U tested (centre lengths 1..100): **inconclusive**, not a possible return. A relational centre automaton and a rigorous symbolic J-length/q/k pumping lemma are still missing. Width samples must not be used to infer an all-time certificate.
