@@ -1,11 +1,11 @@
 # Z53 independent census prefilter audit
 
-**Status: PARTIAL (8/8 committed short-seam cell reports inspected; 0/8 uses a known-unsound prefilter; active and uncommitted long-seam MDD shards still have unresolved completeness hazards).**  
+**Status: PARTIAL (10/10 committed cell reports inspected; 0/10 uses a known-unsound prefilter; active and uncommitted long-seam MDD shards still have unresolved completeness hazards).**  
 **Label: COMPUTED** repository/issue-history audit only. This is not a decimal Lychrel theorem.
 
 ## Scope and method
 
-The audit targeted reported-complete T* cells and the filters that could falsely turn a finite search into an EXHAUSTED-NONE claim. It cross-checked the latest #475 DONE/ALERT and FEED/COMBINE history, #474 comments pages 18-25, the binding scope in docs/FOCUS_SWARM.md, and each committed short-seam cell report listed below.
+The audit targeted reported-complete T* cells and the filters that could falsely turn a finite search into an EXHAUSTED-NONE claim. It cross-checked the latest #475 DONE/ALERT and FEED/COMBINE history, #474 comments pages 18-25, the binding scope in docs/FOCUS_SWARM.md, and each committed cell report listed below.
 
 | Committed report | Cell scope | Filter audit |
 |---|---|---|
@@ -16,7 +16,9 @@ The audit targeted reported-complete T* cells and the filters that could falsely
 | W42/CELL_REPORT.md | Phase 0, U=(10,8,9), |J|=3–4, odd C=3–13 | Q39 gates are applied only to odd C; complete post-gate J enumeration; no MDD. |
 | X05/CELL_REPORT.md | Phase 0, U=(9,6,12), |J|=3–4, odd C=15–23 | Direct enumeration of all 137,180 J words; no mod-11 or MDD pruning. |
 | V16/CELL_REPORT.md | Phase 3, all 30 U3 rotations, |J|=3–4, every finite C | Direct 4,115,400 (U,J) search plus reset-cone proof; no MDD or mod-11 pruning. |
-| agent-X11 report (commit 22edb0b) | Phase 0, U=(9,10,8), |J|=3–4, even C=14–24 | Direct enumeration of all 137,180 J words with an independent digit-array engine; no mod-11 or MDD pruning. |
+| agent-X11/CELL_REPORT.md (commit 22edb0b) | Phase 0, U=(9,10,8), |J|=3–4, even C=14–24 | Direct enumeration of all 137,180 J words with an independent digit-array engine; no mod-11 or MDD pruning. |
+| X24/CELL_REPORT.md | Phase 1, all 30 U3 rows, |J|=3–4, both C parities | Full unfiltered 4,115,400 (U,J) product; temporary W9 damage is allowed; R02 MDD not used. |
+| X24/U6_REPORT.md | Phase 1, U6=(17,14,17,1,4,1), |J|=3–4, both C parities | Direct 137,180-J local-collar scan with a proved centre cone; no odd-only modular gate. |
 
 These are scoped endpoint obstructions, not global statements about the decimal Lychrel problem.
 
@@ -44,4 +46,4 @@ Q43's 257,093,987-state SCC symmetry exclusion is a p16 result, not a p12/m9 exc
 
 ## Conclusion
 
-No unsound prefilter was found in the eight committed short-seam cell reports inspected. The overall status is **PARTIAL**, not EXHAUSTED-NONE: the active long-seam census is not complete, strict-W9 pruning cannot stand in for endpoint-only completeness, and the phase-0 MDD shard contract needs correction before any exhaustive claim. No all-time candidate or global no-go has been established.
+No unsound prefilter was found in the ten committed cell reports inspected. The overall status is **PARTIAL**, not EXHAUSTED-NONE: the active long-seam census is not complete, strict-W9 pruning cannot stand in for endpoint-only completeness, and the phase-0 MDD shard contract needs source-grounded validation before any exhaustive claim. No all-time candidate or global no-go has been established.
