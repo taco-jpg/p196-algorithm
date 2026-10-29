@@ -1,0 +1,1 @@
+- Phase-1 p12/m9, |J|=3..4, all 30 U3 motifs: exhaustive 4,115,400-state endpoint sweep has no W9-restoring edge; T12 centre-reset/insertion extends this to every legal finite C and all q>=14,k>=100. Redirect effort to unresolved phase-0/moving seams or a distinct mixed-U6 cycle.
