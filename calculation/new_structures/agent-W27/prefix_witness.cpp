@@ -40,6 +40,6 @@ static void run(string name,string s,int steps,int bound,int expected_max,int ex
      <<" odd_depth0_count="<<hist[0]<<"\n";
 }
 int main(){
- run("196","196",100000,29,28,9777);
+ run("196","196",1000000,31,30,429911);
  run("196-nine-shell","196"+string(12010,'9')+"196",20000,19,18,4852);
 }
