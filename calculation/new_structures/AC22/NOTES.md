@@ -5,3 +5,4 @@
 - 30,000-case A/B/C pilot gave zero undecided for initial cut length 320 and the same histogram as 60,000 two-parity baseline.
 - Exhaustive J5 cell for only U=(9,0,18) finished: 2,476,099 zero returns, min final known prefix 149, max first mismatch 149.
 - Pending: 29 remaining U rotations, phase-1 q-variable theorem, moving J, and all-time regeneration.
+- Completed all three U=(9,0,18) rotations, 7,428,297 J/U windows, all centre-independent, k>=52. 27 U rotations remain.
