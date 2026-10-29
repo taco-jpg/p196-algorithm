@@ -1,0 +1,11 @@
+# AgentX04ExactZeroCorridorBudget
+- **PAPER PROOF:** Exact universal base-10 central-zero-corridor update law, not a finite census and not a Lychrel exclusion.
+- For a positive n-digit N, let P_i=d_i+d_(n-1-i). If the maximal symmetric central zero interval of P has length z>0 and starts at a=(n-z)/2, let c be the decimal carry entering column a when normalizing P, and let gamma in {0,1} be the final overflow from N+reverse(N).
+- For z' of the next number, **exactly**: gamma=1 implies z'=z-1; gamma=0 implies z'=max(0,z-2c). In particular z'+gamma<=z while z>0.
+- Thus no finite template can keep a positive central zero corridor forever while its overflow stream contains infinitely many 1s; the corridor cannot grow even once while nonempty.
+- **Redirect:** replace a permanent symmetric *zero* reservoir by a nonzero carry-active band (or off-centre regenerating sector) and prove an actual growth transition, rather than increasing the initial zero padding.
+- **COMPUTED controls:** C++ tests every positive 2..7-digit integer with a nonempty zero corridor (918,180 cases) plus 1,000,000 seeded random longer integers; 1,918,180 exact equalities, no failure; both overflow classes seen.
+- Independent ordinary Python big integers: 100,000 more tests, 50,917 overflows, no failure.
+- Reproduce: `g++ -O3 -std=c++17 calculation/new_structures/agent-X04/zero_monotone.cpp -o /tmp/x04z && /tmp/x04z`; `python3 calculation/new_structures/agent-X04/zero_budget_python.py`.
+- Files: `calculation/new_structures/agent-X04/{zero_monotone.cpp,zero_budget_python.py}`; proof `reports/AgentX04ExactZeroCorridorBudget.md`.
+- Scope: universal one-step theorem only for z>0. Once z=0, a new zero interval may appear; no eternal absence is asserted. No claim about 196 or a decimal Lychrel certificate.
