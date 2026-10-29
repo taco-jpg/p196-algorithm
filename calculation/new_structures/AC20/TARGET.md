@@ -1,0 +1,3 @@
+# AC20 exact target
+
+Phase-11 rooted B11/W11, all 30 charge-zero U3 rotations, J length 3 or 4, all letters 0..18, q=14,k=100. Decide by 120 exact decimal reverse-and-add steps whether the endpoint B11||W11^14 prefix returns, allowing arbitrarily many temporary W9 mismatches. The full return requires same J/C and U exponent k+5. Prove applicability to any palindromic centre and all q>=14,k>=100 by phase-shifted T12 carry cones and paired insertions. Exact finite count: 8,230,800 for two fixed centre parities. No claim of decimal Lychrel existence.
