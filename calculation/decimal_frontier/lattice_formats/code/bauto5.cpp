@@ -3,7 +3,7 @@
 //  * 192-bit state keys,
 //  * streams generated from the exact regular language of the position-0 counter (small DFA, backward-pruned),
 //  * for each nontrivial SCC the globally shortest cycle length (if <= S = #ones) is reported (SCCMIN) for the self-mirror lattice test.
-// usage: bauto5 b pmin pmax [-cap N] [-maxscc k] [-g stream] [-dens4] [-v]
+// usage: bauto5 b pmin pmax [-cap N] [-maxscc k] [-scccap N] [-g stream] [-dens4]
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -126,8 +126,8 @@ struct Dfa {
 
 int main(int argc, char** argv) {
   b = atoi(argv[1]); int pmin = atoi(argv[2]), pmax = atoi(argv[3]);
-  unsigned long long CAPS = 3000000ULL; int maxscc = 6; string gfix; bool dens4 = false;
-  for (int i = 4; i < argc; i++) { string a = argv[i]; if (a == "-cap") CAPS = strtoull(argv[++i], 0, 10); else if (a == "-maxscc") maxscc = atoi(argv[++i]); else if (a == "-g") gfix = argv[++i]; else if (a == "-dens4") dens4 = true; }
+  unsigned long long CAPS = 3000000ULL; int maxscc = 6, scccap = 6000; string gfix; bool dens4 = false;
+  for (int i = 4; i < argc; i++) { string a = argv[i]; if (a == "-cap") CAPS = strtoull(argv[++i], 0, 10); else if (a == "-maxscc") maxscc = atoi(argv[++i]); else if (a == "-scccap") scccap = max(0, atoi(argv[++i])); else if (a == "-g") gfix = argv[++i]; else if (a == "-dens4") dens4 = true; }
   ydig = 1; while ((1 << ydig) < b) ydig++;
   Dfa* dfa = nullptr; if (gfix.empty()) { dfa = new Dfa(b); fprintf(stderr, "b=%d DFA states %zu\n", b, dfa->st.size()); }
   for (p = pmin; p <= pmax; p++) {
@@ -184,7 +184,8 @@ int main(int argc, char** argv) {
       for (auto& c : comps) { bool self = false; if (c.size() == 1) for (int w : adj[c[0]]) if (w == c[0]) self = true; if (c.size() > 1 || self) nontriv++; }
       if (!nontriv) continue;
       nscc++;
-      printf("G p=%d g=%s states=%zu edges=0 nontrivial_sccs=%d maxlev=%d S=%d\n", p, gs.c_str(), N, nontriv, ml, ng);
+      size_t nedges = 0; for (const auto& nbrs : adj) nedges += nbrs.size();
+      printf("G p=%d g=%s states=%zu edges=%zu nontrivial_sccs=%d maxlev=%d S=%d\n", p, gs.c_str(), N, nedges, nontriv, ml, ng);
       auto cols = [&](const vector<int>& seq, bool closeBack) {
         string out;
         for (size_t i = 0; i + (closeBack ? 0 : 1) < seq.size(); i++) {
@@ -196,10 +197,10 @@ int main(int argc, char** argv) {
         }
         return out;
       };
-      int shown = 0;
+      int shown = 0, omitted = 0, sizecapped = 0;
       for (auto& c : comps) {
         bool self = false; if (c.size() == 1) for (int w : adj[c[0]]) if (w == c[0]) self = true; if (!(c.size() > 1 || self)) continue;
-        if (shown >= maxscc) break; shown++;
+        if (shown >= maxscc) { omitted++; continue; } shown++;
         int r = c[0]; for (int w : c) if (w < r) r = w;
         vector<int> pr(N, -2), q; q.push_back(r); pr[r] = -1; int tgt = -1;
         for (size_t qi = 0; qi < q.size() && tgt < 0; qi++) { int v = q[qi]; for (int w : adj[v]) { if (comp[w] != comp[r]) continue; if (w == r) { tgt = v; break; } if (pr[w] == -2) { pr[w] = v; q.push_back(w); } } }
@@ -208,7 +209,7 @@ int main(int argc, char** argv) {
         string pcols = cols(path, false), ccols = cols(cyc, true);
         printf("SCC p=%d g=%s size=%zu cyclen=%zu depth=%zu path=%s cyc=%s\n", p, gs.c_str(), c.size(), cyc.size(), path.size() - 1, pcols.c_str(), ccols.c_str());
         // global shortest cycle length (<= ng) inside the component
-        if (c.size() <= 6000) {
+        if (c.size() <= (size_t)scccap) {
           int best = 1 << 30, bestv = -1; vector<int> bpr;
           for (int v0 : c) {
             if (best <= 1) break;
@@ -218,9 +219,15 @@ int main(int argc, char** argv) {
           }
           if (bestv >= 0 && best <= ng) {
             printf("SCCMIN p=%d g=%s S=%d minc=%d depth=%d cyc=%s\n", p, gs.c_str(), ng, best, lev[bestv], cols(bpr, true).c_str());
+          } else {
+            printf("SCCMIN_NONE p=%d g=%s S=%d size=%zu status=COMPUTED\n", p, gs.c_str(), ng, c.size());
           }
+        } else {
+          sizecapped++;
+          printf("SCCMIN_CAPPED p=%d g=%s S=%d size=%zu vertex_cap=%d status=UNDECIDED\n", p, gs.c_str(), ng, c.size(), scccap);
         }
       }
+      if (omitted || sizecapped) printf("SCCMIN_SCOPE p=%d g=%s nontrivial=%d examined=%d size_capped=%d omitted=%d\n", p, gs.c_str(), nontriv, shown, sizecapped, omitted);
       fflush(stdout);
     }
     double el = chrono::duration<double>(chrono::steady_clock::now() - tstart).count();
