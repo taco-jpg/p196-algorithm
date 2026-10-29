@@ -1,0 +1,58 @@
+{
+  "label": "COMPUTED",
+  "description": "Entire evolving central pairword equality across seeds N_L and N_(L+1), after inserting one 20-column periodic buffer.",
+  "test_pairs": [
+    [
+      1,
+      2,
+      99,
+      100
+    ],
+    [
+      2,
+      3,
+      187,
+      188
+    ],
+    [
+      10,
+      11,
+      891,
+      892
+    ],
+    [
+      100,
+      101,
+      8811,
+      8812
+    ],
+    [
+      224,
+      225,
+      19723,
+      19724
+    ]
+  ],
+  "fields": [
+    "L",
+    "L+1",
+    "firstCoreFailure",
+    "firstFrontShiftFailure"
+  ],
+  "core_full_verified_all_times_before_first_failure": true,
+  "firstCoreFailureFormulaInTestedWidths": "11+88*L",
+  "firstFrontFailureFormulaInTestedWidths": "12+88*L",
+  "core_at_L224_t19000": {
+    "frontA": 201,
+    "frontB": 221,
+    "core_length_in_each_lower_half": 9068,
+    "exactly_equal": true
+  },
+  "controls": {
+    "centreDigitPerturbation_L2_L3": {
+      "firstCoreFailure": 0,
+      "firstFrontFailure": 0
+    }
+  },
+  "notClaimed": "No all-width proof, no infinite-time decimal Lychrel certificate."
+}

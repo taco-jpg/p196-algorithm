@@ -1,0 +1,11 @@
+# N06SpatialPumpExactCores
+- Label: COMPUTED, exact finite-time inter-seed identity for specified decimal seed pairs only.
+- For N_L and N_(L+1) from N06RenormBufferedP8, their full changing central pairwords agree after a 20-position spatial translation while their matched lattice frontiers differ by exactly 20 positions.
+- For tested L=1,2,10,100,224, this equality holds at **every** t from 0 through 10+88L, inclusive, across the entire respective centre (not only a fixed-width window).
+- First core mismatch occurs at t=11+88L; first frontier-translation mismatch at t=12+88L, for all listed tested L.
+- L=224 versus L=225: 19,723 consecutive identical full cores; at t=19,000 each core has 9,068 coefficients.
+- Direct digit-vector replay and independent GMP integer arithmetic both confirm the formula for each listed L; mutated-centre negative control fails at t=0.
+- Reproduce: bash calculation/new_structures/agent-N06/pump/run_pump.sh.
+- Source: calculation/new_structures/agent-N06/pump/{pump_pairs.cpp,gmp_pump.cpp,run_pump.sh,pump_observations.json}.
+- Report: reports/N06SpatialPumpExactCores.md.
+- Not claimed: universal all-L pumping theorem, a closed macro-edge, any infinite decimal Lychrel orbit, or any result about 196.
