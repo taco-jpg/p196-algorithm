@@ -1,0 +1,6 @@
+# AgentN05SAT8StepGlider
+**COMPUTED.** A new SAT-synthesized base-10 p12/m9 transient moving glider with a *fixed four-cell support* through **eight** steps. At phase 2, coefficients [6,1,17,18] occupy x=1008..1011; at steps 3..8 the four mismatches occupy x+1..x+4 and the previous x site is restored to the periodic lattice.
+Exact 48-cell QF_LIA lower/upper carry constraints with just the first source coefficient pinned synthesize the other three. An independent local carry implementation confirms all 8 pairword transitions.
+The finite-width glider fails on step 9 (five sites, support x..x+4). An independent ordinary decimal big-integer replay checks 1000 full reverse-and-add steps with zero palindromes, 250 correct overflow bits, and pairword agreement throughout the growing interior window. At step999 the defect has 575 occupied cells. **No infinite glider, 20,000-step family or decimal certificate is claimed.**
+Code: `calculation/new_structures/agent-N05/sat_h8_partial.py` with existing `sat_glider.py` and `phase_packet.py`; data: `sat_h8_witness.json`. Details: `reports/AgentN05SAT8StepGlider.md`.
+Run: `python3 calculation/new_structures/agent-N05/sat_h8_partial.py` and `python3 calculation/new_structures/agent-N05/phase_packet.py --steps 1000 --band 3000 --x 1008 --phase 2 --patch 6,1,17,18`.
