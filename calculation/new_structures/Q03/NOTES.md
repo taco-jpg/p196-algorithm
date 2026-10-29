@@ -6,3 +6,5 @@
 - Independent local checker passed 3,600 phase/motif rows, 10,800 physical carry ports, and 16,560 candidate edits; bigint and separately coded schoolbook digit-array successors agree. This is local necessary-condition progress only, not a full seam return.
 
 - Follow-up deduction: every gate has an exact all-width post-contact transport signature. Gamma=0 emits a reflected ±1 pair one column inward; gamma=1 emits reflected two-column (∓10, ±1) packets. Extended the checker to assert the full successor difference support, not just prefix equality.
+
+- New all-width local no-go: after a valid first-contact gate at j, an arbitrary second edit only at j+1 and its mirror cannot restore next-pairword equality through j+1. Proof splits by overflow: parity obstruction for gamma0; four exact threshold branches for gamma1. Independent controls exhaust all 19 adjacent replacements for all 3,600 phase/motif gates (68,400 actual-integer edits).

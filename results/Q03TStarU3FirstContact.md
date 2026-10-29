@@ -5,6 +5,8 @@
 - Overflow: the unique gate is the even coefficient immediately before 9; x≤8 changes to x+9 with ports (1,1), while x≥10 changes to x−9 with ports (0,0).
 - All other cells fail the universal Q03 ±5/±9 gate conditions; carry reset makes this necessary table valid at every width, independent of J,C away from the seam.
 - Exact post-contact transport: gamma=0 emits a reflected ±1 pair; gamma=1 emits reflected (∓10, ±1) two-cell packets, with all other successor coefficients unchanged.
+- Adjacent repair no-go: no replacement of only j+1 and its mirror can restore successor-pairword equality through j+1 after any gate at j.
+- Exact post-contact transport: gamma=0 emits a reflected ±1 pair; gamma=1 emits reflected (∓10, ±1) two-cell packets, with all other successor coefficients unchanged.
 - COMPUTED controls: 3,600 phase/motif rows, 10,800 actual carry ports and 16,560 one-cell edit checks; bigint and independent schoolbook digit-array engines agree.
 - Reproduce: python3 calculation/new_structures/Q03/tstar_u3_first_contact.py; derivation: reports/Q03TStarU3FirstContact.md.
 **Scope:** local first-contact necessity only; no full 120-step seam return, no positive-growth certificate, and no base-10 Lychrel existence claim.

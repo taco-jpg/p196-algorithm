@@ -140,6 +140,7 @@ def main():
     motif_set = set(motifs)
     gate_count, signed_count, motif_signed_count = Counter(), Counter(), Counter()
     physical_rows = tested_edits = tested_ports = 0
+    adjacent_tests = 0
 
     for initial in motifs:
         states = phase_rows(initial)
@@ -219,12 +220,34 @@ def main():
                             assert pair2[j_reflect - 1] - baseline_pair[j_reflect - 1] == sign
                             assert pair2[j_reflect] - baseline_pair[j_reflect] == -10 * sign
                     tested_edits += 1
+            # Exhaust every possible adjacent second edit y at j+1 and its mirror.
+            # No choice can restore the next pairword prefix through j+1.
+            j_gate = u_start + 3 * copy_index + r_gate
+            j_gate_reflect = len(p) - 1 - j_gate
+            q1_old = p[j_gate]
+            gate_n = n + (max(0, replacement - 9) - max(0, q1_old - 9)) * 10**j_gate
+            gate_n += (min(9, replacement) - min(9, q1_old)) * 10**j_gate_reflect
+            j2 = j_gate + 1
+            j2_reflect = len(p) - 1 - j2
+            q2_old = p[j2]
+            q2_low, q2_high = max(0, q2_old - 9), min(9, q2_old)
+            for q2_new in range(19):
+                n2 = gate_n + (max(0, q2_new - 9) - q2_low) * 10**j2
+                n2 += (min(9, q2_new) - q2_high) * 10**j2_reflect
+                out2 = reverse_add_bigint(n2)
+                assert out2 == reverse_add_digits(n2)
+                pair2 = pairword_of(out2)
+                assert len(pair2) == len(baseline_pair)
+                assert baseline_pair[:j_gate + 2] != pair2[:j_gate + 2], (
+                    initial, t, word, r_gate, q1_old, replacement, q2_old, q2_new)
+                adjacent_tests += 1
             physical_rows += 1
             gate_count[overflow] += 1
             signed_count[(overflow, replacement - q_gate)] += 1
             motif_signed_count[(initial, overflow, replacement - q_gate)] += 1
 
     assert physical_rows == 3600 and tested_ports == 10800
+    assert adjacent_tests == 3600 * 19 == 68400
     assert gate_count == Counter({0: 2700, 1: 900})
     assert signed_count == Counter({(0, -5): 1350, (0, 5): 1350,
                                     (1, -9): 450, (1, 9): 450})
@@ -240,6 +263,7 @@ def main():
     print("PASS: periodic carries match all", tested_ports, "actual contact ports")
     print("PASS: bigint and independent digit-array engines agree on", tested_edits, "candidate edits")
     print("PASS: each gate emits its exact reflected +/-1 or (opposite 10, unit) packet")
+    print("PASS: no adjacent second-cell edit restores the prefix through j+1; tested", adjacent_tests, "choices")
     print("PASS: gamma0 signs +/-5 each 1,350; gamma1 signs +/-9 each 450")
     print("SCOPE: all-width local necessity only; no full T* return or Lychrel certificate")
 

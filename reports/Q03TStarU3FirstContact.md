@@ -46,6 +46,16 @@ The same carry equations give more than prefix equality. If the one-cell gate is
 
 Thus the unique first-contact gate is not a one-step repair: it emits a deterministic unit packet in a no-overflow phase or a two-column (∓10,±1) packet in an overflow phase. A regenerative T* seam must absorb or re-emit this exact packet at later phases; the current result does not prove whether that is possible.
 
+## Adjacent two-cell repair is impossible
+
+A second exact restriction follows. Keep the first gate at j and its mirror, but allow an arbitrary replacement y∈{0,...,18} at the immediately adjacent coefficient j+1 and its mirror j′−1. No choice of y makes the next pairwords agree through j+1. This is a PAPER-PROOF obstruction for the two-cell support {j,j+1} and its reflection; it does not exclude a non-adjacent or wider repair.
+
+**No-overflow proof.** The first gate is 9→4 or 9→14, so the lower outgoing carry difference is s=−1 or +1. Let x=P[j+1]≠9 and ε=y−x. The universal gate at j forces the reflected incoming/outgoing carry differences to be zero; the intervening U bulk also resets the carry entering the edited mirror coefficient. If u∈{−1,0,1} is the outgoing carry difference after j+1, the pairword difference at j+1 is exactly 2ε+s−10u. The first and last terms are even, while s is odd, so this cannot vanish.
+
+**Overflow proof.** Here P[j+1]=9, and the first gate is x→x+9 for x≤8 (s=+1) or x→x−9 for x≥10 (s=−1). Put ε=y−9. For s=+1, the baseline carries into the lower and reflected 9 cells are (0,1): if y≤8, the carry terms are u=0,w=−1 and the pairword difference at j+1 is y−10≠0; if y≥9, they are u=1,w=0 and the difference is y−19≠0. For s=−1, those baseline carries are (1,0): if y≤9, u=−1,w=0 and the difference is y+1≠0; if y≥10, u=0,w=1 and the difference is y−8≠0. Here u is the lower outgoing carry difference after j+1 and w is the changed reflected carry entering j′. The endpoint cases x=0 and x=18 additionally require y≥9 and y≤9, respectively, to preserve equality at j; these restrictions only remove cases from the already impossible branches.
+
+Therefore no edit confined to the contact cell and its immediately next cell can absorb the emitted packet. **REDIRECT:** do not search for a two-cell adjacent repair; any successful T* return must use a non-adjacent correction or a wider moving interface/carry state.
+
 ## Independent physical controls
 
 Run from the repository root:

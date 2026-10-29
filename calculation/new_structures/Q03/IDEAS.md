@@ -3,3 +3,5 @@
 - The overflow channel has abundant one-step coincidences (16 whole-successor merges in each 20-cell phase), matching earlier W06 observations; it does not preserve a defect indefinitely. Constraint: a regenerative claim must track a nonconsumed resource after the first apparent merger.
 
 - T* single-cell first-contact gate is not a complete one-step repair: the exact successor difference support is a reflected ±1 pair when gamma=0, or a reflected two-cell (∓10,±1) packet when gamma=1. Constraint: any regenerative interface must explicitly absorb or re-emit this packet in later phases; prefix equality through the contact column is not a return.
+
+- Adjacent two-cell repair died: after any valid first-contact gate, exhaustive carry algebra shows no value y for the sole adjacent replacement j+1 can restore the successor pairword prefix through j+1. Constraint: do not search a repair supported only on {j,j+1} and mirrors; include a non-adjacent coefficient or wider moving interface state.

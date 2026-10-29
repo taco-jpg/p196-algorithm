@@ -15,3 +15,5 @@ The exact all-width statement and independent physical controls are in reports/Q
 
 ## Remaining missing implication
 The local gate must be embedded in a physically reachable finite seam/carry state that returns after 120 ordinary steps while keeping q fixed and gaining five U3 copies. First-contact equality is not full-interface equality and does not by itself imply a decimal Lychrel number.
+
+Adjacent-cell constraint: the first-contact gate's successor packet cannot be absorbed by changing only the immediately next coefficient and its mirror. A return must use a non-adjacent correction or a wider moving interface/carry state.
