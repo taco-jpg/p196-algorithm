@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Independent genuine-integer replay for AA56's scoped 360-step diagnostics."""
+import sys
+if hasattr(sys, "set_int_max_str_digits"):
+    sys.set_int_max_str_digits(0)
 B = [10,4,6,6,7,12,9,16,16,13,0,2,10,17,7,0,18,6,5,18,4,18,14,9,14,8,12,17,10,4,6,4,0,5]
 W = [5,18,4,8,1,15,4,0,5]
 CASES = [
