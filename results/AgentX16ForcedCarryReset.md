@@ -1,0 +1,6 @@
+# AgentX16ForcedCarryReset
+**PAPER PROOF:** for every integer k>=0, the 2k+8-digit base-10 Thue-Morse pairword P0(i)=17-3*(popcount(min(i,n-1-i)) mod 2) evolves under genuine reverse-and-add through overflow 1,0,1 to an n+2-digit pairword P3 having exactly TWO neutral coefficients equal to 9, at symmetric indices 2 and n-1. All remaining interior coefficients belong to {4,7,10,13,16}; the preceding P2 interior is in {2,8,14}, so its carry is a binary-automatic forced function of neighbouring Thue-Morse bits.
+Four initial states are nonpalindromic by odd-pair witnesses 17,13,17,15. This is a two-port regenerating-carry candidate mechanism, not an infinite orbit or certificate.
+**COMPUTED:** exact ordinary-digit and coefficient-normalization differential regressions k=0..3000, n0=8..6008; no failures.
+Report: `reports/AgentX16ForcedCarryReset.md`. Code: `calculation/new_structures/agent-X16/forced_reset.py`; run `python3 calculation/new_structures/agent-X16/forced_reset.py`.
+A return step from the two neutral ports to the forced phase remains UNDECIDED; no Lean proof, no full repository verify.
