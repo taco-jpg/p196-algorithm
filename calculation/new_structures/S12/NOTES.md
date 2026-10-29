@@ -110,3 +110,13 @@ W_(k+5)-W_k = (83 S_(k+5)+84 S_k-S_(k+10))/(57*10^L) mod 101.
 This is an exact necessary source equation, not a no-go: it must be combined with the actual phase-by-phase seam constraints. The per-phase delta law supplies the carry-source change to insert into that equation.
 
 Reproduction: g++ -O3 -std=c++17 calculation/new_structures/S12/epoch_delta.cpp -o /tmp/s12_epoch_delta && /tmp/s12_epoch_delta; python3 calculation/new_structures/S12/epoch_delta.py. Both independently check 2,400 source/target cases, including the physical phase-0 overflow and native-bigint n+reverse(n).
+
+## R18 fixed-seam centre-independence extension (COMPUTED scope; redirect only)
+
+This audits S08's exact all-width result for the phase-4 rooted family B4 W4^q J24 U^k C reverse(U)^k reverse(J24) reverse(W4)^q reverse(B4), U=(18,0,9). S08/verify.py proves for every independent q,k>=512 that the fixed-seam image differs at step 120 from the k+5 target at index 9q+35 (actual 9, expected 5), and at step 240 from the k+10 target at index 9q+12 (actual 6, expected 5), for its valid odd centres.
+
+Centre-independence lemma: at any phase, write P=A U_t^m C_t reverse(U_t)^m Z. Each U_t and its reversal contains a coefficient other than 9, so its carry-transfer map on {0,1} is constant. The carry entering Z after the mirrored U band is therefore independent of C_t, even if the centre's length changes. The normalized low-prefix digits in A are independent of the centre by forward carry causality; the normalized high-suffix digits in reverse(A) are independent because their incoming carry is reset by reverse(U_t)^m. For a low-prefix index i, its mirrored coefficient uses suffix offset |A U_t^m|-1-i, which is independent of |C_t|. Therefore the successor pairword restricted to A is independent of the centre's content and length. The p12 phase-4 U cycle stays in the reset U3 family, so induction preserves this independence across the 120-step clock.
+
+Consequently the S08 mismatch at J24[1] extends from its tested odd centres to every finite canonical palindromic centre C, including every even-length centre, for the same fixed J24/U and all q,k>=512. This is not a global decimal no-go: it redirects the R18 track away from centre tuning and toward changing J/U or allowing a phase-moving seam.
+
+Independent true-decimal controls: g++ -O3 -std=c++17 calculation/new_structures/S12/r18_center_independence.cpp -o /tmp/r18_center_independence && /tmp/r18_center_independence; python3 calculation/new_structures/S12/r18_center_independence.py. Both check 64 cases (all 16 independent q,k pairs in {20,40,80,160} x four even centres), 240 actual steps each, exact 1000 overflow clock and no palindromes.
