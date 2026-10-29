@@ -1,0 +1,7 @@
+# Agent N19 universal six-edge synchronized-counter transport
+- **PAPER PROOF:** For every integer k>=5, all six exact decimal reverse-add pairword edges `P_t(k)->P_(t+1)(k)` hold for the nonregular two-counter family of `reports/AgentN19CounterSynchronizedSixCycle.md`, with phase parity and overflows `1,0,0,0,1,0`.
+- Finite certificate: 40-state two-ended carry relation; each edge's synchronized input/output word factors as `Z20[:11] (z1)^(k-20) Z20[11:31] (z2)^(k-20) Z20[31:]` for k>=20. All twelve 40x40 Boolean matrices satisfy `M^2=M`; test k=20,21 plus k=5..19.
+- **COMPUTED:** universal finite-state checker accepts six edges, rejects any checker assertion mismatch; separate digit normalization and actual Python big-int replays k=5..20 agree.
+- The first 6-step clock returns bulk values (8,16), with run lengths changing from (k,k) to (k-5,k-2). This is a constructive *nonclosed* 2-counter effect, not a decimal Lychrel certificate.
+- No Lean verification or claim that this cycle can repeat indefinitely.
+- Proof/reproduction: `reports/AgentN19UniversalTwoCounter.md`; code `calculation/new_structures/agent-N19/unary_allk.py`; run `python3 calculation/new_structures/agent-N19/unary_allk.py` from repo root after first result.
