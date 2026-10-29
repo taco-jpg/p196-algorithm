@@ -1,0 +1,9 @@
+# AgentX27ThreeDigitBeacon
+**COMPUTED.** Among **all 990 canonical decimal seeds 10..999**, exactly `879` and `978` retain an odd mirrored digit-pair coefficient in the first 32 pairs at **every** state `t=0..5000` (two independent exhaustive implementations: C++ literal digits and Python arbitrary-precision integers).
+Both seeds coalesce after one step: `879 + 978 = 978 + 879 = 1857`; initial pairwords are `(17,14,17)` and already have odd edge coefficients.
+For seed `879`, independent GMP big-integer arithmetic and a separate literal-decimal-digit engine agree at all 20,001 states through step 20,000, checking the full pairword parity identity and exact centre-independent prefix transducer at every step. Maximum earliest-odd-pair index during this replay: 17.
+A longer 100,000-step literal-digit replay of `879` preserves an odd mirrored pair coefficient within the first 23 positions at every one of 100,001 states. Hence **both 879 and 978** have a rigorous finite one-step reduction to the checked 100k nonpalindromic prefix. This latter run is computed by one arithmetic engine, not GMP.
+Checks: at `t=20000`, 8,245 digits, 8,242 overflows, residue mod `1000000007` = `476991197`, parity trace `38dd817f4a0c68c3`; at `t=100000`, 41,387 digits, 41,384 overflows, maximum first-odd index 22, no all-even pairwords.
+The 5000-step census excludes only the **32-site odd-pair property**, not the possibility of other seeds being Lychrel; for example 196 first loses this parity obstruction at step 8, without becoming a palindrome.
+**NOT AN INFINITE DECIMAL LYCHREL CERTIFICATE.** A uniform inductive closure for the observed 23-site parity beacon has not been proved.
+Reproduce: `bash calculation/new_structures/agent-X27/small_reproduce.sh` (GMP C++17, Python3). Code/data and proof details: `calculation/new_structures/agent-X27/{small_scan.cpp,small_scan_independent.py,small_reproduce.sh,verify.cpp,longrun.cpp}` and `reports/AgentX27ThreeDigitBeacon.md`.

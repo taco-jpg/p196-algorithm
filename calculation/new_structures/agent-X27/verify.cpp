@@ -9,6 +9,8 @@ string dec(const vector<uint8_t>& d){string s; s.reserve(d.size());for(auto i=d.
 int main(int argc,char**argv){int Q=argc>1?atoi(argv[1]):47, T=argc>2?atoi(argv[2]):20000;int K=argc>3?atoi(argv[3]):16;
  if(Q<0||T<0||T>2000000){cerr<<"invalid argument\n";return 2;}
  vector<uint8_t>d;d.push_back(6);d.insert(d.end(),2*Q,9);d.push_back(1);
+ if(argc>4){string seed=argv[4];if(seed.empty()||seed[0]=='0'||seed.find_first_not_of("0123456789")!=string::npos){cerr<<"invalid seed\n";return 2;}d.clear();for(auto it=seed.rbegin();it!=seed.rend();++it)d.push_back(*it-'0');}
+ const int initialDigits=d.size();
  mpz_class g(dec(d)); long long ov=0,oddLen=0,evenLen=0,midOdd=0,noOddGlobal=0;
  int maxFirstOdd=0, minLength=INT_MAX, maxLength=0, maxMid18run=0;
  uint64_t trace=1469598103934665603ULL;
@@ -63,6 +65,6 @@ int main(int argc,char**argv){int Q=argc>1?atoi(argv[1]):47, T=argc>2?atoi(argv[
   if((int)out.size()!=int(newg.get_str(10).size())){cerr<<"OVERFLOW ENGINE MISMATCH at t="<<t<<"\n";return 7;}
   d.swap(out);g.swap(newg);
  }
- cout<<"SUMMARY Q="<<Q<<" T="<<T<<" initialDigits="<<2*Q+2<<" finalDigits="<<d.size()<<" overflow="<<ov<<" oddLenStates="<<oddLen<<" evenLenStates="<<evenLen<<" maxFirstOdd="<<maxFirstOdd<<" noOddGlobal="<<noOddGlobal<<" middleOddEvenN="<<midOdd<<" trace="<<hex<<trace<<dec<<"\n";
+ cout<<"SUMMARY Q="<<Q<<" T="<<T<<" initialDigits="<<initialDigits<<" finalDigits="<<d.size()<<" overflow="<<ov<<" oddLenStates="<<oddLen<<" evenLenStates="<<evenLen<<" maxFirstOdd="<<maxFirstOdd<<" noOddGlobal="<<noOddGlobal<<" middleOddEvenN="<<midOdd<<" trace="<<hex<<trace<<dec<<"\n";
  return 0;
 }
