@@ -1,0 +1,3 @@
+# Agent-S20 exact target
+
+Rooted base-10 pairword T(q,k;J,U,C)=H C reverse(H), H=B34 W9^q J U3^k; C is a palindromic coefficient word and the source integer is canonical. Establish all-width necessary invariants of a 120 genuine reverse-and-add return T(q,k;J,U,C) -> T(q,k+5;J',U',C') where both U,U' have coefficient sum 27 and 2|J'|+|C'| = 2|J|+|C|. The current subroute strengthens the exact weighted-carry mass gate from mod 9 to mod 81 and checks its physical interpretation on genuine decimal integers. These are necessary constraints, not certificates. A fixed point still requires the full two-ended seam and centre to return, and every intermediate source integer to be non-palindromic.

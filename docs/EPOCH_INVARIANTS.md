@@ -55,3 +55,25 @@ In particular a fixed seam has n_121=n_1 (mod27), and for a moving seam n_121-n_
 ## Reproduction and precise limitation
 
 Run python3 calculation/new_structures/S20/carry81.py. It uses independently computed Python big-integer n+rev(n) and schoolbook LSD digit arrays on the rooted R02 J19 one-epoch near miss, an even-centre case, and an odd-centre case, at independent (q,k)=(20,20),(21,23),(40,40),(80,80),(160,160). All 120 phase updates agree, including actual overflow 1000 repeated 30 times, carry-count identity and palindrome projection. All tested cases fail a stationary return; that finite diagnostic is NOT evidence of a no-go for other seams. Equations (1)-(6), unlike those tests, are exact mathematical necessities **for every width** under the explicit 120-return hypothesis. Neither existence nor impossibility of a decimal Lychrel number follows.
+
+## 6. Exact weighted-carry mass lift (stronger than the mod-9 projection)
+
+For a 120-step return, the mass recurrence in (1) gives the exact integer equality
+
+    18*K=(2^120-1)*S_0-270-D.
+
+Set A=(2^120-1)/9. Since S_0 is even and 18 divides D, any exact return forces
+
+    K=A*(S_0/2)-15-D/18.
+
+This is an exact weighted-carry requirement, not merely a congruence. Since 2^120 is 127 modulo 729, every exact return also forces
+
+    K = 7*S_0-15-D/18 (mod 81).
+
+For a stationary interface, substituting (2) gives
+
+    K = 71+30*q+54*k+14*sum(J)+7*sum(C) (mod 81).
+
+Unlike the mod-9 projection (4), this gate depends on q modulo 27 and k modulo 3. Combined with R05's mod-101 q,k modulo-4 conditions, a residue-complete finite probe requires 108 q classes and 12 k classes. Such a finite grid remains only a search filter, not a proof of the parameter-uniform return.
+
+The higher 3-adic congruences are projections of the same exact carry-mass equality, not independent laws beyond it. The compiled independent verifier is calculation/new_structures/S20/carry3adic.cpp; run g++ -O3 -std=c++20 calculation/new_structures/S20/carry3adic.cpp -o /tmp/carry3adic && /tmp/carry3adic. It checks the rooted B/W words against lat_p12m9.txt and compares a genuine cpp_int reverse-add orbit against an independent LSD-first carry engine at q=20,40,80,160, k=2q, including even- and odd-centre controls.
