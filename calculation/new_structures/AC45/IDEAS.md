@@ -1,3 +1,3 @@
-# AC45 IDEAS
-- Single-spatial-layer (l,h) MDD does not by itself constrain a physical 120-time trajectory. Need 120-bit carry track per column and gamma-dependent shifted partner; using the four-state count as the pi185 count would be erroneous.
-- No strict phasewise W9 pruning in the full product: endpoint healing is allowed.
+# Failed or incomplete routes
+- Prefix ROBDD compression of a finite J search does not solve the unbounded pi185 product. The witness length bound and two-ended physical carry transducer are still missing.
+- Strict-phase W9 MDD pruning is inadmissible for endpoint-only return because intermediate W9 corruption may heal.

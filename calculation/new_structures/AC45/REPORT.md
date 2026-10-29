@@ -1,9 +1,5 @@
-# AC45: carry MDD control (UNDECIDED)
-Label: **UNDECIDED** for PHYSICAL_TSTAR_RETURN_AT_REFERENCE_WIDTH.
-The actual pi185 120-time-layer symbolic product, free J and palindromic C, has **not** been constructed or decided. No decimal Lychrel existence or exclusion is claimed.
-
-This is a reusable exact **one-spatial-layer** two-port carry MDD skeleton: state (l,h), coefficient x in [0,18], and outgoing high-port hp in {0,1}, constrained by floor((x+hp)/10)=h and l'=floor((x+l)/10). The two boundary hypotheses must be constrained by the full physical product. Its four-state bound must **not** be confused with a bound on the 120-time-layer reachable set.
-
-`python3 calculation/new_structures/AC45/symbolic.py` exhaustively checks 27,432 small canonical pairword inputs against an independent Python integer reverse/add and replays 120 exact ordinary decimal steps at (q,k)=(14,100),(20,160),(40,320),(80,640),(160,1280), with U=(9,0,18), J=[5,9,1,4,3,0,6], C=[8,8]. All pass. MDD state counts at widths 1,2,4,8,16,32,120 are 4 each; these are **spatial single-step** counts, not pi185 measurements. A zero-step planted identity is a trivial harness sanity control, not a planted 120-step return.
-
-Needed next: temporally coupled 120-column coefficient/carry relation with exact gamma lag, central realization, simultaneous source/target template constraints and endpoint-only W9 restoration, then a full nonemptiness/emptiness decision. The current output has no exhaustive seam search and no CELL status.
+# AC45 bounded reference-width ROBDD (COMPUTED; full pi185 UNDECIDED)
+Reproduce: `python3 calculation/new_structures/AC45/engine.py --jlen 2 --centre 4 --q 14 --k 100 --independent`.
+The valid J length-2 domain is exactly 19²=361 coefficient words. Every one has 30 physical decimal overflows over 120 steps; none returns to the same B/W/J/U/C template with k+5. First mismatch histogram: 135:8, 136:10, 137:160, 138:146, 139:16, 140:18, 141:3.
+The full return ROBDD is terminal false (0 nonterminal nodes). For the weaker prefix condition 'first mismatch at or beyond index 138 and 30 overflows' the exact encoding accepts 183/361 valid junctions, with 80 nonterminal ROBDD nodes; calculated with `--prefix 138`. Variables are 5-bit coefficient encodings (codes 19..31 rejected) and the reduction hash-conses identical cofactors.
+The `--independent` flag compares **every step** of every candidate with a second unbounded Python integer reverse-and-add engine, not merely the endpoint. The B34 and W9 row-0 literals come from `calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt`. Test controls at wider (q,k) are diagnostic only. This is a bounded reusable Boolean-function primitive, **not** the 120-layer automaton/product of pi185; its state counts must never be conflated with the proposed 82 states or 1,556 arcs. No claim for longer J, varying C, other U rotations or a decimal Lychrel certificate.
