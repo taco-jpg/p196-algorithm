@@ -1,0 +1,3 @@
+# AC32 target
+
+Rooted phase-11 B11 (length 34), W11 (length 9), all J in {0,...,18}^5, U any of 30 rotations of (9,a,18-a) for even a=0..18, and fixed palindromic C=[4,14,4]. H=B11 ++ W11^q ++ J ++ U^k, P=H ++ C ++ reverse(H), LSD first. Seek an exact canonical ordinary-decimal 120-step return P(q,k)->P(q,k+5), identical seam/centre and phase clock, for *all* sufficiently large independent q,k. The T12 protected-cut reduction to (14,100) is a conditional premise rather than being reproved here. The all-width odd-C necessary gate plus exact census is decided negative; even C=[4,4], other palindromic centres, moving seams, and a raw endpoint-only all-U/J reference census remain undecided.
