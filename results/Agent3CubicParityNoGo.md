@@ -1,7 +1,8 @@
 # Agent3CubicParityNoGo
 
-**PAPER PROOF.** For decimal p8/m48 rec2 cyclic bulk, all 42 square-free GF(2) monomials of degree≤3 in six adjacent-cell bits (pair coefficient parities and physical ascending/descending carries), with 8 independent temporal phases (336 coefficients), have **no nonzero observable satisfying the rec2 cyclic 11/2 covariance** on the 2252 reference, one-site and adjacent-pair perturbation rows.
-A finite **232-row independent rank witness** gives covariance nullity at most 104. Exactly 13 independently verified graph-coboundary identities per phase (76 carry states, 1444 directed edges), including the even-length constant identity, give 104 independent coefficient vectors defining **zero functions on every 48-cell cyclic word**. Hence the entire covariance kernel consists of zero functions.
-Scope: translation-invariant width-two local degree≤3 parity/carry functions, with 48-cell cyclic bulk and unique physical carries. Does **not** exclude physical centres of any width, nonlinear/nonlocal charges beyond this basis, or establish a decimal Lychrel certificate. Not LEAN-VERIFIED.
-Proof: reports/Agent3CubicParityNoGo.md.
-Generator, deterministic certificates, independent digit-normalization checker, raw rec2 data and exact commands: calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/README.md.
+**PAPER PROOF.** Decimal rec2 (base 10, overflow p8 10101010, spatial m48): every eight-phase GF(2) cyclic-bulk covariance observable in all 42 square-free degree<=3 monomials of the six adjacent coefficient-parity and physical carry bits is identically zero on every eligible 48-cell cyclic word.
+The 2,252 exact rec2 reference/one-site/adjacent-two-site covariance tests have rank **232/336**, certified by 232 independent row tags. The remaining **104-dimensional kernel** equals the span of 13 independent universal 76-vertex/1,444-edge carry-graph coboundary identities per phase, checked on every edge.
+This extends Agent3QuadraticParityNoGo (22 features, 104/176 rank) and adds four independent degree-3 zero-function identities per phase; it does not exclude any finite centre width, degree>=4/nonlocal invariant, or prove a decimal Lychrel number. Not Lean-verified.
+Full proof: reports/Agent3CubicParityNoGo.md.
+Self-contained data, generator, primary and independent digit-normalization checkers: calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/.
+Reproduce: python3 calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/generate.py && python3 calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/verify.py && python3 calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/independent_check.py

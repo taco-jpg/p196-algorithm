@@ -1,33 +1,40 @@
-# All cubic local parity/carry covariance observables vanish on decimal rec2 bulk
+# Cubic local parity/carry observables are universally zero on decimal rec2 cyclic bulk
 
-**PAPER PROOF**, with two independent standard-library checkers. This is a complete negative classification of a narrowly defined GF(2) function class, **not** an all-width centre nonexistence result.
+**PAPER PROOF.** This extends the 22-feature degree<=2 classification of Agent3QuadraticParityNoGo to the entire 42-feature degree<=3 square-free local GF(2) basis, with all eight temporal phases independently weighted. Every coefficient vector satisfying the stated rec2 covariance tests represents the zero function on every eligible cyclic pair word, not merely on the tested 2,252 rows. No all-width finite-centre exclusion or decimal Lychrel certificate is implied.
 
-## 1. Function class and exact finite constraints
+## Model and exact scope
 
-The decimal period-8, spatial-period-48 rec2 cyclic bulk has overflow word `10101010` and eight coefficient rows `W_t`. For a cyclic 48-cell pair-coefficient word `P_j in 0..18`, excluding the all-9 neutral word so carries are unique, let `a_j` and `d_j` be actual cyclic ascending and descending carry bits satisfying `a_(j+1)=[P_j+a_j>=10]` and `d_(j-1)=[P_j+d_j>=10]`. The exact cyclic pair-word update is `F_g`, as independently implemented by both checkers.
+Base 10, spatial period 48, overflow word g=10101010, eight temporal phases t mod 8. For any 48-cell coefficient word P_j in {0,...,18} with at least one P_j != 9, the unique cyclic ascending and descending carry bits satisfy
 
-At spatial position j form the six bits `(P_j mod 2, P_(j+1) mod 2, a_j, d_j, a_(j+1), d_(j+1))`. Take the XOR over all 48 positions of each of the **42 square-free monomials of total degree ≤3** in these six bits: constant 1, 6 variables, 15 quadratic products and 20 cubic products. A phase-t observable `C_t` is an arbitrary GF(2) linear combination of those 42 translation-invariant feature sums. The eight phases have independent coefficients, so 336 unknown bits.
+    a_(j+1) = [P_j+a_j >= 10],       d_(j-1) = [P_j+d_j >= 10].
 
-Require `C_(t+1)(F_(g_t)(P))=(11 if g_t=1 else 2)C_t(P)` modulo 2 on each reference row `W_t`, all admissible one-site perturbations `W_t ± e_j` and adjacent-pair perturbations `W_t ± e_j ± e_(j+1)`. There are precisely **2252** such tests (same set as the completed degree≤2 result, but a strictly larger feature space). The theorem: **every solution defines the zero function on every eligible cyclic word**, at each phase.
+The cyclic bulk map is
 
-## 2. Universal identities from a 76-state carry graph
+    g=0: P'_j = 2P_j+a_j+d_j-10(a_(j+1)+d_(j-1)),
+    g=1: P'_j = P_j+P_(j-1)+a_j+d_(j-1)-10(a_(j+1)+d_(j-2)).
 
-The graph's 76 vertices are triples `(P_j,a_j,d_j)` with `P_j in 0..18` and carry bits `a_j,d_j in {0,1}`. An edge from `(p,a,d)` to `(q,A,D)` is valid exactly when `A=[p+a>=10]` and `d=[q+D>=10]`. There are **1444 valid directed edges**. The six-bit local feature vector is determined by the edge, and every genuine cyclic coefficient word with its physical cyclic carries traces a directed 48-edge closed walk.
+At each cell let x=P_j mod2, y=P_(j+1) mod2, a=a_j, d=d_j, A=a_(j+1), D=d_(j+1). Take all 42 square-free Boolean monomials of degrees 0, 1, 2 and 3 in (x,y,a,d,A,D) in lexicographic combination order, sum each monomial over all 48 cells modulo 2, and weight by an arbitrary independent 42-bit vector at each of eight phases: 336 coefficient bits. The covariance equation is C_(t+1)(F_(g_t)(P)) = (11 if g_t=1 else 2) C_t(P) (mod 2). The tested family is precisely the eight rec2 reference rows, all valid W_t +/- e_j, and all valid adjacent W_t +/- e_j +/- e_(j+1), 2,252 cases. The theorem applies to every coefficient vector satisfying these tests, not to arbitrary degree>=4 or longer-range features.
 
-The committed deterministic generator finds **13 linearly independent feature masks** `m_k` and for each constructs a 76-vertex Boolean potential `phi_k` plus one constant `c_k` satisfying the **finite exact identity on every one of the 1444 graph edges**
-`<m_k, feature(edge)> = phi_k(source) + phi_k(target) + c_k (mod 2)`.
-Summing over any closed 48-edge walk makes both potential sums telescope and the constant term vanish (48 is even). Thus **all 13 feature masks define identically zero charges for every eligible cyclic word**, independent of random sampling and centre width. They have GF(2) rank 13; placing them separately in each of eight time phases gives 104 linearly independent, universally zero coefficient vectors.
+## 13 universal zero-function masks via a 76-vertex graph
 
-The masks are discovered deterministically from 250 seeded random cyclic words, but the randomness is not trusted in the proof: the generator explicitly verifies all 13 graph identities on *every* edge and checks their independence. A separate program uses a different digit-level algorithm and validates all 1444×13 equations again.
+Define graph vertices (p,a,d) with 0<=p<=18, a,d in {0,1} (76 vertices). A directed edge from u=(p,a,d) to v=(q,A,D) is legal exactly when A=[p+a>=10] and d=[q+D>=10]. There are exactly 1,444 edges. Every eligible cyclic 48-cell coefficient word with its physical unique carry streams traces a closed walk on this graph. The edge has six bits (p mod2,q mod2,a,d,A,D) and corresponding 42-bit monomial vector f(u,v).
 
-## 3. Finite rank upper bound
+The committed graph_certificate.json lists 13 independent 42-bit masks m, and for each a 76-bit potential phi and constant kappa in {0,1}. verify.py and the independent digit-normalization checker verify, for every edge,
 
-The primary checker reads the 2252 rec2 test tags in deterministic order and greedily collects **232 independent 336-bit covariance row vectors**. It emits their concrete tags in the generated compact `certificate.json`. The independent checker independently reconstructs all 232 rows from schoolbook cyclic digit normalization, uses a different pivot convention, and obtains rank **232**.
+    parity(m & f(u,v)) = kappa XOR phi(u) XOR phi(v).
 
-Therefore any coefficients satisfying the covariance tests lie in a kernel of dimension at most `336-232=104`. But the 104 universal zero-function coefficient vectors from the graph are linearly independent and each satisfies every covariance equation. Consequently the kernel has dimension **exactly 104**, and contains only identically zero observables. No nontrivial degree≤3 local invariant in this precise ansatz exists.
+On a closed 48-edge walk, potentials telescope and the constant contributes 48*kappa=0 (mod2). Thus each mask represents an identically zero cyclic feature function for every eligible P, with no sampling assumption. The 13 masks are linearly independent (exact GF(2) rank 13). Eight independent temporal placements give 104 independent coefficient vectors of universal zero functions. The masks include the previous degree<=2 identities but add four independent degree-3 directions per phase.
 
-## 4. Reproduction and limitations
+## Exact finite-rank upper bound, hence completeness
 
-Under `calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/` the commit includes the raw rec2 1952-byte data snapshot, source-code feature/row generator, rank-and-graph certificate generator, and independent digit-normalization checker. Both programs pass; the primary also checks 10,000 random cyclic rows, and the independent program 2,000 words ×8 phases, solely as controls. Exact commands and expected output in README. No external solver, hidden data or state cap; small generated certificate (<5 KB) is reproducible from the committed input.
+rank_witness.json contains 232 distinct tags (t,j,s,u) selected deterministically from the 2,252 rec2 tests. Recomputing the exact pair-word and carry transitions gives 232 linearly independent 336-bit covariance rows. The independent checker instead normalizes decimal digits in both directions and obtains the same rank, and verifies the full 2,252-row rank is exactly 232. Therefore the covariance kernel has dimension at most 336-232=104. Since the 104 universally vanishing vectors above lie in it, the kernel is exactly their span. Every solution is the zero function on all eligible cyclic words. This is a complete algebraic proof for the stated 42-feature ansatz, not an extrapolation from finite samples.
 
-**Not claimed:** higher-degree, larger-neighbourhood, spatially nonuniform or nonlocal observables; a no-go for a genuine finite-width centre of any size; a base-10 Lychrel certificate; or Lean verification.
+## Reproduction and limitations
+
+From repository root run, in order:
+
+    python3 calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/generate.py
+    python3 calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/verify.py
+    python3 calculation/decimal_frontier/lattice_kinks/agent3_cubic_parity/independent_check.py
+
+The primary verifier additionally tests 10,000 random 48-cell cyclic words and 8,000 covariance equations; the independent checker performs 10,000 separate digit-normalization/carry-run controls. These random tests are supplementary; the 232-row rank certificate and 1,444-edge coboundary certificate are exhaustive and sufficient. No arbitrary finite centre, boundary source, nonlocal charge, degree>=4 polynomial, nonlinear centre transfer, actual integer orbit or base-10 Lychrel number is decided. This is PAPER PROOF, not LEAN-VERIFIED.
