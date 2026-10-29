@@ -1,0 +1,7 @@
+# AgentW22ParametricHingePump20000
+- **PAPER PROOF:** exact symmetric coefficient-9 insertion lemma for base 10: if P has mirror-related interior 9-runs, and incoming carries at the paired insertion sites sum to 1, then the pairword reverse-and-add map T commutes with inserting k symmetric 9 cells at those sites, for EVERY k>=0, with unchanged overflow.
+- **COMPUTED (20,000 transitions):** the previously published W22 base seed has one fixed insertion site j=21750 strictly inside its first-half 9-run for all t=0..20,000; the opposite carry condition and exact k=1 commutation both pass on all 20,000 edges, minimum insertion margin 201, fixed-run intersection [21549,22000).
+- **COMPUTED + PAPER implication:** every integer k>=0 gives a valid decimal seed whose pairword is 8^14000 9^(8000+k) 10^16000 9^(8000+k) 8^14000; all its first 20,000 reverse-add steps avoid palindromes and have exactly 8,296 overflows. Decimal lengths 60000+2k -> 68296+2k.
+- Direct ordinary-decimal 20k replays for k=1 and k=37 PASS; seven independent spot checks k=37 against exact pairword insertion; same-phase negative control fails commutation, as required.
+- Reproduce: sh calculation/new_structures/agent-W22/reproduce_pump.sh. Source: calculation/new_structures/agent-W22/hinge_pump.cpp. Detailed proof and scope: reports/AgentW22ParametricHingePump20000.md.
+- **Not claimed:** an infinite decimal Lychrel orbit, Lean verification, a closed centre cycle, or any fixed k surviving all steps.
