@@ -1,0 +1,11 @@
+# Agent N10: decimal quotient shielding for 20,000 steps
+- **Label: COMPUTED.** Exact finite-time positive construction, not an infinite decimal Lychrel certificate.
+- Base 10, initial palindromic coefficient word `P=B ++ W^300 ++ reverse(W^300) ++ reverse(B)`.
+- `|B|=39`, `|W|=20`; eight-phase exterior quotient `(B_t,W_t)` has overflow `10101010`.
+- A real 12,078-digit decimal seed is determined by low digit `floor(P_i/2)`, mirrored high digit `P_i-floor(P_i/2)`.
+- Independent C++ digit-list reverse-add: every `t=0..20000` nonpalindromic; predicted quotient exterior matches through at least 72 complete bands.
+- Length increases by 10,000 digits to 22,078; same 20,000-step result for three different central cores.
+- Copy counts 301, 320, 400, 2100 also pass; independent Python big integers agree with C++ through 2,000 steps.
+- New guarded-prefix quotient soundness lemma and exact experimental scope: `reports/AgentN10DecimalQuotientShield20000.md`.
+- Code, generated phase data, exact commands and both independent checkers: `calculation/new_structures/agent-N10/`.
+- **Not claimed:** an infinite decimal Lychrel, a self-renewing centre, or a Lean-verified certificate.
