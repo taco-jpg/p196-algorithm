@@ -1,0 +1,23 @@
+{
+  "label": "COMPUTED",
+  "base": 10,
+  "template": "P0(m,n)=H(m,n)++[9]++reverse(H(m,n)); H=B++W20^m++[9]++V48^n",
+  "minimum_m": 40,
+  "minimum_n": 40,
+  "universal_exact_edges": 480,
+  "corner_checks_each_edge": [[0,0],[1,0],[0,1],[1,1]],
+  "matrix_states": 80,
+  "matrix_power_identity": "M20^2=M20 and M48^2=M48, separately for all 480 edges",
+  "direct_digit_controls": [[40,40],[41,40],[40,41],[41,41],[52,67]],
+  "python_bigint_128_step_controls": [[40,41],[41,40],[43,58],[58,43]],
+  "initial_centre_suffix": 1344,
+  "final_centre_suffix_at_480": 1464,
+  "junction_change_at_480": 391,
+  "dual_band_return_at_272": {"bulk20": true,"bulk48": true,"outer": true,"centre_suffix": 1412,"junction_changed": 215,"versus_seed_m_plus1_n_plus1": {"equal_length": true,"mismatched_coefficients": 3993,"longest_equal_prefix": 778,"last_mismatch_index": 4878}},
+  "diophantine_return": {"temporal_steps": "8r", "overflow_growth": "4r", "band_growth": "40a+96b", "equality": "r=10a+24b", "smallest_a_b_positive": {"a": 1,"b": 1,"r": 34,"steps": 272}},
+  "independent_20000_step_integer_replays": [
+    {"m":427,"n":509,"steps":20000,"final_digits":76026,"fnv64_lsf_digits":"fd9b296c175cbcce"},
+    {"m":509,"n":427,"steps":20000,"final_digits":71434,"fnv64_lsf_digits":"29d9fb65743a3d46"}
+  ],
+  "not_claimed": "No infinite decimal certificate, no Lean proof, no eventual shape invariance beyond step 480, and no proof for 196."
+}
