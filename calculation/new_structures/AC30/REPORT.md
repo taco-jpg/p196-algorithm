@@ -1,3 +1,9 @@
+# AC30: phase-9 fixed two-centre J5 exclusion
+
+**Current stronger result:** [CENTRE_GATE_REPORT.md](CENTRE_GATE_REPORT.md), label **PAPER PROOF** backed by a finite exact centre table. For BOTH fixed C=(4,14,4) and C=(4,4), for ALL 30 U, all 19^5 junctions, and independent q>=14,k>=100, exact 120-step literal return is impossible, using phase-9 two-ended carry reset-cone shielding and 60 canonical centre checks. This is **not** a decimal Lychrel certificate. The older independent odd-C mod-11 gate and 450242 compiled endpoint cases are retained below, and apply only to odd C.
+
+---
+
 # AC30: phase-9 J5 fixed odd-centre T* exclusion
 
 **Label: COMPUTED**, with an all-width PAPER PROOF reduction. **Scope:** rooted p12/m9 phase 9, junction length five, any of the thirty charge-zero U=(9,a,18-a) rotations, **only C=(4,14,4)**, every independent q>=14 and k>=100. It excludes literal 120-step return P9(q,k)->P9(q,k+5), not moving/growing seams, and not even centres. **No decimal Lychrel certificate is claimed.**
