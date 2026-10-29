@@ -12,7 +12,7 @@ const int W[9]={4,0,5,5,18,4,8,1,15};
 int mod(int x,int m){return (x%m+m)%m;}
 int main(int argc,char**argv){
  if(argc<3){cerr<<"usage: scan ODD|EVEN end_code [u_index=-1] [start_code=0]\n";return 1;}
- bool odd=string(argv[1])=="ODD";int end=min(2476099,atoi(argv[2])),ui=argc>3?atoi(argv[3]):-1,start=argc>4?atoi(argv[4]):0;
+ bool odd=string(argv[1])=="ODD";int end=min(2476099,atoi(argv[2])),ui=argc>3?atoi(argv[3]):-1,start=argc>4?atoi(argv[4]):0,q=argc>5?atoi(argv[5]):14,k=argc>6?atoi(argv[6]):100;
  uint64_t tested=0,skipped=0,clockbad=0,returned=0;map<int,uint64_t> hist;
  for(int aa=0;aa<=18;aa+=2)for(int rot=0;rot<3;rot++){
   int u[3]={9,aa,18-aa};rotate(u,u+rot,u+3);int idx=3*(aa/2)+rot;
@@ -26,16 +26,16 @@ int main(int argc,char**argv){
    // H=B8 ++ W8^14 ++ J ++ U^100; P=H ++ C ++ reverse(H).
    int H[10000],N=0;
    for(int x:B)H[N++]=x;
-   for(int t=0;t<14;t++)for(int x:W)H[N++]=x;
+   for(int t=0;t<q;t++)for(int x:W)H[N++]=x;
    for(int x:J)H[N++]=x;
-   for(int t=0;t<100;t++)for(int x:u)H[N++]=x;
+   for(int t=0;t<k;t++)for(int x:u)H[N++]=x;
    int p[20000],d[20000],temp[20000],T[20000],L=0;
    for(int i=0;i<N;i++)p[L++]=H[i];
    for(int i=0;i<nc;i++)p[L++]=C[i];
    for(int i=N-1;i>=0;i--)p[L++]=H[i];
    int M=0;
-   for(int i=0;i<34+9*14+5;i++)T[M++]=H[i];
-   for(int t=0;t<105;t++)for(int x:u)T[M++]=x;
+   for(int i=0;i<34+9*q+5;i++)T[M++]=H[i];
+   for(int t=0;t<k+5;t++)for(int x:u)T[M++]=x;
    int half=M;
    for(int i=0;i<nc;i++)T[M++]=C[i];
    for(int i=half-1;i>=0;i--)T[M++]=T[i];
