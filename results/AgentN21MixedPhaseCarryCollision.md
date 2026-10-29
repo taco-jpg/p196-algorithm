@@ -1,0 +1,9 @@
+# AgentN21MixedPhaseCarryCollision
+
+**COMPUTED (base 10, exact coefficient dynamics t=0..22644; independent ordinary-integer validation t=22500..22506).** The mixed-residue two-kink train of `AgentN21Decimal20kMixedPhaseTrain` first has overlapping individual lower-half supports at t=22,503, but retains full pairword superposition for three more steps. At **t=22,506** the first nonlinear collision consists of exactly three adjacent lower-half coefficients, positions 17,781..17,783: the additive prediction `(4,26,8)` is replaced by the actual `(5,6,9)`, a correction `(1,-20,1)` (and its reflection). The nonlinear wake then grows to 20 lower-half cells at t=22,536 and 86 at t=22,644.
+
+A separate Python built-in-bigint checker realizes the four exact 75,625-digit pairwords at t=22,500 as canonical decimal integers and independently verifies all six reverse-and-add transitions against the complete C++ pairwords at t=22,506. No palindrome is encountered in this six-transition check. A deliberately corrupted output coefficient is rejected. The C++ full-prefix scan uses only exact coefficient normalization, not GMP; independent GMP full-prefix replay was previously completed only through t=20,000. The suffix check does not prove the whole initial 22,506-step integer orbit independently.
+
+**Not claimed:** any infinite base-10 certificate, bounded or recurring glider, long-lived scattering alphabet, or result about 196. This collision is a concrete growth mechanism and redirects the next search toward local arithmetic rewrite rules with bounded outgoing wakes.
+
+Reproduce all traces and numerical checks from repository root: `sh calculation/new_structures/agent-N21/run_collision.sh`. Source and compact exact fixture: `calculation/new_structures/agent-N21/{collision_probe.cpp,check_collision.py,run_collision.sh,collision_fixture.txt}`. Details: `reports/AgentN21MixedPhaseCarryCollision.md`.
