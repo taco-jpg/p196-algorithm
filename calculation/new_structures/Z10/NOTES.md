@@ -42,3 +42,11 @@
 - Compiled bit-sliced scan exhausted 2,476,099 J words per U at (q,k)=(14,100). All cases passed the rooted 120-step overflow clock; 0 restored B34 W9^14. The mismatch histograms partition the full domain.
 - Independent arbitrary-precision replay checked 40 controls at q=14,20,40,80,160 with k=100,100,200,400,800. All 120/240 clocks matched; no full return or palindrome occurred in these controls. First-64-J bigint mismatch histograms match the C++ engine exactly.
 - T12 protected-cut insertion/reset-cone result lifts the reference prefix failure to a uniform all-width fixed-J/C return obstruction in this slice. No candidate passes the first-epoch prefix gate, so no candidate remains for a two-epoch restoration test.
+
+
+## 2026-10-29 — phase-0 J5 slice 7/12
+
+- Claimed next neighboring route in #475 comment 6495697435: U ranks 7 and 19, U=(6,9,12),(9,16,2), all 19^5 J words per U.
+- Compiled bit-sliced scan exhausted 2,476,099 J words per U at (q,k)=(14,100). All passed the rooted 120-step overflow clock; 0 restored B34 W9^14. Histograms account for the complete domain.
+- Independent arbitrary-precision replay checked 40 controls at q=14,20,40,80,160 with k=100,100,200,400,800. All 120/240 clocks matched; no full return or palindrome occurred in these controls. First-64-J bigint mismatch histograms match the C++ engine exactly.
+- T12 protected-cut insertion/reset-cone result lifts the reference prefix failure to a uniform all-width fixed-J/C return obstruction in this slice. No candidate passes the first-epoch prefix gate, so no candidate remains for a two-epoch restoration test.
