@@ -1,0 +1,7 @@
+# AgentY13FirstExitRepunitRigidity
+
+- **Label: PAPER PROOF.** For all `1 <= h < k`, set `M_j=10^j-1`, `g=gcd(h,k)`. If `M_k | M_h*q`, then `D=M_k/M_g | q` and `D>10^h`. Thus no guarded `0<q<10^h` has a larger repunit factor; if `10^h<=q<2*10^h` has one, `q=D` and `M_h*q=M_k=99...9`, a palindrome.
+- **Proof:** `gcd(M_h,M_k)=M_g` and `g | k-h` so `g<=k-h`. Hence `D=1+10^g+...+10^(k-g)>10^(k-g)>=10^h`. Two multiples exceed `2*10^h`.
+- **Consequence for the X07 route:** The established exact scalar step from `P(h,q)=M_h*q`, `q≡2 (mod9)`, `0<q<10^h`, yields `P(h,F(q))` with `F(q)=q+1+reverse_m(10^m-q)<2*10^h`. A **nonpalindromic first guard failure** cannot directly enter ANY higher repunit quotient. Any all-time increasing-exponent ladder therefore requires a **multi-step post-guard bridge with an unprotected intermediate state**.
+- **Independent controls:** `python3 calculation/new_structures/agent-Y13/first_exit_rigidity.py` checks 1,234 genuine ordinary-decimal additions, all `h=1..4`, all `h<k<=2h+3`, and sharp palindrome examples. No pairword or quotient oracle is used for the whole-integer successor.
+- **Scope:** All exponents and all eligible guarded decimal integers, **not Lean-verified**; no base-10 Lychrel number, no safe bridge, and no existence claim. **Search redirection:** prioritize at least two true ordinary-integer steps across the first failed guard, not one-step h-relabelling or first-exit immediate renewal.
