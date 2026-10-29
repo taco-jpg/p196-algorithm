@@ -1,0 +1,8 @@
+# AgentX07RepunitQuotient
+
+- **PAPER PROOF (all h):** Every `N=(10^h-1)q` with `0<q<10^h`, `q=2 (mod 9)` is a nonpalindrome. Write `m=decimal_digit_length(q)`, `A=10^m-q`, `R=reverse_m(A)` with exactly m padded digits. Then `reverse(N)=(10^h-1)*(1+R)` and a genuine reverse-and-add step reduces to `q'=q+1+R`, preserving `q'=2 (mod 9)`. Safety persists precisely while `q'<10^h`; failed guards are NOT asserted safe.
+- **PAPER PROOF / computed controls:** For all `n>=9`, `10^n-2908` enters the same quotient orbit `q_2=31988`, `h=n-4` after two steps. An arbitrarily long but finite nonpalindromic prefix is obtained by choosing sufficiently large n; this is NOT one fixed infinite Lychrel orbit.
+- **COMPUTED:** Exhaustive ordinary-integer identity tests for all guarded q with h=1..6 (123,456 cases); independent Python big-integer plus scalar guard replays for n=20,50,100 give first unprotected steps 35,106,236.
+- **COMPUTED:** The 136 already published collision repairs `AgentX07CollisionRepair` all climb to **new repunit exponent h=8**, from starting h=4 (26 witnesses) and h=6 (110 witnesses), with quotient charge still 2 mod9. Explicit examples `(10^8-1)*8380163` at step 19, `(10^8-1)*754544` at step 7. Independent arithmetic verifies every renewal.
+- New certificate format: finite verified arithmetic bridges between protected quotient stages with strictly increasing repunit exponent; **UNDECIDED** whether a second bridge from h=8 exists, so no infinite decimal certificate.
+- Reproduce: `sh calculation/new_structures/agent-X07/quotient_run.sh`; source `quotient_kernel.py`, outputs `quotient_measurements.json`; full proof/scope `reports/AgentX07RepunitQuotient.md`. No Lean claim.
