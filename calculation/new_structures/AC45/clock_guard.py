@@ -4,6 +4,8 @@ Does not decide the unbounded pi185 language.
 """
 import argparse
 import itertools
+import sys
+sys.set_int_max_str_digits(0)
 from engine import template, realize, step_digits, pair, U
 
 CLOCK = tuple(int(x) for x in "100010001000" * 10)
