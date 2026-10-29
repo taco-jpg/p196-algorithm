@@ -1,0 +1,13 @@
+# AgentX04CommutingCorridorLattice
+- **COMPUTED:** four genuine base-10 seeds have exact commuting p8-lattice and central-zero pairword insertions at **every** state t=0..20,000, with no palindrome.
+- Pairword template at t=0: P(q,z)=B0 ++ W0^q ++ 0^z ++ reverse(W0)^q ++ reverse(B0), with q in {300,301}, z in {14000,14001}; B/W are the rooted N16 p8/m20 rows.
+- Define I_W,t by inserting W_(t mod 8) at both mirrored cuts after the outer 39 coefficients; I_0 inserts one zero at the midpoint. Every observed square obeys P(301,14000)_t=I_W,t P(300,14000)_t, P(300,14001)_t=I_0 P(300,14000)_t, and the mixed operators commute to give P(301,14001)_t.
+- All four true decimal digit-vector orbits are individually checked for palindromes, phase locks and overflow bits (1 iff t even).
+- Base seed has 26,078 decimal digits; at t=20,000 it has 36,078. Minimum rooted p8 prefix is 1,494 coefficients; minimum central zero corridor is 1,286.
+- Independent GMP ordinary-integer reversal verifies **all 20,001 baseline states** with matching trace FNV64 `ce0a760d6c88fccd`, and independently checks all four orbits for 2,000 steps.
+- At every measured step the zero corridor is nonincreasing, from 14,000 to 1,286: no centre renewal or infinite certificate is inferred.
+- Interpretation: a concrete positive 2D parameter-commutation mechanism with two different pumping alphabets; its missing ingredient is nonnegative two-counter cycle drift.
+- Reproduce: `g++ -O3 -std=c++17 calculation/new_structures/agent-X04/hybrid.cpp -o /tmp/x04 && /tmp/x04 calculation/new_structures/agent-N16/rows.txt 300 14000 20000`.
+- Independent: `g++ -O3 -std=c++17 calculation/new_structures/agent-X04/gmp_check.cpp -lgmp -o /tmp/x04g && /tmp/x04g calculation/new_structures/agent-N16/rows.txt 300 14000 20000 --single && /tmp/x04g calculation/new_structures/agent-N16/rows.txt 300 14000 2000`.
+- Files: `calculation/new_structures/agent-X04/{hybrid.cpp,gmp_check.cpp,checkpoints.csv}`; explanation `reports/AgentX04CommutingCorridorLattice.md`.
+- **Not claimed:** an all-q/all-z theorem, an all-time identity, a self-replenishing corridor, a base-10 Lychrel proof, or a statement about 196.
