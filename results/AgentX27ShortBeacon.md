@@ -1,0 +1,10 @@
+# AgentX27ShortBeacon
+**COMPUTED.** Seven **8-digit** base-10 seeds `19999996`, `29999995`, `39999994`, `49999993`, `59999992`, `69999991`, `79999990` each survive 100,000 genuine reverse-and-add steps with no palindrome and with an odd mirrored pair coefficient at an index <32 at every state (100,001 states per seed, by exact one-step coalescence).
+**PAPER PROOF ingredient:** Every seed has the same full pairword `(7,18,18,18,18,18,18,7)` and hence the exact common one-step image `89999987`. Thus the 100,000-step checks on `19999996`, plus odd-pair nonpalindromicity at each distinct seed, establish the finite-horizon claim for all seven.
+An independent GMP arbitrary-precision decimal reverse-add engine agrees **at every state t=0..20000** with a separate digit-array engine, and the full carry-parity identities and boundary-prefix transition are checked for every column/step. The 100,000-step extension is by digit-array arithmetic only.
+For `19999996` at `t=20000`: 8,272 digits, 8,264 overflows, maximum earliest odd-pair index 20, `N_t mod 1000000007 = 997364508`, pair-parity trace `16db298943fc4b8e`.
+At `t=100000`: 41,354 digits, 41,346 overflows, earliest odd index <=20 throughout; zero all-even pairwords, zero palindromes, 17 states lacking an odd coefficient within the first 16 positions (first at step 1731), zero states lacking one in the first 32.
+Within the specified `1 9^(2Q) 6` family, `Q=0,1,2` lose the all-odd-coefficient obstruction after 1, 2 and 10 steps, respectively; `Q=3` is the first tested family member meeting the **20,000-step F32 criterion**, not a globally minimal Lychrel candidate.
+Reproduce: `bash calculation/new_structures/agent-X27/short_reproduce.sh`; reuses `verify.cpp` and `longrun.cpp` from commit `acf4ff08ef98175993cc8cb0967a5e4f37c37f2a`, plus the independent Python first-step coalescence test.
+Code: `calculation/new_structures/agent-X27/{coalescence.py,short_reproduce.sh}`; full discussion in `reports/AgentX27ShortBeacon.md`.
+**NOT AN INFINITE CERTIFICATE.** This is a compact finite-horizon positive family, not a proof about the orbit of 196 or any claimed eventual periodic template.
