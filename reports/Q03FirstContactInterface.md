@@ -32,7 +32,7 @@ with each k_i in {-1,0,1}. For i<j, the inputs and low carries coincide. For g=0
   2 Delta+k_(j')-10 k_(j+1)=0.
 Parity forces k_(j')=0, so Delta=5k_(j+1) and an exhaustive two-bit threshold check yields precisely the four rows above.
 
-For g=1, equality at position j-1 forces k_(j'+2)=k_(j'+3)=0. Equality at position j gives
+For g=1 and j>=2, equality at position j-1 forces k_(j'+2)=k_(j'+3)=0. In the endpoint case j=1, k_(j'+2)=k_n=0 follows directly from the assumed common overflow; the same equation at position j still applies. Equality at position j gives
   Delta=10 k_(j+1)-k_(j'+1).
 The monotonicity of the threshold floor((x+c)/10) implies both carry differences have the sign of Delta (or are zero). Positive Delta can only be 9 or 10, negative only -9 or -10; Delta=+10/-10 forces nonzero upper carry difference, contradicting the equation. Hence Delta=+9/-9 and k_(j'+1)=+1/-1. Since k_(j'+2)=0 at the unchanged outer coefficient P[j'+1]=a, a cannot equal 9: at coefficient 9 unequal incoming carries would remain unequal on exit. Substituting q,r into the two threshold comparisons enumerates exactly the displayed six grouped cases, with 20 directed q/r possibilities.
 
