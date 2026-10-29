@@ -1,0 +1,2 @@
+# AC26 target
+Prove a sound endpoint-only necessary-condition reduction for all rooted p12/m9 phase-5 fixed-junction T* candidates at (q,k)=(14,100): the first 70 LSD-first pair coefficients after 120 genuine steps equal B5/W5 source prefix, and overflow schedule is (0001)^30 for every physically realizable symmetric interior. Avoid strict-phase W9 pruning. Search for a genuinely returning seam; neither finite sampling nor this necessary prefix lemma yields a Lychrel certificate.
