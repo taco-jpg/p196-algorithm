@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Independent genuine-integer replay for AA56's scoped 360-step negative test."""
+"""Independent genuine-integer replay for AA56's scoped 360-step negative tests."""
 B = [10,4,6,6,7,12,9,16,16,13,0,2,10,17,7,0,18,6,5,18,4,18,14,9,14,8,12,17,10,4,6,4,0,5]
 W = [5,18,4,8,1,15,4,0,5]
-J = [5]
-U = [9,14,4]
-C = [10]
+CASES = [
+    ([5], [9,14,4], [10]),
+    ([6,4], [9,2,16], [12]),
+    ([1,8,2], [9,0,18], [4,8,4]),
+    ([5], [14,4,9], [10]),
+]
 
 def realize_pair(p):
     d = [0] * len(p)
@@ -27,10 +30,9 @@ def pairword(n):
     d = list(map(int, str(n)[::-1]))
     return [d[i] + d[-1-i] for i in range(len(d))]
 
-def replay(q, k, steps=360):
+def replay(q, k, J, U, C, steps=360):
     h = B + W*q + J + U*k
-    source_pair = h + C + h[::-1]
-    n = realize_pair(source_pair)
+    n = realize_pair(h + C + h[::-1])
     overflow = []
     for _ in range(steps):
         before = len(str(n))
@@ -44,17 +46,22 @@ def replay(q, k, steps=360):
     return mismatch, sum(overflow), ''.join(map(str, overflow[:48])), len(got), len(target)
 
 def main():
-    expected = {20:148, 40:328, 80:688, 160:1408}
-    for q in (20, 40, 80, 160):
-        k = q
-        mismatch, total, prefix, got_len, target_len = replay(q, k)
-        assert mismatch == expected[q], (q, mismatch, expected[q])
-        assert total == 90, (q, total)
-        assert got_len == target_len, (q, got_len, target_len)
-        assert prefix == '100010001000' * 4, (q, prefix)
-        print(f'q={q} k={k} steps=360 overflow_sum={total} '
-              f'first_mismatch={mismatch} expected_9q_minus_32={9*q-32} '
-              f'pairword_lengths={got_len}/{target_len}')
+    # These are known candidate seeds, not a search census.
+    expected = [
+        {20:148, 40:328, 80:688, 160:1408},
+        {20:144, 40:324, 80:684, 160:1404},
+        {20:146, 40:326, 80:686, 160:1406},
+        {20:147, 40:327, 80:687, 160:1407},
+    ]
+    for idx, (J, U, C) in enumerate(CASES):
+        for q in (20, 40, 80, 160):
+            mismatch, total, prefix, got_len, target_len = replay(q, q, J, U, C)
+            assert mismatch == expected[idx][q], (idx, q, mismatch, expected[idx][q])
+            assert total == 90, (idx, q, total)
+            assert got_len == target_len, (idx, q, got_len, target_len)
+            assert prefix == '100010001000' * 4, (idx, q, prefix)
+            print(f'case={idx} q=k={q} steps=360 overflow_sum={total} '
+                  f'first_mismatch={mismatch} pairword_lengths={got_len}/{target_len}')
     print('AA56 scoped negative replay PASS; no all-width claim.')
 
 if __name__ == '__main__':
