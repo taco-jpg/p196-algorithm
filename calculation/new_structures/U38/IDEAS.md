@@ -25,3 +25,14 @@ The number w is a unit modulo M, because M is odd and coprime to 10. The fixed o
 **Independent controls (COMPUTED, supporting the paper proof rather than replacing it).** Run python3 calculation/new_structures/U38/verify_palindrome_residue_saturation.py. It constructs canonical palindromes and independently checks both int(P) % M and the LSD-first digit-array residue. The current run passed 1,232 checks: all residues for M=11, 101, 1001; 100 residues for M=10001; and 19 controls for the finite-family LCM M=101101 = lcm(11,101,1001).
 
 **Redirect:** stop searching for a nonpalindrome guard based only on finitely many residues modulo 10^j+1; add physical digit/carry state or a genuinely orbit-specific restriction. This is narrower than T24's route, which already includes leading/trailing digit-carry constraints.
+
+
+## U38-2 — Saturation persists under any fixed finite outer digit shell (PAPER PROOF; stronger route obstruction)
+
+**Theorem.** Keep M, d, and n as in U38-1. Fix any finite LSD-first shell A=(a_0,...,a_(s-1)) with a_0 in {1,...,9} and all other a_i in {0,...,9}; this fixes the first s low digits and, by palindromicity, the first s high digits. For every k >= dn+s and every residue r mod M, there is a palindrome of exact length 2k+1 with that exact shell and residue r.
+
+**Proof.** Fix the shell contribution c_k = Σ_(i=0)^(s-1) a_i(10^i+10^(2k-i)) mod M, set the centre digit to zero, and choose the same n positions i_m=k-dm as in U38-1. Since k >= dn+s, these positions lie in [s,k-1], so they do not overlap the fixed shell or its mirror. Their weights are all w=2·10^k mod M, a unit. Choose t in {0,...,M-1} with wt ≡ r-c_k mod M and express t as a sum of n digits in {0,...,9}. Assign those digits to the selected mirrored pairs and set every other unfixed digit to zero. The shell is unchanged, the resulting word remains a canonical palindrome of length 2k+1, and its residue is r. ∎
+
+**Meaning.** Adding any fixed finite outer digit window to a finite family of congruence tests still cannot exclude palindromes at sufficiently large odd lengths. A viable guard must depend on more than a finite residue tuple and a fixed boundary digit shell; in particular, it must use genuinely propagated carry/digit state or another orbit-specific property. This still does not rule out T* or any carry-aware invariant.
+
+**Controls.** Run python3 calculation/new_structures/U38/verify_fixed_shell_saturation.py. Current exact controls passed for every residue of M=11 with three shells, M=101 with a three-digit shell, and M=1001 with a four-digit shell, plus 20 sampled residues for M=101101 with a three-digit shell.
