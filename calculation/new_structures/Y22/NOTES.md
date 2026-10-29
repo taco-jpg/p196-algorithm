@@ -1,0 +1,7 @@
+# Y22 running notes
+
+- 2026-10-29: registered route in #475 as paper-folding, variant 6/6. Correction posted: T12 insertion assumes a repeated U^k band and does not apply to V_k. The proof generalizes π194's finite-collar locality argument using paper-folding uniform recurrence and aperiodicity.
+- The regular paper-folding word is the coding of the primitive 2-uniform fixed point `u->vw, v->vz, w->uw, z->uz`, started at `v`, with coding `u,w -> 0`, `v,z -> 1`. Hence it is uniformly recurrent; the coefficient word is also uniformly recurrent and nonperiodic.
+- The carry map `c -> floor((x+c)/10)` resets at every `x != 9`; only coefficient 9 can transmit a carry. In a hypothetical return, any intermediate periodic bulk would remain periodic and could not return to the aperiodic paper-folding word. Thus every phase must be nonperiodic uniformly recurrent, hence has a bounded run of 9s and a finite-radius local update.
+- A finite-radius 120-step update with fixed collar makes the next five motifs a deterministic function of a finite suffix plus finitely many carry/phase states. That finite-state append generator forces eventual periodicity, contradiction. See REPORT.md for the full argument and scope.
+- Independent true-decimal and schoolbook digit-array engines agree phase-by-phase for q=k=20,40,80,160. Each has gamma=(1000)^30, 30 overflows, no palindrome at t=0..120, and no `V_k -> V_(k+5)` return. This is a control, not the proof.

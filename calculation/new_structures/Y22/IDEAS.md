@@ -1,0 +1,2 @@
+- EXHAUSTED-NONE: a fixed finite collar cannot generate an aperiodic uniformly recurrent literal-prefix U word through a finite-radius deterministic append map; redirect remaining morphic-word routes to moving/growing collars or nonlocal repair rather than another fixed-collar coding.
+- Extension checked: a bounded-length collar/centre family with a deterministic finite-state epoch update is no escape; adding its finite mode to the suffix state still forces eventual periodicity. Only genuinely growing/nonlocal repair escapes this obstruction.
