@@ -1,0 +1,2 @@
+# AC16 target
+T*: at rooted phase 7, determine whether B7 W7^q J U^k C reverse(...) can return after 120 genuine decimal steps with identical B7, W7 count q, junction J, centre C, and U count k+5, for all independent q>=14,k>=100. Exact assigned cell: |J|=3 or 4, all 30 charge-zero U3 rotations, both centre parities. Necessary-condition target decided here: even restoration of B7 W7^q at the epoch endpoint is impossible in the entire assigned cell (conditional on the cited T12 all-width insertion/reset-cone argument).
