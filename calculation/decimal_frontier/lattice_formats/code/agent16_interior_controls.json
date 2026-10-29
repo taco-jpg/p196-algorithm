@@ -1,0 +1,13 @@
+{
+  "classification": "PAPER PROOF (all r>=4); finite controls only",
+  "base_formula": "b=2^(r+1)",
+  "overflow_word": "1 0^r 11 0^(r+1)",
+  "exact_cpp_r_range": [4, 12],
+  "exact_cpp_interior_count": "8*(r-2) tested per r; all zero outgoing",
+  "exact_cpp_boundary_positive": "six active states and 32 total distinct time-carry paths per r",
+  "independent_python_r_range": [4, 7],
+  "independent_python_large_exponent_checks": [32, 64, 128, 256, 512, 1024],
+  "base9_control": {"g": "1100011000", "states": 956310, "edges": 1005301, "cyclic_sccs": 7, "depth61_period4_sccs": 2},
+  "base13_control": {"g": "1010010000", "states": 250302, "edges": 254201, "cyclic_sccs": 5, "cyclic_depths_55_75": true},
+  "reproduce": "bash calculation/decimal_frontier/lattice_formats/code/agent16_interior_run.sh /tmp/agent16-interior"
+}
