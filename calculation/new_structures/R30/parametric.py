@@ -7,7 +7,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from math import lcm
 from typing import Tuple
-import argparse, json, pathlib
+import argparse, json, pathlib, sys
+if hasattr(sys, "set_int_max_str_digits"): sys.set_int_max_str_digits(0)
 
 @dataclass(frozen=True)
 class E:
@@ -37,15 +38,28 @@ def nonnegative(e,qmin,kmin):
 def run(w,n=1):
     return R(tuple(w),E(c=n) if isinstance(n,int) else n)
 
+def primitive_root(word):
+    """Return (primitive period, repetition count) without changing phase."""
+    word=tuple(word)
+    for m in range(1,len(word)+1):
+        if len(word)%m==0 and all(word[i]==word[i%m] for i in range(len(word))):
+            return word[:m],len(word)//m
+    return word,1
+
 def clean(seq):
     out=[]
     for r in seq:
         if not r.word or r.n==E():continue
+        root,mult=primitive_root(r.word)
+        r=R(root,r.n*mult)
+        if r.n==E():continue
         if out and out[-1].word==r.word:
             out[-1]=R(r.word,out[-1].n+r.n)
         elif out and out[-1].n.q==out[-1].n.k==r.n.q==r.n.k==0 and len(out[-1].word)*out[-1].n.c+len(r.word)*r.n.c<=8192:
             old=out.pop()
-            out.append(run(old.word*old.n.c+r.word*r.n.c))
+            joined=old.word*old.n.c+r.word*r.n.c
+            root,mult=primitive_root(joined)
+            out.append(R(root,E(c=mult)))
         else:out.append(r)
     return out
 
@@ -166,14 +180,10 @@ def replay_symbolic(B,W,J,U,C,qmin=512,kmin=512,nsteps=120):
     return ans
 
 def digits(n):
-    a=[]
-    while n:a.append(n%10);n//=10
-    return a
+    return [ord(ch)-48 for ch in str(n)[::-1]] if n else []
 
 def value(w):
-    n=0
-    for a in reversed(w):n=n*10+a
-    return n
+    return int(''.join(str(a) for a in reversed(w))) if w else 0
 
 def actual_pair(n):
     d=digits(n)

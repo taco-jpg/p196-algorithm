@@ -17,6 +17,8 @@ Proof of soundness:
 
 Negative demonstration, NOT a proof of a decimal Lychrel number: J=[5], U=[9,14,4], C=[10] gives the genuine overflow clock (100010001000)^10 and sum overflow 30. At ALL q,k>=256, the first mismatch from the required 120-step return is at coefficient index 9q+14. Independent Python integers and GMP-free C++ fresh-buffer digit arithmetic agree at q=k=20,40,80,160: positions 194,374,734,1454, respectively.
 
+Verifier audit corrections: `clean` reduces repeated blocks to primitive periods before alignment, so exact aliases such as `(9)^q(99)^q=(999)^q` no longer spuriously return UNDECIDED. The C++ oracle reads the full fixture layout (12 W rows, 12 auxiliary 9-column rows, 12 B rows), and the regression compares symbolic pairwords through phase 120 at off-diagonal `(q,k)` values.
+
 Reproduce:
   python3 tools/parametric_verify_r30.py --lattice calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt --J 5 --U 9,14,4 --C 10 --qmin 256 --kmin 256
   g++ -O2 -std=c++17 calculation/new_structures/R30/verify.cpp -o /tmp/r30_verify

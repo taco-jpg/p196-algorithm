@@ -42,9 +42,11 @@ int main(int argc,char**argv){
  int p,nb,m,base;f>>p>>nb>>m>>base;
  if(p!=12||nb!=34||m!=9||base!=10)throw std::runtime_error("bad lattice header");
  V gam(12),B(34),W(9);for(int&i:gam)f>>i;
+ // File layout: 12 W rows, 12 auxiliary 9-column rows, then 12 B rows.
  for(int t=0;t<12;t++)for(int i=0,x;i<9;i++){f>>x;if(t==0)W[i]=x;}
- for(int t=0;t<12;t++)for(int i=0,x;i<9;i++)f>>x;
+ for(int t=0;t<12;t++)for(int i=0,x;i<9;i++)f>>x; // skip auxiliary carry/phase table
  for(int t=0;t<12;t++)for(int i=0,x;i<34;i++){f>>x;if(t==0)B[i]=x;}
+ if(!f)throw std::runtime_error("truncated lattice data");
  int q=std::stoi(argv[2]),k=std::stoi(argv[3]);
  if(q<0||k<0)throw std::runtime_error("negative exponent");
  V J=csv(argv[4]),U=csv(argv[5]),C=csv(argv[6]);
@@ -59,10 +61,10 @@ int main(int argc,char**argv){
  }
  V got=pairword(d);
  size_t first=0;while(first<std::min(got.size(),wanted.size())&&got[first]==wanted[first])first++;
- bool equal=got==wanted;int fm=equal?-1:static_cast<int>(first);
+ bool equal=got==wanted;
  int total=0;for(char c:overflows)total+=c-'0';
- std::cout<<"{\"q\":"<<q<<",\"k\":"<<k<<",\"return\":"<<(equal?"true":"false")
-          <<",\"first_mismatch\":"<<fm<<",\"gamma\":\""<<overflows
-          <<"\",\"sum_gamma\":"<<total<<",\"palindrome_at\":"<<pal_time
+ std::cout<<"{\"q\":"<<q<<",\"k\":"<<k<<",\"return\":"<<(equal?"true":"false")<<",\"first_mismatch\":";
+ if(equal)std::cout<<"null";else std::cout<<first;
+ std::cout<<",\"gamma\":\""<<overflows<<"\",\"sum_gamma\":"<<total<<",\"palindrome_at\":"<<pal_time
           <<",\"digits\":"<<d.size()<<",\"expected_digits\":"<<wanted.size()<<"}\n";
 }
