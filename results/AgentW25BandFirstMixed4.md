@@ -1,0 +1,13 @@
+# AgentW25BandFirstMixed4
+- **COMPUTED**, exact finite-horizon base-10 construction, NOT an infinite Lychrel certificate.
+- Band-first arbitrary-period cyclic-carry solver discovers a nonuniform m=4, p=8 bulk word U=[9,18,9,0] with overflow g=10101010; see `band_first.py`.
+- Distinct from the existing m=20/m=48 double-band candidate: rooted m=20 exterior plus a nonuniform m=4 second bulk, both on the same eight-phase clock.
+- Explicit positive seed: pair coefficients (least significant first) Q ++ reverse(Q), Q=B39 ++ W20^500 ++ U4^9000; ordinary digits split at each pair x as min(x,9) below and x-min(x,9) above.
+- Seed has 92,078 decimal digits, ordinary reverse-and-add reaches 102,078 digits after 20,000 steps; **0 palindromes** among all 20,001 states.
+- Both disjoint 80-site pairword windows at indices 5,039..5,118 (m20) and 28,039..28,118 (m4) match their phase-exact cyclic bulk words at EVERY state, and every overflow follows 10101010.
+- Full schoolbook digit addition agrees with independent coefficient normalization on every edge; GNU GMP agrees for first 20 edges; independent Python big-integer arithmetic agrees through 1,000 steps on smaller (k=150,r=500) control.
+- Output FNV64 over final decimal digits, least significant first, initial offset 1469598103934665603: `3f6aaae5052be7bc`.
+- Reproduce: `python3 calculation/new_structures/agent-W25/band_first.py`; `g++ -O3 -std=c++17 calculation/new_structures/agent-W25/twoband.cpp -lgmpxx -lgmp -o /tmp/w25 && /tmp/w25 500 9000 20000`.
+- Independent control: `python3 calculation/new_structures/agent-W25/bigint_control.py 150 500 1000`.
+- Neither the complete m4 band nor the junction is proved invariant for unbounded time. This is finite survival, not a base-10 Lychrel proof.
+- See `reports/AgentW25BandFirstMixed4.md` for bulk equations and the precise missing interface closure.
