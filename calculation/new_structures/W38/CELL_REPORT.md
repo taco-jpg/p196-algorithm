@@ -39,7 +39,7 @@ screen.cpp enumerates every J word passing the corrected odd-centre mod-11 gates
 
 The relative-to-cut histogram is identical at all four widths:
 
-| First mismatch offset from |B|+9q | J count |
+| First mismatch offset relative to W9/J cut | J count |
 |---:|---:|
 | -25 | 123 |
 | -24 | 283 |
