@@ -1,0 +1,7 @@
+# AgentN24HybridNeutralLatticeFront
+- **COMPUTED** (decimal, exact finite steps 0..20,000): explicit `B0 ++ W0^450 ++ 9^80 ++ [18] ++ mirror` rooted period-12/m9 pairword seed (8,329 decimal digits).
+- Two independent ordinary-integer and schoolbook digit-list replays: no palindrome, exact expected overflow schedule, entire period-12 root plus >=256 lattice pair coefficients at *every* step, final length 13,329; full seed/final SHA-256 agree.
+- New constructive carry-selected `9 -> 0` or `9 -> 18` interior conversion; finite front recedes from 4050 to 299 matched lattice cells in 20,000 steps (~3/16 cell/step), so **no infinite decimal certificate** is claimed.
+- PAPER PROOF (local only): homogeneous neutral-9 pair zone maps to coefficient `18-9(a+c)` for two incoming carries `a,c` away from shifted boundaries. Proposed clocked carry-splice format remains **UNDECIDED** as to a decimal closed cycle.
+- Code and data: `calculation/new_structures/agent-N24/{hybrid_data.json,replay_bigint.py,replay_digitlist.py,small_probe.py}`.
+- Detailed scope and reproducibility: `reports/AgentN24HybridNeutralLatticeFront.md`. Independent step-20,000 digest `ddce08ab35fbc178c93ab775e2e0c10123a19afe524544c161ef63d7a33df9dd`.
