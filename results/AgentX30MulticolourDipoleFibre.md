@@ -1,0 +1,8 @@
+# X30 multicolour two-step decimal reverse-and-add fibre
+- **PAPER PROOF**: For all Q>=2, M=floor(Q/2), there are 5632^M pairwise distinct canonical seeds that become EXACTLY the same integer at step 2 as X0=("5346")^Q, using independently chosen mirrored four-digit replacement pairs. For each a<M, b=Q-1-a, replace X blocks (a,b) by any (U,V) satisfying U+rev4(V)=11781+90k, V+rev4(U)=11781+900k, k=0 or 1, 1000<=U<=9999, 0<=V<=9999, first(U)!=last(V).
+- **COMPUTED complete alphabet**: 4096 admissible k=0 pairs, 1536 k=1 pairs (5632 total); independent Python enumeration verifies the exact Q=2 identity for every option.
+- All such seeds are nonpalindromic at t=0 and t=1; k=0 merges at t=1, while any k=1 creates an exact delayed t=2 merge. Each symbol changes the first-step integer by k*(90*10^(4b)+900*10^(4a)), whose resulting digit edits cancel on the next reverse-and-add.
+- At Q=8000, **5632^4000**, roughly 2^49837.73, distinct decimal seeds inherit the independently established t=2..20000 palindrome-free trajectory of W10's uniform control; no infinite inference.
+- **COMPUTED**: random-seeded multicolour member at Q=8000 passes 20,001 full-state schoolbook/radix-1e9 bigint checks, no palindrome, final 40323 digits and 8323 overflows; FNV64 MSB-ASCII final 33f8ce7f29c9f033.
+- Reproduce: python3 calculation/new_structures/agent-X30/multicolour_counts.py; g++ -O3 -std=c++17 calculation/new_structures/agent-X30/multicolour_dipoles.cpp -o /tmp/x30mc && /tmp/x30mc 8000 2 20000.
+- Proof and limitations: reports/AgentX30MulticolourDipoleFibre.md; code and data in calculation/new_structures/agent-X30/. **NOT** a decimal infinite Lychrel certificate or a Lean proof.
