@@ -1,0 +1,98 @@
+{
+  "label": "COMPUTED",
+  "scope": "For every kw>=440, kv>=530 in the coefficient family, 33456 ordinary decimal reverse-and-add additions produce 33457 nonpalindromic states; all two-ended independent-period pumping edge contracts hold for t=0..33455.",
+  "seed": "P0=(B ++ W^kw ++ [9] ++ V^kv) ++ [9] ++ reverse(B ++ W^kw ++ [9] ++ V^kv), D0=normalize(P0); arrays from skew_contract.cpp",
+  "periods": {
+    "B": 39,
+    "W": 20,
+    "V": 48
+  },
+  "cuts": {
+    "W": "39+20*40",
+    "V": "39+20*kw+1+48*427",
+    "baseline_W": 839,
+    "baseline_V": 29336
+  },
+  "gamma": "gamma(t)=1 if t even, 0 if t odd, for t=0..33455",
+  "baseline": {
+    "kw": 440,
+    "kv": 530,
+    "steps": 33456,
+    "states": 33457,
+    "seed_digits": 68562,
+    "final_digits": 85290,
+    "fnv64_lsd": "f362715e583f869"
+  },
+  "independent_gmp": {
+    "kw": 440,
+    "kv": 530,
+    "steps": 33456,
+    "nonpalindromic_states": 33457,
+    "final_digits": 85290,
+    "fnv64_lsd": "f362715e583f869"
+  },
+  "second_count_control": {
+    "kw": 443,
+    "kv": 537,
+    "steps": 33456,
+    "states": 33457,
+    "seed_digits": 69354,
+    "final_digits": 86082,
+    "fnv64_lsd": "7682f311c8194b8a"
+  },
+  "cut_first_failures": [
+    {
+      "jV": 400,
+      "t": 31340,
+      "reason": "gamma cut phase slip"
+    },
+    {
+      "jV": 415,
+      "t": 32518,
+      "reason": "gamma cut phase slip"
+    },
+    {
+      "jV": 420,
+      "t": 32902,
+      "reason": "gamma cut phase slip"
+    },
+    {
+      "jV": 425,
+      "t": 33300,
+      "reason": "gamma cut phase slip"
+    },
+    {
+      "jV": 426,
+      "t": 33378,
+      "reason": "gamma cut phase slip"
+    },
+    {
+      "jV": 427,
+      "t": 33456,
+      "reason": "gamma cut phase slip"
+    },
+    {
+      "jV": 428,
+      "t": 33238,
+      "reason": "V cutoff consumed"
+    },
+    {
+      "jV": 430,
+      "t": 32584,
+      "reason": "V cutoff consumed"
+    },
+    {
+      "jV": 440,
+      "t": 29350,
+      "reason": "V cutoff consumed"
+    },
+    {
+      "jV": 460,
+      "t": 22718,
+      "reason": "V cutoff consumed"
+    }
+  ],
+  "note": "At jV=427, the next transition from t=33456 fails the cut identity, but D_33456 is nonpalindromic; this is not a palindrome observation or infinite-time exclusion.",
+  "reproduce": "sh calculation/new_structures/agent-W16/run_cut_extended.sh",
+  "not_claimed": "No Lean verification, no infinite Lychrel certificate, no result about decimal 196, no statement for times after 33456."
+}
