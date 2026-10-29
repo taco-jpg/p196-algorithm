@@ -1,0 +1,3 @@
+# AC31 TARGET
+
+Route: rooted p12/m9 phase=10, B10/W10, |J|=5, all 30 charge-zero U3 rotations, reference (q,k)=(14,100), 120 true decimal steps, endpoint-only same J/C/W9/U with k→k+5, both odd C=[4,14,4] and even C=[4,4]. Exact aggregate 148,565,940 endpoint controls remains UNDECIDED. Premises: (a) T12 cut/insertion, (r) odd-centre mod-11 gate does not apply to even C, (t) strict-phase W9 MDD is invalid for endpoint healing. Accomplished narrower all-interior sound-carry lemma: first 40 outer coefficients MUST return and any claimed mismatch at 8 is wrong.
