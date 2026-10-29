@@ -1,0 +1,11 @@
+# Agent N10: arbitrary finite nonpalindromic decimal orbits from eroding shells
+- **Label: PAPER PROOF**, eight-phase boundary identities audited COMPUTED.
+- For each integer horizon `H>=0`, explicitly construct a decimal integer with no palindrome during reverse-and-add steps `t=0..H`.
+- Use known decimal p8/m20 exterior `B_0` (length39) and band `W_0` (length20); set `k=H+1` and palindromic coefficient word `P_0=B_0 ++ W_0^k ++ reverse(W_0^k) ++ reverse(B_0)`.
+- Realize coefficients by digit pairs `floor(p/2)`, `p-floor(p/2)`. Initial integer has exactly `78+40(H+1)` decimal digits.
+- Sound one-step rule: `T(P(t,r,C))` has prefix `B_(t+1) ++ W_(t+1)^(r-1)` for **all** palindromic centres `C` and all `r>=1`. Thus `r_t>=k-t` by induction.
+- Each eight-phase `B_t` contains an odd coefficient; a palindrome would have all even pair coefficients, hence none occurs through step H.
+- Length at step t is exactly `78+40k+ceil(t/2)`. The guard may be exhausted after the prescribed finite horizon.
+- Source and independent controls: `calculation/new_structures/agent-N10/run_shell.sh` (384 symbolic checks, 3200 real integer controls).
+- Proof / precise non-claim / Lean sketch: `reports/AgentN10ArbitraryFiniteDecimalShell.md`.
+- **Not claimed:** a single integer with infinitely many non-palindromic iterates, or a decimal Lychrel certificate.
