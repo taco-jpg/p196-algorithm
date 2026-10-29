@@ -1,0 +1,1 @@
+- Rejected: the generic 2^5 fixed-carry reset-window corollary duplicates R25/T01. Redirect to the phase-indexed two-sided U3 carry-reset map and its 40-step screw rotation; do not spend a separate lane on the scalar amplification bound.
