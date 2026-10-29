@@ -1,0 +1,3 @@
+# AC27 target: PHYSICAL_TSTAR_RETURN_AT_REFERENCE_WIDTH
+
+For each U among the 30 charge-zero U3 rotations and every five-coefficient junction J in {0,...,18}^5, decide whether a 120-step **ordinary base-10 reverse-and-add** trajectory rooted at phase-6 B6/W6, (q,k)=(14,100), can have its endpoint equal to the SAME template B6 ++ W6^14 ++ J ++ U^105 ++ C ++ reverse(...), for any legal palindromic C. A coefficient discrepancy within W6^14 rules out an endpoint return, regardless of the centre. Keep temporary W9 failures admissible (endpoint-only). The theorem sought is a completed finite necessary-condition decision, not existence of a decimal Lychrel number. Investigate all-width T12 insertion separately and do not confuse five test widths with a uniform proof.
