@@ -5,3 +5,5 @@ Exact full-word phase8 controls: 60,000 lexicographic and 60,060 spread J/U/C ca
 Existing AC11/AC15/AC26 contain equivalent general cone lemma. Full J0=0/U=(9,0,18) census: 2,476,099 exact endpoint W9 failures, zero unresolved/clock errors, 135:1,359,194,136:1,116,905. NOT a Lychrel existence proof.
 
 2026-10-29 follow-up exhaustive U rank1=(0,18,9), J0=0, all 19^5=2,476,099 suffixes: excluded all, zero unresolved or clockbad; endpoint prefix known 155..175, first mismatch 135:1,358,747; 136:1,117,352. Total two U rotations 4,952,198 decided.
+
+2026-10-29: Completed rank2 U=(18,9,0), 19^5 excluded; hist135=1,358,224,hist136=1,117,875,known158..176. Rank3 U=(9,2,16), 19^5 excluded; hist135=1,359,136,hist136=1,116,963,known156..176. Combined ranks0..3 = 9,904,396. Read AC35 all-phase T12 lift (PAPER PROOF), phase8 W loss92; all-width exclusion for same fixed J/C/U and q>=14,k>=100 follows, conditional on AC35 proof, not novel. 60 true-bigint controls ranks2/3 and 1,936 physical paired-insertion checkpoints ranks2..5 passed.

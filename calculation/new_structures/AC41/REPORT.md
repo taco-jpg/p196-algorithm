@@ -18,3 +18,17 @@
 **COMPUTED, EXHAUSTED-NONE at the identical phase8 J0=0, q14, k>=40, all-realizable-centre predicate.** This is the zero-based rank-1 rotation of (9,0,18), not a second run of the rank-0 cell. All 19^5=2,476,099 J1..J5 suffixes were enumerated without intermediate strict-W9 pruning; zero exact W9 endpoint restorations, zero unresolved cones, zero incorrect 120-step overflow clocks. Endpoint first mismatch index 135 in **1,358,747** suffixes and index 136 in **1,117,352** suffixes; terminal certified prefix lengths 155..175. Combined with the rank-0 result, exactly **4,952,198** distinct (U,J) combinations are decided out of 30×19^5 for the fixed J0=0 slice; the other 28 rotations remain **UNDECIDED**. Underlying centre-independent soundness is the same preexisting carry lemma, so this is not a new all-time theorem.
 
 **Reproduce either independently:** compile the same phase8_envelope.cpp and run `/tmp/ac41 0 2476099 0` for the original rank 0 or `/tmp/ac41 0 2476099 1` for rank 1. The optional third argument selects zero-based U rank defined by a=0,2,...,18 and cyclic rotation. A distinct Python unbounded-integer / schoolbook source control with U=(0,18,9), J=(0,1,0,0,0,0), C=(4,14,4) passed every physical step at (q,k)=(14,100),(20,80),(40,160),(80,320),(160,640). This is code validation only, not an inference to q>=14.
+
+
+## Third and fourth exhaustive U rotations (2026-10-29)
+
+**COMPUTED, EXHAUSTED-NONE** at phase8, J0=0, |J|=6, q14, all k>=40 and every physically realizable odd/even palindromic centre:
+
+- Rank2 U=(18,9,0): 2,476,099 / 2,476,099 independent J suffixes excluded, unknown=0, clockbad=0, final known prefix range 158..176. First W9 endpoint mismatch 135: 1,358,224; 136: 1,117,875.
+- Rank3 U=(9,2,16): 2,476,099 / 2,476,099 independent J suffixes excluded, unknown=0, clockbad=0, final known prefix range 156..176. First W9 endpoint mismatch 135: 1,359,136; 136: 1,116,963.
+
+Together ranks0..3 decide 4×19^5=9,904,396 distinct (U,J) assignments, with no W9 endpoint restorations. The remaining 26 U ranks and J0=1..18 are not covered by these four cells.
+
+**Previously proved all-phase lift, not a new AC41 theorem:** AC35/PHASE_T12.md (PAPER PROOF, phase-start generalisation, plus phase_cut.py) establishes exact paired-insertion commutation and Return_8(q,k) iff Return_8(14,100) for every fixed J,C,U with independently varying q>=14,k>=100. Its phase-8 W protected cone loss is 92 cells, still leaving >9 reset cells beyond the cut52; all U words have junction/centre losses <=152/122, and k=100 leaves 13 cells on either side of the protected U cut. Accordingly each AC41 reference-width W9 necessary-condition failure also excludes the fixed-J/C exact physical T* return for these **all q>=14,k>=100**, conditional on that already published non-Lean paper theorem. No all-width claim is made for k=40..99 when q>14. This combination does not exclude moving J, q-changing 240-step returns, or solve decimal Lychrel.
+
+**Reproduce ranks2/3:** g++ -O3 -std=c++17 calculation/new_structures/AC41/phase8_envelope.cpp -o /tmp/ac41 ; /tmp/ac41 0 2476099 2 ; /tmp/ac41 0 2476099 3 . Each enumerates the whole code range, checks the true physical (1000)^30 overflow and endpoint-only W9 prefix, reports no unresolved prefix in its output. An independently written Python bigint + schoolbook program checked 60 stratified 120-step controls across ranks2/3, both centre parities and five widths q14/20/40/80/160. Independently, 1,936 phase8 paired-insertion checkpoints for ranks2..5 agreed with actual Python big integers.
