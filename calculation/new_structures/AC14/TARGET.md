@@ -1,0 +1,2 @@
+# AC14 target
+For rooted p12/m9 phase 5, q=14, all J in {0,...,18}^3 or ^4, all 30 charge-zero U3 rotations and any physical palindromic centre C, test exact 120-step endpoint-only T(14,k)->T(14,k+5) with identical B5/W5/J/U/C for every k>=48. W9 may change freely in the intervening 119 steps. An endpoint W9 mismatch is a sound no-return proof; no claim about longer or moving seams.
