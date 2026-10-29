@@ -80,6 +80,34 @@ def test_prefix_only_seam_rejected() -> None:
         raise RuntimeError("prefix-only control's independent engine/guard audit failed")
 
 
+def test_r18_phase4_fixed_seam_rejected() -> None:
+    raw = {
+        "name": "R18 phase4 J24 full-interface control",
+        "base": 10,
+        "B": [10,4,7,5,13,6,11,1,9,16,16,18,10,9,4,8,1,7,0,2,15,15,9,7,7,10,17,14,18,8,6,6,18,4],
+        "W": [8,1,15,4,0,5,5,18,4],
+        "J": [17,5,5,9,6,6,6,14,5,11,7,10,14,7,8,15,9,6,4,18,9,10,17,2],
+        "U": [18,0,9], "C": [4,14,4],
+        "samples": [[20,40],[40,80],[80,160],[160,320]],
+        "q_gain": 0, "k_gain": 5, "epoch_steps": 120, "epochs": 2,
+        "overflow_clock": "1000", "overflow_repeats": 30,
+        "require_odd_pair_guard": True,
+    }
+    claim = ac.normalize_claim(raw, ROOT / "calculation/new_structures/U44/r18_phase4.json")
+    result = [ac.run_sample(claim, q, k) for q, k in claim["samples"]]
+    expected_first = [215, 395, 755, 1475]
+    for item, first in zip(result, expected_first):
+        endpoints = item["endpoint_returns"]
+        if item["status"] != "FAIL" or not item["overflow_clock_matches"]:
+            raise RuntimeError("R18 seam was not correctly rejected")
+        if item["engine_mismatch_times"] or item["palindrome_times"] or item["odd_guard_missing_times"]:
+            raise RuntimeError("R18 control's independent engine/guard audit failed")
+        if len(endpoints) != 2 or endpoints[0]["first_mismatch"] != first:
+            raise RuntimeError(f"R18 first mismatch differs from expected {first}: {endpoints}")
+        if endpoints[0]["return"] or endpoints[1]["return"]:
+            raise RuntimeError("R18 fixed seam was falsely accepted")
+
+
 def test_invalid_template_rejected() -> None:
     lattice = ROOT / "calculation/decimal_frontier/lattice_kinks/data/lat_p12m9.txt"
     raw = {"base": 10, "lattice": str(lattice), "J": [5], "U": [9, 14, 4], "C": [9]}
@@ -94,5 +122,6 @@ if __name__ == "__main__":
     test_independent_engines()
     test_known_nonreturning_control()
     test_prefix_only_seam_rejected()
+    test_r18_phase4_fixed_seam_rejected()
     test_invalid_template_rejected()
     print("U44_ALERT_CHECK_TESTS_PASS")
