@@ -1,0 +1,34 @@
+# Agent X16: synchronized automatic carry-ribbon certificate format
+
+**Primary label: PAPER PROOF (conditional soundness).** All orbit and finite-family experiments are **COMPUTED**; no base-10 Lychrel number is proved. Computation paths: `calculation/new_structures/agent-X16/`.
+
+## New format, beyond fixed repeated bands and one-tape regular-centre languages
+
+Fix a base `b>=2`, a phase period `q`, binary-counted cycle index `k>=K`, and low-end digit index `0<=i<n_h(k)`. Let `n_h(k)=A*k+B_h`, `B_{h+1}=B_h+gamma_h`, and `A=sum_{h<q}gamma_h`, where `gamma_h` is 0 or 1. For each phase h supply TWO synchronized base-2 DFA-with-output maps of `(k,i)` (zero-padding in the binary convolution): a palindromic pair coefficient `P_h(k,i)` in `0..2b-2` and a bit `C_h(k,i)` for the incoming carry at column `i` (defined through i=n_h(k)). The output maps can depend nonperiodically on `i`, e.g. via binary digit sum parity, and on both growing parameters. Synchronized binary addition, subtraction, order, fixed affine length and index reflection are finite-state recognizable relations, so every quantified condition below reduces to a finite automata product and an emptiness/universality test. Unlike a finite DFA accepting a *language of arbitrary halfwords* (N02/N07), this format indexes a *specific sequence of words* by k; the Thue-Morse prefix family is not a regular language and cannot be represented exactly by a single ordinary word DFA.
+
+**Exact local constraints for all k and all legal i:**
+1. `P_h(k,i)=P_h(k,n-1-i)`, and for odd n its central P is even; `P_h(k,0)>=1`. `C_h(k,0)=0`, `C_h(k,n)=gamma_h`.
+2. `Y_h(k,i)=P_h(k,i)+C_h(k,i)-b*C_h(k,i+1)` is a digit in 0..b-1, for 0<=i<n. If gamma=1, extend `Y_h(k,n)=1`.
+3. For `n'=n+gamma`, `P_next(k,i)=Y_h(k,i)+Y_h(k,n'-1-i)` for 0<=i<n'. `next` means phase h+1 at k if h<q-1, or phase zero at k+1 otherwise.
+4. Palindrome safety: for every k>=K, every h has *some* i<n with `P_h(k,i)` odd. This is an automatic regular-language quantifier check via projection and complement. It is sufficient, not necessary, for the nonpalindromicity of a digit string.
+5. The seed P at phase 0 and k=K is physically realizable: the previous pair constraints already suffice for an n-digit number, by splitting each symmetric pair coefficient into two base-b digits, with the high end positive; for an odd centre take P_center/2.
+
+**Soundness theorem (PAPER PROOF):** If all the above automata tests accept, *every* physical seed realizing `P_0(K,.)` has no palindrome in its infinite reverse-and-add trajectory. Induct on t=q(k-K)+h. The identity `N+reverse_b(N)=sum_i P_i*b^i` makes the normalized Y digits unique, with the supplied carry bits guaranteed by constraints 1-2; constraint 3 identifies the next pairword exactly, including overflow and the moving axis. The reconstructed leading digit stays nonzero because N+reverse(N)>=N. Constraint 4 rules out palindromes (one odd symmetric digit-pair sum implies the digits differ). Length increases by A per q steps. There is no dependence on an arbitrary finite horizon. **Lean sketch:** encode a DFAO evaluation predicate over binary `(k,i)` and a decidable regular-relation validity checker; prove the digit-normalization lemma and induct as in `LatticeBand.ledge_step`, replacing repeated-band equalities by recognized universal first-order equations. Nothing here is Lean-verified; the general checker has not been implemented.
+
+## Exact symbolic control using a nonperiodic central word
+
+Let `u(j)=popcount(j) mod 2`, `n=2k+8`, `h=n/2`, `P_i=9+u(min(i,n-1-i))`, for all k>=0. This is symmetric and automatic in `(k,i)`, with non-ultimately-periodic lower half. The actual normalized first carry word is exactly `C_0=C_1=0`, `C_i=1` for `2<=i<=n`, because `u(0)=0,u(1)=1` and each pair P is 9 or 10. Thus the first output has n+1 digits; its symmetric pairword obeys `P'_0=10`, `P'_1=0`, `P'_i=u(i)+u(i-1)` for `2<=i<h`, and `P'_h=2u(h-1)` (mirror the rest). Its next carry word is exactly `0,1,0,...,0,1` and a second overflow gives n+2 digits. `P''_0=1`. Thus the initial three orbit states are nonpalindromic for **every k**: the first has odd P0=9, the second P'_3=u(3)+u(2)=1, the third P''0=1. The fourth state is a palindrome for every k, because the third pairword has coefficients at most 4 and its normalization is carry-free, making the next digit string itself symmetric. **Redirect:** a live automatic ribbon needs a nonzero *regenerating* carry source after the latch, not this transient quenching mechanism. `automatic_ribbon.py` checks the first two carry formulas and three integer states for all k=0..3000; the universal claims above follow from the displayed algebra, not from that finite test.
+
+## A live finite decimal probe and its obstruction
+
+Take the same automatic family but `P_i=17` where `u(min(i,n-1-i))=0`, `P_i=14` otherwise. For k=63 (n=134), exact digit-list reverse-and-add gives **20,000 steps; 0 palindromes; 20,001/20,001 states have an odd pair coefficient; final n=8396**. An independent Python ordinary-integer reversal agrees on the first 1601 edges, and the pairword-to-carry normalization agrees on every edge (full 20k run). A separate 196 control gives 20,000 palindrome-free steps and 8,296 digits, again not an infinity claim. A 9-ary known certificate (`B0` size 61, `W0=1,1,15,15`, overflow `1100011000`) exactly returns after 10 steps with +4 band cells for each of 50 seed lengths (`l=10+4k`), 500 arithmetic edges.
+
+**What breaks:** in the 17/14 live decimal probe the max matching low-end pairword prefix between t and t+8 is only 5 over t=8..20000, so there is no evidence of a fixed p8 exterior; the genuine next step after 20000 is *unconstrained*. The new direction is to synthesize phase-indexed DFAOs for the time-dependent carry boundary, with nonperiodic centre indexing, rather than enforcing a repeating p8 band or extrapolating finite survival.
+
+Reproduce from repository root:
+`python3 calculation/new_structures/agent-X16/automatic_ribbon.py --output /tmp/x16_196.json`
+`python3 calculation/new_structures/agent-X16/second_probe.py --a 17 --b 14 --k 63 --steps 20000 --output /tmp/x16_live.json`
+`python3 calculation/new_structures/agent-X16/base9_control.py`
+`python3 calculation/new_structures/agent-X16/search_tm.py`
+
+Verification limitation: this isolated sandbox has no GitHub network access for a checkout, hence cannot run the complete repository `python3 tools/verify.py --changed`; no Lean files were added. All Python programs were run locally. The exact mathematical format is a proposed finite verification discipline, not an implemented complete DFA product checker.
