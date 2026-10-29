@@ -1,0 +1,9 @@
+# AC45 BDD/ZDD symbolic product decision
+**Label: UNDECIDED.** This is NOT a decimal Lychrel certificate, nor an emptiness decision for pi185.
+Missing lemma targeted: **PHYSICAL_TSTAR_RETURN_AT_REFERENCE_WIDTH**. A viable decision engine must represent all 120 physical carry layers, both folded ports, the gamma-one lag, all palindromic centres, arbitrary J, and the fixed five-copy U insertion. This prototype implements only one exact two-digit carry relation as a canonical ROBDD.
+
+Run `python3 calculation/new_structures/AC45/engine.py`. Observed output: 9 Boolean inputs (x[0:4],y[4:8],carry-in), 200 legal encodings, exactly 100 producing carry-out 1, 1272 allocated unique ROBDD nodes (including intermediate formulas), 50 live nodes reachable from the final carry predicate, 6 live nodes for valid inputs. Exhaustive 512-input truth-table test and 500 seeded random physical pairword/canonical-integer one-step differential tests pass. These are exact counts for THIS single-column gate, not the 120-layer or folded transducer.
+
+Reference-width **diagnostic only**, from independent ordinary Python big-int replay (not an exhaustive decision): phase-0 B34/W9, J=seven zeros, U=(9,0,18), even C=(4,4), (q,k)=(14,100),(20,100),(40,100),(80,100),(160,160): 120 genuine steps each, overflow word (100010001000)^10 each, terminal mismatch indices 138,192,372,732,1452; zero exact returns. These samples are not included as exclusions.
+
+The vital missing functionality is the 120-track relation, canonical midpoint with variable centre length, deterministic gamma alignment, and a complete emptiness computation. In particular the reported pi185 82-state/1556-arc figures were NOT reproduced. Strict-W9 phasewise pruning is NOT used. The even-C branch is NOT pruned by the odd-C mod-11 conditions.
