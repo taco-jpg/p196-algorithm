@@ -1,0 +1,1 @@
+Dead route / redirect: rooted phase-0 p12/m9 with fixed U=(9,10,8) and |J|=3..4; all 137,180 junctions fail the W9 endpoint at t=120, and T12 lifts this to every q>=14,k>=100 and every finite centre, so redirect effort to |J|>=5 or a moving/phase-changing seam / distinct U6 format.
