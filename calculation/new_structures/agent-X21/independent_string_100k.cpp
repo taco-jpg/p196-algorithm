@@ -1,0 +1,8 @@
+#include <bits/stdc++.h>
+#include <gmpxx.h>
+using namespace std;
+static string next_str(const string& a){string b(a.rbegin(),a.rend()),out;int c=0;for(int i=(int)a.size()-1;i>=0;i--){int z=a[i]+b[i]-2*'0'+c;out.push_back('0'+z%10);c=z/10;}if(c)out.push_back('0'+c);reverse(out.begin(),out.end());return out;}
+static string mirrored(string h,int n){string p=h;for(int i=n/2-1;i>=0;i--)p+=h[i];return p;}
+static mpz_class gap_m(const string&s){int n=s.size(),k=(n+1)/2;mpz_class x(s,10),h(s.substr(0,k),10),best=-1;auto offer=[&](const string&ss){if(ss.empty()||ss[0]=='0')return;mpz_class p(ss,10),d=x-p;if(d<0)d=-d;if(best<0||d<best)best=d;};for(int i=-1;i<=1;i++){mpz_class y=h+i;if(y<0)continue;string a=y.get_str();if((int)a.size()==k)offer(mirrored(a,n));}if(n>1)offer(string(n-1,'9'));offer("1"+string(n-1,'0')+"1");return best;}
+int main(int argc,char**argv){ifstream in(argv[1]);string line,s="196";getline(in,line);int pal=0,check=0,miss=0;for(int t=0;t<=100000;t++){if(!getline(in,line)){cerr<<"EOF at "<<t<<"\n";return 1;}istringstream ss(line);string f[7];for(int i=0;i<7;i++)getline(ss,f[i],',');if(stoi(f[0])!=t||stoi(f[1])!=(int)s.size())miss++;int h=0;for(int i=0;i<(int)s.size()/2;i++)h+=(s[i]!=s[s.size()-1-i]);if(h!=stoi(f[2]))miss++;if(h==0)pal++;if(t%500==0||t==44105){string g=gap_m(s).get_str();if(stoi(f[3])!=(int)g.size()-1||g.substr(0,min((size_t)9,g.size()))!=f[5])miss++;check++;}if(t<100000)s=next_str(s);}
+cout<<"INDEPENDENT_DECIMAL_100K states=100001 pal="<<pal<<" mismatch="<<miss<<" full_hamming_checks=100001 exact_bigint_gap_samples="<<check<<" final_digits="<<s.size()<<"\n";return pal||miss||check!=202;}

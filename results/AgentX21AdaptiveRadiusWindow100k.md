@@ -1,0 +1,5 @@
+# AgentX21AdaptiveRadiusWindow100k
+**PAPER PROOF** of adaptive palindrome-radius-window certificate FORMAT: phase-regular sets closed under decimal reverse-add, plus an H-step relational check D(F^H(x)) >= 10^floor(len(x)/2), prove nonpalindromicity (with first H seed states checked) and D(x_(t+H))>D(x_t) for all t.
+**COMPUTED control:** the decimal orbit from 196 survives 100,000 exact reverse-add steps; D(x_(t+128))>D(x_t) and the adaptive condition hold in every one of 99,873 overlapping 128-step windows. Final length 41,490, max radius deficit 26 at t=44,105, min 128-step half-length gain 21, min gap exponent gain 1. Thus the earlier uniform r=21 condition is too weak beyond 20,000, while the adaptive condition survives this longer test.
+Independent decimal-string arithmetic confirms every digit length and palindrome mismatch count at 100,001 states; 202 exact GMP palindrome gaps cross-check the sampled values. No infinity claim; no closed decimal DFA exists yet.
+Reproduce: bash calculation/new_structures/agent-X21/run_100k.sh. Source/data: calculation/new_structures/agent-X21/; proof and scope: reports/AgentX21AdaptiveRadiusWindow100k.md.
