@@ -1,0 +1,7 @@
+# Agent3ThreeCellBooleanNoGo
+
+**PAPER PROOF.** Decimal rec2 p8/m48, g=10101010: all 512 square-free Boolean monomials in nine bits from three adjacent coefficient parities and ascending/descending physical carries, with eight independent temporal phases (4096 coefficients), have an exact **2304-dimensional universal zero-function covariance kernel**.
+The 76-state/1444-edge physical carry graph lifts to a 1444-state/27436-edge de Bruijn graph. Exactly 288 independent graph-coboundary masks per phase give the universal lower bound; 1792 independent exact physical-word covariance rows give the matching upper bound. The 2252 rec2-local tests have rank **814/4096**, leaving **978 nonuniversal false-positive dimensions**.
+An explicit degree-five single-monomial mask passes every rec2-local test but fails on a committed valid 48-cell physical cyclic word. No finite-centre no-go, decimal certificate, or Lean verification is claimed.
+Full proof: reports/Agent3ThreeCellBooleanNoGo.md; self-contained source, raw lattice, SHA-256 manifest of three deterministically regenerated exact certificates (<5 MB each), explicit counterexample, primary and independent digit-normalization checkers: calculation/decimal_frontier/lattice_kinks/agent3_threecell_boolean/.
+Reproduce: python3 calculation/decimal_frontier/lattice_kinks/agent3_threecell_boolean/verify.py && python3 calculation/decimal_frontier/lattice_kinks/agent3_threecell_boolean/independent_check.py
