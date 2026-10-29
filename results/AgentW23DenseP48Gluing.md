@@ -1,0 +1,6 @@
+# AgentW23DenseP48Gluing
+**PAPER PROOF (finite time only).** For every M>=1, the explicit base-10 rooted p8/m48 pairword seed with q=M+4 bulk periods admits 2^M independently switchable non-gauge packets (13,9)->(8,5), packed one per 48 coefficients; ALL 2^M distinct canonical decimal seeds have the same complete pairword after 3 additions and the same integer after 4 additions. None is palindromic at times 0..3.
+Proof uses carry synchronization at the first non-9 coefficient (max 9-run <=2 for t0..2), radius-4 finite difference-cone per step and the exact 3-step eraser tile (AgentW23P48ThreeStepErasers); 48-spaced cones remain disjoint.
+**COMPUTED controls:** 1024/1024 M10 possibilities checked with Python true bigints; M96 3 controls and M128 20 controls, plus independent ordinary digit-vector M96 checks. Existing independently checked q100 orbit implies all 2^96 corresponding M96 seeds avoid palindromes for 20,000 steps, NOT forever.
+Paths: `calculation/new_structures/agent-W23/packed_glue.py`, `packed_digit.cpp`, `packed_expected.json`; full argument: `reports/AgentW23DenseP48Gluing.md`.
+Not claimed: a base-10 Lychrel number, any perpetual packet source, Lean verification or statement about seed 196.

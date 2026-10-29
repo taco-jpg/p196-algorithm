@@ -1,0 +1,60 @@
+{
+  "label": "PAPER PROOF (finite coalescence), COMPUTED controls",
+  "base": 10,
+  "theorem": {
+    "M": "any integer >=1",
+    "q": "M+4",
+    "pairword": "B ++ W^(M+4) ++ [10,14,1,10] ++ reverse((B ++ W^(M+4) ++ [10,14,1,10])[:-1])",
+    "packet_positions": "11+48*(2+j)+20 for j=0..M-1",
+    "packet_change": "(13,9)->(8,5) reflected",
+    "seeds": "2^M distinct canonical decimal integers",
+    "same_pairword_time": 3,
+    "same_integer_time": 4,
+    "first_four_steps_nonpalindromic": true
+  },
+  "guard": {
+    "bulk_period": 48,
+    "max_consecutive_9_phase_0_to_2": [
+      2,
+      1,
+      1
+    ],
+    "per_step_difference_cone_bound": 4,
+    "three_step_bound": 12,
+    "packet_spacing": 48,
+    "root_guard_coefficients": 127,
+    "central_guard_periods": 2
+  },
+  "independent_controls": [
+    {
+      "M": 10,
+      "q": 14,
+      "checked": 1024,
+      "seed_digits": 1373,
+      "N4_digits": 1375
+    },
+    {
+      "M": 96,
+      "q": 100,
+      "checked": 3,
+      "seed_digits": 9629,
+      "N4_digits": 9631
+    },
+    {
+      "M": 128,
+      "q": 132,
+      "checked": 20,
+      "seed_digits": 12701,
+      "N4_digits": 12703
+    }
+  ],
+  "long_replay_reference": {
+    "q": 100,
+    "steps": 20000,
+    "no_palindromes": true,
+    "digits_final": 19629,
+    "fnv64": "971e60282dc35bc9",
+    "implication": "all 2^96 coalescent q100 seeds share same nonpalindromic horizon"
+  },
+  "does_not_prove_infinite_lychrel": true
+}
