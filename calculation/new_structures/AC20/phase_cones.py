@@ -14,7 +14,7 @@ def F(w,g):
  hi=[0]*m;hi[0]=z
  for i in range(m-1,0,-1):hi[i]=T(w[i],hi[(i+1)%m])
  assert all(T(w[i],lo[i])==lo[(i+1)%m] and T(w[i],hi[(i+1)%m])==hi[i] for i in range(m))
- return tuple((w[i]+lo[i])%10 + (((w[i]+hi[(i+1)%m])%10) if not g else ((w[(i-1)%m]+hi[i])%10)) for i in range(m))
+ return tuple((w[i]+lo[i])%10 + ((w[i]+hi[(i+1)%m])%10 if not g else (w[(i-1)%m]+hi[i])%10) for i in range(m))
 def audit(u):
  v=tuple(u);l=r=0
  for t in range(120):
