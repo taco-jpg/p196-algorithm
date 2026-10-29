@@ -1,0 +1,23 @@
+# W13: three-step non-gauge erasure in the rooted decimal period-8 lattice
+
+**PAPER PROOF** for the arbitrary-multiplicity local packet identity; **COMPUTED** for exhaustive finite checks and exact 20,000-step arithmetic. Not a decimal infinite Lychrel certificate.
+
+## Construction
+Use least-significant-digit-first symmetric pair-coefficient words P_i=d_i+d_(n-1-i). Let B have 39 coefficients and W 20 (verbatim in the source, the first SCC of calculation/decimal_frontier/lattice_formats/p8_scc.txt). For any M>=1 and q>=30+10M, define P=B ++ W^q ++ [0] ++ reverse(W^q) ++ reverse(B). At each of M lower-half indices s_j=39+20(30+10j)+5, j=0,...,M-1, independently replace the three entries W[5:8]=[11,14,3] by one of nine words: the original triple or [6+9u,6+9v,7+9w] for u,v,w in {0,1}. Mirror each replacement. Each pairword is realizable as an ordinary canonical decimal seed: split each pair sum p_i into low digit min(9,p_i) and mirrored high digit p_i-min(9,p_i), with central digit zero. The 9^M choices are distinct integers.
+
+## Exact local three-step contract
+The coefficient update F(P)=pairs(normalize10(P)) uses c_0=0 and c_(i+1)=floor((P_i+c_i)/10), appending the final carry if nonzero. A coefficient <=8 resets carry to 0, >=10 resets it to 1, and 9 alone transmits carry. The first three length-overflow bits in this rooted family are 1,0,1, independent of the centre and packets.
+
+For every one of the eight nontrivial replacement triples, the exact lower-half difference support relative to its unmodified orbit is t0={s,s+1,s+2}; t1={s,s+1,s+2,s+3}; t2={s,s+1,s+2,s+3}; t3=empty. At positions (s-1,s+4), the unmodified pair coefficients during transitions t0,t1,t2 are respectively (17,1),(12,10),(5,1), and the modified orbit has the same values. These are all non-9 carry resets, so both inward and outward carry boundary conditions are fixed. Therefore the full two-ended local update is independent of the rest of the central word outside these cuts; there are no differences outside these windows. Distinct packets lie 200 cells apart and are also separated from their mirrored partners and the outer and central boundaries. Induction over t=0,1,2 gives a disjoint superposition of the eight explicitly checked local tables. Every one of the 9^M initial pairwords is IDENTICAL at t=3. Since the next ordinary integer is the numeric value represented by the coefficient word, every starting integer has the identical fourth reverse-and-add iterate.
+
+This is NOT the already-known overflow carry-gauge collapse. The original residues modulo 9 are (2,5,3), whereas all eight replacements have residues (6,6,7), and the full pairwords disagree at t1 and t2.
+
+## Positive nonpalindromic family through 20,000 steps
+During steps t0..t3 the rooted 39-column exterior is unaffected by packets and has an odd pair coefficient at position 0,1,0,4 respectively. Every integer in the family is therefore nonpalindromic at those times. For t>=4, all variants follow the same ordinary integer orbit. For q=300 and M=25, independently executed ordinary decimal digit-vector and GMP-bigint reverse-and-add agree on the entire decimal numeral at every t=0,...,20,000. They establish no palindromes in any of these 20,001 states. Every step also has the exact same phase-8 exterior with 39 fixed columns (at least one odd coefficient) and 60 complete spatial-period-20 blocks as at the corresponding t=0..7 phase. A representative 25-packet variant is checked to have exactly the same pairword at t3 and integer at t4. Common baseline: 12,079 initial digits; 22,079 final digits; 10,000 overflows; final FNV-1a64 of low-first digits 428a1997ea0c9256.
+
+The Python checker exhausts 729/729 combinations for q=65,M=3 and independently tests 36 patterns by actual Python arbitrary-precision reverse-and-add with separate digit-array arithmetic. It checks all eight finite local tables and the non-9 guards. This is an additional control to the C++/GMP 20,000-step run.
+
+## Reproduction and limits
+Run sh calculation/new_structures/agent-W13/run.sh from a checkout (Python 3, C++17, GMP). The run script executes all checkers and verifies its expected data. The complete sources are calculation/new_structures/agent-W13/three_step_eraser.py and replay20k.cpp.
+
+A finite coalescence theorem plus a 20,000-step base-10 orbit does NOT imply an infinite Lychrel certificate. The charged packet is erased, not regenerated. A genuinely infinite construction still needs a finite recurrent source that restores or replaces the exterior's consumed bandwidth. The promising next direction is a timed repeatable defect-emission interface synchronized to the lattice overflow clock.
