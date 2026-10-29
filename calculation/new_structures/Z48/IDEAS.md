@@ -1,0 +1,1 @@
+REDIRECT: phase-0 rooted p12/m9 U=(10,9,8), |J|=3–4 is independently exhausted at (q,k)=(14,100) for odd C=[0,0,0] and even C=[8,8]; do not repeat this cell, and redirect effort to |J|>=5, other phases/U words, or moving/growing seams.
