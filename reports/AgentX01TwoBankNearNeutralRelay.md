@@ -1,0 +1,13 @@
+# X01 six-step near-neutral two-bank carry relay
+
+**COMPUTED**, exact scope k in {30,80,200,1000} at the steps specified below. No Lean proof and no infinite decimal Lychrel construction.
+
+Construct the LSD-first folded pair coefficients H_0(k)=[9]++[14]^k++[5,5]++[4]^k++[13], and pairword P_0=H_0++reverse(H_0). Every pair coefficient lies in 0..18. To obtain a genuine positive decimal integer with precisely this pairword, split each half coefficient z as low digit max(0,z-9), high counterpart z-low, and reflect the high list to the other half; final high leading coefficient 13 gives nonzero most-significant digit. This is the same exact physical reconstruction technique used by N19 but a **new exterior, two-cell junction and two distinct bulk phases**.
+
+Apply the ordinary pairword map: normalize P by decimal carries (including possible leading overflow), then replace the resulting actual digit string d by d_i+d_(n-1-i). At t=0 and t=6, the folded half retains successive large 14 and 4 runs. Direct computation yields **lengths (k,k) at t=0 and (k-1,k) at t=6**, at the verified four k values, with k=200 run locations (14,start=1,length=200) and (4,start=203,length=200) becoming (14,start=5,length=199) and (4,start=205,length=200). Number length grows 808->811. The 4 reservoir has zero six-step consumption and the 14 reservoir consumes only one, outperforming N19's original (8,16) example's (-5,-2) finite six-step resource budget.
+
+The core does NOT regenerate. At t=12 the respective bulk lengths are (k-6,k-3), t=60 for k=200 they are (162,182), and by t=480 the left long 14 band has vanished while a 4-run of length 42 remains. Thus repeating the first six-step resource increment is unsound; a true certificate would require a centre rewrite that returns to the original boundary signature, not merely the original bulk labels.
+
+The independent check in relay_six.py uses two separate arithmetic paths on every state: (i) coefficient-list carry normalization to construct the predicted next pairword and (ii) actual arbitrary-precision Python integers with decimal reversal, recomputing the *full* pairword from decimal digits. It checks equality, decimal nonpalindromicity, and an odd pair-coefficient witness at every t. For k=30/80/200/1000 the checked horizons are 90/240/500/500 steps; minimum odd pairs over each checked orbit is 1. All complete checks passed. The reported number-length triples for k=200 are n0=808,n6=811,n12=813.
+
+Reproduce: python3 calculation/new_structures/agent-X01/relay_six.py. Compact machine-readable controls are under relay_six.json. This is a new computed near-neutral transfer mechanism only, **not** a proof for every k, not an infinite orbit, and not an exclusion result.
