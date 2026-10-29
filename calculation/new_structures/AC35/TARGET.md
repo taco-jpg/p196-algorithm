@@ -1,0 +1,1 @@
+AC35 target (UNDECIDED): rooted decimal phase=2 p12/m9 B2/W2; J length six with J[0]=0; U one of 30 charge-zero U3 rotations; C fixed to [4,4] or [4,14,4]. Exact positive goal: for all q,k beyond verified bounds, 120 genuine decimal reverse-add steps return P(q,k) to P(q,k+5) with identical J/C and nonpalindrome guard. Reference test: q=14,k=100. No witness is claimed.
