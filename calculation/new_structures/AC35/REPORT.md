@@ -1,13 +1,14 @@
-# AC35 phase-2 J6 / J0=0
+# AC35 rooted phase-2 p12/m9 length-six junction census
 
-**COMPUTED, restricted endpoint census; no decimal Lychrel certificate.** Phase-2 rooted B2/W2, q14/k100, J=(0,j1,...,j5), U3 rotations, 120 genuine reverse-add steps, endpoint P(14,105). No strict intermediate W9 pruning.
+**Label: COMPUTED** exact reference-width enumeration; **PAPER PROOF** sound all-width extension through `results/AgentAC35AllPhaseRootedCut.md` and odd-centre mod-11. **No decimal Lychrel certificate.**
 
-Even C=(4,4), U=(9,0,18): all 19^5=2,476,099 J tails scanned; 0 W9-prefix restorations and 0 whole returns, all 30 overflows.
+LSD-first symmetric coefficient template P=H++C++reverse(H), H=B2++W2^q++J++U^k. Here q=14,k=100, |J|=6, U ranges over all 30 charge-zero length-three rotations; the required endpoint after 120 true decimal reverse-add steps is P(14,105). No strict-intermediate-W9 MDD was used, because endpoint healing is allowed.
 
-Odd C=(4,14,4): an all-width literal return requires A(U)=A(C)=5 and A(J)=3 modulo 11 (alternating sums), by the odd-centre mod-11 gate. Only U zero-based ranks 0 and 28 are eligible; for J0=0 exactly 225,077 tails per U satisfy the J gate. Both complete 225,077-tail physical 120-step scans (450,154 total) give 0 W9-prefix restorations and 0 returns. This does NOT claim fixed-reference-width failure for mod-11-rejected cases.
+**Complete fixed odd-centre C=[4,14,4] no-go.** For independent all-width fixed-J/C return, the parity-correct mod-11 test requires A(U)=A(C)=5 (mod11), A(J)=3 (mod11), with A(X)=sum(-1)^i X[i]. Exactly U zero-based ranks 0 and 28 (9,0,18 and 18,0,9) pass the first condition; the second accepts exactly 4,276,882 of 19^6=47,045,881 J words per U, independently confirmed by residue digit DP. Exhaustive true-decimal physical 120-step replay on **all 8,553,764 eligible J/U** finds zero B2++W2^14 prefix restorations (160 coefficients) and zero exact returns. Every trajectory has +30 digits. First mismatch index 135..153, before J. Thus all stationary J length6 / all 30 U are excluded for THIS fixed odd centre under the all-width return requirement, using the independently established phase-2 T12 reference reduction. This excludes neither other C nor moving seams.
 
-Reproduce: compile census.cpp with g++ -O3 -std=c++17 -fopenmp. Run census for arguments (Urank,J0,Ctype,limit,q,k,oddgate) = (0,0,0,2476099,14,100,0), (0,0,1,2476099,14,100,1), (28,0,1,2476099,14,100,1).
+Reproduce: compile `calculation/new_structures/AC35/census.cpp` with `g++ -O3 -std=c++17 -fopenmp` and run `for j in $(seq 0 18); do ./census 0 "$j" 1 2476099 14 100 1; ./census 28 "$j" 1 2476099 14 100 1; done`. The final 1 is a sound **all-width odd-C** mod-11 gate, NOT a fixed-reference-width rejection for unexamined tails. Each of 38 runs enumerates 19^5=2,476,099 J tails. The combined first-mismatch histogram, for 8,553,764 actual computed trajectories, is:
+`135:176753 136:1388654 137:3775180 138:2442234 139:470945 140:257902 141:19374 142:18893 144:3270 145:225 146:197 147:116 148:9 149:10 153:2`. Sum exactly 8,553,764.
 
-Independent controls: Python bigint reverse-add vs separate LSD-first digit-array exact at all 120 steps for 7 J x3 U x2 centres x5 widths (25,200 steps). Best odd candidates J=[0,3,7,16,5,12], U=(9,0,18) and J=[0,0,5,16,2,10], U=(18,0,9) were checked at q20,40,80,160 as well; first mismatches remain W9 cut minus 11/14. Control gamma=(001000100010)^10.
+**Independent controls:** `python3 calculation/new_structures/AC35/verify_gate.py` checks 19 J0 residue counts and 38 genuine Python-bigint endpoints without sharing the C++ engine. Existing `verify.py` checks 25,200 ordinary decimal transitions by a separate schoolbook digit-array engine against Python bigint across five widths. Rooted phase2 gamma=(001000100010)^10.
 
-**Scope:** no all-time witness, no even-centre all-U result, no arbitrary-centre or moving seam no-go. The published T12 is phase-0; a phase-2 all-width lift is not assumed without proof. This is a partial negative cell only.
+**Partial even-centre result:** C=[4,4], U=(9,0,18), J0=0, all 19^5=2,476,099 tails unpruned, zero W9 returns. No mod-11 pruning was applied. Other even-C rotations/J0, arbitrary other C, moving seams, changing q or U, and all-time decimal existence remain UNDECIDED.
