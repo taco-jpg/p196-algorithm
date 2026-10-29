@@ -9,3 +9,4 @@
 - Reproduce: `bash calculation/new_structures/agent-X17/pump_renewal_reproduce.sh`; optional `DEEP=1` repeats the bigger Python 256-mask uniform test.
 - Source and checkpoints: `calculation/new_structures/agent-X17/{pump_fold.py,pump_gate.py,pump_partitions.cpp,pump_renewal_reproduce.sh,pump_left_108.csv,pump_gate_2001.csv,pump_partition_checkpoints.csv}`.
 - Exact scope, conditional certificate-format direction and limitations: `reports/AgentX17BranchingFoldedPump.md`.
+- Further 256-mask n3001/n3017 and n4001/n4017 controls: first failures t2426/t3253, no fold pump left by t2515/t3352; at most 4/5 classes; reproduce with `EXTRA=1`.

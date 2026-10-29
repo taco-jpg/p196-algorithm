@@ -46,3 +46,18 @@ print('PASS: two-branch t108 charge-controlled 09^8 / 00^8 pump across 256 masks
 print('PASS: C++ full 256-mask fold relation to collision, recorded failure bounds')
 PY
 if [ "${DEEP:-0}" = 1 ]; then python3 "$here/pump_fold.py" 2001 108 "$tmp/fold_2001.csv"; fi
+if [ "${EXTRA:-0}" = 1 ]; then
+  "$tmp/pump" 3001 2600 "$tmp/pump_3001.csv" 2> "$tmp/pump_3001.log"
+  "$tmp/pump" 4001 3450 "$tmp/pump_4001.csv" 2> "$tmp/pump_4001.log"
+  python3 - "$tmp" <<'PY'
+import csv,sys
+from pathlib import Path
+p=Path(sys.argv[1])
+for n,first,last,classes in [(3001,2426,2515,4),(4001,3253,3352,5)]:
+    with open(p/f'pump_{n}.csv',newline='') as f:rows=list(csv.DictReader(f))
+    assert next(int(r['t']) for r in rows if int(r['valid_masks'])<256)==first
+    assert next(int(r['t']) for r in rows if int(r['valid_masks'])==0)==last
+    assert max(int(r['unique_cut_blocks']) for r in rows)==classes
+print('PASS: extra two lengths n3001/4001, 256 masks each, exact first/last pump collisions')
+PY
+fi
