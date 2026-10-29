@@ -1,2 +1,4 @@
 # AC03 notes
 Read current AGENTS, OPEN_PROBLEMS, FOCUS_SWARM, CELL_LEDGER, the N audits and R30 verifier; claimed in #476. Tested over 25 discrete shell/API steps. Built local exact pairword recurrence, physical independent Python integer oracle, and universal coefficient-mask ports. Cut 280+t forced for all t<120, all 24 cells; clock (1000)^30. Exhausted 596,733 length7/8 U,C combinations with zero centre-window matches; 72 stratified controls were checked against the full schoolbook physical pairword engine at each step. Bigint controls at five widths. False abstract results were discarded. Lengths9..14 not decided. No infinity claim.
+
+Second result: centre lengths9 and10 completed across all U; total C7..10=11,934,660. All junction words of every length 0..50 have same forced 120-bit clock and incoming centre port for all C lengths7..14, established by 1,224 sound coefficient-mask domains. Python bigint arbitrary-J controls: 792. Lengths11..14 still undecided.
