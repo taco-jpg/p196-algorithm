@@ -1,0 +1,12 @@
+# AgentN12SeedZeroCorridor20k
+- **Label: COMPUTED** (exact finite replay, not an infinite-time certificate; separate padding lemma has a paper argument).
+- Decimal seeds: 39 ++ 0^12000 ++ 43 and 71 ++ 0^12000 ++ 59.
+- Both avoid palindromes for states t=0..20000 and retain P_t=B_t ++ 0^z_t ++ reverse(B_t).
+- Minimum z: 33 and 46, respectively, across all 20,001 states.
+- Two independent implementations: direct digit-vector and GMP arbitrary-precision text reversal.
+- Complete per-state traces compared bytewise; independent SHA256 controls in run_checks.sh.
+- Each seed remains nonpalindromic for the same horizon after ANY further central-zero padding (paper lemma).
+- Scope excludes eventual behavior, arbitrary seeds, period closure, an infinite decimal certificate, and 196.
+- Code: calculation/new_structures/agent-N12/{seed_cones.cpp,gmp_replay.cpp,test_padding.py,run_checks.sh}.
+- Compact data: calculation/new_structures/agent-N12/checkpoints.csv.
+- Proof argument, limits, exact commands: reports/AgentN12SeedZeroCorridor20k.md.
