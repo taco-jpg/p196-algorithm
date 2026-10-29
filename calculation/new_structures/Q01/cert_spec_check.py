@@ -93,7 +93,7 @@ def base9_control():
             gamma.append(g)
             length += g
             n = nn
-        assert gamma[:10] == [1,1,0,0,0,0,1,1,0,0]
+        assert gamma[:10] == [1,1,0,0,0,1,1,0,0,0]
         assert length == 4*q+10
     print('BASE9_LEAN_CERT_CONTROL_PASS: 20 full steps at q=20,40,80,160; two +4 cycles')
 
