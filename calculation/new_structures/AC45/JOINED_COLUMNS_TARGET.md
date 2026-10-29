@@ -1,0 +1,2 @@
+# AC45 joined-column target (UNDECIDED)
+Construct an exact 120-temporal-layer, unbounded-spatial, physically joined carry+gamma-lag NFA for the phase-0 rooted W9^14 J U^100 C mirror-source and the identical marked W9^14 J U^105 C target, with free J, palindrome C, and both C parities. Determine emptiness, then invoke T12 if and only if its hypotheses hold. The attached tool supplies the exact joined n=1..4 local building block; it does not determine the free-J/C language.
