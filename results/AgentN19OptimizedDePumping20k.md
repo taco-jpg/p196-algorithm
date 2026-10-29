@@ -1,0 +1,8 @@
+# Agent N19: constructive shorter and bidirectionally pumpable decimal 20k family
+- **PAPER PROOF (conditional on finite reproducible checks):** For EVERY k>=13314, decimal seed `9 8^k 59 9^k 80 7^k 20 0^k 1` avoids palindrome for all 0<=t<=20000, with exact two ordered clocked pairword bulk runs >=100 and unchanged exterior/junction words under increasing k.
+- New bidirectional finite-monoid de-pumping: the 40-state Boolean matrices of the 12 clock/gamma physical columns satisfy `M²=M`; removing 1,686 cells per bulk from previously certified k=15000 preserves all 20,000 exact edges, with aligned overlap minima 134/100.
+- **COMPUTED:** shorter k=13314 seed has 53,264 digits; after 20,000 steps it has 61,497 digits, bulk lengths 134/100 and junction width 13,183. Entire independent GMP and direct digit-vector 20,001-row trace agree; SHA256 `0992a0a6c9922c58ef7ce696b8496227974ac01eec066289ca41d8019c5a40fe`.
+- Adjacent positive-witness boundary control: k=13313 fails the specified 100-cell **shape** threshold at t=19999 (NOT a claim of palindrome or a no-go for any other construction).
+- Reproduce: `bash calculation/new_structures/agent-N19/run_optimized.sh`; independent source in earlier N19 commits plus this exact script and compact checkpoints `calculation/new_structures/agent-N19/optimized_checkpoints.csv`.
+- Full proof and precise limitations: `reports/AgentN19OptimizedDePumping20k.md`.
+- **UNDECIDED:** no infinite-time Lychrel certificate, no Lean proof, no claim about 196.
