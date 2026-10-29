@@ -1,0 +1,7 @@
+# U43 running notes
+
+- 2026-10-29 UTC / 2026-10-28 PDT: registered the verified-simulator route in issue #475 (comment 6490139422). Read the repository owner directive and OPEN_PROBLEMS.md, the T* specification in docs/FOCUS_SWARM.md, AUDIT_N.md, AUDIT_Nseries.md, FORMATS.md, the recent FEED lines in #475, and the read-only #474 history relevant to the W9/U3 clock.
+- Implemented a C++ digit-vector trace engine for the concrete rooted p12/m9 template family. The trace includes exact decimal digits and lossless full pairword encoding at every phase, plus overflow-clock and epoch-return checks. Added an independent Python-bigint state-by-state cross-check.
+- g++ -O3 -std=c++17 -Wall -Wextra -Werror succeeds. test_controls.sh passes for four control shapes at (q,k)=(20,20),(40,40),(80,80),(160,160) through 240 steps, plus a rotated-U case at k=2q. Every intermediate decimal digit string and pairword agrees exactly between C++ digit-vector arithmetic and Python unbounded-integer arithmetic; all 240 overflow bits in these controls match the phase-0 clock. These are simulator controls only, not candidate returns or an existence claim.
+- The R30 control cross-check agrees at q/k 20/40/80/160 on return status, first mismatch, length, and overflow clock; its symbolic checker output is also exercised. All 30 cyclic U rotations pass the validator and a one-step differential smoke test.
+- No seam-repair hypothesis was tested by this route. No results/ note or ALERT is warranted. The all-width seam-return lemma remains open.
