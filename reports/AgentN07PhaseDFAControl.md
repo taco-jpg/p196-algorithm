@@ -1,0 +1,23 @@
+# N07 phase-indexed regular-invariant compiler: positive base-9 control
+
+**PAPER PROOF (the certificate-format soundness); COMPUTED (exhaustive finite product reachability).** This is a constructive *control for the newly proposed folded-DFA format*, using the already established base-9 absorbing-lattice instance. It is NOT a new base-9 Lychrel result and claims nothing for base 10. The novel contribution is a working all-length DFA compiler/checker that accepts an infinite set of band widths and temporal phases, with no arbitrary width cutoff or hidden SAT bound, and returns to its initial language with length growth.
+
+## Construction
+
+Take the tracked `calculation/decimal_frontier/lattice_formats/cert_b9_rec0.json`, with base 9, 10 time phases, exterior words `B_t` of width 61, spatial lattice words `W_t` of length 4, and overflow word `1100011000`. Set minimum band lengths in order to `10,11,12,12,12,12,13,14,14,14`. At phase t, the accepted pair-coefficient half-words are exactly
+
+`B_t ++ W_t[:floor(l/2)]`, for `l=lmin_t+4*k`, `k>=0`, with the periodically extended W. For even l the source has no central digit; for odd l the central coefficient `W_t[floor(l/2)%4]` must equal twice the central digit. The full pair-coefficient word is `B_t ++ W_t[:l] ++ reverse(B_t)`. Each such full word is symmetric about its midpoint (verified by finite period-4 congruence checks); the centre condition is part of each accepting state. Every B_t contains at least one odd coefficient, furnishing a guaranteed nonpalindrome witness, and an accepted seed exists at l=10.
+
+Each phase compiler consists of a deterministic prefix path spelling its B_t and a four-state periodic W tail, plus a small threshold counter before tail acceptance begins; it accepts *all* `k>=0` rather than checking a finite list. At the end of phase 9, the overflow schedule has added four band coefficients and returns to phase 0 with k increased by 1. This is precisely the length-pumping feature needed for an unbounded certificate.
+
+## Exact finite-state check
+
+The `b9_phase_control.py` checker runs the two-sided folded carry relation of `AgentN07FoldedRegularSafety` with input and output phase DFAs. For gamma=1, the successor high digit at folded position i is the *previous* high digit; the checker tracks this explicitly. It guesses the inward high carry and enforces the centre carry boundary for both parities. Any target-language mismatch goes to an absorbing error state rather than being silently dropped. A product-state search decides whether **any word of any length** in the phase source language transitions outside the next phase language. All ten exact checks finish with no counterexample. Visited product-state counts by phase are `[140,141,142,142,142,142,143,144,144,144]` with no search cap.
+
+Independent arithmetic controls reconstruct the full source pairwords for seven band lengths `10+4*k`, k=0..6, at each of the ten phases (70 phase edges). They create canonical ordinary base-9 digits and compare both a separate grade-school digit-list reverse-add and Python arbitrary-precision integer reverse-add. Every one-step output agrees with the next exact target template, including centre, digit-length increase and every pair coefficient. These 70 controls are *illustrative finite tests*; the unbounded closure follows instead from the finite automaton product-BFS.
+
+## Scope, reproduction, and next direction
+
+Run `bash calculation/new_structures/agent-N07/b9_phase_reproduce.sh` from a clean repository checkout. It requires Python 3 only, uses the already committed base-9 input JSON (not a hidden copied fixture), and compares exact state counts with tracked expected data. The mathematical infinite base-9 result is already established in Lean by `LatticeBand.Base9`; this additional DFA mechanism checks a much more flexible language format and supplies a non-vacuous positive control for future **decimal growing-centre regular invariants**. The relevant next candidate class is a phase-indexed language such as `B_t W_t* K_t*`, accepting arbitrarily large moving defect centres and checked under a target phase DFA, not forcing one short centre to return byte-for-byte.
+
+No Lean result, base-10 certificate, or decimal 196 Lychrel claim is made. Shell GitHub DNS/checkout prevents running the entire repository-wide `tools/verify.py --changed`; only the reproducible local check and connector direct-main push are claimed.
