@@ -3,7 +3,7 @@
 - **PAPER PROOF:** Once this pairword is known, its ordinary positive-integer predecessor fibre is exactly the product of independent complementary digit-split choices, subject only to leading-digit and odd-midpoint restrictions.
 - **COMPUTED:** For decimal q=300, the 2^600 distinct split choices at two coefficient-1 sites per period-20 block in P=B++W^300++reverse(W^300) all merge after ONE reverse-and-add step; the canonical source has 12,078 digits.
 - Exact real-decimal digit replay for t=0..20,000: zero palindromes, all phase-8 39-coefficient caps correct, minimum 72 full phase-20 lattice copies, overflows 10,000, final 22,078 digits, FNV64 10989435956851471335.
-- Independent Python big-integer control: 400 steps; separate inverse decoder reconstructs the exact width-22,078 predecessor pairword from the 20,000th integer and matches independently recorded FNV64.
+- Independent GMP big-integer control: ALL 20,000 steps, independently matching checksum, overflows and band counts; Python big-integer control: 400 steps; separate inverse decoder reconstructs the exact width-22,078 predecessor pairword from the 20,000th integer and matches independently recorded FNV64.
 - Inverse decoder regressions: source integers 1..9,999 exhaustive, 2,040 random target/width tests. Exact commands and full code under calculation/new_structures/agent-W07/: sh calculation/new_structures/agent-W07/run.sh.
 - **UNDECIDED:** any infinite base-10 nonpalindromic orbit, any Lychrel certificate, any claim about 196. This is a 20,000-step family at one q plus a general inverse-fibre theorem; no unproved all-q claim.
 - Longer technical proof and limitations: reports/AgentW07ReverseFibre20k.md.
