@@ -1,0 +1,54 @@
+{
+ "F1Semigroup": {
+  "id": "f1-semigroup",
+  "title": "First-coordinate F1 filter: relation semigroup (434 states), minimal 241-state DFA, order-10 recurrence, power closure",
+  "scope": "LEAN-VERIFIED statements about the first-coordinate NFA filter of EXTERIOR.md 2.1 for base 10 (the 'F1' of the Agent9 and Agent12 results; NOT the OPEN_PROBLEMS task F1 'new formats'): LangB_iff (the relation automaton accepts exactly the walk specification), reachable_relations_434 (exactly 434 distinct reachable relation states), minimal_dfa_241_spec (a 241-state DFA exists, every DFA for the language needs at least 241 states, 104 accepting), recurrence_n and initial_values (the recurrence for the number of accepted words of length n for n >= 10 and a(0..9)), power_closure (membership of w^k iff membership of w), nilpotency_histogram [1,251,4,1,1]. Not in Lean: Hankel minimality, Burnside necklace formulas, CSV counts. This is a weak necessary filter on overflow words; it does not move toward a decimal Lychrel certificate.",
+  "roots": [
+   "P196.F1Semigroup.F1Distinct",
+   "P196.F1Semigroup.F1Recurrence",
+   "P196.F1Semigroup.F1PowerHist"
+  ],
+  "modules": [
+   "P196.F1Semigroup.F1Core",
+   "P196.F1Semigroup.F1Data",
+   "P196.F1Semigroup.F1Tables",
+   "P196.F1Semigroup.F1MinData",
+   "P196.F1Semigroup.F1MinDefs",
+   "P196.F1Semigroup.F1Cls",
+   "P196.F1Semigroup.F1Sep1",
+   "P196.F1Semigroup.F1Sep2",
+   "P196.F1Semigroup.F1Sep3",
+   "P196.F1Semigroup.F1Sep4",
+   "P196.F1Semigroup.F1MinDFA",
+   "P196.F1Semigroup.F1Distinct",
+   "P196.F1Semigroup.F1Recurrence",
+   "P196.F1Semigroup.F1PowerDefs",
+   "P196.F1Semigroup.F1PowerChk1",
+   "P196.F1Semigroup.F1PowerChk2",
+   "P196.F1Semigroup.F1Power",
+   "P196.F1Semigroup.F1PowerHist"
+  ],
+  "endpoints": [
+   "F1.LangB_iff",
+   "F1.reachable_relations_434",
+   "F1.minimal_dfa_241",
+   "F1.minimal_dfa_241_spec",
+   "F1.acc104",
+   "F1.recurrence",
+   "F1.recurrence_n",
+   "F1.initial_values",
+   "F1.nodup_allWords",
+   "F1.power_closure",
+   "F1.nilpotency_histogram"
+  ],
+  "origin": {
+   "registered": "2026-10-28",
+   "status": "Claude audit session; compiled and axiom-audited",
+   "source": [
+    "results/Agent9F1MinimalDFA.md",
+    "results/Agent9F1AllPeriodRecurrence.md",
+    "results/Agent9F1PowerClosure.md"
+   ]
+  }
+ }
+}
