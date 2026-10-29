@@ -1,0 +1,8 @@
+# AgentX07MirrorGaugeFibres
+
+- **PAPER PROOF:** In the protected repunit quotient format `N=(10^h-1)(10^m-A)`, the exact successor depends on `A` only through `rev_m(A)-A`. Simultaneous mirrored digit shifts with zero total change preserve this difference, yielding large exact one-step collisions.
+- For every `m=10+18k`, `g=floor((m/2-1)/2)`, an explicit `3^g`-member family of distinct palindromic digit-words A with charge 8 gives `3^g` distinct nonpalindromic **decimal** N that all reach the identical protected successor `(10^h-1)(10^m+1)` in one real reverse-add step, for every `h>=m+1`.
+- **PAPER PROOF:** Choosing `h>=m+T+1` makes all `3^g` orbits nonpalindromic for steps `0..T`, any finite T, since each scalar quotient length increases by at most one per step. No fixed-seed infinite certificate is claimed.
+- **COMPUTED:** Independent Python big integers check every one-step merge for `m=10` (9 seeds), `m=28` (729), and 1,000 of 177,147 at `m=46`; a charge-preserving nonmirrored mutation breaks coalescence.
+- **COMPUTED 20,001-step witness:** `N_0=(10^8278-1)*3555555554` (8,288 digits) has zero palindromes and exact agreement at **every** step among GMP integers, independent decimal schoolbook addition, and scalar quotient arithmetic. Final length 16,555; final quotient length 8,277, FNV64 whole-state `b9dfb58f06f5d298`. All nine `m=10` family seeds with this h share the checked suffix by exact one-step collapse.
+- Reproduce: `sh calculation/new_structures/agent-X07/gauge_run.sh`; sources `gauge_preimages.py`, `scalar_trace.cpp`, `gmp_replay.cpp`; data `gauge_counts.json`, `gauge_measurements.json`; proof/scope `reports/AgentX07MirrorGaugeFibres.md`. **Not** a Lean proof or infinite decimal Lychrel certificate.
