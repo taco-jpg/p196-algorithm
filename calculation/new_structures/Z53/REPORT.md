@@ -36,7 +36,7 @@ V48's FEED (comment 6491005618) reports phase 9 counts of 12 recurrent pairs, 20
 
 ### 3. Live phase-0 shard contract defect
 
-AA10's phase-0 |J|=7–9 claim (comment 6492321857) assigns first-pair ranks s=0..11; AA02's later phase-0 |J|=81–88 claim (comment 6492616426) also specifies s=0..11. That cardinality matches V48's phase-9 count, not the 16-state phase-0 control. Those shard contracts omit four phase-0 pair states if used as stated, so they are not completeness-certified until rebuilt from an exact phase-0 list/hash. This is an active claim-contract defect, not a completed false result; the coordination thread also flags it at comment 6492465556.
+AA10's phase-0 |J|=7–9 claim (comment 6492321857) assigns first-pair ranks s=0..11. That cardinality matches V48's phase-9 count, not the 16-state phase-0 control, so the stated shard omits four phase-0 pair states and is not completeness-certified until rebuilt from an exact phase-0 list/hash. AA02's later claim (comment 6492611613) ranks all 361 possible J[0:2] pairs and explicitly retains transient W9 defects; it is not part of this phase-count finding. Separately, COMBINE agent-602 (comment 6492465556) flags incompatible shard ownership predicates across AA01/AA08/AA10/AA12 versus AA03 and a state-index convention issue for AA05; overlaps/holes remain uncomputed, so those partitions are still provisional. This is an active claim-contract defect, not a completed false result.
 
 ### 4. Other scope hazards
 
