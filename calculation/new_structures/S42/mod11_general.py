@@ -143,6 +143,47 @@ def check_general_formula():
     print(f"GENERAL_FORMULA_PASS cases={cases}")
 
 
+
+def progression_bracket(J, U, C, k):
+    """Mod-11 bracket after removing the irrelevant factor (-1)^q."""
+    if len(U) % 2:
+        return 2*alt(J) + (-1)**len(J)*(2*(k % 2)*alt(U) + (-1)**k*alt(C))
+    return 2*alt(J) + (-1)**len(J)*(2*k*alt(U) + alt(C))
+
+
+def progression_gate(J, U, C, k0, delta):
+    """Exact all-n condition on the reachable progression k=k0+delta*n."""
+    if len(C) % 2 == 0:
+        return True
+    if len(U) % 2:
+        if delta % 2:
+            return (alt(U)-alt(C)) % 11 == 0 and (2*alt(J)+(-1)**len(J)*alt(C)) % 11 == 0
+        return progression_bracket(J,U,C,k0) % 11 == 0
+    base = progression_bracket(J,U,C,k0) % 11 == 0
+    slope = (2*delta*alt(U)) % 11 == 0
+    return base and slope
+
+
+def check_progression_gate():
+    """Check phase-indexed k progressions, including delta divisible by 11."""
+    alphabet = (0,2,9,11,18)
+    Jwords = [()] + [(x,) for x in alphabet]
+    Uwords = [(x,) for x in alphabet] + list(product(alphabet, repeat=2))
+    Codd = [(c,) for c in range(0,19,2)]
+    Codd += [(a,b,a) for a in alphabet for b in (0,2,18)]
+    checked = 0
+    for J in Jwords:
+        for U in Uwords:
+            for C in Codd:
+                for k0 in range(6):
+                    for delta in range(12):
+                        observed = all(progression_bracket(J,U,C,k0+delta*n) % 11 == 0 for n in range(11))
+                        predicted = progression_gate(J,U,C,k0,delta)
+                        assert observed == predicted, (J,U,C,k0,delta,observed,predicted)
+                        checked += 1
+    print(f"PROGRESSION_GATE_PASS cases={checked}; delta mod 11 and parity handled exactly")
+
+
 def check_bulk_and_real_orbits():
     rows = []
     u = A
@@ -207,4 +248,5 @@ def check_bulk_and_real_orbits():
 
 if __name__ == "__main__":
     check_general_formula()
+    check_progression_gate()
     check_bulk_and_real_orbits()
