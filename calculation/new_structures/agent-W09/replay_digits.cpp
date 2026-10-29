@@ -4,14 +4,16 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <string>
 using namespace std;
 using D=vector<uint8_t>;
-static const int L[]={7,12,16,10,7,4,12,8,15,13,17,1,17,18,16,3,5,0,2,12,18,10,1};
+static vector<int> L={7,12,16,10,7,4,12,8,15,13,17,1,17,18,16,3,5,0,2,12,18,10,1};
 static const int PH[]={8,16,14,10,2,4};
 D seed(int k){
  D a;for(int x:L)a.push_back(x/2);
  for(int i=0;i<2*k;i++)a.push_back(4);
- for(int i=22;i>=0;i--)a.push_back(L[i]-L[i]/2);
+ for(int i=int(L.size())-1;i>=0;i--)a.push_back(L[i]-L[i]/2);
  return a;
 }
 D step(const D &a){
@@ -32,6 +34,7 @@ uint64_t hash_lsd(const D &a){
 }
 int main(int argc,char**argv){
  int k=argc>1?atoi(argv[1]):22000,T=argc>2?atoi(argv[2]):20000;
+ if(argc>3){stringstream ss(argv[3]);string part;L.clear();while(getline(ss,part,','))if(!part.empty())L.push_back(stoi(part));if(L.empty()||L[0]<1)return 2;}
  D a=seed(k);int pal=0,bad=-1,minW=100000,maxGain=-100000;long long gam=0;
  for(int t=0;t<=T;t++){
   int w=width(a,PH[t%6]);minW=min(minW,w);maxGain=max(maxGain,w-2*k);
@@ -43,7 +46,7 @@ int main(int argc,char**argv){
   }
   pal+=ispal;
   if(t==0||t<=12||t==18||t==24||t==30||t==36||
-     t==100||t==1000||t==5000||t==10000||t==15000||t==20000)
+     (argc>3&&t==60)||t==100||t==1000||t==5000||t==10000||t==15000||t==20000)
     cout<<"t="<<t<<" digits="<<a.size()<<" width="<<w<<" gain="<<w-2*k
         <<" odd="<<odd<<" pal="<<ispal<<" overflow="<<gam
         <<" fnv="<<hex<<hash_lsd(a)<<dec<<"\n";
