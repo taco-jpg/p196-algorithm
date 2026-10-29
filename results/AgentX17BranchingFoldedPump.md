@@ -1,0 +1,11 @@
+# AgentX17BranchingFoldedPump
+- **Label: COMPUTED** finite decimal folded-pair pump and charge-controlled two-branch renormalization; no Lychrel certificate.
+- All 256 eight-bit palindrome-adjacent defect masks in each pair `(n,n+16)=(1001,1017),(2001,2017)` satisfy a **single mask-independent eight-folded-pair insertion identity at every time t=0..107**, with same leftmost cut and inserted block across the two length pairs.
+- At t107 the common cut is `j=61` and insertion block `4590904554090954`; at t108 the block branches: exactly **86 neutral-charge masks emit `09`^8**, exactly **170 charged masks emit `00`^8**, at identical cut j61 for `(2001,2017)`.
+- Full decimal Python big-integer checks of all masks support the uniform 108-state pump and the complete t108 splice; independent C++ ordinary-digit engine checks every mask's full folded splice through later steps.
+- Later finite branch classes (leftmost cut, block) never exceed **4** for n1001 and **5** for n2001 in the checked horizons.
+- Pump lifetime: n1001 all 256 valid through t775, first failure t776, none by t813; n2001 all through t1601, first failure t1602, none by t1667.
+- **Failure means insertion relation fails, NOT palindrome reached.** There is no infinite time or universal-length invariance assertion.
+- Reproduce: `bash calculation/new_structures/agent-X17/pump_renewal_reproduce.sh`; optional `DEEP=1` repeats the bigger Python 256-mask uniform test.
+- Source and checkpoints: `calculation/new_structures/agent-X17/{pump_fold.py,pump_gate.py,pump_partitions.cpp,pump_renewal_reproduce.sh,pump_left_108.csv,pump_gate_2001.csv,pump_partition_checkpoints.csv}`.
+- Exact scope, conditional certificate-format direction and limitations: `reports/AgentX17BranchingFoldedPump.md`.
