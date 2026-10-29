@@ -33,7 +33,7 @@ def check():
         P=[r.randrange(19) for _ in range(L)]
         P[0]=r.randrange(1,19)
         mid=[r.randrange(19) for _ in range(r.randrange(2,40))]
-        full=P+mid+P[::-1]
+        full=P+mid+mid[::-1]+P[::-1]
         if len(full)%2 and full[len(full)//2]%2:continue
         result=step_cone(P)
         if result is None:continue
