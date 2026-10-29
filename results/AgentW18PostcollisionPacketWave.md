@@ -1,0 +1,7 @@
+# AgentW18PostcollisionPacketWave
+**COMPUTED.** Three genuine decimal orbits `N0(Q)=5(99)^Q4`, Q=4138,4139,4140, independently replayed with explicit whole-decimal digit carries for 25,000 steps, have no palindrome and retain a localized *difference packet* even after Q4138's central 9 band vanishes.
+For Q4138 versus Q4139, the exact single `99` insertion persists through t20005, and at t20006 first becomes `1 -> 892` (least-significant first), a new growing centre substitution. Q4139 versus Q4140 repeats the exact same first substitution at t20010; Q4140 versus Q4141 at t20014.
+At t25000 Q4138 has 18,644 decimal digits; adjacent Q4139 difference is a 3853 -> 3855 digit replacement, with **7395 identical low and 7396 identical high digits** (about 79.3% of Q4138 unchanged). All three states are nonpalindromic in every sampled step.
+A 40-adjacent-level clock Q4138..4177 gives first-substitution delays 3..8, NOT a fixed four-step cycle; raw finite ledger and exact code committed. Independent radix1e9 full-integer reverse/add agrees on Q4138 final hash 704483961 (mod 1000000007).
+This is a measured *finite* postcollision two-front mechanism, not a stationary glider, uniform forever-safe certificate, or proof that it remains localized indefinitely.
+Reproduce: `bash calculation/new_structures/agent-W18/reproduce_seam.sh`; code/data under `calculation/new_structures/agent-W18/`; report `reports/AgentW18PostcollisionPacketWave.md`.
