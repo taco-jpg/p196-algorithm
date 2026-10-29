@@ -1,0 +1,2 @@
+# Exact target (UNDECIDED)
+Decide whether there exist arbitrary finite J, one of the 30 charge-zero U3 rotations, and a physically realizable palindromic C (both parities), such that rooted p12/m9 P(14,100;J,U,C) maps after exactly 120 *genuine decimal* reverse-and-add steps to identical P(14,105;J,U,C), with every phase and carry port physical. No strict-W9 preservation requirement at intermediate steps. This is the reference-width lemma feeding the T12 all-width lift.
