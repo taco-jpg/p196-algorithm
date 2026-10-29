@@ -1,0 +1,9 @@
+# AgentW30PhysicalTwoSheetReset
+**COMPUTED:** The physically realized base-10 W30 overflow word induces a **minimal rank-two reset** of the entire 360-state period-five mirror-compatible centre language: rank 32 at t=20 (fixed by `1010101010`), then rank **2 for the first time at t=27,390** after an exact 680-bit clock-switch word.
+The two rows at t=27,390 are `(6,7,8,8,7)` and `(12,11,10,10,11)`, componentwise 18-complements. Their distinction is preserved by *every future binary overflow word* within the closed 1,800-state carry-fibre graph.
+**PAPER PROOF (conditional local identity):** `F_gamma(18-r)=18-F_gamma(r)`, with incoming carry fibres `c -> 1-c`; no reachable row equals its own 18-complement, so rank 2 is optimal for any nonempty complement-closed language.
+A compact independently checked finite witness contains 32 pre-switch rows, a ten-bit lasso, and the exact 680-bit reset word; an independent 12-lap carry engine verifies each intermediate image and the rank-two endpoint.
+**COMPUTED supporting boundary data:** same rooted pairword runs through t=85,000 with an odd coefficient at every state; midpoint first deviates from the continuing hypothetical five-period row at t=53,164. Independent *whole-integer* replay is verified through t=50,473 in the preceding W30 result, **not** through t=85,000.
+**Not claimed:** a physically protected infinite band, an all-time palindrome-excluding two-sheet certificate, a new decimal Lychrel number, or Lean verification.
+Code/data: `calculation/new_structures/agent-W30/{extract_gamma.cpp,sync_physical.py,reset_checker.py,adaptive_windows.cpp,run_sync.sh,run_reset.sh,sync_physical.json,front_contacts.json}`.
+Proof and reproduction: `reports/AgentW30PhysicalTwoSheetReset.md`; run `sh calculation/new_structures/agent-W30/run_sync.sh` for the compact reset; optional 85k boundary replay `sh calculation/new_structures/agent-W30/run_reset.sh`.
