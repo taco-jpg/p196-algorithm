@@ -21,7 +21,7 @@ static const int vv[]={17,3,14,3,17};
 [[noreturn]] void bad(string s){cerr<<"FAILED: "<<s<<"\n";exit(2);}
 Word make_P(int q,int k){Word L;for(int v:bb)L.push_back(v);for(int r=0;r<q;r++)for(int v:ww)L.push_back(v);Word P=L;for(int r=0;r<2*k;r++)for(int v:vv)P.push_back(v);for(auto it=L.rbegin();it!=L.rend();it++)P.push_back(*it);return P;}
 Word realize(Word const &P){int n=P.size();if(n%2)bad("even-length required");Word d(n);for(int i=0;i<n/2;i++){int p=P[i];int low=max(0,p-9),high=p-low;d[i]=low;d[n-1-i]=high;}if(!d.back())bad("noncanonical seed");return d;}
-Word pairs(Word const &d){Word P(d.size());for(int i=0;i<d.size();i++)P[i]=d[i]+d[d.size()-1-i];return P;}
+Word pairs(Word const &d){Word P(d.size());for(size_t i=0;i<d.size();i++)P[i]=d[i]+d[d.size()-1-i];return P;}
 // independent exact pairword stepping; input P is palindromic by construction
 pair<Word,int> pair_step(Word const &P){Word d;d.reserve(P.size()+1);int carry=0;for(int v:P){int s=v+carry;d.push_back(s%10);carry=s/10;}if(carry)d.push_back(carry);return {pairs(d),carry};}
 // independent ordinary decimal digit-addition, unlike pair_step no pair coefficients used
@@ -46,7 +46,9 @@ bool enough=(idx+T+3<end-T/2-3);
 bool enough=(idx+T+3<end-T-3);
 
 #endif
-if(!enough)bad("empty guarded island");if(pairs(d)!=P)bad("seed realization");Big9 N(tostr(d));
+if(!enough)bad("empty guarded island");
+if(pairs(d)!=P)bad("seed realization");
+Big9 N(tostr(d));
 #ifdef W30_GMP
 mpz_class GMP_N(tostr(d),10);
 #endif
@@ -62,7 +64,9 @@ for(int t=0;t<=T;t++){
   int hi=end-t-2;
 
 #endif
-if(lo>=hi)bad("guard depleted");int mismatches=0,oddProtected=0;for(int j=lo;j<hi;j++){int expect=rows[t%40][(j-idx)%5];if(P[j]!=expect)mismatches++;if(P[j]%2)oddProtected++;}
+if(lo>=hi)bad("guard depleted");
+int mismatches=0,oddProtected=0;
+for(int j=lo;j<hi;j++){int expect=rows[t%40][(j-idx)%5];if(P[j]!=expect)mismatches++;if(P[j]%2)oddProtected++;}
   if(mismatches)bad("island carrier shape t="+to_string(t)+" bad="+to_string(mismatches));
   if(!oddProtected)bad("no guarded odd witness at t="+to_string(t));
   // Full arithmetic check: GMP big integer -> exact decimal string, compare ALL digits.
@@ -84,4 +88,5 @@ string g_str=GMP_N.get_str(10);reverse(g_str.begin(),g_str.end());mpz_class GR(g
   P.swap(nextP);d.swap(nextD);
 }
 cout<<"PASS "<<T<<" independent base-1e9 bigint and decimal-digit steps, phase-40 five-site carrier, full pairword every step, zero palindromes\n";
+return 0;
 }

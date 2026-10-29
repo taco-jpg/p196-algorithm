@@ -1,0 +1,9 @@
+# AgentW30AdaptiveCarryFibre50473
+**COMPUTED:** The first base-10 W30 five-site wave extends to an **arbitrary-overflow, 1,800-state closed carry-fibre component** in symmetric pairword space (one SCC, 3,600 exact labelled edges, no ambiguous carries).
+Both overflow labels are independently realized by true canonical decimal integers for **every state**, checking **298,800** interior coefficient equalities against Python's independent big-integer reverse-add; 190 states contain coefficient 9.
+The same explicit 54,078-digit W30 seed survives **50,473** independent full-integer, digit-array, and pairword additions without a palindrome (77,328 digits at the endpoint).
+All 2,001 central coefficients match the adaptively chosen five-period row in **every state t=0..50,472**, across the first exterior overflow-clock break at edge 26,710; the first window deviation is one coefficient at t=50,473.
+**Sound conditional mechanism:** two uniquely determined cyclic carry fibres give an exact one-step row map for any actual overflow bit, with a five-cell interior margin; closure does not require an alternating clock or a bounded centre.
+**Not claimed:** the 1,800-state system excludes palindrome states (510 rows have no odd coefficient), an indefinitely maintained central guard, a base-10 Lychrel certificate, or Lean verification.
+Code: `calculation/new_structures/agent-W30/{fibre_graph.py,test_adaptive_graph.py,adaptive_replay.cpp,run_adaptive.sh}`; compact data: `adaptive_graph1800.json`, `adaptive_50473.json`.
+Proof, boundary limitation, and reproducibility: `reports/AgentW30AdaptiveCarryFibre50473.md`; run `sh calculation/new_structures/agent-W30/run_adaptive.sh`.
