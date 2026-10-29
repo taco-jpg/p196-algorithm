@@ -21,13 +21,13 @@ To certify nonpalindromicity, let w_t be the smallest low-end index at which the
 
 ## Reproduction, independent checks
 From repository root:
-\`\`\`sh
+```sh
 cd calculation/new_structures/agent-X26
 g++ -O3 -std=c++17 -Wall -Wextra -Werror universal.cpp -o universal
 ./universal 22000 20000 257 > checkpoints-replay.tsv
 g++ -O3 -std=c++17 gmp.cpp -lgmpxx -lgmp -o gmp
 ./gmp 22000 20000 1000 > gmp-replay.tsv
-\`\`\`
+```
 The first code independently normalizes pair words and performs literal decimal digit-array arithmetic at **every** step, checks both 18 collars and the outer nonpalindrome witness at **every** step, and replays one deliberately nonuniform Thue-Morse 8/9 centre. GNU MP constructs actual ordinary big integers and performs 20,000 independent bigint reverse-and-add steps, checking palindromicity each time; its 21 checkpoints agree on length and FNV-1a-64 checksum with the digit-array Thue-Morse replay. No cryptographic guarantee is claimed for the checksum; the engines implement independent arithmetic and hash only for compact comparison.
 
 Summary: G_20000=8274; digits 44259 -> 52533; minimum L-t=2000; minimum ell=10275; max witness 25. The Thue-Morse example is a nonconstant {17,18}-coefficient initial centre in pairword form. Its earlier L=12000 experimental variant has 1851 coefficient-18 collars at t=20000 but is NOT the basis of the universal proof.
