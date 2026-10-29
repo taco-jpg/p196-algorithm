@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Independent integer-only proof checker, plus base9/base13 positive controls.
-Run from repository root: python3 calculation/decimal_frontier/lattice_formats/code/agent14_onebit_independent.py
-No Fraction, Sympy, linear solver, or primary source import.
+Run from repository root: python3 calculation/decimal_frontier/lattice_formats/hamming4/independent.py
+Independent rational-matrix checker; no primary source import.
 """
 import math,json,re
 from pathlib import Path

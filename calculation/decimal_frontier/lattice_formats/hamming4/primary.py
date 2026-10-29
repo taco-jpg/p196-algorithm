@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Complete all-base 1-carry-bit perturbation classification (p8/m20 rec0,rec1).
-Run from repo root: python3 calculation/decimal_frontier/lattice_formats/code/agent14_onebit_main.py
+"""Complete all-base 4-carry-bit perturbation classification (p8/m20 rec0,rec1).
+Run from repo root: python3 calculation/decimal_frontier/lattice_formats/hamming4/primary.py
 Only Python standard library.
 """
 import math,re
@@ -134,7 +134,7 @@ def _physical_exclusion(mask,source,A,B):
 from exception import contradiction
 import os
 def hamming4(name,source):
-    base=[carries(row) for row in source]
+    base=[cyclic_carries(row) for row in source]
     a=[list(z[0]) for z in base];d=[list(z[1]) for z in base]
     U0,V0=_coeff(a,d)
     impulse=[]
@@ -157,11 +157,11 @@ def hamming4(name,source):
                 return (U0[j]+sum(impulse[z][0][j] for z in mask),
                         V0[j]+sum(impulse[z][1][j] for z in mask))
             a0,b0=val(0);a1,b1=val(1)
-            if (a0*b1-a1*b0)%DEN:continue
+            if (a0*b1-a1*b0)%_D:continue
             counts[1]+=1
             r=_eq(a0,b0);s=_eq(a1,b1)
             if r is None or s is None:continue
-            r=combine(r,s)
+            r=crt(r,s)
             if r is None:continue
             counts[2]+=1
             A=[];B=[]
@@ -170,13 +170,13 @@ def hamming4(name,source):
                 if j>=2:
                     q=_eq(aa,bb)
                     if q is None:break
-                    r=combine(r,q)
+                    r=crt(r,q)
                     if r is None:break
                 A.append(aa);B.append(bb)
             else:
                 counts[3]+=1
                 if _physical_exclusion(mask,source,A,B):counts[4]+=1
-                elif contradiction(name,mask,A,B,source,DEN,carries):counts[4]+=1
+                elif contradiction(name,mask,A,B,source,_D,cyclic_carries):counts[4]+=1
                 else:raise AssertionError((name,mask))
         total=[x+y for x,y in zip(total,counts)]
         print('PRIMARY CHECKPOINT',name,i,*counts,flush=True)
