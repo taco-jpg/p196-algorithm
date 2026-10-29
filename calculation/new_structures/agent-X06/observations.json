@@ -1,0 +1,52 @@
+{
+  "label": "COMPUTED",
+  "base": 10,
+  "seed": {
+    "k": 500,
+    "format": "P=H ++ [9] ++ reverse(H), H=B ++ W^k ++ [9] ++ J(V)^k, J(x)=18-x",
+    "initial_decimal_digits": 68082
+  },
+  "run": {
+    "steps": 20000,
+    "states_checked": 20001,
+    "final_decimal_digits": 78082,
+    "palindromes": 0,
+    "length_overflow_clock": "10 repeated 10000 times",
+    "fnv1a_64_little_endian_digits": "3ffc4d850c4e3630",
+    "independent_checks": "full digit equality GMP mpz_class and decimal digit arrays; full pairword equality with prior GMP decimal number at all steps"
+  },
+  "protected_pairword_regions": [
+    {
+      "word": "W_t",
+      "spatial_period": 20,
+      "temporal_period": 8,
+      "start": 439,
+      "end_inclusive": 1438,
+      "copies": 50
+    },
+    {
+      "word": "J(V_t)",
+      "spatial_period": 48,
+      "temporal_period": 8,
+      "start": 25040,
+      "end_inclusive": 25999,
+      "copies": 20
+    }
+  ],
+  "bulk_random_controls": {
+    "draws": 9600,
+    "checked_absorbing": 9592,
+    "skipped_all_9_neutral": 8
+  },
+  "mixed_half_spin_control": {
+    "definition": "V^250 then J(V)^250 or vice versa without compensated wall",
+    "mismatches_against_piecewise_bulk_at_steps": {
+      "1000": 1425,
+      "5000": 7166,
+      "20000": 22642
+    },
+    "total_V_cells": 24000,
+    "note": "mismatch count includes free outer boundaries; this is finite failure of uncompensated piecewise bulk ansatz, not a no-go theorem"
+  },
+  "repository_verify": "not run: sandbox cannot resolve github.com for checkout; no Lean changes"
+}
