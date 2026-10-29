@@ -1,0 +1,6 @@
+# AgentX16NineStepNeutralPorts
+**COMPUTED (not all-width proved):** for every k=2..3000 in the decimal nonperiodic 17/14 Thue-Morse seed family, after nine genuine reverse-and-add steps, all coefficient-9 sites are at mirror positions 2 and n9-3, plus exactly the symmetric central pair (k+5,k+7) iff the six Thue-Morse bits at k-2..k+3 form `101100` or `001101`; n9=2k+13 and the nine overflow bits are 101010101. k=0,1 special cases recorded. 250 guarded exceptions for k=2..3000.
+COMPUTED 40 pseudorandom additional k in 3001..20000 with no counterexamples; every step cross-checked with independent digit-list arithmetic, nine integer-arithmetic edges each at 9 selected widths.
+The neutral 9-port count grows to O(k) in intermediate phases 6..8 but collapses again at phase9, suggesting a regular-index two-port return guard. No pairword-template return or infinite certificate has been proved.
+Report: `reports/AgentX16NineStepNeutralPorts.md`; code/data: `calculation/new_structures/agent-X16/neutral_ports_t9.py`, `neutral_ports_t9_data.json`.
+Reproduce: `python3 calculation/new_structures/agent-X16/neutral_ports_t9.py`.
