@@ -1,2 +1,3 @@
 - Rejected: the generic 2^5 fixed-carry reset-window corollary duplicates R25/T01. Redirect to the phase-indexed two-sided U3 carry-reset map and its 40-step screw rotation; do not spend a separate lane on the scalar amplification bound.
 - Do not transplant the unverified Q54 u=(sum 10^i U_i)/9 gate without reconciling its sign/normalization with the established A(P) expansion; derive phase equations directly from A(P) before combining them.
+- Do not test a fixed-J/C seam at the 40/80 checkpoints as if it were still a candidate: the exact mod-9 cocycle forces K=2sigma(J)+sigma(C) to advance +1 then +2 modulo 3, for either centre parity.

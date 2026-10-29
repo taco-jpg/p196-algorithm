@@ -10,3 +10,6 @@
 - Extended the screw-phase result with a phase-specific odd-centre mod-11 gate. Direct expansion of A(P) gives A(C_t)=A(U_t) and 2A(J_t)+(-1)^|J_t|A(U_t)=-2A(B_t), assuming both q/k parities occur and the root compatibility 2A(B_t)+A(W_t)=0 holds.
 - Exhaustively checked the mod-11 truth table over all 12 exterior phases, 30 U states, both J parities, and all residues A(J), A(C). At checkpoints 0/40/80 the required centre charges are always pairwise distinct; the J target is constant only in two recorded cases.
 - Scope guard: this is an odd-centre condition only. It does not rule out even-centre phases, and a 120-edge certificate may vary J/C at the 40/80 checkpoints.
+- Derived the all-centre mod-9 checkpoint cocycle. Since sigma(P_t)=2N_t (mod 9) and N advances by factor 2 mod 9, the 40/80-edge phase shifts force K40=7K0+4-3delta40 and K80=4K0+2-3delta80 mod 9 for K=2sigma(J)+sigma(C).
+- Exact root sums at phases 0/4/8 are B=(307,311,264), W=(60,60,60); every U3 word has sum 27. Therefore K must advance by +1 and +2 mod 3 at checkpoints 40/80, for odd and even centres alike.
+- This extends the endpoint-only mod-9 ledger: any fixed J/C or constant K seam is impossible across 0/40/80. The remaining search must implement the charge transport with actual carry-valid J_t/C_t words.

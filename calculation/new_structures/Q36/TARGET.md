@@ -1,16 +1,15 @@
-# Q36 target: phase-resolved odd-centre gate
+# Q36 target: mod-9 seam-charge phase cocycle
 
-Using the exact local U3 transfer in tstar_screw.py, prove the phase-specific
-mod-11 gate for every phase-indexed T* family with independently variable q/k
-parities and an odd palindromic centre:
-A(C_t)=A(U_t) and 2A(J_t)+(-1)^|J_t|A(U_t)=-2A(B_t) (mod 11), where
-A(X)=sum_i (-1)^i X_i and the p12 root satisfies 2A(B_t)+A(W_t)=0.
+For every phase-indexed T* family with q_t=q+delta_t, sigma(U_t)=27, and the
+rooted p12/m9 phase data, prove the all-width mod-9 constraint on
+K_t=2*sigma(J_t)+sigma(C_t):
+K_40 = 7*K_0+4-3*delta_40 and K_80 = 4*K_0+2-3*delta_80 (mod 9).
+Equivalently K_40=K_0+1 and K_80=K_0+2 (mod 3), regardless of centre parity.
 
-Combine the U3 screw phase U_(t+40)=rot_left(U_t,1) with exterior phases 0,4,8.
-The centre-charge requirements at t=0,40,80 must be pairwise distinct for
-every charge-zero U3 start. Check the complete finite state set and the
-modular parity equations exactly.
+The root sums at phases 0,4,8 are sigma(B) mod 9 = 1,5,3 and sigma(W) mod 9
+= 6,6,6. The U3 sum is 27, so q and k terms cancel from the phase differences.
+This phase cocycle supplements the odd-centre mod-11 gate and the U3 screw map.
 
-Remaining problem: find actual phase-indexed J_t/C_t words satisfying the
-required residues and all exact carry equations, or prove no such trajectory
-exists. Even-centre phases are not excluded by this mod-11 gate.
+Remaining problem: find actual J_t/C_t trajectories whose combined seam charge
+moves through the required residues while satisfying every exact carry edge and
+positive net growth. This does not establish a seam return or a Lychrel proof.
