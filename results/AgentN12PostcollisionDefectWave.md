@@ -1,0 +1,12 @@
+# AgentN12PostcollisionDefectWave
+- **Label: COMPUTED**; concrete base-10 growing postcollision defect, not a decimal Lychrel certificate.
+- Two seeds: 39 ++ 0^31000 ++ 43 and 39 ++ 0^31001 ++ 43; 60,000 transitions each, none palindromic.
+- Independent individual-decimal-digit and radix-10^9 big-integer engines match EVERY state trace for BOTH seeds.
+- Align by inserting one zero into the first trajectory at the central split; exact equality lasts through t=51464.
+- A two-position central defect first appears at t=51465; it persists at all 8,536 tested postcollision states.
+- At t=60000: 5,861 unequal digit positions, maximal centre-distance 3,239; central wave, not a bounded glider.
+- First 16 symmetric pair coefficients and first palindrome-mismatch index agree between trajectories at every t<=60000.
+- Full original/padded SHA256: 6e0a9285178df82218b6529e59bef201fa139e1bfc13640a5ef7579fdbce6854 / 2ea97b25748ebacfd9d798b01ab884bb9577060dd925adbd197ff7d31c0b6d8a.
+- Code: calculation/new_structures/agent-N12/{defect_tracker.cpp,run_defect_wave.sh}.
+- Compact samples: calculation/new_structures/agent-N12/defect_samples.csv.
+- Proof obligations and limitations: reports/AgentN12PostcollisionDefectWave.md.
