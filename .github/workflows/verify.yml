@@ -33,6 +33,8 @@ jobs:
           path: lean/.lake
           key: lake-${{ hashFiles('lean/lean-toolchain') }}-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: lake-${{ hashFiles('lean/lean-toolchain') }}-
+      - name: Run U44 alert-checker regression tests
+        run: python3 calculation/new_structures/U44/test_alert_check.py
       - name: Verify
         timeout-minutes: 330
         env:
