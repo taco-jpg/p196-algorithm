@@ -1,0 +1,3 @@
+# Q03 IDEAS (unpublished negative branches)
+- Single-mirrored-cell no-overflow gate cannot erase its complete next pairword in the rooted p8/m20 checked families (although it hides the first contact). Constraint: any non-overflow complete merger must coordinate at least one further interior change or subsequent phase, so do not assume first-contact invisibility means wall repair.
+- The overflow channel has abundant one-step coincidences (16 whole-successor merges in each 20-cell phase), matching earlier W06 observations; it does not preserve a defect indefinitely. Constraint: a regenerative claim must track a nonconsumed resource after the first apparent merger.
