@@ -36,7 +36,7 @@ struct Rank{
  bool add(vector<U>& row){int start=0;while(start<WORDS){while(start<WORDS&&!row[start])start++;if(start==WORDS)return false;int k=start*64+__builtin_ctzll(row[start]);auto &p=piv[k];if(p.empty()){p.assign(row.begin()+start,row.end());rank++;return true;}for(int j=start;j<WORDS;j++)row[j]^=p[j-start];reductions++;}return false;}
 };
 vector<U> histogram(const int P[],int *counts=nullptr){int a[N],d[N];carries(P,a,d);vector<U> row(WORDS);for(int j=0;j<N;j++){int mask=getmask(P,a,d,j);assert(allowed[mask]);int c=chord[mask];if(c>=0)row[c>>6]^=U(1)<<(c&63);if(counts)counts[j]=mask;}return row;}
-int source_main(int argc,char**argv){assert(argc==2);int passes=1;ofstream fout(argv[1],ios::binary);assert(fout.good());build();Rank R;int P[N],a[N],d[N];int accepted=0;auto start=chrono::steady_clock::now();
+void source_main(int argc,char**argv){assert(argc==2);int passes=1;ofstream fout(argv[1],ios::binary);assert(fout.good());build();Rank R;int P[N],a[N],d[N];int accepted=0;auto start=chrono::steady_clock::now();
  for(int rep=0;rep<passes&&R.rank<97216;rep++){
   for(int mask=0;mask<SPACE&&R.rank<97216;mask++)if(allowed[mask]){
    auto &w=witness[mask];for(int j=0;j<N;j++)P[j]=rep==0?0:int(random64()%19);
@@ -128,6 +128,6 @@ int image_main(int argc,char**argv){
 }
 int main(int argc,char**argv){
  assert(argc==4);int g=atoi(argv[1]);
- if(g==2){char *args[2]={argv[0],argv[3]};return source_main(2,args);}
+ if(g==2){char *args[2]={argv[0],argv[3]};source_main(2,args);return 0;}
  return image_main(argc,argv);
 }
