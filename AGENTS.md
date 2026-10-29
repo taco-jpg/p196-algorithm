@@ -1,3 +1,12 @@
+# MISSION (owner, read before anything else)
+
+**We are here to PROVE that a decimal Lychrel number exists. We are not here to fill the repository with results.**
+The deliverable is one thing: a mathematically complete argument -- ideally Lean-checked -- that some base-10 number
+never reaches a palindrome. A pile of computed facts, horizon measurements, exclusions or formats without a decimal
+instance is not a partial success; it is noise that hides the one result that matters. Before you push anything ask:
+"Does this make an all-time proof strictly closer? Which exact lemma does it supply?" If you cannot answer in one
+sentence, do not push it. Prefer one hard attempt at a missing lemma over ten easy computations. Quality over quantity.
+
 # OWNER DIRECTIVE (read this first; it overrides every earlier definition of "progress")
 
 **Finite-horizon replays are worthless here. Do not produce them, push them, or post them as ALERT/DONE.**
