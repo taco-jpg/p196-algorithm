@@ -21,3 +21,9 @@
 - Exhaustive junction domain: all `19^3 + 19^4 = 6,859 + 130,321 = 137,180` ordered J words, no modular or MDD pruning. The assertion-enabled scan checks the rooted overflow clock and odd-coefficient guard at every phase, then compares the complete computed prefix at phase 240 against `B0 W0^24 J U0^55`.
 - Result: zero W9-prefix restorations and zero full-prefix returns; every J has first mismatch at indices 202..213, i.e. 37–48 coefficients before the W9 endpoint at index250. The histogram is recorded in `CELL_REPORT.md`.
 - Independent controls in `u6_240.py`: full arbitrary-precision `n + reverse(n)` and a separate LSD digit-array oracle agree at all 240 phases for q=20,24,40,80,160 with scaled k; paired W/U6 insertions are independently checked at q=24,40,80,160 and both centre parities. All controls pass.
+
+## Successor cell: |J|=5
+
+- After the checked short-junction exclusion, registered the adjacent U6 `|J|=5` route on #475. The assertion-enabled four-thread C++ scan completed all four disjoint ID shards and checked all `19^5=2,476,099` ordered junctions with no modular/MDD pruning.
+- Result: zero W9-prefix restorations and zero complete tracked-prefix returns. Every first mismatch lies at indices 202..216, 34–48 coefficients before the W9 endpoint at index 250. Full histogram and reproduction commands are in `CELL_REPORT_J5.md`.
+- Independent full-integer controls include J length 5 at q=24,k=100 and q=40,k=160; the digit-array oracle agrees at every one of 240 phases. The all-width cut theorem remains the basis for lifting the reference-width exclusion.

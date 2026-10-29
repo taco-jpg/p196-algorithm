@@ -141,6 +141,11 @@ def verify_local_prefix(q,k,J,C):
         assert len(str(nn))-len(str(n))==gamma(t),(q,k,J,C,t,'overflow clock mismatch')
         P=prefix_step(P,ur[t],gamma(t))
         n=nn
+    if q>=24:
+        target=B+W*q+list(J)+U*55
+        first=next(i for i,(x,y) in enumerate(zip(P,target)) if x!=y)
+        w_end=len(B)+9*q
+        assert 34 <= w_end-first <= 48,(q,k,J,C,first,w_end,'expected W9 mismatch window')
     print(f'LOCAL_PREFIX_BIGINT_PASS q={q} k={k} J={J} C={C} phases=240')
 
 def main():
@@ -165,6 +170,8 @@ def main():
         (20,100,[0,0,0],[0,0,0]),
         (24,100,[0,0,0],[0,0,0]),
         (24,100,[18,18,18,18],[0,0,0]),
+        (24,100,[0,1,2,3,4],[0,0,0]),
+        (24,100,[18,18,18,18,18],[0,0,0]),
         (40,160,[13,16,4,9],[0,0,0]),
         (80,320,[18,18,18,18],[0,0,0]),
         (160,640,[5,18,10],[8,8]),
@@ -174,7 +181,8 @@ def main():
     for q,k,J,C in [
         (24,100,[0,0,0],[0,0,0]),
         (24,100,[13,16,4,9],[0,0,0]),
-        (40,160,[18,18,18,18],[0,0,0]),
+        (24,100,[0,1,2,3,4],[0,0,0]),
+        (40,160,[18,18,18,18,18],[0,0,0]),
         (80,320,[5,18,10],[8,8]),
         (160,640,[1,7,11],[10]),
     ]:
