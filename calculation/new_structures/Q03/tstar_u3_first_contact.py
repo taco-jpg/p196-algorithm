@@ -138,7 +138,7 @@ def main():
     motifs = list(all_u_motifs())
     assert len(motifs) == len(set(motifs)) == 30
     motif_set = set(motifs)
-    gate_count, signed_count = Counter(), Counter()
+    gate_count, signed_count, motif_signed_count = Counter(), Counter(), Counter()
     physical_rows = tested_edits = tested_ports = 0
 
     for initial in motifs:
@@ -202,21 +202,44 @@ def main():
                     should_match = (rr == r_gate and new == replacement)
                     assert matches == should_match, (
                         initial, t, word, rr, old, new, eligible, matches, should_match)
+                    if should_match:
+                        support = [i for i, (a, b) in enumerate(zip(baseline_pair, pair2)) if a != b]
+                        if not overflow:
+                            sign = (new - old) // 5
+                            expected = sorted((j + 1, j_reflect - 1))
+                            assert support == expected
+                            assert pair2[j + 1] - baseline_pair[j + 1] == sign
+                            assert pair2[j_reflect - 1] - baseline_pair[j_reflect - 1] == sign
+                        else:
+                            sign = (new - old) // 9
+                            expected = sorted((j + 1, j + 2, j_reflect - 1, j_reflect))
+                            assert support == expected
+                            assert pair2[j + 1] - baseline_pair[j + 1] == -10 * sign
+                            assert pair2[j + 2] - baseline_pair[j + 2] == sign
+                            assert pair2[j_reflect - 1] - baseline_pair[j_reflect - 1] == sign
+                            assert pair2[j_reflect] - baseline_pair[j_reflect] == -10 * sign
                     tested_edits += 1
             physical_rows += 1
             gate_count[overflow] += 1
             signed_count[(overflow, replacement - q_gate)] += 1
+            motif_signed_count[(initial, overflow, replacement - q_gate)] += 1
 
     assert physical_rows == 3600 and tested_ports == 10800
     assert gate_count == Counter({0: 2700, 1: 900})
     assert signed_count == Counter({(0, -5): 1350, (0, 5): 1350,
                                     (1, -9): 450, (1, 9): 450})
+    for motif in motifs:
+        assert motif_signed_count[(motif, 0, -5)] == 45
+        assert motif_signed_count[(motif, 0, 5)] == 45
+        assert motif_signed_count[(motif, 1, -9)] == 15
+        assert motif_signed_count[(motif, 1, 9)] == 15
     print("PASS: 30 distinct U3 rotations x 120 phases = 3,600 interface rows")
     print("PASS: exactly one admissible first-contact site per phase")
     print("PASS: gamma=0: unique 9 -> 4 (ports 1,0) or 9 -> 14 (ports 0,1)")
     print("PASS: gamma=1: cell before 9; even q<=8 -> q+9 (ports 1,1), q>=10 -> q-9 (ports 0,0)")
     print("PASS: periodic carries match all", tested_ports, "actual contact ports")
     print("PASS: bigint and independent digit-array engines agree on", tested_edits, "candidate edits")
+    print("PASS: each gate emits its exact reflected +/-1 or (opposite 10, unit) packet")
     print("PASS: gamma0 signs +/-5 each 1,350; gamma1 signs +/-9 each 450")
     print("SCOPE: all-width local necessity only; no full T* return or Lychrel certificate")
 

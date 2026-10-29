@@ -11,7 +11,7 @@ has an exact 120 ordinary reverse-and-add step return P(q,k) -> P(q,k+5), with e
 For any deep U3-bulk contact site in any of the 30 U3 motifs over all 120 rooted p12/m9 phases, if a one-cell mirrored source perturbation preserves the next pairword prefix through the first changed coefficient and has the same overflow, the only possible gate is:
 - g=0: the unique 9 -> 4 with carries (1,0), or 9 -> 14 with carries (0,1);
 - g=1: the even coefficient immediately before the unique 9, x -> x+9 for x<=8 with carries (1,1), or x -> x-9 for x>=10 with carries (0,0).
-The exact all-width statement and independent physical controls are in reports/Q03TStarU3FirstContact.md and calculation/new_structures/Q03/tstar_u3_first_contact.py.
+The exact all-width statement and independent physical controls are in reports/Q03TStarU3FirstContact.md and calculation/new_structures/Q03/tstar_u3_first_contact.py. The successor does not erase the gate: g=0 emits a reflected ±1 pair one column inward; g=1 emits a reflected two-column (∓10,±1) packet, with every other coefficient unchanged.
 
 ## Remaining missing implication
 The local gate must be embedded in a physically reachable finite seam/carry state that returns after 120 ordinary steps while keeping q fixed and gaining five U3 copies. First-contact equality is not full-interface equality and does not by itself imply a decimal Lychrel number.

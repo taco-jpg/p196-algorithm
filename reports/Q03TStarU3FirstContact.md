@@ -31,6 +31,21 @@ For decimal pair-coefficient normalization, the carry map is T_x(c)=floor((x+c)/
 
 The universal first-contact theorem in reports/Q03FirstContactInterface.md says that, if next pairwords agree through the first changed coefficient, then no overflow allows only the four directed ±5 gates, while overflow allows only the twenty directed ±9 gates and requires the immediately outer coefficient to be non-9. Applying those exact gates to the physical low/high carries of all 30×120 U rows gives the table above. This is an all-width local argument; the finite enumeration checks the complete finite phase alphabet, not a finite orbit horizon.
 
+## Exact defect packet emitted immediately after contact
+
+The same carry equations give more than prefix equality. If the one-cell gate is used, the successor pairwords do not become identical: their complete difference support is exactly the following finite packet and its reflection. Write Δ_i = pairword(R_t successor)[i] − pairword(P_t successor)[i], and j′=n−1−j.
+
+| Overflow | Source gate | Exact lower-side successor differences | Reflected differences | All other positions |
+|---|---|---|---|---|
+| 0 | 9 → 4 | Δ_(j+1)=−1 | Δ_(j′−1)=−1 | zero |
+| 0 | 9 → 14 | Δ_(j+1)=+1 | Δ_(j′−1)=+1 | zero |
+| 1 | x → x+9, x≤8 | Δ_(j+1)=−10, Δ_(j+2)=+1 | Δ_(j′−1)=+1, Δ_(j′)=−10 | zero |
+| 1 | x → x−9, x≥10 | Δ_(j+1)=+10, Δ_(j+2)=−1 | Δ_(j′−1)=−1, Δ_(j′)=+10 | zero |
+
+**Proof.** In the no-overflow gate, the outgoing carry difference at j is s=±1; the next coefficient is non-9, so the difference is reset immediately after it. The normalized digit difference at j+1 is s, and the reflected output coefficient has no difference. In the overflow gate, the changed even coefficient is immediately before a 9. Its outgoing carry difference is s=±1; the following 9 preserves s, and the next non-9 resets it. The two low normalized digit differences are therefore −9s and s. The overflow-one reflected index is shifted by one: the upper digit paired with j+1 is at j′, whose normalized digit difference is −s, giving pairword difference −10s at j+1; at j+2 the upper contribution is zero, leaving s. Reflection gives the stated mirrored packet. The non-9 reset on both sides proves the zero remainder for every width.
+
+Thus the unique first-contact gate is not a one-step repair: it emits a deterministic unit packet in a no-overflow phase or a two-column (∓10,±1) packet in an overflow phase. A regenerative T* seam must absorb or re-emit this exact packet at later phases; the current result does not prove whether that is possible.
+
 ## Independent physical controls
 
 Run from the repository root:
