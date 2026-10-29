@@ -1,0 +1,11 @@
+# AgentX24: twenty-two-step delayed decimal inverse stitch
+- **Label: COMPUTED**; rooted base-10 p8/m20, not a Lean certificate.
+- Two distinct 10-column palindromic centres with halfwords [17,6,5,2,11] and [8,15,18,13,5] give unequal numerical orbits at every t=0..21 but the **same integer at t=22**, for tested r=234.
+- Other independently tested exterior band counts r=1,2,3,4,10,50 also have exact first merge at t22; no all-r theorem.
+- Both 9448-digit r234 seeds avoid palindromes for 20000 steps. Independent GMP and decimal positional replay checks every transition on the shared orbit; the final integer has 19448 digits.
+- All 20001 checked pairwords have the prescribed temporal cap and at least six full period-20 band copies.
+- Exhaustive width-4 130321-centre and sampled width-5 200000-centre searches find new first-merger depths through 22; width-5 not exhaustive.
+- Source and checkpoints: calculation/new_structures/agent-X24/{delayed_replay.cpp,depth_sweep.cpp,delayed22_20k.log}.
+- Reproduce: compile delayed_replay.cpp with g++ -O3 -std=c++17 -lgmp, run ./delayed_replay 234 20000.
+- Details and limitations: reports/AgentX24Delayed22InverseStitch.md.
+- Not an infinite Lychrel proof, regenerative centre, or Lean result.
