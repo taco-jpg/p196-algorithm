@@ -1,13 +1,12 @@
-# X24 exact target
+# X24 current exact target: mixed U6, phase 1
 
-Decide the neighboring phase-1 rooted p12/m9 cell for the 120-step epoch seam map:
+Decide the 240-step epoch seam map for the phase-1 row `U6_1=(17,14,17,1,4,1)`, obtained from the mixed six-column cycle seeded at phase 0 by `U6_0=(7,7,9,11,11,9)`.
 
-- source halfword: `B_1 ++ W_1^q ++ J ++ U^k`, with mirrored palindromic coefficient centre `C`;
-- `q >= 14`, `k >= 100`, `|J| in {3,4}` and every coefficient of `J` in `0..18`;
-- `U` ranges over all 30 charge-zero rotations of `(9,a,18-a)`, `a in {0,2,...,18}`;
-- `C` ranges over every canonical palindromic coefficient word of length 2..13, including both even and odd lengths (odd midpoint even).
-- use the phase-1 clock `gamma[(1+t) mod 12]`, exactly 120 ordinary decimal reverse-and-add steps.
+- rooted p12/m9 source halfword: `B_1 ++ W_1^q ++ J ++ U6_1^k`, mirrored around a legal palindromic coefficient centre `C`;
+- `q >= 24`, `k >= 100`, `|J| in {3,4}`, every J coefficient in `0..18`;
+- 240 genuine decimal reverse-and-add steps, with the target inner exponent `k -> k+10` (60 overflow columns = 10 U6 copies);
+- `C` includes every legal finite centre, both even and odd (odd midpoint even).
 
-Necessary condition for any fixed point or finite cycle of the epoch seam map in this cell: the entire rooted `B_1 ++ W_1^q` prefix is restored at step 120. T12's phase-rotated cut/insertion and U3 reset-cone lemmas remove dependence on `q`, `k`, and `C`; therefore the finite reference-width decision is `(q,k)=(14,100)` and the endpoint test is on all 30 `U` words times all `19^3+19^4` junctions.
+A necessary condition for any fixed point or finite epoch cycle is restoration of the entire rooted `B_1 ++ W_1^q` prefix at step 240. The phase-1 U6 cone is `(left,right)=(299,239)`, W9 erosion is at most 181, the W insertion cut has guard 17 at q=24, and the U insertion cut after 55 U6 copies has guard 31. These reset/insertion bounds are intended to lift the reference-width decision `(q,k)=(24,100)` to every `q>=24,k>=100`.
 
-This target is a cell-local obstruction search, not a claim that a decimal Lychrel number exists.
+The previous U3 phase-1 cell exclusion remains documented in `CELL_REPORT.md`; this target is a distinct mixed-U6 follow-on, not a global Lychrel proof.
