@@ -16,3 +16,6 @@
 
 - Claimed unclaimed phase-zero J5 slice 5/12 in issue #475 comment 6495994865: U ranks 5/17/29. It is disjoint from the recent slices 1/12 and 2/12.
 - Slice 5/12 is exhaustively complete: all 7,428,297 J/U pairs fail W9 restoration, with exact clocks and no unresolved prefixes; 30 independent genuine-decimal controls pass. See slice05/REPORT.md.
+
+- Audited the reported phase-zero slice 6/12 DONE and found that ranks 6 and 18 were covered but rank 30=(18,9,0) was omitted. Claimed the missing subcell in issue #475 comment 6496054201.
+- Rank-30 completion: all 2,476,099 J words fail W9 restoration, exact clock and no unknown/short prefixes; 10 independent genuine-decimal controls pass. See slice06_rank30/REPORT.md.

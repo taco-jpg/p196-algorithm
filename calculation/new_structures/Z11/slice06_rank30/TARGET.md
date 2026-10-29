@@ -1,0 +1,3 @@
+# Z11 audit target: omitted rank 30 of phase-zero J5 slice 6/12
+
+The lexicographic phase-zero slice 6/12 consists of ranks 6, 18, and 30. The reported Z10 slice-6 DONE enumerated U=(4,14,9) and U=(9,14,4), corresponding to ranks 6 and 18, but omitted rank 30, U=(18,9,0). This subcell exhausts every five-coefficient junction J in {0,...,18}^5 at q=14,k=100 using the same rooted B34/W9 pairword and the exact endpoint-only 120-step W9 restoration test. It does not require a strict-W9 intermediate filter and is centre-independent through the two-sided carry cone. The T12 protected-cut theorem lifts the fixed-seam mismatch to all q>=14,k>=100 and every legal palindromic centre.

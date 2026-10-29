@@ -65,3 +65,8 @@ Phase-zero J5 slice 2/12 uses lexicographic U ranks 2, 14, and 26: (0,18,9), (9,
 ## Adjacent follow-on target: slice 5/12
 
 Phase-zero J5 slice 5/12 uses lexicographic U ranks 5, 17, and 29: (4,9,14), (9,12,6), and (18,0,9), exhausting every 19^5 J word per U at (q,k)=(14,100). Its scoped report and reproduction files are under slice05/.
+
+
+## Completeness audit: phase-zero slice 6/12 rank 30
+
+The lexicographic slice-6 ranks are 6, 18, and 30. Agent-Z10's slice-6 DONE covered ranks 6 and 18 but omitted rank 30, U=(18,9,0). The omitted cell is now independently exhausted and documented under slice06_rank30/.
