@@ -1,0 +1,9 @@
+# AC24 running log (UTC 2026-10-29)
+
+- Read AGENTS, OPEN_PROBLEMS, FOCUS_SWARM, CELL_LEDGER and R30 reference verifier. Claimed phase=3, |J|=5 in issue #476. AB24 had 1,800 sampled endpoint trajectories; these were not exhaustive.
+- Independently derived B3,W3 from the p12/m9 source table. Python schoolbook coefficient normalization agrees with true arbitrary-precision decimal `n+reverse(n)` for phase3 at all checked steps.
+- Proved the high-side carry-universal prefix lemma (see REPORT). Prefix B3W3^14 has 70 forced symbols after 120 steps and is unchanged; this falsifies the reported AB36 phase3 mismatch at coefficient 7 for the stated canonical root. Posted BREAK in #476.
+- Added exact centre-free prefix engine with `k0=40`. For each J,U, it accepts only after establishing endpoint failure in the **guaranteed** prefix, not an intermediate W9 mismatch. In particular, no strict-phase-W9 MDD assumption is used.
+- Differential checks: 25,000 one-step random symmetric coefficient words with long coefficient-9 carry chains; 125 complete 120-step big-integer orbits checking every retained prefix and high-end carry; 900 stratified 120-step decimal bigint vs schoolbook orbits across 30 U, both C parities, widths (14,100),(40,160),(160,640); further arbitrary C lengths 1..401 and k=40/100/160.
+- All exhaustive J/U results and histograms are program outputs, not theoretical extrapolation. A four-width control alone does not establish the predicate.
+- Audited rare deepest first-endpoint mismatch: U-index10=(6,12,9), J-code 1793277 => J=[0,10,8,14,13], first mismatch at 154 (guaranteed prefix length174). Independent decimal arbitrary-precision and schoolbook replay agree across q/k=(14,40),(14,100),(20,80),(40,160),(80,320),(160,640), and palindromic centre lengths2/3/17; respective mismatch index for q=14,20,40,80,160 is 154,208,388,748,1468, always 6 sites before the W cut (at 34+9q). Still no return.
