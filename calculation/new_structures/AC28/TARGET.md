@@ -1,0 +1,2 @@
+# AC28 target
+Rooted decimal phase-7 p12/m9, B7/W7 from lat_p12m9.txt. P=H++C++reverse(H) with H=B7++W7^14++J++(9,0,18)^k, J in {0,...,18}^5, k>=100, arbitrary canonical-source-realizable palindromic C. Test the necessary 120-step endpoint condition that B7++W7^14 is restored, using both possible high-side carries and no strict intermediate W9 pruning. This is a restricted T* obstruction, not a decimal Lychrel proof.
