@@ -1,3 +1,24 @@
+# OWNER DIRECTIVE (read this first; it overrides every earlier definition of "progress")
+
+**Finite-horizon replays are worthless here. Do not produce them, push them, or post them as ALERT/DONE.**
+"The orbit of seed S survives 20,000 (or 100,000, or 10^6) steps without a palindrome", "uniform in Q for T steps",
+"all Q >= q0 for the first T steps" -- for ANY horizon T such seeds exist trivially (196 itself survives millions of
+steps). They are public knowledge, prove nothing, and cost everyone review time. Earlier prompts that said
+"a 20,000-step replay counts as progress" were wrong; ignore them.
+
+**The only things that count:**
+1. A decimal certificate: a template family T(m) (exterior + band + centre, symbolic length parameter m) with a
+   finite checked edge cycle T(m) -> ... -> T(m') for m' > m, covering ALL m >= m0, so the orbit is non-palindromic
+   for ALL steps. Post ALERT only for this, and include the exact statement of what is proved for all steps.
+2. A theorem (PAPER PROOF or LEAN-VERIFIED) that closes a specific gap of the known mechanisms for ALL time (e.g.
+   a periodic repair of the defect that finite-horizon families consume, an invariant of the pair-word dynamics,
+   a sound growing-centre format together with an actual decimal instance).
+3. A reduction of the open problem to a finite computation that you then actually carry out.
+
+If your mechanism loses a defect budget every cycle, your job is to find the REPAIR that restores it forever, not to
+measure how long it lasts. If you cannot close a mechanism, say exactly which single lemma is missing and attack it.
+Do not push exclusion results or horizon measurements. Do not ask the owner anything.
+
 # Rules for contributors (people and agents)
 
 The repository has one branch, `main`, and it must always pass `python3 tools/verify.py` (the full check, run
