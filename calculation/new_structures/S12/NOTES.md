@@ -89,3 +89,24 @@ It checks modulo-moment counts, folded source/target identities,
 20 actual 120-step native-bigint/digit-vector trajectories including
 all 16 classes and diagonal q=k=20,40,80,160. Finite controls only
 check the identities; they are not evidence of a returning seam.
+
+## Exact five-copy physical carry-source delta (PAPER PROOF; no return claimed)
+
+Let a phase word be P=A U^k C V^k Z, with V=reverse(U), |U|=3, C an even palindromic coefficient centre, and k>=1. Coefficients are least-significant first. If c_i is the carry OUT of coefficient i-1 when normalizing P, define K(P)=sum_(i=1..|P|) c_i(-10)^i mod 101. For a three-symbol word X and inlet b, define a_X(b)=sum_(j=1..3) e_j(-10)^j mod 101, where e_j is the carry out after its j-th symbol. Let beta_X be the common outgoing carry F_X(0)=F_X(1). Each allowed U has a coefficient different from 9, so its carry map resets; the same is true of V.
+
+Write a=|A|, s=a+3k, t=s+|C|, z=t+3k. Let b be the actual carry entering the first V copy in P. Let K_C and K_Z be the contributions to K(P) from carry-outs over the centre and suffix respectively, with K_Z including the terminal carry. Put G_k=sum_(r=0..k-1)10^r mod 101. Then for P'=A U^(k+5) C V^(k+5) Z,
+
+K(P')-K(P) =
+ (-10)^s a_U(beta_U) + 9 K_C
+ + (-10)^t [9 a_V(b) + (1-2G_k) a_V(beta_V)]
+ - 2 K_Z  (mod 101).
+
+Proof: set x=-10. Modulo 101, x^4=1, x^3=10, x^15=10, x^30=-1, sum_(r=0..4)10^r=1, and sum_(r=1..4)10^r=0. The five new left copies all have steady inlet beta_U, so their combined contribution is x^s a_U(beta_U). The centre shifts 15 positions and its carries are unchanged, so its contribution changes by (x^15-1)K_C=9K_C. The right band starts 15 positions later; its first block has inlet b and later blocks have steady inlet beta_V. Its new contribution relative to the old start is x^t(10 a_V(b)-G_k a_V(beta_V)); subtracting the old contribution x^t(a_V(b)+(G_k-1)a_V(beta_V)) gives the displayed term. The suffix shifts 30 positions with the same inlet, so its contribution is multiplied by x^30=-1 and changes by -2K_Z. The prefix and existing left-band contributions cancel.
+
+For the epoch cocycle, let S_k=V_10(P(q,k)) mod 101 and let W_k be the 30-packet weighted sum of the 120 actual carry sources. The existing one-epoch identity is S_(k+5)=84 S_k+57*10^L W_k. Since L_(k+5)=L+30 and 10^30=-1 mod 101, a second same-interface epoch requires S_(k+10)=84 S_(k+5)-57*10^L W_(k+5), hence
+
+W_(k+5)-W_k = (83 S_(k+5)+84 S_k-S_(k+10))/(57*10^L) mod 101.
+
+This is an exact necessary source equation, not a no-go: it must be combined with the actual phase-by-phase seam constraints. The per-phase delta law supplies the carry-source change to insert into that equation.
+
+Reproduction: g++ -O3 -std=c++17 calculation/new_structures/S12/epoch_delta.cpp -o /tmp/s12_epoch_delta && /tmp/s12_epoch_delta; python3 calculation/new_structures/S12/epoch_delta.py. Both independently check 2,400 source/target cases, including the physical phase-0 overflow and native-bigint n+reverse(n).
