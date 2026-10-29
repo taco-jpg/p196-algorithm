@@ -7,3 +7,8 @@ Given a canonical base-10 seed n0 and R(n)=n+rev10(n), find q0,p,k,g, fixed fini
 ## Current T* target
 
 For the rooted p12/m9 template P=H C reverse(H), H=B W^q J U^k, prove or refute whether the **steady interior carry path can be reflection-symmetric** for any of the 30 charge-zero U3 rows. Exact target now established in reports/Q01TStarCarrySymmetry.md: for every U, all q, k>=3 and every legal finite J,C, actual mirrored interior carries obey c_i+c_(|P|-i)=1 on copies 1..k-2. Thus equal-carry reflection is impossible in the protected bulk. The remaining T* gap is still a genuinely physical phase-changing or fixed-state seam/centre return with positive resource drift, canonical seed, true carries/overflows, and a nonpalindrome witness at every ordinary step.
+
+
+## T* phase-specific centre gate (2026-10-29)
+
+The exact U3 bulk carry map is phase-locked to gamma=(1000)^3. All 30 U3 rows return after 120 phases, and tau_U takes each value 60 times. A fixed centre can preserve the bulk complement-reflection law only when its non-9 coefficient types alternate low/high and its central coefficient class matches tau_U; even-length centres cannot bridge that law at all. Thus no phase-independent centre preserves this symmetry at every phase. Remaining target: construct a physical asymmetric/phase-changing centre interface with a positive-growth return, or prove a different all-time invariant.
