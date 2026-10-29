@@ -1,0 +1,50 @@
+{
+  "label": "COMPUTED",
+  "family": "P0=[12,9]++9^g++[6]++9^m++[6]++9^g++[9,12]",
+  "definition": "q(t)=number of consecutive 18 coefficients centered in C_t; S(t)=cumulative integer digit-length overflows",
+  "verified_rule": "q(t)=m-S(t) at every integer time with 1<=t<the first t for which S(t)>=m",
+  "cases": [
+    {
+      "m": 40,
+      "g0": 10000,
+      "collision_t": 96,
+      "equality_steps": 95,
+      "flip_failure_transition_t": 273
+    },
+    {
+      "m": 80,
+      "g0": 10000,
+      "collision_t": 187,
+      "equality_steps": 186,
+      "flip_failure_transition_t": 567
+    },
+    {
+      "m": 200,
+      "g0": 10000,
+      "collision_t": 478,
+      "equality_steps": 477,
+      "flip_failure_transition_t": 1279
+    },
+    {
+      "m": 500,
+      "g0": 10000,
+      "collision_t": 1186,
+      "equality_steps": 1185,
+      "flip_failure_transition_t": 3407
+    },
+    {
+      "m": 3000,
+      "g0": 12000,
+      "collision_t": 7256,
+      "equality_steps": 7255,
+      "flip_failure_transition_t": 20629
+    }
+  ],
+  "controls": "C++ ordinary digit-list and full pairword at every state; independently Python big integers on m80 and m200",
+  "not_claimed": [
+    "all-m theorem",
+    "infinite Lychrel number",
+    "neutral-band closure",
+    "196 orbit"
+  ]
+}
