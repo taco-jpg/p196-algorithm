@@ -153,3 +153,27 @@ g++ -O3 -std=c++17 -Wall -Wextra -o /tmp/z10slice7 calculation/new_structures/Z1
 /tmp/z10slice7 --lattice calculation/new_structures/Z10/input_lat_p12m9.txt --limit 64 > calculation/new_structures/Z10/scan_slice7_first64.txt
 python3 calculation/new_structures/Z10/replay_controls_slice7.py --lattice calculation/new_structures/Z10/input_lat_p12m9.txt --out calculation/new_structures/Z10/bigint_controls_slice7.json
 ```
+
+
+## Slice 6/12 — phase-0 J5 (2026-10-29)
+
+**Status: EXHAUSTED-NONE. Label: COMPUTED, using the existing T12 PAPER PROOF for the all-width reduction.**
+
+Scope: rooted decimal p12/m9 phase 0, |J|=5, all J in {0,...,18}^5, U ranks 6 and 18 in the canonical lexicographic 30-rotation ordering: U=(4,14,9),(9,14,4). Each U has 2,476,099 J words; combined domain 4,952,198. Reference (q,k)=(14,100), representative C=[2].
+
+The direct bit-sliced scan checked every J for each U. Each run retained all 2,476,099 clock-valid cases and 0 restored B34 W9^14. Full mismatch histograms in `scan_slice6_output.txt`:
+
+- U=(4,14,9): -25:28,003; -24:58,830; -23:1,161,031; -22:983,780; -21:113,778; -20:113,606; -19:7,922; -18:7,419; -16:860; -15:809; -14:28; -13:33.
+- U=(9,14,4): -25:27,890; -24:58,677; -23:1,158,624; -22:986,029; -21:114,055; -20:112,209; -19:8,500; -18:8,415; -16:914; -15:674; -14:55; -13:21; -12:24; -11:12.
+
+Each histogram sums to 2,476,099. Every mismatch is 11–25 coefficients before the W9|J cut. Independent arbitrary-precision checks of the first 64 J words match exactly: both U words have -23:25/-22:39. Forty additional true-decimal controls cover q=20,40,80,160 with k=5q plus reference (14,100); all clocks through 120 and 240 steps match, no full template return occurs, and no control reaches a palindrome through step 240. See `bigint_controls_slice6.tsv`.
+
+The existing `results/T12Rooted120CutPumping.md` theorem reduces any fixed-J/C/U uniform return to (14,100). The reset-cone bounds leave 26 protected coefficients inside U^100, making the tested prefix independent of every admissible finite palindromic centre. Since every J fails the necessary prefix test, no fixed-seam member of this U slice can be the required uniform all-width return. This is not a global nonexistence proof for decimal Lychrel numbers.
+
+Reproduce from repository root:
+```sh
+g++ -O3 -std=c++17 -Wall -Wextra -o /tmp/z10slice6 calculation/new_structures/Z10/scan_slice6.cpp
+/tmp/z10slice6 --lattice calculation/new_structures/Z10/input_lat_p12m9.txt > calculation/new_structures/Z10/scan_slice6_output.txt
+/tmp/z10slice6 --lattice calculation/new_structures/Z10/input_lat_p12m9.txt --limit 64 > calculation/new_structures/Z10/scan_slice6_first64.txt
+python3 calculation/new_structures/Z10/replay_controls_slice6.py --lattice calculation/new_structures/Z10/input_lat_p12m9.txt --out calculation/new_structures/Z10/bigint_controls_slice6.json
+```
