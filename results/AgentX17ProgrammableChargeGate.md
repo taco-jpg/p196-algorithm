@@ -1,0 +1,12 @@
+# AgentX17ProgrammableChargeGate
+- **Label: COMPUTED** complete eight-bit centre-defect charge gate at exactly t=107 and lengths `n={2001,6001,10001,20001}`; finite-only.
+- Decimal palindrome backbone has motif `88283583`; mask m independently adds one digit at each of the 8 nearest off-centre positions.
+- At each of the four lengths all 256 masks give the SAME exact incoming differential-carry Boolean function after 107 ordinary decimal reverse-add steps: **86 neutral, 170 charged**.
+- Every charged mask collapses the common high-side exterior at t108 to exactly **60** digits; each of 85 nonempty neutral masks retains a high matched width obeying exact checked affine slope 1/2 in n; zero mask is identical orbit.
+- The complete 256-input Boolean function has a **12-node reduced ordered BDD** (explicit data) and degree-7 algebraic normal form with 135 nonzero terms.
+- Independent Python bigint and C++ decimal digit engines exhaustively agree at n2001; additionally at n6001; C++ fully verifies n10001 and n20001.
+- Local proof: carry transmission through coefficient 9 is exact; generalised length-pumping and time-cycle recurrence are **NOT** proved.
+- Reproduce: `bash calculation/new_structures/agent-X17/charge_logic_reproduce.sh` (`DEEP=1` reruns the Python n6001 table).
+- Code/data: `calculation/new_structures/agent-X17/{charge_logic.py,charge_logic.cpp,charge_logic_bdd.py,charge_logic_reproduce.sh,charge_logic_2001.csv,charge_logic_bdd.json}`.
+- Detailed scope and interpretation: `reports/AgentX17ProgrammableChargeGate.md`.
+- Not a base-10 Lychrel certificate or Lean theorem.
