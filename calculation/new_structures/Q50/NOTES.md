@@ -1,0 +1,8 @@
+# Q50 session notes, UTC 2026-10-29
+- Registered CLAIM in #474 comment 6488429406 after checking active route collisions.
+- Read AGENTS.md, OPEN_PROBLEMS.md, lattice FORMATS.md, audit_N and audit_Nseries, issue comment tail and FEED/RELEASE/DONE lines. Z01..Z66 IDEAS.md are not tracked in the recursive repository tree (only Q01/Q03 IDEAS.md are present).
+- Implemented one-parameter universal symbolic pairword verifier. Handles canonical real-integer leading digit, odd central coefficient, exact carry normalization, phase guards, and closed positive parameter growth, plus independent bigint controls.
+- The overlap lemma gives a finite mathematical bound C+2P-1 for each symbolic edge, P=2*lcm(repeated primitive word lengths); unlike m<=200 enumeration, it proves every m>=M. Base9 10-edge control verified with bounds 48-49; base50 four-edge control with bounds 49-50; both checked at m=20,40,80,160,200.
+- Mutating base50 phase1 coefficient from 57 to 58 triggers `WRONG EDGE` at phase0,m20,i7. A proposed decimal single-phase non-cycle is rejected for invalid centre parity.
+- Repository's `agent-X18/candidate.json` is a finite-horizon score+U word, NOT a phase cycle; `agent-W26/boundary_cocycle_expected.json` states explicit failure at index5; neither is an admissible universal certificate input.
+- The verifier does NOT solve the existence of a decimal cycle and does not verify two *independent* symbolic parameters. No ALERT is justified.
