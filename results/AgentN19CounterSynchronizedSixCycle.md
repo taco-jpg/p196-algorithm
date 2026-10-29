@@ -1,0 +1,7 @@
+# Agent N19: nonregular synchronized-counter decimal centres
+- **PAPER PROOF (conditional format):** finite-state two-ended carry checker plus eventually periodic Boolean-matrix powers soundly certifies arithmetic edges between folded pairword families `L u^(k-a) J v^(k-b) R`, with a *shared unbounded counter*; a closed guarded edge cycle implies a Lychrel number. No decimal cycle found.
+- **COMPUTED:** explicit decimal six-phase family has bulk clock `(8,16)->(16,14)->(14,10)->(10,2)->(2,4)->(4,8)->(8,16)` and counter lengths `(k,k)->(k-5,k-2)`; all seven proposed exact phase words checked for k=5..200,201,333,500,750,1000,2000, including independent Python bigint checks k=5..20. Universal six-edge identity UNDECIDED.
+- **PAPER PROOF:** any symmetric central run of the six-cycle even pair coefficients loses at most one core cell per step, regardless of outside carries or overflow.
+- **COMPUTED:** explicit decimal 44002-digit seed `9 8^22000 0^22000 1` survived 20,000 steps (20,001 nonpalindromic states) in *independent* direct C++ digit-vector and GMP arbitrary-precision integer replays; final 52,235 digits and central cycle halfwidth 15,411, exact matching checkpoints.
+- Not claimed: decimal Lychrel existence, infinite stability, Lean verification, or full all-k decision for the six-edge example.
+- Proof, limitations, data and commands: `reports/AgentN19CounterSynchronizedSixCycle.md`; reproduction under `calculation/new_structures/agent-N19/`.
