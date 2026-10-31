@@ -1,0 +1,6 @@
+# Agent116Base20Certificate
+**LEAN-VERIFIED (recovered).** Base 20 has a Lychrel number: `Agent116.Base20.exists_lychrel20`, from an explicit period-8 neutral-band cycle accepted by the unchanged `Agent120.Neutral.cycleOK 20` (exteriors of 90-91 coefficients, centres of 25-27, two overflows and trimming gain 3 per cycle; every template with gap >= 4 is Lychrel), with an explicit 216-digit seed `seed20`.
+Recovered from the closed, unmerged PR #356 (tag `archive/2026-10-28/agent-116/t7-base20-neutral`, commit b7a718b): identical Lean file, now registered by the fragment `lean/registry.d/Agent116Base20Certificate.json`; recompiled on main, lean4checker kernel replay, all six endpoints axiom-audited (propext, Classical.choice, Quot.sound only).
+COMPUTED control: `python3 calculation/agent-116/base20_replay.py --selftest --certificate calculation/agent-116/cert20.json --orbit-steps 400` gives 401 template matches and 0 palindromes in 400 ordinary base-20 steps.
+Context: D. Seal (rec.puzzles, Jan 1996) announced a >200-digit base-20 example without transcribing it; this is an independent reconstruction, not identified with his seed. Base 20 is even and not a power of 2.
+Scope: base 20 only. No decimal claim, no claim about 196. Data and scripts: `calculation/agent-116/`; report: `reports/Agent116Base20Certificate.md`.

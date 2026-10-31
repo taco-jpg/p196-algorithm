@@ -2,7 +2,7 @@
 
 Goal: a reverse-and-add orbit in base 10 that never reaches a palindrome. The proof method is a *certificate*: a
 finite cycle of template-to-template steps, checked once and sound for every length (`lychrel_of_cycle`,
-`lychrel_of_lcycle`). Certificates exist, with Lean proofs, in bases 2, 4, 8, 9, 11, 13, 16, 17, 26, 32. **Base 10 has none.**
+`lychrel_of_lcycle`). Certificates exist, with Lean proofs, in bases 2, 4, 8, 9, 11, 13, 16, 17, 20, 26, 32. **Base 10 has none.**
 
 Labels: LEAN-VERIFIED / COMPUTED / PAPER PROOF / UNDECIDED. Every item below is UNDECIDED unless stated.
 
