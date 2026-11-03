@@ -82,3 +82,5 @@ of periods 96, 144, 160, 288, 608 remain open (tools support T <= 64).
 ## Not claimed
 No candidate certificate. Premise (B) is unproved. Tool sources (`reachdisk.cpp`, `backdisk.cpp`, `run_r6.py`) and logs are
 on the Studio and not yet in the repo.
+
+Sources (Studio rounds 6-8 tools and design notes): `calculation/decimal_frontier/uniform_bands/rounds6to8/`.

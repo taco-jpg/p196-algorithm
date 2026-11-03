@@ -114,6 +114,16 @@ COMPUTED:
   forced-core-top automaton (latcore.py, control: base 4 finds the known width-4 hybrid, decimal N-pad p11/p12: nothing) has NO hit for widths <= 5 (width 8 run was killed at wrap-up: UNDECIDED beyond 5).
 * So no decimal hybrid (absorbing core) exists on the p=8 lattices for T = 8, A <= 2, nor stationary with defect width <= 5 (lat2) / any width (lat0, lat1, p12m9).
 
+**Correction (2026-11-02): the stationary-wall bullet above is not sound as stated.** `latcell2.py` uses the nominal lower gate and
+omits genuine edges (#479, `reports/synthesis_2026-10-31/LATTICE_BOUNDARY_CORRECTION.md`; exact gate: D = Dnom OR (gamma = 1 AND
+predecessor != 9), using the actual lag digit). PRO-R03-e (#481) gives off-lattice period-8 stationary cycles at rec2 (lat2)
+residues {6,17,20,30,41,44}: Q_t(q) = B2_t ++ W48_t^q ++ B1_t[11:] ++ W20_t^inf, with B2 = B1[:11] and B1[11:17] = W48[:6].
+COMPUTED (`stack_rec2_rec1.py`): both join identities hold at all 8 phases; 288 genuine one-step checks (q = 0,1,2,3,5,8, every
+phase, random midpoint cores) and 40 genuine consecutive steps (q = 0, 3, 7) keep every exterior cell equal to Q_{t+1}. The general-q
+statement is PAPER PROOF in #481 (block identities), not rechecked here. So "no off-lattice cyclic SCC" / "44 of 48 positions die at 2
+cells" must not be used to prune. The transfer results (T = 8, A <= 2) use `htrans3`, whose gate was not re-audited here.
+The stacked exterior still has no centre (inner W20 midpoint missing): no certificate follows.
+
 ## 8. What is left (UNDECIDED) and the best next variants
 
 1. Moving wall for larger T, large A: no finite reduction proved.  N-pad p11: the BFS dies within <= 7 cells for T = 11, 22, 33 (state count explodes with T and A, not the depth);

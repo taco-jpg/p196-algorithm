@@ -61,3 +61,9 @@ The centre needs 2 per 11 steps (p11) and T/8 (p12). Control: the known loop str
 Every neutral-band template on a census exterior is excluded, whatever sits between the exterior and the centre: wire segments,
 converters, and the centre itself. The neutral-band route to a decimal certificate therefore needs a new exterior, i.e. an overflow
 word beyond the census (period > 32).
+
+**Correction (2026-11-02).** "Beyond the census (period > 32)" overstates the scope: the census
+(`calculation/decimal_frontier/exterior_census/EXTERIOR.md`) leaves 54 words of period <= 32 capped (UNDECIDED), and the exclusions
+above cover only exteriors the census actually found. `results/ReachDiskRounds6to8.md` (item 4) decides 51 of the 54 with no new
+accepted stream; still open: `(01)^12`, `00001110001100010000111000110001`, `(01)^16`. So a new exterior needs either period > 32
+or one of these three words.
