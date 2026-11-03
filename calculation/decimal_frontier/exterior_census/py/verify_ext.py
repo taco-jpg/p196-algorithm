@@ -5,7 +5,7 @@
       e2 = 1-e1; one true reverse-and-add step; the pair word of N_{t+1} must start with B_{t+1} followed by the (shrunk) neutral band.
 usage: verify_ext.py b g [e]      (runs bx -w itself)         or  import verify(b,g,e,Bts)"""
 import sys, re, subprocess, os
-sys.path.insert(0, '/home/claude/taco-jpg/p196-algorithm/calculation')
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../..'))
 import neutral_band_search as m
 HERE = os.path.dirname(os.path.abspath(__file__)); BX = os.path.join(os.path.dirname(HERE), 'bin', 'bx')
 def Bstep(b, B):
@@ -64,11 +64,11 @@ def parse(out):
     return res, wit
 if __name__ == '__main__':
     b = int(sys.argv[1]); g = sys.argv[2]
-    out = run_bx(b, g, ['-first']); res, wit = parse(out)
+    out = run_bx(b, g, ['-nosym']); res, wit = parse(out)   # -first (with or without -nosym) prints a wrong witness for p12
     print('\n'.join(res))
     es = re.findall(r' e=([01]+)@', ' '.join(res))
     if not wit: print('no witness'); sys.exit(1)
-    # witness belongs to the first-found accept; recover its e from the mirror
+    # recover the witness's e from the mirror
     e = ''.join(str(m.e1(b, B)) for B in wit)
     ok, msgs = verify(b, g, e, wit)
     print('B_t:', wit[0], '...', 'lengths', sorted(set(len(B) for B in wit)))

@@ -64,11 +64,11 @@ def parse(out):
     return res, wit
 if __name__ == '__main__':
     b = int(sys.argv[1]); g = sys.argv[2]
-    out = run_bx(b, g, ['-first']); res, wit = parse(out)
+    out = run_bx(b, g, ['-nosym']); res, wit = parse(out)   # -first (with or without -nosym) prints a wrong witness for p12
     print('\n'.join(res))
     es = re.findall(r' e=([01]+)@', ' '.join(res))
     if not wit: print('no witness'); sys.exit(1)
-    # witness belongs to the first-found accept; recover its e from the mirror
+    # recover the witness's e from the mirror
     e = ''.join(str(m.e1(b, B)) for B in wit)
     ok, msgs = verify(b, g, e, wit)
     print('B_t:', wit[0], '...', 'lengths', sorted(set(len(B) for B in wit)))
