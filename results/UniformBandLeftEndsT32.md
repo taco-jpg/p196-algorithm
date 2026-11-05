@@ -1,7 +1,7 @@
 # UniformBandLeftEndsT32
 
 **Claim (COMPUTED under premise (B) of ReachDiskRounds6to8, plus PAPER PROOF for two cells; 2026-11-02).** No decimal periodic left
-end with left-end period T <= 32 (every binary overflow clock, every height) carries a uniform absorbing band.
+end whose combined period T = lcm(left-end period, band period) is <= 32 (every binary overflow clock, every height) carries a uniform absorbing band.
 - All cells except three: `ReachDiskRounds6to8` and `UniformBandLeftEndsT24`.
 - (32, 0000111000110001): UNREACHABLE (COMPLETE) for the four uniform bands with period dividing 32 and for every 9-wire stream.
   Forward BFS pruned by co-reachability windows (w = 8: frontier empty after height 294, 13,065,715 orbits; w = 9 cross-check: same
@@ -10,4 +10,7 @@ end with left-end period T <= 32 (every binary overflow clock, every height) car
   successors, 0 violations. Controls with the same code: (24, 0001) N12 twice at height 53, base 13 (55/75), base 4, (12, 0001).
 - (24, 01) and (32, 01): {0} and {18} are excluded for every clock (results/E2ExtremeUniformIsolation, Lean); {6,12} on (01)^r is
   excluded for every r (#481 PRO-R02-d, PAPER PROOF); the 6-cycle band needs 9 | G, G = number of overflows per period (mass gate, #481 PRO-R02-d), and G = 12, 16 here.
-**Not claimed:** 9-wire streams for (24, 01), (32, 01) (still open); T > 32; nonuniform bands; a proof of premise (B).
+**Scope correction (2026-11-04, `round11/premiseB/PROOF.md` Theorem B').** A band exclusion at T covers exactly the templates
+with lcm(left-end period, band period) = T, not every left end of period T. Band fit heights reported by `reach` (13/18, 55/75)
+are left-end height + 1; exclusions over all heights are unaffected. Premise (B) is now a PAPER PROOF for 9-wire streams (Theorem B).
+**Not claimed:** 9-wire streams for (24, 01), (32, 01) (still open); T > 32; nonuniform bands; the band analogue of premise (B) beyond Theorem B'.

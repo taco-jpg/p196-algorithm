@@ -1,0 +1,15 @@
+# Controls for the filtered K-head method (khead_not12_np.py Kmax PATTERN MOD BASE)
+## positive control 1: base 11, pattern 001, MOD 2 (known base-11 exterior of period 3, width 7 => a closed walk of odd length 3 exists at every K). Must never die.
+## (stopped after K=14 for memory: 238M candidates)
+K=12: candidates 16091838, cyclic SCCs (size,period) [(1898777, 3), (999015, 3), (37980, 3), (592, 9), (223, 9), (187, 3), (171, 9), (152, 27)] ...; kept (period not div by 2): 2937361
+K=13: candidates 61684581, cyclic SCCs (size,period) [(8301106, 3), (2952465, 3), (109506, 3), (313, 36), (277, 18), (171, 9), (110, 9), (93, 9)] ...; kept (period not div by 2): 11363724
+K=14: candidates 238638204, cyclic SCCs (size,period) [(36430863, 3), (8536486, 3), (329954, 3), (171, 9), (138, 9), (110, 9), (92, 21), (36, 9)] ...; kept (period not div by 2): 45297927
+## positive control 2: base 26, pattern 10, MOD 4 (known base-26 exterior, gam word 01, period 2). Must never die. (stopped after K=7: 270M candidates)
+K=5: candidates 1039686, cyclic SCCs (size,period) [(338915, 2)]; kept (period not div by 4): 338915
+K=6: candidates 17284665, cyclic SCCs (size,period) [(5291479, 2)]; kept (period not div by 4): 5291479
+K=7: candidates 269865429, cyclic SCCs (size,period) [(81635574, 2), (34, 4), (4, 4)]; kept (period not div by 4): 81635574
+## negative control: base 10, pattern 01, MOD 8. EXTERIOR.md 2.5 (repo, finite-graph theorem): closed walks labelled (01)^k exist iff 4 | k. Must die at K=3.
+K=1: candidates 36, cyclic SCCs (size,period) [(2, 2), (2, 2)]; kept (period not div by 8): 4
+K=2: candidates 76, cyclic SCCs (size,period) [(9, 2), (2, 2)]; kept (period not div by 8): 11
+K=3: candidates 209, cyclic SCCs (size,period) [(8, 8)]; kept (period not div by 8): 0
+=> no closed walk of length not divisible by 8 in the 3-head graph of pattern 01

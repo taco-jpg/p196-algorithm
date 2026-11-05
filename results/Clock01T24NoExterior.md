@@ -5,5 +5,5 @@ clock (01)^12 (every phase, every height) reaches a 9-wire stream or a uniform b
 `exterior_census/EXTERIOR.md` gives no exterior. Also, the capped word 00001110001100010000111000110001 is covered by
 `UniformBandLeftEndsT32` (its targets include every 9-wire stream in every phase), so of the 54 capped words only (01)^16 remains open.
 **Method.** Forward BFS pruned by co-reachability windows (w = 10, wrapped windows), frontier empty after height 3350,
-500,036,674 orbits; soundness as in `uniform_bands/round9/last_cell/FINAL_R9U.md`. Controls and sources: `uniform_bands/round10/`.
-**Not claimed:** (32, 01) (stopped at height 260, UNDECIDED); a proof of premise (B).
+500,036,674 orbits; w = 9 cross-check: frontier empty after height 3350, 795,389,414 orbits, 0 targets, 0 streams; soundness as in `uniform_bands/round9/last_cell/FINAL_R9U.md`. Controls and sources: `uniform_bands/round10/`.
+**Not claimed:** (32, 01) (stopped at height 260; w = 11 windows in `round11/clock01_T32` also UNDECIDED); a proof of premise (B).
