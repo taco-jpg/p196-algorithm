@@ -184,12 +184,12 @@ were required to be identical to the previous one. Medians are over chunks in wh
 | v6r3 (barrier-light) | 619.2 M – 669.2 M | 256.3 – 277.0 | 48 | 4,893 |
 | v8 (hybrid blocks with growth tape, 64-bit digit counts) | 670.2 M – 980.2 M | 277.4 – 405.7 | 308 | 4,769 |
 | v9 (warp windows) | 981.2 M – 2,489 M | 406.2 – 1,030.3 | 1,492 | 2,851 |
-| v10 (decimal pair sums) | 2,490 M – 6,040 M | 1,030.7 – 2,500.1 | 3,551 | 2,219 |
+| v10 (decimal pair sums) | 2,490 M – 6,040 M | 1,030.7 – 2,500.1 | 3,513 | 2,219 |
 
 The speed falls as the number grows (the work per step is proportional to `n`). The switch from v9 to v10 can
-be read at equal size: around 1.03 × 10⁹ digits the median was 2,060 steps/s (v9, 187 chunks before the switch) and
-3,228 steps/s (v10, 160 chunks after it), a factor of 1.57, within the 1.4–1.9 range predicted from the
-instruction counts.
+be read size-normalised (steps/s × digits): around 1.03 × 10⁹ digits the median was 2.04 × 10¹² digit-steps/s (v9, 160
+chunks before the switch) and 3.43 × 10¹² (v10, 160 chunks after it), a factor of 1.68 (1.73 with 40 chunks on each side),
+within the 1.4–1.9 range predicted from the instruction counts.
 
 ### 6.3 Throughput and growth
 
