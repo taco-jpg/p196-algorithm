@@ -1,0 +1,40 @@
+build rc=0
+selftest PASS: 200000 random numbers, 10596570 column checks of (R1),(R3) against genuine addition
+g=0001 d=4 |IF|=16 a0=5
+g=01 d=8 |IF|=22601 a0=87
+g=0001 d=12 |IF|=22657 a0=70
+g=00001110001 d=11 |IF|=1612 a0=58
+g=00010010111 d=11 |IF|=1483 a0=44
+g=00100101010101 d=14 |IF|=337 a0=15
+g=001010101 d=9 |IF|=137 a0=16
+  level 44 kept 30 nodes 31
+  level 45 kept 0 nodes 0
+root tower g=00010010111 L=11: death level 45 (last level 45, kept 0)
+root tower g=001010101 L=9: death level 17 (last level 17, kept 0)
+root tower g=00100101010101 L=14: death level 16 (last level 16, kept 0)
+-- control: N12 at d=4, L=12
+g=0001 d=4 L=12 |IF|=16 a0=5
+births: distinct interfaces 36, rotation classes 12
+CAPPED k=10 last level 400 kept 301 maxNodes 4507 xb(first)=0,0,0,6,0,0,0,7,
+towers run 12, die 11, capped 1, max death level 3
+death level histogram (level:count, first 30): 1:7 2:3 3:1
+sum of death levels 16 (a fingerprint of the distribution)
+-- control: p11 L=22
+g=00001110001 d=11 L=22 |IF|=1612 a0=58
+births: distinct interfaces 5374, rotation classes 2687
+towers run 2687, die 2687, capped 0, max death level 56
+death level histogram (level:count, first 30): 1:2359 2:214 3:50 4:21 5:11 6:10 7:1 8:5 9:1 10:4 12:2 13:1 14:1 17:1 19:1 20:1 36:1 48:2 56:1
+sum of death levels 3527 (a fingerprint of the distribution)
+-- control: (01), d=8, L=16
+g=01 d=8 L=16 |IF|=22601 a0=87
+births: distinct interfaces 68520, rotation classes 8565
+towers run 8565, die 8565, capped 0, max death level 526
+death level histogram (level:count, first 30): 1:6867 2:956 3:317 4:139 5:74 6:30 7:36 8:20 9:17 10:12 11:4 12:8 13:15 14:5 16:2 17:4 18:4 19:2 21:6 23:6 24:2 25:4 26:3 28:2 31:2 34:2 41:3 43:2 50:2 63:2
+sum of death levels 15802 (a fingerprint of the distribution)
+-- word (00010010111)^5, L=55
+progress 1150000/1240956 capped 0 maxdeath 53 t=5s
+progress 1200000/1240956 capped 0 maxdeath 53 t=5s
+CAPPED k=665992 last level 194 kept 2609283 maxNodes 4259011 xb(first)=0,0,0,10,0,0,8,0,
+towers run 1240956, die 1240955, capped 1, max death level 230
+death level histogram (level:count, first 30): 1:1227074 2:11772 3:1436 4:369 5:118 6:63 7:37 8:15 9:12 10:7 11:6 12:9 13:1 14:3 15:5 16:1 17:3 18:3 19:1 20:2 21:1 22:3 23:1 24:1 28:1 29:2 33:1 34:1 35:1 42:1
+sum of death levels 1259212 (a fingerprint of the distribution)

@@ -1,0 +1,9 @@
+# P8FixedPeriodCentresAnyDepth
+
+**Claim (COMPUTED, with the PAPER PROOF reduction Theorem R4; 2026-11-08).** On the decimal p = 8 lattices rec0 and rec1 (m = 20, clock 10101010) no centre of time period 80 exists at any depth, and on rec2 (m = 48) none of period 192; equivalently, for rec0/rec1 no fixed-centre return T^80(P(q,C)) = P(q+1,C) for any centre length |C| (extends P8Rec1FixedCentreLen16, |C| <= 16).
+- Method: E_acc(K,T) = states of the bottom relaxation R_K on a closed walk of length exactly T through an accepting state (bottom cell off-lattice), built level by level (E_acc(K) in E_acc(K-1) x {0..18}). Theorem R4: E_acc(K0,T) empty plus no exact F_K orbit inside E_acc(K,T) for K < K0 excludes every depth >= 1; depth 0 is excluded separately (eset2 K <= 3 and a big-integer test).
+- rec0, rec1, T = 80, each of the 4 phase orbits computed: peak 2.75e6 states (K = 16-17), |E_acc(44,80)| = 709 (6 accepting; explicit closed walks replayed), EMPTY at K = 45; 0 exact orbits at every K.
+- rec2, T = 192: peak 3.2e7; EMPTY at K = 40 (orbits 0, 2) and K = 41 (orbits 1, 3); 0 exact orbits.
+Checks: three C++ pipelines agree at every level (eset3; indep_acc with its own rule code and closure, sets equal at every K <= 44 for rec0; the main session's mc13b written from the definitions, all 12 orbits, 0 differences); Python klib levels (rec0 K = 35..45, rec2 K = 37..40) give equal sets. Positive control: in base 9 the Lean-verified centres are found inside E_acc and E_acc(K,20) does not die. The SAT cross-check at K = 45 did not finish (not used).
+**Not claimed:** periods >= 160 (rec0, rec1) or >= 384 (rec2): E_acc(K,160) equals Cyc(K) up to 0.4 % at K = 16, out of reach; K1 in general; anything about 196.
+Code: `calculation/decimal_frontier/round13/k1_fixed_period/` (FINAL.md, REPRODUCE.sh, main_check/).
