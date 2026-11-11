@@ -1,0 +1,47 @@
+# known-answer controls re-run on the Studio 2026-11-11 UTC: bin/ifb3 (src/ifb.cpp) and bin/ifd10 (src/ifc.cpp) -word mode, alarm 100 s each; the ifd10 base-9 run (an INF tower in tree mode) did not finish within 100 s; the N24 runs (> 100 s) are omitted, see ctrl/deaths_N24_N36.log
+## bin/ifb3 10 0001 12 -word 4 
+IF(d0) g=0001 d0=4 interfaces=16 a0=5 t=0.01
+TINF tower=2 iface=100010001001|0,0,0,6,0,0,0,7,0,0,0,5,|211321232123
+IFB_WORD g=0001 d0=4 L=12 interfaces=16 a0=5 births=12 die=11 inf=1 maxK=3 states=1761 expand=7560 edges=7558 maxDepth=67 t=0.0
+HIST 1:7 2:3 3:1
+## bin/ifd10 10 0001 12 -word 4 -tree -slots 4096
+IF(d0) g=0001 d0=4 interfaces=16 a0=5 t=0.00
+TINF tower=2 iface=100010001001|0,0,0,6,0,0,0,7,0,0,0,5,|211321232123
+IFB_WORD g=0001 d0=4 L=12 interfaces=16 a0=5 births=12 die=11 inf=1 capped=0 maxK=3 states=0 expand=1813 edges=0 maxDepth=67 t=0.0
+HIST 1:7 2:3 3:1
+## bin/ifb3 10 00001110001 22 -word 11 
+IF(d0) g=00001110001 d0=11 interfaces=1612 a0=58 t=0.01
+IFB_WORD g=00001110001 d0=11 L=22 interfaces=1612 a0=58 births=2687 die=2687 inf=0 maxK=56 states=10095 expand=109837 edges=107150 maxDepth=55 t=0.1
+HIST 1:2359 2:214 3:50 4:21 5:11 6:10 7:1 8:5 9:1 10:4 12:2 13:1 14:1 17:1 19:1 20:1 36:1 48:2 56:1
+## bin/ifd10 10 00001110001 22 -word 11 -tree -slots 4096
+IF(d0) g=00001110001 d0=11 interfaces=1612 a0=58 t=0.01
+IFB_WORD g=00001110001 d0=11 L=22 interfaces=1612 a0=58 births=2687 die=2687 inf=0 capped=0 maxK=56 states=0 expand=12454 edges=0 maxDepth=55 t=0.1
+HIST 1:2359 2:214 3:50 4:21 5:11 6:10 7:1 8:5 9:1 10:4 12:2 13:1 14:1 17:1 19:1 20:1 36:1 48:2 56:1
+## bin/ifb3 10 01 8 -word 4 
+IF(d0) g=01 d0=4 interfaces=5 a0=2 t=0.00
+TINF tower=0 iface=10101110|0,6,0,8,0,3,0,5,|13132323
+IFB_WORD g=01 d0=4 L=8 interfaces=5 a0=2 births=1 die=0 inf=1 maxK=0 states=2306 expand=5878 edges=6043 maxDepth=181 t=0.0
+HIST
+## bin/ifd10 10 01 8 -word 4 -tree -slots 4096
+IF(d0) g=01 d0=4 interfaces=5 a0=2 t=0.00
+TINF tower=0 iface=10101110|0,6,0,8,0,3,0,5,|13132323
+IFB_WORD g=01 d0=4 L=8 interfaces=5 a0=2 births=1 die=0 inf=1 capped=0 maxK=0 states=0 expand=43683 edges=0 maxDepth=235 t=0.1
+HIST
+## bin/ifb3 9 1100011000 10 -word 5 
+IF(d0) g=1100011000 d0=5 interfaces=137 a0=21 t=0.00
+TINF tower=72 iface=0001010010|2,4,0,0,0,0,3,0,0,0,|3321133212
+TINF tower=73 iface=1001000010|0,3,0,0,0,2,4,0,0,0,|3321233211
+IFB_WORD g=1100011000 d0=5 L=10 interfaces=137 a0=21 births=126 die=124 inf=2 maxK=9 states=32582 expand=95138 edges=96584 maxDepth=558 t=0.1
+HIST 1:82 2:12 3:12 4:8 5:4 6:2 7:2 9:2
+## bin/ifd10 9 1100011000 10 -word 5 -tree -slots 4096
+IF(d0) g=1100011000 d0=5 interfaces=137 a0=21 t=0.00
+## bin/ifb3 10 01 16 -word 8 
+IF(d0) g=01 d0=8 interfaces=22601 a0=87 t=0.04
+IFB_WORD g=01 d0=8 L=16 interfaces=22601 a0=87 births=8565 die=8565 inf=0 maxK=526 states=387595 expand=2156229 edges=2148194 maxDepth=525 t=1.5
+HIST 1:6867 2:956 3:317 4:139 5:74 6:30 7:36 8:20 9:17 10:12 11:4 12:8 13:15 14:5 16:2 17:4 18:4 19:2 21:6 23:6 24:2 25:4 26:3 28:2 31:2 34:2 41:3 43:2 50:2 63:2 69:2 72:2 84:2 97:2 103:1 111:2 112:2 155:2 526:2
+## bin/ifd10 10 01 16 -word 8 -tree -slots 4096
+IF(d0) g=01 d0=8 interfaces=22601 a0=87 t=0.04
+IFB_WORD g=01 d0=8 L=16 interfaces=22601 a0=87 births=8565 die=8565 inf=0 capped=0 maxK=526 states=0 expand=455231 edges=0 maxDepth=525 t=1.5
+HIST 1:6867 2:956 3:317 4:139 5:74 6:30 7:36 8:20 9:17 10:12 11:4 12:8 13:15 14:5 16:2 17:4 18:4 19:2 21:6 23:6 24:2 25:4 26:3 28:2 31:2 34:2 41:3 43:2 50:2 63:2 69:2 72:2 84:2 97:2 103:1 111:2 112:2 155:2 526:2
+IFB_WORD g=0001 d0=12 L=24 interfaces=22657 a0=70 births=20853 die=20853 inf=0 capped=0 maxK=1369 states=0 expand=12270760 edges=0 maxDepth=1368 t=52.3
+HIST 1:18720 2:1535 3:308 4:99 5:58 6:36 7:17 8:21 9:7 10:6 11:3 12:5 14:5 15:2 16:4 18:1 19:2 20:1 21:1 22:2 23:1 24:1 25:1 26:1 30:2 32:1 33:1 38:1 39:2 41:1 42:1 63:1 70:1 88:1 282:1 376:1 397:1 1369:1
