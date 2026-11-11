@@ -3,9 +3,8 @@
 A self-contained status report for a reader who starts from zero. **Nothing here proves that a decimal Lychrel number
 exists, and nothing is claimed about 196.** Labels: LEAN-VERIFIED / COMPUTED / PAPER PROOF / UNDECIDED. Each item
 says where it lives: *[main]* = already on `main` before this report; *[round NN]* = computed in rounds 12-14
-(2026-11-05 .. 2026-11-10), added in the commits that follow this report under `calculation/decimal_frontier/roundNN/`
-(see the README there and the `results/` notes it lists); until those land, those items are reported, not yet
-reproducible from the repository.
+(2026-11-05 .. 2026-11-11), code, logs and reports under `calculation/decimal_frontier/roundNN/` (see the README
+there); the `results/` note named in each item states the exact claim and scope. Updated 2026-11-11.
 
 ## 0. The problem
 
@@ -64,53 +63,70 @@ clock 1000 (d = 12): left tail W0 (m = 9) and 9-wires.
    projection lemma Cyc_acc(K) <= Cyc_acc(K-1) x {0..18}. Theorem A: if Cyc_acc(K0) is empty and the exact fold map
    F_K has no periodic orbit inside Cyc_acc(K) for K < K0, the lattice has no centre of any time period and any depth
    in that phase orbit. Positive control: the 8 Lean-verified neutral certificates reappear as exact orbits.
-2. **p11 / p12 9-wires and the clock-1000 tail W0** *[p11/p12: main; W0 and complete tails: round 14]*: the
-   all-period closure dies at K = 6 for every 9-wire tail and for W0 (C++ and plain Python agree): no periodic centre
-   of any period. *[main]* p12m9 has no bounded-width centre (any width, any period).
+2. **p11 / p12 9-wires and the clock-1000 tail W0** *[per-tail closures: main; completeness: round 14,
+   `P11P12PeriodicLeftPartsNoCentre`]*: on clocks 00001110001 (d = 11) and (1000)^3 (d = 12) every d-periodic rooted
+   history ends in a 9-wire or in W0 = p12m9, and the all-period closure dies at K = 6 on each of them (C++ and plain
+   Python agree): no d-periodic left part carries an eventually periodic centre. *[main]* p12m9 has no bounded-width
+   centre; *[round 13, `P12M9SlowFrameDepth6`]* boundaries with drift 0 < d <= 1/8 cannot reach depth 7 (drift 0 open).
 3. **Centres of the period-8 lattices (K1).**
    - *[main]* rec1 centres |C| <= 16 and p8 fixed centres <= 12 excluded.
-   - *[round 13]* fixed period: no centre of period 80 for rec0, rec1, none of period 192 for rec2.
-   - *[round 12]* depth bounds for rec0..rec2 (see round12 README for the exact depths).
-   - *[round 14]* big-SCC lattices with cycle length 61..159: of the 83 classes with T >= 256, 54 (+1 after
-     reruns) are closed for all periods (K0 = 16..35); no exact orbit anywhere; 28 classes budget-limited (UNDECIDED).
-     Family closure (all of the big SCC except rec2 at once): no centre of depth <= 21; K = 22 exceeded 75 GB.
-   - *[round 14]* K1 for all periods (r14b): no centre found; rec0 orbit 0 still has accepting states at K = 19 (8 of
-     80 phases). UNDECIDED. Lemmas: local cellular-automaton form of a centre; healing offsets +-5 (g = 0), +-9 (g = 1).
+   - *[round 13, `P8FixedPeriodCentresAnyDepth`]* no centre of period 80 for rec0, rec1, none of period 192 for rec2,
+     any depth.
+   - *[round 12, `P8CentreDepthBound`]* no centre of depth <= 23 on rec0, rec1 and of depth <= 27 on rec2, any period.
+   - *[round 12, `P8FixedCentrePeriods160to576`]* no fixed-centre return at periods 160..480 (rec0, rec1, |C| <= 12-13)
+     and 384, 576 (rec2, |C| <= 11-12).
+   - *[round 14, `P8SccLatticesNoCentreAllPeriods`]* big-SCC lattices with cycle length 61..159: 55 of the 83 classes
+     are closed for all periods (K0 = 16..39); no exact orbit anywhere; 28 classes budget-limited (UNDECIDED). Family
+     closure (all of the big SCC except rec2 at once): no centre of exact depth <= 21; K = 22 exceeded 75 GB.
+   - *[round 14, r14b, no results note]* K1 for all periods: no centre found; rec0 orbit 0 still has accepting states at
+     K = 19 (8 of 80 phases): UNDECIDED. Lemma H (healing offsets +-5 at g = 0, +-9 at g = 1, PAPER PROOF). r14b's
+     band-anchored closures disagree with an independent main-session program (cause not found): UNDECIDED.
+   - *[round 12, `T12NoTemplateReturn`, PAPER PROOF + COMPUTED SAT]* the T12 route (P(q,k) = B0 W0^q J U^k C mirror)
+     has no template return Phi^(120m) P(q,k) = P(q,k+5m) for any m, q, J, C (k >= 90m+10).
 4. **Infinite closed L-histories (ICH) on dense overflow clocks (task E2).** For a clock word of period L: is there an
    L-periodic column structure (interface I = forward carry c, digit below xb, allowed backward carries A) that
    extends upward forever? Above a fixed interface J, a *tower* is a chain J -> J1 -> J2 ... of L-periodic interfaces,
    each arrow a closed L-column; a tower dies (finite) or contains a cycle (an ICH, a positive lead). Theorem B (r13c,
    PAPER PROOF) reduces each word to finitely many towers.
-   - *[round 13]* T = 55: no ICH (1,240,956 towers, deepest 345); L = 16, N24, N36: all towers die.
-   - *[round 14]* clock 01: T = 24 (38,546 classes, max level 3309; deepest two by two methods) and T = 40
-     (1,203,631 classes, max 1670) decided: every ICH is 8-periodic. Root-14 word, T = 56: last tower dies at level
-     742 (one method only). *[main]* (01)^12 has no exterior and no uniform band at T = 24.
+   - *[round 13, `BirthTowersT16T55`]* (00010010111)^5 (T = 55): no ICH (1,240,956 towers, deepest 345); every closed
+     16-history of (01)^8 is 8-periodic.
+   - *[round 14, `IchTowersT24T32T40T56`]* clock 01: every ICH of period 24 (max level 3309), 32 (16 heavy towers,
+     max 17714, tree DFS only) and 40 (max 1670) is 8-periodic. Root-14 word, T = 56: no ICH (last tower dies at 742,
+     one method). Clock 0001 at L = 60: tower N60_1 dies at 464, N60_2 still running.
+     *[main]* (01)^12 has no exterior and no uniform band at T = 24.
 5. **Uniform bands on left ends** *[main, COMPUTED under premise (B), now a PAPER PROOF for 9-wire streams]*: no
    periodic left end with combined period T <= 32 carries a uniform absorbing band, except the 9-wire streams of
    (24, 01) and (32, 01).
-6. **Band census and band centres** *[round 13]*: 265 / 284 / 161 bands for clocks 1000 / 10 / p11. Band centres DO
-   exist: among bands with T <= 400, 73 / 113 / 58 have an exact depth-2 period-24 centre orbit. The obstruction is the
-   junction: no census band with T | d has a left end. The pieces "band + centre" exist; "left end -> band" is missing.
-7. **Exterior census** *[main: periods <= 24 (560 streams skipped by a 127-bit key) and 33..40; round 12: 41..56]*.
+6. **Band census and band centres** *[round 13, `BandCensusS8ErosionGA`, `BandCentresClock1000T24`]*: 265 / 284 / 161
+   bands of word length <= 8 for clocks 1000 / 10 / p11. Band centres DO exist: bands (11,8,5) with C = (13,2,13) and
+   (13,10,7) with C = (5,16,5) of clock 1000 grow V^m C rev(V)^m -> V^(m+1) C rev(V)^(m+1) every 24 steps; among
+   bands with T <= 400, 73 / 113 / 58 carry exact centre orbits. The obstruction is the junction: no census band with
+   T | d has a rooted d-periodic left end (d = 8, 11, 12). "Band + centre" exists; "left end -> band" is missing.
+7. **Exterior census** *[main: periods <= 24 (560 streams skipped by a 127-bit key) and 33..40; round 12,
+   `ExteriorPeriods41to56`: 41..56, open words listed there; `ExteriorUniquenessP9P11m`: clock (0001)^9 carries only
+   N12, clocks p11^m (m <= 5) only p11]*.
 8. **Not worth redoing.** Prefix exclusions (5,808 of 9,000 four-digit prefixes are excluded in Lean, but they can never
    prove existence); finite-horizon replays; more exclusions for their own sake.
 
 ## 4. What is still open (this is the problem to solve)
 
-1. **K1 remainder.** rec0, rec1, rec2 centres of large depth and any period; the 28 budget-limited big-SCC classes;
+1. **K1 remainder.** rec0, rec1 centres of depth >= 24 and rec2 of depth >= 28 at periods other than 80 / 192; the
+   28 budget-limited big-SCC classes;
    lattices of cycle length > 160 beyond depth 21. Computation grows fast here: a structural theorem, an invariant or
    a transfer-matrix argument is needed, not a bigger run.
 2. **K2 wall speed.** Prove or refute: the defect front between lattice and mirror moves at most c cells per step, so a
    bounded centre never closes. A proof kills the period-8 route; a counterexample is a centre.
-3. **Remaining towers on dense clocks** (E2): (01)^16 T = 32: 14 of 16 heavy towers die, 2 (depth > 17,700) re-running;
-   T = 48: 6 heavy towers untouched; clock 001010101 at L = 54 (CAP54a) and clock 0001 at L = 60 (two towers)
-   re-running. A tower with a cycle gives a new periodic structure: a positive lead.
+3. **Remaining towers and words on dense clocks** (E2): clock 01 at T = 48 (heavy towers not run); clock 001010101 at
+   L = 54 (tower CAP54a) and clock 0001 at L = 60 (tower N60_2), both running; the open exterior words of
+   `ExteriorPeriods41to56` (p34, (01)^20 as an exterior question, N12^4, (01)^24, (01)^28, ...). A tower with a cycle
+   gives a new periodic structure: a positive lead.
 4. **Band centres beyond the scan**: timed-out bands (121 / 145 / 51 for clocks 1000 / 10 / p11) and all bands with
    T > 400. Even then the left-end junction is missing (3.6).
 5. **New formats (F1), the most promising direction.** The decimal pieces exist (left ends: p11 / p12 9-wires, W0;
    period-8 lattices; bands with centres) but do not fit together periodically. A format with a non-time-periodic
-   junction is needed: a moving wall (left end + wire + wall moving relative to the fold + band + centre + mirror;
-   being scanned with SAT, nothing found and nothing claimed yet), two or more bands, or a periodic band with a
+   junction is needed: a moving wall (left end + wire + wall moving relative to the fold + band + centre + mirror; an
+   exploratory SAT scan at K = 24 with small wall periods, the W9 tails of clock 1000 and p11 against all census bands,
+   found 0 solutions in 16,570 decided instances, 151 timeouts; not a census, nothing claimed), two or more bands, or a periodic band with a
    quasi-periodic centre. Prove soundness in Lean, recover a known certificate in another base (control), then search
    base 10. Known facts for the moving wall: the first off-wire cell is >= 10 when the wire stream bit is 0 and <= 8
    when it is 1; the wall can move only at g = 0 steps, with value 14 or 4. Read the existing moving-seam work first
