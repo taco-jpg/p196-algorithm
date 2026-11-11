@@ -84,8 +84,14 @@ I checked the argument.
   δ = 1−c and ρ = 9c.
 - Going down one column at a time, all columns above u are therefore 9.
 
-**Lemma T.** For all k, a history that passes through u_acc^k is N12^k. So a counterexample never contains N12's
-accepted cut.
+**Lemma T (top rigidity).** For all k, in every 12k-periodic history that passes through the cut u_acc^k, every column
+above that cut is all 9: nothing can be stacked on N12^k's accepted 9-sea cut.
+
+*Scope correction (2026-11-11).* An earlier version read "a history that passes through u_acc^k is N12^k". That
+strong form is **not** proved: the argument above constrains only the columns above the cut, and a history whose part
+below the cut differs from N12^k could reach the same cut (the future above a cut depends only on the cut). The strong
+form is L(k) restricted to histories through u_acc^k and stays UNDECIDED. The reduction to (G_k) in §4 uses only the
+top-rigidity form and is unaffected.
 
 **Limit of the method (COMPUTED, `py/stack_h.py` → `py/stack_h.out`).** The same closure test from every N12 cut u_h
 gives:
