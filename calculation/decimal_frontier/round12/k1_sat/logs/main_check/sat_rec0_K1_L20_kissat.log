@@ -1,0 +1,21 @@
+INST ret rec0 b=10 q0=5 S=80 Kb=1 |c0|=20 |cS|=20 n0=298 nS=338 H0=139 H1=159 |R0|=139 |RS|=77 final_prefix_ok=True fix=None
+Traceback (most recent call last):
+  File "~/p196_run/mchk12d/r12d_copy/tsrun.py", line 155, in <module>
+    main()
+    ~~~~^^
+  File "~/p196_run/mchk12d/r12d_copy/tsrun.py", line 121, in main
+    r, model, E, tenc, tt, stats = solve_inst(I, a.solver, prefix_k=prefix_k, units=not a.nounits,
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                              fixvals=fixvals, planted=planted, amo_inner=not a.noamo,
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                              phase_lattice=a.phase)
+                                              ^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p196_run/mchk12d/r12d_copy/tsat.py", line 301, in solve_inst
+    stats = S.accum_stats() if hasattr(S, 'accum_stats') else {}
+            ~~~~~~~~~~~~~^^
+  File "~/p196_run/venv/lib/python3.13/site-packages/pysat/solvers.py", line 977, in accum_stats
+    return self.solver.accum_stats()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/p196_run/venv/lib/python3.13/site-packages/pysat/solvers.py", line 9971, in accum_stats
+    raise NotImplementedError('Statistics are not exposed by Kissat in PySAT.')
+NotImplementedError: Statistics are not exposed by Kissat in PySAT.

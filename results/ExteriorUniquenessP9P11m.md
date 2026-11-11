@@ -1,0 +1,9 @@
+# ExteriorUniquenessP9P11m
+
+**Claim (PAPER PROOF, with COMPUTED kept-set checks; 2026-11-08).** Every 9-wire exterior with clock (0001)^9 is N12 repeated, and no uniform-band template has this clock: P(9) holds (k = 3 of the missing lemma of Clock0001ThreeDividesR, r = 9 was UNDECIDED there). For the clocks p11^m, m = 1..5 (p11 = 00001110001), every exterior is p11 repeated (B-level, any width) and none carries a uniform band; this includes p22, UNDECIDED in EXTERIOR.md section 3b.
+- Theorem U (stabilisation): the khx kept set at level K+1 is a function of the attributed kept set at level K (Lemma S). If kept_K0 is isomorphic to kept_(K0+d) and, on levels K0+1..K0+d, the closed L-walk part of TOP99 (top digits 9,9) is exactly the padded known stream and TOPUU has no closed L-walk, the known stream is the only exterior and there is no band.
+- Checks (khx3 dumps, `py/kstruct.py`, `py/wire_unique.py`): P(9) pattern 0001, L = 36, isomorphism kept_400 = kept_403 (60,805 nodes), closed TOP99 part = 12 padded N12 nodes, TOPUU 0; p11^m pattern p11, L = 11m, kept_300 = kept_301 (22 nodes), closed TOP99 part = 11 padded p11 nodes. Re-proves P(3) (K0 = 300, d = 3). Re-run on the existing dumps for this commit (P(9), P(3), p11^m for m <= 4): ISO FOUND, counts as stated (`out/uniq/kstruct_rerun.log`).
+- Corollary T: with `-allm` (keep every cyclic SCC) 6,700 of the 6,722 primitive F1 roots h with |h| <= 24 become acyclic, so no clock h^m (any m >= 1) carries an exterior or a uniform band; the 22 others are listed in FINAL.md section 7.
+Both known streams are replayed with exact integers (`py/verify_ext.py`, `bx -w -nosym`).
+**Not claimed:** P(12) and N12^4 (the L = 24 kept set does not stabilise up to K = 800); (01)^{4j}; p11^6 (run stopped); the 22 cyclic roots; non-uniform bands; anything about 196. Not Lean-checked.
+Code: `calculation/decimal_frontier/round12/ext41to48/` (FINAL.md sections 6, 7, 11; dumps not shipped, commands in section 11).

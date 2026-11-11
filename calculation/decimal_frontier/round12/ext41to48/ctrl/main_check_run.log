@@ -1,0 +1,19 @@
+== build
+-rwxr-xr-x  1 user  staff  55872 Nov  8 06:53 kh2
+-rwxr-xr-x  1 user  staff  89376 Nov  8 06:53 khx
+== controls (khx fresh build)
+p11 (must SURVIVE, kept=22):        KHX b=10 p=11 g=00001110001 SURVIVES K=60 kept=22 reason=kmax maxnodes=14497 secs=0.026
+N12 000100010001 (must SURVIVE):     KHX b=10 p=12 g=000100010001 SURVIVES K=60 kept=6399 reason=kmax maxnodes=166174 secs=0.115
+0001 L=40 (Thm A, must DIE K=13):    KHX b=10 p=4 g=0001 DIES K=13 maxnodes=23142 secs=0.003
+01 L=36 (must DIE K=3):              KHX b=10 p=2 g=01 DIES K=3 maxnodes=209 secs=0.000
+== deep deaths
+p21 khx -batch (claim DIES K=112):   KHX b=10 p=21 g=001001010101001010101 DIES K=112 maxnodes=411578 secs=0.511
+p21 kh2 -exact (claim DIES K=112):   KH2 b=10 p=21 g=001001010101001010101 L=21 exact DIES K=112
+p41 surv khx -batch (claim K=100):   KHX b=10 p=41 g=00001110001000101010010100010001001010001 DIES K=100 maxnodes=7848786 secs=6.419
+p11 L=22 (p22, must SURVIVE):        KHX b=10 p=11 g=00001110001 SURVIVES K=60 kept=6524 reason=kmax maxnodes=162659 secs=0.136
+== random census sample vs kh2 -exact
+      85 sample.txt
+== cmp summary
+  85 SAME
+K=2:81 K=8:1 K=9:1 K=10:1 K=16:1 
+MCHK_DONE

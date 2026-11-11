@@ -1,0 +1,39 @@
+# Re-run by the packaging agent (2026-11-10, Studio, read-only): py/kstruct.py and py/wire_unique.py on the existing dumps of out/uniq/
+# (n12_L12_K300..303, n12_L36_K400..403 = P(9), p11_L11..L44_K300/301). Commands: ../../FINAL.md section 11.
+== kstruct N12 L=12 (pattern 0001, L=12), K300 vs K303
+level 300 (out/uniq/n12_L12_K300.dump): kept=2245 TOP99=56 TOPUU=62 TOP99_padded_stream=36 TOP99_other=20 | closed-L-walk nodes inside TOP99=36 (non-stream: 0) inside TOPUU(f-consistent)=0
+level 303 (out/uniq/n12_L12_K303.dump): kept=2245 TOP99=56 TOPUU=62 TOP99_padded_stream=36 TOP99_other=20 | closed-L-walk nodes inside TOP99=36 (non-stream: 0) inside TOPUU(f-consistent)=0
+level 301 (out/uniq/n12_L12_K301.dump): kept=1046 TOP99=39 TOPUU=13 TOP99_padded_stream=36 TOP99_other=3 | closed-L-walk nodes inside TOP99=36 (non-stream: 0) inside TOPUU(f-consistent)=0
+level 302 (out/uniq/n12_L12_K302.dump): kept=1730 TOP99=55 TOPUU=57 TOP99_padded_stream=36 TOP99_other=19 | closed-L-walk nodes inside TOP99=36 (non-stream: 0) inside TOPUU(f-consistent)=0
+stream rotations used: [0, 4, 8]
+ISO level 300 -> level 303: FOUND (verified, 2245 nodes)
+== p11 L=11
+KHX b=10 p=11 g=00001110001 SURVIVES K=300 kept=22 reason=kmax maxnodes=14497 secs=0.021
+RESULT PASS
+level 301 (out/uniq/p11_L11_K301.dump): kept=22 TOP99=11 TOPUU=0 TOP99_padded_stream=11 TOP99_other=0 | closed-L-walk nodes inside TOP99=11 (non-stream: 0) inside TOPUU(f-consistent)=0
+ISO level 300 -> level 301: FOUND (verified, 22 nodes)
+== p11 L=22
+KHX b=10 p=11 g=00001110001 SURVIVES K=300 kept=22 reason=kmax maxnodes=162659 secs=0.214
+RESULT PASS
+level 301 (out/uniq/p11_L22_K301.dump): kept=22 TOP99=11 TOPUU=0 TOP99_padded_stream=11 TOP99_other=0 | closed-L-walk nodes inside TOP99=11 (non-stream: 0) inside TOPUU(f-consistent)=0
+ISO level 300 -> level 301: FOUND (verified, 22 nodes)
+== p11 L=33
+KHX b=10 p=11 g=00001110001 SURVIVES K=300 kept=22 reason=kmax maxnodes=1802720 secs=6.187
+RESULT PASS
+level 301 (out/uniq/p11_L33_K301.dump): kept=22 TOP99=11 TOPUU=0 TOP99_padded_stream=11 TOP99_other=0 | closed-L-walk nodes inside TOP99=11 (non-stream: 0) inside TOPUU(f-consistent)=0
+ISO level 300 -> level 301: FOUND (verified, 22 nodes)
+== p11 L=44
+KHX b=10 p=11 g=00001110001 SURVIVES K=300 kept=22 reason=kmax maxnodes=5115560 secs=27.037
+RESULT PASS
+level 301 (out/uniq/p11_L44_K301.dump): kept=22 TOP99=11 TOPUU=0 TOP99_padded_stream=11 TOP99_other=0 | closed-L-walk nodes inside TOP99=11 (non-stream: 0) inside TOPUU(f-consistent)=0
+ISO level 300 -> level 301: FOUND (verified, 22 nodes)
+== kstruct P(9): pattern 0001, L=36, K400 vs K403
+KHX b=10 p=4 g=0001 SURVIVES K=400 kept=60805 reason=kmax maxnodes=4552172 secs=145.492
+level 400 (out/uniq/n12_L36_K400.dump): kept=60805 TOP99=801 TOPUU=1698 TOP99_padded_stream=12 TOP99_other=789 | closed-L-walk nodes inside TOP99=12 (non-stream: 0) inside TOPUU(f-consistent)=0
+level 403 (out/uniq/n12_L36_K403.dump): kept=60805 TOP99=801 TOPUU=1698 TOP99_padded_stream=12 TOP99_other=789 | closed-L-walk nodes inside TOP99=12 (non-stream: 0) inside TOPUU(f-consistent)=0
+level 401 (out/uniq/n12_L36_K401.dump): kept=56407 TOP99=746 TOPUU=1688 TOP99_padded_stream=12 TOP99_other=734 | closed-L-walk nodes inside TOP99=12 (non-stream: 0) inside TOPUU(f-consistent)=0
+level 402 (out/uniq/n12_L36_K402.dump): kept=58562 TOP99=759 TOPUU=1714 TOP99_padded_stream=12 TOP99_other=747 | closed-L-walk nodes inside TOP99=12 (non-stream: 0) inside TOPUU(f-consistent)=0
+stream rotations used: [0, 4, 8]
+ISO level 400 -> level 403: FOUND (verified, 60805 nodes)
+       11.87 real        11.70 user         0.15 sys
+          1236549632  maximum resident set size

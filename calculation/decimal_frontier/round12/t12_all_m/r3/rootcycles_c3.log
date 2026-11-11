@@ -1,0 +1,45 @@
+  edge 0 -> [(0, 0), (1, 0)]
+  edge 1 -> [(2, 0), (3, 0)]
+  edge 2 -> [(4, 0), (5, 0)]
+  edge 3 -> [(6, 0), (7, 0)]
+  edge 4 -> [(8, 0), (9, 0)]
+  edge 5 -> [(10, 0), (11, 0)]
+  edge 6 -> [(12, 0), (13, 0)]
+  edge 7 -> [(14, 0), (15, 0)]
+  edge 8 -> [(16, 0), (17, 0)]
+  edge 9 -> [(10, 1), (18, 0)]
+  edge 10 -> [(1, 1)]
+  edge 11 -> [(2, 1)]
+  edge 12 -> [(3, 1)]
+  edge 13 -> [(4, 1)]
+  edge 14 -> [(5, 1)]
+  edge 15 -> [(6, 1)]
+  edge 16 -> [(7, 1)]
+  edge 17 -> [(8, 1)]
+  edge 18 -> [(9, 1)]
+SCC of 10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]  (not in SCC: [0] )
+simple cycles in the SCC: 15
+  weight   0 length  4 mean +0.000  (1, 2, 5, 10)
+  weight   3 length  9 mean +0.333  (1, 2, 4, 8, 16, 7, 14, 5, 10)
+  weight   2 length  6 mean +0.333  (1, 3, 7, 14, 5, 10)
+  weight   1 length  3 mean +0.333  (3, 6, 12)
+  weight   1 length  3 mean +0.333  (2, 5, 11)
+  weight   5 length 11 mean +0.455  (1, 3, 6, 13, 4, 8, 16, 7, 14, 5, 10)
+  weight   4 length  8 mean +0.500  (2, 4, 8, 16, 7, 14, 5, 11)
+  weight   6 length 10 mean +0.600  (1, 3, 7, 14, 5, 11, 2, 4, 9, 10)
+  weight   3 length  5 mean +0.600  (3, 7, 15, 6, 12)
+  weight   3 length  5 mean +0.600  (1, 2, 4, 9, 10)
+  weight   5 length  7 mean +0.714  (1, 3, 6, 13, 4, 9, 10)
+  weight   5 length  7 mean +0.714  (4, 8, 16, 7, 15, 6, 13)
+  weight   7 length  9 mean +0.778  (1, 3, 7, 15, 6, 13, 4, 9, 10)
+  weight   2 length  2 mean +1.000  (8, 17)
+  weight   2 length  2 mean +1.000  (9, 18)
+negative-weight cycles: []  zero-weight cycles: [(1, 2, 5, 10)]
+potential pi (Bellman-Ford from 10): {1: 3, 2: 2, 3: 2, 4: 1, 5: 1, 6: 1, 7: 1, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: -1, 17: -1, 18: -1}
+w(u->v) >= pi(v)-pi(u) on every SCC edge: True
+tight edges: [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (3, 7), (4, 8), (4, 9), (5, 10), (5, 11), (6, 12), (6, 13), (7, 14), (7, 15), (8, 16), (8, 17), (9, 18), (10, 1)]
+cycles of tight edges: [(1, 2, 5, 10)]
+CONCLUSION part1: every closed walk 10->10 with N/4 overflows has clock (1000)^(N/4)
+c=1 s0=(10,): forward-reachable product states 72, SCC of (s0,0) 72, non-standard edges inside the SCC 47
+c=2 s0=(10, 4): forward-reachable product states 1244, SCC of (s0,0) 1244, non-standard edges inside the SCC 816
+c=3 s0=(10, 4, 6): forward-reachable product states 16776, SCC of (s0,0) 16776, non-standard edges inside the SCC 11125

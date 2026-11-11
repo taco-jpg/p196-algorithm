@@ -1,0 +1,27 @@
+# positive (must SURVIVE)
+== p11 wire :: KHX b=10 p=11 g=00001110001 SURVIVES K=60 kept=22 reason=kmax maxnodes=14497 secs=0.025 
+== p12 N12 wire :: KHX b=10 p=12 g=000100010001 SURVIVES K=60 kept=6399 reason=kmax maxnodes=166174 secs=0.108 
+== p22 = p11^2 :: KHX b=10 p=22 g=0000111000100001110001 SURVIVES K=60 kept=17074 reason=kmax maxnodes=468274 secs=0.323 
+== p11^3 (L=33) :: KHX b=10 p=11 g=00001110001 SURVIVES K=60 kept=29427 reason=kmax maxnodes=594985 secs=0.589 
+== N12^2 (0001)^6 :: KHX b=10 p=4 g=0001 SURVIVES K=22 kept=3955953 reason=nodecap maxnodes=29591949 secs=1.889 
+== (01)^4 (bx saturates, no stream; khx expected to survive) :: KHX b=10 p=2 g=01 SURVIVES K=60 kept=2225 reason=kmax maxnodes=39672 secs=0.029 
+== base13 band {8,16} :: KHX b=13 p=10 g=1010010000 SURVIVES K=60 kept=5543 reason=kmax maxnodes=144650 secs=0.087 
+== base4 wire+band :: KHX b=4 p=6 g=011001 SURVIVES K=60 kept=3270 reason=kmax maxnodes=22414 secs=0.016 
+== base11 001 :: KHX b=11 p=3 g=001 SURVIVES K=60 kept=12 reason=kmax maxnodes=945 secs=0.000 
+== base11 001001 :: KHX b=11 p=6 g=001001 SURVIVES K=60 kept=24 reason=kmax maxnodes=5628 secs=0.002 
+== base17 100001 :: KHX b=17 p=6 g=100001 SURVIVES K=60 kept=1375 reason=kmax maxnodes=49632 secs=0.019 
+== base26 01 :: KHX b=26 p=2 g=01 SURVIVES K=60 kept=78 reason=kmax maxnodes=3978 secs=0.003 
+== base20 00010001 :: KHX b=20 p=8 g=00010001 SURVIVES K=43 kept=1708365 reason=nodecap maxnodes=17456361 secs=1.060 
+== base2 10 :: KHX b=2 p=2 g=10 SURVIVES K=60 kept=6 reason=kmax maxnodes=18 secs=0.000 
+== base4 100 :: KHX b=4 p=3 g=100 SURVIVES K=60 kept=197 reason=kmax maxnodes=1358 secs=0.001 
+== base8 1000 :: KHX b=8 p=4 g=1000 SURVIVES K=60 kept=7562 reason=kmax maxnodes=109740 secs=0.040 
+== base16 10000 :: KHX b=16 p=5 g=10000 SURVIVES K=60 kept=2691 reason=kmax maxnodes=81871 secs=0.039 
+== base32 100000 :: KHX b=32 p=6 g=100000 SURVIVES K=60 kept=3124 reason=kmax maxnodes=193158 secs=0.090 
+== base3 11100 :: KHX b=3 p=5 g=11100 SURVIVES K=60 kept=206 reason=kmax maxnodes=1030 secs=0.001 
+# negative (must DIE)
+== 01 L=36 (8|p thm: K=3) :: KHX b=10 p=2 g=01 DIES K=3 maxnodes=209 secs=0.000 
+== 0001 L=40 (Thm A) :: KHX b=10 p=4 g=0001 DIES K=13 maxnodes=23142 secs=0.003 
+== 0001 L=16 (bx dies d13) :: KHX b=10 p=4 g=0001 DIES K=13 maxnodes=3363 secs=0.001 
+== 0001 L=20 (bx dies d6) :: KHX b=10 p=4 g=0001 DIES K=6 maxnodes=5643 secs=0.000 
+== 0001 L=28 (bx dies d10) :: KHX b=10 p=4 g=0001 DIES K=10 maxnodes=8455 secs=0.001 
+CTRL_DONE

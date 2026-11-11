@@ -9,5 +9,6 @@
   [9,17,5] has none of width <= 22.
 Controls: N12 found at height 53 through the same filter at T = 12, 24; the lifting finds the base-4 clock-100 exterior at K = 7.
 **Method.** `calculation/decimal_frontier/round11/chain6_chain8/FINAL.md`.
-**Not claimed:** chain 6 P96 (backward cone TOO_BIG; BB_10 is target-independent); chain 8 T = 72 (run still going at commit time)
-and all k; root [9,17,5] at width > 22.
+**Not claimed:** chain 6 P96 (backward cone TOO_BIG; BB_10 is target-independent); chain 8 T = 72 (UNDECIDED: run stopped by hand on
+2026-11-05 at height 34, 3,836,399,833 orbits visited, frontier non-empty, next layer over the 4e9 cap; log
+`calculation/decimal_frontier/round12/chain8_T72/`) and all k; root [9,17,5] at width > 22.
