@@ -7,7 +7,9 @@
    sorry, admit, native_decide or declares an axiom, and none uses meta-programming that
    can bypass the kernel (debug options, run_cmd/run_elab, addDecl, implemented_by, unsafe, #eval, ...).
 2. `lake build` of every module (Lean 4.19.0, pinned in lean/lean-toolchain), then
-   lean4checker on every built module: the kernel re-checks every stored declaration.
+   lean4checker on every built module: the kernel re-checks every stored declaration
+   (modules whose build output is unchanged since lean4checker last accepted them are
+   skipped; see lean/.lake/kernel-replay-ok.json).
 3. `#print axioms` for every registered endpoint; only propext,
    Classical.choice and Quot.sound are allowed (so no sorry, no custom axiom,
    no native_decide).
@@ -197,27 +199,83 @@ def lean4checker():
         return cmd, env
     return None, None
 check_mods = sorted(targets) if targets is not None else sorted(files)
+# Replay ledger: a module whose .olean and Lake trace (which covers its source and all its imports)
+# are byte-identical to the last time lean4checker accepted it is not replayed again. The ledger lives
+# in lean/.lake, which CI caches even after a timeout, so a full replay that does not fit in one run
+# continues where the previous run stopped instead of starting over.
+LEDGER = os.path.join(LEAN, ".lake", "kernel-replay-ok.json")
+TOOLCHAIN = open(os.path.join(LEAN, "lean-toolchain")).read().strip()
+def replay_key(m):
+    base = os.path.join(LEAN, ".lake", "build", "lib", "lean", *m.split("."))
+    try:
+        h = hashlib.sha256(TOOLCHAIN.encode())
+        with open(base + ".olean", "rb") as f:
+            for block in iter(lambda: f.read(1 << 20), b""): h.update(block)
+        if os.path.exists(base + ".trace"):
+            h.update(open(base + ".trace", "rb").read())
+        return h.hexdigest()
+    except OSError:
+        return None
+try:
+    ledger = json.load(open(LEDGER))
+except Exception:
+    ledger = {}
+keys = {m: replay_key(m) for m in check_mods}
+todo_mods = [m for m in check_mods if keys[m] is None or ledger.get(m) != keys[m]]
+replay_incomplete = 0
 if check_mods:
-    import concurrent.futures
+    print(f"[kernel replay] {len(check_mods)} module(s); {len(check_mods) - len(todo_mods)} unchanged since "
+          f"lean4checker last accepted them; {len(todo_mods)} to re-check", flush=True)
+if todo_mods:
+    import concurrent.futures, time
     cmd, env = lean4checker()
     if cmd is None:
         fail.append("lean4checker could not be started on this machine (neither compiled nor interpreted); "
                     "kernel replay NOT done")
     else:
+        # lean4checker is one single-threaded process per chunk; run several at once (default: one per
+        # core, at most one per 4 GB of RAM; KERNEL_REPLAY_JOBS overrides).
+        jobs = int(os.environ.get("KERNEL_REPLAY_JOBS") or max(1, min(os.cpu_count() or 1, int(ram_gb() // 4))))
+        # KERNEL_REPLAY_BUDGET_MIN: stop starting new chunks after this many minutes, so the run ends
+        # (and saves the ledger) before an outer timeout kills it. Unset = no limit.
+        budget = float(os.environ.get("KERNEL_REPLAY_BUDGET_MIN") or 0) * 60
+        t0 = time.time()
+        def save_ledger():
+            tmp = LEDGER + ".tmp"
+            json.dump(ledger, open(tmp, "w"), sort_keys=True); os.replace(tmp, LEDGER)
         def replay(mods):
+            if budget and time.time() - t0 > budget: return mods, None, "skipped: time budget used up"
             out = subprocess.run(cmd + mods, cwd=LEAN, env=env or None, capture_output=True, text=True)
             return mods, out.returncode, (out.stdout + out.stderr).strip()
-        chunks = [check_mods[i:i + 25] for i in range(0, len(check_mods), 25)]
-        bad_chunks = []
-        with concurrent.futures.ThreadPoolExecutor(max(1, int(os.environ["LEAN_NUM_THREADS"]) // 2)) as ex:
-            for mods, rc, text in ex.map(replay, chunks):
+        chunks = [todo_mods[i:i + 25] for i in range(0, len(todo_mods), 25)]
+        bad_chunks, done, last = [], 0, 0.0
+        print(f"[kernel replay] {len(chunks)} chunk(s) of up to 25 modules, {jobs} at a time"
+              + (f", budget {budget / 60:g} min" if budget else ""), flush=True)
+        with concurrent.futures.ThreadPoolExecutor(jobs) as ex:
+            for fut in concurrent.futures.as_completed([ex.submit(replay, c) for c in chunks]):
+                mods, rc, text = fut.result()
+                if rc is None: replay_incomplete += len(mods); continue
                 if rc != 0: bad_chunks.append(mods)
+                else:
+                    for m in mods:
+                        if keys[m]: ledger[m] = keys[m]
+                    save_ledger()
+                done += len(mods)
+                if time.time() - last > 60 or done == len(todo_mods):
+                    last = time.time()
+                    print(f"[kernel replay] {done}/{len(todo_mods)} re-checked, {(last - t0) / 60:.1f} min", flush=True)
         # a failing chunk stops at its first problem: re-check its modules one by one to list all of them
-        with concurrent.futures.ThreadPoolExecutor(max(1, int(os.environ["LEAN_NUM_THREADS"]) // 2)) as ex:
+        with concurrent.futures.ThreadPoolExecutor(jobs) as ex:
             for mods, rc, text in ex.map(lambda m: replay([m]), [m for c in bad_chunks for m in c]):
-                if rc != 0:
-                    fail.append(f"lean4checker rejects {mods[0]}: {text[-300:]}")
-        print(f"[kernel replay] {len(check_mods)} module(s) re-checked by lean4checker", flush=True)
+                if rc is None: replay_incomplete += 1
+                elif rc != 0: fail.append(f"lean4checker rejects {mods[0]}: {text[-300:]}")
+                elif keys[mods[0]]: ledger[mods[0]] = keys[mods[0]]
+        save_ledger()
+        if replay_incomplete:
+            fail.append(f"kernel replay incomplete: {replay_incomplete} module(s) not re-checked within the "
+                        f"{budget / 60:g}-minute budget; progress is saved in lean/.lake and the next run continues")
+        print(f"[kernel replay] {len(todo_mods) - replay_incomplete} module(s) re-checked by lean4checker "
+              f"in {(time.time() - t0) / 60:.1f} min", flush=True)
 
 # 3. axiom audit
 # names may contain ' (e.g. value_lt'), so match up to the last "' depends" / "' does not" on the line

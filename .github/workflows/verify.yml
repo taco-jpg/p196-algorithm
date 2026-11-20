@@ -39,6 +39,9 @@ jobs:
         timeout-minutes: 330
         env:
           BEFORE: ${{ github.event.before }}
+          # stop starting new lean4checker chunks after 270 min, so the axiom audit runs and the
+          # replay ledger in lean/.lake is cached before the 330-min step timeout; the next run resumes
+          KERNEL_REPLAY_BUDGET_MIN: "270"
         run: |
           if [ "${{ github.event_name }}" = "push" ] && [ -n "$BEFORE" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
             python3 tools/verify.py --changed "$BEFORE"
